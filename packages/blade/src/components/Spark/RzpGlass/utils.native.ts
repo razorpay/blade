@@ -3,7 +3,7 @@ import type { RazorSenseMode } from './modes';
 import type { PreloadRazorSenseOptions } from './types';
 import type { ColorSchemeNames } from '~tokens/theme';
 
-const DEFAULT_CDN_PATH = `https://cdn.jsdelivr.net/npm/@razorpay/blade@${__BLADE_VERSION__}/assets/spark`;
+const DEFAULT_CDN_PATH = '';
 
 async function preloadRazorSense(_options: PreloadRazorSenseOptions): Promise<void> {
   // no-op on native

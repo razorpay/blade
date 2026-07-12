@@ -310,7 +310,10 @@ const getCapability = async (
 
   const promise = Promise.resolve()
     .then(() => supportedMediaCapabilities.decodingInfo(configuration))
-    .catch(() => null);
+    .catch(() => {
+      capabilityPromiseByKey.delete(key);
+      return null;
+    });
   capabilityPromiseByKey.set(key, promise);
   return promise;
 };

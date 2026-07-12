@@ -1,7 +1,13 @@
 import { getRazorSenseAsset, selectRazorSenseVideoSource } from '../razorSenseAssets';
+import { preloadRazorSense, preloadRazorSenseModeAssets } from '../utils';
+
+const flushPromises = async (): Promise<void> => {
+  await new Promise((resolve) => setTimeout(resolve, 0));
+};
 
 describe('RazorSense assets', () => {
   afterEach(() => {
+    jest.restoreAllMocks();
     Object.defineProperty(navigator, 'mediaCapabilities', {
       configurable: true,
       value: undefined,
@@ -77,29 +83,81 @@ describe('RazorSense assets', () => {
     });
   });
 
-  it('uses the explicit H.264 fallback when capability detection fails', async () => {
+  it('uses the explicit H.264 fallback and retries a transient capability failure', async () => {
+    const decodingInfo = jest
+      .fn()
+      .mockImplementationOnce(() => {
+        throw new Error('unsupported');
+      })
+      .mockResolvedValueOnce({
+        supported: true,
+        smooth: true,
+        powerEfficient: true,
+        keySystemAccess: null,
+      });
     Object.defineProperty(navigator, 'mediaCapabilities', {
       configurable: true,
-      value: {
-        decodingInfo: jest.fn().mockImplementation(() => {
-          throw new Error('unsupported');
-        }),
-      },
+      value: { decodingInfo },
     });
+    const request = {
+      assetsPath: 'https://cdn.example.com/spark///',
+      mode: 'regret',
+      colorScheme: 'dark',
+      viewport: 'mobile',
+    } as const;
 
-    await expect(
-      selectRazorSenseVideoSource({
-        assetsPath: 'https://cdn.example.com/spark///',
-        mode: 'regret',
-        colorScheme: 'dark',
-        viewport: 'mobile',
-      }),
-    ).resolves.toEqual({
+    await expect(selectRazorSenseVideoSource(request)).resolves.toEqual({
       src: 'https://cdn.example.com/spark/razorsense-modes/razorsense-regret-mobile-dark.mp4',
       source: expect.objectContaining({
         file: 'razorsense-modes/razorsense-regret-mobile-dark.mp4',
         codec: 'avc1.640015',
       }),
     });
+    await selectRazorSenseVideoSource(request);
+
+    expect(decodingInfo).toHaveBeenCalledTimes(2);
   });
+
+  it.each(['object-first', 'compatibility-first'] as const)(
+    'shares one video without weakening canplaythrough readiness when called %s',
+    async (order) => {
+      const videos: HTMLVideoElement[] = [];
+      const loadVideo = jest
+        .spyOn(HTMLMediaElement.prototype, 'load')
+        .mockImplementation(function mockLoad(this: HTMLMediaElement) {
+          videos.push(this as HTMLVideoElement);
+        });
+      const assetsPath = `/assets/spark/${order}`;
+      const callObjectApi = (): Promise<void> =>
+        preloadRazorSense({ modes: 'neutral', assetsPath });
+      const callCompatibilityApi = (): Promise<void> =>
+        preloadRazorSenseModeAssets('neutral', assetsPath, 'light');
+      const firstPromise = order === 'object-first' ? callObjectApi() : callCompatibilityApi();
+      let firstResolved = false;
+      void firstPromise.then(() => {
+        firstResolved = true;
+      });
+
+      await flushPromises();
+      expect(loadVideo).toHaveBeenCalledTimes(1);
+      const video = videos[0] as HTMLVideoElement;
+      video.dispatchEvent(new Event('loadeddata'));
+      await flushPromises();
+
+      expect(firstResolved).toBe(order === 'object-first');
+
+      const secondPromise = order === 'object-first' ? callCompatibilityApi() : callObjectApi();
+      let secondResolved = false;
+      void secondPromise.then(() => {
+        secondResolved = true;
+      });
+      await flushPromises();
+
+      expect(loadVideo).toHaveBeenCalledTimes(1);
+      expect(secondResolved).toBe(order === 'compatibility-first');
+
+      video.dispatchEvent(new Event('canplaythrough'));
+      await Promise.all([firstPromise, secondPromise]);
+    },
+  );
 });
