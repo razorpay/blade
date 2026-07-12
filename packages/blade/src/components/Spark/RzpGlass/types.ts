@@ -7,6 +7,8 @@
 
 import type { RzpGlassPreset } from './presets';
 import type { RazorSenseMode } from './modes';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 
 // ============================================
 // COLORAMA CONFIG (Adobe AE v5 Pipeline)
@@ -236,9 +238,17 @@ type RzpGlassCommonProps = {
 };
 
 type LegacyRzpGlassProps = RzpGlassCommonProps &
+  StyledPropsBlade &
+  TestID &
+  DataAnalyticsAttribute &
   RzpGlassConfig &
   RzpGlassAssets & {
     mode?: never;
+    isPaused?: never;
+    isInteractive?: never;
+    accessibilityLabel?: never;
+    modeTransitionDuration?: never;
+    interactive?: never;
     /**
      * Named preset that provides a base configuration.
      * Any explicit props you pass will override the preset values.
@@ -257,6 +267,9 @@ type LegacyRzpGlassProps = RzpGlassCommonProps &
   };
 
 type SemanticRazorSenseProps = RzpGlassCommonProps &
+  StyledPropsBlade &
+  TestID &
+  DataAnalyticsAttribute &
   Pick<RzpGlassPlaybackConfig, 'paused' | 'startTime' | 'endTime' | 'playbackRate'> & {
     /**
      * Semantic RazorSense state.
@@ -265,8 +278,14 @@ type SemanticRazorSenseProps = RzpGlassCommonProps &
      * authored glass motion programs. Emotional states (`calm`, `joyful`,
      * `caution`, `regret`) use the responsive mood material renderer.
      */
-    mode: RazorSenseMode;
+    mode?: RazorSenseMode;
     preset?: never;
+    /** Whether RazorSense motion is paused (default: false). Takes precedence over `paused`. */
+    isPaused?: boolean;
+    /** Whether emotional modes respond to pointer input (default: true). Takes precedence over `interactive`. */
+    isInteractive?: boolean;
+    /** Accessible name for a meaningful RazorSense visual. Omit for decorative usage. */
+    accessibilityLabel?: string;
     /** Duration in seconds for semantic state transitions (1s emotional, 0.4s operational). */
     modeTransitionDuration?: number;
     /** Enables the delayed pointer liquify response in emotional modes (default: true). */

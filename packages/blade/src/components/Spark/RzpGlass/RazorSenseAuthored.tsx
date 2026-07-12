@@ -4,7 +4,6 @@ import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import type { RazorSenseOperationalMode } from './modes';
 import {
   getRazorSenseOperationalModeVideoSources,
-  RAZOR_SENSE_MODE_LABELS,
   RAZOR_SENSE_OPERATIONAL_MODES,
   RAZOR_SENSE_OPERATIONAL_MODE_BACKGROUNDS,
   RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS,
@@ -483,9 +482,6 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     return (
       <div
         ref={mergedRef}
-        role="img"
-        aria-label={`RazorSense ${RAZOR_SENSE_MODE_LABELS[mode]} animation`}
-        data-razor-sense-color-scheme={colorScheme}
         className={className}
         style={{
           width: widthStyle,

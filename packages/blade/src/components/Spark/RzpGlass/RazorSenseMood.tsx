@@ -2,11 +2,7 @@
 
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import type { RazorSenseEmotionalMode } from './modes';
-import {
-  getRazorSenseMobileModeVideoSources,
-  RAZOR_SENSE_EMOTIONAL_MODES,
-  RAZOR_SENSE_MODE_LABELS,
-} from './modes';
+import { getRazorSenseMobileModeVideoSources, RAZOR_SENSE_EMOTIONAL_MODES } from './modes';
 import { RazorSenseMoodMount } from './RazorSenseMoodMount';
 import type { SemanticRazorSenseProps } from './types';
 import { captureVideoCoverFrame, DEFAULT_CDN_PATH } from './utils';
@@ -158,9 +154,6 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     return (
       <div
         ref={mergedRef}
-        role="img"
-        aria-label={`RazorSense ${RAZOR_SENSE_MODE_LABELS[mode]} animation`}
-        data-razor-sense-color-scheme={colorScheme}
         className={className}
         style={{
           width: widthStyle,
@@ -374,9 +367,6 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     return (
       <div
         ref={mergedRef}
-        role="img"
-        aria-label={`RazorSense ${RAZOR_SENSE_MODE_LABELS[mode]} animation`}
-        data-razor-sense-color-scheme={colorScheme}
         className={className}
         style={{
           width: widthStyle,
@@ -502,8 +492,6 @@ const RazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(function 
     return (
       <div
         ref={forwardedRef}
-        role="img"
-        aria-label={`RazorSense ${RAZOR_SENSE_MODE_LABELS[props.mode]} animation`}
         className={props.className}
         style={{
           width: typeof width === 'number' ? `${width}px` : width,

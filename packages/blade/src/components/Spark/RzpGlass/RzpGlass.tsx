@@ -14,6 +14,11 @@ import { isRazorSenseEmotionalMode } from './modes';
 import type { RzpGlassPreset } from './presets';
 import type { LegacyRzpGlassProps, RzpGlassProps, SemanticRazorSenseProps } from './types';
 import { DEFAULT_CDN_PATH, getDefaultAssets, getPresetAssets, resolveConfig } from './utils';
+import { useTheme } from '~components/BladeProvider';
+import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { logger } from '~utils/logger';
 
@@ -21,7 +26,7 @@ import { logger } from '~utils/logger';
 // The video is kept paused during this window so one-shot animations
 // (e.g. circleSlideUp) don't "waste" frames while the canvas is invisible.
 const FADE_IN_MS = 200;
-let hasWarnedAboutModeAndPreset = false;
+let hasWarnedAboutSemanticLegacyCollision = false;
 
 const AUTHORED_PRESET_MODES: Partial<Record<RzpGlassPreset, RazorSenseOperationalMode>> = {
   default: 'neutral',
@@ -29,35 +34,78 @@ const AUTHORED_PRESET_MODES: Partial<Record<RzpGlassPreset, RazorSenseOperationa
   bottomWave: 'typing',
 };
 
-const SHARED_AUTHORED_PROP_KEYS = new Set<string>([
-  'width',
-  'height',
-  'className',
-  'style',
-  'onLoad',
-  'onError',
-  'assetsPath',
+const CANONICAL_SEMANTIC_PROP_KEYS = [
   'mode',
-  'preset',
+  'isPaused',
+  'isInteractive',
+  'accessibilityLabel',
   'modeTransitionDuration',
-  'paused',
-  'playbackRate',
-  'startTime',
-  'endTime',
-]);
+] as const;
 
-const getImplicitAuthoredMode = (
-  props: LegacyRzpGlassProps,
-): RazorSenseOperationalMode | undefined => {
-  const preset = props.preset ?? 'default';
-  const mode = AUTHORED_PRESET_MODES[preset];
-  if (!mode) return undefined;
+const LEGACY_ONLY_PROP_KEYS = [
+  'inputMin',
+  'inputMax',
+  'modifyGamma',
+  'posterizeLevels',
+  'cycleRepetitions',
+  'phaseShift',
+  'cycleSpeed',
+  'wrapMode',
+  'reverse',
+  'blendWithOriginal',
+  'gradientMapBlend',
+  'gradientMapBlendDuration',
+  'numSegments',
+  'slitAngle',
+  'displacementX',
+  'displacementY',
+  'enableCenterElement',
+  'centerAnimDuration',
+  'ccBlackPoint',
+  'ccWhitePoint',
+  'ccMidtoneGamma',
+  'ccGamma',
+  'ccContrast',
+  'aspectRatio',
+  'zoom',
+  'panX',
+  'panY',
+  'edgeFeather',
+  'backgroundColor',
+  'enableDisplacement',
+  'enableColorama',
+  'enableBloom',
+  'enableLightSweep',
+  'lightIntensity',
+  'lightStartFrame',
+  'animateLightIndependently',
+  'animateCycleReps',
+  'cycleRepetitionsStart',
+  'cycleRepetitionsEnd',
+  'cycleRepetitionsStartFrame',
+  'cycleRepetitionsDuration',
+  'videoSrc',
+  'imageSrc',
+  'gradientMapSrc',
+  'gradientMap2Src',
+  'centerGradientMapSrc',
+  'gradientMapCanvas',
+] as const;
 
-  const hasLegacyCustomization = Object.entries(props).some(
-    ([key, value]) => value !== undefined && !SHARED_AUTHORED_PROP_KEYS.has(key),
-  );
+const LEGACY_PRESETS = new Set<RzpGlassPreset>(['rippleWave', 'circleSlideUp', 'legacy']);
 
-  return hasLegacyCustomization ? undefined : mode;
+type RuntimeRazorSenseProps = RzpGlassProps & Record<string, unknown>;
+
+const hasDefinedProp = (props: RuntimeRazorSenseProps, key: string): boolean =>
+  props[key] !== undefined;
+
+const hasCanonicalSemanticSignal = (props: RuntimeRazorSenseProps): boolean =>
+  CANONICAL_SEMANTIC_PROP_KEYS.some((key) => hasDefinedProp(props, key));
+
+const getDefinedLegacyOnlyKeys = (props: RuntimeRazorSenseProps): string[] => {
+  const keys = LEGACY_ONLY_PROP_KEYS.filter((key) => hasDefinedProp(props, key));
+  const preset = props.preset as RzpGlassPreset | undefined;
+  return preset && LEGACY_PRESETS.has(preset) ? ['preset', ...keys] : keys;
 };
 
 const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function LegacyRzpGlass(
@@ -286,21 +334,28 @@ const getSemanticRendererFamily = (mode: RazorSenseMode): SemanticRendererFamily
 const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
   function SemanticRazorSense(props, forwardedRef) {
     const {
-      mode,
+      mode = 'neutral',
       width = '100%',
       height = '100%',
       className,
       style,
       assetsPath,
       modeTransitionDuration,
-      paused = false,
+      isPaused,
+      paused,
       playbackRate = 1,
       startTime = 0,
       endTime,
-      interactive = true,
+      isInteractive,
+      interactive,
+      accessibilityLabel,
+      testID,
       onLoad,
       onError,
     } = props;
+    const { colorScheme } = useTheme();
+    const resolvedIsPaused = isPaused ?? paused ?? false;
+    const resolvedIsInteractive = isInteractive ?? interactive ?? true;
     const requestedFamily = getSemanticRendererFamily(mode);
     const requestedFamilyRef = useRef(requestedFamily);
     requestedFamilyRef.current = requestedFamily;
@@ -378,22 +433,29 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
       playbackRate,
       startTime,
       endTime,
-      interactive,
+      interactive: resolvedIsInteractive,
       width: '100%',
       height: '100%',
     };
+    const hasAccessibilityLabel = Boolean(accessibilityLabel);
 
     return (
-      <div
-        ref={forwardedRef}
+      <BaseBox
+        ref={forwardedRef as never}
+        width={widthStyle as never}
+        height={heightStyle as never}
+        position="relative"
+        overflow="hidden"
         className={className}
-        style={{
-          width: widthStyle,
-          height: heightStyle,
-          position: 'relative',
-          overflow: 'hidden',
-          ...style,
-        }}
+        style={style as never}
+        role={hasAccessibilityLabel ? 'img' : undefined}
+        aria-label={hasAccessibilityLabel ? accessibilityLabel : undefined}
+        aria-hidden={hasAccessibilityLabel ? undefined : true}
+        data-razor-sense-mode={mode}
+        data-razor-sense-color-scheme={colorScheme}
+        {...getStyledProps(props)}
+        {...metaAttribute({ name: MetaConstants.RazorSense, testID })}
+        {...makeAnalyticsAttribute(props)}
       >
         {mountedFamilies.authored ? (
           <div
@@ -409,7 +471,7 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             <RazorSenseAuthored
               {...sharedRendererProps}
               mode={lastAuthoredModeRef.current}
-              paused={paused || visibleFamily !== 'authored'}
+              paused={resolvedIsPaused || visibleFamily !== 'authored'}
               onLoad={() => markFamilyReady('authored')}
               onError={(error) => {
                 markFamilyReady('authored');
@@ -432,7 +494,7 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             <RazorSenseMood
               {...sharedRendererProps}
               mode={lastEmotionalModeRef.current}
-              paused={paused || visibleFamily !== 'emotional'}
+              paused={resolvedIsPaused || visibleFamily !== 'emotional'}
               onLoad={() => markFamilyReady('emotional')}
               onError={(error) => {
                 markFamilyReady('emotional');
@@ -441,48 +503,58 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             />
           </div>
         ) : null}
-      </div>
+      </BaseBox>
     );
   },
 );
 
 const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(props, forwardedRef) {
-  if (__DEV__ && props.mode && props.preset && !hasWarnedAboutModeAndPreset) {
-    hasWarnedAboutModeAndPreset = true;
+  const runtimeProps = props as RuntimeRazorSenseProps;
+  const hasSemanticSignal = hasCanonicalSemanticSignal(runtimeProps);
+  const legacyOnlyKeys = getDefinedLegacyOnlyKeys(runtimeProps);
+  const preset = runtimeProps.preset as RzpGlassPreset | undefined;
+  const semanticMode =
+    (runtimeProps.mode as RazorSenseMode | undefined) ??
+    (preset && AUTHORED_PRESET_MODES[preset]) ??
+    'neutral';
+
+  if (
+    __DEV__ &&
+    hasSemanticSignal &&
+    legacyOnlyKeys.length > 0 &&
+    !hasWarnedAboutSemanticLegacyCollision
+  ) {
+    hasWarnedAboutSemanticLegacyCollision = true;
     logger({
       type: 'warn',
       moduleName: 'RazorSense',
-      message: '`mode` and `preset` describe different rendering APIs. `mode` takes precedence.',
+      message: `Semantic RazorSense props take precedence. Ignored legacy props: ${legacyOnlyKeys.join(
+        ', ',
+      )}.`,
     });
   }
 
-  if (props.mode) {
-    return <SemanticRazorSense {...props} ref={forwardedRef} />;
-  }
-
-  const legacyProps = props;
-  const implicitAuthoredMode = getImplicitAuthoredMode(legacyProps);
-  if (implicitAuthoredMode) {
+  if (hasSemanticSignal) {
     return (
-      <RazorSenseAuthored
-        mode={implicitAuthoredMode}
-        width={legacyProps.width}
-        height={legacyProps.height}
-        className={legacyProps.className}
-        style={legacyProps.style}
-        assetsPath={legacyProps.assetsPath}
-        paused={legacyProps.paused}
-        playbackRate={legacyProps.playbackRate}
-        startTime={legacyProps.startTime}
-        endTime={legacyProps.endTime}
-        onLoad={legacyProps.onLoad}
-        onError={legacyProps.onError}
+      <SemanticRazorSense
+        {...(runtimeProps as SemanticRazorSenseProps)}
+        mode={semanticMode}
         ref={forwardedRef}
       />
     );
   }
 
-  return <LegacyRzpGlass {...legacyProps} ref={forwardedRef} />;
+  if (legacyOnlyKeys.length > 0) {
+    return <LegacyRzpGlass {...(runtimeProps as LegacyRzpGlassProps)} ref={forwardedRef} />;
+  }
+
+  return (
+    <SemanticRazorSense
+      {...(runtimeProps as SemanticRazorSenseProps)}
+      mode={semanticMode}
+      ref={forwardedRef}
+    />
+  );
 });
 
 export { RzpGlass };
