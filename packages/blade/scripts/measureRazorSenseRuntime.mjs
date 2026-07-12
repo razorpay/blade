@@ -1,13 +1,16 @@
 import { execFile as execFileCallback } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import prettier from 'prettier';
 
 const execFile = promisify(execFileCallback);
-const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const collectorPath = fileURLToPath(import.meta.url);
+const packageRoot = path.resolve(path.dirname(collectorPath), '..');
 const repositoryRoot = path.resolve(packageRoot, '../..');
 
 const chromeExecutable = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -117,12 +120,12 @@ function parseArguments(argv) {
   }
 
   const outputParts = path.parse(outputPath);
-  const rawOutputPath = path.join(outputParts.dir, `${outputParts.name}.${label}.json`);
+  const rawOutputPrefix = path.join(outputParts.dir, `${outputParts.name}.${label}`);
 
   return {
     storybookUrl: storybookUrl.toString().replace(/\/$/, ''),
     outputPath,
-    rawOutputPath,
+    rawOutputPrefix,
     label,
   };
 }
@@ -150,7 +153,7 @@ function installRazorSenseMetrics() {
     rafCancels: 0,
     rafCancelledWhilePending: 0,
     rafCallbacks: 0,
-    rafIntervalsMs: [],
+    rafCallbackCadenceMs: [],
     mediaPlayCalls: 0,
     mediaPauseCalls: 0,
     rvfcSchedules: 0,
@@ -217,7 +220,7 @@ function installRazorSenseMetrics() {
       const timestamp = callbackArgs[0];
       if (Number.isFinite(timestamp) && timestamp !== lastAnimationFrameTimestamp) {
         if (lastAnimationFrameTimestamp !== undefined) {
-          sample.rafIntervalsMs.push(timestamp - lastAnimationFrameTimestamp);
+          sample.rafCallbackCadenceMs.push(timestamp - lastAnimationFrameTimestamp);
         }
         lastAnimationFrameTimestamp = timestamp;
       }
@@ -366,7 +369,7 @@ function installRazorSenseMetrics() {
         cancelledWhilePending: sample.rafCancelledWhilePending,
         callbacks: sample.rafCallbacks,
         pending: pendingAnimationFrames.size,
-        intervalsMs: [...sample.rafIntervalsMs],
+        callbackCadenceMs: [...sample.rafCallbackCadenceMs],
       },
       media: {
         playCalls: sample.mediaPlayCalls,
@@ -449,6 +452,40 @@ function isRazorSenseMediaTransfer(request) {
   return request.url.includes('razorsense-') && (isVideoMimeType || isVideoFile);
 }
 
+function classifyMediaTransfers(transfers) {
+  const classification = {
+    completed: 0,
+    canceled: 0,
+    failed: 0,
+    other: 0,
+  };
+
+  transfers.forEach((transfer) => {
+    // These categories are disjoint. Canceled takes precedence over failed,
+    // failed over completed, and anything still in flight is other.
+    if (transfer.canceled) {
+      classification.canceled += 1;
+    } else if (transfer.failed) {
+      classification.failed += 1;
+    } else if (transfer.completed) {
+      classification.completed += 1;
+    } else {
+      classification.other += 1;
+    }
+  });
+
+  return classification;
+}
+
+function sumTransferClassification(classification) {
+  return (
+    classification.completed +
+    classification.canceled +
+    classification.failed +
+    classification.other
+  );
+}
+
 async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
   const client = await context.newCDPSession(page);
   const requests = new Map();
@@ -528,10 +565,11 @@ async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
   const razorSenseMediaTransfers = Object.values(razorSenseMediaTransfersByRequestId);
   const uniqueMediaAssetUrlCount = new Set(razorSenseMediaTransfers.map((request) => request.url))
     .size;
-  const mediaBytes = razorSenseMediaTransfers.reduce(
+  const observedMediaEncodedBytes = razorSenseMediaTransfers.reduce(
     (total, request) => total + (Number(request.encodedDataLength) || 0),
     0,
   );
+  const mediaTransferClassification = classifyMediaTransfers(razorSenseMediaTransfers);
 
   return {
     runIndex,
@@ -542,7 +580,8 @@ async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
     observationAfterReadyMs: networkObservationMs,
     uniqueMediaAssetUrlCount,
     mediaTransferCount: razorSenseMediaTransfers.length,
-    mediaEncodedDataLength: mediaBytes,
+    observedMediaEncodedBytes,
+    mediaTransferClassification,
     razorSenseMediaTransfersByRequestId,
     ...(error ? { error } : {}),
   };
@@ -558,30 +597,41 @@ function assertSuccessfulNetworkRunsConsistent(result) {
       .forEach((run) => {
         checkedRuns += 1;
         const transfers = Object.values(run.razorSenseMediaTransfersByRequestId ?? {});
-        const mediaEncodedDataLength = transfers.reduce(
+        const observedMediaEncodedBytes = transfers.reduce(
           (total, transfer) => total + (Number(transfer.encodedDataLength) || 0),
           0,
         );
         const mediaTransferCount = transfers.length;
         const uniqueMediaAssetUrlCount = new Set(transfers.map((transfer) => transfer.url)).size;
+        const mediaTransferClassification = classifyMediaTransfers(transfers);
+        const classifiedMediaTransferCount = sumTransferClassification(mediaTransferClassification);
+        const storedClassification = run.mediaTransferClassification ?? {};
+        const classificationMatches = ['completed', 'canceled', 'failed', 'other'].every(
+          (key) => storedClassification[key] === mediaTransferClassification[key],
+        );
 
         if (
-          run.mediaEncodedDataLength !== mediaEncodedDataLength ||
+          run.observedMediaEncodedBytes !== observedMediaEncodedBytes ||
           run.mediaTransferCount !== mediaTransferCount ||
-          run.uniqueMediaAssetUrlCount !== uniqueMediaAssetUrlCount
+          run.uniqueMediaAssetUrlCount !== uniqueMediaAssetUrlCount ||
+          !classificationMatches ||
+          classifiedMediaTransferCount !== mediaTransferCount
         ) {
           inconsistencies.push({
             scenario: scenario.slug,
             runIndex: run.runIndex,
             stored: {
-              mediaEncodedDataLength: run.mediaEncodedDataLength,
+              observedMediaEncodedBytes: run.observedMediaEncodedBytes,
               mediaTransferCount: run.mediaTransferCount,
               uniqueMediaAssetUrlCount: run.uniqueMediaAssetUrlCount,
+              mediaTransferClassification: run.mediaTransferClassification,
             },
             derived: {
-              mediaEncodedDataLength,
+              observedMediaEncodedBytes,
               mediaTransferCount,
               uniqueMediaAssetUrlCount,
+              mediaTransferClassification,
+              classifiedMediaTransferCount,
             },
           });
         }
@@ -753,15 +803,27 @@ function summarizeScenario(scenarioResult) {
         networkRuns.map((run) => run.uniqueMediaAssetUrlCount),
       ),
       medianMediaTransferCount: medianMetric(networkRuns.map((run) => run.mediaTransferCount)),
-      medianMediaEncodedDataLength: medianMetric(
-        networkRuns.map((run) => run.mediaEncodedDataLength),
+      medianObservedMediaEncodedBytes: medianMetric(
+        networkRuns.map((run) => run.observedMediaEncodedBytes),
         0,
       ),
+      medianCompletedMediaTransferCount: medianMetric(
+        networkRuns.map((run) => run.mediaTransferClassification.completed),
+      ),
+      medianCanceledMediaTransferCount: medianMetric(
+        networkRuns.map((run) => run.mediaTransferClassification.canceled),
+      ),
+      medianFailedMediaTransferCount: medianMetric(
+        networkRuns.map((run) => run.mediaTransferClassification.failed),
+      ),
+      medianOtherMediaTransferCount: medianMetric(
+        networkRuns.map((run) => run.mediaTransferClassification.other),
+      ),
     },
-    rafIntervalMs: {
-      p50: medianRunPercentile(frameRuns, (metrics) => metrics.raf.intervalsMs, 0.5),
-      p95: medianRunPercentile(frameRuns, (metrics) => metrics.raf.intervalsMs, 0.95),
-      p99: medianRunPercentile(frameRuns, (metrics) => metrics.raf.intervalsMs, 0.99),
+    rafCallbackCadenceMs: {
+      p50: medianRunPercentile(frameRuns, (metrics) => metrics.raf.callbackCadenceMs, 0.5),
+      p95: medianRunPercentile(frameRuns, (metrics) => metrics.raf.callbackCadenceMs, 0.95),
+      p99: medianRunPercentile(frameRuns, (metrics) => metrics.raf.callbackCadenceMs, 0.99),
     },
     longTasks: {
       medianCount: medianMetric(frameRuns.map((run) => run.metrics.longTasks.entries.length)),
@@ -839,11 +901,13 @@ async function getCommandOutput(command, args, cwd = repositoryRoot) {
 }
 
 async function collectEnvironmentMetadata(args) {
-  const [gitCommit, gitStatus, macOSProductVersion] = await Promise.all([
+  const [gitCommit, gitStatus, macOSProductVersion, collectorContents] = await Promise.all([
     getCommandOutput('git', ['rev-parse', 'HEAD']),
     getCommandOutput('git', ['status', '--porcelain=v1']),
     getCommandOutput('sw_vers', ['-productVersion'], packageRoot),
+    fs.readFile(collectorPath),
   ]);
+  const collectorSha256 = createHash('sha256').update(collectorContents).digest('hex');
 
   return {
     capturedAt: new Date().toISOString(),
@@ -851,6 +915,10 @@ async function collectEnvironmentMetadata(args) {
       commit: gitCommit,
       dirty: gitStatus.length > 0,
       status: gitStatus.length > 0 ? gitStatus.split('\n') : [],
+    },
+    collector: {
+      file: 'scripts/measureRazorSenseRuntime.mjs',
+      sha256: collectorSha256,
     },
     chrome: {
       executable: chromeExecutable,
@@ -917,7 +985,7 @@ function buildMarkdownBlock(result, label, rawOutputPath) {
   const endMarker = `<!-- razorsense-runtime:${label}:end -->`;
   const tableRows = result.scenarios.map((scenario) => {
     const summary = scenario.summary;
-    const raf = summary.rafIntervalMs;
+    const cadence = summary.rafCallbackCadenceMs;
     const longTasks = summary.longTasks;
     const rvfc = summary.requestVideoFrameCallback;
     const video = summary.videoPlaybackQuality;
@@ -925,9 +993,13 @@ function buildMarkdownBlock(result, label, rawOutputPath) {
     return `| ${escapeMarkdown(scenario.title)} | ${summary.status} | ${formatInteger(
       summary.network.medianUniqueMediaAssetUrlCount,
     )} / ${formatInteger(summary.network.medianMediaTransferCount)} / ${formatBytes(
-      summary.network.medianMediaEncodedDataLength,
-    )} | ${formatNumber(raf.p50)} / ${formatNumber(raf.p95)} / ${formatNumber(
-      raf.p99,
+      summary.network.medianObservedMediaEncodedBytes,
+    )} | ${formatInteger(summary.network.medianCompletedMediaTransferCount)} / ${formatInteger(
+      summary.network.medianCanceledMediaTransferCount,
+    )} / ${formatInteger(summary.network.medianFailedMediaTransferCount)} / ${formatInteger(
+      summary.network.medianOtherMediaTransferCount,
+    )} | ${formatNumber(cadence.p50)} / ${formatNumber(cadence.p95)} / ${formatNumber(
+      cadence.p99,
     )} | ${formatInteger(longTasks.medianCount)} / ${formatNumber(
       longTasks.medianTotalDurationMs,
     )} ms | ${formatInteger(summary.medianPlayingMediaCount)} | ${formatInteger(
@@ -962,17 +1034,23 @@ function buildMarkdownBlock(result, label, rawOutputPath) {
       result.metadata.macOSProductVersion
     }. Raw runs: [\`${rawFileName}\`](./${rawFileName}).`,
     '',
+    `Collector SHA-256: \`${result.metadata.collector.sha256}\`.`,
+    '',
     `Viewport: ${result.metadata.viewport.width}x${result.metadata.viewport.height} at DPR ${result.metadata.deviceScaleFactor}. Each scenario uses three cache-disabled cold network runs, then five cache-enabled frame runs with a 2 s warm-up and 10 s measurement window.`,
     '',
-    '| Scenario | Status | Media assets / transfers / bytes | RAF p50 / p95 / p99 (ms) | Long tasks count / total | Playing media | WebGL contexts | rVFC callbacks / p95 late | Video total / dropped |',
-    '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
+    '| Scenario | Collector status | Media assets / transfers / observed bytes | Transfer states completed / canceled / failed / other | RAF callback cadence p50 / p95 / p99 (ms) | Long tasks count / total | Playing media | WebGL contexts | rVFC callbacks / p95 late | Video total / dropped |',
+    '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
     ...tableRows,
     ...(failureLines.length > 0 ? ['', 'Failures:', '', ...failureLines] : []),
     '',
     'Limitations:',
     '',
     '- This is a single-machine, single-Chrome-version baseline. Use it for before/after comparison under the same protocol, not as a cross-device performance target.',
-    '- Network assets are unique URLs and transfers are CDP request IDs. Both include only `razorsense-` video MIME responses or `.mp4`/`.webm` URLs observed during the fixed two-second post-ready window; bytes are encoded transfer lengths.',
+    '- A passed collector scenario means navigation, readiness, and measurement completed; it does not mean every media transfer completed.',
+    '- Network assets are unique URLs and transfers are CDP request IDs. Both include only `razorsense-` video MIME responses or `.mp4`/`.webm` URLs observed during the fixed two-second post-ready window.',
+    '- Observed bytes sum the immutable CDP `encodedDataLength` snapshot and include partial canceled, failed, or still-in-flight range transfers.',
+    '- Transfer states are disjoint with precedence canceled, failed, completed, then other. The failed count therefore excludes canceled transfers, and other means still in flight or otherwise unclassified at snapshot time.',
+    '- RAF callback cadence measures time between observed wrapped RAF callback timestamps. It includes intentional idle gaps and is not browser frame-render time.',
     '- WebGL context count is a resource gauge and includes unique contexts acquired before the ten-second frame window; raw runs also report contexts acquired during the window.',
     '- Video frame counters are ten-second deltas from `getVideoPlaybackQuality` (with WebKit counters as a fallback). Long-task and rVFC fields depend on browser support.',
     '- The collector waits only for `data-scenario-ready="true"`; it intentionally never blocks on `data-scenario-fully-ready` so optimized offscreen instances may remain deferred.',
@@ -996,8 +1074,45 @@ async function atomicWrite(targetPath, contents) {
   }
 }
 
+async function atomicWriteImmutable(targetPath, contents) {
+  await fs.mkdir(path.dirname(targetPath), { recursive: true });
+  const temporaryPath = path.join(
+    path.dirname(targetPath),
+    `.${path.basename(targetPath)}.${process.pid}.${Date.now()}.tmp`,
+  );
+
+  try {
+    await fs.writeFile(temporaryPath, contents, 'utf8');
+    try {
+      // A hard link publishes the fully written inode atomically and never
+      // overwrites an existing content-addressed artifact.
+      await fs.link(temporaryPath, targetPath);
+    } catch (error) {
+      if (error.code !== 'EEXIST') throw error;
+      const existingContents = await fs.readFile(targetPath, 'utf8');
+      if (existingContents !== contents) {
+        throw new Error(`Content-address collision at ${targetPath}`);
+      }
+    }
+  } finally {
+    await fs.rm(temporaryPath, { force: true }).catch(() => undefined);
+  }
+}
+
 async function writeResults({ args, result }) {
-  const markdownBlock = buildMarkdownBlock(result, args.label, args.rawOutputPath);
+  const prettierConfig = (await prettier.resolveConfig(args.outputPath)) ?? {};
+  const rawContents = prettier.format(JSON.stringify(result), {
+    ...prettierConfig,
+    parser: 'json',
+  });
+  const rawSha256 = createHash('sha256').update(rawContents).digest('hex');
+  const rawOutputPath = `${args.rawOutputPrefix}.${rawSha256.slice(0, 12)}.json`;
+  const markdownBlock = prettier
+    .format(buildMarkdownBlock(result, args.label, rawOutputPath), {
+      ...prettierConfig,
+      parser: 'markdown',
+    })
+    .trimEnd();
   const startMarker = `<!-- razorsense-runtime:${args.label}:start -->`;
   const endMarker = `<!-- razorsense-runtime:${args.label}:end -->`;
   let existingMarkdown;
@@ -1022,8 +1137,11 @@ async function writeResults({ args, result }) {
           endIndex + endMarker.length,
         )}`;
 
-  await atomicWrite(args.rawOutputPath, `${JSON.stringify(result, null, 2)}\n`);
+  // Publish the immutable raw artifact first. Markdown is the mutable pointer
+  // and updates last, so an interrupted write leaves the prior pair valid.
+  await atomicWriteImmutable(rawOutputPath, rawContents);
   await atomicWrite(args.outputPath, nextMarkdown);
+  return { rawOutputPath, rawSha256 };
 }
 
 async function run(args) {
@@ -1150,7 +1268,10 @@ async function run(args) {
     result.status = 'failed';
   }
 
-  await writeResults({ args, result });
+  const outputs = await writeResults({ args, result });
+  console.log(
+    `Raw artifact: ${path.basename(outputs.rawOutputPath)} (sha256 ${outputs.rawSha256})`,
+  );
   return result;
 }
 
