@@ -39,6 +39,7 @@ type ScenarioRootProps = {
   pageVisibility?: DocumentVisibilityState;
   mountedCount?: number;
   isReady: boolean;
+  isFullyReady?: boolean;
 };
 
 const ScenarioRoot = ({
@@ -51,10 +52,12 @@ const ScenarioRoot = ({
   pageVisibility,
   mountedCount,
   isReady,
+  isFullyReady = isReady,
 }: ScenarioRootProps): ReactElement => (
   <div
     data-razor-sense-scenario={scenario}
     data-scenario-ready={isReady ? 'true' : 'false'}
+    data-scenario-fully-ready={isFullyReady ? 'true' : 'false'}
     data-current-mode={currentMode}
     data-color-scheme={colorScheme}
     data-page-visibility={pageVisibility}
@@ -212,14 +215,16 @@ export const FourVisibleMixedInstances: StoryFn<typeof RazorSenseComponent> = ()
 };
 
 export const EightMountedInstances: StoryFn<typeof RazorSenseComponent> = () => {
-  const { isReady, markReady } = useScenarioReadiness(ABOVE_FOLD_MODES.length);
+  const visibleReadiness = useScenarioReadiness(ABOVE_FOLD_MODES.length);
+  const fullReadiness = useScenarioReadiness(ABOVE_FOLD_MODES.length + BELOW_FOLD_MODES.length);
 
   return (
     <ScenarioRoot
       scenario="eight-mounted-six-below-fold"
       mountedCount={8}
       height="2120px"
-      isReady={isReady}
+      isReady={visibleReadiness.isReady}
+      isFullyReady={fullReadiness.isReady}
     >
       <Box padding="spacing.4">
         <Box display="grid" gridTemplateColumns="repeat(2, 560px)" gap="spacing.4">
@@ -230,7 +235,10 @@ export const EightMountedInstances: StoryFn<typeof RazorSenseComponent> = () => 
               width="560px"
               height="280px"
               interactive={false}
-              onLoad={() => markReady(`above-${mode}`)}
+              onLoad={() => {
+                visibleReadiness.markReady(mode);
+                fullReadiness.markReady(`above-${mode}`);
+              }}
             />
           ))}
         </Box>
@@ -248,7 +256,7 @@ export const EightMountedInstances: StoryFn<typeof RazorSenseComponent> = () => 
               width="560px"
               height="240px"
               interactive={false}
-              onLoad={() => markReady(`below-${mode}`)}
+              onLoad={() => fullReadiness.markReady(`below-${mode}`)}
             />
           ))}
         </Box>
