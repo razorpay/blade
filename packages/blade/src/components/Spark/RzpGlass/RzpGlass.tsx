@@ -12,8 +12,14 @@ import { RazorSenseMood } from './RazorSenseMood';
 import type { RazorSenseEmotionalMode, RazorSenseMode, RazorSenseOperationalMode } from './modes';
 import { isRazorSenseEmotionalMode } from './modes';
 import type { RzpGlassPreset } from './presets';
-import type { LegacyRzpGlassProps, RzpGlassProps, SemanticRazorSenseProps } from './types';
+import type {
+  LegacyRzpGlassProps,
+  RzpGlassConfig,
+  RzpGlassProps,
+  SemanticRazorSenseProps,
+} from './types';
 import { DEFAULT_CDN_PATH, getDefaultAssets, getPresetAssets, resolveConfig } from './utils';
+import { useRazorSenseLifecycle } from './useRazorSenseLifecycle';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -153,6 +159,14 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
   const [error, setError] = useState<Error | null>(null);
   const divRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<RzpGlassMount | null>(null);
+  const resolvedConfig: Partial<RzpGlassConfig> = resolveConfig(props, assetsPath);
+  const resolvedIsPaused = resolvedConfig.paused ?? false;
+  const lifecycle = useRazorSenseLifecycle(divRef, {
+    family: 'legacy',
+    isPaused: resolvedIsPaused,
+    isInteractive: false,
+  });
+  const effectivePaused = resolvedIsPaused || lifecycle.state !== 'active' || !lifecycle.isAdmitted;
 
   // Initialize on mount
   useEffect(() => {
@@ -160,7 +174,10 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
       if (!divRef.current || mountRef.current) return;
 
       try {
-        const config = resolveConfig(props, assetsPath);
+        const config = {
+          ...resolveConfig(props, assetsPath),
+          paused: effectivePaused,
+        };
 
         mountRef.current = new RzpGlassMount(
           divRef.current,
@@ -221,7 +238,10 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
   // Update uniforms when config props change
   useEffect(() => {
     if (isInitialized && mountRef.current) {
-      const config = resolveConfig(props, assetsPath);
+      const config = {
+        ...resolveConfig(props, assetsPath),
+        paused: effectivePaused,
+      };
       mountRef.current.setUniforms(config);
     }
   }, [
@@ -267,7 +287,7 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
     configProps.lightIntensity,
     configProps.lightStartFrame,
     // Playback
-    configProps.paused,
+    effectivePaused,
     configProps.startTime,
     configProps.endTime,
     configProps.animateLightIndependently,
@@ -368,6 +388,15 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
     const resolvedIsPaused = isPaused ?? paused ?? false;
     const resolvedIsInteractive = isInteractive ?? interactive ?? true;
     const requestedFamily = getSemanticRendererFamily(mode);
+    const hostRef = useRef<HTMLDivElement>(null);
+    const lifecycle = useRazorSenseLifecycle(hostRef, {
+      family: requestedFamily,
+      isPaused: resolvedIsPaused,
+      isInteractive: resolvedIsInteractive,
+    });
+    const effectivePaused =
+      resolvedIsPaused || lifecycle.state !== 'active' || !lifecycle.isAdmitted;
+    const mergedRef = useMergeRefs(forwardedRef, hostRef);
     const requestedFamilyRef = useRef(requestedFamily);
     requestedFamilyRef.current = requestedFamily;
     const lastAuthoredModeRef = useRef<RazorSenseOperationalMode>('neutral');
@@ -457,7 +486,7 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
 
     return (
       <BaseBox
-        ref={forwardedRef as never}
+        ref={mergedRef as never}
         width={widthStyle as never}
         height={heightStyle as never}
         position="relative"
@@ -487,7 +516,7 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             <RazorSenseAuthored
               {...sharedRendererProps}
               mode={lastAuthoredModeRef.current}
-              paused={resolvedIsPaused || visibleFamily !== 'authored'}
+              paused={effectivePaused || visibleFamily !== 'authored'}
               onLoad={() => handleFamilyLoad('authored')}
               onError={(error) => {
                 markFamilySettled('authored');
@@ -510,7 +539,7 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             <RazorSenseMood
               {...sharedRendererProps}
               mode={lastEmotionalModeRef.current}
-              paused={resolvedIsPaused || visibleFamily !== 'emotional'}
+              paused={effectivePaused || visibleFamily !== 'emotional'}
               onLoad={() => handleFamilyLoad('emotional')}
               onError={(error) => {
                 markFamilySettled('emotional');

@@ -1,0 +1,457 @@
+type RazorSenseLifecycleState = 'dormant' | 'warm' | 'active' | 'suspended' | 'cold';
+
+type RazorSenseRendererFamily = 'authored' | 'emotional' | 'legacy';
+
+type RazorSenseRuntimeSnapshot = {
+  state: RazorSenseLifecycleState;
+  isAdmitted: boolean;
+  isPageVisible: boolean;
+  intersectionRatio: number;
+};
+
+type RazorSenseRuntimeOptions = {
+  family: RazorSenseRendererFamily;
+  isPaused: boolean;
+  isInteractive: boolean;
+};
+
+type RazorSenseRuntimeRegistration = {
+  id: number;
+  update(options: RazorSenseRuntimeOptions): void;
+  unregister(): void;
+};
+
+type RazorSenseRuntimeListener = (snapshot: RazorSenseRuntimeSnapshot) => void;
+
+type RazorSenseRuntimeEntry = {
+  id: number;
+  element: HTMLElement;
+  options: RazorSenseRuntimeOptions;
+  listener: RazorSenseRuntimeListener;
+  state: RazorSenseLifecycleState;
+  isAdmitted: boolean;
+  isWithinWarmMargin: boolean;
+  isPointerActive: boolean;
+  hasBeenActive: boolean;
+  hasWarnedAboutAdmission: boolean;
+  intersectionRatio: number;
+  visibleArea: number;
+  coldTimerId: ReturnType<typeof setTimeout> | undefined;
+  lastSnapshot: RazorSenseRuntimeSnapshot | undefined;
+  isRegistered: boolean;
+  isListeningForPointer: boolean;
+  handlePointerEnter: () => void;
+  handlePointerLeave: () => void;
+};
+
+type ViewportMetrics = {
+  intersectionRatio: number;
+  visibleArea: number;
+};
+
+const COLD_TIMEOUT_MS = 10_000;
+const MAX_ADMITTED_INSTANCES = 4;
+const MAX_ADMITTED_WEBGL_INSTANCES = 2;
+const WARM_MARGIN_PX = 240;
+const INTERSECTION_THRESHOLDS = [0, 0.01, 0.25, 0.5, 1];
+const DOCUMENT_POSITION_DISCONNECTED = 1;
+const DOCUMENT_POSITION_PRECEDING = 2;
+const DOCUMENT_POSITION_FOLLOWING = 4;
+
+let nextRegistrationId = 1;
+
+const runtimesByDocument = new WeakMap<Document, RazorSenseRuntime>();
+
+const isWebGLFamily = (family: RazorSenseRendererFamily): boolean =>
+  family === 'emotional' || family === 'legacy';
+
+const snapshotsAreEqual = (
+  first: RazorSenseRuntimeSnapshot,
+  second: RazorSenseRuntimeSnapshot,
+): boolean =>
+  first.state === second.state &&
+  first.isAdmitted === second.isAdmitted &&
+  first.isPageVisible === second.isPageVisible &&
+  first.intersectionRatio === second.intersectionRatio;
+
+class RazorSenseRuntime {
+  private readonly document: Document;
+
+  private readonly entriesByElement = new Map<HTMLElement, RazorSenseRuntimeEntry>();
+
+  private readonly entriesById = new Map<number, RazorSenseRuntimeEntry>();
+
+  private readonly observer: IntersectionObserver | undefined;
+
+  private isPageVisible: boolean;
+
+  public constructor(document: Document) {
+    this.document = document;
+    this.isPageVisible = this.getIsPageVisible();
+
+    const IntersectionObserverConstructor = document.defaultView?.IntersectionObserver;
+    this.observer = IntersectionObserverConstructor
+      ? new IntersectionObserverConstructor(this.handleIntersections, {
+          rootMargin: `${WARM_MARGIN_PX}px 0px`,
+          threshold: INTERSECTION_THRESHOLDS,
+        })
+      : undefined;
+
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
+  }
+
+  public register(
+    element: HTMLElement,
+    options: RazorSenseRuntimeOptions,
+    listener: RazorSenseRuntimeListener,
+  ): RazorSenseRuntimeRegistration {
+    const id = nextRegistrationId++;
+    const rect = element.getBoundingClientRect();
+    const metrics = this.getElementViewportMetrics(element, rect);
+    const isWithinWarmMargin = metrics.visibleArea > 0 || this.isRectWithinWarmMargin(rect);
+    const isActiveCandidate = metrics.visibleArea > 0 && this.isPageVisible && !options.isPaused;
+
+    const entry: RazorSenseRuntimeEntry = {
+      id,
+      element,
+      options,
+      listener,
+      state: isActiveCandidate ? 'active' : isWithinWarmMargin ? 'warm' : 'dormant',
+      isAdmitted: false,
+      isWithinWarmMargin,
+      isPointerActive: false,
+      hasBeenActive: isActiveCandidate,
+      hasWarnedAboutAdmission: false,
+      intersectionRatio: metrics.intersectionRatio,
+      visibleArea: metrics.visibleArea,
+      coldTimerId: undefined,
+      lastSnapshot: undefined,
+      isRegistered: true,
+      isListeningForPointer: false,
+      handlePointerEnter: () => {
+        if (!entry.isRegistered || entry.isPointerActive) return;
+        entry.isPointerActive = true;
+        this.recomputeAdmissionAndNotify();
+      },
+      handlePointerLeave: () => {
+        if (!entry.isRegistered || !entry.isPointerActive) return;
+        entry.isPointerActive = false;
+        this.recomputeAdmissionAndNotify();
+      },
+    };
+
+    this.entriesById.set(id, entry);
+    this.entriesByElement.set(element, entry);
+    this.updatePointerListeners(entry);
+    this.observer?.observe(element);
+    this.recomputeAdmissionAndNotify();
+
+    return {
+      id,
+      update: (nextOptions) => this.updateEntry(id, nextOptions),
+      unregister: () => this.unregisterEntry(id),
+    };
+  }
+
+  private readonly handleIntersections: IntersectionObserverCallback = (observerEntries) => {
+    observerEntries.forEach((observerEntry) => {
+      const entry = this.entriesByElement.get(observerEntry.target as HTMLElement);
+      if (!entry) return;
+
+      const wasWithinWarmMargin = entry.isWithinWarmMargin;
+      const metrics = this.getViewportMetrics(observerEntry.boundingClientRect);
+      entry.visibleArea = metrics.visibleArea;
+      entry.intersectionRatio = metrics.intersectionRatio;
+      entry.isWithinWarmMargin = observerEntry.isIntersecting || metrics.visibleArea > 0;
+      this.recomputeLifecycle(entry, {
+        canResumeWarm: !wasWithinWarmMargin && entry.isWithinWarmMargin,
+      });
+    });
+
+    this.recomputeAdmissionAndNotify();
+  };
+
+  private readonly handleVisibilityChange = (): void => {
+    const wasPageVisible = this.isPageVisible;
+    this.isPageVisible = this.getIsPageVisible();
+
+    this.entriesById.forEach((entry) => {
+      const rect = entry.element.getBoundingClientRect();
+      const metrics = this.getElementViewportMetrics(entry.element, rect);
+      entry.visibleArea = metrics.visibleArea;
+      entry.intersectionRatio = metrics.intersectionRatio;
+      entry.isWithinWarmMargin = metrics.visibleArea > 0 || this.isRectWithinWarmMargin(rect);
+      this.recomputeLifecycle(entry, {
+        canResumeWarm: !wasPageVisible && this.isPageVisible,
+      });
+    });
+
+    this.recomputeAdmissionAndNotify();
+  };
+
+  private updateEntry(id: number, nextOptions: RazorSenseRuntimeOptions): void {
+    const entry = this.entriesById.get(id);
+    if (!entry) return;
+
+    const previousOptions = entry.options;
+    if (
+      previousOptions.family === nextOptions.family &&
+      previousOptions.isPaused === nextOptions.isPaused &&
+      previousOptions.isInteractive === nextOptions.isInteractive
+    ) {
+      return;
+    }
+
+    entry.options = nextOptions;
+    if (previousOptions.isInteractive !== nextOptions.isInteractive) {
+      this.updatePointerListeners(entry);
+    }
+
+    this.recomputeLifecycle(entry, {
+      canResumeWarm: previousOptions.isPaused && !nextOptions.isPaused,
+    });
+    this.recomputeAdmissionAndNotify();
+  }
+
+  private unregisterEntry(id: number): void {
+    const entry = this.entriesById.get(id);
+    if (!entry) return;
+
+    entry.isRegistered = false;
+    this.observer?.unobserve(entry.element);
+    this.removePointerListeners(entry);
+    this.clearColdTimer(entry);
+    this.entriesById.delete(id);
+    this.entriesByElement.delete(entry.element);
+
+    if (this.entriesById.size > 0) {
+      this.recomputeAdmissionAndNotify();
+      return;
+    }
+
+    this.observer?.disconnect();
+    this.document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    runtimesByDocument.delete(this.document);
+  }
+
+  private recomputeLifecycle(
+    entry: RazorSenseRuntimeEntry,
+    { canResumeWarm }: { canResumeWarm: boolean },
+  ): void {
+    const isActiveCandidate =
+      entry.visibleArea > 0 && this.isPageVisible && !entry.options.isPaused;
+
+    if (isActiveCandidate) {
+      entry.hasBeenActive = true;
+      entry.state = 'active';
+      this.clearColdTimer(entry);
+      return;
+    }
+
+    if (!entry.hasBeenActive) {
+      entry.state = entry.isWithinWarmMargin ? 'warm' : 'dormant';
+      return;
+    }
+
+    if (
+      canResumeWarm &&
+      entry.isWithinWarmMargin &&
+      this.isPageVisible &&
+      !entry.options.isPaused
+    ) {
+      entry.state = 'warm';
+      this.clearColdTimer(entry);
+      return;
+    }
+
+    if (
+      entry.state === 'active' ||
+      (entry.state === 'warm' &&
+        (!entry.isWithinWarmMargin || !this.isPageVisible || entry.options.isPaused))
+    ) {
+      entry.state = 'suspended';
+      this.startColdTimer(entry);
+      return;
+    }
+
+    if (entry.state === 'suspended') {
+      this.startColdTimer(entry);
+    }
+  }
+
+  private recomputeAdmissionAndNotify(): void {
+    const activeCandidates = Array.from(this.entriesById.values())
+      .filter((entry) => entry.state === 'active')
+      .sort(this.compareAdmissionPriority);
+    const admittedIds = new Set<number>();
+    let admittedWebGLCount = 0;
+
+    activeCandidates.forEach((entry) => {
+      if (admittedIds.size >= MAX_ADMITTED_INSTANCES) return;
+      const isWebGL = isWebGLFamily(entry.options.family);
+      if (isWebGL && admittedWebGLCount >= MAX_ADMITTED_WEBGL_INSTANCES) return;
+
+      admittedIds.add(entry.id);
+      if (isWebGL) admittedWebGLCount += 1;
+    });
+
+    this.entriesById.forEach((entry) => {
+      entry.isAdmitted = admittedIds.has(entry.id);
+      if (
+        __DEV__ &&
+        entry.state === 'active' &&
+        !entry.isAdmitted &&
+        !entry.hasWarnedAboutAdmission
+      ) {
+        entry.hasWarnedAboutAdmission = true;
+        console.warn(
+          `[Blade: RazorSense]: Active instance ${entry.id} is waiting for shared runtime admission.`,
+        );
+      }
+
+      const snapshot: RazorSenseRuntimeSnapshot = {
+        state: entry.state,
+        isAdmitted: entry.isAdmitted,
+        isPageVisible: this.isPageVisible,
+        intersectionRatio: entry.intersectionRatio,
+      };
+      if (entry.lastSnapshot && snapshotsAreEqual(entry.lastSnapshot, snapshot)) return;
+      entry.lastSnapshot = snapshot;
+      entry.listener(snapshot);
+    });
+  }
+
+  private readonly compareAdmissionPriority = (
+    first: RazorSenseRuntimeEntry,
+    second: RazorSenseRuntimeEntry,
+  ): number => {
+    if (first.isPointerActive !== second.isPointerActive) {
+      return first.isPointerActive ? -1 : 1;
+    }
+    if (first.visibleArea !== second.visibleArea) {
+      return second.visibleArea - first.visibleArea;
+    }
+
+    const position = first.element.compareDocumentPosition(second.element);
+    // compareDocumentPosition returns a bitmask by design.
+    // eslint-disable-next-line no-bitwise
+    if (position & DOCUMENT_POSITION_DISCONNECTED) return first.id - second.id;
+    // eslint-disable-next-line no-bitwise
+    if (position & DOCUMENT_POSITION_FOLLOWING) return -1;
+    // eslint-disable-next-line no-bitwise
+    if (position & DOCUMENT_POSITION_PRECEDING) return 1;
+    return first.id - second.id;
+  };
+
+  private updatePointerListeners(entry: RazorSenseRuntimeEntry): void {
+    if (entry.options.isInteractive) {
+      if (entry.isListeningForPointer) return;
+      entry.element.addEventListener('pointerenter', entry.handlePointerEnter);
+      entry.element.addEventListener('pointerleave', entry.handlePointerLeave);
+      entry.isListeningForPointer = true;
+      return;
+    }
+
+    this.removePointerListeners(entry);
+  }
+
+  private removePointerListeners(entry: RazorSenseRuntimeEntry): void {
+    if (!entry.isListeningForPointer) return;
+    entry.element.removeEventListener('pointerenter', entry.handlePointerEnter);
+    entry.element.removeEventListener('pointerleave', entry.handlePointerLeave);
+    entry.isListeningForPointer = false;
+    entry.isPointerActive = false;
+  }
+
+  private startColdTimer(entry: RazorSenseRuntimeEntry): void {
+    if (entry.coldTimerId !== undefined) return;
+    entry.coldTimerId = setTimeout(() => {
+      entry.coldTimerId = undefined;
+      if (!entry.isRegistered || entry.state !== 'suspended') return;
+      entry.state = 'cold';
+      this.recomputeAdmissionAndNotify();
+    }, COLD_TIMEOUT_MS);
+  }
+
+  private clearColdTimer(entry: RazorSenseRuntimeEntry): void {
+    if (entry.coldTimerId === undefined) return;
+    clearTimeout(entry.coldTimerId);
+    entry.coldTimerId = undefined;
+  }
+
+  private getViewportMetrics(rect: DOMRectReadOnly): ViewportMetrics {
+    const viewportWidth = this.document.documentElement.clientWidth;
+    const viewportHeight = this.document.documentElement.clientHeight;
+    const visibleWidth = Math.max(0, Math.min(rect.right, viewportWidth) - Math.max(rect.left, 0));
+    const visibleHeight = Math.max(
+      0,
+      Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0),
+    );
+    const visibleArea = visibleWidth * visibleHeight;
+    const elementArea = Math.max(0, rect.width) * Math.max(0, rect.height);
+
+    return {
+      visibleArea,
+      intersectionRatio: elementArea > 0 ? Math.min(1, visibleArea / elementArea) : 0,
+    };
+  }
+
+  private getElementViewportMetrics(element: HTMLElement, rect: DOMRectReadOnly): ViewportMetrics {
+    const metrics = this.getViewportMetrics(rect);
+    if (
+      this.observer ||
+      this.document.documentElement.clientWidth > 0 ||
+      this.document.documentElement.clientHeight > 0 ||
+      !element.isConnected
+    ) {
+      return metrics;
+    }
+
+    // Layout-less environments cannot distinguish a connected visible host from
+    // a zero-sized rect. Keep the existing eager behavior when no observer or
+    // measurable viewport is available.
+    return { visibleArea: 1, intersectionRatio: 1 };
+  }
+
+  private isRectWithinWarmMargin(rect: DOMRectReadOnly): boolean {
+    const viewportWidth = this.document.documentElement.clientWidth;
+    const viewportHeight = this.document.documentElement.clientHeight;
+    return (
+      rect.right > 0 &&
+      rect.left < viewportWidth &&
+      rect.bottom > -WARM_MARGIN_PX &&
+      rect.top < viewportHeight + WARM_MARGIN_PX
+    );
+  }
+
+  private getIsPageVisible(): boolean {
+    return (
+      !this.document.hidden &&
+      (this.document.visibilityState === undefined || this.document.visibilityState === 'visible')
+    );
+  }
+}
+
+const registerRazorSenseRuntime = (
+  element: HTMLElement,
+  options: RazorSenseRuntimeOptions,
+  listener: RazorSenseRuntimeListener,
+): RazorSenseRuntimeRegistration => {
+  const document = element.ownerDocument;
+  let runtime = runtimesByDocument.get(document);
+  if (!runtime) {
+    runtime = new RazorSenseRuntime(document);
+    runtimesByDocument.set(document, runtime);
+  }
+  return runtime.register(element, options, listener);
+};
+
+export { registerRazorSenseRuntime };
+export type {
+  RazorSenseLifecycleState,
+  RazorSenseRendererFamily,
+  RazorSenseRuntimeListener,
+  RazorSenseRuntimeOptions,
+  RazorSenseRuntimeRegistration,
+  RazorSenseRuntimeSnapshot,
+};
