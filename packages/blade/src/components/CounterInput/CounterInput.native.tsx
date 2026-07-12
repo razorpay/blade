@@ -182,7 +182,6 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const textInputStyle = StyleSheet.create({
       input: {
         flex: 1,
-        width: '100%',
         textAlign: 'center',
         textAlignVertical: 'center',
         includeFontPadding: false,
@@ -195,7 +194,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       },
     });
 
-    const inputWrapperStyle = { width: counterInputFieldWidth };
+    const inputWrapperStyle = { flex: 1, minWidth: counterInputFieldWidth };
 
     const contextValue = {
       size,
