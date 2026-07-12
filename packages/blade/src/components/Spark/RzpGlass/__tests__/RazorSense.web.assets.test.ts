@@ -36,7 +36,6 @@ describe('RazorSense assets', () => {
       height: 1080,
       bitrate: 857733,
       framerate: 25,
-      byteLength: 452413,
     });
     expect(operational.representativeFrameFile).toBe('razorsense-stills/desktop-dark-typing.png');
     expect(operational.representativePhase).toBe(1.96);

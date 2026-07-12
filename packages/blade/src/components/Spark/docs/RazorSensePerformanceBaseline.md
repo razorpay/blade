@@ -51,6 +51,18 @@ The segment bitrate is higher than the ten-second source average because the ret
 the energetic part of the animation. Payload still drops by 1,498,677 bytes because 6.68 seconds of
 unused timeline are gone.
 
+### Authoritative masters
+
+The exporter authenticates the complete file before it writes any derivative. A master must match
+its hardcoded SHA-256, exact ten-second duration, 1920×1080 geometry, 25 fps cadence, 250 visible
+frames, codec profile, and color tags. Renaming the light master as the dark master therefore fails
+before export.
+
+| Appearance | Authoritative source                                                                                           | SHA-256                                                            | Color tags                             |
+| ---------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------- |
+| Light      | Supplied launch file `Bottom Wave (Default, Typing).mp4`; identical to the pre-trim Blade asset at `f39c9d80b` | `fd8facc2711148a60693279da4f28d6a75d1329f3adf904ba9d7163922f4ecc5` | BT.709 primaries, transfer, and matrix |
+| Dark       | Phase-matched pre-trim Blade asset at `f39c9d80b`                                                              | `5e225bc0c273b86293c5a2185d5e2f33daff540a24673e39768bd126ca7b8490` | Intentionally untagged                 |
+
 Verification on macOS 26.5.2 with the pinned Pillow, NumPy, and SciPy versions passed all ten
 native-resolution checkpoints: first visible frame, attack, peak/fixed-grid frame, hold, and last
 visible frame in both appearances. Each candidate frame was PNG-byte-identical to its source frame:
@@ -69,17 +81,27 @@ matrix was not regenerated.
   a color profile.
 - H.264 dependency preroll remains in the container so the first visible frame decodes correctly.
   The edit list exposes exactly 83 frames over 3.32 seconds.
-- Whole-file hashes are not used as the reproducibility signal because AVFoundation writes export-time
-  container timestamps. The compressed-sample and format-description digests are deterministic.
+- After AVFoundation exports, a bounded ISO-BMFF parser zeroes only the version-aware creation and
+  modification timestamps in the single `mvhd`, `tkhd`, and `mdhd` boxes. Unknown versions,
+  truncated boxes, unexpected nesting, or duplicate timestamp boxes fail instead of being patched.
+- Two independent exports were whole-file byte-identical. Light SHA-256 is
+  `247210b2366c64d3941f7c2668ea9c588d040259f05bf7af62be5bc98881c088`; dark SHA-256 is
+  `4e8b0b287abca6f4299c8a138117a3188cad7eb310e6d97bd3eb8c6fa719b055`. Their byte sizes,
+  sample digests, format-description digests, and decoded metadata also match.
 - The HEVC highest-quality preset is an explicit no-go: preflight did not preserve source color
   metadata and missed the `0.995` SSIM threshold. No HEVC file or manifest candidate is shipped.
 
-To reproduce the export, point `--assets-root` at a directory containing the backed-up, untrimmed
-`razorsense-states/razorsense-typing.mp4` and `razorsense-typing-dark.mp4` masters:
+To retrieve the authenticated masters without keeping a second copy in the repository, extract the
+original Blade blobs into a temporary source root:
 
 ```sh
+mkdir -p /tmp/razorsense-typing-masters/razorsense-states
+git show f39c9d80b:packages/blade/assets/spark/razorsense-states/razorsense-typing.mp4 \
+  > /tmp/razorsense-typing-masters/razorsense-states/razorsense-typing.mp4
+git show f39c9d80b:packages/blade/assets/spark/razorsense-states/razorsense-typing-dark.mp4 \
+  > /tmp/razorsense-typing-masters/razorsense-states/razorsense-typing-dark.mp4
 swift scripts/exportRazorSenseVideoVariants.swift \
-  --assets-root <untrimmed-typing-assets-root> \
+  --assets-root /tmp/razorsense-typing-masters \
   --output-dir /tmp/razorsense-typing-output \
   --write-frames /tmp/razorsense-typing-frames
 /tmp/razorsense-media-venv/bin/python scripts/verifyRazorSenseMedia.py \

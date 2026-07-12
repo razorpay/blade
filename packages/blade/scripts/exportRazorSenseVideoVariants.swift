@@ -9,7 +9,6 @@ import UniformTypeIdentifiers
 // preset is excluded because preflight candidates changed color metadata and missed the SSIM gate.
 private let typingStart = CMTime(value: 167, timescale: 25)
 private let typingDuration = CMTime(value: 83, timescale: 25)
-private let typingSourceEnd = CMTimeAdd(typingStart, typingDuration)
 
 private struct Arguments {
   let assetsRoot: URL
@@ -24,6 +23,15 @@ private struct FrameCheckpoint {
   var candidateTime: CMTime {
     CMTimeSubtract(sourceTime, typingStart)
   }
+}
+
+private struct MasterSpec {
+  let fileName: String
+  let sha256: String
+  let codec: String
+  let colorPrimaries: String
+  let transferFunction: String
+  let yCbCrMatrix: String
 }
 
 private struct VideoMetadata: Encodable {
@@ -51,6 +59,8 @@ private struct ExportReport: Encodable {
   let oldBytes: Int
   let newBytes: Int
   let savedBytes: Int
+  let sourceSHA256: String
+  let outputSHA256: String
   let source: VideoMetadata
   let candidate: VideoMetadata
   let samplesMatch: Bool
@@ -63,6 +73,8 @@ private enum ExportError: LocalizedError {
   case outputCollision(String)
   case unavailablePreset(String)
   case missingVideoTrack(String)
+  case unauthenticatedMaster(String)
+  case unsupportedContainer(String)
   case exportFailed(String)
   case metadataMismatch(String)
   case sampleMismatch(String)
@@ -76,6 +88,8 @@ private enum ExportError: LocalizedError {
       .outputCollision(let message),
       .unavailablePreset(let message),
       .missingVideoTrack(let message),
+      .unauthenticatedMaster(let message),
+      .unsupportedContainer(let message),
       .exportFailed(let message),
       .metadataMismatch(let message),
       .sampleMismatch(let message),
@@ -94,9 +108,23 @@ private let checkpoints = [
   FrameCheckpoint(name: "last-visible", sourceTime: CMTime(value: 249, timescale: 25)),
 ]
 
-private let typingFiles = [
-  "razorsense-typing.mp4",
-  "razorsense-typing-dark.mp4",
+private let masterSpecs = [
+  MasterSpec(
+    fileName: "razorsense-typing.mp4",
+    sha256: "fd8facc2711148a60693279da4f28d6a75d1329f3adf904ba9d7163922f4ecc5",
+    codec: "avc1.4D4029",
+    colorPrimaries: "ITU_R_709_2",
+    transferFunction: "ITU_R_709_2",
+    yCbCrMatrix: "ITU_R_709_2",
+  ),
+  MasterSpec(
+    fileName: "razorsense-typing-dark.mp4",
+    sha256: "5e225bc0c273b86293c5a2185d5e2f33daff540a24673e39768bd126ca7b8490",
+    codec: "avc1.640028",
+    colorPrimaries: "unspecified",
+    transferFunction: "unspecified",
+    yCbCrMatrix: "unspecified",
+  ),
 ]
 
 private func parseArguments(_ arguments: [String]) throws -> Arguments {
@@ -159,6 +187,143 @@ private func extensionString(
 
 private func sha256(_ data: Data) -> String {
   SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+}
+
+private func fileSHA256(at url: URL) throws -> String {
+  sha256(try Data(contentsOf: url, options: .mappedIfSafe))
+}
+
+private func readUInt32(_ data: Data, at offset: Int, limit: Int) throws -> UInt32 {
+  guard offset >= 0, offset + 4 <= limit else {
+    throw ExportError.unsupportedContainer("Truncated 32-bit ISO-BMFF field at byte \(offset)")
+  }
+  return data[offset..<offset + 4].reduce(UInt32(0)) { ($0 << 8) | UInt32($1) }
+}
+
+private func readUInt64(_ data: Data, at offset: Int, limit: Int) throws -> UInt64 {
+  guard offset >= 0, offset + 8 <= limit else {
+    throw ExportError.unsupportedContainer("Truncated 64-bit ISO-BMFF field at byte \(offset)")
+  }
+  return data[offset..<offset + 8].reduce(UInt64(0)) { ($0 << 8) | UInt64($1) }
+}
+
+private func boxType(_ data: Data, at offset: Int, limit: Int) throws -> String {
+  guard offset >= 0, offset + 4 <= limit,
+    let type = String(data: data[offset..<offset + 4], encoding: .ascii),
+    type.utf8.allSatisfy({ $0 >= 0x20 && $0 <= 0x7E })
+  else {
+    throw ExportError.unsupportedContainer("Invalid ISO-BMFF box type at byte \(offset)")
+  }
+  return type
+}
+
+private let timestampBoxPaths: [String: [String]] = [
+  "mvhd": ["moov", "mvhd"],
+  "tkhd": ["moov", "trak", "tkhd"],
+  "mdhd": ["moov", "trak", "mdia", "mdhd"],
+]
+
+private func zeroTimestampFields(
+  in data: inout Data,
+  boxType: String,
+  payloadRange: Range<Int>,
+) throws {
+  guard payloadRange.count >= 4 else {
+    throw ExportError.unsupportedContainer("\(boxType) is missing its full-box header")
+  }
+  let version = data[payloadRange.lowerBound]
+  let fields: Range<Int>
+  switch version {
+  case 0:
+    fields = payloadRange.lowerBound + 4..<payloadRange.lowerBound + 12
+  case 1:
+    fields = payloadRange.lowerBound + 4..<payloadRange.lowerBound + 20
+  default:
+    throw ExportError.unsupportedContainer(
+      "Unsupported \(boxType) version \(version); refusing to patch unknown timestamp layout",
+    )
+  }
+  guard fields.upperBound <= payloadRange.upperBound else {
+    throw ExportError.unsupportedContainer("Truncated \(boxType) timestamp fields")
+  }
+  data.replaceSubrange(fields, with: repeatElement(UInt8(0), count: fields.count))
+}
+
+private func normalizeTimestampBoxes(
+  in data: inout Data,
+  range: Range<Int>,
+  parentPath: [String],
+  normalizedCounts: inout [String: Int],
+) throws {
+  var offset = range.lowerBound
+  while offset < range.upperBound {
+    guard range.upperBound - offset >= 8 else {
+      throw ExportError.unsupportedContainer("Truncated ISO-BMFF box header at byte \(offset)")
+    }
+
+    let compactSize = try readUInt32(data, at: offset, limit: range.upperBound)
+    let type = try boxType(data, at: offset + 4, limit: range.upperBound)
+    var headerSize = 8
+    let boxSize: Int
+    switch compactSize {
+    case 0:
+      boxSize = range.upperBound - offset
+    case 1:
+      let extendedSize = try readUInt64(data, at: offset + 8, limit: range.upperBound)
+      guard extendedSize <= UInt64(Int.max) else {
+        throw ExportError.unsupportedContainer("Oversized \(type) box")
+      }
+      boxSize = Int(extendedSize)
+      headerSize = 16
+    default:
+      boxSize = Int(compactSize)
+    }
+    if type == "uuid" { headerSize += 16 }
+    guard boxSize >= headerSize, offset <= range.upperBound - boxSize else {
+      throw ExportError.unsupportedContainer(
+        "Invalid \(type) box size \(boxSize) at byte \(offset)")
+    }
+
+    let boxEnd = offset + boxSize
+    let payloadRange = offset + headerSize..<boxEnd
+    let path = parentPath + [type]
+    if let expectedPath = timestampBoxPaths[type] {
+      guard path == expectedPath else {
+        throw ExportError.unsupportedContainer(
+          "Unexpected \(type) layout at \(path.joined(separator: "/"))",
+        )
+      }
+      try zeroTimestampFields(in: &data, boxType: type, payloadRange: payloadRange)
+      normalizedCounts[type, default: 0] += 1
+    }
+
+    if type == "moov" || type == "trak" || type == "mdia" {
+      try normalizeTimestampBoxes(
+        in: &data,
+        range: payloadRange,
+        parentPath: path,
+        normalizedCounts: &normalizedCounts,
+      )
+    }
+    offset = boxEnd
+  }
+}
+
+private func normalizeISOBaseMediaTimestamps(at url: URL) throws {
+  var data = try Data(contentsOf: url)
+  var counts: [String: Int] = [:]
+  try normalizeTimestampBoxes(
+    in: &data,
+    range: data.startIndex..<data.endIndex,
+    parentPath: [],
+    normalizedCounts: &counts,
+  )
+  guard timestampBoxPaths.keys.allSatisfy({ counts[$0] == 1 }), counts.count == 3 else {
+    throw ExportError.unsupportedContainer(
+      "Expected exactly one mvhd, tkhd, and mdhd timestamp box; found \(counts)",
+    )
+  }
+  try data.write(to: url, options: .atomic)
 }
 
 private func dataExtension(_ extensions: [String: Any], key: CFString) -> Data? {
@@ -341,6 +506,57 @@ private func metadata(
   )
 }
 
+private func authenticateMaster(
+  _ spec: MasterSpec,
+  at url: URL,
+) async throws -> String {
+  let digest = try fileSHA256(at: url)
+  guard digest == spec.sha256 else {
+    throw ExportError.unauthenticatedMaster(
+      "Rejected \(spec.fileName): SHA-256 \(digest) does not match authoritative master \(spec.sha256)",
+    )
+  }
+
+  let sourceMetadata = try await metadata(for: AVURLAsset(url: url))
+  var mismatches: [String] = []
+  if abs(sourceMetadata.durationSeconds - 10) > 0.000_001 {
+    mismatches.append("duration=\(sourceMetadata.durationSeconds), expected 10")
+  }
+  if sourceMetadata.width != 1920 || sourceMetadata.height != 1080 {
+    mismatches.append(
+      "geometry=\(sourceMetadata.width)x\(sourceMetadata.height), expected 1920x1080",
+    )
+  }
+  if abs(sourceMetadata.framesPerSecond - 25) > 0.001 {
+    mismatches.append("fps=\(sourceMetadata.framesPerSecond), expected 25")
+  }
+  if sourceMetadata.frameCount != 250 {
+    mismatches.append("visibleFrames=\(sourceMetadata.frameCount), expected 250")
+  }
+  if sourceMetadata.codec != spec.codec {
+    mismatches.append("codec=\(sourceMetadata.codec), expected \(spec.codec)")
+  }
+  if sourceMetadata.colorPrimaries != spec.colorPrimaries {
+    mismatches.append(
+      "colorPrimaries=\(sourceMetadata.colorPrimaries), expected \(spec.colorPrimaries)",
+    )
+  }
+  if sourceMetadata.transferFunction != spec.transferFunction {
+    mismatches.append(
+      "transferFunction=\(sourceMetadata.transferFunction), expected \(spec.transferFunction)",
+    )
+  }
+  if sourceMetadata.yCbCrMatrix != spec.yCbCrMatrix {
+    mismatches.append("yCbCrMatrix=\(sourceMetadata.yCbCrMatrix), expected \(spec.yCbCrMatrix)")
+  }
+  guard mismatches.isEmpty else {
+    throw ExportError.unauthenticatedMaster(
+      "Rejected \(spec.fileName): \(mismatches.joined(separator: "; "))",
+    )
+  }
+  return digest
+}
+
 private func metadataMatches(_ source: VideoMetadata, _ candidate: VideoMetadata) -> Bool {
   source.codec == candidate.codec && source.width == candidate.width
     && source.height == candidate.height
@@ -374,6 +590,7 @@ private func exportPassthrough(input: URL, output: URL) async throws {
       "Failed to export \(input.lastPathComponent): \(error.localizedDescription)",
     )
   }
+  try normalizeISOBaseMediaTimestamps(at: output)
 }
 
 private func writePNG(_ image: CGImage, to url: URL) throws {
@@ -428,7 +645,8 @@ private func run(_ arguments: Arguments) async throws {
   try fileManager.createDirectory(at: referenceDirectory, withIntermediateDirectories: true)
   try fileManager.createDirectory(at: candidateDirectory, withIntermediateDirectories: true)
 
-  for fileName in typingFiles.sorted() {
+  for spec in masterSpecs.sorted(by: { $0.fileName < $1.fileName }) {
+    let fileName = spec.fileName
     let input = stateDirectory.appendingPathComponent(fileName)
     let output = arguments.outputDirectory.appendingPathComponent(fileName)
     guard fileManager.fileExists(atPath: input.path) else {
@@ -439,12 +657,7 @@ private func run(_ arguments: Arguments) async throws {
     }
 
     let sourceAsset = AVURLAsset(url: input)
-    let sourceDuration = try await sourceAsset.load(.duration)
-    guard CMTimeCompare(sourceDuration, typingSourceEnd) >= 0 else {
-      throw ExportError.invalidArguments(
-        "\(fileName) is already trimmed. Pass --assets-root pointing to the backed-up 10-second Typing masters.",
-      )
-    }
+    let sourceSHA256 = try await authenticateMaster(spec, at: input)
     let sourceMetadata = try await metadata(
       for: sourceAsset,
       timeRange: CMTimeRange(start: typingStart, duration: typingDuration),
@@ -456,6 +669,7 @@ private func run(_ arguments: Arguments) async throws {
     let candidateAsset = AVURLAsset(url: output)
     let candidateMetadata = try await metadata(for: candidateAsset)
     let newBytes = try fileSize(at: output)
+    let outputSHA256 = try fileSHA256(at: output)
     let samplesMatch = sourceMetadata.sampleDigest == candidateMetadata.sampleDigest
     let matches = metadataMatches(sourceMetadata, candidateMetadata)
     let report = ExportReport(
@@ -467,6 +681,8 @@ private func run(_ arguments: Arguments) async throws {
       oldBytes: oldBytes,
       newBytes: newBytes,
       savedBytes: oldBytes - newBytes,
+      sourceSHA256: sourceSHA256,
+      outputSHA256: outputSHA256,
       source: sourceMetadata,
       candidate: candidateMetadata,
       samplesMatch: samplesMatch,
