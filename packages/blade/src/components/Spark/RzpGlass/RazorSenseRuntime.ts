@@ -11,6 +11,8 @@ type RazorSenseRuntimeSnapshot = {
 
 type RazorSenseRuntimeOptions = {
   family: RazorSenseRendererFamily;
+  /** Internal admission boost for a renderer preparing an in-place handoff. */
+  priority?: number;
   /**
    * @deprecated Consumer pause is a playback concern. It remains accepted so
    * existing registrations stay source-compatible, but it does not affect
@@ -183,9 +185,13 @@ class RazorSenseRuntime {
       if (!entry) return;
 
       const wasWithinWarmMargin = entry.isWithinWarmMargin;
-      const metrics = this.getViewportMetrics(observerEntry.boundingClientRect);
+      const metrics = this.getViewportMetrics(observerEntry.intersectionRect);
+      const elementArea =
+        Math.max(0, observerEntry.boundingClientRect.width) *
+        Math.max(0, observerEntry.boundingClientRect.height);
       entry.visibleArea = metrics.visibleArea;
-      entry.intersectionRatio = metrics.intersectionRatio;
+      entry.intersectionRatio =
+        elementArea > 0 ? Math.min(1, metrics.visibleArea / elementArea) : 0;
       entry.isWithinWarmMargin = observerEntry.isIntersecting || metrics.visibleArea > 0;
       this.recomputeLifecycle(entry, {
         canResumeWarm: !wasWithinWarmMargin && entry.isWithinWarmMargin,
@@ -236,6 +242,7 @@ class RazorSenseRuntime {
     const previousOptions = entry.options;
     const runtimeOptionsAreEqual =
       previousOptions.family === nextOptions.family &&
+      previousOptions.priority === nextOptions.priority &&
       previousOptions.isInteractive === nextOptions.isInteractive &&
       previousOptions.retainsWebGL === nextOptions.retainsWebGL;
 
@@ -386,6 +393,9 @@ class RazorSenseRuntime {
     first: RazorSenseRuntimeEntry,
     second: RazorSenseRuntimeEntry,
   ): number => {
+    const firstPriority = first.options.priority ?? 0;
+    const secondPriority = second.options.priority ?? 0;
+    if (firstPriority !== secondPriority) return secondPriority - firstPriority;
     if (first.isPointerActive !== second.isPointerActive) {
       return first.isPointerActive ? -1 : 1;
     }

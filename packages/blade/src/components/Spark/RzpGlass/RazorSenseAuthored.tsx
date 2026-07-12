@@ -20,6 +20,8 @@ import {
   getRazorSenseRepresentativeFrame,
   selectRazorSenseVideoSource,
 } from './razorSenseAssets';
+import { MODE_REPRESENTATIVE_PHASE_SECONDS } from './razorSensePrograms';
+import type { RazorSenseResolvedPlaybackPlan } from './razorSensePrograms';
 import type { RazorSenseLifecycleState } from './RazorSenseRuntime';
 import { seekToRazorSenseVideoFrame } from './RazorSenseVideoFrame';
 import type { CancelVideoFrameWait } from './RazorSenseVideoFrame';
@@ -41,6 +43,16 @@ type RazorSenseAuthoredProps = Omit<SemanticRazorSenseProps, 'mode'> & {
   isRuntimeAdmitted?: boolean;
   /** @internal Used by the fallback exporter after the requested frame is presented. */
   onFrameReady?: () => void;
+  /** @internal Reports every exact incoming frame without changing transition behavior. */
+  onPresentationReady?: (mode: RazorSenseOperationalMode) => void;
+  /** @internal Identifies a playback occurrence. A new identity restarts the same mode. */
+  occurrenceId?: number;
+  /** @internal Blade-resolved playback contract for this occurrence. */
+  playback?: RazorSenseResolvedPlaybackPlan;
+  /** @internal Reports each completed authored-source iteration, starting at one. */
+  onIteration?: (iteration: number) => void;
+  /** @internal Reports a finite occurrence after its exact terminal frame is presented. */
+  onTerminal?: (iterationCount: number) => void;
 };
 
 type AuthoredLayer = {
@@ -50,6 +62,8 @@ type AuthoredLayer = {
   assetsPath: string;
   startTime?: number;
   endTime?: number;
+  occurrenceId?: number;
+  playback?: RazorSenseResolvedPlaybackPlan;
   resourceGeneration: number;
   opacity: number;
   status: 'loading' | 'visible' | 'outgoing';
@@ -69,6 +83,8 @@ type LayerPlaybackSnapshot = {
   frontWasPrimary: boolean;
   isCrossfading: boolean;
   isTerminal: boolean;
+  iterationCount: number;
+  terminalReported: boolean;
 };
 
 type AuthoredLayerHandle = {
@@ -91,7 +107,15 @@ type AuthoredVideoLayerProps = {
   transitionDurationMs: number;
   restoreSnapshot?: LayerPlaybackSnapshot;
   onReady: (layerId: number, readinessGeneration: number) => void;
+  onIteration: (layerId: number, occurrenceId: number | undefined, iteration: number) => void;
+  onTerminal: (layerId: number, occurrenceId: number | undefined, iterationCount: number) => void;
   onError: (layerId: number, error: Error, disposition?: 'fatal' | 'recoverable') => void;
+};
+
+type PendingPlaybackFrame = {
+  video: HTMLVideoElement;
+  targetTime: number;
+  onPresented: () => void;
 };
 
 const releaseVideo = (video: HTMLVideoElement | null): void => {
@@ -106,6 +130,20 @@ const getNumericOpacity = (value: string, fallback = 1): number => {
   return Number.isFinite(opacity) ? opacity : fallback;
 };
 
+const shouldContinueAfterIteration = (
+  playback: RazorSenseResolvedPlaybackPlan,
+  iterationCount: number,
+): boolean =>
+  playback.playback === 'loop' ||
+  (playback.playback === 'repeat' && iterationCount < playback.repeatCount + 1);
+
+const getPlaybackPlanKey = (playback: RazorSenseResolvedPlaybackPlan | undefined): string => {
+  if (!playback) return 'legacy';
+  if (playback.playback === 'loop') return 'loop';
+  if (playback.playback === 'once') return `once:${playback.endBehavior}`;
+  return `repeat:${playback.repeatCount}:${playback.endBehavior}`;
+};
+
 const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerProps>(
   function AuthoredVideoLayer(props, forwardedRef) {
     const {
@@ -118,6 +156,8 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       transitionDurationMs,
       restoreSnapshot,
       onReady,
+      onIteration,
+      onTerminal,
       onError,
     } = props;
     const wrapperRef = useRef<HTMLDivElement>(null);
@@ -127,32 +167,55 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
     const thinkingRuntimeRef = useRef<ThinkingLoopRuntime | null>(null);
     const thinkingRafRef = useRef<number | null>(null);
     const frameWaitCleanupsRef = useRef(new Set<CancelVideoFrameWait>());
+    const playbackFrameWaitCleanupRef = useRef<CancelVideoFrameWait>();
+    const pendingPlaybackFrameRef = useRef<PendingPlaybackFrame>();
     const loadedVideosRef = useRef<Partial<Record<'primary' | 'secondary', HTMLVideoElement>>>({});
     const targetTimesRef = useRef<Partial<Record<'primary' | 'secondary', number>>>({});
     const preparingKindsRef = useRef(new Set<'primary' | 'secondary'>());
     const exactReadyVideosRef = useRef(new Set<'primary' | 'secondary'>());
     const secondaryFailedRef = useRef(false);
     const hasReportedReadyRef = useRef(false);
+    const restoreSnapshotRef = useRef(restoreSnapshot);
+    const initialRestoreSnapshot = restoreSnapshotRef.current;
+    const playbackGenerationRef = useRef(0);
+    const iterationRef = useRef(initialRestoreSnapshot?.iterationCount ?? 0);
+    const isBoundaryPendingRef = useRef(false);
+    const isTerminalRef = useRef(initialRestoreSnapshot?.isTerminal ?? false);
+    const hasReportedTerminalRef = useRef(initialRestoreSnapshot?.terminalReported ?? false);
     const canPrepareFrameRef = useRef(canPrepareFrame);
     const readinessGenerationRef = useRef(readinessGeneration);
     const shouldPlayRef = useRef(shouldPlay);
     const playbackRateRef = useRef(playbackRate);
     const onReadyRef = useRef(onReady);
+    const onIterationRef = useRef(onIteration);
+    const onTerminalRef = useRef(onTerminal);
     const onErrorRef = useRef(onError);
     const [isExactFrameReady, setIsExactFrameReady] = useState(false);
-    const restoreSnapshotRef = useRef(restoreSnapshot);
-    const initialRestoreSnapshot = restoreSnapshotRef.current;
+    const [isPlaybackTerminal, setIsPlaybackTerminal] = useState(
+      initialRestoreSnapshot?.isTerminal ?? false,
+    );
     const timing = RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS[layer.mode];
     const loopStart = Math.max(0, layer.startTime ?? timing.startTime);
     const loopEnd = layer.endTime ?? timing.endTime;
-    const isTerminalRestore =
-      layer.mode !== 'thinking' && (initialRestoreSnapshot?.isTerminal ?? false);
+    const frameRate = getRazorSenseAsset({
+      assetsPath: '',
+      mode: layer.mode,
+      colorScheme: layer.colorScheme,
+      viewport: 'desktop',
+    }).fallbackSource.framerate;
+    const terminalFrameTime = Math.max(loopStart, loopEnd - 1 / frameRate);
+    const terminalHoldTime = Math.min(
+      terminalFrameTime,
+      Math.max(loopStart, MODE_REPRESENTATIVE_PHASE_SECONDS[layer.mode]),
+    );
 
     canPrepareFrameRef.current = canPrepareFrame;
     readinessGenerationRef.current = readinessGeneration;
     shouldPlayRef.current = shouldPlay;
     playbackRateRef.current = playbackRate;
     onReadyRef.current = onReady;
+    onIterationRef.current = onIteration;
+    onTerminalRef.current = onTerminal;
     onErrorRef.current = onError;
 
     const stopThinkingRaf = useCallback((): void => {
@@ -184,7 +247,11 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
     }, []);
 
     const release = useCallback((): void => {
+      playbackGenerationRef.current += 1;
       cancelFrameWaits();
+      playbackFrameWaitCleanupRef.current?.();
+      playbackFrameWaitCleanupRef.current = undefined;
+      pendingPlaybackFrameRef.current = undefined;
       stopThinkingRaf();
       thinkingRuntimeRef.current = null;
       releaseVideo(primaryRef.current);
@@ -210,7 +277,17 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       hasReportedReadyRef.current = true;
       setIsExactFrameReady(true);
       onReadyRef.current(layer.id, readinessGenerationRef.current);
-    }, [layer.id, layer.mode]);
+      if (layer.playback && initialRestoreSnapshot?.isTerminal && !hasReportedTerminalRef.current) {
+        hasReportedTerminalRef.current = true;
+        onTerminalRef.current(layer.id, layer.occurrenceId, iterationRef.current);
+      }
+    }, [
+      initialRestoreSnapshot?.isTerminal,
+      layer.id,
+      layer.mode,
+      layer.occurrenceId,
+      layer.playback,
+    ]);
 
     const armVideo = useCallback(
       (kind: 'primary' | 'secondary'): void => {
@@ -276,6 +353,109 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       armVideo('secondary');
       tryReportReady();
     }, [armVideo, canPrepareFrame, cancelFrameWaits, readinessGeneration, tryReportReady]);
+
+    const seekPlaybackFrame = useCallback(
+      (video: HTMLVideoElement, targetTime: number, onPresented: () => void): void => {
+        pendingPlaybackFrameRef.current = { video, targetTime, onPresented };
+        const generation = playbackGenerationRef.current;
+        playbackFrameWaitCleanupRef.current?.();
+        playbackFrameWaitCleanupRef.current = seekToRazorSenseVideoFrame({
+          video,
+          targetTime,
+          frameRate,
+          shouldRemainPaused: true,
+          onReady: () => {
+            if (generation !== playbackGenerationRef.current) return;
+            playbackFrameWaitCleanupRef.current = undefined;
+            pendingPlaybackFrameRef.current = undefined;
+            onPresented();
+          },
+        });
+      },
+      [frameRate],
+    );
+
+    useEffect(() => {
+      if (canPrepareFrame) {
+        const pendingFrame = pendingPlaybackFrameRef.current;
+        if (pendingFrame && !playbackFrameWaitCleanupRef.current) {
+          seekPlaybackFrame(pendingFrame.video, pendingFrame.targetTime, pendingFrame.onPresented);
+        }
+        return;
+      }
+
+      playbackFrameWaitCleanupRef.current?.();
+      playbackFrameWaitCleanupRef.current = undefined;
+    }, [canPrepareFrame, seekPlaybackFrame]);
+
+    const completeExplicitIteration = useCallback(
+      (front: HTMLVideoElement, back?: HTMLVideoElement): void => {
+        const playback = layer.playback;
+        if (
+          !playback ||
+          isBoundaryPendingRef.current ||
+          isTerminalRef.current ||
+          !canPrepareFrameRef.current ||
+          !shouldPlayRef.current
+        ) {
+          return;
+        }
+
+        isBoundaryPendingRef.current = true;
+        const iterationCount = ++iterationRef.current;
+        onIterationRef.current(layer.id, layer.occurrenceId, iterationCount);
+
+        if (shouldContinueAfterIteration(playback, iterationCount)) {
+          front.pause();
+          back?.pause();
+          seekPlaybackFrame(front, loopStart, () => {
+            isBoundaryPendingRef.current = false;
+            if (canPrepareFrameRef.current && shouldPlayRef.current && !isTerminalRef.current) {
+              front.playbackRate = playbackRateRef.current;
+              front.play().catch(() => undefined);
+            }
+          });
+          return;
+        }
+
+        isTerminalRef.current = true;
+        setIsPlaybackTerminal(true);
+        stopThinkingRaf();
+        front.pause();
+        front.style.opacity = '1';
+        if (back) {
+          back.pause();
+          back.style.opacity = '0';
+        }
+        const terminalTime =
+          playback.playback !== 'loop' && playback.endBehavior === 'reset-to-start'
+            ? loopStart
+            : terminalHoldTime;
+        seekPlaybackFrame(front, terminalTime, () => {
+          isBoundaryPendingRef.current = false;
+          hasReportedTerminalRef.current = true;
+          onTerminalRef.current(layer.id, layer.occurrenceId, iterationCount);
+        });
+      },
+      [
+        layer.id,
+        layer.occurrenceId,
+        layer.playback,
+        loopStart,
+        seekPlaybackFrame,
+        stopThinkingRaf,
+        terminalHoldTime,
+      ],
+    );
+
+    const handlePrimaryPlaybackBoundary = useCallback(
+      (video: HTMLVideoElement, force = false): void => {
+        if (!layer.playback || (layer.mode === 'thinking' && !secondaryFailedRef.current)) return;
+        if (!force && video.currentTime < terminalFrameTime) return;
+        completeExplicitIteration(video, secondaryRef.current ?? undefined);
+      },
+      [completeExplicitIteration, layer.mode, layer.playback, terminalFrameTime],
+    );
 
     useImperativeHandle(
       forwardedRef,
@@ -354,7 +534,10 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
             frontWasPrimary: runtime ? runtime.front === primary : true,
             isCrossfading: runtime?.isCrossfading ?? false,
             isTerminal:
-              layer.mode !== 'thinking' && !timing.loop && primary.currentTime >= loopEnd - 0.06,
+              isTerminalRef.current ||
+              (layer.mode !== 'thinking' && !timing.loop && primary.currentTime >= loopEnd - 0.06),
+            iterationCount: iterationRef.current,
+            terminalReported: hasReportedTerminalRef.current,
           };
         },
         release,
@@ -367,7 +550,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       const secondary = secondaryRef.current;
       if (primary) primary.playbackRate = playbackRate;
       if (secondary) secondary.playbackRate = playbackRate;
-      if (!canPrepareFrame || !shouldPlay || isTerminalRestore) {
+      if (!canPrepareFrame || !shouldPlay || isPlaybackTerminal) {
         primary?.pause();
         secondary?.pause();
         if (!canPrepareFrame) cancelFrameWaits();
@@ -389,7 +572,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       canPrepareFrame,
       cancelFrameWaits,
       isExactFrameReady,
-      isTerminalRestore,
+      isPlaybackTerminal,
       layer.mode,
       playbackRate,
       shouldPlay,
@@ -413,7 +596,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
         timing.crossfadeDuration ?? 0,
         Math.max(0, loopEnd - loopStart) / 2,
       );
-      if (crossfadeDuration === 0) {
+      if (crossfadeDuration === 0 && !layer.playback) {
         primary.loop = true;
         return undefined;
       }
@@ -431,7 +614,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       const runtime = thinkingRuntimeRef.current;
       runtime.front.playbackRate = playbackRateRef.current;
       runtime.back.playbackRate = playbackRateRef.current;
-      if (!shouldPlay || isTerminalRestore) {
+      if (!shouldPlay || isPlaybackTerminal) {
         runtime.front.pause();
         runtime.back.pause();
         return undefined;
@@ -443,11 +626,25 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
 
       const renderLoop = (): void => {
         const crossfadeStart = loopEnd - crossfadeDuration;
-        if (!runtime.isCrossfading && runtime.front.currentTime >= crossfadeStart) {
-          runtime.back.currentTime = loopStart;
-          runtime.back.playbackRate = playbackRateRef.current;
-          runtime.back.play().catch(() => undefined);
-          runtime.isCrossfading = true;
+        if (!runtime.isCrossfading) {
+          const nextIteration = iterationRef.current + 1;
+          const shouldContinue = layer.playback
+            ? shouldContinueAfterIteration(layer.playback, nextIteration)
+            : true;
+
+          if (shouldContinue && runtime.front.currentTime >= crossfadeStart) {
+            runtime.back.currentTime = loopStart;
+            runtime.back.playbackRate = playbackRateRef.current;
+            runtime.back.play().catch(() => undefined);
+            runtime.isCrossfading = true;
+          } else if (
+            layer.playback &&
+            !shouldContinue &&
+            runtime.front.currentTime >= terminalFrameTime
+          ) {
+            completeExplicitIteration(runtime.front, runtime.back);
+            return;
+          }
         }
 
         if (runtime.isCrossfading) {
@@ -465,6 +662,10 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
             runtime.back.style.opacity = '1';
             [runtime.front, runtime.back] = [runtime.back, runtime.front];
             runtime.isCrossfading = false;
+            if (layer.playback) {
+              const iterationCount = ++iterationRef.current;
+              onIterationRef.current(layer.id, layer.occurrenceId, iterationCount);
+            }
           }
         }
 
@@ -475,27 +676,24 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       return stopThinkingRaf;
     }, [
       isExactFrameReady,
-      isTerminalRestore,
+      completeExplicitIteration,
+      isPlaybackTerminal,
       layer.mode,
+      layer.id,
+      layer.occurrenceId,
+      layer.playback,
       loopEnd,
       loopStart,
       shouldPlay,
       stopThinkingRaf,
+      terminalFrameTime,
       timing.crossfadeDuration,
     ]);
 
     useEffect(() => release, [release]);
 
     const handlePrimaryLoaded = (video: HTMLVideoElement): void => {
-      const terminalFrameTime = Math.max(loopStart, loopEnd - 1 / 30);
-      prepareVideo(
-        'primary',
-        video,
-        Math.max(
-          0,
-          isTerminalRestore ? terminalFrameTime : initialRestoreSnapshot?.primaryTime ?? loopStart,
-        ),
-      );
+      prepareVideo('primary', video, Math.max(0, initialRestoreSnapshot?.primaryTime ?? loopStart));
     };
 
     const handleSecondaryError = (): void => {
@@ -508,7 +706,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       const primary = primaryRef.current;
       const secondary = secondaryRef.current;
       if (primary) {
-        primary.loop = true;
+        primary.loop = !layer.playback;
         primary.style.opacity = '1';
         primary.pause();
       }
@@ -543,18 +741,24 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
       >
         <video
           ref={primaryRef}
+          crossOrigin="anonymous"
           src={source}
           muted
-          loop={layer.endTime === undefined && timing.loop}
+          loop={!layer.playback && layer.endTime === undefined && timing.loop}
           playsInline
           preload="auto"
           onLoadedData={(event) => handlePrimaryLoaded(event.currentTarget)}
           onTimeUpdate={(event) => {
+            if (layer.playback) {
+              handlePrimaryPlaybackBoundary(event.currentTarget);
+              return;
+            }
             const shouldLoop = layer.endTime !== undefined || timing.loop;
             if (shouldLoop && event.currentTarget.currentTime >= loopEnd) {
               event.currentTarget.currentTime = loopStart;
             }
           }}
+          onEnded={(event) => handlePrimaryPlaybackBoundary(event.currentTarget, true)}
           onError={() => {
             onErrorRef.current(
               layer.id,
@@ -576,6 +780,7 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
         {layer.mode === 'thinking' ? (
           <video
             ref={secondaryRef}
+            crossOrigin="anonymous"
             src={source}
             muted
             playsInline
@@ -622,6 +827,11 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       onLoad,
       onError,
       onFrameReady,
+      onPresentationReady,
+      occurrenceId,
+      playback,
+      onIteration,
+      onTerminal,
       runtimeState = 'active',
       isRuntimeAdmitted = true,
     } = props;
@@ -637,6 +847,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       assetsPath,
       startTime,
       endTime,
+      occurrenceId,
+      playback,
       resourceGeneration: resourceGenerationRef.current,
       opacity: 0,
       status: 'loading',
@@ -661,7 +873,9 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const failedLayerIdsRef = useRef(new Set<number>());
     const requestedLayerIdRef = useRef(1);
     const requestedKeyRef = useRef(
-      `${mode}:${colorScheme}:${assetsPath}:${startTime ?? 'default'}:${endTime ?? 'default'}`,
+      `${mode}:${colorScheme}:${assetsPath}:${startTime ?? 'default'}:${endTime ?? 'default'}:${
+        occurrenceId ?? 'legacy'
+      }:${getPlaybackPlanKey(playback)}`,
     );
     const requestedProgramRef = useRef({ assetsPath, startTime, endTime });
     const transitionGenerationRef = useRef(0);
@@ -676,6 +890,9 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const onLoadRef = useRef(onLoad);
     const onErrorRef = useRef(onError);
     const onFrameReadyRef = useRef(onFrameReady);
+    const onPresentationReadyRef = useRef(onPresentationReady);
+    const onIterationRef = useRef(onIteration);
+    const onTerminalRef = useRef(onTerminal);
     const isMountedRef = useRef(true);
     const canPrepareRef = useRef(false);
 
@@ -686,6 +903,9 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     onLoadRef.current = onLoad;
     onErrorRef.current = onError;
     onFrameReadyRef.current = onFrameReady;
+    onPresentationReadyRef.current = onPresentationReady;
+    onIterationRef.current = onIteration;
+    onTerminalRef.current = onTerminal;
 
     const replaceLayers = useCallback((nextLayers: AuthoredLayer[]): void => {
       layersRef.current = nextLayers;
@@ -753,6 +973,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         nextAssetsPath: string,
         nextStartTime?: number,
         nextEndTime?: number,
+        nextOccurrenceId?: number,
+        nextPlayback?: RazorSenseResolvedPlaybackPlan,
       ): AuthoredLayer => ({
         id: nextLayerIdRef.current++,
         mode: nextMode,
@@ -760,6 +982,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         assetsPath: nextAssetsPath,
         startTime: nextStartTime,
         endTime: nextEndTime,
+        occurrenceId: nextOccurrenceId,
+        playback: nextPlayback,
         resourceGeneration: resourceGenerationRef.current,
         opacity: 0,
         status: 'loading',
@@ -770,7 +994,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     useLayoutEffect(() => {
       const requestedKey = `${mode}:${colorScheme}:${assetsPath}:${startTime ?? 'default'}:${
         endTime ?? 'default'
-      }`;
+      }:${occurrenceId ?? 'legacy'}:${getPlaybackPlanKey(playback)}`;
       if (requestedKeyRef.current === requestedKey) return;
 
       const previousLayers = layersRef.current;
@@ -788,7 +1012,15 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       readinessGenerationRef.current += 1;
       clearTransitionWork();
 
-      const incomingLayer = createLayer(mode, colorScheme, assetsPath, startTime, endTime);
+      const incomingLayer = createLayer(
+        mode,
+        colorScheme,
+        assetsPath,
+        startTime,
+        endTime,
+        occurrenceId,
+        playback,
+      );
       requestedLayerIdRef.current = incomingLayer.id;
       failedLayerIdsRef.current.delete(incomingLayer.id);
       pendingRestoreByLayerIdRef.current.clear();
@@ -838,6 +1070,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       colorScheme,
       createLayer,
       mode,
+      occurrenceId,
+      playback,
       releaseLayersExcept,
       replaceLayers,
       replaceSources,
@@ -867,7 +1101,15 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         clearTransitionWork();
         releaseLayersExcept(new Set());
         replaceSources({});
-        const nextLayer = createLayer(mode, colorScheme, assetsPath, startTime, endTime);
+        const nextLayer = createLayer(
+          mode,
+          colorScheme,
+          assetsPath,
+          startTime,
+          endTime,
+          occurrenceId,
+          playback,
+        );
         requestedLayerIdRef.current = nextLayer.id;
         pendingRestoreByLayerIdRef.current.clear();
         replaceLayers([nextLayer]);
@@ -884,6 +1126,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       createLayer,
       isRuntimeAdmitted,
       mode,
+      occurrenceId,
+      playback,
       releaseLayersExcept,
       replaceLayers,
       replaceSources,
@@ -1003,13 +1247,14 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
           });
         }
 
-        if (!hasLoadedRef.current) {
-          hasLoadedRef.current = true;
-          onLoadRef.current?.();
-        }
         if (!frameReadyNotifiedLayerIdsRef.current.has(layerId)) {
           frameReadyNotifiedLayerIdsRef.current.add(layerId);
           onFrameReadyRef.current?.();
+          onPresentationReadyRef.current?.(incomingLayer.mode);
+        }
+        if (!hasLoadedRef.current) {
+          hasLoadedRef.current = true;
+          onLoadRef.current?.();
         }
 
         if (outgoingLayers.length === 0) return;
@@ -1035,6 +1280,26 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       [modeTransitionDuration, releaseLayersExcept, replaceLayers, replaceSources],
     );
 
+    const handleLayerIteration = useCallback(
+      (layerId: number, layerOccurrenceId: number | undefined, iteration: number): void => {
+        if (layerId !== requestedLayerIdRef.current) return;
+        const layer = layersRef.current.find((candidate) => candidate.id === layerId);
+        if (!layer || layer.occurrenceId !== layerOccurrenceId) return;
+        onIterationRef.current?.(iteration);
+      },
+      [],
+    );
+
+    const handleLayerTerminal = useCallback(
+      (layerId: number, layerOccurrenceId: number | undefined, iterationCount: number): void => {
+        if (layerId !== requestedLayerIdRef.current) return;
+        const layer = layersRef.current.find((candidate) => candidate.id === layerId);
+        if (!layer || layer.occurrenceId !== layerOccurrenceId) return;
+        onTerminalRef.current?.(iterationCount);
+      },
+      [],
+    );
+
     const handleLayerError = useCallback(
       (layerId: number, error: Error, disposition: 'fatal' | 'recoverable' = 'fatal'): void => {
         if (disposition === 'recoverable') {
@@ -1052,7 +1317,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
 
         const remainingLayers = layersRef.current.filter((layer) => layer.id !== layerId);
         const remainingSources = { ...sourcesByLayerIdRef.current };
-        delete remainingSources[layerId];
+        Reflect.deleteProperty(remainingSources, layerId);
         replaceSources(remainingSources);
         if (remainingLayers.length > 0) {
           const outgoing = remainingLayers[remainingLayers.length - 1];
@@ -1145,6 +1410,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
                   }
                   restoreSnapshot={pendingRestoreByLayerIdRef.current.get(layer.id)}
                   onReady={handleLayerReady}
+                  onIteration={handleLayerIteration}
+                  onTerminal={handleLayerTerminal}
                   onError={handleLayerError}
                 />
               );

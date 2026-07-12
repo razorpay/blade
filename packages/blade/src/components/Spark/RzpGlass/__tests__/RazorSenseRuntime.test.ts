@@ -358,6 +358,20 @@ describe('RazorSenseRuntime', () => {
     expect(consoleWarn).toHaveBeenCalledTimes(2);
   });
 
+  it('admits an incoming handoff renderer ahead of an earlier outgoing renderer', () => {
+    const outgoing = register('legacy', makeRect({ width: 300, height: 200 }));
+    const competing = register('emotional', makeRect({ width: 300, height: 200 }));
+    const incoming = register('emotional', makeRect({ width: 300, height: 200 }), {
+      priority: 100,
+    });
+    [outgoing, competing, incoming].forEach((entry) =>
+      emitIntersection(entry.element, entry.element.getBoundingClientRect(), true),
+    );
+
+    expect(getSnapshot(incoming).isAdmitted).toBe(true);
+    expect([outgoing, competing].filter((entry) => getSnapshot(entry).isAdmitted)).toHaveLength(1);
+  });
+
   it('recomputes admission without stale notifications when a listener unregisters itself', () => {
     let shouldUnregister = false;
     const firstRegistrationRef: { current?: RazorSenseRuntimeRegistration } = {};

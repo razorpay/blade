@@ -17,6 +17,7 @@ const RazorSenseFallback = ({
 }: RazorSenseFallbackProps): ReactElement => (
   <BaseBox width="100%" height="100%" {...getStyledProps(styledProps)}>
     <img
+      crossOrigin="anonymous"
       src={src}
       alt=""
       aria-hidden="true"

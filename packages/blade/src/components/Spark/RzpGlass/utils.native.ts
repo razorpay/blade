@@ -1,6 +1,7 @@
 import type { RzpGlassPreset } from './presets';
 import type { RazorSenseMode } from './modes';
 import type { PreloadRazorSenseOptions } from './types';
+import type { RazorSenseTarget } from './razorSenseMotionTypes';
 import type { ColorSchemeNames } from '~tokens/theme';
 
 const DEFAULT_CDN_PATH = '';
@@ -26,6 +27,14 @@ async function preloadRazorSenseModeAssets(
     assetsPath,
     colorSchemes: colorScheme,
   });
+}
+
+async function preloadRazorSenseTarget(
+  _target: RazorSenseTarget,
+  _assetsPath: string = DEFAULT_CDN_PATH,
+  _colorScheme: ColorSchemeNames = 'light',
+): Promise<void> {
+  // no-op on native
 }
 
 // no-op stubs for web-only utilities — not available on native.
@@ -78,6 +87,7 @@ export {
   preloadRazorSense,
   preloadRazorSenseAssets,
   preloadRazorSenseModeAssets,
+  preloadRazorSenseTarget,
   captureVideoCoverFrame,
   loadImage,
   loadVideo,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { act, fireEvent, waitFor } from '@testing-library/react';
 import { RazorSenseAuthored } from '../RazorSenseAuthored';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme';
 
 type VideoController = {
   cancelVideoFrameCallback: jest.Mock;
@@ -67,8 +67,7 @@ const configureVideo = (
 };
 
 describe('<RazorSenseAuthored />', () => {
-  let rafCallbacks: Map<number, FrameRequestCallback>;
-  let nextRafId: number;
+  let rafCallbacks: Map<number, FrameRequestCallback>, nextRafId: number;
 
   beforeEach(() => {
     rafCallbacks = new Map();

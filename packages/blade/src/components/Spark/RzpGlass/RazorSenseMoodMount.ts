@@ -4,6 +4,8 @@ import { getRazorSenseModeIndex, RAZOR_SENSE_EMOTIONAL_MODES } from './modes';
 import type { RazorSenseEmotionalMode } from './modes';
 import { getRazorSenseAsset, selectRazorSenseVideoSource } from './razorSenseAssets';
 import type { RazorSenseLifecycleState } from './RazorSenseRuntime';
+import { MODE_REPRESENTATIVE_PHASE_SECONDS } from './razorSensePrograms';
+import type { RazorSenseResolvedPlaybackPlan } from './razorSensePrograms';
 import { razorSenseMoodFragmentShader, razorSenseMoodVertexShader } from './razorSenseMoodShader';
 import { seekToRazorSenseVideoFrame } from './RazorSenseVideoFrame';
 import type { CancelVideoFrameWait } from './RazorSenseVideoFrame';
@@ -25,6 +27,14 @@ type RazorSenseMoodMountOptions = {
   isRuntimeAdmitted?: boolean;
   onError: (error: Error) => void;
   onFirstFrame?: () => void;
+  /** @internal Identifies a semantic playback occurrence. Omit for legacy native looping. */
+  occurrenceId?: number;
+  /** @internal Resolved semantic playback owned by the presentation engine. */
+  playback?: RazorSenseResolvedPlaybackPlan;
+  /** @internal Reports one-based completed source iterations. */
+  onIteration?: (iteration: number) => void;
+  /** @internal Reports the exact finite terminal frame after it is drawn. */
+  onTerminal?: (iterationCount: number) => void;
   /** @internal Used by the fallback exporter after the requested frame is drawn. */
   onFrameReady?: () => void;
 };
@@ -49,6 +59,29 @@ type MoodSlot = {
   frameCallbackId: number | null;
   lastUploadedTime: number;
   seekCleanup: CancelVideoFrameWait | null;
+  endedListener: () => void;
+  terminalPlaybackGeneration: number | null;
+};
+
+type MoodPlaybackOccurrence = {
+  occurrenceId: number;
+  mode: RazorSenseEmotionalMode;
+  playback: RazorSenseResolvedPlaybackPlan;
+  generation: number;
+  iterationCount: number;
+  phase: 'playing' | 'boundary' | 'terminal';
+  boundary: 'restart' | 'terminal' | null;
+};
+
+type PendingPlaybackTerminal = {
+  playbackGeneration: number;
+  modeGeneration: number;
+  lifecycleGeneration: number;
+  mode: RazorSenseEmotionalMode;
+  slot: MoodSlot;
+  iterationCount: number;
+  targetTime: number;
+  frameDuration: number;
 };
 
 type PendingCapture = {
@@ -68,6 +101,13 @@ const TRAIL_TEXTURE_HEIGHT = Math.round((TRAIL_TEXTURE_WIDTH * 440) / 1364);
 const TRAIL_RADIUS = (TRAIL_TEXTURE_WIDTH * 268) / 1364;
 const TRAIL_LIFE_FRAMES = Math.ceil(Math.log(0.01) / Math.log(0.9));
 const CONTRIBUTION_EPSILON = 0.001;
+
+const shouldContinueAfterIteration = (
+  playback: RazorSenseResolvedPlaybackPlan,
+  iterationCount: number,
+): boolean =>
+  playback.playback === 'loop' ||
+  (playback.playback === 'repeat' && iterationCount < playback.repeatCount + 1);
 
 const oneHotMode = (mode: RazorSenseEmotionalMode): [number, number, number, number] => {
   const weights: [number, number, number, number] = [0, 0, 0, 0];
@@ -124,6 +164,9 @@ class RazorSenseMoodMount {
   private accumulatedPausedDuration = 0;
   private clockPausedAt: number | null = null;
   private pendingFrameReady: PendingFrameReady | null = null;
+  private pendingPlaybackTerminal: PendingPlaybackTerminal | null = null;
+  private playbackOccurrence: MoodPlaybackOccurrence | null = null;
+  private playbackGeneration = 0;
   private pendingCaptures: PendingCapture[] = [];
   private modeGeneration = 0;
   private lifecycleGeneration = 0;
@@ -144,6 +187,7 @@ class RazorSenseMoodMount {
     this.currentColorSchemeMix = options.colorScheme === 'dark' ? 1 : 0;
     this.colorSchemeTransitionStart = this.currentColorSchemeMix;
     this.colorSchemeTransitionTarget = this.currentColorSchemeMix;
+    this.configurePlaybackOccurrence(options.mode, options.occurrenceId, options.playback);
 
     this.trailCanvas = document.createElement('canvas');
     this.trailCanvas.width = TRAIL_TEXTURE_WIDTH;
@@ -176,6 +220,8 @@ class RazorSenseMoodMount {
       );
       if (!isExactFrameReady || this.disposed || generation !== this.modeGeneration) return;
 
+      this.activatePlaybackForPreparedSlot(this.options.mode, slot);
+
       if (this.shouldOwnRenderer()) {
         this.ensureRenderer();
         this.attachSlotTexture(this.options.mode, slot);
@@ -198,8 +244,15 @@ class RazorSenseMoodMount {
     }
   }
 
-  async setMode(mode: RazorSenseEmotionalMode): Promise<void> {
+  async setMode(
+    mode: RazorSenseEmotionalMode,
+    occurrence?: {
+      occurrenceId?: number;
+      playback?: RazorSenseResolvedPlaybackPlan;
+    },
+  ): Promise<void> {
     if (this.disposed) return;
+    this.configurePlaybackOccurrence(mode, occurrence?.occurrenceId, occurrence?.playback);
     if (
       this.options.mode === mode &&
       (this.loadingByMode.has(mode) || (!this.slots.has(mode) && this.modeGeneration > 0))
@@ -234,6 +287,8 @@ class RazorSenseMoodMount {
         this.releaseSlotIfUnused(mode);
         return;
       }
+
+      this.activatePlaybackForPreparedSlot(mode, slot);
 
       if (this.runtimeState === 'warm') {
         this.currentWeights = oneHotMode(mode);
@@ -303,6 +358,8 @@ class RazorSenseMoodMount {
       | 'interactive'
       | 'colorScheme'
       | 'onFrameReady'
+      | 'onIteration'
+      | 'onTerminal'
     >,
   ): void {
     if (this.disposed) return;
@@ -339,10 +396,17 @@ class RazorSenseMoodMount {
           (isExactFrameReady) => {
             if (!isExactFrameReady || generation !== this.modeGeneration || this.disposed) return;
             slot.isDirty = true;
+            if (this.shouldPlay()) {
+              this.activatePlaybackForPreparedSlot(this.options.mode, slot);
+            }
             this.scheduleRender();
           },
         );
       }
+    }
+    if (this.shouldPlay()) {
+      const activeSlot = this.slots.get(this.options.mode);
+      if (activeSlot) this.activatePlaybackForPreparedSlot(this.options.mode, activeSlot);
     }
     this.syncVideoPlayback();
     this.scheduleRender();
@@ -352,6 +416,10 @@ class RazorSenseMoodMount {
     if (this.disposed) return;
     this.runtimeState = active ? 'active' : 'suspended';
     this.updateClockPauseState();
+    if (active) {
+      const slot = this.slots.get(this.options.mode);
+      if (slot) this.activatePlaybackForPreparedSlot(this.options.mode, slot);
+    }
     this.syncVideoPlayback();
     if (active) this.scheduleRender();
     else this.cancelRenderIfIdle();
@@ -364,6 +432,7 @@ class RazorSenseMoodMount {
   ): Promise<LifecycleResult> {
     if (this.disposed) return { didCapture: false, didPresent: false };
     const generation = ++this.lifecycleGeneration;
+    this.pendingPlaybackTerminal = null;
     const attemptGeneration = this.beginAttempt();
     const shouldReleaseRenderer =
       runtimeState === 'warm' ||
@@ -477,6 +546,7 @@ class RazorSenseMoodMount {
         return { didCapture, didPresent: false };
       }
 
+      this.activatePlaybackForPreparedSlot(targetMode, slot);
       this.ensureRenderer();
       this.attachSlotTexture(targetMode, slot);
       slot.isDirty = true;
@@ -515,6 +585,223 @@ class RazorSenseMoodMount {
 
   hasRenderableOutput(): boolean {
     return this.rendererReady && this.hasPresentedFirstFrame;
+  }
+
+  private configurePlaybackOccurrence(
+    mode: RazorSenseEmotionalMode,
+    occurrenceId: number | undefined,
+    playback: RazorSenseResolvedPlaybackPlan | undefined,
+  ): void {
+    const previousOccurrence = this.playbackOccurrence;
+    if (previousOccurrence?.phase === 'boundary') {
+      const previousSlot = this.slots.get(previousOccurrence.mode);
+      previousSlot?.seekCleanup?.();
+      if (previousSlot) previousSlot.seekCleanup = null;
+    }
+
+    this.playbackGeneration += 1;
+    this.pendingPlaybackTerminal = null;
+    this.options = { ...this.options, occurrenceId, playback };
+    this.playbackOccurrence =
+      occurrenceId !== undefined && playback
+        ? {
+            occurrenceId,
+            mode,
+            playback,
+            generation: this.playbackGeneration,
+            iterationCount: 0,
+            phase: 'playing',
+            boundary: null,
+          }
+        : null;
+
+    this.slots.forEach((slot, slotMode) => {
+      slot.video.loop = !this.playbackOccurrence || slotMode !== mode;
+    });
+  }
+
+  private isCurrentPlaybackOccurrence(occurrence: MoodPlaybackOccurrence, slot: MoodSlot): boolean {
+    return (
+      !this.disposed &&
+      this.playbackOccurrence === occurrence &&
+      occurrence.generation === this.playbackGeneration &&
+      occurrence.mode === this.options.mode &&
+      this.slots.get(occurrence.mode) === slot
+    );
+  }
+
+  private activatePlaybackForPreparedSlot(mode: RazorSenseEmotionalMode, slot: MoodSlot): void {
+    const occurrence = this.playbackOccurrence;
+    if (!occurrence || occurrence.mode !== mode) {
+      slot.video.loop = true;
+      return;
+    }
+
+    slot.video.loop = false;
+    if (occurrence.phase === 'boundary' && occurrence.boundary && !slot.seekCleanup) {
+      this.seekPlaybackBoundary(occurrence, slot, occurrence.boundary);
+    } else if (
+      occurrence.phase === 'terminal' &&
+      slot.terminalPlaybackGeneration !== occurrence.generation &&
+      !slot.seekCleanup
+    ) {
+      this.restorePlaybackTerminal(occurrence, slot);
+    }
+  }
+
+  private getPlaybackBoundaryTarget(
+    occurrence: MoodPlaybackOccurrence,
+    slot: MoodSlot,
+    boundary: 'restart' | 'terminal',
+    frameDuration: number,
+  ): number {
+    const finiteDuration = Number.isFinite(slot.video.duration) ? slot.video.duration : 0;
+    const decodedEndTime = Math.max(
+      0,
+      (finiteDuration > 0 ? finiteDuration : slot.video.currentTime) - frameDuration,
+    );
+    const calibratedTerminalTime = Math.min(
+      decodedEndTime,
+      MODE_REPRESENTATIVE_PHASE_SECONDS[occurrence.mode],
+    );
+    return boundary === 'restart' ||
+      (occurrence.playback.playback !== 'loop' &&
+        occurrence.playback.endBehavior === 'reset-to-start')
+      ? Math.max(0, this.options.startTime)
+      : calibratedTerminalTime;
+  }
+
+  private restorePlaybackTerminal(occurrence: MoodPlaybackOccurrence, slot: MoodSlot): void {
+    if (!this.isCurrentPlaybackOccurrence(occurrence, slot)) return;
+    const source = getRazorSenseAsset({
+      assetsPath: this.options.assetsPath,
+      mode: occurrence.mode,
+      colorScheme: this.options.colorScheme,
+      viewport: 'desktop',
+    }).fallbackSource;
+    const frameDuration = 1 / Math.max(1, source.framerate);
+    const targetTime = this.getPlaybackBoundaryTarget(occurrence, slot, 'terminal', frameDuration);
+    const playbackGeneration = this.playbackGeneration;
+    const modeGeneration = this.modeGeneration;
+    const lifecycleGeneration = this.lifecycleGeneration;
+    slot.video.pause();
+    this.cancelVideoFrame(slot);
+    slot.seekCleanup = seekToRazorSenseVideoFrame({
+      video: slot.video,
+      targetTime,
+      frameRate: source.framerate,
+      shouldRemainPaused: true,
+      onReady: () => {
+        slot.seekCleanup = null;
+        if (
+          playbackGeneration !== this.playbackGeneration ||
+          modeGeneration !== this.modeGeneration ||
+          lifecycleGeneration !== this.lifecycleGeneration ||
+          occurrence.phase !== 'terminal' ||
+          !this.isCurrentPlaybackOccurrence(occurrence, slot)
+        ) {
+          return;
+        }
+        slot.terminalPlaybackGeneration = occurrence.generation;
+        slot.isDirty = true;
+        slot.lastUploadedTime = -1;
+        if (this.rendererReady) this.draw(performance.now(), false);
+      },
+    });
+  }
+
+  private handleVideoEnded(mode: RazorSenseEmotionalMode, slot: MoodSlot): void {
+    const occurrence = this.playbackOccurrence;
+    if (
+      !occurrence ||
+      occurrence.mode !== mode ||
+      occurrence.phase !== 'playing' ||
+      !this.shouldPlay() ||
+      !this.isCurrentPlaybackOccurrence(occurrence, slot)
+    ) {
+      return;
+    }
+
+    const iterationCount = occurrence.iterationCount + 1;
+    occurrence.iterationCount = iterationCount;
+    slot.isDirty = true;
+    slot.lastUploadedTime = -1;
+    if (this.rendererReady) this.draw(performance.now(), false);
+    this.options.onIteration?.(iterationCount);
+    if (!this.isCurrentPlaybackOccurrence(occurrence, slot)) return;
+
+    const boundary = shouldContinueAfterIteration(occurrence.playback, iterationCount)
+      ? 'restart'
+      : 'terminal';
+    this.seekPlaybackBoundary(occurrence, slot, boundary);
+  }
+
+  private seekPlaybackBoundary(
+    occurrence: MoodPlaybackOccurrence,
+    slot: MoodSlot,
+    boundary: 'restart' | 'terminal',
+  ): void {
+    if (!this.isCurrentPlaybackOccurrence(occurrence, slot)) return;
+    occurrence.phase = 'boundary';
+    occurrence.boundary = boundary;
+    slot.video.pause();
+    this.cancelVideoFrame(slot);
+    slot.seekCleanup?.();
+    slot.seekCleanup = null;
+
+    const source = getRazorSenseAsset({
+      assetsPath: this.options.assetsPath,
+      mode: occurrence.mode,
+      colorScheme: this.options.colorScheme,
+      viewport: 'desktop',
+    }).fallbackSource;
+    const frameDuration = 1 / Math.max(1, source.framerate);
+    const targetTime = this.getPlaybackBoundaryTarget(occurrence, slot, boundary, frameDuration);
+    const playbackGeneration = this.playbackGeneration;
+    const modeGeneration = this.modeGeneration;
+    const lifecycleGeneration = this.lifecycleGeneration;
+
+    slot.seekCleanup = seekToRazorSenseVideoFrame({
+      video: slot.video,
+      targetTime,
+      frameRate: source.framerate,
+      shouldRemainPaused: true,
+      onReady: () => {
+        slot.seekCleanup = null;
+        if (
+          playbackGeneration !== this.playbackGeneration ||
+          modeGeneration !== this.modeGeneration ||
+          lifecycleGeneration !== this.lifecycleGeneration ||
+          !this.shouldPlay() ||
+          !this.isCurrentPlaybackOccurrence(occurrence, slot) ||
+          occurrence.boundary !== boundary
+        ) {
+          return;
+        }
+
+        slot.isDirty = true;
+        slot.lastUploadedTime = -1;
+        if (boundary === 'restart') {
+          occurrence.phase = 'playing';
+          occurrence.boundary = null;
+          if (this.rendererReady) this.draw(performance.now(), false);
+          this.syncVideoPlayback();
+          return;
+        }
+
+        this.pendingPlaybackTerminal = {
+          playbackGeneration,
+          modeGeneration,
+          lifecycleGeneration,
+          mode: occurrence.mode,
+          slot,
+          iterationCount: occurrence.iterationCount,
+          targetTime,
+          frameDuration,
+        };
+        if (this.rendererReady) this.draw(performance.now(), false);
+      },
+    });
   }
 
   private canOwnMedia(): boolean {
@@ -569,7 +856,11 @@ class RazorSenseMoodMount {
           frameCallbackId: null,
           lastUploadedTime: -1,
           seekCleanup: null,
+          endedListener: () => this.handleVideoEnded(mode, slot),
+          terminalPlaybackGeneration: null,
         };
+        video.addEventListener('ended', slot.endedListener);
+        video.loop = !this.playbackOccurrence || this.playbackOccurrence.mode !== mode;
         this.slots.set(mode, slot);
         this.updateDiagnostics();
         return slot;
@@ -828,12 +1119,24 @@ class RazorSenseMoodMount {
     const shouldPlay = this.shouldPlay();
     this.slots.forEach((slot, mode) => {
       const contributes = this.modeContributes(mode);
-      if (shouldPlay && contributes) {
+      const occurrence = this.playbackOccurrence;
+      const isOccurrenceTarget = occurrence?.mode === mode;
+      slot.video.loop = !isOccurrenceTarget;
+      const canAdvanceOccurrence = !isOccurrenceTarget || occurrence.phase === 'playing';
+      if (shouldPlay && contributes && canAdvanceOccurrence) {
         slot.video.playbackRate = this.options.playbackRate;
         slot.video
           .play()
           .then(() => {
-            if (!this.rendererReady || !this.shouldPlay() || !this.modeContributes(mode)) {
+            const latestOccurrence = this.playbackOccurrence;
+            const canStillAdvanceOccurrence =
+              latestOccurrence?.mode !== mode || latestOccurrence.phase === 'playing';
+            if (
+              !this.rendererReady ||
+              !this.shouldPlay() ||
+              !this.modeContributes(mode) ||
+              !canStillAdvanceOccurrence
+            ) {
               slot.video.pause();
               return;
             }
@@ -860,13 +1163,20 @@ class RazorSenseMoodMount {
       this.disposed ||
       !this.rendererReady ||
       !this.shouldPlay() ||
-      !this.modeContributes(mode)
+      !this.modeContributes(mode) ||
+      (this.playbackOccurrence?.mode === mode && this.playbackOccurrence.phase !== 'playing')
     ) {
       return;
     }
     slot.frameCallbackId = slot.video.requestVideoFrameCallback(() => {
       slot.frameCallbackId = null;
-      if (this.disposed || this.slots.get(mode) !== slot) return;
+      if (
+        this.disposed ||
+        this.slots.get(mode) !== slot ||
+        (this.playbackOccurrence?.mode === mode && this.playbackOccurrence.phase !== 'playing')
+      ) {
+        return;
+      }
       slot.isDirty = true;
       this.scheduleRender();
       this.scheduleVideoFrame(mode, slot);
@@ -1047,6 +1357,8 @@ class RazorSenseMoodMount {
         slot.isDirty = true;
         slot.lastUploadedTime = -1;
       });
+      const targetSlot = this.slots.get(this.options.mode);
+      if (targetSlot) this.activatePlaybackForPreparedSlot(this.options.mode, targetSlot);
       const hadPresentedFirstFrame = this.hasPresentedFirstFrame;
       this.draw(performance.now(), false);
       if (hadPresentedFirstFrame) this.options.onFirstFrame?.();
@@ -1117,7 +1429,9 @@ class RazorSenseMoodMount {
 
     gl.useProgram(program);
     const pendingFrameReady = this.pendingFrameReady;
+    const pendingPlaybackTerminal = this.pendingPlaybackTerminal;
     let didUploadPendingFrame = false;
+    let didUploadPendingPlaybackTerminal = false;
     let didDrawVideoFrame = false;
     this.slots.forEach((slot, mode) => {
       if (!this.modeContributes(mode)) return;
@@ -1144,6 +1458,14 @@ class RazorSenseMoodMount {
         ) {
           didUploadPendingFrame = true;
         }
+        if (
+          pendingPlaybackTerminal?.slot === slot &&
+          pendingPlaybackTerminal.mode === mode &&
+          Math.abs(slot.video.currentTime - pendingPlaybackTerminal.targetTime) <=
+            pendingPlaybackTerminal.frameDuration
+        ) {
+          didUploadPendingPlaybackTerminal = true;
+        }
       } else if (canUpload) {
         didDrawVideoFrame = true;
       }
@@ -1156,13 +1478,37 @@ class RazorSenseMoodMount {
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     this.flushPendingCaptures(true);
 
-    if (didDrawVideoFrame && !this.hasPresentedFirstFrame) {
-      this.hasPresentedFirstFrame = true;
-      this.options.onFirstFrame?.();
-    }
     if (didUploadPendingFrame && this.pendingFrameReady === pendingFrameReady) {
       this.pendingFrameReady = null;
       this.options.onFrameReady?.();
+    }
+    if (
+      didUploadPendingPlaybackTerminal &&
+      this.pendingPlaybackTerminal === pendingPlaybackTerminal &&
+      pendingPlaybackTerminal
+    ) {
+      this.pendingPlaybackTerminal = null;
+      const occurrence = this.playbackOccurrence;
+      if (
+        occurrence &&
+        occurrence.mode === pendingPlaybackTerminal.mode &&
+        occurrence.generation === pendingPlaybackTerminal.playbackGeneration &&
+        pendingPlaybackTerminal.playbackGeneration === this.playbackGeneration &&
+        pendingPlaybackTerminal.modeGeneration === this.modeGeneration &&
+        pendingPlaybackTerminal.lifecycleGeneration === this.lifecycleGeneration &&
+        occurrence.phase === 'boundary' &&
+        occurrence.boundary === 'terminal' &&
+        this.isCurrentPlaybackOccurrence(occurrence, pendingPlaybackTerminal.slot)
+      ) {
+        occurrence.phase = 'terminal';
+        occurrence.boundary = null;
+        pendingPlaybackTerminal.slot.terminalPlaybackGeneration = occurrence.generation;
+        this.options.onTerminal?.(pendingPlaybackTerminal.iterationCount);
+      }
+    }
+    if (didDrawVideoFrame && !this.hasPresentedFirstFrame) {
+      this.hasPresentedFirstFrame = true;
+      this.options.onFirstFrame?.();
     }
   }
 
@@ -1225,6 +1571,7 @@ class RazorSenseMoodMount {
     if (!slot) return;
     slot.seekCleanup?.();
     slot.seekCleanup = null;
+    slot.video.removeEventListener('ended', slot.endedListener);
     this.cancelVideoFrame(slot);
     releaseVideo(slot.video);
     slot.texture?.destroy();
@@ -1252,6 +1599,7 @@ class RazorSenseMoodMount {
     this.buffers = null;
     this.rendererReady = false;
     this.pendingFrameReady = null;
+    this.pendingPlaybackTerminal = null;
     this.uniformLocations = {};
     this.updateDiagnostics();
   }
@@ -1259,6 +1607,7 @@ class RazorSenseMoodMount {
   private releaseRendererAfterFailure(): void {
     this.pauseAndCancelAllVideoCallbacks();
     this.pendingFrameReady = null;
+    this.pendingPlaybackTerminal = null;
     this.releaseRenderer(false);
   }
 
@@ -1343,7 +1692,10 @@ class RazorSenseMoodMount {
     this.disposed = true;
     this.modeGeneration += 1;
     this.lifecycleGeneration += 1;
+    this.playbackGeneration += 1;
     this.pendingFrameReady = null;
+    this.pendingPlaybackTerminal = null;
+    this.playbackOccurrence = null;
     this.pauseAndCancelAllVideoCallbacks();
     this.releaseAllSlots();
     this.releaseRenderer(loseContext);

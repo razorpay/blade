@@ -10,6 +10,8 @@ import {
   selectRazorSenseVideoSource,
 } from './razorSenseAssets';
 import type { RazorSenseLifecycleState } from './RazorSenseRuntime';
+import type { RazorSenseResolvedPlaybackPlan } from './razorSensePrograms';
+import { MODE_REPRESENTATIVE_PHASE_SECONDS } from './razorSensePrograms';
 import { seekToRazorSenseVideoFrame } from './RazorSenseVideoFrame';
 import type { CancelVideoFrameWait } from './RazorSenseVideoFrame';
 import type { SemanticRazorSenseProps } from './types';
@@ -60,12 +62,23 @@ type RazorSenseMoodProps = Omit<SemanticRazorSenseProps, 'mode'> & {
   isRuntimeAdmitted?: boolean;
   /** @internal Used by the fallback exporter after the requested frame is presented. */
   onFrameReady?: () => void;
+  /** @internal Reports every exact incoming frame without changing transition behavior. */
+  onPresentationReady?: (mode: RazorSenseEmotionalMode) => void;
+  /** @internal Identifies a semantic playback occurrence. */
+  occurrenceId?: number;
+  /** @internal Resolved semantic playback owned by the presentation engine. */
+  playback?: RazorSenseResolvedPlaybackPlan;
+  /** @internal Reports one-based completed source iterations. */
+  onIteration?: (iteration: number) => void;
+  /** @internal Reports the exact finite terminal frame after it is presented. */
+  onTerminal?: (iterationCount: number) => void;
 };
 
 type MobileMoodLayer = {
   id: number;
   mode: RazorSenseEmotionalMode;
   colorScheme: ColorSchemeNames;
+  occurrenceId?: number;
   targetTime: number;
   source?: string;
   opacity: number;
@@ -78,6 +91,24 @@ const releaseVideo = (video: HTMLVideoElement | undefined): void => {
   video.removeAttribute('src');
   video.load();
 };
+
+const getPlaybackOccurrenceKey = (
+  mode: RazorSenseEmotionalMode,
+  occurrenceId: number | undefined,
+  playback: RazorSenseResolvedPlaybackPlan | undefined,
+): string =>
+  `${mode}:${occurrenceId ?? 'legacy'}:${playback?.playback ?? 'native'}:${
+    playback?.playback === 'repeat' ? playback.repeatCount : ''
+  }:${
+    playback?.playback === 'once' || playback?.playback === 'repeat' ? playback.endBehavior : ''
+  }`;
+
+const shouldContinueAfterIteration = (
+  playback: RazorSenseResolvedPlaybackPlan,
+  iterationCount: number,
+): boolean =>
+  playback.playback === 'loop' ||
+  (playback.playback === 'repeat' && iterationCount < playback.repeatCount + 1);
 
 const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
   function DesktopRazorSenseMood(props, forwardedRef) {
@@ -96,6 +127,11 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       onLoad,
       onError,
       onFrameReady,
+      onPresentationReady,
+      occurrenceId,
+      playback,
+      onIteration,
+      onTerminal,
       runtimeState = 'active',
       isRuntimeAdmitted = true,
     } = props;
@@ -103,9 +139,14 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     const snapshotCanvasRef = useRef<HTMLCanvasElement>(null);
     const mountRef = useRef<RazorSenseMoodMount | null>(null);
     const mountedModeRef = useRef(mode);
+    const mountedOccurrenceKeyRef = useRef(getPlaybackOccurrenceKey(mode, occurrenceId, playback));
     const lifecycleKeyRef = useRef(`${runtimeState}:${isRuntimeAdmitted}`);
     const onLoadRef = useRef(onLoad);
     const onErrorRef = useRef(onError);
+    const onFrameReadyRef = useRef(onFrameReady);
+    const onPresentationReadyRef = useRef(onPresentationReady);
+    const onIterationRef = useRef(onIteration);
+    const onTerminalRef = useRef(onTerminal);
     const hasLoadedRef = useRef(false);
     const [hasSnapshot, setHasSnapshot] = useState(false);
     const [showSnapshot, setShowSnapshot] = useState(false);
@@ -114,6 +155,10 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
 
     onLoadRef.current = onLoad;
     onErrorRef.current = onError;
+    onFrameReadyRef.current = onFrameReady;
+    onPresentationReadyRef.current = onPresentationReady;
+    onIterationRef.current = onIteration;
+    onTerminalRef.current = onTerminal;
 
     useEffect(() => {
       if (!containerRef.current) return undefined;
@@ -129,7 +174,14 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         colorScheme,
         runtimeState,
         isRuntimeAdmitted,
-        onFrameReady,
+        occurrenceId,
+        playback,
+        onIteration: (iteration) => onIterationRef.current?.(iteration),
+        onTerminal: (iterationCount) => onTerminalRef.current?.(iterationCount),
+        onFrameReady: () => {
+          onFrameReadyRef.current?.();
+          onPresentationReadyRef.current?.(mountedModeRef.current);
+        },
         onFirstFrame: () => {
           if (!active) return;
           setHasError(false);
@@ -150,6 +202,7 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       });
       mountRef.current = mount;
       mountedModeRef.current = mode;
+      mountedOccurrenceKeyRef.current = getPlaybackOccurrenceKey(mode, occurrenceId, playback);
       lifecycleKeyRef.current = `${runtimeState}:${isRuntimeAdmitted}`;
 
       void mount.loadAssets().catch(() => {
@@ -168,13 +221,15 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     }, [assetsPath]);
 
     useEffect(() => {
-      if (!mountRef.current || mountedModeRef.current === mode) return;
+      const occurrenceKey = getPlaybackOccurrenceKey(mode, occurrenceId, playback);
+      if (!mountRef.current || mountedOccurrenceKeyRef.current === occurrenceKey) return;
       mountedModeRef.current = mode;
-      void mountRef.current.setMode(mode).catch(() => {
+      mountedOccurrenceKeyRef.current = occurrenceKey;
+      void mountRef.current.setMode(mode, { occurrenceId, playback }).catch(() => {
         setHasError(true);
         setShowSnapshot(true);
       });
-    }, [mode]);
+    }, [mode, occurrenceId, playback]);
 
     useEffect(() => {
       mountRef.current?.setOptions({
@@ -184,17 +239,14 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         startTime,
         interactive,
         colorScheme,
-        onFrameReady,
+        onFrameReady: () => {
+          onFrameReadyRef.current?.();
+          onPresentationReadyRef.current?.(mountedModeRef.current);
+        },
+        onIteration: (iteration) => onIterationRef.current?.(iteration),
+        onTerminal: (iterationCount) => onTerminalRef.current?.(iterationCount),
       });
-    }, [
-      colorScheme,
-      interactive,
-      modeTransitionDuration,
-      onFrameReady,
-      paused,
-      playbackRate,
-      startTime,
-    ]);
+    }, [colorScheme, interactive, modeTransitionDuration, paused, playbackRate, startTime]);
 
     useLayoutEffect(() => {
       const key = `${runtimeState}:${isRuntimeAdmitted}`;
@@ -314,6 +366,11 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       onLoad,
       onError,
       onFrameReady,
+      onPresentationReady,
+      occurrenceId,
+      playback,
+      onIteration,
+      onTerminal,
       runtimeState = 'active',
       isRuntimeAdmitted = true,
     } = props;
@@ -326,6 +383,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       id: 1,
       mode,
       colorScheme,
+      occurrenceId,
       targetTime: Math.max(0, startTime),
       opacity: 0,
       status: 'loading',
@@ -340,7 +398,11 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     const attemptByLayerIdRef = useRef(new Map<number, number>());
     const requestedLayerIdRef = useRef(1);
     const requestedKeyRef = useRef(
-      `${mode}:${colorScheme}:${assetsPath}:${Math.max(0, startTime)}`,
+      `${colorScheme}:${assetsPath}:${Math.max(0, startTime)}:${getPlaybackOccurrenceKey(
+        mode,
+        occurrenceId,
+        playback,
+      )}`,
     );
     const transitionGenerationRef = useRef(0);
     const resourceGenerationRef = useRef(0);
@@ -355,6 +417,21 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     const onLoadRef = useRef(onLoad);
     const onErrorRef = useRef(onError);
     const onFrameReadyRef = useRef(onFrameReady);
+    const onPresentationReadyRef = useRef(onPresentationReady);
+    const onIterationRef = useRef(onIteration);
+    const onTerminalRef = useRef(onTerminal);
+    const playbackRef = useRef(playback);
+    const occurrenceIdRef = useRef(occurrenceId);
+    const playbackFrameWaitByLayerIdRef = useRef(new Map<number, CancelVideoFrameWait>());
+    const playbackIterationByLayerIdRef = useRef(new Map<number, number>());
+    const playbackPhaseByLayerIdRef = useRef(
+      new Map<number, 'playing' | 'boundary' | 'terminal'>(),
+    );
+    const playbackBoundaryByLayerIdRef = useRef(new Map<number, 'restart' | 'terminal'>());
+    if (playback && !playbackPhaseByLayerIdRef.current.has(initialLayerRef.current.id)) {
+      playbackIterationByLayerIdRef.current.set(initialLayerRef.current.id, 0);
+      playbackPhaseByLayerIdRef.current.set(initialLayerRef.current.id, 'playing');
+    }
     const shouldPlayRef = useRef(false);
     const canOwnMediaRef = useRef(false);
     const [hasSnapshot, setHasSnapshot] = useState(false);
@@ -372,6 +449,11 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     onLoadRef.current = onLoad;
     onErrorRef.current = onError;
     onFrameReadyRef.current = onFrameReady;
+    onPresentationReadyRef.current = onPresentationReady;
+    onIterationRef.current = onIteration;
+    onTerminalRef.current = onTerminal;
+    playbackRef.current = playback;
+    occurrenceIdRef.current = occurrenceId;
     shouldPlayRef.current = shouldPlay;
     canOwnMediaRef.current = canOwnMedia;
 
@@ -401,6 +483,11 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       (layerId: number): void => {
         cancelFrameWait(layerId);
         readyLayerIdsRef.current.delete(layerId);
+        playbackFrameWaitByLayerIdRef.current.get(layerId)?.();
+        playbackFrameWaitByLayerIdRef.current.delete(layerId);
+        playbackIterationByLayerIdRef.current.delete(layerId);
+        playbackPhaseByLayerIdRef.current.delete(layerId);
+        playbackBoundaryByLayerIdRef.current.delete(layerId);
         resolvingAttemptByLayerIdRef.current.delete(layerId);
         attemptByLayerIdRef.current.delete(layerId);
         releaseVideo(videoByLayerIdRef.current.get(layerId));
@@ -475,10 +562,12 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         nextMode: RazorSenseEmotionalMode,
         nextColorScheme: ColorSchemeNames,
         targetTime: number,
+        nextOccurrenceId = occurrenceIdRef.current,
       ): MobileMoodLayer => ({
         id: nextLayerIdRef.current++,
         mode: nextMode,
         colorScheme: nextColorScheme,
+        occurrenceId: nextOccurrenceId,
         targetTime: Math.max(0, targetTime),
         opacity: 0,
         status: 'loading',
@@ -530,11 +619,14 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           });
         }
 
+        if (isFirstExactReady) {
+          onFrameReadyRef.current?.();
+          onPresentationReadyRef.current?.(incomingLayer.mode);
+        }
         if (isFirstExactReady && !hasLoadedRef.current) {
           hasLoadedRef.current = true;
           onLoadRef.current?.();
         }
-        if (isFirstExactReady) onFrameReadyRef.current?.();
 
         const outgoingLayerIds = currentLayers
           .filter((layer) => layer.id !== layerId)
@@ -602,7 +694,10 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
               return;
             }
             handleLayerReady(layer.id, generation);
-            if (shouldPlayRef.current) video.play().catch(() => undefined);
+            const playbackPhase = playbackPhaseByLayerIdRef.current.get(layer.id);
+            if (shouldPlayRef.current && (!playbackRef.current || playbackPhase === 'playing')) {
+              video.play().catch(() => undefined);
+            }
           },
         });
         frameWaitByLayerIdRef.current.set(layer.id, cleanup);
@@ -610,20 +705,147 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       [assetsPath, handleLayerReady, playbackRate],
     );
 
+    const seekPlaybackBoundary = useCallback(
+      (layer: MobileMoodLayer, video: HTMLVideoElement, boundary: 'restart' | 'terminal'): void => {
+        const plan = playbackRef.current;
+        if (
+          !plan ||
+          !isMountedRef.current ||
+          layer.id !== requestedLayerIdRef.current ||
+          layer.mode !== mode ||
+          layer.occurrenceId !== occurrenceIdRef.current
+        ) {
+          return;
+        }
+
+        playbackPhaseByLayerIdRef.current.set(layer.id, 'boundary');
+        playbackBoundaryByLayerIdRef.current.set(layer.id, boundary);
+        playbackFrameWaitByLayerIdRef.current.get(layer.id)?.();
+        playbackFrameWaitByLayerIdRef.current.delete(layer.id);
+        video.pause();
+
+        const source = getRazorSenseAsset({
+          assetsPath,
+          mode: layer.mode,
+          colorScheme: layer.colorScheme,
+          viewport: 'mobile',
+        }).fallbackSource;
+        const frameDuration = 1 / Math.max(1, source.framerate);
+        const finiteDuration = Number.isFinite(video.duration) ? video.duration : 0;
+        const decodedEndTime = Math.max(
+          0,
+          (finiteDuration > 0 ? finiteDuration : video.currentTime) - frameDuration,
+        );
+        const calibratedTerminalTime = Math.min(
+          decodedEndTime,
+          MODE_REPRESENTATIVE_PHASE_SECONDS[layer.mode],
+        );
+        const targetTime =
+          boundary === 'restart' ||
+          (plan.playback !== 'loop' && plan.endBehavior === 'reset-to-start')
+            ? Math.max(0, startTime)
+            : calibratedTerminalTime;
+        const transitionGeneration = transitionGenerationRef.current;
+        const lifecycleGeneration = lifecycleGenerationRef.current;
+
+        let cleanup: CancelVideoFrameWait = () => undefined;
+        cleanup = seekToRazorSenseVideoFrame({
+          video,
+          targetTime,
+          frameRate: source.framerate,
+          shouldRemainPaused: true,
+          onReady: () => {
+            if (playbackFrameWaitByLayerIdRef.current.get(layer.id) === cleanup) {
+              playbackFrameWaitByLayerIdRef.current.delete(layer.id);
+            }
+            if (
+              !isMountedRef.current ||
+              transitionGeneration !== transitionGenerationRef.current ||
+              lifecycleGeneration !== lifecycleGenerationRef.current ||
+              !shouldPlayRef.current ||
+              layer.id !== requestedLayerIdRef.current ||
+              layer.occurrenceId !== occurrenceIdRef.current ||
+              playbackBoundaryByLayerIdRef.current.get(layer.id) !== boundary
+            ) {
+              return;
+            }
+
+            if (boundary === 'restart') {
+              playbackPhaseByLayerIdRef.current.set(layer.id, 'playing');
+              playbackBoundaryByLayerIdRef.current.delete(layer.id);
+              video.play().catch(() => undefined);
+              return;
+            }
+
+            playbackPhaseByLayerIdRef.current.set(layer.id, 'terminal');
+            playbackBoundaryByLayerIdRef.current.delete(layer.id);
+            onTerminalRef.current?.(playbackIterationByLayerIdRef.current.get(layer.id) ?? 0);
+          },
+        });
+        playbackFrameWaitByLayerIdRef.current.set(layer.id, cleanup);
+      },
+      [assetsPath, mode, startTime],
+    );
+
+    const handlePlaybackEnded = useCallback(
+      (layer: MobileMoodLayer, video: HTMLVideoElement): void => {
+        const plan = playbackRef.current;
+        if (
+          !plan ||
+          !shouldPlayRef.current ||
+          layer.id !== requestedLayerIdRef.current ||
+          layer.occurrenceId !== occurrenceIdRef.current ||
+          playbackPhaseByLayerIdRef.current.get(layer.id) !== 'playing'
+        ) {
+          return;
+        }
+
+        const iterationCount = (playbackIterationByLayerIdRef.current.get(layer.id) ?? 0) + 1;
+        const boundary = shouldContinueAfterIteration(plan, iterationCount)
+          ? 'restart'
+          : 'terminal';
+        playbackIterationByLayerIdRef.current.set(layer.id, iterationCount);
+        playbackPhaseByLayerIdRef.current.set(layer.id, 'boundary');
+        playbackBoundaryByLayerIdRef.current.set(layer.id, boundary);
+        onIterationRef.current?.(iterationCount);
+        if (
+          layer.id === requestedLayerIdRef.current &&
+          layer.occurrenceId === occurrenceIdRef.current
+        ) {
+          seekPlaybackBoundary(layer, video, boundary);
+        }
+      },
+      [seekPlaybackBoundary],
+    );
+
     useLayoutEffect(() => {
-      const requestedKey = `${mode}:${colorScheme}:${assetsPath}:${Math.max(0, startTime)}`;
+      const requestedKey = `${colorScheme}:${assetsPath}:${Math.max(
+        0,
+        startTime,
+      )}:${getPlaybackOccurrenceKey(mode, occurrenceId, playback)}`;
       if (requestedKeyRef.current === requestedKey) return;
+      const previousLayers = layersRef.current;
+      const previousRequested =
+        previousLayers.find((layer) => layer.id === requestedLayerIdRef.current) ??
+        previousLayers[previousLayers.length - 1];
+      const previousIteration = previousRequested
+        ? playbackIterationByLayerIdRef.current.get(previousRequested.id)
+        : undefined;
+      const previousPhase = previousRequested
+        ? playbackPhaseByLayerIdRef.current.get(previousRequested.id)
+        : undefined;
+      const previousBoundary = previousRequested
+        ? playbackBoundaryByLayerIdRef.current.get(previousRequested.id)
+        : undefined;
       requestedKeyRef.current = requestedKey;
       transitionGenerationRef.current += 1;
       clearTransitionWork();
       frameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
       frameWaitByLayerIdRef.current.clear();
+      playbackFrameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
+      playbackFrameWaitByLayerIdRef.current.clear();
       preparedLayerIdsRef.current.clear();
 
-      const previousLayers = layersRef.current;
-      const previousRequested =
-        previousLayers.find((layer) => layer.id === requestedLayerIdRef.current) ??
-        previousLayers[previousLayers.length - 1];
       let targetTime = Math.max(0, startTime);
       if (previousRequested?.mode === mode && previousRequested.colorScheme !== colorScheme) {
         const previousVideo = videoByLayerIdRef.current.get(previousRequested.id);
@@ -632,6 +854,21 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         }
       }
       const incomingLayer = createLayer(mode, colorScheme, targetTime);
+      if (playback) {
+        const isSameOccurrenceAppearanceChange =
+          previousRequested?.mode === mode && previousRequested.occurrenceId === occurrenceId;
+        playbackIterationByLayerIdRef.current.set(
+          incomingLayer.id,
+          isSameOccurrenceAppearanceChange ? previousIteration ?? 0 : 0,
+        );
+        playbackPhaseByLayerIdRef.current.set(
+          incomingLayer.id,
+          isSameOccurrenceAppearanceChange ? previousPhase ?? 'playing' : 'playing',
+        );
+        if (isSameOccurrenceAppearanceChange && previousBoundary) {
+          playbackBoundaryByLayerIdRef.current.set(incomingLayer.id, previousBoundary);
+        }
+      }
       requestedLayerIdRef.current = incomingLayer.id;
       readyLayerIdsRef.current.delete(incomingLayer.id);
       setHasError(false);
@@ -660,6 +897,8 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       colorScheme,
       createLayer,
       mode,
+      occurrenceId,
+      playback,
       releaseLayersExcept,
       replaceLayers,
       startTime,
@@ -669,6 +908,25 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       const key = `${runtimeState}:${isRuntimeAdmitted}`;
       if (lifecycleKeyRef.current === key) return;
       lifecycleKeyRef.current = key;
+      const previousRequested = layersRef.current.find(
+        (layer) => layer.id === requestedLayerIdRef.current,
+      );
+      const previousIteration = previousRequested
+        ? playbackIterationByLayerIdRef.current.get(previousRequested.id) ?? 0
+        : 0;
+      const previousPhase = previousRequested
+        ? playbackPhaseByLayerIdRef.current.get(previousRequested.id) ?? 'playing'
+        : 'playing';
+      const previousBoundary = previousRequested
+        ? playbackBoundaryByLayerIdRef.current.get(previousRequested.id)
+        : undefined;
+      const previousVideo = previousRequested
+        ? videoByLayerIdRef.current.get(previousRequested.id)
+        : undefined;
+      const previousTargetTime =
+        previousVideo && Number.isFinite(previousVideo.currentTime)
+          ? previousVideo.currentTime
+          : startTime;
       clearTransitionWork();
       lifecycleGenerationRef.current += 1;
       resourceGenerationRef.current += 1;
@@ -676,6 +934,8 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       attemptByLayerIdRef.current.clear();
       frameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
       frameWaitByLayerIdRef.current.clear();
+      playbackFrameWaitByLayerIdRef.current.forEach((cleanup) => cleanup());
+      playbackFrameWaitByLayerIdRef.current.clear();
       preparedLayerIdsRef.current.clear();
 
       if (runtimeState === 'suspended') {
@@ -699,7 +959,14 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         captureCurrentFrame(true);
         transitionGenerationRef.current += 1;
         releaseLayersExcept(new Set());
-        const nextLayer = createLayer(mode, colorScheme, startTime);
+        const nextLayer = createLayer(mode, colorScheme, previousTargetTime);
+        if (playback) {
+          playbackIterationByLayerIdRef.current.set(nextLayer.id, previousIteration);
+          playbackPhaseByLayerIdRef.current.set(nextLayer.id, previousPhase);
+          if (previousBoundary) {
+            playbackBoundaryByLayerIdRef.current.set(nextLayer.id, previousBoundary);
+          }
+        }
         requestedLayerIdRef.current = nextLayer.id;
         replaceLayers([nextLayer]);
         return;
@@ -709,7 +976,14 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         (layer) => layer.id === requestedLayerIdRef.current,
       );
       if (!requestedLayer) {
-        requestedLayer = createLayer(mode, colorScheme, startTime);
+        requestedLayer = createLayer(mode, colorScheme, previousTargetTime);
+        if (playback) {
+          playbackIterationByLayerIdRef.current.set(requestedLayer.id, previousIteration);
+          playbackPhaseByLayerIdRef.current.set(requestedLayer.id, previousPhase);
+          if (previousBoundary) {
+            playbackBoundaryByLayerIdRef.current.set(requestedLayer.id, previousBoundary);
+          }
+        }
         requestedLayerIdRef.current = requestedLayer.id;
         replaceLayers([requestedLayer]);
         return;
@@ -733,6 +1007,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       handleLayerReady,
       isRuntimeAdmitted,
       mode,
+      playback,
       prepareLayer,
       releaseLayersExcept,
       replaceLayers,
@@ -820,10 +1095,39 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       videoByLayerIdRef.current.forEach((video, layerId) => {
         video.playbackRate = playbackRate;
         const isReady = readyLayerIdsRef.current.has(layerId);
-        if (shouldPlay && isReady) video.play().catch(() => undefined);
-        else video.pause();
+        const layer = layersRef.current.find((candidate) => candidate.id === layerId);
+        const isPlaybackTarget = Boolean(
+          playback && layer && layerId === requestedLayerIdRef.current,
+        );
+        video.loop = !isPlaybackTarget;
+        if (!shouldPlay || !isReady) {
+          video.pause();
+          return;
+        }
+        if (!isPlaybackTarget || !layer) {
+          video.play().catch(() => undefined);
+          return;
+        }
+
+        const phase = playbackPhaseByLayerIdRef.current.get(layerId) ?? 'playing';
+        if (phase === 'terminal') {
+          video.pause();
+          return;
+        }
+        if (phase === 'boundary') {
+          const boundary = playbackBoundaryByLayerIdRef.current.get(layerId);
+          if (boundary && !playbackFrameWaitByLayerIdRef.current.has(layerId)) {
+            seekPlaybackBoundary(layer, video, boundary);
+          }
+          return;
+        }
+        if (video.ended) {
+          handlePlaybackEnded(layer, video);
+          return;
+        }
+        video.play().catch(() => undefined);
       });
-    }, [layers, playbackRate, shouldPlay]);
+    }, [handlePlaybackEnded, layers, playback, playbackRate, seekPlaybackBoundary, shouldPlay]);
 
     useEffect(
       () => () => {
@@ -877,6 +1181,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           layer.source ? (
             <video
               key={layer.id}
+              crossOrigin="anonymous"
               ref={(video) => {
                 if (video) videoByLayerIdRef.current.set(layer.id, video);
                 else videoByLayerIdRef.current.delete(layer.id);
@@ -886,10 +1191,11 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
               data-razor-sense-mobile-layer-status={layer.status}
               src={layer.source}
               muted
-              loop
+              loop={!playback || layer.id !== requestedLayerIdRef.current}
               playsInline
               preload="auto"
               onLoadedData={(event) => prepareLayer(layer, event.currentTarget)}
+              onEnded={(event) => handlePlaybackEnded(layer, event.currentTarget)}
               onError={() => {
                 if (
                   layer.id !== requestedLayerIdRef.current ||
@@ -944,11 +1250,12 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
                 objectFit: 'cover',
                 opacity: layer.opacity,
                 transform: layer.colorScheme === 'dark' ? 'scaleX(1.2)' : 'scaleX(1)',
-                transition: `${
+                transitionDuration: `${
                   layer.id === initialLayerRef.current.id && !hasLoadedRef.current
                     ? FADE_IN_MS
                     : transitionDurationMs
-                }ms ease opacity`,
+                }ms`,
+                transitionTimingFunction: 'ease',
                 transitionProperty: 'opacity, transform',
                 pointerEvents: 'none',
               }}

@@ -8,6 +8,8 @@ import type { RazorSenseMode, RazorSenseOperationalMode } from './modes';
 import { getRazorSenseOperationalModeVideoSources } from './modes';
 import { selectRazorSenseVideoSource } from './razorSenseAssets';
 import { preloadRazorSenseVideo } from './RazorSensePreloadBroker';
+import { getRazorSenseDirectVideoSource, getRazorSenseProgram } from './razorSensePrograms';
+import type { RazorSenseTarget } from './razorSenseMotionTypes';
 import type { RazorSensePreloadReadiness } from './RazorSensePreloadBroker';
 import type {
   LegacyRzpGlassProps,
@@ -341,6 +343,42 @@ async function preloadRazorSenseModeAssets(
   );
 }
 
+/** Prepares a declarative target without mounting its renderer. */
+async function preloadRazorSenseTarget(
+  target: RazorSenseTarget,
+  assetsPath: string = DEFAULT_CDN_PATH,
+  colorScheme: ColorSchemeNames = 'light',
+): Promise<void> {
+  if (typeof document === 'undefined' || typeof Image === 'undefined') return;
+  const program = getRazorSenseProgram(target);
+  const isMobile =
+    typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 809.98px)').matches;
+  const still = program.representativeStills[colorScheme][isMobile ? 'mobile' : 'desktop'];
+  const stillPromise = loadImage(
+    `${assetsPath.replace(/\/$/, '')}/${still.file.replace(/^\//, '')}`,
+  );
+
+  let rendererPromise: Promise<void>;
+  if (program.rendererFamily === 'legacy') {
+    rendererPromise = preloadRazorSenseAssets(program.legacyPreset, assetsPath);
+  } else if (
+    program.authoredAssetKey === 'audioWave' ||
+    program.authoredAssetKey === 'bottomWave'
+  ) {
+    const sourceFile = getRazorSenseDirectVideoSource(program, colorScheme);
+    rendererPromise = preloadRazorSenseVideo(
+      `${assetsPath.replace(/\/$/, '')}/${sourceFile}`,
+      'loadeddata',
+    );
+  } else if (program.visualMode) {
+    rendererPromise = preloadRazorSenseModeAssets(program.visualMode, assetsPath, colorScheme);
+  } else {
+    rendererPromise = Promise.resolve();
+  }
+
+  await Promise.all([stillPromise, rendererPromise]);
+}
+
 export {
   DEFAULT_CDN_PATH,
   getDefaultAssets,
@@ -352,6 +390,7 @@ export {
   preloadRazorSense,
   preloadRazorSenseAssets,
   preloadRazorSenseModeAssets,
+  preloadRazorSenseTarget,
   getPresetAssets,
   resolveConfig,
 };

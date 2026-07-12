@@ -12,6 +12,7 @@ import { RazorSenseMood } from './RazorSenseMood';
 import type { RazorSenseEmotionalMode, RazorSenseMode, RazorSenseOperationalMode } from './modes';
 import { isRazorSenseEmotionalMode } from './modes';
 import type { RzpGlassPreset } from './presets';
+import type { RazorSenseResolvedPlaybackPlan } from './razorSensePrograms';
 import type {
   LegacyRzpGlassProps,
   RzpGlassConfig,
@@ -48,7 +49,7 @@ const CANONICAL_SEMANTIC_PROP_KEYS = [
   'modeTransitionDuration',
 ] as const;
 
-const LEGACY_ONLY_PROP_KEYS = [
+const RZP_GLASS_LEGACY_ONLY_PROP_KEYS = [
   'inputMin',
   'inputMax',
   'modifyGamma',
@@ -109,12 +110,29 @@ const hasCanonicalSemanticSignal = (props: RuntimeRazorSenseProps): boolean =>
   CANONICAL_SEMANTIC_PROP_KEYS.some((key) => hasDefinedProp(props, key));
 
 const getDefinedLegacyOnlyKeys = (props: RuntimeRazorSenseProps): string[] => {
-  const keys = LEGACY_ONLY_PROP_KEYS.filter((key) => hasDefinedProp(props, key));
+  const keys = RZP_GLASS_LEGACY_ONLY_PROP_KEYS.filter((key) => hasDefinedProp(props, key));
   const preset = props.preset as RzpGlassPreset | undefined;
   return preset && LEGACY_PRESETS.has(preset) ? ['preset', ...keys] : keys;
 };
 
-const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function LegacyRzpGlass(
+type LegacyRzpGlassInternalProps = LegacyRzpGlassProps & {
+  /** @internal Prioritizes an incoming renderer without increasing global caps. */
+  runtimePriority?: number;
+  /** @internal A new identity replays the same preset without remounting WebGL. */
+  occurrenceId?: number;
+  /** @internal Enables declarative source-boundary playback. */
+  playback?: RazorSenseResolvedPlaybackPlan;
+  /** @internal Fired after the exact occurrence start frame has been drawn. */
+  onPresentationReady?: () => void;
+  /** @internal Fired at every completed source iteration. */
+  onIteration?: (iteration: number) => void;
+  /** @internal Fired once after the finite terminal frame has been drawn. */
+  onTerminal?: (iterationCount: number) => void;
+};
+
+type LegacyInternalProps = LegacyRzpGlassInternalProps;
+
+const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyInternalProps>(function LegacyRzpGlass(
   props,
   forwardedRef,
 ) {
@@ -133,6 +151,12 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
     gradientMap2Src: gradientMap2SrcProp,
     centerGradientMapSrc: centerGradientMapSrcProp,
     imageSrc: imageSrcProp,
+    occurrenceId,
+    playback,
+    onPresentationReady,
+    onIteration,
+    onTerminal,
+    runtimePriority,
     ...configProps
   } = props;
 
@@ -161,28 +185,41 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
   const mountRef = useRef<RzpGlassMount | null>(null);
   const fadeTimerRef = useRef<number>();
   const isFadeCompleteRef = useRef(false);
-  const resolvedConfig: Partial<RzpGlassConfig> = resolveConfig(props, assetsPath);
+  const hadManagedPlaybackRef = useRef(false);
+  const onErrorRef = useRef(onError);
+  const resolvedConfig: Partial<RzpGlassConfig> = resolveConfig(configProps, assetsPath);
   const resolvedIsPaused = resolvedConfig.paused ?? false;
   const lifecycle = useRazorSenseLifecycle(divRef, {
     family: 'legacy',
     isPaused: resolvedIsPaused,
     isInteractive: false,
+    priority: runtimePriority,
   });
+  const shouldMountRenderer = lifecycle.state === 'active' && lifecycle.isAdmitted;
   const effectivePaused = resolvedIsPaused || lifecycle.state !== 'active' || !lifecycle.isAdmitted;
   const effectivePausedRef = useRef(effectivePaused);
   const userWantsPausedRef = useRef(resolvedIsPaused);
   effectivePausedRef.current = effectivePaused;
   userWantsPausedRef.current = resolvedIsPaused;
+  onErrorRef.current = onError;
 
   // Initialize on mount
   useEffect(() => {
+    if (!shouldMountRenderer) return undefined;
+    let isCurrent = true;
+    let mountedCanvas: HTMLCanvasElement | undefined;
+    const handleContextLost = (event: Event): void => {
+      event.preventDefault();
+      onErrorRef.current?.(new Error('RazorSense: Legacy WebGL context was lost.'));
+    };
     const init = async () => {
       if (!divRef.current || mountRef.current) return;
 
       try {
+        setError(null);
         isFadeCompleteRef.current = false;
         const config = {
-          ...resolveConfig(props, assetsPath),
+          ...resolveConfig(configProps, assetsPath),
           paused: effectivePaused,
         };
 
@@ -197,8 +234,22 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
           },
           config,
         );
+        mountedCanvas = mountRef.current.canvasElement;
+        mountedCanvas.addEventListener('webglcontextlost', handleContextLost);
+
+        if (playback) {
+          hadManagedPlaybackRef.current = true;
+          mountRef.current.setPlaybackOccurrence({
+            occurrenceId: occurrenceId ?? 0,
+            playback,
+            onPresentationReady,
+            onIteration,
+            onTerminal,
+          });
+        }
 
         await mountRef.current.loadAssets();
+        if (!isCurrent || !mountRef.current) return;
 
         // Pause the video during the CSS fade-in so one-shot animations
         // don't burn frames while the component is still transparent.
@@ -220,20 +271,23 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
           onLoad?.();
         }, FADE_IN_MS);
       } catch (err) {
+        if (!isCurrent) return;
         const error = err instanceof Error ? err : new Error(String(err));
         setError(error);
-        onError?.(error);
+        onErrorRef.current?.(error);
       }
     };
 
     void init();
 
     return () => {
+      isCurrent = false;
       if (fadeTimerRef.current !== undefined) {
         window.clearTimeout(fadeTimerRef.current);
         fadeTimerRef.current = undefined;
       }
       isFadeCompleteRef.current = false;
+      mountedCanvas?.removeEventListener('webglcontextlost', handleContextLost);
       mountRef.current?.dispose();
       mountRef.current = null;
       setIsInitialized(false);
@@ -246,13 +300,35 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
     gradientMap2Src,
     centerGradientMapSrc,
     configProps.preset,
+    shouldMountRenderer,
   ]);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return;
+    if (!playback) {
+      if (hadManagedPlaybackRef.current) {
+        hadManagedPlaybackRef.current = false;
+        mount.setPlaybackOccurrence(undefined);
+      }
+      return;
+    }
+
+    hadManagedPlaybackRef.current = true;
+    mount.setPlaybackOccurrence({
+      occurrenceId: occurrenceId ?? 0,
+      playback,
+      onPresentationReady,
+      onIteration,
+      onTerminal,
+    });
+  }, [occurrenceId, onIteration, onPresentationReady, onTerminal, playback]);
 
   // Update uniforms when config props change
   useEffect(() => {
     if (isInitialized && mountRef.current) {
       const config = {
-        ...resolveConfig(props, assetsPath),
+        ...resolveConfig(configProps, assetsPath),
         paused: effectivePaused || !isFadeCompleteRef.current,
       };
       mountRef.current.setUniforms(config);
@@ -364,6 +440,8 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
         } as never
       }
       {...getStyledProps(props)}
+      data-razor-sense-runtime-state={lifecycle.state}
+      data-razor-sense-runtime-admitted={lifecycle.isAdmitted ? 'true' : 'false'}
       {...metaAttribute({ name: MetaConstants.RazorSense, testID })}
       {...makeAnalyticsAttribute(props)}
     />
@@ -372,10 +450,25 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
 
 type SemanticRendererFamily = 'authored' | 'emotional';
 
+type SemanticRazorSenseInternalProps = SemanticRazorSenseProps & {
+  /** @internal Prioritizes an incoming renderer without increasing global caps. */
+  runtimePriority?: number;
+  /** @internal A new identity replays the same semantic target without remounting its renderer. */
+  occurrenceId?: number;
+  /** @internal Enables declarative source-boundary playback. */
+  playback?: RazorSenseResolvedPlaybackPlan;
+  /** @internal Reports an exact prepared frame for every requested mode occurrence. */
+  onPresentationReady?: (mode: RazorSenseMode) => void;
+  /** @internal Fired at every completed source iteration. */
+  onIteration?: (iteration: number) => void;
+  /** @internal Fired once after the finite terminal frame has been drawn. */
+  onTerminal?: (iterationCount: number) => void;
+};
+
 const getSemanticRendererFamily = (mode: RazorSenseMode): SemanticRendererFamily =>
   isRazorSenseEmotionalMode(mode) ? 'emotional' : 'authored';
 
-const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
+const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseInternalProps>(
   function SemanticRazorSense(props, forwardedRef) {
     const {
       mode = 'neutral',
@@ -396,6 +489,12 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
       testID,
       onLoad,
       onError,
+      occurrenceId,
+      playback,
+      onPresentationReady,
+      onIteration,
+      onTerminal,
+      runtimePriority,
     } = props;
     const { colorScheme } = useTheme();
     const resolvedIsPaused = isPaused ?? paused ?? false;
@@ -423,6 +522,7 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
       family: runtimeFamily,
       isPaused: resolvedIsPaused,
       isInteractive: resolvedIsInteractive,
+      priority: runtimePriority,
       retainsWebGL: requestedFamily === 'authored' && mountedFamilies.emotional,
     });
     const mergedRef = useMergeRefs(forwardedRef, hostRef);
@@ -447,6 +547,21 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
     const handleFamilyLoad = (family: SemanticRendererFamily): void => {
       const didSettle = markFamilySettled(family);
       if (didSettle && requestedFamilyRef.current === family) onLoad?.();
+    };
+
+    const handlePresentationReady = (readyMode: RazorSenseMode): void => {
+      if (readyMode !== mode) return;
+      onPresentationReady?.(readyMode);
+    };
+
+    const handleIteration = (family: SemanticRendererFamily, iteration: number): void => {
+      if (requestedFamilyRef.current !== family) return;
+      onIteration?.(iteration);
+    };
+
+    const handleTerminal = (family: SemanticRendererFamily, iterationCount: number): void => {
+      if (requestedFamilyRef.current !== family) return;
+      onTerminal?.(iterationCount);
     };
 
     useEffect(() => {
@@ -530,6 +645,8 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
         aria-hidden={hasAccessibilityLabel ? undefined : true}
         data-razor-sense-mode={mode}
         data-razor-sense-color-scheme={colorScheme}
+        data-razor-sense-runtime-state={lifecycle.state}
+        data-razor-sense-runtime-admitted={lifecycle.isAdmitted ? 'true' : 'false'}
         {...getStyledProps(props)}
         {...metaAttribute({ name: MetaConstants.RazorSense, testID })}
         {...makeAnalyticsAttribute(props)}
@@ -548,10 +665,15 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             <RazorSenseAuthored
               {...sharedRendererProps}
               mode={lastAuthoredModeRef.current}
+              occurrenceId={occurrenceId}
+              playback={playback}
               paused={resolvedIsPaused}
               runtimeState={lifecycle.state}
               isRuntimeAdmitted={lifecycle.isAdmitted}
               onLoad={() => handleFamilyLoad('authored')}
+              onPresentationReady={handlePresentationReady}
+              onIteration={(iteration) => handleIteration('authored', iteration)}
+              onTerminal={(iterationCount) => handleTerminal('authored', iterationCount)}
               onError={(error) => {
                 onError?.(error);
               }}
@@ -572,10 +694,15 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
             <RazorSenseMood
               {...sharedRendererProps}
               mode={lastEmotionalModeRef.current}
+              occurrenceId={occurrenceId}
+              playback={playback}
               paused={resolvedIsPaused}
               runtimeState={lifecycle.state}
               isRuntimeAdmitted={lifecycle.isAdmitted}
               onLoad={() => handleFamilyLoad('emotional')}
+              onPresentationReady={handlePresentationReady}
+              onIteration={(iteration) => handleIteration('emotional', iteration)}
+              onTerminal={(iterationCount) => handleTerminal('emotional', iterationCount)}
               onError={(error) => {
                 onError?.(error);
               }}
@@ -588,14 +715,11 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
 );
 
 const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(props, forwardedRef) {
-  const runtimeProps = props as RuntimeRazorSenseProps;
+  const runtimeProps = props;
   const hasSemanticSignal = hasCanonicalSemanticSignal(runtimeProps);
   const legacyOnlyKeys = getDefinedLegacyOnlyKeys(runtimeProps);
-  const preset = runtimeProps.preset as RzpGlassPreset | undefined;
-  const semanticMode =
-    (runtimeProps.mode as RazorSenseMode | undefined) ??
-    (preset && AUTHORED_PRESET_MODES[preset]) ??
-    'neutral';
+  const preset = runtimeProps.preset;
+  const semanticMode = runtimeProps.mode ?? (preset && AUTHORED_PRESET_MODES[preset]) ?? 'neutral';
 
   if (
     __DEV__ &&
@@ -616,6 +740,7 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
   if (hasSemanticSignal) {
     return (
       <SemanticRazorSense
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         {...(runtimeProps as SemanticRazorSenseProps)}
         mode={semanticMode}
         ref={forwardedRef}
@@ -624,11 +749,18 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
   }
 
   if (legacyOnlyKeys.length > 0) {
-    return <LegacyRzpGlass {...(runtimeProps as LegacyRzpGlassProps)} ref={forwardedRef} />;
+    return (
+      <LegacyRzpGlass
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        {...(runtimeProps as LegacyRzpGlassProps)}
+        ref={forwardedRef}
+      />
+    );
   }
 
   return (
     <SemanticRazorSense
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       {...(runtimeProps as SemanticRazorSenseProps)}
       mode={semanticMode}
       ref={forwardedRef}
@@ -636,4 +768,5 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
   );
 });
 
-export { RzpGlass };
+export { LegacyRzpGlass, RZP_GLASS_LEGACY_ONLY_PROP_KEYS, RzpGlass, SemanticRazorSense };
+export type { LegacyRzpGlassInternalProps, SemanticRazorSenseInternalProps };
