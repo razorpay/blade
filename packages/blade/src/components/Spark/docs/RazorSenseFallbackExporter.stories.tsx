@@ -55,6 +55,9 @@ const parseExportRequest = (): ParsedExportRequest => {
     if (!VIEWPORTS.includes(viewport as RazorSenseViewport)) {
       throw new Error(`Invalid viewport \"${viewport}\".`);
     }
+    if (viewport === 'mobile' && isRazorSenseOperationalMode(mode as RazorSenseMode)) {
+      throw new Error(`Operational mode \"${mode}\" does not support the mobile viewport.`);
+    }
 
     return {
       request: {
@@ -92,13 +95,12 @@ const ExportError = ({ message }: { message: string }): ReactElement => (
 
 const RazorSenseFallbackExporter = (): ReactElement => {
   const parsed = useMemo(parseExportRequest, []);
-  const [isRendererLoaded, setIsRendererLoaded] = useState(false);
+  const [isFrameReady, setIsFrameReady] = useState(false);
   const [isExportReady, setIsExportReady] = useState(false);
   const [exportError, setExportError] = useState<string>();
-  const [primedStartTime, setPrimedStartTime] = useState<number>();
 
   useEffect(() => {
-    if (!isRendererLoaded) return undefined;
+    if (!isFrameReady) return undefined;
 
     let secondFrame = 0;
     const firstFrame = window.requestAnimationFrame(() => {
@@ -109,7 +111,7 @@ const RazorSenseFallbackExporter = (): ReactElement => {
       window.cancelAnimationFrame(firstFrame);
       if (secondFrame) window.cancelAnimationFrame(secondFrame);
     };
-  }, [isRendererLoaded]);
+  }, [isFrameReady]);
 
   if (parsed.error) return <ExportError message={parsed.error} />;
 
@@ -120,23 +122,14 @@ const RazorSenseFallbackExporter = (): ReactElement => {
     colorScheme,
     viewport,
   });
-  const requiresPausedTextureSeek = viewport === 'desktop' && isRazorSenseEmotionalMode(mode);
-  const rendererStartTime = requiresPausedTextureSeek
-    ? primedStartTime ?? 0
-    : representativeFrame.phase;
   const rendererProps = {
     assetsPath: ASSETS_PATH,
     width: '100%',
     height: '100%',
     paused: true,
-    startTime: rendererStartTime,
+    startTime: representativeFrame.phase,
     interactive: false,
-    onLoad: () => {
-      // The paused desktop renderer uploads its initial texture before a nonzero seek settles.
-      // Moving from zero to the authored phase after load makes that exact paused frame upload.
-      if (requiresPausedTextureSeek) setPrimedStartTime(representativeFrame.phase);
-      setIsRendererLoaded(true);
-    },
+    onFrameReady: () => setIsFrameReady(true),
     onError: (error: Error) => setExportError(error.message),
   } as const;
 

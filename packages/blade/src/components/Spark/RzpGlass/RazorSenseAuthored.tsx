@@ -8,6 +8,9 @@ import {
   RAZOR_SENSE_OPERATIONAL_MODE_BACKGROUNDS,
   RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS,
 } from './modes';
+import { getRazorSenseAsset } from './razorSenseAssets';
+import { seekToRazorSenseVideoFrame } from './RazorSenseVideoFrame';
+import type { CancelVideoFrameWait } from './RazorSenseVideoFrame';
 import type { SemanticRazorSenseProps } from './types';
 import { captureVideoCoverFrame, DEFAULT_CDN_PATH } from './utils';
 import { useTheme } from '~components/BladeProvider';
@@ -18,6 +21,8 @@ const DEFAULT_STATE_TRANSITION_SECONDS = 0.4;
 
 type RazorSenseAuthoredProps = Omit<SemanticRazorSenseProps, 'mode'> & {
   mode: RazorSenseOperationalMode;
+  /** @internal Used by the fallback exporter after the requested frame is presented. */
+  onFrameReady?: () => void;
 };
 
 type ThinkingLoopRuntime = {
@@ -55,6 +60,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       endTime,
       onLoad,
       onError,
+      onFrameReady,
     } = props;
     const { colorScheme } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
@@ -80,6 +86,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const transitionDurationRef = useRef(modeTransitionDuration);
     const onLoadRef = useRef(onLoad);
     const onErrorRef = useRef(onError);
+    const onFrameReadyRef = useRef(onFrameReady);
+    const frameReadyCleanupRef = useRef<CancelVideoFrameWait | null>(null);
     const loadedModesRef = useRef(new Set<RazorSenseOperationalMode>());
     const failedModeErrorsRef = useRef(new Map<RazorSenseOperationalMode, Error>());
     const hasLoadedRef = useRef(false);
@@ -195,6 +203,30 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const getModeStartTime = (candidate: RazorSenseOperationalMode): number =>
       startTimeRef.current ?? RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS[candidate].startTime;
 
+    const requestFrameReady = useCallback(
+      (candidate: RazorSenseOperationalMode, video: HTMLVideoElement, targetTime: number): void => {
+        if (!onFrameReadyRef.current || candidate !== modeRef.current) return;
+        frameReadyCleanupRef.current?.();
+        const frameRate = getRazorSenseAsset({
+          assetsPath,
+          mode: candidate,
+          colorScheme,
+          viewport: 'desktop',
+        }).fallbackSource.framerate;
+        frameReadyCleanupRef.current = seekToRazorSenseVideoFrame({
+          video,
+          targetTime,
+          frameRate,
+          shouldRemainPaused: pausedRef.current,
+          onReady: () => {
+            frameReadyCleanupRef.current = null;
+            if (candidate === modeRef.current) onFrameReadyRef.current?.();
+          },
+        });
+      },
+      [assetsPath, colorScheme],
+    );
+
     modeRef.current = mode;
     pausedRef.current = paused;
     playbackRateRef.current = playbackRate;
@@ -203,6 +235,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     transitionDurationRef.current = modeTransitionDuration;
     onLoadRef.current = onLoad;
     onErrorRef.current = onError;
+    onFrameReadyRef.current = onFrameReady;
 
     useEffect(() => {
       loadedModesRef.current.clear();
@@ -227,7 +260,12 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
 
       const targetVideo = videoRefs.current[mode];
       if (targetVideo) {
-        targetVideo.currentTime = Math.max(0, getModeStartTime(mode));
+        const targetTime = Math.max(0, getModeStartTime(mode));
+        if (onFrameReadyRef.current && loadedModesRef.current.has(mode)) {
+          requestFrameReady(mode, targetVideo, targetTime);
+        } else if (!onFrameReadyRef.current) {
+          targetVideo.currentTime = targetTime;
+        }
         targetVideo.playbackRate = playbackRateRef.current;
         if (!pausedRef.current && !document.hidden) {
           targetVideo.play().catch(() => undefined);
@@ -242,7 +280,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       }, transitionDurationRef.current * 1000 + 60);
 
       return () => window.clearTimeout(pausePreviousVideos);
-    }, [mode]);
+    }, [mode, requestFrameReady]);
 
     useEffect(() => {
       Object.entries(videoRefs.current).forEach(([candidate, video]) => {
@@ -455,6 +493,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
 
     useEffect(
       () => () => {
+        frameReadyCleanupRef.current?.();
+        frameReadyCleanupRef.current = null;
         Object.values(videoRefs.current).forEach((video) => {
           video?.pause();
           if (video) {
@@ -534,12 +574,17 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
                     getModeStartTime(candidate),
                     (endTimeRef.current ?? timing.endTime) - 1 / 30,
                   );
-                  video.currentTime = Math.max(
+                  const targetTime = Math.max(
                     0,
                     isTerminalRestore
                       ? terminalFrameTime
                       : restoredTime ?? getModeStartTime(candidate),
                   );
+                  if (onFrameReadyRef.current) {
+                    requestFrameReady(candidate, video, targetTime);
+                  } else {
+                    video.currentTime = targetTime;
+                  }
                   video.playbackRate = playbackRateRef.current;
                   if (!pausedRef.current && !document.hidden && !isTerminalRestore) {
                     video.play().catch(() => undefined);
@@ -589,6 +634,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
                 loadedModesRef.current.delete(candidate);
                 failedModeErrorsRef.current.set(candidate, error);
                 if (candidate !== modeRef.current) return;
+                frameReadyCleanupRef.current?.();
+                frameReadyCleanupRef.current = null;
                 setHasError(true);
                 onErrorRef.current?.(error);
               }}

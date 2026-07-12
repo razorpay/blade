@@ -2,6 +2,7 @@
 
 import { getRazorSenseModeIndex, getRazorSenseModeVideoSources } from './modes';
 import type { RazorSenseEmotionalMode } from './modes';
+import { getRazorSenseAsset } from './razorSenseAssets';
 import { razorSenseMoodFragmentShader, razorSenseMoodVertexShader } from './razorSenseMoodShader';
 import { loadVideo } from './utils';
 import { createProgram, setupFullscreenQuad, Texture } from './webgl-utils';
@@ -18,6 +19,14 @@ type RazorSenseMoodMountOptions = {
   interactive: boolean;
   colorScheme: ColorSchemeNames;
   onError: (error: Error) => void;
+  /** @internal Used by the fallback exporter after the requested frame is drawn. */
+  onFrameReady?: () => void;
+};
+
+type PendingFrameReady = {
+  mode: RazorSenseEmotionalMode;
+  targetTime: number;
+  frameDuration: number;
 };
 
 const MAX_PIXEL_COUNT = 4096 * 1024;
@@ -68,6 +77,7 @@ class RazorSenseMoodMount {
   private colorSchemeTransitionStartedAt = 0;
   private colorSchemeTransitionActive = false;
   private mountedAt = performance.now();
+  private pendingFrameReady: PendingFrameReady | null = null;
 
   constructor(parentElement: HTMLElement, options: RazorSenseMoodMountOptions) {
     this.parentElement = parentElement;
@@ -194,6 +204,9 @@ class RazorSenseMoodMount {
     this.gl.useProgram(this.program);
     videos.forEach((video, index) => {
       video.playbackRate = this.options.playbackRate;
+      if (index === getRazorSenseModeIndex(this.options.mode)) {
+        this.requestFrameReady(this.options.mode, this.options.startTime);
+      }
       video.currentTime = Math.max(0, this.options.startTime);
       this.videos[index] = video;
 
@@ -204,7 +217,10 @@ class RazorSenseMoodMount {
       });
       texture.image(video);
       this.textures[index] = texture;
-      this.lastUploadedVideoTimes[index] = video.currentTime;
+      this.lastUploadedVideoTimes[index] =
+        index === getRazorSenseModeIndex(this.options.mode) && this.pendingFrameReady
+          ? -1
+          : video.currentTime;
     });
 
     this.gl.uniform1i(this.uniformLocations.uCalmTexture, 0);
@@ -234,6 +250,7 @@ class RazorSenseMoodMount {
     if (this.options.mode === mode) {
       const activeVideo = this.videos[getRazorSenseModeIndex(mode)];
       if (activeVideo) {
+        this.requestFrameReady(mode, this.options.startTime);
         activeVideo.currentTime = Math.max(0, this.options.startTime);
         this.syncVideoPlayback();
       }
@@ -260,6 +277,7 @@ class RazorSenseMoodMount {
 
     const targetVideo = this.videos[getRazorSenseModeIndex(mode)];
     if (targetVideo) {
+      this.requestFrameReady(mode, this.options.startTime);
       targetVideo.currentTime = Math.max(0, this.options.startTime);
     }
     this.syncVideoPlayback();
@@ -268,7 +286,13 @@ class RazorSenseMoodMount {
   setOptions(
     options: Pick<
       RazorSenseMoodMountOptions,
-      'transitionDuration' | 'paused' | 'playbackRate' | 'startTime' | 'interactive' | 'colorScheme'
+      | 'transitionDuration'
+      | 'paused'
+      | 'playbackRate'
+      | 'startTime'
+      | 'interactive'
+      | 'colorScheme'
+      | 'onFrameReady'
     >,
   ): void {
     const playbackRateChanged = this.options.playbackRate !== options.playbackRate;
@@ -295,9 +319,33 @@ class RazorSenseMoodMount {
     }
     if (startTimeChanged) {
       const activeVideo = this.videos[getRazorSenseModeIndex(this.options.mode)];
-      if (activeVideo) activeVideo.currentTime = Math.max(0, options.startTime);
+      if (activeVideo) {
+        this.requestFrameReady(this.options.mode, options.startTime);
+        activeVideo.currentTime = Math.max(0, options.startTime);
+      }
     }
+    if (!options.onFrameReady) this.pendingFrameReady = null;
     this.syncVideoPlayback();
+  }
+
+  private requestFrameReady(mode: RazorSenseEmotionalMode, targetTime: number): void {
+    if (!this.options.onFrameReady) {
+      this.pendingFrameReady = null;
+      return;
+    }
+    const source = getRazorSenseAsset({
+      assetsPath: this.options.assetsPath,
+      mode,
+      colorScheme: this.options.colorScheme,
+      viewport: 'desktop',
+    }).fallbackSource;
+    const modeIndex = getRazorSenseModeIndex(mode);
+    this.pendingFrameReady = {
+      mode,
+      targetTime: Math.max(0, targetTime),
+      frameDuration: 1 / Math.max(1, source.framerate),
+    };
+    this.lastUploadedVideoTimes[modeIndex] = -1;
   }
 
   private updateColorSchemeTransition(now: number): void {
@@ -460,18 +508,29 @@ class RazorSenseMoodMount {
     this.updateTrail();
 
     this.gl.useProgram(this.program);
+    const pendingFrameReady = this.pendingFrameReady;
+    let didUploadPendingFrame = false;
     this.videos.forEach((video, index) => {
       const contributes = this.transitionActive
         ? this.transitionStartWeights[index] > 0.001 || this.transitionTargetWeights[index] > 0.001
         : this.currentWeights[index] > 0.001;
       if (
         contributes &&
+        !video.seeking &&
         video.readyState >= video.HAVE_CURRENT_DATA &&
         this.textures[index] &&
         video.currentTime !== this.lastUploadedVideoTimes[index]
       ) {
         this.textures[index].update(video);
         this.lastUploadedVideoTimes[index] = video.currentTime;
+        if (
+          pendingFrameReady?.mode === this.options.mode &&
+          index === getRazorSenseModeIndex(pendingFrameReady.mode) &&
+          Math.abs(video.currentTime - pendingFrameReady.targetTime) <=
+            pendingFrameReady.frameDuration
+        ) {
+          didUploadPendingFrame = true;
+        }
       }
     });
 
@@ -484,11 +543,16 @@ class RazorSenseMoodMount {
     );
     this.gl.uniform1f(this.uniformLocations.uTime, now / 1000);
     this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
+    if (didUploadPendingFrame && this.pendingFrameReady === pendingFrameReady) {
+      this.pendingFrameReady = null;
+      this.options.onFrameReady?.();
+    }
   };
 
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;
+    this.pendingFrameReady = null;
     if (this.rafId !== null) cancelAnimationFrame(this.rafId);
     this.rafId = null;
 

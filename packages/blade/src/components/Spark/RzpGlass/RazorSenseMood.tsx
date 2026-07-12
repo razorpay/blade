@@ -4,6 +4,9 @@ import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import type { RazorSenseEmotionalMode } from './modes';
 import { getRazorSenseMobileModeVideoSources, RAZOR_SENSE_EMOTIONAL_MODES } from './modes';
 import { RazorSenseMoodMount } from './RazorSenseMoodMount';
+import { getRazorSenseAsset } from './razorSenseAssets';
+import { seekToRazorSenseVideoFrame } from './RazorSenseVideoFrame';
+import type { CancelVideoFrameWait } from './RazorSenseVideoFrame';
 import type { SemanticRazorSenseProps } from './types';
 import { captureVideoCoverFrame, DEFAULT_CDN_PATH } from './utils';
 import { useTheme } from '~components/BladeProvider';
@@ -45,6 +48,8 @@ const MOBILE_BASE_COLORS: Record<ColorSchemeNames, Record<RazorSenseEmotionalMod
 
 type RazorSenseMoodProps = Omit<SemanticRazorSenseProps, 'mode'> & {
   mode: RazorSenseEmotionalMode;
+  /** @internal Used by the fallback exporter after the requested frame is presented. */
+  onFrameReady?: () => void;
 };
 
 type VideoWithFrameCallback = HTMLVideoElement & {
@@ -67,6 +72,7 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       interactive = true,
       onLoad,
       onError,
+      onFrameReady,
     } = props;
     const containerRef = useRef<HTMLDivElement>(null);
     const mountRef = useRef<RazorSenseMoodMount | null>(null);
@@ -89,6 +95,7 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           startTime,
           interactive,
           colorScheme,
+          onFrameReady,
           onError: (error) => {
             if (!active) return;
             mountRef.current?.dispose();
@@ -144,8 +151,17 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
         startTime,
         interactive,
         colorScheme,
+        onFrameReady,
       });
-    }, [colorScheme, interactive, modeTransitionDuration, paused, playbackRate, startTime]);
+    }, [
+      colorScheme,
+      interactive,
+      modeTransitionDuration,
+      onFrameReady,
+      paused,
+      playbackRate,
+      startTime,
+    ]);
 
     const mergedRef = useMergeRefs(forwardedRef, containerRef);
     const widthStyle = typeof width === 'number' ? `${width}px` : width;
@@ -185,6 +201,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       startTime = 0,
       onLoad,
       onError,
+      onFrameReady,
     } = props;
     const { colorScheme } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
@@ -203,6 +220,8 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     const modeRef = useRef(mode);
     const onLoadRef = useRef(onLoad);
     const onErrorRef = useRef(onError);
+    const onFrameReadyRef = useRef(onFrameReady);
+    const frameReadyCleanupRef = useRef<CancelVideoFrameWait | null>(null);
     const hasLoadedRef = useRef(false);
     const loadedModesRef = useRef(new Set<RazorSenseEmotionalMode>());
     const failedModeErrorsRef = useRef(new Map<RazorSenseEmotionalMode, Error>());
@@ -270,6 +289,30 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       [completeSchemeTransition],
     );
 
+    const requestFrameReady = useCallback(
+      (candidate: RazorSenseEmotionalMode, video: HTMLVideoElement, targetTime: number): void => {
+        if (!onFrameReadyRef.current || candidate !== modeRef.current) return;
+        frameReadyCleanupRef.current?.();
+        const frameRate = getRazorSenseAsset({
+          assetsPath,
+          mode: candidate,
+          colorScheme,
+          viewport: 'mobile',
+        }).fallbackSource.framerate;
+        frameReadyCleanupRef.current = seekToRazorSenseVideoFrame({
+          video,
+          targetTime,
+          frameRate,
+          shouldRemainPaused: pausedRef.current,
+          onReady: () => {
+            frameReadyCleanupRef.current = null;
+            if (candidate === modeRef.current) onFrameReadyRef.current?.();
+          },
+        });
+      },
+      [assetsPath, colorScheme],
+    );
+
     pausedRef.current = paused;
     playbackRateRef.current = playbackRate;
     startTimeRef.current = startTime;
@@ -277,6 +320,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     modeRef.current = mode;
     onLoadRef.current = onLoad;
     onErrorRef.current = onError;
+    onFrameReadyRef.current = onFrameReady;
 
     useEffect(() => {
       loadedModesRef.current.clear();
@@ -300,7 +344,12 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
 
       const targetVideo = videoRefs.current[mode];
       if (targetVideo) {
-        targetVideo.currentTime = Math.max(0, startTimeRef.current);
+        const targetTime = Math.max(0, startTimeRef.current);
+        if (onFrameReadyRef.current && loadedModesRef.current.has(mode)) {
+          requestFrameReady(mode, targetVideo, targetTime);
+        } else if (!onFrameReadyRef.current) {
+          targetVideo.currentTime = targetTime;
+        }
         targetVideo.playbackRate = playbackRateRef.current;
         if (!pausedRef.current && !document.hidden) {
           targetVideo.play().catch(() => undefined);
@@ -314,7 +363,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       }, transitionDurationRef.current * 1000 + 60);
 
       return () => window.clearTimeout(pausePreviousVideos);
-    }, [mode]);
+    }, [mode, requestFrameReady]);
 
     useEffect(() => {
       Object.entries(videoRefs.current).forEach(([candidate, video]) => {
@@ -330,6 +379,8 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
 
     useEffect(
       () => () => {
+        frameReadyCleanupRef.current?.();
+        frameReadyCleanupRef.current = null;
         Object.values(videoRefs.current).forEach((video) => {
           video?.pause();
           if (video) {
@@ -402,7 +453,12 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
                 const restoredTime = schemeTransitionPendingRef.current
                   ? pendingPlaybackTimesRef.current[candidate]
                   : undefined;
-                video.currentTime = Math.max(0, restoredTime ?? startTimeRef.current);
+                const targetTime = Math.max(0, restoredTime ?? startTimeRef.current);
+                if (onFrameReadyRef.current) {
+                  requestFrameReady(candidate, video, targetTime);
+                } else {
+                  video.currentTime = targetTime;
+                }
                 video.playbackRate = playbackRateRef.current;
                 if (!pausedRef.current && !document.hidden) {
                   video.play().catch(() => undefined);
@@ -431,6 +487,8 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
               loadedModesRef.current.delete(candidate);
               failedModeErrorsRef.current.set(candidate, error);
               if (candidate !== mode) return;
+              frameReadyCleanupRef.current?.();
+              frameReadyCleanupRef.current = null;
               setHasError(true);
               onErrorRef.current?.(error);
             }}
