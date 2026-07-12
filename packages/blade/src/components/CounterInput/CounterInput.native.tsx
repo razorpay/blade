@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useMemo } from 'react';
 import { Pressable, TextInput, StyleSheet } from 'react-native';
 import type { TextStyle } from 'react-native';
 import Animated, {
@@ -13,6 +13,7 @@ import {
   COUNTER_INPUT_ICON_SIZE_MAP,
   COUNTER_INPUT_SIZE_TO_TEXT_SIZE,
 } from './token';
+import { getCounterValueDigitCount } from './counterInputUtils';
 import { CounterInputProvider } from './CounterInputContext';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -30,6 +31,11 @@ import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
 import { getTextProps } from '~components/Typography/Text/Text';
 
+// Native platforms don't have CSS `ch` units, so we estimate digit advance width
+// as a fraction of font size. The value 0.6 is a conservative average across common
+// system fonts on iOS and Android — it intentionally over-allocates slightly to
+// ensure digits are never clipped. Known limitation: proportional-figured fonts may
+// render narrower digits, resulting in extra whitespace (safe failure direction).
 const COUNTER_INPUT_NATIVE_DIGIT_WIDTH_RATIO = 0.6;
 
 type CounterInputSize = NonNullable<CounterInputProps['size']>;
@@ -162,15 +168,15 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       weight: 'semibold',
     });
     const fontSize = theme.typography.fonts.size[fontSizeToken];
-    const rawCounterValue = internalValue ?? min;
-    const counterValueDigitCount =
-      Math.max(2, String(Math.abs(rawCounterValue)).length) + (rawCounterValue < 0 ? 1 : 0);
+    const counterValueDigitCount = getCounterValueDigitCount(internalValue);
     const counterInputHorizontalPadding =
       theme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
       theme.spacing[baseInputCounterInputPaddingTokens.right[size]];
     const counterInputFieldWidth =
       counterValueDigitCount * fontSize * COUNTER_INPUT_NATIVE_DIGIT_WIDTH_RATIO +
       counterInputHorizontalPadding;
+
+    const tabularNumsFontVariant: NonNullable<TextStyle['fontVariant']> = ['tabular-nums'];
 
     const containerStyle = StyleSheet.create({
       box: {
@@ -191,11 +197,14 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
         fontSize,
         fontFamily: theme.typography.fonts.family.text,
         fontWeight: '600',
-        fontVariant: ['tabular-nums'] as TextStyle['fontVariant'],
+        fontVariant: tabularNumsFontVariant,
       },
     });
 
-    const inputWrapperStyle = { width: counterInputFieldWidth };
+    const inputWrapperStyle = useMemo(
+      () => ({ width: counterInputFieldWidth }),
+      [counterInputFieldWidth],
+    );
 
     const contextValue = {
       size,

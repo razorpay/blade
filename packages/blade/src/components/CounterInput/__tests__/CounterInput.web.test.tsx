@@ -225,6 +225,48 @@ describe('<CounterInput />', () => {
     });
   });
 
+  it('should derive width from size-specific padding tokens for xsmall and large', () => {
+    // xsmall with 2-digit value
+    const { container: xsmallContainer } = renderWithTheme(
+      <CounterInput label="Quantity" value={5} size="xsmall" />,
+    );
+
+    expect(xsmallContainer.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 2, size: 'xsmall' }),
+    });
+
+    // xsmall with 3-digit value
+    const { container: xsmallThreeDigitContainer } = renderWithTheme(
+      <CounterInput label="Quantity" value={100} size="xsmall" />,
+    );
+
+    expect(
+      xsmallThreeDigitContainer.querySelector('.__blade-counter-input-number-wrapper'),
+    ).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 3, size: 'xsmall' }),
+    });
+
+    // large with 2-digit value
+    const { container: largeContainer } = renderWithTheme(
+      <CounterInput label="Quantity" value={5} size="large" />,
+    );
+
+    expect(largeContainer.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 2, size: 'large' }),
+    });
+
+    // large with 3-digit value
+    const { container: largeThreeDigitContainer } = renderWithTheme(
+      <CounterInput label="Quantity" value={100} size="large" />,
+    );
+
+    expect(
+      largeThreeDigitContainer.querySelector('.__blade-counter-input-number-wrapper'),
+    ).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 3, size: 'large' }),
+    });
+  });
+
   it('should account for minus sign width when value is negative', () => {
     // -9 has 1 digit + minus sign → digitCount should be 2 (max) + 1 = 3
     const { container: container1 } = renderWithTheme(
@@ -251,6 +293,26 @@ describe('<CounterInput />', () => {
 
     expect(container3.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
       width: getCounterInputFieldWidth({ digitCount: 4, size: 'medium' }),
+    });
+  });
+
+  it('should account for minus sign width across all sizes', () => {
+    // xsmall with negative value
+    const { container: xsmallContainer } = renderWithTheme(
+      <CounterInput label="Quantity" value={-99} min={-999} size="xsmall" />,
+    );
+
+    expect(xsmallContainer.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 3, size: 'xsmall' }),
+    });
+
+    // large with negative value
+    const { container: largeContainer } = renderWithTheme(
+      <CounterInput label="Quantity" value={-100} min={-999} size="large" />,
+    );
+
+    expect(largeContainer.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      width: getCounterInputFieldWidth({ digitCount: 4, size: 'large' }),
     });
   });
 

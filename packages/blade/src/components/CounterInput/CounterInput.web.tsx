@@ -7,6 +7,7 @@ import {
   COUNTER_INPUT_ICON_SIZE_MAP,
   COUNTER_INPUT_SIZE_TO_TEXT_SIZE,
 } from './token';
+import { getCounterValueDigitCount } from './counterInputUtils';
 import { CounterInputProvider } from './CounterInputContext';
 import { BaseInput } from '~components/Input/BaseInput';
 import { baseInputCounterInputPaddingTokens } from '~components/Input/BaseInput/baseInputTokens';
@@ -124,9 +125,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
     const lastActionRef = useRef<'increment' | 'decrement' | null>(null);
     const previousValueRef = useRef<number | undefined>(internalValue);
     const containerRef = useRef<HTMLDivElement>(null);
-    const rawCounterValue = internalValue ?? min;
-    const counterValueDigitCount =
-      Math.max(2, String(Math.abs(rawCounterValue)).length) + (rawCounterValue < 0 ? 1 : 0);
+    const counterValueDigitCount = getCounterValueDigitCount(internalValue);
     const { fontSize: counterInputFontSizeToken = 100 } = getTextProps({
       variant: 'body',
       size: COUNTER_INPUT_SIZE_TO_TEXT_SIZE[size],
