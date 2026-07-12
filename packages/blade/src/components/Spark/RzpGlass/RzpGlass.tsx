@@ -159,6 +159,8 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
   const [error, setError] = useState<Error | null>(null);
   const divRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<RzpGlassMount | null>(null);
+  const fadeTimerRef = useRef<number>();
+  const isFadeCompleteRef = useRef(false);
   const resolvedConfig: Partial<RzpGlassConfig> = resolveConfig(props, assetsPath);
   const resolvedIsPaused = resolvedConfig.paused ?? false;
   const lifecycle = useRazorSenseLifecycle(divRef, {
@@ -167,6 +169,10 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
     isInteractive: false,
   });
   const effectivePaused = resolvedIsPaused || lifecycle.state !== 'active' || !lifecycle.isAdmitted;
+  const effectivePausedRef = useRef(effectivePaused);
+  const userWantsPausedRef = useRef(resolvedIsPaused);
+  effectivePausedRef.current = effectivePaused;
+  userWantsPausedRef.current = resolvedIsPaused;
 
   // Initialize on mount
   useEffect(() => {
@@ -174,6 +180,7 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
       if (!divRef.current || mountRef.current) return;
 
       try {
+        isFadeCompleteRef.current = false;
         const config = {
           ...resolveConfig(props, assetsPath),
           paused: effectivePaused,
@@ -196,17 +203,18 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
         // Pause the video during the CSS fade-in so one-shot animations
         // don't burn frames while the component is still transparent.
         // Only do this when the consumer hasn't explicitly set paused: true.
-        const userWantsPaused = config.paused ?? false;
-        if (!userWantsPaused) {
+        if (!userWantsPausedRef.current) {
           mountRef.current.pause();
         }
 
         setIsInitialized(true); // kicks off the CSS opacity 0 → 1 transition
 
         // After the fade-in completes, resume video and notify the consumer.
-        setTimeout(() => {
+        fadeTimerRef.current = window.setTimeout(() => {
+          fadeTimerRef.current = undefined;
+          isFadeCompleteRef.current = true;
           if (!mountRef.current) return;
-          if (!userWantsPaused) {
+          if (!effectivePausedRef.current) {
             mountRef.current.play();
           }
           onLoad?.();
@@ -221,6 +229,11 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
     void init();
 
     return () => {
+      if (fadeTimerRef.current !== undefined) {
+        window.clearTimeout(fadeTimerRef.current);
+        fadeTimerRef.current = undefined;
+      }
+      isFadeCompleteRef.current = false;
       mountRef.current?.dispose();
       mountRef.current = null;
       setIsInitialized(false);
@@ -240,7 +253,7 @@ const LegacyRzpGlass = forwardRef<HTMLDivElement, LegacyRzpGlassProps>(function 
     if (isInitialized && mountRef.current) {
       const config = {
         ...resolveConfig(props, assetsPath),
-        paused: effectivePaused,
+        paused: effectivePaused || !isFadeCompleteRef.current,
       };
       mountRef.current.setUniforms(config);
     }
@@ -388,15 +401,6 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
     const resolvedIsPaused = isPaused ?? paused ?? false;
     const resolvedIsInteractive = isInteractive ?? interactive ?? true;
     const requestedFamily = getSemanticRendererFamily(mode);
-    const hostRef = useRef<HTMLDivElement>(null);
-    const lifecycle = useRazorSenseLifecycle(hostRef, {
-      family: requestedFamily,
-      isPaused: resolvedIsPaused,
-      isInteractive: resolvedIsInteractive,
-    });
-    const effectivePaused =
-      resolvedIsPaused || lifecycle.state !== 'active' || !lifecycle.isAdmitted;
-    const mergedRef = useMergeRefs(forwardedRef, hostRef);
     const requestedFamilyRef = useRef(requestedFamily);
     requestedFamilyRef.current = requestedFamily;
     const lastAuthoredModeRef = useRef<RazorSenseOperationalMode>('neutral');
@@ -410,6 +414,17 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseProps>(
     };
     const mountedFamiliesRef = useRef(initialMountedFamilies);
     const [mountedFamilies, setMountedFamilies] = useState(initialMountedFamilies);
+    const runtimeFamily: SemanticRendererFamily =
+      requestedFamily === 'emotional' || mountedFamilies.emotional ? 'emotional' : 'authored';
+    const hostRef = useRef<HTMLDivElement>(null);
+    const lifecycle = useRazorSenseLifecycle(hostRef, {
+      family: runtimeFamily,
+      isPaused: resolvedIsPaused,
+      isInteractive: resolvedIsInteractive,
+    });
+    const effectivePaused =
+      resolvedIsPaused || lifecycle.state !== 'active' || !lifecycle.isAdmitted;
+    const mergedRef = useMergeRefs(forwardedRef, hostRef);
     const initialReadyFamilies = {
       authored: false,
       emotional: false,

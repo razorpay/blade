@@ -1,27 +1,48 @@
+import * as React from 'react';
+import { act, fireEvent } from '@testing-library/react';
+import { RazorSense } from '../index';
+import type { RazorSenseProps } from '../index';
+import { RzpGlassMount } from '../RzpGlassMount';
+import type { RazorSenseRuntimeSnapshot } from '../RazorSenseRuntime';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { logger } from '~utils/logger';
+
+const mockUseRazorSenseLifecycle = jest.fn();
+
+jest.mock('../useRazorSenseLifecycle', () => ({
+  useRazorSenseLifecycle: (...args: unknown[]) => mockUseRazorSenseLifecycle(...args),
+}));
+
 jest.mock('../RazorSenseAuthored', () => {
-  const React = jest.requireActual<typeof import('react')>('react');
+  const ReactModule = jest.requireActual<typeof React>('react');
   return {
     RazorSenseAuthored: ({
       mode,
       paused,
       interactive,
       assetsPath,
+      onLoad,
       onError,
     }: {
       mode: string;
       paused: boolean;
       interactive: boolean;
       assetsPath?: string;
+      onLoad?: () => void;
       onError?: (error: Error) => void;
     }) => {
-      const hasReportedErrorRef = React.useRef(false);
-      React.useEffect(() => {
-        if (assetsPath !== '__test_error__' || hasReportedErrorRef.current) return;
-        hasReportedErrorRef.current = true;
-        onError?.(new Error('Authored renderer failed'));
-      }, [assetsPath, onError]);
+      const hasSettledRef = ReactModule.useRef(false);
+      ReactModule.useEffect(() => {
+        if (hasSettledRef.current) return;
+        hasSettledRef.current = true;
+        if (assetsPath === '__test_error__') {
+          onError?.(new Error('Authored renderer failed'));
+        } else {
+          onLoad?.();
+        }
+      }, [assetsPath, onError, onLoad]);
 
-      return React.createElement('div', {
+      return ReactModule.createElement('div', {
         'data-testid': 'authored-renderer',
         'data-mode': mode,
         'data-paused': String(paused),
@@ -32,19 +53,36 @@ jest.mock('../RazorSenseAuthored', () => {
 });
 
 jest.mock('../RazorSenseMood', () => {
-  const React = jest.requireActual<typeof import('react')>('react');
+  const ReactModule = jest.requireActual<typeof React>('react');
   return {
-    RazorSenseMood: ({ mode }: { mode: string }) =>
-      React.createElement('div', {
+    RazorSenseMood: ({
+      mode,
+      paused,
+      onLoad,
+    }: {
+      mode: string;
+      paused: boolean;
+      onLoad?: () => void;
+    }) => {
+      const hasLoadedRef = ReactModule.useRef(false);
+      ReactModule.useEffect(() => {
+        if (hasLoadedRef.current) return;
+        hasLoadedRef.current = true;
+        onLoad?.();
+      }, [onLoad]);
+
+      return ReactModule.createElement('div', {
         'data-testid': 'mood-renderer',
         'data-mode': mode,
-      }),
+        'data-paused': String(paused),
+      });
+    },
   };
 });
 
 jest.mock('../RzpGlassMount', () => ({
   RzpGlassMount: jest.fn().mockImplementation(() => ({
-    loadAssets: jest.fn(() => new Promise<void>(() => undefined)),
+    loadAssets: jest.fn(() => Promise.resolve()),
     dispose: jest.fn(),
     setUniforms: jest.fn(),
     updateGradientMapTexture: jest.fn(),
@@ -53,26 +91,32 @@ jest.mock('../RzpGlassMount', () => ({
   })),
 }));
 
-jest.mock('~utils/logger', () => ({
-  ...jest.requireActual<typeof import('~utils/logger')>('~utils/logger'),
-  logger: jest.fn(),
-}));
-
-import { RazorSense } from '../index';
-import type { RazorSenseProps } from '../index';
-import { RzpGlassMount } from '../RzpGlassMount';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import { logger } from '~utils/logger';
+jest.mock('~utils/logger', () => ({ logger: jest.fn() }));
 
 const getRazorSenseHost = (container: HTMLElement): HTMLElement => {
   const host = container.querySelector<HTMLElement>('[data-blade-component="razorsense"]');
   expect(host).not.toBeNull();
-  return host as HTMLElement;
+  return host!;
+};
+
+const ACTIVE_LIFECYCLE: RazorSenseRuntimeSnapshot = {
+  state: 'active',
+  isAdmitted: true,
+  isPageVisible: true,
+  intersectionRatio: 1,
+};
+
+const getLatestRuntimeFamily = (): string => {
+  const latestCall = mockUseRazorSenseLifecycle.mock.calls[
+    mockUseRazorSenseLifecycle.mock.calls.length - 1
+  ] as [React.RefObject<HTMLElement>, { family: string }];
+  return latestCall[1].family;
 };
 
 describe('<RazorSense />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockUseRazorSenseLifecycle.mockReturnValue(ACTIVE_LIFECYCLE);
   });
 
   it('routes omitted mode and no props to semantic Neutral', () => {
@@ -127,7 +171,7 @@ describe('<RazorSense />', () => {
     );
   });
 
-  it('keeps authored presets semantic unless a raw legacy control is present', () => {
+  it('keeps authored presets semantic unless a raw legacy control is present', async () => {
     const authoredPresets = [
       ['default', 'neutral'],
       ['zoomed', 'thinking'],
@@ -143,12 +187,15 @@ describe('<RazorSense />', () => {
     expect(RzpGlassMount).not.toHaveBeenCalled();
 
     const rawLegacy = renderWithTheme(<RazorSense preset="zoomed" numSegments={24} />);
+    await act(async () => {
+      await Promise.resolve();
+    });
     expect(rawLegacy.queryByTestId('authored-renderer')).not.toBeInTheDocument();
     expect(rawLegacy.container.querySelector('[data-razor-sense-mode]')).not.toBeInTheDocument();
     expect(RzpGlassMount).toHaveBeenCalledTimes(1);
   });
 
-  it('preserves styled props, testID, and analytics attributes on the raw legacy host', () => {
+  it('preserves styled props, testID, and analytics attributes on the raw legacy host', async () => {
     const { getByTestId } = renderWithTheme(
       <RazorSense
         numSegments={24}
@@ -157,6 +204,9 @@ describe('<RazorSense />', () => {
         data-analytics-section="legacy-material"
       />,
     );
+    await act(async () => {
+      await Promise.resolve();
+    });
     const host = getByTestId('legacy-razorsense');
 
     expect(host).toHaveAttribute('data-blade-component', 'razorsense');
@@ -200,5 +250,165 @@ describe('<RazorSense />', () => {
     } as unknown) as RazorSenseProps;
     renderWithTheme(<RazorSense {...secondCollision} />);
     expect(logger).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps semantic runtime admission emotional until the outgoing renderer unmounts', async () => {
+    jest.useFakeTimers();
+    const requestAnimationFrame = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((callback) => {
+        callback(0);
+        return 1;
+      });
+
+    const Example = (): React.ReactElement => {
+      const [mode, setMode] = React.useState<'calm' | 'neutral'>('calm');
+      return (
+        <>
+          <button type="button" onClick={() => setMode('neutral')}>
+            Use authored
+          </button>
+          <RazorSense mode={mode} modeTransitionDuration={0.1} />
+        </>
+      );
+    };
+
+    const { getByRole } = renderWithTheme(<Example />);
+    expect(getLatestRuntimeFamily()).toBe('emotional');
+
+    fireEvent.click(getByRole('button', { name: 'Use authored' }));
+    expect(getLatestRuntimeFamily()).toBe('emotional');
+
+    await act(async () => {
+      jest.advanceTimersByTime(179);
+      await Promise.resolve();
+    });
+    expect(getLatestRuntimeFamily()).toBe('emotional');
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+      await Promise.resolve();
+    });
+    expect(getLatestRuntimeFamily()).toBe('authored');
+
+    requestAnimationFrame.mockRestore();
+    jest.useRealTimers();
+  });
+
+  it('keeps runtime-induced legacy pause through fade and resumes after 200ms', async () => {
+    jest.useFakeTimers();
+    let lifecycle: RazorSenseRuntimeSnapshot = {
+      ...ACTIVE_LIFECYCLE,
+      state: 'dormant',
+      isAdmitted: false,
+    };
+    let resolveLoadAssets: (() => void) | undefined;
+    const mount = {
+      loadAssets: jest.fn(
+        () =>
+          new Promise<void>((resolve) => {
+            resolveLoadAssets = resolve;
+          }),
+      ),
+      dispose: jest.fn(),
+      setUniforms: jest.fn(),
+      updateGradientMapTexture: jest.fn(),
+      pause: jest.fn(),
+      play: jest.fn(),
+    };
+    (RzpGlassMount as jest.Mock).mockImplementationOnce(() => mount);
+    mockUseRazorSenseLifecycle.mockImplementation(() => lifecycle);
+
+    const Example = (): React.ReactElement => {
+      const [, renderAgain] = React.useReducer((value) => value + 1, 0);
+      return (
+        <>
+          <button type="button" onClick={renderAgain}>
+            Update lifecycle
+          </button>
+          <RazorSense numSegments={24} />
+        </>
+      );
+    };
+
+    const { getByRole } = renderWithTheme(<Example />);
+    expect(RzpGlassMount).toHaveBeenCalledWith(
+      expect.any(HTMLElement),
+      expect.any(Object),
+      expect.objectContaining({ paused: true }),
+    );
+
+    lifecycle = ACTIVE_LIFECYCLE;
+    fireEvent.click(getByRole('button', { name: 'Update lifecycle' }));
+    await act(async () => {
+      resolveLoadAssets?.();
+      await Promise.resolve();
+    });
+
+    expect(mount.setUniforms).not.toHaveBeenCalledWith(expect.objectContaining({ paused: false }));
+    expect(mount.play).not.toHaveBeenCalled();
+    await act(async () => {
+      jest.advanceTimersByTime(199);
+      await Promise.resolve();
+    });
+    expect(mount.play).not.toHaveBeenCalled();
+    await act(async () => {
+      jest.advanceTimersByTime(1);
+      await Promise.resolve();
+    });
+    expect(mount.play).toHaveBeenCalledTimes(1);
+
+    jest.useRealTimers();
+  });
+
+  it('clears the legacy fade timer on cleanup', async () => {
+    jest.useFakeTimers();
+    const rendered = renderWithTheme(<RazorSense numSegments={24} />);
+    await act(async () => {
+      await Promise.resolve();
+    });
+    const mount = (RzpGlassMount as jest.Mock).mock.results.at(-1)!.value as {
+      play: jest.Mock;
+    };
+
+    expect(jest.getTimerCount()).toBe(1);
+    rendered.unmount();
+    expect(jest.getTimerCount()).toBe(0);
+    await act(async () => {
+      jest.advanceTimersByTime(200);
+      await Promise.resolve();
+    });
+    expect(mount.play).not.toHaveBeenCalled();
+
+    jest.useRealTimers();
+  });
+
+  it('feeds lifecycle denial and suspension into emotional and legacy pause', async () => {
+    mockUseRazorSenseLifecycle.mockReturnValue({
+      ...ACTIVE_LIFECYCLE,
+      isAdmitted: false,
+    });
+    const emotional = renderWithTheme(<RazorSense mode="calm" />);
+    expect(emotional.getByTestId('mood-renderer')).toHaveAttribute('data-paused', 'true');
+    emotional.unmount();
+
+    mockUseRazorSenseLifecycle.mockReturnValue({
+      ...ACTIVE_LIFECYCLE,
+      state: 'suspended',
+      isAdmitted: false,
+    });
+    renderWithTheme(<RazorSense numSegments={24} />);
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(RzpGlassMount).toHaveBeenLastCalledWith(
+      expect.any(HTMLElement),
+      expect.any(Object),
+      expect.objectContaining({ paused: true }),
+    );
+    const legacyMount = (RzpGlassMount as jest.Mock).mock.results.at(-1)!.value as {
+      setUniforms: jest.Mock;
+    };
+    expect(legacyMount.setUniforms).toHaveBeenCalledWith(expect.objectContaining({ paused: true }));
   });
 });
