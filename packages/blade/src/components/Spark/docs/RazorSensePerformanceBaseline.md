@@ -4,20 +4,20 @@
 
 ## before runtime capture
 
-Status: **passed**. Captured 2026-07-12T07:45:40.588Z from commit `27541f25ee0a22a149c55e18c9a91f4771e72ff9` with a dirty worktree using Chrome 145.0.7632.160 on macOS 26.5.2. Raw runs: [`RazorSensePerformanceBaseline.before.json`](./RazorSensePerformanceBaseline.before.json).
+Status: **passed**. Captured 2026-07-12T08:04:11.738Z from commit `2728ff0ae9e6ad6f7cc7d428ebef5fafbbe5e549` with a dirty worktree using Chrome 145.0.7632.160 on macOS 26.5.2. Raw runs: [`RazorSensePerformanceBaseline.before.json`](./RazorSensePerformanceBaseline.before.json).
 
 Viewport: 1200x720 at DPR 1. Each scenario uses three cache-disabled cold network runs, then five cache-enabled frame runs with a 2 s warm-up and 10 s measurement window.
 
 | Scenario                     | Status | Media assets / transfers / bytes | RAF p50 / p95 / p99 (ms) | Long tasks count / total | Playing media | WebGL contexts | rVFC callbacks / p95 late | Video total / dropped |
 | ---------------------------- | ------ | -------------------------------: | -----------------------: | -----------------------: | ------------: | -------------: | ------------------------: | --------------------: |
-| Current neutral              | passed |               4 / 15 / 11.13 MiB |          n/a / n/a / n/a |              0 / 0.00 ms |             1 |              0 |                0 / n/a ms |       240 / 0 (0.00%) |
-| Current calm                 | passed |                 4 / 4 / 3.47 MiB |       8.30 / 9.20 / 9.30 |              0 / 0.00 ms |             0 |              1 |                0 / n/a ms |         0 / 0 (0.00%) |
-| Four visible mixed instances | passed |               8 / 18 / 29.93 MiB |    33.30 / 34.00 / 34.29 |              0 / 0.00 ms |             3 |              2 |                0 / n/a ms |       512 / 2 (0.39%) |
-| Eight mounted instances      | passed |               8 / 36 / 40.38 MiB |       8.30 / 8.80 / 9.20 |              0 / 0.00 ms |             3 |              4 |                0 / n/a ms |       742 / 0 (0.00%) |
-| Rapid operational changes    | passed |               4 / 15 / 18.29 MiB |   8.30 / 358.30 / 366.73 |              0 / 0.00 ms |             2 |              0 |                0 / n/a ms |       751 / 0 (0.00%) |
-| Rapid emotional changes      | passed |                 4 / 4 / 3.47 MiB |       8.30 / 9.20 / 9.30 |              0 / 0.00 ms |             0 |              1 |                0 / n/a ms |         0 / 0 (0.00%) |
-| Provider appearance changes  | passed |               8 / 65 / 26.74 MiB | 491.70 / 551.67 / 558.30 |              0 / 0.00 ms |             1 |              0 |              20 / 0.00 ms |         6 / 0 (0.00%) |
-| Page visibility              | passed |               8 / 10 / 14.60 MiB |       8.30 / 9.00 / 9.30 |              0 / 0.00 ms |             1 |              1 |                0 / n/a ms |       240 / 0 (0.00%) |
+| Current neutral              | passed |               4 / 14 / 11.13 MiB |          n/a / n/a / n/a |              0 / 0.00 ms |             1 |              0 |                0 / n/a ms |       241 / 0 (0.00%) |
+| Current calm                 | passed |                 4 / 4 / 3.47 MiB |      8.30 / 9.90 / 10.30 |              0 / 0.00 ms |             0 |              1 |                0 / n/a ms |         0 / 0 (0.00%) |
+| Four visible mixed instances | passed |               8 / 18 / 29.93 MiB |    33.30 / 34.75 / 34.99 |              0 / 0.00 ms |             3 |              2 |                0 / n/a ms |       511 / 2 (0.39%) |
+| Eight mounted instances      | passed |               8 / 36 / 40.38 MiB |      8.30 / 9.80 / 10.30 |              0 / 0.00 ms |             3 |              4 |                0 / n/a ms |       740 / 0 (0.00%) |
+| Rapid operational changes    | passed |               4 / 18 / 18.82 MiB |   8.30 / 358.30 / 366.68 |              0 / 0.00 ms |             2 |              0 |                0 / n/a ms |       749 / 0 (0.00%) |
+| Rapid emotional changes      | passed |                 4 / 4 / 3.47 MiB |     8.30 / 10.00 / 10.30 |              0 / 0.00 ms |             0 |              1 |                0 / n/a ms |         0 / 0 (0.00%) |
+| Provider appearance changes  | passed |               8 / 68 / 26.74 MiB | 499.90 / 552.36 / 557.11 |              0 / 0.00 ms |             1 |              0 |              20 / 0.71 ms |         4 / 0 (0.00%) |
+| Page visibility              | passed |               8 / 11 / 15.47 MiB |     8.30 / 10.00 / 10.30 |              0 / 0.00 ms |             1 |              1 |                0 / n/a ms |       240 / 0 (0.00%) |
 
 Limitations:
 

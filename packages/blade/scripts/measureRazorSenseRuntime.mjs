@@ -432,7 +432,7 @@ function toResponsesByRequestId(requests) {
   return Object.fromEntries(
     [...requests.entries()]
       .sort(([left], [right]) => left.localeCompare(right))
-      .map(([requestId, request]) => [requestId, request]),
+      .map(([requestId, request]) => [requestId, { ...request }]),
   );
 }
 
@@ -501,8 +501,27 @@ async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
     error = serializeError(runError);
   }
 
+  try {
+    await client.send('Network.disable');
+  } catch (disableError) {
+    if (!error) {
+      error = serializeError(disableError);
+    }
+  }
+  try {
+    await client.detach();
+  } catch {
+    // The target may already be gone after a navigation failure.
+  }
+
+  const immutableRequestSnapshot = new Map(
+    [...requests.entries()].map(([requestId, request]) => [
+      requestId,
+      Object.freeze({ ...request }),
+    ]),
+  );
   const razorSenseMediaTransfersByRequestId = Object.fromEntries(
-    Object.entries(toResponsesByRequestId(requests)).filter(([, request]) =>
+    Object.entries(toResponsesByRequestId(immutableRequestSnapshot)).filter(([, request]) =>
       isRazorSenseMediaTransfer(request),
     ),
   );
@@ -513,12 +532,6 @@ async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
     (total, request) => total + (Number(request.encodedDataLength) || 0),
     0,
   );
-
-  try {
-    await client.detach();
-  } catch {
-    // The target may already be gone after a navigation failure.
-  }
 
   return {
     runIndex,
@@ -533,6 +546,57 @@ async function collectNetworkRun({ context, page, storyUrl, runIndex }) {
     razorSenseMediaTransfersByRequestId,
     ...(error ? { error } : {}),
   };
+}
+
+function assertSuccessfulNetworkRunsConsistent(result) {
+  const inconsistencies = [];
+  let checkedRuns = 0;
+
+  result.scenarios.forEach((scenario) => {
+    scenario.networkRuns
+      .filter((run) => run.status === 'passed')
+      .forEach((run) => {
+        checkedRuns += 1;
+        const transfers = Object.values(run.razorSenseMediaTransfersByRequestId ?? {});
+        const mediaEncodedDataLength = transfers.reduce(
+          (total, transfer) => total + (Number(transfer.encodedDataLength) || 0),
+          0,
+        );
+        const mediaTransferCount = transfers.length;
+        const uniqueMediaAssetUrlCount = new Set(transfers.map((transfer) => transfer.url)).size;
+
+        if (
+          run.mediaEncodedDataLength !== mediaEncodedDataLength ||
+          run.mediaTransferCount !== mediaTransferCount ||
+          run.uniqueMediaAssetUrlCount !== uniqueMediaAssetUrlCount
+        ) {
+          inconsistencies.push({
+            scenario: scenario.slug,
+            runIndex: run.runIndex,
+            stored: {
+              mediaEncodedDataLength: run.mediaEncodedDataLength,
+              mediaTransferCount: run.mediaTransferCount,
+              uniqueMediaAssetUrlCount: run.uniqueMediaAssetUrlCount,
+            },
+            derived: {
+              mediaEncodedDataLength,
+              mediaTransferCount,
+              uniqueMediaAssetUrlCount,
+            },
+          });
+        }
+      });
+  });
+
+  if (inconsistencies.length > 0) {
+    const error = new Error(
+      `${inconsistencies.length} successful network run(s) failed internal consistency checks`,
+    );
+    error.inconsistencies = inconsistencies;
+    throw error;
+  }
+
+  return { checkedRuns };
 }
 
 async function setNetworkCacheDisabled(context, page, cacheDisabled) {
@@ -1025,6 +1089,55 @@ async function run(args) {
   } finally {
     await context?.close().catch(() => undefined);
     await fs.rm(profilePath, { recursive: true, force: true }).catch(() => undefined);
+  }
+
+  try {
+    result.networkConsistency = {
+      status: 'passed',
+      ...assertSuccessfulNetworkRunsConsistent(result),
+    };
+  } catch (error) {
+    const inconsistencies = error.inconsistencies ?? [];
+    result.networkConsistency = {
+      status: 'failed',
+      checkedRuns: result.scenarios.reduce(
+        (total, scenario) =>
+          total + scenario.networkRuns.filter((run) => run.status === 'passed').length,
+        0,
+      ),
+      inconsistencies,
+    };
+    result.errors.push({
+      phase: 'network-consistency',
+      ...serializeError(error),
+      inconsistencies,
+    });
+
+    inconsistencies.forEach((inconsistency) => {
+      const scenario = result.scenarios.find(
+        (candidate) => candidate.slug === inconsistency.scenario,
+      );
+      const run = scenario?.networkRuns.find(
+        (candidate) => candidate.runIndex === inconsistency.runIndex,
+      );
+      const runError = {
+        name: 'Error',
+        message: 'Stored RazorSense media aggregates do not match the immutable transfer snapshot',
+      };
+
+      if (run) {
+        run.status = 'failed';
+        run.error = runError;
+      }
+      if (scenario) {
+        scenario.status = 'failed';
+        scenario.errors.push({
+          phase: 'network-consistency',
+          runIndex: inconsistency.runIndex,
+          ...runError,
+        });
+      }
+    });
   }
 
   result.scenarios.forEach((scenario) => {
