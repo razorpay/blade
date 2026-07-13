@@ -13,6 +13,7 @@ import { Link } from '~components/Link';
 type CalendarHeaderProps = {
   date: Date;
   pickerType: PickerType;
+  isRange?: boolean;
   showLevelChangeLink?: boolean;
   onNextMonth: () => void;
   onPreviousMonth: () => void;

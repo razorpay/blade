@@ -409,6 +409,7 @@ const Calendar = <Type extends DateSelectionType>({
         onPreviousYear={() => navigate('year', -1, 'year')}
         onNextDecade={() => navigate('year', 10, 'decade')}
         onPreviousDecade={() => navigate('year', -10, 'decade')}
+        isRange={isRange}
         showLevelChangeLink={showLevelChangeLink}
       />
       {currentPicker === 'day' && renderDayGrid()}

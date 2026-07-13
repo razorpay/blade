@@ -3380,21 +3380,6 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     >
                       13
                     </Text>
-                    <View
-                      isSelected={false}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "hsla(218, 87%, 43%, 1)",
-                            "borderRadius": 9999,
-                            "bottom": 4,
-                            "height": 4,
-                            "position": "absolute",
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                   <View
                     accessibilityLabel="14 July 2026"
@@ -3485,6 +3470,21 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     >
                       14
                     </Text>
+                    <View
+                      isSelected={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "hsla(218, 87%, 43%, 1)",
+                            "borderRadius": 9999,
+                            "bottom": 4,
+                            "height": 4,
+                            "position": "absolute",
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityLabel="15 July 2026"
@@ -9709,21 +9709,6 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     >
                       13
                     </Text>
-                    <View
-                      isSelected={false}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "hsla(218, 87%, 43%, 1)",
-                            "borderRadius": 9999,
-                            "bottom": 4,
-                            "height": 4,
-                            "position": "absolute",
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                   <View
                     accessibilityLabel="14 July 2026"
@@ -9811,6 +9796,21 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     >
                       14
                     </Text>
+                    <View
+                      isSelected={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "hsla(218, 87%, 43%, 1)",
+                            "borderRadius": 9999,
+                            "bottom": 4,
+                            "height": 4,
+                            "position": "absolute",
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityLabel="15 July 2026"
