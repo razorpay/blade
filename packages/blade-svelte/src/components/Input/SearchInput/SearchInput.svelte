@@ -53,11 +53,10 @@
 
   const clearInput = () => {
     const el = baseInput?.getInput();
-    if (el) {
+    if (value === undefined && el) {
       el.value = '';
       el.focus();
     }
-    handleChange({ name, value: '' });
     onClearButtonClick?.();
     baseInput?.focus();
     shouldShowClearButton = false;
