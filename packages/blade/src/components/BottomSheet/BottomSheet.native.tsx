@@ -46,6 +46,10 @@ const focusOnElement = (element: React.Component<any, any>): void => {
   }
 };
 
+// Extra breathing room (home-indicator / safe area) added below the measured
+// content when `snapToContentHeight` is on, so the last row is never clipped.
+const CONTENT_HEIGHT_SAFE_AREA = 24;
+
 const _BottomSheet = ({
   children,
   snapPoints = [0.35, 0.5, 0.85],
@@ -54,6 +58,7 @@ const _BottomSheet = ({
   isDismissible = true,
   initialFocusRef,
   zIndex = componentZIndices.bottomSheet,
+  snapToContentHeight = false,
 }: BottomSheetProps): React.ReactElement => {
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const defaultInitialFocusRef = React.useRef<any>(null);
@@ -84,7 +89,12 @@ const _BottomSheet = ({
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
   useIsomorphicLayoutEffect(() => {
-    if (bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader) {
+    if (snapToContentHeight) {
+      // Content-driven mode has a single derived snap point, so index 0 is the only
+      // valid open index. Anything higher would be out of range and crash Gorhom's
+      // `snapToIndex` invariant (`index <= snapPoints.length - 1`).
+      initialSnapPoint.current = 0;
+    } else if (bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader) {
       // In AutoComplete, we want to open BottomSheet with max height so we set this to last index
       initialSnapPoint.current = 2;
     } else {
@@ -94,11 +104,40 @@ const _BottomSheet = ({
         initialSnapPoint.current = 1;
       }
     }
-  }, [snapPoints, totalHeight]);
+  }, [snapPoints, totalHeight, snapToContentHeight]);
 
-  const _snapPoints = React.useMemo(() => snapPoints.map((point) => `${point * 100}%`), [
-    snapPoints,
-  ]);
+  const _snapPoints = React.useMemo<(string | number)[]>(() => {
+    // Content-driven sizing: derive a SINGLE snap point from the measured content
+    // height (header + body + footer) so the sheet hugs its content. The array is
+    // always length 1 in this mode (index 0 is the only valid open index) — before
+    // the first measurement lands we use a sensible default fraction so the sheet
+    // opens smoothly and never requests an out-of-range snap index.
+    if (snapToContentHeight) {
+      if (totalHeight > 0) {
+        const windowHeight = Dimensions.get('window').height;
+        // Use an ABSOLUTE pixel snap point (not a percentage). Gorhom resolves a
+        // percentage against its own container height, which is shorter than the
+        // window by the top inset (status bar / dynamic island). Dividing the
+        // measured content by the window height therefore under-sized the sheet and
+        // clipped the last grid row (forcing a scroll). A pixel value sizes the sheet
+        // to exactly the measured content regardless of container/window mismatch, so
+        // every grid view (date / month / year) is fully visible. Capped so very tall
+        // content still leaves a small gap at the top instead of covering the notch.
+        const pixelHeight = Math.min(totalHeight + CONTENT_HEIGHT_SAFE_AREA, windowHeight * 0.95);
+        return [pixelHeight];
+      }
+      return ['60%'];
+    }
+    return snapPoints.map((point) => `${point * 100}%`);
+  }, [snapToContentHeight, totalHeight, snapPoints]);
+
+  // When content-sized, re-snap whenever the measured height changes (e.g. switching
+  // between the date grid and the taller month/year grid) so the sheet resizes to fit.
+  React.useEffect(() => {
+    if (snapToContentHeight && _isOpen && totalHeight > 0) {
+      sheetRef.current?.snapToIndex(0);
+    }
+  }, [snapToContentHeight, _isOpen, totalHeight]);
 
   const close = React.useCallback(() => {
     if (isDismissible) {
@@ -107,9 +146,17 @@ const _BottomSheet = ({
     }
   }, [isDismissible, onDismiss, bottomSheetAndDropdownGlue]);
 
+  // Always clamp the open index into the CURRENT snap-points range. The snap-points
+  // array length can change at runtime (e.g. content-driven sizing collapses it to a
+  // single point), and requesting a now-nonexistent index throws Gorhom's invariant.
+  const getSafeSnapIndex = React.useCallback(
+    (index: number) => Math.min(Math.max(index, 0), _snapPoints.length - 1),
+    [_snapPoints.length],
+  );
+
   const handleOnOpen = React.useCallback(() => {
-    sheetRef.current?.snapToIndex(initialSnapPoint.current);
-  }, []);
+    sheetRef.current?.snapToIndex(getSafeSnapIndex(initialSnapPoint.current));
+  }, [getSafeSnapIndex]);
 
   const handleOnClose = React.useCallback(() => {
     sheetRef.current?.close();
@@ -175,9 +222,14 @@ const _BottomSheet = ({
 
   const renderBackdrop = React.useCallback(
     (props: any): React.ReactElement => {
-      return <BottomSheetBackdrop {...props} zIndex={bottomSheetZIndex} />;
+      // `isDismissible` MUST be forwarded — the backdrop uses it to decide its
+      // `pressBehavior` ('close' vs 'none'). Without it, tapping outside the sheet
+      // does nothing (the tap-outside-to-close affordance is lost).
+      return (
+        <BottomSheetBackdrop {...props} zIndex={bottomSheetZIndex} isDismissible={isDismissible} />
+      );
     },
-    [bottomSheetZIndex],
+    [bottomSheetZIndex, isDismissible],
   );
 
   const renderHandle = React.useCallback((): React.ReactElement => {
@@ -293,7 +345,7 @@ const _BottomSheet = ({
             ref={sheetRef}
             // on initial render if _isOpen is true we want to render the sheet at initialSnapPoint
             // otherwise we want to render it at -1 so that it is not visible
-            index={_isOpen ? initialSnapPoint.current : -1}
+            index={_isOpen ? getSafeSnapIndex(initialSnapPoint.current) : -1}
             containerStyle={{ zIndex: bottomSheetZIndex }}
             animateOnMount={true}
             handleComponent={renderHandle}

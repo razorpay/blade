@@ -6,7 +6,6 @@ const WEB_ONLY_STORIES = [
   'MotionRecipes',
   'BottomNav',
   'ChatInput',
-  'DatePicker',
   'DetailedView',
   'DrawerExamples',
   'Fade',
