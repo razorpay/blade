@@ -10,7 +10,7 @@ import { RzpGlassMount } from './RzpGlassMount';
 import { RazorSenseAuthored } from './RazorSenseAuthored';
 import { RazorSenseMood } from './RazorSenseMood';
 import type { RazorSenseEmotionalMode, RazorSenseMode, RazorSenseOperationalMode } from './modes';
-import { isRazorSenseEmotionalMode } from './modes';
+import { isRazorSenseEmotionalMode, AUTHORED_PRESET_MODES } from './modes';
 import type { RzpGlassPreset } from './presets';
 import type { RazorSenseResolvedPlaybackPlan } from './razorSensePrograms';
 import type {
@@ -34,12 +34,6 @@ import { logger } from '~utils/logger';
 // (e.g. circleSlideUp) don't "waste" frames while the canvas is invisible.
 const FADE_IN_MS = 200;
 let hasWarnedAboutSemanticLegacyCollision = false;
-
-const AUTHORED_PRESET_MODES: Partial<Record<RzpGlassPreset, RazorSenseOperationalMode>> = {
-  default: 'neutral',
-  zoomed: 'thinking',
-  bottomWave: 'typing',
-};
 
 const CANONICAL_SEMANTIC_PROP_KEYS = [
   'mode',

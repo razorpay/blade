@@ -1,4 +1,5 @@
 import type { ColorSchemeNames } from '~tokens/theme';
+import type { RzpGlassPreset } from './presets';
 import { getRazorSenseFallbackVideoSource } from './razorSenseAssets';
 
 const RAZOR_SENSE_OPERATIONAL_MODES = ['neutral', 'typing', 'thinking', 'loading'] as const;
@@ -21,6 +22,12 @@ const RAZOR_SENSE_MODE_LABELS: Record<RazorSenseMode, string> = {
   joyful: 'Joyful',
   caution: 'Caution',
   regret: 'Regret',
+};
+
+const AUTHORED_PRESET_MODES: Partial<Record<RzpGlassPreset, RazorSenseOperationalMode>> = {
+  default: 'neutral',
+  zoomed: 'thinking',
+  bottomWave: 'typing',
 };
 
 const RAZOR_SENSE_OPERATIONAL_MODE_BACKGROUNDS: Record<
@@ -97,6 +104,7 @@ export {
   RAZOR_SENSE_MODE_LABELS,
   RAZOR_SENSE_OPERATIONAL_MODE_BACKGROUNDS,
   RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS,
+  AUTHORED_PRESET_MODES,
   getRazorSenseModeVideoSources,
   getRazorSenseMobileModeVideoSources,
   getRazorSenseOperationalModeVideoSources,
