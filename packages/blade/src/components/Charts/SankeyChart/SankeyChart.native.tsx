@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useState } from 'react';
 import { Svg, G, Rect, Path, Text as SvgText, TSpan } from 'react-native-svg';
 import { View, Pressable } from 'react-native';
@@ -405,7 +404,9 @@ const SankeyNodeShape = ({
 
   React.useEffect(() => {
     opacity.value = withTiming(targetOpacity, { duration, easing });
-  }, [targetOpacity, duration]);
+    // opacity is a reanimated SharedValue (ref-like, stable identity) — intentionally omitted from deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetOpacity, duration, easing]);
 
   const animatedProps = useAnimatedProps(() => ({ opacity: opacity.value }));
 
@@ -435,7 +436,9 @@ const SankeyLinkShape = ({
 
   React.useEffect(() => {
     fillOpacity.value = withTiming(targetOpacity, { duration, easing });
-  }, [targetOpacity, duration]);
+    // fillOpacity is a reanimated SharedValue (ref-like, stable identity) — intentionally omitted from deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetOpacity, duration, easing]);
 
   const animatedProps = useAnimatedProps(() => ({ fillOpacity: fillOpacity.value }));
 
