@@ -1,17 +1,11 @@
 import React, { useMemo, useRef, useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
-import {
-  CARD_TICKET_SCALLOP_PERIOD,
-  CARD_TICKET_SCALLOP_RADIUS,
-} from './constants';
+import { CARD_TICKET_SCALLOP_PERIOD, CARD_TICKET_SCALLOP_RADIUS } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~utils';
-import {
-  buildTicketShellPath,
-  CARD_TICKET_OUTLINE_STROKE_WIDTH,
-} from '~utils/cardTicketOutline';
+import { buildTicketShellPath, CARD_TICKET_OUTLINE_STROKE_WIDTH } from '~utils/cardTicketOutline';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 type TicketStateProps = {
@@ -165,7 +159,7 @@ const CardTicketSurface = ({
     resizeObserver.observe(wrapper);
     resizeObserver.observe(topSection);
 
-    return (): void => {
+    return () => {
       resizeObserver.disconnect();
     };
   }, []);
@@ -177,14 +171,14 @@ const CardTicketSurface = ({
 
   const strokePadding = CARD_TICKET_OUTLINE_STROKE_WIDTH / 2;
   const svgViewBox = shellPath
-    ? `${-strokePadding} ${-strokePadding} ${dimensions.width + CARD_TICKET_OUTLINE_STROKE_WIDTH} ${dimensions.height + CARD_TICKET_OUTLINE_STROKE_WIDTH}`
+    ? `${-strokePadding} ${-strokePadding} ${dimensions.width + CARD_TICKET_OUTLINE_STROKE_WIDTH} ${
+        dimensions.height + CARD_TICKET_OUTLINE_STROKE_WIDTH
+      }`
     : '0 0 0 0';
 
   return (
     <TicketWrapper ref={wrapperRef}>
-      <TicketClipContent
-        style={shellPath ? { clipPath: `path('${shellPath}')` } : undefined}
-      >
+      <TicketClipContent style={shellPath ? { clipPath: `path('${shellPath}')` } : undefined}>
         <TicketSection
           ref={topSectionRef}
           position="top"

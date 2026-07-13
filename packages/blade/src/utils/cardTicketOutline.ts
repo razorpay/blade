@@ -51,11 +51,7 @@ function getTicketGeometry(width: number, height: number, tearLineY: number): Ti
   const cornerRadius = CARD_TICKET_CORNER_RADIUS;
   const notchRadius = CARD_TICKET_NOTCH_RADIUS;
 
-  const tearY = clamp(
-    tearLineY,
-    cornerRadius + notchRadius,
-    height - cornerRadius - notchRadius,
-  );
+  const tearY = clamp(tearLineY, cornerRadius + notchRadius, height - cornerRadius - notchRadius);
 
   return {
     minX: 0,
@@ -66,13 +62,7 @@ function getTicketGeometry(width: number, height: number, tearLineY: number): Ti
   };
 }
 
-function buildInwardNotchBoundary({
-  minX,
-  maxX,
-  minY,
-  maxY,
-  tearY,
-}: TicketGeometry): string {
+function buildInwardNotchBoundary({ minX, maxX, minY, maxY, tearY }: TicketGeometry): string {
   const cornerRadius = CARD_TICKET_CORNER_RADIUS;
   const notchRadius = CARD_TICKET_NOTCH_RADIUS;
 
