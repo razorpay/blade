@@ -130,7 +130,7 @@ const CardTicketSurface = ({
     const topSection = topSectionRef.current;
 
     if (!wrapper || !topSection) {
-      return;
+      return () => {};
     }
 
     const updateDimensions = (): void => {
