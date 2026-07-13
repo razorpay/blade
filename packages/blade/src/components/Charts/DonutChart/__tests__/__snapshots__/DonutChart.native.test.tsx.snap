@@ -1,0 +1,3940 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DonutChart /> (native) should handle data with null values without crashing 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 1 1 152.83699620152913 310.34333270617407 L 168.5579974676861 273.56222180411606 A 80 80 0 1 0 200.00000000000003 120 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d=""
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 147.126707626894 307.72379010055323 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 164.75113841792933 271.8158600670355 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 1 1 152.83699620152913 310.34333270617407 L 153.1317649752696 309.6536868767605 A 119.25 119.25 0 1 0 200.00000000000003 80.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d=""
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 147.126707626894 307.72379010055323 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 196.87839891428615 80.7908639966648 A 119.25 119.25 0 0 0 147.4571657042259 307.05051641242477 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should handle empty data without crashing 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.muted"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={75}
+          style={
+            [
+              {
+                "color": "hsla(204, 9%, 42%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.15600000000000003,
+                "lineHeight": 17,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          No data to display
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render DonutChart with all chart types 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 305.95371114307125 256.3365875343069 L 270.63580742871414 237.55772502287127 A 80 80 0 0 0 200.00000000000003 120 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 162.44227497712873 270.63580742871414 A 80 80 0 0 0 269.62845567519196 239.3938848082774 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 129.36419257128586 162.4422749771287 A 80 80 0 0 0 160.6061151917226 269.62845567519196 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 130.37154432480804 160.60611519172264 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 305.95371114307125 256.3365875343069 L 305.29150044842703 255.98448386221747 A 119.25 119.25 0 0 0 200.00000000000003 80.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 144.01551613778253 305.29150044842703 A 119.25 119.25 0 0 0 303.789916740833 258.7215095423385 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 94.70849955157298 144.0155161377825 A 119.25 119.25 0 0 0 141.27849045766152 303.789916740833 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 196.87839891428615 80.7908639966648 A 119.25 119.25 0 0 0 96.21008325916696 141.27849045766155 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render DonutChart with all chart types 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 80 199.99999999999997 A 120 120 0 0 1 137.30017223408615 97.68318027750892 L 158.2001148227241 131.78878685167263 A 80 80 0 0 0 120 200 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 140.00000000000003 96.07695154586736 A 120 120 0 0 1 228.776535758602 83.50145498876863 L 219.18435717240132 122.33430332584575 A 80 80 0 0 0 160 130.7179676972449 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 231.816251149209 84.29465801956049 A 120 120 0 0 1 303.12876938017433 138.64482967075375 L 268.7525129201162 159.09655311383582 A 80 80 0 0 0 221.21083409947266 122.86310534637366 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 304.6995208487357 141.3654510203654 A 120 120 0 0 1 320 200 L 280 200 A 80 80 0 0 0 269.7996805658238 160.9103006802436 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 80 199.99999999999997 A 120 120 0 0 1 137.30017223408615 97.68318027750892 L 137.6920461576231 98.3226604007745 A 119.25 119.25 0 0 0 80.75 199.99999999999997 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 140.00000000000003 96.07695154586736 A 120 120 0 0 1 228.776535758602 83.50145498876863 L 228.59668241011073 84.22957089508883 A 119.25 119.25 0 0 0 140.37500000000003 96.72647059870569 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 231.816251149209 84.29465801956049 A 120 120 0 0 1 303.12876938017433 138.64482967075375 L 302.48421457154825 139.02829948531152 A 119.25 119.25 0 0 0 231.61739957952642 85.01781640693824 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 304.6995208487357 141.3654510203654 A 120 120 0 0 1 320 200 L 319.25 200 A 119.25 119.25 0 0 0 304.0451488434311 141.73191695148813 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 120 A 80 80 0 0 1 270.63580742871414 237.55772502287127 L 245.9132748286642 224.4125212648663 A 52 52 0 0 0 200.00000000000003 148 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 269.62845567519196 239.3938848082774 A 80 80 0 0 1 162.44227497712873 270.63580742871414 L 175.5874787351337 245.9132748286642 A 52 52 0 0 0 245.25849618887477 225.6060251253803 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 160.6061151917226 269.62845567519196 A 80 80 0 0 1 129.36419257128586 162.4422749771287 L 154.08672517133581 175.58747873513366 A 52 52 0 0 0 174.39397487461972 245.25849618887477 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 130.37154432480804 160.60611519172264 A 80 80 0 0 1 197.90584413537016 120.02741400195542 L 198.6387986879906 148.01781910127102 A 52 52 0 0 0 154.7415038111252 174.39397487461972 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 120 A 80 80 0 0 1 270.63580742871414 237.55772502287127 L 269.97359673406993 237.20562135078185 A 79.25 79.25 0 0 0 200.00000000000003 120.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 269.62845567519196 239.3938848082774 A 80 80 0 0 1 162.44227497712873 270.63580742871414 L 162.79437864921817 269.97359673406993 A 79.25 79.25 0 0 0 268.975688903237 239.02456713819979 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 160.6061151917226 269.62845567519196 A 80 80 0 0 1 129.36419257128586 162.4422749771287 L 130.02640326593007 162.79437864921812 A 79.25 79.25 0 0 0 160.97543286180021 268.975688903237 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 130.37154432480804 160.60611519172264 A 80 80 0 0 1 197.90584413537016 120.02741400195542 L 197.92547684660107 120.7771569956871 A 79.25 79.25 0 0 0 131.02431109676294 160.97543286180024 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 305.95371114307125 256.3365875343069 L 270.63580742871414 237.55772502287127 A 80 80 0 0 0 200.00000000000003 120 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 162.44227497712873 270.63580742871414 A 80 80 0 0 0 269.62845567519196 239.3938848082774 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 129.36419257128586 162.4422749771287 A 80 80 0 0 0 160.6061151917226 269.62845567519196 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 130.37154432480804 160.60611519172264 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 305.95371114307125 256.3365875343069 L 305.29150044842703 255.98448386221747 A 119.25 119.25 0 0 0 200.00000000000003 80.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 144.01551613778253 305.29150044842703 A 119.25 119.25 0 0 0 303.789916740833 258.7215095423385 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 94.70849955157298 144.0155161377825 A 119.25 119.25 0 0 0 141.27849045766152 303.789916740833 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 196.87839891428615 80.7908639966648 A 119.25 119.25 0 0 0 96.21008325916696 141.27849045766155 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 3`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000006 38 A 162 162 0 0 1 343.0375100431462 276.0543931713143 L 288.2947592858927 246.9471562785891 A 100 100 0 0 0 200.00000000000003 100 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 340.99762274226373 279.77261673676173 A 162 162 0 0 1 123.9456068286857 343.0375100431462 L 153.0528437214109 288.2947592858927 A 100 100 0 0 0 287.03556959399 249.24235601034673 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 120.22738326323831 340.99762274226373 A 162 162 0 0 1 56.96248995685386 123.94560682868564 L 111.70524071410732 153.0528437214109 A 100 100 0 0 0 150.75764398965327 287.03556959399 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 59.00237725773624 120.22738326323832 A 162 162 0 0 1 195.75933437412456 38.055513353959725 L 197.38230516921269 100.03426750244428 A 100 100 0 0 0 112.96443040601002 150.75764398965327 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000006 38 A 162 162 0 0 1 343.0375100431462 276.0543931713143 L 342.375299348502 275.7022894992249 A 161.25 161.25 0 0 0 200.00000000000006 38.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 340.99762274226373 279.77261673676173 A 162 162 0 0 1 123.9456068286857 343.0375100431462 L 124.29771050077511 342.375299348502 A 161.25 161.25 0 0 0 340.3448559703088 279.4032990666841 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 120.22738326323831 340.99762274226373 A 162 162 0 0 1 56.96248995685386 123.94560682868564 L 57.624700651498046 124.29771050077507 A 161.25 161.25 0 0 0 120.59670093331592 340.3448559703088 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 59.00237725773624 120.22738326323832 A 162 162 0 0 1 195.75933437412456 38.055513353959725 L 195.77896708535548 38.8052563476914 A 161.25 161.25 0 0 0 59.65514402969117 120.59670093331592 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render DonutChart with center text 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 305.95371114307125 256.3365875343069 L 270.63580742871414 237.55772502287127 A 80 80 0 0 0 200.00000000000003 120 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 162.44227497712873 270.63580742871414 A 80 80 0 0 0 269.62845567519196 239.3938848082774 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 129.36419257128586 162.4422749771287 A 80 80 0 0 0 160.6061151917226 269.62845567519196 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 130.37154432480804 160.60611519172264 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 305.95371114307125 256.3365875343069 L 305.29150044842703 255.98448386221747 A 119.25 119.25 0 0 0 200.00000000000003 80.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 144.01551613778253 305.29150044842703 A 119.25 119.25 0 0 0 303.789916740833 258.7215095423385 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 94.70849955157298 144.0155161377825 A 119.25 119.25 0 0 0 141.27849045766152 303.789916740833 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 196.87839891428615 80.7908639966648 A 119.25 119.25 0 0 0 96.21008325916696 141.27849045766155 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <View
+            pointerEvents="none"
+            style={
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "justifyContent": "center",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.muted"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="regular"
+              letterSpacing={50}
+              lineHeight={75}
+              style={
+                [
+                  {
+                    "color": "hsla(204, 9%, 42%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": -0.15600000000000003,
+                    "lineHeight": 17,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Total
+            </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="semibold"
+              letterSpacing={25}
+              lineHeight={200}
+              style={
+                [
+                  {
+                    "color": "hsla(0, 0%, 2%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": -0.528,
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              1200
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render DonutChart with custom cell colors 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 313.8243730336575 238.00015925617666 L 275.8829153557716 225.3334395041178 A 80 80 0 0 0 200.00000000000003 120 Z"
+                  fill={
+                    {
+                      "payload": 4293849329,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 312.7906400593061 240.96671227975287 A 120 120 0 0 1 176.470664483333 317.6706011293565 L 184.313776322222 278.447067419571 A 80 80 0 0 0 275.1937600395374 227.31114151983525 Z"
+                  fill={
+                    {
+                      "payload": 4285901567,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 173.39847015583672 317.01435215369986 A 120 120 0 0 1 80.31522203702107 191.30782398058844 L 120.21014802468072 194.20521598705895 A 80 80 0 0 0 182.26564677055782 278.0095681024666 Z"
+                  fill={
+                    {
+                      "payload": 4294944363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 80.58376966357802 188.17782032624214 A 120 120 0 0 1 139.79083726611373 96.19799268374238 L 159.86055817740913 130.7986617891616 A 80 80 0 0 0 120.38917977571869 192.11854688416142 Z"
+                  fill={
+                    {
+                      "payload": 4293957262,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 142.5286892221964 94.65747089859141 A 120 120 0 0 1 196.85876620305527 80.04112100293312 L 197.9058441353702 120.02741400195542 A 80 80 0 0 0 161.6857928147976 129.7716472657276 Z"
+                  fill={
+                    {
+                      "payload": 4290352383,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 313.8243730336575 238.00015925617666 L 313.1129707021971 237.76265826082556 A 119.25 119.25 0 0 0 200.00000000000003 80.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4293849329,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 312.7906400593061 240.96671227975287 A 120 120 0 0 1 176.470664483333 317.6706011293565 L 176.61772283031215 316.935159872298 A 119.25 119.25 0 0 0 312.0856985589354 240.71067032800443 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4285901567,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 173.39847015583672 317.01435215369986 A 120 120 0 0 1 80.31522203702107 191.30782398058844 L 81.0632518992897 191.36215008070974 A 119.25 119.25 0 0 0 173.56472971736275 316.2830124527393 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4294944363,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 80.58376966357802 188.17782032624214 A 120 120 0 0 1 139.79083726611373 96.19799268374238 L 140.1671445332005 96.846755229469 A 119.25 119.25 0 0 0 81.33012110318066 188.25170894920313 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4293957262,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 142.5286892221964 94.65747089859141 A 120 120 0 0 1 196.85876620305527 80.04112100293312 L 196.87839891428618 80.7908639966648 A 119.25 119.25 0 0 0 142.88788491455767 95.31586170547523 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290352383,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render DonutChart with custom center position 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 240.00000000000003 40 A 120 120 0 0 1 345.95371114307125 216.3365875343069 L 310.63580742871414 197.55772502287127 A 80 80 0 0 0 240.00000000000003 80 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 344.44268351278794 219.09082721241606 A 120 120 0 0 1 183.6634124656931 265.95371114307125 L 202.44227497712873 230.63580742871414 A 80 80 0 0 0 309.62845567519196 199.3938848082774 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 180.90917278758394 264.44268351278794 A 120 120 0 0 1 134.04628885692878 103.66341246569307 L 169.36419257128586 122.4422749771287 A 80 80 0 0 0 200.6061151917226 229.62845567519196 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 135.55731648721203 100.90917278758394 A 120 120 0 0 1 236.85876620305524 40.041121002933124 L 237.90584413537016 80.02741400195542 A 80 80 0 0 0 170.37154432480804 120.60611519172264 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 240.00000000000003 40 A 120 120 0 0 1 345.95371114307125 216.3365875343069 L 345.29150044842703 215.98448386221747 A 119.25 119.25 0 0 0 240.00000000000003 40.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 344.44268351278794 219.09082721241606 A 120 120 0 0 1 183.6634124656931 265.95371114307125 L 184.01551613778253 265.29150044842703 A 119.25 119.25 0 0 0 343.789916740833 218.72150954233848 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 180.90917278758394 264.44268351278794 A 120 120 0 0 1 134.04628885692878 103.66341246569307 L 134.70849955157297 104.0155161377825 A 119.25 119.25 0 0 0 181.27849045766152 263.789916740833 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 135.55731648721203 100.90917278758394 A 120 120 0 0 1 236.85876620305524 40.041121002933124 L 236.87839891428615 40.7908639966648 A 119.25 119.25 0 0 0 136.21008325916696 101.27849045766155 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render an interactive legend and tooltip 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 313.8243730336575 238.00015925617666 L 275.8829153557716 225.3334395041178 A 80 80 0 0 0 200.00000000000003 120 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 312.7906400593061 240.96671227975287 A 120 120 0 0 1 176.470664483333 317.6706011293565 L 184.313776322222 278.447067419571 A 80 80 0 0 0 275.1937600395374 227.31114151983525 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 173.39847015583672 317.01435215369986 A 120 120 0 0 1 80.31522203702107 191.30782398058844 L 120.21014802468072 194.20521598705895 A 80 80 0 0 0 182.26564677055782 278.0095681024666 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 80.58376966357802 188.17782032624214 A 120 120 0 0 1 139.79083726611373 96.19799268374238 L 159.86055817740913 130.7986617891616 A 80 80 0 0 0 120.38917977571869 192.11854688416142 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 142.5286892221964 94.65747089859141 A 120 120 0 0 1 196.85876620305527 80.04112100293312 L 197.9058441353702 120.02741400195542 A 80 80 0 0 0 161.6857928147976 129.7716472657276 Z"
+                  fill={
+                    {
+                      "payload": 4294961110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 313.8243730336575 238.00015925617666 L 313.1129707021971 237.76265826082556 A 119.25 119.25 0 0 0 200.00000000000003 80.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 312.7906400593061 240.96671227975287 A 120 120 0 0 1 176.470664483333 317.6706011293565 L 176.61772283031215 316.935159872298 A 119.25 119.25 0 0 0 312.0856985589354 240.71067032800443 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 173.39847015583672 317.01435215369986 A 120 120 0 0 1 80.31522203702107 191.30782398058844 L 81.0632518992897 191.36215008070974 A 119.25 119.25 0 0 0 173.56472971736275 316.2830124527393 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 80.58376966357802 188.17782032624214 A 120 120 0 0 1 139.79083726611373 96.19799268374238 L 140.1671445332005 96.846755229469 A 119.25 119.25 0 0 0 81.33012110318066 188.25170894920313 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 142.5286892221964 94.65747089859141 A 120 120 0 0 1 196.85876620305527 80.04112100293312 L 196.87839891428618 80.7908639966648 A 119.25 119.25 0 0 0 142.88788491455767 95.31586170547523 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4294274329,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <View
+            pointerEvents="none"
+            style={
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "justifyContent": "center",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.muted"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="regular"
+              letterSpacing={50}
+              lineHeight={75}
+              style={
+                [
+                  {
+                    "color": "hsla(204, 9%, 42%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": -0.15600000000000003,
+                    "lineHeight": 17,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Total
+            </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="semibold"
+              letterSpacing={25}
+              lineHeight={200}
+              style={
+                [
+                  {
+                    "color": "hsla(0, 0%, 2%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": -0.528,
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              1300
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+              "gap": 16,
+              "justifyContent": "center",
+              "paddingHorizontal": 8,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": true,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "borderRadius": 2,
+                  "height": 12,
+                  "marginRight": 4,
+                  "opacity": 1,
+                  "width": 12,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              color="surface.text.gray.muted"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              letterSpacing={50}
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(204, 9%, 42%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": -0.18200000000000002,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textDecorationLine="none"
+            >
+              Group A
+            </Text>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": true,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(153, 100%, 30%, 1)",
+                  "borderRadius": 2,
+                  "height": 12,
+                  "marginRight": 4,
+                  "opacity": 1,
+                  "width": 12,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              color="surface.text.gray.muted"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              letterSpacing={50}
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(204, 9%, 42%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": -0.18200000000000002,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textDecorationLine="none"
+            >
+              Group B
+            </Text>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": true,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(44, 100%, 37%, 1)",
+                  "borderRadius": 2,
+                  "height": 12,
+                  "marginRight": 4,
+                  "opacity": 1,
+                  "width": 12,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              color="surface.text.gray.muted"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              letterSpacing={50}
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(204, 9%, 42%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": -0.18200000000000002,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textDecorationLine="none"
+            >
+              Group C
+            </Text>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": true,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(258, 93%, 68%, 1)",
+                  "borderRadius": 2,
+                  "height": 12,
+                  "marginRight": 4,
+                  "opacity": 1,
+                  "width": 12,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              color="surface.text.gray.muted"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              letterSpacing={50}
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(204, 9%, 42%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": -0.18200000000000002,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textDecorationLine="none"
+            >
+              Group D
+            </Text>
+          </View>
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": true,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "hsla(23, 92%, 53%, 1)",
+                  "borderRadius": 2,
+                  "height": 12,
+                  "marginRight": 4,
+                  "opacity": 1,
+                  "width": 12,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              color="surface.text.gray.muted"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              letterSpacing={50}
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(204, 9%, 42%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": -0.18200000000000002,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textDecorationLine="none"
+            >
+              Group E
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<DonutChart /> (native) should render basic DonutChart 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    height="400px"
+    style={
+      [
+        {
+          "height": 400,
+          "width": 400,
+        },
+      ]
+    }
+    width="400px"
+  >
+    <View
+      data-blade-component="donut-chart"
+      height="100%"
+      style={
+        [
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            {
+              "flex": 1,
+            }
+          }
+          testID="donut-chart-canvas"
+        >
+          <RNSVGSvgView
+            bbHeight={400}
+            bbWidth={400}
+            focusable={false}
+            height={400}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 400,
+                  "width": 400,
+                },
+              ]
+            }
+            width={400}
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 305.95371114307125 256.3365875343069 L 270.63580742871414 237.55772502287127 A 80 80 0 0 0 200.00000000000003 120 Z"
+                  fill={
+                    {
+                      "payload": 4292273663,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 162.44227497712873 270.63580742871414 A 80 80 0 0 0 269.62845567519196 239.3938848082774 Z"
+                  fill={
+                    {
+                      "payload": 4291750363,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 129.36419257128586 162.4422749771287 A 80 80 0 0 0 160.6061151917226 269.62845567519196 Z"
+                  fill={
+                    {
+                      "payload": 4294568110,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+                <RNSVGPath
+                  d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 130.37154432480804 160.60611519172264 Z"
+                  fill={
+                    {
+                      "payload": 4292724735,
+                      "type": 0,
+                    }
+                  }
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  responsible={true}
+                />
+              </RNSVGGroup>
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGPath
+                  d="M 200.00000000000003 80 A 120 120 0 0 1 305.95371114307125 256.3365875343069 L 305.29150044842703 255.98448386221747 A 119.25 119.25 0 0 0 200.00000000000003 80.75 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4279461105,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 144.01551613778253 305.29150044842703 A 119.25 119.25 0 0 0 303.789916740833 258.7215095423385 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4278229332,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 94.70849955157298 144.0155161377825 A 119.25 119.25 0 0 0 141.27849045766152 303.789916740833 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4290611712,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+                <RNSVGPath
+                  d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 196.87839891428615 80.7908639966648 A 119.25 119.25 0 0 0 96.21008325916696 141.27849045766155 Z"
+                  fill={
+                    {
+                      "payload": 0,
+                      "type": 0,
+                    }
+                  }
+                  opacity={1}
+                  propList={
+                    [
+                      "fill",
+                      "stroke",
+                      "strokeWidth",
+                    ]
+                  }
+                  stroke={
+                    {
+                      "payload": 4287587065,
+                      "type": 0,
+                    }
+                  }
+                  strokeWidth={0.75}
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
