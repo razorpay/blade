@@ -170,7 +170,7 @@ const LoginForeground = ({
           animationName: revealStarted
             ? 'razorSenseDashboardReveal, razorSenseDashboardRevealOpacity'
             : undefined,
-          animationDuration: revealStarted ? '2166ms, 160ms' : undefined,
+          animationDuration: revealStarted ? '1417ms, 160ms' : undefined,
           animationTimingFunction: revealStarted ? 'cubic-bezier(0, 0, 0.2, 1), linear' : undefined,
           animationFillMode: revealStarted ? 'both, both' : undefined,
           animationPlayState: isPaused ? 'paused' : 'running',
@@ -514,8 +514,8 @@ const RazorSenseSequence = forwardRef(function RazorSenseSequence<
           }
           [data-razor-sense-login-material-phase="reveal"] [data-razor-sense-login-active="true"][data-razor-sense-step-id="dashboard-ambient"]:not([data-razor-sense-renderer-kind="snapshot"]) {
             animation-name: razorSenseLoginMaterialReveal;
-            animation-duration: 875ms;
-            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            animation-duration: 1417ms;
+            animation-timing-function: linear;
             animation-fill-mode: both;
           }
           [data-razor-sense-login-material-paused="true"] [data-razor-sense-login-active="true"][data-razor-sense-step-id="login-ambient"],
@@ -555,10 +555,22 @@ const RazorSenseSequence = forwardRef(function RazorSenseSequence<
               filter: blur(0.8px) saturate(0.9) brightness(1.25);
               mix-blend-mode: multiply;
             }
-            58% {
-              transform: scale(0.78, 0.82) skewX(-2deg);
-              clip-path: polygon(27% -10%, 68% -10%, 60% 110%, 18% 110%);
-              filter: blur(0.2px) saturate(1.03) brightness(1.08);
+            45% {
+              transform: scale(0.14, 0.17) skewX(-6deg);
+              clip-path: polygon(34% 8%, 68% 4%, 64% 96%, 29% 100%);
+              filter: blur(0.65px) saturate(0.94) brightness(1.2);
+              mix-blend-mode: multiply;
+            }
+            68% {
+              transform: scale(0.23, 0.29) skewX(-4deg);
+              clip-path: polygon(28% -6%, 74% -8%, 68% 108%, 20% 110%);
+              filter: blur(0.45px) saturate(0.98) brightness(1.14);
+              mix-blend-mode: multiply;
+            }
+            84% {
+              transform: scale(0.58, 0.66) skewX(-2deg);
+              clip-path: polygon(12% -10%, 91% -10%, 86% 110%, 2% 110%);
+              filter: blur(0.2px) saturate(1.02) brightness(1.07);
               mix-blend-mode: multiply;
             }
             100% {

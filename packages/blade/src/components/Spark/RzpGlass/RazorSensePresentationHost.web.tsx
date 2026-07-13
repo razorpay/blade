@@ -664,11 +664,13 @@ const RazorSensePresentationHost = forwardRef<
       ) {
         return;
       }
+      const isLoginMaterialMorph =
+        execution.request.builtInManifest?.kind === 'login-to-dashboard' && durationMs > 0;
       commitSlots(
         slotsRef.current.map((slot) => ({
           ...slot,
-          opacity: slot.id === execution.slotId ? 1 : 0,
-          transitionMs: durationMs,
+          opacity: isLoginMaterialMorph ? 1 : slot.id === execution.slotId ? 1 : 0,
+          transitionMs: isLoginMaterialMorph ? 0 : durationMs,
           transitionEasing: transitionTiming.easing,
         })),
       );

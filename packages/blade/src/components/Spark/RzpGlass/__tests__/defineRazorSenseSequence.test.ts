@@ -100,7 +100,7 @@ describe('RazorSense built-in sequences', () => {
 
     expect(manifest.authoredEdges).toEqual([
       { id: 'collapse-to-mark', startFrame: 149, endFrame: 171 },
-      { id: 'expand-from-mark', startFrame: 296, endFrame: 348 },
+      { id: 'expand-from-mark', startFrame: 296, endFrame: 330 },
     ]);
     expect(manifest.cues).toContainEqual({ cue: 'journey-copy-visible', sourceFrame: 305 });
     expect(manifest.cues).toContainEqual({ cue: 'dashboard-cards-visible', sourceFrame: 330 });

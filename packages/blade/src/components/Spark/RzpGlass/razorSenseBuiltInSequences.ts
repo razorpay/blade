@@ -47,7 +47,7 @@ type RazorSenseBuiltInSequenceManifest =
       statusLabel: 'Signing you in';
       authoredEdges: readonly [
         Readonly<{ id: 'collapse-to-mark'; startFrame: 149; endFrame: 171 }>,
-        Readonly<{ id: 'expand-from-mark'; startFrame: 296; endFrame: 348 }>,
+        Readonly<{ id: 'expand-from-mark'; startFrame: 296; endFrame: 330 }>,
       ];
       windows: readonly RazorSenseLoginTimelineWindow[];
       cues: readonly RazorSenseLoginTimelineCue[];
@@ -93,7 +93,7 @@ const LOGIN_TO_DASHBOARD_MANIFEST: RazorSenseBuiltInSequenceManifest = {
   statusLabel: 'Signing you in',
   authoredEdges: [
     { id: 'collapse-to-mark', startFrame: 149, endFrame: 171 },
-    { id: 'expand-from-mark', startFrame: 296, endFrame: 348 },
+    { id: 'expand-from-mark', startFrame: 296, endFrame: 330 },
   ],
   windows: [
     { stepId: 'login-ambient', startFrame: 0, endFrame: 171 },
