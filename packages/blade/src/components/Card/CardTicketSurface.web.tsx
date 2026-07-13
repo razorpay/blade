@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import {
-  CARD_TICKET_NOTCH_RADIUS,
   CARD_TICKET_SCALLOP_PERIOD,
   CARD_TICKET_SCALLOP_RADIUS,
 } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
-import { makeBorderSize } from '~utils';
+import { useTheme } from '~utils';
+import {
+  buildTicketShellPath,
+  CARD_TICKET_OUTLINE_STROKE_WIDTH,
+} from '~utils/cardTicketOutline';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 type TicketStateProps = {
   isSelected?: boolean;
@@ -25,9 +29,6 @@ const getTicketBorderColor = (
   }
   return theme.colors.surface.border.gray.subtle;
 };
-
-const getTicketBorderStyle = ({ isDisabled }: TicketStateProps): 'solid' | 'dashed' =>
-  isDisabled ? 'dashed' : 'solid';
 
 /**
  * Paints the scalloped perforation onto the top edge of the bottom section. A repeating
@@ -55,68 +56,46 @@ const TicketWrapper = styled(BaseBox)(
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    // Clips the half-circle notches (which are positioned half outside each edge) to the inner
-    // half, mirroring Figma's `overflow: clip` cut-circle technique.
-    overflow: 'hidden',
   }),
 );
 
-const TicketSection = styled(BaseBox)<TicketStateProps & { position: 'top' | 'bottom' }>(
-  ({ theme, isSelected, isDisabled, position }): CSSObject => {
-    const borderColor = getTicketBorderColor(theme, { isSelected, isDisabled });
-    const borderStyle = getTicketBorderStyle({ isDisabled });
-    const borderWidth = makeBorderSize(theme.border.width.thin);
-    const radius = makeBorderSize(theme.border.radius.medium);
+const TicketClipContent = styled(BaseBox)(
+  (): CSSObject => ({
+    position: 'relative',
+    zIndex: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+  }),
+);
+
+const TicketOutline = styled.svg(
+  (): CSSObject => ({
+    position: 'absolute',
+    inset: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: 1,
+    pointerEvents: 'none',
+    overflow: 'visible',
+  }),
+);
+
+const TicketSection = styled(BaseBox)<{ position: 'top' | 'bottom' }>(
+  ({ theme, position }): CSSObject => {
     const isTop = position === 'top';
 
     return {
       position: 'relative',
       boxSizing: 'border-box',
-      borderColor,
-      borderStyle,
-      borderLeftWidth: borderWidth,
-      borderRightWidth: borderWidth,
-      // The two sections meet flush at the tear line, so the adjoining edges carry no border.
       ...(isTop
         ? {
             backgroundColor: theme.colors.surface.background.gray.intense,
-            borderTopLeftRadius: radius,
-            borderTopRightRadius: radius,
-            borderTopWidth: borderWidth,
-            borderBottomWidth: '0px',
           }
         : {
             backgroundColor: theme.colors.surface.background.gray.moderate,
-            borderBottomLeftRadius: radius,
-            borderBottomRightRadius: radius,
-            borderBottomWidth: borderWidth,
-            borderTopWidth: '0px',
             ...scallopBackground(theme),
           }),
-    };
-  },
-);
-
-/**
- * A white-filled, state-outlined circle centred on the tear line and pushed half outside an edge.
- * The wrapper's `overflow: hidden` clips it to the inner half, producing an outlined semicircular
- * notch. Rendered inside the (later-painted) bottom section so it sits above both sections.
- */
-const NotchCircle = styled(BaseBox)<TicketStateProps & { side: 'left' | 'right' }>(
-  ({ theme, isSelected, isDisabled, side }): CSSObject => {
-    const radius = CARD_TICKET_NOTCH_RADIUS;
-    return {
-      position: 'absolute',
-      top: `-${radius}px`,
-      [side]: `-${radius}px`,
-      width: `${radius * 2}px`,
-      height: `${radius * 2}px`,
-      borderRadius: '50%',
-      boxSizing: 'border-box',
-      backgroundColor: theme.colors.surface.background.gray.intense,
-      borderStyle: getTicketBorderStyle({ isDisabled }),
-      borderColor: getTicketBorderColor(theme, { isSelected, isDisabled }),
-      borderWidth: makeBorderSize(theme.border.width.thin),
     };
   },
 );
@@ -136,8 +115,8 @@ type CardTicketSurfaceProps = {
 } & TicketStateProps;
 
 /**
- * Renders the ticket "chrome": two stacked sections split by a scalloped tear line with an
- * outlined semicircular notch on either edge. Content for each section is passed via `top`/`bottom`.
+ * Renders the ticket "chrome": two stacked sections split by a scalloped tear line with inward
+ * side notches. The ticket shell is drawn by an inline SVG; content is clipped to the same path.
  */
 const CardTicketSurface = ({
   top,
@@ -147,33 +126,88 @@ const CardTicketSurface = ({
   isSelected,
   isDisabled,
 }: CardTicketSurfaceProps): React.ReactElement => {
+  const { theme } = useTheme();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const topSectionRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0, tearLineY: 0 });
+
+  useIsomorphicLayoutEffect(() => {
+    const wrapper = wrapperRef.current;
+    const topSection = topSectionRef.current;
+
+    if (!wrapper || !topSection) {
+      return;
+    }
+
+    const updateDimensions = (): void => {
+      setDimensions({
+        width: wrapper.offsetWidth,
+        height: wrapper.offsetHeight,
+        tearLineY: topSection.offsetHeight,
+      });
+    };
+
+    updateDimensions();
+
+    const resizeObserver = new ResizeObserver(updateDimensions);
+    resizeObserver.observe(wrapper);
+    resizeObserver.observe(topSection);
+
+    return (): void => {
+      resizeObserver.disconnect();
+    };
+  }, []);
+
+  const shellPath = useMemo(() => buildTicketShellPath(dimensions), [dimensions]);
+
+  const strokeColor = getTicketBorderColor(theme, { isSelected, isDisabled });
+  const strokeDasharray = isDisabled ? '6 4' : undefined;
+
+  const strokePadding = CARD_TICKET_OUTLINE_STROKE_WIDTH / 2;
+  const svgViewBox = shellPath
+    ? `${-strokePadding} ${-strokePadding} ${dimensions.width + CARD_TICKET_OUTLINE_STROKE_WIDTH} ${dimensions.height + CARD_TICKET_OUTLINE_STROKE_WIDTH}`
+    : '0 0 0 0';
+
   return (
-    <TicketWrapper>
-      <TicketSection
-        position="top"
-        isSelected={isSelected}
-        isDisabled={isDisabled}
-        paddingTop="spacing.4"
-        paddingBottom="spacing.4"
-        paddingLeft="spacing.4"
-        paddingRight="spacing.4"
+    <TicketWrapper ref={wrapperRef}>
+      <TicketClipContent
+        style={shellPath ? { clipPath: `path('${shellPath}')` } : undefined}
       >
-        {top}
-      </TicketSection>
-      {tearLine}
-      <TicketSection
-        position="bottom"
-        isSelected={isSelected}
-        isDisabled={isDisabled}
-        paddingTop="spacing.4"
-        paddingBottom="spacing.4"
-        paddingLeft="spacing.4"
-        paddingRight="spacing.4"
-      >
-        <NotchCircle side="left" isSelected={isSelected} isDisabled={isDisabled} />
-        <NotchCircle side="right" isSelected={isSelected} isDisabled={isDisabled} />
-        {bottom}
-      </TicketSection>
+        <TicketSection
+          ref={topSectionRef}
+          position="top"
+          paddingTop="spacing.4"
+          paddingBottom="spacing.4"
+          paddingLeft="spacing.4"
+          paddingRight="spacing.4"
+        >
+          {top}
+        </TicketSection>
+        {tearLine}
+        <TicketSection
+          position="bottom"
+          paddingTop="spacing.4"
+          paddingBottom="spacing.4"
+          paddingLeft="spacing.4"
+          paddingRight="spacing.4"
+        >
+          {bottom}
+        </TicketSection>
+      </TicketClipContent>
+
+      {shellPath ? (
+        <TicketOutline viewBox={svgViewBox} preserveAspectRatio="none" aria-hidden>
+          <path
+            d={shellPath}
+            fill="none"
+            stroke={strokeColor}
+            strokeWidth={CARD_TICKET_OUTLINE_STROKE_WIDTH}
+            strokeDasharray={strokeDasharray}
+            vectorEffect="non-scaling-stroke"
+          />
+        </TicketOutline>
+      ) : null}
+
       {children}
     </TicketWrapper>
   );
