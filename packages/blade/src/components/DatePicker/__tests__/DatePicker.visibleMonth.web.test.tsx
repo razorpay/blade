@@ -49,19 +49,16 @@ describe('<DatePicker/> visibleMonth', () => {
     expect(getAllByText(dayjs(anchorMonth).format('MMMM YYYY')).length).toBeGreaterThan(0);
   });
 
-  it('fires onNext with the correct date when navigating in controlled mode', async () => {
-    // With a controlled `visibleMonth`, consumers keep it in sync by listening to
-    // the existing onNext/onPrevious (navigation) and onChange (selection) callbacks
-    // rather than a dedicated onVisibleMonthChange callback.
+  it('fires onVisibleMonthChange when navigating to the next month in controlled mode', async () => {
     const anchorMonth = dayjs().subtract(4, 'month').toDate();
-    const onNext = jest.fn();
+    const onVisibleMonthChange = jest.fn();
 
     const { getByRole, queryByText } = renderWithTheme(
       <DatePickerComponent
         selectionType="range"
         label={{ start: 'Compare to' }}
         visibleMonth={anchorMonth}
-        onNext={onNext}
+        onVisibleMonthChange={onVisibleMonthChange}
       />,
     );
 
@@ -74,11 +71,10 @@ describe('<DatePicker/> visibleMonth', () => {
     const nextButton = getByRole('button', { name: /Next/i });
     await user.click(nextButton);
 
-    expect(onNext).toHaveBeenCalledTimes(1);
-    const { date: calledDate, type } = onNext.mock.calls[0][0] as { date: Date; type: string };
+    expect(onVisibleMonthChange).toHaveBeenCalledTimes(1);
+    const calledDate = onVisibleMonthChange.mock.calls[0][0] as Date;
     // Range picker on desktop shows 2 columns, so "Next" advances by 2 months
     const expectedDate = dayjs(anchorMonth).add(2, 'month').toDate();
-    expect(type).toBe('month');
     expect(dayjs(calledDate).isSame(expectedDate, 'month')).toBe(true);
   });
 

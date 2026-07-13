@@ -49,6 +49,7 @@ export default {
     picker: baseProp,
     visibleMonth: baseProp,
     defaultVisibleMonth: baseProp,
+    onVisibleMonthChange: baseProp,
     onOpenChange: baseProp,
     allowSingleDateInRange: baseProp,
     defaultIsOpen: baseProp,
@@ -1387,8 +1388,7 @@ export const DatePickerComparisonRange: StoryFn<typeof DatePickerComponent> = ()
           selectionType="range"
           value={comparisonRange}
           visibleMonth={comparisonVisibleMonth}
-          onNext={({ date }) => setComparisonVisibleMonth(date)}
-          onPrevious={({ date }) => setComparisonVisibleMonth(date)}
+          onVisibleMonthChange={setComparisonVisibleMonth}
           onChange={(date) => setComparisonRange(date)}
         />
       </Box>

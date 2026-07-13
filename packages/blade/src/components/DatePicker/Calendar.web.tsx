@@ -28,6 +28,7 @@ const Calendar = <Type extends DateSelectionType>({
   onDateChange,
   visibleMonth,
   defaultVisibleMonth,
+  onVisibleMonthChange,
   onNext,
   onPrevious,
   presets,
@@ -70,6 +71,9 @@ const Calendar = <Type extends DateSelectionType>({
   const [_visibleMonth, setVisibleMonth] = useControllableState<Date | undefined>({
     value: visibleMonth,
     defaultValue: defaultVisibleMonth,
+    onChange: (date) => {
+      if (date) onVisibleMonthChange?.(date);
+    },
   });
 
   const dateContext = useDatesContext();

@@ -68,9 +68,8 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    *
    * Falls back to the first date of `value`/`defaultValue` (or today) when not set.
    *
-   * When `visibleMonth` is controlled, keep it in sync via the existing `onChange`
-   * (date selection) and `onNext`/`onPrevious` (calendar navigation) callbacks —
-   * otherwise calendar navigation will not work.
+   * When `visibleMonth` is controlled, you must handle `onVisibleMonthChange` to keep
+   * the prop in sync — otherwise calendar navigation will not work.
    *
    * @example
    * // Anchor a comparison picker to the month before the primary range's start
@@ -82,6 +81,13 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    * without pre-selecting a date.
    */
   defaultVisibleMonth?: Date;
+  /**
+   * Callback which fires when the rendered month changes, either via calendar
+   * navigation (next/previous month, year, or decade) or when a date in a
+   * different month is selected. Does not fire when the `visibleMonth` prop
+   * is updated externally by the consumer.
+   */
+  onVisibleMonthChange?: (date: Date) => void;
 
   /**
    * Controlled isOpen state
