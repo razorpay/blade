@@ -124,6 +124,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     accessibilityProps,
     setCurrentInteraction,
     numberOfLines,
+    // Native-only prop; strip so it isn't forwarded to the DOM
+    autoGrowMaxHeight: _autoGrowMaxHeight,
     type,
     hasPopup,
     shouldIgnoreBlurAnimation,

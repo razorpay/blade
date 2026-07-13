@@ -53,7 +53,7 @@ describe('<ChatInput /> (native)', () => {
   });
 
   it('should display error text when validationState is error', () => {
-    const { getByText } = renderWithTheme(
+    const { getByText, getByRole } = renderWithTheme(
       <ChatInput
         accessibilityLabel={accessibilityLabel}
         validationState="error"
@@ -62,6 +62,7 @@ describe('<ChatInput /> (native)', () => {
     );
 
     expect(getByText('Something went wrong')).toBeTruthy();
+    expect(getByRole('alert')).toBeTruthy();
   });
 
   it('should call onErrorDismiss when dismiss button is pressed', () => {
@@ -115,6 +116,36 @@ describe('<ChatInput /> (native)', () => {
     expect(onFileRemove).toHaveBeenCalledWith({
       file: expect.objectContaining({ name: 'document.pdf' }),
     });
+  });
+
+  it('should assign missing file ids and remove only the targeted file', () => {
+    const onFileRemove = jest.fn();
+    const files = [
+      { name: 'a.pdf', status: 'success' as const, size: 1024 },
+      { name: 'b.pdf', status: 'success' as const, size: 2048 },
+    ];
+
+    const { getByRole, queryByText } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        fileList={files as never}
+        onFileRemove={onFileRemove}
+      />,
+    );
+
+    expect(files[0].id).toBeDefined();
+    expect(files[1].id).toBeDefined();
+    expect(files[0].id).not.toBe(files[1].id);
+
+    const removeButton = getByRole('button', { name: 'Remove a.pdf' });
+    fireEvent.press(removeButton);
+
+    expect(onFileRemove).toHaveBeenCalledTimes(1);
+    expect(onFileRemove).toHaveBeenCalledWith({
+      file: expect.objectContaining({ name: 'a.pdf', id: files[0].id }),
+    });
+    // Controlled mode: parent still owns list; we only assert id assignment + targeted remove callback
+    expect(queryByText('b.pdf')).toBeTruthy();
   });
 
   it('should disable input when isDisabled is true', () => {

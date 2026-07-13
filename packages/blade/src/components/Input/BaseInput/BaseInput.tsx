@@ -250,6 +250,13 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     numberOfLines?: 1 | 2 | 3 | 4 | 5;
     /**
+     * When set on React Native textareas, grows the input height with content
+     * up to this maximum (in px). Uses `numberOfLines` as the minimum height.
+     *
+     * **Note (Web):** No effect. Web textareas grow via DOM `scrollHeight` instead.
+     */
+    autoGrowMaxHeight?: number;
+    /**
      * Sets the accessibility label for the input
      */
     accessibilityLabel?: string;
@@ -899,6 +906,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingHeaderSlot,
     trailingFooterSlot,
     numberOfLines,
+    autoGrowMaxHeight,
     id,
     componentName,
     accessibilityLabel,
@@ -1207,6 +1215,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 currentInteraction={currentInteraction}
                 setCurrentInteraction={setCurrentInteraction}
                 numberOfLines={numberOfLines}
+                autoGrowMaxHeight={autoGrowMaxHeight}
                 isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
                 hasPopup={hasPopup}
                 hasTags={!!(tags && tags.length > 0)}

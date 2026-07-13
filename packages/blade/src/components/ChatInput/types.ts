@@ -87,7 +87,10 @@ type ChatInputProps = {
   onFileChange?: ({ fileList }: { fileList: BladeFileList }) => void;
 
   /**
-   * Callback fired when a file is removed (trash icon on a success-status file)
+   * Callback fired when a file is removed (trash icon on a success-status file).
+   *
+   * Files without an `id` are assigned one when the list is applied (same as web pick/paste),
+   * so remove/dismiss filtering stays stable for document-picker results that omit `id`.
    */
   onFileRemove?: ({ file }: { file: BladeFile }) => void;
 

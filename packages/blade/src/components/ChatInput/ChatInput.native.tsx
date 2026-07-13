@@ -7,7 +7,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import type { ChatInputProps } from './types';
-import { chatInputFilePreviewItemWidthNative } from './chatInputTokens';
+import { chatInputFilePreviewItemWidthNative, chatInputMaxTextAreaHeight } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
@@ -21,6 +21,7 @@ import { Text } from '~components/Typography';
 import { castNativeType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
@@ -126,8 +127,20 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     }
   }, [hasFiles]);
 
+  const fileScrollRef = React.useRef<ScrollView>(null);
+  const prevFileCountRef = React.useRef(files.length);
+
+  React.useEffect(() => {
+    const prevCount = prevFileCountRef.current;
+    prevFileCountRef.current = files.length;
+    if (files.length > prevCount) {
+      fileScrollRef.current?.scrollToEnd({ animated: true });
+    }
+  }, [files.length]);
+
   const filePreviewContent = hasFiles ? (
     <ScrollView
+      ref={fileScrollRef}
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{
@@ -192,6 +205,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
             paddingBottom="spacing.6"
             borderTopLeftRadius="medium"
             borderTopRightRadius="medium"
+            {...makeAccessible({ role: 'alert' })}
           >
             <InfoIcon size="small" color="feedback.icon.negative.intense" />
             <BaseBox flexShrink={1} flexGrow={1}>
@@ -233,6 +247,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           onBlur={onBlur}
           isDisabled={isDisabled}
           numberOfLines={2}
+          autoGrowMaxHeight={chatInputMaxTextAreaHeight}
           size="medium"
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}

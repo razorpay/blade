@@ -83,7 +83,7 @@ const KeyboardTypeToNativeValuesMap = {
 
 type StyledComponentInputProps = Omit<
   StyledBaseInputProps,
-  'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
+  'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction' | 'autoGrowMaxHeight'
 > & {
   isTextArea?: boolean;
   isFocused: boolean;
@@ -91,6 +91,8 @@ type StyledComponentInputProps = Omit<
   editable?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
   $size: NonNullable<BaseInputProps['size']>;
+  /** Transient — must not forward to native TextInput */
+  $autoGrowMaxHeight?: number;
 };
 
 const getInputHeight = ({
@@ -99,10 +101,16 @@ const getInputHeight = ({
   numberOfLines,
   isDropdownTrigger,
   size,
+  autoGrowMaxHeight,
 }: Pick<StyledBaseInputProps, 'hasTags' | 'isTextArea' | 'numberOfLines' | 'isDropdownTrigger'> & {
   size: NonNullable<BaseInputProps['size']>;
+  autoGrowMaxHeight?: number;
 }): string | undefined => {
   if (isTextArea) {
+    // Auto-grow textareas manage height via inline styles + onContentSizeChange
+    if (autoGrowMaxHeight) {
+      return undefined;
+    }
     const lines = isDropdownTrigger ? 1 : numberOfLines ?? 0;
     return `${baseInputHeight[size] * lines}px`;
   }
@@ -160,7 +168,16 @@ const getRNInputStyles = (
             numberOfLines: props.numberOfLines,
             isDropdownTrigger: props.isDropdownTrigger,
             size: props.$size,
+            autoGrowMaxHeight: props.$autoGrowMaxHeight,
           }),
+          ...(props.isTextArea && props.$autoGrowMaxHeight
+            ? {
+                minHeight: `${
+                  baseInputHeight[props.$size] *
+                  (props.isDropdownTrigger ? 1 : props.numberOfLines ?? 1)
+                }px`,
+              }
+            : {}),
         }
       : {}),
   };
@@ -180,6 +197,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     trailingIcon,
     isTextArea,
     numberOfLines,
+    $autoGrowMaxHeight,
     isDropdownTrigger,
     hasTags,
     $size,
@@ -201,6 +219,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       trailingIcon,
       isTextArea,
       numberOfLines,
+      $autoGrowMaxHeight,
       hasTags,
       isDropdownTrigger,
       $size,
@@ -224,6 +243,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     trailingIcon,
     isTextArea,
     numberOfLines,
+    $autoGrowMaxHeight,
     isDropdownTrigger,
     hasTags,
     $size,
@@ -245,6 +265,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       trailingIcon,
       isTextArea,
       numberOfLines,
+      $autoGrowMaxHeight,
       isDropdownTrigger,
       hasTags,
       $size,
@@ -279,6 +300,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     setCurrentInteraction,
     type,
     numberOfLines,
+    autoGrowMaxHeight,
     isTextArea,
     hasPopup,
     shouldIgnoreBlurAnimation,
@@ -292,6 +314,19 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
 ) => {
   const buttonValue = props.value ? props.value : props.placeholder;
   const { theme } = useTheme();
+  // Auto-grow is opt-in (ChatInput only today). Default path must match prior textarea height behavior.
+  const isAutoGrowing = Boolean(isTextArea && autoGrowMaxHeight);
+  const minAutoGrowHeight =
+    baseInputHeight[$size] * (props.isDropdownTrigger ? 1 : numberOfLines ?? 1);
+  const [autoGrowHeight, setAutoGrowHeight] = React.useState(minAutoGrowHeight);
+
+  React.useEffect(() => {
+    if (!isAutoGrowing) {
+      return;
+    }
+    setAutoGrowHeight(minAutoGrowHeight);
+  }, [isAutoGrowing, minAutoGrowHeight]);
+
   const commonProps = {
     onBlur: (): void => {
       // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
@@ -366,6 +401,17 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
           event: (event as unknown) as React.KeyboardEvent<HTMLInputElement>, // TODO: handle platform specific type
         });
       }}
+      onContentSizeChange={
+        isAutoGrowing && autoGrowMaxHeight
+          ? (event): void => {
+              const nextHeight = Math.min(
+                Math.max(event.nativeEvent.contentSize.height, minAutoGrowHeight),
+                autoGrowMaxHeight,
+              );
+              setAutoGrowHeight(nextHeight);
+            }
+          : undefined
+      }
       // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
       // source: https://reactnative.dev/docs/textinput/#keyboardtype
       keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
@@ -381,6 +427,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       }
       secureTextEntry={type === 'password'}
       isTextArea={isTextArea}
+      // Transient styled prop — never forwarded to native TextInput
+      $autoGrowMaxHeight={isAutoGrowing ? autoGrowMaxHeight : undefined}
       textContentType={
         autoCompleteSuggestionType
           ? autoCompleteSuggestionTypeIOS[
@@ -392,9 +440,11 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       }
       autoCapitalize={autoCapitalize}
       $size={$size}
+      scrollEnabled={isAutoGrowing ? autoGrowHeight >= (autoGrowMaxHeight as number) : undefined}
       {...commonProps}
       {...props}
       {...accessibilityProps}
+      style={isAutoGrowing ? { height: autoGrowHeight, maxHeight: autoGrowMaxHeight } : undefined}
     />
   );
 };

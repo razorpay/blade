@@ -10,6 +10,21 @@ type UseChatInputProps = Pick<
   'value' | 'defaultValue' | 'onChange' | 'onSubmit' | 'fileList' | 'onFileRemove' | 'onFileDismiss'
 >;
 
+const generateFileId = (): string => `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
+
+/**
+ * Ensures every file has a stable `id` (mirrors web pick/paste behavior).
+ * Mutates in place so controlled parent arrays stay in sync, like web `handleFileInputChange`.
+ */
+const ensureFileIds = (fileList: BladeFileList): BladeFileList => {
+  for (const file of fileList) {
+    if (!file.id) {
+      file.id = generateFileId();
+    }
+  }
+  return fileList;
+};
+
 const useChatInput = (
   {
     value: controlledValue,
@@ -48,6 +63,15 @@ const useChatInput = (
     defaultValue: controlledFileList ?? [],
   });
 
+  // Normalize missing ids whenever the list changes (consumer pickers often omit `id`)
+  const [, forceRender] = React.useReducer((count: number) => count + 1, 0);
+  React.useLayoutEffect(() => {
+    if (files.some((file) => !file.id)) {
+      ensureFileIds(files);
+      forceRender();
+    }
+  }, [files]);
+
   const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
   const hasErrorFiles = files.some((f) => f.status === 'error' || f.status === 'uploading');
@@ -67,6 +91,7 @@ const useChatInput = (
 
   const handleFileRemove = React.useCallback(
     (file: BladeFile) => {
+      ensureFileIds(files);
       const newFileList = files.filter((f) => f.id !== file.id);
       setFiles(() => newFileList);
       onFileRemove?.({ file });
@@ -76,6 +101,7 @@ const useChatInput = (
 
   const handleFileDismiss = React.useCallback(
     (file: BladeFile) => {
+      ensureFileIds(files);
       const newFileList = files.filter((f) => f.id !== file.id);
       setFiles(() => newFileList);
       onFileDismiss?.({ file });
