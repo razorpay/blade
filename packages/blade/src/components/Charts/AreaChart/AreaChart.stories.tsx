@@ -239,8 +239,7 @@ const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.React
       padding="spacing.8"
       borderRadius="medium"
     >
-      {' '}
-      {children}{' '}
+      {children}
     </Box>
   );
 };
