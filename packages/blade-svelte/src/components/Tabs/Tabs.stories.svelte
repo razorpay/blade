@@ -320,6 +320,47 @@
   </Tabs>
 </Story>
 
+<Story name="Filled Small" asChild>
+  <Tabs variant="filled" size="small">
+    {#snippet children()}
+      <TabList>
+        {#snippet children()}
+          <TabItem value="subscriptions">
+            {#snippet children()}Subscription{/snippet}
+          </TabItem>
+          <TabItem value="plans">
+            {#snippet children()}Plans{/snippet}
+          </TabItem>
+          <TabItem value="settings">
+            {#snippet children()}Settings{/snippet}
+          </TabItem>
+        {/snippet}
+      </TabList>
+      <TabPanel value="subscriptions">
+        {#snippet children()}
+          <div style="padding-top: var(--spacing-4);">
+            <Text size="small">Subscriptions Panel</Text>
+          </div>
+        {/snippet}
+      </TabPanel>
+      <TabPanel value="plans">
+        {#snippet children()}
+          <div style="padding-top: var(--spacing-4);">
+            <Text size="small">Plans Panel</Text>
+          </div>
+        {/snippet}
+      </TabPanel>
+      <TabPanel value="settings">
+        {#snippet children()}
+          <div style="padding-top: var(--spacing-4);">
+            <Text size="small">Settings Panel</Text>
+          </div>
+        {/snippet}
+      </TabPanel>
+    {/snippet}
+  </Tabs>
+</Story>
+
 <Story name="Filled Vertical" asChild>
   <Tabs variant="filled" orientation="vertical">
     {#snippet children()}
