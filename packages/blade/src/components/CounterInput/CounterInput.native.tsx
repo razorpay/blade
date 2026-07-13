@@ -30,6 +30,7 @@ import { ProgressBar } from '~components/ProgressBar';
 import get from '~utils/lodashButBetter/get';
 import { getTextProps } from '~components/Typography/Text/Text';
 
+// React Native has no ch unit, so approximate Inter's tabular digit width from its font size.
 const COUNTER_INPUT_NATIVE_DIGIT_WIDTH_RATIO = 0.6;
 
 type CounterInputSize = NonNullable<CounterInputProps['size']>;
