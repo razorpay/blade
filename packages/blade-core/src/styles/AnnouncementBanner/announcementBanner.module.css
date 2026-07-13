@@ -10,8 +10,9 @@
   background-color: var(--surface-background-gray-subtle);
 }
 
-/* Dark color scheme — driven by data-theme on body (matches React's useTheme colorScheme) */
-:global(body[data-theme='dark']) .announcement-banner {
+/* Dark color scheme — body[data-theme] (legacy) or data-blade-color-scheme (scoped) */
+:global(body[data-theme='dark']) .announcement-banner,
+:global([data-blade-color-scheme='dark']) .announcement-banner {
   background-color: var(--interactive-background-static-black-faded-highlighted);
 }
 
@@ -36,7 +37,8 @@
   color: var(--surface-text-gray-subtle);
 }
 
-:global(body[data-theme='dark']) .text-color {
+:global(body[data-theme='dark']) .text-color,
+:global([data-blade-color-scheme='dark']) .text-color {
   color: var(--surface-text-static-white-subtle);
 }
 
@@ -45,6 +47,7 @@
   color: var(--surface-icon-gray-subtle);
 }
 
-:global(body[data-theme='dark']) .icon-color {
+:global(body[data-theme='dark']) .icon-color,
+:global([data-blade-color-scheme='dark']) .icon-color {
   color: var(--surface-icon-static-white-subtle);
 }

@@ -578,7 +578,8 @@
 }
 
 /* Dark Mode */
-:root body[data-theme='dark'] {
+:root body[data-theme='dark'],
+[data-blade-color-scheme='dark'] {
 
   /* Surface Colors - Dark */
   --surface-background-gray-subtle: hsla(210, 4%, 11%, 1);

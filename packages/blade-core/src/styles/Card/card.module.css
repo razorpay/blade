@@ -104,7 +104,8 @@
 }
 
 /* Dark theme overrides for the elevated CardSurface treatment. */
-:root body[data-theme='dark'] .cardSurfaceElevated {
+:root body[data-theme='dark'] .cardSurfaceElevated,
+[data-blade-color-scheme='dark'] .cardSurfaceElevated {
   border-top: 1px solid var(--surface-border-gray-subtle);
   background-image: linear-gradient(to bottom, hsla(210, 5%, 16%, 1) 0%, hsla(210, 6%, 13%, 1) 100%),
     linear-gradient(to bottom, hsla(210, 6%, 13%, 1) 0%, hsla(210, 6%, 13%, 1) 100%);
@@ -116,7 +117,8 @@
     inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
 
-:root body[data-theme='dark'] .cardRoot[data-selected='true'] .cardSurfaceElevated {
+:root body[data-theme='dark'] .cardRoot[data-selected='true'] .cardSurfaceElevated,
+[data-blade-color-scheme='dark'] .cardRoot[data-selected='true'] .cardSurfaceElevated {
   box-shadow: 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06),
     inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
@@ -142,7 +144,8 @@
     inset 0px -1.5px 0px 1px var(--surface-background-gray-intense);
 }
 
-:root body[data-theme='dark'] .cardSurfaceThemed {
+:root body[data-theme='dark'] .cardSurfaceThemed,
+[data-blade-color-scheme='dark'] .cardSurfaceThemed {
   border-top: 1px solid var(--surface-border-gray-subtle);
   background-image: linear-gradient(to bottom, hsla(0, 0%, 0%, 0.02) 0%, hsla(0, 0%, 100%, 0) 100%),
     linear-gradient(to top, hsla(0, 0%, 0%, 0.02) 0%, hsla(0, 0%, 100%, 0) 100%);
@@ -154,7 +157,8 @@
     inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
 
-:root body[data-theme='dark'] .cardRoot[data-selected='true'] .cardSurfaceThemed {
+:root body[data-theme='dark'] .cardRoot[data-selected='true'] .cardSurfaceThemed,
+[data-blade-color-scheme='dark'] .cardRoot[data-selected='true'] .cardSurfaceThemed {
   box-shadow: 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06),
     inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
