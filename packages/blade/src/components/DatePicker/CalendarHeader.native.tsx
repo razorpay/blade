@@ -2,7 +2,7 @@
 import type { CalendarLevel as MantineCalendarLevel } from '@mantine/dates';
 import dayjs from 'dayjs';
 import { useI18nContext } from '@razorpay/i18nify-react';
-import type { PickerType, DateValue, DatesRangeValue } from './types';
+import type { PickerType } from './types';
 import { convertIntlToDayjsLocale } from './utils';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -11,7 +11,7 @@ import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '~components/
 import { Link } from '~components/Link';
 
 type CalendarHeaderProps = {
-  date: DateValue | DatesRangeValue;
+  date: Date;
   pickerType: PickerType;
   showLevelChangeLink?: boolean;
   onNextMonth: () => void;
@@ -73,17 +73,17 @@ const CalendarHeader = ({
   const { i18nState } = useI18nContext();
   const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
 
-  const month = dayjs(date as Date)
+  const month = dayjs(date)
     .locale(locale)
     .format('MMMM');
-  const year = dayjs(date as Date)
+  const year = dayjs(date)
     .locale(locale)
     .format('YYYY');
-  const currentYear = dayjs(date as Date).year();
+  const currentYear = dayjs(date).year();
   const startYearOfDecade = Math.floor(currentYear / 10) * 10;
   const endYearOfDecade = startYearOfDecade + 9;
 
-  const handleNext = () => {
+  const handleNext = (): void => {
     switch (pickerType) {
       case 'day':
         onNextMonth();
@@ -99,7 +99,7 @@ const CalendarHeader = ({
     }
   };
 
-  const handlePrevious = () => {
+  const handlePrevious = (): void => {
     switch (pickerType) {
       case 'day':
         onPreviousMonth();

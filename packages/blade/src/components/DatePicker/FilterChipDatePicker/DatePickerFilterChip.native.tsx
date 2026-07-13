@@ -27,9 +27,11 @@ const formatDateRange = (
   if (Array.isArray(date)) {
     const [startDate, endDate] = date;
     if (startDate) {
-      return `${getFormattedDate({ ...formatOptions, date: startDate })}  ${
-        endDate ? ' - ' : ''
-      } ${getFormattedDate({
+      const startFormatted = getFormattedDate({ ...formatOptions, date: startDate });
+      if (!endDate) {
+        return startFormatted;
+      }
+      return `${startFormatted}  -  ${getFormattedDate({
         ...formatOptions,
         date: endDate,
       })}`;

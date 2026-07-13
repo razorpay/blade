@@ -54,15 +54,17 @@ const _DateInput = (
   const { i18nState } = useI18nContext();
   const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
 
-  const [inputValue, setInputValue] = React.useState(['']);
-  const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
-  const [isFocused, setIsFocused] = React.useState(false);
-  const shouldShowCalendarIcon = !Boolean(leadingDropdown);
-
   const isRange =
     effectiveSelectionType === 'single'
       ? false
       : effectiveSelectionType === 'range' || props.selectionType === 'range';
+
+  const [inputValue, setInputValue] = React.useState<string[]>(
+    isRange ? ['', ''] : [''],
+  );
+  const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
+  const [isFocused, setIsFocused] = React.useState(false);
+  const shouldShowCalendarIcon = !Boolean(leadingDropdown);
 
   // NOTE: `textInputProps.value` is a fresh array literal on every render
   // (`value={[dateValue]}` / `value={[startValue, endValue]}`). Depending on the

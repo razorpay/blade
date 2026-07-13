@@ -108,27 +108,27 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     if (format) {
       return format;
     }
-    if (picker === 'month') {
+    if (_picker === 'month') {
       return 'MMMM';
     }
-    if (picker === 'year') {
+    if (_picker === 'year') {
       return 'YYYY';
     }
     return 'DD/MM/YYYY';
-  }, [format, picker]);
+  }, [format, _picker]);
 
   const finalInputPlaceHolder = React.useMemo(() => {
     if (inputPlaceHolder) {
       return inputPlaceHolder;
     }
-    if (picker === 'month') {
+    if (_picker === 'month') {
       return 'Month';
     }
-    if (picker === 'year') {
+    if (_picker === 'year') {
       return 'Year';
     }
     return 'DD/MM/YYYY';
-  }, [inputPlaceHolder, picker]);
+  }, [inputPlaceHolder, _picker]);
 
   const {
     onDateChange,

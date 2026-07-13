@@ -1,4 +1,3 @@
-import { isReactNative } from '~utils';
 import { BaseMenuItem } from '~components/BaseMenu';
 
 type QuickSelectionItemProps = {
@@ -13,7 +12,6 @@ const QuickSelectionItem = ({
 }: QuickSelectionItemProps): React.ReactElement => {
   return (
     <BaseMenuItem
-      as={!isReactNative() ? 'button' : undefined}
       selectionType="single"
       isSelected={isSelected}
       onClick={onClick}
