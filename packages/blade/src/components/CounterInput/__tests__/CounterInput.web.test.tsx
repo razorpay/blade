@@ -209,11 +209,12 @@ describe('<CounterInput />', () => {
     expect(input).toHaveAttribute('name', name);
   });
 
-  it('should reserve two digits and expand for larger values', () => {
+  it('should reserve two digits and expand the minimum width for larger values', () => {
     const { container: container1 } = renderWithTheme(<CounterInput label="Quantity" value={5} />);
 
     expect(container1.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
-      width: getCounterInputFieldWidth({ digitCount: 2, size: 'medium' }),
+      flex: '1',
+      minWidth: getCounterInputFieldWidth({ digitCount: 2, size: 'medium' }),
     });
 
     const { container: container2 } = renderWithTheme(
@@ -221,7 +222,7 @@ describe('<CounterInput />', () => {
     );
 
     expect(container2.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
-      width: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+      minWidth: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
     });
   });
 
@@ -232,7 +233,7 @@ describe('<CounterInput />', () => {
     );
 
     expect(container1.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
-      width: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+      minWidth: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
     });
 
     // -99 has 2 digits + minus sign → digitCount should be 2 + 1 = 3
@@ -241,7 +242,7 @@ describe('<CounterInput />', () => {
     );
 
     expect(container2.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
-      width: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+      minWidth: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
     });
 
     // -100 has 3 digits + minus sign → digitCount should be 3 + 1 = 4
@@ -250,7 +251,7 @@ describe('<CounterInput />', () => {
     );
 
     expect(container3.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
-      width: getCounterInputFieldWidth({ digitCount: 4, size: 'medium' }),
+      minWidth: getCounterInputFieldWidth({ digitCount: 4, size: 'medium' }),
     });
   });
 

@@ -32,7 +32,8 @@ const StyledNumberWrapper = styled(BaseBox)<{
   $fontSize: string;
   $fontWeight: string | number;
 }>`
-  width: ${({ $width }) => $width};
+  flex: 1;
+  min-width: ${({ $width }) => $width};
   font-family: ${({ $fontFamily }) => $fontFamily};
   font-size: ${({ $fontSize }) => $fontSize};
   font-weight: ${({ $fontWeight }) => $fontWeight};

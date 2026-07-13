@@ -131,7 +131,10 @@ exports[`<CounterInput /> should render 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  width: calc(2ch + 8px);
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-width: calc(2ch + 8px);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
@@ -867,7 +870,10 @@ exports[`<CounterInput /> should render large size 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  width: calc(2ch + 8px);
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-width: calc(2ch + 8px);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
@@ -1603,7 +1609,10 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  width: calc(2ch + 8px);
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-width: calc(2ch + 8px);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
