@@ -206,6 +206,15 @@ const niceCeil = (raw: number): number => {
   return niceFraction * 10 ** exponent;
 };
 
+const niceFloor = (raw: number): number => {
+  if (raw >= 0) return 0;
+  const abs = Math.abs(raw);
+  const exponent = Math.floor(Math.log10(abs));
+  const fraction = abs / 10 ** exponent;
+  const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
+  return -(niceFraction * 10 ** exponent);
+};
+
 const formatYTick = (value: number): string => {
   const abs = Math.abs(value);
   if (abs >= 1_000_000) return `${(value / 1_000_000).toFixed(abs >= 10_000_000 ? 0 : 1)}M`;
@@ -544,27 +553,35 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     return map;
   }, [data, slots.xSecondaryDataKey]);
 
-  const dataMax = useMemo(() => {
-    if (!data.length) return 0;
+  const { dataMin, dataMax } = useMemo(() => {
+    if (!data.length) return { dataMin: 0, dataMax: 0 };
     const linesForDomain = visibleLines.length ? visibleLines : allLines;
-    let max = 0;
+    let min = Infinity;
+    let max = -Infinity;
     data.forEach((row) => {
       linesForDomain.forEach((line) => {
         const value = Number(row[line.dataKey]);
-        if (isNumber(value) && isFinite(value) && value > max) max = value;
+        if (isNumber(value) && isFinite(value)) {
+          if (value < min) min = value;
+          if (value > max) max = value;
+        }
       });
     });
-    return max;
+    if (min === Infinity) min = 0;
+    if (max === -Infinity) max = 0;
+    return { dataMin: min, dataMax: max };
   }, [data, visibleLines, allLines]);
 
+  const yMin = dataMin < 0 ? niceFloor(dataMin) : 0;
   const yMax = niceCeil(dataMax);
+  const yDomain = yMax - yMin;
   const yTicks = useMemo(() => {
     const ticks: number[] = [];
     for (let i = 0; i <= Y_TICK_COUNT; i++) {
-      ticks.push((yMax / Y_TICK_COUNT) * i);
+      ticks.push(yMin + (yDomain / Y_TICK_COUNT) * i);
     }
     return ticks;
-  }, [yMax]);
+  }, [yMin, yDomain]);
 
   const showAxes = slots.hasXAxis || slots.hasYAxis;
   const needsExtraBottomPad = Boolean(slots.xLabel && slots.xSecondaryDataKey);
@@ -607,13 +624,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           raw === null || raw === undefined || Number.isNaN(Number(raw)) ? null : Number(raw);
         return {
           x: xForIndex(index),
-          y: value === null ? 0 : plotHeight - (value / yMax) * plotHeight,
+          y: value === null ? 0 : plotHeight - ((value - yMin) / yDomain) * plotHeight,
           value,
         };
       });
       return { line, color: resolveColor(line.dataKey, line.color), points };
     });
-  }, [visibleLines, data, plotWidth, plotHeight, yMax, dataColorMapping, theme.colors]);
+  }, [visibleLines, data, plotWidth, plotHeight, yMin, yDomain, dataColorMapping, theme.colors]);
 
   const dataSignature = useMemo(() => `${data.length}:${allDataKeys.join(',')}`, [
     data.length,
@@ -796,7 +813,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                 <G x={padding.left} y={padding.top}>
                   {slots.hasGrid &&
                     yTicks.map((tick, idx) => {
-                      const y = plotHeight - (tick / yMax) * plotHeight;
+                      const y = plotHeight - ((tick - yMin) / yDomain) * plotHeight;
                       return (
                         <Line
                           key={`grid-${idx}`}
@@ -821,7 +838,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                         strokeWidth={1}
                       />
                       {yTicks.map((tick, idx) => {
-                        const y = plotHeight - (tick / yMax) * plotHeight;
+                        const y = plotHeight - ((tick - yMin) / yDomain) * plotHeight;
                         return (
                           <SvgText
                             key={`ytick-${idx}`}
@@ -942,8 +959,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     }
 
                     // Horizontal (numeric y).
-                    if (refLine.y === undefined || refLine.y > yMax || refLine.y < 0) return null;
-                    const y = plotHeight - (refLine.y / yMax) * plotHeight;
+                    if (refLine.y === undefined || refLine.y > yMax || refLine.y < yMin) return null;
+                    const y = plotHeight - ((refLine.y - yMin) / yDomain) * plotHeight;
                     return (
                       <G key={`refline-${idx}`}>
                         <Line

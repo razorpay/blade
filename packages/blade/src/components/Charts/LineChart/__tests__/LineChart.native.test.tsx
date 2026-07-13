@@ -117,6 +117,25 @@ describe('<ChartLineWrapper /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render negative data values within the plot area', () => {
+    const negativeData = [
+      { name: 'Jan', profit: -2000 },
+      { name: 'Feb', profit: 1000 },
+      { name: 'Mar', profit: -500 },
+      { name: 'Apr', profit: 3000 },
+    ];
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={negativeData} testID="negative">
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartLine dataKey="profit" name="Profit/Loss" />
+      </ChartLineWrapper>,
+    );
+    fireLayout(getByTestId('negative-layout'));
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render a horizontal reference line (y)', () => {
     const { toJSON, getByTestId } = renderWithTheme(
       <ChartLineWrapper data={mockData} testID="ref-h">
