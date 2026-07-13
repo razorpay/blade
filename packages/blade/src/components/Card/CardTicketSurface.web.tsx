@@ -140,10 +140,22 @@ const CardTicketSurface = ({
     }
 
     const updateDimensions = (): void => {
-      setDimensions({
-        width: wrapper.offsetWidth,
-        height: wrapper.offsetHeight,
-        tearLineY: topSection.offsetHeight,
+      setDimensions((previousDimensions) => {
+        const nextDimensions = {
+          width: wrapper.offsetWidth,
+          height: wrapper.offsetHeight,
+          tearLineY: topSection.offsetHeight,
+        };
+
+        if (
+          previousDimensions.width === nextDimensions.width &&
+          previousDimensions.height === nextDimensions.height &&
+          previousDimensions.tearLineY === nextDimensions.tearLineY
+        ) {
+          return previousDimensions;
+        }
+
+        return nextDimensions;
       });
     };
 
