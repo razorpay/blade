@@ -210,7 +210,7 @@ import { RazorSense } from '@razorpay/blade/components';
 
 const canRetry: boolean = true;
 
-<RazorSense state={canRetry ? 'caution' : 'regret'} playback="once" endBehavior="hold" />
+<RazorSense state={canRetry ? ('caution' as const) : ('regret' as const)} playback="once" endBehavior="hold" />
 ```
 
 The surrounding UI must explain what happened and provide a recovery action. Do not infer recoverability from animation completion.
