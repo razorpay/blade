@@ -27,7 +27,7 @@ describe('<DatePicker/> visibleMonth', () => {
     expect(getAllByText(dayjs(anchorMonth).format('MMMM YYYY')).length).toBeGreaterThan(0);
   });
 
-  it('gives defaultVisibleMonth priority over the first date of a controlled value', async () => {
+  it('gives visibleMonth priority over the first date of a controlled value', async () => {
     const anchorMonth = dayjs().subtract(6, 'month').toDate();
     const selectedRange = [dayjs().toDate(), dayjs().add(3, 'day').toDate()] as [Date, Date];
 
@@ -36,7 +36,7 @@ describe('<DatePicker/> visibleMonth', () => {
         selectionType="range"
         label={{ start: 'Compare to' }}
         value={selectedRange}
-        defaultVisibleMonth={anchorMonth}
+        visibleMonth={anchorMonth}
         onChange={() => undefined}
       />,
     );
@@ -49,10 +49,10 @@ describe('<DatePicker/> visibleMonth', () => {
     expect(getAllByText(dayjs(anchorMonth).format('MMMM YYYY')).length).toBeGreaterThan(0);
   });
 
-  it('fires onNext with the correct date when navigating to the next month', async () => {
-    // Consumers who need to track the rendered month (e.g. to re-anchor a
-    // comparison picker) should rely on the existing onNext/onPrevious
-    // callbacks rather than a dedicated visible-month callback.
+  it('fires onNext with the correct date when navigating in controlled mode', async () => {
+    // With a controlled `visibleMonth`, consumers keep it in sync by listening to
+    // the existing onNext/onPrevious (navigation) and onChange (selection) callbacks
+    // rather than a dedicated onVisibleMonthChange callback.
     const anchorMonth = dayjs().subtract(4, 'month').toDate();
     const onNext = jest.fn();
 
@@ -60,7 +60,7 @@ describe('<DatePicker/> visibleMonth', () => {
       <DatePickerComponent
         selectionType="range"
         label={{ start: 'Compare to' }}
-        defaultVisibleMonth={anchorMonth}
+        visibleMonth={anchorMonth}
         onNext={onNext}
       />,
     );

@@ -78,6 +78,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   defaultPicker = 'day',
   picker,
   onPickerChange,
+  visibleMonth,
   defaultVisibleMonth,
   zIndex = componentZIndices.popover,
   format = 'DD/MM/YYYY',
@@ -367,6 +368,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             {...props}
             selectionType={_selectionType}
             defaultValue={defaultValue}
+            visibleMonth={visibleMonth}
             defaultVisibleMonth={defaultVisibleMonth}
             onMouseLeave={onRootMouseLeave}
             __onDayMouseEnter={(_event, date) => {

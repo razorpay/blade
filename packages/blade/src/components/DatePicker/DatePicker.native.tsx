@@ -382,11 +382,13 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
     picker,
     defaultPicker,
     onPickerChange,
+    visibleMonth: visibleMonthProp,
     defaultVisibleMonth,
   } = props as DatePickerNativeProps<DateSelectionType> & {
     picker?: unknown;
     defaultPicker?: unknown;
     onPickerChange?: unknown;
+    visibleMonth?: unknown;
     defaultVisibleMonth?: unknown;
     successText?: unknown;
   };
@@ -397,6 +399,7 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
     if (picker !== undefined) unsupported.push('picker');
     if (defaultPicker !== undefined) unsupported.push('defaultPicker');
     if (onPickerChange !== undefined) unsupported.push('onPickerChange');
+    if (visibleMonthProp !== undefined) unsupported.push('visibleMonth');
     if (defaultVisibleMonth !== undefined) unsupported.push('defaultVisibleMonth');
     if (unsupported.length > 0) {
       logger({
@@ -407,7 +410,7 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
         )}.`,
       });
     }
-  }, [picker, defaultPicker, onPickerChange, defaultVisibleMonth]);
+  }, [picker, defaultPicker, onPickerChange, visibleMonthProp, defaultVisibleMonth]);
 
   const isError = validationState === 'error';
   const isSuccess = validationState === 'success';
@@ -719,8 +722,8 @@ function _DatePicker<Type extends DateSelectionType = 'single'>(
  * #### Not yet supported on native
  *
  * Month/year picker variants (`picker`, `defaultPicker`, `onPickerChange`),
- * `defaultVisibleMonth`, masked text input, and the form-validation props
- * (`validationState`, `helpText`,
+ * `visibleMonth`/`defaultVisibleMonth`, masked text
+ * input, and the form-validation props (`validationState`, `helpText`,
  * `errorText`, `isRequired`, `necessityIndicator`, `labelPosition`). Passing
  * any of these emits a `__DEV__` warning and they are otherwise ignored at
  * runtime.
