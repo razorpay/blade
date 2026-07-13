@@ -66,7 +66,7 @@ Write to absolute paths under `{Worktree}`:
 
 Blade Storybook is a dev build — it requires Metro bundler to serve the JS bundle. In a parallel batch, each verify agent has its own dedicated Metro port, simulator device, and session. **Do NOT use hardcoded port 8081 or a generic `boot` command** — always use `{MetroPort}`, `{iOSDevice}`, and `{SessionName}` from your prompt.
 
-> **Tooling note:** `agent-device` and `agent-browser` are installed **globally** (e.g. `/opt/homebrew/bin`). Call them **directly** — never via `npx`. They are not in the worktree's `node_modules`, so `npx agent-device`/`npx agent-browser` adds npm resolution overhead on every call and can churn/restart the daemon between commands, which surfaces as a blank or continuously-refreshing screen. A single persistent daemon per session is what keeps the simulator/browser state stable. Verify availability once with `which agent-device` / `which agent-browser`.
+> **Tooling note:** `agent-device` and `agent-browser` must be **global** on PATH — call them directly, never via `npx`. If either is missing, install it before continuing (orchestrator should have caught this in pre-flight).
 
 1. **Check if Metro is already running on your assigned port:**
    ```bash

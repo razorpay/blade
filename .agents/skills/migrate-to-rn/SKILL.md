@@ -16,6 +16,7 @@ Use this skill when the user asks to run the migrated source command `migrate-to
 
 ## Pre-flight Acknowledgment
 
+- I will run the **skill extras** check (`jq`, `agent-device`, `agent-browser`) and install anything missing before Step 0
 - I will spawn agents via the Agent tool with the appropriate `subagent_type`
 - I will NOT execute the plan/execute/verify steps myself
 - I will pass the worktree absolute path in each agent's prompt
@@ -28,6 +29,26 @@ Use this skill when the user asks to run the migrated source command `migrate-to
 Use the Read tool to load:
 1. `.claude/rules/orchestrator-guardrails.md`
 2. `.claude/rules/rn-migration.md`
+
+## Pre-flight: Skill extras
+
+Assumes Blade dev already works (`yarn install`, Xcode, `pod install`, `yarn start:ios`, etc.).
+
+**Before Step 0**, verify these skill-only tools are on PATH:
+
+```bash
+command -v jq && command -v agent-device && command -v agent-browser
+```
+
+| Tool | Why |
+|------|-----|
+| `jq` | `.claude/settings.json` hook — artifact listing when spawning RN agents |
+| `agent-device` | Simulator visual verify (global on PATH, not `npx`) |
+| `agent-browser` | Web vs native screenshot compare in Verify 4e (global on PATH, not `npx`) |
+
+**If any check fails:** install the missing tool(s), run any post-install setup they require, then re-check. **Do not proceed to Step 0 until all three pass.**
+
+**Optional later:** `gh` authenticated — only needed at Final Gate for `gh pr create`.
 
 ## Input
 
