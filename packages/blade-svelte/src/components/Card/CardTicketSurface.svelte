@@ -4,6 +4,7 @@
   import {
     buildTicketShellPath,
     CARD_TICKET_OUTLINE_STROKE_WIDTH,
+    getTokenCSSVariable,
   } from '@razorpay/blade-core/utils';
 
   // Call in the script block so the class names aren't tree-shaken from the CSS module.
@@ -39,7 +40,11 @@
 
   const shellPath = $derived(buildTicketShellPath(outlineDimensions));
 
-  const strokeColor = $derived(isSelected && !isDisabled ? '#2563EB' : '#D9D9D9');
+  const strokeColor = $derived(
+    isSelected && !isDisabled
+      ? getTokenCSSVariable('surface.border.primary.normal')
+      : getTokenCSSVariable('surface.border.gray.subtle'),
+  );
   const strokeDasharray = $derived(isDisabled ? '6 4' : undefined);
 
   const strokePadding = CARD_TICKET_OUTLINE_STROKE_WIDTH / 2;
