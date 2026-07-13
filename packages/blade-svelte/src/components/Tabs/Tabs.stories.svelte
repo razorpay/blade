@@ -707,9 +707,9 @@
     {#snippet children()}
       <TabList>
         {#snippet children()}
-          <TabItem value="clipboard" leading={HomeIcon} />
-          <TabItem value="card" leading={CreditCardIcon} />
-          <TabItem value="settings" leading={SearchIcon} />
+          <TabItem value="clipboard" leading={HomeIcon} accessibilityLabel="Home" />
+          <TabItem value="card" leading={CreditCardIcon} accessibilityLabel="Credit Card" />
+          <TabItem value="settings" leading={SearchIcon} accessibilityLabel="Search" />
         {/snippet}
       </TabList>
       <TabPanel value="clipboard">
