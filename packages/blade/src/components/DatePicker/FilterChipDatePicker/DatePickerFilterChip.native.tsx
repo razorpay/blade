@@ -68,6 +68,13 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
   const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
   const displayFormat = useDatePickerContext()?.displayFormat ?? 'default';
 
+  // BaseFilterChip is not yet implemented for native — it calls `throwBladeError` which
+  // only throws in `__DEV__` and silently renders nothing in production. Throw a clear
+  // runtime error so consumers get an explicit message instead of a silent no-op.
+  throw new Error(
+    '[Blade: DatePicker]: FilterChipDatePicker is not yet supported on React Native — BaseFilterChip is not implemented for native',
+  );
+
   const hasValidSelection =
     selectionType === 'range'
       ? Boolean((date as [Date | null, Date | null])?.[0]) &&

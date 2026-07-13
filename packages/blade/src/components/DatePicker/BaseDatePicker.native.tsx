@@ -82,7 +82,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   }): React.ReactElement => {
   const _selectionType = selectionType ?? 'single';
   const isSingle = _selectionType === 'single';
-  const [, forceRerender] = React.useReducer((x: number) => x + 1, 0);
+
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
   const referenceRef = React.useRef<any>(null);
   const shouldApplyAfterPresetSelection = React.useRef(false);
@@ -150,7 +150,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
       setSelectedPreset(date as DatesRangeValue);
     },
   });
-  const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
+  const [oldValue, setOldValue] = React.useState<DatesRangeValue | Date | null>(controlledValue);
 
   React.useEffect(() => {
     if (!isSingle && controlledValue) {
@@ -267,17 +267,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           }}
           onNext={(data) => {
             props?.onNext?.(data as never);
-            forceRerender();
           }}
           onPrevious={(data) => {
             props?.onPrevious?.(data as never);
-            forceRerender();
           }}
           picker={_picker}
           showLevelChangeLink={!picker}
           onPickerChange={(nextPicker) => {
             setPicker(() => nextPicker);
-            forceRerender();
           }}
           selectedValue={controlledValue}
         />
@@ -440,6 +437,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 onCancel={handleCancel}
                 onApply={handleApply}
                 footer={footer}
+                selectionType={_selectionType}
               />
             </BottomSheetFooter>
           )}

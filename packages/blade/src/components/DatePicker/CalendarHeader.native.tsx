@@ -9,6 +9,7 @@ import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
 import { Link } from '~components/Link';
+import { throwBladeError } from '~utils/logger';
 
 type CalendarHeaderProps = {
   date: Date;
@@ -93,7 +94,10 @@ const CalendarHeader = ({
         onNextDecade();
         break;
       default:
-        throw new Error('Invalid picker type');
+        throwBladeError({
+          message: 'Invalid picker type',
+          moduleName: 'DatePicker',
+        });
     }
   };
 
@@ -109,7 +113,10 @@ const CalendarHeader = ({
         onPreviousDecade();
         break;
       default:
-        throw new Error('Invalid picker type');
+        throwBladeError({
+          message: 'Invalid picker type',
+          moduleName: 'DatePicker',
+        });
     }
   };
 
@@ -160,4 +167,3 @@ const CalendarHeader = ({
 };
 
 export { CalendarHeader };
-export type { CalendarHeaderProps };

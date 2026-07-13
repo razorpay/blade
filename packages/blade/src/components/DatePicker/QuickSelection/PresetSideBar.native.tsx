@@ -8,7 +8,12 @@ import { Divider } from '~components/Divider';
  * `ChipGroup` branch is rendered (the desktop `QuickSelectionItem` sidebar is
  * web-only).
  */
-const PresetSideBar = ({ onSelection, presetStates }: PresetSideBarProps): React.ReactElement => {
+const PresetSideBar = ({
+  onSelection,
+  presetStates,
+  // isMobile is intentionally ignored on native — native is always the "mobile" layout.
+  isMobile: _isMobile,
+}: PresetSideBarProps): React.ReactElement => {
   if (presetStates.length === 0) return <></>;
 
   return (

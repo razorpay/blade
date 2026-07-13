@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import dayjs from 'dayjs';
 import React from 'react';
+import type { DayOfWeek } from '@mantine/dates';
 import { useI18nContext } from '@razorpay/i18nify-react';
 import type { DateSelectionType, PickerType, DatesRangeValue } from './types';
 import { CalendarHeader } from './CalendarHeader';
@@ -26,7 +27,7 @@ type ControlProps = {
 };
 
 type CalendarNativeProps<Type extends DateSelectionType> = {
-  firstDayOfWeek?: number;
+  firstDayOfWeek?: DayOfWeek;
   selectionType?: Type;
   allowSingleDateInRange?: boolean;
   defaultPicker?: PickerType;
@@ -102,6 +103,8 @@ const DayGridCell = React.memo(
         isLastInRange={isLastInRange}
         isDisabled={isDisabled}
         disabled={isDisabled}
+        accessibilityRole="button"
+        accessibilityState={{ selected: isSelected, disabled: isDisabled }}
         accessibilityLabel={accessibilityLabel}
         onPress={() => {
           if (isDisabled) return;
@@ -147,6 +150,11 @@ const Calendar = <Type extends DateSelectionType>({
   const isRange = selectionType === 'range';
   const { i18nState } = useI18nContext();
   const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
+
+  // NOTE: Unlike the web version (which uses `loadScript` to fetch locale files), the
+  // native Calendar does not dynamically load dayjs locale data. The consuming app must
+  // register dayjs locales manually (e.g. `require('dayjs/locale/hi')`) before rendering
+  // the Calendar. If the locale is not registered, dayjs silently falls back to English.
 
   const [level, setLevel] = useControllableState<CalendarLevel>({
     defaultValue: pickerToLevel[defaultPicker],
@@ -287,7 +295,7 @@ const Calendar = <Type extends DateSelectionType>({
                   key={cell.dateTime}
                   dateTime={cell.dateTime}
                   dayLabel={cell.dayLabel}
-                  accessibilityLabel={cell.accessibilityLabel}
+                  accessibilityLabel={`${cell.accessibilityLabel}${controlProps.selected ? ', selected' : ''}`}
                   textColor={textColor}
                   isSelected={controlProps.selected}
                   isInRange={controlProps.inRange}
@@ -305,7 +313,7 @@ const Calendar = <Type extends DateSelectionType>({
     );
   };
 
-  const renderMonthGrid = (): React.ReactElement => {
+  const monthGrid = React.useMemo(() => {
     const months = Array.from({ length: 12 }, (_, i) =>
       dayjs(currentDate).month(i).startOf('month'),
     );
@@ -326,7 +334,9 @@ const Calendar = <Type extends DateSelectionType>({
               isSelected={controlProps.selected}
               isDisabled={isDisabled}
               disabled={isDisabled}
-              accessibilityLabel={month.locale(locale).format('MMMM YYYY')}
+              accessibilityRole="button"
+              accessibilityState={{ selected: controlProps.selected, disabled: isDisabled }}
+              accessibilityLabel={`${month.locale(locale).format('MMMM YYYY')}${controlProps.selected ? ', selected' : ''}`}
               onPress={() => {
                 if (isDisabled) return;
                 onMonthSelect?.(dateObj);
@@ -345,9 +355,10 @@ const Calendar = <Type extends DateSelectionType>({
         })}
       </BaseBox>
     );
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentDate, locale, getMonthControlProps, minDate, maxDate, onMonthSelect]);
 
-  const renderYearGrid = (): React.ReactElement => {
+  const yearGrid = React.useMemo(() => {
     const startYearOfDecade = Math.floor(dayjs(currentDate).year() / 10) * 10;
     const years = Array.from({ length: 12 }, (_, i) =>
       dayjs(currentDate)
@@ -371,7 +382,9 @@ const Calendar = <Type extends DateSelectionType>({
               isSelected={controlProps.selected}
               isDisabled={isDisabled}
               disabled={isDisabled}
-              accessibilityLabel={year.format('YYYY')}
+              accessibilityRole="button"
+              accessibilityState={{ selected: controlProps.selected, disabled: isDisabled }}
+              accessibilityLabel={`${year.format('YYYY')}${controlProps.selected ? ', selected' : ''}`}
               onPress={() => {
                 if (isDisabled) return;
                 onYearSelect?.(dateObj);
@@ -390,7 +403,8 @@ const Calendar = <Type extends DateSelectionType>({
         })}
       </BaseBox>
     );
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentDate, getYearControlProps, minDate, maxDate, onYearSelect]);
 
   return (
     <BaseBox
@@ -413,8 +427,8 @@ const Calendar = <Type extends DateSelectionType>({
         showLevelChangeLink={showLevelChangeLink}
       />
       {currentPicker === 'day' && renderDayGrid()}
-      {currentPicker === 'month' && renderMonthGrid()}
-      {currentPicker === 'year' && renderYearGrid()}
+      {currentPicker === 'month' && monthGrid}
+      {currentPicker === 'year' && yearGrid}
     </BaseBox>
   );
 };
