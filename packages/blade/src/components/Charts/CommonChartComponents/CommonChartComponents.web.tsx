@@ -327,9 +327,10 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
 
   // Calculate total axis height:
   // - Tick labels height (dynamic)
-  // - X-axis label height + offset (if label prop is present)
-  const hasAxisLabel = Boolean(label);
-  const axisLabelSpace = hasAxisLabel ? X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT : 0;
+  // - X-axis label height + offset, always reserved so the gap between the
+  //   axis and elements below it (e.g. legend) stays constant whether or not
+  //   the `label` prop is present
+  const axisLabelSpace = X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT;
   const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
 
   // Position for X-axis label: below tick labels with offset
@@ -518,7 +519,7 @@ const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: bo
     opacity: $isHidden ? 0.4 : 1,
     background: 'none',
     border: 'none',
-    padding: 0,
+    padding: theme.spacing[2],
     '& p': {
       color: theme.colors.surface.text.gray.muted,
       textDecoration: $isHidden ? 'line-through' : 'none',
@@ -576,7 +577,7 @@ const LegendItem = ({
             width: theme.spacing[4],
             height: theme.spacing[4],
             display: 'inline-block',
-            borderRadius: theme.border.radius.small,
+            borderRadius: theme.border.radius['2xsmall'],
           }}
         />
         <Text size="medium" color="surface.text.gray.muted">
