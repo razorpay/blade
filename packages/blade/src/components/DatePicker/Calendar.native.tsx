@@ -111,12 +111,12 @@ const Calendar = <Type extends DateSelectionType>({
     }
     const isRangeSelection = Array.isArray(selectedValue);
     if (isRangeSelection && (selectedValue as DatesRangeValue)[0]) {
-      return (selectedValue as DatesRangeValue)[0] as Date;
+      return (selectedValue as DatesRangeValue)[0]!;
     }
     if (!isRangeSelection && selectedValue) {
-      return selectedValue as Date;
+      return selectedValue;
     }
-    return shiftTimezone('add', new Date()) as Date;
+    return shiftTimezone('add', new Date());
   }, [viewDate, selectedValue]);
 
   const currentPicker = levelToPicker[level] as PickerType;
@@ -313,7 +313,6 @@ const Calendar = <Type extends DateSelectionType>({
       {...metaAttribute({ name: MetaConstants.Calendar })}
     >
       <CalendarHeader
-        isRange={isRange}
         date={currentDate}
         onLevelChange={(newLevel) => setLevel(() => newLevel as CalendarLevel)}
         pickerType={currentPicker}

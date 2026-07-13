@@ -316,13 +316,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...props}
       {...accessibilityProps}
     >
-      <BaseBox
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        gap="spacing.3"
-        width="100%"
-      >
+      <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3" width="100%">
         <Text
           color={
             props.value && !isDisabled

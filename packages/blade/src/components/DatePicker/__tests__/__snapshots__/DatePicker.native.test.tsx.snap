@@ -482,16 +482,20 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    flexDirection="row"
                     gap="spacing.3"
                     style={
                       [
                         {
                           "alignItems": "center",
                           "display": "flex",
+                          "flexDirection": "row",
                           "gap": 8,
+                          "width": "100%",
                         },
                       ]
                     }
+                    width="100%"
                   >
                     <Text
                       accessible={true}
@@ -522,10 +526,12 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "textAlign": "left",
                             "textDecorationLine": "none",
                           },
                         ]
                       }
+                      textAlign="left"
                     >
                       DD/MM/YYYY  –  DD/MM/YYYY
                     </Text>
@@ -6853,16 +6859,20 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    flexDirection="row"
                     gap="spacing.3"
                     style={
                       [
                         {
                           "alignItems": "center",
                           "display": "flex",
+                          "flexDirection": "row",
                           "gap": 8,
+                          "width": "100%",
                         },
                       ]
                     }
+                    width="100%"
                   >
                     <Text
                       accessible={true}
@@ -6893,10 +6903,12 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "textAlign": "left",
                             "textDecorationLine": "none",
                           },
                         ]
                       }
+                      textAlign="left"
                     >
                       DD/MM/YYYY
                     </Text>

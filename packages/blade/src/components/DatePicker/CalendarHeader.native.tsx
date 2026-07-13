@@ -11,7 +11,6 @@ import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '~components/
 import { Link } from '~components/Link';
 
 type CalendarHeaderProps = {
-  isRange: boolean;
   date: DateValue | DatesRangeValue;
   pickerType: PickerType;
   showLevelChangeLink?: boolean;

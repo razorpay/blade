@@ -1,5 +1,4 @@
 import React from 'react';
-import type { DateSelectionType } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
@@ -9,7 +8,6 @@ type CalendarFooterProps = {
   onCancel: () => void;
   isButtonDisabled?: boolean;
   footer?: React.ReactElement;
-  selectionType?: DateSelectionType;
 };
 
 /**

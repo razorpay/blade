@@ -10,8 +10,8 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
  * views so the calendar content is renderable and queryable in tests.
  */
 jest.mock('~components/BottomSheet', () => {
-  const ReactMock = require('react');
-  const { View } = require('react-native');
+  const ReactMock = jest.requireActual('react');
+  const { View } = jest.requireActual('react-native');
   return {
     BottomSheet: ({ children }: { children: React.ReactNode }) =>
       ReactMock.createElement(View, null, children),

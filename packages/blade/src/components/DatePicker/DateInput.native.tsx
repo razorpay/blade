@@ -198,7 +198,7 @@ const _DateInput = (
     !isDatePickerActive &&
     format === 'DD/MM/YYYY';
 
-  const getInputDisplayProps = () => {
+  const getInputDisplayProps = (): Record<string, unknown> => {
     if (showPresetLabel) {
       return {
         type: 'text' as const,

@@ -174,13 +174,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     },
   });
 
-  const currentDate = shiftTimezone('add', new Date()) as Date;
+  const currentDate = shiftTimezone('add', new Date());
 
-  const {
-    presetStates,
-    selectedPresetLabel,
-    effectiveSelectionType,
-  } = usePresetState({
+  const { presetStates, selectedPresetLabel, effectiveSelectionType } = usePresetState({
     presets: presets || [],
     selectedPreset,
     currentDate,
@@ -250,12 +246,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   };
 
   const content = (
-    <BaseBox
-      width="100%"
-      display="flex"
-      flexDirection="column"
-      justifyContent="space-between"
-    >
+    <BaseBox width="100%" display="flex" flexDirection="column" justifyContent="space-between">
       <BaseBox padding="spacing.0">
         <Calendar
           {...props}
@@ -325,6 +316,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             isDisabled={isDisabled}
             isRequired={isRequired}
             validationState={validationState}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
             necessityIndicator={necessityIndicator}
             format={finalFormat}
@@ -357,6 +349,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             isDisabled={isDisabled}
             isRequired={isRequired}
             validationState={validationState}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
             necessityIndicator={necessityIndicator}
             format={finalFormat}
@@ -447,7 +440,6 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 onCancel={handleCancel}
                 onApply={handleApply}
                 footer={footer}
-                selectionType={_selectionType}
               />
             </BottomSheetFooter>
           )}
