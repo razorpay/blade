@@ -72,6 +72,30 @@ Or in a regular TypeScript/JavaScript file:
 import '@razorpay/blade-core/tokens/theme.css';
 ```
 
+### Wrap with BladeProvider
+
+```svelte
+<script>
+  import { BladeProvider, Button } from '@razorpay/blade-svelte/components';
+  import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
+
+  // Optional: custom brand + limited border radius overrides
+  const { theme } = createTheme({
+    brandColor: '#19BEA2',
+    borderRadius: { medium: 16 },
+  });
+</script>
+
+<BladeProvider themeTokens={bladeTheme} colorScheme="light">
+  <Button>Pay</Button>
+</BladeProvider>
+```
+
+`colorScheme` accepts `light` | `dark` | `system`. Nested `BladeProvider`s set
+`data-blade-color-scheme` on their root so light/dark can be scoped to a subtree.
+
+Use `useTheme()` inside the tree for `{ theme, colorScheme, setColorScheme, platform }`.
+
 ### Install Fonts
 
 Blade uses two fonts: [TASA Orbiter](https://tasatype.localremote.co/) (for headings) and [Inter](https://rsms.me/inter/) (for body text).
@@ -104,30 +128,37 @@ Or add fonts via CDN in your HTML:
 
 ### Dark Mode
 
-To enable dark mode, add the `data-theme="dark"` attribute to the `body` or a parent element:
-
-```html
-<body data-theme="dark">
-  <!-- Your app -->
-</body>
-```
-
-Or toggle it programmatically:
+Prefer `BladeProvider` `colorScheme` (supports nested scopes):
 
 ```svelte
 <script>
-  let isDark = $state(false);
-  
-  function toggleTheme() {
-    isDark = !isDark;
-    document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  import { BladeProvider, Button, useTheme } from '@razorpay/blade-svelte/components';
+  import { bladeTheme } from '@razorpay/blade-core/tokens';
+
+  function ThemeToggle() {
+    const theme = $derived(useTheme());
+    return null; // use in a child component — see below
   }
 </script>
 
-<Button onclick={toggleTheme}>
-  Toggle Theme
-</Button>
+<BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+  <Button>Dark scoped</Button>
+</BladeProvider>
 ```
+
+```svelte
+<!-- ThemeToggle.svelte (must be under BladeProvider) -->
+<script>
+  import { useTheme } from '@razorpay/blade-svelte/components';
+  const theme = $derived(useTheme());
+</script>
+
+<button type="button" onclick={() => theme.setColorScheme(theme.colorScheme === 'dark' ? 'light' : 'dark')}>
+  Toggle
+</button>
+```
+
+Legacy: `data-theme="dark"` on `body` still works via dual CSS selectors during migration.
 
 ## 📝 License
 

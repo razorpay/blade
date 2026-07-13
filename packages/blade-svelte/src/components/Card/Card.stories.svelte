@@ -68,6 +68,8 @@
   import Text from '../Typography/Text/Text.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
   import Amount from '../Amount/Amount.svelte';
+  import { BladeProvider } from '../BladeProvider';
+  import { bladeTheme } from '@razorpay/blade-core/tokens';
   import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon, ChevronRightIcon } from '../Icons';
   import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
   import type { CardSpacingValueType } from './types';
@@ -145,12 +147,7 @@
   {/snippet}
 </Story>
 
-<!-- Story 1: Card Example
-     React renders a split light+dark layout via a scoped <BladeProvider colorScheme="dark">.
-     Svelte's BladeProvider isn't migrated yet and dark tokens are body-scoped in theme.css,
-     so we keep React's split-pane structure (gray.moderate backdrops, two cards side by side)
-     but render both halves in light mode. TODO: re-enable dark half once Svelte BladeProvider
-     (or a scoped theme primitive) ships. -->
+<!-- Story 1: Card Example — light + nested dark BladeProvider (scoped scheme). -->
 <Story name="Card Example" asChild>
   <div style="display: flex;">
     <div
@@ -197,50 +194,52 @@
         </CardFooter>
       </Card>
     </div>
-    <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
-    >
-      <Card>
-        <CardHeader>
-          <CardHeaderLeading
-            title="Payment Links"
-            subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
-          >
-            {#snippet prefix()}
-              <CardHeaderIcon icon={CreditCardIcon} />
-            {/snippet}
-            {#snippet suffix()}
-              <CardHeaderCounter value={12} />
-            {/snippet}
-          </CardHeaderLeading>
-          <CardHeaderTrailing>
-            {#snippet visual()}
-              <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
-            {/snippet}
-          </CardHeaderTrailing>
-        </CardHeader>
-        <CardBody>
-          <Text>
-            Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
-          </Text>
-        </CardBody>
-        <CardFooter>
-          <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
-          <CardFooterTrailing
-            actions={{
-              primary: {
-                text: 'Learn More',
-                onClick: () => console.log('Primary Action Clicked'),
-              },
-              secondary: {
-                text: 'Try Demo',
-                onClick: () => console.log('Secondary Action Clicked'),
-              },
-            }}
-          />
-        </CardFooter>
-      </Card>
-    </div>
+    <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+      <div
+        style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      >
+        <Card>
+          <CardHeader>
+            <CardHeaderLeading
+              title="Payment Links"
+              subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
+            >
+              {#snippet prefix()}
+                <CardHeaderIcon icon={CreditCardIcon} />
+              {/snippet}
+              {#snippet suffix()}
+                <CardHeaderCounter value={12} />
+              {/snippet}
+            </CardHeaderLeading>
+            <CardHeaderTrailing>
+              {#snippet visual()}
+                <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+              {/snippet}
+            </CardHeaderTrailing>
+          </CardHeader>
+          <CardBody>
+            <Text>
+              Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
+            </Text>
+          </CardBody>
+          <CardFooter>
+            <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
+            <CardFooterTrailing
+              actions={{
+                primary: {
+                  text: 'Learn More',
+                  onClick: () => console.log('Primary Action Clicked'),
+                },
+                secondary: {
+                  text: 'Try Demo',
+                  onClick: () => console.log('Secondary Action Clicked'),
+                },
+              }}
+            />
+          </CardFooter>
+        </Card>
+      </div>
+    </BladeProvider>
   </div>
 </Story>
 
