@@ -114,24 +114,26 @@ type FileUploadCommonProps = {
    */
   testID?: string;
   /**
-   * List of options for the inline file category dropdown on each FileUploadItem.
+   * List of options for the inline category dropdown on each FileUploadItem.
    * Only rendered in medium and large sizes when file status is not 'uploading'.
    */
-  fileCategoryOptions?: InlineSelectorOption[];
+  categoryOptions?: FileUploadCategoryOption[];
   /**
-   * Selected category values keyed by file id (controlled).
+   * Function that returns the selected category value for a given file (controlled).
+   * Use this to resolve per-file category values without managing a separate map.
    */
-  fileCategoryValue?: InlineSelectorValueMap;
+  categoryValue?: (file: BladeFile) => string | undefined;
   /**
-   * Callback fired when a file category option is selected.
+   * Callback fired when a category option is selected.
+   * Receives the selected `value` and the associated `file`.
    */
-  onFileCategoryChange?: (args: { name?: string; values: string[]; file: BladeFile }) => void;
+  onCategoryChange?: (args: { value: string; file: BladeFile }) => void;
   /**
    * Placeholder text shown in the category dropdown when no value is selected.
    *
-   * @default 'Type'
+   * @default 'Select'
    */
-  fileCategoryPlaceholder?: string;
+  categoryPlaceholder?: string;
 } & StyledPropsBlade &
   MotionMetaProp;
 
@@ -197,7 +199,10 @@ type FileUploadPropsWithLabel = {
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
   (FileUploadStandardSizeProps | FileUploadVariableSizeProps);
 
-type InlineSelectorOption = {
+/**
+ * Represents a single option in the file category dropdown.
+ */
+type FileUploadCategoryOption = {
   /**
    * Display label for the option
    */
@@ -208,56 +213,31 @@ type InlineSelectorOption = {
   value: string;
 };
 
-type InlineSelectorProps = {
-  /**
-   * List of options to display in the dropdown
-   */
-  options: InlineSelectorOption[];
-  /**
-   * Currently selected value (controlled)
-   */
-  value: string | undefined;
-  /**
-   * Callback fired when an option is selected.
-   */
-  onChange: (args: { name?: string; values: string[]; file: BladeFile }) => void;
-  /**
-   * Placeholder text shown when no value is selected
-   *
-   * @default 'Type'
-   */
-  placeholder?: string;
-};
-
-type InlineSelectorValueMap = Record<string, string | undefined>;
-
 type FileUploadItemProps = Pick<
   FileUploadProps,
   'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
 > & {
   file: BladeFile;
   /**
-   * List of options for the inline file category dropdown.
+   * List of options for the inline category dropdown.
    * Only rendered in medium and large sizes when file status is not 'uploading'.
    */
-  fileCategoryOptions?: InlineSelectorOption[];
+  categoryOptions?: FileUploadCategoryOption[];
   /**
-   * Currently selected file category value for this item (controlled).
-   *
-   * On `FileUpload` this prop is a `InlineSelectorValueMap` (Record keyed by file id),
-   * but on `FileUploadItem` it is a single `string` representing just this file's selected category.
+   * Currently selected category value for this item (controlled).
    */
-  fileCategoryValue?: string;
+  categoryValue?: string;
   /**
-   * Callback fired when a file category option is selected.
+   * Callback fired when a category option is selected.
+   * Receives the selected `value` and the associated `file`.
    */
-  onFileCategoryChange?: (args: { name?: string; values: string[]; file: BladeFile }) => void;
+  onCategoryChange?: (args: { value: string; file: BladeFile }) => void;
   /**
    * Placeholder text shown in the category dropdown when no value is selected.
    *
-   * @default 'Type'
+   * @default 'Select'
    */
-  fileCategoryPlaceholder?: string;
+  categoryPlaceholder?: string;
   width?: BoxProps['width'];
   minWidth?: BoxProps['minWidth'];
   maxWidth?: BoxProps['maxWidth'];
@@ -297,9 +277,7 @@ type FileUploadItemBackgroundColors =
 export type {
   BladeFile,
   BladeFileList,
-  InlineSelectorOption,
-  InlineSelectorProps,
-  InlineSelectorValueMap,
+  FileUploadCategoryOption,
   FileUploadProps,
   FileUploadItemProps,
   StyledFileUploadWrapperProps,

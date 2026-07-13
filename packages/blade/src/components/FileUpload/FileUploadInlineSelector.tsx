@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { BladeFile, InlineSelectorProps } from './types';
+import type { BladeFile, FileUploadCategoryOption } from './types';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -40,11 +40,13 @@ const StyledInlineSelectorTrigger = styled.button(({ theme }) => ({
   },
 }));
 
+type CategoryChangeHandler = (args: { value: string; file: BladeFile }) => void;
+
 type InlineSelectorTriggerProps = {
   displayLabel: string;
   file: BladeFile;
-  value: InlineSelectorProps['value'];
-  onChange: InlineSelectorProps['onChange'];
+  value: string | undefined;
+  onChange: CategoryChangeHandler;
 };
 
 const _InlineSelectorTrigger = ({
@@ -67,19 +69,21 @@ const _InlineSelectorTrigger = ({
 
   useControlledDropdownInput({
     value: value ?? '',
-    onChange: ({ name, values }) => onChange({ name, values, file }),
+    onChange: ({ values }) => onChange({ value: values[0], file }),
     name: file.id ?? file.name,
     triggererRef,
     isSelectInput: true,
   });
 
+  const optionsKey = options.map((o) => o.value).join(',');
   React.useEffect(() => {
     if (!isOpen) {
       return;
     }
 
     setActiveIndex(options.findIndex((option) => option.value === value));
-  }, [isOpen, options, setActiveIndex, value]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, optionsKey, setActiveIndex, value]);
 
   return (
     <StyledInlineSelectorTrigger
@@ -112,7 +116,11 @@ const InlineSelectorTrigger = assignWithoutSideEffects(_InlineSelectorTrigger, {
   componentId: dropdownComponentIds.triggers.DropdownButton,
 });
 
-type FileUploadInlineSelectorProps = InlineSelectorProps & {
+type FileUploadInlineSelectorProps = {
+  options: FileUploadCategoryOption[];
+  value: string | undefined;
+  onChange: CategoryChangeHandler;
+  placeholder?: string;
   file: BladeFile;
 };
 
@@ -120,7 +128,7 @@ const FileUploadInlineSelector = ({
   options,
   value,
   onChange,
-  placeholder = 'Type',
+  placeholder = 'Select',
   file,
 }: FileUploadInlineSelectorProps): React.ReactElement => {
   const selectedOption = options.find((opt) => opt.value === value);

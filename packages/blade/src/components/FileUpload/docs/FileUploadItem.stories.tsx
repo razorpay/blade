@@ -219,10 +219,10 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
           <FileUploadItem
             file={successFile}
             size="medium"
-            fileCategoryOptions={categoryOptions}
-            fileCategoryValue={selectedCategory}
-            onFileCategoryChange={({ values }) => setSelectedCategory(values[0])}
-            fileCategoryPlaceholder="Type"
+            categoryOptions={categoryOptions}
+            categoryValue={selectedCategory}
+            onCategoryChange={({ value }) => setSelectedCategory(value)}
+            categoryPlaceholder="Select"
             onRemove={({ file }) => action('onRemove')(file.name)}
           />
         </Box>
@@ -234,10 +234,10 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
           <FileUploadItem
             file={successFile}
             size="large"
-            fileCategoryOptions={categoryOptions}
-            fileCategoryValue={selectedCategory}
-            onFileCategoryChange={({ values }) => setSelectedCategory(values[0])}
-            fileCategoryPlaceholder="Type"
+            categoryOptions={categoryOptions}
+            categoryValue={selectedCategory}
+            onCategoryChange={({ value }) => setSelectedCategory(value)}
+            categoryPlaceholder="Select"
             onRemove={({ file }) => action('onRemove')(file.name)}
           />
         </Box>
@@ -249,10 +249,10 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
           <FileUploadItem
             file={successFile}
             size="medium"
-            fileCategoryOptions={categoryOptions}
-            fileCategoryValue={undefined}
-            onFileCategoryChange={({ values }) => action('onChange')(values)}
-            fileCategoryPlaceholder="Type"
+            categoryOptions={categoryOptions}
+            categoryValue={undefined}
+            onCategoryChange={({ value }) => action('onChange')(value)}
+            categoryPlaceholder="Select"
             onRemove={({ file }) => action('onRemove')(file.name)}
           />
         </Box>

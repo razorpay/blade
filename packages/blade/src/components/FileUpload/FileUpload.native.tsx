@@ -3,9 +3,7 @@ import type {
   FileUploadProps,
   BladeFile,
   BladeFileList,
-  InlineSelectorOption,
-  InlineSelectorProps,
-  InlineSelectorValueMap,
+  FileUploadCategoryOption,
 } from './types';
 import { throwBladeError } from '~utils/logger';
 
@@ -22,8 +20,6 @@ export { FileUpload };
 export type {
   BladeFile,
   BladeFileList,
-  InlineSelectorOption,
-  InlineSelectorProps,
-  InlineSelectorValueMap,
+  FileUploadCategoryOption,
   FileUploadProps,
 };

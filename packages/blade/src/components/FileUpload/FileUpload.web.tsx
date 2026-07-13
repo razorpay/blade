@@ -4,9 +4,7 @@ import type {
   BladeFile,
   BladeFileList,
   FileUploadVariableSizeProps,
-  InlineSelectorOption,
-  InlineSelectorProps,
-  InlineSelectorValueMap,
+  FileUploadCategoryOption,
 } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
@@ -55,10 +53,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     isRequired,
     necessityIndicator,
     fileList,
-    fileCategoryOptions,
-    fileCategoryValue,
-    onFileCategoryChange,
-    fileCategoryPlaceholder,
+    categoryOptions,
+    categoryValue,
+    onCategoryChange,
+    categoryPlaceholder,
     testID,
     label,
     labelPosition = 'top',
@@ -102,9 +100,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       });
     }
 
-    if (isSizeVariable && fileCategoryOptions) {
+    if (isSizeVariable && categoryOptions) {
       throwBladeError({
-        message: 'fileCategoryOptions can only be used when size is "medium" or "large"',
+        message: 'categoryOptions can only be used when size is "medium" or "large"',
         moduleName: 'FileUpload',
       });
     }
@@ -243,9 +241,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
   const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);
   const computedWidth = isSizeVariable ? width ?? '100%' : '100%';
-  const getFileCategoryValueForFile = (file: BladeFile): string | undefined => {
-    return file.id ? fileCategoryValue?.[file.id] : undefined;
-  };
 
   return (
     <BaseBox
@@ -387,10 +382,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           <FileUploadItem
             file={selectedFiles[0]}
             size={size}
-            fileCategoryOptions={fileCategoryOptions}
-            fileCategoryValue={getFileCategoryValueForFile(selectedFiles[0])}
-            onFileCategoryChange={onFileCategoryChange}
-            fileCategoryPlaceholder={fileCategoryPlaceholder}
+            categoryOptions={categoryOptions}
+            categoryValue={categoryValue?.(selectedFiles[0])}
+            onCategoryChange={onCategoryChange}
+            categoryPlaceholder={categoryPlaceholder}
             onRemove={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(() => newFiles);
@@ -457,10 +452,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             <FileUploadItem
               file={file}
               size={size}
-              fileCategoryOptions={fileCategoryOptions}
-              fileCategoryValue={getFileCategoryValueForFile(file)}
-              onFileCategoryChange={onFileCategoryChange}
-              fileCategoryPlaceholder={fileCategoryPlaceholder}
+              categoryOptions={categoryOptions}
+              categoryValue={categoryValue?.(file)}
+              onCategoryChange={onCategoryChange}
+              categoryPlaceholder={categoryPlaceholder}
               onRemove={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
@@ -551,8 +546,6 @@ export { FileUpload };
 export type {
   BladeFile,
   BladeFileList,
-  InlineSelectorOption,
-  InlineSelectorProps,
-  InlineSelectorValueMap,
+  FileUploadCategoryOption,
   FileUploadProps,
 };
