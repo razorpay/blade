@@ -73,12 +73,8 @@ const CalendarHeader = ({
   const { i18nState } = useI18nContext();
   const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
 
-  const month = dayjs(date)
-    .locale(locale)
-    .format('MMMM');
-  const year = dayjs(date)
-    .locale(locale)
-    .format('YYYY');
+  const month = dayjs(date).locale(locale).format('MMMM');
+  const year = dayjs(date).locale(locale).format('YYYY');
   const currentYear = dayjs(date).year();
   const startYearOfDecade = Math.floor(currentYear / 10) * 10;
   const endYearOfDecade = startYearOfDecade + 9;

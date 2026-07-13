@@ -59,9 +59,7 @@ const _DateInput = (
       ? false
       : effectiveSelectionType === 'range' || props.selectionType === 'range';
 
-  const [inputValue, setInputValue] = React.useState<string[]>(
-    isRange ? ['', ''] : [''],
-  );
+  const [inputValue, setInputValue] = React.useState<string[]>(isRange ? ['', ''] : ['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
   const [isFocused, setIsFocused] = React.useState(false);
   const shouldShowCalendarIcon = !Boolean(leadingDropdown);
