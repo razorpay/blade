@@ -33,12 +33,7 @@ import type {
   ChartRadius,
   Content,
 } from './types';
-import {
-  RADIUS_MAPPING,
-  BASE_CONTAINER_SIZE,
-  START_AND_END_ANGLES,
-  componentId,
-} from './tokens';
+import { RADIUS_MAPPING, BASE_CONTAINER_SIZE, START_AND_END_ANGLES, componentId } from './tokens';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -135,7 +130,7 @@ const getLegendColorToken = (
   return getHighestColorInRange({
     colorToken: mappedColor,
     followIntensityMapping: mapped.isCustomColor || totalKeys > totalChartColors,
-  }) as ChartsCategoricalColorToken;
+  });
 };
 
 const parseCoordinate = (
@@ -187,8 +182,8 @@ const readChildSlots = (children: React.ReactNode): DonutSlots => {
         selectedDataKeys: props.selectedDataKeys,
         defaultSelectedDataKeys: props.defaultSelectedDataKeys,
         onSelectedDataKeysChange: props.onSelectedDataKeysChange,
-        layout: (props.layout as Layout) ?? 'horizontal',
-        align: (props.align as Align) ?? 'right',
+        layout: props.layout ?? 'horizontal',
+        align: props.align ?? 'right',
       };
     } else if (id === commonChartComponentId.chartTooltip) {
       slots.hasTooltip = true;
@@ -241,7 +236,7 @@ const ChartDonutWrapper = ({
 
   const slots = useMemo(() => readChildSlots(children), [children]);
   const donut = slots.donut;
-  const donutData = donut?.data ?? [];
+  const donutData = useMemo(() => donut?.data ?? [], [donut]);
   const dataKey = donut?.dataKey ?? 'value';
   const nameKey = donut?.nameKey;
   const donutType = donut?.type ?? 'circle';
@@ -261,7 +256,7 @@ const ChartDonutWrapper = ({
       if (itemName === undefined || itemName === null) return;
       const cellColor = cells[index]?.color;
       mapping[sanitizeString(itemName as string)] = {
-        colorToken: (cellColor ?? themeColors[index]) as ChartsCategoricalColorToken,
+        colorToken: cellColor ?? themeColors[index],
         isCustomColor: Boolean(cellColor),
       };
     });
@@ -410,7 +405,7 @@ const ChartDonutWrapper = ({
 
       const originalIndex = filteredToOriginalIndexMap[index] ?? index;
       const cellColor = donut?.cells[originalIndex]?.color;
-      const fillToken = (cellColor ?? themeColors[originalIndex]) as ChartsCategoricalColorToken;
+      const fillToken = cellColor ?? themeColors[originalIndex];
       const accentToken = getHighestColorInRange({
         colorToken: fillToken,
         followIntensityMapping: Boolean(cellColor),
@@ -479,7 +474,8 @@ const ChartDonutWrapper = ({
           undefined,
         );
         if (Array.isArray(formatted)) {
-          if (formatted[0] !== undefined && formatted[0] !== null) displayValue = String(formatted[0]);
+          if (formatted[0] !== undefined && formatted[0] !== null)
+            displayValue = String(formatted[0]);
           if (formatted[1] !== undefined && formatted[1] !== null) label = String(formatted[1]);
         } else if (formatted !== undefined && formatted !== null) {
           displayValue = String(formatted);
@@ -532,7 +528,9 @@ const ChartDonutWrapper = ({
                 width: LEGEND_SWATCH_SIZE,
                 height: LEGEND_SWATCH_SIZE,
                 borderRadius: theme.border.radius['2xsmall'],
-                backgroundColor: colorToken ? (getIn(theme.colors, colorToken) as string) : undefined,
+                backgroundColor: colorToken
+                  ? (getIn(theme.colors, colorToken) as string)
+                  : undefined,
                 opacity: isSelected ? 1 : 0.4,
                 marginRight: theme.spacing[2],
               }}
