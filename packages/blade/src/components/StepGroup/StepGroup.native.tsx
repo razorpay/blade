@@ -139,7 +139,7 @@ const _StepGroup = (
   const isHorizontal = orientation === 'horizontal';
   const contentLayoutProps = {
     paddingY: _nestingLevel === 0 ? ('spacing.4' as const) : undefined,
-    flexDirection: (isHorizontal ? 'row' : 'column') as 'row' | 'column',
+    flexDirection: isHorizontal ? 'row' : 'column',
   };
 
   // Horizontal: put ref + styled props on an outer wrapper so margins apply around the
