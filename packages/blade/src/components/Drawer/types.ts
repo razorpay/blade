@@ -98,14 +98,15 @@ type DrawerHeaderProps = {
   children?: React.ReactElement | React.ReactElement[];
 
   /**
-   * Background image of the header
+   * Color of the header gradient background. When provided, a radial gradient using this color
+   * spans the full drawer from the top, creating a seamless surface between header and body.
    *
-   * Use this for adding gradients
+   * @default 'information'
    */
   color?: FeedbackColors;
   /**
-   * Whether to show the divider above the header
-   * @default true
+   * Whether to show the divider below the header.
+   * Defaults to `false` when `color` is set, `true` when `color` is not set.
    */
   showDivider?: boolean;
 } & DataAnalyticsAttribute;

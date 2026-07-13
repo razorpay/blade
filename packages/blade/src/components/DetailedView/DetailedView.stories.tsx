@@ -343,7 +343,6 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
               size="large"
             />
           }
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -602,7 +601,6 @@ const DetailedViewWithCardTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
           color="positive"
           title="Settlements"
           trailing={<Button size="medium" icon={DownloadIcon} />}
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -758,7 +756,6 @@ const DetailedViewWithQRCodeTemplate: StoryFn<typeof Drawer> = ({ ...args }) => 
           color="notice"
           title="Payment QR Code"
           trailing={<Button size="medium" icon={DownloadIcon} />}
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -1018,7 +1015,6 @@ const DetailedViewWithQRCodeAndFooterTemplate: StoryFn<typeof Drawer> = ({ ...ar
           color="notice"
           title="Payment QR Code"
           trailing={<Button size="medium" icon={DownloadIcon} />}
-          showDivider={false}
         >
           <Box marginTop="spacing.6" textAlign="center">
             <Amount
@@ -1277,3 +1273,99 @@ const DetailedViewWithQRCodeAndFooterTemplate: StoryFn<typeof Drawer> = ({ ...ar
 };
 
 export const WithQRCodeAndFooter = DetailedViewWithQRCodeAndFooterTemplate.bind({});
+
+const DetailedViewWithContiguousBackgroundTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  return (
+    <Box>
+      <Button onClick={() => setIsDrawerOpen(true)}>Show Payout Details</Button>
+      <Drawer
+        {...args}
+        isOpen={isDrawerOpen}
+        onDismiss={() => {
+          setIsDrawerOpen(false);
+        }}
+      >
+        <DrawerHeader
+          color="positive"
+          title="Payout Details"
+          trailing={
+            <IconButton
+              icon={MoreHorizontalIcon}
+              accessibilityLabel="Options"
+              onClick={() => console.log('Options Clicked')}
+              size="large"
+            />
+          }
+        >
+          <Box marginTop="spacing.6" textAlign="center">
+            <Amount
+              value={dummyData.amount}
+              currency="INR"
+              size="2xlarge"
+              type="heading"
+              weight="semibold"
+              suffix="decimals"
+            />
+          </Box>
+          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
+            <Badge icon={CheckIcon} size="medium" color="positive" emphasis="intense">
+              Paid
+            </Badge>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="spacing.4"
+            marginTop="spacing.6"
+            paddingX="spacing.4"
+          >
+            <InfoGroup itemOrientation="vertical" isHighlighted>
+              <InfoItem>
+                <InfoItemKey>Created on</InfoItemKey>
+                <InfoItemValue>Mar 20 2025</InfoItemValue>
+              </InfoItem>
+              <InfoItem>
+                <InfoItemKey>Created by</InfoItemKey>
+                <InfoItemValue>Kritagya Nayyar</InfoItemValue>
+              </InfoItem>
+            </InfoGroup>
+          </Box>
+        </DrawerHeader>
+        <DrawerBody>
+          <Box display="flex" flexDirection="column" gap="spacing.6">
+            <Box>
+              <Text variant="body" size="medium" weight="semibold" marginBottom="spacing.4">
+                Payout Details
+              </Text>
+              <InfoGroup gridTemplateColumns="1fr 1fr">
+                <InfoItem>
+                  <InfoItemKey>UTR Number</InfoItemKey>
+                  <InfoItemValue>{dummyData.utr}</InfoItemValue>
+                </InfoItem>
+                <InfoItem>
+                  <InfoItemKey>Purpose</InfoItemKey>
+                  <InfoItemValue>Vendor Payment</InfoItemValue>
+                </InfoItem>
+                <InfoItem>
+                  <InfoItemKey>Attachment</InfoItemKey>
+                  <InfoItemValue>
+                    Doc.pdf{' '}
+                    <Link variant="button" size="small">
+                      View
+                    </Link>
+                  </InfoItemValue>
+                </InfoItem>
+              </InfoGroup>
+            </Box>
+          </Box>
+        </DrawerBody>
+      </Drawer>
+    </Box>
+  );
+};
+
+export const WithContiguousBackground = DetailedViewWithContiguousBackgroundTemplate.bind({});
+WithContiguousBackground.storyName = 'With Contiguous Background';

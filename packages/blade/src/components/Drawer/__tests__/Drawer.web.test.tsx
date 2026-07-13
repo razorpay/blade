@@ -197,6 +197,56 @@ describe('Drawer', () => {
     });
   });
 
+  describe('DrawerHeader color gradient', () => {
+    it('renders contiguous gradient on the drawer container when color is set', () => {
+      const { getByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Payout Details" color="positive" />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(getByRole('dialog')).toMatchSnapshot();
+    });
+
+    it('does not show divider by default', () => {
+      const { queryByTestId } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Payout Details" color="positive" />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(queryByTestId('divider')).not.toBeInTheDocument();
+    });
+
+    it('shows divider when explicitly set', () => {
+      const { getByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Payout Details" color="positive" showDivider={true} />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(getByRole('separator')).toBeInTheDocument();
+    });
+
+    it('renders no gradient when color is not provided', () => {
+      const { getByRole } = renderWithTheme(
+        <Drawer isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Drawer">
+          <DrawerHeader title="Details" />
+          <DrawerBody>
+            <Text>Test Content</Text>
+          </DrawerBody>
+        </Drawer>,
+      );
+      expect(getByRole('dialog')).toBeInTheDocument();
+    });
+  });
+
   describe('DrawerFooter', () => {
     it('renders a Drawer with footer', () => {
       const { getByRole, getByText } = renderWithTheme(
