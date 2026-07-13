@@ -119,7 +119,8 @@
 
 .headerEmpty {
   position: relative;
-  height: 32px;
+  /* Matches React `makeSize(size[8])` — grab handle (20px) + 8px = 28px header band. */
+  height: var(--spacing-3);
   touch-action: none;
 }
 

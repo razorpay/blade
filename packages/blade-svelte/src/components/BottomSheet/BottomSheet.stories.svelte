@@ -391,9 +391,9 @@
       </Button>
       <BottomSheet isOpen={isDropdownButtonOpen} onDismiss={() => (isDropdownButtonOpen = false)}>
         {#snippet children()}
-          <BottomSheetHeader />
           <BottomSheetBody hasActionList>
             {#snippet children()}
+              <BottomSheetHeader />
               <ActionList
                 selectedValue={dropdownButtonStatus}
                 onAction={({ value }) => {
