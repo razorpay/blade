@@ -141,7 +141,7 @@ const FileUploadItem = memo(
               </BaseBox>
             ) : (
               <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-                {fileCategoryOptions && onFileCategoryChange && containerSize !== 'variable' ? (
+                {fileCategoryOptions?.length > 0 && onFileCategoryChange && containerSize !== 'variable' ? (
                   <FileUploadInlineSelector
                     options={fileCategoryOptions}
                     value={fileCategoryValue}

@@ -125,7 +125,7 @@ type FileUploadCommonProps = {
   /**
    * Callback fired when a file category option is selected.
    */
-  onFileCategoryChange?: (args: { values: string[]; file: BladeFile }) => void;
+  onFileCategoryChange?: (args: { name?: string; values: string[]; file: BladeFile }) => void;
   /**
    * Placeholder text shown in the category dropdown when no value is selected.
    *
@@ -218,9 +218,9 @@ type InlineSelectorProps = {
    */
   value: string | undefined;
   /**
-   * Callback fired when an option is selected
+   * Callback fired when an option is selected.
    */
-  onChange: (args: { values: string[]; file: BladeFile }) => void;
+  onChange: (args: { name?: string; values: string[]; file: BladeFile }) => void;
   /**
    * Placeholder text shown when no value is selected
    *
@@ -242,13 +242,16 @@ type FileUploadItemProps = Pick<
    */
   fileCategoryOptions?: InlineSelectorOption[];
   /**
-   * Currently selected file category value (controlled).
+   * Currently selected file category value for this item (controlled).
+   *
+   * On `FileUpload` this prop is a `InlineSelectorValueMap` (Record keyed by file id),
+   * but on `FileUploadItem` it is a single `string` representing just this file's selected category.
    */
   fileCategoryValue?: string;
   /**
    * Callback fired when a file category option is selected.
    */
-  onFileCategoryChange?: (args: { values: string[]; file: BladeFile }) => void;
+  onFileCategoryChange?: (args: { name?: string; values: string[]; file: BladeFile }) => void;
   /**
    * Placeholder text shown in the category dropdown when no value is selected.
    *

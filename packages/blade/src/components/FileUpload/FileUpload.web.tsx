@@ -101,6 +101,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         moduleName: 'FileUpload',
       });
     }
+
+    if (isSizeVariable && fileCategoryOptions) {
+      throwBladeError({
+        message: 'fileCategoryOptions can only be used when size is "medium" or "large"',
+        moduleName: 'FileUpload',
+      });
+    }
   }
 
   const inputRef = useRef<HTMLInputElement | null>(null);

@@ -67,7 +67,7 @@ const _InlineSelectorTrigger = ({
 
   useControlledDropdownInput({
     value: value ?? '',
-    onChange: ({ values }) => onChange({ values, file }),
+    onChange: ({ name, values }) => onChange({ name, values, file }),
     name: file.id ?? file.name,
     triggererRef,
     isSelectInput: true,
@@ -91,9 +91,7 @@ const _InlineSelectorTrigger = ({
       aria-controls={`${dropdownBaseId}-actionlist`}
       aria-activedescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
       onClick={() => onTriggerClick()}
-      onKeyDown={(e) =>
-        onTriggerKeydown?.({ event: (e as unknown) as React.KeyboardEvent<HTMLInputElement> })
-      }
+      onKeyDown={(e) => onTriggerKeydown?.({ event: e })}
     >
       <BaseBox overflow="hidden" maxWidth="100%" marginX="spacing.2">
         <Text
