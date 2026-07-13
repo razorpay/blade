@@ -157,7 +157,12 @@ const MockFilePicker = ({
         <Box display="flex" flexDirection="column">
           {MOCK_FILES.map((file, index) => (
             <React.Fragment key={file.name}>
-              <Pressable onPress={() => toggleFile(index)}>
+              <Pressable
+                onPress={() => toggleFile(index)}
+                accessibilityRole="button"
+                accessibilityLabel={`${file.name}, ${formatFileSize(file.size)}, ${file.type.split('/')[1]}`}
+                style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
+              >
                 <Box
                   display="flex"
                   flexDirection="row"

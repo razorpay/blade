@@ -228,7 +228,7 @@ const _FileUpload = ({
     invalid: Boolean(showError),
     disabled: Boolean(isDisabled),
     describedBy: labelId,
-    label: accessibilityLabel,
+    label: accessibilityLabel ?? [label, accessibilityText].filter(Boolean).join(' '),
   });
 
   return (
