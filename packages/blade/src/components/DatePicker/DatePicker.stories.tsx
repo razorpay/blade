@@ -47,9 +47,7 @@ export default {
     maxDate: baseProp,
     excludeDate: baseProp,
     picker: baseProp,
-    visibleMonth: baseProp,
     defaultVisibleMonth: baseProp,
-    onVisibleMonthChange: baseProp,
     onOpenChange: baseProp,
     allowSingleDateInRange: baseProp,
     defaultIsOpen: baseProp,
@@ -1370,11 +1368,14 @@ export const DatePickerComparisonRange: StoryFn<typeof DatePickerComponent> = ()
   return (
     <Box>
       <Text marginBottom="spacing.5">
-        Use <Code size="medium">visibleMonth</Code>/<Code size="medium">defaultVisibleMonth</Code>{' '}
-        to anchor a comparison <Code size="medium">DatePicker</Code> on the months immediately
-        preceding a primary range&apos;s selection — without pre-filling the comparison{' '}
-        <Code size="medium">value</Code>. Pick a primary range below, then open &quot;Compare
-        to&quot; and notice the calendar opens on the same-length period right before it.
+        Use <Code size="medium">defaultVisibleMonth</Code> to anchor a comparison{' '}
+        <Code size="medium">DatePicker</Code> on the months immediately preceding a primary
+        range&apos;s selection — without pre-filling the comparison{' '}
+        <Code size="medium">value</Code>. Since <Code size="medium">defaultVisibleMonth</Code>{' '}
+        only sets the initial anchor, remounting via a <Code size="medium">key</Code> re-anchors
+        the calendar whenever the computed comparison month changes. Pick a primary range below,
+        then open &quot;Compare to&quot; and notice the calendar opens on the same-length period
+        right before it.
       </Text>
       <Box display="flex" flexDirection="column" gap="spacing.5" maxWidth="400px">
         <DatePickerComponent
@@ -1384,11 +1385,11 @@ export const DatePickerComparisonRange: StoryFn<typeof DatePickerComponent> = ()
           onChange={(date) => setPrimaryRange(date)}
         />
         <DatePickerComponent
+          key={comparisonVisibleMonth?.toISOString()}
           label={{ start: 'Compare to' }}
           selectionType="range"
           value={comparisonRange}
-          visibleMonth={comparisonVisibleMonth}
-          onVisibleMonthChange={setComparisonVisibleMonth}
+          defaultVisibleMonth={comparisonVisibleMonth}
           onChange={(date) => setComparisonRange(date)}
         />
       </Box>
@@ -1396,6 +1397,6 @@ export const DatePickerComparisonRange: StoryFn<typeof DatePickerComponent> = ()
   );
 };
 
-DatePickerComparisonRange.storyName = 'Comparison Range (visibleMonth)';
+DatePickerComparisonRange.storyName = 'Comparison Range (defaultVisibleMonth)';
 
 DatePickerWithTimePickerInModal.storyName = 'DatePicker with TimePicker (Modal)';

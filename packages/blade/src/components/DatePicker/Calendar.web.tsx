@@ -26,9 +26,7 @@ const Calendar = <Type extends DateSelectionType>({
   date,
   defaultDate,
   onDateChange,
-  visibleMonth,
   defaultVisibleMonth,
-  onVisibleMonthChange,
   onNext,
   onPrevious,
   presets,
@@ -69,11 +67,7 @@ const Calendar = <Type extends DateSelectionType>({
   });
 
   const [_visibleMonth, setVisibleMonth] = useControllableState<Date | undefined>({
-    value: visibleMonth,
     defaultValue: defaultVisibleMonth,
-    onChange: (date) => {
-      if (date) onVisibleMonthChange?.(date);
-    },
   });
 
   const dateContext = useDatesContext();
@@ -97,8 +91,9 @@ const Calendar = <Type extends DateSelectionType>({
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
 
-  // Keeps the legacy `_date` state and the new `_visibleMonth` state in sync so that
-  // navigation keeps working regardless of which one is currently driving `currentDate`.
+  // Keeps the legacy `_date` state and `_visibleMonth` (the defaultVisibleMonth anchor)
+  // in sync so navigation keeps working regardless of which one is currently driving
+  // `currentDate`.
   // Note: Not wrapped in useCallback because `setDate` from mantine's `useUncontrolled`
   // is not memoized, so useCallback would provide no benefit.
   const updateCurrentDate = (nextDate: Date): void => {

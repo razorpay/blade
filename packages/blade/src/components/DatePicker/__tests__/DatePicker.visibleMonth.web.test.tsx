@@ -27,7 +27,7 @@ describe('<DatePicker/> visibleMonth', () => {
     expect(getAllByText(dayjs(anchorMonth).format('MMMM YYYY')).length).toBeGreaterThan(0);
   });
 
-  it('gives visibleMonth priority over the first date of a controlled value', async () => {
+  it('gives defaultVisibleMonth priority over the first date of a controlled value', async () => {
     const anchorMonth = dayjs().subtract(6, 'month').toDate();
     const selectedRange = [dayjs().toDate(), dayjs().add(3, 'day').toDate()] as [Date, Date];
 
@@ -36,7 +36,7 @@ describe('<DatePicker/> visibleMonth', () => {
         selectionType="range"
         label={{ start: 'Compare to' }}
         value={selectedRange}
-        visibleMonth={anchorMonth}
+        defaultVisibleMonth={anchorMonth}
         onChange={() => undefined}
       />,
     );
@@ -49,16 +49,19 @@ describe('<DatePicker/> visibleMonth', () => {
     expect(getAllByText(dayjs(anchorMonth).format('MMMM YYYY')).length).toBeGreaterThan(0);
   });
 
-  it('fires onVisibleMonthChange when navigating to the next month in controlled mode', async () => {
+  it('fires onNext with the correct date when navigating to the next month', async () => {
+    // Consumers who need to track the rendered month (e.g. to re-anchor a
+    // comparison picker) should rely on the existing onNext/onPrevious
+    // callbacks rather than a dedicated visible-month callback.
     const anchorMonth = dayjs().subtract(4, 'month').toDate();
-    const onVisibleMonthChange = jest.fn();
+    const onNext = jest.fn();
 
     const { getByRole, queryByText } = renderWithTheme(
       <DatePickerComponent
         selectionType="range"
         label={{ start: 'Compare to' }}
-        visibleMonth={anchorMonth}
-        onVisibleMonthChange={onVisibleMonthChange}
+        defaultVisibleMonth={anchorMonth}
+        onNext={onNext}
       />,
     );
 
@@ -71,10 +74,11 @@ describe('<DatePicker/> visibleMonth', () => {
     const nextButton = getByRole('button', { name: /Next/i });
     await user.click(nextButton);
 
-    expect(onVisibleMonthChange).toHaveBeenCalledTimes(1);
-    const calledDate = onVisibleMonthChange.mock.calls[0][0] as Date;
+    expect(onNext).toHaveBeenCalledTimes(1);
+    const { date: calledDate, type } = onNext.mock.calls[0][0] as { date: Date; type: string };
     // Range picker on desktop shows 2 columns, so "Next" advances by 2 months
     const expectedDate = dayjs(anchorMonth).add(2, 'month').toDate();
+    expect(type).toBe('month');
     expect(dayjs(calledDate).isSame(expectedDate, 'month')).toBe(true);
   });
 
