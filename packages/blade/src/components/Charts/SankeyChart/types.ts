@@ -1,6 +1,7 @@
 import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
+import type { Platform } from '~utils';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 
@@ -24,7 +25,16 @@ export type SankeyDataLink = {
 
 export type SankeyTooltipContentProps = {
   active?: boolean;
-  payload?: TooltipContentProps<number, string>['payload'];
+  /**
+   * Recharts tooltip payload — isolated behind `Platform.Select` so the native
+   * build never depends on recharts types. Native renders its own tooltip overlay
+   * from the computed Sankey layout and does not consume this prop (its native
+   * variant is `undefined`). Web resolves to the real recharts payload type.
+   */
+  payload?: Platform.Select<{
+    web: TooltipContentProps<number, string>['payload'];
+    native: undefined;
+  }>;
   labelUnit?: string;
 };
 
