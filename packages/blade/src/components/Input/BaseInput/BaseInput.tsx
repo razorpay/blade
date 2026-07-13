@@ -1215,7 +1215,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 currentInteraction={currentInteraction}
                 setCurrentInteraction={setCurrentInteraction}
                 numberOfLines={numberOfLines}
-                autoGrowMaxHeight={autoGrowMaxHeight}
+                // Native-only: do not forward to web StyledBaseInput
+                {...(isReactNative && autoGrowMaxHeight
+                  ? { autoGrowMaxHeight }
+                  : null)}
                 isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
                 hasPopup={hasPopup}
                 hasTags={!!(tags && tags.length > 0)}
