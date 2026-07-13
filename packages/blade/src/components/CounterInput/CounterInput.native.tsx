@@ -177,6 +177,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
       box: {
         minWidth: COUNTER_INPUT_TOKEN.width[size],
         height: COUNTER_INPUT_TOKEN.height[size],
+        alignSelf: 'flex-start',
       },
     });
 
