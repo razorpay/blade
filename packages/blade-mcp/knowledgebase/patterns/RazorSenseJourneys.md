@@ -208,7 +208,7 @@ Reserve both for meaningful outcomes. Use ordinary Blade feedback for small save
 ```tsx
 import { RazorSense } from '@razorpay/blade/components';
 
-const canRetry = true;
+const canRetry: boolean = true;
 
 <RazorSense state={canRetry ? 'caution' : 'regret'} playback="once" endBehavior="hold" />
 ```
@@ -303,8 +303,8 @@ Before generating a RazorSense integration, confirm:
 ```tsx
 import { RazorSense } from '@razorpay/blade/components';
 
-const messages: { state: string }[] = [];
-const state = 'idle';
+const messages: { state: 'idle' | 'typing' | 'thinking' | 'working' | 'loading' | 'success' | 'caution' | 'regret' }[] = [];
+const state: string = 'idle';
 const setState = (_s: string): void => {};
 const motion = { div: (_props: { animate?: unknown; children?: unknown }): null => null };
 
@@ -324,7 +324,7 @@ function WrongPatterns() {
   <RazorSense numSegments={54} displacementX={-18} />;
 
   // Wrong: one-shot as infinite loop
-  <RazorSense preset="audioWave" playback="loop" />;
+  <RazorSense preset="audioWave" playback={'loop' as 'automatic'} />;
 
   return null;
 }

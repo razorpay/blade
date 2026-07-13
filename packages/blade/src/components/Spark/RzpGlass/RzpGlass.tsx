@@ -487,6 +487,8 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseInternal
       startTime = 0,
       endTime,
       isInteractive,
+      paused,
+      interactive,
       accessibilityLabel,
       testID,
       onLoad,
@@ -499,8 +501,8 @@ const SemanticRazorSense = forwardRef<HTMLDivElement, SemanticRazorSenseInternal
       runtimePriority,
     } = props;
     const { colorScheme } = useTheme();
-    const resolvedIsPaused = isPaused ?? false;
-    const resolvedIsInteractive = isInteractive ?? true;
+    const resolvedIsPaused = paused ?? isPaused ?? false;
+    const resolvedIsInteractive = interactive ?? isInteractive ?? true;
     const requestedFamily = getSemanticRendererFamily(mode);
     const requestedFamilyRef = useRef(requestedFamily);
     requestedFamilyRef.current = requestedFamily;

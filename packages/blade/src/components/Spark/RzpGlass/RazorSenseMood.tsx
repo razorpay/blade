@@ -367,6 +367,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
       paused = false,
       playbackRate = 1,
       startTime = 0,
+      interactive = true,
       onLoad,
       onError,
       onFrameReady,
@@ -1169,6 +1170,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           overflow: 'hidden',
           backgroundColor: MOBILE_BASE_COLORS[displayedColorScheme][displayedMode],
           transition: `${transitionDurationMs}ms background-color`,
+          pointerEvents: interactive ? 'auto' : 'none',
           ...style,
         }}
       >
