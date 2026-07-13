@@ -143,7 +143,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       const props = child.props as ChartLineProps;
       slots.lines.push({
         dataKey: props.dataKey as string,
-        name: props.name as string | undefined,
+        name: props.name,
         color: props.color,
         strokeStyle: props.strokeStyle ?? 'solid',
         type: props.type ?? 'monotone',
@@ -189,7 +189,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       // reference lines — full web parity.
       slots.referenceLines.push({
         y: typeof props.y === 'number' ? props.y : undefined,
-        x: props.x as string | number | undefined,
+        x: props.x,
         label: typeof props.label === 'string' ? props.label : undefined,
       });
     }
@@ -217,13 +217,10 @@ type Point = { x: number; y: number };
 
 const buildLinearPath = (points: Point[]): string => {
   if (points.length === 0) return '';
-  return (
-    `M ${points[0].x} ${points[0].y}` +
-    points
-      .slice(1)
-      .map((p) => ` L ${p.x} ${p.y}`)
-      .join('')
-  );
+  return `M ${points[0].x} ${points[0].y}${points
+    .slice(1)
+    .map((p) => ` L ${p.x} ${p.y}`)
+    .join('')}`;
 };
 
 const buildStepPath = (points: Point[], variant: 'step' | 'stepAfter' | 'stepBefore'): string => {
