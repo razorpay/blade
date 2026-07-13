@@ -102,9 +102,6 @@ buck-out/
 knowledgebase-ts-errors.json
 .cursor/artifacts/
 .cursor/worktrees/
+.agents/artifacts/
 .cursor/rules/frontend-blade-rules.mdc
 .playwright-mcp/
-
-.cursor
-.claude
-.agents
