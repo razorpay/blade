@@ -386,7 +386,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           />
         )}
         <BottomSheet
-          snapPoints={[0.9, 0.9, 1]}
+          snapToContentHeight
           isOpen={controllableIsOpen}
           onDismiss={() => {
             // Gorhom's `onClose` fires for EVERY close — programmatic (apply / clear /

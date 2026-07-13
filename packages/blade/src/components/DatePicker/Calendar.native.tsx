@@ -55,6 +55,68 @@ const DAY_COLORS = {
   today: 'interactive.text.primary.normal',
 } as const;
 
+// Hoisted so the same object reference is reused across renders (a new inline
+// `{ aspectRatio: 1 }` on every cell would defeat DayCell memoization).
+const DAY_CELL_STYLE = { aspectRatio: 1 } as const;
+
+type DayGridCellProps = {
+  dateTime: number;
+  dayLabel: string;
+  accessibilityLabel: string;
+  textColor: string;
+  isSelected: boolean;
+  isInRange?: boolean;
+  isFirstInRange?: boolean;
+  isLastInRange?: boolean;
+  isDisabled: boolean;
+  isToday: boolean;
+  onDayPress: (dateTime: number) => void;
+};
+
+/**
+ * Memoized single day cell. Tapping a date only changes the selection booleans
+ * of the one or two affected cells, so `React.memo` lets every other cell skip
+ * re-rendering (and skip the styled-components style recompute + Text render).
+ * All props are primitives / a stable callback so the shallow compare is cheap.
+ */
+const DayGridCell = React.memo(
+  ({
+    dateTime,
+    dayLabel,
+    accessibilityLabel,
+    textColor,
+    isSelected,
+    isInRange,
+    isFirstInRange,
+    isLastInRange,
+    isDisabled,
+    isToday,
+    onDayPress,
+  }: DayGridCellProps): React.ReactElement => {
+    return (
+      <DayCell
+        style={DAY_CELL_STYLE}
+        isSelected={isSelected}
+        isInRange={isInRange}
+        isFirstInRange={isFirstInRange}
+        isLastInRange={isLastInRange}
+        isDisabled={isDisabled}
+        disabled={isDisabled}
+        accessibilityLabel={accessibilityLabel}
+        onPress={() => {
+          if (isDisabled) return;
+          onDayPress(dateTime);
+        }}
+      >
+        <Text size="medium" color={textColor as never}>
+          {dayLabel}
+        </Text>
+        {isToday ? <TodayDot isSelected={isSelected} /> : null}
+      </DayCell>
+    );
+  },
+);
+
 /**
  * Native calendar. The web version renders `@mantine/dates` `<DatePicker>` (DOM only),
  * so on native the grid is rebuilt by hand with dayjs. Day / month / year levels are
@@ -121,6 +183,14 @@ const Calendar = <Type extends DateSelectionType>({
 
   const currentPicker = levelToPicker[level] as PickerType;
 
+  // Keep a stable day-press handler so memoized `DayGridCell`s don't re-render just
+  // because `__onDayClick` (recreated by the parent each render) changed identity.
+  const onDayClickRef = React.useRef(__onDayClick);
+  onDayClickRef.current = __onDayClick;
+  const handleDayPress = React.useCallback((dateTime: number) => {
+    onDayClickRef.current?.(undefined, new Date(dateTime));
+  }, []);
+
   const navigate = (unit: 'month' | 'year', amount: number, type: NavType): void => {
     const nextDate = dayjs(currentDate).add(amount, unit).toDate();
     if (amount > 0) {
@@ -139,11 +209,18 @@ const Calendar = <Type extends DateSelectionType>({
     return false;
   };
 
-  const renderDayGrid = (): React.ReactElement => {
+  // Selection-independent day-grid geometry (dates, labels, today/outside/disabled
+  // flags, weekday headers). Keyed on the visible month so tapping different days in
+  // the same month does NOT rebuild the grid or recreate 42 dayjs objects per render —
+  // only the per-cell selection booleans below are recomputed.
+  const monthKey = dayjs(currentDate).format('YYYY-MM');
+  const dayGrid = React.useMemo(() => {
     const monthStart = dayjs(currentDate).startOf('month');
     const startWeekday = monthStart.day();
     const offset = (startWeekday - firstDayOfWeek + 7) % 7;
     const gridStart = monthStart.subtract(offset, 'day');
+    const today = dayjs();
+    const monthIndex = monthStart.month();
 
     const weekdays = Array.from({ length: 7 }, (_, i) =>
       dayjs()
@@ -152,11 +229,29 @@ const Calendar = <Type extends DateSelectionType>({
         .format('ddd'),
     );
 
-    const weeks: dayjs.Dayjs[][] = Array.from({ length: 6 }, (_, weekIndex) =>
-      Array.from({ length: 7 }, (_, dayIndex) => gridStart.add(weekIndex * 7 + dayIndex, 'day')),
-    );
+    const cells = Array.from({ length: 42 }, (_, i) => {
+      const day = gridStart.add(i, 'day');
+      return {
+        dateTime: day.valueOf(),
+        dayLabel: day.format('D'),
+        accessibilityLabel: day.locale(locale).format('D MMMM YYYY'),
+        isOutside: day.month() !== monthIndex,
+        isToday: day.isSame(today, 'day'),
+        isDisabled: isDateDisabled(day),
+      };
+    });
 
-    const today = dayjs();
+    return { weekdays, cells };
+    // `monthKey` (not `currentDate`) is the intended dependency — the grid only
+    // depends on which month is shown, not the exact selected date.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [monthKey, firstDayOfWeek, locale, minDate, maxDate, excludeDate]);
+
+  const renderDayGrid = (): React.ReactElement => {
+    const { weekdays, cells } = dayGrid;
+    const weeks = Array.from({ length: 6 }, (_, weekIndex) =>
+      cells.slice(weekIndex * 7, weekIndex * 7 + 7),
+    );
 
     return (
       <BaseBox display="flex" flexDirection="column">
@@ -171,45 +266,37 @@ const Calendar = <Type extends DateSelectionType>({
         </BaseBox>
         {weeks.map((week, weekIndex) => (
           <BaseBox key={weekIndex} display="flex" flexDirection="row">
-            {week.map((day) => {
-              const dateObj = day.toDate();
-              const controlProps = getDayProps(dateObj);
-              const isOutside = day.month() !== monthStart.month();
-              const isToday = day.isSame(today, 'day');
-              const isDisabled = isDateDisabled(day);
+            {week.map((cell) => {
+              const controlProps = getDayProps(new Date(cell.dateTime));
 
+              // Web parity: the "today" cell keeps the DEFAULT number color at rest and
+              // only shows the small blue dot beneath (the primary color is applied to the
+              // number on :hover, which native has no equivalent of). So `isToday` is
+              // intentionally NOT a text-color branch here — see `TodayDot` for the dot.
               let textColor: string = DAY_COLORS.default;
-              if (isDisabled) {
+              if (cell.isDisabled) {
                 textColor = DAY_COLORS.disabled;
               } else if (controlProps.selected) {
                 textColor = DAY_COLORS.onSelected;
-              } else if (isToday) {
-                textColor = DAY_COLORS.today;
-              } else if (isOutside) {
+              } else if (cell.isOutside) {
                 textColor = DAY_COLORS.outside;
               }
 
               return (
-                <DayCell
-                  key={day.format('YYYY-MM-DD')}
-                  style={{ aspectRatio: 1 }}
+                <DayGridCell
+                  key={cell.dateTime}
+                  dateTime={cell.dateTime}
+                  dayLabel={cell.dayLabel}
+                  accessibilityLabel={cell.accessibilityLabel}
+                  textColor={textColor}
                   isSelected={controlProps.selected}
                   isInRange={controlProps.inRange}
                   isFirstInRange={controlProps.firstInRange}
                   isLastInRange={controlProps.lastInRange}
-                  isDisabled={isDisabled}
-                  disabled={isDisabled}
-                  accessibilityLabel={day.locale(locale).format('D MMMM YYYY')}
-                  onPress={() => {
-                    if (isDisabled) return;
-                    __onDayClick?.(undefined, dateObj);
-                  }}
-                >
-                  <Text size="medium" color={textColor as never}>
-                    {day.format('D')}
-                  </Text>
-                  {isToday ? <TodayDot isSelected={controlProps.selected} /> : null}
-                </DayCell>
+                  isDisabled={cell.isDisabled}
+                  isToday={cell.isToday}
+                  onDayPress={handleDayPress}
+                />
               );
             })}
           </BaseBox>

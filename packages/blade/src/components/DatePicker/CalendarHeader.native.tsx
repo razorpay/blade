@@ -59,6 +59,7 @@ const CalendarLevelIndicator = ({
  * single-column layout.
  */
 const CalendarHeader = ({
+  isRange,
   date,
   pickerType,
   onNextMonth,
@@ -124,7 +125,9 @@ const CalendarHeader = ({
         {pickerType === 'day' && (
           <CalendarLevelIndicator
             onClick={() => onLevelChange('year')}
-            showLevelChangeLink={showLevelChangeLink}
+            // Range DatePicker must not expose the month/year picker on native —
+            // render the label as plain text (no caret / no press-to-open-picker).
+            showLevelChangeLink={isRange ? false : showLevelChangeLink}
             accessibilityLabel="Change month"
             text={`${month} ${year}`}
           />

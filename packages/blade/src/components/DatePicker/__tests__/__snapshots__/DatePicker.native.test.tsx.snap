@@ -1061,186 +1061,41 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     ]
                   }
                 >
-                  <View
-                    accessibilityLabel="Change month"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
+                  <Text
                     accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                    color="interactive.text.neutral.normal"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={200}
+                    fontStyle="normal"
+                    fontWeight="medium"
+                    letterSpacing={25}
+                    lineHeight={200}
                     style={
                       [
                         {
-                          "alignSelf": "flex-start",
-                          "backgroundColor": "transparent",
-                          "borderColor": "black",
-                          "borderStyle": "solid",
-                          "borderWidth": 0,
-                          "outline": "none",
+                          "color": "hsla(0, 0%, 2%, 1)",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontStyle": "normal",
+                          "fontWeight": "500",
+                          "letterSpacing": -0.528,
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
                           "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "black",
                           "textDecorationLine": "none",
-                          "textDecorationStyle": "solid",
                         },
                       ]
                     }
                   >
-                    <View
-                      alignItems="center"
-                      className="content-container"
-                      data-blade-component="base-box"
-                      display="flex"
-                      flexDirection="row"
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.neutral.normal"
-                        data-blade-component="base-text"
-                        fontSize={200}
-                        fontWeight="medium"
-                        lineHeight={200}
-                        style={
-                          [
-                            {
-                              "color": "hsla(0, 0%, 2%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 16,
-                              "fontStyle": "normal",
-                              "fontWeight": "500",
-                              "letterSpacing": 0,
-                              "lineHeight": 24,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textAlign": "center",
-                              "textDecorationLine": "none",
-                            },
-                          ]
-                        }
-                        textAlign="center"
-                        textDecorationLine="none"
-                      >
-                        July 2026
-                      </Text>
-                      <View
-                        alignItems="center"
-                        data-blade-component="base-box"
-                        display="flex"
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "display": "flex",
-                              "paddingLeft": 4,
-                            },
-                          ]
-                        }
-                      >
-                        <RNSVGSvgView
-                          accessibilityElementsHidden={true}
-                          align="xMidYMid"
-                          bbHeight="16px"
-                          bbWidth="16px"
-                          data-blade-component="icon"
-                          fill="none"
-                          focusable={false}
-                          height="16px"
-                          importantForAccessibility="no-hide-descendants"
-                          meetOrSlice={0}
-                          minX={0}
-                          minY={0}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderWidth": 0,
-                              },
-                              [
-                                {},
-                              ],
-                              {
-                                "flex": 0,
-                                "height": 16,
-                                "width": 16,
-                              },
-                            ]
-                          }
-                          vbHeight={24}
-                          vbWidth={24}
-                          width="16px"
-                        >
-                          <RNSVGGroup
-                            fill={null}
-                            propList={
-                              [
-                                "fill",
-                              ]
-                            }
-                          >
-                            <RNSVGPath
-                              clipRule={0}
-                              d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                              fill={
-                                {
-                                  "payload": 4278519045,
-                                  "type": 0,
-                                }
-                              }
-                              fillRule={0}
-                              propList={
-                                [
-                                  "fill",
-                                  "fillRule",
-                                ]
-                              }
-                            />
-                          </RNSVGGroup>
-                        </RNSVGSvgView>
-                      </View>
-                    </View>
-                  </View>
+                    July 2026
+                  </Text>
                 </View>
                 <View
                   accessibilityLabel="Next"
@@ -3492,7 +3347,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   >
                     <Text
                       accessible={true}
-                      color="interactive.text.primary.normal"
+                      color="interactive.text.gray.normal"
                       data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
@@ -3503,7 +3358,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(218, 87%, 43%, 1)",
+                            "color": "hsla(0, 0%, 2%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
@@ -9821,7 +9676,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   >
                     <Text
                       accessible={true}
-                      color="interactive.text.primary.normal"
+                      color="interactive.text.gray.normal"
                       data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
@@ -9832,7 +9687,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(218, 87%, 43%, 1)",
+                            "color": "hsla(0, 0%, 2%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
