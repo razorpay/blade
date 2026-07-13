@@ -6,7 +6,7 @@
 > **Purpose:** **Adoption-readiness / API-fit review.** Checkout V2 just shipped a deep merchant-configurability layer (Config V2, PR [checkout#11286](https://github.com/razorpay/checkout/pull/11286)) but **does not consume Blade Svelte yet** — it styles its own components. This doc evaluates the architectural/API changes Blade Svelte needs so checkout can drop those bespoke components and adopt Blade *without losing the merchant-config surface*.
 > **Related:** `docs/theming-and-classnames.md`, `checkout/app/v2/docs/CONFIG_V2_SPEC.md`, `checkout/app/v2/utils/config-driver/*`
 
-> **📦 Reference implementations (all 5 options are now buildable & inspectable).** To make this RFC concrete, every option A–E has a working spike landed in the codebase so the team can compare them side-by-side in Storybook (especially hover/disabled behaviour) rather than from prose alone. **These are evaluation spikes, not a final API commitment** — the recommendation (B core + C complementary) is unchanged.
+> **📦 Reference implementations (options A–E are now buildable & inspectable).** To make this RFC concrete, options A–E have a working spike landed in the codebase so the team can compare them side-by-side in Storybook (especially hover/disabled behaviour) rather than from prose alone. **These are evaluation spikes, not a final API commitment** — Option F is newly documented from the Tailwind/runtime-var discussion and still needs a spike before scoring it as implementation-ready.
 >
 > | Option | `blade-core` (framework-agnostic) | `blade-svelte` wiring |
 > |---|---|---|
@@ -15,6 +15,7 @@
 > | **C** — scoped provider | `styles/themeScope/themeScope.ts` (`flattenThemeOverridesToVars`) | `BladeProvider.svelte` (`themeOverrides`) |
 > | **D** — slot-keyed map | `styles/slotTheme/slotTheme.ts` (`resolveSlotTheme`) | `BladeProvider` (`slotTheme`) + `Button` prop `themeKey` |
 > | **E** — `className` | — | `Button` prop `className` |
+> | **F** — Tailwind runtime-var utilities | TBD | proposed part-level utility hooks/classes + inline CSS vars |
 >
 > **See it:** Storybook → *Patterns / Instance-Level Styling* (`src/components/Button/StyleOverrides.stories.svelte`). The “A vs B · hover & disabled” story is the money shot — A dead-ends states, B derives them. Everything is additive/backward-compatible (`svelte-check` + `blade-core` typecheck green; unspecified instances render pixel-identical via `var(--x, <default>)`).
 
@@ -122,7 +123,7 @@ Any solution must answer five questions:
 - **D. Scope** — instance / subtree / page.
 - **E. Surface** — top-level visual props only, or **named internal parts** of composite components? (This axis is what "configure something internal" — e.g. an Input's field vs. label vs. placeholder — forces; see §4.5.)
 
-The options below are concrete combinations of these axes. **v1 decision (locked):** Carrier = inline element-scoped CSS vars (B); Vocabulary = opaque hex passthrough with derived states (C); Surface grows from top-level props → named parts (E).
+The options below are concrete combinations of these axes. The earlier v1 recommendation was **B**: carrier = inline element-scoped CSS vars; vocabulary = opaque hex passthrough with derived states; surface grows from top-level props → named parts. **Option F is now added as the runtime-Tailwind alternative** because it also uses inline element-scoped CSS vars for live values, but lets static Tailwind utilities perform the final property binding.
 
 ---
 
@@ -180,7 +181,7 @@ Each component accepts a typed, **bounded** `styleOverrides` object. The compone
 
 This makes B a **strict improvement over the shipped Option A** (§1.1): same input (one hex), but hover/disabled now work instead of breaking. State derivation is therefore the **centerpiece of v1**, not a "nice to have" — `tinycolor` is already a dependency (via `createTheme`) for the darken/alpha math, and the derived steps should visually match Blade's existing `highlighted`/`disabled` token offsets.
 
-**Reactivity is a hard requirement.** `useUIConfigColor` returns a live `Readable<T>` so the Studio editor repaints on change (`CONFIG_V2_SPEC.md` §3.5). Inline CSS vars satisfy this trivially (re-spread the `style` map on change); a class-based carrier would not. This is an additional reason the carrier must be inline vars.
+**Reactivity is a hard requirement.** `useUIConfigColor` returns a live `Readable<T>` so the Studio editor repaints on change (`CONFIG_V2_SPEC.md` §3.5). Inline CSS vars satisfy this trivially (re-spread the `style` map on change). Literal/interpolated arbitrary classes like `border-[${color}]` do not, because Tailwind must see complete class strings at build time; Option F works by keeping the class static and moving the runtime value into the var.
 
 *(Tokens and explicit per-state overrides — e.g. accepting `backgroundColorHovered` or `'surface.text…'` token strings — are a later-phase extension of the same resolver, not v1. See §11.)*
 
@@ -257,7 +258,7 @@ Component opts into a slot: `<Button themeKey="primaryCta" />`.
 
 ### Option E — `className` / `class` passthrough (let consumer style it)
 
-Expose `className`; consumer ships CSS (Tailwind/util classes) to override.
+Expose `className`; consumer ships their own selector/classes/CSS to override. This is the broad escape-hatch version. The runtime-safe Tailwind-var variant is evaluated separately as Option F.
 
 **Pros**
 - Trivial to add; CVA's `getButtonClasses` already accepts `className`.
@@ -265,10 +266,68 @@ Expose `className`; consumer ships CSS (Tailwind/util classes) to override.
 
 **Cons**
 - **Specificity wars** with CSS-module rules + box-shadow-based borders; merchant overrides will silently lose or require `!important`.
-- **Banned on checkout**: V2 forbids `<style>` blocks / arbitrary CSS in SFCs; merchant config is data (hex strings), not classes. Doesn't map to `config-driver` at all.
+- Poor checkout fit when used as authored selectors/stylesheets: V2 forbids `<style>` blocks / arbitrary CSS in SFCs, and merchant config is data (hex strings), not merchant-sent classes. Static Tailwind classes that consume runtime vars are the narrower Option F case, not this broad E case.
 - Escapes the DS entirely → no governance, no dark-mode awareness, no tokens.
 
 **Scalability:** Poor (governance + specificity). **Backward-compat:** Additive (✓). **Blade impact:** Low to add, High to regret.
+
+---
+
+### Option F — Parts-keyed Tailwind utilities + runtime CSS variables
+
+Expose a parts-aware class/utility hook where the class strings are **static Tailwind arbitrary-value utilities** and the merchant/config values flow through **runtime CSS custom properties**. This is the runtime-safe Tailwind shape: Tailwind sees the full class at build time, while Svelte updates the CSS variable value at runtime.
+
+```svelte
+<TextInput
+  label="Card Number"
+  styleOverrides={{
+    field: {
+      class:
+        'border-[color:var(--field-border)] text-[color:var(--field-text)] rounded-[6px] px-3 py-2 hover:border-[color:var(--field-border-hover)]',
+      vars: {
+        '--field-border': '#1a59ff',
+        '--field-text': '#1a59ff',
+        '--field-border-hover': '#1548cc',
+      },
+    },
+    label: {
+      class: 'text-[color:var(--label-color)] text-xs font-medium',
+      vars: {
+        '--label-color': '#5a6472',
+      },
+    },
+  }}
+/>
+```
+
+The critical distinction from literal arbitrary values is:
+
+```svelte
+<!-- Build-time/static only; not safe for live config interpolation -->
+class={`border-[${$ctaColor}]`}
+
+<!-- Runtime-safe; class is static, value changes through the CSS var -->
+class="border-[color:var(--cta-border)]"
+style={`--cta-border: ${$ctaColor};`}
+```
+
+So F is **not** the same as Option E's "consumer writes a stylesheet somewhere" model. It keeps styles in markup, uses no SFC `<style>` block, supports Tailwind variants (`hover:`, `focus:`, `disabled:`), and shares Option B's carrier: inline element-scoped CSS variables. The main difference is that Tailwind-generated utilities bind CSS properties to those vars instead of Blade CSS-module rules.
+
+**Pros**
+- Runtime config compatible: `useUIConfigColor()` can update inline vars live while the Tailwind class remains statically extractable.
+- Preserves interaction states when the adapter/component authors the relevant Tailwind variants (`hover:*`, `focus:*`, `disabled:*`) and their state vars.
+- Naturally addresses internal parts via `field`/`label`/`placeholder` keys, without needing every property to be pre-modeled as a typed Blade prop.
+- No `<style>` blocks in checkout SFCs; utilities are authored in markup and compiled by Tailwind.
+- Fastest path for consumers already fluent in Tailwind utilities and arbitrary values.
+
+**Cons**
+- State derivation moves out of Blade unless Blade also owns the `vars` resolver. Checkout sends one base hex today; F requires either adapter-authored derived vars (`--field-border-hover`) or a shared `deriveColorStates` helper.
+- Weaker DS governance than B: class strings can encode spacing, radius, typography, and arbitrary properties outside a bounded component API.
+- Specificity is still empirical: Tailwind utilities may or may not beat CSS-module rules, box-shadow borders, or pseudo-element styling without `!important` / layer ordering / var seams.
+- Class strings must remain statically extractable. Runtime interpolation inside the bracket (`border-[${color}]`) will not be generated by Tailwind.
+- Harder to share as a framework-agnostic Blade API because the binding layer assumes Tailwind syntax and build setup.
+
+**Scalability:** Good for checkout-pragmatic, parts-heavy runtime styling if the team accepts utility-string governance. **Backward-compat:** Additive (✓). **Blade impact:** Low/Medium — needs part-level class hooks and a var-passing contract; less CSS seam work than B for simple final-property utilities, but still faces specificity and pseudo-element edges.
 
 ---
 
@@ -324,40 +383,42 @@ Line 136 (Option A's con) is "a flat top-level prop has no way to target an Inpu
 | **C** — scoped provider | By **semantic token** on a subtree wrapper, not by part. Overriding `interactive.background.primary.default` recolors *all* primary interactives in scope; it can't isolate one part if siblings resolve from the same token. | ~ — coarse; only works if a part maps 1:1 to an otherwise-unused token. |
 | **D** — slot-keyed map | The **slot key** *is* the part dimension (`<Input themeKey="field">`), looked up via context. Works, but invents a new naming dimension that must be documented and synced across Blade + checkout, and still needs B's carrier underneath ("sugar layer, not a mechanism"). | ~ — reject the centralized taxonomy; keep the parts-addressing instinct, folded into B as nested keys. |
 | **E** — `className` | Per-part **class hooks** (`.input-field`, `.input-placeholder`) the consumer styles with their own CSS / `::placeholder`. | ✗ — specificity wars vs. CSS-module + box-shadow rules; banned in checkout SFCs; escapes DS governance/tokens. |
+| **F** — Tailwind runtime-var utilities | **Nested part keys** whose static Tailwind utility classes consume runtime CSS vars (`field: 'border-[color:var(--field-border)] hover:border-[color:var(--field-border-hover)]'`). | ✓/~ — strong parts addressing and runtime fit; weaker governance than B, and state derivation/specificity must be owned explicitly. |
 
 **The shared half (option-independent):** whichever option *names* the part, the value still has to land on a sub-element that exposes the property as a variable — the per-component seam audit. Card's `surface` is a *child* of root, and its gradient/box-shadow must first be re-expressed as per-channel vars (table above). No option escapes this: D reaches it via B's carrier, E via class hooks fighting specificity. **Addressing is necessary but not sufficient; the seam audit is the real enabling cost.**
 
-> Net: **B is the parts mechanism** (nested keys). D is the only other true parts mechanism, and B absorbs its good half locally without the cross-repo taxonomy. C is too coarse to isolate a single part; E is ungovernable and checkout-banned.
+> Net: **B and F are the serious parts mechanisms for checkout-style runtime values**. B is typed and DS-owned; F is Tailwind-native and more immediately expressive. D is a central indirection layer; C is too coarse to isolate a single part; E remains the unbounded stylesheet/class escape hatch.
 
 ---
 
 ## 5. Comparison matrix
 
-| Criterion | A: Visual styled props | **B: styleOverrides → CSS vars** | C: Scoped provider | D: Slot-keyed map | E: className |
-|---|---|---|---|---|---|
-| Solves sibling instances (same page) | ✓ | ✓✓ | ✗ (needs wrapper each) | ✓ | ✓ |
-| Preserves interaction states (hover/disabled) | ✗ (proven broken in checkout §1.1) | ✓✓ (derives states) | ✓ | ✓ | ~ |
-| Addresses **internal parts** (axis E) | ✗ | ✓ (via nested keys, §4.5) | ~ (coarse, subtree only) | ✓✓ | ~ (specificity) |
-| Reactive to live editor edits | ✓ | ✓✓ (inline vars) | ✓ | ✓ | ~ |
-| Keeps class-first architecture | ~ | ✓✓ | ✓✓ | ✓ | ✗ |
-| Matches consumer vocabulary (opaque hex) | ✓ | ✓✓ | ~ (token-shaped) | ✓ | ✗ |
-| `blade-core` stays framework-agnostic | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Maps cleanly to Config V2 output | ~ | ✓✓ | ~ | ✓ | ✗ |
-| Backward compatible | ✓ | ✓✓ | ✓ | ✓ | ✓ |
-| Bundle cost | Low | Low | Low | Med | Low |
-| Net new naming/coordination | Low | Low | Low | **High** | None |
-| Implementation cost | Low | **Low (Button) → Med/High (composites needing seam work, §4.5)** | Med | High | Low |
+| Criterion | A: Visual styled props | **B: styleOverrides → CSS vars** | C: Scoped provider | D: Slot-keyed map | E: className | F: Tailwind runtime-var utilities |
+|---|---|---|---|---|---|---|
+| Solves sibling instances (same page) | ✓ | ✓✓ | ✗ (needs wrapper each) | ✓ | ✓ | ✓✓ |
+| Preserves interaction states (hover/disabled) | ✗ (proven broken in checkout §1.1) | ✓✓ (derives states) | ✓ | ✓ | ~ | ✓ (variants; derivation external) |
+| Addresses **internal parts** (axis E) | ✗ | ✓ (via nested keys, §4.5) | ~ (coarse, subtree only) | ✓✓ | ~ (specificity) | ✓✓ (nested part utilities) |
+| Reactive to live editor edits | ✓ | ✓✓ (inline vars) | ✓ | ✓ | ~ | ✓✓ (static classes + runtime vars) |
+| Keeps class-first architecture | ~ | ✓✓ | ✓✓ | ✓ | ✗ | ✓✓ |
+| Matches consumer vocabulary (opaque hex) | ✓ | ✓✓ | ~ (token-shaped) | ✓ | ✗ | ✓ (hex via vars) |
+| `blade-core` stays framework-agnostic | ✓ | ✓ | ✓ | ✓ | ✓ | ~ (Tailwind-specific binding) |
+| Maps cleanly to Config V2 output | ~ | ✓✓ | ~ | ✓ | ✗ | ✓ (adapter maps hex → vars) |
+| Backward compatible | ✓ | ✓✓ | ✓ | ✓ | ✓ | ✓ |
+| Bundle cost | Low | Low | Low | Med | Low | Low/Med (static utility surface) |
+| Net new naming/coordination | Low | Low | Low | **High** | None | Med (part hooks + var names) |
+| Implementation cost | Low | **Low (Button) → Med/High (composites needing seam work, §4.5)** | Med | High | Low | Low/Med (hooks + specificity validation) |
 
 ---
 
 ## 6. Recommendation
 
-**Adopt Option B as the core mechanism — carrier = inline element-scoped CSS vars, vocabulary = opaque hex passthrough with derived states, surface = top-level props growing into named parts (§4.5). Keep Option C as a complementary, later layer.**
+**Keep Option B as the strongest DS-owned mechanism, but evaluate Option F as a serious checkout-pragmatic alternative.** Both use inline element-scoped CSS vars for runtime values. The decision is now less about "CSS vars vs classes" and more about **typed Blade-owned keys (B)** vs **parts-keyed Tailwind utility hooks (F)**.
 
 - **B (instance precision):** typed `styleOverrides` per component → element-scoped CSS variables, **state-aware by derivation** (the resolver synthesizes hover/disabled from the single base hex checkout sends). v1 ships **Button** and is a strict improvement over checkout's current inline-style CTA (§1.1).
+- **F (runtime Tailwind utilities):** static Tailwind arbitrary-value classes consume runtime CSS vars, so checkout can keep values reactive without `<style>` blocks and can express parts/states through utilities. It is more flexible but shifts governance, specificity, and state derivation into the adapter/component contract.
 - **B extends to internals** via a bounded, per-component **parts** vocabulary (§4.5) — this is the part of Option D we keep. The future Input is the target case.
 - **C (region/brand):** a real `BladeProvider.svelte` that scopes variable overrides to a subtree, for "theme this whole surface" cases (festivities, co-brand drawers). Later phase.
-- Explicitly **reject E** (ungovernable; checkout forbids arbitrary CSS in SFCs and emits data, not classes) and **reject D's centralized cross-repo slot taxonomy** (premature, high coordination) — while **keeping D's parts-addressing** inside B. **A** is the shipped status quo we are replacing.
+- Explicitly **reject unbounded E** (consumer stylesheet/class escape hatch) and **reject D's centralized cross-repo slot taxonomy** (premature, high coordination). **A** is the shipped status quo we are replacing.
 
 This is the lowest-architecture-churn path *for Button*; for composite components the honest cost is the **per-component seam audit** (§4.5), which is the real gating work for full adoption.
 
@@ -455,6 +516,7 @@ const overrideVars = $derived(resolveButtonOverrides(styleOverrides));
 | Risk | Mitigation |
 |------|------------|
 | `styleOverrides` becomes a freeform escape hatch | Typed keys only; no `CSSProperties` spread; lint rule |
+| Option F utility strings become an ungoverned styling API | Limit to named parts, document allowed utility families, prefer runtime CSS vars for colors, and require snapshots for hover/focus/disabled states |
 | **Override target property isn't a variable yet** (Card gradient bg, box-shadow borders) | Per-component **seam audit** (§4.5) before exposing keys; ship Button first (already variable-ized); treat seam work as DS-owned, scoped per component |
 | Merchant picks low-contrast bg/text (a11y) | Reuse `tinycolor` contrast checks (already a dep of `createTheme`) to warn/auto-pick foreground; checkout already sanitizes input |
 | State variants forgotten on override (hover looks wrong) | **v1 resolver derives hover/disabled from the base** (darken/alpha) — this is the default path, not a fallback (Option B, §4) |
@@ -468,7 +530,8 @@ const overrideVars = $derived(resolveButtonOverrides(styleOverrides));
 2. **Phase 3b — Checkout adoption bridge:** adapter mapping Config V2 CTA values (`getUIConfigColor`) → `styleOverrides`; swap the Contact CTA `Button` to Blade and verify it fixes the §1.1 state regression.
 3. **Phase 3c — Generalize + first composite:** extract shared `resolve*Overrides` helper; widen vocabulary (optional tokens/explicit states); run the **first composite seam audit** (Input when it exists, or Card) per §4.5.
 4. **Phase 3d — `BladeProvider.svelte` (Option C):** subtree token scoping for surface/brand theming.
-5. **Phase 4 — Governance:** lint rules, docs, contrast tooling, Studio playground integration.
+5. **Phase 3e — Option F spike:** parts-keyed Tailwind runtime-var utilities on the first composite input; validate live config updates, hover/focus/disabled states, specificity, and bundle impact against B.
+6. **Phase 4 — Governance:** lint rules, docs, contrast tooling, Studio playground integration.
 
 ---
 
@@ -477,5 +540,6 @@ const overrideVars = $derived(resolveButtonOverrides(styleOverrides));
 - **Vocabulary growth:** v1 is hex-only passthrough. When do we add token support / explicit per-state keys? (Recommendation: only when a *consumer other than checkout* needs it, since `getUIConfigColor` is hex-only.)
 - **Derivation rule:** what exact `darken`/`alpha` offsets keep derived hover/disabled both WCAG-safe and visually consistent with Blade's existing `highlighted`/`disabled` token steps? (Needs a defined spec + snapshot baseline before 3a.)
 - **First composite target:** build Input fresh to the §4.5 parts contract, or retrofit Card first to prove the seam-audit cost? 
+- **B vs F API choice:** should Blade expose typed part keys that map to CSS vars, or part-level Tailwind utility hooks that consume runtime vars? Which one should be the public contract for checkout adoption?
 - **Responsive overrides:** should `styleOverrides` accept responsive objects like styled props? (Defer; CTAs aren't responsive-styled today.)
 - **Naming:** `styleOverrides` vs `themeOverrides` vs `appearance`. (Leaning `styleOverrides`.)

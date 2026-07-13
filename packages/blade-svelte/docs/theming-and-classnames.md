@@ -142,6 +142,28 @@ All styled props accept a responsive object:
 
 ---
 
+## Runtime Values in Tailwind Classes
+
+Tailwind arbitrary values support runtime theming when the **class string is static** and the changing value is carried by a CSS variable:
+
+```svelte
+<TextInput
+  class="border-[color:var(--field-border)] text-[color:var(--field-text)] hover:border-[color:var(--field-border-hover)]"
+  style={`--field-border: ${fieldBorder}; --field-text: ${fieldText}; --field-border-hover: ${fieldBorderHover};`}
+/>
+```
+
+Do not interpolate runtime values inside the bracket:
+
+```svelte
+<!-- Tailwind cannot reliably generate this because the class is not statically extractable -->
+<TextInput class={`border-[${fieldBorder}]`} />
+```
+
+This pattern is the basis for Option F in `instance-level-styling-proposal.md`: static Tailwind utilities bind CSS properties to `var(--...)`, while config values update the CSS variables at runtime. It supports Tailwind variants like `hover:` / `focus:` / `disabled:` and does not require SFC `<style>` blocks.
+
+---
+
 ## Summary
 
 | Concept | React Blade | blade-svelte |
