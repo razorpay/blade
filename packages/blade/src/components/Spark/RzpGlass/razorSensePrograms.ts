@@ -588,6 +588,24 @@ const createTransitionDescriptor = (
       overlap: 1,
     });
   }
+  const isThinkingTypingPair =
+    (from === 'state:thinking' && to === 'state:typing') ||
+    (from === 'state:typing' && to === 'state:thinking');
+  const isFieldLoaderPair =
+    outgoing.rendererFamily === 'authored' &&
+    incoming.rendererFamily === 'authored' &&
+    ((outgoing.visualMode === 'neutral' && incoming.visualMode === 'loading') ||
+      (outgoing.visualMode === 'loading' && incoming.visualMode === 'neutral'));
+  if (isThinkingTypingPair || isFieldLoaderPair) {
+    return Object.freeze({
+      from,
+      to,
+      strategy: 'material-morph',
+      duration: 'duration.2xgentle',
+      easing: 'easing.standard',
+      overlap: 1,
+    });
+  }
   if (outgoing.rendererFamily === 'authored' && incoming.rendererFamily === 'authored') {
     return Object.freeze({
       from,

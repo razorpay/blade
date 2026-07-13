@@ -15,6 +15,7 @@ import {
   RAZOR_SENSE_OPERATIONAL_MODE_TIMINGS,
 } from './modes';
 import { RazorSenseFallback } from './RazorSenseFallback';
+import { RazorSenseAuthoredTransitionRenderer } from './RazorSenseAuthoredTransition';
 import {
   getRazorSenseAsset,
   getRazorSenseRepresentativeFrame,
@@ -94,6 +95,7 @@ type AuthoredLayerHandle = {
     canvas: HTMLCanvasElement | null,
     container: HTMLElement | null,
     clearCanvas: boolean,
+    includeHiddenLayer?: boolean,
   ): boolean;
   getPlaybackSnapshot(): LayerPlaybackSnapshot | undefined;
   release(): void;
@@ -462,12 +464,14 @@ const AuthoredVideoLayer = forwardRef<AuthoredLayerHandle, AuthoredVideoLayerPro
     useImperativeHandle(
       forwardedRef,
       () => ({
-        capture: (canvas, container, clearCanvas) => {
+        capture: (canvas, container, clearCanvas, includeHiddenLayer = false) => {
           const wrapper = wrapperRef.current;
           const primary = primaryRef.current;
           if (!wrapper || !primary || !canvas || !container) return false;
 
-          const layerOpacity = getNumericOpacity(window.getComputedStyle(wrapper).opacity);
+          const layerOpacity = includeHiddenLayer
+            ? 1
+            : getNumericOpacity(window.getComputedStyle(wrapper).opacity);
           if (layerOpacity <= 0.001) return false;
           if (!captureCanvasRef.current) {
             captureCanvasRef.current = wrapper.ownerDocument.createElement('canvas');
@@ -840,6 +844,11 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const { colorScheme } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
     const snapshotCanvasRef = useRef<HTMLCanvasElement>(null);
+    const transitionCanvasRef = useRef<HTMLCanvasElement>(null);
+    const transitionFromCanvasRef = useRef<HTMLCanvasElement>();
+    const transitionToCanvasRef = useRef<HTMLCanvasElement>();
+    const transitionRendererRef = useRef<RazorSenseAuthoredTransitionRenderer>();
+    const isTransitionPausedRef = useRef(false);
     const resourceGenerationRef = useRef(0);
     const nextLayerIdRef = useRef(2);
     const initialLayerRef = useRef<AuthoredLayer>({
@@ -866,7 +875,9 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     const [hasSnapshot, setHasSnapshot] = useState(false);
     const hasSnapshotRef = useRef(hasSnapshot);
     const [snapshotOpacity, setSnapshotOpacity] = useState(0);
+    const snapshotOpacityRef = useRef(snapshotOpacity);
     const [isSnapshotTransitionEnabled, setIsSnapshotTransitionEnabled] = useState(false);
+    const [isMaterialTransitioning, setIsMaterialTransitioning] = useState(false);
     const [displayedMode, setDisplayedMode] = useState(mode);
     const [displayedColorScheme, setDisplayedColorScheme] = useState(colorScheme);
     const layerHandlesRef = useRef(new Map<number, AuthoredLayerHandle>());
@@ -902,6 +913,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
     sourcesByLayerIdRef.current = sourcesByLayerId;
     isMediaRetainedRef.current = isMediaRetained;
     hasSnapshotRef.current = hasSnapshot;
+    snapshotOpacityRef.current = snapshotOpacity;
     onLoadRef.current = onLoad;
     onErrorRef.current = onError;
     onFrameReadyRef.current = onFrameReady;
@@ -924,6 +936,19 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       setIsMediaRetainedState(nextValue);
     }, []);
 
+    const releaseTransitionFrames = useCallback((): void => {
+      const fromCanvas = transitionFromCanvasRef.current;
+      const toCanvas = transitionToCanvasRef.current;
+      if (fromCanvas) {
+        fromCanvas.width = 1;
+        fromCanvas.height = 1;
+      }
+      if (toCanvas) {
+        toCanvas.width = 1;
+        toCanvas.height = 1;
+      }
+    }, []);
+
     const clearTransitionWork = useCallback((): void => {
       if (transitionTimerRef.current !== undefined) {
         window.clearTimeout(transitionTimerRef.current);
@@ -933,7 +958,12 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         window.cancelAnimationFrame(transitionRafRef.current);
         transitionRafRef.current = undefined;
       }
-    }, []);
+      transitionRendererRef.current?.dispose();
+      transitionRendererRef.current = undefined;
+      if (transitionCanvasRef.current) transitionCanvasRef.current.style.opacity = '0';
+      releaseTransitionFrames();
+      if (isMountedRef.current) setIsMaterialTransitioning(false);
+    }, [releaseTransitionFrames]);
 
     const releaseLayersExcept = useCallback((retainedLayerIds: ReadonlySet<number>): void => {
       layerHandlesRef.current.forEach((handle, layerId) => {
@@ -943,18 +973,19 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
 
     const captureCurrentFrame = useCallback((shouldShowSnapshot: boolean): boolean => {
       let didCapture = false;
-      layersRef.current.forEach((layer) => {
-        const handle = layerHandlesRef.current.get(layer.id);
-        if (!handle) return;
-        const capturedLayer = handle.capture(
-          snapshotCanvasRef.current,
-          containerRef.current,
-          !didCapture,
-        );
-        if (capturedLayer) {
-          didCapture = true;
-        }
-      });
+      const snapshotCanvas = snapshotCanvasRef.current;
+      const renderer = transitionRendererRef.current;
+      if (snapshotCanvas && renderer?.isPresenting()) {
+        didCapture = renderer.copyFrameTo(snapshotCanvas);
+      }
+      if (!didCapture) {
+        layersRef.current.forEach((layer) => {
+          const handle = layerHandlesRef.current.get(layer.id);
+          if (!handle) return;
+          const capturedLayer = handle.capture(snapshotCanvas, containerRef.current, !didCapture);
+          if (capturedLayer) didCapture = true;
+        });
+      }
 
       if (!didCapture) return false;
       if (!hasSnapshotRef.current) {
@@ -963,6 +994,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       }
       if (shouldShowSnapshot) {
         setIsSnapshotTransitionEnabled(false);
+        snapshotOpacityRef.current = 1;
         setSnapshotOpacity(1);
       }
       return true;
@@ -1012,6 +1044,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       requestedProgramRef.current = { assetsPath, startTime, endTime };
       transitionGenerationRef.current += 1;
       readinessGenerationRef.current += 1;
+      if (transitionRendererRef.current?.isPresenting()) captureCurrentFrame(true);
       clearTransitionWork();
 
       const incomingLayer = createLayer(
@@ -1091,8 +1124,8 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
 
       if (runtimeState === 'suspended') {
         transitionGenerationRef.current += 1;
-        clearTransitionWork();
         if (isMediaRetainedRef.current) captureCurrentFrame(true);
+        clearTransitionWork();
         return;
       }
 
@@ -1118,6 +1151,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         setMediaRetained(false);
       } else if (hasSnapshotRef.current) {
         setIsSnapshotTransitionEnabled(false);
+        snapshotOpacityRef.current = 1;
         setSnapshotOpacity(1);
       }
     }, [
@@ -1216,7 +1250,132 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
         setDisplayedMode(incomingLayer.mode);
         setDisplayedColorScheme(incomingLayer.colorScheme);
 
+        const notifyReady = (): void => {
+          if (!frameReadyNotifiedLayerIdsRef.current.has(layerId)) {
+            frameReadyNotifiedLayerIdsRef.current.add(layerId);
+            onFrameReadyRef.current?.();
+            onPresentationReadyRef.current?.(incomingLayer.mode);
+          }
+          if (!hasLoadedRef.current) {
+            hasLoadedRef.current = true;
+            onLoadRef.current?.();
+          }
+        };
+
         const showExactFrameImmediately = Boolean(onFrameReadyRef.current);
+        const outgoingLayer = outgoingLayers[outgoingLayers.length - 1];
+        const transitionCanvas = transitionCanvasRef.current;
+        const outgoingHandle = outgoingLayer
+          ? layerHandlesRef.current.get(outgoingLayer.id)
+          : undefined;
+        const incomingHandle = layerHandlesRef.current.get(layerId);
+        if (
+          !showExactFrameImmediately &&
+          durationMs > 0 &&
+          outgoingLayer &&
+          transitionCanvas &&
+          incomingHandle
+        ) {
+          const fromCanvas =
+            transitionFromCanvasRef.current ??
+            (transitionFromCanvasRef.current = document.createElement('canvas'));
+          const toCanvas =
+            transitionToCanvasRef.current ??
+            (transitionToCanvasRef.current = document.createElement('canvas'));
+          let capturedOutgoing = false;
+          let capturedOutgoingFromSnapshot = false;
+          const snapshotCanvas = snapshotCanvasRef.current;
+          if (snapshotCanvas && snapshotOpacityRef.current > 0.001 && snapshotCanvas.width > 0) {
+            fromCanvas.width = snapshotCanvas.width;
+            fromCanvas.height = snapshotCanvas.height;
+            const context = fromCanvas.getContext('2d');
+            if (context) {
+              context.clearRect(0, 0, fromCanvas.width, fromCanvas.height);
+              context.drawImage(snapshotCanvas, 0, 0);
+              capturedOutgoing = true;
+              capturedOutgoingFromSnapshot = true;
+            }
+          }
+          if (!capturedOutgoing && outgoingHandle) {
+            capturedOutgoing = outgoingHandle.capture(fromCanvas, containerRef.current, true);
+          }
+          const capturedIncoming = incomingHandle.capture(
+            toCanvas,
+            containerRef.current,
+            true,
+            true,
+          );
+          if (capturedOutgoing && capturedIncoming) {
+            const renderer = new RazorSenseAuthoredTransitionRenderer(transitionCanvas);
+            transitionRendererRef.current = renderer;
+            const started = renderer.start({
+              from: fromCanvas,
+              to: toCanvas,
+              fromMode: outgoingLayer.mode,
+              toMode: incomingLayer.mode,
+              durationMs,
+              isPaused: () => isTransitionPausedRef.current,
+              onBeforeFrame: () => {
+                if (!capturedOutgoingFromSnapshot) {
+                  outgoingHandle?.capture(fromCanvas, containerRef.current, true, true);
+                }
+                incomingHandle.capture(toCanvas, containerRef.current, true, true);
+              },
+              onComplete: () => {
+                if (
+                  generation !== transitionGenerationRef.current ||
+                  requestedLayerIdRef.current !== layerId ||
+                  !canPrepareRef.current
+                ) {
+                  return;
+                }
+                const settledLayer = layersRef.current.find((layer) => layer.id === layerId);
+                if (!settledLayer) return;
+                replaceLayers([{ ...settledLayer, opacity: 1, status: 'visible' }]);
+                transitionRafRef.current = window.requestAnimationFrame(() => {
+                  transitionRafRef.current = undefined;
+                  if (
+                    generation !== transitionGenerationRef.current ||
+                    requestedLayerIdRef.current !== layerId ||
+                    !canPrepareRef.current
+                  ) {
+                    return;
+                  }
+                  transitionCanvas.style.opacity = '0';
+                  renderer.dispose();
+                  if (transitionRendererRef.current === renderer) {
+                    transitionRendererRef.current = undefined;
+                  }
+                  releaseTransitionFrames();
+                  setIsMaterialTransitioning(false);
+                  const retainedIds = new Set([layerId]);
+                  releaseLayersExcept(retainedIds);
+                  const source = sourcesByLayerIdRef.current[layerId];
+                  replaceSources(source ? { [layerId]: source } : {});
+                });
+              },
+            });
+            if (started) {
+              transitionCanvas.style.opacity = '1';
+              setIsMaterialTransitioning(true);
+              replaceLayers(
+                currentLayers.map((layer) =>
+                  layer.id === layerId
+                    ? { ...layer, opacity: 0, status: 'visible' }
+                    : { ...layer, opacity: 0, status: 'outgoing' },
+                ),
+              );
+              setIsSnapshotTransitionEnabled(false);
+              snapshotOpacityRef.current = 0;
+              setSnapshotOpacity(0);
+              notifyReady();
+              return;
+            }
+            transitionRendererRef.current = undefined;
+            renderer.dispose();
+          }
+        }
+
         if (showExactFrameImmediately) {
           replaceLayers(
             currentLayers.map((layer) =>
@@ -1226,6 +1385,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
             ),
           );
           setIsSnapshotTransitionEnabled(false);
+          snapshotOpacityRef.current = 0;
           setSnapshotOpacity(0);
         } else {
           transitionRafRef.current = window.requestAnimationFrame(() => {
@@ -1245,19 +1405,12 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
               ),
             );
             setIsSnapshotTransitionEnabled(true);
+            snapshotOpacityRef.current = 0;
             setSnapshotOpacity(0);
           });
         }
 
-        if (!frameReadyNotifiedLayerIdsRef.current.has(layerId)) {
-          frameReadyNotifiedLayerIdsRef.current.add(layerId);
-          onFrameReadyRef.current?.();
-          onPresentationReadyRef.current?.(incomingLayer.mode);
-        }
-        if (!hasLoadedRef.current) {
-          hasLoadedRef.current = true;
-          onLoadRef.current?.();
-        }
+        notifyReady();
 
         if (outgoingLayers.length === 0) return;
         transitionTimerRef.current = window.setTimeout(() => {
@@ -1279,7 +1432,13 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
           }
         }, durationMs + OUTGOING_LAYER_DISPOSAL_BUFFER_MS);
       },
-      [modeTransitionDuration, releaseLayersExcept, replaceLayers, replaceSources],
+      [
+        modeTransitionDuration,
+        releaseLayersExcept,
+        releaseTransitionFrames,
+        replaceLayers,
+        replaceSources,
+      ],
     );
 
     const handleLayerIteration = useCallback(
@@ -1328,12 +1487,14 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
           setDisplayedColorScheme(outgoing.colorScheme);
           if (capturedComposite || hasSnapshotRef.current) {
             setIsSnapshotTransitionEnabled(false);
+            snapshotOpacityRef.current = 1;
             setSnapshotOpacity(1);
           }
         } else {
           replaceLayers([]);
           if (hasSnapshotRef.current) {
             setIsSnapshotTransitionEnabled(false);
+            snapshotOpacityRef.current = 1;
             setSnapshotOpacity(1);
           }
         }
@@ -1363,6 +1524,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
       viewport: 'desktop',
     });
     const shouldPlay = runtimeState === 'active' && isRuntimeAdmitted && !paused;
+    isTransitionPausedRef.current = !shouldPlay;
     const transitionDurationMs = Math.max(0, modeTransitionDuration * 1000);
 
     return (
@@ -1404,7 +1566,7 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
                   readinessGeneration={readinessGenerationRef.current}
                   shouldPlay={shouldPlay}
                   transitionDurationMs={
-                    onFrameReadyRef.current
+                    isMaterialTransitioning || onFrameReadyRef.current
                       ? 0
                       : layer.id === initialLayerRef.current.id && !hasLoadedRef.current
                       ? FADE_IN_MS
@@ -1419,6 +1581,20 @@ const RazorSenseAuthored = forwardRef<HTMLDivElement, RazorSenseAuthoredProps>(
               );
             })
           : null}
+        <canvas
+          ref={transitionCanvasRef}
+          aria-hidden="true"
+          data-razor-sense-authored-transition="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            opacity: 0,
+            pointerEvents: 'none',
+          }}
+        />
         <canvas
           ref={snapshotCanvasRef}
           aria-hidden="true"

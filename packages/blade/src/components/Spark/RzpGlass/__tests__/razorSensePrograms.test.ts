@@ -271,6 +271,19 @@ describe('RazorSense program foundation', () => {
       { state: 'success' },
       { duration: 'duration.quick' },
     );
+    expect(
+      resolveRazorSenseTransition({ state: 'thinking' }, { state: 'typing' }, 'automatic'),
+    ).toMatchObject({
+      strategy: 'material-morph',
+      duration: 'duration.2xgentle',
+      overlap: 1,
+    });
+    expect(
+      resolveRazorSenseTransition({ state: 'idle' }, { preset: 'compactLoader' }, 'automatic'),
+    ).toMatchObject({
+      strategy: 'material-morph',
+      duration: 'duration.2xgentle',
+    });
     expect(overridden).toMatchObject({
       strategy: registered.strategy,
       easing: registered.easing,
