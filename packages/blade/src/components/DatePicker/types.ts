@@ -82,9 +82,10 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    */
   defaultVisibleMonth?: Date;
   /**
-   * Callback which fires when the rendered month changes via calendar navigation
-   * (next/previous month, year, or decade). Does not fire when the `visibleMonth`
-   * prop is updated externally by the consumer.
+   * Callback which fires when the rendered month changes, either via calendar
+   * navigation (next/previous month, year, or decade) or when a date in a
+   * different month is selected. Does not fire when the `visibleMonth` prop
+   * is updated externally by the consumer.
    */
   onVisibleMonthChange?: (date: Date) => void;
 
