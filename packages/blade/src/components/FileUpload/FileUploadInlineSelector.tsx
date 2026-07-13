@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
 import styled from 'styled-components';
 import type { BladeFile, FileUploadCategoryOption } from './types';

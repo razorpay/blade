@@ -132,8 +132,8 @@ describe('<FileUploadItem category />', () => {
     const trigger = getByRole('button', { name: 'Select category for test.png' });
     await user.click(trigger);
 
-    await waitFor(() => expect(getByRole('listbox')).toBeVisible());
-    const options = getAllByRole('option');
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    const options = getAllByRole('menuitem');
     expect(options).toHaveLength(3);
 
     await user.click(options[1]);
@@ -169,8 +169,8 @@ describe('<FileUploadItem category />', () => {
     const trigger = getByRole('button', { name: 'Select category for test.png' });
     await user.click(trigger);
 
-    await waitFor(() => expect(getByRole('listbox')).toBeVisible());
-    const options = getAllByRole('option');
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    const options = getAllByRole('menuitem');
     await user.click(options[0]);
 
     await waitFor(() => expect(getByText('Invoice')).toBeTruthy());
@@ -193,7 +193,7 @@ describe('<FileUploadItem category />', () => {
       trigger.focus();
       await user.keyboard('{Enter}');
 
-      await waitFor(() => expect(getByRole('listbox')).toBeVisible());
+      await waitFor(() => expect(getByRole('menu')).toBeVisible());
 
       await user.keyboard('{ArrowDown}');
       await user.keyboard('{Enter}');
@@ -221,7 +221,7 @@ describe('<FileUploadItem category />', () => {
       trigger.focus();
       await user.keyboard('{Enter}');
 
-      await waitFor(() => expect(getByRole('listbox')).toBeVisible());
+      await waitFor(() => expect(getByRole('menu')).toBeVisible());
 
       await user.keyboard('{ArrowDown}');
       await user.keyboard('{ArrowDown}');
@@ -250,11 +250,11 @@ describe('<FileUploadItem category />', () => {
       trigger.focus();
       await user.keyboard('{Enter}');
 
-      await waitFor(() => expect(getByRole('listbox')).toBeVisible());
+      await waitFor(() => expect(getByRole('menu')).toBeVisible());
 
       await user.keyboard('{Escape}');
 
-      await waitFor(() => expect(queryByRole('listbox')).toBeNull());
+      await waitFor(() => expect(queryByRole('menu')).toBeNull());
     });
   });
 });
