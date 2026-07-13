@@ -92,6 +92,7 @@
   padding-bottom: var(--spacing-1);
   padding-left: var(--spacing-3);
   padding-right: var(--spacing-3);
+  /* 4px (xsmall) — aligns with the token system instead of a hardcoded value */
   border-radius: var(--border-radius-xsmall);
 }
 
@@ -161,6 +162,7 @@
 }
 
 .indicatorRadiusSmall {
+  /* 4px (xsmall) — aligns with the token system instead of a hardcoded value */
   border-radius: var(--border-radius-xsmall);
 }
 
