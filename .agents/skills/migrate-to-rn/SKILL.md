@@ -37,7 +37,9 @@ Assumes Blade dev already works (`yarn install`, Xcode, `pod install`, `yarn sta
 **Before Step 0**, verify these skill-only tools are on PATH:
 
 ```bash
-command -v jq && command -v agent-device && command -v agent-browser
+command -v jq || echo 'MISSING: jq'
+command -v agent-device || echo 'MISSING: agent-device'
+command -v agent-browser || echo 'MISSING: agent-browser'
 ```
 
 | Tool | Why |
@@ -58,7 +60,7 @@ User provides one or more component names (e.g., "add native support to Drawer" 
 
 - One PR per component on branch `feat/blade-rn/{Name}`
 - Artifacts in `.claude/worktrees/{Name}/.claude/artifacts/{Name}/`
-- Batch status in `.claude/artifacts/rn-batch-status.md` (main checkout)
+- Batch status in `.claude/artifacts/batch-status.md` (main checkout)
 
 ---
 
@@ -419,7 +421,7 @@ EOF
 
 ## Step 7: Update Batch Status
 
-Write/update `.claude/artifacts/rn-batch-status.md` in the main checkout:
+Write/update `.claude/artifacts/batch-status.md` in the main checkout:
 
 ```markdown
 # RN Migration Batch Status

@@ -97,7 +97,7 @@ for (const file of allFiles) {
 
   // Case 3: identifierStartRegex + identifierContinueRegex (jsdoc-type-pratt-parser, bundled into chunks)
   content = content.replace(
-    /(?:let|var|const)\s+identifierStartRegex\s*=\s*new RegExp\([^;]+identifierContinueRegex\s*=\s*new RegExp\([^;]+;/g,
+    /(?:let|var|const)\s+identifierStartRegex\s*=\s*new RegExp\([^;\n]{0,200}identifierContinueRegex\s*=\s*new RegExp\([^;\n]{0,200};/g,
     'var identifierStartRegex = /[$_a-zA-Z]/, identifierContinueRegex = /[$_a-zA-Z0-9]/;',
   );
   content = content.replace(
