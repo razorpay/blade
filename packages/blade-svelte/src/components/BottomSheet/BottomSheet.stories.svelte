@@ -54,6 +54,7 @@
   import ActionListItem from '../ActionList/ActionListItem.svelte';
   import ActionListSection from '../ActionList/ActionListSection.svelte';
   import OTPInput from '../Input/OTPInput/OTPInput.svelte';
+  import TextInput from '../Input/TextInput/TextInput.svelte';
   import Checkbox from '../Checkbox/Checkbox.svelte';
   import RadioGroup from '../Radio/RadioGroup.svelte';
   import Radio from '../Radio/Radio.svelte';
@@ -88,7 +89,9 @@
   let productSimError = $state<string | undefined>();
   let isNonDismissibleOpen = $state(false);
 
-  let initialFocusInputEl: HTMLInputElement | null = $state(null);
+  let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
+    $state();
+  const initialFocusInputEl = $derived(searchInput?.getInput() ?? null);
 
   function toggleInArray(list: string[], value: string): string[] {
     return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
@@ -596,7 +599,7 @@
   {/snippet}
 </Story>
 
-<!-- Story 8: Initial Focus — focuses an input via initialFocusElement. -->
+<!-- Story 8: Initial Focus — focuses an input via initialFocusRef. -->
 <Story name="Initial Focus">
   {#snippet template()}
     <div>
@@ -610,19 +613,15 @@
           <BottomSheetHeader title="Users" />
           <BottomSheetBody>
             {#snippet children()}
-              <label style="display: block; margin-bottom: var(--spacing-3);">
-                Search Users
-                <input
-                  bind:this={initialFocusInputEl}
-                  type="text"
-                  placeholder="Type a name…"
-                  style="width: 100%; padding: var(--spacing-3); border: 1px solid var(--surface-border-gray-muted); border-radius: var(--border-radius-medium); margin-top: var(--spacing-2);"
-                />
-              </label>
+              <TextInput
+                bind:this={searchInput}
+                label="Search Users"
+                placeholder="Type a name…"
+              />
               <Button>Search Users</Button>
               <Text marginTop="spacing.5">
                 By default the initial focus is set to the close button, but you can modify it by passing the
-                `initialFocusElement` prop
+                `initialFocusRef` prop
               </Text>
               <ul>
                 <li>Anurag Hazra</li>
