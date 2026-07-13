@@ -1,5 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
+import { waitFor } from '@testing-library/react';
 import { FileUploadItem } from '../FileUploadItem';
 import type { BladeFile } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -47,7 +48,7 @@ describe('<FileUploadItem fileCategory />', () => {
 
   it('should show selected option title as the trigger label', () => {
     const onFileCategoryChange = jest.fn();
-    const { getByText } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <FileUploadItem
         file={successFile}
         fileCategoryOptions={categoryOptions}
@@ -56,7 +57,8 @@ describe('<FileUploadItem fileCategory />', () => {
       />,
     );
 
-    expect(getByText('Receipt')).toBeTruthy();
+    const trigger = getByRole('button', { name: 'Select category for test.png' });
+    expect(trigger.textContent).toContain('Receipt');
   });
 
   it('should NOT render the category selector when fileCategoryOptions is an empty array', () => {
@@ -129,6 +131,7 @@ describe('<FileUploadItem fileCategory />', () => {
     const trigger = getByRole('button', { name: 'Select category for test.png' });
     await user.click(trigger);
 
+    await waitFor(() => expect(getByRole('listbox')).toBeVisible());
     const options = getAllByRole('option');
     expect(options).toHaveLength(3);
 
@@ -160,6 +163,7 @@ describe('<FileUploadItem fileCategory />', () => {
     const trigger = getByRole('button', { name: 'Select category for test.png' });
     await user.click(trigger);
 
+    await waitFor(() => expect(getByRole('listbox')).toBeVisible());
     const options = getAllByRole('option');
     await user.click(options[0]);
 

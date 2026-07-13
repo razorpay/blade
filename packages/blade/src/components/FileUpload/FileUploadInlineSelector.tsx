@@ -91,7 +91,7 @@ const _InlineSelectorTrigger = ({
       aria-controls={`${dropdownBaseId}-actionlist`}
       aria-activedescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
       onClick={() => onTriggerClick()}
-      onKeyDown={(e) => onTriggerKeydown?.({ event: e })}
+      onKeyDown={(e) => onTriggerKeydown?.({ event: e as any })}
     >
       <BaseBox overflow="hidden" maxWidth="100%" marginX="spacing.2">
         <Text
