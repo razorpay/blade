@@ -118,7 +118,7 @@ This builds, installs, and launches the app on the first simulator (slot 1's dev
 
 Wait for the build to complete and the app to appear:
 ```bash
-npx agent-device wait text "COMPONENTS" 60000 --session rn-{Name1}
+agent-device wait text "COMPONENTS" 60000 --session rn-{Name1}
 ```
 
 For slots 2..N, the app is already installed on the first simulator. To get it on additional simulators, install the built `.app` artifact:
@@ -128,16 +128,16 @@ For slots 2..N, the app is already installed on the first simulator. To get it o
 APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -name "blade.app" -path "*/Build/Products/Debug-iphonesimulator/*" -maxdepth 5 2>/dev/null | head -1)
 
 # For each additional slot i (2..N):
-npx agent-device open org.reactjs.native.example.blade \
+agent-device open org.reactjs.native.example.blade \
   --platform ios --device "{iOSDevice_i}" \
   --session rn-{Name_i} --metro-port {MetroPort_i} --relaunch
 ```
 
 If the app isn't found on a secondary simulator, install it explicitly:
 ```bash
-npx agent-device install org.reactjs.native.example.blade "$APP_PATH" \
+agent-device install org.reactjs.native.example.blade "$APP_PATH" \
   --platform ios --device "{iOSDevice_i}"
-npx agent-device open org.reactjs.native.example.blade \
+agent-device open org.reactjs.native.example.blade \
   --platform ios --device "{iOSDevice_i}" \
   --session rn-{Name_i} --metro-port {MetroPort_i} --relaunch
 ```
@@ -297,8 +297,9 @@ Agent(
     - Start Metro on port {MetroPort} (not 8081 unless that is your assigned port).
     - Use --session {SessionName} on ALL agent-device commands.
     - The app is already installed on your simulator by the orchestrator.
-    - Use: npx agent-device open org.reactjs.native.example.blade --platform ios --device \"{iOSDevice}\" --session {SessionName} --metro-port {MetroPort} --relaunch
-    - Do NOT run 'npx agent-device boot' — the open command boots the simulator.
+    - Use: agent-device open org.reactjs.native.example.blade --platform ios --device \"{iOSDevice}\" --session {SessionName} --metro-port {MetroPort} --relaunch
+    - Do NOT run 'agent-device boot' — the open command boots the simulator.
+    - Call agent-device / agent-browser directly (they are installed globally); do NOT prefix with 'npx' (npx re-resolves the package each call and can cause the app to blank/refresh).
   "
 )
 ```

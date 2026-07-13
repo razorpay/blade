@@ -24,7 +24,7 @@ Summarise the *intent* of the whole command, not the syntax. For example:
 
 - A pipeline that grabs the element ref for "Toggle Drawer" from the accessibility tree and taps it → `▶ [Step 4c] Finding the Toggle Drawer button on screen and tapping it`
 - A `grep` over `.native.tsx` files checking for unresolved imports → `▶ [Step 3] Scanning native files for any imports that can't be resolved`
-- `npx agent-device snapshot` after a tap → `▶ [Step 4c] Reading the screen to check if the drawer content appeared`
+- `agent-device snapshot` after a tap → `▶ [Step 4c] Reading the screen to check if the drawer content appeared`
 - `curl …/status` → `▶ [Step 0] Checking if Metro bundler is already running`
 - `yarn test:react-native {Name} -u` → `▶ [Step 2] Updating snapshots to match the new output`
 - Edit a file → `▶ [Step 6] Fixing <filename>: <one-line description of the change>`
@@ -66,6 +66,8 @@ Write to absolute paths under `{Worktree}`:
 
 Blade Storybook is a dev build — it requires Metro bundler to serve the JS bundle. In a parallel batch, each verify agent has its own dedicated Metro port, simulator device, and session. **Do NOT use hardcoded port 8081 or a generic `boot` command** — always use `{MetroPort}`, `{iOSDevice}`, and `{SessionName}` from your prompt.
 
+> **Tooling note:** `agent-device` and `agent-browser` are installed **globally** (e.g. `/opt/homebrew/bin`). Call them **directly** — never via `npx`. They are not in the worktree's `node_modules`, so `npx agent-device`/`npx agent-browser` adds npm resolution overhead on every call and can churn/restart the daemon between commands, which surfaces as a blank or continuously-refreshing screen. A single persistent daemon per session is what keeps the simulator/browser state stable. Verify availability once with `which agent-device` / `which agent-browser`.
+
 1. **Check if Metro is already running on your assigned port:**
    ```bash
    curl -s http://localhost:{MetroPort}/status 2>/dev/null && echo "METRO_UP" || echo "METRO_DOWN"
@@ -84,11 +86,11 @@ Blade Storybook is a dev build — it requires Metro bundler to serve the JS bun
 
 3. **Open the app on your assigned simulator with your Metro port:**
    ```bash
-   npx agent-device open org.reactjs.native.example.blade \
+   agent-device open org.reactjs.native.example.blade \
      --platform ios --device "{iOSDevice}" \
      --session {SessionName} --metro-port {MetroPort} --relaunch
    ```
-   This command boots the simulator if needed, launches the app, and writes per-simulator debug server settings so the app connects to YOUR Metro instance (not another slot's). **Do NOT use `npx agent-device boot`** — `open --device` handles booting.
+   This command boots the simulator if needed, launches the app, and writes per-simulator debug server settings so the app connects to YOUR Metro instance (not another slot's). **Do NOT use `agent-device boot`** — `open --device` handles booting.
 
 4. **If the app is not installed** (open reports "app not found"):
    Build and install from this worktree:
@@ -106,7 +108,7 @@ Blade Storybook is a dev build — it requires Metro bundler to serve the JS bun
 
 5. **Wait for app to be ready:**
    ```bash
-   npx agent-device wait text "COMPONENTS" 30000 --session {SessionName}
+   agent-device wait text "COMPONENTS" 30000 --session {SessionName}
    ```
 
 ---
@@ -213,42 +215,54 @@ The RN Storybook uses a bottom-sheet navigator. Navigation pattern:
 > sheet (story tree) overlaying the component — not the component itself. You MUST
 > explicitly dismiss the sheet and confirm it is gone BEFORE every screenshot.
 
+> ⚠️ **Tap by `@ref`, not coordinates.** Get the element ref from `snapshot` and `agent-device
+> click @e<NN>` — `click text="…"` is flaky for leaf stories, and taps take DEVICE POINTS (not
+> screenshot pixels), so never eyeball pixel coords. If a point tap is unavoidable, use the
+> element's frame/center from `snapshot` (already in points).
+
+> ⚠️ **Dismissing error/warning toasts:** the whole toast is ONE node (no separate ref for its X);
+> tapping its ref hits the center and EXPANDS it. Close it by tapping the X at the toast's right
+> edge via coordinate (device points), not by ref.
+
+> ⚠️ **Scroll with `swipe`, NOT `agent-device scroll`** (scroll is unreliable here; swipe works).
+> Scroll down = swipe finger up: `agent-device swipe 235 700 235 300 300` (reverse to scroll up).
+> Swipe inside the scroll area only — never over a sheet's top handle (triggers drag-to-dismiss).
+
 ```bash
 # 1. Screenshot current state
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/app-home.png --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/app-home.png --session {SessionName}
 
 # 2. Open navigator — tap the story path text in the bottom bar
 #    Use snapshot to find the current path text
-npx agent-device snapshot --session {SessionName}
+agent-device snapshot --session {SessionName}
 #    Then click it (it shows as "Components/..." in the bottom bar)
-npx agent-device click text="Components/" --session {SessionName}
+agent-device click text="Components/" --session {SessionName}
 
-# 3. The bottom sheet opens showing the story tree.
-#    Scroll within the bottom sheet if needed, then tap the component name.
-#    Note: scrolling on MAIN content area dismisses the sheet — scroll within the sheet only.
-npx agent-device click text="{Name}" --session {SessionName}
+# 3. Story tree opens. If component isn't visible, SWIPE the list (not `scroll`), then tap it.
+#    e.g. agent-device swipe 235 700 235 300 300 --session {SessionName}
+agent-device click text="{Name}" --session {SessionName}
 
 # 4. DISMISS the navigator bottom sheet before screenshotting.
 #    The sheet often stays open on top of the component after selection.
 #    NOTE: `click <x> <y>` is how you tap a point (there is no `tap` command).
-npx agent-device wait 500 --session {SessionName}
+agent-device wait 500 --session {SessionName}
 #    Preferred: navigate back / dismiss the RN overlay.
-npx agent-device back --session {SessionName}
-npx agent-device wait 500 --session {SessionName}
+agent-device back --session {SessionName}
+agent-device wait 500 --session {SessionName}
 #    Fallback A: tap the dimmed backdrop ABOVE the sheet (device points; top-center).
-npx agent-device click 200 60 --session {SessionName}
-npx agent-device wait 500 --session {SessionName}
+agent-device click 200 60 --session {SessionName}
+agent-device wait 500 --session {SessionName}
 #    Fallback B: swipe the sheet down by its handle to dismiss it.
-npx agent-device swipe 200 400 200 850 300 --session {SessionName}
-npx agent-device wait 500 --session {SessionName}
+agent-device swipe 200 400 200 850 300 --session {SessionName}
+agent-device wait 500 --session {SessionName}
 #    VERIFY the navigator is closed: the story-tree entries must NOT appear in the snapshot.
 #    If the story list / other component names are still present, the sheet is still open —
 #    repeat back / backdrop-tap / swipe-down until it is dismissed.
-npx agent-device snapshot --session {SessionName}
+agent-device snapshot --session {SessionName}
 
 # 5. Now the component is unobstructed — wait for it to settle and screenshot
-npx agent-device wait 2000 --session {SessionName}
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png --session {SessionName}
+agent-device wait 2000 --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png --session {SessionName}
 ```
 
 > **Rule for ALL subsequent screenshots (4b–4e):** before capturing, confirm no navigator
@@ -258,7 +272,7 @@ npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/nati
 > (e.g. the Drawer/BottomSheet/Modal under test).
 
 **If `click text="{Name}"` fails** (component not in visible list):
-- Try scrolling within the bottom sheet first
+- **Swipe** the list to reveal it (`agent-device swipe 235 700 235 300 300`) — not `agent-device scroll`
 - If still not found, check if the component has a story registered in `.storybook/react-native/storybook.requires.ts`
 
 If the component isn't in Storybook stories:
@@ -269,7 +283,7 @@ If the component isn't in Storybook stories:
 #### 4b: Screenshot Default State
 
 ```bash
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-default.png --session {SessionName}
 ```
 
 Read the screenshot with LLM vision. Check:
@@ -287,10 +301,11 @@ This check is mandatory for components that render rows, groups, lists, tabs, ch
 Capture enough screenshots to inspect every visible layout section:
 
 ```bash
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-viewport-top.png --session {SessionName}
-npx agent-device scroll down --session {SessionName}
-npx agent-device wait 500 --session {SessionName}
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-viewport-scrolled.png --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-viewport-top.png --session {SessionName}
+# Scroll down via SWIPE (not `agent-device scroll`)
+agent-device swipe 235 700 235 300 300 --session {SessionName}
+agent-device wait 500 --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-viewport-scrolled.png --session {SessionName}
 ```
 
 From each screenshot, verify:
@@ -316,27 +331,27 @@ For interactive components:
 
 ```bash
 # Tap a button/pressable
-npx agent-device click text="{ButtonLabel}" --session {SessionName}
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-pressed.png --session {SessionName}
+agent-device click text="{ButtonLabel}" --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-pressed.png --session {SessionName}
 
 # Toggle a switch
-npx agent-device click text="{SwitchLabel}" --session {SessionName}
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-toggled.png --session {SessionName}
+agent-device click text="{SwitchLabel}" --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-toggled.png --session {SessionName}
 
 # Type in an input
-npx agent-device click text="{Placeholder}" --session {SessionName}
-npx agent-device type "Hello World" --session {SessionName}
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-typed.png --session {SessionName}
+agent-device click text="{Placeholder}" --session {SessionName}
+agent-device type "Hello World" --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-typed.png --session {SessionName}
 
-# Scroll to see more
-npx agent-device scroll down --session {SessionName}
-npx agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-scrolled.png --session {SessionName}
+# Scroll to see more via SWIPE (not `agent-device scroll`)
+agent-device swipe 235 700 235 300 300 --session {SessionName}
+agent-device screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/native-scrolled.png --session {SessionName}
 ```
 
 #### 4d: Accessibility Tree Check
 
 ```bash
-npx agent-device snapshot --session {SessionName}
+agent-device snapshot --session {SessionName}
 ```
 
 From the accessibility tree output, verify:
@@ -362,26 +377,27 @@ Convert the component name to the story ID format:
 
 ```bash
 # 1. Close any existing browser session
-npx agent-browser close
+agent-browser close
 
 # 2. Open with mobile viewport (iPhone 14 Pro dimensions: 393x852)
-npx agent-browser open "https://blade.razorpay.com/iframe.html?id=components-{name}--default&viewMode=story"
-npx agent-browser set viewport 393 852
+# Use --headed so the browser window is visible while the flow runs (not headless).
+agent-browser open "https://blade.razorpay.com/iframe.html?id=components-{name}--default&viewMode=story" --headed
+agent-browser set viewport 393 852
 
 # 3. Wait for component to render
-npx agent-browser wait 2000
+agent-browser wait 2000
 
 # 4. Take screenshot
-npx agent-browser screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/web-mobile-default.png
+agent-browser screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/web-mobile-default.png
 
 # 5. If component has interactive states, test them too
-npx agent-browser snapshot -i
+agent-browser snapshot -i
 # Use refs from snapshot to interact:
-# npx agent-browser click @e1
-# npx agent-browser screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/web-mobile-pressed.png
+# agent-browser click @e1
+# agent-browser screenshot {Worktree}/.claude/artifacts/{Name}/screenshots/web-mobile-pressed.png
 
 # 6. Close browser
-npx agent-browser close
+agent-browser close
 ```
 
 **Fallback — local Storybook (if production URL fails):**
@@ -520,7 +536,7 @@ iteration += 1
 - **NEVER `git push`, create a PR, or run any other remote-writing git/gh command.** Your job ends at the verification report — publishing is the orchestrator's job and requires explicit human approval at the Final Gate.
 - **ALWAYS use `--session {SessionName}`** on every `agent-device` command. This ensures your commands target your dedicated simulator and don't interfere with other verify agents running in parallel.
 - **ALWAYS start Metro on `{MetroPort}`**, not on a hardcoded port. Use `react-native start --port {MetroPort}`.
-- **NEVER use `npx agent-device boot`** — use `npx agent-device open ... --device "{iOSDevice}"` which boots the simulator implicitly.
+- **NEVER use `agent-device boot`** — use `agent-device open ... --device "{iOSDevice}"` which boots the simulator implicitly.
 - iOS is primary platform for visual verification; Android is bonus
 - Do NOT kill simulator/app when done — leave running for manual verification
 - Keep verification report under 100 lines per iteration (prune old error blocks, keep history)
