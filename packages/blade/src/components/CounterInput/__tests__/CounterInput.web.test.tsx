@@ -226,6 +226,19 @@ describe('<CounterInput />', () => {
     });
   });
 
+  it.each(['xsmall', 'large'] as const)(
+    'should derive the minimum width from %s padding tokens',
+    (size) => {
+      const { container } = renderWithTheme(
+        <CounterInput label="Quantity" value={100} size={size} />,
+      );
+
+      expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+        minWidth: getCounterInputFieldWidth({ digitCount: 3, size }),
+      });
+    },
+  );
+
   it('should account for minus sign width when value is negative', () => {
     // -9 has 1 digit + minus sign → digitCount should be 2 (max) + 1 = 3
     const { container: container1 } = renderWithTheme(
