@@ -1,3 +1,4 @@
+/** Keep in sync with packages/blade/src/utils/cardTicketOutline.ts */
 /** Corner radius — matches `--border-radius-medium`. */
 export const CARD_TICKET_CORNER_RADIUS = 12;
 

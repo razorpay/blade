@@ -1,3 +1,8 @@
+/**
+ * Keep in sync with packages/blade-core/src/utils/cardTicketOutline.ts
+ * (blade does not depend on blade-core yet).
+ * TODO: import from @razorpay/blade-core  
+*/
 /** Corner radius — matches `--border-radius-medium`. */
 export const CARD_TICKET_CORNER_RADIUS = 12;
 
