@@ -256,9 +256,8 @@
   border-radius: var(--border-radius-medium);
 }
 
-/* 6px for small filled horizontal — deliberate: between xsmall(4px) and small(8px) for visual proportion, mirrors SegmentedControl item radius */
 .tabRadiusFilledHorizSmall {
-  border-radius: 6px;
+  border-radius: var(--border-radius-xsmall);
 }
 
 /* Background: default transparent */
@@ -441,9 +440,8 @@
   border-radius: var(--border-radius-medium);
 }
 
-/* 6px for small — deliberate: between xsmall(4px) and small(8px) for visual proportion, mirrors SegmentedControl indicator radius */
 .indicatorRadiusFilledHorizSmall {
-  border-radius: 6px;
+  border-radius: var(--border-radius-xsmall);
 }
 
 /* ========== TAB PANEL ========== */
