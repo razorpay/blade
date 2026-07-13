@@ -149,7 +149,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       const props = child.props as ChartAreaProps;
       slots.areas.push({
         dataKey: props.dataKey as string,
-        name: props.name as string | undefined,
+        name: props.name,
         color: props.color,
         stackId: props.stackId != null ? String(props.stackId) : '1',
         type: props.type ?? 'monotone',
@@ -200,7 +200,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       } else if (props.x !== undefined && props.x !== null) {
         slots.referenceLines.push({
           orientation: 'vertical',
-          value: props.x as number | string,
+          value: props.x,
           label: typeof props.label === 'string' ? props.label : undefined,
         });
       }
@@ -505,9 +505,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     slots.legend.onSelectedDataKeysChange?.({ dataKey, selectedKeysArray: next });
   };
 
-  const visibleAreas = allAreas.filter(
-    (area) => !area.hide && selectedKeys.includes(area.dataKey),
-  );
+  const visibleAreas = allAreas.filter((area) => !area.hide && selectedKeys.includes(area.dataKey));
 
   const secondaryLabelMap = useMemo(() => {
     if (!slots.xSecondaryDataKey || !data?.length) return undefined;
@@ -619,7 +617,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         // areas stacked above it (nulls contribute 0).
         data.forEach((row, i) => {
           const raw = row[area.dataKey];
-          const value = raw === null || raw === undefined || !isNumber(Number(raw)) ? 0 : Number(raw);
+          const value =
+            raw === null || raw === undefined || !isNumber(Number(raw)) ? 0 : Number(raw);
           runningBase[i] += value;
         });
 
@@ -749,7 +748,15 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       }
       return { key: area.dataKey, color: swatchColor, displayValue, label };
     });
-  }, [activeRow, visibleAreas, dataColorMapping, theme.colors, tickColor, slots.tooltipFormatter, activeIndex]);
+  }, [
+    activeRow,
+    visibleAreas,
+    dataColorMapping,
+    theme.colors,
+    tickColor,
+    slots.tooltipFormatter,
+    activeIndex,
+  ]);
 
   const legendAreas = allAreas.filter((area) => area.showLegend);
 
@@ -810,13 +817,18 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                 {areaGeometries.map(({ area, gradientId }) => {
                   const mappingEntry = dataColorMapping[area.dataKey];
                   const gradientToken = getHighestColorInRange({
-                    colorToken: mappingEntry?.colorToken ?? 'data.background.categorical.blue.moderate',
+                    colorToken:
+                      mappingEntry?.colorToken ?? 'data.background.categorical.blue.moderate',
                     followIntensityMapping: true,
                   });
                   const gradientColor = getIn(theme.colors, gradientToken);
                   return (
                     <LinearGradient key={gradientId} id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                      <Stop offset="5%" stopColor={gradientColor} stopOpacity={isDarkMode ? 0.28 : 1} />
+                      <Stop
+                        offset="5%"
+                        stopColor={gradientColor}
+                        stopOpacity={isDarkMode ? 0.28 : 1}
+                      />
                       <Stop
                         offset="95%"
                         stopColor={gradientColor}
@@ -902,9 +914,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                 </G>
 
                 {slots.referenceLines.map((line, idx) => {
-                  const chipWidth = line.label
-                    ? Math.max(40, line.label.length * 6 + 16)
-                    : 0;
+                  const chipWidth = line.label ? Math.max(40, line.label.length * 6 + 16) : 0;
                   const chipHeight = 20;
                   if (line.orientation === 'horizontal') {
                     const value = Number(line.value);
@@ -1029,8 +1039,12 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                     {data.map((row, i) => {
                       if (i % xLabelStep !== 0) return null;
                       const cx = xAt(i);
-                      const rawLabel = slots.xDataKey ? String(row[slots.xDataKey] ?? '') : String(i);
-                      const label = slots.xTickFormatter ? slots.xTickFormatter(rawLabel, i) : rawLabel;
+                      const rawLabel = slots.xDataKey
+                        ? String(row[slots.xDataKey] ?? '')
+                        : String(i);
+                      const label = slots.xTickFormatter
+                        ? slots.xTickFormatter(rawLabel, i)
+                        : rawLabel;
                       const secondary = secondaryLabelMap?.[i];
                       return (
                         <G key={`xtick-${i}`}>
@@ -1075,7 +1089,10 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
             </Svg>
           ) : null}
 
-          {slots.hasTooltip && activeIndex !== undefined && tooltipRows.length > 0 && size.width > 0 ? (
+          {slots.hasTooltip &&
+          activeIndex !== undefined &&
+          tooltipRows.length > 0 &&
+          size.width > 0 ? (
             <View
               pointerEvents="none"
               style={{
