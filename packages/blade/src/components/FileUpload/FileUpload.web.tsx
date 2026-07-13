@@ -543,9 +543,4 @@ const FileUpload = assignWithoutSideEffects(forwardRef(_FileUpload), {
 });
 
 export { FileUpload };
-export type {
-  BladeFile,
-  BladeFileList,
-  FileUploadCategoryOption,
-  FileUploadProps,
-};
+export type { BladeFile, BladeFileList, FileUploadCategoryOption, FileUploadProps };

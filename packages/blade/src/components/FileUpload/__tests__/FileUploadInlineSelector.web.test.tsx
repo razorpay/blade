@@ -173,7 +173,11 @@ describe('<FileUploadItem category />', () => {
     const options = getAllByRole('menuitem');
     await user.click(options[0]);
 
-    await waitFor(() => expect(getByText('Invoice')).toBeTruthy());
+    await waitFor(() =>
+      expect(getByRole('button', { name: 'Select category for test.png' }).textContent).toContain(
+        'Invoice',
+      ),
+    );
   });
 
   describe('keyboard navigation', () => {
