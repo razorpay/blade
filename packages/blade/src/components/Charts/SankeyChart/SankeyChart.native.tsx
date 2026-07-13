@@ -2,11 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Svg, G, Rect, Path, Text as SvgText, TSpan } from 'react-native-svg';
 import { View, Pressable } from 'react-native';
 import type { LayoutChangeEvent, GestureResponderEvent } from 'react-native';
-import Animated, {
-  useSharedValue,
-  useAnimatedProps,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedProps, withTiming } from 'react-native-reanimated';
 import type { EasingFn } from 'react-native-reanimated';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
@@ -316,11 +312,13 @@ const computeSankeyLayout = ({
     const sourceX = s.x + nodeWidth;
     const targetX = t.x;
     const controlX = (sourceX + targetX) / 2;
-    const d = `M${sourceX},${sourceY + linkWidth / 2} C${controlX},${sourceY + linkWidth / 2} ${controlX},${
-      targetY + linkWidth / 2
-    } ${targetX},${targetY + linkWidth / 2} L${targetX},${targetY - linkWidth / 2} C${controlX},${
+    const d = `M${sourceX},${sourceY + linkWidth / 2} C${controlX},${
+      sourceY + linkWidth / 2
+    } ${controlX},${targetY + linkWidth / 2} ${targetX},${targetY + linkWidth / 2} L${targetX},${
       targetY - linkWidth / 2
-    } ${controlX},${sourceY - linkWidth / 2} ${sourceX},${sourceY - linkWidth / 2} Z`;
+    } C${controlX},${targetY - linkWidth / 2} ${controlX},${sourceY - linkWidth / 2} ${sourceX},${
+      sourceY - linkWidth / 2
+    } Z`;
     return {
       sourceIndex: l.source,
       targetIndex: l.target,
@@ -346,12 +344,7 @@ const HIT_SLOP = 8;
 // (the same bezier used to draw it: controls sit at the horizontal midpoint) and
 // check whether the point falls within half the ribbon thickness of the nearest
 // sample. `slop` widens thin ribbons so they stay tappable.
-const isPointOnRibbon = (
-  px: number,
-  py: number,
-  link: LinkLayout,
-  slop: number,
-): boolean => {
+const isPointOnRibbon = (px: number, py: number, link: LinkLayout, slop: number): boolean => {
   const { sourceX, sourceY, targetX, targetY, thickness } = link;
   if (px < Math.min(sourceX, targetX) - slop || px > Math.max(sourceX, targetX) + slop) {
     return false;
@@ -364,8 +357,16 @@ const isPointOnRibbon = (
   for (let i = 0; i <= STEPS; i++) {
     const t = i / STEPS;
     const mt = 1 - t;
-    const x = mt * mt * mt * sourceX + 3 * mt * mt * t * controlX + 3 * mt * t * t * controlX + t * t * t * targetX;
-    const y = mt * mt * mt * sourceY + 3 * mt * mt * t * sourceY + 3 * mt * t * t * targetY + t * t * t * targetY;
+    const x =
+      mt * mt * mt * sourceX +
+      3 * mt * mt * t * controlX +
+      3 * mt * t * t * controlX +
+      t * t * t * targetX;
+    const y =
+      mt * mt * mt * sourceY +
+      3 * mt * mt * t * sourceY +
+      3 * mt * t * t * targetY +
+      t * t * t * targetY;
     const dx = Math.abs(x - px);
     if (dx < bestDx) {
       bestDx = dx;
@@ -424,11 +425,7 @@ type SankeyLinkShapeProps = {
   fill: string;
 };
 
-const SankeyLinkShape = ({
-  targetOpacity,
-  d,
-  fill,
-}: SankeyLinkShapeProps): React.ReactElement => {
+const SankeyLinkShape = ({ targetOpacity, d, fill }: SankeyLinkShapeProps): React.ReactElement => {
   const { theme } = useTheme();
   const fillOpacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
@@ -823,14 +820,25 @@ const _ChartSankeyWrapper = ({
         : size.width / 2;
     const centerY =
       sourceNode && targetNode
-        ? PADDING.top + (sourceNode.y + sourceNode.height / 2 + targetNode.y + targetNode.height / 2) / 2
+        ? PADDING.top +
+          (sourceNode.y + sourceNode.height / 2 + targetNode.y + targetNode.height / 2) / 2
         : size.height / 2;
     return {
       content: `${sourceName} → ${targetName}: ${link.value.toLocaleString()}${unitSuffix}`,
       centerX,
       centerY,
     };
-  }, [showTooltip, active, size, labelUnit, layout, data.nodes, rechartsLinks, PADDING.left, PADDING.top]);
+  }, [
+    showTooltip,
+    active,
+    size,
+    labelUnit,
+    layout,
+    data.nodes,
+    rechartsLinks,
+    PADDING.left,
+    PADDING.top,
+  ]);
 
   const TOOLTIP_MAX_WIDTH = 240;
   const tooltipLeft = tooltip
@@ -904,98 +912,98 @@ const _ChartSankeyWrapper = ({
           {size.width > 0 && size.height > 0 ? (
             <Svg width={size.width} height={size.height} pointerEvents="none">
               <G x={PADDING.left} y={PADDING.top}>
-              {/* Links first so nodes + labels render above the ribbons */}
-              {layout.linkLayouts.map((link) => {
-                const srcNode = data.nodes[link.sourceIndex] as SankeyDataNode | undefined;
-                const colorToken =
-                  linkColorOverride ??
-                  nodeColorOverride ??
-                  (srcNode
-                    ? srcNode.color ??
-                      defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
-                    : defaultColorTokens[0]);
-                return (
-                  <SankeyLinkShape
-                    key={`link-${link.originalIndex}`}
-                    targetOpacity={getLinkOpacity(link.originalIndex)}
-                    d={link.d}
-                    fill={resolveColor(colorToken)}
-                  />
-                );
-              })}
+                {/* Links first so nodes + labels render above the ribbons */}
+                {layout.linkLayouts.map((link) => {
+                  const srcNode = data.nodes[link.sourceIndex] as SankeyDataNode | undefined;
+                  const colorToken =
+                    linkColorOverride ??
+                    nodeColorOverride ??
+                    (srcNode
+                      ? srcNode.color ??
+                        defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
+                      : defaultColorTokens[0]);
+                  return (
+                    <SankeyLinkShape
+                      key={`link-${link.originalIndex}`}
+                      targetOpacity={getLinkOpacity(link.originalIndex)}
+                      d={link.d}
+                      fill={resolveColor(colorToken)}
+                    />
+                  );
+                })}
 
-              {layout.nodeLayouts.map((node) => {
-                const nodeData = data.nodes[node.index] as SankeyDataNode | undefined;
-                if (!nodeData) return null;
-                const colorToken =
-                  nodeColorOverride ??
-                  nodeData.color ??
-                  defaultColorTokens[node.index % defaultColorTokens.length];
+                {layout.nodeLayouts.map((node) => {
+                  const nodeData = data.nodes[node.index] as SankeyDataNode | undefined;
+                  if (!nodeData) return null;
+                  const colorToken =
+                    nodeColorOverride ??
+                    nodeData.color ??
+                    defaultColorTokens[node.index % defaultColorTokens.length];
 
-                const nodeMidY = node.y + node.height / 2;
-                const chipX = node.x + node.width + CHIP_GAP;
-                const humanized = formatter(node.value);
-                const levelCount = layout.countPerDepth[node.depth] ?? 1;
-                const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
-                const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
-                const labelValue =
-                  showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
+                  const nodeMidY = node.y + node.height / 2;
+                  const chipX = node.x + node.width + CHIP_GAP;
+                  const humanized = formatter(node.value);
+                  const levelCount = layout.countPerDepth[node.depth] ?? 1;
+                  const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
+                  const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
+                  const labelValue =
+                    showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
 
-                const nameW = estimateTextWidth(nodeData.name, fontSize, semibold);
-                const labelW = estimateTextWidth(labelValue, fontSize, regular);
-                const contentW = nameW + theme.spacing[2] + labelW;
-                const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
-                const chipW = shouldWrap
-                  ? Math.min(
-                      CHIP_MAX_WIDTH,
-                      Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
-                    )
-                  : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
-                const chipH = shouldWrap
-                  ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3]
-                  : CHIP_H;
-                const chipY = nodeMidY - chipH / 2;
+                  const nameW = estimateTextWidth(nodeData.name, fontSize, semibold);
+                  const labelW = estimateTextWidth(labelValue, fontSize, regular);
+                  const contentW = nameW + theme.spacing[2] + labelW;
+                  const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
+                  const chipW = shouldWrap
+                    ? Math.min(
+                        CHIP_MAX_WIDTH,
+                        Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
+                      )
+                    : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
+                  const chipH = shouldWrap
+                    ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3]
+                    : CHIP_H;
+                  const chipY = nodeMidY - chipH / 2;
 
-                const labelArgs: NodeLabelArgs = {
-                  chipX,
-                  chipY,
-                  chipW,
-                  chipH,
-                  nodeMidY,
-                  fontSize,
-                  fontFamily,
-                  labelNameColor,
-                  labelValueColor,
-                  chipBg,
-                  chipBorderColor,
-                  chipRadius,
-                  chipPadX: CHIP_PAD_X,
-                  lineGap,
-                  borderThin,
-                  capHeightRatio,
-                  name: nodeData.name,
-                  labelValue,
-                  shouldWrap,
-                  semibold,
-                  regular,
-                };
+                  const labelArgs: NodeLabelArgs = {
+                    chipX,
+                    chipY,
+                    chipW,
+                    chipH,
+                    nodeMidY,
+                    fontSize,
+                    fontFamily,
+                    labelNameColor,
+                    labelValueColor,
+                    chipBg,
+                    chipBorderColor,
+                    chipRadius,
+                    chipPadX: CHIP_PAD_X,
+                    lineGap,
+                    borderThin,
+                    capHeightRatio,
+                    name: nodeData.name,
+                    labelValue,
+                    shouldWrap,
+                    semibold,
+                    regular,
+                  };
 
-                return (
-                  <SankeyNodeShape
-                    key={`node-${node.index}`}
-                    targetOpacity={getNodeOpacity(node.index)}
-                    x={node.x}
-                    y={node.y}
-                    width={node.width}
-                    height={node.height}
-                    fill={resolveColor(colorToken)}
-                  >
-                    {showLabels
-                      ? (showLabelChip ? renderChipLabel : renderPlainTextLabel)(labelArgs)
-                      : null}
-                  </SankeyNodeShape>
-                );
-              })}
+                  return (
+                    <SankeyNodeShape
+                      key={`node-${node.index}`}
+                      targetOpacity={getNodeOpacity(node.index)}
+                      x={node.x}
+                      y={node.y}
+                      width={node.width}
+                      height={node.height}
+                      fill={resolveColor(colorToken)}
+                    >
+                      {showLabels
+                        ? (showLabelChip ? renderChipLabel : renderPlainTextLabel)(labelArgs)
+                        : null}
+                    </SankeyNodeShape>
+                  );
+                })}
               </G>
             </Svg>
           ) : null}

@@ -12,6 +12,7 @@ import { Rect, Path, TSpan, G } from 'react-native-svg';
 import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart.native';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
+/* eslint-disable babel/new-cap */
 const data = {
   nodes: [
     { id: 'a', name: 'Alpha' },
@@ -47,8 +48,8 @@ const shapeRects = (rects: any[]): any[] => rects;
 type Utils = ReturnType<typeof renderWithTheme>;
 
 // The chart draws its shapes inside a translate <G x={PADDING.left} y={PADDING.top}>.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getTranslate = (utils: Utils): { gx: number; gy: number } => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const g = utils.UNSAFE_getAllByType(G).find((el: any) => typeof el.props.x === 'number');
   return { gx: (g?.props.x as number) ?? 0, gy: (g?.props.y as number) ?? 0 };
 };
@@ -63,8 +64,12 @@ const tapCanvas = (utils: Utils, x: number, y: number): void => {
 const tapNode = (utils: Utils, i: number): void => {
   const { gx, gy } = getTranslate(utils);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const rect = shapeRects(utils.UNSAFE_getAllByType(Rect))[i] as any;
-  tapCanvas(utils, gx + rect.props.x + rect.props.width / 2, gy + rect.props.y + rect.props.height / 2);
+  const rect = shapeRects(utils.UNSAFE_getAllByType(Rect))[i];
+  tapCanvas(
+    utils,
+    gx + rect.props.x + rect.props.width / 2,
+    gy + rect.props.y + rect.props.height / 2,
+  );
 };
 
 // A point on link `i`'s ribbon centerline midpoint (between the two columns, so it
