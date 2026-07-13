@@ -137,34 +137,49 @@ const _StepGroup = (
   );
 
   const isHorizontal = orientation === 'horizontal';
+  const contentLayoutProps = {
+    paddingY: _nestingLevel === 0 ? ('spacing.4' as const) : undefined,
+    flexDirection: (isHorizontal ? 'row' : 'column') as 'row' | 'column',
+  };
 
-  const content = (
-    <BaseBox
-      ref={ref as never}
-      {...getStyledProps(rest)}
-      maxWidth={maxWidth ?? (isHorizontal ? undefined : '100%')}
-      minWidth={minWidth}
-      width={width}
-      paddingY={_nestingLevel === 0 ? 'spacing.4' : undefined}
-      flexDirection={isHorizontal ? 'row' : 'column'}
-      {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
-      {...makeAnalyticsAttribute(rest)}
-    >
-      {childrenWithIndex}
-    </BaseBox>
-  );
-
+  // Horizontal: put ref + styled props on an outer wrapper so margins apply around the
+  // scroller (web puts them on the same root as overflowX). Inner box keeps the row layout.
   if (isHorizontal && _nestingLevel === 0) {
     return (
       <StepGroupContext.Provider value={contextValue}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {content}
-        </ScrollView>
+        <BaseBox
+          ref={ref as never}
+          {...getStyledProps(rest)}
+          maxWidth={maxWidth}
+          minWidth={minWidth}
+          width={width}
+          {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
+          {...makeAnalyticsAttribute(rest)}
+        >
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <BaseBox {...contentLayoutProps}>{childrenWithIndex}</BaseBox>
+          </ScrollView>
+        </BaseBox>
       </StepGroupContext.Provider>
     );
   }
 
-  return <StepGroupContext.Provider value={contextValue}>{content}</StepGroupContext.Provider>;
+  return (
+    <StepGroupContext.Provider value={contextValue}>
+      <BaseBox
+        ref={ref as never}
+        {...getStyledProps(rest)}
+        maxWidth={maxWidth ?? '100%'}
+        minWidth={minWidth}
+        width={width}
+        {...contentLayoutProps}
+        {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
+        {...makeAnalyticsAttribute(rest)}
+      >
+        {childrenWithIndex}
+      </BaseBox>
+    </StepGroupContext.Provider>
+  );
 };
 
 const StepGroup = assignWithoutSideEffects(React.forwardRef(_StepGroup), {

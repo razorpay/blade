@@ -8,1500 +8,1734 @@ exports[`<StepGroup /> (native) should render horizontal orientation 1`] = `
     }
   }
 >
-  <RCTScrollView
-    horizontal={true}
-    showsHorizontalScrollIndicator={false}
+  <View
+    data-blade-component="step-group"
+    style={
+      [
+        {},
+      ]
+    }
   >
-    <View>
-      <View
-        data-blade-component="step-group"
-        flexDirection="row"
-        style={
-          [
-            {
-              "flexDirection": "row",
-              "paddingBottom": 12,
-              "paddingTop": 12,
-            },
-          ]
-        }
-      >
+    <RCTScrollView
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+    >
+      <View>
         <View
-          alignItems="center"
-          data-blade-component="step-item"
-          display="flex"
-          flexDirection="column"
-          gap="spacing.2"
-          minWidth="120px"
+          data-blade-component="base-box"
+          flexDirection="row"
           style={
             [
               {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 4,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "minWidth": 120,
-                "width": 160,
+                "flexDirection": "row",
+                "paddingBottom": 12,
+                "paddingTop": 12,
               },
             ]
           }
-          width="160px"
         >
           <View
             alignItems="center"
-            data-blade-component="box"
+            data-blade-component="step-item"
             display="flex"
-            flexDirection="row"
-            justifyContent="center"
-            position="relative"
+            flexDirection="column"
+            gap="spacing.2"
+            minWidth="120px"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "position": "relative",
-                  "width": "100%",
+                  "flexDirection": "column",
+                  "gap": 4,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "minWidth": 120,
+                  "width": 160,
                 },
               ]
             }
-            width="100%"
+            width="160px"
           >
             <View
-              borderTopColor="surface.border.gray.subtle"
-              borderTopWidth="thicker"
-              data-blade-component="base-box"
-              height="2px"
-              opacity={0}
+              alignItems="center"
+              data-blade-component="box"
+              display="flex"
+              flexDirection="row"
+              justifyContent="center"
+              position="relative"
               style={
                 [
                   {
-                    "borderTopColor": "hsla(204, 8%, 88%, 1)",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": 2,
-                    "height": 2,
-                    "opacity": 0,
-                    "width": 72,
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "position": "relative",
+                    "width": "100%",
                   },
                 ]
               }
-              width="72px"
-            />
-            <View
-              data-blade-component="box"
-              style={
-                [
-                  {},
-                ]
-              }
+              width="100%"
             >
               <View
-                alignItems="center"
-                backgroundColor="feedback.background.neutral.subtle"
-                borderRadius="round"
+                borderTopColor="surface.border.gray.subtle"
+                borderTopWidth="thicker"
                 data-blade-component="base-box"
-                display="flex"
-                height="20px"
-                justifyContent="center"
+                height="2px"
+                opacity={0}
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-                      "borderRadius": 50,
-                      "display": "flex",
-                      "height": 20,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 20,
+                      "borderTopColor": "hsla(204, 8%, 88%, 1)",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": 2,
+                      "height": 2,
+                      "opacity": 0,
+                      "width": 72,
                     },
                   ]
                 }
-                width="20px"
+                width="72px"
+              />
+              <View
+                data-blade-component="box"
+                style={
+                  [
+                    {},
+                  ]
+                }
               >
                 <View
-                  accessibilityLabel="neutral indicator"
-                  accessible={true}
-                  data-blade-component="indicator"
+                  alignItems="center"
+                  backgroundColor="feedback.background.neutral.subtle"
+                  borderRadius="round"
+                  data-blade-component="base-box"
                   display="flex"
-                  position="relative"
+                  height="20px"
+                  justifyContent="center"
                   style={
                     [
                       {
+                        "alignItems": "center",
+                        "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                        "borderRadius": 50,
                         "display": "flex",
-                        "position": "relative",
+                        "height": 20,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 20,
                       },
                     ]
                   }
+                  width="20px"
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
+                    accessibilityLabel="neutral indicator"
+                    accessible={true}
+                    data-blade-component="indicator"
                     display="flex"
-                    flexDirection="row"
+                    position="relative"
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "display": "flex",
-                          "flexDirection": "row",
+                          "position": "relative",
                         },
                       ]
                     }
                   >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="8"
-                      bbWidth="8"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="8"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
                       style={
                         [
                           {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
-                          [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 8,
-                            "width": 8,
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "row",
                           },
                         ]
                       }
-                      vbHeight={10}
-                      vbWidth={10}
-                      width="8"
                     >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
+                      <RNSVGSvgView
+                        accessibilityElementsHidden={true}
+                        align="xMidYMid"
+                        bbHeight="8"
+                        bbWidth="8"
+                        data-blade-component="icon"
+                        fill="none"
+                        focusable={false}
+                        height="8"
+                        importantForAccessibility="no-hide-descendants"
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
+                        style={
                           [
-                            "fill",
+                            {
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
+                            },
+                            [
+                              {},
+                            ],
+                            {
+                              "flex": 0,
+                              "height": 8,
+                              "width": 8,
+                            },
                           ]
                         }
+                        vbHeight={10}
+                        vbWidth={10}
+                        width="8"
                       >
-                        <RNSVGCircle
-                          cx="5"
-                          cy="5"
-                          fill={
-                            {
-                              "payload": 4280889138,
-                              "type": 0,
-                            }
-                          }
+                        <RNSVGGroup
+                          fill={null}
                           propList={
                             [
                               "fill",
                             ]
                           }
-                          r="5"
-                        />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
-                    <View
-                      data-blade-component="base-box"
-                      style={
-                        [
-                          {
-                            "marginLeft": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        accessible={true}
-                        color="surface.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="medium"
-                        letterSpacing={50}
-                        lineHeight={100}
+                        >
+                          <RNSVGCircle
+                            cx="5"
+                            cy="5"
+                            fill={
+                              {
+                                "payload": 4280889138,
+                                "type": 0,
+                              }
+                            }
+                            propList={
+                              [
+                                "fill",
+                              ]
+                            }
+                            r="5"
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "500",
-                              "letterSpacing": -0.18200000000000002,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
                               "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textAlign": "left",
-                              "textDecorationLine": "none",
                             },
                           ]
                         }
-                        textAlign="left"
-                      />
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="medium"
+                          letterSpacing={50}
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "left",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="left"
+                        />
+                      </View>
                     </View>
                   </View>
                 </View>
               </View>
+              <View
+                borderTopColor="surface.border.gray.subtle"
+                borderTopWidth="thicker"
+                data-blade-component="base-box"
+                height="2px"
+                opacity={1}
+                style={
+                  [
+                    {
+                      "borderTopColor": "hsla(204, 8%, 88%, 1)",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": 2,
+                      "height": 2,
+                      "opacity": 1,
+                      "width": 72,
+                    },
+                  ]
+                }
+                width="72px"
+              />
             </View>
-            <View
-              borderTopColor="surface.border.gray.subtle"
-              borderTopWidth="thicker"
-              data-blade-component="base-box"
-              height="2px"
-              opacity={1}
-              style={
-                [
-                  {
-                    "borderTopColor": "hsla(204, 8%, 88%, 1)",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": 2,
-                    "height": 2,
-                    "opacity": 1,
-                    "width": 72,
-                  },
-                ]
-              }
-              width="72px"
-            />
-          </View>
-          <View
-            data-blade-component="box"
-            style={
-              [
-                {
-                  "width": "100%",
-                },
-              ]
-            }
-            width="100%"
-          >
             <View
               data-blade-component="box"
               style={
                 [
                   {
-                    "paddingBottom": 8,
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                    "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 data-blade-component="box"
-                display="flex"
-                flexDirection="row"
-                gap="spacing.4"
-                justifyContent="space-between"
                 style={
                   [
                     {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
                     },
                   ]
                 }
               >
                 <View
                   data-blade-component="box"
-                  flexShrink={1}
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    color="surface.text.gray.subtle"
-                    data-blade-component="text"
-                    fontFamily="text"
-                    fontSize={100}
-                    fontStyle="normal"
-                    fontWeight="medium"
-                    letterSpacing={50}
-                    lineHeight={100}
-                    style={
-                      [
-                        {
-                          "color": "hsla(200, 10%, 18%, 1)",
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
-                          "fontStyle": "normal",
-                          "fontWeight": "500",
-                          "letterSpacing": -0.18200000000000002,
-                          "lineHeight": 20,
-                          "marginBottom": 0,
-                          "marginLeft": 0,
-                          "marginRight": 0,
-                          "marginTop": 0,
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "textDecorationLine": "none",
-                        },
-                      ]
-                    }
-                  >
-                    Step 1
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          alignItems="center"
-          data-blade-component="step-item"
-          display="flex"
-          flexDirection="column"
-          gap="spacing.2"
-          minWidth="120px"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 4,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "minWidth": 120,
-                "width": 160,
-              },
-            ]
-          }
-          width="160px"
-        >
-          <View
-            alignItems="center"
-            data-blade-component="box"
-            display="flex"
-            flexDirection="row"
-            justifyContent="center"
-            position="relative"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "position": "relative",
-                  "width": "100%",
-                },
-              ]
-            }
-            width="100%"
-          >
-            <View
-              borderTopColor="surface.border.gray.subtle"
-              borderTopWidth="thicker"
-              data-blade-component="base-box"
-              height="2px"
-              opacity={1}
-              style={
-                [
-                  {
-                    "borderTopColor": "hsla(204, 8%, 88%, 1)",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": 2,
-                    "height": 2,
-                    "opacity": 1,
-                    "width": 72,
-                  },
-                ]
-              }
-              width="72px"
-            />
-            <View
-              data-blade-component="box"
-              style={
-                [
-                  {},
-                ]
-              }
-            >
-              <View
-                alignItems="center"
-                backgroundColor="feedback.background.neutral.subtle"
-                borderRadius="round"
-                data-blade-component="base-box"
-                display="flex"
-                height="20px"
-                justifyContent="center"
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-                      "borderRadius": 50,
-                      "display": "flex",
-                      "height": 20,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 20,
-                    },
-                  ]
-                }
-                width="20px"
-              >
-                <View
-                  accessibilityLabel="neutral indicator"
-                  accessible={true}
-                  data-blade-component="indicator"
                   display="flex"
-                  position="relative"
+                  flexDirection="row"
+                  gap="spacing.4"
+                  justifyContent="space-between"
                   style={
                     [
                       {
                         "display": "flex",
-                        "position": "relative",
+                        "flexDirection": "row",
+                        "gap": 12,
+                        "justifyContent": "space-between",
                       },
                     ]
                   }
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
+                    data-blade-component="box"
+                    flexShrink={1}
                     style={
                       [
                         {
-                          "alignItems": "center",
+                          "flexShrink": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    width="100%"
+                  >
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontStyle="normal"
+                      fontWeight="medium"
+                      letterSpacing={50}
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(200, 10%, 18%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": -0.18200000000000002,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    >
+                      Step 1
+                    </Text>
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={50}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={50}
+                      marginY="spacing.2"
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 11,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.14300000000000002,
+                            "lineHeight": 16,
+                            "marginBottom": 4,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 4,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={75}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={75}
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.15600000000000003,
+                            "lineHeight": 17,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="center"
+            data-blade-component="step-item"
+            display="flex"
+            flexDirection="column"
+            gap="spacing.2"
+            minWidth="120px"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "gap": 4,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "minWidth": 120,
+                  "width": 160,
+                },
+              ]
+            }
+            width="160px"
+          >
+            <View
+              alignItems="center"
+              data-blade-component="box"
+              display="flex"
+              flexDirection="row"
+              justifyContent="center"
+              position="relative"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                borderTopColor="surface.border.gray.subtle"
+                borderTopWidth="thicker"
+                data-blade-component="base-box"
+                height="2px"
+                opacity={1}
+                style={
+                  [
+                    {
+                      "borderTopColor": "hsla(204, 8%, 88%, 1)",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": 2,
+                      "height": 2,
+                      "opacity": 1,
+                      "width": 72,
+                    },
+                  ]
+                }
+                width="72px"
+              />
+              <View
+                data-blade-component="box"
+                style={
+                  [
+                    {},
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  backgroundColor="feedback.background.neutral.subtle"
+                  borderRadius="round"
+                  data-blade-component="base-box"
+                  display="flex"
+                  height="20px"
+                  justifyContent="center"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                        "borderRadius": 50,
+                        "display": "flex",
+                        "height": 20,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 20,
+                      },
+                    ]
+                  }
+                  width="20px"
+                >
+                  <View
+                    accessibilityLabel="neutral indicator"
+                    accessible={true}
+                    data-blade-component="indicator"
+                    display="flex"
+                    position="relative"
+                    style={
+                      [
+                        {
                           "display": "flex",
-                          "flexDirection": "row",
+                          "position": "relative",
                         },
                       ]
                     }
                   >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="8"
-                      bbWidth="8"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="8"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
                       style={
                         [
                           {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
-                          [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 8,
-                            "width": 8,
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "row",
                           },
                         ]
                       }
-                      vbHeight={10}
-                      vbWidth={10}
-                      width="8"
                     >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
+                      <RNSVGSvgView
+                        accessibilityElementsHidden={true}
+                        align="xMidYMid"
+                        bbHeight="8"
+                        bbWidth="8"
+                        data-blade-component="icon"
+                        fill="none"
+                        focusable={false}
+                        height="8"
+                        importantForAccessibility="no-hide-descendants"
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
+                        style={
                           [
-                            "fill",
+                            {
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
+                            },
+                            [
+                              {},
+                            ],
+                            {
+                              "flex": 0,
+                              "height": 8,
+                              "width": 8,
+                            },
                           ]
                         }
+                        vbHeight={10}
+                        vbWidth={10}
+                        width="8"
                       >
-                        <RNSVGCircle
-                          cx="5"
-                          cy="5"
-                          fill={
-                            {
-                              "payload": 4280889138,
-                              "type": 0,
-                            }
-                          }
+                        <RNSVGGroup
+                          fill={null}
                           propList={
                             [
                               "fill",
                             ]
                           }
-                          r="5"
-                        />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
-                    <View
-                      data-blade-component="base-box"
-                      style={
-                        [
-                          {
-                            "marginLeft": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        accessible={true}
-                        color="surface.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="medium"
-                        letterSpacing={50}
-                        lineHeight={100}
+                        >
+                          <RNSVGCircle
+                            cx="5"
+                            cy="5"
+                            fill={
+                              {
+                                "payload": 4280889138,
+                                "type": 0,
+                              }
+                            }
+                            propList={
+                              [
+                                "fill",
+                              ]
+                            }
+                            r="5"
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "500",
-                              "letterSpacing": -0.18200000000000002,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
                               "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textAlign": "left",
-                              "textDecorationLine": "none",
                             },
                           ]
                         }
-                        textAlign="left"
-                      />
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="medium"
+                          letterSpacing={50}
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "left",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="left"
+                        />
+                      </View>
                     </View>
                   </View>
                 </View>
               </View>
-            </View>
-            <View
-              data-blade-component="base-box"
-              height="2px"
-              opacity={1}
-              overflow="hidden"
-              style={
-                [
-                  {
-                    "height": 2,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "width": 72,
-                  },
-                ]
-              }
-              width="72px"
-            >
               <View
+                data-blade-component="base-box"
+                height="2px"
+                opacity={1}
+                overflow="hidden"
                 style={
-                  {
-                    "alignItems": "center",
-                    "flex": 1,
-                    "flexDirection": "row",
-                  }
+                  [
+                    {
+                      "height": 2,
+                      "opacity": 1,
+                      "overflow": "hidden",
+                      "width": 72,
+                    },
+                  ]
                 }
+                width="72px"
               >
                 <View
                   style={
                     {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                      "alignItems": "center",
+                      "flex": 1,
+                      "flexDirection": "row",
                     }
                   }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                </View>
               </View>
             </View>
-          </View>
-          <View
-            data-blade-component="box"
-            style={
-              [
-                {
-                  "width": "100%",
-                },
-              ]
-            }
-            width="100%"
-          >
             <View
               data-blade-component="box"
               style={
                 [
                   {
-                    "paddingBottom": 8,
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                    "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 data-blade-component="box"
-                display="flex"
-                flexDirection="row"
-                gap="spacing.4"
-                justifyContent="space-between"
                 style={
                   [
                     {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
                     },
                   ]
                 }
               >
                 <View
                   data-blade-component="box"
-                  flexShrink={1}
-                  style={
-                    [
-                      {
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    color="surface.text.gray.subtle"
-                    data-blade-component="text"
-                    fontFamily="text"
-                    fontSize={100}
-                    fontStyle="normal"
-                    fontWeight="medium"
-                    letterSpacing={50}
-                    lineHeight={100}
-                    style={
-                      [
-                        {
-                          "color": "hsla(200, 10%, 18%, 1)",
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
-                          "fontStyle": "normal",
-                          "fontWeight": "500",
-                          "letterSpacing": -0.18200000000000002,
-                          "lineHeight": 20,
-                          "marginBottom": 0,
-                          "marginLeft": 0,
-                          "marginRight": 0,
-                          "marginTop": 0,
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "textDecorationLine": "none",
-                        },
-                      ]
-                    }
-                  >
-                    Step 2
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          alignItems="center"
-          data-blade-component="step-item"
-          display="flex"
-          flexDirection="column"
-          gap="spacing.2"
-          minWidth="120px"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 4,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "minWidth": 120,
-                "width": 160,
-              },
-            ]
-          }
-          width="160px"
-        >
-          <View
-            alignItems="center"
-            data-blade-component="box"
-            display="flex"
-            flexDirection="row"
-            justifyContent="center"
-            position="relative"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "position": "relative",
-                  "width": "100%",
-                },
-              ]
-            }
-            width="100%"
-          >
-            <View
-              data-blade-component="base-box"
-              height="2px"
-              opacity={1}
-              overflow="hidden"
-              style={
-                [
-                  {
-                    "height": 2,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "width": 72,
-                  },
-                ]
-              }
-              width="72px"
-            >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flex": 1,
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
-                    }
-                  }
-                />
-              </View>
-            </View>
-            <View
-              data-blade-component="box"
-              style={
-                [
-                  {},
-                ]
-              }
-            >
-              <View
-                alignItems="center"
-                backgroundColor="feedback.background.neutral.subtle"
-                borderRadius="round"
-                data-blade-component="base-box"
-                display="flex"
-                height="20px"
-                justifyContent="center"
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
-                      "borderRadius": 50,
-                      "display": "flex",
-                      "height": 20,
-                      "justifyContent": "center",
-                      "marginBottom": 2,
-                      "marginLeft": 2,
-                      "marginRight": 2,
-                      "marginTop": 2,
-                      "width": 20,
-                    },
-                  ]
-                }
-                width="20px"
-              >
-                <View
-                  accessibilityLabel="neutral indicator"
-                  accessible={true}
-                  data-blade-component="indicator"
                   display="flex"
-                  position="relative"
+                  flexDirection="row"
+                  gap="spacing.4"
+                  justifyContent="space-between"
                   style={
                     [
                       {
                         "display": "flex",
-                        "position": "relative",
+                        "flexDirection": "row",
+                        "gap": 12,
+                        "justifyContent": "space-between",
                       },
                     ]
                   }
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
+                    data-blade-component="box"
+                    flexShrink={1}
                     style={
                       [
                         {
-                          "alignItems": "center",
+                          "flexShrink": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    width="100%"
+                  >
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontStyle="normal"
+                      fontWeight="medium"
+                      letterSpacing={50}
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(200, 10%, 18%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": -0.18200000000000002,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    >
+                      Step 2
+                    </Text>
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={50}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={50}
+                      marginY="spacing.2"
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 11,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.14300000000000002,
+                            "lineHeight": 16,
+                            "marginBottom": 4,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 4,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={75}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={75}
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.15600000000000003,
+                            "lineHeight": 17,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            alignItems="center"
+            data-blade-component="step-item"
+            display="flex"
+            flexDirection="column"
+            gap="spacing.2"
+            minWidth="120px"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "gap": 4,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "minWidth": 120,
+                  "width": 160,
+                },
+              ]
+            }
+            width="160px"
+          >
+            <View
+              alignItems="center"
+              data-blade-component="box"
+              display="flex"
+              flexDirection="row"
+              justifyContent="center"
+              position="relative"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                data-blade-component="base-box"
+                height="2px"
+                opacity={1}
+                overflow="hidden"
+                style={
+                  [
+                    {
+                      "height": 2,
+                      "opacity": 1,
+                      "overflow": "hidden",
+                      "width": 72,
+                    },
+                  ]
+                }
+                width="72px"
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flex": 1,
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                data-blade-component="box"
+                style={
+                  [
+                    {},
+                  ]
+                }
+              >
+                <View
+                  alignItems="center"
+                  backgroundColor="feedback.background.neutral.subtle"
+                  borderRadius="round"
+                  data-blade-component="base-box"
+                  display="flex"
+                  height="20px"
+                  justifyContent="center"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "hsla(206, 10%, 29%, 0.09)",
+                        "borderRadius": 50,
+                        "display": "flex",
+                        "height": 20,
+                        "justifyContent": "center",
+                        "marginBottom": 2,
+                        "marginLeft": 2,
+                        "marginRight": 2,
+                        "marginTop": 2,
+                        "width": 20,
+                      },
+                    ]
+                  }
+                  width="20px"
+                >
+                  <View
+                    accessibilityLabel="neutral indicator"
+                    accessible={true}
+                    data-blade-component="indicator"
+                    display="flex"
+                    position="relative"
+                    style={
+                      [
+                        {
                           "display": "flex",
-                          "flexDirection": "row",
+                          "position": "relative",
                         },
                       ]
                     }
                   >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="8"
-                      bbWidth="8"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="8"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
                       style={
                         [
                           {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
-                          [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 8,
-                            "width": 8,
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "row",
                           },
                         ]
                       }
-                      vbHeight={10}
-                      vbWidth={10}
-                      width="8"
                     >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
+                      <RNSVGSvgView
+                        accessibilityElementsHidden={true}
+                        align="xMidYMid"
+                        bbHeight="8"
+                        bbWidth="8"
+                        data-blade-component="icon"
+                        fill="none"
+                        focusable={false}
+                        height="8"
+                        importantForAccessibility="no-hide-descendants"
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
+                        style={
                           [
-                            "fill",
+                            {
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
+                            },
+                            [
+                              {},
+                            ],
+                            {
+                              "flex": 0,
+                              "height": 8,
+                              "width": 8,
+                            },
                           ]
                         }
+                        vbHeight={10}
+                        vbWidth={10}
+                        width="8"
                       >
-                        <RNSVGCircle
-                          cx="5"
-                          cy="5"
-                          fill={
-                            {
-                              "payload": 4280889138,
-                              "type": 0,
-                            }
-                          }
+                        <RNSVGGroup
+                          fill={null}
                           propList={
                             [
                               "fill",
                             ]
                           }
-                          r="5"
-                        />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
-                    <View
-                      data-blade-component="base-box"
-                      style={
-                        [
-                          {
-                            "marginLeft": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        accessible={true}
-                        color="surface.text.gray.subtle"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={100}
-                        fontStyle="normal"
-                        fontWeight="medium"
-                        letterSpacing={50}
-                        lineHeight={100}
+                        >
+                          <RNSVGCircle
+                            cx="5"
+                            cy="5"
+                            fill={
+                              {
+                                "payload": 4280889138,
+                                "type": 0,
+                              }
+                            }
+                            propList={
+                              [
+                                "fill",
+                              ]
+                            }
+                            r="5"
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                      <View
+                        data-blade-component="base-box"
                         style={
                           [
                             {
-                              "color": "hsla(200, 10%, 18%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "500",
-                              "letterSpacing": -0.18200000000000002,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
                               "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textAlign": "left",
-                              "textDecorationLine": "none",
                             },
                           ]
                         }
-                        textAlign="left"
-                      />
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.gray.subtle"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="medium"
+                          letterSpacing={50}
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(200, 10%, 18%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "left",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="left"
+                        />
+                      </View>
                     </View>
                   </View>
                 </View>
               </View>
-            </View>
-            <View
-              data-blade-component="base-box"
-              height="2px"
-              opacity={0}
-              overflow="hidden"
-              style={
-                [
-                  {
-                    "height": 2,
-                    "opacity": 0,
-                    "overflow": "hidden",
-                    "width": 72,
-                  },
-                ]
-              }
-              width="72px"
-            >
               <View
+                data-blade-component="base-box"
+                height="2px"
+                opacity={0}
+                overflow="hidden"
                 style={
-                  {
-                    "alignItems": "center",
-                    "flex": 1,
-                    "flexDirection": "row",
-                  }
+                  [
+                    {
+                      "height": 2,
+                      "opacity": 0,
+                      "overflow": "hidden",
+                      "width": 72,
+                    },
+                  ]
                 }
+                width="72px"
               >
                 <View
                   style={
                     {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                      "alignItems": "center",
+                      "flex": 1,
+                      "flexDirection": "row",
                     }
                   }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
-                <View
-                  style={
-                    {
-                      "backgroundColor": "hsla(204, 8%, 88%, 1)",
-                      "borderRadius": 1,
-                      "height": 2,
-                      "marginRight": 4,
-                      "width": 2,
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
                     }
-                  }
-                />
+                  />
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 1,
+                        "height": 2,
+                        "marginRight": 4,
+                        "width": 2,
+                      }
+                    }
+                  />
+                </View>
               </View>
             </View>
-          </View>
-          <View
-            data-blade-component="box"
-            style={
-              [
-                {
-                  "width": "100%",
-                },
-              ]
-            }
-            width="100%"
-          >
             <View
               data-blade-component="box"
               style={
                 [
                   {
-                    "paddingBottom": 8,
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
-                    "paddingTop": 8,
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 data-blade-component="box"
-                display="flex"
-                flexDirection="row"
-                gap="spacing.4"
-                justifyContent="space-between"
                 style={
                   [
                     {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "paddingBottom": 8,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 8,
                     },
                   ]
                 }
               >
                 <View
                   data-blade-component="box"
-                  flexShrink={1}
+                  display="flex"
+                  flexDirection="row"
+                  gap="spacing.4"
+                  justifyContent="space-between"
                   style={
                     [
                       {
-                        "flexShrink": 1,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "gap": 12,
+                        "justifyContent": "space-between",
                       },
                     ]
                   }
                 >
-                  <Text
-                    accessible={true}
-                    color="surface.text.gray.subtle"
-                    data-blade-component="text"
-                    fontFamily="text"
-                    fontSize={100}
-                    fontStyle="normal"
-                    fontWeight="medium"
-                    letterSpacing={50}
-                    lineHeight={100}
+                  <View
+                    data-blade-component="box"
+                    flexShrink={1}
                     style={
                       [
                         {
-                          "color": "hsla(200, 10%, 18%, 1)",
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
-                          "fontStyle": "normal",
-                          "fontWeight": "500",
-                          "letterSpacing": -0.18200000000000002,
-                          "lineHeight": 20,
-                          "marginBottom": 0,
-                          "marginLeft": 0,
-                          "marginRight": 0,
-                          "marginTop": 0,
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "textDecorationLine": "none",
+                          "flexShrink": 1,
+                          "width": "100%",
                         },
                       ]
                     }
+                    width="100%"
                   >
-                    Step 3
-                  </Text>
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontStyle="normal"
+                      fontWeight="medium"
+                      letterSpacing={50}
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(200, 10%, 18%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": -0.18200000000000002,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    >
+                      Step 3
+                    </Text>
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={50}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={50}
+                      marginY="spacing.2"
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 11,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.14300000000000002,
+                            "lineHeight": 16,
+                            "marginBottom": 4,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 4,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={75}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={75}
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.15600000000000003,
+                            "lineHeight": 17,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    />
+                  </View>
                 </View>
               </View>
             </View>
           </View>
         </View>
       </View>
-    </View>
-  </RCTScrollView>
+    </RCTScrollView>
+  </View>
 </View>
 `;
 
@@ -1861,10 +2095,12 @@ exports[`<StepGroup /> (native) should render large size 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Step 1
               </Text>
@@ -1897,10 +2133,12 @@ exports[`<StepGroup /> (native) should render large size 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Thu, 15th Oct
               </Text>
@@ -1932,10 +2170,12 @@ exports[`<StepGroup /> (native) should render large size 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Description
               </Text>
@@ -2304,13 +2544,86 @@ exports[`<StepGroup /> (native) should render large size 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Step 2
               </Text>
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={50}
+                marginY="spacing.2"
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.18200000000000002,
+                      "lineHeight": 16,
+                      "marginBottom": 4,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 4,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.18200000000000002,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
             </View>
           </View>
         </View>
@@ -2676,10 +2989,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Introduction
               </Text>
@@ -2712,10 +3027,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Thu, 15th Oct
               </Text>
@@ -2747,10 +3064,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Header description
               </Text>
@@ -3092,10 +3411,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Personal Details
               </Text>
@@ -3128,10 +3449,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Thu, 15th Oct
               </Text>
@@ -3163,10 +3486,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Person Details description
               </Text>
@@ -3588,10 +3913,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
                   }
+                  textAlign="left"
                 >
                   Address
                 </Text>
@@ -3624,13 +3951,50 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
                   }
+                  textAlign="left"
                 >
                   Thu, 15th Oct
                 </Text>
+                <Text
+                  accessible={true}
+                  color="surface.text.gray.muted"
+                  data-blade-component="text"
+                  fontFamily="text"
+                  fontSize={75}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  letterSpacing={50}
+                  lineHeight={75}
+                  style={
+                    [
+                      {
+                        "color": "hsla(204, 9%, 42%, 1)",
+                        "fontFamily": "Inter",
+                        "fontSize": 12,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "letterSpacing": -0.15600000000000003,
+                        "lineHeight": 17,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textAlign": "left",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                  textAlign="left"
+                />
               </View>
             </View>
           </View>
@@ -4121,10 +4485,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
                   }
+                  textAlign="left"
                 >
                   Bank Details
                 </Text>
@@ -4157,10 +4523,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
                   }
+                  textAlign="left"
                 >
                   Thu, 15th Oct
                 </Text>
@@ -4192,10 +4560,12 @@ exports[`<StepGroup /> (native) should render nested StepGroup 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
                   }
+                  textAlign="left"
                 >
                   Person Details description
                 </Text>
@@ -4592,13 +4962,86 @@ exports[`<StepGroup /> (native) should render with default props 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Step 1
               </Text>
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={50}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={50}
+                marginY="spacing.2"
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.14300000000000002,
+                      "lineHeight": 16,
+                      "marginBottom": 4,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 4,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={75}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={75}
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.15600000000000003,
+                      "lineHeight": 17,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
             </View>
           </View>
         </View>
@@ -4964,13 +5407,86 @@ exports[`<StepGroup /> (native) should render with default props 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Step 2
               </Text>
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={50}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={50}
+                marginY="spacing.2"
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.14300000000000002,
+                      "lineHeight": 16,
+                      "marginBottom": 4,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 4,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={75}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={75}
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.15600000000000003,
+                      "lineHeight": 17,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
             </View>
           </View>
         </View>
@@ -5336,13 +5852,86 @@ exports[`<StepGroup /> (native) should render with trailing badge 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Step 1
               </Text>
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={50}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={50}
+                marginY="spacing.2"
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.14300000000000002,
+                      "lineHeight": 16,
+                      "marginBottom": 4,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 4,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={75}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={75}
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.15600000000000003,
+                      "lineHeight": 17,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
             </View>
             <View
               data-blade-component="box"
@@ -5814,13 +6403,86 @@ exports[`<StepGroup /> (native) should render with trailing badge 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Step 2
               </Text>
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={50}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={50}
+                marginY="spacing.2"
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.14300000000000002,
+                      "lineHeight": 16,
+                      "marginBottom": 4,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 4,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={75}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={75}
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.15600000000000003,
+                      "lineHeight": 17,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
             </View>
           </View>
         </View>
@@ -6215,13 +6877,86 @@ exports[`<StepGroup /> (native) should support data-analytics attributes 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
                 }
+                textAlign="left"
               >
                 Introduction
               </Text>
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={50}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={50}
+                marginY="spacing.2"
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.14300000000000002,
+                      "lineHeight": 16,
+                      "marginBottom": 4,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 4,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
+              <Text
+                accessible={true}
+                color="surface.text.gray.muted"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={75}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={75}
+                style={
+                  [
+                    {
+                      "color": "hsla(204, 9%, 42%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.15600000000000003,
+                      "lineHeight": 17,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+                textAlign="left"
+              />
             </View>
           </View>
         </View>

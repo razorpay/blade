@@ -54,27 +54,38 @@ describe('<StepGroup /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should handle onPress when onClick is passed', () => {
+  it('should expose link role when href is passed', () => {
+    const { getByRole } = renderWithTheme(
+      <StepGroup>
+        <StepItem title="Introduction" href="https://razorpay.com" />
+      </StepGroup>,
+    );
+
+    expect(getByRole('link', { name: 'Introduction' })).toBeTruthy();
+  });
+
+  it('should expose button role when onClick is passed and handle press', () => {
     const clickHandler = jest.fn();
-    const { getByText } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <StepGroup>
         <StepItem title="Introduction" onClick={clickHandler} />
       </StepGroup>,
     );
 
-    fireEvent.press(getByText('Introduction'));
+    const stepItemButton = getByRole('button', { name: 'Introduction' });
+    fireEvent.press(stepItemButton);
     expect(clickHandler).toHaveBeenCalledTimes(1);
   });
 
   it('should NOT fire onPress when disabled', () => {
     const clickHandler = jest.fn();
-    const { getByText } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <StepGroup>
         <StepItem title="Introduction" onClick={clickHandler} isDisabled />
       </StepGroup>,
     );
 
-    fireEvent.press(getByText('Introduction'));
+    fireEvent.press(getByRole('button', { name: 'Introduction' }));
     expect(clickHandler).not.toHaveBeenCalled();
   });
 

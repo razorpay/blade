@@ -16,6 +16,7 @@ import { size as sizeTokens } from '~tokens/global';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -58,6 +59,8 @@ const _StepItem = ({
   isSelected,
   isDisabled,
   href,
+  // target is web-only (`<a target>`); Linking.openURL has no equivalent — omit from rest.
+  target: _target,
   onClick,
   children,
   _index = 0,
@@ -82,6 +85,7 @@ const _StepItem = ({
   const isInteractive = Boolean(href) || Boolean(onClick);
   const isVertical = orientation === 'vertical';
   const isNested = _nestingLevel > 0;
+  const textAlign = isVertical ? 'left' : 'center';
 
   if (__DEV__) {
     if (trailing && orientation === 'horizontal') {
@@ -121,7 +125,8 @@ const _StepItem = ({
 
   const stepItemHeaderJSX = (
     <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.4">
-      <Box flexShrink={1}>
+      {/* Stretch text column in horizontal so textAlign="center" is visible across item width */}
+      <Box flexShrink={1} width={isVertical ? undefined : '100%'}>
         <Text
           size={stepItemHeaderTokens[size].title}
           color={
@@ -132,27 +137,26 @@ const _StepItem = ({
               : titleColor ?? 'surface.text.gray.subtle'
           }
           weight={isNested ? 'regular' : 'medium'}
+          textAlign={textAlign}
         >
           {title}
         </Text>
-        {timestamp ? (
-          <Text
-            size={stepItemHeaderTokens[size].timestamp}
-            marginY="spacing.2"
-            color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
-            variant="caption"
-          >
-            {timestamp}
-          </Text>
-        ) : null}
-        {description ? (
-          <Text
-            size={stepItemHeaderTokens[size].description}
-            color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
-          >
-            {description}
-          </Text>
-        ) : null}
+        <Text
+          size={stepItemHeaderTokens[size].timestamp}
+          marginY="spacing.2"
+          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
+          variant="caption"
+          textAlign={textAlign}
+        >
+          {timestamp}
+        </Text>
+        <Text
+          size={stepItemHeaderTokens[size].description}
+          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
+          textAlign={textAlign}
+        >
+          {description}
+        </Text>
       </Box>
       {trailing ? <Box>{trailing}</Box> : null}
     </Box>
@@ -168,6 +172,8 @@ const _StepItem = ({
     <Pressable
       onPress={handlePress}
       disabled={isDisabled}
+      style={{ width: '100%', alignSelf: 'stretch' }}
+      {...makeAccessible({ role: href ? 'link' : 'button', disabled: isDisabled })}
       {...metaAttribute({ name: MetaConstants.StepItemButton })}
     >
       <Box paddingY="spacing.3" paddingX="spacing.4">
