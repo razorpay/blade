@@ -53,7 +53,20 @@ export default {
   component: FileUploadComponent,
   parameters: {
     docs: { disable: true },
+    notes:
+      'Platform note: The upload area uses a dashed border. iOS renders it correctly; on Android (React Native ≤ 0.72) dashed borders silently fall back to solid, so the border may look different from web/iOS.',
   },
+  decorators: [
+    (Story): React.ReactElement => (
+      <Box paddingX="spacing.5" paddingTop="spacing.5">
+        <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.4">
+          Platform note: upload area border is dashed on iOS. On Android (RN ≤ 0.72) it renders as
+          solid — expect a visual difference vs web/iOS.
+        </Text>
+        <Story />
+      </Box>
+    ),
+  ],
 } as Meta<FileUploadProps>;
 
 const simulateUpload = (

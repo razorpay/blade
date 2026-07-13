@@ -1407,29 +1407,44 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
   }
 >
   <View
+    backgroundColor="hsla(4, 85%, 44%, 0.09)"
+    borderColor="hsla(4, 85%, 44%, 0.18)"
+    borderRadius="medium"
+    borderStyle="solid"
+    borderWidth="thin"
+    data-blade-component="base-box"
+    display="flex"
+    justifyContent="space-between"
+    minHeight={56}
+    overflow="hidden"
+    position="relative"
     style={
-      {
-        "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
-        "borderColor": "hsla(4, 85%, 44%, 0.18)",
-        "borderRadius": 12,
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "display": "flex",
-        "elevation": 1,
-        "justifyContent": "space-between",
-        "minHeight": 56,
-        "overflow": "hidden",
-        "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
-        "shadowOffset": {
-          "height": 0.5,
-          "width": 0,
+      [
+        {
+          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
+          "borderColor": "hsla(4, 85%, 44%, 0.18)",
+          "borderRadius": 12,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "display": "flex",
+          "justifyContent": "space-between",
+          "overflow": "hidden",
+          "position": "relative",
+          "width": "100%",
         },
-        "shadowOpacity": 0.15,
-        "shadowRadius": 4,
-        "width": "100%",
-      }
+        {
+          "elevation": 1,
+          "shadowColor": "hsla(206, 10%, 29%, 0.06)",
+          "shadowOffset": {
+            "height": 0.5,
+            "width": 0,
+          },
+          "shadowOpacity": 0.15,
+          "shadowRadius": 4,
+        },
+      ]
     }
+    width="100%"
   >
     <View
       data-blade-component="base-box"
@@ -2046,29 +2061,44 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
   }
 >
   <View
+    backgroundColor="hsla(0, 0%, 100%, 1)"
+    borderColor="hsla(204, 8%, 88%, 1)"
+    borderRadius="medium"
+    borderStyle="solid"
+    borderWidth="thin"
+    data-blade-component="base-box"
+    display="flex"
+    justifyContent="space-between"
+    minHeight={56}
+    overflow="hidden"
+    position="relative"
     style={
-      {
-        "backgroundColor": "hsla(0, 0%, 100%, 1)",
-        "borderColor": "hsla(204, 8%, 88%, 1)",
-        "borderRadius": 12,
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "display": "flex",
-        "elevation": 1,
-        "justifyContent": "space-between",
-        "minHeight": 56,
-        "overflow": "hidden",
-        "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
-        "shadowOffset": {
-          "height": 0.5,
-          "width": 0,
+      [
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "hsla(204, 8%, 88%, 1)",
+          "borderRadius": 12,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "display": "flex",
+          "justifyContent": "space-between",
+          "overflow": "hidden",
+          "position": "relative",
+          "width": "100%",
         },
-        "shadowOpacity": 0.15,
-        "shadowRadius": 4,
-        "width": "100%",
-      }
+        {
+          "elevation": 1,
+          "shadowColor": "hsla(206, 10%, 29%, 0.06)",
+          "shadowOffset": {
+            "height": 0.5,
+            "width": 0,
+          },
+          "shadowOpacity": 0.15,
+          "shadowRadius": 4,
+        },
+      ]
     }
+    width="100%"
   >
     <View
       data-blade-component="base-box"
@@ -2641,29 +2671,44 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
   }
 >
   <View
+    backgroundColor="hsla(0, 0%, 100%, 1)"
+    borderColor="hsla(204, 8%, 88%, 1)"
+    borderRadius="medium"
+    borderStyle="solid"
+    borderWidth="thin"
+    data-blade-component="base-box"
+    display="flex"
+    justifyContent="space-between"
+    minHeight={56}
+    overflow="hidden"
+    position="relative"
     style={
-      {
-        "backgroundColor": "hsla(0, 0%, 100%, 1)",
-        "borderColor": "hsla(204, 8%, 88%, 1)",
-        "borderRadius": 12,
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "display": "flex",
-        "elevation": 1,
-        "justifyContent": "space-between",
-        "minHeight": 56,
-        "overflow": "hidden",
-        "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
-        "shadowOffset": {
-          "height": 0.5,
-          "width": 0,
+      [
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "hsla(204, 8%, 88%, 1)",
+          "borderRadius": 12,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "display": "flex",
+          "justifyContent": "space-between",
+          "overflow": "hidden",
+          "position": "relative",
+          "width": "100%",
         },
-        "shadowOpacity": 0.15,
-        "shadowRadius": 4,
-        "width": "100%",
-      }
+        {
+          "elevation": 1,
+          "shadowColor": "hsla(206, 10%, 29%, 0.06)",
+          "shadowOffset": {
+            "height": 0.5,
+            "width": 0,
+          },
+          "shadowOpacity": 0.15,
+          "shadowRadius": 4,
+        },
+      ]
     }
+    width="100%"
   >
     <View
       data-blade-component="base-box"
@@ -3183,7 +3228,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
               }
               accessible={true}
               data-blade-component="base-box"
-              id="progress-linear-43"
+              id="progress-linear-87"
               style={
                 [
                   {},
@@ -3261,29 +3306,44 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
   }
 >
   <View
+    backgroundColor="hsla(0, 0%, 100%, 1)"
+    borderColor="hsla(204, 8%, 88%, 1)"
+    borderRadius="medium"
+    borderStyle="solid"
+    borderWidth="thin"
+    data-blade-component="base-box"
+    display="flex"
+    justifyContent="space-between"
+    minHeight={56}
+    overflow="hidden"
+    position="relative"
     style={
-      {
-        "backgroundColor": "hsla(0, 0%, 100%, 1)",
-        "borderColor": "hsla(204, 8%, 88%, 1)",
-        "borderRadius": 12,
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "display": "flex",
-        "elevation": 1,
-        "justifyContent": "space-between",
-        "minHeight": 56,
-        "overflow": "hidden",
-        "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
-        "shadowOffset": {
-          "height": 0.5,
-          "width": 0,
+      [
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "hsla(204, 8%, 88%, 1)",
+          "borderRadius": 12,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "display": "flex",
+          "justifyContent": "space-between",
+          "overflow": "hidden",
+          "position": "relative",
+          "width": "100%",
         },
-        "shadowOpacity": 0.15,
-        "shadowRadius": 4,
-        "width": "100%",
-      }
+        {
+          "elevation": 1,
+          "shadowColor": "hsla(206, 10%, 29%, 0.06)",
+          "shadowOffset": {
+            "height": 0.5,
+            "width": 0,
+          },
+          "shadowOpacity": 0.15,
+          "shadowRadius": 4,
+        },
+      ]
     }
+    width="100%"
   >
     <View
       data-blade-component="base-box"
@@ -3845,29 +3905,44 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
     </View>
   </View>
   <View
+    backgroundColor="hsla(4, 85%, 44%, 0.09)"
+    borderColor="hsla(4, 85%, 44%, 0.18)"
+    borderRadius="medium"
+    borderStyle="solid"
+    borderWidth="thin"
+    data-blade-component="base-box"
+    display="flex"
+    justifyContent="space-between"
+    minHeight={56}
+    overflow="hidden"
+    position="relative"
     style={
-      {
-        "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
-        "borderColor": "hsla(4, 85%, 44%, 0.18)",
-        "borderRadius": 12,
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "display": "flex",
-        "elevation": 1,
-        "justifyContent": "space-between",
-        "minHeight": 56,
-        "overflow": "hidden",
-        "position": "relative",
-        "shadowColor": "hsla(206, 10%, 29%, 0.06)",
-        "shadowOffset": {
-          "height": 0.5,
-          "width": 0,
+      [
+        {
+          "backgroundColor": "hsla(4, 85%, 44%, 0.09)",
+          "borderColor": "hsla(4, 85%, 44%, 0.18)",
+          "borderRadius": 12,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "display": "flex",
+          "justifyContent": "space-between",
+          "overflow": "hidden",
+          "position": "relative",
+          "width": "100%",
         },
-        "shadowOpacity": 0.15,
-        "shadowRadius": 4,
-        "width": "100%",
-      }
+        {
+          "elevation": 1,
+          "shadowColor": "hsla(206, 10%, 29%, 0.06)",
+          "shadowOffset": {
+            "height": 0.5,
+            "width": 0,
+          },
+          "shadowOpacity": 0.15,
+          "shadowRadius": 4,
+        },
+      ]
     }
+    width="100%"
   >
     <View
       data-blade-component="base-box"

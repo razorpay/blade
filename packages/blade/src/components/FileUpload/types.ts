@@ -8,6 +8,14 @@ import type { BladeFile } from './bladeFile';
 
 type BladeFileList = BladeFile[];
 
+/**
+ * Props shared by web and React Native FileUpload.
+ *
+ * **React Native — not supported:**
+ * - `ref` — native FileUpload does not use `forwardRef`; there is no hidden input to attach a ref to
+ * - `_motionMeta` — motion ref wiring is web-only (attached to the hidden `<input>`)
+ * - `data-analytics-*` / `elementtiming` props — on web these are spread onto the hidden file input; not wired on native
+ */
 type FileUploadCommonProps = {
   /**
    * Position of the label relative to the file upload area. Desktop only prop. Default value on mobile will be 'top'

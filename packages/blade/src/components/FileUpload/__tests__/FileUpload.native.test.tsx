@@ -90,6 +90,176 @@ describe('<FileUpload /> (native)', () => {
     );
     expect(getAllByText('Something went wrong').length).toBeGreaterThan(0);
   });
+
+  it('should call onChange with empty fileList when upload area is pressed', () => {
+    const onChange = jest.fn();
+    const { getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        name="single-file-upload-input"
+        fileList={[]}
+        onChange={onChange}
+      />,
+    );
+
+    fireEvent.press(getByText('Upload'));
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith({
+      name: 'single-file-upload-input',
+      fileList: [],
+    });
+  });
+
+  it('should not call onChange when isDisabled and upload area is pressed', () => {
+    const onChange = jest.fn();
+    const { getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        fileList={[]}
+        onChange={onChange}
+        isDisabled
+      />,
+    );
+
+    fireEvent.press(getByText('Upload'));
+
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('should render FileUploadItem when controlled fileList is provided (single upload)', () => {
+    const successFile = {
+      id: 'file-1',
+      name: 'report.pdf',
+      size: 2048,
+      status: 'success' as const,
+    } as BladeFile;
+
+    const { getByText, queryByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        fileList={[successFile]}
+        onChange={jest.fn()}
+      />,
+    );
+
+    expect(getByText('report.pdf')).toBeTruthy();
+    expect(queryByText('Upload')).toBeNull();
+  });
+
+  it('should render multiple FileUploadItems when controlled fileList is provided (multi upload)', () => {
+    const files = [
+      {
+        id: 'file-1',
+        name: 'report.pdf',
+        size: 2048,
+        status: 'success' as const,
+      },
+      {
+        id: 'file-2',
+        name: 'invoice.png',
+        size: 1024,
+        status: 'success' as const,
+      },
+    ] as BladeFile[];
+
+    const { getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="multiple"
+        label="Upload GST certificate"
+        fileList={files}
+        onChange={jest.fn()}
+      />,
+    );
+
+    expect(getByText('report.pdf')).toBeTruthy();
+    expect(getByText('invoice.png')).toBeTruthy();
+    expect(getByText('Upload')).toBeTruthy();
+  });
+
+  it('should call onRemove through FileUpload when trash icon is pressed', () => {
+    const onRemove = jest.fn();
+    const successFile = {
+      id: 'file-1',
+      name: 'report.pdf',
+      size: 2048,
+      status: 'success' as const,
+    } as BladeFile;
+
+    const { getByLabelText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        fileList={[successFile]}
+        onChange={jest.fn()}
+        onRemove={onRemove}
+      />,
+    );
+
+    fireEvent.press(getByLabelText(`Remove ${successFile.name}`));
+
+    expect(onRemove).toHaveBeenCalledWith({ file: successFile });
+  });
+
+  it('should call onDismiss through FileUpload when close icon is pressed during upload', () => {
+    const onDismiss = jest.fn();
+    const uploadingFile = {
+      id: 'file-3',
+      name: 'video.mp4',
+      size: 10240,
+      status: 'uploading' as const,
+      uploadPercent: 45,
+    } as BladeFile;
+
+    const { getByLabelText } = renderWithTheme(
+      <FileUpload
+        uploadType="multiple"
+        label="Upload GST certificate"
+        fileList={[uploadingFile]}
+        onChange={jest.fn()}
+        onDismiss={onDismiss}
+      />,
+    );
+
+    fireEvent.press(getByLabelText(`Remove ${uploadingFile.name}`));
+
+    expect(onDismiss).toHaveBeenCalledWith({ file: uploadingFile });
+  });
+
+  it('should call onReupload and re-fire onChange tap signal through FileUpload', () => {
+    const onReupload = jest.fn();
+    const onChange = jest.fn();
+    const errorFile = {
+      id: 'file-2',
+      name: 'test.png',
+      size: 1024,
+      status: 'error' as const,
+      errorText: 'Upload failed',
+    } as BladeFile;
+
+    const { getAllByRole } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        name="single-file-upload-input"
+        fileList={[errorFile]}
+        onChange={onChange}
+        onReupload={onReupload}
+      />,
+    );
+
+    const buttons = getAllByRole('button');
+    fireEvent.press(buttons[0]);
+
+    expect(onReupload).toHaveBeenCalledWith({ file: errorFile });
+    expect(onChange).toHaveBeenCalledWith({
+      name: 'single-file-upload-input',
+      fileList: [],
+    });
+  });
 });
 
 describe('<FileUploadItem /> (native)', () => {

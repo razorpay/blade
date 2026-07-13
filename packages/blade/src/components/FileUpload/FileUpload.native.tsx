@@ -63,12 +63,14 @@ const _FileUpload = ({
   onRemove,
   onReupload,
   onDismiss,
+  onDrop,
   isDisabled,
   isRequired,
   necessityIndicator,
   fileList,
   testID,
   label,
+  labelPosition = 'top',
   accessibilityLabel,
   validationState,
   helpText,
@@ -76,6 +78,7 @@ const _FileUpload = ({
   maxCount,
   maxSize,
   size = 'medium',
+  _motionMeta,
   ...rest
 }: FileUploadProps): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
@@ -130,6 +133,46 @@ const _FileUpload = ({
         moduleName: 'FileUpload',
         message:
           'accept has no effect on React Native for file filtering. Configure the accepted file types in your file picker (e.g. react-native-document-picker) directly.',
+      });
+    }
+
+    if (onDrop !== undefined) {
+      logger({
+        type: 'warn',
+        moduleName: 'FileUpload',
+        message:
+          'onDrop has no effect on React Native. Drag-and-drop is not supported on native — use the onChange tap signal to open a file picker instead.',
+      });
+    }
+
+    if (labelPosition === 'left') {
+      logger({
+        type: 'warn',
+        moduleName: 'FileUpload',
+        message:
+          'labelPosition="left" is not supported on React Native and will be ignored. Labels always render above the upload area on native.',
+      });
+    }
+
+    if (_motionMeta !== undefined) {
+      logger({
+        type: 'warn',
+        moduleName: 'FileUpload',
+        message:
+          '_motionMeta is not supported on React Native. Motion ref wiring is web-only and attached to the hidden file input on web.',
+      });
+    }
+
+    const analyticsProps = Object.keys(rest).filter(
+      (key) => key.startsWith('data-analytics') || key.startsWith('elementtiming'),
+    );
+    if (analyticsProps.length > 0) {
+      logger({
+        type: 'warn',
+        moduleName: 'FileUpload',
+        message: `Analytics props (${analyticsProps.join(
+          ', ',
+        )}) are not supported on React Native. On web these are attached to the hidden file input.`,
       });
     }
 
@@ -294,12 +337,16 @@ const _FileUpload = ({
               onRemove?.({ file: selectedFiles[0] });
             }}
             onReupload={() => {
-              const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+              const fileToReupload = selectedFiles[0];
+              const newFiles = selectedFiles.filter(({ id }) => id !== fileToReupload.id);
               setSelectedFiles(() => newFiles);
+              // Mirror web's inputRef.click() — re-fire the tap signal so the consumer
+              // can open their file picker without duplicating that logic in onReupload.
+              handlePress();
               if (onReupload) {
-                onReupload({ file: selectedFiles[0] });
+                onReupload({ file: fileToReupload });
               } else {
-                onRemove?.({ file: selectedFiles[0] });
+                onRemove?.({ file: fileToReupload });
               }
             }}
             onDismiss={() => {
@@ -346,6 +393,7 @@ const _FileUpload = ({
               onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
+                handlePress();
                 if (onReupload) {
                   onReupload({ file });
                 } else {
