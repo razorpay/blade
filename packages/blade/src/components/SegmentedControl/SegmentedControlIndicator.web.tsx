@@ -20,32 +20,41 @@ const SegmentedControlIndicator = ({
   const updateDimensions = React.useCallback(() => {
     if (!selectedValue || !itemRefs) return;
     const activeItem = itemRefs.current.get(selectedValue);
-    if (!activeItem || activeItem.offsetWidth === 0) return;
+    const container = containerRef.current;
+    if (!activeItem || !container || activeItem.offsetWidth === 0) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const itemRect = activeItem.getBoundingClientRect();
 
     setDimensions({
       width: activeItem.offsetWidth,
       height: activeItem.offsetHeight,
-      x: activeItem.offsetLeft,
-      y: activeItem.offsetTop,
+      x: itemRect.left - containerRect.left,
+      y: itemRect.top - containerRect.top,
     });
-  }, [selectedValue, itemRefs]);
+  }, [selectedValue, itemRefs, containerRef]);
 
   useIsomorphicLayoutEffect(() => {
     if (!selectedValue) return;
     updateDimensions();
   }, [selectedValue, updateDimensions]);
 
+  const updateDimensionsRef = React.useRef(updateDimensions);
+  updateDimensionsRef.current = updateDimensions;
+
   React.useEffect(() => {
     if ('fonts' in document) {
       try {
         void document.fonts.ready.then(() => {
-          updateDimensions();
+          updateDimensionsRef.current();
         });
       } catch {
         /* empty */
       }
     }
-  }, [updateDimensions]);
+    // Runs once on mount — document.fonts.ready only needs to be awaited a single time.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useResize(containerRef, updateDimensions);
 

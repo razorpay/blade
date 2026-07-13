@@ -61,7 +61,8 @@ const _SegmentedControl = (
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
-  const hasFieldWrapper = Boolean(label || helpText || errorText);
+  const willRenderHintText =
+    Boolean(helpText) || (validationState === 'error' && Boolean(errorText));
 
   const segmentedControlElement = (
     <View
@@ -82,14 +83,6 @@ const _SegmentedControl = (
       {children}
     </View>
   );
-
-  if (!hasFieldWrapper) {
-    return (
-      <SegmentedControlContext.Provider value={contextValue}>
-        {segmentedControlElement}
-      </SegmentedControlContext.Provider>
-    );
-  }
 
   return (
     <SegmentedControlContext.Provider value={contextValue}>
@@ -112,12 +105,14 @@ const _SegmentedControl = (
         ) : null}
         <BaseBox flex={1}>
           {segmentedControlElement}
-          <FormHint
-            size={size}
-            type={validationState === 'error' ? 'error' : 'help'}
-            errorText={errorText}
-            helpText={helpText}
-          />
+          {willRenderHintText ? (
+            <FormHint
+              size={size}
+              type={validationState === 'error' ? 'error' : 'help'}
+              errorText={errorText}
+              helpText={helpText}
+            />
+          ) : null}
         </BaseBox>
       </BaseBox>
     </SegmentedControlContext.Provider>

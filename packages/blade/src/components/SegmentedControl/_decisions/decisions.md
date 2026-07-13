@@ -26,6 +26,159 @@ A dedicated component with a clean, purpose-built API is clearer for consumers.
 
 ---
 
+## API
+
+```jsx
+import { SegmentedControl, SegmentedControlItem } from '@razorpay/blade/components';
+
+<SegmentedControl defaultValue="daily" label="Time Period">
+  <SegmentedControlItem value="daily">Daily</SegmentedControlItem>
+  <SegmentedControlItem value="weekly">Weekly</SegmentedControlItem>
+  <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+</SegmentedControl>;
+```
+
+### Props
+
+#### SegmentedControl
+
+```typescript
+type SegmentedControlProps = {
+  /**
+   * The content of the SegmentedControl, accepts `SegmentedControlItem` components.
+   */
+  children: React.ReactNode;
+  /**
+   * The controlled selected value.
+   */
+  value?: string;
+  /**
+   * The default value when uncontrolled.
+   */
+  defaultValue?: string;
+  /**
+   * Callback fired when the selected value changes.
+   */
+  onChange?: ({ name, value }: { name: string | undefined; value: string }) => void;
+  /**
+   * The size of the segmented control.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * If `true`, the entire segmented control is disabled.
+   * @default false
+   */
+  isDisabled?: boolean;
+  /**
+   * Name attribute for form identification.
+   */
+  name?: string;
+  /**
+   * Renders the label of the segmented control. Required unless `accessibilityLabel` is provided.
+   */
+  label?: string;
+  /**
+   * Accessibility label for the segmented control (required when no visible `label`).
+   */
+  accessibilityLabel?: string;
+  /**
+   * Sets the position of the label.
+   * @default 'top'
+   */
+  labelPosition?: 'top' | 'left';
+  /**
+   * Help text displayed below the segmented control.
+   */
+  helpText?: string;
+  /**
+   * Error text displayed when `validationState` is set to 'error'. Overrides `helpText`.
+   */
+  errorText?: string;
+  /**
+   * Sets the validation state of the segmented control.
+   * @default 'none'
+   */
+  validationState?: 'error' | 'none';
+  /**
+   * Renders a necessity indicator after the label.
+   * @default 'none'
+   */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  /**
+   * Sets the required state of the segmented control.
+   * @default false
+   */
+  isRequired?: boolean;
+} & TestID &
+  DataAnalyticsAttribute &
+  StyledPropsBlade;
+```
+
+#### SegmentedControlItem
+
+```typescript
+type SegmentedControlItemProps = {
+  /**
+   * The unique value for this item.
+   */
+  value: string;
+  /**
+   * A leading icon component.
+   */
+  leading?: IconComponent;
+  /**
+   * The label content of the item. Optional for icon-only items — `accessibilityLabel` is
+   * required in that case.
+   */
+  children?: React.ReactNode;
+  /**
+   * Accessibility label for the item. Required when `children` is omitted (icon-only item).
+   */
+  accessibilityLabel?: string;
+  /**
+   * If `true`, this item is disabled.
+   * @default false
+   */
+  isDisabled?: boolean;
+} & TestID &
+  DataAnalyticsAttribute;
+```
+
+### Examples
+
+#### Icon-only items
+
+```jsx
+<SegmentedControl defaultValue="grid" accessibilityLabel="Layout view">
+  <SegmentedControlItem value="grid" leading={LayoutIcon} accessibilityLabel="Grid view" />
+  <SegmentedControlItem value="list" leading={ListIcon} accessibilityLabel="List view" />
+</SegmentedControl>
+```
+
+#### Controlled, with validation
+
+```jsx
+<SegmentedControl
+  label="Billing Cycle"
+  value={billingCycle}
+  onChange={({ value }) => setBillingCycle(value)}
+  validationState={hasError ? 'error' : 'none'}
+  errorText="Please select a billing cycle"
+  isRequired
+>
+  <SegmentedControlItem value="monthly">Monthly</SegmentedControlItem>
+  <SegmentedControlItem value="yearly">Yearly</SegmentedControlItem>
+</SegmentedControl>
+```
+
+### Accessibility
+
+- Root container uses `role="radiogroup"`, each item uses `role="radio"` with `aria-checked`.
+- Only one item is in the tab sequence at a time (`tabIndex=0` on the selected item, or the first enabled item when uncontrolled and unselected); the rest are `tabIndex=-1`.
+- Arrow keys (`ArrowRight`/`ArrowDown`/`ArrowLeft`/`ArrowUp`) move focus and selection between enabled items, wrapping at the ends — matching native `radiogroup` behavior.
+- `label`/`accessibilityLabel` is mandatory (enforced via the discriminated prop union in `types.ts`) so the group always has an accessible name.
+
 ## API Decisions
 
 ### `leading` prop naming (not `icon`)
@@ -43,10 +196,6 @@ This is the established pattern across all Blade form-field components (RadioGro
 ### Always full-width (no `isFullWidth` prop in v1)
 
 The design spec prescribes SegmentedControl always fills its container — same default as RadioGroup and ChipGroup. Consumers constrain width using `<Box maxWidth="...">` wrapping (established Blade pattern). Adding `isFullWidth` is additive and non-breaking; deferred to a follow-up if usage patterns demonstrate demand.
-
-### No `StyledPropsBlade` in v1
-
-Deferred to a follow-up after v1 stabilizes. Adding it is additive and non-breaking. SegmentedControl's primary use case is full-width form fields where direct layout props are less relevant. We'll evaluate after initial adoption.
 
 ### `validationState` supports `'error' | 'none'` only
 
