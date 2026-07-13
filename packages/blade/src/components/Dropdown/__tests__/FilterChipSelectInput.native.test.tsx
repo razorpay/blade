@@ -170,4 +170,26 @@ describe('<FilterChipSelectInput /> (native)', () => {
     // A selected chip renders the clear button.
     expect(getByLabelText('Clear Status value')).toBeTruthy();
   });
+
+  it('should reflect a controlled multiple value with counter and clear button', () => {
+    const { getByText, getByLabelText } = renderWithTheme(
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput
+          label="Status"
+          name="status"
+          value={['active', 'inactive']}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Inactive" value="inactive" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    // Controlled multi passes the array through as chip value → Counter shows selection count.
+    expect(getByText('2')).toBeTruthy();
+    expect(getByLabelText('Clear Status value')).toBeTruthy();
+  });
 });

@@ -44,7 +44,6 @@ exports[`<FilterChipSelectInput /> (native) should render with default props 1`]
               "borderWidth": 0,
               "flexDirection": "row",
               "height": 28,
-              "opacity": 1,
               "overflow": "visible",
             },
           ]

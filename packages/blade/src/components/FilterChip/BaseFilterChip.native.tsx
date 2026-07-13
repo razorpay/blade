@@ -105,7 +105,6 @@ const StyledFilterChip = styled(View)<{
     // The SVG dashed border must not be clipped when unselected; the selected state clips its
     // divider/close button to the rounded corners.
     overflow: $isSelected ? 'hidden' : 'visible',
-    opacity: $isDisabled ? 0.5 : 1,
   };
 });
 
@@ -202,6 +201,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
       <StyledFilterTrigger
         $isSelected={isSelected}
         disabled={isDisabled}
+        id={id}
         onPress={
           isDisabled
             ? undefined
@@ -244,7 +244,8 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
           <Divider orientation="vertical" variant={isDisabled ? 'muted' : 'subtle'} />
           <StyledFilterCloseButton
             {...makeAccessible({ label: `Clear ${label} value`, role: 'button' })}
-            onPress={isDisabled ? undefined : () => onClearButtonClick?.()}
+            // value can never be undefined because when it's undefined the button itself doesn't render
+            onPress={isDisabled ? undefined : () => onClearButtonClick?.({ value: value ?? '' })}
             disabled={isDisabled}
             {...metaAttribute({ name: 'filter-chip-close-button' })}
           >

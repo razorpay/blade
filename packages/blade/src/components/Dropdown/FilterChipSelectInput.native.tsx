@@ -60,10 +60,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     controlledValueIndices,
     changeCallbackTriggerer,
   } = useDropdown();
-  const valueTitle =
-    typeof value === 'string'
-      ? options.find((option) => option.value === value)?.title ?? value
-      : undefined;
+  const valueTitle = options.find((option) => option.value === value)?.title ?? value;
 
   const isUnControlled = options.length > 0 && props.value === undefined;
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
