@@ -423,7 +423,7 @@ const SankeyNodeShape = ({
   const { theme } = useTheme();
   const opacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
-  const easing = castNativeType(theme.motion.easing.standard) as EasingFn;
+  const easing = castNativeType(theme.motion.easing.standard) as unknown as EasingFn;
 
   React.useEffect(() => {
     opacity.value = withTiming(targetOpacity, { duration, easing });
@@ -457,7 +457,7 @@ const SankeyLinkShape = ({
   const { theme } = useTheme();
   const fillOpacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
-  const easing = castNativeType(theme.motion.easing.standard) as EasingFn;
+  const easing = castNativeType(theme.motion.easing.standard) as unknown as EasingFn;
 
   React.useEffect(() => {
     fillOpacity.value = withTiming(targetOpacity, { duration, easing });
