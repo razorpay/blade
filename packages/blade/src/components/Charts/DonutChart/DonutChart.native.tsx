@@ -127,6 +127,7 @@ const getLegendColorToken = (
   if (mappedColor && isSequentialColor(mappedColor)) {
     return mappedColor;
   }
+  if (!mappedColor) return undefined;
   return getHighestColorInRange({
     colorToken: mappedColor,
     followIntensityMapping: mapped.isCustomColor || totalKeys > totalChartColors,
@@ -345,6 +346,7 @@ const ChartDonutWrapper = ({
 
   useEffect(() => {
     sweepProgress.value = 0;
+    setActiveIndex(null);
     sweepProgress.value = withTiming(1, { duration: motionDuration, easing: motionEasing });
     return () => {
       cancelAnimation(sweepProgress);
@@ -496,9 +498,10 @@ const ChartDonutWrapper = ({
     const pointX = centerX + midRadius * Math.cos(rad);
     const pointY = centerY - midRadius * Math.sin(rad);
     const left = Math.max(0, Math.min(size.width - TOOLTIP_WIDTH, pointX - TOOLTIP_WIDTH / 2));
-    const top = Math.max(0, pointY);
+    const ESTIMATED_TOOLTIP_HEIGHT = 48;
+    const top = Math.max(0, Math.min(size.height - ESTIMATED_TOOLTIP_HEIGHT, pointY));
     return { left, top };
-  }, [activeSlice, size.width, innerRadius, outerRadius, centerX, centerY]);
+  }, [activeSlice, size.width, size.height, innerRadius, outerRadius, centerX, centerY]);
 
   const legendNode = slots.hasLegend ? (
     <View
@@ -522,6 +525,7 @@ const ChartDonutWrapper = ({
             style={{ flexDirection: 'row', alignItems: 'center' }}
             accessibilityRole="button"
             accessibilityState={{ selected: isSelected }}
+            accessibilityLabel={key}
           >
             <View
               style={{
@@ -572,7 +576,7 @@ const ChartDonutWrapper = ({
             ))}
           </G>
           {/* Accent outer ring — non-interactive, mirrors the web pointer-events:none Pie. */}
-          <G>
+          <G pointerEvents="none">
             {slices.map((slice, index) => (
               <AnimatedDonutSlice
                 key={`stroke-${slice.originalIndex}-${index}`}
@@ -680,7 +684,12 @@ const ChartDonutWrapper = ({
 
   return (
     <CommonChartComponentsContext.Provider
-      value={{ chartName: 'donut', dataColorMapping, selectedDataKeys: selectedKeysArray }}
+      value={{
+        chartName: 'donut',
+        dataColorMapping,
+        selectedDataKeys: selectedKeysArray,
+        setSelectedDataKeys: () => undefined,
+      }}
     >
       <BaseBox
         {...metaAttribute({ name: 'donut-chart', testID })}
