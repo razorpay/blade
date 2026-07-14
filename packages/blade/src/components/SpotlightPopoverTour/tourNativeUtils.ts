@@ -301,34 +301,64 @@ const findScrollableAncestor = (nativeHostComponent: unknown): ScrollableInstanc
 };
 
 const waitUntilPositionStable = (ref: StepRef): Promise<void> => {
-  return new Promise((resolve) => {
+  // Overall ceiling (~1s) — if measureInWindow stalls on every frame the
+  // per-call guard below prevents the promise from hanging, but this outer
+  // race ensures we never exceed ~1s even in pathological cases.
+  const OVERALL_TIMEOUT = 1000;
+
+  const innerPromise = new Promise<void>((resolve) => {
     let same = 0;
     let lastY: number | null = null;
     let lastX: number | null = null;
     let frames = 0;
+    let done = false;
     // ~750ms ceiling — enough for ScrollView animated settle without feeling stuck
     const maxFrames = 45;
     // Require several identical frames so mid-deceleration pauses don't finalize early
     const stableFramesNeeded = 5;
+    // Per-call timeout — if measureInWindow never invokes its callback, resolve
+    // instead of hanging forever (mirrors the 500ms guard in measureStepRect).
+    const PER_CALL_TIMEOUT = 100;
+
+    const finish = (): void => {
+      if (done) return;
+      done = true;
+      resolve();
+    };
 
     const check = (): void => {
+      if (done) return;
       frames += 1;
       if (frames > maxFrames) {
-        resolve();
+        finish();
         return;
       }
 
       const node = ref.current as (TourMeasurable & ScrollableInstance) | null;
       if (!node || typeof node.measureInWindow !== 'function') {
-        resolve();
+        finish();
         return;
       }
 
+      let callSettled = false;
+      const callTimeoutId = setTimeout(() => {
+        if (callSettled) return;
+        callSettled = true;
+        finish();
+      }, PER_CALL_TIMEOUT);
+
       node.measureInWindow((x, y) => {
+        if (callSettled || done) {
+          clearTimeout(callTimeoutId);
+          return;
+        }
+        callSettled = true;
+        clearTimeout(callTimeoutId);
+
         if (y === lastY && x === lastX) {
           same += 1;
           if (same >= stableFramesNeeded) {
-            resolve();
+            finish();
             return;
           }
         } else {
@@ -352,6 +382,11 @@ const waitUntilPositionStable = (ref: StepRef): Promise<void> => {
       setTimeout(check, 32);
     }
   });
+
+  return Promise.race([
+    innerPromise,
+    new Promise<void>((resolve) => setTimeout(resolve, OVERALL_TIMEOUT)),
+  ]);
 };
 
 type ScrollStepIntoViewOptions = {

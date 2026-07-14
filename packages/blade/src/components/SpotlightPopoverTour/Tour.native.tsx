@@ -181,15 +181,19 @@ const SpotlightPopoverTour = ({
     [activeStep, refIdMap, setDelayedSize, steps],
   );
 
-  const onStepLayout = useCallback(
-    (id: string) => {
-      // Only remask after settle, and skip delay so layout tweaks don't tween the cutout
-      if (steps[activeStep]?.name === id && isStepSettled) {
-        void updateMaskSize(true);
-      }
-    },
-    [activeStep, isStepSettled, steps, updateMaskSize],
-  );
+  // Store the latest onStepLayout logic in a ref so the context value stays
+  // stable (only contains stable callbacks). Without this, every step change or
+  // settle creates a new contextValue object, re-rendering ALL context consumers.
+  const onStepLayoutRef = React.useRef<(id: string) => void>(() => {});
+  onStepLayoutRef.current = (id: string) => {
+    if (steps[activeStep]?.name === id && isStepSettled) {
+      void updateMaskSize(true);
+    }
+  };
+
+  const onStepLayout = useCallback((id: string) => {
+    onStepLayoutRef.current(id);
+  }, []);
 
   /**
    * Web sequence after isTransitioning clears:
