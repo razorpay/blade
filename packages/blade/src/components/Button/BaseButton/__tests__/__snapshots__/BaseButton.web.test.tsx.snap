@@ -279,8 +279,10 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
         data-blade-component="base-box"
       >
         <div
+          aria-label="Loading"
           class=" c7"
           data-blade-component="base-box"
+          role="progressbar"
           size="16"
         />
       </div>
