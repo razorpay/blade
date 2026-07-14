@@ -60,6 +60,36 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   onPickerChange?: (picker: PickerType) => void;
 
   /**
+   * Controlled month that the calendar renders, independent of the selected `value`.
+   *
+   * Useful when you want the calendar to open on a specific month without pre-selecting
+   * a date — e.g. a "comparison" range picker that should default to the period
+   * immediately preceding a primary range picker's selection.
+   *
+   * Falls back to the first date of `value`/`defaultValue` (or today) when not set.
+   *
+   * When `visibleMonth` is controlled, you must handle `onVisibleMonthChange` to keep
+   * the prop in sync — otherwise calendar navigation will not work.
+   *
+   * @example
+   * // Anchor a comparison picker to the month before the primary range's start
+   * <DatePicker selectionType="range" visibleMonth={dayjs(primaryStart).subtract(1, 'month').toDate()} />
+   */
+  visibleMonth?: Date;
+  /**
+   * Uncontrolled variant of `visibleMonth`. Sets the initial month the calendar renders,
+   * without pre-selecting a date.
+   */
+  defaultVisibleMonth?: Date;
+  /**
+   * Callback which fires when the rendered month changes, either via calendar
+   * navigation (next/previous month, year, or decade) or when a date in a
+   * different month is selected. Does not fire when the `visibleMonth` prop
+   * is updated externally by the consumer.
+   */
+  onVisibleMonthChange?: (date: Date) => void;
+
+  /**
    * Controlled isOpen state
    */
   isOpen?: boolean;
@@ -266,10 +296,7 @@ type DatePickerInputProps = DatePickerCommonInputProps &
 
 type DatePickerFilterChipProps = DatePickerInputProps;
 
-type FilterChipDatePickerProps = Omit<
-  DatePickerProps<'single' | 'range'>,
-  'label' | 'displayFormat'
-> & {
+type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'label'> & {
   /**
    * Sets the label for the input element.
    */

@@ -16,7 +16,7 @@ const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps
     [`@media ${getMediaQuery({ min: props.theme.breakpoints.m })}`]: {
       padding: makeSize(getItemPadding(props.theme).itemPaddingDesktop),
     },
-    '&:hover:not([aria-disabled=true]), &[aria-expanded="true"]': {
+    '&:hover:not([aria-disabled=true]):not([aria-selected=true]), &[aria-expanded="true"]': {
       backgroundColor:
         props.color === 'negative'
           ? props.theme.colors.interactive.background.negative.faded
@@ -27,10 +27,7 @@ const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps
       ? getFocusRingStyles({ theme: props.theme })
       : undefined,
     '&[aria-selected=true], &[aria-selected=true]:hover': {
-      backgroundColor:
-        props.selectionType === 'single'
-          ? props.theme.colors.interactive.background.gray.fadedHighlighted
-          : undefined,
+      backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
     },
   };
 });
