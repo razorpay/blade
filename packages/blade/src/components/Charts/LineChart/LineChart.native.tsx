@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Svg,
@@ -206,6 +205,11 @@ const niceCeil = (raw: number): number => {
   return niceFraction * 10 ** exponent;
 };
 
+const niceFloor = (raw: number): number => {
+  if (raw >= 0) return 0;
+  return -niceCeil(-raw);
+};
+
 const formatYTick = (value: number): string => {
   const abs = Math.abs(value);
   if (abs >= 1_000_000) return `${(value / 1_000_000).toFixed(abs >= 10_000_000 ? 0 : 1)}M`;
@@ -371,6 +375,7 @@ const LineSeries = ({
   useEffect(() => {
     draw.value = 0;
     draw.value = withDelay(beginDelay, withTiming(1, { duration, easing: drawEasing }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [duration, beginDelay, dataSignature]);
 
   useEffect(() => {
@@ -380,6 +385,7 @@ const LineSeries = ({
       // Parity with framer-motion 'easeInOut'.
       easing: Easing.bezier(0.42, 0, 0.58, 1),
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hoveredKey, line.dataKey, dimDuration]);
 
   const clipProps = useAnimatedProps(() => ({ width: Math.max(0, plotWidth * draw.value) }));
@@ -507,6 +513,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     if (!isInSync) {
       setSelectedKeys(() => [...allDataKeys], true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allDataKeys, selectedKeys, shouldAutoSelectAllDataKeys]);
 
   // Reset selection when the data keys fully change — port of web:728-736.
@@ -517,6 +524,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         setSelectedKeys(() => [...allDataKeys]);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allDataKeys, selectedKeys]);
 
   const isVisible = (dataKey: string): boolean => selectedKeys.includes(dataKey);
@@ -544,27 +552,36 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     return map;
   }, [data, slots.xSecondaryDataKey]);
 
-  const dataMax = useMemo(() => {
-    if (!data.length) return 0;
+  const { dataMin, dataMax } = useMemo(() => {
+    if (!data.length) return { dataMin: 0, dataMax: 0 };
     const linesForDomain = visibleLines.length ? visibleLines : allLines;
-    let max = 0;
+    let min = Infinity;
+    let max = -Infinity;
     data.forEach((row) => {
       linesForDomain.forEach((line) => {
         const value = Number(row[line.dataKey]);
-        if (isNumber(value) && isFinite(value) && value > max) max = value;
+        if (isNumber(value) && isFinite(value)) {
+          if (value < min) min = value;
+          if (value > max) max = value;
+        }
       });
     });
-    return max;
+    if (min === Infinity) min = 0;
+    if (max === -Infinity) max = 0;
+    return { dataMin: min, dataMax: max };
   }, [data, visibleLines, allLines]);
 
+  const hasNegatives = dataMin < 0;
+  const yMin = hasNegatives ? niceFloor(dataMin) : 0;
   const yMax = niceCeil(dataMax);
+  const yRange = yMax - yMin;
   const yTicks = useMemo(() => {
     const ticks: number[] = [];
     for (let i = 0; i <= Y_TICK_COUNT; i++) {
-      ticks.push((yMax / Y_TICK_COUNT) * i);
+      ticks.push(yMin + (yRange / Y_TICK_COUNT) * i);
     }
     return ticks;
-  }, [yMax]);
+  }, [yMin, yRange]);
 
   const showAxes = slots.hasXAxis || slots.hasYAxis;
   const needsExtraBottomPad = Boolean(slots.xLabel && slots.xSecondaryDataKey);
@@ -607,13 +624,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           raw === null || raw === undefined || Number.isNaN(Number(raw)) ? null : Number(raw);
         return {
           x: xForIndex(index),
-          y: value === null ? 0 : plotHeight - (value / yMax) * plotHeight,
+          y: value === null ? 0 : plotHeight - ((value - yMin) / yRange) * plotHeight,
           value,
         };
       });
       return { line, color: resolveColor(line.dataKey, line.color), points };
     });
-  }, [visibleLines, data, plotWidth, plotHeight, yMax, dataColorMapping, theme.colors]);
+  }, [visibleLines, data, plotWidth, plotHeight, yMin, yRange, dataColorMapping, theme.colors]);
 
   const dataSignature = useMemo(() => `${data.length}:${allDataKeys.join(',')}`, [
     data.length,
@@ -796,7 +813,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                 <G x={padding.left} y={padding.top}>
                   {slots.hasGrid &&
                     yTicks.map((tick, idx) => {
-                      const y = plotHeight - (tick / yMax) * plotHeight;
+                      const y = plotHeight - ((tick - yMin) / yRange) * plotHeight;
                       return (
                         <Line
                           key={`grid-${idx}`}
@@ -821,7 +838,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                         strokeWidth={1}
                       />
                       {yTicks.map((tick, idx) => {
-                        const y = plotHeight - (tick / yMax) * plotHeight;
+                        const y = plotHeight - ((tick - yMin) / yRange) * plotHeight;
                         return (
                           <SvgText
                             key={`ytick-${idx}`}
@@ -942,8 +959,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     }
 
                     // Horizontal (numeric y).
-                    if (refLine.y === undefined || refLine.y > yMax || refLine.y < 0) return null;
-                    const y = plotHeight - (refLine.y / yMax) * plotHeight;
+                    if (refLine.y === undefined || refLine.y > yMax || refLine.y < yMin) return null;
+                    const y = plotHeight - ((refLine.y - yMin) / yRange) * plotHeight;
                     return (
                       <G key={`refline-${idx}`}>
                         <Line

@@ -208,6 +208,25 @@ describe('<ChartLineWrapper /> (native)', () => {
     expect(queryByText('Sales')).toBeFalsy();
   });
 
+  it('should render with negative data values', () => {
+    const negativeData = [
+      { name: 'Jan', profit: 2000 },
+      { name: 'Feb', profit: -1500 },
+      { name: 'Mar', profit: 3000 },
+      { name: 'Apr', profit: -500 },
+    ];
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={negativeData} testID="negative">
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartLine dataKey="profit" name="Profit" />
+      </ChartLineWrapper>,
+    );
+    fireLayout(getByTestId('negative-layout'));
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should accept a testID via metaAttribute', () => {
     const { getByTestId } = renderWithTheme(
       <ChartLineWrapper data={mockData} testID="line-chart-test">
