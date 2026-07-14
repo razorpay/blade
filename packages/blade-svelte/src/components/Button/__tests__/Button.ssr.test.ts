@@ -15,6 +15,7 @@ describe('<Button /> SSR', () => {
       props: { children: 'Pay Now', isDisabled: true },
     });
 
-    expect(body).toContain('disabled');
+    // Attribute on <button>, not a loose substring (class names can also contain "disabled")
+    expect(body).toMatch(/<button[^>]*\sdisabled(?:="")?(?:\s|>)/);
   });
 });
