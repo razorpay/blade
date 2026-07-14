@@ -107,6 +107,7 @@ export interface BaseButtonProps extends StyledPropsBlade {
   accessibilityProps?: {
     label?: string;
     describedBy?: string;
+    controls?: string;
     expanded?: boolean;
     hasPopup?: 'menu';
     role?: string;

@@ -6,7 +6,7 @@ import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
-import type { CardSpacingValueType, LinkOverlayProps } from './types';
+import type { CardSpacingValueType, CardVariant, LinkOverlayProps } from './types';
 import { CARD_LINK_OVERLAY_ID } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -51,7 +51,11 @@ type CardSurfaceBackgroundColors = `surface.background.gray.${DotNotationToken<
 
 export type CardProps = {
   /**
-   * Card contents
+   * Card contents.
+   *
+   * The expected structure depends on `variant`:
+   * - `primary` (default): standard `CardHeader`, `CardBody`, `CardFooter` composition.
+   * - `secondary`: `CardBody` only.
    */
   children: React.ReactNode;
   /**
@@ -115,6 +119,15 @@ export type CardProps = {
    */
   isSelected?: boolean;
   /**
+   * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored) and
+   * is announced as disabled to assistive tech.
+   *
+   * `isDisabled` takes precedence over `isSelected`.
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
+  /**
    * Makes the Card linkable by setting the `href` prop
    *
    * @default undefined
@@ -162,6 +175,15 @@ export type CardProps = {
    * Callback triggered when the card is hovered
    */
   onHover?: () => void;
+  /**
+   * Sets the visual variant of the Card
+   *
+   * - `primary`: Standard card with full composition (CardHeader, CardBody, CardFooter)
+   * - `secondary`: Simplified card that only accepts CardBody as children
+   *
+   * @default 'primary'
+   */
+  variant?: CardVariant;
   /**
    * Sets the size of the card header title
    *
@@ -225,6 +247,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     maxWidth,
     onClick,
     isSelected = false,
+    isDisabled = false,
     accessibilityLabel,
     shouldScaleOnHover = false,
     onHover,
@@ -232,6 +255,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
     target,
     rel,
     as,
+    variant = 'primary',
     size = 'large',
     cursor,
     opacity,
@@ -250,20 +274,11 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   useVerifyAllowedChildren({
     children,
     componentName: 'Card',
-    allowedComponents: [ComponentIds.CardHeader, ComponentIds.CardBody, ComponentIds.CardFooter],
+    allowedComponents:
+      variant === 'secondary'
+        ? [ComponentIds.CardBody]
+        : [ComponentIds.CardHeader, ComponentIds.CardBody, ComponentIds.CardFooter],
   });
-
-  const linkOverlayProps: LinkOverlayProps = {
-    ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
-    ...makeAccessible({ label: accessibilityLabel, pressed: href ? undefined : isSelected }),
-    onFocus: () => {
-      setIsFocused(true);
-    },
-    onBlur: () => {
-      setIsFocused(false);
-    },
-  };
-  const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
 
   const checkboxGroupProps = useCheckboxGroupContext();
   const radioGroupProps = useRadioGroupContext();
@@ -275,8 +290,24 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
   };
 
   const groupProps = getGroupProps();
-
   const _validationState = groupProps?.validationState;
+
+  // `isDisabled` takes precedence over `isSelected`. A Card used as a selection control inside a
+  // disabled Checkbox/Radio group is disabled too.
+  const isCardDisabled = isDisabled || Boolean(groupProps?.isDisabled);
+  const isCardSelected = isSelected && !isCardDisabled;
+
+  const linkOverlayProps: LinkOverlayProps = {
+    ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
+    ...makeAccessible({ label: accessibilityLabel, pressed: href ? undefined : isCardSelected }),
+    onFocus: () => {
+      setIsFocused(true);
+    },
+    onBlur: () => {
+      setIsFocused(false);
+    },
+  };
+  const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
 
   return (
     <CardProvider size={size}>
@@ -287,22 +318,23 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
         borderRadius="medium"
         onMouseEnter={onHover as never}
         shouldScaleOnHover={shouldScaleOnHover}
-        isSelected={isSelected}
+        isSelected={isCardSelected}
         isFocused={isFocused}
         // on react native we need to pass onClick to root, because we don't need the LinkOverlay in RN
-        onClick={isReactNative() ? onClick : undefined}
+        onClick={isReactNative() && !isCardDisabled ? onClick : undefined}
         width={width}
         height={height}
         minHeight={minHeight}
         minWidth={minWidth}
         maxWidth={maxWidth}
-        href={href}
+        href={isCardDisabled ? undefined : href}
         accessibilityLabel={accessibilityLabel}
         validationState={_validationState}
-        cursor={isReactNative() ? undefined : cursor}
+        cursor={(isReactNative() ? undefined : isCardDisabled ? 'not-allowed' : cursor) as never}
         opacity={opacity}
         transition={transition}
         flexShrink={flexShrink}
+        {...makeAccessible({ disabled: isCardDisabled ? true : undefined })}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
@@ -315,14 +347,15 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
           textAlign={'left' as never}
           backgroundColor="surface.background.gray.intense"
           colorScheme={colorScheme}
-          isSelected={isSelected}
+          isSelected={isCardSelected}
           elevation={elevation}
           overflow={overflow}
           overflowX={overflowX}
           overflowY={overflowY}
+          variant={variant}
           $isCard={true}
         >
-          {href ? (
+          {!isCardDisabled && href ? (
             <LinkOverlay
               onClick={onClick}
               href={href}
@@ -331,7 +364,7 @@ const _Card: React.ForwardRefRenderFunction<BladeElementRef, CardProps> = (
               {...linkOverlayProps}
             />
           ) : null}
-          {!href && onClick ? (
+          {!isCardDisabled && !href && onClick ? (
             <LinkOverlay as="button" onClick={onClick} {...linkOverlayProps} />
           ) : null}
           {children}

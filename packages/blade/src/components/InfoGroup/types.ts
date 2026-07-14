@@ -3,6 +3,7 @@ import type { StringChildrenType, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
 import type { TextColors } from '~components/Typography/BaseText/types';
+import type { Platform } from '~utils';
 
 export type InfoGroupProps = {
   /**
@@ -32,10 +33,13 @@ export type InfoGroupProps = {
   /**
    * Custom grid template columns for the InfoGroup layout
    *
+   * On web this accepts CSS grid template column values (e.g. `'1fr 1fr'`, `'repeat(2, 1fr)'`).
+   * On native this accepts a string that is parsed to emulate the column count (e.g. `'1fr 1fr'`, `'repeat(2, 1fr)'`).
+   *
    * @default 'max-content 1fr' for horizontal itemOrientation
    * @default 'repeat(min(4, ${React.Children.count(children)}), 1fr)' for vertical itemOrientation
    */
-  gridTemplateColumns?: BoxProps['gridAutoColumns'];
+  gridTemplateColumns?: Platform.Select<{ web: BoxProps['gridAutoColumns']; native: string }>;
 
   /**
    * Children should be InfoItem components

@@ -243,31 +243,20 @@
   min-height: var(--header-slot-height);
 }
 
+/* Chevron rotation + transition now live in collapsible.module.css via
+   CollapsibleChevronIcon. This wrapper only owns layout/alignment. */
 .headerChevron {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   margin-left: var(--spacing-3);
   min-height: var(--header-slot-height);
-  transition: transform var(--duration-moderate) var(--easing-standard);
-}
-
-.chevronExpanded {
-  transform: rotate(-180deg);
 }
 
 /* Header divider shown when expanded — full-width, no horizontal padding */
 .headerDivider {
   padding-left: var(--spacing-0);
   padding-right: var(--spacing-0);
-}
-
-/* Collapsible body content */
-.collapsibleContent {
-  overflow-y: hidden;
-  transition-property: height, opacity;
-  transition-duration: var(--duration-moderate);
-  transition-timing-function: var(--easing-standard);
 }
 
 /* Accordion item body */

@@ -14,6 +14,7 @@ import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { useIsMobile } from '~utils/useIsMobile';
 import type { BladeElementRef } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTruncationTitle } from '~utils/useTruncationTitle';
 
 const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtuallyFocused'] }>(
   (props) => {
@@ -45,6 +46,10 @@ const _Tag = (
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement | null => {
   const isMobile = useIsMobile();
+
+  const { containerRef, textRef } = useTruncationTitle({
+    content: typeof children === 'string' ? children : undefined,
+  });
 
   const textColor = isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.subtle';
   const iconColor = isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted';
@@ -97,8 +102,9 @@ const _Tag = (
         ) : null}
 
         {/* Tag Text */}
-        <Box display="flex" flexDirection="row">
+        <Box ref={containerRef as never} display="flex" flexDirection="row">
           <Text
+            ref={textRef as never}
             textAlign="center"
             truncateAfterLines={1}
             marginRight="spacing.2"

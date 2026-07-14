@@ -107,6 +107,24 @@ type LightBoxItemProps =
     };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `LightBox` for full-screen immersive media browsing (image galleries, document review, mixed media).
+- Compose with `LightBoxBody` containing `LightBoxItem` children.
+- Use image mode (`src` prop) for simple image viewing; use custom mode (`thumbnail` + `children`) for video/PDF.
+- Use controlled state (`activeIndex` + `onIndexChange`) for programmatic navigation.
+- Always provide `alt` text on `LightBoxItem` for accessibility.
+
+**Don't**
+
+- Don't use `LightBox` for single-item viewing — use `Preview` component instead.
+- Don't mix image mode and custom mode on the same `LightBoxItem` — they are mutually exclusive.
+- Don't forget to provide `thumbnail` when using custom mode — the thumbnail strip needs an image.
+- Don't use `LightBox` for simple show/hide content — use `Collapsible` or `Modal`.
+- Don't expect wrap-around navigation — Prev is disabled at first item, Next at last.
+
 ## Example
 
 ### Controlled Image Gallery

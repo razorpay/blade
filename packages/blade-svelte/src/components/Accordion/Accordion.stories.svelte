@@ -6,7 +6,12 @@
     title: 'Components/Accordion',
     component: Accordion,
     tags: ['autodocs'],
-    args: {},
+    args: {
+      variant: 'transparent',
+      size: 'large',
+      showNumberPrefix: false,
+      hasGrayBody: false,
+    },
     argTypes: {
       variant: {
         control: 'select',
@@ -23,6 +28,12 @@
       showNumberPrefix: {
         control: 'boolean',
         description: 'Adds numeric index at the beginning of items',
+        table: { defaultValue: { summary: 'false' } },
+      },
+      hasGrayBody: {
+        control: 'boolean',
+        description:
+          'Renders expanded body on a recessed gray surface. Recommended with variant="filled" for checkout-style accordions.',
         table: { defaultValue: { summary: 'false' } },
       },
     },
@@ -50,6 +61,37 @@
   let controlledExpandedIndex = $state(-1);
   let customHeaderVisible = $state(true);
 </script>
+
+<Story name="Playground">
+  {#snippet template({ children: _children, ...args })}
+    <Accordion {...args}>
+      {#snippet children()}
+        <AccordionItem>
+          {#snippet children()}
+            <AccordionItemHeader title="How can I setup Route?" />
+            <AccordionItemBody>
+              <Text>
+                You can create Routes, Rules, and Processors to emulate your 3DS flow on Razorpay
+                Payments to accept international card payments.
+              </Text>
+            </AccordionItemBody>
+          {/snippet}
+        </AccordionItem>
+        <AccordionItem>
+          {#snippet children()}
+            <AccordionItemHeader title="How can I setup QR Code?" />
+            <AccordionItemBody>
+              <Text>
+                You can create Routes, Rules, and Processors to emulate your 3DS flow on Razorpay
+                Payments to accept international card payments.
+              </Text>
+            </AccordionItemBody>
+          {/snippet}
+        </AccordionItem>
+      {/snippet}
+    </Accordion>
+  {/snippet}
+</Story>
 
 <Story name="Basic Example" asChild>
   <Accordion>

@@ -150,6 +150,24 @@ type DrawerFooterProps = {
 } & DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Drawer` for supplementary detail panels that slide from the right (e.g., transaction details, settings).
+- Compose with `DrawerHeader`, `DrawerBody`, and optionally `DrawerFooter`.
+- Use `onUnmount` (not `onDismiss`) for cleanup that should happen after the close animation completes.
+- Use `showOverlay` to control whether clicking outside dismisses the drawer.
+- Use stacking (max 2) for drill-down flows where the first drawer peeks behind.
+
+**Don't**
+
+- Don't use `Drawer` for critical interruptions requiring immediate action — use `Modal` instead.
+- Don't use `Drawer` on mobile — use `BottomSheet` for mobile-friendly slide-up panels.
+- Don't stack more than 2 drawers — this is the maximum supported.
+- Don't put non-Drawer sub-components as children — only `DrawerHeader`, `DrawerBody`, `DrawerFooter` are accepted.
+- Don't rely on `onDismiss` for post-animation cleanup — it fires immediately; use `onUnmount` instead.
+
 ## Example
 
 ### Basic Drawer

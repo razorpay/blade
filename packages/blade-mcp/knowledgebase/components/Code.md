@@ -61,6 +61,22 @@ type CodeNonHighlightedProps = CodeCommonProps & {
 type CodeProps = CodeHighlightedProps | CodeNonHighlightedProps;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Code` for inline code snippets, variable names, API keys, or configuration values within text.
+- Use `isHighlighted={true}` (default) for standard inline code with a subtle background.
+- Use `isHighlighted={false}` with a custom `color` when you need code to match surrounding content color.
+- Embed `Code` inside `Text` components for proper inline rendering on web.
+
+**Don't**
+
+- Don't pass the `color` prop when `isHighlighted={true}` — this combination throws an error.
+- Don't use `Code` for large multi-line code blocks — it's designed for inline snippets only.
+- Don't pass React components or JSX as children — only strings are accepted.
+- Don't place `Code` directly adjacent to `Text` on React Native without wrapping both in a `Box` with `flexWrap="wrap"`.
+
 ## Example
 
 Here's a comprehensive example showcasing the Code component's various features and props:

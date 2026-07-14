@@ -327,9 +327,10 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
 
   // Calculate total axis height:
   // - Tick labels height (dynamic)
-  // - X-axis label height + offset (if label prop is present)
-  const hasAxisLabel = Boolean(label);
-  const axisLabelSpace = hasAxisLabel ? X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT : 0;
+  // - X-axis label height + offset, always reserved so the gap between the
+  //   axis and elements below it (e.g. legend) stays constant whether or not
+  //   the `label` prop is present
+  const axisLabelSpace = X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT;
   const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
 
   // Position for X-axis label: below tick labels with offset
@@ -518,9 +519,10 @@ const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: bo
     opacity: $isHidden ? 0.4 : 1,
     background: 'none',
     border: 'none',
-    padding: 0,
+    padding: theme.spacing[2],
     '& p': {
       color: theme.colors.surface.text.gray.muted,
+      textDecoration: $isHidden ? 'line-through' : 'none',
       transition: $isClickable
         ? `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`
         : 'none',
@@ -575,7 +577,7 @@ const LegendItem = ({
             width: theme.spacing[4],
             height: theme.spacing[4],
             display: 'inline-block',
-            borderRadius: theme.border.radius.small,
+            borderRadius: theme.border.radius['2xsmall'],
           }}
         />
         <Text size="medium" color="surface.text.gray.muted">
@@ -694,6 +696,9 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
 }) => {
   const { theme } = useTheme();
   const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
+  const hasUserInteractedRef = React.useRef(false);
+  const isControlled = selectedDataKeysProp !== undefined;
+  const shouldAutoSelectAllDataKeys = !isControlled && defaultSelectedDataKeys === undefined;
 
   // Get all available dataKeys from the chart
   const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
@@ -703,6 +708,20 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     value: selectedDataKeysProp,
     defaultValue: defaultSelectedDataKeys ?? allDataKeys,
   });
+
+  React.useEffect(() => {
+    if (!shouldAutoSelectAllDataKeys || hasUserInteractedRef.current || allDataKeys.length === 0) {
+      return;
+    }
+
+    const isSelectedStateInSync =
+      selectedKeysArray.length === allDataKeys.length &&
+      allDataKeys.every((dataKey) => selectedKeysArray.includes(dataKey));
+
+    if (!isSelectedStateInSync) {
+      setSelectedKeysArray(() => [...allDataKeys], true);
+    }
+  }, [allDataKeys, selectedKeysArray, setSelectedKeysArray, shouldAutoSelectAllDataKeys]);
 
   // Reset selection when allDataKeys completely changes (e.g., when nameKey prop changes)
   // This detects when none of the currently selected keys exist in the new data keys
@@ -724,6 +743,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   // Handle toggle
   const handleClick = React.useCallback(
     (dataKey: string) => {
+      hasUserInteractedRef.current = true;
       const newSelectedKeys = selectedKeysArray.includes(dataKey)
         ? selectedKeysArray.filter((key) => key !== dataKey)
         : [...selectedKeysArray, dataKey];
