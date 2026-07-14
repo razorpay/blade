@@ -28,13 +28,15 @@ const useChildrenWithIndexes = ({
   const traverseGroupAndAddIndex = (
     groupChildrenProp: StepGroupProps['children'],
     nestingLevelOfGroup = 0,
-    stepItemIndex = 0,
+    // Mutable counter so Collapsible recursion can increment indexes that siblings after it see.
+    // A primitive param would not propagate increments back (nested groups get a fresh counter).
+    stepItemIndex = { current: 0 },
   ): React.ReactNode => {
     return React.Children.map(groupChildrenProp, (child, index) => {
       const componentId = getComponentId(child);
       if (componentId === componentIds.StepItem) {
         return React.cloneElement(child, {
-          _index: stepItemIndex++,
+          _index: stepItemIndex.current++,
           _totalIndex: totalIndex++,
           _nestingLevel: nestingLevelOfGroup,
           key: index,
@@ -137,10 +139,8 @@ const _StepGroup = (
   );
 
   const isHorizontal = orientation === 'horizontal';
-  const contentLayoutProps = {
-    paddingY: _nestingLevel === 0 ? ('spacing.4' as const) : undefined,
-    flexDirection: isHorizontal ? 'row' : 'column',
-  };
+  const paddingY = _nestingLevel === 0 ? ('spacing.4' as const) : undefined;
+  const flexDirection = isHorizontal ? ('row' as const) : ('column' as const);
 
   // Horizontal: put ref + styled props on an outer wrapper so margins apply around the
   // scroller (web puts them on the same root as overflowX). Inner box keeps the row layout.
@@ -157,7 +157,9 @@ const _StepGroup = (
           {...makeAnalyticsAttribute(rest)}
         >
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <BaseBox {...contentLayoutProps}>{childrenWithIndex}</BaseBox>
+            <BaseBox paddingY={paddingY} flexDirection={flexDirection}>
+              {childrenWithIndex}
+            </BaseBox>
           </ScrollView>
         </BaseBox>
       </StepGroupContext.Provider>
@@ -172,7 +174,8 @@ const _StepGroup = (
         maxWidth={maxWidth ?? '100%'}
         minWidth={minWidth}
         width={width}
-        {...contentLayoutProps}
+        paddingY={paddingY}
+        flexDirection={flexDirection}
         {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
         {...makeAnalyticsAttribute(rest)}
       >
