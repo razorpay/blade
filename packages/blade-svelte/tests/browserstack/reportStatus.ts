@@ -5,7 +5,9 @@ import type { TestType } from '@playwright/test';
 // CLIENT_STOPPED_SESSION otherwise. This marker tells BrowserStack's CDP proxy to set
 // the session status explicitly. Mobile sessions already get this from the SDK, but
 // executing it there too is a harmless no-op.
-export function registerBrowserStackStatusReporter(test: TestType<any, any>): void {
+export function registerBrowserStackStatusReporter(
+  test: TestType<Record<string, unknown>, Record<string, unknown>>,
+): void {
   test.afterEach(async ({ page }, testInfo) => {
     const status = testInfo.status === 'passed' ? 'passed' : 'failed';
     const reason = testInfo.error?.message ?? '';
@@ -21,7 +23,7 @@ export function registerBrowserStackStatusReporter(test: TestType<any, any>): vo
         // eslint-disable-next-line no-eval
         (0, eval)(m);
       }, marker);
-    } catch (error) {
+    } catch (error: unknown) {
       console.warn('Failed to report BrowserStack session status:', error);
     }
   });

@@ -7,7 +7,10 @@ test('TextInput accepts typed input', async ({ page }) => {
   // BrowserStack mobile SDK's keystroke simulation reliably drops the space
   // character on both Google Pixel and iPhone, regardless of typing strategy
   // tried. Not reproducible on desktop. See MOBILE_TESTS_STATUS.md.
-  test.skip(!!process.env.BROWSERSTACK_MOBILE, 'Space character dropped by BrowserStack mobile SDK keystroke simulation');
+  test.skip(
+    !!process.env.BROWSERSTACK_MOBILE,
+    'Space character dropped by BrowserStack mobile SDK keystroke simulation',
+  );
   // The default "TextInput" story's `type` arg is `url`, and `input[type=url]`
   // strips whitespace from typed values in every browser. Use the dedicated
   // "type number" story instead — TextInput coerces its DOM `type` to `text`
