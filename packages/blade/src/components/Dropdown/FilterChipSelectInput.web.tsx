@@ -13,6 +13,7 @@ import type { BaseFilterChipProps } from '~components/FilterChip/types';
 import { useId } from '~utils/useId';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFirstRender } from '~utils/useFirstRender';
+import { makeGetTitleFromValue, makeGetFilterChipDisplayValue } from './FilterChipSelectInputUtils';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
@@ -135,10 +136,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUnControlled, options]);
 
-  const getTitleFromValue = (value: string): string => {
-    const option = options.find((option) => option.value === value);
-    return option ? option.title : '';
-  };
+  const getTitleFromValue = makeGetTitleFromValue(options);
 
   const getUnControlledFilterChipValue = (): string | string[] => {
     if (selectionType === 'single') {
@@ -155,15 +153,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   // Resolves the value shown inside the chip: option titles for display. Controlled consumers
   // pass option value(s); we map them to titles here (falling back to the raw value if the
   // options haven't loaded yet).
-  const getFilterChipDisplayValue = (): string | string[] => {
-    if (props.value === undefined) {
-      return getUnControlledFilterChipValue();
-    }
-    if (Array.isArray(props.value)) {
-      return props.value.map((selectionValue) => getTitleFromValue(selectionValue) || selectionValue);
-    }
-    return getTitleFromValue(props.value) || props.value;
-  };
+  const getFilterChipDisplayValue = (): string | string[] =>
+    makeGetFilterChipDisplayValue(props.value, getUnControlledFilterChipValue, getTitleFromValue);
 
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });

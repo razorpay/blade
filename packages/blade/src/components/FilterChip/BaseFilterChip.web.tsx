@@ -102,7 +102,7 @@ const renderValue = (
     if (value.length === 1) {
       return (
         <Text as="span" size="small" weight="medium" color={valueColor} truncateAfterLines={1}>
-          {value[0]}
+          {typeof value[0] === 'string' ? value[0] : ''}
         </Text>
       );
     }

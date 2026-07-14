@@ -41,7 +41,9 @@ const FilterChipGroup = ({
   };
   const isPlural =
     filterChipGroupSelectedFilters.length > 1 || selectedFiltersCount > 1;
-  const actionButtonText = clearButtonText ?? `Clear Filter${isPlural ? 's' : ''}`;
+  const defaultButtonText =
+    clearButtonBehavior === 'reset' ? 'Reset' : `Clear Filter${isPlural ? 's' : ''}`;
+  const actionButtonText = clearButtonText ?? defaultButtonText;
   return (
     <FilterChipGroupProvider
       value={{
