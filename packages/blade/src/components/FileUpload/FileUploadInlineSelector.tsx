@@ -19,8 +19,8 @@ import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
 const StyledInlineSelectorTrigger = styled.button(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  maxWidth: '120px',
-  minHeight: '32px',
+  maxWidth: makeSize(120),
+  minHeight: makeSize(32),
   paddingTop: 0,
   paddingBottom: 0,
   paddingLeft: makeSize(theme.spacing[3]),
