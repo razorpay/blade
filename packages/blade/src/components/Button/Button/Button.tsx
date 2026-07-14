@@ -45,11 +45,10 @@ type ButtonCommonProps = {
    * Determines the type of loading indicator displayed when `isLoading` is true.
    *
    * - `'indefinite'`: Shows a 3-dot loader (default)
-   * - `'definite'`: Shows a progress indicator based on `loadingProgress`
    *
    * @default 'indefinite'
    */
-  loadingType?: 'indefinite' | 'definite';
+  loadingType?: 'indefinite';
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
 

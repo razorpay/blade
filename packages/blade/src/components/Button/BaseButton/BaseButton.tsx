@@ -81,11 +81,10 @@ type BaseButtonCommonProps = {
    * Determines the type of loading indicator displayed when `isLoading` is true.
    *
    * - `'indefinite'`: Shows a 3-dot loader (default)
-   * - `'definite'`: Shows a progress indicator based on `loadingProgress`
    *
    * @default 'indefinite'
    */
-  loadingType?: 'indefinite' | 'definite';
+  loadingType?: 'indefinite';
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?:
@@ -692,7 +691,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
                 if (resolvedSpinnerColor !== 'neutral') {
                   return getIn(
                     theme.colors,
-                    `interactive.icon.${resolvedSpinnerColor}.subtle` as any,
+                    `interactive.icon.${resolvedSpinnerColor}.subtle` as DotNotationToken<
+                      Theme['colors']
+                    >,
                   );
                 }
                 return getIn(theme.colors, 'interactive.icon.gray.muted');
