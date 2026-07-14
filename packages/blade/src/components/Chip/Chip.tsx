@@ -44,6 +44,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     value,
     children,
     icon: Icon,
+    leading,
     color,
     testID,
     _motionMeta,
@@ -66,6 +67,13 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         moduleName: 'Chip',
         message:
           '<Chip /> component should only be used within the context of a <ChipGroup /> component',
+      });
+    }
+
+    if (Icon && leading) {
+      throwBladeError({
+        moduleName: 'Chip',
+        message: "icon and leading shouldn't be used together",
       });
     }
   }
@@ -192,6 +200,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               borderColor={chipBorderColor}
               {...(isReactNative() && { backgroundColor: chipBackgroundColor })}
               isDisabled={_isDisabled}
+              isChecked={_isChecked}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
               size={_size}
@@ -204,20 +213,20 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 size={_size}
                 display="flex"
                 flexDirection="row"
-                justifyContent="center"
+                justifyContent={isReactNative() ? 'flex-start' : 'center'}
                 alignItems="center"
                 overflow="hidden"
                 backgroundColor={chipBackgroundColor}
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
-                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].left[
-                    _size
-                  ]
+                  chipHorizontalPaddingTokens[
+                    Boolean(Icon) || Boolean(leading) ? 'withIcon' : 'withoutIcon'
+                  ].left[_size]
                 }
                 paddingRight={
-                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].right[
-                    _size
-                  ]
+                  chipHorizontalPaddingTokens[
+                    Boolean(Icon) || Boolean(leading) ? 'withIcon' : 'withoutIcon'
+                  ].right[_size]
                 }
                 height={makeSize(chipHeightTokens[_size])}
                 width={isReactNative() ? undefined : '100%'}
@@ -225,6 +234,10 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 {Icon ? (
                   <BaseBox display="flex">
                     <Icon color={chipIconColor} size={chipIconSizes[_size]} />
+                  </BaseBox>
+                ) : leading ? (
+                  <BaseBox display="flex" alignItems="center">
+                    {leading}
                   </BaseBox>
                 ) : null}
                 {children ? (

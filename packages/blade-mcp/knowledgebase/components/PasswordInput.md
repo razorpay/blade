@@ -137,6 +137,22 @@ type IconButtonProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `PasswordInput` for all password entry fields: login, registration, and password change flows.
+- Use `autoCompleteSuggestionType="newPassword"` for registration/change flows and `"password"` for login.
+- Use `showRevealButton` (default true) to let users verify their typed password.
+- Use `maxCharacters` with validation feedback (`errorText`/`successText`) for password strength guidance.
+
+**Don't**
+
+- Don't use `TextInput` with `type="password"` — always use `PasswordInput` for proper security handling.
+- Don't use `PasswordInput` for non-password fields — it's specifically designed for secure credential entry.
+- Don't use `necessityIndicator="optional"` — it only supports `"required"` or `"none"`.
+- Don't add leading icons, dropdowns, or prefix/suffix — PasswordInput has a simplified visual feature set.
+
 ## Example
 
 ### Comprehensive PasswordInput Usage

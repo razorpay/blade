@@ -1,5 +1,28 @@
 # @razorpay/blade-mcp
 
+## 1.28.0
+
+### Minor Changes
+
+- adff0f113: feat(AnnouncementBanner): add AnnouncementBanner component to blade, blade-core, and blade-svelte
+
+### Patch Changes
+
+- a1d2688dd: docs: enrich MCP knowledgebase patterns with design context
+- c4387a5fd: docs: add usage guidelines to MCP knowledgebase components
+
+## 1.27.2
+
+### Patch Changes
+
+- 58ba1549d: feat(icons): add AgentStudioIcon and 6 filled icon variants
+
+## 1.27.1
+
+### Patch Changes
+
+- 1aec424ef: docs(blade-mcp): update knowledgebase with icons and tokens
+
 ## 1.27.0
 
 ### Minor Changes

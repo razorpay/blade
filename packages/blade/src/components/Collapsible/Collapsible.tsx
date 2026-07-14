@@ -21,7 +21,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type CollapsibleProps = {
   /**
-   * Composes `CollapsibleButton`, `CollapsibleLink`, `CollapsibleBody`
+   * Composes `CollapsibleButton`, `CollapsibleLink`, `CollapsibleText`, `CollapsibleBody`
    */
   children: ReactNode;
 
@@ -122,12 +122,13 @@ const _Collapsible = (
         !(
           isValidAllowedChildren(child, componentIds.CollapsibleBody) ||
           isValidAllowedChildren(child, componentIds.CollapsibleButton) ||
-          isValidAllowedChildren(child, componentIds.CollapsibleLink)
+          isValidAllowedChildren(child, componentIds.CollapsibleLink) ||
+          isValidAllowedChildren(child, componentIds.CollapsibleText)
         ) &&
         !_dangerouslyDisableValidations
       ) {
         throwBladeError({
-          message: `only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
+          message: `only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink, CollapsibleText`,
           moduleName: 'Collapsible',
         });
       }

@@ -9,6 +9,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   }
 >
   <View
+    accessibilityHint="Tap to close the Bottom Sheet"
+    accessibilityLabel="Bottom Sheet backdrop"
+    accessibilityRole="button"
+    accessible={true}
+    collapsable={false}
+    handlerTag={4}
+    handlerType="TapGestureHandler"
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
     pointerEvents="auto"
     style={
       [
@@ -25,7 +34,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           },
           {
             "backgroundColor": "hsla(0, 0%, 0%, 0.56)",
-            "zIndex": 100,
           },
         ],
         {
@@ -41,6 +49,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
     style={
       [
         {
+          "elevation": 100,
           "zIndex": 100,
         },
         {
@@ -89,37 +98,20 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       }
     >
       <View
-        animatedIndex={
-          {
-            "value": -1,
-          }
-        }
-        animatedPosition={
-          {
-            "value": 1334,
-          }
-        }
-        data-blade-component="base-box"
         pointerEvents="none"
         style={
           [
-            {
-              "pointerEvents": "none",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderTopLeftRadius": 16,
-              "borderTopRightRadius": 16,
-              "justifyContent": "center",
-              "position": "relative",
-            },
             {
               "bottom": 0,
               "left": 0,
               "position": "absolute",
               "right": 0,
               "top": 0,
+            },
+            {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderTopLeftRadius": 16,
+              "borderTopRightRadius": 16,
             },
           ]
         }
@@ -139,7 +131,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       >
         <View
           collapsable={false}
-          handlerTag={1}
+          handlerTag={2}
           handlerType="PanGestureHandler"
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
@@ -229,9 +221,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         "paddingLeft": 16,
                         "paddingRight": 16,
                         "paddingTop": 16,
+                        "width": "100%",
                       },
                     ]
                   }
+                  width="100%"
                 >
                   <View
                     accessibilityRole="button"
@@ -326,6 +320,204 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     type="button"
                   >
                     <View
+                      pointerEvents="none"
+                      style={
+                        {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                    >
+                      <RNSVGSvgView
+                        bbHeight="100%"
+                        bbWidth="100%"
+                        focusable={false}
+                        pointerEvents="none"
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
+                            },
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            {
+                              "flex": 0,
+                              "height": "100%",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <RNSVGGroup
+                          fill={
+                            {
+                              "payload": 4278190080,
+                              "type": 0,
+                            }
+                          }
+                        >
+                          <RNSVGDefs>
+                            <RNSVGLinearGradient
+                              gradient={
+                                [
+                                  0,
+                                  -1,
+                                  1,
+                                  16777215,
+                                ]
+                              }
+                              gradientTransform={null}
+                              gradientUnits={0}
+                              name="topFade"
+                              x1="0"
+                              x2="0"
+                              y1="0"
+                              y2="1"
+                            />
+                            <RNSVGLinearGradient
+                              gradient={
+                                [
+                                  0,
+                                  -1,
+                                  1,
+                                  16777215,
+                                ]
+                              }
+                              gradientTransform={null}
+                              gradientUnits={0}
+                              name="bottomFade"
+                              x1="0"
+                              x2="0"
+                              y1="1"
+                              y2="0"
+                            />
+                            <RNSVGMask
+                              fill={
+                                {
+                                  "payload": 4278190080,
+                                  "type": 0,
+                                }
+                              }
+                              height="100%"
+                              maskContentUnits={1}
+                              maskUnits={0}
+                              name="topMask"
+                              width="100%"
+                              x="0%"
+                              y="0%"
+                            >
+                              <RNSVGRect
+                                fill={
+                                  {
+                                    "brushRef": "topFade",
+                                    "type": 1,
+                                  }
+                                }
+                                height="20%"
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                                width="100%"
+                                x="0"
+                                y="0"
+                              />
+                            </RNSVGMask>
+                            <RNSVGMask
+                              fill={
+                                {
+                                  "payload": 4278190080,
+                                  "type": 0,
+                                }
+                              }
+                              height="100%"
+                              maskContentUnits={1}
+                              maskUnits={0}
+                              name="bottomMask"
+                              width="100%"
+                              x="0%"
+                              y="0%"
+                            >
+                              <RNSVGRect
+                                fill={
+                                  {
+                                    "brushRef": "bottomFade",
+                                    "type": 1,
+                                  }
+                                }
+                                height="20%"
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                                width="100%"
+                                x="0"
+                                y="80%"
+                              />
+                            </RNSVGMask>
+                          </RNSVGDefs>
+                          <RNSVGRect
+                            fill={null}
+                            height="100%"
+                            propList={
+                              [
+                                "fill",
+                                "stroke",
+                                "strokeWidth",
+                              ]
+                            }
+                            rx={8}
+                            ry={8}
+                            stroke={
+                              {
+                                "payload": 4292796899,
+                                "type": 0,
+                              }
+                            }
+                            strokeWidth={2}
+                            width="100%"
+                            x="0"
+                            y="0"
+                          />
+                          <RNSVGRect
+                            fill={null}
+                            height="100%"
+                            mask="bottomMask"
+                            propList={
+                              [
+                                "fill",
+                                "stroke",
+                                "strokeWidth",
+                              ]
+                            }
+                            rx={8}
+                            ry={8}
+                            stroke={
+                              {
+                                "payload": 771751936,
+                                "type": 0,
+                              }
+                            }
+                            strokeWidth={4}
+                            width="100%"
+                            x="0"
+                            y="0"
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                    </View>
+                    <View
                       style={
                         {
                           "transform": [
@@ -412,7 +604,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         accessibilityRole="adjustable"
         accessible={true}
         collapsable={false}
-        handlerTag={2}
+        handlerTag={3}
         handlerType="PanGestureHandler"
         onGestureHandlerEvent={[Function]}
         onGestureHandlerStateChange={[Function]}
@@ -597,6 +789,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           fontSize={200}
                           fontStyle="normal"
                           fontWeight="semibold"
+                          letterSpacing={25}
                           lineHeight={200}
                           marginTop="1px"
                           style={
@@ -607,7 +800,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 "fontSize": 16,
                                 "fontStyle": "normal",
                                 "fontWeight": "600",
-                                "letterSpacing": 0,
+                                "letterSpacing": -0.528,
                                 "lineHeight": 24,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -720,6 +913,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     fontSize={75}
                                     fontStyle="normal"
                                     fontWeight="medium"
+                                    letterSpacing={50}
                                     lineHeight={75}
                                     numberOfLines={1}
                                     style={
@@ -730,7 +924,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                           "fontSize": 12,
                                           "fontStyle": "normal",
                                           "fontWeight": "500",
-                                          "letterSpacing": 0,
+                                          "letterSpacing": -0.15600000000000003,
                                           "lineHeight": 17,
                                           "marginBottom": 0,
                                           "marginLeft": 0,
@@ -763,6 +957,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         fontSize={75}
                         fontStyle="normal"
                         fontWeight="regular"
+                        letterSpacing={50}
                         lineHeight={75}
                         style={
                           [
@@ -772,7 +967,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               "fontSize": 12,
                               "fontStyle": "normal",
                               "fontWeight": "400",
-                              "letterSpacing": 0,
+                              "letterSpacing": -0.15600000000000003,
                               "lineHeight": 17,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -883,6 +1078,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               fontSize={75}
                               fontStyle="normal"
                               fontWeight="medium"
+                              letterSpacing={50}
                               lineHeight={75}
                               marginX="spacing.2"
                               numberOfLines={1}
@@ -894,7 +1090,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     "fontSize": 12,
                                     "fontStyle": "normal",
                                     "fontWeight": "500",
-                                    "letterSpacing": 0,
+                                    "letterSpacing": -0.15600000000000003,
                                     "lineHeight": 17,
                                     "marginBottom": 0,
                                     "marginLeft": 4,
@@ -1106,6 +1302,15 @@ exports[`<BottomSheet /> should render empty header 1`] = `
   }
 >
   <View
+    accessibilityHint="Tap to close the Bottom Sheet"
+    accessibilityLabel="Bottom Sheet backdrop"
+    accessibilityRole="button"
+    accessible={true}
+    collapsable={false}
+    handlerTag={8}
+    handlerType="TapGestureHandler"
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
     pointerEvents="auto"
     style={
       [
@@ -1122,7 +1327,6 @@ exports[`<BottomSheet /> should render empty header 1`] = `
           },
           {
             "backgroundColor": "hsla(0, 0%, 0%, 0.56)",
-            "zIndex": 100,
           },
         ],
         {
@@ -1138,6 +1342,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
     style={
       [
         {
+          "elevation": 100,
           "zIndex": 100,
         },
         {
@@ -1186,37 +1391,20 @@ exports[`<BottomSheet /> should render empty header 1`] = `
       }
     >
       <View
-        animatedIndex={
-          {
-            "value": -1,
-          }
-        }
-        animatedPosition={
-          {
-            "value": 1334,
-          }
-        }
-        data-blade-component="base-box"
         pointerEvents="none"
         style={
           [
-            {
-              "pointerEvents": "none",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "hsla(0, 0%, 100%, 1)",
-              "borderTopLeftRadius": 16,
-              "borderTopRightRadius": 16,
-              "justifyContent": "center",
-              "position": "relative",
-            },
             {
               "bottom": 0,
               "left": 0,
               "position": "absolute",
               "right": 0,
               "top": 0,
+            },
+            {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderTopLeftRadius": 16,
+              "borderTopRightRadius": 16,
             },
           ]
         }
@@ -1236,7 +1424,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
       >
         <View
           collapsable={false}
-          handlerTag={3}
+          handlerTag={6}
           handlerType="PanGestureHandler"
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
@@ -1326,9 +1514,11 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         "paddingLeft": 16,
                         "paddingRight": 16,
                         "paddingTop": 16,
+                        "width": "100%",
                       },
                     ]
                   }
+                  width="100%"
                 >
                   <View
                     accessibilityRole="button"
@@ -1423,6 +1613,204 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     type="button"
                   >
                     <View
+                      pointerEvents="none"
+                      style={
+                        {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                    >
+                      <RNSVGSvgView
+                        bbHeight="100%"
+                        bbWidth="100%"
+                        focusable={false}
+                        pointerEvents="none"
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
+                            },
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            {
+                              "flex": 0,
+                              "height": "100%",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <RNSVGGroup
+                          fill={
+                            {
+                              "payload": 4278190080,
+                              "type": 0,
+                            }
+                          }
+                        >
+                          <RNSVGDefs>
+                            <RNSVGLinearGradient
+                              gradient={
+                                [
+                                  0,
+                                  -1,
+                                  1,
+                                  16777215,
+                                ]
+                              }
+                              gradientTransform={null}
+                              gradientUnits={0}
+                              name="topFade"
+                              x1="0"
+                              x2="0"
+                              y1="0"
+                              y2="1"
+                            />
+                            <RNSVGLinearGradient
+                              gradient={
+                                [
+                                  0,
+                                  -1,
+                                  1,
+                                  16777215,
+                                ]
+                              }
+                              gradientTransform={null}
+                              gradientUnits={0}
+                              name="bottomFade"
+                              x1="0"
+                              x2="0"
+                              y1="1"
+                              y2="0"
+                            />
+                            <RNSVGMask
+                              fill={
+                                {
+                                  "payload": 4278190080,
+                                  "type": 0,
+                                }
+                              }
+                              height="100%"
+                              maskContentUnits={1}
+                              maskUnits={0}
+                              name="topMask"
+                              width="100%"
+                              x="0%"
+                              y="0%"
+                            >
+                              <RNSVGRect
+                                fill={
+                                  {
+                                    "brushRef": "topFade",
+                                    "type": 1,
+                                  }
+                                }
+                                height="20%"
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                                width="100%"
+                                x="0"
+                                y="0"
+                              />
+                            </RNSVGMask>
+                            <RNSVGMask
+                              fill={
+                                {
+                                  "payload": 4278190080,
+                                  "type": 0,
+                                }
+                              }
+                              height="100%"
+                              maskContentUnits={1}
+                              maskUnits={0}
+                              name="bottomMask"
+                              width="100%"
+                              x="0%"
+                              y="0%"
+                            >
+                              <RNSVGRect
+                                fill={
+                                  {
+                                    "brushRef": "bottomFade",
+                                    "type": 1,
+                                  }
+                                }
+                                height="20%"
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                                width="100%"
+                                x="0"
+                                y="80%"
+                              />
+                            </RNSVGMask>
+                          </RNSVGDefs>
+                          <RNSVGRect
+                            fill={null}
+                            height="100%"
+                            propList={
+                              [
+                                "fill",
+                                "stroke",
+                                "strokeWidth",
+                              ]
+                            }
+                            rx={8}
+                            ry={8}
+                            stroke={
+                              {
+                                "payload": 4292796899,
+                                "type": 0,
+                              }
+                            }
+                            strokeWidth={2}
+                            width="100%"
+                            x="0"
+                            y="0"
+                          />
+                          <RNSVGRect
+                            fill={null}
+                            height="100%"
+                            mask="bottomMask"
+                            propList={
+                              [
+                                "fill",
+                                "stroke",
+                                "strokeWidth",
+                              ]
+                            }
+                            rx={8}
+                            ry={8}
+                            stroke={
+                              {
+                                "payload": 771751936,
+                                "type": 0,
+                              }
+                            }
+                            strokeWidth={4}
+                            width="100%"
+                            x="0"
+                            y="0"
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                    </View>
+                    <View
                       style={
                         {
                           "transform": [
@@ -1509,7 +1897,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
         accessibilityRole="adjustable"
         accessible={true}
         collapsable={false}
-        handlerTag={4}
+        handlerTag={7}
         handlerType="PanGestureHandler"
         onGestureHandlerEvent={[Function]}
         onGestureHandlerStateChange={[Function]}

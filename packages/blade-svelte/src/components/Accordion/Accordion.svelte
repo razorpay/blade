@@ -24,6 +24,7 @@
     size = 'large',
     maxWidth,
     minWidth,
+    hasGrayBody = false,
     testID,
     ...rest
   }: AccordionProps = $props();
@@ -62,12 +63,14 @@
 
   setAccordionContext(() => ({
     expandedIndex: currentExpandedIndex,
+    defaultExpandedIndex,
     onExpandChange: handleExpandChange,
     showNumberPrefix,
     variant,
     numberOfItems: _numberOfItems,
     size,
     registerItem,
+    hasGrayBody,
   }));
 
   const wrapperClass = $derived(getAccordionWrapperClasses({ variant }));

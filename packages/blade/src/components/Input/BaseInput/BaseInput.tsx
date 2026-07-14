@@ -51,7 +51,7 @@ import type {
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
@@ -878,6 +878,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDisabled,
     necessityIndicator,
     validationState,
+    validationTextPlacement,
     errorText,
     helpText,
     successText,
@@ -1024,10 +1025,12 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
   });
 
+  const isValidationTextInside = validationTextPlacement === 'inside';
   const willRenderHintText =
     Boolean(helpText) ||
-    (validationState === 'success' && Boolean(successText)) ||
-    (validationState === 'error' && Boolean(errorText));
+    (!isValidationTextInside &&
+      ((validationState === 'success' && Boolean(successText)) ||
+        (validationState === 'error' && Boolean(errorText))));
 
   if (__DEV__) {
     if (
@@ -1039,6 +1042,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           ', ',
         )} but received ${autoCompleteSuggestionType}`,
         moduleName: 'Input',
+      });
+    }
+
+    if (showHintsAsTooltip && isValidationTextInside) {
+      logger({
+        message:
+          'showHintsAsTooltip and validationTextPlacement="inside" should not be used together. validationTextPlacement="inside" will take precedence.',
+        moduleName: 'Input',
+        type: 'warn',
       });
     }
   }
@@ -1115,9 +1127,16 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             size={_size}
             borderRadius={borderRadius}
             numberOfLines={numberOfLines}
-            onClick={() => {
+            onClick={(e) => {
               if (!isReactNative) {
                 inputRef.current?.focus();
+                // If click didn't originate from the input itself (e.g., clicked on
+                // leading icon like DatePicker's calendar icon), dispatch a click on
+                // the input to trigger its onClick handlers (e.g., floating-ui toggle)
+                const inputEl = inputRef.current as HTMLElement | null;
+                if (!inputEl?.contains(e.target as Node) && !_isDisabled) {
+                  inputEl?.click();
+                }
               }
             }}
             isTableInputCell={isTableInputCell}
@@ -1223,12 +1242,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               trailingIcon={trailingIcon}
               isDisabled={_isDisabled}
               validationState={validationState}
+              validationTextPlacement={validationTextPlacement}
               trailingButton={trailingButton}
               size={_size}
               errorText={errorText}
               successText={successText}
               showHintsAsTooltip={showHintsAsTooltip}
               trailingDropDown={trailingDropDown}
+              errorTextId={errorTextId}
+              successTextId={successTextId}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
@@ -1246,10 +1268,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
           >
             <FormHint
-              type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+              type={getHintType({
+                validationState: isValidationTextInside ? 'none' : validationState,
+                hasHelpText: Boolean(helpText),
+              })}
               helpText={helpText}
-              errorText={errorText}
-              successText={successText}
+              errorText={isValidationTextInside ? undefined : errorText}
+              successText={isValidationTextInside ? undefined : successText}
               helpTextId={helpTextId}
               errorTextId={errorTextId}
               successTextId={successTextId}

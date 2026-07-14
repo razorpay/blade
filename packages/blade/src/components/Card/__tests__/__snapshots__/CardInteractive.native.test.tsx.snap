@@ -49,6 +49,12 @@ exports[`<Card /> should render a clickable Card 1`] = `
     }
   >
     <View
+      accessibilityState={
+        {
+          "disabled": undefined,
+        }
+      }
+      accessible={true}
       borderRadius="medium"
       data-blade-component="card"
       display="block"
@@ -107,6 +113,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
           ]
         }
         textAlign="left"
+        variant="primary"
       >
         <View
           data-blade-component="card-body"
@@ -173,6 +180,12 @@ exports[`<Card /> should render a interactive Card 1`] = `
     }
   >
     <View
+      accessibilityState={
+        {
+          "disabled": undefined,
+        }
+      }
+      accessible={true}
       borderRadius="medium"
       data-blade-component="card"
       display="block"
@@ -231,6 +244,7 @@ exports[`<Card /> should render a interactive Card 1`] = `
           ]
         }
         textAlign="left"
+        variant="primary"
       >
         <View
           data-blade-component="card-body"
@@ -298,6 +312,12 @@ exports[`<Card /> should render a linkable Card 1`] = `
     }
   >
     <View
+      accessibilityState={
+        {
+          "disabled": undefined,
+        }
+      }
+      accessible={true}
       borderRadius="medium"
       data-blade-component="card"
       display="block"
@@ -356,6 +376,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
           ]
         }
         textAlign="left"
+        variant="primary"
       >
         <View
           data-blade-component="card-body"
@@ -423,6 +444,12 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
     }
   >
     <View
+      accessibilityState={
+        {
+          "disabled": undefined,
+        }
+      }
+      accessible={true}
       borderRadius="medium"
       data-blade-component="card"
       display="block"
@@ -481,6 +508,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
           ]
         }
         textAlign="left"
+        variant="primary"
       >
         <View
           data-blade-component="card-body"

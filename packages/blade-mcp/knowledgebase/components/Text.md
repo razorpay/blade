@@ -60,6 +60,23 @@ type TextProps<T> = T extends { variant: infer Variant }
   : T;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Text` for body content, paragraphs, and auxiliary information on pages.
+- Use `variant="body"` for main content and `variant="caption"` for smaller supporting text.
+- Use `as` prop for semantic HTML rendering (`span` for inline, `label` for form labels, `abbr` for abbreviations).
+- Use `truncateAfterLines` to prevent text overflow in constrained layouts.
+- Use `textDecorationLine="dotted"` only on abbreviations paired with `Tooltip` or `Popover` for additional context.
+
+**Don't**
+
+- Don't use `Text` for page or section titles — use `Heading` or `Display` instead.
+- Don't use invalid sizes with `variant="caption"` — only `"small"` and `"medium"` are accepted.
+- Don't use `textDecorationLine="dotted"` purely for visual emphasis — it's reserved for abbreviations that reveal context on interaction.
+- Don't deeply nest `Text` components for formatting — keep nesting minimal for readability.
+
 ## Example
 
 Here's a comprehensive example showcasing the Text component's various features and props, demonstrating different text variants, sizes, weights, and styling options for creating properly formatted content:

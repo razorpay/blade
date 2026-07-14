@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import userEvent from '@testing-library/user-event';
 
 import { Alert } from '..';
@@ -31,6 +32,31 @@ describe('<Alert />', () => {
         description="Currently you can only accept payments in international currencies using PayPal."
         color="positive"
         isFullWidth
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render primary color with subtle emphasis', () => {
+    const { container } = renderWithTheme(
+      <Alert
+        description="Your payment link has been created successfully."
+        color="primary"
+        title="Payment Link Created"
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render primary color with intense emphasis', () => {
+    const { container } = renderWithTheme(
+      <Alert
+        description="Your payment link has been created successfully."
+        color="primary"
+        emphasis="intense"
+        title="Payment Link Created"
       />,
     );
 
@@ -115,5 +141,13 @@ describe('<Alert />', () => {
     );
 
     expect(getByTestId('alert-test')).toHaveAttribute('data-analytics-action', 'click');
+  });
+
+  it('should accept custom maxWidth', () => {
+    const { container } = renderWithTheme(
+      <Alert description="Test alert with custom max width" maxWidth="800px" />,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 });

@@ -1,0 +1,149 @@
+/*
+ * IconButton — a transparent-background clickable icon.
+ * Mirrors React `StyledIconButton.web.tsx`. The <button> element directly wraps
+ * the <svg> icon (no inner wrappers). The icon inherits `currentColor` from the
+ * button; the icon inherits it through `currentColor` on the child `<Icon>`.
+ */
+.icon-button {
+  border: none;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--border-radius-2xsmall);
+  transition-property: color, box-shadow;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  /*
+   * Focus ring — faithful reproduction of React `getFocusRingStyles({ theme })`
+   * (see StyledIconButton.web.tsx `&:focus-visible`). React renders a true 4px
+   * solid outline offset by 1px (NOT the Button's box-shadow ring), animating
+   * `outline-width` over the 2xquick duration. Ungated to mirror React's styled
+   * object exactly — `:focus-visible` already cannot match a disabled button.
+   */
+  &:focus-visible {
+    outline: 4px solid var(--surface-border-primary-muted);
+    outline-offset: 1px;
+    transition-property: outline-width;
+    transition-duration: var(--duration-2xquick);
+    transition-timing-function: var(--easing-standard);
+    z-index: 2;
+  }
+}
+
+/*
+ * ===== Emphasis: intense (gray) =====
+ * rest → muted, hover/focus/active → subtle, disabled → disabled.
+ */
+.emphasis-intense {
+  color: var(--interactive-icon-gray-muted);
+
+  &:hover:not([disabled]),
+  &:focus-visible:not([disabled]),
+  &:active:not([disabled]) {
+    color: var(--interactive-icon-gray-subtle);
+  }
+
+  &[disabled] {
+    color: var(--interactive-icon-gray-disabled);
+  }
+}
+
+/*
+ * ===== Emphasis: subtle (static white) =====
+ * For use on dark / intense surfaces.
+ */
+.emphasis-subtle {
+  color: var(--interactive-icon-static-white-muted);
+
+  &:hover:not([disabled]),
+  &:focus-visible:not([disabled]),
+  &:active:not([disabled]) {
+    color: var(--interactive-icon-static-white-subtle);
+  }
+
+  &[disabled] {
+    color: var(--interactive-icon-static-white-disabled);
+  }
+}
+
+/*
+ * ===== Highlighted (web-only) =====
+ * Rounder corners + fixed square size (set via compound size classes) + a faded
+ * hover/focus background (set via compound emphasis classes). `size="large"` is
+ * invalid with highlighted and is guarded in the component.
+ */
+.highlighted {
+  border-radius: var(--border-radius-small);
+}
+
+/* Fixed square sizes — only small & medium are valid when highlighted. */
+.highlighted-small {
+  width: 24px;
+  height: 24px;
+}
+
+.highlighted-medium {
+  width: 32px;
+  height: 32px;
+}
+
+/*
+ * Highlighted hover/focus background per emphasis. React's highlightedHoverColorMap
+ * and focusBackgroundColorMap are identical, so hover and focus-visible share one
+ * selector group here.
+ */
+.highlighted-intense {
+  &:hover:not([disabled]),
+  &:focus-visible:not([disabled]) {
+    background-color: var(--interactive-background-gray-faded-highlighted);
+  }
+}
+
+.highlighted-subtle {
+  &:hover:not([disabled]),
+  &:focus-visible:not([disabled]) {
+    background-color: var(--interactive-background-static-white-faded);
+  }
+}
+
+/*
+ * ===== Emphasis: moderate (web-only) =====
+ * Highlighted-style container with a persistent faded background at rest.
+ * Matches AppBar trailing icon buttons (profile, close) on dark surfaces.
+ * `size="large"` is invalid and is guarded in the component.
+ */
+.emphasis-moderate {
+  border-radius: var(--border-radius-small);
+  background-color: var(--interactive-background-static-white-faded);
+  color: var(--interactive-icon-static-white-normal);
+  transition-property: color, background-color;
+
+  &:hover:not([disabled]),
+  &:focus-visible:not([disabled]),
+  &:active:not([disabled]) {
+    color: var(--interactive-icon-static-white-subtle);
+    background-color: var(--interactive-background-static-white-faded-highlighted);
+  }
+
+  &[disabled] {
+    color: var(--interactive-icon-static-white-disabled);
+  }
+}
+
+.moderate-small {
+  width: 24px;
+  height: 24px;
+}
+
+.moderate-medium {
+  width: 32px;
+  height: 32px;
+}

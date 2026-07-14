@@ -64,4 +64,10 @@ export type FormInputValidationProps = {
    *
    */
   validationState?: 'success' | 'error' | 'none';
+  /**
+   * Placement of the validation text relative to the input
+   *
+   * @default 'outside'
+   */
+  validationTextPlacement?: 'outside' | 'inside';
 };

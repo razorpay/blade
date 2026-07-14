@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import type { CounterInputProps } from './types';
 import { StyledCounterInput } from './StyledCounterInput';
-import { COUNTER_INPUT_TOKEN } from './token';
+import { COUNTER_INPUT_TOKEN, COUNTER_INPUT_ICON_SIZE_MAP } from './token';
 import { CounterInputProvider } from './CounterInputContext';
 import { BaseInput } from '~components/Input/BaseInput';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -68,14 +68,6 @@ const StyledCounterButton = styled.button<{
     }}
   }
 `;
-
-// Icon size mapping for counter input
-const ICON_SIZE_MAP = {
-  xsmall: 'small',
-  small: 'small',
-  medium: 'large',
-  large: 'xlarge',
-} as const;
 
 const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
   (
@@ -274,7 +266,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   }}
                 >
                   {/* Using currentColor allows CSS hover styles to control icon color */}
-                  <MinusIcon size={ICON_SIZE_MAP[size]} color="currentColor" />
+                  <MinusIcon size={COUNTER_INPUT_ICON_SIZE_MAP[size]} color="currentColor" />
                 </StyledCounterButton>
 
                 <BaseBox className={animationClass}>
@@ -318,7 +310,7 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                   }}
                 >
                   {/* Using currentColor allows CSS hover styles to control icon color */}
-                  <PlusIcon size={ICON_SIZE_MAP[size]} color="currentColor" />
+                  <PlusIcon size={COUNTER_INPUT_ICON_SIZE_MAP[size]} color="currentColor" />
                 </StyledCounterButton>
               </BaseBox>
               {isLoading && (
