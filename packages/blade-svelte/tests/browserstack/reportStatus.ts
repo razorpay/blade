@@ -9,7 +9,8 @@ export function registerBrowserStackStatusReporter(
   test: TestType<Record<string, unknown>, Record<string, unknown>>,
 ): void {
   test.afterEach(async ({ page }, testInfo) => {
-    const status = testInfo.status === 'passed' || testInfo.status === 'flaky' ? 'passed' : 'failed';
+    const status =
+      testInfo.status === 'passed' || testInfo.status === 'flaky' ? 'passed' : 'failed';
     const reason = testInfo.error?.message ?? '';
     const marker = `browserstack_executor: ${JSON.stringify({
       action: 'setSessionStatus',
