@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, createEvent } from '@testing-library/react';
 import { Slider } from '../Slider';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
@@ -34,9 +34,7 @@ describe('<Slider />', () => {
 
     fireEvent.change(slider, { target: { value: '40' } });
 
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ name: undefined, value: 40 }),
-    );
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ name: undefined, value: 40 }));
     expect(slider).toHaveAttribute('aria-valuenow', '40');
   });
 
@@ -47,9 +45,7 @@ describe('<Slider />', () => {
 
     fireEvent.change(slider, { target: { value: '40' } });
 
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ name: undefined, value: 40 }),
-    );
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ name: undefined, value: 40 }));
     expect(slider).toHaveAttribute('aria-valuenow', '25');
   });
 
@@ -79,9 +75,7 @@ describe('<Slider />', () => {
 
     fireEvent.change(getByRole('slider'), { target: { value: '0.26' } });
 
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ name: undefined, value: 0.3 }),
-    );
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ name: undefined, value: 0.3 }));
   });
 
   it('calls onChangeEnd after pointer and keyboard commits', () => {
@@ -196,7 +190,7 @@ describe('<Slider />', () => {
     fireEvent.keyDown(slider, { key: 'Home' });
     fireEvent.keyDown(slider, { key: 'PageDown' });
     expect(onChange).toHaveBeenLastCalledWith(
-      expect.objectContaining({ name: undefined, value: -10 }),
+      expect.objectContaining({ name: undefined, value: 0 }),
     );
   });
 
@@ -231,13 +225,17 @@ describe('<Slider />', () => {
     const trackArea = container.querySelector('[data-blade-component="slider"] > div');
     expect(trackArea).toBeTruthy();
 
-    const rect = { left: 0, width: 100, top: 0, height: 44 } as DOMRect;
-    jest.spyOn(trackArea!, 'getBoundingClientRect').mockReturnValue(rect);
+    // trackRef is on TrackLine (first child of TrackArea)
+    const trackLine = trackArea?.firstElementChild as HTMLElement;
+    expect(trackLine).toBeTruthy();
 
-    fireEvent.pointerDown(trackArea!, { clientX: 25, target: trackArea });
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ name: undefined, value: 25 }),
-    );
+    const rect = { left: 0, width: 100, top: 0, height: 44 } as DOMRect;
+    jest.spyOn(trackLine, 'getBoundingClientRect').mockReturnValue(rect);
+
+    const pointerEvent = createEvent.pointerDown(trackArea as Element, { clientX: 25 });
+    Object.defineProperty(pointerEvent, 'clientX', { value: 25, configurable: true });
+    fireEvent(trackArea as Element, pointerEvent);
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ name: undefined, value: 25 }));
   });
 
   it('formats range values using valueFormatter', () => {

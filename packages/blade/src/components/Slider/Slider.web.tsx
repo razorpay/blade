@@ -176,10 +176,11 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
 
   const handleInputChange = React.useCallback(
     (index: 0 | 1) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (isDisabled) return;
       latestEventRef.current = event;
       updateThumbValue(index, Number(event.currentTarget.value));
     },
-    [updateThumbValue],
+    [isDisabled, updateThumbValue],
   );
 
   const handleInputKeyDown = React.useCallback(
@@ -220,8 +221,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
         updateValue(next);
         startInputRef.current?.focus();
       } else {
-        const nextThumb =
-          Math.abs(next - rangeValue[0]) <= Math.abs(next - rangeValue[1]) ? 0 : 1;
+        const nextThumb = Math.abs(next - rangeValue[0]) <= Math.abs(next - rangeValue[1]) ? 0 : 1;
         setActiveThumb(nextThumb);
         updateValue(
           nextThumb === 0

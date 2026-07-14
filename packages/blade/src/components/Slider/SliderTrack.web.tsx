@@ -99,7 +99,9 @@ const TrackLine = styled.div<SliderTrackStyleProps>(
     pointerEvents: 'none',
     position: 'absolute',
     right: sliderTokens.interactionTarget / 2,
-    top: ($hasThumbValue ? sliderTokens.thumbValueOffset : 0) + (sliderTokens.interactionTarget - $trackHeight) / 2,
+    top:
+      ($hasThumbValue ? sliderTokens.thumbValueOffset : 0) +
+      (sliderTokens.interactionTarget - $trackHeight) / 2,
   }),
 );
 
@@ -219,13 +221,5 @@ const ThumbValueLabel = styled.span(({ theme }) => ({
   zIndex: 4,
 }));
 
-export {
-  MarkDot,
-  MarkLabel,
-  NativeRangeInput,
-  ThumbValueLabel,
-  TrackArea,
-  TrackFill,
-  TrackLine,
-};
+export { MarkDot, MarkLabel, NativeRangeInput, ThumbValueLabel, TrackArea, TrackFill, TrackLine };
 export type { SliderTrackStyleProps };
