@@ -89,9 +89,10 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
             <BaseBox>{children}</BaseBox>
           </BaseBox>
           {footer ? (
-            // Native defaults alignSelf to stretch in column flex, but an earlier
-            // flex-start here shrink-wrapped tour/footer actions and stacked Prev/Next.
-            <BaseBox width="100%">{footer}</BaseBox>
+            // On native, an earlier alignSelf="flex-start" shrink-wrapped tour footer
+            // actions and stacked Prev/Next. Full width keeps the footer row laying out
+            // correctly. Web keeps the default (no explicit width) to preserve layout.
+            <BaseBox width={isReactNative() ? '100%' : undefined}>{footer}</BaseBox>
           ) : null}
         </BaseBox>
         {arrow}
