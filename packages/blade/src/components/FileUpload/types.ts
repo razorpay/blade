@@ -121,13 +121,21 @@ type FileUploadCommonProps = {
   /**
    * Function that returns the selected category value for a given file (controlled).
    * Use this to resolve per-file category values without managing a separate map.
+   *
+   * A function prop is used instead of a flat `Record<string, string>` because the
+   * parent `FileUpload` does not expose file IDs to consumers — files may not have
+   * stable IDs until the component assigns them internally. The function receives
+   * the `BladeFile` object directly, allowing consumers to resolve category state
+   * by any file property (name, id, size, etc.) without coupling to Blade's
+   * internal ID assignment.
    */
   categoryValue?: (file: BladeFile) => string | undefined;
   /**
    * Callback fired when a category option is selected.
-   * Receives the selected `value` and the associated `file`.
+   * Receives the selected `values` array (convention: single-select returns one-element array)
+   * and the associated `file`.
    */
-  onCategoryChange?: (args: { value: string; file: BladeFile }) => void;
+  onCategoryChange?: FileUploadCategoryChangeHandler;
   /**
    * Placeholder text shown in the category dropdown when no value is selected.
    *
@@ -213,7 +221,7 @@ type FileUploadCategoryOption = {
   value: string;
 };
 
-type FileUploadCategoryChangeHandler = (args: { value: string; file: BladeFile }) => void;
+type FileUploadCategoryChangeHandler = (args: { values: string[]; file: BladeFile }) => void;
 
 type FileUploadInlineSelectorTriggerProps = {
   displayLabel: string;
@@ -246,7 +254,8 @@ type FileUploadItemProps = Pick<
   selectedCategoryValue?: string;
   /**
    * Callback fired when a category option is selected.
-   * Receives the selected `value` and the associated `file`.
+   * Receives the selected `values` array (convention: single-select returns one-element array)
+   * and the associated `file`.
    */
   onCategoryChange?: FileUploadCategoryChangeHandler;
   /**

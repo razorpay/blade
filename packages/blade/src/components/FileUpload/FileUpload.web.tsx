@@ -6,7 +6,6 @@ import type {
   FileUploadVariableSizeProps,
   FileUploadCategoryChangeHandler,
   FileUploadCategoryOption,
-  FileUploadCategoryChangeHandler,
 } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {

@@ -65,7 +65,7 @@ const _InlineSelectorTrigger = ({
     value,
     onChange: ({ values }) => {
       if (values.length > 0) {
-        onChange({ value: values[0], file });
+        onChange({ values, file });
       }
     },
     name: file.id ?? file.name,

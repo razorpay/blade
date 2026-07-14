@@ -140,7 +140,7 @@ describe('<FileUploadItem category />', () => {
 
     expect(onCategoryChange).toHaveBeenCalledWith(
       expect.objectContaining({
-        value: 'receipt',
+        values: ['receipt'],
         file: successFile,
       }),
     );
@@ -156,7 +156,7 @@ describe('<FileUploadItem category />', () => {
           file={successFile}
           categoryOptions={categoryOptions}
           selectedCategoryValue={selectedValue}
-          onCategoryChange={({ value }) => setSelectedValue(value)}
+          onCategoryChange={({ values }) => setSelectedValue(values[0])}
           categoryPlaceholder="Select"
         />
       );
@@ -235,7 +235,7 @@ describe('<FileUploadItem category />', () => {
 
       expect(onCategoryChange).toHaveBeenCalledWith(
         expect.objectContaining({
-          value: 'invoice',
+          values: ['invoice'],
         }),
       );
     });
@@ -264,7 +264,7 @@ describe('<FileUploadItem category />', () => {
 
       expect(onCategoryChange).toHaveBeenCalledWith(
         expect.objectContaining({
-          value: 'receipt',
+          values: ['receipt'],
         }),
       );
     });
@@ -357,17 +357,25 @@ describe('<FileUpload /> integration with category selector', () => {
       status: 'success',
     } as BladeFile;
 
+    const categoryValueFn = (f: BladeFile): string | undefined => {
+      if (f.id === 'file-single') return 'invoice';
+      return undefined;
+    };
+
     const { getByRole } = renderWithTheme(
       <FileUpload
         uploadType="single"
         label="Upload document"
         fileList={[file]}
         categoryOptions={categoryOptions}
+        categoryValue={categoryValueFn}
         onCategoryChange={onCategoryChange}
       />,
     );
 
-    expect(getByRole('button', { name: 'Select category for single-doc.pdf' })).toBeTruthy();
+    const trigger = getByRole('button', { name: 'Select category for single-doc.pdf' });
+    expect(trigger).toBeTruthy();
+    expect(trigger.textContent).toContain('Invoice');
   });
 
   it('should fire onCategoryChange in single upload mode when an option is selected', async () => {
@@ -399,7 +407,7 @@ describe('<FileUpload /> integration with category selector', () => {
 
     expect(onCategoryChange).toHaveBeenCalledWith(
       expect.objectContaining({
-        value: 'contract',
+        values: ['contract'],
         file,
       }),
     );
