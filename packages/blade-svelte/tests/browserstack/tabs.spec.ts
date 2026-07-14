@@ -9,7 +9,7 @@ test('Tabs switches active panel on click', async ({ page }) => {
   // the tab elements at all (by role or by attribute), on both Google Pixel
   // and iPhone. Not reproducible on desktop. See MOBILE_TESTS_STATUS.md.
   test.skip(!!process.env.BROWSERSTACK_MOBILE, 'Flaky tab locator resolution on BrowserStack mobile SDK');
-  await page.goto('iframe.html?id=components-tabs--default');
+  await page.goto('iframe.html?id=components-tabs--playground');
   // Role-based locators (`getByRole('tab')`) intermittently fail to resolve
   // on BrowserStack's mobile SDK (Appium's accessibility-tree bridging is
   // unreliable for tablist roles on real devices). Each TabItem carries a
