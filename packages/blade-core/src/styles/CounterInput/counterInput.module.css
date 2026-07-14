@@ -17,65 +17,6 @@
   }
 }
 
-/* ===== Label (mirrors FormLabel) ===== */
-.label {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  font-family: var(--font-family-text);
-  font-weight: var(--font-weight-medium);
-  cursor: default;
-}
-
-/* Base (stacked / `top`) label sizing + color. */
-.label-size-xsmall {
-  font-size: var(--font-size-75);
-  line-height: var(--line-height-75);
-  color: var(--surface-text-gray-muted);
-  margin-bottom: var(--spacing-2);
-}
-
-.label-size-medium {
-  font-size: var(--font-size-75);
-  line-height: var(--line-height-75);
-  color: var(--surface-text-gray-subtle);
-  margin-bottom: var(--spacing-2);
-}
-
-.label-size-large {
-  font-size: var(--font-size-100);
-  line-height: var(--line-height-100);
-  color: var(--surface-text-gray-subtle);
-  margin-bottom: var(--spacing-3);
-}
-
-/* Desktop `left` overrides: fixed width, right margin, larger type per size. */
-@media (min-width: 768px) {
-  .label-left {
-    flex-shrink: 0;
-    margin-bottom: var(--spacing-0);
-  }
-
-  .label-left.label-size-xsmall {
-    width: 120px;
-    margin-right: var(--spacing-3);
-  }
-
-  .label-left.label-size-medium {
-    width: 120px;
-    margin-right: var(--spacing-4);
-    font-size: var(--font-size-100);
-    line-height: var(--line-height-100);
-  }
-
-  .label-left.label-size-large {
-    width: 176px;
-    margin-right: var(--spacing-5);
-    font-size: var(--font-size-200);
-    line-height: var(--line-height-200);
-  }
-}
-
 /* ===== Container (border + background + size) ===== */
 .container {
   position: relative;

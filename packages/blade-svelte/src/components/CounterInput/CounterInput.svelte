@@ -16,11 +16,11 @@
     getCounterInputContainerClasses,
     getCounterInputButtonClasses,
     getCounterInputInputClasses,
-    getCounterInputLabelClasses,
     getCounterInputTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import { MinusIcon } from '../Icons/MinusIcon';
   import { PlusIcon } from '../Icons/PlusIcon';
+  import FormLabel from '../Input/_Form/FormLabel.svelte';
   import type { CounterInputProps } from './types';
 
   const templateClasses = getCounterInputTemplateClasses();
@@ -188,9 +188,6 @@
     getCounterInputButtonClasses({ size, emphasis, direction: 'increment' }),
   );
   const inputClasses = $derived(getCounterInputInputClasses({ size, emphasis }));
-  const labelClasses = $derived(
-    getCounterInputLabelClasses({ size, isLabelLeft: labelPosition === 'left' }),
-  );
 
   const styledProps = $derived(getStyledPropsClasses(rest));
 
@@ -246,9 +243,15 @@
 >
   <div class={layoutClasses}>
     {#if label}
-      <label class={labelClasses} for={inputId} id={labelId}>
+      <FormLabel
+        as="label"
+        position={labelPosition}
+        htmlFor={inputId}
+        id={labelId}
+        size={size === 'xsmall' ? 'small' : size}
+      >
         {label}
-      </label>
+      </FormLabel>
     {/if}
 
     <div class={containerClasses} data-disabled={isEffectivelyDisabled || undefined}>

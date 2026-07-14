@@ -22,11 +22,6 @@ export type CounterInputInputVariants = {
   emphasis?: CounterInputEmphasis;
 };
 
-export type CounterInputLabelVariants = {
-  size?: CounterInputSize;
-  isLabelLeft?: boolean;
-};
-
 /**
  * Container styles. `size` drives width/height/radius, `emphasis` drives border
  * color. The `[data-disabled]` attribute selector in the CSS module covers the
@@ -109,32 +104,6 @@ export const counterInputInputStyles = cva(styles.input, {
 
 export function getCounterInputInputClasses(props: CounterInputInputVariants): string {
   return counterInputInputStyles(props);
-}
-
-/**
- * Label styles. `size` drives font/color/margin; `isLabelLeft` layers the
- * desktop-only left-position overrides (width + right margin).
- */
-export const counterInputLabelStyles = cva(styles.label, {
-  variants: {
-    size: {
-      xsmall: styles['label-size-xsmall'],
-      medium: styles['label-size-medium'],
-      large: styles['label-size-large'],
-    },
-    isLabelLeft: {
-      true: styles['label-left'],
-      false: null,
-    },
-  },
-  defaultVariants: {
-    size: 'medium',
-    isLabelLeft: false,
-  },
-});
-
-export function getCounterInputLabelClasses(props: CounterInputLabelVariants): string {
-  return counterInputLabelStyles(props);
 }
 
 /**

@@ -113,8 +113,6 @@ export {
   getCounterInputButtonClasses,
   counterInputInputStyles,
   getCounterInputInputClasses,
-  counterInputLabelStyles,
-  getCounterInputLabelClasses,
   getCounterInputTemplateClasses,
 } from './CounterInput';
 export type {
@@ -124,7 +122,6 @@ export type {
   CounterInputContainerVariants,
   CounterInputButtonVariants,
   CounterInputInputVariants,
-  CounterInputLabelVariants,
 } from './CounterInput';
 export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from './Switch';
 export type { SwitchSize, SwitchVariants } from './Switch';

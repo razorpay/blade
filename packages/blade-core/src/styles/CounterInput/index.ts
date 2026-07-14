@@ -5,8 +5,6 @@ export {
   getCounterInputButtonClasses,
   counterInputInputStyles,
   getCounterInputInputClasses,
-  counterInputLabelStyles,
-  getCounterInputLabelClasses,
   getCounterInputTemplateClasses,
 } from './counterInput';
 export type {
@@ -16,5 +14,4 @@ export type {
   CounterInputContainerVariants,
   CounterInputButtonVariants,
   CounterInputInputVariants,
-  CounterInputLabelVariants,
 } from './counterInput';
