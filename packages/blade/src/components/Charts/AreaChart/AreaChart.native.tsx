@@ -49,6 +49,7 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { useControllableState } from '~utils/useControllable';
 import getIn from '~utils/lodashButBetter/get';
 import isNumber from '~utils/lodashButBetter/isNumber';
+import { logger } from '~utils/logger';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -109,6 +110,8 @@ type LegendSlot = {
   selectedDataKeys?: string[];
   defaultSelectedDataKeys?: string[];
   onSelectedDataKeysChange?: ChartLegendProps['onSelectedDataKeysChange'];
+  layout?: 'horizontal' | 'vertical';
+  align?: 'left' | 'right';
 };
 
 type TooltipFormatter = NonNullable<ChartTooltipProps['formatter']>;
@@ -123,6 +126,9 @@ type ChildSlots = {
   xLabel?: string;
   hasYAxis: boolean;
   yLabel?: string;
+  yDomain?: [number | string, number | string];
+  yTickFormatter?: (value: number) => string;
+  yTickCount?: number;
   hasGrid: boolean;
   legend: LegendSlot;
   referenceLines: ReferenceLineSlot[];
@@ -146,8 +152,9 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
     const id = getComponentId(child);
     if (id === componentIds.ChartArea) {
       const props = child.props as ChartAreaProps;
+      if (props.dataKey == null) return;
       slots.areas.push({
-        dataKey: props.dataKey as string,
+        dataKey: String(props.dataKey),
         name: props.name,
         color: props.color,
         stackId: props.stackId != null ? String(props.stackId) : '1',
@@ -170,6 +177,15 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       const props = child.props as ChartYAxisProps;
       slots.hasYAxis = true;
       slots.yLabel = props.label;
+      if (Array.isArray(props.domain) && props.domain.length === 2) {
+        slots.yDomain = [props.domain[0], props.domain[1]];
+      }
+      if (typeof props.tickFormatter === 'function') {
+        slots.yTickFormatter = props.tickFormatter as (value: number) => string;
+      }
+      if (typeof props.tickCount === 'number') {
+        slots.yTickCount = props.tickCount;
+      }
     } else if (id === commonComponentIds.chartLegend) {
       const props = child.props as ChartLegendProps;
       slots.legend = {
@@ -177,6 +193,8 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         selectedDataKeys: props.selectedDataKeys,
         defaultSelectedDataKeys: props.defaultSelectedDataKeys,
         onSelectedDataKeysChange: props.onSelectedDataKeysChange,
+        layout: props.layout,
+        align: props.align,
       };
     } else if (id === commonComponentIds.chartCartesianGrid) {
       slots.hasGrid = true;
@@ -215,6 +233,15 @@ const niceCeil = (raw: number): number => {
   const fraction = raw / 10 ** exponent;
   const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
   return niceFraction * 10 ** exponent;
+};
+
+const niceFloor = (raw: number): number => {
+  if (raw >= 0) return 0;
+  const abs = Math.abs(raw);
+  const exponent = Math.floor(Math.log10(abs));
+  const fraction = abs / 10 ** exponent;
+  const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
+  return -(niceFraction * 10 ** exponent);
 };
 
 const formatYTick = (value: number): string => {
@@ -468,6 +495,25 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const slots = useMemo(() => readChildSlots(children), [children]);
   const allAreas = slots.areas;
 
+  const yAxisWarnedRef = useRef(false);
+  useEffect(() => {
+    if (!__DEV__) return;
+    if (slots.hasYAxis && !yAxisWarnedRef.current) {
+      const unsupported: string[] = [];
+      if (slots.yDomain && !slots.yDomain.every((v) => isNumber(Number(v)))) {
+        unsupported.push('domain (non-numeric)');
+      }
+      if (unsupported.length > 0) {
+        yAxisWarnedRef.current = true;
+        logger({
+          type: 'warn',
+          moduleName: 'ChartAreaWrapper',
+          message: `ChartYAxis prop(s) [${unsupported.join(', ')}] are not fully supported on native. Supported: label, domain (numeric), tickFormatter, tickCount.`,
+        });
+      }
+    }
+  }, [slots.hasYAxis, slots.yDomain]);
+
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'area',
@@ -475,15 +521,18 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   });
 
   const dataColorMapping = useMemo<DataColorMapping>(() => {
-    const mapping: DataColorMapping = {};
+    const mapping: Record<
+      string,
+      { colorToken?: ChartColorToken; isCustomColor: boolean }
+    > = {};
     allAreas.forEach((area) => {
       mapping[area.dataKey] = {
-        colorToken: area.color!,
+        colorToken: area.color,
         isCustomColor: Boolean(area.color),
       };
     });
     assignDataColorMapping(mapping, themeColors);
-    return mapping;
+    return mapping as DataColorMapping;
   }, [allAreas, themeColors]);
 
   const allDataKeys = useMemo(() => Object.keys(dataColorMapping), [dataColorMapping]);
@@ -534,26 +583,37 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     return groupOrder.map((key) => ({ key, areas: map.get(key)! }));
   }, [visibleAreas]);
 
-  const dataMax = useMemo(() => {
-    if (!data.length) return 0;
+  const { dataMax, dataMin } = useMemo(() => {
+    if (!data.length) return { dataMax: 0, dataMin: 0 };
     let max = 0;
+    let min = 0;
     data.forEach((row) => {
       stackGroups.forEach((group) => {
         const sum = group.areas.reduce((acc, area) => acc + (Number(row[area.dataKey]) || 0), 0);
         if (sum > max) max = sum;
+        if (sum < min) min = sum;
       });
     });
-    return max;
+    return { dataMax: max, dataMin: min };
   }, [data, stackGroups]);
 
-  const yMax = niceCeil(dataMax);
+  const yMax = slots.yDomain
+    ? Number(slots.yDomain[1])
+    : niceCeil(dataMax);
+  const yMin = slots.yDomain
+    ? Number(slots.yDomain[0])
+    : dataMin < 0
+      ? niceFloor(dataMin)
+      : 0;
+  const yRange = yMax - yMin;
+  const yTickCount = slots.yTickCount ?? Y_TICK_COUNT;
   const yTicks = useMemo(() => {
     const ticks: number[] = [];
-    for (let i = 0; i <= Y_TICK_COUNT; i++) {
-      ticks.push((yMax / Y_TICK_COUNT) * i);
+    for (let i = 0; i <= yTickCount; i++) {
+      ticks.push(yMin + (yRange / yTickCount) * i);
     }
     return ticks;
-  }, [yMax]);
+  }, [yMin, yRange, yTickCount]);
 
   const showAxes = slots.hasXAxis || slots.hasYAxis;
   const needsExtraBottomPad = Boolean(slots.xLabel && slots.xSecondaryDataKey);
@@ -573,7 +633,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const pointStep = count > 1 ? plotWidth / (count - 1) : 0;
   const xAt = (i: number): number => (count > 1 ? i * pointStep : plotWidth / 2);
   const yAt = (value: number): number =>
-    yMax > 0 ? plotHeight - (value / yMax) * plotHeight : plotHeight;
+    yRange > 0 ? plotHeight - ((value - yMin) / yRange) * plotHeight : plotHeight;
 
   const xLabelStep = Math.max(1, (slots.xInterval ?? 0) + 1);
 
@@ -635,7 +695,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     });
 
     return geometries;
-  }, [stackGroups, data, count, plotWidth, plotHeight, yMax, dataColorMapping, theme.colors]);
+  }, [stackGroups, data, count, plotWidth, plotHeight, yMax, yMin, yRange, dataColorMapping, theme.colors]);
 
   // Fire the recharts-style left→right clip reveal when data/series change, and
   // once plotWidth is known after layout. Skip re-animating on pure resize.
@@ -820,11 +880,11 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       <BaseBox
         {...metaAttribute({ name: 'chart-area-container', testID })}
         {...makeAnalyticsAttribute(restProps)}
+        {...restProps}
         width="100%"
         height="100%"
         display="flex"
         flexDirection="column"
-        {...restProps}
       >
         <View
           testID={testID ? `${testID}-scrub-surface` : 'chart-area-scrub-surface'}
@@ -936,10 +996,22 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                           fill={tickColor}
                           textAnchor="end"
                         >
-                          {formatYTick(tick)}
+                          {slots.yTickFormatter ? slots.yTickFormatter(tick) : formatYTick(tick)}
                         </SvgText>
                       );
                     })}
+                    {slots.yLabel ? (
+                      <SvgText
+                        x={-(PLOT_PADDING.left - AXIS_LABEL_FONT_SIZE - 4)}
+                        y={plotHeight / 2}
+                        fontSize={AXIS_LABEL_FONT_SIZE}
+                        fill={tickColor}
+                        textAnchor="middle"
+                        transform={`rotate(-90, ${-(PLOT_PADDING.left - AXIS_LABEL_FONT_SIZE - 4)}, ${plotHeight / 2})`}
+                      >
+                        {slots.yLabel}
+                      </SvgText>
+                    ) : null}
                   </>
                 )}
 
@@ -975,7 +1047,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                       : line.label;
                   if (line.orientation === 'horizontal') {
                     const value = Number(line.value);
-                    if (value > yMax || value < 0) return null;
+                    if (value > yMax || value < yMin) return null;
                     const y = yAt(value);
                     return (
                       <G key={`refline-${idx}`}>
@@ -1224,10 +1296,15 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         {slots.legend.hasLegend && legendAreas.length > 0 ? (
           <View
             style={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'center',
+              flexDirection: slots.legend.layout === 'vertical' ? 'column' : 'row',
+              flexWrap: slots.legend.layout === 'vertical' ? 'nowrap' : 'wrap',
+              alignItems: slots.legend.layout === 'vertical' ? 'flex-start' : 'center',
+              justifyContent:
+                slots.legend.align === 'left'
+                  ? 'flex-start'
+                  : slots.legend.align === 'right'
+                    ? 'flex-end'
+                    : 'center',
               paddingTop: theme.spacing[2],
             }}
           >
