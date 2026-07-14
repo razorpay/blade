@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
 import { Svg, G, Rect, Path, Text as SvgText, TSpan } from 'react-native-svg';
 import { View, Pressable } from 'react-native';
 import type { LayoutChangeEvent, GestureResponderEvent } from 'react-native';
@@ -33,9 +33,9 @@ import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import getIn from '~utils/lodashButBetter/get';
-import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
 
 // ─── Animated SVG shapes ──────────────────────────────────────────────────────
 // react-native-svg primitives wrapped so react-native-reanimated can drive their
@@ -323,7 +323,7 @@ const computeSankeyLayout = ({
   const linkLayouts = links.map((l) => {
     const s = nodeLayouts[l.source];
     const t = nodeLayouts[l.target];
-    const linkWidth = l.value * ky;
+    const linkWidth = Math.max(0, l.value) * ky;
     const sourceY = s.y + sourceOffset[l.source] + linkWidth / 2;
     const targetY = t.y + targetOffset[l.target] + linkWidth / 2;
     sourceOffset[l.source] += linkWidth;
@@ -405,6 +405,7 @@ type SankeyNodeShapeProps = {
   width: number;
   height: number;
   fill: string;
+  accessibilityLabel?: string;
   children?: React.ReactNode;
 };
 
@@ -415,6 +416,7 @@ const SankeyNodeShape = ({
   width,
   height,
   fill,
+  accessibilityLabel,
   children,
 }: SankeyNodeShapeProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -431,7 +433,7 @@ const SankeyNodeShape = ({
   const animatedProps = useAnimatedProps(() => ({ opacity: opacity.value }));
 
   return (
-    <AnimatedG animatedProps={animatedProps}>
+    <AnimatedG animatedProps={animatedProps} accessibilityLabel={accessibilityLabel}>
       <Rect x={x} y={y} width={width} height={height} fill={fill} />
       {children}
     </AnimatedG>
@@ -442,9 +444,15 @@ type SankeyLinkShapeProps = {
   targetOpacity: number;
   d: string;
   fill: string;
+  accessibilityLabel?: string;
 };
 
-const SankeyLinkShape = ({ targetOpacity, d, fill }: SankeyLinkShapeProps): React.ReactElement => {
+const SankeyLinkShape = ({
+  targetOpacity,
+  d,
+  fill,
+  accessibilityLabel,
+}: SankeyLinkShapeProps): React.ReactElement => {
   const { theme } = useTheme();
   const fillOpacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
@@ -458,7 +466,14 @@ const SankeyLinkShape = ({ targetOpacity, d, fill }: SankeyLinkShapeProps): Reac
 
   const animatedProps = useAnimatedProps(() => ({ fillOpacity: fillOpacity.value }));
 
-  return <AnimatedPath animatedProps={animatedProps} d={d} fill={fill} />;
+  return (
+    <AnimatedPath
+      animatedProps={animatedProps}
+      d={d}
+      fill={fill}
+      accessibilityLabel={accessibilityLabel}
+    />
+  );
 };
 
 // ─── Node label rendering (ported from web renderChipLabel / renderPlainTextLabel) ──
@@ -615,7 +630,20 @@ const renderPlainTextLabel = ({
 
 // ─── ChartSankey (marker) ───────────────────────────────────────────────────────
 // Renders nothing on its own — ChartSankeyWrapper reads its props and draws the SVG.
-const _ChartSankey = (_props: ChartSankeyProps): React.ReactElement | null => null;
+// A context check ensures developers get a clear error if ChartSankey is used
+// without ChartSankeyWrapper, matching the web version's behaviour.
+const SankeyChartNativeContext = createContext<boolean>(false);
+
+const _ChartSankey = (_props: ChartSankeyProps): React.ReactElement | null => {
+  const insideWrapper = useContext(SankeyChartNativeContext);
+  if (!insideWrapper) {
+    throwBladeError({
+      message: 'ChartSankey must be rendered as a direct child of ChartSankeyWrapper',
+      moduleName: 'ChartSankey',
+    });
+  }
+  return null;
+};
 
 export const ChartSankey = assignWithoutSideEffects(_ChartSankey, {
   componentId: componentIds.ChartSankey,
@@ -639,7 +667,7 @@ const _ChartSankeyWrapper = ({
   linkColorOverride,
   testID,
   ...restProps
-}: ChartSankeyWrapperProps & TestID & DataAnalyticsAttribute): React.ReactElement => {
+}: ChartSankeyWrapperProps): React.ReactElement => {
   const { theme } = useTheme();
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [active, setActive] = useState<ActiveState>(null);
@@ -754,12 +782,15 @@ const _ChartSankeyWrapper = ({
   }, [data.links]);
 
   // ── Plot rect + layout ───────────────────────────────────────────────────────
-  const PADDING = {
-    top: theme.spacing[3],
-    bottom: theme.spacing[3],
-    left: theme.spacing[3],
-    right: dynamicRightMargin,
-  };
+  const PADDING = useMemo(
+    () => ({
+      top: theme.spacing[3],
+      bottom: theme.spacing[3],
+      left: theme.spacing[3],
+      right: dynamicRightMargin,
+    }),
+    [theme.spacing, dynamicRightMargin],
+  );
   const plotWidth = Math.max(0, size.width - PADDING.left - PADDING.right);
   const plotHeight = Math.max(0, size.height - PADDING.top - PADDING.bottom);
 
@@ -806,12 +837,18 @@ const _ChartSankeyWrapper = ({
   );
 
   // ── Layout callback ──────────────────────────────────────────────────────────
-  const onLayout = (e: LayoutChangeEvent): void => {
-    const { width, height } = e.nativeEvent.layout;
-    if (width !== size.width || height !== size.height) {
-      setSize({ width, height });
-    }
-  };
+  const onLayout = React.useCallback(
+    (e: LayoutChangeEvent): void => {
+      const { width, height } = e.nativeEvent.layout;
+      setSize((prev) => {
+        if (width !== prev.width || height !== prev.height) {
+          return { width, height };
+        }
+        return prev;
+      });
+    },
+    [],
+  );
 
   // ── Tooltip content + position for the active shape ──────────────────────────
   const tooltip = useMemo(() => {
@@ -915,14 +952,15 @@ const _ChartSankeyWrapper = ({
   );
 
   return (
-    <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
+    <SankeyChartNativeContext.Provider value={true}>
+      <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
       <BaseBox
         {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
         {...makeAnalyticsAttribute(restProps)}
         width="100%"
         height="100%"
-        position="relative"
         {...restProps}
+        position="relative"
       >
         <Pressable
           testID={testID ? `${testID}-canvas` : undefined}
@@ -932,7 +970,13 @@ const _ChartSankeyWrapper = ({
           style={{ flex: 1, width: '100%' }}
         >
           {size.width > 0 && size.height > 0 ? (
-            <Svg width={size.width} height={size.height} pointerEvents="none">
+            <Svg
+              width={size.width}
+              height={size.height}
+              pointerEvents="none"
+              accessibilityRole="image"
+              accessibilityLabel="Sankey flow diagram"
+            >
               <G x={PADDING.left} y={PADDING.top}>
                 {/* Links first so nodes + labels render above the ribbons */}
                 {layout.linkLayouts.map((link, linkIdx) => {
@@ -950,6 +994,9 @@ const _ChartSankeyWrapper = ({
                       targetOpacity={getLinkOpacity(linkIdx)}
                       d={link.d}
                       fill={resolveColor(colorToken)}
+                      accessibilityLabel={`Link from ${
+                        data.nodes[link.sourceIndex]?.name ?? ''
+                      } to ${data.nodes[link.targetIndex]?.name ?? ''}: ${link.value}`}
                     />
                   );
                 })}
@@ -1019,6 +1066,7 @@ const _ChartSankeyWrapper = ({
                       width={node.width}
                       height={node.height}
                       fill={resolveColor(colorToken)}
+                      accessibilityLabel={`Node ${nodeData.name}: ${node.value}`}
                     >
                       {showLabels
                         ? (showLabelChip ? renderChipLabel : renderPlainTextLabel)(labelArgs)
@@ -1036,7 +1084,10 @@ const _ChartSankeyWrapper = ({
             pointerEvents="none"
             style={{
               position: 'absolute',
-              top: Math.max(0, tooltip.centerY - theme.spacing[9]),
+              top: Math.max(
+                0,
+                Math.min(size.height - theme.spacing[9] * 2, tooltip.centerY - theme.spacing[9]),
+              ),
               left: tooltipLeft,
               maxWidth: TOOLTIP_MAX_WIDTH,
               // surface.icon.staticBlack.normal is the token the web SankeyTooltip uses.
@@ -1060,7 +1111,8 @@ const _ChartSankeyWrapper = ({
           </View>
         ) : null}
       </BaseBox>
-    </CommonChartComponentsContext.Provider>
+      </CommonChartComponentsContext.Provider>
+    </SankeyChartNativeContext.Provider>
   );
 };
 

@@ -36,12 +36,6 @@ const renderSankey = (chart: React.ReactElement): ReturnType<typeof renderWithTh
   return utils;
 };
 
-// All rendered <Rect>s are visible shapes (node bars + chip backgrounds); there is
-// no separate hit-target rect. `shapeRects` is an identity pass kept so existing
-// count assertions read unchanged.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const shapeRects = (rects: any[]): any[] => rects;
-
 // Selection is driven by a single outer <Pressable> (testID `<id>-canvas`) that
 // hit-tests the touch location, so interaction tests fire `press` on that canvas
 // with a computed locationX/locationY rather than on individual SVG shapes.
@@ -64,7 +58,7 @@ const tapCanvas = (utils: Utils, x: number, y: number): void => {
 const tapNode = (utils: Utils, i: number): void => {
   const { gx, gy } = getTranslate(utils);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const rect = shapeRects(utils.UNSAFE_getAllByType(Rect))[i];
+  const rect = (utils.UNSAFE_getAllByType(Rect) as any[])[i];
   tapCanvas(
     utils,
     gx + rect.props.x + rect.props.width / 2,
@@ -118,7 +112,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
       </ChartSankeyWrapper>,
     );
     // showLabelChip=false → no chip Rects, so Rect count === node count.
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
+    expect(UNSAFE_getAllByType(Rect)).toHaveLength(data.nodes.length);
     expect(UNSAFE_getAllByType(Path)).toHaveLength(data.links.length);
   });
 
@@ -129,7 +123,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
       </ChartSankeyWrapper>,
     );
     // node bars + one chip rect per node with a label.
-    expect(shapeRects(UNSAFE_getAllByType(Rect)).length).toBeGreaterThan(data.nodes.length);
+    expect(UNSAFE_getAllByType(Rect).length).toBeGreaterThan(data.nodes.length);
   });
 
   it('hides labels entirely when showLabels is false', () => {
@@ -194,7 +188,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     tapNode(utils, 0);
     expect(queryByText(/^Alpha:/)).not.toBeNull();
     // The chart still renders one node <Rect> per node after the re-render.
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
+    expect(UNSAFE_getAllByType(Rect)).toHaveLength(data.nodes.length);
     // A repeated tap on the same node toggles the selection off.
     tapNode(utils, 0);
     expect(queryByText(/^Alpha:/)).toBeNull();
@@ -233,7 +227,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    const fills = shapeRects(UNSAFE_getAllByType(Rect)).map((r) => r.props.fill);
+    const fills = UNSAFE_getAllByType(Rect).map((r) => r.props.fill);
     const uniqueFills = Array.from(new Set(fills));
     expect(uniqueFills).toHaveLength(1);
   });
@@ -251,7 +245,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
         <ChartSankey data={twoNode} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(2);
+    expect(UNSAFE_getAllByType(Rect)).toHaveLength(2);
     expect(UNSAFE_getAllByType(Path)).toHaveLength(1);
   });
 
@@ -269,7 +263,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
       </ChartSankeyWrapper>,
     );
     expect(UNSAFE_queryAllByType(Path)).toHaveLength(0);
-    expect(shapeRects(UNSAFE_queryAllByType(Rect))).toHaveLength(2);
+    expect(UNSAFE_queryAllByType(Rect)).toHaveLength(2);
   });
 
   it('renders plain-text labels (no chip Rect) when showLabelChip is false', () => {
@@ -281,6 +275,6 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     // Label text spans are present, but no chip background rects (Rect count === node count).
     const spanTexts = UNSAFE_getAllByType(TSpan).map((s) => s.props.children);
     expect(spanTexts).toContain('Alpha');
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
+    expect(UNSAFE_getAllByType(Rect)).toHaveLength(data.nodes.length);
   });
 });
