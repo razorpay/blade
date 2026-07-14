@@ -1,4 +1,4 @@
-<script module>
+<script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Tabs from './Tabs.svelte';
 
@@ -6,8 +6,18 @@
     title: 'Components/Tabs',
     component: Tabs,
     tags: ['autodocs'],
-    args: {},
+    args: {
+      variant: 'bordered',
+      size: 'medium',
+      orientation: 'horizontal',
+      isFullWidthTabItem: false,
+      isLazy: false,
+    },
     argTypes: {
+      children: { table: { disable: true } },
+      value: { table: { disable: true } },
+      defaultValue: { table: { disable: true } },
+      onChange: { table: { disable: true } },
       variant: {
         control: 'select',
         options: ['bordered', 'borderless', 'filled'],
@@ -51,12 +61,28 @@
   import { HomeIcon } from '../Icons/HomeIcon';
   import { SearchIcon } from '../Icons/SearchIcon';
   import { CreditCardIcon } from '../Icons/CreditCardIcon';
+  import type { TabsProps } from './types';
+
+  type TabsStoryArgs = Partial<Omit<TabsProps, 'children'>> & { children?: unknown };
 
   let controlledValue = $state('plans');
+
+  function getTabsArgs(args: TabsStoryArgs): Omit<TabsProps, 'children'> {
+    const { children: _children, ...tabsArgs } = args;
+    return tabsArgs as Omit<TabsProps, 'children'>;
+  }
+
+  function getPanelStyle(orientation: TabsProps['orientation'] = 'horizontal'): string {
+    return orientation === 'vertical'
+      ? 'padding-left: var(--spacing-4);'
+      : 'padding-top: var(--spacing-4);';
+  }
 </script>
 
-<Story name="Default" asChild>
-  <Tabs variant="bordered" orientation="horizontal">
+{#snippet interactiveTabs(args: TabsStoryArgs)}
+  {@const panelStyle = getPanelStyle(args.orientation)}
+  {@const panelSize = args.size ?? 'medium'}
+  <Tabs {...getTabsArgs(args)}>
     {#snippet children()}
       <TabList>
         {#snippet children()}
@@ -73,27 +99,35 @@
       </TabList>
       <TabPanel value="subscriptions">
         {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Subscriptions Panel - This is an overview of your active subscriptions.</Text>
+          <div style={panelStyle}>
+            <Text size={panelSize}>
+              Subscriptions Panel - This is an overview of your active subscriptions.
+            </Text>
           </div>
         {/snippet}
       </TabPanel>
       <TabPanel value="plans">
         {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Plans Panel - This is an overview of all your plans.</Text>
+          <div style={panelStyle}>
+            <Text size={panelSize}>Plans Panel - This is an overview of all your plans.</Text>
           </div>
         {/snippet}
       </TabPanel>
       <TabPanel value="settings">
         {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Settings Panel - This is an overview of your settings.</Text>
+          <div style={panelStyle}>
+            <Text size={panelSize}>Settings Panel - This is an overview of your settings.</Text>
           </div>
         {/snippet}
       </TabPanel>
     {/snippet}
   </Tabs>
+{/snippet}
+
+<Story name="Playground">
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
 <Story name="Controlled" asChild>
@@ -156,332 +190,52 @@
   </div>
 </Story>
 
-<Story name="Size: Medium" asChild>
-  <Tabs variant="bordered" size="medium">
-    {#snippet children()}
-      <TabList>
-        {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet children()}Subscription{/snippet}
-          </TabItem>
-          <TabItem value="plans">
-            {#snippet children()}Plans{/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet children()}Settings{/snippet}
-          </TabItem>
-        {/snippet}
-      </TabList>
-      <TabPanel value="subscriptions">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Subscriptions Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="plans">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Plans Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="settings">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Settings Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-    {/snippet}
-  </Tabs>
+<Story name="Size: Medium">
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
-<Story name="Size: Small" asChild>
-  <Tabs variant="bordered" size="small">
-    {#snippet children()}
-      <TabList>
-        {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet children()}Subscription{/snippet}
-          </TabItem>
-          <TabItem value="plans">
-            {#snippet children()}Plans{/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet children()}Settings{/snippet}
-          </TabItem>
-        {/snippet}
-      </TabList>
-      <TabPanel value="subscriptions">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text size="small">Subscriptions Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="plans">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text size="small">Plans Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="settings">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text size="small">Settings Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-    {/snippet}
-  </Tabs>
+<Story name="Size: Small" args={{ size: 'small' }}>
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
-<Story name="Size: Large" asChild>
-  <Tabs variant="bordered" size="large">
-    {#snippet children()}
-      <TabList>
-        {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet children()}Subscription{/snippet}
-          </TabItem>
-          <TabItem value="plans">
-            {#snippet children()}Plans{/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet children()}Settings{/snippet}
-          </TabItem>
-        {/snippet}
-      </TabList>
-      <TabPanel value="subscriptions">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text size="large">Subscriptions Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="plans">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text size="large">Plans Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="settings">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text size="large">Settings Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-    {/snippet}
-  </Tabs>
+<Story name="Size: Large" args={{ size: 'large' }}>
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
-<Story name="Filled" asChild>
-  <Tabs variant="filled">
-    {#snippet children()}
-      <TabList>
-        {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet children()}Subscription{/snippet}
-          </TabItem>
-          <TabItem value="plans">
-            {#snippet children()}Plans{/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet children()}Settings{/snippet}
-          </TabItem>
-        {/snippet}
-      </TabList>
-      <TabPanel value="subscriptions">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Subscriptions Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="plans">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Plans Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="settings">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Settings Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-    {/snippet}
-  </Tabs>
+<Story name="Filled" args={{ variant: 'filled' }}>
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
-<Story name="Filled Vertical" asChild>
-  <Tabs variant="filled" orientation="vertical">
-    {#snippet children()}
-      <TabList>
-        {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet children()}Subscription{/snippet}
-          </TabItem>
-          <TabItem value="plans">
-            {#snippet children()}Plans{/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet children()}Settings{/snippet}
-          </TabItem>
-        {/snippet}
-      </TabList>
-      <TabPanel value="subscriptions">
-        {#snippet children()}
-          <div style="padding-left: var(--spacing-4);">
-            <Text>Subscriptions Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="plans">
-        {#snippet children()}
-          <div style="padding-left: var(--spacing-4);">
-            <Text>Plans Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="settings">
-        {#snippet children()}
-          <div style="padding-left: var(--spacing-4);">
-            <Text>Settings Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-    {/snippet}
-  </Tabs>
+<Story name="Filled Vertical" args={{ variant: 'filled', orientation: 'vertical' }}>
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
-<Story name="Bordered Vertical" asChild>
-  <Tabs variant="bordered" orientation="vertical">
-    {#snippet children()}
-      <TabList>
-        {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet children()}Subscription{/snippet}
-          </TabItem>
-          <TabItem value="plans">
-            {#snippet children()}Plans{/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet children()}Settings{/snippet}
-          </TabItem>
-        {/snippet}
-      </TabList>
-      <TabPanel value="subscriptions">
-        {#snippet children()}
-          <div style="padding-left: var(--spacing-4);">
-            <Text>Subscriptions Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="plans">
-        {#snippet children()}
-          <div style="padding-left: var(--spacing-4);">
-            <Text>Plans Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="settings">
-        {#snippet children()}
-          <div style="padding-left: var(--spacing-4);">
-            <Text>Settings Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-    {/snippet}
-  </Tabs>
+<Story name="Bordered Vertical" args={{ orientation: 'vertical' }}>
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
-<Story name="Borderless" asChild>
-  <Tabs variant="borderless">
-    {#snippet children()}
-      <TabList>
-        {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet children()}Subscription{/snippet}
-          </TabItem>
-          <TabItem value="plans">
-            {#snippet children()}Plans{/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet children()}Settings{/snippet}
-          </TabItem>
-        {/snippet}
-      </TabList>
-      <TabPanel value="subscriptions">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Subscriptions Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="plans">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Plans Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="settings">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Settings Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-    {/snippet}
-  </Tabs>
+<Story name="Borderless" args={{ variant: 'borderless' }}>
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
-<Story name="Full Width TabItem" asChild>
-  <Tabs variant="bordered" isFullWidthTabItem={true}>
-    {#snippet children()}
-      <TabList>
-        {#snippet children()}
-          <TabItem value="subscriptions">
-            {#snippet children()}Subscription{/snippet}
-          </TabItem>
-          <TabItem value="plans">
-            {#snippet children()}Plans{/snippet}
-          </TabItem>
-          <TabItem value="settings">
-            {#snippet children()}Settings{/snippet}
-          </TabItem>
-        {/snippet}
-      </TabList>
-      <TabPanel value="subscriptions">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Subscriptions Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="plans">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Plans Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-      <TabPanel value="settings">
-        {#snippet children()}
-          <div style="padding-top: var(--spacing-4);">
-            <Text>Settings Panel</Text>
-          </div>
-        {/snippet}
-      </TabPanel>
-    {/snippet}
-  </Tabs>
+<Story name="Full Width TabItem" args={{ isFullWidthTabItem: true }}>
+  {#snippet template(args)}
+    {@render interactiveTabs(args)}
+  {/snippet}
 </Story>
 
 <Story name="With Leading Icon" asChild>
@@ -613,52 +367,17 @@
   </Tabs>
 </Story>
 
-<Story name="Lazy Rendering" asChild>
-  <div>
-    <Text color="surface.text.gray.subtle" size="small">
-      With isLazy=true, TabPanel content only mounts when selected (check DOM inspector).
-    </Text>
-    <div style="margin-top: var(--spacing-4);">
-      <Tabs variant="bordered" isLazy={true}>
-        {#snippet children()}
-          <TabList>
-            {#snippet children()}
-              <TabItem value="subscriptions">
-                {#snippet children()}Subscription{/snippet}
-              </TabItem>
-              <TabItem value="plans">
-                {#snippet children()}Plans{/snippet}
-              </TabItem>
-              <TabItem value="settings">
-                {#snippet children()}Settings{/snippet}
-              </TabItem>
-            {/snippet}
-          </TabList>
-          <TabPanel value="subscriptions">
-            {#snippet children()}
-              <div style="padding-top: var(--spacing-4);">
-                <Text>Subscriptions Panel (lazy loaded)</Text>
-              </div>
-            {/snippet}
-          </TabPanel>
-          <TabPanel value="plans">
-            {#snippet children()}
-              <div style="padding-top: var(--spacing-4);">
-                <Text>Plans Panel (lazy loaded)</Text>
-              </div>
-            {/snippet}
-          </TabPanel>
-          <TabPanel value="settings">
-            {#snippet children()}
-              <div style="padding-top: var(--spacing-4);">
-                <Text>Settings Panel (lazy loaded)</Text>
-              </div>
-            {/snippet}
-          </TabPanel>
-        {/snippet}
-      </Tabs>
+<Story name="Lazy Rendering" args={{ isLazy: true }}>
+  {#snippet template(args)}
+    <div>
+      <Text color="surface.text.gray.subtle" size="small">
+        With isLazy=true, TabPanel content only mounts when selected (check DOM inspector).
+      </Text>
+      <div style="margin-top: var(--spacing-4);">
+        {@render interactiveTabs(args)}
+      </div>
     </div>
-  </div>
+  {/snippet}
 </Story>
 
 <Story name="With Href (Link Tab)" asChild>

@@ -71,20 +71,19 @@ export const useTimePickerState = ({
   const [controllableIsOpen, setControllableIsOpen] = useControllableState({
     value: isOpen,
     defaultValue: defaultIsOpen,
-    onChange: (isOpen: boolean) => {
-      onOpenChange?.({ isOpen });
-      // Update old value every time timepicker is opened or closed
-      setOldTimeValue(internalTimeValue);
+    onChange: (open: boolean) => {
+      onOpenChange?.({ isOpen: open });
+      // Snapshot the value when opening so Cancel can restore the pre-edit state.
+      if (open) {
+        setOldTimeValue(internalTimeValue);
+      }
     },
   });
 
   const handleApply = React.useCallback(() => {
+    onChange?.({ value: timeValue });
+    setOldTimeValue(internalTimeValue);
     if (showFooterActions) {
-      // Call onChange with current timeValue
-      onChange?.({ value: timeValue });
-      // Update oldTimeValue to current value
-      setOldTimeValue(internalTimeValue);
-      // Call onApply callback
       onApply?.({ value: timeValue });
     }
     setControllableIsOpen(() => false);
