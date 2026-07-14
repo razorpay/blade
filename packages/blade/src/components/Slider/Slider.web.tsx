@@ -65,8 +65,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const initialValue = React.useMemo(
     () =>
       normalizeValue(
-        (defaultValue as SliderValue | undefined) ??
-          (variant === 'range' ? [min, max] : min),
+        (defaultValue as SliderValue | undefined) ?? (variant === 'range' ? [min, max] : min),
         variant,
         min,
         max,
@@ -105,15 +104,15 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const endValue = typeof currentValue === 'number' ? currentValue : rangeValue[1];
   const startPercent = getPercent(startValue, min, max);
   const endPercent = getPercent(endValue, min, max);
-  const generatedMarks = React.useMemo(
-    () => marks ?? getGeneratedMarks(min, max, step),
-    [marks, min, max, step],
-  );
+  const generatedMarks = React.useMemo(() => marks ?? getGeneratedMarks(min, max, step), [
+    marks,
+    min,
+    max,
+    step,
+  ]);
   const visibleMarks = React.useMemo(
     () =>
-      showMarks
-        ? generatedMarks.filter((mark) => mark.value >= min && mark.value <= max)
-        : [],
+      showMarks ? generatedMarks.filter((mark) => mark.value >= min && mark.value <= max) : [],
     [generatedMarks, min, max, showMarks],
   );
   const describedBy = hasError && errorText ? errorTextId : helpText ? helpTextId : undefined;
@@ -200,13 +199,10 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     commitValue();
   };
 
-  const handleThumbPointerDown = React.useCallback(
-    (index: 0 | 1) => {
-      pointerStartedOnThumbRef.current = true;
-      setActiveThumb(index);
-    },
-    [],
-  );
+  const handleThumbPointerDown = React.useCallback((index: 0 | 1) => {
+    pointerStartedOnThumbRef.current = true;
+    setActiveThumb(index);
+  }, []);
 
   const handleThumbPointerUp = React.useCallback(() => {
     if (pointerStartedOnThumbRef.current) {

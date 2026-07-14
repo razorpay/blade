@@ -84,6 +84,7 @@ describe('<Slider />', () => {
     const slider = getByRole('slider');
 
     fireEvent.change(slider, { target: { value: '45' } });
+    fireEvent.pointerDown(slider);
     fireEvent.pointerUp(slider);
     fireEvent.change(slider, { target: { value: '50' } });
     fireEvent.keyUp(slider, { key: 'ArrowRight' });
