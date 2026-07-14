@@ -1,6 +1,6 @@
 import React from 'react';
-import Rotate from './Rotate.web';
-import { ReasoningTraces } from './ReasoningTraces.web';
+import Rotate from './Rotate.native';
+import { ReasoningTraces } from './ReasoningTraces.native';
 import type { CommonChatMessageProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 
@@ -31,17 +31,12 @@ const DefaultMessageBubble = ({
 
   return (
     <BaseBox>
-      <BaseBox
-        display="grid"
-        gridTemplateColumns="auto 1fr"
-        columnGap="spacing.4"
-        alignItems="start"
-      >
+      <BaseBox display="flex" flexDirection="row" alignItems="flex-start" gap="spacing.4">
         <BaseBox
           paddingX="spacing.1"
           paddingTop="spacing.3"
           paddingBottom="spacing.2"
-          height="20px"
+          height="spacing.6"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -49,14 +44,11 @@ const DefaultMessageBubble = ({
           <Rotate animate={isLoading}>{leading as React.ReactElement}</Rotate>
         </BaseBox>
 
-        {/* Column 2: Main message content + ReasoningTraces */}
-        <BaseBox display="flex" flexDirection="column">
-          {/* While loading: show loadingText above traces (only if reasoning is still loading) */}
+        <BaseBox display="flex" flexDirection="column" flex={1}>
           {hasReasoningTraces && reasoningStatus === 'loading' && isLoading && (
             <BaseBox paddingY={isChildText ? 'spacing.2' : 'spacing.0'}>{children}</BaseBox>
           )}
 
-          {/* ReasoningTraces: shown while loading or when complete */}
           {hasReasoningTraces && (
             <ReasoningTraces
               traces={reasoningTraces}
@@ -66,19 +58,17 @@ const DefaultMessageBubble = ({
             />
           )}
 
-          {/* When complete: show final content below reasoning (only if not loading) */}
           {hasReasoningTraces && reasoningStatus === 'complete' && !isLoading && children && (
             <BaseBox paddingY={isChildText ? 'spacing.2' : 'spacing.0'}>{children}</BaseBox>
           )}
 
-          {/* No reasoning traces: show content normally */}
           {!hasReasoningTraces && children && (
             <BaseBox paddingY={isChildText ? 'spacing.2' : 'spacing.0'}>{children}</BaseBox>
           )}
         </BaseBox>
-
-        <BaseBox gridColumn="2">{footerActions}</BaseBox>
       </BaseBox>
+
+      <BaseBox marginLeft="spacing.11">{footerActions}</BaseBox>
     </BaseBox>
   );
 };
