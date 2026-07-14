@@ -25,6 +25,7 @@ import {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import type { EasingFactoryFn } from 'react-native-reanimated';
 import type { Tween } from 'framer-motion';
 import type { MotionVariantsType } from './types';
 import { logger } from '~utils/logger';
@@ -181,14 +182,16 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
   return resolved;
 };
 
+type ReanimatedEasing = EasingFactoryFn;
+
 /**
  * Converts a framer `transition` (seconds + bezier array) into reanimated `withTiming` config.
  */
-const getTiming = (transition?: Tween): { duration: number; easing: (t: number) => number } => {
+const getTiming = (transition?: Tween): { duration: number; easing: ReanimatedEasing } => {
   const durationSec =
     typeof transition?.duration === 'number' ? transition.duration : DEFAULT_DURATION_SEC;
   const ease = transition?.ease;
-  const easing =
+  const easing: ReanimatedEasing =
     Array.isArray(ease) && ease.length === 4 && ease.every((v) => typeof v === 'number')
       ? Easing.bezier(ease[0], ease[1], ease[2], ease[3])
       : Easing.ease;

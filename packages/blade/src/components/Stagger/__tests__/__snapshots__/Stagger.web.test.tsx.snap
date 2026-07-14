@@ -20,7 +20,7 @@ exports[`<Stagger /> should render its children as expected 1`] = `
 
 <div>
   <div
-    class="BaseMotionweb__StyledDiv-gsyvko-0"
+    class=""
   >
     <p
       class="c0"
