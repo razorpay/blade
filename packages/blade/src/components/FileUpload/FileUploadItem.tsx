@@ -149,7 +149,16 @@ const FileUploadItem = memo(
                 ) : null}
               </BaseBox>
             ) : (
-              <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+              <BaseBox
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+                gap={
+                  categoryOptions && categoryOptions.length > 0 && onCategoryChange
+                    ? 'spacing.3'
+                    : undefined
+                }
+              >
                 {categoryOptions &&
                 categoryOptions.length > 0 &&
                 onCategoryChange &&

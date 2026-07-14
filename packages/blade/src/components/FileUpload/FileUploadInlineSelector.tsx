@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import type {
   BladeFile,
-  FileUploadInlineSelectorProps,
-  FileUploadInlineSelectorTriggerProps,
+  FileUploadCategoryOption,
+  FileUploadCategoryChangeHandler,
 } from './types';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
@@ -17,6 +17,21 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import { useControlledDropdownInput } from '~utils/useControlledDropdownInput';
+
+type FileUploadInlineSelectorTriggerProps = {
+  displayLabel: string;
+  file: BladeFile;
+  value: string | undefined;
+  onChange: FileUploadCategoryChangeHandler;
+};
+
+type FileUploadInlineSelectorProps = {
+  options: FileUploadCategoryOption[];
+  value: string | undefined;
+  onChange: FileUploadCategoryChangeHandler;
+  placeholder?: string;
+  file: BladeFile;
+};
 
 const StyledInlineSelectorTrigger = styled.button(({ theme }) => ({
   display: 'flex',
@@ -144,7 +159,7 @@ const FileUploadInlineSelector = ({
   const displayLabel = selectedOption?.title ?? placeholder;
 
   const handleChange = React.useCallback(
-    (args: { value: string; file: BladeFile }) => {
+    (args: { value: string; file: File }) => {
       setInternalValue(args.value);
       onChange(args);
     },

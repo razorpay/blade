@@ -244,7 +244,7 @@ describe('<FileUploadItem category />', () => {
       const user = userEvent.setup();
       const onCategoryChange = jest.fn();
 
-      const { getByRole } = renderWithTheme(
+      const { getByRole, getAllByRole } = renderWithTheme(
         <FileUploadItem
           file={successFile}
           categoryOptions={categoryOptions}
@@ -260,6 +260,13 @@ describe('<FileUploadItem category />', () => {
 
       await user.keyboard('{ArrowDown}');
       await user.keyboard('{ArrowDown}');
+
+      await waitFor(() => expect(getAllByRole('menuitem')[2]).toHaveClass('active-focus'));
+
+      await user.keyboard('{ArrowUp}');
+
+      await waitFor(() => expect(getAllByRole('menuitem')[1]).toHaveClass('active-focus'));
+
       await user.keyboard('{Enter}');
 
       expect(onCategoryChange).toHaveBeenCalledWith(
