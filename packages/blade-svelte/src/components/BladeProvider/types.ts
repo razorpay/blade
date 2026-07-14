@@ -8,8 +8,6 @@ import type {
   Typography,
   Elevation,
   TypographyPlatforms,
-} from '@razorpay/blade-core/tokens';
-import type {
   Colors,
   ThemeTokens,
   ColorSchemeNames,
