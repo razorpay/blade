@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Svg,
@@ -382,7 +381,6 @@ const AreaSeries = ({
               <AnimatedPath
                 d={fillD}
                 fill={`url(#${gradientId})`}
-                fillOpacity={AREA_FILL_OPACITY}
                 animatedProps={animatedProps}
               />
             ) : null}
@@ -457,6 +455,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const chartId = chartIdRef.current;
 
   const scrubProgress = useSharedValue(0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- scrubProgress and theme.motion are stable refs
   useEffect(() => {
     scrubProgress.value = withTiming(activeIndex !== undefined ? 1 : 0, {
       duration: getIn(theme.motion, 'duration.quick'),
@@ -510,7 +509,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   };
 
   const visibleAreas = useMemo(
-    () => allAreas.filter((area) => !area.hide && selectedKeys.includes(area.dataKey)),
+    () => allAreas.filter((area) => selectedKeys.includes(area.dataKey)),
     [allAreas, selectedKeys],
   );
 
@@ -596,6 +595,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const activeRingColor = getIn(theme.colors, 'surface.background.gray.intense');
 
   // Per-visible-area point geometry with cumulative stacking baselines.
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- xAt/yAt/chartId are stable closures derived from values already in deps
   const areaGeometries = useMemo(() => {
     const geometries: {
       area: AreaSlot;
@@ -644,7 +644,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   // Fire the recharts-style left→right clip reveal on mount and whenever the
   // data or the visible-series set changes (recharts re-animates on data change).
   const revealProgress = useSharedValue(0);
+  const hasAnimatedRef = useRef(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- revealProgress and theme.motion are stable refs; plotWidth intentionally excluded to avoid re-animating on resize
   useEffect(() => {
+    if (hasAnimatedRef.current) {
+      revealProgress.value = 1;
+      return;
+    }
     revealProgress.value = 0;
     revealProgress.value = withDelay(
       getIn(theme.motion, 'delay.gentle'),
@@ -653,7 +659,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         easing: getIn(theme.motion, 'easing.entrance'),
       }),
     );
-  }, [count, visibleAreas.length, plotWidth]);
+    hasAnimatedRef.current = true;
+  }, [count, visibleAreas.length]);
 
   const clipAnimatedProps = useAnimatedProps(() => ({
     width: revealProgress.value * plotWidth,
@@ -675,12 +682,22 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const touchStartIndexRef = React.useRef<number | undefined>(undefined);
   const touchMovedRef = React.useRef(false);
 
+  // Track the initial touch location so onMoveShouldSetResponder can apply a
+  // horizontal movement threshold — this lets a parent ScrollView reclaim the
+  // gesture for vertical scrolling when the user drags mostly vertically.
+  const touchStartLocationRef = React.useRef<{ x: number; y: number } | undefined>(undefined);
+  const SCRUB_MOVE_THRESHOLD = 8;
+
   const handleScrubStart = (e: GestureResponderEvent): void => {
     if (count === 0) return;
     const next = indexAtX(e.nativeEvent.locationX);
     touchStartActiveRef.current = activeIndex;
     touchStartIndexRef.current = next;
     touchMovedRef.current = false;
+    touchStartLocationRef.current = {
+      x: e.nativeEvent.locationX,
+      y: e.nativeEvent.locationY,
+    };
     setActiveIndex(next);
   };
 
@@ -797,7 +814,14 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
           style={{ flex: 1, width: '100%' }}
           onLayout={onLayout}
           onStartShouldSetResponder={() => count > 0}
-          onMoveShouldSetResponder={() => count > 0}
+          onMoveShouldSetResponder={(e) => {
+            if (count === 0) return false;
+            const start = touchStartLocationRef.current;
+            if (!start) return true;
+            const dx = Math.abs(e.nativeEvent.locationX - start.x);
+            const dy = Math.abs(e.nativeEvent.locationY - start.y);
+            return dx >= SCRUB_MOVE_THRESHOLD && dx > dy;
+          }}
           onResponderGrant={handleScrubStart}
           onResponderMove={handleScrubMove}
           onResponderRelease={handleScrubEnd}
@@ -918,8 +942,15 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                 </G>
 
                 {slots.referenceLines.map((line, idx) => {
-                  const chipWidth = line.label ? Math.max(40, line.label.length * 6 + 16) : 0;
-                  const chipHeight = 20;
+                  const REF_LABEL_MAX_WIDTH = 200;
+                  const chipWidth = line.label
+                    ? Math.min(REF_LABEL_MAX_WIDTH, Math.max(40, line.label.length * 6 + 16))
+                    : 0;
+                  const chipHeight = 30;
+                  const truncatedLabel =
+                    line.label && line.label.length * 6 + 16 > REF_LABEL_MAX_WIDTH
+                      ? line.label.slice(0, Math.floor((REF_LABEL_MAX_WIDTH - 16) / 6) - 1) + '…'
+                      : line.label;
                   if (line.orientation === 'horizontal') {
                     const value = Number(line.value);
                     if (value > yMax || value < 0) return null;
@@ -957,7 +988,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                               fill={referenceLabelTextColor}
                               textAnchor="middle"
                             >
-                              {line.label}
+                              {truncatedLabel}
                             </SvgText>
                           </>
                         ) : null}
@@ -1010,7 +1041,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                             fill={referenceLabelTextColor}
                             textAnchor="middle"
                           >
-                            {line.label}
+                            {truncatedLabel}
                           </SvgText>
                         </>
                       ) : null}
@@ -1050,6 +1081,14 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                         ? slots.xTickFormatter(rawLabel, i)
                         : rawLabel;
                       const secondary = secondaryLabelMap?.[i];
+                      const isLastVisibleTick = (() => {
+                        for (let j = data.length - 1; j >= 0; j--) {
+                          if (j % xLabelStep === 0) return j === i;
+                        }
+                        return false;
+                      })();
+                      const tickTextAnchor =
+                        i === 0 ? 'start' : isLastVisibleTick ? 'end' : 'middle';
                       return (
                         <G key={`xtick-${i}`}>
                           <SvgText
@@ -1057,7 +1096,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                             y={plotHeight + TICK_FONT_SIZE + 4}
                             fontSize={TICK_FONT_SIZE}
                             fill={tickColor}
-                            textAnchor="middle"
+                            textAnchor={tickTextAnchor}
                           >
                             {label}
                           </SvgText>
@@ -1067,7 +1106,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                               y={plotHeight + TICK_FONT_SIZE + 4 + SECONDARY_LABEL_FONT_SIZE + 2}
                               fontSize={SECONDARY_LABEL_FONT_SIZE}
                               fill={tickColor}
-                              textAnchor="middle"
+                              textAnchor={tickTextAnchor}
                             >
                               {String(secondary)}
                             </SvgText>
@@ -1205,7 +1244,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                   />
                   <Text
                     size="xsmall"
-                    color="surface.text.gray.subtle"
+                    color="surface.text.gray.muted"
                     textDecorationLine={isSelected ? 'none' : 'line-through'}
                   >
                     {area.name ?? area.dataKey}
