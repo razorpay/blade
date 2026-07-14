@@ -85,11 +85,11 @@ const getChartColor = (
   const isCustomColor = mappedColorData.isCustomColor;
 
   if ((chartName === 'line' || chartName === 'area') && !isCustomColor) {
-    return mappedColor;
+    return mappedColor ?? ('data.background.categorical.azure.faint' as ChartColorToken);
   }
 
   if (mappedColor && isSequentialColor(mappedColor)) {
-    return mappedColor ?? 'data.background.categorical.azure.faint';
+    return mappedColor ?? ('data.background.categorical.azure.faint' as ChartColorToken);
   }
   return getHighestColorInRange({
     colorToken: mappedColor ?? ('data.background.categorical.azure.faint' as ChartColorToken),
@@ -626,7 +626,7 @@ const CustomSquareLegend = (props: {
     const donutLegendEntries = Object.keys(dataColorMapping).map((key) => ({
       value: key, // The sanitized name
       dataKey: key,
-      color: dataColorMapping[key].colorToken,
+      color: dataColorMapping[key].colorToken ?? 'data.background.categorical.azure.faint',
     }));
 
     if (donutLegendEntries.length === 0) {

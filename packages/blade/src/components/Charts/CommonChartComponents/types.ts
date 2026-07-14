@@ -106,7 +106,7 @@ type ChartName = 'bar' | 'donut' | 'line' | 'area' | 'sankey';
 type DataColorMapping = Record<
   string,
   {
-    colorToken: ChartsCategoricalColorToken | ChartSequentialColorToken;
+    colorToken?: ChartsCategoricalColorToken | ChartSequentialColorToken;
     isCustomColor: boolean;
   }
 >;
