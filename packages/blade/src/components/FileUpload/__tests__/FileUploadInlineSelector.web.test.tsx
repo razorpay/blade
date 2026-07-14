@@ -140,7 +140,7 @@ describe('<FileUploadItem category />', () => {
 
     expect(onCategoryChange).toHaveBeenCalledWith(
       expect.objectContaining({
-        values: ['receipt'],
+        value: 'receipt',
         file: successFile,
       }),
     );
@@ -156,7 +156,7 @@ describe('<FileUploadItem category />', () => {
           file={successFile}
           categoryOptions={categoryOptions}
           selectedCategoryValue={selectedValue}
-          onCategoryChange={({ values }) => setSelectedValue(values[0])}
+          onCategoryChange={({ value }) => setSelectedValue(value)}
           categoryPlaceholder="Select"
         />
       );
@@ -235,7 +235,7 @@ describe('<FileUploadItem category />', () => {
 
       expect(onCategoryChange).toHaveBeenCalledWith(
         expect.objectContaining({
-          values: ['invoice'],
+          value: 'invoice',
         }),
       );
     });
@@ -264,7 +264,7 @@ describe('<FileUploadItem category />', () => {
 
       expect(onCategoryChange).toHaveBeenCalledWith(
         expect.objectContaining({
-          values: ['receipt'],
+          value: 'receipt',
         }),
       );
     });
@@ -407,7 +407,7 @@ describe('<FileUpload /> integration with category selector', () => {
 
     expect(onCategoryChange).toHaveBeenCalledWith(
       expect.objectContaining({
-        values: ['contract'],
+        value: 'contract',
         file,
       }),
     );

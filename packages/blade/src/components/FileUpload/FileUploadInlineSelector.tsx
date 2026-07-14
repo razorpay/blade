@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { FileUploadInlineSelectorProps, FileUploadInlineSelectorTriggerProps } from './types';
+import type {
+  BladeFile,
+  FileUploadInlineSelectorProps,
+  FileUploadInlineSelectorTriggerProps,
+} from './types';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -64,7 +68,7 @@ const _InlineSelectorTrigger = ({
     value,
     onChange: ({ values }) => {
       if (values.length > 0) {
-        onChange({ values, file });
+        onChange({ value: values[0], file });
       }
     },
     name: file.id ?? file.name,
@@ -95,7 +99,9 @@ const _InlineSelectorTrigger = ({
       onClick={() => onTriggerClick()}
       onKeyDown={(e) =>
         onTriggerKeydown?.({
-          event: e as React.KeyboardEvent<HTMLInputElement>,
+          // Safe cast: onTriggerKeydown only reads event.key, which exists on all KeyboardEvent types.
+          // The type constraint requires HTMLInputElement but the handler never accesses input-specific properties.
+          event: (e as unknown) as React.KeyboardEvent<HTMLInputElement>,
         })
       }
     >
@@ -127,16 +133,26 @@ const FileUploadInlineSelector = ({
   placeholder = 'Select',
   file,
 }: FileUploadInlineSelectorProps): React.ReactElement => {
-  const selectedOption = options.find((opt) => opt.value === value);
+  const [internalValue, setInternalValue] = React.useState<string | undefined>(value);
+  const currentValue = value ?? internalValue;
+  const selectedOption = options.find((opt) => opt.value === currentValue);
   const displayLabel = selectedOption?.title ?? placeholder;
+
+  const handleChange = React.useCallback(
+    (args: { value: string; file: BladeFile }) => {
+      setInternalValue(args.value);
+      onChange(args);
+    },
+    [onChange],
+  );
 
   return (
     <Dropdown selectionType="single">
       <InlineSelectorTrigger
         displayLabel={displayLabel}
         file={file}
-        value={value}
-        onChange={onChange}
+        value={currentValue}
+        onChange={handleChange}
       />
       <DropdownOverlay>
         <ActionList>
@@ -145,7 +161,7 @@ const FileUploadInlineSelector = ({
               key={option.value}
               title={option.title}
               value={option.value}
-              isSelected={option.value === value}
+              isSelected={option.value === currentValue}
             />
           ))}
         </ActionList>

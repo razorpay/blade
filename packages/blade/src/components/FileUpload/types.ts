@@ -132,8 +132,7 @@ type FileUploadCommonProps = {
   categoryValue?: (file: BladeFile) => string | undefined;
   /**
    * Callback fired when a category option is selected.
-   * Receives the selected `values` array (convention: single-select returns one-element array)
-   * and the associated `file`.
+   * Receives the selected `value` and the associated `file`.
    */
   onCategoryChange?: FileUploadCategoryChangeHandler;
   /**
@@ -221,7 +220,7 @@ type FileUploadCategoryOption = {
   value: string;
 };
 
-type FileUploadCategoryChangeHandler = (args: { values: string[]; file: BladeFile }) => void;
+type FileUploadCategoryChangeHandler = (args: { value: string; file: BladeFile }) => void;
 
 type FileUploadInlineSelectorTriggerProps = {
   displayLabel: string;
@@ -254,8 +253,7 @@ type FileUploadItemProps = Pick<
   selectedCategoryValue?: string;
   /**
    * Callback fired when a category option is selected.
-   * Receives the selected `values` array (convention: single-select returns one-element array)
-   * and the associated `file`.
+   * Receives the selected `value` and the associated `file`.
    */
   onCategoryChange?: FileUploadCategoryChangeHandler;
   /**
