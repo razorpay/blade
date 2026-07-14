@@ -115,12 +115,15 @@ type ChildSlots = {
   xLabel?: string;
   hasYAxis: boolean;
   yLabel?: string;
+  yTickFormatter?: ChartYAxisProps['tickFormatter'];
   hasLegend: boolean;
   legend: LegendSlot;
   hasGrid: boolean;
   referenceLines: ReferenceLineSlot[];
   hasTooltip: boolean;
   tooltipFormatter?: TooltipFormatter;
+  /** Recharts Tooltip `filterNull` — defaults to true (omit null/undefined rows). */
+  tooltipFilterNull: boolean;
 };
 
 const readChildSlots = (children: React.ReactNode): ChildSlots => {
@@ -133,6 +136,8 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
     hasGrid: false,
     referenceLines: [],
     hasTooltip: false,
+    // Match Recharts Tooltip default: null/undefined payload entries are omitted.
+    tooltipFilterNull: true,
   };
 
   React.Children.forEach(children, (child) => {
@@ -164,6 +169,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       const props = child.props as ChartYAxisProps;
       slots.hasYAxis = true;
       slots.yLabel = props.label;
+      slots.yTickFormatter = props.tickFormatter;
     } else if (id === commonComponentIds.chartLegend) {
       const props = child.props as ChartLegendProps;
       slots.hasLegend = true;
@@ -181,6 +187,9 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       const props = child.props as ChartTooltipProps;
       if (typeof props.formatter === 'function') {
         slots.tooltipFormatter = props.formatter;
+      }
+      if (props.filterNull !== undefined) {
+        slots.tooltipFilterNull = Boolean(props.filterNull);
       }
     } else if (id === commonComponentIds.chartReferenceLine) {
       const props = child.props as ChartReferenceLineProps;
@@ -216,6 +225,17 @@ const toNullableNumber = (raw: unknown): number | null => {
   const value = Number(raw);
   return Number.isNaN(value) || !isFinite(value) ? null : value;
 };
+
+/**
+ * Resolve a (possibly nested) dataKey from a row — matches Recharts/lodash-get
+ * semantics so keys like `metrics.sales` work on native.
+ */
+const getRowValue = (row: Record<string, unknown>, dataKey: string): unknown =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getIn(row as any, dataKey as any);
+
+const getSeriesNumber = (row: Record<string, unknown>, dataKey: string): number | null =>
+  toNullableNumber(getRowValue(row, dataKey));
 
 /** Y-domain max: nice-ceil positives; clamp all-negative/zero-max to 0; keep 1 for all-zero. */
 const resolveYMax = (dataMax: number): number => {
@@ -563,7 +583,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     if (!slots.xSecondaryDataKey || !data?.length) return undefined;
     const map: Record<number, string | number | undefined> = {};
     data.forEach((row, index) => {
-      map[index] = row[slots.xSecondaryDataKey!] as string | number | undefined;
+      map[index] = getRowValue(row, slots.xSecondaryDataKey!) as string | number | undefined;
     });
     return map;
   }, [data, slots.xSecondaryDataKey]);
@@ -576,8 +596,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     data.forEach((row) => {
       linesForDomain.forEach((line) => {
         // Skip null/undefined cells — Number(null) === 0 would otherwise pull the
-        // domain to 0 and flatten sparse / connectNulls charts.
-        const value = toNullableNumber(row[line.dataKey]);
+        // domain to 0 and flatten sparse / connectNulls charts. Use path-aware
+        // get so nested dataKeys like `metrics.sales` resolve (Recharts parity).
+        const value = getSeriesNumber(row, line.dataKey);
         if (value === null) return;
         if (value < min) min = value;
         if (value > max) max = value;
@@ -636,7 +657,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const lineGeometries = useMemo<LineGeometry[]>(() => {
     return visibleLines.map((line) => {
       const points: LinePoint[] = data.map((row, index) => {
-        const value = toNullableNumber(row[line.dataKey]);
+        const value = getSeriesNumber(row, line.dataKey);
         return {
           x: xForIndex(index),
           y: value === null ? 0 : plotHeight - ((value - yMin) / yRange) * plotHeight,
@@ -708,7 +729,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   const activeRow = activeIndex !== undefined ? data[activeIndex] : undefined;
   const activeLabelRaw =
-    activeRow && slots.xDataKey ? String(activeRow[slots.xDataKey] ?? activeIndex) : undefined;
+    activeRow && slots.xDataKey
+      ? String(getRowValue(activeRow, slots.xDataKey) ?? activeIndex)
+      : undefined;
   const activeLabel = activeLabelRaw
     ? slots.xTickFormatter
       ? slots.xTickFormatter(activeLabelRaw, activeIndex ?? 0)
@@ -717,8 +740,12 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   const tooltipRows = useMemo(() => {
     if (!activeRow) return [];
-    return visibleLines.map((line) => {
-      const rawValue = toNullableNumber(activeRow[line.dataKey]);
+    const rows: Array<{ key: string; color: string; displayValue: string; label: string }> = [];
+    visibleLines.forEach((line) => {
+      const rawValue = getSeriesNumber(activeRow, line.dataKey);
+      // Match Recharts Tooltip `filterNull` default (true): omit missing values.
+      if (rawValue === null && slots.tooltipFilterNull) return;
+
       const color = resolveColor(line.dataKey, line.color);
       let displayValue = rawValue === null ? MISSING_TOOLTIP_VALUE : String(rawValue);
       let label = line.name ?? line.dataKey;
@@ -747,14 +774,16 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           // Formatter threw — fall back to the raw value silently.
         }
       }
-      return { key: line.dataKey, color, displayValue, label };
+      rows.push({ key: line.dataKey, color, displayValue, label });
     });
+    return rows;
   }, [
     activeRow,
     visibleLines,
     dataColorMapping,
     theme.colors,
     slots.tooltipFormatter,
+    slots.tooltipFilterNull,
     activeIndex,
   ]);
 
@@ -863,7 +892,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                             fill={tickColor}
                             textAnchor="end"
                           >
-                            {formatYTick(tick)}
+                            {slots.yTickFormatter
+                              ? slots.yTickFormatter(tick, idx)
+                              : formatYTick(tick)}
                           </SvgText>
                         );
                       })}
@@ -927,7 +958,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                       let index = -1;
                       if (slots.xDataKey) {
                         index = data.findIndex(
-                          (row) => String(row[slots.xDataKey!]) === String(refLine.x),
+                          (row) => String(getRowValue(row, slots.xDataKey!)) === String(refLine.x),
                         );
                       }
                       if (index < 0 && isNumber(Number(refLine.x))) {
@@ -1031,7 +1062,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                         if (index % xLabelStep !== 0) return null;
                         const cx = xForIndex(index);
                         const rawLabel = slots.xDataKey
-                          ? String(row[slots.xDataKey] ?? '')
+                          ? String(getRowValue(row, slots.xDataKey) ?? '')
                           : String(index);
                         const label = slots.xTickFormatter
                           ? slots.xTickFormatter(rawLabel, index)

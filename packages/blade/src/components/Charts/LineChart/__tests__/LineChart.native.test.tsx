@@ -265,16 +265,17 @@ describe('<ChartLineWrapper /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should show a placeholder in the tooltip for null values', () => {
+  it('should omit null series rows from the tooltip by default (filterNull)', () => {
     const sparseData = [
-      { name: 'Jan', sales: 4000 },
-      { name: 'Feb', sales: null },
-      { name: 'Mar', sales: 4200 },
+      { name: 'Jan', sales: 4000, profit: 2000 },
+      { name: 'Feb', sales: null, profit: 1500 },
+      { name: 'Mar', sales: 4200, profit: 1800 },
     ];
     const { getByTestId, getByText, queryByText } = renderWithTheme(
       <ChartLineWrapper data={sparseData} testID="null-tooltip">
         <ChartTooltip />
         <ChartLine dataKey="sales" name="Sales" connectNulls />
+        <ChartLine dataKey="profit" name="Profit" />
       </ChartLineWrapper>,
     );
 
@@ -286,9 +287,82 @@ describe('<ChartLineWrapper /> (native)', () => {
       nativeEvent: { locationX: 40 + 200, locationY: 150, pageX: 240, pageY: 150 },
     };
     fireEvent(surface, 'responderGrant', atFeb);
+    // Null series omitted (Recharts filterNull=true default); non-null series kept.
+    expect(queryByText('Sales')).toBeFalsy();
+    expect(queryByText('—')).toBeFalsy();
+    expect(getByText('Profit')).toBeTruthy();
+    expect(getByText('1500')).toBeTruthy();
+  });
+
+  it('should show a placeholder for null tooltip values when filterNull={false}', () => {
+    const sparseData = [
+      { name: 'Jan', sales: 4000 },
+      { name: 'Feb', sales: null },
+      { name: 'Mar', sales: 4200 },
+    ];
+    const { getByTestId, getByText, queryByText } = renderWithTheme(
+      <ChartLineWrapper data={sparseData} testID="null-tooltip-show">
+        <ChartTooltip filterNull={false} />
+        <ChartLine dataKey="sales" name="Sales" connectNulls />
+      </ChartLineWrapper>,
+    );
+
+    const surface = getByTestId('null-tooltip-show-layout');
+    fireLayout(surface);
+
+    const atFeb = {
+      nativeEvent: { locationX: 40 + 200, locationY: 150, pageX: 240, pageY: 150 },
+    };
+    fireEvent(surface, 'responderGrant', atFeb);
     expect(getByText('Sales')).toBeTruthy();
     expect(getByText('—')).toBeTruthy();
     expect(queryByText('0')).toBeFalsy();
+  });
+
+  it('should resolve nested dataKeys like metrics.sales', () => {
+    const nestedData = [
+      { date: '2023-01-01', metrics: { sales: 4000, profit: 2000 } },
+      { date: '2023-02-01', metrics: { sales: 3000, profit: 1500 } },
+    ];
+    const { getByTestId, queryAllByTestId, getByText } = renderWithTheme(
+      <ChartLineWrapper data={nestedData} testID="nested">
+        <ChartXAxis dataKey="date" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartLine dataKey="metrics.sales" name="Sales" />
+        <ChartLine dataKey="metrics.profit" name="Profit" />
+      </ChartLineWrapper>,
+    );
+
+    const surface = getByTestId('nested-layout');
+    fireLayout(surface);
+    expect(queryAllByTestId('line-path-metrics.sales').length).toBeGreaterThan(0);
+    expect(queryAllByTestId('line-path-metrics.profit').length).toBeGreaterThan(0);
+
+    fireEvent(surface, 'responderGrant', {
+      nativeEvent: { locationX: 40, locationY: 100 },
+    });
+    expect(getByText('Sales')).toBeTruthy();
+    expect(getByText('4000')).toBeTruthy();
+    expect(getByText('Profit')).toBeTruthy();
+    expect(getByText('2000')).toBeTruthy();
+  });
+
+  it('should apply ChartYAxis tickFormatter to y-axis labels', () => {
+    const formatCurrency = (value: number): string => `$${Math.round(value / 1000)}K`;
+    const { getByTestId, toJSON } = renderWithTheme(
+      <ChartLineWrapper data={mockData} testID="y-format">
+        <ChartYAxis tickFormatter={formatCurrency} />
+        <ChartLine dataKey="sales" />
+      </ChartLineWrapper>,
+    );
+
+    fireLayout(getByTestId('y-format-layout'));
+    // react-native-svg exposes tick labels via the TSpan `content` prop.
+    const tree = JSON.stringify(toJSON());
+    // Domain max for sales (5000) nice-ceils to 5000; ticks include 0 and 5000.
+    expect(tree).toContain('"$0K"');
+    expect(tree).toContain('"$5K"');
   });
 
   it('should accept a testID via metaAttribute', () => {
