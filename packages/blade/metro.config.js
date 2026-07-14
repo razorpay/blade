@@ -81,12 +81,6 @@ const config = {
           filePath: path.resolve(mocksDir, 'storybook-react-router.js'),
         };
       }
-      if (moduleName === '@storybook/react-vite') {
-        return {
-          type: 'sourceFile',
-          filePath: path.resolve(mocksDir, 'storybook-react-vite.js'),
-        };
-      }
       // es-toolkit uses Unicode property escapes (\p{Lu}) unsupported by Hermes in RN 0.72
       if (moduleName === 'es-toolkit' || moduleName.startsWith('es-toolkit/')) {
         return {
