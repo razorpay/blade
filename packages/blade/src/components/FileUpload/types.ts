@@ -12,7 +12,6 @@ type BladeFileList = BladeFile[];
  * Props shared by web and React Native FileUpload.
  *
  * **React Native — not supported:**
- * - `ref` — native FileUpload does not use `forwardRef`; there is no hidden input to attach a ref to
  * - `_motionMeta` — motion ref wiring is web-only (attached to the hidden `<input>`)
  * - `data-analytics-*` / `elementtiming` props — on web these are spread onto the hidden file input; not wired on native
  */
@@ -76,8 +75,21 @@ type FileUploadCommonProps = {
    * **React Native:** This callback fires when the user taps the upload area as a tap signal.
    * `fileList` will always be empty at tap time — open your own file picker
    * (e.g. `react-native-document-picker`) inside this callback and manage the file list yourself.
+   *
+   * Prefer using `onPress` on native for tap events — `onChange` is kept for backward
+   * compatibility and fires alongside `onPress`.
    */
   onChange?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
+  /**
+   * Callback function triggered when the user taps the upload area (React Native only).
+   *
+   * Use this callback to open your file picker (e.g. `react-native-document-picker`).
+   * On native, `onChange` also fires as a tap signal for backward compatibility, but
+   * `onPress` is the recommended callback for handling tap events.
+   *
+   * This prop has no effect on web.
+   */
+  onPress?: () => void;
   /**
    * Callback function triggered when the preview icon is clicked
    */

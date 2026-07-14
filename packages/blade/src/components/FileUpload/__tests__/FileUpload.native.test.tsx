@@ -112,6 +112,26 @@ describe('<FileUpload /> (native)', () => {
     });
   });
 
+  it('should call onPress when upload area is pressed (native-only callback)', () => {
+    const onPress = jest.fn();
+    const onChange = jest.fn();
+    const { getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        name="single-file-upload-input"
+        fileList={[]}
+        onPress={onPress}
+        onChange={onChange}
+      />,
+    );
+
+    fireEvent.press(getByText('Upload'));
+
+    expect(onPress).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
   it('should not call onChange when isDisabled and upload area is pressed', () => {
     const onChange = jest.fn();
     const { getByText } = renderWithTheme(
@@ -255,6 +275,38 @@ describe('<FileUpload /> (native)', () => {
     fireEvent.press(buttons[0]);
 
     expect(onReupload).toHaveBeenCalledWith({ file: errorFile });
+    expect(onChange).toHaveBeenCalledWith({
+      name: 'single-file-upload-input',
+      fileList: [],
+    });
+  });
+
+  it('should not fall back to onRemove when onReupload is not provided', () => {
+    const onRemove = jest.fn();
+    const onChange = jest.fn();
+    const errorFile = {
+      id: 'file-2',
+      name: 'test.png',
+      size: 1024,
+      status: 'error' as const,
+      errorText: 'Upload failed',
+    } as BladeFile;
+
+    const { getAllByRole } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        name="single-file-upload-input"
+        fileList={[errorFile]}
+        onChange={onChange}
+        onRemove={onRemove}
+      />,
+    );
+
+    const buttons = getAllByRole('button');
+    fireEvent.press(buttons[0]);
+
+    expect(onRemove).not.toHaveBeenCalled();
     expect(onChange).toHaveBeenCalledWith({
       name: 'single-file-upload-input',
       fileList: [],

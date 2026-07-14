@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, forwardRef } from 'react';
 import { Pressable } from 'react-native';
 import type {
   FileUploadProps,
@@ -6,6 +6,7 @@ import type {
   BladeFileList,
   FileUploadVariableSizeProps,
 } from './types';
+import type { BladeElementRef } from '~utils/types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
   fileUploadColorTokens,
@@ -54,33 +55,37 @@ const toNativeDimension = (
   return Number.isNaN(numericValue) ? undefined : numericValue;
 };
 
-const _FileUpload = ({
-  name,
-  accept,
-  uploadType = 'single',
-  onChange,
-  onPreview,
-  onRemove,
-  onReupload,
-  onDismiss,
-  onDrop,
-  isDisabled,
-  isRequired,
-  necessityIndicator,
-  fileList,
-  testID,
-  label,
-  labelPosition = 'top',
-  accessibilityLabel,
-  validationState,
-  helpText,
-  errorText,
-  maxCount,
-  maxSize,
-  size = 'medium',
-  _motionMeta,
-  ...rest
-}: FileUploadProps): React.ReactElement => {
+const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
+  {
+    name,
+    accept,
+    uploadType = 'single',
+    onChange,
+    onPress,
+    onPreview,
+    onRemove,
+    onReupload,
+    onDismiss,
+    onDrop,
+    isDisabled,
+    isRequired,
+    necessityIndicator,
+    fileList,
+    testID,
+    label,
+    labelPosition = 'top',
+    accessibilityLabel,
+    validationState,
+    helpText,
+    errorText,
+    maxCount,
+    maxSize,
+    size = 'medium',
+    _motionMeta,
+    ...rest
+  }: FileUploadProps,
+  ref,
+): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const { actionButtonText, dropAreaText, height, width } = rest as FileUploadVariableSizeProps;
   const isSizeVariable = size === 'variable';
@@ -192,8 +197,21 @@ const _FileUpload = ({
   });
   const [isActive, setIsActive] = useState(false);
 
+  const filesWithIds = useMemo(
+    () =>
+      selectedFiles.map((file) =>
+        file.id
+          ? file
+          : {
+              ...file,
+              id: `${Date.now()}${Math.floor(Math.random() * 1000000)}`,
+            },
+      ),
+    [selectedFiles],
+  );
+
   const isMultiple = uploadType === 'multiple';
-  const isOneFileSelectedWithSingleUpload = !isMultiple && selectedFiles.length === 1;
+  const isOneFileSelectedWithSingleUpload = !isMultiple && filesWithIds.length === 1;
 
   const showError = validationState === 'error';
   const showHelpText = !showError && helpText;
@@ -203,18 +221,10 @@ const _FileUpload = ({
     [showError ? errorText : '', showHelpText ? helpText : ''].filter(Boolean).join(' ');
   const { labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
-  useMemo(() => {
-    for (const file of selectedFiles) {
-      if (!file.id) {
-        file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
-      }
-    }
-  }, [selectedFiles]);
-
   const handlePress = (): void => {
-    // On native, pressing the upload area fires onChange as a tap signal.
-    // fileList is always empty at tap time — the consumer must open their own
-    // file picker (e.g. react-native-document-picker) in this callback.
+    // On native, pressing the upload area fires onPress as the dedicated tap handler.
+    // onChange is also fired with an empty fileList for backward compatibility.
+    onPress?.();
     onChange?.({ name, fileList: [] });
   };
 
@@ -233,6 +243,7 @@ const _FileUpload = ({
 
   return (
     <BaseBox
+      ref={ref}
       display="flex"
       flexDirection="column"
       width="100%"
@@ -329,32 +340,26 @@ const _FileUpload = ({
 
         {isOneFileSelectedWithSingleUpload && (
           <FileUploadItem
-            file={selectedFiles[0]}
+            file={filesWithIds[0]}
             size={size}
             onRemove={() => {
-              const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+              const newFiles = filesWithIds.filter(({ id }) => id !== filesWithIds[0].id);
               setSelectedFiles(() => newFiles);
-              onRemove?.({ file: selectedFiles[0] });
+              onRemove?.({ file: filesWithIds[0] });
             }}
             onReupload={() => {
-              const fileToReupload = selectedFiles[0];
-              const newFiles = selectedFiles.filter(({ id }) => id !== fileToReupload.id);
+              const fileToReupload = filesWithIds[0];
+              const newFiles = filesWithIds.filter(({ id }) => id !== fileToReupload.id);
               setSelectedFiles(() => newFiles);
-              // Fire onReupload before handlePress so consumers can set a guard flag
-              // to skip the onChange handler when it fires synchronously right after.
               if (onReupload) {
                 onReupload({ file: fileToReupload });
-              } else {
-                onRemove?.({ file: fileToReupload });
               }
-              // Mirror web's inputRef.click() — re-fire the tap signal so the consumer
-              // can open their file picker without duplicating that logic in onReupload.
               handlePress();
             }}
             onDismiss={() => {
-              const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+              const newFiles = filesWithIds.filter(({ id }) => id !== filesWithIds[0].id);
               setSelectedFiles(() => newFiles);
-              onDismiss?.({ file: selectedFiles[0] });
+              onDismiss?.({ file: filesWithIds[0] });
             }}
             onPreview={onPreview}
           />
@@ -378,7 +383,7 @@ const _FileUpload = ({
         </BaseBox>
       )}
       {!isOneFileSelectedWithSingleUpload &&
-        selectedFiles.map((file, index) => (
+        filesWithIds.map((file, index) => (
           <BaseBox
             key={file.id}
             marginLeft={makeSize(0)}
@@ -388,24 +393,20 @@ const _FileUpload = ({
               file={file}
               size={size}
               onRemove={() => {
-                const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
+                const newFiles = filesWithIds.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
                 onRemove?.({ file });
               }}
               onReupload={() => {
-                const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
+                const newFiles = filesWithIds.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
-                // Fire onReupload before handlePress so consumers can set a guard flag
-                // to skip the onChange handler when it fires synchronously right after.
                 if (onReupload) {
                   onReupload({ file });
-                } else {
-                  onRemove?.({ file });
                 }
                 handlePress();
               }}
               onDismiss={() => {
-                const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
+                const newFiles = filesWithIds.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
                 onDismiss?.({ file });
               }}
@@ -417,7 +418,7 @@ const _FileUpload = ({
   );
 };
 
-const FileUpload = assignWithoutSideEffects(_FileUpload, {
+const FileUpload = assignWithoutSideEffects(forwardRef(_FileUpload), {
   displayName: 'FileUpload',
   componentId: 'FileUpload',
 });
