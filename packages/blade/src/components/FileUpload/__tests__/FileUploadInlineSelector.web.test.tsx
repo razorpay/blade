@@ -309,7 +309,7 @@ describe('<FileUpload /> integration with category selector', () => {
     ).toThrow('categoryOptions cannot be used when size is "variable"');
   });
 
-  it('should resolve per-file category values via categoryValue function', () => {
+  it('should resolve per-file category values via getCategoryValue function', () => {
     const file1: BladeFile = {
       id: 'file-a',
       name: 'document1.pdf',
@@ -336,7 +336,7 @@ describe('<FileUpload /> integration with category selector', () => {
         label="Upload documents"
         fileList={[file1, file2]}
         categoryOptions={categoryOptions}
-        categoryValue={categoryValueFn}
+        getCategoryValue={categoryValueFn}
         onCategoryChange={onCategoryChange}
       />,
     );
@@ -368,7 +368,7 @@ describe('<FileUpload /> integration with category selector', () => {
         label="Upload document"
         fileList={[file]}
         categoryOptions={categoryOptions}
-        categoryValue={categoryValueFn}
+        getCategoryValue={categoryValueFn}
         onCategoryChange={onCategoryChange}
       />,
     );

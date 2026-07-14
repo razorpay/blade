@@ -129,7 +129,7 @@ type FileUploadCommonProps = {
    * by any file property (name, id, size, etc.) without coupling to Blade's
    * internal ID assignment.
    */
-  categoryValue?: (file: BladeFile) => string | undefined;
+  getCategoryValue?: (file: BladeFile) => string | undefined;
   /**
    * Callback fired when a category option is selected.
    * Receives the selected `value` and the associated `file`.

@@ -55,7 +55,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     necessityIndicator,
     fileList,
     categoryOptions,
-    categoryValue,
+    getCategoryValue,
     onCategoryChange,
     categoryPlaceholder,
     testID,
@@ -108,10 +108,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       });
     }
 
-    if (!categoryOptions && (onCategoryChange || categoryPlaceholder || categoryValue)) {
+    if (!categoryOptions && (onCategoryChange || categoryPlaceholder || getCategoryValue)) {
       throwBladeError({
         message:
-          'onCategoryChange, categoryPlaceholder, and categoryValue require categoryOptions to be provided',
+          'onCategoryChange, categoryPlaceholder, and getCategoryValue require categoryOptions to be provided',
         moduleName: 'FileUpload',
       });
     }
@@ -392,7 +392,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             file={selectedFiles[0]}
             size={size}
             categoryOptions={categoryOptions}
-            selectedCategoryValue={categoryValue?.(selectedFiles[0])}
+            selectedCategoryValue={getCategoryValue?.(selectedFiles[0])}
             onCategoryChange={onCategoryChange}
             categoryPlaceholder={categoryPlaceholder}
             onRemove={() => {
@@ -462,7 +462,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               file={file}
               size={size}
               categoryOptions={categoryOptions}
-              selectedCategoryValue={categoryValue?.(file)}
+              selectedCategoryValue={getCategoryValue?.(file)}
               onCategoryChange={onCategoryChange}
               categoryPlaceholder={categoryPlaceholder}
               onRemove={() => {

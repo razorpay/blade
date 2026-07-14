@@ -136,6 +136,9 @@ const FileUploadInlineSelector = ({
   file,
 }: FileUploadInlineSelectorProps): React.ReactElement => {
   const [internalValue, setInternalValue] = React.useState<string | undefined>(value);
+  React.useEffect(() => {
+    setInternalValue(value);
+  }, [value]);
   const currentValue = value ?? internalValue;
   const selectedOption = options.find((opt) => opt.value === currentValue);
   const displayLabel = selectedOption?.title ?? placeholder;
