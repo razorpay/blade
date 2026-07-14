@@ -192,17 +192,17 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
 /**
  * Converts a framer `transition` (seconds + bezier array) into reanimated `withTiming` config.
  */
-const getTiming = (transition?: Tween) => {
+const getTiming = (transition?: Tween): { duration: number; easing: unknown } => {
   const durationSec =
     typeof transition?.duration === 'number' ? transition.duration : DEFAULT_DURATION_SEC;
   const ease = transition?.ease;
   const easing =
     Array.isArray(ease) && ease.length === 4 && ease.every((v) => typeof v === 'number')
       ? Easing.bezier(
-          (ease as unknown as number[])[0],
-          (ease as unknown as number[])[1],
-          (ease as unknown as number[])[2],
-          (ease as unknown as number[])[3],
+          ((ease as unknown) as number[])[0],
+          ((ease as unknown) as number[])[1],
+          ((ease as unknown) as number[])[2],
+          ((ease as unknown) as number[])[3],
         )
       : Easing.ease;
 
@@ -346,9 +346,7 @@ const useAnimatedVariant = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetName]);
 
-  return useAnimatedStyle(() =>
-    interpolateVariant(fromStyle.value, toStyle.value, progress.value)
-  );
+  return useAnimatedStyle(() => interpolateVariant(fromStyle.value, toStyle.value, progress.value));
 };
 
 export { resolveVariantStyle, parseTransform, useAnimatedVariant };

@@ -21,9 +21,12 @@ const fadeVariants: MotionVariantsType = {
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
-const renderVariantHook = (variants: MotionVariantsType, type: 'in' | 'out' | 'inout') => {
+const renderVariantHook = (
+  variants: MotionVariantsType,
+  type: 'in' | 'out' | 'inout',
+): MotionVariantsType | undefined => {
   let result: MotionVariantsType | undefined;
-  const Harness = () => {
+  const Harness = (): null => {
     result = useMotionVariants(variants, type);
     return null;
   };
@@ -97,7 +100,7 @@ describe('<BaseMotion /> (native)', () => {
 
     // The exit animation completes synchronously (mocked reanimated), then the child is unmounted on
     // the next frame via requestAnimationFrame. Use fake timers to flush that frame deterministically.
-    await act(async () => {
+    await act(() => {
       jest.runAllTimers();
     });
 
