@@ -184,7 +184,9 @@ const SpotlightPopoverTour = ({
   // Store the latest onStepLayout logic in a ref so the context value stays
   // stable (only contains stable callbacks). Without this, every step change or
   // settle creates a new contextValue object, re-rendering ALL context consumers.
-  const onStepLayoutRef = React.useRef<(id: string) => void>(() => {});
+  const onStepLayoutRef = React.useRef<(id: string) => void>(() => {
+    // no-op — populated below before first use
+  });
   onStepLayoutRef.current = (id: string) => {
     if (steps[activeStep]?.name === id && isStepSettled) {
       void updateMaskSize(true);
