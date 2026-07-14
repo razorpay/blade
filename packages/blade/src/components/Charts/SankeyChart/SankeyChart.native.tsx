@@ -144,11 +144,11 @@ const INTER_ADVANCE: Record<string, number> = {
   '!': 0.33,
   '@': 1.0,
   '#': 0.57,
-  '$': 0.57,
+  $: 0.57,
   '^': 0.47,
   '&': 0.69,
   '*': 0.42,
-  '_': 0.5,
+  _: 0.5,
   '=': 0.57,
   '[': 0.34,
   ']': 0.34,
@@ -344,32 +344,32 @@ const computeSankeyLayout = ({
       const t = nodeLayouts[l.target];
       if (!s || !t) return null;
       const linkWidth = Math.max(0, l.value) * ky;
-    const sourceY = s.y + sourceOffset[l.source] + linkWidth / 2;
-    const targetY = t.y + targetOffset[l.target] + linkWidth / 2;
-    sourceOffset[l.source] += linkWidth;
-    targetOffset[l.target] += linkWidth;
-    const sourceX = s.x + nodeWidth;
-    const targetX = t.x;
-    const controlX = (sourceX + targetX) / 2;
-    const d = `M${sourceX},${sourceY + linkWidth / 2} C${controlX},${
-      sourceY + linkWidth / 2
-    } ${controlX},${targetY + linkWidth / 2} ${targetX},${targetY + linkWidth / 2} L${targetX},${
-      targetY - linkWidth / 2
-    } C${controlX},${targetY - linkWidth / 2} ${controlX},${sourceY - linkWidth / 2} ${sourceX},${
-      sourceY - linkWidth / 2
-    } Z`;
-    return {
-      sourceIndex: l.source,
-      targetIndex: l.target,
-      value: l.value,
-      originalIndex: l._originalIndex,
-      d,
-      sourceX,
-      sourceY,
-      targetX,
-      targetY,
-      thickness: linkWidth,
-    };
+      const sourceY = s.y + sourceOffset[l.source] + linkWidth / 2;
+      const targetY = t.y + targetOffset[l.target] + linkWidth / 2;
+      sourceOffset[l.source] += linkWidth;
+      targetOffset[l.target] += linkWidth;
+      const sourceX = s.x + nodeWidth;
+      const targetX = t.x;
+      const controlX = (sourceX + targetX) / 2;
+      const d = `M${sourceX},${sourceY + linkWidth / 2} C${controlX},${
+        sourceY + linkWidth / 2
+      } ${controlX},${targetY + linkWidth / 2} ${targetX},${targetY + linkWidth / 2} L${targetX},${
+        targetY - linkWidth / 2
+      } C${controlX},${targetY - linkWidth / 2} ${controlX},${sourceY - linkWidth / 2} ${sourceX},${
+        sourceY - linkWidth / 2
+      } Z`;
+      return {
+        sourceIndex: l.source,
+        targetIndex: l.target,
+        value: l.value,
+        originalIndex: l._originalIndex,
+        d,
+        sourceX,
+        sourceY,
+        targetX,
+        targetY,
+        thickness: linkWidth,
+      };
     })
     .filter((link): link is LinkLayout => link !== null);
 
@@ -754,7 +754,7 @@ const _ChartSankeyWrapper = ({
 
   // ── Motion values — passed to per-shape components to avoid N+M useTheme calls ─
   const motionDuration = theme.motion.duration.quick;
-  const motionEasing = (castNativeType(theme.motion.easing.standard) as unknown) as EasingFn;
+  const motionEasing = castNativeType(theme.motion.easing.standard) as unknown as EasingFn;
 
   // ── Label / chip geometry (mirrors web) ──────────────────────────────────────
   const fontSize = theme.typography.fonts.size[75];
@@ -1010,8 +1010,8 @@ const _ChartSankeyWrapper = ({
                       linkColorOverride ??
                       nodeColorOverride ??
                       (srcNode
-                        ? srcNode.color ??
-                          defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
+                        ? (srcNode.color ??
+                          defaultColorTokens[link.sourceIndex % defaultColorTokens.length])
                         : defaultColorTokens[0]);
                     return (
                       <SankeyLinkShape
