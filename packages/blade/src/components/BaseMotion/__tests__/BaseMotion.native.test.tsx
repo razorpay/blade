@@ -21,6 +21,16 @@ const fadeVariants: MotionVariantsType = {
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
+const renderVariantHook = (variants: MotionVariantsType, type: 'in' | 'out' | 'inout') => {
+  let result: MotionVariantsType | undefined;
+  const Harness = () => {
+    result = useMotionVariants(variants, type);
+    return null;
+  };
+  renderWithTheme(<Harness />);
+  return result;
+};
+
 describe('<BaseMotion /> (native)', () => {
   it('should render children inside BaseMotionBox', () => {
     const { toJSON, getByText } = renderWithTheme(
@@ -45,14 +55,14 @@ describe('<BaseMotion /> (native)', () => {
   });
 
   it('should zero the exit duration when type is "in"', () => {
-    const variants = useMotionVariants(fadeVariants, 'in');
+    const variants = renderVariantHook(fadeVariants, 'in');
 
     expect(variants?.animate.transition?.duration).toBe(0.8);
     expect(variants?.exit.transition?.duration).toBe(0.0001);
   });
 
   it('should zero the entry duration when type is "out"', () => {
-    const variants = useMotionVariants(fadeVariants, 'out');
+    const variants = renderVariantHook(fadeVariants, 'out');
 
     expect(variants?.exit.transition?.duration).toBe(0.3);
     expect(variants?.animate.transition?.duration).toBe(0.0001);
@@ -69,6 +79,8 @@ describe('<BaseMotion /> (native)', () => {
   });
 
   it('should mount / unmount child when isVisible toggles with shouldUnmountWhenHidden', async () => {
+    jest.useFakeTimers();
+
     const { toJSON, getByText, rerender } = renderWithTheme(
       <BaseMotionEntryExit motionVariants={fadeVariants} isVisible shouldUnmountWhenHidden>
         <Text>toggle child</Text>
@@ -84,11 +96,13 @@ describe('<BaseMotion /> (native)', () => {
     );
 
     // The exit animation completes synchronously (mocked reanimated), then the child is unmounted on
-    // the next frame. Flush that frame inside `act` so the state update is captured cleanly.
+    // the next frame via requestAnimationFrame. Use fake timers to flush that frame deterministically.
     await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 32));
+      jest.runAllTimers();
     });
 
     expect(JSON.stringify(toJSON())).not.toContain('toggle child');
+
+    jest.useRealTimers();
   });
 });

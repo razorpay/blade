@@ -56,7 +56,6 @@ const SUPPORTED_VARIANT_KEYS = new Set([
   'borderRadius',
   // meta keys handled elsewhere / intentionally ignored
   'transition',
-  'transitionEnd',
 ]);
 
 /**
@@ -73,6 +72,15 @@ const parseUnit = (raw: string): number => {
   if (raw.trim().endsWith('%')) {
     // Percentage translate is relative to the element's own size which we can't measure here.
     // `0%` maps cleanly to 0; any other percentage degrades to 0 (documented limitation).
+    if (__DEV__ && numeric !== 0) {
+      logger({
+        type: 'warn',
+        moduleName: 'BaseMotion',
+        message:
+          'Percentage values in transforms (e.g. translateX(50%)) are not supported on native — ' +
+          'they degrade to 0. This is a known limitation of the reanimated interpreter.',
+      });
+    }
     return 0;
   }
   return numeric;
@@ -193,6 +201,16 @@ const getTiming = (transition?: Tween): { duration: number; easing: (t: number) 
       ? Easing.bezier(ease[0], ease[1], ease[2], ease[3])
       : Easing.ease;
 
+  if (__DEV__ && typeof ease === 'string') {
+    logger({
+      type: 'warn',
+      moduleName: 'BaseMotion',
+      message:
+        `Named easing string "${ease}" is not supported on native — falling back to default easing. ` +
+        'Use a cubic-bezier array (e.g. [0.4, 0, 0.2, 1]) for custom easing.',
+    });
+  }
+
   return { duration: durationSec * 1000, easing };
 };
 
@@ -285,22 +303,32 @@ const useAnimatedVariant = ({
   const progress = useSharedValue(0);
   const previousTargetRef = React.useRef<keyof MotionVariantsType>('initial');
 
+  // Store variants and onAnimationComplete in refs so the effect always reads the latest values
+  // without needing them in the dependency array (which would re-trigger the animation on every
+  // parent re-render if the variant objects are not memoized upstream).
+  const variantsRef = React.useRef(variants);
+  variantsRef.current = variants;
+  const onAnimationCompleteRef = React.useRef(onAnimationComplete);
+  onAnimationCompleteRef.current = onAnimationComplete;
+
   React.useEffect(() => {
     if (previousTargetRef.current === targetName) return;
 
-    const targetVariant = variants?.[targetName];
-    fromStyle.value = resolveVariantStyle(variants?.[previousTargetRef.current]);
+    const currentVariants = variantsRef.current;
+    const targetVariant = currentVariants?.[targetName];
+    fromStyle.value = resolveVariantStyle(currentVariants?.[previousTargetRef.current]);
     toStyle.value = resolveVariantStyle(targetVariant);
     previousTargetRef.current = targetName;
 
     const { duration, easing } = getTiming(targetVariant?.transition);
     progress.value = 0;
     progress.value = withTiming(1, { duration, easing }, (finished) => {
-      if (finished && onAnimationComplete) {
-        runOnJS(onAnimationComplete)(targetName);
+      if (finished && onAnimationCompleteRef.current) {
+        runOnJS(onAnimationCompleteRef.current)(targetName);
       }
     });
-    // Only re-run when the resolved target changes. Shared values are stable refs.
+    // Only re-run when the resolved target changes. Shared values and callbacks are kept
+    // in refs to avoid stale closures without re-triggering the effect.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetName]);
 

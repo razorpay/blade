@@ -15,10 +15,11 @@ import { useMotionVariants } from './baseMotionUtils';
 import { useAnimatedVariant } from './baseMotionInterpreter.native';
 import { useAnimateInteractions } from '~components/AnimateInteractions/AnimateInteractionsProvider';
 import { useStagger } from '~components/Stagger/StaggerProvider';
-import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
+import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles.native';
 import type { BoxProps } from '~components/Box';
 import type { Theme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
+import { logger } from '~utils/logger';
 
 /**
  * Internal-only props threaded through the native engine. `_onAnimationComplete` lets
@@ -74,12 +75,21 @@ const _BaseMotionBox = (
     // `as` has no arbitrary-tag semantics on native; children are wrapped instead.
     as: _as,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    _motionMeta,
+    _motionMeta: __motionMeta,
     _onAnimationComplete,
     ...rest
   }: BaseMotionBoxNativeProps,
   ref: React.Ref<View>,
 ): React.ReactElement => {
+  if (__DEV__ && _as !== undefined) {
+    logger({
+      type: 'warn',
+      moduleName: 'BaseMotion',
+      message:
+        'The "as" prop is not supported on native — children are wrapped in an Animated.View instead.',
+    });
+  }
+
   const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
   const { isInsideStaggerContainer, staggerType } = useStagger();
 
@@ -100,6 +110,17 @@ const _BaseMotionBox = (
   }, []);
 
   const nativeAnimate = castNativeType(animate);
+
+  if (__DEV__ && typeof nativeAnimate === 'object' && nativeAnimate !== null) {
+    logger({
+      type: 'warn',
+      moduleName: 'BaseMotion',
+      message:
+        'The imperative animation control API ({ start }) is not yet implemented on native — ' +
+        'it is silently ignored and the animation target defaults to "initial". ' +
+        'This will be addressed in a follow-up batch.',
+    });
+  }
 
   // Derive the current declarative target from the active triggers.
   // Priority: explicit visibility → AnimateInteractions control flag → tap → mount (+ degraded
@@ -123,7 +144,7 @@ const _BaseMotionBox = (
   });
 
   const motionContent = (
-    <MotionDiv ref={ref as never} style={animatedStyle} {...(rest as MotionDivProps)}>
+    <MotionDiv ref={ref as never} {...(rest as MotionDivProps)} style={animatedStyle}>
       {children}
     </MotionDiv>
   );
@@ -214,13 +235,6 @@ const BaseMotionEntryExit = ({
     [shouldUnmountWhenHidden],
   );
 
-  const motionMeta: MotionMeta = React.useMemo(() => {
-    return {
-      isEnhanced: true,
-      innerRef: ((children as { ref?: React.Ref<View> }).ref ?? null) as MotionMeta['innerRef'],
-    };
-  }, [children]);
-
   if (!isMounted) {
     return null;
   }
@@ -232,7 +246,6 @@ const BaseMotionEntryExit = ({
       type={type}
       // Always drive visibility on native so the exit animation (and its completion callback) runs.
       animateVisibility={isVisible ? 'animate' : 'exit'}
-      _motionMeta={motionMeta}
       _onAnimationComplete={handleAnimationComplete}
     >
       {children}
