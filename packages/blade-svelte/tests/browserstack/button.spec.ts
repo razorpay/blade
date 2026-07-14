@@ -26,7 +26,7 @@ test.afterEach(async ({ page }, testInfo) => {
       // eslint-disable-next-line no-eval
       (0, eval)(m);
     }, marker);
-  } catch (error) {
+  } catch (error: unknown) {
     console.warn('Failed to report BrowserStack session status:', error);
   }
 });
@@ -35,10 +35,14 @@ test.afterEach(async ({ page }, testInfo) => {
 // so all stories are checked within a single test/context instead of one test each.
 test('Button stories render and are interactive', async ({ page }) => {
   for (const storyId of stories) {
+    // eslint-disable-next-line no-await-in-loop
     await page.goto(`iframe.html?id=${storyId}`);
     const button = page.getByRole('button').first();
+    // eslint-disable-next-line no-await-in-loop
     await expect(button).toBeVisible();
+    // eslint-disable-next-line no-await-in-loop
     if (await button.isEnabled()) {
+      // eslint-disable-next-line no-await-in-loop
       await button.click();
     }
   }
