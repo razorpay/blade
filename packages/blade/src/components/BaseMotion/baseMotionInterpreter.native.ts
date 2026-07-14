@@ -25,7 +25,7 @@ import {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import type { EasingFactoryFn } from 'react-native-reanimated';
+import type { EasingFunction, EasingFunctionFactory } from 'react-native-reanimated';
 import type { Tween } from 'framer-motion';
 import type { MotionVariantsType } from './types';
 import { logger } from '~utils/logger';
@@ -182,7 +182,7 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
   return resolved;
 };
 
-type ReanimatedEasing = EasingFactoryFn;
+type ReanimatedEasing = EasingFunction | EasingFunctionFactory;
 
 /**
  * Converts a framer `transition` (seconds + bezier array) into reanimated `withTiming` config.
@@ -191,10 +191,13 @@ const getTiming = (transition?: Tween): { duration: number; easing: ReanimatedEa
   const durationSec =
     typeof transition?.duration === 'number' ? transition.duration : DEFAULT_DURATION_SEC;
   const ease = transition?.ease;
-  const easing: ReanimatedEasing =
-    Array.isArray(ease) && ease.length === 4 && ease.every((v) => typeof v === 'number')
-      ? Easing.bezier(ease[0], ease[1], ease[2], ease[3])
-      : Easing.ease;
+  let easing: ReanimatedEasing;
+  if (Array.isArray(ease) && ease.length === 4 && ease.every((v) => typeof v === 'number')) {
+    const [x1, y1, x2, y2] = (ease as unknown) as number[];
+    easing = Easing.bezier(x1, y1, x2, y2);
+  } else {
+    easing = Easing.ease;
+  }
 
   return { duration: durationSec * 1000, easing };
 };
@@ -307,9 +310,7 @@ const useAnimatedVariant = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetName]);
 
-  return useAnimatedStyle(() =>
-    interpolateVariant(fromStyle.value, toStyle.value, progress.value)
-  );
+  return useAnimatedStyle(() => interpolateVariant(fromStyle.value, toStyle.value, progress.value));
 };
 
 export { resolveVariantStyle, parseTransform, useAnimatedVariant };
