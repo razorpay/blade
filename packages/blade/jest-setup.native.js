@@ -19,6 +19,8 @@ jest.mock('react-native-reanimated', () => ({
       return `${x1} ${y1} ${x2} ${y2}`; // mock an implementation of Easing.bezier that returns a string
     }),
     out: jest.fn(() => ''),
+    in: jest.fn(() => ''),
+    ease: jest.fn(() => ''),
   },
   // apparently reanimated doesn't mock the Keyframe :(
   Keyframe: class Keyframe {
