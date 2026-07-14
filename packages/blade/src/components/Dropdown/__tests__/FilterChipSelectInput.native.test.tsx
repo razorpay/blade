@@ -174,11 +174,7 @@ describe('<FilterChipSelectInput /> (native)', () => {
   it('should reflect a controlled multiple value with counter and clear button', () => {
     const { getByText, getByLabelText } = renderWithTheme(
       <Dropdown selectionType="multiple">
-        <FilterChipSelectInput
-          label="Status"
-          name="status"
-          value={['active', 'inactive']}
-        />
+        <FilterChipSelectInput label="Status" name="status" value={['active', 'inactive']} />
         <DropdownOverlay>
           <ActionList>
             <ActionListItem title="Active" value="active" />
