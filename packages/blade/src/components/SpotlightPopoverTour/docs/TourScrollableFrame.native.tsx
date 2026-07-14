@@ -6,6 +6,15 @@ type TourScrollableFrameProps = {
   children: React.ReactNode;
 };
 
+const styles = StyleSheet.create({
+  scroll: {
+    flexGrow: 1,
+  },
+  content: {
+    paddingBottom: 48,
+  },
+});
+
 /**
  * Native-only story helper: RN Storybook's StoryView is flex:1 + overflow:hidden
  * (no document scroll). Wrap long tour demos in a ScrollView and register it so
@@ -52,14 +61,5 @@ const TourScrollableFrame = ({ children }: TourScrollableFrameProps): React.Reac
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  scroll: {
-    flexGrow: 1,
-  },
-  content: {
-    paddingBottom: 48,
-  },
-});
 
 export { TourScrollableFrame };

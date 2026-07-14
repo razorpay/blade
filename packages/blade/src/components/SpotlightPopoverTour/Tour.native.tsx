@@ -14,8 +14,8 @@ import {
   measureStepRect,
   scrollStepIntoView,
   useTourScrollLock,
-  type ScrollableInstance,
 } from './tourNativeUtils';
+import type { ScrollableInstance } from './tourNativeUtils';
 import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './types';
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
@@ -223,8 +223,7 @@ const SpotlightPopoverTour = ({
       !isRectVisibleInWindow(rect, 0.5) ||
       !hasRoomForPopoverPlacement(rect, step?.placement, popoverGap);
 
-    const resolvedParent =
-      scrollParentRef.current ?? findScrollableAncestor(ref.current) ?? null;
+    const resolvedParent = scrollParentRef.current ?? findScrollableAncestor(ref.current) ?? null;
     if (resolvedParent) {
       scrollParentRef.current = resolvedParent;
     }

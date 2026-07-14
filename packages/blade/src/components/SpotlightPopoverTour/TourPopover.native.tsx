@@ -38,7 +38,9 @@ type FallbackPosition = PositionCoords & {
 };
 
 type MeasurableHost = {
-  measureInWindow?: (callback: (x: number, y: number, width: number, height: number) => void) => void;
+  measureInWindow?: (
+    callback: (x: number, y: number, width: number, height: number) => void,
+  ) => void;
 };
 
 const computeFallbackPosition = (
@@ -321,18 +323,16 @@ const TourPopover = ({
     };
   }, [close, titleId]);
 
-  const resolvedLeft =
-    floatingStyles.left ?? fallbackPosition?.left ?? UNSET_POSITION;
-  const resolvedTop =
-    floatingStyles.top ?? fallbackPosition?.top ?? UNSET_POSITION;
+  const resolvedLeft = floatingStyles.left ?? fallbackPosition?.left ?? UNSET_POSITION;
+  const resolvedTop = floatingStyles.top ?? fallbackPosition?.top ?? UNSET_POSITION;
 
   // Prefer measureInWindow fallback whenever available. floating-ui often returns a
   // non-sentinel but wrong position when the reference lives under an RN Modal overlay.
   const useFallback = fallbackPosition !== null;
 
-  const popoverLeft = (useFallback ? fallbackPosition!.left : resolvedLeft) - backdropOffset.x;
+  const popoverLeft = (useFallback ? fallbackPosition.left : resolvedLeft) - backdropOffset.x;
   // Modal host matches measureInWindow coords — no iOS portal offset correction needed
-  const popoverTop = (useFallback ? fallbackPosition!.top : resolvedTop) - backdropOffset.y;
+  const popoverTop = (useFallback ? fallbackPosition.top : resolvedTop) - backdropOffset.y;
 
   // Wait for measureInWindow fallback before fading in. floating-ui under RN Modal often
   // returns a non-sentinel but wrong placement — revealing then would snap when fallback lands.
@@ -369,7 +369,7 @@ const TourPopover = ({
               // Match TourPopover.web useTransitionStyles open duration (transitionDelay = gentle)
               animationDuration={transitionDelay}
               ref={refs.setFloating as never}
-              side={(useFallback ? fallbackPosition!.side : computedSide) as typeof computedSide}
+              side={useFallback ? fallbackPosition.side : computedSide}
               style={{
                 ...floatingStyles,
                 left: popoverLeft,

@@ -20,10 +20,7 @@ export {
 export type { Rect, ScrollableInstance } from './tourNativeUtils';
 
 /** @internal web-only — stubbed for native typecheck of shared imports */
-function smoothScroll(
-  _element: Element | null,
-  _options: ScrollIntoViewOptions,
-): Promise<null> {
+function smoothScroll(_element: Element | null, _options: ScrollIntoViewOptions): Promise<null> {
   return Promise.resolve(null);
 }
 

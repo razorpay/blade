@@ -68,10 +68,7 @@ type MaskGeometry = {
   isSizeZero: boolean;
 };
 
-const useMaskGeometry = (
-  size: SpotlightPopoverTourMaskRect,
-  padding: number,
-): MaskGeometry => {
+const useMaskGeometry = (size: SpotlightPopoverTourMaskRect, padding: number): MaskGeometry => {
   const { theme } = useTheme();
   const width = size.width + padding;
   const height = size.height + padding;
@@ -195,12 +192,56 @@ const FourRectOverlay = ({
   const cornerWedges = getCornerWedgePaths(x, y, width, height, borderRadius);
 
   return (
-    <View style={absoluteFill} pointerEvents="box-none" {...metaAttribute({ name: MetaConstants.TourMask })}>
+    <View
+      style={absoluteFill}
+      pointerEvents="box-none"
+      {...metaAttribute({ name: MetaConstants.TourMask })}
+    >
       {/* Dim regions around cutout — capture presses so background stays inert */}
-      <View pointerEvents="auto" style={{ position: 'absolute', top: 0, left: 0, width: windowWidth, height: topHeight, backgroundColor: overlayColor }} />
-      <View pointerEvents="auto" style={{ position: 'absolute', top: bottomY, left: 0, width: windowWidth, height: bottomHeight, backgroundColor: overlayColor }} />
-      <View pointerEvents="auto" style={{ position: 'absolute', top: y, left: 0, width: leftWidth, height, backgroundColor: overlayColor }} />
-      <View pointerEvents="auto" style={{ position: 'absolute', top: y, left: rightX, width: rightWidth, height, backgroundColor: overlayColor }} />
+      <View
+        pointerEvents="auto"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: windowWidth,
+          height: topHeight,
+          backgroundColor: overlayColor,
+        }}
+      />
+      <View
+        pointerEvents="auto"
+        style={{
+          position: 'absolute',
+          top: bottomY,
+          left: 0,
+          width: windowWidth,
+          height: bottomHeight,
+          backgroundColor: overlayColor,
+        }}
+      />
+      <View
+        pointerEvents="auto"
+        style={{
+          position: 'absolute',
+          top: y,
+          left: 0,
+          width: leftWidth,
+          height,
+          backgroundColor: overlayColor,
+        }}
+      />
+      <View
+        pointerEvents="auto"
+        style={{
+          position: 'absolute',
+          top: y,
+          left: rightX,
+          width: rightWidth,
+          height,
+          backgroundColor: overlayColor,
+        }}
+      />
 
       {/* Pulse border + corner wedges + hole-cover fade (inverse of SVG mask hole opacity) */}
       <Svg

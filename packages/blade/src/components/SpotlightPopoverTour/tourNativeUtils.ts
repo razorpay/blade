@@ -15,15 +15,26 @@ type ScrollableInstance = {
   scrollTo?: (options: { x?: number; y?: number; animated?: boolean }) => void;
   scrollToOffset?: (options: { offset: number; animated?: boolean }) => void;
   setNativeProps?: (props: Record<string, unknown>) => void;
-  measureInWindow?: (callback: (x: number, y: number, width: number, height: number) => void) => void;
+  measureInWindow?: (
+    callback: (x: number, y: number, width: number, height: number) => void,
+  ) => void;
   measure?: (
-    callback: (x: number, y: number, width: number, height: number, pageX: number, pageY: number) => void,
+    callback: (
+      x: number,
+      y: number,
+      width: number,
+      height: number,
+      pageX: number,
+      pageY: number,
+    ) => void,
   ) => void;
 };
 
 /** Minimal host shape for measureInWindow — View or any TourElement host */
 type TourMeasurable = {
-  measureInWindow?: (callback: (x: number, y: number, width: number, height: number) => void) => void;
+  measureInWindow?: (
+    callback: (x: number, y: number, width: number, height: number) => void,
+  ) => void;
 };
 
 /** Accept any step host ref (View / HTMLElement brand) — measure via duck-typing */
@@ -149,8 +160,7 @@ const getPlacementBiasedScrollTarget = (
   placement: string | undefined,
 ): { targetX: number; targetY: number } => {
   const side = getPlacementSide(placement);
-  let targetY: number;
-  let targetX: number;
+  let targetY: number, targetX: number;
 
   switch (side) {
     case 'bottom':
@@ -237,6 +247,8 @@ const getComponentName = (fiber: any): string | null => {
   if (typeof type === 'string') {
     return type;
   }
+  // Reading a third-party React fiber's displayName for component-name hints (not defining it)
+  // eslint-disable-next-line no-restricted-properties
   return type.displayName || type.name || null;
 };
 
@@ -263,9 +275,7 @@ const getHostNameHints = (fiber: any, stateNode: any): string[] => {
   return hints;
 };
 
-const findScrollableAncestor = (
-  nativeHostComponent: unknown,
-): ScrollableInstance | null => {
+const findScrollableAncestor = (nativeHostComponent: unknown): ScrollableInstance | null => {
   let fiber = getFiberFromHostInstance(nativeHostComponent);
 
   while (fiber) {
@@ -372,8 +382,7 @@ const scrollStepIntoView = async (
     return registeredScrollParent ?? findScrollableAncestor(stepRef.current);
   }
 
-  const scrollable =
-    registeredScrollParent ?? findScrollableAncestor(stepRef.current) ?? null;
+  const scrollable = registeredScrollParent ?? findScrollableAncestor(stepRef.current) ?? null;
 
   if (!scrollable) {
     // Re-check using screen metrics — window can be 0×0 in some Storybook hosts
@@ -399,18 +408,16 @@ const scrollStepIntoView = async (
 
   // Prefer the scroll parent's viewport when measurable (Storybook chrome ≠ full window)
   const scrollParentRect = await measureStepRect({ current: scrollable });
-  const boundsHeight = scrollParentRect?.height || fallbackHeight;
-  const boundsWidth = scrollParentRect?.width || fallbackWidth;
+  const boundsHeight = scrollParentRect?.height ? scrollParentRect.height : fallbackHeight;
+  const boundsWidth = scrollParentRect?.width ? scrollParentRect.width : fallbackWidth;
   const boundsOriginY = scrollParentRect?.y ?? 0;
   const boundsOriginX = scrollParentRect?.x ?? 0;
 
   // Prefer story/onScroll-tracked offset, then internal ScrollView metrics.
   // Fabric often omits `state.contentOffset`, which would leave currentY stuck at 0.
-  const contentOffset =
-    (scrollable as any)?.__bladeTourContentOffset ??
+  const contentOffset = (scrollable as any)?.__bladeTourContentOffset ??
     (scrollable as any)?.state?.contentOffset ??
-    (scrollable as any)?._scrollMetrics?.contentOffset ??
-    { x: 0, y: 0 };
+    (scrollable as any)?._scrollMetrics?.contentOffset ?? { x: 0, y: 0 };
   const currentY = typeof contentOffset?.y === 'number' ? contentOffset.y : 0;
   const currentX = typeof contentOffset?.x === 'number' ? contentOffset.x : 0;
 

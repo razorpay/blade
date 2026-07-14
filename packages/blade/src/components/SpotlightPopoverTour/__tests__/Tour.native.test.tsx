@@ -261,24 +261,16 @@ describe('utils.native visibility + scroll helpers', () => {
   });
 
   it('isRectVisibleInWindow returns true when ≥50% overlaps the window', () => {
-    expect(
-      isRectVisibleInWindow({ x: 0, y: 0, width: 100, height: 100 }, 0.5),
-    ).toBe(true);
+    expect(isRectVisibleInWindow({ x: 0, y: 0, width: 100, height: 100 }, 0.5)).toBe(true);
 
     // Fully off-screen
-    expect(
-      isRectVisibleInWindow({ x: 0, y: 900, width: 100, height: 100 }, 0.5),
-    ).toBe(false);
+    expect(isRectVisibleInWindow({ x: 0, y: 900, width: 100, height: 100 }, 0.5)).toBe(false);
 
     // Only 40% visible vertically
-    expect(
-      isRectVisibleInWindow({ x: 0, y: 760, width: 100, height: 100 }, 0.5),
-    ).toBe(false);
+    expect(isRectVisibleInWindow({ x: 0, y: 760, width: 100, height: 100 }, 0.5)).toBe(false);
 
     // Exactly 50% visible
-    expect(
-      isRectVisibleInWindow({ x: 0, y: 750, width: 100, height: 100 }, 0.5),
-    ).toBe(true);
+    expect(isRectVisibleInWindow({ x: 0, y: 750, width: 100, height: 100 }, 0.5)).toBe(true);
   });
 
   it('measureStepRect resolves measureInWindow results', async () => {
