@@ -34,7 +34,8 @@ export const parameters = {
 
 const styles = StyleSheet.create({
   // `flex: 1` lets the container fill the story canvas so absolutely-positioned
-  // portal content (e.g. the full-height Drawer) can size against a real viewport
-  // instead of collapsing to the intrinsic height of the story's inline content.
+  // portal content (e.g. the full-height Drawer or BottomSheet) can size against a
+  // real viewport instead of collapsing to the intrinsic height of the story's
+  // inline content.
   container: { flex: 1, padding: 16 },
 });

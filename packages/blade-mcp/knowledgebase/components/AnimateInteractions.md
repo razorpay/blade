@@ -41,6 +41,22 @@ type AnimateInteractionsProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `AnimateInteractions` to coordinate child animations based on parent-level interactions (hover, focus, tap).
+- Wrap the entire container that should trigger animations — child components use `motionTriggers={['on-animate-interactions']}` to respond.
+- Use for revealing actions on card hover, showing overlays on image hover, or scaling content on focus.
+- Combine with `Fade`, `Move`, `Scale`, or `Slide` on children for the actual animation effects.
+
+**Don't**
+
+- Don't use `AnimateInteractions` for individual element entry/exit — use `Fade`, `Move`, or `Slide` directly.
+- Don't pass multiple root children — wrap them in a single `Box` container.
+- Don't forget `motionTriggers={['on-animate-interactions']}` on child motion components — they must opt-in explicitly.
+- Don't use when simple CSS `:hover` would suffice — reserve for multi-element coordinated animations.
+
 ## Examples
 
 ### Basic Card with Animated Buttons

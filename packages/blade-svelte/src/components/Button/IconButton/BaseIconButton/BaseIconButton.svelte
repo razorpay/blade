@@ -9,7 +9,6 @@
   import {
     getIconButtonClasses,
     getIconButtonTemplateClasses,
-    getIconButtonIconColorToken,
   } from '@razorpay/blade-core/styles';
   import type { BaseIconButtonProps } from './types';
 
@@ -39,12 +38,19 @@
     ...rest
   }: BaseIconButtonProps = $props();
 
-  // `size="large"` with `isHighlighted` is an invalid combination (React throws in
+  // `size="large"` with `isHighlighted` or `emphasis="moderate"` is invalid (React throws in
   // __DEV__). Surface it as a localhost-only console error; still render the button.
   $effect(() => {
     if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-      if (size === 'large' && isHighlighted) {
-        console.error('[Blade: IconButton]: size "large" is not allowed with isHighlighted true');
+      if (size === 'large' && (isHighlighted || emphasis === 'moderate')) {
+        console.error(
+          '[Blade: IconButton]: size "large" is not allowed with isHighlighted true or emphasis "moderate"',
+        );
+      }
+      if (emphasis === 'moderate' && isHighlighted) {
+        console.error(
+          '[Blade: IconButton]: emphasis "moderate" is not compatible with isHighlighted true — moderate already provides its own highlighted-background style',
+        );
       }
     }
   });
@@ -54,8 +60,6 @@
   const combinedClasses = $derived(
     [cvaClasses, ...(styledProps.classes ?? [])].filter(Boolean).join(' '),
   );
-
-  const iconColorToken = $derived(getIconButtonIconColorToken({ isDisabled }));
 
   const accessibilityAttrs = $derived(
     makeAccessible({
@@ -147,5 +151,5 @@
   ontouchend={handleTouchEnd}
   onkeydown={handleKeyDown}
 >
-  <Icon {size} color={iconColorToken} />
+  <Icon {size} color="currentColor" />
 </button>

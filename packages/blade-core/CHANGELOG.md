@@ -1,5 +1,34 @@
 # @razorpay/blade-core
 
+## 0.8.0
+
+### Minor Changes
+
+- adff0f113: feat(AnnouncementBanner): add AnnouncementBanner component to blade, blade-core, and blade-svelte
+- 75288e989: feat(AppBar, TrustBadge): add AppBar and TrustBadge components
+
+  TrustBadge renders the "Razorpay Trusted Business" trust marker; its label is configurable
+  via a `label` prop (default: "Razorpay Trusted Business") so it can evolve (e.g. "Razorpay
+  Verified") without a breaking API change. AppBar surfaces it through the `trustBadgeVariant`
+  prop on `AppBarLeading`.
+
+### Patch Changes
+
+- 0724d3d38: feat(blade-svelte): add ActionList component
+
+  Also fixes a React BaseMenu hover style: the hover background is now suppressed when `aria-selected=true` so a selected row's `fadedHighlighted` background is not overridden on pointer-enter. This intentional fix applies to all React `BaseMenu`-based consumers (ActionList, Select, etc.) and matches the expected selected-item UX.
+
+- ec73575f0: feat(blade-svelte): add Card variant prop with primary, secondary, and theme treatments
+- 7fe2a5a65: feat(blade-svelte): add Checkbox and CheckboxGroup components
+- db72ca068: feat(blade-svelte): add Input family (BaseInput, TextInput, SearchInput, OTPInput, PhoneNumberInput)
+- ee333ee75: feat(blade-svelte): add InputGroup component
+- 39f33f521: feat(blade-svelte): compose Accordion on Collapsible primitive and add CollapsibleText
+
+  - `AccordionItem` now wraps its content in `<Collapsible>` so expand/collapse animation, body `id`, and `role="region"` accessibility are owned by `CollapsibleBody` instead of duplicated in the Accordion.
+  - `AccordionItemHeader` reads the Collapsible context for toggle + `aria-controls`/`aria-expanded` and renders `<CollapsibleChevronIcon>` (chevron rotation now lives in `collapsible.module.css`).
+  - `AccordionItemBody` delegates animation to `<CollapsibleBody>` and only renders the body content + gray-body styling.
+  - Add `CollapsibleText` (text + chevron trigger, keyboard accessible) and accept `_dangerouslyDisableValidations` on `Collapsible` for API parity with React.
+
 ## 0.7.1
 
 ### Patch Changes

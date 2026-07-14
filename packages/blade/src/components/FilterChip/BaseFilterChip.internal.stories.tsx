@@ -1,9 +1,13 @@
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
+import dayjs from 'dayjs';
 import { BaseFilterChip } from './BaseFilterChip';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { FilterChipDatePicker } from '~components/DatePicker';
+import type { DatesRangeValue } from '~components/DatePicker';
+import { Text } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
   return (
@@ -26,11 +30,11 @@ export default {
   },
 } as Meta<typeof BaseFilterChip>;
 
-const FilterChipTemplate: StoryFn<typeof BaseFilterChip> = (args) => {
+export const Default: StoryFn<typeof BaseFilterChip> = () => {
   return (
-    <Box>
-      <Box display="flex" gap="spacing.4">
-        <BaseFilterChip {...args} />
+    <Box display="flex" flexDirection="column" gap="spacing.6">
+      <Box display="flex" gap="spacing.4" flexWrap="wrap">
+        <BaseFilterChip label="Date" value="22/04/1999 - 14/02/2025" />
         <BaseFilterChip label="Unselected Chip" />
         <BaseFilterChip
           label="Phone Numbers"
@@ -44,12 +48,42 @@ const FilterChipTemplate: StoryFn<typeof BaseFilterChip> = (args) => {
           isDisabled
         />
       </Box>
+      <Box>
+        <Text marginBottom="spacing.4" color="surface.text.gray.muted" size="small">
+          BaseFilterChip powers the FilterChipDatePicker. With{' '}
+          <Text as="span" weight="semibold" size="small">
+            displayFormat=&quot;compact&quot;
+          </Text>
+          , selecting a named preset shows the preset label, while a custom range shows a humanised
+          date range inside the chip&apos;s selected state.
+        </Text>
+        <FilterChipDatePicker
+          label="Date"
+          selectionType="range"
+          displayFormat="compact"
+          presets={[
+            {
+              label: 'Past 7 days',
+              value: (date) => [dayjs(date).subtract(7, 'days').toDate(), date],
+            },
+            {
+              label: 'Past 15 days',
+              value: (date) => [dayjs(date).subtract(15, 'days').toDate(), date],
+            },
+            {
+              label: 'Past month',
+              value: (date) => [dayjs(date).subtract(1, 'month').toDate(), date],
+            },
+            {
+              label: 'Custom',
+              value: () => [null, null] as DatesRangeValue,
+            },
+          ]}
+          onChange={(date) => {
+            console.log(date);
+          }}
+        />
+      </Box>
     </Box>
   );
-};
-
-export const Default = FilterChipTemplate.bind({});
-Default.args = {
-  label: 'Date',
-  value: '22/04/1999 - 14/02/2025',
 };
