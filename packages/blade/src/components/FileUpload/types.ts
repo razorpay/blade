@@ -222,14 +222,14 @@ type FileUploadCategoryOption = {
 
 type FileUploadCategoryChangeHandler = (args: { value: string; file: BladeFile }) => void;
 
-type FileUploadInlineSelectorTriggerProps = {
+export type FileUploadInlineSelectorTriggerProps = {
   displayLabel: string;
   file: BladeFile;
   value: string | undefined;
   onChange: FileUploadCategoryChangeHandler;
 };
 
-type FileUploadInlineSelectorProps = {
+export type FileUploadInlineSelectorProps = {
   options: FileUploadCategoryOption[];
   value: string | undefined;
   onChange: FileUploadCategoryChangeHandler;
