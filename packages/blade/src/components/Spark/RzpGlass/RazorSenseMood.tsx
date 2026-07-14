@@ -154,7 +154,7 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     const hasLoadedRef = useRef(false);
     const [hasSnapshot, setHasSnapshot] = useState(false);
     const [showSnapshot, setShowSnapshot] = useState(false);
-    const [hasError, setHasError] = useState(false);
+    const [, setHasError] = useState(false);
     const { colorScheme } = useTheme();
 
     onLoadRef.current = onLoad;
@@ -336,19 +336,6 @@ const DesktopRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
             pointerEvents: 'none',
           }}
         />
-        {hasError ? (
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              zIndex: 3,
-              backgroundColor: FALLBACK_COLORS[colorScheme][mode],
-              opacity: 0,
-              pointerEvents: 'none',
-            }}
-          />
-        ) : null}
       </div>
     );
   },
@@ -445,7 +432,7 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
     const [isSnapshotTransitionEnabled, setIsSnapshotTransitionEnabled] = useState(false);
     const [displayedMode, setDisplayedMode] = useState(mode);
     const [displayedColorScheme, setDisplayedColorScheme] = useState(colorScheme);
-    const [hasError, setHasError] = useState(false);
+    const [, setHasError] = useState(false);
 
     const canOwnMedia = runtimeState === 'warm' || (runtimeState === 'active' && isRuntimeAdmitted);
     const shouldPlay = runtimeState === 'active' && isRuntimeAdmitted && !paused;
@@ -1287,19 +1274,6 @@ const MobileRazorSenseMood = forwardRef<HTMLDivElement, RazorSenseMoodProps>(
           }}
         />
         <canvas ref={layerCaptureCanvasRef} aria-hidden="true" style={{ display: 'none' }} />
-        {hasError ? (
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              zIndex: 3,
-              backgroundColor: FALLBACK_COLORS[colorScheme][mode],
-              opacity: 0,
-              pointerEvents: 'none',
-            }}
-          />
-        ) : null}
       </div>
     );
   },

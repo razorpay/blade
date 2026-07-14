@@ -4,8 +4,8 @@
 
 import type { RzpGlassPreset } from './presets';
 import { getPresets } from './presets';
-import type { RazorSenseMode, RazorSenseOperationalMode } from './modes';
-import { getRazorSenseOperationalModeVideoSources } from './modes';
+import type { RazorSenseMode } from './modes';
+import { getRazorSenseOperationalModeVideoSources, AUTHORED_PRESET_MODES } from './modes';
 import { selectRazorSenseVideoSource } from './razorSenseAssets';
 import { preloadRazorSenseVideo } from './RazorSensePreloadBroker';
 import { getRazorSenseDirectVideoSource, getRazorSenseProgram } from './razorSensePrograms';
@@ -21,12 +21,6 @@ import type {
 import type { ColorSchemeNames } from '~tokens/theme';
 
 const DEFAULT_CDN_PATH = `https://cdn.jsdelivr.net/npm/@razorpay/blade@${__BLADE_VERSION__}/assets/spark`;
-
-const AUTHORED_PRESET_MODES: Partial<Record<RzpGlassPreset, RazorSenseOperationalMode>> = {
-  default: 'neutral',
-  zoomed: 'thinking',
-  bottomWave: 'typing',
-};
 
 const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
   videoSrc: `${assetsPath}/spark-base-video.mp4`,

@@ -382,7 +382,6 @@ type SemanticRazorSenseProps = Pick<
   | 'width'
   | 'height'
   | 'assetsPath'
-  | 'paused'
   | 'startTime'
   | 'endTime'
   | 'playbackRate'
@@ -393,10 +392,12 @@ type SemanticRazorSenseProps = Pick<
 > & {
   mode: RazorSenseMode;
   preset?: never;
+  /** Whether RazorSense motion is paused (default: false) */
+  isPaused?: boolean;
   /** Crossfade duration (default: 0.4 operational, 1 emotional) */
   modeTransitionDuration?: number;
-  /** Delayed responsive trail in emotional desktop modes (default: true) */
-  interactive?: boolean;
+  /** Whether emotional modes respond to pointer input (default: true) */
+  isInteractive?: boolean;
 };
 
 type RazorSenseProps = LegacyRazorSenseProps | SemanticRazorSenseProps;
