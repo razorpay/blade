@@ -16,7 +16,14 @@ import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
-  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur' | 'showClearButton'
+  | 'onKeyDown'
+  | 'value'
+  | 'label'
+  | 'testID'
+  | 'onClick'
+  | 'selectionType'
+  | 'onBlur'
+  | 'showClearButton'
 > & {
   accessibilityLabel?: string;
   onChange?: (props: { name: string; values: string[] }) => void;
@@ -63,8 +70,10 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   } = useDropdown();
   const isUnControlled = options.length > 0 && props.value === undefined;
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
-  const { clearFilterCallbackTriggerer, setFilterChipGroupSelectedFilters } =
-    useFilterChipGroupContext();
+  const {
+    clearFilterCallbackTriggerer,
+    setFilterChipGroupSelectedFilters,
+  } = useFilterChipGroupContext();
 
   const getValuesArrayFromIndices = (): string[] => {
     let indices: number[] = [];
@@ -97,7 +106,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
     if (isUnControlled) {
       if (listViewSelectedFilters[label]) {
-        const savedIndices = listViewSelectedFilters[label] as unknown as number[];
+        const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
         setSelectedIndices(savedIndices);
         const inputValue = savedIndices
           .map((i) => options[i]?.value)
@@ -110,7 +119,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
         setSelectedIndices([]);
       }
     } else if (listViewSelectedFilters[label]) {
-      const savedIndices = listViewSelectedFilters[label] as unknown as number[];
+      const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
       setSelectedIndices(savedIndices);
     } else if (valueNotEmpty && !isValueAndSelectedIndicesSynced && options.length > 0) {
       const newSelectedIndices =

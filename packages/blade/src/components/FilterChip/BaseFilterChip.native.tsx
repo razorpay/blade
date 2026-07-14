@@ -221,16 +221,16 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
           isDisabled
             ? undefined
             : (e: GestureResponderEvent) => {
-                onClick?.(e as unknown as React.MouseEventHandler);
+                onClick?.((e as unknown) as React.MouseEventHandler);
               }
         }
-        {...({
+        {...(({
           onKeyDown: isDisabled
             ? undefined
             : (e: GestureResponderEvent) => {
-                onKeyDown?.(e as unknown as React.KeyboardEvent<Element>);
+                onKeyDown?.((e as unknown) as React.KeyboardEvent<Element>);
               },
-        } as unknown as Record<string, unknown>)}
+        } as unknown) as Record<string, unknown>)}
         {...makeAccessible({
           ...accessibilityProps,
           role: accessibilityProps?.role ?? 'button',
