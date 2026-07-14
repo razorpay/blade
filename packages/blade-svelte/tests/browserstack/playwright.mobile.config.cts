@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env.local') });
 
+process.env.BROWSERSTACK_MOBILE = '1';
+
 const CHROMATIC_URL = process.env.CHROMATIC_URL ?? '';
 
 if (!CHROMATIC_URL) {
