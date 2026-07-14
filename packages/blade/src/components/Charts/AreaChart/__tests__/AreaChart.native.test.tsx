@@ -250,4 +250,27 @@ describe('<ChartAreaWrapper /> (native)', () => {
     fireEvent(surface, 'touchEnd', { nativeEvent: { locationX: 155, locationY: 100 } });
     expect(queryByText('3000')).toBeFalsy();
   });
+
+  it('shows an em dash in the tooltip for null/missing values', () => {
+    const { getByTestId, queryByText } = renderWithTheme(
+      <ChartAreaWrapper data={nullableData}>
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartTooltip />
+        <ChartArea dataKey="uv" name="UV" />
+      </ChartAreaWrapper>,
+    );
+
+    const surface = getByTestId('chart-area-scrub-surface');
+    fireEvent(surface, 'layout', {
+      nativeEvent: { layout: { width: 400, height: 300, x: 0, y: 0 } },
+    });
+
+    // Tap near the third data point (Page C, uv: null) — index 2 of 4.
+    fireEvent(surface, 'touchStart', { nativeEvent: { locationX: 240, locationY: 100 } });
+    fireEvent(surface, 'touchEnd', { nativeEvent: { locationX: 240, locationY: 100 } });
+
+    expect(queryByText('—')).toBeTruthy();
+    expect(queryByText('0')).toBeFalsy();
+  });
 });

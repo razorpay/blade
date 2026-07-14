@@ -244,6 +244,15 @@ const niceFloor = (raw: number): number => {
   return -(niceFraction * 10 ** exponent);
 };
 
+/** Parse a chart cell to a finite number, or null when the value is missing/invalid. */
+const toNullableNumber = (raw: unknown): number | null => {
+  if (raw === null || raw === undefined) return null;
+  const value = Number(raw);
+  return Number.isNaN(value) || !isFinite(value) ? null : value;
+};
+
+const MISSING_TOOLTIP_VALUE = '—';
+
 const formatYTick = (value: number): string => {
   const abs = Math.abs(value);
   if (abs >= 1_000_000) return `${(value / 1_000_000).toFixed(abs >= 10_000_000 ? 0 : 1)}M`;
@@ -812,14 +821,14 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const tooltipRows = useMemo(() => {
     if (!activeRow) return [];
     return visibleAreas.map((area) => {
-      const rawValue = Number(activeRow[area.dataKey]) || 0;
+      const rawValue = toNullableNumber(activeRow[area.dataKey]);
       const mappingEntry = dataColorMapping[area.dataKey];
       const isCustomColor = Boolean(mappingEntry?.isCustomColor);
       const swatchToken = isCustomColor
         ? getHighestColorInRange({ colorToken: mappingEntry.colorToken })
         : mappingEntry?.colorToken;
       const swatchColor = swatchToken ? getIn(theme.colors, swatchToken) : tickColor;
-      let displayValue = String(rawValue);
+      let displayValue = rawValue === null ? MISSING_TOOLTIP_VALUE : String(rawValue);
       let label = area.name ?? area.dataKey;
       const formatter = slots.tooltipFormatter;
       if (formatter) {
@@ -828,7 +837,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         try {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const formatted = (formatter as any)(
-            rawValue,
+            rawValue ?? undefined,
             area.dataKey,
             undefined,
             activeIndex,
