@@ -180,6 +180,37 @@ describe('<FileUploadItem category />', () => {
     );
   });
 
+  it('should not show dropdown item focus ring when reopened with mouse after keyboard navigation', async () => {
+    const user = userEvent.setup();
+    const onCategoryChange = jest.fn();
+
+    const { getByRole, getAllByRole, queryByRole } = renderWithTheme(
+      <FileUploadItem
+        file={successFile}
+        categoryOptions={categoryOptions}
+        categoryValue="receipt"
+        onCategoryChange={onCategoryChange}
+      />,
+    );
+
+    const trigger = getByRole('button', { name: 'Select category for test.png' });
+    trigger.focus();
+    await user.keyboard('{Enter}');
+
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.keyboard('{ArrowDown}');
+
+    await waitFor(() => expect(getAllByRole('menuitem')[2]).toHaveClass('active-focus'));
+
+    await user.keyboard('{Escape}');
+    await waitFor(() => expect(queryByRole('menu')).toBeNull());
+
+    await user.click(trigger);
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+
+    await waitFor(() => expect(getAllByRole('menuitem')[1]).not.toHaveClass('active-focus'));
+  });
+
   describe('keyboard navigation', () => {
     it('should open the dropdown with Enter and select with Enter', async () => {
       const user = userEvent.setup();

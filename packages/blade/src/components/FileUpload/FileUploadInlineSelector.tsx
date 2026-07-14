@@ -33,12 +33,14 @@ const StyledInlineSelectorTrigger = styled.button(({ theme }) => ({
   '&:hover': {
     backgroundColor: theme.colors.interactive.background.gray.fadedHighlighted,
   },
-  '&:focus': {
-    ...getFocusRingStyles({ theme }),
+  '&:focus:not(:focus-visible)': {
+    outline: 'none',
     backgroundColor: theme.colors.interactive.background.gray.faded,
   },
   '&:focus-visible': {
+    ...getFocusRingStyles({ theme }),
     outlineOffset: makeSize(theme.spacing[0]),
+    backgroundColor: theme.colors.interactive.background.gray.faded,
   },
 }));
 
@@ -67,6 +69,7 @@ const _InlineSelectorTrigger = ({
     triggererRef,
     options,
     setActiveIndex,
+    setIsKeydownPressed,
   } = useDropdown();
 
   useControlledDropdownInput({
@@ -96,6 +99,7 @@ const _InlineSelectorTrigger = ({
       aria-expanded={isOpen}
       aria-controls={`${dropdownBaseId}-actionlist`}
       aria-activedescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
+      onMouseDown={() => setIsKeydownPressed(false)}
       onClick={() => onTriggerClick()}
       onKeyDown={(e) => onTriggerKeydown?.({ event: e as any })}
     >
