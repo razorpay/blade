@@ -8,6 +8,9 @@ export const CARD_TICKET_NOTCH_RADIUS = 10;
 /** Outline stroke width in px — matches `--border-width-thin`. */
 export const CARD_TICKET_OUTLINE_STROKE_WIDTH = 1;
 
+/** Stroke dash pattern for the disabled ticket outline. */
+export const CARD_TICKET_DISABLED_STROKE_DASHARRAY = '6 4';
+
 export type TicketOutlineDimensions = {
   width: number;
   height: number;

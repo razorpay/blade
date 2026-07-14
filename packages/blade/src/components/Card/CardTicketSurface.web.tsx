@@ -5,7 +5,11 @@ import { CARD_TICKET_SCALLOP_PERIOD, CARD_TICKET_SCALLOP_RADIUS } from './consta
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~utils';
-import { buildTicketShellPath, CARD_TICKET_OUTLINE_STROKE_WIDTH } from '~utils/cardTicketOutline';
+import {
+  buildTicketShellPath,
+  CARD_TICKET_OUTLINE_STROKE_WIDTH,
+  CARD_TICKET_DISABLED_STROKE_DASHARRAY,
+} from '~utils/cardTicketOutline';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 type TicketStateProps = {
@@ -106,6 +110,10 @@ type CardTicketSurfaceProps = {
 /**
  * Renders the ticket "chrome": two stacked sections split by a scalloped tear line with inward
  * side notches. The ticket shell is drawn by an inline SVG; content is clipped to the same path.
+ *
+ * Browser support note: `clip-path: path()` requires Safari 16.4+ (March 2023), Chrome 88+,
+ * and Firefox 71+. On unsupported browsers the clip-path is ignored and content will render
+ * without notch cut-outs, but the SVG outline still draws correctly.
  */
 const CardTicketSurface = ({
   top,
@@ -161,7 +169,7 @@ const CardTicketSurface = ({
   const shellPath = useMemo(() => buildTicketShellPath(dimensions), [dimensions]);
 
   const strokeColor = getTicketBorderColor(theme, { isSelected, isDisabled });
-  const strokeDasharray = isDisabled ? '6 4' : undefined;
+  const strokeDasharray = isDisabled ? CARD_TICKET_DISABLED_STROKE_DASHARRAY : undefined;
 
   const strokePadding = CARD_TICKET_OUTLINE_STROKE_WIDTH / 2;
   const svgViewBox = shellPath

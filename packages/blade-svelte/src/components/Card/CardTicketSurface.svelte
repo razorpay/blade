@@ -4,6 +4,7 @@
   import {
     buildTicketShellPath,
     CARD_TICKET_OUTLINE_STROKE_WIDTH,
+    CARD_TICKET_DISABLED_STROKE_DASHARRAY,
     getTokenCSSVariable,
   } from '@razorpay/blade-core/utils';
 
@@ -32,20 +33,14 @@
 
   let dimensions = $state({ width: 0, height: 0, tearLineY: 0 });
 
-  const outlineDimensions = $derived({
-    width: dimensions.width,
-    height: dimensions.height,
-    tearLineY: dimensions.tearLineY,
-  });
-
-  const shellPath = $derived(buildTicketShellPath(outlineDimensions));
+  const shellPath = $derived(buildTicketShellPath(dimensions));
 
   const strokeColor = $derived(
     isSelected && !isDisabled
       ? getTokenCSSVariable('surface.border.primary.normal')
       : getTokenCSSVariable('surface.border.gray.subtle'),
   );
-  const strokeDasharray = $derived(isDisabled ? '6 4' : undefined);
+  const strokeDasharray = $derived(isDisabled ? CARD_TICKET_DISABLED_STROKE_DASHARRAY : undefined);
 
   const strokePadding = CARD_TICKET_OUTLINE_STROKE_WIDTH / 2;
 
@@ -91,6 +86,11 @@
   });
 </script>
 
+<!--
+  Browser support: `clip-path: path()` requires Safari 16.4+ (March 2023),
+  Chrome 88+, and Firefox 71+. On unsupported browsers the clip-path is ignored
+  and content renders without notch cut-outs, but the SVG outline still draws correctly.
+-->
 <div class={tc.cardTicketWrapper} bind:this={wrapperEl}>
   <div
     class={tc.cardTicketClipContent}
