@@ -23,8 +23,14 @@ jest.mock('~components/BottomSheet', () => {
   };
 });
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
+beforeAll(() => {
+  jest.useFakeTimers().setSystemTime(new Date('2026-07-14T00:00:00Z'));
+  jest.spyOn(console, 'error').mockImplementation();
+});
+afterAll(() => {
+  jest.useRealTimers();
+  jest.restoreAllMocks();
+});
 
 describe('<DatePicker /> (native)', () => {
   it('should render a single date picker', () => {
