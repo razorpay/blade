@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type {
-  BladeFile,
-  FileUploadCategoryOption,
-  FileUploadCategoryChangeHandler,
-} from './types';
+import type { BladeFile, FileUploadCategoryOption, FileUploadCategoryChangeHandler } from './types';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -118,7 +114,7 @@ const _InlineSelectorTrigger = ({
         onTriggerKeydown?.({
           // Safe cast: onTriggerKeydown only reads event.key, which exists on all KeyboardEvent types.
           // The type constraint requires HTMLInputElement but the handler never accesses input-specific properties.
-          event: (e as unknown) as React.KeyboardEvent<HTMLInputElement>,
+          event: e as unknown as React.KeyboardEvent<HTMLInputElement>,
         })
       }
     >

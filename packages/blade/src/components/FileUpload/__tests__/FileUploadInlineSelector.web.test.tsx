@@ -260,6 +260,7 @@ describe('<FileUploadItem category />', () => {
 
       await user.keyboard('{ArrowDown}');
       await user.keyboard('{ArrowDown}');
+      await user.keyboard('{ArrowDown}');
 
       await waitFor(() => expect(getAllByRole('menuitem')[2]).toHaveClass('active-focus'));
 
@@ -303,6 +304,7 @@ describe('<FileUploadItem category />', () => {
 
 describe('<FileUpload /> integration with category selector', () => {
   it('should throw when categoryOptions is used with size="variable"', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <FileUpload
@@ -314,6 +316,7 @@ describe('<FileUpload /> integration with category selector', () => {
         />,
       ),
     ).toThrow('categoryOptions cannot be used when size is "variable"');
+    mockConsoleError.mockRestore();
   });
 
   it('should resolve per-file category values via getCategoryValue function', () => {
