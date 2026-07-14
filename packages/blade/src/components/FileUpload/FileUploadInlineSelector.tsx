@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
 import styled from 'styled-components';
 import type { FileUploadInlineSelectorProps, FileUploadInlineSelectorTriggerProps } from './types';
@@ -65,7 +63,11 @@ const _InlineSelectorTrigger = ({
 
   useControlledDropdownInput({
     value,
-    onChange: ({ values }) => onChange({ value: values[0], file }),
+    onChange: ({ values }) => {
+      if (values.length > 0) {
+        onChange({ value: values[0], file });
+      }
+    },
     name: file.id ?? file.name,
     triggererRef,
     isSelectInput: true,
@@ -83,7 +85,7 @@ const _InlineSelectorTrigger = ({
 
   return (
     <StyledInlineSelectorTrigger
-      ref={triggererRef as React.Ref<HTMLButtonElement>}
+      ref={triggererRef}
       type="button"
       aria-label={`Select category for ${file.name}`}
       aria-haspopup={getActionListContainerRole(hasFooterAction, 'DropdownButton')}
@@ -92,7 +94,11 @@ const _InlineSelectorTrigger = ({
       aria-activedescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
       onMouseDown={() => setIsKeydownPressed(false)}
       onClick={() => onTriggerClick()}
-      onKeyDown={(e) => onTriggerKeydown?.({ event: e as any })}
+      onKeyDown={(e) =>
+        onTriggerKeydown?.({
+          event: e as React.KeyboardEvent<HTMLInputElement>,
+        })
+      }
     >
       <BaseBox overflow="hidden" maxWidth="100%" marginX="spacing.2">
         <Text

@@ -347,4 +347,61 @@ describe('<FileUpload /> integration with category selector', () => {
     const trigger2 = getByRole('button', { name: 'Select category for document2.pdf' });
     expect(trigger2.textContent).toContain('Receipt');
   });
+
+  it('should render category selector in single upload mode with categoryOptions', () => {
+    const onCategoryChange = jest.fn();
+    const file: BladeFile = {
+      id: 'file-single',
+      name: 'single-doc.pdf',
+      size: 1024,
+      status: 'success',
+    } as BladeFile;
+
+    const { getByRole } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload document"
+        fileList={[file]}
+        categoryOptions={categoryOptions}
+        onCategoryChange={onCategoryChange}
+      />,
+    );
+
+    expect(getByRole('button', { name: 'Select category for single-doc.pdf' })).toBeTruthy();
+  });
+
+  it('should fire onCategoryChange in single upload mode when an option is selected', async () => {
+    const user = userEvent.setup();
+    const onCategoryChange = jest.fn();
+    const file: BladeFile = {
+      id: 'file-single',
+      name: 'single-doc.pdf',
+      size: 1024,
+      status: 'success',
+    } as BladeFile;
+
+    const { getByRole, getAllByRole } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload document"
+        fileList={[file]}
+        categoryOptions={categoryOptions}
+        onCategoryChange={onCategoryChange}
+      />,
+    );
+
+    const trigger = getByRole('button', { name: 'Select category for single-doc.pdf' });
+    await user.click(trigger);
+
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    const options = getAllByRole('menuitem');
+    await user.click(options[2]);
+
+    expect(onCategoryChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        value: 'contract',
+        file,
+      }),
+    );
+  });
 });
