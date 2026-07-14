@@ -9,11 +9,12 @@ import { ListViewFiltersProvider } from '~components/ListView/ListViewFiltersCon
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
-const renderGroup = (ui: React.ReactElement) =>
+const renderGroup = (ui: React.ReactElement): ReturnType<typeof renderWithTheme> =>
   renderWithTheme(
     <ListViewFiltersProvider
       value={{
         listViewSelectedFilters: {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         setListViewSelectedFilters: (): void => {},
         selectedFiltersCount: 0,
       }}
@@ -186,6 +187,7 @@ describe('<FilterChipGroup />', () => {
           <DropdownOverlay>
             <ActionList>
               <ActionListItem title="Apple" value="apple" />
+              <ActionListItem title="Mango" value="mango" />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>

@@ -132,6 +132,11 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
               .map((option, index) => (value.includes(option.value) ? index : -1))
               .filter((index) => index !== -1);
       setSelectedIndices(newSelectedIndices);
+      if (newSelectedIndices.length > 0) {
+        setFilterChipGroupSelectedFilters((prev) =>
+          prev.includes(label) ? prev : [...prev, label],
+        );
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUnControlled, options]);

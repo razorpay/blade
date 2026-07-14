@@ -147,9 +147,7 @@ const renderValue = (
   value: BaseFilterChipProps['value'],
   isDisabled?: boolean,
 ): React.ReactElement => {
-  const valueColor = isDisabled
-    ? 'interactive.text.gray.disabled'
-    : 'interactive.text.gray.normal';
+  const valueColor = isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.normal';
 
   // For multiple selection: when a single option is selected we show its name (no redundant
   // "1" counter); once more than one is selected we collapse to a compact counter.

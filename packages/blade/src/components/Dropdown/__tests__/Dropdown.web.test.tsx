@@ -592,6 +592,7 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
     const clearButton = queryByLabelText('Clear Fruits value');
     expect(clearButton).toBeTruthy();
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     await user.click(clearButton!);
     expect(onClearButtonClick).toHaveBeenCalled();
     expect(queryByLabelText('Clear Fruits value')).toBeFalsy();
