@@ -92,7 +92,7 @@ type PopoverContentWrapperProps = {
   side?: Side;
   isVisible?: boolean;
   /**
-   * Override enter/exit duration (defaults to motion.duration.quick)
+   * react-native only — override enter/exit duration (defaults to motion.duration.quick)
    */
   animationDuration?: number;
   isMobile: boolean;

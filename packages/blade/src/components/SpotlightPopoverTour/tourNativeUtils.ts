@@ -55,8 +55,9 @@ const measureStepRect = (ref: StepRef): Promise<Rect | null> => {
       resolve(result);
     };
 
-    // Tests / stalling hosts may never invoke the callback — don't hang settle flow
-    const timeoutId = setTimeout(() => finish(null), 100);
+    // Tests / stalling hosts may never invoke the callback — don't hang settle flow.
+    // 500ms ceiling accounts for slow devices / blocked JS thread; caller handles null gracefully.
+    const timeoutId = setTimeout(() => finish(null), 500);
 
     node.measureInWindow((x, y, width, height) => {
       clearTimeout(timeoutId);
@@ -478,13 +479,14 @@ const useTourScrollLock = (
 
     scrollable.setNativeProps?.({ scrollEnabled: false });
     // Also stamp a mutable flag that tests can assert when setNativeProps is mocked
+    const originalScrollEnabled = (scrollable as any).scrollEnabled;
     (scrollable as any).__bladeTourScrollLocked = true;
     (scrollable as any).scrollEnabled = false;
 
     return () => {
-      scrollable.setNativeProps?.({ scrollEnabled: true });
+      scrollable.setNativeProps?.({ scrollEnabled: originalScrollEnabled ?? true });
       (scrollable as any).__bladeTourScrollLocked = false;
-      (scrollable as any).scrollEnabled = true;
+      (scrollable as any).scrollEnabled = originalScrollEnabled ?? true;
     };
   }, [isOpen, scrollableRef, scrollParentEpoch]);
 };

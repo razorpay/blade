@@ -19,6 +19,7 @@ import type { ScrollableInstance } from './tourNativeUtils';
 import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './types';
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
+import { ARROW_HEIGHT } from '../Popover/constants';
 import { useTheme } from '~components/BladeProvider';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
@@ -75,7 +76,7 @@ const SpotlightPopoverTour = ({
   const measureGenerationRef = React.useRef(0);
 
   const currentStepRef = refIdMap.get(steps[activeStep]?.name);
-  const popoverGap = theme.spacing[4] + 12; // spacing + ARROW_HEIGHT
+  const popoverGap = theme.spacing[4] + ARROW_HEIGHT;
 
   // main step logic
   const totalSteps = steps.length;
@@ -346,7 +347,6 @@ const SpotlightPopoverTour = ({
             return (
               <TourPopover
                 key={step.name}
-                isTransitioning={delayedActiveStep !== activeStep || isScrolling}
                 placement={step.placement}
                 isOpen={isPopoverVisible}
                 onOpenChange={onOpenChange}

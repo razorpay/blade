@@ -26,7 +26,6 @@ const FORCE_REVEAL_MS = 120;
 
 type TourPopoverProps = Omit<PopoverProps, 'children' | 'initialFocusRef'> & {
   attachTo: React.RefObject<TourElement> | undefined;
-  isTransitioning: boolean;
 };
 
 type PositionCoords = {
@@ -182,7 +181,6 @@ const TourPopover = ({
   zIndex = componentZIndices.popover,
   isOpen,
   defaultIsOpen,
-  isTransitioning: _isTransitioning,
 }: TourPopoverProps): React.ReactElement => {
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef(null);
@@ -322,7 +320,7 @@ const TourPopover = ({
       titleId,
       openInteraction: 'click' as const,
     };
-  }, [close, titleId]);
+  }, [close, defaultInitialFocusRef, titleId]);
 
   const resolvedLeft = floatingStyles.left ?? fallbackPosition?.left ?? UNSET_POSITION;
   const resolvedTop = floatingStyles.top ?? fallbackPosition?.top ?? UNSET_POSITION;

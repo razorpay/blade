@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import type { SpotlightPopoverStepRenderProps } from './types';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
@@ -67,7 +66,7 @@ const SpotlightPopoverTourFooter = ({
             }
             {...analyticsStepInfoProps}
           >
-            {actions?.secondary!.text!}
+            {actions.secondary.text ?? ''}
           </Button>
         ) : null}
         {hasPrimaryAction ? (
@@ -80,7 +79,7 @@ const SpotlightPopoverTourFooter = ({
             }
             {...analyticsStepInfoProps}
           >
-            {actions?.primary!.text!}
+            {actions.primary.text ?? ''}
           </Button>
         ) : null}
       </Box>
