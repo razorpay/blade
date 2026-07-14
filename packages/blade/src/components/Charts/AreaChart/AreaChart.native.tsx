@@ -1182,7 +1182,9 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                   key={`legend-${area.dataKey}`}
                   onPress={() => handleLegendToggle(area.dataKey)}
                   accessibilityRole="button"
-                  accessibilityLabel={`${area.name ?? area.dataKey}, ${isSelected ? 'selected' : 'deselected'}`}
+                  accessibilityLabel={`${area.name ?? area.dataKey}, ${
+                    isSelected ? 'selected' : 'deselected'
+                  }`}
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',

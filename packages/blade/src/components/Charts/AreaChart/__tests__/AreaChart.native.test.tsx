@@ -129,6 +129,7 @@ describe('<ChartAreaWrapper /> (native)', () => {
       nativeEvent: { layout: { width: 400, height: 300, x: 0, y: 0 } },
     });
 
+    // eslint-disable-next-line babel/new-cap
     const dashedLines = UNSAFE_getAllByType(Line).filter(
       (line) => line.props.strokeDasharray === '4 4',
     );

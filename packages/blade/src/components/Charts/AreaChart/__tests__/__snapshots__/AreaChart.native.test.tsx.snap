@@ -98,6 +98,8 @@ exports[`<ChartAreaWrapper /> (native) renders a single area chart 1`] = `
       }
     >
       <View
+        accessibilityLabel="Team A, selected"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -289,6 +291,8 @@ exports[`<ChartAreaWrapper /> (native) renders stacked areas 1`] = `
       }
     >
       <View
+        accessibilityLabel="Team A, selected"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -378,6 +382,8 @@ exports[`<ChartAreaWrapper /> (native) renders stacked areas 1`] = `
         </Text>
       </View>
       <View
+        accessibilityLabel="Team B, selected"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
