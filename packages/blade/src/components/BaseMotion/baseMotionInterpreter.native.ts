@@ -149,7 +149,19 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
   if (variantRecord.backgroundColor !== undefined) {
     resolved.backgroundColor = resolveColor(variantRecord.backgroundColor);
   }
-  if (variantRecord.color !== undefined) resolved.color = resolveColor(variantRecord.color);
+  if (variantRecord.color !== undefined) {
+    resolved.color = resolveColor(variantRecord.color);
+    if (__DEV__) {
+      logger({
+        type: 'warn',
+        moduleName: 'BaseMotion',
+        message:
+          'Motion variant key "color" is not supported on native View components (it is a TextStyle-only property). ' +
+          'The color animation will be silently ignored. This is a known Phase 1 limitation — ' +
+          'color animation for text-bearing children will be addressed in the wrapper batch.',
+      });
+    }
+  }
   if (variantRecord.transform !== undefined) {
     Object.assign(resolved, parseTransform(variantRecord.transform as string | string[]));
   }
@@ -240,7 +252,8 @@ const interpolateVariant = (
   }
 
   if (to.color !== undefined) {
-    // `color` is not a ViewStyle key but is applied for text-bearing children; cast intentionally.
+    // `color` is a TextStyle-only property — it is silently ignored by RN's View component.
+    // Resolved and included for future use (wrapper batch may forward it to child Text via context).
     (style as ViewStyle & { color?: string }).color =
       from.color !== undefined
         ? interpolateColor(progress, [0, 1], [from.color, to.color])
