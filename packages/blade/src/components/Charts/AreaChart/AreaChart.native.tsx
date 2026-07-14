@@ -450,7 +450,11 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   const isDarkMode = colorScheme === 'dark';
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
-  const chartId = useRef(`area-${uniqueChartCounter++}`).current;
+  const chartIdRef = useRef<string | undefined>(undefined);
+  if (chartIdRef.current === undefined) {
+    chartIdRef.current = `area-${uniqueChartCounter++}`;
+  }
+  const chartId = chartIdRef.current;
 
   const scrubProgress = useSharedValue(0);
   useEffect(() => {
@@ -505,7 +509,10 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     slots.legend.onSelectedDataKeysChange?.({ dataKey, selectedKeysArray: next });
   };
 
-  const visibleAreas = allAreas.filter((area) => !area.hide && selectedKeys.includes(area.dataKey));
+  const visibleAreas = useMemo(
+    () => allAreas.filter((area) => !area.hide && selectedKeys.includes(area.dataKey)),
+    [allAreas, selectedKeys],
+  );
 
   const secondaryLabelMap = useMemo(() => {
     if (!slots.xSecondaryDataKey || !data?.length) return undefined;
@@ -606,20 +613,13 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
           const value = isNull ? 0 : Number(raw);
           const base = runningBase[i];
           const top = base + value;
+          runningBase[i] += value;
           return {
             x: xAt(i),
             yTop: yAt(top),
             yBase: yAt(base),
             isNull,
           };
-        });
-        // Accumulate this area's values into the running baseline for the
-        // areas stacked above it (nulls contribute 0).
-        data.forEach((row, i) => {
-          const raw = row[area.dataKey];
-          const value =
-            raw === null || raw === undefined || !isNumber(Number(raw)) ? 0 : Number(raw);
-          runningBase[i] += value;
         });
 
         const mappingEntry = dataColorMapping[area.dataKey];
@@ -696,6 +696,10 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     if (!touchMovedRef.current && touchStartActiveRef.current === touchStartIndexRef.current) {
       setActiveIndex(undefined);
     }
+  };
+
+  const handleScrubTerminate = (): void => {
+    touchMovedRef.current = false;
   };
 
   const activeRow = activeIndex !== undefined ? data[activeIndex] : undefined;
@@ -789,7 +793,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         {...restProps}
       >
         <View
-          testID="chart-area-scrub-surface"
+          testID={testID ? `${testID}-scrub-surface` : 'chart-area-scrub-surface'}
           style={{ flex: 1, width: '100%' }}
           onLayout={onLayout}
           onStartShouldSetResponder={() => count > 0}
@@ -797,7 +801,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
           onResponderGrant={handleScrubStart}
           onResponderMove={handleScrubMove}
           onResponderRelease={handleScrubEnd}
-          onResponderTerminate={handleScrubEnd}
+          onResponderTerminate={handleScrubTerminate}
         >
           {data.length === 0 ? (
             <Box
@@ -1177,6 +1181,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                 <Pressable
                   key={`legend-${area.dataKey}`}
                   onPress={() => handleLegendToggle(area.dataKey)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${area.name ?? area.dataKey}, ${isSelected ? 'selected' : 'deselected'}`}
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
