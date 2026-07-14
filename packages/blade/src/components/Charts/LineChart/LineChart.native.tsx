@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useId, useState } from 'react';
 import {
   Svg,
   Path,
@@ -367,6 +367,7 @@ const LineSeries = ({
   const { theme } = useTheme();
   const { line, color, points } = geometry;
 
+  const chartId = useId();
   const draw = useSharedValue(0);
   const dim = useSharedValue(1);
 
@@ -399,7 +400,7 @@ const LineSeries = ({
     line.connectNulls,
   ]);
   const dash = getStrokeDasharray(line.strokeStyle);
-  const clipId = `line-reveal-${index}`;
+  const clipId = `line-reveal-${chartId}-${index}`;
 
   return (
     <G>
@@ -561,7 +562,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     data.forEach((row) => {
       linesForDomain.forEach((line) => {
         const value = Number(row[line.dataKey]);
-        if (isNumber(value) && isFinite(value)) {
+        if (isNumber(value)) {
           if (value < min) min = value;
           if (value > max) max = value;
         }
@@ -1091,8 +1092,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                   left: Math.max(
                     padding.left,
                     Math.min(
-                      size.width - 160 - padding.right,
-                      padding.left + xForIndex(activeIndex) - 80,
+                      size.width - 200 - padding.right,
+                      padding.left + xForIndex(activeIndex) - 100,
                     ),
                   ),
                   minWidth: 120,

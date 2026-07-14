@@ -133,7 +133,14 @@ describe('<ChartLineWrapper /> (native)', () => {
       </ChartLineWrapper>,
     );
     fireLayout(getByTestId('negative-layout'));
-    expect(toJSON()).toMatchSnapshot();
+    const tree = toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // Explicitly verify that negative y-axis tick labels are rendered.
+    // The y-domain should span [niceFloor(-2000), niceCeil(3000)] = [-2000, 5000].
+    // Tick labels are rendered as SvgText children; find ones containing '-'.
+    const json = JSON.stringify(tree);
+    expect(json).toContain('-2K');
   });
 
   it('should render a horizontal reference line (y)', () => {
