@@ -93,9 +93,11 @@ type FilterChipGroupProps = TestID &
     /**
      * Custom text for the action button (e.g. `"Reset"`).
      *
-     * When not provided it defaults to the auto-pluralised `"Clear Filter"` / `"Clear Filters"`.
+     * When not provided it defaults based on `clearButtonBehavior`:
+     * - `"Clear Filter"` / `"Clear Filters"` (auto-pluralised) when `clearButtonBehavior="clear"`
+     * - `"Reset"` when `clearButtonBehavior="reset"`
      *
-     * @default "Clear Filter(s)"
+     * @default "Clear Filter(s)" when clearButtonBehavior="clear"; "Reset" when clearButtonBehavior="reset"
      */
     clearButtonText?: string;
     /**

@@ -140,13 +140,13 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   const getUnControlledFilterChipValue = (): string | string[] => {
     if (selectionType === 'single') {
       if (uncontrolledInputValue.length > 0) {
-        return getTitleFromValue(uncontrolledInputValue[0]);
+        return getTitleFromValue(uncontrolledInputValue[0]) ?? '';
       }
       return '';
     }
     // For multiple selection, hand the chip the option titles (not the raw values) so it can
     // render the selected option name(s) instead of a bare count.
-    return uncontrolledInputValue.map((selectionValue) => getTitleFromValue(selectionValue));
+    return uncontrolledInputValue.map((selectionValue) => getTitleFromValue(selectionValue) ?? '');
   };
 
   // Resolves the value shown inside the chip: option titles for display. Controlled consumers

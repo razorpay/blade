@@ -1,16 +1,17 @@
 import type { OptionsType } from './useDropdown';
 
-type GetTitleFromValueFn = (value: string) => string;
+type GetTitleFromValueFn = (value: string) => string | undefined;
 type GetUnControlledFilterChipValueFn = () => string | string[];
 
 /**
  * Shared helper: resolves the title for a given option value.
- * Returns an empty string when the option is not found.
+ * Returns `undefined` when the option is not found so that callers can
+ * fall back to the raw value via `??`.
  */
 export const makeGetTitleFromValue = (options: OptionsType): GetTitleFromValueFn => {
-  return (value: string): string => {
+  return (value: string): string | undefined => {
     const option = options.find((option) => option.value === value);
-    return option ? option.title : '';
+    return option?.title;
   };
 };
 
