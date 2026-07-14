@@ -2,6 +2,12 @@
  * Keep in sync with packages/blade-core/src/utils/cardTicketOutline.ts
  * (blade does not depend on blade-core yet).
  * TODO: import from @razorpay/blade-core
+ *
+ * Known limitation: CARD_TICKET_CORNER_RADIUS, CARD_TICKET_NOTCH_RADIUS, and
+ * CARD_TICKET_OUTLINE_STROKE_WIDTH are hardcoded to match their corresponding
+ * design tokens (--border-radius-medium, notch geometry, --border-width-thin).
+ * SVG path geometry cannot reference CSS variables, so these constants must be
+ * manually kept in sync if the token values change.
  */
 /** Corner radius — matches `--border-radius-medium`. */
 export const CARD_TICKET_CORNER_RADIUS = 12;
@@ -30,6 +36,13 @@ type TicketGeometry = {
 };
 
 /**
+ * Minimum height for valid ticket geometry: 2 × (cornerRadius + notchRadius).
+ * Below this height the clamp bounds for tearY invert (min > max), producing
+ * a malformed SVG path with overlapping coordinates.
+ */
+const MIN_TICKET_HEIGHT = 2 * (CARD_TICKET_CORNER_RADIUS + CARD_TICKET_NOTCH_RADIUS);
+
+/**
  * Closed ticket shell with inward side notches and rounded corners. Shared by the SVG stroke
  * and the content clip path so borders and transparent notch bites stay aligned.
  */
@@ -38,7 +51,7 @@ export function buildTicketShellPath({
   height,
   tearLineY,
 }: TicketOutlineDimensions): string {
-  if (width <= 0 || height <= 0) {
+  if (width <= 0 || height <= 0 || height < MIN_TICKET_HEIGHT) {
     return '';
   }
 

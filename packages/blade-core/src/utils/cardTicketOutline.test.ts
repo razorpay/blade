@@ -86,4 +86,16 @@ describe('buildTicketShellPath', () => {
     // Notch radius arcs should use CARD_TICKET_NOTCH_RADIUS (10)
     expect(path).toContain(`A ${CARD_TICKET_NOTCH_RADIUS} ${CARD_TICKET_NOTCH_RADIUS}`);
   });
+
+  it('returns empty string when height is below minimum for valid geometry', () => {
+    const minHeight = 2 * (CARD_TICKET_CORNER_RADIUS + CARD_TICKET_NOTCH_RADIUS); // 44
+    expect(buildTicketShellPath({ width: 200, height: minHeight - 1, tearLineY: 20 })).toBe('');
+  });
+
+  it('returns a valid path at the minimum valid height', () => {
+    const minHeight = 2 * (CARD_TICKET_CORNER_RADIUS + CARD_TICKET_NOTCH_RADIUS); // 44
+    const path = buildTicketShellPath({ width: 200, height: minHeight, tearLineY: 22 });
+    expect(path).not.toBe('');
+    expect(path.endsWith('Z')).toBe(true);
+  });
 });
