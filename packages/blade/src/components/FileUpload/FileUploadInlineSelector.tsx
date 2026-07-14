@@ -37,7 +37,6 @@ const StyledInlineSelectorTrigger = styled.button(({ theme }) => ({
   },
   '&:focus-visible': {
     ...getFocusRingStyles({ theme }),
-    outlineOffset: makeSize(theme.spacing[0]),
     backgroundColor: theme.colors.interactive.background.gray.faded,
   },
 }));
@@ -100,7 +99,7 @@ const _InlineSelectorTrigger = ({
         })
       }
     >
-      <BaseBox overflow="hidden" maxWidth="100%" marginX="spacing.2">
+      <BaseBox overflow="hidden" maxWidth="100%" marginRight="spacing.2">
         <Text
           size="small"
           weight="medium"
@@ -110,7 +109,7 @@ const _InlineSelectorTrigger = ({
           {displayLabel}
         </Text>
       </BaseBox>
-      <ChevronDownIcon size="medium" color="interactive.icon.gray.subtle" />
+      <ChevronDownIcon size="medium" color="surface.icon.gray.muted" flexShrink={0} />
     </StyledInlineSelectorTrigger>
   );
 };
