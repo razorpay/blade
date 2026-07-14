@@ -228,10 +228,6 @@
     return classes.filter(Boolean).join(' ');
   });
   
-  // Icon color is stored for when icon component is implemented
-  // When icon is rendered, it should use the color class directly instead of CSS variable
-  // For now, iconColor is available but not used (icon rendering is TODO)
-  
   // Analytics attributes (rest after styled props are extracted)
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 
