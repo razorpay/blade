@@ -114,7 +114,7 @@ const _InlineSelectorTrigger = ({
         onTriggerKeydown?.({
           // Safe cast: onTriggerKeydown only reads event.key, which exists on all KeyboardEvent types.
           // The type constraint requires HTMLInputElement but the handler never accesses input-specific properties.
-          event: e as unknown as React.KeyboardEvent<HTMLInputElement>,
+          event: (e as unknown) as React.KeyboardEvent<HTMLInputElement>,
         })
       }
     >
