@@ -192,7 +192,9 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
 /**
  * Converts a framer `transition` (seconds + bezier array) into reanimated `withTiming` config.
  */
-const getTiming = (transition?: Tween): { duration: number; easing: unknown } => {
+const getTiming = (
+  transition?: Tween,
+): { duration: number; easing: ReturnType<typeof Easing.bezier> | typeof Easing.ease } => {
   const durationSec =
     typeof transition?.duration === 'number' ? transition.duration : DEFAULT_DURATION_SEC;
   const ease = transition?.ease;
