@@ -30,3 +30,4 @@ yarn-error.log*
 log/
 test-results/
 .env.local
+browserstackSetupConfig.json
