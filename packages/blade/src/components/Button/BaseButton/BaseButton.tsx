@@ -697,6 +697,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
                 }
                 return getIn(theme.colors, 'interactive.icon.gray.muted');
               })()}
+              {...makeAccessible({ label: 'Loading', role: 'progressbar' })}
             />
           </BaseBox>
         ) : null}

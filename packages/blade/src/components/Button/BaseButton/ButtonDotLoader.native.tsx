@@ -14,6 +14,7 @@ import Animated, {
 type ButtonDotLoaderProps = {
   size: number;
   color: string;
+  [key: string]: unknown;
 };
 
 const Dot = ({
@@ -64,7 +65,7 @@ const Dot = ({
   );
 };
 
-const ButtonDotLoader = ({ size, color }: ButtonDotLoaderProps): React.ReactElement => {
+const ButtonDotLoader = ({ size, color, ...rest }: ButtonDotLoaderProps): React.ReactElement => {
   const dotSize = size / 2;
   const gap = (size * 2 - dotSize * 3) / 2;
 
@@ -78,6 +79,7 @@ const ButtonDotLoader = ({ size, color }: ButtonDotLoaderProps): React.ReactElem
         justifyContent: 'center',
         gap,
       }}
+      {...rest}
     >
       <Dot dotSize={dotSize} color={color} delay={0} />
       <Dot dotSize={dotSize} color={color} delay={200} />

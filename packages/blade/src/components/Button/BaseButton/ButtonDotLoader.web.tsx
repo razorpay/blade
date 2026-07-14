@@ -4,6 +4,7 @@ import BaseBox from '~components/Box/BaseBox';
 type ButtonDotLoaderProps = {
   size: number;
   color: string;
+  [key: string]: unknown;
 };
 
 const bounce = keyframes`
@@ -24,8 +25,8 @@ const StyledDotLoader = styled(BaseBox)<ButtonDotLoaderProps>(
   `,
 );
 
-const ButtonDotLoader = ({ size, color }: ButtonDotLoaderProps): React.ReactElement => {
-  return <StyledDotLoader size={size} color={color} />;
+const ButtonDotLoader = ({ size, color, ...rest }: ButtonDotLoaderProps): React.ReactElement => {
+  return <StyledDotLoader size={size} color={color} {...rest} />;
 };
 
 export { ButtonDotLoader };
