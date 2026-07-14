@@ -84,6 +84,11 @@
   import Amount from '../Amount/Amount.svelte';
   import Divider from '../Divider/Divider.svelte';
   import { CreditCardIcon, InfoIcon } from '../Icons';
+  import Switch from '../Switch/Switch.svelte';
+  import RadioGroup from '../Radio/RadioGroup.svelte';
+  import Radio from '../Radio/Radio.svelte';
+  import CheckboxGroup from '../Checkbox/CheckboxGroup.svelte';
+  import Checkbox from '../Checkbox/Checkbox.svelte';
 
   // Reactive state for stories
   let cardClickCount = $state(0);
@@ -112,14 +117,6 @@
       multiSelected = multiSelected.filter((item) => item !== value);
     } else {
       multiSelected = [...multiSelected, value];
-    }
-  }
-
-  function handleCheckboxToggle(value: string): void {
-    if (checkboxSelected.includes(value)) {
-      checkboxSelected = checkboxSelected.filter((item) => item !== value);
-    } else {
-      checkboxSelected = [...checkboxSelected, value];
     }
   }
 
@@ -291,15 +288,11 @@
         >
           Get Demo
         </Button>
-        <div style="margin-top: 8px;">
-          <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
-            <input
-              type="checkbox"
-              onchange={() => { switchToggleCount += 1; }}
-            />
-            <span style="font-size: 14px;">Toggle switch</span>
-          </label>
-        </div>
+        <Switch
+          accessibilityLabel="switch"
+          size="small"
+          onChange={() => { switchToggleCount += 1; }}
+        />
       </CardBody>
     </Card>
   </div>
@@ -490,49 +483,38 @@
         Choose your primary Razorpay product to get started. You can add more products later from your dashboard.
       </Text>
 
-      <fieldset style="border: none; padding: 0; margin: 0;">
-        <legend style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Select Product *</legend>
-        {#if radioSubmitted && !radioSelected}
-          <Text color="interactive.text.negative.normal" size="small">Please select a product to continue</Text>
-        {/if}
-        <Text size="small" color="surface.text.gray.subtle" marginBottom="spacing.4">Select one primary product for your initial setup</Text>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-          {#each merchantOptions as option}
-            <Card
-              as="label"
-              isSelected={radioSelected === option.value}
-              validationState={radioSubmitted && !radioSelected ? 'error' : 'none'}
-              width="400px"
-            >
-              <CardBody>
-                <div style="display: flex; flex-direction: row; gap: 12px; justify-content: space-between;">
-                  <CardHeaderLeading
-                    title={option.title}
-                    subtitle={option.subtitle}
-                  >
-                    {#snippet prefix()}
-                      <CardHeaderIcon icon={InfoIcon} />
-                    {/snippet}
-                  </CardHeaderLeading>
-                  <input
-                    type="radio"
-                    name="merchant-radio"
-                    value={option.value}
-                    checked={radioSelected === option.value}
-                    onchange={() => { radioSelected = option.value; }}
-                  />
-                </div>
-                <Divider marginTop="spacing.2" />
-                <ul style="margin: 8px 0 0 16px; padding: 0; font-size: 14px; color: var(--surface-text-gray-subtle);">
-                  {#each option.features as feature}
-                    <li style="margin-bottom: 4px;">{feature}</li>
-                  {/each}
-                </ul>
-              </CardBody>
-            </Card>
-          {/each}
-        </div>
-      </fieldset>
+      <RadioGroup
+        label="Select Product"
+        necessityIndicator="required"
+        orientation="horizontal"
+        flexWrap="wrap"
+        helpText="Select one primary product for your initial setup"
+        validationState={radioSubmitted && !radioSelected ? 'error' : 'none'}
+        errorText={radioSubmitted && !radioSelected ? 'Please select a product to continue' : undefined}
+        value={radioSelected}
+        onChange={({ value }) => { radioSelected = value; }}
+      >
+        {#each merchantOptions as option (option.value)}
+          <Card as="label" isSelected={radioSelected === option.value} width="400px">
+            <CardBody>
+              <div style="display: flex; flex-direction: row; gap: 12px; justify-content: space-between;">
+                <CardHeaderLeading title={option.title} subtitle={option.subtitle}>
+                  {#snippet prefix()}
+                    <CardHeaderIcon icon={InfoIcon} />
+                  {/snippet}
+                </CardHeaderLeading>
+                <Radio value={option.value} />
+              </div>
+              <Divider marginTop="spacing.2" />
+              <ul style="margin: 8px 0 0 16px; padding: 0; font-size: 14px; color: var(--surface-text-gray-subtle);">
+                {#each option.features as feature}
+                  <li style="margin-bottom: 4px;">{feature}</li>
+                {/each}
+              </ul>
+            </CardBody>
+          </Card>
+        {/each}
+      </RadioGroup>
 
       <div style="display: flex; justify-content: space-between; margin-top: 16px;">
         <Button marginTop="spacing.4" onClick={() => { radioSubmitted = true; }} variant="primary">
@@ -561,50 +543,42 @@
         Choose multiple Razorpay products you want to integrate. You can always add more products later from your dashboard.
       </Text>
 
-      <fieldset style="border: none; padding: 0; margin: 0;">
-        <legend style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Which products do you want to use? *</legend>
-        {#if checkboxSubmitted && checkboxSelected.length === 0}
-          <Text color="interactive.text.negative.normal" size="small">Please select at least one Razorpay product to get started</Text>
-        {:else if checkboxSelected.length > 3}
-          <Text color="interactive.text.negative.normal" size="small">You can select maximum 3 products during initial setup</Text>
-        {/if}
-        <Text size="small" color="surface.text.gray.subtle" marginBottom="spacing.4">Select 1-3 products to start with. Additional products can be enabled later.</Text>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-          {#each merchantOptions as option}
-            <Card
-              as="label"
-              isSelected={checkboxSelected.includes(option.value)}
-              validationState={(checkboxSubmitted && checkboxSelected.length === 0) || checkboxSelected.length > 3 ? 'error' : 'none'}
-              width="400px"
-            >
-              <CardBody>
-                <div style="display: flex; flex-direction: row; gap: 12px; justify-content: space-between;">
-                  <CardHeaderLeading
-                    title={option.title}
-                    subtitle={option.subtitle}
-                  >
-                    {#snippet prefix()}
-                      <CardHeaderIcon icon={InfoIcon} />
-                    {/snippet}
-                  </CardHeaderLeading>
-                  <input
-                    type="checkbox"
-                    value={option.value}
-                    checked={checkboxSelected.includes(option.value)}
-                    onchange={() => handleCheckboxToggle(option.value)}
-                  />
-                </div>
-                <Divider marginTop="spacing.2" />
-                <ul style="margin: 8px 0 0 16px; padding: 0; font-size: 14px; color: var(--surface-text-gray-subtle);">
-                  {#each option.features as feature}
-                    <li style="margin-bottom: 4px;">{feature}</li>
-                  {/each}
-                </ul>
-              </CardBody>
-            </Card>
-          {/each}
-        </div>
-      </fieldset>
+      <CheckboxGroup
+        label="Which products do you want to use?"
+        necessityIndicator="required"
+        orientation="horizontal"
+        flexWrap="wrap"
+        helpText="Select 1-3 products to start with. Additional products can be enabled later."
+        validationState={(checkboxSubmitted && checkboxSelected.length === 0) || checkboxSelected.length > 3 ? 'error' : 'none'}
+        errorText={checkboxSubmitted && checkboxSelected.length === 0
+          ? 'Please select at least one Razorpay product to get started'
+          : checkboxSelected.length > 3
+            ? 'You can select maximum 3 products during initial setup'
+            : undefined}
+        value={checkboxSelected}
+        onChange={({ values }) => { checkboxSelected = values; }}
+      >
+        {#each merchantOptions as option (option.value)}
+          <Card as="label" isSelected={checkboxSelected.includes(option.value)} width="400px">
+            <CardBody>
+              <div style="display: flex; flex-direction: row; gap: 12px; justify-content: space-between;">
+                <CardHeaderLeading title={option.title} subtitle={option.subtitle}>
+                  {#snippet prefix()}
+                    <CardHeaderIcon icon={InfoIcon} />
+                  {/snippet}
+                </CardHeaderLeading>
+                <Checkbox value={option.value} />
+              </div>
+              <Divider marginTop="spacing.2" />
+              <ul style="margin: 8px 0 0 16px; padding: 0; font-size: 14px; color: var(--surface-text-gray-subtle);">
+                {#each option.features as feature}
+                  <li style="margin-bottom: 4px;">{feature}</li>
+                {/each}
+              </ul>
+            </CardBody>
+          </Card>
+        {/each}
+      </CheckboxGroup>
 
       <div style="display: flex; justify-content: space-between; margin-top: 16px;">
         <Button marginTop="spacing.4" onClick={() => { checkboxSubmitted = true; }} variant="primary">
@@ -633,45 +607,36 @@
         RadioGroup with label positioned on the left side of the cards.
       </Text>
 
-      <fieldset style="border: none; padding: 0; margin: 0;">
-        <legend style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Select Product</legend>
-        <Text size="small" color="surface.text.gray.subtle" marginBottom="spacing.4">Select one primary product for your initial setup</Text>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-          {#each merchantOptions.slice(0, 2) as option}
-            <Card
-              as="label"
-              isSelected={labelLeftSelected === option.value}
-              width="400px"
-            >
-              <CardBody>
-                <div style="display: flex; flex-direction: row; gap: 12px; justify-content: space-between;">
-                  <CardHeaderLeading
-                    title={option.title}
-                    subtitle={option.subtitle}
-                  >
-                    {#snippet prefix()}
-                      <CardHeaderIcon icon={InfoIcon} />
-                    {/snippet}
-                  </CardHeaderLeading>
-                  <input
-                    type="radio"
-                    name="label-left-radio"
-                    value={option.value}
-                    checked={labelLeftSelected === option.value}
-                    onchange={() => { labelLeftSelected = option.value; }}
-                  />
-                </div>
-                <Divider marginTop="spacing.2" />
-                <ul style="margin: 8px 0 0 16px; padding: 0; font-size: 14px; color: var(--surface-text-gray-subtle);">
-                  {#each option.features as feature}
-                    <li style="margin-bottom: 4px;">{feature}</li>
-                  {/each}
-                </ul>
-              </CardBody>
-            </Card>
-          {/each}
-        </div>
-      </fieldset>
+      <RadioGroup
+        label="Select Product"
+        labelPosition="left"
+        orientation="horizontal"
+        flexWrap="wrap"
+        helpText="Select one primary product for your initial setup"
+        value={labelLeftSelected}
+        onChange={({ value }) => { labelLeftSelected = value; }}
+      >
+        {#each merchantOptions.slice(0, 2) as option (option.value)}
+          <Card as="label" isSelected={labelLeftSelected === option.value} width="400px">
+            <CardBody>
+              <div style="display: flex; flex-direction: row; gap: 12px; justify-content: space-between;">
+                <CardHeaderLeading title={option.title} subtitle={option.subtitle}>
+                  {#snippet prefix()}
+                    <CardHeaderIcon icon={InfoIcon} />
+                  {/snippet}
+                </CardHeaderLeading>
+                <Radio value={option.value} />
+              </div>
+              <Divider marginTop="spacing.2" />
+              <ul style="margin: 8px 0 0 16px; padding: 0; font-size: 14px; color: var(--surface-text-gray-subtle);">
+                {#each option.features as feature}
+                  <li style="margin-bottom: 4px;">{feature}</li>
+                {/each}
+              </ul>
+            </CardBody>
+          </Card>
+        {/each}
+      </RadioGroup>
     </div>
   </div>
 </Story>
