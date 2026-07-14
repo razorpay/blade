@@ -28,7 +28,7 @@ const FileUploadItem = memo(
     onReupload,
     onDismiss,
     categoryOptions,
-    categoryValue,
+    selectedCategoryValue,
     onCategoryChange,
     categoryPlaceholder,
     size: containerSize,
@@ -147,7 +147,7 @@ const FileUploadItem = memo(
                 containerSize !== 'variable' ? (
                   <FileUploadInlineSelector
                     options={categoryOptions}
-                    value={categoryValue}
+                    value={selectedCategoryValue}
                     onChange={onCategoryChange}
                     placeholder={categoryPlaceholder}
                     file={file}

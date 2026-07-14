@@ -213,6 +213,23 @@ type FileUploadCategoryOption = {
   value: string;
 };
 
+type FileUploadCategoryChangeHandler = (args: { value: string; file: BladeFile }) => void;
+
+type FileUploadInlineSelectorTriggerProps = {
+  displayLabel: string;
+  file: BladeFile;
+  value: string | undefined;
+  onChange: FileUploadCategoryChangeHandler;
+};
+
+type FileUploadInlineSelectorProps = {
+  options: FileUploadCategoryOption[];
+  value: string | undefined;
+  onChange: FileUploadCategoryChangeHandler;
+  placeholder?: string;
+  file: BladeFile;
+};
+
 type FileUploadItemProps = Pick<
   FileUploadProps,
   'onPreview' | 'onRemove' | 'onDismiss' | 'onReupload' | 'size'
@@ -226,12 +243,12 @@ type FileUploadItemProps = Pick<
   /**
    * Currently selected category value for this item (controlled).
    */
-  categoryValue?: string;
+  selectedCategoryValue?: string;
   /**
    * Callback fired when a category option is selected.
    * Receives the selected `value` and the associated `file`.
    */
-  onCategoryChange?: (args: { value: string; file: BladeFile }) => void;
+  onCategoryChange?: FileUploadCategoryChangeHandler;
   /**
    * Placeholder text shown in the category dropdown when no value is selected.
    *
@@ -277,7 +294,10 @@ type FileUploadItemBackgroundColors =
 export type {
   BladeFile,
   BladeFileList,
+  FileUploadCategoryChangeHandler,
   FileUploadCategoryOption,
+  FileUploadInlineSelectorProps,
+  FileUploadInlineSelectorTriggerProps,
   FileUploadProps,
   FileUploadItemProps,
   StyledFileUploadWrapperProps,

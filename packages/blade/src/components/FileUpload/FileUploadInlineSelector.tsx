@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import React from 'react';
 import styled from 'styled-components';
-import type { BladeFile, FileUploadCategoryOption } from './types';
+import type { FileUploadInlineSelectorProps, FileUploadInlineSelectorTriggerProps } from './types';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -44,21 +44,12 @@ const StyledInlineSelectorTrigger = styled.button(({ theme }) => ({
   },
 }));
 
-type CategoryChangeHandler = (args: { value: string; file: BladeFile }) => void;
-
-type InlineSelectorTriggerProps = {
-  displayLabel: string;
-  file: BladeFile;
-  value: string | undefined;
-  onChange: CategoryChangeHandler;
-};
-
 const _InlineSelectorTrigger = ({
   displayLabel,
   file,
   value,
   onChange,
-}: InlineSelectorTriggerProps): React.ReactElement => {
+}: FileUploadInlineSelectorTriggerProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerKeydown,
@@ -73,7 +64,7 @@ const _InlineSelectorTrigger = ({
   } = useDropdown();
 
   useControlledDropdownInput({
-    value: value ?? '',
+    value,
     onChange: ({ values }) => onChange({ value: values[0], file }),
     name: file.id ?? file.name,
     triggererRef,
@@ -121,14 +112,6 @@ const _InlineSelectorTrigger = ({
 const InlineSelectorTrigger = assignWithoutSideEffects(_InlineSelectorTrigger, {
   componentId: dropdownComponentIds.triggers.DropdownButton,
 });
-
-type FileUploadInlineSelectorProps = {
-  options: FileUploadCategoryOption[];
-  value: string | undefined;
-  onChange: CategoryChangeHandler;
-  placeholder?: string;
-  file: BladeFile;
-};
 
 const FileUploadInlineSelector = ({
   options,
