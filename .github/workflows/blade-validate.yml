@@ -18,6 +18,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
       - name: Setup PMG proxy
+        id: pmg-setup
         uses: safedep/pmg@v1
         with:
           server-mode: true
@@ -62,7 +63,7 @@ jobs:
         run: yarn svelte-check
         working-directory: packages/blade-svelte
       - name: Enforce PMG policy
-        if: always()
+        if: always() && steps.pmg-setup.outcome == 'success'
         run: pmg proxy stop --fail-on-violation
 
   test:
@@ -77,6 +78,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
       - name: Setup PMG proxy
+        id: pmg-setup
         uses: safedep/pmg@v1
         with:
           server-mode: true
@@ -100,7 +102,7 @@ jobs:
           path: packages/blade/coverage
           retention-days: 1
       - name: Enforce PMG policy
-        if: always()
+        if: always() && steps.pmg-setup.outcome == 'success'
         run: pmg proxy stop --fail-on-violation
 
   svelte-test:
@@ -110,6 +112,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
       - name: Setup PMG proxy
+        id: pmg-setup
         uses: safedep/pmg@v1
         with:
           server-mode: true
@@ -125,7 +128,7 @@ jobs:
         run: yarn test
         working-directory: packages/blade-svelte
       - name: Enforce PMG policy
-        if: always()
+        if: always() && steps.pmg-setup.outcome == 'success'
         run: pmg proxy stop --fail-on-violation
 
   coverage-report:
@@ -142,6 +145,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Setup PMG proxy
+        id: pmg-setup
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
+          tenant-id: ${{ secrets.PMG_TENANT_ID }}
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -223,3 +233,6 @@ jobs:
           body-file: coverage-comment.md
           token: ${{ secrets.CI_BOT_TOKEN }}
           edit-mode: replace
+      - name: Enforce PMG policy
+        if: always() && steps.pmg-setup.outcome == 'success'
+        run: pmg proxy stop --fail-on-violation

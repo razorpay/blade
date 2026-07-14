@@ -27,6 +27,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
       - name: Setup PMG proxy
+        id: pmg-setup
         uses: safedep/pmg@v1
         with:
           server-mode: true
@@ -48,5 +49,5 @@ jobs:
           yarn test:react:interaction:ci
         working-directory: packages/blade
       - name: Enforce PMG policy
-        if: always()
+        if: always() && steps.pmg-setup.outcome == 'success'
         run: pmg proxy stop --fail-on-violation

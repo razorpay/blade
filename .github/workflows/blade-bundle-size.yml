@@ -19,6 +19,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v4
       - name: Setup PMG proxy
+        id: pmg-setup
         uses: safedep/pmg@v1
         with:
           server-mode: true
@@ -40,7 +41,7 @@ jobs:
           DANGER_GITHUB_API_TOKEN: ${{ env.GITHUB_ACCESS_TOKEN }}
           DANGER_DISABLE_TRANSPILATION: 'true'
       - name: Enforce PMG policy
-        if: always()
+        if: always() && steps.pmg-setup.outcome == 'success'
         run: pmg proxy stop --fail-on-violation
 
   master-bundle-size:
@@ -57,6 +58,7 @@ jobs:
           token: ${{ secrets.CI_BOT_TOKEN }}
           ref: master
       - name: Setup PMG proxy
+        id: pmg-setup
         uses: safedep/pmg@v1
         with:
           server-mode: true
@@ -90,5 +92,5 @@ jobs:
           git push origin master:bundle-size-stats --force
         working-directory: packages/blade
       - name: Enforce PMG policy
-        if: always()
+        if: always() && steps.pmg-setup.outcome == 'success'
         run: pmg proxy stop --fail-on-violation
