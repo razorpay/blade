@@ -22,6 +22,12 @@ import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { mergeRefs } from '~utils/useMergeRefs';
 
+type InternalChangeHandler = (args: {
+  name?: string;
+  value: SliderValue;
+  event?: React.ChangeEvent<HTMLInputElement>;
+}) => void;
+
 const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (props, ref) => {
   const {
     accessibilityLabel,
@@ -30,13 +36,16 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     errorText,
     helpText,
     isDisabled = false,
+    isRequired = false,
     label,
+    labelPosition = 'top',
     marks,
     max = 100,
     maxLabel,
     min = 0,
     minLabel,
     name,
+    necessityIndicator = 'required',
     onChange,
     onChangeEnd,
     showMarks = false,
@@ -45,6 +54,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     showValue = true,
     size = 'medium',
     step = 1,
+    successText,
     testID,
     validationState = 'none',
     value,
@@ -62,6 +72,10 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     throwBladeError({ message: '`step` must be greater than zero.', moduleName: 'Slider' });
   }
 
+  // initialValue is computed only on mount. Stale values are acceptable here
+  // because this is the uncontrolled default; subsequent renders use
+  // controllableValue which reads from the controlled `value` prop or
+  // the internal state that was seeded by this initial value.
   const initialValue = React.useMemo(
     () =>
       normalizeValue(
@@ -74,28 +88,31 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
-  const onChangeValue = onChange as
-    | ((args: { name?: string; value: SliderValue }) => void)
-    | undefined;
-  const onChangeEndValue = onChangeEnd as
-    | ((args: { name?: string; value: SliderValue }) => void)
-    | undefined;
+  const onChangeValue = onChange as InternalChangeHandler | undefined;
+  const onChangeEndValue = onChangeEnd as InternalChangeHandler | undefined;
+  const latestValueRef = React.useRef<SliderValue>(initialValue);
+  const latestEventRef = React.useRef<React.ChangeEvent<HTMLInputElement> | undefined>(undefined);
   const [controllableValue, setControllableValue] = useControllableState<SliderValue>({
     value: value as SliderValue | undefined,
     defaultValue: initialValue,
-    onChange: (nextValue) => onChangeValue?.({ name, value: nextValue }),
+    onChange: (nextValue) =>
+      onChangeValue?.({ name, value: nextValue, event: latestEventRef.current }),
     shouldUpdate: (previous, next) => !isSameValue(previous, next),
   });
-  const currentValue = normalizeValue(controllableValue, variant, min, max, step);
-  const latestValueRef = React.useRef(currentValue);
+  const currentValue = React.useMemo(
+    () => normalizeValue(controllableValue, variant, min, max, step),
+    [controllableValue, variant, min, max, step],
+  );
+  latestValueRef.current = currentValue;
 
-  const { inputId, errorTextId, helpTextId, labelId } = useFormId('slider');
+  const { inputId, errorTextId, helpTextId, labelId, successTextId } = useFormId('slider');
   const startInputRef = React.useRef<HTMLInputElement>(null);
   const endInputRef = React.useRef<HTMLInputElement>(null);
   const trackRef = React.useRef<HTMLDivElement>(null);
   const pointerStartedOnThumbRef = React.useRef(false);
   const [activeThumb, setActiveThumb] = React.useState<0 | 1>(0);
   const hasError = validationState === 'error';
+  const hasSuccess = validationState === 'success';
   const rangeValue: SliderRangeValue = React.useMemo(
     () => (typeof currentValue === 'number' ? [min, currentValue] : currentValue),
     [currentValue, min],
@@ -115,7 +132,11 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
       showMarks ? generatedMarks.filter((mark) => mark.value >= min && mark.value <= max) : [],
     [generatedMarks, min, max, showMarks],
   );
-  const describedBy = hasError && errorText ? errorTextId : helpText ? helpTextId : undefined;
+  const describedByParts: string[] = [];
+  if (helpText) describedByParts.push(helpTextId);
+  if (hasError && errorText) describedByParts.push(errorTextId);
+  if (hasSuccess && successText) describedByParts.push(successTextId);
+  const describedBy = describedByParts.length > 0 ? describedByParts.join(' ') : undefined;
   const displayValue =
     valueText ??
     (variant === 'range'
@@ -154,8 +175,10 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   );
 
   const handleInputChange = React.useCallback(
-    (index: 0 | 1) => (event: React.ChangeEvent<HTMLInputElement>) =>
-      updateThumbValue(index, Number(event.currentTarget.value)),
+    (index: 0 | 1) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      latestEventRef.current = event;
+      updateThumbValue(index, Number(event.currentTarget.value));
+    },
     [updateThumbValue],
   );
 
@@ -176,28 +199,41 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     [step, updateThumbValue],
   );
 
-  const handleTrackPointerDown = (event: React.PointerEvent<HTMLDivElement>): void => {
-    if (isDisabled || event.target !== event.currentTarget || !trackRef.current) return;
-    pointerStartedOnThumbRef.current = false;
-    const bounds = trackRef.current.getBoundingClientRect();
-    const ratio = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
-    const next = snapValue(min + ratio * (max - min), min, max, step);
+  const handleInputKeyUp = React.useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>): void => {
+      if (sliderKeyboardKeys.has(event.key)) {
+        commitValue();
+      }
+    },
+    [commitValue],
+  );
 
-    if (variant === 'single') {
-      updateValue(next);
-      startInputRef.current?.focus();
-    } else {
-      const nextThumb = Math.abs(next - rangeValue[0]) <= Math.abs(next - rangeValue[1]) ? 0 : 1;
-      setActiveThumb(nextThumb);
-      updateValue(
-        nextThumb === 0
-          ? [Math.min(next, rangeValue[1]), rangeValue[1]]
-          : [rangeValue[0], Math.max(next, rangeValue[0])],
-      );
-      (nextThumb === 0 ? startInputRef : endInputRef).current?.focus();
-    }
-    commitValue();
-  };
+  const handleTrackPointerDown = React.useCallback(
+    (event: React.PointerEvent<HTMLDivElement>): void => {
+      if (isDisabled || event.target !== event.currentTarget || !trackRef.current) return;
+      pointerStartedOnThumbRef.current = false;
+      const bounds = trackRef.current.getBoundingClientRect();
+      const ratio = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
+      const next = snapValue(min + ratio * (max - min), min, max, step);
+
+      if (variant === 'single') {
+        updateValue(next);
+        startInputRef.current?.focus();
+      } else {
+        const nextThumb =
+          Math.abs(next - rangeValue[0]) <= Math.abs(next - rangeValue[1]) ? 0 : 1;
+        setActiveThumb(nextThumb);
+        updateValue(
+          nextThumb === 0
+            ? [Math.min(next, rangeValue[1]), rangeValue[1]]
+            : [rangeValue[0], Math.max(next, rangeValue[0])],
+        );
+        (nextThumb === 0 ? startInputRef : endInputRef).current?.focus();
+      }
+      commitValue();
+    },
+    [commitValue, isDisabled, max, min, rangeValue, step, updateValue, variant],
+  );
 
   const handleThumbPointerDown = React.useCallback((index: 0 | 1) => {
     pointerStartedOnThumbRef.current = true;
@@ -214,7 +250,8 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     <BaseBox
       ref={getOuterMotionRef({ _motionMeta, ref })}
       display="flex"
-      flexDirection="column"
+      flexDirection={labelPosition === 'left' ? 'row' : 'column'}
+      alignItems={labelPosition === 'left' ? 'center' : undefined}
       width="100%"
       {...metaAttribute({ testID, name: MetaConstants.Slider })}
       {...getStyledProps(rest)}
@@ -223,8 +260,11 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
       <SliderHeader
         displayValue={displayValue}
         inputId={inputId}
+        isRequired={isRequired}
         label={label}
         labelId={labelId}
+        labelPosition={labelPosition}
+        necessityIndicator={necessityIndicator}
         showValue={showValue}
         size={size}
         variant={variant}
@@ -245,9 +285,9 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
         max={max}
         min={min}
         name={name}
-        onCommit={commitValue}
         onInputChange={handleInputChange}
         onInputKeyDown={handleInputKeyDown}
+        onInputKeyUp={handleInputKeyUp}
         onThumbPointerDown={handleThumbPointerDown}
         onThumbPointerUp={handleThumbPointerUp}
         onTrackPointerDown={handleTrackPointerDown}
@@ -266,8 +306,11 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
         errorText={errorText}
         errorTextId={errorTextId}
         hasError={hasError}
+        hasSuccess={hasSuccess}
         helpText={helpText}
         helpTextId={helpTextId}
+        successText={successText}
+        successTextId={successTextId}
         maxText={maxLabel ?? valueFormatter(max)}
         minText={minLabel ?? valueFormatter(min)}
         showMinMax={showMinMax}

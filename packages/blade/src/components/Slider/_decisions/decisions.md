@@ -85,11 +85,16 @@ Range selection uses the same component with a tuple value:
 | `marks`                  | `{ value: number; label?: string }[]` | -                     | Supplies custom mark positions and labels.                |
 | `showMinMax`             | `boolean`                             | `false`               | Shows lower and upper bounds.                             |
 | `minLabel` / `maxLabel`  | `string`                              | formatted bounds      | Overrides generated bound labels.                         |
-| `validationState`        | `'none' \| 'error'`                   | `'none'`              | Applies error visuals and semantics.                      |
+| `validationState`        | `'none' \| 'error' \| 'success'`      | `'none'`              | Applies error or success visuals and semantics.          |
 | `helpText` / `errorText` | `string`                              | -                     | Supporting or error copy.                                 |
+| `successText`            | `string`                              | -                     | Success copy shown when `validationState` is `'success'`. |
+| `isRequired`             | `boolean`                             | `false`               | Whether the field is required.                            |
+| `necessityIndicator`     | `'required' \| 'optional' \| 'none'`  | `'required'`          | Controls the necessity indicator beside the label.        |
+| `labelPosition`          | `'top' \| 'left'`                     | `'top'`               | Position of the label relative to the slider.             |
 | `isDisabled`             | `boolean`                             | `false`               | Disables all pointer and keyboard interaction.            |
-| `onChange`               | `({ name?, value }) => void`          | -                     | Fires continuously while the value changes.               |
-| `onChangeEnd`            | `({ name?, value }) => void`          | -                     | Fires when pointer or keyboard interaction commits.       |
+| `name`                   | `string`                              | -                     | Name included in change callbacks and native form submission. |
+| `onChange`               | `({ name?, value, event? }) => void`  | -                     | Fires continuously while the value changes.               |
+| `onChangeEnd`            | `({ name?, value, event? }) => void`  | -                     | Fires when pointer or keyboard interaction commits.       |
 
 ## Examples
 

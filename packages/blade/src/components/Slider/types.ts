@@ -16,6 +16,7 @@ type SliderMark = {
 type SliderChangeHandler<TValue extends SliderValue> = (args: {
   name?: string;
   value: TValue;
+  event?: React.ChangeEvent<HTMLInputElement>;
 }) => void;
 
 type SliderLabelProps =
@@ -68,12 +69,20 @@ type SliderCommonProps = {
   helpText?: string;
   /** Error message shown when `validationState` is `error`. */
   errorText?: string;
+  /** Success message shown when `validationState` is `success`. */
+  successText?: string;
   /** @default 'none' */
-  validationState?: 'none' | 'error';
+  validationState?: 'none' | 'error' | 'success';
   /** @default false */
   isDisabled?: boolean;
   /** Name included in change callbacks and native form submission. */
   name?: string;
+  /** Whether the field is required. Shows a necessity indicator when combined with `necessityIndicator`. */
+  isRequired?: boolean;
+  /** Controls the necessity indicator shown beside the label. @default 'required' */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  /** Position of the label relative to the slider. @default 'top' */
+  labelPosition?: 'top' | 'left';
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade &

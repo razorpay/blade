@@ -22,6 +22,9 @@ const sliderTokens = {
     },
   },
   interactionTarget: size[44],
+  markDot: 4,
+  thumbValueOffset: 24,
+  markLabelOffset: 18,
   maxGeneratedMarks: 20,
 } as const;
 

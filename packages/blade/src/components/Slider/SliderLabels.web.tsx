@@ -10,8 +10,11 @@ type SliderSize = NonNullable<SliderProps['size']>;
 type SliderHeaderProps = {
   displayValue: string;
   inputId: string;
+  isRequired?: boolean;
   label?: string;
   labelId: string;
+  labelPosition?: 'top' | 'left';
+  necessityIndicator?: 'required' | 'optional' | 'none';
   showValue: boolean;
   size: SliderSize;
   variant: NonNullable<SliderProps['variant']>;
@@ -20,8 +23,11 @@ type SliderHeaderProps = {
 const SliderHeader = ({
   displayValue,
   inputId,
+  isRequired,
   label,
   labelId,
+  labelPosition = 'top',
+  necessityIndicator = 'required',
   showValue,
   size,
   variant,
@@ -34,11 +40,26 @@ const SliderHeader = ({
 
   if (label) {
     return variant === 'single' ? (
-      <FormLabel as="label" htmlFor={inputId} id={labelId} labelTrailing={value} size={size}>
+      <FormLabel
+        as="label"
+        htmlFor={inputId}
+        id={labelId}
+        labelTrailing={value}
+        size={size}
+        position={labelPosition}
+        necessityIndicator={isRequired ? necessityIndicator : 'none'}
+      >
         {label}
       </FormLabel>
     ) : (
-      <FormLabel as="span" id={labelId} labelTrailing={value} size={size}>
+      <FormLabel
+        as="span"
+        id={labelId}
+        labelTrailing={value}
+        size={size}
+        position={labelPosition}
+        necessityIndicator={isRequired ? necessityIndicator : 'none'}
+      >
         {label}
       </FormLabel>
     );
@@ -53,6 +74,9 @@ type SliderFooterProps = {
   hasError: boolean;
   helpText?: string;
   helpTextId: string;
+  successText?: string;
+  successTextId: string;
+  hasSuccess: boolean;
   maxText: string;
   minText: string;
   showMinMax: boolean;
@@ -65,6 +89,9 @@ const SliderFooter = ({
   hasError,
   helpText,
   helpTextId,
+  successText,
+  successTextId,
+  hasSuccess,
   maxText,
   minText,
   showMinMax,
@@ -82,11 +109,13 @@ const SliderFooter = ({
       </BaseBox>
     ) : null}
     <FormHint
-      type={hasError ? 'error' : 'help'}
+      type={hasError ? 'error' : hasSuccess ? 'success' : 'help'}
       errorText={errorText}
       errorTextId={errorTextId}
       helpText={helpText}
       helpTextId={helpTextId}
+      successText={successText}
+      successTextId={successTextId}
       size={size}
     />
   </>

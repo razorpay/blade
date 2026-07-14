@@ -1,14 +1,13 @@
 import React from 'react';
 import type { SliderMark, SliderProps, SliderRangeValue } from './types';
 import { sliderTokens } from './sliderTokens';
-import { sliderKeyboardKeys } from './sliderKeyboard';
 import { getPercent } from './sliderUtils';
 import {
   MarkDot,
   MarkLabel,
   NativeRangeInput,
-  StyledTrackArea,
   ThumbValueLabel,
+  TrackArea,
   TrackFill,
   TrackLine,
 } from './SliderTrack.web';
@@ -33,9 +32,9 @@ type SliderControlsProps = {
   max: number;
   min: number;
   name?: string;
-  onCommit: () => void;
   onInputChange: (index: 0 | 1) => React.ChangeEventHandler<HTMLInputElement>;
   onInputKeyDown: (index: 0 | 1) => React.KeyboardEventHandler<HTMLInputElement>;
+  onInputKeyUp: React.KeyboardEventHandler<HTMLInputElement>;
   onThumbPointerDown: (index: 0 | 1) => void;
   onThumbPointerUp: () => void;
   onTrackPointerDown: React.PointerEventHandler<HTMLDivElement>;
@@ -67,9 +66,9 @@ const SliderControls = ({
   max,
   min,
   name,
-  onCommit,
   onInputChange,
   onInputKeyDown,
+  onInputKeyUp,
   onThumbPointerDown,
   onThumbPointerUp,
   onTrackPointerDown,
@@ -118,7 +117,7 @@ const SliderControls = ({
   };
 
   return (
-    <StyledTrackArea
+    <TrackArea
       {...trackStyleProps}
       onPointerDown={onTrackPointerDown}
       role={variant === 'range' ? 'group' : undefined}
@@ -172,7 +171,7 @@ const SliderControls = ({
         max={variant === 'range' ? rangeValue[1] : max}
         onChange={onInputChange(0)}
         onKeyDown={onInputKeyDown(0)}
-        onKeyUp={(event) => sliderKeyboardKeys.has(event.key) && onCommit()}
+        onKeyUp={onInputKeyUp}
         onPointerDown={() => onThumbPointerDown(0)}
         onPointerUp={onThumbPointerUp}
         ref={startInputRef}
@@ -194,14 +193,14 @@ const SliderControls = ({
           min={rangeValue[0]}
           onChange={onInputChange(1)}
           onKeyDown={onInputKeyDown(1)}
-          onKeyUp={(event) => sliderKeyboardKeys.has(event.key) && onCommit()}
+          onKeyUp={onInputKeyUp}
           onPointerDown={() => onThumbPointerDown(1)}
           onPointerUp={onThumbPointerUp}
           ref={endInputRef}
           value={rangeValue[1]}
         />
       ) : null}
-    </StyledTrackArea>
+    </TrackArea>
   );
 };
 

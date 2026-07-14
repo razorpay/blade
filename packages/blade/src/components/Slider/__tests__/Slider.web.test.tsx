@@ -34,7 +34,9 @@ describe('<Slider />', () => {
 
     fireEvent.change(slider, { target: { value: '40' } });
 
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 40 });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ name: undefined, value: 40 }),
+    );
     expect(slider).toHaveAttribute('aria-valuenow', '40');
   });
 
@@ -45,7 +47,9 @@ describe('<Slider />', () => {
 
     fireEvent.change(slider, { target: { value: '40' } });
 
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 40 });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ name: undefined, value: 40 }),
+    );
     expect(slider).toHaveAttribute('aria-valuenow', '25');
   });
 
@@ -62,7 +66,9 @@ describe('<Slider />', () => {
     fireEvent.change(maximum, { target: { value: '10' } });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: [80, 80] });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ name: undefined, value: [80, 80] }),
+    );
   });
 
   it('snaps values to decimal steps', () => {
@@ -73,7 +79,9 @@ describe('<Slider />', () => {
 
     fireEvent.change(getByRole('slider'), { target: { value: '0.26' } });
 
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 0.3 });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ name: undefined, value: 0.3 }),
+    );
   });
 
   it('calls onChangeEnd after pointer and keyboard commits', () => {
@@ -89,8 +97,14 @@ describe('<Slider />', () => {
     fireEvent.change(slider, { target: { value: '50' } });
     fireEvent.keyUp(slider, { key: 'ArrowRight' });
 
-    expect(onChangeEnd).toHaveBeenNthCalledWith(1, { name: undefined, value: 45 });
-    expect(onChangeEnd).toHaveBeenNthCalledWith(2, { name: undefined, value: 50 });
+    expect(onChangeEnd).toHaveBeenNthCalledWith(
+      1,
+      expect.objectContaining({ name: undefined, value: 45 }),
+    );
+    expect(onChangeEnd).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({ name: undefined, value: 50 }),
+    );
   });
 
   it('renders marks, thumb value, helper text, and custom header value', () => {
@@ -154,5 +168,119 @@ describe('<Slider />', () => {
       '`step` must be greater than zero.',
     );
     consoleError.mockRestore();
+  });
+
+  it('supports Home, End, PageUp, and PageDown keyboard navigation', () => {
+    const onChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <Slider label="Volume" defaultValue={50} min={0} max={100} step={5} onChange={onChange} />,
+    );
+    const slider = getByRole('slider');
+
+    fireEvent.keyDown(slider, { key: 'Home' });
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ name: undefined, value: 0 }),
+    );
+
+    fireEvent.keyDown(slider, { key: 'End' });
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ name: undefined, value: 100 }),
+    );
+
+    fireEvent.keyDown(slider, { key: 'Home' });
+    fireEvent.keyDown(slider, { key: 'PageUp' });
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ name: undefined, value: 10 }),
+    );
+
+    fireEvent.keyDown(slider, { key: 'Home' });
+    fireEvent.keyDown(slider, { key: 'PageDown' });
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ name: undefined, value: -10 }),
+    );
+  });
+
+  it('supports controlled range slider values', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = renderWithTheme(
+      <Slider
+        label="Amount"
+        variant="range"
+        value={[30, 70]}
+        min={0}
+        max={100}
+        onChange={onChange}
+      />,
+    );
+    const [minimum, maximum] = getAllByRole('slider');
+
+    expect(minimum).toHaveAttribute('aria-valuenow', '30');
+    expect(maximum).toHaveAttribute('aria-valuenow', '70');
+
+    fireEvent.change(minimum, { target: { value: '40' } });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ name: undefined, value: [40, 70] }),
+    );
+  });
+
+  it('supports track pointer click to jump to a position', () => {
+    const onChange = jest.fn();
+    const { container } = renderWithTheme(
+      <Slider label="Volume" defaultValue={50} min={0} max={100} onChange={onChange} />,
+    );
+    const trackArea = container.querySelector('[data-blade-component="slider"] > div');
+    expect(trackArea).toBeTruthy();
+
+    const rect = { left: 0, width: 100, top: 0, height: 44 } as DOMRect;
+    jest.spyOn(trackArea!, 'getBoundingClientRect').mockReturnValue(rect);
+
+    fireEvent.pointerDown(trackArea!, { clientX: 25, target: trackArea });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ name: undefined, value: 25 }),
+    );
+  });
+
+  it('formats range values using valueFormatter', () => {
+    const { getAllByText } = renderWithTheme(
+      <Slider
+        label="Amount"
+        variant="range"
+        defaultValue={[20, 80]}
+        min={0}
+        max={100}
+        showThumbValue
+        valueFormatter={(value) => `$${value}`}
+      />,
+    );
+    const thumbValues = getAllByText('$20');
+    expect(thumbValues.length).toBeGreaterThan(0);
+    expect(getAllByText('$80').length).toBeGreaterThan(0);
+  });
+
+  it('hides the header value when showValue is false', () => {
+    const { queryByText } = renderWithTheme(
+      <Slider label="Volume" defaultValue={50} showValue={false} />,
+    );
+    expect(queryByText('50')).toBeNull();
+  });
+
+  it('uses accessibilityLabel for aria-label when label is not provided', () => {
+    const { getByRole } = renderWithTheme(
+      <Slider accessibilityLabel="Screen reader label" defaultValue={50} />,
+    );
+    const slider = getByRole('slider', { name: 'Screen reader label' });
+    expect(slider).toBeTruthy();
+  });
+
+  it('prevents interaction when disabled', () => {
+    const onChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <Slider label="Volume" defaultValue={50} isDisabled onChange={onChange} />,
+    );
+    const slider = getByRole('slider');
+
+    expect(slider).toBeDisabled();
+    fireEvent.change(slider, { target: { value: '60' } });
+    expect(onChange).not.toHaveBeenCalled();
   });
 });
