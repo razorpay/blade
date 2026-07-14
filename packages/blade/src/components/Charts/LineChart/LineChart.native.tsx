@@ -551,10 +551,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     }
   }, [allDataKeys, selectedKeys]);
 
-  const isVisible = useCallback(
-    (dataKey: string): boolean => selectedKeys.includes(dataKey),
-    [selectedKeys],
-  );
+  const isVisible = useCallback((dataKey: string): boolean => selectedKeys.includes(dataKey), [
+    selectedKeys,
+  ]);
 
   const toggleLegend = (dataKey: string): void => {
     hasUserInteractedRef.current = true;
@@ -633,7 +632,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const gridColor = getIn(theme.colors, 'surface.border.gray.subtle');
 
   const resolveColor = useCallback(
-    (dataKey: string, fallback?: string): string => {
+    (
+      dataKey: string,
+      fallback?: ChartsCategoricalColorToken | ChartSequentialColorToken,
+    ): string => {
       const token = dataColorMapping[dataKey]?.colorToken ?? fallback;
       return token ? getIn(theme.colors, token) : tickColor;
     },
@@ -656,7 +658,18 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       });
       return { line, color: resolveColor(line.dataKey, line.color), points };
     });
-  }, [visibleLines, data, plotWidth, plotHeight, yMin, yDomain, dataColorMapping, theme.colors, resolveColor, xForIndex]);
+  }, [
+    visibleLines,
+    data,
+    plotWidth,
+    plotHeight,
+    yMin,
+    yDomain,
+    dataColorMapping,
+    theme.colors,
+    resolveColor,
+    xForIndex,
+  ]);
 
   const dataSignature = useMemo(() => `${data.length}:${allDataKeys.join(',')}`, [
     data.length,

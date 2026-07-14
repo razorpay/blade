@@ -17,6 +17,7 @@ import type {
 import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
+  ChartColorToken,
 } from '../CommonChartComponents/types';
 import { BarChartContext } from './BarChartContext';
 import { componentIds, BAR_CHART_CORNER_RADIUS } from './tokens';
@@ -492,7 +493,8 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
                               dataColorMapping[bar.dataKey]?.colorToken ?? bar.color;
                             const fill = fillToken ? getIn(theme.colors, fillToken) : tickColor;
                             const accentToken = getHighestColorInRange({
-                              colorToken: fillToken,
+                              colorToken: (fillToken ??
+                                'data.background.categorical.azure.faint') as ChartColorToken,
                               followIntensityMapping: Boolean(
                                 dataColorMapping[bar.dataKey]?.isCustomColor,
                               ),
