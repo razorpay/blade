@@ -11,6 +11,11 @@ import {
 } from '../../CommonChartComponents';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useId: () => 'test-id',
+}));
+
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
@@ -140,7 +145,7 @@ describe('<ChartLineWrapper /> (native)', () => {
     // The y-domain should span [niceFloor(-2000), niceCeil(3000)] = [-2000, 5000].
     // Tick labels are rendered as SvgText children; find ones containing '-'.
     const json = JSON.stringify(tree);
-    expect(json).toContain('-2K');
+    expect(json).toContain('-2.0K');
   });
 
   it('should render a horizontal reference line (y)', () => {

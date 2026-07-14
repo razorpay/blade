@@ -375,7 +375,7 @@ exports[`<ChartLineWrapper /> (native) should render a horizontal reference line
                       "type": 0,
                     }
                   }
-                  name="line-reveal-0"
+                  name="line-reveal-test-id-0"
                 >
                   <RNSVGRect
                     fill={
@@ -392,7 +392,7 @@ exports[`<ChartLineWrapper /> (native) should render a horizontal reference line
                 </RNSVGClipPath>
               </RNSVGDefs>
               <RNSVGGroup
-                clipPath="line-reveal-0"
+                clipPath="line-reveal-test-id-0"
                 fill={
                   {
                     "payload": 4278190080,
@@ -708,7 +708,7 @@ exports[`<ChartLineWrapper /> (native) should render a vertical reference line (
                       "type": 0,
                     }
                   }
-                  name="line-reveal-0"
+                  name="line-reveal-test-id-0"
                 >
                   <RNSVGRect
                     fill={
@@ -725,7 +725,7 @@ exports[`<ChartLineWrapper /> (native) should render a vertical reference line (
                 </RNSVGClipPath>
               </RNSVGDefs>
               <RNSVGGroup
-                clipPath="line-reveal-0"
+                clipPath="line-reveal-test-id-0"
                 fill={
                   {
                     "payload": 4278190080,
@@ -2102,7 +2102,7 @@ exports[`<ChartLineWrapper /> (native) should render negative data values within
                       "type": 0,
                     }
                   }
-                  name="line-reveal-0"
+                  name="line-reveal-test-id-0"
                 >
                   <RNSVGRect
                     fill={
@@ -2119,7 +2119,7 @@ exports[`<ChartLineWrapper /> (native) should render negative data values within
                 </RNSVGClipPath>
               </RNSVGDefs>
               <RNSVGGroup
-                clipPath="line-reveal-0"
+                clipPath="line-reveal-test-id-0"
                 fill={
                   {
                     "payload": 4278190080,
