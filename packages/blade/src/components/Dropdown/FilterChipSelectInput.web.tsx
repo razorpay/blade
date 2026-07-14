@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { useFilterChipGroupContext } from './FilterChipGroupContext.web';
@@ -16,21 +16,13 @@ import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
-  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur'
+  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur' | 'showClearButton'
 > & {
   accessibilityLabel?: string;
   onChange?: (props: { name: string; values: string[] }) => void;
   name?: string;
   onClearButtonClick?: (props: { name: string; values: string[] }) => void;
   isDisabled?: boolean;
-  /**
-   * Whether to render the clear (cross) button when the chip has a selected value.
-   *
-   * Set to `false` for filters that should always hold a value.
-   *
-   * @default true
-   */
-  showClearButton?: boolean;
 } & DataAnalyticsAttribute;
 
 const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactElement => {
@@ -152,18 +144,21 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   // Resolves the value shown inside the chip: option titles for display. Controlled consumers
   // pass option value(s); we map them to titles here (falling back to the raw value if the
-  // options haven't loaded yet).
-  const getFilterChipDisplayValue = (): string | string[] => {
-    if (props.value === undefined) {
-      return getUnControlledFilterChipValue();
-    }
-    if (Array.isArray(props.value)) {
-      return props.value.map(
-        (selectionValue) => getTitleFromValue(selectionValue) || selectionValue,
-      );
-    }
-    return getTitleFromValue(props.value) || props.value;
-  };
+  // options haven't loaded yet). Memoised to avoid redundant O(n) finds on every render.
+  const getFilterChipDisplayValue = useMemo(() => {
+    return (): string | string[] => {
+      if (props.value === undefined) {
+        return getUnControlledFilterChipValue();
+      }
+      if (Array.isArray(props.value)) {
+        return props.value.map(
+          (selectionValue) => getTitleFromValue(selectionValue) || selectionValue,
+        );
+      }
+      return getTitleFromValue(props.value) || props.value;
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.value, options]);
 
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });

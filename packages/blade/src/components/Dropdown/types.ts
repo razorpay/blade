@@ -95,16 +95,18 @@ type FilterChipGroupProps = TestID &
      *
      * When not provided it defaults to the auto-pluralised `"Clear Filter"` / `"Clear Filters"`.
      *
-     * @default "Clear Filter(s)"
+     * @default "Clear Filter" (auto-pluralised to "Clear Filters" when more than one filter is selected)
      */
     clearButtonText?: string;
     /**
      * Controls what happens when the action button is clicked.
      *
      * - `"clear"` (default): empties every filter and resets the group to a no-filter state.
-     * - `"reset"`: only fires `onClearButtonClick` and does NOT force the filters to empty, so
-     *   consumers of controlled filters can restore their own default values. (Restoring defaults
-     *   for uncontrolled filters is not yet supported — see Phase 2.)
+     * - `"reset"`: fires `onClearButtonClick` and clears the group's "has changes" bookkeeping,
+     *   but **does NOT clear the child filter chips**. The chips keep their current values.
+     *   This delegates the responsibility of restoring defaults to the consumer's
+     *   `onClearButtonClick` handler — the component does not reset itself.
+     *   (Restoring defaults for uncontrolled filters is not yet supported — see Phase 2.)
      *
      * @default "clear"
      */

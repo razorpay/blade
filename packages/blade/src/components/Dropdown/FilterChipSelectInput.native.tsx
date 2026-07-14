@@ -16,21 +16,13 @@ import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
-  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur'
+  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur' | 'showClearButton'
 > & {
   accessibilityLabel?: string;
   onChange?: (props: { name: string; values: string[] }) => void;
   name?: string;
   onClearButtonClick?: (props: { name: string; values: string[] }) => void;
   isDisabled?: boolean;
-  /**
-   * Whether to render the clear (cross) button when the chip has a selected value.
-   *
-   * Set to `false` for filters that should always hold a value.
-   *
-   * @default true
-   */
-  showClearButton?: boolean;
 } & DataAnalyticsAttribute;
 
 const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactElement => {

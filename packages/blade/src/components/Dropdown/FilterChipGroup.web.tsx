@@ -28,9 +28,11 @@ const FilterChipGroup = ({
     // reappears the next time a filter changes.
     setListViewSelectedFilters({});
     setFilterChipGroupSelectedFilters([]);
-    // In "reset" mode we stop here: we intentionally do NOT bump the clear triggerer, so the
-    // controlled chips keep the default values the consumer just restored in onClearButtonClick
-    // (bumping it would make each chip fire onChange([]) and empty itself).
+    // In "reset" mode we stop here: we intentionally do NOT bump the clear triggerer.
+    // This means child chips (FilterChipSelectInput etc.) keep their internal selected state
+    // and do NOT fire onChange([]) — only the group-level bookkeeping is cleared above.
+    // The consumer restores each filter's default values in their onClearButtonClick handler,
+    // and since we didn't bump the triggerer, those restored values are not stomped.
     // TODO (FilterChip reset — Phase 2): support restoring defaults for UNCONTROLLED filters. That
     // needs a `defaultValue` on FilterChipSelectInput and a reset path that restores it instead of
     // emptying. See packages/blade/src/components/Dropdown/_decisions/filter-chip-reset.md
@@ -39,7 +41,8 @@ const FilterChipGroup = ({
     }
     setClearFilterCallbackTriggerer((prev) => prev + 1);
   };
-  const isPlural = filterChipGroupSelectedFilters.length > 1 || selectedFiltersCount > 1;
+  const selectedCount = Math.max(filterChipGroupSelectedFilters.length, selectedFiltersCount);
+  const isPlural = selectedCount > 1;
   const actionButtonText = clearButtonText ?? `Clear Filter${isPlural ? 's' : ''}`;
   return (
     <FilterChipGroupProvider

@@ -20,6 +20,12 @@ type BaseFilterChipProps = {
    * Set to `false` for filters that should always hold a value (e.g. a date filter
    * with a mandatory default) so users can't clear it to an empty state.
    *
+   * **Controlled / uncontrolled clearing contract:**
+   * When the clear button is clicked, `onClearButtonClick` fires. If the parent
+   * controls `value` (passes it explicitly), the chip cannot clear itself — the
+   * parent must reset `value` in response to `onClearButtonClick`. In the uncontrolled
+   * case, the chip clears itself automatically.
+   *
    * @default true
    */
   showClearButton?: boolean;

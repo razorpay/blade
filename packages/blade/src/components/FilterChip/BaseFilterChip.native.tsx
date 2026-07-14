@@ -151,24 +151,28 @@ const renderValue = (
 
   // For multiple selection: when a single option is selected we show its name (no redundant
   // "1" counter); once more than one is selected we collapse to a compact counter.
-  if (selectionType === 'multiple' && Array.isArray(value)) {
-    if (value.length === 1) {
+  // Use an explicit type guard so a non-array value (e.g. a plain string returned by
+  // getFilterChipDisplayValue) never enters the array branch where .length would be
+  // misinterpreted as character count.
+  if (selectionType === 'multiple') {
+    const valueArray = Array.isArray(value) ? value : value != null ? [value] : [];
+    if (valueArray.length === 1) {
       return (
         <Text size="small" weight="medium" color={valueColor} truncateAfterLines={1}>
-          {typeof value[0] === 'string' ? value[0] : ''}
+          {String(valueArray[0] ?? '')}
         </Text>
       );
     }
     return (
       <Box alignItems="center" flexDirection="row">
-        <Counter value={value.length} color="neutral" size="small" />
+        <Counter value={valueArray.length} color="neutral" size="small" />
       </Box>
     );
   }
 
   return (
     <Text size="small" weight="medium" color={valueColor}>
-      {typeof value === 'string' ? value : ''}
+      {value != null ? String(value) : ''}
     </Text>
   );
 };
