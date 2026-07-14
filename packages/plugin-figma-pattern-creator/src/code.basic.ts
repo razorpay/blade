@@ -1,7 +1,14 @@
 // UI Pattern Creator — Basic Implementation (JavaScript compatible)
 // This is a simplified version for basic Figma plugin functionality
 
-function centerOn(node) {
+type CenterableNode = SceneNode & {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+function centerOn(node: CenterableNode): void {
   try {
     figma.currentPage.selection = [node];
     node.x = figma.viewport.center.x - node.width / 2;
@@ -12,7 +19,7 @@ function centerOn(node) {
   }
 }
 
-async function importDetachAndPlace(name, key) {
+async function importDetachAndPlace(name: string, key: string): Promise<void> {
   const loading = figma.notify(`⏳ Importing ${name} Pattern`, { timeout: Infinity });
 
   try {
@@ -24,13 +31,13 @@ async function importDetachAndPlace(name, key) {
     figma.currentPage.appendChild(instance);
     
     // Detach instance
-    let placed = null;
+    let placed: CenterableNode | null = null;
     try {
-      placed = instance.detachInstance();
+      placed = instance.detachInstance() as CenterableNode;
     } catch (e) {
       console.warn("[UI Pattern Creator] detachInstance warning:", e);
     }
-    if (!placed) placed = instance;
+    if (!placed) placed = instance as CenterableNode;
     
     // Center and finish
     centerOn(placed);
