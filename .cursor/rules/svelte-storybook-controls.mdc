@@ -1,0 +1,72 @@
+---
+description: Enforce args-driven Playground stories for all blade-svelte Storybook stories
+globs: packages/blade-svelte/src/components/**/*.stories.svelte
+---
+
+# Svelte Storybook Controls Rules
+
+## Every component needs an args-driven Playground story defined FIRST
+
+The first `<Story>` in each `.stories.svelte` file MUST be named `"Playground"` and must wire `defineMeta` args to the component via `{...args}` spread. This becomes the autodocs default.
+
+### Acceptable Playground patterns
+
+**Pattern A — auto-render (simple components):**
+```svelte
+<Story name="Playground" />
+```
+The component auto-renders with `defineMeta` args. Use for components with no snippet children.
+
+**Pattern B — template with args spread:**
+```svelte
+<Story name="Playground">
+  {#snippet template(args)}
+    <Component {...args}>
+      {#snippet children()}
+        <!-- fixed demo children -->
+      {/snippet}
+    </Component>
+  {/snippet}
+</Story>
+```
+Use when the component requires snippet children or wrapping markup.
+
+**Pattern C — destructured args (override specific props with local state):**
+```svelte
+<Story name="Playground">
+  {#snippet template(args: SomeProps)}
+    {@const { isOpen: _o, onDismiss: _d, ...rest } = args}
+    <Component {...rest} isOpen={localState} onDismiss={handler}>
+  {/snippet}
+</Story>
+```
+Use when a prop (e.g. `isOpen`) must be driven by local `$state` rather than controls.
+
+## Reserve asChild only for static showcase stories
+
+`asChild` stories (matrices, fixed examples, controlled demos with buttons) are fine — they don't need args wiring. But every file MUST have at least one non-asChild Playground story that passes args.
+
+## Stories using template() without args param must be fixed
+
+`{#snippet template()}` renders content but ignores the Controls panel entirely. Always accept and spread args:
+
+```svelte
+// BAD
+{#snippet template()}
+  <Component />
+
+// GOOD
+{#snippet template(args)}
+  <Component {...args} />
+```
+
+## Verification
+
+After changes, run:
+```bash
+# Every component .stories.svelte should have name="Playground"
+grep -L 'name="Playground"' src/components/**/*.stories.svelte
+
+# No template() without args should remain
+grep -rn '{#snippet template()}' src/
+```

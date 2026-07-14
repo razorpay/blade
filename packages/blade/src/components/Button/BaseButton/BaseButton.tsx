@@ -706,7 +706,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           alignItems="center"
           justifyContent="center"
           flex={1}
-          isHidden={isLoading}
+          isHidden={isLoading && loadingType === 'indefinite'}
           zIndex={1}
         >
           {Icon && iconPosition == 'left' ? (
