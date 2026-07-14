@@ -42,16 +42,6 @@ export function buildTicketShellPath({
   return buildInwardNotchBoundary(getTicketGeometry(width, height, tearLineY));
 }
 
-/** @deprecated Use {@link buildTicketShellPath}. */
-export function buildTicketClipPath(dimensions: TicketOutlineDimensions): string {
-  return buildTicketShellPath(dimensions);
-}
-
-/** @deprecated Use {@link buildTicketShellPath}. */
-export function buildTicketOuterPath(dimensions: TicketOutlineDimensions): string {
-  return buildTicketShellPath(dimensions);
-}
-
 function getTicketGeometry(width: number, height: number, tearLineY: number): TicketGeometry {
   const cornerRadius = CARD_TICKET_CORNER_RADIUS;
   const notchRadius = CARD_TICKET_NOTCH_RADIUS;

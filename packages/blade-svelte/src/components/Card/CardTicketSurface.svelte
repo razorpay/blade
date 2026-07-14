@@ -64,11 +64,19 @@
     }
 
     const updateDimensions = (): void => {
-      dimensions = {
-        width: wrapper.offsetWidth,
-        height: wrapper.offsetHeight,
-        tearLineY: topSectionNode.offsetHeight,
-      };
+      const w = wrapper.offsetWidth;
+      const h = wrapper.offsetHeight;
+      const t = topSectionNode.offsetHeight;
+
+      if (
+        dimensions.width === w &&
+        dimensions.height === h &&
+        dimensions.tearLineY === t
+      ) {
+        return;
+      }
+
+      dimensions = { width: w, height: h, tearLineY: t };
     };
 
     updateDimensions();

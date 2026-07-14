@@ -98,11 +98,6 @@ type CardTicketSurfaceProps = {
   top: React.ReactNode;
   bottom: React.ReactNode;
   /**
-   * The tear line marker (`CardTearLine`) used only to split the content; the perforation itself
-   * is drawn by this surface.
-   */
-  tearLine: React.ReactNode;
-  /**
    * Interactive overlay (link/button) that spans the whole ticket.
    */
   children?: React.ReactNode;
@@ -115,7 +110,6 @@ type CardTicketSurfaceProps = {
 const CardTicketSurface = ({
   top,
   bottom,
-  tearLine,
   children,
   isSelected,
   isDisabled,
@@ -189,7 +183,6 @@ const CardTicketSurface = ({
         >
           {top}
         </TicketSection>
-        {tearLine}
         <TicketSection
           position="bottom"
           paddingTop="spacing.4"
