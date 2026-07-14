@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import type { DefaultTheme } from 'styled-components';
 import type { FeedbackColors } from '~tokens/theme/theme';
+import { sliderTokens } from './sliderTokens';
 
 type SliderTrackStyleProps = {
   $color: FeedbackColors;
@@ -78,11 +79,11 @@ const TrackLine = styled.div<SliderTrackStyleProps>(
       : theme.colors.surface.background.gray.intense,
     borderRadius: theme.border.radius.max,
     height: $trackHeight,
-    left: 22,
+    left: sliderTokens.interactionTarget / 2,
     overflow: 'visible',
     pointerEvents: 'none',
     position: 'absolute',
-    right: 22,
+    right: sliderTokens.interactionTarget / 2,
     top: ($hasThumbValue ? 24 : 0) + (44 - $trackHeight) / 2,
   }),
 );
@@ -176,18 +177,18 @@ const MarkDot = styled.span<Pick<SliderTrackStyleProps, '$isDisabled'>>(
   }),
 );
 
-const MarkLabel = styled.span(({ theme }) => ({
+const MarkLabel = styled.span<{ $trackHeight: number }>(({ theme, $trackHeight }) => ({
   color: theme.colors.surface.text.gray.muted,
   fontFamily: theme.typography.fonts.family.text,
   fontSize: theme.typography.fonts.size[75],
   lineHeight: `${theme.typography.lineHeights[75]}px`,
   position: 'absolute',
-  top: 10,
+  top: $trackHeight / 2 + 8,
   transform: 'translateX(-50%)',
   whiteSpace: 'nowrap',
 }));
 
-const ThumbValueLabel = styled.span<{ $hasThumbValue: boolean }>(({ theme }) => ({
+const ThumbValueLabel = styled.span(({ theme }) => ({
   backgroundColor: theme.colors.popup.background.gray.intense,
   borderRadius: theme.border.radius.small,
   color: theme.colors.surface.text.staticWhite.normal,

@@ -29,15 +29,17 @@ type SliderControlsProps = {
   inputId: string;
   isDisabled: boolean;
   label?: string;
+  labelId?: string;
   max: number;
   min: number;
   name?: string;
   onCommit: () => void;
   onInputChange: (index: 0 | 1) => React.ChangeEventHandler<HTMLInputElement>;
   onInputKeyDown: (index: 0 | 1) => React.KeyboardEventHandler<HTMLInputElement>;
+  onThumbPointerDown: (index: 0 | 1) => void;
+  onThumbPointerUp: () => void;
   onTrackPointerDown: React.PointerEventHandler<HTMLDivElement>;
   rangeValue: SliderRangeValue;
-  setActiveThumb: React.Dispatch<React.SetStateAction<0 | 1>>;
   showThumbValue: boolean;
   size: SliderSize;
   startInputRef: React.Ref<HTMLInputElement>;
@@ -61,15 +63,17 @@ const SliderControls = ({
   inputId,
   isDisabled,
   label,
+  labelId,
   max,
   min,
   name,
   onCommit,
   onInputChange,
   onInputKeyDown,
+  onThumbPointerDown,
+  onThumbPointerUp,
   onTrackPointerDown,
   rangeValue,
-  setActiveThumb,
   showThumbValue,
   size,
   startInputRef,
@@ -107,11 +111,19 @@ const SliderControls = ({
     const baseLabel = accessibilityLabel ?? label;
     return baseLabel ? `${baseLabel} ${index === 0 ? 'minimum' : 'maximum'}` : undefined;
   };
-  const getThumbPosition = (percent: number): string =>
-    `calc(${percent}% + ${22 - 0.44 * percent}px)`;
+  const getThumbPosition = (percent: number): string => {
+    const offset = sliderTokens.interactionTarget / 2;
+    const slope = sliderTokens.interactionTarget / 100;
+    return `calc(${percent}% + ${offset - slope * percent}px)`;
+  };
 
   return (
-    <StyledTrackArea {...trackStyleProps} onPointerDown={onTrackPointerDown}>
+    <StyledTrackArea
+      {...trackStyleProps}
+      onPointerDown={onTrackPointerDown}
+      role={variant === 'range' ? 'group' : undefined}
+      aria-labelledby={variant === 'range' ? labelId : undefined}
+    >
       <TrackLine {...trackStyleProps} ref={trackRef}>
         <TrackFill
           $color={color}
@@ -125,7 +137,9 @@ const SliderControls = ({
             <React.Fragment key={`${mark.value}-${mark.label ?? ''}`}>
               <MarkDot $isDisabled={isDisabled} style={{ left: `${markPercent}%` }} />
               {mark.label ? (
-                <MarkLabel style={{ left: `${markPercent}%` }}>{mark.label}</MarkLabel>
+                <MarkLabel $trackHeight={tokens.track} style={{ left: `${markPercent}%` }}>
+                  {mark.label}
+                </MarkLabel>
               ) : null}
             </React.Fragment>
           );
@@ -133,12 +147,12 @@ const SliderControls = ({
       </TrackLine>
 
       {showThumbValue && variant === 'range' ? (
-        <ThumbValueLabel $hasThumbValue style={{ left: getThumbPosition(startPercent) }}>
+        <ThumbValueLabel aria-hidden style={{ left: getThumbPosition(startPercent) }}>
           {valueFormatter(rangeValue[0])}
         </ThumbValueLabel>
       ) : null}
       {showThumbValue ? (
-        <ThumbValueLabel $hasThumbValue style={{ left: getThumbPosition(endPercent) }}>
+        <ThumbValueLabel aria-hidden style={{ left: getThumbPosition(endPercent) }}>
           {valueFormatter(endValue)}
         </ThumbValueLabel>
       ) : null}
@@ -159,8 +173,8 @@ const SliderControls = ({
         onChange={onInputChange(0)}
         onKeyDown={onInputKeyDown(0)}
         onKeyUp={(event) => sliderKeyboardKeys.has(event.key) && onCommit()}
-        onPointerDown={() => setActiveThumb(0)}
-        onPointerUp={onCommit}
+        onPointerDown={() => onThumbPointerDown(0)}
+        onPointerUp={onThumbPointerUp}
         ref={startInputRef}
         value={variant === 'range' ? rangeValue[0] : endValue}
       />
@@ -181,8 +195,8 @@ const SliderControls = ({
           onChange={onInputChange(1)}
           onKeyDown={onInputKeyDown(1)}
           onKeyUp={(event) => sliderKeyboardKeys.has(event.key) && onCommit()}
-          onPointerDown={() => setActiveThumb(1)}
-          onPointerUp={onCommit}
+          onPointerDown={() => onThumbPointerDown(1)}
+          onPointerUp={onThumbPointerUp}
           ref={endInputRef}
           value={rangeValue[1]}
         />

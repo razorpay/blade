@@ -5,4 +5,6 @@ export type {
   SliderProps,
   SliderRangeValue,
   SliderValue,
+  SingleSliderProps,
+  RangeSliderProps,
 } from './types';

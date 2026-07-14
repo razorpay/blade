@@ -36,7 +36,7 @@ type SliderCommonProps = {
   min?: number;
   /** @default 100 */
   max?: number;
-  /** @default 1 */
+  /** Must be a positive number. @default 1 */
   step?: number;
   /** @default 'medium' */
   size?: 'small' | 'medium' | 'large';
@@ -44,21 +44,25 @@ type SliderCommonProps = {
   color?: FeedbackColors;
   /** Shows the current value beside the label. @default true */
   showValue?: boolean;
-  /** Overrides the value shown beside the label. */
+  /** Overrides the value shown beside the label. Takes precedence over `valueFormatter`. */
   valueText?: string;
   /** Shows the current value above each thumb. @default false */
   showThumbValue?: boolean;
-  /** Formats generated value labels and aria-valuetext. */
+  /**
+   * Formats generated value labels and aria-valuetext.
+   * Overridden by `valueText` for the visible label beside the slider.
+   * Also used for `minLabel` and `maxLabel` unless those props are provided.
+   */
   valueFormatter?: (value: number) => string;
   /** Shows step marks or the marks supplied through `marks`. @default false */
   showMarks?: boolean;
-  /** Custom marks. When omitted, up to 20 step marks are generated. */
+  /** Custom marks. When omitted, up to 20 step marks are generated. Requires `showMarks` to be `true` to render. */
   marks?: SliderMark[];
   /** Shows the minimum and maximum labels below the track. @default false */
   showMinMax?: boolean;
-  /** Overrides the generated minimum label. */
+  /** Overrides the generated minimum label. Takes precedence over `valueFormatter`. */
   minLabel?: string;
-  /** Overrides the generated maximum label. */
+  /** Overrides the generated maximum label. Takes precedence over `valueFormatter`. */
   maxLabel?: string;
   /** Helpful guidance shown below the slider. */
   helpText?: string;
@@ -96,4 +100,12 @@ type RangeSliderProps = {
 
 type SliderProps = SliderLabelProps & SliderCommonProps & (SingleSliderProps | RangeSliderProps);
 
-export type { SliderChangeHandler, SliderMark, SliderProps, SliderRangeValue, SliderValue };
+export type {
+  SliderChangeHandler,
+  SliderMark,
+  SliderProps,
+  SliderRangeValue,
+  SliderValue,
+  SingleSliderProps,
+  RangeSliderProps,
+};

@@ -40,9 +40,16 @@ const getGeneratedMarks = (min: number, max: number, step: number): SliderMark[]
   const stepCount = Math.floor((max - min) / step);
   if (stepCount > sliderTokens.maxGeneratedMarks) return [];
 
-  return Array.from({ length: stepCount + 1 }, (_, index) => ({
+  const marks: SliderMark[] = Array.from({ length: stepCount + 1 }, (_, index) => ({
     value: snapValue(min + index * step, min, max, step),
   }));
+
+  const lastMark = marks[marks.length - 1];
+  if (lastMark && lastMark.value !== max) {
+    marks.push({ value: max });
+  }
+
+  return marks;
 };
 
 const isSameValue = (previous: SliderValue, next: SliderValue): boolean => {

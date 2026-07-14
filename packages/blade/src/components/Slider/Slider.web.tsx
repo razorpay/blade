@@ -62,13 +62,18 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     throwBladeError({ message: '`step` must be greater than zero.', moduleName: 'Slider' });
   }
 
-  const fallbackValue: SliderValue = variant === 'range' ? [min, max] : min;
-  const initialValue = normalizeValue(
-    (defaultValue as SliderValue | undefined) ?? fallbackValue,
-    variant,
-    min,
-    max,
-    step,
+  const initialValue = React.useMemo(
+    () =>
+      normalizeValue(
+        (defaultValue as SliderValue | undefined) ??
+          (variant === 'range' ? [min, max] : min),
+        variant,
+        min,
+        max,
+        step,
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
   const onChangeValue = onChange as
     | ((args: { name?: string; value: SliderValue }) => void)
@@ -84,24 +89,33 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   });
   const currentValue = normalizeValue(controllableValue, variant, min, max, step);
   const latestValueRef = React.useRef(currentValue);
-  latestValueRef.current = currentValue;
 
   const { inputId, errorTextId, helpTextId, labelId } = useFormId('slider');
   const startInputRef = React.useRef<HTMLInputElement>(null);
   const endInputRef = React.useRef<HTMLInputElement>(null);
   const trackRef = React.useRef<HTMLDivElement>(null);
+  const pointerStartedOnThumbRef = React.useRef(false);
   const [activeThumb, setActiveThumb] = React.useState<0 | 1>(0);
   const hasError = validationState === 'error';
-  const rangeValue: SliderRangeValue =
-    typeof currentValue === 'number' ? [min, currentValue] : currentValue;
+  const rangeValue: SliderRangeValue = React.useMemo(
+    () => (typeof currentValue === 'number' ? [min, currentValue] : currentValue),
+    [currentValue, min],
+  );
   const startValue = variant === 'range' ? rangeValue[0] : min;
   const endValue = typeof currentValue === 'number' ? currentValue : rangeValue[1];
   const startPercent = getPercent(startValue, min, max);
   const endPercent = getPercent(endValue, min, max);
-  const generatedMarks = marks ?? getGeneratedMarks(min, max, step);
-  const visibleMarks = showMarks
-    ? generatedMarks.filter((mark) => mark.value >= min && mark.value <= max)
-    : [];
+  const generatedMarks = React.useMemo(
+    () => marks ?? getGeneratedMarks(min, max, step),
+    [marks, min, max, step],
+  );
+  const visibleMarks = React.useMemo(
+    () =>
+      showMarks
+        ? generatedMarks.filter((mark) => mark.value >= min && mark.value <= max)
+        : [],
+    [generatedMarks, min, max, showMarks],
+  );
   const describedBy = hasError && errorText ? errorTextId : helpText ? helpTextId : undefined;
   const displayValue =
     valueText ??
@@ -123,39 +137,49 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     onChangeEndValue?.({ name, value: latestValueRef.current });
   }, [name, onChangeEndValue]);
 
-  const updateThumbValue = (index: 0 | 1, nextValue: number): void => {
-    const next = snapValue(nextValue, min, max, step);
-    if (variant === 'single') {
-      updateValue(next);
-      return;
-    }
+  const updateThumbValue = React.useCallback(
+    (index: 0 | 1, nextValue: number): void => {
+      const next = snapValue(nextValue, min, max, step);
+      if (variant === 'single') {
+        updateValue(next);
+        return;
+      }
 
-    updateValue(
-      index === 0
-        ? [Math.min(next, rangeValue[1]), rangeValue[1]]
-        : [rangeValue[0], Math.max(next, rangeValue[0])],
-    );
-  };
+      updateValue(
+        index === 0
+          ? [Math.min(next, rangeValue[1]), rangeValue[1]]
+          : [rangeValue[0], Math.max(next, rangeValue[0])],
+      );
+    },
+    [max, min, rangeValue, step, updateValue, variant],
+  );
 
-  const handleInputChange = (index: 0 | 1) => (event: React.ChangeEvent<HTMLInputElement>) =>
-    updateThumbValue(index, Number(event.currentTarget.value));
+  const handleInputChange = React.useCallback(
+    (index: 0 | 1) => (event: React.ChangeEvent<HTMLInputElement>) =>
+      updateThumbValue(index, Number(event.currentTarget.value)),
+    [updateThumbValue],
+  );
 
-  const handleInputKeyDown = (index: 0 | 1) => (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!sliderKeyboardKeys.has(event.key)) return;
-    const next = getKeyboardValue({
-      current: Number(event.currentTarget.value),
-      inputMax: Number(event.currentTarget.max),
-      inputMin: Number(event.currentTarget.min),
-      key: event.key,
-      step,
-    });
-    if (next === undefined) return;
-    event.preventDefault();
-    updateThumbValue(index, next);
-  };
+  const handleInputKeyDown = React.useCallback(
+    (index: 0 | 1) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (!sliderKeyboardKeys.has(event.key)) return;
+      const next = getKeyboardValue({
+        current: Number(event.currentTarget.value),
+        inputMax: Number(event.currentTarget.max),
+        inputMin: Number(event.currentTarget.min),
+        key: event.key,
+        step,
+      });
+      if (next === undefined) return;
+      event.preventDefault();
+      updateThumbValue(index, next);
+    },
+    [step, updateThumbValue],
+  );
 
   const handleTrackPointerDown = (event: React.PointerEvent<HTMLDivElement>): void => {
     if (isDisabled || event.target !== event.currentTarget || !trackRef.current) return;
+    pointerStartedOnThumbRef.current = false;
     const bounds = trackRef.current.getBoundingClientRect();
     const ratio = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
     const next = snapValue(min + ratio * (max - min), min, max, step);
@@ -175,6 +199,20 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     }
     commitValue();
   };
+
+  const handleThumbPointerDown = React.useCallback(
+    (index: 0 | 1) => {
+      pointerStartedOnThumbRef.current = true;
+      setActiveThumb(index);
+    },
+    [],
+  );
+
+  const handleThumbPointerUp = React.useCallback(() => {
+    if (pointerStartedOnThumbRef.current) {
+      commitValue();
+    }
+  }, [commitValue]);
 
   return (
     <BaseBox
@@ -207,15 +245,17 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
         inputId={inputId}
         isDisabled={isDisabled}
         label={label}
+        labelId={labelId}
         max={max}
         min={min}
         name={name}
         onCommit={commitValue}
         onInputChange={handleInputChange}
         onInputKeyDown={handleInputKeyDown}
+        onThumbPointerDown={handleThumbPointerDown}
+        onThumbPointerUp={handleThumbPointerUp}
         onTrackPointerDown={handleTrackPointerDown}
         rangeValue={rangeValue}
-        setActiveThumb={setActiveThumb}
         showThumbValue={showThumbValue}
         size={size}
         startInputRef={mergeRefs(getInnerMotionRef({ _motionMeta, ref }), startInputRef)}
