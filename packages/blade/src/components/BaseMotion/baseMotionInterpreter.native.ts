@@ -172,20 +172,14 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
 /**
  * Converts a framer `transition` (seconds + bezier array) into reanimated `withTiming` config.
  */
-const getTiming = (transition?: Tween) => {
+const getTiming = (transition?: Tween): { duration: number; easing: (t: number) => number } => {
   const durationSec =
     typeof transition?.duration === 'number' ? transition.duration : DEFAULT_DURATION_SEC;
-  const ease = transition?.ease as unknown;
-  const isBezierArray =
-    Array.isArray(ease) && ease.length === 4 && ease.every((value) => typeof value === 'number');
-  const easing = isBezierArray
-    ? Easing.bezier(
-        (ease as number[])[0],
-        (ease as number[])[1],
-        (ease as number[])[2],
-        (ease as number[])[3],
-      )
-    : Easing.ease;
+  const ease = transition?.ease;
+  const easing =
+    Array.isArray(ease) && ease.length === 4 && ease.every((v) => typeof v === 'number')
+      ? Easing.bezier(ease[0], ease[1], ease[2], ease[3])
+      : Easing.ease;
 
   return { duration: durationSec * 1000, easing };
 };
@@ -298,7 +292,7 @@ const useAnimatedVariant = ({
   }, [targetName]);
 
   return useAnimatedStyle(() =>
-    interpolateVariant(fromStyle.value, toStyle.value, progress.value),
+    interpolateVariant(fromStyle.value, toStyle.value, progress.value)
   );
 };
 
