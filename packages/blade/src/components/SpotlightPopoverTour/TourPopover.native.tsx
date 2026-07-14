@@ -26,6 +26,7 @@ const FORCE_REVEAL_MS = 120;
 
 type TourPopoverProps = Omit<PopoverProps, 'children' | 'initialFocusRef'> & {
   attachTo: React.RefObject<TourElement> | undefined;
+  isTransitioning?: boolean;
 };
 
 type PositionCoords = {
