@@ -30,9 +30,10 @@ exports[`<ChartAreaWrapper /> (native) renders a horizontal reference line (y) 1
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -75,9 +76,10 @@ exports[`<ChartAreaWrapper /> (native) renders a single area chart 1`] = `
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -223,9 +225,10 @@ exports[`<ChartAreaWrapper /> (native) renders a vertical reference line (x) 1`]
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -268,9 +271,10 @@ exports[`<ChartAreaWrapper /> (native) renders stacked areas 1`] = `
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,

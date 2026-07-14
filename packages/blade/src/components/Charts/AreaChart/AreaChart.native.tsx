@@ -505,7 +505,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   };
 
   const visibleAreas = useMemo(
-    () => allAreas.filter((area) => selectedKeys.includes(area.dataKey)),
+    () => allAreas.filter((area) => !area.hide && selectedKeys.includes(area.dataKey)),
     [allAreas, selectedKeys],
   );
 
@@ -637,16 +637,28 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     return geometries;
   }, [stackGroups, data, count, plotWidth, plotHeight, yMax, dataColorMapping, theme.colors]);
 
-  // Fire the recharts-style left→right clip reveal on mount and whenever the
-  // data or the visible-series set changes (recharts re-animates on data change).
+  // Fire the recharts-style left→right clip reveal when data/series change, and
+  // once plotWidth is known after layout. Skip re-animating on pure resize.
   const revealProgress = useSharedValue(0);
-  const hasAnimatedRef = useRef(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- revealProgress and theme.motion are stable refs; plotWidth intentionally excluded to avoid re-animating on resize
+  const lastRevealKeyRef = useRef<string | undefined>(undefined);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- revealProgress and theme.motion are stable refs
   useEffect(() => {
-    if (hasAnimatedRef.current) {
+    if (count === 0 || plotWidth <= 0) {
+      // Allow a fresh reveal after empty → loaded (or before first layout).
+      if (count === 0) {
+        lastRevealKeyRef.current = undefined;
+      }
+      return;
+    }
+
+    const revealKey = `${count}:${visibleAreas.length}`;
+    if (lastRevealKeyRef.current === revealKey) {
+      // Same data set; plotWidth may have changed via resize — stay fully revealed.
       revealProgress.value = 1;
       return;
     }
+
+    lastRevealKeyRef.current = revealKey;
     revealProgress.value = 0;
     revealProgress.value = withDelay(
       getIn(theme.motion, 'delay.gentle'),
@@ -655,8 +667,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         easing: getIn(theme.motion, 'easing.entrance'),
       }),
     );
-    hasAnimatedRef.current = true;
-  }, [count, visibleAreas.length]);
+  }, [count, visibleAreas.length, plotWidth]);
 
   const clipAnimatedProps = useAnimatedProps(() => ({
     width: revealProgress.value * plotWidth,
@@ -671,30 +682,35 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     return Math.min(count - 1, Math.max(0, idx));
   };
 
-  // Selection persists after the finger lifts (parity with DonutChart): a tap on
-  // the already-active point toggles it off, a tap/scrub elsewhere moves it, and a
-  // drag scrubs. `onResponderRelease` decides between "toggle off" and "keep".
+  // Touch model:
+  // - Do NOT claim responder on touch start, so parent ScrollViews can keep vertical scroll.
+  // - Claim on move only after a clearly horizontal scrub past SCRUB_MOVE_THRESHOLD.
+  // - Taps are handled via onTouchEnd (never become responder) — show/toggle tooltip.
   const touchStartActiveRef = React.useRef<number | undefined>(undefined);
   const touchStartIndexRef = React.useRef<number | undefined>(undefined);
   const touchMovedRef = React.useRef(false);
-
-  // Track the initial touch location so onMoveShouldSetResponder can apply a
-  // horizontal movement threshold — this lets a parent ScrollView reclaim the
-  // gesture for vertical scrolling when the user drags mostly vertically.
+  const becameResponderRef = React.useRef(false);
   const touchStartLocationRef = React.useRef<{ x: number; y: number } | undefined>(undefined);
   const SCRUB_MOVE_THRESHOLD = 8;
 
-  const handleScrubStart = (e: GestureResponderEvent): void => {
+  const handleTouchStart = (e: GestureResponderEvent): void => {
     if (count === 0) return;
     const next = indexAtX(e.nativeEvent.locationX);
     touchStartActiveRef.current = activeIndex;
     touchStartIndexRef.current = next;
     touchMovedRef.current = false;
+    becameResponderRef.current = false;
     touchStartLocationRef.current = {
       x: e.nativeEvent.locationX,
       y: e.nativeEvent.locationY,
     };
-    setActiveIndex(next);
+  };
+
+  const handleScrubGrant = (e: GestureResponderEvent): void => {
+    if (count === 0) return;
+    becameResponderRef.current = true;
+    touchMovedRef.current = true;
+    setActiveIndex(indexAtX(e.nativeEvent.locationX));
   };
 
   const handleScrubMove = (e: GestureResponderEvent): void => {
@@ -703,16 +719,21 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     setActiveIndex(indexAtX(e.nativeEvent.locationX));
   };
 
-  const handleScrubEnd = (): void => {
-    // Tap (no drag) on the point that was already active → toggle off; otherwise
-    // leave the selection in place so the tooltip stays.
-    if (!touchMovedRef.current && touchStartActiveRef.current === touchStartIndexRef.current) {
+  const handleTouchEnd = (): void => {
+    // Scrub path already updated selection via responder handlers — leave it.
+    if (becameResponderRef.current || touchMovedRef.current) return;
+    if (count === 0) return;
+    // Tap: toggle off if re-tapping the already-active index, otherwise select.
+    if (touchStartActiveRef.current === touchStartIndexRef.current) {
       setActiveIndex(undefined);
+    } else {
+      setActiveIndex(touchStartIndexRef.current);
     }
   };
 
   const handleScrubTerminate = (): void => {
     touchMovedRef.current = false;
+    becameResponderRef.current = false;
   };
 
   const activeRow = activeIndex !== undefined ? data[activeIndex] : undefined;
@@ -809,19 +830,23 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
           testID={testID ? `${testID}-scrub-surface` : 'chart-area-scrub-surface'}
           style={{ flex: 1, width: '100%' }}
           onLayout={onLayout}
-          onStartShouldSetResponder={() => count > 0}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          // Intentionally omit onStartShouldSetResponder (same as returning false): claiming
+          // on start blocks parent ScrollViews. Capture horizontal scrubs on move instead.
+          // Do not set `() => false` — @testing-library/react-native treats that as "events
+          // disabled" and fireEvent('layout') would no-op in unit tests.
           onMoveShouldSetResponder={(e) => {
             if (count === 0) return false;
             const start = touchStartLocationRef.current;
-            if (!start) return true;
-            if (!e?.nativeEvent) return true;
+            if (!start || !e?.nativeEvent) return false;
             const dx = Math.abs(e.nativeEvent.locationX - start.x);
             const dy = Math.abs(e.nativeEvent.locationY - start.y);
             return dx >= SCRUB_MOVE_THRESHOLD && dx > dy;
           }}
-          onResponderGrant={handleScrubStart}
+          onResponderGrant={handleScrubGrant}
           onResponderMove={handleScrubMove}
-          onResponderRelease={handleScrubEnd}
+          onResponderTerminationRequest={() => true}
           onResponderTerminate={handleScrubTerminate}
         >
           {data.length === 0 ? (

@@ -180,6 +180,46 @@ describe('<ChartAreaWrapper /> (native)', () => {
     expect(queryByText('Team B')).toBeTruthy();
   });
 
+  it('does not plot a series with hide, but still shows it in the legend when showLegend is true', () => {
+    const Path = require('react-native-svg').Path;
+
+    const hidden = renderWithTheme(
+      <ChartAreaWrapper data={sampleData} testID="hidden">
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartArea dataKey="teamA" name="Team A" />
+        <ChartArea dataKey="teamB" name="Team B" hide />
+        <ChartLegend />
+      </ChartAreaWrapper>,
+    );
+
+    fireEvent(hidden.getByTestId('hidden-scrub-surface'), 'layout', {
+      nativeEvent: { layout: { width: 400, height: 300, x: 0, y: 0 } },
+    });
+
+    // Legend still lists the hidden series (showLegend defaults to true).
+    expect(hidden.getByText('Team A')).toBeTruthy();
+    expect(hidden.getByText('Team B')).toBeTruthy();
+
+    const visible = renderWithTheme(
+      <ChartAreaWrapper data={sampleData} testID="visible">
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis />
+        <ChartArea dataKey="teamA" name="Team A" />
+        <ChartArea dataKey="teamB" name="Team B" />
+      </ChartAreaWrapper>,
+    );
+    fireEvent(visible.getByTestId('visible-scrub-surface'), 'layout', {
+      nativeEvent: { layout: { width: 400, height: 300, x: 0, y: 0 } },
+    });
+
+    // eslint-disable-next-line babel/new-cap -- testing-library UNSAFE_* helper
+    expect(hidden.UNSAFE_queryAllByType(Path).length).toBeLessThan(
+      // eslint-disable-next-line babel/new-cap
+      visible.UNSAFE_queryAllByType(Path).length,
+    );
+  });
+
   it('shows a tooltip on tap, keeps it after release, and toggles it off on re-tap', () => {
     const { getByTestId, queryByText } = renderWithTheme(
       <ChartAreaWrapper data={sampleData}>
@@ -201,16 +241,15 @@ describe('<ChartAreaWrapper /> (native)', () => {
     expect(queryByText('3000')).toBeFalsy();
 
     // Tap near the second data point (Feb) — locationX maps to index 1.
-    fireEvent(surface, 'responderGrant', { nativeEvent: { locationX: 155, locationY: 100 } });
-    expect(queryByText('3000')).toBeTruthy();
-
-    // Releasing the touch KEEPS the tooltip (tap-to-stay, DonutChart parity).
-    fireEvent(surface, 'responderRelease', { nativeEvent: { locationX: 155, locationY: 100 } });
+    // Taps use touchStart/touchEnd (chart does not claim responder on start,
+    // so parent ScrollViews can still scroll vertically).
+    fireEvent(surface, 'touchStart', { nativeEvent: { locationX: 155, locationY: 100 } });
+    fireEvent(surface, 'touchEnd', { nativeEvent: { locationX: 155, locationY: 100 } });
     expect(queryByText('3000')).toBeTruthy();
 
     // Tapping the same point again toggles the selection (and tooltip) off.
-    fireEvent(surface, 'responderGrant', { nativeEvent: { locationX: 155, locationY: 100 } });
-    fireEvent(surface, 'responderRelease', { nativeEvent: { locationX: 155, locationY: 100 } });
+    fireEvent(surface, 'touchStart', { nativeEvent: { locationX: 155, locationY: 100 } });
+    fireEvent(surface, 'touchEnd', { nativeEvent: { locationX: 155, locationY: 100 } });
     expect(queryByText('3000')).toBeFalsy();
   });
 });
