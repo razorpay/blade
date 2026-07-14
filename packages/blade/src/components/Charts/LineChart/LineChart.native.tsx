@@ -971,7 +971,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     }
 
                     // Horizontal (numeric y).
-                    if (refLine.y === undefined || refLine.y > yMax || refLine.y < yMin) return null;
+                    if (refLine.y === undefined || refLine.y > yMax || refLine.y < yMin)
+                      return null;
                     const y = plotHeight - ((refLine.y - yMin) / yDomain) * plotHeight;
                     return (
                       <G key={`refline-${idx}`}>
