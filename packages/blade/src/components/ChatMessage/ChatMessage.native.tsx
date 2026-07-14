@@ -31,7 +31,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
     thumbnails,
     onThumbnailClick,
     reasoningTraces,
-    reasoningStatus,
+    reasoningStatus = 'loading',
     reasoningTitle,
     reasoningActiveStepIndex,
     ...props
@@ -43,7 +43,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   const shouldWrapInText =
     typeof children === 'string' ||
     (Array.isArray(children) && children.every((child) => typeof child === 'string')) ||
-    isLoading;
+    (isLoading && !!loadingText);
 
   const loadingContent =
     isLoading && Array.isArray(loadingText) ? <RollingText texts={loadingText} /> : loadingText;
@@ -93,7 +93,12 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
   const imagePreviewAlignment = senderType === 'self' ? 'flex-end' : 'flex-start';
 
   const messageContent = (
-    <BaseBox ref={ref as never} display="flex" flexDirection="column" gap="spacing.3">
+    <BaseBox
+      ref={onClick ? undefined : (ref as never)}
+      display="flex"
+      flexDirection="column"
+      gap="spacing.3"
+    >
       {thumbnails && thumbnails.length > 0 ? (
         <BaseBox alignSelf={imagePreviewAlignment}>
           <ThumbnailPreview thumbnails={thumbnails} onThumbnailClick={onThumbnailClick} />
@@ -112,7 +117,7 @@ const _ChatMessage: React.ForwardRefRenderFunction<BladeElementRef, ChatMessageP
 
   if (onClick) {
     return (
-      <Pressable accessibilityRole="button" onPress={onClick}>
+      <Pressable ref={ref as never} accessibilityRole="button" onPress={onClick}>
         {messageContent}
       </Pressable>
     );
