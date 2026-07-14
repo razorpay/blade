@@ -26,7 +26,9 @@ import {
   CHIP_MAX_WIDTH,
   CHIP_VALUE_BUDGET,
   NODE_MIN_HEIGHT,
+  TOOLTIP_Z_INDEX,
 } from './tokens';
+import { humanizeIndian } from './humanizeIndian';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -37,6 +39,10 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
 import { castNativeType } from '~utils/platform/castUtils';
+
+// Module-level empty data default — avoids creating a new object on every render
+// when sankeyChild is undefined, which would invalidate useMemo deps.
+const EMPTY_DATA = { nodes: [] as SankeyDataNode[], links: [] as SankeyDataLink[] };
 
 // ─── Animated SVG shapes ──────────────────────────────────────────────────────
 // react-native-svg primitives wrapped so react-native-reanimated can drive their
@@ -52,6 +58,13 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 // This is far closer than a single uniform factor; it ignores kerning pairs and
 // sub-pixel hinting (a few px on long strings) which is imperceptible for chip
 // sizing / wrap decisions.
+//
+// NOTE: This table is specific to the Inter font family. Blade's default
+// `theme.typography.fonts.family.text` is Inter, but if the theme is customized
+// to use a different font family, text measurement will be systematically wrong.
+// If a non-Inter font is required, the advance table should be replaced or made
+// configurable. For now, this component assumes Inter (matching the web version
+// which also hardcodes Inter metrics in calculateTextWidth).
 const INTER_ADVANCE: Record<string, number> = {
   a: 0.55,
   b: 0.57,
@@ -128,6 +141,28 @@ const INTER_ADVANCE: Record<string, number> = {
   '+': 0.57,
   '₹': 0.57,
   '→': 0.9,
+  '!': 0.33,
+  '@': 1.0,
+  '#': 0.57,
+  '$': 0.57,
+  '^': 0.47,
+  '&': 0.69,
+  '*': 0.42,
+  '_': 0.5,
+  '=': 0.57,
+  '[': 0.34,
+  ']': 0.34,
+  '{': 0.37,
+  '}': 0.37,
+  '|': 0.28,
+  '\\': 0.28,
+  '"': 0.39,
+  "'": 0.22,
+  '<': 0.57,
+  '>': 0.57,
+  '?': 0.55,
+  '~': 0.57,
+  '`': 0.34,
 };
 const INTER_DEFAULT_ADVANCE = 0.55;
 // CJK ideographs and emoji are significantly wider than Latin glyphs.
@@ -159,24 +194,6 @@ const estimateTextWidth = (text: string, fontSize: number, weight: number): numb
     em += charAdvance(ch);
   }
   return em * fontSize * factor;
-};
-
-// ─── Indian number humanizer (private default for formatValue) ────────────────
-// Truncates (never rounds up) to avoid overstating values. Ported verbatim from web.
-const humanizeIndian = (value: number): string => {
-  if (value >= 1_00_00_000) {
-    const v = Math.floor((value / 1_00_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}Cr`;
-  }
-  if (value >= 1_00_000) {
-    const v = Math.floor((value / 1_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}L`;
-  }
-  if (value >= 1_000) {
-    const v = Math.floor((value / 1_000) * 10) / 10;
-    return `${parseFloat(v.toFixed(1))}k`;
-  }
-  return String(value);
 };
 
 // ─── Sankey layout (reimplements recharts <Sankey>) ────────────────────────────
@@ -297,7 +314,7 @@ const computeSankeyLayout = ({
   if (!Number.isFinite(ky) || ky < 0) ky = 0;
 
   // 5. Node rects — stack within a column, then center the block vertically.
-  const xStep = maxDepth > 0 ? (plotWidth - nodeWidth) / maxDepth : 0;
+  const xStep = maxDepth > 0 ? Math.max(0, (plotWidth - nodeWidth) / maxDepth) : 0;
   const nodeLayouts = new Array<NodeLayout>(nodeCount);
   columns.forEach((col, depth) => {
     const heights = col.map((i) => Math.max(NODE_MIN_HEIGHT, nodeValue[i] * ky));
@@ -321,10 +338,12 @@ const computeSankeyLayout = ({
   // 6. Link ribbons — cumulative per-node offsets, bezier path identical to web.
   const sourceOffset = new Array<number>(nodeCount).fill(0);
   const targetOffset = new Array<number>(nodeCount).fill(0);
-  const linkLayouts = links.map((l) => {
-    const s = nodeLayouts[l.source];
-    const t = nodeLayouts[l.target];
-    const linkWidth = Math.max(0, l.value) * ky;
+  const linkLayouts = links
+    .map((l) => {
+      const s = nodeLayouts[l.source];
+      const t = nodeLayouts[l.target];
+      if (!s || !t) return null;
+      const linkWidth = Math.max(0, l.value) * ky;
     const sourceY = s.y + sourceOffset[l.source] + linkWidth / 2;
     const targetY = t.y + targetOffset[l.target] + linkWidth / 2;
     sourceOffset[l.source] += linkWidth;
@@ -351,7 +370,8 @@ const computeSankeyLayout = ({
       targetY,
       thickness: linkWidth,
     };
-  });
+    })
+    .filter((link): link is LinkLayout => link !== null);
 
   return { nodeLayouts, linkLayouts, countPerDepth };
 };
@@ -406,6 +426,8 @@ type SankeyNodeShapeProps = {
   width: number;
   height: number;
   fill: string;
+  duration: number;
+  easing: EasingFn;
   accessibilityLabel?: string;
   children?: React.ReactNode;
 };
@@ -417,15 +439,19 @@ const SankeyNodeShape = ({
   width,
   height,
   fill,
+  duration,
+  easing,
   accessibilityLabel,
   children,
 }: SankeyNodeShapeProps): React.ReactElement => {
-  const { theme } = useTheme();
   const opacity = useSharedValue(targetOpacity);
-  const duration = theme.motion.duration.quick;
-  const easing = (castNativeType(theme.motion.easing.standard) as unknown) as EasingFn;
+  const isFirstRender = React.useRef(true);
 
   React.useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     opacity.value = withTiming(targetOpacity, { duration, easing });
     // opacity is a reanimated SharedValue (ref-like, stable identity) — intentionally omitted from deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -445,6 +471,8 @@ type SankeyLinkShapeProps = {
   targetOpacity: number;
   d: string;
   fill: string;
+  duration: number;
+  easing: EasingFn;
   accessibilityLabel?: string;
 };
 
@@ -452,14 +480,18 @@ const SankeyLinkShape = ({
   targetOpacity,
   d,
   fill,
+  duration,
+  easing,
   accessibilityLabel,
 }: SankeyLinkShapeProps): React.ReactElement => {
-  const { theme } = useTheme();
   const fillOpacity = useSharedValue(targetOpacity);
-  const duration = theme.motion.duration.quick;
-  const easing = (castNativeType(theme.motion.easing.standard) as unknown) as EasingFn;
+  const isFirstRender = React.useRef(true);
 
   React.useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     fillOpacity.value = withTiming(targetOpacity, { duration, easing });
     // fillOpacity is a reanimated SharedValue (ref-like, stable identity) — intentionally omitted from deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -684,7 +716,7 @@ const _ChartSankeyWrapper = ({
   );
 
   const {
-    data = { nodes: [], links: [] },
+    data = EMPTY_DATA,
     showLabels = true,
     showLabelChip = true,
     showPercentage = true,
@@ -719,6 +751,10 @@ const _ChartSankeyWrapper = ({
     (tokenPath: string): string => (getIn(theme.colors, tokenPath as any) as string) ?? tokenPath,
     [theme],
   );
+
+  // ── Motion values — passed to per-shape components to avoid N+M useTheme calls ─
+  const motionDuration = theme.motion.duration.quick;
+  const motionEasing = (castNativeType(theme.motion.easing.standard) as unknown) as EasingFn;
 
   // ── Label / chip geometry (mirrors web) ──────────────────────────────────────
   const fontSize = theme.typography.fonts.size[75];
@@ -983,6 +1019,8 @@ const _ChartSankeyWrapper = ({
                         targetOpacity={getLinkOpacity(linkIdx)}
                         d={link.d}
                         fill={resolveColor(colorToken)}
+                        duration={motionDuration}
+                        easing={motionEasing}
                         accessibilityLabel={`Link from ${
                           data.nodes[link.sourceIndex]?.name ?? ''
                         } to ${data.nodes[link.targetIndex]?.name ?? ''}: ${link.value}`}
@@ -1055,6 +1093,8 @@ const _ChartSankeyWrapper = ({
                         width={node.width}
                         height={node.height}
                         fill={resolveColor(colorToken)}
+                        duration={motionDuration}
+                        easing={motionEasing}
                         accessibilityLabel={`Node ${nodeData.name}: ${node.value}`}
                       >
                         {showLabels
@@ -1073,6 +1113,7 @@ const _ChartSankeyWrapper = ({
               pointerEvents="none"
               style={{
                 position: 'absolute',
+                zIndex: TOOLTIP_Z_INDEX,
                 top: Math.max(
                   0,
                   Math.min(size.height - theme.spacing[9] * 2, tooltip.centerY - theme.spacing[9]),

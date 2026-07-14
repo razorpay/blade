@@ -277,4 +277,74 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     expect(spanTexts).toContain('Alpha');
     expect(UNSAFE_getAllByType(Rect)).toHaveLength(data.nodes.length);
   });
+
+  // ── Edge cases ──────────────────────────────────────────────────────────────
+
+  it('renders without crashing when data has empty nodes and links arrays', () => {
+    const emptyData = { nodes: [], links: [] };
+    const { toJSON, UNSAFE_queryAllByType } = renderSankey(
+      <ChartSankeyWrapper testID="sankey-chart">
+        <ChartSankey data={emptyData} showLabelChip={false} />
+      </ChartSankeyWrapper>,
+    );
+    expect(toJSON()).toBeTruthy();
+    expect(UNSAFE_queryAllByType(Rect)).toHaveLength(0);
+    expect(UNSAFE_queryAllByType(Path)).toHaveLength(0);
+  });
+
+  it('renders a single node with no links as one Rect and zero Paths', () => {
+    const singleNode = {
+      nodes: [{ id: 'solo', name: 'Solo' }],
+      links: [],
+    };
+    const { UNSAFE_getAllByType, UNSAFE_queryAllByType } = renderSankey(
+      <ChartSankeyWrapper testID="sankey-chart">
+        <ChartSankey data={singleNode} showLabelChip={false} />
+      </ChartSankeyWrapper>,
+    );
+    expect(UNSAFE_getAllByType(Rect)).toHaveLength(1);
+    expect(UNSAFE_queryAllByType(Path)).toHaveLength(0);
+  });
+
+  it('does not crash or infinite-loop on a cyclic graph (A→B→A)', () => {
+    const cyclic = {
+      nodes: [
+        { id: 'a', name: 'Alpha' },
+        { id: 'b', name: 'Beta' },
+      ],
+      links: [
+        { source: 'a', target: 'b', value: 50 },
+        { source: 'b', target: 'a', value: 30 },
+      ],
+    };
+    const { toJSON, UNSAFE_getAllByType } = renderSankey(
+      <ChartSankeyWrapper testID="sankey-chart">
+        <ChartSankey data={cyclic} showLabelChip={false} />
+      </ChartSankeyWrapper>,
+    );
+    expect(toJSON()).toBeTruthy();
+    expect(UNSAFE_getAllByType(Rect)).toHaveLength(2);
+    expect(UNSAFE_getAllByType(Path)).toHaveLength(2);
+  });
+
+  it('silently drops links that reference non-existent node IDs', () => {
+    const danglingLink = {
+      nodes: [
+        { id: 'a', name: 'Alpha' },
+        { id: 'b', name: 'Beta' },
+      ],
+      links: [
+        { source: 'a', target: 'b', value: 50 },
+        { source: 'a', target: 'nonexistent', value: 999 },
+      ],
+    };
+    const { UNSAFE_getAllByType } = renderSankey(
+      <ChartSankeyWrapper testID="sankey-chart">
+        <ChartSankey data={danglingLink} showLabelChip={false} />
+      </ChartSankeyWrapper>,
+    );
+    // The dangling link is filtered out — only 1 valid link should render.
+    expect(UNSAFE_getAllByType(Path)).toHaveLength(1);
+    expect(UNSAFE_getAllByType(Rect)).toHaveLength(2);
+  });
 });
