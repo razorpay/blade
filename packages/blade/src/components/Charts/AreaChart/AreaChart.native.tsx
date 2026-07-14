@@ -508,7 +508,9 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         logger({
           type: 'warn',
           moduleName: 'ChartAreaWrapper',
-          message: `ChartYAxis prop(s) [${unsupported.join(', ')}] are not fully supported on native. Supported: label, domain (numeric), tickFormatter, tickCount.`,
+          message: `ChartYAxis prop(s) [${unsupported.join(
+            ', ',
+          )}] are not fully supported on native. Supported: label, domain (numeric), tickFormatter, tickCount.`,
         });
       }
     }
@@ -521,10 +523,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   });
 
   const dataColorMapping = useMemo<DataColorMapping>(() => {
-    const mapping: Record<
-      string,
-      { colorToken?: ChartColorToken; isCustomColor: boolean }
-    > = {};
+    const mapping: Record<string, { colorToken?: ChartColorToken; isCustomColor: boolean }> = {};
     allAreas.forEach((area) => {
       mapping[area.dataKey] = {
         colorToken: area.color,
@@ -597,14 +596,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     return { dataMax: max, dataMin: min };
   }, [data, stackGroups]);
 
-  const yMax = slots.yDomain
-    ? Number(slots.yDomain[1])
-    : niceCeil(dataMax);
-  const yMin = slots.yDomain
-    ? Number(slots.yDomain[0])
-    : dataMin < 0
-      ? niceFloor(dataMin)
-      : 0;
+  const yMax = slots.yDomain ? Number(slots.yDomain[1]) : niceCeil(dataMax);
+  const yMin = slots.yDomain ? Number(slots.yDomain[0]) : dataMin < 0 ? niceFloor(dataMin) : 0;
   const yRange = yMax - yMin;
   const yTickCount = slots.yTickCount ?? Y_TICK_COUNT;
   const yTicks = useMemo(() => {
@@ -695,7 +688,18 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     });
 
     return geometries;
-  }, [stackGroups, data, count, plotWidth, plotHeight, yMax, yMin, yRange, dataColorMapping, theme.colors]);
+  }, [
+    stackGroups,
+    data,
+    count,
+    plotWidth,
+    plotHeight,
+    yMax,
+    yMin,
+    yRange,
+    dataColorMapping,
+    theme.colors,
+  ]);
 
   // Fire the recharts-style left→right clip reveal when data/series change, and
   // once plotWidth is known after layout. Skip re-animating on pure resize.
@@ -1007,7 +1011,11 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                         fontSize={AXIS_LABEL_FONT_SIZE}
                         fill={tickColor}
                         textAnchor="middle"
-                        transform={`rotate(-90, ${-(PLOT_PADDING.left - AXIS_LABEL_FONT_SIZE - 4)}, ${plotHeight / 2})`}
+                        transform={`rotate(-90, ${-(
+                          PLOT_PADDING.left -
+                          AXIS_LABEL_FONT_SIZE -
+                          4
+                        )}, ${plotHeight / 2})`}
                       >
                         {slots.yLabel}
                       </SvgText>
@@ -1303,8 +1311,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                 slots.legend.align === 'left'
                   ? 'flex-start'
                   : slots.legend.align === 'right'
-                    ? 'flex-end'
-                    : 'center',
+                  ? 'flex-end'
+                  : 'center',
               paddingTop: theme.spacing[2],
             }}
           >
