@@ -574,7 +574,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   const yMin = dataMin < 0 ? niceFloor(dataMin) : 0;
   const yMax = niceCeil(dataMax);
-  const yDomain = yMax - yMin;
+  const yDomain = yMax - yMin || 1;
   const yTicks = useMemo(() => {
     const ticks: number[] = [];
     for (let i = 0; i <= Y_TICK_COUNT; i++) {
