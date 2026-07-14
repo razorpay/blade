@@ -2,7 +2,7 @@
 
 ## Description
 
-`ChatInput` is an input component designed for AI chat interfaces. It combines a resizable textarea, optional file upload with attachment previews, ghost suggestion autocomplete (cycling suggestions with a crossfade animation), and a submit/stop action button into a single composable input. It supports both controlled and uncontrolled text value usage, validation state with an animated error popup, and a generating state that swaps the submit button for a stop button to cancel in-flight AI responses.
+`ChatInput` is an input component designed for AI chat interfaces. Its default variant combines a resizable textarea with an action bar, while the opt-in `single-line` variant provides a compact composer with inline actions for mobile web. Both variants support optional file upload with attachment previews, ghost suggestion autocomplete, validation, and submit/stop actions.
 
 ## Important Constraints
 
@@ -30,6 +30,12 @@ interface BladeFile extends File {
 type BladeFileList = BladeFile[];
 
 type ChatInputProps = {
+  /**
+   * Controls the input layout.
+   * @default 'default'
+   */
+  variant?: 'default' | 'single-line';
+
   /** Controlled value of the text input */
   value?: string;
 
@@ -40,10 +46,26 @@ type ChatInputProps = {
   onChange?: ({ value }: { value: string }) => void;
 
   /** Callback fired when the text input receives focus */
-  onFocus?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
+  onFocus?: ({
+    name,
+    value,
+    rawValue,
+  }: {
+    name?: string;
+    value?: string;
+    rawValue?: string;
+  }) => void;
 
   /** Callback fired when the text input loses focus */
-  onBlur?: ({ name, value, rawValue }: { name?: string; value?: string; rawValue?: string }) => void;
+  onBlur?: ({
+    name,
+    value,
+    rawValue,
+  }: {
+    name?: string;
+    value?: string;
+    rawValue?: string;
+  }) => void;
 
   /**
    * Callback fired when the user submits the input (via submit button or Enter key).
@@ -137,19 +159,35 @@ type ChatInputProps = {
 **Do**
 
 - Use `ChatInput` for AI chat interfaces and conversational UIs with file upload and ghost suggestions.
+- Use `variant="single-line"` for compact conversational composers, especially on mobile web.
 - Use `isGenerating` to swap the submit button to a stop button during AI response generation.
 - Use `suggestions` with `onSuggestionAccept` to show cycling ghost suggestions that users accept with Tab.
 - Use `fileList` with `onFileChange`/`onFileRemove` for file attachment workflows.
-- Handle Enter for submit and Shift+Enter for newline in the textarea.
+- In the default variant, handle Enter for submit and Shift+Enter for a newline. In the single-line variant, both Enter and Shift+Enter submit.
 
 **Don't**
 
-- Don't use `ChatInput` for simple forms or single-line input — use `TextInput` or `TextArea`.
+- Don't use `ChatInput` for ordinary form fields — use `TextInput` or `TextArea` for non-conversational input.
 - Don't use `suggestions` without `onSuggestionAccept` — they must be used together.
 - Don't expect automatic file uploads — the consumer manages the upload lifecycle and status.
 - Don't forget that the submit button auto-disables when there's no text and no files, or when files are uploading/errored.
 
 ## Examples
+
+### Single-Line Mobile Chat Input
+
+Use the compact variant for a single-line conversational composer with inline upload and submit actions.
+
+```tsx
+import { ChatInput } from '@razorpay/blade/components';
+
+<ChatInput
+  variant="single-line"
+  placeholder="Ask anything..."
+  onSubmit={({ value, fileList }) => sendMessage(value, fileList)}
+  accessibilityLabel="Ask anything"
+/>;
+```
 
 ### Basic Chat Input with File Upload
 

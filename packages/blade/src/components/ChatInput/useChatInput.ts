@@ -12,11 +12,11 @@ type UseChatInputProps = Pick<
   ChatInputProps,
   | 'value'
   | 'defaultValue'
+  | 'variant'
   | 'onChange'
   | 'onSubmit'
   | 'isDisabled'
   | 'isGenerating'
-  | 'onStop'
   | 'fileList'
   | 'onFileChange'
   | 'onFileRemove'
@@ -30,8 +30,11 @@ const useChatInput = (
   {
     value: controlledValue,
     defaultValue,
+    variant = 'default',
     onChange,
     onSubmit,
+    isDisabled,
+    isGenerating,
     fileList: controlledFileList,
     onFileChange,
     onFileRemove,
@@ -114,9 +117,9 @@ const useChatInput = (
   );
 
   const handleSubmit = React.useCallback(() => {
-    if (isSubmitDisabled) return;
+    if (isDisabled || isGenerating || isSubmitDisabled) return;
     onSubmit?.({ value: textValue, fileList: files });
-  }, [isSubmitDisabled, onSubmit, textValue, files]);
+  }, [files, isDisabled, isGenerating, isSubmitDisabled, onSubmit, textValue]);
 
   const handleKeyDown = React.useCallback(
     ({
@@ -129,7 +132,10 @@ const useChatInput = (
     }) => {
       if (!event) return;
 
-      if (event.key === 'Enter' && !event.shiftKey) {
+      const isComposing = event.nativeEvent.isComposing;
+      const shouldSubmit = event.key === 'Enter' && (variant === 'single-line' || !event.shiftKey);
+
+      if (shouldSubmit && !isComposing) {
         event.preventDefault();
         handleSubmit();
         return;
@@ -144,6 +150,7 @@ const useChatInput = (
     },
     [
       handleSubmit,
+      variant,
       showGhostSuggestion,
       suggestions,
       activeSuggestionIndex,
@@ -226,8 +233,8 @@ const useChatInput = (
     const target = event.target as HTMLElement | null;
     if (!target) return;
 
-    // Allow normal behavior when clicking directly inside textarea.
-    if (target.closest('textarea')) return;
+    // Allow normal behavior when clicking directly inside the text control.
+    if (target.closest('textarea, input')) return;
 
     // Prevent focus from moving to internal controls (submit/upload/file actions).
     event.preventDefault();

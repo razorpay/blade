@@ -1263,6 +1263,22 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'ChatInput',
+    description:
+      'ChatInput component for composing prompts with multiline and compact single-line layouts.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.84.0',
+        storybookLink: 'Components/ChatInput',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'ChatMessage',
     description: 'ChatMessage component for displaying chat messages in a conversation interface.',
     platform: 'web',

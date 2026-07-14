@@ -5,6 +5,16 @@ import type { FormInputOnEvent } from '~components/Form/FormTypes';
 
 type ChatInputProps = {
   /**
+   * Controls the input layout.
+   *
+   * `default` renders the multiline composer with an action bar.
+   * `single-line` renders a compact input with inline upload and submit actions.
+   *
+   * @default 'default'
+   */
+  variant?: 'default' | 'single-line';
+
+  /**
    * Controlled value of the text input
    */
   value?: string;
