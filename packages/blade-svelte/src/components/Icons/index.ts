@@ -17,6 +17,7 @@ export { CreditCardIcon } from './CreditCardIcon';
 export { EyeIcon } from './EyeIcon';
 export { EyeOffIcon } from './EyeOffIcon';
 export { InfoIcon } from './InfoIcon';
+export { MinusIcon } from './MinusIcon';
 export { PhoneIcon } from './PhoneIcon';
 export { PlusIcon } from './PlusIcon';
 export { SearchIcon } from './SearchIcon';
