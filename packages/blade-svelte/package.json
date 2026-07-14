@@ -48,7 +48,10 @@
     "prestorybook": "cd ../blade-core && yarn build",
     "start:web": "yarn dev",
     "storybook": "storybook dev -p 6007",
-    "build-storybook": "storybook build -o storybook-static"
+    "build-storybook": "storybook build -o storybook-static",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.0",
@@ -61,6 +64,12 @@
   "devDependencies": {
     "@babel/core": "7.21.8",
     "@babel/preset-typescript": "7.16.5",
+    "@testing-library/jest-dom": "^6",
+    "@testing-library/svelte": "5.4.2",
+    "@testing-library/user-event": "^14",
+    "@vitest/coverage-v8": "3.2.6",
+    "jsdom": "^25",
+    "vitest": "3.2.6",
     "@rollup/plugin-alias": "5.0.0",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-commonjs": "25.0.4",
