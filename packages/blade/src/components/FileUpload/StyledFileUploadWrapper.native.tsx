@@ -63,7 +63,7 @@ const StyledFileUploadWrapper = ({
           borderColor,
           borderWidth: 1,
           borderRadius: theme.border.radius.medium,
-          minHeight: fileUploadHeightTokens[size === 'variable' ? 'large' : size],
+          minHeight: size === 'variable' ? undefined : fileUploadHeightTokens[size],
           display: 'flex' as const,
           flexDirection: 'row' as const,
           justifyContent: 'center' as const,

@@ -270,6 +270,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             onPressIn={() => setIsActive(true)}
             onPressOut={() => setIsActive(false)}
             disabled={isDisabled}
+            accessibilityRole="button"
             {...accessibilityProps}
           >
             <StyledFileUploadWrapper
@@ -296,23 +297,23 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   />
                 )}
 
-                <Text
-                  color={
-                    isDisabled
-                      ? fileUploadColorTokens.text.disabled
-                      : fileUploadColorTokens.text.default
-                  }
-                >
-                  {isSizeVariable ? dropAreaText ?? 'Tap to upload your files' : 'Tap to'}{' '}
-                </Text>
-
                 <Box
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
-                  flexDirection="column"
-                  borderRadius="small"
+                  flexDirection="row"
+                  gap={makeSize(2)}
                 >
+                  <Text
+                    color={
+                      isDisabled
+                        ? fileUploadColorTokens.text.disabled
+                        : fileUploadColorTokens.text.default
+                    }
+                  >
+                    {isSizeVariable ? dropAreaText ?? 'Tap to upload your files' : 'Tap to'}{' '}
+                  </Text>
+
                   <Box
                     display="flex"
                     flexDirection="row"

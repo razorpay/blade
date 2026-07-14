@@ -19,6 +19,8 @@ type FileUploadCommonProps = {
   /**
    * Position of the label relative to the file upload area. Desktop only prop. Default value on mobile will be 'top'
    *
+   * **React Native:** `labelPosition="left"` is silently ignored on native — labels always render above the upload area.
+   *
    * @default 'top'
    */
   labelPosition?: 'top' | 'left';
@@ -76,6 +78,9 @@ type FileUploadCommonProps = {
    * `fileList` will always be empty at tap time — open your own file picker
    * (e.g. `react-native-document-picker`) inside this callback and manage the file list yourself.
    *
+   * @remarks On React Native, `fileList` is always an empty array in this callback.
+   * The type signature is shared with web for cross-platform compatibility, but the semantics
+   * differ: on web, `fileList` contains the selected files; on native, it is always `[]`.
    * Prefer using `onPress` on native for tap events — `onChange` is kept for backward
    * compatibility and fires alongside `onPress`.
    */
@@ -108,6 +113,9 @@ type FileUploadCommonProps = {
   onDismiss?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function executed when files are dropped into the upload area
+   *
+   * **React Native:** This callback has no effect on native. Drag-and-drop is not supported —
+   * use the `onPress` or `onChange` tap signal to open a file picker instead.
    */
   onDrop?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
