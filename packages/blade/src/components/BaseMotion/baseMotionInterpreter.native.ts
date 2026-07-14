@@ -199,10 +199,10 @@ const getTiming = (transition?: Tween) => {
   const easing =
     Array.isArray(ease) && ease.length === 4 && ease.every((v) => typeof v === 'number')
       ? Easing.bezier(
-          (ease as number[])[0],
-          (ease as number[])[1],
-          (ease as number[])[2],
-          (ease as number[])[3],
+          (ease as unknown as number[])[0],
+          (ease as unknown as number[])[1],
+          (ease as unknown as number[])[2],
+          (ease as unknown as number[])[3],
         )
       : Easing.ease;
 
