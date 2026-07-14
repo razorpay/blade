@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useMemo, useId, useState } from 'react';
+import React, { useEffect, useMemo, useId, useState, useCallback } from 'react';
 import {
   Svg,
   Path,
@@ -116,6 +115,7 @@ type ChildSlots = {
   xLabel?: string;
   hasYAxis: boolean;
   yLabel?: string;
+  yTickFormatter?: (value: number) => string;
   hasLegend: boolean;
   legend: LegendSlot;
   hasGrid: boolean;
@@ -165,6 +165,9 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       const props = child.props as ChartYAxisProps;
       slots.hasYAxis = true;
       slots.yLabel = props.label;
+      if (typeof props.tickFormatter === 'function') {
+        slots.yTickFormatter = props.tickFormatter as (value: number) => string;
+      }
     } else if (id === commonComponentIds.chartLegend) {
       const props = child.props as ChartLegendProps;
       slots.hasLegend = true;
@@ -198,21 +201,38 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
   return slots;
 };
 
-const niceCeil = (raw: number): number => {
-  if (raw <= 0) return 0;
-  const exponent = Math.floor(Math.log10(raw));
-  const fraction = raw / 10 ** exponent;
-  const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
-  return niceFraction * 10 ** exponent;
-};
+// d3-style nice ticks algorithm: computes a nice step size (1/2/5 × 10^n)
+// and snaps the domain boundaries so ticks are always round numbers.
+// Also handles the degenerate case where yMax === yMin (e.g. all-zero data).
+const computeNiceScale = (
+  dataMin: number,
+  dataMax: number,
+  tickCount: number,
+): { niceMin: number; niceMax: number; ticks: number[] } => {
+  const min = dataMin >= 0 ? 0 : dataMin;
+  const max = dataMax <= 0 ? 0 : dataMax;
 
-const niceFloor = (raw: number): number => {
-  if (raw >= 0) return 0;
-  const abs = Math.abs(raw);
-  const exponent = Math.floor(Math.log10(abs));
-  const fraction = abs / 10 ** exponent;
+  if (min === max) {
+    return { niceMin: min, niceMax: max + 1, ticks: [min, max + 1] };
+  }
+
+  const range = max - min;
+  const rawStep = range / tickCount;
+  const exponent = Math.floor(Math.log10(Math.abs(rawStep)));
+  const fraction = Math.abs(rawStep) / 10 ** exponent;
   const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
-  return -(niceFraction * 10 ** exponent);
+  const niceStep = niceFraction * 10 ** exponent;
+
+  const niceMin = Math.floor(min / niceStep) * niceStep;
+  const niceMax = Math.ceil(max / niceStep) * niceStep;
+
+  const ticks: number[] = [];
+  const count = Math.round((niceMax - niceMin) / niceStep);
+  for (let i = 0; i <= count; i++) {
+    ticks.push(Math.round((niceMin + niceStep * i) * 1e10) / 1e10);
+  }
+
+  return { niceMin, niceMax, ticks };
 };
 
 const formatYTick = (value: number): string => {
@@ -381,7 +401,7 @@ const LineSeries = ({
   useEffect(() => {
     draw.value = 0;
     draw.value = withDelay(beginDelay, withTiming(1, { duration, easing: drawEasing }));
-  }, [duration, beginDelay, dataSignature]);
+  }, [duration, beginDelay, dataSignature, drawEasing]);
 
   useEffect(() => {
     const isOther = hoveredKey !== null && hoveredKey !== line.dataKey;
@@ -485,7 +505,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     const mapping: DataColorMapping = {};
     allLines.forEach((line) => {
       mapping[line.dataKey] = {
-        colorToken: line.color!,
+        colorToken: line.color,
         isCustomColor: Boolean(line.color),
       };
     });
@@ -515,6 +535,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       selectedKeys.length === allDataKeys.length &&
       allDataKeys.every((dataKey) => selectedKeys.includes(dataKey));
     if (!isInSync) {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       setSelectedKeys(() => [...allDataKeys], true);
     }
   }, [allDataKeys, selectedKeys, shouldAutoSelectAllDataKeys]);
@@ -524,12 +545,16 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     if (allDataKeys.length > 0 && selectedKeys.length > 0) {
       const hasOverlap = selectedKeys.some((key) => allDataKeys.includes(key));
       if (!hasOverlap) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         setSelectedKeys(() => [...allDataKeys]);
       }
     }
   }, [allDataKeys, selectedKeys]);
 
-  const isVisible = (dataKey: string): boolean => selectedKeys.includes(dataKey);
+  const isVisible = useCallback(
+    (dataKey: string): boolean => selectedKeys.includes(dataKey),
+    [selectedKeys],
+  );
 
   const toggleLegend = (dataKey: string): void => {
     hasUserInteractedRef.current = true;
@@ -542,7 +567,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   const visibleLines = useMemo(() => allLines.filter((l) => isVisible(l.dataKey) && !l.hide), [
     allLines,
-    selectedKeys,
+    isVisible,
   ]);
 
   const secondaryLabelMap = useMemo(() => {
@@ -573,16 +598,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     return { dataMin: min, dataMax: max };
   }, [data, visibleLines, allLines]);
 
-  const yMin = dataMin < 0 ? niceFloor(dataMin) : 0;
-  const yMax = niceCeil(dataMax);
+  const { niceMin: yMin, niceMax: yMax, ticks: yTicks } = useMemo(
+    () => computeNiceScale(dataMin, dataMax, Y_TICK_COUNT),
+    [dataMin, dataMax],
+  );
   const yDomain = yMax - yMin || 1;
-  const yTicks = useMemo(() => {
-    const ticks: number[] = [];
-    for (let i = 0; i <= Y_TICK_COUNT; i++) {
-      ticks.push(yMin + (yDomain / Y_TICK_COUNT) * i);
-    }
-    return ticks;
-  }, [yMin, yDomain]);
 
   const showAxes = slots.hasXAxis || slots.hasYAxis;
   const needsExtraBottomPad = Boolean(slots.xLabel && slots.xSecondaryDataKey);
@@ -601,8 +621,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const pointCount = data.length;
   // Line points span the plot width over `n-1` intervals (NOT bar-style slots).
   const pointSpacing = pointCount > 1 ? plotWidth / (pointCount - 1) : 0;
-  const xForIndex = (index: number): number =>
-    pointCount > 1 ? index * pointSpacing : plotWidth / 2;
+  const xForIndex = useCallback(
+    (index: number): number => (pointCount > 1 ? index * pointSpacing : plotWidth / 2),
+    [pointCount, pointSpacing, plotWidth],
+  );
 
   const xLabelStep = Math.max(1, (slots.xInterval ?? 0) + 1);
 
@@ -610,10 +632,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const axisLineColor = getIn(theme.colors, 'surface.border.gray.muted');
   const gridColor = getIn(theme.colors, 'surface.border.gray.subtle');
 
-  const resolveColor = (dataKey: string, fallback?: string): string => {
-    const token = dataColorMapping[dataKey]?.colorToken ?? fallback;
-    return token ? getIn(theme.colors, token) : tickColor;
-  };
+  const resolveColor = useCallback(
+    (dataKey: string, fallback?: string): string => {
+      const token = dataColorMapping[dataKey]?.colorToken ?? fallback;
+      return token ? getIn(theme.colors, token) : tickColor;
+    },
+    [dataColorMapping, theme.colors, tickColor],
+  );
 
   // Pixel geometry per visible line — shared by the line paths, the activeDot,
   // the scrub nearest-line lookup, and the tooltip.
@@ -631,7 +656,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       });
       return { line, color: resolveColor(line.dataKey, line.color), points };
     });
-  }, [visibleLines, data, plotWidth, plotHeight, yMin, yDomain, dataColorMapping, theme.colors]);
+  }, [visibleLines, data, plotWidth, plotHeight, yMin, yDomain, dataColorMapping, theme.colors, resolveColor, xForIndex]);
 
   const dataSignature = useMemo(() => `${data.length}:${allDataKeys.join(',')}`, [
     data.length,
@@ -742,6 +767,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     theme.colors,
     slots.tooltipFormatter,
     activeIndex,
+    resolveColor,
   ]);
 
   // Lines eligible for a legend entry — include hidden ones so they can be
@@ -750,6 +776,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   const lineChartContextValue = useMemo(
     () => ({ hoveredDataKey: hoveredKey, setHoveredDataKey: setHoveredKey }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [hoveredKey],
   );
 
@@ -762,6 +789,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       secondaryLabelMap,
       dataLength: data?.length,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dataColorMapping, selectedKeys, secondaryLabelMap, data?.length],
   );
 
@@ -849,7 +877,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                             fill={tickColor}
                             textAnchor="end"
                           >
-                            {formatYTick(tick)}
+                            {slots.yTickFormatter ? slots.yTickFormatter(tick) : formatYTick(tick)}
                           </SvgText>
                         );
                       })}
