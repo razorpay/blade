@@ -22,11 +22,12 @@ jobs:
 
       - name: Setup PMG proxy
         id: pmg-setup
-        uses: safedep/pmg@v1
+        uses: safedep/pmg@5ac0f275b83d9d5a9342c6aae977ec32fa330daa
         with:
           server-mode: true
           api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
           tenant-id: ${{ secrets.PMG_TENANT_ID }}
+          timeout-minutes: 5
 
       # 2. decide what text we'll put in the file
       - name: Set up Node.js
@@ -84,5 +85,11 @@ jobs:
           delete-branch: true
       # cleans up after merge
       - name: Enforce PMG policy
-        if: always() && steps.pmg-setup.outcome == 'success'
-        run: pmg proxy stop --fail-on-violation
+        if: always()
+        run: |
+          if [ "${{ steps.pmg-setup.outcome }}" = "success" ]; then
+            pmg proxy stop --fail-on-violation
+          else
+            pmg proxy stop || true
+          fi
+        timeout-minutes: 2
