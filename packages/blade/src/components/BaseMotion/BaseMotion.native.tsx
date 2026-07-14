@@ -81,15 +81,6 @@ const _BaseMotionBox = (
   }: BaseMotionBoxNativeProps,
   ref: React.Ref<View>,
 ): React.ReactElement => {
-  if (__DEV__ && _as !== undefined) {
-    logger({
-      type: 'warn',
-      moduleName: 'BaseMotion',
-      message:
-        'The "as" prop is not supported on native — children are wrapped in an Animated.View instead.',
-    });
-  }
-
   const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
   const { isInsideStaggerContainer, staggerType } = useStagger();
 
@@ -105,22 +96,35 @@ const _BaseMotionBox = (
   const [isMounted, setIsMounted] = React.useState(false);
   const [isPressed, setIsPressed] = React.useState(false);
 
+  const nativeAnimate = castNativeType(animate);
+
+  // Fire __DEV__ warnings once on mount instead of on every render cycle to avoid console spam.
+  React.useEffect(() => {
+    if (__DEV__ && _as !== undefined) {
+      logger({
+        type: 'warn',
+        moduleName: 'BaseMotion',
+        message:
+          'The "as" prop is not supported on native — children are wrapped in an Animated.View instead.',
+      });
+    }
+
+    if (__DEV__ && typeof nativeAnimate === 'object' && nativeAnimate !== null) {
+      logger({
+        type: 'warn',
+        moduleName: 'BaseMotion',
+        message:
+          'The imperative animation control API ({ start }) is not yet implemented on native — ' +
+          'it is silently ignored and the animation target defaults to "initial". ' +
+          'This will be addressed in a follow-up batch.',
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  const nativeAnimate = castNativeType(animate);
-
-  if (__DEV__ && typeof nativeAnimate === 'object' && nativeAnimate !== null) {
-    logger({
-      type: 'warn',
-      moduleName: 'BaseMotion',
-      message:
-        'The imperative animation control API ({ start }) is not yet implemented on native — ' +
-        'it is silently ignored and the animation target defaults to "initial". ' +
-        'This will be addressed in a follow-up batch.',
-    });
-  }
 
   // Derive the current declarative target from the active triggers.
   // Priority: explicit visibility → AnimateInteractions control flag → tap → mount (+ degraded

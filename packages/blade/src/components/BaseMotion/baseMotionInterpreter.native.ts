@@ -303,8 +303,17 @@ const useAnimatedVariant = ({
   targetName,
   onAnimationComplete,
 }: UseAnimatedVariantArgs): ReturnType<typeof useAnimatedStyle> => {
-  const fromStyle = useSharedValue<ResolvedVariantStyle>(resolveVariantStyle(variants?.initial));
-  const toStyle = useSharedValue<ResolvedVariantStyle>(resolveVariantStyle(variants?.[targetName]));
+  // Memoize the initial resolved styles so resolveVariantStyle (and its __DEV__ warnings)
+  // only runs once on mount rather than on every render via the useSharedValue initializer.
+  const initialFromStyle = React.useMemo(() => resolveVariantStyle(variants?.initial), []);
+  const initialToStyle = React.useMemo(
+    () => resolveVariantStyle(variants?.[targetName]),
+    // Only the initial mount value matters; subsequent target changes are handled by the effect below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+  const fromStyle = useSharedValue<ResolvedVariantStyle>(initialFromStyle);
+  const toStyle = useSharedValue<ResolvedVariantStyle>(initialToStyle);
   const progress = useSharedValue(0);
   const previousTargetRef = React.useRef<keyof MotionVariantsType>('initial');
 

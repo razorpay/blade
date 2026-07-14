@@ -58,8 +58,17 @@ type BaseMotionBoxProps = {
    * animate={controls}
    * ```
    *
-   * On native there is no framer-motion `AnimationControls` equivalent. Instead a lightweight
-   * control object (`{ start }`) or a boolean flag is used to drive the animation target.
+   * On web, this accepts a framer-motion `AnimationControls` instance which exposes `start()`,
+   * `stop()`, `set()`, and `mount()` methods.
+   *
+   * On native, there is no framer-motion `AnimationControls` equivalent. Instead:
+   * - A **boolean** (`true`/`false`) toggles between the `animate` (true) and `exit` (false) variant.
+   *   This is useful when integrating with `AnimateInteractions` where a boolean flag drives the
+   *   target state. Note: the boolean form is native-only — it is not available on web.
+   * - A lightweight control object (`{ start }`) can be passed, but only `start()` is supported.
+   *   Methods like `stop()` and `set()` from framer-motion's `AnimationControls` are not yet
+   *   implemented on native and will silently fail at runtime. This will be addressed in a
+   *   follow-up batch.
    */
   animate?: Platform.Select<{
     web: AnimationControls;
