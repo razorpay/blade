@@ -17,6 +17,12 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
+      - name: Setup PMG proxy
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
+          tenant-id: ${{ secrets.PMG_TENANT_ID }}
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -28,3 +34,6 @@ jobs:
         working-directory: packages/blade
       - name: Run Lint Script
         run: yarn tsc:knowledgebase
+      - name: Enforce PMG policy
+        if: always()
+        run: pmg proxy stop --fail-on-violation
