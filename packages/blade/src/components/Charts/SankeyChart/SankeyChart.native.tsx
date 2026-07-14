@@ -36,6 +36,7 @@ import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import { castNativeType } from '~utils/platform/castUtils';
 
 // ─── Animated SVG shapes ──────────────────────────────────────────────────────
 // react-native-svg primitives wrapped so react-native-reanimated can drive their
@@ -422,7 +423,7 @@ const SankeyNodeShape = ({
   const { theme } = useTheme();
   const opacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
-  const easing = (theme.motion.easing.standard as unknown) as EasingFn;
+  const easing = castNativeType(theme.motion.easing.standard) as EasingFn;
 
   React.useEffect(() => {
     opacity.value = withTiming(targetOpacity, { duration, easing });
@@ -456,7 +457,7 @@ const SankeyLinkShape = ({
   const { theme } = useTheme();
   const fillOpacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
-  const easing = (theme.motion.easing.standard as unknown) as EasingFn;
+  const easing = castNativeType(theme.motion.easing.standard) as EasingFn;
 
   React.useEffect(() => {
     fillOpacity.value = withTiming(targetOpacity, { duration, easing });
@@ -837,18 +838,15 @@ const _ChartSankeyWrapper = ({
   );
 
   // ── Layout callback ──────────────────────────────────────────────────────────
-  const onLayout = React.useCallback(
-    (e: LayoutChangeEvent): void => {
-      const { width, height } = e.nativeEvent.layout;
-      setSize((prev) => {
-        if (width !== prev.width || height !== prev.height) {
-          return { width, height };
-        }
-        return prev;
-      });
-    },
-    [],
-  );
+  const onLayout = React.useCallback((e: LayoutChangeEvent): void => {
+    const { width, height } = e.nativeEvent.layout;
+    setSize((prev) => {
+      if (width !== prev.width || height !== prev.height) {
+        return { width, height };
+      }
+      return prev;
+    });
+  }, []);
 
   // ── Tooltip content + position for the active shape ──────────────────────────
   const tooltip = useMemo(() => {
@@ -884,16 +882,7 @@ const _ChartSankeyWrapper = ({
       centerX,
       centerY,
     };
-  }, [
-    showTooltip,
-    active,
-    size,
-    labelUnit,
-    layout,
-    data.nodes,
-    PADDING.left,
-    PADDING.top,
-  ]);
+  }, [showTooltip, active, size, labelUnit, layout, data.nodes, PADDING.left, PADDING.top]);
 
   const TOOLTIP_MAX_WIDTH = 240;
   const tooltipLeft = tooltip
@@ -954,163 +943,163 @@ const _ChartSankeyWrapper = ({
   return (
     <SankeyChartNativeContext.Provider value={true}>
       <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
-      <BaseBox
-        {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
-        {...makeAnalyticsAttribute(restProps)}
-        width="100%"
-        height="100%"
-        {...restProps}
-        position="relative"
-      >
-        <Pressable
-          testID={testID ? `${testID}-canvas` : undefined}
-          onLayout={onLayout}
-          onPress={handleCanvasPress}
-          android_disableSound={true}
-          style={{ flex: 1, width: '100%' }}
+        <BaseBox
+          {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
+          {...makeAnalyticsAttribute(restProps)}
+          width="100%"
+          height="100%"
+          {...restProps}
+          position="relative"
         >
-          {size.width > 0 && size.height > 0 ? (
-            <Svg
-              width={size.width}
-              height={size.height}
-              pointerEvents="none"
-              accessibilityRole="image"
-              accessibilityLabel="Sankey flow diagram"
-            >
-              <G x={PADDING.left} y={PADDING.top}>
-                {/* Links first so nodes + labels render above the ribbons */}
-                {layout.linkLayouts.map((link, linkIdx) => {
-                  const srcNode = data.nodes[link.sourceIndex] as SankeyDataNode | undefined;
-                  const colorToken =
-                    linkColorOverride ??
-                    nodeColorOverride ??
-                    (srcNode
-                      ? srcNode.color ??
-                        defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
-                      : defaultColorTokens[0]);
-                  return (
-                    <SankeyLinkShape
-                      key={`link-${link.originalIndex}`}
-                      targetOpacity={getLinkOpacity(linkIdx)}
-                      d={link.d}
-                      fill={resolveColor(colorToken)}
-                      accessibilityLabel={`Link from ${
-                        data.nodes[link.sourceIndex]?.name ?? ''
-                      } to ${data.nodes[link.targetIndex]?.name ?? ''}: ${link.value}`}
-                    />
-                  );
-                })}
-
-                {layout.nodeLayouts.map((node) => {
-                  const nodeData = data.nodes[node.index] as SankeyDataNode | undefined;
-                  if (!nodeData) return null;
-                  const colorToken =
-                    nodeColorOverride ??
-                    nodeData.color ??
-                    defaultColorTokens[node.index % defaultColorTokens.length];
-
-                  const nodeMidY = node.y + node.height / 2;
-                  const chipX = node.x + node.width + CHIP_GAP;
-                  const humanized = formatter(node.value);
-                  const levelCount = layout.countPerDepth[node.depth] ?? 1;
-                  const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
-                  const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
-                  const labelValue =
-                    showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
-
-                  const nameW = estimateTextWidth(nodeData.name, fontSize, semibold);
-                  const labelW = estimateTextWidth(labelValue, fontSize, regular);
-                  const contentW = nameW + theme.spacing[2] + labelW;
-                  const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
-                  const chipW = shouldWrap
-                    ? Math.min(
-                        CHIP_MAX_WIDTH,
-                        Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
-                      )
-                    : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
-                  const chipH = shouldWrap
-                    ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3]
-                    : CHIP_H;
-                  const chipY = nodeMidY - chipH / 2;
-
-                  const labelArgs: NodeLabelArgs = {
-                    chipX,
-                    chipY,
-                    chipW,
-                    chipH,
-                    nodeMidY,
-                    fontSize,
-                    fontFamily,
-                    labelNameColor,
-                    labelValueColor,
-                    chipBg,
-                    chipBorderColor,
-                    chipRadius,
-                    chipPadX: CHIP_PAD_X,
-                    lineGap,
-                    borderThin,
-                    capHeightRatio,
-                    name: nodeData.name,
-                    labelValue,
-                    shouldWrap,
-                    semibold,
-                    regular,
-                  };
-
-                  return (
-                    <SankeyNodeShape
-                      key={`node-${node.index}`}
-                      targetOpacity={getNodeOpacity(node.index)}
-                      x={node.x}
-                      y={node.y}
-                      width={node.width}
-                      height={node.height}
-                      fill={resolveColor(colorToken)}
-                      accessibilityLabel={`Node ${nodeData.name}: ${node.value}`}
-                    >
-                      {showLabels
-                        ? (showLabelChip ? renderChipLabel : renderPlainTextLabel)(labelArgs)
-                        : null}
-                    </SankeyNodeShape>
-                  );
-                })}
-              </G>
-            </Svg>
-          ) : null}
-        </Pressable>
-
-        {tooltip ? (
-          <View
-            pointerEvents="none"
-            style={{
-              position: 'absolute',
-              top: Math.max(
-                0,
-                Math.min(size.height - theme.spacing[9] * 2, tooltip.centerY - theme.spacing[9]),
-              ),
-              left: tooltipLeft,
-              maxWidth: TOOLTIP_MAX_WIDTH,
-              // surface.icon.staticBlack.normal is the token the web SankeyTooltip uses.
-              backgroundColor: theme.colors.surface.icon.staticBlack.normal,
-              borderRadius: theme.border.radius.large,
-              borderWidth: theme.border.width.thin,
-              borderColor: theme.colors.surface.border.gray.muted,
-              padding: theme.spacing[4],
-              // boxShadow: elevation.highRaised — RN cannot parse the web string,
-              // so approximate with iOS shadow* props + Android elevation.
-              shadowColor: '#000',
-              shadowOpacity: 0.24,
-              shadowRadius: 12,
-              shadowOffset: { width: 0, height: 6 },
-              elevation: 8,
-            }}
+          <Pressable
+            testID={testID ? `${testID}-canvas` : undefined}
+            onLayout={onLayout}
+            onPress={handleCanvasPress}
+            android_disableSound={true}
+            style={{ flex: 1, width: '100%' }}
           >
-            <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-              {tooltip.content}
-            </Text>
-          </View>
-        ) : null}
-      </BaseBox>
+            {size.width > 0 && size.height > 0 ? (
+              <Svg
+                width={size.width}
+                height={size.height}
+                pointerEvents="none"
+                accessibilityRole="image"
+                accessibilityLabel="Sankey flow diagram"
+              >
+                <G x={PADDING.left} y={PADDING.top}>
+                  {/* Links first so nodes + labels render above the ribbons */}
+                  {layout.linkLayouts.map((link, linkIdx) => {
+                    const srcNode = data.nodes[link.sourceIndex] as SankeyDataNode | undefined;
+                    const colorToken =
+                      linkColorOverride ??
+                      nodeColorOverride ??
+                      (srcNode
+                        ? srcNode.color ??
+                          defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
+                        : defaultColorTokens[0]);
+                    return (
+                      <SankeyLinkShape
+                        key={`link-${link.originalIndex}`}
+                        targetOpacity={getLinkOpacity(linkIdx)}
+                        d={link.d}
+                        fill={resolveColor(colorToken)}
+                        accessibilityLabel={`Link from ${
+                          data.nodes[link.sourceIndex]?.name ?? ''
+                        } to ${data.nodes[link.targetIndex]?.name ?? ''}: ${link.value}`}
+                      />
+                    );
+                  })}
+
+                  {layout.nodeLayouts.map((node) => {
+                    const nodeData = data.nodes[node.index] as SankeyDataNode | undefined;
+                    if (!nodeData) return null;
+                    const colorToken =
+                      nodeColorOverride ??
+                      nodeData.color ??
+                      defaultColorTokens[node.index % defaultColorTokens.length];
+
+                    const nodeMidY = node.y + node.height / 2;
+                    const chipX = node.x + node.width + CHIP_GAP;
+                    const humanized = formatter(node.value);
+                    const levelCount = layout.countPerDepth[node.depth] ?? 1;
+                    const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
+                    const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
+                    const labelValue =
+                      showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
+
+                    const nameW = estimateTextWidth(nodeData.name, fontSize, semibold);
+                    const labelW = estimateTextWidth(labelValue, fontSize, regular);
+                    const contentW = nameW + theme.spacing[2] + labelW;
+                    const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
+                    const chipW = shouldWrap
+                      ? Math.min(
+                          CHIP_MAX_WIDTH,
+                          Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
+                        )
+                      : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
+                    const chipH = shouldWrap
+                      ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3]
+                      : CHIP_H;
+                    const chipY = nodeMidY - chipH / 2;
+
+                    const labelArgs: NodeLabelArgs = {
+                      chipX,
+                      chipY,
+                      chipW,
+                      chipH,
+                      nodeMidY,
+                      fontSize,
+                      fontFamily,
+                      labelNameColor,
+                      labelValueColor,
+                      chipBg,
+                      chipBorderColor,
+                      chipRadius,
+                      chipPadX: CHIP_PAD_X,
+                      lineGap,
+                      borderThin,
+                      capHeightRatio,
+                      name: nodeData.name,
+                      labelValue,
+                      shouldWrap,
+                      semibold,
+                      regular,
+                    };
+
+                    return (
+                      <SankeyNodeShape
+                        key={`node-${node.index}`}
+                        targetOpacity={getNodeOpacity(node.index)}
+                        x={node.x}
+                        y={node.y}
+                        width={node.width}
+                        height={node.height}
+                        fill={resolveColor(colorToken)}
+                        accessibilityLabel={`Node ${nodeData.name}: ${node.value}`}
+                      >
+                        {showLabels
+                          ? (showLabelChip ? renderChipLabel : renderPlainTextLabel)(labelArgs)
+                          : null}
+                      </SankeyNodeShape>
+                    );
+                  })}
+                </G>
+              </Svg>
+            ) : null}
+          </Pressable>
+
+          {tooltip ? (
+            <View
+              pointerEvents="none"
+              style={{
+                position: 'absolute',
+                top: Math.max(
+                  0,
+                  Math.min(size.height - theme.spacing[9] * 2, tooltip.centerY - theme.spacing[9]),
+                ),
+                left: tooltipLeft,
+                maxWidth: TOOLTIP_MAX_WIDTH,
+                // surface.icon.staticBlack.normal is the token the web SankeyTooltip uses.
+                backgroundColor: theme.colors.surface.icon.staticBlack.normal,
+                borderRadius: theme.border.radius.large,
+                borderWidth: theme.border.width.thin,
+                borderColor: theme.colors.surface.border.gray.muted,
+                padding: theme.spacing[4],
+                // boxShadow: elevation.highRaised — RN cannot parse the web string,
+                // so approximate with iOS shadow* props + Android elevation.
+                shadowColor: '#000',
+                shadowOpacity: 0.24,
+                shadowRadius: 12,
+                shadowOffset: { width: 0, height: 6 },
+                elevation: 8,
+              }}
+            >
+              <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+                {tooltip.content}
+              </Text>
+            </View>
+          ) : null}
+        </BaseBox>
       </CommonChartComponentsContext.Provider>
     </SankeyChartNativeContext.Provider>
   );

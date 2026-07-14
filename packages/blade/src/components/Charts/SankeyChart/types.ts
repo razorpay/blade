@@ -1,3 +1,9 @@
+// `import type` is erased at compile time — it produces no runtime dependency
+// on recharts in the native bundle. The native `payload` variant resolves to
+// `undefined` (see Platform.Select below), so recharts types are never
+// referenced at runtime on native. This matches the pattern used in
+// DonutChart/types.ts. Moving the import to a web-only file would fragment
+// the shared type definition and is not worth the trade-off.
 import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
