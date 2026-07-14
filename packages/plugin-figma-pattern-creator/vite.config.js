@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync } from 'fs';
 
 // Custom plugin to handle Figma plugin files
 function figmaPlugin() {
@@ -10,9 +10,15 @@ function figmaPlugin() {
       // Inline CSS and inject component keys into HTML for Figma plugin compatibility
       try {
         const distDir = resolve(__dirname, 'dist');
+        const previewAssetsSrc = resolve(__dirname, 'src/assets/pattern-previews');
+        const previewAssetsDist = resolve(distDir, 'assets/pattern-previews');
         
         // Ensure dist directory exists
         mkdirSync(distDir, { recursive: true });
+        if (existsSync(previewAssetsSrc)) {
+          mkdirSync(resolve(distDir, 'assets'), { recursive: true });
+          cpSync(previewAssetsSrc, previewAssetsDist, { recursive: true });
+        }
         
         // Read the source files
         const htmlContent = readFileSync(resolve(__dirname, 'src/ui.html'), 'utf-8');
