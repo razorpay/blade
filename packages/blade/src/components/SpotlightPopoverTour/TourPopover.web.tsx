@@ -30,9 +30,10 @@ import { useId } from '~utils/useId';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import type { PopoverProps } from '~components/Popover';
 import { componentZIndices } from '~utils/componentZIndices';
+import type { TourElement } from './TourContext';
 
 type TourPopoverProps = Omit<PopoverProps, 'children' | 'initialFocusRef'> & {
-  attachTo: React.RefObject<HTMLElement> | undefined;
+  attachTo: React.RefObject<TourElement> | undefined;
   isTransitioning: boolean;
 };
 
@@ -125,8 +126,8 @@ const TourPopover = ({
   React.useLayoutEffect(() => {
     window.setTimeout(() => {
       if (!attachTo) return;
-      refs.setReference(attachTo.current);
-      refs.setPositionReference(attachTo.current);
+      refs.setReference(attachTo.current as HTMLElement | null);
+      refs.setPositionReference(attachTo.current as HTMLElement | null);
     });
   }, [attachTo, refs, isOpen]);
 

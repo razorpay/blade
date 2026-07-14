@@ -12,6 +12,7 @@ import type {
   SpotlightPopoverTourSteps,
 } from '../types';
 import { BasicExample } from './examples';
+import { TourScrollableFrame } from './TourScrollableFrame';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Code, Text } from '~components/Typography';
@@ -233,9 +234,21 @@ const CustomTourFooter = ({
   );
 };
 
+const safeIsChromatic = (): boolean => {
+  try {
+    // chromatic's isChromatic assumes browser `navigator.userAgent`; RN has neither reliably
+    if (typeof navigator === 'undefined' || typeof navigator.userAgent !== 'string') {
+      return false;
+    }
+    return !!isChromatic();
+  } catch {
+    return false;
+  }
+};
+
 const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (args) => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [isOpen, setIsOpen] = React.useState(!!isChromatic());
+  const [isOpen, setIsOpen] = React.useState(safeIsChromatic());
 
   const steps = React.useMemo<SpotlightPopoverTourSteps>(
     () => [
@@ -325,10 +338,11 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
         >
           <SpotlightPopoverTourStep name="step-1">
             <Box width="100%">
-              <Card width="100%" height="100%">
+              {/* No height="100%": RN Storybook StoryView is flex:1 + overflow:hidden and clips siblings. */}
+              <Card width="100%">
                 <CardBody>
                   <Box display="flex" flexDirection="column" gap="spacing.3">
-                    <Box display="flex" alignItems="center" gap="spacing.3">
+                    <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
                       <Text>Refunds</Text>
                       <InfoIcon color="surface.icon.gray.muted" />
                     </Box>
@@ -341,10 +355,10 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
           </SpotlightPopoverTourStep>
           <SpotlightPopoverTourStep name="step-2">
             <Box width="100%">
-              <Card width="100%" height="100%">
+              <Card width="100%">
                 <CardBody>
                   <Box display="flex" flexDirection="column" gap="spacing.3">
-                    <Box display="flex" alignItems="center" gap="spacing.3">
+                    <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
                       <Text>Disputes</Text>
                       <InfoIcon color="interactive.icon.gray.muted" />
                     </Box>
@@ -352,6 +366,7 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
                     <SpotlightPopoverTourStep name="step-3">
                       <Box
                         display="flex"
+                        flexDirection="row"
                         justifyContent="space-between"
                         alignItems="center"
                         gap="spacing.3"
@@ -475,22 +490,22 @@ export const CustomPlacement = () => {
           <Box display="flex" gap="spacing.4" alignItems="stretch">
             <SpotlightPopoverTourStep name="top">
               <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-                top
+                <Text>top</Text>
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="bottom">
               <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-                bottom
+                <Text>bottom</Text>
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="left">
               <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-                left
+                <Text>left</Text>
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="right">
               <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-                right
+                <Text>right</Text>
               </Box>
             </SpotlightPopoverTourStep>
           </Box>
@@ -591,20 +606,34 @@ export const WithScrollablePage = () => {
           setActiveStep(step);
         }}
       >
-        <Text>
-          You can pass individual placement values to each step in the popover. It supports same
-          placement values as Popover (top, bottom, left, right, top-start, top-end, bottom-start,
-          bottom-end, left-start, left-end, right-start, right-end)
-        </Text>
-        <Box>
-          <Text marginY="spacing.9">
-            A{' '}
-            <SpotlightPopoverTourStep name="razorpay-dashboard">
-              <Link href="https://dashboard.razorpay.com">Powerful Dashboard</Link>
-            </SpotlightPopoverTourStep>{' '}
-            for you to get reports and detailed statistics on payments, settlements, refunds and
-            much more for you to take better business decisions.
+        <TourScrollableFrame>
+          <Text>
+            You can pass individual placement values to each step in the popover. It supports same
+            placement values as Popover (top, bottom, left, right, top-start, top-end, bottom-start,
+            bottom-end, left-start, left-end, right-start, right-end)
           </Text>
+          <Box>
+            {/*
+              Native TourStep wraps children in View — cannot nest inside Typography Text.
+              Keep inline flow with Text spans around the step link.
+            */}
+            <Box
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              alignItems="baseline"
+              marginY="spacing.9"
+              gap="spacing.2"
+            >
+              <Text>A</Text>
+              <SpotlightPopoverTourStep name="razorpay-dashboard">
+                <Link href="https://dashboard.razorpay.com">Powerful Dashboard</Link>
+              </SpotlightPopoverTourStep>
+            <Text>
+              for you to get reports and detailed statistics on payments, settlements, refunds and
+              much more for you to take better business decisions.
+            </Text>
+          </Box>
           <Box>
             <Text>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
@@ -674,23 +703,43 @@ export const WithScrollablePage = () => {
               avoid worse pains."
             </Text>
           </Box>
-          <Text marginY="spacing.9">
-            Over the last couple of years, we have worked hard with our banking partners so you
-            don’t have to. Razorpay's servers are completely hosted on
+          <Box
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            alignItems="baseline"
+            marginY="spacing.9"
+            gap="spacing.2"
+          >
+            <Text>
+              Over the last couple of years, we have worked hard with our banking partners so you
+              don’t have to. Razorpay's servers are completely hosted on
+            </Text>
             <SpotlightPopoverTourStep name="amazon-aws">
-              <Link href="https://aws.amazon.com/">&nbsp;Amazon AWS</Link>
-            </SpotlightPopoverTourStep>{' '}
-            with auto-scaling systems that scale up to handle any traffic that you throw at it today
-            or in the future.
-          </Text>
-          <Text marginY="spacing.9">
-            Built for Developers: Robust, clean,{' '}
+              <Link href="https://aws.amazon.com/">Amazon AWS</Link>
+            </SpotlightPopoverTourStep>
+            <Text>
+              with auto-scaling systems that scale up to handle any traffic that you throw at it
+              today or in the future.
+            </Text>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            alignItems="baseline"
+            marginY="spacing.9"
+            gap="spacing.2"
+          >
+            <Text>Built for Developers: Robust, clean,</Text>
             <SpotlightPopoverTourStep name="razorpay-docs">
               <Link href="https://razorpay.com/docs/api/">developer friendly APIs</Link>
-            </SpotlightPopoverTourStep>{' '}
-            , plugins and libraries for all major languages and platforms that let you focus on
-            building great products.
-          </Text>
+            </SpotlightPopoverTourStep>
+            <Text>
+              , plugins and libraries for all major languages and platforms that let you focus on
+              building great products.
+            </Text>
+          </Box>
           <Text>
             Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC "At vero
             eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
@@ -704,7 +753,8 @@ export const WithScrollablePage = () => {
             recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
             voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
           </Text>
-        </Box>
+          </Box>
+        </TourScrollableFrame>
       </SpotlightPopoverTour>
     </Box>
   );
@@ -912,12 +962,12 @@ export const InterruptibleTour = () => {
           <Box display="flex" gap="spacing.4" alignItems="stretch">
             <SpotlightPopoverTourStep name="step-1">
               <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-                Step 1
+                <Text>Step 1</Text>
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="step-2">
               <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-                Step 2
+                <Text>Step 2</Text>
               </Box>
             </SpotlightPopoverTourStep>
           </Box>

@@ -21,5 +21,6 @@ export const parameters = {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 16 },
+  // flex:1 so scrollable story frames can fill StoryView height
+  container: { flex: 1, padding: 16 },
 });

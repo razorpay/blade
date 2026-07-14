@@ -67,7 +67,10 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 };
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
-  ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
+  (
+    { children, title, titleLeading, footer, arrow, side, style, isVisible, animationDuration },
+    ref,
+  ) => {
     const isMobile = useIsMobile();
     const { colorScheme } = useTheme();
     return (
@@ -76,6 +79,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         styles={style}
         side={side}
         isVisible={isVisible}
+        animationDuration={animationDuration}
         isMobile={isMobile}
         colorScheme={colorScheme}
       >
@@ -85,7 +89,9 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
             <BaseBox>{children}</BaseBox>
           </BaseBox>
           {footer ? (
-            <BaseBox alignSelf={isReactNative() ? 'flex-start' : undefined}>{footer}</BaseBox>
+            // Native defaults alignSelf to stretch in column flex, but an earlier
+            // flex-start here shrink-wrapped tour/footer actions and stacked Prev/Next.
+            <BaseBox width="100%">{footer}</BaseBox>
           ) : null}
         </BaseBox>
         {arrow}
