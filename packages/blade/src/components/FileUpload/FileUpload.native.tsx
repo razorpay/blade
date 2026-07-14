@@ -1,5 +1,11 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import type { FileUploadProps, BladeFile, BladeFileList, FileUploadCategoryOption } from './types';
+import type {
+  FileUploadProps,
+  BladeFile,
+  BladeFileList,
+  FileUploadCategoryChangeHandler,
+  FileUploadCategoryOption,
+} from './types';
 import { throwBladeError } from '~utils/logger';
 
 const FileUpload = (_props: FileUploadProps): React.ReactElement => {
@@ -12,4 +18,10 @@ const FileUpload = (_props: FileUploadProps): React.ReactElement => {
 };
 
 export { FileUpload };
-export type { BladeFile, BladeFileList, FileUploadCategoryOption, FileUploadProps };
+export type {
+  BladeFile,
+  BladeFileList,
+  FileUploadCategoryChangeHandler,
+  FileUploadCategoryOption,
+  FileUploadProps,
+};

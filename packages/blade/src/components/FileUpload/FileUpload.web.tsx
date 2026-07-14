@@ -4,6 +4,7 @@ import type {
   BladeFile,
   BladeFileList,
   FileUploadVariableSizeProps,
+  FileUploadCategoryChangeHandler,
   FileUploadCategoryOption,
 } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
@@ -543,4 +544,10 @@ const FileUpload = assignWithoutSideEffects(forwardRef(_FileUpload), {
 });
 
 export { FileUpload };
-export type { BladeFile, BladeFileList, FileUploadCategoryOption, FileUploadProps };
+export type {
+  BladeFile,
+  BladeFileList,
+  FileUploadCategoryChangeHandler,
+  FileUploadCategoryOption,
+  FileUploadProps,
+};
