@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Pressable } from 'react-native';
 import type {
   FileUploadProps,
@@ -203,7 +203,7 @@ const _FileUpload = ({
     [showError ? errorText : '', showHelpText ? helpText : ''].filter(Boolean).join(' ');
   const { labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
-  useEffect(() => {
+  useMemo(() => {
     for (const file of selectedFiles) {
       if (!file.id) {
         file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
@@ -340,14 +340,16 @@ const _FileUpload = ({
               const fileToReupload = selectedFiles[0];
               const newFiles = selectedFiles.filter(({ id }) => id !== fileToReupload.id);
               setSelectedFiles(() => newFiles);
-              // Mirror web's inputRef.click() — re-fire the tap signal so the consumer
-              // can open their file picker without duplicating that logic in onReupload.
-              handlePress();
+              // Fire onReupload before handlePress so consumers can set a guard flag
+              // to skip the onChange handler when it fires synchronously right after.
               if (onReupload) {
                 onReupload({ file: fileToReupload });
               } else {
                 onRemove?.({ file: fileToReupload });
               }
+              // Mirror web's inputRef.click() — re-fire the tap signal so the consumer
+              // can open their file picker without duplicating that logic in onReupload.
+              handlePress();
             }}
             onDismiss={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
@@ -393,12 +395,14 @@ const _FileUpload = ({
               onReupload={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(() => newFiles);
-                handlePress();
+                // Fire onReupload before handlePress so consumers can set a guard flag
+                // to skip the onChange handler when it fires synchronously right after.
                 if (onReupload) {
                   onReupload({ file });
                 } else {
                   onRemove?.({ file });
                 }
+                handlePress();
               }}
               onDismiss={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
