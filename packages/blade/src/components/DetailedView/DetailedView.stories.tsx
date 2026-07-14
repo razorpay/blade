@@ -260,6 +260,7 @@ const DetailedViewWithTableTemplate: StoryFn<typeof Drawer> = ({ ...args }) => {
                 <TableRow
                   key={index}
                   item={tableItem}
+                  isActive={isDrawerOpen && selectedItem?.id === tableItem.id}
                   onClick={() => {
                     setSelectedItem(tableItem);
                     setIsDrawerOpen(true);

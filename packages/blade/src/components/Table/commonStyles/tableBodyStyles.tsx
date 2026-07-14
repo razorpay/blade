@@ -66,6 +66,31 @@ const getTableBodyStyles = ({
     ...(shouldAddCommonStyle && {
       [`${getRowWrapperSelector({
         isVirtualized,
+      })} .active-row .cell-wrapper-base`]: {
+        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelected),
+      },
+      [`${getRowWrapperSelector({
+        isVirtualized,
+      })} .active-row:hover:not(.disabled-row) .cell-wrapper-base`]: {
+        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedHover),
+        ...getTableActionsHoverStyles({
+          hoverColor: tableRow.nonStripe.backgroundColorSelectedHover,
+          backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedHover,
+          theme,
+        }),
+      },
+      [`${getRowWrapperSelector({
+        isVirtualized,
+      })} .active-row:focus:not(.disabled-row) .cell-wrapper-base`]: {
+        backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedFocus),
+        ...getTableActionsHoverStyles({
+          hoverColor: tableRow.nonStripe.backgroundColorSelectedFocus,
+          backgroundGradientColor: tableRow.nonStripeWrapper.backgroundColorSelectedFocus,
+          theme,
+        }),
+      },
+      [`${getRowWrapperSelector({
+        isVirtualized,
       })} .row-select-single-selected .cell-wrapper-base, .row-select-selected .cell-wrapper-base`]: {
         backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelected),
       },
