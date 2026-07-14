@@ -905,7 +905,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                           fontSize={AXIS_LABEL_FONT_SIZE}
                           fill={tickColor}
                           textAnchor="middle"
-                          transform={`rotate(-90 ${-(PLOT_PADDING.left - AXIS_LABEL_FONT_SIZE - 2)} ${plotHeight / 2})`}
+                          transform={`rotate(-90 ${-(
+                            PLOT_PADDING.left -
+                            AXIS_LABEL_FONT_SIZE -
+                            2
+                          )} ${plotHeight / 2})`}
                         >
                           {slots.yLabel}
                         </SvgText>
