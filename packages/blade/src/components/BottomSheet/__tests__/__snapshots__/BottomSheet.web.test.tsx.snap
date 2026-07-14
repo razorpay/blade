@@ -499,6 +499,18 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   z-index: 2;
 }
 
+.c18.c18.c18.c18.c18.active-focus {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
 .c18.c18.c18.c18.c18[aria-selected=true],
 .c18.c18.c18.c18.c18[aria-selected=true]:hover {
   background-color: hsla(206,10%,29%,0.09);
@@ -531,6 +543,18 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c25.c25.c25.c25.c25:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c25.c25.c25.c25.c25.active-focus {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
