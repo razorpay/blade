@@ -210,6 +210,22 @@ const niceFloor = (raw: number): number => {
   return -niceCeil(-raw);
 };
 
+/** Parse a chart cell to a finite number, or null when the value is missing/invalid. */
+const toNullableNumber = (raw: unknown): number | null => {
+  if (raw === null || raw === undefined) return null;
+  const value = Number(raw);
+  return Number.isNaN(value) || !isFinite(value) ? null : value;
+};
+
+/** Y-domain max: nice-ceil positives; clamp all-negative/zero-max to 0; keep 1 for all-zero. */
+const resolveYMax = (dataMax: number): number => {
+  if (dataMax > 0) return niceCeil(dataMax);
+  if (dataMax < 0) return 0;
+  return 1;
+};
+
+const MISSING_TOOLTIP_VALUE = '—';
+
 const formatYTick = (value: number): string => {
   const abs = Math.abs(value);
   if (abs >= 1_000_000) return `${(value / 1_000_000).toFixed(abs >= 10_000_000 ? 0 : 1)}M`;
@@ -559,11 +575,12 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     let max = -Infinity;
     data.forEach((row) => {
       linesForDomain.forEach((line) => {
-        const value = Number(row[line.dataKey]);
-        if (isNumber(value) && isFinite(value)) {
-          if (value < min) min = value;
-          if (value > max) max = value;
-        }
+        // Skip null/undefined cells — Number(null) === 0 would otherwise pull the
+        // domain to 0 and flatten sparse / connectNulls charts.
+        const value = toNullableNumber(row[line.dataKey]);
+        if (value === null) return;
+        if (value < min) min = value;
+        if (value > max) max = value;
       });
     });
     if (min === Infinity) min = 0;
@@ -573,7 +590,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   const hasNegatives = dataMin < 0;
   const yMin = hasNegatives ? niceFloor(dataMin) : 0;
-  const yMax = niceCeil(dataMax);
+  const yMax = resolveYMax(dataMax);
   const yRange = yMax - yMin;
   const yTicks = useMemo(() => {
     const ticks: number[] = [];
@@ -619,9 +636,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const lineGeometries = useMemo<LineGeometry[]>(() => {
     return visibleLines.map((line) => {
       const points: LinePoint[] = data.map((row, index) => {
-        const raw = row[line.dataKey];
-        const value =
-          raw === null || raw === undefined || Number.isNaN(Number(raw)) ? null : Number(raw);
+        const value = toNullableNumber(row[line.dataKey]);
         return {
           x: xForIndex(index),
           y: value === null ? 0 : plotHeight - ((value - yMin) / yRange) * plotHeight,
@@ -703,16 +718,16 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const tooltipRows = useMemo(() => {
     if (!activeRow) return [];
     return visibleLines.map((line) => {
-      const rawValue = Number(activeRow[line.dataKey]) || 0;
+      const rawValue = toNullableNumber(activeRow[line.dataKey]);
       const color = resolveColor(line.dataKey, line.color);
-      let displayValue = String(rawValue);
+      let displayValue = rawValue === null ? MISSING_TOOLTIP_VALUE : String(rawValue);
       let label = line.name ?? line.dataKey;
       const formatter = slots.tooltipFormatter;
       if (formatter) {
         try {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const formatted = (formatter as any)(
-            rawValue,
+            rawValue ?? undefined,
             line.dataKey,
             undefined,
             activeIndex,

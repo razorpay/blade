@@ -227,6 +227,70 @@ describe('<ChartLineWrapper /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render with all-negative data without a positive yMax', () => {
+    const allNegativeData = [
+      { name: 'Jan', profit: -2000 },
+      { name: 'Feb', profit: -1500 },
+      { name: 'Mar', profit: -3000 },
+      { name: 'Apr', profit: -500 },
+    ];
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={allNegativeData} testID="all-negative">
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartLine dataKey="profit" name="Profit" />
+      </ChartLineWrapper>,
+    );
+    fireLayout(getByTestId('all-negative-layout'));
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should ignore null cells when computing y-domain (connectNulls)', () => {
+    const sparseData = [
+      { name: 'Jan', sales: 4000 },
+      { name: 'Feb', sales: null },
+      { name: 'Mar', sales: 4200 },
+      { name: 'Apr', sales: 4100 },
+    ];
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={sparseData} testID="sparse-null">
+        <ChartCartesianGrid />
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartLine dataKey="sales" name="Sales" connectNulls />
+      </ChartLineWrapper>,
+    );
+    fireLayout(getByTestId('sparse-null-layout'));
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should show a placeholder in the tooltip for null values', () => {
+    const sparseData = [
+      { name: 'Jan', sales: 4000 },
+      { name: 'Feb', sales: null },
+      { name: 'Mar', sales: 4200 },
+    ];
+    const { getByTestId, getByText, queryByText } = renderWithTheme(
+      <ChartLineWrapper data={sparseData} testID="null-tooltip">
+        <ChartTooltip />
+        <ChartLine dataKey="sales" name="Sales" connectNulls />
+      </ChartLineWrapper>,
+    );
+
+    const surface = getByTestId('null-tooltip-layout');
+    fireLayout(surface);
+
+    // Scrub to Feb (index 1) — layout 400 wide, 3 points → spacing ~200.
+    const atFeb = {
+      nativeEvent: { locationX: 40 + 200, locationY: 150, pageX: 240, pageY: 150 },
+    };
+    fireEvent(surface, 'responderGrant', atFeb);
+    expect(getByText('Sales')).toBeTruthy();
+    expect(getByText('—')).toBeTruthy();
+    expect(queryByText('0')).toBeFalsy();
+  });
+
   it('should accept a testID via metaAttribute', () => {
     const { getByTestId } = renderWithTheme(
       <ChartLineWrapper data={mockData} testID="line-chart-test">
