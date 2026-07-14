@@ -109,7 +109,9 @@ const _InlineSelectorTrigger = ({
           {displayLabel}
         </Text>
       </BaseBox>
-      <ChevronDownIcon size="medium" color="surface.icon.gray.muted" flexShrink={0} />
+      <BaseBox flexShrink={0}>
+        <ChevronDownIcon size="medium" color="surface.icon.gray.muted" />
+      </BaseBox>
     </StyledInlineSelectorTrigger>
   );
 };
