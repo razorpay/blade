@@ -569,4 +569,54 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
       'profile-options-wrapper',
     );
   });
+
+  it('should show the clear button by default after selecting and clear on click', async () => {
+    const user = userEvent.setup();
+    const onClearButtonClick = jest.fn();
+    const { getByRole, queryByLabelText } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="Fruits" onClearButtonClick={onClearButtonClick} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    await user.click(getByRole('button', { name: 'Fruits' }));
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+
+    const clearButton = queryByLabelText('Clear Fruits value');
+    expect(clearButton).toBeTruthy();
+
+    await user.click(clearButton!);
+    expect(onClearButtonClick).toHaveBeenCalled();
+    expect(queryByLabelText('Clear Fruits value')).toBeFalsy();
+  });
+
+  it('should not render the clear button when showClearButton is false, even when selected', async () => {
+    const user = userEvent.setup();
+    const { getByRole, queryByLabelText } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="Fruits" showClearButton={false} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    await user.click(getByRole('button', { name: 'Fruits' }));
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+
+    // chip is selected (shows the value) but the clear button is hidden
+    expect(getByRole('button', { name: /Fruits/i })).toBeInTheDocument();
+    expect(queryByLabelText('Clear Fruits value')).toBeFalsy();
+  });
 });

@@ -481,6 +481,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 necessityIndicator={necessityIndicator}
                 format={finalFormat}
                 placeholder={finalInputPlaceHolder}
+                // Chips show the clear (cross) button by default when a value is selected.
+                // Consumers can pass `showClearButton={false}` for filters that must always
+                // hold a value (e.g. a mandatory default date).
+                showClearButton={showClearButton ?? true}
                 onClearButtonChange={handleClear}
                 // Effective Selection type should only be used for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}

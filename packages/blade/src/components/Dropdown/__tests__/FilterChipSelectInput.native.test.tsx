@@ -171,6 +171,24 @@ describe('<FilterChipSelectInput /> (native)', () => {
     expect(getByLabelText('Clear Status value')).toBeTruthy();
   });
 
+  it('should reflect a controlled single selection in multiple mode as the option name', () => {
+    const { getAllByText, getByLabelText } = renderWithTheme(
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput label="Status" name="status" value={['active']} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Inactive" value="inactive" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    // A single selection in multiple mode shows the option name (in the chip + ActionList), no counter.
+    expect(getAllByText('Active').length).toBeGreaterThanOrEqual(2);
+    expect(getByLabelText('Clear Status value')).toBeTruthy();
+  });
+
   it('should reflect a controlled multiple value with counter and clear button', () => {
     const { getByText, getByLabelText } = renderWithTheme(
       <Dropdown selectionType="multiple">
@@ -184,7 +202,7 @@ describe('<FilterChipSelectInput /> (native)', () => {
       </Dropdown>,
     );
 
-    // Controlled multi passes the array through as chip value → Counter shows selection count.
+    // More than one selected → the chip collapses to a compact counter of the selection count.
     expect(getByText('2')).toBeTruthy();
     expect(getByLabelText('Clear Status value')).toBeTruthy();
   });

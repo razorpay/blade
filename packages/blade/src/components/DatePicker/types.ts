@@ -302,8 +302,16 @@ type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'labe
    */
   label: string;
   /**
+   * Callback which fires when the clear (cross) button is clicked.
    *
-   * Callback which fires when clear button is clicked
+   * Clearing also fires `onChange` with an empty value (`null` for single selection,
+   * `[null, null]` for range). When the FilterChipDatePicker is controlled (a `value` is
+   * provided), the chip cannot clear itself — you must reset `value` in response to
+   * `onChange`/`onClearButtonClick`. In the uncontrolled case (only `defaultValue`), the chip
+   * clears itself automatically.
+   *
+   * Tip: pass `showClearButton={false}` to hide the clear button for filters that must always
+   * hold a value.
    */
   onClearButtonClick?: () => void;
 };
