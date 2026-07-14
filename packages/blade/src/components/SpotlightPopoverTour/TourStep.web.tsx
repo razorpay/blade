@@ -2,7 +2,6 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import { useTourContext } from './TourContext';
-import type { TourElement } from './TourContext';
 import type { SpotlightPopoverTourStepProps } from './types';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -11,7 +10,7 @@ const _SpotlightPopoverTourStep = ({
   name,
   children,
 }: SpotlightPopoverTourStepProps): React.ReactElement => {
-  const ref = React.useRef<TourElement>(null);
+  const ref = React.useRef<HTMLElement>(null);
   const { attachStep, removeStep } = useTourContext();
 
   React.useLayoutEffect(() => {

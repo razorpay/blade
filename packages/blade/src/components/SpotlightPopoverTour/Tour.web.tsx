@@ -4,14 +4,14 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
 import { TourContext } from './TourContext';
-import type { TourElement } from './TourContext';
 import { TourPopover } from './TourPopover';
 import {
   smoothScroll,
+  useDelayedState,
   useIntersectionObserver,
+  useIsTransitioningBetweenSteps,
   useLockBodyScroll,
 } from './utils';
-import { useDelayedState, useIsTransitioningBetweenSteps } from './tourHooks';
 import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './types';
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
@@ -28,7 +28,7 @@ const SpotlightPopoverTour = ({
   children,
 }: SpotlightPopoverTourProps): React.ReactElement => {
   const { theme } = useTheme();
-  const [refIdMap, setRefIdMap] = useState(new Map<string, React.RefObject<TourElement>>());
+  const [refIdMap, setRefIdMap] = useState(new Map<string, React.RefObject<HTMLElement>>());
   const [size, setSize] = useState<SpotlightPopoverTourMaskRect>({
     x: 0,
     y: 0,
@@ -44,7 +44,7 @@ const SpotlightPopoverTour = ({
   const [isScrolling, setIsScrolling] = useState(false);
 
   const currentStepRef = refIdMap.get(steps[activeStep]?.name);
-  const intersection = useIntersectionObserver(currentStepRef as React.RefObject<Element>, {
+  const intersection = useIntersectionObserver(currentStepRef!, {
     threshold: 0.5,
   });
 
@@ -82,7 +82,7 @@ const SpotlightPopoverTour = ({
     onFinish?.();
   }, [onFinish]);
 
-  const attachStep = useCallback((id: string, ref: React.RefObject<TourElement>) => {
+  const attachStep = useCallback((id: string, ref: React.RefObject<HTMLElement>) => {
     if (!ref) return;
     setRefIdMap((prev) => {
       return new Map(prev).set(id, ref);
@@ -102,7 +102,7 @@ const SpotlightPopoverTour = ({
       const ref = refIdMap.get(steps[activeStep]?.name);
       if (!ref?.current) return;
 
-      const rect = (ref.current as HTMLElement).getBoundingClientRect();
+      const rect = ref.current.getBoundingClientRect();
       setSize({
         x: rect.x,
         y: rect.y,
@@ -129,7 +129,7 @@ const SpotlightPopoverTour = ({
     if (intersection?.isIntersecting) return;
 
     setIsScrolling(true);
-    smoothScroll(ref.current as Element, {
+    smoothScroll(ref.current, {
       behavior: 'smooth',
       block: 'center',
       inline: 'center',

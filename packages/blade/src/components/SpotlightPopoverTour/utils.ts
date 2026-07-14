@@ -4,9 +4,65 @@
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { useDelayedState, useIsTransitioningBetweenSteps } from './tourHooks';
+import { usePrevious } from '~utils';
 import { throwBladeError } from '~utils/logger';
 import { useScrollLock } from '~utils/useScrollLock';
+
+/**
+ * Hook to delay the state change
+ *
+ * This is used to delay the active step change to allow for transitions to finish
+ * This prevents the popover's footer from changing it's JSX while it's transitioning
+ */
+function useDelayedState<T>(
+  initialState: T,
+  delay: number,
+): [T, React.Dispatch<React.SetStateAction<T>>] {
+  const [delayedState, _setDelayedState] = React.useState(initialState);
+  const timeoutRef = React.useRef<number | undefined>(undefined);
+
+  React.useEffect(() => {
+    timeoutRef.current = window.setTimeout(() => {
+      _setDelayedState(initialState);
+    }, delay);
+
+    return () => {
+      window.clearTimeout(timeoutRef.current);
+    };
+  }, [delay, initialState]);
+
+  const setDelayedState = React.useCallback((newState: React.SetStateAction<T>) => {
+    _setDelayedState(newState);
+    window.clearTimeout(timeoutRef.current);
+  }, []);
+
+  return [delayedState, setDelayedState];
+}
+
+/**
+ * Keep track of when we are transitioning between steps
+ *
+ * This is used to prevent the popover from jumping to the next step before animations are finished
+ */
+const useIsTransitioningBetweenSteps = (activeStep: number, transitionDelay: number) => {
+  const prevActiveStep = usePrevious(activeStep);
+  const [isTransitioning, setIsTransitioning] = React.useState(false);
+
+  // Keep track of when we are transitioning between steps
+  React.useEffect(() => {
+    if (prevActiveStep === undefined) return;
+    setIsTransitioning(true);
+    const timeout = setTimeout(() => {
+      setIsTransitioning(false);
+    }, transitionDelay);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [prevActiveStep, transitionDelay]);
+
+  return isTransitioning;
+};
 
 // https://stackoverflow.com/questions/46795955/how-to-know-scroll-to-element-is-done-in-javascript
 function smoothScroll(element: Element | null, options: ScrollIntoViewOptions) {
