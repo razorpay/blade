@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
-import { Line } from 'react-native-svg';
+import { Line, Path } from 'react-native-svg';
 import {
   ChartArea,
   ChartAreaWrapper,
@@ -181,8 +181,6 @@ describe('<ChartAreaWrapper /> (native)', () => {
   });
 
   it('does not plot a series with hide, but still shows it in the legend when showLegend is true', () => {
-    const Path = require('react-native-svg').Path;
-
     const hidden = renderWithTheme(
       <ChartAreaWrapper data={sampleData} testID="hidden">
         <ChartXAxis dataKey="month" />
