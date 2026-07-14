@@ -6,6 +6,10 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env.local') });
 
 const CHROMATIC_URL = process.env.CHROMATIC_URL ?? '';
 
+if (!CHROMATIC_URL) {
+  throw new Error('CHROMATIC_URL must be set');
+}
+
 export default defineConfig({
   testDir: './',
   use: {
