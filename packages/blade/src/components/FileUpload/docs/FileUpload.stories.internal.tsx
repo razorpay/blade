@@ -160,7 +160,9 @@ const MockFilePicker = ({
               <Pressable
                 onPress={() => toggleFile(index)}
                 accessibilityRole="button"
-                accessibilityLabel={`${file.name}, ${formatFileSize(file.size)}, ${file.type.split('/')[1]}`}
+                accessibilityLabel={`${file.name}, ${formatFileSize(file.size)}, ${
+                  file.type.split('/')[1]
+                }`}
                 style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
               >
                 <Box
