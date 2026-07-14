@@ -378,11 +378,7 @@ const AreaSeries = ({
         return (
           <G key={`segment-${segIndex}`}>
             {fillD ? (
-              <AnimatedPath
-                d={fillD}
-                fill={`url(#${gradientId})`}
-                animatedProps={animatedProps}
-              />
+              <AnimatedPath d={fillD} fill={`url(#${gradientId})`} animatedProps={animatedProps} />
             ) : null}
             <Path
               d={strokeD}
@@ -818,6 +814,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
             if (count === 0) return false;
             const start = touchStartLocationRef.current;
             if (!start) return true;
+            if (!e?.nativeEvent) return true;
             const dx = Math.abs(e.nativeEvent.locationX - start.x);
             const dy = Math.abs(e.nativeEvent.locationY - start.y);
             return dx >= SCRUB_MOVE_THRESHOLD && dx > dy;
@@ -949,7 +946,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                   const chipHeight = 30;
                   const truncatedLabel =
                     line.label && line.label.length * 6 + 16 > REF_LABEL_MAX_WIDTH
-                      ? line.label.slice(0, Math.floor((REF_LABEL_MAX_WIDTH - 16) / 6) - 1) + '…'
+                      ? `${line.label.slice(0, Math.floor((REF_LABEL_MAX_WIDTH - 16) / 6) - 1)}…`
                       : line.label;
                   if (line.orientation === 'horizontal') {
                     const value = Number(line.value);
