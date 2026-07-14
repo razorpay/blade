@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade-svelte': patch
+'@razorpay/blade-svelte': minor
 ---
 
 feat(blade-svelte): add BladeProvider theme context

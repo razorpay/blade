@@ -132,13 +132,8 @@ Prefer `BladeProvider` `colorScheme` (supports nested scopes):
 
 ```svelte
 <script>
-  import { BladeProvider, Button, useTheme } from '@razorpay/blade-svelte/components';
+  import { BladeProvider, Button } from '@razorpay/blade-svelte/components';
   import { bladeTheme } from '@razorpay/blade-core/tokens';
-
-  function ThemeToggle() {
-    const theme = $derived(useTheme());
-    return null; // use in a child component — see below
-  }
 </script>
 
 <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
