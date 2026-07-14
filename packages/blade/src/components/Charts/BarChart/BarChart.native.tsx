@@ -493,8 +493,9 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
                               dataColorMapping[bar.dataKey]?.colorToken ?? bar.color;
                             const fill = fillToken ? getIn(theme.colors, fillToken) : tickColor;
                             const accentToken = getHighestColorInRange({
-                              colorToken: (fillToken ??
-                                'data.background.categorical.azure.faint') as ChartColorToken,
+                              colorToken:
+                                fillToken ??
+                                ('data.background.categorical.azure.faint' as ChartColorToken),
                               followIntensityMapping: Boolean(
                                 dataColorMapping[bar.dataKey]?.isCustomColor,
                               ),
