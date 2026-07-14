@@ -66,7 +66,7 @@ const SpotlightPopoverTourFooter = ({
             }
             {...analyticsStepInfoProps}
           >
-            {actions.secondary.text ?? ''}
+            {actions.secondary?.text ?? ''}
           </Button>
         ) : null}
         {hasPrimaryAction ? (
@@ -79,7 +79,7 @@ const SpotlightPopoverTourFooter = ({
             }
             {...analyticsStepInfoProps}
           >
-            {actions.primary.text ?? ''}
+            {actions.primary?.text ?? ''}
           </Button>
         ) : null}
       </Box>

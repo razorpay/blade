@@ -139,6 +139,13 @@ describe('<SpotlightPopoverTour /> (native)', () => {
     await act(async () => {
       jest.advanceTimersByTime(animationDuration);
     });
+    // Flush the 100ms scroll delay + measureStepRect 500ms ceiling
+    await act(async () => {
+      jest.advanceTimersByTime(500);
+    });
+    // On step transitions the settle timer starts at animationDuration+100,
+    // so the measureStepRect 500ms ceiling lands beyond the first 500ms advance.
+    // Add a second advance to clear it and the FORCE_REVEAL_MS (120ms) timer.
     await act(async () => {
       jest.advanceTimersByTime(500);
     });
