@@ -156,6 +156,7 @@ export const MetaConstants = {
   ModalScrollOverlay: 'modal-scroll-overlay',
   VisuallyHidden: 'visually-hidden',
   FormLabel: 'form-label',
+  Slider: 'slider',
   Switch: 'switch',
   SwitchLabel: 'switch-label',
   StyledBaseInput: 'styled-base-input',

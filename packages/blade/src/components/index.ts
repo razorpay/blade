@@ -67,6 +67,7 @@ export * from './SpotlightPopoverTour';
 export * from './Stagger';
 export * from './StepGroup';
 export * from './Slide';
+export * from './Slider';
 export * from './Switch';
 export * from './Table';
 export * from './Tabs';

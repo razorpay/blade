@@ -1355,6 +1355,21 @@ const componentData: ComponentStatusDataType = [
       },
     },
   },
+  {
+    name: 'Slider',
+    description:
+      'Slider allows users to select one value or a bounded range using pointer, touch, or keyboard input.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/Slider',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType, FrameworkStatus };
