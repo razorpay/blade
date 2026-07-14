@@ -103,7 +103,15 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
     if (isSizeVariable && categoryOptions) {
       throwBladeError({
-        message: 'categoryOptions can only be used when size is "medium" or "large"',
+        message: 'categoryOptions cannot be used when size is "variable"',
+        moduleName: 'FileUpload',
+      });
+    }
+
+    if (!categoryOptions && (onCategoryChange || categoryPlaceholder || categoryValue)) {
+      throwBladeError({
+        message:
+          'onCategoryChange, categoryPlaceholder, and categoryValue require categoryOptions to be provided',
         moduleName: 'FileUpload',
       });
     }

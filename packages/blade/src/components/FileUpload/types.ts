@@ -115,7 +115,7 @@ type FileUploadCommonProps = {
   testID?: string;
   /**
    * List of options for the inline category dropdown on each FileUploadItem.
-   * Only rendered in medium and large sizes when file status is not 'uploading'.
+   * Not rendered when `size` is `'variable'` or when file status is `'uploading'`.
    */
   categoryOptions?: FileUploadCategoryOption[];
   /**
@@ -244,7 +244,7 @@ type FileUploadItemProps = Pick<
   file: BladeFile;
   /**
    * List of options for the inline category dropdown.
-   * Only rendered in medium and large sizes when file status is not 'uploading'.
+   * Not rendered when `size` is `'variable'` or when file status is `'uploading'`.
    */
   categoryOptions?: FileUploadCategoryOption[];
   /**

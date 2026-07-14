@@ -71,7 +71,7 @@ const _InlineSelectorTrigger = ({
         onChange({ value: values[0], file });
       }
     },
-    name: file.id ?? file.name,
+    name: file.id ?? file.name ?? 'file',
     triggererRef,
     isSelectInput: true,
   });

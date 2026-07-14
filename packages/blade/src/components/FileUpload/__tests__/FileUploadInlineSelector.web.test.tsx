@@ -306,7 +306,7 @@ describe('<FileUpload /> integration with category selector', () => {
           onCategoryChange={jest.fn()}
         />,
       ),
-    ).toThrow('categoryOptions can only be used when size is "medium" or "large"');
+    ).toThrow('categoryOptions cannot be used when size is "variable"');
   });
 
   it('should resolve per-file category values via categoryValue function', () => {
