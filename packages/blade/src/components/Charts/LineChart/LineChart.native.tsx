@@ -199,7 +199,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
 };
 
 const niceCeil = (raw: number): number => {
-  if (raw <= 0) return 1;
+  if (raw <= 0) return 0;
   const exponent = Math.floor(Math.log10(raw));
   const fraction = raw / 10 ** exponent;
   const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
@@ -852,6 +852,18 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                           </SvgText>
                         );
                       })}
+                      {slots.yLabel ? (
+                        <SvgText
+                          x={-28}
+                          y={plotHeight / 2}
+                          fontSize={AXIS_LABEL_FONT_SIZE}
+                          fill={tickColor}
+                          textAnchor="middle"
+                          transform={`rotate(-90 -28 ${plotHeight / 2})`}
+                        >
+                          {slots.yLabel}
+                        </SvgText>
+                      ) : null}
                     </>
                   )}
 
