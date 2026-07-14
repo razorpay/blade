@@ -95,7 +95,11 @@ export const WithResetButton = (): React.ReactElement => {
   };
 
   return (
-    <FilterChipGroup clearButtonText="Reset" clearButtonBehavior="reset" onClearButtonClick={handleReset}>
+    <FilterChipGroup
+      clearButtonText="Reset"
+      clearButtonBehavior="reset"
+      onClearButtonClick={handleReset}
+    >
       <Dropdown>
         <FilterChipSelectInput
           label="Sort"

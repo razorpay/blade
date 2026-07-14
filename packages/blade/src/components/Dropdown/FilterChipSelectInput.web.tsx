@@ -72,10 +72,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   const isUnControlled = options.length > 0 && props.value === undefined;
   // Currently we are having 2 context for selectedFilters. One is for FilterChipGroup and other is for  ListView
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
-  const {
-    clearFilterCallbackTriggerer,
-    setFilterChipGroupSelectedFilters,
-  } = useFilterChipGroupContext();
+  const { clearFilterCallbackTriggerer, setFilterChipGroupSelectedFilters } =
+    useFilterChipGroupContext();
 
   const getValuesArrayFromIndices = (): string[] => {
     let indices: number[] = [];
@@ -109,7 +107,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
     if (isUnControlled) {
       if (listViewSelectedFilters[label]) {
-        const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
+        const savedIndices = listViewSelectedFilters[label] as unknown as number[];
         setSelectedIndices(savedIndices);
         const inputValue = savedIndices.map((selectionIndex) => options[selectionIndex].value);
         setUncontrolledInputValue(inputValue);
@@ -120,7 +118,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
         setSelectedIndices([]);
       }
     } else if (listViewSelectedFilters[label]) {
-      const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
+      const savedIndices = listViewSelectedFilters[label] as unknown as number[];
       setSelectedIndices(savedIndices);
       // Sync selected indices when controlled value changes or on first render with options loaded
     } else if (valueNotEmpty && !isValueAndSelectedIndicesSynced && options.length > 0) {
@@ -160,7 +158,9 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       return getUnControlledFilterChipValue();
     }
     if (Array.isArray(props.value)) {
-      return props.value.map((selectionValue) => getTitleFromValue(selectionValue) || selectionValue);
+      return props.value.map(
+        (selectionValue) => getTitleFromValue(selectionValue) || selectionValue,
+      );
     }
     return getTitleFromValue(props.value) || props.value;
   };

@@ -147,9 +147,7 @@ const renderValue = (
   value: BaseFilterChipProps['value'],
   isDisabled?: boolean,
 ): React.ReactElement => {
-  const valueColor = isDisabled
-    ? 'interactive.text.gray.disabled'
-    : 'interactive.text.gray.normal';
+  const valueColor = isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.normal';
 
   // For multiple selection: when a single option is selected we show its name (no redundant
   // "1" counter); once more than one is selected we collapse to a compact counter.
@@ -219,16 +217,16 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<View, BaseFilterChipProps>
           isDisabled
             ? undefined
             : (e: GestureResponderEvent) => {
-                onClick?.((e as unknown) as React.MouseEventHandler);
+                onClick?.(e as unknown as React.MouseEventHandler);
               }
         }
-        {...(({
+        {...({
           onKeyDown: isDisabled
             ? undefined
             : (e: GestureResponderEvent) => {
-                onKeyDown?.((e as unknown) as React.KeyboardEvent<Element>);
+                onKeyDown?.(e as unknown as React.KeyboardEvent<Element>);
               },
-        } as unknown) as Record<string, unknown>)}
+        } as unknown as Record<string, unknown>)}
         {...makeAccessible({
           ...accessibilityProps,
           role: accessibilityProps?.role ?? 'button',

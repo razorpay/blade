@@ -39,8 +39,7 @@ const FilterChipGroup = ({
     }
     setClearFilterCallbackTriggerer((prev) => prev + 1);
   };
-  const isPlural =
-    filterChipGroupSelectedFilters.length > 1 || selectedFiltersCount > 1;
+  const isPlural = filterChipGroupSelectedFilters.length > 1 || selectedFiltersCount > 1;
   const actionButtonText = clearButtonText ?? `Clear Filter${isPlural ? 's' : ''}`;
   return (
     <FilterChipGroupProvider

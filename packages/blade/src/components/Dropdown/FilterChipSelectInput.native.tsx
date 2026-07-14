@@ -71,10 +71,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   } = useDropdown();
   const isUnControlled = options.length > 0 && props.value === undefined;
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
-  const {
-    clearFilterCallbackTriggerer,
-    setFilterChipGroupSelectedFilters,
-  } = useFilterChipGroupContext();
+  const { clearFilterCallbackTriggerer, setFilterChipGroupSelectedFilters } =
+    useFilterChipGroupContext();
 
   const getValuesArrayFromIndices = (): string[] => {
     let indices: number[] = [];
@@ -107,7 +105,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
     if (isUnControlled) {
       if (listViewSelectedFilters[label]) {
-        const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
+        const savedIndices = listViewSelectedFilters[label] as unknown as number[];
         setSelectedIndices(savedIndices);
         const inputValue = savedIndices
           .map((i) => options[i]?.value)
@@ -120,7 +118,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
         setSelectedIndices([]);
       }
     } else if (listViewSelectedFilters[label]) {
-      const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
+      const savedIndices = listViewSelectedFilters[label] as unknown as number[];
       setSelectedIndices(savedIndices);
     } else if (valueNotEmpty && !isValueAndSelectedIndicesSynced && options.length > 0) {
       const newSelectedIndices =
@@ -159,7 +157,9 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
       return getUnControlledFilterChipValue();
     }
     if (Array.isArray(props.value)) {
-      return props.value.map((selectionValue) => getTitleFromValue(selectionValue) || selectionValue);
+      return props.value.map(
+        (selectionValue) => getTitleFromValue(selectionValue) || selectionValue,
+      );
     }
     return getTitleFromValue(props.value) || props.value;
   };

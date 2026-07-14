@@ -542,9 +542,7 @@ export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDate
 
 FilterChipDatePickerStorySingleStory.storyName = 'FilterChipDatePicker (Single Selection)';
 
-export const FilterChipDatePickerClearButtonBehavior: StoryFn<
-  typeof FilterChipDatePicker
-> = () => {
+export const FilterChipDatePickerClearButtonBehavior: StoryFn<typeof FilterChipDatePicker> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.8" maxWidth="760px">
       <Text>

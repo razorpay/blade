@@ -592,7 +592,7 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
     const clearButton = queryByLabelText('Clear Fruits value');
     expect(clearButton).toBeTruthy();
 
-    await user.click(clearButton!);
+    await user.click(clearButton);
     expect(onClearButtonClick).toHaveBeenCalled();
     expect(queryByLabelText('Clear Fruits value')).toBeFalsy();
   });
