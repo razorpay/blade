@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
+import type { Side } from '@floating-ui/react';
 import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { PopoverContent } from '../Popover/PopoverContent';
@@ -34,7 +35,7 @@ type PositionCoords = {
 };
 
 type FallbackPosition = PositionCoords & {
-  side: string;
+  side: Side;
 };
 
 type MeasurableHost = {
@@ -45,7 +46,7 @@ type MeasurableHost = {
 
 const computeFallbackPosition = (
   rect: { x: number; y: number; width: number; height: number },
-  side: string,
+  side: Side,
   gap: number,
 ): FallbackPosition => {
   const offsetGap = gap + ARROW_HEIGHT;
@@ -55,7 +56,7 @@ const computeFallbackPosition = (
   const statusPad = 48;
   const edgePad = 12;
 
-  const bySide = (resolvedSide: string): PositionCoords => {
+  const bySide = (resolvedSide: Side): PositionCoords => {
     switch (resolvedSide) {
       case 'bottom':
         return {
@@ -87,7 +88,7 @@ const computeFallbackPosition = (
     }
   };
 
-  const hasHorizontalRoom = (resolvedSide: string): boolean => {
+  const hasHorizontalRoom = (resolvedSide: Side): boolean => {
     if (resolvedSide === 'left') {
       return rect.x - offsetGap - estimatedPopoverWidth >= edgePad;
     }
@@ -97,7 +98,7 @@ const computeFallbackPosition = (
     return true;
   };
 
-  const hasVerticalRoom = (resolvedSide: string): boolean => {
+  const hasVerticalRoom = (resolvedSide: Side): boolean => {
     if (resolvedSide === 'bottom') {
       return rect.y + rect.height + offsetGap + estimatedPopoverHeight <= windowHeight - edgePad;
     }
