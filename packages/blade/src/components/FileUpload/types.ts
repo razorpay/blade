@@ -303,8 +303,6 @@ export type {
   BladeFileList,
   FileUploadCategoryChangeHandler,
   FileUploadCategoryOption,
-  FileUploadInlineSelectorProps,
-  FileUploadInlineSelectorTriggerProps,
   FileUploadProps,
   FileUploadItemProps,
   StyledFileUploadWrapperProps,

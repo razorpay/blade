@@ -83,6 +83,8 @@ const _InlineSelectorTrigger = ({
     }
 
     setActiveIndex(options.findIndex((option) => option.value === value));
+    // optionsKey is a stable string derived from options; using it instead of options
+    // avoids re-running the effect when the options array reference changes but content is identical.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, optionsKey, setActiveIndex, value]);
 
