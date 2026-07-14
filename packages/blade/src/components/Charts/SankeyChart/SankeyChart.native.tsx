@@ -129,6 +129,25 @@ const INTER_ADVANCE: Record<string, number> = {
   '→': 0.9,
 };
 const INTER_DEFAULT_ADVANCE = 0.55;
+// CJK ideographs and emoji are significantly wider than Latin glyphs.
+// CJK ~1.0em, emoji ~1.2em (some emoji render even wider but 1.2 is a safe average).
+const charAdvance = (ch: string): number => {
+  if (INTER_ADVANCE[ch] !== undefined) return INTER_ADVANCE[ch];
+  const code = ch.codePointAt(0) ?? 0;
+  // CJK Unified Ideographs, CJK Extension A/B, Hiragana, Katakana, Hangul, etc.
+  if (
+    (code >= 0x3000 && code <= 0x9fff) ||
+    (code >= 0xac00 && code <= 0xd7af) ||
+    (code >= 0xf900 && code <= 0xfaff)
+  ) {
+    return 1.0;
+  }
+  // Emoji and supplementary planes
+  if (code >= 0x1f000) {
+    return 1.2;
+  }
+  return INTER_DEFAULT_ADVANCE;
+};
 // semibold glyphs render marginally wider than regular in Inter.
 const SEMIBOLD_WIDTH_FACTOR = 1.045;
 
@@ -136,7 +155,7 @@ const estimateTextWidth = (text: string, fontSize: number, weight: number): numb
   const factor = weight >= 600 ? SEMIBOLD_WIDTH_FACTOR : 1;
   let em = 0;
   for (const ch of text) {
-    em += INTER_ADVANCE[ch] ?? INTER_DEFAULT_ADVANCE;
+    em += charAdvance(ch);
   }
   return em * fontSize * factor;
 };
@@ -763,13 +782,13 @@ const _ChartSankeyWrapper = ({
       if (active === null) return NODE_DEFAULT_OPACITY;
       if (active.type === 'node' && active.index === nodeIdx) return NODE_DEFAULT_OPACITY;
       if (active.type === 'link') {
-        const link = rechartsLinks[active.index];
-        if (link && (link.source === nodeIdx || link.target === nodeIdx))
+        const link = layout.linkLayouts[active.index];
+        if (link && (link.sourceIndex === nodeIdx || link.targetIndex === nodeIdx))
           return NODE_DEFAULT_OPACITY;
       }
       return NODE_DIMMED_OPACITY;
     },
-    [active, rechartsLinks],
+    [active, layout.linkLayouts],
   );
 
   const getLinkOpacity = React.useCallback(
@@ -777,13 +796,13 @@ const _ChartSankeyWrapper = ({
       if (active === null) return LINK_DEFAULT_OPACITY;
       if (active.type === 'link' && active.index === linkIdx) return LINK_HOVER_OPACITY;
       if (active.type === 'node') {
-        const link = rechartsLinks[linkIdx];
-        if (link && (link.source === active.index || link.target === active.index))
+        const link = layout.linkLayouts[linkIdx];
+        if (link && (link.sourceIndex === active.index || link.targetIndex === active.index))
           return LINK_HOVER_OPACITY;
       }
       return LINK_DIMMED_OPACITY;
     },
-    [active, rechartsLinks],
+    [active, layout.linkLayouts],
   );
 
   // ── Layout callback ──────────────────────────────────────────────────────────
@@ -808,12 +827,12 @@ const _ChartSankeyWrapper = ({
         centerY: PADDING.top + node.y + node.height / 2,
       };
     }
-    const link = rechartsLinks[active.index];
+    const link = layout.linkLayouts[active.index];
     if (!link) return null;
-    const sourceName = data.nodes[link.source]?.name ?? '';
-    const targetName = data.nodes[link.target]?.name ?? '';
-    const sourceNode = layout.nodeLayouts[link.source];
-    const targetNode = layout.nodeLayouts[link.target];
+    const sourceName = data.nodes[link.sourceIndex]?.name ?? '';
+    const targetName = data.nodes[link.targetIndex]?.name ?? '';
+    const sourceNode = layout.nodeLayouts[link.sourceIndex];
+    const targetNode = layout.nodeLayouts[link.targetIndex];
     const centerX =
       sourceNode && targetNode
         ? PADDING.left + (sourceNode.x + sourceNode.width + targetNode.x) / 2
@@ -835,7 +854,6 @@ const _ChartSankeyWrapper = ({
     labelUnit,
     layout,
     data.nodes,
-    rechartsLinks,
     PADDING.left,
     PADDING.top,
   ]);
@@ -862,8 +880,8 @@ const _ChartSankeyWrapper = ({
         (node) =>
           px >= node.x - HIT_SLOP &&
           px <= node.x + node.width + HIT_SLOP &&
-          py >= node.y &&
-          py <= node.y + node.height,
+          py >= node.y - HIT_SLOP &&
+          py <= node.y + node.height + HIT_SLOP,
       );
       if (hitNode) {
         setActive((prev) =>
@@ -876,12 +894,15 @@ const _ChartSankeyWrapper = ({
         return;
       }
 
-      const hitLink = layout.linkLayouts.find((link) => isPointOnRibbon(px, py, link, HIT_SLOP));
-      if (hitLink) {
+      const hitLinkIdx = layout.linkLayouts.findIndex((link) =>
+        isPointOnRibbon(px, py, link, HIT_SLOP),
+      );
+      if (hitLinkIdx !== -1) {
+        const hitLink = layout.linkLayouts[hitLinkIdx];
         setActive((prev) =>
-          prev && prev.type === 'link' && prev.index === hitLink.originalIndex
+          prev && prev.type === 'link' && prev.index === hitLinkIdx
             ? null
-            : { type: 'link', index: hitLink.originalIndex },
+            : { type: 'link', index: hitLinkIdx },
         );
         const originalLink = data.links[hitLink.originalIndex];
         if (originalLink) onLinkClick?.(originalLink, hitLink.originalIndex);
@@ -907,13 +928,14 @@ const _ChartSankeyWrapper = ({
           testID={testID ? `${testID}-canvas` : undefined}
           onLayout={onLayout}
           onPress={handleCanvasPress}
+          android_disableSound={true}
           style={{ flex: 1, width: '100%' }}
         >
           {size.width > 0 && size.height > 0 ? (
             <Svg width={size.width} height={size.height} pointerEvents="none">
               <G x={PADDING.left} y={PADDING.top}>
                 {/* Links first so nodes + labels render above the ribbons */}
-                {layout.linkLayouts.map((link) => {
+                {layout.linkLayouts.map((link, linkIdx) => {
                   const srcNode = data.nodes[link.sourceIndex] as SankeyDataNode | undefined;
                   const colorToken =
                     linkColorOverride ??
@@ -925,7 +947,7 @@ const _ChartSankeyWrapper = ({
                   return (
                     <SankeyLinkShape
                       key={`link-${link.originalIndex}`}
-                      targetOpacity={getLinkOpacity(link.originalIndex)}
+                      targetOpacity={getLinkOpacity(linkIdx)}
                       d={link.d}
                       fill={resolveColor(colorToken)}
                     />
