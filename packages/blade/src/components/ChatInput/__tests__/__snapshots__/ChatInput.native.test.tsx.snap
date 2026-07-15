@@ -198,7 +198,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                       editable={false}
                       hasLeadingDropdown={false}
                       hasTags={false}
-                      id="chatinput-148-149-input-150"
+                      id="chatinput-162-163-input-164"
                       includeFontPadding={false}
                       isFocused={false}
                       isInsideCounterInput={false}
