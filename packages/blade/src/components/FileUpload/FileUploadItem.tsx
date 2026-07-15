@@ -118,6 +118,7 @@ const FileUploadItem = memo(
                   icon={RotateClockWiseIcon}
                   color="negative"
                   size="medium"
+                  accessibilityProps={{ label: `Reupload ${name}` }}
                   onClick={() => {
                     onReupload?.({ file });
                   }}
