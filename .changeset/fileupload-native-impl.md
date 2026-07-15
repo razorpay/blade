@@ -6,7 +6,7 @@ feat(blade): add React Native implementation for FileUpload component
 
 ### Platform differences
 
-**`onChange` / `onUploadPress` semantics:** On web, `onChange` fires after the user picks files and passes the selected `fileList`. On React Native, tapping the upload area fires **`onUploadPress` only** — use it to open your own file picker (e.g. `react-native-document-picker`). FileUpload does **not** fire `onChange` on tap; update `fileList` yourself after the picker returns. Prefer controlled mode (`fileList` + updating it after the picker resolves). `onUploadPress` is typed with `Platform.Select` so it is native-only.
+**`onChange` / `onUploadPress` semantics:** On web, `onChange` fires after the user picks files and passes the selected `fileList`. On React Native, tapping the upload area fires **`onUploadPress` only** — use it to open your own file picker (e.g. `react-native-document-picker`). FileUpload does **not** fire `onChange` on tap; update `fileList` yourself after the picker returns. Prefer controlled mode (`fileList` + updating it after the picker resolves). `onUploadPress` is typed with `Platform.Select<{ native: () => void; web: undefined }>` — on web the type resolves to `undefined`, making it effectively native-only. This is a new prop (not a narrowing of an existing type), so there is no breaking change for existing consumers.
 
 **Built-in validation (`accept`, `maxCount`, `maxSize`):** On web, these props are enforced internally (file-type filtering, count limits, size limits with inline error messages). On React Native they have no effect — validation must be handled by the consumer after the picker returns.
 

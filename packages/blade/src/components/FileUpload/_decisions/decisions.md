@@ -34,15 +34,55 @@ This document outlines the API details of the `FileUpload` component, encompassi
 ## `FileUpload` Props
 
 ```ts
-// Platform-split: on web, BladeFile extends the DOM File API (see bladeFile.web.ts).
-// On React Native, BladeFile is a plain object (see bladeFile.ts) because File/Blob
-// globals are unavailable. Check the File type from MDN for web details:
-// https://developer.mozilla.org/en-US/docs/Web/API/File
+// BladeFile is platform-split:
+// - Web (bladeFile.web.ts): extends the DOM File API
+// - React Native (bladeFile.ts): plain object (File/Blob globals are unavailable on native)
+// Check the File type from MDN for web details: https://developer.mozilla.org/en-US/docs/Web/API/File
+
+// Web variant (bladeFile.web.ts)
 interface BladeFile extends File {
   /**
    * The unique identifier of the file.
    */
-  id: string;
+  id?: string;
+  /**
+   * The file's upload status.
+   */
+  status?: 'uploading' | 'success' | 'error';
+  /**
+   * The percentage of file upload completion.
+   */
+  uploadPercent?: number;
+  /**
+   * Text indicating an error state
+   */
+  errorText?: string;
+}
+
+// React Native variant (bladeFile.ts)
+interface BladeFile {
+  /**
+   * The file name.
+   */
+  name: string;
+  /**
+   * The file size in bytes.
+   */
+  size: number;
+  /**
+   * The MIME type of the file (e.g. "image/png").
+   * Optional on React Native — some file pickers may not return a MIME type.
+   */
+  type?: string;
+  /**
+   * The last modified time of the file as a Unix timestamp (milliseconds since epoch).
+   * Present on web File objects; may be omitted on React Native.
+   */
+  lastModified?: number;
+  /**
+   * The unique identifier of the file.
+   */
+  id?: string;
   /**
    * The file's upload status.
    */

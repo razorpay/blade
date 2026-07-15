@@ -179,7 +179,7 @@ const MockFilePicker = ({
                 onPress={() => toggleFile(index)}
                 accessibilityRole="button"
                 accessibilityLabel={`${file.name}, ${formatFileSize(file.size)}, ${
-                  file.type.split('/')[1]
+                  file.type.split('/')[1] ?? 'file'
                 }`}
                 style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
               >
@@ -201,7 +201,7 @@ const MockFilePicker = ({
                   <Box display="flex" flexDirection="column" flex={1}>
                     <Text weight="semibold">{file.name}</Text>
                     <Text size="small" color="surface.text.gray.muted">
-                      {formatFileSize(file.size)} &middot; {file.type.split('/')[1]}
+                      {formatFileSize(file.size)} &middot; {file.type.split('/')[1] ?? 'file'}
                     </Text>
                   </Box>
                   <Badge size="small" color="information">
