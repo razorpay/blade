@@ -65,9 +65,7 @@ describe('<Morph /> (native, degraded)', () => {
               width="100px"
               borderRadius={toggled ? 'medium' : 'none'}
               backgroundColor={
-                toggled
-                  ? 'surface.background.primary.intense'
-                  : 'surface.background.gray.subtle'
+                toggled ? 'surface.background.primary.intense' : 'surface.background.gray.subtle'
               }
             />
           </Morph>

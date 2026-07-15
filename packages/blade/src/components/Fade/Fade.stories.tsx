@@ -141,7 +141,9 @@ export const WithDifferentComponents = (args: typeof Fade): React.ReactElement =
         </Fade>
 
         <Fade {...args} isVisible={isVisible}>
-          <Text>Fade with custom components. Ensure you forward refs to your custom components</Text>
+          <Text>
+            Fade with custom components. Ensure you forward refs to your custom components
+          </Text>
         </Fade>
       </Box>
     </Box>

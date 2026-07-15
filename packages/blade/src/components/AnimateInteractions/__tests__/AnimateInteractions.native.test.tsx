@@ -27,7 +27,7 @@ describe('<AnimateInteractions /> (native)', () => {
   });
 
   it('should wrap children in a Pressable interaction surface', () => {
-    const { UNSAFE_getByType, getByText } = renderWithTheme(
+    const { UNSAFE_getByType: unsafe_getByType, getByText } = renderWithTheme(
       <AnimateInteractions>
         <Box>
           <Text>Press me for magic</Text>
@@ -38,12 +38,12 @@ describe('<AnimateInteractions /> (native)', () => {
       </AnimateInteractions>,
     );
 
-    expect(UNSAFE_getByType(Pressable)).toBeTruthy();
+    expect(unsafe_getByType(Pressable)).toBeTruthy();
     expect(getByText('Press me for magic')).toBeTruthy();
   });
 
   it('should drive descendants on press-and-hold without throwing', () => {
-    const { UNSAFE_getByType, getByText } = renderWithTheme(
+    const { UNSAFE_getByType: unsafe_getByType, getByText } = renderWithTheme(
       <AnimateInteractions>
         <Box>
           <Text>Press me</Text>
@@ -54,7 +54,7 @@ describe('<AnimateInteractions /> (native)', () => {
       </AnimateInteractions>,
     );
 
-    const pressable = UNSAFE_getByType(Pressable);
+    const pressable = unsafe_getByType(Pressable);
 
     // Press-and-hold → children animate to `'animate'`; release → back to `'exit'`.
     expect(() => {
