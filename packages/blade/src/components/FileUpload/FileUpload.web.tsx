@@ -11,6 +11,7 @@ import {
   fileUploadHeightTokens,
   fileUploadLinkBorderTokens,
   getFileUploadInputHoverTokens,
+  getFileIconExtension,
 } from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
 import { isFileAccepted } from './isFileAccepted';
@@ -43,6 +44,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     accept,
     uploadType = 'single',
     onChange,
+    onClick: _onClick,
     onPreview,
     onRemove,
     onReupload,
@@ -67,6 +69,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   },
   ref,
 ): React.ReactElement => {
+  // onClick is React Native-only (tap to open consumer-owned picker); ignore on web.
+  void _onClick;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const { actionButtonText, dropAreaText, height, width } = rest as FileUploadVariableSizeProps;
   const isSizeVariable = size === 'variable';
@@ -214,17 +218,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
     // Reset the input value to allow re-selecting the same file
     event.target.value = '';
-  };
-
-  const getFileIconExtension = (acceptValue?: string): string => {
-    if (!acceptValue) return 'example.xyz';
-
-    const extensions = acceptValue
-      .split(',')
-      .map((ext) => ext.trim())
-      .filter((ext) => ext.startsWith('.'));
-
-    return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
   };
 
   const computedHeight = isSizeVariable ? height ?? '100%' : makeSize(fileUploadHeightTokens[size]);

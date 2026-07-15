@@ -225,7 +225,6 @@ exports[`<FileUpload /> (native) should render FileUpload with default props 1`]
               },
               {
                 "backgroundColor": undefined,
-                "opacity": 1,
               },
               {
                 "height": 56,
@@ -693,7 +692,6 @@ exports[`<FileUpload /> (native) should render FileUpload with size="large" 1`] 
               },
               {
                 "backgroundColor": undefined,
-                "opacity": 1,
               },
               {
                 "height": 64,
@@ -1161,7 +1159,6 @@ exports[`<FileUpload /> (native) should set disabled state with isDisabled 1`] =
               },
               {
                 "backgroundColor": undefined,
-                "opacity": 1,
               },
               {
                 "height": 56,
@@ -1708,6 +1705,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
             }
           >
             <View
+              accessibilityLabel="Reupload test.png"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -4210,6 +4208,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
             }
           >
             <View
+              accessibilityLabel="Reupload test.png"
               accessibilityRole="button"
               accessibilityState={
                 {

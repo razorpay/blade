@@ -112,8 +112,8 @@ describe('<FileUpload /> (native)', () => {
     });
   });
 
-  it('should call onPress when upload area is pressed (native-only callback)', () => {
-    const onPress = jest.fn();
+  it('should call onClick when upload area is pressed (native-only callback)', () => {
+    const onClick = jest.fn();
     const onChange = jest.fn();
     const { getByText } = renderWithTheme(
       <FileUpload
@@ -121,14 +121,15 @@ describe('<FileUpload /> (native)', () => {
         label="Upload GST certificate"
         name="single-file-upload-input"
         fileList={[]}
-        onPress={onPress}
+        onClick={onClick}
         onChange={onChange}
       />,
     );
 
     fireEvent.press(getByText('Upload'));
 
-    expect(onPress).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledWith({ name: 'single-file-upload-input' });
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -260,7 +261,7 @@ describe('<FileUpload /> (native)', () => {
       errorText: 'Upload failed',
     } as BladeFile;
 
-    const { getAllByRole } = renderWithTheme(
+    const { getByLabelText } = renderWithTheme(
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
@@ -271,8 +272,7 @@ describe('<FileUpload /> (native)', () => {
       />,
     );
 
-    const buttons = getAllByRole('button');
-    fireEvent.press(buttons[0]);
+    fireEvent.press(getByLabelText(`Reupload ${errorFile.name}`));
 
     expect(onReupload).toHaveBeenCalledWith({ file: errorFile });
     expect(onChange).toHaveBeenCalledWith({
@@ -292,7 +292,7 @@ describe('<FileUpload /> (native)', () => {
       errorText: 'Upload failed',
     } as BladeFile;
 
-    const { getAllByRole } = renderWithTheme(
+    const { getByLabelText } = renderWithTheme(
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
@@ -303,8 +303,7 @@ describe('<FileUpload /> (native)', () => {
       />,
     );
 
-    const buttons = getAllByRole('button');
-    fireEvent.press(buttons[0]);
+    fireEvent.press(getByLabelText(`Reupload ${errorFile.name}`));
 
     // Matches web: when onReupload is omitted, reupload falls back to onRemove
     expect(onRemove).toHaveBeenCalledWith({ file: errorFile });

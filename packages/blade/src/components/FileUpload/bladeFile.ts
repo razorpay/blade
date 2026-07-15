@@ -11,8 +11,9 @@ interface BladeFile {
   size: number;
   /**
    * The MIME type of the file (e.g. "image/png").
+   * Optional on React Native — some file pickers may not return a MIME type.
    */
-  type: string;
+  type?: string;
   /**
    * The last modified time of the file as a Unix timestamp (milliseconds since epoch).
    * Present on web File objects; may be omitted on React Native.

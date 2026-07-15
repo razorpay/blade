@@ -151,7 +151,12 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
               onDrop={({ fileList }) => handleFileChange({ fileList })}
               onPreview={({ file }) => {
                 setIsOpen(true);
-                setImageFileSource(URL.createObjectURL(file));
+                // URL.createObjectURL is web-only; on native use the file name as a placeholder source.
+                if (getPlatformType() === 'react-native') {
+                  setImageFileSource(file.name);
+                } else {
+                  setImageFileSource(URL.createObjectURL(file as File));
+                }
               }}
             />
             <Button

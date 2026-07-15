@@ -81,7 +81,7 @@ type FileUploadCommonProps = {
    * @remarks On React Native, `fileList` is always an empty array in this callback.
    * The type signature is shared with web for cross-platform compatibility, but the semantics
    * differ: on web, `fileList` contains the selected files; on native, it is always `[]`.
-   * Prefer `onPress` for native-only tap handling. `onChange` also fires on the same tap
+   * Prefer `onClick` for native-only tap handling. `onChange` also fires on the same tap
    * (with an empty `fileList`) as a deliberate cross-platform tap signal — do not wire both
    * to the same side effect or the handler will run twice.
    */
@@ -89,14 +89,17 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when the user taps the upload area (React Native only).
    *
+   * Named `onClick` to match Blade's established cross-platform handler convention
+   * (see Button decisions: public APIs use `onClick`, mapped to RN `onPress` internally).
+   *
    * Use this callback to open your file picker (e.g. `react-native-document-picker`).
    * On native, `onChange` also fires on the same tap with an empty `fileList` as a
-   * cross-platform tap signal. Prefer `onPress` for native-only code so you do not
+   * cross-platform tap signal. Prefer `onClick` for native-only code so you do not
    * double-handle the tap when both callbacks are provided.
    *
    * This prop has no effect on web.
    */
-  onPress?: () => void;
+  onClick?: ({ name }: { name?: string }) => void;
   /**
    * Callback function triggered when the preview icon is clicked
    */
@@ -117,7 +120,7 @@ type FileUploadCommonProps = {
    * Callback function executed when files are dropped into the upload area
    *
    * **React Native:** This callback has no effect on native. Drag-and-drop is not supported —
-   * use the `onPress` or `onChange` tap signal to open a file picker instead.
+   * use the `onClick` or `onChange` tap signal to open a file picker instead.
    */
   onDrop?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**

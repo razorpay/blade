@@ -49,7 +49,6 @@ const StyledFileUploadWrapper = ({
   const animatedStyle = useAnimatedStyle(() => {
     return {
       backgroundColor: interpolateColor(progress.value, [0, 1], ['transparent', activeBgColor]),
-      opacity: 1,
     };
   });
 

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, forwardRef } from 'react';
+import React, { useMemo, useRef, useState, forwardRef } from 'react';
 import { Pressable } from 'react-native';
 import type {
   FileUploadProps,
@@ -12,6 +12,7 @@ import {
   fileUploadColorTokens,
   fileUploadHeightTokens,
   fileUploadLinkBorderTokens,
+  getFileIconExtension,
 } from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
@@ -29,17 +30,6 @@ import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useControllableState } from '~utils/useControllable';
 import { throwBladeError, logger } from '~utils/logger';
-
-const getFileIconExtension = (acceptValue?: string): string => {
-  if (!acceptValue) return 'example.xyz';
-
-  const extensions = acceptValue
-    .split(',')
-    .map((ext) => ext.trim())
-    .filter((ext) => ext.startsWith('.'));
-
-  return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
-};
 
 // React Native's DimensionValue only accepts numbers or `${number}%` strings.
 // `makeSize()`/BoxProps height & width values (e.g. "56px") need to be converted before
@@ -61,7 +51,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     accept,
     uploadType = 'single',
     onChange,
-    onPress,
+    onClick,
     onPreview,
     onRemove,
     onReupload,
@@ -86,9 +76,15 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   }: FileUploadProps,
   ref,
 ): React.ReactElement => {
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  const { actionButtonText, dropAreaText, height, width } = rest as FileUploadVariableSizeProps;
+  const {
+    actionButtonText,
+    dropAreaText,
+    height,
+    width,
+    ...styledRest
+  } = rest as FileUploadVariableSizeProps & Record<string, unknown>;
   const isSizeVariable = size === 'variable';
+  const hasLoggedUnsupportedPropsRef = useRef(false);
 
   if (__DEV__) {
     if (!isSizeVariable && (actionButtonText || dropAreaText)) {
@@ -114,80 +110,86 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       });
     }
 
-    if (maxCount !== undefined) {
-      logger({
-        type: 'warn',
-        moduleName: 'FileUpload',
-        message:
-          'maxCount has no effect on React Native. File count limiting must be handled by the consumer in the onChange callback.',
-      });
-    }
+    // Log unsupported-prop warnings once per mount to avoid console spam on re-renders
+    // (e.g. upload progress updates).
+    if (!hasLoggedUnsupportedPropsRef.current) {
+      hasLoggedUnsupportedPropsRef.current = true;
 
-    if (maxSize !== undefined) {
-      logger({
-        type: 'warn',
-        moduleName: 'FileUpload',
-        message:
-          'maxSize has no effect on React Native. File size validation must be handled by the consumer in the onChange callback.',
-      });
-    }
+      if (maxCount !== undefined) {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message:
+            'maxCount has no effect on React Native. File count limiting must be handled by the consumer in the onChange callback.',
+        });
+      }
 
-    if (accept !== undefined) {
-      logger({
-        type: 'warn',
-        moduleName: 'FileUpload',
-        message:
-          'accept has no effect on React Native for file filtering. Configure the accepted file types in your file picker (e.g. react-native-document-picker) directly.',
-      });
-    }
+      if (maxSize !== undefined) {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message:
+            'maxSize has no effect on React Native. File size validation must be handled by the consumer in the onChange callback.',
+        });
+      }
 
-    if (onDrop !== undefined) {
-      logger({
-        type: 'warn',
-        moduleName: 'FileUpload',
-        message:
-          'onDrop has no effect on React Native. Drag-and-drop is not supported on native — use the onChange tap signal to open a file picker instead.',
-      });
-    }
+      if (accept !== undefined) {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message:
+            'accept has no effect on React Native for file filtering. Configure the accepted file types in your file picker (e.g. react-native-document-picker) directly.',
+        });
+      }
 
-    if (labelPosition === 'left') {
-      logger({
-        type: 'warn',
-        moduleName: 'FileUpload',
-        message:
-          'labelPosition="left" is not supported on React Native and will be ignored. Labels always render above the upload area on native.',
-      });
-    }
+      if (onDrop !== undefined) {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message:
+            'onDrop has no effect on React Native. Drag-and-drop is not supported on native — use the onClick/onChange tap signal to open a file picker instead.',
+        });
+      }
 
-    if (_motionMeta !== undefined) {
-      logger({
-        type: 'warn',
-        moduleName: 'FileUpload',
-        message:
-          '_motionMeta is not supported on React Native. Motion ref wiring is web-only and attached to the hidden file input on web.',
-      });
-    }
+      if (labelPosition === 'left') {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message:
+            'labelPosition="left" is not supported on React Native and will be ignored. Labels always render above the upload area on native.',
+        });
+      }
 
-    const analyticsProps = Object.keys(rest).filter(
-      (key) => key.startsWith('data-analytics') || key.startsWith('elementtiming'),
-    );
-    if (analyticsProps.length > 0) {
-      logger({
-        type: 'warn',
-        moduleName: 'FileUpload',
-        message: `Analytics props (${analyticsProps.join(
-          ', ',
-        )}) are not supported on React Native. On web these are attached to the hidden file input.`,
-      });
-    }
+      if (_motionMeta !== undefined) {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message:
+            '_motionMeta is not supported on React Native. Motion ref wiring is web-only and attached to the hidden file input on web.',
+        });
+      }
 
-    if (fileList === undefined) {
-      logger({
-        type: 'warn',
-        moduleName: 'FileUpload',
-        message:
-          'FileUpload on React Native requires controlled mode. Pass the fileList prop and update it inside the onChange callback (e.g. after resolving files from react-native-document-picker). Uncontrolled usage will not reflect picked files in the UI.',
-      });
+      const analyticsProps = Object.keys(styledRest).filter(
+        (key) => key.startsWith('data-analytics') || key.startsWith('elementtiming'),
+      );
+      if (analyticsProps.length > 0) {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message: `Analytics props (${analyticsProps.join(
+            ', ',
+          )}) are not supported on React Native. On web these are attached to the hidden file input.`,
+        });
+      }
+
+      if (fileList === undefined) {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message:
+            'FileUpload on React Native requires controlled mode. Pass the fileList prop and update it inside the onChange/onClick callback (e.g. after resolving files from react-native-document-picker). Uncontrolled usage will not reflect picked files in the UI.',
+        });
+      }
     }
   }
 
@@ -196,17 +198,26 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     defaultValue: fileList ?? [],
   });
   const [isActive, setIsActive] = useState(false);
+  const fileIdCounterRef = useRef(0);
+  const assignedFileIdsRef = useRef(new WeakMap<BladeFile, string>());
 
   const filesWithIds = useMemo(
     () =>
-      selectedFiles.map((file) =>
-        file.id
-          ? file
-          : {
-              ...file,
-              id: `${Date.now()}${Math.floor(Math.random() * 1000000)}`,
-            },
-      ),
+      selectedFiles.map((file) => {
+        if (file.id) {
+          return file;
+        }
+
+        const existingId = assignedFileIdsRef.current.get(file);
+        if (existingId) {
+          return { ...file, id: existingId };
+        }
+
+        fileIdCounterRef.current += 1;
+        const id = `blade-file-${fileIdCounterRef.current}`;
+        assignedFileIdsRef.current.set(file, id);
+        return { ...file, id };
+      }),
     [selectedFiles],
   );
 
@@ -221,10 +232,11 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     [showError ? errorText : '', showHelpText ? helpText : ''].filter(Boolean).join(' ');
   const { labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
-  const handlePress = (): void => {
-    // On native, pressing the upload area fires onPress as the dedicated tap handler.
+  const handleUploadAreaInteraction = (): void => {
+    // On native, tapping the upload area fires onClick as the dedicated tap handler
+    // (Blade convention: public APIs use onClick, mapped to RN Pressable onPress).
     // onChange also fires with an empty fileList as a deliberate cross-platform tap signal.
-    onPress?.();
+    onClick?.({ name });
     onChange?.({ name, fileList: [] });
   };
 
@@ -247,7 +259,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     } else {
       onRemove?.({ file });
     }
-    handlePress();
+    // Mirror web's inputRef.click() reopen by re-firing the tap signal so consumers can
+    // open their file picker again (native does not own a hidden file input).
+    handleUploadAreaInteraction();
   };
 
   const handleFileDismiss = (file: BladeFile): void => {
@@ -275,7 +289,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       flexDirection="column"
       width="100%"
       {...metaAttribute({ name: MetaConstants.FileUpload, testID })}
-      {...getStyledProps(rest)}
+      {...getStyledProps(styledRest)}
     >
       <BaseBox display="flex" flexDirection="column" position="relative" width="100%">
         {label ? (
@@ -293,7 +307,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
         {!isOneFileSelectedWithSingleUpload ? (
           <Pressable
-            onPress={handlePress}
+            onPress={handleUploadAreaInteraction}
             onPressIn={() => setIsActive(true)}
             onPressOut={() => setIsActive(false)}
             disabled={isDisabled}
