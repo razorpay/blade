@@ -820,9 +820,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const yTickCount = slots.yTickCount ?? Y_TICK_COUNT;
 
   // Guard against division by zero when yRange === 0 (e.g. domain=[5,5]).
-  // Mirrors AreaChart.native.tsx `yAt` helper for parity.
+  // When all values are the same, center the point in the plot area.
   const yToPixel = (value: number): number =>
-    yRange > 0 ? plotHeight - ((value - yMin) / yRange) * plotHeight : plotHeight;
+    yRange > 0 ? plotHeight - ((value - yMin) / yRange) * plotHeight : plotHeight / 2;
   const yTicks = useMemo(() => {
     const ticks: number[] = [];
     for (let i = 0; i <= yTickCount; i++) {
@@ -929,6 +929,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   // Pixel geometry per visible line — shared by the line paths, the activeDot,
   // the scrub nearest-line lookup, and the tooltip.
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- yToPixel/xForIndex are stable closures derived from values already in deps
   const lineGeometries = useMemo<LineGeometry[]>(() => {
     return visibleLines.map((line) => {
       const points: LinePoint[] = data.map((row, index) => {
@@ -1311,7 +1312,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     const chipWidth = refLine.label
                       ? Math.min(REF_LABEL_MAX_WIDTH, Math.max(40, refLine.label.length * 6 + 16))
                       : 0;
-                    const chipHeight = 20;
+                    const chipHeight = 30;
                     const truncatedLabel =
                       refLine.label && refLine.label.length * 6 + 16 > REF_LABEL_MAX_WIDTH
                         ? `${refLine.label.slice(0, Math.floor((REF_LABEL_MAX_WIDTH - 16) / 6) - 1)}…`
