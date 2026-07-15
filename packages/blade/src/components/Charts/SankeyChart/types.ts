@@ -71,17 +71,17 @@ export type ChartSankeyWrapperProps = {
   /** Override all link ribbon colors with a single Blade token */
   linkColorOverride?: ChartsCategoricalColorToken;
   /**
-    * Flow direction of the diagram.
-    *
-    * **Native-only.** The web SankeyChart always renders horizontally and ignores
-    * this prop; it is consumed exclusively by `SankeyChart.native.tsx`. Vertical
-    * (top-to-bottom) reads more clearly on tall phone screens.
-    *
-    * - `'horizontal'` — stages flow left → right (default, matches web)
-    * - `'vertical'` — stages flow top → bottom (native only)
-    *
-    * @default 'horizontal'
-    */
+   * Flow direction of the diagram.
+   *
+   * **Native-only.** The web SankeyChart always renders horizontally and ignores
+   * this prop; it is consumed exclusively by `SankeyChart.native.tsx`. Vertical
+   * (top-to-bottom) reads more clearly on tall phone screens.
+   *
+   * - `'horizontal'` — stages flow left → right (default, matches web)
+   * - `'vertical'` — stages flow top → bottom (native only)
+   *
+   * @default 'horizontal'
+   */
   layout?: 'horizontal' | 'vertical';
 } & TestID &
   DataAnalyticsAttribute &
