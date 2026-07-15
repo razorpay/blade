@@ -37,6 +37,7 @@ exports[`<ChartLineWrapper /> (native) should ignore null cells when computing y
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -852,6 +853,7 @@ exports[`<ChartLineWrapper /> (native) should render a horizontal reference line
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -1410,6 +1412,7 @@ exports[`<ChartLineWrapper /> (native) should render a single line 1`] = `
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -1455,6 +1458,7 @@ exports[`<ChartLineWrapper /> (native) should render a vertical reference line (
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -2000,6 +2004,7 @@ exports[`<ChartLineWrapper /> (native) should render custom and sequential color
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -2044,6 +2049,7 @@ exports[`<ChartLineWrapper /> (native) should render different line types 1`] = 
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -2088,6 +2094,7 @@ exports[`<ChartLineWrapper /> (native) should render different stroke styles 1`]
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -2132,6 +2139,7 @@ exports[`<ChartLineWrapper /> (native) should render multiple lines with legend,
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -2454,6 +2462,7 @@ exports[`<ChartLineWrapper /> (native) should render with all-negative data with
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -3268,6 +3277,7 @@ exports[`<ChartLineWrapper /> (native) should render with connectNulls and a nul
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -3312,6 +3322,7 @@ exports[`<ChartLineWrapper /> (native) should render with dots enabled 1`] = `
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
@@ -3357,6 +3368,7 @@ exports[`<ChartLineWrapper /> (native) should render with negative data values 1
       style={
         {
           "flex": 1,
+          "overflow": "visible",
           "width": "100%",
         }
       }
