@@ -14,6 +14,7 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BladeElementRef } from '~utils/types';
 
 // Mirrors the web implementation's getDividerColorToken for parity.
 // Only the 'primary' branch is reachable at runtime (dividers are only
@@ -49,16 +50,19 @@ const StyledDivider = styled(View)<{ dividerColor: string }>(
   }),
 );
 
-const _ButtonGroup = ({
-  children,
-  isDisabled = false,
-  size = 'medium',
-  color = 'primary',
-  variant = 'primary',
-  isFullWidth = false,
-  testID,
-  ...rest
-}: ButtonGroupProps): React.ReactElement => {
+const _ButtonGroup = (
+  {
+    children,
+    isDisabled = false,
+    size = 'medium',
+    color = 'primary',
+    variant = 'primary',
+    isFullWidth = false,
+    testID,
+    ...rest
+  }: ButtonGroupProps,
+  ref: React.Ref<BladeElementRef>,
+): React.ReactElement => {
   const { theme } = useTheme();
 
   const contextValue = {
@@ -82,11 +86,13 @@ const _ButtonGroup = ({
 
   return (
     <StyledButtonGroup
+      ref={ref as never}
       size={size}
       isFullWidth={isFullWidth}
       {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
       {...makeAnalyticsAttribute(rest)}
       {...getStyledProps(rest)}
+      accessibilityRole="toolbar"
       accessible={false}
     >
       {React.Children.map(children, (child, index) => {
@@ -115,7 +121,7 @@ const _ButtonGroup = ({
   );
 };
 
-const ButtonGroup = assignWithoutSideEffects(_ButtonGroup, {
+const ButtonGroup = assignWithoutSideEffects(React.forwardRef(_ButtonGroup), {
   displayName: 'ButtonGroup',
   componentId: 'ButtonGroup',
 });

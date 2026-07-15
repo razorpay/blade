@@ -557,7 +557,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // only the outer corners of the first/last buttons (both the background and the
   // border overlay) so the ring follows the rounded corner instead of being cut.
   const groupCornerRadius = isInsideRNButtonGroup
-    ? theme.border.radius[buttonBorderRadius[size]]
+    ? theme.border.radius[buttonBorderRadius[buttonGroupProps.size ?? size]]
     : 0;
   const isFirstInGroup = Boolean(buttonGroupProps.isFirstInButtonGroup);
   const isLastInGroup = Boolean(buttonGroupProps.isLastInButtonGroup);
@@ -679,7 +679,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       borderRadius={buttonBorderRadiusValue}
       {...(buttonBorderRadii ? { borderRadii: buttonBorderRadii } : {})}
       {...(collapseGroupBorder ? { collapseGroupBorder } : {})}
-      {...(isInsideRNButtonGroup ? { flattenInsetShadowSides: true } : {})}
+      {...(isNonFirstInButtonGroup ? { flattenInsetShadowSides: true } : {})}
       {...(isInsideFullWidthButtonGroup ? { isInsideFullWidthButtonGroup: true } : {})}
       motionDuration={motionDuration}
       motionEasing={motionEasing}

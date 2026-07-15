@@ -66,6 +66,23 @@ describe('<ButtonGroup /> (native)', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
+  it('should call onClick when ButtonGroup is enabled', () => {
+    const onClickOne = jest.fn();
+    const onClickTwo = jest.fn();
+    const { getAllByRole } = renderWithTheme(
+      <ButtonGroup>
+        <Button onClick={onClickOne}>One</Button>
+        <Button onClick={onClickTwo}>Two</Button>
+      </ButtonGroup>,
+    );
+
+    const buttons = getAllByRole('button');
+    fireEvent.press(buttons[0]);
+    expect(onClickOne).toHaveBeenCalled();
+    fireEvent.press(buttons[1]);
+    expect(onClickTwo).toHaveBeenCalled();
+  });
+
   colors.forEach((color) => {
     variants.forEach((variant) => {
       if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
