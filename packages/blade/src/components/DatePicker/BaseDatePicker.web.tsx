@@ -85,7 +85,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   format = 'DD/MM/YYYY',
   inputPlaceHolder,
   inputElementType = 'datePickerInput',
-  showClearButton = true,
+  showClearButton,
   onClearButtonClick,
   labelSuffix,
   labelTrailing,
@@ -483,8 +483,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 placeholder={finalInputPlaceHolder}
                 // Chips show the clear (cross) button by default when a value is selected.
                 // Consumers can pass `showClearButton={false}` for filters that must always
-                // hold a value (e.g. a mandatory default date).
-                showClearButton={showClearButton}
+                // hold a value (e.g. a mandatory default date). The `?? true` default lives here
+                // (on the chip path) rather than at destructuring so the regular, non-chip
+                // DatePickerInput keeps its original `undefined` default and is unaffected.
+                showClearButton={showClearButton ?? true}
                 onClearButtonChange={handleClear}
                 // Effective Selection type should only be used for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}

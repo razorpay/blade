@@ -223,7 +223,14 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      */
     inputPlaceHolder?: string;
     /**
-     * Decides whether to render a clear icon button
+     * Decides whether to render a clear (cross) button on the input.
+     *
+     * For the regular `DatePicker` input this is the existing opt-in behaviour. For the filter-chip
+     * variant (`FilterChipDatePicker`) the clear button is shown by default once a value is
+     * selected; pass `showClearButton={false}` there for filters that must always hold a value
+     * (e.g. a mandatory default date).
+     *
+     * @default true (filter-chip variant) / undefined (regular DatePicker input)
      */
     showClearButton?: boolean;
     /**

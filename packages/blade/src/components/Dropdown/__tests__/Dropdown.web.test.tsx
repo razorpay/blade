@@ -619,4 +619,42 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
     await waitFor(() => expect(getByRole('button', { name: /Fruits/i })).toBeInTheDocument());
     expect(queryByLabelText('Clear Fruits value')).toBeFalsy();
   });
+
+  it('should show the option name (not a counter) when exactly one option is selected in multiple mode', async () => {
+    const { getByRole, findByLabelText } = renderWithTheme(
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput label="Status" value={['active']} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Pending" value="pending" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const trigger = getByRole('button', { name: 'Status' });
+    // A single selection in multiple mode renders the option name, not a "1" counter.
+    await waitFor(() => expect(trigger).toHaveTextContent('Active'));
+    expect(trigger).not.toHaveTextContent('1');
+    expect(await findByLabelText('Clear Status value')).toBeTruthy();
+  });
+
+  it('should collapse to a counter when more than one option is selected in multiple mode', async () => {
+    const { getByRole } = renderWithTheme(
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput label="Status" value={['active', 'pending']} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Pending" value="pending" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const trigger = getByRole('button', { name: 'Status' });
+    // More than one selected → the chip collapses to a compact counter of the selection count.
+    await waitFor(() => expect(trigger).toHaveTextContent('2'));
+  });
 });

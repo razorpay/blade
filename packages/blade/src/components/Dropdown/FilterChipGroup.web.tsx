@@ -43,7 +43,12 @@ const FilterChipGroup = ({
   };
   const selectedCount = Math.max(filterChipGroupSelectedFilters.length, selectedFiltersCount);
   const isPlural = selectedCount > 1;
-  const actionButtonText = clearButtonText ?? `Clear Filter${isPlural ? 's' : ''}`;
+  // Default label follows the behavior so it never reads misleadingly: "reset" mode defaults to
+  // "Reset", "clear" mode to the auto-pluralised "Clear Filter(s)". Consumers can override both via
+  // `clearButtonText`.
+  const defaultActionButtonText =
+    clearButtonBehavior === 'reset' ? 'Reset' : `Clear Filter${isPlural ? 's' : ''}`;
+  const actionButtonText = clearButtonText ?? defaultActionButtonText;
   return (
     <FilterChipGroupProvider
       value={{
