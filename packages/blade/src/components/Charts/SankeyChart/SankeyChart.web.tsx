@@ -79,9 +79,10 @@ function SankeyTooltipContent({
 }: SankeyTooltipContentProps): React.ReactElement | null {
   const { theme } = useTheme();
 
-  if (!active || !payload?.length) return null;
+  const webPayload = castWebType(payload);
+  if (!active || !webPayload?.length) return null;
 
-  const item = payload[0]?.payload as
+  const item = webPayload[0]?.payload as
     | (RechartsSankeyNode & { name?: string; value?: number })
     | undefined;
   if (!item) return null;
@@ -112,7 +113,6 @@ function SankeyTooltipContent({
   );
 }
 
-// ─── Indian number humanizer (private default for formatValue) ────────────────
 // ─── ChartSankeyWrapper ───────────────────────────────────────────────────────
 // Orchestration layer — mirrors ChartDonutWrapper.
 // Inspects children to extract data, computes dataColorMapping,

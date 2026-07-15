@@ -922,17 +922,22 @@ const _ChartSankeyWrapper = ({
     };
   }, [showTooltip, active, size, labelUnit, layout, data.nodes, PADDING.left, PADDING.top]);
 
-  // Reset tooltip dimensions when tooltip is dismissed to avoid stale measurement
-  // affecting the next tooltip's initial position.
+  // Reset tooltip width when tooltip is dismissed — tooltipHeight is intentionally
+  // kept (not reset) to avoid a visual flash/jump on the next tooltip's first frame.
+  // The previous measured height is a closer approximation than 0, and onLayout
+  // will correct to the exact height within one frame.
   React.useEffect(() => {
     if (!tooltip) {
-      setTooltipHeight(0);
       setTooltipWidth(0);
     }
   }, [tooltip]);
 
   const TOOLTIP_MAX_WIDTH = 240;
+  // Sensible default height until onLayout fires — prevents the tooltip's top edge
+  // from sitting at the center point (which happens when height is 0).
+  const TOOLTIP_DEFAULT_HEIGHT = theme.spacing[9] * 2;
   const measuredWidth = tooltipWidth || TOOLTIP_MAX_WIDTH;
+  const measuredHeight = tooltipHeight || TOOLTIP_DEFAULT_HEIGHT;
   const tooltipLeft = tooltip
     ? Math.max(0, Math.min(size.width - measuredWidth, tooltip.centerX - measuredWidth / 2))
     : 0;
@@ -1133,7 +1138,7 @@ const _ChartSankeyWrapper = ({
                 zIndex: TOOLTIP_Z_INDEX,
                 top: Math.max(
                   0,
-                  Math.min(size.height - tooltipHeight, tooltip.centerY - tooltipHeight / 2),
+                  Math.min(size.height - measuredHeight, tooltip.centerY - measuredHeight / 2),
                 ),
                 left: tooltipLeft,
                 maxWidth: TOOLTIP_MAX_WIDTH,
