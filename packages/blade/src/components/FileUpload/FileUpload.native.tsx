@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, forwardRef } from 'react';
+import React, { useEffect, useRef, useState, forwardRef, useCallback } from 'react';
 import { Pressable } from 'react-native';
 import type {
   FileUploadProps,
@@ -203,6 +203,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
   const [filesWithIds, setFilesWithIds] = useState<BladeFileList>([]);
 
+  const filesWithIdsRef = useRef(filesWithIds);
+  filesWithIdsRef.current = filesWithIds;
+
   useEffect(() => {
     setFilesWithIds(
       selectedFiles.map((file) => {
@@ -240,32 +243,44 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     onUploadPress?.();
   };
 
-  const removeFileFromSelection = (file: BladeFile): void => {
-    const newFiles = filesWithIds.filter(({ id }) => id !== file.id);
-    setSelectedFiles(() => newFiles);
-  };
+  const removeFileFromSelection = useCallback(
+    (file: BladeFile): void => {
+      const newFiles = filesWithIdsRef.current.filter(({ id }) => id !== file.id);
+      setSelectedFiles(() => newFiles);
+    },
+    [setSelectedFiles],
+  );
 
-  const handleFileRemove = (file: BladeFile): void => {
-    removeFileFromSelection(file);
-    onRemove?.({ file });
-  };
-
-  const handleFileReupload = (file: BladeFile): void => {
-    removeFileFromSelection(file);
-    // TODO - Remove this in the next major release
-    // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
-    if (onReupload) {
-      onReupload({ file });
-    } else {
+  const handleFileRemove = useCallback(
+    ({ file }: { file: BladeFile }): void => {
+      removeFileFromSelection(file);
       onRemove?.({ file });
-    }
-    setIsActive(false);
-  };
+    },
+    [removeFileFromSelection, onRemove],
+  );
 
-  const handleFileDismiss = (file: BladeFile): void => {
-    removeFileFromSelection(file);
-    onDismiss?.({ file });
-  };
+  const handleFileReupload = useCallback(
+    ({ file }: { file: BladeFile }): void => {
+      removeFileFromSelection(file);
+      // TODO - Remove this in the next major release
+      // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
+      if (onReupload) {
+        onReupload({ file });
+      } else {
+        onRemove?.({ file });
+      }
+      setIsActive(false);
+    },
+    [removeFileFromSelection, onReupload, onRemove],
+  );
+
+  const handleFileDismiss = useCallback(
+    ({ file }: { file: BladeFile }): void => {
+      removeFileFromSelection(file);
+      onDismiss?.({ file });
+    },
+    [removeFileFromSelection, onDismiss],
+  );
 
   const computedHeight = isSizeVariable
     ? getResponsiveValue(height) ?? '100%'
@@ -382,9 +397,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           <FileUploadItem
             file={filesWithIds[0]}
             size={size}
-            onRemove={() => handleFileRemove(filesWithIds[0])}
-            onReupload={() => handleFileReupload(filesWithIds[0])}
-            onDismiss={() => handleFileDismiss(filesWithIds[0])}
+            onRemove={handleFileRemove}
+            onReupload={handleFileReupload}
+            onDismiss={handleFileDismiss}
             onPreview={onPreview}
           />
         )}
@@ -416,9 +431,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             <FileUploadItem
               file={file}
               size={size}
-              onRemove={() => handleFileRemove(file)}
-              onReupload={() => handleFileReupload(file)}
-              onDismiss={() => handleFileDismiss(file)}
+              onRemove={handleFileRemove}
+              onReupload={handleFileReupload}
+              onDismiss={handleFileDismiss}
               onPreview={onPreview}
             />
           </BaseBox>
