@@ -7,7 +7,7 @@ import Animated, {
   runOnJS,
   cancelAnimation,
 } from 'react-native-reanimated';
-import { Dimensions, Pressable } from 'react-native';
+import { Pressable, useWindowDimensions } from 'react-native';
 import type { ElevationStyles } from '~tokens/global/elevation';
 import BaseBox from '~components/Box/BaseBox';
 import { getElevationValue } from '~components/Box/BaseBox/baseBoxStyles';
@@ -93,17 +93,24 @@ type AnimatedDrawerContainerProps = {
  * Drawer. Mirrors the web `AnimatedDrawerContainer` styled component but drives
  * `translateX`/`opacity` via reanimated shared values instead of CSS transitions.
  */
-const AnimatedDrawerContainer = ({
-  isVisible,
-  showOverlay,
-  onOverlayPress,
-  onExitComplete,
-  accessibilityLabel,
-  isFirstDrawerInStack = false,
-  children,
-}: AnimatedDrawerContainerProps): React.ReactElement => {
+const AnimatedDrawerContainer = React.forwardRef<
+  React.ComponentRef<typeof StyledDrawerWrapper>,
+  AnimatedDrawerContainerProps
+>(
+  (
+    {
+      isVisible,
+      showOverlay,
+      onOverlayPress,
+      onExitComplete,
+      accessibilityLabel,
+      isFirstDrawerInStack = false,
+      children,
+    },
+    ref,
+  ): React.ReactElement => {
   const { theme } = useTheme();
-  const screenWidth = Dimensions.get('window').width;
+  const { width: screenWidth } = useWindowDimensions();
   // Always initialize the shared values at the CLOSED / off-screen state
   // (translateX = screenWidth, opacity = 0) so there is a "from" frame to animate FROM
   // when the drawer mounts open. The Portal mounts fresh on open, so this container
@@ -119,6 +126,11 @@ const AnimatedDrawerContainer = ({
   const overlayOpacity = useSharedValue(0);
 
   const shadow = (getElevationValue('highRaised', theme) as unknown) as ElevationStyles;
+
+  const onExitCompleteRef = React.useRef(onExitComplete);
+  React.useEffect(() => {
+    onExitCompleteRef.current = onExitComplete;
+  }, [onExitComplete]);
 
   React.useEffect(() => {
     // Mirror web's Drawer surface transition (Drawer.web.tsx): enter uses
@@ -142,8 +154,8 @@ const AnimatedDrawerContainer = ({
     translateX.value = withTiming(isVisible ? stackOffset : screenWidth, config);
     surfaceOpacity.value = withTiming(isVisible ? 1 : 0, config);
     overlayOpacity.value = withTiming(isVisible ? 1 : 0, config, (finished) => {
-      if (finished && !isVisible && onExitComplete) {
-        runOnJS(onExitComplete)();
+      if (finished && !isVisible && onExitCompleteRef.current) {
+        runOnJS(onExitCompleteRef.current)();
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -183,7 +195,7 @@ const AnimatedDrawerContainer = ({
           <StyledOverlay style={overlayAnimatedStyle} />
         </Pressable>
       ) : null}
-      <StyledDrawerWrapper style={[shadow, surfaceAnimatedStyle]}>
+      <StyledDrawerWrapper ref={ref} style={[shadow, surfaceAnimatedStyle]}>
         <StyledDrawerSurface
           {...makeAccessible({
             role: 'dialog',
@@ -196,6 +208,7 @@ const AnimatedDrawerContainer = ({
       </StyledDrawerWrapper>
     </>
   );
-};
+  },
+);
 
 export { AnimatedDrawerContainer };

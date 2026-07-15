@@ -35,7 +35,9 @@ const DrawerHeaderGradient = ({
   const subtleColor = theme.colors.feedback.background[color].subtle;
   const alphaMatch = subtleColor.match(/hsla?\([^)]*,\s*([\d.]+)\s*\)$/);
   const subtleAlpha = alphaMatch ? Number(alphaMatch[1]) : 1;
-  const opaqueColor = subtleColor.replace(/^hsla/, 'hsl').replace(/,\s*[\d.]+\s*\)$/, ')');
+  const opaqueColor = alphaMatch
+    ? subtleColor.replace(/^hsla/, 'hsl').replace(/,\s*[\d.]+\s*\)$/, ')')
+    : subtleColor;
   const gradientId = `${uniqueId}-${color}`;
 
   return (

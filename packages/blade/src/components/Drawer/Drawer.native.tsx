@@ -14,6 +14,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BladeElementRef } from '~utils/types';
 
 const focusOnElement = (element: React.Component<any, any> | null): void => {
   if (!element) return;
@@ -23,19 +24,22 @@ const focusOnElement = (element: React.Component<any, any> | null): void => {
   }
 };
 
-const _Drawer = ({
-  isOpen,
-  onDismiss,
-  onUnmount,
-  zIndex = componentZIndices.drawer,
-  children,
-  accessibilityLabel,
-  showOverlay = true,
-  initialFocusRef,
-  isLazy = true,
-  testID,
-  ...rest
-}: DrawerProps): React.ReactElement | null => {
+const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
+  {
+    isOpen,
+    onDismiss,
+    onUnmount,
+    zIndex = componentZIndices.drawer,
+    children,
+    accessibilityLabel,
+    showOverlay = true,
+    initialFocusRef,
+    isLazy = true,
+    testID,
+    ...rest
+  },
+  ref,
+): React.ReactElement | null => {
   const [zIndexState, setZIndexState] = React.useState<number>(zIndex);
   const closeButtonRef = React.useRef(null);
 
@@ -115,7 +119,7 @@ const _Drawer = ({
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     setZIndexState(zIndex + stackingLevel);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMounted]);
+  }, [isMounted, stackingLevel]);
 
   const contextValue = React.useMemo(
     () => ({
@@ -173,6 +177,7 @@ const _Drawer = ({
             {...makeAnalyticsAttribute(rest)}
           >
             <AnimatedDrawerContainer
+              ref={ref}
               isVisible={isVisible}
               showOverlay={showOverlay}
               onOverlayPress={onDismiss}
@@ -226,7 +231,7 @@ const _Drawer = ({
  *
  *
  */
-const Drawer = assignWithoutSideEffects(_Drawer, {
+const Drawer = assignWithoutSideEffects(React.forwardRef(_Drawer), {
   displayName: 'Drawer',
   componentId: drawerComponentIds.Drawer,
 });
