@@ -696,8 +696,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         onMouseDown?.(event);
       }}
       onMouseUp={handlePointerPressedOut}
-      onMouseOut={handlePointerPressedOut}
-      onKeyUp={handleKeyboardPressedOut}
+      {...(!isReactNative()
+        ? { onMouseOut: handlePointerPressedOut, onKeyUp: handleKeyboardPressedOut }
+        : {})}
       shadowHighlightColor={effectiveShadowHighlightColor}
       shadowHighlightHeight={isNonFirstInButtonGroup ? undefined : shadowHighlightHeight}
       shadowBottomColor={shadowBottomColor}
