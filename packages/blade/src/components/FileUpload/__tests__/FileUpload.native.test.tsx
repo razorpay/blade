@@ -281,7 +281,7 @@ describe('<FileUpload /> (native)', () => {
     });
   });
 
-  it('should not fall back to onRemove when onReupload is not provided', () => {
+  it('should fall back to onRemove when onReupload is not provided', () => {
     const onRemove = jest.fn();
     const onChange = jest.fn();
     const errorFile = {
@@ -306,7 +306,8 @@ describe('<FileUpload /> (native)', () => {
     const buttons = getAllByRole('button');
     fireEvent.press(buttons[0]);
 
-    expect(onRemove).not.toHaveBeenCalled();
+    // Matches web: when onReupload is omitted, reupload falls back to onRemove
+    expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
     expect(onChange).toHaveBeenCalledWith({
       name: 'single-file-upload-input',
       fileList: [],

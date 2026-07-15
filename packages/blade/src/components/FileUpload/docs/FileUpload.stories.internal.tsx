@@ -106,7 +106,9 @@ const useSimulateUpload = (): SimulateUpload => {
           prev.map((f) => (f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f)),
         );
       } else {
-        setFiles((prev) => prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)));
+        setFiles((prev) =>
+          prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)),
+        );
       }
     }, 300);
     activeIntervalsRef.current.add(interval);
