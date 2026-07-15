@@ -1668,6 +1668,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
           }
         >
           <View
+            accessibilityLabel="Reupload test.png"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -4066,6 +4067,7 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
           }
         >
           <View
+            accessibilityLabel="Reupload test.png"
             accessibilityRole="button"
             accessibilityState={
               {

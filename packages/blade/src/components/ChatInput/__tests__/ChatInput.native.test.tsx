@@ -154,6 +154,25 @@ describe('<ChatInput /> (native)', () => {
     expect(queryByText('b.pdf')).toBeTruthy();
   });
 
+  it('should call onFileReupload when reupload button is pressed on error-status file', () => {
+    const onFileReupload = jest.fn();
+    const files = [{ id: 'file-1', name: 'error.pdf', status: 'error' as const, size: 1024 }];
+
+    const { getByRole } = renderWithTheme(
+      <ChatInput
+        accessibilityLabel={accessibilityLabel}
+        fileList={files as never}
+        onFileReupload={onFileReupload}
+      />,
+    );
+
+    const reuploadButton = getByRole('button', { name: 'Reupload error.pdf' });
+    fireEvent.press(reuploadButton);
+    expect(onFileReupload).toHaveBeenCalledWith({
+      file: expect.objectContaining({ name: 'error.pdf' }),
+    });
+  });
+
   it('should disable input when isDisabled is true', () => {
     const { toJSON } = renderWithTheme(
       <ChatInput accessibilityLabel={accessibilityLabel} isDisabled />,
