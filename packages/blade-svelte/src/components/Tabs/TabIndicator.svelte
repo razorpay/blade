@@ -115,5 +115,6 @@
 <div
   class={indicatorClasses}
   style={indicatorStyle}
+  aria-hidden="true"
   {...metaAttrs}
 ></div>
