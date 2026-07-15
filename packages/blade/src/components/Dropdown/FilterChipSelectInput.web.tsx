@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import { useFilterChipGroupContext } from './FilterChipGroupContext.web';
@@ -153,21 +153,20 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   // Resolves the value shown inside the chip: option titles for display. Controlled consumers
   // pass option value(s); we map them to titles here (falling back to the raw value if the
-  // options haven't loaded yet). Memoised to avoid redundant O(n) finds on every render.
-  const getFilterChipDisplayValue = useMemo(() => {
-    return (): string | string[] => {
-      if (props.value === undefined) {
-        return getUnControlledFilterChipValue();
-      }
-      if (Array.isArray(props.value)) {
-        return props.value.map(
-          (selectionValue) => getTitleFromValue(selectionValue) || selectionValue,
-        );
-      }
-      return getTitleFromValue(props.value) || props.value;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.value, options, uncontrolledInputValue, selectionType]);
+  // options haven't loaded yet). Kept as a plain function (matching the native implementation) —
+  // it's invoked inline during render, so memoising the function identity added no benefit and
+  // previously reintroduced a stale-closure risk around the uncontrolled value.
+  const getFilterChipDisplayValue = (): string | string[] => {
+    if (props.value === undefined) {
+      return getUnControlledFilterChipValue();
+    }
+    if (Array.isArray(props.value)) {
+      return props.value.map(
+        (selectionValue) => getTitleFromValue(selectionValue) || selectionValue,
+      );
+    }
+    return getTitleFromValue(props.value) || props.value;
+  };
 
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });

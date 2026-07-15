@@ -102,6 +102,10 @@ type FilterChipGroupProps = TestID &
      * - `"clear"` → auto-pluralised `"Clear Filter"` / `"Clear Filters"`.
      * - `"reset"` → `"Reset"`.
      *
+     * Note: because of this conditional default, switching `clearButtonBehavior` while leaving
+     * `clearButtonText` unset will change the button label. Pass `clearButtonText` explicitly to
+     * pin the label regardless of behaviour.
+     *
      * @default undefined (derived from `clearButtonBehavior`)
      */
     clearButtonText?: string;
@@ -121,6 +125,13 @@ type FilterChipGroupProps = TestID &
      *   controlled chips can be reliably restored today (by resetting `value` in
      *   `onClearButtonClick`). Restoring defaults for uncontrolled filters is Phase 2 — see
      *   `_decisions/filter-chip-reset.md`.
+     *
+     *   Contract note: on action the group always clears its own selected-filter bookkeeping (so
+     *   the action button hides after use — a lingering "Reset" with nothing to revert is
+     *   confusing). This means that if the consumer's `onClearButtonClick` does not restore every
+     *   chip's default, the group's tracked count can momentarily read empty while a chip still
+     *   shows a value. This is an intentional trade-off in favour of hiding the used-up button;
+     *   the count re-syncs on the next filter change.
      *
      * @default "clear"
      */
