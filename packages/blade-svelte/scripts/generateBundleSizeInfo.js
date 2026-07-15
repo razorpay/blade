@@ -6,18 +6,33 @@ import traverse from '@babel/traverse';
 import execa from 'execa';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import prettier from 'prettier';
-// eslint-disable-next-line import/no-unresolved
-import { globby } from 'globby';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const findIndexPaths = (baseDir) => {
+  const results = [];
+  const walk = (dir) => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(fullPath);
+      } else if (entry.name === 'index.js') {
+        const relativePath = path.relative(baseDir, fullPath).replace(/\\/g, '/');
+        // Exclude the main index.js and Icons index files
+        if (relativePath === 'index.js') return;
+        if (relativePath.startsWith('Icons/')) return;
+        results.push(`dist/lib/components/${relativePath}`);
+      }
+    }
+  };
+  walk(baseDir);
+  return results;
+};
+
 const main = async () => {
   // Find all intermediate index.js files in component subdirectories
-  const indexPaths = await globby([
-    'dist/lib/components/**/index.js',
-    '!dist/lib/components/index.js',
-    '!dist/lib/components/Icons/**/index.js',
-  ]);
+  const indexPaths = findIndexPaths(path.resolve(__dirname, '../dist/lib/components'));
 
   const excludedComponents = [
     'BaseText',
