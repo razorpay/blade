@@ -766,8 +766,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   // the wrap-driven bottom padding computed just below.
   const plotWidthForLabels = Math.max(0, size.width - PLOT_PADDING.left - PLOT_PADDING.right);
   const pointCount = data.length;
-  const columnWidth =
-    pointCount > 1 ? plotWidthForLabels / (pointCount - 1) : plotWidthForLabels;
+  const columnWidth = pointCount > 1 ? plotWidthForLabels / (pointCount - 1) : plotWidthForLabels;
 
   // Resolve every x-label up front so we can measure density and (mobile) wrap
   // long labels across lines instead of dropping them — matches web.
@@ -830,15 +829,12 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       return Math.max(primaryWidth, secondaryWidth);
     });
 
-    const forcedStep =
-      slots.xInterval !== undefined ? Math.max(1, slots.xInterval + 1) : undefined;
+    const forcedStep = slots.xInterval !== undefined ? Math.max(1, slots.xInterval + 1) : undefined;
 
     return selectNonOverlappingXTickIndices(pointCount, widths, xForIndex, forcedStep);
   }, [pointCount, pointSpacing, plotWidth, xLabelLines, secondaryLabelMap, slots.xInterval]);
 
-  const visibleXTickIndexSet = useMemo(() => new Set(visibleXTickIndices), [
-    visibleXTickIndices,
-  ]);
+  const visibleXTickIndexSet = useMemo(() => new Set(visibleXTickIndices), [visibleXTickIndices]);
 
   const tickColor = getIn(theme.colors, 'surface.text.gray.muted');
   const axisLineColor = getIn(theme.colors, 'surface.border.gray.muted');
@@ -1282,11 +1278,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                         // First/last anchor to their inner edge so wide wrapped
                         // labels don't spill off the canvas; inner ticks center.
                         const anchor =
-                          index === 0
-                            ? 'start'
-                            : index === pointCount - 1
-                            ? 'end'
-                            : 'middle';
+                          index === 0 ? 'start' : index === pointCount - 1 ? 'end' : 'middle';
                         // Secondary sits below the tallest possible primary block
                         // so it stays on one row across all ticks.
                         const secondaryY =
