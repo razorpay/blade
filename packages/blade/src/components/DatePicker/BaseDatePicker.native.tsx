@@ -24,7 +24,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import type { DataAnalyticsAttribute } from '~utils/types';
+import type { BladeElementRef, DataAnalyticsAttribute } from '~utils/types';
 
 /**
  * Native BaseDatePicker orchestration.
@@ -37,6 +37,13 @@ import type { DataAnalyticsAttribute } from '~utils/types';
  * - `fireNativeEvent` (DOM-only) and the web-only ListView / FilterChipGroup filter contexts
  *   are not wired on native.
  */
+type BaseDatePickerInternalProps<Type extends DateSelectionType> = DatePickerProps<Type> &
+  StyledPropsBlade &
+  DataAnalyticsAttribute & {
+    /** Internal — set by DatePicker / FilterChipDatePicker wrappers, not consumer-facing. */
+    inputElementType: 'chip' | 'datePickerInput';
+  };
+
 const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
   allowSingleDateInRange,
@@ -74,17 +81,15 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   showFooterActions = true,
   footer,
   displayFormat = 'default',
+  headerLabel,
+  applyLabel = 'Apply',
+  cancelLabel = 'Cancel',
   ...props
-}: DatePickerProps<Type> &
-  StyledPropsBlade &
-  DataAnalyticsAttribute & {
-    inputElementType: 'chip' | 'datePickerInput';
-  }): React.ReactElement => {
+}: BaseDatePickerInternalProps<Type>): React.ReactElement => {
   const _selectionType = selectionType ?? 'single';
   const isSingle = _selectionType === 'single';
-  const [, forceRerender] = React.useReducer((x: number) => x + 1, 0);
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
-  const referenceRef = React.useRef<any>(null);
+  const referenceRef = React.useRef<BladeElementRef | null>(null);
   const shouldApplyAfterPresetSelection = React.useRef(false);
   // Tracks whether the BottomSheet is being closed programmatically (apply / clear /
   // cancel) versus dismissed directly by the user (swipe-down / backdrop tap). Gorhom's
@@ -251,7 +256,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         <Calendar
           {...props}
           selectionType={_selectionType}
-          __onDayClick={(_event, date) => {
+          __onDayClick={(date) => {
             onDateChange(date, 'day');
           }}
           getMonthControlProps={(date) => getControlProps(date)}
@@ -267,17 +272,14 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           }}
           onNext={(data) => {
             props?.onNext?.(data as never);
-            forceRerender();
           }}
           onPrevious={(data) => {
             props?.onPrevious?.(data as never);
-            forceRerender();
           }}
           picker={_picker}
           showLevelChangeLink={!picker}
           onPickerChange={(nextPicker) => {
             setPicker(() => nextPicker);
-            forceRerender();
           }}
           selectedValue={controlledValue}
         />
@@ -418,7 +420,11 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             handleCancel();
           }}
         >
-          <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
+          <BottomSheetHeader
+            title={
+              headerLabel ?? (isSingle ? 'Select Date' : 'Select Date Range')
+            }
+          />
           <BottomSheetBody>
             {content}
             {!isSingle && presets && (
@@ -439,6 +445,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 isButtonDisabled={applyButtonDisabled}
                 onCancel={handleCancel}
                 onApply={handleApply}
+                applyLabel={applyLabel}
+                cancelLabel={cancelLabel}
                 footer={footer}
               />
             </BottomSheetFooter>

@@ -3,6 +3,7 @@
 import dayjs from 'dayjs';
 import React from 'react';
 import { useI18nContext } from '@razorpay/i18nify-react';
+import type { DayOfWeek } from '@mantine/dates';
 import type { DateSelectionType, PickerType, DatesRangeValue } from './types';
 import { CalendarHeader } from './CalendarHeader';
 import { DayCell, ListCell, TodayDot } from './CalendarStyles.native';
@@ -25,8 +26,11 @@ type ControlProps = {
   lastInRange?: boolean;
 };
 
+// Native-specific Calendar props. Intentionally separate from shared `CalendarProps`
+// (which is built on `@mantine/dates` DOM types). Only the fields that truly differ
+// on native are redefined here; `firstDayOfWeek` matches the shared `DayOfWeek` type.
 type CalendarNativeProps<Type extends DateSelectionType> = {
-  firstDayOfWeek?: number;
+  firstDayOfWeek?: DayOfWeek;
   selectionType?: Type;
   allowSingleDateInRange?: boolean;
   defaultPicker?: PickerType;
@@ -37,7 +41,8 @@ type CalendarNativeProps<Type extends DateSelectionType> = {
   excludeDate?: (date: Date) => boolean;
   showLevelChangeLink?: boolean;
   selectedValue: DatesRangeValue | Date | null;
-  __onDayClick?: (event: undefined, date: Date) => void;
+  // No DOM event on native — date is the only payload.
+  __onDayClick?: (date: Date) => void;
   getDayProps: (date: Date) => ControlProps;
   getMonthControlProps: (date: Date) => ControlProps;
   getYearControlProps: (date: Date) => ControlProps;
@@ -102,7 +107,11 @@ const DayGridCell = React.memo(
         isLastInRange={isLastInRange}
         isDisabled={isDisabled}
         disabled={isDisabled}
-        accessibilityLabel={accessibilityLabel}
+        accessibilityRole="button"
+        accessibilityState={{ selected: isSelected, disabled: isDisabled }}
+        accessibilityLabel={
+          isSelected ? `${accessibilityLabel}, selected` : accessibilityLabel
+        }
         onPress={() => {
           if (isDisabled) return;
           onDayPress(dateTime);
@@ -125,7 +134,8 @@ const DayGridCell = React.memo(
  * web-only `@mantine/dates` `DatesProvider`).
  */
 const Calendar = <Type extends DateSelectionType>({
-  firstDayOfWeek = 0,
+  // Monday matches the previous native stub + Razorpay's primary locale (en-IN).
+  firstDayOfWeek = 1,
   selectionType,
   defaultPicker = 'day',
   picker,
@@ -188,7 +198,7 @@ const Calendar = <Type extends DateSelectionType>({
   const onDayClickRef = React.useRef(__onDayClick);
   onDayClickRef.current = __onDayClick;
   const handleDayPress = React.useCallback((dateTime: number) => {
-    onDayClickRef.current?.(undefined, new Date(dateTime));
+    onDayClickRef.current?.(new Date(dateTime));
   }, []);
 
   const navigate = (unit: 'month' | 'year', amount: number, type: NavType): void => {
@@ -257,7 +267,13 @@ const Calendar = <Type extends DateSelectionType>({
       <BaseBox display="flex" flexDirection="column">
         <BaseBox display="flex" flexDirection="row" marginBottom="spacing.4">
           {weekdays.map((weekday, index) => (
-            <BaseBox key={index} flex={1} display="flex" alignItems="center">
+            <BaseBox
+              key={index}
+              flex={1}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
               <Text size="small" weight="medium" color="surface.text.gray.muted">
                 {weekday}
               </Text>
@@ -326,7 +342,13 @@ const Calendar = <Type extends DateSelectionType>({
               isSelected={controlProps.selected}
               isDisabled={isDisabled}
               disabled={isDisabled}
-              accessibilityLabel={month.locale(locale).format('MMMM YYYY')}
+              accessibilityRole="button"
+              accessibilityState={{ selected: controlProps.selected, disabled: isDisabled }}
+              accessibilityLabel={
+                controlProps.selected
+                  ? `${month.locale(locale).format('MMMM YYYY')}, selected`
+                  : month.locale(locale).format('MMMM YYYY')
+              }
               onPress={() => {
                 if (isDisabled) return;
                 onMonthSelect?.(dateObj);
@@ -371,7 +393,11 @@ const Calendar = <Type extends DateSelectionType>({
               isSelected={controlProps.selected}
               isDisabled={isDisabled}
               disabled={isDisabled}
-              accessibilityLabel={year.format('YYYY')}
+              accessibilityRole="button"
+              accessibilityState={{ selected: controlProps.selected, disabled: isDisabled }}
+              accessibilityLabel={
+                controlProps.selected ? `${year.format('YYYY')}, selected` : year.format('YYYY')
+              }
               onPress={() => {
                 if (isDisabled) return;
                 onYearSelect?.(dateObj);
@@ -420,4 +446,3 @@ const Calendar = <Type extends DateSelectionType>({
 };
 
 export { Calendar };
-export type { CalendarNativeProps, ControlProps };

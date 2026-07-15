@@ -257,7 +257,7 @@ const _DateInput = (
 
   return (
     <TextInput
-      {...(textInputProps as any)}
+      {...textInputProps}
       ref={ref}
       {...getInputDisplayProps()}
       // On native the DateInput is a NON-editable, press-to-open trigger (mirrors the
@@ -266,17 +266,17 @@ const _DateInput = (
       // re-firing the open handler on focus/blur churn (the old infinite-loop + keyboard
       // bug). The calendar BottomSheet is the input method on native, so free-text date
       // typing is intentionally dropped.
-      {...({ as: 'button' } as any)}
+      as="button"
       // The native trigger renders as a `button` (Pressable), so it never receives real
       // focus on tap — the shared BaseInput would keep a plain gray border and no focus
       // ring. Force the "active" visual (blue border + focus ring) whenever the DatePicker
       // is active (input focused OR the calendar sheet is open), mirroring web.
-      {...({ activeInteraction: isDatePickerActive ? 'focus' : undefined } as any)}
+      activeInteraction={isDatePickerActive ? 'focus' : undefined}
       onClick={(e) => {
         if (textInputProps.isDisabled) {
           return;
         }
-        (textInputProps as any).onClick?.(e);
+        textInputProps.onClick?.(e);
       }}
       showClearButton={showClearButton}
       onClearButtonClick={onClearButtonClick}
@@ -322,7 +322,7 @@ const _DatePickerInput = (
   const { i18nState } = useI18nContext();
   const locale = convertIntlToDayjsLocale(i18nState?.locale ?? 'en-IN');
 
-  if (selectionType == 'single') {
+  if (selectionType === 'single') {
     const dateValue = getFormattedDate({
       date,
       format,
@@ -367,7 +367,7 @@ const _DatePickerInput = (
     );
   }
 
-  if (selectionType == 'range') {
+  if (selectionType === 'range') {
     const startValue = getFormattedDate({
       type: 'default',
       date: date[0],

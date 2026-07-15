@@ -8,6 +8,8 @@ type CalendarFooterProps = {
   onCancel: () => void;
   isButtonDisabled?: boolean;
   footer?: React.ReactElement;
+  applyLabel?: string;
+  cancelLabel?: string;
 };
 
 /**
@@ -20,6 +22,8 @@ const CalendarFooter = ({
   onCancel,
   isButtonDisabled,
   footer,
+  applyLabel = 'Apply',
+  cancelLabel = 'Cancel',
 }: CalendarFooterProps): React.ReactElement => {
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.5">
@@ -33,7 +37,7 @@ const CalendarFooter = ({
             onClick={onCancel}
             data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.CANCEL_BUTTON}
           >
-            Cancel
+            {cancelLabel}
           </Button>
         </BaseBox>
         <BaseBox flex={1}>
@@ -45,7 +49,7 @@ const CalendarFooter = ({
             onClick={onApply}
             data-analytics-name={MAKE_ANALYTICS_CONSTANTS.DATE_PICKER.APPLY_BUTTON}
           >
-            Apply
+            {applyLabel}
           </Button>
         </BaseBox>
       </BaseBox>

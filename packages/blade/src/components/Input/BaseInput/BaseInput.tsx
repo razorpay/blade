@@ -289,8 +289,8 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     isPopupExpanded?: boolean;
     /**
-     * Forces the input's visual interaction state (border color + focus ring) regardless
-     * of the real focus/hover events tracked internally.
+     * @internal Forces the input's visual interaction state (border color + focus ring)
+     * regardless of the real focus/hover events tracked internally.
      *
      * Used by press-to-open triggers that render as a `button` (e.g. DatePicker on native)
      * and therefore never receive DOM/RN focus, but should still look "active"

@@ -7,7 +7,7 @@ import GorhomBottomSheet, {
 import type { BottomSheetBackgroundProps } from '@gorhom/bottom-sheet';
 import React from 'react';
 import { Portal } from '@gorhom/portal';
-import { Dimensions, AccessibilityInfo, findNodeHandle, View, Keyboard } from 'react-native';
+import { Dimensions, AccessibilityInfo, findNodeHandle, View, Keyboard, useWindowDimensions } from 'react-native';
 import { BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { BottomSheetBody } from './BottomSheetBody';
@@ -136,7 +136,7 @@ const _BottomSheet = ({
     bottomSheetAndDropdownGlue?.hasAutoCompleteInHeader,
   ]);
 
-  const windowHeight = Dimensions.get('window').height;
+  const { height: windowHeight } = useWindowDimensions();
   const _snapPoints = React.useMemo<(string | number)[]>(() => {
     // Content-driven sizing: derive a SINGLE snap point from the measured content
     // height (header + body + footer) so the sheet hugs its content. The array is

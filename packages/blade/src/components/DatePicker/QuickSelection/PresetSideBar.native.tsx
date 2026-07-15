@@ -8,7 +8,12 @@ import { Divider } from '~components/Divider';
  * `ChipGroup` branch is rendered (the desktop `QuickSelectionItem` sidebar is
  * web-only).
  */
-const PresetSideBar = ({ onSelection, presetStates }: PresetSideBarProps): React.ReactElement => {
+const PresetSideBar = ({
+  // Native is always the mobile layout — intentionally unused.
+  isMobile: _isMobile,
+  onSelection,
+  presetStates,
+}: PresetSideBarProps): React.ReactElement => {
   if (presetStates.length === 0) return <></>;
 
   return (
@@ -26,9 +31,9 @@ const PresetSideBar = ({ onSelection, presetStates }: PresetSideBarProps): React
           }
         }}
       >
-        {presetStates.map(({ preset }, index) => {
+        {presetStates.map(({ preset }) => {
           return (
-            <Chip value={preset.label} key={index} data-analytics-name={preset.label}>
+            <Chip value={preset.label} key={preset.label} data-analytics-name={preset.label}>
               {preset.label}
             </Chip>
           );
