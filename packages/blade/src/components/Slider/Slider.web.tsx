@@ -1,6 +1,7 @@
 import React from 'react';
 import type { SliderProps, SliderRangeValue, SliderValue } from './types';
 import {
+  clampValue,
   getGeneratedMarks,
   getPercent,
   isSameValue,
@@ -125,8 +126,8 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     shouldUpdate: (previous, next) => !isSameValue(previous, next),
   });
   const currentValue = React.useMemo(
-    () => normalizeValue(controllableValue, selectionType, min, max, step),
-    [controllableValue, selectionType, min, max, step],
+    () => clampValue(controllableValue, selectionType, min, max),
+    [controllableValue, selectionType, min, max],
   );
   latestValueRef.current = currentValue;
 

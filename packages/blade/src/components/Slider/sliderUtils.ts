@@ -12,7 +12,11 @@ const getPrecision = (value: number): number => {
 const snapValue = (value: number, min: number, max: number, step: number): number => {
   const snapped = min + Math.round((value - min) / step) * step;
   const precision = Math.max(getPrecision(step), getPrecision(min));
-  return clamp(Number(snapped.toFixed(precision)), min, max);
+  const clamped = clamp(Number(snapped.toFixed(precision)), min, max);
+  if (max - clamped <= step / 2 && clamped !== max) {
+    return max;
+  }
+  return clamped;
 };
 
 const normalizeValue = (
@@ -36,9 +40,33 @@ const normalizeValue = (
 const getPercent = (value: number, min: number, max: number): number =>
   ((value - min) / (max - min)) * 100;
 
+const clampValue = (
+  value: SliderValue,
+  selectionType: 'single' | 'range',
+  min: number,
+  max: number,
+): SliderValue => {
+  if (selectionType === 'single') {
+    const singleValue = typeof value === 'number' ? value : value[0];
+    return clamp(singleValue, min, max);
+  }
+
+  const rangeValue: SliderRangeValue = typeof value === 'number' ? [min, value] : value;
+  const start = clamp(Math.min(rangeValue[0], rangeValue[1]), min, max);
+  const end = clamp(Math.max(rangeValue[0], rangeValue[1]), min, max);
+  return [start, end];
+};
+
 const getGeneratedMarks = (min: number, max: number, step: number): SliderMark[] => {
   const stepCount = Math.round((max - min) / step);
-  if (stepCount > sliderTokens.maxGeneratedMarks) return [];
+  if (stepCount > sliderTokens.maxGeneratedMarks) {
+    if (__DEV__) {
+      console.warn(
+        `Slider: generated mark count (${stepCount}) exceeds the maximum of ${sliderTokens.maxGeneratedMarks}. Marks will not be rendered. Consider increasing the step size or providing custom marks.`,
+      );
+    }
+    return [];
+  }
 
   const marks: SliderMark[] = Array.from({ length: stepCount + 1 }, (_, index) => ({
     value: snapValue(min + index * step, min, max, step),
@@ -58,4 +86,4 @@ const isSameValue = (previous: SliderValue, next: SliderValue): boolean => {
   return previous[0] === next[0] && previous[1] === next[1];
 };
 
-export { getGeneratedMarks, getPercent, isSameValue, normalizeValue, snapValue };
+export { clampValue, getGeneratedMarks, getPercent, isSameValue, normalizeValue, snapValue };
