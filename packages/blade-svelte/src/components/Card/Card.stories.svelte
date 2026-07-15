@@ -48,9 +48,6 @@
 </script>
 
 <script lang="ts">
-  import TicketCard from './TicketCard.svelte';
-  import TicketCardBody from './TicketCardBody.svelte';
-  import TicketCardFooter from './TicketCardFooter.svelte';
   import InfoCard from './InfoCard.svelte';
   import InfoCardBody from './InfoCardBody.svelte';
   import InfoCardFooter from './InfoCardFooter.svelte';
@@ -99,7 +96,7 @@
 <Story name="Playground">
   {#snippet template(args)}
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card {...getCardSurfaceProps(args)}>
         <CardHeader>
@@ -154,7 +151,7 @@
 <Story name="Card Example" asChild>
   <div style="display: flex;">
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -198,7 +195,7 @@
       </Card>
     </div>
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -248,7 +245,7 @@
 <Story name="Figma Example" asChild>
   <div style="display: flex;">
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -289,7 +286,7 @@
       </Card>
     </div>
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -585,7 +582,7 @@
 
 <!-- Story 8: Card Types — primary / secondary / theme treatments -->
 <Story name="Card Types" asChild>
-  <div style="display: flex; flex-direction: column; gap: 24px; background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+  <div style="display: flex; flex-direction: column; gap: 24px; padding: var(--spacing-8);">
     <Card variant="primary" maxWidth="500px">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
@@ -626,7 +623,7 @@
 
 <!-- Story 9: Order Summary — order item with SKU image, details, and pricing -->
 <Story name="Order Summary" asChild>
-  <div style="background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+  <div style="padding: var(--spacing-8);">
     <Card maxWidth="380px" size="medium">
       <CardHeader>
         <CardHeaderLeading title="Order summary" />
@@ -675,26 +672,6 @@
 
 <!-- Reusable renderers for the sectioned-variant showcase stories below. Defined at component
      top-level (not inside <Story>) so they aren't mistaken for Story snippet props. -->
-{#snippet ticketCard(label: string, isSelected: boolean, isDisabled: boolean)}
-  <TicketCard width="280px" {isSelected} {isDisabled}>
-    <TicketCardBody>
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
-        <Text weight="semibold">Razorpay Summit 2026</Text>
-        <Text size="small" color="surface.text.gray.subtle">{label}</Text>
-      </div>
-    </TicketCardBody>
-    <TicketCardFooter>
-      <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-        <div style="display: flex; flex-direction: column;">
-          <Text size="small" color="surface.text.gray.subtle">Seat</Text>
-          <Text weight="semibold">A-24</Text>
-        </div>
-        <Amount value={4999} type="body" weight="semibold" />
-      </div>
-    </TicketCardFooter>
-  </TicketCard>
-{/snippet}
-
 {#snippet infoCard(label: string, isSelected: boolean, isDisabled: boolean)}
   <InfoCard width="280px" {isSelected} {isDisabled}>
     <InfoCardBody>
@@ -712,23 +689,11 @@
   </InfoCard>
 {/snippet}
 
-<!-- Story 10: Ticket Card — two sections split by a scalloped, notched tear line.
-     Compose with `TicketCardBody` and `TicketCardFooter`. -->
-<Story name="Ticket Card" asChild>
-  <div
-    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
-  >
-    {@render ticketCard('Default', false, false)}
-    {@render ticketCard('Selected', true, false)}
-    {@render ticketCard('Disabled', false, true)}
-  </div>
-</Story>
-
-<!-- Story 11: Info Card — emphasized header over subtle body inside single rounded border.
+<!-- Story 10: Info Card — emphasized header over subtle body inside single rounded border.
      Compose with `InfoCardBody` and `InfoCardFooter`. -->
 <Story name="Info Card" asChild>
   <div
-    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
+    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8);"
   >
     {@render infoCard('Default', false, false)}
     {@render infoCard('Selected', true, false)}

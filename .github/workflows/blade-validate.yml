@@ -85,6 +85,22 @@ jobs:
           path: packages/blade/coverage
           retention-days: 1
 
+  svelte-test:
+    name: Run Svelte Tests
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v22
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Run Unit Tests
+        run: yarn test
+        working-directory: packages/blade-svelte
+
   coverage-report:
     name: Generate Coverage Report
     runs-on: ubuntu-latest
