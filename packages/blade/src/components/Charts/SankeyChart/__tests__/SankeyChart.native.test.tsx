@@ -45,7 +45,9 @@ const shapeRects = (rects: ReactTestInstance[]): ReactTestInstance[] => rects;
 // hit-tests the touch location, so interaction tests fire `press` on that canvas
 // with a computed locationX/locationY rather than on individual SVG shapes.
 type Utils = ReturnType<typeof renderWithTheme>;
-type SvgComponent = typeof Rect | typeof Path | typeof TSpan | typeof G;
+// Widen past the Rect|Path|TSpan|G union — their props (e.g. NumberProp vs NumberArray on `x`)
+// are not mutually assignable, so RNTL's ComponentType<GProps> parameter rejects the union.
+type SvgComponent = React.ComponentType;
 
 // Rename RNTL's UNSAFE_* helpers so babel/new-cap does not treat the call site as a
 // constructor invocation (the exported names begin with an uppercase letter).
