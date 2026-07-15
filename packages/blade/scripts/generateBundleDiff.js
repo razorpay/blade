@@ -38,11 +38,9 @@ const generateBundleDiff = async () => {
   // Calculate the empty project sizes from both current and base builds
   // Using the correct base empty project size for base components avoids
   // incorrect negative sizes when the base and current empty project sizes differ
-  const emptyProjectSize =
-    currentBundleSizeStats.find((stat) => stat.name === 'Base').size / 1000;
+  const emptyProjectSize = currentBundleSizeStats.find((stat) => stat.name === 'Base').size / 1000;
   const baseEmptyProjectSize =
-    baseBundleSizeStats.find((stat) => stat.name === 'Base')?.size / 1000 ||
-    emptyProjectSize;
+    baseBundleSizeStats.find((stat) => stat.name === 'Base')?.size / 1000 || emptyProjectSize;
 
   // Calculate the size differences and create a formatted diff table
   bundleDiff.forEach((component) => {
