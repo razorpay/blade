@@ -12,6 +12,7 @@ import {
   httpTransportSkillVersionSchema,
 } from '../utils/getCommonSchema.js';
 import type { BladeFramework } from '../types/framework.js';
+import { frameworkSchema } from '../types/framework.js';
 import { detectFrameworkFromProject } from '../utils/detectFramework.js';
 
 const reactComponentsList = getBladeDocsList('components', 'react');
@@ -22,13 +23,6 @@ const svelteComponentsListString = svelteComponentsList.join(', ');
 const getBladeComponentDocsToolName = 'get_blade_component_docs';
 const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component. Pass framework="svelte" for Blade Svelte docs (limited catalog) or framework="react" for the full React catalog. When framework is omitted, it is auto-detected from the consumer project's package.json (@razorpay/blade-svelte → svelte, @razorpay/blade → react; defaults to react).`;
 
-const frameworkSchema = z
-  .enum(['react', 'svelte'])
-  .optional()
-  .describe(
-    'Target framework for component docs. Use "react" for @razorpay/blade or "svelte" for @razorpay/blade-svelte. When omitted, auto-detected from consumer package.json dependencies.',
-  );
-
 // Schema for stdio transport
 const getBladeComponentDocsStdioSchema = {
   componentsList: z
@@ -36,7 +30,9 @@ const getBladeComponentDocsStdioSchema = {
     .describe(
       `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). React components: ${reactComponentsListString}. Svelte components: ${svelteComponentsListString}.`,
     ),
-  framework: frameworkSchema,
+  framework: frameworkSchema.describe(
+    'Target framework for component docs. Use "react" for @razorpay/blade or "svelte" for @razorpay/blade-svelte. When omitted, auto-detected from consumer package.json dependencies.',
+  ),
   ...commonBladeMCPToolSchema,
 };
 

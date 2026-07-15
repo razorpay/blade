@@ -8,6 +8,9 @@ const BLADE_REACT_PACKAGE = '@razorpay/blade';
 
 export function detectFrameworkFromProject(currentProjectRootDirectory?: string): BladeFramework {
   if (!currentProjectRootDirectory) {
+    console.warn(
+      `[blade-mcp] Framework auto-detection: no project root provided, defaulting to "${DEFAULT_FRAMEWORK}". Pass framework explicitly to avoid incorrect docs.`,
+    );
     return DEFAULT_FRAMEWORK;
   }
 
@@ -15,6 +18,9 @@ export function detectFrameworkFromProject(currentProjectRootDirectory?: string)
 
   try {
     if (!existsSync(packageJsonPath)) {
+      console.warn(
+        `[blade-mcp] Framework auto-detection: package.json not found at ${packageJsonPath}, defaulting to "${DEFAULT_FRAMEWORK}". Pass framework explicitly to avoid incorrect docs.`,
+      );
       return DEFAULT_FRAMEWORK;
     }
 
@@ -38,8 +44,14 @@ export function detectFrameworkFromProject(currentProjectRootDirectory?: string)
       return 'react';
     }
 
+    console.warn(
+      `[blade-mcp] Framework auto-detection: neither ${BLADE_SVELTE_PACKAGE} nor ${BLADE_REACT_PACKAGE} found in dependencies, defaulting to "${DEFAULT_FRAMEWORK}". Pass framework explicitly to avoid incorrect docs.`,
+    );
     return DEFAULT_FRAMEWORK;
-  } catch {
+  } catch (error) {
+    console.warn(
+      `[blade-mcp] Framework auto-detection: failed to parse package.json (${error}), defaulting to "${DEFAULT_FRAMEWORK}". Pass framework explicitly to avoid incorrect docs.`,
+    );
     return DEFAULT_FRAMEWORK;
   }
 }

@@ -18,6 +18,7 @@ import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateSkill } from '../utils/skillUtils.js';
 import type { McpToolResponse } from '../utils/types.js';
 import type { BladeFramework } from '../types/framework.js';
+import { frameworkSchema } from '../types/framework.js';
 import { detectFrameworkFromProject } from '../utils/detectFramework.js';
 
 const reactGeneralDocsList = getBladeDocsList('general', 'react');
@@ -37,13 +38,6 @@ const svelteGeneralDocsGuide = readFileSync(
 
 const getBladeGeneralDocsToolDescription = `Fetch general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines. Pass framework="svelte" for Blade Svelte setup docs or framework="react" for the React catalog. When framework is omitted, it is auto-detected from the consumer project's package.json (@razorpay/blade-svelte → svelte, @razorpay/blade → react; defaults to react).`;
 
-const frameworkSchema = z
-  .enum(['react', 'svelte'])
-  .optional()
-  .describe(
-    'Target framework for general docs. Use "react" for @razorpay/blade or "svelte" for @razorpay/blade-svelte. When omitted, auto-detected from consumer package.json dependencies.',
-  );
-
 // Schema for stdio transport
 const getBladeGeneralDocsStdioSchema = {
   topicsList: z
@@ -55,7 +49,9 @@ const getBladeGeneralDocsStdioSchema = {
         ', ',
       )}. React guide:\n${reactGeneralDocsGuide}\n\nSvelte guide:\n${svelteGeneralDocsGuide}`,
     ),
-  framework: frameworkSchema,
+  framework: frameworkSchema.describe(
+    'Target framework for general docs. Use "react" for @razorpay/blade or "svelte" for @razorpay/blade-svelte. When omitted, auto-detected from consumer package.json dependencies.',
+  ),
   ...commonBladeMCPToolSchema,
 };
 

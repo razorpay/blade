@@ -15,6 +15,7 @@ import {
 } from '../utils/getCommonSchema.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
 import type { BladeFramework } from '../types/framework.js';
+import { frameworkSchema } from '../types/framework.js';
 import { detectFrameworkFromProject } from '../utils/detectFramework.js';
 
 const bladePatternsList = getBladeDocsList('patterns', 'react');
@@ -27,13 +28,6 @@ const getBladePatternDocsToolName = 'get_blade_pattern_docs';
 
 const getBladePatternDocsToolDescription = `Fetch the Blade Design System pattern docs. Use this to get information about design patterns, best practices, and implementation guidelines. Patterns are currently available for framework="react" only. When framework is omitted, it is auto-detected from the consumer project's package.json (@razorpay/blade-svelte → svelte, @razorpay/blade → react; defaults to react).`;
 
-const frameworkSchema = z
-  .enum(['react', 'svelte'])
-  .optional()
-  .describe(
-    'Target framework for pattern docs. Patterns are react-only for now. When omitted, auto-detected from consumer package.json dependencies.',
-  );
-
 // Schema for stdio transport
 const getBladePatternDocsStdioSchema = {
   patternsList: z
@@ -43,7 +37,9 @@ const getBladePatternDocsStdioSchema = {
         ', ',
       )}. Here is guide on how to decide which pattern to use: ${whichPatternToUseGuide}`,
     ),
-  framework: frameworkSchema,
+  framework: frameworkSchema.describe(
+    'Target framework for pattern docs. Patterns are react-only for now. When omitted, auto-detected from consumer package.json dependencies.',
+  ),
   ...commonBladeMCPToolSchema,
 };
 
