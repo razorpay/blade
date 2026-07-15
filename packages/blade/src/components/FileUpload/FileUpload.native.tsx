@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState, forwardRef } from 'react';
+import React, { useEffect, useRef, useState, forwardRef } from 'react';
 import { Pressable } from 'react-native';
 import type {
   FileUploadProps,
@@ -201,8 +201,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const fileIdCounterRef = useRef(0);
   const assignedFileIdsRef = useRef(new WeakMap<BladeFile, string>());
 
-  const filesWithIds = useMemo(
-    () =>
+  const [filesWithIds, setFilesWithIds] = useState<BladeFileList>([]);
+
+  useEffect(() => {
+    setFilesWithIds(
       selectedFiles.map((file) => {
         if (file.id) {
           return file;
@@ -218,8 +220,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         assignedFileIdsRef.current.set(file, id);
         return { ...file, id };
       }),
-    [selectedFiles],
-  );
+    );
+  }, [selectedFiles]);
 
   const isMultiple = uploadType === 'multiple';
   const isOneFileSelectedWithSingleUpload = !isMultiple && filesWithIds.length === 1;
