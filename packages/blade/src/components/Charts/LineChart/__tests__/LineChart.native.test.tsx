@@ -11,8 +11,20 @@ import {
 } from '../../CommonChartComponents';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
+// Suppress known react-native-svg rendering warnings during snapshot tests.
+// Unexpected errors are re-emitted via console.warn so they are not silently hidden.
+let consoleErrorSpy: jest.SpyInstance;
+beforeAll(() => {
+  consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation((...args: unknown[]) => {
+    const msg = String(args[0] ?? '');
+    if (/svg|SVG|virtualized|reanimated|worklet/i.test(msg)) return;
+    // eslint-disable-next-line no-console
+    console.warn('[unexpected console.error in LineChart test]', ...args);
+  });
+});
+afterAll(() => {
+  consoleErrorSpy.mockRestore();
+});
 
 const mockData = [
   { name: 'Jan', sales: 4000, profit: 2000, revenue: 6000 },
@@ -30,17 +42,18 @@ const fireLayout = (element: unknown, width = 400, height = 300): void => {
 
 describe('<ChartLineWrapper /> (native)', () => {
   it('should render a single line', () => {
-    const { toJSON } = renderWithTheme(
-      <ChartLineWrapper data={mockData}>
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={mockData} testID="single-line">
         <ChartLine dataKey="sales" />
       </ChartLineWrapper>,
     );
+    fireLayout(getByTestId('single-line-layout'));
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render multiple lines with legend, grid and axes', () => {
-    const { toJSON } = renderWithTheme(
-      <ChartLineWrapper data={mockData}>
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={mockData} testID="multi-line">
         <ChartCartesianGrid />
         <ChartXAxis dataKey="name" />
         <ChartYAxis />
@@ -50,47 +63,52 @@ describe('<ChartLineWrapper /> (native)', () => {
         <ChartLine dataKey="revenue" name="Revenue" />
       </ChartLineWrapper>,
     );
+    fireLayout(getByTestId('multi-line-layout'));
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render different line types', () => {
-    const { toJSON } = renderWithTheme(
-      <ChartLineWrapper data={mockData}>
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={mockData} testID="line-types">
         <ChartLine dataKey="sales" type="linear" />
         <ChartLine dataKey="profit" type="monotone" />
         <ChartLine dataKey="revenue" type="step" />
       </ChartLineWrapper>,
     );
+    fireLayout(getByTestId('line-types-layout'));
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render different stroke styles', () => {
-    const { toJSON } = renderWithTheme(
-      <ChartLineWrapper data={mockData}>
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={mockData} testID="stroke-styles">
         <ChartLine dataKey="sales" strokeStyle="solid" />
         <ChartLine dataKey="profit" strokeStyle="dashed" />
         <ChartLine dataKey="revenue" strokeStyle="dotted" />
       </ChartLineWrapper>,
     );
+    fireLayout(getByTestId('stroke-styles-layout'));
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render custom and sequential colors', () => {
-    const { toJSON } = renderWithTheme(
-      <ChartLineWrapper data={mockData}>
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={mockData} testID="custom-colors">
         <ChartLine dataKey="sales" color="data.background.categorical.gray.moderate" />
         <ChartLine dataKey="profit" color="data.background.sequential.blue.400" />
       </ChartLineWrapper>,
     );
+    fireLayout(getByTestId('custom-colors-layout'));
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render with dots enabled', () => {
-    const { toJSON } = renderWithTheme(
-      <ChartLineWrapper data={mockData}>
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={mockData} testID="dots-enabled">
         <ChartLine dataKey="sales" dot={true} />
       </ChartLineWrapper>,
     );
+    fireLayout(getByTestId('dots-enabled-layout'));
     expect(toJSON()).toMatchSnapshot();
   });
 
@@ -109,11 +127,12 @@ describe('<ChartLineWrapper /> (native)', () => {
       { name: 'Feb', sales: null },
       { name: 'Mar', sales: 2000 },
     ];
-    const { toJSON } = renderWithTheme(
-      <ChartLineWrapper data={dataWithNulls}>
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={dataWithNulls} testID="connect-nulls">
         <ChartLine dataKey="sales" connectNulls={true} />
       </ChartLineWrapper>,
     );
+    fireLayout(getByTestId('connect-nulls-layout'));
     expect(toJSON()).toMatchSnapshot();
   });
 
