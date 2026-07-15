@@ -82,7 +82,7 @@ const main = async () => {
     // Use first '[' and last ']' to robustly extract the full JSON array from size-limit output
     const firstBracket = jsonLikeString.indexOf('[');
     const lastBracket = jsonLikeString.lastIndexOf(']');
-    sizes.push(JSON.parse(jsonLikeString.substring(firstBracket, lastBracket + 1)));
+    sizes.push(...JSON.parse(jsonLikeString.substring(firstBracket, lastBracket + 1)));
   };
 
   // Run size-limit for the empty import to get the base project size
