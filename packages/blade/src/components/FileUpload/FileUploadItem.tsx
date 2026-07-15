@@ -129,12 +129,7 @@ const FileUploadItem = memo(
                   data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
                 />
                 {onRemove ? (
-                  <BaseBox
-                    display="flex"
-                    flexDirection="row"
-                    alignItems="center"
-                    gap="spacing.3"
-                  >
+                  <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
                     <Divider orientation="vertical" thickness="thin" variant="normal" />
                     <IconButton
                       accessibilityLabel={`Remove ${name}`}
