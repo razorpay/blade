@@ -92,7 +92,7 @@
   padding-bottom: var(--spacing-1);
   padding-left: var(--spacing-3);
   padding-right: var(--spacing-3);
-  border-radius: 6px;
+  border-radius: var(--border-radius-xsmall);
 }
 
 .itemSizeMedium {
@@ -161,8 +161,7 @@
 }
 
 .indicatorRadiusSmall {
-  /* 6px for small — deliberate: between xsmall(4px) and small(8px) for visual proportion */
-  border-radius: 6px;
+  border-radius: var(--border-radius-xsmall);
 }
 
 .indicatorRadiusMediumToken {

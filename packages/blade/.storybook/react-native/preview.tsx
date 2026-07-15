@@ -2,19 +2,24 @@ import 'react-native-gesture-handler';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import { StyleSheet } from 'react-native';
 import { View } from 'react-native';
-import { PortalHost, PortalProvider } from '@gorhom/portal';
+import { PortalHost } from '@gorhom/portal';
 
+// `@storybook/react-native-ui` wraps every story in `@gorhom/bottom-sheet`'s
+// `BottomSheetModalProvider`, which nests its OWN `PortalProvider` between the story
+// and the app-level `BladeBottomSheetPortal` host declared in `BladeProvider.native`.
+// `usePortal()` resolves to that nearest (Storybook) provider, so portal components
+// (Drawer, BottomSheet, Popover, Tooltip, Modal, …) target a provider that has no
+// `BladeBottomSheetPortal` host and their teleported content is silently dropped —
+// making them impossible to verify on-device. Registering the same-named host inside
+// the story decorator makes it resolvable on the nearest provider so portal content
+// renders within the story canvas. Production is unaffected (a real app has only the
+// single BladeProvider host).
 export const decorators = [
   (StoryFn) => (
-    // `flex: 1` (not just padding) is required so the BottomSheet portal host can
-    // occupy the full screen — otherwise overlays (e.g. DatePicker's calendar sheet)
-    // teleport to a zero-height host and render nothing on-device.
-    <PortalProvider>
-      <View style={styles.container}>
-        <StoryFn />
-      </View>
+    <View style={styles.container}>
+      <StoryFn />
       <PortalHost name="BladeBottomSheetPortal" />
-    </PortalProvider>
+    </View>
   ),
   withBackgrounds,
 ];
@@ -28,5 +33,9 @@ export const parameters = {
 };
 
 const styles = StyleSheet.create({
+  // `flex: 1` lets the container fill the story canvas so absolutely-positioned
+  // portal content (e.g. the full-height BottomSheet / DatePicker calendar sheet)
+  // can size against a real viewport instead of collapsing to the intrinsic height
+  // of the story's inline content.
   container: { flex: 1, padding: 16 },
 });

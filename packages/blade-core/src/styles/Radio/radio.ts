@@ -179,16 +179,23 @@ export const radioGroupItemsStyles = cva(groupStyles.itemsContainer, {
       medium: groupStyles.gapMedium,
       large: groupStyles.gapLarge,
     },
+    flexWrap: {
+      nowrap: groupStyles['flex-wrap-nowrap'],
+      wrap: groupStyles['flex-wrap-wrap'],
+      'wrap-reverse': groupStyles['flex-wrap-wrap-reverse'],
+    },
   },
   defaultVariants: {
     orientation: 'vertical',
     size: 'medium',
+    flexWrap: 'nowrap',
   },
 });
 
 export function getRadioGroupItemsClasses(props: {
   orientation?: 'vertical' | 'horizontal';
   size?: RadioSize;
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
 }): string {
   return radioGroupItemsStyles(props);
 }

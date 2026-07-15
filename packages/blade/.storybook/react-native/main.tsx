@@ -25,6 +25,7 @@ const WEB_ONLY_STORIES = [
   'Toast',
   'Typography',
   'ChatMessage',
+  'NativeChatMessageDemo',
   'CreationView',
   'TopNav',
   'LightBox',
