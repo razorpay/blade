@@ -341,9 +341,9 @@ const ChartDonutWrapper = ({
   const sweepProgress = useSharedValue(0);
   const motionDuration = castNativeType(makeMotionTime(getIn(theme.motion, 'duration.gentle')));
   const motionEasing = getIn(theme.motion, 'easing.standard');
-  const sweepKey = `${filteredData.length}-${selectedKeysArray.join(',')}-${donutType}-${filteredData
-    .map((d) => d[dataKey])
-    .join(',')}`;
+  const sweepKey = `${filteredData.length}-${selectedKeysArray.join(
+    ',',
+  )}-${donutType}-${filteredData.map((d) => d[dataKey]).join(',')}`;
 
   useEffect(() => {
     sweepProgress.value = 0;
@@ -554,7 +554,11 @@ const ChartDonutWrapper = ({
   ) : null;
 
   const chartArea = (
-    <View style={{ flex: 1 }} onLayout={onLayout} testID={testID ? `${testID}-canvas` : 'donut-chart-canvas'}>
+    <View
+      style={{ flex: 1 }}
+      onLayout={onLayout}
+      testID={testID ? `${testID}-canvas` : 'donut-chart-canvas'}
+    >
       {size.width > 0 && size.height > 0 && slices.length > 0 ? (
         <Svg width={size.width} height={size.height}>
           <G>

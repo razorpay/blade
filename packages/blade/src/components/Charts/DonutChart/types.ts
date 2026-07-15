@@ -66,10 +66,4 @@ type ChartDonutCellProps = CellProps & {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
 };
 
-export type {
-  ChartDonutWrapperProps,
-  ChartDonutCellProps,
-  ChartDonutProps,
-  ChartRadius,
-  Content,
-};
+export type { ChartDonutWrapperProps, ChartDonutCellProps, ChartDonutProps, ChartRadius, Content };
