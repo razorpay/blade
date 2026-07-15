@@ -1,4 +1,4 @@
-const { danger, markdown } = require('danger');
+const { markdown } = require('danger');
 
 const showBundleSizeDiff = async () => {
   // eslint-disable-next-line import/extensions
