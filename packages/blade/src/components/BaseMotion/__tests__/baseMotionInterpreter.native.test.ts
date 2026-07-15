@@ -1,4 +1,9 @@
-import { resolveVariantStyle, parseTransform, parseUnit, getTiming } from '../baseMotionInterpreter.native';
+import {
+  resolveVariantStyle,
+  parseTransform,
+  parseUnit,
+  getTiming,
+} from '../baseMotionInterpreter.native';
 
 beforeAll(() => jest.spyOn(console, 'warn').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -43,7 +48,7 @@ describe('parseTransform', () => {
   });
 
   it('should return empty for null', () => {
-    expect(parseTransform(null as unknown as undefined)).toEqual({});
+    expect(parseTransform((null as unknown) as undefined)).toEqual({});
   });
 
   it('should parse translateX', () => {
@@ -99,7 +104,9 @@ describe('resolveVariantStyle', () => {
   });
 
   it('should resolve backgroundColor', () => {
-    expect(resolveVariantStyle({ backgroundColor: '#ff0000' })).toEqual({ backgroundColor: '#ff0000' });
+    expect(resolveVariantStyle({ backgroundColor: '#ff0000' })).toEqual({
+      backgroundColor: '#ff0000',
+    });
   });
 
   it('should resolve color', () => {
@@ -150,7 +157,7 @@ describe('getTiming', () => {
   });
 
   it('should use default duration when transition.duration is not a number', () => {
-    const result = getTiming({ duration: 'invalid' as unknown as number });
+    const result = getTiming({ duration: ('invalid' as unknown) as number });
     expect(result.duration).toBe(300);
   });
 });

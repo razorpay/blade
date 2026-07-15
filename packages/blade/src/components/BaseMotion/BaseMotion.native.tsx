@@ -230,6 +230,9 @@ const BaseMotionEntryExit = ({
   const isVisibleRef = React.useRef(isVisible);
   isVisibleRef.current = isVisible;
 
+  // Declared before handleAnimationComplete so the callback can store the handle for cleanup.
+  const interactionHandleRef = React.useRef<{ cancel?: () => void } | null>(null);
+
   React.useEffect(() => {
     if (isVisible) {
       setIsMounted(true);
@@ -254,7 +257,6 @@ const BaseMotionEntryExit = ({
   );
 
   // Cleanup pending InteractionManager callback on unmount.
-  const interactionHandleRef = React.useRef<{ cancel?: () => void } | null>(null);
   React.useEffect(() => {
     return () => {
       interactionHandleRef.current?.cancel?.();

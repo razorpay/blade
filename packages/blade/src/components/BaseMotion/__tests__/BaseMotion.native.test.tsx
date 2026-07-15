@@ -4,6 +4,7 @@ import { BaseMotionBox, BaseMotionEnhancerBox, BaseMotionEntryExit } from '../in
 import { useMotionVariants } from '../baseMotionUtils';
 import type { MotionVariantsType } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+import themeWrapper from '~utils/testing/themeWrapper';
 import { Text } from '~components/Typography';
 
 const fadeVariants: MotionVariantsType = {
@@ -16,6 +17,14 @@ const fadeVariants: MotionVariantsType = {
     opacity: 0,
     transition: { duration: 0.3, ease: [0, 0, 0.4, 0] },
   },
+};
+
+/** `renderWithTheme` wraps once; `rerender` must re-wrap or BladeProvider context is lost. */
+const rerenderWithTheme = (
+  rerender: (ui: React.ReactElement) => void,
+  ui: React.ReactElement,
+): void => {
+  rerender(themeWrapper({ children: ui }));
 };
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -77,7 +86,8 @@ describe('<BaseMotion /> (native)', () => {
 
     expect(getByText('toggle child')).toBeTruthy();
 
-    rerender(
+    rerenderWithTheme(
+      rerender,
       <BaseMotionEntryExit motionVariants={fadeVariants} isVisible={false} shouldUnmountWhenHidden>
         <Text>toggle child</Text>
       </BaseMotionEntryExit>,
@@ -110,7 +120,8 @@ describe('<BaseMotion /> (native)', () => {
     expect(getByText('persist child')).toBeTruthy();
 
     // Without shouldUnmountWhenHidden, the child should remain mounted when hidden.
-    rerender(
+    rerenderWithTheme(
+      rerender,
       <BaseMotionEntryExit motionVariants={fadeVariants} isVisible={false}>
         <Text>persist child</Text>
       </BaseMotionEntryExit>,
@@ -121,15 +132,24 @@ describe('<BaseMotion /> (native)', () => {
 
   it('should drive animation via animateVisibility prop', () => {
     const { getByText, rerender } = renderWithTheme(
-      <BaseMotionBox motionVariants={fadeVariants} motionTriggers={['mount']} animateVisibility="animate">
+      <BaseMotionBox
+        motionVariants={fadeVariants}
+        motionTriggers={['mount']}
+        animateVisibility="animate"
+      >
         <Text>visibility child</Text>
       </BaseMotionBox>,
     );
 
     expect(getByText('visibility child')).toBeTruthy();
 
-    rerender(
-      <BaseMotionBox motionVariants={fadeVariants} motionTriggers={['mount']} animateVisibility="exit">
+    rerenderWithTheme(
+      rerender,
+      <BaseMotionBox
+        motionVariants={fadeVariants}
+        motionTriggers={['mount']}
+        animateVisibility="exit"
+      >
         <Text>visibility child</Text>
       </BaseMotionBox>,
     );

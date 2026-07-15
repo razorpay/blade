@@ -60,12 +60,7 @@ const SUPPORTED_VARIANT_KEYS = new Set([
   'transitionEnd',
 ]);
 
-const SUPPORTED_TRANSFORM_FUNCTIONS = new Set([
-  'translateX',
-  'translateY',
-  'scale',
-  'rotate',
-]);
+const SUPPORTED_TRANSFORM_FUNCTIONS = new Set(['translateX', 'translateY', 'scale', 'rotate']);
 
 type WindowDimensions = { width: number; height: number };
 
@@ -210,7 +205,10 @@ const resolveVariantStyle = (
     }
   }
   if (variantRecord.transform !== undefined) {
-    Object.assign(resolved, parseTransform(variantRecord.transform as string | string[], dimensions));
+    Object.assign(
+      resolved,
+      parseTransform(variantRecord.transform as string | string[], dimensions),
+    );
   }
 
   if (__DEV__) {
