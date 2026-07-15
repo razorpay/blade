@@ -1,14 +1,17 @@
-const fs = require('fs');
-const path = require('path');
-const babelParser = require('@babel/parser');
-const traverse = require('@babel/traverse').default;
-const execa = require('execa');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import babelParser from '@babel/parser';
+import traverse from '@babel/traverse';
+import execa from 'execa';
 // eslint-disable-next-line import/no-extraneous-dependencies
-const prettier = require('prettier');
+import prettier from 'prettier';
+// eslint-disable-next-line import/no-unresolved
+import { globby } from 'globby';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const main = async () => {
-  const { globby } = await import('globby');
-
   // Find all intermediate index.js files in component subdirectories
   const indexPaths = await globby([
     'dist/lib/components/**/index.js',
@@ -164,7 +167,7 @@ const main = async () => {
   });
 
   // Run size-limit for each standalone component group
-  standaloneGroups.forEach((componentNames, groupKey) => {
+  standaloneGroups.forEach((componentNames, _groupKey) => {
     const imports = componentNames.join(', ');
     runSizeLimit({ name: imports, importedComponents: `{ ${imports} }` });
   });

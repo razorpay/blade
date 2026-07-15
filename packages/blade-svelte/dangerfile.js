@@ -1,5 +1,8 @@
-const { danger, markdown } = require('danger');
-const generateBundleDiff = require('./scripts/generateBundleDiff');
+import dangerModule from 'danger';
+// eslint-disable-next-line import/extensions
+import generateBundleDiff from './scripts/generateBundleDiff.js';
+
+const { danger, markdown } = dangerModule;
 
 const showBundleSizeDiff = async () => {
   const { diffTable } = await generateBundleDiff(danger);

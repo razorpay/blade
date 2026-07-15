@@ -1,5 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Asynchronous function to generate the bundle size difference report
 const generateBundleDiff = async () => {
@@ -22,10 +25,12 @@ const generateBundleDiff = async () => {
     baseBundleSizeStats = [];
   }
 
-  // Import the current bundle size statistics from the PR
+  // Load the current bundle size statistics from the PR
   let currentBundleSizeStats;
   try {
-    currentBundleSizeStats = require('../prBundleSizeStats.json');
+    currentBundleSizeStats = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, '../prBundleSizeStats.json'), 'utf8'),
+    );
   } catch (err) {
     console.error('Failed to load prBundleSizeStats.json:', err);
     return { diffTable: null };
@@ -74,9 +79,7 @@ const generateBundleDiff = async () => {
     const currentComponentSize = currentComponent
       ? currentComponent.size / 1000 - emptyProjectSize
       : 0;
-    const baseComponentSize = baseComponent
-      ? baseComponent.size / 1000 - baseEmptyProjectSize
-      : 0;
+    const baseComponentSize = baseComponent ? baseComponent.size / 1000 - baseEmptyProjectSize : 0;
 
     if (baseComponent && !currentComponent) {
       // Component removed in the PR
@@ -117,4 +120,4 @@ const generateBundleDiff = async () => {
   return { diffTable };
 };
 
-module.exports = generateBundleDiff;
+export default generateBundleDiff;
