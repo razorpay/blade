@@ -123,7 +123,9 @@ function inspectInteraction() {
       recordInteraction(`value: ${values.join(' - ')}`);
     }
     lastRangeSignature = signature;
-  } catch { /* frame not ready */ }
+  } catch {
+    /* frame not ready */
+  }
 }
 
 function inspectFrame() {
