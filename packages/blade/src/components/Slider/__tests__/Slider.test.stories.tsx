@@ -23,7 +23,7 @@ KeyboardInteraction.play = async ({ canvasElement }) => {
 };
 
 export const RangeKeyboardInteraction: StoryFn<typeof Slider> = () => (
-  <Slider label="Amount" variant="range" defaultValue={[20, 80]} step={10} />
+  <Slider label="Amount" selectionType="range" defaultValue={[20, 80]} step={10} />
 );
 
 RangeKeyboardInteraction.play = async ({ canvasElement }) => {

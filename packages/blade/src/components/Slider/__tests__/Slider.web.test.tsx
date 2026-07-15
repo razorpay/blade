@@ -52,7 +52,7 @@ describe('<Slider />', () => {
   it('renders and updates a range without letting thumbs cross', () => {
     const onChange = jest.fn();
     const { getAllByRole } = renderWithTheme(
-      <Slider label="Amount" variant="range" defaultValue={[20, 80]} onChange={onChange} />,
+      <Slider label="Amount" selectionType="range" defaultValue={[20, 80]} onChange={onChange} />,
     );
     const [minimum, maximum] = getAllByRole('slider');
 
@@ -208,7 +208,7 @@ describe('<Slider />', () => {
     const { getAllByRole } = renderWithTheme(
       <Slider
         label="Amount"
-        variant="range"
+        selectionType="range"
         value={[30, 70]}
         min={0}
         max={100}
@@ -251,7 +251,7 @@ describe('<Slider />', () => {
     const { getAllByText } = renderWithTheme(
       <Slider
         label="Amount"
-        variant="range"
+        selectionType="range"
         defaultValue={[20, 80]}
         min={0}
         max={100}

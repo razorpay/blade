@@ -7,7 +7,7 @@ describe('<Slider />', () => {
     const { container } = renderWithSSR(
       <>
         <Slider label="Transaction limit" defaultValue={50} showMinMax />
-        <Slider label="Amount" variant="range" defaultValue={[20, 80]} showThumbValue />
+        <Slider label="Amount" selectionType="range" defaultValue={[20, 80]} showThumbValue />
       </>,
     );
     expect(container).toMatchSnapshot();

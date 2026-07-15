@@ -20,7 +20,7 @@ type LabState = {
   showValue: boolean;
   size: 'small' | 'medium' | 'large';
   validationState: 'none' | 'error' | 'success';
-  variant: 'single' | 'range';
+  selectionType: 'single' | 'range';
 };
 const INITIAL_STATE: LabState = {
   color: 'information',
@@ -33,7 +33,7 @@ const INITIAL_STATE: LabState = {
   showValue: true,
   size: 'medium',
   validationState: 'none',
-  variant: 'single',
+  selectionType: 'single',
 };
 
 const LAB_MARKS = [
@@ -111,8 +111,8 @@ const SliderInteractiveLab = (): React.ReactElement => {
           <RadioGroup
             label="Variant"
             orientation="horizontal"
-            value={state.variant}
-            onChange={({ value }) => setOption('variant', value as LabState['variant'])}
+            value={state.selectionType}
+            onChange={({ value }) => setOption('selectionType', value as LabState['selectionType'])}
           >
             <Radio value="single">Single</Radio>
             <Radio value="range">Range</Radio>
@@ -216,10 +216,10 @@ const SliderInteractiveLab = (): React.ReactElement => {
             </Badge>
           </Box>
           <Divider />
-          {state.variant === 'range' ? (
+          {state.selectionType === 'range' ? (
             <Slider
               {...presentationProps}
-              variant="range"
+              selectionType="range"
               value={rangeValue}
               onChange={({ value }) => {
                 setRangeValue(value);

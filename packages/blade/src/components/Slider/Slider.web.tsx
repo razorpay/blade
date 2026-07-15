@@ -11,8 +11,10 @@ import { getKeyboardValue, sliderKeyboardKeys } from './sliderKeyboard';
 import { SliderControls } from './SliderControls.web';
 import { SliderFooter, SliderHeader } from './SliderLabels.web';
 import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
 import { useFormId } from '~components/Form/useFormId';
 import { useControllableState } from '~utils/useControllable';
+import { useBreakpoint } from '~utils';
 import { throwBladeError } from '~utils/logger';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -62,10 +64,14 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     value,
     valueFormatter = String,
     valueText,
-    variant = 'single',
+    selectionType = 'single',
     _motionMeta,
     ...rest
   } = props;
+
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
 
   if (max <= min) {
     throwBladeError({ message: '`max` must be greater than `min`.', moduleName: 'Slider' });
@@ -96,8 +102,8 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const initialValue = React.useMemo(
     () =>
       normalizeValue(
-        (defaultValue as SliderValue | undefined) ?? (variant === 'range' ? [min, max] : min),
-        variant,
+        (defaultValue as SliderValue | undefined) ?? (selectionType === 'range' ? [min, max] : min),
+        selectionType,
         min,
         max,
         step,
@@ -119,8 +125,8 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     shouldUpdate: (previous, next) => !isSameValue(previous, next),
   });
   const currentValue = React.useMemo(
-    () => normalizeValue(controllableValue, variant, min, max, step),
-    [controllableValue, variant, min, max, step],
+    () => normalizeValue(controllableValue, selectionType, min, max, step),
+    [controllableValue, selectionType, min, max, step],
   );
   latestValueRef.current = currentValue;
 
@@ -138,7 +144,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   );
   const rangeValueRef = React.useRef(rangeValue);
   rangeValueRef.current = rangeValue;
-  const startValue = variant === 'range' ? rangeValue[0] : min;
+  const startValue = selectionType === 'range' ? rangeValue[0] : min;
   const endValue = typeof currentValue === 'number' ? currentValue : rangeValue[1];
   const startPercent = getPercent(startValue, min, max);
   const endPercent = getPercent(endValue, min, max);
@@ -160,18 +166,18 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const describedBy = describedByParts.length > 0 ? describedByParts.join(' ') : undefined;
   const displayValue =
     valueText ??
-    (variant === 'range'
+    (selectionType === 'range'
       ? `${valueFormatter(rangeValue[0])} - ${valueFormatter(rangeValue[1])}`
       : valueFormatter(endValue));
 
   const updateValue = React.useCallback(
     (nextValue: SliderValue): SliderValue => {
-      const normalized = normalizeValue(nextValue, variant, min, max, step);
+      const normalized = normalizeValue(nextValue, selectionType, min, max, step);
       latestValueRef.current = normalized;
       setControllableValue(() => normalized);
       return normalized;
     },
-    [max, min, setControllableValue, step, variant],
+    [max, min, setControllableValue, step, selectionType],
   );
 
   const commitValue = React.useCallback(() => {
@@ -181,7 +187,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const updateThumbValue = React.useCallback(
     (index: 0 | 1, nextValue: number): void => {
       const next = snapValue(nextValue, min, max, step);
-      if (variant === 'single') {
+      if (selectionType === 'single') {
         updateValue(next);
         return;
       }
@@ -193,7 +199,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
           : [currentRange[0], Math.max(next, currentRange[0])],
       );
     },
-    [max, min, step, updateValue, variant],
+    [max, min, step, updateValue, selectionType],
   );
 
   const handleInputChange = React.useCallback(
@@ -240,7 +246,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
       const ratio = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
       const next = snapValue(min + ratio * (max - min), min, max, step);
 
-      if (variant === 'single') {
+      if (selectionType === 'single') {
         updateValue(next);
         startInputRef.current?.focus();
       } else {
@@ -255,7 +261,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
       }
       commitValue();
     },
-    [commitValue, isDisabled, max, min, rangeValue, step, updateValue, variant],
+    [commitValue, isDisabled, max, min, rangeValue, step, updateValue, selectionType],
   );
 
   const handleThumbPointerDown = React.useCallback((index: 0 | 1) => {
@@ -279,105 +285,59 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
-      {labelPosition === 'left' ? (
-        <BaseBox display="flex" flexDirection="row" alignItems="center" width="100%">
-          <SliderHeader
-            displayValue={displayValue}
-            inputId={inputId}
-            isRequired={isRequired}
-            label={label}
-            labelId={labelId}
-            labelPosition={labelPosition}
-            necessityIndicator={necessityIndicator}
-            showValue={showValue}
-            size={size}
-            variant={variant}
-          />
-          <SliderControls
-            accessibilityLabel={accessibilityLabel}
-            activeThumb={activeThumb}
-            color={color}
-            describedBy={describedBy}
-            endInputRef={endInputRef}
-            endPercent={endPercent}
-            endValue={endValue}
-            hasError={hasError}
-            inputId={inputId}
-            isDisabled={isDisabled}
-            isRequired={isRequired}
-            label={label}
-            labelId={labelId}
-            max={max}
-            min={min}
-            name={name}
-            onInputChange={handleInputChange}
-            onInputKeyDown={handleInputKeyDown}
-            onInputKeyUp={handleInputKeyUp}
-            onThumbPointerDown={handleThumbPointerDown}
-            onThumbPointerUp={handleThumbPointerUp}
-            onTrackPointerDown={handleTrackPointerDown}
-            rangeValue={rangeValue}
-            showThumbValue={showThumbValue}
-            size={size}
-            startInputRef={mergeRefs(getInnerMotionRef({ _motionMeta, ref }), startInputRef)}
-            startPercent={startPercent}
-            step={step}
-            trackRef={trackRef}
-            valueFormatter={valueFormatter}
-            variant={variant}
-            visibleMarks={visibleMarks}
-          />
-        </BaseBox>
-      ) : (
-        <>
-          <SliderHeader
-            displayValue={displayValue}
-            inputId={inputId}
-            isRequired={isRequired}
-            label={label}
-            labelId={labelId}
-            labelPosition={labelPosition}
-            necessityIndicator={necessityIndicator}
-            showValue={showValue}
-            size={size}
-            variant={variant}
-          />
-          <SliderControls
-            accessibilityLabel={accessibilityLabel}
-            activeThumb={activeThumb}
-            color={color}
-            describedBy={describedBy}
-            endInputRef={endInputRef}
-            endPercent={endPercent}
-            endValue={endValue}
-            hasError={hasError}
-            inputId={inputId}
-            isDisabled={isDisabled}
-            isRequired={isRequired}
-            label={label}
-            labelId={labelId}
-            max={max}
-            min={min}
-            name={name}
-            onInputChange={handleInputChange}
-            onInputKeyDown={handleInputKeyDown}
-            onInputKeyUp={handleInputKeyUp}
-            onThumbPointerDown={handleThumbPointerDown}
-            onThumbPointerUp={handleThumbPointerUp}
-            onTrackPointerDown={handleTrackPointerDown}
-            rangeValue={rangeValue}
-            showThumbValue={showThumbValue}
-            size={size}
-            startInputRef={mergeRefs(getInnerMotionRef({ _motionMeta, ref }), startInputRef)}
-            startPercent={startPercent}
-            step={step}
-            trackRef={trackRef}
-            valueFormatter={valueFormatter}
-            variant={variant}
-            visibleMarks={visibleMarks}
-          />
-        </>
-      )}
+      <BaseBox
+        display="flex"
+        flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
+        alignItems={isLabelLeftPositioned ? 'center' : undefined}
+        width="100%"
+      >
+        <SliderHeader
+          displayValue={displayValue}
+          inputId={inputId}
+          isRequired={isRequired}
+          label={label}
+          labelId={labelId}
+          labelPosition={labelPosition}
+          necessityIndicator={necessityIndicator}
+          showValue={showValue}
+          size={size}
+          selectionType={selectionType}
+        />
+        <SliderControls
+          accessibilityLabel={accessibilityLabel}
+          activeThumb={activeThumb}
+          color={color}
+          describedBy={describedBy}
+          endInputRef={endInputRef}
+          endPercent={endPercent}
+          endValue={endValue}
+          hasError={hasError}
+          inputId={inputId}
+          isDisabled={isDisabled}
+          isRequired={isRequired}
+          label={label}
+          labelId={labelId}
+          max={max}
+          min={min}
+          name={name}
+          onInputChange={handleInputChange}
+          onInputKeyDown={handleInputKeyDown}
+          onInputKeyUp={handleInputKeyUp}
+          onThumbPointerDown={handleThumbPointerDown}
+          onThumbPointerUp={handleThumbPointerUp}
+          onTrackPointerDown={handleTrackPointerDown}
+          rangeValue={rangeValue}
+          showThumbValue={showThumbValue}
+          size={size}
+          startInputRef={mergeRefs(getInnerMotionRef({ _motionMeta, ref }), startInputRef)}
+          startPercent={startPercent}
+          step={step}
+          trackRef={trackRef}
+          valueFormatter={valueFormatter}
+          selectionType={selectionType}
+          visibleMarks={visibleMarks}
+        />
+      </BaseBox>
       <SliderFooter
         errorText={errorText}
         errorTextId={errorTextId}

@@ -17,12 +17,12 @@ const snapValue = (value: number, min: number, max: number, step: number): numbe
 
 const normalizeValue = (
   value: SliderValue,
-  variant: 'single' | 'range',
+  selectionType: 'single' | 'range',
   min: number,
   max: number,
   step: number,
 ): SliderValue => {
-  if (variant === 'single') {
+  if (selectionType === 'single') {
     const singleValue = typeof value === 'number' ? value : value[0];
     return snapValue(singleValue, min, max, step);
   }

@@ -34,7 +34,7 @@ Range selection uses the same component with a tuple value:
 ```jsx
 <Slider
   label="Amount"
-  variant="range"
+  selectionType="range"
   value={[minimumAmount, maximumAmount]}
   onChange={({ value: [minimum, maximum] }) => setAmount([minimum, maximum])}
   min={0}
@@ -67,8 +67,8 @@ Range selection uses the same component with a tuple value:
 
 | Prop                     | Type                                  | Default               | Description                                               |
 | ------------------------ | ------------------------------------- | --------------------- | --------------------------------------------------------- |
-| `variant`                | `'single' \| 'range'`                 | `'single'`            | Selects one value or a start/end tuple.                   |
-| `value`                  | `number \| readonly [number, number]` | -                     | Controlled value matching the variant.                    |
+| `selectionType`          | `'single' \| 'range'`                 | `'single'`            | Selects one value or a start/end tuple.                   |
+| `value`                  | `number \| readonly [number, number]` | -                     | Controlled value matching the selectionType.              |
 | `defaultValue`           | `number \| readonly [number, number]` | `min` or `[min, max]` | Initial uncontrolled value.                               |
 | `min`                    | `number`                              | `0`                   | Lower bound. Must be less than `max`.                     |
 | `max`                    | `number`                              | `100`                 | Upper bound. Must be greater than `min`.                  |
@@ -115,5 +115,5 @@ Use `showThumbValue` for values that need feedback during dragging. Use `showMin
 ## Open Questions
 
 - **React Native:** v1 is web-only. Native range selection needs a separate interaction and dependency review.
-- **Centered sliders:** a zero-centered variant is not included until a concrete product use case defines its semantics.
+- **Centered sliders:** a zero-centered selectionType is not included until a concrete product use case defines its semantics.
 - **Crossing range thumbs:** thumbs stop at one another. Swapping thumb ownership was rejected because it can be disorienting for keyboard and assistive-technology users.

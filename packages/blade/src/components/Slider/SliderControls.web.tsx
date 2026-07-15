@@ -14,7 +14,7 @@ import {
 import type { FeedbackColors } from '~tokens/theme/theme';
 
 type SliderSize = NonNullable<SliderProps['size']>;
-type SliderVariant = NonNullable<SliderProps['variant']>;
+type SliderSelectionType = NonNullable<SliderProps['selectionType']>;
 
 type SliderControlsProps = {
   accessibilityLabel?: string;
@@ -47,7 +47,7 @@ type SliderControlsProps = {
   step: number;
   trackRef: React.Ref<HTMLDivElement>;
   valueFormatter: (value: number) => string;
-  variant: SliderVariant;
+  selectionType: SliderSelectionType;
   visibleMarks: SliderMark[];
 };
 
@@ -82,7 +82,7 @@ const SliderControls = ({
   step,
   trackRef,
   valueFormatter,
-  variant,
+  selectionType,
   visibleMarks,
 }: SliderControlsProps): React.ReactElement => {
   const tokens = sliderTokens.size[size];
@@ -109,7 +109,7 @@ const SliderControls = ({
     type: 'range' as const,
   } as const;
   const getInputLabel = (index: 0 | 1): string | undefined => {
-    if (variant === 'single') return accessibilityLabel ?? label;
+    if (selectionType === 'single') return accessibilityLabel ?? label;
     const baseLabel = accessibilityLabel ?? label;
     return baseLabel ? `${baseLabel} ${index === 0 ? 'minimum' : 'maximum'}` : undefined;
   };
@@ -124,14 +124,14 @@ const SliderControls = ({
     return 'translateX(-50%)';
   };
   const isRangeLabelCollision =
-    variant === 'range' && showThumbValue && endPercent - startPercent < 10;
+    selectionType === 'range' && showThumbValue && endPercent - startPercent < 10;
 
   return (
     <TrackArea
       {...trackStyleProps}
       onPointerDown={onTrackPointerDown}
-      role={variant === 'range' ? 'group' : undefined}
-      aria-labelledby={variant === 'range' ? labelId : undefined}
+      role={selectionType === 'range' ? 'group' : undefined}
+      aria-labelledby={selectionType === 'range' ? labelId : undefined}
     >
       <TrackLine {...trackStyleProps} ref={trackRef}>
         <TrackFill
@@ -159,7 +159,7 @@ const SliderControls = ({
         })}
       </TrackLine>
 
-      {showThumbValue && variant === 'range' ? (
+      {showThumbValue && selectionType === 'range' ? (
         <ThumbValueLabel
           aria-hidden
           style={{
@@ -190,22 +190,22 @@ const SliderControls = ({
         $pressedThumbSize={tokens.pressedThumb}
         $thumbSize={tokens.thumb}
         aria-label={getInputLabel(0)}
-        aria-valuemax={variant === 'range' ? rangeValue[1] : max}
+        aria-valuemax={selectionType === 'range' ? rangeValue[1] : max}
         aria-valuemin={min}
-        aria-valuenow={variant === 'range' ? rangeValue[0] : endValue}
-        aria-valuetext={valueFormatter(variant === 'range' ? rangeValue[0] : endValue)}
+        aria-valuenow={selectionType === 'range' ? rangeValue[0] : endValue}
+        aria-valuetext={valueFormatter(selectionType === 'range' ? rangeValue[0] : endValue)}
         id={inputId}
-        max={variant === 'range' ? rangeValue[1] : max}
-        name={variant === 'range' ? (name ? `${name}-start` : undefined) : name}
+        max={selectionType === 'range' ? rangeValue[1] : max}
+        name={selectionType === 'range' ? (name ? `${name}-start` : undefined) : name}
         onChange={onInputChange(0)}
         onKeyDown={onInputKeyDown(0)}
         onKeyUp={onInputKeyUp}
         onPointerDown={() => onThumbPointerDown(0)}
         onPointerUp={onThumbPointerUp}
         ref={startInputRef}
-        value={variant === 'range' ? rangeValue[0] : endValue}
+        value={selectionType === 'range' ? rangeValue[0] : endValue}
       />
-      {variant === 'range' ? (
+      {selectionType === 'range' ? (
         <NativeRangeInput
           {...sharedInputProps}
           {...trackStyleProps}

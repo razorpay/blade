@@ -17,7 +17,7 @@ type SliderHeaderProps = {
   necessityIndicator?: 'required' | 'optional' | 'none';
   showValue: boolean;
   size: SliderSize;
-  variant: NonNullable<SliderProps['variant']>;
+  selectionType: NonNullable<SliderProps['selectionType']>;
 };
 
 const SliderHeader = ({
@@ -30,7 +30,7 @@ const SliderHeader = ({
   necessityIndicator = 'none',
   showValue,
   size,
-  variant,
+  selectionType,
 }: SliderHeaderProps): React.ReactElement | null => {
   const value = showValue ? (
     <Text size={sliderTokens.size[size].label} color="surface.text.gray.normal">
@@ -39,7 +39,7 @@ const SliderHeader = ({
   ) : undefined;
 
   if (label) {
-    return variant === 'single' ? (
+    return selectionType === 'single' ? (
       <FormLabel
         as="label"
         htmlFor={inputId}

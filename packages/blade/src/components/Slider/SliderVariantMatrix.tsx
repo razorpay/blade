@@ -60,7 +60,7 @@ const SliderVariantMatrix = (): React.ReactElement => (
         <Slider label="Transaction limit" defaultValue={45} showMinMax />
         <Slider
           label="Settlement window"
-          variant="range"
+          selectionType="range"
           defaultValue={[20, 80]}
           showThumbValue
           showMinMax

@@ -18,7 +18,7 @@ export default {
     min: 0,
     max: 100,
     step: 1,
-    variant: 'single',
+    selectionType: 'single',
     defaultValue: 50,
     size: 'medium',
     color: 'information',
@@ -33,7 +33,7 @@ export default {
     validationState: 'none',
   },
   argTypes: {
-    variant: { control: 'inline-radio', options: ['single', 'range'] },
+    selectionType: { control: 'inline-radio', options: ['single', 'range'] },
     size: { control: 'inline-radio', options: ['small', 'medium', 'large'] },
     labelPosition: { control: 'inline-radio', options: ['top', 'left'] },
     color: {
@@ -56,7 +56,7 @@ const SliderTemplate: StoryFn<typeof Slider> = (args) => {
   const max = args.max ?? 100;
   const scalarDefault = typeof args.defaultValue === 'number' ? args.defaultValue : 50;
   let defaultValue: SliderValue = scalarDefault;
-  if (args.variant === 'range') {
+  if (args.selectionType === 'range') {
     defaultValue = Array.isArray(args.defaultValue)
       ? args.defaultValue
       : [Math.max(min, scalarDefault - 20), Math.min(max, scalarDefault + 20)];
@@ -64,7 +64,9 @@ const SliderTemplate: StoryFn<typeof Slider> = (args) => {
     defaultValue = args.defaultValue[1];
   }
   const normalizedArgs = { ...args, defaultValue } as SliderProps;
-  const storyKey = `${args.variant}-${JSON.stringify(defaultValue)}-${min}-${max}-${args.step}`;
+  const storyKey = `${args.selectionType}-${JSON.stringify(defaultValue)}-${min}-${max}-${
+    args.step
+  }`;
 
   return <Slider key={storyKey} {...normalizedArgs} />;
 };
@@ -75,7 +77,7 @@ Default.storyName = 'Default';
 export const Range = SliderTemplate.bind({});
 Range.args = {
   label: 'Settlement window',
-  variant: 'range',
+  selectionType: 'range',
   defaultValue: [20, 80],
   showMinMax: true,
   valueFormatter: (value) => `${value} days`,
@@ -128,7 +130,7 @@ export const Marks: StoryFn<typeof Slider> = () => (
     />
     <Slider
       label="Stepped range"
-      variant="range"
+      selectionType="range"
       defaultValue={[20, 70]}
       step={10}
       showMarks
@@ -193,7 +195,7 @@ export const Playground: StoryFn<typeof Slider> = () => {
       </Heading>
       <Slider
         label="Amount range"
-        variant="range"
+        selectionType="range"
         value={amount}
         onChange={({ value }) => setAmount(value)}
         min={0}

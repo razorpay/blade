@@ -95,7 +95,7 @@ type SliderCommonProps = {
 
 type SingleSliderProps = {
   /** @default 'single' */
-  variant?: 'single';
+  selectionType?: 'single';
   value?: number;
   defaultValue?: number;
   onChange?: SliderChangeHandler<number>;
@@ -104,7 +104,7 @@ type SingleSliderProps = {
 };
 
 type RangeSliderProps = {
-  variant: 'range';
+  selectionType: 'range';
   value?: SliderRangeValue;
   defaultValue?: SliderRangeValue;
   onChange?: SliderChangeHandler<SliderRangeValue>;
