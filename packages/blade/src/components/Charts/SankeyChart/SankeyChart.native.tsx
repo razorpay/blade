@@ -63,8 +63,9 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 // `theme.typography.fonts.family.text` is Inter, but if the theme is customized
 // to use a different font family, text measurement will be systematically wrong.
 // If a non-Inter font is required, the advance table should be replaced or made
-// configurable. For now, this component assumes Inter (matching the web version
-// which also hardcodes Inter metrics in calculateTextWidth).
+// configurable. Web does not use this table — it measures via canvas
+// `measureText` in `calculateTextWidth` with the theme's actual font family.
+// Native assumes Inter (Blade's default) because RN has no sync equivalent.
 const INTER_ADVANCE: Record<string, number> = {
   a: 0.55,
   b: 0.57,
