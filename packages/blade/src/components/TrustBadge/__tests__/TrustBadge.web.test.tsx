@@ -4,13 +4,7 @@ import assertAccessible from '~utils/testing/assertAccessible';
 
 describe('<TrustBadge />', () => {
   it('should render the default badge with the default trust label', () => {
-    const { container, getByText } = renderWithTheme(<TrustBadge emphasis="intense" />);
-    expect(getByText('Razorpay Trusted Business')).toBeInTheDocument();
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render the subtle variant', () => {
-    const { container, getByText } = renderWithTheme(<TrustBadge emphasis="subtle" />);
+    const { container, getByText } = renderWithTheme(<TrustBadge />);
     expect(getByText('Razorpay Trusted Business')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
@@ -38,7 +32,7 @@ describe('<TrustBadge />', () => {
   });
 
   it('should pass general a11y', async () => {
-    const { container } = renderWithTheme(<TrustBadge emphasis="intense" />);
+    const { container } = renderWithTheme(<TrustBadge />);
     await assertAccessible(container);
   });
 
