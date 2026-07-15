@@ -14,11 +14,16 @@ type UseChatInputProps = Pick<
 const generateFileId = (): string => `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
 
 /**
- * Returns a new array where every file has a stable `id` (mirrors web pick/paste behavior).
- * Does not mutate the original array — creates new objects for files missing an `id`.
+ * Assigns stable `id`s in place (mirrors web pick/paste behavior).
+ * Mutating the consumer's file objects keeps controlled `fileList` references in sync.
  */
-const ensureFileIds = (fileList: BladeFileList): BladeFileList =>
-  fileList.map((file) => (file.id ? file : { ...file, id: generateFileId() }));
+const ensureFileIds = (fileList: BladeFileList): void => {
+  for (const file of fileList) {
+    if (!file.id) {
+      file.id = generateFileId();
+    }
+  }
+};
 
 const useChatInput = (
   {
@@ -62,10 +67,10 @@ const useChatInput = (
   const [, forceRender] = React.useReducer((count: number) => count + 1, 0);
   React.useLayoutEffect(() => {
     if (files.some((file) => !file.id)) {
-      setFiles(() => ensureFileIds(files));
+      ensureFileIds(files);
       forceRender();
     }
-  }, [files, setFiles]);
+  }, [files]);
 
   const hasFiles = files.length > 0;
   const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
@@ -84,8 +89,8 @@ const useChatInput = (
 
   const handleFileRemove = React.useCallback(
     (file: BladeFile) => {
-      const withIds = ensureFileIds(files);
-      const newFileList = withIds.filter((f) => f.id !== file.id);
+      ensureFileIds(files);
+      const newFileList = files.filter((f) => f.id !== file.id);
       setFiles(() => newFileList);
       onFileRemove?.({ file });
     },
@@ -94,8 +99,8 @@ const useChatInput = (
 
   const handleFileDismiss = React.useCallback(
     (file: BladeFile) => {
-      const withIds = ensureFileIds(files);
-      const newFileList = withIds.filter((f) => f.id !== file.id);
+      ensureFileIds(files);
+      const newFileList = files.filter((f) => f.id !== file.id);
       setFiles(() => newFileList);
       onFileDismiss?.({ file });
     },

@@ -143,7 +143,10 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       }}
     >
       {files.map((file, index) => (
-        <View key={file.id ?? `${file.name}-${index}`} style={{ width: chatInputFilePreviewItemWidthNative }}>
+        <View
+          key={file.id ?? `${file.name}-${index}`}
+          style={{ width: chatInputFilePreviewItemWidthNative }}
+        >
           <FileUploadItem
             file={file}
             onRemove={() => handleFileRemove(file)}
@@ -174,7 +177,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       {...getStyledProps(rest)}
     >
       {/* Error popup — animated above the input */}
-      {isErrorBannerVisible && errorText && inputContainerHeight > 0 ? (
+      {isErrorBannerVisible && errorText ? (
         <Animated.View
           style={[
             {
