@@ -10,7 +10,7 @@ const isFileAccepted = (file: BladeFile, acceptedFiles: string): boolean => {
   if (file && acceptedFiles) {
     const acceptedFilesArray = acceptedFiles.split(',');
     const fileName = file.name || '';
-    const mimeType = (file.type || '').toLowerCase();
+    const mimeType = (file.type ?? '').toLowerCase();
     const baseMimeType = mimeType.replace(/\/.*$/, '');
 
     return acceptedFilesArray.some((type) => {
