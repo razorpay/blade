@@ -17,6 +17,7 @@ import {
 import { useDatePickerContext } from './DatePickerContext';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
+import type { TextInputProps } from '~components/Input/TextInput';
 import type { BladeElementRef } from '~utils/types';
 import { CalendarIcon } from '~components/Icons';
 
@@ -257,7 +258,10 @@ const _DateInput = (
 
   return (
     <TextInput
-      {...textInputProps}
+      // DateInputProps extends BaseInputProps (includes `type: 'password'`), while
+      // TextInput excludes password — cast for the shared rest props. `as` and
+      // `activeInteraction` stay typed below.
+      {...(textInputProps as TextInputProps)}
       ref={ref}
       {...getInputDisplayProps()}
       // On native the DateInput is a NON-editable, press-to-open trigger (mirrors the

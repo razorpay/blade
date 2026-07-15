@@ -1539,6 +1539,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -1547,58 +1548,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessible={true}
-                      color="surface.text.gray.muted"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={75}
-                      fontStyle="normal"
-                      fontWeight="medium"
-                      letterSpacing={50}
-                      lineHeight={75}
-                      style={
-                        [
-                          {
-                            "color": "hsla(204, 9%, 42%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 12,
-                            "fontStyle": "normal",
-                            "fontWeight": "500",
-                            "letterSpacing": -0.15600000000000003,
-                            "lineHeight": 17,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                    >
-                      Sun
-                    </Text>
-                  </View>
-                  <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -1643,6 +1593,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -1651,6 +1602,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -1695,6 +1647,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -1703,6 +1656,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -1747,6 +1701,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -1755,6 +1710,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -1799,6 +1755,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -1807,6 +1764,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -1851,6 +1809,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -1859,6 +1818,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -1899,6 +1859,60 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       Sat
                     </Text>
                   </View>
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    justifyContent="center"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={75}
+                      fontStyle="normal"
+                      fontWeight="medium"
+                      letterSpacing={50}
+                      lineHeight={75}
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": -0.15600000000000003,
+                            "lineHeight": 17,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Sun
+                    </Text>
+                  </View>
                 </View>
                 <View
                   data-blade-component="base-box"
@@ -1914,104 +1928,15 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="28 June 2026"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    isDisabled={false}
-                    isFirstInRange={false}
-                    isInRange={false}
-                    isLastInRange={false}
-                    isSelected={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderRadius": 8,
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "overflow": "hidden",
-                        },
-                        {
-                          "aspectRatio": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessible={true}
-                      color="interactive.text.gray.muted"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      letterSpacing={50}
-                      lineHeight={100}
-                      style={
-                        [
-                          {
-                            "color": "hsla(204, 9%, 42%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "letterSpacing": -0.18200000000000002,
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                    >
-                      28
-                    </Text>
-                  </View>
-                  <View
                     accessibilityLabel="29 June 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2095,13 +2020,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="30 June 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2185,13 +2111,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="1 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2275,13 +2202,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="2 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2365,13 +2293,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="3 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2455,13 +2384,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="4 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2543,29 +2473,16 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       4
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="5 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2647,15 +2564,30 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       5
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="6 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2739,13 +2671,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="7 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2829,13 +2762,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="8 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -2919,13 +2853,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="9 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3009,13 +2944,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="10 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3099,13 +3035,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="11 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3187,29 +3124,16 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       11
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="12 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3291,15 +3215,30 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       12
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="13 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3383,13 +3322,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="14 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3488,13 +3428,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="15 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3578,13 +3519,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="16 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3668,13 +3610,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="17 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3758,13 +3701,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="18 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3846,29 +3790,16 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       18
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="19 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -3950,15 +3881,30 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       19
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="20 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4042,13 +3988,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="21 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4132,13 +4079,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="22 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4222,13 +4170,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="23 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4312,13 +4261,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="24 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4402,13 +4352,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="25 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4490,29 +4441,16 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       25
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="26 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4594,15 +4532,30 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       26
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="27 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4686,13 +4639,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="28 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4776,13 +4730,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="29 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4866,13 +4821,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="30 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -4956,13 +4912,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="31 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5046,13 +5003,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="1 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5134,29 +5092,16 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       1
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="2 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5238,15 +5183,30 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       2
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="3 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5330,13 +5290,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="4 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5420,13 +5381,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="5 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5510,13 +5472,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="6 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5600,13 +5563,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="7 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5690,13 +5654,14 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="8 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -5776,6 +5741,97 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                       }
                     >
                       8
+                    </Text>
+                  </View>
+                  <View
+                    accessibilityLabel="9 August 2026"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": false,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    isDisabled={false}
+                    isFirstInRange={false}
+                    isInRange={false}
+                    isLastInRange={false}
+                    isSelected={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderRadius": 8,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "overflow": "hidden",
+                        },
+                        {
+                          "aspectRatio": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      color="interactive.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.18200000000000002,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      9
                     </Text>
                   </View>
                 </View>
@@ -7916,6 +7972,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -7924,58 +7981,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessible={true}
-                      color="surface.text.gray.muted"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={75}
-                      fontStyle="normal"
-                      fontWeight="medium"
-                      letterSpacing={50}
-                      lineHeight={75}
-                      style={
-                        [
-                          {
-                            "color": "hsla(204, 9%, 42%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 12,
-                            "fontStyle": "normal",
-                            "fontWeight": "500",
-                            "letterSpacing": -0.15600000000000003,
-                            "lineHeight": 17,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                    >
-                      Sun
-                    </Text>
-                  </View>
-                  <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -8020,6 +8026,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -8028,6 +8035,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -8072,6 +8080,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -8080,6 +8089,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -8124,6 +8134,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -8132,6 +8143,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -8176,6 +8188,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -8184,6 +8197,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -8228,6 +8242,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                     alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
+                    justifyContent="center"
                     style={
                       [
                         {
@@ -8236,6 +8251,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -8276,6 +8292,60 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       Sat
                     </Text>
                   </View>
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    justifyContent="center"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={75}
+                      fontStyle="normal"
+                      fontWeight="medium"
+                      letterSpacing={50}
+                      lineHeight={75}
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": -0.15600000000000003,
+                            "lineHeight": 17,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Sun
+                    </Text>
+                  </View>
                 </View>
                 <View
                   data-blade-component="base-box"
@@ -8291,101 +8361,15 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="28 June 2026"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    isDisabled={false}
-                    isSelected={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderRadius": 8,
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "overflow": "hidden",
-                        },
-                        {
-                          "aspectRatio": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessible={true}
-                      color="interactive.text.gray.muted"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      letterSpacing={50}
-                      lineHeight={100}
-                      style={
-                        [
-                          {
-                            "color": "hsla(204, 9%, 42%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "letterSpacing": -0.18200000000000002,
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                    >
-                      28
-                    </Text>
-                  </View>
-                  <View
                     accessibilityLabel="29 June 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -8466,13 +8450,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="30 June 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -8553,13 +8538,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="1 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -8640,13 +8626,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="2 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -8727,13 +8714,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="3 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -8814,13 +8802,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="4 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -8899,29 +8888,16 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       4
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="5 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9000,15 +8976,30 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       5
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="6 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9089,13 +9080,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="7 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9176,13 +9168,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="8 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9263,13 +9256,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="9 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9350,13 +9344,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="10 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9437,13 +9432,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="11 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9522,29 +9518,16 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       11
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="12 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9623,15 +9606,30 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       12
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="13 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9712,13 +9710,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="14 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9814,13 +9813,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="15 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9901,13 +9901,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="16 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -9988,13 +9989,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="17 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10075,13 +10077,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="18 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10160,29 +10163,16 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       18
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="19 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10261,15 +10251,30 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       19
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="20 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10350,13 +10355,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="21 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10437,13 +10443,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="22 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10524,13 +10531,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="23 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10611,13 +10619,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="24 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10698,13 +10707,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="25 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10783,29 +10793,16 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       25
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="26 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10884,15 +10881,30 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       26
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="27 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -10973,13 +10985,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="28 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11060,13 +11073,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="29 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11147,13 +11161,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="30 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11234,13 +11249,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="31 July 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11321,13 +11337,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="1 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11406,29 +11423,16 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       1
                     </Text>
                   </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
                   <View
                     accessibilityLabel="2 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11507,15 +11511,30 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       2
                     </Text>
                   </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
                   <View
                     accessibilityLabel="3 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11596,13 +11615,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="4 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11683,13 +11703,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="5 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11770,13 +11791,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="6 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11857,13 +11879,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="7 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -11944,13 +11967,14 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   </View>
                   <View
                     accessibilityLabel="8 August 2026"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
                         "disabled": false,
                         "expanded": undefined,
-                        "selected": undefined,
+                        "selected": false,
                       }
                     }
                     accessibilityValue={
@@ -12027,6 +12051,94 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                       }
                     >
                       8
+                    </Text>
+                  </View>
+                  <View
+                    accessibilityLabel="9 August 2026"
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": false,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    isDisabled={false}
+                    isSelected={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderRadius": 8,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "overflow": "hidden",
+                        },
+                        {
+                          "aspectRatio": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      color="interactive.text.gray.muted"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.18200000000000002,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      9
                     </Text>
                   </View>
                 </View>
