@@ -2,11 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import babelParser from '@babel/parser';
-import traverse from '@babel/traverse';
+import _traverse from '@babel/traverse';
 import execa from 'execa';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import prettier from 'prettier';
 
+const traverse = _traverse.default;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const findIndexPaths = (baseDir) => {
