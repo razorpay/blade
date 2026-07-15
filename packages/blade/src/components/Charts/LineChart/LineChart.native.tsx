@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Svg,
   Path,
@@ -56,6 +56,11 @@ import { useControllableState } from '~utils/useControllable';
 // and the active/inactive dimming (strokeOpacity).
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
+
+// Module-level counter yields stable, collision-free ids for clip defs
+// across multiple chart instances on the same screen without relying on the
+// async `useId` (which is null on the first native render).
+let uniqueChartCounter = 0;
 
 // Plot padding is in raw SVG pixels because react-native-svg works in pixel
 // space; it does not consume Blade's spacing tokens directly.
@@ -514,6 +519,7 @@ type LineSeriesProps = {
   plotHeight: number;
   hoveredKey: string | null;
   dataSignature: string;
+  chartId: string;
 };
 
 /**
@@ -529,6 +535,7 @@ const LineSeries = ({
   plotHeight,
   hoveredKey,
   dataSignature,
+  chartId,
 }: LineSeriesProps): React.ReactElement => {
   const { theme } = useTheme();
   const { line, color, points } = geometry;
@@ -567,7 +574,7 @@ const LineSeries = ({
     line.connectNulls,
   ]);
   const dash = getStrokeDasharray(line.strokeStyle);
-  const clipId = `line-reveal-${index}`;
+  const clipId = `line-${chartId}-reveal-${index}`;
 
   return (
     <G>
@@ -629,6 +636,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState<number | undefined>(undefined);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+  const chartIdRef = useRef<string | undefined>(undefined);
+  if (chartIdRef.current === undefined) {
+    chartIdRef.current = `line-${uniqueChartCounter++}`;
+  }
+  const chartId = chartIdRef.current;
 
   const onLayout = (e: LayoutChangeEvent): void => {
     const { width, height } = e.nativeEvent.layout;
@@ -1169,6 +1181,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                       plotHeight={plotHeight}
                       hoveredKey={hoveredKey}
                       dataSignature={dataSignature}
+                      chartId={chartId}
                     />
                   ))}
 
