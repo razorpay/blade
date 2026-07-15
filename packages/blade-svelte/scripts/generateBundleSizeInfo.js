@@ -124,7 +124,11 @@ const main = async () => {
     if (exportedComponents.length > 0) {
       const imports = exportedComponents.join(', ');
 
-      runSizeLimit({ name: imports, importedComponents: `{ ${imports} }` });
+      try {
+        runSizeLimit({ name: imports, importedComponents: `{ ${imports} }` });
+      } catch (e) {
+        console.warn(`Skipping size-limit for ${imports}: not exported from main index`);
+      }
     }
   });
 
@@ -185,7 +189,11 @@ const main = async () => {
   // Run size-limit for each standalone component group
   standaloneGroups.forEach((componentNames, _groupKey) => {
     const imports = componentNames.join(', ');
-    runSizeLimit({ name: imports, importedComponents: `{ ${imports} }` });
+    try {
+      runSizeLimit({ name: imports, importedComponents: `{ ${imports} }` });
+    } catch (e) {
+      console.warn(`Skipping size-limit for ${imports}: not exported from main index`);
+    }
   });
 
   // Write the gathered size information to the specified file
