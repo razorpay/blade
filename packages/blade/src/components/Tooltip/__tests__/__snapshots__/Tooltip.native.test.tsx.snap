@@ -288,8 +288,8 @@ exports[`<Tooltip /> should render 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -312,8 +312,8 @@ exports[`<Tooltip /> should render 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -335,8 +335,8 @@ exports[`<Tooltip /> should render 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -359,8 +359,8 @@ exports[`<Tooltip /> should render 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -984,8 +984,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1008,8 +1008,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1031,8 +1031,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1055,8 +1055,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -1680,8 +1680,8 @@ exports[`<Tooltip /> should render with title 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1704,8 +1704,8 @@ exports[`<Tooltip /> should render with title 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1727,8 +1727,8 @@ exports[`<Tooltip /> should render with title 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1751,8 +1751,8 @@ exports[`<Tooltip /> should render with title 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={

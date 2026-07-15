@@ -538,8 +538,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                         }
                         strokeWidth={2}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={null}
@@ -562,8 +562,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                         }
                         strokeWidth={4}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -937,8 +937,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                         }
                         strokeWidth={7}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={null}
@@ -961,8 +961,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                         }
                         strokeWidth={4}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={null}
@@ -984,8 +984,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                         }
                         strokeWidth={1}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={null}
@@ -1008,8 +1008,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                         }
                         strokeWidth={5}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={

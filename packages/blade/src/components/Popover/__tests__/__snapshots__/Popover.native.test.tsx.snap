@@ -288,8 +288,8 @@ exports[`<Popover /> should render 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -312,8 +312,8 @@ exports[`<Popover /> should render 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -335,8 +335,8 @@ exports[`<Popover /> should render 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -359,8 +359,8 @@ exports[`<Popover /> should render 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -1165,8 +1165,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1189,8 +1189,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1212,8 +1212,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1236,8 +1236,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -2042,8 +2042,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2066,8 +2066,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2089,8 +2089,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2113,8 +2113,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={

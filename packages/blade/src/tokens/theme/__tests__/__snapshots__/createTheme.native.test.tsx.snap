@@ -1958,8 +1958,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1982,8 +1982,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2005,8 +2005,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2029,8 +2029,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -4090,8 +4090,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -4114,8 +4114,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -4137,8 +4137,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -4161,8 +4161,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={

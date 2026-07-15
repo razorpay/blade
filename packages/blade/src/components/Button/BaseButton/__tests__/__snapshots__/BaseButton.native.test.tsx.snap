@@ -288,8 +288,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -312,8 +312,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -335,8 +335,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -359,8 +359,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -750,8 +750,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -774,8 +774,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -797,8 +797,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -821,8 +821,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -1212,8 +1212,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1236,8 +1236,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1259,8 +1259,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1283,8 +1283,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -1778,8 +1778,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1802,8 +1802,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1825,8 +1825,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1849,8 +1849,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -2344,8 +2344,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2368,8 +2368,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2391,8 +2391,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2415,8 +2415,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -2913,8 +2913,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2937,8 +2937,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2960,8 +2960,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2984,8 +2984,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -6446,8 +6446,8 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -6470,8 +6470,8 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -6493,8 +6493,8 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -6517,8 +6517,8 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -6888,8 +6888,8 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -6912,8 +6912,8 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -7284,8 +7284,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -7308,8 +7308,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -7331,8 +7331,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -7355,8 +7355,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -8088,8 +8088,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -8112,8 +8112,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -8135,8 +8135,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -8159,8 +8159,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -8550,8 +8550,8 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -8574,8 +8574,8 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -8597,8 +8597,8 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -8621,8 +8621,8 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -8992,8 +8992,8 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -9016,8 +9016,8 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -9388,8 +9388,8 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -9412,8 +9412,8 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -9435,8 +9435,8 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -9459,8 +9459,8 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -9830,8 +9830,8 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -9854,8 +9854,8 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -10226,8 +10226,8 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -10250,8 +10250,8 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -10273,8 +10273,8 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -10297,8 +10297,8 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -10668,8 +10668,8 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -10692,8 +10692,8 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -11064,8 +11064,8 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11088,8 +11088,8 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11111,8 +11111,8 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11135,8 +11135,8 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -11506,8 +11506,8 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11530,8 +11530,8 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -11902,8 +11902,8 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11926,8 +11926,8 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11949,8 +11949,8 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11973,8 +11973,8 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -12344,8 +12344,8 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -12368,8 +12368,8 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -12720,8 +12720,8 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -12744,8 +12744,8 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -13116,8 +13116,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -13140,8 +13140,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -13163,8 +13163,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -13187,8 +13187,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -13577,8 +13577,8 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -13601,8 +13601,8 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -13972,8 +13972,8 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -13996,8 +13996,8 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -14348,8 +14348,8 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -14372,8 +14372,8 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -14744,8 +14744,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -14768,8 +14768,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -14791,8 +14791,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -14815,8 +14815,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={

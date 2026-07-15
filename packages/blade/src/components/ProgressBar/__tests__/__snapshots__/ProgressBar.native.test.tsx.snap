@@ -4383,8 +4383,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -4407,8 +4407,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -4430,8 +4430,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -4454,8 +4454,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -5041,8 +5041,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -5065,8 +5065,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -5088,8 +5088,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -5112,8 +5112,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -5699,8 +5699,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -5723,8 +5723,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -5746,8 +5746,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -5770,8 +5770,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
@@ -6414,8 +6414,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -6438,8 +6438,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -6461,8 +6461,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -6485,8 +6485,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={

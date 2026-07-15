@@ -672,9 +672,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       }}
       type={type}
       borderRadius={buttonBorderRadiusValue}
-      borderRadii={buttonBorderRadii}
-      collapseGroupBorder={collapseGroupBorder}
-      flattenInsetShadowSides={isInsideRNButtonGroup}
+      {...(buttonBorderRadii ? { borderRadii: buttonBorderRadii } : {})}
+      {...(collapseGroupBorder ? { collapseGroupBorder } : {})}
+      {...(isInsideRNButtonGroup ? { flattenInsetShadowSides: true } : {})}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       height={height}

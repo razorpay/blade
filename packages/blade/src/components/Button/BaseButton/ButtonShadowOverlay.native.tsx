@@ -162,8 +162,8 @@ const ButtonShadowOverlay = ({
       return (
         <Rect
           key={key}
-          x="0"
-          y="0"
+          x={0}
+          y={0}
           width="100%"
           height="100%"
           rx={maxRadius}
@@ -179,8 +179,8 @@ const ButtonShadowOverlay = ({
     return (
       <Rect
         key={key}
-        x="0"
-        y="0"
+        x={0}
+        y={0}
         width="100%"
         height="100%"
         rx={radii.topLeft}
@@ -194,7 +194,11 @@ const ButtonShadowOverlay = ({
   };
 
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="none" onLayout={handleLayout}>
+    <View
+      style={StyleSheet.absoluteFill}
+      pointerEvents="none"
+      {...(!isUniform ? { onLayout: handleLayout } : {})}
+    >
       <Svg style={StyleSheet.absoluteFill} pointerEvents="none">
         <Defs>
           <LinearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">

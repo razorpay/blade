@@ -495,8 +495,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             }
                             strokeWidth={2}
                             width="100%"
-                            x="0"
-                            y="0"
+                            x={0}
+                            y={0}
                           />
                           <RNSVGRect
                             fill={null}
@@ -519,8 +519,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             }
                             strokeWidth={4}
                             width="100%"
-                            x="0"
-                            y="0"
+                            x={0}
+                            y={0}
                           />
                         </RNSVGGroup>
                       </RNSVGSvgView>
@@ -1796,8 +1796,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                             }
                             strokeWidth={2}
                             width="100%"
-                            x="0"
-                            y="0"
+                            x={0}
+                            y={0}
                           />
                           <RNSVGRect
                             fill={null}
@@ -1820,8 +1820,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                             }
                             strokeWidth={4}
                             width="100%"
-                            x="0"
-                            y="0"
+                            x={0}
+                            y={0}
                           />
                         </RNSVGGroup>
                       </RNSVGSvgView>
