@@ -826,10 +826,6 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const yRange = yMax - yMin;
   const yTickCount = slots.yTickCount ?? Y_TICK_COUNT;
 
-  // Guard against division by zero when yRange === 0 (e.g. domain=[5,5]).
-  // When all values are the same, center the point in the plot area.
-  const yToPixel = (value: number): number =>
-    yRange > 0 ? plotHeight - ((value - yMin) / yRange) * plotHeight : plotHeight / 2;
   const yTicks = useMemo(() => {
     const ticks: number[] = [];
     for (let i = 0; i <= yTickCount; i++) {
@@ -889,6 +885,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   const plotWidth = Math.max(0, size.width - padding.left - padding.right);
   const plotHeight = Math.max(0, size.height - padding.top - padding.bottom);
+
+  // Guard against division by zero when yRange === 0 (e.g. domain=[5,5]).
+  // When all values are the same, center the point in the plot area.
+  const yToPixel = (value: number): number =>
+    yRange > 0 ? plotHeight - ((value - yMin) / yRange) * plotHeight : plotHeight / 2;
 
   // Line points span the plot width over `n-1` intervals (NOT bar-style slots).
   const pointSpacing = pointCount > 1 ? plotWidth / (pointCount - 1) : 0;
