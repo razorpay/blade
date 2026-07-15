@@ -1,4 +1,6 @@
-const QA_VERSION = '20260715-10';
+'use strict';
+
+const QA_VERSION = '20260715-21';
 const STORIES = [
   { id: 'components-slider--default', kicker: 'Foundation', title: 'Default', height: 220 },
   { id: 'components-slider--range', kicker: 'Variant', title: 'Range', height: 240 },
@@ -18,32 +20,19 @@ const STORIES = [
     title: 'With TextInput',
     height: 350,
   },
+  {
+    id: 'components-slider--variant-matrix',
+    kicker: 'Coverage',
+    title: 'Complete variant matrix',
+    height: 2300,
+    wide: true,
+  },
 ];
-
-const DEFAULTS = {
-  variant: 'single',
-  size: 'medium',
-  color: 'information',
-  labelPosition: 'top',
-  defaultValue: 50,
-  showValue: true,
-  showThumbValue: false,
-  showMarks: false,
-  showMinMax: false,
-  isDisabled: false,
-  isRequired: false,
-  validationState: 'none',
-};
 
 const frame = document.querySelector('#playground-frame');
 const stage = document.querySelector('#preview-stage');
-const valueOutput = document.querySelector('#value-output');
-const eventLog = document.querySelector('#event-log');
-const controls = [...document.querySelectorAll('[data-arg]')];
-const boundDocuments = new WeakSet();
+const previewHeights = { 360: '2050px', 768: '1200px', full: '1050px' };
 const rangeObservers = new WeakMap();
-let updateTimer;
-let lastRangeSignature = '';
 
 function renderStoryMatrix() {
   const grid = document.querySelector('#story-grid');
@@ -53,6 +42,7 @@ function renderStoryMatrix() {
     const card = template.content.cloneNode(true);
     card.querySelector('p').textContent = story.kicker;
     card.querySelector('h3').textContent = story.title;
+    card.querySelector('.story-card').classList.toggle('is-wide', Boolean(story.wide));
     const storyFrame = card.querySelector('iframe');
     storyFrame.title = `${story.title} Slider story`;
     storyFrame.src = `./iframe.html?id=${story.id}&viewMode=story&qa=${QA_VERSION}`;
@@ -61,71 +51,10 @@ function renderStoryMatrix() {
   });
 }
 
-function getArguments() {
-  const args = controls.reduce((result, control) => {
-    const value = control.type === 'checkbox' ? control.checked : control.value;
-    result[control.dataset.arg] = value;
-    return result;
-  }, {});
-  if (args.validationState === 'error') args.errorText = 'Choose a value within the range';
-  if (args.validationState === 'success') args.successText = 'Value looks good';
-  return args;
-}
-
-function updatePreview() {
-  clearTimeout(updateTimer);
-  updateTimer = setTimeout(() => {
-    const url = new URL('./iframe.html', window.location.href);
-    const args = Object.entries(getArguments())
-      .map(([key, value]) => `${key}:${String(value)}`)
-      .join(';');
-    url.searchParams.set('id', 'components-slider--default');
-    url.searchParams.set('viewMode', 'story');
-    url.searchParams.set('args', args);
-    url.searchParams.set('qa', QA_VERSION);
-    frame.src = url.toString();
-  }, 120);
-}
-
 function setCheck(id, passed, successText, failureText) {
   const check = document.querySelector(`#${id}`);
   check.textContent = passed ? successText : failureText;
   check.className = passed ? 'pass' : 'fail';
-}
-
-function recordInteraction(message) {
-  const item = document.createElement('li');
-  item.textContent = message;
-  eventLog.prepend(item);
-  while (eventLog.children.length > 6) eventLog.lastElementChild.remove();
-
-  const eventCheck = document.querySelector('#event-check');
-  eventCheck.textContent = message;
-  eventCheck.className = 'pass';
-}
-
-function addEvent(event) {
-  const target = event.target;
-  const values = [...target.ownerDocument.querySelectorAll('input[type="range"]')].map(
-    (input) => input.value,
-  );
-  lastRangeSignature = values.join('|');
-  recordInteraction(`${event.type}: ${target.value}`);
-}
-
-function inspectInteraction() {
-  try {
-    const values = [...frame.contentDocument.querySelectorAll('input[type="range"]')].map(
-      (input) => input.value,
-    );
-    const signature = values.join('|');
-    if (lastRangeSignature && signature && signature !== lastRangeSignature) {
-      recordInteraction(`value: ${values.join(' - ')}`);
-    }
-    lastRangeSignature = signature;
-  } catch {
-    /* frame not ready */
-  }
 }
 
 function inspectFrame() {
@@ -144,7 +73,8 @@ function inspectFrame() {
         return Math.round(Math.max(inputHeight, wrapperHeight)) >= 44;
       });
     const textNodes = [...doc.querySelectorAll('label, output, p, span')].filter(
-      (node) => node.offsetParent !== null,
+      (node) =>
+        node.offsetParent !== null && !node.closest('[data-blade-component="visually-hidden"]'),
     );
     const labelsPass = textNodes.every((node) => node.scrollWidth <= node.clientWidth + 1);
 
@@ -152,11 +82,6 @@ function inspectFrame() {
     setCheck('target-check', targetsPass, '44px or larger', 'Below 44px');
     setCheck('label-check', labelsPass, 'No clipping', 'Clipping found');
 
-    if (!boundDocuments.has(doc)) {
-      doc.addEventListener('input', addEvent, true);
-      doc.addEventListener('change', addEvent, true);
-      boundDocuments.add(doc);
-    }
     if (!rangeObservers.has(doc) && doc.defaultView?.ResizeObserver) {
       const observer = new doc.defaultView.ResizeObserver(inspectFrame);
       ranges.forEach((input) => observer.observe(input));
@@ -168,25 +93,6 @@ function inspectFrame() {
     );
   }
 }
-
-function resetControls() {
-  controls.forEach((control) => {
-    const defaultValue = DEFAULTS[control.dataset.arg];
-    if (control.type === 'checkbox') control.checked = defaultValue;
-    else control.value = defaultValue;
-  });
-  valueOutput.value = DEFAULTS.defaultValue;
-  updatePreview();
-}
-
-controls.forEach((control) => {
-  control.addEventListener('input', () => {
-    if (control.id === 'value-control') valueOutput.value = control.value;
-    updatePreview();
-  });
-});
-
-document.querySelector('#reset-controls').addEventListener('click', resetControls);
 document.querySelectorAll('[data-viewport]').forEach((button) => {
   button.addEventListener('click', () => {
     document
@@ -195,17 +101,16 @@ document.querySelectorAll('[data-viewport]').forEach((button) => {
     button.classList.add('is-active');
     frame.style.width =
       button.dataset.viewport === 'full' ? '100%' : `${button.dataset.viewport}px`;
+    frame.style.height = previewHeights[button.dataset.viewport];
     stage.scrollLeft = 0;
     window.setTimeout(inspectFrame, 180);
   });
 });
 
 frame.addEventListener('load', () => {
-  lastRangeSignature = '';
   window.setTimeout(inspectFrame, 250);
   window.setTimeout(inspectFrame, 1000);
 });
 renderStoryMatrix();
 window.setTimeout(inspectFrame, 1800);
 window.setInterval(inspectFrame, 1000);
-window.setInterval(inspectInteraction, 200);

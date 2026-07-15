@@ -1,69 +1,14 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { Title } from '@storybook/addon-docs/blocks';
-import type { ReactElement } from 'react';
 import React from 'react';
+import { SliderDocs } from './SliderDocs';
 import { Slider } from './Slider';
-import type { SliderProps } from './types';
+import { SliderInteractiveLab } from './SliderInteractiveLab';
+import { SliderVariantMatrix } from './SliderVariantMatrix';
+import type { SliderProps, SliderValue } from './types';
 import { Box } from '~components/Box';
 import { TextInput } from '~components/Input/TextInput';
 import { Heading } from '~components/Typography';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { Sandbox } from '~utils/storybook/Sandbox';
-import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-
-const FIGMA_URL =
-  'https://www.figma.com/design/k1V23Ml1EWUokVyqN4TTod/Slider-Research---Snowflake-Component-Exploration?node-id=120-797';
-
-const Page = (): ReactElement => (
-  <StoryPageWrapper
-    componentDescription="Slider lets people select one value or a bounded range by dragging, tapping the track, or using the keyboard."
-    componentName="Slider"
-    figmaURL={FIGMA_URL}
-  >
-    <Title>Usage</Title>
-    <Sandbox>
-      {`
-        import { Slider } from '@razorpay/blade/components';
-
-        function App() {
-          const [value, setValue] = React.useState(50);
-
-          return (
-            <Slider
-              label="Transaction limit"
-              value={value}
-              onChange={({ value }) => setValue(value)}
-              min={0}
-              max={100}
-              showMinMax
-            />
-          );
-        }
-      `}
-    </Sandbox>
-    <Title>Compose With TextInput</Title>
-    <Sandbox>
-      {`
-        import { Box, Slider, TextInput } from '@razorpay/blade/components';
-
-        <Box display="flex" alignItems="flex-end" gap="spacing.4">
-          <Slider
-            accessibilityLabel="Opacity"
-            value={opacity}
-            onChange={({ value }) => setOpacity(value)}
-          />
-          <TextInput
-            label="Opacity"
-            type="number"
-            value={String(opacity)}
-            onChange={({ value }) => setOpacity(Number(value))}
-            suffix="%"
-          />
-        </Box>
-      `}
-    </Sandbox>
-  </StoryPageWrapper>
-);
 
 export default {
   title: 'Components/Slider',
@@ -73,33 +18,56 @@ export default {
     min: 0,
     max: 100,
     step: 1,
+    variant: 'single',
     defaultValue: 50,
     size: 'medium',
     color: 'information',
+    labelPosition: 'top',
     showValue: true,
     showThumbValue: false,
     showMarks: false,
     showMinMax: false,
     isDisabled: false,
+    isRequired: false,
+    necessityIndicator: 'required',
     validationState: 'none',
   },
   argTypes: {
     variant: { control: 'inline-radio', options: ['single', 'range'] },
     size: { control: 'inline-radio', options: ['small', 'medium', 'large'] },
+    labelPosition: { control: 'inline-radio', options: ['top', 'left'] },
     color: {
       control: 'select',
       options: ['information', 'positive', 'negative', 'notice', 'neutral'],
     },
     validationState: { control: 'inline-radio', options: ['none', 'error', 'success'] },
+    necessityIndicator: { control: 'select', options: ['required', 'optional', 'none'] },
+    value: { control: false },
     valueFormatter: { control: false },
     marks: { control: 'object' },
     ...getStyledPropsArgTypes(),
   },
-  parameters: { docs: { page: Page } },
+  parameters: { docs: { page: SliderDocs } },
   tags: ['autodocs'],
 } as Meta<SliderProps>;
 
-const SliderTemplate: StoryFn<typeof Slider> = (args) => <Slider {...args} />;
+const SliderTemplate: StoryFn<typeof Slider> = (args) => {
+  const min = args.min ?? 0;
+  const max = args.max ?? 100;
+  const scalarDefault = typeof args.defaultValue === 'number' ? args.defaultValue : 50;
+  let defaultValue: SliderValue = scalarDefault;
+  if (args.variant === 'range') {
+    defaultValue = Array.isArray(args.defaultValue)
+      ? args.defaultValue
+      : [Math.max(min, scalarDefault - 20), Math.min(max, scalarDefault + 20)];
+  } else if (Array.isArray(args.defaultValue)) {
+    defaultValue = args.defaultValue[1];
+  }
+  const normalizedArgs = { ...args, defaultValue } as SliderProps;
+  const storyKey = `${args.variant}-${JSON.stringify(defaultValue)}-${min}-${max}-${args.step}`;
+
+  return <Slider key={storyKey} {...normalizedArgs} />;
+};
 
 export const Default = SliderTemplate.bind({});
 Default.storyName = 'Default';
@@ -211,6 +179,10 @@ export const ComposedWithTextInput: StoryFn<typeof Slider> = () => {
     </Box>
   );
 };
+
+export const ComponentLab: StoryFn<typeof Slider> = () => <SliderInteractiveLab />;
+
+export const VariantMatrix: StoryFn<typeof Slider> = () => <SliderVariantMatrix />;
 
 export const Playground: StoryFn<typeof Slider> = () => {
   const [amount, setAmount] = React.useState<readonly [number, number]>([2500, 7500]);

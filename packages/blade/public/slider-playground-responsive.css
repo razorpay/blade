@@ -1,19 +1,4 @@
 @media (max-width: 900px) {
-  .workbench {
-    grid-template-columns: 1fr;
-  }
-
-  .control-panel {
-    position: static;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .control-panel .section-heading,
-  .control-panel fieldset,
-  .control-panel .reset-button {
-    grid-column: 1 / -1;
-  }
-
   .story-grid {
     grid-template-columns: 1fr;
   }
@@ -38,10 +23,6 @@
     padding: 16px 16px 48px;
   }
 
-  .control-panel {
-    grid-template-columns: 1fr;
-  }
-
   .preview-toolbar {
     align-items: flex-start;
     flex-direction: column;
@@ -53,15 +34,16 @@
   }
 
   .health-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
-  .health-grid div:nth-child(2) {
+  .health-grid div {
     border-right: 0;
+    border-bottom: 1px solid #e8ebf0;
   }
 
-  .health-grid div:nth-child(-n + 2) {
-    border-bottom: 1px solid #e8ebf0;
+  .health-grid div:last-child {
+    border-bottom: 0;
   }
 
   .story-heading > p {

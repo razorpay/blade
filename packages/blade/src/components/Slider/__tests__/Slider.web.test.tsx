@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, createEvent } from '@testing-library/react';
 import { Slider } from '../Slider';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme';
 
 describe('<Slider />', () => {
   it('renders an accessible single slider with value and labels', () => {
@@ -142,6 +142,15 @@ describe('<Slider />', () => {
     expect(slider).toHaveAttribute('aria-invalid', 'true');
     expect(slider).toHaveAccessibleDescription('Value is too low');
     expect(getByText('Value is too low')).toBeTruthy();
+  });
+
+  it('exposes required semantics to assistive technology', () => {
+    const { getByRole } = renderWithTheme(
+      <Slider label="Transaction limit" defaultValue={50} isRequired />,
+    );
+    const slider = getByRole('slider');
+
+    expect(slider).toHaveAttribute('aria-required', 'true');
   });
 
   it('accepts test and analytics attributes', () => {

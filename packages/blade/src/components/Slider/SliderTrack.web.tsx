@@ -210,11 +210,7 @@ const MarkLabel = styled.span<{ $trackHeight: number; $percent: number }>(
     position: 'absolute',
     top: $trackHeight / 2 + 8,
     transform:
-      $percent <= 0
-        ? 'translateX(0)'
-        : $percent >= 100
-          ? 'translateX(-100%)'
-          : 'translateX(-50%)',
+      $percent <= 0 ? 'translateX(0)' : $percent >= 100 ? 'translateX(-100%)' : 'translateX(-50%)',
     whiteSpace: 'nowrap',
   }),
 );

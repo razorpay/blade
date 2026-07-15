@@ -3,7 +3,9 @@ import * as sliderStories from './Slider.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
-const allStories = Object.values(composeStories(sliderStories));
+const allStories = Object.entries(composeStories(sliderStories))
+  .filter(([storyName]) => !['ComponentLab', 'VariantMatrix'].includes(storyName))
+  .map(([, Story]) => Story);
 
 export const Slider = (): JSX.Element => (
   <Box display="flex" flexDirection="column" gap="spacing.6">

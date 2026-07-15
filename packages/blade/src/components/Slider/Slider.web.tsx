@@ -28,10 +28,7 @@ type InternalChangeHandler = (args: {
   event?: React.SyntheticEvent<HTMLInputElement>;
 }) => void;
 
-type InternalCommitHandler = (args: {
-  name?: string;
-  value: SliderValue;
-}) => void;
+type InternalCommitHandler = (args: { name?: string; value: SliderValue }) => void;
 
 const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (props, ref) => {
   const {
@@ -111,7 +108,9 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const onChangeValue = onChange as InternalChangeHandler | undefined;
   const onChangeEndValue = onChangeEnd as InternalCommitHandler | undefined;
   const latestValueRef = React.useRef<SliderValue>(initialValue);
-  const latestEventRef = React.useRef<React.SyntheticEvent<HTMLInputElement> | undefined>(undefined);
+  const latestEventRef = React.useRef<React.SyntheticEvent<HTMLInputElement> | undefined>(
+    undefined,
+  );
   const [controllableValue, setControllableValue] = useControllableState<SliderValue>({
     value: value as SliderValue | undefined,
     defaultValue: initialValue,

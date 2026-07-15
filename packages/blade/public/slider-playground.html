@@ -17,94 +17,21 @@
       </div>
       <div class="header-status" aria-label="Playground status">
         <span><i class="status-dot"></i>Actual Storybook stories</span>
-        <span>Single + range</span>
-        <span>Keyboard + pointer</span>
+        <span>Blade primitives</span>
+        <span>All variants</span>
       </div>
     </header>
 
     <main>
       <section class="workbench" aria-labelledby="workbench-title">
-        <aside class="control-panel">
-          <div class="section-heading">
-            <p class="eyebrow">Configure</p>
-            <h2 id="workbench-title">Interactive preview</h2>
-          </div>
-
-          <label class="field">
-            <span>Variant</span>
-            <select data-arg="variant">
-              <option value="single">Single</option>
-              <option value="range">Range</option>
-            </select>
-          </label>
-          <label class="field">
-            <span>Size</span>
-            <select data-arg="size">
-              <option value="small">Small</option>
-              <option value="medium" selected>Medium</option>
-              <option value="large">Large</option>
-            </select>
-          </label>
-          <label class="field">
-            <span>Color</span>
-            <select data-arg="color">
-              <option value="information">Information</option>
-              <option value="positive">Positive</option>
-              <option value="negative">Negative</option>
-              <option value="notice">Notice</option>
-              <option value="neutral">Neutral</option>
-            </select>
-          </label>
-          <label class="field">
-            <span>Label position</span>
-            <select data-arg="labelPosition">
-              <option value="top">Top</option>
-              <option value="left">Side</option>
-            </select>
-          </label>
-          <label class="field field-range">
-            <span>Value <output id="value-output">50</output></span>
-            <input
-              data-arg="defaultValue"
-              id="value-control"
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-            />
-          </label>
-
-          <fieldset>
-            <legend>Visible elements</legend>
-            <label class="check"
-              ><input data-arg="showValue" type="checkbox" checked />Header value</label
-            >
-            <label class="check"
-              ><input data-arg="showThumbValue" type="checkbox" />Thumb value</label
-            >
-            <label class="check"><input data-arg="showMarks" type="checkbox" />Marks</label>
-            <label class="check"><input data-arg="showMinMax" type="checkbox" />Min / max</label>
-          </fieldset>
-          <fieldset>
-            <legend>State</legend>
-            <label class="field">
-              <span>Validation</span>
-              <select data-arg="validationState">
-                <option value="none">None</option>
-                <option value="error">Error</option>
-                <option value="success">Success</option>
-              </select>
-            </label>
-            <label class="check"><input data-arg="isDisabled" type="checkbox" />Disabled</label>
-            <label class="check"><input data-arg="isRequired" type="checkbox" />Required</label>
-          </fieldset>
-
-          <button class="reset-button" id="reset-controls" type="button">
-            Reset configuration
-          </button>
-        </aside>
-
         <div class="preview-column">
+          <div class="workbench-heading">
+            <p class="eyebrow">Blade-native configuration</p>
+            <h2 id="workbench-title">Interactive component lab</h2>
+            <p>
+              The controls, layout, feedback, and Slider below are rendered by Blade components.
+            </p>
+          </div>
           <div class="preview-toolbar">
             <div class="viewport-control" role="group" aria-label="Preview width">
               <button type="button" data-viewport="360">360</button>
@@ -118,8 +45,8 @@
           <div class="preview-stage" id="preview-stage">
             <iframe
               id="playground-frame"
-              title="Configurable Blade Slider story"
-              src="./iframe.html?id=components-slider--default&amp;viewMode=story&amp;qa=20260715-10"
+              title="Blade Slider component lab story"
+              src="./iframe.html?id=components-slider--component-lab&amp;viewMode=story&amp;qa=20260715-21"
             ></iframe>
           </div>
 
@@ -127,9 +54,7 @@
             <div><span>Horizontal fit</span><strong id="fit-check">Checking</strong></div>
             <div><span>Touch targets</span><strong id="target-check">Checking</strong></div>
             <div><span>Labels</span><strong id="label-check">Checking</strong></div>
-            <div><span>Last event</span><strong id="event-check">Waiting</strong></div>
           </div>
-          <ol class="event-log" id="event-log" aria-label="Slider interaction events"></ol>
         </div>
       </section>
 
@@ -160,6 +85,6 @@
         <iframe loading="lazy"></iframe>
       </article>
     </template>
-    <script src="./slider-playground.js?v=20260715-10"></script>
+    <script src="./slider-playground.js?v=20260715-20"></script>
   </body>
 </html>
