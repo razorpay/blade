@@ -286,6 +286,131 @@ describe('<FileUpload /> (native)', () => {
     expect(onUploadPress).not.toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
+
+  it('should call onPreview through FileUpload when preview icon is pressed', () => {
+    const onPreview = jest.fn();
+    const successFile = {
+      id: 'file-1',
+      name: 'report.pdf',
+      size: 2048,
+      status: 'success' as const,
+    } as BladeFile;
+
+    const { getByLabelText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        fileList={[successFile]}
+        onUploadPress={jest.fn()}
+        onPreview={onPreview}
+        onRemove={jest.fn()}
+      />,
+    );
+
+    fireEvent.press(getByLabelText(`Preview ${successFile.name}`));
+    expect(onPreview).toHaveBeenCalledWith({ file: successFile });
+  });
+
+  it('should render size="variable" with custom action and drop area text', () => {
+    const { getByText, toJSON } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        size="variable"
+        label="Upload GST certificate"
+        actionButtonText="Choose file"
+        dropAreaText="Tap to add documents"
+        fileList={[]}
+        onUploadPress={jest.fn()}
+      />,
+    );
+
+    expect(getByText('Tap to add documents')).toBeTruthy();
+    expect(getByText('Choose file')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render with accessibilityLabel when label is not provided', () => {
+    const { getByLabelText, queryByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        accessibilityLabel="Upload identity document"
+        fileList={[]}
+        onUploadPress={jest.fn()}
+      />,
+    );
+
+    expect(queryByText('Upload identity document')).toBeNull();
+    expect(getByLabelText('Upload identity document')).toBeTruthy();
+  });
+
+  it('should fall back to onRemove for multi-file reupload when onReupload is not provided', () => {
+    const onRemove = jest.fn();
+    const onUploadPress = jest.fn();
+    const errorFile = {
+      id: 'file-2',
+      name: 'test.png',
+      size: 1024,
+      status: 'error' as const,
+      errorText: 'Upload failed',
+    } as BladeFile;
+    const successFile = {
+      id: 'file-1',
+      name: 'report.pdf',
+      size: 2048,
+      status: 'success' as const,
+    } as BladeFile;
+
+    const { getByLabelText } = renderWithTheme(
+      <FileUpload
+        uploadType="multiple"
+        label="Upload GST certificate"
+        fileList={[successFile, errorFile]}
+        onUploadPress={onUploadPress}
+        onRemove={onRemove}
+      />,
+    );
+
+    fireEvent.press(getByLabelText(`Reupload ${errorFile.name}`));
+
+    expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
+    expect(onUploadPress).not.toHaveBeenCalled();
+  });
+
+  it('should warn in __DEV__ when unsupported props are passed', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+
+    renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        accept="image/*"
+        maxCount={2}
+        maxSize={1024}
+        onDrop={jest.fn()}
+        labelPosition="left"
+        fileList={[]}
+        onUploadPress={jest.fn()}
+      />,
+    );
+
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[Blade: FileUpload]: maxCount has no effect on React Native'),
+    );
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[Blade: FileUpload]: maxSize has no effect on React Native'),
+    );
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[Blade: FileUpload]: accept has no effect on React Native'),
+    );
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[Blade: FileUpload]: onDrop has no effect on React Native'),
+    );
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[Blade: FileUpload]: labelPosition="left" is not supported'),
+    );
+
+    warnSpy.mockRestore();
+  });
 });
 
 describe('<FileUploadItem /> (native)', () => {

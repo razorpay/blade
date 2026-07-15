@@ -934,6 +934,554 @@ exports[`<FileUpload /> (native) should render FileUpload with size="large" 1`] 
 </View>
 `;
 
+exports[`<FileUpload /> (native) should render size="variable" with custom action and drop area text 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="file-upload"
+    display="flex"
+    flexDirection="column"
+    style={
+      [
+        {
+          "display": "flex",
+          "flexDirection": "column",
+          "width": "100%",
+        },
+      ]
+    }
+    width="100%"
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      position="relative"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          gap="spacing.0"
+          maxHeight="36px"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "gap": 0,
+                "maxHeight": 36,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "hsla(200, 10%, 18%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Upload GST certificate
+          </Text>
+          <View
+            data-blade-component="visually-hidden"
+            style={
+              [
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              letterSpacing={50}
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(0, 0%, 2%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": -0.18200000000000002,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        accessibilityDescribedBy="fileuploadinput-99-label-104"
+        accessibilityInvalid={false}
+        accessibilityLabel="Upload GST certificate"
+        accessibilityRequired={false}
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderColor": "hsla(204, 8%, 88%, 1)",
+                "borderRadius": 12,
+                "borderStyle": "dashed",
+                "borderWidth": 1,
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "minHeight": undefined,
+              },
+              {
+                "backgroundColor": undefined,
+              },
+              {
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            data-blade-component="box"
+            display="flex"
+            flexDirection="column"
+            gap="6px"
+            justifyContent="center"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "gap": 6,
+                  "justifyContent": "center",
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                },
+              ]
+            }
+          >
+            <View
+              alignItems="center"
+              data-blade-component="base-box"
+              display="flex"
+              justifyContent="center"
+              position="relative"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "position": "relative",
+                  },
+                ]
+              }
+            >
+              <RNSVGSvgView
+                accessibilityElementsHidden={true}
+                align="xMidYMid"
+                bbHeight="39"
+                bbWidth="38"
+                data-blade-component="icon"
+                fill="none"
+                focusable={false}
+                height="39"
+                importantForAccessibility="no-hide-descendants"
+                meetOrSlice={0}
+                minX={0}
+                minY={0}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    [
+                      {},
+                    ],
+                    {
+                      "flex": 0,
+                      "height": 39,
+                      "width": 38,
+                    },
+                  ]
+                }
+                vbHeight={39}
+                vbWidth={38}
+                width="38"
+              >
+                <RNSVGGroup
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                >
+                  <RNSVGPath
+                    d="M5.5 31.5801H3L5.5 34.0801V31.5801Z"
+                    fill={
+                      {
+                        "payload": 4279516498,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                  />
+                  <RNSVGPath
+                    d="M32.7998 31.5801H35.2998L32.7998 34.0801V31.5801Z"
+                    fill={
+                      {
+                        "payload": 4279516498,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "fill",
+                      ]
+                    }
+                  />
+                  <RNSVGPath
+                    clipRule={0}
+                    d="M6.35552 2.71162C6.91384 2.09227 7.66518 1.75 8.44238 1.75H25.9153L32.832 9.42294V33.5872C32.832 34.4743 32.514 35.3206 31.955 35.9408C31.3966 36.5601 30.6453 36.9024 29.8681 36.9024H8.44238C7.66518 36.9024 6.91384 36.5601 6.35552 35.9408C5.79644 35.3206 5.47852 34.4743 5.47852 33.5872V5.06524C5.47852 4.17809 5.79644 3.33184 6.35552 2.71162Z"
+                    fill={
+                      {
+                        "payload": 4293784823,
+                        "type": 0,
+                      }
+                    }
+                    fillRule={0}
+                    propList={
+                      [
+                        "fill",
+                        "fillRule",
+                        "stroke",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4280245370,
+                        "type": 0,
+                      }
+                    }
+                  />
+                  <RNSVGPath
+                    d="M3 19.3262H35.31V31.5817H3V19.3262Z"
+                    fill={
+                      {
+                        "payload": 4280109667,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "fill",
+                        "strokeWidth",
+                      ]
+                    }
+                    strokeWidth="0.5"
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+              <Text
+                accessible={true}
+                color="interactive.text.staticWhite.normal"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={25}
+                fontStyle="normal"
+                fontWeight="regular"
+                left="spacing.0"
+                letterSpacing={50}
+                lineHeight={25}
+                position="absolute"
+                right="spacing.0"
+                style={
+                  [
+                    {
+                      "color": "hsla(0, 0%, 100%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "left": 0,
+                      "letterSpacing": -0.13,
+                      "lineHeight": 13,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "textAlign": "center",
+                      "textDecorationLine": "none",
+                      "top": "46%",
+                    },
+                  ]
+                }
+                textAlign="center"
+                top="46%"
+              >
+                .xyz
+              </Text>
+            </View>
+            <View
+              alignItems="center"
+              data-blade-component="box"
+              display="flex"
+              flexDirection="row"
+              gap="2px"
+              justifyContent="center"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "gap": 2,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                color="surface.text.gray.subtle"
+                data-blade-component="text"
+                fontFamily="text"
+                fontSize={100}
+                fontStyle="normal"
+                fontWeight="regular"
+                letterSpacing={50}
+                lineHeight={100}
+                style={
+                  [
+                    {
+                      "color": "hsla(200, 10%, 18%, 1)",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "letterSpacing": -0.18200000000000002,
+                      "lineHeight": 20,
+                      "marginBottom": 0,
+                      "marginLeft": 0,
+                      "marginRight": 0,
+                      "marginTop": 0,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "textDecorationLine": "none",
+                    },
+                  ]
+                }
+              >
+                Tap to add documents
+                 
+              </Text>
+              <View
+                alignItems="center"
+                borderBottomColor="surface.border.primary.normal"
+                borderBottomWidth="thin"
+                data-blade-component="box"
+                display="flex"
+                flexDirection="row"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderBottomColor": "hsla(218, 89%, 51%, 1)",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "display": "flex",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  color="interactive.text.primary.subtle"
+                  data-blade-component="text"
+                  fontFamily="text"
+                  fontSize={100}
+                  fontStyle="normal"
+                  fontWeight="regular"
+                  letterSpacing={50}
+                  lineHeight={100}
+                  style={
+                    [
+                      {
+                        "color": "hsla(218, 89%, 51%, 1)",
+                        "fontFamily": "Inter",
+                        "fontSize": 14,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                        "letterSpacing": -0.18200000000000002,
+                        "lineHeight": 20,
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 0,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                >
+                  Choose file
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<FileUpload /> (native) should set disabled state with isDisabled 1`] = `
 <View
   style={
@@ -3235,7 +3783,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
               }
               accessible={true}
               data-blade-component="base-box"
-              id="progress-linear-93"
+              id="progress-linear-123"
               style={
                 [
                   {},
