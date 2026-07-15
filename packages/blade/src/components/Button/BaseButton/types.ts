@@ -101,6 +101,12 @@ export type StyledBaseButtonProps = Omit<
    * web's `marginLeft: -1px` behaviour.
    */
   collapseGroupBorder?: boolean;
+  /**
+   * When true, the inset highlight/shadow overlay draws only horizontal edges
+   * (top/bottom), pushing vertical sides outside the button bounds so they are
+   * clipped. Prevents doubled inset shadow thickness at ButtonGroup junctions.
+   */
+  flattenInsetShadowSides?: boolean;
   borderWidth?: string;
   shadowHighlightColor?: string;
   shadowHighlightHeight?: number;

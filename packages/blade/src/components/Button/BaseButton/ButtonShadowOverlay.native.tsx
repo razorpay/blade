@@ -1,7 +1,15 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import type { LayoutChangeEvent } from 'react-native';
-import Svg, { Defs, RadialGradient, LinearGradient, Stop, Rect, Path, Mask } from 'react-native-svg';
+import Svg, {
+  Defs,
+  RadialGradient,
+  LinearGradient,
+  Stop,
+  Rect,
+  Path,
+  Mask,
+} from 'react-native-svg';
 import type { ButtonCornerRadii } from './types';
 
 type ButtonShadowOverlayProps = {
@@ -140,9 +148,32 @@ const ButtonShadowOverlay = ({
       );
     }
 
-    // Non-uniform corners but size not measured yet — skip for this frame.
+    // Non-uniform corners but size not measured yet — render a uniform Rect
+    // fallback using the max corner radius to avoid a one-frame flash where
+    // border, highlight, and shadow are absent. Once onLayout fires, the
+    // exact per-corner Path replaces this fallback.
     if (!isUniform) {
-      return null;
+      const maxRadius = Math.max(
+        radii.topLeft,
+        radii.topRight,
+        radii.bottomLeft,
+        radii.bottomRight,
+      );
+      return (
+        <Rect
+          key={key}
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          rx={maxRadius}
+          ry={maxRadius}
+          fill={fill}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          mask={mask}
+        />
+      );
     }
 
     return (
@@ -181,7 +212,14 @@ const ButtonShadowOverlay = ({
             <Rect x="0" y="80%" width="100%" height="20%" fill="url(#bottomFade)" />
           </Mask>
           {showGradient ? (
-            <RadialGradient id="btnGlow" cx={0} cy={0} rx={64} ry={64} gradientUnits="userSpaceOnUse">
+            <RadialGradient
+              id="btnGlow"
+              cx={0}
+              cy={0}
+              rx={64}
+              ry={64}
+              gradientUnits="userSpaceOnUse"
+            >
               <Stop offset="0" stopColor="#ffffff" stopOpacity={0.18} />
               <Stop offset="1" stopColor="#ffffff" stopOpacity={0} />
             </RadialGradient>

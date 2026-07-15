@@ -52,15 +52,6 @@ type ButtonGroupContextType = Pick<
   'isDisabled' | 'isFullWidth' | 'size' | 'color' | 'variant'
 > & {
   /**
-   * Indicates that the Button is rendered inside a ButtonGroup.
-   *
-   * On React Native there is no CSS cascade to flatten the border radius of the
-   * buttons inside the group, so each Button flattens its own border radius to 0
-   * and relies on the group container's `overflow: hidden` + `borderRadius` to
-   * round only the outer edges.
-   */
-  isInsideButtonGroup?: boolean;
-  /**
    * True when this Button is the first child of a ButtonGroup.
    *
    * On web, CSS (`backgroundImage: none` on `:not(:first-child)`) removes the
@@ -77,6 +68,13 @@ type ButtonGroupContextType = Pick<
    * native border overlay) so the group's rounded corners aren't clipped.
    */
   isLastInButtonGroup?: boolean;
+  /**
+   * When true, non-first buttons should pull 1px left to collapse the doubled
+   * border between adjacent buttons. Computed by ButtonGroup based on its
+   * variant (secondary/tertiary) so BaseButton doesn't need to inspect the
+   * variant string.
+   */
+  collapseBorder?: boolean;
 };
 
 export type { ButtonGroupProps, StyledButtonGroupProps, ButtonGroupContextType };

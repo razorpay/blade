@@ -16,6 +16,10 @@ import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButto
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 
+// Mirrors the web implementation's getDividerColorToken for parity.
+// Only the 'primary' branch is reachable at runtime (dividers are only
+// rendered for primary variant), but all branches are kept for web/native
+// consistency.
 const getDividerColorToken = ({
   color,
   variant,
@@ -64,7 +68,6 @@ const _ButtonGroup = ({
     color,
     variant,
     isFullWidth,
-    isInsideButtonGroup: true,
   };
 
   useVerifyAllowedChildren({
@@ -76,37 +79,40 @@ const _ButtonGroup = ({
   const dividerColorToken = getDividerColorToken({ color, variant, isDisabled });
   const dividerColor = getIn(theme.colors, dividerColorToken);
 
-  return (
-    <ButtonGroupProvider value={contextValue}>
-      <StyledButtonGroup
-        size={size}
-        isFullWidth={isFullWidth}
-        {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
-        {...makeAnalyticsAttribute(rest)}
-        {...getStyledProps(rest)}
-        {...makeAccessible({ role: 'group' })}
-      >
-        {React.Children.map(children, (child, index) => {
-          const isLast = React.Children.count(children) - 1 === index;
-          const showDivider = variant === 'primary' && !isLast;
+  const isSecondaryOrTertiary = variant === 'secondary' || variant === 'tertiary';
 
-          return (
-            <React.Fragment key={index}>
-              <ButtonGroupProvider
-                value={{
-                  ...contextValue,
-                  isFirstInButtonGroup: index === 0,
-                  isLastInButtonGroup: isLast,
-                }}
-              >
-                {child}
-              </ButtonGroupProvider>
-              {showDivider && <StyledDivider dividerColor={dividerColor} />}
-            </React.Fragment>
-          );
-        })}
-      </StyledButtonGroup>
-    </ButtonGroupProvider>
+  return (
+    <StyledButtonGroup
+      size={size}
+      isFullWidth={isFullWidth}
+      {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
+      {...makeAnalyticsAttribute(rest)}
+      {...getStyledProps(rest)}
+      {...makeAccessible({ role: 'group' })}
+    >
+      {React.Children.map(children, (child, index) => {
+        if (!React.isValidElement(child)) return child;
+        const isLast = React.Children.count(children) - 1 === index;
+        const showDivider = variant === 'primary' && !isLast;
+        const childKey = child.key ?? index;
+
+        return (
+          <React.Fragment key={childKey}>
+            <ButtonGroupProvider
+              value={{
+                ...contextValue,
+                isFirstInButtonGroup: index === 0,
+                isLastInButtonGroup: isLast,
+                collapseBorder: isSecondaryOrTertiary && index > 0,
+              }}
+            >
+              {child}
+            </ButtonGroupProvider>
+            {showDivider && <StyledDivider dividerColor={dividerColor} />}
+          </React.Fragment>
+        );
+      })}
+    </StyledButtonGroup>
   );
 };
 

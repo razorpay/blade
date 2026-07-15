@@ -540,7 +540,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // `overflow: hidden` + `borderRadius`. React Native has no CSS cascade, so we
   // flatten each button's border radius to 0 here and let the group container do
   // the outer rounding — otherwise the inner (middle) buttons show rounded corners.
-  const isInsideRNButtonGroup = isReactNative() && Boolean(buttonGroupProps.isInsideButtonGroup);
+  // A non-null context value (variant is set by ButtonGroup) signals we're inside
+  // a group; no separate `isInsideButtonGroup` flag is needed.
+  const isInsideRNButtonGroup = isReactNative() && buttonGroupProps.variant !== undefined;
+
+  // buttonBorderRadiusValue flattens the base borderRadius to 0 for all buttons
+  // in a group. buttonBorderRadii provides per-corner rounding for the outer
+  // edges of the first/last buttons. Both are needed: the base value ensures the
+  // Pressable itself is square, while borderRadii rounds only the outer corners
+  // via per-corner style overrides (and feeds the SVG border overlay).
   const buttonBorderRadiusValue = isInsideRNButtonGroup ? makeBorderSize(0) : borderRadius;
 
   // The group container clips with `overflow: hidden` + `borderRadius`. Since the
@@ -548,7 +556,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // ring) gets clipped at the group's rounded outer corners. To match web, round
   // only the outer corners of the first/last buttons (both the background and the
   // border overlay) so the ring follows the rounded corner instead of being cut.
-  const groupCornerRadius = Number(String(borderRadius).replace('px', '')) || 0;
+  const groupCornerRadius = isInsideRNButtonGroup
+    ? theme.border.radius[buttonBorderRadius[size]]
+    : 0;
   const isFirstInGroup = Boolean(buttonGroupProps.isFirstInButtonGroup);
   const isLastInGroup = Boolean(buttonGroupProps.isLastInButtonGroup);
   const buttonBorderRadii = isInsideRNButtonGroup
@@ -560,15 +570,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       }
     : undefined;
 
-  // Secondary/tertiary groups separate buttons via each button's own gray border
-  // (there is no divider). Adjacent buttons would show a doubled border, so pull
-  // non-first buttons 1px left to collapse the two borders into one — matching
-  // web's `marginLeft: -1px` on `:not(:first-child)`.
-  const effectiveGroupVariant = buttonGroupProps.variant ?? variant;
+  // ButtonGroup computes collapseBorder based on its variant and passes it
+  // through context, so BaseButton doesn't need to inspect the variant string.
   const collapseGroupBorder =
-    isInsideRNButtonGroup &&
-    !isFirstInGroup &&
-    (effectiveGroupVariant === 'secondary' || effectiveGroupVariant === 'tertiary');
+    isInsideRNButtonGroup && !isFirstInGroup && Boolean(buttonGroupProps.collapseBorder);
 
   // Match web ButtonGroup: only the first child keeps the radial glow
   // (`backgroundImage: none` on `:not(:first-child)`). On native the white
@@ -576,11 +581,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // from box-shadow — suppress that on non-first buttons too so junctions
   // don't show a white left edge on Share/Download.
   const isNonFirstInButtonGroup =
-    Boolean(buttonGroupProps.isInsideButtonGroup) && !buttonGroupProps.isFirstInButtonGroup;
+    isReactNative() && buttonGroupProps.variant !== undefined && !isFirstInGroup;
   const showShadowGradient = Boolean(isShadowGradientVisible) && !isNonFirstInButtonGroup;
-  const effectiveShadowHighlightColor = isNonFirstInButtonGroup
-    ? undefined
-    : shadowHighlightColor;
+  const effectiveShadowHighlightColor = isNonFirstInButtonGroup ? undefined : shadowHighlightColor;
 
   const handlePointerPressedIn = React.useCallback(() => {
     if (disabled) return;
@@ -671,6 +674,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       borderRadius={buttonBorderRadiusValue}
       borderRadii={buttonBorderRadii}
       collapseGroupBorder={collapseGroupBorder}
+      flattenInsetShadowSides={isInsideRNButtonGroup}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       height={height}

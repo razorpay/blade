@@ -35,7 +35,7 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   // Overlap the previous button by one border-width so the two adjacent gray
   // borders collapse into a single line (matches web's `marginLeft: -1px`).
   const collapseBorderStyle = props.collapseGroupBorder
-    ? { marginLeft: -props.theme.border.width.thin }
+    ? { marginLeft: -Number(String(props.theme.border.width.thin).replace('px', '')) || -1 }
     : {};
 
   return {
@@ -93,6 +93,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     borderRadius,
     borderRadii,
     collapseGroupBorder,
+    flattenInsetShadowSides,
     motionDuration,
     motionEasing,
     isLoading,
@@ -182,6 +183,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       borderRadius={borderRadius}
       borderRadii={borderRadii}
       collapseGroupBorder={collapseGroupBorder}
+      flattenInsetShadowSides={flattenInsetShadowSides}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       testID={testID}
@@ -203,7 +205,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
                 borderColor={shadowBorderColor}
                 ringWidth={shadowRingWidth}
                 showGradient={isShadowGradientVisible}
-                flattenInsetShadowSides={Boolean(borderRadii)}
+                flattenInsetShadowSides={flattenInsetShadowSides}
               />
             ) : null}
             {children}
