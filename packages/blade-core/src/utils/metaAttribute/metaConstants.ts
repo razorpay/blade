@@ -35,6 +35,7 @@ export const MetaConstants = {
   Code: 'code',
   Component: 'blade-component',
   Counter: 'counter',
+  CounterInput: 'counter-input',
   Display: 'display',
   Divider: 'divider',
   Drawer: 'drawer',

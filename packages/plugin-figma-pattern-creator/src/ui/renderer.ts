@@ -79,33 +79,33 @@ export function renderGrid(): void {
     // Use images for specific patterns instead of emojis
     if (p.id === "dashboard-ui") {
       const src = isMobile
-        ? "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Dashboard%20UI%2001.png?raw=true"
-        : "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Dashboard%20UI%2005.png?raw=true";
+        ? "assets/pattern-previews/cover-images/Dashboard%20UI%2001.png"
+        : "assets/pattern-previews/cover-images/Dashboard%20UI%2005.png";
       applyCardImage(t, src, isMobile);
     } else if (p.id === "list-view") {
       const src = isMobile
-        ? "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/List%20View%2002.png?raw=true"
-        : "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/List%20View%2001.png?raw=true";
+        ? "assets/pattern-previews/cover-images/List%20View%2002.png"
+        : "assets/pattern-previews/cover-images/List%20View%2001.png";
       applyCardImage(t, src, isMobile);
     } else if (p.id === "detail-view") {
       const src = isMobile
-        ? "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Detail%20View%2002.png?raw=true"
-        : "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Detail%20View%2001.png?raw=true";
+        ? "assets/pattern-previews/cover-images/Detail%20View%2002.png"
+        : "assets/pattern-previews/cover-images/Detail%20View%2001.png";
       applyCardImage(t, src, isMobile);
     } else if (p.id === "creation-view") {
       const src = isMobile
-        ? "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Creation%20View%2004.png?raw=true"
-        : "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Creation%20View%2008.png?raw=true";
+        ? "assets/pattern-previews/cover-images/Creation%20View%2004.png"
+        : "assets/pattern-previews/cover-images/Creation%20View%2008.png";
       applyCardImage(t, src, isMobile);
     } else if (p.id === "settings") {
       const src = isMobile
-        ? "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Settings%2012.png?raw=true"
-        : "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Settings%2015.png?raw=true";
+        ? "assets/pattern-previews/cover-images/Settings%2012.png"
+        : "assets/pattern-previews/cover-images/Settings%2015.png";
       applyCardImage(t, src, isMobile);
     } else if (p.id === "modal-template") {
       const src = isMobile
-        ? "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Modal%20Template%2001.png?raw=true"
-        : "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/cover-images/Modal%20Template%2002.png?raw=true";
+        ? "assets/pattern-previews/cover-images/Modal%20Template%2001.png"
+        : "assets/pattern-previews/cover-images/Modal%20Template%2002.png";
       applyCardImage(t, src, isMobile);
     } else {
       t.textContent = p.emoji || "📦";
