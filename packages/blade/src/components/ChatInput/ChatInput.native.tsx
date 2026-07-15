@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, LayoutAnimation, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Animated, {
   runOnJS,
   useAnimatedStyle,
@@ -119,14 +119,6 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
   const [inputContainerHeight, setInputContainerHeight] = React.useState(0);
 
-  const prevHasFiles = React.useRef(hasFiles);
-  React.useEffect(() => {
-    if (hasFiles !== prevHasFiles.current) {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-      prevHasFiles.current = hasFiles;
-    }
-  }, [hasFiles]);
-
   const fileScrollRef = React.useRef<ScrollView>(null);
   const prevFileCountRef = React.useRef(files.length);
 
@@ -143,14 +135,15 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       ref={fileScrollRef}
       horizontal
       showsHorizontalScrollIndicator={false}
+      accessible={false}
       contentContainerStyle={{
         gap: getIn(theme, 'spacing.3') as number,
         paddingTop: getIn(theme, 'spacing.5') as number,
         paddingHorizontal: getIn(theme, 'spacing.5') as number,
       }}
     >
-      {files.map((file) => (
-        <View key={file.id ?? file.name} style={{ width: chatInputFilePreviewItemWidthNative }}>
+      {files.map((file, index) => (
+        <View key={file.id ?? `${file.name}-${index}`} style={{ width: chatInputFilePreviewItemWidthNative }}>
           <FileUploadItem
             file={file}
             onRemove={() => handleFileRemove(file)}
@@ -181,7 +174,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       {...getStyledProps(rest)}
     >
       {/* Error popup — animated above the input */}
-      {isErrorBannerVisible ? (
+      {isErrorBannerVisible && errorText && inputContainerHeight > 0 ? (
         <Animated.View
           style={[
             {
@@ -269,4 +262,3 @@ const ChatInput = assignWithoutSideEffects(React.forwardRef(_ChatInput), {
 });
 
 export { ChatInput };
-export type { ChatInputProps };

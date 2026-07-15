@@ -4,6 +4,7 @@ import type { BladeElementRef } from '~utils/types';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
 import { useControllableState } from '~utils/useControllable';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
@@ -13,17 +14,11 @@ type UseChatInputProps = Pick<
 const generateFileId = (): string => `${Date.now()}${Math.floor(Math.random() * 1000000)}`;
 
 /**
- * Ensures every file has a stable `id` (mirrors web pick/paste behavior).
- * Mutates in place so controlled parent arrays stay in sync, like web `handleFileInputChange`.
+ * Returns a new array where every file has a stable `id` (mirrors web pick/paste behavior).
+ * Does not mutate the original array — creates new objects for files missing an `id`.
  */
-const ensureFileIds = (fileList: BladeFileList): BladeFileList => {
-  for (const file of fileList) {
-    if (!file.id) {
-      file.id = generateFileId();
-    }
-  }
-  return fileList;
-};
+const ensureFileIds = (fileList: BladeFileList): BladeFileList =>
+  fileList.map((file) => (file.id ? file : { ...file, id: generateFileId() }));
 
 const useChatInput = (
   {
@@ -67,15 +62,13 @@ const useChatInput = (
   const [, forceRender] = React.useReducer((count: number) => count + 1, 0);
   React.useLayoutEffect(() => {
     if (files.some((file) => !file.id)) {
-      ensureFileIds(files);
+      setFiles(() => ensureFileIds(files));
       forceRender();
     }
-  }, [files]);
+  }, [files, setFiles]);
 
-  const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
-  const hasErrorFiles = files.some((f) => f.status === 'error' || f.status === 'uploading');
-  const isSubmitDisabled = (!hasText && !hasFiles) || hasErrorFiles;
+  const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
 
   const handleTextChange = React.useCallback(
     ({ value: newValue }: { name?: string; value?: string }) => {
@@ -91,8 +84,8 @@ const useChatInput = (
 
   const handleFileRemove = React.useCallback(
     (file: BladeFile) => {
-      ensureFileIds(files);
-      const newFileList = files.filter((f) => f.id !== file.id);
+      const withIds = ensureFileIds(files);
+      const newFileList = withIds.filter((f) => f.id !== file.id);
       setFiles(() => newFileList);
       onFileRemove?.({ file });
     },
@@ -101,8 +94,8 @@ const useChatInput = (
 
   const handleFileDismiss = React.useCallback(
     (file: BladeFile) => {
-      ensureFileIds(files);
-      const newFileList = files.filter((f) => f.id !== file.id);
+      const withIds = ensureFileIds(files);
+      const newFileList = withIds.filter((f) => f.id !== file.id);
       setFiles(() => newFileList);
       onFileDismiss?.({ file });
     },
