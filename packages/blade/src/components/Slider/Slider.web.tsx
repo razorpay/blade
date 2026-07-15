@@ -28,7 +28,7 @@ import { mergeRefs } from '~utils/useMergeRefs';
 type InternalChangeHandler = (args: {
   name?: string;
   value: SliderValue;
-  event?: React.SyntheticEvent<HTMLInputElement>;
+  event?: React.SyntheticEvent;
 }) => void;
 
 type InternalCommitHandler = (args: { name?: string; value: SliderValue }) => void;
@@ -115,9 +115,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const onChangeValue = onChange as InternalChangeHandler | undefined;
   const onChangeEndValue = onChangeEnd as InternalCommitHandler | undefined;
   const latestValueRef = React.useRef<SliderValue>(initialValue);
-  const latestEventRef = React.useRef<React.SyntheticEvent<HTMLInputElement> | undefined>(
-    undefined,
-  );
+  const latestEventRef = React.useRef<React.SyntheticEvent | undefined>(undefined);
   const [controllableValue, setControllableValue] = useControllableState<SliderValue>({
     value: value as SliderValue | undefined,
     defaultValue: initialValue,
@@ -131,7 +129,9 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     min,
     max,
   ]);
-  latestValueRef.current = currentValue;
+  React.useEffect(() => {
+    latestValueRef.current = currentValue;
+  }, [currentValue]);
 
   const { inputId, errorTextId, helpTextId, labelId, successTextId } = useFormId('slider');
   const startInputRef = React.useRef<HTMLInputElement>(null);
@@ -180,9 +180,12 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     [max, min, setControllableValue, step, selectionType],
   );
 
-  const commitValue = React.useCallback(() => {
-    onChangeEndValue?.({ name, value: latestValueRef.current });
-  }, [name, onChangeEndValue]);
+  const commitValue = React.useCallback(
+    (valueToCommit?: SliderValue) => {
+      onChangeEndValue?.({ name, value: valueToCommit ?? latestValueRef.current });
+    },
+    [name, onChangeEndValue],
+  );
 
   const updateThumbValue = React.useCallback(
     (index: 0 | 1, nextValue: number): void => {
@@ -241,26 +244,27 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const handleTrackPointerDown = React.useCallback(
     (event: React.PointerEvent<HTMLDivElement>): void => {
       if (isDisabled || event.target !== event.currentTarget || !trackRef.current) return;
-      latestEventRef.current = (event as unknown) as React.SyntheticEvent<HTMLInputElement>;
+      latestEventRef.current = event;
       pointerStartedOnThumbRef.current = false;
       const bounds = trackRef.current.getBoundingClientRect();
       const ratio = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
       const next = snapValue(min + ratio * (max - min), min, max, step);
 
+      let committedValue: SliderValue;
       if (selectionType === 'single') {
-        updateValue(next);
+        committedValue = updateValue(next);
         startInputRef.current?.focus();
       } else {
         const nextThumb = Math.abs(next - rangeValue[0]) <= Math.abs(next - rangeValue[1]) ? 0 : 1;
         setActiveThumb(nextThumb);
-        updateValue(
+        committedValue = updateValue(
           nextThumb === 0
             ? [Math.min(next, rangeValue[1]), rangeValue[1]]
             : [rangeValue[0], Math.max(next, rangeValue[0])],
         );
         (nextThumb === 0 ? startInputRef : endInputRef).current?.focus();
       }
-      commitValue();
+      commitValue(committedValue);
     },
     [commitValue, isDisabled, max, min, rangeValue, step, updateValue, selectionType],
   );

@@ -13,7 +13,7 @@ const snapValue = (value: number, min: number, max: number, step: number): numbe
   const snapped = min + Math.round((value - min) / step) * step;
   const precision = Math.max(getPrecision(step), getPrecision(min));
   const clamped = clamp(Number(snapped.toFixed(precision)), min, max);
-  if (max - clamped <= step / 2 && clamped !== max) {
+  if (max - clamped < step / 2 && clamped !== max) {
     return max;
   }
   return clamped;

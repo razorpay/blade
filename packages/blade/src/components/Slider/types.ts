@@ -16,7 +16,7 @@ type SliderMark = {
 type SliderChangeHandler<TValue extends SliderValue> = (args: {
   name?: string;
   value: TValue;
-  event?: React.SyntheticEvent<HTMLInputElement>;
+  event?: React.SyntheticEvent;
 }) => void;
 
 type SliderCommitHandler<TValue extends SliderValue> = (args: {
