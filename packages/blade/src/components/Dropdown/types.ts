@@ -81,7 +81,11 @@ type FilterChipGroupProps = TestID &
   DataAnalyticsAttribute & {
     children: React.ReactNode;
     /**
-     * Callback which is called when clear button is clicked
+     * Callback fired when the group's action button is clicked.
+     *
+     * Fires in **both** `clearButtonBehavior` modes: in `"clear"` mode the chips are also emptied,
+     * whereas in `"reset"` mode nothing is cleared automatically — this callback is your hook to
+     * restore each filter's default value.
      */
     onClearButtonClick?: () => void;
     /**
