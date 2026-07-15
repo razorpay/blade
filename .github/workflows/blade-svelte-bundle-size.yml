@@ -14,7 +14,7 @@ jobs:
   pr-bundle-size:
     name: Generate PR Report
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-    if: ${{ github.event_name == 'pull_request' && github.event.head_commit.author.name != 'rzpcibot' }}
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.user.login != 'rzpcibot' }}
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v4

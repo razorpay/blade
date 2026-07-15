@@ -60,11 +60,10 @@ const main = async () => {
       .filter((item) => item !== '') // filter empty array items
       .join('');
 
-    sizes.push(
-      JSON.parse(
-        jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
-      ),
-    );
+    // Use first '[' and last ']' to robustly extract the full JSON array from size-limit output
+    const firstBracket = jsonLikeString.indexOf('[');
+    const lastBracket = jsonLikeString.lastIndexOf(']');
+    sizes.push(JSON.parse(jsonLikeString.substring(firstBracket, lastBracket + 1)));
   };
 
   // Run size-limit for the empty import to get the base project size
@@ -181,4 +180,7 @@ const main = async () => {
   );
 };
 
-main();
+main().catch((err) => {
+  console.error('Failed to generate bundle size info:', err);
+  process.exit(1);
+});

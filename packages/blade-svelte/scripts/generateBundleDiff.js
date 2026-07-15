@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 // Asynchronous function to generate the bundle size difference report
 const generateBundleDiff = async () => {
   // Array to store the base bundle size statistics
@@ -6,16 +9,28 @@ const generateBundleDiff = async () => {
   const baseBundleStatsURL =
     process.env.BASE_BUNDLE_SIZE_STATS_URL ||
     'https://raw.githubusercontent.com/razorpay/blade/blade-svelte-bundle-size-stats/packages/blade-svelte/baseBundleSizeStats.json';
-  const response = await fetch(baseBundleStatsURL);
 
-  // Parse the JSON response if the request is successful
-  if (response.status === 200) {
-    baseBundleSizeStats = await response.json();
+  try {
+    const response = await fetch(baseBundleStatsURL);
+
+    // Parse the JSON response if the request is successful
+    if (response.status === 200) {
+      baseBundleSizeStats = await response.json();
+    }
+  } catch (err) {
+    console.error('Failed to fetch base bundle size stats:', err);
+    baseBundleSizeStats = [];
   }
 
   // Import the current bundle size statistics from the PR
-  // eslint-disable-next-line import/extensions
-  const currentBundleSizeStats = require('../prBundleSizeStats.json');
+  let currentBundleSizeStats;
+  try {
+    currentBundleSizeStats = require('../prBundleSizeStats.json');
+  } catch (err) {
+    console.error('Failed to load prBundleSizeStats.json:', err);
+    return { diffTable: null };
+  }
+
   // Initialize the bundle difference array with current bundle stats
   let bundleDiff = currentBundleSizeStats;
 
@@ -35,6 +50,17 @@ const generateBundleDiff = async () => {
     return { diffTable: null };
   }
 
+  // Calculate the empty project sizes from both current and base builds
+  const baseStat = currentBundleSizeStats.find((stat) => stat.name === 'Base');
+  if (!baseStat) {
+    console.error('No Base entry found in current bundle size stats');
+    return { diffTable: null };
+  }
+  const emptyProjectSize = baseStat.size / 1000;
+  // Calculate a separate base empty project size from the base stats for accurate diffs
+  const baseEmptyProjectSize =
+    baseBundleSizeStats.find((stat) => stat.name === 'Base')?.size / 1000 || emptyProjectSize;
+
   // Calculate the size differences and create a formatted diff table
   bundleDiff.forEach((component) => {
     if (component.name === 'Base') {
@@ -45,12 +71,12 @@ const generateBundleDiff = async () => {
     const baseComponent = baseBundleSizeStats.find((stat) => stat.name === component.name);
     // Calculate the empty project size, including all dependencies, and subtract it from the component bundle size
     // This adjustment is crucial to obtain more accurate results, mitigating size differences due to additional dependencies in the project
-    const emptyProjectSize =
-      currentBundleSizeStats.find((stat) => stat.name === 'Base').size / 1000;
     const currentComponentSize = currentComponent
       ? currentComponent.size / 1000 - emptyProjectSize
       : 0;
-    const baseComponentSize = baseComponent ? baseComponent.size / 1000 - emptyProjectSize : 0;
+    const baseComponentSize = baseComponent
+      ? baseComponent.size / 1000 - baseEmptyProjectSize
+      : 0;
 
     if (baseComponent && !currentComponent) {
       // Component removed in the PR

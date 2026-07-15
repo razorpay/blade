@@ -1,13 +1,11 @@
 const { danger, markdown } = require('danger');
 const generateBundleDiff = require('./scripts/generateBundleDiff');
 
-let markdownMessage = '';
-
 const showBundleSizeDiff = async () => {
   const { diffTable } = await generateBundleDiff(danger);
 
   if (diffTable) {
-    markdownMessage = `
+    const markdownMessage = `
 ## Blade Svelte Bundle Size Report
 
 <details>
@@ -18,12 +16,8 @@ ${diffTable}
 </details>
 
 `;
+    markdown(markdownMessage);
   }
 };
 
 showBundleSizeDiff();
-
-// Only post markdown if we have a message
-if (markdownMessage.trim()) {
-  markdown(markdownMessage);
-}
