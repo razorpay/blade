@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
+import { FileUploadInlineSelector } from './FileUploadInlineSelector';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import {
@@ -26,6 +27,10 @@ const FileUploadItem = memo(
     onRemove,
     onReupload,
     onDismiss,
+    categoryOptions,
+    categoryValue,
+    onCategoryChange,
+    categoryPlaceholder,
     size: containerSize,
     width,
     minWidth,
@@ -135,7 +140,28 @@ const FileUploadItem = memo(
                 ) : null}
               </BaseBox>
             ) : (
-              <BaseBox display="flex" flexDirection="row" alignItems="center">
+              <BaseBox
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+                gap={
+                  categoryOptions && categoryOptions.length > 0 && onCategoryChange
+                    ? 'spacing.3'
+                    : undefined
+                }
+              >
+                {categoryOptions &&
+                categoryOptions.length > 0 &&
+                onCategoryChange &&
+                containerSize !== 'variable' ? (
+                  <FileUploadInlineSelector
+                    options={categoryOptions}
+                    value={categoryValue}
+                    onChange={onCategoryChange}
+                    placeholder={categoryPlaceholder}
+                    file={file}
+                  />
+                ) : null}
                 {onPreview ? (
                   <BaseBox
                     display="flex"

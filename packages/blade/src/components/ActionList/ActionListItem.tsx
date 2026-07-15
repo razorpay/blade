@@ -354,6 +354,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     isKeydownPressed,
     filteredValues,
     hasAutoCompleteInHeader,
+    setIsKeydownPressed,
   } = useDropdown();
 
   React.useEffect(() => {
@@ -445,7 +446,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       titleSuffix={props.titleSuffix}
       href={props.href}
       target={props.target}
-      className={activeIndex === props._index ? 'active-focus' : ''}
+      className={activeIndex === props._index && isKeydownPressed ? 'active-focus' : ''}
       isSelected={isSelected}
       isDisabled={props.isDisabled}
       role={getActionListItemRole(dropdownTriggerer, props.href)}
@@ -458,6 +459,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       {...makeAnalyticsAttribute({ ...props })}
       {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
       onMouseDown={() => {
+        setIsKeydownPressed(false);
         // We want to keep focus on Dropdown's trigger while option is being clicked
         // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
         setShouldIgnoreBlurAnimation(true);
@@ -470,7 +472,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
       data-index={props._index}
       selectionType={selectionType}
       color={props.intent}
-      isKeydownPressed={isKeydownPressed}
     />
   );
 };

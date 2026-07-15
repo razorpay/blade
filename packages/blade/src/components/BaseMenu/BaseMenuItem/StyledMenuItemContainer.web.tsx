@@ -23,9 +23,7 @@ const StyledMenuItemContainer = styled(BaseBox)<StyledBaseMenuItemContainerProps
           : props.theme.colors.interactive.background.gray.default,
     },
     '&:focus-visible': getFocusRingStyles({ theme: props.theme }),
-    '&.active-focus': props.isKeydownPressed
-      ? getFocusRingStyles({ theme: props.theme })
-      : undefined,
+    '&.active-focus': getFocusRingStyles({ theme: props.theme }),
     '&[aria-selected=true], &[aria-selected=true]:hover': {
       backgroundColor: props.theme.colors.interactive.background.gray.fadedHighlighted,
     },

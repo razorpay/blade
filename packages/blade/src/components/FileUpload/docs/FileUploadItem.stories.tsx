@@ -194,3 +194,72 @@ const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
 
 export const AllStates = AllStatesTemplate.bind({});
 AllStates.storyName = 'All States';
+
+// With Inline Selector
+const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>('delivery_proof');
+
+  const categoryOptions = [
+    { title: 'Invoice', value: 'invoice' },
+    { title: 'Cancellation proof', value: 'cancellation_proof' },
+    { title: 'Delivery proof', value: 'delivery_proof' },
+    { title: 'Proof of service', value: 'proof_of_service' },
+    { title: 'Explanation letter', value: 'explanation_letter' },
+    { title: 'Refund confirmation', value: 'refund_confirmation' },
+    { title: 'Others', value: 'others' },
+  ];
+
+  const successFile = createMockFile('File_Name.pdf', 1024 * 1024 * 1.3, { status: 'success' });
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6">
+      <Box>
+        <Heading size="small">Medium Size with Inline Selector</Heading>
+        <Box maxWidth="400px" marginTop="spacing.3">
+          <FileUploadItem
+            file={successFile}
+            size="medium"
+            categoryOptions={categoryOptions}
+            categoryValue={selectedCategory}
+            onCategoryChange={({ value }) => setSelectedCategory(value)}
+            categoryPlaceholder="Select"
+            onRemove={({ file }) => action('onRemove')(file.name)}
+          />
+        </Box>
+      </Box>
+
+      <Box>
+        <Heading size="small">Large Size with Inline Selector</Heading>
+        <Box maxWidth="500px" marginTop="spacing.3">
+          <FileUploadItem
+            file={successFile}
+            size="large"
+            categoryOptions={categoryOptions}
+            categoryValue={selectedCategory}
+            onCategoryChange={({ value }) => setSelectedCategory(value)}
+            categoryPlaceholder="Select"
+            onRemove={({ file }) => action('onRemove')(file.name)}
+          />
+        </Box>
+      </Box>
+
+      <Box>
+        <Heading size="small">No Default Value (Placeholder)</Heading>
+        <Box maxWidth="400px" marginTop="spacing.3">
+          <FileUploadItem
+            file={successFile}
+            size="medium"
+            categoryOptions={categoryOptions}
+            categoryValue={undefined}
+            onCategoryChange={({ value }) => action('onChange')(value)}
+            categoryPlaceholder="Select"
+            onRemove={({ file }) => action('onRemove')(file.name)}
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const WithInlineSelector = WithInlineSelectorTemplate.bind({});
+WithInlineSelector.storyName = 'With Inline Selector';

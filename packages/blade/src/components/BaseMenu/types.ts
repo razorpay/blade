@@ -14,7 +14,6 @@ type BaseMenuItemProps = {
   isDisabled?: boolean;
   isSelected?: boolean;
   isVisible?: boolean;
-  isKeydownPressed?: boolean;
   leading?: React.ReactNode;
   trailing?: React.ReactNode;
   titleSuffix?: React.ReactNode;
@@ -35,7 +34,7 @@ type BaseMenuItemProps = {
 
 type StyledBaseMenuItemContainerProps = Pick<
   BaseMenuItemProps,
-  'color' | 'selectionType' | 'isSelected' | 'isDisabled' | 'isVisible' | 'isKeydownPressed'
+  'color' | 'selectionType' | 'isSelected' | 'isDisabled' | 'isVisible'
 >;
 
 type BaseMenuItemContextType = {

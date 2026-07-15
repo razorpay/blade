@@ -293,15 +293,6 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   margin-top: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
 .c6.c6.c6.c6.c6 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -317,6 +308,15 @@ exports[`<FileUpload /> should accept data-analytics attribute 1`] = `
   left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -868,15 +868,6 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   margin-top: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
 .c6.c6.c6.c6.c6 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -892,6 +883,15 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -1450,15 +1450,6 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   margin-top: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
 .c6.c6.c6.c6.c6 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -1474,6 +1465,15 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -2028,15 +2028,6 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   margin-top: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
 .c6.c6.c6.c6.c6 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -2052,6 +2043,15 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c13.c13.c13.c13.c13 {
