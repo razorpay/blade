@@ -83,7 +83,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     height,
     width,
     ...styledRest
-  } = rest as FileUploadVariableSizeProps;
+  } = (rest as unknown) as FileUploadVariableSizeProps & Record<string, unknown>;
   const isSizeVariable = size === 'variable';
   const hasLoggedUnsupportedPropsRef = useRef(false);
 
