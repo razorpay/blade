@@ -245,5 +245,11 @@ describe('<DonutChart /> interactions (native)', () => {
     // Tooltip should now display the slice's label and value
     expect(queryByText('Desktop')).toBeTruthy();
     expect(queryByText('400')).toBeTruthy();
+
+    // Press the same slice again — toggle should dismiss the tooltip
+    fireEvent.press(getByTestId('donut-slice-0'));
+
+    expect(queryByText('Desktop')).toBeNull();
+    expect(queryByText('400')).toBeNull();
   });
 });
