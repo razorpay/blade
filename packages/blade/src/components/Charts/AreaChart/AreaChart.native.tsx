@@ -62,6 +62,14 @@ const TICK_FONT_SIZE = 10;
 const AXIS_LABEL_FONT_SIZE = 11;
 const SECONDARY_LABEL_FONT_SIZE = 10;
 const X_AXIS_TITLE_GAP = 6;
+// Gap between the primary tick baseline and the secondary tick baseline (own row).
+const PRIMARY_TO_SECONDARY_GAP = 8;
+// Horizontal breathing room reserved around each x-tick label.
+const X_TICK_LABEL_GAP = 8;
+// Line height between wrapped x-label rows.
+const TICK_LINE_HEIGHT = TICK_FONT_SIZE + 2;
+// Cap wrapped label rows so a very long label can't consume the whole chart.
+const MAX_TICK_LABEL_LINES = 3;
 // Area-specific tokens.
 const STROKE_WIDTH = 1.5;
 const AREA_FILL_OPACITY = 0.5;
@@ -258,6 +266,122 @@ const formatYTick = (value: number): string => {
   if (abs >= 1_000_000) return `${(value / 1_000_000).toFixed(abs >= 10_000_000 ? 0 : 1)}M`;
   if (abs >= 1_000) return `${(value / 1_000).toFixed(abs >= 10_000 ? 0 : 1)}K`;
   return String(value);
+};
+
+/** Estimate rendered label width including a comfort gap, so ticks thin before they kiss. */
+const estimateTickLabelWidth = (label: string, fontSize: number): number =>
+  Math.max(1, label.length) * fontSize * 0.6 + X_TICK_LABEL_GAP;
+
+/**
+ * Word-wrap a label into lines that each fit `maxWidth`, so every category can be
+ * shown without dropping labels (mirrors web wrapping). A word longer than a line
+ * is hard-broken so it can never overflow its column and overlap a neighbour.
+ * Beyond `MAX_TICK_LABEL_LINES` the last line is ellipsised to bound height.
+ */
+const wrapLabelToLines = (label: string, maxWidth: number, fontSize: number): string[] => {
+  const text = String(label).trim();
+  if (!text) return [''];
+  if (maxWidth <= 0) return [text];
+
+  const maxChars = Math.max(1, Math.floor(maxWidth / (fontSize * 0.6)));
+  const words = text.split(/\s+/);
+  const lines: string[] = [];
+  let current = '';
+  const flush = (): void => {
+    if (current) {
+      lines.push(current);
+      current = '';
+    }
+  };
+
+  words.forEach((word) => {
+    let remaining = word;
+    while (remaining.length > maxChars) {
+      flush();
+      lines.push(remaining.slice(0, maxChars));
+      remaining = remaining.slice(maxChars);
+    }
+    if (!current) {
+      current = remaining;
+    } else if (current.length + 1 + remaining.length <= maxChars) {
+      current = `${current} ${remaining}`;
+    } else {
+      flush();
+      current = remaining;
+    }
+  });
+  flush();
+
+  if (lines.length > MAX_TICK_LABEL_LINES) {
+    const kept = lines.slice(0, MAX_TICK_LABEL_LINES);
+    const lastIndex = MAX_TICK_LABEL_LINES - 1;
+    const last = kept[lastIndex];
+    kept[lastIndex] = `${last.slice(0, Math.max(1, maxChars - 1))}…`;
+    return kept;
+  }
+  return lines;
+};
+
+/**
+ * Pick x-tick indices that do not overlap. The fit check is anchor-aware: the
+ * first tick is start-anchored (extends fully to its right), the last tick is
+ * end-anchored (extends fully to its left), and every inner tick is centered.
+ * Prefers keeping first + last when both fit, then greedily fills the middle.
+ */
+const selectNonOverlappingXTickIndices = (
+  pointCount: number,
+  widths: number[],
+  xForIndex: (index: number) => number,
+  forcedStep?: number,
+): number[] => {
+  if (pointCount <= 0) return [];
+  if (pointCount === 1) return [0];
+
+  const rightExtent = (i: number): number =>
+    xForIndex(i) + (i === 0 ? widths[i] : widths[i] / 2);
+  const leftExtent = (i: number): number =>
+    xForIndex(i) - (i === pointCount - 1 ? widths[i] : widths[i] / 2);
+  const fitsAfter = (prev: number, next: number): boolean =>
+    leftExtent(next) >= rightExtent(prev);
+
+  if (forcedStep !== undefined) {
+    const step = Math.max(1, forcedStep);
+    const indices: number[] = [];
+    for (let i = 0; i < pointCount; i += step) {
+      indices.push(i);
+    }
+    const last = pointCount - 1;
+    if (indices[indices.length - 1] !== last && fitsAfter(indices[indices.length - 1], last)) {
+      indices.push(last);
+    }
+    return indices;
+  }
+
+  const first = 0;
+  const last = pointCount - 1;
+  const firstLastFit = fitsAfter(first, last);
+  const selected: number[] = [first];
+
+  if (firstLastFit) {
+    let prev = first;
+    for (let i = 1; i < last; i++) {
+      if (fitsAfter(prev, i) && fitsAfter(i, last)) {
+        selected.push(i);
+        prev = i;
+      }
+    }
+    selected.push(last);
+    return selected;
+  }
+
+  let prev = first;
+  for (let i = 1; i < pointCount; i++) {
+    if (fitsAfter(prev, i)) {
+      selected.push(i);
+      prev = i;
+    }
+  }
+  return selected;
 };
 
 type Point = { x: number; y: number };
@@ -618,26 +742,88 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
   }, [yMin, yRange, yTickCount]);
 
   const showAxes = slots.hasXAxis || slots.hasYAxis;
-  const needsExtraBottomPad = Boolean(slots.xLabel && slots.xSecondaryDataKey);
+  const hasSecondaryXLabels = Boolean(slots.xSecondaryDataKey);
+  // Secondary labels need their own row even when there is no axis title.
+  const secondaryRowHeight = hasSecondaryXLabels
+    ? SECONDARY_LABEL_FONT_SIZE + PRIMARY_TO_SECONDARY_GAP
+    : 0;
+  const xAxisTitleHeight = slots.xLabel ? AXIS_LABEL_FONT_SIZE + X_AXIS_TITLE_GAP : 0;
+
+  const count = data.length;
+  // Width available under one x-tick before it collides with its neighbour. Left/
+  // right padding is fixed (PLOT_PADDING), so this is stable regardless of the
+  // wrap-driven bottom padding computed just below.
+  const plotWidthForLabels = Math.max(0, size.width - PLOT_PADDING.left - PLOT_PADDING.right);
+  const columnWidth = count > 1 ? plotWidthForLabels / (count - 1) : plotWidthForLabels;
+
+  // Resolve every x-label up front so we can measure density and wrap long labels
+  // across lines instead of dropping them — matches web.
+  const xLabels = useMemo(() => {
+    return data.map((row, index) => {
+      const rawLabel = slots.xDataKey ? String(row[slots.xDataKey] ?? '') : String(index);
+      return slots.xTickFormatter ? slots.xTickFormatter(rawLabel, index) : rawLabel;
+    });
+  }, [data, slots.xDataKey, slots.xTickFormatter]);
+
+  // Wrap each label to fit its column so all categories can be shown at once.
+  // Budget ~60% of a column per label: the first/last ticks are edge-anchored, so
+  // their full width sits to one side of their point and must clear the centered
+  // neighbour (needs widestLine <= ~2/3 of a column). Wrapping to this budget keeps
+  // every category visible instead of thinning some out. When a column is too tight
+  // to wrap usefully (budget <= 0) we fall back to the raw label + density thinning.
+  const xLabelLines = useMemo(() => {
+    const maxWidth = Math.max(0, columnWidth * 0.6 - X_TICK_LABEL_GAP);
+    return xLabels.map((label) => wrapLabelToLines(label, maxWidth, TICK_FONT_SIZE));
+  }, [xLabels, columnWidth]);
+
+  const maxXLabelLines = useMemo(
+    () => xLabelLines.reduce((max, lines) => Math.max(max, lines.length), 1),
+    [xLabelLines],
+  );
+
+  const primaryLabelRowHeight = maxXLabelLines * TICK_LINE_HEIGHT;
   const padding = showAxes
     ? {
         ...PLOT_PADDING,
-        bottom: needsExtraBottomPad
-          ? PLOT_PADDING.bottom + SECONDARY_LABEL_FONT_SIZE + X_AXIS_TITLE_GAP
-          : PLOT_PADDING.bottom,
+        bottom: Math.max(
+          PLOT_PADDING.bottom,
+          primaryLabelRowHeight + 4 + secondaryRowHeight + xAxisTitleHeight + 4,
+        ),
       }
     : { top: 0, right: 0, bottom: 0, left: 0 };
 
   const plotWidth = Math.max(0, size.width - padding.left - padding.right);
   const plotHeight = Math.max(0, size.height - padding.top - padding.bottom);
 
-  const count = data.length;
   const pointStep = count > 1 ? plotWidth / (count - 1) : 0;
   const xAt = (i: number): number => (count > 1 ? i * pointStep : plotWidth / 2);
   const yAt = (value: number): number =>
     yRange > 0 ? plotHeight - ((value - yMin) / yRange) * plotHeight : plotHeight;
 
-  const xLabelStep = Math.max(1, (slots.xInterval ?? 0) + 1);
+  // Visible tick indices: after wrapping, each label's effective width is its
+  // widest line, so most fit and are shown. Thinning kicks in only when labels
+  // would still overlap. An explicit `interval` still wins.
+  const visibleXTickIndices = useMemo(() => {
+    if (count <= 0) return [] as number[];
+    const widths = xLabelLines.map((lines, index) => {
+      const primaryWidth = lines.reduce(
+        (max, line) => Math.max(max, estimateTickLabelWidth(line, TICK_FONT_SIZE)),
+        0,
+      );
+      const secondary = secondaryLabelMap?.[index];
+      const secondaryWidth =
+        secondary !== undefined && secondary !== null
+          ? estimateTickLabelWidth(String(secondary), SECONDARY_LABEL_FONT_SIZE)
+          : 0;
+      return Math.max(primaryWidth, secondaryWidth);
+    });
+    const forcedStep =
+      slots.xInterval !== undefined ? Math.max(1, slots.xInterval + 1) : undefined;
+    return selectNonOverlappingXTickIndices(count, widths, xAt, forcedStep);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- xAt is a stable closure over values already in deps
+  }, [count, pointStep, plotWidth, xLabelLines, secondaryLabelMap, slots.xInterval]);
+
+  const visibleXTickIndexSet = useMemo(() => new Set(visibleXTickIndices), [visibleXTickIndices]);
 
   const tickColor = getIn(theme.colors, 'surface.text.gray.muted');
   // Reference-line label text uses the NORMAL (darker) token to match web, which
@@ -1183,38 +1369,40 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                       strokeWidth={1}
                     />
                     {data.map((row, i) => {
-                      if (i % xLabelStep !== 0) return null;
+                      if (!visibleXTickIndexSet.has(i)) return null;
                       const cx = xAt(i);
-                      const rawLabel = slots.xDataKey
-                        ? String(row[slots.xDataKey] ?? '')
-                        : String(i);
-                      const label = slots.xTickFormatter
-                        ? slots.xTickFormatter(rawLabel, i)
-                        : rawLabel;
+                      const lines = xLabelLines[i] ?? [''];
                       const secondary = secondaryLabelMap?.[i];
-                      const isLastVisibleTick = (() => {
-                        for (let j = data.length - 1; j >= 0; j--) {
-                          if (j % xLabelStep === 0) return j === i;
-                        }
-                        return false;
-                      })();
+                      const primaryY = plotHeight + TICK_FONT_SIZE + 4;
+                      // First/last anchor to their inner edge so wide labels don't
+                      // spill off the canvas; inner ticks center.
                       const tickTextAnchor =
-                        i === 0 ? 'start' : isLastVisibleTick ? 'end' : 'middle';
+                        i === 0 ? 'start' : i === count - 1 ? 'end' : 'middle';
+                      // Secondary sits below the tallest possible primary block so it
+                      // stays on one row across all ticks.
+                      const secondaryY =
+                        primaryY +
+                        (maxXLabelLines - 1) * TICK_LINE_HEIGHT +
+                        SECONDARY_LABEL_FONT_SIZE +
+                        PRIMARY_TO_SECONDARY_GAP;
                       return (
                         <G key={`xtick-${i}`}>
-                          <SvgText
-                            x={cx}
-                            y={plotHeight + TICK_FONT_SIZE + 4}
-                            fontSize={TICK_FONT_SIZE}
-                            fill={tickColor}
-                            textAnchor={tickTextAnchor}
-                          >
-                            {label}
-                          </SvgText>
+                          {lines.map((line, lineIndex) => (
+                            <SvgText
+                              key={`xtick-${i}-line-${lineIndex}`}
+                              x={cx}
+                              y={primaryY + lineIndex * TICK_LINE_HEIGHT}
+                              fontSize={TICK_FONT_SIZE}
+                              fill={tickColor}
+                              textAnchor={tickTextAnchor}
+                            >
+                              {line}
+                            </SvgText>
+                          ))}
                           {secondary !== undefined && secondary !== null ? (
                             <SvgText
                               x={cx}
-                              y={plotHeight + TICK_FONT_SIZE + 4 + SECONDARY_LABEL_FONT_SIZE + 2}
+                              y={secondaryY}
                               fontSize={SECONDARY_LABEL_FONT_SIZE}
                               fill={tickColor}
                               textAnchor={tickTextAnchor}
