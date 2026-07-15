@@ -56,6 +56,9 @@ export default {
 } as Meta<StaggerProps>;
 
 const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
+  // Drive visibility from local state only. Storybook controls often inject
+  // `args.isVisible === true` (component default), which would lock the toggle
+  // via `args.isVisible ?? isVisible` and make the button appear to do nothing.
   const [isVisible, setIsVisible] = React.useState(true);
   return (
     <Box
@@ -65,7 +68,7 @@ const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
       borderWidth="thin"
       borderColor="surface.border.gray.muted"
     >
-      <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
+      <Button marginBottom="spacing.4" onClick={() => setIsVisible((prev) => !prev)}>
         Toggle Stagger
       </Button>
       <Stagger
@@ -74,7 +77,7 @@ const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
         flexDirection="row"
         flexWrap="wrap"
         gap="spacing.4"
-        isVisible={args.isVisible ?? isVisible}
+        isVisible={isVisible}
       >
         {args.children}
       </Stagger>

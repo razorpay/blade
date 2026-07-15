@@ -141,4 +141,28 @@ describe('<Stagger /> (native)', () => {
     expect(queryByText('Hidden item')).toBeNull();
     expect(queryByText('Another hidden item')).toBeNull();
   });
+
+  it('should flatten Fragment children so each preset gets its own stagger slot', () => {
+    // Storybook args wrap children in `<>...</>`. React.Children.toArray does not flatten
+    // Fragments — without an explicit flatten, count===1 and all items animate together.
+    const { queryByText } = renderWithTheme(
+      <Stagger>
+        <>
+          <Fade>
+            <Text>Fragment 1</Text>
+          </Fade>
+          <Fade>
+            <Text>Fragment 2</Text>
+          </Fade>
+          <Fade>
+            <Text>Fragment 3</Text>
+          </Fade>
+        </>
+      </Stagger>,
+    );
+
+    expect(queryByText('Fragment 1')).toBeTruthy();
+    expect(queryByText('Fragment 2')).toBeTruthy();
+    expect(queryByText('Fragment 3')).toBeTruthy();
+  });
 });

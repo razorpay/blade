@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const { withStorybook } = require('@storybook/react-native/metro/withStorybook');
+const exclusionList = require('metro-config/src/defaults/exclusionList');
 
 /**
  * Metro configuration
@@ -10,8 +11,18 @@ const { withStorybook } = require('@storybook/react-native/metro/withStorybook')
  * @type {import('metro-config').MetroConfig}
  */
 
-const mocksDir = path.resolve(__dirname, '.storybook/react-native/mocks');
-const nodeModulesDir = fs.realpathSync(path.resolve(__dirname, 'node_modules'));
+const projectRoot = __dirname;
+const mocksDir = path.resolve(projectRoot, '.storybook/react-native/mocks');
+const nodeModulesDir = fs.realpathSync(path.resolve(projectRoot, 'node_modules'));
+
+// Sibling git worktrees under `.claude/worktrees/*` share the same relative paths
+// (`src/components/Stagger/Stagger.native.tsx`, etc.). If Metro's haste map ever sees more than
+// one worktree it will pick an arbitrary copy (we observed LineChart's stub Stagger being
+// bundled while cwd was MotionPresets). Block every worktree except this one.
+const thisWorktreeName = path.basename(path.resolve(projectRoot, '../..')); // e.g. MotionPresets
+const siblingWorktreesBlock = new RegExp(
+  `/\\.claude/worktrees/(?!${thisWorktreeName}(?:/|$))[^/]+/`,
+);
 
 // Metro 0.76 doesn't fully support package.json "exports" for subpath imports.
 // Manually resolve subpath exports for storybook packages.
@@ -49,7 +60,8 @@ function resolveSubpathExport(moduleName) {
 }
 
 const config = {
-  watchFolders: [nodeModulesDir],
+  projectRoot,
+  watchFolders: [projectRoot, nodeModulesDir],
   transformer: {
     unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
@@ -60,6 +72,8 @@ const config = {
     }),
   },
   resolver: {
+    blockList: exclusionList([siblingWorktreesBlock, /\/__tests__\/.*/]),
+    disableHierarchicalLookup: true,
     nodeModulesPaths: [nodeModulesDir],
     resolverMainFields: ['react-native', 'browser', 'main'],
     resolveRequest: (context, moduleName, platform) => {
@@ -103,8 +117,8 @@ const config = {
   },
 };
 
-module.exports = withStorybook(mergeConfig(getDefaultConfig(__dirname), config), {
-  configPath: path.resolve(__dirname, '.storybook/react-native'),
+module.exports = withStorybook(mergeConfig(getDefaultConfig(projectRoot), config), {
+  configPath: path.resolve(projectRoot, '.storybook/react-native'),
   enabled: true,
   docTools: false,
 });

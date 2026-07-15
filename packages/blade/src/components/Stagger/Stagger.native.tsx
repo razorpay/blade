@@ -3,29 +3,47 @@ import { StaggerContext } from './StaggerProvider';
 import type { StaggerProps } from './types';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { Box } from '~components/Box';
-import { msToSeconds } from '~utils/msToSeconds';
 import { useTheme } from '~utils';
+
+type VisibilityTarget = Extract<keyof MotionVariantsType, 'animate' | 'exit'>;
+
+/**
+ * `React.Children.toArray` does **not** flatten Fragments (React 18). Storybook args and many
+ * call sites wrap stagger children in `<>...</>`, which would otherwise yield `count === 1` and
+ * one shared context — every child then animates in lockstep. Recurse into Fragments so each
+ * motion preset gets its own delay / visibility target.
+ */
+const flattenStaggerChildren = (nodes: React.ReactNode): React.ReactElement[] => {
+  const result: React.ReactElement[] = [];
+  React.Children.forEach(nodes, (child) => {
+    if (!React.isValidElement(child)) {
+      return;
+    }
+    if (child.type === React.Fragment) {
+      result.push(
+        ...flattenStaggerChildren((child.props as { children?: React.ReactNode }).children),
+      );
+      return;
+    }
+    result.push(child);
+  });
+  return result;
+};
 
 /**
  * ## Stagger (native)
  *
- * framer's `staggerChildren` + `AnimatePresence` have no React Native runtime, so on native the
- * orchestration is hand-built:
+ * framer's `staggerChildren` has no React Native runtime. Native orchestration:
  *
- * 1. Children are enumerated + indexed via `React.Children.toArray` (stable keys).
- * 2. Each child gets a per-child `{ enter, exit }` delay: `enter = enterBase + index * interval`
- *    (forward) and `exit = exitBase + (count - 1 - index) * interval` (reverse — last child leaves
- *    first, giving a natural "unwind"; web has no `staggerDirection` so it exits forward).
- * 3. Every child is wrapped in its own `StaggerContext.Provider` carrying that delay plus the
- *    shared `staggerVisibility` target. `BaseMotionBox.native` reads the context and injects the
- *    delay into the resolved `transition.delay`, adopting `staggerVisibility` as its target.
- * 4. Mount / unmount is owned by the container (mirroring `BaseMotionEntryExit.native`): on hide
- *    with `shouldUnmountWhenHidden` we keep the tree mounted, let children run their staggered
- *    exit, and unmount only after the last child's exit completes.
+ * 1. Enumerate children (flattening Fragments) with `flattenStaggerChildren`.
+ * 2. Keep a per-child visibility target (`animate` | `exit`). When container `isVisible` flips,
+ *    update those targets one-by-one via `setTimeout` (forward on enter and exit, matching web).
+ * 3. Each child reads its target as `staggerVisibility` from context — the same signal that
+ *    already drives show/hide correctly. Animation delay stays 0; the cascade is *when* the
+ *    target flips, not a reanimated `withDelay`.
  *
  * Unlike other motion presets, Stagger is not an enhancer — it renders a `Box` and accepts
- * `BoxProps`. A plain `Box` is used (not `BaseMotionBox`) because the web container's own
- * orchestration variants produce no visible animation on native.
+ * `BoxProps`.
  */
 const Stagger = ({
   children,
@@ -33,57 +51,97 @@ const Stagger = ({
   type = 'inout',
   shouldUnmountWhenHidden = false,
   delay,
-  // `motionTriggers` has no container-level effect on native (children animate in lockstep with
-  // the container's visibility), so it is intentionally not forwarded.
   motionTriggers: _motionTriggers,
   ...boxProps
 }: StaggerProps): React.ReactElement | null => {
   const { theme } = useTheme();
 
-  const [isMounted, setIsMounted] = React.useState(shouldUnmountWhenHidden ? isVisible : true);
+  const childArray = flattenStaggerChildren(children);
+  const count = childArray.length;
 
-  // Synchronous read of the latest visibility for the deferred unmount callback, guarding against
-  // rapid toggles (visible → hidden → visible before the exit animation completes).
+  // Milliseconds — theme motion tokens are already ms on native.
+  // Match web `staggerChildren: duration['2xquick']` (80ms).
+  const intervalMs = theme.motion.duration['2xquick'];
+  const enterDelayToken = typeof delay === 'object' ? delay.enter : delay;
+  const exitDelayToken = typeof delay === 'object' ? delay.exit : delay;
+  const enterBaseMs = enterDelayToken ? theme.motion.delay[enterDelayToken] : 0;
+  const exitBaseMs = exitDelayToken ? theme.motion.delay[exitDelayToken] : 0;
+  const exitAnimationMs = theme.motion.duration.xquick;
+
+  const [isMounted, setIsMounted] = React.useState(shouldUnmountWhenHidden ? isVisible : true);
+  // Start in `exit` so the first enter also cascades (same as web mount stagger).
+  const [childTargets, setChildTargets] = React.useState<VisibilityTarget[]>(() =>
+    Array.from({ length: count }, () => 'exit'),
+  );
+
   const isVisibleRef = React.useRef(isVisible);
   isVisibleRef.current = isVisible;
 
   React.useEffect(() => {
+    setChildTargets((prev) => {
+      if (prev.length === count) return prev;
+      return Array.from({ length: count }, (_, i) => prev[i] ?? 'exit');
+    });
+  }, [count]);
+
+  React.useEffect(() => {
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+
     if (isVisible) {
       setIsMounted(true);
+      for (let index = 0; index < count; index += 1) {
+        const waitMs = enterBaseMs + index * intervalMs;
+        timeouts.push(
+          setTimeout(() => {
+            setChildTargets((prev) => {
+              if (prev[index] === 'animate') return prev;
+              const next = [...prev];
+              next[index] = 'animate';
+              return next;
+            });
+          }, waitMs),
+        );
+      }
+    } else {
+      // Forward exit (index 0 first) — matches web framer `staggerChildren` (no reverse).
+      for (let index = 0; index < count; index += 1) {
+        const waitMs = exitBaseMs + index * intervalMs;
+        timeouts.push(
+          setTimeout(() => {
+            setChildTargets((prev) => {
+              if (prev[index] === 'exit') return prev;
+              const next = [...prev];
+              next[index] = 'exit';
+              return next;
+            });
+          }, waitMs),
+        );
+      }
+
+      if (shouldUnmountWhenHidden) {
+        const totalExitMs = exitBaseMs + Math.max(count - 1, 0) * intervalMs + exitAnimationMs;
+        timeouts.push(
+          setTimeout(() => {
+            if (!isVisibleRef.current) {
+              setIsMounted(false);
+            }
+          }, totalExitMs),
+        );
+      }
     }
-    // On hide with `shouldUnmountWhenHidden` we stay mounted until the last child's exit completes
-    // (see `handleStaggerComplete`), so there is nothing to do on the falsy branch.
-  }, [isVisible]);
 
-  const childArray = React.Children.toArray(children).filter(React.isValidElement);
-  const count = childArray.length;
-
-  // `interval` mirrors web `staggerChildren`; `enterBase` / `exitBase` mirror web `delayChildren`.
-  const interval = msToSeconds(theme.motion.duration['2xquick']);
-  const enterDelayToken = typeof delay === 'object' ? delay.enter : delay;
-  const exitDelayToken = typeof delay === 'object' ? delay.exit : delay;
-  const enterBase = enterDelayToken ? msToSeconds(theme.motion.delay[enterDelayToken]) : 0;
-  const exitBase = exitDelayToken ? msToSeconds(theme.motion.delay[exitDelayToken]) : 0;
-
-  const staggerVisibility: keyof MotionVariantsType = isVisible ? 'animate' : 'exit';
-
-  // With reverse exit, index 0 carries the largest exit delay `(count - 1) * interval`, so it is
-  // the last child to finish and drives the container's deferred unmount.
-  const lastStaggerChildIndex = 0;
-
-  const handleStaggerComplete = React.useCallback(
-    (targetName: keyof MotionVariantsType) => {
-      if (targetName !== 'exit' || !shouldUnmountWhenHidden) return;
-      // Defer to the next frame so the unmount is decoupled from the reanimated timing callback
-      // (which fires on the UI thread), and re-check visibility in case it flipped back.
-      requestAnimationFrame(() => {
-        if (!isVisibleRef.current) {
-          setIsMounted(false);
-        }
-      });
-    },
-    [shouldUnmountWhenHidden],
-  );
+    return () => {
+      timeouts.forEach(clearTimeout);
+    };
+  }, [
+    isVisible,
+    count,
+    enterBaseMs,
+    exitBaseMs,
+    intervalMs,
+    exitAnimationMs,
+    shouldUnmountWhenHidden,
+  ]);
 
   if (!isMounted) {
     return null;
@@ -93,17 +151,13 @@ const Stagger = ({
     <Box display="flex" flexWrap="wrap" {...boxProps}>
       {childArray.map((child, index) => (
         <StaggerContext.Provider
-          key={(child as React.ReactElement).key ?? index}
+          key={child.key ?? index}
           value={{
             isInsideStaggerContainer: true,
             staggerType: type,
-            staggerVisibility,
-            staggerDelay: {
-              enter: enterBase + index * interval,
-              exit: exitBase + (count - 1 - index) * interval,
-            },
-            isLastStaggerChild: index === lastStaggerChildIndex,
-            onStaggerComplete: handleStaggerComplete,
+            // Per-child target — flipped on a timer. No staggerDelay: animation starts immediately
+            // when this target changes, which is what produces the visible cascade.
+            staggerVisibility: childTargets[index] ?? 'exit',
           }}
         >
           {child}
