@@ -337,12 +337,10 @@ const selectNonOverlappingXTickIndices = (
   if (pointCount <= 0) return [];
   if (pointCount === 1) return [0];
 
-  const rightExtent = (i: number): number =>
-    xForIndex(i) + (i === 0 ? widths[i] : widths[i] / 2);
+  const rightExtent = (i: number): number => xForIndex(i) + (i === 0 ? widths[i] : widths[i] / 2);
   const leftExtent = (i: number): number =>
     xForIndex(i) - (i === pointCount - 1 ? widths[i] : widths[i] / 2);
-  const fitsAfter = (prev: number, next: number): boolean =>
-    leftExtent(next) >= rightExtent(prev);
+  const fitsAfter = (prev: number, next: number): boolean => leftExtent(next) >= rightExtent(prev);
 
   if (forcedStep !== undefined) {
     const step = Math.max(1, forcedStep);
@@ -817,8 +815,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
           : 0;
       return Math.max(primaryWidth, secondaryWidth);
     });
-    const forcedStep =
-      slots.xInterval !== undefined ? Math.max(1, slots.xInterval + 1) : undefined;
+    const forcedStep = slots.xInterval !== undefined ? Math.max(1, slots.xInterval + 1) : undefined;
     return selectNonOverlappingXTickIndices(count, widths, xAt, forcedStep);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- xAt is a stable closure over values already in deps
   }, [count, pointStep, plotWidth, xLabelLines, secondaryLabelMap, slots.xInterval]);
@@ -1376,8 +1373,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                       const primaryY = plotHeight + TICK_FONT_SIZE + 4;
                       // First/last anchor to their inner edge so wide labels don't
                       // spill off the canvas; inner ticks center.
-                      const tickTextAnchor =
-                        i === 0 ? 'start' : i === count - 1 ? 'end' : 'middle';
+                      const tickTextAnchor = i === 0 ? 'start' : i === count - 1 ? 'end' : 'middle';
                       // Secondary sits below the tallest possible primary block so it
                       // stays on one row across all ticks.
                       const secondaryY =
