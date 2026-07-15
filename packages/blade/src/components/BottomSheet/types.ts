@@ -27,6 +27,16 @@ type BottomSheetProps = {
    */
   isDismissible?: boolean;
   /**
+   * Whether dragging on the sheet's content pans/dismisses the sheet (native only).
+   *
+   * Disable this when the sheet contains its own interactive vertical scrollables
+   * (e.g. a picker wheel) so content drags scroll that content instead of fighting
+   * the sheet's pan-to-close gesture. The grab handle and backdrop still dismiss.
+   *
+   * @default true
+   */
+  isContentPanningGestureEnabled?: boolean;
+  /**
    * Toggles bottom sheet state
    *
    * @default false
@@ -43,6 +53,15 @@ type BottomSheetProps = {
    * @default 100
    */
   zIndex?: number;
+  /**
+   * When `true`, the sheet sizes itself to its content instead of resting on the
+   * provided `snapPoints`. The single snap point is derived from the measured
+   * header + body + footer height (clamped to the screen), so there is no empty
+   * gap below the content and the sheet grows/shrinks as the content changes.
+   *
+   * @default false
+   */
+  snapToContentHeight?: boolean;
 } & DataAnalyticsAttribute;
 
 type BottomSheetHeaderProps = Pick<

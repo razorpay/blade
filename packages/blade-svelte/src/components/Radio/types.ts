@@ -122,6 +122,14 @@ type RadioGroupCommonProps = {
    * @default 'vertical'
    */
   orientation?: 'vertical' | 'horizontal';
+  /**
+   * Wrapping behaviour of the radios in the items container. Useful with
+   * `orientation="horizontal"` when the radios (or radio-wrapped cards) should
+   * wrap onto multiple lines instead of overflowing.
+   *
+   * @default 'nowrap'
+   */
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
   /** Test ID for the element. */
   testID?: string;
 } & StyledPropsBlade &

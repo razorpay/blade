@@ -9,6 +9,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   }
 >
   <View
+    accessibilityState={
+      {
+        "disabled": undefined,
+      }
+    }
+    accessible={true}
     borderRadius="medium"
     data-blade-component="card"
     display="block"
@@ -67,6 +73,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         ]
       }
       textAlign="left"
+      variant="primary"
     >
       <View
         data-blade-component="card-body"
@@ -1122,6 +1129,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
   }
 >
   <View
+    accessibilityState={
+      {
+        "disabled": undefined,
+      }
+    }
+    accessible={true}
     borderRadius="medium"
     data-blade-component="card"
     display="block"
@@ -1180,6 +1193,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         ]
       }
       textAlign="left"
+      variant="primary"
     >
       <View
         data-blade-component="card-header"
@@ -1751,6 +1765,12 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   }
 >
   <View
+    accessibilityState={
+      {
+        "disabled": undefined,
+      }
+    }
+    accessible={true}
     borderRadius="medium"
     data-blade-component="card"
     display="block"
@@ -1809,6 +1829,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
         ]
       }
       textAlign="left"
+      variant="primary"
     >
       <View
         data-blade-component="card-body"
@@ -1834,6 +1855,12 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   }
 >
   <View
+    accessibilityState={
+      {
+        "disabled": undefined,
+      }
+    }
+    accessible={true}
     borderRadius="medium"
     data-blade-component="card"
     display="block"
@@ -1892,6 +1919,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
         ]
       }
       textAlign="left"
+      variant="primary"
     >
       <View
         data-blade-component="card-body"
@@ -1951,6 +1979,12 @@ exports[`<Card /> should render a plain Card 1`] = `
   }
 >
   <View
+    accessibilityState={
+      {
+        "disabled": undefined,
+      }
+    }
+    accessible={true}
     borderRadius="medium"
     data-blade-component="card"
     display="block"
@@ -2009,6 +2043,7 @@ exports[`<Card /> should render a plain Card 1`] = `
         ]
       }
       textAlign="left"
+      variant="primary"
     >
       <View
         data-blade-component="card-body"

@@ -316,7 +316,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...props}
       {...accessibilityProps}
     >
-      <BaseBox display="flex" alignItems="center" gap="spacing.3">
+      <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3" width="100%">
         <Text
           color={
             props.value && !isDisabled
@@ -324,7 +324,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
               : 'surface.text.gray.disabled'
           }
           truncateAfterLines={1}
-          textAlign={props.textAlign}
+          textAlign={props.textAlign ?? 'left'}
           size={$size}
         >
           {buttonValue}
@@ -386,6 +386,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
           : undefined
       }
       autoCapitalize={autoCapitalize}
+      includeFontPadding={false}
       $size={$size}
       {...commonProps}
       {...props}

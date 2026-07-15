@@ -78,6 +78,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   defaultPicker = 'day',
   picker,
   onPickerChange,
+  visibleMonth,
+  defaultVisibleMonth,
+  onVisibleMonthChange,
   zIndex = componentZIndices.popover,
   format = 'DD/MM/YYYY',
   inputPlaceHolder,
@@ -366,6 +369,9 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             {...props}
             selectionType={_selectionType}
             defaultValue={defaultValue}
+            visibleMonth={visibleMonth}
+            defaultVisibleMonth={defaultVisibleMonth}
+            onVisibleMonthChange={onVisibleMonthChange}
             onMouseLeave={onRootMouseLeave}
             __onDayMouseEnter={(_event, date) => {
               onHoveredDateChange(date);
@@ -476,6 +482,10 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 format={finalFormat}
                 placeholder={finalInputPlaceHolder}
                 onClearButtonChange={handleClear}
+                // Effective Selection type should only be used for selectionType 'range'
+                effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}
+                // Pass through preset state for showing label instead of date when displayFormat is 'compact'
+                selectedPresetLabel={selectedPresetLabel}
                 {...makeAnalyticsAttribute(props)}
               />
             ) : (

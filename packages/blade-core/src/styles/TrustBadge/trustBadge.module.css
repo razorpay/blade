@@ -1,0 +1,33 @@
+/* ============================================
+   TrustBadge Component Styles
+   Utility trust marker — brand shield with label in a sea-tinted pill,
+   or icon-only for compact surfaces.
+   Mirrors Figma Blade-DSL: [Utility] Trust Marker (node 123352:128035).
+   ============================================ */
+
+.trustBadge {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Default variant — icon + label in a sea-subtle pill. */
+.trustBadgeWithPill {
+  gap: var(--spacing-2);
+  height: 24px;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--border-radius-max);
+  background-color: var(--surface-background-sea-subtle);
+}
+
+/* Icon-only variant — shield with compact padding, no pill. */
+.trustBadgeIconOnly {
+  padding: var(--spacing-2);
+}
+
+.trustBadgeIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}

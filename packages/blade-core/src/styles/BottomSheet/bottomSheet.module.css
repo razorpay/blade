@@ -27,7 +27,10 @@
   opacity: 0;
   pointer-events: none;
   touch-action: none;
-  overflow: hidden;
+  /* clip (not hidden): surface must not become a scrollport. Tall body
+   * content (e.g. ActionList in-sheet) can inflate scrollHeight; focus
+   * scrollIntoView on open then scrolls the surface and clips the header. */
+  overflow: clip;
   justify-content: center;
   align-items: center;
 
@@ -116,7 +119,8 @@
 
 .headerEmpty {
   position: relative;
-  height: 32px;
+  /* Matches React `makeSize(size[8])` — grab handle (20px) + 8px = 28px header band. */
+  height: var(--spacing-3);
   touch-action: none;
 }
 
