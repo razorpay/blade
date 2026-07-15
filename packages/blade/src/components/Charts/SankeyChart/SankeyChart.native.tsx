@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useState } from 'react';
 import { Svg, G, Rect, Path, Text as SvgText, TSpan } from 'react-native-svg';
 import { View, Pressable } from 'react-native';
@@ -34,6 +33,7 @@ import {
   VERTICAL_LABEL_RESERVE,
 } from './tokens';
 import { INTER_ADVANCE, INTER_DEFAULT_ADVANCE } from './interAdvance';
+import { humanizeIndian } from './humanizeIndian';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -83,24 +83,6 @@ const truncateToWidth = (
   return trimmed.length > 0 ? `${trimmed}…` : '…';
 };
 
-// ─── Indian number humanizer (private default for formatValue) ────────────────
-// Truncates (never rounds up) to avoid overstating values. Ported verbatim from web.
-const humanizeIndian = (value: number): string => {
-  if (value >= 1_00_00_000) {
-    const v = Math.floor((value / 1_00_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}Cr`;
-  }
-  if (value >= 1_00_000) {
-    const v = Math.floor((value / 1_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}L`;
-  }
-  if (value >= 1_000) {
-    const v = Math.floor((value / 1_000) * 10) / 10;
-    return `${parseFloat(v.toFixed(1))}k`;
-  }
-  return String(value);
-};
-
 // ─── Sankey layout (reimplements recharts <Sankey>) ────────────────────────────
 
 // Native-only flow direction. `horizontal` mirrors the web layout (stages progress
@@ -108,7 +90,7 @@ const humanizeIndian = (value: number): string => {
 // top→bottom, nodes are horizontal bars) — reads better on tall phone screens.
 type SankeyOrientation = 'horizontal' | 'vertical';
 
-// Precomputed, collision-resolved label box for a vertical-orientation node.
+// Precomputed, collision-resolved label box for a vertical-layout node.
 // Chips in the same stage are swept left→right so they never overlap each other
 // and are clamped inside the plot so they never clip off the screen edges; the
 // name/value strings are pre-truncated to the resolved chip width.
@@ -128,7 +110,7 @@ const computeSankeyLayout = ({
   plotHeight,
   nodeWidth,
   nodePadding,
-  orientation,
+  layout,
 }: {
   nodeCount: number;
   links: RechartsLink[];
@@ -136,7 +118,7 @@ const computeSankeyLayout = ({
   plotHeight: number;
   nodeWidth: number;
   nodePadding: number;
-  orientation: SankeyOrientation;
+  layout: SankeyOrientation;
 }): SankeyLayout => {
   const empty: SankeyLayout = { nodeLayouts: [], linkLayouts: [], countPerDepth: [] };
   if (nodeCount === 0 || plotWidth <= 0 || plotHeight <= 0) return empty;
@@ -191,10 +173,10 @@ const computeSankeyLayout = ({
   const countPerDepth = columns.map((c) => c.length);
 
   // The layout is computed in generic "along" (stage-progression axis) / "across"
-  // (node-stacking axis) coordinates, then mapped to screen x/y based on orientation.
+  // (node-stacking axis) coordinates, then mapped to screen x/y based on layout.
   //   horizontal → along = X, across = Y  (nodes are vertical bars)
   //   vertical   → along = Y, across = X  (nodes are horizontal bars)
-  const isVertical = orientation === 'vertical';
+  const isVertical = layout === 'vertical';
   const alongExtent = isVertical ? plotHeight : plotWidth;
   const acrossExtent = isVertical ? plotWidth : plotHeight;
 
@@ -303,10 +285,10 @@ const isPointOnRibbon = (
   py: number,
   link: LinkLayout,
   slop: number,
-  orientation: SankeyOrientation,
+  layout: SankeyOrientation,
 ): boolean => {
   const { sourceX, sourceY, targetX, targetY, thickness } = link;
-  const isVertical = orientation === 'vertical';
+  const isVertical = layout === 'vertical';
   // primaryS/primaryT — endpoints along the stage-progression axis (curve travels
   // this way); crossS/crossT — band centers on the perpendicular axis.
   const primaryS = isVertical ? sourceY : sourceX;
@@ -379,7 +361,7 @@ const SankeyNodeShape = ({
 
   React.useEffect(() => {
     opacity.value = withTiming(targetOpacity, { duration, easing });
-  }, [targetOpacity, duration]);
+  }, [targetOpacity, duration, easing]);
 
   const animatedProps = useAnimatedProps(() => ({ opacity: opacity.value }));
 
@@ -411,7 +393,7 @@ const SankeyLinkShape = ({
 
   React.useEffect(() => {
     fillOpacity.value = withTiming(targetOpacity, { duration, easing });
-  }, [targetOpacity, duration]);
+  }, [targetOpacity, duration, easing]);
 
   const animatedProps = useAnimatedProps(() => ({ fillOpacity: fillOpacity.value }));
 
@@ -608,7 +590,7 @@ const _ChartSankeyWrapper = ({
   colorTheme = 'categorical',
   nodeColorOverride,
   linkColorOverride,
-  orientation = 'horizontal',
+  layout = 'horizontal',
   testID,
   ...restProps
 }: ChartSankeyWrapperProps & TestID & DataAnalyticsAttribute): React.ReactElement => {
@@ -729,7 +711,7 @@ const _ChartSankeyWrapper = ({
   // Horizontal reserves the wide right margin for side labels; vertical instead
   // reserves a bottom margin for the below-node label chips (labels stack under
   // each horizontal bar) and keeps symmetric side padding.
-  const isVertical = orientation === 'vertical';
+  const isVertical = layout === 'vertical';
   const verticalLabelMargin = showLabels
     ? VERTICAL_LABEL_RESERVE + CHIP_GAP + theme.spacing[3]
     : theme.spacing[3];
@@ -749,7 +731,7 @@ const _ChartSankeyWrapper = ({
   const plotWidth = Math.max(0, size.width - PADDING.left - PADDING.right);
   const plotHeight = Math.max(0, size.height - PADDING.top - PADDING.bottom);
 
-  const layout = useMemo(
+  const sankeyLayout = useMemo(
     () =>
       computeSankeyLayout({
         nodeCount: data.nodes.length,
@@ -758,10 +740,19 @@ const _ChartSankeyWrapper = ({
         plotHeight,
         nodeWidth: NODE_WIDTH,
         nodePadding,
-        orientation,
+        layout,
       }),
-    [data.nodes.length, rechartsLinks, plotWidth, plotHeight, nodePadding, orientation],
+    [data.nodes.length, rechartsLinks, plotWidth, plotHeight, nodePadding, layout],
   );
+
+  // ── Lookup map: _originalIndex → RechartsLink (active.index stores the
+  //    original index from data.links, not the position in the filtered
+  //    rechartsLinks array, so we must look up by _originalIndex) ───────────────
+  const linkByOriginalIndex = useMemo(() => {
+    const map = new Map<number, RechartsLink>();
+    rechartsLinks.forEach((l) => map.set(l._originalIndex, l));
+    return map;
+  }, [rechartsLinks]);
 
   // ── Opacity helpers (ported verbatim from web, `active` instead of `hovered`) ─
   const getNodeOpacity = React.useCallback(
@@ -769,13 +760,13 @@ const _ChartSankeyWrapper = ({
       if (active === null) return NODE_DEFAULT_OPACITY;
       if (active.type === 'node' && active.index === nodeIdx) return NODE_DEFAULT_OPACITY;
       if (active.type === 'link') {
-        const link = rechartsLinks[active.index];
+        const link = linkByOriginalIndex.get(active.index);
         if (link && (link.source === nodeIdx || link.target === nodeIdx))
           return NODE_DEFAULT_OPACITY;
       }
       return NODE_DIMMED_OPACITY;
     },
-    [active, rechartsLinks],
+    [active, linkByOriginalIndex],
   );
 
   const getLinkOpacity = React.useCallback(
@@ -783,13 +774,13 @@ const _ChartSankeyWrapper = ({
       if (active === null) return LINK_DEFAULT_OPACITY;
       if (active.type === 'link' && active.index === linkIdx) return LINK_HOVER_OPACITY;
       if (active.type === 'node') {
-        const link = rechartsLinks[linkIdx];
+        const link = linkByOriginalIndex.get(linkIdx);
         if (link && (link.source === active.index || link.target === active.index))
           return LINK_HOVER_OPACITY;
       }
       return LINK_DIMMED_OPACITY;
     },
-    [active, rechartsLinks],
+    [active, linkByOriginalIndex],
   );
 
   // ── Layout callback ──────────────────────────────────────────────────────────
@@ -805,7 +796,7 @@ const _ChartSankeyWrapper = ({
     if (!showTooltip || active === null || size.width === 0) return null;
     const unitSuffix = labelUnit ? ` ${labelUnit}` : '';
     if (active.type === 'node') {
-      const node = layout.nodeLayouts[active.index];
+      const node = sankeyLayout.nodeLayouts[active.index];
       const nodeData = data.nodes[active.index];
       if (!node || !nodeData) return null;
       return {
@@ -814,12 +805,12 @@ const _ChartSankeyWrapper = ({
         centerY: PADDING.top + node.y + node.height / 2,
       };
     }
-    const link = rechartsLinks[active.index];
+    const link = linkByOriginalIndex.get(active.index);
     if (!link) return null;
     const sourceName = data.nodes[link.source]?.name ?? '';
     const targetName = data.nodes[link.target]?.name ?? '';
-    const sourceNode = layout.nodeLayouts[link.source];
-    const targetNode = layout.nodeLayouts[link.target];
+    const sourceNode = sankeyLayout.nodeLayouts[link.source];
+    const targetNode = sankeyLayout.nodeLayouts[link.target];
     // Anchor the tooltip at the midpoint of the ribbon: horizontal spans the gap
     // between source-right and target-left (X) at the average node center (Y);
     // vertical transposes it (X = average node center, Y = gap between the stages).
@@ -847,9 +838,9 @@ const _ChartSankeyWrapper = ({
     active,
     size,
     labelUnit,
-    layout,
+    sankeyLayout,
     data.nodes,
-    rechartsLinks,
+    linkByOriginalIndex,
     PADDING.left,
     PADDING.top,
     isVertical,
@@ -877,7 +868,7 @@ const _ChartSankeyWrapper = ({
     const WIDTH_SAFETY = 1.06;
 
     const columns = new Map<number, NodeLayout[]>();
-    layout.nodeLayouts.forEach((node) => {
+    sankeyLayout.nodeLayouts.forEach((node) => {
       const col = columns.get(node.depth) ?? [];
       col.push(node);
       columns.set(node.depth, col);
@@ -896,7 +887,7 @@ const _ChartSankeyWrapper = ({
         const nodeData = data.nodes[node.index];
         const name = nodeData?.name ?? '';
         const humanized = formatter(node.value);
-        const levelCount = layout.countPerDepth[node.depth] ?? 1;
+        const levelCount = sankeyLayout.countPerDepth[node.depth] ?? 1;
         const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
         const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
         const valueWithPct =
@@ -963,7 +954,7 @@ const _ChartSankeyWrapper = ({
     isVertical,
     showLabels,
     plotWidth,
-    layout,
+    sankeyLayout,
     data.nodes,
     formatter,
     totalValue,
@@ -994,7 +985,7 @@ const _ChartSankeyWrapper = ({
       // (thin height).
       const slopX = isVertical ? 0 : HIT_SLOP;
       const slopY = isVertical ? HIT_SLOP : 0;
-      const hitNode = layout.nodeLayouts.find(
+      const hitNode = sankeyLayout.nodeLayouts.find(
         (node) =>
           px >= node.x - slopX &&
           px <= node.x + node.width + slopX &&
@@ -1012,8 +1003,8 @@ const _ChartSankeyWrapper = ({
         return;
       }
 
-      const hitLink = layout.linkLayouts.find((link) =>
-        isPointOnRibbon(px, py, link, HIT_SLOP, orientation),
+      const hitLink = sankeyLayout.linkLayouts.find((link) =>
+        isPointOnRibbon(px, py, link, HIT_SLOP, layout),
       );
       if (hitLink) {
         setActive((prev) =>
@@ -1029,7 +1020,7 @@ const _ChartSankeyWrapper = ({
       setActive(null);
     },
     [
-      layout,
+      sankeyLayout,
       data.nodes,
       data.links,
       PADDING.left,
@@ -1037,7 +1028,7 @@ const _ChartSankeyWrapper = ({
       onNodeClick,
       onLinkClick,
       isVertical,
-      orientation,
+      layout,
     ],
   );
 
@@ -1067,7 +1058,7 @@ const _ChartSankeyWrapper = ({
             >
               <G x={PADDING.left} y={PADDING.top}>
                 {/* Links first so nodes + labels render above the ribbons */}
-                {layout.linkLayouts.map((link) => {
+                {sankeyLayout.linkLayouts.map((link) => {
                   const srcNode = data.nodes[link.sourceIndex] as SankeyDataNode | undefined;
                   const colorToken =
                     linkColorOverride ??
@@ -1089,7 +1080,7 @@ const _ChartSankeyWrapper = ({
                   );
                 })}
 
-                {layout.nodeLayouts.map((node) => {
+                {sankeyLayout.nodeLayouts.map((node) => {
                   const nodeData = data.nodes[node.index] as SankeyDataNode | undefined;
                   if (!nodeData) return null;
                   const colorToken =
@@ -1134,7 +1125,7 @@ const _ChartSankeyWrapper = ({
                       };
                     } else {
                       const humanized = formatter(node.value);
-                      const levelCount = layout.countPerDepth[node.depth] ?? 1;
+                      const levelCount = sankeyLayout.countPerDepth[node.depth] ?? 1;
                       const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
                       const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
                       const labelValue =
