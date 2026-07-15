@@ -1,5 +1,3 @@
-'use strict';
-
 const QA_VERSION = '20260715-21';
 const STORIES = [
   { id: 'components-slider--default', kicker: 'Foundation', title: 'Default', height: 220 },
