@@ -85,8 +85,9 @@ type FileUploadCommonProps = {
   /**
    * Callback fired when the upload area is pressed (React Native only).
    *
-   * Use this to open your document picker since there is no built-in file input on native.
-   * This prop has no effect on web.
+   * On native, this **replaces** `onChange` — `onChange` does not fire on tap. Use this to open
+   * your document picker since there is no built-in file input on native, then update `fileList`
+   * after the picker returns. This prop has no effect on web.
    */
   onUploadPress?: Platform.Select<{
     native: () => void;
@@ -97,15 +98,19 @@ type FileUploadCommonProps = {
    */
   onPreview?: ({ file }: { file: BladeFile }) => void;
   /**
-   * Callback function triggered when a file is removed
+   * Callback function triggered when a file is removed.
+   *
+   * **React Native:** May also be called as a fallback for `onReupload` if `onReupload` is not
+   * provided — in that case the file is removed from selection and `onRemove` is invoked.
    */
   onRemove?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file upload is retried.
    *
-   * **React Native:** Clears the file from selection, then calls `onReupload` (or falls back to
-   * `onRemove`). Open your picker inside `onReupload` if you want to re-select a file — native
-   * does not re-fire `onUploadPress` or `onChange` on retry.
+   * **React Native:** The file is removed from the internal selection **before** this callback
+   * fires. If you want to re-select a file, open your picker inside `onReupload` and re-add the
+   * file to `fileList`. Native does not re-fire `onUploadPress` or `onChange` on retry.
+   * If `onReupload` is not provided, `onRemove` is called as a fallback.
    */
   onReupload?: ({ file }: { file: BladeFile }) => void;
   /**

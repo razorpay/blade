@@ -1,10 +1,5 @@
 import React from 'react';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-  interpolateColor,
-} from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import type { StyledFileUploadWrapperProps } from './types';
 import {
   fileUploadColorTokens,
@@ -48,7 +43,7 @@ const StyledFileUploadWrapper = ({
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      backgroundColor: interpolateColor(progress.value, [0, 1], ['transparent', activeBgColor]),
+      backgroundColor: progress.value > 0.5 ? activeBgColor : 'transparent',
     };
   });
 
