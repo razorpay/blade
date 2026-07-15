@@ -682,9 +682,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -898,8 +896,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           strokeWidth={2}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
@@ -922,8 +920,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
@@ -1145,9 +1143,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1361,8 +1357,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           strokeWidth={2}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
@@ -1385,8 +1381,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
@@ -5930,9 +5926,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
-                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                onMouseOut={[Function]}
                 onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -6144,8 +6138,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                         }
                         strokeWidth={2}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={null}
@@ -6168,8 +6162,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                         }
                         strokeWidth={4}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -6306,9 +6300,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
-                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                onMouseOut={[Function]}
                 onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -6970,9 +6962,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -7186,8 +7176,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           strokeWidth={2}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
@@ -7210,8 +7200,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
@@ -7578,9 +7568,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -7794,8 +7782,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           strokeWidth={2}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
@@ -7818,8 +7806,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
@@ -12237,9 +12225,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
-                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                onMouseOut={[Function]}
                 onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -12451,8 +12437,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                         }
                         strokeWidth={2}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={null}
@@ -12475,8 +12461,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                         }
                         strokeWidth={4}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -12613,9 +12599,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
-                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                onMouseOut={[Function]}
                 onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
