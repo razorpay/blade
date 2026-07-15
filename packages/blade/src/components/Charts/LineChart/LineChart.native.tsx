@@ -1008,7 +1008,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       const localX = e.nativeEvent.locationX - padding.left;
       const localY = e.nativeEvent.locationY - padding.top;
       const index =
-        pointCount > 1 ? Math.min(pointCount - 1, Math.max(0, Math.round(localX / pointSpacing))) : 0;
+        pointCount > 1
+          ? Math.min(pointCount - 1, Math.max(0, Math.round(localX / pointSpacing)))
+          : 0;
       setActiveIndex(index);
       setHoveredKey(findNearestLine(index, localY));
       return index;
@@ -1358,7 +1360,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     const chipHeight = 30;
                     const truncatedLabel =
                       refLine.label && refLine.label.length * 7 + 16 > REF_LABEL_MAX_WIDTH
-                        ? `${refLine.label.slice(0, Math.floor((REF_LABEL_MAX_WIDTH - 16) / 7) - 1)}…`
+                        ? `${refLine.label.slice(
+                            0,
+                            Math.floor((REF_LABEL_MAX_WIDTH - 16) / 7) - 1,
+                          )}…`
                         : refLine.label;
 
                     if (isVertical) {
@@ -1388,7 +1393,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                           {refLine.label ? (
                             <G>
                               <Rect
-                                x={x - chipWidth / 2}
+                                x={Math.max(0, Math.min(x - chipWidth / 2, plotWidth - chipWidth))}
                                 y={0}
                                 width={chipWidth}
                                 height={chipHeight}
@@ -1398,7 +1403,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                                 strokeWidth={1}
                               />
                               <SvgText
-                                x={x}
+                                x={
+                                  Math.max(0, Math.min(x - chipWidth / 2, plotWidth - chipWidth)) +
+                                  chipWidth / 2
+                                }
                                 y={chipHeight / 2 + TICK_FONT_SIZE / 3}
                                 fontSize={TICK_FONT_SIZE}
                                 fontWeight={theme.typography.fonts.weight.medium}
