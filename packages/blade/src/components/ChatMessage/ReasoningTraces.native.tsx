@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Pressable } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -232,6 +232,7 @@ const ReasoningTraces = ({
   const isUpfrontMode = activeStepIndex !== undefined;
   const [isExpanded, setIsExpanded] = useState(!isUpfrontMode);
   const isLoading = status === 'loading';
+  const userToggledRef = useRef(false);
 
   useEffect(() => {
     if (status === 'loading') {
@@ -241,6 +242,7 @@ const ReasoningTraces = ({
 
   useEffect(() => {
     if (status === 'complete') {
+      if (userToggledRef.current) return undefined;
       const timer = setTimeout(() => setIsExpanded(false), 600);
       return () => clearTimeout(timer);
     }
@@ -248,6 +250,7 @@ const ReasoningTraces = ({
   }, [status]);
 
   const handleExpandChange = ({ isExpanded: next }: { isExpanded: boolean }): void => {
+    userToggledRef.current = true;
     setIsExpanded(next);
   };
 
@@ -267,7 +270,12 @@ const ReasoningTraces = ({
   return (
     <BaseBox marginTop="spacing.2" marginBottom="spacing.3">
       {status === 'complete' && (
-        <Pressable onPress={() => setIsExpanded((prev) => !prev)}>
+        <Pressable
+          onPress={() => {
+            userToggledRef.current = true;
+            setIsExpanded((prev) => !prev);
+          }}
+        >
           <BaseBox
             display="flex"
             flexDirection="row"
@@ -314,7 +322,7 @@ const ReasoningTraces = ({
                 {traces.slice(0, -1).map((trace, index) => {
                   const isJustCompleted = index === traces.length - 2;
                   return (
-                    <AnimatedRow key={trace.label} skipAnimation={isJustCompleted}>
+                    <AnimatedRow key={index} skipAnimation={isJustCompleted}>
                       <TraceRow
                         text={getTraceLabel(trace, 'completed')}
                         isLast={false}
