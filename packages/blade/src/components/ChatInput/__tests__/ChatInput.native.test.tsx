@@ -120,9 +120,9 @@ describe('<ChatInput /> (native)', () => {
 
   it('should assign missing file ids and remove only the targeted file', () => {
     const onFileRemove = jest.fn();
-    const files = [
-      { name: 'a.pdf', status: 'success' as const, size: 1024 },
-      { name: 'b.pdf', status: 'success' as const, size: 2048 },
+    const files: Array<{ id?: string; name: string; status: 'success'; size: number }> = [
+      { name: 'a.pdf', status: 'success', size: 1024 },
+      { name: 'b.pdf', status: 'success', size: 2048 },
     ];
 
     const { getByRole, queryByText } = renderWithTheme(
