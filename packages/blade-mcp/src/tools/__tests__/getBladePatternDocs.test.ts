@@ -4,6 +4,7 @@ import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as skillUtils from '../../utils/skillUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
 import * as generalUtils from '../../utils/generalUtils.js';
+import * as detectFramework from '../../utils/detectFramework.js';
 import { SKILL_VERSION } from '../../utils/tokens.js';
 
 // Mock the analytics and utility functions
@@ -18,6 +19,9 @@ vi.mock('../../utils/skillUtils.js');
 vi.mock('../../utils/getBladeDocsResponseText.js');
 vi.mock('../../utils/generalUtils.js', () => ({
   getBladeDocsList: vi.fn(() => ['ListView', 'DetailedView', 'FormGroup']),
+}));
+vi.mock('../../utils/detectFramework.js', () => ({
+  detectFrameworkFromProject: vi.fn(() => 'react'),
 }));
 vi.mock('fs', () => ({
   readFileSync: vi.fn(() => 'Mock pattern guide content'),
@@ -43,6 +47,7 @@ describe('getBladePatternDocs Tool', () => {
       'FormGroup',
     ]);
     vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
+    vi.spyOn(detectFramework, 'detectFrameworkFromProject').mockReturnValue('react');
   });
 
   it('should return pattern docs for valid patterns', () => {
@@ -100,6 +105,36 @@ describe('getBladePatternDocs Tool', () => {
       documentationType: 'patterns',
       framework: 'react',
     });
+  });
+
+  it('should auto-detect svelte framework and return unavailable message', () => {
+    const mockCurrentProjectRootDirectory = '/Users/test/svelte-project';
+    const mockPatternsList = 'ListView';
+
+    vi.spyOn(detectFramework, 'detectFrameworkFromProject').mockReturnValue('svelte');
+
+    const result = getBladePatternDocsHttpCallback(
+      {
+        patternsList: mockPatternsList,
+        framework: undefined,
+        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+        clientName: 'cursor',
+        skillVersion: SKILL_VERSION,
+      },
+      createMockContext(),
+    );
+
+    expect(detectFramework.detectFrameworkFromProject).toHaveBeenCalledWith(
+      mockCurrentProjectRootDirectory,
+    );
+    expect(getBladeDocsResponseText.getBladeDocsResponseText).not.toHaveBeenCalled();
+    expect(result).toHaveProperty('content');
+    if ('content' in result && !('isError' in result)) {
+      expect(result.content[0]).toHaveProperty('type', 'text');
+      if ('text' in result.content[0]) {
+        expect(result.content[0].text).toContain('framework="react" only');
+      }
+    }
   });
 
   it('should return error for invalid patterns', () => {

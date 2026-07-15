@@ -11,8 +11,8 @@ import {
   commonBladeMCPToolSchema,
   httpTransportSkillVersionSchema,
 } from '../utils/getCommonSchema.js';
-import { DEFAULT_FRAMEWORK } from '../types/framework.js';
 import type { BladeFramework } from '../types/framework.js';
+import { detectFrameworkFromProject } from '../utils/detectFramework.js';
 
 const reactComponentsList = getBladeDocsList('components', 'react');
 const svelteComponentsList = getBladeDocsList('components', 'svelte');
@@ -20,13 +20,13 @@ const reactComponentsListString = reactComponentsList.join(', ');
 const svelteComponentsListString = svelteComponentsList.join(', ');
 
 const getBladeComponentDocsToolName = 'get_blade_component_docs';
-const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component. Pass framework="svelte" for Blade Svelte docs (limited catalog) or framework="react" (default) for the full React catalog.`;
+const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component. Pass framework="svelte" for Blade Svelte docs (limited catalog) or framework="react" for the full React catalog. When framework is omitted, it is auto-detected from the consumer project's package.json (@razorpay/blade-svelte → svelte, @razorpay/blade → react; defaults to react).`;
 
 const frameworkSchema = z
   .enum(['react', 'svelte'])
-  .default(DEFAULT_FRAMEWORK)
+  .optional()
   .describe(
-    'Target framework for component docs. Use "react" (default) for @razorpay/blade or "svelte" for @razorpay/blade-svelte.',
+    'Target framework for component docs. Use "react" for @razorpay/blade or "svelte" for @razorpay/blade-svelte. When omitted, auto-detected from consumer package.json dependencies.',
   );
 
 // Schema for stdio transport
@@ -49,7 +49,7 @@ const getBladeComponentDocsHttpSchema = {
 // Core business logic function
 const getBladeComponentDocsCore = ({
   componentsList,
-  framework = DEFAULT_FRAMEWORK,
+  framework,
   currentProjectRootDirectory,
   skipLocalSkillChecks = false,
   skillVersion = '0',
@@ -62,7 +62,8 @@ const getBladeComponentDocsCore = ({
   skillVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
-  const bladeComponentsList = getBladeDocsList('components', framework);
+  const resolvedFramework = framework ?? detectFrameworkFromProject(currentProjectRootDirectory);
+  const bladeComponentsList = getBladeDocsList('components', resolvedFramework);
   const bladeComponentsListString = bladeComponentsList.join(', ');
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
@@ -70,7 +71,7 @@ const getBladeComponentDocsCore = ({
   if (invalidComponents.length > 0) {
     return handleError({
       toolName: getBladeComponentDocsToolName,
-      mcpErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponentsString}. Valid component docs values for framework="${framework}": ${bladeComponentsListString}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
+      mcpErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponentsString}. Valid component docs values for framework="${resolvedFramework}": ${bladeComponentsListString}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
     });
   }
 
@@ -90,7 +91,7 @@ const getBladeComponentDocsCore = ({
     const responseText = getBladeDocsResponseText({
       docsList: componentsList,
       documentationType: 'components',
-      framework,
+      framework: resolvedFramework,
     });
 
     sendAnalytics({
@@ -98,7 +99,7 @@ const getBladeComponentDocsCore = ({
       properties: {
         toolName: getBladeComponentDocsToolName,
         componentsList,
-        framework,
+        framework: resolvedFramework,
         rootDirectoryName: currentProjectRootDirectory
           ? basename(currentProjectRootDirectory)
           : undefined,

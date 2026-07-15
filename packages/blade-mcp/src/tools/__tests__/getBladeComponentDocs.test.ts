@@ -8,6 +8,7 @@ import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as skillUtils from '../../utils/skillUtils.js';
 import * as getBladeDocsResponseText from '../../utils/getBladeDocsResponseText.js';
 import * as generalUtils from '../../utils/generalUtils.js';
+import * as detectFramework from '../../utils/detectFramework.js';
 import { SKILL_VERSION } from '../../utils/tokens.js';
 
 // Mock the analytics and utility functions
@@ -22,6 +23,9 @@ vi.mock('../../utils/skillUtils.js');
 vi.mock('../../utils/getBladeDocsResponseText.js');
 vi.mock('../../utils/generalUtils.js', () => ({
   getBladeDocsList: vi.fn(() => ['Button', 'Accordion', 'Input']),
+}));
+vi.mock('../../utils/detectFramework.js', () => ({
+  detectFrameworkFromProject: vi.fn(() => 'react'),
 }));
 
 // Create a mock context object for tool callbacks
@@ -39,6 +43,7 @@ describe('getBladeComponentDocs Tool', () => {
     // Setup default mocks
     vi.spyOn(generalUtils, 'getBladeDocsList').mockReturnValue(['Button', 'Accordion', 'Input']);
     vi.spyOn(skillUtils, 'shouldCreateOrUpdateSkill').mockReturnValue(undefined);
+    vi.spyOn(detectFramework, 'detectFrameworkFromProject').mockReturnValue('react');
   });
 
   it('should return component docs for valid components', () => {
@@ -137,6 +142,75 @@ describe('getBladeComponentDocs Tool', () => {
     });
 
     expect(result).toHaveProperty('content');
+  });
+
+  it('should auto-detect framework when omitted', () => {
+    const mockCurrentProjectRootDirectory = '/Users/test/svelte-project';
+    const mockComponentsList = 'Button';
+    const mockResponseText = 'Mock svelte component documentation';
+
+    vi.spyOn(generalUtils, 'getBladeDocsList').mockReturnValue(['Button']);
+    vi.spyOn(detectFramework, 'detectFrameworkFromProject').mockReturnValue('svelte');
+    vi.spyOn(getBladeDocsResponseText, 'getBladeDocsResponseText').mockReturnValue(
+      mockResponseText,
+    );
+
+    const result = getBladeComponentDocsHttpCallback(
+      {
+        componentsList: mockComponentsList,
+        framework: undefined,
+        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+        clientName: 'cursor',
+        skillVersion: SKILL_VERSION,
+      },
+      createMockContext(),
+    );
+
+    expect(detectFramework.detectFrameworkFromProject).toHaveBeenCalledWith(
+      mockCurrentProjectRootDirectory,
+    );
+    expect(getBladeDocsResponseText.getBladeDocsResponseText).toHaveBeenCalledWith({
+      docsList: mockComponentsList,
+      documentationType: 'components',
+      framework: 'svelte',
+    });
+    expect(analyticsUtils.sendAnalytics).toHaveBeenCalledWith({
+      eventName: expect.any(String),
+      properties: expect.objectContaining({
+        framework: 'svelte',
+      }),
+    });
+    expect(result).toHaveProperty('content');
+  });
+
+  it('should prefer explicit framework over auto-detect', () => {
+    const mockCurrentProjectRootDirectory = '/Users/test/svelte-project';
+    const mockComponentsList = 'Button';
+    const mockResponseText = 'Mock react component documentation';
+
+    vi.spyOn(generalUtils, 'getBladeDocsList').mockReturnValue(['Button']);
+    vi.spyOn(detectFramework, 'detectFrameworkFromProject').mockReturnValue('svelte');
+    vi.spyOn(getBladeDocsResponseText, 'getBladeDocsResponseText').mockReturnValue(
+      mockResponseText,
+    );
+
+    getBladeComponentDocsHttpCallback(
+      {
+        componentsList: mockComponentsList,
+        framework: 'react',
+        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+        clientName: 'cursor',
+        skillVersion: SKILL_VERSION,
+      },
+      createMockContext(),
+    );
+
+    expect(detectFramework.detectFrameworkFromProject).not.toHaveBeenCalled();
+    expect(getBladeDocsResponseText.getBladeDocsResponseText).toHaveBeenCalledWith({
+      docsList: mockComponentsList,
+      documentationType: 'components',
+      framework: 'react',
+    });
   });
 
   it('should reject invalid framework values', () => {

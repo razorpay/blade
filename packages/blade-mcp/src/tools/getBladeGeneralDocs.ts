@@ -17,8 +17,8 @@ import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateSkill } from '../utils/skillUtils.js';
 import type { McpToolResponse } from '../utils/types.js';
-import { DEFAULT_FRAMEWORK } from '../types/framework.js';
 import type { BladeFramework } from '../types/framework.js';
+import { detectFrameworkFromProject } from '../utils/detectFramework.js';
 
 const reactGeneralDocsList = getBladeDocsList('general', 'react');
 const svelteGeneralDocsList = getBladeDocsList('general', 'svelte');
@@ -35,13 +35,13 @@ const svelteGeneralDocsGuide = readFileSync(
   'utf8',
 );
 
-const getBladeGeneralDocsToolDescription = `Fetch general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines. Pass framework="svelte" for Blade Svelte setup docs or framework="react" (default) for the React catalog.`;
+const getBladeGeneralDocsToolDescription = `Fetch general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines. Pass framework="svelte" for Blade Svelte setup docs or framework="react" for the React catalog. When framework is omitted, it is auto-detected from the consumer project's package.json (@razorpay/blade-svelte → svelte, @razorpay/blade → react; defaults to react).`;
 
 const frameworkSchema = z
   .enum(['react', 'svelte'])
-  .default(DEFAULT_FRAMEWORK)
+  .optional()
   .describe(
-    'Target framework for general docs. Use "react" (default) for @razorpay/blade or "svelte" for @razorpay/blade-svelte.',
+    'Target framework for general docs. Use "react" for @razorpay/blade or "svelte" for @razorpay/blade-svelte. When omitted, auto-detected from consumer package.json dependencies.',
   );
 
 // Schema for stdio transport
@@ -68,7 +68,7 @@ const getBladeGeneralDocsHttpSchema = {
 // Core business logic function
 const getBladeGeneralDocsCore = ({
   topicsList,
-  framework = DEFAULT_FRAMEWORK,
+  framework,
   currentProjectRootDirectory,
   skipLocalSkillChecks = false,
   skillVersion = '0',
@@ -81,7 +81,8 @@ const getBladeGeneralDocsCore = ({
   skillVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
-  const bladeGeneralDocsList = getBladeDocsList('general', framework);
+  const resolvedFramework = framework ?? detectFrameworkFromProject(currentProjectRootDirectory);
+  const bladeGeneralDocsList = getBladeDocsList('general', resolvedFramework);
   const topics = topicsList.split(',').map((s) => s.trim());
   const invalidTopics = topics.filter((topic) => !bladeGeneralDocsList.includes(topic));
   if (invalidTopics.length > 0) {
@@ -89,7 +90,7 @@ const getBladeGeneralDocsCore = ({
       toolName: getBladeGeneralDocsToolName,
       mcpErrorMessage: `Invalid argument topicsList. Invalid values: ${invalidTopics.join(
         ', ',
-      )}. Valid general docs values for framework="${framework}": ${bladeGeneralDocsList.join(
+      )}. Valid general docs values for framework="${resolvedFramework}": ${bladeGeneralDocsList.join(
         ', ',
       )}`,
     });
@@ -111,7 +112,7 @@ const getBladeGeneralDocsCore = ({
     const responseText = getBladeDocsResponseText({
       docsList: topicsList,
       documentationType: 'general',
-      framework,
+      framework: resolvedFramework,
     });
 
     sendAnalytics({
@@ -119,7 +120,7 @@ const getBladeGeneralDocsCore = ({
       properties: {
         toolName: getBladeGeneralDocsToolName,
         topicsList,
-        framework,
+        framework: resolvedFramework,
         rootDirectoryName: currentProjectRootDirectory
           ? basename(currentProjectRootDirectory)
           : undefined,

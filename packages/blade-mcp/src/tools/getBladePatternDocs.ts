@@ -14,8 +14,8 @@ import {
   httpTransportSkillVersionSchema,
 } from '../utils/getCommonSchema.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
-import { DEFAULT_FRAMEWORK } from '../types/framework.js';
 import type { BladeFramework } from '../types/framework.js';
+import { detectFrameworkFromProject } from '../utils/detectFramework.js';
 
 const bladePatternsList = getBladeDocsList('patterns', 'react');
 const whichPatternToUseGuide = readFileSync(
@@ -25,13 +25,13 @@ const whichPatternToUseGuide = readFileSync(
 
 const getBladePatternDocsToolName = 'get_blade_pattern_docs';
 
-const getBladePatternDocsToolDescription = `Fetch the Blade Design System pattern docs. Use this to get information about design patterns, best practices, and implementation guidelines. Patterns are currently available for framework="react" only.`;
+const getBladePatternDocsToolDescription = `Fetch the Blade Design System pattern docs. Use this to get information about design patterns, best practices, and implementation guidelines. Patterns are currently available for framework="react" only. When framework is omitted, it is auto-detected from the consumer project's package.json (@razorpay/blade-svelte → svelte, @razorpay/blade → react; defaults to react).`;
 
 const frameworkSchema = z
   .enum(['react', 'svelte'])
-  .default(DEFAULT_FRAMEWORK)
+  .optional()
   .describe(
-    'Target framework for pattern docs. Patterns are react-only for now; use framework="react" (default).',
+    'Target framework for pattern docs. Patterns are react-only for now. When omitted, auto-detected from consumer package.json dependencies.',
   );
 
 // Schema for stdio transport
@@ -59,7 +59,7 @@ const SVELTE_PATTERNS_UNAVAILABLE_MESSAGE =
 // Core business logic function
 const getBladePatternDocsCore = ({
   patternsList,
-  framework = DEFAULT_FRAMEWORK,
+  framework,
   currentProjectRootDirectory,
   skipLocalSkillChecks = false,
   skillVersion,
@@ -72,13 +72,15 @@ const getBladePatternDocsCore = ({
   skillVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
-  if (framework === 'svelte') {
+  const resolvedFramework = framework ?? detectFrameworkFromProject(currentProjectRootDirectory);
+
+  if (resolvedFramework === 'svelte') {
     sendAnalytics({
       eventName: analyticsToolCallEventName,
       properties: {
         toolName: getBladePatternDocsToolName,
         patternsList,
-        framework,
+        framework: resolvedFramework,
         rootDirectoryName: currentProjectRootDirectory
           ? basename(currentProjectRootDirectory)
           : undefined,
@@ -126,7 +128,7 @@ const getBladePatternDocsCore = ({
     const responseText = getBladeDocsResponseText({
       docsList: patternsList,
       documentationType: 'patterns',
-      framework,
+      framework: resolvedFramework,
     });
 
     sendAnalytics({
@@ -134,7 +136,7 @@ const getBladePatternDocsCore = ({
       properties: {
         toolName: getBladePatternDocsToolName,
         patternsList,
-        framework,
+        framework: resolvedFramework,
         rootDirectoryName: currentProjectRootDirectory
           ? basename(currentProjectRootDirectory)
           : undefined,
