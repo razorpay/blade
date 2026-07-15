@@ -705,6 +705,7 @@ const _ChartSankeyWrapper = ({
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [active, setActive] = useState<ActiveState>(null);
   const [tooltipHeight, setTooltipHeight] = useState(0);
+  const [tooltipWidth, setTooltipWidth] = useState(0);
 
   // Extract the single ChartSankey child's props.
   const sankeyChild = useMemo(
@@ -921,15 +922,19 @@ const _ChartSankeyWrapper = ({
     };
   }, [showTooltip, active, size, labelUnit, layout, data.nodes, PADDING.left, PADDING.top]);
 
-  // Reset tooltip height when tooltip is dismissed to avoid stale measurement
+  // Reset tooltip dimensions when tooltip is dismissed to avoid stale measurement
   // affecting the next tooltip's initial position.
   React.useEffect(() => {
-    if (!tooltip) setTooltipHeight(0);
+    if (!tooltip) {
+      setTooltipHeight(0);
+      setTooltipWidth(0);
+    }
   }, [tooltip]);
 
   const TOOLTIP_MAX_WIDTH = 240;
+  const measuredWidth = tooltipWidth || TOOLTIP_MAX_WIDTH;
   const tooltipLeft = tooltip
-    ? Math.max(0, Math.min(size.width - TOOLTIP_MAX_WIDTH, tooltip.centerX - TOOLTIP_MAX_WIDTH / 2))
+    ? Math.max(0, Math.min(size.width - measuredWidth, tooltip.centerX - measuredWidth / 2))
     : 0;
 
   const formatter = formatValue ?? humanizeIndian;
@@ -1119,8 +1124,9 @@ const _ChartSankeyWrapper = ({
             <View
               pointerEvents="none"
               onLayout={(e: LayoutChangeEvent) => {
-                const { height } = e.nativeEvent.layout;
+                const { width, height } = e.nativeEvent.layout;
                 setTooltipHeight((prev) => (height !== prev ? height : prev));
+                setTooltipWidth((prev) => (width !== prev ? width : prev));
               }}
               style={{
                 position: 'absolute',
