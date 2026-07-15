@@ -96,7 +96,7 @@
 <Story name="Playground">
   {#snippet template(args)}
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card {...getCardSurfaceProps(args)}>
         <CardHeader>
@@ -151,7 +151,7 @@
 <Story name="Card Example" asChild>
   <div style="display: flex;">
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -195,7 +195,7 @@
       </Card>
     </div>
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -245,7 +245,7 @@
 <Story name="Figma Example" asChild>
   <div style="display: flex;">
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -286,7 +286,7 @@
       </Card>
     </div>
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -582,7 +582,7 @@
 
 <!-- Story 8: Card Types — primary / secondary / theme treatments -->
 <Story name="Card Types" asChild>
-  <div style="display: flex; flex-direction: column; gap: 24px; background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+  <div style="display: flex; flex-direction: column; gap: 24px; padding: var(--spacing-8);">
     <Card variant="primary" maxWidth="500px">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
@@ -623,7 +623,7 @@
 
 <!-- Story 9: Order Summary — order item with SKU image, details, and pricing -->
 <Story name="Order Summary" asChild>
-  <div style="background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+  <div style="padding: var(--spacing-8);">
     <Card maxWidth="380px" size="medium">
       <CardHeader>
         <CardHeaderLeading title="Order summary" />
@@ -693,7 +693,7 @@
      Compose with `InfoCardBody` and `InfoCardFooter`. -->
 <Story name="Info Card" asChild>
   <div
-    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8); background-color: var(--surface-background-gray-subtle);"
+    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8);"
   >
     {@render infoCard('Default', false, false)}
     {@render infoCard('Selected', true, false)}

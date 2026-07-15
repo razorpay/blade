@@ -25,6 +25,7 @@ import {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import type { EasingFunction, EasingFunctionFactory } from 'react-native-reanimated';
 import type { Tween } from 'framer-motion';
 import type { MotionVariantsType } from './types';
 import { logger } from '~utils/logger';
@@ -149,7 +150,19 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
   if (variantRecord.backgroundColor !== undefined) {
     resolved.backgroundColor = resolveColor(variantRecord.backgroundColor);
   }
-  if (variantRecord.color !== undefined) resolved.color = resolveColor(variantRecord.color);
+  if (variantRecord.color !== undefined) {
+    resolved.color = resolveColor(variantRecord.color);
+    if (__DEV__) {
+      logger({
+        type: 'warn',
+        moduleName: 'BaseMotion',
+        message:
+          'Motion variant key "color" is not supported on native View components (it is a TextStyle-only property). ' +
+          'The color animation will be silently ignored. This is a known Phase 1 limitation — ' +
+          'color animation for text-bearing children will be addressed in the wrapper batch.',
+      });
+    }
+  }
   if (variantRecord.transform !== undefined) {
     Object.assign(resolved, parseTransform(variantRecord.transform as string | string[]));
   }
@@ -169,23 +182,22 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
   return resolved;
 };
 
+type ReanimatedEasing = EasingFunction | EasingFunctionFactory;
+
 /**
  * Converts a framer `transition` (seconds + bezier array) into reanimated `withTiming` config.
  */
-const getTiming = (transition?: Tween) => {
+const getTiming = (transition?: Tween): { duration: number; easing: ReanimatedEasing } => {
   const durationSec =
     typeof transition?.duration === 'number' ? transition.duration : DEFAULT_DURATION_SEC;
-  const ease = transition?.ease as unknown;
-  const isBezierArray =
-    Array.isArray(ease) && ease.length === 4 && ease.every((value) => typeof value === 'number');
-  const easing = isBezierArray
-    ? Easing.bezier(
-        (ease as number[])[0],
-        (ease as number[])[1],
-        (ease as number[])[2],
-        (ease as number[])[3],
-      )
-    : Easing.ease;
+  const ease = transition?.ease;
+  let easing: ReanimatedEasing;
+  if (Array.isArray(ease) && ease.length === 4 && ease.every((v) => typeof v === 'number')) {
+    const [x1, y1, x2, y2] = (ease as unknown) as number[];
+    easing = Easing.bezier(x1, y1, x2, y2);
+  } else {
+    easing = Easing.ease;
+  }
 
   return { duration: durationSec * 1000, easing };
 };
@@ -246,7 +258,8 @@ const interpolateVariant = (
   }
 
   if (to.color !== undefined) {
-    // `color` is not a ViewStyle key but is applied for text-bearing children; cast intentionally.
+    // `color` is a TextStyle-only property — it is silently ignored by RN's View component.
+    // Resolved and included for future use (wrapper batch may forward it to child Text via context).
     (style as ViewStyle & { color?: string }).color =
       from.color !== undefined
         ? interpolateColor(progress, [0, 1], [from.color, to.color])
@@ -297,9 +310,7 @@ const useAnimatedVariant = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetName]);
 
-  return useAnimatedStyle(() =>
-    interpolateVariant(fromStyle.value, toStyle.value, progress.value),
-  );
+  return useAnimatedStyle(() => interpolateVariant(fromStyle.value, toStyle.value, progress.value));
 };
 
 export { resolveVariantStyle, parseTransform, useAnimatedVariant };

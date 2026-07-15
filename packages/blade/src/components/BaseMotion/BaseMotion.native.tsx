@@ -40,8 +40,11 @@ type MotionDivProps = Omit<BoxProps, 'style' | 'pointerEvents' | 'as'>;
  */
 const StyledDiv = styled(Animated.View)<MotionDivProps>((props) => {
   const boxStyles = useMemoizedStyles(
-    props as unknown as BoxProps & { theme: Theme },
-  ) as Record<string, unknown>;
+    (props as unknown) as BoxProps & { theme: Theme },
+  ) as Record<
+    string,
+    unknown
+  >;
   const {
     boxShadow: _boxShadow,
     transition: _transition,
@@ -214,8 +217,7 @@ const BaseMotionEntryExit = ({
   const motionMeta: MotionMeta = React.useMemo(() => {
     return {
       isEnhanced: true,
-      innerRef: ((children as { ref?: React.Ref<View> }).ref ??
-        null) as MotionMeta['innerRef'],
+      innerRef: ((children as { ref?: React.Ref<View> }).ref ?? null) as MotionMeta['innerRef'],
     };
   }, [children]);
 
