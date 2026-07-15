@@ -443,16 +443,20 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               alignItems="center"
                               data-blade-component="base-box"
                               display="flex"
+                              flexDirection="row"
                               gap="spacing.3"
                               style={
                                 [
                                   {
                                     "alignItems": "center",
                                     "display": "flex",
+                                    "flexDirection": "row",
                                     "gap": 8,
+                                    "width": "100%",
                                   },
                                 ]
                               }
+                              width="100%"
                             >
                               <Text
                                 accessible={true}
