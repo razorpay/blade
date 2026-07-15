@@ -139,6 +139,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const trackRef = React.useRef<HTMLDivElement>(null);
   const pointerStartedOnThumbRef = React.useRef(false);
   const [activeThumb, setActiveThumb] = React.useState<0 | 1>(0);
+  const [isThumbDragging, setIsThumbDragging] = React.useState(false);
   const hasError = validationState === 'error';
   const hasSuccess = validationState === 'success';
   const rangeValue: SliderRangeValue = React.useMemo(
@@ -255,7 +256,9 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
         committedValue = updateValue(next);
         startInputRef.current?.focus();
       } else {
-        const nextThumb = Math.abs(next - rangeValue[0]) <= Math.abs(next - rangeValue[1]) ? 0 : 1;
+        const dist0 = Math.abs(next - rangeValue[0]);
+        const dist1 = Math.abs(next - rangeValue[1]);
+        const nextThumb = dist0 < dist1 ? 0 : dist1 < dist0 ? 1 : next > rangeValue[0] ? 1 : 0;
         setActiveThumb(nextThumb);
         committedValue = updateValue(
           nextThumb === 0
@@ -272,13 +275,29 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const handleThumbPointerDown = React.useCallback((index: 0 | 1) => {
     pointerStartedOnThumbRef.current = true;
     setActiveThumb(index);
+    setIsThumbDragging(true);
   }, []);
 
   const handleThumbPointerUp = React.useCallback(() => {
     if (pointerStartedOnThumbRef.current) {
       commitValue();
     }
+    pointerStartedOnThumbRef.current = false;
+    setIsThumbDragging(false);
   }, [commitValue]);
+
+  React.useEffect(() => {
+    if (!isThumbDragging) return;
+    const onDocPointerUp = (): void => {
+      if (pointerStartedOnThumbRef.current) {
+        commitValue();
+      }
+      pointerStartedOnThumbRef.current = false;
+      setIsThumbDragging(false);
+    };
+    document.addEventListener('pointerup', onDocPointerUp);
+    return () => document.removeEventListener('pointerup', onDocPointerUp);
+  }, [isThumbDragging, commitValue]);
 
   return (
     <BaseBox

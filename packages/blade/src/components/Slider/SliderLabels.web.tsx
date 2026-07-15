@@ -47,7 +47,7 @@ const SliderHeader = ({
         labelTrailing={value}
         size={size}
         position={labelPosition}
-        necessityIndicator={isRequired ? necessityIndicator : 'none'}
+        necessityIndicator={necessityIndicator}
       >
         {label}
       </FormLabel>
@@ -58,7 +58,7 @@ const SliderHeader = ({
         labelTrailing={value}
         size={size}
         position={labelPosition}
-        necessityIndicator={isRequired ? necessityIndicator : 'none'}
+        necessityIndicator={necessityIndicator}
       >
         {label}
       </FormLabel>

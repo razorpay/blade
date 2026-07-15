@@ -8,6 +8,7 @@ type SliderTrackStyleProps = {
   $hasError: boolean;
   $hasMarkLabels: boolean;
   $hasThumbValue: boolean;
+  $hasCollision: boolean;
   $isDisabled: boolean;
   $size: 'small' | 'medium' | 'large';
   $trackHeight: number;
@@ -78,11 +79,12 @@ const getPressedThumb = (props: NativeRangeInputHelperProps): string => {
 };
 
 const TrackArea = styled.div<SliderTrackStyleProps>(
-  ({ $hasMarkLabels, $hasThumbValue, $isDisabled }) => ({
+  ({ $hasCollision, $hasMarkLabels, $hasThumbValue, $isDisabled }) => ({
     cursor: $isDisabled ? 'not-allowed' : 'pointer',
     height:
       sliderTokens.interactionTarget +
       ($hasThumbValue ? sliderTokens.thumbValueOffset : 0) +
+      ($hasCollision ? sliderTokens.thumbValueOffset : 0) +
       ($hasMarkLabels ? sliderTokens.markLabelOffset : 0),
     position: 'relative',
     touchAction: 'none',

@@ -87,11 +87,14 @@ const SliderControls = ({
 }: SliderControlsProps): React.ReactElement => {
   const tokens = sliderTokens.size[size];
   const hasMarkLabels = visibleMarks.some((mark) => Boolean(mark.label));
+  const isRangeLabelCollision =
+    selectionType === 'range' && showThumbValue && endPercent - startPercent < 10;
   const trackStyleProps = {
     $color: color,
     $hasError: hasError,
     $hasMarkLabels: hasMarkLabels,
     $hasThumbValue: showThumbValue,
+    $hasCollision: isRangeLabelCollision,
     $isDisabled: isDisabled,
     $size: size,
     $trackHeight: tokens.track,
@@ -123,8 +126,6 @@ const SliderControls = ({
     if (percent >= 100) return 'translateX(-100%)';
     return 'translateX(-50%)';
   };
-  const isRangeLabelCollision =
-    selectionType === 'range' && showThumbValue && endPercent - startPercent < 10;
 
   return (
     <TrackArea
