@@ -231,7 +231,10 @@ describe('<Slider />', () => {
     const { container } = renderWithTheme(
       <Slider label="Volume" defaultValue={50} min={0} max={100} onChange={onChange} />,
     );
-    const trackArea = container.querySelector('[data-blade-component="slider"] > div');
+    // TrackArea is the parent of the range input (has onPointerDown handler)
+    const rangeInput = container.querySelector('input[type="range"]');
+    expect(rangeInput).toBeTruthy();
+    const trackArea = rangeInput?.parentElement as HTMLElement;
     expect(trackArea).toBeTruthy();
 
     // trackRef is on TrackLine (first child of TrackArea)
