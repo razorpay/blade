@@ -290,7 +290,7 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
 
 /**
  * Vertical (top-to-bottom) flow — **native-only**. The web SankeyChart ignores
- * `orientation` and always renders horizontally; on native the layout is
+ * `layout` and always renders horizontally; on native the layout is
  * transposed so stages stack down the screen, which reads better on tall phones.
  * Given plenty of height and full width so the stacked stages and their labels
  * have room to breathe.
@@ -298,7 +298,7 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
 export const VerticalSankeyChart: StoryFn<typeof ChartSankeyWrapper> = () => (
   <ChartsWrapper padding="spacing.0">
     <Box width="100%" height="640px">
-      <ChartSankeyWrapper showTooltip orientation="vertical">
+      <ChartSankeyWrapper showTooltip layout="vertical">
         <ChartSankey
           data={{ nodes: paymentNodes, links: paymentLinks }}
           showLabels
@@ -316,14 +316,14 @@ VerticalSankeyChart.parameters = { controls: { disable: true } };
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * Vertical flow with labels disabled (**native-only** orientation). Hiding the node
+ * Vertical flow with labels disabled (**native-only** layout). Hiding the node
  * labels (`showLabels={false}`) surfaces the pure ribbon flow without any label
  * crowding — useful for dense multi-node stages on a narrow phone width.
  */
 export const VerticalSankeyChartWithoutLabels: StoryFn<typeof ChartSankeyWrapper> = () => (
   <ChartsWrapper padding="spacing.0">
     <Box width="100%" height="640px">
-      <ChartSankeyWrapper showTooltip orientation="vertical">
+      <ChartSankeyWrapper showTooltip layout="vertical">
         <ChartSankey
           data={{ nodes: paymentNodes, links: paymentLinks }}
           showLabels={false}
