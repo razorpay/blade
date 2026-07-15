@@ -126,7 +126,7 @@ export const WithDifferentComponents = (args: typeof Move): React.ReactElement =
         </Move>
 
         <Move {...args} isVisible={isVisible}>
-          <p>Move with custom components. Ensure you forward refs to your custom components</p>
+          <Text>Move with custom components. Ensure you forward refs to your custom components</Text>
         </Move>
       </Box>
     </Box>

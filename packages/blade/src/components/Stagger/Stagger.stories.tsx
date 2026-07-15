@@ -72,6 +72,7 @@ const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
         {...args}
         display="flex"
         flexDirection="row"
+        flexWrap="wrap"
         gap="spacing.4"
         isVisible={args.isVisible ?? isVisible}
       >
@@ -134,7 +135,7 @@ SlideStagger.args = {
 
 export const OnMount = (): React.ReactElement => {
   return (
-    <Stagger display="flex" flexDirection="row" gap="spacing.4">
+    <Stagger display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.4">
       <Move>
         <InternalCardExample />
       </Move>

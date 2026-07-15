@@ -80,13 +80,41 @@ const _BaseMotionBox = (
   }: BaseMotionBoxNativeProps,
   ref: React.Ref<View>,
 ): React.ReactElement => {
-  const { isInsideAnimateInteractionsContainer } = useAnimateInteractions();
-  const { isInsideStaggerContainer, staggerType } = useStagger();
+  const { isInsideAnimateInteractionsContainer, isInteracting } = useAnimateInteractions();
+  const {
+    isInsideStaggerContainer,
+    staggerType,
+    staggerDelay,
+    staggerVisibility,
+    isLastStaggerChild,
+    onStaggerComplete,
+  } = useStagger();
 
-  const motionVariants = useMotionVariants(
+  const resolvedMotionVariants = useMotionVariants(
     userMotionVariants,
     isInsideStaggerContainer ? staggerType : type,
   );
+
+  // Inside a Stagger, the parent injects a per-child offset into the resolved variants (the
+  // interpreter reads `transition.delay`). This is the single choke point where the delay is
+  // applied, so child presets stay oblivious. Guarded behind `isInsideStaggerContainer` so
+  // standalone usage is byte-for-byte unchanged.
+  const motionVariants = React.useMemo<MotionVariantsType | undefined>(() => {
+    if (!isInsideStaggerContainer || !staggerDelay || !resolvedMotionVariants) {
+      return resolvedMotionVariants;
+    }
+    return {
+      initial: resolvedMotionVariants.initial,
+      animate: {
+        ...resolvedMotionVariants.animate,
+        transition: { ...resolvedMotionVariants.animate?.transition, delay: staggerDelay.enter },
+      },
+      exit: {
+        ...resolvedMotionVariants.exit,
+        transition: { ...resolvedMotionVariants.exit?.transition, delay: staggerDelay.exit },
+      },
+    };
+  }, [isInsideStaggerContainer, staggerDelay, resolvedMotionVariants]);
 
   const hasTap = motionTriggers.includes('tap');
   const isAnimateInteractionsDriven =
@@ -102,24 +130,57 @@ const _BaseMotionBox = (
   const nativeAnimate = castNativeType(animate);
 
   // Derive the current declarative target from the active triggers.
-  // Priority: explicit visibility → AnimateInteractions control flag → tap → mount (+ degraded
-  // hover / focus / in-view which all fall back to animate-on-mount on touch devices).
+  // Priority: stagger visibility → AnimateInteractions control flag → explicit visibility → tap →
+  // mount (+ degraded hover / focus / in-view which all fall back to animate-on-mount on touch
+  // devices).
+  //
+  // `isAnimateInteractionsDriven` deliberately outranks `animateVisibility`: presets wrapped in
+  // `AnimateInteractions` render through `BaseMotionEntryExit`, which always threads
+  // `animateVisibility='animate'` (default `isVisible`). Letting that win would pin the child open
+  // and swallow the interaction. This mirrors the web engine, where `shouldSkipAnimationVariables`
+  // discards `animateVisibility` for `on-animate-interactions` children so framer's control
+  // propagation drives them instead.
   let targetName: keyof MotionVariantsType = 'initial';
-  if (animateVisibility) {
-    targetName = animateVisibility;
+  if (isInsideStaggerContainer && staggerVisibility) {
+    // Inside a Stagger the container owns visibility: every child animates towards the shared
+    // target (offset by its own `staggerDelay`) rather than its local mount / trigger state.
+    targetName = staggerVisibility;
   } else if (isAnimateInteractionsDriven) {
-    targetName =
-      typeof nativeAnimate === 'boolean' ? (nativeAnimate ? 'animate' : 'exit') : 'initial';
+    // Prefer the context signal published by `AnimateInteractions.native` (press-and-hold);
+    // fall back to the legacy `animate` boolean prop for any direct caller. `false` maps to
+    // `'exit'` (the resting/hidden target) so descendants start idle before first interaction.
+    const driven =
+      typeof isInteracting === 'boolean'
+        ? isInteracting
+        : typeof nativeAnimate === 'boolean'
+        ? nativeAnimate
+        : false;
+    targetName = driven ? 'animate' : 'exit';
+  } else if (animateVisibility) {
+    targetName = animateVisibility;
   } else if (hasTap) {
     targetName = isPressed ? 'animate' : 'initial';
   } else {
     targetName = isMounted ? 'animate' : 'initial';
   }
 
+  // The last stagger child (largest total exit time) also notifies the container so it can defer
+  // its unmount until the final child's exit completes. Additive: the child's own
+  // `_onAnimationComplete` (if any) still fires.
+  const handleAnimationComplete = React.useCallback(
+    (completedTarget: keyof MotionVariantsType) => {
+      _onAnimationComplete?.(completedTarget);
+      if (isInsideStaggerContainer && isLastStaggerChild) {
+        onStaggerComplete?.(completedTarget);
+      }
+    },
+    [_onAnimationComplete, isInsideStaggerContainer, isLastStaggerChild, onStaggerComplete],
+  );
+
   const animatedStyle = useAnimatedVariant({
     variants: motionVariants,
     targetName,
-    onAnimationComplete: _onAnimationComplete,
+    onAnimationComplete: handleAnimationComplete,
   });
 
   const motionContent = (

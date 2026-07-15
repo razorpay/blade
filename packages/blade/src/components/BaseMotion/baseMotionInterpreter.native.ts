@@ -23,6 +23,7 @@ import {
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withTiming,
 } from 'react-native-reanimated';
 import type { EasingFunction, EasingFunctionFactory } from 'react-native-reanimated';
@@ -186,8 +187,15 @@ type ReanimatedEasing = EasingFunction | EasingFunctionFactory;
 
 /**
  * Converts a framer `transition` (seconds + bezier array) into reanimated `withTiming` config.
+ *
+ * `transition.delay` (framer, seconds) is surfaced as `delay` (ms) so callers can wrap the
+ * `withTiming` in reanimated's `withDelay`. Presets that never set a delay resolve to `0`, which
+ * makes `withDelay(0, …)` a no-op — keeping existing (non-delayed) behaviour intact while enabling
+ * both standalone `<Fade delay />` and Stagger's per-child offset.
  */
-const getTiming = (transition?: Tween): { duration: number; easing: ReanimatedEasing } => {
+const getTiming = (
+  transition?: Tween,
+): { duration: number; easing: ReanimatedEasing; delay: number } => {
   const durationSec =
     typeof transition?.duration === 'number' ? transition.duration : DEFAULT_DURATION_SEC;
   const ease = transition?.ease;
@@ -199,7 +207,12 @@ const getTiming = (transition?: Tween): { duration: number; easing: ReanimatedEa
     easing = Easing.ease;
   }
 
-  return { duration: durationSec * 1000, easing };
+  // `delay` is a valid framer transition option but is not declared on the narrower `Tween` type,
+  // so we read it through a cast.
+  const transitionDelay = (transition as (Tween & { delay?: number }) | undefined)?.delay;
+  const delaySec = typeof transitionDelay === 'number' ? transitionDelay : 0;
+
+  return { duration: durationSec * 1000, easing, delay: delaySec * 1000 };
 };
 
 const lerp = (from: number, to: number, progress: number): number => {
@@ -299,13 +312,18 @@ const useAnimatedVariant = ({
     toStyle.value = resolveVariantStyle(targetVariant);
     previousTargetRef.current = targetName;
 
-    const { duration, easing } = getTiming(targetVariant?.transition);
+    const { duration, easing, delay } = getTiming(targetVariant?.transition);
     progress.value = 0;
-    progress.value = withTiming(1, { duration, easing }, (finished) => {
-      if (finished && onAnimationComplete) {
-        runOnJS(onAnimationComplete)(targetName);
-      }
-    });
+    // `withDelay(0, …)` is equivalent to the bare `withTiming`, so non-delayed presets are
+    // unaffected; a positive delay holds the element at its `from` style before animating.
+    progress.value = withDelay(
+      delay,
+      withTiming(1, { duration, easing }, (finished) => {
+        if (finished && onAnimationComplete) {
+          runOnJS(onAnimationComplete)(targetName);
+        }
+      }),
+    );
     // Only re-run when the resolved target changes. Shared values are stable refs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetName]);
