@@ -21,9 +21,13 @@ vi.mock('../../utils/analyticsUtils.js', async () => {
 });
 vi.mock('../../utils/skillUtils.js');
 vi.mock('../../utils/getBladeDocsResponseText.js');
-vi.mock('../../utils/generalUtils.js', () => ({
-  getBladeDocsList: vi.fn(() => ['Button', 'Accordion', 'Input']),
-}));
+vi.mock('../../utils/generalUtils.js', async (importOriginal) => {
+  const actual = await importOriginal<typeof generalUtils>();
+  return {
+    ...actual,
+    getBladeDocsList: vi.fn(() => ['Button', 'Accordion', 'Input']),
+  };
+});
 vi.mock('../../utils/detectFramework.js', () => ({
   detectFrameworkFromProject: vi.fn(() => 'react'),
 }));

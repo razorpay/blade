@@ -17,16 +17,24 @@ vi.mock('../../utils/analyticsUtils.js', async () => {
 });
 vi.mock('../../utils/skillUtils.js');
 vi.mock('../../utils/getBladeDocsResponseText.js');
-vi.mock('../../utils/generalUtils.js', () => ({
-  getBladeDocsList: vi.fn(() => ['ListView', 'DetailedView', 'FormGroup']),
-}));
+vi.mock('../../utils/generalUtils.js', async (importOriginal) => {
+  const actual = await importOriginal<typeof generalUtils>();
+  return {
+    ...actual,
+    getBladeDocsList: vi.fn(() => ['ListView', 'DetailedView', 'FormGroup']),
+  };
+});
 vi.mock('../../utils/detectFramework.js', () => ({
   detectFrameworkFromProject: vi.fn(() => 'react'),
 }));
-vi.mock('fs', () => ({
-  readFileSync: vi.fn(() => 'Mock pattern guide content'),
-  existsSync: vi.fn(() => false),
-}));
+vi.mock('fs', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('fs')>();
+  return {
+    ...actual,
+    readFileSync: vi.fn(() => 'Mock pattern guide content'),
+    existsSync: vi.fn(() => false),
+  };
+});
 
 // Create a mock context object for tool callbacks
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
