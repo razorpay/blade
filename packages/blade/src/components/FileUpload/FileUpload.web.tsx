@@ -392,7 +392,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             file={selectedFiles[0]}
             size={size}
             categoryOptions={categoryOptions}
-            selectedCategoryValue={getCategoryValue?.(selectedFiles[0])}
+            categoryValue={getCategoryValue?.(selectedFiles[0])}
             onCategoryChange={onCategoryChange}
             categoryPlaceholder={categoryPlaceholder}
             onRemove={() => {
@@ -462,7 +462,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               file={file}
               size={size}
               categoryOptions={categoryOptions}
-              selectedCategoryValue={getCategoryValue?.(file)}
+              categoryValue={getCategoryValue?.(file)}
               onCategoryChange={onCategoryChange}
               categoryPlaceholder={categoryPlaceholder}
               onRemove={() => {

@@ -122,12 +122,13 @@ type FileUploadCommonProps = {
    * Function that returns the selected category value for a given file (controlled).
    * Use this to resolve per-file category values without managing a separate map.
    *
-   * A function prop is used instead of a flat `Record<string, string>` because the
-   * parent `FileUpload` does not expose file IDs to consumers — files may not have
-   * stable IDs until the component assigns them internally. The function receives
-   * the `BladeFile` object directly, allowing consumers to resolve category state
-   * by any file property (name, id, size, etc.) without coupling to Blade's
-   * internal ID assignment.
+   * **Note:** This is an intentional exception to Blade's convention of using
+   * plain value props. A function prop is used instead of a flat
+   * `Record<string, string>` because the parent `FileUpload` does not expose
+   * file IDs to consumers — files may not have stable IDs until the component
+   * assigns them internally. The function receives the `BladeFile` object
+   * directly, allowing consumers to resolve category state by any file property
+   * (name, id, size, etc.) without coupling to Blade's internal ID assignment.
    */
   getCategoryValue?: (file: BladeFile) => string | undefined;
   /**
@@ -235,7 +236,7 @@ type FileUploadItemProps = Pick<
   /**
    * Currently selected category value for this item (controlled).
    */
-  selectedCategoryValue?: string;
+  categoryValue?: string;
   /**
    * Callback fired when a category option is selected.
    * Receives the selected `value` and the associated `file`.

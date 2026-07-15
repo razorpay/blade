@@ -54,7 +54,7 @@ describe('<FileUploadItem category />', () => {
         file={successFile}
         categoryOptions={categoryOptions}
         onCategoryChange={onCategoryChange}
-        selectedCategoryValue="receipt"
+        categoryValue="receipt"
       />,
     );
 
@@ -155,7 +155,7 @@ describe('<FileUploadItem category />', () => {
         <FileUploadItem
           file={successFile}
           categoryOptions={categoryOptions}
-          selectedCategoryValue={selectedValue}
+          categoryValue={selectedValue}
           onCategoryChange={({ value }) => setSelectedValue(value)}
           categoryPlaceholder="Select"
         />
@@ -188,7 +188,7 @@ describe('<FileUploadItem category />', () => {
       <FileUploadItem
         file={successFile}
         categoryOptions={categoryOptions}
-        selectedCategoryValue="receipt"
+        categoryValue="receipt"
         onCategoryChange={onCategoryChange}
       />,
     );

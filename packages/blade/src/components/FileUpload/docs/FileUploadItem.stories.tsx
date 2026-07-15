@@ -220,7 +220,7 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
             file={successFile}
             size="medium"
             categoryOptions={categoryOptions}
-            selectedCategoryValue={selectedCategory}
+            categoryValue={selectedCategory}
             onCategoryChange={({ value }) => setSelectedCategory(value)}
             categoryPlaceholder="Select"
             onRemove={({ file }) => action('onRemove')(file.name)}
@@ -235,7 +235,7 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
             file={successFile}
             size="large"
             categoryOptions={categoryOptions}
-            selectedCategoryValue={selectedCategory}
+            categoryValue={selectedCategory}
             onCategoryChange={({ value }) => setSelectedCategory(value)}
             categoryPlaceholder="Select"
             onRemove={({ file }) => action('onRemove')(file.name)}
@@ -250,7 +250,7 @@ const WithInlineSelectorTemplate: StoryFn<typeof FileUploadItem> = () => {
             file={successFile}
             size="medium"
             categoryOptions={categoryOptions}
-            selectedCategoryValue={undefined}
+            categoryValue={undefined}
             onCategoryChange={({ value }) => action('onChange')(value)}
             categoryPlaceholder="Select"
             onRemove={({ file }) => action('onRemove')(file.name)}

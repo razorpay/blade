@@ -28,7 +28,7 @@ const FileUploadItem = memo(
     onReupload,
     onDismiss,
     categoryOptions,
-    selectedCategoryValue,
+    categoryValue,
     onCategoryChange,
     categoryPlaceholder,
     size: containerSize,
@@ -133,11 +133,7 @@ const FileUploadItem = memo(
                     display="flex"
                     flexDirection="row"
                     alignItems="center"
-                    gap={
-                      categoryOptions && categoryOptions.length > 0 && onCategoryChange
-                        ? 'spacing.3'
-                        : undefined
-                    }
+                    gap="spacing.3"
                   >
                     <Divider orientation="vertical" thickness="thin" variant="normal" />
                     <IconButton
@@ -165,7 +161,7 @@ const FileUploadItem = memo(
                 containerSize !== 'variable' ? (
                   <FileUploadInlineSelector
                     options={categoryOptions}
-                    value={selectedCategoryValue}
+                    value={categoryValue}
                     onChange={onCategoryChange}
                     placeholder={categoryPlaceholder}
                     file={file}
