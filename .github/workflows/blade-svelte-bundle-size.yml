@@ -59,9 +59,6 @@ jobs:
       - name: Build Blade Core
         run: yarn build
         working-directory: packages/blade-core
-      - name: Build Blade Svelte
-        run: yarn run-s build:clean build:generate-types build:lib
-        working-directory: packages/blade-svelte
       - name: Update Bundle Size Data
         run: yarn generate-bundle-size-info
         working-directory: packages/blade-svelte

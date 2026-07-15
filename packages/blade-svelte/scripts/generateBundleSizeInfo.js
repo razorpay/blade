@@ -21,8 +21,8 @@ const findIndexPaths = (baseDir) => {
       } else if (entry.name === 'index.js') {
         const relativePath = path.relative(baseDir, fullPath).replace(/\\/g, '/');
         // Exclude the main index.js and Icons index files
-        if (relativePath === 'index.js') return;
-        if (relativePath.startsWith('Icons/')) return;
+        if (relativePath === 'index.js') continue;
+        if (relativePath.startsWith('Icons/')) continue;
         results.push(`dist/lib/components/${relativePath}`);
       }
     }
@@ -82,7 +82,11 @@ const main = async () => {
     // Use first '[' and last ']' to robustly extract the full JSON array from size-limit output
     const firstBracket = jsonLikeString.indexOf('[');
     const lastBracket = jsonLikeString.lastIndexOf(']');
-    sizes.push(...JSON.parse(jsonLikeString.substring(firstBracket, lastBracket + 1)));
+    try {
+      sizes.push(...JSON.parse(jsonLikeString.substring(firstBracket, lastBracket + 1)));
+    } catch (e) {
+      throw new Error(`Failed to parse size-limit JSON output. Raw stdout:\n${stdout}`);
+    }
   };
 
   // Run size-limit for the empty import to get the base project size
@@ -201,7 +205,7 @@ const main = async () => {
   // Format the file content using prettier & write it to the file
   fs.writeFileSync(
     path.resolve(__dirname, `../${filename}`),
-    prettier.format(JSON.stringify(sizes), {
+    await prettier.format(JSON.stringify(sizes), {
       parser: 'json',
     }),
   );

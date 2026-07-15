@@ -81,13 +81,7 @@ const generateBundleDiff = async () => {
       : 0;
     const baseComponentSize = baseComponent ? baseComponent.size / 1000 - baseEmptyProjectSize : 0;
 
-    if (baseComponent && !currentComponent) {
-      // Component removed in the PR
-      component.diffSize = -baseComponentSize;
-      component.baseSize = baseComponentSize;
-      component.prSize = 0;
-      component.isSizeIncreased = false;
-    } else if (!baseComponent && currentComponent) {
+    if (!baseComponent && currentComponent) {
       // Component added in the PR
       component.diffSize = currentComponentSize;
       component.baseSize = 0;

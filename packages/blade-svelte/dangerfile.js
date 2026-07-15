@@ -3,7 +3,7 @@ const { danger, markdown } = require('danger');
 const showBundleSizeDiff = async () => {
   // eslint-disable-next-line import/extensions
   const { default: generateBundleDiff } = await import('./scripts/generateBundleDiff.js');
-  const { diffTable } = await generateBundleDiff(danger);
+  const { diffTable } = await generateBundleDiff();
 
   if (diffTable) {
     const markdownMessage = `
@@ -21,4 +21,4 @@ ${diffTable}
   }
 };
 
-showBundleSizeDiff();
+showBundleSizeDiff().catch((err) => console.error('Bundle size diff failed:', err));
