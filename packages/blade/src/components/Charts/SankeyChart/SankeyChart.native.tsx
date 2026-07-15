@@ -358,6 +358,7 @@ type SankeyNodeShapeProps = {
   width: number;
   height: number;
   fill: string;
+  accessibilityLabel?: string;
   children?: React.ReactNode;
 };
 
@@ -368,6 +369,7 @@ const SankeyNodeShape = ({
   width,
   height,
   fill,
+  accessibilityLabel,
   children,
 }: SankeyNodeShapeProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -382,7 +384,7 @@ const SankeyNodeShape = ({
   const animatedProps = useAnimatedProps(() => ({ opacity: opacity.value }));
 
   return (
-    <AnimatedG animatedProps={animatedProps}>
+    <AnimatedG animatedProps={animatedProps} accessibilityLabel={accessibilityLabel}>
       <Rect x={x} y={y} width={width} height={height} fill={fill} />
       {children}
     </AnimatedG>
@@ -393,9 +395,15 @@ type SankeyLinkShapeProps = {
   targetOpacity: number;
   d: string;
   fill: string;
+  accessibilityLabel?: string;
 };
 
-const SankeyLinkShape = ({ targetOpacity, d, fill }: SankeyLinkShapeProps): React.ReactElement => {
+const SankeyLinkShape = ({
+  targetOpacity,
+  d,
+  fill,
+  accessibilityLabel,
+}: SankeyLinkShapeProps): React.ReactElement => {
   const { theme } = useTheme();
   const fillOpacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
@@ -407,7 +415,14 @@ const SankeyLinkShape = ({ targetOpacity, d, fill }: SankeyLinkShapeProps): Reac
 
   const animatedProps = useAnimatedProps(() => ({ fillOpacity: fillOpacity.value }));
 
-  return <AnimatedPath animatedProps={animatedProps} d={d} fill={fill} />;
+  return (
+    <AnimatedPath
+      animatedProps={animatedProps}
+      d={d}
+      fill={fill}
+      accessibilityLabel={accessibilityLabel}
+    />
+  );
 };
 
 // ─── Node label rendering (ported from web renderChipLabel / renderPlainTextLabel) ──
@@ -1043,7 +1058,13 @@ const _ChartSankeyWrapper = ({
           style={{ flex: 1, width: '100%' }}
         >
           {size.width > 0 && size.height > 0 ? (
-            <Svg width={size.width} height={size.height} pointerEvents="none">
+            <Svg
+              width={size.width}
+              height={size.height}
+              pointerEvents="none"
+              accessibilityRole="image"
+              accessibilityLabel="Sankey flow diagram"
+            >
               <G x={PADDING.left} y={PADDING.top}>
                 {/* Links first so nodes + labels render above the ribbons */}
                 {layout.linkLayouts.map((link) => {
@@ -1061,6 +1082,9 @@ const _ChartSankeyWrapper = ({
                       targetOpacity={getLinkOpacity(link.originalIndex)}
                       d={link.d}
                       fill={resolveColor(colorToken)}
+                      accessibilityLabel={`Link from ${
+                        data.nodes[link.sourceIndex]?.name ?? ''
+                      } to ${data.nodes[link.targetIndex]?.name ?? ''}: ${link.value}`}
                     />
                   );
                 })}
@@ -1169,6 +1193,7 @@ const _ChartSankeyWrapper = ({
                       width={node.width}
                       height={node.height}
                       fill={resolveColor(colorToken)}
+                      accessibilityLabel={`Node ${nodeData.name}: ${node.value}`}
                     >
                       {labelElement}
                     </SankeyNodeShape>
