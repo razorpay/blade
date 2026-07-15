@@ -66,7 +66,7 @@ describe('<FilterChipDatePicker/> clear button', () => {
 
   it('should clear the value when uncontrolled (defaultValue) and cross is clicked', async () => {
     const user = userEvent.setup();
-    const { queryByLabelText } = renderWithTheme(
+    const { queryByLabelText, getByLabelText } = renderWithTheme(
       <FilterChipDatePicker
         label="Date"
         selectionType="single"
@@ -77,7 +77,7 @@ describe('<FilterChipDatePicker/> clear button', () => {
     // pre-populated -> cross visible
     expect(queryByLabelText('Clear Date value')).toBeTruthy();
 
-    await user.click(queryByLabelText('Clear Date value')!);
+    await user.click(getByLabelText('Clear Date value'));
 
     // cross gone -> chip back to default state
     expect(queryByLabelText('Clear Date value')).toBeFalsy();
@@ -104,10 +104,10 @@ describe('<FilterChipDatePicker/> clear button', () => {
     };
 
     const user = userEvent.setup();
-    const { queryByLabelText } = renderWithTheme(<Comp />);
+    const { queryByLabelText, getByLabelText } = renderWithTheme(<Comp />);
 
     expect(queryByLabelText('Clear Date value')).toBeTruthy();
-    await user.click(queryByLabelText('Clear Date value')!);
+    await user.click(getByLabelText('Clear Date value'));
 
     expect(onChange).toHaveBeenCalledWith(null);
     expect(onClearButtonClick).toHaveBeenCalledTimes(1);
@@ -135,10 +135,10 @@ describe('<FilterChipDatePicker/> clear button', () => {
     };
 
     const user = userEvent.setup();
-    const { queryByLabelText } = renderWithTheme(<Comp />);
+    const { queryByLabelText, getByLabelText } = renderWithTheme(<Comp />);
 
     expect(queryByLabelText('Clear Date value')).toBeTruthy();
-    await user.click(queryByLabelText('Clear Date value')!);
+    await user.click(getByLabelText('Clear Date value'));
 
     expect(onChange).toHaveBeenCalledWith([null, null]);
     expect(queryByLabelText('Clear Date value')).toBeFalsy();

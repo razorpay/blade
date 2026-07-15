@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
+import { getFilterChipDisplayValue } from './filterChipSelectInputUtils';
 import { useFilterChipGroupContext } from './FilterChipGroupContext';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -133,38 +134,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUnControlled, options, value]);
 
-  const getTitleFromValue = (value: string): string => {
-    const option = options.find((option) => option.value === value);
-    return option ? option.title : '';
-  };
-
-  const getUnControlledFilterChipValue = (): string | string[] => {
-    if (selectionType === 'single') {
-      if (uncontrolledInputValue.length > 0) {
-        return getTitleFromValue(uncontrolledInputValue[0]);
-      }
-      return '';
-    }
-    // For multiple selection, hand the chip the option titles (not the raw values) so it can
-    // render the selected option name(s) instead of a bare count.
-    return uncontrolledInputValue.map((selectionValue) => getTitleFromValue(selectionValue));
-  };
-
-  // Resolves the value shown inside the chip: option titles for display. Controlled consumers
-  // pass option value(s); we map them to titles here (falling back to the raw value if the
-  // options haven't loaded yet).
-  const getFilterChipDisplayValue = (): string | string[] => {
-    if (props.value === undefined) {
-      return getUnControlledFilterChipValue();
-    }
-    if (Array.isArray(props.value)) {
-      return props.value.map(
-        (selectionValue) => getTitleFromValue(selectionValue) || selectionValue,
-      );
-    }
-    return getTitleFromValue(props.value) || props.value;
-  };
-
   const handleClearButtonClick = (): void => {
     const currentValues = getValuesArrayFromIndices();
     onClearButtonClick?.({ name: name ?? idBase, values: currentValues });
@@ -235,7 +204,12 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   return (
     <BaseFilterChip
       label={label}
-      value={getFilterChipDisplayValue()}
+      value={getFilterChipDisplayValue({
+        value: props.value,
+        options,
+        selectionType,
+        uncontrolledInputValue,
+      })}
       onClearButtonClick={handleClearButtonClick}
       showClearButton={showClearButton}
       selectionType={selectionType}

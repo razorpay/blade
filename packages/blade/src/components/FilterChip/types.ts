@@ -26,6 +26,12 @@ type BaseFilterChipProps = {
    * parent must reset `value` in response to `onClearButtonClick`. In the uncontrolled
    * case, the chip clears itself automatically.
    *
+   * Note: this only controls the chip's own visual cross button. It does NOT opt the chip
+   * out of a group-level clear — a `FilterChipGroup` with `clearButtonBehavior="clear"` still
+   * empties every chip (including those with `showClearButton={false}`). For a filter that must
+   * never be cleared even from the group, keep it out of the group's clear flow (e.g. use
+   * `clearButtonBehavior="reset"` and restore its default yourself).
+   *
    * @default true
    */
   showClearButton?: boolean;

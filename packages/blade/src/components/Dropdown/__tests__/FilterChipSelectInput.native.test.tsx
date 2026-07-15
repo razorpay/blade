@@ -152,6 +152,26 @@ describe('<FilterChipSelectInput /> (native)', () => {
     expect(onChange).toHaveBeenLastCalledWith({ name: 'status', values: [] });
   });
 
+  it('should not render the clear button when showClearButton is false, even when selected', () => {
+    const { getByText, getAllByRole, queryByLabelText } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="Status" name="status" showClearButton={false} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Inactive" value="inactive" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    fireEvent.press(getByText('Status'));
+    fireEvent.press(getAllByRole('menuitem')[0]);
+
+    // a value is selected but the per-chip clear (cross) button is hidden
+    expect(queryByLabelText('Clear Status value')).toBeNull();
+  });
+
   it('should reflect a controlled value as the selected chip value', () => {
     const { getAllByText, getByLabelText } = renderWithTheme(
       <Dropdown>
