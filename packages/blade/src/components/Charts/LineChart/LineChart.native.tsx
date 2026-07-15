@@ -30,6 +30,7 @@ import type {
   ChartReferenceLineProps,
   ChartTooltipProps,
   ChartLegendProps,
+  DataColorMapping,
 } from '../CommonChartComponents';
 import type {
   ChartsCategoricalColorToken,
@@ -688,13 +689,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   // Build the color mapping from ALL lines (not just visible) so hidden lines
   // keep their color/legend entry while toggled off (web parity).
-  const dataColorMapping = useMemo<Record<
-    string,
-    {
-      colorToken?: ChartsCategoricalColorToken | ChartSequentialColorToken;
-      isCustomColor: boolean;
-    }
-  >>(() => {
+  const dataColorMapping = useMemo<DataColorMapping>(() => {
     const mapping: Record<
       string,
       {
@@ -709,7 +704,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       };
     });
     assignDataColorMapping(mapping, themeColors);
-    return mapping;
+    return mapping as DataColorMapping;
   }, [allLines, themeColors]);
 
   const allDataKeys = useMemo(() => Object.keys(dataColorMapping), [dataColorMapping]);
@@ -895,7 +890,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const axisLineColor = getIn(theme.colors, 'surface.border.gray.muted');
   const gridColor = getIn(theme.colors, 'surface.border.gray.subtle');
 
-  const resolveColor = (dataKey: string, fallback?: string): string => {
+  const resolveColor = (
+    dataKey: string,
+    fallback?: ChartsCategoricalColorToken | ChartSequentialColorToken,
+  ): string => {
     const token = dataColorMapping[dataKey]?.colorToken ?? fallback;
     return token ? getIn(theme.colors, token) : tickColor;
   };

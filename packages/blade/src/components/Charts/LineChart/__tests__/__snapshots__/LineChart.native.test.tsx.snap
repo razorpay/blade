@@ -2165,6 +2165,8 @@ exports[`<ChartLineWrapper /> (native) should render multiple lines with legend,
       }
     >
       <View
+        accessibilityLabel="Sales, selected"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -2184,6 +2186,7 @@ exports[`<ChartLineWrapper /> (native) should render multiple lines with legend,
         }
         accessible={true}
         collapsable={false}
+        data-blade-component="chart-legend-item-sales"
         focusable={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -2253,6 +2256,8 @@ exports[`<ChartLineWrapper /> (native) should render multiple lines with legend,
         </Text>
       </View>
       <View
+        accessibilityLabel="Profit, selected"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -2272,6 +2277,7 @@ exports[`<ChartLineWrapper /> (native) should render multiple lines with legend,
         }
         accessible={true}
         collapsable={false}
+        data-blade-component="chart-legend-item-profit"
         focusable={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -2341,6 +2347,8 @@ exports[`<ChartLineWrapper /> (native) should render multiple lines with legend,
         </Text>
       </View>
       <View
+        accessibilityLabel="Revenue, selected"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -2360,6 +2368,7 @@ exports[`<ChartLineWrapper /> (native) should render multiple lines with legend,
         }
         accessible={true}
         collapsable={false}
+        data-blade-component="chart-legend-item-revenue"
         focusable={true}
         onBlur={[Function]}
         onClick={[Function]}
