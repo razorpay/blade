@@ -68,7 +68,7 @@ const FileUploadItem = memo(
             <BaseBox marginRight="spacing.4">
               <FileUploadItemIcon fileName={name} uploadStatus={status} />
             </BaseBox>
-            <BaseBox flexGrow={1}>
+            <BaseBox flexGrow={1} flexShrink={1} minWidth="0px">
               <BaseBox alignItems="center" display="flex">
                 <BaseBox alignItems="center" maxWidth="70%" display="flex" marginRight="spacing.3">
                   <Text
