@@ -223,9 +223,36 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
   const handlePress = (): void => {
     // On native, pressing the upload area fires onPress as the dedicated tap handler.
-    // onChange is also fired with an empty fileList for backward compatibility.
+    // onChange also fires with an empty fileList as a deliberate cross-platform tap signal.
     onPress?.();
     onChange?.({ name, fileList: [] });
+  };
+
+  const removeFileFromSelection = (file: BladeFile): void => {
+    const newFiles = filesWithIds.filter(({ id }) => id !== file.id);
+    setSelectedFiles(() => newFiles);
+  };
+
+  const handleFileRemove = (file: BladeFile): void => {
+    removeFileFromSelection(file);
+    onRemove?.({ file });
+  };
+
+  const handleFileReupload = (file: BladeFile): void => {
+    removeFileFromSelection(file);
+    // TODO - Remove this in the next major release
+    // Fallback to onRemove if onReupload isn't provided to avoid breaking changes in the API
+    if (onReupload) {
+      onReupload({ file });
+    } else {
+      onRemove?.({ file });
+    }
+    handlePress();
+  };
+
+  const handleFileDismiss = (file: BladeFile): void => {
+    removeFileFromSelection(file);
+    onDismiss?.({ file });
   };
 
   const computedHeight = isSizeVariable
@@ -343,25 +370,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           <FileUploadItem
             file={filesWithIds[0]}
             size={size}
-            onRemove={() => {
-              const newFiles = filesWithIds.filter(({ id }) => id !== filesWithIds[0].id);
-              setSelectedFiles(() => newFiles);
-              onRemove?.({ file: filesWithIds[0] });
-            }}
-            onReupload={() => {
-              const fileToReupload = filesWithIds[0];
-              const newFiles = filesWithIds.filter(({ id }) => id !== fileToReupload.id);
-              setSelectedFiles(() => newFiles);
-              if (onReupload) {
-                onReupload({ file: fileToReupload });
-              }
-              handlePress();
-            }}
-            onDismiss={() => {
-              const newFiles = filesWithIds.filter(({ id }) => id !== filesWithIds[0].id);
-              setSelectedFiles(() => newFiles);
-              onDismiss?.({ file: filesWithIds[0] });
-            }}
+            onRemove={() => handleFileRemove(filesWithIds[0])}
+            onReupload={() => handleFileReupload(filesWithIds[0])}
+            onDismiss={() => handleFileDismiss(filesWithIds[0])}
             onPreview={onPreview}
           />
         )}
@@ -393,24 +404,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             <FileUploadItem
               file={file}
               size={size}
-              onRemove={() => {
-                const newFiles = filesWithIds.filter(({ id }) => id !== file.id);
-                setSelectedFiles(() => newFiles);
-                onRemove?.({ file });
-              }}
-              onReupload={() => {
-                const newFiles = filesWithIds.filter(({ id }) => id !== file.id);
-                setSelectedFiles(() => newFiles);
-                if (onReupload) {
-                  onReupload({ file });
-                }
-                handlePress();
-              }}
-              onDismiss={() => {
-                const newFiles = filesWithIds.filter(({ id }) => id !== file.id);
-                setSelectedFiles(() => newFiles);
-                onDismiss?.({ file });
-              }}
+              onRemove={() => handleFileRemove(file)}
+              onReupload={() => handleFileReupload(file)}
+              onDismiss={() => handleFileDismiss(file)}
               onPreview={onPreview}
             />
           </BaseBox>

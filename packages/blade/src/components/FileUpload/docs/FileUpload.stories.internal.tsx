@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Pressable } from 'react-native';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
@@ -69,32 +69,48 @@ export default {
   ],
 } as Meta<FileUploadProps>;
 
-const simulateUpload = (
+type SimulateUpload = (
   fileId: string,
   setFiles: React.Dispatch<React.SetStateAction<BladeFileList>>,
-  shouldFail = false,
-): void => {
-  let percent = 0;
-  const interval = setInterval(() => {
-    percent += Math.floor(Math.random() * 20) + 10;
-    if (shouldFail && percent >= 40) {
-      clearInterval(interval);
-      setFiles((prev) =>
-        prev.map((f) =>
-          f.id === fileId
-            ? { ...f, status: 'error', errorText: 'Upload failed. File too large.' }
-            : f,
-        ),
-      );
-    } else if (percent >= 100) {
-      clearInterval(interval);
-      setFiles((prev) =>
-        prev.map((f) => (f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f)),
-      );
-    } else {
-      setFiles((prev) => prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)));
-    }
-  }, 300);
+  shouldFail?: boolean,
+) => void;
+
+const useSimulateUpload = (): SimulateUpload => {
+  const activeIntervalsRef = useRef<Set<ReturnType<typeof setInterval>>>(new Set());
+
+  useEffect(() => {
+    return () => {
+      activeIntervalsRef.current.forEach(clearInterval);
+      activeIntervalsRef.current.clear();
+    };
+  }, []);
+
+  return useCallback((fileId, setFiles, shouldFail = false) => {
+    let percent = 0;
+    const interval = setInterval(() => {
+      percent += Math.floor(Math.random() * 20) + 10;
+      if (shouldFail && percent >= 40) {
+        clearInterval(interval);
+        activeIntervalsRef.current.delete(interval);
+        setFiles((prev) =>
+          prev.map((f) =>
+            f.id === fileId
+              ? { ...f, status: 'error', errorText: 'Upload failed. File too large.' }
+              : f,
+          ),
+        );
+      } else if (percent >= 100) {
+        clearInterval(interval);
+        activeIntervalsRef.current.delete(interval);
+        setFiles((prev) =>
+          prev.map((f) => (f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f)),
+        );
+      } else {
+        setFiles((prev) => prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)));
+      }
+    }, 300);
+    activeIntervalsRef.current.add(interval);
+  }, []);
 };
 
 type MockFilePickerProps = {
@@ -219,16 +235,20 @@ const MockFilePicker = ({
 const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
+  const simulateUpload = useSimulateUpload();
 
   const handleChange = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
-    const newFile = createBladeFile(selected[0]);
-    setFiles([newFile]);
-    simulateUpload(newFile.id!, setFiles);
-  }, []);
+  const handleFilesSelected = useCallback(
+    (selected: Array<typeof MOCK_FILES[number]>) => {
+      const newFile = createBladeFile(selected[0]);
+      setFiles([newFile]);
+      simulateUpload(newFile.id!, setFiles);
+    },
+    [simulateUpload],
+  );
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -273,16 +293,20 @@ SingleUpload.storyName = 'Single Upload';
 const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
+  const simulateUpload = useSimulateUpload();
 
   const handleChange = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
-    const newFiles = selected.map((s) => createBladeFile(s));
-    setFiles((prev) => [...prev, ...newFiles]);
-    newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
-  }, []);
+  const handleFilesSelected = useCallback(
+    (selected: Array<typeof MOCK_FILES[number]>) => {
+      const newFiles = selected.map((s) => createBladeFile(s));
+      setFiles((prev) => [...prev, ...newFiles]);
+      newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
+    },
+    [simulateUpload],
+  );
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -327,23 +351,27 @@ MultiUpload.storyName = 'Multi Upload';
 const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
-  const fileCountRef = React.useRef(0);
+  const fileCountRef = useRef(0);
+  const simulateUpload = useSimulateUpload();
 
   const handleChange = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
-    const newFiles = selected.map((s) => {
-      fileCountRef.current++;
-      return createBladeFile(s);
-    });
-    setFiles((prev) => [...prev, ...newFiles]);
-    newFiles.forEach((f, i) => {
-      const shouldFail = (fileCountRef.current - newFiles.length + i + 1) % 3 === 0;
-      simulateUpload(f.id!, setFiles, shouldFail);
-    });
-  }, []);
+  const handleFilesSelected = useCallback(
+    (selected: Array<typeof MOCK_FILES[number]>) => {
+      const newFiles = selected.map((s) => {
+        fileCountRef.current++;
+        return createBladeFile(s);
+      });
+      setFiles((prev) => [...prev, ...newFiles]);
+      newFiles.forEach((f, i) => {
+        const shouldFail = (fileCountRef.current - newFiles.length + i + 1) % 3 === 0;
+        simulateUpload(f.id!, setFiles, shouldFail);
+      });
+    },
+    [simulateUpload],
+  );
 
   return (
     <Box padding="spacing.5" maxWidth="400px">

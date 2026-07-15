@@ -81,16 +81,18 @@ type FileUploadCommonProps = {
    * @remarks On React Native, `fileList` is always an empty array in this callback.
    * The type signature is shared with web for cross-platform compatibility, but the semantics
    * differ: on web, `fileList` contains the selected files; on native, it is always `[]`.
-   * Prefer using `onPress` on native for tap events — `onChange` is kept for backward
-   * compatibility and fires alongside `onPress`.
+   * Prefer `onPress` for native-only tap handling. `onChange` also fires on the same tap
+   * (with an empty `fileList`) as a deliberate cross-platform tap signal — do not wire both
+   * to the same side effect or the handler will run twice.
    */
   onChange?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
    * Callback function triggered when the user taps the upload area (React Native only).
    *
    * Use this callback to open your file picker (e.g. `react-native-document-picker`).
-   * On native, `onChange` also fires as a tap signal for backward compatibility, but
-   * `onPress` is the recommended callback for handling tap events.
+   * On native, `onChange` also fires on the same tap with an empty `fileList` as a
+   * cross-platform tap signal. Prefer `onPress` for native-only code so you do not
+   * double-handle the tap when both callbacks are provided.
    *
    * This prop has no effect on web.
    */
