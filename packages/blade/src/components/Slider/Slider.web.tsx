@@ -125,10 +125,12 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
       onChangeValue?.({ name, value: nextValue, event: latestEventRef.current }),
     shouldUpdate: (previous, next) => !isSameValue(previous, next),
   });
-  const currentValue = React.useMemo(
-    () => clampValue(controllableValue, selectionType, min, max),
-    [controllableValue, selectionType, min, max],
-  );
+  const currentValue = React.useMemo(() => clampValue(controllableValue, selectionType, min, max), [
+    controllableValue,
+    selectionType,
+    min,
+    max,
+  ]);
   latestValueRef.current = currentValue;
 
   const { inputId, errorTextId, helpTextId, labelId, successTextId } = useFormId('slider');
@@ -149,16 +151,13 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const endValue = typeof currentValue === 'number' ? currentValue : rangeValue[1];
   const startPercent = getPercent(startValue, min, max);
   const endPercent = getPercent(endValue, min, max);
-  const generatedMarks = React.useMemo(() => marks ?? getGeneratedMarks(min, max, step), [
-    marks,
-    min,
-    max,
-    step,
-  ]);
+  const generatedMarks = React.useMemo(
+    () => (showMarks ? marks ?? getGeneratedMarks(min, max, step) : []),
+    [showMarks, marks, min, max, step],
+  );
   const visibleMarks = React.useMemo(
-    () =>
-      showMarks ? generatedMarks.filter((mark) => mark.value >= min && mark.value <= max) : [],
-    [generatedMarks, min, max, showMarks],
+    () => generatedMarks.filter((mark) => mark.value >= min && mark.value <= max),
+    [generatedMarks, min, max],
   );
   const describedByParts: string[] = [];
   if (helpText) describedByParts.push(helpTextId);
