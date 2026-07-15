@@ -12,8 +12,6 @@ vi.mock('../tokens.js', () => ({
 }));
 
 describe('getBladeDocsResponseText', () => {
-  const mockKnowledgeBaseDir = '/mock/knowledgebase';
-
   beforeEach(() => {
     vi.clearAllMocks();
     vi.spyOn(path, 'join').mockImplementation((...args) => args.join('/'));
