@@ -28,7 +28,7 @@ const FileUploadItemIcon: React.ComponentType<FileUploadItemIconProps> = ({
     );
   }
 
-  const fileType = fileName.split('.').pop();
+  const fileType = fileName.includes('.') ? fileName.split('.').pop() : '';
 
   const iconColors: Record<'background' | 'border' | 'cover' | 'fold', string> = {
     background: globalColors.chromatic.cloud[50],
@@ -90,17 +90,19 @@ const FileUploadItemIcon: React.ComponentType<FileUploadItemIconProps> = ({
 
         <Path d="M3 19.3262H35.31V31.5817H3V19.3262Z" fill={iconColors.cover} strokeWidth="0.5" />
       </Svg>
-      <Text
-        position="absolute"
-        top="46%"
-        left="spacing.0"
-        right="spacing.0"
-        textAlign="center"
-        color="interactive.text.staticWhite.normal"
-        size="xsmall"
-      >
-        {`.${fileType}`}
-      </Text>
+      {fileType ? (
+        <Text
+          position="absolute"
+          top="46%"
+          left="spacing.0"
+          right="spacing.0"
+          textAlign="center"
+          color="interactive.text.staticWhite.normal"
+          size="xsmall"
+        >
+          {`.${fileType}`}
+        </Text>
+      ) : null}
     </BaseBox>
   );
 };
