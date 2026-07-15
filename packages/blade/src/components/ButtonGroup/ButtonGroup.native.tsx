@@ -14,7 +14,6 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { makeAccessible } from '~utils/makeAccessible';
 
 // Mirrors the web implementation's getDividerColorToken for parity.
 // Only the 'primary' branch is reachable at runtime (dividers are only
@@ -88,7 +87,6 @@ const _ButtonGroup = ({
       {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
       {...makeAnalyticsAttribute(rest)}
       {...getStyledProps(rest)}
-      {...makeAccessible({ role: 'group' })}
       accessible={false}
     >
       {React.Children.map(children, (child, index) => {
