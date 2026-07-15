@@ -83,7 +83,6 @@
     "danger": "11.3.1",
     "dotenv": "^16.4.5",
     "execa": "5.0.0",
-    "globby": "14.0.1",
     "@rollup/plugin-alias": "5.0.0",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-commonjs": "25.0.4",

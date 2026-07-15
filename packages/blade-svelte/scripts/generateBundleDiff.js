@@ -63,8 +63,8 @@ const generateBundleDiff = async () => {
   }
   const emptyProjectSize = baseStat.size / 1000;
   // Calculate a separate base empty project size from the base stats for accurate diffs
-  const baseEmptyProjectSize =
-    baseBundleSizeStats.find((stat) => stat.name === 'Base')?.size / 1000 || emptyProjectSize;
+  const baseBaseStat = baseBundleSizeStats.find((stat) => stat.name === 'Base');
+  const baseEmptyProjectSize = baseBaseStat ? baseBaseStat.size / 1000 : emptyProjectSize;
 
   // Calculate the size differences and create a formatted diff table
   bundleDiff.forEach((component) => {
