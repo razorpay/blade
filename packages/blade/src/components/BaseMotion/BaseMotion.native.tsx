@@ -39,9 +39,7 @@ type MotionDivProps = Omit<BoxProps, 'style' | 'pointerEvents' | 'as'>;
  * `StyledDiv`. Web-only CSS is stripped since `Animated.View` can't consume it.
  */
 const StyledDiv = styled(Animated.View)<MotionDivProps>((props) => {
-  const boxStyles = useMemoizedStyles(
-    (props as unknown) as BoxProps & { theme: Theme },
-  ) as Record<
+  const boxStyles = useMemoizedStyles((props as unknown) as BoxProps & { theme: Theme }) as Record<
     string,
     unknown
   >;
