@@ -1335,6 +1335,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
       hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
       hoverIconColor="hsla(0, 0%, 100%, 1)"
       isFullWidth={true}
+      isInsideFullWidthButtonGroup={true}
       isLoading={false}
       isPressed={false}
       minHeight="36px"
@@ -1361,7 +1362,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
         [
           {
             "alignItems": "center",
-            "alignSelf": "center",
+            "alignSelf": "stretch",
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderBottomLeftRadius": 8,
             "borderBottomRightRadius": 0,
@@ -1373,7 +1374,10 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
             "borderWidth": 0,
             "cursor": "pointer",
             "display": "flex",
+            "flexBasis": 0,
             "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "center",
             "minHeight": 36,
             "overflow": "hidden",
@@ -1384,7 +1388,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
             "textDecorationColor": "black",
             "textDecorationLine": "none",
             "textDecorationStyle": "solid",
-            "width": "100%",
+            "width": "auto",
           },
           {
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1806,6 +1810,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
       hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
       hoverIconColor="hsla(0, 0%, 100%, 1)"
       isFullWidth={true}
+      isInsideFullWidthButtonGroup={true}
       isLoading={false}
       isPressed={false}
       minHeight="36px"
@@ -1832,7 +1837,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
         [
           {
             "alignItems": "center",
-            "alignSelf": "center",
+            "alignSelf": "stretch",
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderBottomLeftRadius": 0,
             "borderBottomRightRadius": 0,
@@ -1844,7 +1849,10 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
             "borderWidth": 0,
             "cursor": "pointer",
             "display": "flex",
+            "flexBasis": 0,
             "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "center",
             "minHeight": 36,
             "overflow": "hidden",
@@ -1855,7 +1863,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
             "textDecorationColor": "black",
             "textDecorationLine": "none",
             "textDecorationStyle": "solid",
-            "width": "100%",
+            "width": "auto",
           },
           {
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -2194,6 +2202,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
       hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
       hoverIconColor="hsla(0, 0%, 100%, 1)"
       isFullWidth={true}
+      isInsideFullWidthButtonGroup={true}
       isLoading={false}
       isPressed={false}
       minHeight="36px"
@@ -2220,7 +2229,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
         [
           {
             "alignItems": "center",
-            "alignSelf": "center",
+            "alignSelf": "stretch",
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderBottomLeftRadius": 0,
             "borderBottomRightRadius": 8,
@@ -2232,7 +2241,10 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
             "borderWidth": 0,
             "cursor": "pointer",
             "display": "flex",
+            "flexBasis": 0,
             "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "center",
             "minHeight": 36,
             "overflow": "hidden",
@@ -2243,7 +2255,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
             "textDecorationColor": "black",
             "textDecorationLine": "none",
             "textDecorationStyle": "solid",
-            "width": "100%",
+            "width": "auto",
           },
           {
             "backgroundColor": "hsla(218, 89%, 51%, 1)",

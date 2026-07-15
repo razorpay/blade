@@ -107,6 +107,12 @@ export type StyledBaseButtonProps = Omit<
    * clipped. Prevents doubled inset shadow thickness at ButtonGroup junctions.
    */
   flattenInsetShadowSides?: boolean;
+  /**
+   * When true (React Native ButtonGroup with `isFullWidth`), use `flex: 1`
+   * instead of `width: 100%` so sibling buttons share the row equally. Web
+   * does this via CSS child selectors (`flex: 1`); native has no cascade.
+   */
+  isInsideFullWidthButtonGroup?: boolean;
   borderWidth?: string;
   shadowHighlightColor?: string;
   shadowHighlightHeight?: number;

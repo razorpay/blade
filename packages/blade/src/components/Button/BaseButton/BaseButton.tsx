@@ -580,10 +580,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // top/left "glassy" edge also comes from the inset highlight stroke mapped
   // from box-shadow — suppress that on non-first buttons too so junctions
   // don't show a white left edge on Share/Download.
-  const isNonFirstInButtonGroup =
-    isReactNative() && buttonGroupProps.variant !== undefined && !isFirstInGroup;
+  const isNonFirstInButtonGroup = isInsideRNButtonGroup && !isFirstInGroup;
   const showShadowGradient = Boolean(isShadowGradientVisible) && !isNonFirstInButtonGroup;
   const effectiveShadowHighlightColor = isNonFirstInButtonGroup ? undefined : shadowHighlightColor;
+
+  // Web ButtonGroup sets `flex: 1` on children when isFullWidth. On native,
+  // isFullWidth alone applies `width: 100%`, which overflows in a row — use
+  // flex instead so siblings share space equally.
+  const isInsideFullWidthButtonGroup =
+    isInsideRNButtonGroup && Boolean(buttonGroupProps.isFullWidth ?? isFullWidth);
 
   const handlePointerPressedIn = React.useCallback(() => {
     if (disabled) return;
@@ -675,6 +680,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...(buttonBorderRadii ? { borderRadii: buttonBorderRadii } : {})}
       {...(collapseGroupBorder ? { collapseGroupBorder } : {})}
       {...(isInsideRNButtonGroup ? { flattenInsetShadowSides: true } : {})}
+      {...(isInsideFullWidthButtonGroup ? { isInsideFullWidthButtonGroup: true } : {})}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       height={height}

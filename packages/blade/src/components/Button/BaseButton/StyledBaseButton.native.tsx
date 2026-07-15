@@ -19,7 +19,11 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   const styledPropsCSSObject = useStyledProps(props);
   // boxShadow with inset values is not supported in React Native (css-to-react-native
   // cannot parse multiple inset shadows), so we exclude it from native styles.
-  const { boxShadow: _boxShadow, ...nativeButtonStyles } = getStyledBaseButtonStyles(props);
+  // Inside a full-width ButtonGroup, skip width:100% — siblings need flex:1 to share
+  // the row (matches web's CSS `flex: 1` on grouped buttons).
+  const { boxShadow: _boxShadow, ...nativeButtonStyles } = getStyledBaseButtonStyles(
+    props.isInsideFullWidthButtonGroup ? { ...props, isFullWidth: false } : props,
+  );
 
   // Round only the outer corners of the first/last buttons inside a ButtonGroup
   // so the group's rounded corners aren't clipped (there is no CSS cascade on RN).
@@ -38,9 +42,13 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
     ? { marginLeft: -Number(String(props.theme.border.width.thin).replace('px', '')) || -1 }
     : {};
 
+  const fullWidthInGroupStyle = props.isInsideFullWidthButtonGroup
+    ? { flex: 1, alignSelf: 'stretch' as const }
+    : { alignSelf: 'center' as const };
+
   return {
     ...nativeButtonStyles,
-    alignSelf: 'center',
+    ...fullWidthInGroupStyle,
     display: 'flex',
     flexDirection: 'row',
     overflow: 'hidden',
@@ -94,6 +102,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     borderRadii,
     collapseGroupBorder,
     flattenInsetShadowSides,
+    isInsideFullWidthButtonGroup,
     motionDuration,
     motionEasing,
     isLoading,
@@ -184,6 +193,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       borderRadii={borderRadii}
       collapseGroupBorder={collapseGroupBorder}
       flattenInsetShadowSides={flattenInsetShadowSides}
+      isInsideFullWidthButtonGroup={isInsideFullWidthButtonGroup}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       testID={testID}
