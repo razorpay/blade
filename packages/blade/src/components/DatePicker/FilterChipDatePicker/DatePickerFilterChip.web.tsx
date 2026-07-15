@@ -61,6 +61,7 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
     format,
     isDisabled,
     selectedPresetLabel,
+    showClearButton = true,
   } = props;
   const { locale } = useDatesContext();
   const displayFormat = useDatePickerContext()?.displayFormat ?? 'default';
@@ -97,6 +98,7 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
       ref={ref}
       label={label}
       value={dateValue}
+      showClearButton={showClearButton}
       onClearButtonClick={onClearButtonChange}
       accessibilityProps={{
         label: accessibilityLabel ?? label,

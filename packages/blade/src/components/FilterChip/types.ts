@@ -15,6 +15,16 @@ type BaseFilterChipProps = {
   onClearButtonClick?: ({ value }: { value: string | string[] }) => void;
 
   /**
+   * Whether to render the clear (cross) button when the chip has a selected value.
+   *
+   * Set to `false` for filters that should always hold a value (e.g. a date filter
+   * with a mandatory default) so users can't clear it to an empty state.
+   *
+   * @default true
+   */
+  showClearButton?: boolean;
+
+  /**
    * Children. Title of the Chip
    */
   label: string;

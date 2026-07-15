@@ -13,6 +13,7 @@ import type { BaseFilterChipProps } from '~components/FilterChip/types';
 import { useId } from '~utils/useId';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFirstRender } from '~utils/useFirstRender';
+import { makeGetTitleFromValue, makeGetFilterChipDisplayValue } from './FilterChipSelectInputUtils';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
@@ -23,6 +24,14 @@ type FilterChipSelectInputProps = Pick<
   name?: string;
   onClearButtonClick?: (props: { name: string; values: string[] }) => void;
   isDisabled?: boolean;
+  /**
+   * Whether to render the clear (cross) button when the chip has a selected value.
+   *
+   * Set to `false` for filters that should always hold a value.
+   *
+   * @default true
+   */
+  showClearButton?: boolean;
 } & DataAnalyticsAttribute;
 
 const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactElement => {
@@ -39,6 +48,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     onChange,
     name,
     isDisabled,
+    showClearButton = true,
     ...rest
   } = props;
   const [uncontrolledInputValue, setUncontrolledInputValue] = React.useState<string[]>([]);
@@ -60,8 +70,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     controlledValueIndices,
     changeCallbackTriggerer,
   } = useDropdown();
-  const valueTitle = options.find((option) => option.value === value)?.title ?? value;
-
   const isUnControlled = options.length > 0 && props.value === undefined;
   // Currently we are having 2 context for selectedFilters. One is for FilterChipGroup and other is for  ListView
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
@@ -124,24 +132,34 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
               .map((option, index) => (value.includes(option.value) ? index : -1))
               .filter((index) => index !== -1);
       setSelectedIndices(newSelectedIndices);
+      if (newSelectedIndices.length > 0) {
+        setFilterChipGroupSelectedFilters((prev) =>
+          prev.includes(label) ? prev : [...prev, label],
+        );
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUnControlled, options]);
 
-  const getTitleFromValue = (value: string): string => {
-    const option = options.find((option) => option.value === value);
-    return option ? option.title : '';
-  };
+  const getTitleFromValue = makeGetTitleFromValue(options);
 
   const getUnControlledFilterChipValue = (): string | string[] => {
     if (selectionType === 'single') {
       if (uncontrolledInputValue.length > 0) {
-        return getTitleFromValue(uncontrolledInputValue[0]);
+        return getTitleFromValue(uncontrolledInputValue[0]) ?? '';
       }
       return '';
     }
-    return uncontrolledInputValue;
+    // For multiple selection, hand the chip the option titles (not the raw values) so it can
+    // render the selected option name(s) instead of a bare count.
+    return uncontrolledInputValue.map((selectionValue) => getTitleFromValue(selectionValue) ?? '');
   };
+
+  // Resolves the value shown inside the chip: option titles for display. Controlled consumers
+  // pass option value(s); we map them to titles here (falling back to the raw value if the
+  // options haven't loaded yet).
+  const getFilterChipDisplayValue = (): string | string[] =>
+    makeGetFilterChipDisplayValue(props.value, getUnControlledFilterChipValue, getTitleFromValue);
 
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
@@ -210,8 +228,9 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   return (
     <BaseFilterChip
       label={label}
-      value={valueTitle ?? getUnControlledFilterChipValue()}
+      value={getFilterChipDisplayValue()}
       onClearButtonClick={handleClearButtonClick}
+      showClearButton={showClearButton}
       selectionType={selectionType}
       {...rest}
       ref={triggererRef as any}

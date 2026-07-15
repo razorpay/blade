@@ -542,6 +542,58 @@ export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDate
 
 FilterChipDatePickerStorySingleStory.storyName = 'FilterChipDatePicker (Single Selection)';
 
+export const FilterChipDatePickerClearButtonBehavior: StoryFn<typeof FilterChipDatePicker> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8" maxWidth="760px">
+      <Text>
+        Use <Code size="medium">showClearButton</Code> to control the clear (cross) button on the
+        FilterChipDatePicker. It defaults to <Code size="medium">true</Code>.
+      </Text>
+
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Text weight="semibold">With clear button (default)</Text>
+        <Text size="small" color="surface.text.gray.muted">
+          Once a date is selected the cross appears; pressing it clears the value (fires{' '}
+          <Code size="medium">onChange</Code> with an empty value and{' '}
+          <Code size="medium">onClearButtonClick</Code>).
+        </Text>
+        <Box>
+          <FilterChipDatePicker
+            label="Date"
+            selectionType="single"
+            defaultValue={new Date()}
+            onChange={(date) => {
+              console.log('date', date);
+            }}
+          />
+        </Box>
+      </Box>
+
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Text weight="semibold">Without clear button (showClearButton={'{false}'})</Text>
+        <Text size="small" color="surface.text.gray.muted">
+          For filters that must always hold a value. The chip starts with a default date and never
+          shows the cross, so it can&apos;t be cleared to an empty state — the calendar can still be
+          opened to change the date.
+        </Text>
+        <Box>
+          <FilterChipDatePicker
+            label="Date"
+            selectionType="single"
+            defaultValue={new Date()}
+            showClearButton={false}
+            onChange={(date) => {
+              console.log('date', date);
+            }}
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+FilterChipDatePickerClearButtonBehavior.storyName = 'FilterChipDatePicker (Clear Button Behaviour)';
+
 export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
   typeof FilterChipDatePicker
 > = () => {
