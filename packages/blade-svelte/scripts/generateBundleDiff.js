@@ -76,10 +76,15 @@ const generateBundleDiff = async () => {
     const baseComponent = baseBundleSizeStats.find((stat) => stat.name === component.name);
     // Calculate the empty project size, including all dependencies, and subtract it from the component bundle size
     // This adjustment is crucial to obtain more accurate results, mitigating size differences due to additional dependencies in the project
+    // Clamp to 0 because gzip compression is not additive — for small components,
+    // the combined gzipped output can be smaller than the base alone, producing
+    // a negative "net" size that doesn't reflect reality.
     const currentComponentSize = currentComponent
-      ? currentComponent.size / 1000 - emptyProjectSize
+      ? Math.max(0, currentComponent.size / 1000 - emptyProjectSize)
       : 0;
-    const baseComponentSize = baseComponent ? baseComponent.size / 1000 - baseEmptyProjectSize : 0;
+    const baseComponentSize = baseComponent
+      ? Math.max(0, baseComponent.size / 1000 - baseEmptyProjectSize)
+      : 0;
 
     if (!baseComponent && currentComponent) {
       // Component added in the PR
