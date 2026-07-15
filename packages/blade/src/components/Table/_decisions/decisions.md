@@ -702,6 +702,30 @@ Out implementation of virtualized table is an wrapper on top of react-table-libr
 alternatively we can use react-window or react-virtualized to create a virtualized table wrapper. but that would require more effort to create a virtualized table. plus their is a lot of boilerplate code to create a virtualized table using react-window or react-virtualized.
 also their is high chance of bugs and performance issues in the implementation of virtualized table using react-window or react-virtualized. if we need more features in the future then we can expore react-window or react-virtualized.
 
+## Active Row State (Detail Panel Integration)
+
+`TableRow` supports an `isActive` prop to visually indicate the row whose detail/side panel or
+drawer is currently open. This is distinct from `selectionType` (which marks rows chosen for a
+bulk action).
+
+**Visual treatment:** brand-tinted background (`interactive.background.primary.faded`) + 2px
+inset left-border accent (`interactive.border.primary.default`) on the first cell. The active
+highlight intentionally differs from the neutral-gray selection highlight so both states can
+coexist — a row can be active _and_ selected simultaneously.
+
+**State management is consumer-controlled.** Blade does not track which row is active. Pass
+`isActive={activeItemId === item.id}` from the parent component.
+
+```tsx
+const [activeId, setActiveId] = React.useState<string | null>(null);
+
+<TableRow
+  item={item}
+  isActive={activeId === item.id}
+  onClick={({ item }) => setActiveId(item.id)}
+>
+```
+
 ## Decision
 
 1. We have made a wrapper on top of react-table-library's implementation to create a virtualized table.
