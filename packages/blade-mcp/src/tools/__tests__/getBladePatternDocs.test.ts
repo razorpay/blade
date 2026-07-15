@@ -27,10 +27,10 @@ vi.mock('../../utils/generalUtils.js', async (importOriginal) => {
 vi.mock('../../utils/detectFramework.js', () => ({
   detectFrameworkFromProject: vi.fn(() => 'react'),
 }));
-vi.mock('fs', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('fs')>();
+vi.mock('fs', async () => {
+  const actual = await vi.importActual('fs');
   return {
-    ...actual,
+    ...(actual as object),
     readFileSync: vi.fn(() => 'Mock pattern guide content'),
     existsSync: vi.fn(() => false),
   };
