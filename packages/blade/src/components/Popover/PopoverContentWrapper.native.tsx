@@ -29,7 +29,7 @@ const StyledPopoverContentWrapper = styled(AnimatedBaseBox)<{
 });
 
 const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>(
-  ({ children, styles, side, isVisible, colorScheme, ...props }, ref) => {
+  ({ children, styles, side, isVisible, animationDuration, colorScheme, ...props }, ref) => {
     const { theme, platform } = useTheme();
     const isMobile = platform === 'onMobile';
 
@@ -41,14 +41,14 @@ const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>
     const opacity = useSharedValue(0);
 
     const easing = (theme.motion.easing.entrance as unknown) as EasingFn;
-    const duration = theme.motion.duration.quick;
+    const duration = animationDuration ?? theme.motion.duration.quick;
 
     React.useEffect(() => {
       const timings = { easing, duration };
       opacity.value = withTiming(isVisible ? 1 : 0, timings);
       translate.value = withTiming(isVisible ? 0 : offset, timings);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isVisible]);
+    }, [isVisible, duration]);
 
     // Avoid computed property keys inside useAnimatedStyle — Babel compiles them to
     // _defineProperty() which is not a worklet and crashes Reanimated v4 on the UI thread.
