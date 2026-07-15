@@ -58,12 +58,21 @@ type BaseMotionBoxProps = {
    * animate={controls}
    * ```
    *
-   * On native there is no framer-motion `AnimationControls` equivalent. Instead a lightweight
-   * control object (`{ start }`) or a boolean flag is used to drive the animation target.
+   * On native there is no framer-motion `AnimationControls` equivalent. Instead a boolean flag
+   * is used to drive the animation target.
+   *
+   * E.g. (native)
+   * ```js
+   * // When animate={true}, the component transitions to the "animate" variant.
+   * // When animate={false}, the component transitions to the "exit" variant.
+   * <BaseMotionBox animate={true} motionVariants={fadeVariants} motionTriggers={['on-animate-interactions']}>
+   *   <Text>Fade content</Text>
+   * </BaseMotionBox>
+   * ```
    */
   animate?: Platform.Select<{
     web: AnimationControls;
-    native: { start: (variant: keyof MotionVariantsType) => void } | boolean;
+    native: boolean;
   }>;
 
   /**
