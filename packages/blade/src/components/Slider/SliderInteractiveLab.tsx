@@ -95,7 +95,12 @@ const SliderInteractiveLab = (): React.ReactElement => {
         </Box>
       </Box>
       <Divider />
-      <Box display="flex" flexDirection={{ base: 'column', m: 'row' }} gap="spacing.7">
+      <Box
+        display="flex"
+        flexDirection={{ base: 'column', m: 'row' }}
+        gap="spacing.7"
+        alignItems={{ base: 'stretch', m: 'flex-start' }}
+      >
         <Box
           display="flex"
           flexDirection="column"
