@@ -791,17 +791,18 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     return { dataMin: min, dataMax: max };
   }, [data, visibleLines, allLines]);
 
-  const hasNegatives = dataMin < 0;
-  const yMin = hasNegatives ? niceFloor(dataMin) : 0;
-  const yMax = resolveYMax(dataMax);
+  // Honor ChartYAxis domain/tickCount when provided (AreaChart.native parity).
+  const yMax = slots.yDomain ? Number(slots.yDomain[1]) : resolveYMax(dataMax);
+  const yMin = slots.yDomain ? Number(slots.yDomain[0]) : dataMin < 0 ? niceFloor(dataMin) : 0;
   const yRange = yMax - yMin;
+  const yTickCount = slots.yTickCount ?? Y_TICK_COUNT;
   const yTicks = useMemo(() => {
     const ticks: number[] = [];
-    for (let i = 0; i <= Y_TICK_COUNT; i++) {
-      ticks.push(yMin + (yRange / Y_TICK_COUNT) * i);
+    for (let i = 0; i <= yTickCount; i++) {
+      ticks.push(yMin + (yRange / yTickCount) * i);
     }
     return ticks;
-  }, [yMin, yRange]);
+  }, [yMin, yRange, yTickCount]);
 
   const showAxes = slots.hasXAxis || slots.hasYAxis;
   const hasSecondaryXLabels = Boolean(slots.xSecondaryDataKey);
