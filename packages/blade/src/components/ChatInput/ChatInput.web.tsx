@@ -48,6 +48,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     onFileDismiss,
     onFileReupload,
     accept,
+    maxCount,
     suggestions,
     onSuggestionAccept,
     validationState,
@@ -70,6 +71,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     files,
     setActiveSuggestionIndex,
     hasFiles,
+    isAtMaxCount,
     isSubmitDisabled,
     showGhostSuggestion,
     handleTextChange,
@@ -95,6 +97,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       onFileRemove,
       onFileDismiss,
       accept,
+      maxCount,
       suggestions,
       onSuggestionAccept,
     },
@@ -205,6 +208,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   const actionBarContent = (
     <ChatInputActionBar
       isDisabled={isDisabled}
+      isUploadDisabled={isAtMaxCount}
       isGenerating={isGenerating}
       isSubmitDisabled={isSubmitDisabled}
       hideFileUpload={hideFileUpload}
