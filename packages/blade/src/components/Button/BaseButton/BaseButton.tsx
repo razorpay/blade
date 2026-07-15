@@ -540,8 +540,47 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // `overflow: hidden` + `borderRadius`. React Native has no CSS cascade, so we
   // flatten each button's border radius to 0 here and let the group container do
   // the outer rounding — otherwise the inner (middle) buttons show rounded corners.
-  const buttonBorderRadiusValue =
-    isReactNative() && buttonGroupProps.isInsideButtonGroup ? makeBorderSize(0) : borderRadius;
+  const isInsideRNButtonGroup = isReactNative() && Boolean(buttonGroupProps.isInsideButtonGroup);
+  const buttonBorderRadiusValue = isInsideRNButtonGroup ? makeBorderSize(0) : borderRadius;
+
+  // The group container clips with `overflow: hidden` + `borderRadius`. Since the
+  // buttons are square (radius 0), the native border overlay (drawn as a square
+  // ring) gets clipped at the group's rounded outer corners. To match web, round
+  // only the outer corners of the first/last buttons (both the background and the
+  // border overlay) so the ring follows the rounded corner instead of being cut.
+  const groupCornerRadius = Number(String(borderRadius).replace('px', '')) || 0;
+  const isFirstInGroup = Boolean(buttonGroupProps.isFirstInButtonGroup);
+  const isLastInGroup = Boolean(buttonGroupProps.isLastInButtonGroup);
+  const buttonBorderRadii = isInsideRNButtonGroup
+    ? {
+        topLeft: isFirstInGroup ? groupCornerRadius : 0,
+        bottomLeft: isFirstInGroup ? groupCornerRadius : 0,
+        topRight: isLastInGroup ? groupCornerRadius : 0,
+        bottomRight: isLastInGroup ? groupCornerRadius : 0,
+      }
+    : undefined;
+
+  // Secondary/tertiary groups separate buttons via each button's own gray border
+  // (there is no divider). Adjacent buttons would show a doubled border, so pull
+  // non-first buttons 1px left to collapse the two borders into one — matching
+  // web's `marginLeft: -1px` on `:not(:first-child)`.
+  const effectiveGroupVariant = buttonGroupProps.variant ?? variant;
+  const collapseGroupBorder =
+    isInsideRNButtonGroup &&
+    !isFirstInGroup &&
+    (effectiveGroupVariant === 'secondary' || effectiveGroupVariant === 'tertiary');
+
+  // Match web ButtonGroup: only the first child keeps the radial glow
+  // (`backgroundImage: none` on `:not(:first-child)`). On native the white
+  // top/left "glassy" edge also comes from the inset highlight stroke mapped
+  // from box-shadow — suppress that on non-first buttons too so junctions
+  // don't show a white left edge on Share/Download.
+  const isNonFirstInButtonGroup =
+    Boolean(buttonGroupProps.isInsideButtonGroup) && !buttonGroupProps.isFirstInButtonGroup;
+  const showShadowGradient = Boolean(isShadowGradientVisible) && !isNonFirstInButtonGroup;
+  const effectiveShadowHighlightColor = isNonFirstInButtonGroup
+    ? undefined
+    : shadowHighlightColor;
 
   const handlePointerPressedIn = React.useCallback(() => {
     if (disabled) return;
@@ -630,6 +669,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       }}
       type={type}
       borderRadius={buttonBorderRadiusValue}
+      borderRadii={buttonBorderRadii}
+      collapseGroupBorder={collapseGroupBorder}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       height={height}
@@ -647,13 +688,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onMouseUp={handlePointerPressedOut}
       onMouseOut={handlePointerPressedOut}
       onKeyUp={handleKeyboardPressedOut}
-      shadowHighlightColor={shadowHighlightColor}
-      shadowHighlightHeight={shadowHighlightHeight}
+      shadowHighlightColor={effectiveShadowHighlightColor}
+      shadowHighlightHeight={isNonFirstInButtonGroup ? undefined : shadowHighlightHeight}
       shadowBottomColor={shadowBottomColor}
       shadowBottomHeight={shadowBottomHeight}
       shadowBorderColor={shadowBorderColor}
       shadowRingWidth={shadowRingWidth}
-      isShadowGradientVisible={isShadowGradientVisible}
+      isShadowGradientVisible={showShadowGradient}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}

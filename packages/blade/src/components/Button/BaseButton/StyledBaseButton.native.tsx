@@ -21,12 +21,31 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   // cannot parse multiple inset shadows), so we exclude it from native styles.
   const { boxShadow: _boxShadow, ...nativeButtonStyles } = getStyledBaseButtonStyles(props);
 
+  // Round only the outer corners of the first/last buttons inside a ButtonGroup
+  // so the group's rounded corners aren't clipped (there is no CSS cascade on RN).
+  const perCornerRadii = props.borderRadii
+    ? {
+        borderTopLeftRadius: props.borderRadii.topLeft,
+        borderTopRightRadius: props.borderRadii.topRight,
+        borderBottomLeftRadius: props.borderRadii.bottomLeft,
+        borderBottomRightRadius: props.borderRadii.bottomRight,
+      }
+    : {};
+
+  // Overlap the previous button by one border-width so the two adjacent gray
+  // borders collapse into a single line (matches web's `marginLeft: -1px`).
+  const collapseBorderStyle = props.collapseGroupBorder
+    ? { marginLeft: -props.theme.border.width.thin }
+    : {};
+
   return {
     ...nativeButtonStyles,
     alignSelf: 'center',
     display: 'flex',
     flexDirection: 'row',
     overflow: 'hidden',
+    ...perCornerRadii,
+    ...collapseBorderStyle,
     ...styledPropsCSSObject,
   };
 });
@@ -72,6 +91,8 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     focusBorderColor,
     borderWidth,
     borderRadius,
+    borderRadii,
+    collapseGroupBorder,
     motionDuration,
     motionEasing,
     isLoading,
@@ -159,6 +180,8 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       focusBorderColor={focusBorderColor}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
+      borderRadii={borderRadii}
+      collapseGroupBorder={collapseGroupBorder}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       testID={testID}
@@ -172,6 +195,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
             {shadowBorderColor ? (
               <ButtonShadowOverlay
                 borderRadius={Number(String(borderRadius).replace('px', '')) || 0}
+                borderRadii={borderRadii}
                 highlightColor={shadowHighlightColor}
                 highlightHeight={shadowHighlightHeight}
                 shadowColor={shadowBottomColor}
@@ -179,6 +203,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
                 borderColor={shadowBorderColor}
                 ringWidth={shadowRingWidth}
                 showGradient={isShadowGradientVisible}
+                flattenInsetShadowSides={Boolean(borderRadii)}
               />
             ) : null}
             {children}

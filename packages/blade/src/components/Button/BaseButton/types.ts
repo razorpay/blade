@@ -17,6 +17,17 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
  */
 export type IconColor = Exclude<IconProps['color'], 'currentColor'>;
 
+/**
+ * Per-corner border radii (in px). Used on React Native to round only the outer
+ * corners of the first/last buttons inside a ButtonGroup.
+ */
+export type ButtonCornerRadii = {
+  topLeft: number;
+  topRight: number;
+  bottomLeft: number;
+  bottomRight: number;
+};
+
 export type BaseButtonStyleProps = {
   iconSize: IconSize;
   spinnerSize: BaseSpinnerProps['size'];
@@ -81,6 +92,15 @@ export type StyledBaseButtonProps = Omit<
   motionDuration: DurationString;
   motionEasing: EasingString;
   borderRadius: BorderRadiusValues | number;
+  borderRadii?: ButtonCornerRadii;
+  /**
+   * When true, pulls the button 1px to the left so its border overlaps the
+   * previous button's border. Used on React Native for secondary/tertiary
+   * ButtonGroups (which separate buttons via their own gray border rather than a
+   * divider) to collapse the two adjacent borders into a single line, matching
+   * web's `marginLeft: -1px` behaviour.
+   */
+  collapseGroupBorder?: boolean;
   borderWidth?: string;
   shadowHighlightColor?: string;
   shadowHighlightHeight?: number;

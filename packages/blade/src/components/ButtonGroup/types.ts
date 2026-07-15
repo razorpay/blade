@@ -60,6 +60,23 @@ type ButtonGroupContextType = Pick<
    * round only the outer edges.
    */
   isInsideButtonGroup?: boolean;
+  /**
+   * True when this Button is the first child of a ButtonGroup.
+   *
+   * On web, CSS (`backgroundImage: none` on `:not(:first-child)`) removes the
+   * primary radial glow from non-first buttons. React Native has no CSS
+   * selectors, so BaseButton reads this to hide the native shadow gradient.
+   */
+  isFirstInButtonGroup?: boolean;
+  /**
+   * True when this Button is the last child of a ButtonGroup.
+   *
+   * On web, CSS rounds only the outer edges of the group. React Native has no
+   * CSS cascade, so BaseButton reads `isFirstInButtonGroup`/`isLastInButtonGroup`
+   * to round only the outer corners of the first and last buttons (and their
+   * native border overlay) so the group's rounded corners aren't clipped.
+   */
+  isLastInButtonGroup?: boolean;
 };
 
 export type { ButtonGroupProps, StyledButtonGroupProps, ButtonGroupContextType };

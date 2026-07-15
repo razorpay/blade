@@ -92,7 +92,15 @@ const _ButtonGroup = ({
 
           return (
             <React.Fragment key={index}>
-              {child}
+              <ButtonGroupProvider
+                value={{
+                  ...contextValue,
+                  isFirstInButtonGroup: index === 0,
+                  isLastInButtonGroup: isLast,
+                }}
+              >
+                {child}
+              </ButtonGroupProvider>
               {showDivider && <StyledDivider dividerColor={dividerColor} />}
             </React.Fragment>
           );
