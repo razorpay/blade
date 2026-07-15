@@ -53,6 +53,15 @@ type BottomSheetProps = {
    * @default 100
    */
   zIndex?: number;
+  /**
+   * When `true`, the sheet sizes itself to its content instead of resting on the
+   * provided `snapPoints`. The single snap point is derived from the measured
+   * header + body + footer height (clamped to the screen), so there is no empty
+   * gap below the content and the sheet grows/shrinks as the content changes.
+   *
+   * @default false
+   */
+  snapToContentHeight?: boolean;
 } & DataAnalyticsAttribute;
 
 type BottomSheetHeaderProps = Pick<
