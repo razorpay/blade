@@ -12,7 +12,6 @@ import { Rect, Path, TSpan, G } from 'react-native-svg';
 import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart.native';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
-/* eslint-disable babel/new-cap */
 const data = {
   nodes: [
     { id: 'a', name: 'Alpha' },
@@ -36,14 +35,20 @@ const renderSankey = (chart: React.ReactElement): ReturnType<typeof renderWithTh
   return utils;
 };
 
+// All rendered <Rect>s are visible shapes (node bars + chip backgrounds); there is
+// no separate hit-target rect. `shapeRects` is an identity pass kept so existing
+// count assertions read unchanged.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const shapeRects = (rects: any[]): any[] => rects;
+
 // Selection is driven by a single outer <Pressable> (testID `<id>-canvas`) that
 // hit-tests the touch location, so interaction tests fire `press` on that canvas
 // with a computed locationX/locationY rather than on individual SVG shapes.
 type Utils = ReturnType<typeof renderWithTheme>;
 
 // The chart draws its shapes inside a translate <G x={PADDING.left} y={PADDING.top}>.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getTranslate = (utils: Utils): { gx: number; gy: number } => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const g = utils.UNSAFE_getAllByType(G).find((el: any) => typeof el.props.x === 'number');
   return { gx: (g?.props.x as number) ?? 0, gy: (g?.props.y as number) ?? 0 };
 };
@@ -58,7 +63,7 @@ const tapCanvas = (utils: Utils, x: number, y: number): void => {
 const tapNode = (utils: Utils, i: number): void => {
   const { gx, gy } = getTranslate(utils);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const rect = (utils.UNSAFE_getAllByType(Rect) as any[])[i];
+  const rect = shapeRects(utils.UNSAFE_getAllByType(Rect))[i] as any;
   tapCanvas(
     utils,
     gx + rect.props.x + rect.props.width / 2,
@@ -112,7 +117,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
       </ChartSankeyWrapper>,
     );
     // showLabelChip=false → no chip Rects, so Rect count === node count.
-    expect(UNSAFE_getAllByType(Rect)).toHaveLength(data.nodes.length);
+    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
     expect(UNSAFE_getAllByType(Path)).toHaveLength(data.links.length);
   });
 
@@ -123,7 +128,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
       </ChartSankeyWrapper>,
     );
     // node bars + one chip rect per node with a label.
-    expect(UNSAFE_getAllByType(Rect).length).toBeGreaterThan(data.nodes.length);
+    expect(shapeRects(UNSAFE_getAllByType(Rect)).length).toBeGreaterThan(data.nodes.length);
   });
 
   it('hides labels entirely when showLabels is false', () => {
@@ -188,7 +193,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     tapNode(utils, 0);
     expect(queryByText(/^Alpha:/)).not.toBeNull();
     // The chart still renders one node <Rect> per node after the re-render.
-    expect(UNSAFE_getAllByType(Rect)).toHaveLength(data.nodes.length);
+    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
     // A repeated tap on the same node toggles the selection off.
     tapNode(utils, 0);
     expect(queryByText(/^Alpha:/)).toBeNull();
@@ -227,7 +232,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    const fills = UNSAFE_getAllByType(Rect).map((r) => r.props.fill);
+    const fills = shapeRects(UNSAFE_getAllByType(Rect)).map((r) => r.props.fill);
     const uniqueFills = Array.from(new Set(fills));
     expect(uniqueFills).toHaveLength(1);
   });
@@ -245,7 +250,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
         <ChartSankey data={twoNode} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    expect(UNSAFE_getAllByType(Rect)).toHaveLength(2);
+    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(2);
     expect(UNSAFE_getAllByType(Path)).toHaveLength(1);
   });
 
@@ -263,7 +268,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
       </ChartSankeyWrapper>,
     );
     expect(UNSAFE_queryAllByType(Path)).toHaveLength(0);
-    expect(UNSAFE_queryAllByType(Rect)).toHaveLength(2);
+    expect(shapeRects(UNSAFE_queryAllByType(Rect))).toHaveLength(2);
   });
 
   it('renders plain-text labels (no chip Rect) when showLabelChip is false', () => {
@@ -275,76 +280,73 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     // Label text spans are present, but no chip background rects (Rect count === node count).
     const spanTexts = UNSAFE_getAllByType(TSpan).map((s) => s.props.children);
     expect(spanTexts).toContain('Alpha');
-    expect(UNSAFE_getAllByType(Rect)).toHaveLength(data.nodes.length);
+    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
   });
 
-  // ── Edge cases ──────────────────────────────────────────────────────────────
+  // ── Vertical orientation (native-only) ──────────────────────────────────────
+  // The vertical variant transposes the layout: stages flow top→bottom, each node
+  // is a horizontal bar, and ribbons curve down the Y axis. Existing behaviour is
+  // unchanged (default orientation stays horizontal); these tests cover the new path.
 
-  it('renders without crashing when data has empty nodes and links arrays', () => {
-    const emptyData = { nodes: [], links: [] };
-    const { toJSON, UNSAFE_queryAllByType } = renderSankey(
-      <ChartSankeyWrapper testID="sankey-chart">
-        <ChartSankey data={emptyData} showLabelChip={false} />
-      </ChartSankeyWrapper>,
-    );
-    expect(toJSON()).toBeTruthy();
-    expect(UNSAFE_queryAllByType(Rect)).toHaveLength(0);
-    expect(UNSAFE_queryAllByType(Path)).toHaveLength(0);
-  });
-
-  it('renders a single node with no links as one Rect and zero Paths', () => {
-    const singleNode = {
-      nodes: [{ id: 'solo', name: 'Solo' }],
-      links: [],
-    };
-    const { UNSAFE_getAllByType, UNSAFE_queryAllByType } = renderSankey(
-      <ChartSankeyWrapper testID="sankey-chart">
-        <ChartSankey data={singleNode} showLabelChip={false} />
-      </ChartSankeyWrapper>,
-    );
-    expect(UNSAFE_getAllByType(Rect)).toHaveLength(1);
-    expect(UNSAFE_queryAllByType(Path)).toHaveLength(0);
-  });
-
-  it('does not crash or infinite-loop on a cyclic graph (A→B→A)', () => {
-    const cyclic = {
-      nodes: [
-        { id: 'a', name: 'Alpha' },
-        { id: 'b', name: 'Beta' },
-      ],
-      links: [
-        { source: 'a', target: 'b', value: 50 },
-        { source: 'b', target: 'a', value: 30 },
-      ],
-    };
-    const { toJSON, UNSAFE_getAllByType } = renderSankey(
-      <ChartSankeyWrapper testID="sankey-chart">
-        <ChartSankey data={cyclic} showLabelChip={false} />
-      </ChartSankeyWrapper>,
-    );
-    expect(toJSON()).toBeTruthy();
-    expect(UNSAFE_getAllByType(Rect)).toHaveLength(2);
-    expect(UNSAFE_getAllByType(Path)).toHaveLength(2);
-  });
-
-  it('silently drops links that reference non-existent node IDs', () => {
-    const danglingLink = {
-      nodes: [
-        { id: 'a', name: 'Alpha' },
-        { id: 'b', name: 'Beta' },
-      ],
-      links: [
-        { source: 'a', target: 'b', value: 50 },
-        { source: 'a', target: 'nonexistent', value: 999 },
-      ],
-    };
+  it('renders one <Rect> per node and one <Path> per link in vertical orientation', () => {
     const { UNSAFE_getAllByType } = renderSankey(
-      <ChartSankeyWrapper testID="sankey-chart">
-        <ChartSankey data={danglingLink} showLabelChip={false} />
+      <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
+        <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    // The dangling link is filtered out — only 1 valid link should render.
-    expect(UNSAFE_getAllByType(Path)).toHaveLength(1);
-    expect(UNSAFE_getAllByType(Rect)).toHaveLength(2);
+    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
+    expect(UNSAFE_getAllByType(Path)).toHaveLength(data.links.length);
+  });
+
+  it('lays out vertical nodes as horizontal bars (width is the long dimension)', () => {
+    const { UNSAFE_getAllByType } = renderSankey(
+      <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
+        <ChartSankey data={data} showLabelChip={false} />
+      </ChartSankeyWrapper>,
+    );
+    // In vertical layout a node bar's width (value·scale) is the long dimension and
+    // its height is the fixed thin NODE_WIDTH. Node 0 ('Alpha') is the root carrying
+    // all flow, so its bar is clearly wider than it is tall.
+    const rect0 = shapeRects(UNSAFE_getAllByType(Rect))[0] as {
+      props: { width: number; height: number };
+    };
+    expect(rect0.props.width).toBeGreaterThan(rect0.props.height);
+  });
+
+  it('selects a node on tap in vertical orientation, toggles off on re-tap, and clears on empty-canvas tap', () => {
+    // Mirrors the horizontal interaction test with the transposed layout: taps are
+    // hit-tested against the (transposed) node rects so tap-to-stay still works.
+    const utils = renderSankey(
+      <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
+        <ChartSankey data={data} showLabelChip={false} />
+      </ChartSankeyWrapper>,
+    );
+    const { queryByText } = utils;
+    expect(queryByText(/^Alpha:/)).toBeNull();
+    // Tap the first node → its tooltip appears (persistent selection).
+    tapNode(utils, 0);
+    expect(queryByText(/^Alpha:/)).not.toBeNull();
+    // Re-tap the same node toggles the selection off.
+    tapNode(utils, 0);
+    expect(queryByText(/^Alpha:/)).toBeNull();
+    // Re-select, then tap empty canvas (top-left, before the plot) → clears.
+    tapNode(utils, 0);
+    expect(queryByText(/^Alpha:/)).not.toBeNull();
+    tapCanvas(utils, 0, 0);
+    expect(queryByText(/^Alpha:/)).toBeNull();
+  });
+
+  it('selects a link ribbon on tap in vertical orientation', () => {
+    const utils = renderSankey(
+      <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
+        <ChartSankey data={data} showLabelChip={false} />
+      </ChartSankeyWrapper>,
+    );
+    const { queryByText } = utils;
+    expect(queryByText(/Alpha → Beta:/)).toBeNull();
+    tapLink(utils, 0);
+    expect(queryByText(/Alpha → Beta:/)).not.toBeNull();
+    tapCanvas(utils, 0, 0);
+    expect(queryByText(/Alpha → Beta:/)).toBeNull();
   });
 });

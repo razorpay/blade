@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useMemo, useState } from 'react';
 import { Svg, G, Rect, Path, Text as SvgText, TSpan } from 'react-native-svg';
 import { View, Pressable } from 'react-native';
 import type { LayoutChangeEvent, GestureResponderEvent } from 'react-native';
@@ -12,6 +13,10 @@ import type {
   ChartSankeyProps,
   SankeyDataNode,
   SankeyDataLink,
+  RechartsLink,
+  NodeLayout,
+  LinkLayout,
+  SankeyLayout,
 } from './types';
 import {
   componentIds,
@@ -26,23 +31,18 @@ import {
   CHIP_MAX_WIDTH,
   CHIP_VALUE_BUDGET,
   NODE_MIN_HEIGHT,
-  TOOLTIP_Z_INDEX,
+  VERTICAL_LABEL_RESERVE,
 } from './tokens';
-import { humanizeIndian } from './humanizeIndian';
+import { INTER_ADVANCE, INTER_DEFAULT_ADVANCE } from './interAdvance';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import getIn from '~utils/lodashButBetter/get';
+import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
-import { throwBladeError } from '~utils/logger';
-import { castNativeType } from '~utils/platform/castUtils';
-
-// Module-level empty data default — avoids creating a new object on every render
-// when sankeyChild is undefined, which would invalidate useMemo deps.
-const EMPTY_DATA = { nodes: [] as SankeyDataNode[], links: [] as SankeyDataLink[] };
 
 // ─── Animated SVG shapes ──────────────────────────────────────────────────────
 // react-native-svg primitives wrapped so react-native-reanimated can drive their
@@ -51,140 +51,8 @@ const AnimatedG = Animated.createAnimatedComponent(G);
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 // ─── Text width — high-fidelity Inter advance-width estimate ───────────────────
-// RN has no synchronous canvas `measureText` (no DOM / canvas 2D context, and
-// `onLayout`/`onTextLayout` are async/post-render). Node/chip layout must know
-// label widths during the synchronous layout-compute pass, so we approximate with
-// a per-character advance-width table for Inter (normalized to em = × fontSize).
-// This is far closer than a single uniform factor; it ignores kerning pairs and
-// sub-pixel hinting (a few px on long strings) which is imperceptible for chip
-// sizing / wrap decisions.
-//
-// NOTE: This table is specific to the Inter font family. Blade's default
-// `theme.typography.fonts.family.text` is Inter, but if the theme is customized
-// to use a different font family, text measurement will be systematically wrong.
-// If a non-Inter font is required, the advance table should be replaced or made
-// configurable. Web does not use this table — it measures via canvas
-// `measureText` in `calculateTextWidth` with the theme's actual font family.
-// Native assumes Inter (Blade's default) because RN has no sync equivalent.
-const INTER_ADVANCE: Record<string, number> = {
-  a: 0.55,
-  b: 0.57,
-  c: 0.51,
-  d: 0.57,
-  e: 0.55,
-  f: 0.34,
-  g: 0.57,
-  h: 0.57,
-  i: 0.24,
-  j: 0.24,
-  k: 0.51,
-  l: 0.24,
-  m: 0.87,
-  n: 0.57,
-  o: 0.58,
-  p: 0.57,
-  q: 0.57,
-  r: 0.35,
-  s: 0.5,
-  t: 0.34,
-  u: 0.57,
-  v: 0.51,
-  w: 0.75,
-  x: 0.51,
-  y: 0.51,
-  z: 0.49,
-  A: 0.66,
-  B: 0.63,
-  C: 0.66,
-  D: 0.68,
-  E: 0.6,
-  F: 0.58,
-  G: 0.7,
-  H: 0.71,
-  I: 0.28,
-  J: 0.5,
-  K: 0.63,
-  L: 0.55,
-  M: 0.86,
-  N: 0.72,
-  O: 0.74,
-  P: 0.62,
-  Q: 0.74,
-  R: 0.65,
-  S: 0.61,
-  T: 0.6,
-  U: 0.7,
-  V: 0.65,
-  W: 0.93,
-  X: 0.64,
-  Y: 0.62,
-  Z: 0.61,
-  '0': 0.57,
-  '1': 0.57,
-  '2': 0.57,
-  '3': 0.57,
-  '4': 0.57,
-  '5': 0.57,
-  '6': 0.57,
-  '7': 0.57,
-  '8': 0.57,
-  '9': 0.57,
-  ' ': 0.28,
-  '.': 0.28,
-  ',': 0.28,
-  ':': 0.28,
-  ';': 0.28,
-  '(': 0.34,
-  ')': 0.34,
-  '%': 0.85,
-  '/': 0.4,
-  '-': 0.4,
-  '+': 0.57,
-  '₹': 0.57,
-  '→': 0.9,
-  '!': 0.33,
-  '@': 1.0,
-  '#': 0.57,
-  $: 0.57,
-  '^': 0.47,
-  '&': 0.69,
-  '*': 0.42,
-  _: 0.5,
-  '=': 0.57,
-  '[': 0.34,
-  ']': 0.34,
-  '{': 0.37,
-  '}': 0.37,
-  '|': 0.28,
-  '\\': 0.28,
-  '"': 0.39,
-  "'": 0.22,
-  '<': 0.57,
-  '>': 0.57,
-  '?': 0.55,
-  '~': 0.57,
-  '`': 0.34,
-};
-const INTER_DEFAULT_ADVANCE = 0.55;
-// CJK ideographs and emoji are significantly wider than Latin glyphs.
-// CJK ~1.0em, emoji ~1.2em (some emoji render even wider but 1.2 is a safe average).
-const charAdvance = (ch: string): number => {
-  if (INTER_ADVANCE[ch] !== undefined) return INTER_ADVANCE[ch];
-  const code = ch.codePointAt(0) ?? 0;
-  // CJK Unified Ideographs, CJK Extension A/B, Hiragana, Katakana, Hangul, etc.
-  if (
-    (code >= 0x3000 && code <= 0x9fff) ||
-    (code >= 0xac00 && code <= 0xd7af) ||
-    (code >= 0xf900 && code <= 0xfaff)
-  ) {
-    return 1.0;
-  }
-  // Emoji and supplementary planes
-  if (code >= 0x1f000) {
-    return 1.2;
-  }
-  return INTER_DEFAULT_ADVANCE;
-};
+// See `interAdvance.ts` for the per-character table. Ignores kerning pairs and
+// sub-pixel hinting (a few px on long strings) — imperceptible for chip sizing.
 // semibold glyphs render marginally wider than regular in Inter.
 const SEMIBOLD_WIDTH_FACTOR = 1.045;
 
@@ -192,49 +60,65 @@ const estimateTextWidth = (text: string, fontSize: number, weight: number): numb
   const factor = weight >= 600 ? SEMIBOLD_WIDTH_FACTOR : 1;
   let em = 0;
   for (const ch of text) {
-    em += charAdvance(ch);
+    em += INTER_ADVANCE[ch] ?? INTER_DEFAULT_ADVANCE;
   }
   return em * fontSize * factor;
 };
 
+// Trim `text` (appending an ellipsis) until its estimated width fits `maxWidth`.
+// Used only by the vertical layout, where node bars sit side-by-side across a
+// narrow screen and a too-wide label would clip or collide with its neighbour.
+const truncateToWidth = (
+  text: string,
+  maxWidth: number,
+  fontSize: number,
+  weight: number,
+): string => {
+  if (maxWidth <= 0) return '';
+  if (estimateTextWidth(text, fontSize, weight) <= maxWidth) return text;
+  let trimmed = text;
+  while (trimmed.length > 0 && estimateTextWidth(`${trimmed}…`, fontSize, weight) > maxWidth) {
+    trimmed = trimmed.slice(0, -1);
+  }
+  return trimmed.length > 0 ? `${trimmed}…` : '…';
+};
+
+// ─── Indian number humanizer (private default for formatValue) ────────────────
+// Truncates (never rounds up) to avoid overstating values. Ported verbatim from web.
+const humanizeIndian = (value: number): string => {
+  if (value >= 1_00_00_000) {
+    const v = Math.floor((value / 1_00_00_000) * 100) / 100;
+    return `${parseFloat(v.toFixed(2))}Cr`;
+  }
+  if (value >= 1_00_000) {
+    const v = Math.floor((value / 1_00_000) * 100) / 100;
+    return `${parseFloat(v.toFixed(2))}L`;
+  }
+  if (value >= 1_000) {
+    const v = Math.floor((value / 1_000) * 10) / 10;
+    return `${parseFloat(v.toFixed(1))}k`;
+  }
+  return String(value);
+};
+
 // ─── Sankey layout (reimplements recharts <Sankey>) ────────────────────────────
 
-type RechartsLink = {
-  source: number;
-  target: number;
-  value: number;
-  _originalIndex: number;
-};
+// Native-only flow direction. `horizontal` mirrors the web layout (stages progress
+// left→right, nodes are vertical bars). `vertical` transposes it (stages progress
+// top→bottom, nodes are horizontal bars) — reads better on tall phone screens.
+type SankeyOrientation = 'horizontal' | 'vertical';
 
-type NodeLayout = {
-  index: number;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  value: number;
-  depth: number;
-};
-
-type LinkLayout = {
-  sourceIndex: number;
-  targetIndex: number;
-  value: number;
-  originalIndex: number;
-  d: string;
-  // Centerline endpoints + thickness (plot coords) — used to hit-test taps against
-  // the ribbon since RN has no SVG path point-containment API.
-  sourceX: number;
-  sourceY: number;
-  targetX: number;
-  targetY: number;
-  thickness: number;
-};
-
-type SankeyLayout = {
-  nodeLayouts: NodeLayout[];
-  linkLayouts: LinkLayout[];
-  countPerDepth: number[];
+// Precomputed, collision-resolved label box for a vertical-orientation node.
+// Chips in the same stage are swept left→right so they never overlap each other
+// and are clamped inside the plot so they never clip off the screen edges; the
+// name/value strings are pre-truncated to the resolved chip width.
+type VerticalLabel = {
+  chipX: number;
+  chipY: number;
+  chipW: number;
+  chipH: number;
+  name: string;
+  labelValue: string;
 };
 
 const computeSankeyLayout = ({
@@ -244,6 +128,7 @@ const computeSankeyLayout = ({
   plotHeight,
   nodeWidth,
   nodePadding,
+  orientation,
 }: {
   nodeCount: number;
   links: RechartsLink[];
@@ -251,6 +136,7 @@ const computeSankeyLayout = ({
   plotHeight: number;
   nodeWidth: number;
   nodePadding: number;
+  orientation: SankeyOrientation;
 }): SankeyLayout => {
   const empty: SankeyLayout = { nodeLayouts: [], linkLayouts: [], countPerDepth: [] };
   if (nodeCount === 0 || plotWidth <= 0 || plotHeight <= 0) return empty;
@@ -304,75 +190,99 @@ const computeSankeyLayout = ({
   }
   const countPerDepth = columns.map((c) => c.length);
 
-  // 4. Vertical scale ky — smallest ratio so the tallest column fits.
-  let ky = Infinity;
+  // The layout is computed in generic "along" (stage-progression axis) / "across"
+  // (node-stacking axis) coordinates, then mapped to screen x/y based on orientation.
+  //   horizontal → along = X, across = Y  (nodes are vertical bars)
+  //   vertical   → along = Y, across = X  (nodes are horizontal bars)
+  const isVertical = orientation === 'vertical';
+  const alongExtent = isVertical ? plotHeight : plotWidth;
+  const acrossExtent = isVertical ? plotWidth : plotHeight;
+
+  // 4. Cross-axis scale k — smallest ratio so the fullest column fits.
+  let k = Infinity;
   columns.forEach((col) => {
     const colSum = col.reduce((sum, i) => sum + nodeValue[i], 0);
     if (colSum <= 0) return;
-    const avail = Math.max(0, plotHeight - nodePadding * (col.length - 1));
-    ky = Math.min(ky, avail / colSum);
+    const avail = Math.max(0, acrossExtent - nodePadding * (col.length - 1));
+    k = Math.min(k, avail / colSum);
   });
-  if (!Number.isFinite(ky) || ky < 0) ky = 0;
+  if (!Number.isFinite(k) || k < 0) k = 0;
 
-  // 5. Node rects — stack within a column, then center the block vertically.
-  const xStep = maxDepth > 0 ? Math.max(0, (plotWidth - nodeWidth) / maxDepth) : 0;
+  // 5. Node rects — stack within a column, then center the block on the cross axis.
+  const alongStep = maxDepth > 0 ? (alongExtent - nodeWidth) / maxDepth : 0;
   const nodeLayouts = new Array<NodeLayout>(nodeCount);
   columns.forEach((col, depth) => {
-    const heights = col.map((i) => Math.max(NODE_MIN_HEIGHT, nodeValue[i] * ky));
-    const totalH =
-      heights.reduce((sum, h) => sum + h, 0) + nodePadding * Math.max(0, col.length - 1);
-    let y = (plotHeight - totalH) / 2;
-    col.forEach((i, k) => {
-      nodeLayouts[i] = {
-        index: i,
-        x: depth * xStep,
-        y,
-        width: nodeWidth,
-        height: heights[k],
-        value: nodeValue[i],
-        depth,
-      };
-      y += heights[k] + nodePadding;
+    const lengths = col.map((i) => Math.max(NODE_MIN_HEIGHT, nodeValue[i] * k));
+    const totalLen =
+      lengths.reduce((sum, h) => sum + h, 0) + nodePadding * Math.max(0, col.length - 1);
+    const along = depth * alongStep;
+    let across = (acrossExtent - totalLen) / 2;
+    col.forEach((i, kk) => {
+      const len = lengths[kk];
+      nodeLayouts[i] = isVertical
+        ? {
+            index: i,
+            x: across,
+            y: along,
+            width: len,
+            height: nodeWidth,
+            value: nodeValue[i],
+            depth,
+          }
+        : {
+            index: i,
+            x: along,
+            y: across,
+            width: nodeWidth,
+            height: len,
+            value: nodeValue[i],
+            depth,
+          };
+      across += len + nodePadding;
     });
   });
 
-  // 6. Link ribbons — cumulative per-node offsets, bezier path identical to web.
+  // 6. Link ribbons — cumulative per-node offsets. Each bezier control point is
+  // emitted through the along/across → x/y mapping so the identical curve formula
+  // produces a left→right ribbon (horizontal) or a top→bottom one (vertical).
   const sourceOffset = new Array<number>(nodeCount).fill(0);
   const targetOffset = new Array<number>(nodeCount).fill(0);
-  const linkLayouts = links
-    .map((l) => {
-      const s = nodeLayouts[l.source];
-      const t = nodeLayouts[l.target];
-      if (!s || !t) return null;
-      const linkWidth = Math.max(0, l.value) * ky;
-      const sourceY = s.y + sourceOffset[l.source] + linkWidth / 2;
-      const targetY = t.y + targetOffset[l.target] + linkWidth / 2;
-      sourceOffset[l.source] += linkWidth;
-      targetOffset[l.target] += linkWidth;
-      const sourceX = s.x + nodeWidth;
-      const targetX = t.x;
-      const controlX = (sourceX + targetX) / 2;
-      const d = `M${sourceX},${sourceY + linkWidth / 2} C${controlX},${
-        sourceY + linkWidth / 2
-      } ${controlX},${targetY + linkWidth / 2} ${targetX},${targetY + linkWidth / 2} L${targetX},${
-        targetY - linkWidth / 2
-      } C${controlX},${targetY - linkWidth / 2} ${controlX},${sourceY - linkWidth / 2} ${sourceX},${
-        sourceY - linkWidth / 2
-      } Z`;
-      return {
-        sourceIndex: l.source,
-        targetIndex: l.target,
-        value: l.value,
-        originalIndex: l._originalIndex,
-        d,
-        sourceX,
-        sourceY,
-        targetX,
-        targetY,
-        thickness: linkWidth,
-      };
-    })
-    .filter((link): link is LinkLayout => link !== null);
+  const toXY = (along: number, across: number): string =>
+    isVertical ? `${across},${along}` : `${along},${across}`;
+  const linkLayouts = links.map((l) => {
+    const s = nodeLayouts[l.source];
+    const t = nodeLayouts[l.target];
+    const w = l.value * k;
+    // Along-axis endpoints: leading edge of source node, entry edge of target node.
+    const sAlong = (isVertical ? s.y : s.x) + nodeWidth;
+    const tAlong = isVertical ? t.y : t.x;
+    const cAlong = (sAlong + tAlong) / 2;
+    // Across-axis band centers, offset cumulatively per node.
+    const sAcross = (isVertical ? s.x : s.y) + sourceOffset[l.source] + w / 2;
+    const tAcross = (isVertical ? t.x : t.y) + targetOffset[l.target] + w / 2;
+    sourceOffset[l.source] += w;
+    targetOffset[l.target] += w;
+    const d = `M${toXY(sAlong, sAcross + w / 2)} C${toXY(cAlong, sAcross + w / 2)} ${toXY(
+      cAlong,
+      tAcross + w / 2,
+    )} ${toXY(tAlong, tAcross + w / 2)} L${toXY(tAlong, tAcross - w / 2)} C${toXY(
+      cAlong,
+      tAcross - w / 2,
+    )} ${toXY(cAlong, sAcross - w / 2)} ${toXY(sAlong, sAcross - w / 2)} Z`;
+    return {
+      sourceIndex: l.source,
+      targetIndex: l.target,
+      value: l.value,
+      originalIndex: l._originalIndex,
+      d,
+      // Screen-coord centerline endpoints + thickness for tap hit-testing.
+      sourceX: isVertical ? sAcross : sAlong,
+      sourceY: isVertical ? sAlong : sAcross,
+      targetX: isVertical ? tAcross : tAlong,
+      targetY: isVertical ? tAlong : tAcross,
+      thickness: w,
+    };
+  });
 
   return { nodeLayouts, linkLayouts, countPerDepth };
 };
@@ -382,39 +292,60 @@ const HIT_SLOP = 8;
 
 // ─── Ribbon hit-test ───────────────────────────────────────────────────────────
 // RN has no SVG path point-containment, so sample the link's centerline cubic
-// (the same bezier used to draw it: controls sit at the horizontal midpoint) and
-// check whether the point falls within half the ribbon thickness of the nearest
-// sample. `slop` widens thin ribbons so they stay tappable.
-const isPointOnRibbon = (px: number, py: number, link: LinkLayout, slop: number): boolean => {
+// (the same bezier used to draw it: controls sit at the midpoint of the stage-
+// progression axis) and check whether the point falls within half the ribbon
+// thickness of the nearest sample. `slop` widens thin ribbons so they stay
+// tappable. Orientation-aware: for `vertical` the primary (progression) axis is Y
+// and the cross axis is X — the roles of the touch coords are swapped so taps land
+// on the transposed ribbons too.
+const isPointOnRibbon = (
+  px: number,
+  py: number,
+  link: LinkLayout,
+  slop: number,
+  orientation: SankeyOrientation,
+): boolean => {
   const { sourceX, sourceY, targetX, targetY, thickness } = link;
-  if (px < Math.min(sourceX, targetX) - slop || px > Math.max(sourceX, targetX) + slop) {
+  const isVertical = orientation === 'vertical';
+  // primaryS/primaryT — endpoints along the stage-progression axis (curve travels
+  // this way); crossS/crossT — band centers on the perpendicular axis.
+  const primaryS = isVertical ? sourceY : sourceX;
+  const primaryT = isVertical ? targetY : targetX;
+  const crossS = isVertical ? sourceX : sourceY;
+  const crossT = isVertical ? targetX : targetY;
+  const primaryP = isVertical ? py : px;
+  const crossP = isVertical ? px : py;
+  if (
+    primaryP < Math.min(primaryS, primaryT) - slop ||
+    primaryP > Math.max(primaryS, primaryT) + slop
+  ) {
     return false;
   }
-  const controlX = (sourceX + targetX) / 2;
+  const controlP = (primaryS + primaryT) / 2;
   const halfBand = thickness / 2 + slop;
   const STEPS = 40;
-  let bestDx = Infinity;
-  let bestY = sourceY;
+  let bestDp = Infinity;
+  let bestCross = crossS;
   for (let i = 0; i <= STEPS; i++) {
     const t = i / STEPS;
     const mt = 1 - t;
-    const x =
-      mt * mt * mt * sourceX +
-      3 * mt * mt * t * controlX +
-      3 * mt * t * t * controlX +
-      t * t * t * targetX;
-    const y =
-      mt * mt * mt * sourceY +
-      3 * mt * mt * t * sourceY +
-      3 * mt * t * t * targetY +
-      t * t * t * targetY;
-    const dx = Math.abs(x - px);
-    if (dx < bestDx) {
-      bestDx = dx;
-      bestY = y;
+    const p =
+      mt * mt * mt * primaryS +
+      3 * mt * mt * t * controlP +
+      3 * mt * t * t * controlP +
+      t * t * t * primaryT;
+    const c =
+      mt * mt * mt * crossS +
+      3 * mt * mt * t * crossS +
+      3 * mt * t * t * crossT +
+      t * t * t * crossT;
+    const dp = Math.abs(p - primaryP);
+    if (dp < bestDp) {
+      bestDp = dp;
+      bestCross = c;
     }
   }
-  return Math.abs(py - bestY) <= halfBand;
+  return Math.abs(crossP - bestCross) <= halfBand;
 };
 
 // ─── Per-shape animated components ─────────────────────────────────────────────
@@ -427,9 +358,6 @@ type SankeyNodeShapeProps = {
   width: number;
   height: number;
   fill: string;
-  duration: number;
-  easing: EasingFn;
-  accessibilityLabel?: string;
   children?: React.ReactNode;
 };
 
@@ -440,28 +368,21 @@ const SankeyNodeShape = ({
   width,
   height,
   fill,
-  duration,
-  easing,
-  accessibilityLabel,
   children,
 }: SankeyNodeShapeProps): React.ReactElement => {
+  const { theme } = useTheme();
   const opacity = useSharedValue(targetOpacity);
-  const isFirstRender = React.useRef(true);
+  const duration = theme.motion.duration.quick;
+  const easing = (theme.motion.easing.standard as unknown) as EasingFn;
 
   React.useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
     opacity.value = withTiming(targetOpacity, { duration, easing });
-    // opacity is a reanimated SharedValue (ref-like, stable identity) — intentionally omitted from deps
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetOpacity, duration, easing]);
+  }, [targetOpacity, duration]);
 
   const animatedProps = useAnimatedProps(() => ({ opacity: opacity.value }));
 
   return (
-    <AnimatedG animatedProps={animatedProps} accessibilityLabel={accessibilityLabel}>
+    <AnimatedG animatedProps={animatedProps}>
       <Rect x={x} y={y} width={width} height={height} fill={fill} />
       {children}
     </AnimatedG>
@@ -472,42 +393,21 @@ type SankeyLinkShapeProps = {
   targetOpacity: number;
   d: string;
   fill: string;
-  duration: number;
-  easing: EasingFn;
-  accessibilityLabel?: string;
 };
 
-const SankeyLinkShape = ({
-  targetOpacity,
-  d,
-  fill,
-  duration,
-  easing,
-  accessibilityLabel,
-}: SankeyLinkShapeProps): React.ReactElement => {
+const SankeyLinkShape = ({ targetOpacity, d, fill }: SankeyLinkShapeProps): React.ReactElement => {
+  const { theme } = useTheme();
   const fillOpacity = useSharedValue(targetOpacity);
-  const isFirstRender = React.useRef(true);
+  const duration = theme.motion.duration.quick;
+  const easing = (theme.motion.easing.standard as unknown) as EasingFn;
 
   React.useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
     fillOpacity.value = withTiming(targetOpacity, { duration, easing });
-    // fillOpacity is a reanimated SharedValue (ref-like, stable identity) — intentionally omitted from deps
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetOpacity, duration, easing]);
+  }, [targetOpacity, duration]);
 
   const animatedProps = useAnimatedProps(() => ({ fillOpacity: fillOpacity.value }));
 
-  return (
-    <AnimatedPath
-      animatedProps={animatedProps}
-      d={d}
-      fill={fill}
-      accessibilityLabel={accessibilityLabel}
-    />
-  );
+  return <AnimatedPath animatedProps={animatedProps} d={d} fill={fill} />;
 };
 
 // ─── Node label rendering (ported from web renderChipLabel / renderPlainTextLabel) ──
@@ -534,6 +434,11 @@ type NodeLabelArgs = {
   shouldWrap: boolean;
   semibold: number;
   regular: number;
+  // Plain-text label anchoring — horizontal left-aligns to the right of the node
+  // (`textX` = node right edge, anchor `start`); vertical centers under the node
+  // (`textX` = node horizontal center, anchor `middle`).
+  textX: number;
+  textAnchor: 'start' | 'middle';
 };
 
 const renderChipLabel = ({
@@ -609,7 +514,6 @@ const renderChipLabel = ({
 };
 
 const renderPlainTextLabel = ({
-  chipX,
   nodeMidY,
   fontSize,
   fontFamily,
@@ -622,12 +526,14 @@ const renderPlainTextLabel = ({
   shouldWrap,
   semibold,
   regular,
+  textX,
+  textAnchor,
 }: NodeLabelArgs): React.ReactElement => {
   if (shouldWrap) {
     return (
-      <SvgText fontSize={fontSize} fontFamily={fontFamily}>
+      <SvgText fontSize={fontSize} fontFamily={fontFamily} textAnchor={textAnchor}>
         <TSpan
-          x={chipX}
+          x={textX}
           y={nodeMidY - (fontSize + lineGap) / 2}
           fontWeight={semibold}
           fill={labelNameColor}
@@ -635,7 +541,7 @@ const renderPlainTextLabel = ({
           {name}
         </TSpan>
         <TSpan
-          x={chipX}
+          x={textX}
           y={nodeMidY + (fontSize + lineGap) / 2}
           fontWeight={regular}
           fill={labelValueColor}
@@ -647,10 +553,11 @@ const renderPlainTextLabel = ({
   }
   return (
     <SvgText
-      x={chipX}
+      x={textX}
       y={nodeMidY + (fontSize * capHeightRatio) / 2}
       fontSize={fontSize}
       fontFamily={fontFamily}
+      textAnchor={textAnchor}
     >
       <TSpan fontWeight={semibold} fill={labelNameColor}>
         {name}
@@ -664,20 +571,7 @@ const renderPlainTextLabel = ({
 
 // ─── ChartSankey (marker) ───────────────────────────────────────────────────────
 // Renders nothing on its own — ChartSankeyWrapper reads its props and draws the SVG.
-// A context check ensures developers get a clear error if ChartSankey is used
-// without ChartSankeyWrapper, matching the web version's behaviour.
-const SankeyChartNativeContext = createContext<boolean>(false);
-
-const _ChartSankey = (_props: ChartSankeyProps): React.ReactElement | null => {
-  const insideWrapper = useContext(SankeyChartNativeContext);
-  if (!insideWrapper) {
-    throwBladeError({
-      message: 'ChartSankey must be rendered as a direct child of ChartSankeyWrapper',
-      moduleName: 'ChartSankey',
-    });
-  }
-  return null;
-};
+const _ChartSankey = (_props: ChartSankeyProps): React.ReactElement | null => null;
 
 export const ChartSankey = assignWithoutSideEffects(_ChartSankey, {
   componentId: componentIds.ChartSankey,
@@ -699,9 +593,10 @@ const _ChartSankeyWrapper = ({
   colorTheme = 'categorical',
   nodeColorOverride,
   linkColorOverride,
+  orientation = 'horizontal',
   testID,
   ...restProps
-}: ChartSankeyWrapperProps): React.ReactElement => {
+}: ChartSankeyWrapperProps & TestID & DataAnalyticsAttribute): React.ReactElement => {
   const { theme } = useTheme();
   const [size, setSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [active, setActive] = useState<ActiveState>(null);
@@ -717,7 +612,7 @@ const _ChartSankeyWrapper = ({
   );
 
   const {
-    data = EMPTY_DATA,
+    data = { nodes: [], links: [] },
     showLabels = true,
     showLabelChip = true,
     showPercentage = true,
@@ -752,10 +647,6 @@ const _ChartSankeyWrapper = ({
     (tokenPath: string): string => (getIn(theme.colors, tokenPath as any) as string) ?? tokenPath,
     [theme],
   );
-
-  // ── Motion values — passed to per-shape components to avoid N+M useTheme calls ─
-  const motionDuration = theme.motion.duration.quick;
-  const motionEasing = (castNativeType(theme.motion.easing.standard) as unknown) as EasingFn;
 
   // ── Label / chip geometry (mirrors web) ──────────────────────────────────────
   const fontSize = theme.typography.fonts.size[75];
@@ -820,15 +711,26 @@ const _ChartSankeyWrapper = ({
   }, [data.links]);
 
   // ── Plot rect + layout ───────────────────────────────────────────────────────
-  const PADDING = useMemo(
-    () => ({
-      top: theme.spacing[3],
-      bottom: theme.spacing[3],
-      left: theme.spacing[3],
-      right: dynamicRightMargin,
-    }),
-    [theme.spacing, dynamicRightMargin],
-  );
+  // Horizontal reserves the wide right margin for side labels; vertical instead
+  // reserves a bottom margin for the below-node label chips (labels stack under
+  // each horizontal bar) and keeps symmetric side padding.
+  const isVertical = orientation === 'vertical';
+  const verticalLabelMargin = showLabels
+    ? VERTICAL_LABEL_RESERVE + CHIP_GAP + theme.spacing[3]
+    : theme.spacing[3];
+  const PADDING = isVertical
+    ? {
+        top: theme.spacing[3],
+        bottom: verticalLabelMargin,
+        left: theme.spacing[3],
+        right: theme.spacing[3],
+      }
+    : {
+        top: theme.spacing[3],
+        bottom: theme.spacing[3],
+        left: theme.spacing[3],
+        right: dynamicRightMargin,
+      };
   const plotWidth = Math.max(0, size.width - PADDING.left - PADDING.right);
   const plotHeight = Math.max(0, size.height - PADDING.top - PADDING.bottom);
 
@@ -841,8 +743,9 @@ const _ChartSankeyWrapper = ({
         plotHeight,
         nodeWidth: NODE_WIDTH,
         nodePadding,
+        orientation,
       }),
-    [data.nodes.length, rechartsLinks, plotWidth, plotHeight, nodePadding],
+    [data.nodes.length, rechartsLinks, plotWidth, plotHeight, nodePadding, orientation],
   );
 
   // ── Opacity helpers (ported verbatim from web, `active` instead of `hovered`) ─
@@ -851,13 +754,13 @@ const _ChartSankeyWrapper = ({
       if (active === null) return NODE_DEFAULT_OPACITY;
       if (active.type === 'node' && active.index === nodeIdx) return NODE_DEFAULT_OPACITY;
       if (active.type === 'link') {
-        const link = layout.linkLayouts[active.index];
-        if (link && (link.sourceIndex === nodeIdx || link.targetIndex === nodeIdx))
+        const link = rechartsLinks[active.index];
+        if (link && (link.source === nodeIdx || link.target === nodeIdx))
           return NODE_DEFAULT_OPACITY;
       }
       return NODE_DIMMED_OPACITY;
     },
-    [active, layout.linkLayouts],
+    [active, rechartsLinks],
   );
 
   const getLinkOpacity = React.useCallback(
@@ -865,25 +768,22 @@ const _ChartSankeyWrapper = ({
       if (active === null) return LINK_DEFAULT_OPACITY;
       if (active.type === 'link' && active.index === linkIdx) return LINK_HOVER_OPACITY;
       if (active.type === 'node') {
-        const link = layout.linkLayouts[linkIdx];
-        if (link && (link.sourceIndex === active.index || link.targetIndex === active.index))
+        const link = rechartsLinks[linkIdx];
+        if (link && (link.source === active.index || link.target === active.index))
           return LINK_HOVER_OPACITY;
       }
       return LINK_DIMMED_OPACITY;
     },
-    [active, layout.linkLayouts],
+    [active, rechartsLinks],
   );
 
   // ── Layout callback ──────────────────────────────────────────────────────────
-  const onLayout = React.useCallback((e: LayoutChangeEvent): void => {
+  const onLayout = (e: LayoutChangeEvent): void => {
     const { width, height } = e.nativeEvent.layout;
-    setSize((prev) => {
-      if (width !== prev.width || height !== prev.height) {
-        return { width, height };
-      }
-      return prev;
-    });
-  }, []);
+    if (width !== size.width || height !== size.height) {
+      setSize({ width, height });
+    }
+  };
 
   // ── Tooltip content + position for the active shape ──────────────────────────
   const tooltip = useMemo(() => {
@@ -899,27 +799,46 @@ const _ChartSankeyWrapper = ({
         centerY: PADDING.top + node.y + node.height / 2,
       };
     }
-    const link = layout.linkLayouts[active.index];
+    const link = rechartsLinks[active.index];
     if (!link) return null;
-    const sourceName = data.nodes[link.sourceIndex]?.name ?? '';
-    const targetName = data.nodes[link.targetIndex]?.name ?? '';
-    const sourceNode = layout.nodeLayouts[link.sourceIndex];
-    const targetNode = layout.nodeLayouts[link.targetIndex];
+    const sourceName = data.nodes[link.source]?.name ?? '';
+    const targetName = data.nodes[link.target]?.name ?? '';
+    const sourceNode = layout.nodeLayouts[link.source];
+    const targetNode = layout.nodeLayouts[link.target];
+    // Anchor the tooltip at the midpoint of the ribbon: horizontal spans the gap
+    // between source-right and target-left (X) at the average node center (Y);
+    // vertical transposes it (X = average node center, Y = gap between the stages).
     const centerX =
       sourceNode && targetNode
-        ? PADDING.left + (sourceNode.x + sourceNode.width + targetNode.x) / 2
+        ? PADDING.left +
+          (isVertical
+            ? (sourceNode.x + sourceNode.width / 2 + targetNode.x + targetNode.width / 2) / 2
+            : (sourceNode.x + sourceNode.width + targetNode.x) / 2)
         : size.width / 2;
     const centerY =
       sourceNode && targetNode
         ? PADDING.top +
-          (sourceNode.y + sourceNode.height / 2 + targetNode.y + targetNode.height / 2) / 2
+          (isVertical
+            ? (sourceNode.y + sourceNode.height + targetNode.y) / 2
+            : (sourceNode.y + sourceNode.height / 2 + targetNode.y + targetNode.height / 2) / 2)
         : size.height / 2;
     return {
       content: `${sourceName} → ${targetName}: ${link.value.toLocaleString()}${unitSuffix}`,
       centerX,
       centerY,
     };
-  }, [showTooltip, active, size, labelUnit, layout, data.nodes, PADDING.left, PADDING.top]);
+  }, [
+    showTooltip,
+    active,
+    size,
+    labelUnit,
+    layout,
+    data.nodes,
+    rechartsLinks,
+    PADDING.left,
+    PADDING.top,
+    isVertical,
+  ]);
 
   const TOOLTIP_MAX_WIDTH = 240;
   const tooltipLeft = tooltip
@@ -927,6 +846,122 @@ const _ChartSankeyWrapper = ({
     : 0;
 
   const formatter = formatValue ?? humanizeIndian;
+
+  // ── Vertical label layout (native-only) ──────────────────────────────────────
+  // Vertical bars sit side-by-side across a narrow phone width, so labels both clip
+  // at the screen edges and collide with neighbours. Precompute a per-stage layout:
+  // cap each chip to its fair share of the row, sweep them left→right so they never
+  // overlap, clamp inside the plot so they never clip, and truncate text to fit.
+  const verticalLabels = useMemo<Map<number, VerticalLabel>>(() => {
+    const map = new Map<number, VerticalLabel>();
+    if (!isVertical || !showLabels || plotWidth <= 0) return map;
+
+    const inset = theme.spacing[2];
+    const gap = theme.spacing[2];
+    const chipH = theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3];
+    const WIDTH_SAFETY = 1.06;
+
+    const columns = new Map<number, NodeLayout[]>();
+    layout.nodeLayouts.forEach((node) => {
+      const col = columns.get(node.depth) ?? [];
+      col.push(node);
+      columns.set(node.depth, col);
+    });
+
+    columns.forEach((colNodes) => {
+      const sorted = [...colNodes].sort((a, b) => a.x - b.x);
+      const count = sorted.length;
+      const available = Math.max(0, plotWidth - inset * 2);
+      // Fair per-chip width so `count` chips + gaps always fit within the row.
+      const slotW = count > 0 ? Math.max(0, (available - gap * (count - 1)) / count) : available;
+      const rightBound = plotWidth - inset;
+
+      // 1. Resolve each chip's width + (truncated) text, and its ideal centered left.
+      const items = sorted.map((node) => {
+        const nodeData = data.nodes[node.index];
+        const name = nodeData?.name ?? '';
+        const humanized = formatter(node.value);
+        const levelCount = layout.countPerDepth[node.depth] ?? 1;
+        const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
+        const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
+        const valueWithPct =
+          showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
+
+        // The Inter advance-width table slightly under-measures, so pad estimates a
+        // little; otherwise text renders a few px wider than its chip and bleeds into
+        // (and is overpainted by) the neighbouring chip.
+        const nameW = estimateTextWidth(name, fontSize, semibold) * WIDTH_SAFETY;
+        const valueW = estimateTextWidth(valueWithPct, fontSize, regular) * WIDTH_SAFETY;
+        const desiredW = Math.max(nameW, valueW) + CHIP_PAD_X * 2;
+        const chipW = Math.max(0, Math.min(desiredW, slotW));
+
+        // Width the text must fit within, with the same safety margin baked in.
+        const safeMaxW = (chipW - CHIP_PAD_X * 2) / WIDTH_SAFETY;
+        // Drop the percentage before truncating so a tight slot renders a clean
+        // value ("2.8k txn") rather than a dangling "2.8k txn (…".
+        const valueLine =
+          estimateTextWidth(valueWithPct, fontSize, regular) <= safeMaxW ? valueWithPct : valueText;
+        const idealLeft = Math.max(
+          inset,
+          Math.min(rightBound - chipW, node.x + node.width / 2 - chipW / 2),
+        );
+        return {
+          index: node.index,
+          chipW,
+          chipY: node.y + node.height + CHIP_GAP,
+          name: truncateToWidth(name, safeMaxW, fontSize, semibold),
+          labelValue: truncateToWidth(valueLine, safeMaxW, fontSize, regular),
+          left: idealLeft,
+        };
+      });
+
+      // 2. Forward pass — push right so no chip overlaps the previous one.
+      for (let i = 1; i < count; i++) {
+        const minLeft = items[i - 1].left + items[i - 1].chipW + gap;
+        if (items[i].left < minLeft) items[i].left = minLeft;
+      }
+      // 3. Backward pass — pull left so the last chip stays in bounds and any overlap
+      // introduced by the forward pass is undone (total width always fits, so this
+      // converges to a clean, non-overlapping, fully on-screen arrangement).
+      if (count > 0 && items[count - 1].left + items[count - 1].chipW > rightBound) {
+        items[count - 1].left = rightBound - items[count - 1].chipW;
+      }
+      for (let i = count - 2; i >= 0; i--) {
+        const maxLeft = items[i + 1].left - gap - items[i].chipW;
+        if (items[i].left > maxLeft) items[i].left = maxLeft;
+      }
+
+      items.forEach((it) => {
+        map.set(it.index, {
+          chipX: Math.max(inset, it.left),
+          chipY: it.chipY,
+          chipW: it.chipW,
+          chipH,
+          name: it.name,
+          labelValue: it.labelValue,
+        });
+      });
+    });
+
+    return map;
+  }, [
+    isVertical,
+    showLabels,
+    plotWidth,
+    layout,
+    data.nodes,
+    formatter,
+    totalValue,
+    labelUnit,
+    showPercentage,
+    fontSize,
+    semibold,
+    regular,
+    CHIP_PAD_X,
+    CHIP_GAP,
+    lineGap,
+    theme,
+  ]);
 
   // Single tap handler for the whole canvas. Converts the touch point into plot
   // coords and hit-tests nodes first (they sit above the ribbons), then links.
@@ -939,12 +974,17 @@ const _ChartSankeyWrapper = ({
       const px = locationX - PADDING.left;
       const py = locationY - PADDING.top;
 
+      // Slop widens the thin (progression-axis) dimension so the bar stays tappable:
+      // that is the X axis for horizontal (thin width) and the Y axis for vertical
+      // (thin height).
+      const slopX = isVertical ? 0 : HIT_SLOP;
+      const slopY = isVertical ? HIT_SLOP : 0;
       const hitNode = layout.nodeLayouts.find(
         (node) =>
-          px >= node.x - HIT_SLOP &&
-          px <= node.x + node.width + HIT_SLOP &&
-          py >= node.y - HIT_SLOP &&
-          py <= node.y + node.height + HIT_SLOP,
+          px >= node.x - slopX &&
+          px <= node.x + node.width + slopX &&
+          py >= node.y - slopY &&
+          py <= node.y + node.height + slopY,
       );
       if (hitNode) {
         setActive((prev) =>
@@ -957,15 +997,14 @@ const _ChartSankeyWrapper = ({
         return;
       }
 
-      const hitLinkIdx = layout.linkLayouts.findIndex((link) =>
-        isPointOnRibbon(px, py, link, HIT_SLOP),
+      const hitLink = layout.linkLayouts.find((link) =>
+        isPointOnRibbon(px, py, link, HIT_SLOP, orientation),
       );
-      if (hitLinkIdx !== -1) {
-        const hitLink = layout.linkLayouts[hitLinkIdx];
+      if (hitLink) {
         setActive((prev) =>
-          prev && prev.type === 'link' && prev.index === hitLinkIdx
+          prev && prev.type === 'link' && prev.index === hitLink.originalIndex
             ? null
-            : { type: 'link', index: hitLinkIdx },
+            : { type: 'link', index: hitLink.originalIndex },
         );
         const originalLink = data.links[hitLink.originalIndex];
         if (originalLink) onLinkClick?.(originalLink, hitLink.originalIndex);
@@ -974,176 +1013,202 @@ const _ChartSankeyWrapper = ({
 
       setActive(null);
     },
-    [layout, data.nodes, data.links, PADDING.left, PADDING.top, onNodeClick, onLinkClick],
+    [
+      layout,
+      data.nodes,
+      data.links,
+      PADDING.left,
+      PADDING.top,
+      onNodeClick,
+      onLinkClick,
+      isVertical,
+      orientation,
+    ],
   );
 
   return (
-    <SankeyChartNativeContext.Provider value={true}>
-      <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
-        <BaseBox
-          {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
-          {...makeAnalyticsAttribute(restProps)}
-          width="100%"
-          height="100%"
-          {...restProps}
-          position="relative"
+    <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
+      <BaseBox
+        {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
+        {...makeAnalyticsAttribute(restProps)}
+        width="100%"
+        height="100%"
+        position="relative"
+        {...restProps}
+      >
+        <Pressable
+          testID={testID ? `${testID}-canvas` : undefined}
+          onLayout={onLayout}
+          onPress={handleCanvasPress}
+          style={{ flex: 1, width: '100%' }}
         >
-          <Pressable
-            testID={testID ? `${testID}-canvas` : undefined}
-            onLayout={onLayout}
-            onPress={handleCanvasPress}
-            android_disableSound={true}
-            style={{ flex: 1, width: '100%' }}
-          >
-            {size.width > 0 && size.height > 0 ? (
-              <Svg
-                width={size.width}
-                height={size.height}
-                pointerEvents="none"
-                accessibilityRole="image"
-                accessibilityLabel="Sankey flow diagram"
-              >
-                <G x={PADDING.left} y={PADDING.top}>
-                  {/* Links first so nodes + labels render above the ribbons */}
-                  {layout.linkLayouts.map((link, linkIdx) => {
-                    const srcNode = data.nodes[link.sourceIndex] as SankeyDataNode | undefined;
-                    const colorToken =
-                      linkColorOverride ??
-                      nodeColorOverride ??
-                      (srcNode
-                        ? srcNode.color ??
-                          defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
-                        : defaultColorTokens[0]);
-                    return (
-                      <SankeyLinkShape
-                        key={`link-${link.originalIndex}`}
-                        targetOpacity={getLinkOpacity(linkIdx)}
-                        d={link.d}
-                        fill={resolveColor(colorToken)}
-                        duration={motionDuration}
-                        easing={motionEasing}
-                        accessibilityLabel={`Link from ${
-                          data.nodes[link.sourceIndex]?.name ?? ''
-                        } to ${data.nodes[link.targetIndex]?.name ?? ''}: ${link.value}`}
-                      />
-                    );
-                  })}
+          {size.width > 0 && size.height > 0 ? (
+            <Svg width={size.width} height={size.height} pointerEvents="none">
+              <G x={PADDING.left} y={PADDING.top}>
+                {/* Links first so nodes + labels render above the ribbons */}
+                {layout.linkLayouts.map((link) => {
+                  const srcNode = data.nodes[link.sourceIndex] as SankeyDataNode | undefined;
+                  const colorToken =
+                    linkColorOverride ??
+                    nodeColorOverride ??
+                    (srcNode
+                      ? srcNode.color ??
+                        defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
+                      : defaultColorTokens[0]);
+                  return (
+                    <SankeyLinkShape
+                      key={`link-${link.originalIndex}`}
+                      targetOpacity={getLinkOpacity(link.originalIndex)}
+                      d={link.d}
+                      fill={resolveColor(colorToken)}
+                    />
+                  );
+                })}
 
-                  {layout.nodeLayouts.map((node) => {
-                    const nodeData = data.nodes[node.index] as SankeyDataNode | undefined;
-                    if (!nodeData) return null;
-                    const colorToken =
-                      nodeColorOverride ??
-                      nodeData.color ??
-                      defaultColorTokens[node.index % defaultColorTokens.length];
+                {layout.nodeLayouts.map((node) => {
+                  const nodeData = data.nodes[node.index] as SankeyDataNode | undefined;
+                  if (!nodeData) return null;
+                  const colorToken =
+                    nodeColorOverride ??
+                    nodeData.color ??
+                    defaultColorTokens[node.index % defaultColorTokens.length];
 
-                    const nodeMidY = node.y + node.height / 2;
-                    const chipX = node.x + node.width + CHIP_GAP;
-                    const humanized = formatter(node.value);
-                    const levelCount = layout.countPerDepth[node.depth] ?? 1;
-                    const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
-                    const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
-                    const labelValue =
-                      showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
+                  // Build the label. Horizontal computes chip geometry inline (chip to
+                  // the right of the bar). Vertical uses the precomputed, collision-
+                  // resolved + clamped layout (chip below the bar) so labels never
+                  // overlap a neighbour or clip off the narrow screen edges.
+                  const labelElement = ((): React.ReactElement | null => {
+                    if (!showLabels) return null;
+                    let labelArgs: NodeLabelArgs;
+                    if (isVertical) {
+                      const vLabel = verticalLabels.get(node.index);
+                      if (!vLabel || vLabel.chipW <= 0) return null;
+                      labelArgs = {
+                        chipX: vLabel.chipX,
+                        chipY: vLabel.chipY,
+                        chipW: vLabel.chipW,
+                        chipH: vLabel.chipH,
+                        nodeMidY: vLabel.chipY + vLabel.chipH / 2,
+                        textX: vLabel.chipX + vLabel.chipW / 2,
+                        textAnchor: 'middle',
+                        fontSize,
+                        fontFamily,
+                        labelNameColor,
+                        labelValueColor,
+                        chipBg,
+                        chipBorderColor,
+                        chipRadius,
+                        chipPadX: CHIP_PAD_X,
+                        lineGap,
+                        borderThin,
+                        capHeightRatio,
+                        name: vLabel.name,
+                        labelValue: vLabel.labelValue,
+                        shouldWrap: true,
+                        semibold,
+                        regular,
+                      };
+                    } else {
+                      const humanized = formatter(node.value);
+                      const levelCount = layout.countPerDepth[node.depth] ?? 1;
+                      const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
+                      const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
+                      const labelValue =
+                        showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
 
-                    const nameW = estimateTextWidth(nodeData.name, fontSize, semibold);
-                    const labelW = estimateTextWidth(labelValue, fontSize, regular);
-                    const contentW = nameW + theme.spacing[2] + labelW;
-                    const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
-                    const chipW = shouldWrap
-                      ? Math.min(
-                          CHIP_MAX_WIDTH,
-                          Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
-                        )
-                      : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
-                    const chipH = shouldWrap
-                      ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3]
-                      : CHIP_H;
-                    const chipY = nodeMidY - chipH / 2;
+                      const nameW = estimateTextWidth(nodeData.name, fontSize, semibold);
+                      const labelW = estimateTextWidth(labelValue, fontSize, regular);
+                      const contentW = nameW + theme.spacing[2] + labelW;
+                      const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
+                      const chipW = shouldWrap
+                        ? Math.min(
+                            CHIP_MAX_WIDTH,
+                            Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
+                          )
+                        : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
+                      const chipH = shouldWrap
+                        ? theme.spacing[3] + fontSize + lineGap + fontSize + theme.spacing[3]
+                        : CHIP_H;
+                      const nodeMidY = node.y + node.height / 2;
+                      const chipX = node.x + node.width + CHIP_GAP;
+                      labelArgs = {
+                        chipX,
+                        chipY: nodeMidY - chipH / 2,
+                        chipW,
+                        chipH,
+                        nodeMidY,
+                        textX: chipX,
+                        textAnchor: 'start',
+                        fontSize,
+                        fontFamily,
+                        labelNameColor,
+                        labelValueColor,
+                        chipBg,
+                        chipBorderColor,
+                        chipRadius,
+                        chipPadX: CHIP_PAD_X,
+                        lineGap,
+                        borderThin,
+                        capHeightRatio,
+                        name: nodeData.name,
+                        labelValue,
+                        shouldWrap,
+                        semibold,
+                        regular,
+                      };
+                    }
+                    return (showLabelChip ? renderChipLabel : renderPlainTextLabel)(labelArgs);
+                  })();
 
-                    const labelArgs: NodeLabelArgs = {
-                      chipX,
-                      chipY,
-                      chipW,
-                      chipH,
-                      nodeMidY,
-                      fontSize,
-                      fontFamily,
-                      labelNameColor,
-                      labelValueColor,
-                      chipBg,
-                      chipBorderColor,
-                      chipRadius,
-                      chipPadX: CHIP_PAD_X,
-                      lineGap,
-                      borderThin,
-                      capHeightRatio,
-                      name: nodeData.name,
-                      labelValue,
-                      shouldWrap,
-                      semibold,
-                      regular,
-                    };
-
-                    return (
-                      <SankeyNodeShape
-                        key={`node-${node.index}`}
-                        targetOpacity={getNodeOpacity(node.index)}
-                        x={node.x}
-                        y={node.y}
-                        width={node.width}
-                        height={node.height}
-                        fill={resolveColor(colorToken)}
-                        duration={motionDuration}
-                        easing={motionEasing}
-                        accessibilityLabel={`Node ${nodeData.name}: ${node.value}`}
-                      >
-                        {showLabels
-                          ? (showLabelChip ? renderChipLabel : renderPlainTextLabel)(labelArgs)
-                          : null}
-                      </SankeyNodeShape>
-                    );
-                  })}
-                </G>
-              </Svg>
-            ) : null}
-          </Pressable>
-
-          {tooltip ? (
-            <View
-              pointerEvents="none"
-              style={{
-                position: 'absolute',
-                zIndex: TOOLTIP_Z_INDEX,
-                top: Math.max(
-                  0,
-                  Math.min(size.height - theme.spacing[9] * 2, tooltip.centerY - theme.spacing[9]),
-                ),
-                left: tooltipLeft,
-                maxWidth: TOOLTIP_MAX_WIDTH,
-                // surface.icon.staticBlack.normal is the token the web SankeyTooltip uses.
-                backgroundColor: theme.colors.surface.icon.staticBlack.normal,
-                borderRadius: theme.border.radius.large,
-                borderWidth: theme.border.width.thin,
-                borderColor: theme.colors.surface.border.gray.muted,
-                padding: theme.spacing[4],
-                // boxShadow: elevation.highRaised — RN cannot parse the web string,
-                // so approximate with iOS shadow* props + Android elevation.
-                shadowColor: '#000',
-                shadowOpacity: 0.24,
-                shadowRadius: 12,
-                shadowOffset: { width: 0, height: 6 },
-                elevation: 8,
-              }}
-            >
-              <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-                {tooltip.content}
-              </Text>
-            </View>
+                  return (
+                    <SankeyNodeShape
+                      key={`node-${node.index}`}
+                      targetOpacity={getNodeOpacity(node.index)}
+                      x={node.x}
+                      y={node.y}
+                      width={node.width}
+                      height={node.height}
+                      fill={resolveColor(colorToken)}
+                    >
+                      {labelElement}
+                    </SankeyNodeShape>
+                  );
+                })}
+              </G>
+            </Svg>
           ) : null}
-        </BaseBox>
-      </CommonChartComponentsContext.Provider>
-    </SankeyChartNativeContext.Provider>
+        </Pressable>
+
+        {tooltip ? (
+          <View
+            pointerEvents="none"
+            style={{
+              position: 'absolute',
+              top: Math.max(0, tooltip.centerY - theme.spacing[9]),
+              left: tooltipLeft,
+              maxWidth: TOOLTIP_MAX_WIDTH,
+              // surface.icon.staticBlack.normal is the token the web SankeyTooltip uses.
+              backgroundColor: theme.colors.surface.icon.staticBlack.normal,
+              borderRadius: theme.border.radius.large,
+              borderWidth: theme.border.width.thin,
+              borderColor: theme.colors.surface.border.gray.muted,
+              padding: theme.spacing[4],
+              // boxShadow: elevation.highRaised — RN cannot parse the web string,
+              // so approximate with iOS shadow* props + Android elevation.
+              shadowColor: '#000',
+              shadowOpacity: 0.24,
+              shadowRadius: 12,
+              shadowOffset: { width: 0, height: 6 },
+              elevation: 8,
+            }}
+          >
+            <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+              {tooltip.content}
+            </Text>
+          </View>
+        ) : null}
+      </BaseBox>
+    </CommonChartComponentsContext.Provider>
   );
 };
 

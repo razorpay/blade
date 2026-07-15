@@ -70,6 +70,19 @@ export type ChartSankeyWrapperProps = {
   nodeColorOverride?: ChartsCategoricalColorToken;
   /** Override all link ribbon colors with a single Blade token */
   linkColorOverride?: ChartsCategoricalColorToken;
+  /**
+   * Flow direction of the diagram.
+   *
+   * **Native-only.** The web SankeyChart always renders horizontally and ignores
+   * this prop; it is consumed exclusively by `SankeyChart.native.tsx`. Vertical
+   * (top-to-bottom) reads more clearly on tall phone screens.
+   *
+   * - `'horizontal'` — stages flow left → right (default, matches web)
+   * - `'vertical'` — stages flow top → bottom (native only)
+   *
+   * @default 'horizontal'
+   */
+  orientation?: 'horizontal' | 'vertical';
 } & TestID &
   DataAnalyticsAttribute &
   BoxProps;
@@ -109,4 +122,48 @@ export type ChartSankeyProps = {
   onNodeClick?: (node: SankeyDataNode, index: number) => void;
   /** Called when a link ribbon is clicked. Receives the link data and its zero-based index. */
   onLinkClick?: (link: SankeyDataLink, index: number) => void;
+};
+
+/** Internal link shape used while computing the native Sankey layout. */
+export type RechartsLink = {
+  source: number;
+  target: number;
+  value: number;
+  _originalIndex: number;
+};
+
+/** Positioned node bar computed by the native Sankey layout engine. */
+export type NodeLayout = {
+  index: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  value: number;
+  depth: number;
+};
+
+/**
+ * Positioned link ribbon computed by the native Sankey layout engine.
+ * Centerline endpoints + thickness (plot coords) are used to hit-test taps
+ * against the ribbon since RN has no SVG path point-containment API.
+ */
+export type LinkLayout = {
+  sourceIndex: number;
+  targetIndex: number;
+  value: number;
+  originalIndex: number;
+  d: string;
+  sourceX: number;
+  sourceY: number;
+  targetX: number;
+  targetY: number;
+  thickness: number;
+};
+
+/** Full layout output from the native Sankey layout engine. */
+export type SankeyLayout = {
+  nodeLayouts: NodeLayout[];
+  linkLayouts: LinkLayout[];
+  countPerDepth: number[];
 };
