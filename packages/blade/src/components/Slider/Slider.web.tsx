@@ -241,6 +241,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   const handleTrackPointerDown = React.useCallback(
     (event: React.PointerEvent<HTMLDivElement>): void => {
       if (isDisabled || event.target !== event.currentTarget || !trackRef.current) return;
+      latestEventRef.current = (event as unknown) as React.SyntheticEvent<HTMLInputElement>;
       pointerStartedOnThumbRef.current = false;
       const bounds = trackRef.current.getBoundingClientRect();
       const ratio = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);

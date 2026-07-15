@@ -131,7 +131,7 @@ const SliderControls = ({
       {...trackStyleProps}
       onPointerDown={onTrackPointerDown}
       role={selectionType === 'range' ? 'group' : undefined}
-      aria-labelledby={selectionType === 'range' ? labelId : undefined}
+      aria-labelledby={selectionType === 'range' && label ? labelId : undefined}
     >
       <TrackLine {...trackStyleProps} ref={trackRef}>
         <TrackFill

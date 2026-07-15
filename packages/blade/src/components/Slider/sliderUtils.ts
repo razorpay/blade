@@ -5,7 +5,7 @@ const clamp = (value: number, min: number, max: number): number =>
   Math.min(Math.max(value, min), max);
 
 const getPrecision = (value: number): number => {
-  const [, decimals = ''] = String(value).split('.');
+  const [, decimals = ''] = String(parseFloat(value.toFixed(14))).split('.');
   return decimals.length;
 };
 
