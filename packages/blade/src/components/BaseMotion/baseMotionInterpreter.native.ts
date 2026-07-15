@@ -162,8 +162,7 @@ const resolveScalar = (value: unknown): number | undefined => {
   const resolved = Array.isArray(value) ? value[value.length - 1] : value;
   if (typeof resolved === 'number') return resolved;
   if (typeof resolved === 'string') {
-    const numeric = parseFloat(resolved);
-    return Number.isNaN(numeric) ? undefined : numeric;
+    return parseUnit(resolved);
   }
   return undefined;
 };
