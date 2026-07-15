@@ -25,6 +25,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
+import { throwBladeError } from '~utils/logger';
 import type { BladeElementRef } from '~utils/types';
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
@@ -50,6 +51,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     hideFileUpload = false,
     autoFocus = false,
     accessibilityLabel = 'Chat input',
+    accept: _accept,
     testID,
     ...rest
   },
@@ -57,6 +59,19 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 ) => {
   const { theme } = useTheme();
   const inputId = useId('chatinput');
+
+  if (__DEV__) {
+    if (_accept) {
+      throwBladeError({
+        message:
+          'The `accept` prop has no effect on React Native. File filtering should be handled by your file picker (see onFileChange).',
+        moduleName: 'ChatInput',
+      });
+    }
+  }
+
+  const themeMotionRef = React.useRef(theme.motion);
+  themeMotionRef.current = theme.motion;
 
   const {
     mergedRef,
@@ -87,18 +102,19 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   const [isErrorBannerVisible, setIsErrorBannerVisible] = React.useState(isError);
 
   React.useEffect(() => {
-    const duration = getIn(theme.motion, 'duration.xmoderate') as number;
+    const motion = themeMotionRef.current;
+    const duration = getIn(motion, 'duration.xmoderate') as number;
 
     if (isError) {
       setIsErrorBannerVisible(true);
       errorProgress.value = withTiming(1, {
         duration,
-        easing: castNativeType(theme.motion.easing.emphasized),
+        easing: castNativeType(motion.easing.emphasized),
       });
     } else {
       errorProgress.value = withTiming(
         0,
-        { duration, easing: castNativeType(theme.motion.easing.emphasized) },
+        { duration, easing: castNativeType(motion.easing.emphasized) },
         (finished) => {
           if (finished) {
             runOnJS(setIsErrorBannerVisible)(false);
@@ -106,7 +122,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         },
       );
     }
-  }, [isError, theme.motion]);
+  }, [isError]);
 
   // Mirror web's `bottom: calc(100% - 12px)` — overlap the input card by spacing.4 (12px)
   // so the banner's square bottom edge tucks behind the input and the shapes read as one.

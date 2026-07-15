@@ -6,6 +6,7 @@ import type {
   BladeFileList,
   FileUploadVariableSizeProps,
 } from './types';
+import { generateFileId } from './generateFileId';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
   fileUploadColorTokens,
@@ -92,10 +93,16 @@ const _FileUpload = ({
     }
   }
 
-  const [selectedFiles, setSelectedFiles] = useControllableState({
+  const [rawSelectedFiles, setSelectedFiles] = useControllableState({
     value: fileList,
     defaultValue: fileList ?? [],
   });
+
+  // Derive a new array with stable IDs assigned — never mutates the consumer's file objects.
+  const selectedFiles = useMemo<BladeFileList>(
+    () => rawSelectedFiles.map((file) => (file.id ? file : { ...file, id: generateFileId() })),
+    [rawSelectedFiles],
+  );
   const [isActive, setIsActive] = useState(false);
 
   const isMultiple = uploadType === 'multiple';
@@ -107,14 +114,6 @@ const _FileUpload = ({
   const accessibilityText =
     accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
-
-  useMemo(() => {
-    for (const file of selectedFiles) {
-      if (!file.id) {
-        file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
-      }
-    }
-  }, [selectedFiles]);
 
   const handlePress = (): void => {
     if (isDisabled) return;

@@ -110,6 +110,9 @@ type ChatInputProps = {
    * @example ".jpg,.png,.pdf" or "image/*"
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept
    *
+   * ⚠️ **Platform behavior differs:** the `accept` prop only works on Web. On React Native it has
+   * no effect — file filtering should be handled by your file picker (see `onFileChange`).
+   *
    * **Note (React Native):** No effect. File filtering is not handled by ChatInput on native since
    * consumers wire their own file picker (see `onFileChange`) and are responsible for filtering.
    */
