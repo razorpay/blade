@@ -89,6 +89,7 @@ const _ButtonGroup = ({
       {...makeAnalyticsAttribute(rest)}
       {...getStyledProps(rest)}
       {...makeAccessible({ role: 'group' })}
+      accessible={false}
     >
       {React.Children.map(children, (child, index) => {
         if (!React.isValidElement(child)) return child;
