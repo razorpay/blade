@@ -11,7 +11,6 @@ import {
   isSequentialColor,
   totalChartColors,
 } from '../utils';
-import type { ColorTheme } from '../utils';
 import { componentId as commonChartComponentId } from '../CommonChartComponents/tokens';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
@@ -30,8 +29,9 @@ import type {
   ChartDonutWrapperProps,
   ChartDonutProps,
   ChartDonutCellProps,
-  ChartRadius,
   Content,
+  CellSlot,
+  DonutSlots,
 } from './types';
 import { RADIUS_MAPPING, BASE_CONTAINER_SIZE, START_AND_END_ANGLES, componentId } from './tokens';
 import { useTheme } from '~components/BladeProvider';
@@ -50,38 +50,6 @@ const PADDING_ANGLE = 1.5;
 const STROKE_RING_WIDTH = 0.75;
 const LEGEND_SWATCH_SIZE = 12;
 const TOOLTIP_WIDTH = 160;
-
-type CellSlot = {
-  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
-};
-
-type LegendSlot = {
-  selectedDataKeys?: string[];
-  defaultSelectedDataKeys?: string[];
-  onSelectedDataKeysChange?: ChartLegendProps['onSelectedDataKeysChange'];
-  layout: Layout;
-  align: Align;
-};
-
-type DonutSlot = {
-  data: Record<string, unknown>[];
-  dataKey: string;
-  nameKey: ChartDonutProps['nameKey'];
-  cx: ChartDonutProps['cx'];
-  cy: ChartDonutProps['cy'];
-  radius: ChartRadius;
-  colorTheme: ColorTheme;
-  type: NonNullable<ChartDonutProps['type']>;
-  cells: CellSlot[];
-};
-
-type DonutSlots = {
-  donut?: DonutSlot;
-  hasLegend: boolean;
-  legend?: LegendSlot;
-  hasTooltip: boolean;
-  tooltipFormatter?: NonNullable<ChartTooltipProps['formatter']>;
-};
 
 /**
  * Gets the item name from a data row based on `nameKey`.
