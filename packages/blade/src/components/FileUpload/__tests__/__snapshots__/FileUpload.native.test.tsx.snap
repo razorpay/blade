@@ -1556,10 +1556,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -1568,13 +1572,11 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
-            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
-                  "flexDirection": "row",
                 },
               ]
             }
@@ -1583,14 +1585,12 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
-              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -2326,10 +2326,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -2338,13 +2342,11 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
-            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
-                  "flexDirection": "row",
                 },
               ]
             }
@@ -2353,14 +2355,12 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
-              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -2937,10 +2937,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -2949,13 +2953,11 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
-            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
-                  "flexDirection": "row",
                 },
               ]
             }
@@ -2964,14 +2966,12 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
-              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -3235,7 +3235,7 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
               }
               accessible={true}
               data-blade-component="base-box"
-              id="progress-linear-99"
+              id="progress-linear-93"
               style={
                 [
                   {},
@@ -3573,10 +3573,14 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -3585,13 +3589,11 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
-            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
-                  "flexDirection": "row",
                 },
               ]
             }
@@ -3600,14 +3602,12 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
-              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },
@@ -4059,10 +4059,14 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -4071,13 +4075,11 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
             alignItems="center"
             data-blade-component="base-box"
             display="flex"
-            flexDirection="row"
             style={
               [
                 {
                   "alignItems": "center",
                   "display": "flex",
-                  "flexDirection": "row",
                 },
               ]
             }
@@ -4086,14 +4088,12 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
               alignItems="center"
               data-blade-component="base-box"
               display="flex"
-              flexDirection="row"
               maxWidth="70%"
               style={
                 [
                   {
                     "alignItems": "center",
                     "display": "flex",
-                    "flexDirection": "row",
                     "marginRight": 8,
                     "maxWidth": "70%",
                   },

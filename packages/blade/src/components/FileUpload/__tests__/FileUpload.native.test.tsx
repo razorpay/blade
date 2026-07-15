@@ -91,63 +91,38 @@ describe('<FileUpload /> (native)', () => {
     expect(getAllByText('Something went wrong').length).toBeGreaterThan(0);
   });
 
-  it('should call onChange with empty fileList when upload area is pressed', () => {
+  it('should call onUploadPress when upload area is pressed', () => {
+    const onUploadPress = jest.fn();
     const onChange = jest.fn();
     const { getByText } = renderWithTheme(
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
-        name="single-file-upload-input"
+        accept="image/*"
         fileList={[]}
+        onUploadPress={onUploadPress}
         onChange={onChange}
       />,
     );
-
     fireEvent.press(getByText('Upload'));
-
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange).toHaveBeenCalledWith({
-      name: 'single-file-upload-input',
-      fileList: [],
-    });
-  });
-
-  it('should call onClick when upload area is pressed (native-only callback)', () => {
-    const onClick = jest.fn();
-    const onChange = jest.fn();
-    const { getByText } = renderWithTheme(
-      <FileUpload
-        uploadType="single"
-        label="Upload GST certificate"
-        name="single-file-upload-input"
-        fileList={[]}
-        onClick={onClick}
-        onChange={onChange}
-      />,
-    );
-
-    fireEvent.press(getByText('Upload'));
-
-    expect(onClick).toHaveBeenCalledTimes(1);
-    expect(onClick).toHaveBeenCalledWith({ name: 'single-file-upload-input' });
-    expect(onChange).toHaveBeenCalledTimes(1);
-  });
-
-  it('should not call onChange when isDisabled and upload area is pressed', () => {
-    const onChange = jest.fn();
-    const { getByText } = renderWithTheme(
-      <FileUpload
-        uploadType="single"
-        label="Upload GST certificate"
-        fileList={[]}
-        onChange={onChange}
-        isDisabled
-      />,
-    );
-
-    fireEvent.press(getByText('Upload'));
-
+    expect(onUploadPress).toHaveBeenCalledTimes(1);
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('should not call onUploadPress when isDisabled', () => {
+    const onUploadPress = jest.fn();
+    const { getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        accept="image/*"
+        fileList={[]}
+        isDisabled
+        onUploadPress={onUploadPress}
+      />,
+    );
+    fireEvent.press(getByText('Upload'));
+    expect(onUploadPress).not.toHaveBeenCalled();
   });
 
   it('should render FileUploadItem when controlled fileList is provided (single upload)', () => {
@@ -163,7 +138,7 @@ describe('<FileUpload /> (native)', () => {
         uploadType="single"
         label="Upload GST certificate"
         fileList={[successFile]}
-        onChange={jest.fn()}
+        onUploadPress={jest.fn()}
       />,
     );
 
@@ -192,7 +167,7 @@ describe('<FileUpload /> (native)', () => {
         uploadType="multiple"
         label="Upload GST certificate"
         fileList={files}
-        onChange={jest.fn()}
+        onUploadPress={jest.fn()}
       />,
     );
 
@@ -215,7 +190,7 @@ describe('<FileUpload /> (native)', () => {
         uploadType="single"
         label="Upload GST certificate"
         fileList={[successFile]}
-        onChange={jest.fn()}
+        onUploadPress={jest.fn()}
         onRemove={onRemove}
       />,
     );
@@ -240,7 +215,7 @@ describe('<FileUpload /> (native)', () => {
         uploadType="multiple"
         label="Upload GST certificate"
         fileList={[uploadingFile]}
-        onChange={jest.fn()}
+        onUploadPress={jest.fn()}
         onDismiss={onDismiss}
       />,
     );
@@ -250,9 +225,9 @@ describe('<FileUpload /> (native)', () => {
     expect(onDismiss).toHaveBeenCalledWith({ file: uploadingFile });
   });
 
-  it('should call onReupload and re-fire onClick (not onChange) for picker reopen', () => {
+  it('should call onReupload without firing onUploadPress or onChange', () => {
     const onReupload = jest.fn();
-    const onClick = jest.fn();
+    const onUploadPress = jest.fn();
     const onChange = jest.fn();
     const errorFile = {
       id: 'file-2',
@@ -269,7 +244,7 @@ describe('<FileUpload /> (native)', () => {
         name="single-file-upload-input"
         fileList={[errorFile]}
         onChange={onChange}
-        onClick={onClick}
+        onUploadPress={onUploadPress}
         onReupload={onReupload}
       />,
     );
@@ -277,14 +252,13 @@ describe('<FileUpload /> (native)', () => {
     fireEvent.press(getByLabelText(`Reupload ${errorFile.name}`));
 
     expect(onReupload).toHaveBeenCalledWith({ file: errorFile });
-    // Mirrors web inputRef.click(): reopen signal via onClick only (no onChange([])).
-    expect(onClick).toHaveBeenCalledWith({ name: 'single-file-upload-input' });
+    expect(onUploadPress).not.toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
 
   it('should fall back to onRemove when onReupload is not provided', () => {
     const onRemove = jest.fn();
-    const onClick = jest.fn();
+    const onUploadPress = jest.fn();
     const onChange = jest.fn();
     const errorFile = {
       id: 'file-2',
@@ -301,16 +275,15 @@ describe('<FileUpload /> (native)', () => {
         name="single-file-upload-input"
         fileList={[errorFile]}
         onChange={onChange}
-        onClick={onClick}
+        onUploadPress={onUploadPress}
         onRemove={onRemove}
       />,
     );
 
     fireEvent.press(getByLabelText(`Reupload ${errorFile.name}`));
 
-    // Matches web: when onReupload is omitted, reupload falls back to onRemove
     expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
-    expect(onClick).toHaveBeenCalledWith({ name: 'single-file-upload-input' });
+    expect(onUploadPress).not.toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
 });

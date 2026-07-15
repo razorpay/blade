@@ -239,7 +239,7 @@ const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   const simulateUpload = useSimulateUpload();
 
-  const handleChange = useCallback(() => {
+  const handleUploadPress = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
@@ -262,7 +262,7 @@ const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
         helpText="Tap to pick a mock file"
         uploadType="single"
         fileList={files}
-        onChange={handleChange}
+        onUploadPress={handleUploadPress}
         onRemove={() => setFiles([])}
         onDismiss={() => setFiles([])}
         onReupload={({ file }) => {
@@ -296,7 +296,7 @@ const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   const simulateUpload = useSimulateUpload();
 
-  const handleChange = useCallback(() => {
+  const handleUploadPress = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
@@ -319,7 +319,7 @@ const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
         helpText="Tap to pick mock files"
         uploadType="multiple"
         fileList={files}
-        onChange={handleChange}
+        onUploadPress={handleUploadPress}
         onRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onReupload={({ file }) => {
@@ -354,7 +354,7 @@ const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const fileCountRef = useRef(0);
   const simulateUpload = useSimulateUpload();
 
-  const handleChange = useCallback(() => {
+  const handleUploadPress = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
@@ -383,7 +383,7 @@ const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
         helpText="Every 3rd file will fail"
         uploadType="multiple"
         fileList={files}
-        onChange={handleChange}
+        onUploadPress={handleUploadPress}
         onRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onReupload={({ file }) => {

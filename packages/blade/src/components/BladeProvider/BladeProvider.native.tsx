@@ -6,6 +6,7 @@ import { ThemeContext } from './useTheme';
 import { useBladeProvider } from './useBladeProvider';
 import type { BladeProviderProps } from './types';
 import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
+import { DrawerStackProvider } from '~components/Drawer/StackProvider';
 
 const gestureHandlerStyle = {
   flex: 1,
@@ -23,7 +24,9 @@ const BladeProvider = ({
       <PortalProvider>
         <ThemeContext.Provider value={themeContextValue}>
           <StyledComponentThemeProvider theme={theme}>
-            <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
+            <DrawerStackProvider>
+              <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
+            </DrawerStackProvider>
             <PortalHost name="BladeBottomSheetPortal" />
           </StyledComponentThemeProvider>
         </ThemeContext.Provider>

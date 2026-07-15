@@ -6,9 +6,9 @@ feat(blade): add React Native implementation for FileUpload component
 
 ### Platform differences
 
-**`onChange` / `onClick` semantics:** On web, `onChange` fires after the user picks files and passes the selected `fileList`. On React Native, tapping the upload area fires `onClick` (dedicated tap handler; follows Blade's `onClick` naming convention) and also `onChange` with `fileList: []` as a deliberate cross-platform tap signal. Prefer `onClick` for native-only code so you do not double-handle the tap. Consumers must open their own file picker (e.g. `react-native-document-picker`) and manage `fileList` themselves. Prefer controlled mode (`fileList` + updating it after the picker resolves).
+**`onChange` / `onUploadPress` semantics:** On web, `onChange` fires after the user picks files and passes the selected `fileList`. On React Native, tapping the upload area fires **`onUploadPress` only** — use it to open your own file picker (e.g. `react-native-document-picker`). FileUpload does **not** fire `onChange` on tap; update `fileList` yourself after the picker returns. Prefer controlled mode (`fileList` + updating it after the picker resolves). `onUploadPress` is typed with `Platform.Select` so it is native-only.
 
-**Built-in validation (`accept`, `maxCount`, `maxSize`):** On web, these props are enforced internally (file-type filtering, count limits, size limits with inline error messages). On React Native they have no effect — validation must be handled by the consumer in the picker / `onChange` callback.
+**Built-in validation (`accept`, `maxCount`, `maxSize`):** On web, these props are enforced internally (file-type filtering, count limits, size limits with inline error messages). On React Native they have no effect — validation must be handled by the consumer after the picker returns.
 
 **`labelPosition`:** On web, `labelPosition="left"` renders the label beside the upload area. On React Native, labels always render above the upload area; `labelPosition="left"` is ignored with a `__DEV__` warning.
 

@@ -44,7 +44,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     accept,
     uploadType = 'single',
     onChange,
-    onClick: _onClick,
+    onUploadPress: _onUploadPress,
     onPreview,
     onRemove,
     onReupload,
@@ -69,8 +69,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   },
   ref,
 ): React.ReactElement => {
-  // onClick is React Native-only (tap to open consumer-owned picker); ignore on web.
-  void _onClick;
+  // onUploadPress is React Native-only (tap to open consumer-owned picker); ignore on web.
+  void _onUploadPress;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const { actionButtonText, dropAreaText, height, width } = rest as FileUploadVariableSizeProps;
   const isSizeVariable = size === 'variable';

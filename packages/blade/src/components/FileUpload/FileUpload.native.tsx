@@ -47,11 +47,11 @@ const toNativeDimension = (
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
-    name,
+    name: _name,
     accept,
     uploadType = 'single',
-    onChange,
-    onClick,
+    onChange: _onChange,
+    onUploadPress,
     onPreview,
     onRemove,
     onReupload,
@@ -81,6 +81,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const { actionButtonText, dropAreaText, height, width, ...styledRest } = variableSizeRest;
   const isSizeVariable = size === 'variable';
   const hasLoggedUnsupportedPropsRef = useRef(false);
+
+  // onChange is web selection semantics; on native, consumers update fileList after their picker.
+  void _onChange;
+  void _name;
 
   if (__DEV__) {
     if (!isSizeVariable && (actionButtonText || dropAreaText)) {
@@ -116,7 +120,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           type: 'warn',
           moduleName: 'FileUpload',
           message:
-            'maxCount has no effect on React Native. File count limiting must be handled by the consumer in the onChange callback.',
+            'maxCount has no effect on React Native. File count limiting must be handled by the consumer after the file picker returns.',
         });
       }
 
@@ -125,7 +129,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           type: 'warn',
           moduleName: 'FileUpload',
           message:
-            'maxSize has no effect on React Native. File size validation must be handled by the consumer in the onChange callback.',
+            'maxSize has no effect on React Native. File size validation must be handled by the consumer after the file picker returns.',
         });
       }
 
@@ -143,7 +147,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           type: 'warn',
           moduleName: 'FileUpload',
           message:
-            'onDrop has no effect on React Native. Drag-and-drop is not supported on native — use the onClick/onChange tap signal to open a file picker instead.',
+            'onDrop has no effect on React Native. Drag-and-drop is not supported on native — use onUploadPress to open a file picker instead.',
         });
       }
 
@@ -183,7 +187,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           type: 'warn',
           moduleName: 'FileUpload',
           message:
-            'FileUpload on React Native requires controlled mode. Pass the fileList prop and update it inside the onChange/onClick callback (e.g. after resolving files from react-native-document-picker). Uncontrolled usage will not reflect picked files in the UI.',
+            'FileUpload on React Native requires controlled mode. Pass the fileList prop and update it after resolving files from your picker (opened via onUploadPress). Uncontrolled usage will not reflect picked files in the UI.',
         });
       }
     }
@@ -228,12 +232,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     [showError ? errorText : '', showHelpText ? helpText : ''].filter(Boolean).join(' ');
   const { labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
-  const handleUploadAreaInteraction = (): void => {
-    // On native, tapping the upload area fires onClick as the dedicated tap handler
-    // (Blade convention: public APIs use onClick, mapped to RN Pressable onPress).
-    // onChange also fires with an empty fileList as a deliberate cross-platform tap signal.
-    onClick?.({ name });
-    onChange?.({ name, fileList: [] });
+  const handlePress = (): void => {
+    if (isDisabled) return;
+    // Sole native tap signal — open your document picker here. Do not fire onChange on tap.
+    onUploadPress?.();
   };
 
   const removeFileFromSelection = (file: BladeFile): void => {
@@ -255,10 +257,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     } else {
       onRemove?.({ file });
     }
-    // Mirror web's `inputRef.click()` reopen: fire only `onClick` (not `onChange` with
-    // `fileList: []`) so consumers can open their picker without treating this as a
-    // file-list clear event. On web, reupload also does not call `onChange`.
-    onClick?.({ name });
+    setIsActive(false);
   };
 
   const handleFileDismiss = (file: BladeFile): void => {
@@ -304,7 +303,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
         {!isOneFileSelectedWithSingleUpload ? (
           <Pressable
-            onPress={handleUploadAreaInteraction}
+            onPress={handlePress}
             onPressIn={() => setIsActive(true)}
             onPressOut={() => setIsActive(false)}
             disabled={isDisabled}

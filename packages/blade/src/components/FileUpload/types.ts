@@ -4,6 +4,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
+import type { Platform } from '~utils';
 import type { BladeFile } from './bladeFile';
 
 type BladeFileList = BladeFile[];
@@ -62,44 +63,35 @@ type FileUploadCommonProps = {
   /**
    * Limit the number of files that can be uploaded.
    *
-   * **React Native:** This prop has no effect on native. Enforce file count limits in the `onChange` callback.
+   * **React Native:** This prop has no effect on native. Enforce file count limits after your
+   * picker returns (e.g. when updating `fileList`).
    */
   maxCount?: number;
   /**
    * Limit the size of the uploaded files (in bytes).
    *
-   * **React Native:** This prop has no effect on native. Enforce file size limits in the `onChange` callback.
+   * **React Native:** This prop has no effect on native. Enforce file size limits after your
+   * picker returns (e.g. when updating `fileList`).
    */
   maxSize?: number;
   /**
    * Callback function triggered when files are selected.
    *
-   * **React Native:** This callback fires when the user taps the upload area as a tap signal.
-   * `fileList` will always be empty at tap time — open your own file picker
-   * (e.g. `react-native-document-picker`) inside this callback and manage the file list yourself.
-   *
-   * @remarks On React Native, `fileList` is always an empty array in this callback.
-   * The type signature is shared with web for cross-platform compatibility, but the semantics
-   * differ: on web, `fileList` contains the selected files; on native, it is always `[]`.
-   * Prefer `onClick` for native-only tap handling. `onChange` also fires on the same tap
-   * (with an empty `fileList`) as a deliberate cross-platform tap signal — do not wire both
-   * to the same side effect or the handler will run twice.
+   * On web, this fires after the user picks files from the file input and receives the selected `fileList`.
+   * On React Native, file selection happens outside the component — FileUpload does **not** fire
+   * `onChange` on tap. Use `onUploadPress` to open your picker, then update `fileList` after it returns.
    */
   onChange?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
-   * Callback function triggered when the user taps the upload area (React Native only).
+   * Callback fired when the upload area is pressed (React Native only).
    *
-   * Named `onClick` to match Blade's established cross-platform handler convention
-   * (see Button decisions: public APIs use `onClick`, mapped to RN `onPress` internally).
-   *
-   * Use this callback to open your file picker (e.g. `react-native-document-picker`).
-   * On native, `onChange` also fires on the same tap with an empty `fileList` as a
-   * cross-platform tap signal. Prefer `onClick` for native-only code so you do not
-   * double-handle the tap when both callbacks are provided.
-   *
+   * Use this to open your document picker since there is no built-in file input on native.
    * This prop has no effect on web.
    */
-  onClick?: ({ name }: { name?: string }) => void;
+  onUploadPress?: Platform.Select<{
+    native: () => void;
+    web: undefined;
+  }>;
   /**
    * Callback function triggered when the preview icon is clicked
    */
@@ -111,9 +103,9 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when a file upload is retried.
    *
-   * **React Native:** After clearing the file from selection, native also fires `onClick`
-   * (not `onChange`) so consumers can reopen their picker — mirroring web's
-   * `inputRef.click()` reopen without emitting an empty `fileList` change event.
+   * **React Native:** Clears the file from selection, then calls `onReupload` (or falls back to
+   * `onRemove`). Open your picker inside `onReupload` if you want to re-select a file — native
+   * does not re-fire `onUploadPress` or `onChange` on retry.
    */
   onReupload?: ({ file }: { file: BladeFile }) => void;
   /**
@@ -124,7 +116,7 @@ type FileUploadCommonProps = {
    * Callback function executed when files are dropped into the upload area
    *
    * **React Native:** This callback has no effect on native. Drag-and-drop is not supported —
-   * use the `onClick` or `onChange` tap signal to open a file picker instead.
+   * use `onUploadPress` to open a file picker instead.
    */
   onDrop?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
