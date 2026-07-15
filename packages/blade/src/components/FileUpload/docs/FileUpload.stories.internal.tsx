@@ -266,13 +266,12 @@ const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
         onRemove={() => setFiles([])}
         onDismiss={() => setFiles([])}
         onReupload={({ file }) => {
-          setFiles((prev) =>
-            prev.map((f) =>
-              f.id === file.id
-                ? { ...f, status: 'uploading', uploadPercent: 0, errorText: undefined }
-                : f,
-            ),
-          );
+          // FileUpload removes the file before calling onReupload in controlled mode —
+          // re-add it as uploading so the retry can proceed.
+          setFiles((prev) => [
+            { ...file, status: 'uploading', uploadPercent: 0, errorText: undefined },
+            ...prev.filter((f) => f.id !== file.id),
+          ]);
           simulateUpload(file.id!, setFiles);
         }}
       />
@@ -324,13 +323,12 @@ const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
         onRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onReupload={({ file }) => {
-          setFiles((prev) =>
-            prev.map((f) =>
-              f.id === file.id
-                ? { ...f, status: 'uploading', uploadPercent: 0, errorText: undefined }
-                : f,
-            ),
-          );
+          // FileUpload removes the file before calling onReupload in controlled mode —
+          // re-add it as uploading so the retry can proceed.
+          setFiles((prev) => [
+            { ...file, status: 'uploading', uploadPercent: 0, errorText: undefined },
+            ...prev.filter((f) => f.id !== file.id),
+          ]);
           simulateUpload(file.id!, setFiles);
         }}
       />
@@ -389,13 +387,12 @@ const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
         onRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onReupload={({ file }) => {
-          setFiles((prev) =>
-            prev.map((f) =>
-              f.id === file.id
-                ? { ...f, status: 'uploading', uploadPercent: 0, errorText: undefined }
-                : f,
-            ),
-          );
+          // FileUpload removes the file before calling onReupload in controlled mode —
+          // re-add it as uploading so the retry can proceed.
+          setFiles((prev) => [
+            { ...file, status: 'uploading', uploadPercent: 0, errorText: undefined },
+            ...prev.filter((f) => f.id !== file.id),
+          ]);
           simulateUpload(file.id!, setFiles);
         }}
       />

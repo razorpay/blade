@@ -259,9 +259,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     } else {
       onRemove?.({ file });
     }
-    // Mirror web's inputRef.click() reopen by re-firing the tap signal so consumers can
-    // open their file picker again (native does not own a hidden file input).
-    handleUploadAreaInteraction();
+    // Mirror web's `inputRef.click()` reopen: fire only `onClick` (not `onChange` with
+    // `fileList: []`) so consumers can open their picker without treating this as a
+    // file-list clear event. On web, reupload also does not call `onChange`.
+    onClick?.({ name });
   };
 
   const handleFileDismiss = (file: BladeFile): void => {

@@ -63,7 +63,10 @@ const StyledFileUploadItemWrapper = ({
       flexShrink={flexShrink}
       flexGrow={flexGrow}
       flexBasis={flexBasis}
-      backgroundColor={getIn(theme.colors, fileUploadItemBackgroundColors[status].default)}
+      backgroundColor={getIn(
+        theme.colors,
+        fileUploadItemBackgroundColors[status ?? 'success'].default,
+      )}
       borderColor={
         status === 'error'
           ? getIn(theme.colors, 'interactive.border.negative.faded')

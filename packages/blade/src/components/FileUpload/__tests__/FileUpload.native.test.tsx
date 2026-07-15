@@ -250,8 +250,9 @@ describe('<FileUpload /> (native)', () => {
     expect(onDismiss).toHaveBeenCalledWith({ file: uploadingFile });
   });
 
-  it('should call onReupload and re-fire onChange tap signal through FileUpload', () => {
+  it('should call onReupload and re-fire onClick (not onChange) for picker reopen', () => {
     const onReupload = jest.fn();
+    const onClick = jest.fn();
     const onChange = jest.fn();
     const errorFile = {
       id: 'file-2',
@@ -268,6 +269,7 @@ describe('<FileUpload /> (native)', () => {
         name="single-file-upload-input"
         fileList={[errorFile]}
         onChange={onChange}
+        onClick={onClick}
         onReupload={onReupload}
       />,
     );
@@ -275,14 +277,14 @@ describe('<FileUpload /> (native)', () => {
     fireEvent.press(getByLabelText(`Reupload ${errorFile.name}`));
 
     expect(onReupload).toHaveBeenCalledWith({ file: errorFile });
-    expect(onChange).toHaveBeenCalledWith({
-      name: 'single-file-upload-input',
-      fileList: [],
-    });
+    // Mirrors web inputRef.click(): reopen signal via onClick only (no onChange([])).
+    expect(onClick).toHaveBeenCalledWith({ name: 'single-file-upload-input' });
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('should fall back to onRemove when onReupload is not provided', () => {
     const onRemove = jest.fn();
+    const onClick = jest.fn();
     const onChange = jest.fn();
     const errorFile = {
       id: 'file-2',
@@ -299,6 +301,7 @@ describe('<FileUpload /> (native)', () => {
         name="single-file-upload-input"
         fileList={[errorFile]}
         onChange={onChange}
+        onClick={onClick}
         onRemove={onRemove}
       />,
     );
@@ -307,10 +310,8 @@ describe('<FileUpload /> (native)', () => {
 
     // Matches web: when onReupload is omitted, reupload falls back to onRemove
     expect(onRemove).toHaveBeenCalledWith({ file: errorFile });
-    expect(onChange).toHaveBeenCalledWith({
-      name: 'single-file-upload-input',
-      fileList: [],
-    });
+    expect(onClick).toHaveBeenCalledWith({ name: 'single-file-upload-input' });
+    expect(onChange).not.toHaveBeenCalled();
   });
 });
 

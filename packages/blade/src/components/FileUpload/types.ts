@@ -109,7 +109,11 @@ type FileUploadCommonProps = {
    */
   onRemove?: ({ file }: { file: BladeFile }) => void;
   /**
-   * Callback function triggered when a file upload is retried
+   * Callback function triggered when a file upload is retried.
+   *
+   * **React Native:** After clearing the file from selection, native also fires `onClick`
+   * (not `onChange`) so consumers can reopen their picker — mirroring web's
+   * `inputRef.click()` reopen without emitting an empty `fileList` change event.
    */
   onReupload?: ({ file }: { file: BladeFile }) => void;
   /**
