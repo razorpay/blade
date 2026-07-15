@@ -34,6 +34,7 @@ import {
   VERTICAL_LABEL_RESERVE,
 } from './tokens';
 import { INTER_ADVANCE, INTER_DEFAULT_ADVANCE } from './interAdvance';
+import { humanizeIndian } from './humanizeIndian';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -81,24 +82,6 @@ const truncateToWidth = (
     trimmed = trimmed.slice(0, -1);
   }
   return trimmed.length > 0 ? `${trimmed}…` : '…';
-};
-
-// ─── Indian number humanizer (private default for formatValue) ────────────────
-// Truncates (never rounds up) to avoid overstating values. Ported verbatim from web.
-const humanizeIndian = (value: number): string => {
-  if (value >= 1_00_00_000) {
-    const v = Math.floor((value / 1_00_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}Cr`;
-  }
-  if (value >= 1_00_000) {
-    const v = Math.floor((value / 1_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}L`;
-  }
-  if (value >= 1_000) {
-    const v = Math.floor((value / 1_000) * 10) / 10;
-    return `${parseFloat(v.toFixed(1))}k`;
-  }
-  return String(value);
 };
 
 // ─── Sankey layout (reimplements recharts <Sankey>) ────────────────────────────
