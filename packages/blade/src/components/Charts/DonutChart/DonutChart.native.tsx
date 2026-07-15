@@ -21,8 +21,6 @@ import type {
 import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
-  Layout,
-  Align,
 } from '../CommonChartComponents/types';
 import { AnimatedDonutSlice } from './AnimatedDonutSlice.native';
 import type {
