@@ -1,5 +1,3 @@
-'use strict';
-
 const QA_VERSION = '20260715-10';
 const STORIES = [
   { id: 'components-slider--default', kicker: 'Foundation', title: 'Default', height: 220 },
@@ -125,7 +123,7 @@ function inspectInteraction() {
       recordInteraction(`value: ${values.join(' - ')}`);
     }
     lastRangeSignature = signature;
-  } catch {}
+  } catch { /* frame not ready */ }
 }
 
 function inspectFrame() {
