@@ -7,6 +7,7 @@
  * env, so a synthetic layout event is dispatched to give the chart a size.
  */
 import React from 'react';
+import type { ReactTestInstance } from 'react-test-renderer';
 import { fireEvent } from '@testing-library/react-native';
 import { Rect, Path, TSpan, G } from 'react-native-svg';
 import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart.native';
@@ -38,18 +39,29 @@ const renderSankey = (chart: React.ReactElement): ReturnType<typeof renderWithTh
 // All rendered <Rect>s are visible shapes (node bars + chip backgrounds); there is
 // no separate hit-target rect. `shapeRects` is an identity pass kept so existing
 // count assertions read unchanged.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const shapeRects = (rects: any[]): any[] => rects;
+const shapeRects = (rects: ReactTestInstance[]): ReactTestInstance[] => rects;
 
 // Selection is driven by a single outer <Pressable> (testID `<id>-canvas`) that
 // hit-tests the touch location, so interaction tests fire `press` on that canvas
 // with a computed locationX/locationY rather than on individual SVG shapes.
 type Utils = ReturnType<typeof renderWithTheme>;
+type SvgComponent = typeof Rect | typeof Path | typeof TSpan | typeof G;
+
+// Rename RNTL's UNSAFE_* helpers so babel/new-cap does not treat the call site as a
+// constructor invocation (the exported names begin with an uppercase letter).
+const getAllByType = (utils: Utils, type: SvgComponent): ReactTestInstance[] => {
+  const { UNSAFE_getAllByType: unsafeGetAllByType } = utils;
+  return unsafeGetAllByType(type);
+};
+
+const queryAllByType = (utils: Utils, type: SvgComponent): ReactTestInstance[] => {
+  const { UNSAFE_queryAllByType: unsafeQueryAllByType } = utils;
+  return unsafeQueryAllByType(type);
+};
 
 // The chart draws its shapes inside a translate <G x={PADDING.left} y={PADDING.top}>.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getTranslate = (utils: Utils): { gx: number; gy: number } => {
-  const g = utils.UNSAFE_getAllByType(G).find((el: any) => typeof el.props.x === 'number');
+  const g = getAllByType(utils, G).find((el) => typeof el.props.x === 'number');
   return { gx: (g?.props.x as number) ?? 0, gy: (g?.props.y as number) ?? 0 };
 };
 
@@ -62,12 +74,11 @@ const tapCanvas = (utils: Utils, x: number, y: number): void => {
 // Center of node `i`'s bar in screen (Pressable-local) coords.
 const tapNode = (utils: Utils, i: number): void => {
   const { gx, gy } = getTranslate(utils);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const rect = shapeRects(utils.UNSAFE_getAllByType(Rect))[i] as any;
+  const rect = shapeRects(getAllByType(utils, Rect))[i];
   tapCanvas(
     utils,
-    gx + rect.props.x + rect.props.width / 2,
-    gy + rect.props.y + rect.props.height / 2,
+    gx + Number(rect.props.x) + Number(rect.props.width) / 2,
+    gy + Number(rect.props.y) + Number(rect.props.height) / 2,
   );
 };
 
@@ -77,8 +88,7 @@ const tapNode = (utils: Utils, i: number): void => {
 // so the centerline midpoint is ((Mx+Lx)/2, (My+Ly)/2) — the ±w/2 thickness cancels.
 const tapLink = (utils: Utils, i: number): void => {
   const { gx, gy } = getTranslate(utils);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const d = (utils.UNSAFE_getAllByType(Path)[i] as any).props.d as string;
+  const d = String(getAllByType(utils, Path)[i]?.props.d ?? '');
   const m = /M([\d.]+),([\d.]+)/.exec(d);
   const l = /L([\d.]+),([\d.]+)/.exec(d);
   const mx = Number(m?.[1] ?? 0);
@@ -111,43 +121,43 @@ describe('<ChartSankeyWrapper /> (native)', () => {
   });
 
   it('renders one <Rect> per node and one <Path> per link', () => {
-    const { UNSAFE_getAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart">
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
     // showLabelChip=false → no chip Rects, so Rect count === node count.
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
-    expect(UNSAFE_getAllByType(Path)).toHaveLength(data.links.length);
+    expect(shapeRects(getAllByType(utils, Rect))).toHaveLength(data.nodes.length);
+    expect(getAllByType(utils, Path)).toHaveLength(data.links.length);
   });
 
   it('renders chip <Rect>s in addition to node bars when showLabelChip is true', () => {
-    const { UNSAFE_getAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart">
         <ChartSankey data={data} showLabelChip />
       </ChartSankeyWrapper>,
     );
     // node bars + one chip rect per node with a label.
-    expect(shapeRects(UNSAFE_getAllByType(Rect)).length).toBeGreaterThan(data.nodes.length);
+    expect(shapeRects(getAllByType(utils, Rect)).length).toBeGreaterThan(data.nodes.length);
   });
 
   it('hides labels entirely when showLabels is false', () => {
-    const { UNSAFE_queryAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart">
         <ChartSankey data={data} showLabels={false} />
       </ChartSankeyWrapper>,
     );
     // No label text spans render when labels are hidden.
-    expect(UNSAFE_queryAllByType(TSpan)).toHaveLength(0);
+    expect(queryAllByType(utils, TSpan)).toHaveLength(0);
   });
 
   it('renders label text spans when showLabels is true', () => {
-    const { UNSAFE_getAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart">
         <ChartSankey data={data} />
       </ChartSankeyWrapper>,
     );
-    const spanTexts = UNSAFE_getAllByType(TSpan).map((s) => s.props.children);
+    const spanTexts = getAllByType(utils, TSpan).map((s) => s.props.children);
     expect(spanTexts).toContain('Alpha');
   });
 
@@ -186,14 +196,14 @@ describe('<ChartSankeyWrapper /> (native)', () => {
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    const { UNSAFE_getAllByType, queryByText } = utils;
+    const { queryByText } = utils;
     // No tooltip before any interaction.
     expect(queryByText(/^Alpha:/)).toBeNull();
     // Tap the first node → its tooltip appears (and other shapes dim).
     tapNode(utils, 0);
     expect(queryByText(/^Alpha:/)).not.toBeNull();
     // The chart still renders one node <Rect> per node after the re-render.
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
+    expect(shapeRects(getAllByType(utils, Rect))).toHaveLength(data.nodes.length);
     // A repeated tap on the same node toggles the selection off.
     tapNode(utils, 0);
     expect(queryByText(/^Alpha:/)).toBeNull();
@@ -224,7 +234,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
   });
 
   it('applies a single resolved fill when nodeColorOverride is set', () => {
-    const { UNSAFE_getAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper
         testID="sankey-chart"
         nodeColorOverride="data.background.categorical.blue.moderate"
@@ -232,7 +242,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    const fills = shapeRects(UNSAFE_getAllByType(Rect)).map((r) => r.props.fill);
+    const fills = shapeRects(getAllByType(utils, Rect)).map((r) => r.props.fill);
     const uniqueFills = Array.from(new Set(fills));
     expect(uniqueFills).toHaveLength(1);
   });
@@ -245,13 +255,13 @@ describe('<ChartSankeyWrapper /> (native)', () => {
       ],
       links: [{ source: 'x', target: 'y', value: 10 }],
     };
-    const { UNSAFE_getAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart">
         <ChartSankey data={twoNode} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(2);
-    expect(UNSAFE_getAllByType(Path)).toHaveLength(1);
+    expect(shapeRects(getAllByType(utils, Rect))).toHaveLength(2);
+    expect(getAllByType(utils, Path)).toHaveLength(1);
   });
 
   it('renders nodes only when there are no links', () => {
@@ -262,25 +272,25 @@ describe('<ChartSankeyWrapper /> (native)', () => {
       ],
       links: [],
     };
-    const { UNSAFE_queryAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart">
         <ChartSankey data={noLinks} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    expect(UNSAFE_queryAllByType(Path)).toHaveLength(0);
-    expect(shapeRects(UNSAFE_queryAllByType(Rect))).toHaveLength(2);
+    expect(queryAllByType(utils, Path)).toHaveLength(0);
+    expect(shapeRects(queryAllByType(utils, Rect))).toHaveLength(2);
   });
 
   it('renders plain-text labels (no chip Rect) when showLabelChip is false', () => {
-    const { UNSAFE_getAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart">
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
     // Label text spans are present, but no chip background rects (Rect count === node count).
-    const spanTexts = UNSAFE_getAllByType(TSpan).map((s) => s.props.children);
+    const spanTexts = getAllByType(utils, TSpan).map((s) => s.props.children);
     expect(spanTexts).toContain('Alpha');
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
+    expect(shapeRects(getAllByType(utils, Rect))).toHaveLength(data.nodes.length);
   });
 
   // ── Vertical orientation (native-only) ──────────────────────────────────────
@@ -289,17 +299,17 @@ describe('<ChartSankeyWrapper /> (native)', () => {
   // unchanged (default orientation stays horizontal); these tests cover the new path.
 
   it('renders one <Rect> per node and one <Path> per link in vertical orientation', () => {
-    const { UNSAFE_getAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
-    expect(shapeRects(UNSAFE_getAllByType(Rect))).toHaveLength(data.nodes.length);
-    expect(UNSAFE_getAllByType(Path)).toHaveLength(data.links.length);
+    expect(shapeRects(getAllByType(utils, Rect))).toHaveLength(data.nodes.length);
+    expect(getAllByType(utils, Path)).toHaveLength(data.links.length);
   });
 
   it('lays out vertical nodes as horizontal bars (width is the long dimension)', () => {
-    const { UNSAFE_getAllByType } = renderSankey(
+    const utils = renderSankey(
       <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
@@ -307,10 +317,8 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     // In vertical layout a node bar's width (value·scale) is the long dimension and
     // its height is the fixed thin NODE_WIDTH. Node 0 ('Alpha') is the root carrying
     // all flow, so its bar is clearly wider than it is tall.
-    const rect0 = shapeRects(UNSAFE_getAllByType(Rect))[0] as {
-      props: { width: number; height: number };
-    };
-    expect(rect0.props.width).toBeGreaterThan(rect0.props.height);
+    const rect0 = shapeRects(getAllByType(utils, Rect))[0];
+    expect(Number(rect0.props.width)).toBeGreaterThan(Number(rect0.props.height));
   });
 
   it('selects a node on tap in vertical orientation, toggles off on re-tap, and clears on empty-canvas tap', () => {
