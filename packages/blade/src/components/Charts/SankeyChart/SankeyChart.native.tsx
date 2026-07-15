@@ -755,7 +755,7 @@ const _ChartSankeyWrapper = ({
 
   // ── Motion values — passed to per-shape components to avoid N+M useTheme calls ─
   const motionDuration = theme.motion.duration.quick;
-  const motionEasing = (castNativeType(theme.motion.easing.standard) as unknown) as EasingFn;
+  const motionEasing = castNativeType(theme.motion.easing.standard) as unknown as EasingFn;
 
   // ── Label / chip geometry (mirrors web) ──────────────────────────────────────
   const fontSize = theme.typography.fonts.size[75];
@@ -1017,8 +1017,8 @@ const _ChartSankeyWrapper = ({
                       linkColorOverride ??
                       nodeColorOverride ??
                       (srcNode
-                        ? srcNode.color ??
-                          defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
+                        ? (srcNode.color ??
+                          defaultColorTokens[link.sourceIndex % defaultColorTokens.length])
                         : defaultColorTokens[0]);
                     return (
                       <SankeyLinkShape
@@ -1127,10 +1127,7 @@ const _ChartSankeyWrapper = ({
                 zIndex: TOOLTIP_Z_INDEX,
                 top: Math.max(
                   0,
-                  Math.min(
-                    size.height - tooltipHeight,
-                    tooltip.centerY - tooltipHeight / 2,
-                  ),
+                  Math.min(size.height - tooltipHeight, tooltip.centerY - tooltipHeight / 2),
                 ),
                 left: tooltipLeft,
                 maxWidth: TOOLTIP_MAX_WIDTH,
