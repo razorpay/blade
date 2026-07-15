@@ -31,9 +31,10 @@ exports[`<ChartLineWrapper /> (native) should ignore null cells when computing y
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -847,9 +848,10 @@ exports[`<ChartLineWrapper /> (native) should render a horizontal reference line
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -1406,9 +1408,10 @@ exports[`<ChartLineWrapper /> (native) should render a single line 1`] = `
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -1452,9 +1455,10 @@ exports[`<ChartLineWrapper /> (native) should render a vertical reference line (
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -1998,9 +2002,10 @@ exports[`<ChartLineWrapper /> (native) should render custom and sequential color
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -2043,9 +2048,10 @@ exports[`<ChartLineWrapper /> (native) should render different line types 1`] = 
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -2088,9 +2094,10 @@ exports[`<ChartLineWrapper /> (native) should render different stroke styles 1`]
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -2133,9 +2140,10 @@ exports[`<ChartLineWrapper /> (native) should render multiple lines with legend,
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -2456,9 +2464,10 @@ exports[`<ChartLineWrapper /> (native) should render with all-negative data with
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -3271,9 +3280,10 @@ exports[`<ChartLineWrapper /> (native) should render with connectNulls and a nul
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -3316,9 +3326,10 @@ exports[`<ChartLineWrapper /> (native) should render with dots enabled 1`] = `
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,
@@ -3362,9 +3373,10 @@ exports[`<ChartLineWrapper /> (native) should render with negative data values 1
       onMoveShouldSetResponder={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
-      onResponderRelease={[Function]}
       onResponderTerminate={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       style={
         {
           "flex": 1,

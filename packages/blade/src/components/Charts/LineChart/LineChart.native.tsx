@@ -403,9 +403,12 @@ const buildStepPath = (points: Point[], variant: 'step' | 'stepAfter' | 'stepBef
     const cur = points[i];
     if (variant === 'stepBefore') {
       d += ` L ${prev.x} ${cur.y} L ${cur.x} ${cur.y}`;
-    } else {
-      // `step` and `stepAfter` — hold the previous value then step at the next x.
+    } else if (variant === 'stepAfter') {
       d += ` L ${cur.x} ${prev.y} L ${cur.x} ${cur.y}`;
+    } else {
+      // `step` — step at the midpoint between points (d3 curveStep behavior).
+      const midX = (prev.x + cur.x) / 2;
+      d += ` L ${midX} ${prev.y} L ${midX} ${cur.y} L ${cur.x} ${cur.y}`;
     }
   }
   return d;
@@ -870,6 +873,14 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   // every web hover side-effect (dim others + activeDot + tooltip + hoveredKey).
   // Map a touch to the nearest index + line and apply it. Returns the index so the
   // tap/scrub handlers can decide whether a release should toggle the selection off.
+  const indexAtTouchX = (locationX: number): number | undefined => {
+    if (pointCount === 0 || plotWidth <= 0) return undefined;
+    const localX = locationX - padding.left;
+    return pointCount > 1
+      ? Math.min(pointCount - 1, Math.max(0, Math.round(localX / pointSpacing)))
+      : 0;
+  };
+
   const applyScrub = (e: GestureResponderEvent): number | undefined => {
     if (pointCount === 0 || plotWidth <= 0) return undefined;
     const localX = e.nativeEvent.locationX - padding.left;
@@ -894,16 +905,36 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     return index;
   };
 
+  // Touch model (mirrors AreaChart.native.tsx):
+  // - Do NOT claim responder on touch start, so parent ScrollViews can keep vertical scroll.
+  // - Claim on move only after a clearly horizontal scrub past SCRUB_MOVE_THRESHOLD.
+  // - Taps are handled via onTouchEnd (never become responder) — show/toggle tooltip.
   // Selection persists after the finger lifts (parity with DonutChart): a tap on
   // the already-active index toggles it off, a tap/scrub elsewhere moves it.
   const touchStartActiveRef = React.useRef<number | undefined>(undefined);
   const touchStartIndexRef = React.useRef<number | undefined>(undefined);
   const touchMovedRef = React.useRef(false);
+  const becameResponderRef = React.useRef(false);
+  const touchStartLocationRef = React.useRef<{ x: number; y: number } | undefined>(undefined);
+  const SCRUB_MOVE_THRESHOLD = 8;
+
+  const handleTouchStart = (e: GestureResponderEvent): void => {
+    if (data.length === 0) return;
+    touchStartActiveRef.current = activeIndex;
+    touchStartIndexRef.current = indexAtTouchX(e.nativeEvent.locationX);
+    touchMovedRef.current = false;
+    becameResponderRef.current = false;
+    touchStartLocationRef.current = {
+      x: e.nativeEvent.locationX,
+      y: e.nativeEvent.locationY,
+    };
+  };
 
   const handleScrubStart = (e: GestureResponderEvent): void => {
-    touchStartActiveRef.current = activeIndex;
-    touchStartIndexRef.current = applyScrub(e);
-    touchMovedRef.current = false;
+    if (data.length === 0) return;
+    becameResponderRef.current = true;
+    touchMovedRef.current = true;
+    applyScrub(e);
   };
 
   const handleScrubMove = (e: GestureResponderEvent): void => {
@@ -911,13 +942,20 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     applyScrub(e);
   };
 
-  const handleScrubEnd = (): void => {
-    // Tap (no drag) on the index that was already active → toggle off; otherwise
-    // leave the selection in place so the tooltip stays.
-    if (!touchMovedRef.current && touchStartActiveRef.current === touchStartIndexRef.current) {
+  const handleTouchEnd = (): void => {
+    if (becameResponderRef.current || touchMovedRef.current) return;
+    if (data.length === 0) return;
+    if (touchStartActiveRef.current === touchStartIndexRef.current) {
       setActiveIndex(undefined);
       setHoveredKey(null);
+    } else if (touchStartIndexRef.current !== undefined) {
+      setActiveIndex(touchStartIndexRef.current);
     }
+  };
+
+  const handleScrubTerminate = (): void => {
+    touchMovedRef.current = false;
+    becameResponderRef.current = false;
   };
 
   const activeRow = activeIndex !== undefined ? data[activeIndex] : undefined;
@@ -982,7 +1020,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   // Lines eligible for a legend entry — include hidden ones so they can be
   // toggled back on (web parity).
-  const legendLines = allLines.filter((line) => line.showLegend !== false);
+  const legendLines = allLines.filter((line) => line.showLegend);
 
   const lineChartContextValue = useMemo(
     () => ({ hoveredDataKey: hoveredKey, setHoveredDataKey: setHoveredKey }),
@@ -1025,12 +1063,22 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             // so the bubble is not clipped by the flex:1 scrub surface.
             style={{ flex: 1, width: '100%', overflow: 'visible' }}
             onLayout={onLayout}
-            onStartShouldSetResponder={() => data.length > 0}
-            onMoveShouldSetResponder={() => data.length > 0}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            // Intentionally omit onStartShouldSetResponder (same as returning false): claiming
+            // on start blocks parent ScrollViews. Capture horizontal scrubs on move instead.
+            onMoveShouldSetResponder={(e) => {
+              if (data.length === 0) return false;
+              const start = touchStartLocationRef.current;
+              if (!start || !e?.nativeEvent) return false;
+              const dx = Math.abs(e.nativeEvent.locationX - start.x);
+              const dy = Math.abs(e.nativeEvent.locationY - start.y);
+              return dx >= SCRUB_MOVE_THRESHOLD && dx > dy;
+            }}
             onResponderGrant={handleScrubStart}
             onResponderMove={handleScrubMove}
-            onResponderRelease={handleScrubEnd}
-            onResponderTerminate={handleScrubEnd}
+            onResponderTerminationRequest={() => true}
+            onResponderTerminate={handleScrubTerminate}
           >
             {data.length === 0 ? (
               <Box

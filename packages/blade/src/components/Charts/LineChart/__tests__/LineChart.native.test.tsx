@@ -194,17 +194,15 @@ describe('<ChartLineWrapper /> (native)', () => {
     fireLayout(surface);
     const at = { nativeEvent: { locationX: 40, locationY: 100 } };
 
-    // Tap → tooltip appears.
-    fireEvent(surface, 'responderGrant', at);
-    expect(queryByText('Sales')).toBeTruthy();
-
-    // Release KEEPS it (tap-to-stay, DonutChart parity).
-    fireEvent(surface, 'responderRelease', at);
+    // Tap → tooltip appears (taps use touchStart/touchEnd, not responder events,
+    // so parent ScrollViews can still scroll vertically).
+    fireEvent(surface, 'touchStart', at);
+    fireEvent(surface, 'touchEnd', at);
     expect(queryByText('Sales')).toBeTruthy();
 
     // Tapping the same index again toggles the selection (and tooltip) off.
-    fireEvent(surface, 'responderGrant', at);
-    fireEvent(surface, 'responderRelease', at);
+    fireEvent(surface, 'touchStart', at);
+    fireEvent(surface, 'touchEnd', at);
     expect(queryByText('Sales')).toBeFalsy();
   });
 
