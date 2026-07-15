@@ -77,7 +77,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   ref,
 ): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const variableSizeRest = rest as FileUploadVariableSizeProps;
   const { actionButtonText, dropAreaText, height, width, ...styledRest } = variableSizeRest;
   const isSizeVariable = size === 'variable';
