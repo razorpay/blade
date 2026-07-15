@@ -27,7 +27,7 @@ const SliderHeader = ({
   label,
   labelId,
   labelPosition = 'top',
-  necessityIndicator = 'required',
+  necessityIndicator = 'none',
   showValue,
   size,
   variant,

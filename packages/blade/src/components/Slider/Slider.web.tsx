@@ -50,7 +50,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
     min = 0,
     minLabel,
     name,
-    necessityIndicator = 'required',
+    necessityIndicator = 'none',
     onChange,
     onChangeEnd,
     showMarks = false,

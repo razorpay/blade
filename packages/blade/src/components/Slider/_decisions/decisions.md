@@ -89,7 +89,7 @@ Range selection uses the same component with a tuple value:
 | `helpText` / `errorText` | `string`                              | -                     | Supporting or error copy.                                 |
 | `successText`            | `string`                              | -                     | Success copy shown when `validationState` is `'success'`. |
 | `isRequired`             | `boolean`                             | `false`               | Whether the field is required.                            |
-| `necessityIndicator`     | `'required' \| 'optional' \| 'none'`  | `'required'`          | Controls the necessity indicator beside the label.        |
+| `necessityIndicator`     | `'required' \| 'optional' \| 'none'`  | `'none'`              | Controls the necessity indicator beside the label.        |
 | `labelPosition`          | `'top' \| 'left'`                     | `'top'`               | Position of the label relative to the slider.             |
 | `isDisabled`             | `boolean`                             | `false`               | Disables all pointer and keyboard interaction.            |
 | `name`                   | `string`                              | -                     | Name included in change callbacks and native form submission. |

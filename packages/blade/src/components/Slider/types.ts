@@ -84,7 +84,7 @@ type SliderCommonProps = {
   name?: string;
   /** Whether the field is required. Shows a necessity indicator when combined with `necessityIndicator`. */
   isRequired?: boolean;
-  /** Controls the necessity indicator shown beside the label. @default 'required' */
+  /** Controls the necessity indicator shown beside the label. @default 'none' */
   necessityIndicator?: 'required' | 'optional' | 'none';
   /** Position of the label relative to the slider. @default 'top' */
   labelPosition?: 'top' | 'left';
