@@ -421,9 +421,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
           }}
         >
           <BottomSheetHeader
-            title={
-              headerLabel ?? (isSingle ? 'Select Date' : 'Select Date Range')
-            }
+            title={headerLabel ?? (isSingle ? 'Select Date' : 'Select Date Range')}
           />
           <BottomSheetBody>
             {content}

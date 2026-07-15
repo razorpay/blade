@@ -109,9 +109,7 @@ const DayGridCell = React.memo(
         disabled={isDisabled}
         accessibilityRole="button"
         accessibilityState={{ selected: isSelected, disabled: isDisabled }}
-        accessibilityLabel={
-          isSelected ? `${accessibilityLabel}, selected` : accessibilityLabel
-        }
+        accessibilityLabel={isSelected ? `${accessibilityLabel}, selected` : accessibilityLabel}
         onPress={() => {
           if (isDisabled) return;
           onDayPress(dateTime);
