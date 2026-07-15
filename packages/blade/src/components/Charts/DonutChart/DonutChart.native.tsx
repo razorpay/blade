@@ -538,6 +538,7 @@ const ChartDonutWrapper = ({
                 onPress={() => handleSlicePress(index)}
                 motionDuration={motionDuration}
                 motionEasing={motionEasing}
+                testID={`donut-slice-${index}`}
               />
             ))}
           </G>

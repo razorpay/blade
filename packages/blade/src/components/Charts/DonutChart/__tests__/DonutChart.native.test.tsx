@@ -226,7 +226,7 @@ describe('<DonutChart /> interactions (native)', () => {
   });
 
   it('should display tooltip with slice label and value when a slice is pressed', () => {
-    const { getByTestId, UNSAFE_getAllByProps, queryByText } = renderWithTheme(
+    const { getByTestId, queryByText } = renderWithTheme(
       <Box width="400px" height="400px">
         <ChartDonutWrapper>
           <ChartDonut data={mockData} dataKey="value" nameKey="name" />
@@ -239,15 +239,8 @@ describe('<DonutChart /> interactions (native)', () => {
     // Tooltip should not be visible before pressing a slice
     expect(queryByText('Desktop')).toBeNull();
 
-    // Find interactive slices — the fill slices have onResponderRelease from onPress
-    const sliceElements = UNSAFE_getAllByProps({
-      onResponderRelease: expect.any(Function),
-    });
-    expect(sliceElements.length).toBeGreaterThan(0);
-
-    // Simulate a press gesture on the first slice
-    fireEvent(sliceElements[0], 'responderGrant', { nativeEvent: {} });
-    fireEvent(sliceElements[0], 'responderRelease', { nativeEvent: {} });
+    // Press the first slice
+    fireEvent.press(getByTestId('donut-slice-0'));
 
     // Tooltip should now display the slice's label and value
     expect(queryByText('Desktop')).toBeTruthy();
