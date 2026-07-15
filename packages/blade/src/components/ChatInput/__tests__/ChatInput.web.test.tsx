@@ -1,4 +1,5 @@
 import userEvent from '@testing-library/user-event';
+import { fireEvent } from '@testing-library/react';
 import React from 'react';
 import { ChatInput } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -12,6 +13,37 @@ describe('<ChatInput />', () => {
       <ChatInput placeholder="Ask a question..." accessibilityLabel={accessibilityLabel} />,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('should render an accessible single-line input with mobile keyboard semantics', async () => {
+    const { container, getByRole } = renderWithTheme(
+      <ChatInput
+        variant="single-line"
+        placeholder="Ask anything..."
+        accessibilityLabel={accessibilityLabel}
+      />,
+    );
+
+    const input = getByRole('textbox', { name: accessibilityLabel });
+    expect(input.tagName).toBe('INPUT');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('inputmode', 'text');
+    expect(input).toHaveAttribute('enterkeyhint', 'send');
+    expect(getByRole('button', { name: 'Upload file' })).toBeEnabled();
+    expect(getByRole('button', { name: 'Submit' })).toBeDisabled();
+    await assertAccessible(container);
+  });
+
+  it('should focus the single-line text input when clicked', async () => {
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(
+      <ChatInput variant="single-line" accessibilityLabel={accessibilityLabel} />,
+    );
+
+    const input = getByRole('textbox', { name: accessibilityLabel });
+    await user.click(input);
+
+    expect(input).toHaveFocus();
   });
 
   it('should call onSubmit with value when submit button is clicked', async () => {
@@ -45,6 +77,63 @@ describe('<ChatInput />', () => {
 
     await user.type(textarea, '{enter}');
     expect(onSubmit).toHaveBeenCalledTimes(1);
+  });
+
+  it('should submit the single-line input when Shift+Enter is pressed', async () => {
+    const user = userEvent.setup();
+    const onSubmit = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <ChatInput
+        variant="single-line"
+        accessibilityLabel={accessibilityLabel}
+        onSubmit={onSubmit}
+      />,
+    );
+
+    const input = getByRole('textbox', { name: accessibilityLabel });
+    await user.type(input, 'Hello{shift>}{enter}{/shift}');
+
+    expect(onSubmit).toHaveBeenCalledWith({ value: 'Hello', fileList: [] });
+  });
+
+  it('should not submit while composing text in the single-line input', () => {
+    const onSubmit = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <ChatInput
+        variant="single-line"
+        defaultValue="Hello"
+        accessibilityLabel={accessibilityLabel}
+        onSubmit={onSubmit}
+      />,
+    );
+
+    fireEvent.keyDown(getByRole('textbox', { name: accessibilityLabel }), {
+      key: 'Enter',
+      code: 'Enter',
+      isComposing: true,
+    });
+
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
+  it('should not submit via keyboard while generating', () => {
+    const onSubmit = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <ChatInput
+        variant="single-line"
+        defaultValue="Hello"
+        accessibilityLabel={accessibilityLabel}
+        isGenerating
+        onSubmit={onSubmit}
+      />,
+    );
+
+    fireEvent.keyDown(getByRole('textbox', { name: accessibilityLabel }), {
+      key: 'Enter',
+      code: 'Enter',
+    });
+
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 
   it('should keep submit button disabled when input is empty', () => {

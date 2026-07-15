@@ -1,12 +1,13 @@
 # ChatInput
 
-ChatInput is an input component designed for AI chat interfaces. It combines a textarea, file upload, ghost suggestion autocomplete, and a submit action into a single composable input. Think of it as a "prompt input" -- the primary way users compose and send messages in conversational AI experiences.
+ChatInput is an input component designed for AI chat interfaces. It supports a default multiline composer and an opt-in compact single-line layout, with file upload, ghost suggestion autocomplete, and submit or stop actions. Think of it as a "prompt input" -- the primary way users compose and send messages in conversational AI experiences.
 
 <img src="./chatinput-thumbnail.png" width="500px" alt="ChatInput component variants" />
 
 ## Design
 
 - [Figma - ChatInput](https://www.figma.com/design/QjSexUED296OBCwWwhYKQE/agenticSpark?node-id=116756-67218&m=dev)
+- [Figma - ChatInput single-line mobile](https://www.figma.com/design/Gz2FzF8jfdSMH9bUYE7XT2/Untitled.?node-id=1097-62426&t=CwU85PFlLTAhX4xD-11)
 
 ## API
 
@@ -116,6 +117,12 @@ type ChatInputFilePreviewProps = {
 
 ```typescript
 type ChatInputProps = {
+  /**
+   * Controls the input layout.
+   * @default 'default'
+   */
+  variant?: 'default' | 'single-line';
+
   /**
    * Controlled value of the text input
    */
@@ -238,6 +245,20 @@ type ChatInputProps = {
 ```
 
 > **Note:** `BladeFile` and `BladeFileList` are reused from the existing [FileUpload component](../../FileUpload/types.ts). `BladeFile` extends the native `File` interface with `id`, `status`, `uploadPercent`, and `errorText` fields.
+
+### Layout Variants
+
+- `default` preserves the existing multiline textarea and bottom action bar.
+- `single-line` is an explicit opt-in layout with inline upload and submit or stop actions. Attachments continue to render above the input row.
+- The compact layout uses Blade's `large` input sizing and `medium` border-radius token (12px).
+
+```jsx
+<ChatInput
+  variant="single-line"
+  placeholder="Ask anything..."
+  onSubmit={({ value, fileList }) => handleSend(value, fileList)}
+/>
+```
 
 ## Examples
 
@@ -439,6 +460,7 @@ Whenever files are added (or the list changes), the file preview row automatical
 ### Implicit Disable on Error or Uploading Files
 
 The submit button (and Enter key) is blocked whenever:
+
 - There is no text **and** no files, **or**
 - Any attached file has `status === 'error'`, **or**
 - Any attached file has `status === 'uploading'`
@@ -452,13 +474,15 @@ When submit is disabled because of an error or uploading file, no additional too
 ## Accessibility
 
 - **Keyboard Navigation:**
-  - `Enter` submits the message (fires `onSubmit`)
-  - `Shift + Enter` inserts a new line in the textarea
+  - In the default variant, `Enter` submits and `Shift + Enter` inserts a new line.
+  - In the single-line variant, both `Enter` and `Shift + Enter` submit.
+  - IME composition and the generating state suppress keyboard submission.
   - `TAB` accepts the ghost suggestion when `suggestions` is present
   - `Escape` clears the current ghost suggestion
   - Upload button and submit button are focusable and activatable via `Space`/`Enter`
 - **ARIA Attributes:**
-  - The textarea uses `role="textbox"` with `aria-multiline="true"`
+  - The default native textarea exposes multiline textbox semantics.
+  - The single-line variant uses a text input with `enterkeyhint="send"`.
   - The submit button uses `aria-label="Submit"` (or equivalent)
   - The upload button uses `aria-label="Upload file"`
   - File preview cards include `aria-label` with the file name and a remove button with `aria-label="Remove {filename}"`

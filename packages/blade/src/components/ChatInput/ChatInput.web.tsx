@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidth } from './chatInputTokens';
-import { ChatInputActionBar } from './ChatInputActionBar';
+import { ChatInputActionBar, ChatInputSubmitAction } from './ChatInputActionBar';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
@@ -13,7 +13,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
-import { CloseIcon, InfoIcon } from '~components/Icons';
+import { CloseIcon, InfoIcon, PlusIcon } from '~components/Icons';
 import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import { Text } from '~components/Typography';
 import { castWebType, makeSpace } from '~utils';
@@ -32,6 +32,7 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
 
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
+    variant = 'default',
     value,
     defaultValue,
     onChange,
@@ -62,6 +63,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   ref,
 ) => {
   const { theme } = useTheme();
+  const isSingleLine = variant === 'single-line';
 
   const {
     fileInputRef,
@@ -85,11 +87,11 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     {
       value,
       defaultValue,
+      variant,
       onChange,
       onSubmit,
       isDisabled,
       isGenerating,
-      onStop,
       fileList,
       onFileChange,
       onFileRemove,
@@ -214,6 +216,27 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     />
   );
 
+  const singleLineUploadAction = hideFileUpload ? undefined : (
+    <IconButton
+      icon={PlusIcon}
+      size="medium"
+      isHighlighted
+      accessibilityLabel="Upload file"
+      onClick={handleUploadClick}
+      isDisabled={isDisabled}
+    />
+  );
+
+  const singleLineSubmitAction = (
+    <ChatInputSubmitAction
+      isDisabled={isDisabled}
+      isGenerating={isGenerating}
+      isSubmitDisabled={isSubmitDisabled}
+      onSubmit={handleSubmit}
+      onStop={onStop}
+    />
+  );
+
   const isError = validationState === 'error';
 
   return (
@@ -237,8 +260,9 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
         <BaseInput
           ref={combinedRef}
-          as="textarea"
+          as={isSingleLine ? 'input' : 'textarea'}
           id="chat-input"
+          type={isSingleLine ? 'text' : undefined}
           elevation="highRaised"
           label={undefined}
           accessibilityLabel={accessibilityLabel}
@@ -252,20 +276,24 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
           isDisabled={isDisabled}
-          numberOfLines={2}
-          size="medium"
-          padding={makeSpace(theme.spacing[5])}
-          borderRadius="large"
+          numberOfLines={isSingleLine ? undefined : 2}
+          size={isSingleLine ? 'large' : 'medium'}
+          padding={isSingleLine ? undefined : makeSpace(theme.spacing[5])}
+          borderRadius={isSingleLine ? 'medium' : 'large'}
           caretColor="surface.icon.onSea.onSubtle"
+          keyboardType={isSingleLine ? 'text' : undefined}
+          keyboardReturnKeyType={isSingleLine ? 'send' : undefined}
           topContent={filePreviewContent}
-          bottomContent={actionBarContent}
+          bottomContent={isSingleLine ? undefined : actionBarContent}
+          leadingInteractionElement={isSingleLine ? singleLineUploadAction : undefined}
+          trailingInteractionElement={isSingleLine ? singleLineSubmitAction : undefined}
           inputRowOverlay={
             showGhostSuggestion && suggestions ? (
               <BaseBox
                 position="absolute"
-                top="spacing.5"
-                left="spacing.5"
-                right="spacing.5"
+                top={isSingleLine ? 'spacing.4' : 'spacing.5'}
+                left={isSingleLine ? (hideFileUpload ? 'spacing.4' : 'spacing.11') : 'spacing.5'}
+                right={isSingleLine ? 'spacing.10' : 'spacing.5'}
                 pointerEvents="none"
                 zIndex={3}
               >
@@ -324,6 +352,27 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   );
 };
 
+/**
+ * ChatInput
+ *
+ * A prompt composer for conversational interfaces with multiline and compact single-line layouts,
+ * file attachments, suggestions, validation, and submit or stop actions.
+ *
+ * ----
+ *
+ * #### Usage
+ *
+ * ```tsx
+ * <ChatInput
+ *   variant="single-line"
+ *   placeholder="Ask anything..."
+ *   onSubmit={({ value, fileList }) => sendMessage({ value, fileList })}
+ * />
+ * ```
+ *
+ * ----
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-chatinput--docs ChatInput Documentation}
+ */
 const ChatInput = assignWithoutSideEffects(React.forwardRef(_ChatInput), {
   componentId: MetaConstants.ChatInput,
   displayName: 'ChatInput',

@@ -19,7 +19,7 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="ChatInput"
-      componentDescription="ChatInput is an input component designed for AI chat interfaces. It combines a textarea, file upload, ghost suggestion autocomplete, and a submit action into a single composable input."
+      componentDescription="ChatInput is a prompt composer for AI chat interfaces. It supports multiline and compact single-line layouts, file upload, ghost suggestions, and submit or stop actions."
       apiDecisionLink={null}
       figmaURL="https://www.figma.com/design/QjSexUED296OBCwWwhYKQE/agenticSpark?node-id=116756-67218&m=dev"
     >
@@ -70,6 +70,20 @@ export const Default = ChatInputTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {
   placeholder: 'Ask a question...',
+};
+
+export const SingleLineMobilePreview = ChatInputTemplate.bind({});
+SingleLineMobilePreview.storyName = 'Single Line (Mobile Preview)';
+SingleLineMobilePreview.args = {
+  variant: 'single-line',
+  placeholder: 'Ask anything...',
+  onSubmit: ({ value }) => console.log('Submitted:', value),
+};
+SingleLineMobilePreview.globals = {
+  viewport: {
+    value: 'iPhone6',
+    isRotated: false,
+  },
 };
 
 export const WithPlaceholder = ChatInputTemplate.bind({});

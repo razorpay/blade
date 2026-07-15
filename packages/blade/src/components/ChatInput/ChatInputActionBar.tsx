@@ -14,6 +14,44 @@ type ChatInputActionBarProps = {
   onStop?: () => void;
 };
 
+type ChatInputSubmitActionProps = Pick<
+  ChatInputActionBarProps,
+  'isDisabled' | 'isGenerating' | 'isSubmitDisabled' | 'onSubmit' | 'onStop'
+>;
+
+const ChatInputSubmitAction = ({
+  isDisabled,
+  isGenerating,
+  isSubmitDisabled,
+  onSubmit,
+  onStop,
+}: ChatInputSubmitActionProps): React.ReactElement => {
+  if (isGenerating) {
+    return (
+      <Button
+        icon={StopCircleIcon}
+        variant="secondary"
+        accessibilityLabel="Stop generation"
+        onClick={() => onStop?.()}
+        size="small"
+      />
+    );
+  }
+
+  return (
+    <Button
+      icon={ArrowUpIcon}
+      variant="primary"
+      color="primary"
+      accessibilityLabel="Submit"
+      onClick={onSubmit}
+      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+      isDisabled={isSubmitDisabled || isDisabled}
+      size="small"
+    />
+  );
+};
+
 const ChatInputActionBar = ({
   isDisabled,
   isGenerating,
@@ -46,30 +84,17 @@ const ChatInputActionBar = ({
         </Link>
       )}
       <BaseBox>
-        {isGenerating ? (
-          <Button
-            icon={StopCircleIcon}
-            variant="secondary"
-            accessibilityLabel="Stop generation"
-            onClick={() => onStop?.()}
-            size="small"
-          />
-        ) : (
-          <Button
-            icon={ArrowUpIcon}
-            variant="primary"
-            color="primary"
-            accessibilityLabel="Submit"
-            onClick={onSubmit}
-            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-            isDisabled={isSubmitDisabled || isDisabled}
-            size="small"
-          />
-        )}
+        <ChatInputSubmitAction
+          isDisabled={isDisabled}
+          isGenerating={isGenerating}
+          isSubmitDisabled={isSubmitDisabled}
+          onSubmit={onSubmit}
+          onStop={onStop}
+        />
       </BaseBox>
     </BaseBox>
   );
 };
 
-export { ChatInputActionBar };
-export type { ChatInputActionBarProps };
+export { ChatInputActionBar, ChatInputSubmitAction };
+export type { ChatInputActionBarProps, ChatInputSubmitActionProps };
