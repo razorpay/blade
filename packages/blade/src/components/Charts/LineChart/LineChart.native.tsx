@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Svg,
   Path,
@@ -672,12 +672,15 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }
   const chartId = chartIdRef.current;
 
-  const onLayout = (e: LayoutChangeEvent): void => {
+  const onLayout = useCallback((e: LayoutChangeEvent): void => {
     const { width, height } = e.nativeEvent.layout;
-    if (width !== size.width || height !== size.height) {
-      setSize({ width, height });
-    }
-  };
+    setSize((prev) => {
+      if (width !== prev.width || height !== prev.height) {
+        return { width, height };
+      }
+      return prev;
+    });
+  }, []);
 
   const slots = useMemo(() => readChildSlots(children), [children]);
   const allLines = slots.lines;
@@ -814,8 +817,12 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }, [data, visibleLines, allLines]);
 
   // Honor ChartYAxis domain/tickCount when provided (AreaChart.native parity).
-  const yMax = slots.yDomain ? Number(slots.yDomain[1]) : resolveYMax(dataMax);
-  const yMin = slots.yDomain ? Number(slots.yDomain[0]) : dataMin < 0 ? niceFloor(dataMin) : 0;
+  // Guard against NaN from Recharts string sentinels ('auto', 'dataMin', etc.)
+  // by falling back to computed domain when Number() yields a non-finite value.
+  const rawYMax = slots.yDomain ? Number(slots.yDomain[1]) : resolveYMax(dataMax);
+  const yMax = isFinite(rawYMax) ? rawYMax : resolveYMax(dataMax);
+  const rawYMin = slots.yDomain ? Number(slots.yDomain[0]) : dataMin < 0 ? niceFloor(dataMin) : 0;
+  const yMin = isFinite(rawYMin) ? rawYMin : dataMin < 0 ? niceFloor(dataMin) : 0;
   const yRange = yMax - yMin;
   const yTickCount = slots.yTickCount ?? Y_TICK_COUNT;
 
@@ -918,14 +925,25 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const axisLineColor = getIn(theme.colors, 'surface.border.gray.muted');
   const gridColor = getIn(theme.colors, 'surface.border.gray.subtle');
 
-  const resolveColor = (
-    dataKey: string,
-    fallback?: ChartsCategoricalColorToken | ChartSequentialColorToken,
-  ): string => {
-    const token = dataColorMapping[dataKey]?.colorToken ?? fallback;
-    const color = token ? getIn(theme.colors, token) : undefined;
-    return color ?? tickColor;
-  };
+  const resolveColor = useCallback(
+    (
+      dataKey: string,
+      fallback?: ChartsCategoricalColorToken | ChartSequentialColorToken,
+    ): string => {
+      const token = dataColorMapping[dataKey]?.colorToken ?? fallback;
+      const color = token ? getIn(theme.colors, token) : undefined;
+      if (color) return color;
+      if (__DEV__ && token) {
+        logger({
+          type: 'warn',
+          moduleName: 'ChartLineWrapper',
+          message: `Color token "${token}" could not be resolved for dataKey "${dataKey}", falling back to default.`,
+        });
+      }
+      return tickColor;
+    },
+    [dataColorMapping, theme.colors, tickColor],
+  );
 
   // Pixel geometry per visible line — shared by the line paths, the activeDot,
   // the scrub nearest-line lookup, and the tooltip.
@@ -942,7 +960,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       });
       return { line, color: resolveColor(line.dataKey, line.color), points };
     });
-  }, [visibleLines, data, plotWidth, plotHeight, yMin, yRange, dataColorMapping, theme.colors]);
+  }, [visibleLines, data, plotWidth, plotHeight, yMin, yRange, resolveColor]);
 
   const dataSignature = useMemo(() => `${data.length}:${allDataKeys.join(',')}`, [
     data.length,
@@ -953,41 +971,50 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   // every web hover side-effect (dim others + activeDot + tooltip + hoveredKey).
   // Map a touch to the nearest index + line and apply it. Returns the index so the
   // tap/scrub handlers can decide whether a release should toggle the selection off.
-  const indexAtTouchX = (locationX: number): number | undefined => {
-    if (pointCount === 0 || plotWidth <= 0) return undefined;
-    const localX = locationX - padding.left;
-    return pointCount > 1
-      ? Math.min(pointCount - 1, Math.max(0, Math.round(localX / pointSpacing)))
-      : 0;
-  };
+  const indexAtTouchX = useCallback(
+    (locationX: number): number | undefined => {
+      if (pointCount === 0 || plotWidth <= 0) return undefined;
+      const localX = locationX - padding.left;
+      return pointCount > 1
+        ? Math.min(pointCount - 1, Math.max(0, Math.round(localX / pointSpacing)))
+        : 0;
+    },
+    [pointCount, plotWidth, padding.left, pointSpacing],
+  );
 
   // Find the nearest visible line at a given index by vertical distance to the
   // touch y. Shared by applyScrub and handleTouchEnd to avoid duplication.
-  const findNearestLine = (index: number, localY: number): string | null => {
-    let nearestKey: string | null = null;
-    let nearestDist = Infinity;
-    lineGeometries.forEach((geometry) => {
-      const point = geometry.points[index];
-      if (!point || point.value === null) return;
-      const dist = Math.abs(point.y - localY);
-      if (dist < nearestDist) {
-        nearestDist = dist;
-        nearestKey = geometry.line.dataKey;
-      }
-    });
-    return nearestKey;
-  };
+  const findNearestLine = useCallback(
+    (index: number, localY: number): string | null => {
+      let nearestKey: string | null = null;
+      let nearestDist = Infinity;
+      lineGeometries.forEach((geometry) => {
+        const point = geometry.points[index];
+        if (!point || point.value === null) return;
+        const dist = Math.abs(point.y - localY);
+        if (dist < nearestDist) {
+          nearestDist = dist;
+          nearestKey = geometry.line.dataKey;
+        }
+      });
+      return nearestKey;
+    },
+    [lineGeometries],
+  );
 
-  const applyScrub = (e: GestureResponderEvent): number | undefined => {
-    if (pointCount === 0 || plotWidth <= 0) return undefined;
-    const localX = e.nativeEvent.locationX - padding.left;
-    const localY = e.nativeEvent.locationY - padding.top;
-    const index =
-      pointCount > 1 ? Math.min(pointCount - 1, Math.max(0, Math.round(localX / pointSpacing))) : 0;
-    setActiveIndex(index);
-    setHoveredKey(findNearestLine(index, localY));
-    return index;
-  };
+  const applyScrub = useCallback(
+    (e: GestureResponderEvent): number | undefined => {
+      if (pointCount === 0 || plotWidth <= 0) return undefined;
+      const localX = e.nativeEvent.locationX - padding.left;
+      const localY = e.nativeEvent.locationY - padding.top;
+      const index =
+        pointCount > 1 ? Math.min(pointCount - 1, Math.max(0, Math.round(localX / pointSpacing))) : 0;
+      setActiveIndex(index);
+      setHoveredKey(findNearestLine(index, localY));
+      return index;
+    },
+    [pointCount, plotWidth, padding.left, padding.top, pointSpacing, findNearestLine],
+  );
 
   // Touch model (mirrors AreaChart.native.tsx):
   // - Do NOT claim responder on touch start, so parent ScrollViews can keep vertical scroll.
@@ -1001,31 +1028,40 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const becameResponderRef = useRef(false);
   const touchStartLocationRef = useRef<{ x: number; y: number } | undefined>(undefined);
 
-  const handleTouchStart = (e: GestureResponderEvent): void => {
-    if (data.length === 0) return;
-    touchStartActiveRef.current = activeIndex;
-    touchStartIndexRef.current = indexAtTouchX(e.nativeEvent.locationX);
-    touchMovedRef.current = false;
-    becameResponderRef.current = false;
-    touchStartLocationRef.current = {
-      x: e.nativeEvent.locationX,
-      y: e.nativeEvent.locationY,
-    };
-  };
+  const handleTouchStart = useCallback(
+    (e: GestureResponderEvent): void => {
+      if (data.length === 0) return;
+      touchStartActiveRef.current = activeIndex;
+      touchStartIndexRef.current = indexAtTouchX(e.nativeEvent.locationX);
+      touchMovedRef.current = false;
+      becameResponderRef.current = false;
+      touchStartLocationRef.current = {
+        x: e.nativeEvent.locationX,
+        y: e.nativeEvent.locationY,
+      };
+    },
+    [data.length, activeIndex, indexAtTouchX],
+  );
 
-  const handleScrubStart = (e: GestureResponderEvent): void => {
-    if (data.length === 0) return;
-    becameResponderRef.current = true;
-    touchMovedRef.current = true;
-    applyScrub(e);
-  };
+  const handleScrubStart = useCallback(
+    (e: GestureResponderEvent): void => {
+      if (data.length === 0) return;
+      becameResponderRef.current = true;
+      touchMovedRef.current = true;
+      applyScrub(e);
+    },
+    [data.length, applyScrub],
+  );
 
-  const handleScrubMove = (e: GestureResponderEvent): void => {
-    touchMovedRef.current = true;
-    applyScrub(e);
-  };
+  const handleScrubMove = useCallback(
+    (e: GestureResponderEvent): void => {
+      touchMovedRef.current = true;
+      applyScrub(e);
+    },
+    [applyScrub],
+  );
 
-  const handleTouchEnd = (): void => {
+  const handleTouchEnd = useCallback((): void => {
     if (becameResponderRef.current || touchMovedRef.current) return;
     if (data.length === 0) return;
     if (touchStartActiveRef.current === touchStartIndexRef.current) {
@@ -1040,11 +1076,17 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         setHoveredKey(findNearestLine(tapIndex, localY));
       }
     }
-  };
+  }, [data.length, padding.top, findNearestLine]);
 
-  const handleScrubTerminate = (): void => {
+  const handleScrubTerminate = useCallback((): void => {
     becameResponderRef.current = false;
-  };
+    // If the scrub was interrupted by a parent ScrollView, clear the frozen
+    // tooltip so it doesn't stay stuck at the last scrubbed position.
+    if (touchMovedRef.current) {
+      setActiveIndex(undefined);
+      setHoveredKey(null);
+    }
+  }, []);
 
   const activeRow = activeIndex !== undefined ? data[activeIndex] : undefined;
   const activeLabelRaw =
@@ -1099,8 +1141,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }, [
     activeRow,
     visibleLines,
-    dataColorMapping,
-    theme.colors,
+    resolveColor,
     slots.tooltipFormatter,
     slots.tooltipFilterNull,
     activeIndex,
@@ -1147,6 +1188,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
               device, so layout + responder MUST live on the same view. */}
           <View
             testID={layoutTestID}
+            accessibilityRole="image"
+            accessibilityLabel="Line chart"
             // Absolute tooltip can grow taller than the plot; keep overflow visible
             // so the bubble is not clipped by the flex:1 scrub surface.
             style={{ flex: 1, width: '100%', overflow: 'visible' }}
@@ -1310,12 +1353,12 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     const chipStroke = getIn(theme.colors, 'surface.border.gray.muted');
                     const chipTextColor = getIn(theme.colors, 'surface.text.gray.normal');
                     const chipWidth = refLine.label
-                      ? Math.min(REF_LABEL_MAX_WIDTH, Math.max(40, refLine.label.length * 6 + 16))
+                      ? Math.min(REF_LABEL_MAX_WIDTH, Math.max(40, refLine.label.length * 7 + 16))
                       : 0;
                     const chipHeight = 30;
                     const truncatedLabel =
-                      refLine.label && refLine.label.length * 6 + 16 > REF_LABEL_MAX_WIDTH
-                        ? `${refLine.label.slice(0, Math.floor((REF_LABEL_MAX_WIDTH - 16) / 6) - 1)}…`
+                      refLine.label && refLine.label.length * 7 + 16 > REF_LABEL_MAX_WIDTH
+                        ? `${refLine.label.slice(0, Math.floor((REF_LABEL_MAX_WIDTH - 16) / 7) - 1)}…`
                         : refLine.label;
 
                     if (isVertical) {
@@ -1494,6 +1537,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             size.width > 0 ? (
               <View
                 pointerEvents="none"
+                accessibilityLiveRegion="polite"
                 style={{
                   position: 'absolute',
                   top: padding.top,

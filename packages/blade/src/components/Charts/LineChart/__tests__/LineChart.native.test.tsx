@@ -11,12 +11,20 @@ import {
 } from '../../CommonChartComponents';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
-// Suppress console.error for expected Recharts/animated-library warnings that
-// fire during native test rendering (e.g. reanimated worklet warnings, React
-// bridging warnings from react-native-svg). Without this the test output is
-// noisy, but no real errors are masked — failing renders still throw.
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
+// Suppress known react-native-svg rendering warnings during snapshot tests.
+// Unexpected errors are re-emitted via console.warn so they are not silently hidden.
+let consoleErrorSpy: jest.SpyInstance;
+beforeAll(() => {
+  consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation((...args: unknown[]) => {
+    const msg = String(args[0] ?? '');
+    if (/svg|SVG|virtualized|reanimated|worklet/i.test(msg)) return;
+    // eslint-disable-next-line no-console
+    console.warn('[unexpected console.error in LineChart test]', ...args);
+  });
+});
+afterAll(() => {
+  consoleErrorSpy.mockRestore();
+});
 
 const mockData = [
   { name: 'Jan', sales: 4000, profit: 2000, revenue: 6000 },
