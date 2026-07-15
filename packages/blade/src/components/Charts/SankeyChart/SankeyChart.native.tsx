@@ -357,7 +357,7 @@ const SankeyNodeShape = ({
   const { theme } = useTheme();
   const opacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
-  const easing = (theme.motion.easing.standard as unknown) as EasingFn;
+  const easing = theme.motion.easing.standard as unknown as EasingFn;
 
   React.useEffect(() => {
     opacity.value = withTiming(targetOpacity, { duration, easing });
@@ -389,7 +389,7 @@ const SankeyLinkShape = ({
   const { theme } = useTheme();
   const fillOpacity = useSharedValue(targetOpacity);
   const duration = theme.motion.duration.quick;
-  const easing = (theme.motion.easing.standard as unknown) as EasingFn;
+  const easing = theme.motion.easing.standard as unknown as EasingFn;
 
   React.useEffect(() => {
     fillOpacity.value = withTiming(targetOpacity, { duration, easing });
@@ -1064,8 +1064,8 @@ const _ChartSankeyWrapper = ({
                     linkColorOverride ??
                     nodeColorOverride ??
                     (srcNode
-                      ? srcNode.color ??
-                        defaultColorTokens[link.sourceIndex % defaultColorTokens.length]
+                      ? (srcNode.color ??
+                        defaultColorTokens[link.sourceIndex % defaultColorTokens.length])
                       : defaultColorTokens[0]);
                   return (
                     <SankeyLinkShape
@@ -1125,7 +1125,7 @@ const _ChartSankeyWrapper = ({
                       };
                     } else {
                       const humanized = formatter(node.value);
-        const levelCount = sankeyLayout.countPerDepth[node.depth] ?? 1;
+                      const levelCount = sankeyLayout.countPerDepth[node.depth] ?? 1;
                       const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
                       const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
                       const labelValue =
