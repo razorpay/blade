@@ -27,6 +27,16 @@ const MatrixSection = ({
   </Box>
 );
 
+const TwoColumnLayout = ({ children }: { children: React.ReactNode }): React.ReactElement => (
+  <Box display="flex" flexDirection={{ base: 'column', m: 'row' }} gap="spacing.7">
+    {React.Children.map(children, (child) => (
+      <Box width="100%" minWidth="0px" flexGrow={1} flexShrink={1}>
+        {child}
+      </Box>
+    ))}
+  </Box>
+);
+
 const SliderVariantMatrix = (): React.ReactElement => (
   <Box display="flex" flexDirection="column" maxWidth="960px" width="100%">
     <Box display="flex" flexDirection="column" gap="spacing.3" paddingBottom="spacing.6">
@@ -46,7 +56,7 @@ const SliderVariantMatrix = (): React.ReactElement => (
       title="Value models"
       description="Single selection and bounded range use the same label, value, and endpoint system."
     >
-      <Box display="grid" gridTemplateColumns={{ base: '1fr', m: '1fr 1fr' }} gap="spacing.7">
+      <TwoColumnLayout>
         <Slider label="Transaction limit" defaultValue={45} showMinMax />
         <Slider
           label="Settlement window"
@@ -56,7 +66,7 @@ const SliderVariantMatrix = (): React.ReactElement => (
           showMinMax
           valueFormatter={(value) => `${value} days`}
         />
-      </Box>
+      </TwoColumnLayout>
     </MatrixSection>
     <Divider />
     <MatrixSection
@@ -74,32 +84,36 @@ const SliderVariantMatrix = (): React.ReactElement => (
       title="Value visibility and guidance"
       description="Header values, thumb values, labelled marks, endpoints, helper text, and accessible-only labels can be combined independently."
     >
-      <Box display="grid" gridTemplateColumns={{ base: '1fr', m: '1fr 1fr' }} gap="spacing.7">
-        <Slider
-          label="Discount"
-          defaultValue={40}
-          showThumbValue
-          showMinMax
-          valueFormatter={(value) => `${value}%`}
-        />
-        <Slider
-          label="Risk profile"
-          defaultValue={50}
-          step={10}
-          showMarks
-          marks={[
-            { value: 0, label: 'Low' },
-            { value: 50, label: 'Balanced' },
-            { value: 100, label: 'High' },
-          ]}
-        />
-        <Slider
-          label="Custom value text"
-          defaultValue={65}
-          valueText="Recommended"
-          helpText="A product label can replace the numeric header value"
-        />
-        <Slider accessibilityLabel="Volume" defaultValue={70} showValue={false} />
+      <Box display="flex" flexDirection="column" gap="spacing.7">
+        <TwoColumnLayout>
+          <Slider
+            label="Discount"
+            defaultValue={40}
+            showThumbValue
+            showMinMax
+            valueFormatter={(value) => `${value}%`}
+          />
+          <Slider
+            label="Risk profile"
+            defaultValue={50}
+            step={10}
+            showMarks
+            marks={[
+              { value: 0, label: 'Low' },
+              { value: 50, label: 'Balanced' },
+              { value: 100, label: 'High' },
+            ]}
+          />
+        </TwoColumnLayout>
+        <TwoColumnLayout>
+          <Slider
+            label="Custom value text"
+            defaultValue={65}
+            valueText="Recommended"
+            helpText="A product label can replace the numeric header value"
+          />
+          <Slider accessibilityLabel="Volume" defaultValue={70} showValue={false} />
+        </TwoColumnLayout>
       </Box>
     </MatrixSection>
     <Divider />
@@ -107,21 +121,25 @@ const SliderVariantMatrix = (): React.ReactElement => (
       title="Field states"
       description="Validation, necessity indicators, and disabled behavior reuse Blade's FormLabel and FormHint primitives."
     >
-      <Box display="grid" gridTemplateColumns={{ base: '1fr', m: '1fr 1fr' }} gap="spacing.7">
-        <Slider label="Required" defaultValue={50} isRequired />
-        <Slider label="Disabled" defaultValue={50} isDisabled />
-        <Slider
-          label="Error"
-          defaultValue={20}
-          validationState="error"
-          errorText="Choose a value of at least 30"
-        />
-        <Slider
-          label="Success"
-          defaultValue={70}
-          validationState="success"
-          successText="Value is within the target range"
-        />
+      <Box display="flex" flexDirection="column" gap="spacing.7">
+        <TwoColumnLayout>
+          <Slider label="Required" defaultValue={50} isRequired />
+          <Slider label="Disabled" defaultValue={50} isDisabled />
+        </TwoColumnLayout>
+        <TwoColumnLayout>
+          <Slider
+            label="Error"
+            defaultValue={20}
+            validationState="error"
+            errorText="Choose a value of at least 30"
+          />
+          <Slider
+            label="Success"
+            defaultValue={70}
+            validationState="success"
+            successText="Value is within the target range"
+          />
+        </TwoColumnLayout>
       </Box>
     </MatrixSection>
     <Divider />

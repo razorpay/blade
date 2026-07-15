@@ -22,7 +22,6 @@ type LabState = {
   validationState: 'none' | 'error' | 'success';
   variant: 'single' | 'range';
 };
-
 const INITIAL_STATE: LabState = {
   color: 'information',
   isDisabled: false,
@@ -42,7 +41,6 @@ const LAB_MARKS = [
   { value: 50, label: 'Balanced' },
   { value: 100, label: 'High' },
 ];
-
 const SliderInteractiveLab = (): React.ReactElement => {
   const [state, setState] = React.useState<LabState>(INITIAL_STATE);
   const [singleValue, setSingleValue] = React.useState(50);
@@ -97,13 +95,14 @@ const SliderInteractiveLab = (): React.ReactElement => {
         </Box>
       </Box>
       <Divider />
-      <Box
-        display="grid"
-        gridTemplateColumns={{ base: '1fr', m: '320px minmax(0, 1fr)' }}
-        gap="spacing.7"
-        alignItems="start"
-      >
-        <Box display="flex" flexDirection="column" gap="spacing.6">
+      <Box display="flex" flexDirection={{ base: 'column', m: 'row' }} gap="spacing.7">
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="spacing.6"
+          width={{ base: '100%', m: '320px' }}
+          flexShrink={0}
+        >
           <RadioGroup
             label="Variant"
             orientation="horizontal"
@@ -203,6 +202,7 @@ const SliderInteractiveLab = (): React.ReactElement => {
           borderColor="surface.border.gray.muted"
           backgroundColor="surface.background.gray.intense"
           minWidth="0px"
+          flexGrow={1}
         >
           <Box display="flex" alignItems="center" justifyContent="space-between" gap="spacing.4">
             <Heading size="small">Live Blade component</Heading>
