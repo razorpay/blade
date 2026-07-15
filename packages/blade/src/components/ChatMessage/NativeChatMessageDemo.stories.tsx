@@ -6,7 +6,7 @@ import { Box } from '~components/Box';
 import { RayIcon } from '~components/Icons';
 
 export default {
-  title: 'Components/ChatMessage',
+  title: 'Components/ChatMessage/NativeDemo',
   component: ChatMessage,
   parameters: {
     docs: { disable: true },
@@ -52,7 +52,7 @@ const LoadingTemplate: StoryFn<ChatMessageProps> = (args) => {
   );
 };
 
-export const NativeLoading = LoadingTemplate.bind({});
+export const Loading = LoadingTemplate.bind({});
 
 const ErrorTemplate: StoryFn<ChatMessageProps> = (args) => {
   return (

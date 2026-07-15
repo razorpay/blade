@@ -16,7 +16,9 @@ export interface BaseIconButtonProps extends StyledPropsBlade, DataAnalyticsAttr
    */
   size?: IconButtonSize;
   /**
-   * Icon emphasis (contrast).
+   * Icon emphasis (contrast). `moderate` renders a persistent faded background
+   * in a fixed-size square container — web-only styling; native falls back to
+   * static-white icon colors without the background.
    */
   emphasis?: IconButtonEmphasis;
   /**

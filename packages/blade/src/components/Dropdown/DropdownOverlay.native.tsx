@@ -7,7 +7,7 @@ import type { DropdownOverlayProps } from './types';
 import { dropdownComponentIds } from './dropdownComponentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import { makeSize } from '~utils';
+import { castNativeType, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
@@ -32,8 +32,10 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.ReactElement => {
   const { isOpen, close } = useDropdown();
-  const { colorScheme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
+
+  const hasBottomSheet = bottomSheetAndDropdownGlue?.dropdownHasBottomSheet;
 
   return (
     <BaseBox position="relative">
@@ -45,13 +47,18 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.Rea
         testID="closeable-area"
       >
         <AnimatedDropdownOverlay
-          isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+          isInBottomSheet={hasBottomSheet}
           colorScheme={colorScheme}
           display={isOpen ? 'flex' : 'none'}
           position="absolute"
           width="100%"
           testID="dropdown-overlay"
-          elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
+          elevation={hasBottomSheet ? undefined : 'midRaised'}
+          // Native shadow props (shadowColor/Opacity/Radius/Offset + Android elevation) must be
+          // applied via the raw style prop — styled-components mangles the shadowOffset object.
+          // Mirrors the Tooltip/Carousel native elevation pattern. The overlay already carries an
+          // opaque background and no overflow:hidden, so the iOS shadow isn't clipped.
+          style={hasBottomSheet ? undefined : castNativeType(theme.elevation.midRaised)}
           {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
         >
           {children}

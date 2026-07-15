@@ -1,0 +1,50 @@
+/* AnnouncementBanner Base Styles */
+.announcement-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2); /* 4px icon→text */
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--spacing-3) var(--spacing-5); /* 8px vertical, 16px horizontal */
+  background-color: var(--surface-background-gray-subtle);
+}
+
+/* Dark color scheme — driven by data-theme on body (matches React's useTheme colorScheme) */
+:global(body[data-theme='dark']) .announcement-banner {
+  background-color: var(--interactive-background-static-black-faded-highlighted);
+}
+
+/* Alignment */
+.align-center {
+  justify-content: center;
+}
+
+.align-left {
+  justify-content: flex-start;
+}
+
+/* Icon wrapper */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Text color — driven by data-theme on body, no JS required */
+.text-color {
+  color: var(--surface-text-gray-subtle);
+}
+
+:global(body[data-theme='dark']) .text-color {
+  color: var(--surface-text-static-white-subtle);
+}
+
+/* Icon color — driven by data-theme on body, no JS required */
+.icon-color {
+  color: var(--surface-icon-gray-subtle);
+}
+
+:global(body[data-theme='dark']) .icon-color {
+  color: var(--surface-icon-static-white-subtle);
+}

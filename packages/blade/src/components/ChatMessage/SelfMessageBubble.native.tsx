@@ -3,6 +3,7 @@ import type { CommonChatMessageProps } from './types';
 import { chatMessageToken } from './token';
 import BaseBox from '~components/Box/BaseBox';
 import { FormHint } from '~components/Form/FormHint';
+import { useTheme } from '~utils';
 
 const SelfMessageBubble = ({
   children,
@@ -13,6 +14,7 @@ const SelfMessageBubble = ({
   isChildText: boolean;
 }): React.ReactElement => {
   const isError = validationState === 'error';
+  const { colorScheme } = useTheme();
 
   return (
     <BaseBox display="flex" flexDirection="column">
@@ -23,7 +25,8 @@ const SelfMessageBubble = ({
         alignSelf="flex-end"
         borderWidth="thin"
         borderColor="surface.border.gray.muted"
-        elevation="lowRaised"
+        // Match web's subtle bubble shadow instead of the heavier `lowRaised` elevation token.
+        style={chatMessageToken.messageBubble.nativeShadow[colorScheme]}
       >
         {children}
       </BaseBox>

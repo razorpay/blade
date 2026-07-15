@@ -19,6 +19,9 @@ import {
   CardHeaderLink,
   CardHeaderAmount,
   CardHeaderText,
+  InfoCard as InfoCardComponent,
+  InfoCardBody,
+  InfoCardFooter,
 } from './';
 import type { Elevation } from '~tokens/global';
 import { Amount } from '~components/Amount';
@@ -717,3 +720,128 @@ const CardWithOverflowExample = (): React.ReactElement => {
 };
 
 export const CardWithOverflow = CardWithOverflowExample.bind({});
+
+const SecondaryCardExample = (): React.ReactElement => {
+  return (
+    <Card variant="secondary" padding="spacing.7">
+      <CardBody>
+        <Text weight="semibold" size="medium">
+          Secondary Card
+        </Text>
+        <Text marginTop="spacing.3">
+          This is a secondary card variant. It has no border, elevation, or gradient — just a flat
+          surface with a gray moderate background. It only accepts CardBody as children.
+        </Text>
+      </CardBody>
+    </Card>
+  );
+};
+
+export const SecondaryCard = SecondaryCardExample.bind({});
+
+const InfoCardExample = (): React.ReactElement => {
+  const renderInfoCard = (
+    label: string,
+    stateProps: { isSelected?: boolean; isDisabled?: boolean },
+  ): React.ReactElement => (
+    <InfoCardComponent width="280px" {...stateProps}>
+      <InfoCardBody>
+        <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+          <Text weight="semibold">Razorpay Summit 2026</Text>
+          <Text size="small" color="surface.text.gray.subtle">
+            {label}
+          </Text>
+        </Box>
+      </InfoCardBody>
+      <InfoCardFooter>
+        <Box display="flex" flexDirection="column" gap="spacing.2">
+          <Text size="small" color="surface.text.gray.subtle">
+            Venue
+          </Text>
+          <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+        </Box>
+      </InfoCardFooter>
+    </InfoCardComponent>
+  );
+
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.7" flexWrap="wrap">
+      {renderInfoCard('Default', {})}
+      {renderInfoCard('Selected', { isSelected: true })}
+      {renderInfoCard('Disabled', { isDisabled: true })}
+    </Box>
+  );
+};
+
+export const InfoCard = InfoCardExample.bind({});
+InfoCard.parameters = {
+  controls: {
+    disable: true,
+  },
+};
+
+const NestedCardExample = (): React.ReactElement => {
+  return (
+    <Card>
+      <CardHeader>
+        <CardHeaderLeading
+          title="Payment Summary"
+          subtitle="Overview of recent transactions"
+          prefix={<CardHeaderIcon icon={CheckCircleIcon} />}
+        />
+        <CardHeaderTrailing visual={<CardHeaderBadge color="positive">Active</CardHeaderBadge>} />
+      </CardHeader>
+      <CardBody>
+        <Box display="flex" flexDirection="column" gap="spacing.5">
+          <Text>Below are the details of your recent transactions grouped by category.</Text>
+          <Card variant="secondary" padding="spacing.5">
+            <CardBody>
+              <Box display="flex" flexDirection="row" justifyContent="space-between">
+                <Text weight="semibold">UPI Payments</Text>
+                <Amount value={45000} type="body" weight="semibold" />
+              </Box>
+              <Text marginTop="spacing.2" size="small" color="surface.text.gray.muted">
+                12 transactions this week
+              </Text>
+            </CardBody>
+          </Card>
+          <Card variant="secondary" padding="spacing.5">
+            <CardBody>
+              <Box display="flex" flexDirection="row" justifyContent="space-between">
+                <Text weight="semibold">Card Payments</Text>
+                <Amount value={120000} type="body" weight="semibold" />
+              </Box>
+              <Text marginTop="spacing.2" size="small" color="surface.text.gray.muted">
+                8 transactions this week
+              </Text>
+            </CardBody>
+          </Card>
+          <Card variant="secondary" padding="spacing.5">
+            <CardBody>
+              <Box display="flex" flexDirection="row" justifyContent="space-between">
+                <Text weight="semibold">Net Banking</Text>
+                <Amount value={78000} type="body" weight="semibold" />
+              </Box>
+              <Text marginTop="spacing.2" size="small" color="surface.text.gray.muted">
+                5 transactions this week
+              </Text>
+            </CardBody>
+          </Card>
+        </Box>
+      </CardBody>
+      <CardFooter>
+        <CardFooterLeading title="Total Volume" subtitle="This week" />
+        <CardFooterTrailing
+          actions={{
+            primary: {
+              text: 'View All',
+              onClick: () => console.log('View All clicked'),
+            },
+          }}
+        />
+      </CardFooter>
+    </Card>
+  );
+};
+
+export const NestedSecondaryInsidePrimary = NestedCardExample.bind({});

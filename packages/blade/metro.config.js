@@ -52,7 +52,7 @@ function resolveSubpathExport(moduleName) {
 const isWorktreeSymlink = realNodeModulesDir !== nodeModulesDir;
 
 const config = {
-  watchFolders: isWorktreeSymlink ? [realNodeModulesDir] : [],
+  watchFolders: isWorktreeSymlink ? [realNodeModulesDir] : [nodeModulesDir],
   transformer: {
     unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
@@ -64,6 +64,7 @@ const config = {
   },
   resolver: {
     unstable_enableSymlinks: true,
+    nodeModulesPaths: [nodeModulesDir],
     resolverMainFields: ['react-native', 'browser', 'main'],
     resolveRequest: (context, moduleName, platform) => {
       if (moduleName.endsWith('.css')) {

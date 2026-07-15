@@ -439,6 +439,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
           : undefined
       }
       autoCapitalize={autoCapitalize}
+      includeFontPadding={false}
       $size={$size}
       scrollEnabled={isAutoGrowing ? autoGrowHeight >= (autoGrowMaxHeight as number) : undefined}
       {...commonProps}
