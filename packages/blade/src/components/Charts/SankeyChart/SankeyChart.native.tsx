@@ -706,12 +706,6 @@ const _ChartSankeyWrapper = ({
   const [active, setActive] = useState<ActiveState>(null);
   const [tooltipHeight, setTooltipHeight] = useState(0);
 
-  // Reset tooltip height when tooltip is dismissed to avoid stale measurement
-  // affecting the next tooltip's initial position.
-  React.useEffect(() => {
-    if (!tooltip) setTooltipHeight(0);
-  }, [tooltip]);
-
   // Extract the single ChartSankey child's props.
   const sankeyChild = useMemo(
     () =>
@@ -927,6 +921,12 @@ const _ChartSankeyWrapper = ({
     };
   }, [showTooltip, active, size, labelUnit, layout, data.nodes, PADDING.left, PADDING.top]);
 
+  // Reset tooltip height when tooltip is dismissed to avoid stale measurement
+  // affecting the next tooltip's initial position.
+  React.useEffect(() => {
+    if (!tooltip) setTooltipHeight(0);
+  }, [tooltip]);
+
   const TOOLTIP_MAX_WIDTH = 240;
   const tooltipLeft = tooltip
     ? Math.max(0, Math.min(size.width - TOOLTIP_MAX_WIDTH, tooltip.centerX - TOOLTIP_MAX_WIDTH / 2))
@@ -1127,10 +1127,7 @@ const _ChartSankeyWrapper = ({
                 zIndex: TOOLTIP_Z_INDEX,
                 top: Math.max(
                   0,
-                  Math.min(
-                    size.height - tooltipHeight,
-                    tooltip.centerY - tooltipHeight / 2,
-                  ),
+                  Math.min(size.height - tooltipHeight, tooltip.centerY - tooltipHeight / 2),
                 ),
                 left: tooltipLeft,
                 maxWidth: TOOLTIP_MAX_WIDTH,
