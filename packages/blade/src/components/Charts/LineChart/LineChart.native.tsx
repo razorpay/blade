@@ -162,11 +162,10 @@ const selectNonOverlappingXTickIndices = (
   if (pointCount <= 0) return [];
   if (pointCount === 1) return [0];
 
-  const fitsAfter = (prev: number, next: number): boolean => {
-    const prevRight = xForIndex(prev) + widths[prev] / 2;
-    const nextLeft = xForIndex(next) - widths[next] / 2;
-    return nextLeft >= prevRight;
-  };
+  const rightExtent = (i: number): number => xForIndex(i) + (i === 0 ? widths[i] : widths[i] / 2);
+  const leftExtent = (i: number): number =>
+    xForIndex(i) - (i === pointCount - 1 ? widths[i] : widths[i] / 2);
+  const fitsAfter = (prev: number, next: number): boolean => leftExtent(next) >= rightExtent(prev);
 
   if (forcedStep !== undefined) {
     const step = Math.max(1, forcedStep);
@@ -838,7 +837,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   // Wrap each label to fit its column so all categories can be shown at once.
   const xLabelLines = useMemo(() => {
     // Leave a small gutter so adjacent wrapped labels don't kiss.
-    const maxWidth = Math.max(0, columnWidth - X_TICK_LABEL_GAP);
+    const maxWidth = Math.max(0, columnWidth * 0.6 - X_TICK_LABEL_GAP);
     return xLabels.map((label) => wrapLabelToLines(label, maxWidth, TICK_FONT_SIZE));
   }, [xLabels, columnWidth]);
 
@@ -1567,6 +1566,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                       paddingVertical: theme.spacing[1],
                       paddingHorizontal: theme.spacing[2],
                     }}
+                    {...metaAttribute({ name: `chart-legend-item-${line.dataKey}` })}
                   >
                     <View
                       style={{
