@@ -2634,7 +2634,6 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
         "data-blade-component": "base-box",
         "display": "flex",
         "justifyContent": "space-between",
-        "minHeight": "56px",
         "overflow": "hidden",
         "position": "relative",
         "style": [
@@ -2646,13 +2645,13 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
             "borderWidth": 1,
             "display": "flex",
             "justifyContent": "space-between",
-            "minHeight": 56,
             "overflow": "hidden",
             "position": "relative",
             "width": "100%",
           },
           {
             "elevation": 1,
+            "minHeight": 56,
             "shadowColor": "hsla(206, 10%, 29%, 0.06)",
             "shadowOffset": {
               "height": 0.5,
@@ -3259,7 +3258,6 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
         "data-blade-component": "base-box",
         "display": "flex",
         "justifyContent": "space-between",
-        "minHeight": "56px",
         "overflow": "hidden",
         "position": "relative",
         "style": [
@@ -3271,13 +3269,13 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
             "borderWidth": 1,
             "display": "flex",
             "justifyContent": "space-between",
-            "minHeight": 56,
             "overflow": "hidden",
             "position": "relative",
             "width": "100%",
           },
           {
             "elevation": 1,
+            "minHeight": 56,
             "shadowColor": "hsla(206, 10%, 29%, 0.06)",
             "shadowOffset": {
               "height": 0.5,
@@ -3919,7 +3917,6 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
         "data-blade-component": "base-box",
         "display": "flex",
         "justifyContent": "space-between",
-        "minHeight": "56px",
         "overflow": "hidden",
         "position": "relative",
         "style": [
@@ -3931,13 +3928,13 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
             "borderWidth": 1,
             "display": "flex",
             "justifyContent": "space-between",
-            "minHeight": 56,
             "overflow": "hidden",
             "position": "relative",
             "width": "100%",
           },
           {
             "elevation": 1,
+            "minHeight": 56,
             "shadowColor": "hsla(206, 10%, 29%, 0.06)",
             "shadowOffset": {
               "height": 0.5,
@@ -4544,7 +4541,6 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
         "data-blade-component": "base-box",
         "display": "flex",
         "justifyContent": "space-between",
-        "minHeight": "56px",
         "overflow": "hidden",
         "position": "relative",
         "style": [
@@ -4556,13 +4552,13 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
             "borderWidth": 1,
             "display": "flex",
             "justifyContent": "space-between",
-            "minHeight": 56,
             "overflow": "hidden",
             "position": "relative",
             "width": "100%",
           },
           {
             "elevation": 1,
+            "minHeight": 56,
             "shadowColor": "hsla(206, 10%, 29%, 0.06)",
             "shadowOffset": {
               "height": 0.5,
@@ -5191,7 +5187,6 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
         "data-blade-component": "base-box",
         "display": "flex",
         "justifyContent": "space-between",
-        "minHeight": "56px",
         "overflow": "hidden",
         "position": "relative",
         "style": [
@@ -5203,13 +5198,13 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
             "borderWidth": 1,
             "display": "flex",
             "justifyContent": "space-between",
-            "minHeight": 56,
             "overflow": "hidden",
             "position": "relative",
             "width": "100%",
           },
           {
             "elevation": 1,
+            "minHeight": 56,
             "shadowColor": "hsla(206, 10%, 29%, 0.06)",
             "shadowOffset": {
               "height": 0.5,
