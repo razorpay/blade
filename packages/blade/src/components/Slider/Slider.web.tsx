@@ -287,7 +287,7 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
   }, [commitValue]);
 
   React.useEffect(() => {
-    if (!isThumbDragging) return;
+    if (!isThumbDragging) return undefined;
     const onDocPointerUp = (): void => {
       if (pointerStartedOnThumbRef.current) {
         commitValue();
@@ -318,7 +318,6 @@ const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (p
         <SliderHeader
           displayValue={displayValue}
           inputId={inputId}
-          isRequired={isRequired}
           label={label}
           labelId={labelId}
           labelPosition={labelPosition}

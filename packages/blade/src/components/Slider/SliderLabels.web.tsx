@@ -10,7 +10,6 @@ type SliderSize = NonNullable<SliderProps['size']>;
 type SliderHeaderProps = {
   displayValue: string;
   inputId: string;
-  isRequired?: boolean;
   label?: string;
   labelId: string;
   labelPosition?: 'top' | 'left';
@@ -23,7 +22,6 @@ type SliderHeaderProps = {
 const SliderHeader = ({
   displayValue,
   inputId,
-  isRequired,
   label,
   labelId,
   labelPosition = 'top',
