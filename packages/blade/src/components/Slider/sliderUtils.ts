@@ -37,7 +37,7 @@ const getPercent = (value: number, min: number, max: number): number =>
   ((value - min) / (max - min)) * 100;
 
 const getGeneratedMarks = (min: number, max: number, step: number): SliderMark[] => {
-  const stepCount = Math.floor((max - min) / step);
+  const stepCount = Math.round((max - min) / step);
   if (stepCount > sliderTokens.maxGeneratedMarks) return [];
 
   const marks: SliderMark[] = Array.from({ length: stepCount + 1 }, (_, index) => ({

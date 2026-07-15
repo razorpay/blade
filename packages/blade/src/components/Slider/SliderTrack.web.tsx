@@ -20,6 +20,9 @@ type NativeRangeInputProps = Pick<
   $isActive: boolean;
   $pressedThumbSize: number;
   $thumbSize: number;
+};
+
+type NativeRangeInputHelperProps = NativeRangeInputProps & {
   theme: DefaultTheme;
 };
 
@@ -28,26 +31,26 @@ const getActiveColor = ({
   $color,
   $hasError,
   $isDisabled,
-}: NativeRangeInputProps): string => {
+}: NativeRangeInputHelperProps): string => {
   if ($isDisabled) return theme.colors.interactive.background.gray.disabled;
   return theme.colors.interactive.background[$hasError ? 'negative' : $color].default;
 };
 
-const getHaloColor = ({ theme, $color, $hasError }: NativeRangeInputProps): string =>
+const getHaloColor = ({ theme, $color, $hasError }: NativeRangeInputHelperProps): string =>
   theme.colors.interactive.background[$hasError ? 'negative' : $color].faded;
 
 const HALO_BORDER_OFFSET = 0.5;
 const HALO_RADIUS_OFFSET = 8;
 const FOCUS_BORDER_RADIUS_OFFSET = 2;
 
-const getDefaultThumb = (props: NativeRangeInputProps): string => {
+const getDefaultThumb = (props: NativeRangeInputHelperProps): string => {
   const radius = props.$thumbSize / 2;
   return `radial-gradient(circle, ${getActiveColor(props)} 0 ${radius}px, transparent ${
     radius + HALO_BORDER_OFFSET
   }px)`;
 };
 
-const getHoverThumb = (props: NativeRangeInputProps): string => {
+const getHoverThumb = (props: NativeRangeInputHelperProps): string => {
   const radius = props.$thumbSize / 2;
   return `radial-gradient(circle, ${getActiveColor(props)} 0 ${radius}px, ${getHaloColor(
     props,
@@ -56,7 +59,7 @@ const getHoverThumb = (props: NativeRangeInputProps): string => {
   }px)`;
 };
 
-const getFocusedThumb = (props: NativeRangeInputProps): string => {
+const getFocusedThumb = (props: NativeRangeInputHelperProps): string => {
   const radius = props.$thumbSize / 2;
   return `radial-gradient(circle, ${getActiveColor(props)} 0 ${radius}px, ${
     props.theme.colors.surface.border.primary.normal
@@ -65,7 +68,7 @@ const getFocusedThumb = (props: NativeRangeInputProps): string => {
   }px)`;
 };
 
-const getPressedThumb = (props: NativeRangeInputProps): string => {
+const getPressedThumb = (props: NativeRangeInputHelperProps): string => {
   const radius = props.$pressedThumbSize / 2;
   return `radial-gradient(circle, ${getActiveColor(props)} 0 ${radius}px, ${getHaloColor(
     props,
@@ -154,6 +157,10 @@ const NativeRangeInput = styled.input<NativeRangeInputProps>((props) => ({
     border: 0,
     height: sliderTokens.interactionTarget,
   },
+  '&::-moz-range-progress': {
+    background: 'transparent',
+    border: 0,
+  },
   '&::-moz-range-thumb': {
     background: getDefaultThumb(props),
     border: 0,
@@ -194,16 +201,23 @@ const MarkDot = styled.span<Pick<SliderTrackStyleProps, '$isDisabled'>>(
   }),
 );
 
-const MarkLabel = styled.span<{ $trackHeight: number }>(({ theme, $trackHeight }) => ({
-  color: theme.colors.surface.text.gray.muted,
-  fontFamily: theme.typography.fonts.family.text,
-  fontSize: theme.typography.fonts.size[75],
-  lineHeight: `${theme.typography.lineHeights[75]}px`,
-  position: 'absolute',
-  top: $trackHeight / 2 + 8,
-  transform: 'translateX(-50%)',
-  whiteSpace: 'nowrap',
-}));
+const MarkLabel = styled.span<{ $trackHeight: number; $percent: number }>(
+  ({ theme, $trackHeight, $percent }) => ({
+    color: theme.colors.surface.text.gray.muted,
+    fontFamily: theme.typography.fonts.family.text,
+    fontSize: theme.typography.fonts.size[75],
+    lineHeight: `${theme.typography.lineHeights[75]}px`,
+    position: 'absolute',
+    top: $trackHeight / 2 + 8,
+    transform:
+      $percent <= 0
+        ? 'translateX(0)'
+        : $percent >= 100
+          ? 'translateX(-100%)'
+          : 'translateX(-50%)',
+    whiteSpace: 'nowrap',
+  }),
+);
 
 const ThumbValueLabel = styled.span(({ theme }) => ({
   backgroundColor: theme.colors.popup.background.gray.intense,

@@ -27,6 +27,7 @@ type SliderControlsProps = {
   hasError: boolean;
   inputId: string;
   isDisabled: boolean;
+  isRequired: boolean;
   label?: string;
   labelId?: string;
   max: number;
@@ -61,6 +62,7 @@ const SliderControls = ({
   hasError,
   inputId,
   isDisabled,
+  isRequired,
   label,
   labelId,
   max,
@@ -98,12 +100,13 @@ const SliderControls = ({
     'aria-describedby': describedBy,
     'aria-disabled': isDisabled || undefined,
     'aria-invalid': hasError || undefined,
+    'aria-orientation': 'horizontal' as const,
+    'aria-required': isRequired || undefined,
     disabled: isDisabled,
     max,
     min,
-    name,
     step,
-    type: 'range',
+    type: 'range' as const,
   } as const;
   const getInputLabel = (index: 0 | 1): string | undefined => {
     if (variant === 'single') return accessibilityLabel ?? label;
@@ -115,6 +118,13 @@ const SliderControls = ({
     const slope = sliderTokens.interactionTarget / 100;
     return `calc(${percent}% + ${offset - slope * percent}px)`;
   };
+  const getThumbLabelTransform = (percent: number): string => {
+    if (percent <= 0) return 'translateX(0)';
+    if (percent >= 100) return 'translateX(-100%)';
+    return 'translateX(-50%)';
+  };
+  const isRangeLabelCollision =
+    variant === 'range' && showThumbValue && endPercent - startPercent < 10;
 
   return (
     <TrackArea
@@ -136,7 +146,11 @@ const SliderControls = ({
             <React.Fragment key={`${mark.value}-${mark.label ?? ''}`}>
               <MarkDot $isDisabled={isDisabled} style={{ left: `${markPercent}%` }} />
               {mark.label ? (
-                <MarkLabel $trackHeight={tokens.track} style={{ left: `${markPercent}%` }}>
+                <MarkLabel
+                  $trackHeight={tokens.track}
+                  $percent={markPercent}
+                  style={{ left: `${markPercent}%` }}
+                >
                   {mark.label}
                 </MarkLabel>
               ) : null}
@@ -146,12 +160,25 @@ const SliderControls = ({
       </TrackLine>
 
       {showThumbValue && variant === 'range' ? (
-        <ThumbValueLabel aria-hidden style={{ left: getThumbPosition(startPercent) }}>
+        <ThumbValueLabel
+          aria-hidden
+          style={{
+            left: getThumbPosition(startPercent),
+            transform: getThumbLabelTransform(startPercent),
+            ...(isRangeLabelCollision ? { top: `-${sliderTokens.thumbValueOffset}px` } : {}),
+          }}
+        >
           {valueFormatter(rangeValue[0])}
         </ThumbValueLabel>
       ) : null}
       {showThumbValue ? (
-        <ThumbValueLabel aria-hidden style={{ left: getThumbPosition(endPercent) }}>
+        <ThumbValueLabel
+          aria-hidden
+          style={{
+            left: getThumbPosition(endPercent),
+            transform: getThumbLabelTransform(endPercent),
+          }}
+        >
           {valueFormatter(endValue)}
         </ThumbValueLabel>
       ) : null}
@@ -169,6 +196,7 @@ const SliderControls = ({
         aria-valuetext={valueFormatter(variant === 'range' ? rangeValue[0] : endValue)}
         id={inputId}
         max={variant === 'range' ? rangeValue[1] : max}
+        name={variant === 'range' ? (name ? `${name}-start` : undefined) : name}
         onChange={onInputChange(0)}
         onKeyDown={onInputKeyDown(0)}
         onKeyUp={onInputKeyUp}
@@ -191,6 +219,7 @@ const SliderControls = ({
           aria-valuetext={valueFormatter(rangeValue[1])}
           id={`${inputId}-end`}
           min={rangeValue[0]}
+          name={name ? `${name}-end` : undefined}
           onChange={onInputChange(1)}
           onKeyDown={onInputKeyDown(1)}
           onKeyUp={onInputKeyUp}

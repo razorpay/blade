@@ -16,7 +16,12 @@ type SliderMark = {
 type SliderChangeHandler<TValue extends SliderValue> = (args: {
   name?: string;
   value: TValue;
-  event?: React.ChangeEvent<HTMLInputElement>;
+  event?: React.SyntheticEvent<HTMLInputElement>;
+}) => void;
+
+type SliderCommitHandler<TValue extends SliderValue> = (args: {
+  name?: string;
+  value: TValue;
 }) => void;
 
 type SliderLabelProps =
@@ -95,7 +100,7 @@ type SingleSliderProps = {
   defaultValue?: number;
   onChange?: SliderChangeHandler<number>;
   /** Called when pointer or keyboard interaction commits a value. */
-  onChangeEnd?: SliderChangeHandler<number>;
+  onChangeEnd?: SliderCommitHandler<number>;
 };
 
 type RangeSliderProps = {
@@ -104,13 +109,14 @@ type RangeSliderProps = {
   defaultValue?: SliderRangeValue;
   onChange?: SliderChangeHandler<SliderRangeValue>;
   /** Called when pointer or keyboard interaction commits a value. */
-  onChangeEnd?: SliderChangeHandler<SliderRangeValue>;
+  onChangeEnd?: SliderCommitHandler<SliderRangeValue>;
 };
 
 type SliderProps = SliderLabelProps & SliderCommonProps & (SingleSliderProps | RangeSliderProps);
 
 export type {
   SliderChangeHandler,
+  SliderCommitHandler,
   SliderMark,
   SliderProps,
   SliderRangeValue,

@@ -99,7 +99,12 @@ const SliderFooter = ({
 }: SliderFooterProps): React.ReactElement => (
   <>
     {showMinMax ? (
-      <BaseBox display="flex" justifyContent="space-between">
+      <BaseBox
+        display="flex"
+        justifyContent="space-between"
+        paddingLeft={`${sliderTokens.interactionTarget / 2}px`}
+        paddingRight={`${sliderTokens.interactionTarget / 2}px`}
+      >
         <Text variant="caption" size="small" color="surface.text.gray.muted">
           {minText}
         </Text>
