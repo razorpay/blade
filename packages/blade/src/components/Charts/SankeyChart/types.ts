@@ -1,6 +1,17 @@
+// `import type` is erased at compile time — it produces no runtime dependency
+// on recharts in the native bundle. This matches the pattern used in
+// DonutChart/types.ts, which also uses `import type` for recharts types.
+//
+// Additionally, the `payload` field below uses `Platform.Select` to isolate the
+// recharts payload type to the web variant only (native resolves to `undefined`).
+// This is an extra isolation step introduced here because SankeyChart now has a
+// native implementation — DonutChart does not need this because it has no native
+// variant. Moving the import to a web-only file would fragment the shared type
+// definition and is not worth the trade-off.
 import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
+import type { Platform } from '~utils';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 
@@ -24,7 +35,24 @@ export type SankeyDataLink = {
 
 export type SankeyTooltipContentProps = {
   active?: boolean;
-  payload?: TooltipContentProps<number, string>['payload'];
+  /**
+   * Recharts tooltip payload — isolated behind `Platform.Select` so the native
+   * build never depends on recharts types.
+   *
+   * - **Web**: resolves to the real recharts `TooltipContentProps` payload type.
+   * - **Native**: resolves to `undefined` — the native implementation renders its
+   *   own tooltip overlay from the computed Sankey layout and does not consume
+   *   this prop.
+   *
+   * Note: This type identity changed from the original
+   * `TooltipContentProps<number, string>['payload']` to a `Platform.Select`
+   * wrapper. Consumers importing this type directly should be aware that
+   * `payload` is `undefined` on native platforms.
+   */
+  payload?: Platform.Select<{
+    web: TooltipContentProps<number, string>['payload'];
+    native: undefined;
+  }>;
   labelUnit?: string;
 };
 
