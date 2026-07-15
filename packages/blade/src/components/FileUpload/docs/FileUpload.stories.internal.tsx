@@ -1,8 +1,14 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Pressable } from 'react-native';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import type { BladeFile, BladeFileList, FileUploadProps } from '../FileUpload';
 import { FileUpload as FileUploadComponent } from '../FileUpload';
+import {
+  BottomSheet,
+  BottomSheetHeader,
+  BottomSheetBody,
+  BottomSheetFooter,
+} from '~components/BottomSheet';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Heading } from '~components/Typography/Heading';
@@ -10,12 +16,6 @@ import { Button } from '~components/Button';
 import { Checkbox } from '~components/Checkbox';
 import { Divider } from '~components/Divider';
 import { Badge } from '~components/Badge';
-import {
-  BottomSheet,
-  BottomSheetHeader,
-  BottomSheetBody,
-  BottomSheetFooter,
-} from '~components/BottomSheet';
 
 const MOCK_FILES: Array<{ name: string; size: number; type: string }> = [
   { name: 'invoice-2024.pdf', size: 245_760, type: 'application/pdf' },
@@ -53,35 +53,66 @@ export default {
   component: FileUploadComponent,
   parameters: {
     docs: { disable: true },
+    notes:
+      'Platform note: The upload area uses a dashed border. iOS renders it correctly; on Android (React Native ≤ 0.72) dashed borders silently fall back to solid, so the border may look different from web/iOS.',
   },
+  decorators: [
+    (Story): React.ReactElement => (
+      <Box paddingX="spacing.5" paddingTop="spacing.5">
+        <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.4">
+          Platform note: upload area border is dashed on iOS. On Android (RN ≤ 0.72) it renders as
+          solid — expect a visual difference vs web/iOS.
+        </Text>
+        <Story />
+      </Box>
+    ),
+  ],
 } as Meta<FileUploadProps>;
 
-const simulateUpload = (
+type SimulateUpload = (
   fileId: string,
   setFiles: React.Dispatch<React.SetStateAction<BladeFileList>>,
-  shouldFail = false,
-): void => {
-  let percent = 0;
-  const interval = setInterval(() => {
-    percent += Math.floor(Math.random() * 20) + 10;
-    if (shouldFail && percent >= 40) {
-      clearInterval(interval);
-      setFiles((prev) =>
-        prev.map((f) =>
-          f.id === fileId
-            ? { ...f, status: 'error', errorText: 'Upload failed. File too large.' }
-            : f,
-        ),
-      );
-    } else if (percent >= 100) {
-      clearInterval(interval);
-      setFiles((prev) =>
-        prev.map((f) => (f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f)),
-      );
-    } else {
-      setFiles((prev) => prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)));
-    }
-  }, 300);
+  shouldFail?: boolean,
+) => void;
+
+const useSimulateUpload = (): SimulateUpload => {
+  const activeIntervalsRef = useRef<Set<ReturnType<typeof setInterval>>>(new Set());
+
+  useEffect(() => {
+    return () => {
+      activeIntervalsRef.current.forEach(clearInterval);
+      activeIntervalsRef.current.clear();
+    };
+  }, []);
+
+  return useCallback((fileId, setFiles, shouldFail = false) => {
+    let percent = 0;
+    const interval = setInterval(() => {
+      percent += Math.floor(Math.random() * 20) + 10;
+      if (shouldFail && percent >= 40) {
+        clearInterval(interval);
+        activeIntervalsRef.current.delete(interval);
+        setFiles((prev) =>
+          prev.map((f) =>
+            f.id === fileId
+              ? { ...f, status: 'error', errorText: 'Upload failed. File too large.' }
+              : f,
+          ),
+        );
+      } else if (percent >= 100) {
+        clearInterval(interval);
+        activeIntervalsRef.current.delete(interval);
+        setFiles((prev) =>
+          prev.map((f) => (f.id === fileId ? { ...f, status: 'success', uploadPercent: 100 } : f)),
+        );
+      } else {
+        setFiles((prev) =>
+          prev.map((f) => (f.id === fileId ? { ...f, uploadPercent: percent } : f)),
+        );
+      }
+    }, 300);
+    activeIntervalsRef.current.add(interval);
+  }, []);
 };
 
 type MockFilePickerProps = {
@@ -144,7 +175,14 @@ const MockFilePicker = ({
         <Box display="flex" flexDirection="column">
           {MOCK_FILES.map((file, index) => (
             <React.Fragment key={file.name}>
-              <Pressable onPress={() => toggleFile(index)}>
+              <Pressable
+                onPress={() => toggleFile(index)}
+                accessibilityRole="button"
+                accessibilityLabel={`${file.name}, ${formatFileSize(file.size)}, ${
+                  file.type.split('/')[1]
+                }`}
+                style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
+              >
                 <Box
                   display="flex"
                   flexDirection="row"
@@ -199,16 +237,20 @@ const MockFilePicker = ({
 const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
+  const simulateUpload = useSimulateUpload();
 
   const handleUploadPress = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
-    const newFile = createBladeFile(selected[0]);
-    setFiles([newFile]);
-    simulateUpload(newFile.id!, setFiles);
-  }, []);
+  const handleFilesSelected = useCallback(
+    (selected: Array<typeof MOCK_FILES[number]>) => {
+      const newFile = createBladeFile(selected[0]);
+      setFiles([newFile]);
+      simulateUpload(newFile.id!, setFiles);
+    },
+    [simulateUpload],
+  );
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -224,13 +266,12 @@ const SingleUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
         onRemove={() => setFiles([])}
         onDismiss={() => setFiles([])}
         onReupload={({ file }) => {
-          setFiles((prev) =>
-            prev.map((f) =>
-              f.id === file.id
-                ? { ...f, status: 'uploading', uploadPercent: 0, errorText: undefined }
-                : f,
-            ),
-          );
+          // FileUpload removes the file before calling onReupload in controlled mode —
+          // re-add it as uploading so the retry can proceed.
+          setFiles((prev) => [
+            { ...file, status: 'uploading', uploadPercent: 0, errorText: undefined },
+            ...prev.filter((f) => f.id !== file.id),
+          ]);
           simulateUpload(file.id!, setFiles);
         }}
       />
@@ -253,16 +294,20 @@ SingleUpload.storyName = 'Single Upload';
 const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
+  const simulateUpload = useSimulateUpload();
 
   const handleUploadPress = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
-    const newFiles = selected.map((s) => createBladeFile(s));
-    setFiles((prev) => [...prev, ...newFiles]);
-    newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
-  }, []);
+  const handleFilesSelected = useCallback(
+    (selected: Array<typeof MOCK_FILES[number]>) => {
+      const newFiles = selected.map((s) => createBladeFile(s));
+      setFiles((prev) => [...prev, ...newFiles]);
+      newFiles.forEach((f) => simulateUpload(f.id!, setFiles));
+    },
+    [simulateUpload],
+  );
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -278,13 +323,12 @@ const MultiUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
         onRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onReupload={({ file }) => {
-          setFiles((prev) =>
-            prev.map((f) =>
-              f.id === file.id
-                ? { ...f, status: 'uploading', uploadPercent: 0, errorText: undefined }
-                : f,
-            ),
-          );
+          // FileUpload removes the file before calling onReupload in controlled mode —
+          // re-add it as uploading so the retry can proceed.
+          setFiles((prev) => [
+            { ...file, status: 'uploading', uploadPercent: 0, errorText: undefined },
+            ...prev.filter((f) => f.id !== file.id),
+          ]);
           simulateUpload(file.id!, setFiles);
         }}
       />
@@ -307,23 +351,27 @@ MultiUpload.storyName = 'Multi Upload';
 const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
-  const fileCountRef = React.useRef(0);
+  const fileCountRef = useRef(0);
+  const simulateUpload = useSimulateUpload();
 
   const handleUploadPress = useCallback(() => {
     setIsPickerOpen(true);
   }, []);
 
-  const handleFilesSelected = useCallback((selected: Array<typeof MOCK_FILES[number]>) => {
-    const newFiles = selected.map((s) => {
-      fileCountRef.current++;
-      return createBladeFile(s);
-    });
-    setFiles((prev) => [...prev, ...newFiles]);
-    newFiles.forEach((f, i) => {
-      const shouldFail = (fileCountRef.current - newFiles.length + i + 1) % 3 === 0;
-      simulateUpload(f.id!, setFiles, shouldFail);
-    });
-  }, []);
+  const handleFilesSelected = useCallback(
+    (selected: Array<typeof MOCK_FILES[number]>) => {
+      const newFiles = selected.map((s) => {
+        fileCountRef.current++;
+        return createBladeFile(s);
+      });
+      setFiles((prev) => [...prev, ...newFiles]);
+      newFiles.forEach((f, i) => {
+        const shouldFail = (fileCountRef.current - newFiles.length + i + 1) % 3 === 0;
+        simulateUpload(f.id!, setFiles, shouldFail);
+      });
+    },
+    [simulateUpload],
+  );
 
   return (
     <Box padding="spacing.5" maxWidth="400px">
@@ -339,13 +387,12 @@ const WithErrorTemplate: StoryFn<typeof FileUploadComponent> = () => {
         onRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onDismiss={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         onReupload={({ file }) => {
-          setFiles((prev) =>
-            prev.map((f) =>
-              f.id === file.id
-                ? { ...f, status: 'uploading', uploadPercent: 0, errorText: undefined }
-                : f,
-            ),
-          );
+          // FileUpload removes the file before calling onReupload in controlled mode —
+          // re-add it as uploading so the retry can proceed.
+          setFiles((prev) => [
+            { ...file, status: 'uploading', uploadPercent: 0, errorText: undefined },
+            ...prev.filter((f) => f.id !== file.id),
+          ]);
           simulateUpload(file.id!, setFiles);
         }}
       />

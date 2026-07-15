@@ -1,9 +1,19 @@
 import React from 'react';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+  interpolateColor,
+} from 'react-native-reanimated';
 import type { StyledFileUploadWrapperProps } from './types';
-import { fileUploadColorTokens, fileUploadMotionTokens } from './fileUploadTokens';
+import {
+  fileUploadColorTokens,
+  fileUploadHeightTokens,
+  fileUploadMotionTokens,
+} from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
+import { castNativeType } from '~utils';
 
 type StyledFileUploadWrapperNativeProps = Omit<StyledFileUploadWrapperProps, 'theme'> & {
   style?: Record<string, unknown>;
@@ -12,6 +22,7 @@ type StyledFileUploadWrapperNativeProps = Omit<StyledFileUploadWrapperProps, 'th
 const StyledFileUploadWrapper = ({
   isDisabled,
   isActive,
+  size,
   children,
   style,
 }: StyledFileUploadWrapperNativeProps): React.ReactElement => {
@@ -24,9 +35,9 @@ const StyledFileUploadWrapper = ({
   React.useEffect(() => {
     progress.value = withTiming(isActive ? 1 : 0, {
       duration,
-      easing: easingFn,
+      easing: castNativeType(easingFn),
     });
-  }, [isActive, duration]);
+  }, [isActive, duration, easingFn]);
 
   const borderColor = getIn(
     theme.colors,
@@ -37,8 +48,7 @@ const StyledFileUploadWrapper = ({
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      backgroundColor: progress.value > 0.5 ? activeBgColor : 'transparent',
-      opacity: 1,
+      backgroundColor: interpolateColor(progress.value, [0, 1], ['transparent', activeBgColor]),
     };
   });
 
@@ -46,10 +56,15 @@ const StyledFileUploadWrapper = ({
     <Animated.View
       style={[
         {
+          // Note: borderStyle 'dashed' is not supported on Android in RN <= 0.72 and silently falls back to 'solid'.
+          // iOS renders a dashed border correctly; Android will show a solid border.
           borderStyle: 'dashed' as const,
           borderColor,
           borderWidth: 1,
-          borderRadius: 8,
+          borderRadius: theme.border.radius.medium,
+          // Raw numeric size tokens (e.g. 56/64) — Animated.View style expects numbers,
+          // unlike BaseBox which accepts makeSize()'s `${n}px` strings.
+          minHeight: size === 'variable' ? undefined : fileUploadHeightTokens[size],
           display: 'flex' as const,
           flexDirection: 'row' as const,
           justifyContent: 'center' as const,

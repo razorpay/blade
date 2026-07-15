@@ -4,31 +4,23 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
-
-interface BladeFile extends File {
-  /**
-   * The unique identifier of the file.
-   */
-  id?: string;
-  /**
-   * The file's upload status.
-   */
-  status?: 'uploading' | 'success' | 'error';
-  /**
-   * The percentage of file upload completion.
-   */
-  uploadPercent?: number;
-  /**
-   * Text indicating an error state
-   */
-  errorText?: string;
-}
+import type { Platform } from '~utils';
+import type { BladeFile } from './bladeFile';
 
 type BladeFileList = BladeFile[];
 
+/**
+ * Props shared by web and React Native FileUpload.
+ *
+ * **React Native — not supported:**
+ * - `_motionMeta` — motion ref wiring is web-only (attached to the hidden `<input>`)
+ * - `data-analytics-*` / `elementtiming` props — on web these are spread onto the hidden file input; not wired on native
+ */
 type FileUploadCommonProps = {
   /**
    * Position of the label relative to the file upload area. Desktop only prop. Default value on mobile will be 'top'
+   *
+   * **React Native:** `labelPosition="left"` is silently ignored on native — labels always render above the upload area.
    *
    * @default 'top'
    */
@@ -41,6 +33,9 @@ type FileUploadCommonProps = {
    * File types that can be accepted. See [input's accept attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)
    *
    * Usage: accept=".jpg, .png, .pdf", accept="image/*", accept="image/png, image/jpeg, application/pdf"
+   *
+   * **React Native:** This prop does not filter files on native. Configure accepted file types
+   * directly in your file picker (e.g. `react-native-document-picker`).
    */
   accept?: string;
   /**
@@ -66,42 +61,62 @@ type FileUploadCommonProps = {
    */
   fileList?: BladeFileList;
   /**
-   * Limit the number of files that can be uploaded
+   * Limit the number of files that can be uploaded.
+   *
+   * **React Native:** This prop has no effect on native. Enforce file count limits after your
+   * picker returns (e.g. when updating `fileList`).
    */
   maxCount?: number;
   /**
-   * Limit the size of the uploaded files (in bytes)
+   * Limit the size of the uploaded files (in bytes).
+   *
+   * **React Native:** This prop has no effect on native. Enforce file size limits after your
+   * picker returns (e.g. when updating `fileList`).
    */
   maxSize?: number;
   /**
    * Callback function triggered when files are selected.
-   * On web, this fires after the user picks files from the file input.
-   * On React Native, file selection happens outside the component — update `fileList` after your picker returns.
+   *
+   * On web, this fires after the user picks files from the file input and receives the selected `fileList`.
+   * On React Native, file selection happens outside the component — FileUpload does **not** fire
+   * `onChange` on tap. Use `onUploadPress` to open your picker, then update `fileList` after it returns.
    */
   onChange?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
-   * Callback fired when the upload area is pressed.
-   * On React Native, use this to open your document picker since there is no built-in file input.
+   * Callback fired when the upload area is pressed (React Native only).
+   *
+   * Use this to open your document picker since there is no built-in file input on native.
+   * This prop has no effect on web.
    */
-  onUploadPress?: () => void;
+  onUploadPress?: Platform.Select<{
+    native: () => void;
+    web: undefined;
+  }>;
   /**
    * Callback function triggered when the preview icon is clicked
    */
-  onPreview?: ({ file }: { file: File }) => void;
+  onPreview?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file is removed
    */
-  onRemove?: ({ file }: { file: File }) => void;
+  onRemove?: ({ file }: { file: BladeFile }) => void;
   /**
-   * Callback function triggered when a file upload is retried
+   * Callback function triggered when a file upload is retried.
+   *
+   * **React Native:** Clears the file from selection, then calls `onReupload` (or falls back to
+   * `onRemove`). Open your picker inside `onReupload` if you want to re-select a file — native
+   * does not re-fire `onUploadPress` or `onChange` on retry.
    */
-  onReupload?: ({ file }: { file: File }) => void;
+  onReupload?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file upload is dismissed
    */
-  onDismiss?: ({ file }: { file: File }) => void;
+  onDismiss?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function executed when files are dropped into the upload area
+   *
+   * **React Native:** This callback has no effect on native. Drag-and-drop is not supported —
+   * use `onUploadPress` to open a file picker instead.
    */
   onDrop?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
