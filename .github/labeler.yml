@@ -17,8 +17,7 @@ blade-mcp:
 react-native:
   - changed-files:
       - any-glob-to-any-file:
-          - 'packages/blade/**/*.native.tsx'
-          - 'packages/blade/**/*.native.ts'
+          - 'packages/blade/**/*.native.*'
           - 'packages/blade/android/**'
           - 'packages/blade/ios/**'
           - 'packages/blade/.storybook/react-native/**'
