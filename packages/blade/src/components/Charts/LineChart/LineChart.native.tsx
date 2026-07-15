@@ -25,7 +25,6 @@ import {
   componentId as commonComponentIds,
 } from '../CommonChartComponents';
 import type {
-  DataColorMapping,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartReferenceLineProps,
@@ -47,6 +46,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import getIn from '~utils/lodashButBetter/get';
 import isNumber from '~utils/lodashButBetter/isNumber';
+import { logger } from '~utils/logger';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute } from '~utils/metaAttribute';
@@ -253,6 +253,8 @@ type ChildSlots = {
   hasYAxis: boolean;
   yLabel?: string;
   yTickFormatter?: ChartYAxisProps['tickFormatter'];
+  yDomain?: [number | string, number | string];
+  yTickCount?: number;
   hasLegend: boolean;
   legend: LegendSlot;
   hasGrid: boolean;
@@ -306,7 +308,13 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
       const props = child.props as ChartYAxisProps;
       slots.hasYAxis = true;
       slots.yLabel = props.label;
+      if (Array.isArray(props.domain) && props.domain.length === 2) {
+        slots.yDomain = [props.domain[0], props.domain[1]];
+      }
       slots.yTickFormatter = props.tickFormatter;
+      if (typeof props.tickCount === 'number') {
+        slots.yTickCount = props.tickCount;
+      }
     } else if (id === commonComponentIds.chartLegend) {
       const props = child.props as ChartLegendProps;
       slots.hasLegend = true;
@@ -652,6 +660,27 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const slots = useMemo(() => readChildSlots(children), [children]);
   const allLines = slots.lines;
 
+  const yAxisWarnedRef = useRef(false);
+  useEffect(() => {
+    if (!__DEV__) return;
+    if (slots.hasYAxis && !yAxisWarnedRef.current) {
+      const unsupported: string[] = [];
+      if (slots.yDomain && !slots.yDomain.every((v) => isNumber(Number(v)))) {
+        unsupported.push('domain (non-numeric)');
+      }
+      if (unsupported.length > 0) {
+        yAxisWarnedRef.current = true;
+        logger({
+          type: 'warn',
+          moduleName: 'ChartLineWrapper',
+          message: `ChartYAxis prop(s) [${unsupported.join(
+            ', ',
+          )}] are not fully supported on native. Supported: label, domain (numeric), tickFormatter, tickCount.`,
+        });
+      }
+    }
+  }, [slots.hasYAxis, slots.yDomain]);
+
   const themeColors = useChartsColorTheme({
     colorTheme,
     chartName: 'line',
@@ -660,11 +689,23 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   // Build the color mapping from ALL lines (not just visible) so hidden lines
   // keep their color/legend entry while toggled off (web parity).
-  const dataColorMapping = useMemo<DataColorMapping>(() => {
-    const mapping: DataColorMapping = {};
+  const dataColorMapping = useMemo<Record<
+    string,
+    {
+      colorToken?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+      isCustomColor: boolean;
+    }
+  >>(() => {
+    const mapping: Record<
+      string,
+      {
+        colorToken?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+        isCustomColor: boolean;
+      }
+    > = {};
     allLines.forEach((line) => {
       mapping[line.dataKey] = {
-        colorToken: line.color!,
+        colorToken: line.color,
         isCustomColor: Boolean(line.color),
       };
     });
@@ -962,11 +1003,27 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       setHoveredKey(null);
     } else if (touchStartIndexRef.current !== undefined) {
       setActiveIndex(touchStartIndexRef.current);
+      const tapIndex = touchStartIndexRef.current;
+      const tapY = touchStartLocationRef.current?.y;
+      if (tapY !== undefined) {
+        const localY = tapY - padding.top;
+        let nearestKey: string | null = null;
+        let nearestDist = Infinity;
+        lineGeometries.forEach((geometry) => {
+          const point = geometry.points[tapIndex];
+          if (!point || point.value === null) return;
+          const dist = Math.abs(point.y - localY);
+          if (dist < nearestDist) {
+            nearestDist = dist;
+            nearestKey = geometry.line.dataKey;
+          }
+        });
+        setHoveredKey(nearestKey);
+      }
     }
   };
 
   const handleScrubTerminate = (): void => {
-    touchMovedRef.current = false;
     becameResponderRef.current = false;
   };
 
@@ -1416,7 +1473,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                   borderColor: getIn(theme.colors, 'surface.border.gray.muted'),
                   paddingHorizontal: theme.spacing[4],
                   paddingVertical: theme.spacing[4],
-                  shadowColor: '#000',
+                  shadowColor: getIn(theme.colors, 'surface.icon.staticBlack.normal'),
                   shadowOpacity: 0.2,
                   shadowRadius: 4,
                   shadowOffset: { width: 0, height: 2 },
@@ -1477,9 +1534,14 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             <View
               style={{
                 flexDirection: slots.legend.layout === 'vertical' ? 'column' : 'row',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                justifyContent: 'center',
+                flexWrap: slots.legend.layout === 'vertical' ? 'nowrap' : 'wrap',
+                alignItems: slots.legend.layout === 'vertical' ? 'flex-start' : 'center',
+                justifyContent:
+                  slots.legend.align === 'left'
+                    ? 'flex-start'
+                    : slots.legend.align === 'right'
+                    ? 'flex-end'
+                    : 'center',
                 paddingTop: theme.spacing[3],
                 paddingHorizontal: theme.spacing[3],
               }}
@@ -1494,6 +1556,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     key={`legend-${line.dataKey}`}
                     testID={`legend-${line.dataKey}`}
                     onPress={() => toggleLegend(line.dataKey)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`${line.name ?? line.dataKey}, ${
+                      selected ? 'selected' : 'deselected'
+                    }`}
                     style={{
                       flexDirection: 'row',
                       alignItems: 'center',
