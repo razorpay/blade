@@ -1,6 +1,8 @@
 import type { AnimationControls, TargetAndTransition, Tween } from 'framer-motion';
 import type React from 'react';
+import type { View } from 'react-native';
 import type { Delay } from '~tokens/global/motion';
+import type { Platform } from '~utils';
 
 type MotionTriggerEntryExitType = 'mount' | 'in-view' | 'focus' | 'on-animate-interactions';
 type MotionTriggersType = MotionTriggerEntryExitType | 'hover' | 'tap';
@@ -55,8 +57,23 @@ type BaseMotionBoxProps = {
    *
    * animate={controls}
    * ```
+   *
+   * On web, this accepts a framer-motion `AnimationControls` instance which exposes `start()`,
+   * `stop()`, `set()`, and `mount()` methods.
+   *
+   * On native, there is no framer-motion `AnimationControls` equivalent. Instead:
+   * - A **boolean** (`true`/`false`) toggles between the `animate` (true) and `exit` (false) variant.
+   *   This is useful when integrating with `AnimateInteractions` where a boolean flag drives the
+   *   target state. Note: the boolean form is native-only — it is not available on web.
+   * - A lightweight control object (`{ start }`) can be passed, but only `start()` is supported.
+   *   Methods like `stop()` and `set()` from framer-motion's `AnimationControls` are not yet
+   *   implemented on native and will silently fail at runtime. This will be addressed in a
+   *   follow-up batch.
    */
-  animate?: AnimationControls;
+  animate?: Platform.Select<{
+    web: AnimationControls;
+    native: { start: (variant: keyof MotionVariantsType) => void } | boolean;
+  }>;
 
   /**
    * This is for scenarios where you want to conditionally animate a component instead of it having static defined animation.
@@ -141,7 +158,10 @@ type BaseMotionEntryExitProps = Pick<BaseMotionBoxProps, 'children' | 'motionVar
 };
 
 type MotionMeta = {
-  innerRef: React.Ref<HTMLElement>;
+  innerRef: Platform.Select<{
+    web: React.Ref<HTMLElement>;
+    native: React.Ref<View>;
+  }>;
   isEnhanced: boolean;
 };
 
