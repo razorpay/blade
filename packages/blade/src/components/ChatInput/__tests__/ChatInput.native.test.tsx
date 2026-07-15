@@ -133,18 +133,24 @@ describe('<ChatInput /> (native)', () => {
       />,
     );
 
-    expect(files[0].id).toBeDefined();
-    expect(files[1].id).toBeDefined();
-    expect(files[0].id).not.toBe(files[1].id);
+    fireEvent.press(getByRole('button', { name: 'Remove a.pdf' }));
+    fireEvent.press(getByRole('button', { name: 'Remove b.pdf' }));
 
-    const removeButton = getByRole('button', { name: 'Remove a.pdf' });
-    fireEvent.press(removeButton);
+    expect(onFileRemove).toHaveBeenCalledTimes(2);
 
-    expect(onFileRemove).toHaveBeenCalledTimes(1);
-    expect(onFileRemove).toHaveBeenCalledWith({
-      file: expect.objectContaining({ name: 'a.pdf', id: files[0].id }),
-    });
-    // Controlled mode: parent still owns list; we only assert id assignment + targeted remove callback
+    const removedA = onFileRemove.mock.calls[0][0].file;
+    const removedB = onFileRemove.mock.calls[1][0].file;
+
+    expect(removedA).toEqual(expect.objectContaining({ name: 'a.pdf' }));
+    expect(removedB).toEqual(expect.objectContaining({ name: 'b.pdf' }));
+    expect(removedA.id).toBeDefined();
+    expect(removedB.id).toBeDefined();
+    expect(removedA.id).not.toBe(removedB.id);
+
+    // Native assigns ids on derived copies and does not mutate consumer file objects.
+    expect(files[0].id).toBeUndefined();
+    expect(files[1].id).toBeUndefined();
+    // Controlled mode: parent still owns list after remove callbacks.
     expect(queryByText('b.pdf')).toBeTruthy();
   });
 
