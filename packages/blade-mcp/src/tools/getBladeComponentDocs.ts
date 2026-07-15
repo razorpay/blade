@@ -11,20 +11,32 @@ import {
   commonBladeMCPToolSchema,
   httpTransportSkillVersionSchema,
 } from '../utils/getCommonSchema.js';
+import { DEFAULT_FRAMEWORK } from '../types/framework.js';
+import type { BladeFramework } from '../types/framework.js';
 
-const bladeComponentsList = getBladeDocsList('components');
-const bladeComponentsListString = bladeComponentsList.join(', ');
+const reactComponentsList = getBladeDocsList('components', 'react');
+const svelteComponentsList = getBladeDocsList('components', 'svelte');
+const reactComponentsListString = reactComponentsList.join(', ');
+const svelteComponentsListString = svelteComponentsList.join(', ');
 
 const getBladeComponentDocsToolName = 'get_blade_component_docs';
-const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component.`;
+const getBladeComponentDocsToolDescription = `Fetch the Blade Design System docs for the given list of components. Use this to get information about the components and their props while adding or changing a component. Pass framework="svelte" for Blade Svelte docs (limited catalog) or framework="react" (default) for the full React catalog.`;
+
+const frameworkSchema = z
+  .enum(['react', 'svelte'])
+  .default(DEFAULT_FRAMEWORK)
+  .describe(
+    'Target framework for component docs. Use "react" (default) for @razorpay/blade or "svelte" for @razorpay/blade-svelte.',
+  );
 
 // Schema for stdio transport
 const getBladeComponentDocsStdioSchema = {
   componentsList: z
     .string()
     .describe(
-      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${bladeComponentsListString}`,
+      `Comma separated list of semantic blade component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). React components: ${reactComponentsListString}. Svelte components: ${svelteComponentsListString}.`,
     ),
+  framework: frameworkSchema,
   ...commonBladeMCPToolSchema,
 };
 
@@ -37,28 +49,31 @@ const getBladeComponentDocsHttpSchema = {
 // Core business logic function
 const getBladeComponentDocsCore = ({
   componentsList,
+  framework = DEFAULT_FRAMEWORK,
   currentProjectRootDirectory,
   skipLocalSkillChecks = false,
   skillVersion = '0',
   clientName,
 }: {
   componentsList: string;
+  framework?: BladeFramework;
   currentProjectRootDirectory?: string;
   skipLocalSkillChecks?: boolean;
   skillVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
+  const bladeComponentsList = getBladeDocsList('components', framework);
+  const bladeComponentsListString = bladeComponentsList.join(', ');
   const components = componentsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladeComponentsList.includes(comp));
   const invalidComponentsString = invalidComponents.join(', ');
   if (invalidComponents.length > 0) {
     return handleError({
       toolName: getBladeComponentDocsToolName,
-      mcpErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponentsString}. Valid component docs values: ${bladeComponentsListString}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
+      mcpErrorMessage: `Invalid argument componentsList. Invalid values: ${invalidComponentsString}. Valid component docs values for framework="${framework}": ${bladeComponentsListString}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
     });
   }
 
-  // Check skill using shouldCreateOrUpdateSkill which handles both file system and version checks
   if (currentProjectRootDirectory) {
     const createOrUpdateSkill = shouldCreateOrUpdateSkill(
       skillVersion,
@@ -75,14 +90,15 @@ const getBladeComponentDocsCore = ({
     const responseText = getBladeDocsResponseText({
       docsList: componentsList,
       documentationType: 'components',
+      framework,
     });
 
-    // Return the formatted response
     sendAnalytics({
       eventName: analyticsToolCallEventName,
       properties: {
         toolName: getBladeComponentDocsToolName,
         componentsList,
+        framework,
         rootDirectoryName: currentProjectRootDirectory
           ? basename(currentProjectRootDirectory)
           : undefined,
@@ -110,13 +126,15 @@ const getBladeComponentDocsCore = ({
 // Callback for stdio transport
 const getBladeComponentDocsStdioCallback: ToolCallback<typeof getBladeComponentDocsStdioSchema> = ({
   componentsList,
+  framework,
   currentProjectRootDirectory,
   clientName,
 }) => {
   return getBladeComponentDocsCore({
     componentsList,
+    framework,
     currentProjectRootDirectory,
-    skipLocalSkillChecks: false, // Perform skill checks for stdio
+    skipLocalSkillChecks: false,
     clientName,
   });
 };
@@ -124,20 +142,21 @@ const getBladeComponentDocsStdioCallback: ToolCallback<typeof getBladeComponentD
 // Callback for HTTP transport
 const getBladeComponentDocsHttpCallback: ToolCallback<typeof getBladeComponentDocsHttpSchema> = ({
   componentsList,
+  framework,
   skillVersion,
   clientName,
   currentProjectRootDirectory,
 }) => {
   return getBladeComponentDocsCore({
     componentsList,
+    framework,
     currentProjectRootDirectory,
-    skipLocalSkillChecks: true, // Skip local skill checks for HTTP
+    skipLocalSkillChecks: true,
     skillVersion,
     clientName,
   });
 };
 
-// Export all at once
 export {
   getBladeComponentDocsToolName,
   getBladeComponentDocsToolDescription,

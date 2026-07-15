@@ -63,6 +63,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const result = httpCallback(
       {
         topicsList: mockTopicsList,
+        framework: 'react',
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -76,6 +77,7 @@ describe('getBladeGeneralDocs Tool', () => {
       properties: {
         toolName: 'get_blade_general_docs',
         topicsList: mockTopicsList,
+        framework: 'react',
         rootDirectoryName: 'project',
         skillVersion: SKILL_VERSION,
         clientName: 'cursor',
@@ -96,6 +98,7 @@ describe('getBladeGeneralDocs Tool', () => {
     expect(getBladeDocsResponseText.getBladeDocsResponseText).toHaveBeenCalledWith({
       docsList: mockTopicsList,
       documentationType: 'general',
+      framework: 'react',
     });
   });
 
@@ -110,6 +113,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const result = httpCallback(
       {
         topicsList: mockTopicsList,
+        framework: 'react',
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -178,6 +182,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const result = httpCallback(
       {
         topicsList: testTopicsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -232,6 +237,7 @@ describe('getBladeGeneralDocs Tool', () => {
     const result = httpCallback(
       {
         topicsList: testTopicsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'claude',
         skillVersion: SKILL_VERSION,

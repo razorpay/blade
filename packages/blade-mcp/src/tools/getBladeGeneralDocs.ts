@@ -2,7 +2,11 @@ import { readFileSync } from 'fs';
 import { join, basename } from 'path';
 import { z } from 'zod';
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { analyticsToolCallEventName, GENERAL_KNOWLEDGEBASE_DIRECTORY } from '../utils/tokens.js';
+import {
+  analyticsToolCallEventName,
+  GENERAL_KNOWLEDGEBASE_DIRECTORY,
+  SVELTE_KNOWLEDGEBASE_DIRECTORY,
+} from '../utils/tokens.js';
 import {
   commonBladeMCPToolSchema,
   httpTransportSkillVersionSchema,
@@ -13,27 +17,45 @@ import { handleError, sendAnalytics } from '../utils/analyticsUtils.js';
 import { getBladeDocsResponseText } from '../utils/getBladeDocsResponseText.js';
 import { shouldCreateOrUpdateSkill } from '../utils/skillUtils.js';
 import type { McpToolResponse } from '../utils/types.js';
+import { DEFAULT_FRAMEWORK } from '../types/framework.js';
+import type { BladeFramework } from '../types/framework.js';
 
-const bladeGeneralDocsList = getBladeDocsList('general');
+const reactGeneralDocsList = getBladeDocsList('general', 'react');
+const svelteGeneralDocsList = getBladeDocsList('general', 'svelte');
 
 const getBladeGeneralDocsToolName = 'get_blade_general_docs';
 
-const whichGeneralDocsToUse = readFileSync(
+const reactGeneralDocsGuide = readFileSync(
   join(GENERAL_KNOWLEDGEBASE_DIRECTORY, 'index.md'),
   'utf8',
 );
 
-const getBladeGeneralDocsToolDescription = `Fetch general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines.`;
+const svelteGeneralDocsGuide = readFileSync(
+  join(SVELTE_KNOWLEDGEBASE_DIRECTORY, 'general', 'index.md'),
+  'utf8',
+);
+
+const getBladeGeneralDocsToolDescription = `Fetch general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines. Pass framework="svelte" for Blade Svelte setup docs or framework="react" (default) for the React catalog.`;
+
+const frameworkSchema = z
+  .enum(['react', 'svelte'])
+  .default(DEFAULT_FRAMEWORK)
+  .describe(
+    'Target framework for general docs. Use "react" (default) for @razorpay/blade or "svelte" for @razorpay/blade-svelte.',
+  );
 
 // Schema for stdio transport
 const getBladeGeneralDocsStdioSchema = {
   topicsList: z
     .string()
     .describe(
-      `Comma separated list of general documentation topics. E.g. "Installation, Theming". Possible values: ${bladeGeneralDocsList.join(
+      `Comma separated list of general documentation topics. E.g. "Installation, Usage". React topics: ${reactGeneralDocsList.join(
         ', ',
-      )}. Here is guide on how to decide which general docs you might need:\n ${whichGeneralDocsToUse}`,
+      )}. Svelte topics: ${svelteGeneralDocsList.join(
+        ', ',
+      )}. React guide:\n${reactGeneralDocsGuide}\n\nSvelte guide:\n${svelteGeneralDocsGuide}`,
     ),
+  framework: frameworkSchema,
   ...commonBladeMCPToolSchema,
 };
 
@@ -46,17 +68,20 @@ const getBladeGeneralDocsHttpSchema = {
 // Core business logic function
 const getBladeGeneralDocsCore = ({
   topicsList,
+  framework = DEFAULT_FRAMEWORK,
   currentProjectRootDirectory,
   skipLocalSkillChecks = false,
   skillVersion = '0',
   clientName,
 }: {
   topicsList: string;
+  framework?: BladeFramework;
   currentProjectRootDirectory?: string;
   skipLocalSkillChecks?: boolean;
   skillVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
+  const bladeGeneralDocsList = getBladeDocsList('general', framework);
   const topics = topicsList.split(',').map((s) => s.trim());
   const invalidTopics = topics.filter((topic) => !bladeGeneralDocsList.includes(topic));
   if (invalidTopics.length > 0) {
@@ -64,11 +89,12 @@ const getBladeGeneralDocsCore = ({
       toolName: getBladeGeneralDocsToolName,
       mcpErrorMessage: `Invalid argument topicsList. Invalid values: ${invalidTopics.join(
         ', ',
-      )}. Valid general docs values: ${bladeGeneralDocsList.join(', ')}`,
+      )}. Valid general docs values for framework="${framework}": ${bladeGeneralDocsList.join(
+        ', ',
+      )}`,
     });
   }
 
-  // Check skill using shouldCreateOrUpdateSkill which handles both file system and version checks
   if (currentProjectRootDirectory) {
     const createOrUpdateSkill = shouldCreateOrUpdateSkill(
       skillVersion,
@@ -85,6 +111,7 @@ const getBladeGeneralDocsCore = ({
     const responseText = getBladeDocsResponseText({
       docsList: topicsList,
       documentationType: 'general',
+      framework,
     });
 
     sendAnalytics({
@@ -92,6 +119,7 @@ const getBladeGeneralDocsCore = ({
       properties: {
         toolName: getBladeGeneralDocsToolName,
         topicsList,
+        framework,
         rootDirectoryName: currentProjectRootDirectory
           ? basename(currentProjectRootDirectory)
           : undefined,
@@ -119,13 +147,15 @@ const getBladeGeneralDocsCore = ({
 // Callback for stdio transport
 const getBladeGeneralDocsStdioCallback: ToolCallback<typeof getBladeGeneralDocsStdioSchema> = ({
   topicsList,
+  framework,
   currentProjectRootDirectory,
   clientName,
 }) => {
   return getBladeGeneralDocsCore({
     topicsList,
+    framework,
     currentProjectRootDirectory,
-    skipLocalSkillChecks: false, // Perform skill checks for stdio
+    skipLocalSkillChecks: false,
     clientName,
   });
 };
@@ -133,14 +163,16 @@ const getBladeGeneralDocsStdioCallback: ToolCallback<typeof getBladeGeneralDocsS
 // Callback for HTTP transport
 const getBladeGeneralDocsHttpCallback: ToolCallback<typeof getBladeGeneralDocsHttpSchema> = ({
   topicsList,
+  framework,
   skillVersion,
   clientName,
   currentProjectRootDirectory,
 }) => {
   return getBladeGeneralDocsCore({
     topicsList,
+    framework,
     currentProjectRootDirectory,
-    skipLocalSkillChecks: true, // Skip local skill checks for HTTP
+    skipLocalSkillChecks: true,
     skillVersion,
     clientName,
   });

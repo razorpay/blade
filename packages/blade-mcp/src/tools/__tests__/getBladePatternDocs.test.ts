@@ -62,6 +62,7 @@ describe('getBladePatternDocs Tool', () => {
     const result = httpCallback(
       {
         patternsList: mockPatternsList,
+        framework: 'react',
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -75,6 +76,7 @@ describe('getBladePatternDocs Tool', () => {
       properties: {
         toolName: 'get_blade_pattern_docs',
         patternsList: mockPatternsList,
+        framework: 'react',
         rootDirectoryName: 'project',
         skillVersion: SKILL_VERSION,
         clientName: 'cursor',
@@ -96,6 +98,7 @@ describe('getBladePatternDocs Tool', () => {
     expect(getBladeDocsResponseText.getBladeDocsResponseText).toHaveBeenCalledWith({
       docsList: mockPatternsList,
       documentationType: 'patterns',
+      framework: 'react',
     });
   });
 
@@ -110,6 +113,7 @@ describe('getBladePatternDocs Tool', () => {
     const result = httpCallback(
       {
         patternsList: mockPatternsList,
+        framework: 'react',
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -178,6 +182,7 @@ describe('getBladePatternDocs Tool', () => {
     const result = httpCallback(
       {
         patternsList: testPatternsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -232,6 +237,7 @@ describe('getBladePatternDocs Tool', () => {
     const result = httpCallback(
       {
         patternsList: testPatternsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'claude',
         skillVersion: SKILL_VERSION,

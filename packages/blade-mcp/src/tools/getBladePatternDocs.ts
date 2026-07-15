@@ -14,8 +14,10 @@ import {
   httpTransportSkillVersionSchema,
 } from '../utils/getCommonSchema.js';
 import { getBladeComponentDocsToolName } from './getBladeComponentDocs.js';
+import { DEFAULT_FRAMEWORK } from '../types/framework.js';
+import type { BladeFramework } from '../types/framework.js';
 
-const bladePatternsList = getBladeDocsList('patterns');
+const bladePatternsList = getBladeDocsList('patterns', 'react');
 const whichPatternToUseGuide = readFileSync(
   join(PATTERNS_KNOWLEDGEBASE_DIRECTORY, 'index.md'),
   'utf8',
@@ -23,7 +25,14 @@ const whichPatternToUseGuide = readFileSync(
 
 const getBladePatternDocsToolName = 'get_blade_pattern_docs';
 
-const getBladePatternDocsToolDescription = `Fetch the Blade Design System pattern docs. Use this to get information about design patterns, best practices, and implementation guidelines.`;
+const getBladePatternDocsToolDescription = `Fetch the Blade Design System pattern docs. Use this to get information about design patterns, best practices, and implementation guidelines. Patterns are currently available for framework="react" only.`;
+
+const frameworkSchema = z
+  .enum(['react', 'svelte'])
+  .default(DEFAULT_FRAMEWORK)
+  .describe(
+    'Target framework for pattern docs. Patterns are react-only for now; use framework="react" (default).',
+  );
 
 // Schema for stdio transport
 const getBladePatternDocsStdioSchema = {
@@ -34,6 +43,7 @@ const getBladePatternDocsStdioSchema = {
         ', ',
       )}. Here is guide on how to decide which pattern to use: ${whichPatternToUseGuide}`,
     ),
+  framework: frameworkSchema,
   ...commonBladeMCPToolSchema,
 };
 
@@ -43,20 +53,50 @@ const getBladePatternDocsHttpSchema = {
   ...httpTransportSkillVersionSchema,
 };
 
+const SVELTE_PATTERNS_UNAVAILABLE_MESSAGE =
+  'Blade patterns documentation is currently available for framework="react" only. Svelte patterns are not supported yet. Use framework="react" or call get_blade_component_docs with framework="svelte" for available Svelte component docs.';
+
 // Core business logic function
 const getBladePatternDocsCore = ({
   patternsList,
+  framework = DEFAULT_FRAMEWORK,
   currentProjectRootDirectory,
   skipLocalSkillChecks = false,
   skillVersion,
   clientName,
 }: {
   patternsList: string;
+  framework?: BladeFramework;
   currentProjectRootDirectory?: string;
   skipLocalSkillChecks?: boolean;
   skillVersion?: string;
   clientName: 'claude' | 'cursor' | 'unknown';
 }): McpToolResponse => {
+  if (framework === 'svelte') {
+    sendAnalytics({
+      eventName: analyticsToolCallEventName,
+      properties: {
+        toolName: getBladePatternDocsToolName,
+        patternsList,
+        framework,
+        rootDirectoryName: currentProjectRootDirectory
+          ? basename(currentProjectRootDirectory)
+          : undefined,
+        skillVersion,
+        clientName,
+      },
+    });
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: SVELTE_PATTERNS_UNAVAILABLE_MESSAGE,
+        },
+      ],
+    };
+  }
+
   const components = patternsList.split(',').map((s) => s.trim());
   const invalidComponents = components.filter((comp) => !bladePatternsList.includes(comp));
   if (invalidComponents.length > 0) {
@@ -70,7 +110,6 @@ const getBladePatternDocsCore = ({
     });
   }
 
-  // Check skill using shouldCreateOrUpdateSkill which handles both file system and version checks
   if (currentProjectRootDirectory) {
     const createOrUpdateSkill = shouldCreateOrUpdateSkill(
       skillVersion,
@@ -87,14 +126,15 @@ const getBladePatternDocsCore = ({
     const responseText = getBladeDocsResponseText({
       docsList: patternsList,
       documentationType: 'patterns',
+      framework,
     });
 
-    // Return the formatted response
     sendAnalytics({
       eventName: analyticsToolCallEventName,
       properties: {
         toolName: getBladePatternDocsToolName,
         patternsList,
+        framework,
         rootDirectoryName: currentProjectRootDirectory
           ? basename(currentProjectRootDirectory)
           : undefined,
@@ -122,13 +162,15 @@ const getBladePatternDocsCore = ({
 // Callback for stdio transport
 const getBladePatternDocsStdioCallback: ToolCallback<typeof getBladePatternDocsStdioSchema> = ({
   patternsList,
+  framework,
   currentProjectRootDirectory,
   clientName,
 }) => {
   return getBladePatternDocsCore({
     patternsList,
+    framework,
     currentProjectRootDirectory,
-    skipLocalSkillChecks: false, // Perform skill checks for stdio
+    skipLocalSkillChecks: false,
     clientName,
   });
 };
@@ -136,14 +178,16 @@ const getBladePatternDocsStdioCallback: ToolCallback<typeof getBladePatternDocsS
 // Callback for HTTP transport
 const getBladePatternDocsHttpCallback: ToolCallback<typeof getBladePatternDocsHttpSchema> = ({
   patternsList,
+  framework,
   skillVersion,
   clientName,
   currentProjectRootDirectory,
 }) => {
   return getBladePatternDocsCore({
     patternsList,
+    framework,
     currentProjectRootDirectory,
-    skipLocalSkillChecks: true, // Skip local skill checks for HTTP
+    skipLocalSkillChecks: true,
     skillVersion,
     clientName,
   });

@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   getBladeComponentDocsHttpCallback,
   getBladeComponentDocsStdioCallback,
+  getBladeComponentDocsHttpSchema,
 } from '../getBladeComponentDocs.js';
 import * as analyticsUtils from '../../utils/analyticsUtils.js';
 import * as skillUtils from '../../utils/skillUtils.js';
@@ -57,6 +58,7 @@ describe('getBladeComponentDocs Tool', () => {
     const result = httpCallback(
       {
         componentsList: mockComponentsList,
+        framework: 'react',
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -70,6 +72,7 @@ describe('getBladeComponentDocs Tool', () => {
       properties: {
         toolName: 'get_blade_component_docs',
         componentsList: mockComponentsList,
+        framework: 'react',
         rootDirectoryName: 'project',
         skillVersion: SKILL_VERSION,
         clientName: 'cursor',
@@ -93,7 +96,53 @@ describe('getBladeComponentDocs Tool', () => {
     expect(getBladeDocsResponseText.getBladeDocsResponseText).toHaveBeenCalledWith({
       docsList: mockComponentsList,
       documentationType: 'components',
+      framework: 'react',
     });
+  });
+
+  it('should pass framework="svelte" through to getBladeDocsResponseText', () => {
+    const mockCurrentProjectRootDirectory = '/Users/test/project';
+    const mockComponentsList = 'Button';
+    const mockResponseText = 'Mock svelte component documentation';
+
+    vi.spyOn(generalUtils, 'getBladeDocsList').mockReturnValue(['Button']);
+    vi.spyOn(getBladeDocsResponseText, 'getBladeDocsResponseText').mockReturnValue(
+      mockResponseText,
+    );
+
+    const httpCallback = getBladeComponentDocsHttpCallback;
+
+    const result = httpCallback(
+      {
+        componentsList: mockComponentsList,
+        framework: 'svelte',
+        currentProjectRootDirectory: mockCurrentProjectRootDirectory,
+        clientName: 'cursor',
+        skillVersion: SKILL_VERSION,
+      },
+      createMockContext(),
+    );
+
+    expect(getBladeDocsResponseText.getBladeDocsResponseText).toHaveBeenCalledWith({
+      docsList: mockComponentsList,
+      documentationType: 'components',
+      framework: 'svelte',
+    });
+
+    expect(analyticsUtils.sendAnalytics).toHaveBeenCalledWith({
+      eventName: expect.any(String),
+      properties: expect.objectContaining({
+        framework: 'svelte',
+      }),
+    });
+
+    expect(result).toHaveProperty('content');
+  });
+
+  it('should reject invalid framework values', () => {
+    const parseResult = getBladeComponentDocsHttpSchema.framework.safeParse('vue');
+
+    expect(parseResult.success).toBe(false);
   });
 
   it('should return error for invalid components', () => {
@@ -107,6 +156,7 @@ describe('getBladeComponentDocs Tool', () => {
     const result = httpCallback(
       {
         componentsList: mockComponentsList,
+        framework: 'react',
         currentProjectRootDirectory: mockCurrentProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -170,6 +220,7 @@ describe('getBladeComponentDocs Tool', () => {
     const result = httpCallback(
       {
         componentsList: testComponentsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'cursor',
         skillVersion: SKILL_VERSION,
@@ -219,6 +270,7 @@ describe('getBladeComponentDocs Tool', () => {
     const result = httpCallback(
       {
         componentsList: testComponentsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'claude',
         skillVersion: SKILL_VERSION,
@@ -269,6 +321,7 @@ describe('getBladeComponentDocs Tool', () => {
     const result = stdioCallback(
       {
         componentsList: testComponentsList,
+        framework: 'react',
         currentProjectRootDirectory: testProjectRootDirectory,
         clientName: 'cursor',
       },
