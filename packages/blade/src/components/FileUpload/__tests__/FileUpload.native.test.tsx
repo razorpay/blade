@@ -8,6 +8,15 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
+// useFormId / ProgressBar use process-global counters — values differ across CI shards.
+const stabilizeAutoIds = (value: unknown): unknown =>
+  JSON.parse(
+    JSON.stringify(value).replace(
+      /(fileuploadinput|progress-linear|label|helptext|errortext)-\d+/g,
+      '$1-ID',
+    ),
+  );
+
 describe('<FileUpload /> (native)', () => {
   it('should render FileUpload with default props', () => {
     const { toJSON, getByText } = renderWithTheme(
@@ -19,7 +28,7 @@ describe('<FileUpload /> (native)', () => {
         name="single-file-upload-input"
       />,
     );
-    expect(toJSON()).toMatchSnapshot();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
     expect(getByText('Tap to')).toBeTruthy();
     expect(getByText('Upload')).toBeTruthy();
   });
@@ -35,7 +44,7 @@ describe('<FileUpload /> (native)', () => {
         name="single-file-upload-input"
       />,
     );
-    expect(toJSON()).toMatchSnapshot();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
   });
 
   it('should set disabled state with isDisabled', () => {
@@ -49,7 +58,7 @@ describe('<FileUpload /> (native)', () => {
         isDisabled
       />,
     );
-    expect(toJSON()).toMatchSnapshot();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
   });
 
   it('should accept testID', () => {
@@ -326,7 +335,7 @@ describe('<FileUpload /> (native)', () => {
 
     expect(getByText('Tap to add documents')).toBeTruthy();
     expect(getByText('Choose file')).toBeTruthy();
-    expect(toJSON()).toMatchSnapshot();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
   });
 
   it('should render with accessibilityLabel when label is not provided', () => {
@@ -441,7 +450,7 @@ describe('<FileUploadItem /> (native)', () => {
     const { toJSON, getByText } = renderWithTheme(
       <FileUploadItem file={successFile} onRemove={jest.fn()} />,
     );
-    expect(toJSON()).toMatchSnapshot();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
     expect(getByText('report.pdf')).toBeTruthy();
   });
 
@@ -449,13 +458,13 @@ describe('<FileUploadItem /> (native)', () => {
     const { toJSON, getByText } = renderWithTheme(
       <FileUploadItem file={errorFile} onRemove={jest.fn()} />,
     );
-    expect(toJSON()).toMatchSnapshot();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
     expect(getByText('Upload failed')).toBeTruthy();
   });
 
   it('should render FileUploadItem with uploading status', () => {
     const { toJSON, getByText } = renderWithTheme(<FileUploadItem file={uploadingFile} />);
-    expect(toJSON()).toMatchSnapshot();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
     expect(getByText('video.mp4')).toBeTruthy();
   });
 
@@ -488,6 +497,6 @@ describe('<FileUploadItem /> (native)', () => {
         ))}
       </>,
     );
-    expect(toJSON()).toMatchSnapshot();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
   });
 });
