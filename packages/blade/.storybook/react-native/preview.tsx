@@ -13,6 +13,7 @@ export const decorators = [
 ];
 
 export const parameters = {
+  layout: 'fullscreen',
   backgrounds: [
     { name: 'plain', value: 'white', default: true },
     { name: 'warm', value: 'hotpink' },
@@ -21,5 +22,5 @@ export const parameters = {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 16 },
+  container: { flex: 1, width: '100%', paddingVertical: 8, paddingHorizontal: 0 },
 });

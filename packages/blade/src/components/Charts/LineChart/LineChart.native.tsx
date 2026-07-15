@@ -66,12 +66,144 @@ const TICK_FONT_SIZE = 10;
 const AXIS_LABEL_FONT_SIZE = 11;
 const SECONDARY_LABEL_FONT_SIZE = 10;
 const X_AXIS_TITLE_GAP = 6;
+// Gap between primary tick baseline and secondary tick baseline (own vertical row).
+const PRIMARY_TO_SECONDARY_GAP = 8;
+const X_TICK_LABEL_GAP = 8;
+// Line height between wrapped x-label rows.
+const TICK_LINE_HEIGHT = TICK_FONT_SIZE + 2;
+// Cap wrapped label rows so a very long label can't consume the whole chart.
+const MAX_TICK_LABEL_LINES = 3;
 const LINE_STROKE_WIDTH = 1.5;
 const DOT_RADIUS = 3;
 const ACTIVE_DOT_OUTER_RADIUS = 6;
 const ACTIVE_DOT_INNER_RADIUS = 3.5;
 // Opacity applied to non-hovered lines — matches web hover dim (0.2).
 const DIM_OPACITY = 0.2;
+
+/** Fixed tooltip width so wrapped labels are measured in the first layout pass. */
+const TOOLTIP_WIDTH = 160;
+/** Right-aligned value column so all numbers line up in a column. */
+const TOOLTIP_VALUE_WIDTH = 44;
+
+/** Rough width of a rendered string (no gap) — used for wrapping decisions. */
+const estimateTextWidth = (label: string, fontSize: number): number =>
+  Math.max(1, label.length) * fontSize * 0.6;
+
+/** Estimate rendered label width; slightly aggressive so long mobile ticks thin early. */
+const estimateTickLabelWidth = (label: string, fontSize: number): number =>
+  Math.max(1, label.length) * fontSize * 0.72 + X_TICK_LABEL_GAP;
+
+/**
+ * Word-wrap a label into lines that each fit `maxWidth`, so every category can be
+ * shown without dropping labels (mirrors web wrapping). A word longer than a line
+ * is hard-broken so it can never overflow its column and overlap a neighbour.
+ * Beyond `MAX_TICK_LABEL_LINES` the last line is ellipsised to bound height.
+ */
+const wrapLabelToLines = (label: string, maxWidth: number, fontSize: number): string[] => {
+  const text = String(label).trim();
+  if (!text) return [''];
+  if (maxWidth <= 0) return [text];
+
+  const maxChars = Math.max(1, Math.floor(maxWidth / (fontSize * 0.6)));
+  const words = text.split(/\s+/);
+  const lines: string[] = [];
+  let current = '';
+  const flush = (): void => {
+    if (current) {
+      lines.push(current);
+      current = '';
+    }
+  };
+
+  words.forEach((word) => {
+    let remaining = word;
+    // Hard-break words wider than a full line.
+    while (remaining.length > maxChars) {
+      flush();
+      lines.push(remaining.slice(0, maxChars));
+      remaining = remaining.slice(maxChars);
+    }
+    if (!current) {
+      current = remaining;
+    } else if (current.length + 1 + remaining.length <= maxChars) {
+      current = `${current} ${remaining}`;
+    } else {
+      flush();
+      current = remaining;
+    }
+  });
+  flush();
+
+  if (lines.length > MAX_TICK_LABEL_LINES) {
+    const kept = lines.slice(0, MAX_TICK_LABEL_LINES);
+    const lastIndex = MAX_TICK_LABEL_LINES - 1;
+    const last = kept[lastIndex];
+    kept[lastIndex] = `${last.slice(0, Math.max(1, maxChars - 1))}…`;
+    return kept;
+  }
+  return lines;
+};
+
+/**
+ * Pick x-tick indices that do not overlap under middle-anchoring.
+ * Prefers keeping first + last when both fit, then greedily fills the middle.
+ */
+const selectNonOverlappingXTickIndices = (
+  pointCount: number,
+  widths: number[],
+  xForIndex: (index: number) => number,
+  forcedStep?: number,
+): number[] => {
+  if (pointCount <= 0) return [];
+  if (pointCount === 1) return [0];
+
+  const fitsAfter = (prev: number, next: number): boolean => {
+    const prevRight = xForIndex(prev) + widths[prev] / 2;
+    const nextLeft = xForIndex(next) - widths[next] / 2;
+    return nextLeft >= prevRight;
+  };
+
+  if (forcedStep !== undefined) {
+    const step = Math.max(1, forcedStep);
+    const indices: number[] = [];
+    for (let i = 0; i < pointCount; i += step) {
+      indices.push(i);
+    }
+    const last = pointCount - 1;
+    if (indices[indices.length - 1] !== last && fitsAfter(indices[indices.length - 1], last)) {
+      indices.push(last);
+    }
+    return indices;
+  }
+
+  const first = 0;
+  const last = pointCount - 1;
+  const firstLastFit = fitsAfter(first, last);
+  const selected: number[] = [first];
+
+  if (firstLastFit) {
+    let prev = first;
+    for (let i = 1; i < last; i++) {
+      // Leave room for the reserved last tick.
+      if (fitsAfter(prev, i) && fitsAfter(i, last)) {
+        selected.push(i);
+        prev = i;
+      }
+    }
+    selected.push(last);
+    return selected;
+  }
+
+  // First+last cannot both fit — keep first and greedily pack the rest.
+  let prev = first;
+  for (let i = 1; i < pointCount; i++) {
+    if (fitsAfter(prev, i)) {
+      selected.push(i);
+      prev = i;
+    }
+  }
+  return selected;
+};
 
 type LineType = NonNullable<ChartLineProps['type']>;
 type StrokeStyle = NonNullable<ChartLineProps['strokeStyle']>;
@@ -622,26 +754,91 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   }, [yMin, yRange]);
 
   const showAxes = slots.hasXAxis || slots.hasYAxis;
-  const needsExtraBottomPad = Boolean(slots.xLabel && slots.xSecondaryDataKey);
+  const hasSecondaryXLabels = Boolean(slots.xSecondaryDataKey);
+  // Secondary labels need their own row even when there is no axis title.
+  const secondaryRowHeight = hasSecondaryXLabels
+    ? SECONDARY_LABEL_FONT_SIZE + PRIMARY_TO_SECONDARY_GAP
+    : 0;
+  const xAxisTitleHeight = slots.xLabel ? AXIS_LABEL_FONT_SIZE + X_AXIS_TITLE_GAP : 0;
+
+  // Width available under one x-tick before it collides with its neighbour.
+  // Left/right padding is fixed (PLOT_PADDING), so this is stable regardless of
+  // the wrap-driven bottom padding computed just below.
+  const plotWidthForLabels = Math.max(0, size.width - PLOT_PADDING.left - PLOT_PADDING.right);
+  const pointCount = data.length;
+  const columnWidth =
+    pointCount > 1 ? plotWidthForLabels / (pointCount - 1) : plotWidthForLabels;
+
+  // Resolve every x-label up front so we can measure density and (mobile) wrap
+  // long labels across lines instead of dropping them — matches web.
+  const xLabels = useMemo(() => {
+    return data.map((row, index) => {
+      const rawLabel = slots.xDataKey
+        ? String(getRowValue(row, slots.xDataKey) ?? '')
+        : String(index);
+      return slots.xTickFormatter ? slots.xTickFormatter(rawLabel, index) : rawLabel;
+    });
+  }, [data, slots.xDataKey, slots.xTickFormatter]);
+
+  // Wrap each label to fit its column so all categories can be shown at once.
+  const xLabelLines = useMemo(() => {
+    // Leave a small gutter so adjacent wrapped labels don't kiss.
+    const maxWidth = Math.max(0, columnWidth - X_TICK_LABEL_GAP);
+    return xLabels.map((label) => wrapLabelToLines(label, maxWidth, TICK_FONT_SIZE));
+  }, [xLabels, columnWidth]);
+
+  const maxXLabelLines = useMemo(
+    () => xLabelLines.reduce((max, lines) => Math.max(max, lines.length), 1),
+    [xLabelLines],
+  );
+
+  const primaryLabelRowHeight = maxXLabelLines * TICK_LINE_HEIGHT;
   const padding = showAxes
     ? {
         ...PLOT_PADDING,
-        bottom: needsExtraBottomPad
-          ? PLOT_PADDING.bottom + SECONDARY_LABEL_FONT_SIZE + X_AXIS_TITLE_GAP
-          : PLOT_PADDING.bottom,
+        bottom: Math.max(
+          PLOT_PADDING.bottom,
+          primaryLabelRowHeight + 4 + secondaryRowHeight + xAxisTitleHeight + 4,
+        ),
       }
     : { top: 0, right: 0, bottom: 0, left: 0 };
 
   const plotWidth = Math.max(0, size.width - padding.left - padding.right);
   const plotHeight = Math.max(0, size.height - padding.top - padding.bottom);
 
-  const pointCount = data.length;
   // Line points span the plot width over `n-1` intervals (NOT bar-style slots).
   const pointSpacing = pointCount > 1 ? plotWidth / (pointCount - 1) : 0;
   const xForIndex = (index: number): number =>
     pointCount > 1 ? index * pointSpacing : plotWidth / 2;
 
-  const xLabelStep = Math.max(1, (slots.xInterval ?? 0) + 1);
+  // Visible tick indices: after wrapping, each label's effective width is its
+  // widest line (<= column), so all fit and are shown. Thinning only kicks in
+  // when even a single word overflows the column. Explicit `interval` still wins.
+  const visibleXTickIndices = useMemo(() => {
+    if (pointCount <= 0) return [] as number[];
+
+    const widths = xLabelLines.map((lines, index) => {
+      const primaryWidth = lines.reduce(
+        (max, line) => Math.max(max, estimateTextWidth(line, TICK_FONT_SIZE)),
+        0,
+      );
+      const secondary = secondaryLabelMap?.[index];
+      const secondaryWidth =
+        secondary !== undefined && secondary !== null
+          ? estimateTickLabelWidth(String(secondary), SECONDARY_LABEL_FONT_SIZE)
+          : 0;
+      return Math.max(primaryWidth, secondaryWidth);
+    });
+
+    const forcedStep =
+      slots.xInterval !== undefined ? Math.max(1, slots.xInterval + 1) : undefined;
+
+    return selectNonOverlappingXTickIndices(pointCount, widths, xForIndex, forcedStep);
+  }, [pointCount, pointSpacing, plotWidth, xLabelLines, secondaryLabelMap, slots.xInterval]);
+
+  const visibleXTickIndexSet = useMemo(() => new Set(visibleXTickIndices), [
+    visibleXTickIndices,
+  ]);
 
   const tickColor = getIn(theme.colors, 'surface.text.gray.muted');
   const axisLineColor = getIn(theme.colors, 'surface.border.gray.muted');
@@ -828,7 +1025,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
               device, so layout + responder MUST live on the same view. */}
           <View
             testID={layoutTestID}
-            style={{ flex: 1, width: '100%' }}
+            // Absolute tooltip can grow taller than the plot; keep overflow visible
+            // so the bubble is not clipped by the flex:1 scrub surface.
+            style={{ flex: 1, width: '100%', overflow: 'visible' }}
             onLayout={onLayout}
             onStartShouldSetResponder={() => data.length > 0}
             onMoveShouldSetResponder={() => data.length > 0}
@@ -1075,32 +1274,44 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                         strokeWidth={1}
                       />
                       {data.map((row, index) => {
-                        if (index % xLabelStep !== 0) return null;
+                        if (!visibleXTickIndexSet.has(index)) return null;
                         const cx = xForIndex(index);
-                        const rawLabel = slots.xDataKey
-                          ? String(getRowValue(row, slots.xDataKey) ?? '')
-                          : String(index);
-                        const label = slots.xTickFormatter
-                          ? slots.xTickFormatter(rawLabel, index)
-                          : rawLabel;
+                        const lines = xLabelLines[index] ?? [''];
                         const secondary = secondaryLabelMap?.[index];
+                        const primaryY = plotHeight + TICK_FONT_SIZE + 4;
+                        // First/last anchor to their inner edge so wide wrapped
+                        // labels don't spill off the canvas; inner ticks center.
                         const anchor =
-                          index === 0 ? 'start' : index === pointCount - 1 ? 'end' : 'middle';
+                          index === 0
+                            ? 'start'
+                            : index === pointCount - 1
+                            ? 'end'
+                            : 'middle';
+                        // Secondary sits below the tallest possible primary block
+                        // so it stays on one row across all ticks.
+                        const secondaryY =
+                          primaryY +
+                          (maxXLabelLines - 1) * TICK_LINE_HEIGHT +
+                          SECONDARY_LABEL_FONT_SIZE +
+                          PRIMARY_TO_SECONDARY_GAP;
                         return (
                           <G key={`xtick-${index}`}>
-                            <SvgText
-                              x={cx}
-                              y={plotHeight + TICK_FONT_SIZE + 4}
-                              fontSize={TICK_FONT_SIZE}
-                              fill={tickColor}
-                              textAnchor={anchor}
-                            >
-                              {label}
-                            </SvgText>
+                            {lines.map((line, lineIndex) => (
+                              <SvgText
+                                key={`xtick-${index}-line-${lineIndex}`}
+                                x={cx}
+                                y={primaryY + lineIndex * TICK_LINE_HEIGHT}
+                                fontSize={TICK_FONT_SIZE}
+                                fill={tickColor}
+                                textAnchor={anchor}
+                              >
+                                {line}
+                              </SvgText>
+                            ))}
                             {secondary !== undefined && secondary !== null ? (
                               <SvgText
                                 x={cx}
-                                y={plotHeight + TICK_FONT_SIZE + 4 + SECONDARY_LABEL_FONT_SIZE + 2}
+                                y={secondaryY}
                                 fontSize={SECONDARY_LABEL_FONT_SIZE}
                                 fill={tickColor}
                                 textAnchor={anchor}
@@ -1141,15 +1352,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                   left: Math.max(
                     padding.left,
                     Math.min(
-                      size.width - 160 - padding.right,
-                      padding.left + xForIndex(activeIndex) - 80,
+                      size.width - TOOLTIP_WIDTH - padding.right,
+                      padding.left + xForIndex(activeIndex) - TOOLTIP_WIDTH / 2,
                     ),
                   ),
-                  minWidth: 120,
-                  maxWidth: 200,
-                  // Web parity: fully OPAQUE solid surface (surface.icon.staticBlack.normal
-                  // === black[500], alpha 1.0). `popup.background.gray.intense` was
-                  // black[300] (alpha 0.72) which let chart content bleed through.
+                  width: TOOLTIP_WIDTH,
                   backgroundColor: getIn(theme.colors, 'surface.icon.staticBlack.normal'),
                   borderRadius: theme.border.radius.large,
                   borderWidth: 1,
@@ -1171,12 +1378,14 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                   </Box>
                 ) : null}
                 {tooltipRows.map((row) => (
-                  <Box
+                  <View
                     key={row.key}
-                    display="flex"
-                    flexDirection="row"
-                    alignItems="center"
-                    paddingY="spacing.1"
+                    style={{
+                      flexDirection: 'row',
+                      // flex-start: wrapped labels must grow the row (center clipped them).
+                      alignItems: 'flex-start',
+                      paddingVertical: theme.spacing[1],
+                    }}
                   >
                     <View
                       style={{
@@ -1185,17 +1394,25 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                         borderRadius: 2,
                         backgroundColor: row.color,
                         marginRight: theme.spacing[2],
+                        marginTop: 3,
                       }}
                     />
-                    <Box flex={1}>
+                    <View style={{ flex: 1, marginRight: theme.spacing[2] }}>
                       <Text size="xsmall" color="surface.text.staticWhite.normal">
                         {row.label}
                       </Text>
-                    </Box>
-                    <Text size="xsmall" weight="semibold" color="surface.text.staticWhite.normal">
-                      {row.displayValue}
-                    </Text>
-                  </Box>
+                    </View>
+                    <View style={{ width: TOOLTIP_VALUE_WIDTH }}>
+                      <Text
+                        size="xsmall"
+                        weight="semibold"
+                        color="surface.text.staticWhite.normal"
+                        textAlign="right"
+                      >
+                        {row.displayValue}
+                      </Text>
+                    </View>
+                  </View>
                 ))}
               </View>
             ) : null}
