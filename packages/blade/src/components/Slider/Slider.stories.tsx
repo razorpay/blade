@@ -90,7 +90,7 @@ export default {
       control: 'select',
       options: ['information', 'positive', 'negative', 'notice', 'neutral'],
     },
-    validationState: { control: 'inline-radio', options: ['none', 'error'] },
+    validationState: { control: 'inline-radio', options: ['none', 'error', 'success'] },
     valueFormatter: { control: false },
     marks: { control: 'object' },
     ...getStyledPropsArgTypes(),
@@ -177,6 +177,12 @@ export const States: StoryFn<typeof Slider> = () => (
       defaultValue={20}
       validationState="error"
       errorText="Choose a value of at least 30"
+    />
+    <Slider
+      label="Success"
+      defaultValue={70}
+      validationState="success"
+      successText="Value looks good"
     />
     <Slider label="Disabled" defaultValue={50} isDisabled />
   </Box>

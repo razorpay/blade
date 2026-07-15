@@ -1,0 +1,70 @@
+@media (max-width: 900px) {
+  .workbench {
+    grid-template-columns: 1fr;
+  }
+
+  .control-panel {
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .control-panel .section-heading,
+  .control-panel fieldset,
+  .control-panel .reset-button {
+    grid-column: 1 / -1;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header,
+  .story-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .app-header {
+    padding: 18px 16px;
+  }
+
+  .header-status {
+    justify-content: flex-start;
+  }
+
+  main {
+    padding: 16px 16px 48px;
+  }
+
+  .control-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 10px 12px;
+  }
+
+  .viewport-control {
+    width: 100%;
+  }
+
+  .health-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .health-grid div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .health-grid div:nth-child(-n + 2) {
+    border-bottom: 1px solid #e8ebf0;
+  }
+
+  .story-heading > p {
+    text-align: left;
+  }
+}

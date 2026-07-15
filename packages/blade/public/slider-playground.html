@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Blade Slider QA Lab</title>
+    <link rel="stylesheet" href="./slider-playground.css" />
+    <link rel="stylesheet" href="./slider-playground-preview.css" />
+    <link rel="stylesheet" href="./slider-playground-responsive.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Blade component review</p>
+        <h1>Slider QA Lab</h1>
+      </div>
+      <div class="header-status" aria-label="Playground status">
+        <span><i class="status-dot"></i>Actual Storybook stories</span>
+        <span>Single + range</span>
+        <span>Keyboard + pointer</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="workbench" aria-labelledby="workbench-title">
+        <aside class="control-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Configure</p>
+            <h2 id="workbench-title">Interactive preview</h2>
+          </div>
+
+          <label class="field">
+            <span>Variant</span>
+            <select data-arg="variant">
+              <option value="single">Single</option>
+              <option value="range">Range</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Size</span>
+            <select data-arg="size">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Color</span>
+            <select data-arg="color">
+              <option value="information">Information</option>
+              <option value="positive">Positive</option>
+              <option value="negative">Negative</option>
+              <option value="notice">Notice</option>
+              <option value="neutral">Neutral</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Label position</span>
+            <select data-arg="labelPosition">
+              <option value="top">Top</option>
+              <option value="side">Side</option>
+            </select>
+          </label>
+          <label class="field field-range">
+            <span>Value <output id="value-output">50</output></span>
+            <input
+              data-arg="defaultValue"
+              id="value-control"
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+            />
+          </label>
+
+          <fieldset>
+            <legend>Visible elements</legend>
+            <label class="check"
+              ><input data-arg="showValue" type="checkbox" checked />Header value</label
+            >
+            <label class="check"
+              ><input data-arg="showThumbValue" type="checkbox" />Thumb value</label
+            >
+            <label class="check"><input data-arg="showMarks" type="checkbox" />Marks</label>
+            <label class="check"><input data-arg="showMinMax" type="checkbox" />Min / max</label>
+          </fieldset>
+          <fieldset>
+            <legend>State</legend>
+            <label class="field">
+              <span>Validation</span>
+              <select data-arg="validationState">
+                <option value="none">None</option>
+                <option value="error">Error</option>
+                <option value="success">Success</option>
+              </select>
+            </label>
+            <label class="check"><input data-arg="isDisabled" type="checkbox" />Disabled</label>
+            <label class="check"><input data-arg="isRequired" type="checkbox" />Required</label>
+          </fieldset>
+
+          <button class="reset-button" id="reset-controls" type="button">
+            Reset configuration
+          </button>
+        </aside>
+
+        <div class="preview-column">
+          <div class="preview-toolbar">
+            <div class="viewport-control" role="group" aria-label="Preview width">
+              <button type="button" data-viewport="360">360</button>
+              <button type="button" data-viewport="768">768</button>
+              <button class="is-active" type="button" data-viewport="full">Full</button>
+            </div>
+            <a href="./?path=/docs/components-slider--docs" target="_blank" rel="noreferrer"
+              >Open docs</a
+            >
+          </div>
+          <div class="preview-stage" id="preview-stage">
+            <iframe
+              id="playground-frame"
+              title="Configurable Blade Slider story"
+              src="./iframe.html?id=components-slider--default&amp;viewMode=story&amp;qa=20260715-10"
+            ></iframe>
+          </div>
+
+          <div class="health-grid" aria-label="Automated layout checks">
+            <div><span>Horizontal fit</span><strong id="fit-check">Checking</strong></div>
+            <div><span>Touch targets</span><strong id="target-check">Checking</strong></div>
+            <div><span>Labels</span><strong id="label-check">Checking</strong></div>
+            <div><span>Last event</span><strong id="event-check">Waiting</strong></div>
+          </div>
+          <ol class="event-log" id="event-log" aria-label="Slider interaction events"></ol>
+        </div>
+      </section>
+
+      <section class="story-section" aria-labelledby="matrix-title">
+        <div class="section-heading story-heading">
+          <div>
+            <p class="eyebrow">Coverage matrix</p>
+            <h2 id="matrix-title">Stories without the Storybook chrome</h2>
+          </div>
+          <p>
+            Every frame below renders the production Storybook story, with enough height to avoid
+            cropped content.
+          </p>
+        </div>
+        <div class="story-grid" id="story-grid"></div>
+      </section>
+    </main>
+
+    <template id="story-card-template">
+      <article class="story-card">
+        <header>
+          <div>
+            <p></p>
+            <h3></h3>
+          </div>
+          <span>Live</span>
+        </header>
+        <iframe loading="lazy"></iframe>
+      </article>
+    </template>
+    <script src="./slider-playground.js?v=20260715-10"></script>
+  </body>
+</html>
