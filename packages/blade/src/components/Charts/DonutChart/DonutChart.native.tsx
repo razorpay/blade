@@ -21,6 +21,8 @@ import type {
 import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
+  Layout,
+  Align,
 } from '../CommonChartComponents/types';
 import { AnimatedDonutSlice } from './AnimatedDonutSlice.native';
 import type {
@@ -28,8 +30,7 @@ import type {
   ChartDonutProps,
   ChartDonutCellProps,
   Content,
-  CellSlot,
-  DonutSlots,
+  ChartRadius,
 } from './types';
 import { RADIUS_MAPPING, BASE_CONTAINER_SIZE, START_AND_END_ANGLES, componentId } from './tokens';
 import { useTheme } from '~components/BladeProvider';
@@ -43,6 +44,38 @@ import { castNativeType, makeMotionTime } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
+
+type CellSlot = {
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+};
+
+type LegendSlot = {
+  selectedDataKeys?: string[];
+  defaultSelectedDataKeys?: string[];
+  onSelectedDataKeysChange?: ChartLegendProps['onSelectedDataKeysChange'];
+  layout: Layout;
+  align: Align;
+};
+
+type DonutSlot = {
+  data: Record<string, unknown>[];
+  dataKey: string;
+  nameKey: ChartDonutProps['nameKey'];
+  cx: ChartDonutProps['cx'];
+  cy: ChartDonutProps['cy'];
+  radius: ChartRadius;
+  colorTheme: NonNullable<ChartDonutProps['colorTheme']>;
+  type: NonNullable<ChartDonutProps['type']>;
+  cells: CellSlot[];
+};
+
+type DonutSlots = {
+  donut?: DonutSlot;
+  hasLegend: boolean;
+  legend?: LegendSlot;
+  hasTooltip: boolean;
+  tooltipFormatter?: NonNullable<ChartTooltipProps['formatter']>;
+};
 
 const PADDING_ANGLE = 1.5;
 const STROKE_RING_WIDTH = 0.75;
@@ -308,7 +341,9 @@ const ChartDonutWrapper = ({
   const sweepProgress = useSharedValue(0);
   const motionDuration = castNativeType(makeMotionTime(getIn(theme.motion, 'duration.gentle')));
   const motionEasing = getIn(theme.motion, 'easing.standard');
-  const sweepKey = `${filteredData.length}-${selectedKeysArray.join(',')}-${donutType}`;
+  const sweepKey = `${filteredData.length}-${selectedKeysArray.join(',')}-${donutType}-${filteredData
+    .map((d) => d[dataKey])
+    .join(',')}`;
 
   useEffect(() => {
     sweepProgress.value = 0;
@@ -353,7 +388,7 @@ const ChartDonutWrapper = ({
     const direction = endAngle >= startAngle ? 1 : -1;
     const isFullCircle = spanMagnitude >= 359.999;
     const sliceCount = filteredData.length;
-    const gapCount = isFullCircle ? sliceCount : Math.max(0, sliceCount - 1);
+    const gapCount = isFullCircle && sliceCount > 1 ? sliceCount : Math.max(0, sliceCount - 1);
     let totalPadding = PADDING_ANGLE * gapCount;
     if (totalPadding >= spanMagnitude) totalPadding = 0;
     const sliceableMagnitude = spanMagnitude - totalPadding;
@@ -519,7 +554,7 @@ const ChartDonutWrapper = ({
   ) : null;
 
   const chartArea = (
-    <View style={{ flex: 1 }} onLayout={onLayout} testID="donut-chart-canvas">
+    <View style={{ flex: 1 }} onLayout={onLayout} testID={testID ? `${testID}-canvas` : 'donut-chart-canvas'}>
       {size.width > 0 && size.height > 0 && slices.length > 0 ? (
         <Svg width={size.width} height={size.height}>
           <G>
@@ -654,7 +689,7 @@ const ChartDonutWrapper = ({
         chartName: 'donut',
         dataColorMapping,
         selectedDataKeys: selectedKeysArray,
-        setSelectedDataKeys: () => undefined,
+        setSelectedDataKeys: (keys: string[]) => setSelectedKeysArray(() => keys),
       }}
     >
       <BaseBox
@@ -674,6 +709,11 @@ const ChartDonutWrapper = ({
             {legendLayout === 'vertical' && legendAlign === 'left' ? legendNode : null}
             {chartArea}
             {legendLayout === 'vertical' && legendAlign === 'right' ? legendNode : null}
+            {/* Horizontal legend always renders below the chart area on native.
+                This is a deliberate simplification for mobile screens where
+                left/right alignment of a wrapping horizontal legend is less
+                useful than on desktop web. The legend container uses
+                justifyContent: 'center' for visual balance. */}
             {legendLayout === 'horizontal' ? legendNode : null}
           </View>
         ) : (
