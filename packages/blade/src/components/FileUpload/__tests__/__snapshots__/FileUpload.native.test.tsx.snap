@@ -1534,10 +1534,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with error sta
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -2259,10 +2263,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with success s
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -2842,10 +2850,14 @@ exports[`<FileUploadItem /> (native) should render FileUploadItem with uploading
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -3450,10 +3462,14 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
@@ -3916,10 +3932,14 @@ exports[`<FileUploadItem /> (native) should render multiple file items 1`] = `
         <View
           data-blade-component="base-box"
           flexGrow={1}
+          flexShrink={1}
+          minWidth="0px"
           style={
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
+                "minWidth": 0,
               },
             ]
           }
