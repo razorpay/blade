@@ -27,6 +27,15 @@ export const CHIP_VALUE_BUDGET = 120;
 /** Minimum rendered height for a node bar in px — prevents invisible zero-height nodes */
 export const NODE_MIN_HEIGHT = 1;
 
+// ── Vertical orientation (native-only) ────────────────────────────────────────
+/**
+ * Fallback height (px) reserved below each node bar for its label chip when the
+ * native SankeyChart renders in `orientation="vertical"`. Enough for a two-line
+ * wrapped chip so the bottom stage's label never clips off-canvas.
+ * (Theme spacing is added on top of this at render time.)
+ */
+export const VERTICAL_LABEL_RESERVE = 44;
+
 // ── Link opacity states ────────────────────────────────────────────────────────
 export const LINK_DEFAULT_OPACITY = 0.55;
 export const LINK_HOVER_OPACITY = 0.85;
