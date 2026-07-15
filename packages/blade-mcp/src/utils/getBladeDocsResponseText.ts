@@ -2,12 +2,18 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import type { BladeFramework } from '../types/framework.js';
 import { DEFAULT_FRAMEWORK } from '../types/framework.js';
-import { getKnowledgebaseDirectory } from './generalUtils.js';
+import { getBladeDocsList, getKnowledgebaseDirectory } from './generalUtils.js';
 import type { DocumentationType } from './generalUtils.js';
-import {
-  getSvelteComponentAvailability,
-  getUnavailableSvelteComponentMessage,
-} from './getSvelteComponentAvailability.js';
+
+const getUnavailableSvelteComponentMessage = (
+  componentName: string,
+  availableComponents: string[],
+): string => {
+  const availableList =
+    availableComponents.length > 0 ? availableComponents.join(', ') : 'none yet';
+
+  return `⚠️ Svelte documentation for ${componentName} is not available yet. Available Svelte components: ${availableList}. Use framework="react" for the full React component catalog.`;
+};
 
 const getBladeDocsResponseText = ({
   docsList,
@@ -22,7 +28,7 @@ const getBladeDocsResponseText = ({
   const knowledgebaseDirectory = getKnowledgebaseDirectory(documentationType, framework);
   const availableSvelteComponents =
     framework === 'svelte' && documentationType === 'components'
-      ? getSvelteComponentAvailability()
+      ? getBladeDocsList('components', 'svelte')
       : [];
 
   let responseText = `Blade ${framework} ${documentationType} documentation for: ${docsList}\n\n`;
