@@ -220,7 +220,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
                 borderColor={activeBorderColor}
                 ringWidth={shadowRingWidth}
                 showGradient={isShadowGradientVisible}
-      isInsetShadowSidesFlattened={isInsetShadowSidesFlattened}
+                isInsetShadowSidesFlattened={isInsetShadowSidesFlattened}
               />
             ) : null}
             {children}
