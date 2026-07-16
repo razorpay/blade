@@ -36,8 +36,8 @@ describe('ButtonGroup allowed children on native', () => {
           <DropdownButton icon={ChevronDownIcon} />
           <DropdownOverlay>
             <ActionList>
-              <ActionListItem title="Option 1" value="option-1" />
-              <ActionListItem title="Option 2" value="option-2" />
+              <ActionListItem title="Bulk Payout" value="bulk-payout" />
+              <ActionListItem title="Single Payout" value="single-payout" />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>,
