@@ -5,7 +5,9 @@ const FilterChipDatePicker = ({
   showFooterActions = false,
   ...props
 }: FilterChipDatePickerProps): React.ReactElement => {
-  return <BaseDatePicker {...props} showFooterActions={showFooterActions} inputElementType="chip" />;
+  return (
+    <BaseDatePicker {...props} showFooterActions={showFooterActions} inputElementType="chip" />
+  );
 };
 
 export { FilterChipDatePicker };
