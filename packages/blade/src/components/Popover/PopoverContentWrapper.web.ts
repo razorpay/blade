@@ -6,14 +6,16 @@ import type { SpacingValueType } from '~components/Box/BaseBox/types/spacingType
 import BaseBox from '~components/Box/BaseBox';
 
 const PopoverContentWrapper = styled(BaseBox)<
-  { styles: CSSProperties } & PopoverContentWrapperProps
+  { styles: CSSProperties } & Omit<PopoverContentWrapperProps, 'maxWidth'> & {
+      maxWidth?: SpacingValueType;
+    }
 >(({ theme, isMobile, styles, colorScheme, maxWidth }) => {
   return getPopoverContentWrapperStyles({
     theme,
     styles,
     isMobile,
     colorScheme,
-    maxWidth: maxWidth as SpacingValueType | undefined,
+    maxWidth,
   });
 });
 

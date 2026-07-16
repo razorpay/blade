@@ -68,7 +68,18 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   (
-    { children, title, titleLeading, footer, arrow, side, style, isVisible, animationDuration, maxWidth },
+    {
+      children,
+      title,
+      titleLeading,
+      footer,
+      arrow,
+      side,
+      style,
+      isVisible,
+      animationDuration,
+      maxWidth,
+    },
     ref,
   ) => {
     const isMobile = useIsMobile();

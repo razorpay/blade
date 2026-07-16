@@ -24,7 +24,11 @@ const getPopoverContentWrapperStyles = ({
     width: '100%',
     // When maxWidth prop is provided, let BaseBox handle it (it resolves spacing tokens).
     // When not provided, use the default from getPopoverContentWrapperStyles.
-    ...(maxWidth ? {} : { maxWidth: makeSpace(isMobile ? DEFAULT_MAX_WIDTH_MOBILE : DEFAULT_MAX_WIDTH_DESKTOP) }),
+    ...(maxWidth
+      ? {}
+      : {
+          maxWidth: makeSpace(isMobile ? DEFAULT_MAX_WIDTH_MOBILE : DEFAULT_MAX_WIDTH_DESKTOP),
+        }),
     position: isReactNative() ? 'absolute' : 'relative',
     boxShadow: isReactNative() ? undefined : getPopupBoxShadowString(theme, colorScheme),
     boxSizing: 'border-box',
