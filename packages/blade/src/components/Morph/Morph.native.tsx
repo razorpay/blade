@@ -109,14 +109,6 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
   const easing = theme.motion.easing.standard;
   const timingConfig = React.useMemo(() => ({ duration, easing }), [duration, easing]);
 
-  // Guard: Morph expects a single React element child (e.g. <Box>) so it can read
-  // borderRadius/backgroundColor from props and clone it. Strings, numbers, arrays,
-  // fragments, or null are not valid — render them as-is without animation.
-  // This early return is placed AFTER all hooks to satisfy the Rules of Hooks.
-  if (!isValidChild) {
-    return <>{children}</>;
-  }
-
   // Grab any pending handoff synchronously before paint of children that replace us.
   React.useLayoutEffect(() => {
     const prev = pendingHandoffs.get(layoutId);
@@ -306,6 +298,14 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
     }
     return style;
   });
+
+  // Guard: Morph expects a single React element child (e.g. <Box>) so it can read
+  // borderRadius/backgroundColor from props and clone it. Strings, numbers, arrays,
+  // fragments, or null are not valid — render them as-is without animation.
+  // This early return is placed AFTER all hooks to satisfy the Rules of Hooks.
+  if (!isValidChild) {
+    return <>{children}</>;
+  }
 
   const child = React.cloneElement(children, {
     backgroundColor: undefined,
