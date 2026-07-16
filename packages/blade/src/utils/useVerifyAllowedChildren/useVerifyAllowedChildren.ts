@@ -21,7 +21,8 @@ const useVerifyAllowedChildren = (props: {
           childComponentId ??
           // eslint-disable-next-line no-restricted-properties
           (typeof child.type === 'function'
-            ? child.type.displayName ?? child.type.name
+            ? (child.type as { displayName?: string; name?: string }).displayName ??
+              (child.type as { name?: string }).name
             : String(child.type));
         throwBladeError({
           message: `Only \`${allowedComponents.join(

@@ -675,9 +675,7 @@ exports[`<Drawer /> (native) renders a Drawer 1`] = `
                       onBlur={[Function]}
                       onClick={[Function]}
                       onFocus={[Function]}
-                      onKeyUp={[Function]}
                       onMouseDown={[Function]}
-                      onMouseOut={[Function]}
                       onMouseUp={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -891,8 +889,8 @@ exports[`<Drawer /> (native) renders a Drawer 1`] = `
                               }
                               strokeWidth={2}
                               width="100%"
-                              x="0"
-                              y="0"
+                              x={0}
+                              y={0}
                             />
                             <RNSVGRect
                               fill={null}
@@ -915,8 +913,8 @@ exports[`<Drawer /> (native) renders a Drawer 1`] = `
                               }
                               strokeWidth={4}
                               width="100%"
-                              x="0"
-                              y="0"
+                              x={0}
+                              y={0}
                             />
                           </RNSVGGroup>
                         </RNSVGSvgView>
@@ -1936,9 +1934,7 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
-              onKeyUp={[Function]}
               onMouseDown={[Function]}
-              onMouseOut={[Function]}
               onMouseUp={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -2170,8 +2166,8 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
                       }
                       strokeWidth={7}
                       width="100%"
-                      x="0"
-                      y="0"
+                      x={0}
+                      y={0}
                     />
                     <RNSVGRect
                       fill={null}
@@ -2194,8 +2190,8 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
                       }
                       strokeWidth={4}
                       width="100%"
-                      x="0"
-                      y="0"
+                      x={0}
+                      y={0}
                     />
                     <RNSVGRect
                       fill={null}
@@ -2217,8 +2213,8 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
                       }
                       strokeWidth={1}
                       width="100%"
-                      x="0"
-                      y="0"
+                      x={0}
+                      y={0}
                     />
                     <RNSVGRect
                       fill={null}
@@ -2241,8 +2237,8 @@ exports[`<Drawer /> (native) renders a Drawer with footer 1`] = `
                       }
                       strokeWidth={5}
                       width="100%"
-                      x="0"
-                      y="0"
+                      x={0}
+                      y={0}
                     />
                     <RNSVGRect
                       fill={

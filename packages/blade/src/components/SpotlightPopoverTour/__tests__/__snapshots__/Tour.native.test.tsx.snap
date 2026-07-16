@@ -63,9 +63,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
-      onKeyUp={[Function]}
       onMouseDown={[Function]}
-      onMouseOut={[Function]}
       onMouseUp={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -298,8 +296,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
               }
               strokeWidth={7}
               width="100%"
-              x="0"
-              y="0"
+              x={0}
+              y={0}
             />
             <RNSVGRect
               fill={null}
@@ -322,8 +320,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
               }
               strokeWidth={4}
               width="100%"
-              x="0"
-              y="0"
+              x={0}
+              y={0}
             />
             <RNSVGRect
               fill={null}
@@ -345,8 +343,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
               }
               strokeWidth={1}
               width="100%"
-              x="0"
-              y="0"
+              x={0}
+              y={0}
             />
             <RNSVGRect
               fill={null}
@@ -369,8 +367,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
               }
               strokeWidth={5}
               width="100%"
-              x="0"
-              y="0"
+              x={0}
+              y={0}
             />
             <RNSVGRect
               fill={
@@ -1034,9 +1032,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
-                        onKeyUp={[Function]}
                         onMouseDown={[Function]}
-                        onMouseOut={[Function]}
                         onMouseUp={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -1268,8 +1264,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                 }
                                 strokeWidth={7}
                                 width="100%"
-                                x="0"
-                                y="0"
+                                x={0}
+                                y={0}
                               />
                               <RNSVGRect
                                 fill={null}
@@ -1292,8 +1288,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                 }
                                 strokeWidth={4}
                                 width="100%"
-                                x="0"
-                                y="0"
+                                x={0}
+                                y={0}
                               />
                               <RNSVGRect
                                 fill={null}
@@ -1315,8 +1311,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                 }
                                 strokeWidth={1}
                                 width="100%"
-                                x="0"
-                                y="0"
+                                x={0}
+                                y={0}
                               />
                               <RNSVGRect
                                 fill={null}
@@ -1339,8 +1335,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                 }
                                 strokeWidth={5}
                                 width="100%"
-                                x="0"
-                                y="0"
+                                x={0}
+                                y={0}
                               />
                               <RNSVGRect
                                 fill={
