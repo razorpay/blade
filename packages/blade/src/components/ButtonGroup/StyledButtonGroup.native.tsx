@@ -18,7 +18,11 @@ const StyledButtonGroup = styled(View)<StyledButtonGroupProps & StyledPropsBlade
     // 'stretch'` plus Dropdown's inner `height: '100%'` was blowing the group
     // up to the full screen height in Storybook.
     alignItems: 'center',
-    alignSelf: isFullWidth ? 'stretch' : 'flex-start',
+    // Match web `width: 100%` — `alignSelf: stretch` alone is not enough inside
+    // ScrollView / column parents that don't stretch their content width.
+    ...(isFullWidth
+      ? { alignSelf: 'stretch' as const, width: '100%' as const }
+      : { alignSelf: 'flex-start' as const }),
     borderRadius,
     // Do not clip here — DropdownOverlay is absolutely positioned inside the
     // group. Outer rounding is handled per-button via borderRadii instead.

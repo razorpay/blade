@@ -1314,6 +1314,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
           "borderRadius": 8,
           "flexDirection": "row",
           "overflow": "visible",
+          "width": "100%",
         },
       ]
     }
@@ -1321,7 +1322,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
     <View
       style={
         {
-          "alignSelf": "center",
+          "alignSelf": "stretch",
+          "flex": 1,
           "zIndex": 1,
         }
       }
@@ -1808,7 +1810,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
     <View
       style={
         {
-          "alignSelf": "center",
+          "alignSelf": "stretch",
+          "flex": 1,
           "zIndex": 1,
         }
       }
@@ -2207,7 +2210,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
     <View
       style={
         {
-          "alignSelf": "center",
+          "alignSelf": "stretch",
+          "flex": 1,
           "zIndex": 2,
         }
       }

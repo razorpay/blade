@@ -120,7 +120,12 @@ const _ButtonGroup = (
             */}
             <View
               style={{
-                alignSelf: 'center',
+                // Full-width groups need the wrapper to grow so BaseButton's
+                // `flex: 1` can share the row (wrappers previously forced
+                // `alignSelf: 'center'` and blocked expansion).
+                ...(isFullWidth
+                  ? { flex: 1, alignSelf: 'stretch' as const }
+                  : { alignSelf: 'center' as const }),
                 // Pressed button above siblings so its full focus border paints
                 // on top of the next button's overlapping edge.
                 zIndex: isPressed ? 10 : isLast ? 2 : 1,
