@@ -14,9 +14,15 @@ const StyledButtonGroup = styled(View)<StyledButtonGroupProps & StyledPropsBlade
 
   return {
     flexDirection: 'row',
+    // Keep buttons content-sized on the cross axis. Default RN `alignItems:
+    // 'stretch'` plus Dropdown's inner `height: '100%'` was blowing the group
+    // up to the full screen height in Storybook.
+    alignItems: 'center',
     alignSelf: isFullWidth ? 'stretch' : 'flex-start',
     borderRadius,
-    overflow: 'hidden',
+    // Do not clip here — DropdownOverlay is absolutely positioned inside the
+    // group. Outer rounding is handled per-button via borderRadii instead.
+    overflow: 'visible',
     ...styledPropsCSSObject,
   };
 });

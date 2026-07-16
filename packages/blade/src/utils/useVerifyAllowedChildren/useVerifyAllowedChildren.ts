@@ -14,12 +14,21 @@ const useVerifyAllowedChildren = (props: {
   if (__DEV__) {
     React.Children.forEach(children, (child) => {
       if (!React.isValidElement(child)) return;
-      const isValidChild = child && allowedComponents.includes(getComponentId(child)!);
+      const childComponentId = getComponentId(child);
+      const isValidChild = child && allowedComponents.includes(childComponentId!);
       if (!isValidChild) {
+        const actualChildName =
+          childComponentId ??
+          // eslint-disable-next-line no-restricted-properties
+          (typeof child.type === 'function'
+            ? child.type.displayName ?? child.type.name
+            : String(child.type));
         throwBladeError({
           message: `Only \`${allowedComponents.join(
             ', ',
-          )}\` components are accepted in \`${componentName}\` children`,
+          )}\` components are accepted in \`${componentName}\` children. Received \`${
+            actualChildName || 'Unknown'
+          }\``,
           moduleName: componentName,
         });
       }

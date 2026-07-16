@@ -7,6 +7,7 @@ import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { TooltipContext } from './TooltipContext';
+import { componentIds } from './componentIds';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { mergeProps } from '~utils/mergeProps';
@@ -14,12 +15,13 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { useTheme } from '~components/BladeProvider';
 import { PopupArrow } from '~components/PopupArrow';
 import { useFloatingPortal } from '~components/Popover/useFloatingPortal.native';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 // Portal container rendered by @gorhom/portal has a 10px top offset on iOS relative
 // to the window coordinate system that measureInWindow doesn't account for.
 const IOS_OFFSET_CORRECTION = 10;
 
-const Tooltip = ({
+const _Tooltip = ({
   title,
   content,
   children,
@@ -139,5 +141,9 @@ const Tooltip = ({
     </TooltipContext.Provider>
   );
 };
+
+const Tooltip = assignWithoutSideEffects(_Tooltip, {
+  componentId: componentIds.Tooltip,
+});
 
 export { Tooltip };

@@ -60,6 +60,8 @@ export type BaseButtonStyleProps = {
   shadowBottomColor?: string;
   shadowBottomHeight?: number;
   shadowBorderColor?: string;
+  /** Highlighted/focus border color for native press feedback (matches web `:active`). */
+  focusShadowBorderColor?: string;
   shadowRingWidth?: number;
   isShadowGradientVisible?: boolean;
 };
@@ -119,6 +121,8 @@ export type StyledBaseButtonProps = Omit<
   shadowBottomColor?: string;
   shadowBottomHeight?: number;
   shadowBorderColor?: string;
+  /** Highlighted/focus border color for native press feedback (matches web `:active`). */
+  focusShadowBorderColor?: string;
   shadowRingWidth?: number;
   isShadowGradientVisible?: boolean;
   accessibilityProps: Record<string, unknown>;

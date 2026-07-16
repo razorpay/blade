@@ -64,6 +64,9 @@ const _ButtonGroup = (
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const { theme } = useTheme();
+  // While a secondary/tertiary button is pressed, lift it above siblings and
+  // release the next sibling's -1px overlap so the highlighted right border shows.
+  const [pressedButtonIndex, setPressedButtonIndex] = React.useState<number | null>(null);
 
   const contextValue = {
     isDisabled,
@@ -71,6 +74,7 @@ const _ButtonGroup = (
     color,
     variant,
     isFullWidth,
+    setPressedButtonIndex,
   };
 
   useVerifyAllowedChildren({
@@ -100,19 +104,40 @@ const _ButtonGroup = (
         const isLast = React.Children.count(children) - 1 === index;
         const showDivider = variant === 'primary' && !isLast;
         const childKey = child.key ?? index;
+        const isPressed = pressedButtonIndex === index;
+        // Collapse doubled borders, except when the previous button is pressed —
+        // then keep this sibling un-overlapped so the pressed button's right
+        // highlighted border isn't covered.
+        const collapseBorder =
+          isSecondaryOrTertiary && index > 0 && pressedButtonIndex !== index - 1;
 
         return (
           <React.Fragment key={childKey}>
-            <ButtonGroupProvider
-              value={{
-                ...contextValue,
-                isFirstInButtonGroup: index === 0,
-                isLastInButtonGroup: isLast,
-                collapseBorder: isSecondaryOrTertiary && index > 0,
+            {/*
+              Wrap each child so Dropdown's `height: 100%` resolves against a
+              content-sized parent (not the Storybook screen), and so the open
+              overlay can paint above siblings.
+            */}
+            <View
+              style={{
+                alignSelf: 'center',
+                // Pressed button above siblings so its full focus border paints
+                // on top of the next button's overlapping edge.
+                zIndex: isPressed ? 10 : isLast ? 2 : 1,
               }}
             >
-              {child}
-            </ButtonGroupProvider>
+              <ButtonGroupProvider
+                value={{
+                  ...contextValue,
+                  buttonIndex: index,
+                  isFirstInButtonGroup: index === 0,
+                  isLastInButtonGroup: isLast,
+                  collapseBorder,
+                }}
+              >
+                {child}
+              </ButtonGroupProvider>
+            </View>
             {showDivider && <StyledDivider dividerColor={dividerColor} />}
           </React.Fragment>
         );

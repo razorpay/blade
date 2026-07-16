@@ -299,40 +299,73 @@ const getProps = ({
     shadowBottomColor?: string;
     shadowBottomHeight?: number;
     shadowBorderColor?: string;
+    /**
+     * Border color from the highlighted/focus box-shadow tokens. Used on press
+     * to match web `&:active { boxShadow: focusBoxShadow }` (e.g. secondary/
+     * tertiary gray.default → gray.highlighted).
+     */
+    focusShadowBorderColor?: string;
     shadowRingWidth?: number;
     isShadowGradientVisible?: boolean;
   } => {
-    const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state: 'default' });
-    if (shadowTokens.length === 0) return {};
+    const resolveShadowColors = (
+      shadowTokens: ReturnType<typeof getBoxShadowToken>,
+    ): {
+      highlightColor?: string;
+      bottomColor?: string;
+      borderColor?: string;
+      highlightHeight: number;
+      bottomHeight: number;
+      ringWidth: number;
+    } => {
+      let highlightColor: string | undefined,
+        bottomColor: string | undefined,
+        borderColor: string | undefined;
+      let highlightHeight = 0;
+      let bottomHeight = 0;
+      let ringWidth = 0;
 
-    let highlightColor: string | undefined,
-      bottomColor: string | undefined,
-      borderColor: string | undefined;
-    let highlightHeight = 0;
-    let bottomHeight = 0;
-    let ringWidth = 0;
-
-    for (const shadow of shadowTokens) {
-      const resolved = getIn(theme.colors, shadow.color);
-      if (shadow.y > 0 && !highlightColor) {
-        highlightColor = resolved;
-        highlightHeight = shadow.y;
-      } else if (shadow.y < 0 && !bottomColor) {
-        bottomColor = resolved;
-        bottomHeight = Math.abs(shadow.y);
-      } else if (shadow.spread > 0 && !borderColor) {
-        borderColor = resolved;
-        ringWidth = shadow.spread;
+      for (const shadow of shadowTokens) {
+        const resolved = getIn(theme.colors, shadow.color);
+        if (shadow.y > 0 && !highlightColor) {
+          highlightColor = resolved;
+          highlightHeight = shadow.y;
+        } else if (shadow.y < 0 && !bottomColor) {
+          bottomColor = resolved;
+          bottomHeight = Math.abs(shadow.y);
+        } else if (shadow.spread > 0 && !borderColor) {
+          borderColor = resolved;
+          ringWidth = shadow.spread;
+        }
       }
+
+      return { highlightColor, bottomColor, borderColor, highlightHeight, bottomHeight, ringWidth };
+    };
+
+    const defaultColors = resolveShadowColors(
+      getBoxShadowToken({ variant, color: btnColor, state: 'default' }),
+    );
+    if (
+      !defaultColors.highlightColor &&
+      !defaultColors.bottomColor &&
+      !defaultColors.borderColor
+    ) {
+      return {};
     }
 
+    const focusColors = resolveShadowColors(
+      getBoxShadowToken({ variant, color: btnColor, state: 'focus' }),
+    );
+
     return {
-      shadowHighlightColor: highlightColor,
-      shadowHighlightHeight: highlightHeight !== 0 ? highlightHeight : undefined,
-      shadowBottomColor: bottomColor,
-      shadowBottomHeight: bottomHeight !== 0 ? bottomHeight : undefined,
-      shadowBorderColor: borderColor,
-      shadowRingWidth: ringWidth !== 0 ? ringWidth : undefined,
+      shadowHighlightColor: defaultColors.highlightColor,
+      shadowHighlightHeight:
+        defaultColors.highlightHeight !== 0 ? defaultColors.highlightHeight : undefined,
+      shadowBottomColor: defaultColors.bottomColor,
+      shadowBottomHeight: defaultColors.bottomHeight !== 0 ? defaultColors.bottomHeight : undefined,
+      shadowBorderColor: defaultColors.borderColor,
+      focusShadowBorderColor: focusColors.borderColor,
+      shadowRingWidth: defaultColors.ringWidth !== 0 ? defaultColors.ringWidth : undefined,
       isShadowGradientVisible: variant === 'primary',
     };
   };
@@ -488,6 +521,21 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     if (!isLoading && prevLoading) announce('Stopped loading');
   }, [isLoading, prevLoading]);
 
+  // Keep ButtonGroup press index in sync so border-collapse / z-index can
+  // reveal this button's highlighted right edge while pressed (RN only).
+  React.useEffect(() => {
+    if (typeof buttonGroupProps.buttonIndex !== 'number') return undefined;
+    if (isPressed) {
+      buttonGroupProps.setPressedButtonIndex?.(buttonGroupProps.buttonIndex);
+    } else {
+      buttonGroupProps.setPressedButtonIndex?.(null);
+    }
+    return () => {
+      buttonGroupProps.setPressedButtonIndex?.(null);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPressed, buttonGroupProps.buttonIndex]);
+
   const {
     defaultBackgroundColor,
     defaultBoxShadow,
@@ -519,6 +567,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     shadowBottomColor,
     shadowBottomHeight,
     shadowBorderColor,
+    focusShadowBorderColor,
     shadowRingWidth,
     isShadowGradientVisible,
   } = getProps({
@@ -704,6 +753,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       shadowBottomColor={shadowBottomColor}
       shadowBottomHeight={shadowBottomHeight}
       shadowBorderColor={shadowBorderColor}
+      focusShadowBorderColor={focusShadowBorderColor}
       shadowRingWidth={shadowRingWidth}
       isShadowGradientVisible={showShadowGradient}
       {...metaAttribute({ name: MetaConstants.Button, testID })}

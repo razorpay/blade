@@ -73,8 +73,21 @@ type ButtonGroupContextType = Pick<
    * border between adjacent buttons. Computed by ButtonGroup based on its
    * variant (secondary/tertiary) so BaseButton doesn't need to inspect the
    * variant string.
+   *
+   * Cleared for the sibling after a pressed button so that button's highlighted
+   * right border isn't covered by the -1px overlap while pressed.
    */
   collapseBorder?: boolean;
+  /**
+   * Index of this child inside ButtonGroup. Used with `setPressedButtonIndex`
+   * so the group can raise z-index / release border collapse while pressed.
+   */
+  buttonIndex?: number;
+  /**
+   * Reports press in/out from a grouped Button so ButtonGroup can show the
+   * full highlighted border (including the right edge) while pressed.
+   */
+  setPressedButtonIndex?: (index: number | null) => void;
 };
 
 export type { ButtonGroupProps, StyledButtonGroupProps, ButtonGroupContextType };

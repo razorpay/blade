@@ -122,7 +122,7 @@ describe('<ButtonGroup /> (native)', () => {
         </ButtonGroup>,
       ),
     ).toThrowError(
-      '[Blade: ButtonGroup]: Only `Button, Dropdown, Tooltip, Popover` components are accepted in `ButtonGroup` children',
+      /\[Blade: ButtonGroup\]: Only `Button, Dropdown, Tooltip, Popover` components are accepted in `ButtonGroup` children/,
     );
   });
 });

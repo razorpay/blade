@@ -118,6 +118,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     shadowBottomColor,
     shadowBottomHeight,
     shadowBorderColor,
+    focusShadowBorderColor,
     shadowRingWidth,
     isShadowGradientVisible,
     ...styledProps
@@ -202,9 +203,13 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       {/* @ts-ignore */}
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
+        // Match web `&:active { boxShadow: focusBoxShadow }` — secondary/tertiary
+        // swap gray.default → gray.highlighted so the darker press border shows.
+        const activeBorderColor =
+          pressed && focusShadowBorderColor ? focusShadowBorderColor : shadowBorderColor;
         return (
           <>
-            {shadowBorderColor ? (
+            {activeBorderColor ? (
               <ButtonShadowOverlay
                 borderRadius={Number(String(borderRadius).replace('px', '')) || 0}
                 borderRadii={borderRadii}
@@ -212,7 +217,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
                 highlightHeight={shadowHighlightHeight}
                 shadowColor={shadowBottomColor}
                 shadowHeight={shadowBottomHeight}
-                borderColor={shadowBorderColor}
+                borderColor={activeBorderColor}
                 ringWidth={shadowRingWidth}
                 showGradient={isShadowGradientVisible}
                 flattenInsetShadowSides={flattenInsetShadowSides}

@@ -20,6 +20,7 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 import { Tooltip } from '~components/Tooltip';
 import { Popover } from '~components/Popover';
 import { Text } from '~components/Typography';
+import { StoryScrollView } from '~utils/storybook/StoryScrollView';
 
 const Page = (): React.ReactElement => {
   return (
@@ -84,7 +85,15 @@ Default.storyName = 'Default';
 
 const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   return (
-    <Box display="flex" alignItems="center" justifyContent="center">
+    // minHeight gives the absolutely positioned DropdownOverlay room to paint
+    // below the trigger on React Native (same pattern as Dropdown InternalMenu).
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      minHeight="200px"
+      padding="spacing.10"
+    >
       <ButtonGroupComponent {...args}>
         <Tooltip content="Create a new payout">
           <Button icon={PlusIcon}>Payout</Button>
@@ -190,7 +199,8 @@ IconsOnly.storyName = 'Icons Only';
 
 const ShowcaseTemplate: StoryFn<typeof ButtonGroupComponent> = () => {
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.8">
+    <StoryScrollView>
+    <Box display="flex" flexDirection="column" gap="spacing.8" paddingBottom="spacing.8">
       {/* Variants */}
       <Box>
         <Text
@@ -491,7 +501,7 @@ const ShowcaseTemplate: StoryFn<typeof ButtonGroupComponent> = () => {
       </Box>
 
       {/* With Dropdown */}
-      <Box>
+      <Box minHeight="200px">
         <Text
           size="large"
           weight="semibold"
@@ -547,6 +557,7 @@ const ShowcaseTemplate: StoryFn<typeof ButtonGroupComponent> = () => {
         </ButtonGroupComponent>
       </Box>
     </Box>
+    </StoryScrollView>
   );
 };
 
