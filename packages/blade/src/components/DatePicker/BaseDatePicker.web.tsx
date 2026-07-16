@@ -211,18 +211,24 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     controllableSetIsOpen(() => false);
   }, [controllableSetIsOpen]);
 
+  // Shared helper: dedupe-add the chip label to the filter-chip-group context.
+  const updateSelectedFilters = React.useCallback(() => {
+    setFilterChipGroupSelectedFilters((prev: string[]) =>
+      prev.includes(label as string) ? prev : [...prev, label as string],
+    );
+  }, [setFilterChipGroupSelectedFilters, label]);
+
+  // Shared helper: store the current controlledValue into the ListView filter context.
+  const storeSelectedFiltersAndValueInListViewContext = React.useCallback(() => {
+    setListViewSelectedFilters((prev) => {
+      if (isSingle) {
+        return { ...prev, [label as string]: [controlledValue as string] };
+      }
+      return { ...prev, [label as string]: controlledValue as string[] };
+    });
+  }, [setListViewSelectedFilters, label, isSingle, controlledValue]);
+
   const handleApply = (): void => {
-    const updateSelectedFilters = () => {
-      setFilterChipGroupSelectedFilters((prev: string[]) => [...prev, label as string]);
-    };
-    const storeSelectedFiltersAndValueInListViewContext = () => {
-      setListViewSelectedFilters((prev) => {
-        if (isSingle) {
-          return { ...prev, [label as string]: [controlledValue as string] };
-        }
-        return { ...prev, [label as string]: controlledValue as string[] };
-      });
-    };
     if (isSingle) {
       onChange?.(controlledValue);
       fireNativeEvent(referenceRef, ['change']);
@@ -268,15 +274,8 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
         setOldValue(controlledValue);
         fireNativeEvent(referenceRef, ['change']);
         onApply?.(controlledValue as never);
-        setFilterChipGroupSelectedFilters((prev: string[]) =>
-          prev.includes(label as string) ? prev : [...prev, label as string],
-        );
-        setListViewSelectedFilters((prev) => ({
-          ...prev,
-          [label as string]: isSingle
-            ? ([controlledValue] as string[])
-            : (controlledValue as string[]),
-        }));
+        storeSelectedFiltersAndValueInListViewContext();
+        updateSelectedFilters();
         close();
       }
     }
