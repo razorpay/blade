@@ -377,7 +377,12 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             setControlledValue(presetValue);
             setSelectedPreset(presetValue);
             // Mirror leadingDropdown behaviour: trigger handleApply after state update
-            shouldApplyAfterPresetSelection.current = true;
+            // Only auto-apply when footer actions are hidden (FilterChipDatePicker mode).
+            // When showFooterActions=true (regular DatePicker), the user must click
+            // "Apply" manually after selecting a preset from the sidebar.
+            if (!showFooterActions) {
+              shouldApplyAfterPresetSelection.current = true;
+            }
           }}
           presetStates={presetStates}
         />
