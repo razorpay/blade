@@ -31,6 +31,7 @@ const Popover = ({
   footer,
   isOpen,
   defaultIsOpen,
+  maxWidth,
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef(null);
@@ -129,6 +130,7 @@ const Popover = ({
                 isVisible={controllableIsOpen}
                 ref={refs.setFloating}
                 side={computedSide}
+                maxWidth={maxWidth}
                 style={{
                   ...floatingStyles,
                   left: (floatingStyles.left || -200) - backdropOffset.x,

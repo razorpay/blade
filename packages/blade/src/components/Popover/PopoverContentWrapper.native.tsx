@@ -24,8 +24,9 @@ const StyledPopoverContentWrapper = styled(AnimatedBaseBox)<{
   styles: CSSProperties;
   isMobile: boolean;
   colorScheme: ColorSchemeNames;
-}>(({ theme, isMobile, styles, colorScheme }) => {
-  return getPopoverContentWrapperStyles({ theme, styles, isMobile, colorScheme });
+  maxWidth?: import('~components/Box/BaseBox/types/spacingTypes').SpacingValueType;
+}>(({ theme, isMobile, styles, colorScheme, maxWidth }) => {
+  return getPopoverContentWrapperStyles({ theme, styles, isMobile, colorScheme, maxWidth });
 });
 
 const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>(

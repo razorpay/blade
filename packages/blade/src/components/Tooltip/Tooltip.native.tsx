@@ -26,6 +26,7 @@ const Tooltip = ({
   placement = 'left',
   onOpenChange,
   zIndex = componentZIndices.tooltip,
+  maxWidth,
 }: TooltipProps): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
   const [isOpen, setIsOpen] = React.useState(false);
@@ -107,6 +108,7 @@ const Tooltip = ({
               ref={refs.setFloating}
               side={side}
               colorScheme={colorScheme}
+              maxWidth={maxWidth}
               style={{
                 ...floatingStyles,
                 // if the position is zero move the floating element outside of the viewport
