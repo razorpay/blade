@@ -9,7 +9,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -555,7 +555,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -564,6 +563,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -950,7 +950,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -959,6 +958,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -1301,7 +1301,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={true}
@@ -1854,7 +1854,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -1863,6 +1862,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={true}
+        isInsetShadowSidesFlattened={true}
         isInsideFullWidthButtonGroup={true}
         isLoading={false}
         isPressed={false}
@@ -2254,7 +2254,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -2263,6 +2262,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={true}
+        isInsetShadowSidesFlattened={true}
         isInsideFullWidthButtonGroup={true}
         isLoading={false}
         isPressed={false}
@@ -2609,7 +2609,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -3155,7 +3155,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -3164,6 +3163,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="48px"
@@ -3550,7 +3550,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -3559,6 +3558,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="48px"
@@ -3901,7 +3901,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -4447,7 +4447,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -4456,6 +4455,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -4842,7 +4842,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -4851,6 +4850,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -5193,7 +5193,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -5739,7 +5739,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -5748,6 +5747,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="32px"
@@ -6134,7 +6134,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -6143,6 +6142,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="32px"
@@ -6485,7 +6485,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -7031,7 +7031,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -7040,6 +7039,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="28px"
@@ -7426,7 +7426,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -7435,6 +7434,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="28px"
@@ -7777,7 +7777,7 @@ exports[`<ButtonGroup /> (native) should render disabled ButtonGroup 1`] = `
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -8034,13 +8034,13 @@ exports[`<ButtonGroup /> (native) should render disabled ButtonGroup 1`] = `
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
         hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -8230,13 +8230,13 @@ exports[`<ButtonGroup /> (native) should render disabled ButtonGroup 1`] = `
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
         hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -8382,7 +8382,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -8928,7 +8928,6 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
         data-blade-component="button"
         defaultBackgroundColor="hsla(4, 85%, 44%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(4, 85%, 36%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -8937,6 +8936,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -9323,7 +9323,6 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
         data-blade-component="button"
         defaultBackgroundColor="hsla(4, 85%, 44%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(4, 85%, 36%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -9332,6 +9331,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -9674,7 +9674,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -10118,12 +10118,10 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="negative"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -10132,6 +10130,8 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
         hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         hoverIconColor="hsla(4, 85%, 44%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -10503,12 +10503,10 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="negative"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -10517,6 +10515,8 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
         hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         hoverIconColor="hsla(4, 85%, 44%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -10860,7 +10860,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -11406,7 +11406,6 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
         data-blade-component="button"
         defaultBackgroundColor="hsla(150, 100%, 28%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 28%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(150, 100%, 23%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -11415,6 +11414,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -11801,7 +11801,6 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
         data-blade-component="button"
         defaultBackgroundColor="hsla(150, 100%, 28%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 28%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(150, 100%, 23%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -11810,6 +11809,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -12152,7 +12152,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -12596,12 +12596,10 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="positive"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -12610,6 +12608,8 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
         hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         hoverIconColor="hsla(150, 100%, 23%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -12981,12 +12981,10 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="positive"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -12995,6 +12993,8 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
         hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         hoverIconColor="hsla(150, 100%, 23%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -13338,7 +13338,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -13884,7 +13884,6 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -13893,6 +13892,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -14279,7 +14279,6 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -14288,6 +14287,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -14630,7 +14630,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -15074,12 +15074,10 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -15088,6 +15086,8 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
         hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         hoverIconColor="hsla(0, 0%, 2%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -15459,12 +15459,10 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -15473,6 +15471,8 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
         hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         hoverIconColor="hsla(0, 0%, 2%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -15816,7 +15816,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -16260,12 +16260,10 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -16274,6 +16272,8 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
         hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         hoverIconColor="hsla(0, 0%, 2%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -16645,12 +16645,10 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -16659,6 +16657,8 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
         hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         hoverIconColor="hsla(0, 0%, 2%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -17002,7 +17002,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -17500,7 +17500,6 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -17509,6 +17508,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
         hoverIconColor="hsla(0, 0%, 0%, 0.72)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -17895,7 +17895,6 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -17904,6 +17903,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
         hoverIconColor="hsla(0, 0%, 0%, 0.72)"
         isFullWidth={false}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -18246,7 +18246,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -18690,12 +18690,10 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="white"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -18704,6 +18702,8 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -19075,12 +19075,10 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="white"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -19089,6 +19087,8 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -19432,7 +19432,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
   }
 >
   <View
-    accessibilityRole="toolbar"
+    accessibilityRole="none"
     accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
@@ -19876,12 +19876,10 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="white"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -19890,6 +19888,8 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"
@@ -20261,12 +20261,10 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
         buttonPaddingRight="12px"
         buttonPaddingTop="0px"
         collapsable={false}
-        isGroupBorderCollapsed={true}
         color="white"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
-        isInsetShadowSidesFlattened={true}
         focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -20275,6 +20273,8 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
+        isGroupBorderCollapsed={true}
+        isInsetShadowSidesFlattened={true}
         isLoading={false}
         isPressed={false}
         minHeight="36px"

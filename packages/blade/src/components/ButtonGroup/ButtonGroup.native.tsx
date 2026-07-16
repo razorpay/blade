@@ -96,6 +96,7 @@ const _ButtonGroup = (
       {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
       {...makeAnalyticsAttribute(rest)}
       {...getStyledProps(rest)}
+      accessibilityRole="none"
       accessible={false}
     >
       {React.Children.map(children, (child, index) => {
