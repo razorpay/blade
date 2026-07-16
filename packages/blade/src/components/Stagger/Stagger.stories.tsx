@@ -210,22 +210,23 @@ const OnboardingRoute = ({
         />
       </CardHeader>
       <CardBody>
-        <Stagger type="in">
-          <ChipGroup label="Account Information" selectionType="multiple">
+        {/* Moves must be direct Stagger children so native cascade isn't collapsed to lockstep. */}
+        <ChipGroup label="Account Information" selectionType="multiple">
+          <Stagger type="in" display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.3">
             {[
               'Business Type: Freelance',
               'Account Status: Activated',
               'Test Mode: Disabled',
               'Primary Product: Banking',
-            ].map((chipLabel, index) => {
+            ].map((chipLabel) => {
               return (
-                <Move key={index}>
+                <Move key={chipLabel}>
                   <Chip value={chipLabel.toLowerCase().replace(/ /g, '-')}>{chipLabel}</Chip>
                 </Move>
               );
             })}
-          </ChipGroup>
-        </Stagger>
+          </Stagger>
+        </ChipGroup>
       </CardBody>
     </Card>
   );
