@@ -138,11 +138,18 @@ const _BaseMotionBox = (
       initial: resolvedMotionVariants.initial,
       animate: {
         ...resolvedMotionVariants.animate,
-        transition: { ...resolvedMotionVariants.animate?.transition, delay: staggerDelay.enter },
+        transition: {
+          ...resolvedMotionVariants.animate?.transition,
+          delay:
+            (resolvedMotionVariants.animate?.transition?.delay ?? 0) + staggerDelay.enter,
+        },
       },
       exit: {
         ...resolvedMotionVariants.exit,
-        transition: { ...resolvedMotionVariants.exit?.transition, delay: staggerDelay.exit },
+        transition: {
+          ...resolvedMotionVariants.exit?.transition,
+          delay: (resolvedMotionVariants.exit?.transition?.delay ?? 0) + staggerDelay.exit,
+        },
       },
     };
   }, [isInsideStaggerContainer, staggerDelay, resolvedMotionVariants]);

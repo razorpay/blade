@@ -124,6 +124,14 @@ for (const file of allFiles) {
   // names), so Case 2 (literal /…/ only) and Case 3 (matches specific var names) both miss
   // them. Hermes rejects \p{} escapes even inside `new RegExp` with the `u` flag, so we
   // neutralise them by pattern *content* and emit an ASCII-equivalent literal instead.
+  //
+  // **Limitation:** This uses content-based matching (`body.includes('\\p{Lu}')`) rather than
+  // identifying the source library. Any new RegExp with these Unicode properties from any
+  // library bundled into Storybook's browser chunks would be replaced with the es-toolkit
+  // CASE_SPLIT_PATTERN. The "Unknown \p{} pattern" fall-through below mitigates this for
+  // unrecognised patterns, but known patterns (Lu/Ll, ID_Start, ID_Continue) are matched by
+  // content alone. If a non-Storybook library starts using these exact patterns, add a more
+  // specific match (e.g. checking surrounding variable names or file origin) before this block.
   content = content.replace(
     /new RegExp\(\s*"((?:[^"\\]|\\.)*)"\s*(?:,\s*"([a-z]*)")?\s*\)/g,
     (match, body, flags) => {

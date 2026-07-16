@@ -15,6 +15,11 @@ import { msToSeconds } from '~utils/msToSeconds';
  * `~tokens/global/motion`:
  * - entrance → `cubic-bezier(0, 0, 0.2, 1)`
  * - exit     → `cubic-bezier(0.17, 0, 1, 1)`
+ *
+ * **Sync risk:** These are hardcoded duplicates of the token values. If the token definitions
+ * change, these arrays must be updated manually. The same pattern exists in `Move.native.tsx`
+ * and `Scale.native.tsx`. There is currently no automated sync mechanism — a unit test should be
+ * added to assert these arrays match the token definitions.
  */
 const ENTRANCE_EASING: [number, number, number, number] = [0, 0, 0.2, 1];
 const EXIT_EASING: [number, number, number, number] = [0.17, 0, 1, 1];

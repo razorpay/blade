@@ -29,6 +29,8 @@ type LayoutRect = {
  */
 const liveLayouts = new Map<string, LayoutRect>();
 const pendingHandoffs = new Map<string, LayoutRect>();
+// Timers for self-expiring pendingHandoffs entries, keyed by layoutId.
+const handoffTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
 const HANDOFF_TTL_MS = 1500;
 
@@ -74,12 +76,21 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
   const lastKnownLayout = React.useRef<LayoutRect | null>(null);
   const incomingHandoff = React.useRef<LayoutRect | null>(null);
   const hasPlayedHandoff = React.useRef(false);
+  const rafIdRef = React.useRef<number | null>(null);
+
+  // Guard: Morph expects a single React element child (e.g. <Box>) so it can read
+  // borderRadius/backgroundColor from props and clone it. Strings, numbers, arrays,
+  // fragments, or null are not valid — render them as-is without animation.
+  if (!React.isValidElement(children)) {
+    return <>{children}</>;
+  }
 
   const childProps = children.props as Record<string, unknown>;
-  const { borderRadius, backgroundColor } = childProps;
+  const rawBorderRadius = childProps.borderRadius;
+  const rawBackgroundColor = childProps.backgroundColor;
   const cssProps = useMemoizedStyles(({
-    borderRadius,
-    backgroundColor,
+    borderRadius: rawBorderRadius,
+    backgroundColor: rawBackgroundColor,
     theme,
   } as unknown) as BoxProps & { theme: Theme });
 
@@ -109,6 +120,12 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
     const prev = pendingHandoffs.get(layoutId);
     if (prev && Date.now() - prev.ts < HANDOFF_TTL_MS) {
       pendingHandoffs.delete(layoutId);
+      // Clear any pending self-expiry timer since we consumed the entry.
+      const timer = handoffTimers.get(layoutId);
+      if (timer) {
+        clearTimeout(timer);
+        handoffTimers.delete(layoutId);
+      }
       incomingHandoff.current = prev;
       if (__DEV__) {
         logger({
@@ -123,6 +140,17 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
       const live = liveLayouts.get(layoutId) ?? lastKnownLayout.current;
       if (live) {
         pendingHandoffs.set(layoutId, { ...live, ts: Date.now() });
+        // Self-expiry: if no subsequent Morph with the same layoutId consumes this
+        // entry within the TTL, clean it up to prevent unbounded Map growth.
+        const existingTimer = handoffTimers.get(layoutId);
+        if (existingTimer) clearTimeout(existingTimer);
+        handoffTimers.set(
+          layoutId,
+          setTimeout(() => {
+            pendingHandoffs.delete(layoutId);
+            handoffTimers.delete(layoutId);
+          }, HANDOFF_TTL_MS),
+        );
         if (__DEV__) {
           logger({
             moduleName: 'Morph',
@@ -144,6 +172,22 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
 
       const prev = incomingHandoff.current;
       if (prev && prev.width > 0 && prev.height > 0) {
+        // Strict Mode guard: in dev, React mounts → unmounts → remounts. The cleanup
+        // stashes the live layout into pendingHandoffs, and the second mount consumes
+        // it — causing a spurious self-FLIP. Skip if the incoming handoff dimensions
+        // match the current element's dimensions (same element, not a true handoff).
+        const isSameElement =
+          Math.abs(prev.width - current.width) < 1 &&
+          Math.abs(prev.height - current.height) < 1 &&
+          Math.abs(prev.x - current.x) < 1 &&
+          Math.abs(prev.y - current.y) < 1;
+        if (isSameElement) {
+          incomingHandoff.current = null;
+          hasPlayedHandoff.current = true;
+          opacity.value = withTiming(1, { duration: theme.motion.duration.xquick, easing });
+          return;
+        }
+
         hasPlayedHandoff.current = true;
         incomingHandoff.current = null;
 
@@ -168,7 +212,8 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
         opacity.value = 1;
 
         // …then animate to natural layout (top).
-        requestAnimationFrame(() => {
+        rafIdRef.current = requestAnimationFrame(() => {
+          rafIdRef.current = null;
           translateX.value = withTiming(0, timingConfig);
           translateY.value = withTiming(0, timingConfig);
           scaleX.value = withTiming(1, timingConfig);
@@ -206,10 +251,34 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
   React.useEffect(() => {
     const ids = [32, 100, 250].map((ms) =>
       setTimeout(() => {
-        measureNodeInWindow(measureRef.current, playHandoffIfNeeded);
+        if (!hasPlayedHandoff.current) {
+          measureNodeInWindow(measureRef.current, playHandoffIfNeeded);
+        }
       }, ms),
     );
-    return () => ids.forEach(clearTimeout);
+    // Safety-net: if all measurement attempts fail (off-screen, zero size, unresponsive
+    // bridge), unconditionally reveal the element so it doesn't stay invisible forever.
+    const safetyNetId = setTimeout(() => {
+      if (!hasPlayedHandoff.current) {
+        hasPlayedHandoff.current = true;
+        opacity.value = withTiming(1, { duration: theme.motion.duration.xquick, easing });
+        if (__DEV__) {
+          logger({
+            moduleName: 'Morph',
+            type: 'warn',
+            message: `safety-net timeout fired for "${layoutId}" — revealing without FLIP`,
+          });
+        }
+      }
+    }, 500);
+    return () => {
+      ids.forEach(clearTimeout);
+      clearTimeout(safetyNetId);
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
+      }
+    };
   }, [playHandoffIfNeeded]);
 
   const animatedStyle = useAnimatedStyle(() => {

@@ -21,8 +21,10 @@ const realNodeModulesDir = fs.realpathSync(nodeModulesDir);
 // one worktree it will pick an arbitrary copy (we observed LineChart's stub Stagger being
 // bundled while cwd was MotionPresets). Block every worktree except this one.
 const thisWorktreeName = path.basename(path.resolve(projectRoot, '../..')); // e.g. MotionPresets
+// Escape regex special characters in the worktree name so they're treated literally.
+const escapedWorktreeName = thisWorktreeName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const siblingWorktreesBlock = new RegExp(
-  `/\\.claude/worktrees/(?!${thisWorktreeName}(?:/|$))[^/]+/`,
+  `/\\.claude/worktrees/(?!${escapedWorktreeName}(?:/|$))[^/]+/`,
 );
 
 // Metro 0.76 doesn't fully support package.json "exports" for subpath imports.
@@ -78,6 +80,12 @@ const config = {
   },
   resolver: {
     blockList: exclusionList([siblingWorktreesBlock, /\/__tests__\/.*/]),
+    // Disabled because this repo uses yarn workspaces with hoisted node_modules. Metro's
+    // hierarchical lookup would traverse parent directories and could resolve modules from
+    // sibling worktree node_modules (when running inside a `.claude/worktrees/*` symlink),
+    // picking up stale or incompatible copies. With `nodeModulesPaths` explicitly set above
+    // and `unstable_enableSymlinks: true`, Metro resolves all dependencies from the correct
+    // node_modules without needing parent-directory traversal.
     disableHierarchicalLookup: true,
     unstable_enableSymlinks: true,
     nodeModulesPaths: [nodeModulesDir],

@@ -365,6 +365,11 @@ const useAnimatedVariant = ({
   const variantsRef = React.useRef(variants);
   variantsRef.current = variants;
 
+  // Keep a ref to the latest onAnimationComplete so the worklet callback always invokes
+  // the current function, not a stale closure captured at effect creation time.
+  const onAnimationCompleteRef = React.useRef(onAnimationComplete);
+  onAnimationCompleteRef.current = onAnimationComplete;
+
   // If variants were undefined on mount and become defined later, re-initialise shared values.
   React.useEffect(() => {
     if (variants && (!fromStyle.value || !toStyle.value)) {
@@ -390,8 +395,8 @@ const useAnimatedVariant = ({
     progress.value = withDelay(
       delay,
       withTiming(1, { duration, easing }, (finished) => {
-        if (finished && onAnimationComplete) {
-          runOnJS(onAnimationComplete)(targetName);
+        if (finished && onAnimationCompleteRef.current) {
+          runOnJS(onAnimationCompleteRef.current)(targetName);
         }
       }),
     );

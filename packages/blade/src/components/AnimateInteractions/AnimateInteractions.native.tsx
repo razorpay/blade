@@ -19,6 +19,15 @@ import type { AnimateInteractionsProps } from './types';
  * drive every `on-animate-interactions` descendant. `motionTriggers` (hover / focus) is accepted
  * for API parity but has no native meaning and is intentionally ignored.
  *
+ * ### Known layout divergence from web
+ *
+ * On web, `AnimateInteractions` uses `BaseMotionEnhancerBox` which clones the child element and
+ * applies interaction handlers in-place (no extra DOM node). On native, we wrap children in a
+ * `<Pressable>` because React Native has no equivalent of DOM event delegation — `onPressIn` /
+ * `onPressOut` must be attached to a host component. This adds an extra `View` node to the layout
+ * tree, which may cause minor flex/layout differences versus web. Consumers porting layouts that
+ * depend on the enhancer not adding a wrapper should account for this extra nesting.
+ *
  * ### Usage
  *
  * ```jsx
