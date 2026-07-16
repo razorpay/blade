@@ -34,6 +34,12 @@ describe('ButtonGroup allowed children on native', () => {
       getComponentId(
         <Dropdown>
           <DropdownButton icon={ChevronDownIcon} />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Option 1" value="option-1" />
+              <ActionListItem title="Option 2" value="option-2" />
+            </ActionList>
+          </DropdownOverlay>
         </Dropdown>,
       ),
     ).toBe('Dropdown');
@@ -51,6 +57,7 @@ describe('ButtonGroup allowed children on native', () => {
             <DropdownOverlay>
               <ActionList>
                 <ActionListItem title="Bulk Payout" value="bulk-payout" />
+                <ActionListItem title="Single Payout" value="single-payout" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
