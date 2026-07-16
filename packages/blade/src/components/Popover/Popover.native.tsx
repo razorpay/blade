@@ -77,7 +77,7 @@ const _Popover = ({
     lastOpenCallRef.current = now;
     controllableSetIsOpen(() => true);
     onOpenChange?.({ isOpen: true });
-  }, [controllableSetIsOpen, onOpenChange]);
+  }, [controllableIsOpen, controllableSetIsOpen, onOpenChange]);
 
   const handleClose = React.useCallback(() => {
     controllableSetIsOpen(() => false);

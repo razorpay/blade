@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
+import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
@@ -53,6 +54,17 @@ const _DropdownOverlay = ({
   if (isInsideButtonGroup) {
     return (
       <BaseBox position="relative" zIndex={zIndex}>
+        {isOpen && (
+          <Portal hostName="BladeBottomSheetPortal">
+            <Pressable
+              style={StyleSheet.absoluteFill}
+              onPress={() => {
+                close();
+              }}
+              testID="closeable-area"
+            />
+          </Portal>
+        )}
         {/*
           Keep testID mounted for parity with the SelectInput path (tests assert
           display). Absolutely positioned so opening never changes ButtonGroup size.

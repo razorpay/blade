@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { View } from 'react-native';
 import type { ButtonGroupProps } from './types';
-import { StyledButtonGroup } from './StyledButtonGroup.native';
+import { StyledButtonGroup } from './StyledButtonGroup';
 import { ButtonGroupProvider } from './ButtonGroupContext';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -96,7 +96,6 @@ const _ButtonGroup = (
       {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
       {...makeAnalyticsAttribute(rest)}
       {...getStyledProps(rest)}
-      accessibilityRole="group"
       accessible={false}
     >
       {React.Children.map(children, (child, index) => {

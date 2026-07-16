@@ -57,9 +57,10 @@ const _Tooltip = ({
   const { backdropRef, backdropOffset, onBackdropLayout } = useFloatingPortal(update, isVisible);
 
   const handleOpen = React.useCallback(() => {
+    if (isOpen) return;
     setIsOpen(true);
     onOpenChange?.({ isOpen: true });
-  }, [onOpenChange]);
+  }, [isOpen, onOpenChange]);
 
   const handleClose = React.useCallback(() => {
     setIsOpen(false);
@@ -82,13 +83,20 @@ const _Tooltip = ({
 
   return (
     <TooltipContext.Provider value={true}>
-      {/* Cloning the trigger children to enhance it with ref and event handler */}
+      {/* Cloning the trigger children to enhance it with ref and event handler.
+          Button uses Pressable `onPress` (via `onClick`); `onTouchEnd` alone is
+          unreliable inside ScrollView / ButtonGroup — real taps often only fire
+          press. Attach both so Storybook and product taps open the tooltip. */}
       {React.cloneElement(children, {
         ...mergeProps(
           {
             onTouchEnd: children.props.onTouchEnd,
+            onClick: children.props.onClick,
           },
-          { onTouchEnd: handleOpen },
+          {
+            onTouchEnd: handleOpen,
+            onClick: handleOpen,
+          },
         ),
         ref: refs.setReference,
       })}
