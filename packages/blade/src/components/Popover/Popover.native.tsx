@@ -102,13 +102,20 @@ const _Popover = ({
 
   return (
     <PopoverContext.Provider value={contextValue}>
-      {/* Cloning the trigger children to enhance it with ref and event handler */}
+      {/* Cloning the trigger children to enhance it with ref and event handler.
+          Button uses Pressable `onPress` (via `onClick`); `onTouchEnd` alone is
+          unreliable inside ScrollView / ButtonGroup — real taps often only fire
+          press. Attach both so Storybook and product taps open the popover. */}
       {React.cloneElement(children, {
         ...mergeProps(
           {
             onTouchEnd: children.props.onTouchEnd,
+            onClick: children.props.onClick,
           },
-          { onTouchEnd: handleOpen },
+          {
+            onTouchEnd: handleOpen,
+            onClick: handleOpen,
+          },
         ),
         ref: refs.setReference,
       })}

@@ -528,7 +528,7 @@ const ShowcaseTemplate: StoryFn<typeof ButtonGroupComponent> = () => {
       </Box>
 
       {/* With Popover */}
-      <Box>
+      <Box minHeight="220px">
         <Text
           size="large"
           weight="semibold"
