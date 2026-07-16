@@ -17,18 +17,21 @@ const useVerifyAllowedChildren = (props: {
       const childComponentId = getComponentId(child);
       const isValidChild = child && allowedComponents.includes(childComponentId!);
       if (!isValidChild) {
-        const actualChildName =
-          childComponentId ??
-          // eslint-disable-next-line no-restricted-properties
-          (typeof child.type === 'function'
-            ? (child.type as { displayName?: string; name?: string }).displayName ??
-              (child.type as { name?: string }).name
-            : String(child.type));
+        let actualChildName: string | undefined = childComponentId ?? undefined;
+        if (!actualChildName) {
+          if (typeof child.type === 'function') {
+            const componentType = child.type as { displayName?: string; name?: string };
+            // eslint-disable-next-line no-restricted-properties
+            actualChildName = componentType.displayName ?? componentType.name;
+          } else {
+            actualChildName = String(child.type);
+          }
+        }
         throwBladeError({
           message: `Only \`${allowedComponents.join(
             ', ',
           )}\` components are accepted in \`${componentName}\` children. Received \`${
-            actualChildName || 'Unknown'
+            actualChildName ?? 'Unknown'
           }\``,
           moduleName: componentName,
         });
