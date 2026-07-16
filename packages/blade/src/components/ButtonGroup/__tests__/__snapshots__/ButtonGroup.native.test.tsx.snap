@@ -9,7 +9,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -71,7 +72,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -315,6 +315,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -322,9 +324,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -337,6 +339,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -344,9 +348,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -382,6 +386,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 4279129293,
@@ -389,9 +395,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -1295,7 +1301,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={true}
     size="medium"
@@ -1357,7 +1364,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -1605,6 +1611,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -1612,9 +1620,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -1627,6 +1635,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -1634,9 +1644,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -1672,6 +1682,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 4279129293,
@@ -1679,9 +1691,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -2593,7 +2605,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="large"
@@ -2639,9 +2652,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
         accessible={true}
         borderRadii={
           {
-            "bottomLeft": 8,
+            "bottomLeft": 12,
             "bottomRight": 0,
-            "topLeft": 8,
+            "topLeft": 12,
             "topRight": 0,
           }
         }
@@ -2655,7 +2668,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -2690,12 +2702,12 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
               "alignItems": "center",
               "alignSelf": "center",
               "backgroundColor": "hsla(218, 89%, 51%, 1)",
-              "borderBottomLeftRadius": 8,
+              "borderBottomLeftRadius": 12,
               "borderBottomRightRadius": 0,
               "borderColor": "black",
               "borderRadius": 0,
               "borderStyle": "solid",
-              "borderTopLeftRadius": 8,
+              "borderTopLeftRadius": 12,
               "borderTopRightRadius": 0,
               "borderWidth": 0,
               "cursor": "pointer",
@@ -2899,6 +2911,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={12}
+                ry={12}
                 stroke={
                   {
                     "payload": 788529151,
@@ -2906,9 +2920,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -2921,6 +2935,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={12}
+                ry={12}
                 stroke={
                   {
                     "payload": 788529151,
@@ -2928,9 +2944,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -2942,8 +2958,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                     "strokeWidth",
                   ]
                 }
-                rx={8}
-                ry={8}
+                rx={12}
+                ry={12}
                 stroke={
                   {
                     "payload": 4279461105,
@@ -2966,6 +2982,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={12}
+                ry={12}
                 stroke={
                   {
                     "payload": 4279129293,
@@ -2973,9 +2991,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -2990,8 +3008,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                     "fill",
                   ]
                 }
-                rx={8}
-                ry={8}
+                rx={12}
+                ry={12}
                 width="100%"
                 x={0}
                 y={0}
@@ -3513,9 +3531,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
         borderRadii={
           {
             "bottomLeft": 0,
-            "bottomRight": 8,
+            "bottomRight": 12,
             "topLeft": 0,
-            "topRight": 8,
+            "topRight": 12,
           }
         }
         borderRadius={0}
@@ -3564,12 +3582,12 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
               "alignSelf": "center",
               "backgroundColor": "hsla(218, 89%, 51%, 1)",
               "borderBottomLeftRadius": 0,
-              "borderBottomRightRadius": 8,
+              "borderBottomRightRadius": 12,
               "borderColor": "black",
               "borderRadius": 0,
               "borderStyle": "solid",
               "borderTopLeftRadius": 0,
-              "borderTopRightRadius": 8,
+              "borderTopRightRadius": 12,
               "borderWidth": 0,
               "cursor": "pointer",
               "display": "flex",
@@ -3752,8 +3770,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                     "strokeWidth",
                   ]
                 }
-                rx={8}
-                ry={8}
+                rx={12}
+                ry={12}
                 stroke={
                   {
                     "payload": 4279461105,
@@ -3879,7 +3897,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -3941,7 +3960,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -4185,6 +4203,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -4192,9 +4212,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -4207,6 +4227,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -4214,9 +4236,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -4252,6 +4274,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 4279129293,
@@ -4259,9 +4283,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -5165,7 +5189,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="small"
@@ -5227,7 +5252,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -5471,6 +5495,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -5478,9 +5504,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -5493,6 +5519,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -5500,9 +5528,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -5538,6 +5566,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 4279129293,
@@ -5545,9 +5575,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -6451,7 +6481,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="xsmall"
@@ -6513,7 +6544,6 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -6757,6 +6787,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -6764,9 +6796,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -6779,6 +6811,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -6786,9 +6820,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -6824,6 +6858,8 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 4279129293,
@@ -6831,9 +6867,9 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -7737,7 +7773,8 @@ exports[`<ButtonGroup /> (native) should render disabled ButtonGroup 1`] = `
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -7798,7 +7835,6 @@ exports[`<ButtonGroup /> (native) should render disabled ButtonGroup 1`] = `
         color="primary"
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
@@ -8342,7 +8378,8 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -8404,7 +8441,6 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
         data-blade-component="button"
         defaultBackgroundColor="hsla(4, 85%, 44%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 44%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(4, 85%, 36%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -8648,6 +8684,8 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -8655,9 +8693,9 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -8670,6 +8708,8 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -8677,9 +8717,9 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -8715,6 +8755,8 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 4289337358,
@@ -8722,9 +8764,9 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -9628,7 +9670,8 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -9690,7 +9733,6 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -9938,6 +9980,8 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 771751936,
@@ -9945,9 +9989,9 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
             </RNSVGGroup>
           </RNSVGSvgView>
@@ -10812,7 +10856,8 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -10874,7 +10919,6 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
         data-blade-component="button"
         defaultBackgroundColor="hsla(150, 100%, 28%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 28%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(150, 100%, 23%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -11118,6 +11162,8 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -11125,9 +11171,9 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -11140,6 +11186,8 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -11147,9 +11195,9 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -11185,6 +11233,8 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 4278220091,
@@ -11192,9 +11242,9 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -12098,7 +12148,8 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -12160,7 +12211,6 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -12408,6 +12458,8 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 771751936,
@@ -12415,9 +12467,9 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
             </RNSVGGroup>
           </RNSVGSvgView>
@@ -13282,7 +13334,8 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -13344,7 +13397,6 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
         data-blade-component="button"
         defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(218, 87%, 43%, 1)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -13588,6 +13640,8 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -13595,9 +13649,9 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                 }
                 strokeWidth={7}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -13610,6 +13664,8 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 788529151,
@@ -13617,9 +13673,9 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={null}
@@ -13655,6 +13711,8 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 4279129293,
@@ -13662,9 +13720,9 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -14568,7 +14626,8 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -14630,7 +14689,6 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -14878,6 +14936,8 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 771751936,
@@ -14885,9 +14945,9 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
             </RNSVGGroup>
           </RNSVGSvgView>
@@ -15752,7 +15812,8 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -15814,7 +15875,6 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(204, 8%, 88%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 1)"
         focusBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -16062,6 +16122,8 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 771751936,
@@ -16069,9 +16131,9 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   }
                 }
                 strokeWidth={4}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
             </RNSVGGroup>
           </RNSVGSvgView>
@@ -16936,7 +16998,8 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -16998,7 +17061,6 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -17265,6 +17327,8 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 771751936,
@@ -17272,9 +17336,9 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
               <RNSVGRect
                 fill={
@@ -18178,7 +18242,8 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -18240,7 +18305,6 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -18488,6 +18552,8 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 771751936,
@@ -18495,9 +18561,9 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
             </RNSVGGroup>
           </RNSVGSvgView>
@@ -19362,7 +19428,8 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
   }
 >
   <View
-    accessible={true}
+    accessibilityRole="toolbar"
+    accessible={false}
     data-blade-component="button-group"
     isFullWidth={false}
     size="medium"
@@ -19424,7 +19491,6 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
-        flattenInsetShadowSides={true}
         focusBackgroundColor="hsla(0, 0%, 0%, 0.18)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
@@ -19672,6 +19738,8 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                     "strokeWidth",
                   ]
                 }
+                rx={8}
+                ry={8}
                 stroke={
                   {
                     "payload": 771751936,
@@ -19679,9 +19747,9 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   }
                 }
                 strokeWidth={5}
-                width="200%"
-                x="-50%"
-                y="0"
+                width="100%"
+                x={0}
+                y={0}
               />
             </RNSVGGroup>
           </RNSVGSvgView>
