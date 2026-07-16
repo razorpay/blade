@@ -20,7 +20,11 @@
 
   const themeTokens = $derived.by((): ThemeTokens => {
     if (brandColor) {
-      return createTheme({ brandColor }).theme;
+      try {
+        return createTheme({ brandColor }).theme;
+      } catch {
+        return bladeTheme;
+      }
     }
     return bladeTheme;
   });

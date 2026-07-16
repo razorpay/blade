@@ -1,3 +1,7 @@
+<script module lang="ts">
+  declare const __DEV__: boolean;
+</script>
+
 <script lang="ts">
   import { onDestroy, onMount, untrack } from 'svelte';
   import {
@@ -9,7 +13,7 @@
     getBladeThemeContextGetter,
     setBladeThemeContext,
   } from './bladeThemeContext';
-  import { isValidColorSchemeInput } from './getColorScheme';
+  import { colorSchemeNamesInput, isValidColorSchemeInput } from './getColorScheme';
   import { resolveBladeTheme } from './resolveBladeTheme';
   import type { BladeProviderProps, BladeThemeContextValue } from './types';
 
@@ -22,17 +26,29 @@
   const parentGetter = getBladeThemeContextGetter();
   const isRootProvider = !parentGetter;
 
+  if (typeof __DEV__ !== 'undefined' && __DEV__) {
+    if (!themeTokens) {
+      throw new Error(
+        `[Blade: BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found ${typeof themeTokens}`,
+      );
+    }
+    if (colorSchemeProp && !isValidColorSchemeInput(colorSchemeProp)) {
+      throw new Error(
+        `[Blade: BladeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${colorSchemeProp}`,
+      );
+    }
+  }
+
   /** Local override from setColorScheme; cleared when colorScheme prop changes. */
   let colorSchemeOverride = $state<ColorSchemeNamesInput | undefined>(undefined);
-  let viewportWidth = $state(768);
+  let viewportWidth = $state(typeof window !== 'undefined' ? window.innerWidth : 0);
   let systemPreferenceVersion = $state(0);
 
   $effect(() => {
     // Track prop; clear local override when parent drives a new scheme
-    const nextProp = colorSchemeProp;
+    colorSchemeProp;
     untrack(() => {
       colorSchemeOverride = undefined;
-      void nextProp;
     });
   });
 
@@ -60,10 +76,12 @@
   );
 
   const setColorScheme = (next: ColorSchemeNamesInput): void => {
-    if (!isValidColorSchemeInput(next)) {
-      throw new Error(
-        `[Blade: BladeProvider]: Expected color scheme to be one of [light, dark, system] but received ${next}`,
-      );
+    if (typeof __DEV__ !== 'undefined' && __DEV__) {
+      if (!isValidColorSchemeInput(next)) {
+        throw new Error(
+          `[Blade: BladeProvider]: Expected color scheme to be one of [light, dark, system] but received ${next}`,
+        );
+      }
     }
     colorSchemeOverride = next;
   };
@@ -110,8 +128,11 @@
 
   onDestroy(() => {
     if (isRootProvider && typeof document !== 'undefined') {
-      document.documentElement.removeAttribute('data-blade-color-scheme');
-      document.body.removeAttribute('data-theme');
+      const remainingProviders = document.querySelectorAll('[data-blade-provider]');
+      if (remainingProviders.length === 0) {
+        document.documentElement.removeAttribute('data-blade-color-scheme');
+        document.body.removeAttribute('data-theme');
+      }
     }
   });
 </script>
