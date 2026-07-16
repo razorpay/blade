@@ -89,10 +89,9 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -123,22 +122,20 @@ exports[`<Pagination /> should render basic pagination 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c3.c3.c3.c3.c3:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c3.c3.c3.c3.c3 * {
@@ -155,10 +152,9 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -189,22 +185,20 @@ exports[`<Pagination /> should render basic pagination 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
 .c8.c8.c8.c8.c8:active {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c8.c8.c8.c8.c8 * {
@@ -419,10 +413,9 @@ exports[`<Pagination /> should render disabled state 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -453,22 +446,20 @@ exports[`<Pagination /> should render disabled state 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c3.c3.c3.c3.c3:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c3.c3.c3.c3.c3 * {
@@ -849,10 +840,9 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -883,22 +873,20 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 }
 
 .c27.c27.c27.c27.c27:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c27.c27.c27.c27.c27:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c27.c27.c27.c27.c27:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c27.c27.c27.c27.c27 * {
@@ -915,10 +903,9 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -949,22 +936,20 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
 }
 
 .c36.c36.c36.c36.c36:hover {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
 .c36.c36.c36.c36.c36:active {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
 .c36.c36.c36.c36.c36:focus-visible {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c36.c36.c36.c36.c36 * {
@@ -1924,10 +1909,9 @@ exports[`<Pagination /> should render with label 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -1958,22 +1942,20 @@ exports[`<Pagination /> should render with label 1`] = `
 }
 
 .c5.c5.c5.c5.c5:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c5.c5.c5.c5.c5:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c5.c5.c5.c5.c5:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c5.c5.c5.c5.c5 * {
@@ -1990,10 +1972,9 @@ exports[`<Pagination /> should render with label 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -2024,22 +2005,20 @@ exports[`<Pagination /> should render with label 1`] = `
 }
 
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
 .c9.c9.c9.c9.c9:active {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
 .c9.c9.c9.c9.c9:focus-visible {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9.c9.c9.c9.c9 * {
@@ -2294,10 +2273,9 @@ exports[`<Pagination /> should render with page number selector 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -2328,22 +2306,20 @@ exports[`<Pagination /> should render with page number selector 1`] = `
 }
 
 .c3.c3.c3.c3.c3:hover {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
 .c3.c3.c3.c3.c3:active {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c3.c3.c3.c3.c3 * {
@@ -2997,10 +2973,9 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   height: 36px;
   width: 36px;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -3031,22 +3006,20 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c26.c26.c26.c26.c26:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c26.c26.c26.c26.c26:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c26.c26.c26.c26.c26:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c26.c26.c26.c26.c26 * {
@@ -3063,10 +3036,9 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   height: 36px;
   width: 36px;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -3097,22 +3069,20 @@ exports[`<Pagination /> should render with page size picker 1`] = `
 }
 
 .c31.c31.c31.c31.c31:hover {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
 .c31.c31.c31.c31.c31:active {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
 .c31.c31.c31.c31.c31:focus-visible {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c31.c31.c31.c31.c31 * {

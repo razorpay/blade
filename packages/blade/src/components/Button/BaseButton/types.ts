@@ -36,6 +36,7 @@ export type BaseButtonStyleProps = {
   hoverBackgroundColor: string;
   hoverBoxShadow?: string;
   hoverIconColor: string;
+  activeBackgroundColor: string;
   focusBackgroundColor: string;
   focusBoxShadow?: string;
   focusRingColor: string;
@@ -77,6 +78,7 @@ export type StyledBaseButtonProps = Omit<
   hoverBackgroundColor: string;
   hoverBorderColor?: string;
   hoverIconColor: DotNotationToken<Theme['colors']>;
+  activeBackgroundColor: string;
   isFullWidth: boolean;
   motionDuration: DurationString;
   motionEasing: EasingString;

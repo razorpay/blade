@@ -3097,10 +3097,9 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -3131,22 +3130,20 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
+  background-color: hsla(0,0%,100%,0);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -3544,10 +3541,9 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -3578,22 +3574,20 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(206,10%,29%,0.06);
-  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(206,10%,29%,0.06);
-  box-shadow: inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  background-color: hsla(0,0%,100%,0);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(206,10%,29%,0.06);
+  background-color: hsla(0,0%,100%,0);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.32);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -5279,7 +5273,6 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
 
 .c0.c0.c0.c0.c0 > button[role="button"]:not(:first-child),
 .c0.c0.c0.c0.c0 > *:not(:first-child) button[role="button"] {
-  margin-left: -1px;
   background-image: none;
 }
 
@@ -5287,10 +5280,9 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -5321,22 +5313,20 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -6043,7 +6033,6 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
 
 .c0.c0.c0.c0.c0 > button[role="button"]:not(:first-child),
 .c0.c0.c0.c0.c0 > *:not(:first-child) button[role="button"] {
-  margin-left: -1px;
   background-image: none;
 }
 
@@ -6051,10 +6040,9 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,0.18);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -6085,22 +6073,20 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
 }
 
 .c1.c1.c1.c1.c1:hover {
-  background-color: hsla(0,0%,0%,0.18);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  background-color: hsla(0,0%,100%,0.18);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:active {
-  background-color: hsla(0,0%,0%,0.18);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  background-color: hsla(0,0%,100%,0.32);
   background-image: none;
 }
 
 .c1.c1.c1.c1.c1:focus-visible {
-  background-color: hsla(0,0%,0%,0.18);
+  background-color: hsla(0,0%,100%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(0,0%,100%,0.8);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c1.c1.c1.c1.c1 * {

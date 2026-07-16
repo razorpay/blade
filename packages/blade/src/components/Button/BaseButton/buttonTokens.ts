@@ -27,21 +27,25 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
       primary: {
         default: `interactive.background.${color}.default`,
         highlighted: `interactive.background.${color}.highlighted`,
+        active: `interactive.background.${color}.highlighted`,
         disabled: `interactive.background.${color}.disabled`,
       },
       secondary: {
         default: 'surface.background.gray.intense',
         highlighted: 'surface.background.gray.intense',
+        active: 'surface.background.gray.intense',
         disabled: 'interactive.background.staticWhite.ghost',
       },
       tertiary: {
-        default: 'surface.background.gray.intense',
-        highlighted: 'surface.background.gray.intense',
-        disabled: 'interactive.background.staticWhite.ghost',
+        default: 'transparent',
+        highlighted: 'interactive.background.gray.faded',
+        active: 'interactive.background.gray.fadedHighlighted',
+        disabled: 'transparent',
       },
       transparent: {
         default: 'transparent',
         highlighted: 'interactive.background.gray.faded',
+        active: 'interactive.background.gray.fadedHighlighted',
         disabled: 'interactive.background.gray.disabled',
       },
     },
@@ -49,17 +53,20 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
       primary: {
         default: 'interactive.background.staticWhite.default',
         highlighted: 'interactive.background.staticWhite.highlighted',
+        active: 'interactive.background.staticWhite.highlighted',
         disabled: 'interactive.background.staticWhite.disabled',
       },
       secondary: {
         default: 'interactive.background.staticWhite.faded',
         highlighted: 'interactive.background.staticBlack.faded',
+        active: 'interactive.background.staticBlack.faded',
         disabled: 'interactive.background.gray.disabled',
       },
       tertiary: {
-        default: 'interactive.background.staticWhite.faded',
-        highlighted: 'interactive.background.staticBlack.faded',
-        disabled: 'interactive.background.gray.disabled',
+        default: 'transparent',
+        highlighted: 'interactive.background.staticWhite.faded',
+        active: 'interactive.background.staticWhite.fadedHighlighted',
+        disabled: 'transparent',
       },
     },
   } as const;
@@ -121,17 +128,9 @@ const boxShadow = (
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
       },
       tertiary: {
-        default: [
-          { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.default' },
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
-        ],
-        highlighted: [
-          { y: -1, blur: 0.5, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.highlighted' },
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.gray.default' },
-        ],
-        disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.gray.disabled' }],
+        default: [],
+        highlighted: [],
+        disabled: [],
       },
       transparent: {
         default: [],
@@ -163,15 +162,9 @@ const boxShadow = (
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
       },
       tertiary: {
-        default: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
-        ],
-        highlighted: [
-          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
-        ],
-        disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
+        default: [],
+        highlighted: [],
+        disabled: [],
       },
     },
   };

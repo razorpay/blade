@@ -907,10 +907,9 @@ exports[`Drawer renders a Drawer 1`] = `
   height: 28px;
   width: 28px;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
@@ -941,22 +940,20 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 .c19.c19.c19.c19.c19:hover {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.06);
   background-image: none;
 }
 
 .c19.c19.c19.c19.c19:active {
-  background-color: hsla(0,0%,100%,1);
-  box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  background-color: hsla(206,10%,29%,0.09);
   background-image: none;
 }
 
 .c19.c19.c19.c19.c19:focus-visible {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(206,10%,29%,0.06);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c19.c19.c19.c19.c19 * {

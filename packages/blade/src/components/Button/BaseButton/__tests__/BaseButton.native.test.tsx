@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
 import type { BaseButtonProps } from '../BaseButton';
-import BaseButton from '../BaseButton';
+import BaseButton, { getBackgroundColorToken, getBoxShadowToken } from '../BaseButton';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CloseIcon, CreditCardIcon } from '~components/Icons';
 
@@ -196,6 +196,40 @@ describe('<BaseButton />', () => {
     ).toThrowErrorMatchingInlineSnapshot(
       `"[Blade: BaseButton]: Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "positive""`,
     );
+  });
+
+  it('should use ghost tokens for tertiary primary button', () => {
+    expect(
+      getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'default' }),
+    ).toBe('transparent');
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'hover' })).toBe(
+      'interactive.background.gray.faded',
+    );
+    expect(
+      getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'active' }),
+    ).toBe('interactive.background.gray.fadedHighlighted');
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'primary', state: 'default' })).toEqual(
+      [],
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'primary', state: 'hover' })).toEqual(
+      [],
+    );
+  });
+
+  it('should use ghost tokens for tertiary white button', () => {
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'default' })).toBe(
+      'transparent',
+    );
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'hover' })).toBe(
+      'interactive.background.staticWhite.faded',
+    );
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'active' })).toBe(
+      'interactive.background.staticWhite.fadedHighlighted',
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'white', state: 'default' })).toEqual(
+      [],
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'white', state: 'hover' })).toEqual([]);
   });
 
   it('should have accessibilityLabel', () => {

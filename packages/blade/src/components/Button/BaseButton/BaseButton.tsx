@@ -119,6 +119,10 @@ type BaseButtonColorTokenModifiers = {
   color: BaseButtonProps['color'];
 };
 
+type BaseButtonBackgroundColorTokenModifiers = Omit<BaseButtonColorTokenModifiers, 'state'> & {
+  state: BaseButtonColorTokenModifiers['state'] | 'active';
+};
+
 const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
   if (isReactNative()) {
     return undefined; // as property doesn't work with react native
@@ -135,7 +139,7 @@ export const getBackgroundColorToken = ({
   variant,
   state,
   color,
-}: BaseButtonColorTokenModifiers) => {
+}: BaseButtonBackgroundColorTokenModifiers) => {
   const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
 
   // For white and transparent colors, we use 'primary' as the base color
@@ -274,7 +278,7 @@ const getProps = ({
   };
 
   const getBoxShadow = (
-    state: 'default' | 'hover' | 'focus' | 'disabled',
+    state: BaseButtonColorTokenModifiers['state'],
     btnColor: BaseButtonProps['color'],
   ): string | undefined => {
     const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state });
@@ -374,6 +378,9 @@ const getProps = ({
       getBackgroundColorToken({ variant, color, state: 'hover' }),
     ),
     hoverBoxShadow: getBoxShadow('hover', color),
+    activeBackgroundColor: resolveBackgroundValue(
+      getBackgroundColorToken({ variant, color, state: 'active' }),
+    ),
     hoverIconColor: getIn(
       theme.colors,
       getTextColorToken({
@@ -414,6 +421,7 @@ const getProps = ({
     props.defaultBoxShadow = getBoxShadow('disabled', color);
     props.hoverBackgroundColor = disabledBackgroundColor;
     props.hoverBoxShadow = getBoxShadow('disabled', color);
+    props.activeBackgroundColor = disabledBackgroundColor;
     props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBoxShadow = getBoxShadow('disabled', color);
   }
@@ -504,6 +512,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     fontSize,
     hoverBoxShadow,
     hoverBackgroundColor,
+    activeBackgroundColor,
     hoverIconColor,
     iconColor,
     iconSize,
@@ -598,6 +607,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       focusRingColor={focusRingColor}
       hoverBoxShadow={hoverBoxShadow}
       hoverBackgroundColor={hoverBackgroundColor}
+      activeBackgroundColor={activeBackgroundColor}
       isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
       onBlur={onBlur}

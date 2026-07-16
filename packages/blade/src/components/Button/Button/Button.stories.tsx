@@ -23,7 +23,7 @@ import { Box } from '~components/Box';
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
-      componentDescription="This is the Button component which can be used for various CTAs. It is available in 3 different variants."
+      componentDescription="This is the Button component which can be used for CTAs. It has primary, secondary, and tertiary variants. Tertiary is the ghost-style variant: transparent by default with a visible hover and focus background."
       componentName="Button"
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74881-74603&t=2pKzbmnd3phWhn1M-1&scaling=min-zoom&page-id=614%3A1&mode=design"
     >
@@ -34,7 +34,7 @@ const Page = (): ReactElement => {
         
         function App() {
           return (
-            // Try changing variant here to secondary
+            // Try changing variant here to secondary or tertiary
             <Button 
               variant="primary" 
               onClick={() => console.log('Tadaaaa')}
@@ -286,7 +286,8 @@ TertiaryButton.args = {
 TertiaryButton.parameters = {
   docs: {
     description: {
-      story: 'Tertiary Button in different sizes',
+      story:
+        'Tertiary Button in different sizes. It is transparent by default and shows its container on hover and focus.',
     },
   },
 };

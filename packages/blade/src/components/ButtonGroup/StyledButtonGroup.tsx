@@ -8,7 +8,7 @@ const StyledButtonGroup = styled(BaseBox)<StyledButtonGroupProps>(
   ({ theme, variant = 'primary', isFullWidth, size = 'medium' }) => {
     const borderRadiusToken = buttonBorderRadius[size];
     const borderRadius = makeBorderSize(theme.border.radius[borderRadiusToken]);
-    const isSecondaryOrTertiary = variant === 'secondary' || variant === 'tertiary';
+    const isSecondary = variant === 'secondary';
 
     return {
       display: 'flex',
@@ -48,9 +48,8 @@ const StyledButtonGroup = styled(BaseBox)<StyledButtonGroupProps>(
         backgroundImage: 'none',
       },
 
-      // For secondary/tertiary variants, use negative margin to collapse double borders
-      // (these variants have borders via box-shadow, so adjacent buttons would show double borders)
-      ...(isSecondaryOrTertiary && {
+      // Secondary has borders via box-shadow, so adjacent buttons would show double borders.
+      ...(isSecondary && {
         '> button[role="button"]:not(:first-child), > *:not(:first-child) button[role="button"]': {
           marginLeft: '-1px',
           backgroundImage: 'none',

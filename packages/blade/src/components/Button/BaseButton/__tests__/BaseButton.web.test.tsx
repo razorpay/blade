@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/react';
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import type { BaseButtonProps } from '../BaseButton';
-import BaseButton from '../BaseButton';
+import BaseButton, { getBackgroundColorToken, getBoxShadowToken } from '../BaseButton';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { CloseIcon, CreditCardIcon } from '~components/Icons';
@@ -202,6 +202,88 @@ describe('<BaseButton />', () => {
     ).toThrowErrorMatchingInlineSnapshot(
       `"[Blade: BaseButton]: Tertiary variant can only be used with color: "primary" or "white" or "transparent" but received "positive""`,
     );
+  });
+
+  it('should use ghost tokens for tertiary primary button', () => {
+    expect(
+      getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'default' }),
+    ).toBe('transparent');
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'hover' })).toBe(
+      'interactive.background.gray.faded',
+    );
+    expect(
+      getBackgroundColorToken({ variant: 'tertiary', color: 'primary', state: 'active' }),
+    ).toBe('interactive.background.gray.fadedHighlighted');
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'primary', state: 'default' })).toEqual(
+      [],
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'primary', state: 'hover' })).toEqual(
+      [],
+    );
+  });
+
+  it('should use ghost tokens for tertiary white button', () => {
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'default' })).toBe(
+      'transparent',
+    );
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'hover' })).toBe(
+      'interactive.background.staticWhite.faded',
+    );
+    expect(getBackgroundColorToken({ variant: 'tertiary', color: 'white', state: 'active' })).toBe(
+      'interactive.background.staticWhite.fadedHighlighted',
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'white', state: 'default' })).toEqual(
+      [],
+    );
+    expect(getBoxShadowToken({ variant: 'tertiary', color: 'white', state: 'hover' })).toEqual([]);
+  });
+
+  it('should keep tertiary primary and white layout spacing same as primary button', () => {
+    const { getAllByRole } = renderWithTheme(
+      <>
+        <BaseButton icon={CreditCardIcon}>Primary</BaseButton>
+        <BaseButton variant="tertiary" icon={CreditCardIcon}>
+          Tertiary Primary
+        </BaseButton>
+        <BaseButton color="white" icon={CreditCardIcon}>
+          White
+        </BaseButton>
+        <BaseButton variant="tertiary" color="white" icon={CreditCardIcon}>
+          Tertiary White
+        </BaseButton>
+      </>,
+    );
+
+    const [primaryButton, tertiaryButton, whiteButton, tertiaryWhiteButton] = getAllByRole(
+      'button',
+    );
+    const getLayoutStyles = (button: HTMLElement): Record<string, string> => {
+      const styles = getComputedStyle(button);
+      return {
+        minHeight: styles.minHeight,
+        paddingTop: styles.paddingTop,
+        paddingBottom: styles.paddingBottom,
+        paddingLeft: styles.paddingLeft,
+        paddingRight: styles.paddingRight,
+        justifyContent: styles.justifyContent,
+        alignItems: styles.alignItems,
+      };
+    };
+
+    expect(getLayoutStyles(tertiaryButton)).toEqual(getLayoutStyles(primaryButton));
+    expect(getLayoutStyles(tertiaryWhiteButton)).toEqual(getLayoutStyles(whiteButton));
+
+    const expectedMediumLayout = {
+      minHeight: '36px',
+      paddingTop: '0px',
+      paddingBottom: '0px',
+      paddingLeft: '12px',
+      paddingRight: '12px',
+      justifyContent: 'center',
+      alignItems: 'center',
+    };
+    expect(getLayoutStyles(tertiaryButton)).toEqual(expectedMediumLayout);
+    expect(getLayoutStyles(tertiaryWhiteButton)).toEqual(expectedMediumLayout);
   });
 
   it('should have accessibilityLabel', () => {
