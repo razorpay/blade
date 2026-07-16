@@ -34,7 +34,7 @@ type ButtonShadowOverlayProps = {
    * the inset highlight/shadow from doubling up and looking thick at the
    * junction between two adjacent buttons. The actual border ring is unaffected.
    */
-  flattenInsetShadowSides?: boolean;
+  isInsetShadowSidesFlattened?: boolean;
 };
 
 /**
@@ -72,7 +72,7 @@ const ButtonShadowOverlay = ({
   borderColor,
   ringWidth = 0.5,
   showGradient = false,
-  flattenInsetShadowSides = false,
+  isInsetShadowSidesFlattened = false,
 }: ButtonShadowOverlayProps): React.ReactElement => {
   const radii: ButtonCornerRadii = borderRadii ?? {
     topLeft: borderRadius,
@@ -234,7 +234,7 @@ const ButtonShadowOverlay = ({
               stroke: highlightColor,
               strokeWidth: 7,
               mask: 'url(#bottomMask)',
-              horizontalOnly: flattenInsetShadowSides,
+              horizontalOnly: isInsetShadowSidesFlattened,
             })
           : null}
         {highlightColor
@@ -242,7 +242,7 @@ const ButtonShadowOverlay = ({
               stroke: highlightColor,
               strokeWidth: (highlightHeight + 0.5) * 2,
               mask: 'url(#topMask)',
-              horizontalOnly: flattenInsetShadowSides,
+              horizontalOnly: isInsetShadowSidesFlattened,
             })
           : null}
         {renderShape('border', { stroke: borderColor, strokeWidth: ringWidth * 2 })}
@@ -251,7 +251,7 @@ const ButtonShadowOverlay = ({
               stroke: shadowColor,
               strokeWidth: (shadowHeight + 1) * 2,
               mask: 'url(#bottomMask)',
-              horizontalOnly: flattenInsetShadowSides,
+              horizontalOnly: isInsetShadowSidesFlattened,
             })
           : null}
         {showGradient ? renderShape('glow', { fill: 'url(#btnGlow)' }) : null}

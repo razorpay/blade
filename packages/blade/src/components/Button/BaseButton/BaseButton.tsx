@@ -519,16 +519,17 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   // Keep ButtonGroup press index in sync so border-collapse / z-index can
   // reveal this button's highlighted right edge while pressed (RN only).
-  React.useEffect(() => {
-    if (typeof buttonGroupProps.buttonIndex !== 'number') return undefined;
+  // useLayoutEffect ensures the z-index update happens before paint, keeping
+  // it in sync with Reanimated's UI-thread press state change.
+  React.useLayoutEffect(() => {
+    if (typeof buttonGroupProps.buttonIndex !== 'number') return;
     if (isPressed) {
       buttonGroupProps.setPressedButtonIndex?.(buttonGroupProps.buttonIndex);
     } else {
       buttonGroupProps.setPressedButtonIndex?.(null);
     }
-    return () => {
-      buttonGroupProps.setPressedButtonIndex?.(null);
-    };
+    // No cleanup — an unconditional cleanup would wrongly clear another
+    // button's pressed state in a multi-touch scenario.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPressed, buttonGroupProps.buttonIndex]);
 
@@ -617,7 +618,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   // ButtonGroup computes collapseBorder based on its variant and passes it
   // through context, so BaseButton doesn't need to inspect the variant string.
-  const collapseGroupBorder =
+  const isGroupBorderCollapsed =
     isInsideRNButtonGroup && !isFirstInGroup && Boolean(buttonGroupProps.collapseBorder);
 
   // Match web ButtonGroup: only the first child keeps the radial glow
@@ -723,8 +724,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       type={type}
       borderRadius={buttonBorderRadiusValue}
       {...(buttonBorderRadii ? { borderRadii: buttonBorderRadii } : {})}
-      {...(collapseGroupBorder ? { collapseGroupBorder } : {})}
-      {...(isNonFirstInButtonGroup ? { flattenInsetShadowSides: true } : {})}
+      {...(isGroupBorderCollapsed ? { isGroupBorderCollapsed } : {})}
+      {...(isNonFirstInButtonGroup ? { isInsetShadowSidesFlattened: true } : {})}
       {...(isInsideFullWidthButtonGroup ? { isInsideFullWidthButtonGroup: true } : {})}
       motionDuration={motionDuration}
       motionEasing={motionEasing}

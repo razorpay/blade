@@ -102,13 +102,13 @@ export type StyledBaseButtonProps = Omit<
    * divider) to collapse the two adjacent borders into a single line, matching
    * web's `marginLeft: -1px` behaviour.
    */
-  collapseGroupBorder?: boolean;
+  isGroupBorderCollapsed?: boolean;
   /**
    * When true, the inset highlight/shadow overlay draws only horizontal edges
    * (top/bottom), pushing vertical sides outside the button bounds so they are
    * clipped. Prevents doubled inset shadow thickness at ButtonGroup junctions.
    */
-  flattenInsetShadowSides?: boolean;
+  isInsetShadowSidesFlattened?: boolean;
   /**
    * When true (React Native ButtonGroup with `isFullWidth`), use `flex: 1`
    * instead of `width: 100%` so sibling buttons share the row equally. Web
