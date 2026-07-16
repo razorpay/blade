@@ -307,6 +307,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
 .c8.c8.c8.c8.c8 {
   text-align: left;
   position: relative;
+  height: 100%;
 }
 
 .c0.c0.c0.c0.c0 {
