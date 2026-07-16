@@ -2652,15 +2652,15 @@ exports[`<Popover /> should render with title,footer 1`] = `
             </View>
           </View>
           <View
-            alignSelf="flex-start"
             data-blade-component="base-box"
             style={
               [
                 {
-                  "alignSelf": "flex-start",
+                  "width": "100%",
                 },
               ]
             }
+            width="100%"
           >
             <Text
               accessible={true}

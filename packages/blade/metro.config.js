@@ -11,7 +11,8 @@ const { withStorybook } = require('@storybook/react-native/metro/withStorybook')
  */
 
 const mocksDir = path.resolve(__dirname, '.storybook/react-native/mocks');
-const nodeModulesDir = fs.realpathSync(path.resolve(__dirname, 'node_modules'));
+const nodeModulesDir = path.resolve(__dirname, 'node_modules');
+const realNodeModulesDir = fs.realpathSync(nodeModulesDir);
 
 // Metro 0.76 doesn't fully support package.json "exports" for subpath imports.
 // Manually resolve subpath exports for storybook packages.
@@ -48,8 +49,10 @@ function resolveSubpathExport(moduleName) {
   return { type: 'sourceFile', filePath };
 }
 
+const isWorktreeSymlink = realNodeModulesDir !== nodeModulesDir;
+
 const config = {
-  watchFolders: [nodeModulesDir],
+  watchFolders: isWorktreeSymlink ? [realNodeModulesDir] : [nodeModulesDir],
   transformer: {
     unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
@@ -60,6 +63,7 @@ const config = {
     }),
   },
   resolver: {
+    unstable_enableSymlinks: true,
     nodeModulesPaths: [nodeModulesDir],
     resolverMainFields: ['react-native', 'browser', 'main'],
     resolveRequest: (context, moduleName, platform) => {
@@ -79,6 +83,12 @@ const config = {
         return {
           type: 'sourceFile',
           filePath: path.resolve(mocksDir, 'storybook-react-router.js'),
+        };
+      }
+      if (moduleName === '@storybook/react-vite') {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'storybook-react-vite.js'),
         };
       }
       // es-toolkit uses Unicode property escapes (\p{Lu}) unsupported by Hermes in RN 0.72

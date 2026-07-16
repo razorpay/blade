@@ -7,6 +7,7 @@ import { isFileAccepted } from '~components/FileUpload/isFileAccepted';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { getChatInputSubmitDisabled } from './getChatInputSubmitDisabled';
 
 type UseChatInputProps = Pick<
   ChatInputProps,
@@ -90,8 +91,7 @@ const useChatInput = (
 
   const hasText = textValue.trim().length > 0;
   const hasFiles = files.length > 0;
-  const hasErrorFiles = files.some((f) => f.status === 'error' || f.status === 'uploading');
-  const isSubmitDisabled = (!hasText && !hasFiles) || hasErrorFiles;
+  const isSubmitDisabled = getChatInputSubmitDisabled(textValue, files);
   const showGhostSuggestion = !hasText && Boolean(suggestions?.length) && !isMobile;
 
   const adjustTextareaHeight = React.useCallback(() => {
