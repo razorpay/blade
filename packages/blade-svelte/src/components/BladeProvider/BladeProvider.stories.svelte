@@ -1,92 +1,25 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
+  import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
   import BladeProvider from './BladeProvider.svelte';
+  import Text from '../Typography/Text/Text.svelte';
+  import Heading from '../Typography/Heading/Heading.svelte';
+  import Code from '../Typography/Code/Code.svelte';
+  import Badge from '../Badge/Badge.svelte';
+  import Button from '../Button/Button.svelte';
+  import ThemeTokensPlayground from './ThemeTokensPlayground.svelte';
+  import ThemeExplorer from './ThemeExplorer.svelte';
+  import CreateThemeFlowExplorer from './CreateThemeFlowExplorer.svelte';
 
-  /** Select labels → brand hex. Empty string = default bladeTheme (avoid `undefined` — breaks Controls). */
-  const brandOptions: Record<string, string> = {
-    Razorpay: '',
-    ICICI: '#EE681A',
-    Axis: '#83003D',
-    SBI: '#15A5EB',
-    IDBI: '#107259',
-    Allahabad: '#FFF10A',
-    BookMyShow: '#F32951',
-    Swiggy: '#F86B15',
-    Zomato: '#CF2033',
-    'DSP Mutual Fund': '#19BEA2',
-    Nykaa: '#DF005D',
-  };
-
-  /** Defaults match bladeTheme.border.radius */
-  const DEFAULT_RADIUS = {
-    small: 8,
-    medium: 12,
-    large: 16,
-  } as const;
-
-  /**
-   * createTheme requires brandColor. When Controls keep Razorpay (empty mapping)
-   * but radius is customized, use azure.500 so radius still flows through createTheme.
-   */
-  const RAZORPAY_BRAND_FALLBACK = 'hsla(218, 89%, 51%, 1)';
+  const popPayTheme = createTheme({
+    brandColor: '#F56651',
+  }).theme;
 
   const { Story } = defineMeta({
-    title: 'Components/BladeProvider',
+    title: 'Guides/Theming/BladeProvider',
     component: BladeProvider,
     tags: ['autodocs'],
-    args: {
-      colorScheme: 'light',
-      // Select option key — mapping converts to hex / '' before template sees it
-      brand: 'Razorpay',
-      radiusSmall: DEFAULT_RADIUS.small,
-      radiusMedium: DEFAULT_RADIUS.medium,
-      radiusLarge: DEFAULT_RADIUS.large,
-    },
     argTypes: {
-      colorScheme: {
-        control: 'select',
-        options: ['light', 'dark', 'system'],
-        description: 'Color scheme for this provider scope',
-        table: {
-          type: { summary: "'light' | 'dark' | 'system'" },
-          defaultValue: { summary: 'light' },
-        },
-      },
-      // `brand` not `brandColor` — preview.js matcher `/(background|color)$/i` would force a color picker
-      brand: {
-        control: { type: 'select' },
-        options: Object.keys(brandOptions),
-        mapping: brandOptions,
-        description: 'Passed to createTheme({ brandColor }).theme as themeTokens',
-        table: {
-          type: { summary: 'string' },
-          defaultValue: { summary: "'' (bladeTheme)" },
-        },
-      },
-      radiusSmall: {
-        control: { type: 'range', min: 0, max: 32, step: 1 },
-        description: 'createTheme({ borderRadius: { small } }) — buttons use this',
-        table: {
-          type: { summary: 'number' },
-          defaultValue: { summary: '8' },
-        },
-      },
-      radiusMedium: {
-        control: { type: 'range', min: 0, max: 40, step: 1 },
-        description: 'createTheme({ borderRadius: { medium } }) — cards / swatches',
-        table: {
-          type: { summary: 'number' },
-          defaultValue: { summary: '12' },
-        },
-      },
-      radiusLarge: {
-        control: { type: 'range', min: 0, max: 48, step: 1 },
-        description: 'createTheme({ borderRadius: { large } }) — demo panel shell',
-        table: {
-          type: { summary: 'number' },
-          defaultValue: { summary: '16' },
-        },
-      },
       themeTokens: {
         control: false,
         table: { disable: true },
@@ -104,45 +37,7 @@
         },
       },
     },
-  } as Parameters<typeof defineMeta>[0] & { argTypes: Record<string, unknown> });
-</script>
-
-<script lang="ts">
-  import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
-  import type { ColorSchemeNamesInput, ThemeTokens } from '@razorpay/blade-core/tokens';
-  import Text from '../Typography/Text/Text.svelte';
-  import Heading from '../Typography/Heading/Heading.svelte';
-  import ThemeContextDemo from './ThemeContextDemo.svelte';
-  import ThemeTokensPlayground from './ThemeTokensPlayground.svelte';
-
-  type StoryArgs = {
-    colorScheme?: ColorSchemeNamesInput;
-    brand?: string;
-    radiusSmall?: number;
-    radiusMedium?: number;
-    radiusLarge?: number;
-  };
-
-  function resolveThemeTokens(storyArgs: StoryArgs): ThemeTokens {
-    const radiusSmall = storyArgs.radiusSmall ?? DEFAULT_RADIUS.small;
-    const radiusMedium = storyArgs.radiusMedium ?? DEFAULT_RADIUS.medium;
-    const radiusLarge = storyArgs.radiusLarge ?? DEFAULT_RADIUS.large;
-    const hasCustomRadius =
-      radiusSmall !== DEFAULT_RADIUS.small ||
-      radiusMedium !== DEFAULT_RADIUS.medium ||
-      radiusLarge !== DEFAULT_RADIUS.large;
-
-    if (!storyArgs.brand && !hasCustomRadius) {
-      return bladeTheme;
-    }
-
-    return createTheme({
-      brandColor: storyArgs.brand || RAZORPAY_BRAND_FALLBACK,
-      borderRadius: hasCustomRadius
-        ? { small: radiusSmall, medium: radiusMedium, large: radiusLarge }
-        : undefined,
-    }).theme;
-  }
+  });
 </script>
 
 <!-- Playground — in-UI chips / segments drive createTheme (not Controls panel) -->
@@ -154,20 +49,7 @@
   <ThemeTokensPlayground />
 </Story>
 
-<!-- Controls panel — args → createTheme brand + radius + colorScheme -->
-<Story name="Controls Panel">
-  {#snippet template(args)}
-    {@const storyArgs = args as StoryArgs}
-    <BladeProvider
-      themeTokens={resolveThemeTokens(storyArgs)}
-      colorScheme={storyArgs.colorScheme ?? 'light'}
-    >
-      <ThemeContextDemo />
-    </BladeProvider>
-  {/snippet}
-</Story>
-
-<!-- Nested scopes — light parent, dark child (static showcase) -->
+<!-- Nested brand scopes — each provider owns brand, scheme, and radius tokens. -->
 <Story
   name="Nested Color Schemes"
   asChild
@@ -175,56 +57,183 @@
 >
   <div class="nested-layout">
     <BladeProvider themeTokens={bladeTheme} colorScheme="light">
-      <div class="panel">
-        <Heading size="medium" weight="semibold">Light scope</Heading>
-        <Text size="small" color="surface.text.gray.muted">Outer provider</Text>
-        <ThemeContextDemo />
-        <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
-          <div class="panel nested">
-            <Heading size="medium" weight="semibold">Dark scope</Heading>
-            <Text size="small" color="surface.text.gray.muted">Nested provider</Text>
-            <ThemeContextDemo />
+      <section class="brand-scope">
+        <div class="scope-header">
+          <div class="scope-heading">
+            <Badge color="primary" emphasis="subtle" size="small">Parent provider</Badge>
+            <Heading as="h2" size="large" weight="semibold">Default Blade checkout</Heading>
+            <Text size="small" color="surface.text.gray.muted">
+              Default Blade theme on light scheme.
+            </Text>
           </div>
+          <Code size="small">bladeTheme · light</Code>
+        </div>
+        <div class="scope-preview">
+          <div class="scope-copy">
+            <Text size="small" color="surface.text.gray.muted">Order total</Text>
+            <Heading as="h3" size="medium" weight="semibold">₹12,480</Heading>
+          </div>
+          <div class="scope-actions">
+            <Button variant="primary" size="small">Pay securely</Button>
+            <Button variant="secondary" size="small">View details</Button>
+          </div>
+        </div>
+
+        <div class="nest-connector" aria-hidden="true">
+          <span></span>
+          Nested provider overrides brand tokens
+        </div>
+
+        <BladeProvider themeTokens={popPayTheme} colorScheme="dark">
+          <section class="brand-scope nested">
+            <div class="scope-header">
+              <div class="scope-heading">
+                <Badge color="primary" emphasis="subtle" size="small">Nested provider</Badge>
+                <Heading as="h3" size="large" weight="semibold">POP Pay rewards</Heading>
+                <Text size="small" color="surface.text.gray.muted">
+                  POP Pay coral brand on dark scheme.
+                </Text>
+              </div>
+              <Code size="small">#F56651 · dark</Code>
+            </div>
+            <div class="scope-preview">
+              <div class="scope-copy">
+                <Text size="small" color="surface.text.gray.muted">Points available</Text>
+                <Heading as="h4" size="medium" weight="semibold">2,840 points</Heading>
+              </div>
+              <div class="scope-actions">
+                <Button variant="primary" size="small">Redeem points</Button>
+                <Button variant="secondary" size="small">How it works</Button>
+              </div>
+            </div>
+          </section>
         </BladeProvider>
-      </div>
+      </section>
     </BladeProvider>
   </div>
 </Story>
 
-<!-- Brand override — args-driven so Controls work -->
+<!-- Theme Explorer — resolved token tree (mirrors React "Tokens/Theme"). Toolbar brand/scheme drive it. -->
+<Story name="Theme Explorer" asChild parameters={{ controls: { disable: true } }}>
+  <div class="explorer-story">
+    <ThemeExplorer />
+  </div>
+</Story>
+
+<!-- createTheme flow — palette generation, shade usage, semantic token mapping (design review) -->
 <Story
-  name="Custom Brand"
-  args={{
-    colorScheme: 'light',
-    brand: 'DSP Mutual Fund',
-  }}
+  name="createTheme Flow"
+  asChild
+  parameters={{ controls: { disable: true } }}
 >
-  {#snippet template(args)}
-    {@const storyArgs = args as StoryArgs}
-    <BladeProvider
-      themeTokens={resolveThemeTokens(storyArgs)}
-      colorScheme={storyArgs.colorScheme ?? 'light'}
-    >
-      <ThemeContextDemo />
-    </BladeProvider>
-  {/snippet}
+  <div class="explorer-story">
+    <CreateThemeFlowExplorer />
+  </div>
 </Story>
 
 <style>
   .nested-layout {
-    padding: var(--spacing-5);
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-8);
+    background-color: var(--surface-background-gray-moderate);
   }
 
-  .panel {
+  .brand-scope {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-5);
-    padding: var(--spacing-5);
+    gap: var(--spacing-6);
+    width: min(100%, 760px);
+    box-sizing: border-box;
+    padding: var(--spacing-8);
     background-color: var(--surface-background-gray-subtle);
     border-radius: var(--border-radius-large);
+    border: 1px solid var(--surface-border-gray-muted);
+    box-shadow: var(--elevation-low-raised);
   }
 
-  .panel.nested {
-    margin-top: var(--spacing-3);
+  .scope-header,
+  .scope-preview,
+  .scope-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .scope-header {
+    justify-content: space-between;
+    gap: var(--spacing-5);
+  }
+
+  .scope-heading,
+  .scope-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-2);
+  }
+
+  .scope-preview {
+    justify-content: space-between;
+    gap: var(--spacing-5);
+    padding: var(--spacing-5);
+    background-color: var(--surface-background-primary-subtle);
+    border: 1px solid var(--surface-border-primary-muted);
+    border-radius: var(--border-radius-medium);
+  }
+
+  .scope-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--spacing-3);
+  }
+
+  .nest-connector {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    color: var(--surface-text-gray-muted);
+    font-family: var(--font-family-code);
+    font-size: var(--font-size-75);
+  }
+
+  .nest-connector span {
+    width: 28px;
+    height: 18px;
+    border-left: 1px solid var(--surface-border-gray-muted);
+    border-bottom: 1px solid var(--surface-border-gray-muted);
+    border-bottom-left-radius: var(--border-radius-small);
+  }
+
+  .brand-scope.nested {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .explorer-story {
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-8);
+    background-color: var(--surface-background-gray-subtle);
+  }
+
+  @media (max-width: 768px) {
+    .nested-layout,
+    .explorer-story {
+      padding: var(--spacing-3);
+    }
+
+    .brand-scope {
+      padding: var(--spacing-5);
+    }
+
+    .scope-header,
+    .scope-preview {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .scope-actions {
+      justify-content: flex-start;
+    }
   }
 </style>
