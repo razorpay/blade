@@ -345,11 +345,7 @@ const getProps = ({
     const defaultColors = resolveShadowColors(
       getBoxShadowToken({ variant, color: btnColor, state: 'default' }),
     );
-    if (
-      !defaultColors.highlightColor &&
-      !defaultColors.bottomColor &&
-      !defaultColors.borderColor
-    ) {
+    if (!defaultColors.highlightColor && !defaultColors.bottomColor && !defaultColors.borderColor) {
       return {};
     }
 
