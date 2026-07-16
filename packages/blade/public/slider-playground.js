@@ -1,4 +1,4 @@
-const QA_VERSION = '20260715-21';
+const QA_VERSION = '20260716-2';
 const STORIES = [
   { id: 'components-slider--default', kicker: 'Foundation', title: 'Default', height: 220 },
   { id: 'components-slider--range', kicker: 'Variant', title: 'Range', height: 240 },
@@ -32,21 +32,53 @@ const stage = document.querySelector('#preview-stage');
 const previewHeights = { 360: '2050px', 768: '1200px', full: '1050px' };
 const rangeObservers = new WeakMap();
 
+function loadStoryFrame(storyFrame) {
+  if (!storyFrame.src && storyFrame.dataset.src) {
+    storyFrame.src = storyFrame.dataset.src;
+  }
+}
+
+function observeStoryFrames(storyFrames) {
+  if (!window.IntersectionObserver) {
+    storyFrames.forEach((storyFrame, index) => {
+      window.setTimeout(() => loadStoryFrame(storyFrame), 500 * (index + 1));
+    });
+    return;
+  }
+
+  const observer = new window.IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          loadStoryFrame(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: '160px 0px' },
+  );
+
+  storyFrames.forEach((storyFrame) => observer.observe(storyFrame));
+}
+
 function renderStoryMatrix() {
   const grid = document.querySelector('#story-grid');
   const template = document.querySelector('#story-card-template');
 
-  STORIES.forEach((story) => {
+  const storyFrames = STORIES.map((story) => {
     const card = template.content.cloneNode(true);
     card.querySelector('p').textContent = story.kicker;
     card.querySelector('h3').textContent = story.title;
     card.querySelector('.story-card').classList.toggle('is-wide', Boolean(story.wide));
     const storyFrame = card.querySelector('iframe');
     storyFrame.title = `${story.title} Slider story`;
-    storyFrame.src = `./iframe.html?id=${story.id}&viewMode=story&qa=${QA_VERSION}`;
+    storyFrame.dataset.src = `./iframe.html?id=${story.id}&viewMode=story&qa=${QA_VERSION}`;
     storyFrame.height = story.height;
     grid.append(card);
+    return storyFrame;
   });
+
+  observeStoryFrames(storyFrames);
 }
 
 function setCheck(id, passed, successText, failureText) {
