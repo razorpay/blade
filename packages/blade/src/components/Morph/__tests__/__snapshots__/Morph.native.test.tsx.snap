@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Morph /> (native, degraded) renders a Box child with backgroundColor + borderRadius on the degraded wrapper 1`] = `
+exports[`<Morph /> (native) renders a Box child with backgroundColor + borderRadius on the degraded wrapper 1`] = `
 <View
   style={
     {
@@ -9,35 +9,56 @@ exports[`<Morph /> (native, degraded) renders a Box child with backgroundColor +
   }
 >
   <View
+    collapsable={false}
+    onLayout={[Function]}
     style={
-      [
-        {},
-        {
-          "backgroundColor": undefined,
-          "borderRadius": 50,
-          "opacity": 1,
-        },
-      ]
+      {
+        "alignSelf": "center",
+      }
     }
   >
     <View
-      data-blade-component="box"
-      height="200px"
       style={
-        [
-          {
-            "height": 200,
-            "width": 200,
-          },
-        ]
+        {
+          "backgroundColor": undefined,
+          "borderRadius": 50,
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 0,
+            },
+            {
+              "translateY": 0,
+            },
+            {
+              "scaleX": 1,
+            },
+            {
+              "scaleY": 1,
+            },
+          ],
+        }
       }
-      width="200px"
-    />
+    >
+      <View
+        data-blade-component="box"
+        height="200px"
+        style={
+          [
+            {
+              "height": 200,
+              "width": 200,
+            },
+          ]
+        }
+        width="200px"
+      />
+    </View>
   </View>
 </View>
 `;
 
-exports[`<Morph /> (native, degraded) renders its child without throwing and matches snapshot 1`] = `
+exports[`<Morph /> (native) renders its child without throwing and matches snapshot 1`] = `
 <View
   style={
     {
@@ -46,50 +67,71 @@ exports[`<Morph /> (native, degraded) renders its child without throwing and mat
   }
 >
   <View
+    collapsable={false}
+    onLayout={[Function]}
     style={
-      [
-        {},
-        {
-          "opacity": 1,
-        },
-      ]
+      {
+        "alignSelf": "center",
+      }
     }
   >
-    <Text
-      accessible={true}
-      color="surface.text.gray.normal"
-      data-blade-component="text"
-      fontFamily="text"
-      fontSize={100}
-      fontStyle="normal"
-      fontWeight="regular"
-      letterSpacing={50}
-      lineHeight={100}
+    <View
       style={
-        [
-          {
-            "color": "hsla(0, 0%, 2%, 1)",
-            "fontFamily": "Inter",
-            "fontSize": 14,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "letterSpacing": -0.18200000000000002,
-            "lineHeight": 20,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textDecorationLine": "none",
-          },
-        ]
+        {
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 0,
+            },
+            {
+              "translateY": 0,
+            },
+            {
+              "scaleX": 1,
+            },
+            {
+              "scaleY": 1,
+            },
+          ],
+        }
       }
     >
-      Hello Morph
-    </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        letterSpacing={50}
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(0, 0%, 2%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": -0.18200000000000002,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        Hello Morph
+      </Text>
+    </View>
   </View>
 </View>
 `;

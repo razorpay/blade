@@ -10,12 +10,11 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 /**
- * Morph on native is intentionally DEGRADED (see `Morph.native.tsx`): it renders the child inside a
- * persistent animated wrapper and can only tween `backgroundColor`/`borderRadius` when the same
- * instance's child props change. FLIP / shared-element morph across `AnimatePresence` swaps is not
- * achievable in reanimated 3.4.2 and is out of scope. These tests assert the degraded contract.
+ * Morph on native approximates web's layoutId FLIP via a measureInWindow handoff registry, and
+ * tweens same-instance backgroundColor/borderRadius. Full framer shared-element parity is not
+ * claimed — these tests assert the native contract stays healthy.
  */
-describe('<Morph /> (native, degraded)', () => {
+describe('<Morph /> (native)', () => {
   it('renders its child without throwing and matches snapshot', () => {
     const { toJSON, getByText } = renderWithTheme(
       <Morph layoutId="morph-text">
@@ -42,14 +41,40 @@ describe('<Morph /> (native, degraded)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('accepts layoutId but ignores it on native (no crash, child still rendered)', () => {
+  it('accepts layoutId and renders without crashing (handoff is measure-driven on device)', () => {
     const { getByText } = renderWithTheme(
-      <Morph layoutId="ignored-on-native">
+      <Morph layoutId="handoff-key">
         <Text>Same instance</Text>
       </Morph>,
     );
 
     expect(getByText('Same instance')).toBeTruthy();
+  });
+
+  it('keeps rendering when two Morphs with the same layoutId swap (AnimatePresence-style)', () => {
+    const Harness = (): React.ReactElement => {
+      const [showAlt, setShowAlt] = React.useState(false);
+      return (
+        <Box>
+          <Button onClick={() => setShowAlt(true)}>Swap</Button>
+          {showAlt ? (
+            <Morph layoutId="shared-title">
+              <Text>Payment Pages</Text>
+            </Morph>
+          ) : (
+            <Morph layoutId="shared-title">
+              <Text>Payment Pages (card)</Text>
+            </Morph>
+          )}
+        </Box>
+      );
+    };
+
+    const { getByText, queryByText } = renderWithTheme(<Harness />);
+    expect(getByText('Payment Pages (card)')).toBeTruthy();
+    fireEvent.press(getByText('Swap'));
+    expect(getByText('Payment Pages')).toBeTruthy();
+    expect(queryByText('Payment Pages (card)')).toBeNull();
   });
 
   it('tweens on a same-instance child prop change without throwing', () => {
