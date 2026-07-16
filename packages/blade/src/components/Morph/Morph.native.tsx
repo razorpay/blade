@@ -34,10 +34,7 @@ const handoffTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
 const HANDOFF_TTL_MS = 1500;
 
-const measureNodeInWindow = (
-  node: View | null,
-  onMeasured: (rect: LayoutRect) => void,
-): void => {
+const measureNodeInWindow = (node: View | null, onMeasured: (rect: LayoutRect) => void): void => {
   if (!node) return;
 
   // Prefer UIManager + findNodeHandle — reliable for both View and host refs.
@@ -308,16 +305,11 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
   const child = React.cloneElement(children, {
     backgroundColor: undefined,
     borderRadius: undefined,
-  });
+  } as Partial<Record<string, undefined>> & React.Attributes);
 
   return (
     // Outer RN View owns measurement; inner Reanimated view owns the FLIP transform.
-    <View
-      ref={measureRef}
-      collapsable={false}
-      onLayout={onLayout}
-      style={{ alignSelf: 'center' }}
-    >
+    <View ref={measureRef} collapsable={false} onLayout={onLayout} style={{ alignSelf: 'center' }}>
       <Animated.View style={animatedStyle}>{child}</Animated.View>
     </View>
   );
