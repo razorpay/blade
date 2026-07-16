@@ -26,8 +26,7 @@ const StepperRouterExample = ({
   routeComponent: (props: RouteComponentProps) => React.ReactElement;
   stepsSampleData: StepItemProps[];
 }): React.ReactElement => {
-  const getStepId = (href: string | undefined): string =>
-    (href ?? '').replace('/onboarding/', '');
+  const getStepId = (href: string | undefined): string => (href ?? '').replace('/onboarding/', '');
 
   const [activeId, setActiveId] = React.useState(() => getStepId(stepsSampleData[0]?.href));
 

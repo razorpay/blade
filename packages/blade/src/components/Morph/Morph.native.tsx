@@ -75,16 +75,13 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
   const hasPlayedHandoff = React.useRef(false);
   const rafIdRef = React.useRef<number | null>(null);
 
-  // Guard: Morph expects a single React element child (e.g. <Box>) so it can read
-  // borderRadius/backgroundColor from props and clone it. Strings, numbers, arrays,
-  // fragments, or null are not valid — render them as-is without animation.
-  if (!React.isValidElement(children)) {
-    return <>{children}</>;
-  }
-
-  const childProps = children.props as Record<string, unknown>;
+  // Determine child validity before any hooks that depend on child props.
+  // All hooks below MUST be called unconditionally (Rules of Hooks).
+  const isValidChild = React.isValidElement(children);
+  const childProps = (children?.props as Record<string, unknown>) ?? {};
   const rawBorderRadius = childProps.borderRadius;
   const rawBackgroundColor = childProps.backgroundColor;
+
   const cssProps = useMemoizedStyles(({
     borderRadius: rawBorderRadius,
     backgroundColor: rawBackgroundColor,
@@ -111,6 +108,14 @@ const Morph = ({ children, layoutId }: MorphProps): React.ReactElement => {
   const duration = theme.motion.duration.gentle ?? theme.motion.duration.moderate;
   const easing = theme.motion.easing.standard;
   const timingConfig = React.useMemo(() => ({ duration, easing }), [duration, easing]);
+
+  // Guard: Morph expects a single React element child (e.g. <Box>) so it can read
+  // borderRadius/backgroundColor from props and clone it. Strings, numbers, arrays,
+  // fragments, or null are not valid — render them as-is without animation.
+  // This early return is placed AFTER all hooks to satisfy the Rules of Hooks.
+  if (!isValidChild) {
+    return <>{children}</>;
+  }
 
   // Grab any pending handoff synchronously before paint of children that replace us.
   React.useLayoutEffect(() => {

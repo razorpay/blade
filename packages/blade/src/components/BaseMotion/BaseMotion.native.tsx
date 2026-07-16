@@ -140,8 +140,7 @@ const _BaseMotionBox = (
         ...resolvedMotionVariants.animate,
         transition: {
           ...resolvedMotionVariants.animate?.transition,
-          delay:
-            (resolvedMotionVariants.animate?.transition?.delay ?? 0) + staggerDelay.enter,
+          delay: (resolvedMotionVariants.animate?.transition?.delay ?? 0) + staggerDelay.enter,
         },
       },
       exit: {
