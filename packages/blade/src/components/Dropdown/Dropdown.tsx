@@ -17,6 +17,7 @@ import { useControllableState } from '~utils/useControllable';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
+import { isReactNative } from '~utils';
 
 const validDropdownChildren = [
   // TODO: Remove Box once CountrySelector's button sizing is fixed
@@ -261,7 +262,7 @@ const _Dropdown = (
           <BaseBox
             position="relative"
             textAlign={'left' as never}
-            {...(isInsideButtonGroup ? {} : { height: '100%' })}
+            {...(isReactNative() && isInsideButtonGroup ? {} : { height: '100%' })}
           >
             {children}
           </BaseBox>
