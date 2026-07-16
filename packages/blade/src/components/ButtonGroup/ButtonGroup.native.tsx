@@ -103,12 +103,15 @@ const _ButtonGroup = (
         if (!React.isValidElement(child)) return child;
         const isLast = React.Children.count(children) - 1 === index;
         const showDivider = variant === 'primary' && !isLast;
+        // child.key is preferred; index fallback is acceptable here because
+        // ButtonGroup children are a static set of Buttons that are not
+        // dynamically added/removed at runtime.
         const childKey = child.key ?? index;
         const isPressed = pressedButtonIndex === index;
         // Collapse doubled borders, except when the previous button is pressed —
         // then keep this sibling un-overlapped so the pressed button's right
         // highlighted border isn't covered.
-        const collapseBorder =
+        const isGroupBorderCollapsed =
           isSecondaryOrTertiary && index > 0 && pressedButtonIndex !== index - 1;
 
         return (
@@ -137,7 +140,8 @@ const _ButtonGroup = (
                   buttonIndex: index,
                   isFirstInButtonGroup: index === 0,
                   isLastInButtonGroup: isLast,
-                  collapseBorder,
+                  isGroupBorderCollapsed,
+                  isInsideButtonGroup: true,
                 }}
               >
                 {child}

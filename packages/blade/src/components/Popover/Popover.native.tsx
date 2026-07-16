@@ -67,7 +67,14 @@ const _Popover = ({
   const [isVisible, setIsVisible] = React.useState(() => controllableIsOpen);
   const { backdropRef, backdropOffset, onBackdropLayout } = useFloatingPortal(update, isVisible);
 
+  // On React Native a tap fires both onTouchEnd and a press/click event.
+  // Guard with a short debounce window so handleOpen (and thus onOpenChange)
+  // only fires once per user gesture.
+  const lastOpenCallRef = React.useRef(0);
   const handleOpen = React.useCallback(() => {
+    const now = Date.now();
+    if (now - lastOpenCallRef.current < 300) return;
+    lastOpenCallRef.current = now;
     controllableSetIsOpen(() => true);
     onOpenChange?.({ isOpen: true });
   }, [controllableSetIsOpen, onOpenChange]);
@@ -103,9 +110,10 @@ const _Popover = ({
   return (
     <PopoverContext.Provider value={contextValue}>
       {/* Cloning the trigger children to enhance it with ref and event handler.
-          Button uses Pressable `onPress` (via `onClick`); `onTouchEnd` alone is
-          unreliable inside ScrollView / ButtonGroup — real taps often only fire
-          press. Attach both so Storybook and product taps open the popover. */}
+           Button uses Pressable `onPress` (via `onClick`); `onTouchEnd` alone is
+           unreliable inside ScrollView / ButtonGroup — real taps often only fire
+           press. Attach both so Storybook and product taps open the popover.
+           handleOpen debounces to prevent double-firing from both events. */}
       {React.cloneElement(children, {
         ...mergeProps(
           {

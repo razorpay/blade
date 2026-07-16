@@ -48,7 +48,7 @@ const _DropdownOverlay = ({
   // Split-button usage: the default closeable area uses height/width 100%, which
   // on RN resolves against the Storybook screen and blows ButtonGroup into a
   // tall vertical strip when the menu opens. Keep the overlay out of flex flow.
-  const isInsideButtonGroup = buttonGroupProps.variant !== undefined;
+  const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
 
   if (isInsideButtonGroup) {
     return (

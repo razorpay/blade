@@ -77,7 +77,15 @@ type ButtonGroupContextType = Pick<
    * Cleared for the sibling after a pressed button so that button's highlighted
    * right border isn't covered by the -1px overlap while pressed.
    */
-  collapseBorder?: boolean;
+  isGroupBorderCollapsed?: boolean;
+  /**
+   * True when this Button/Dropdown is rendered inside a ButtonGroup.
+   *
+   * ButtonGroup sets this to `true` and the default context leaves it
+   * `undefined`, so consumers can reliably detect group membership without
+   * relying on the presence of another context field (e.g. `variant`).
+   */
+  isInsideButtonGroup?: boolean;
   /**
    * Index of this child inside ButtonGroup. Used with `setPressedButtonIndex`
    * so the group can raise z-index / release border collapse while pressed.

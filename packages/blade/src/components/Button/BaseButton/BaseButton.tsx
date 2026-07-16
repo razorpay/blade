@@ -586,9 +586,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // `overflow: hidden` + `borderRadius`. React Native has no CSS cascade, so we
   // flatten each button's border radius to 0 here and let the group container do
   // the outer rounding — otherwise the inner (middle) buttons show rounded corners.
-  // A non-null context value (variant is set by ButtonGroup) signals we're inside
-  // a group; no separate `isInsideButtonGroup` flag is needed.
-  const isInsideRNButtonGroup = isReactNative() && buttonGroupProps.variant !== undefined;
+  // An explicit `isInsideButtonGroup` flag set by ButtonGroupContext signals we're
+  // inside a group; this avoids relying on the presence of `variant` in the
+  // default context.
+  const isInsideRNButtonGroup = isReactNative() && Boolean(buttonGroupProps.isInsideButtonGroup);
 
   // buttonBorderRadiusValue flattens the base borderRadius to 0 for all buttons
   // in a group. buttonBorderRadii provides per-corner rounding for the outer
@@ -616,10 +617,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       }
     : undefined;
 
-  // ButtonGroup computes collapseBorder based on its variant and passes it
+  // ButtonGroup computes isGroupBorderCollapsed based on its variant and passes it
   // through context, so BaseButton doesn't need to inspect the variant string.
   const isGroupBorderCollapsed =
-    isInsideRNButtonGroup && !isFirstInGroup && Boolean(buttonGroupProps.collapseBorder);
+    isInsideRNButtonGroup && !isFirstInGroup && Boolean(buttonGroupProps.isGroupBorderCollapsed);
 
   // Match web ButtonGroup: only the first child keeps the radial glow
   // (`backgroundImage: none` on `:not(:first-child)`). On native the white

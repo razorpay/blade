@@ -246,7 +246,7 @@ const _Dropdown = (
   // Storybook/screen parent on React Native and stretches the whole group
   // into a tall vertical strip. Keep content-sized height in that case.
   const buttonGroupProps = useButtonGroupContext();
-  const isInsideButtonGroup = buttonGroupProps.variant !== undefined;
+  const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
