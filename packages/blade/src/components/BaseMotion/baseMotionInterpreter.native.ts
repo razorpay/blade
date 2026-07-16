@@ -15,7 +15,7 @@
  * Unsupported keys are ignored with a dev warning so wrapper authors get feedback.
  */
 import React from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, useWindowDimensions } from 'react-native';
 import type { ViewStyle } from 'react-native';
 import {
   Easing,
@@ -61,20 +61,40 @@ const SUPPORTED_VARIANT_KEYS = new Set([
   'transitionEnd',
 ]);
 
+const SUPPORTED_TRANSFORM_FUNCTIONS = new Set(['translateX', 'translateY', 'scale', 'rotate']);
+
+type WindowDimensions = { width: number; height: number };
+
+const getWindowDimensions = (): WindowDimensions => Dimensions.get('window');
+
 /**
  * Parses a single CSS length token into a native numeric value.
  * - `px` / unitless → the raw number
  * - `vw` / `vh` → resolved against the current window dimensions
  * - `%` → cannot be resolved to px without layout measurement, degrades to 0
+ *
+ * Accepts an optional `dimensions` parameter so callers with fresh `useWindowDimensions`
+ * values can avoid stale reads after orientation changes.
  */
-const parseUnit = (raw: string): number => {
+const parseUnit = (raw: string, dimensions?: WindowDimensions): number => {
   const numeric = parseFloat(raw);
   if (Number.isNaN(numeric)) return 0;
-  if (raw.includes('vw')) return (numeric / 100) * Dimensions.get('window').width;
-  if (raw.includes('vh')) return (numeric / 100) * Dimensions.get('window').height;
+  const dims = dimensions ?? getWindowDimensions();
+  if (raw.includes('vw')) return (numeric / 100) * dims.width;
+  if (raw.includes('vh')) return (numeric / 100) * dims.height;
   if (raw.trim().endsWith('%')) {
     // Percentage translate is relative to the element's own size which we can't measure here.
     // `0%` maps cleanly to 0; any other percentage degrades to 0 (documented limitation).
+    if (__DEV__ && numeric !== 0) {
+      logger({
+        type: 'warn',
+        moduleName: 'BaseMotion',
+        message:
+          `Percentage-based transform value "${raw}" is not supported on native (cannot resolve ` +
+          'to px without layout measurement). It degrades to 0. Use absolute units (px) or ' +
+          'vw/vh instead.',
+      });
+    }
     return 0;
   }
   return numeric;
@@ -88,26 +108,45 @@ const parseUnit = (raw: string): number => {
  */
 const parseTransform = (
   transform: string | string[] | undefined,
+  dimensions?: WindowDimensions,
 ): Pick<ResolvedVariantStyle, 'translateX' | 'translateY' | 'scale' | 'rotate'> => {
   const result: Pick<ResolvedVariantStyle, 'translateX' | 'translateY' | 'scale' | 'rotate'> = {};
   if (transform === undefined || transform === null) return result;
 
   const value = Array.isArray(transform) ? transform[transform.length - 1] : transform;
+  if (Array.isArray(transform) && transform.length > 1 && __DEV__) {
+    logger({
+      type: 'warn',
+      moduleName: 'BaseMotion',
+      message:
+        `Framer keyframe arrays (length ${transform.length}) are not supported on native — ` +
+        'multi-step keyframe animations will appear as a single-step transition to the last ' +
+        'keyframe value. This is a known Phase 1 limitation.',
+    });
+  }
   if (typeof value !== 'string') return result;
 
-  const transformRegex = /(translateX|translateY|scale|rotate)\(([^)]+)\)/g;
+  const transformRegex = /(\w+)\(([^)]+)\)/g;
   let match: RegExpExecArray | null = transformRegex.exec(value);
   while (match !== null) {
     const fn = match[1];
     const raw = match[2].trim();
     if (fn === 'translateX') {
-      result.translateX = parseUnit(raw);
+      result.translateX = parseUnit(raw, dimensions);
     } else if (fn === 'translateY') {
-      result.translateY = parseUnit(raw);
+      result.translateY = parseUnit(raw, dimensions);
     } else if (fn === 'scale') {
       result.scale = parseFloat(raw);
     } else if (fn === 'rotate') {
       result.rotate = parseFloat(raw);
+    } else if (__DEV__ && !SUPPORTED_TRANSFORM_FUNCTIONS.has(fn)) {
+      logger({
+        type: 'warn',
+        moduleName: 'BaseMotion',
+        message:
+          `Transform function "${fn}" is not supported on native and will be silently dropped. ` +
+          'Supported functions: translateX, translateY, scale, rotate.',
+      });
     }
     match = transformRegex.exec(value);
   }
@@ -119,8 +158,7 @@ const resolveScalar = (value: unknown): number | undefined => {
   const resolved = Array.isArray(value) ? value[value.length - 1] : value;
   if (typeof resolved === 'number') return resolved;
   if (typeof resolved === 'string') {
-    const numeric = parseFloat(resolved);
-    return Number.isNaN(numeric) ? undefined : numeric;
+    return parseUnit(resolved);
   }
   return undefined;
 };
@@ -134,7 +172,10 @@ const resolveColor = (value: unknown): string | undefined => {
  * Reads the supported animatable keys off a single variant object into a flat resolved style.
  * Unsupported keys are ignored with a dev warning.
  */
-const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
+const resolveVariantStyle = (
+  variant?: MotionVariant,
+  dimensions?: WindowDimensions,
+): ResolvedVariantStyle => {
   const resolved: ResolvedVariantStyle = {};
   if (!variant) return resolved;
 
@@ -165,7 +206,10 @@ const resolveVariantStyle = (variant?: MotionVariant): ResolvedVariantStyle => {
     }
   }
   if (variantRecord.transform !== undefined) {
-    Object.assign(resolved, parseTransform(variantRecord.transform as string | string[]));
+    Object.assign(
+      resolved,
+      parseTransform(variantRecord.transform as string | string[], dimensions),
+    );
   }
 
   if (__DEV__) {
@@ -271,8 +315,11 @@ const interpolateVariant = (
   }
 
   if (to.color !== undefined) {
-    // `color` is a TextStyle-only property — it is silently ignored by RN's View component.
-    // Resolved and included for future use (wrapper batch may forward it to child Text via context).
+    // `color` is a TextStyle-only property in React Native — it is silently ignored by RN's
+    // View component (unlike web CSS where `color` cascades to children). This value is
+    // intentionally resolved and included here so that the wrapper batch can forward it to
+    // child Text components (e.g., via context or a nested styled Text). A __DEV__ warning is
+    // emitted in `resolveVariantStyle` when the `color` variant key is used.
     (style as ViewStyle & { color?: string }).color =
       from.color !== undefined
         ? interpolateColor(progress, [0, 1], [from.color, to.color])
@@ -293,23 +340,47 @@ type UseAnimatedVariantArgs = {
 /**
  * Drives one progress shared-value per transition. On `targetName` change it interpolates from the
  * previously resolved style to the newly resolved one using the target variant's transition.
+ *
+ * Uses a ref to track the latest `variants` so that the animated-style worklet always reads
+ * current values without adding `variants` to the effect dependency array (which would cause
+ * unnecessary re-runs on every parent render).
  */
 const useAnimatedVariant = ({
   variants,
   targetName,
   onAnimationComplete,
 }: UseAnimatedVariantArgs): ReturnType<typeof useAnimatedStyle> => {
-  const fromStyle = useSharedValue<ResolvedVariantStyle>(resolveVariantStyle(variants?.initial));
-  const toStyle = useSharedValue<ResolvedVariantStyle>(resolveVariantStyle(variants?.[targetName]));
+  const dimensions = useWindowDimensions();
+  const fromStyle = useSharedValue<ResolvedVariantStyle>(
+    resolveVariantStyle(variants?.initial, dimensions),
+  );
+  const toStyle = useSharedValue<ResolvedVariantStyle>(
+    resolveVariantStyle(variants?.[targetName], dimensions),
+  );
   const progress = useSharedValue(0);
   const previousTargetRef = React.useRef<keyof MotionVariantsType>('initial');
+
+  // Keep a ref to the latest variants so the effect closure always sees fresh values without
+  // needing to add `variants` to the dependency array.
+  const variantsRef = React.useRef(variants);
+  variantsRef.current = variants;
+
+  // If variants were undefined on mount and become defined later, re-initialise shared values.
+  React.useEffect(() => {
+    if (variants && (!fromStyle.value || !toStyle.value)) {
+      fromStyle.value = resolveVariantStyle(variants?.initial, dimensions);
+      toStyle.value = resolveVariantStyle(variants?.[targetName], dimensions);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [variants]);
 
   React.useEffect(() => {
     if (previousTargetRef.current === targetName) return;
 
-    const targetVariant = variants?.[targetName];
-    fromStyle.value = resolveVariantStyle(variants?.[previousTargetRef.current]);
-    toStyle.value = resolveVariantStyle(targetVariant);
+    const currentVariants = variantsRef.current;
+    const targetVariant = currentVariants?.[targetName];
+    fromStyle.value = resolveVariantStyle(currentVariants?.[previousTargetRef.current], dimensions);
+    toStyle.value = resolveVariantStyle(targetVariant, dimensions);
     previousTargetRef.current = targetName;
 
     const { duration, easing, delay } = getTiming(targetVariant?.transition);
@@ -331,5 +402,5 @@ const useAnimatedVariant = ({
   return useAnimatedStyle(() => interpolateVariant(fromStyle.value, toStyle.value, progress.value));
 };
 
-export { resolveVariantStyle, parseTransform, useAnimatedVariant };
+export { resolveVariantStyle, parseTransform, parseUnit, getTiming, useAnimatedVariant };
 export type { ResolvedVariantStyle };

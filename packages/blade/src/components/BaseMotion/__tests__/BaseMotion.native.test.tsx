@@ -1,9 +1,10 @@
 import React from 'react';
-import { act } from '@testing-library/react-native';
+import { waitFor } from '@testing-library/react-native';
 import { BaseMotionBox, BaseMotionEnhancerBox, BaseMotionEntryExit } from '../index';
 import { useMotionVariants } from '../baseMotionUtils';
 import type { MotionVariantsType } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+import themeWrapper from '~utils/testing/themeWrapper';
 import { Text } from '~components/Typography';
 
 const fadeVariants: MotionVariantsType = {
@@ -16,6 +17,14 @@ const fadeVariants: MotionVariantsType = {
     opacity: 0,
     transition: { duration: 0.3, ease: [0, 0, 0.4, 0] },
   },
+};
+
+/** `renderWithTheme` wraps once; `rerender` must re-wrap or BladeProvider context is lost. */
+const rerenderWithTheme = (
+  rerender: (ui: React.ReactElement) => void,
+  ui: React.ReactElement,
+): void => {
+  rerender(themeWrapper({ children: ui }));
 };
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -77,18 +86,74 @@ describe('<BaseMotion /> (native)', () => {
 
     expect(getByText('toggle child')).toBeTruthy();
 
-    rerender(
+    rerenderWithTheme(
+      rerender,
       <BaseMotionEntryExit motionVariants={fadeVariants} isVisible={false} shouldUnmountWhenHidden>
         <Text>toggle child</Text>
       </BaseMotionEntryExit>,
     );
 
-    // The exit animation completes synchronously (mocked reanimated), then the child is unmounted on
-    // the next frame. Flush that frame inside `act` so the state update is captured cleanly.
-    await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 32));
+    // The exit animation completes synchronously (mocked reanimated), then the child is unmounted
+    // after interactions complete. Use waitFor to poll for the unmount instead of a fixed delay.
+    await waitFor(() => {
+      expect(JSON.stringify(toJSON())).not.toContain('toggle child');
     });
+  });
 
-    expect(JSON.stringify(toJSON())).not.toContain('toggle child');
+  it('should render children when using tap trigger', () => {
+    const { getByText } = renderWithTheme(
+      <BaseMotionBox motionVariants={fadeVariants} motionTriggers={['tap']}>
+        <Text>tap child</Text>
+      </BaseMotionBox>,
+    );
+
+    expect(getByText('tap child')).toBeTruthy();
+  });
+
+  it('should render BaseMotionEntryExit children without shouldUnmountWhenHidden', () => {
+    const { getByText, rerender } = renderWithTheme(
+      <BaseMotionEntryExit motionVariants={fadeVariants} isVisible>
+        <Text>persist child</Text>
+      </BaseMotionEntryExit>,
+    );
+
+    expect(getByText('persist child')).toBeTruthy();
+
+    // Without shouldUnmountWhenHidden, the child should remain mounted when hidden.
+    rerenderWithTheme(
+      rerender,
+      <BaseMotionEntryExit motionVariants={fadeVariants} isVisible={false}>
+        <Text>persist child</Text>
+      </BaseMotionEntryExit>,
+    );
+
+    expect(getByText('persist child')).toBeTruthy();
+  });
+
+  it('should drive animation via animateVisibility prop', () => {
+    const { getByText, rerender } = renderWithTheme(
+      <BaseMotionBox
+        motionVariants={fadeVariants}
+        motionTriggers={['mount']}
+        animateVisibility="animate"
+      >
+        <Text>visibility child</Text>
+      </BaseMotionBox>,
+    );
+
+    expect(getByText('visibility child')).toBeTruthy();
+
+    rerenderWithTheme(
+      rerender,
+      <BaseMotionBox
+        motionVariants={fadeVariants}
+        motionTriggers={['mount']}
+        animateVisibility="exit"
+      >
+        <Text>visibility child</Text>
+      </BaseMotionBox>,
+    );
+
+    expect(getByText('visibility child')).toBeTruthy();
   });
 });

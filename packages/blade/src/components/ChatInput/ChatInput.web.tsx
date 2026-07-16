@@ -330,4 +330,3 @@ const ChatInput = assignWithoutSideEffects(React.forwardRef(_ChatInput), {
 });
 
 export { ChatInput };
-export type { ChatInputProps };

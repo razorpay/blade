@@ -4,6 +4,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
 import { TourContext } from './TourContext';
+import type { TourElement } from './TourContext';
 import { TourPopover } from './TourPopover';
 import {
   smoothScroll,
@@ -18,6 +19,8 @@ import { transitionDelay } from './tourTokens';
 import { useTheme } from '~components/BladeProvider';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
+const asHTMLElement = (el: TourElement | null): HTMLElement | null => el as HTMLElement | null;
+
 const SpotlightPopoverTour = ({
   steps,
   activeStep,
@@ -28,7 +31,7 @@ const SpotlightPopoverTour = ({
   children,
 }: SpotlightPopoverTourProps): React.ReactElement => {
   const { theme } = useTheme();
-  const [refIdMap, setRefIdMap] = useState(new Map<string, React.RefObject<HTMLElement>>());
+  const [refIdMap, setRefIdMap] = useState(new Map<string, React.RefObject<TourElement>>());
   const [size, setSize] = useState<SpotlightPopoverTourMaskRect>({
     x: 0,
     y: 0,
@@ -44,10 +47,12 @@ const SpotlightPopoverTour = ({
   const [isScrolling, setIsScrolling] = useState(false);
 
   const currentStepRef = refIdMap.get(steps[activeStep]?.name);
-  const intersection = useIntersectionObserver(currentStepRef!, {
-    threshold: 0.5,
-  });
-
+  const intersection = useIntersectionObserver(
+    (currentStepRef as React.RefObject<Element> | undefined)!,
+    {
+      threshold: 0.5,
+    },
+  );
   // main step logic
   const totalSteps = steps.length;
   const currentStepData = useMemo(() => {
@@ -82,7 +87,7 @@ const SpotlightPopoverTour = ({
     onFinish?.();
   }, [onFinish]);
 
-  const attachStep = useCallback((id: string, ref: React.RefObject<HTMLElement>) => {
+  const attachStep = useCallback((id: string, ref: React.RefObject<TourElement>) => {
     if (!ref) return;
     setRefIdMap((prev) => {
       return new Map(prev).set(id, ref);
@@ -100,9 +105,10 @@ const SpotlightPopoverTour = ({
   const updateMaskSize = useCallback(
     (shouldSkipDelay = false) => {
       const ref = refIdMap.get(steps[activeStep]?.name);
-      if (!ref?.current) return;
+      const el = asHTMLElement(ref?.current ?? null);
+      if (!el) return;
 
-      const rect = ref.current.getBoundingClientRect();
+      const rect = el.getBoundingClientRect();
       setSize({
         x: rect.x,
         y: rect.y,
@@ -123,13 +129,14 @@ const SpotlightPopoverTour = ({
 
   const scrollToStep = useCallback(() => {
     const ref = refIdMap.get(steps[delayedActiveStep]?.name);
-    if (!ref?.current) return;
+    const el = asHTMLElement(ref?.current ?? null);
+    if (!el) return;
 
     // If the element is already in view, don't scroll
     if (intersection?.isIntersecting) return;
 
     setIsScrolling(true);
-    smoothScroll(ref.current, {
+    smoothScroll(el, {
       behavior: 'smooth',
       block: 'center',
       inline: 'center',
@@ -232,7 +239,7 @@ const SpotlightPopoverTour = ({
               totalSteps,
               stopTour,
             })}
-            attachTo={attachTo}
+            attachTo={attachTo as React.RefObject<HTMLElement> | undefined}
           />
         );
       })}

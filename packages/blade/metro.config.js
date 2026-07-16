@@ -13,7 +13,8 @@ const exclusionList = require('metro-config/src/defaults/exclusionList');
 
 const projectRoot = __dirname;
 const mocksDir = path.resolve(projectRoot, '.storybook/react-native/mocks');
-const nodeModulesDir = fs.realpathSync(path.resolve(projectRoot, 'node_modules'));
+const nodeModulesDir = path.resolve(projectRoot, 'node_modules');
+const realNodeModulesDir = fs.realpathSync(nodeModulesDir);
 
 // Sibling git worktrees under `.claude/worktrees/*` share the same relative paths
 // (`src/components/Stagger/Stagger.native.tsx`, etc.). If Metro's haste map ever sees more than
@@ -59,9 +60,13 @@ function resolveSubpathExport(moduleName) {
   return { type: 'sourceFile', filePath };
 }
 
+const isWorktreeSymlink = realNodeModulesDir !== nodeModulesDir;
+
 const config = {
   projectRoot,
-  watchFolders: [projectRoot, nodeModulesDir],
+  watchFolders: isWorktreeSymlink
+    ? [projectRoot, realNodeModulesDir]
+    : [projectRoot, nodeModulesDir],
   transformer: {
     unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
@@ -74,6 +79,7 @@ const config = {
   resolver: {
     blockList: exclusionList([siblingWorktreesBlock, /\/__tests__\/.*/]),
     disableHierarchicalLookup: true,
+    unstable_enableSymlinks: true,
     nodeModulesPaths: [nodeModulesDir],
     resolverMainFields: ['react-native', 'browser', 'main'],
     resolveRequest: (context, moduleName, platform) => {
@@ -93,6 +99,12 @@ const config = {
         return {
           type: 'sourceFile',
           filePath: path.resolve(mocksDir, 'storybook-react-router.js'),
+        };
+      }
+      if (moduleName === '@storybook/react-vite') {
+        return {
+          type: 'sourceFile',
+          filePath: path.resolve(mocksDir, 'storybook-react-vite.js'),
         };
       }
       // es-toolkit uses Unicode property escapes (\p{Lu}) unsupported by Hermes in RN 0.72

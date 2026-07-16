@@ -34,16 +34,18 @@ const ChatInputActionBar = ({
       {hideFileUpload ? (
         <BaseBox />
       ) : (
-        <Link
-          variant="button"
-          color="neutral"
-          size="small"
-          icon={PlusIcon}
-          onClick={onUploadClick}
-          isDisabled={isDisabled}
-        >
-          Upload file
-        </Link>
+        <BaseBox display="flex" alignItems="center">
+          <Link
+            variant="button"
+            color="neutral"
+            size="small"
+            icon={PlusIcon}
+            onClick={onUploadClick}
+            isDisabled={isDisabled}
+          >
+            Upload file
+          </Link>
+        </BaseBox>
       )}
       <BaseBox>
         {isGenerating ? (

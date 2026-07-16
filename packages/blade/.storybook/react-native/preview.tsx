@@ -25,6 +25,7 @@ export const decorators = [
 ];
 
 export const parameters = {
+  layout: 'fullscreen',
   backgrounds: [
     { name: 'plain', value: 'white', default: true },
     { name: 'warm', value: 'hotpink' },
@@ -34,8 +35,9 @@ export const parameters = {
 
 const styles = StyleSheet.create({
   // `flex: 1` lets the container fill the story canvas so absolutely-positioned
-  // portal content (e.g. the full-height BottomSheet) can size against a real
-  // viewport instead of collapsing to the intrinsic height of the story's inline
-  // content.
-  container: { flex: 1, padding: 16 },
+  // portal content (e.g. the full-height Drawer, BottomSheet, or DatePicker calendar sheet)
+  // can size against a real viewport instead of collapsing to the intrinsic height
+  // of the story's inline content.
+  // Charts need full width with minimal horizontal padding.
+  container: { flex: 1, width: '100%', paddingVertical: 8, paddingHorizontal: 0 },
 });

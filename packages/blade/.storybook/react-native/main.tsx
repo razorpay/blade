@@ -5,7 +5,6 @@ const WEB_ONLY_STORIES = [
   '*.test',
   'MotionRecipes',
   'BottomNav',
-  'ChatInput',
   'DatePicker',
   'DetailedView',
   'DrawerExamples',
@@ -41,4 +40,5 @@ module.exports = {
     '@storybook/addon-ondevice-backgrounds',
     '@storybook/addon-ondevice-actions',
   ],
+  previewAnnotations: ['@storybook/react-native/preview'],
 };
