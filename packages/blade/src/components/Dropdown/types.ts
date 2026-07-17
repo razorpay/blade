@@ -87,7 +87,7 @@ type FilterChipGroupProps = TestID &
      * performs the emptying itself, so uncontrolled chips are cleared and controlled chips receive
      * `onChange([])`.
      *
-     * Providing this (or leaving `showClearAction` at its default) renders the Clear action.
+     * Providing this (or leaving `showClearButton` at its default) renders the Clear action.
      */
     onClearButtonClick?: () => void;
     /**
@@ -117,14 +117,14 @@ type FilterChipGroupProps = TestID &
      *
      * @default true
      */
-    showClearAction?: boolean;
+    showClearButton?: boolean;
     /**
-     * Controls visibility of the group-level **Reset** action link. When `true` (the default when
-     * `onResetButtonClick` is provided), the Reset link is shown whenever the group has at least
-     * one selected filter. Set to `false` to hide the Reset action while still keeping the
+     * Controls visibility of the group-level **Reset** action link. When `true`, the Reset link is
+     * shown whenever the group has at least one selected filter and `onResetButtonClick` is
+     * provided. Set to `false` to hide the Reset action while still keeping the
      * `onResetButtonClick` callback available for programmatic use.
      *
-     * @default true (when `onResetButtonClick` is provided)
+     * @default true
      */
     showResetButton?: boolean;
     /**

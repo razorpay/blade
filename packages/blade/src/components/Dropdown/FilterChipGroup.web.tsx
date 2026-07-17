@@ -10,7 +10,7 @@ import { Link } from '~components/Link';
 const FilterChipGroup = ({
   testID,
   children,
-  showClearAction = true,
+  showClearButton = true,
   onClearButtonClick,
   onResetButtonClick,
   showResetButton = true,
@@ -83,7 +83,7 @@ const FilterChipGroup = ({
             {resetActionText}
           </Link>
         ) : null}
-        {hasSelectedFilters && showClearAction ? (
+        {hasSelectedFilters && showClearButton ? (
           <Link size="small" color="neutral" onClick={handleClearButtonClick}>
             {clearActionText}
           </Link>

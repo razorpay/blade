@@ -19,14 +19,11 @@ Shipped on `FilterChipGroup` (web only; native is a stub). Clear and Reset are m
 independent actions** (per review feedback — a single overloaded `clearButtonBehavior` flag
 conflated the two semantics and couldn't express "offer both"):
 
-- **`onClearButtonClick?: () => void`** + **`showClearAction?: boolean`** (default `true`) —
+- **`onClearButtonClick?: () => void`** + **`showClearButton?: boolean`** (default `true`) —
   the existing **Clear** action. Empties every filter: clears ListView context + selected-filter
   tracking and bumps the clear triggerer so each child chip runs its clear effect.
-  (`showClearAction` is named distinctly from the per-chip `showClearButton` on
-  `FilterChipSelectInput`/`FilterChipDatePicker` to avoid confusion — the group-level prop
-  controls an action _link_, not a chip cross button.)
-- **`onResetButtonClick?: () => void`** + **`showResetButton?: boolean`** (default `true` when
-  `onResetButtonClick` is provided) — opt-in **Reset** action. Fires the callback and clears the
+- **`onResetButtonClick?: () => void`** + **`showResetButton?: boolean`** (default `true`) —
+  opt-in **Reset** action. Fires the callback and clears the
   group's own "has changes" bookkeeping so the action hides after use, but does NOT bump the clear
   triggerer. Not bumping the triggerer is the key bit — it prevents the chips from firing
   `onChange([])` and stomping the defaults the consumer restores inside `onResetButtonClick`. The

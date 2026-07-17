@@ -49,9 +49,9 @@ describe('<FilterChipGroup />', () => {
     expect(queryByText('Clear Filter')).toBeNull();
   });
 
-  it('does not render the action button when showClearAction is false', async () => {
+  it('does not render the action button when showClearButton is false', async () => {
     const user = userEvent.setup();
-    const { getByRole, queryByText } = renderGroup({ showClearAction: false });
+    const { getByRole, queryByText } = renderGroup({ showClearButton: false });
 
     // Capture the chip trigger before selection (accessible name is exactly the label).
     const trigger = getByRole('button', { name: 'Fruits' });
@@ -90,7 +90,7 @@ describe('<FilterChipGroup />', () => {
     const user = userEvent.setup();
     const onResetButtonClick = jest.fn();
     const { getByRole, findByText, queryByText } = renderGroup({
-      showClearAction: false,
+      showClearButton: false,
       onResetButtonClick,
     });
 
@@ -114,7 +114,7 @@ describe('<FilterChipGroup />', () => {
   it('renders a custom resetButtonText label', async () => {
     const user = userEvent.setup();
     const { getByRole, findByText } = renderGroup({
-      showClearAction: false,
+      showClearButton: false,
       onResetButtonClick: jest.fn(),
       resetButtonText: 'Restore defaults',
     });
@@ -155,7 +155,7 @@ describe('<FilterChipGroup />', () => {
     const user = userEvent.setup();
     const onResetButtonClick = jest.fn();
     const { getByRole, queryByText } = renderGroup({
-      showClearAction: false,
+      showClearButton: false,
       onResetButtonClick,
       showResetButton: false,
     });
@@ -168,7 +168,27 @@ describe('<FilterChipGroup />', () => {
     await waitFor(() => expect(trigger).toHaveTextContent('Apple'));
     // Reset action is hidden even though onResetButtonClick is provided
     expect(queryByText('Reset')).toBeNull();
-    // Clear action is also hidden because showClearAction is false
+    // Clear action is also hidden because showClearButton is false
     expect(queryByText('Clear Filter')).toBeNull();
+  });
+
+  it('hides only the Reset action when showResetButton is false (Clear still visible)', async () => {
+    const user = userEvent.setup();
+    const onResetButtonClick = jest.fn();
+    const { getByRole, queryByText, findByText } = renderGroup({
+      onResetButtonClick,
+      showResetButton: false,
+    });
+
+    const trigger = getByRole('button', { name: 'Fruits' });
+    await user.click(trigger);
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+
+    await waitFor(() => expect(trigger).toHaveTextContent('Apple'));
+    // Reset action is hidden
+    expect(queryByText('Reset')).toBeNull();
+    // Clear action is still visible (showClearButton defaults to true)
+    expect(await findByText('Clear Filter')).toBeInTheDocument();
   });
 });
