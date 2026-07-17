@@ -558,11 +558,7 @@ export const FilterChipDatePickerClearButtonBehavior: StoryFn<typeof FilterChipD
           <Code size="medium">onClearButtonClick</Code>).
         </Text>
         <Box>
-          <FilterChipDatePicker
-            label="Date"
-            selectionType="single"
-            defaultValue={new Date()}
-          />
+          <FilterChipDatePicker label="Date" selectionType="single" defaultValue={new Date()} />
         </Box>
       </Box>
 
