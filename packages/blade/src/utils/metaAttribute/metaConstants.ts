@@ -126,6 +126,7 @@ export const MetaConstants = {
   TourMask: 'tour-mask',
   Popover: 'popover',
   PopoverInteractiveWrapper: 'popover-interactive-wrapper',
+  PopoverHintTrigger: 'popover-hint-trigger',
   BottomSheet: 'bottom-sheet',
   BottomSheetBody: 'bottom-sheet-body',
   BottomSheetHeader: 'bottom-sheet-header',
