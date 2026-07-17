@@ -1,5 +1,39 @@
 # @razorpay/blade-core
 
+## 0.9.0
+
+### Minor Changes
+
+- 5a6fd8882: feat(blade-svelte): add `flexWrap` support to `RadioGroup`
+
+  `RadioGroup` now accepts a `flexWrap` prop (`'nowrap' | 'wrap' | 'wrap-reverse'`, default `'nowrap'`), mirroring `CheckboxGroup` and the React implementation. This is useful with `orientation="horizontal"` when radios (or radio-wrapped cards) should wrap onto multiple lines instead of overflowing.
+
+- 3c9addbe4: fix(TrustBadge): remove `emphasis` prop and align with Blade DSL trust marker design
+
+  The `emphasis` prop (`'subtle' | 'intense'`) and the `TrustBadgeEmphasis` type have been removed from TrustBadge. The new Blade DSL design uses a single sea-subtle pill treatment regardless of surface color. Migrate by removing any `emphasis` prop usage — the updated component renders correctly on all surfaces.
+
+  - `@razorpay/blade`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-svelte`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-core`: `TrustBadgeEmphasis` type and `getTrustBadgePillEmphasisClass` removed; replaced by `getTrustBadgeVariantClass`
+
+### Patch Changes
+
+- e616a3de2: feat(blade-svelte): add CounterInput component
+- 7a7c21d09: feat(Card): add `ticket` and `info` card variants
+
+  Adds `TicketCard` and `InfoCard` with `Body` + `Footer` subcomponents.
+
+- bbe9e0034: feat(blade-svelte): add Tabs component
+- 73b15cea1: feat(blade-svelte): add SegmentedControl component
+- 21de8bc90: fix(Tabs): align small filled horizontal tab corner radius with Blade React
+
+  - TabList container: 16px → 8px (`border.radius.small`)
+  - TabItem: 12px → 4px (`border.radius.xsmall`, mirrors SegmentedControl item)
+  - TabIndicator: 12px → 4px (`border.radius.xsmall`, mirrors SegmentedControl indicator)
+  - Focus ring: 12px → 8px (`border.radius.small` — intentionally larger than item radius to prevent 4px box-shadow inset clipping, consistent with Blade React)
+
+- 361b0605d: fix(Card): refactor ticket card outline with SVG for accurate notch UI
+
 ## 0.8.0
 
 ### Minor Changes
