@@ -7,6 +7,7 @@ import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { TooltipContext } from './TooltipContext';
+import { componentIds } from './componentIds';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { mergeProps } from '~utils/mergeProps';
@@ -14,12 +15,13 @@ import { componentZIndices } from '~utils/componentZIndices';
 import { useTheme } from '~components/BladeProvider';
 import { PopupArrow } from '~components/PopupArrow';
 import { useFloatingPortal } from '~components/Popover/useFloatingPortal.native';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 // Portal container rendered by @gorhom/portal has a 10px top offset on iOS relative
 // to the window coordinate system that measureInWindow doesn't account for.
 const IOS_OFFSET_CORRECTION = 10;
 
-const Tooltip = ({
+const _Tooltip = ({
   title,
   content,
   children,
@@ -56,9 +58,10 @@ const Tooltip = ({
   const { backdropRef, backdropOffset, onBackdropLayout } = useFloatingPortal(update, isVisible);
 
   const handleOpen = React.useCallback(() => {
+    if (isOpen) return;
     setIsOpen(true);
     onOpenChange?.({ isOpen: true });
-  }, [onOpenChange]);
+  }, [isOpen, onOpenChange]);
 
   const handleClose = React.useCallback(() => {
     setIsOpen(false);
@@ -81,13 +84,20 @@ const Tooltip = ({
 
   return (
     <TooltipContext.Provider value={true}>
-      {/* Cloning the trigger children to enhance it with ref and event handler */}
+      {/* Cloning the trigger children to enhance it with ref and event handler.
+          Button uses Pressable `onPress` (via `onClick`); `onTouchEnd` alone is
+          unreliable inside ScrollView / ButtonGroup — real taps often only fire
+          press. Attach both so Storybook and product taps open the tooltip. */}
       {React.cloneElement(children, {
         ...mergeProps(
           {
             onTouchEnd: children.props.onTouchEnd,
+            onClick: children.props.onClick,
           },
-          { onTouchEnd: handleOpen },
+          {
+            onTouchEnd: handleOpen,
+            onClick: handleOpen,
+          },
         ),
         ref: refs.setReference,
       })}
@@ -141,5 +151,9 @@ const Tooltip = ({
     </TooltipContext.Provider>
   );
 };
+
+const Tooltip = assignWithoutSideEffects(_Tooltip, {
+  componentId: componentIds.Tooltip,
+});
 
 export { Tooltip };
