@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
+import { getFilterChipDisplayValue } from './filterChipSelectInputUtils';
 import { useFilterChipGroupContext } from './FilterChipGroupContext';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -16,7 +17,14 @@ import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
-  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur'
+  | 'onKeyDown'
+  | 'value'
+  | 'label'
+  | 'testID'
+  | 'onClick'
+  | 'selectionType'
+  | 'onBlur'
+  | 'showClearButton'
 > & {
   accessibilityLabel?: string;
   onChange?: (props: { name: string; values: string[] }) => void;
@@ -39,6 +47,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     onChange,
     name,
     isDisabled,
+    showClearButton = true,
     ...rest
   } = props;
   const [uncontrolledInputValue, setUncontrolledInputValue] = React.useState<string[]>([]);
@@ -60,8 +69,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     controlledValueIndices,
     changeCallbackTriggerer,
   } = useDropdown();
-  const valueTitle = options.find((option) => option.value === value)?.title ?? value;
-
   const isUnControlled = options.length > 0 && props.value === undefined;
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
   const {
@@ -126,21 +133,6 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUnControlled, options, value]);
-
-  const getTitleFromValue = (value: string): string => {
-    const option = options.find((option) => option.value === value);
-    return option ? option.title : '';
-  };
-
-  const getUnControlledFilterChipValue = (): string | string[] => {
-    if (selectionType === 'single') {
-      if (uncontrolledInputValue.length > 0) {
-        return getTitleFromValue(uncontrolledInputValue[0]);
-      }
-      return '';
-    }
-    return uncontrolledInputValue;
-  };
 
   const handleClearButtonClick = (): void => {
     const currentValues = getValuesArrayFromIndices();
@@ -212,8 +204,14 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   return (
     <BaseFilterChip
       label={label}
-      value={valueTitle ?? getUnControlledFilterChipValue()}
+      value={getFilterChipDisplayValue({
+        value: props.value,
+        options,
+        selectionType,
+        uncontrolledInputValue,
+      })}
       onClearButtonClick={handleClearButtonClick}
+      showClearButton={showClearButton}
       selectionType={selectionType}
       {...rest}
       testID={testID}

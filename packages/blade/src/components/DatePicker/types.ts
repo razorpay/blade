@@ -238,7 +238,14 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      */
     inputPlaceHolder?: string;
     /**
-     * Decides whether to render a clear icon button
+     * Decides whether to render a clear (cross) button on the input.
+     *
+     * For the regular `DatePicker` input this is the existing opt-in behaviour. For the filter-chip
+     * variant (`FilterChipDatePicker`) the clear button is shown by default once a value is
+     * selected; pass `showClearButton={false}` there for filters that must always hold a value
+     * (e.g. a mandatory default date).
+     *
+     * @default true (filter-chip variant) / undefined (regular DatePicker input)
      */
     showClearButton?: boolean;
     /**
@@ -317,8 +324,16 @@ type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'labe
    */
   label: string;
   /**
+   * Callback which fires when the clear (cross) button is clicked.
    *
-   * Callback which fires when clear button is clicked
+   * Clearing also fires `onChange` with an empty value (`null` for single selection,
+   * `[null, null]` for range). When the FilterChipDatePicker is controlled (a `value` is
+   * provided), the chip cannot clear itself — you must reset `value` in response to
+   * `onChange`/`onClearButtonClick`. In the uncontrolled case (only `defaultValue`), the chip
+   * clears itself automatically.
+   *
+   * Tip: pass `showClearButton={false}` to hide the clear button for filters that must always
+   * hold a value.
    */
   onClearButtonClick?: () => void;
 };
