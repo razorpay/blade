@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "@figma/plugin-typings": "1.81.0",
+    "@figma/plugin-typings": "1.131.0",
     "@types/react": "17.0.0",
     "@types/react-dom": "17.0.0",
     "@types/set-value": "4.0.1",
