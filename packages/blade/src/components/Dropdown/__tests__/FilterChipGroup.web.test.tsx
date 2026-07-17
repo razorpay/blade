@@ -86,13 +86,12 @@ describe('<FilterChipGroup />', () => {
     expect(trigger).not.toHaveTextContent('Apple');
   });
 
-  it('in "reset" mode fires onClearButtonClick, keeps the child chip value, and hides the action button', async () => {
+  it('the Reset action fires onResetButtonClick, keeps the child chip value, and hides the action', async () => {
     const user = userEvent.setup();
-    const onClearButtonClick = jest.fn();
+    const onResetButtonClick = jest.fn();
     const { getByRole, findByText, queryByText } = renderGroup({
-      clearButtonBehavior: 'reset',
-      clearButtonText: 'Reset',
-      onClearButtonClick,
+      showClearButton: false,
+      onResetButtonClick,
     });
 
     const trigger = getByRole('button', { name: 'Fruits' });
@@ -105,10 +104,50 @@ describe('<FilterChipGroup />', () => {
 
     await user.click(resetAction);
 
-    expect(onClearButtonClick).toHaveBeenCalledTimes(1);
-    // reset clears only the group's own bookkeeping so the button hides...
+    expect(onResetButtonClick).toHaveBeenCalledTimes(1);
+    // reset clears only the group's own bookkeeping so the action hides...
     await waitFor(() => expect(queryByText('Reset')).toBeNull());
     // ...but the chip is NOT force-cleared (consumer owns restoring defaults), so it keeps its value
+    expect(trigger).toHaveTextContent('Apple');
+  });
+
+  it('renders a custom resetButtonText label', async () => {
+    const user = userEvent.setup();
+    const { getByRole, findByText } = renderGroup({
+      showClearButton: false,
+      onResetButtonClick: jest.fn(),
+      resetButtonText: 'Restore defaults',
+    });
+
+    await user.click(getByRole('button', { name: 'Fruits' }));
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+
+    expect(await findByText('Restore defaults')).toBeInTheDocument();
+  });
+
+  it('can render both Reset and Clear actions together', async () => {
+    const user = userEvent.setup();
+    const onClearButtonClick = jest.fn();
+    const onResetButtonClick = jest.fn();
+    const { getByRole, findByText, getByText } = renderGroup({
+      onClearButtonClick,
+      onResetButtonClick,
+    });
+
+    const trigger = getByRole('button', { name: 'Fruits' });
+    await user.click(trigger);
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+
+    // both actions are shown once a filter is selected
+    expect(await findByText('Reset')).toBeInTheDocument();
+    expect(getByText('Clear Filter')).toBeInTheDocument();
+
+    // clicking Reset fires only its own callback and does not empty the chip
+    await user.click(getByText('Reset'));
+    expect(onResetButtonClick).toHaveBeenCalledTimes(1);
+    expect(onClearButtonClick).not.toHaveBeenCalled();
     expect(trigger).toHaveTextContent('Apple');
   });
 });

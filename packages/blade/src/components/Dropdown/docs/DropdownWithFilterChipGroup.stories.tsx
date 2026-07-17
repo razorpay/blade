@@ -76,12 +76,11 @@ export const Default = (): React.ReactElement => {
 /**
  * Group-level "Reset" (Phase 1).
  *
- * The action button belongs to the whole `FilterChipGroup`, not to individual chips.
- * `clearButtonText` relabels it to "Reset", and `clearButtonBehavior="reset"` makes the group fire
- * a single `onClearButtonClick` WITHOUT emptying the chips — so the consumer restores every
- * filter's default in one place. Below, one "Reset" restores BOTH the Sort and Status filters to
- * their defaults. (Restoring defaults for uncontrolled filters is Phase 2 — see
- * `_decisions/filter-chip-reset.md`.)
+ * "Reset" and "Clear" are separate group-level actions. `onResetButtonClick` renders the Reset
+ * action, which fires a single callback WITHOUT emptying the chips — so the consumer restores every
+ * filter's default in one place. Here `showClearButton={false}` hides the Clear action so only
+ * "Reset" is offered, and one click restores BOTH the Sort and Status filters to their defaults.
+ * (Restoring defaults for uncontrolled filters is Phase 2 — see `_decisions/filter-chip-reset.md`.)
  */
 export const WithResetButton = (): React.ReactElement => {
   const SORT_DEFAULT = 'latest-added';
@@ -95,11 +94,7 @@ export const WithResetButton = (): React.ReactElement => {
   };
 
   return (
-    <FilterChipGroup
-      clearButtonText="Reset"
-      clearButtonBehavior="reset"
-      onClearButtonClick={handleReset}
-    >
+    <FilterChipGroup showClearButton={false} onResetButtonClick={handleReset}>
       <Dropdown>
         <FilterChipSelectInput
           label="Sort"
@@ -114,6 +109,38 @@ export const WithResetButton = (): React.ReactElement => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput
+          label="Status"
+          value={status}
+          onChange={({ values }) => setStatus(values)}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Pending" value="pending" />
+            <ActionListItem title="Failed" value="failed" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </FilterChipGroup>
+  );
+};
+
+/**
+ * A group can offer **both** a "Reset" and a "Clear" action at the same time by providing
+ * `onResetButtonClick` (restores defaults) alongside the default Clear action (`onClearButtonClick`
+ * empties everything). Labels can be customised via `resetButtonText` / `clearButtonText`.
+ */
+export const WithResetAndClearButtons = (): React.ReactElement => {
+  const STATUS_DEFAULT = ['active'];
+  const [status, setStatus] = React.useState<string[]>(STATUS_DEFAULT);
+
+  return (
+    <FilterChipGroup
+      onResetButtonClick={() => setStatus(STATUS_DEFAULT)}
+      onClearButtonClick={() => setStatus([])}
+    >
       <Dropdown selectionType="multiple">
         <FilterChipSelectInput
           label="Status"

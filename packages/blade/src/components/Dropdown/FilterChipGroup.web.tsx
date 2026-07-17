@@ -12,8 +12,9 @@ const FilterChipGroup = ({
   children,
   showClearButton = true,
   onClearButtonClick,
+  onResetButtonClick,
   clearButtonText,
-  clearButtonBehavior = 'clear',
+  resetButtonText,
   ...rest
 }: FilterChipGroupProps): React.ReactElement => {
   const [filterChipGroupSelectedFilters, setFilterChipGroupSelectedFilters] = useState<string[]>(
@@ -21,34 +22,41 @@ const FilterChipGroup = ({
   );
   const [clearFilterCallbackTriggerer, setClearFilterCallbackTriggerer] = useState<number>(0);
   const { selectedFiltersCount, setListViewSelectedFilters } = useListViewFilterContext();
-  const handleClearButtonClick = (): void => {
-    onClearButtonClick?.();
-    // Clear the group's "has changes" bookkeeping in both modes so the action button hides after
-    // it's used (a lingering button post-reset is confusing — there's nothing left to revert). It
-    // reappears the next time a filter changes.
+
+  // Shared bookkeeping reset: both actions clear the group's "has changes" tracking so the action
+  // link(s) hide after use (a lingering action with nothing to revert is confusing). They reappear
+  // on the next filter change.
+  const clearGroupBookkeeping = (): void => {
     setListViewSelectedFilters({});
     setFilterChipGroupSelectedFilters([]);
-    // In "reset" mode we stop here: we intentionally do NOT bump the clear triggerer.
-    // This means child chips (FilterChipSelectInput etc.) keep their internal selected state
-    // and do NOT fire onChange([]) — only the group-level bookkeeping is cleared above.
-    // The consumer restores each filter's default values in their onClearButtonClick handler,
-    // and since we didn't bump the triggerer, those restored values are not stomped.
-    // TODO (FilterChip reset — Phase 2): support restoring defaults for UNCONTROLLED filters. That
-    // needs a `defaultValue` on FilterChipSelectInput and a reset path that restores it instead of
-    // emptying. See packages/blade/src/components/Dropdown/_decisions/filter-chip-reset.md
-    if (clearButtonBehavior === 'reset') {
-      return;
-    }
+  };
+
+  // "Clear" empties every filter. Bumping the triggerer makes each child chip run its clear effect
+  // (fires onChange([]) and drops its selection).
+  const handleClearButtonClick = (): void => {
+    onClearButtonClick?.();
+    clearGroupBookkeeping();
     setClearFilterCallbackTriggerer((prev) => prev + 1);
   };
+
+  // "Reset" only fires the consumer callback and clears the group's bookkeeping. We intentionally
+  // do NOT bump the clear triggerer, so child chips keep their internal state and do not fire
+  // onChange([]) — the consumer restores each filter's default inside onResetButtonClick and those
+  // values are not stomped.
+  // TODO (FilterChip reset — Phase 2): support restoring defaults for UNCONTROLLED filters. That
+  // needs a `defaultValue` on FilterChipSelectInput and a reset path that restores it instead of
+  // emptying. See packages/blade/src/components/Dropdown/_decisions/filter-chip-reset.md
+  const handleResetButtonClick = (): void => {
+    onResetButtonClick?.();
+    clearGroupBookkeeping();
+  };
+
+  const hasSelectedFilters =
+    filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0;
   const selectedCount = Math.max(filterChipGroupSelectedFilters.length, selectedFiltersCount);
   const isPlural = selectedCount > 1;
-  // Default label follows the behavior so it never reads misleadingly: "reset" mode defaults to
-  // "Reset", "clear" mode to the auto-pluralised "Clear Filter(s)". Consumers can override both via
-  // `clearButtonText`.
-  const defaultActionButtonText =
-    clearButtonBehavior === 'reset' ? 'Reset' : `Clear Filter${isPlural ? 's' : ''}`;
-  const actionButtonText = clearButtonText ?? defaultActionButtonText;
+  const clearActionText = clearButtonText ?? `Clear Filter${isPlural ? 's' : ''}`;
+  const resetActionText = resetButtonText ?? 'Reset';
   return (
     <FilterChipGroupProvider
       value={{
@@ -70,10 +78,14 @@ const FilterChipGroup = ({
         flexWrap="wrap"
       >
         {children}
-        {showClearButton &&
-        (filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0) ? (
+        {hasSelectedFilters && onResetButtonClick ? (
+          <Link size="small" color="neutral" onClick={handleResetButtonClick}>
+            {resetActionText}
+          </Link>
+        ) : null}
+        {hasSelectedFilters && showClearButton ? (
           <Link size="small" color="neutral" onClick={handleClearButtonClick}>
-            {actionButtonText}
+            {clearActionText}
           </Link>
         ) : null}
       </BaseBox>

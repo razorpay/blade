@@ -81,65 +81,55 @@ type FilterChipGroupProps = TestID &
   DataAnalyticsAttribute & {
     children: React.ReactNode;
     /**
-     * Callback fired when the group's action button is clicked.
+     * Callback fired when the **Clear** action is clicked.
      *
-     * Fires in **both** `clearButtonBehavior` modes: in `"clear"` mode the chips are also emptied,
-     * whereas in `"reset"` mode nothing is cleared automatically — this callback is your hook to
-     * restore each filter's default value.
+     * "Clear" empties every filter and returns the group to the no-filter (empty) state. The group
+     * performs the emptying itself, so uncontrolled chips are cleared and controlled chips receive
+     * `onChange([])`.
+     *
+     * Providing this (or leaving `showClearButton` at its default) renders the Clear action.
      */
     onClearButtonClick?: () => void;
     /**
-     * Controls the group-level action link (the "Clear Filters" / "Reset" link rendered by the
-     * group), NOT the per-chip clear (cross) button. When `true`, the link is shown whenever the
-     * group has at least one selected filter.
+     * Callback fired when the **Reset** action is clicked.
+     *
+     * "Reset" is semantically different from "Clear": it returns filters to their **default**
+     * values (which may be non-empty, e.g. `Status: Active`) rather than emptying them. The group
+     * does NOT empty the chips in this mode — it only fires this callback, which is your hook to
+     * restore each filter's default (for controlled filters, reset their `value` here).
+     *
+     * Providing this renders the Reset action. It can be shown **alongside** the Clear action, so a
+     * group can offer both "Reset" and "Clear".
+     *
+     * ⚠️ For **uncontrolled** chips (no `value` prop) reset cannot restore defaults yet — there is
+     * no `defaultValue` for the group to restore, so those chips visually retain their values.
+     * Uncontrolled reset-to-defaults is Phase 2 — see `_decisions/filter-chip-reset.md`.
+     */
+    onResetButtonClick?: () => void;
+    /**
+     * Controls visibility of the group-level **Clear** action link (NOT the per-chip clear/cross
+     * button). When `true`, the Clear link is shown whenever the group has at least one selected
+     * filter.
      *
      * Note: this is distinct from `showClearButton` on `FilterChipSelectInput` /
-     * `FilterChipDatePicker`, which toggles the individual chip's cross button.
+     * `FilterChipDatePicker`, which toggles the individual chip's cross button. Set this to `false`
+     * (and provide `onResetButtonClick`) for a group that should only offer Reset.
      *
      * @default true
      */
     showClearButton?: boolean;
     /**
-     * Custom text for the group's action button (e.g. `"Reset"`).
+     * Custom label for the **Clear** action link.
      *
-     * When not provided (`undefined`) the label is derived from `clearButtonBehavior`:
-     * - `"clear"` → auto-pluralised `"Clear Filter"` / `"Clear Filters"`.
-     * - `"reset"` → `"Reset"`.
-     *
-     * Note: because of this conditional default, switching `clearButtonBehavior` while leaving
-     * `clearButtonText` unset will change the button label. Pass `clearButtonText` explicitly to
-     * pin the label regardless of behaviour.
-     *
-     * @default undefined (derived from `clearButtonBehavior`)
+     * @default "Clear Filter" (auto-pluralised to "Clear Filters" when more than one filter is selected)
      */
     clearButtonText?: string;
     /**
-     * Controls what happens when the group's action button is clicked. (This refers to the
-     * button's behaviour regardless of its label — a button labelled "Reset" via `clearButtonText`
-     * still uses this prop.)
+     * Custom label for the **Reset** action link.
      *
-     * - `"clear"` (default): empties every filter and resets the group to a no-filter state.
-     * - `"reset"`: fires `onClearButtonClick` and clears the group's "has changes" bookkeeping,
-     *   but **does NOT clear the child filter chips**. The chips keep their current values.
-     *   This delegates the responsibility of restoring defaults to the consumer's
-     *   `onClearButtonClick` handler — the component does not reset itself.
-     *
-     *   ⚠️ In `"reset"` mode, **uncontrolled** chips (no `value` prop) will visually retain their
-     *   selected values because there is no `defaultValue` for the group to restore. Only
-     *   controlled chips can be reliably restored today (by resetting `value` in
-     *   `onClearButtonClick`). Restoring defaults for uncontrolled filters is Phase 2 — see
-     *   `_decisions/filter-chip-reset.md`.
-     *
-     *   Contract note: on action the group always clears its own selected-filter bookkeeping (so
-     *   the action button hides after use — a lingering "Reset" with nothing to revert is
-     *   confusing). This means that if the consumer's `onClearButtonClick` does not restore every
-     *   chip's default, the group's tracked count can momentarily read empty while a chip still
-     *   shows a value. This is an intentional trade-off in favour of hiding the used-up button;
-     *   the count re-syncs on the next filter change.
-     *
-     * @default "clear"
+     * @default "Reset"
      */
-    clearButtonBehavior?: 'clear' | 'reset';
+    resetButtonText?: string;
   };
 
 type FilterChipGroupContextType = {

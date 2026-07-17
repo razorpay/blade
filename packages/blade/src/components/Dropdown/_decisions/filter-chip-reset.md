@@ -13,20 +13,23 @@ The tricky part is the source of truth for "default":
 - **Uncontrolled filters** → the chip owns state, but select filters have **no `defaultValue`**
   concept today (only `FilterChipDatePicker` has one).
 
-## Phase 1 — DONE (controlled-safe reset + custom label)
+## Phase 1 — DONE (controlled-safe reset via separate Clear/Reset actions)
 
-Shipped on `FilterChipGroup` (web only; native is a stub):
+Shipped on `FilterChipGroup` (web only; native is a stub). Clear and Reset are modelled as **two
+independent actions** (per review feedback — a single overloaded `clearButtonBehavior` flag
+conflated the two semantics and couldn't express "offer both"):
 
-- **`clearButtonText?: string`** — customise the label (e.g. `"Reset"`). Defaults to the
-  auto-pluralised `"Clear Filter" / "Clear Filters"`.
-- **`clearButtonBehavior?: 'clear' | 'reset'`** (default `'clear'`, backward compatible):
-  - `'clear'`: existing behavior — empties every filter, clears ListView context, bumps the
-    clear triggerer.
-  - `'reset'`: fires `onClearButtonClick` and clears the group's own "has changes" bookkeeping
-    (ListView context + selected-filter tracking) so the action button hides after use, but does
-    NOT bump the clear triggerer. Not bumping the triggerer is the key bit — it prevents the chips
-    from firing `onChange([])` and stomping the defaults the consumer restores inside
-    `onClearButtonClick`. The button reappears on the next filter change.
+- **`onClearButtonClick?: () => void`** + **`showClearButton?: boolean`** (default `true`) —
+  the existing **Clear** action. Empties every filter: clears ListView context + selected-filter
+  tracking and bumps the clear triggerer so each child chip runs its clear effect.
+- **`onResetButtonClick?: () => void`** — opt-in **Reset** action. Fires the callback and clears the
+  group's own "has changes" bookkeeping so the action hides after use, but does NOT bump the clear
+  triggerer. Not bumping the triggerer is the key bit — it prevents the chips from firing
+  `onChange([])` and stomping the defaults the consumer restores inside `onResetButtonClick`. The
+  action reappears on the next filter change.
+- **`clearButtonText?` / `resetButtonText?`** — customise each action's label (defaults:
+  auto-pluralised `"Clear Filter(s)"` and `"Reset"`).
+- Both actions can be rendered **simultaneously** (provide both handlers).
 
 This unblocks the **controlled** (and mixed, controlled-leaning) use cases.
 
