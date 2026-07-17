@@ -26,6 +26,11 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 
+# Bundle artifact
+*.jsbundle
+.size-limit.json
+prBundleSizeStats.json
+
 # BrowserStack
 log/
 test-results/
