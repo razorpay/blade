@@ -73,16 +73,22 @@ const rgbaToHsla = ({ r, g, b, a }: RGBA): string => {
 
   return `hsla(${h}, ${Math.round(s)}%, ${Math.round(l)}%, ${opacityMap[a.toFixed(2)]})`;
 };
-const makeThemeColorTokens = (): Record<string, any> => {
+const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
   const themeColorTokens = {
     onLight: {},
     onDark: {},
   };
   try {
     // filter colors collection
-    const colorsCollection = figma.variables
-      .getLocalVariableCollections()
-      .find((collection) => collection.name === THEME_TOKENS_COLLECTION);
+    const colorsCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(
+      (collection) => collection.name === THEME_TOKENS_COLLECTION,
+    );
+
+    if (!colorsCollection) {
+      throw new Error(
+        `Could not find the "${THEME_TOKENS_COLLECTION}" variable collection in this file.`,
+      );
+    }
 
     // create modes set in the collection eg: onLight, onDark, etc.
     const colorModes = colorsCollection.modes.reduce(
@@ -90,14 +96,17 @@ const makeThemeColorTokens = (): Record<string, any> => {
       {},
     );
 
-    colorsCollection.variableIds.forEach((variableId) => {
+    for (const variableId of colorsCollection.variableIds) {
       // get all the variables by their ids in our collection
-      const variable = figma.variables.getVariableById(variableId);
+      const variable = await figma.variables.getVariableByIdAsync(variableId);
+      if (!variable) {
+        continue;
+      }
 
       // replace the "/" from token name with "." to store in json structure
       const tokenName = makeThemeTokenName(variable.name);
       if (tokenName.includes('❌') || tokenName.includes('_') || tokenName.includes('elevation')) {
-        return;
+        continue;
       }
 
       // prepare for storing variables in code in the format of dark and light modes
@@ -106,10 +115,16 @@ const makeThemeColorTokens = (): Record<string, any> => {
         // if the variable references another variable then we take the name of the referenced variable and set that as a value
         // eg: surface.background.neutral.subtle -> globalColors.gray.200
         if (typeof variableModeValue === 'object' && 'id' in variableModeValue) {
+          const referencedVariable = await figma.variables.getVariableByIdAsync(
+            variableModeValue.id,
+          );
+          if (!referencedVariable) {
+            continue;
+          }
           setValue(
             themeColorTokens[modeName],
             tokenName,
-            makeThemeTokenName(figma.variables.getVariableById(variableModeValue.id).name, true),
+            makeThemeTokenName(referencedVariable.name, true),
           );
         } else if (
           typeof variableModeValue === 'object' &&
@@ -125,7 +140,7 @@ const makeThemeColorTokens = (): Record<string, any> => {
           );
         }
       }
-    });
+    }
   } catch (error) {
     console.error('error', error);
     showNotification({
@@ -138,23 +153,29 @@ const makeThemeColorTokens = (): Record<string, any> => {
   return themeColorTokens;
 };
 
-const makeGlobalColorTokens = (): Record<string, any> => {
+const makeGlobalColorTokens = async (): Promise<Record<string, any>> => {
   const globalColorTokens = {};
   try {
     // filter colors collection
-    const globalColorTokensCollection = figma.variables
-      .getLocalVariableCollections()
-      .find((collection) => collection.name === GLOBAL_TOKENS_COLLECTION);
+    const globalColorTokensCollection = (
+      await figma.variables.getLocalVariableCollectionsAsync()
+    ).find((collection) => collection.name === GLOBAL_TOKENS_COLLECTION);
+
+    if (!globalColorTokensCollection) {
+      throw new Error(
+        `Could not find the "${GLOBAL_TOKENS_COLLECTION}" variable collection in this file.`,
+      );
+    }
 
     const colorModes: { default: string } = globalColorTokensCollection.modes.reduce(
       (acc, mode) => Object.assign(acc, { default: mode.modeId }),
       { default: '' },
     );
 
-    globalColorTokensCollection.variableIds.forEach((variableId) => {
+    for (const variableId of globalColorTokensCollection.variableIds) {
       // get all the variables by their ids in our collection
-      const variable = figma.variables.getVariableById(variableId);
-      if (variable.name.includes('_global-colors')) {
+      const variable = await figma.variables.getVariableByIdAsync(variableId);
+      if (variable && variable.name.includes('_global-colors')) {
         // replace the "/" from token name with "." to store in json structure
         const tokenName = makeGlobalColorTokenName(variable.name);
         const variableColor = variable.valuesByMode[colorModes.default] as RGBA;
@@ -163,7 +184,7 @@ const makeGlobalColorTokens = (): Record<string, any> => {
           setValue(globalColorTokens, tokenName, `\`${tokenHSLAValue}\``);
         }
       }
-    });
+    }
   } catch (error) {
     console.error('error', error);
     showNotification({
@@ -176,14 +197,15 @@ const makeGlobalColorTokens = (): Record<string, any> => {
   return globalColorTokens;
 };
 
-export const makeColorTokens = (): void => {
-  const themeColorTokens = makeThemeColorTokens();
-  const globalColorTokens = makeGlobalColorTokens();
+export const makeColorTokens = async (): Promise<void> => {
+  const themeColorTokens = await makeThemeColorTokens();
+  const globalColorTokens = await makeGlobalColorTokens();
 
-  if (
-    (Object.keys(themeColorTokens.onLight).length && Object.keys(themeColorTokens.onDark).length) ||
-    Object.keys(globalColorTokens).length
-  ) {
+  const hasThemeTokens =
+    Object.keys(themeColorTokens.onLight).length && Object.keys(themeColorTokens.onDark).length;
+  const hasGlobalTokens = Object.keys(globalColorTokens).length;
+
+  if (hasThemeTokens || hasGlobalTokens) {
     showNotification({
       figma,
       type: 'information',
@@ -195,6 +217,13 @@ export const makeColorTokens = (): void => {
     });
     console.log({ themeColorTokens, globalColorTokens });
     figma.ui.show();
+  } else {
+    // Surface the failure instead of silently doing nothing so the cause is visible.
+    showNotification({
+      figma,
+      type: 'error',
+      text: `⛔️ No color tokens were generated. Ensure the "${THEME_TOKENS_COLLECTION}" and "${GLOBAL_TOKENS_COLLECTION}" variable collections exist in this file.`,
+    });
   }
 };
 
