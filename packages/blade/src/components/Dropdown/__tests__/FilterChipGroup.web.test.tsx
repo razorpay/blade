@@ -49,9 +49,9 @@ describe('<FilterChipGroup />', () => {
     expect(queryByText('Clear Filter')).toBeNull();
   });
 
-  it('does not render the action button when showClearButton is false', async () => {
+  it('does not render the action button when showClearAction is false', async () => {
     const user = userEvent.setup();
-    const { getByRole, queryByText } = renderGroup({ showClearButton: false });
+    const { getByRole, queryByText } = renderGroup({ showClearAction: false });
 
     // Capture the chip trigger before selection (accessible name is exactly the label).
     const trigger = getByRole('button', { name: 'Fruits' });
@@ -90,7 +90,7 @@ describe('<FilterChipGroup />', () => {
     const user = userEvent.setup();
     const onResetButtonClick = jest.fn();
     const { getByRole, findByText, queryByText } = renderGroup({
-      showClearButton: false,
+      showClearAction: false,
       onResetButtonClick,
     });
 
@@ -114,7 +114,7 @@ describe('<FilterChipGroup />', () => {
   it('renders a custom resetButtonText label', async () => {
     const user = userEvent.setup();
     const { getByRole, findByText } = renderGroup({
-      showClearButton: false,
+      showClearAction: false,
       onResetButtonClick: jest.fn(),
       resetButtonText: 'Restore defaults',
     });
@@ -149,5 +149,26 @@ describe('<FilterChipGroup />', () => {
     expect(onResetButtonClick).toHaveBeenCalledTimes(1);
     expect(onClearButtonClick).not.toHaveBeenCalled();
     expect(trigger).toHaveTextContent('Apple');
+  });
+
+  it('does not render the Reset action when showResetButton is false', async () => {
+    const user = userEvent.setup();
+    const onResetButtonClick = jest.fn();
+    const { getByRole, queryByText } = renderGroup({
+      showClearAction: false,
+      onResetButtonClick,
+      showResetButton: false,
+    });
+
+    const trigger = getByRole('button', { name: 'Fruits' });
+    await user.click(trigger);
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+
+    await waitFor(() => expect(trigger).toHaveTextContent('Apple'));
+    // Reset action is hidden even though onResetButtonClick is provided
+    expect(queryByText('Reset')).toBeNull();
+    // Clear action is also hidden because showClearAction is false
+    expect(queryByText('Clear Filter')).toBeNull();
   });
 });
