@@ -78,7 +78,7 @@ export const Default = (): React.ReactElement => {
  *
  * "Reset" and "Clear" are separate group-level actions. `onResetButtonClick` renders the Reset
  * action, which fires a single callback WITHOUT emptying the chips — so the consumer restores every
- * filter's default in one place. Here `showClearButton={false}` hides the Clear action so only
+ * filter's default in one place. Here `showClearAction={false}` hides the Clear action so only
  * "Reset" is offered, and one click restores BOTH the Sort and Status filters to their defaults.
  * (Restoring defaults for uncontrolled filters is Phase 2 — see `_decisions/filter-chip-reset.md`.)
  */
@@ -94,7 +94,7 @@ export const WithResetButton = (): React.ReactElement => {
   };
 
   return (
-    <FilterChipGroup showClearButton={false} onResetButtonClick={handleReset}>
+    <FilterChipGroup showClearAction={false} onResetButtonClick={handleReset}>
       <Dropdown>
         <FilterChipSelectInput
           label="Sort"

@@ -87,7 +87,7 @@ type FilterChipGroupProps = TestID &
      * performs the emptying itself, so uncontrolled chips are cleared and controlled chips receive
      * `onChange([])`.
      *
-     * Providing this (or leaving `showClearButton` at its default) renders the Clear action.
+     * Providing this (or leaving `showClearAction` at its default) renders the Clear action.
      */
     onClearButtonClick?: () => void;
     /**
@@ -98,7 +98,7 @@ type FilterChipGroupProps = TestID &
      * does NOT empty the chips in this mode — it only fires this callback, which is your hook to
      * restore each filter's default (for controlled filters, reset their `value` here).
      *
-     * Providing this renders the Reset action (unless `showResetButton` is `false`). It can be
+     * Providing this renders the Reset action (unless `showResetAction` is `false`). It can be
      * shown **alongside** the Clear action, so a group can offer both "Reset" and "Clear".
      *
      * ⚠️ For **uncontrolled** chips (no `value` prop) reset cannot restore defaults yet — there is
@@ -117,7 +117,7 @@ type FilterChipGroupProps = TestID &
      *
      * @default true
      */
-    showClearButton?: boolean;
+    showClearAction?: boolean;
     /**
      * Controls visibility of the group-level **Reset** action link. When `true`, the Reset link is
      * shown whenever the group has at least one selected filter and `onResetButtonClick` is
@@ -126,7 +126,7 @@ type FilterChipGroupProps = TestID &
      *
      * @default true
      */
-    showResetButton?: boolean;
+    showResetAction?: boolean;
     /**
      * Custom label for the **Clear** action link.
      *

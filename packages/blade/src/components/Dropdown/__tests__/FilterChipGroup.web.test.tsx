@@ -49,9 +49,9 @@ describe('<FilterChipGroup />', () => {
     expect(queryByText('Clear Filter')).toBeNull();
   });
 
-  it('does not render the action button when showClearButton is false', async () => {
+  it('does not render the action button when showClearAction is false', async () => {
     const user = userEvent.setup();
-    const { getByRole, queryByText } = renderGroup({ showClearButton: false });
+    const { getByRole, queryByText } = renderGroup({ showClearAction: false });
 
     // Capture the chip trigger before selection (accessible name is exactly the label).
     const trigger = getByRole('button', { name: 'Fruits' });
@@ -90,7 +90,7 @@ describe('<FilterChipGroup />', () => {
     const user = userEvent.setup();
     const onResetButtonClick = jest.fn();
     const { getByRole, findByText, queryByText } = renderGroup({
-      showClearButton: false,
+      showClearAction: false,
       onResetButtonClick,
     });
 
@@ -114,7 +114,7 @@ describe('<FilterChipGroup />', () => {
   it('renders a custom resetButtonText label', async () => {
     const user = userEvent.setup();
     const { getByRole, findByText } = renderGroup({
-      showClearButton: false,
+      showClearAction: false,
       onResetButtonClick: jest.fn(),
       resetButtonText: 'Restore defaults',
     });
@@ -151,13 +151,13 @@ describe('<FilterChipGroup />', () => {
     expect(trigger).toHaveTextContent('Apple');
   });
 
-  it('does not render the Reset action when showResetButton is false', async () => {
+  it('does not render Reset or Clear actions when showResetAction and showClearAction are both false', async () => {
     const user = userEvent.setup();
     const onResetButtonClick = jest.fn();
     const { getByRole, queryByText } = renderGroup({
-      showClearButton: false,
+      showClearAction: false,
       onResetButtonClick,
-      showResetButton: false,
+      showResetAction: false,
     });
 
     const trigger = getByRole('button', { name: 'Fruits' });
@@ -168,16 +168,16 @@ describe('<FilterChipGroup />', () => {
     await waitFor(() => expect(trigger).toHaveTextContent('Apple'));
     // Reset action is hidden even though onResetButtonClick is provided
     expect(queryByText('Reset')).toBeNull();
-    // Clear action is also hidden because showClearButton is false
+    // Clear action is also hidden because showClearAction is false
     expect(queryByText('Clear Filter')).toBeNull();
   });
 
-  it('hides only the Reset action when showResetButton is false (Clear still visible)', async () => {
+  it('hides only the Reset action when showResetAction is false (Clear still visible)', async () => {
     const user = userEvent.setup();
     const onResetButtonClick = jest.fn();
     const { getByRole, queryByText, findByText } = renderGroup({
       onResetButtonClick,
-      showResetButton: false,
+      showResetAction: false,
     });
 
     const trigger = getByRole('button', { name: 'Fruits' });
@@ -188,7 +188,7 @@ describe('<FilterChipGroup />', () => {
     await waitFor(() => expect(trigger).toHaveTextContent('Apple'));
     // Reset action is hidden
     expect(queryByText('Reset')).toBeNull();
-    // Clear action is still visible (showClearButton defaults to true)
+    // Clear action is still visible (showClearAction defaults to true)
     expect(await findByText('Clear Filter')).toBeInTheDocument();
   });
 });

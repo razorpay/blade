@@ -10,10 +10,10 @@ import { Link } from '~components/Link';
 const FilterChipGroup = ({
   testID,
   children,
-  showClearButton = true,
+  showClearAction = true,
   onClearButtonClick,
   onResetButtonClick,
-  showResetButton = true,
+  showResetAction = true,
   clearButtonText,
   resetButtonText,
   ...rest
@@ -78,12 +78,12 @@ const FilterChipGroup = ({
         flexWrap="wrap"
       >
         {children}
-        {hasSelectedFilters && onResetButtonClick && showResetButton ? (
+        {hasSelectedFilters && onResetButtonClick && showResetAction ? (
           <Link size="small" color="neutral" onClick={handleResetButtonClick}>
             {resetActionText}
           </Link>
         ) : null}
-        {hasSelectedFilters && showClearButton ? (
+        {hasSelectedFilters && showClearAction ? (
           <Link size="small" color="neutral" onClick={handleClearButtonClick}>
             {clearActionText}
           </Link>
