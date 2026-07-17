@@ -2043,7 +2043,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="topFade"
+                            name="topFade-r0"
                             x1="0"
                             x2="0"
                             y1="0"
@@ -2060,7 +2060,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="bottomFade"
+                            name="bottomFade-r0"
                             x1="0"
                             x2="0"
                             y1="1"
@@ -2076,7 +2076,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="topMask"
+                            name="topMask-r0"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -2084,7 +2084,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "topFade",
+                                  "brushRef": "topFade-r0",
                                   "type": 1,
                                 }
                               }
@@ -2109,7 +2109,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="bottomMask"
+                            name="bottomMask-r0"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -2117,7 +2117,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "bottomFade",
+                                  "brushRef": "bottomFade-r0",
                                   "type": 1,
                                 }
                               }
@@ -2147,7 +2147,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={1}
-                            name="btnGlow"
+                            name="btnGlow-r0"
                             rx={64}
                             ry={64}
                           />
@@ -2155,7 +2155,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="bottomMask"
+                          mask="bottomMask-r0"
                           propList={
                             [
                               "fill",
@@ -2179,7 +2179,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="topMask"
+                          mask="topMask-r0"
                           propList={
                             [
                               "fill",
@@ -2226,7 +2226,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="bottomMask"
+                          mask="bottomMask-r0"
                           propList={
                             [
                               "fill",
@@ -2250,7 +2250,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         <RNSVGRect
                           fill={
                             {
-                              "brushRef": "btnGlow",
+                              "brushRef": "btnGlow-r0",
                               "type": 1,
                             }
                           }

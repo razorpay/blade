@@ -195,7 +195,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r0"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -212,7 +212,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r0"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -228,7 +228,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r0"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -236,7 +236,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r0",
                         "type": 1,
                       }
                     }
@@ -261,7 +261,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r0"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -269,7 +269,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r0",
                         "type": 1,
                       }
                     }
@@ -299,7 +299,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-r0"
                   rx={64}
                   ry={64}
                 />
@@ -307,7 +307,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r0"
                 propList={
                   [
                     "fill",
@@ -331,7 +331,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-r0"
                 propList={
                   [
                     "fill",
@@ -378,7 +378,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r0"
                 propList={
                   [
                     "fill",
@@ -402,7 +402,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-r0",
                     "type": 1,
                   }
                 }
@@ -678,7 +678,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -695,7 +695,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -711,7 +711,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -719,7 +719,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1",
                         "type": 1,
                       }
                     }
@@ -744,7 +744,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -752,7 +752,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1",
                         "type": 1,
                       }
                     }
@@ -794,7 +794,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1"
                 propList={
                   [
                     "fill",
@@ -1074,7 +1074,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r2"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -1091,7 +1091,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r2"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -1107,7 +1107,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r2"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -1115,7 +1115,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r2",
                         "type": 1,
                       }
                     }
@@ -1140,7 +1140,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r2"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -1148,7 +1148,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r2",
                         "type": 1,
                       }
                     }
@@ -1190,7 +1190,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with default propert
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r2"
                 propList={
                   [
                     "fill",
@@ -1493,7 +1493,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rf"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -1510,7 +1510,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rf"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -1526,7 +1526,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rf"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -1534,7 +1534,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rf",
                         "type": 1,
                       }
                     }
@@ -1559,7 +1559,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rf"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -1567,7 +1567,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rf",
                         "type": 1,
                       }
                     }
@@ -1597,7 +1597,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-rf"
                   rx={64}
                   ry={64}
                 />
@@ -1605,7 +1605,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rf"
                 propList={
                   [
                     "fill",
@@ -1629,7 +1629,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-rf"
                 propList={
                   [
                     "fill",
@@ -1676,7 +1676,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rf"
                 propList={
                   [
                     "fill",
@@ -1700,7 +1700,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-rf",
                     "type": 1,
                   }
                 }
@@ -1981,7 +1981,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rg"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -1998,7 +1998,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rg"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -2014,7 +2014,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rg"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -2022,7 +2022,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rg",
                         "type": 1,
                       }
                     }
@@ -2047,7 +2047,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rg"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -2055,7 +2055,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rg",
                         "type": 1,
                       }
                     }
@@ -2097,7 +2097,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rg"
                 propList={
                   [
                     "fill",
@@ -2382,7 +2382,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rh"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -2399,7 +2399,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rh"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -2415,7 +2415,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rh"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -2423,7 +2423,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rh",
                         "type": 1,
                       }
                     }
@@ -2448,7 +2448,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rh"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -2456,7 +2456,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rh",
                         "type": 1,
                       }
                     }
@@ -2498,7 +2498,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with full width 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rh"
                 propList={
                   [
                     "fill",
@@ -2795,7 +2795,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rc"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -2812,7 +2812,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rc"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -2828,7 +2828,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rc"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -2836,7 +2836,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rc",
                         "type": 1,
                       }
                     }
@@ -2861,7 +2861,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rc"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -2869,7 +2869,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rc",
                         "type": 1,
                       }
                     }
@@ -2899,7 +2899,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-rc"
                   rx={64}
                   ry={64}
                 />
@@ -2907,7 +2907,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rc"
                 propList={
                   [
                     "fill",
@@ -2931,7 +2931,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-rc"
                 propList={
                   [
                     "fill",
@@ -2978,7 +2978,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rc"
                 propList={
                   [
                     "fill",
@@ -3002,7 +3002,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-rc",
                     "type": 1,
                   }
                 }
@@ -3278,7 +3278,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rd"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -3295,7 +3295,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rd"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -3311,7 +3311,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rd"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -3319,7 +3319,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rd",
                         "type": 1,
                       }
                     }
@@ -3344,7 +3344,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rd"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -3352,7 +3352,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rd",
                         "type": 1,
                       }
                     }
@@ -3394,7 +3394,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rd"
                 propList={
                   [
                     "fill",
@@ -3674,7 +3674,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-re"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -3691,7 +3691,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-re"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -3707,7 +3707,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-re"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -3715,7 +3715,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-re",
                         "type": 1,
                       }
                     }
@@ -3740,7 +3740,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-re"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -3748,7 +3748,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-re",
                         "type": 1,
                       }
                     }
@@ -3790,7 +3790,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with large size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-re"
                 propList={
                   [
                     "fill",
@@ -4087,7 +4087,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r9"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -4104,7 +4104,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r9"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -4120,7 +4120,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r9"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -4128,7 +4128,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r9",
                         "type": 1,
                       }
                     }
@@ -4153,7 +4153,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r9"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -4161,7 +4161,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r9",
                         "type": 1,
                       }
                     }
@@ -4191,7 +4191,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-r9"
                   rx={64}
                   ry={64}
                 />
@@ -4199,7 +4199,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r9"
                 propList={
                   [
                     "fill",
@@ -4223,7 +4223,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-r9"
                 propList={
                   [
                     "fill",
@@ -4270,7 +4270,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r9"
                 propList={
                   [
                     "fill",
@@ -4294,7 +4294,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-r9",
                     "type": 1,
                   }
                 }
@@ -4570,7 +4570,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-ra"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -4587,7 +4587,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-ra"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -4603,7 +4603,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-ra"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -4611,7 +4611,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-ra",
                         "type": 1,
                       }
                     }
@@ -4636,7 +4636,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-ra"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -4644,7 +4644,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-ra",
                         "type": 1,
                       }
                     }
@@ -4686,7 +4686,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-ra"
                 propList={
                   [
                     "fill",
@@ -4966,7 +4966,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rb"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -4983,7 +4983,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rb"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -4999,7 +4999,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rb"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -5007,7 +5007,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rb",
                         "type": 1,
                       }
                     }
@@ -5032,7 +5032,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rb"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -5040,7 +5040,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rb",
                         "type": 1,
                       }
                     }
@@ -5082,7 +5082,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with medium size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rb"
                 propList={
                   [
                     "fill",
@@ -5379,7 +5379,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r6"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -5396,7 +5396,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r6"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -5412,7 +5412,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r6"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -5420,7 +5420,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r6",
                         "type": 1,
                       }
                     }
@@ -5445,7 +5445,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r6"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -5453,7 +5453,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r6",
                         "type": 1,
                       }
                     }
@@ -5483,7 +5483,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-r6"
                   rx={64}
                   ry={64}
                 />
@@ -5491,7 +5491,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r6"
                 propList={
                   [
                     "fill",
@@ -5515,7 +5515,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-r6"
                 propList={
                   [
                     "fill",
@@ -5562,7 +5562,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r6"
                 propList={
                   [
                     "fill",
@@ -5586,7 +5586,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-r6",
                     "type": 1,
                   }
                 }
@@ -5862,7 +5862,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r7"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -5879,7 +5879,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r7"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -5895,7 +5895,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r7"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -5903,7 +5903,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r7",
                         "type": 1,
                       }
                     }
@@ -5928,7 +5928,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r7"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -5936,7 +5936,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r7",
                         "type": 1,
                       }
                     }
@@ -5978,7 +5978,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r7"
                 propList={
                   [
                     "fill",
@@ -6258,7 +6258,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r8"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -6275,7 +6275,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r8"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -6291,7 +6291,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r8"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -6299,7 +6299,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r8",
                         "type": 1,
                       }
                     }
@@ -6324,7 +6324,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r8"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -6332,7 +6332,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r8",
                         "type": 1,
                       }
                     }
@@ -6374,7 +6374,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with small size 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r8"
                 propList={
                   [
                     "fill",
@@ -6671,7 +6671,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r3"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -6688,7 +6688,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r3"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -6704,7 +6704,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r3"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -6712,7 +6712,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r3",
                         "type": 1,
                       }
                     }
@@ -6737,7 +6737,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r3"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -6745,7 +6745,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r3",
                         "type": 1,
                       }
                     }
@@ -6775,7 +6775,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-r3"
                   rx={64}
                   ry={64}
                 />
@@ -6783,7 +6783,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r3"
                 propList={
                   [
                     "fill",
@@ -6807,7 +6807,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-r3"
                 propList={
                   [
                     "fill",
@@ -6854,7 +6854,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r3"
                 propList={
                   [
                     "fill",
@@ -6878,7 +6878,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-r3",
                     "type": 1,
                   }
                 }
@@ -7154,7 +7154,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r4"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -7171,7 +7171,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r4"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -7187,7 +7187,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r4"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -7195,7 +7195,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r4",
                         "type": 1,
                       }
                     }
@@ -7220,7 +7220,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r4"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -7228,7 +7228,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r4",
                         "type": 1,
                       }
                     }
@@ -7270,7 +7270,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r4"
                 propList={
                   [
                     "fill",
@@ -7550,7 +7550,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r5"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -7567,7 +7567,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r5"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -7583,7 +7583,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r5"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -7591,7 +7591,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r5",
                         "type": 1,
                       }
                     }
@@ -7616,7 +7616,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r5"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -7624,7 +7624,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r5",
                         "type": 1,
                       }
                     }
@@ -7666,7 +7666,7 @@ exports[`<ButtonGroup /> (native) should render ButtonGroup with xsmall size 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r5"
                 propList={
                   [
                     "fill",
@@ -8568,7 +8568,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1c"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -8585,7 +8585,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1c"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -8601,7 +8601,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1c"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -8609,7 +8609,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1c",
                         "type": 1,
                       }
                     }
@@ -8634,7 +8634,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1c"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -8642,7 +8642,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1c",
                         "type": 1,
                       }
                     }
@@ -8672,7 +8672,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-r1c"
                   rx={64}
                   ry={64}
                 />
@@ -8680,7 +8680,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1c"
                 propList={
                   [
                     "fill",
@@ -8704,7 +8704,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-r1c"
                 propList={
                   [
                     "fill",
@@ -8751,7 +8751,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1c"
                 propList={
                   [
                     "fill",
@@ -8775,7 +8775,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-r1c",
                     "type": 1,
                   }
                 }
@@ -9051,7 +9051,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1d"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -9068,7 +9068,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1d"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -9084,7 +9084,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1d"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -9092,7 +9092,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1d",
                         "type": 1,
                       }
                     }
@@ -9117,7 +9117,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1d"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -9125,7 +9125,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1d",
                         "type": 1,
                       }
                     }
@@ -9167,7 +9167,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1d"
                 propList={
                   [
                     "fill",
@@ -9447,7 +9447,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1e"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -9464,7 +9464,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1e"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -9480,7 +9480,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1e"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -9488,7 +9488,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1e",
                         "type": 1,
                       }
                     }
@@ -9513,7 +9513,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1e"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -9521,7 +9521,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1e",
                         "type": 1,
                       }
                     }
@@ -9563,7 +9563,7 @@ exports[`<ButtonGroup /> (native) should render negative color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1e"
                 propList={
                   [
                     "fill",
@@ -9860,7 +9860,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1f"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -9877,7 +9877,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1f"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -9893,7 +9893,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1f"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -9901,7 +9901,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1f",
                         "type": 1,
                       }
                     }
@@ -9926,7 +9926,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1f"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -9934,7 +9934,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1f",
                         "type": 1,
                       }
                     }
@@ -9976,7 +9976,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1f"
                 propList={
                   [
                     "fill",
@@ -10247,7 +10247,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1g"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -10264,7 +10264,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1g"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -10280,7 +10280,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1g"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -10288,7 +10288,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1g",
                         "type": 1,
                       }
                     }
@@ -10313,7 +10313,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1g"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -10321,7 +10321,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1g",
                         "type": 1,
                       }
                     }
@@ -10363,7 +10363,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1g"
                 propList={
                   [
                     "fill",
@@ -10633,7 +10633,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1h"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -10650,7 +10650,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1h"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -10666,7 +10666,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1h"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -10674,7 +10674,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1h",
                         "type": 1,
                       }
                     }
@@ -10699,7 +10699,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1h"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -10707,7 +10707,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1h",
                         "type": 1,
                       }
                     }
@@ -10749,7 +10749,7 @@ exports[`<ButtonGroup /> (native) should render negative color secondary variant
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1h"
                 propList={
                   [
                     "fill",
@@ -11046,7 +11046,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r16"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -11063,7 +11063,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r16"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -11079,7 +11079,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r16"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -11087,7 +11087,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r16",
                         "type": 1,
                       }
                     }
@@ -11112,7 +11112,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r16"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -11120,7 +11120,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r16",
                         "type": 1,
                       }
                     }
@@ -11150,7 +11150,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-r16"
                   rx={64}
                   ry={64}
                 />
@@ -11158,7 +11158,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r16"
                 propList={
                   [
                     "fill",
@@ -11182,7 +11182,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-r16"
                 propList={
                   [
                     "fill",
@@ -11229,7 +11229,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r16"
                 propList={
                   [
                     "fill",
@@ -11253,7 +11253,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-r16",
                     "type": 1,
                   }
                 }
@@ -11529,7 +11529,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r17"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -11546,7 +11546,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r17"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -11562,7 +11562,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r17"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -11570,7 +11570,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r17",
                         "type": 1,
                       }
                     }
@@ -11595,7 +11595,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r17"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -11603,7 +11603,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r17",
                         "type": 1,
                       }
                     }
@@ -11645,7 +11645,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r17"
                 propList={
                   [
                     "fill",
@@ -11925,7 +11925,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r18"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -11942,7 +11942,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r18"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -11958,7 +11958,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r18"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -11966,7 +11966,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r18",
                         "type": 1,
                       }
                     }
@@ -11991,7 +11991,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r18"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -11999,7 +11999,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r18",
                         "type": 1,
                       }
                     }
@@ -12041,7 +12041,7 @@ exports[`<ButtonGroup /> (native) should render positive color primary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r18"
                 propList={
                   [
                     "fill",
@@ -12338,7 +12338,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r19"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -12355,7 +12355,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r19"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -12371,7 +12371,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r19"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -12379,7 +12379,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r19",
                         "type": 1,
                       }
                     }
@@ -12404,7 +12404,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r19"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -12412,7 +12412,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r19",
                         "type": 1,
                       }
                     }
@@ -12454,7 +12454,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r19"
                 propList={
                   [
                     "fill",
@@ -12725,7 +12725,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1a"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -12742,7 +12742,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1a"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -12758,7 +12758,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1a"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -12766,7 +12766,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1a",
                         "type": 1,
                       }
                     }
@@ -12791,7 +12791,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1a"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -12799,7 +12799,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1a",
                         "type": 1,
                       }
                     }
@@ -12841,7 +12841,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1a"
                 propList={
                   [
                     "fill",
@@ -13111,7 +13111,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r1b"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -13128,7 +13128,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r1b"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -13144,7 +13144,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r1b"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -13152,7 +13152,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r1b",
                         "type": 1,
                       }
                     }
@@ -13177,7 +13177,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r1b"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -13185,7 +13185,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r1b",
                         "type": 1,
                       }
                     }
@@ -13227,7 +13227,7 @@ exports[`<ButtonGroup /> (native) should render positive color secondary variant
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r1b"
                 propList={
                   [
                     "fill",
@@ -13524,7 +13524,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rk"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -13541,7 +13541,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rk"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -13557,7 +13557,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rk"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -13565,7 +13565,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rk",
                         "type": 1,
                       }
                     }
@@ -13590,7 +13590,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rk"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -13598,7 +13598,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rk",
                         "type": 1,
                       }
                     }
@@ -13628,7 +13628,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-rk"
                   rx={64}
                   ry={64}
                 />
@@ -13636,7 +13636,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rk"
                 propList={
                   [
                     "fill",
@@ -13660,7 +13660,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="topMask"
+                mask="topMask-rk"
                 propList={
                   [
                     "fill",
@@ -13707,7 +13707,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rk"
                 propList={
                   [
                     "fill",
@@ -13731,7 +13731,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-rk",
                     "type": 1,
                   }
                 }
@@ -14007,7 +14007,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rl"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -14024,7 +14024,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rl"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -14040,7 +14040,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rl"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -14048,7 +14048,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rl",
                         "type": 1,
                       }
                     }
@@ -14073,7 +14073,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rl"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -14081,7 +14081,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rl",
                         "type": 1,
                       }
                     }
@@ -14123,7 +14123,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rl"
                 propList={
                   [
                     "fill",
@@ -14403,7 +14403,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rm"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -14420,7 +14420,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rm"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -14436,7 +14436,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rm"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -14444,7 +14444,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rm",
                         "type": 1,
                       }
                     }
@@ -14469,7 +14469,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rm"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -14477,7 +14477,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rm",
                         "type": 1,
                       }
                     }
@@ -14519,7 +14519,7 @@ exports[`<ButtonGroup /> (native) should render primary color primary variant 1`
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rm"
                 propList={
                   [
                     "fill",
@@ -14816,7 +14816,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rn"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -14833,7 +14833,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rn"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -14849,7 +14849,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rn"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -14857,7 +14857,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rn",
                         "type": 1,
                       }
                     }
@@ -14882,7 +14882,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rn"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -14890,7 +14890,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rn",
                         "type": 1,
                       }
                     }
@@ -14932,7 +14932,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rn"
                 propList={
                   [
                     "fill",
@@ -15203,7 +15203,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-ro"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -15220,7 +15220,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-ro"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -15236,7 +15236,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-ro"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -15244,7 +15244,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-ro",
                         "type": 1,
                       }
                     }
@@ -15269,7 +15269,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-ro"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -15277,7 +15277,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-ro",
                         "type": 1,
                       }
                     }
@@ -15319,7 +15319,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-ro"
                 propList={
                   [
                     "fill",
@@ -15589,7 +15589,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rp"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -15606,7 +15606,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rp"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -15622,7 +15622,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rp"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -15630,7 +15630,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rp",
                         "type": 1,
                       }
                     }
@@ -15655,7 +15655,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rp"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -15663,7 +15663,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rp",
                         "type": 1,
                       }
                     }
@@ -15705,7 +15705,7 @@ exports[`<ButtonGroup /> (native) should render primary color secondary variant 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rp"
                 propList={
                   [
                     "fill",
@@ -16002,7 +16002,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rq"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -16019,7 +16019,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rq"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -16035,7 +16035,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rq"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -16043,7 +16043,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rq",
                         "type": 1,
                       }
                     }
@@ -16068,7 +16068,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rq"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -16076,7 +16076,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rq",
                         "type": 1,
                       }
                     }
@@ -16118,7 +16118,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rq"
                 propList={
                   [
                     "fill",
@@ -16389,7 +16389,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rr"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -16406,7 +16406,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rr"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -16422,7 +16422,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rr"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -16430,7 +16430,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rr",
                         "type": 1,
                       }
                     }
@@ -16455,7 +16455,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rr"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -16463,7 +16463,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rr",
                         "type": 1,
                       }
                     }
@@ -16505,7 +16505,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rr"
                 propList={
                   [
                     "fill",
@@ -16775,7 +16775,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rs"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -16792,7 +16792,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rs"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -16808,7 +16808,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rs"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -16816,7 +16816,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rs",
                         "type": 1,
                       }
                     }
@@ -16841,7 +16841,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rs"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -16849,7 +16849,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rs",
                         "type": 1,
                       }
                     }
@@ -16891,7 +16891,7 @@ exports[`<ButtonGroup /> (native) should render primary color tertiary variant 1
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rs"
                 propList={
                   [
                     "fill",
@@ -17188,7 +17188,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rt"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -17205,7 +17205,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rt"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -17221,7 +17221,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rt"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -17229,7 +17229,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rt",
                         "type": 1,
                       }
                     }
@@ -17254,7 +17254,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rt"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -17262,7 +17262,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rt",
                         "type": 1,
                       }
                     }
@@ -17292,7 +17292,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={1}
-                  name="btnGlow"
+                  name="btnGlow-rt"
                   rx={64}
                   ry={64}
                 />
@@ -17323,7 +17323,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rt"
                 propList={
                   [
                     "fill",
@@ -17347,7 +17347,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "btnGlow",
+                    "brushRef": "btnGlow-rt",
                     "type": 1,
                   }
                 }
@@ -17623,7 +17623,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-ru"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -17640,7 +17640,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-ru"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -17656,7 +17656,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-ru"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -17664,7 +17664,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-ru",
                         "type": 1,
                       }
                     }
@@ -17689,7 +17689,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-ru"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -17697,7 +17697,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-ru",
                         "type": 1,
                       }
                     }
@@ -17739,7 +17739,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-ru"
                 propList={
                   [
                     "fill",
@@ -18019,7 +18019,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-rv"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -18036,7 +18036,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-rv"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -18052,7 +18052,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-rv"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -18060,7 +18060,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-rv",
                         "type": 1,
                       }
                     }
@@ -18085,7 +18085,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-rv"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -18093,7 +18093,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-rv",
                         "type": 1,
                       }
                     }
@@ -18135,7 +18135,7 @@ exports[`<ButtonGroup /> (native) should render white color primary variant 1`] 
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-rv"
                 propList={
                   [
                     "fill",
@@ -18432,7 +18432,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r10"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -18449,7 +18449,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r10"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -18465,7 +18465,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r10"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -18473,7 +18473,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r10",
                         "type": 1,
                       }
                     }
@@ -18498,7 +18498,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r10"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -18506,7 +18506,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r10",
                         "type": 1,
                       }
                     }
@@ -18548,7 +18548,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r10"
                 propList={
                   [
                     "fill",
@@ -18819,7 +18819,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r11"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -18836,7 +18836,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r11"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -18852,7 +18852,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r11"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -18860,7 +18860,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r11",
                         "type": 1,
                       }
                     }
@@ -18885,7 +18885,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r11"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -18893,7 +18893,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r11",
                         "type": 1,
                       }
                     }
@@ -18935,7 +18935,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r11"
                 propList={
                   [
                     "fill",
@@ -19205,7 +19205,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r12"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -19222,7 +19222,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r12"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -19238,7 +19238,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r12"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -19246,7 +19246,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r12",
                         "type": 1,
                       }
                     }
@@ -19271,7 +19271,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r12"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -19279,7 +19279,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r12",
                         "type": 1,
                       }
                     }
@@ -19321,7 +19321,7 @@ exports[`<ButtonGroup /> (native) should render white color secondary variant 1`
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r12"
                 propList={
                   [
                     "fill",
@@ -19618,7 +19618,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r13"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -19635,7 +19635,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r13"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -19651,7 +19651,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r13"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -19659,7 +19659,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r13",
                         "type": 1,
                       }
                     }
@@ -19684,7 +19684,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r13"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -19692,7 +19692,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r13",
                         "type": 1,
                       }
                     }
@@ -19734,7 +19734,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r13"
                 propList={
                   [
                     "fill",
@@ -20005,7 +20005,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r14"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -20022,7 +20022,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r14"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -20038,7 +20038,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r14"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -20046,7 +20046,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r14",
                         "type": 1,
                       }
                     }
@@ -20071,7 +20071,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r14"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -20079,7 +20079,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r14",
                         "type": 1,
                       }
                     }
@@ -20121,7 +20121,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r14"
                 propList={
                   [
                     "fill",
@@ -20391,7 +20391,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="topFade"
+                  name="topFade-r15"
                   x1="0"
                   x2="0"
                   y1="0"
@@ -20408,7 +20408,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   }
                   gradientTransform={null}
                   gradientUnits={0}
-                  name="bottomFade"
+                  name="bottomFade-r15"
                   x1="0"
                   x2="0"
                   y1="1"
@@ -20424,7 +20424,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="topMask"
+                  name="topMask-r15"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -20432,7 +20432,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "topFade",
+                        "brushRef": "topFade-r15",
                         "type": 1,
                       }
                     }
@@ -20457,7 +20457,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   height="100%"
                   maskContentUnits={1}
                   maskUnits={0}
-                  name="bottomMask"
+                  name="bottomMask-r15"
                   width="100%"
                   x="0%"
                   y="0%"
@@ -20465,7 +20465,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
                   <RNSVGRect
                     fill={
                       {
-                        "brushRef": "bottomFade",
+                        "brushRef": "bottomFade-r15",
                         "type": 1,
                       }
                     }
@@ -20507,7 +20507,7 @@ exports[`<ButtonGroup /> (native) should render white color tertiary variant 1`]
               <RNSVGRect
                 fill={null}
                 height="100%"
-                mask="bottomMask"
+                mask="bottomMask-r15"
                 propList={
                   [
                     "fill",

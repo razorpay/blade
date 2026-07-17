@@ -1826,7 +1826,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r0"
               x1="0"
               x2="0"
               y1="0"
@@ -1843,7 +1843,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r0"
               x1="0"
               x2="0"
               y1="1"
@@ -1859,7 +1859,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r0"
               width="100%"
               x="0%"
               y="0%"
@@ -1867,7 +1867,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r0",
                     "type": 1,
                   }
                 }
@@ -1892,7 +1892,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r0"
               width="100%"
               x="0%"
               y="0%"
@@ -1900,7 +1900,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r0",
                     "type": 1,
                   }
                 }
@@ -1930,7 +1930,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r0"
               rx={64}
               ry={64}
             />
@@ -1938,7 +1938,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r0"
             propList={
               [
                 "fill",
@@ -1962,7 +1962,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r0"
             propList={
               [
                 "fill",
@@ -2009,7 +2009,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r0"
             propList={
               [
                 "fill",
@@ -2033,7 +2033,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r0",
                 "type": 1,
               }
             }
@@ -3956,7 +3956,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r1"
               x1="0"
               x2="0"
               y1="0"
@@ -3973,7 +3973,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r1"
               x1="0"
               x2="0"
               y1="1"
@@ -3989,7 +3989,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r1"
               width="100%"
               x="0%"
               y="0%"
@@ -3997,7 +3997,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r1",
                     "type": 1,
                   }
                 }
@@ -4022,7 +4022,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r1"
               width="100%"
               x="0%"
               y="0%"
@@ -4030,7 +4030,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r1",
                     "type": 1,
                   }
                 }
@@ -4060,7 +4060,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r1"
               rx={64}
               ry={64}
             />
@@ -4068,7 +4068,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r1"
             propList={
               [
                 "fill",
@@ -4092,7 +4092,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r1"
             propList={
               [
                 "fill",
@@ -4139,7 +4139,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r1"
             propList={
               [
                 "fill",
@@ -4163,7 +4163,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r1",
                 "type": 1,
               }
             }
