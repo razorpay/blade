@@ -78,76 +78,68 @@ const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
     onLight: {},
     onDark: {},
   };
-  try {
-    // filter colors collection
-    const colorsCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(
-      (collection) => collection.name === THEME_TOKENS_COLLECTION,
-    );
 
-    if (!colorsCollection) {
-      throw new Error(
-        `Could not find the "${THEME_TOKENS_COLLECTION}" variable collection in this file.`,
-      );
+  // filter colors collection
+  const colorsCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(
+    (collection) => collection.name === THEME_TOKENS_COLLECTION,
+  );
+
+  if (!colorsCollection) {
+    throw new Error(
+      `Could not find the "${THEME_TOKENS_COLLECTION}" variable collection in this file.`,
+    );
+  }
+
+  // create modes set in the collection eg: onLight, onDark, etc.
+  const colorModes = colorsCollection.modes.reduce(
+    (acc, mode) => Object.assign(acc, { [mode.name]: mode.modeId }),
+    {},
+  );
+
+  for (const variableId of colorsCollection.variableIds) {
+    // get all the variables by their ids in our collection
+    const variable = await figma.variables.getVariableByIdAsync(variableId);
+    if (!variable) {
+      continue;
     }
 
-    // create modes set in the collection eg: onLight, onDark, etc.
-    const colorModes = colorsCollection.modes.reduce(
-      (acc, mode) => Object.assign(acc, { [mode.name]: mode.modeId }),
-      {},
-    );
+    // replace the "/" from token name with "." to store in json structure
+    const tokenName = makeThemeTokenName(variable.name);
+    if (tokenName.includes('❌') || tokenName.includes('_') || tokenName.includes('elevation')) {
+      continue;
+    }
 
-    for (const variableId of colorsCollection.variableIds) {
-      // get all the variables by their ids in our collection
-      const variable = await figma.variables.getVariableByIdAsync(variableId);
-      if (!variable) {
-        continue;
-      }
-
-      // replace the "/" from token name with "." to store in json structure
-      const tokenName = makeThemeTokenName(variable.name);
-      if (tokenName.includes('❌') || tokenName.includes('_') || tokenName.includes('elevation')) {
-        continue;
-      }
-
-      // prepare for storing variables in code in the format of dark and light modes
-      for (const [modeName, modeId] of Object.entries(colorModes)) {
-        const variableModeValue: VariableValue = variable.valuesByMode[modeId as string];
-        // if the variable references another variable then we take the name of the referenced variable and set that as a value
-        // eg: surface.background.neutral.subtle -> globalColors.gray.200
-        if (typeof variableModeValue === 'object' && 'id' in variableModeValue) {
-          const referencedVariable = await figma.variables.getVariableByIdAsync(
-            variableModeValue.id,
-          );
-          if (!referencedVariable) {
-            continue;
-          }
-          setValue(
-            themeColorTokens[modeName],
-            tokenName,
-            makeThemeTokenName(referencedVariable.name, true),
-          );
-        } else if (
-          typeof variableModeValue === 'object' &&
-          (tokenName.includes('transparent') || tokenName.includes('elevation'))
-        ) {
-          const tokenHSLAValue = rgbaToHsla(variableModeValue as RGBA);
-          setValue(themeColorTokens[modeName], tokenName, `\`${tokenHSLAValue}\``);
-        } else {
-          console.error(
-            'the theme variable token has hardcoded value',
-            tokenName,
-            variableModeValue,
-          );
+    // prepare for storing variables in code in the format of dark and light modes
+    for (const [modeName, modeId] of Object.entries(colorModes)) {
+      const variableModeValue: VariableValue = variable.valuesByMode[modeId as string];
+      // if the variable references another variable then we take the name of the referenced variable and set that as a value
+      // eg: surface.background.neutral.subtle -> globalColors.gray.200
+      if (typeof variableModeValue === 'object' && 'id' in variableModeValue) {
+        const referencedVariable = await figma.variables.getVariableByIdAsync(
+          variableModeValue.id,
+        );
+        if (!referencedVariable) {
+          continue;
         }
+        setValue(
+          themeColorTokens[modeName],
+          tokenName,
+          makeThemeTokenName(referencedVariable.name, true),
+        );
+      } else if (
+        typeof variableModeValue === 'object' &&
+        (tokenName.includes('transparent') || tokenName.includes('elevation'))
+      ) {
+        const tokenHSLAValue = rgbaToHsla(variableModeValue as RGBA);
+        setValue(themeColorTokens[modeName], tokenName, `\`${tokenHSLAValue}\``);
+      } else {
+        console.error(
+          'the theme variable token has hardcoded value',
+          tokenName,
+          variableModeValue,
+        );
       }
     }
-  } catch (error) {
-    console.error('error', error);
-    showNotification({
-      figma,
-      type: 'error',
-      text: `⛔️ Something went wrong in creating theme color tokens: ${error} `,
-    });
   }
 
   return themeColorTokens;
@@ -155,43 +147,35 @@ const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
 
 const makeGlobalColorTokens = async (): Promise<Record<string, any>> => {
   const globalColorTokens = {};
-  try {
-    // filter colors collection
-    const globalColorTokensCollection = (
-      await figma.variables.getLocalVariableCollectionsAsync()
-    ).find((collection) => collection.name === GLOBAL_TOKENS_COLLECTION);
 
-    if (!globalColorTokensCollection) {
-      throw new Error(
-        `Could not find the "${GLOBAL_TOKENS_COLLECTION}" variable collection in this file.`,
-      );
-    }
+  // filter colors collection
+  const globalColorTokensCollection = (
+    await figma.variables.getLocalVariableCollectionsAsync()
+  ).find((collection) => collection.name === GLOBAL_TOKENS_COLLECTION);
 
-    const colorModes: { default: string } = globalColorTokensCollection.modes.reduce(
-      (acc, mode) => Object.assign(acc, { default: mode.modeId }),
-      { default: '' },
+  if (!globalColorTokensCollection) {
+    throw new Error(
+      `Could not find the "${GLOBAL_TOKENS_COLLECTION}" variable collection in this file.`,
     );
+  }
 
-    for (const variableId of globalColorTokensCollection.variableIds) {
-      // get all the variables by their ids in our collection
-      const variable = await figma.variables.getVariableByIdAsync(variableId);
-      if (variable && variable.name.includes('_global-colors')) {
-        // replace the "/" from token name with "." to store in json structure
-        const tokenName = makeGlobalColorTokenName(variable.name);
-        const variableColor = variable.valuesByMode[colorModes.default] as RGBA;
-        if (typeof variableColor === 'object') {
-          const tokenHSLAValue = rgbaToHsla(variableColor);
-          setValue(globalColorTokens, tokenName, `\`${tokenHSLAValue}\``);
-        }
+  const colorModes: { default: string } = globalColorTokensCollection.modes.reduce(
+    (acc, mode) => Object.assign(acc, { default: mode.modeId }),
+    { default: '' },
+  );
+
+  for (const variableId of globalColorTokensCollection.variableIds) {
+    // get all the variables by their ids in our collection
+    const variable = await figma.variables.getVariableByIdAsync(variableId);
+    if (variable && variable.name.includes('_global-colors')) {
+      // replace the "/" from token name with "." to store in json structure
+      const tokenName = makeGlobalColorTokenName(variable.name);
+      const variableColor = variable.valuesByMode[colorModes.default] as RGBA;
+      if (typeof variableColor === 'object') {
+        const tokenHSLAValue = rgbaToHsla(variableColor);
+        setValue(globalColorTokens, tokenName, `\`${tokenHSLAValue}\``);
       }
     }
-  } catch (error) {
-    console.error('error', error);
-    showNotification({
-      figma,
-      type: 'error',
-      text: `⛔️ Something went wrong in creating global color tokens: ${error} `,
-    });
   }
 
   return globalColorTokens;
