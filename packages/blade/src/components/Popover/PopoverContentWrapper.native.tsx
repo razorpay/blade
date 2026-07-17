@@ -12,6 +12,7 @@ import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import type { ColorSchemeNames } from '~tokens/theme';
 import BaseBox from '~components/Box/BaseBox';
+import type { SpacingValueType } from '~components/Box/BaseBox/types/spacingTypes';
 
 // Animated.createAnimatedComponent(BaseBox) so BaseBox handles elevation prop resolution
 // (getElevationValue → shadow styles) while Animated handles opacity on the same View.
@@ -24,8 +25,9 @@ const StyledPopoverContentWrapper = styled(AnimatedBaseBox)<{
   styles: CSSProperties;
   isMobile: boolean;
   colorScheme: ColorSchemeNames;
-}>(({ theme, isMobile, styles, colorScheme }) => {
-  return getPopoverContentWrapperStyles({ theme, styles, isMobile, colorScheme });
+  maxWidth?: SpacingValueType;
+}>(({ theme, isMobile, styles, colorScheme, maxWidth }) => {
+  return getPopoverContentWrapperStyles({ theme, styles, isMobile, colorScheme, maxWidth });
 });
 
 const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>(
