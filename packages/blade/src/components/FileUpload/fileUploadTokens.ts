@@ -79,6 +79,17 @@ const fileUploadLinkBorderTokens = {
   },
 } as const;
 
+const getFileIconExtension = (acceptValue?: string): string => {
+  if (!acceptValue) return 'example.xyz';
+
+  const extensions = acceptValue
+    .split(',')
+    .map((ext) => ext.trim())
+    .filter((ext) => ext.startsWith('.'));
+
+  return extensions.length === 1 ? `example${extensions[0]}` : 'example.xyz';
+};
+
 export {
   getFileUploadInputHoverTokens,
   fileUploadMotionTokens,
@@ -86,4 +97,5 @@ export {
   fileUploadColorTokens,
   fileUploadLinkBorderTokens,
   fileUploadHeightTokens,
+  getFileIconExtension,
 };
