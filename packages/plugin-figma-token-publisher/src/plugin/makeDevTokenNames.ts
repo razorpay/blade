@@ -44,21 +44,23 @@ const makeDevTokenNames = async (): Promise<void> => {
       variable.valuesByMode[Object.keys(variable.valuesByMode)[0]].id,
     );
 
+    if (!variableModeValue) {
+      continue;
+    }
+
     let tokenName = '';
 
-    if (variableModeValue) {
-      if (variableModeValue.name.includes('Radius')) {
-        tokenName = `border.radius.${variableModeValue.name.split('/').pop()}`;
-        // set the syntax for border radius
-      } else if (variableModeValue.name.includes('Width')) {
-        // set the syntax for border width
-        tokenName = `border.width.${variableModeValue.name.split('/').pop()}`;
-      } else if (variableModeValue.name.includes('spacing')) {
-        // set the syntax for spacing
-        tokenName = variableModeValue.name
-          .replace(/\//g, '.')
-          .replace(/\.[0-9]+/, (matchedString) => `[${matchedString.replace('.', '')}]`);
-      }
+    if (variableModeValue.name.includes('Radius')) {
+      tokenName = `border.radius.${variableModeValue.name.split('/').pop()}`;
+      // set the syntax for border radius
+    } else if (variableModeValue.name.includes('Width')) {
+      // set the syntax for border width
+      tokenName = `border.width.${variableModeValue.name.split('/').pop()}`;
+    } else if (variableModeValue.name.includes('spacing')) {
+      // set the syntax for spacing
+      tokenName = variableModeValue.name
+        .replace(/\//g, '.')
+        .replace(/\.[0-9]+/, (matchedString) => `[${matchedString.replace('.', '')}]`);
     }
 
     if (tokenName) {
