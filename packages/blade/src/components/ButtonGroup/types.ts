@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { ButtonProps } from '~components/Button/Button';
 import type { DataAnalyticsAttribute } from '~utils/types';
@@ -94,8 +95,10 @@ type ButtonGroupContextType = Pick<
   /**
    * Reports press in/out from a grouped Button so ButtonGroup can show the
    * full highlighted border (including the right edge) while pressed.
+   * Accepts a functional updater so a releasing button can clear only its own
+   * index without clobbering another still-pressed sibling (multi-touch).
    */
-  setPressedButtonIndex?: (index: number | null) => void;
+  setPressedButtonIndex?: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 export type { ButtonGroupProps, StyledButtonGroupProps, ButtonGroupContextType };

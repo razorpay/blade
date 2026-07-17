@@ -523,13 +523,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // it in sync with Reanimated's UI-thread press state change.
   React.useLayoutEffect(() => {
     if (typeof buttonGroupProps.buttonIndex !== 'number') return;
+    const { buttonIndex, setPressedButtonIndex } = buttonGroupProps;
     if (isPressed) {
-      buttonGroupProps.setPressedButtonIndex?.(buttonGroupProps.buttonIndex);
+      setPressedButtonIndex?.(buttonIndex);
     } else {
-      buttonGroupProps.setPressedButtonIndex?.(null);
+      // Only clear if this button still owns the pressed index — otherwise a
+      // multi-touch release on A would wipe B's press state.
+      setPressedButtonIndex?.((prev) => (prev === buttonIndex ? null : prev));
     }
-    // No cleanup — an unconditional cleanup would wrongly clear another
-    // button's pressed state in a multi-touch scenario.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPressed, buttonGroupProps.buttonIndex]);
 

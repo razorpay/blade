@@ -87,6 +87,13 @@ const ButtonShadowOverlay = ({
     radii.bottomRight === radii.bottomLeft;
 
   const [size, setSize] = React.useState({ width: 0, height: 0 });
+  // Unique SVG def IDs so multiple overlays in a ButtonGroup don't collide.
+  const idSuffix = React.useId().replace(/:/g, '');
+  const topFadeId = `topFade-${idSuffix}`;
+  const bottomFadeId = `bottomFade-${idSuffix}`;
+  const topMaskId = `topMask-${idSuffix}`;
+  const bottomMaskId = `bottomMask-${idSuffix}`;
+  const btnGlowId = `btnGlow-${idSuffix}`;
 
   const handleLayout = (event: LayoutChangeEvent): void => {
     const { width, height } = event.nativeEvent.layout;
@@ -201,23 +208,23 @@ const ButtonShadowOverlay = ({
     >
       <Svg style={StyleSheet.absoluteFill} pointerEvents="none">
         <Defs>
-          <LinearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+          <LinearGradient id={topFadeId} x1="0" y1="0" x2="0" y2="1">
             <Stop offset="0" stopColor="white" stopOpacity={1} />
             <Stop offset="1" stopColor="white" stopOpacity={0} />
           </LinearGradient>
-          <LinearGradient id="bottomFade" x1="0" y1="1" x2="0" y2="0">
+          <LinearGradient id={bottomFadeId} x1="0" y1="1" x2="0" y2="0">
             <Stop offset="0" stopColor="white" stopOpacity={1} />
             <Stop offset="1" stopColor="white" stopOpacity={0} />
           </LinearGradient>
-          <Mask id="topMask">
-            <Rect x="0" y="0" width="100%" height="20%" fill="url(#topFade)" />
+          <Mask id={topMaskId}>
+            <Rect x="0" y="0" width="100%" height="20%" fill={`url(#${topFadeId})`} />
           </Mask>
-          <Mask id="bottomMask">
-            <Rect x="0" y="80%" width="100%" height="20%" fill="url(#bottomFade)" />
+          <Mask id={bottomMaskId}>
+            <Rect x="0" y="80%" width="100%" height="20%" fill={`url(#${bottomFadeId})`} />
           </Mask>
           {showGradient ? (
             <RadialGradient
-              id="btnGlow"
+              id={btnGlowId}
               cx={0}
               cy={0}
               rx={64}
@@ -233,7 +240,7 @@ const ButtonShadowOverlay = ({
           ? renderShape('highlight-bottom', {
               stroke: highlightColor,
               strokeWidth: 7,
-              mask: 'url(#bottomMask)',
+              mask: `url(#${bottomMaskId})`,
               horizontalOnly: isInsetShadowSidesFlattened,
             })
           : null}
@@ -241,7 +248,7 @@ const ButtonShadowOverlay = ({
           ? renderShape('highlight-top', {
               stroke: highlightColor,
               strokeWidth: (highlightHeight + 0.5) * 2,
-              mask: 'url(#topMask)',
+              mask: `url(#${topMaskId})`,
               horizontalOnly: isInsetShadowSidesFlattened,
             })
           : null}
@@ -250,11 +257,11 @@ const ButtonShadowOverlay = ({
           ? renderShape('shadow-bottom', {
               stroke: shadowColor,
               strokeWidth: (shadowHeight + 1) * 2,
-              mask: 'url(#bottomMask)',
+              mask: `url(#${bottomMaskId})`,
               horizontalOnly: isInsetShadowSidesFlattened,
             })
           : null}
-        {showGradient ? renderShape('glow', { fill: 'url(#btnGlow)' }) : null}
+        {showGradient ? renderShape('glow', { fill: `url(#${btnGlowId})` }) : null}
       </Svg>
     </View>
   );
