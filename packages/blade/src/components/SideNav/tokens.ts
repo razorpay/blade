@@ -10,6 +10,7 @@ const classes = {
   L1_ITEM_WRAPPER: 'l1-item-wrapper',
   SHOW_ON_LINK_HOVER: 'show-on-link-hover',
   STYLED_NAV_LINK: 'styled-nav-link',
+  PRESSED: 'nav-link-pressed',
 } as const;
 
 const SKIP_NAV_ID = 'blade-side-nav-skip';
@@ -31,6 +32,16 @@ const getNavItemTransition = ({ motion }: Theme): string => {
   return `background-color ${makeMotionTime(motion.duration['2xquick'])} ${motion.easing.standard}`;
 };
 
+const getNavItemPressTransitions = ({ motion }: Theme): { press: string; release: string } => {
+  return {
+    press: `transform ${makeMotionTime(motion.duration['2xquick'])} ${motion.easing.emphasized}`,
+    // overshoot easing makes the item spring slightly past its original size on release
+    release: `transform ${makeMotionTime(motion.duration.moderate)} ${motion.easing.overshoot}`,
+  };
+};
+
+const NAV_ITEM_PRESSED_SCALE = 0.98;
+
 export {
   SKIP_NAV_ID,
   classes,
@@ -38,8 +49,10 @@ export {
   SIDE_NAV_EXPANDED_L1_WIDTH_XL,
   SIDE_NAV_EXPANDED_L1_WIDTH_BASE,
   NAV_ITEM_HEIGHT,
+  NAV_ITEM_PRESSED_SCALE,
   TRANSITION_CLEANUP_DELAY,
   HOVER_AGAIN_DELAY,
   getNavItemTransition,
+  getNavItemPressTransitions,
   L1_EXIT_HOVER_DELAY,
 };
