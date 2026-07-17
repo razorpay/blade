@@ -11,6 +11,7 @@ import {
   opacity,
 } from '~tokens/global';
 
+// Placeholder values - will be replaced with actual colors from Figma design specs
 const transparent = `hsla(0, 0%, 0%, ${opacity[0]})`;
 
 const colors: ColorsWithModes = {
