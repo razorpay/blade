@@ -47,6 +47,11 @@ export type DataColorCategories =
   | 'gray';
 
 type SubtleOrIntenseEmphasis = Pick<Emphasis, 'subtle' | 'intense'>;
+type PrimaryEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'intense'> & {
+  faint: string;
+  strong: string;
+};
+type AccentEmphasis = Pick<Emphasis, 'intense'>;
 // Exporting this for usage in other components
 export type SubtleOrIntense = keyof SubtleOrIntenseEmphasis;
 type InteractiveStates = {
@@ -131,9 +136,10 @@ export type Colors = {
   surface: {
     background: {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
-      primary: SubtleOrIntenseEmphasis;
+      primary: PrimaryEmphasis;
       sea: SubtleOrIntenseEmphasis;
       cloud: SubtleOrIntenseEmphasis;
+      accent: AccentEmphasis;
     };
     border: {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
