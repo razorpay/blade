@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
+import { Portal } from '@gorhom/portal';
 import styled from 'styled-components/native';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
@@ -11,6 +12,9 @@ import { castNativeType, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
+import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
+import { componentZIndices } from '~utils/componentZIndices';
+import { size } from '~tokens/global';
 
 const AnimatedDropdownOverlay = styled(StyledDropdownOverlay)<{ testID: 'dropdown-overlay' }>(
   (props) => ({
@@ -30,10 +34,60 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  *
  * Wrap your ActionList within this component
  */
-const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.ReactElement => {
+const _DropdownOverlay = ({
+  children,
+  testID,
+  width,
+  minWidth,
+  maxWidth,
+  zIndex = componentZIndices.dropdownOverlay,
+}: DropdownOverlayProps): React.ReactElement => {
   const { isOpen, close } = useDropdown();
   const { theme, colorScheme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
+  const buttonGroupProps = useButtonGroupContext();
+  // Split-button usage: the default closeable area uses height/width 100%, which
+  // on RN resolves against the Storybook screen and blows ButtonGroup into a
+  // tall vertical strip when the menu opens. Keep the overlay out of flex flow.
+  const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
+
+  if (isInsideButtonGroup) {
+    return (
+      <BaseBox position="relative" zIndex={zIndex}>
+        {isOpen && (
+          <Portal hostName="BladeBottomSheetPortal">
+            <Pressable
+              style={StyleSheet.absoluteFill}
+              onPress={() => {
+                close();
+              }}
+              testID="closeable-area"
+            />
+          </Portal>
+        )}
+        {/*
+          Keep testID mounted for parity with the SelectInput path (tests assert
+          display). Absolutely positioned so opening never changes ButtonGroup size.
+        */}
+        <AnimatedDropdownOverlay
+          isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+          colorScheme={colorScheme}
+          display={isOpen ? 'flex' : 'none'}
+          position="absolute"
+          top="100%"
+          right="0px"
+          width={width}
+          minWidth={minWidth ?? makeSize(size['200'])}
+          maxWidth={maxWidth}
+          testID="dropdown-overlay"
+          elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
+          {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
+        >
+          {children}
+        </AnimatedDropdownOverlay>
+      </BaseBox>
+    );
+  }
 
   const hasBottomSheet = bottomSheetAndDropdownGlue?.dropdownHasBottomSheet;
 
@@ -51,7 +105,9 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.Rea
           colorScheme={colorScheme}
           display={isOpen ? 'flex' : 'none'}
           position="absolute"
-          width="100%"
+          width={width ?? '100%'}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
           testID="dropdown-overlay"
           elevation={hasBottomSheet ? undefined : 'midRaised'}
           // Native shadow props (shadowColor/Opacity/Radius/Offset + Android elevation) must be
