@@ -63,9 +63,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
-      onKeyUp={[Function]}
       onMouseDown={[Function]}
-      onMouseOut={[Function]}
       onMouseUp={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -168,7 +166,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                 }
                 gradientTransform={null}
                 gradientUnits={0}
-                name="topFade"
+                name="topFade-r0"
                 x1="0"
                 x2="0"
                 y1="0"
@@ -185,7 +183,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                 }
                 gradientTransform={null}
                 gradientUnits={0}
-                name="bottomFade"
+                name="bottomFade-r0"
                 x1="0"
                 x2="0"
                 y1="1"
@@ -201,7 +199,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                 height="100%"
                 maskContentUnits={1}
                 maskUnits={0}
-                name="topMask"
+                name="topMask-r0"
                 width="100%"
                 x="0%"
                 y="0%"
@@ -209,7 +207,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                 <RNSVGRect
                   fill={
                     {
-                      "brushRef": "topFade",
+                      "brushRef": "topFade-r0",
                       "type": 1,
                     }
                   }
@@ -234,7 +232,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                 height="100%"
                 maskContentUnits={1}
                 maskUnits={0}
-                name="bottomMask"
+                name="bottomMask-r0"
                 width="100%"
                 x="0%"
                 y="0%"
@@ -242,7 +240,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                 <RNSVGRect
                   fill={
                     {
-                      "brushRef": "bottomFade",
+                      "brushRef": "bottomFade-r0",
                       "type": 1,
                     }
                   }
@@ -272,7 +270,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                 }
                 gradientTransform={null}
                 gradientUnits={1}
-                name="btnGlow"
+                name="btnGlow-r0"
                 rx={64}
                 ry={64}
               />
@@ -280,7 +278,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
             <RNSVGRect
               fill={null}
               height="100%"
-              mask="bottomMask"
+              mask="bottomMask-r0"
               propList={
                 [
                   "fill",
@@ -298,13 +296,13 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
               }
               strokeWidth={7}
               width="100%"
-              x="0"
-              y="0"
+              x={0}
+              y={0}
             />
             <RNSVGRect
               fill={null}
               height="100%"
-              mask="topMask"
+              mask="topMask-r0"
               propList={
                 [
                   "fill",
@@ -322,8 +320,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
               }
               strokeWidth={4}
               width="100%"
-              x="0"
-              y="0"
+              x={0}
+              y={0}
             />
             <RNSVGRect
               fill={null}
@@ -345,13 +343,13 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
               }
               strokeWidth={1}
               width="100%"
-              x="0"
-              y="0"
+              x={0}
+              y={0}
             />
             <RNSVGRect
               fill={null}
               height="100%"
-              mask="bottomMask"
+              mask="bottomMask-r0"
               propList={
                 [
                   "fill",
@@ -369,13 +367,13 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
               }
               strokeWidth={5}
               width="100%"
-              x="0"
-              y="0"
+              x={0}
+              y={0}
             />
             <RNSVGRect
               fill={
                 {
-                  "brushRef": "btnGlow",
+                  "brushRef": "btnGlow-r0",
                   "type": 1,
                 }
               }
@@ -1034,9 +1032,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                         onBlur={[Function]}
                         onClick={[Function]}
                         onFocus={[Function]}
-                        onKeyUp={[Function]}
                         onMouseDown={[Function]}
-                        onMouseOut={[Function]}
                         onMouseUp={[Function]}
                         onResponderGrant={[Function]}
                         onResponderMove={[Function]}
@@ -1138,7 +1134,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                   }
                                   gradientTransform={null}
                                   gradientUnits={0}
-                                  name="topFade"
+                                  name="topFade-r1"
                                   x1="0"
                                   x2="0"
                                   y1="0"
@@ -1155,7 +1151,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                   }
                                   gradientTransform={null}
                                   gradientUnits={0}
-                                  name="bottomFade"
+                                  name="bottomFade-r1"
                                   x1="0"
                                   x2="0"
                                   y1="1"
@@ -1171,7 +1167,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                   height="100%"
                                   maskContentUnits={1}
                                   maskUnits={0}
-                                  name="topMask"
+                                  name="topMask-r1"
                                   width="100%"
                                   x="0%"
                                   y="0%"
@@ -1179,7 +1175,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                   <RNSVGRect
                                     fill={
                                       {
-                                        "brushRef": "topFade",
+                                        "brushRef": "topFade-r1",
                                         "type": 1,
                                       }
                                     }
@@ -1204,7 +1200,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                   height="100%"
                                   maskContentUnits={1}
                                   maskUnits={0}
-                                  name="bottomMask"
+                                  name="bottomMask-r1"
                                   width="100%"
                                   x="0%"
                                   y="0%"
@@ -1212,7 +1208,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                   <RNSVGRect
                                     fill={
                                       {
-                                        "brushRef": "bottomFade",
+                                        "brushRef": "bottomFade-r1",
                                         "type": 1,
                                       }
                                     }
@@ -1242,7 +1238,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                   }
                                   gradientTransform={null}
                                   gradientUnits={1}
-                                  name="btnGlow"
+                                  name="btnGlow-r1"
                                   rx={64}
                                   ry={64}
                                 />
@@ -1250,7 +1246,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                               <RNSVGRect
                                 fill={null}
                                 height="100%"
-                                mask="bottomMask"
+                                mask="bottomMask-r1"
                                 propList={
                                   [
                                     "fill",
@@ -1268,13 +1264,13 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                 }
                                 strokeWidth={7}
                                 width="100%"
-                                x="0"
-                                y="0"
+                                x={0}
+                                y={0}
                               />
                               <RNSVGRect
                                 fill={null}
                                 height="100%"
-                                mask="topMask"
+                                mask="topMask-r1"
                                 propList={
                                   [
                                     "fill",
@@ -1292,8 +1288,8 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                 }
                                 strokeWidth={4}
                                 width="100%"
-                                x="0"
-                                y="0"
+                                x={0}
+                                y={0}
                               />
                               <RNSVGRect
                                 fill={null}
@@ -1315,13 +1311,13 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                 }
                                 strokeWidth={1}
                                 width="100%"
-                                x="0"
-                                y="0"
+                                x={0}
+                                y={0}
                               />
                               <RNSVGRect
                                 fill={null}
                                 height="100%"
-                                mask="bottomMask"
+                                mask="bottomMask-r1"
                                 propList={
                                   [
                                     "fill",
@@ -1339,13 +1335,13 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                                 }
                                 strokeWidth={5}
                                 width="100%"
-                                x="0"
-                                y="0"
+                                x={0}
+                                y={0}
                               />
                               <RNSVGRect
                                 fill={
                                   {
-                                    "brushRef": "btnGlow",
+                                    "brushRef": "btnGlow-r1",
                                     "type": 1,
                                   }
                                 }
