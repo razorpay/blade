@@ -51,8 +51,7 @@ const FilterChipGroup = ({
     clearGroupBookkeeping();
   };
 
-  const hasSelectedFilters =
-    filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0;
+  const hasSelectedFilters = filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0;
   const selectedCount = Math.max(filterChipGroupSelectedFilters.length, selectedFiltersCount);
   const isPlural = selectedCount > 1;
   const clearActionText = clearButtonText ?? `Clear Filter${isPlural ? 's' : ''}`;
