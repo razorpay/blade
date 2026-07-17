@@ -54,4 +54,4 @@ const getFilterChipDisplayValue = ({
   return titleForValue(value);
 };
 
-export { getTitleFromValue, getFilterChipDisplayValue };
+export { getFilterChipDisplayValue };

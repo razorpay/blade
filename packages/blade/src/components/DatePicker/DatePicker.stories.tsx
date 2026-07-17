@@ -562,9 +562,6 @@ export const FilterChipDatePickerClearButtonBehavior: StoryFn<typeof FilterChipD
             label="Date"
             selectionType="single"
             defaultValue={new Date()}
-            onChange={(date) => {
-              console.log('date', date);
-            }}
           />
         </Box>
       </Box>
@@ -582,9 +579,6 @@ export const FilterChipDatePickerClearButtonBehavior: StoryFn<typeof FilterChipD
             selectionType="single"
             defaultValue={new Date()}
             showClearButton={false}
-            onChange={(date) => {
-              console.log('date', date);
-            }}
           />
         </Box>
       </Box>
