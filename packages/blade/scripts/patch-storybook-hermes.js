@@ -119,6 +119,45 @@ for (const file of allFiles) {
     "const rUnicodeLower = '[a-z]';",
   );
 
+  // Case 5: `new RegExp("…\p{…}…", "…u…")` string form.
+  // Minified Storybook browser chunks build these patterns dynamically (with mangled var
+  // names), so Case 2 (literal /…/ only) and Case 3 (matches specific var names) both miss
+  // them. Hermes rejects \p{} escapes even inside `new RegExp` with the `u` flag, so we
+  // neutralise them by pattern *content* and emit an ASCII-equivalent literal instead.
+  //
+  // **Limitation:** This uses content-based matching (`body.includes('\\p{Lu}')`) rather than
+  // identifying the source library. Any new RegExp with these Unicode properties from any
+  // library bundled into Storybook's browser chunks would be replaced with the es-toolkit
+  // CASE_SPLIT_PATTERN. The "Unknown \p{} pattern" fall-through below mitigates this for
+  // unrecognised patterns, but known patterns (Lu/Ll, ID_Start, ID_Continue) are matched by
+  // content alone. If a non-Storybook library starts using these exact patterns, add a more
+  // specific match (e.g. checking surrounding variable names or file origin) before this block.
+  content = content.replace(
+    /new RegExp\(\s*"((?:[^"\\]|\\.)*)"\s*(?:,\s*"([a-z]*)")?\s*\)/g,
+    (match, body, flags) => {
+      // `body` is the raw source between the quotes, so \p{ appears as the two chars "\\p{".
+      if (!body.includes('\\p{')) return match;
+      // ASCII fallbacks don't need the `u` flag (and keeping it would re-enable strict escapes).
+      const safeFlags = (flags || '').replace(/u/g, '');
+      // es-toolkit CASE_SPLIT_PATTERN (word/case splitting)
+      if (body.includes('\\p{Lu}') && body.includes('\\p{Ll}')) {
+        return `/[A-Z]?[a-z]+|[0-9]+|[A-Z]+(?![a-z])/${safeFlags}`;
+      }
+      // jsdoc-type-pratt-parser identifierStartRegex
+      if (body.includes('\\p{ID_Start}')) {
+        return `/[$_a-zA-Z]/${safeFlags}`;
+      }
+      // jsdoc-type-pratt-parser identifierContinueRegex
+      if (body.includes('\\p{ID_Continue}')) {
+        return `/[$_a-zA-Z0-9]/${safeFlags}`;
+      }
+      // Unknown \p{} pattern — leave it untouched rather than risk corrupting an unrelated
+      // library (zod, pdfjs, …) that shares node_modules with the web build. If a new
+      // Storybook-bundled pattern starts crashing Hermes, add an explicit branch above.
+      return match;
+    },
+  );
+
   if (content !== orig) {
     fs.writeFileSync(file, content);
     console.log('[patch-storybook-hermes] Patched:', file);
