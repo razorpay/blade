@@ -21,8 +21,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayLight[0],
         },
         primary: {
+          faint: transparent,
           subtle: globalColors.chromatic.azure.a50,
+          moderate: transparent,
           intense: globalColors.chromatic.azure[500],
+          strong: transparent,
         },
         sea: {
           subtle: globalColors.chromatic.sea[50],
@@ -31,6 +34,9 @@ const colors: ColorsWithModes = {
         cloud: {
           subtle: globalColors.chromatic.cloud[50],
           intense: globalColors.chromatic.cloud[800],
+        },
+        accent: {
+          intense: transparent,
         },
       },
       border: {
@@ -457,10 +463,6 @@ const colors: ColorsWithModes = {
     },
     popup: {
       background: {
-        // @deprecated
-        subtle: globalColors.neutral.blueGrayLight[0],
-        // @deprecated
-        intense: globalColors.neutral.blueGrayLight[1000],
         gray: {
           subtle: globalColors.neutral.blueGrayLight[0],
           moderate: globalColors.neutral.blueGrayLight.a48,
@@ -483,10 +485,6 @@ const colors: ColorsWithModes = {
         },
       },
       border: {
-        // @deprecated
-        subtle: globalColors.neutral.blueGrayLight.a100,
-        // @deprecated
-        intense: globalColors.neutral.blueGrayLight[900],
         gray: {
           subtle: globalColors.neutral.blueGrayLight.a909,
           moderate: globalColors.neutral.blueGrayLight[100],
@@ -709,8 +707,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[1100],
         },
         primary: {
+          faint: transparent,
           subtle: globalColors.chromatic.azure.a200,
+          moderate: transparent,
           intense: globalColors.chromatic.azure[500],
+          strong: transparent,
         },
         sea: {
           subtle: globalColors.chromatic.sea[900],
@@ -719,6 +720,9 @@ const colors: ColorsWithModes = {
         cloud: {
           subtle: globalColors.chromatic.cloud[900],
           intense: globalColors.chromatic.cloud[100],
+        },
+        accent: {
+          intense: transparent,
         },
       },
       border: {
@@ -1145,10 +1149,6 @@ const colors: ColorsWithModes = {
     },
     popup: {
       background: {
-        // @deprecated
-        subtle: globalColors.neutral.blueGrayDark[1000],
-        // @deprecated
-        intense: globalColors.neutral.blueGrayDark[700],
         gray: {
           subtle: globalColors.neutral.blueGrayDark[1300],
           moderate: globalColors.neutral.blueGrayDark.a1188,
@@ -1171,10 +1171,6 @@ const colors: ColorsWithModes = {
         },
       },
       border: {
-        // @deprecated
-        subtle: globalColors.neutral.blueGrayDark.a100,
-        // @deprecated
-        intense: globalColors.neutral.blueGrayDark.a100,
         gray: {
           subtle: globalColors.neutral.blueGrayDark.a512,
           moderate: globalColors.neutral.blueGrayDark[800],
