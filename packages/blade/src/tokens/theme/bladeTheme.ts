@@ -11,6 +11,9 @@ import {
   opacity,
 } from '~tokens/global';
 
+// Placeholder values - will be replaced with actual colors from Figma design specs
+const transparent = `hsla(0, 0%, 0%, ${opacity[0]})`;
+
 const colors: ColorsWithModes = {
   onLight: {
     surface: {
@@ -21,8 +24,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayLight[0],
         },
         primary: {
+          faint: transparent,
           subtle: globalColors.chromatic.azure.a50,
+          moderate: transparent,
           intense: globalColors.chromatic.azure[500],
+          strong: transparent,
         },
         sea: {
           subtle: globalColors.chromatic.sea[50],
@@ -31,6 +37,9 @@ const colors: ColorsWithModes = {
         cloud: {
           subtle: globalColors.chromatic.cloud[50],
           intense: globalColors.chromatic.cloud[800],
+        },
+        accent: {
+          intense: transparent,
         },
       },
       border: {
@@ -709,8 +718,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[1100],
         },
         primary: {
+          faint: transparent,
           subtle: globalColors.chromatic.azure.a200,
+          moderate: transparent,
           intense: globalColors.chromatic.azure[500],
+          strong: transparent,
         },
         sea: {
           subtle: globalColors.chromatic.sea[900],
@@ -719,6 +731,9 @@ const colors: ColorsWithModes = {
         cloud: {
           subtle: globalColors.chromatic.cloud[900],
           intense: globalColors.chromatic.cloud[100],
+        },
+        accent: {
+          intense: transparent,
         },
       },
       border: {
