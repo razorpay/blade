@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Checks how many times the auto-resolve workflow has already run on this PR.
- * Exits with code 1 (and outputs "allowed=false") if the limit is reached.
+ * Outputs "allowed=false" when the review is ineligible or the limit is reached.
  *
  * The max-count limit only applies to "slash comments" — i.e. auto-resolution
  * of high-confidence comments posted by rzp-slash-public[bot].  Reviews that
@@ -11,13 +11,17 @@
  * Outputs "allowed=true/false" to GITHUB_OUTPUT.
  */
 
-const { execSync } = require('child_process');
 const fs = require('fs');
+const {
+  countResolutionAttempts,
+  isManualDelegation,
+  selectEligibleComments,
+} = require('./comment-selection');
+const { runGh } = require('./github-api');
 
 const repo = process.env.GITHUB_REPOSITORY;
 const prNumber = parseInt(process.env.PR_NUMBER, 10);
 const reviewId = process.env.REVIEW_ID;
-const workflowRef = process.env.GITHUB_WORKFLOW_REF;
 const githubOutput = process.env.GITHUB_OUTPUT;
 const MAX_RUNS = 10;
 const HUMAN_HELP_NEEDED_LABEL = 'Human Help Needed 🧑🏻‍💻';
@@ -30,58 +34,69 @@ function output(allowed) {
 
 function addHumanHelpNeededLabel() {
   try {
-    execSync(
-      `gh api "repos/${repo}/issues/${prNumber}/labels" --method POST --field "labels[]=${HUMAN_HELP_NEEDED_LABEL}"`,
-      { encoding: 'utf8', stdio: 'pipe' },
-    );
+    runGh([
+      'api',
+      `repos/${repo}/issues/${prNumber}/labels`,
+      '--method',
+      'POST',
+      '--field',
+      `labels[]=${HUMAN_HELP_NEEDED_LABEL}`,
+    ]);
     console.log(`Added '${HUMAN_HELP_NEEDED_LABEL}' label to PR #${prNumber}.`);
   } catch (err) {
     console.error(`Failed to add '${HUMAN_HELP_NEEDED_LABEL}' label:`, err.message);
   }
 }
 
-/**
- * Returns true when the current review contains at least one comment that
- * explicitly mentions @rzp-slash-public or @razorpay/slash-public (manual delegation).  These comments
- * are outside the scope of the max-count limit.
- */
-function reviewHasManualDelegation() {
-  if (!reviewId) return false;
-  try {
-    const comments = JSON.parse(
-      execSync(`gh api "repos/${repo}/pulls/${prNumber}/reviews/${reviewId}/comments"`, {
-        encoding: 'utf8',
-      }),
-    );
-    return comments.some((c) => c.body.includes('@rzp-slash-public') || c.body.includes('@razorpay/slash-public'));
-  } catch (err) {
-    console.log(`Could not fetch review comments to check for manual delegation: ${err.message}`);
-    return false;
-  }
+if (!reviewId) {
+  console.error('REVIEW_ID is required to evaluate the current review.');
+  output('false');
+  process.exit(1);
 }
 
-// GITHUB_WORKFLOW_REF format: "org/repo/.github/workflows/filename.yml@refs/heads/branch"
-const workflowFilename = workflowRef.split('@')[0].split('/').pop();
-
-const count = parseInt(
-  execSync(
-    `gh api "repos/${repo}/actions/workflows/${workflowFilename}/runs?event=pull_request_review&per_page=100" --jq '[.workflow_runs[] | select(.pull_requests[]?.number == ${prNumber})] | length'`,
-    { encoding: 'utf8' },
-  ).trim(),
-  10,
+const currentReviewComments = runGh(
+  [
+    'api',
+    `repos/${repo}/pulls/${prNumber}/reviews/${reviewId}/comments`,
+    '--paginate',
+    '--jq',
+    '.[] | {body: (.body // ""), user: {login: .user.login}}',
+  ],
+  { format: 'json-lines' },
 );
+const selectedComments = selectEligibleComments(currentReviewComments);
+
+if (selectedComments.length === 0) {
+  console.log('No eligible comments in this review, skipping.');
+  output('false');
+  process.exit(0);
+}
+
+if (selectedComments.some(isManualDelegation)) {
+  console.log('Review contains an explicit Slash mention — allowing manual delegation.');
+  output('true');
+  process.exit(0);
+}
+
+const previousReviewComments = runGh(
+  [
+    'api',
+    `repos/${repo}/pulls/${prNumber}/comments`,
+    '--paginate',
+    '--jq',
+    '.[] | {body: (.body // "")}',
+  ],
+  { format: 'json-lines' },
+);
+const count = countResolutionAttempts(previousReviewComments);
 
 console.log(`Auto-resolve has run ${count} time(s) on this PR (max: ${MAX_RUNS}).`);
 
 if (count >= MAX_RUNS) {
-  if (reviewHasManualDelegation()) {
-    console.log('Limit reached, but review contains an explicit @rzp-slash-public or @razorpay/slash-public mention — allowing.');
-    output('true');
-  } else {
-    console.log('Limit reached — skipping to prevent feedback loop.');
-    addHumanHelpNeededLabel();
-    output('false');
-  }
-} else {
-  output('true');
+  console.log('Limit reached — skipping to prevent feedback loop.');
+  addHumanHelpNeededLabel();
+  output('false');
+  process.exit(0);
 }
+
+output('true');
