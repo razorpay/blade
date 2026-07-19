@@ -20,6 +20,7 @@
   let {
     themeTokens,
     colorScheme: colorSchemeProp = 'light',
+    componentConfig,
     children,
   }: BladeProviderProps = $props();
 
@@ -92,6 +93,7 @@
     colorScheme,
     setColorScheme,
     platform,
+    componentConfig,
   }));
 
   $effect(() => {

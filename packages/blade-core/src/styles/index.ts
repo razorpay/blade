@@ -1,3 +1,6 @@
+import './layers.css';
+
+export type { StyleOverride } from './shared/styleOverride';
 export { baseTextStyles, getBaseTextClasses } from './BaseText';
 export type { BaseTextVariants } from './BaseText';
 export {
@@ -46,7 +49,7 @@ export {
   getButtonIconSize,
   getButtonIconOnlySize,
 } from './Button';
-export type { ButtonVariants, ButtonColor, ButtonVariant } from './Button';
+export type { ButtonVariants, ButtonColor, ButtonVariant, ButtonSlot } from './Button';
 export {
   iconButtonStyles,
   getIconButtonClasses,

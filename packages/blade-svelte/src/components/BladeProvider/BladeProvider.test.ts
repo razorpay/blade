@@ -1,9 +1,14 @@
 import { describe, expect, it, vi, afterEach } from 'vitest';
 import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
-import { themeToCssVariables, cssVariablesToInlineStyle } from '@razorpay/blade-core/utils';
+import {
+  themeToCssVariables,
+  cssVariablesToInlineStyle,
+  mergeStyleOverride,
+} from '@razorpay/blade-core/utils';
 import { getColorScheme, isValidColorSchemeInput } from './getColorScheme';
 import { getTypographyPlatform } from './getTypographyPlatform';
 import { resolveBladeTheme } from './resolveBladeTheme';
+import type { BladeComponentConfig } from './types';
 
 describe('getColorScheme', () => {
   const originalWindow = globalThis.window;
@@ -105,5 +110,21 @@ describe('resolveBladeTheme', () => {
       theme.colors.interactive.background.primary.default,
     );
     expect(cssVariablesToInlineStyle(vars)).toContain('--border-radius-medium:16px');
+  });
+});
+
+describe('componentConfig styleOverride precedence', () => {
+  it('instance override wins over provider componentConfig', () => {
+    const providerConfig: BladeComponentConfig = {
+      styleOverride: { root: 'provider-cta', text: 'provider-label' },
+    };
+    const instanceOverride = { root: 'instance-cta' };
+
+    const resolved = mergeStyleOverride(providerConfig.styleOverride, instanceOverride);
+
+    expect(resolved).toEqual({
+      root: 'instance-cta',
+      text: 'provider-label',
+    });
   });
 });

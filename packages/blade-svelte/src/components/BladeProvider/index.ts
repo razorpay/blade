@@ -17,4 +17,10 @@
  */
 export { default as BladeProvider } from './BladeProvider.svelte';
 export { useTheme } from './useTheme';
-export type { Theme, BladeProviderProps, BladeThemeContextValue } from './types';
+export type {
+  Theme,
+  BladeProviderProps,
+  BladeThemeContextValue,
+  BladeComponentName,
+  BladeComponentConfig,
+} from './types';

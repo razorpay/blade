@@ -6,7 +6,8 @@ export default defineConfig({
     environment: 'node',
     globals: true,
     include: [
-      'src/utils/themeToCssVariables/**/*.test.ts',
+      'src/utils/**/*.test.ts',
+      'src/styles/**/*.test.ts',
       'src/tokens/theme/__tests__/createTheme.test.ts',
     ],
   },

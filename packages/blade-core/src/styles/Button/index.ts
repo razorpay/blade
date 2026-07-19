@@ -25,3 +25,4 @@ export {
   getButtonIconOnlySize,
 } from './button';
 export type { ButtonVariants, ButtonColor, ButtonVariant, ActionStatesType } from './button';
+export type { ButtonSlot } from './slots';
