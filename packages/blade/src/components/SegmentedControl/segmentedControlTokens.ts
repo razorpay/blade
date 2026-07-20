@@ -4,7 +4,7 @@ import type { DotNotationSpacingStringToken } from '~utils/types';
 type SizeTokenMap = Record<SegmentedControlSize, DotNotationSpacingStringToken>;
 
 const paddingY: SizeTokenMap = {
-  small: 'spacing.1',
+  small: 'spacing.2',
   medium: 'spacing.2',
   large: 'spacing.3',
 };
@@ -16,7 +16,7 @@ const paddingX: SizeTokenMap = {
 };
 
 const containerPadding: SizeTokenMap = {
-  small: 'spacing.1',
+  small: 'spacing.2',
   medium: 'spacing.2',
   large: 'spacing.2',
 };
@@ -52,7 +52,7 @@ const itemHeight: Record<SegmentedControlSize, number> = {
 };
 
 const textSizeMap: Record<SegmentedControlSize, 'small' | 'medium' | 'large'> = {
-  small: 'medium',
+  small: 'small',
   medium: 'medium',
   large: 'large',
 };
