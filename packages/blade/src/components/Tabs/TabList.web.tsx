@@ -91,7 +91,7 @@ const TabList = ({
                   overflow={isVertical ? 'hidden' : undefined}
                   {...(isFilled
                     ? {
-                        borderRadius: containerBorderRadius[orientation][size],
+                        borderRadius: containerBorderRadius[orientation][size ?? 'medium'],
                         borderWidth: 'none',
                         borderColor: 'interactive.border.gray.default',
                         padding: isCompact ? 'spacing.1' : 'spacing.2',
