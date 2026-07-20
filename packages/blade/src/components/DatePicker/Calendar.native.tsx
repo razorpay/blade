@@ -9,7 +9,7 @@ import { CalendarHeader } from './CalendarHeader';
 import { DayCell, ListCell, TodayDot } from './CalendarStyles.native';
 import { levelToPicker, pickerToLevel } from './constants';
 import { shiftTimezone } from './shiftTimezone';
-import { convertIntlToDayjsLocale } from './utils';
+import { convertIntlToDayjsLocale, clampDateToRange } from './utils';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { useControllableState } from '~utils/useControllable';
@@ -186,8 +186,14 @@ const Calendar = <Type extends DateSelectionType>({
     if (!isRangeSelection && selectedValue) {
       return selectedValue;
     }
-    return shiftTimezone('add', new Date());
-  }, [viewDate, selectedValue]);
+    // When nothing is selected, open on today's month clamped into the [minDate, maxDate]
+    // range so the calendar doesn't land on a month where every date is disabled.
+    return clampDateToRange({
+      date: shiftTimezone('add', new Date()),
+      minDate,
+      maxDate,
+    });
+  }, [viewDate, selectedValue, minDate, maxDate]);
 
   const currentPicker = levelToPicker[level] as PickerType;
 
