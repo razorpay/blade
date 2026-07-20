@@ -33,10 +33,10 @@ function postcssBladeLayer() {
       }
 
       const layerAtRule = postcss.atRule({ name: 'layer', params: BLADE_LAYER_NAME });
-      root.each((node) => {
+      const nodes = [...root.nodes];
+      for (const node of nodes) {
         layerAtRule.append(node);
-      });
-      root.removeAll();
+      }
       root.append(layerAtRule);
     },
   };

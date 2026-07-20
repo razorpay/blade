@@ -22,7 +22,8 @@
     if (brandColor) {
       try {
         return createTheme({ brandColor }).theme;
-      } catch {
+      } catch (error) {
+        console.warn('[BladeThemeDecorator]: Invalid brandColor, falling back to default theme', brandColor, error);
         return bladeTheme;
       }
     }

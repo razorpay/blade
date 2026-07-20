@@ -111,8 +111,15 @@
 
   onMount(() => {
     viewportWidth = window.innerWidth;
+    let resizeRaf = 0;
     const onResize = (): void => {
-      viewportWidth = window.innerWidth;
+      if (resizeRaf) {
+        return;
+      }
+      resizeRaf = requestAnimationFrame(() => {
+        viewportWidth = window.innerWidth;
+        resizeRaf = 0;
+      });
     };
     window.addEventListener('resize', onResize);
 
@@ -123,6 +130,9 @@
     mediaQuery.addEventListener('change', onSystemChange);
 
     return () => {
+      if (resizeRaf) {
+        cancelAnimationFrame(resizeRaf);
+      }
       window.removeEventListener('resize', onResize);
       mediaQuery.removeEventListener('change', onSystemChange);
     };

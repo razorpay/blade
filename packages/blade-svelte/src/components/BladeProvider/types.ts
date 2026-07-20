@@ -28,7 +28,7 @@ export type BladeComponentName =
   | 'AnnouncementBanner'
   | 'Card'
   | 'AppBar'
-  | 'TextInput'
+  | 'Input'
   | 'Accordion'
   | 'Divider'
   | 'Badge'
