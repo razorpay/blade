@@ -186,7 +186,7 @@ jobs:
           comment-author: 'rzpcibot'
           body-includes: '<!-- coverage-report-comment -->'
       - name: Create or update coverage comment
-        uses: peter-evans/create-or-update-comment@71345be02652363184696ad7b512c14d054f5d3f # v4.0.0
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}

@@ -12,6 +12,8 @@ jobs:
     if: ${{ github.event_name == 'push' || github.event.label.name == 'Run Interaction Tests' }}
     outputs:
       storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
+    env:
+      GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
@@ -76,7 +78,6 @@ jobs:
           untraced: '**/package.json'
           traceChanged: 'expanded'
         env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}
 

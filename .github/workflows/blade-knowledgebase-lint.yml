@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
       - name: Use Node v22
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.1
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version: 22
       - name: Setup Cache & Install Dependencies
