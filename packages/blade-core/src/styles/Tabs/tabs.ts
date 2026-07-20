@@ -41,6 +41,7 @@ export const getTabsTemplateClasses = (): Record<string, string> => ({
   tabRadiusNone: styles.tabRadiusNone,
   tabRadiusSmall: styles.tabRadiusSmall,
   tabRadiusMedium: styles.tabRadiusMedium,
+  tabRadiusFilledHorizSmall: styles.tabRadiusFilledHorizSmall,
   tabBgTransparent: styles.tabBgTransparent,
   tabBgFilledSelectedVertical: styles.tabBgFilledSelectedVertical,
   tabStackingContext: styles.tabStackingContext,
@@ -61,6 +62,7 @@ export const getTabsTemplateClasses = (): Record<string, string> => ({
   indicatorFilled: styles.indicatorFilled,
   indicatorRadiusSmall: styles.indicatorRadiusSmall,
   indicatorRadiusMedium: styles.indicatorRadiusMedium,
+  indicatorRadiusFilledHorizSmall: styles.indicatorRadiusFilledHorizSmall,
   tabPanel: styles.tabPanel,
   tabPanelHidden: styles.tabPanelHidden,
 });

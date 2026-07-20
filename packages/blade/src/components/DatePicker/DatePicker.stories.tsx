@@ -47,6 +47,9 @@ export default {
     maxDate: baseProp,
     excludeDate: baseProp,
     picker: baseProp,
+    visibleMonth: baseProp,
+    defaultVisibleMonth: baseProp,
+    onVisibleMonthChange: baseProp,
     onOpenChange: baseProp,
     allowSingleDateInRange: baseProp,
     defaultIsOpen: baseProp,
@@ -538,6 +541,48 @@ export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDate
 };
 
 FilterChipDatePickerStorySingleStory.storyName = 'FilterChipDatePicker (Single Selection)';
+
+export const FilterChipDatePickerClearButtonBehavior: StoryFn<typeof FilterChipDatePicker> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8" maxWidth="760px">
+      <Text>
+        Use <Code size="medium">showClearButton</Code> to control the clear (cross) button on the
+        FilterChipDatePicker. It defaults to <Code size="medium">true</Code>.
+      </Text>
+
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Text weight="semibold">With clear button (default)</Text>
+        <Text size="small" color="surface.text.gray.muted">
+          Once a date is selected the cross appears; pressing it clears the value (fires{' '}
+          <Code size="medium">onChange</Code> with an empty value and{' '}
+          <Code size="medium">onClearButtonClick</Code>).
+        </Text>
+        <Box>
+          <FilterChipDatePicker label="Date" selectionType="single" defaultValue={new Date()} />
+        </Box>
+      </Box>
+
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Text weight="semibold">Without clear button (showClearButton={'{false}'})</Text>
+        <Text size="small" color="surface.text.gray.muted">
+          For filters that must always hold a value. The chip starts with a default date and never
+          shows the cross, so it can&apos;t be cleared to an empty state — the calendar can still be
+          opened to change the date.
+        </Text>
+        <Box>
+          <FilterChipDatePicker
+            label="Date"
+            selectionType="single"
+            defaultValue={new Date()}
+            showClearButton={false}
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+FilterChipDatePickerClearButtonBehavior.storyName = 'FilterChipDatePicker (Clear Button Behaviour)';
 
 export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
   typeof FilterChipDatePicker
@@ -1343,5 +1388,56 @@ export const DatePickerWithTimePickerInModal: StoryFn<typeof DatePickerComponent
     </Box>
   );
 };
+
+export const DatePickerComparisonRange: StoryFn<typeof DatePickerComponent> = () => {
+  const [primaryRange, setPrimaryRange] = React.useState<DatesRangeValue>([
+    dayjs().subtract(1, 'month').toDate(),
+    dayjs().toDate(),
+  ]);
+  const [comparisonRange, setComparisonRange] = React.useState<DatesRangeValue>([null, null]);
+  const [comparisonVisibleMonth, setComparisonVisibleMonth] = React.useState<Date | undefined>();
+
+  // Same-length period immediately preceding the primary range, with no gap between the two.
+  React.useEffect(() => {
+    const [primaryStart, primaryEnd] = primaryRange;
+    if (!primaryStart || !primaryEnd) return;
+    const rangeLengthInDays = dayjs(primaryEnd).diff(dayjs(primaryStart), 'day');
+    setComparisonVisibleMonth(
+      dayjs(primaryStart)
+        .subtract(rangeLengthInDays + 1, 'day')
+        .toDate(),
+    );
+  }, [primaryRange]);
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        Use <Code size="medium">visibleMonth</Code>/<Code size="medium">defaultVisibleMonth</Code>{' '}
+        to anchor a comparison <Code size="medium">DatePicker</Code> on the months immediately
+        preceding a primary range&apos;s selection — without pre-filling the comparison{' '}
+        <Code size="medium">value</Code>. Pick a primary range below, then open &quot;Compare
+        to&quot; and notice the calendar opens on the same-length period right before it.
+      </Text>
+      <Box display="flex" flexDirection="column" gap="spacing.5" maxWidth="400px">
+        <DatePickerComponent
+          label={{ start: 'Primary date range' }}
+          selectionType="range"
+          value={primaryRange}
+          onChange={(date) => setPrimaryRange(date)}
+        />
+        <DatePickerComponent
+          label={{ start: 'Compare to' }}
+          selectionType="range"
+          value={comparisonRange}
+          visibleMonth={comparisonVisibleMonth}
+          onVisibleMonthChange={setComparisonVisibleMonth}
+          onChange={(date) => setComparisonRange(date)}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+DatePickerComparisonRange.storyName = 'Comparison Range (visibleMonth)';
 
 DatePickerWithTimePickerInModal.storyName = 'DatePicker with TimePicker (Modal)';

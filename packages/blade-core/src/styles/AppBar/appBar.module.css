@@ -74,7 +74,9 @@
 }
 
 /* --- AppBarLeading ---
-   React: flex row, align center, gap spacing.3, minWidth 0 (truncation). */
+   React: flex row, align center, gap spacing.3, minWidth 0 (truncation).
+   No overflow:hidden here — it clips Avatar wrapper outlines that extend
+   outside the box. Title truncation uses overflow on title wrappers below. */
 .appBarLeading {
   display: flex;
   flex-direction: row;
@@ -82,7 +84,6 @@
   gap: var(--spacing-3);
   min-width: 0;
   flex: 1 1 0;
-  overflow: hidden;
 }
 
 .appBarLeadingLogo {

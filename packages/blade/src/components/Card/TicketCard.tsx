@@ -116,7 +116,6 @@ const _TicketCard: React.ForwardRefRenderFunction<BladeElementRef, TicketCardPro
         <CardTicketSurface
           top={<CardBody>{body}</CardBody>}
           bottom={<CardBody>{footer}</CardBody>}
-          tearLine={null}
           isSelected={isCardSelected}
           isDisabled={isCardDisabled}
         >

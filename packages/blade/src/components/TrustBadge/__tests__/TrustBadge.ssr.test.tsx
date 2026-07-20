@@ -4,7 +4,7 @@ import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<TrustBadge />', () => {
   it('should render TrustBadge ssr', () => {
-    const { container } = renderWithSSR(<TrustBadge emphasis="intense" />);
+    const { container } = renderWithSSR(<TrustBadge />);
     expect(container).toMatchSnapshot();
   });
 });

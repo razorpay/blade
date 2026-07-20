@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v jq >/dev/null 2>&1 || exit 0; input=$(cat); sub=$(printf \"%s\" \"$input\" | jq -r \".tool_input.subagent_type // \\\"\\\"\"); printf \"%s\" \"$sub\" | grep -qE \"(plan|execute|verify)-rn-migration\" || exit 0; prompt=$(printf \"%s\" \"$input\" | jq -r \".tool_input.prompt // \\\"\\\"\"); listing=$(printf \"%s\" \"$prompt\" | grep -oE \"[^ \\\"]*/\\.claude/artifacts/[A-Za-z0-9_-]+\" | sort -u | while read -r d; do [ -d \"$d\" ] && { printf \"=== %s ===\\n\" \"$d\"; ls -1 \"$d\" 2>/dev/null; printf \"\\n\"; }; done); [ -n \"$listing\" ] || exit 0; printf \"%s\" \"$listing\" | jq -Rs '{hookSpecificOutput:{hookEventName:\"PreToolUse\",additionalContext:(\"Existing RN migration artifacts already on disk — READ these before spawning; decide the next phase from disk state, not from turn history:\\n\\n\" + .)}}'",
+            "statusMessage": "Checking for existing RN migration artifacts",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
