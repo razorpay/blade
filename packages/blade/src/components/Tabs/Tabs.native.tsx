@@ -5,7 +5,7 @@ import PagerView from 'react-native-pager-view';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
 import { StyledTabButton } from './TabItem.native';
-import { iconColor, textColor, trackColor } from './tabTokens';
+import { iconColor, textColor, trackColor, borderRadius, containerBorderRadius } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Text } from '~components/Typography';
@@ -126,12 +126,14 @@ type TabBarIndicatorProps = {
   tabWidths: number[];
   selectedIndex: number;
   variant: NonNullable<TabsProps['variant']>;
+  size: NonNullable<TabsProps['size']>;
 };
 
 const TabBarIndicator = ({
   tabWidths,
   selectedIndex,
   variant,
+  size,
 }: TabBarIndicatorProps): React.ReactElement | null => {
   const { theme } = useTheme();
   const isFilled = variant === 'filled';
@@ -165,7 +167,7 @@ const TabBarIndicator = ({
               top: theme.spacing[2],
               bottom: theme.spacing[2],
               backgroundColor: theme.colors.interactive.background.primary.faded,
-              borderRadius: theme.border.radius.small,
+              borderRadius: theme.border.radius[borderRadius.filled.horizontal[size]],
             }
           : {
               height: theme.border.width.thicker,
@@ -216,7 +218,7 @@ const CustomTabBar = ({
     ? {
         shadowOpacity: 0,
         shadowColor: 'transparent' as const,
-        borderRadius: theme.border.radius.small,
+        borderRadius: theme.border.radius[containerBorderRadius.horizontal[size]],
         borderWidth: theme.border.width.thick,
         borderColor: theme.colors.interactive.border.gray.faded,
         backgroundColor: theme.colors.surface.background.gray.intense,
@@ -294,7 +296,12 @@ const CustomTabBar = ({
 
       {/* Animated indicator rendered absolutely on top of the tab bar */}
       <View style={StyleSheet.absoluteFill} pointerEvents="none">
-        <TabBarIndicator tabWidths={tabWidths} selectedIndex={selectedIndex} variant={variant} />
+        <TabBarIndicator
+          tabWidths={tabWidths}
+          selectedIndex={selectedIndex}
+          variant={variant}
+          size={size}
+        />
       </View>
     </View>
   );

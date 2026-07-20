@@ -194,7 +194,7 @@ const borderWidth: Record<TabVariants, Record<TabOrientation, BorderWidthValue>>
   },
 };
 
-type BorderRadiusToken = 'none' | 'small' | 'medium';
+type BorderRadiusToken = 'none' | 'small' | 'medium' | 'large';
 
 const borderRadius: Record<
   TabVariants,
@@ -205,9 +205,17 @@ const borderRadius: Record<
     vertical: { small: 'none', medium: 'none', large: 'none' },
   },
   filled: {
-    horizontal: { small: 'small', medium: 'small', large: 'small' },
+    horizontal: { small: 'medium', medium: 'small', large: 'small' },
     vertical: { small: 'small', medium: 'small', large: 'small' },
   },
+};
+
+// Only used for the `filled` variant's container. Vertical values preserve the
+// pre-existing behavior (always 'medium', regardless of size) — vertical is out of scope
+// for the horizontal Figma spec alignment this map was introduced for.
+const containerBorderRadius: Record<TabOrientation, Record<TabSizes, BorderRadiusToken>> = {
+  horizontal: { small: 'large', medium: 'medium', large: 'medium' },
+  vertical: { small: 'medium', medium: 'medium', large: 'medium' },
 };
 
 const focusBorderRadius: Record<
@@ -307,6 +315,7 @@ export {
   textSizeMap,
   borderWidth,
   borderRadius,
+  containerBorderRadius,
   focusBorderRadius,
   borderColor,
   needsStackingContext,

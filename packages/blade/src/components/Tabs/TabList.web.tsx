@@ -3,7 +3,7 @@ import { Composite } from '@floating-ui/react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
 import { TabIndicator } from './TabIndicator';
-import { trackColor } from './tabTokens';
+import { trackColor, containerBorderRadius } from './tabTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Box } from '~components/Box';
@@ -29,6 +29,7 @@ const TabList = ({
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
   const isCompact = size === 'small' && !isVertical;
+  const orientation = isVertical ? 'vertical' : 'horizontal';
 
   // Set the first child as the selected value
   useIsomorphicLayoutEffect(() => {
@@ -84,7 +85,7 @@ const TabList = ({
                   overflow={isVertical ? 'hidden' : undefined}
                   {...(isFilled
                     ? {
-                        borderRadius: isCompact ? 'small' : 'medium',
+                        borderRadius: containerBorderRadius[orientation][size!],
                         borderWidth: 'none',
                         borderColor: 'interactive.border.gray.default',
                         padding: isCompact ? 'spacing.1' : 'spacing.2',

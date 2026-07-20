@@ -66,13 +66,7 @@ const StyledTabButton = styled.button<{
 
     // Colors & border
     backgroundColor: getIn(theme, background.default),
-    // 6px for small filled horizontal — deliberate: between xsmall(4px) and small(8px) for visual proportion, mirrors SegmentedControl item radius
-    borderRadius:
-      borderRadius === 'none'
-        ? 0
-        : variant === 'filled' && !isVertical && size === 'small'
-        ? 6
-        : theme.border.radius[borderRadius],
+    borderRadius: borderRadius === 'none' ? 0 : theme.border.radius[borderRadius],
     [`${border}Style`]: 'solid',
     [`${border}Width`]:
       borderWidth === 'none' ? 0 : makeBorderSize(theme.border.width[borderWidth]),
