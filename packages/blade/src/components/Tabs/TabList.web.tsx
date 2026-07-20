@@ -24,7 +24,13 @@ const TabList = ({
   ...rest
 }: { children: React.ReactNode } & StyledPropsBlade &
   DataAnalyticsAttribute): React.ReactElement => {
-  const { setSelectedValue, selectedValue, variant, isVertical, size } = useTabsContext();
+  const {
+    setSelectedValue,
+    selectedValue,
+    variant,
+    isVertical,
+    size = 'medium',
+  } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
@@ -85,7 +91,7 @@ const TabList = ({
                   overflow={isVertical ? 'hidden' : undefined}
                   {...(isFilled
                     ? {
-                        borderRadius: containerBorderRadius[orientation][size!],
+                        borderRadius: containerBorderRadius[orientation][size],
                         borderWidth: 'none',
                         borderColor: 'interactive.border.gray.default',
                         padding: isCompact ? 'spacing.1' : 'spacing.2',
