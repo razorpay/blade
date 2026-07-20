@@ -12,6 +12,7 @@ import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { FormLabel, FormHint } from '~components/Form';
 import BaseBox from '~components/Box/BaseBox';
 import getIn from '~utils/lodashButBetter/get';
@@ -33,6 +34,7 @@ const _SegmentedControl = (
     validationState = 'none',
     necessityIndicator = 'none',
     testID,
+    ...rest
   }: SegmentedControlProps,
   ref: React.Ref<View>,
 ): React.ReactElement => {
@@ -83,8 +85,9 @@ const _SegmentedControl = (
         gap: getIn(theme, gap[size]),
       }}
       accessibilityRole="radiogroup"
-      accessibilityLabel={label ? undefined : accessibilityLabel || name}
+      accessibilityLabel={label || accessibilityLabel || name}
       {...metaAttribute({ name: MetaConstants.SegmentedControl, testID })}
+      {...makeAnalyticsAttribute(rest)}
     >
       {children}
     </View>

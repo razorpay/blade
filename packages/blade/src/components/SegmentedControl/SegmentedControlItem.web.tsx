@@ -121,6 +121,10 @@ const SegmentedControlItem = ({
         nextIndex = (currentIndex + 1) % buttons.length;
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      } else if (e.key === 'Home') {
+        nextIndex = 0;
+      } else if (e.key === 'End') {
+        nextIndex = buttons.length - 1;
       }
 
       if (nextIndex >= 0) {
