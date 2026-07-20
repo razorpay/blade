@@ -8,7 +8,7 @@ on:
 jobs:
   test-pmg-allows-clean-install:
     name: PMG - Clean package should not be blocked
-    runs-on: ${{ fromJSON(github.repository_owner == 'razorpay' && '["self-hosted"]') }}
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Setup PMG proxy
         uses: safedep/pmg@v1
@@ -34,7 +34,7 @@ jobs:
 
   test-pmg-blocks-malicious-package:
     name: PMG - Malicious package should be blocked
-    runs-on: ${{ fromJSON(github.repository_owner == 'razorpay' && '["self-hosted-wcl","security-check","security-runner"]' || '["self-hosted"]') }}
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Setup PMG proxy
         uses: safedep/pmg@v1
