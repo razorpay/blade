@@ -25,21 +25,21 @@
 </script>
 
 <style>
-  .checkout-cta-unsafe {
+  :global(.checkout-cta-unsafe) {
     background-color: #6c5ce7;
     border-radius: 4px;
   }
 
-  .checkout-cta-label {
+  :global(.checkout-cta-label) {
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  .provider-cta {
+  :global(.provider-cta) {
     --interactive-background-primary-default: #2d3436;
   }
 
-  .checkout-cta-safe-shell {
+  :global(.checkout-cta-safe-shell) {
     background-image: none;
   }
 </style>
