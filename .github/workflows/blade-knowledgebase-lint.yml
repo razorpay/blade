@@ -7,9 +7,6 @@ permissions:
   pull-requests: write
   contents: read
 
-env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-
 jobs:
   validate:
     name: Knowledgebase Lint
@@ -18,7 +15,7 @@ jobs:
       - name: Checkout Codebase
         uses: actions/checkout@v3
       - name: Use Node v22
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.1
         with:
           node-version: 22
       - name: Setup Cache & Install Dependencies

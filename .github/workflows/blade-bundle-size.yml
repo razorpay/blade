@@ -7,9 +7,6 @@ on:
     branches:
       - master
 
-env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-
 jobs:
   pr-bundle-size:
     name: Generate PR Report
@@ -31,7 +28,7 @@ jobs:
         run: yarn danger ci
         working-directory: packages/blade
         env:
-          DANGER_GITHUB_API_TOKEN: ${{ env.GITHUB_ACCESS_TOKEN }}
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
           DANGER_DISABLE_TRANSPILATION: 'true'
 
   master-bundle-size:
@@ -43,7 +40,7 @@ jobs:
       cancel-in-progress: false
     steps:
       - name: Checkout Codebase
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           token: ${{ secrets.CI_BOT_TOKEN }}
           ref: master
