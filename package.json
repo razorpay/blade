@@ -100,7 +100,6 @@
     "@octokit/rest": "21.0.2",
     "http-proxy-middleware": "2.0.10",
     "hono": "4.12.25",
-    "postcss": "8.5.10",
     "vite": "6.4.3",
     "@hono/node-server": "1.19.13",
     "handlebars": "4.7.9",
@@ -120,7 +119,6 @@
   "overrides": {
     "http-proxy-middleware": "2.0.10",
     "hono": "4.12.25",
-    "postcss": "8.5.10",
     "vite": "6.4.3",
     "@hono/node-server": "1.19.13",
     "handlebars": "4.7.9",
