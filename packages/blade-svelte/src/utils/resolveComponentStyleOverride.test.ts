@@ -9,7 +9,7 @@ const mockGetter = (
   theme: {} as BladeThemeContextValue['theme'],
   themeTokens: {} as BladeThemeContextValue['themeTokens'],
   colorScheme: 'light',
-  setColorScheme: () => {},
+  setColorScheme: () => undefined,
   platform: 'web',
   componentConfig,
 });

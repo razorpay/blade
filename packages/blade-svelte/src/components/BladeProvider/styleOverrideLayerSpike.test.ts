@@ -1,13 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import postcss from 'postcss';
 import { describe, expect, it } from 'vitest';
 import { getButtonClasses } from '@razorpay/blade-core/styles';
 
+const localRequire = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const bladeCoreRoot = path.resolve(__dirname, '../../../../blade-core');
-const postcssBladeLayer = require(path.join(bladeCoreRoot, 'postcss-blade-layer.cjs'));
+const postcssBladeLayer = localRequire(path.join(bladeCoreRoot, 'postcss-blade-layer.cjs'));
 
 describe('styleOverride layer spike', () => {
   it('wraps button module CSS in @layer blade for cascade-safe overrides', async () => {
