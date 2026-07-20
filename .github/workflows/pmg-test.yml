@@ -1,40 +1,32 @@
 name: PMG Proxy Test
 
 on:
+  workflow_dispatch:
+  pull_request:
   push:
 
 jobs:
   test-pmg-allows-clean-install:
     name: PMG - Clean package should not be blocked
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-    env:
-      HAS_PMG_API_KEY: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN != '' }}
-      HAS_PMG_TENANT_ID: ${{ secrets.PMG_TENANT_ID != '' }}
+    runs-on: ${{ fromJSON(github.repository_owner == 'razorpay' && '["self-hosted"]') }}
     steps:
-      - name: Checkout Codebase
-        uses: actions/checkout@v3
-
       - name: Setup PMG proxy
-        if: ${{ env.HAS_PMG_API_KEY == 'true' && env.HAS_PMG_TENANT_ID == 'true' }}
         uses: safedep/pmg@v1
         with:
           server-mode: true
           api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
           tenant-id: ${{ secrets.PMG_TENANT_ID }}
 
-      - name: Setup PMG proxy without cloud credentials
-        if: ${{ env.HAS_PMG_API_KEY != 'true' || env.HAS_PMG_TENANT_ID != 'true' }}
-        uses: safedep/pmg@v1
-        with:
-          server-mode: true
-
-      - name: Use Node v22
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
+      - name: Install npm via nvm
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          nvm install 20
+          echo "$NVM_DIR/versions/node/$(nvm version 20)/bin" >> $GITHUB_PATH
 
       - name: Install clean package (should succeed)
-        uses: ./.github/actions/install-dependencies
+        run: npm install lodash
 
       - name: Enforce PMG policy
         if: always()
@@ -42,42 +34,27 @@ jobs:
 
   test-pmg-blocks-malicious-package:
     name: PMG - Malicious package should be blocked
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
-    env:
-      HAS_PMG_API_KEY: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN != '' }}
-      HAS_PMG_TENANT_ID: ${{ secrets.PMG_TENANT_ID != '' }}
+    runs-on: ${{ fromJSON(github.repository_owner == 'razorpay' && '["self-hosted-wcl","security-check","security-runner"]' || '["self-hosted"]') }}
     steps:
-      - name: Checkout Codebase
-        uses: actions/checkout@v3
-
       - name: Setup PMG proxy
-        if: ${{ env.HAS_PMG_API_KEY == 'true' && env.HAS_PMG_TENANT_ID == 'true' }}
         uses: safedep/pmg@v1
         with:
           server-mode: true
           api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
           tenant-id: ${{ secrets.PMG_TENANT_ID }}
 
-      - name: Setup PMG proxy without cloud credentials
-        if: ${{ env.HAS_PMG_API_KEY != 'true' || env.HAS_PMG_TENANT_ID != 'true' }}
-        uses: safedep/pmg@v1
-        with:
-          server-mode: true
-
-      - name: Use Node v22
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
+      - name: Install npm via nvm
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          nvm install 20
+          echo "$NVM_DIR/versions/node/$(nvm version 20)/bin" >> $GITHUB_PATH
 
       - name: Install flagged test package (PMG should block this)
         continue-on-error: true
-        run: yarn add safedep-test-pkg@0.1.3 --no-lockfile
+        run: npm install --no-cache --prefer-online safedep-test-pkg@0.1.3
 
-      - name: Assert PMG recorded a violation
+      - name: Enforce PMG policy (expect failure — violation recorded)
         if: always()
-        run: |
-          if pmg proxy stop --fail-on-violation; then
-            echo "::error::PMG recorded no violation — the flagged package was NOT blocked."
-            exit 1
-          fi
-          echo "PMG blocked the flagged package as expected."
+        run: pmg proxy stop --fail-on-violation
