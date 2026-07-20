@@ -89,6 +89,7 @@ export type {
   AmountBodyProps,
   AmountDisplayProps,
   AmountHeadingProps,
+  AmountSlot,
 } from './Amount';
 export {
   badgeStyles,

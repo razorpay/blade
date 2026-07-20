@@ -10,3 +10,4 @@ export type {
   AmountDisplayProps,
   AmountHeadingProps,
 } from './amountTokens';
+export type { AmountSlot } from './slots';
