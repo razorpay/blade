@@ -152,8 +152,6 @@
     '.text-(--brand-color) { color: var(--brand-color); }',
   ];
 
-  const brandBgGlobalClassRule = `:global(.bg-\\(--brand-bg\\)) { ${brandBgUtilityDeclarations} }`;
-
   let brandBg = $state('#e6c85b');
   let brandText = $state('#FFFFFF');
   let brandColor = $state('#FFFFFF');
@@ -483,12 +481,17 @@
   </div>
 </Story>
 
-<svelte:head>
-  {@html `<style>${brandBgGlobalClassRule}</style>`}
-</svelte:head>
-
 <style>
   :global(.token-override-shell) {
+    background-image: none;
+  }
+
+  :global(.bg-\(--brand-bg\)) {
+    --interactive-background-primary-default: var(--brand-bg);
+    --interactive-background-primary-highlighted: color-mix(in srgb, var(--brand-bg) 80%, black);
+    --interactive-background-primary-disabled: color-mix(in srgb, var(--brand-bg) 18%, transparent);
+    --interactive-border-primary-default: var(--brand-bg);
+    --interactive-border-primary-highlighted: color-mix(in srgb, var(--brand-bg) 80%, black);
     background-image: none;
   }
 
