@@ -18,6 +18,8 @@ export const CHIP_MIN_WIDTH = 80;
  * Content wider than (CHIP_MAX_WIDTH - horizontal padding) wraps to two lines.
  */
 export const CHIP_MAX_WIDTH = 160;
+/** Tighter cap for the last node column — labels only extend rightward, so less margin is needed. */
+export const CHIP_MAX_WIDTH_LAST_COLUMN = 120;
 /**
  * Fixed pixel budget reserved for the humanized value + percentage part of a label chip,
  * e.g. "1.24L txn  (100%)". Used when computing the dynamic right margin before
