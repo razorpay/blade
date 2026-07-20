@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SegmentedControl /> (SSR) should render without hydration errors 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc dOTRhp"><div role="radiogroup" aria-label="Time period" aria-required="false" data-blade-component="segmented-control" class="SegmentedControlweb__StyledSegmentedControlContainer-ngewlz-0 ELJEo"><button type="button" id="segmented-control-undefined-daily-item" data-value="daily" tabindex="0" role="radio" aria-checked="true" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 cWHtZO"><span letter-spacing="50" class="StyledBaseText-foUshD gYkspo" data-blade-component="text">Daily</span></button><button type="button" id="segmented-control-undefined-weekly-item" data-value="weekly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Weekly</span></button><button type="button" id="segmented-control-undefined-monthly-item" data-value="monthly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 gcQhNt"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Monthly</span></button></div></div></div></div></div>"`;
+exports[`<SegmentedControl /> (SSR) should render without hydration errors 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bksIuc lbOIzR"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc dOTRhp"><div role="radiogroup" aria-label="Time period" aria-required="false" data-blade-component="segmented-control" class="SegmentedControlweb__StyledSegmentedControlContainer-ngewlz-0 ioTnk"><button type="button" id="segmented-control-undefined-daily-item" data-value="daily" tabindex="0" role="radio" aria-checked="true" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 iuQARO"><span letter-spacing="50" class="StyledBaseText-foUshD gYkspo" data-blade-component="text">Daily</span></button><button type="button" id="segmented-control-undefined-weekly-item" data-value="weekly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 eRTaIx"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Weekly</span></button><button type="button" id="segmented-control-undefined-monthly-item" data-value="monthly" tabindex="-1" role="radio" aria-checked="false" aria-setsize="3" data-blade-component="segmented-control-item" class="SegmentedControlItemweb__StyledSegmentedControlButton-i0wihp-0 eRTaIx"><span letter-spacing="50" class="StyledBaseText-foUshD hBcLfn" data-blade-component="text">Monthly</span></button></div></div></div></div></div>"`;
 
 exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -77,6 +77,7 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  height: 36px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -84,7 +85,7 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   gap: 2px;
   padding: 4px;
   background-color: hsla(206,10%,29%,0.06);
-  border-radius: 12px;
+  border-radius: 8px;
   position: relative;
 }
 
@@ -110,12 +111,13 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  height: 28px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 8px;
   padding-right: 8px;
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: 4px;
   position: relative;
   z-index: 1;
   -webkit-transition-property: background-color;
@@ -170,12 +172,13 @@ exports[`<SegmentedControl /> (SSR) should render without hydration errors 2`] =
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  height: 28px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 8px;
   padding-right: 8px;
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: 4px;
   position: relative;
   z-index: 1;
   -webkit-transition-property: background-color;

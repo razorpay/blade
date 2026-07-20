@@ -8,6 +8,7 @@ import {
   textSizeMap,
   iconSizeMap,
   itemBorderRadius,
+  itemHeight,
 } from './segmentedControlTokens';
 import { Text } from '~components/Typography';
 import { makeSpace, castWebType, makeMotionTime } from '~utils';
@@ -28,6 +29,7 @@ const StyledSegmentedControlButton = styled.button<{
   justifyContent: 'center',
   gap: makeSpace(theme.spacing[3]),
   flex: 1,
+  height: makeSpace(itemHeight[$size]),
 
   paddingTop: makeSpace(getIn(theme, paddingY[$size])),
   paddingBottom: makeSpace(getIn(theme, paddingY[$size])),
@@ -35,10 +37,7 @@ const StyledSegmentedControlButton = styled.button<{
   paddingRight: makeSpace(getIn(theme, paddingX[$size])),
 
   backgroundColor: 'transparent',
-  borderRadius: (() => {
-    const r = itemBorderRadius[$size];
-    return typeof r === 'number' ? `${r}px` : makeSpace(theme.border.radius[r]);
-  })(),
+  borderRadius: makeSpace(theme.border.radius[itemBorderRadius[$size]]),
 
   position: 'relative' as const,
   zIndex: 1,

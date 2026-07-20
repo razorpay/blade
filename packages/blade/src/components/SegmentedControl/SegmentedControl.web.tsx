@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import type { SegmentedControlProps } from './types';
 import { SegmentedControlContext } from './SegmentedControlContext';
 import { SegmentedControlIndicator } from './SegmentedControlIndicator.web';
-import { containerPadding, containerBorderRadius, gap } from './segmentedControlTokens';
+import {
+  containerPadding,
+  containerBorderRadius,
+  containerHeight,
+  gap,
+} from './segmentedControlTokens';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import { useMergeRefs } from '~utils/useMergeRefs';
@@ -26,6 +31,7 @@ const StyledSegmentedControlContainer = styled.div<{
 }>(({ theme, $size }) => ({
   display: 'flex',
   width: '100%',
+  height: makeSpace(containerHeight[$size]),
   alignItems: 'center',
   gap: makeSpace(getIn(theme, gap[$size])),
   padding: makeSpace(getIn(theme, containerPadding[$size])),

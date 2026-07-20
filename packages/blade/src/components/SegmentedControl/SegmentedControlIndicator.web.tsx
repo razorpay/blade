@@ -78,11 +78,7 @@ const SegmentedControlIndicator = ({
     transitionTimingFunction: castWebType(theme.motion.easing.standard),
   };
 
-  const radiusToken = itemBorderRadius[size];
-  const borderRadiusValue =
-    typeof radiusToken === 'number'
-      ? `${radiusToken}px`
-      : makeSpace(theme.border.radius[radiusToken]);
+  const borderRadiusValue = makeSpace(theme.border.radius[itemBorderRadius[size]]);
 
   return (
     <BaseBox

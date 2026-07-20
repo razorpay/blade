@@ -29,15 +29,26 @@ const gap: SizeTokenMap = {
 
 const containerBorderRadius: Record<SegmentedControlSize, 'small' | 'medium'> = {
   small: 'small',
-  medium: 'medium',
+  medium: 'small',
   large: 'medium',
 };
 
-// 6px for small is a deliberate design decision — sits between xsmall (4px) and small (8px) tokens for visual proportion at this size
-const itemBorderRadius: Record<SegmentedControlSize, number | 'small'> = {
-  small: 6,
-  medium: 'small',
+const itemBorderRadius: Record<SegmentedControlSize, 'xsmall' | 'small'> = {
+  small: 'xsmall',
+  medium: 'xsmall',
   large: 'small',
+};
+
+const containerHeight: Record<SegmentedControlSize, number> = {
+  small: 32,
+  medium: 36,
+  large: 48,
+};
+
+const itemHeight: Record<SegmentedControlSize, number> = {
+  small: 24,
+  medium: 28,
+  large: 40,
 };
 
 const textSizeMap: Record<SegmentedControlSize, 'small' | 'medium' | 'large'> = {
@@ -58,6 +69,8 @@ export {
   containerPadding,
   containerBorderRadius,
   itemBorderRadius,
+  containerHeight,
+  itemHeight,
   gap,
   textSizeMap,
   iconSizeMap,

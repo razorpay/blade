@@ -8,6 +8,7 @@ import {
   textSizeMap,
   iconSizeMap,
   itemBorderRadius,
+  itemHeight,
 } from './segmentedControlTokens';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
@@ -44,10 +45,6 @@ const SegmentedControlItem = ({
     ? 'interactive.icon.gray.normal'
     : 'interactive.icon.gray.muted';
 
-  const radiusToken = itemBorderRadius[size];
-  const radiusValue =
-    typeof radiusToken === 'number' ? radiusToken : theme.border.radius[radiusToken];
-
   return (
     <Pressable
       onPress={() => {
@@ -64,10 +61,11 @@ const SegmentedControlItem = ({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        height: itemHeight[size],
         gap: theme.spacing[3],
         paddingVertical: getIn(theme, paddingY[size]),
         paddingHorizontal: getIn(theme, paddingX[size]),
-        borderRadius: radiusValue,
+        borderRadius: theme.border.radius[itemBorderRadius[size]],
         backgroundColor: isSelected ? theme.colors.surface.background.gray.intense : 'transparent',
       }}
       {...metaAttribute({ name: MetaConstants.SegmentedControlItem, testID })}

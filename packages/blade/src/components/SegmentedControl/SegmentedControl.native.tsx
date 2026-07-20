@@ -2,7 +2,12 @@ import React from 'react';
 import { View } from 'react-native';
 import type { SegmentedControlProps } from './types';
 import { SegmentedControlContext } from './SegmentedControlContext';
-import { containerPadding, containerBorderRadius, gap } from './segmentedControlTokens';
+import {
+  containerPadding,
+  containerBorderRadius,
+  containerHeight,
+  gap,
+} from './segmentedControlTokens';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
@@ -71,6 +76,7 @@ const _SegmentedControl = (
         flexDirection: 'row',
         alignItems: 'center',
         alignSelf: 'stretch',
+        height: containerHeight[size],
         backgroundColor: theme.colors.interactive.background.gray.faded,
         borderRadius: theme.border.radius[containerBorderRadius[size]],
         padding: getIn(theme, containerPadding[size]),
