@@ -355,7 +355,7 @@
       <div class="palette">
         {#each paletteEntries(SOLID_KEYS) as entry (entry.key)}
           {@const usage = SHADE_USAGE[entry.key]}
-          <div class="swatch-card" class:swatch-card--dim={usage === 'unused'}>
+          <div class="swatch-card">
             <div class="swatch" style:background-color={entry.value} title={entry.value}></div>
             <div class="swatch-meta">
               <Text size="small" weight="semibold">{entry.key}</Text>
@@ -377,7 +377,7 @@
       <div class="palette palette--alpha">
         {#each paletteEntries(ALPHA_KEYS) as entry (entry.key)}
           {@const usage = SHADE_USAGE[entry.key]}
-          <div class="swatch-card" class:swatch-card--dim={usage === 'unused'}>
+          <div class="swatch-card">
             <div
               class="swatch swatch--checker"
               style:background-color={entry.value}
@@ -623,10 +623,6 @@
     background-color: var(--surface-background-gray-subtle);
     border: 1px solid var(--surface-border-gray-muted);
     border-radius: var(--border-radius-medium);
-  }
-
-  .swatch-card--dim {
-    opacity: 0.55;
   }
 
   .swatch {

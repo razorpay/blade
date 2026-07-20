@@ -48,8 +48,18 @@ export {
   getButtonMinHeight,
   getButtonIconSize,
   getButtonIconOnlySize,
+  getPrimaryBrandCssVars,
+  getAccentBrandCssVars,
+  SAFE_FILLED_BUTTON_ROOT_TOKEN_OVERRIDES,
 } from './Button';
-export type { ButtonVariants, ButtonColor, ButtonVariant, ButtonSlot } from './Button';
+export type {
+  ButtonVariants,
+  ButtonColor,
+  ButtonVariant,
+  ButtonSlot,
+  BrandCssVarsOptions,
+  AccentBrand,
+} from './Button';
 export {
   iconButtonStyles,
   getIconButtonClasses,

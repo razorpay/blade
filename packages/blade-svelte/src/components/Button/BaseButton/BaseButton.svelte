@@ -1,6 +1,8 @@
 <script lang="ts">
-  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, getTokenCSSVariable, type AriaRoles } from '@razorpay/blade-core/utils';
+  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, getTokenCSSVariable, cx, type AriaRoles } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
+  import { resolveComponentStyleOverride } from '../../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../../BladeProvider/bladeThemeContext';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
   import Avatar from '../../Avatar/Avatar.svelte';
   import AvatarGroup from '../../Avatar/AvatarGroup.svelte';
@@ -21,6 +23,7 @@
 
   // Get template classes via function call to prevent Svelte tree-shaking
   const buttonClasses = getButtonTemplateClasses();
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     children,
@@ -44,6 +47,7 @@
     tabIndex,
     accessibilityProps,
     testID,
+    styleOverride,
     onClick,
     onBlur,
     onFocus,
@@ -58,6 +62,10 @@
     onKeyDown,
     ...rest
   }: BaseButtonProps = $props();
+
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('Button', styleOverride, themeContextGetter),
+  );
 
   // Validation - check if we have either icon or children
   $effect(() => {
@@ -265,6 +273,8 @@
     defaultRel,
   } = $derived(buttonProps);
 
+  const styledProps = $derived(getStyledPropsClasses(rest));
+
   // Generate BaseButton classes from blade-core
   const baseButtonClasses = $derived(
     getButtonClasses({
@@ -274,11 +284,9 @@
       isDisabled: isButtonDisabled,
       isFullWidth,
       isIconOnly,
+      className: cx(...(styledProps.classes ?? []), resolvedStyleOverride?.root),
     }),
   );
-
-  // Extract styled props
-  const styledProps = $derived(getStyledPropsClasses(rest));
 
   // Combine classes for button element.
   // Only the indefinite loader hides content (`loading` class); the definite overlay
@@ -290,9 +298,6 @@
       isDefiniteLoading ? buttonClasses.definiteLoading : '',
       'focus-ring-parent',
     ];
-    if (styledProps.classes) {
-      classes.push(...styledProps.classes);
-    }
     return classes.filter(Boolean).join(' ');
   });
 
@@ -485,11 +490,11 @@
   {/if}
   <div class={animatedContentClasses()}>
     {#if isIndefiniteLoading}
-      <span class={buttonClasses.dotsLoader} style:--btn-dots-color={dotsColorCSSVar}></span>
+      <span class={cx(buttonClasses.dotsLoader, resolvedStyleOverride?.loader)} style:--btn-dots-color={dotsColorCSSVar}></span>
     {/if}
-    <span class={buttonClasses.content + (isIndefiniteLoading ? ' ' + buttonClasses.loading : '') + ' focus-ring-child'}>
+    <span class={cx(buttonClasses.content, isIndefiniteLoading && buttonClasses.loading, 'focus-ring-child', resolvedStyleOverride?.content)}>
       {#if Icon && iconPosition === 'left'}
-        <span class={buttonClasses.icon}>
+        <span class={cx(buttonClasses.icon, resolvedStyleOverride?.icon)}>
           <Icon size={iconSize} color={iconColorToken} />
         </span>
       {/if}
@@ -503,6 +508,7 @@
           fontWeight="medium"
           textAlign="center"
           marginX="spacing.2"
+          className={resolvedStyleOverride?.text}
           componentName={MetaConstants.Button}
         >
           {childrenString}
@@ -517,18 +523,19 @@
           fontWeight="medium"
           textAlign="center"
           marginX="spacing.2"
+          className={resolvedStyleOverride?.text}
           componentName={MetaConstants.Button}
         >
           {@render children()}
         </BaseText>
       {/if}
       {#if Icon && iconPosition === 'right'}
-        <span class={buttonClasses.icon}>
+        <span class={cx(buttonClasses.icon, resolvedStyleOverride?.icon)}>
           <Icon size={iconSize} color={iconColorToken} />
         </span>
       {/if}
       {#if shouldShowAvatars && avatars}
-        <span class={buttonClasses.avatarGroup}>
+        <span class={cx(buttonClasses.avatarGroup, resolvedStyleOverride?.avatarGroup)}>
           <AvatarGroup size="xsmall">
             <!-- Key prefers a stable identity (src/name); the index fallback is a
                  defensive guard and is effectively unreachable since ButtonAvatar

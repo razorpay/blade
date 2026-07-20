@@ -26,3 +26,9 @@ export {
 } from './button';
 export type { ButtonVariants, ButtonColor, ButtonVariant, ActionStatesType } from './button';
 export type { ButtonSlot } from './slots';
+export {
+  getPrimaryBrandCssVars,
+  getAccentBrandCssVars,
+  SAFE_FILLED_BUTTON_ROOT_TOKEN_OVERRIDES,
+} from './brandCssVars';
+export type { BrandCssVarsOptions, AccentBrand } from './brandCssVars';
