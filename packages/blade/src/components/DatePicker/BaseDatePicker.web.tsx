@@ -214,18 +214,24 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     controllableSetIsOpen(() => false);
   }, [controllableSetIsOpen]);
 
+  // Shared helper: dedupe-add the chip label to the filter-chip-group context.
+  const updateSelectedFilters = React.useCallback(() => {
+    setFilterChipGroupSelectedFilters((prev: string[]) =>
+      prev.includes(label as string) ? prev : [...prev, label as string],
+    );
+  }, [setFilterChipGroupSelectedFilters, label]);
+
+  // Shared helper: store the current controlledValue into the ListView filter context.
+  const storeSelectedFiltersAndValueInListViewContext = React.useCallback(() => {
+    setListViewSelectedFilters((prev) => {
+      if (isSingle) {
+        return { ...prev, [label as string]: [controlledValue as string] };
+      }
+      return { ...prev, [label as string]: controlledValue as string[] };
+    });
+  }, [setListViewSelectedFilters, label, isSingle, controlledValue]);
+
   const handleApply = (): void => {
-    const updateSelectedFilters = () => {
-      setFilterChipGroupSelectedFilters((prev: string[]) => [...prev, label as string]);
-    };
-    const storeSelectedFiltersAndValueInListViewContext = () => {
-      setListViewSelectedFilters((prev) => {
-        if (isSingle) {
-          return { ...prev, [label as string]: [controlledValue as string] };
-        }
-        return { ...prev, [label as string]: controlledValue as string[] };
-      });
-    };
     if (isSingle) {
       onChange?.(controlledValue);
       fireNativeEvent(referenceRef, ['change']);
@@ -249,11 +255,32 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     updateSelectedFilters();
   };
 
-  // Apply preset selection after state updates to avoid stale values
+  // Apply preset selection after state updates to avoid stale values.
+  // Also auto-close (without re-firing onChange) when showFooterActions=false
+  // and the selection is complete — this is the chip/filter mode behaviour where
+  // selecting a date range is itself the confirmation.
   React.useEffect(() => {
     if (shouldApplyAfterPresetSelection.current) {
       shouldApplyAfterPresetSelection.current = false;
       handleApply();
+      return;
+    }
+
+    if (!showFooterActions && controllableIsOpen) {
+      const isComplete = isSingle
+        ? Boolean(controlledValue)
+        : Boolean(
+            (controlledValue as DatesRangeValue)?.[0] && (controlledValue as DatesRangeValue)?.[1],
+          );
+
+      if (isComplete) {
+        setOldValue(controlledValue);
+        fireNativeEvent(referenceRef, ['change']);
+        onApply?.(controlledValue as never);
+        storeSelectedFiltersAndValueInListViewContext();
+        updateSelectedFilters();
+        close();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [controlledValue]);
@@ -349,6 +376,13 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
             const presetValue = preset?.(currentDate);
             setControlledValue(presetValue);
             setSelectedPreset(presetValue);
+            // Mirror leadingDropdown behaviour: trigger handleApply after state update
+            // Only auto-apply when footer actions are hidden (FilterChipDatePicker mode).
+            // When showFooterActions=true (regular DatePicker), the user must click
+            // "Apply" manually after selecting a preset from the sidebar.
+            if (!showFooterActions) {
+              shouldApplyAfterPresetSelection.current = true;
+            }
           }}
           presetStates={presetStates}
         />
@@ -481,6 +515,12 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
                 necessityIndicator={necessityIndicator}
                 format={finalFormat}
                 placeholder={finalInputPlaceHolder}
+                // Chips show the clear (cross) button by default when a value is selected.
+                // Consumers can pass `showClearButton={false}` for filters that must always
+                // hold a value (e.g. a mandatory default date). The `?? true` default lives here
+                // (on the chip path) rather than at destructuring so the regular, non-chip
+                // DatePickerInput keeps its original `undefined` default and is unaffected.
+                showClearButton={showClearButton ?? true}
                 onClearButtonChange={handleClear}
                 // Effective Selection type should only be used for selectionType 'range'
                 effectiveSelectionType={isSingle ? selectionType : effectiveSelectionType}

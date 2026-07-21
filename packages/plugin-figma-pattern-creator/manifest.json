@@ -9,9 +9,7 @@
   "documentAccess": "dynamic-page",
   "networkAccess": {
     "allowedDomains": [
-      "https://api.segment.io",
-      "https://github.com",
-      "https://raw.githubusercontent.com"
+      "https://api.segment.io"
     ]
   }
 }

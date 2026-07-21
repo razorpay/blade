@@ -154,14 +154,20 @@ export default {
 
 // ─── Shared wrapper ───────────────────────────────────────────────────────────
 
-const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => (
+const ChartsWrapper = ({
+  children,
+  padding = 'spacing.8',
+}: {
+  children: React.ReactNode;
+  padding?: React.ComponentProps<typeof Box>['padding'];
+}): React.ReactElement => (
   <Box
     width="100%"
     backgroundColor="surface.background.gray.intense"
     display="flex"
     justifyContent="center"
     alignItems="center"
-    padding="spacing.8"
+    padding={padding}
     borderRadius="medium"
   >
     {children}
@@ -247,7 +253,7 @@ const { nodes: paymentNodes, links: paymentLinks } = generateChartData([1, 4, 3,
 // ─── Stories ──────────────────────────────────────────────────────────────────
 
 export const DefaultSankeyChart: StoryFn<StoryProps> = ({
-  height = 420,
+  height = 480,
   showTooltip = true,
   showLabels = true,
   showLabelChip = true,
@@ -262,7 +268,7 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
   const counts = ([nodesL1, nodesL2, nodesL3, nodesL4] as number[]).slice(0, numLevels);
   const { nodes, links } = generateChartData(counts);
   return (
-    <ChartsWrapper>
+    <ChartsWrapper padding="spacing.0">
       <Box width="100%" height={`${height}px`}>
         <ChartSankeyWrapper showTooltip={showTooltip}>
           <ChartSankey
@@ -279,6 +285,57 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
     </ChartsWrapper>
   );
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Vertical (top-to-bottom) flow — **native-only**. The web SankeyChart ignores
+ * `orientation` and always renders horizontally; on native the layout is
+ * transposed so stages stack down the screen, which reads better on tall phones.
+ * Given plenty of height and full width so the stacked stages and their labels
+ * have room to breathe.
+ */
+export const VerticalSankeyChart: StoryFn<typeof ChartSankeyWrapper> = () => (
+  <ChartsWrapper padding="spacing.0">
+    <Box width="100%" height="640px">
+      <ChartSankeyWrapper showTooltip orientation="vertical">
+        <ChartSankey
+          data={{ nodes: paymentNodes, links: paymentLinks }}
+          showLabels
+          labelUnit="txn"
+          onNodeClick={action('onNodeClick')}
+          onLinkClick={action('onLinkClick')}
+        />
+      </ChartSankeyWrapper>
+    </Box>
+  </ChartsWrapper>
+);
+
+VerticalSankeyChart.parameters = { controls: { disable: true } };
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Vertical flow with labels disabled (**native-only** orientation). Hiding the node
+ * labels (`showLabels={false}`) surfaces the pure ribbon flow without any label
+ * crowding — useful for dense multi-node stages on a narrow phone width.
+ */
+export const VerticalSankeyChartWithoutLabels: StoryFn<typeof ChartSankeyWrapper> = () => (
+  <ChartsWrapper padding="spacing.0">
+    <Box width="100%" height="640px">
+      <ChartSankeyWrapper showTooltip orientation="vertical">
+        <ChartSankey
+          data={{ nodes: paymentNodes, links: paymentLinks }}
+          showLabels={false}
+          onNodeClick={action('onNodeClick')}
+          onLinkClick={action('onLinkClick')}
+        />
+      </ChartSankeyWrapper>
+    </Box>
+  </ChartsWrapper>
+);
+
+VerticalSankeyChartWithoutLabels.parameters = { controls: { disable: true } };
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -344,6 +401,8 @@ SankeyChartWithPlainTextLabels.parameters = { controls: { disable: true } };
 // ─── Story display names ──────────────────────────────────────────────────────
 
 DefaultSankeyChart.storyName = 'Default Sankey Chart';
+VerticalSankeyChart.storyName = 'Vertical Sankey Chart (native only)';
+VerticalSankeyChartWithoutLabels.storyName = 'Vertical Sankey Chart without Labels (native only)';
 SingleColorSankeyChart.storyName = 'Single Color Sankey Chart';
 SankeyChartWithoutLabels.storyName = 'Sankey Chart without Labels';
 SankeyChartWithPlainTextLabels.storyName = 'Sankey Chart with Plain Text Labels';

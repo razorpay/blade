@@ -54,9 +54,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -158,7 +156,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r0"
               x1="0"
               x2="0"
               y1="0"
@@ -175,7 +173,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r0"
               x1="0"
               x2="0"
               y1="1"
@@ -191,7 +189,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r0"
               width="100%"
               x="0%"
               y="0%"
@@ -199,7 +197,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r0",
                     "type": 1,
                   }
                 }
@@ -224,7 +222,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r0"
               width="100%"
               x="0%"
               y="0%"
@@ -232,7 +230,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r0",
                     "type": 1,
                   }
                 }
@@ -262,7 +260,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r0"
               rx={64}
               ry={64}
             />
@@ -270,7 +268,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r0"
             propList={
               [
                 "fill",
@@ -288,13 +286,13 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r0"
             propList={
               [
                 "fill",
@@ -312,8 +310,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -335,13 +333,13 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r0"
             propList={
               [
                 "fill",
@@ -359,13 +357,13 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r0",
                 "type": 1,
               }
             }
@@ -516,9 +514,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -620,7 +616,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r9"
               x1="0"
               x2="0"
               y1="0"
@@ -637,7 +633,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r9"
               x1="0"
               x2="0"
               y1="1"
@@ -653,7 +649,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r9"
               width="100%"
               x="0%"
               y="0%"
@@ -661,7 +657,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r9",
                     "type": 1,
                   }
                 }
@@ -686,7 +682,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r9"
               width="100%"
               x="0%"
               y="0%"
@@ -694,7 +690,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r9",
                     "type": 1,
                   }
                 }
@@ -724,7 +720,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r9"
               rx={64}
               ry={64}
             />
@@ -732,7 +728,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r9"
             propList={
               [
                 "fill",
@@ -750,13 +746,13 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r9"
             propList={
               [
                 "fill",
@@ -774,8 +770,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -797,13 +793,13 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r9"
             propList={
               [
                 "fill",
@@ -821,13 +817,13 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r9",
                 "type": 1,
               }
             }
@@ -978,9 +974,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -1082,7 +1076,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r6"
               x1="0"
               x2="0"
               y1="0"
@@ -1099,7 +1093,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r6"
               x1="0"
               x2="0"
               y1="1"
@@ -1115,7 +1109,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r6"
               width="100%"
               x="0%"
               y="0%"
@@ -1123,7 +1117,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r6",
                     "type": 1,
                   }
                 }
@@ -1148,7 +1142,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r6"
               width="100%"
               x="0%"
               y="0%"
@@ -1156,7 +1150,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r6",
                     "type": 1,
                   }
                 }
@@ -1186,7 +1180,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r6"
               rx={64}
               ry={64}
             />
@@ -1194,7 +1188,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r6"
             propList={
               [
                 "fill",
@@ -1212,13 +1206,13 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r6"
             propList={
               [
                 "fill",
@@ -1236,8 +1230,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1259,13 +1253,13 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r6"
             propList={
               [
                 "fill",
@@ -1283,13 +1277,13 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r6",
                 "type": 1,
               }
             }
@@ -1544,9 +1538,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -1648,7 +1640,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r7"
               x1="0"
               x2="0"
               y1="0"
@@ -1665,7 +1657,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r7"
               x1="0"
               x2="0"
               y1="1"
@@ -1681,7 +1673,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r7"
               width="100%"
               x="0%"
               y="0%"
@@ -1689,7 +1681,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r7",
                     "type": 1,
                   }
                 }
@@ -1714,7 +1706,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r7"
               width="100%"
               x="0%"
               y="0%"
@@ -1722,7 +1714,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r7",
                     "type": 1,
                   }
                 }
@@ -1752,7 +1744,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r7"
               rx={64}
               ry={64}
             />
@@ -1760,7 +1752,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r7"
             propList={
               [
                 "fill",
@@ -1778,13 +1770,13 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r7"
             propList={
               [
                 "fill",
@@ -1802,8 +1794,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -1825,13 +1817,13 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r7"
             propList={
               [
                 "fill",
@@ -1849,13 +1841,13 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r7",
                 "type": 1,
               }
             }
@@ -2110,9 +2102,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -2214,7 +2204,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r8"
               x1="0"
               x2="0"
               y1="0"
@@ -2231,7 +2221,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r8"
               x1="0"
               x2="0"
               y1="1"
@@ -2247,7 +2237,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r8"
               width="100%"
               x="0%"
               y="0%"
@@ -2255,7 +2245,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r8",
                     "type": 1,
                   }
                 }
@@ -2280,7 +2270,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r8"
               width="100%"
               x="0%"
               y="0%"
@@ -2288,7 +2278,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r8",
                     "type": 1,
                   }
                 }
@@ -2318,7 +2308,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r8"
               rx={64}
               ry={64}
             />
@@ -2326,7 +2316,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r8"
             propList={
               [
                 "fill",
@@ -2344,13 +2334,13 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r8"
             propList={
               [
                 "fill",
@@ -2368,8 +2358,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2391,13 +2381,13 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r8"
             propList={
               [
                 "fill",
@@ -2415,13 +2405,13 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r8",
                 "type": 1,
               }
             }
@@ -2677,9 +2667,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -2783,7 +2771,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r5"
               x1="0"
               x2="0"
               y1="0"
@@ -2800,7 +2788,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r5"
               x1="0"
               x2="0"
               y1="1"
@@ -2816,7 +2804,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r5"
               width="100%"
               x="0%"
               y="0%"
@@ -2824,7 +2812,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r5",
                     "type": 1,
                   }
                 }
@@ -2849,7 +2837,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r5"
               width="100%"
               x="0%"
               y="0%"
@@ -2857,7 +2845,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r5",
                     "type": 1,
                   }
                 }
@@ -2887,7 +2875,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r5"
               rx={64}
               ry={64}
             />
@@ -2895,7 +2883,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r5"
             propList={
               [
                 "fill",
@@ -2913,13 +2901,13 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r5"
             propList={
               [
                 "fill",
@@ -2937,8 +2925,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2960,13 +2948,13 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r5"
             propList={
               [
                 "fill",
@@ -2984,13 +2972,13 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r5",
                 "type": 1,
               }
             }
@@ -3207,9 +3195,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -3382,9 +3368,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -3560,9 +3544,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -3735,9 +3717,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -3913,9 +3893,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -4088,9 +4066,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -4266,9 +4242,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -4441,9 +4415,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -4619,9 +4591,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -4794,9 +4764,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -4972,9 +4940,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -5147,9 +5113,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -5325,9 +5289,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -5503,9 +5465,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -5678,9 +5638,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -5856,9 +5814,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -6034,9 +5990,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -6212,9 +6166,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -6316,7 +6268,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-ro"
               x1="0"
               x2="0"
               y1="0"
@@ -6333,7 +6285,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-ro"
               x1="0"
               x2="0"
               y1="1"
@@ -6349,7 +6301,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-ro"
               width="100%"
               x="0%"
               y="0%"
@@ -6357,7 +6309,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-ro",
                     "type": 1,
                   }
                 }
@@ -6382,7 +6334,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-ro"
               width="100%"
               x="0%"
               y="0%"
@@ -6390,7 +6342,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-ro",
                     "type": 1,
                   }
                 }
@@ -6420,7 +6372,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-ro"
               rx={64}
               ry={64}
             />
@@ -6428,7 +6380,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-ro"
             propList={
               [
                 "fill",
@@ -6446,13 +6398,13 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-ro"
             propList={
               [
                 "fill",
@@ -6470,8 +6422,8 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -6493,13 +6445,13 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-ro"
             propList={
               [
                 "fill",
@@ -6517,13 +6469,13 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-ro",
                 "type": 1,
               }
             }
@@ -6674,9 +6626,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -6778,7 +6728,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rp"
               x1="0"
               x2="0"
               y1="0"
@@ -6795,7 +6745,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rp"
               x1="0"
               x2="0"
               y1="1"
@@ -6811,7 +6761,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rp"
               width="100%"
               x="0%"
               y="0%"
@@ -6819,7 +6769,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rp",
                     "type": 1,
                   }
                 }
@@ -6844,7 +6794,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rp"
               width="100%"
               x="0%"
               y="0%"
@@ -6852,7 +6802,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rp",
                     "type": 1,
                   }
                 }
@@ -6888,13 +6838,13 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rp"
             propList={
               [
                 "fill",
@@ -6912,8 +6862,8 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -7050,9 +7000,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -7154,7 +7102,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r4"
               x1="0"
               x2="0"
               y1="0"
@@ -7171,7 +7119,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r4"
               x1="0"
               x2="0"
               y1="1"
@@ -7187,7 +7135,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r4"
               width="100%"
               x="0%"
               y="0%"
@@ -7195,7 +7143,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r4",
                     "type": 1,
                   }
                 }
@@ -7220,7 +7168,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r4"
               width="100%"
               x="0%"
               y="0%"
@@ -7228,7 +7176,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r4",
                     "type": 1,
                   }
                 }
@@ -7258,7 +7206,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r4"
               rx={64}
               ry={64}
             />
@@ -7266,7 +7214,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r4"
             propList={
               [
                 "fill",
@@ -7284,13 +7232,13 @@ exports[`<BaseButton /> should render large size button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r4"
             propList={
               [
                 "fill",
@@ -7308,8 +7256,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -7331,13 +7279,13 @@ exports[`<BaseButton /> should render large size button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r4"
             propList={
               [
                 "fill",
@@ -7355,13 +7303,13 @@ exports[`<BaseButton /> should render large size button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r4",
                 "type": 1,
               }
             }
@@ -7509,9 +7457,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -7788,9 +7734,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -7892,7 +7836,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r3"
               x1="0"
               x2="0"
               y1="0"
@@ -7909,7 +7853,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r3"
               x1="0"
               x2="0"
               y1="1"
@@ -7925,7 +7869,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r3"
               width="100%"
               x="0%"
               y="0%"
@@ -7933,7 +7877,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r3",
                     "type": 1,
                   }
                 }
@@ -7958,7 +7902,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r3"
               width="100%"
               x="0%"
               y="0%"
@@ -7966,7 +7910,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r3",
                     "type": 1,
                   }
                 }
@@ -7996,7 +7940,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r3"
               rx={64}
               ry={64}
             />
@@ -8004,7 +7948,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r3"
             propList={
               [
                 "fill",
@@ -8022,13 +7966,13 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r3"
             propList={
               [
                 "fill",
@@ -8046,8 +7990,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -8069,13 +8013,13 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r3"
             propList={
               [
                 "fill",
@@ -8093,13 +8037,13 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r3",
                 "type": 1,
               }
             }
@@ -8250,9 +8194,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -8354,7 +8296,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rk"
               x1="0"
               x2="0"
               y1="0"
@@ -8371,7 +8313,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rk"
               x1="0"
               x2="0"
               y1="1"
@@ -8387,7 +8329,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rk"
               width="100%"
               x="0%"
               y="0%"
@@ -8395,7 +8337,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rk",
                     "type": 1,
                   }
                 }
@@ -8420,7 +8362,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rk"
               width="100%"
               x="0%"
               y="0%"
@@ -8428,7 +8370,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rk",
                     "type": 1,
                   }
                 }
@@ -8458,7 +8400,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-rk"
               rx={64}
               ry={64}
             />
@@ -8466,7 +8408,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rk"
             propList={
               [
                 "fill",
@@ -8484,13 +8426,13 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-rk"
             propList={
               [
                 "fill",
@@ -8508,8 +8450,8 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -8531,13 +8473,13 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rk"
             propList={
               [
                 "fill",
@@ -8555,13 +8497,13 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-rk",
                 "type": 1,
               }
             }
@@ -8712,9 +8654,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -8816,7 +8756,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rl"
               x1="0"
               x2="0"
               y1="0"
@@ -8833,7 +8773,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rl"
               x1="0"
               x2="0"
               y1="1"
@@ -8849,7 +8789,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rl"
               width="100%"
               x="0%"
               y="0%"
@@ -8857,7 +8797,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rl",
                     "type": 1,
                   }
                 }
@@ -8882,7 +8822,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rl"
               width="100%"
               x="0%"
               y="0%"
@@ -8890,7 +8830,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rl",
                     "type": 1,
                   }
                 }
@@ -8926,13 +8866,13 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rl"
             propList={
               [
                 "fill",
@@ -8950,8 +8890,8 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -9088,9 +9028,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -9192,7 +9130,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rq"
               x1="0"
               x2="0"
               y1="0"
@@ -9209,7 +9147,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rq"
               x1="0"
               x2="0"
               y1="1"
@@ -9225,7 +9163,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rq"
               width="100%"
               x="0%"
               y="0%"
@@ -9233,7 +9171,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rq",
                     "type": 1,
                   }
                 }
@@ -9258,7 +9196,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rq"
               width="100%"
               x="0%"
               y="0%"
@@ -9266,7 +9204,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rq",
                     "type": 1,
                   }
                 }
@@ -9296,7 +9234,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-rq"
               rx={64}
               ry={64}
             />
@@ -9304,7 +9242,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rq"
             propList={
               [
                 "fill",
@@ -9322,13 +9260,13 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-rq"
             propList={
               [
                 "fill",
@@ -9346,8 +9284,8 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -9369,13 +9307,13 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rq"
             propList={
               [
                 "fill",
@@ -9393,13 +9331,13 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-rq",
                 "type": 1,
               }
             }
@@ -9550,9 +9488,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -9654,7 +9590,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rr"
               x1="0"
               x2="0"
               y1="0"
@@ -9671,7 +9607,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rr"
               x1="0"
               x2="0"
               y1="1"
@@ -9687,7 +9623,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rr"
               width="100%"
               x="0%"
               y="0%"
@@ -9695,7 +9631,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rr",
                     "type": 1,
                   }
                 }
@@ -9720,7 +9656,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rr"
               width="100%"
               x="0%"
               y="0%"
@@ -9728,7 +9664,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rr",
                     "type": 1,
                   }
                 }
@@ -9764,13 +9700,13 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rr"
             propList={
               [
                 "fill",
@@ -9788,8 +9724,8 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -9926,9 +9862,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -10030,7 +9964,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rm"
               x1="0"
               x2="0"
               y1="0"
@@ -10047,7 +9981,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rm"
               x1="0"
               x2="0"
               y1="1"
@@ -10063,7 +9997,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rm"
               width="100%"
               x="0%"
               y="0%"
@@ -10071,7 +10005,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rm",
                     "type": 1,
                   }
                 }
@@ -10096,7 +10030,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rm"
               width="100%"
               x="0%"
               y="0%"
@@ -10104,7 +10038,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rm",
                     "type": 1,
                   }
                 }
@@ -10134,7 +10068,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-rm"
               rx={64}
               ry={64}
             />
@@ -10142,7 +10076,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rm"
             propList={
               [
                 "fill",
@@ -10160,13 +10094,13 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-rm"
             propList={
               [
                 "fill",
@@ -10184,8 +10118,8 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -10207,13 +10141,13 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rm"
             propList={
               [
                 "fill",
@@ -10231,13 +10165,13 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-rm",
                 "type": 1,
               }
             }
@@ -10388,9 +10322,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -10492,7 +10424,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rn"
               x1="0"
               x2="0"
               y1="0"
@@ -10509,7 +10441,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rn"
               x1="0"
               x2="0"
               y1="1"
@@ -10525,7 +10457,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rn"
               width="100%"
               x="0%"
               y="0%"
@@ -10533,7 +10465,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rn",
                     "type": 1,
                   }
                 }
@@ -10558,7 +10490,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rn"
               width="100%"
               x="0%"
               y="0%"
@@ -10566,7 +10498,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rn",
                     "type": 1,
                   }
                 }
@@ -10602,13 +10534,13 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rn"
             propList={
               [
                 "fill",
@@ -10626,8 +10558,8 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -10764,9 +10696,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -10868,7 +10798,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-ri"
               x1="0"
               x2="0"
               y1="0"
@@ -10885,7 +10815,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-ri"
               x1="0"
               x2="0"
               y1="1"
@@ -10901,7 +10831,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-ri"
               width="100%"
               x="0%"
               y="0%"
@@ -10909,7 +10839,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-ri",
                     "type": 1,
                   }
                 }
@@ -10934,7 +10864,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-ri"
               width="100%"
               x="0%"
               y="0%"
@@ -10942,7 +10872,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-ri",
                     "type": 1,
                   }
                 }
@@ -10972,7 +10902,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-ri"
               rx={64}
               ry={64}
             />
@@ -10980,7 +10910,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-ri"
             propList={
               [
                 "fill",
@@ -10998,13 +10928,13 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-ri"
             propList={
               [
                 "fill",
@@ -11022,8 +10952,8 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11045,13 +10975,13 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-ri"
             propList={
               [
                 "fill",
@@ -11069,13 +10999,13 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-ri",
                 "type": 1,
               }
             }
@@ -11226,9 +11156,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -11330,7 +11258,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rj"
               x1="0"
               x2="0"
               y1="0"
@@ -11347,7 +11275,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rj"
               x1="0"
               x2="0"
               y1="1"
@@ -11363,7 +11291,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rj"
               width="100%"
               x="0%"
               y="0%"
@@ -11371,7 +11299,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rj",
                     "type": 1,
                   }
                 }
@@ -11396,7 +11324,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rj"
               width="100%"
               x="0%"
               y="0%"
@@ -11404,7 +11332,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rj",
                     "type": 1,
                   }
                 }
@@ -11440,13 +11368,13 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rj"
             propList={
               [
                 "fill",
@@ -11464,8 +11392,8 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -11602,9 +11530,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -11706,7 +11632,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rc"
               x1="0"
               x2="0"
               y1="0"
@@ -11723,7 +11649,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rc"
               x1="0"
               x2="0"
               y1="1"
@@ -11739,7 +11665,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rc"
               width="100%"
               x="0%"
               y="0%"
@@ -11747,7 +11673,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rc",
                     "type": 1,
                   }
                 }
@@ -11772,7 +11698,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rc"
               width="100%"
               x="0%"
               y="0%"
@@ -11780,7 +11706,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rc",
                     "type": 1,
                   }
                 }
@@ -11810,7 +11736,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-rc"
               rx={64}
               ry={64}
             />
@@ -11818,7 +11744,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rc"
             propList={
               [
                 "fill",
@@ -11836,13 +11762,13 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-rc"
             propList={
               [
                 "fill",
@@ -11860,8 +11786,8 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -11883,13 +11809,13 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rc"
             propList={
               [
                 "fill",
@@ -11907,13 +11833,13 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-rc",
                 "type": 1,
               }
             }
@@ -12064,9 +11990,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -12168,7 +12092,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rd"
               x1="0"
               x2="0"
               y1="0"
@@ -12185,7 +12109,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rd"
               x1="0"
               x2="0"
               y1="1"
@@ -12201,7 +12125,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rd"
               width="100%"
               x="0%"
               y="0%"
@@ -12209,7 +12133,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rd",
                     "type": 1,
                   }
                 }
@@ -12234,7 +12158,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rd"
               width="100%"
               x="0%"
               y="0%"
@@ -12242,7 +12166,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rd",
                     "type": 1,
                   }
                 }
@@ -12278,13 +12202,13 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rd"
             propList={
               [
                 "fill",
@@ -12302,8 +12226,8 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -12440,9 +12364,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -12544,7 +12466,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-re"
               x1="0"
               x2="0"
               y1="0"
@@ -12561,7 +12483,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-re"
               x1="0"
               x2="0"
               y1="1"
@@ -12577,7 +12499,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-re"
               width="100%"
               x="0%"
               y="0%"
@@ -12585,7 +12507,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-re",
                     "type": 1,
                   }
                 }
@@ -12610,7 +12532,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-re"
               width="100%"
               x="0%"
               y="0%"
@@ -12618,7 +12540,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-re",
                     "type": 1,
                   }
                 }
@@ -12654,13 +12576,13 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-re"
             propList={
               [
                 "fill",
@@ -12678,8 +12600,8 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -12816,9 +12738,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -12920,7 +12840,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r2"
               x1="0"
               x2="0"
               y1="0"
@@ -12937,7 +12857,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r2"
               x1="0"
               x2="0"
               y1="1"
@@ -12953,7 +12873,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r2"
               width="100%"
               x="0%"
               y="0%"
@@ -12961,7 +12881,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r2",
                     "type": 1,
                   }
                 }
@@ -12986,7 +12906,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r2"
               width="100%"
               x="0%"
               y="0%"
@@ -12994,7 +12914,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r2",
                     "type": 1,
                   }
                 }
@@ -13024,7 +12944,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r2"
               rx={64}
               ry={64}
             />
@@ -13032,7 +12952,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r2"
             propList={
               [
                 "fill",
@@ -13050,13 +12970,13 @@ exports[`<BaseButton /> should render small size button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r2"
             propList={
               [
                 "fill",
@@ -13074,8 +12994,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -13097,13 +13017,13 @@ exports[`<BaseButton /> should render small size button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r2"
             propList={
               [
                 "fill",
@@ -13121,13 +13041,13 @@ exports[`<BaseButton /> should render small size button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r2",
                 "type": 1,
               }
             }
@@ -13278,9 +13198,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -13382,7 +13300,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rf"
               x1="0"
               x2="0"
               y1="0"
@@ -13399,7 +13317,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rf"
               x1="0"
               x2="0"
               y1="1"
@@ -13415,7 +13333,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rf"
               width="100%"
               x="0%"
               y="0%"
@@ -13423,7 +13341,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rf",
                     "type": 1,
                   }
                 }
@@ -13448,7 +13366,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rf"
               width="100%"
               x="0%"
               y="0%"
@@ -13456,7 +13374,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rf",
                     "type": 1,
                   }
                 }
@@ -13486,7 +13404,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-rf"
               rx={64}
               ry={64}
             />
@@ -13511,13 +13429,13 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rf"
             propList={
               [
                 "fill",
@@ -13535,13 +13453,13 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-rf",
                 "type": 1,
               }
             }
@@ -13692,9 +13610,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -13796,7 +13712,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rg"
               x1="0"
               x2="0"
               y1="0"
@@ -13813,7 +13729,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rg"
               x1="0"
               x2="0"
               y1="1"
@@ -13829,7 +13745,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rg"
               width="100%"
               x="0%"
               y="0%"
@@ -13837,7 +13753,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rg",
                     "type": 1,
                   }
                 }
@@ -13862,7 +13778,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rg"
               width="100%"
               x="0%"
               y="0%"
@@ -13870,7 +13786,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rg",
                     "type": 1,
                   }
                 }
@@ -13906,13 +13822,13 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rg"
             propList={
               [
                 "fill",
@@ -13930,8 +13846,8 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -14068,9 +13984,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -14172,7 +14086,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-rh"
               x1="0"
               x2="0"
               y1="0"
@@ -14189,7 +14103,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-rh"
               x1="0"
               x2="0"
               y1="1"
@@ -14205,7 +14119,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-rh"
               width="100%"
               x="0%"
               y="0%"
@@ -14213,7 +14127,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-rh",
                     "type": 1,
                   }
                 }
@@ -14238,7 +14152,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-rh"
               width="100%"
               x="0%"
               y="0%"
@@ -14246,7 +14160,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-rh",
                     "type": 1,
                   }
                 }
@@ -14282,13 +14196,13 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
             }
             strokeWidth={2}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-rh"
             propList={
               [
                 "fill",
@@ -14306,8 +14220,8 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -14444,9 +14358,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -14548,7 +14460,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r1"
               x1="0"
               x2="0"
               y1="0"
@@ -14565,7 +14477,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r1"
               x1="0"
               x2="0"
               y1="1"
@@ -14581,7 +14493,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r1"
               width="100%"
               x="0%"
               y="0%"
@@ -14589,7 +14501,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r1",
                     "type": 1,
                   }
                 }
@@ -14614,7 +14526,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r1"
               width="100%"
               x="0%"
               y="0%"
@@ -14622,7 +14534,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r1",
                     "type": 1,
                   }
                 }
@@ -14652,7 +14564,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r1"
               rx={64}
               ry={64}
             />
@@ -14660,7 +14572,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r1"
             propList={
               [
                 "fill",
@@ -14678,13 +14590,13 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r1"
             propList={
               [
                 "fill",
@@ -14702,8 +14614,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -14725,13 +14637,13 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r1"
             propList={
               [
                 "fill",
@@ -14749,13 +14661,13 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r1",
                 "type": 1,
               }
             }

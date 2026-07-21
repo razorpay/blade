@@ -23,7 +23,6 @@
   }: AppBarLeadingProps = $props();
 
   const isNeutral = $derived(appBarContext.variant === 'neutral');
-  const trustBadgeEmphasis = $derived(isNeutral ? 'intense' : 'subtle');
 
   const titleColor = $derived(
     isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal',
@@ -46,7 +45,7 @@
           {@render logo()}
         </div>
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+          <TrustBadge variant="default" label={trustBadgeLabel} />
         </div>
       </div>
     {:else}
@@ -70,17 +69,17 @@
             </Text>
           </div>
           {#if showIconBadge}
-            <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+            <TrustBadge variant="icon-only" label={trustBadgeLabel} />
           {/if}
         </div>
       {/if}
       {#if showFullBadge && !stackFullBadgeBelowLogo}
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+          <TrustBadge variant="default" label={trustBadgeLabel} />
         </div>
       {/if}
     </div>
   {:else if showIconBadge}
-    <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+    <TrustBadge variant="icon-only" label={trustBadgeLabel} />
   {/if}
 </div>
