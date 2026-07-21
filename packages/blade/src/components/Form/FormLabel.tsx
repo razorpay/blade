@@ -129,7 +129,7 @@ const FormLabel = ({
   const computedAccessibilityNode = (
     <VisuallyHidden>
       {necessityIndicator !== 'none' && <Text>{necessityIndicator}</Text>}
-      <Text>{accessibilityText}</Text>
+      {isReactNative && accessibilityText && <Text>{accessibilityText}</Text>}
     </VisuallyHidden>
   );
 
@@ -172,36 +172,43 @@ const FormLabel = ({
   const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : '100%';
 
   return (
-    <Component
-      htmlFor={htmlFor}
-      style={{
-        width,
-        flexShrink: 0,
-        marginRight: isLabelLeftPositioned
-          ? makeSpace(getIn(theme, labelLeftMarginRight[size]))
-          : makeSpace(getIn(theme, 'spacing.0')),
-      }}
-      id={id}
-      {...metaAttribute({ name: MetaConstants.FormLabel })}
-    >
-      <BaseBox
-        width="100%"
-        display="flex"
-        flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
-        alignItems={isLabelLeftPositioned ? 'flex-start' : 'center'}
-        marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}
+    <>
+      <Component
+        htmlFor={htmlFor}
+        style={{
+          width,
+          flexShrink: 0,
+          marginRight: isLabelLeftPositioned
+            ? makeSpace(getIn(theme, labelLeftMarginRight[size]))
+            : makeSpace(getIn(theme, 'spacing.0')),
+        }}
+        id={id}
+        {...metaAttribute({ name: MetaConstants.FormLabel })}
       >
-        <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
-          <BaseBox>{textNode}</BaseBox>
-          {labelSuffix ? <BaseBox display="flex">{labelSuffix}</BaseBox> : null}
-        </BaseBox>
-        {labelTrailing ? (
-          <BaseBox marginLeft={isLabelLeftPositioned ? 'spacing.0' : 'auto'}>
-            {labelTrailing}
+        <BaseBox
+          width="100%"
+          display="flex"
+          flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
+          alignItems={isLabelLeftPositioned ? 'flex-start' : 'center'}
+          marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}
+        >
+          <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
+            <BaseBox>{textNode}</BaseBox>
+            {labelSuffix ? <BaseBox display="flex">{labelSuffix}</BaseBox> : null}
           </BaseBox>
-        ) : null}
-      </BaseBox>
-    </Component>
+          {labelTrailing ? (
+            <BaseBox marginLeft={isLabelLeftPositioned ? 'spacing.0' : 'auto'}>
+              {labelTrailing}
+            </BaseBox>
+          ) : null}
+        </BaseBox>
+      </Component>
+      {accessibilityText && (
+        <VisuallyHidden>
+          <Text>{accessibilityText}</Text>
+        </VisuallyHidden>
+      )}
+    </>
   );
 };
 
