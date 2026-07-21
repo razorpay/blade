@@ -13,7 +13,8 @@ const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => 
 
   const slope: number[] = [];
   for (let i = 0; i < n - 1; i++) {
-    slope[i] = (ys[i + 1] - ys[i]) / (xs[i + 1] - xs[i]);
+    const dx = xs[i + 1] - xs[i];
+    slope[i] = dx === 0 ? 0 : (ys[i + 1] - ys[i]) / dx;
   }
 
   // Tangents at each point.
@@ -45,7 +46,7 @@ const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => 
   let k = 0;
   while (k < n - 2 && xq > xs[k + 1]) k++;
   const h = xs[k + 1] - xs[k];
-  const t = (xq - xs[k]) / h;
+  const t = h === 0 ? 0 : (xq - xs[k]) / h;
   const t2 = t * t;
   const t3 = t2 * t;
   const h00 = 2 * t3 - 3 * t2 + 1;
