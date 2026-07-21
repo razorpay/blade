@@ -42,6 +42,22 @@ const Page = (): React.ReactElement => {
       componentName="Tabs"
       componentDescription="A tab is a navigation component used in the interface to switch between different views in the same context. Tabs are contextual to the section or the page and are triggered by user interaction."
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75154-84398&t=QK3OC85vjD0Yt67V-1&scaling=min-zoom&page-id=60438%3A44047&mode=design"
+      note={
+        <Text>
+          Tabs can look visually similar to{' '}
+          <Link
+            target="_blank"
+            href="https://blade.razorpay.com/?path=/docs/components-segmentedcontrol--docs"
+          >
+            SegmentedControl
+          </Link>
+          , but they solve different problems. Use <Code size="medium">Tabs</Code> to navigate
+          between distinct views or sections of content, where selecting a tab reveals its own
+          content panel. If you instead need a compact, form-like control to pick one of 2–5 options
+          that filter or change how the <b>same</b> content is displayed (e.g. Daily / Weekly /
+          Monthly, List / Grid), use <Code size="medium">SegmentedControl</Code>.
+        </Text>
+      }
     >
       <Heading size="large">Usage</Heading>
       <Sandbox editorHeight={500}>
@@ -142,14 +158,22 @@ export default {
     orientation: {
       control: {
         type: 'select',
-        options: ['horizontal', 'vertical'],
       },
+      options: ['horizontal', 'vertical'],
       table: { category: propsCategory.TABS },
     },
     size: {
+      control: {
+        type: 'select',
+      },
+      options: ['small', 'medium', 'large'],
       table: { category: propsCategory.TABS },
     },
     variant: {
+      control: {
+        type: 'select',
+      },
+      options: ['bordered', 'borderless', 'filled'],
       table: { category: propsCategory.TABS },
     },
     tabItemChildren: {
@@ -469,18 +493,12 @@ const TabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const orientation = isMobile ? 'horizontal' : args.orientation;
   const isVertical = orientation === 'vertical';
-  const isFilled = args.variant === 'filled';
 
   return (
     <Box height={isReactNative() ? '100%' : undefined}>
       <Card elevation="none" padding="spacing.0">
         <CardBody height="100%">
-          <Box
-            height="100%"
-            marginX="spacing.6"
-            marginBottom="spacing.6"
-            marginTop={isFilled || isVertical ? 'spacing.6' : 'spacing.2'}
-          >
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.5">
             <Tabs key={invalidationKey} {...args} orientation={orientation}>
               <TabList>
                 <TabItem value="subscriptions">Subscription</TabItem>
@@ -543,7 +561,7 @@ const ControlledTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactE
 
       <Card elevation="none" padding="spacing.0">
         <CardBody height="100%">
-          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.5">
             <Tabs
               key={invalidationKey}
               value={value}
@@ -605,7 +623,7 @@ const TabsWithTooltipTemplate: StoryFn<(props: StoryControlProps) => React.React
       </Text>
       <Card elevation="none" padding="spacing.0">
         <CardBody>
-          <Box marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+          <Box marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.5">
             <Tabs key={invalidationKey}>
               <TabList>
                 <TabItem value="subscriptions">Subscription</TabItem>
@@ -708,7 +726,7 @@ const ProductUseCase1Template: StoryFn<(props: StoryControlProps) => React.React
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody height="100%">
-          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.5">
             <Tabs variant="borderless" defaultValue="subscriptions">
               <TabList>
                 <TabItem value="subscriptions" leading={SubscriptionsIcon}>
@@ -743,7 +761,7 @@ const ProductUseCase1Template: StoryFn<(props: StoryControlProps) => React.React
 };
 
 export const ProductUseCase1 = ProductUseCase1Template.bind({});
-ProductUseCase1.storyName = 'Product Usecase: End to End Borders';
+ProductUseCase1.storyName = 'End to End Borders';
 
 const ProductUseCase2Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   const isMobile = useIsMobile();
@@ -796,7 +814,7 @@ const ProductUseCase2Template: StoryFn<(props: StoryControlProps) => React.React
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
-          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.5">
             <Tabs variant="borderless" value={value} onChange={setValue}>
               <Box display="flex" alignItems="center" justifyContent="space-between">
                 <TabList>
@@ -836,7 +854,7 @@ const ProductUseCase2Template: StoryFn<(props: StoryControlProps) => React.React
 };
 
 export const ProductUseCase2 = ProductUseCase2Template.bind({});
-ProductUseCase2.storyName = 'Product Usecase: Tabs with Toolbar';
+ProductUseCase2.storyName = 'Tabs with Toolbar';
 
 const AccountRoute = ({
   match,
@@ -899,7 +917,7 @@ const ReactRouterExample = () => {
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
-          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.5">
             <Tabs variant="borderless" defaultValue="subscriptions">
               <TabList>
                 <TabItem
@@ -955,14 +973,14 @@ const ProductUseCase3Template: StoryFn<(props: StoryControlProps) => React.React
 };
 
 export const ProductUseCase3 = ProductUseCase3Template.bind({});
-ProductUseCase3.storyName = 'Product Usecase: React Router';
+ProductUseCase3.storyName = 'React Router';
 
 const ProductUseCase4Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   return (
     <Box height={isReactNative() ? '100%' : undefined}>
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody height="100%">
-          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.5">
             <Tabs isFullWidthTabItem={false} variant="filled" defaultValue="desktop">
               <Box
                 padding="spacing.6"
@@ -1019,7 +1037,7 @@ const ProductUseCase4Template: StoryFn<(props: StoryControlProps) => React.React
 };
 
 export const ProductUseCase4 = ProductUseCase4Template.bind({});
-ProductUseCase4.storyName = 'Product Usecase: Icon only tabs';
+ProductUseCase4.storyName = 'Icon only tabs';
 
 const ShowcaseTabsInstance = ({
   variant,
@@ -1230,4 +1248,4 @@ Showcase.parameters = {
 };
 
 export const DelayedTabs = DelayedTabsTemplate.bind({});
-DelayedTabs.storyName = 'Product Usecase: Tabs with delayed visibility';
+DelayedTabs.storyName = 'Tabs with delayed visibility';

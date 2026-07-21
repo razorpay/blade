@@ -4,8 +4,9 @@ import type { SegmentedControlProps } from './types';
 import { SegmentedControl } from './SegmentedControl';
 import { SegmentedControlItem } from './SegmentedControlItem';
 import { Box } from '~components/Box';
-import { Text, Heading } from '~components/Typography';
+import { Text, Heading, Code } from '~components/Typography';
 import { CalendarIcon, ClockIcon, TrendingUpIcon, ListIcon, LayoutIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -15,6 +16,19 @@ const Page = (): React.ReactElement => {
       componentDescription="SegmentedControl allows users to select a single option from a set of 2-5 options, displayed as a horizontal group of buttons."
       componentName="SegmentedControl"
       imports={`import { SegmentedControl, SegmentedControlItem } from '@razorpay/blade/components';`}
+      note={
+        <Text>
+          SegmentedControl can look visually similar to{' '}
+          <Link target="_blank" href="https://blade.razorpay.com/?path=/docs/components-tabs--docs">
+            Tabs
+          </Link>
+          , but they solve different problems. Use <Code size="medium">SegmentedControl</Code> as a
+          compact, form-like control to pick one of 2–5 options that filter or change how the{' '}
+          <b>same</b> content is displayed (e.g. Daily / Weekly / Monthly, List / Grid). If you
+          instead need to navigate between distinct views or sections, where each option reveals its
+          own content panel, use <Code size="medium">Tabs</Code>.
+        </Text>
+      }
     >
       <Heading size="large">Usage</Heading>
       <Sandbox editorHeight={300}>
@@ -43,6 +57,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/SegmentedControl',
   component: SegmentedControl,
+  tags: ['autodocs'],
   parameters: {
     docs: {
       page: Page,
