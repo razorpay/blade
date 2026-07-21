@@ -35,7 +35,6 @@ const TabList = ({
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
-  const isCompact = size === 'small' && !isVertical;
   const orientation = isVertical ? 'vertical' : 'horizontal';
 
   // Set the first child as the selected value
@@ -95,7 +94,11 @@ const TabList = ({
                         borderRadius: containerBorderRadius[orientation][size ?? 'medium'],
                         borderWidth: 'none',
                         borderColor: 'interactive.border.gray.default',
-                        padding: isCompact ? 'spacing.1' : 'spacing.2',
+                        // Left/right padding matches SegmentedControl's containerPadding
+                        // (spacing.2, 4px) for every size — small horizontal filled Tabs
+                        // used to be more compact (spacing.1, 2px) but Figma now spec's
+                        // the same 4px inset SegmentedControl uses.
+                        padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
                         backgroundColor: 'interactive.background.gray.faded',
                         // Only small (horizontal) needs a pinned height — its padding +

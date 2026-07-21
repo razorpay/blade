@@ -221,9 +221,6 @@ const CustomTabBar = ({
     });
   }, []);
 
-  // Web pins a smaller padding (spacing.1, 2px) for horizontal+small via `isCompact` —
-  // mirror that here so native padding isn't flatly 4px across every size.
-  const isCompact = size === 'small';
   const pinnedContainerHeight = filledHorizontalContainerHeight[size];
 
   const tabBarStyle = isFilled
@@ -234,7 +231,10 @@ const CustomTabBar = ({
         borderWidth: theme.border.width.thick,
         borderColor: theme.colors.interactive.border.gray.faded,
         backgroundColor: theme.colors.surface.background.gray.intense,
-        padding: isCompact ? theme.spacing[1] : theme.spacing[2],
+        // Matches SegmentedControl's containerPadding (spacing.2, 4px) for every
+        // size — small used to be more compact (spacing.1, 2px) but Figma now
+        // spec's the same 4px inset SegmentedControl uses.
+        padding: theme.spacing[2],
         ...(pinnedContainerHeight ? { height: pinnedContainerHeight } : {}),
       }
     : {

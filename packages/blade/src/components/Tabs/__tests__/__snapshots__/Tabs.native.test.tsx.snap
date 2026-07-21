@@ -915,7 +915,7 @@ exports[`Tabs should render with filled variant and small size 1`] = `
             "borderRadius": 8,
             "borderWidth": 1.5,
             "height": 32,
-            "padding": 2,
+            "padding": 4,
             "shadowColor": "transparent",
             "shadowOpacity": 0,
           },
