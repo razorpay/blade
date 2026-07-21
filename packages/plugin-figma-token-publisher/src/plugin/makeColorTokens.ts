@@ -9,6 +9,13 @@ const THEME_TOKENS_COLLECTION = 'Blade Theme Tokens';
 
 const GLOBAL_TOKENS_COLLECTION = '_global-tokens';
 
+// Figma modes are named `<figmaThemePrefix>/<scheme>` (eg: blade/onLight, bladeNeutral/onDark).
+// This maps the Figma theme prefix to the corresponding code theme name.
+const FIGMA_MODE_THEME_MAP: Record<string, string> = {
+  blade: 'bladeTheme',
+  bladeNeutral: 'bladeNeutralTheme',
+};
+
 const makeGlobalColorTokenName = (variableName: string): string => {
   return variableName.split('/').slice(1).join('.');
 };
@@ -74,9 +81,12 @@ const rgbaToHsla = ({ r, g, b, a }: RGBA): string => {
   return `hsla(${h}, ${Math.round(s)}%, ${Math.round(l)}%, ${opacityMap[a.toFixed(2)]})`;
 };
 const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
-  const themeColorTokens = {
-    onLight: {},
-    onDark: {},
+  const themeColorTokens: Record<
+    string,
+    { onLight: Record<string, any>; onDark: Record<string, any> }
+  > = {
+    bladeTheme: { onLight: {}, onDark: {} },
+    bladeNeutralTheme: { onLight: {}, onDark: {} },
   };
 
   // filter colors collection
@@ -111,18 +121,24 @@ const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
 
     // prepare for storing variables in code in the format of dark and light modes
     for (const [modeName, modeId] of Object.entries(colorModes)) {
+      // mode names are of the form `<figmaThemePrefix><separator><scheme>` where the separator
+      // is either " - " or "/" eg: "bladeNeutral - onLight", "blade/onDark"
+      const [figmaThemePrefix, scheme] = modeName.split(/\s*[-/]\s*/);
+      const themeName = FIGMA_MODE_THEME_MAP[figmaThemePrefix];
+      if (!themeName || (scheme !== 'onLight' && scheme !== 'onDark')) {
+        continue;
+      }
+
       const variableModeValue: VariableValue = variable.valuesByMode[modeId as string];
       // if the variable references another variable then we take the name of the referenced variable and set that as a value
       // eg: surface.background.neutral.subtle -> globalColors.gray.200
       if (typeof variableModeValue === 'object' && 'id' in variableModeValue) {
-        const referencedVariable = await figma.variables.getVariableByIdAsync(
-          variableModeValue.id,
-        );
+        const referencedVariable = await figma.variables.getVariableByIdAsync(variableModeValue.id);
         if (!referencedVariable) {
           continue;
         }
         setValue(
-          themeColorTokens[modeName],
+          themeColorTokens[themeName][scheme],
           tokenName,
           makeThemeTokenName(referencedVariable.name, true),
         );
@@ -131,13 +147,9 @@ const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
         (tokenName.includes('transparent') || tokenName.includes('elevation'))
       ) {
         const tokenHSLAValue = rgbaToHsla(variableModeValue as RGBA);
-        setValue(themeColorTokens[modeName], tokenName, `\`${tokenHSLAValue}\``);
+        setValue(themeColorTokens[themeName][scheme], tokenName, `\`${tokenHSLAValue}\``);
       } else {
-        console.error(
-          'the theme variable token has hardcoded value',
-          tokenName,
-          variableModeValue,
-        );
+        console.error('the theme variable token has hardcoded value', tokenName, variableModeValue);
       }
     }
   }
@@ -185,8 +197,9 @@ export const makeColorTokens = async (): Promise<void> => {
   const themeColorTokens = await makeThemeColorTokens();
   const globalColorTokens = await makeGlobalColorTokens();
 
-  const hasThemeTokens =
-    Object.keys(themeColorTokens.onLight).length && Object.keys(themeColorTokens.onDark).length;
+  const hasThemeTokens = Object.values(themeColorTokens).some(
+    (theme) => Object.keys(theme.onLight).length && Object.keys(theme.onDark).length,
+  );
   const hasGlobalTokens = Object.keys(globalColorTokens).length;
 
   if (hasThemeTokens || hasGlobalTokens) {
