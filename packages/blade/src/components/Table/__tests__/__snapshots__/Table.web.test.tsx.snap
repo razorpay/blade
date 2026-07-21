@@ -21006,7 +21006,7 @@ exports[`<Table /> should render table with nested expandable content 1`] = `
 
 .c16.c16.c16.c16.c16 {
   padding: 8px;
-  background-color: hsla(200,10%,94%,1);
+  background-color: hsla(0,0%,97%,1);
 }
 
 .c1.c1.c1.c1.c1 {
