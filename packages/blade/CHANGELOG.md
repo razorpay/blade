@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.111.1
+
+### Patch Changes
+
+- 1ca6de095: Fix OTPInput focus to move to last input box after paste
+
 ## 12.111.0
 
 ### Minor Changes
