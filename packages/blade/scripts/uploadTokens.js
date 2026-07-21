@@ -1,15 +1,27 @@
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 const execa = require('execa');
 const randomNameGenerator = require('moniker');
 
 const GITHUB_BOT_EMAIL = 'tools+cibot@razorpay.com';
 const GITHUB_BOT_USERNAME = 'rzpcibot';
 
+// The Figma plugin gzip + base64 encodes the tokens payload to stay under GitHub's
+// 65,535 character workflow_dispatch input limit. Decompress it here, falling back to
+// treating the argument as raw JSON for backward compatibility.
+const parseTokensArg = (arg) => {
+  try {
+    return JSON.parse(zlib.gunzipSync(Buffer.from(arg, 'base64')).toString('utf8'));
+  } catch (error) {
+    return JSON.parse(arg);
+  }
+};
+
 const uploadColorTokens = async () => {
   try {
     // 1. read the tokens object
-    const colorTokens = JSON.parse(process.argv[2]);
+    const colorTokens = parseTokensArg(process.argv[2]);
 
     const themeColorTokensRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
     // Each theme in the payload is written into its own source file.
