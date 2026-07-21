@@ -21,12 +21,19 @@ type ChartAreaProps = {
    *   never a fill under a no-data stretch). Use `connectNullsStyle` to control whether that bridge
    *   line is solid or dashed.
    *
+   * Narrowed to `boolean` (instead of `RechartAreaProps['connectNulls']`) intentionally: Blade
+   * restricts the API surface to a controlled subset so that `connectNullsStyle` — a Blade-specific
+   * concept with no Recharts equivalent — can be offered alongside it. This mirrors `ChartLine`.
+   *
    * @default false
+   * @see {@link connectNullsStyle} — only takes effect when this prop is `true`
    */
   connectNulls?: boolean;
   /**
-   * The style of the line drawn across null points when `connectNulls` is `true`. In both cases the
-   * area fill is omitted under the no-data stretch — only the bridge line differs.
+   * The style of the line drawn across null points. **Only takes effect when `connectNulls` is
+   * `true`** — when `connectNulls` is `false` (or unset) the area simply breaks at null points and
+   * this prop is ignored. In both cases the area fill is omitted under the no-data stretch — only
+   * the bridge line differs.
    *
    * - `'solid'` (default): real data renders as a solid area and the gap is bridged with a solid
    *   line (no fill underneath).
@@ -34,6 +41,7 @@ type ChartAreaProps = {
    *   fill underneath), signalling "no data for this period" without implying a measured value.
    *
    * @default 'solid'
+   * @see {@link connectNulls} — must be `true` for this prop to have any effect
    */
   connectNullsStyle?: 'solid' | 'dashed';
   /**
