@@ -38,6 +38,7 @@ import type {
 } from '../CommonChartComponents/types';
 import { componentIds } from './componentIds';
 import { LineChartContext } from './LineChartContext';
+import { monotoneInterpolate } from './nullBridgeUtils';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
@@ -222,6 +223,7 @@ type LineSlot = {
   dot: boolean;
   activeDot: boolean;
   connectNulls: boolean;
+  connectNullsStyle: 'solid' | 'dashed';
   showLegend: boolean;
   hide?: boolean;
 };
@@ -293,6 +295,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         dot: Boolean(props.dot),
         activeDot: props.activeDot !== false,
         connectNulls: Boolean(props.connectNulls),
+        connectNullsStyle: props.connectNullsStyle ?? 'solid',
         showLegend: props.showLegend ?? true,
         hide: props.hide,
       });
@@ -490,27 +493,77 @@ const getStrokeDasharray = (strokeStyle: StrokeStyle): string | undefined =>
 
 type LinePoint = { x: number; y: number; value: number | null };
 
-// Split a line's points into contiguous non-null segments. When `connectNulls`
-// is true all non-null points bridge into a single segment; otherwise gaps
-// break the line into multiple sub-paths (never drawn across nulls).
-const buildSegments = (points: LinePoint[], connectNulls: boolean): Point[][] => {
-  const definedPoints = points.filter((p): p is Point & { value: number } => p.value !== null);
-  if (connectNulls) {
-    return definedPoints.length > 0 ? [definedPoints.map(({ x, y }) => ({ x, y }))] : [];
+// A sub-path of a line. `isNullBridge` marks the stretch drawn across null points, which is styled
+// with a dashed stroke when `connectNullsStyle` is 'dashed'.
+type LineSegment = { points: Point[]; isNullBridge: boolean };
+
+// Split a line's points into drawable sub-paths based on `connectNulls` / `connectNullsStyle`:
+// - connectNulls `false`: gaps break the line into multiple solid sub-paths (never across nulls).
+// - connectNulls `true` + 'solid': all non-null points bridge into a single solid segment.
+// - connectNulls `true` + 'dashed': solid sub-paths for real data, plus dashed bridge segments
+//   that follow the monotone curve across each null run (gap points sampled onto the real curve so
+//   the bridge is curved rather than a straight line).
+const buildSegments = (
+  points: LinePoint[],
+  connectNulls: boolean,
+  connectNullsStyle: 'solid' | 'dashed',
+): LineSegment[] => {
+  if (connectNulls && connectNullsStyle === 'solid') {
+    const definedPoints = points.filter((p): p is Point & { value: number } => p.value !== null);
+    return definedPoints.length > 0
+      ? [{ points: definedPoints.map(({ x, y }) => ({ x, y })), isNullBridge: false }]
+      : [];
   }
-  const segments: Point[][] = [];
-  let current: Point[] = [];
+
+  // Defined (non-null) points, in pixel space, used to sample the gap onto the monotone curve.
+  const definedXs: number[] = [];
+  const definedYs: number[] = [];
   points.forEach((p) => {
+    if (p.value !== null) {
+      definedXs.push(p.x);
+      definedYs.push(p.y);
+    }
+  });
+
+  // Contiguous non-null runs, tracking their positions so we know the null indices between them.
+  const dataSegments: Array<{ pts: Point[]; startPos: number; endPos: number }> = [];
+  let current: Point[] = [];
+  let currentStart = -1;
+  points.forEach((p, pos) => {
     if (p.value === null) {
       if (current.length > 0) {
-        segments.push(current);
+        dataSegments.push({ pts: current, startPos: currentStart, endPos: pos - 1 });
         current = [];
+        currentStart = -1;
       }
     } else {
+      if (current.length === 0) currentStart = pos;
       current.push({ x: p.x, y: p.y });
     }
   });
-  if (current.length > 0) segments.push(current);
+  if (current.length > 0) {
+    dataSegments.push({ pts: current, startPos: currentStart, endPos: points.length - 1 });
+  }
+
+  const segments: LineSegment[] = [];
+  dataSegments.forEach((segment, index) => {
+    segments.push({ points: segment.pts, isNullBridge: false });
+    if (connectNulls && index < dataSegments.length - 1) {
+      const nextSegment = dataSegments[index + 1];
+      const from = segment.pts[segment.pts.length - 1];
+      const to = nextSegment.pts[0];
+      // Densely sample the monotone spline across the gap (not just at the null data indices) so
+      // the dashed bridge reads as a smooth curve even when a single point is missing.
+      const sampleCount = Math.max(2, Math.round(Math.abs(to.x - from.x) / 3));
+      const bridgePoints: Point[] = [];
+      for (let step = 0; step <= sampleCount; step++) {
+        const t = step / sampleCount;
+        const x = from.x + (to.x - from.x) * t;
+        bridgePoints.push({ x, y: monotoneInterpolate(definedXs, definedYs, x) });
+      }
+      segments.push({ points: bridgePoints, isNullBridge: true });
+    }
+  });
   return segments;
 };
 
@@ -577,11 +630,14 @@ const LineSeries = ({
   const clipProps = useAnimatedProps(() => ({ width: Math.max(0, plotWidth * draw.value) }));
   const dimProps = useAnimatedProps(() => ({ strokeOpacity: dim.value }));
 
-  const segments = useMemo(() => buildSegments(points, line.connectNulls), [
+  const segments = useMemo(() => buildSegments(points, line.connectNulls, line.connectNullsStyle), [
     points,
     line.connectNulls,
+    line.connectNullsStyle,
   ]);
   const dash = getStrokeDasharray(line.strokeStyle);
+  // Dash pattern for the stretch drawn across null points (only present for dashed bridges).
+  const nullBridgeDash = '5 5';
   const clipId = `line-${chartId}-reveal-${index}`;
 
   return (
@@ -596,10 +652,10 @@ const LineSeries = ({
           <AnimatedPath
             key={`segment-${segmentIndex}`}
             testID={`line-path-${line.dataKey}`}
-            d={buildPath(segment, line.type)}
+            d={buildPath(segment.points, line.type)}
             stroke={color}
             strokeWidth={LINE_STROKE_WIDTH}
-            strokeDasharray={dash}
+            strokeDasharray={segment.isNullBridge ? nullBridgeDash : dash}
             strokeLinecap="round"
             strokeLinejoin="round"
             fill="none"

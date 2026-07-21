@@ -21,9 +21,26 @@ interface ChartLineProps {
    */
   activeDot?: RechartsLineProps['activeDot'];
   /**
-   * If we don't have data for some points should we connect the line or should skip it.
+   * Whether to bridge gaps (`null` / `undefined` values) in the data.
+   *
+   * - `false` (default): the line breaks at null points, leaving a gap. Use this for genuine data
+   *   outages where no continuity should be implied.
+   * - `true`: the line is connected across null points. Use `connectNullsStyle` to control whether
+   *   the bridge is drawn as a solid or dashed line.
+   *
+   * @default false
    */
-  connectNulls?: RechartsLineProps['connectNulls'];
+  connectNulls?: boolean;
+  /**
+   * The style of the line drawn across null points when `connectNulls` is `true`.
+   *
+   * - `'solid'` (default): nulls are bridged with a solid line.
+   * - `'dashed'`: real data renders as a solid line while the stretch across null points renders
+   *   dashed, signalling "no data for this period" without implying a measured value.
+   *
+   * @default 'solid'
+   */
+  connectNullsStyle?: 'solid' | 'dashed';
   /**
    * Include this particular line in legend.
    *  @default : true
