@@ -628,6 +628,7 @@ exports[`Menu renders a Menu 1`] = `
     data-floating-ui-inert=""
   >
     <button
+      aria-controls=":r1:"
       aria-expanded="true"
       aria-haspopup="menu"
       class="c0"
@@ -1699,6 +1700,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
     data-floating-ui-inert=""
   >
     <button
+      aria-controls=":rt:"
       aria-expanded="true"
       aria-haspopup="menu"
       class="c0"

@@ -561,7 +561,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const previousDefiniteLoadingConfigured = usePrevious(isDefiniteLoadingConfigured);
   const hasConfiguredDefiniteLoading = React.useRef(false);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     if (isDefiniteLoadingConfigured && !previousDefiniteLoadingConfigured) {
       if (hasConfiguredDefiniteLoading.current) {
         setDefiniteLoadingRun((currentRun) => currentRun + 1);
@@ -846,7 +846,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       height={height}
       width={width}
       isPressed={isPressed}
-      isDefiniteLoading={isDefiniteLoading}
+      {...(isDefiniteLoading ? { isDefiniteLoading } : {})}
       hoverIconColor={
         disabled && !isDefiniteLoading
           ? getIn(theme.colors, iconColor as DotNotationToken<Theme['colors']>)
