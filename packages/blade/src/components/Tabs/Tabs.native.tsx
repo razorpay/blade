@@ -281,7 +281,15 @@ const CustomTabBar = ({
                   ) : null}
                   <Text
                     color={textColor[selectedState].default}
-                    size={size === 'medium' ? 'medium' : 'large'}
+                    // Native has no vertical orientation, so `isFilled && size === 'small'`
+                    // is always the filled+horizontal+small case (12px per Figma spec).
+                    size={
+                      isFilled && size === 'small'
+                        ? 'small'
+                        : size === 'medium'
+                        ? 'medium'
+                        : 'large'
+                    }
                     weight="semibold"
                   >
                     {route.title}

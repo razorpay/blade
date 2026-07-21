@@ -13,6 +13,7 @@ import {
   textColor,
   iconColor,
   textSizeMap,
+  filledHorizontalSmallTextSize,
   borderWidth as borderWidthToken,
   borderRadius as borderRadiusToken,
   focusBorderRadius as focusBorderRadiusToken,
@@ -142,6 +143,8 @@ const TabItem = ({
   const panelId = `${baseId}-${value}-tabpanel`;
   const tabItemId = `${baseId}-${value}-tabitem`;
   const isFilled = variant === 'filled';
+  const isFilledSmallHorizontal = isFilled && size === 'small' && !isVertical;
+  const textSize = isFilledSmallHorizontal ? filledHorizontalSmallTextSize : textSizeMap[size!];
 
   const interactionMap = {
     default: 'default',
@@ -183,11 +186,7 @@ const TabItem = ({
           ) : null}
 
           {children ? (
-            <Text
-              color={textColor[selectedState][interaction]}
-              size={textSizeMap[size!]}
-              weight="medium"
-            >
+            <Text color={textColor[selectedState][interaction]} size={textSize} weight="medium">
               {children}
             </Text>
           ) : null}

@@ -527,7 +527,7 @@ exports[`Tabs should render with filled variant 1`] = `
   width: 100%;
   gap: 2px;
   background-color: hsla(206,10%,29%,0.06);
-  border-radius: 12px;
+  border-radius: 8px;
   border-width: 0px;
   border-color: hsla(204,8%,88%,1);
   border-style: solid;
@@ -538,7 +538,7 @@ exports[`Tabs should render with filled variant 1`] = `
   top: 0px;
   left: 0px;
   background-color: hsla(0,0%,100%,1);
-  border-radius: 8px;
+  border-radius: 4px;
   pointer-events: none;
 }
 
@@ -629,7 +629,7 @@ exports[`Tabs should render with filled variant 1`] = `
   padding-left: 8px;
   padding-right: 8px;
   background-color: hsla(0,0%,100%,0);
-  border-radius: 8px;
+  border-radius: 4px;
   border-bottom-style: solid;
   border-bottom-width: 0;
   border-bottom-color: hsla(0,0%,100%,0);
@@ -703,7 +703,7 @@ exports[`Tabs should render with filled variant 1`] = `
   padding-left: 8px;
   padding-right: 8px;
   background-color: hsla(0,0%,100%,0);
-  border-radius: 8px;
+  border-radius: 4px;
   border-bottom-style: solid;
   border-bottom-width: 0;
   border-bottom-color: hsla(0,0%,100%,0);

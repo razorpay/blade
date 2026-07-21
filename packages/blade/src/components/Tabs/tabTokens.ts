@@ -181,6 +181,10 @@ const textSizeMap = {
   large: 'large',
 } as const;
 
+// Only filled + horizontal + small uses a smaller label (12px) per Figma spec —
+// every other variant/orientation/size combination falls back to `textSizeMap`.
+const filledHorizontalSmallTextSize = 'small' as const;
+
 type BorderWidthValue = 'none' | 'thick' | 'thicker';
 
 const borderWidth: Record<TabVariants, Record<TabOrientation, BorderWidthValue>> = {
@@ -194,7 +198,7 @@ const borderWidth: Record<TabVariants, Record<TabOrientation, BorderWidthValue>>
   },
 };
 
-type BorderRadiusToken = 'none' | 'small' | 'medium' | 'large';
+type BorderRadiusToken = 'none' | 'xsmall' | 'small' | 'medium' | 'large';
 
 const borderRadius: Record<
   TabVariants,
@@ -205,7 +209,7 @@ const borderRadius: Record<
     vertical: { small: 'none', medium: 'none', large: 'none' },
   },
   filled: {
-    horizontal: { small: 'medium', medium: 'small', large: 'small' },
+    horizontal: { small: 'xsmall', medium: 'xsmall', large: 'small' },
     vertical: { small: 'small', medium: 'small', large: 'small' },
   },
 };
@@ -214,7 +218,7 @@ const borderRadius: Record<
 // pre-existing behavior (always 'medium', regardless of size) — vertical is out of scope
 // for the horizontal Figma spec alignment this map was introduced for.
 const containerBorderRadius: Record<TabOrientation, Record<TabSizes, BorderRadiusToken>> = {
-  horizontal: { small: 'large', medium: 'medium', large: 'medium' },
+  horizontal: { small: 'small', medium: 'small', large: 'medium' },
   vertical: { small: 'medium', medium: 'medium', large: 'medium' },
 };
 
@@ -313,6 +317,7 @@ export {
   paddingBottom,
   paddingX,
   textSizeMap,
+  filledHorizontalSmallTextSize,
   borderWidth,
   borderRadius,
   containerBorderRadius,
