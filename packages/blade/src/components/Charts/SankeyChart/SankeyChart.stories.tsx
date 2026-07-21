@@ -90,13 +90,10 @@ const NODE_COLOR_OPTIONS: NonNullable<SankeyDataNode['color']>[] = [
   'data.background.categorical.gray.moderate',
 ];
 
-const NODE_COLOR_LABELS: Record<string, string> = NODE_COLOR_OPTIONS.reduce(
-  (acc, token) => {
-    acc[token] = token.replace('data.background.categorical.', '');
-    return acc;
-  },
-  {} as Record<string, string>,
-);
+const NODE_COLOR_LABELS: Record<string, string> = NODE_COLOR_OPTIONS.reduce((acc, token) => {
+  acc[token] = token.replace('data.background.categorical.', '');
+  return acc;
+}, {} as Record<string, string>);
 
 export default {
   title: 'Components/Charts/SankeyChart',
