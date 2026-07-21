@@ -65,10 +65,11 @@ const Area: React.FC<ChartAreaProps> = ({
   const animationBegin = theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
-  // A solid bridge lets Recharts connect the area (fill + stroke) across nulls. A dashed bridge
-  // keeps the area gapped (so there's no fill under the no-data stretch) and a separate dashed line
-  // is drawn across the gap by NullBridgeLayer in the wrapper.
-  const isSolidBridge = connectNulls && connectNullsStyle === 'solid';
+  // The area is always rendered gapped at nulls so there's never a fill under a no-data stretch.
+  // When a bridge is requested (`connectNulls`), a separate line (solid or dashed, per
+  // `connectNullsStyle`) is drawn across the gap by NullBridgeLayer in the wrapper.
+  void connectNulls;
+  void connectNullsStyle;
 
   return (
     <RechartsArea
@@ -79,7 +80,7 @@ const Area: React.FC<ChartAreaProps> = ({
       stroke={colorToken}
       fillOpacity={0.5}
       type={type}
-      connectNulls={isSolidBridge}
+      connectNulls={false}
       legendType={showLegend ? 'rect' : 'none'}
       strokeWidth={1.5}
       dot={dot}
@@ -221,43 +222,50 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     return map;
   }, [data, secondaryDataKey]);
 
-  // Ordered ChartArea children (matching Recharts' render order) and which of them bridge nulls with
-  // a dashed line. Used to map each rendered area's top-line curve back to its dataKey.
+  // Ordered ChartArea children (matching Recharts' render order) and how each of them bridges nulls:
+  // 'none' (hard gap), 'solid' or 'dashed'. Used to map each rendered area's top-line curve back to
+  // its dataKey and to pick the bridge line's dash pattern.
   const chartAreaOrder = useMemo(() => {
-    const areas: Array<{ dataKey: string; isDashedBridge: boolean }> = [];
+    const areas: Array<{ dataKey: string; bridge: 'none' | 'solid' | 'dashed' }> = [];
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
         const childProps = child.props as ChartAreaProps;
         const dataKey = childProps.dataKey as string;
         if (dataKey) {
-          areas.push({
-            dataKey,
-            isDashedBridge:
-              childProps.connectNulls === true && childProps.connectNullsStyle === 'dashed',
-          });
+          let bridge: 'none' | 'solid' | 'dashed' = 'none';
+          if (childProps.connectNulls === true) {
+            bridge = childProps.connectNullsStyle === 'dashed' ? 'dashed' : 'solid';
+          }
+          areas.push({ dataKey, bridge });
         }
       }
     });
     return areas;
   }, [children]);
 
-  const hasDashedBridge = chartAreaOrder.some((area) => area.isDashedBridge);
+  const hasBridge = chartAreaOrder.some((area) => area.bridge !== 'none');
 
   /**
-   * The dashed bridges are drawn as curved paths derived from Recharts' own rendered geometry:
-   * after layout we parse each visible area's top-line pixel anchors from its SVG path and densely
-   * sample the monotone spline through them across each interior null run. This matches the solid
-   * line's curve exactly (Recharts v3 doesn't expose the axis scales to <Customized>) while spanning
-   * only the no-data stretch, so nulls read as "no data" (no fill, dashed line) rather than a value.
+   * Bridges are drawn as curved paths derived from Recharts' own rendered geometry: after layout we
+   * parse each visible area's top-line pixel anchors from its SVG path and densely sample the
+   * monotone spline through them across each interior null run. This matches the flanking line's
+   * curve exactly (Recharts v3 doesn't expose the axis scales to <Customized>) while spanning only
+   * the no-data stretch, so nulls read as "no data" (no fill under the gap, just a bridge line —
+   * solid or dashed) rather than a value.
    */
   const containerRef = useRef<HTMLDivElement>(null);
-  const [bridgePaths, setBridgePaths] = useState<Array<{ id: string; d: string; stroke: string }>>(
-    [],
-  );
+  const [bridgePaths, setBridgePaths] = useState<
+    Array<{
+      id: string;
+      d: string;
+      stroke: string;
+      style: 'solid' | 'dashed';
+    }>
+  >([]);
 
   useLayoutEffect(() => {
     const container = containerRef.current;
-    if (!container || !hasDashedBridge) {
+    if (!container || !hasBridge) {
       setBridgePaths([]);
       return undefined;
     }
@@ -278,9 +286,14 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       });
       if (topLineCurves.length !== visibleAreas.length) return;
 
-      const nextPaths: Array<{ id: string; d: string; stroke: string }> = [];
+      const nextPaths: Array<{
+        id: string;
+        d: string;
+        stroke: string;
+        style: 'solid' | 'dashed';
+      }> = [];
       visibleAreas.forEach((area, position) => {
-        if (!area.isDashedBridge) return;
+        if (area.bridge === 'none') return;
         const curve = topLineCurves[position];
         const stroke = curve.getAttribute('stroke') ?? '';
         const anchors = parsePathAnchors(curve.getAttribute('d') ?? '');
@@ -292,6 +305,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
             id: `null-bridge-${area.dataKey}-${indices[from]}`,
             d: buildBridgePathData(anchors, from, to),
             stroke,
+            style: area.bridge === 'dashed' ? 'dashed' : 'solid',
           });
         });
       });
@@ -303,7 +317,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
             (item, index) =>
               item.id === nextPaths[index].id &&
               item.d === nextPaths[index].d &&
-              item.stroke === nextPaths[index].stroke,
+              item.stroke === nextPaths[index].stroke &&
+              item.style === nextPaths[index].style,
           );
         return isSame ? previous : nextPaths;
       });
@@ -331,20 +346,20 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       cleanups.push(() => resizeObserver.disconnect());
     }
     return () => cleanups.forEach((cleanup) => cleanup());
-  }, [data, chartAreaOrder, hasDashedBridge, selectedDataKeys]);
+  }, [data, chartAreaOrder, hasBridge, selectedDataKeys]);
 
   const renderNullBridges = (): React.ReactElement | null => {
     if (bridgePaths.length === 0) return null;
     return (
       <g className="blade-null-bridge-layer">
-        {bridgePaths.map(({ id, d, stroke }) => (
+        {bridgePaths.map(({ id, d, stroke, style }) => (
           <path
             key={id}
             d={d}
             fill="none"
             stroke={stroke}
             strokeWidth={1.5}
-            strokeDasharray={NULL_BRIDGE_DASHARRAY}
+            strokeDasharray={style === 'dashed' ? NULL_BRIDGE_DASHARRAY : undefined}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -387,7 +402,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
               </defs>
 
               {modifiedChildren}
-              {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
+              {hasBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
             </RechartsAreaChart>
           </ResponsiveContainer>
         </div>

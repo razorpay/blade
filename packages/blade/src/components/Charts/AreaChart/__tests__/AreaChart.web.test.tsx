@@ -47,9 +47,10 @@ describe('<AreaChart />', () => {
     expect(normalizeSnapshotIds(container.innerHTML)).toMatchSnapshot();
   });
 
-  // A dashed bridge keeps the area gapped (no fill under the no-data stretch) and adds a separate
-  // curved dashed line, drawn by the <Customized> NullBridgeLayer as an SVG <path>. A hard gap or a
-  // solid bridge renders no such path. Interior null run: Mar..May.
+  // Both bridge styles keep the area gapped (no fill under the no-data stretch) and add a separate
+  // curved line drawn by the <Customized> NullBridgeLayer as an SVG <path>: solid (no dash) for
+  // `connectNullsStyle="solid"` and dashed for `"dashed"`. A hard gap renders no such path.
+  // Interior null run: Mar..May.
   const dataWithNullsForBridge = [
     { name: 'Jan', sales: 4000 },
     { name: 'Feb', sales: 3000 },
@@ -104,7 +105,7 @@ describe('<AreaChart />', () => {
     expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(0);
   });
 
-  it('should not render a dashed bridge path for a solid bridge (connectNulls true)', () => {
+  it('should render a curved solid bridge path (no fill, no dash) when connectNullsStyle is "solid"', async () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartAreaWrapper data={dataWithNullsForBridge}>
@@ -112,7 +113,15 @@ describe('<AreaChart />', () => {
         </ChartAreaWrapper>
       </Box>,
     );
-    expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(0);
+    // The bridge is derived from the rendered area geometry, which the chart commits asynchronously.
+    await waitFor(() => {
+      expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(1);
+    });
+    const bridgePath = container.querySelector('.blade-null-bridge-layer path')!;
+    // A solid bridge is a plain line with no dash pattern.
+    expect(bridgePath).not.toHaveAttribute('stroke-dasharray');
+    // A curved path is sampled at many points, so the `d` attribute has multiple line-to commands.
+    expect((bridgePath.getAttribute('d')?.match(/L/g) ?? []).length).toBeGreaterThan(1);
   });
 
   it('should render a curved dashed bridge path when connectNullsStyle is "dashed"', async () => {

@@ -17,19 +17,21 @@ type ChartAreaProps = {
    *
    * - `false` (default): the area breaks at null points, leaving a gap (no fill either). Use this
    *   for genuine data outages where no continuity should be implied.
-   * - `true`: the area is connected across null points. Use `connectNullsStyle` to control whether
-   *   the bridge is drawn as a solid or dashed line.
+   * - `true`: a line bridges across null points while the fill stays gapped underneath (there's
+   *   never a fill under a no-data stretch). Use `connectNullsStyle` to control whether that bridge
+   *   line is solid or dashed.
    *
    * @default false
    */
   connectNulls?: boolean;
   /**
-   * The style of the line drawn across null points when `connectNulls` is `true`.
+   * The style of the line drawn across null points when `connectNulls` is `true`. In both cases the
+   * area fill is omitted under the no-data stretch — only the bridge line differs.
    *
-   * - `'solid'` (default): nulls are bridged with a solid line and the fill continues underneath.
-   * - `'dashed'`: real data renders as a solid area while the stretch across null points renders as
-   *   a dashed line with no fill, signalling "no data for this period" without implying a measured
-   *   value.
+   * - `'solid'` (default): real data renders as a solid area and the gap is bridged with a solid
+   *   line (no fill underneath).
+   * - `'dashed'`: real data renders as a solid area and the gap is bridged with a dashed line (no
+   *   fill underneath), signalling "no data for this period" without implying a measured value.
    *
    * @default 'solid'
    */

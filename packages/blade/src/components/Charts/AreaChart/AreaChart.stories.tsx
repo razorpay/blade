@@ -380,9 +380,10 @@ export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = ({
 
 // Area Chart null handling
 // - connectNulls={false} (default): the area breaks at null points (use for genuine outages).
-// - connectNulls={true} + connectNullsStyle="solid" (default): nulls bridged with a solid area.
-// - connectNulls={true} + connectNullsStyle="dashed": real data stays a solid area while the
-//   stretch across null points (no data for that period) renders as a dashed line with no fill.
+// - connectNulls={true} + connectNullsStyle="solid" (default): the gap is bridged with a solid line
+//   and no fill under the no-data stretch.
+// - connectNulls={true} + connectNullsStyle="dashed": the gap is bridged with a dashed line and no
+//   fill under the no-data stretch, signalling "no data for that period".
 export const AreaChartNullBridge: StoryFn<typeof ChartArea> = () => {
   return (
     <ChartsWrapper>

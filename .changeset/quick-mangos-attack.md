@@ -7,8 +7,8 @@ feat(AreaChart): add `connectNullsStyle` for a dashed no-data bridge on `ChartAr
 `ChartArea` now supports the same null-handling API as `ChartLine`:
 
 - `connectNulls={false}` (default, unchanged): the area breaks at null points, leaving a hard gap. Use this for genuine data outages.
-- `connectNulls={true}` + `connectNullsStyle="solid"` (default): nulls are bridged with a solid area (backward compatible with the previous `connectNulls` behaviour).
-- `connectNulls={true}` + `connectNullsStyle="dashed"`: real data renders as a solid area while the stretch across null points renders as a curved dashed line with no fill, signalling "no data for this period" without implying a measured value.
+- `connectNulls={true}` + `connectNullsStyle="solid"` (default): real data renders as a solid area and the gap is bridged with a curved solid line, with no fill under the no-data stretch.
+- `connectNulls={true}` + `connectNullsStyle="dashed"`: real data renders as a solid area and the gap is bridged with a curved dashed line, with no fill under the no-data stretch, signalling "no data for this period" without implying a measured value.
 
 Available on both React web and React Native.
 

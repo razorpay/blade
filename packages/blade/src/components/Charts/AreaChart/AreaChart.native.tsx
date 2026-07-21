@@ -505,16 +505,13 @@ const AreaSeries = ({
       AREA_FILL_OPACITY - scrubProgress.value * (AREA_FILL_OPACITY - AREA_FILL_OPACITY_DIMMED),
   }));
 
-  // A solid bridge draws one continuous shape across nulls. A dashed bridge (and a hard gap) keep
-  // the area split at null points, so there's no fill under the no-data stretch.
-  const isSolidBridge = connectNulls && connectNullsStyle === 'solid';
+  // The area is always split at null points so there's never a fill under the no-data stretch. When
+  // a bridge is requested, a stroke-only line is drawn across each gap — solid or dashed per
+  // `connectNullsStyle`.
   const isDashedBridge = connectNulls && connectNullsStyle === 'dashed';
 
   const segments: SeriesPoint[][] = [];
-  if (isSolidBridge) {
-    const nonNull = points.filter((p) => !p.isNull);
-    if (nonNull.length) segments.push(nonNull);
-  } else {
+  {
     let current: SeriesPoint[] = [];
     points.forEach((p) => {
       if (p.isNull) {
@@ -527,10 +524,10 @@ const AreaSeries = ({
     if (current.length) segments.push(current);
   }
 
-  // For a dashed bridge, draw a stroke-only dashed line across each interior gap, densely sampled
-  // onto the monotone spline through all real points so it follows the same curve as a solid line.
+  // For a bridge, draw a stroke-only line across each interior gap, densely sampled onto the
+  // monotone spline through all real points so it follows the same curve as the flanking area line.
   const bridgePaths: string[] = [];
-  if (isDashedBridge && segments.length > 1) {
+  if (connectNulls && segments.length > 1) {
     const definedTop = points.filter((p) => !p.isNull);
     const xs = definedTop.map((p) => p.x);
     const ys = definedTop.map((p) => p.yTop);
@@ -589,7 +586,7 @@ const AreaSeries = ({
           d={bridgeD}
           stroke={strokeColor}
           strokeWidth={STROKE_WIDTH}
-          strokeDasharray={NULL_BRIDGE_DASHARRAY}
+          strokeDasharray={isDashedBridge ? NULL_BRIDGE_DASHARRAY : undefined}
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
