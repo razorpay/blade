@@ -1,10 +1,11 @@
 import type { ChartLineProps } from './types';
 
 /**
- * Monotone cubic (Fritsch–Carlson) interpolation — the same family of curve Recharts /d3 uses for
- * `type="monotone"` (`curveMonotoneX`). Given the defined points `(xs[i], ys[i])` (xs ascending),
- * it returns the interpolated `y` at `xq`. Used to densely sample the null-bridge onto the real
- * curve so the dashed bridge follows the same shape as a solid connect instead of a straight line.
+ * Monotone cubic interpolation using d3's `curveMonotoneX` harmonic-mean tangent
+ * formula — the same algorithm Recharts and `buildMonotonePath` use for `type="monotone"`.
+ * Given the defined points `(xs[i], ys[i])` (xs ascending), it returns the interpolated
+ * `y` at `xq`. Used to densely sample the null-bridge onto the real curve so the dashed
+ * bridge follows the same shape as a solid connect instead of a straight line.
  */
 const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => {
   const n = xs.length;
@@ -17,28 +18,21 @@ const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => 
     slope[i] = dx === 0 ? 0 : (ys[i + 1] - ys[i]) / dx;
   }
 
-  // Tangents at each point.
+  // Tangents at each point — d3's curveMonotoneX harmonic-mean formula, matching
+  // buildMonotonePath's algorithm so the dashed bridge follows the same curve as the solid line.
   const tangent: number[] = new Array(n);
   tangent[0] = slope[0];
   tangent[n - 1] = slope[n - 2];
   for (let i = 1; i < n - 1; i++) {
-    tangent[i] = slope[i - 1] * slope[i] <= 0 ? 0 : (slope[i - 1] + slope[i]) / 2;
-  }
-
-  // Fritsch–Carlson monotonicity adjustment.
-  for (let i = 0; i < n - 1; i++) {
-    if (slope[i] === 0) {
+    const m1 = slope[i - 1];
+    const m2 = slope[i];
+    if (m1 * m2 <= 0) {
       tangent[i] = 0;
-      tangent[i + 1] = 0;
     } else {
-      const alpha = tangent[i] / slope[i];
-      const beta = tangent[i + 1] / slope[i];
-      const magnitude = alpha * alpha + beta * beta;
-      if (magnitude > 9) {
-        const scale = 3 / Math.sqrt(magnitude);
-        tangent[i] = scale * alpha * slope[i];
-        tangent[i + 1] = scale * beta * slope[i];
-      }
+      const dx1 = xs[i] - xs[i - 1];
+      const dx2 = xs[i + 1] - xs[i];
+      const common = dx1 + dx2;
+      tangent[i] = (3 * common) / ((common + dx2) / m1 + (common + dx1) / m2);
     }
   }
 

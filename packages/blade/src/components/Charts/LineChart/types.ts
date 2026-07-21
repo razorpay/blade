@@ -38,6 +38,12 @@ interface ChartLineProps {
    * - `'dashed'`: real data renders as a solid line while the stretch across null points renders
    *   dashed, signalling "no data for this period" without implying a measured value.
    *
+   * Note: `'dotted'` (which `strokeStyle` supports) is intentionally not offered for null bridges.
+   * A dotted bridge reads as a decorative line style rather than a "missing data" signal, and the
+   * dashed style is the agreed convention for representing gaps in this chart (see the
+   * SR-data-null discussion). If a dotted bridge is ever needed, extend this union and the
+   * rendering helpers together.
+   *
    * @default 'solid'
    */
   connectNullsStyle?: 'solid' | 'dashed';
