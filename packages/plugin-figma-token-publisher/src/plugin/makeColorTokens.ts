@@ -121,8 +121,9 @@ const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
 
     // prepare for storing variables in code in the format of dark and light modes
     for (const [modeName, modeId] of Object.entries(colorModes)) {
-      // mode names are of the form `<figmaThemePrefix>/<scheme>` eg: blade/onLight, bladeNeutral/onDark
-      const [figmaThemePrefix, scheme] = modeName.split('/');
+      // mode names are of the form `<figmaThemePrefix><separator><scheme>` where the separator
+      // is either " - " or "/" eg: "bladeNeutral - onLight", "blade/onDark"
+      const [figmaThemePrefix, scheme] = modeName.split(/\s*[-/]\s*/);
       const themeName = FIGMA_MODE_THEME_MAP[figmaThemePrefix];
       if (!themeName || (scheme !== 'onLight' && scheme !== 'onDark')) {
         continue;
