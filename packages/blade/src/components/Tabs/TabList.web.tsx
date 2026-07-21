@@ -36,6 +36,7 @@ const TabList = ({
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
   const orientation = isVertical ? 'vertical' : 'horizontal';
+  const pinnedContainerHeight = !isVertical ? filledHorizontalContainerHeight[size] : undefined;
 
   // Set the first child as the selected value
   useIsomorphicLayoutEffect(() => {
@@ -91,7 +92,7 @@ const TabList = ({
                   overflow={isVertical ? 'hidden' : undefined}
                   {...(isFilled
                     ? {
-                        borderRadius: containerBorderRadius[orientation][size ?? 'medium'],
+                        borderRadius: containerBorderRadius[orientation][size],
                         borderWidth: 'none',
                         borderColor: 'interactive.border.gray.default',
                         // Left/right padding matches SegmentedControl's containerPadding
@@ -104,9 +105,9 @@ const TabList = ({
                         // Only small (horizontal) needs a pinned height — its padding +
                         // line-height math falls short of the Figma spec. Other sizes
                         // still hug their content correctly, so leave them uncontrolled.
-                        ...(!isVertical && filledHorizontalContainerHeight[size ?? 'medium']
+                        ...(pinnedContainerHeight
                           ? {
-                              height: makeSpace(filledHorizontalContainerHeight[size ?? 'medium']!),
+                              height: makeSpace(pinnedContainerHeight),
                             }
                           : {}),
                       }

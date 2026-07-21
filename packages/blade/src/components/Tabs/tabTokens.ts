@@ -4,6 +4,7 @@ import type { DotNotationSpacingStringToken } from '~utils/types';
 type TabSizes = NonNullable<TabsProps['size']>;
 type TabVariants = Exclude<NonNullable<TabsProps['variant']>, 'borderless'>;
 type TabOrientation = 'horizontal' | 'vertical';
+type TabTextSize = 'small' | 'medium' | 'large';
 
 type TabItemPadding = Record<
   TabVariants,
@@ -175,21 +176,21 @@ const iconColor = {
   },
 } as const;
 
-const textSizeMap = {
+const textSizeMap: Record<TabSizes, TabTextSize> = {
   small: 'medium',
   medium: 'medium',
   large: 'large',
-} as const;
+};
 
 // Filled + horizontal text sizes per Figma spec. Only `small` differs from
 // `textSizeMap` (12px vs 14px); medium/large mirror `textSizeMap` but are
-// kept here so the full `Record<TabSizes, TextSize>` pattern is preserved
+// kept here so the full `Record<TabSizes, TabTextSize>` pattern is preserved
 // (matching `textSizeMap` and SegmentedControl's token maps).
-const filledHorizontalTextSizeMap = {
+const filledHorizontalTextSizeMap: Record<TabSizes, TabTextSize> = {
   small: 'small',
   medium: 'medium',
   large: 'large',
-} as const;
+};
 
 type BorderWidthValue = 'none' | 'thick' | 'thicker';
 
@@ -228,18 +229,18 @@ const containerBorderRadius: Record<TabOrientation, Record<TabSizes, BorderRadiu
   vertical: { small: 'medium', medium: 'medium', large: 'medium' },
 };
 
-// Explicit pixel heights for `filled` + `horizontal` only. Medium/large already
-// resolve to the correct height via padding + line-height, so they're omitted
-// here (left as `undefined` — computed height) to avoid touching passing
-// snapshots. Small's padding + line-height under-shoots Figma's spec (21px
-// item / 25px container vs. the required 24px / 32px), so it's pinned
-// explicitly here — mirrors the `itemHeight`/`containerHeight` pattern in
-// `segmentedControlTokens.ts`.
-const filledHorizontalContainerHeight: Partial<Record<TabSizes, number>> = {
+type FilledHorizontalPinnedHeight = Partial<Record<TabSizes, number>>;
+
+// Deliberately partial: entries here are pinned-height exceptions for
+// `filled` + `horizontal` tabs. Missing sizes mean "use the natural height"
+// from padding + line-height. Medium/large already resolve to the Figma height
+// that way, while small under-shoots (21px item / 25px container vs. the
+// required 24px / 32px), so only small is pinned.
+const filledHorizontalContainerHeight: FilledHorizontalPinnedHeight = {
   small: 32,
 };
 
-const filledHorizontalItemHeight: Partial<Record<TabSizes, number>> = {
+const filledHorizontalItemHeight: FilledHorizontalPinnedHeight = {
   small: 24,
 };
 

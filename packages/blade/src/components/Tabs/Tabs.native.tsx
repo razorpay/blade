@@ -12,6 +12,7 @@ import {
   borderRadius,
   containerBorderRadius,
   filledHorizontalContainerHeight,
+  filledHorizontalTextSizeMap,
 } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { getComponentId } from '~utils/isValidAllowedChildren';
@@ -294,11 +295,11 @@ const CustomTabBar = ({
                   ) : null}
                   <Text
                     color={textColor[selectedState].default}
-                    // Native has no vertical orientation, so `isFilled && size === 'small'`
-                    // is always the filled+horizontal+small case (12px per Figma spec).
+                    // Native has no vertical orientation, so filled tabs can consume the
+                    // filled+horizontal text-size tokens directly.
                     size={
-                      isFilled && size === 'small'
-                        ? 'small'
+                      isFilled
+                        ? filledHorizontalTextSizeMap[size]
                         : size === 'medium'
                         ? 'medium'
                         : 'large'
