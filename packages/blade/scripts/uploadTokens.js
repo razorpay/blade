@@ -20,8 +20,11 @@ const uploadColorTokens = async () => {
 
     for (const [themeName, themeModes] of Object.entries(colorTokens?.themeColorTokens ?? {})) {
       const targetRelativePath = THEME_TARGETS[themeName];
+      if (!targetRelativePath) {
+        console.warn(`No target file configured for theme: ${themeName}. Update THEME_TARGETS in scripts/uploadTokens.js.`);
+        continue;
+      }
       if (
-        !targetRelativePath ||
         !Object.keys(themeModes?.onLight ?? {}).length ||
         !Object.keys(themeModes?.onDark ?? {}).length
       ) {
