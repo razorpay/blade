@@ -509,6 +509,7 @@ exports[`<ChatInput /> (native) should disable input when isDisabled is true 1`]
                         height="32px"
                         hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
                         hoverIconColor="hsla(218, 89%, 51%, 0.32)"
+                        isDefiniteLoading={false}
                         isFullWidth={false}
                         isLoading={false}
                         isPressed={false}
@@ -1199,6 +1200,7 @@ exports[`<ChatInput /> (native) should render with default props 1`] = `
                         height="32px"
                         hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
                         hoverIconColor="hsla(218, 89%, 51%, 0.32)"
+                        isDefiniteLoading={false}
                         isFullWidth={false}
                         isLoading={false}
                         isPressed={false}
