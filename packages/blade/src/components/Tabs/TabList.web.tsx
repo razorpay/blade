@@ -3,7 +3,7 @@ import { Composite } from '@floating-ui/react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
 import { TabIndicator } from './TabIndicator';
-import { trackColor, containerBorderRadius, horizontalContainerHeight } from './tabTokens';
+import { trackColor, containerBorderRadius, filledHorizontalContainerHeight } from './tabTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Box } from '~components/Box';
@@ -98,23 +98,19 @@ const TabList = ({
                         padding: isCompact ? 'spacing.1' : 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
                         backgroundColor: 'interactive.background.gray.faded',
+                        // Only small (horizontal) needs a pinned height — its padding +
+                        // line-height math falls short of the Figma spec. Other sizes
+                        // still hug their content correctly, so leave them uncontrolled.
+                        ...(!isVertical && filledHorizontalContainerHeight[size ?? 'medium']
+                          ? {
+                              height: makeSpace(filledHorizontalContainerHeight[size ?? 'medium']!),
+                            }
+                          : {}),
                       }
                     : {
                         padding: 'spacing.0',
                         gap: isVertical ? 'spacing.0' : { base: 'spacing.7', m: 'spacing.8' },
                       })}
-                  // Only horizontal small/medium (per variant) needs a pinned container
-                  // height — some variants' padding + line-height math falls short of the
-                  // Figma spec. Other sizes still hug their content correctly, so leave
-                  // them uncontrolled.
-                  {...(!isVertical &&
-                  horizontalContainerHeight[variant ?? 'bordered']?.[size ?? 'medium']
-                    ? {
-                        height: makeSpace(
-                          horizontalContainerHeight[variant ?? 'bordered']![size ?? 'medium']!,
-                        ),
-                      }
-                    : {})}
                 >
                   {children}
                 </BaseBox>

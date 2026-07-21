@@ -11,7 +11,7 @@ import {
   trackColor,
   borderRadius,
   containerBorderRadius,
-  horizontalContainerHeight,
+  filledHorizontalContainerHeight,
 } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { getComponentId } from '~utils/isValidAllowedChildren';
@@ -224,7 +224,7 @@ const CustomTabBar = ({
   // Web pins a smaller padding (spacing.1, 2px) for horizontal+small via `isCompact` —
   // mirror that here so native padding isn't flatly 4px across every size.
   const isCompact = size === 'small';
-  const pinnedContainerHeight = horizontalContainerHeight[variant][size];
+  const pinnedContainerHeight = filledHorizontalContainerHeight[size];
 
   const tabBarStyle = isFilled
     ? {
@@ -241,7 +241,6 @@ const CustomTabBar = ({
         shadowOpacity: 0,
         shadowColor: 'transparent' as const,
         backgroundColor: 'transparent' as const,
-        ...(pinnedContainerHeight ? { height: pinnedContainerHeight } : {}),
         ...(variant !== 'borderless' && {
           borderBottomColor: getIn(theme.colors, trackColor),
           borderBottomWidth: theme.border.width.thin,
@@ -295,9 +294,15 @@ const CustomTabBar = ({
                   ) : null}
                   <Text
                     color={textColor[selectedState].default}
-                    // Native has no vertical orientation, so `size === 'small'` is always
-                    // the horizontal+small case (12px per Figma spec) across every variant.
-                    size={size === 'small' ? 'small' : size === 'medium' ? 'medium' : 'large'}
+                    // Native has no vertical orientation, so `isFilled && size === 'small'`
+                    // is always the filled+horizontal+small case (12px per Figma spec).
+                    size={
+                      isFilled && size === 'small'
+                        ? 'small'
+                        : size === 'medium'
+                        ? 'medium'
+                        : 'large'
+                    }
                     weight="semibold"
                   >
                     {route.title}

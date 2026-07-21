@@ -79,7 +79,7 @@ const paddingX: TabItemPadding = {
   },
   filled: {
     horizontal: {
-      small: 'spacing.2',
+      small: 'spacing.3',
       medium: 'spacing.3',
       large: 'spacing.3',
     },
@@ -181,10 +181,9 @@ const textSizeMap = {
   large: 'large',
 } as const;
 
-// Every variant (bordered/borderless/filled) + horizontal + small uses a smaller
-// label (12px) per Figma spec — every other orientation/size combination falls
-// back to `textSizeMap`.
-const smallHorizontalTextSize = 'small' as const;
+// Only filled + horizontal + small uses a smaller label (12px) per Figma spec —
+// every other variant/orientation/size combination falls back to `textSizeMap`.
+const filledHorizontalSmallTextSize = 'small' as const;
 
 type BorderWidthValue = 'none' | 'thick' | 'thicker';
 
@@ -223,22 +222,15 @@ const containerBorderRadius: Record<TabOrientation, Record<TabSizes, BorderRadiu
   vertical: { small: 'medium', medium: 'medium', large: 'medium' },
 };
 
-// Explicit pixel heights for the horizontal Tabs *container* (TabList), keyed by
-// variant. `filled` needed pinning because its padding + line-height under-shoots
-// Figma's spec (21px item / 25px container vs. the required 24px / 32px for
-// small) — mirrors the `itemHeight`/`containerHeight` pattern in
-// `segmentedControlTokens.ts`. `bordered`/`borderless` don't need item-height
-// pinning (no visible container chrome to clip against), but their container
-// height is still pinned to match the filled variant's height scale per spec.
-// Large is omitted everywhere (left as `undefined` — computed height) since it
-// already resolves correctly.
-const horizontalContainerHeight: Record<
-  TabVariants | 'borderless',
-  Partial<Record<TabSizes, number>>
-> = {
-  filled: { small: 32 },
-  bordered: { small: 32, medium: 36 },
-  borderless: { small: 32, medium: 36 },
+// Explicit pixel heights for `filled` + `horizontal` only. Medium/large already
+// resolve to the correct height via padding + line-height, so they're omitted
+// here (left as `undefined` — computed height) to avoid touching passing
+// snapshots. Small's padding + line-height under-shoots Figma's spec (21px
+// item / 25px container vs. the required 24px / 32px), so it's pinned
+// explicitly here — mirrors the `itemHeight`/`containerHeight` pattern in
+// `segmentedControlTokens.ts`.
+const filledHorizontalContainerHeight: Partial<Record<TabSizes, number>> = {
+  small: 32,
 };
 
 const filledHorizontalItemHeight: Partial<Record<TabSizes, number>> = {
@@ -340,11 +332,11 @@ export {
   paddingBottom,
   paddingX,
   textSizeMap,
-  smallHorizontalTextSize,
+  filledHorizontalSmallTextSize,
   borderWidth,
   borderRadius,
   containerBorderRadius,
-  horizontalContainerHeight,
+  filledHorizontalContainerHeight,
   filledHorizontalItemHeight,
   focusBorderRadius,
   borderColor,
