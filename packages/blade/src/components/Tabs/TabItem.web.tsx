@@ -134,8 +134,15 @@ const TabItem = ({
   onClick,
   ...rest
 }: TabItemProps): React.ReactElement => {
-  const { size, isFullWidthTabItem, selectedValue, setSelectedValue, baseId, variant, isVertical } =
-    useTabsContext();
+  const {
+    size,
+    isFullWidthTabItem,
+    selectedValue,
+    setSelectedValue,
+    baseId,
+    variant,
+    isVertical,
+  } = useTabsContext();
   const { currentInteraction, ...interactionProps } = useInteraction();
   const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size!);
   const isSelected = selectedValue === value;
