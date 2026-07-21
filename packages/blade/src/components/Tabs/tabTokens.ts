@@ -181,9 +181,15 @@ const textSizeMap = {
   large: 'large',
 } as const;
 
-// Only filled + horizontal + small uses a smaller label (12px) per Figma spec —
-// every other variant/orientation/size combination falls back to `textSizeMap`.
-const filledHorizontalSmallTextSize = 'small' as const;
+// Filled + horizontal text sizes per Figma spec. Only `small` differs from
+// `textSizeMap` (12px vs 14px); medium/large mirror `textSizeMap` but are
+// kept here so the full `Record<TabSizes, TextSize>` pattern is preserved
+// (matching `textSizeMap` and SegmentedControl's token maps).
+const filledHorizontalTextSizeMap = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const satisfies Record<TabSizes, 'small' | 'medium' | 'large'>;
 
 type BorderWidthValue = 'none' | 'thick' | 'thicker';
 
@@ -198,7 +204,7 @@ const borderWidth: Record<TabVariants, Record<TabOrientation, BorderWidthValue>>
   },
 };
 
-type BorderRadiusToken = 'none' | 'xsmall' | 'small' | 'medium' | 'large';
+type BorderRadiusToken = 'none' | 'xsmall' | 'small' | 'medium';
 
 const borderRadius: Record<
   TabVariants,
@@ -332,7 +338,7 @@ export {
   paddingBottom,
   paddingX,
   textSizeMap,
-  filledHorizontalSmallTextSize,
+  filledHorizontalTextSizeMap,
   borderWidth,
   borderRadius,
   containerBorderRadius,

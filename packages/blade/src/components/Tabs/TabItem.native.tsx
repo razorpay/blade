@@ -15,7 +15,7 @@ const StyledTabButton = styled(BaseBox)<{
   const _variant = variant === 'bordered' ? 'bordered' : 'filled';
   // Only `filled` + `small` (native is always horizontal) needs a pinned height —
   // its padding + line-height math falls short of the Figma spec.
-  const pinnedHeight = _variant === 'filled' ? filledHorizontalItemHeight[size!] : undefined;
+  const pinnedHeight = variant === 'filled' ? filledHorizontalItemHeight[size!] : undefined;
 
   return {
     display: 'flex',
