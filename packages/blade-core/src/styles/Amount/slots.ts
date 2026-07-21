@@ -1,10 +1,2 @@
-/** `value` = single-span amount; `integer` / `decimal` = split decimals path (decimal includes fraction). */
-export type AmountSlot =
-  | 'root'
-  | 'content'
-  | 'currency'
-  | 'value'
-  | 'integer'
-  | 'decimal'
-  | 'minusSign'
-  | 'strikethrough';
+/** `value` applies to all numeric spans (single-span, integer, decimal, minus sign). */
+export type AmountSlot = 'currency' | 'value';

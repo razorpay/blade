@@ -38,14 +38,13 @@ describe('resolveComponentStyleOverride', () => {
     expect(
       resolveComponentStyleOverride<ButtonSlot>(
         'Button',
-        { root: 'instance-cta', content: 'instance-content' },
+        { root: 'instance-cta', icon: 'instance-icon' },
         getter,
       ),
     ).toEqual({
       root: 'instance-cta',
       text: 'provider-label',
-      icon: 'provider-icon',
-      content: 'instance-content',
+      icon: 'instance-icon',
     });
   });
 

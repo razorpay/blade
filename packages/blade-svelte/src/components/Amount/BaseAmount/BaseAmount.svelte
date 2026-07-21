@@ -129,12 +129,13 @@
   const styledProps = $derived(getStyledPropsClasses(rest));
 
   // Combine classes for outer container
+  const valueOverrideClass = $derived(resolvedStyleOverride?.value);
+
   const outerContainerClasses = $derived(
     cx(
       utilityClasses['display-inline-flex'],
       utilityClasses['flex-direction-row'],
       ...(styledProps.classes ?? []),
-      resolvedStyleOverride?.root,
     ),
   );
 
@@ -144,7 +145,6 @@
       utilityClasses['display-inline-flex'],
       utilityClasses['flex-direction-row'],
       utilityClasses['position-relative'],
-      resolvedStyleOverride?.content,
     ),
   );
 
@@ -182,7 +182,7 @@
         color={amountValueColor}
         as="span"
         marginX="spacing.2"
-        className={resolvedStyleOverride?.minusSign}
+        className={valueOverrideClass}
       >
         {renderedValue.minusSign}
       </BaseText>
@@ -211,7 +211,7 @@
         color={amountValueColor}
         fontFamily={numberFontFamily}
         as="span"
-        className={resolvedStyleOverride?.integer}
+        className={valueOverrideClass}
       >
         {renderedValue.integer}
       </BaseText>
@@ -222,7 +222,7 @@
         color={amountValueColor}
         as="span"
         opacity={isAffixSubtle ? 0.64 : undefined}
-        className={resolvedStyleOverride?.decimal}
+        className={valueOverrideClass}
       >
         {renderedValue.decimal}{renderedValue.fraction}
       </BaseText>
@@ -234,7 +234,7 @@
         fontFamily={numberFontFamily}
         color={amountValueColor}
         lineHeight={amountLineHeights[type][size]}
-        className={resolvedStyleOverride?.value}
+        className={valueOverrideClass}
       >
         {amountString()}
       </BaseText>
@@ -256,7 +256,7 @@
 
     {#if isStrikethrough}
       <div
-        class={cx(utilityClasses['position-absolute'], resolvedStyleOverride?.strikethrough)}
+        class={utilityClasses['position-absolute']}
         style={strikethroughStyle()}
       ></div>
     {/if}

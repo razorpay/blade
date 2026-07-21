@@ -490,9 +490,9 @@
   {/if}
   <div class={animatedContentClasses()}>
     {#if isIndefiniteLoading}
-      <span class={cx(buttonClasses.dotsLoader, resolvedStyleOverride?.loader)} style:--btn-dots-color={dotsColorCSSVar}></span>
+      <span class={buttonClasses.dotsLoader} style:--btn-dots-color={dotsColorCSSVar}></span>
     {/if}
-    <span class={cx(buttonClasses.content, isIndefiniteLoading && buttonClasses.loading, 'focus-ring-child', resolvedStyleOverride?.content)}>
+    <span class={cx(buttonClasses.content, isIndefiniteLoading && buttonClasses.loading, 'focus-ring-child')}>
       {#if Icon && iconPosition === 'left'}
         <span class={cx(buttonClasses.icon, resolvedStyleOverride?.icon)}>
           <Icon size={iconSize} color={iconColorToken} />
@@ -535,7 +535,7 @@
         </span>
       {/if}
       {#if shouldShowAvatars && avatars}
-        <span class={cx(buttonClasses.avatarGroup, resolvedStyleOverride?.avatarGroup)}>
+        <span class={buttonClasses.avatarGroup}>
           <AvatarGroup size="xsmall">
             <!-- Key prefers a stable identity (src/name); the index fallback is a
                  defensive guard and is effectively unreachable since ButtonAvatar

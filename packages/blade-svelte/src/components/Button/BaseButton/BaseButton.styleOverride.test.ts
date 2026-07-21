@@ -23,11 +23,8 @@ describe('Button styleOverride slot class attachment', () => {
     'Button',
     {
       root: 'checkout-cta',
-      content: 'checkout-content',
       icon: 'checkout-icon',
       text: 'checkout-label',
-      loader: 'checkout-loader',
-      avatarGroup: 'checkout-avatars',
     },
     undefined,
   );
@@ -43,13 +40,6 @@ describe('Button styleOverride slot class attachment', () => {
     expect(rootClasses).toContain('checkout-cta');
   });
 
-  it('attaches content slot class alongside hashed part class', () => {
-    const contentClasses = cx(buttonClasses.content, 'focus-ring-child', resolved?.content);
-
-    expect(contentClasses).toContain(buttonClasses.content);
-    expect(contentClasses).toContain('checkout-content');
-  });
-
   it('attaches icon slot class alongside hashed part class', () => {
     const iconClasses = cx(buttonClasses.icon, resolved?.icon);
 
@@ -59,20 +49,6 @@ describe('Button styleOverride slot class attachment', () => {
 
   it('passes text slot as BaseText className', () => {
     expect(resolved?.text).toBe('checkout-label');
-  });
-
-  it('attaches loader slot class to dots loader element', () => {
-    const loaderClasses = cx(buttonClasses.dotsLoader, resolved?.loader);
-
-    expect(loaderClasses).toContain(buttonClasses.dotsLoader);
-    expect(loaderClasses).toContain('checkout-loader');
-  });
-
-  it('attaches avatarGroup slot class alongside hashed part class', () => {
-    const avatarGroupClasses = cx(buttonClasses.avatarGroup, resolved?.avatarGroup);
-
-    expect(avatarGroupClasses).toContain(buttonClasses.avatarGroup);
-    expect(avatarGroupClasses).toContain('checkout-avatars');
   });
 
   it('instance override wins over provider for root slot', () => {

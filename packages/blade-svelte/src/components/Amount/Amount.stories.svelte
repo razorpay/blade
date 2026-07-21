@@ -88,17 +88,15 @@
   import type { AmountSlot, StyleOverride } from '@razorpay/blade-core/styles';
 
   const footerAmountStyleOverride: StyleOverride<AmountSlot> = {
-    integer: 'text-(--footer-amount-value)',
-    decimal: 'text-(--footer-amount-decimal)',
+    value: 'text-(--footer-amount-value)',
     currency: 'text-(--footer-amount-currency)',
   };
 
   let footerValueColor = $state('#1a1a1a');
-  let footerDecimalColor = $state('#666666');
   let footerCurrencyColor = $state('#888888');
 
   const footerAmountVarsStyle = $derived(
-    `--footer-amount-value: ${footerValueColor}; --footer-amount-decimal: ${footerDecimalColor}; --footer-amount-currency: ${footerCurrencyColor};`,
+    `--footer-amount-value: ${footerValueColor}; --footer-amount-currency: ${footerCurrencyColor};`,
   );
 </script>
 
@@ -171,10 +169,6 @@
         <input type="color" bind:value={footerValueColor} aria-label="Footer amount value color" />
       </label>
       <label class="display-flex items-center gap-spacing-3">
-        <span>Decimal (--footer-amount-decimal)</span>
-        <input type="color" bind:value={footerDecimalColor} aria-label="Footer amount decimal color" />
-      </label>
-      <label class="display-flex items-center gap-spacing-3">
         <span>Currency (--footer-amount-currency)</span>
         <input
           type="color"
@@ -189,10 +183,6 @@
 <style>
   :global(.text-\(--footer-amount-value\)) {
     color: var(--footer-amount-value);
-  }
-
-  :global(.text-\(--footer-amount-decimal\)) {
-    color: var(--footer-amount-decimal);
   }
 
   :global(.text-\(--footer-amount-currency\)) {
