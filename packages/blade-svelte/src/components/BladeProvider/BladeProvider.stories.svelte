@@ -44,7 +44,10 @@
 <Story
   name="Playground"
   asChild
-  parameters={{ controls: { disable: true } }}
+  parameters={{
+    controls: { disable: true },
+    skipBladeProviderDecorator: true,
+  }}
 >
   <ThemeTokensPlayground />
 </Story>

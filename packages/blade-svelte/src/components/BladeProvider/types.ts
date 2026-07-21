@@ -84,6 +84,11 @@ export type BladeProviderProps = {
    * layered blade internals without `!important`.
    */
   componentConfig?: Partial<Record<BladeComponentName, BladeComponentConfig>>;
+  /**
+   * Optional `@font-face` CSS from `createTheme({ fontFaces }).fontFaceCss`.
+   * Injected once on this provider scope before children render.
+   */
+  fontFaceCss?: string;
   children: Snippet;
 };
 

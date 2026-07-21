@@ -1,6 +1,10 @@
 <script lang="ts">
   import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
-  import type { ColorSchemeNamesInput, ThemeTokens } from '@razorpay/blade-core/tokens';
+  import type {
+    ColorSchemeNamesInput,
+    CreateThemeFontFamilyOverride,
+    ThemeTokens,
+  } from '@razorpay/blade-core/tokens';
   import BladeProvider from './BladeProvider.svelte';
   import Button from '../Button/Button.svelte';
   import Text from '../Typography/Text/Text.svelte';
@@ -14,7 +18,6 @@
   import SegmentedControl from '../SegmentedControl/SegmentedControl.svelte';
   import SegmentedControlItem from '../SegmentedControl/SegmentedControlItem.svelte';
 
-  /** Brand label → hex. Empty = default bladeTheme (unless radius customized). */
   const BRAND_PRESETS: { label: string; hex: string }[] = [
     { label: 'Razorpay', hex: '' },
     { label: 'ICICI', hex: '#EE681A' },
@@ -40,7 +43,32 @@
     sharp: { small: 0, medium: 0, large: 0 },
   };
 
-  /** createTheme needs brandColor; use azure when Razorpay + custom radius. */
+  const PAGE_BG_PRESETS: { label: string; color: string }[] = [
+    { label: 'Default', color: '' },
+    { label: 'Cool gray', color: '#eef2f6' },
+    { label: 'Warm sand', color: '#f7f3ed' },
+    { label: 'Mint wash', color: '#edf8f5' },
+  ];
+
+  const FONT_PRESETS: { label: string; family?: CreateThemeFontFamilyOverride }[] = [
+    { label: 'Blade default' },
+    {
+      label: 'System UI',
+      family: {
+        text: 'system-ui, -apple-system, Segoe UI, sans-serif',
+        heading: 'system-ui, -apple-system, Segoe UI, sans-serif',
+        code: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+      },
+    },
+    {
+      label: 'Serif',
+      family: {
+        text: 'Georgia, Times New Roman, serif',
+        heading: 'Georgia, Times New Roman, serif',
+      },
+    },
+  ];
+
   const RAZORPAY_BRAND_FALLBACK = 'hsla(218, 89%, 51%, 1)';
 
   let brandLabel = $state('Razorpay');
@@ -50,7 +78,10 @@
     medium: number;
     large: number;
   } | null>(null);
-  let colorScheme = $state<ColorSchemeNamesInput>('light');
+  let colorScheme = $state<ColorSchemeNamesInput>('system');
+  let pageBgLabel = $state('Default');
+  let fontPresetLabel = $state('Blade default');
+  let fontSizeScaleFactor = $state('1');
 
   const brandHex = $derived(
     BRAND_PRESETS.find((b) => b.label === brandLabel)?.hex ?? '',
@@ -58,6 +89,13 @@
   const borderRadius = $derived(
     radiusOverride ?? RADIUS_PRESETS[radiusPreset] ?? { ...DEFAULT_RADIUS },
   );
+  const pageBackground = $derived(
+    PAGE_BG_PRESETS.find((p) => p.label === pageBgLabel)?.color ?? '',
+  );
+  const fontFamilyOverride = $derived(
+    FONT_PRESETS.find((f) => f.label === fontPresetLabel)?.family,
+  );
+  const fontSizeFactor = $derived(Number(fontSizeScaleFactor));
 
   const hasCustomRadius = $derived(
     borderRadius.small !== DEFAULT_RADIUS.small ||
@@ -65,25 +103,47 @@
       borderRadius.large !== DEFAULT_RADIUS.large,
   );
 
-  const themeTokens = $derived.by((): ThemeTokens => {
-    if (!brandHex && !hasCustomRadius) {
-      return bladeTheme;
+  const usesCreateTheme = $derived(
+    Boolean(brandHex) ||
+      hasCustomRadius ||
+      Boolean(pageBackground) ||
+      Boolean(fontFamilyOverride) ||
+      fontSizeFactor !== 1,
+  );
+
+  const themeBundle = $derived.by((): { themeTokens: ThemeTokens; fontFaceCss?: string } => {
+    if (!usesCreateTheme) {
+      return { themeTokens: bladeTheme };
     }
-    return createTheme({
+
+    const scaleFactor = fontSizeFactor !== 1 ? fontSizeFactor : undefined;
+
+    const { theme, fontFaceCss } = createTheme({
       brandColor: brandHex || RAZORPAY_BRAND_FALLBACK,
       borderRadius: hasCustomRadius ? { ...borderRadius } : undefined,
-    }).theme;
+      fontFamily: fontFamilyOverride,
+      fontSizeScaleFactor: scaleFactor,
+      surface: pageBackground
+        ? { background: { page: pageBackground } }
+        : undefined,
+    });
+
+    return { themeTokens: theme, fontFaceCss };
   });
+
+  const themeTokens = $derived(themeBundle.themeTokens);
+  const fontFaceCss = $derived(themeBundle.fontFaceCss);
 
   const brandDisplay = $derived(brandHex || 'bladeTheme (default)');
   const radiusLabel = $derived(
     `sm ${borderRadius.small} · md ${borderRadius.medium} · lg ${borderRadius.large}`,
   );
 
-  /** Live BladeProvider usage string — mirrors themeTokens + colorScheme resolution. */
   const usageSnippet = $derived.by((): string => {
     const schemeAttr = `colorScheme="${colorScheme}"`;
-    if (!brandHex && !hasCustomRadius) {
+    const fontFaceAttr = fontFaceCss ? '\n  fontFaceCss={fontFaceCss}' : '';
+
+    if (!usesCreateTheme) {
       return `<BladeProvider themeTokens={bladeTheme} ${schemeAttr}>
   ...
 </BladeProvider>`;
@@ -96,7 +156,17 @@
         `borderRadius: { small: ${borderRadius.small}, medium: ${borderRadius.medium}, large: ${borderRadius.large} }`,
       );
     }
-    return `<BladeProvider themeTokens={createTheme({ ${parts.join(', ')} }).theme} ${schemeAttr}>
+    if (fontFamilyOverride) {
+      parts.push(`fontFamily: ${JSON.stringify(fontFamilyOverride)}`);
+    }
+    if (fontSizeFactor !== 1) {
+      parts.push(`fontSizeScaleFactor: ${fontSizeFactor}`);
+    }
+    if (pageBackground) {
+      parts.push(`surface: { background: { page: '${pageBackground}' } }`);
+    }
+
+    return `<BladeProvider themeTokens={createTheme({ ${parts.join(', ')} }).theme}${fontFaceAttr} ${schemeAttr}>
   ...
 </BladeProvider>`;
   });
@@ -123,6 +193,20 @@
     }
   }
 
+  function onPageBgChange(payload: { name: string; values: string[] }): void {
+    const next = payload.values[0];
+    if (next) pageBgLabel = next;
+  }
+
+  function onFontPresetChange(payload: { name: string; values: string[] }): void {
+    const next = payload.values[0];
+    if (next) fontPresetLabel = next;
+  }
+
+  function onFontScaleChange(payload: { name?: string; value: string }): void {
+    fontSizeScaleFactor = payload.value;
+  }
+
   function bumpRadius(delta: number): void {
     radiusOverride = {
       small: Math.max(0, Math.min(32, borderRadius.small + delta)),
@@ -132,21 +216,26 @@
   }
 </script>
 
-<BladeProvider themeTokens={themeTokens} {colorScheme}>
-  <div class="playground">
-    <Heading size="large" weight="semibold">createTheme playground</Heading>
-    <Text size="medium" color="surface.text.gray.muted">
-      In-UI controls update <Code size="small">brandColor</Code>,
-      <Code size="small">borderRadius</Code>, and
-      <Code size="small">colorScheme</Code> via
-      <Code size="small">createTheme</Code> +
-      <Code size="small">BladeProvider</Code>.
-    </Text>
+<BladeProvider {themeTokens} {colorScheme} {fontFaceCss}>
+  <div class="story-shell">
+    <div class="playground">
+      <Heading size="large" weight="semibold">createTheme playground</Heading>
+      <Text size="medium" color="surface.text.gray.muted">
+        Page background maps to <Code size="small">surface.background.gray.moderate</Code>.
+        Brand, radius, font, and scheme flow through <Code size="small">createTheme</Code> and
+        <Code size="small">BladeProvider</Code> CSS variables on Blade components—not only story
+        layout wrappers.
+      </Text>
 
     <div class="meta">
       <Badge color="primary" emphasis="subtle">brand: {brandDisplay}</Badge>
       <Badge color="notice" emphasis="subtle">radius: {radiusLabel}</Badge>
       <Badge color="neutral" emphasis="subtle">scheme: {colorScheme}</Badge>
+      <Badge color="information" emphasis="subtle">font: {fontPresetLabel}</Badge>
+      <Badge color="information" emphasis="subtle">type scale: {fontSizeScaleFactor}×</Badge>
+      {#if pageBackground}
+        <Badge color="positive" emphasis="subtle">page bg: {pageBackground}</Badge>
+      {/if}
       {#if radiusOverride}
         <Badge color="information" emphasis="subtle">radius: custom nudge</Badge>
       {/if}
@@ -170,6 +259,50 @@
           <Chip value={preset.label}>{preset.label}</Chip>
         {/each}
       </ChipGroup>
+    </div>
+
+    <div class="control-block">
+      <Text size="small" weight="semibold">Page background (surface)</Text>
+      <ChipGroup
+        accessibilityLabel="Page background color"
+        selectionType="single"
+        size="small"
+        value={pageBgLabel}
+        onChange={onPageBgChange}
+      >
+        {#each PAGE_BG_PRESETS as preset (preset.label)}
+          <Chip value={preset.label}>{preset.label}</Chip>
+        {/each}
+      </ChipGroup>
+    </div>
+
+    <div class="control-block">
+      <Text size="small" weight="semibold">Font family</Text>
+      <ChipGroup
+        accessibilityLabel="Font family preset"
+        selectionType="single"
+        size="small"
+        value={fontPresetLabel}
+        onChange={onFontPresetChange}
+      >
+        {#each FONT_PRESETS as preset (preset.label)}
+          <Chip value={preset.label}>{preset.label}</Chip>
+        {/each}
+      </ChipGroup>
+    </div>
+
+    <div class="control-block">
+      <Text size="small" weight="semibold">Font size scale</Text>
+      <SegmentedControl
+        accessibilityLabel="Font size scale factor"
+        size="small"
+        value={fontSizeScaleFactor}
+        onChange={onFontScaleChange}
+      >
+        <SegmentedControlItem value="0.9">0.9×</SegmentedControlItem>
+        <SegmentedControlItem value="1">1×</SegmentedControlItem>
+        <SegmentedControlItem value="1.1">1.1×</SegmentedControlItem>
+      </SegmentedControl>
     </div>
 
     <div class="control-block">
@@ -210,43 +343,71 @@
     </div>
 
     <div class="swatch-row">
+      <div class="swatch moderate" title="gray moderate (page)"></div>
       <div class="swatch primary" title="primary intense"></div>
-      <div class="swatch surface" title="gray intense"></div>
       <div class="swatch gray" title="gray subtle"></div>
     </div>
 
-    <Card
-      variant="theme"
-      backgroundColor="surface.background.primary.subtle"
-      borderRadius="medium"
-    >
-      <CardBody>
-        <Heading size="small" weight="semibold">Live preview</Heading>
-        <Text size="small" color="surface.text.gray.muted">
-          Swatches + card corners track brand + radius. Buttons use
-          <Code size="small">small</Code> radius; card uses
-          <Code size="small">medium</Code>; panel uses
-          <Code size="small">large</Code>.
-        </Text>
-        <div class="actions">
-          <Button variant="primary" size="medium">Primary</Button>
-          <Button variant="secondary" size="medium">Secondary</Button>
-        </div>
-      </CardBody>
-    </Card>
+    <div class="surface-showcase">
+      <Text size="small" weight="semibold">Surface on components</Text>
+      <Text size="small" color="surface.text.gray.muted">
+        Change page background above — secondary Card and the moderate swatch should move
+        together. Primary-tinted Card stays on brand surface tokens.
+      </Text>
+      <div class="surface-cards">
+        <Card variant="secondary" borderRadius="medium">
+          <CardBody>
+            <Badge color="positive" emphasis="subtle" size="small">Page canvas token</Badge>
+            <Heading size="small" weight="semibold">Secondary Card</Heading>
+            <Text size="small" color="surface.text.gray.muted">
+              Uses <Code size="small">surface.background.gray.moderate</Code> (same as page
+              background override).
+            </Text>
+          </CardBody>
+        </Card>
+        <Card
+          variant="theme"
+          backgroundColor="surface.background.primary.subtle"
+          borderRadius="medium"
+        >
+          <CardBody>
+            <Badge color="primary" emphasis="subtle" size="small">Brand surface</Badge>
+            <Heading size="small" weight="semibold">Theme Card</Heading>
+            <Text size="small" color="surface.text.gray.muted">
+              <Code size="small">surface.background.primary.subtle</Code> — shifts with brand
+              color, not page background.
+            </Text>
+            <div class="actions">
+              <Button variant="primary" size="medium">Primary</Button>
+              <Button variant="secondary" size="medium">Secondary</Button>
+            </div>
+          </CardBody>
+        </Card>
+      </div>
+    </div>
+    </div>
   </div>
 </BladeProvider>
 
 <style>
+  .story-shell {
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    padding: var(--spacing-8);
+  }
+
   .playground {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-5);
     padding: var(--spacing-8);
-    background-color: var(--surface-background-gray-moderate);
+    background-color: var(--surface-background-gray-intense);
     border-radius: var(--border-radius-large);
     border: 1px solid var(--surface-border-gray-muted);
-    max-width: 560px;
+    max-width: 640px;
+    margin: 0 auto;
+    box-shadow: var(--elevation-low-raised);
   }
 
   .meta {
@@ -286,6 +447,24 @@
     gap: var(--spacing-3);
   }
 
+  .surface-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+  }
+
+  .surface-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-4);
+  }
+
+  @media (max-width: 560px) {
+    .surface-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .swatch-row {
     display: flex;
     gap: var(--spacing-3);
@@ -298,12 +477,12 @@
     border: 1px solid var(--surface-border-gray-muted);
   }
 
-  .primary {
-    background-color: var(--surface-background-primary-intense);
+  .moderate {
+    background-color: var(--surface-background-gray-moderate);
   }
 
-  .surface {
-    background-color: var(--surface-background-gray-intense);
+  .primary {
+    background-color: var(--surface-background-primary-intense);
   }
 
   .gray {

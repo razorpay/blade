@@ -83,6 +83,7 @@ const preview = {
       props: {
         colorScheme: context.globals.colorScheme ?? 'light',
         brandColor: context.globals.brandColor,
+        skipProvider: context.parameters.skipBladeProviderDecorator === true,
       },
       slots: {
         default: storyFn,

@@ -11,10 +11,13 @@
   let {
     colorScheme = 'light',
     brandColor,
+    skipProvider = false,
     children,
   }: {
     colorScheme?: ColorSchemeNamesInput;
     brandColor?: string;
+    /** Playground stories bring their own BladeProvider + createTheme. */
+    skipProvider?: boolean;
     children: Snippet;
   } = $props();
 
@@ -23,7 +26,11 @@
       try {
         return createTheme({ brandColor }).theme;
       } catch (error) {
-        console.warn('[BladeThemeDecorator]: Invalid brandColor, falling back to default theme', brandColor, error);
+        console.warn(
+          '[BladeThemeDecorator]: Invalid brandColor, falling back to default theme',
+          brandColor,
+          error,
+        );
         return bladeTheme;
       }
     }
@@ -31,6 +38,10 @@
   });
 </script>
 
-<BladeProvider {themeTokens} {colorScheme}>
+{#if skipProvider}
   {@render children()}
-</BladeProvider>
+{:else}
+  <BladeProvider {themeTokens} {colorScheme}>
+    {@render children()}
+  </BladeProvider>
+{/if}

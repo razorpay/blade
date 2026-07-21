@@ -26,6 +26,7 @@ export * from './platform';
 export * from './styledProps';
 export * from './tokenToCSSVariable';
 export * from './themeToCssVariables';
+export * from './buildFontFaceCss';
 export * from './types';
 export * from './amount';
 export * from './useId';

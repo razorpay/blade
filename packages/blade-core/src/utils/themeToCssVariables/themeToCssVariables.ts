@@ -1,5 +1,6 @@
 import { tokenToCSSVariable } from '../tokenToCSSVariable';
 import type { Border, Elevation } from '~tokens/global';
+import type { Typography } from '~tokens/global/typography';
 import type { Colors as ThemeColors } from '~tokens/theme';
 
 /**
@@ -10,6 +11,7 @@ export type ThemeCssVariableSource = {
   colors: ThemeColors;
   elevation: Elevation;
   border: Border;
+  typography?: Typography;
 };
 
 const isPlainObject = (value: unknown): value is Record<string, unknown> =>
@@ -56,6 +58,51 @@ const borderValueToCss = (value: number | string): string => {
   return `${value}px`;
 };
 
+const typographyValueToCss = (
+  group: 'fontSize' | 'lineHeight' | 'fontWeight',
+  value: number,
+): string => {
+  if (group === 'fontWeight') {
+    return String(value);
+  }
+  return `${value}px`;
+};
+
+/**
+ * Resolved platform typography → CSS vars matching `theme.css` (`--font-size-*`, etc.).
+ */
+export const typographyToCssVariables = (typography: Typography): Record<string, string> => {
+  const cssVariables: Record<string, string> = {};
+
+  for (const [key, value] of Object.entries(typography.fonts.family)) {
+    cssVariables[tokenToCSSVariable(`fontFamily.${key}`)] = value;
+  }
+
+  for (const [key, value] of Object.entries(typography.fonts.size)) {
+    cssVariables[tokenToCSSVariable(`fontSize.${key}`)] = typographyValueToCss('fontSize', value);
+  }
+
+  for (const [key, value] of Object.entries(typography.fonts.weight)) {
+    cssVariables[tokenToCSSVariable(`fontWeight.${key}`)] = typographyValueToCss(
+      'fontWeight',
+      value,
+    );
+  }
+
+  for (const [key, value] of Object.entries(typography.lineHeights)) {
+    cssVariables[tokenToCSSVariable(`lineHeight.${key}`)] = typographyValueToCss(
+      'lineHeight',
+      value,
+    );
+  }
+
+  for (const [key, value] of Object.entries(typography.letterSpacings)) {
+    cssVariables[tokenToCSSVariable(`letterSpacing.${key}`)] = `${value}%`;
+  }
+
+  return cssVariables;
+};
+
 /**
  * Convert a resolved theme slice into CSS custom property declarations.
  * Keys match `@razorpay/blade-core/tokens/theme.css` (e.g. `--surface-background-gray-subtle`).
@@ -72,6 +119,10 @@ export const themeToCssVariables = (theme: ThemeCssVariableSource): Record<strin
 
   for (const [key, value] of Object.entries(theme.border.width)) {
     cssVariables[tokenToCSSVariable(`border.width.${key}`)] = borderValueToCss(value);
+  }
+
+  if (theme.typography) {
+    Object.assign(cssVariables, typographyToCssVariables(theme.typography));
   }
 
   return cssVariables;

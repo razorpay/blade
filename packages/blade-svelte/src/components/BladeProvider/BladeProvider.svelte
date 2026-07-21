@@ -21,6 +21,7 @@
     themeTokens,
     colorScheme: colorSchemeProp = 'light',
     componentConfig,
+    fontFaceCss,
     children,
   }: BladeProviderProps = $props();
 
@@ -72,6 +73,7 @@
         colors: theme.colors,
         elevation: theme.elevation,
         border: theme.border,
+        typography: theme.typography,
       }),
     ),
   );
@@ -154,5 +156,10 @@
   data-blade-color-scheme={colorScheme}
   style={cssVariableStyle}
 >
+  {#if fontFaceCss}
+    <svelte:element this={'style'} data-blade-font-faces>
+      {fontFaceCss}
+    </svelte:element>
+  {/if}
   {@render children()}
 </div>
