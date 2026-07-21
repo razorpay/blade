@@ -70,7 +70,33 @@ type StoryProps = ChartSankeyWrapperProps &
     nodesL2: number;
     nodesL3: number;
     nodesL4: number;
+    successColor: SankeyDataNode['color'];
+    failedColor: SankeyDataNode['color'];
   };
+
+// Curated palette for the per-node color controls below. Each value is a typed
+// `ChartsCategoricalColorToken`; the `labels` map in argTypes shows a friendly name.
+const NODE_COLOR_OPTIONS: NonNullable<SankeyDataNode['color']>[] = [
+  'data.background.categorical.green.subtle',
+  'data.background.categorical.green.moderate',
+  'data.background.categorical.red.subtle',
+  'data.background.categorical.red.moderate',
+  'data.background.categorical.blue.moderate',
+  'data.background.categorical.gold.moderate',
+  'data.background.categorical.purple.moderate',
+  'data.background.categorical.orange.moderate',
+  'data.background.categorical.pink.moderate',
+  'data.background.categorical.skyBlue.moderate',
+  'data.background.categorical.gray.moderate',
+];
+
+const NODE_COLOR_LABELS: Record<string, string> = NODE_COLOR_OPTIONS.reduce(
+  (acc, token) => {
+    acc[token] = token.replace('data.background.categorical.', '');
+    return acc;
+  },
+  {} as Record<string, string>,
+);
 
 export default {
   title: 'Components/Charts/SankeyChart',
@@ -136,6 +162,18 @@ export default {
       control: { type: 'text' },
       description:
         'Chart width. Accepts a pixel number or any valid CSS width string (e.g. "100%", "600px"). Default: "100%".',
+    },
+    successColor: {
+      control: { type: 'select', labels: NODE_COLOR_LABELS },
+      options: NODE_COLOR_OPTIONS,
+      description:
+        'Per-node color override for the "Successful" outcome node, applied via `SankeyDataNode.color`. Demonstrates node-level color control.',
+    },
+    failedColor: {
+      control: { type: 'select', labels: NODE_COLOR_LABELS },
+      options: NODE_COLOR_OPTIONS,
+      description:
+        'Per-node color override for the "Failed" outcome node, applied via `SankeyDataNode.color`. Demonstrates node-level color control.',
     },
     // Hide complex/internal props from Storybook controls
     data: { table: { disable: true } },
@@ -264,9 +302,17 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
   nodesL2 = 4,
   nodesL3 = 3,
   nodesL4 = 2,
+  successColor = 'data.background.categorical.green.subtle',
+  failedColor = 'data.background.categorical.red.subtle',
 }: StoryProps) => {
   const counts = ([nodesL1, nodesL2, nodesL3, nodesL4] as number[]).slice(0, numLevels);
-  const { nodes, links } = generateChartData(counts);
+  const { nodes: generatedNodes, links } = generateChartData(counts);
+  // Apply the per-node color controls to the semantic outcome nodes.
+  const nodes = generatedNodes.map((node) => {
+    if (node.name === 'Successful') return { ...node, color: successColor };
+    if (node.name === 'Failed') return { ...node, color: failedColor };
+    return node;
+  });
   return (
     <ChartsWrapper padding="spacing.0">
       <Box width="100%" height={`${height}px`}>
@@ -284,6 +330,118 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
       </Box>
     </ChartsWrapper>
   );
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Per-node color control. This story uses a fixed set of nodes so that every node
+ * can be bound to its own color control (a stable node list is required — in the
+ * configurable `DefaultSankeyChart` the node count is itself a control, so it can't
+ * cleanly expose one color control per node). Each node's color is applied via
+ * `SankeyDataNode.color`; links inherit their color from the source node.
+ */
+type PerNodeColorProps = {
+  totalColor: SankeyDataNode['color'];
+  upiColor: SankeyDataNode['color'];
+  cardColor: SankeyDataNode['color'];
+  walletColor: SankeyDataNode['color'];
+  successColor: SankeyDataNode['color'];
+  failedColor: SankeyDataNode['color'];
+};
+
+const PER_NODE_DATA: { nodes: SankeyDataNode[]; links: SankeyDataLink[] } = {
+  nodes: [
+    { id: 'total', name: 'Total' },
+    { id: 'upi', name: 'UPI' },
+    { id: 'card', name: 'Card' },
+    { id: 'wallet', name: 'Wallet' },
+    { id: 'success', name: 'Successful' },
+    { id: 'failed', name: 'Failed' },
+  ],
+  links: [
+    { source: 'total', target: 'upi', value: 5000 },
+    { source: 'total', target: 'card', value: 3000 },
+    { source: 'total', target: 'wallet', value: 2000 },
+    { source: 'upi', target: 'success', value: 4200 },
+    { source: 'upi', target: 'failed', value: 800 },
+    { source: 'card', target: 'success', value: 2500 },
+    { source: 'card', target: 'failed', value: 500 },
+    { source: 'wallet', target: 'success', value: 1600 },
+    { source: 'wallet', target: 'failed', value: 400 },
+  ],
+};
+
+export const CustomNodeColorsSankeyChart: StoryFn<PerNodeColorProps> = ({
+  totalColor,
+  upiColor,
+  cardColor,
+  walletColor,
+  successColor,
+  failedColor,
+}) => {
+  const colorByName: Record<string, SankeyDataNode['color']> = {
+    Total: totalColor,
+    UPI: upiColor,
+    Card: cardColor,
+    Wallet: walletColor,
+    Successful: successColor,
+    Failed: failedColor,
+  };
+  const nodes = PER_NODE_DATA.nodes.map((node) => ({
+    ...node,
+    color: colorByName[node.name] ?? node.color,
+  }));
+  return (
+    <ChartsWrapper padding="spacing.0">
+      <Box width="100%" height="480px">
+        <ChartSankeyWrapper showTooltip>
+          <ChartSankey
+            data={{ nodes, links: PER_NODE_DATA.links }}
+            labelUnit="txn"
+            onNodeClick={action('onNodeClick')}
+            onLinkClick={action('onLinkClick')}
+          />
+        </ChartSankeyWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+const perNodeColorArgType = {
+  control: { type: 'select' as const, labels: NODE_COLOR_LABELS },
+  options: NODE_COLOR_OPTIONS,
+};
+
+CustomNodeColorsSankeyChart.argTypes = {
+  totalColor: { ...perNodeColorArgType, description: 'Color for the "Total" node.' },
+  upiColor: { ...perNodeColorArgType, description: 'Color for the "UPI" node.' },
+  cardColor: { ...perNodeColorArgType, description: 'Color for the "Card" node.' },
+  walletColor: { ...perNodeColorArgType, description: 'Color for the "Wallet" node.' },
+  successColor: { ...perNodeColorArgType, description: 'Color for the "Successful" node.' },
+  failedColor: { ...perNodeColorArgType, description: 'Color for the "Failed" node.' },
+  // Hide the configurable controls inherited from meta — they don't apply here.
+  height: { table: { disable: true } },
+  showTooltip: { table: { disable: true } },
+  showLabels: { table: { disable: true } },
+  showLabelChip: { table: { disable: true } },
+  showPercentage: { table: { disable: true } },
+  labelUnit: { table: { disable: true } },
+  numLevels: { table: { disable: true } },
+  nodesL1: { table: { disable: true } },
+  nodesL2: { table: { disable: true } },
+  nodesL3: { table: { disable: true } },
+  nodesL4: { table: { disable: true } },
+  width: { table: { disable: true } },
+} as Meta<PerNodeColorProps>['argTypes'];
+
+CustomNodeColorsSankeyChart.args = {
+  totalColor: 'data.background.categorical.blue.moderate',
+  upiColor: 'data.background.categorical.purple.moderate',
+  cardColor: 'data.background.categorical.gold.moderate',
+  walletColor: 'data.background.categorical.orange.moderate',
+  successColor: 'data.background.categorical.green.subtle',
+  failedColor: 'data.background.categorical.red.subtle',
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
