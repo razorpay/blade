@@ -11,3 +11,5 @@ feat(AreaChart): add `connectNullsStyle` for a dashed no-data bridge on `ChartAr
 - `connectNulls={true}` + `connectNullsStyle="dashed"`: real data renders as a solid area while the stretch across null points renders as a curved dashed line with no fill, signalling "no data for this period" without implying a measured value.
 
 Available on both React web and React Native.
+
+Also fixes a latent bug where multiple `AreaChart`s on the same page emitted gradients with the same id, causing every chart's fill to resolve to the first chart's gradient (and appear washed out / invisible). Gradient ids are now namespaced per chart instance.

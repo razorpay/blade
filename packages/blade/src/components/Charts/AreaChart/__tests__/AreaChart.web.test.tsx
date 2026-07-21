@@ -59,6 +59,40 @@ describe('<AreaChart />', () => {
     { name: 'Jun', sales: 2390 },
   ];
 
+  it('should give each chart instance a unique gradient id so fills do not collide across charts on one page', () => {
+    // Two AreaCharts with the same dataKey previously emitted the same gradient id (e.g.
+    // `color-0-sales`), so every area's fill="url(#...)" resolved to the first chart's gradient and
+    // could be washed out by its color. Each instance must now namespace its gradient id.
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartAreaWrapper data={mockData}>
+          <ChartArea
+            dataKey="sales"
+            name="Sales"
+            color="data.background.categorical.blue.moderate"
+          />
+        </ChartAreaWrapper>
+        <ChartAreaWrapper data={mockData}>
+          <ChartArea
+            dataKey="sales"
+            name="Sales"
+            color="data.background.categorical.green.moderate"
+          />
+        </ChartAreaWrapper>
+      </Box>,
+    );
+    const gradientIds = Array.from(container.querySelectorAll('linearGradient')).map((g) => g.id);
+    expect(gradientIds).toHaveLength(2);
+    expect(new Set(gradientIds).size).toBe(2);
+    // The area fills must reference their own chart's gradient id.
+    const fillRefs = Array.from(container.querySelectorAll('.recharts-area-area')).map((a) =>
+      a.getAttribute('fill'),
+    );
+    fillRefs.forEach((ref) => {
+      expect(gradientIds.some((id) => ref === `url(#${id})`)).toBe(true);
+    });
+  });
+
   it('should not render a dashed bridge path by default (hard gap)', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">

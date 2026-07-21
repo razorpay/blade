@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useLayoutEffect } from 'react';
+import React, { useState, useMemo, useRef, useLayoutEffect, useId } from 'react';
 import {
   AreaChart as RechartsAreaChart,
   Area as RechartsArea,
@@ -46,6 +46,7 @@ const Area: React.FC<ChartAreaProps> = ({
   _index,
   _colorTheme,
   _totalAreas,
+  _gradientNamespace = '',
   dataKey,
   name,
   hide,
@@ -72,7 +73,7 @@ const Area: React.FC<ChartAreaProps> = ({
   return (
     <RechartsArea
       {...props}
-      fill={`url(#color-${_index}-${dataKey})`}
+      fill={`url(#color-${_gradientNamespace}-${_index}-${dataKey})`}
       dataKey={dataKey}
       name={name}
       stroke={colorToken}
@@ -137,6 +138,12 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     chartName: 'area',
   });
 
+  // Unique per-instance namespace for gradient ids. Without it, multiple AreaCharts on the same
+  // page emit gradients with the same id (e.g. `color-0-uv`) and every area's `fill="url(#...)"`
+  // resolves to the first one in the document, so all charts share (and can be washed out by) the
+  // first chart's fill color. Colons from `useId` are stripped so the id stays `url()`-safe.
+  const gradientNamespace = useId().replace(/[^a-zA-Z0-9]/g, '');
+
   // State to track which areas are currently selected (visible)
   const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
 
@@ -188,6 +195,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,
           _totalAreas: totalAreas,
+          _gradientNamespace: gradientNamespace,
           hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartAreaProps>);
       }
@@ -201,7 +209,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       dataColorMapping,
       secondaryDataKey,
     };
-  }, [children, colorTheme, themeColors, selectedDataKeys]);
+  }, [children, colorTheme, themeColors, selectedDataKeys, gradientNamespace]);
 
   // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
   const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
@@ -369,8 +377,8 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
               <defs>
                 {Object.keys(dataColorMapping).map((dataKey, index) => (
                   <ChartColorGradient
-                    key={`color-${index}-${dataKey}`}
-                    id={`color-${index}-${dataKey}`}
+                    key={`color-${gradientNamespace}-${index}-${dataKey}`}
+                    id={`color-${gradientNamespace}-${index}-${dataKey}`}
                     index={index}
                     color={dataColorMapping[dataKey].colorToken}
                     totalAreaChartChildren={totalAreaChartChildren}

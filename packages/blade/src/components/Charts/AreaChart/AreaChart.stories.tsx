@@ -401,7 +401,7 @@ export const AreaChartNullBridge: StoryFn<typeof ChartArea> = () => {
                 type="monotone"
                 dataKey="uv"
                 name="Visitors (Gap on no-data)"
-                color="data.background.categorical.gray.strong"
+                color="data.background.categorical.orange.moderate"
               />
             </ChartAreaWrapper>
           </Box>
