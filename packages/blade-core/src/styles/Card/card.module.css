@@ -173,45 +173,46 @@
 }
 
 /* --- CardTicketSurface (ticket-card) ---
-   Two stacked sections split by a scalloped tear line with an outlined semicircular notch on
-   either edge. The wrapper's overflow:hidden clips the half-circle notches (positioned half
-   outside each edge) to their inner half, mirroring Figma's cut-circle technique. State
-   (selected/disabled) is driven by data-attributes on the wrapper. Geometry mirrors the React
-   Card: notch radius 10px, scallop radius 4px repeating every 16px. */
+   Two stacked sections split by a scalloped tear line. The ticket shell (rounded rectangle,
+   side notches, perforation, border) is drawn by an inline SVG in CardTicketSurface. */
 .cardTicketWrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow: hidden;
+}
+
+.cardTicketOutline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.cardTicketClipContent {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .cardTicketSection {
   position: relative;
   box-sizing: border-box;
   padding: var(--spacing-4);
-  border-style: solid;
-  border-color: var(--surface-border-gray-subtle);
-  border-left-width: var(--border-width-thin);
-  border-right-width: var(--border-width-thin);
 }
 
-/* The two sections meet flush at the tear line, so the adjoining edges carry no border. */
 .cardTicketSectionTop {
   background-color: var(--surface-background-gray-intense);
-  border-top-left-radius: var(--border-radius-medium);
-  border-top-right-radius: var(--border-radius-medium);
-  border-top-width: var(--border-width-thin);
-  border-bottom-width: 0;
 }
 
 .cardTicketSectionBottom {
   background-color: var(--surface-background-gray-moderate);
-  border-bottom-left-radius: var(--border-radius-medium);
-  border-bottom-right-radius: var(--border-radius-medium);
-  border-bottom-width: var(--border-width-thin);
-  border-top-width: 0;
-  /* Scalloped perforation: white (header-coloured) half-discs poking down into the footer edge. */
+  /* Scalloped perforation fill: header colour half-discs along the tear line. */
   background-image: radial-gradient(
     circle 4px at 8px 0px,
     var(--surface-background-gray-intense) 3.5px,
@@ -220,42 +221,6 @@
   background-repeat: repeat-x;
   background-size: 16px 100%;
   background-position: left top;
-}
-
-/* Outlined semicircular notch: a white-filled circle centred on the tear line and pushed half
-   outside an edge; the wrapper's overflow:hidden clips it to the inner half. */
-.cardTicketNotch {
-  position: absolute;
-  top: -10px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  background-color: var(--surface-background-gray-intense);
-  border-style: solid;
-  border-color: var(--surface-border-gray-subtle);
-  border-width: var(--border-width-thin);
-}
-
-.cardTicketNotchLeft {
-  left: -10px;
-}
-
-.cardTicketNotchRight {
-  right: -10px;
-}
-
-/* Selected: primary border on sections + notches. The wrapper only carries data-selected when
-   it is not disabled, so a disabled ticket never shows the selected (primary) border. */
-.cardTicketWrapper[data-selected='true'] .cardTicketSection,
-.cardTicketWrapper[data-selected='true'] .cardTicketNotch {
-  border-color: var(--surface-border-primary-normal);
-}
-
-/* Disabled: dashed border on sections + notches. */
-.cardTicketWrapper[data-disabled='true'] .cardTicketSection,
-.cardTicketWrapper[data-disabled='true'] .cardTicketNotch {
-  border-style: dashed;
 }
 
 /* --- CardInfoSurface (info-card) ---
@@ -308,7 +273,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     height: 100%;
   }

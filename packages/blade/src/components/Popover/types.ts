@@ -7,6 +7,7 @@ import type { ColorSchemeNames } from '~tokens/theme';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Platform } from '~utils';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import type { SpacingValueType } from '~components/Box/BaseBox/types/spacingTypes';
 
 type PopoverProps = {
   /**
@@ -67,6 +68,12 @@ type PopoverProps = {
    * @default 'click'
    */
   openInteraction?: 'hover' | 'click';
+  /**
+   * Sets the maximum width of the popover content
+   *
+   * @default 328px on desktop, 288px on mobile
+   */
+  maxWidth?: SpacingValueType;
 } & DataAnalyticsAttribute;
 
 type PopoverContentProps = {
@@ -78,15 +85,23 @@ type PopoverContentProps = {
    */
   isVisible?: boolean;
   /**
+   * react-native only — override enter/exit duration (defaults to motion.duration.quick)
+   */
+  animationDuration?: number;
+  /**
    * react-native only
    */
   side?: Side;
-} & Pick<PopoverProps, 'title' | 'titleLeading' | 'footer' | 'children'>;
+} & Pick<PopoverProps, 'title' | 'titleLeading' | 'footer' | 'children' | 'maxWidth'>;
 
 type PopoverContentWrapperProps = {
   styles: CSSProperties;
   side?: Side;
   isVisible?: boolean;
+  /**
+   * react-native only — override enter/exit duration (defaults to motion.duration.quick)
+   */
+  animationDuration?: number;
   isMobile: boolean;
   colorScheme: ColorSchemeNames;
 } & BaseBoxProps;

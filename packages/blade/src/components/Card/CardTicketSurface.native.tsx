@@ -63,16 +63,12 @@ const TicketSection = styled(BaseBox)<TicketStateProps & { position: 'top' | 'bo
 type CardTicketSurfaceProps = {
   top: React.ReactNode;
   bottom: React.ReactNode;
-  tearLine: React.ReactNode;
   children?: React.ReactNode;
 } & TicketStateProps;
 
 const CardTicketSurface = ({
   top,
   bottom,
-  // tearLine is intentionally unused on native — NativeTearLine draws the tear line unconditionally
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  tearLine: _tearLine,
   children,
   isSelected,
   isDisabled,

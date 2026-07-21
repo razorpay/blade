@@ -104,7 +104,7 @@
 
     if (isFilled) {
       if (ctx.size === 'small' && !ctx.isVertical) {
-        result.push(classes.tabRadiusMedium);
+        result.push(classes.tabRadiusFilledHorizSmall);
       } else {
         result.push(classes.tabRadiusSmall);
       }
@@ -127,11 +127,7 @@
     }
 
     if (isFilled) {
-      if (ctx.size === 'small' && !ctx.isVertical) {
-        result.push(classes.tabFocusRadiusMedium);
-      } else {
-        result.push(classes.tabFocusRadiusSmall);
-      }
+      result.push(classes.tabFocusRadiusSmall);
     } else {
       result.push(classes.tabFocusRadiusMedium);
     }
