@@ -71,6 +71,7 @@ export default {
     iconPosition: 'left',
     isFullWidth: false,
     type: 'button',
+    loadingType: 'indefinite',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -81,6 +82,20 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
+    },
+    loadingType: {
+      control: 'select',
+      options: ['indefinite', 'definite'],
+      description:
+        '`indefinite` shows a 3-dot loader controlled by `isLoading`; `definite` shows a left-to-right progress overlay over `loadingTimer` ms',
+    },
+    loadingTimer: {
+      control: 'number',
+      description: 'Duration (ms) over which the `definite` progress overlay fills from 0% to 100%',
+    },
+    avatars: {
+      control: 'object',
+      description: 'Avatars rendered after the button text. Only shown for `large` buttons',
     },
   },
   parameters: {
@@ -95,6 +110,12 @@ const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', 
 };
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
+const sampleAvatars: ButtonProps['avatars'] = [
+  { name: 'Nitin Kumar', src: 'https://avatars.githubusercontent.com/u/46647141?v=4' },
+  { name: 'Kamlesh Chandnani', src: 'https://picsum.photos/seed/kamlesh/200' },
+  { name: 'Rama Krushna Behera', src: 'https://picsum.photos/seed/rama/200' },
+];
+
 const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
@@ -408,6 +429,45 @@ ButtonLoading.parameters = {
       story: 'Loading state for the button with live announce accessibility support',
     },
   },
+};
+
+export const DefiniteLoading: StoryFn<typeof ButtonComponent> = ({
+  children = 'Processing',
+  ...args
+}) => {
+  return (
+    <ButtonComponent {...args} loadingType="definite" loadingTimer={3000} size="large">
+      {children}
+    </ButtonComponent>
+  );
+};
+
+DefiniteLoading.storyName = 'Definite Loading';
+
+export const DefiniteLoadingWithCompleteCallback: StoryFn<typeof ButtonComponent> = () => {
+  const [isDefiniteLoadingDemoActive, setIsDefiniteLoadingDemoActive] = useState(false);
+
+  return (
+    <ButtonComponent
+      size="large"
+      loadingType={isDefiniteLoadingDemoActive ? 'definite' : 'indefinite'}
+      loadingTimer={isDefiniteLoadingDemoActive ? 2500 : undefined}
+      onClick={() => setIsDefiniteLoadingDemoActive(true)}
+      onLoadingComplete={() => setIsDefiniteLoadingDemoActive(false)}
+    >
+      {isDefiniteLoadingDemoActive ? 'Processing' : 'Complete in 2.5s'}
+    </ButtonComponent>
+  );
+};
+
+DefiniteLoadingWithCompleteCallback.storyName = 'Definite Loading With Complete Callback';
+
+export const ButtonWithAvatarGroup = ButtonTemplate.bind({});
+ButtonWithAvatarGroup.storyName = 'With Avatar Group';
+ButtonWithAvatarGroup.args = {
+  children: 'Shared with',
+  size: 'large',
+  avatars: sampleAvatars,
 };
 
 export const FullWidthButton = ButtonWithVariantTemplate.bind({});

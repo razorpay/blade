@@ -2,8 +2,9 @@
 '@razorpay/blade': minor
 ---
 
-feat(Button): add loadingType prop and replace spinner with dot loader
+feat(Button): add loading variants and avatar group support
 
-- Added `loadingType` prop to `Button` and `BaseButton` components (defaults to `'indefinite'`)
-- Replaced `BaseSpinner` with `ButtonDotLoader` for the loading indicator
-- `ButtonDotLoader` has platform-specific implementations (web uses CSS keyframes, native uses react-native-reanimated)
+- Added `loadingType`, `loadingTimer`, and `onLoadingComplete` props to `Button` and `BaseButton`
+- Replaced `BaseSpinner` with the 3-dot `ButtonDotLoader` for indefinite loading
+- Added definite loading with a left-to-right progress overlay
+- Added `avatars` support for large buttons

@@ -127,6 +127,7 @@ export type StyledBaseButtonProps = Omit<
   isShadowGradientVisible?: boolean;
   accessibilityProps: Record<string, unknown>;
   isPressed: boolean;
+  isDefiniteLoading: boolean;
 } & StyledPropsBlade &
   BladeCommonEvents;
 

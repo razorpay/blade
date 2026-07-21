@@ -224,7 +224,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 .c7.c7.c7.c7.c7 {
   width: 32px;
   height: 16px;
-  --_g: no-repeat radial-gradient(circle closest-side,hsla(218,89%,51%,1) 90%,transparent);
+  --_g: no-repeat radial-gradient(circle closest-side,hsla(218,87%,43%,1) 90%,transparent);
   background: var(--_g) 0% 50%,var(--_g) 50% 50%,var(--_g) 100% 50%;
   background-size: calc(100% / 3) 50%;
   -webkit-animation: eTRPMe-450290765 1s infinite linear;
@@ -264,6 +264,8 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
     </div>
   </button>
   <button
+    aria-busy="true"
+    aria-disabled="true"
     class="c5"
     data-blade-component="button"
     disabled=""
@@ -279,10 +281,8 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
         data-blade-component="base-box"
       >
         <div
-          aria-label="Loading"
           class=" c7"
           data-blade-component="base-box"
-          role="progressbar"
           size="16"
         />
       </div>
@@ -1480,6 +1480,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -1627,6 +1628,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -1777,6 +1779,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -1924,6 +1927,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2074,6 +2078,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2221,6 +2226,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2371,6 +2377,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2518,6 +2525,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2668,6 +2676,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2815,6 +2824,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2965,6 +2975,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3112,6 +3123,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3262,6 +3274,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3412,6 +3425,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3559,6 +3573,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3709,6 +3724,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3859,6 +3875,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""

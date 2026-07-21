@@ -45,6 +45,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -505,6 +506,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={true}
     isLoading={false}
     isPressed={false}
@@ -965,6 +967,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -1529,6 +1532,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -2093,6 +2097,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -2658,6 +2663,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -3186,6 +3192,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     focusable={true}
     hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
     hoverIconColor="hsla(218, 89%, 51%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -3359,6 +3366,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
     focusable={true}
     hoverBackgroundColor="hsla(200, 100%, 41%, 0.09)"
     hoverIconColor="hsla(200, 100%, 41%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -3535,6 +3543,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(200, 100%, 41%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -3708,6 +3717,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
     focusable={true}
     hoverBackgroundColor="hsla(4, 85%, 44%, 0.09)"
     hoverIconColor="hsla(4, 85%, 44%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -3884,6 +3894,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(4, 85%, 44%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4057,6 +4068,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
     focusable={true}
     hoverBackgroundColor="hsla(206, 10%, 29%, 0.18)"
     hoverIconColor="hsla(206, 10%, 29%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4233,6 +4245,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(206, 10%, 29%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4406,6 +4419,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
     focusable={true}
     hoverBackgroundColor="hsla(25, 100%, 44%, 0.09)"
     hoverIconColor="hsla(25, 100%, 44%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4582,6 +4596,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(25, 100%, 44%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4755,6 +4770,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
     focusable={true}
     hoverBackgroundColor="hsla(150, 100%, 28%, 0.09)"
     hoverIconColor="hsla(150, 100%, 28%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -4931,6 +4947,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(150, 100%, 28%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -5104,6 +5121,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
     focusable={true}
     hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
     hoverIconColor="hsla(218, 89%, 51%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -5280,6 +5298,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(206, 10%, 29%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -5456,6 +5475,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.01)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(206, 10%, 29%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -5629,6 +5649,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 0%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -5805,6 +5826,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -5981,6 +6003,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     hoverBackgroundColor="hsla(206, 10%, 29%, 0.06)"
     hoverBoxShadow="inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.32)"
     hoverIconColor="hsla(0, 0%, 100%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -6157,6 +6180,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
     hoverBackgroundColor="hsla(200, 100%, 33%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(200, 100%, 33%, 1), inset 0 0px 0px 0.5px hsla(200, 100%, 33%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -6617,6 +6641,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
     hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(200, 100%, 33%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -6991,6 +7016,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -7418,7 +7444,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
-        "busy": undefined,
+        "busy": true,
         "checked": undefined,
         "disabled": true,
         "expanded": undefined,
@@ -7447,7 +7473,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-    hoverIconColor="hsla(0, 0%, 100%, 1)"
+    hoverIconColor="hsla(218, 89%, 51%, 0.32)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={true}
     isPressed={false}
@@ -7540,9 +7567,6 @@ exports[`<BaseButton /> should render loading button 1`] = `
         zIndex={1}
       >
         <View
-          accessibilityLabel="Loading"
-          accessibilityRole="progressbar"
-          accessible={true}
           style={
             {
               "alignItems": "center",
@@ -7558,7 +7582,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(218, 87%, 43%, 1)",
                   "borderRadius": 4,
                   "height": 8,
                   "width": 8,
@@ -7577,7 +7601,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(218, 87%, 43%, 1)",
                   "borderRadius": 4,
                   "height": 8,
                   "width": 8,
@@ -7596,7 +7620,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(218, 87%, 43%, 1)",
                   "borderRadius": 4,
                   "height": 8,
                   "width": 8,
@@ -7725,6 +7749,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -8185,6 +8210,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
     hoverBackgroundColor="hsla(4, 85%, 36%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(4, 85%, 36%, 1), inset 0 0px 0px 0.5px hsla(4, 85%, 36%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -8645,6 +8671,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
     hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(4, 85%, 44%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -9019,6 +9046,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
     hoverBackgroundColor="hsla(200, 10%, 18%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 2%, 1), inset 0 0px 0px 0.5px hsla(0, 0%, 2%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -9479,6 +9507,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
     hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(0, 0%, 2%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -9853,6 +9882,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
     hoverBackgroundColor="hsla(25, 100%, 39%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(25, 100%, 39%, 1), inset 0 0px 0px 0.5px hsla(25, 100%, 39%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -10313,6 +10343,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
     hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(25, 100%, 39%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -10687,6 +10718,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
     hoverBackgroundColor="hsla(150, 100%, 23%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(150, 100%, 23%, 1), inset 0 0px 0px 0.5px hsla(150, 100%, 23%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -11147,6 +11179,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
     hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(150, 100%, 23%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -11521,6 +11554,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -11981,6 +12015,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
     hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(0, 0%, 2%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -12355,6 +12390,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
     hoverBoxShadow="inset 0 -1px 0.5px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(205, 8%, 71%, 1), inset 0 -1.5px 0px 0px hsla(204, 8%, 88%, 1)"
     hoverIconColor="hsla(0, 0%, 2%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -12729,6 +12765,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -13189,6 +13226,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.8)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
     hoverIconColor="hsla(0, 0%, 0%, 0.72)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -13601,6 +13639,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -13975,6 +14014,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     hoverBackgroundColor="hsla(0, 0%, 0%, 0.18)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 1px hsla(0, 0%, 100%, 0.8)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
@@ -14349,6 +14389,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
     hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
     hoverIconColor="hsla(0, 0%, 100%, 1)"
+    isDefiniteLoading={false}
     isFullWidth={false}
     isLoading={false}
     isPressed={false}
