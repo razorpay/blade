@@ -13,7 +13,7 @@ import {
   textColor,
   iconColor,
   textSizeMap,
-  filledHorizontalSmallTextSize,
+  smallHorizontalTextSize,
   filledHorizontalItemHeight,
   borderWidth as borderWidthToken,
   borderRadius as borderRadiusToken,
@@ -150,8 +150,8 @@ const TabItem = ({
   const panelId = `${baseId}-${value}-tabpanel`;
   const tabItemId = `${baseId}-${value}-tabitem`;
   const isFilled = variant === 'filled';
-  const isFilledSmallHorizontal = isFilled && size === 'small' && !isVertical;
-  const textSize = isFilledSmallHorizontal ? filledHorizontalSmallTextSize : textSizeMap[size!];
+  const isSmallHorizontal = size === 'small' && !isVertical;
+  const textSize = isSmallHorizontal ? smallHorizontalTextSize : textSizeMap[size!];
 
   const interactionMap = {
     default: 'default',
