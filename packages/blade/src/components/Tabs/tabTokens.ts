@@ -222,6 +222,21 @@ const containerBorderRadius: Record<TabOrientation, Record<TabSizes, BorderRadiu
   vertical: { small: 'medium', medium: 'medium', large: 'medium' },
 };
 
+// Explicit pixel heights for `filled` + `horizontal` only. Medium/large already
+// resolve to the correct height via padding + line-height, so they're omitted
+// here (left as `undefined` — computed height) to avoid touching passing
+// snapshots. Small's padding + line-height under-shoots Figma's spec (21px
+// item / 25px container vs. the required 24px / 32px), so it's pinned
+// explicitly here — mirrors the `itemHeight`/`containerHeight` pattern in
+// `segmentedControlTokens.ts`.
+const filledHorizontalContainerHeight: Partial<Record<TabSizes, number>> = {
+  small: 32,
+};
+
+const filledHorizontalItemHeight: Partial<Record<TabSizes, number>> = {
+  small: 24,
+};
+
 const focusBorderRadius: Record<
   TabVariants,
   Record<TabOrientation, Record<TabSizes, Exclude<BorderRadiusToken, 'none'>>>
@@ -321,6 +336,8 @@ export {
   borderWidth,
   borderRadius,
   containerBorderRadius,
+  filledHorizontalContainerHeight,
+  filledHorizontalItemHeight,
   focusBorderRadius,
   borderColor,
   needsStackingContext,

@@ -3,7 +3,7 @@ import { Composite } from '@floating-ui/react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
 import { TabIndicator } from './TabIndicator';
-import { trackColor, containerBorderRadius } from './tabTokens';
+import { trackColor, containerBorderRadius, filledHorizontalContainerHeight } from './tabTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Box } from '~components/Box';
@@ -12,6 +12,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeSpace } from '~utils';
 
 const ScrollableArea = styled(BaseBox)(() => {
   return {
@@ -97,6 +98,14 @@ const TabList = ({
                         padding: isCompact ? 'spacing.1' : 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
                         backgroundColor: 'interactive.background.gray.faded',
+                        // Only small (horizontal) needs a pinned height — its padding +
+                        // line-height math falls short of the Figma spec. Other sizes
+                        // still hug their content correctly, so leave them uncontrolled.
+                        ...(!isVertical && filledHorizontalContainerHeight[size ?? 'medium']
+                          ? {
+                              height: makeSpace(filledHorizontalContainerHeight[size ?? 'medium']!),
+                            }
+                          : {}),
                       }
                     : {
                         padding: 'spacing.0',

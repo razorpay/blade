@@ -5,7 +5,14 @@ import PagerView from 'react-native-pager-view';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
 import { StyledTabButton } from './TabItem.native';
-import { iconColor, textColor, trackColor, borderRadius, containerBorderRadius } from './tabTokens';
+import {
+  iconColor,
+  textColor,
+  trackColor,
+  borderRadius,
+  containerBorderRadius,
+  filledHorizontalContainerHeight,
+} from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Text } from '~components/Typography';
@@ -214,6 +221,11 @@ const CustomTabBar = ({
     });
   }, []);
 
+  // Web pins a smaller padding (spacing.1, 2px) for horizontal+small via `isCompact` —
+  // mirror that here so native padding isn't flatly 4px across every size.
+  const isCompact = size === 'small';
+  const pinnedContainerHeight = filledHorizontalContainerHeight[size];
+
   const tabBarStyle = isFilled
     ? {
         shadowOpacity: 0,
@@ -222,7 +234,8 @@ const CustomTabBar = ({
         borderWidth: theme.border.width.thick,
         borderColor: theme.colors.interactive.border.gray.faded,
         backgroundColor: theme.colors.surface.background.gray.intense,
-        padding: theme.spacing[2],
+        padding: isCompact ? theme.spacing[1] : theme.spacing[2],
+        ...(pinnedContainerHeight ? { height: pinnedContainerHeight } : {}),
       }
     : {
         shadowOpacity: 0,

@@ -14,6 +14,7 @@ import {
   iconColor,
   textSizeMap,
   filledHorizontalSmallTextSize,
+  filledHorizontalItemHeight,
   borderWidth as borderWidthToken,
   borderRadius as borderRadiusToken,
   focusBorderRadius as focusBorderRadiusToken,
@@ -46,6 +47,11 @@ const StyledTabButton = styled.button<{
   const borderWidth = borderWidthToken[_variant][orientation];
   const borderRadius = borderRadiusToken[_variant][orientation][size!];
   const focusBorderRadius = focusBorderRadiusToken[_variant][orientation][size!];
+  // Only `filled` + `horizontal` + `small` needs a pinned height — its padding +
+  // line-height math falls short of the Figma spec (21px vs. the required 24px).
+  // Other size/variant/orientation combinations still hug their content correctly.
+  const pinnedHeight =
+    _variant === 'filled' && !isVertical ? filledHorizontalItemHeight[size!] : undefined;
 
   return {
     appearance: 'none',
@@ -58,6 +64,7 @@ const StyledTabButton = styled.button<{
     justifyContent: isVertical ? 'left' : 'center',
     gap: makeSpace(theme.spacing[3]),
     width: isFullWidthTabItem ? '100%' : undefined,
+    ...(pinnedHeight ? { height: makeSpace(pinnedHeight), boxSizing: 'border-box' as const } : {}),
 
     // Padding
     paddingTop: makeSpace(getIn(theme, paddingTop[_variant][orientation][size!])),
