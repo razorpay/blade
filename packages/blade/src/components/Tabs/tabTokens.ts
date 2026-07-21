@@ -252,7 +252,7 @@ const focusBorderRadius: Record<
     vertical: { small: 'medium', medium: 'medium', large: 'medium' },
   },
   filled: {
-    horizontal: { small: 'small', medium: 'small', large: 'small' },
+    horizontal: { small: 'xsmall', medium: 'xsmall', large: 'small' },
     vertical: { small: 'small', medium: 'small', large: 'small' },
   },
 };

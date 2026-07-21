@@ -649,7 +649,7 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: hsla(206,10%,29%,0.06);
   border-bottom-color: transparent;
@@ -723,7 +723,7 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: hsla(0,0%,100%,0);
   border-bottom-color: transparent;
@@ -1114,7 +1114,7 @@ exports[`Tabs should render with filled variant and small size 1`] = `
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: hsla(206,10%,29%,0.06);
   border-bottom-color: transparent;
@@ -1190,7 +1190,7 @@ exports[`Tabs should render with filled variant and small size 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: inset 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: hsla(0,0%,100%,0);
   border-bottom-color: transparent;
