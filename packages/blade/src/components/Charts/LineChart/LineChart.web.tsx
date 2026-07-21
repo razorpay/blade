@@ -292,7 +292,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   useLayoutEffect(() => {
     const container = containerRef.current;
     if (!container || !hasDashedBridge) {
-      setBridgePaths([]);
+      setBridgePaths((prev) => (prev.length === 0 ? prev : []));
       return undefined;
     }
 
@@ -353,14 +353,32 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     // whenever the chart's DOM or the line paths (`d`) mutate, and on resize.
     const cleanups: Array<() => void> = [];
     if (typeof MutationObserver !== 'undefined') {
-      const mutationObserver = new MutationObserver(() => computeBridges());
+      let rafId: number | null = null;
+      const mutationObserver = new MutationObserver((mutations) => {
+        // Skip mutations that originate from our own bridge layer (the dashed paths we render),
+        // which would otherwise cause re-entrant computeBridges calls on every bridge update.
+        const isBridgeMutation = mutations.some((m) =>
+          m.target.closest?.('.blade-null-bridge-layer'),
+        );
+        if (isBridgeMutation) return;
+        // Debounce: coalesce multiple mutations in a single animation frame so that hover-related
+        // DOM changes (tooltips, active dots, crosshair) don't each trigger a separate computation.
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          rafId = null;
+          computeBridges();
+        });
+      });
       mutationObserver.observe(container, {
         childList: true,
         subtree: true,
         attributes: true,
         attributeFilter: ['d'],
       });
-      cleanups.push(() => mutationObserver.disconnect());
+      cleanups.push(() => {
+        mutationObserver.disconnect();
+        if (rafId !== null) cancelAnimationFrame(rafId);
+      });
     }
     if (typeof ResizeObserver !== 'undefined') {
       const resizeObserver = new ResizeObserver(() => computeBridges());

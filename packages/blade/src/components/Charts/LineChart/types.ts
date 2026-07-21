@@ -44,6 +44,11 @@ interface ChartLineProps {
    * SR-data-null discussion). If a dotted bridge is ever needed, extend this union and the
    * rendering helpers together.
    *
+   * Note: When `strokeStyle` is also set to `'dashed'`, the null bridge becomes visually
+   * indistinguishable from the rest of the line. In that case, consider using `connectNullsStyle`
+   * set to `'solid'` (the default) so the bridge reads as a continuous segment, or use a
+   * different `strokeStyle` for the line to keep the dashed bridge visually distinct.
+   *
    * @default 'solid'
    */
   connectNullsStyle?: 'solid' | 'dashed';
