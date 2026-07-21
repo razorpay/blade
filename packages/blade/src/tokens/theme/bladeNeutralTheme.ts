@@ -250,14 +250,14 @@ const colors: ColorsWithModes = {
         },
         primary: {
           default: globalColors.neutral.black[500],
-          highlighted: globalColors.neutral.black[500],
+          highlighted: globalColors.neutral.black[450],
           disabled: globalColors.neutral.black[100],
           faded: globalColors.neutral.black[50],
           fadedHighlighted: globalColors.neutral.black[100],
         },
         staticBlack: {
           default: globalColors.neutral.black[500],
-          highlighted: globalColors.neutral.black[500],
+          highlighted: globalColors.neutral.black[450],
           disabled: globalColors.neutral.black[200],
           faded: globalColors.neutral.black[50],
           fadedHighlighted: globalColors.neutral.black[100],
