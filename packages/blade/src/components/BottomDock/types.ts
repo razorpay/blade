@@ -23,6 +23,16 @@ type BottomDockProps = {
   children: React.ReactNode;
 
   /**
+   * When true, reserves safe-area inset at the bottom (e.g. for notched devices).
+   *
+   * On web this adds `padding-bottom: max(env(safe-area-inset-bottom), 23px)`.
+   * On native this adds `paddingBottom: insets.bottom` from `react-native-safe-area-context`.
+   *
+   * @default false
+   */
+  safeAreaBottom?: boolean;
+
+  /**
    * zIndex of the bottom dock surface.
    *
    * @default 100

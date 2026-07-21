@@ -76,6 +76,7 @@ const _BottomNav = (
     <BottomDock
       ref={ref as never}
       role="navigation"
+      safeAreaBottom
       zIndex={zIndex}
       testID={testID}
       metaName={MetaConstants.BottomNav}

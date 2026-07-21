@@ -41,6 +41,7 @@ const _BottomBar = (
       ref={ref as never}
       role="region"
       accessibilityLabel={accessibilityLabel}
+      safeAreaBottom
       zIndex={zIndex}
       testID={testID}
       metaName={MetaConstants.BottomBar}

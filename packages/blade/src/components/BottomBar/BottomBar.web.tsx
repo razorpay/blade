@@ -38,6 +38,7 @@ const _BottomBar = (
       ref={ref as never}
       role="group"
       accessibilityLabel={accessibilityLabel}
+      safeAreaBottom
       display="flex"
       flexDirection="column"
       gap="spacing.3"
