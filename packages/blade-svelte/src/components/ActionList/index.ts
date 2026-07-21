@@ -23,6 +23,7 @@
  * @example
  * ```svelte
  * <script lang="ts">
+ *   import { getFlagOfCountry } from '@razorpay/i18nify-js/geo';
  *   import {
  *     ActionList,
  *     ActionListItem,
@@ -34,7 +35,7 @@
  *   } from '@razorpay/blade-svelte/components';
  *
  *   let isOpen = $state(false);
- *   let selected = $state<string | undefined>('in');
+ *   let selected = $state<string | undefined>('IN');
  * </script>
  *
  * <BottomSheet {isOpen} onDismiss={() => (isOpen = false)}>
@@ -50,9 +51,9 @@
  *           }}
  *         >
  *           {#snippet children()}
- *             <ActionListItem title="India" value="in">
+ *             <ActionListItem title="India" value="IN">
  *               {#snippet leading()}
- *                 <ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="India" />
+ *                 <ActionListItemAsset src={getFlagOfCountry('IN')['4X3']} alt="India" />
  *               {/snippet}
  *               {#snippet trailing()}
  *                 <ActionListItemText>+91</ActionListItemText>

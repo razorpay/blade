@@ -7,7 +7,9 @@ import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { FilterChipDatePicker } from '~components/DatePicker';
 import type { DatesRangeValue } from '~components/DatePicker';
-import { Text } from '~components/Typography';
+import { Code, Text } from '~components/Typography';
+import { Dropdown, DropdownOverlay, FilterChipSelectInput } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
 
 const Page = (): React.ReactElement => {
   return (
@@ -30,6 +32,112 @@ export default {
   },
 } as Meta<typeof BaseFilterChip>;
 
+/**
+ * Date filter with the clear button (default). Selecting a date shows the cross; pressing it
+ * clears the selection.
+ */
+const ClearDateEnabled = (): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.2">
+      <Text weight="semibold" size="small">
+        Date filter
+      </Text>
+      <Box>
+        <FilterChipDatePicker
+          label="Date"
+          selectionType="single"
+          defaultValue={dayjs('1999-04-22').toDate()}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+/**
+ * Dropdown filter with the clear button (default). It starts with a pre-selected option so the
+ * cross is visible; pressing it clears the selection.
+ */
+const ClearDropdownEnabled = (): React.ReactElement => {
+  const [value, setValue] = React.useState('active');
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.2">
+      <Text weight="semibold" size="small">
+        Dropdown filter
+      </Text>
+      <Box>
+        <Dropdown selectionType="single">
+          <FilterChipSelectInput
+            label="Status"
+            value={value}
+            onChange={({ values }) => setValue(values[0] ?? '')}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Active" value="active" />
+              <ActionListItem title="Pending" value="pending" />
+              <ActionListItem title="Failed" value="failed" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
+  );
+};
+
+/**
+ * Date filter with `showClearButton={false}`. The cross never shows, so a mandatory-default
+ * filter can never be cleared to an empty state.
+ */
+const ClearDateDisabled = (): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.2">
+      <Text weight="semibold" size="small">
+        Date filter
+      </Text>
+      <Box>
+        <FilterChipDatePicker
+          label="Date"
+          selectionType="single"
+          defaultValue={dayjs('1999-04-22').toDate()}
+          showClearButton={false}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+/**
+ * Dropdown filter with `showClearButton={false}`. It starts with a pre-selected option to show
+ * that it holds a value without ever rendering a cross — use this for filters that should always
+ * hold a value.
+ */
+const ClearDropdownDisabled = (): React.ReactElement => {
+  const [value, setValue] = React.useState('latest');
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.2">
+      <Text weight="semibold" size="small">
+        Dropdown filter
+      </Text>
+      <Box>
+        <Dropdown selectionType="single">
+          <FilterChipSelectInput
+            label="Sort"
+            value={value}
+            showClearButton={false}
+            onChange={({ values }) => setValue(values[0] ?? '')}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Latest first" value="latest" />
+              <ActionListItem title="Oldest first" value="oldest" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
+  );
+};
+
 export const Default: StoryFn<typeof BaseFilterChip> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.6">
@@ -47,6 +155,22 @@ export const Default: StoryFn<typeof BaseFilterChip> = () => {
           selectionType="multiple"
           isDisabled
         />
+      </Box>
+      <Box>
+        <Text marginBottom="spacing.4" color="surface.text.gray.muted" size="small">
+          BaseFilterChip also powers the Dropdown&apos;s FilterChipSelectInput. Open the chip to
+          select an option.
+        </Text>
+        <Dropdown selectionType="single">
+          <FilterChipSelectInput label="Status" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Active" value="active" />
+              <ActionListItem title="Pending" value="pending" />
+              <ActionListItem title="Failed" value="failed" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
       </Box>
       <Box>
         <Text marginBottom="spacing.4" color="surface.text.gray.muted" size="small">
@@ -87,3 +211,53 @@ export const Default: StoryFn<typeof BaseFilterChip> = () => {
     </Box>
   );
 };
+
+/**
+ * Demonstrates how the clear (cross) button behaves across common wirings of the
+ * FilterChipDatePicker, and how to hide it with `showClearButton={false}`.
+ */
+export const ClearButtonBehavior: StoryFn<typeof BaseFilterChip> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8" maxWidth="760px">
+      <Box display="flex" flexDirection="column" gap="spacing.2">
+        <Text weight="semibold">Clear button behaviour</Text>
+        <Text size="small" color="surface.text.gray.muted">
+          Use <Code>showClearButton</Code> to control the clear (cross) button on the date and
+          dropdown filters that BaseFilterChip powers.
+        </Text>
+      </Box>
+
+      <Box display="flex" flexDirection="column" gap="spacing.4">
+        <Text weight="semibold" size="medium">
+          With clear button (default)
+        </Text>
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(2, minmax(280px, 1fr))"
+          gap="spacing.7"
+          alignItems="flex-start"
+        >
+          <ClearDateEnabled />
+          <ClearDropdownEnabled />
+        </Box>
+      </Box>
+
+      <Box display="flex" flexDirection="column" gap="spacing.4">
+        <Text weight="semibold" size="medium">
+          Without clear button (showClearButton={'{false}'})
+        </Text>
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(2, minmax(280px, 1fr))"
+          gap="spacing.7"
+          alignItems="flex-start"
+        >
+          <ClearDateDisabled />
+          <ClearDropdownDisabled />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+ClearButtonBehavior.storyName = 'Clear Button Behaviour';

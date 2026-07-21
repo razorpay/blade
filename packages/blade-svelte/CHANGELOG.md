@@ -1,5 +1,56 @@
 # @razorpay/blade-svelte
 
+## 0.10.0
+
+### Minor Changes
+
+- 5a6fd8882: feat(blade-svelte): add `flexWrap` support to `RadioGroup`
+
+  `RadioGroup` now accepts a `flexWrap` prop (`'nowrap' | 'wrap' | 'wrap-reverse'`, default `'nowrap'`), mirroring `CheckboxGroup` and the React implementation. This is useful with `orientation="horizontal"` when radios (or radio-wrapped cards) should wrap onto multiple lines instead of overflowing.
+
+- 7a7c21d09: feat(Card): add `ticket` and `info` card variants
+
+  Adds `TicketCard` and `InfoCard` with `Body` + `Footer` subcomponents.
+
+- 3c9addbe4: fix(TrustBadge): remove `emphasis` prop and align with Blade DSL trust marker design
+
+  The `emphasis` prop (`'subtle' | 'intense'`) and the `TrustBadgeEmphasis` type have been removed from TrustBadge. The new Blade DSL design uses a single sea-subtle pill treatment regardless of surface color. Migrate by removing any `emphasis` prop usage — the updated component renders correctly on all surfaces.
+
+  - `@razorpay/blade`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-svelte`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-core`: `TrustBadgeEmphasis` type and `getTrustBadgePillEmphasisClass` removed; replaced by `getTrustBadgeVariantClass`
+
+### Patch Changes
+
+- 431f52f20: chore(blade-svelte): add BrowserStack cross-browser test infrastructure
+
+  Adds BrowserStack Playwright test setup for blade-svelte, including desktop and mobile test configurations and CI workflow integration.
+
+- e616a3de2: feat(blade-svelte): add CounterInput component
+- de1c5b24f: feat(blade-svelte): add PasswordInput component
+
+  Adds the Svelte PasswordInput (mask/reveal toggle, character counter, size/validation variants) built on the existing BaseInput. Also fixes BaseInput so `type="password"` reaches the DOM `<input>` for masking while keyboard/inputmode/autocomplete props stay on the coerced `text` type, and adds the `EyeIcon`/`EyeOffIcon` icons.
+
+- bbe9e0034: feat(blade-svelte): add Tabs component
+- 73b15cea1: feat(blade-svelte): add SegmentedControl component
+- 21de8bc90: fix(Tabs): align small filled horizontal tab corner radius with Blade React
+
+  - TabList container: 16px → 8px (`border.radius.small`)
+  - TabItem: 12px → 4px (`border.radius.xsmall`, mirrors SegmentedControl item)
+  - TabIndicator: 12px → 4px (`border.radius.xsmall`, mirrors SegmentedControl indicator)
+  - Focus ring: 12px → 8px (`border.radius.small` — intentionally larger than item radius to prevent 4px box-shadow inset clipping, consistent with Blade React)
+
+- 361b0605d: fix(Card): refactor ticket card outline with SVG for accurate notch UI
+- Updated dependencies [e616a3de2]
+- Updated dependencies [5a6fd8882]
+- Updated dependencies [7a7c21d09]
+- Updated dependencies [bbe9e0034]
+- Updated dependencies [73b15cea1]
+- Updated dependencies [21de8bc90]
+- Updated dependencies [361b0605d]
+- Updated dependencies [3c9addbe4]
+  - @razorpay/blade-core@0.9.0
+
 ## 0.9.0
 
 ### Minor Changes

@@ -71,7 +71,7 @@
 }
 
 .tabListFilledCompact {
-  border-radius: var(--border-radius-large);
+  border-radius: var(--border-radius-small);
   padding: var(--spacing-1);
 }
 
@@ -256,6 +256,15 @@
   border-radius: var(--border-radius-medium);
 }
 
+/* 4px (xsmall) for small filled horizontal tab items — mirrors SegmentedControl item radius.
+   The focus ring intentionally uses 8px (small, see tabFocusRadiusSmall) which is larger
+   than the item radius. This mirrors Blade React where the item is 6px and the focus ring
+   is 8px (small token) — the focus ring is deliberately larger to ensure the 4px box-shadow
+   inset is not clipped against the item's tighter corners. */
+.tabRadiusFilledHorizSmall {
+  border-radius: var(--border-radius-xsmall);
+}
+
 /* Background: default transparent */
 .tabBgTransparent {
   background-color: transparent;
@@ -434,6 +443,10 @@
 
 .indicatorRadiusMedium {
   border-radius: var(--border-radius-medium);
+}
+
+.indicatorRadiusFilledHorizSmall {
+  border-radius: var(--border-radius-xsmall);
 }
 
 /* ========== TAB PANEL ========== */

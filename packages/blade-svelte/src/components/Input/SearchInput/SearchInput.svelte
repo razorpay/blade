@@ -53,7 +53,7 @@
 
   const clearInput = () => {
     const el = baseInput?.getInput();
-    if (el) {
+    if (value === undefined && el) {
       el.value = '';
       el.focus();
     }
@@ -98,7 +98,7 @@
   {value}
   {name}
   type="search"
-  onChange={handleChange}
+  onInput={handleChange}
   {onFocus}
   {onBlur}
   {onClick}

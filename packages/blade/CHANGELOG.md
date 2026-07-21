@@ -1,5 +1,151 @@
 # @razorpay/blade
 
+## 12.111.0
+
+### Minor Changes
+
+- d6be63acf: feat(rn): add React Native support for motion presets — Fade, Move, Slide, Scale, Morph, Stagger, and AnimateInteractions (built on the native BaseMotion engine)
+- ba4a59413: feat(FilterChip): honour `showClearButton`, add group-level Reset support, and improve multi-select value display
+
+  - `FilterChipSelectInput` & `FilterChipDatePicker`: now respect the `showClearButton` prop (default `true`). Set `showClearButton={false}` to hide the clear (cross) button for filters that must always hold a value.
+  - `FilterChipGroup`: added a group-level **Reset** action alongside the existing **Clear** action. `onResetButtonClick` renders a Reset link that fires a single callback WITHOUT emptying the chips (so controlled consumers can restore their own defaults), while `onClearButtonClick`/`showClearButton` keep the existing empty-everything behaviour. Both actions can be shown together, and each has an optional custom label (`resetButtonText` / `clearButtonText`).
+  - Multi-select filter chips now show the selected option's name when exactly one option is selected (instead of a redundant `1` counter) and collapse to a compact counter only when more than one option is selected.
+
+  **⚠️ Behavioral/visual change (no API break):** in `selectionType="multiple"`, a single selection previously always rendered a `Counter` (showing `1`) and now renders the option name as text. This changes the chip's rendered content, width, and layout for the single-selection case, and can shift layouts for existing consumers without any code change on their side. There is no code/type break and no opt-out prop today, so consumers who need the old always-counter rendering should pin the previous version until they've verified their layouts. If demand exists we can add an explicit display-mode prop in a follow-up.
+
+- 41f08ff48: feat(SegmentedControl): add new value-selector component
+
+## 12.110.0
+
+### Minor Changes
+
+- e78663d65: feat(Breadcrumb): Add React Native support for Breadcrumb and BreadcrumbItem components
+- efd3183a5: feat: expose maxWidth prop for Popover & Tooltip components
+- 06263c562: feat(AreaChart): add React Native support
+
+  Adds `AreaChart.native.tsx` with SVG-based rendering, reveal animation, interactive legend toggling, press-and-scrub tooltip, and reference lines for React Native.
+
+- 79c0ea1f3: feat(rn): add React Native support for BaseMotion engine
+- 7a7c21d09: feat(Card): add `ticket` and `info` card variants
+
+  Adds `TicketCard` and `InfoCard` with `Body` + `Footer` subcomponents.
+
+- 19e47319b: feat(native): add React Native implementation for ChatInput component
+- 1a681834d: feat(DatePicker): add `visibleMonth`/`defaultVisibleMonth` to control the rendered calendar month independently of `value`
+
+  `DatePicker`/`DateRangePicker` now accept `visibleMonth` (controlled), `defaultVisibleMonth` (uncontrolled), and `onVisibleMonthChange` props. These let the calendar open on a specific month without pre-selecting a date — useful for a "comparison" range picker that should default to the period immediately preceding a primary range picker's selection, while leaving the comparison `value` empty for the user to pick.
+
+  ```tsx
+  <DatePicker
+    selectionType="range"
+    label={{ start: 'Compare to' }}
+    defaultVisibleMonth={dayjs(primaryRangeStart)
+      .subtract(rangeLengthInDays + 1, 'day')
+      .toDate()}
+  />
+  ```
+
+  Falls back to the existing behavior (first date of `value`/`defaultValue`, or today) when not set — fully backwards compatible.
+
+- b9c86ecf7: feat(DonutChart): add React Native support
+
+  - Added `DonutChart.native.tsx` with full React Native implementation using `react-native-svg` and `react-native-reanimated`
+  - Added `AnimatedDonutSlice.native.tsx` for animated donut slice rendering with sweep-in animation
+  - Supports legend, tooltip, center content, custom colors, and data filtering parity with web DonutChart
+
+- e8471c128: feat(rn): add React Native support for Drawer component
+- d4a3a7d0d: feat(blade): add React Native implementation for FileUpload component
+
+  ### Platform differences
+
+  **`onChange` / `onUploadPress` semantics:** On web, `onChange` fires after the user picks files and passes the selected `fileList`. On React Native, tapping the upload area fires **`onUploadPress` only** — use it to open your own file picker (e.g. `react-native-document-picker`). FileUpload does **not** fire `onChange` on tap; update `fileList` yourself after the picker returns. Prefer controlled mode (`fileList` + updating it after the picker resolves). `onUploadPress` is typed with `Platform.Select` so it is native-only.
+
+  **Built-in validation (`accept`, `maxCount`, `maxSize`):** On web, these props are enforced internally (file-type filtering, count limits, size limits with inline error messages). On React Native they have no effect — validation must be handled by the consumer after the picker returns.
+
+  **`labelPosition`:** On web, `labelPosition="left"` renders the label beside the upload area. On React Native, labels always render above the upload area; `labelPosition="left"` is ignored with a `__DEV__` warning.
+
+  **`ref`:** Supported on native via `forwardRef`, but attaches to the outer container `BaseBox` (not a hidden file input as on web).
+
+  **Not supported on React Native:** `_motionMeta` (motion ref wiring is web-only), `onDrop` (no drag-and-drop), and `data-analytics-*` / `elementtiming` props (on web these are attached to the hidden file input). Passing unsupported props emits a `__DEV__` warning on native.
+
+  **Types:** `BladeFile` is platform-split (`bladeFile.ts` / `bladeFile.web.ts`). Web still extends the DOM `File` API; native is a plain object (`type` is optional because pickers may omit MIME types). Callbacks (`onPreview` / `onRemove` / `onReupload` / `onDismiss`) take `{ file: BladeFile }`.
+
+- 6797b1297: feat(DatePicker): support `displayFormat="compact"` in `FilterChipDatePicker`
+
+  The `FilterChipDatePicker` now accepts the `displayFormat="compact"` prop (previously only supported on `DatePicker`). In compact mode, selecting a named preset (e.g. "Past 7 days") shows the preset label inside the chip's selected state, while a custom range shows a humanised, easy-to-read date range (e.g. `7 Jun - 12 Jun 2026`) instead of the raw `DD/MM/YYYY` format.
+
+  The humanised compact format is also applied to the regular `DatePicker` input for custom range selections on the day picker (the field reverts to the editable `DD/MM/YYYY` format on focus, and the submitted form value is unchanged).
+
+- fa51cbdc8: fix(DatePicker): auto-close FilterChipDatePicker flyout on range/preset selection
+- 2df7adac1: feat(native): Add React Native support for InfoGroup component
+- 0150f07cd: feat(rn): add React Native support for LineChart
+
+  - SVG-based native line rendering with monotone and linear interpolation
+  - Tap-to-stay scrub tooltip on a single responder surface
+  - Reference lines with label placement matching web
+  - Opaque tooltip styled to match the web appearance
+
+- b24318bce: feat(ColorInput): add ColorInput component to the input family
+- b05f2902c: feat(rn): add React Native support for QuickFilter and QuickFilterGroup components
+- 601771cad: feat(rn): add React Native support for ButtonGroup
+
+  Also includes supporting native changes for grouped buttons:
+
+  - BaseButton press/active border color and per-corner radii inside ButtonGroup
+  - Dropdown height / overlay behavior when used as a split-button trigger
+  - Popover native trigger now listens to both `onClick`/`onPress` and `onTouchEnd` (debounced) so taps open reliably inside ScrollView / ButtonGroup
+
+- 203456462: feat(rn): add React Native support for FilterChipSelectInput
+- 39529e14a: feat(rn): add React Native support for StepGroup
+- 7d19fc5e1: feat(rn): add React Native support for SankeyChart component
+- d62a43518: feat(Chip): add `leading` prop for flags and custom elements
+- 28fff3670: feat(native): Add React Native support for SpotlightPopoverTour component
+- 6a676b6fe: Add React Native support for TimePicker with spin-wheel picker inside BottomSheet
+- 3c9addbe4: fix(TrustBadge): remove `emphasis` prop and align with Blade DSL trust marker design
+
+  The `emphasis` prop (`'subtle' | 'intense'`) and the `TrustBadgeEmphasis` type have been removed from TrustBadge. The new Blade DSL design uses a single sea-subtle pill treatment regardless of surface color. Migrate by removing any `emphasis` prop usage — the updated component renders correctly on all surfaces.
+
+  - `@razorpay/blade`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-svelte`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-core`: `TrustBadgeEmphasis` type and `getTrustBadgePillEmphasisClass` removed; replaced by `getTrustBadgeVariantClass`
+
+### Patch Changes
+
+- 97b1d0c37: feat(rn): add React Native implementation for ChatMessage with rolling text animations, reasoning traces, and thumbnail preview support
+- 71a4f49ae: feat(rn): add React Native support for DatePicker
+- 28fff3670: fix(rn): fix TypeScript errors and test failures in SpotlightPopoverTour native component
+- 0bd5c4a24: feat(blade): refine GenUI markdown text rendering
+- dfa88a896: fix: prevent Carousel onChange from firing during programmatic scroll animations
+
+  In controlled Carousel, browsers like Firefox could fire scroll events before a smooth-scroll animation completed, causing the debounced scroll handler to detect a stale slide index and call onChange with the wrong value. This fix tracks programmatic scrolls with a ref flag so onChange is skipped during those animations. Uncontrolled and user-initiated (drag/swipe) interactions are unaffected.
+
+- 5edce67b2: fix(Charts): legend styling and spacing fixes
+
+  - Chart legend color swatches (web and native) now use `theme.border.radius['2xsmall']` (2px) instead of `theme.border.radius.small` (8px), aligning the legend dot styling with the design spec.
+  - Chart legend items (web) now have `theme.spacing[2]` (4px) padding on all sides, so each item's clickable/hoverable bounding box has 4px of breathing room around the color swatch and 4px after the label, in addition to the existing 8px gap between swatch and label and 16px gap between items.
+  - Fixed the gap between the X-axis and the legend (web) growing whenever `ChartXAxis` had a `label` prop set. The space for the axis label is now always reserved, so the legend's position relative to the axis stays constant whether or not an X-axis label is present.
+
+  Affects `BarChart`, `LineChart`, `AreaChart`, and `DonutChart`.
+
+- f2cf0ffaa: fix(DatePicker): collapse same-month ranges in compact display format
+
+  `displayFormat="compact"` now shows same-month date ranges as `1-23 Jun 2026` instead of repeating the month, e.g. `1 Jun - 23 Jun 2026`. Ranges spanning different months or years keep their existing format (`7 Jun - 12 Jul 2026`, `28 Dec 2025 - 3 Jan 2026`).
+
+- 086718d4a: feat(carousel): circular progress indicator on mobile
+- 754ed4c0a: fix(DonutChart): update legend selection behavior
+
+  - Keep uncontrolled donut chart legends fully selected when data keys arrive after initial render
+  - Add strikethrough styling for deselected legend items
+
+- c6f1e576e: fix(Tabs): align small filled horizontal tab corner radius with SegmentedControl
+
+  - TabList container: 16px → 8px (`border.radius.small`)
+  - TabItem: 12px → 6px (deliberate mid-point between xsmall=4px and small=8px, mirrors SegmentedControl item)
+  - TabIndicator: 12px → 6px (mirrors SegmentedControl indicator)
+  - Focus ring: 12px → 8px (`border.radius.small`)
+
+- 361b0605d: fix(Card): refactor ticket card outline with SVG for accurate notch UI
+
 ## 12.109.0
 
 ### Minor Changes

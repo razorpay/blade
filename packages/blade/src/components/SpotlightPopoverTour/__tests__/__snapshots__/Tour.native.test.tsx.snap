@@ -1,0 +1,1557 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      borderRadius={8}
+      buttonPaddingBottom="0px"
+      buttonPaddingLeft="12px"
+      buttonPaddingRight="12px"
+      buttonPaddingTop="0px"
+      collapsable={false}
+      color="primary"
+      data-blade-component="button"
+      defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+      defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+      focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+      focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+      focusRingColor="hsla(218, 89%, 51%, 0.18)"
+      focusable={true}
+      hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+      hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+      hoverIconColor="hsla(0, 0%, 100%, 1)"
+      isFullWidth={false}
+      isLoading={false}
+      isPressed={false}
+      marginBottom="spacing.9"
+      minHeight="36px"
+      motionDuration="duration.xquick"
+      motionEasing="easing.standard"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      size="medium"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "borderColor": "black",
+            "borderRadius": 8,
+            "borderStyle": "solid",
+            "borderWidth": 0,
+            "cursor": "pointer",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "marginBottom": 40,
+            "minHeight": 36,
+            "overflow": "hidden",
+            "paddingBottom": 0,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 0,
+            "textDecorationColor": "black",
+            "textDecorationLine": "none",
+            "textDecorationStyle": "solid",
+            "width": "auto",
+          },
+          {
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          },
+        ]
+      }
+      type="button"
+    >
+      <View
+        pointerEvents="none"
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          pointerEvents="none"
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+          >
+            <RNSVGDefs>
+              <RNSVGLinearGradient
+                gradient={
+                  [
+                    0,
+                    -1,
+                    1,
+                    16777215,
+                  ]
+                }
+                gradientTransform={null}
+                gradientUnits={0}
+                name="topFade-r0"
+                x1="0"
+                x2="0"
+                y1="0"
+                y2="1"
+              />
+              <RNSVGLinearGradient
+                gradient={
+                  [
+                    0,
+                    -1,
+                    1,
+                    16777215,
+                  ]
+                }
+                gradientTransform={null}
+                gradientUnits={0}
+                name="bottomFade-r0"
+                x1="0"
+                x2="0"
+                y1="1"
+                y2="0"
+              />
+              <RNSVGMask
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+                height="100%"
+                maskContentUnits={1}
+                maskUnits={0}
+                name="topMask-r0"
+                width="100%"
+                x="0%"
+                y="0%"
+              >
+                <RNSVGRect
+                  fill={
+                    {
+                      "brushRef": "topFade-r0",
+                      "type": 1,
+                    }
+                  }
+                  height="20%"
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </RNSVGMask>
+              <RNSVGMask
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+                height="100%"
+                maskContentUnits={1}
+                maskUnits={0}
+                name="bottomMask-r0"
+                width="100%"
+                x="0%"
+                y="0%"
+              >
+                <RNSVGRect
+                  fill={
+                    {
+                      "brushRef": "bottomFade-r0",
+                      "type": 1,
+                    }
+                  }
+                  height="20%"
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  width="100%"
+                  x="0"
+                  y="80%"
+                />
+              </RNSVGMask>
+              <RNSVGRadialGradient
+                cx={0}
+                cy={0}
+                fx={0}
+                fy={0}
+                gradient={
+                  [
+                    0,
+                    788529151,
+                    1,
+                    16777215,
+                  ]
+                }
+                gradientTransform={null}
+                gradientUnits={1}
+                name="btnGlow-r0"
+                rx={64}
+                ry={64}
+              />
+            </RNSVGDefs>
+            <RNSVGRect
+              fill={null}
+              height="100%"
+              mask="bottomMask-r0"
+              propList={
+                [
+                  "fill",
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              rx={8}
+              ry={8}
+              stroke={
+                {
+                  "payload": 788529151,
+                  "type": 0,
+                }
+              }
+              strokeWidth={7}
+              width="100%"
+              x={0}
+              y={0}
+            />
+            <RNSVGRect
+              fill={null}
+              height="100%"
+              mask="topMask-r0"
+              propList={
+                [
+                  "fill",
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              rx={8}
+              ry={8}
+              stroke={
+                {
+                  "payload": 788529151,
+                  "type": 0,
+                }
+              }
+              strokeWidth={4}
+              width="100%"
+              x={0}
+              y={0}
+            />
+            <RNSVGRect
+              fill={null}
+              height="100%"
+              propList={
+                [
+                  "fill",
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              rx={8}
+              ry={8}
+              stroke={
+                {
+                  "payload": 4279461105,
+                  "type": 0,
+                }
+              }
+              strokeWidth={1}
+              width="100%"
+              x={0}
+              y={0}
+            />
+            <RNSVGRect
+              fill={null}
+              height="100%"
+              mask="bottomMask-r0"
+              propList={
+                [
+                  "fill",
+                  "stroke",
+                  "strokeWidth",
+                ]
+              }
+              rx={8}
+              ry={8}
+              stroke={
+                {
+                  "payload": 4279129293,
+                  "type": 0,
+                }
+              }
+              strokeWidth={5}
+              width="100%"
+              x={0}
+              y={0}
+            />
+            <RNSVGRect
+              fill={
+                {
+                  "brushRef": "btnGlow-r0",
+                  "type": 1,
+                }
+              }
+              height="100%"
+              propList={
+                [
+                  "fill",
+                ]
+              }
+              rx={8}
+              ry={8}
+              width="100%"
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        style={
+          {
+            "transform": [
+              {
+                "scale": 1,
+              },
+            ],
+          }
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          isHidden={false}
+          justifyContent="center"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "zIndex": 1,
+              },
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          zIndex={1}
+        >
+          <Text
+            accessible={true}
+            color="interactive.text.onPrimary.normal"
+            data-blade-component="base-text"
+            fontSize={100}
+            fontWeight="medium"
+            lineHeight={100}
+            marginX="spacing.2"
+            style={
+              [
+                {
+                  "color": "hsla(0, 0%, 100%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 4,
+                  "marginRight": 4,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textAlign": "center",
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            textAlign="center"
+          >
+            Open Tour
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      collapsable={false}
+      onLayout={[Function]}
+      style={
+        {
+          "alignSelf": "stretch",
+        }
+      }
+    >
+      <View
+        data-blade-component="box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 2%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.18200000000000002,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Trigger 1
+        </Text>
+      </View>
+    </View>
+    <View
+      collapsable={false}
+      onLayout={[Function]}
+      style={
+        {
+          "alignSelf": "stretch",
+        }
+      }
+    >
+      <View
+        data-blade-component="box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 2%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.18200000000000002,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Trigger 2
+        </Text>
+      </View>
+    </View>
+    <Modal
+      animationType="none"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      statusBarTranslucent={true}
+      transparent={true}
+      visible={true}
+    >
+      <View
+        pointerEvents="box-none"
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          data-blade-component="tour-mask"
+          pointerEvents="auto"
+          style={
+            [
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+                "zIndex": 1099,
+              },
+              {
+                "backgroundColor": "hsla(0, 0%, 0%, 0.56)",
+              },
+            ]
+          }
+        />
+        <View
+          data-blade-component="tour-popover"
+          onLayout={[Function]}
+          pointerEvents="box-none"
+          style={
+            [
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              {
+                "zIndex": 1100,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "transform": [
+                  {
+                    "translateY": -4,
+                  },
+                ],
+              }
+            }
+          >
+            <View
+              collapse={false}
+              colorScheme="light"
+              data-blade-component="base-box"
+              elevation="lowRaised"
+              isMobile={true}
+              style={
+                [
+                  {},
+                  {
+                    "elevation": 8,
+                    "shadowColor": "hsla(200, 10%, 18%, 1)",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.06,
+                    "shadowRadius": 2,
+                  },
+                  [
+                    {
+                      "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                      "borderColor": "black",
+                      "borderRadius": 16,
+                      "borderStyle": "solid",
+                      "borderWidth": 0,
+                      "boxSizing": "border-box",
+                      "left": 0,
+                      "maxWidth": 288,
+                      "position": "absolute",
+                      "top": 0,
+                      "width": "100%",
+                      "zIndex": 1100,
+                    },
+                    {
+                      "opacity": 0,
+                    },
+                  ],
+                ]
+              }
+              styles={
+                {
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "zIndex": 1100,
+                }
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="column"
+                gap="spacing.5"
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "gap": 16,
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  gap="spacing.2"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 4,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    borderRadius="max"
+                    data-blade-component="base-box"
+                    position="absolute"
+                    right="spacing.3"
+                    style={
+                      [
+                        {
+                          "borderRadius": 9999,
+                          "paddingBottom": 4,
+                          "paddingLeft": 4,
+                          "paddingRight": 4,
+                          "paddingTop": 4,
+                          "position": "absolute",
+                          "right": 8,
+                          "top": 8,
+                          "zIndex": 1,
+                        },
+                      ]
+                    }
+                    top="spacing.3"
+                    zIndex={1}
+                  >
+                    <View
+                      accessibilityLabel="Close"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      emphasis="intense"
+                      focusable={true}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          {
+                            "alignSelf": "center",
+                          },
+                        ]
+                      }
+                    >
+                      <RNSVGSvgView
+                        accessibilityElementsHidden={true}
+                        align="xMidYMid"
+                        bbHeight="16px"
+                        bbWidth="16px"
+                        data-blade-component="icon"
+                        fill="none"
+                        focusable={false}
+                        height="16px"
+                        importantForAccessibility="no-hide-descendants"
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
+                            },
+                            [
+                              {},
+                            ],
+                            {
+                              "flex": 0,
+                              "height": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                        vbHeight={24}
+                        vbWidth={24}
+                        width="16px"
+                      >
+                        <RNSVGGroup
+                          fill={null}
+                          propList={
+                            [
+                              "fill",
+                            ]
+                          }
+                        >
+                          <RNSVGPath
+                            d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                            fill={
+                              {
+                                "payload": 4284575093,
+                                "type": 0,
+                              }
+                            }
+                            propList={
+                              [
+                                "fill",
+                              ]
+                            }
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                    </View>
+                  </View>
+                  <View
+                    data-blade-component="base-box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.normal"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      letterSpacing={50}
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(0, 0%, 2%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": -0.18200000000000002,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Step 1
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  style={
+                    [
+                      {
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width="100%"
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="box"
+                    display="flex"
+                    flexDirection="row"
+                    gap="spacing.7"
+                    justifyContent="space-between"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                          "gap": 24,
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    width="100%"
+                  >
+                    <Text
+                      accessible={true}
+                      color="surface.text.gray.normal"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={75}
+                      fontStyle="normal"
+                      fontWeight="semibold"
+                      letterSpacing={50}
+                      lineHeight={75}
+                      style={
+                        [
+                          {
+                            "color": "hsla(0, 0%, 2%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "600",
+                            "letterSpacing": -0.15600000000000003,
+                            "lineHeight": 17,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      1
+                       / 
+                      2
+                    </Text>
+                    <View
+                      alignItems="center"
+                      data-blade-component="box"
+                      display="flex"
+                      flexDirection="row"
+                      gap="spacing.4"
+                      justifyContent="flex-end"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "gap": 12,
+                            "justifyContent": "flex-end",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityRole="button"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        borderRadius={8}
+                        buttonPaddingBottom="0px"
+                        buttonPaddingLeft="8px"
+                        buttonPaddingRight="8px"
+                        buttonPaddingTop="0px"
+                        collapsable={false}
+                        color="primary"
+                        data-analytics-active-step={1}
+                        data-analytics-name="spotlight-popover-tour-footer-primary-action-button"
+                        data-analytics-total-steps={2}
+                        data-blade-component="button"
+                        defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+                        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 89%, 51%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+                        focusBackgroundColor="hsla(218, 87%, 43%, 1)"
+                        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+                        focusRingColor="hsla(218, 89%, 51%, 0.18)"
+                        focusable={true}
+                        hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
+                        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
+                        hoverIconColor="hsla(0, 0%, 100%, 1)"
+                        isFullWidth={false}
+                        isLoading={false}
+                        isPressed={false}
+                        minHeight="32px"
+                        motionDuration="duration.xquick"
+                        motionEasing="easing.standard"
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseUp={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchStart={[Function]}
+                        role="button"
+                        size="small"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "alignSelf": "center",
+                              "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                              "borderColor": "black",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 0,
+                              "cursor": "pointer",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "center",
+                              "minHeight": 32,
+                              "overflow": "hidden",
+                              "paddingBottom": 0,
+                              "paddingLeft": 8,
+                              "paddingRight": 8,
+                              "paddingTop": 0,
+                              "textDecorationColor": "black",
+                              "textDecorationLine": "none",
+                              "textDecorationStyle": "solid",
+                              "width": "auto",
+                            },
+                            {
+                              "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                            },
+                          ]
+                        }
+                        type="button"
+                      >
+                        <View
+                          pointerEvents="none"
+                          style={
+                            {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            }
+                          }
+                        >
+                          <RNSVGSvgView
+                            bbHeight="100%"
+                            bbWidth="100%"
+                            focusable={false}
+                            pointerEvents="none"
+                            style={
+                              [
+                                {
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                },
+                                {
+                                  "bottom": 0,
+                                  "left": 0,
+                                  "position": "absolute",
+                                  "right": 0,
+                                  "top": 0,
+                                },
+                                {
+                                  "flex": 0,
+                                  "height": "100%",
+                                  "width": "100%",
+                                },
+                              ]
+                            }
+                          >
+                            <RNSVGGroup
+                              fill={
+                                {
+                                  "payload": 4278190080,
+                                  "type": 0,
+                                }
+                              }
+                            >
+                              <RNSVGDefs>
+                                <RNSVGLinearGradient
+                                  gradient={
+                                    [
+                                      0,
+                                      -1,
+                                      1,
+                                      16777215,
+                                    ]
+                                  }
+                                  gradientTransform={null}
+                                  gradientUnits={0}
+                                  name="topFade-r1"
+                                  x1="0"
+                                  x2="0"
+                                  y1="0"
+                                  y2="1"
+                                />
+                                <RNSVGLinearGradient
+                                  gradient={
+                                    [
+                                      0,
+                                      -1,
+                                      1,
+                                      16777215,
+                                    ]
+                                  }
+                                  gradientTransform={null}
+                                  gradientUnits={0}
+                                  name="bottomFade-r1"
+                                  x1="0"
+                                  x2="0"
+                                  y1="1"
+                                  y2="0"
+                                />
+                                <RNSVGMask
+                                  fill={
+                                    {
+                                      "payload": 4278190080,
+                                      "type": 0,
+                                    }
+                                  }
+                                  height="100%"
+                                  maskContentUnits={1}
+                                  maskUnits={0}
+                                  name="topMask-r1"
+                                  width="100%"
+                                  x="0%"
+                                  y="0%"
+                                >
+                                  <RNSVGRect
+                                    fill={
+                                      {
+                                        "brushRef": "topFade-r1",
+                                        "type": 1,
+                                      }
+                                    }
+                                    height="20%"
+                                    propList={
+                                      [
+                                        "fill",
+                                      ]
+                                    }
+                                    width="100%"
+                                    x="0"
+                                    y="0"
+                                  />
+                                </RNSVGMask>
+                                <RNSVGMask
+                                  fill={
+                                    {
+                                      "payload": 4278190080,
+                                      "type": 0,
+                                    }
+                                  }
+                                  height="100%"
+                                  maskContentUnits={1}
+                                  maskUnits={0}
+                                  name="bottomMask-r1"
+                                  width="100%"
+                                  x="0%"
+                                  y="0%"
+                                >
+                                  <RNSVGRect
+                                    fill={
+                                      {
+                                        "brushRef": "bottomFade-r1",
+                                        "type": 1,
+                                      }
+                                    }
+                                    height="20%"
+                                    propList={
+                                      [
+                                        "fill",
+                                      ]
+                                    }
+                                    width="100%"
+                                    x="0"
+                                    y="80%"
+                                  />
+                                </RNSVGMask>
+                                <RNSVGRadialGradient
+                                  cx={0}
+                                  cy={0}
+                                  fx={0}
+                                  fy={0}
+                                  gradient={
+                                    [
+                                      0,
+                                      788529151,
+                                      1,
+                                      16777215,
+                                    ]
+                                  }
+                                  gradientTransform={null}
+                                  gradientUnits={1}
+                                  name="btnGlow-r1"
+                                  rx={64}
+                                  ry={64}
+                                />
+                              </RNSVGDefs>
+                              <RNSVGRect
+                                fill={null}
+                                height="100%"
+                                mask="bottomMask-r1"
+                                propList={
+                                  [
+                                    "fill",
+                                    "stroke",
+                                    "strokeWidth",
+                                  ]
+                                }
+                                rx={8}
+                                ry={8}
+                                stroke={
+                                  {
+                                    "payload": 788529151,
+                                    "type": 0,
+                                  }
+                                }
+                                strokeWidth={7}
+                                width="100%"
+                                x={0}
+                                y={0}
+                              />
+                              <RNSVGRect
+                                fill={null}
+                                height="100%"
+                                mask="topMask-r1"
+                                propList={
+                                  [
+                                    "fill",
+                                    "stroke",
+                                    "strokeWidth",
+                                  ]
+                                }
+                                rx={8}
+                                ry={8}
+                                stroke={
+                                  {
+                                    "payload": 788529151,
+                                    "type": 0,
+                                  }
+                                }
+                                strokeWidth={4}
+                                width="100%"
+                                x={0}
+                                y={0}
+                              />
+                              <RNSVGRect
+                                fill={null}
+                                height="100%"
+                                propList={
+                                  [
+                                    "fill",
+                                    "stroke",
+                                    "strokeWidth",
+                                  ]
+                                }
+                                rx={8}
+                                ry={8}
+                                stroke={
+                                  {
+                                    "payload": 4279461105,
+                                    "type": 0,
+                                  }
+                                }
+                                strokeWidth={1}
+                                width="100%"
+                                x={0}
+                                y={0}
+                              />
+                              <RNSVGRect
+                                fill={null}
+                                height="100%"
+                                mask="bottomMask-r1"
+                                propList={
+                                  [
+                                    "fill",
+                                    "stroke",
+                                    "strokeWidth",
+                                  ]
+                                }
+                                rx={8}
+                                ry={8}
+                                stroke={
+                                  {
+                                    "payload": 4279129293,
+                                    "type": 0,
+                                  }
+                                }
+                                strokeWidth={5}
+                                width="100%"
+                                x={0}
+                                y={0}
+                              />
+                              <RNSVGRect
+                                fill={
+                                  {
+                                    "brushRef": "btnGlow-r1",
+                                    "type": 1,
+                                  }
+                                }
+                                height="100%"
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                                rx={8}
+                                ry={8}
+                                width="100%"
+                                x={0}
+                                y={0}
+                              />
+                            </RNSVGGroup>
+                          </RNSVGSvgView>
+                        </View>
+                        <View
+                          style={
+                            {
+                              "transform": [
+                                {
+                                  "scale": 1,
+                                },
+                              ],
+                            }
+                          }
+                        >
+                          <View
+                            alignItems="center"
+                            data-blade-component="base-box"
+                            display="flex"
+                            flexDirection="row"
+                            isHidden={false}
+                            justifyContent="center"
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "display": "flex",
+                                  "flexBasis": 0,
+                                  "flexDirection": "row",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "justifyContent": "center",
+                                  "zIndex": 1,
+                                },
+                                {
+                                  "opacity": 1,
+                                },
+                              ]
+                            }
+                            zIndex={1}
+                          >
+                            <Text
+                              accessible={true}
+                              color="interactive.text.onPrimary.normal"
+                              data-blade-component="base-text"
+                              fontSize={75}
+                              fontWeight="medium"
+                              lineHeight={75}
+                              marginX="spacing.2"
+                              style={
+                                [
+                                  {
+                                    "color": "hsla(0, 0%, 100%, 1)",
+                                    "fontFamily": "Inter",
+                                    "fontSize": 12,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "500",
+                                    "letterSpacing": 0,
+                                    "lineHeight": 17,
+                                    "marginBottom": 0,
+                                    "marginLeft": 4,
+                                    "marginRight": 4,
+                                    "marginTop": 0,
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "textAlign": "center",
+                                    "textDecorationLine": "none",
+                                  },
+                                ]
+                              }
+                              textAlign="center"
+                            >
+                              Next
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                collapsable={false}
+                pointerEvents="none"
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              >
+                <RNSVGSvgView
+                  accessibilityElementsHidden={true}
+                  align="xMidYMid"
+                  bbHeight="22px"
+                  bbWidth="22px"
+                  data-blade-component="icon"
+                  focusable={false}
+                  height="22px"
+                  importantForAccessibility="no-hide-descendants"
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      [
+                        {},
+                        {},
+                      ],
+                      {
+                        "flex": 0,
+                        "height": 22,
+                        "width": 22,
+                      },
+                    ]
+                  }
+                  styles={{}}
+                  vbHeight={22}
+                  vbWidth={22}
+                  width="22px"
+                >
+                  <RNSVGGroup
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                  >
+                    <RNSVGPath
+                      d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                      fill={null}
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                          "strokeWidth",
+                        ]
+                      }
+                      stroke={
+                        {
+                          "payload": 15659249,
+                          "type": 0,
+                        }
+                      }
+                      strokeWidth="2px"
+                    />
+                    <RNSVGPath
+                      d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                      fill={
+                        {
+                          "payload": 4294967295,
+                          "type": 0,
+                        }
+                      }
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                        ]
+                      }
+                      stroke={null}
+                    />
+                    <RNSVGPath
+                      d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                      fill={
+                        {
+                          "payload": 4294967295,
+                          "type": 0,
+                        }
+                      }
+                      propList={
+                        [
+                          "fill",
+                          "stroke",
+                        ]
+                      }
+                      stroke={null}
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  </View>
+</View>
+`;

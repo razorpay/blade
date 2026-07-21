@@ -443,16 +443,20 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               alignItems="center"
                               data-blade-component="base-box"
                               display="flex"
+                              flexDirection="row"
                               gap="spacing.3"
                               style={
                                 [
                                   {
                                     "alignItems": "center",
                                     "display": "flex",
+                                    "flexDirection": "row",
                                     "gap": 8,
+                                    "width": "100%",
                                   },
                                 ]
                               }
+                              width="100%"
                             >
                               <Text
                                 accessible={true}
@@ -862,12 +866,25 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 [
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                    "borderColor": "hsla(203, 8%, 80%, 1)",
                     "borderRadius": 12,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
                     "transform": [
                       {
                         "translateY": 8,
                       },
                     ],
+                  },
+                  {
+                    "elevation": 16,
+                    "shadowColor": "hsla(200, 10%, 18%, 1)",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.06,
+                    "shadowRadius": 4,
                   },
                 ],
               ]

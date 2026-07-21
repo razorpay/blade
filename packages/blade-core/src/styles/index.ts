@@ -120,6 +120,23 @@ export {
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants } from './Divider';
+export {
+  counterInputContainerStyles,
+  getCounterInputContainerClasses,
+  counterInputButtonStyles,
+  getCounterInputButtonClasses,
+  counterInputInputStyles,
+  getCounterInputInputClasses,
+  getCounterInputTemplateClasses,
+} from './CounterInput';
+export type {
+  CounterInputSize,
+  CounterInputEmphasis,
+  CounterInputButtonDirection,
+  CounterInputContainerVariants,
+  CounterInputButtonVariants,
+  CounterInputInputVariants,
+} from './CounterInput';
 export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from './Switch';
 export type { SwitchSize, SwitchVariants } from './Switch';
 export {
@@ -180,10 +197,10 @@ export { appBarStyles, getAppBarClasses, getAppBarTemplateClasses } from './AppB
 export type { AppBarVariants } from './AppBar';
 export {
   getTrustBadgeTextColorToken,
-  getTrustBadgePillEmphasisClass,
+  getTrustBadgeVariantClass,
   getTrustBadgeTemplateClasses,
 } from './TrustBadge';
-export type { TrustBadgeVariant, TrustBadgeEmphasis } from './TrustBadge';
+export type { TrustBadgeVariant } from './TrustBadge';
 export {
   animatedChipCva,
   getAnimatedChipClasses,

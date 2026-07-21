@@ -61,13 +61,13 @@
 
 <Story name="Code with Bold Color" args={{ children: 'SENTRY_AUTH_TOKEN', isHighlighted: false, size: 'medium', weight: 'bold', color: 'interactive.text.positive.subtle' }} />
 
-<Story name="Code in Text Context">
+<Story name="Code in Text Context" asChild>
   <Text as="p" size="medium">
     Lorem ipsum normal text <Code isHighlighted size="medium" weight="regular">SENTRY_AUTH_TOKEN</Code> component
   </Text>
 </Story>
 
-<Story name="Code Sizes">
+<Story name="Code Sizes" asChild>
   <div style="display: flex; flex-direction: column; gap: 0.5rem;">
     <Text as="p" size="small">
       Small size: <Code size="small" isHighlighted>npm install @razorpay/blade</Code>

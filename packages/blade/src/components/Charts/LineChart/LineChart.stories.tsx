@@ -14,6 +14,7 @@ import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { ChipGroup, Chip } from '~components/Chip';
 
 const Page = (): React.ReactElement => {
@@ -145,6 +146,8 @@ export default {
     docs: {
       page: Page,
     },
+    // Fill the canvas (avoid `centered` shrink-wrap) but keep story L/R inset via ChartsWrapper.
+    layout: 'fullscreen',
   },
 } as Meta<typeof ChartLine>;
 
@@ -311,21 +314,36 @@ const regionalSalesData = [
   },
 ];
 
-const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const ChartsWrapper = ({
+  children,
+  fullWidth = false,
+}: {
+  children: React.ReactNode;
+  // Long category labels need the whole canvas to wrap cleanly without overlap.
+  fullWidth?: boolean;
+}): React.ReactElement => {
+  // IMPORTANT: use BaseBox + style. `Box` strips `style`, and % width/padding via
+  // Blade props doesn't reliably size on RN Storybook — so edge whitespace never showed.
   return (
-    <Box
-      width="100%"
+    <BaseBox
       height="100%"
       backgroundColor="surface.background.gray.intense"
       display="flex"
-      justifyContent="center"
-      alignItems="center"
-      padding="spacing.8"
+      flexDirection="column"
+      justifyContent="flex-start"
+      alignItems="stretch"
+      paddingY="spacing.3"
       borderRadius="medium"
+      // Default 70% width leaves ~15% whitespace each side; long-label stories
+      // opt into full width so all categories fit and wrap without overlap.
+      style={
+        fullWidth
+          ? { width: '100%', alignSelf: 'center' }
+          : { width: '70%', alignSelf: 'center', maxWidth: '70%' }
+      }
     >
-      {' '}
-      {children}{' '}
-    </Box>
+      {children}
+    </BaseBox>
   );
 };
 
@@ -337,7 +355,7 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
 }) => {
   return (
     <ChartsWrapper>
-      <Box width="95%" height="400px">
+      <Box width="100%" height="400px">
         <ChartLineWrapper data={chartData}>
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
@@ -468,44 +486,49 @@ ForecastLineChart.parameters = {
 // Line Chart that Connects Nulls
 export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
   return (
-    <Box width="100%" height="100%">
-      <ChartsWrapper>
-        <Box display="flex" gap="spacing.4" flexDirection="column" width="50%" height="400px">
+    <ChartsWrapper>
+      <Box display="flex" flexDirection="column" gap="spacing.8" width="100%">
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
           <Heading size="small">Line Chart that Connects Nulls</Heading>
-          <ChartLineWrapper data={dataWithNulls}>
-            <ChartXAxis dataKey="month" />
-            <ChartYAxis />
-            <ChartTooltip />
-            <ChartLegend />
-            <ChartLine
-              dataKey="sales"
-              name="Sales (Connects Nulls)"
-              connectNulls={true}
-              color="data.background.categorical.green.moderate"
-            />
-          </ChartLineWrapper>
+          <Box width="100%" height="220px">
+            <ChartLineWrapper data={dataWithNulls}>
+              <ChartXAxis dataKey="month" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartLine
+                dataKey="sales"
+                name="Sales (Connects Nulls)"
+                connectNulls={true}
+                color="data.background.categorical.green.moderate"
+              />
+            </ChartLineWrapper>
+          </Box>
         </Box>
-        <Box display="flex" gap="spacing.4" flexDirection="column" width="50%" height="400px">
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
           <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
-          <ChartLineWrapper data={dataWithNulls}>
-            <ChartXAxis dataKey="month" />
-            <ChartYAxis />
-            <ChartTooltip />
-            <ChartLegend />
-            <ChartLine
-              dataKey="sales"
-              name="Sales (Do Not Connects Nulls)"
-              color="data.background.categorical.green.moderate"
-            />
-          </ChartLineWrapper>
+          <Box width="100%" height="220px">
+            <ChartLineWrapper data={dataWithNulls}>
+              <ChartXAxis dataKey="month" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartLine
+                dataKey="sales"
+                name="Sales (Do Not Connects Nulls)"
+                color="data.background.categorical.green.moderate"
+              />
+            </ChartLineWrapper>
+          </Box>
         </Box>
-      </ChartsWrapper>
-    </Box>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
 LineChartConnectNulls.parameters = {
   controls: { disable: true },
+  layout: 'fullscreen',
 };
 
 // Stepped Line Chart Example
@@ -762,7 +785,7 @@ const largeLabelsData = [
 // Line Chart with Large Labels (labels are automatically truncated to prevent overlap)
 export const LineChartWithLargeLabels: StoryFn<typeof ChartLine> = () => {
   return (
-    <ChartsWrapper>
+    <ChartsWrapper fullWidth>
       <Box width="100%" height="500px">
         <ChartLineWrapper data={largeLabelsData} colorTheme="categorical">
           <ChartXAxis dataKey="category" />
@@ -818,7 +841,7 @@ const largeLabelsWithSecondaryData = [
 // Line Chart with Large Labels and Secondary Labels
 export const LineChartWithLargeLabelsAndSecondary: StoryFn<typeof ChartLine> = () => {
   return (
-    <ChartsWrapper>
+    <ChartsWrapper fullWidth>
       <Box width="100%" height="500px">
         <ChartLineWrapper data={largeLabelsWithSecondaryData} colorTheme="categorical">
           <ChartXAxis dataKey="category" secondaryDataKey="quarter" />
