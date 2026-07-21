@@ -1,7 +1,8 @@
 import { forwardRef } from 'react';
 import { useDatesContext } from '@mantine/dates';
 import type { DatePickerFilterChipProps } from '../types';
-import { getFormattedDate } from '../utils';
+import { getFormattedDate, getHumanizedDate } from '../utils';
+import { useDatePickerContext } from '../DatePickerContext';
 import { BaseFilterChip } from '~components/FilterChip/BaseFilterChip';
 import type { BladeElementRef } from '~utils/types';
 
@@ -59,16 +60,45 @@ const _DatePickerFilterChip: React.ForwardRefRenderFunction<
     date,
     format,
     isDisabled,
+    selectedPresetLabel,
+    showClearButton = true,
   } = props;
   const { locale } = useDatesContext();
+  const displayFormat = useDatePickerContext()?.displayFormat ?? 'default';
 
-  const dateValue = formatDateRange(date, format, locale, selectionType);
+  // Check if there's actually a valid date selection.
+  // In range mode both dates need to be present.
+  const hasValidSelection =
+    selectionType === 'range'
+      ? Boolean((date as [Date | null, Date | null])?.[0]) &&
+        Boolean((date as [Date | null, Date | null])?.[1])
+      : Boolean(date);
+
+  // When displayFormat is 'compact' and a defined preset (e.g. "Last 7 days") is selected,
+  // show the preset label inside the chip instead of the actual date range.
+  // For custom range selections there is no preset label, so we fall back to the date range.
+  const shouldShowPresetLabel =
+    displayFormat === 'compact' && Boolean(selectedPresetLabel) && hasValidSelection;
+
+  let dateValue: string;
+  if (shouldShowPresetLabel) {
+    // A defined preset (e.g. "Past 7 days") is selected → show its label.
+    dateValue = selectedPresetLabel as string;
+  } else if (displayFormat === 'compact' && format === 'DD/MM/YYYY') {
+    // Compact mode with a custom/date selection on the day picker → humanised date range.
+    // Month/year pickers keep their own format (e.g. MMM/YYYY) which is already readable.
+    dateValue = getHumanizedDate({ date, locale, selectionType });
+  } else {
+    // Default → show the date range using the configured format (e.g. DD/MM/YYYY).
+    dateValue = formatDateRange(date, format, locale, selectionType);
+  }
 
   return (
     <BaseFilterChip
       ref={ref}
       label={label}
       value={dateValue}
+      showClearButton={showClearButton}
       onClearButtonClick={onClearButtonChange}
       accessibilityProps={{
         label: accessibilityLabel ?? label,

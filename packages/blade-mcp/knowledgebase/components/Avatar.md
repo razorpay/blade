@@ -152,6 +152,24 @@ type AvatarGroupProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Avatar` to visually represent users or entities with photos, initials, or icons.
+- Use `variant="circle"` for people and `variant="square"` for organizations or entities.
+- Provide `name` or `alt` when using `src` for proper accessibility fallback and alt text.
+- Use `AvatarGroup` with `maxCount` to display multiple avatars in a compact overlapping layout.
+- Use `topAddon` with `Indicator` for online/offline status indicators.
+
+**Don't**
+
+- Don't pass anything other than `Indicator` to `topAddon` — it only accepts the Indicator component.
+- Don't pass anything other than icon components to `bottomAddon`.
+- Don't omit both `name` and `alt` when using `src` — accessibility requires one of them.
+- Don't use `Avatar` as a button — wrap with `onClick` or `href` for interactive behavior, or use `IconButton` for icon-only actions.
+- Don't put non-Avatar components inside `AvatarGroup` — only Avatar is accepted.
+
 ## Examples
 
 ### Avatar Component Usage

@@ -91,6 +91,24 @@ type ChartSequentialColorToken = `data.background.sequential.${Exclude<
 >}.${keyof ChartSequentialEmphasis}`;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `DonutChart` for displaying proportional/percentage data showing parts of a whole.
+- Always wrap `ChartDonut` inside `ChartDonutWrapper` — standalone use is not supported.
+- Use the `content` prop on `ChartDonutWrapper` to display a summary value/label in the center hole.
+- Use `ChartDonutCell` components (one per data item) to customize segment colors.
+- Use `type="semicircle"` for half-donut displays when vertical space is constrained.
+
+**Don't**
+
+- Don't put multiple `ChartDonut` components inside one wrapper — only one is allowed.
+- Don't use `DonutChart` for time-series trends — use `LineChart` or `AreaChart` instead.
+- Don't use `DonutChart` for comparing absolute values across categories — use `BarChart` instead.
+- Don't use sequential color tokens — only categorical colors are supported.
+- Don't mismatch the number of `ChartDonutCell` components with data items.
+
 ## Example
 
 ### Basic Donut Chart with Custom Colors and Center Text

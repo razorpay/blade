@@ -10,13 +10,13 @@ const normalizedStories = [
   {
     titlePrefix: "",
     directory: "./src",
-    files: "**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|ChatInput|DatePicker|DetailedView|DrawerExamples|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)",
-    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|ChatInput|DatePicker|DetailedView|DrawerExamples|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
+    files: "**/!(_KitchenSink|*.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|ListView|ListViewFigmaExample|Menu|Settings|SideNav|RazorSense|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|NativeChatMessageDemo|CreationView|TopNav|LightBox|Preview)*.stories.?(ts|tsx|js|jsx)",
+    importPathMatcher: /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|ListView|ListViewFigmaExample|Menu|Settings|SideNav|RazorSense|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|NativeChatMessageDemo|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/,
     // @ts-ignore
     req: require.context(
       '../../src',
       true,
-      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|ChatInput|DatePicker|DetailedView|DrawerExamples|Fade|ListView|ListViewFigmaExample|Menu|Morph|Move|Settings|SideNav|Slide|RazorSense|Stagger|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/
+      /^\.(?:(?:^|\/|(?:(?:(?!(?:^|\/)\.).)*?)\/)(?:(?!(?:_KitchenSink|[^/]*?\.test|MotionRecipes|BottomNav|DatePicker|DetailedView|DrawerExamples|ListView|ListViewFigmaExample|Menu|Settings|SideNav|RazorSense|TableEditableCellAPI|TableFigmaExample|TableStripedRows|Toast|Typography|ChatMessage|NativeChatMessageDemo|CreationView|TopNav|LightBox|Preview))[^/]*?)[^/]*?\.stories\.(?:ts|tsx|js|jsx)?)$/
     ),
   },
   {

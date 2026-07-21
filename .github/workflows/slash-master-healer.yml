@@ -1,0 +1,122 @@
+name: Agentic Repo / Slash Master Healer
+
+# Heals failing checks on the master branch by asking Slash to investigate
+# and create a fix PR.  Slash fetches logs, classifies the failure, and
+# decides whether to act (e.g. skip infra/downtime issues automatically).
+#
+# Triggers:
+#   workflow_run — fires when a monitored workflow completes on master
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Workflow run ID of the failing master check (optional)'
+        required: false
+        type: string
+  workflow_run:
+    workflows:
+      - 'Blade Interaction Tests'
+      - 'Blade Bundle Size'
+      - 'Blade Chromatic'
+      - 'Blade Release'
+      - 'Agentic Blade Metrics'
+    types: [completed]
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.repository }}-master-${{ github.event.workflow_run.head_sha }}-slash-master-healer
+  cancel-in-progress: false
+
+jobs:
+  heal-master:
+    name: Heal Master Checks via Slash
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/scripts
+
+      # ----------------------------------------------------------------
+      # Step 1 — Trigger Slash to investigate and fix failing checks
+      # ----------------------------------------------------------------
+      - name: Trigger Slash Master Healer
+        id: trigger-slash
+        env:
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
+          RUN_ID: ${{ github.event.inputs.run_id || github.event.workflow_run.id }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          WORKFLOW_RUN_URL="https://github.com/${REPOSITORY}/actions/runs/${RUN_ID}"
+
+          PROMPT="Failing CI checks detected on the master branch of the blade repository.
+
+          Workflow run: ${WORKFLOW_RUN_URL}
+
+          Steps:
+          1. Fetch logs for the failed workflow run and check if failures are infra/downtime issues (timeouts, connection errors, OOM, runner issues). If all failures are infra-related, stop — do not create a PR.
+          2. Before creating any fix PR, search for open PRs with the label 'Auto-Created PR' to check if a PR already exists for the same issue. If one exists, skip creating a new PR.
+          3. If failures are real test or code issues and no existing fix PR is found, create a new branch off master and open a PR to fix them. Add the label 'Auto-Created PR' to the created PR."
+
+          set +e
+          RESPONSE_OUTPUT=$(node .github/scripts/run-slash.js "$PROMPT")
+          NODE_EXIT=$?
+          set -e
+          echo "$RESPONSE_OUTPUT"
+          if [ $NODE_EXIT -ne 0 ]; then
+            echo "ERROR: run-slash.js exited with code $NODE_EXIT (see response above)"
+            exit $NODE_EXIT
+          fi
+
+          RESPONSE_JSON=$(echo "$RESPONSE_OUTPUT" | grep "^Response:" | sed 's/^Response: //')
+          TASK_ID=$(echo "$RESPONSE_JSON" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d.get('task_id',''))" 2>/dev/null || true)
+
+          if [ -n "$TASK_ID" ]; then
+            EXECUTION_URL="https://slash.concierge.razorpay.com/tasks/${TASK_ID}/execution-logs"
+            echo "Execution logs: ${EXECUTION_URL}"
+            echo "execution_url=$EXECUTION_URL" >> "$GITHUB_OUTPUT"
+            echo "task_id=$TASK_ID" >> "$GITHUB_OUTPUT"
+          elif [ -n "$RESPONSE_JSON" ]; then
+            echo "ERROR: Slash returned a response but task_id could not be extracted."
+            echo "Response: $RESPONSE_JSON"
+            exit 1
+          fi
+
+      # ----------------------------------------------------------------
+      # Step 2 — Post a commit comment with the Slash execution link
+      # ----------------------------------------------------------------
+      - name: Post commit comment with execution link
+        if: steps.trigger-slash.outputs.execution_url != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          EXECUTION_URL: ${{ steps.trigger-slash.outputs.execution_url }}
+          TASK_ID: ${{ steps.trigger-slash.outputs.task_id }}
+        run: |
+          gh api "repos/$REPOSITORY/commits/$HEAD_SHA/comments" \
+            --method POST \
+            --field body="🤖 **Slash Master Healer** has been triggered to investigate and fix failing master checks.
+
+          [View execution logs](${EXECUTION_URL})<!-- slash-task-id: ${TASK_ID} -->"
+
+      # ----------------------------------------------------------------
+      # Step 3 — Post failure comment if Slash trigger failed
+      # ----------------------------------------------------------------
+      - name: Post failure comment
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api "repos/$REPOSITORY/commits/$HEAD_SHA/comments" \
+            --method POST \
+            --field body="⚠️ **Slash Master Healer** failed to trigger. [View workflow run](${RUN_URL})"

@@ -1,5 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
@@ -12,20 +13,11 @@ export type CardSpacingValueType =
   | 'spacing.5'
   | 'spacing.7';
 
-export type CardProps = {
+type CardBaseProps = {
   /**
-   * Card contents
+   * Card contents.
    */
-  children: Snippet;
-  /**
-   * Sets the background color of the Card
-   *
-   * @default 'surface.background.gray.intense'
-   */
-  backgroundColor?:
-    | 'surface.background.gray.subtle'
-    | 'surface.background.gray.moderate'
-    | 'surface.background.gray.intense';
+  children?: Snippet;
   /**
    * Sets the border radius of the Card
    *
@@ -74,6 +66,15 @@ export type CardProps = {
    * @default false
    */
   isSelected?: boolean;
+  /**
+   * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored)
+   * and is announced as disabled to assistive tech.
+   *
+   * `isDisabled` takes precedence over `isSelected`.
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
    */
@@ -142,6 +143,82 @@ export type CardProps = {
    */
   [key: `data-analytics-${string}`]: string;
 } & StyledPropsBlade;
+
+/**
+ * Variant-specific props. `variant` selects the visual treatment and gates `backgroundColor`
+ * (only valid on `theme`). Kept as a standalone discriminated union that is intersected onto
+ * `CardBaseProps` — this keeps the content snippets (`children`/`top`/`bottom`) on a single flat
+ * type, which svelte2tsx types correctly when passing named snippets.
+ */
+type CardVariantProps =
+  | {
+      /**
+       * Sets the visual treatment of the Card.
+       *
+       * - `primary`: elevated styling (gradients, drop shadow) with fixed
+       *   `surface.background.gray.intense` background.
+       * - `secondary`: flat styling with fixed `surface.background.gray.moderate` background.
+       *
+       * @default 'primary'
+       */
+      variant?: 'primary' | 'secondary';
+      backgroundColor?: never;
+    }
+  | {
+      /**
+       * Sets the visual treatment of the Card.
+       *
+       * `theme`: elevated shadow like `primary` with a configurable `backgroundColor`.
+       */
+      variant: 'theme';
+      /**
+       * Sets the background color. Only valid when `variant="theme"`.
+       * Supports gray and colored surface tokens (primary, sea, cloud).
+       *
+       * @default 'surface.background.primary.subtle'
+       */
+      backgroundColor?: CardBackgroundColor;
+    };
+
+/**
+ * Props for the `Card` component.
+ *
+ * @example
+ * ```svelte
+ * <!-- valid -->
+ * <Card variant="theme" backgroundColor="surface.background.cloud.subtle">...</Card>
+ *
+ * <!-- TS error: backgroundColor not allowed on primary/secondary -->
+ * <Card variant="primary" backgroundColor="surface.background.gray.subtle">...</Card>
+ * ```
+ */
+export type CardProps = CardBaseProps & CardVariantProps;
+
+export type TicketCardProps = CardBaseProps & {
+  /**
+   * Must contain exactly one `TicketCardBody` and one `TicketCardFooter`.
+   */
+  children: Snippet;
+};
+
+export type InfoCardProps = CardBaseProps & {
+  /**
+   * Must contain exactly one `InfoCardBody` and one `InfoCardFooter`.
+   */
+  children: Snippet;
+};
+
+export type SectionedCardBodyProps = {
+  children: Snippet;
+  testID?: string;
+  [key: `data-analytics-${string}`]: string;
+};
+
+export type SectionedCardFooterProps = {
+  children: Snippet;
+  testID?: string;
+  [key: `data-analytics-${string}`]: string;
+};
 
 export type CardBodyProps = {
   /**

@@ -1,9 +1,8 @@
 import React from 'react';
-import type { CardVariant } from './types';
 import { throwBladeError } from '~utils/logger';
 
-type CardContextType = { size: 'large' | 'medium' | undefined; variant: CardVariant | undefined };
-const CardContext = React.createContext<CardContextType>({ size: undefined, variant: undefined });
+type CardContextType = { size: 'large' | 'medium' | undefined };
+const CardContext = React.createContext<CardContextType>({ size: undefined });
 
 const useVerifyInsideCard = (componentName: string): CardContextType => {
   const context = React.useContext(CardContext);
@@ -22,9 +21,8 @@ type CardProviderProps = { children: React.ReactNode };
 const CardProvider = ({
   children,
   size,
-  variant,
-}: CardProviderProps & { size: 'large' | 'medium'; variant: CardVariant }): React.ReactElement => {
-  return <CardContext.Provider value={{ size, variant }}>{children}</CardContext.Provider>;
+}: CardProviderProps & { size: 'large' | 'medium' }): React.ReactElement => {
+  return <CardContext.Provider value={{ size }}>{children}</CardContext.Provider>;
 };
 
 export { useVerifyInsideCard, CardProvider, CardContext };

@@ -3,8 +3,8 @@
  * Fetches review comments to resolve, triggers Slash, and posts reply comments.
  *
  * Selects comments that either:
- *   - mention @rzp-slash-public (manual delegation), or
- *   - were posted by rzp-slash-public with confidence >= 8/10 (auto-resolution)
+ *   - mention @rzp-slash-public or @razorpay/slash-public (manual delegation), or
+ *   - were posted by rzp-slash-public (auto-resolution, comments with confidence >= 5/10)
  */
 
 const { execSync } = require('child_process');
@@ -21,8 +21,8 @@ const allComments = JSON.parse(
 
 const selected = allComments.filter(
   (c) =>
-    c.body.includes('@rzp-slash-public') ||
-    (c.user.login === 'rzp-slash-public[bot]' && /confidence: ([89]\d?|10)\/10/.test(c.body)),
+    (c.body.includes('@rzp-slash-public') || c.body.includes('@razorpay/slash-public')) ||
+    (c.user.login === 'rzp-slash-public[bot]' && /confidence: ([5-9]|10)\/10/.test(c.body)),
 );
 
 if (selected.length === 0) {

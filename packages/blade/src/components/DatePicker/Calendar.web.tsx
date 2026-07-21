@@ -26,6 +26,9 @@ const Calendar = <Type extends DateSelectionType>({
   date,
   defaultDate,
   onDateChange,
+  visibleMonth,
+  defaultVisibleMonth,
+  onVisibleMonthChange,
   onNext,
   onPrevious,
   presets,
@@ -65,9 +68,20 @@ const Calendar = <Type extends DateSelectionType>({
     onChange: onDateChange,
   });
 
+  const [_visibleMonth, setVisibleMonth] = useControllableState<Date | undefined>({
+    value: visibleMonth,
+    defaultValue: defaultVisibleMonth,
+    onChange: (date) => {
+      if (date) onVisibleMonthChange?.(date);
+    },
+  });
+
   const dateContext = useDatesContext();
   const isMobile = useIsMobile();
   const currentDate = React.useMemo(() => {
+    if (_visibleMonth) {
+      return _visibleMonth;
+    }
     if (_date) {
       return _date;
     }
@@ -79,32 +93,41 @@ const Calendar = <Type extends DateSelectionType>({
       return selectedValue;
     }
     return shiftTimezone('add', new Date());
-  }, [_date, selectedValue]);
+  }, [_visibleMonth, _date, selectedValue]);
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
+
+  // Keeps the legacy `_date` state and the new `_visibleMonth` state in sync so that
+  // navigation keeps working regardless of which one is currently driving `currentDate`.
+  // Note: Not wrapped in useCallback because `setDate` from mantine's `useUncontrolled`
+  // is not memoized, so useCallback would provide no benefit.
+  const updateCurrentDate = (nextDate: Date): void => {
+    setDate(nextDate);
+    setVisibleMonth(() => nextDate);
+  };
 
   const handleNextMonth = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();
     onNext?.({ date: nextDate, type: 'month' });
-    setDate(nextDate);
+    updateCurrentDate(nextDate);
   };
 
   const handlePreviousMonth = () => {
     const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'month').toDate();
     onPrevious?.({ date: nextDate, type: 'month' });
-    setDate(nextDate);
+    updateCurrentDate(nextDate);
   };
 
   const handleNextYear = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'year').toDate();
     onNext?.({ date: nextDate, type: 'year' });
-    setDate(nextDate);
+    updateCurrentDate(nextDate);
   };
 
   const handlePreviousYear = () => {
     const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'year').toDate();
     onPrevious?.({ date: nextDate, type: 'year' });
-    setDate(nextDate);
+    updateCurrentDate(nextDate);
   };
 
   const handleNextDecade = () => {
@@ -112,7 +135,7 @@ const Calendar = <Type extends DateSelectionType>({
       .add(10 * columnsToScroll, 'year')
       .toDate();
     onNext?.({ date: nextDate, type: 'decade' });
-    setDate(nextDate);
+    updateCurrentDate(nextDate);
   };
 
   const handlePreviousDecade = () => {
@@ -120,7 +143,7 @@ const Calendar = <Type extends DateSelectionType>({
       .subtract(10 * columnsToScroll, 'year')
       .toDate();
     onPrevious?.({ date: nextDate, type: 'decade' });
-    setDate(nextDate);
+    updateCurrentDate(nextDate);
   };
 
   return (
@@ -152,7 +175,7 @@ const Calendar = <Type extends DateSelectionType>({
           date={currentDate}
           locale={dateContext.locale}
           level={level}
-          onDateChange={setDate}
+          onDateChange={updateCurrentDate}
           onLevelChange={(level) => setLevel(() => level)}
           numberOfColumns={numberOfColumns}
           weekdayFormat="ddd"
