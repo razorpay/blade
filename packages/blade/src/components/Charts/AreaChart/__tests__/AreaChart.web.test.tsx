@@ -1,4 +1,5 @@
 import React from 'react';
+import { waitFor } from '@testing-library/react';
 import { ChartArea, ChartAreaWrapper } from '../AreaChart.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { normalizeSnapshotIds } from '~utils/testing/normalizeSnapshotIds';
@@ -44,5 +45,57 @@ describe('<AreaChart />', () => {
       </Box>,
     );
     expect(normalizeSnapshotIds(container.innerHTML)).toMatchSnapshot();
+  });
+
+  // A dashed bridge keeps the area gapped (no fill under the no-data stretch) and adds a separate
+  // curved dashed line, drawn by the <Customized> NullBridgeLayer as an SVG <path>. A hard gap or a
+  // solid bridge renders no such path. Interior null run: Mar..May.
+  const dataWithNullsForBridge = [
+    { name: 'Jan', sales: 4000 },
+    { name: 'Feb', sales: 3000 },
+    { name: 'Mar', sales: 5000 },
+    { name: 'Apr', sales: null },
+    { name: 'May', sales: 1890 },
+    { name: 'Jun', sales: 2390 },
+  ];
+
+  it('should not render a dashed bridge path by default (hard gap)', () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartAreaWrapper data={dataWithNullsForBridge}>
+          <ChartArea dataKey="sales" name="Sales" />
+        </ChartAreaWrapper>
+      </Box>,
+    );
+    expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(0);
+  });
+
+  it('should not render a dashed bridge path for a solid bridge (connectNulls true)', () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartAreaWrapper data={dataWithNullsForBridge}>
+          <ChartArea dataKey="sales" name="Sales" connectNulls={true} connectNullsStyle="solid" />
+        </ChartAreaWrapper>
+      </Box>,
+    );
+    expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(0);
+  });
+
+  it('should render a curved dashed bridge path when connectNullsStyle is "dashed"', async () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartAreaWrapper data={dataWithNullsForBridge}>
+          <ChartArea dataKey="sales" name="Sales" connectNulls={true} connectNullsStyle="dashed" />
+        </ChartAreaWrapper>
+      </Box>,
+    );
+    // The bridge is derived from the rendered area geometry, which the chart commits asynchronously.
+    await waitFor(() => {
+      expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(1);
+    });
+    const bridgePath = container.querySelector('.blade-null-bridge-layer path')!;
+    expect(bridgePath).toHaveAttribute('stroke-dasharray', '5 5');
+    // A curved path is sampled at many points, so the `d` attribute has multiple line-to commands.
+    expect((bridgePath.getAttribute('d')?.match(/L/g) ?? []).length).toBeGreaterThan(1);
   });
 });

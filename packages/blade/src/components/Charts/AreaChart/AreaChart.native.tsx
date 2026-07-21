@@ -22,6 +22,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { SharedValue } from 'react-native-reanimated';
 import { useChartsColorTheme, assignDataColorMapping, getHighestColorInRange } from '../utils';
+import { monotoneInterpolate } from '../LineChart/nullBridgeUtils';
 import {
   CommonChartComponentsContext,
   componentId as commonComponentIds,
@@ -101,6 +102,7 @@ type AreaSlot = {
   stackId: string;
   type: CurveType;
   connectNulls: boolean;
+  connectNullsStyle: 'solid' | 'dashed';
   hide?: boolean;
   showLegend: boolean;
   dot: boolean;
@@ -168,6 +170,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         stackId: props.stackId != null ? String(props.stackId) : '1',
         type: props.type ?? 'monotone',
         connectNulls: Boolean(props.connectNulls),
+        connectNullsStyle: props.connectNullsStyle === 'dashed' ? 'dashed' : 'solid',
         hide: props.hide,
         showLegend: props.showLegend !== false,
         dot: Boolean(props.dot),
@@ -465,10 +468,14 @@ const buildCurve = (pts: Point[], type: CurveType): string => {
 
 type SeriesPoint = { x: number; yTop: number; yBase: number; isNull: boolean };
 
+// Dash pattern used for the line drawn across null points on a dashed bridge.
+const NULL_BRIDGE_DASHARRAY = '5 5';
+
 type AreaSeriesProps = {
   points: SeriesPoint[];
   type: CurveType;
   connectNulls: boolean;
+  connectNullsStyle: 'solid' | 'dashed';
   gradientId: string;
   strokeColor: string;
   dotColor: string;
@@ -483,6 +490,7 @@ const AreaSeries = ({
   points,
   type,
   connectNulls,
+  connectNullsStyle,
   gradientId,
   strokeColor,
   dotColor,
@@ -497,10 +505,13 @@ const AreaSeries = ({
       AREA_FILL_OPACITY - scrubProgress.value * (AREA_FILL_OPACITY - AREA_FILL_OPACITY_DIMMED),
   }));
 
-  // Split into contiguous segments. When connectNulls is true, null points are
-  // bridged (removed) so the series draws as one continuous shape.
+  // A solid bridge draws one continuous shape across nulls. A dashed bridge (and a hard gap) keep
+  // the area split at null points, so there's no fill under the no-data stretch.
+  const isSolidBridge = connectNulls && connectNullsStyle === 'solid';
+  const isDashedBridge = connectNulls && connectNullsStyle === 'dashed';
+
   const segments: SeriesPoint[][] = [];
-  if (connectNulls) {
+  if (isSolidBridge) {
     const nonNull = points.filter((p) => !p.isNull);
     if (nonNull.length) segments.push(nonNull);
   } else {
@@ -514,6 +525,28 @@ const AreaSeries = ({
       }
     });
     if (current.length) segments.push(current);
+  }
+
+  // For a dashed bridge, draw a stroke-only dashed line across each interior gap, densely sampled
+  // onto the monotone spline through all real points so it follows the same curve as a solid line.
+  const bridgePaths: string[] = [];
+  if (isDashedBridge && segments.length > 1) {
+    const definedTop = points.filter((p) => !p.isNull);
+    const xs = definedTop.map((p) => p.x);
+    const ys = definedTop.map((p) => p.yTop);
+    for (let i = 0; i < segments.length - 1; i++) {
+      const from = segments[i][segments[i].length - 1];
+      const to = segments[i + 1][0];
+      const sampleCount = Math.max(2, Math.round(Math.abs(to.x - from.x) / 3));
+      let bridgeD = `M ${from.x} ${from.yTop}`;
+      for (let step = 1; step <= sampleCount; step++) {
+        const t = step / sampleCount;
+        const x = from.x + (to.x - from.x) * t;
+        const y = monotoneInterpolate(xs, ys, x);
+        bridgeD += ` L ${x} ${y}`;
+      }
+      bridgePaths.push(bridgeD);
+    }
   }
 
   return (
@@ -548,6 +581,20 @@ const AreaSeries = ({
           </G>
         );
       })}
+
+      {bridgePaths.map((bridgeD, bridgeIndex) => (
+        <Path
+          key={`null-bridge-${bridgeIndex}`}
+          testID="area-null-bridge"
+          d={bridgeD}
+          stroke={strokeColor}
+          strokeWidth={STROKE_WIDTH}
+          strokeDasharray={NULL_BRIDGE_DASHARRAY}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ))}
 
       {showDot
         ? points.map((p, idx) =>
@@ -1223,6 +1270,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                       points={points}
                       type={area.type}
                       connectNulls={area.connectNulls}
+                      connectNullsStyle={area.connectNullsStyle}
                       gradientId={gradientId}
                       strokeColor={strokeColor}
                       dotColor={strokeColor}

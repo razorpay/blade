@@ -378,6 +378,85 @@ export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = ({
   );
 };
 
+// Area Chart null handling
+// - connectNulls={false} (default): the area breaks at null points (use for genuine outages).
+// - connectNulls={true} + connectNullsStyle="solid" (default): nulls bridged with a solid area.
+// - connectNulls={true} + connectNullsStyle="dashed": real data stays a solid area while the
+//   stretch across null points (no data for that period) renders as a dashed line with no fill.
+export const AreaChartNullBridge: StoryFn<typeof ChartArea> = () => {
+  return (
+    <ChartsWrapper>
+      <Box display="flex" flexDirection="column" gap="spacing.8" width="100%">
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
+          <Heading size="small">
+            Hard gap for outages (connectNulls=&#123;false&#125;, default)
+          </Heading>
+          <Box width="100%" height="220px">
+            <ChartAreaWrapper data={data}>
+              <ChartXAxis dataKey="name" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartArea
+                type="monotone"
+                dataKey="uv"
+                name="Visitors (Gap on no-data)"
+                color="data.background.categorical.gray.strong"
+              />
+            </ChartAreaWrapper>
+          </Box>
+        </Box>
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
+          <Heading size="small">
+            Solid bridge across nulls (connectNullsStyle=&quot;solid&quot;)
+          </Heading>
+          <Box width="100%" height="220px">
+            <ChartAreaWrapper data={data}>
+              <ChartXAxis dataKey="name" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartArea
+                type="monotone"
+                dataKey="uv"
+                name="Visitors (Solid across no-data)"
+                connectNulls={true}
+                connectNullsStyle="solid"
+                color="data.background.categorical.blue.moderate"
+              />
+            </ChartAreaWrapper>
+          </Box>
+        </Box>
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
+          <Heading size="small">
+            Dashed bridge across nulls (connectNullsStyle=&quot;dashed&quot;)
+          </Heading>
+          <Box width="100%" height="220px">
+            <ChartAreaWrapper data={data}>
+              <ChartXAxis dataKey="name" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartArea
+                type="monotone"
+                dataKey="uv"
+                name="Visitors (Dashed across no-data)"
+                connectNulls={true}
+                connectNullsStyle="dashed"
+                color="data.background.categorical.green.moderate"
+              />
+            </ChartAreaWrapper>
+          </Box>
+        </Box>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+
+AreaChartNullBridge.parameters = {
+  controls: { disable: true },
+};
+
 // 2.2.d - Tiny Area Chart (Sparkline)
 export const TinyAreaChart: StoryFn<typeof ChartArea> = ({
   dataKey = 'uv',

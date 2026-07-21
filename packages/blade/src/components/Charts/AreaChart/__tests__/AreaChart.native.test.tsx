@@ -80,6 +80,39 @@ describe('<ChartAreaWrapper /> (native)', () => {
     expect(toJSON()).toBeTruthy();
   });
 
+  it('renders a curved dashed null bridge (stroke-only) when connectNullsStyle is "dashed"', () => {
+    const bridgeData = [
+      { name: 'Jan', uv: 4000 },
+      { name: 'Feb', uv: 3000 },
+      { name: 'Mar', uv: 5000 },
+      { name: 'Apr', uv: null },
+      { name: 'May', uv: 1890 },
+      { name: 'Jun', uv: 2390 },
+    ];
+    const { getByTestId, UNSAFE_getAllByType } = renderWithTheme(
+      <ChartAreaWrapper data={bridgeData} testID="dashed">
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartArea dataKey="uv" name="UV" connectNulls connectNullsStyle="dashed" />
+      </ChartAreaWrapper>,
+    );
+
+    fireEvent(getByTestId('dashed-scrub-surface'), 'layout', {
+      nativeEvent: { layout: { width: 400, height: 300, x: 0, y: 0 } },
+    });
+
+    // react-native-svg normalizes strokeDasharray="5 5" to ['5', '5'].
+    // eslint-disable-next-line babel/new-cap -- testing-library UNSAFE_* helper
+    const bridges = UNSAFE_getAllByType(Path).filter((path) => {
+      const dash = path.props.strokeDasharray;
+      return Array.isArray(dash) ? dash.join(' ') === '5 5' : dash === '5 5';
+    });
+    expect(bridges.length).toBeGreaterThan(0);
+    // A curved bridge is sampled at many points, so its `d` has multiple line-to commands.
+    const bridgeD = bridges[0].props.d as string;
+    expect((bridgeD.match(/L/g) ?? []).length).toBeGreaterThan(1);
+  });
+
   it('renders empty-state copy when data is empty', () => {
     const { getByText } = renderWithTheme(
       <ChartAreaWrapper data={[]}>

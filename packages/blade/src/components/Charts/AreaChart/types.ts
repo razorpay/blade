@@ -13,9 +13,27 @@ type ChartAreaProps = {
    */
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   /**
-   * Whether to connect nulls.
+   * Whether to bridge gaps (`null` / `undefined` values) in the data.
+   *
+   * - `false` (default): the area breaks at null points, leaving a gap (no fill either). Use this
+   *   for genuine data outages where no continuity should be implied.
+   * - `true`: the area is connected across null points. Use `connectNullsStyle` to control whether
+   *   the bridge is drawn as a solid or dashed line.
+   *
+   * @default false
    */
-  connectNulls?: RechartAreaProps['connectNulls'];
+  connectNulls?: boolean;
+  /**
+   * The style of the line drawn across null points when `connectNulls` is `true`.
+   *
+   * - `'solid'` (default): nulls are bridged with a solid line and the fill continues underneath.
+   * - `'dashed'`: real data renders as a solid area while the stretch across null points renders as
+   *   a dashed line with no fill, signalling "no data for this period" without implying a measured
+   *   value.
+   *
+   * @default 'solid'
+   */
+  connectNullsStyle?: 'solid' | 'dashed';
   /**
    * Whether to show the legend.
    */

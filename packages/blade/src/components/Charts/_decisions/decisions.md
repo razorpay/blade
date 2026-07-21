@@ -322,7 +322,8 @@ import {
 | `name`         | `string`                                                          | ✅       | -             | Display name for the area, shown in legend and tooltips                                                                      |
 | `type`         | `'step' \| 'stepAfter' \| 'stepBefore' \| 'linear' \| 'monotone'` | ❌       | `'linear'`    | The interpolation type for connecting data points in the area                                                                |
 | `stackId`      | `string \| number`                                                | ❌       | `undefined`   | Identifier used to group areas into a stack. Areas with the same stackId will be stacked. Required when using multiple areas |
-| `connectNulls` | `boolean`                                                         | ❌       | `false`       | Whether to connect the area over null data points                                                                            |
+| `connectNulls` | `boolean`                                                         | ❌       | `false`       | Whether to bridge gaps (null data points). `false` = hard gap (use for genuine outages), `true` = connect across nulls (see `connectNullsStyle`) |
+| `connectNullsStyle` | `'solid' \| 'dashed'`                                        | ❌       | `'solid'`     | Style of the bridge drawn across nulls when `connectNulls` is `true`. `'dashed'` keeps the real area solid while drawing the no-data stretch as a dashed line with no fill (no data for that period) |
 | `color`        | `BladeColorToken`                                                 | ❌       | Auto-assigned | Color token for the area fill (automatically assigned from palette if not provided)                                          |
 
 - Apart from this we would be exposing all the event handlers provided by recharts like `onCopy`, `onCopyCapture`, `onCut`, `onDrag` , `onMouseUp` , `onMouseDown` etc.
