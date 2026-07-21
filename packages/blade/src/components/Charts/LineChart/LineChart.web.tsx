@@ -357,8 +357,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       const mutationObserver = new MutationObserver((mutations) => {
         // Skip mutations that originate from our own bridge layer (the dashed paths we render),
         // which would otherwise cause re-entrant computeBridges calls on every bridge update.
-        const isBridgeMutation = mutations.some((m) =>
-          m.target.closest?.('.blade-null-bridge-layer'),
+        const isBridgeMutation = mutations.some(
+          (m) => m.target instanceof Element && m.target.closest('.blade-null-bridge-layer'),
         );
         if (isBridgeMutation) return;
         // Debounce: coalesce multiple mutations in a single animation frame so that hover-related
