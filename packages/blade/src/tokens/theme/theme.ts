@@ -131,9 +131,10 @@ export type Colors = {
   surface: {
     background: {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
-      primary: SubtleOrIntenseEmphasis;
+      primary: DataCategoricalEmphasis;
       sea: SubtleOrIntenseEmphasis;
       cloud: SubtleOrIntenseEmphasis;
+      accent: Pick<Emphasis, 'intense'>;
     };
     border: {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
