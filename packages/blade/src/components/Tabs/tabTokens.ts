@@ -189,7 +189,7 @@ const filledHorizontalTextSizeMap = {
   small: 'small',
   medium: 'medium',
   large: 'large',
-} as const satisfies Record<TabSizes, 'small' | 'medium' | 'large'>;
+} as const;
 
 type BorderWidthValue = 'none' | 'thick' | 'thicker';
 
