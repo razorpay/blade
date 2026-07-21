@@ -1,0 +1,97 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Mermaid } from './Mermaid';
+
+<Meta title="Guides/Right Component Selection" />
+
+export const selectionDecisionTree = `
+flowchart TD
+  start["Need the user to choose from a set of options?"] --> multi{"Can more than one option be selected at once?"}
+
+  multi -->|"Yes — multi-select"| multiLabels{"Labels short (1–2 words) & consistent?"}
+  multiLabels -->|"Yes"| chipMulti["Chip<br/>(ChipGroup, selectionType='multiple')"]
+  multiLabels -->|"No — longer / inconsistent"| checkboxMulti["Checkbox<br/>(CheckboxGroup)"]
+
+  multi -->|"No — single select"| changesContent{"Does selecting immediately change or filter the visible page content?"}
+
+  changesContent -->|"Yes"| distinctViews{"Switching between distinct sections, each with its own content panel?"}
+  distinctViews -->|"Yes"| tabs["Tabs"]
+  distinctViews -->|"No — re-filters the same content (2–5 short options)"| segmented["SegmentedControl"]
+
+  changesContent -->|"No — it is a value submitted in a form"| count{"How many options?"}
+  count -->|"1 (binary on/off)"| confirm{"Needs a separate confirm / submit action?"}
+  confirm -->|"No — applies instantly"| switchNode["Switch"]
+  confirm -->|"Yes"| checkboxSingle["Checkbox (single)"]
+  count -->|"2–5"| shortLabels{"Labels short (1–2 words) & consistent?"}
+  shortLabels -->|"Yes"| chipSingle["Chip<br/>(selectionType='single')"]
+  shortLabels -->|"No — longer / descriptive"| radio["Radio<br/>(RadioGroup)"]
+  count -->|"More than 5"| dropdown["Dropdown (SelectInput)<br/>AutoComplete if searchable / 10+"]
+
+  classDef leaf fill:#e7f5ee,stroke:#3f9c6b,color:#12321f;
+  class chipMulti,checkboxMulti,tabs,segmented,switchNode,checkboxSingle,chipSingle,radio,dropdown leaf;
+`;
+
+# Which selection component should I use?
+
+Several Blade components let a user pick from a set of options — [Switch](?path=/docs/components-switch--docs), [Checkbox](?path=/docs/components-checkbox-checkbox--docs), [Radio](?path=/docs/components-radio-radiogroup--docs), [Chip](?path=/docs/components-chip-chip--docs), [SegmentedControl](?path=/docs/components-segmentedcontrol--docs), [Tabs](?path=/docs/components-tabs--docs) and [Dropdown](?path=/docs/components-dropdown-dropdown--docs) — and a few of them look visually similar.
+
+The most commonly confused pair is [Tabs](?path=/docs/components-tabs--docs) and [SegmentedControl](?path=/docs/components-segmentedcontrol--docs), so this guide helps you pick the right one based on how the selection behaves, not just how it looks.
+
+Use the decision tree below, then refer to the quick-reference table for a summary.
+
+## Decision tree
+
+<p style={{ marginTop: '-4px', marginBottom: '16px', fontSize: '14px', color: '#6b7280' }}>
+  Between Switch, Checkbox, Radio, Chip, SegmentedControl, Tabs & Dropdown.
+</p>
+
+<Mermaid chart={selectionDecisionTree} />
+
+## Quick reference
+
+<table style={{ borderCollapse: 'collapse', width: '100%' }}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: 'left', padding: '8px 12px', borderBottom: '2px solid rgba(0,0,0,0.12)', width: '180px' }}>Component</th>
+      <th style={{ textAlign: 'left', padding: '8px 12px', borderBottom: '2px solid rgba(0,0,0,0.12)' }}>Use when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)', verticalAlign: 'top' }}><a href="?path=/docs/components-switch--docs"><b>Switch</b></a></td>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>A single binary on/off where <b>selection is execution</b> — it applies instantly with no separate submit step (settings, feature toggles).</td>
+    </tr>
+    <tr>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)', verticalAlign: 'top' }}><a href="?path=/docs/components-checkbox-checkbox--docs"><b>Checkbox</b></a></td>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)' }}><b>Multi-select</b> with longer / inconsistent labels, <b>or</b> a single binary choice that needs a confirm/submit action (e.g. "I accept the terms").</td>
+    </tr>
+    <tr>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)', verticalAlign: 'top' }}><a href="?path=/docs/components-radio-radiogroup--docs"><b>Radio</b></a></td>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>Exactly <b>one</b> option from <b>2–5</b> choices with <b>longer / descriptive</b> labels, submitted as a form value.</td>
+    </tr>
+    <tr>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)', verticalAlign: 'top' }}><a href="?path=/docs/components-chip-chip--docs"><b>Chip</b></a></td>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)' }}><b>2–5</b> short, consistent (1–2 word) options — single-select acts like a segmented control, multi-select acts like toggle buttons. Compact, inline.</td>
+    </tr>
+    <tr>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)', verticalAlign: 'top' }}><a href="?path=/docs/components-segmentedcontrol--docs"><b>SegmentedControl</b></a></td>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>A single choice of <b>2–5 short options</b> that <b>re-filters or changes the representation of the same content</b> (e.g. Daily / Weekly / Monthly, List / Grid).</td>
+    </tr>
+    <tr>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)', verticalAlign: 'top' }}><a href="?path=/docs/components-tabs--docs"><b>Tabs</b></a></td>
+      <td style={{ padding: '8px 12px', borderBottom: '1px solid rgba(0,0,0,0.08)' }}><b>Navigating between distinct views or sections</b> within a page, where each tab reveals its <b>own content panel</b>.</td>
+    </tr>
+    <tr>
+      <td style={{ padding: '8px 12px', verticalAlign: 'top' }}><a href="?path=/docs/components-dropdown-dropdown--docs"><b>Dropdown</b></a> (<a href="?path=/docs/components-dropdown-with-select--with-single-select"><code>SelectInput</code></a>)</td>
+      <td style={{ padding: '8px 12px' }}>Selecting from <b>more than 5</b> predefined options (single or multi). Use <a href="?path=/docs/components-dropdown-with-autocomplete--with-single-select"><code>AutoComplete</code></a> for searchable / large (10+) lists.</td>
+    </tr>
+  </tbody>
+</table>
+
+## Tabs vs SegmentedControl
+
+[Tabs](?path=/docs/components-tabs--docs) and [SegmentedControl](?path=/docs/components-segmentedcontrol--docs) are the most commonly confused because they look alike, so the distinction is worth calling out — it's about **what the selection does**:
+
+- [Tabs](?path=/docs/components-tabs--docs) are navigational — each tab reveals its **own, distinct content panel**, so use them to switch between larger sections of content within the same page context (e.g. Subscription / Plans / Settings).
+- [SegmentedControl](?path=/docs/components-segmentedcontrol--docs) is a compact, form-like control that **changes how the _same_ content is displayed or filtered**, and is best for 2–5 short, consistent options (e.g. a Daily / Weekly / Monthly toggle above a single chart, or a List / Grid view switch).
+
+If selecting an option swaps out an entire panel of content, reach for [Tabs](?path=/docs/components-tabs--docs); if it just re-filters or re-represents content that's already on the page, reach for [SegmentedControl](?path=/docs/components-segmentedcontrol--docs).
