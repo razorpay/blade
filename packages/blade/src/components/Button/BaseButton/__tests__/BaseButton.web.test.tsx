@@ -276,27 +276,6 @@ describe('<BaseButton />', () => {
     expect(getByText('Pay Now')).toBeVisible();
   });
 
-  it('should render avatar group only for large buttons', () => {
-    const avatars = [{ name: 'Nitin Kumar' }, { name: 'Rama Krushna Behera' }];
-
-    const { getByRole, unmount } = renderWithTheme(
-      <BaseButton size="large" avatars={avatars}>
-        Shared with
-      </BaseButton>,
-    );
-
-    expect(getByRole('group')).toBeInTheDocument();
-    unmount();
-
-    const { queryByRole } = renderWithTheme(
-      <BaseButton size="medium" avatars={avatars}>
-        Shared with
-      </BaseButton>,
-    );
-
-    expect(queryByRole('group')).not.toBeInTheDocument();
-  });
-
   it('should not have accessibility violations', async () => {
     const buttonText = 'Pay Now';
     const { container } = renderWithTheme(

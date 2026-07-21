@@ -57,11 +57,6 @@ type ButtonCommonProps = {
    * Called once when the `definite` progress bar reaches 100%.
    */
   onLoadingComplete?: BaseButtonProps['onLoadingComplete'];
-  /**
-   * Avatars to render after the button text as an avatar group.
-   * Only rendered for `large` buttons; ignored for smaller sizes.
-   */
-  avatars?: BaseButtonProps['avatars'];
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
 
@@ -135,7 +130,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     loadingType = 'indefinite',
     loadingTimer,
     onLoadingComplete,
-    avatars,
     href,
     target,
     rel,
@@ -189,7 +183,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       loadingType={loadingType}
       loadingTimer={loadingTimer}
       onLoadingComplete={onLoadingComplete}
-      avatars={avatars}
       testID={testID}
       onBlur={onBlur}
       onFocus={onFocus}

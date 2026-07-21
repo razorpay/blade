@@ -22,6 +22,10 @@ const StyledDotLoader = styled(BaseBox)<ButtonDotLoaderProps>(
     background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
     background-size: calc(100% / 3) 50%;
     animation: ${bounce} 1s infinite linear;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   `,
 );
 

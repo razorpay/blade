@@ -93,10 +93,6 @@ export default {
       control: 'number',
       description: 'Duration (ms) over which the `definite` progress overlay fills from 0% to 100%',
     },
-    avatars: {
-      control: 'object',
-      description: 'Avatars rendered after the button text. Only shown for `large` buttons',
-    },
   },
   parameters: {
     docs: {
@@ -110,11 +106,6 @@ const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', 
 };
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
-const sampleAvatars: ButtonProps['avatars'] = [
-  { name: 'Nitin Kumar', src: 'https://avatars.githubusercontent.com/u/46647141?v=4' },
-  { name: 'Kamlesh Chandnani', src: 'https://picsum.photos/seed/kamlesh/200' },
-  { name: 'Rama Krushna Behera', src: 'https://picsum.photos/seed/rama/200' },
-];
 
 const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
@@ -461,14 +452,6 @@ export const DefiniteLoadingWithCompleteCallback: StoryFn<typeof ButtonComponent
 };
 
 DefiniteLoadingWithCompleteCallback.storyName = 'Definite Loading With Complete Callback';
-
-export const ButtonWithAvatarGroup = ButtonTemplate.bind({});
-ButtonWithAvatarGroup.storyName = 'With Avatar Group';
-ButtonWithAvatarGroup.args = {
-  children: 'Shared with',
-  size: 'large',
-  avatars: sampleAvatars,
-};
 
 export const FullWidthButton = ButtonWithVariantTemplate.bind({});
 FullWidthButton.storyName = 'Full Width';

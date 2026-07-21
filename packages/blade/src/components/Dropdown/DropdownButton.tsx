@@ -25,7 +25,6 @@ const _DropdownButton = ({
   loadingType = 'indefinite',
   loadingTimer,
   onLoadingComplete,
-  avatars,
   onClick,
   onBlur,
   onKeyDown,
@@ -60,7 +59,6 @@ const _DropdownButton = ({
       loadingType={loadingType}
       loadingTimer={loadingTimer}
       onLoadingComplete={onLoadingComplete}
-      avatars={avatars}
       size={size}
       type={type}
       variant={variant}

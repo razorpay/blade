@@ -56,8 +56,6 @@ import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { Avatar, AvatarGroup } from '~components/Avatar';
-
 /**
  * Loading behaviour of the button.
  * - `indefinite`: shows a 3-dot loader (driven by `isLoading`) that replaces all content
@@ -66,37 +64,6 @@ import { Avatar, AvatarGroup } from '~components/Avatar';
  *   visually transitions from disabled to normal as it completes. Content stays visible.
  */
 export type ButtonLoadingType = 'indefinite' | 'definite';
-
-type ButtonAvatarBase = {
-  /**
-   * `alt` text for the avatar image.
-   */
-  alt?: string;
-};
-
-export type ButtonAvatar = ButtonAvatarBase &
-  (
-    | {
-        /**
-         * Name used to generate initials and as the image `alt` when `src` loads.
-         */
-        name: string;
-        /**
-         * Avatar image source.
-         */
-        src?: string;
-      }
-    | {
-        /**
-         * Name used to generate initials and as the image `alt` when `src` loads.
-         */
-        name?: string;
-        /**
-         * Avatar image source.
-         */
-        src: string;
-      }
-  );
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -134,11 +101,6 @@ type BaseButtonCommonProps = {
    * Called once when the `definite` progress bar reaches 100%.
    */
   onLoadingComplete?: () => void;
-  /**
-   * Avatars to render after the button text as an avatar group.
-   * Only rendered for `large` buttons; ignored for smaller sizes.
-   */
-  avatars?: ButtonAvatar[];
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?:
@@ -521,7 +483,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     loadingType = 'indefinite',
     loadingTimer,
     onLoadingComplete,
-    avatars,
     onClick,
     onBlur,
     onKeyDown,
@@ -686,8 +647,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   });
   const progressSurfaceColor = getIn(theme.colors, 'surface.background.gray.intense');
   const isDefinitePrimaryLoading = isDefiniteLoading && buttonVariant === 'primary';
-  const shouldShowAvatars =
-    Boolean(avatars && avatars.length > 0) && buttonSize === 'large' && !isIndefiniteLoading;
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRole = isLink ? 'link' : 'button';
@@ -966,20 +925,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           {Icon && iconPosition == 'right' ? (
             <BaseBox display="flex" justifyContent="center" alignItems="center">
               <Icon size={iconSize} color={iconColor} />
-            </BaseBox>
-          ) : null}
-          {shouldShowAvatars && avatars ? (
-            <BaseBox display="flex" alignItems="center" flexShrink={0} paddingLeft="spacing.3">
-              <AvatarGroup size="xsmall">
-                {avatars.map((avatar, index) => (
-                  <Avatar
-                    key={avatar.src ?? avatar.name ?? index}
-                    name={avatar.name}
-                    src={avatar.src}
-                    alt={avatar.src ? avatar.alt ?? avatar.name ?? 'Avatar' : avatar.alt}
-                  />
-                ))}
-              </AvatarGroup>
             </BaseBox>
           ) : null}
         </ButtonContent>
