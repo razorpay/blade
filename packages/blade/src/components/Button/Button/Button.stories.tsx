@@ -422,6 +422,30 @@ ButtonLoading.parameters = {
   },
 };
 
+ButtonLoading.storyName = 'Indefinite Loading (3-dot loader)';
+
+export const DefiniteLoadingWithoutTimer: StoryFn<typeof ButtonComponent> = ({
+  children = 'Button',
+  ...args
+}) => {
+  return (
+    <ButtonComponent {...args} loadingType="definite" isLoading={true}>
+      {children}
+    </ButtonComponent>
+  );
+};
+
+DefiniteLoadingWithoutTimer.storyName = 'Definite Loading Without Timer (falls back to dots)';
+
+DefiniteLoadingWithoutTimer.parameters = {
+  docs: {
+    description: {
+      story:
+        'When `loadingType="definite"` is set but `loadingTimer` is omitted, the button falls back to the indefinite 3-dot loader. A `__DEV__` warning is also emitted.',
+    },
+  },
+};
+
 export const DefiniteLoading: StoryFn<typeof ButtonComponent> = ({
   children = 'Processing',
   ...args

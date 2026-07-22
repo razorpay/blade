@@ -17,7 +17,7 @@ import {
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
 } from './buttonTokens';
-import type { BaseButtonStyleProps, IconColor } from './types';
+import type { BaseButtonStyleProps, IconColor, ButtonLoadingType } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
 import { ButtonProgressLoader } from './ButtonProgressLoader';
 import { getTextColorToken } from './getTextColorToken';
@@ -56,14 +56,6 @@ import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-/**
- * Loading behaviour of the button.
- * - `indefinite`: shows a 3-dot loader (driven by `isLoading`) that replaces all content
- * - `definite`: the button sits in its disabled/"rest" color while a left-to-right
- *   progress bar in the button's normal color fills over `loadingTimer` ms, so the button
- *   visually transitions from disabled to normal as it completes. Content stays visible.
- */
-export type ButtonLoadingType = 'indefinite' | 'definite';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -512,9 +504,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const buttonColor = buttonGroupProps.color ?? color;
   const buttonSize = buttonGroupProps.size ?? size;
   const buttonFullWidth = buttonGroupProps.isFullWidth ?? isFullWidth;
-  const isIndefiniteLoading = loadingType === 'indefinite' && isLoading;
   const isDefiniteLoadingConfigured =
     loadingType === 'definite' && typeof loadingTimer === 'number' && loadingTimer > 0;
+  const isIndefiniteLoading =
+    isLoading &&
+    (loadingType === 'indefinite' || (loadingType === 'definite' && !isDefiniteLoadingConfigured));
   const [definiteLoadingRun, setDefiniteLoadingRun] = React.useState(0);
   const [completedDefiniteLoadingKey, setCompletedDefiniteLoadingKey] = React.useState<
     string | null
@@ -550,6 +544,12 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         moduleName: 'BaseButton',
       });
     }
+    if (loadingType === 'definite' && isLoading && !isDefiniteLoadingConfigured) {
+      throwBladeError({
+        message: 'loadingTimer is required when loadingType is definite',
+        moduleName: 'BaseButton',
+      });
+    }
   }
 
   const prevLoading = usePrevious(isAnyLoading);
@@ -560,12 +560,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     if (!isAnyLoading && prevLoading) announce('Stopped loading');
   }, [isAnyLoading, prevLoading]);
 
+  const onLoadingCompleteRef = React.useRef(onLoadingComplete);
+  onLoadingCompleteRef.current = onLoadingComplete;
+
   const handleDefiniteLoadingComplete = React.useCallback(() => {
     if (!definiteLoadingKey) return;
 
     setCompletedDefiniteLoadingKey(definiteLoadingKey);
-    onLoadingComplete?.();
-  }, [definiteLoadingKey, onLoadingComplete]);
+    onLoadingCompleteRef.current?.();
+  }, [definiteLoadingKey]);
 
   React.useEffect(() => {
     if (!isDefiniteLoading || typeof loadingTimer !== 'number') return undefined;
@@ -637,19 +640,34 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     hasIcon: Boolean(Icon),
   });
 
-  const progressRestColor = resolveBackgroundValue({
-    theme,
-    value: getBackgroundColorToken({
-      variant: buttonVariant,
-      color: buttonColor,
-      state: 'disabled',
-    }),
-  });
-  const progressSurfaceColor = getIn(theme.colors, 'surface.background.gray.intense');
   const isDefinitePrimaryLoading = isDefiniteLoading && buttonVariant === 'primary';
+  const progressRestColor = isDefiniteLoading
+    ? resolveBackgroundValue({
+        theme,
+        value: getBackgroundColorToken({
+          variant: buttonVariant,
+          color: buttonColor,
+          state: 'disabled',
+        }),
+      })
+    : '';
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRole = isLink ? 'link' : 'button';
+
+  const dotLoaderColor = (() => {
+    const dotColorToken =
+      buttonVariant === 'primary' && buttonColor === 'primary'
+        ? 'interactive.icon.primary.normal'
+        : getTextColorToken({
+            property: 'icon',
+            variant: buttonVariant,
+            color: buttonColor,
+            state: 'default',
+          });
+
+    return getIn(theme.colors, dotColorToken as DotNotationToken<Theme['colors']>);
+  })();
 
   // On web, ButtonGroup flattens the child buttons' border radius via CSS child
   // selectors and rounds only the outer edges using the group container's
@@ -835,22 +853,28 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         <ButtonProgressLoader
           duration={loadingTimer ?? 0}
           restColor={progressRestColor}
-          surfaceColor={progressSurfaceColor}
           borderRadius={numericButtonBorderRadius}
-          borderRadii={buttonBorderRadii}
-          frameBoxShadow={isDefinitePrimaryLoading ? defaultBoxShadow : undefined}
-          shadowHighlightColor={
-            isDefinitePrimaryLoading ? effectiveShadowHighlightColor : undefined
-          }
-          shadowHighlightHeight={isDefinitePrimaryLoading ? shadowHighlightHeight : undefined}
-          shadowBottomColor={isDefinitePrimaryLoading ? shadowBottomColor : undefined}
-          shadowBottomHeight={isDefinitePrimaryLoading ? shadowBottomHeight : undefined}
-          shadowBorderColor={isDefinitePrimaryLoading ? shadowBorderColor : undefined}
-          shadowRingWidth={isDefinitePrimaryLoading ? shadowRingWidth : undefined}
-          showGradient={isDefinitePrimaryLoading ? showShadowGradient : undefined}
-          isInsetShadowSidesFlattened={
-            isDefinitePrimaryLoading && isNonFirstInButtonGroup ? true : undefined
-          }
+          {...(!isReactNative()
+            ? {
+                frameBoxShadow: isDefinitePrimaryLoading ? defaultBoxShadow : undefined,
+              }
+            : {})}
+          {...(isReactNative()
+            ? {
+                borderRadii: buttonBorderRadii,
+                shadowHighlightColor: isDefinitePrimaryLoading
+                  ? effectiveShadowHighlightColor
+                  : undefined,
+                shadowHighlightHeight: isDefinitePrimaryLoading ? shadowHighlightHeight : undefined,
+                shadowBottomColor: isDefinitePrimaryLoading ? shadowBottomColor : undefined,
+                shadowBottomHeight: isDefinitePrimaryLoading ? shadowBottomHeight : undefined,
+                shadowBorderColor: isDefinitePrimaryLoading ? shadowBorderColor : undefined,
+                shadowRingWidth: isDefinitePrimaryLoading ? shadowRingWidth : undefined,
+                showGradient: isDefinitePrimaryLoading ? showShadowGradient : undefined,
+                isInsetShadowSidesFlattened:
+                  isDefinitePrimaryLoading && isNonFirstInButtonGroup ? true : undefined,
+              }
+            : {})}
         />
       ) : null}
       <AnimatedButtonContent
@@ -872,19 +896,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           >
             <ButtonDotLoader
               size={spinnerSize === 'large' ? 20 : 16}
-              color={(() => {
-                const dotColorToken =
-                  buttonVariant === 'primary' && buttonColor === 'primary'
-                    ? 'interactive.icon.primary.normal'
-                    : getTextColorToken({
-                        property: 'icon',
-                        variant: buttonVariant,
-                        color: buttonColor,
-                        state: 'default',
-                      });
-
-                return getIn(theme.colors, dotColorToken as DotNotationToken<Theme['colors']>);
-              })()}
+              color={dotLoaderColor}
+              {...makeAccessible({ label: 'Loading', role: 'progressbar' })}
             />
           </BaseBox>
         ) : null}

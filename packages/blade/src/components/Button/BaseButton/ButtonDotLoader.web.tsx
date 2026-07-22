@@ -4,8 +4,7 @@ import BaseBox from '~components/Box/BaseBox';
 type ButtonDotLoaderProps = {
   size: number;
   color: string;
-  [key: string]: unknown;
-};
+} & React.AriaAttributes;
 
 const bounce = keyframes`
   20% { background-position: 0% 0%, 50% 50%, 100% 50% }

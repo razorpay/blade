@@ -1,22 +1,10 @@
-/* eslint-disable react/no-unused-prop-types */
 import styled, { css, keyframes } from 'styled-components';
-import type { ButtonCornerRadii } from './types';
 
 type ButtonProgressLoaderProps = {
   duration: number;
   restColor: string;
-  surfaceColor: string;
   borderRadius: number;
-  borderRadii?: ButtonCornerRadii;
   frameBoxShadow?: string;
-  shadowHighlightColor?: string;
-  shadowHighlightHeight?: number;
-  shadowBottomColor?: string;
-  shadowBottomHeight?: number;
-  shadowBorderColor?: string;
-  shadowRingWidth?: number;
-  showGradient?: boolean;
-  isInsetShadowSidesFlattened?: boolean;
 };
 
 const progressRecede = keyframes`
@@ -58,15 +46,13 @@ const StyledProgressOverlay = styled.span<{
 const StyledProgressFill = styled.span<{
   $duration: number;
   $restColor: string;
-  $surfaceColor: string;
 }>(
-  ({ $duration, $restColor, $surfaceColor }) => css`
+  ({ $duration, $restColor }) => css`
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     width: 100%;
-    background-color: ${$surfaceColor};
     background-image: linear-gradient(${$restColor}, ${$restColor});
     animation: ${progressRecede} ${$duration}ms linear forwards;
 
@@ -80,7 +66,6 @@ const StyledProgressFill = styled.span<{
 const ButtonProgressLoader = ({
   duration,
   restColor,
-  surfaceColor,
   borderRadius,
   frameBoxShadow,
 }: ButtonProgressLoaderProps): React.ReactElement => {
@@ -90,11 +75,7 @@ const ButtonProgressLoader = ({
       $borderRadius={borderRadius}
       $frameBoxShadow={frameBoxShadow}
     >
-      <StyledProgressFill
-        $duration={duration}
-        $restColor={restColor}
-        $surfaceColor={surfaceColor}
-      />
+      <StyledProgressFill $duration={duration} $restColor={restColor} />
     </StyledProgressOverlay>
   );
 };

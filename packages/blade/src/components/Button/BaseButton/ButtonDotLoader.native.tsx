@@ -9,26 +9,37 @@ import Animated, {
   withDelay,
   cancelAnimation,
   Easing,
+  useReducedMotion,
 } from 'react-native-reanimated';
 
 type ButtonDotLoaderProps = {
   size: number;
   color: string;
-  [key: string]: unknown;
-};
+} & Pick<
+  React.ComponentProps<typeof View>,
+  'accessibilityLabel' | 'accessibilityRole' | 'accessibilityState' | 'accessibilityHint' | 'testID'
+>;
 
 const Dot = ({
   dotSize,
   color,
   delay,
+  reduceMotion,
 }: {
   dotSize: number;
   color: string;
   delay: number;
+  reduceMotion: boolean;
 }): React.ReactElement => {
   const translateY = useSharedValue(0);
 
   React.useEffect(() => {
+    if (reduceMotion) {
+      translateY.value = 0;
+      return () => {
+        cancelAnimation(translateY);
+      };
+    }
     const offset = dotSize * 0.5;
     translateY.value = withDelay(
       delay,
@@ -44,7 +55,7 @@ const Dot = ({
     return () => {
       cancelAnimation(translateY);
     };
-  }, [translateY, dotSize, delay]);
+  }, [translateY, dotSize, delay, reduceMotion]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: translateY.value }],
@@ -68,6 +79,7 @@ const Dot = ({
 const ButtonDotLoader = ({ size, color, ...rest }: ButtonDotLoaderProps): React.ReactElement => {
   const dotSize = size / 2;
   const gap = (size * 2 - dotSize * 3) / 2;
+  const reduceMotion = useReducedMotion();
 
   return (
     <View
@@ -81,9 +93,9 @@ const ButtonDotLoader = ({ size, color, ...rest }: ButtonDotLoaderProps): React.
       }}
       {...rest}
     >
-      <Dot dotSize={dotSize} color={color} delay={0} />
-      <Dot dotSize={dotSize} color={color} delay={200} />
-      <Dot dotSize={dotSize} color={color} delay={400} />
+      <Dot dotSize={dotSize} color={color} delay={0} reduceMotion={reduceMotion} />
+      <Dot dotSize={dotSize} color={color} delay={200} reduceMotion={reduceMotion} />
+      <Dot dotSize={dotSize} color={color} delay={400} reduceMotion={reduceMotion} />
     </View>
   );
 };

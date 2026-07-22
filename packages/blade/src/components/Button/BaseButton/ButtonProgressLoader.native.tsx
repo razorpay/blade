@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, {
@@ -14,10 +13,8 @@ import type { ButtonCornerRadii } from './types';
 type ButtonProgressLoaderProps = {
   duration: number;
   restColor: string;
-  surfaceColor: string;
   borderRadius: number;
   borderRadii?: ButtonCornerRadii;
-  frameBoxShadow?: string;
   shadowHighlightColor?: string;
   shadowHighlightHeight?: number;
   shadowBottomColor?: string;

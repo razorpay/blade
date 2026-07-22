@@ -18,6 +18,15 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 export type IconColor = Exclude<IconProps['color'], 'currentColor'>;
 
 /**
+ * Loading behaviour of the button.
+ * - `indefinite`: shows a 3-dot loader (driven by `isLoading`) that replaces all content
+ * - `definite`: the button sits in its disabled/"rest" color while a left-to-right
+ *   progress bar in the button's normal color fills over `loadingTimer` ms, so the button
+ *   visually transitions from disabled to normal as it completes. Content stays visible.
+ */
+export type ButtonLoadingType = 'indefinite' | 'definite';
+
+/**
  * Per-corner border radii (in px). Used on React Native to round only the outer
  * corners of the first/last buttons inside a ButtonGroup.
  */
