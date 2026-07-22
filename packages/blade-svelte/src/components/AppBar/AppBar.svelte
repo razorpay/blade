@@ -9,7 +9,6 @@
   import { getAppBarClasses, getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import { getUtilityClass } from '@razorpay/blade-core/styles';
   import IconButton from '../Button/IconButton/IconButton.svelte';
-  import Tooltip from '../Tooltip/Tooltip.svelte';
   import { ArrowLeftIcon } from '../Icons';
   import { setAppBarContext } from './AppBarContext';
   import type { AppBarProps } from './types';
@@ -38,6 +37,31 @@
 
   // `subtle` emphasis renders a static-white icon for the dark `neutral` surface;
   // `intense` renders the gray icon for the light `subtle` surface.
+  // Lazy-load the Tooltip component: it's only rendered for the back button when a
+  // `backButtonTooltip` is provided, so we keep it out of the main bundle otherwise.
+  // The back button renders without the Tooltip wrapper until the chunk loads;
+  // the Tooltip then wraps it on the next render (CSR only — see known behavior change).
+  let Tooltip = $state<typeof import('../Tooltip/Tooltip.svelte').default | null>(null);
+  let tooltipLoadPromise: Promise<void> | null = null;
+
+  $effect(() => {
+    if (!showBackButton || !backButtonTooltip || Tooltip || tooltipLoadPromise) return;
+
+    let cancelled = false;
+    tooltipLoadPromise = import('../Tooltip/Tooltip.svelte')
+      .then((module) => {
+        if (!cancelled) Tooltip = module.default;
+      })
+      .catch((error) => {
+        console.error('Failed to load Tooltip chunk:', error);
+      })
+      .finally(() => {
+        if (!cancelled) tooltipLoadPromise = null;
+      });
+
+    return () => { cancelled = true; };
+  });
+
   const backButtonEmphasis = $derived<'subtle' | 'intense'>(
     variant === 'neutral' ? 'subtle' : 'intense',
   );
@@ -76,7 +100,7 @@
   <div class={templateClasses.appBarLeadingRow}>
     {#if showBackButton}
       <div class={templateClasses.appBarBackButton}>
-        {#if backButtonTooltip}
+        {#if backButtonTooltip && Tooltip}
           <Tooltip content={backButtonTooltip.content} placement={backButtonTooltip.placement}>
             <IconButton
               icon={ArrowLeftIcon}

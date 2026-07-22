@@ -1,0 +1,24 @@
+{
+  "name": "svelte-app",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Example Vite + Svelte app consuming @razorpay/blade-svelte, with a bundle size analyzer",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "analyze": "vite build && mkdir -p reports && cp dist/stats.html \"reports/stats-$(date +%Y%m%d-%H%M%S).html\"",
+    "build:deps": "yarn --cwd ../../blade-core build && yarn --cwd ../../blade-svelte build",
+    "analyze:full": "yarn build:deps && yarn analyze"
+  },
+  "dependencies": {
+    "@razorpay/blade-core": "workspace:*",
+    "@razorpay/blade-svelte": "workspace:*",
+    "svelte": "5.35.2"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "vite": "^5.0.0"
+  }
+}
