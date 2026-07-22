@@ -7,13 +7,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "analyze": "vite build && mkdir -p reports && cp dist/stats.html \"reports/stats-$(date +%Y%m%d-%H%M%S).html\" && open dist/stats.html",
+    "analyze": "vite build && mkdir -p reports && cp dist/stats.html \"reports/stats-$(date +%Y%m%d-%H%M%S).html\"",
     "build:deps": "yarn --cwd ../../blade-core build && yarn --cwd ../../blade-svelte build",
     "analyze:full": "yarn build:deps && yarn analyze"
   },
   "dependencies": {
-    "@razorpay/blade-core": ">=0.8.0",
-    "@razorpay/blade-svelte": "0.9.0",
+    "@razorpay/blade-core": "workspace:*",
+    "@razorpay/blade-svelte": "workspace:*",
     "svelte": "5.35.2"
   },
   "devDependencies": {

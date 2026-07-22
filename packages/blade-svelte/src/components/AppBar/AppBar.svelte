@@ -39,13 +39,23 @@
   // `intense` renders the gray icon for the light `subtle` surface.
   // Lazy-load the Tooltip component: it's only rendered for the back button when a
   // `backButtonTooltip` is provided, so we keep it out of the main bundle otherwise.
+  // The back button renders without the Tooltip wrapper until the chunk loads;
+  // the Tooltip then wraps it on the next render (CSR only — see known behavior change).
   let Tooltip = $state<typeof import('../Tooltip/Tooltip.svelte').default | null>(null);
+  let tooltipLoadPromise: Promise<void> | null = null;
 
   $effect(() => {
-    if (showBackButton && backButtonTooltip && !Tooltip) {
-      void import('../Tooltip/Tooltip.svelte').then((module) => {
-        Tooltip = module.default;
-      });
+    if (showBackButton && backButtonTooltip && !Tooltip && !tooltipLoadPromise) {
+      tooltipLoadPromise = import('../Tooltip/Tooltip.svelte')
+        .then((module) => {
+          Tooltip = module.default;
+        })
+        .catch(() => {
+          // Chunk load failure — leave Tooltip null; back button renders without tooltip.
+        })
+        .finally(() => {
+          tooltipLoadPromise = null;
+        });
     }
   });
 

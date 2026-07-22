@@ -37,13 +37,23 @@
 
   // Lazy-load the Checkbox: it's only rendered as the selection indicator for
   // multi-select lists, so single-select usage never pulls it into the bundle.
+  // The $effect preloads on mount when isMultiSelect is already true, minimizing
+  // the render gap for the common case where the list starts in multi-select mode.
   let Checkbox = $state<typeof import('../Checkbox/Checkbox.svelte').default | null>(null);
+  let checkboxLoadPromise: Promise<void> | null = null;
 
   $effect(() => {
-    if (isMultiSelect && !Checkbox) {
-      void import('../Checkbox/Checkbox.svelte').then((module) => {
-        Checkbox = module.default;
-      });
+    if (isMultiSelect && !Checkbox && !checkboxLoadPromise) {
+      checkboxLoadPromise = import('../Checkbox/Checkbox.svelte')
+        .then((module) => {
+          Checkbox = module.default;
+        })
+        .catch(() => {
+          // Chunk load failure — leave Checkbox null so the selector span renders empty.
+        })
+        .finally(() => {
+          checkboxLoadPromise = null;
+        });
     }
   });
 

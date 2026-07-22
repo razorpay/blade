@@ -190,15 +190,23 @@
   );
 
   // Lazy-load the Tooltip component: it's only needed when validation hints are
-  // shown as a tooltip (`showHintsAsTooltip`), so we avoid pulling it into the
+  // shown as a tooltip (`showValidationTooltip`), so we avoid pulling it into the
   // main bundle for the common case where it's never rendered.
   let Tooltip = $state<typeof import('../../Tooltip/Tooltip.svelte').default | null>(null);
+  let tooltipLoadPromise: Promise<void> | null = null;
 
   $effect(() => {
-    if (showValidationTooltip && !Tooltip) {
-      void import('../../Tooltip/Tooltip.svelte').then((module) => {
-        Tooltip = module.default;
-      });
+    if (showValidationTooltip && !Tooltip && !tooltipLoadPromise) {
+      tooltipLoadPromise = import('../../Tooltip/Tooltip.svelte')
+        .then((module) => {
+          Tooltip = module.default;
+        })
+        .catch(() => {
+          // Chunk load failure — leave Tooltip null; trailing icon renders without tooltip.
+        })
+        .finally(() => {
+          tooltipLoadPromise = null;
+        });
     }
   });
 

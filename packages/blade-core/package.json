@@ -95,6 +95,7 @@
       "default": "./dist/lib/web/production/styles/index.js"
     },
     "./styles.css": {
+      "types": "./src/styles/css.d.ts",
       "development": "./dist/lib/web/development/styles/index.css",
       "production": "./dist/lib/web/production/styles/index.css",
       "default": "./dist/lib/web/production/styles/index.css"

@@ -246,16 +246,24 @@
   // the common case where the button has no avatar group.
   let Avatar = $state<typeof import('../../Avatar/Avatar.svelte').default | null>(null);
   let AvatarGroup = $state<typeof import('../../Avatar/AvatarGroup.svelte').default | null>(null);
+  let avatarLoadPromise: Promise<void> | null = null;
 
   $effect(() => {
-    if (shouldShowAvatars && (!Avatar || !AvatarGroup)) {
-      void Promise.all([
+    if (shouldShowAvatars && (!Avatar || !AvatarGroup) && !avatarLoadPromise) {
+      avatarLoadPromise = Promise.all([
         import('../../Avatar/Avatar.svelte'),
         import('../../Avatar/AvatarGroup.svelte'),
-      ]).then(([avatarModule, avatarGroupModule]) => {
-        Avatar = avatarModule.default;
-        AvatarGroup = avatarGroupModule.default;
-      });
+      ])
+        .then(([avatarModule, avatarGroupModule]) => {
+          Avatar = avatarModule.default;
+          AvatarGroup = avatarGroupModule.default;
+        })
+        .catch(() => {
+          // Chunk load failure — leave Avatar/AvatarGroup null; avatars won't render.
+        })
+        .finally(() => {
+          avatarLoadPromise = null;
+        });
     }
   });
 
