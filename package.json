@@ -98,7 +98,6 @@
     "styled-components": "^5",
     "framer-motion": "11.12.0",
     "@octokit/rest": "21.0.2",
-    "brace-expansion": "5.0.7",
     "axios": "1.18.0",
     "webpack-dev-server": "5.2.6",
     "tar": "7.5.18",
@@ -119,7 +118,6 @@
     "serialize-javascript": "7.0.5",
     "fast-xml-parser": "5.5.7",
     "svgo": "4.0.1",
-    "storybook": "9.1.19",
     "rollup": "4.59.0",
     "lodash": "4.17.23",
     "prismjs": "1.27.0",
@@ -138,7 +136,6 @@
     ]
   },
   "overrides": {
-    "brace-expansion": "5.0.7",
     "axios": "1.18.0",
     "webpack-dev-server": "5.2.6",
     "tar": "7.5.18",
@@ -159,7 +156,6 @@
     "serialize-javascript": "7.0.5",
     "fast-xml-parser": "5.5.7",
     "svgo": "4.0.1",
-    "storybook": "9.1.19",
     "rollup": "4.59.0",
     "lodash": "4.17.23",
     "prismjs": "1.27.0",
