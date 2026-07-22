@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, Pressable, Linking, Platform } from 'react-native';
-import type { GestureResponderEvent, ViewStyle } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import styled from 'styled-components/native';
+import { Pressable, Linking } from 'react-native';
+import type { GestureResponderEvent } from 'react-native';
 import type { BottomNavItemProps, BottomNavProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { logger, throwBladeError } from '~utils/logger';
@@ -10,10 +8,10 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { Text } from '~components/Typography';
-import { colors as globalColors } from '~tokens/global';
 import { componentZIndices } from '~utils/componentZIndices';
 import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { BottomDock } from '~components/BottomDock';
 
 const openURL = async (href: string): Promise<void> => {
   try {
@@ -31,23 +29,6 @@ const openURL = async (href: string): Promise<void> => {
     }
   }
 };
-
-const StyledBottomNav = styled(View)<{
-  backgroundColor: string;
-  borderTopWidth: number;
-  borderTopColor: string;
-  paddingHorizontal: number;
-}>((props) => ({
-  position: 'absolute' as const,
-  bottom: 0,
-  left: 0,
-  width: '100%',
-  backgroundColor: props.backgroundColor,
-  borderTopWidth: props.borderTopWidth,
-  borderTopColor: props.borderTopColor,
-  paddingHorizontal: props.paddingHorizontal,
-  flexDirection: 'row' as const,
-}));
 
 /**
  * ### BottomNav component
@@ -79,8 +60,7 @@ const _BottomNav = (
   { children, zIndex = componentZIndices.bottomNav, testID, ...rest }: BottomNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
-  const { theme, colorScheme } = useTheme();
-  const insets = useSafeAreaInsets();
+  const { theme } = useTheme();
 
   if (__DEV__) {
     const childrenCount = React.Children.count(children);
@@ -92,38 +72,19 @@ const _BottomNav = (
     }
   }
 
-  const shadowStyle = React.useMemo<ViewStyle>(() => {
-    if (Platform.OS === 'ios') {
-      return {
-        shadowColor:
-          colorScheme === 'light'
-            ? globalColors.neutral.blueGrayLight.a912
-            : globalColors.neutral.black[100],
-        shadowOffset: { width: 0, height: -8 },
-        shadowRadius: 24,
-        shadowOpacity: 1,
-      };
-    }
-    return { elevation: 8 };
-  }, [colorScheme]);
-
   return (
-    <StyledBottomNav
+    <BottomDock
       ref={ref as never}
-      backgroundColor={theme.colors.surface.background.gray.intense}
-      borderTopWidth={theme.border.width.thin}
-      borderTopColor={theme.colors.surface.border.gray.muted}
-      paddingHorizontal={theme.spacing[2]}
-      style={[shadowStyle, { zIndex, paddingBottom: insets.bottom }]}
-      {...makeAccessible({ role: 'navigation' })}
-      {...metaAttribute({
-        testID,
-        name: MetaConstants.BottomNav,
-      })}
-      {...makeAnalyticsAttribute(rest)}
+      role="navigation"
+      safeAreaBottom
+      zIndex={zIndex}
+      testID={testID}
+      metaName={MetaConstants.BottomNav}
+      nativeStyle={{ paddingHorizontal: theme.spacing[2], flexDirection: 'row' }}
+      {...rest}
     >
       {children}
-    </StyledBottomNav>
+    </BottomDock>
   );
 };
 
