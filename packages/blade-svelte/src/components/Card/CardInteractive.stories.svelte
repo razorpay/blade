@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   // @ts-nocheck — story args typing
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Card from './Card.svelte';

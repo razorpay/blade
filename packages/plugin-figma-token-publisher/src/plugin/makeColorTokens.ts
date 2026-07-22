@@ -115,9 +115,7 @@ const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
       // if the variable references another variable then we take the name of the referenced variable and set that as a value
       // eg: surface.background.neutral.subtle -> globalColors.gray.200
       if (typeof variableModeValue === 'object' && 'id' in variableModeValue) {
-        const referencedVariable = await figma.variables.getVariableByIdAsync(
-          variableModeValue.id,
-        );
+        const referencedVariable = await figma.variables.getVariableByIdAsync(variableModeValue.id);
         if (!referencedVariable) {
           continue;
         }
@@ -133,11 +131,7 @@ const makeThemeColorTokens = async (): Promise<Record<string, any>> => {
         const tokenHSLAValue = rgbaToHsla(variableModeValue as RGBA);
         setValue(themeColorTokens[modeName], tokenName, `\`${tokenHSLAValue}\``);
       } else {
-        console.error(
-          'the theme variable token has hardcoded value',
-          tokenName,
-          variableModeValue,
-        );
+        console.error('the theme variable token has hardcoded value', tokenName, variableModeValue);
       }
     }
   }

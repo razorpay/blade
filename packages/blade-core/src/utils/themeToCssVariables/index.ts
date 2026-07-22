@@ -1,2 +1,6 @@
-export { themeToCssVariables, cssVariablesToInlineStyle } from './themeToCssVariables';
+export {
+  themeToCssVariables,
+  cssVariablesToInlineStyle,
+  typographyToCssVariables,
+} from './themeToCssVariables';
 export type { ThemeCssVariableSource } from './themeToCssVariables';

@@ -2,21 +2,20 @@
 // PREVIEW IMAGE RENDERING
 // ========================================
 
-import type { Platform } from "./types";
-import { selected, platform } from "./state";
-import { computeSignature } from "./signature";
-import { getPreviewImageUrl as getSharedPreviewImageUrl } from "../previewImages";
+import type { Platform } from './types';
+import { selected, platform } from './state';
+import { computeSignature } from './signature';
+import { getPreviewImageUrl as getSharedPreviewImageUrl } from '../previewImages';
 
 // ---- Preview URL Lookup ----
 
 export function getPreviewImageUrl(
   patternId: string,
   currentPlatform: Platform,
-  signature?: string
+  signature?: string,
 ): string | undefined {
-  const resolvedSignature = selected && selected.wizard
-    ? signature || computeSignature()
-    : signature;
+  const resolvedSignature =
+    selected && selected.wizard ? signature || computeSignature() : signature;
 
   return getSharedPreviewImageUrl(patternId, currentPlatform, resolvedSignature);
 }
@@ -24,7 +23,7 @@ export function getPreviewImageUrl(
 // ---- Preview DOM Update ----
 
 export function updatePreview(): void {
-  const previewContent = document.querySelector(".preview-content") as HTMLElement | null;
+  const previewContent = document.querySelector('.preview-content') as HTMLElement | null;
   if (!previewContent) return;
 
   if (!selected) {
@@ -51,12 +50,12 @@ export function updatePreview(): void {
 // ---- Emoji/Thumb Size Update ----
 
 export function updateEmojiSizes(): void {
-  const thumbs = document.querySelectorAll(".thumb");
+  const thumbs = document.querySelectorAll('.thumb');
   thumbs.forEach(function (thumb) {
-    if (platform === "mobile") {
-      (thumb as HTMLElement).classList.add("mobile");
+    if (platform === 'mobile') {
+      (thumb as HTMLElement).classList.add('mobile');
     } else {
-      (thumb as HTMLElement).classList.remove("mobile");
+      (thumb as HTMLElement).classList.remove('mobile');
     }
   });
 }

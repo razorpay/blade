@@ -41,6 +41,19 @@ describe('themeToCssVariables', () => {
     expect(vars['--border-width-thin']).toBe(`${bladeTheme.border.width.thin}px`);
   });
 
+  it('maps resolved typography to theme.css font variables', () => {
+    const vars = themeToCssVariables({
+      ...resolvedTheme,
+      typography: bladeTheme.typography.onDesktop,
+    });
+
+    expect(vars['--font-family-text']).toBe(bladeTheme.typography.onDesktop.fonts.family.text);
+    expect(vars['--font-size-200']).toBe(`${bladeTheme.typography.onDesktop.fonts.size[200]}px`);
+    expect(vars['--letter-spacing-25']).toBe(
+      `${bladeTheme.typography.onDesktop.letterSpacings[25]}%`,
+    );
+  });
+
   it('serializes variables to an inline style string', () => {
     const style = cssVariablesToInlineStyle({
       '--border-radius-medium': '16px',

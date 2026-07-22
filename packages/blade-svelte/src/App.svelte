@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { bladeTheme } from '@razorpay/blade-core/tokens';
+  import { BladeProvider } from './components/BladeProvider';
   import Button from './components/Button/Button.svelte'
   import Link from './components/Link/Link.svelte'
   import ThemeSwitcher from './ThemeSwitcher.svelte'
@@ -31,6 +33,7 @@
   }
 </script>
 
+<BladeProvider themeTokens={bladeTheme} colorScheme="light">
 <main>
   <ThemeSwitcher />
   <div class="component-container">
@@ -603,6 +606,7 @@
     />
   </div>
 </main>
+</BladeProvider>
 
 <style>
   main {
@@ -640,11 +644,13 @@
     margin-right: 12px;
   }
 
+  :global([data-blade-color-scheme='dark']) .btn-row-white,
   :global(body[data-theme='dark']) .btn-row-white {
     background-color: var(--surface-background-gray-moderate);
   }
 
-  :global(body:not([data-theme])) .btn-row-white {
+  :global(body:not([data-theme]):not([data-blade-color-scheme='dark'])) .btn-row-white,
+  :global([data-blade-color-scheme='light']) .btn-row-white {
     background-color: rgb(20, 61, 82);
   }
 

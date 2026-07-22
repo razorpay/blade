@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Amount from './Amount.svelte';
   import Heading from '../Typography/Heading/Heading.svelte'
@@ -84,8 +84,20 @@
   });
 </script>
 
-<script>
-  // Amount is already imported in the module context
+<script lang="ts">
+  import type { AmountSlot, StyleOverride } from '@razorpay/blade-core/styles';
+
+  const footerAmountStyleOverride: StyleOverride<AmountSlot> = {
+    value: 'text-(--footer-amount-value)',
+    currency: 'text-(--footer-amount-currency)',
+  };
+
+  let footerValueColor = $state('#1a1a1a');
+  let footerCurrencyColor = $state('#888888');
+
+  const footerAmountVarsStyle = $derived(
+    `--footer-amount-value: ${footerValueColor}; --footer-amount-currency: ${footerCurrencyColor};`,
+  );
 </script>
 
 <!-- Playground story with all controls -->
@@ -146,3 +158,34 @@
 <Story name="Amount with Currency Code" args={{ value: 1234.56, currency: 'INR', currencyIndicator: 'currency-code' }} />
 
 <Story name="Amount without Affix Subtle" args={{ value: 1234.56, currency: 'INR', isAffixSubtle: false }} />
+
+<Story name="Style Override" asChild>
+  <div class="display-flex flex-col gap-spacing-4 items-start" style={footerAmountVarsStyle}>
+    <Heading size="small" weight="semibold">Checkout footer amount</Heading>
+    <Amount value={1234.56} type="body" size="medium" styleOverride={footerAmountStyleOverride} />
+    <div class="display-flex flex-col gap-spacing-2">
+      <label class="display-flex items-center gap-spacing-3">
+        <span>Value (--footer-amount-value)</span>
+        <input type="color" bind:value={footerValueColor} aria-label="Footer amount value color" />
+      </label>
+      <label class="display-flex items-center gap-spacing-3">
+        <span>Currency (--footer-amount-currency)</span>
+        <input
+          type="color"
+          bind:value={footerCurrencyColor}
+          aria-label="Footer amount currency color"
+        />
+      </label>
+    </div>
+  </div>
+</Story>
+
+<style>
+  :global(.text-\(--footer-amount-value\)) {
+    color: var(--footer-amount-value);
+  }
+
+  :global(.text-\(--footer-amount-currency\)) {
+    color: var(--footer-amount-currency);
+  }
+</style>
