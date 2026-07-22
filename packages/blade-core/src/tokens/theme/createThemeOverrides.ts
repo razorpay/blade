@@ -11,7 +11,12 @@ import type {
 
 const surfaceBackgroundOverrideMap: Record<
   keyof CreateThemeSurfaceBackgroundOverride,
-  [colorName: keyof NonNullable<DeepPartial<ThemeTokens['colors']['onLight']['surface']['background']>>, intensity: string]
+  [
+    colorName: keyof NonNullable<
+      DeepPartial<ThemeTokens['colors']['onLight']['surface']['background']>
+    >,
+    intensity: string,
+  ]
 > = {
   page: ['gray', 'moderate'],
   graySubtle: ['gray', 'subtle'],
