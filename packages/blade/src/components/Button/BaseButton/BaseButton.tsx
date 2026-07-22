@@ -453,6 +453,28 @@ const getProps = ({
   return props;
 };
 
+const getButtonDotLoaderColor = ({
+  theme,
+  variant,
+  color,
+}: {
+  theme: Theme;
+  variant: NonNullable<BaseButtonCommonProps['variant']>;
+  color: BaseButtonCommonProps['color'];
+}): string => {
+  const dotColorToken =
+    variant === 'primary' && color === 'primary'
+      ? 'interactive.icon.primary.normal'
+      : getTextColorToken({
+          property: 'icon',
+          variant,
+          color,
+          state: 'default',
+        });
+
+  return getIn(theme.colors, dotColorToken as DotNotationToken<Theme['colors']>);
+};
+
 const ButtonContent = styled(BaseBox)<{ isHidden: boolean }>(({ isHidden }) => ({
   opacity: isHidden ? 0 : 1,
 }));
@@ -507,27 +529,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const isDefiniteLoadingConfigured =
     loadingType === 'definite' && typeof loadingTimer === 'number' && loadingTimer > 0;
   const isIndefiniteLoading = isLoading && loadingType === 'indefinite';
-  const [definiteLoadingRun, setDefiniteLoadingRun] = React.useState(0);
-  const [completedDefiniteLoadingKey, setCompletedDefiniteLoadingKey] = React.useState<
-    string | null
-  >(null);
-  const previousDefiniteLoadingConfigured = usePrevious(isDefiniteLoadingConfigured);
-  const hasConfiguredDefiniteLoading = React.useRef(false);
-
-  React.useEffect(() => {
-    if (isDefiniteLoadingConfigured && !previousDefiniteLoadingConfigured) {
-      if (hasConfiguredDefiniteLoading.current) {
-        setDefiniteLoadingRun((currentRun) => currentRun + 1);
-      }
-      hasConfiguredDefiniteLoading.current = true;
-    }
-  }, [isDefiniteLoadingConfigured, previousDefiniteLoadingConfigured]);
-
-  const definiteLoadingKey = isDefiniteLoadingConfigured
-    ? `${loadingType}:${loadingTimer}:${definiteLoadingRun}`
-    : null;
-  const isDefiniteLoading =
-    definiteLoadingKey !== null && definiteLoadingKey !== completedDefiniteLoadingKey;
+  const [hasDefiniteLoadingCompleted, setHasDefiniteLoadingCompleted] = React.useState(false);
+  const onLoadingCompleteRef = React.useRef(onLoadingComplete);
+  const isDefiniteLoading = isDefiniteLoadingConfigured && !hasDefiniteLoadingCompleted;
   const isAnyLoading = isIndefiniteLoading || isDefiniteLoading;
 
   // Button cannot be disabled when its rendered as Link
@@ -552,22 +556,23 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     if (!isAnyLoading && prevLoading) announce('Stopped loading');
   }, [isAnyLoading, prevLoading]);
 
-  const onLoadingCompleteRef = React.useRef(onLoadingComplete);
-  onLoadingCompleteRef.current = onLoadingComplete;
-
-  const handleDefiniteLoadingComplete = React.useCallback(() => {
-    if (!definiteLoadingKey) return;
-
-    setCompletedDefiniteLoadingKey(definiteLoadingKey);
-    onLoadingCompleteRef.current?.();
-  }, [definiteLoadingKey]);
+  React.useEffect(() => {
+    onLoadingCompleteRef.current = onLoadingComplete;
+  }, [onLoadingComplete]);
 
   React.useEffect(() => {
-    if (!isDefiniteLoading || typeof loadingTimer !== 'number') return undefined;
+    if (!isDefiniteLoadingConfigured || typeof loadingTimer !== 'number') {
+      setHasDefiniteLoadingCompleted(false);
+      return undefined;
+    }
 
-    const timerId = setTimeout(handleDefiniteLoadingComplete, loadingTimer);
+    setHasDefiniteLoadingCompleted(false);
+    const timerId = setTimeout(() => {
+      setHasDefiniteLoadingCompleted(true);
+      onLoadingCompleteRef.current?.();
+    }, loadingTimer);
     return () => clearTimeout(timerId);
-  }, [handleDefiniteLoadingComplete, isDefiniteLoading, loadingTimer]);
+  }, [isDefiniteLoadingConfigured, loadingTimer]);
 
   // Keep ButtonGroup press index in sync so border-collapse / z-index can
   // reveal this button's highlighted right edge while pressed (RN only).
@@ -643,23 +648,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         }),
       })
     : '';
+  const dotLoaderColor = getButtonDotLoaderColor({
+    theme,
+    variant: buttonVariant,
+    color: buttonColor,
+  });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRole = isLink ? 'link' : 'button';
-
-  const dotLoaderColor = (() => {
-    const dotColorToken =
-      buttonVariant === 'primary' && buttonColor === 'primary'
-        ? 'interactive.icon.primary.normal'
-        : getTextColorToken({
-            property: 'icon',
-            variant: buttonVariant,
-            color: buttonColor,
-            state: 'default',
-          });
-
-    return getIn(theme.colors, dotColorToken as DotNotationToken<Theme['colors']>);
-  })();
 
   // On web, ButtonGroup flattens the child buttons' border radius via CSS child
   // selectors and rounds only the outer edges using the group container's

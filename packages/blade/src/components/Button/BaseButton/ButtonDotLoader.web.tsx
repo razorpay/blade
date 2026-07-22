@@ -1,3 +1,4 @@
+import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 

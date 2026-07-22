@@ -17,7 +17,12 @@ type ButtonDotLoaderProps = {
   color: string;
 } & Pick<
   React.ComponentProps<typeof View>,
-  'accessibilityLabel' | 'accessibilityRole' | 'accessibilityState' | 'accessibilityHint' | 'testID'
+  | 'accessibilityHint'
+  | 'accessibilityLabel'
+  | 'accessibilityLiveRegion'
+  | 'accessibilityRole'
+  | 'accessibilityState'
+  | 'testID'
 >;
 
 const Dot = ({
