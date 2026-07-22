@@ -26,7 +26,6 @@ export type CreateThemeFontSizeScaleOverride = Partial<Record<keyof FontSize, nu
 export type CreateThemeSurfaceBackgroundOverride = Partial<{
   page: string;
   graySubtle: string;
-  grayModerate: string;
   grayIntense: string;
   primarySubtle: string;
   primaryIntense: string;
@@ -53,8 +52,8 @@ export type CreateThemeConfig = {
    */
   fontFaces?: CreateThemeFontFace[];
   /** Overrides named font-size tokens on desktop + mobile scales. */
-  fontSizeScale?: CreateThemeFontSizeScaleOverride;
-  /** Multiplies every font-size token on both platforms (applied after `fontSizeScale`). */
+  fontSizeOverrides?: CreateThemeFontSizeScaleOverride;
+  /** Multiplies every font-size token on both platforms (applied after `fontSizeOverrides`). */
   fontSizeScaleFactor?: number;
   surface?: CreateThemeSurfaceOverride;
 };

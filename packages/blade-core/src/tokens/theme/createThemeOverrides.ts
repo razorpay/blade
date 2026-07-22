@@ -23,10 +23,6 @@ const mapSurfaceBackgroundOverride = (
       background.gray = { ...background.gray, subtle: value };
       return;
     }
-    if (key === 'grayModerate') {
-      background.gray = { ...background.gray, moderate: value };
-      return;
-    }
     if (key === 'grayIntense') {
       background.gray = { ...background.gray, intense: value };
       return;
@@ -130,16 +126,16 @@ const mergeFontSizeScale = (
 
 export const buildTypographyOverrides = ({
   fontFamily,
-  fontSizeScale,
+  fontSizeOverrides,
   fontSizeScaleFactor,
 }: {
   fontFamily?: CreateThemeFontFamilyOverride;
-  fontSizeScale?: CreateThemeFontSizeScaleOverride;
+  fontSizeOverrides?: CreateThemeFontSizeScaleOverride;
   fontSizeScaleFactor?: number;
 }): DeepPartial<TypographyWithPlatforms> | undefined => {
   const hasFamily = fontFamily && Object.keys(fontFamily).length > 0;
   const hasSize =
-    (fontSizeScale && Object.keys(fontSizeScale).length > 0) ||
+    (fontSizeOverrides && Object.keys(fontSizeOverrides).length > 0) ||
     (fontSizeScaleFactor !== undefined && fontSizeScaleFactor !== 1);
 
   if (!hasFamily && !hasSize) {
@@ -152,7 +148,7 @@ export const buildTypographyOverrides = ({
       fonts.family = { ...fontFamily };
     }
     if (hasSize) {
-      fonts.size = mergeFontSizeScale(platform.fonts.size, fontSizeScale, fontSizeScaleFactor);
+      fonts.size = mergeFontSizeScale(platform.fonts.size, fontSizeOverrides, fontSizeScaleFactor);
     }
     return { fonts };
   };

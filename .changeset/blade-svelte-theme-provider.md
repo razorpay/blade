@@ -1,7 +1,6 @@
 ---
 '@razorpay/blade-svelte': minor
 '@razorpay/blade-core': minor
-'@razorpay/blade': patch
 ---
 
 feat(blade-svelte): add BladeProvider theme context

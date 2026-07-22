@@ -333,7 +333,7 @@ export const createTheme = ({
   borderRadius,
   fontFamily,
   fontFaces,
-  fontSizeScale,
+  fontSizeOverrides,
   fontSizeScaleFactor,
   surface,
 }: CreateThemeConfig): CreateThemeResult => {
@@ -343,7 +343,7 @@ export const createTheme = ({
   const surfaceColorOverrides = buildSurfaceColorOverrides(surface);
   const typographyOverrides = buildTypographyOverrides({
     fontFamily,
-    fontSizeScale,
+    fontSizeOverrides,
     fontSizeScaleFactor,
   });
 
