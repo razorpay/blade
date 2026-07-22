@@ -40,7 +40,8 @@ Blade is the Design System that powers [Razorpay](https://razorpay.com/). This p
 Before you install the package, make sure that you have:
 
 - Node.js version >= 18.12.1
-- Svelte version >= 5.35.0
+- Svelte version >= 5.35.0 (Svelte 5 with runes support is required — this is a peer dependency)
+- A bundler that supports ESM (the package is `"type": "module"` — Vite, Rollup, or SvelteKit's built-in Vite are recommended)
 
 ### Install the package
 
@@ -50,22 +51,27 @@ yarn add @razorpay/blade-svelte
 
 # Using npm
 npm install @razorpay/blade-svelte
+
+# Using pnpm
+pnpm add @razorpay/blade-svelte
 ```
 
-> **Note:** `@razorpay/blade-core` (design tokens, CSS styles, and fonts) is automatically installed as a dependency.
+> **Note:** `@razorpay/blade-core` (>= 0.9.0) is automatically installed as a dependency. It provides design tokens, CSS variables, and fonts. If you already have it installed, ensure the version is `>= 0.9.0`.
 
 ### Setup Theme CSS
 
-Import the theme CSS in your root layout or app entry file:
+Import the theme CSS **before** any Blade components are used. This sets up the CSS custom properties (design tokens) that all Blade components rely on.
+
+**SvelteKit** — import in your root layout:
 
 ```svelte
-<!-- src/routes/+layout.svelte or App.svelte -->
+<!-- src/routes/+layout.svelte -->
 <script>
   import '@razorpay/blade-core/tokens/theme.css';
 </script>
 ```
 
-Or in a regular TypeScript/JavaScript file:
+**Vanilla Svelte (Vite)** — import in your app entry file:
 
 ```ts
 // src/main.ts or src/app.ts
@@ -82,11 +88,13 @@ You can install fonts by importing the fonts CSS from `@razorpay/blade-core`:
 import '@razorpay/blade-core/fonts.css';
 ```
 
-Or add fonts via CDN in your HTML:
+Or add fonts via CDN in your HTML (replace `0.9.0` with your installed version):
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@razorpay/blade-core@latest/fonts.css" />
+<link rel="stylesheet" href="https://unpkg.com/@razorpay/blade-core@0.9.0/fonts.css" />
 ```
+
+> **Warning:** Avoid using `@latest` in production CDN links. Pin to a specific version to prevent breaking changes.
 
 ### Usage
 
