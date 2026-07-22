@@ -5,7 +5,7 @@ exports[`getBladePatternDocs Tool > should return consistent pattern docs respon
   "content": [
     {
       "text": "Below is the documentation for Patterns. After this, call get_blade_component_docs to get documentation for components that are used in patterns.:
- Blade patterns documentation for: FormGroup
+ Blade react patterns documentation for: FormGroup
 
 # FormGroup
 # FormGroup
@@ -547,7 +547,7 @@ exports[`getBladePatternDocs Tool > should return consistent pattern docs respon
   "content": [
     {
       "text": "Below is the documentation for Patterns. After this, call get_blade_component_docs to get documentation for components that are used in patterns.:
- Blade patterns documentation for: FormGroup
+ Blade react patterns documentation for: FormGroup
 
 # FormGroup
 # FormGroup

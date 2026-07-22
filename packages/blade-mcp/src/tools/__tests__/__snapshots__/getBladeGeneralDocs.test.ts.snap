@@ -4,7 +4,7 @@ exports[`getBladeGeneralDocs Tool > should return consistent general docs respon
 {
   "content": [
     {
-      "text": "Blade general documentation for: Usage, AvailableIcons
+      "text": "Blade react general documentation for: Usage, AvailableIcons
 
 # Usage
 import { Meta } from '@storybook/addon-docs';
@@ -589,7 +589,7 @@ exports[`getBladeGeneralDocs Tool > should return consistent general docs respon
 {
   "content": [
     {
-      "text": "Blade general documentation for: Usage, AvailableIcons
+      "text": "Blade react general documentation for: Usage, AvailableIcons
 
 # Usage
 import { Meta } from '@storybook/addon-docs';
