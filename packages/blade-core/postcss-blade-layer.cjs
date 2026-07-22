@@ -17,7 +17,7 @@ function postcssBladeLayer() {
       }
 
       const isBladeCoreModule =
-        from.includes(`${'blade-core'}/`) || from.includes(`${'blade-core'}\\`);
+        from.includes('blade-core/') || from.includes('blade-core\\');
       if (!isBladeCoreModule) {
         return;
       }

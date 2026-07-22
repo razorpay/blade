@@ -14,7 +14,7 @@ const mockGetter = (
   themeTokens: {} as BladeThemeContextValue['themeTokens'],
   colorScheme: 'light',
   setColorScheme: () => undefined,
-  platform: 'web',
+  platform: 'onDesktop',
   componentConfig: styleOverride ? { Button: { styleOverride } } : undefined,
 });
 

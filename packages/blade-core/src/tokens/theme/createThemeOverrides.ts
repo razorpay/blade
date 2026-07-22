@@ -9,53 +9,31 @@ import type {
   CreateThemeSurfaceOverride,
 } from './createThemeConfig';
 
+const surfaceBackgroundOverrideMap: Record<
+  keyof CreateThemeSurfaceBackgroundOverride,
+  [colorName: keyof NonNullable<DeepPartial<ThemeTokens['colors']['onLight']['surface']['background']>>, intensity: string]
+> = {
+  page: ['gray', 'moderate'],
+  graySubtle: ['gray', 'subtle'],
+  grayIntense: ['gray', 'intense'],
+  primarySubtle: ['primary', 'subtle'],
+  primaryIntense: ['primary', 'intense'],
+  seaSubtle: ['sea', 'subtle'],
+  seaIntense: ['sea', 'intense'],
+  cloudSubtle: ['cloud', 'subtle'],
+  cloudIntense: ['cloud', 'intense'],
+};
+
 const mapSurfaceBackgroundOverride = (
   override: CreateThemeSurfaceBackgroundOverride,
 ): DeepPartial<ThemeTokens['colors']['onLight']['surface']['background']> => {
   const background: DeepPartial<ThemeTokens['colors']['onLight']['surface']['background']> = {};
 
-  const assign = (key: keyof CreateThemeSurfaceBackgroundOverride, value: string): void => {
-    if (key === 'page') {
-      background.gray = { ...background.gray, moderate: value };
-      return;
-    }
-    if (key === 'graySubtle') {
-      background.gray = { ...background.gray, subtle: value };
-      return;
-    }
-    if (key === 'grayIntense') {
-      background.gray = { ...background.gray, intense: value };
-      return;
-    }
-    if (key === 'primarySubtle') {
-      background.primary = { ...background.primary, subtle: value };
-      return;
-    }
-    if (key === 'primaryIntense') {
-      background.primary = { ...background.primary, intense: value };
-      return;
-    }
-    if (key === 'seaSubtle') {
-      background.sea = { ...background.sea, subtle: value };
-      return;
-    }
-    if (key === 'seaIntense') {
-      background.sea = { ...background.sea, intense: value };
-      return;
-    }
-    if (key === 'cloudSubtle') {
-      background.cloud = { ...background.cloud, subtle: value };
-      return;
-    }
-    if (key === 'cloudIntense') {
-      background.cloud = { ...background.cloud, intense: value };
-    }
-  };
-
   for (const key of Object.keys(override) as (keyof CreateThemeSurfaceBackgroundOverride)[]) {
     const value = override[key];
     if (value !== undefined) {
-      assign(key, value);
+      const [colorName, intensity] = surfaceBackgroundOverrideMap[key];
+      background[colorName] = { ...background[colorName], [intensity]: value };
     }
   }
 

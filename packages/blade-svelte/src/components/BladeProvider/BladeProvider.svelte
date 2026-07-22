@@ -157,9 +157,14 @@
   style={cssVariableStyle}
 >
   {#if fontFaceCss}
-    <svelte:element this={'style'} data-blade-font-faces>
-      {fontFaceCss}
-    </svelte:element>
+    {@const existingFontFaces = typeof document !== 'undefined'
+      ? document.querySelector('style[data-blade-font-faces]')
+      : null}
+    {#if !existingFontFaces || existingFontFaces.textContent !== fontFaceCss}
+      <svelte:element this={'style'} data-blade-font-faces>
+        {fontFaceCss}
+      </svelte:element>
+    {/if}
   {/if}
   {@render children()}
 </div>
