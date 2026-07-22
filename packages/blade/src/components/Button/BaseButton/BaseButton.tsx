@@ -60,7 +60,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
  * Loading behaviour of the button.
  * - `indefinite`: shows a 3-dot loader (driven by `isLoading`) that replaces all content
  * - `definite`: the button sits in its disabled/"rest" color while a left-to-right
- *   progress bar in the button's normal color fills over `loadingTimer` ms, so the button
+ *   progress bar in the button's normal color fills over `loadingDuration` ms, so the button
  *   visually transitions from disabled to normal as it completes. Content stays visible.
  */
 export type ButtonLoadingType = 'indefinite' | 'definite';
@@ -88,7 +88,7 @@ type BaseButtonCommonProps = {
   /**
    * Type of loading indicator to show.
    * - `indefinite`: 3-dot loader controlled by `isLoading`
-   * - `definite`: left-to-right progress bar over `loadingTimer` ms
+   * - `definite`: left-to-right progress bar over `loadingDuration` ms
    * @default 'indefinite'
    */
   loadingType?: ButtonLoadingType;
@@ -96,7 +96,7 @@ type BaseButtonCommonProps = {
    * Duration (in milliseconds) over which the `definite` progress bar fills from 0% to 100%.
    * Required when `loadingType` is `definite`.
    */
-  loadingTimer?: number;
+  loadingDuration?: number;
   /**
    * Called once when the `definite` progress bar reaches 100%.
    */
@@ -417,12 +417,10 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
-    ...(isReactNative() && (!isDisabled || (isDefiniteLoading && variant === 'primary'))
-      ? getNativeShadowColors(color)
-      : {}),
+    ...(isReactNative() && (!isDisabled || isDefiniteLoading) ? getNativeShadowColors(color) : {}),
   };
 
-  const shouldUseDisabledBackground = isDisabled && !(isDefiniteLoading && variant === 'primary');
+  const shouldUseDisabledBackground = isDisabled && !isDefiniteLoading;
   const shouldUseDisabledContent = isDisabled && !isDefiniteLoading;
 
   if (shouldUseDisabledContent) {
@@ -481,7 +479,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     isFullWidth = false,
     isLoading = false,
     loadingType = 'indefinite',
-    loadingTimer,
+    loadingDuration,
     onLoadingComplete,
     onClick,
     onBlur,
@@ -514,7 +512,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const buttonFullWidth = buttonGroupProps.isFullWidth ?? isFullWidth;
   const isIndefiniteLoading = loadingType === 'indefinite' && isLoading;
   const isDefiniteLoadingConfigured =
-    loadingType === 'definite' && typeof loadingTimer === 'number' && loadingTimer > 0;
+    loadingType === 'definite' && typeof loadingDuration === 'number' && loadingDuration > 0;
   const [definiteLoadingRun, setDefiniteLoadingRun] = React.useState(0);
   const [completedDefiniteLoadingKey, setCompletedDefiniteLoadingKey] = React.useState<
     string | null
@@ -532,7 +530,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   }, [isDefiniteLoadingConfigured, previousDefiniteLoadingConfigured]);
 
   const definiteLoadingKey = isDefiniteLoadingConfigured
-    ? `${loadingType}:${loadingTimer}:${definiteLoadingRun}`
+    ? `${loadingType}:${loadingDuration}:${definiteLoadingRun}`
     : null;
   const isDefiniteLoading =
     definiteLoadingKey !== null && definiteLoadingKey !== completedDefiniteLoadingKey;
@@ -568,11 +566,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   }, [definiteLoadingKey, onLoadingComplete]);
 
   React.useEffect(() => {
-    if (!isDefiniteLoading || typeof loadingTimer !== 'number') return undefined;
+    if (!isDefiniteLoading || typeof loadingDuration !== 'number') return undefined;
 
-    const timerId = setTimeout(handleDefiniteLoadingComplete, loadingTimer);
+    const timerId = setTimeout(handleDefiniteLoadingComplete, loadingDuration);
     return () => clearTimeout(timerId);
-  }, [handleDefiniteLoadingComplete, isDefiniteLoading, loadingTimer]);
+  }, [handleDefiniteLoadingComplete, isDefiniteLoading, loadingDuration]);
 
   // Keep ButtonGroup press index in sync so border-collapse / z-index can
   // reveal this button's highlighted right edge while pressed (RN only).
@@ -833,7 +831,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     >
       {isDefiniteLoading ? (
         <ButtonProgressLoader
-          duration={loadingTimer ?? 0}
+          duration={loadingDuration ?? 0}
           restColor={progressRestColor}
           surfaceColor={progressSurfaceColor}
           borderRadius={numericButtonBorderRadius}

@@ -239,6 +239,13 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   opacity: 0;
 }
 
+@media (prefers-reduced-motion:reduce) {
+  .c7.c7.c7.c7.c7 {
+    -webkit-animation: none;
+    animation: none;
+  }
+}
+
 <div>
   <button
     class="c0"

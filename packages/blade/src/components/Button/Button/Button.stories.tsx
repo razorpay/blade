@@ -87,9 +87,9 @@ export default {
       control: 'select',
       options: ['indefinite', 'definite'],
       description:
-        '`indefinite` shows a 3-dot loader controlled by `isLoading`; `definite` shows a left-to-right progress overlay over `loadingTimer` ms',
+        '`indefinite` shows a 3-dot loader controlled by `isLoading`; `definite` shows a left-to-right progress overlay over `loadingDuration` ms',
     },
-    loadingTimer: {
+    loadingDuration: {
       control: 'number',
       description: 'Duration (ms) over which the `definite` progress overlay fills from 0% to 100%',
     },
@@ -427,7 +427,7 @@ export const DefiniteLoading: StoryFn<typeof ButtonComponent> = ({
   ...args
 }) => {
   return (
-    <ButtonComponent {...args} loadingType="definite" loadingTimer={3000} size="large">
+    <ButtonComponent {...args} loadingType="definite" loadingDuration={3000} size="large">
       {children}
     </ButtonComponent>
   );
@@ -442,7 +442,7 @@ export const DefiniteLoadingWithCompleteCallback: StoryFn<typeof ButtonComponent
     <ButtonComponent
       size="large"
       loadingType={isDefiniteLoadingDemoActive ? 'definite' : 'indefinite'}
-      loadingTimer={isDefiniteLoadingDemoActive ? 2500 : undefined}
+      loadingDuration={isDefiniteLoadingDemoActive ? 2500 : undefined}
       onClick={() => setIsDefiniteLoadingDemoActive(true)}
       onLoadingComplete={() => setIsDefiniteLoadingDemoActive(false)}
     >

@@ -243,7 +243,11 @@ describe('<BaseButton />', () => {
     jest.useFakeTimers();
     const onLoadingComplete = jest.fn();
     const { getByRole, getByText } = renderWithTheme(
-      <BaseButton loadingType="definite" loadingTimer={1000} onLoadingComplete={onLoadingComplete}>
+      <BaseButton
+        loadingType="definite"
+        loadingDuration={1000}
+        onLoadingComplete={onLoadingComplete}
+      >
         Pay Now
       </BaseButton>,
     );
@@ -263,7 +267,7 @@ describe('<BaseButton />', () => {
     jest.useRealTimers();
   });
 
-  it('should not treat isLoading as loading when loadingType is definite without loadingTimer', () => {
+  it('should not treat isLoading as loading when loadingType is definite without loadingDuration', () => {
     const { getByRole, getByText } = renderWithTheme(
       <BaseButton isLoading={true} loadingType="definite">
         Pay Now
