@@ -37,4 +37,5 @@ jest.mock('react-native-reanimated', () => ({
   // mocking these two for BottomSheet, internally Gorhom BottomSheet is using them
   makeMutable: (value) => ({ value }),
   useWorkletCallback: require('react').useCallback,
+  useReducedMotion: () => false,
 }));

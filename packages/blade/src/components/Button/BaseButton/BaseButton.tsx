@@ -506,9 +506,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const buttonFullWidth = buttonGroupProps.isFullWidth ?? isFullWidth;
   const isDefiniteLoadingConfigured =
     loadingType === 'definite' && typeof loadingTimer === 'number' && loadingTimer > 0;
-  const isIndefiniteLoading =
-    isLoading &&
-    (loadingType === 'indefinite' || (loadingType === 'definite' && !isDefiniteLoadingConfigured));
+  const isIndefiniteLoading = isLoading && loadingType === 'indefinite';
   const [definiteLoadingRun, setDefiniteLoadingRun] = React.useState(0);
   const [completedDefiniteLoadingKey, setCompletedDefiniteLoadingKey] = React.useState<
     string | null
@@ -541,12 +539,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     if (!Icon && !childrenString?.trim()) {
       throwBladeError({
         message: 'At least one of icon or text is required to render a button.',
-        moduleName: 'BaseButton',
-      });
-    }
-    if (loadingType === 'definite' && isLoading && !isDefiniteLoadingConfigured) {
-      throwBladeError({
-        message: 'loadingTimer is required when loadingType is definite',
         moduleName: 'BaseButton',
       });
     }
