@@ -80,7 +80,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         hoverBackgroundColor="hsla(218, 87%, 43%, 1)"
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(218, 87%, 43%, 1), inset 0 0px 0px 0.5px hsla(218, 87%, 43%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.18), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.18)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
-        isDefiniteLoading={false}
         isFullWidth={false}
         isLoading={false}
         isPressed={false}
