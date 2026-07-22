@@ -13,6 +13,7 @@ import {
   containerBorderRadius,
   filledHorizontalContainerHeight,
   filledHorizontalTextSizeMap,
+  textSizeMap,
 } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { getComponentId } from '~utils/isValidAllowedChildren';
@@ -297,13 +298,7 @@ const CustomTabBar = ({
                     color={textColor[selectedState].default}
                     // Native has no vertical orientation, so filled tabs can consume the
                     // filled+horizontal text-size tokens directly.
-                    size={
-                      isFilled
-                        ? filledHorizontalTextSizeMap[size]
-                        : size === 'medium'
-                        ? 'medium'
-                        : 'large'
-                    }
+                    size={isFilled ? filledHorizontalTextSizeMap[size] : textSizeMap[size]}
                     weight="semibold"
                   >
                     {route.title}
