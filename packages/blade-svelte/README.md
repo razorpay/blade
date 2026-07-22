@@ -97,14 +97,45 @@ Or add fonts via CDN in your HTML:
 
 <Heading size="large">Welcome to Blade</Heading>
 <Text>This is Blade Design System for Svelte.</Text>
-<Button variant="primary" onclick={() => alert('Clicked!')}>
+<Button variant="primary" onClick={() => alert('Clicked!')}>
   Click me
 </Button>
 ```
 
+> **Note:** Blade Svelte uses React-style event prop names (e.g. `onClick`, `onBlur`, `onFocus`) rather than Svelte's native `on:click` directive. This is intentional for API parity with the React version of Blade.
+
+### Available Components
+
+The package exports the following components from `@razorpay/blade-svelte/components`:
+
+| Category | Components |
+| --- | --- |
+| Typography | `Heading`, `Text`, `Code` |
+| Buttons | `Button`, `IconButton` |
+| Inputs | `TextInput`, `SearchInput`, `PasswordInput`, `OTPInput`, `PhoneNumberInput` |
+| Input Group | `InputGroup`, `InputRow` |
+| Selection | `Checkbox`, `CheckboxGroup`, `Radio`, `RadioGroup`, `Switch` |
+| Feedback | `Alert`, `AnnouncementBanner`, `Toast`, `Tooltip` |
+| Display | `Badge`, `TrustBadge`, `Avatar`, `AvatarGroup`, `Skeleton`, `Spinner`, `Divider` |
+| Navigation | `Breadcrumb`, `BreadcrumbItem`, `Tabs`, `TabList`, `TabItem`, `TabPanel` |
+| Layout | `Card` (+ sub-components), `AppBar` (+ sub-components), `Accordion` (+ sub-components) |
+| Overlays | `BottomSheet` (+ sub-components), `Tooltip`, `TooltipInteractiveWrapper` |
+| Interactive | `ActionList` (+ sub-components), `Chip`, `ChipGroup`, `Counter`, `CounterInput` |
+| Collapsible | `Collapsible`, `CollapsibleButton`, `CollapsibleLink`, `CollapsibleText`, `CollapsibleBody` |
+| Segmented Control | `SegmentedControl`, `SegmentedControlItem` |
+| Link | `Link` |
+| Amount | `Amount` |
+| Toast | `Toast`, `ToastContainer`, `useToast` |
+| Icons | All icons from `@razorpay/blade-core/icons` re-exported |
+
+Utilities are available from `@razorpay/blade-svelte/utils`:
+
+- `portal` — Portal utility for rendering content outside the normal DOM hierarchy
+- `useInteraction` — Interaction utility hook
+
 ### Dark Mode
 
-To enable dark mode, add the `data-theme="dark"` attribute to the `body` or a parent element:
+To enable dark mode, add the `data-theme="dark"` attribute to the `body` or a parent element. Light mode is the default (no attribute needed):
 
 ```html
 <body data-theme="dark">
@@ -116,15 +147,21 @@ Or toggle it programmatically:
 
 ```svelte
 <script>
+  import { Button } from '@razorpay/blade-svelte/components';
+
   let isDark = $state(false);
   
   function toggleTheme() {
     isDark = !isDark;
-    document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    if (isDark) {
+      document.body.setAttribute('data-theme', 'dark');
+    } else {
+      document.body.removeAttribute('data-theme');
+    }
   }
 </script>
 
-<Button onclick={toggleTheme}>
+<Button onClick={toggleTheme}>
   Toggle Theme
 </Button>
 ```
