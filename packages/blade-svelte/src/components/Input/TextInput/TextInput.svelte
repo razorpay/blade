@@ -1,6 +1,7 @@
 <script lang="ts">
   import { untrack } from 'svelte';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
+  import { useFormId } from '../BaseInput/useFormId';
   import BaseInput from '../BaseInput/BaseInput.svelte';
   import CharacterCounter from '../_Form/CharacterCounter.svelte';
   import IconButton from '../../Button/IconButton/IconButton.svelte';
@@ -22,6 +23,7 @@
     defaultValue,
     value,
     name,
+    id,
     onChange,
     onFocus,
     onBlur,
@@ -56,6 +58,8 @@
     testID,
     ...rest
   }: TextInputProps = $props();
+
+  const ids = useFormId('textinput', id);
 
   let baseInput = $state<{ focus: () => void; getInput: () => HTMLInputElement | null } | null>(
     null,
