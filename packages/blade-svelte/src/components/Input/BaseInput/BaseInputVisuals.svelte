@@ -196,18 +196,21 @@
   let tooltipLoadPromise: Promise<void> | null = null;
 
   $effect(() => {
-    if (showValidationTooltip && !Tooltip && !tooltipLoadPromise) {
-      tooltipLoadPromise = import('../../Tooltip/Tooltip.svelte')
-        .then((module) => {
-          Tooltip = module.default;
-        })
-        .catch(() => {
-          // Chunk load failure — leave Tooltip null; trailing icon renders without tooltip.
-        })
-        .finally(() => {
-          tooltipLoadPromise = null;
-        });
-    }
+    if (!showValidationTooltip || Tooltip || tooltipLoadPromise) return;
+
+    let cancelled = false;
+    tooltipLoadPromise = import('../../Tooltip/Tooltip.svelte')
+      .then((module) => {
+        if (!cancelled) Tooltip = module.default;
+      })
+      .catch((error) => {
+        console.error('Failed to load Tooltip chunk:', error);
+      })
+      .finally(() => {
+        if (!cancelled) tooltipLoadPromise = null;
+      });
+
+    return () => { cancelled = true; };
   });
 
   const iconColor = $derived<IconColor>(

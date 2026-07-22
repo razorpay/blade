@@ -43,18 +43,21 @@
   let checkboxLoadPromise: Promise<void> | null = null;
 
   $effect(() => {
-    if (isMultiSelect && !Checkbox && !checkboxLoadPromise) {
-      checkboxLoadPromise = import('../Checkbox/Checkbox.svelte')
-        .then((module) => {
-          Checkbox = module.default;
-        })
-        .catch(() => {
-          // Chunk load failure — leave Checkbox null so the selector span renders empty.
-        })
-        .finally(() => {
-          checkboxLoadPromise = null;
-        });
-    }
+    if (!isMultiSelect || Checkbox || checkboxLoadPromise) return;
+
+    let cancelled = false;
+    checkboxLoadPromise = import('../Checkbox/Checkbox.svelte')
+      .then((module) => {
+        if (!cancelled) Checkbox = module.default;
+      })
+      .catch((error) => {
+        console.error('Failed to load Checkbox chunk:', error);
+      })
+      .finally(() => {
+        if (!cancelled) checkboxLoadPromise = null;
+      });
+
+    return () => { cancelled = true; };
   });
 
   // Selection: explicit prop wins, else derive from ActionList `selectedValue`.

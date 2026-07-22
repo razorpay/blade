@@ -45,18 +45,21 @@
   let tooltipLoadPromise: Promise<void> | null = null;
 
   $effect(() => {
-    if (showBackButton && backButtonTooltip && !Tooltip && !tooltipLoadPromise) {
-      tooltipLoadPromise = import('../Tooltip/Tooltip.svelte')
-        .then((module) => {
-          Tooltip = module.default;
-        })
-        .catch(() => {
-          // Chunk load failure — leave Tooltip null; back button renders without tooltip.
-        })
-        .finally(() => {
-          tooltipLoadPromise = null;
-        });
-    }
+    if (!showBackButton || !backButtonTooltip || Tooltip || tooltipLoadPromise) return;
+
+    let cancelled = false;
+    tooltipLoadPromise = import('../Tooltip/Tooltip.svelte')
+      .then((module) => {
+        if (!cancelled) Tooltip = module.default;
+      })
+      .catch((error) => {
+        console.error('Failed to load Tooltip chunk:', error);
+      })
+      .finally(() => {
+        if (!cancelled) tooltipLoadPromise = null;
+      });
+
+    return () => { cancelled = true; };
   });
 
   const backButtonEmphasis = $derived<'subtle' | 'intense'>(

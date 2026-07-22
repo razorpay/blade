@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade-svelte": minor
+"@razorpay/blade-svelte": major
 ---
 
 feat: lazy-load heavy sub-components to reduce bundle size

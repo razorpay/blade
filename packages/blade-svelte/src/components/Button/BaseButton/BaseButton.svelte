@@ -249,22 +249,26 @@
   let avatarLoadPromise: Promise<void> | null = null;
 
   $effect(() => {
-    if (shouldShowAvatars && (!Avatar || !AvatarGroup) && !avatarLoadPromise) {
-      avatarLoadPromise = Promise.all([
-        import('../../Avatar/Avatar.svelte'),
-        import('../../Avatar/AvatarGroup.svelte'),
-      ])
-        .then(([avatarModule, avatarGroupModule]) => {
-          Avatar = avatarModule.default;
-          AvatarGroup = avatarGroupModule.default;
-        })
-        .catch(() => {
-          // Chunk load failure — leave Avatar/AvatarGroup null; avatars won't render.
-        })
-        .finally(() => {
-          avatarLoadPromise = null;
-        });
-    }
+    if (!shouldShowAvatars || (Avatar && AvatarGroup) || avatarLoadPromise) return;
+
+    let cancelled = false;
+    avatarLoadPromise = Promise.allSettled([
+      import('../../Avatar/Avatar.svelte'),
+      import('../../Avatar/AvatarGroup.svelte'),
+    ])
+      .then(([avatarResult, avatarGroupResult]) => {
+        if (cancelled) return;
+        if (avatarResult.status === 'fulfilled') Avatar = avatarResult.value.default;
+        if (avatarGroupResult.status === 'fulfilled') AvatarGroup = avatarGroupResult.value.default;
+      })
+      .catch((error) => {
+        console.error('Failed to load Avatar chunks:', error);
+      })
+      .finally(() => {
+        if (!cancelled) avatarLoadPromise = null;
+      });
+
+    return () => { cancelled = true; };
   });
 
   // Generate button props reactively
