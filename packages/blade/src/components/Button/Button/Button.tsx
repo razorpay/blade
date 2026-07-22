@@ -44,7 +44,7 @@ type ButtonCommonProps = {
   /**
    * Type of loading indicator to show.
    * - `indefinite`: 3-dot loader controlled by `isLoading`
-   * - `definite`: left-to-right progress bar over `loadingTimer` ms
+   * - `definite`: left-to-right progress bar over `loadingDuration` ms
    * @default 'indefinite'
    */
   loadingType?: BaseButtonProps['loadingType'];
@@ -52,7 +52,7 @@ type ButtonCommonProps = {
    * Duration (in milliseconds) over which the `definite` progress bar fills from 0% to 100%.
    * Required when `loadingType` is `definite`.
    */
-  loadingTimer?: BaseButtonProps['loadingTimer'];
+  loadingDuration?: BaseButtonProps['loadingDuration'];
   /**
    * Called once when the `definite` progress bar reaches 100%.
    */
@@ -128,7 +128,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isFullWidth = false,
     isLoading = false,
     loadingType = 'indefinite',
-    loadingTimer,
+    loadingDuration,
     onLoadingComplete,
     href,
     target,
@@ -181,7 +181,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       variant={variant}
       isLoading={isLoading}
       loadingType={loadingType}
-      loadingTimer={loadingTimer}
+      loadingDuration={loadingDuration}
       onLoadingComplete={onLoadingComplete}
       testID={testID}
       onBlur={onBlur}

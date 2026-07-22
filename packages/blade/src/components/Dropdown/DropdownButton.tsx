@@ -23,7 +23,7 @@ const _DropdownButton = ({
   isFullWidth = false,
   isLoading = false,
   loadingType = 'indefinite',
-  loadingTimer,
+  loadingDuration,
   onLoadingComplete,
   onClick,
   onBlur,
@@ -57,7 +57,7 @@ const _DropdownButton = ({
       isFullWidth={isFullWidth}
       isLoading={isLoading}
       loadingType={loadingType}
-      loadingTimer={loadingTimer}
+      loadingDuration={loadingDuration}
       onLoadingComplete={onLoadingComplete}
       size={size}
       type={type}
