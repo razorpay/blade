@@ -118,6 +118,7 @@ const getWebConfig = (inputs) => {
     plugins: [
       pluginReplace({
         __DEV__: process.env.NODE_ENV !== 'production',
+        __BLADE_VERSION__: JSON.stringify(packagejson.version),
         preventAssignment: true,
       }),
       pluginPeerDepsExternal(),
@@ -160,6 +161,7 @@ const getBladeCoverageConfig = (inputs) => {
     plugins: [
       pluginReplace({
         __DEV__: process.env.NODE_ENV !== 'production',
+        __BLADE_VERSION__: JSON.stringify(packagejson.version),
         preventAssignment: true,
       }),
       pluginPeerDepsExternal(),
@@ -202,6 +204,10 @@ const getNativeConfig = (inputs) => {
       },
     ],
     plugins: [
+      pluginReplace({
+        __BLADE_VERSION__: JSON.stringify(packagejson.version),
+        preventAssignment: true,
+      }),
       pluginPeerDepsExternal(),
       depsExternalPlugin({ externalDependencies }),
       pluginResolve({ extensions: nativeExtensions }),

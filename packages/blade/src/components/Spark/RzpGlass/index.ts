@@ -20,13 +20,92 @@
  * ```
  */
 
-// React component
-export { RzpGlass as RazorSense } from './RzpGlass';
+// React components
+export { RazorSense } from './RazorSense';
+export { RazorSenseSequence } from './RazorSenseSequence';
 
-export type { RzpGlassProps as RazorSenseProps } from './types';
+// Declarative motion-state APIs
+export { defineRazorSenseSequence } from './defineRazorSenseSequence';
+export { RazorSenseError } from './razorSenseMotionTypes';
+export { RAZOR_SENSE_BRANDED_PRESETS, RAZOR_SENSE_STATES } from './razorSensePrograms';
+export {
+  razorSenseLoginToDashboardJourney,
+  razorSenseThreePhaseLoadingJourney,
+} from './razorSenseBuiltInSequences';
+export {
+  useRazorSenseController,
+  useRazorSenseSequenceController,
+} from './useRazorSenseController';
+export {
+  createRazorSenseController,
+  createRazorSenseSequenceController,
+  disposeRazorSenseController,
+} from './RazorSenseControllerPublic';
+
+export type {
+  LegacyRzpGlassProps as LegacyRazorSenseProps,
+  SemanticRazorSenseProps,
+  PreloadRazorSenseOptions,
+} from './types';
+export type {
+  RazorSenseControllerOwnedProps,
+  RazorSenseControlledProps,
+  RazorSenseLegacyProps,
+  RazorSenseProps,
+  RazorSenseSemanticCompatibilityProps,
+} from './RazorSense';
+export type { RazorSenseSequenceProps } from './RazorSenseSequence';
+export type {
+  RazorSenseLoginCue,
+  RazorSenseLoginForegroundSlot,
+} from './razorSenseBuiltInSequences';
+export type {
+  RazorSenseBrandedPreset,
+  RazorSenseCancelEvent,
+  RazorSenseCompletionReason,
+  RazorSenseController,
+  RazorSenseControllerEvent,
+  RazorSenseControllerOptions,
+  RazorSenseControllerSnapshot,
+  RazorSenseCueEvent,
+  RazorSenseEndBehavior,
+  RazorSenseErrorEvent,
+  RazorSenseInterruptionPolicy,
+  RazorSenseIterationEvent,
+  RazorSensePlayback,
+  RazorSensePlaybackCommand,
+  RazorSensePlaybackEvent,
+  RazorSensePreset,
+  RazorSenseReadyEvent,
+  RazorSenseRunId,
+  RazorSenseSequenceCancelEvent,
+  RazorSenseSequenceCommand,
+  RazorSenseSequenceCompleteEvent,
+  RazorSenseSequenceController,
+  RazorSenseSequenceDefinition,
+  RazorSenseSequenceErrorEvent,
+  RazorSenseSequenceEvent,
+  RazorSenseSequenceStep,
+  RazorSenseState,
+  RazorSenseStepEvent,
+  RazorSenseTarget,
+  RazorSenseTransition,
+  RazorSenseTransitionCommand,
+  RazorSenseTransitionCompleteEvent,
+  RazorSenseTransitionStartEvent,
+} from './razorSenseMotionTypes';
+export type { RazorSenseMode, RazorSenseEmotionalMode, RazorSenseOperationalMode } from './modes';
+export {
+  RAZOR_SENSE_MODES,
+  RAZOR_SENSE_EMOTIONAL_MODES,
+  RAZOR_SENSE_OPERATIONAL_MODES,
+  RAZOR_SENSE_MODE_LABELS,
+} from './modes';
 
 // Preload utilities
-export { preloadRazorSenseAssets } from './utils';
-
-// Preset types
-export type { RzpGlassPreset as RazorSensePreset } from './presets';
+export {
+  preloadRazorSense,
+  preloadRazorSenseAssets,
+  preloadRazorSenseModeAssets,
+  preloadRazorSenseTarget,
+} from './utils';

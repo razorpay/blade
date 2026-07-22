@@ -8,6 +8,7 @@ const __dirname = dirname(__filename);
 const require = createRequire(import.meta.url);
 
 const bladeRoot = resolve(__dirname, '../../');
+const bladePackage = require(resolve(bladeRoot, 'package.json')) as { version: string };
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -34,10 +35,7 @@ const config: StorybookConfig = {
     '../../src/**/*.internal.stories.@(ts|tsx|js|jsx)',
   ],
 
-  addons: [
-    getAbsolutePath('@storybook/addon-docs'),
-    getAbsolutePath('@storybook/addon-a11y'),
-  ],
+  addons: [getAbsolutePath('@storybook/addon-docs'), getAbsolutePath('@storybook/addon-a11y')],
 
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
@@ -50,7 +48,7 @@ const config: StorybookConfig = {
     GITHUB_REF: process.env.GITHUB_REF || '',
   }),
 
-  staticDirs: ['../../public'],
+  staticDirs: ['../../public', { from: '../../assets', to: '/assets' }],
 
   viteFinal: async (config) => {
     const { mergeConfig } = await import('vite');
@@ -66,6 +64,7 @@ const config: StorybookConfig = {
       ],
       define: {
         __DEV__: true,
+        __BLADE_VERSION__: JSON.stringify(bladePackage.version),
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       },
       resolve: {

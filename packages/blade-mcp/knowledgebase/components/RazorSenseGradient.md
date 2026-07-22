@@ -61,7 +61,7 @@ type RazorSenseGradientProps = {
 - Pass SVG elements (`<path>`, `<circle>`, `<rect>`, `<g>`) as children with `fill="white"` for visibility.
 - Match the `viewBox` prop to your SVG path's native coordinate system (typically `"0 0 24 24"` for icons).
 - Use `origin` prop to control where the radial gradient emanates from.
-- Layer over `RazorSense` as a foreground icon overlay for the full Spark Animation pattern.
+- Layer over a managed RazorSense branded preset only when the specialized Spark Animation compatibility pattern is required. For semantic product state or journeys, fetch RazorSense and RazorSense Journeys instead.
 - Combine with framer-motion SVG variants (`motion.path`, `motion.g`) for animated mask effects.
 
 **Don't**
@@ -157,36 +157,34 @@ const AnimatedGradientIcon = () => {
 export default AnimatedGradientIcon;
 ```
 
-### Combined with RazorSense
+### Combined with RazorSense (specialized compatibility pattern)
 
-A common pattern — RazorSense provides the background animation while RazorSenseGradient renders an animated gradient icon on top.
+RazorSense can provide a managed branded background while RazorSenseGradient renders an independently animated icon. Do not add a consumer opacity transition around RazorSense or hide it behind an asset-ready flag.
 
 ```jsx
-import React, { useState, useEffect } from 'react';
-import { m as motion } from 'framer-motion';
+import React, { useEffect } from 'react';
 import {
   RazorSense,
   RazorSenseGradient,
-  preloadRazorSenseAssets,
+  preloadRazorSenseTarget,
   Box,
 } from '@razorpay/blade/components';
 
 const CombinedExample = () => {
-  const [assetsPreloaded, setAssetsPreloaded] = useState(false);
-
   useEffect(() => {
-    preloadRazorSenseAssets('rippleWave')
-      .then(() => setAssetsPreloaded(true))
-      .catch(console.error);
+    void preloadRazorSenseTarget({ preset: 'rippleWave' });
   }, []);
 
-  if (!assetsPreloaded) return <div>Loading...</div>;
-
   return (
-    <Box position="relative" width="100%" height="100vh" backgroundColor="surface.background.gray.intense">
+    <Box
+      position="relative"
+      width="100%"
+      height="100vh"
+      backgroundColor="surface.background.gray.intense"
+    >
       {/* Background shader */}
       <Box position="absolute" top="0px" left="0px" right="0px" bottom="0px">
-        <RazorSense width="100%" height="100%" preset="rippleWave" />
+        <RazorSense width="100%" height="100%" preset="rippleWave" playback="loop" />
       </Box>
 
       {/* Gradient icon overlay */}
