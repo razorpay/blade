@@ -8,7 +8,6 @@ on:
         required: true
 
 env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
   TOKEN_DATA: ${{ github.event.inputs.tokens }}
 
 jobs:

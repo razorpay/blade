@@ -13,6 +13,11 @@ on:
         description: 'Chromatic build URL (from a completed Blade Chromatic run) to test against'
         required: true
         type: string
+    secrets:
+      BROWSERSTACK_USERNAME:
+        required: false
+      BROWSERSTACK_ACCESS_KEY:
+        required: false
 
 jobs:
   browserstack-tests:

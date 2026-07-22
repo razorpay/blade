@@ -5,9 +5,6 @@ on:
   pull_request:
     types: [labeled]
 
-env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-
 jobs:
   chromatic-deployment:
     name: Chromatic Deployment
@@ -21,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Use Node v20
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3.8.1
         with:
           node-version: 20.19.5
       - name: Setup Cache & Install Dependencies
@@ -79,6 +76,7 @@ jobs:
           untraced: '**/package.json'
           traceChanged: 'expanded'
         env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}
 
@@ -89,4 +87,6 @@ jobs:
     uses: ./.github/workflows/blade-browserstack.yml
     with:
       chromatic_url: ${{ needs.chromatic-deployment.outputs.storybookUrl }}
-    secrets: inherit
+    secrets:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}

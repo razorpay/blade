@@ -7,9 +7,6 @@ permissions:
   pull-requests: write
   contents: read
 
-env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-
 jobs:
   validate:
     name: Knowledgebase Lint

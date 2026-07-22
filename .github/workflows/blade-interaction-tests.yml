@@ -15,9 +15,6 @@ on:
   push:
     branches:
       - 'master'
-env:
-  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
-
 jobs:
   interaction-tests:
     name: Run Interaction Tests
