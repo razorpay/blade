@@ -21,8 +21,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayLight[0],
         },
         primary: {
-          subtle: globalColors.chromatic.azure.a50,
-          intense: globalColors.chromatic.azure[500],
+          faint: globalColors.chromatic.azure[50],
+          subtle: globalColors.chromatic.azure[100],
+          moderate: globalColors.chromatic.azure[500],
+          intense: globalColors.chromatic.azure[600],
+          strong: globalColors.chromatic.azure[900],
         },
         sea: {
           subtle: globalColors.chromatic.sea[50],
@@ -31,6 +34,9 @@ const colors: ColorsWithModes = {
         cloud: {
           subtle: globalColors.chromatic.cloud[50],
           intense: globalColors.chromatic.cloud[800],
+        },
+        accent: {
+          intense: globalColors.chromatic.forest[500],
         },
       },
       border: {
@@ -240,18 +246,18 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayLight.a906,
           faded: globalColors.neutral.blueGrayLight.a906,
           fadedHighlighted: globalColors.neutral.blueGrayLight.a909,
-          ghost: globalColors.neutral.blueGrayLight.a1,
+          ghost: globalColors.neutral.blueGrayLight.a0,
         },
         primary: {
-          default: globalColors.chromatic.azure[500],
-          highlighted: globalColors.chromatic.azure[600],
-          disabled: globalColors.chromatic.azure.a100,
-          faded: globalColors.chromatic.azure.a50,
-          fadedHighlighted: globalColors.chromatic.azure.a100,
+          default: globalColors.neutral.black[500],
+          highlighted: globalColors.neutral.black[450],
+          disabled: globalColors.neutral.black[100],
+          faded: globalColors.neutral.black[50],
+          fadedHighlighted: globalColors.neutral.black[100],
         },
         staticBlack: {
           default: globalColors.neutral.black[500],
-          highlighted: globalColors.neutral.black[500],
+          highlighted: globalColors.neutral.black[450],
           disabled: globalColors.neutral.black[200],
           faded: globalColors.neutral.black[50],
           fadedHighlighted: globalColors.neutral.black[100],
@@ -304,10 +310,10 @@ const colors: ColorsWithModes = {
           faded: globalColors.neutral.blueGrayLight.a918,
         },
         primary: {
-          default: globalColors.chromatic.azure[500],
-          highlighted: globalColors.chromatic.azure[600],
-          disabled: globalColors.chromatic.azure.a100,
-          faded: globalColors.chromatic.azure.a100,
+          default: globalColors.neutral.black[500],
+          highlighted: globalColors.neutral.black[450],
+          disabled: globalColors.neutral.black[100],
+          faded: globalColors.neutral.black[100],
         },
         staticWhite: {
           default: globalColors.neutral.white[500],
@@ -362,10 +368,10 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayLight.a932,
         },
         primary: {
-          normal: globalColors.chromatic.azure[600],
-          subtle: globalColors.chromatic.azure[500],
-          muted: globalColors.chromatic.azure[400],
-          disabled: globalColors.chromatic.azure.a200,
+          normal: globalColors.neutral.black[500],
+          subtle: globalColors.neutral.black[450],
+          muted: globalColors.neutral.black[400],
+          disabled: globalColors.neutral.black[200],
         },
         onPrimary: {
           normal: globalColors.neutral.white[500],
@@ -424,10 +430,10 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayLight.a932,
         },
         primary: {
-          normal: globalColors.chromatic.azure[600],
-          subtle: globalColors.chromatic.azure[500],
-          muted: globalColors.chromatic.azure[400],
-          disabled: globalColors.chromatic.azure.a200,
+          normal: globalColors.neutral.black[500],
+          subtle: globalColors.neutral.black[450],
+          muted: globalColors.neutral.black[400],
+          disabled: globalColors.neutral.black[200],
         },
         onPrimary: {
           normal: globalColors.neutral.white[500],
@@ -709,8 +715,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[1100],
         },
         primary: {
+          faint: 'transparent',
           subtle: globalColors.chromatic.azure.a200,
+          moderate: 'transparent',
           intense: globalColors.chromatic.azure[500],
+          strong: 'transparent',
         },
         sea: {
           subtle: globalColors.chromatic.sea[900],
@@ -719,6 +728,9 @@ const colors: ColorsWithModes = {
         cloud: {
           subtle: globalColors.chromatic.cloud[900],
           intense: globalColors.chromatic.cloud[100],
+        },
+        accent: {
+          intense: 'transparent',
         },
       },
       border: {
