@@ -1,23 +1,33 @@
 <script>
-  import { Button, TextInput, Alert, Badge } from '@razorpay/blade-svelte/components';
+  import { Text, Button } from '@razorpay/blade-svelte/components';
+
+  const avatars = [
+    { name: 'Divya Sharma' },
+    { name: 'Rahul Verma' },
+    { name: 'Ananya Iyer' },
+  ];
+
+  // Gate the avatar button behind a click so the Avatar chunk is NOT loaded on
+  // initial paint. Open the Network tab, load the page (no Avatar-*.js request),
+  // then click "Show avatar button" and watch the Avatar chunk fetch on demand.
+  let showAvatarButton = $state(false);
 </script>
 
 <main>
   <h1>blade-svelte bundle size example</h1>
 
-  <Alert
-    description="This app imports a few real Blade components so `dist/stats.html` shows a real bundle breakdown."
-    color="information"
-    isFullWidth
-  />
+  <Text>Hello, world!</Text>
+  <Button>Click me</Button>
 
-  <TextInput label="Name" placeholder="Enter your name" />
+  <Button variant="secondary" onClick={() => (showAvatarButton = true)}>
+    Show avatar button
+  </Button>
 
-  <div class="row">
-    <Button variant="primary">Primary</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Badge color="positive">Active</Badge>
-  </div>
+  {#if showAvatarButton}
+    <div class="row">
+      <Button size="large" {avatars}>Shared with</Button>
+    </div>
+  {/if}
 </main>
 
 <style>
