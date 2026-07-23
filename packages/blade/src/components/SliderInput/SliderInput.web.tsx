@@ -453,8 +453,12 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         const committed = clamp(snap(raw));
         updateValue(raw);
         onBlur?.({ name, value: committed });
+        // Typing + blur is also a way of finalizing a value, same as releasing the thumb
+        // or letting go of an arrow key — consumers relying on onChangeEnd as "the value
+        // is final now" should see it fire here too, not just for drag/keyboard.
+        onChangeEnd?.({ value: committed });
       }
-    }, [inputStringValue, updateValue, onBlur, name, clamp, snap]);
+    }, [inputStringValue, updateValue, onBlur, onChangeEnd, name, clamp, snap]);
 
     const handleInputFocus = useCallback(() => {
       setIsInputFocused(true);

@@ -203,4 +203,15 @@ describe('<SliderInput />', () => {
     fireEvent.blur(input);
     expect(onBlur).toHaveBeenCalledWith({ name: undefined, value: 24 });
   });
+
+  it('should fire onChangeEnd when a value is committed via input blur', () => {
+    const onChangeEnd = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={12} onChangeEnd={onChangeEnd} min={0} max={24} />,
+    );
+    const input = getByRole('spinbutton') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '18' } });
+    fireEvent.blur(input);
+    expect(onChangeEnd).toHaveBeenCalledWith({ value: 18 });
+  });
 });
