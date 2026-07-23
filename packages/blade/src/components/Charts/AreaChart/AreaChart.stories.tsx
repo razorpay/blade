@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import {
   ChartAreaWrapper,
@@ -239,8 +239,7 @@ const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.React
       padding="spacing.8"
       borderRadius="medium"
     >
-      {' '}
-      {children}{' '}
+      {children}
     </Box>
   );
 };
@@ -311,48 +310,68 @@ export const StackedAreaChart: StoryFn<typeof ChartArea> = ({
 // 2.2.c - Area Chart that Connects Nulls
 export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = ({
   dataKey = 'uv',
-  name = 'Page A',
+  name = 'Unique Visitors',
   ...args
 }) => {
   return (
-    <Box width="100%" height="100%" display="flex" gap="spacing.2">
-      <Box width="100%" height="100%" display="flex" flexDirection="column" gap="spacing.2">
+    <Box
+      width="100%"
+      display="flex"
+      flexDirection={{ base: 'column', m: 'row' }}
+      gap="spacing.5"
+      paddingBottom="spacing.7"
+    >
+      <Box width="100%" display="flex" flexDirection="column" gap="spacing.2">
         <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
-        <Box width="500px" height="350px">
-          <ChartsWrapper>
-            <ChartAreaWrapper data={data}>
-              <ChartXAxis dataKey="name" />
-              <ChartYAxis />
-              <ChartTooltip />
-              <ChartArea
-                type="monotone"
-                dataKey={dataKey}
-                name={name}
-                color="data.background.categorical.green.moderate"
-                {...args}
-              />
-            </ChartAreaWrapper>
-          </ChartsWrapper>
+        <Box
+          width="100%"
+          maxWidth="560px"
+          height="300px"
+          backgroundColor="surface.background.gray.intense"
+          borderRadius="medium"
+          paddingTop="spacing.4"
+          paddingX="spacing.0"
+          paddingBottom="spacing.6"
+        >
+          <ChartAreaWrapper data={data}>
+            <ChartXAxis dataKey="name" />
+            <ChartYAxis />
+            <ChartTooltip />
+            <ChartArea
+              type="monotone"
+              dataKey={dataKey}
+              name={name}
+              color="data.background.categorical.green.moderate"
+              {...args}
+            />
+          </ChartAreaWrapper>
         </Box>
       </Box>
-      <Box width="100%" height="100%" display="flex" flexDirection="column" gap="spacing.2">
+      <Box width="100%" display="flex" flexDirection="column" gap="spacing.2">
         <Heading size="small">Area Chart that Connects Nulls :- </Heading>
-        <Box width="500px" height="350px">
-          <ChartsWrapper>
-            <ChartAreaWrapper data={data}>
-              <ChartXAxis dataKey="name" />
-              <ChartYAxis />
-              <ChartTooltip />
-              <ChartArea
-                type="monotone"
-                dataKey={dataKey}
-                name={name}
-                connectNulls
-                color="data.background.categorical.green.moderate"
-                {...args}
-              />
-            </ChartAreaWrapper>
-          </ChartsWrapper>
+        <Box
+          width="100%"
+          maxWidth="560px"
+          height="300px"
+          backgroundColor="surface.background.gray.intense"
+          borderRadius="medium"
+          paddingTop="spacing.4"
+          paddingX="spacing.0"
+          paddingBottom="spacing.6"
+        >
+          <ChartAreaWrapper data={data}>
+            <ChartXAxis dataKey="name" />
+            <ChartYAxis />
+            <ChartTooltip />
+            <ChartArea
+              type="monotone"
+              dataKey={dataKey}
+              name={name}
+              connectNulls
+              color="data.background.categorical.green.moderate"
+              {...args}
+            />
+          </ChartAreaWrapper>
         </Box>
       </Box>
     </Box>

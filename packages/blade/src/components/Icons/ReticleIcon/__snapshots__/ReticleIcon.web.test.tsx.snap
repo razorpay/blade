@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReticleIcon /> should render ReticleIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  >
+    <path
+      d="M13.0254 23H10.9629V13.8789H13.0254V23ZM10.1211 13.0332H1V10.9707H10.1211V13.0332ZM23.001 13.0332H13.8799V10.9707H23.001V13.0332ZM13.0254 10.1211H10.9629V1H13.0254V10.1211Z"
+      data-blade-component="svg-path"
+      fill="hsla(200, 10%, 18%, 1)"
+    />
+  </svg>
+</div>
+`;

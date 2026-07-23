@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Morph /> (native) renders a Box child with backgroundColor + borderRadius on the degraded wrapper 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={false}
+    onLayout={[Function]}
+    style={
+      {
+        "alignSelf": "center",
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "backgroundColor": undefined,
+          "borderRadius": 50,
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 0,
+            },
+            {
+              "translateY": 0,
+            },
+            {
+              "scaleX": 1,
+            },
+            {
+              "scaleY": 1,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        data-blade-component="box"
+        height="200px"
+        style={
+          [
+            {
+              "height": 200,
+              "width": 200,
+            },
+          ]
+        }
+        width="200px"
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Morph /> (native) renders its child without throwing and matches snapshot 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={false}
+    onLayout={[Function]}
+    style={
+      {
+        "alignSelf": "center",
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "opacity": 0,
+          "transform": [
+            {
+              "translateX": 0,
+            },
+            {
+              "translateY": 0,
+            },
+            {
+              "scaleX": 1,
+            },
+            {
+              "scaleY": 1,
+            },
+          ],
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        letterSpacing={50}
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(0, 0%, 2%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": -0.18200000000000002,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        Hello Morph
+      </Text>
+    </View>
+  </View>
+</View>
+`;

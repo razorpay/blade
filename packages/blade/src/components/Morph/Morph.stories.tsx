@@ -1,7 +1,9 @@
 import React from 'react';
-import { AnimatePresence } from 'framer-motion';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+// Platform-resolved shim: framer-motion on web, a passthrough on native (framer-motion is web-only,
+// so importing it directly would break the RN Storybook Metro bundle).
+import { AnimatePresence } from './AnimatePresence';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { Morph } from './';
 import type { MorphProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';

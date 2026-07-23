@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { throwBladeError } from '~utils/logger';
+import React from 'react';
+import type { DatePickerProps, DateSelectionType } from './types';
+import { BaseDatePicker } from './BaseDatePicker';
 
-const DatePicker = (_props: any): React.ReactElement => {
-  throwBladeError({
-    message: 'DatePicker is not yet implemented for native',
-    moduleName: 'DatePicker',
-  });
-
-  return <></>;
+const DatePicker = <Type extends DateSelectionType = 'single'>(
+  props: DatePickerProps<Type>,
+): React.ReactElement => {
+  return <BaseDatePicker {...props} inputElementType="datePickerInput" />;
 };
 
 export { DatePicker };

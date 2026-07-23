@@ -30,6 +30,22 @@ type IconProps = {
   TestID;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use Blade icon components primarily as props inside other components (Button `icon`, Badge `icon`, TextInput `icon`).
+- Use semantic color tokens for icon colors: `surface.icon.*`, `feedback.icon.*`, `action.icon.*`.
+- Choose between Filled and Stroked variants based on context (e.g., `StarIcon` for outlined, `StarFilledIcon` for filled).
+- Use appropriate sizes relative to context: `"small"` in dense UI, `"medium"` (default) in standard UI, `"xlarge"`/`"2xlarge"` standalone.
+
+**Don't**
+
+- Don't use Icons as standalone interactive elements — wrap in `IconButton` for clickable icon actions.
+- Don't use arbitrary hex/RGB colors — only Blade color tokens are supported.
+- Don't try to build custom SVGs using internal `_Svg` components — they are not exported.
+- Don't use Icons for illustrations or decorative graphics — they are designed for UI communication.
+
 ## Examples
 
 ### Icon Usage

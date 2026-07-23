@@ -67,7 +67,21 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 };
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
-  ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
+  (
+    {
+      children,
+      title,
+      titleLeading,
+      footer,
+      arrow,
+      side,
+      style,
+      isVisible,
+      animationDuration,
+      maxWidth,
+    },
+    ref,
+  ) => {
     const isMobile = useIsMobile();
     const { colorScheme } = useTheme();
     return (
@@ -76,15 +90,22 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         styles={style}
         side={side}
         isVisible={isVisible}
+        animationDuration={animationDuration}
         isMobile={isMobile}
         colorScheme={colorScheme}
+        maxWidth={maxWidth}
       >
         <BaseBox padding="spacing.5" display="flex" flexDirection="column" gap="spacing.5">
           <BaseBox display="flex" flexDirection="column" gap="spacing.2">
             <PopoverHeader title={title} titleLeading={titleLeading} />
             <BaseBox>{children}</BaseBox>
           </BaseBox>
-          {footer ? <BaseBox>{footer}</BaseBox> : null}
+          {footer ? (
+            // On native, an earlier alignSelf="flex-start" shrink-wrapped tour footer
+            // actions and stacked Prev/Next. Full width keeps the footer row laying out
+            // correctly. Web keeps the default (no explicit width) to preserve layout.
+            <BaseBox width={isReactNative() ? '100%' : undefined}>{footer}</BaseBox>
+          ) : null}
         </BaseBox>
         {arrow}
       </PopoverContentWrapper>

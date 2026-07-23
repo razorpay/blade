@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/native';
 import Animated, {
   runOnJS,
@@ -45,35 +45,50 @@ const CollapsibleBodyContent = ({
 
   // `undefined` implies no height restrictions which is analogous to `auto` on web
   const height = useSharedValue(isExpanded ? undefined : 0);
-  const [layoutHeight, setLayoutHeight] = useState(0);
+  const layoutHeightRef = useRef(0);
 
-  // Keeps track of running animation to control absolute / relative positioning and handling layout event
+  // Dual tracking is intentional: isAnimating (state) triggers re-renders so the absolute↔relative
+  // position switch in the render path is reactive; isAnimatingRef (ref) gives synchronous reads
+  // in onLayout/onAnimationComplete callbacks where stale closure state would be unreliable.
   const [isAnimating, setIsAnimating] = useState(false);
-  const onAnimationComplete = useCallback((): void => {
-    // Only mark the animation complete before the next repaint, otherwise, sometimes leads to state update delays when you try to quickly toggle multiple times
-    requestAnimationFrame(() => setIsAnimating(false));
+  const isAnimatingRef = useRef(false);
+  const animationIdRef = useRef(0);
+  const onAnimationComplete = useCallback((id: number): void => {
+    // Defer to next repaint to avoid state update delays when toggling rapidly.
+    // The id check ensures only the most recent animation can mark itself complete —
+    // if a new animation started before this fires, animationIdRef.current will have
+    // advanced past id and we skip the update (the new animation owns the state now).
+    requestAnimationFrame(() => {
+      if (animationIdRef.current === id) {
+        isAnimatingRef.current = false;
+        setIsAnimating(false);
+      }
+    });
   }, []);
 
   const duration = castNativeType(getTransitionDuration(theme));
   const easing = castNativeType(getTransitionEasing(theme));
 
   useEffect(() => {
+    const currentId = ++animationIdRef.current;
+    isAnimatingRef.current = true;
     setIsAnimating(true);
 
     opacity.value = withTiming(getOpacity({ isExpanded }), { duration, easing });
+    // Animates height to the last measured content height, or 0 when collapsing.
     height.value = withTiming(
-      // Animates the height to the measured value
-      isExpanded && layoutHeight ? layoutHeight : 0,
+      isExpanded && layoutHeightRef.current ? layoutHeightRef.current : 0,
       { duration, easing },
       (isComplete) => {
-        // Only run this if the animation ran uninterrupted, for eg collapsing the content before it expanded fully
+        // Only mark complete if animation ran uninterrupted (e.g. not reversed mid-way by
+        // the user toggling before it finished). onAnimationComplete must be called via
+        // runOnJS since withTiming callbacks run on the UI thread.
         if (isComplete) {
-          // The callback `onAnimationComplete` has to be declared outside this, on JS thread
-          runOnJS(onAnimationComplete)();
+          runOnJS(onAnimationComplete)(currentId);
         }
       },
     );
-  }, [isExpanded, opacity, duration, easing, height, layoutHeight, onAnimationComplete]);
+  }, [isExpanded, opacity, duration, easing, height, onAnimationComplete]);
 
   const animatedStyles = useAnimatedStyle(
     (): ViewStyle => {
@@ -90,28 +105,38 @@ const CollapsibleBodyContent = ({
    */
   const onLayout: (event: LayoutChangeEvent) => void = useCallback(
     (event) => {
-      if (isAnimating) {
-        if (event.nativeEvent.layout.height > layoutHeight) {
+      const newHeight = event.nativeEvent.layout.height;
+      if (isAnimatingRef.current) {
+        if (newHeight > layoutHeightRef.current) {
           /**
-           * During animation, we set `layoutHeight` if the native event's layout height is larger.
+           * During animation, update the target height only if the new measurement is larger.
            *
-           * The greater than comparison is needed because sometimes the native event's layout height is smaller than actual content height 🤯
-           * For example, this happens if you try to render a lengthy `Text` that wraps onto multiple lines.
-           * In this case the initial native event's layout height only counts height of `Text` as if it were single line.
-           * So, when the `Text` actually renders on screen and wraps, another `nativeEvent` is triggered which gives us the actual content height.
-           * `nativeEvent` is triggered multiple times during animation but we only set `layoutHeight` if the height value is greater, hence the check.
+           * The greater-than check is intentional: for multi-line Text, the first onLayout
+           * event reports height as if the text were single-line. Once the text actually wraps
+           * on screen a second onLayout fires with the real height. We only update upward to
+           * avoid shrinking the animation target to an intermediate measurement.
            */
-          setLayoutHeight(event.nativeEvent.layout.height);
+          layoutHeightRef.current = newHeight;
+          // Only drive the visible height while expanding. Growing it during a collapse (or the
+          // initial collapse-to-0 on mount) would reveal the content while it should stay hidden.
+          if (isExpanded) {
+            height.value = withTiming(newHeight, { duration, easing });
+          }
         }
-      } else if (event.nativeEvent.layout.height !== layoutHeight) {
-        /**
-         * When not animating, we set `layoutHeight` anytime `nativeEvent` layout height changes.
-         * This handles userland dynamic content inside the slot.
-         */
-        setLayoutHeight(event.nativeEvent.layout.height);
+      } else if (newHeight !== layoutHeightRef.current) {
+        // When not animating, always sync layoutHeightRef to the latest measurement so
+        // dynamic content changes (e.g. items added to the slot) are picked up correctly.
+        layoutHeightRef.current = newHeight;
+        // When expanded, the real content height frequently arrives via onLayout *after* the
+        // (short) expand animation has already settled — especially for complex slotted content
+        // like StepGroup. Without reflecting it here the first open stays clipped/blank until a
+        // close→open cycle re-measures. Sync the visible height to the true content height.
+        if (isExpanded) {
+          height.value = newHeight;
+        }
       }
     },
-    [layoutHeight, isAnimating],
+    [height, duration, easing, isExpanded],
   );
 
   return (

@@ -1,10 +1,10 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
-import StoryRouter from 'storybook-react-router';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { InternalCardExample } from '../Card/InternalCardExample';
 import { Fade } from './';
 import type { FadeProps } from './';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -141,7 +141,9 @@ export const WithDifferentComponents = (args: typeof Fade): React.ReactElement =
         </Fade>
 
         <Fade {...args} isVisible={isVisible}>
-          <p>Fade with custom components. Ensure you forward refs to your custom components</p>
+          <Text>
+            Fade with custom components. Ensure you forward refs to your custom components
+          </Text>
         </Fade>
       </Box>
     </Box>

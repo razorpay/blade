@@ -107,6 +107,9 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -479,7 +482,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   margin-bottom: 2px;
 }
 
-.c18.c18.c18.c18.c18:hover:not([aria-disabled=true]),
+.c18.c18.c18.c18.c18:hover:not([aria-disabled=true]):not([aria-selected=true]),
 .c18.c18.c18.c18.c18[aria-expanded="true"] {
   background-color: hsla(206,10%,29%,0.06);
 }
@@ -522,7 +525,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   margin-bottom: 2px;
 }
 
-.c25.c25.c25.c25.c25:hover:not([aria-disabled=true]),
+.c25.c25.c25.c25.c25:hover:not([aria-disabled=true]):not([aria-selected=true]),
 .c25.c25.c25.c25.c25[aria-expanded="true"] {
   background-color: hsla(4,85%,44%,0.09);
 }

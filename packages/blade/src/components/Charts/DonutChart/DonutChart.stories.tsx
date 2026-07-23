@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import {
   ChartDonut,
@@ -492,6 +492,28 @@ export const DonutChartWithSequentialColors: StoryFn<typeof ChartDonut> = (args)
   );
 };
 
+export const DonutChartWithSelectedSlices: StoryFn<typeof ChartDonut> = (args) => {
+  const { type, radius, ...wrapperProps } = args;
+
+  return (
+    <ChartsWrapper>
+      <ChartDonutWrapper
+        width="500px"
+        height="400px"
+        content={{
+          label: 'Total',
+          value: '1300',
+        }}
+        {...wrapperProps}
+      >
+        <ChartDonut dataKey="value" nameKey="name" data={chartData} type={type} radius={radius} />
+        <ChartLegend defaultSelectedDataKeys={['Group D', 'Group E']} />
+        <ChartTooltip />
+      </ChartDonutWrapper>
+    </ChartsWrapper>
+  );
+};
+
 BasicDonutChart.storyName = 'Default Donut Chart';
 DonutChartWithCustomKeys.storyName = 'Donut Chart with Custom dataKey and nameKey';
 DonutChartWithCenterText.storyName = 'Donut Chart with Center Text';
@@ -500,3 +522,4 @@ ExtraLargeRadiusDonutChart.storyName = 'Extra Large Radius Donut Chart';
 DonutChartWithColorTheme.storyName = 'Donut Chart with Color theme';
 SemiCircleDonutChart.storyName = 'SemiCircle Donut Chart';
 DonutChartWithCustomColor.storyName = 'Donut Chart with Custom colors';
+DonutChartWithSelectedSlices.storyName = 'Donut Chart with Selected Slices';

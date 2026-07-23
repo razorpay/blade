@@ -1,0 +1,61 @@
+name: Agentic Repo / Slash Auto-Resolve PR Comments
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+concurrency:
+  # One resolution job per PR at a time to avoid conflicting edits.
+  group: ${{ github.repository }}-${{ github.event.pull_request.number }}-slash-resolve-comments
+  cancel-in-progress: false
+
+jobs:
+  resolve-comments:
+    name: Resolve PR review comments via Slash
+    # Skip reviews from bots to prevent feedback loops, except rzp-slash-public
+    # whose comments with confidence >= 5/10 should be auto-resolved.
+    if: |
+      github.actor != 'github-actions[bot]' &&
+      github.actor != 'rzp-slash' &&
+      github.actor != 'rzp-slash[bot]' &&
+      github.actor != 'rzp-slash-public' &&
+      github.actor != 'rzp-slash-reviewer' &&
+      github.actor != 'rzp-slash-reviewer[bot]'
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/scripts
+            CODEOWNERS
+
+      - name: Check if reviewer is CODEOWNER or PR author
+        id: auth-check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTOR: ${{ github.actor }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: node .github/scripts/slash-resolve-comments/check-auth.js
+
+      - name: Check auto-resolve run count
+        id: run-count-check
+        if: steps.auth-check.outputs.authorized == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node .github/scripts/slash-resolve-comments/check-resolve-run-count.js
+
+      - name: Fetch review comments and trigger Slash
+        if: steps.auth-check.outputs.authorized == 'true' && steps.run-count-check.outputs.allowed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLASH_API_USERNAME: ${{ secrets.SLASH_API_USERNAME }}
+          SLASH_API_PASSWORD: ${{ secrets.SLASH_API_PASSWORD }}
+          SLASH_REPOSITORY_URL: https://github.com/${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REVIEW_ID: ${{ github.event.review.id }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node .github/scripts/slash-resolve-comments/resolve-review-comments.js

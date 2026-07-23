@@ -247,6 +247,19 @@ type TableProps<Item> = {
    * The default value is `false`.
    **/
   isGrouped?: boolean;
+  /**
+   * Controls when the row-level selection checkbox is visible.
+   *
+   * - `'always'` (default): checkbox is always visible. Fully backward-compatible.
+   * - `'on-hover'`: checkbox is hidden by default and appears when the row is hovered.
+   *   Once a row is selected the checkbox stays visible so the user can deselect it.
+   *
+   * The header "select-all" checkbox is **not** affected by this prop — it is always visible.
+   * Only applies when `selectionType="multiple"`.
+   *
+   * @default 'always'
+   */
+  checkboxDisplay?: 'always' | 'on-hover';
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 

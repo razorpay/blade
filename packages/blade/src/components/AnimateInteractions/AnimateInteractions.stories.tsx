@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { AnimateInteractions } from './';
 import type { AnimateInteractionsProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -113,12 +113,7 @@ ShowOverlayOnImageHover.args = {
       elevation="midRaised"
       overflow="hidden"
     >
-      <img
-        src="https://live.staticflickr.com/65535/54142149265_a0cf25efa4_b.jpg"
-        width=""
-        height="300px"
-        alt="Hubble Takes a Look at Tangled Galaxies"
-      />
+      <Box width="300px" height="300px" backgroundColor="surface.background.gray.subtle" />
       <Fade motionTriggers={['on-animate-interactions']}>
         <Box
           display="flex"
@@ -173,11 +168,11 @@ ScaleOnParentHoverAndFocus.args = {
 
               <Box>
                 <Scale motionTriggers={['on-animate-interactions']}>
-                  <img
-                    src="https://live.staticflickr.com/65535/54142149265_a0cf25efa4_b.jpg"
-                    width=""
+                  <Box
+                    width="140px"
                     height="140px"
-                    alt="Hubble Takes a Look at Tangled Galaxies"
+                    backgroundColor="surface.background.gray.subtle"
+                    borderRadius="medium"
                   />
                 </Scale>
               </Box>

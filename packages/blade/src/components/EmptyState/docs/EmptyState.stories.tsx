@@ -1,7 +1,12 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { EmptyState } from '../EmptyState';
 import type { EmptyStateProps } from '../types';
+import listView from '../assets/list-view.png';
+import noData from '../assets/no-data.png';
+import error from '../assets/error.png';
+import noNotification from '../assets/no-notification.png';
+import accessDenied from '../assets/access-denied.png';
 import { EmptyStateStoryCode } from './code';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
@@ -11,14 +16,6 @@ import { EcommerceIcon, InfoIcon } from '~components/Icons';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-
-/* eslint-disable @typescript-eslint/no-var-requires */
-const listView = require('../assets/list-view.png');
-const noData = require('../assets/no-data.png');
-const error = require('../assets/error.png');
-const noNotification = require('../assets/no-notification.png');
-const accessDenied = require('../assets/access-denied.png');
-/* eslint-enable @typescript-eslint/no-var-requires */
 
 const getEmptyStateArgTypes = (): Record<string, unknown> => ({
   size: {

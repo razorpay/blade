@@ -92,6 +92,22 @@ type SlideProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Slide` for dramatic entrances from viewport edges — page transitions, modal content, major section reveals.
+- Use `direction` prop to control entry/exit edges (e.g., `{ enter: 'bottom', exit: 'top' }` for page transitions).
+- Use `motionTriggers={['in-view']}` for scroll-triggered slide reveals.
+- Use `fromOffset` to customize the slide distance (defaults to `100vh`/`100vw`).
+
+**Don't**
+
+- Don't use `Slide` for subtle in-viewport movement — use `Move` instead (Slide animates from outside the viewport).
+- Don't use `Slide` for opacity-only changes — use `Fade` instead.
+- Don't pass multiple children — wrap in a single container.
+- Don't use `Slide` for interactive hover/press feedback — use `Scale` or `Elevate`.
+
 ## Example
 
 ### Basic Usage

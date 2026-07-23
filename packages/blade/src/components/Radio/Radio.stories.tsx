@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
@@ -15,6 +15,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import { Link } from '~components/Link';
 import { InfoIcon } from '~components/Icons';
+import { Badge } from '~components/Badge';
 
 const Page = (): React.ReactElement => {
   return (
@@ -426,4 +427,27 @@ const RadioShowcase = () => {
 
 export const Showcase: StoryFn<typeof RadioGroupComponent> = () => {
   return <RadioShowcase />;
+};
+
+export const WithBadge: StoryFn<typeof RadioGroupComponent> = () => {
+  return (
+    <RadioGroupComponent label="Select your plan" defaultValue="pro">
+      <RadioComponent value="basic">Basic</RadioComponent>
+      <RadioComponent value="pro" trailing={<Badge color="primary">Recommended</Badge>}>
+        Pro
+      </RadioComponent>
+      <RadioComponent value="enterprise" trailing={<Badge color="positive">New</Badge>}>
+        Enterprise
+      </RadioComponent>
+    </RadioGroupComponent>
+  );
+};
+WithBadge.storyName = 'With Badge';
+WithBadge.parameters = {
+  docs: {
+    description: {
+      story:
+        'Use the `trailing` prop to display a `<Badge>` alongside a radio label. Only works in vertical `orientation` (the default).',
+    },
+  },
 };

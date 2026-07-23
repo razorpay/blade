@@ -8,6 +8,7 @@ type ChatInputActionBarProps = {
   isDisabled?: boolean;
   isGenerating?: boolean;
   isSubmitDisabled?: boolean;
+  hideFileUpload?: boolean;
   onUploadClick: () => void;
   onSubmit: () => void;
   onStop?: () => void;
@@ -17,6 +18,7 @@ const ChatInputActionBar = ({
   isDisabled,
   isGenerating,
   isSubmitDisabled,
+  hideFileUpload = false,
   onUploadClick,
   onSubmit,
   onStop,
@@ -29,16 +31,22 @@ const ChatInputActionBar = ({
       alignItems="center"
       padding="spacing.5"
     >
-      <Link
-        variant="button"
-        color="neutral"
-        size="small"
-        icon={PlusIcon}
-        onClick={onUploadClick}
-        isDisabled={isDisabled}
-      >
-        Upload file
-      </Link>
+      {hideFileUpload ? (
+        <BaseBox />
+      ) : (
+        <BaseBox display="flex" alignItems="center">
+          <Link
+            variant="button"
+            color="neutral"
+            size="small"
+            icon={PlusIcon}
+            onClick={onUploadClick}
+            isDisabled={isDisabled}
+          >
+            Upload file
+          </Link>
+        </BaseBox>
+      )}
       <BaseBox>
         {isGenerating ? (
           <Button

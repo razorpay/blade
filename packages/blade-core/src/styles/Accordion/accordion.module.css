@@ -1,0 +1,317 @@
+/* Accordion wrapper (outer container) */
+.wrapper {
+  width: 100%;
+}
+
+/* Filled variant wrapper — Card surface treatment:
+   elevation shadow, top-highlight gradient, and inset border ring
+   matching card.module.css .cardSurface approach.
+
+   The inset border ring + bottom "lip" are painted via an `::after`
+   overlay (see `.filled::after`) instead of directly on the wrapper.
+   An edge-to-edge gray body (`.collapsibleContentGray`) paints its own
+   background *on top of* the wrapper's box-shadow, which would otherwise
+   clip the inset ring along the body's left/right/bottom edges. Rendering
+   the ring as a non-interactive overlay keeps it above the gray surface. */
+.filled {
+  position: relative;
+  border-radius: var(--border-radius-medium);
+  border: none;
+  background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 1) 100%),
+    linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 97%, 1) 100%);
+  background-position: center top, center calc(100% - 2px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
+  /* Only the elevation drop shadow lives on the wrapper. */
+  box-shadow: 0px 6px 32px 4px hsla(205, 8%, 71%, 0.06);
+}
+
+/* Inset border ring + bottom lip overlay — painted above the body so an
+   edge-to-edge gray body background can't cover it. */
+.filled::after {
+  content: '';
+  position: absolute;
+  /* Longhand instead of `inset: 0` to support pre-2021 browsers (inset
+     shorthand is Baseline only since Apr 2021 / Safari 14.1). */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: var(--border-radius-medium);
+  box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
+    inset 0px -1.5px 0px 1px var(--surface-background-gray-intense);
+}
+
+/* Dark theme overrides for filled variant */
+:root body[data-theme='dark'] .filled {
+  border-top: 1px solid var(--surface-border-gray-subtle);
+  background-image: linear-gradient(to bottom, hsla(210, 5%, 16%, 1) 0%, hsla(210, 6%, 13%, 1) 100%),
+    linear-gradient(to bottom, hsla(210, 6%, 13%, 1) 0%, hsla(210, 6%, 13%, 1) 100%);
+  background-position: center top, center calc(100% - 1px);
+  background-size: calc(100% - 2px) 16px, calc(100% - 2px) 16px;
+  background-repeat: no-repeat;
+  box-shadow: 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06);
+}
+
+:root body[data-theme='dark'] .filled::after {
+  box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
+    inset 0px 0px 0px 1px var(--surface-background-gray-intense);
+}
+
+/* Transparent variant wrapper */
+.transparent {
+  background-color: transparent;
+}
+
+/* Accordion button base */
+.button {
+  padding: var(--spacing-0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--transparent);
+  transition-property: background-color, box-shadow, border-radius, color;
+  transition-duration: var(--duration-2xquick);
+  transition-timing-function: var(--easing-standard);
+  cursor: pointer;
+  color: var(--interactive-icon-gray-muted);
+  width: 100%;
+  border: none;
+  text-align: left;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--interactive-background-gray-faded);
+    color: var(--interactive-icon-gray-subtle);
+
+    & [data-blade-component='divider'] {
+      opacity: 0;
+    }
+  }
+
+  &:focus-visible {
+    outline: 4px solid var(--surface-border-primary-muted);
+    outline-offset: 1px;
+    border-radius: var(--border-radius-small);
+    transition-property: outline-width;
+    transition-duration: var(--duration-2xquick);
+    transition-timing-function: var(--easing-standard);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: var(--interactive-icon-gray-disabled);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--transparent);
+      color: var(--interactive-icon-gray-disabled);
+    }
+  }
+}
+
+/* Button expanded state — chevron color change */
+.buttonExpanded {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+/* Compound: filled + first item — hover/focus radius */
+.filledFirstItem {
+  &:hover,
+  &:focus-visible {
+    border-top-left-radius: var(--border-radius-medium);
+    border-top-right-radius: var(--border-radius-medium);
+  }
+}
+
+/* Compound: filled + last item + collapsed — hover/focus radius */
+.filledLastItemCollapsed {
+  &:hover,
+  &:focus-visible {
+    border-bottom-left-radius: var(--border-radius-medium);
+    border-bottom-right-radius: var(--border-radius-medium);
+  }
+}
+
+/* Compound: filled + single item (first+last) + collapsed — hover/focus full radius */
+.filledSingleItemCollapsed {
+  &:hover,
+  &:focus-visible {
+    border-radius: var(--border-radius-medium);
+  }
+}
+
+/* Compound: filled + single item (first+last) + expanded — hover/focus top radius only */
+.filledSingleItemExpanded {
+  &:hover,
+  &:focus-visible {
+    border-top-left-radius: var(--border-radius-medium);
+    border-top-right-radius: var(--border-radius-medium);
+  }
+}
+
+/* Accordion header layout */
+.headerContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+ * React's BaseHeader wraps each slot (title, titleSuffix, leading, trailing,
+ * chevron) in a fixed-height "centerBox" so every slot aligns to a consistent
+ * baseline. For size='large' the centerBox is 28px tall; for size='medium' it
+ * is 20px tall. We replicate that with a CSS custom property on .headerContent
+ * that each slot references via min-height.
+ */
+.headerContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
+  margin-top: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
+  --header-slot-height: 28px;
+}
+
+.headerContentMedium {
+  --header-slot-height: 20px;
+}
+
+.headerContentCentered {
+  align-items: center;
+}
+
+.headerLeading {
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  min-height: var(--header-slot-height);
+}
+
+.headerLeadingLarge {
+  max-height: 32px;
+  max-width: 32px;
+}
+
+.headerLeadingMedium {
+  max-height: 24px;
+  max-width: 24px;
+}
+
+.headerLeadingIcon {
+  margin-right: var(--spacing-3);
+}
+
+.headerLeadingSlot {
+  margin-right: var(--spacing-3);
+}
+
+.headerMain {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.headerTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+/*
+ * React's BaseHeader adds marginTop=1px (size token '1', raw pixel)
+ * to the title Text element to align it optically against the 28px
+ * centerBox wrapping the titleSuffix/chevron/leading slots.
+ */
+.headerTitleText {
+  margin-top: 1px;
+}
+
+.headerTrailing {
+  display: flex;
+  align-items: center;
+  margin-left: var(--spacing-4);
+  flex-shrink: 0;
+  min-height: var(--header-slot-height);
+}
+
+/* Chevron rotation + transition now live in collapsible.module.css via
+   CollapsibleChevronIcon. This wrapper only owns layout/alignment. */
+.headerChevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: var(--spacing-3);
+  min-height: var(--header-slot-height);
+}
+
+/* Header divider shown when expanded — full-width, no horizontal padding */
+.headerDivider {
+  padding-left: var(--spacing-0);
+  padding-right: var(--spacing-0);
+}
+
+/* Accordion item body */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-4);
+  margin-bottom: var(--spacing-5);
+  margin-left: var(--spacing-5);
+  margin-right: var(--spacing-5);
+}
+
+/*
+ * Gray body background — for checkout/surface-gray contexts.
+ *
+ * The gray surface must fill the *entire* body pane edge-to-edge (matching
+ * design), so the background lives on the full-width collapsible wrapper.
+ * The inner `.body` then uses padding instead of margins so its spacing sits
+ * *inside* the gray surface rather than leaving a white frame around it.
+ */
+.collapsibleContentGray {
+  background-color: var(--surface-background-gray-subtle);
+}
+
+/* Last item's gray body follows the filled card's rounded bottom corners. */
+.collapsibleContentGrayLast {
+  border-bottom-left-radius: var(--border-radius-medium);
+  border-bottom-right-radius: var(--border-radius-medium);
+}
+
+.bodyGray {
+  margin: var(--spacing-0);
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-5);
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-5);
+}
+
+/* Responsive width defaults */
+.accordionOuter {
+  min-width: 200px;
+  max-width: calc(100vw - 40px);
+}
+
+@media (min-width: 480px) {
+  .accordionOuter {
+    min-width: 360px;
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .accordionOuter {
+    min-width: 360px;
+    max-width: 800px;
+  }
+}

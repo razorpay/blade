@@ -14,6 +14,17 @@ Below are the props that the TopNav component and its subcomponents accept. Thes
 // Main TopNav Component Types
 type TopNavProps = {
   children: React.ReactNode;
+  /**
+   * Sets the background color variant of the TopNav.
+   *
+   * - `'neutral'` (default): Uses the static black background. Existing behavior.
+   * - `'primary'`: Uses the primary brand color (`surface.background.primary.intense`). The selected tab indicator glow becomes white.
+   *
+   * Passing an explicit `backgroundColor` prop will override this variant.
+   *
+   * @default 'neutral'
+   */
+  variant?: 'primary' | 'neutral';
 } & Pick<
   BoxProps,
   | 'padding'
@@ -128,6 +139,24 @@ type MenuTriggerProps = {
   onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
 };
 ````
+
+## Usage Guidelines
+
+**Do**
+
+- Use `TopNav` for multi-product or multi-module applications that need a brand header with horizontal navigation, search, and user menu.
+- Structure content using `TopNavBrand`, `TopNavContent`, and `TopNavActions` as direct children.
+- Use `TabNav` inside `TopNavContent` with the render prop pattern to handle responsive overflow into a "More" menu.
+- Handle mobile layout with conditional rendering — hide `TabNav` on mobile and show a simplified menu button layout.
+- Manage active state externally via React Router's `useLocation()`.
+
+**Don't**
+
+- Don't try to override the dark theme — `TopNav` always renders in dark mode internally.
+- Don't skip the `TabNav` render prop pattern — the simple children API is not supported.
+- Don't use `TopNav` as the primary deep navigation — pair it with `SideNav` for hierarchical navigation.
+- Don't put complex or multi-line content inside `TopNav` — it's designed for single-line items.
+- Don't use `TopNav` for mobile bottom navigation — use `BottomNav` for mobile-first persistent nav.
 
 ## Example
 

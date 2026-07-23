@@ -10,6 +10,7 @@ export type EmptyStateSizeTokens = {
   titleSize: Extract<HeadingProps['size'], 'small' | 'medium' | 'xlarge'>;
   descriptionSize: Extract<BaseTextSizes, 'xsmall' | 'small' | 'medium' | 'large'>;
   gapBetweenSections: DotNotationSpacingStringToken;
+  gapInsideContentSection: DotNotationSpacingStringToken;
 };
 
 export const emptyStateSizeTokens: Record<EmptyStateSize, EmptyStateSizeTokens> = {
@@ -19,6 +20,7 @@ export const emptyStateSizeTokens: Record<EmptyStateSize, EmptyStateSizeTokens> 
     titleSize: 'small',
     descriptionSize: 'xsmall',
     gapBetweenSections: 'spacing.5',
+    gapInsideContentSection: 'spacing.1',
   },
   medium: {
     assetMaxWidth: '90px',
@@ -26,6 +28,7 @@ export const emptyStateSizeTokens: Record<EmptyStateSize, EmptyStateSizeTokens> 
     titleSize: 'small',
     descriptionSize: 'small',
     gapBetweenSections: 'spacing.6',
+    gapInsideContentSection: 'spacing.1',
   },
   large: {
     assetMaxWidth: '120px',
@@ -33,6 +36,7 @@ export const emptyStateSizeTokens: Record<EmptyStateSize, EmptyStateSizeTokens> 
     titleSize: 'medium',
     descriptionSize: 'medium',
     gapBetweenSections: 'spacing.7',
+    gapInsideContentSection: 'spacing.1',
   },
   xlarge: {
     assetMaxWidth: '160px',
@@ -40,5 +44,6 @@ export const emptyStateSizeTokens: Record<EmptyStateSize, EmptyStateSizeTokens> 
     titleSize: 'xlarge',
     descriptionSize: 'large',
     gapBetweenSections: 'spacing.8',
+    gapInsideContentSection: 'spacing.1',
   },
 };

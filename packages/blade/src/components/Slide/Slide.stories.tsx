@@ -1,10 +1,10 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
-import StoryRouter from 'storybook-react-router';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { InternalCardExample } from '../Card/InternalCardExample';
 import { Slide } from './';
 import type { SlideProps } from './';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -134,7 +134,9 @@ export const WithDifferentComponents = (args: typeof Slide): React.ReactElement 
         </Slide>
 
         <Slide {...args} isVisible={isVisible}>
-          <p>Slide with custom components. Ensure you forward refs to your custom components</p>
+          <Text>
+            Slide with custom components. Ensure you forward refs to your custom components
+          </Text>
         </Slide>
       </Box>
     </Box>

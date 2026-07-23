@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import type { FileUploadItemProps } from '../FileUploadItem';
 import { FileUploadItem } from '../FileUploadItem';
 import type { BladeFile } from '../types';
@@ -20,15 +20,13 @@ const Page = (): React.ReactElement => {
   );
 };
 
-// Helper to create a mock BladeFile
+// Helper to create a mock BladeFile (works on both web and native)
 const createMockFile = (name: string, size: number, overrides?: Partial<BladeFile>): BladeFile => {
-  const file = new File([''], name, { type: 'application/octet-stream' }) as BladeFile;
-  Object.defineProperty(file, 'size', { value: size });
   return {
-    ...file,
-    id: `file-${Date.now()}`,
+    id: `file-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
     name,
     size,
+    type: 'application/octet-stream',
     ...overrides,
   } as BladeFile;
 };
@@ -116,6 +114,20 @@ ErrorState.args = {
   }),
   size: 'medium',
   onReupload: ({ file }) => action('onReupload')(file.name),
+  onRemove: ({ file }) => action('onRemove')(file.name),
+};
+
+// Error State without remove (re-upload only)
+export const ErrorStateReuploadOnly = FileUploadItemTemplate.bind({});
+ErrorStateReuploadOnly.storyName = 'Error State (Re-upload only)';
+ErrorStateReuploadOnly.args = {
+  file: createMockFile('failed-upload.xlsx', 1024 * 1024 * 5, {
+    status: 'error',
+    errorText: 'Upload failed. Please try again.',
+  }),
+  size: 'medium',
+  onReupload: ({ file }) => action('onReupload')(file.name),
+  onRemove: undefined,
 };
 
 // Large Size
@@ -172,6 +184,7 @@ const AllStatesTemplate: StoryFn<typeof FileUploadItem> = () => {
         file={errorFile}
         size="medium"
         onReupload={({ file }) => setLastAction(`onReupload: ${file.name}`)}
+        onRemove={({ file }) => setLastAction(`onRemove: ${file.name}`)}
       />
     </Box>
   );

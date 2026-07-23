@@ -147,6 +147,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -175,17 +176,18 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -193,17 +195,18 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -211,17 +214,18 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -229,17 +233,18 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
 
 .c12.c12.c12.c12.c12::placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -383,7 +388,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
     >
       <label
         data-blade-component="form-label"
-        for="otp-4399-input-4400"
+        for="otp-4555-input-4556"
         style="width: 100%; flex-shrink: 0; margin-right: 0px;"
       >
         <div
@@ -430,7 +435,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
       >
         <input
           hidden=""
-          id="otp-4399-input-4400"
+          id="otp-4555-input-4556"
           readonly=""
           value=""
         />
@@ -465,7 +470,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
-                    id="otp-4399-input-4400-0-4405-input-4406"
+                    id="otp-4555-input-4556-0-4561-input-4562"
                     inputmode="decimal"
                     placeholder=""
                     required=""
@@ -508,7 +513,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
-                    id="otp-4399-input-4400-1-4411-input-4412"
+                    id="otp-4555-input-4556-1-4567-input-4568"
                     inputmode="decimal"
                     placeholder=""
                     required=""
@@ -551,7 +556,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
-                    id="otp-4399-input-4400-2-4417-input-4418"
+                    id="otp-4555-input-4556-2-4573-input-4574"
                     inputmode="decimal"
                     placeholder=""
                     required=""
@@ -594,7 +599,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
-                    id="otp-4399-input-4400-3-4423-input-4424"
+                    id="otp-4555-input-4556-3-4579-input-4580"
                     inputmode="decimal"
                     placeholder=""
                     required=""
@@ -763,6 +768,7 @@ exports[`<OTPInput /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 1.625rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -791,17 +797,18 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -809,17 +816,18 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -827,17 +835,18 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -845,17 +854,18 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c12.c12.c12.c12.c12::placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.25rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: -0.18200000000000002px;
-  -moz-letter-spacing: -0.18200000000000002px;
-  -ms-letter-spacing: -0.18200000000000002px;
-  letter-spacing: -0.18200000000000002px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 1.625rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1453,6 +1463,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  font-variation-settings: 'opsz' 60;
   line-height: 2rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
@@ -1481,17 +1492,18 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: -0.528px;
-  -moz-letter-spacing: -0.528px;
-  -ms-letter-spacing: -0.528px;
-  letter-spacing: -0.528px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1499,17 +1511,18 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: -0.528px;
-  -moz-letter-spacing: -0.528px;
-  -ms-letter-spacing: -0.528px;
-  letter-spacing: -0.528px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1517,17 +1530,18 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: -0.528px;
-  -moz-letter-spacing: -0.528px;
-  -ms-letter-spacing: -0.528px;
-  letter-spacing: -0.528px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1535,17 +1549,18 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c12.c12.c12.c12.c12::placeholder {
   color: hsla(206,10%,29%,0.32);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: -0.528px;
-  -moz-letter-spacing: -0.528px;
-  -ms-letter-spacing: -0.528px;
-  letter-spacing: -0.528px;
+  font-variation-settings: 'opsz' 60;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;

@@ -1,6 +1,22 @@
-import { Story } from '@storybook/addon-docs';
+import { Story } from '@storybook/addon-docs/blocks';
 import { Box } from '~components/Box';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
+import { Default as FadeDefault } from '~components/Fade/Fade.stories';
+import { Default as MoveDefault } from '~components/Move/Move.stories';
+import { WithDifferentDirections as SlideWithDifferentDirections } from '~components/Slide/Slide.stories';
+import { Default as ScaleDefault } from '~components/Scale/Scale.stories';
+import { Default as ElevateDefault } from '~components/Elevate/Elevate.stories';
+import { Default as MorphDefault } from '~components/Morph/Morph.stories';
+import { Default as StaggerDefault } from '~components/Stagger/Stagger.stories';
+import { AnimateChildOnCardHover } from '~components/AnimateInteractions/AnimateInteractions.stories';
+import * as FadeMeta from '~components/Fade/Fade.stories';
+import * as MoveMeta from '~components/Move/Move.stories';
+import * as SlideMeta from '~components/Slide/Slide.stories';
+import * as ScaleMeta from '~components/Scale/Scale.stories';
+import * as ElevateMeta from '~components/Elevate/Elevate.stories';
+import * as MorphMeta from '~components/Morph/Morph.stories';
+import * as StaggerMeta from '~components/Stagger/Stagger.stories';
+import * as AnimateInteractionsMeta from '~components/AnimateInteractions/AnimateInteractions.stories';
 
 export const FadeIntro = (): React.ReactElement => {
   return (
@@ -21,7 +37,7 @@ export const FadeIntro = (): React.ReactElement => {
       `}</SandboxHighlighter>
       </Box>
       <Box flex="1">
-        <Story id="motion-fade--default" />
+        <Story of={FadeDefault} meta={FadeMeta} />
       </Box>
     </Box>
   );
@@ -46,7 +62,7 @@ export const MoveIntro = (): React.ReactElement => {
       `}</SandboxHighlighter>
       </Box>
       <Box flex="1">
-        <Story id="motion-move--default" />
+        <Story of={MoveDefault} meta={MoveMeta} />
       </Box>
     </Box>
   );
@@ -71,7 +87,7 @@ export const SlideIntro = (): React.ReactElement => {
       `}</SandboxHighlighter>
       </Box>
       <Box flex="1">
-        <Story id="motion-slide--with-different-directions" />
+        <Story of={SlideWithDifferentDirections} meta={SlideMeta} />
       </Box>
     </Box>
   );
@@ -92,7 +108,7 @@ export const ScaleIntro = (): React.ReactElement => {
       `}</SandboxHighlighter>
       </Box>
       <Box flex="1">
-        <Story id="motion-scale--default" />
+        <Story of={ScaleDefault} meta={ScaleMeta} />
       </Box>
     </Box>
   );
@@ -115,7 +131,7 @@ export const ElevateIntro = (): React.ReactElement => {
       `}</SandboxHighlighter>
       </Box>
       <Box flex="1">
-        <Story id="motion-elevate--default" />
+        <Story of={ElevateDefault} meta={ElevateMeta} />
       </Box>
     </Box>
   );
@@ -150,7 +166,7 @@ export const MorphIntro = (): React.ReactElement => {
       `}</SandboxHighlighter>
       </Box>
       <Box flex="1">
-        <Story id="motion-morph--default" />
+        <Story of={MorphDefault} meta={MorphMeta} />
       </Box>
     </Box>
   );
@@ -182,7 +198,7 @@ export const StaggerIntro = (): React.ReactElement => {
       `}</SandboxHighlighter>
       </Box>
       <Box maxWidth="100%">
-        <Story id="motion-stagger--default" />
+        <Story of={StaggerDefault} meta={StaggerMeta} />
       </Box>
     </Box>
   );
@@ -217,7 +233,7 @@ export const AnimateInteractionsIntro = (): React.ReactElement => {
       `}</SandboxHighlighter>
       </Box>
       <Box flex="1">
-        <Story id="motion-animateinteractions--animate-child-on-card-hover" />
+        <Story of={AnimateChildOnCardHover} meta={AnimateInteractionsMeta} />
       </Box>
     </Box>
   );

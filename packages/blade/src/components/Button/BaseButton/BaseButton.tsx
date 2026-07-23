@@ -291,6 +291,81 @@ const getProps = ({
     return shadows.join(', ');
   };
 
+  const getNativeShadowColors = (
+    btnColor: BaseButtonProps['color'],
+  ): {
+    shadowHighlightColor?: string;
+    shadowHighlightHeight?: number;
+    shadowBottomColor?: string;
+    shadowBottomHeight?: number;
+    shadowBorderColor?: string;
+    /**
+     * Border color from the highlighted/focus box-shadow tokens. Used on press
+     * to match web `&:active { boxShadow: focusBoxShadow }` (e.g. secondary/
+     * tertiary gray.default → gray.highlighted).
+     */
+    focusShadowBorderColor?: string;
+    shadowRingWidth?: number;
+    isShadowGradientVisible?: boolean;
+  } => {
+    const resolveShadowColors = (
+      shadowTokens: ReturnType<typeof getBoxShadowToken>,
+    ): {
+      highlightColor?: string;
+      bottomColor?: string;
+      borderColor?: string;
+      highlightHeight: number;
+      bottomHeight: number;
+      ringWidth: number;
+    } => {
+      let highlightColor: string | undefined,
+        bottomColor: string | undefined,
+        borderColor: string | undefined;
+      let highlightHeight = 0;
+      let bottomHeight = 0;
+      let ringWidth = 0;
+
+      for (const shadow of shadowTokens) {
+        const resolved = getIn(theme.colors, shadow.color);
+        if (shadow.y > 0 && !highlightColor) {
+          highlightColor = resolved;
+          highlightHeight = shadow.y;
+        } else if (shadow.y < 0 && !bottomColor) {
+          bottomColor = resolved;
+          bottomHeight = Math.abs(shadow.y);
+        } else if (shadow.spread > 0 && !borderColor) {
+          borderColor = resolved;
+          ringWidth = shadow.spread;
+        }
+      }
+
+      return { highlightColor, bottomColor, borderColor, highlightHeight, bottomHeight, ringWidth };
+    };
+
+    const defaultColors = resolveShadowColors(
+      getBoxShadowToken({ variant, color: btnColor, state: 'default' }),
+    );
+    if (!defaultColors.highlightColor && !defaultColors.bottomColor && !defaultColors.borderColor) {
+      return {};
+    }
+
+    const focusColors = resolveShadowColors(
+      getBoxShadowToken({ variant, color: btnColor, state: 'focus' }),
+    );
+
+    return {
+      shadowHighlightColor: defaultColors.highlightColor,
+      shadowHighlightHeight:
+        defaultColors.highlightHeight !== 0 ? defaultColors.highlightHeight : undefined,
+      shadowBottomColor: defaultColors.bottomColor,
+      shadowBottomHeight: defaultColors.bottomHeight !== 0 ? defaultColors.bottomHeight : undefined,
+      shadowBorderColor: defaultColors.borderColor,
+      focusShadowBorderColor: focusColors.borderColor,
+      shadowRingWidth: defaultColors.ringWidth !== 0 ? defaultColors.ringWidth : undefined,
+      isShadowGradientVisible: variant === 'primary',
+    };
+  };
+
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
@@ -345,6 +420,7 @@ const getProps = ({
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
+    ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
   };
 
   if (isDisabled) {
@@ -441,6 +517,23 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     if (!isLoading && prevLoading) announce('Stopped loading');
   }, [isLoading, prevLoading]);
 
+  // Keep ButtonGroup press index in sync so border-collapse / z-index can
+  // reveal this button's highlighted right edge while pressed (RN only).
+  // useLayoutEffect ensures the z-index update happens before paint, keeping
+  // it in sync with Reanimated's UI-thread press state change.
+  React.useLayoutEffect(() => {
+    if (typeof buttonGroupProps.buttonIndex !== 'number') return;
+    const { buttonIndex, setPressedButtonIndex } = buttonGroupProps;
+    if (isPressed) {
+      setPressedButtonIndex?.(buttonIndex);
+    } else {
+      // Only clear if this button still owns the pressed index — otherwise a
+      // multi-touch release on A would wipe B's press state.
+      setPressedButtonIndex?.((prev) => (prev === buttonIndex ? null : prev));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPressed, buttonGroupProps.buttonIndex]);
+
   const {
     defaultBackgroundColor,
     defaultBoxShadow,
@@ -467,6 +560,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     borderRadius,
     motionDuration,
     motionEasing,
+    shadowHighlightColor,
+    shadowHighlightHeight,
+    shadowBottomColor,
+    shadowBottomHeight,
+    shadowBorderColor,
+    focusShadowBorderColor,
+    shadowRingWidth,
+    isShadowGradientVisible,
   } = getProps({
     buttonTypographyTokens: buttonTypography,
     childrenString,
@@ -480,6 +581,62 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRole = isLink ? 'link' : 'button';
+
+  // On web, ButtonGroup flattens the child buttons' border radius via CSS child
+  // selectors and rounds only the outer edges using the group container's
+  // `overflow: hidden` + `borderRadius`. React Native has no CSS cascade, so we
+  // flatten each button's border radius to 0 here and let the group container do
+  // the outer rounding — otherwise the inner (middle) buttons show rounded corners.
+  // An explicit `isInsideButtonGroup` flag set by ButtonGroupContext signals we're
+  // inside a group; this avoids relying on the presence of `variant` in the
+  // default context.
+  const isInsideRNButtonGroup = isReactNative() && Boolean(buttonGroupProps.isInsideButtonGroup);
+
+  // buttonBorderRadiusValue flattens the base borderRadius to 0 for all buttons
+  // in a group. buttonBorderRadii provides per-corner rounding for the outer
+  // edges of the first/last buttons. Both are needed: the base value ensures the
+  // Pressable itself is square, while borderRadii rounds only the outer corners
+  // via per-corner style overrides (and feeds the SVG border overlay).
+  const buttonBorderRadiusValue = isInsideRNButtonGroup ? makeBorderSize(0) : borderRadius;
+
+  // The group container clips with `overflow: hidden` + `borderRadius`. Since the
+  // buttons are square (radius 0), the native border overlay (drawn as a square
+  // ring) gets clipped at the group's rounded outer corners. To match web, round
+  // only the outer corners of the first/last buttons (both the background and the
+  // border overlay) so the ring follows the rounded corner instead of being cut.
+  const groupCornerRadius = isInsideRNButtonGroup
+    ? theme.border.radius[buttonBorderRadius[buttonGroupProps.size ?? size]]
+    : 0;
+  const isFirstInGroup = Boolean(buttonGroupProps.isFirstInButtonGroup);
+  const isLastInGroup = Boolean(buttonGroupProps.isLastInButtonGroup);
+  const buttonBorderRadii = isInsideRNButtonGroup
+    ? {
+        topLeft: isFirstInGroup ? groupCornerRadius : 0,
+        bottomLeft: isFirstInGroup ? groupCornerRadius : 0,
+        topRight: isLastInGroup ? groupCornerRadius : 0,
+        bottomRight: isLastInGroup ? groupCornerRadius : 0,
+      }
+    : undefined;
+
+  // ButtonGroup computes isGroupBorderCollapsed based on its variant and passes it
+  // through context, so BaseButton doesn't need to inspect the variant string.
+  const isGroupBorderCollapsed =
+    isInsideRNButtonGroup && !isFirstInGroup && Boolean(buttonGroupProps.isGroupBorderCollapsed);
+
+  // Match web ButtonGroup: only the first child keeps the radial glow
+  // (`backgroundImage: none` on `:not(:first-child)`). On native the white
+  // top/left "glassy" edge also comes from the inset highlight stroke mapped
+  // from box-shadow — suppress that on non-first buttons too so junctions
+  // don't show a white left edge on Share/Download.
+  const isNonFirstInButtonGroup = isInsideRNButtonGroup && !isFirstInGroup;
+  const showShadowGradient = Boolean(isShadowGradientVisible) && !isNonFirstInButtonGroup;
+  const effectiveShadowHighlightColor = isNonFirstInButtonGroup ? undefined : shadowHighlightColor;
+
+  // Web ButtonGroup sets `flex: 1` on children when isFullWidth. On native,
+  // isFullWidth alone applies `width: 100%`, which overflows in a row — use
+  // flex instead so siblings share space equally.
+  const isInsideFullWidthButtonGroup =
+    isInsideRNButtonGroup && Boolean(buttonGroupProps.isFullWidth ?? isFullWidth);
 
   const handlePointerPressedIn = React.useCallback(() => {
     if (disabled) return;
@@ -567,7 +724,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         onTouchEnd?.(event);
       }}
       type={type}
-      borderRadius={borderRadius}
+      borderRadius={buttonBorderRadiusValue}
+      {...(buttonBorderRadii ? { borderRadii: buttonBorderRadii } : {})}
+      {...(isGroupBorderCollapsed ? { isGroupBorderCollapsed } : {})}
+      {...(isNonFirstInButtonGroup ? { isInsetShadowSidesFlattened: true } : {})}
+      {...(isInsideFullWidthButtonGroup ? { isInsideFullWidthButtonGroup: true } : {})}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       height={height}
@@ -583,8 +744,17 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         onMouseDown?.(event);
       }}
       onMouseUp={handlePointerPressedOut}
-      onMouseOut={handlePointerPressedOut}
-      onKeyUp={handleKeyboardPressedOut}
+      {...(!isReactNative()
+        ? { onMouseOut: handlePointerPressedOut, onKeyUp: handleKeyboardPressedOut }
+        : {})}
+      shadowHighlightColor={effectiveShadowHighlightColor}
+      shadowHighlightHeight={isNonFirstInButtonGroup ? undefined : shadowHighlightHeight}
+      shadowBottomColor={shadowBottomColor}
+      shadowBottomHeight={shadowBottomHeight}
+      shadowBorderColor={shadowBorderColor}
+      focusShadowBorderColor={focusShadowBorderColor}
+      shadowRingWidth={shadowRingWidth}
+      isShadowGradientVisible={showShadowGradient}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}

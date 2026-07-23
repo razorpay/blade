@@ -51,7 +51,7 @@ import type {
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
-import { throwBladeError } from '~utils/logger';
+import { throwBladeError, logger } from '~utils/logger';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
@@ -250,6 +250,13 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     numberOfLines?: 1 | 2 | 3 | 4 | 5;
     /**
+     * When set on React Native textareas, grows the input height with content
+     * up to this maximum (in px). Uses `numberOfLines` as the minimum height.
+     *
+     * **Note (Web):** No effect. Web textareas grow via DOM `scrollHeight` instead.
+     */
+    autoGrowMaxHeight?: number;
+    /**
      * Sets the accessibility label for the input
      */
     accessibilityLabel?: string;
@@ -288,6 +295,16 @@ type BaseInputCommonProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
+    /**
+     * @internal Forces the input's visual interaction state (border color + focus ring)
+     * regardless of the real focus/hover events tracked internally.
+     *
+     * Used by press-to-open triggers that render as a `button` (e.g. DatePicker on native)
+     * and therefore never receive DOM/RN focus, but should still look "active"
+     * (blue border + focus ring) while their popup is open. When omitted, the input falls
+     * back to its own internally tracked interaction state.
+     */
+    activeInteraction?: ActionStates;
     setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
@@ -827,29 +844,39 @@ const FocusRingWrapper = styled(BaseBox)<{
         : theme.border.radius[$borderRadius ?? baseInputBorderRadius[$size]],
     ),
     width: '100%',
-    '&:focus-within':
-      !isTableInputCell && (shouldAddLimitedFocus ? currentInteraction === 'focus' : true)
-        ? {
-            ...getFocusRingStyles({
-              theme,
-            }),
-            transitionDuration: castWebType(
-              makeMotionTime(
-                getIn(
-                  theme.motion.duration,
-                  baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-                    .duration,
-                ),
-              ),
-            ),
-            transitionTimingFunction: castWebType(
-              theme.motion.easing[
-                baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-                  .easing
-              ],
-            ),
-          }
-        : {},
+    // `&:focus-within` is a web-only pseudo-selector. On React Native,
+    // styled-components/native (css-to-react-native) cannot parse a nested rule and
+    // logs "Node of type rule not supported as an inline style" for every rendered
+    // input. focus-within has no effect on native, so we omit the nested rule there.
+    ...(getPlatformType() === 'react-native'
+      ? {}
+      : {
+          '&:focus-within':
+            !isTableInputCell && (shouldAddLimitedFocus ? currentInteraction === 'focus' : true)
+              ? {
+                  ...getFocusRingStyles({
+                    theme,
+                  }),
+                  transitionDuration: castWebType(
+                    makeMotionTime(
+                      getIn(
+                        theme.motion.duration,
+                        baseInputBorderBackgroundMotion[
+                          currentInteraction === 'focus' ? 'enter' : 'exit'
+                        ].duration,
+                      ),
+                    ),
+                  ),
+                  transitionTimingFunction: castWebType(
+                    theme.motion.easing[
+                      baseInputBorderBackgroundMotion[
+                        currentInteraction === 'focus' ? 'enter' : 'exit'
+                      ].easing
+                    ],
+                  ),
+                }
+              : {},
+        }),
   }),
 );
 
@@ -878,6 +905,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDisabled,
     necessityIndicator,
     validationState,
+    validationTextPlacement,
     errorText,
     helpText,
     successText,
@@ -898,6 +926,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingHeaderSlot,
     trailingFooterSlot,
     numberOfLines,
+    autoGrowMaxHeight,
     id,
     componentName,
     accessibilityLabel,
@@ -908,6 +937,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     hasPopup,
     popupId,
     isPopupExpanded,
+    activeInteraction,
     maxTagRows,
     shouldIgnoreBlurAnimation,
     setShouldIgnoreBlurAnimation,
@@ -1001,6 +1031,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
   const { currentInteraction, setCurrentInteraction } = useInteraction();
+  // `activeInteraction` lets a press-to-open trigger (e.g. DatePicker on native, which
+  // renders as a button and never receives real focus) force the "active" visual state
+  // — the blue border + focus ring — while its popup is open. The real
+  // `currentInteraction` is still handed to the underlying input element so its own
+  // event wiring (focus/blur) keeps working; only the border/focus-ring wrappers read
+  // this overridden value.
+  const visualInteraction = activeInteraction ?? currentInteraction;
   const _isRequired = isRequired || necessityIndicator === 'required';
 
   const accessibilityProps = makeAccessible({
@@ -1024,10 +1061,12 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
   });
 
+  const isValidationTextInside = validationTextPlacement === 'inside';
   const willRenderHintText =
     Boolean(helpText) ||
-    (validationState === 'success' && Boolean(successText)) ||
-    (validationState === 'error' && Boolean(errorText));
+    (!isValidationTextInside &&
+      ((validationState === 'success' && Boolean(successText)) ||
+        (validationState === 'error' && Boolean(errorText))));
 
   if (__DEV__) {
     if (
@@ -1039,6 +1078,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           ', ',
         )} but received ${autoCompleteSuggestionType}`,
         moduleName: 'Input',
+      });
+    }
+
+    if (showHintsAsTooltip && isValidationTextInside) {
+      logger({
+        message:
+          'showHintsAsTooltip and validationTextPlacement="inside" should not be used together. validationTextPlacement="inside" will take precedence.',
+        moduleName: 'Input',
+        type: 'warn',
       });
     }
   }
@@ -1088,7 +1136,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           </BaseBox>
         )}
         <FocusRingWrapper
-          currentInteraction={currentInteraction}
+          currentInteraction={visualInteraction}
           isTableInputCell={isTableInputCell}
           className="focus-ring-wrapper"
           shouldAddLimitedFocus={shouldAddLimitedFocus}
@@ -1101,7 +1149,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             isTextArea={isTextArea}
             isDisabled={_isDisabled}
             validationState={validationState}
-            currentInteraction={currentInteraction}
+            currentInteraction={visualInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
             showAllTags={showAllTags}
             setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
@@ -1115,9 +1163,16 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             size={_size}
             borderRadius={borderRadius}
             numberOfLines={numberOfLines}
-            onClick={() => {
+            onClick={(e) => {
               if (!isReactNative) {
                 inputRef.current?.focus();
+                // If click didn't originate from the input itself (e.g., clicked on
+                // leading icon like DatePicker's calendar icon), dispatch a click on
+                // the input to trigger its onClick handlers (e.g., floating-ui toggle)
+                const inputEl = inputRef.current as HTMLElement | null;
+                if (!inputEl?.contains(e.target as Node) && !_isDisabled) {
+                  inputEl?.click();
+                }
               }
             }}
             isTableInputCell={isTableInputCell}
@@ -1195,6 +1250,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 currentInteraction={currentInteraction}
                 setCurrentInteraction={setCurrentInteraction}
                 numberOfLines={numberOfLines}
+                // Native-only: do not forward to web StyledBaseInput
+                {...(isReactNative && autoGrowMaxHeight ? { autoGrowMaxHeight } : null)}
                 isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
                 hasPopup={hasPopup}
                 hasTags={!!(tags && tags.length > 0)}
@@ -1223,12 +1280,15 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               trailingIcon={trailingIcon}
               isDisabled={_isDisabled}
               validationState={validationState}
+              validationTextPlacement={validationTextPlacement}
               trailingButton={trailingButton}
               size={_size}
               errorText={errorText}
               successText={successText}
               showHintsAsTooltip={showHintsAsTooltip}
               trailingDropDown={trailingDropDown}
+              errorTextId={errorTextId}
+              successTextId={successTextId}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
@@ -1246,10 +1306,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
           >
             <FormHint
-              type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+              type={getHintType({
+                validationState: isValidationTextInside ? 'none' : validationState,
+                hasHelpText: Boolean(helpText),
+              })}
               helpText={helpText}
-              errorText={errorText}
-              successText={successText}
+              errorText={isValidationTextInside ? undefined : errorText}
+              successText={isValidationTextInside ? undefined : successText}
               helpTextId={helpTextId}
               errorTextId={errorTextId}
               successTextId={successTextId}

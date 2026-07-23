@@ -67,6 +67,7 @@ exports[`Carousel Snapshots should render 1`] = `
         }
         decelerationRate="fast"
         horizontal={true}
+        nestedScrollEnabled={true}
         onLayout={[Function]}
         onMomentumScrollEnd={[Function]}
         onScrollBeginDrag={[Function]}
@@ -111,6 +112,7 @@ exports[`Carousel Snapshots should render 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -120,7 +122,7 @@ exports[`Carousel Snapshots should render 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -173,6 +175,7 @@ exports[`Carousel Snapshots should render 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -182,7 +185,7 @@ exports[`Carousel Snapshots should render 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -378,14 +381,16 @@ exports[`Carousel Snapshots should render 1`] = `
         }
       >
         <View
+          accessibilityControls="22-carousel-item-0"
           accessibilityLabel="Slide 1"
+          accessibilityRole="tab"
           accessibilityState={
             {
               "busy": undefined,
               "checked": undefined,
               "disabled": undefined,
               "expanded": undefined,
-              "selected": undefined,
+              "selected": true,
             }
           }
           accessibilityValue={
@@ -408,57 +413,82 @@ exports[`Carousel Snapshots should render 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-        >
-          <View
-            accessibilityControls="22-carousel-item-0"
-            accessibilityRole="tab"
-            accessibilityState={
-              {
-                "selected": true,
-              }
+          slideIndex={0}
+          style={
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "minHeight": 12,
+              "minWidth": 12,
             }
-            accessible={true}
-            data-blade-component="carousel-indicator-button"
-            isActive={true}
-            slideIndex={0}
+          }
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={12}
+            bbWidth={12}
+            focusable={false}
+            height={12}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
-                {},
                 {
-                  "backgroundColor": "hsla(204, 9%, 42%, 1)",
-                  "borderColor": "black",
-                  "borderRadius": 9999,
-                  "borderStyle": "solid",
+                  "backgroundColor": "transparent",
                   "borderWidth": 0,
-                  "cursor": "pointer",
-                  "height": 6,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 12,
+                  "width": 12,
                 },
               ]
             }
-            variant="gray"
+            vbHeight={12}
+            vbWidth={12}
+            width={12}
           >
-            <View
-              style={
+            <RNSVGGroup
+              fill={
                 {
-                  "width": 18,
+                  "payload": 4278190080,
+                  "type": 0,
                 }
               }
-            />
-          </View>
+            >
+              <RNSVGCircle
+                cx={6}
+                cy={6}
+                fill={
+                  {
+                    "payload": 4284575093,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                r={3}
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
         <View
+          accessibilityControls="22-carousel-item-1"
           accessibilityLabel="Slide 2"
+          accessibilityRole="tab"
           accessibilityState={
             {
               "busy": undefined,
               "checked": undefined,
               "disabled": undefined,
               "expanded": undefined,
-              "selected": undefined,
+              "selected": false,
             }
           }
           accessibilityValue={
@@ -481,47 +511,70 @@ exports[`Carousel Snapshots should render 1`] = `
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-        >
-          <View
-            accessibilityControls="22-carousel-item-1"
-            accessibilityRole="tab"
-            accessibilityState={
-              {
-                "selected": false,
-              }
+          slideIndex={1}
+          style={
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "minHeight": 12,
+              "minWidth": 12,
             }
-            accessible={true}
-            data-blade-component="carousel-indicator-button"
-            isActive={false}
-            slideIndex={1}
+          }
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={12}
+            bbWidth={12}
+            focusable={false}
+            height={12}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
-                {},
                 {
-                  "backgroundColor": "hsla(206, 10%, 29%, 0.18)",
-                  "borderColor": "black",
-                  "borderRadius": 9999,
-                  "borderStyle": "solid",
+                  "backgroundColor": "transparent",
                   "borderWidth": 0,
-                  "cursor": "pointer",
-                  "height": 6,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 12,
+                  "width": 12,
                 },
               ]
             }
-            variant="gray"
+            vbHeight={12}
+            vbWidth={12}
+            width={12}
           >
-            <View
-              style={
+            <RNSVGGroup
+              fill={
                 {
-                  "width": 6,
+                  "payload": 4278190080,
+                  "type": 0,
                 }
               }
-            />
-          </View>
+            >
+              <RNSVGCircle
+                cx={6}
+                cy={6}
+                fill={
+                  {
+                    "payload": 776162129,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                r={3}
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
       <View
@@ -732,6 +785,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         }
         decelerationRate="fast"
         horizontal={true}
+        nestedScrollEnabled={true}
         onLayout={[Function]}
         onMomentumScrollEnd={[Function]}
         onScrollBeginDrag={[Function]}
@@ -776,6 +830,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -785,7 +840,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -838,6 +893,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -847,7 +903,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -900,6 +956,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -909,7 +966,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -1105,14 +1162,16 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         }
       >
         <View
+          accessibilityControls="23-carousel-item-0"
           accessibilityLabel="Slide 1"
+          accessibilityRole="tab"
           accessibilityState={
             {
               "busy": undefined,
               "checked": undefined,
               "disabled": undefined,
               "expanded": undefined,
-              "selected": undefined,
+              "selected": true,
             }
           }
           accessibilityValue={
@@ -1135,57 +1194,82 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-        >
-          <View
-            accessibilityControls="23-carousel-item-0"
-            accessibilityRole="tab"
-            accessibilityState={
-              {
-                "selected": true,
-              }
+          slideIndex={0}
+          style={
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "minHeight": 12,
+              "minWidth": 12,
             }
-            accessible={true}
-            data-blade-component="carousel-indicator-button"
-            isActive={true}
-            slideIndex={0}
+          }
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={12}
+            bbWidth={12}
+            focusable={false}
+            height={12}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
-                {},
                 {
-                  "backgroundColor": "hsla(204, 9%, 42%, 1)",
-                  "borderColor": "black",
-                  "borderRadius": 9999,
-                  "borderStyle": "solid",
+                  "backgroundColor": "transparent",
                   "borderWidth": 0,
-                  "cursor": "pointer",
-                  "height": 6,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 12,
+                  "width": 12,
                 },
               ]
             }
-            variant="gray"
+            vbHeight={12}
+            vbWidth={12}
+            width={12}
           >
-            <View
-              style={
+            <RNSVGGroup
+              fill={
                 {
-                  "width": 18,
+                  "payload": 4278190080,
+                  "type": 0,
                 }
               }
-            />
-          </View>
+            >
+              <RNSVGCircle
+                cx={6}
+                cy={6}
+                fill={
+                  {
+                    "payload": 4284575093,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                r={3}
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
         <View
+          accessibilityControls="23-carousel-item-1"
           accessibilityLabel="Slide 2"
+          accessibilityRole="tab"
           accessibilityState={
             {
               "busy": undefined,
               "checked": undefined,
               "disabled": undefined,
               "expanded": undefined,
-              "selected": undefined,
+              "selected": false,
             }
           }
           accessibilityValue={
@@ -1208,57 +1292,82 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-        >
-          <View
-            accessibilityControls="23-carousel-item-1"
-            accessibilityRole="tab"
-            accessibilityState={
-              {
-                "selected": false,
-              }
+          slideIndex={1}
+          style={
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "minHeight": 12,
+              "minWidth": 12,
             }
-            accessible={true}
-            data-blade-component="carousel-indicator-button"
-            isActive={false}
-            slideIndex={1}
+          }
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={12}
+            bbWidth={12}
+            focusable={false}
+            height={12}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
-                {},
                 {
-                  "backgroundColor": "hsla(206, 10%, 29%, 0.18)",
-                  "borderColor": "black",
-                  "borderRadius": 9999,
-                  "borderStyle": "solid",
+                  "backgroundColor": "transparent",
                   "borderWidth": 0,
-                  "cursor": "pointer",
-                  "height": 6,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 12,
+                  "width": 12,
                 },
               ]
             }
-            variant="gray"
+            vbHeight={12}
+            vbWidth={12}
+            width={12}
           >
-            <View
-              style={
+            <RNSVGGroup
+              fill={
                 {
-                  "width": 6,
+                  "payload": 4278190080,
+                  "type": 0,
                 }
               }
-            />
-          </View>
+            >
+              <RNSVGCircle
+                cx={6}
+                cy={6}
+                fill={
+                  {
+                    "payload": 776162129,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                r={3}
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
         <View
+          accessibilityControls="23-carousel-item-2"
           accessibilityLabel="Slide 3"
+          accessibilityRole="tab"
           accessibilityState={
             {
               "busy": undefined,
               "checked": undefined,
               "disabled": undefined,
               "expanded": undefined,
-              "selected": undefined,
+              "selected": false,
             }
           }
           accessibilityValue={
@@ -1281,47 +1390,70 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-        >
-          <View
-            accessibilityControls="23-carousel-item-2"
-            accessibilityRole="tab"
-            accessibilityState={
-              {
-                "selected": false,
-              }
+          slideIndex={2}
+          style={
+            {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "minHeight": 12,
+              "minWidth": 12,
             }
-            accessible={true}
-            data-blade-component="carousel-indicator-button"
-            isActive={false}
-            slideIndex={2}
+          }
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={12}
+            bbWidth={12}
+            focusable={false}
+            height={12}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
-                {},
                 {
-                  "backgroundColor": "hsla(206, 10%, 29%, 0.18)",
-                  "borderColor": "black",
-                  "borderRadius": 9999,
-                  "borderStyle": "solid",
+                  "backgroundColor": "transparent",
                   "borderWidth": 0,
-                  "cursor": "pointer",
-                  "height": 6,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
+                },
+                {
+                  "flex": 0,
+                  "height": 12,
+                  "width": 12,
                 },
               ]
             }
-            variant="gray"
+            vbHeight={12}
+            vbWidth={12}
+            width={12}
           >
-            <View
-              style={
+            <RNSVGGroup
+              fill={
                 {
-                  "width": 6,
+                  "payload": 4278190080,
+                  "type": 0,
                 }
               }
-            />
-          </View>
+            >
+              <RNSVGCircle
+                cx={6}
+                cy={6}
+                fill={
+                  {
+                    "payload": 776162129,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                r={3}
+                stroke={null}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
       <View

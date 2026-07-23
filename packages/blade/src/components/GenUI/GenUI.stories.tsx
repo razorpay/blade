@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import { jsonrepair } from 'jsonrepair';
 import { GenUIProvider } from './GenUIProvider';
 import { GenUISchemaRenderer } from './GenUISchemaRenderer';
@@ -522,6 +522,85 @@ const SimpleGenUITemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element
 };
 
 export const SimpleGenUI = SimpleGenUITemplate.bind({});
+
+type TextStringStoryArgs = {
+  content: string;
+};
+
+const TextStringTemplate: StoryFn<TextStringStoryArgs> = ({ content }): JSX.Element => {
+  return (
+    <GenUIProvider>
+      <GenUISchemaRenderer
+        isAnimating={false}
+        components={[
+          {
+            component: 'TEXT',
+            content,
+          },
+        ]}
+      />
+    </GenUIProvider>
+  );
+};
+
+export const TextString = TextStringTemplate.bind({});
+TextString.args = {
+  content: [
+    '# Heading 1',
+    '## Heading 2',
+    '### Heading 3',
+    '#### Heading 4',
+    '##### Heading 5',
+    '###### Heading 6',
+    '',
+    'This is a regular paragraph with **bold text**, *italic text*, ***bold and italic***, and `inline code`.',
+    '',
+    'Here is a [hyperlink](https://razorpay.com) inside a sentence.',
+    '',
+    '### Unordered List',
+    '',
+    '- First item',
+    '- Second item with **bold**',
+    '- Third item with *italic*',
+    '  - Nested item A',
+    '  - Nested item B',
+    '- Fourth item',
+    '',
+    '### Ordered List',
+    '',
+    '1. Step one',
+    '2. Step two with `code`',
+    '3. Step three',
+    '   1. Sub-step A',
+    '   2. Sub-step B',
+    '4. Step four',
+    '',
+    '### Blockquote',
+    '',
+    '> This is a blockquote with **bold** and *italic* inside it.',
+    '> It can span multiple lines.',
+    '',
+    '### Code Block',
+    '',
+    '```js',
+    'const greeting = "Hello, Blade!";',
+    'console.log(greeting);',
+    '```',
+    '',
+    '### Mixed Emphasis',
+    '',
+    'You can combine *italic and **bold inside italic*** or **bold with *italic inside bold***.',
+    '',
+    '---',
+    '',
+    '*Footer note in italics.*',
+  ].join('\n'),
+};
+TextString.argTypes = {
+  content: {
+    control: 'text',
+  },
+};
 
 const defaultTableRowActions = [
   {

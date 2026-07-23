@@ -90,12 +90,55 @@
           defaultValue: { summary: 'left' },
         },
       },
+      loadingType: {
+        control: 'select',
+        options: ['indefinite', 'definite'],
+        description:
+          'Type of loading indicator. `indefinite` shows a 3-dot loader (driven by `isLoading`); `definite` shows a left-to-right progress overlay over `loadingTimer` ms',
+        table: {
+          defaultValue: { summary: 'indefinite' },
+        },
+      },
+      loadingTimer: {
+        control: 'number',
+        description:
+          'Duration (ms) over which the `definite` progress overlay fills from 0% to 100%. Required when `loadingType` is `definite`',
+        table: {
+          defaultValue: { summary: 'undefined' },
+        },
+      },
+      avatars: {
+        control: 'object',
+        description:
+          'Avatars rendered after the button text as an avatar group. Only shown for `large` buttons',
+        table: {
+          defaultValue: { summary: 'undefined' },
+        },
+      },
     },
   });
+
+  // Use seeded picsum URLs so each avatar resolves to a stable image across loads,
+  // keeping story snapshots deterministic.
+  const sampleAvatars = [
+    { name: 'Nitin Kumar', src: 'https://avatars.githubusercontent.com/u/46647141?v=4' },
+    { name: 'Kamlesh Chandnani', src: 'https://picsum.photos/seed/kamlesh/200' },
+    { name: 'Rama Krushna Behera', src: 'https://picsum.photos/seed/rama/200' },
+  ];
 </script>
 
-<script>
-  // Button is already imported in the module context
+<script lang="ts">
+  let isDefiniteLoadingDemoActive = $state(false);
+
+  function startDefiniteLoadingDemo(): void {
+    if (isDefiniteLoadingDemoActive) return;
+    isDefiniteLoadingDemoActive = true;
+  }
+
+  function handleDefiniteLoadingComplete(): void {
+    console.log('Loading complete!');
+    isDefiniteLoadingDemoActive = false;
+  }
 </script>
 
 <!-- Playground story - auto-renders Button with args -->
@@ -108,7 +151,63 @@
 
 <Story name="Tertiary" args={{ children: 'Tertiary Button', variant: 'tertiary' }} />
 
-<Story name="Loading" args={{ children: 'Loading...', isLoading: true }} />
+<!-- Indefinite loading: 3-dot loader replaces all content -->
+<Story
+  name="Indefinite Loading"
+  args={{ children: 'Loading...', isLoading: true, loadingType: 'indefinite' }}
+/>
+
+<Story name="Indefinite Loading Sizes" asChild>
+  <div class="display-flex gap-spacing-4 items-center">
+    <Button size="xsmall" isLoading loadingType="indefinite">Pay Now</Button>
+    <Button size="small" isLoading loadingType="indefinite">Pay Now</Button>
+    <Button size="medium" isLoading loadingType="indefinite">Pay Now</Button>
+    <Button size="large" isLoading loadingType="indefinite">Pay Now</Button>
+  </div>
+</Story>
+
+<Story name="Indefinite Loading Variants" asChild>
+  <div class="display-flex gap-spacing-4 items-center">
+    <Button variant="primary" isLoading loadingType="indefinite">Primary</Button>
+    <Button variant="secondary" isLoading loadingType="indefinite">Secondary</Button>
+    <Button variant="tertiary" isLoading loadingType="indefinite">Tertiary</Button>
+  </div>
+</Story>
+
+<!-- Definite loading: left-to-right progress overlay, content stays visible -->
+<Story
+  name="Definite Loading"
+  args={{
+    children: 'Processing',
+    loadingType: 'definite',
+    loadingTimer: 3000,
+    size: 'large',
+  }}
+/>
+
+<Story name="Definite Loading Variants" asChild>
+  <div class="display-flex gap-spacing-4 items-center">
+    <Button variant="primary" loadingType="definite" loadingTimer={3000}>Primary</Button>
+    <Button variant="primary" color="positive" loadingType="definite" loadingTimer={3000}>
+      Positive
+    </Button>
+    <Button variant="primary" color="negative" loadingType="definite" loadingTimer={3000}>
+      Negative
+    </Button>
+  </div>
+</Story>
+
+<Story name="Definite Loading With Complete Callback" asChild>
+  <Button
+    size="large"
+    loadingType={isDefiniteLoadingDemoActive ? 'definite' : 'indefinite'}
+    loadingTimer={isDefiniteLoadingDemoActive ? 2500 : undefined}
+    onClick={startDefiniteLoadingDemo}
+    onLoadingComplete={handleDefiniteLoadingComplete}
+  >
+    {isDefiniteLoadingDemoActive ? 'Processing' : 'Complete in 2.5s'}
+  </Button>
+</Story>
 
 <Story name="Disabled" args={{ children: 'Disabled Button', isDisabled: true }} />
 
@@ -162,6 +261,22 @@
       <Button icon={CloseIcon} size="large" accessibilityLabel="Close" />
       <Text size="xsmall" color="surface.text.gray.muted">large</Text>
     </div>
+  </div>
+</Story>
+
+<!-- Avatar group renders after the text, only on large buttons -->
+<Story name="With Avatar Group" args={{ children: 'Shared with', size: 'large', avatars: sampleAvatars }} />
+
+<Story name="Avatar Group With Icon" asChild>
+  <Button size="large" icon={SearchIcon} iconPosition="left" avatars={sampleAvatars}>
+    Reviewers
+  </Button>
+</Story>
+
+<Story name="Avatar Group Ignored Below Large" asChild>
+  <div class="display-flex flex-col gap-spacing-4 items-start">
+    <Button size="medium" avatars={sampleAvatars}>Medium (avatars hidden)</Button>
+    <Button size="large" avatars={sampleAvatars}>Large (avatars shown)</Button>
   </div>
 </Story>
 

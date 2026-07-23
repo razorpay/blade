@@ -1,10 +1,10 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
-import StoryRouter from 'storybook-react-router';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { InternalCardExample } from '../Card/InternalCardExample';
 import { Stagger } from './';
 import type { StaggerProps } from './';
+import StoryRouter from '~utils/storybook/StoryRouter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -56,6 +56,9 @@ export default {
 } as Meta<StaggerProps>;
 
 const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
+  // Drive visibility from local state only. Storybook controls often inject
+  // `args.isVisible === true` (component default), which would lock the toggle
+  // via `args.isVisible ?? isVisible` and make the button appear to do nothing.
   const [isVisible, setIsVisible] = React.useState(true);
   return (
     <Box
@@ -65,15 +68,16 @@ const StaggerTemplate: StoryFn<typeof Stagger> = (args) => {
       borderWidth="thin"
       borderColor="surface.border.gray.muted"
     >
-      <Button marginBottom="spacing.4" onClick={() => setIsVisible(!isVisible)}>
+      <Button marginBottom="spacing.4" onClick={() => setIsVisible((prev) => !prev)}>
         Toggle Stagger
       </Button>
       <Stagger
         {...args}
         display="flex"
         flexDirection="row"
+        flexWrap="wrap"
         gap="spacing.4"
-        isVisible={args.isVisible ?? isVisible}
+        isVisible={isVisible}
       >
         {args.children}
       </Stagger>
@@ -134,7 +138,7 @@ SlideStagger.args = {
 
 export const OnMount = (): React.ReactElement => {
   return (
-    <Stagger display="flex" flexDirection="row" gap="spacing.4">
+    <Stagger display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.4">
       <Move>
         <InternalCardExample />
       </Move>
@@ -206,22 +210,23 @@ const OnboardingRoute = ({
         />
       </CardHeader>
       <CardBody>
-        <Stagger type="in">
-          <ChipGroup label="Account Information" selectionType="multiple">
+        {/* Moves must be direct Stagger children so native cascade isn't collapsed to lockstep. */}
+        <ChipGroup label="Account Information" selectionType="multiple">
+          <Stagger type="in" display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.3">
             {[
               'Business Type: Freelance',
               'Account Status: Activated',
               'Test Mode: Disabled',
               'Primary Product: Banking',
-            ].map((chipLabel, index) => {
+            ].map((chipLabel) => {
               return (
-                <Move key={index}>
+                <Move key={chipLabel}>
                   <Chip value={chipLabel.toLowerCase().replace(/ /g, '-')}>{chipLabel}</Chip>
                 </Move>
               );
             })}
-          </ChipGroup>
-        </Stagger>
+          </Stagger>
+        </ChipGroup>
       </CardBody>
     </Card>
   );

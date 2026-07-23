@@ -1,7 +1,7 @@
 import React from 'react';
 import type { DOMAttributes } from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import { Tag } from './Tag';
 import type { TagProps } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -103,6 +103,28 @@ Disabled.args = {
   isDisabled: true,
 } as TagProps & { icon: string };
 
+const TextTruncationTemplate: StoryFn<typeof Tag> = ({ children, ...args }) => {
+  const [isTagVisible, setIsTagVisible] = React.useState(true);
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.4" maxWidth="spacing.40">
+      <Box>
+        {isTagVisible ? (
+          <Tag {...args} onDismiss={() => setIsTagVisible(false)}>
+            {children}
+          </Tag>
+        ) : null}
+      </Box>
+    </Box>
+  );
+};
+
+export const TagTextTruncation = TextTruncationTemplate.bind({});
+TagTextTruncation.args = {
+  children: 'This is a very long tag label that will get truncated',
+  icon: 'FileTextIcon',
+} as TagProps & { icon: string };
+TagTextTruncation.storyName = 'Text Truncation Tooltip';
+
 const CrossPlatformForm = ({
   children,
   onSubmit,
@@ -135,7 +157,7 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
 
   return (
     <Box>
-      <Box paddingY="spacing.4">
+      <Box paddingY="spacing.4" display="flex" flexDirection="row" flexWrap="wrap">
         {tags.map((tagName) => (
           <Tag
             key={tagName}

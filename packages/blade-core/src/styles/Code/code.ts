@@ -48,14 +48,14 @@ export type LineHeight =
  */
 export function getCodeFontSizeAndLineHeight(
   size: CodeSize = 'small',
-): { fontSize: FontSize; lineHeight: LineHeight } {
+): { fontSize: FontSize; lineHeight: LineHeight; letterSpacing: 100 } {
   switch (size) {
     case 'medium':
-      return { fontSize: 75, lineHeight: 75 };
+      return { fontSize: 75, lineHeight: 75, letterSpacing: 100 };
     case 'small':
-      return { fontSize: 25, lineHeight: 25 };
+      return { fontSize: 25, lineHeight: 25, letterSpacing: 100 };
     default:
-      return { fontSize: 25, lineHeight: 25 };
+      return { fontSize: 25, lineHeight: 25, letterSpacing: 100 };
   }
 }
 

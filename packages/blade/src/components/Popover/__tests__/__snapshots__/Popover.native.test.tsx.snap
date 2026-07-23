@@ -28,7 +28,7 @@ exports[`<Popover /> should render 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -54,9 +54,7 @@ exports[`<Popover /> should render 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -100,6 +98,290 @@ exports[`<Popover /> should render 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade-r0"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade-r0"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask-r0"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade-r0",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask-r0"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade-r0",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow-r0"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask-r0"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask-r0"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask-r0"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow-r0",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -175,57 +457,50 @@ exports[`<Popover /> should render 1`] = `
       </View>
     </View>
   </View>
-  <Modal
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    testID="popover-modal"
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="popover-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "bottom": 0,
-          "left": 0,
-          "opacity": 1,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-      testID="popover-modal-backdrop"
-    />
-    <View
-      style={
-        {
-          "opacity": 0,
           "transform": [
             {
               "translateY": 4,
@@ -238,25 +513,11 @@ exports[`<Popover /> should render 1`] = `
         collapse={false}
         colorScheme="light"
         data-blade-component="base-box"
-        elevation={20}
+        elevation="lowRaised"
         isMobile={true}
         style={
           [
             {},
-            {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
-              "borderColor": "black",
-              "borderRadius": 16,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "boxSizing": "border-box",
-              "left": 0,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 1100,
-            },
             {
               "elevation": 8,
               "shadowColor": "hsla(200, 10%, 18%, 1)",
@@ -267,13 +528,32 @@ exports[`<Popover /> should render 1`] = `
               "shadowOpacity": 0.06,
               "shadowRadius": 2,
             },
+            [
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                "borderColor": "black",
+                "borderRadius": 16,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "boxSizing": "border-box",
+                "left": -200,
+                "maxWidth": 288,
+                "position": "absolute",
+                "top": -210,
+                "width": "100%",
+                "zIndex": 1100,
+              },
+              {
+                "opacity": 0,
+              },
+            ],
           ]
         }
         styles={
           {
-            "left": 0,
+            "left": -200,
             "position": "absolute",
-            "top": 0,
+            "top": -210,
             "zIndex": 1100,
           }
         }
@@ -451,6 +731,7 @@ exports[`<Popover /> should render 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -460,7 +741,7 @@ exports[`<Popover /> should render 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -547,11 +828,27 @@ exports[`<Popover /> should render 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 15659249,
+                    "payload": 16250871,
                     "type": 0,
                   }
                 }
                 strokeWidth="2px"
+              />
+              <RNSVGPath
+                d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
               />
               <RNSVGPath
                 d="M0,0 H22 L11,12 Q11,12 11,12 Z"
@@ -574,7 +871,7 @@ exports[`<Popover /> should render 1`] = `
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;
 
@@ -606,7 +903,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -632,9 +929,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -678,6 +973,290 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade-r9"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade-r9"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask-r9"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade-r9",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask-r9"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade-r9",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow-r9"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask-r9"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask-r9"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask-r9"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow-r9",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -753,57 +1332,50 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
       </View>
     </View>
   </View>
-  <Modal
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    testID="popover-modal"
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="popover-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "bottom": 0,
-          "left": 0,
-          "opacity": 1,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-      testID="popover-modal-backdrop"
-    />
-    <View
-      style={
-        {
-          "opacity": 0,
           "transform": [
             {
               "translateY": 4,
@@ -816,25 +1388,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
         collapse={false}
         colorScheme="light"
         data-blade-component="base-box"
-        elevation={20}
+        elevation="lowRaised"
         isMobile={true}
         style={
           [
             {},
-            {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
-              "borderColor": "black",
-              "borderRadius": 16,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "boxSizing": "border-box",
-              "left": 0,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 9999,
-            },
             {
               "elevation": 8,
               "shadowColor": "hsla(200, 10%, 18%, 1)",
@@ -845,13 +1403,32 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
               "shadowOpacity": 0.06,
               "shadowRadius": 2,
             },
+            [
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                "borderColor": "black",
+                "borderRadius": 16,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "boxSizing": "border-box",
+                "left": -200,
+                "maxWidth": 288,
+                "position": "absolute",
+                "top": -210,
+                "width": "100%",
+                "zIndex": 9999,
+              },
+              {
+                "opacity": 0,
+              },
+            ],
           ]
         }
         styles={
           {
-            "left": 0,
+            "left": -200,
             "position": "absolute",
-            "top": 0,
+            "top": -210,
             "zIndex": 9999,
           }
         }
@@ -1029,6 +1606,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -1038,7 +1616,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -1125,11 +1703,27 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 15659249,
+                    "payload": 16250871,
                     "type": 0,
                   }
                 }
                 strokeWidth="2px"
+              />
+              <RNSVGPath
+                d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
               />
               <RNSVGPath
                 d="M0,0 H22 L11,12 Q11,12 11,12 Z"
@@ -1152,7 +1746,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;
 
@@ -1184,7 +1778,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
       }
     }
     accessible={true}
-    borderRadius="8px"
+    borderRadius={8}
     buttonPaddingBottom="0px"
     buttonPaddingLeft="12px"
     buttonPaddingRight="12px"
@@ -1210,9 +1804,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -1256,6 +1848,290 @@ exports[`<Popover /> should render with title,footer 1`] = `
     }
     type="button"
   >
+    <View
+      pointerEvents="none"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        pointerEvents="none"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+        >
+          <RNSVGDefs>
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="topFade-r1"
+              x1="0"
+              x2="0"
+              y1="0"
+              y2="1"
+            />
+            <RNSVGLinearGradient
+              gradient={
+                [
+                  0,
+                  -1,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={0}
+              name="bottomFade-r1"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0"
+            />
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="topMask-r1"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "topFade-r1",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="0"
+              />
+            </RNSVGMask>
+            <RNSVGMask
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              height="100%"
+              maskContentUnits={1}
+              maskUnits={0}
+              name="bottomMask-r1"
+              width="100%"
+              x="0%"
+              y="0%"
+            >
+              <RNSVGRect
+                fill={
+                  {
+                    "brushRef": "bottomFade-r1",
+                    "type": 1,
+                  }
+                }
+                height="20%"
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+                width="100%"
+                x="0"
+                y="80%"
+              />
+            </RNSVGMask>
+            <RNSVGRadialGradient
+              cx={0}
+              cy={0}
+              fx={0}
+              fy={0}
+              gradient={
+                [
+                  0,
+                  788529151,
+                  1,
+                  16777215,
+                ]
+              }
+              gradientTransform={null}
+              gradientUnits={1}
+              name="btnGlow-r1"
+              rx={64}
+              ry={64}
+            />
+          </RNSVGDefs>
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask-r1"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={7}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="topMask-r1"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 788529151,
+                "type": 0,
+              }
+            }
+            strokeWidth={4}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279461105,
+                "type": 0,
+              }
+            }
+            strokeWidth={1}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={null}
+            height="100%"
+            mask="bottomMask-r1"
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+              ]
+            }
+            rx={8}
+            ry={8}
+            stroke={
+              {
+                "payload": 4279129293,
+                "type": 0,
+              }
+            }
+            strokeWidth={5}
+            width="100%"
+            x={0}
+            y={0}
+          />
+          <RNSVGRect
+            fill={
+              {
+                "brushRef": "btnGlow-r1",
+                "type": 1,
+              }
+            }
+            height="100%"
+            propList={
+              [
+                "fill",
+              ]
+            }
+            rx={8}
+            ry={8}
+            width="100%"
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <View
       style={
         {
@@ -1331,57 +2207,50 @@ exports[`<Popover /> should render with title,footer 1`] = `
       </View>
     </View>
   </View>
-  <Modal
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
     collapsable={false}
-    hardwareAccelerated={false}
-    testID="popover-modal"
-    transparent={true}
-    visible={true}
+    focusable={true}
+    onClick={[Function]}
+    onLayout={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="popover-modal-backdrop"
   >
     <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         {
-          "bottom": 0,
-          "left": 0,
-          "opacity": 1,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-      testID="popover-modal-backdrop"
-    />
-    <View
-      style={
-        {
-          "opacity": 0,
           "transform": [
             {
               "translateY": 4,
@@ -1394,25 +2263,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
         collapse={false}
         colorScheme="light"
         data-blade-component="base-box"
-        elevation={20}
+        elevation="lowRaised"
         isMobile={true}
         style={
           [
             {},
-            {
-              "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
-              "borderColor": "black",
-              "borderRadius": 16,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "boxSizing": "border-box",
-              "left": 0,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 1100,
-            },
             {
               "elevation": 8,
               "shadowColor": "hsla(200, 10%, 18%, 1)",
@@ -1423,13 +2278,32 @@ exports[`<Popover /> should render with title,footer 1`] = `
               "shadowOpacity": 0.06,
               "shadowRadius": 2,
             },
+            [
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                "borderColor": "black",
+                "borderRadius": 16,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "boxSizing": "border-box",
+                "left": -200,
+                "maxWidth": 288,
+                "position": "absolute",
+                "top": -210,
+                "width": "100%",
+                "zIndex": 1100,
+              },
+              {
+                "opacity": 0,
+              },
+            ],
           ]
         }
         styles={
           {
-            "left": 0,
+            "left": -200,
             "position": "absolute",
-            "top": 0,
+            "top": -210,
             "zIndex": 1100,
           }
         }
@@ -1593,6 +2467,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                   fontSize={200}
                   fontStyle="normal"
                   fontWeight="semibold"
+                  letterSpacing={25}
                   lineHeight={200}
                   style={
                     [
@@ -1602,7 +2477,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                         "fontSize": 16,
                         "fontStyle": "normal",
                         "fontWeight": "600",
-                        "letterSpacing": 0,
+                        "letterSpacing": -0.528,
                         "lineHeight": 24,
                         "marginBottom": 0,
                         "marginLeft": 0,
@@ -1747,6 +2622,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 fontSize={100}
                 fontStyle="normal"
                 fontWeight="regular"
+                letterSpacing={50}
                 lineHeight={100}
                 style={
                   [
@@ -1756,7 +2632,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "letterSpacing": 0,
+                      "letterSpacing": -0.18200000000000002,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -1779,9 +2655,12 @@ exports[`<Popover /> should render with title,footer 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "width": "100%",
+                },
               ]
             }
+            width="100%"
           >
             <Text
               accessible={true}
@@ -1791,6 +2670,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
               fontSize={100}
               fontStyle="normal"
               fontWeight="regular"
+              letterSpacing={50}
               lineHeight={100}
               style={
                 [
@@ -1800,7 +2680,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "letterSpacing": 0,
+                    "letterSpacing": -0.18200000000000002,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1886,11 +2766,27 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 15659249,
+                    "payload": 16250871,
                     "type": 0,
                   }
                 }
                 strokeWidth="2px"
+              />
+              <RNSVGPath
+                d="M0,0 H22 L11,12 Q11,12 11,12 Z"
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                  ]
+                }
+                stroke={null}
               />
               <RNSVGPath
                 d="M0,0 H22 L11,12 Q11,12 11,12 Z"
@@ -1913,6 +2809,6 @@ exports[`<Popover /> should render with title,footer 1`] = `
         </View>
       </View>
     </View>
-  </Modal>
+  </View>
 </View>
 `;

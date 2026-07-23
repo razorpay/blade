@@ -1,5 +1,5 @@
-import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react-vite';
+import { Title } from '@storybook/addon-docs/blocks';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
 import { InfoIcon } from '~components/Icons';
@@ -210,3 +210,23 @@ const AllVariantsTemplate: StoryFn<typeof BadgeComponent> = () => {
 
 export const AllVariants = AllVariantsTemplate.bind({});
 AllVariants.storyName = 'All Variants';
+
+const TextTruncationTemplate: StoryFn<typeof BadgeComponent> = ({ children, ...args }) => {
+  return (
+    <BaseBox maxWidth="spacing.40" display="flex" flexDirection="column" gap="spacing.4">
+      <BladeText size="small" color="surface.text.gray.muted">
+        Hover over the truncated badge text to see the tooltip with full text. The container below
+        is constrained to a max width.
+      </BladeText>
+      <BadgeComponent {...args}>{children}</BadgeComponent>
+    </BaseBox>
+  );
+};
+
+export const BadgeTextTruncation = TextTruncationTemplate.bind({});
+BadgeTextTruncation.args = {
+  children: 'This is a very long badge label that will get truncated',
+  color: 'neutral',
+  size: 'medium',
+};
+BadgeTextTruncation.storyName = 'Text Truncation Tooltip';

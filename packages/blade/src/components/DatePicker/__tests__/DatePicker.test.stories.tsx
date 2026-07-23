@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { StoryFn } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
-import { expect, jest } from '@storybook/jest';
-import type { Mock } from 'jest-mock';
+import type { StoryFn } from '@storybook/react-vite';
+import { within, userEvent, expect, fn } from 'storybook/test';
+import type { Mock } from '@vitest/spy';
 import React from 'react';
 import dayjs from 'dayjs';
 import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
@@ -13,10 +12,10 @@ import { Button } from '~components/Button';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
-let onOpenChange: Mock<unknown, unknown[]> | null = null;
+let onOpenChange: Mock | null = null;
 
 export const DatePickerShouldShow: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
@@ -38,7 +37,7 @@ DatePickerShouldShow.play = async () => {
 };
 
 export const DatePickerDisabled: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent isDisabled accessibilityLabel="Select Date" onOpenChange={onOpenChange} />
   );
@@ -53,7 +52,7 @@ DatePickerDisabled.play = async () => {
 };
 
 export const DatePickerMinMaxDate: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       minDate={dayjs().subtract(5, 'day').toDate()}
@@ -73,7 +72,7 @@ DatePickerMinMaxDate.play = async () => {
   // expect date to be disabled
   // if date is greater then 15 days then we should check add 6 days from it
   // if date is less then 15 days then we should check subtract 6 days from  it
-  const isGreaterThen15Days = dayjs().diff(dayjs(), 'day') > 15;
+  const isGreaterThen15Days = dayjs().date() > 15;
   const disabledDate = getByRole('button', {
     name: isGreaterThen15Days
       ? dayjs().subtract(6, 'day').format('D MMMM YYYY')
@@ -98,7 +97,7 @@ DatePickerMinMaxDate.play = async () => {
 export const DatePickerSingleSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
@@ -127,7 +126,7 @@ DatePickerSingleSelect.play = async () => {
 export const DatePickerSingleSelectCancel: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return <DatePickerComponent accessibilityLabel="Select Date" onOpenChange={onOpenChange} />;
 };
 
@@ -279,7 +278,7 @@ DatePickerSingleChangePicker.play = async () => {
 export const DatePickerRangeSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="range"
@@ -370,7 +369,7 @@ DatePickerRangeSelectControlled.play = async () => {
 };
 
 export const DatePickerPresets: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="range"
@@ -431,7 +430,7 @@ DatePickerPresets.play = async () => {
 };
 
 const LocaleExample = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   const { setI18nState } = useI18nContext();
 
   return (
@@ -536,8 +535,11 @@ export const DatePickerRangeSelectAutoFocus: StoryFn<
 DatePickerRangeSelectAutoFocus.play = async () => {
   const { getByRole, getByLabelText } = within(document.body);
   const startInput = getByRole('combobox', { name: /Select a date range/i });
-  const selectedEndDate = dayjs().subtract(1, 'M').format('D MMMM YYYY');
-  const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('D MMMM YYYY');
+  // Use mid-month dates to avoid month-boundary ambiguity where the last day of a month
+  // can appear twice: once as a real day and once as an "outside" day in the next month's calendar
+  const prevMonth = dayjs().subtract(1, 'M');
+  const selectedStartDate = prevMonth.date(15).format('D MMMM YYYY');
+  const selectedEndDate = prevMonth.date(20).format('D MMMM YYYY');
   await userEvent.click(startInput);
   await sleep(400);
   const previousButton = getByRole('button', { name: /previous/i });
@@ -559,7 +561,7 @@ DatePickerRangeSelectAutoFocus.play = async () => {
 export const DatePickerSingleTypingAutoSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="single"
@@ -597,7 +599,7 @@ DatePickerSingleTypingAutoSelect.play = async () => {
 export const DatePickerRangeTypingAutoSelect: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="range"
@@ -641,7 +643,7 @@ DatePickerRangeTypingAutoSelect.play = async () => {
 export const DatePickerSingleNoFooter: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="single"
@@ -682,7 +684,7 @@ DatePickerSingleNoFooter.play = async () => {
 export const DatePickerInvalidDateValidation: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  onOpenChange = jest.fn();
+  onOpenChange = fn();
   return (
     <DatePickerComponent
       selectionType="single"
@@ -1018,13 +1020,13 @@ DatePickerRangeCalendarToInput.play = async () => {
   await expect(queryByText('Apply')).toBeNull();
 };
 
-let handleApply: Mock<unknown, unknown[]> | null = null;
+let handleApply: Mock | null = null;
 
 export const DatePickerPresetOnApplyCurrentValues: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  handleApply = jest.fn();
-  const handleChange = jest.fn();
+  handleApply = fn();
+  const handleChange = fn();
 
   return (
     <DatePickerComponent
@@ -1086,12 +1088,12 @@ DatePickerPresetOnApplyCurrentValues.play = async () => {
   await expect(handleApply).toHaveBeenCalledTimes(2);
 
   // Check first call (7 days)
-  const firstAppliedValue = handleApply!.mock.calls[0][0] as [Date, Date];
+  const firstAppliedValue = handleApply.mock.calls[0][0] as [Date, Date];
   const firstDaysDiff = dayjs(firstAppliedValue[1]).diff(dayjs(firstAppliedValue[0]), 'days');
   await expect(firstDaysDiff).toBe(7);
 
   // Check second call (30 days) - this should NOT be stale
-  const secondAppliedValue = handleApply!.mock.calls[1][0] as [Date, Date];
+  const secondAppliedValue = handleApply.mock.calls[1][0] as [Date, Date];
   const secondDaysDiff = dayjs(secondAppliedValue[1]).diff(dayjs(secondAppliedValue[0]), 'days');
   await expect(secondDaysDiff).toBe(30);
 
@@ -1100,20 +1102,20 @@ DatePickerPresetOnApplyCurrentValues.play = async () => {
 };
 
 // Test case for form submission prevention when preset dropdown is clicked
-let handleFormSubmit: Mock<unknown, unknown[]> | null = null;
-let handleApplyForm: Mock<unknown, unknown[]> | null = null;
+let handleFormSubmit: Mock | null = null;
+let handleApplyForm: Mock | null = null;
 
 export const DatePickerPresetFormSubmissionPrevention: StoryFn<
   typeof DatePickerComponent
 > = (): React.ReactElement => {
-  handleFormSubmit = jest.fn();
-  handleApplyForm = jest.fn();
+  handleFormSubmit = fn();
+  handleApplyForm = fn();
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        handleFormSubmit!(e);
+        handleFormSubmit(e);
       }}
     >
       <DatePickerComponent
@@ -1161,7 +1163,7 @@ DatePickerPresetFormSubmissionPrevention.play = async () => {
   await expect(handleApplyForm).toHaveBeenCalledTimes(1);
 
   // Verify the preset value was applied correctly
-  const appliedValue = handleApplyForm!.mock.calls[0][0] as [Date, Date];
+  const appliedValue = handleApplyForm.mock.calls[0][0] as [Date, Date];
   const daysDiff = dayjs(appliedValue[1]).diff(dayjs(appliedValue[0]), 'days');
   await expect(daysDiff).toBe(7);
 };

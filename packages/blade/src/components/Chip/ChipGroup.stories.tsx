@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react-vite';
 import React from 'react';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
@@ -277,7 +277,8 @@ export default {
     // Chip Props
     icon: {
       name: 'icon',
-      description: 'Displays the Blade Icon component within the Chip',
+      description:
+        'Displays a Blade Icon component within each Chip. Mutually exclusive with `leading`.',
       type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
@@ -285,6 +286,17 @@ export default {
         category: propsCategory.CHIP,
         type: {
           summary: 'IconComponent',
+        },
+      },
+    },
+    leading: {
+      description:
+        'Custom leading element rendered before the Chip label, such as a flag, avatar, logo, or SVG asset. Mutually exclusive with `icon`.',
+      control: false,
+      table: {
+        category: propsCategory.CHIP,
+        type: {
+          summary: 'React.ReactNode',
         },
       },
     },
@@ -544,7 +556,7 @@ ChipWithIcon.args = {
 };
 ChipWithIcon.parameters = {
   controls: {
-    exclude: ['icon'],
+    exclude: ['icon', 'leading'],
   },
 };
 
@@ -575,7 +587,7 @@ ChipWithColor.args = {
 };
 ChipWithColor.parameters = {
   controls: {
-    exclude: ['icon'],
+    exclude: ['icon', 'leading'],
   },
 };
 
@@ -602,7 +614,7 @@ ChipIconOnly.args = {
 };
 ChipIconOnly.parameters = {
   controls: {
-    exclude: ['icon', 'children'],
+    exclude: ['icon', 'leading', 'children'],
   },
 };
 
@@ -673,7 +685,7 @@ AllChipSizes.args = {
 };
 AllChipSizes.parameters = {
   controls: {
-    exclude: ['icon'],
+    exclude: ['icon', 'leading'],
   },
 };
 
@@ -724,7 +736,7 @@ chipRef.args = {
 };
 chipRef.parameters = {
   controls: {
-    exclude: ['icon'],
+    exclude: ['icon', 'leading'],
   },
 };
 

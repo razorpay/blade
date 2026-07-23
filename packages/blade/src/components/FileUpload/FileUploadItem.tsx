@@ -68,7 +68,7 @@ const FileUploadItem = memo(
             <BaseBox marginRight="spacing.4">
               <FileUploadItemIcon fileName={name} uploadStatus={status} />
             </BaseBox>
-            <BaseBox flexGrow={1}>
+            <BaseBox flexGrow={1} flexShrink={1} minWidth="0px">
               <BaseBox alignItems="center" display="flex">
                 <BaseBox alignItems="center" maxWidth="70%" display="flex" marginRight="spacing.3">
                   <Text
@@ -105,26 +105,37 @@ const FileUploadItem = memo(
             {status === 'uploading' ? (
               <BaseBox display="flex" alignItems="center">
                 <IconButton
-                  accessibilityLabel="Remove File"
+                  accessibilityLabel={`Remove ${name}`}
                   icon={CloseIcon}
                   onClick={() => onDismiss?.({ file })}
                 />
               </BaseBox>
             ) : status === 'error' ? (
-              <BaseBox display="flex" flexDirection="row" alignItems="center">
-                <BaseLink
-                  marginX="spacing.1"
-                  variant="button"
-                  icon={RotateClockWiseIcon}
-                  color="negative"
-                  size="small"
-                  onClick={() => {
-                    onReupload?.({ file });
-                  }}
-                  data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
-                >
-                  Re-upload
-                </BaseLink>
+              <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+                <BaseBox display="flex" alignItems="center" justifyContent="center">
+                  <BaseLink
+                    marginX="spacing.1"
+                    variant="button"
+                    icon={RotateClockWiseIcon}
+                    color="negative"
+                    size="medium"
+                    accessibilityProps={{ label: `Reupload ${name}` }}
+                    onClick={() => {
+                      onReupload?.({ file });
+                    }}
+                    data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
+                  />
+                </BaseBox>
+                {onRemove ? (
+                  <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+                    <Divider orientation="vertical" thickness="thin" variant="normal" />
+                    <IconButton
+                      accessibilityLabel={`Remove ${name}`}
+                      icon={TrashIcon}
+                      onClick={() => onRemove({ file })}
+                    />
+                  </BaseBox>
+                ) : null}
               </BaseBox>
             ) : (
               <BaseBox display="flex" flexDirection="row" alignItems="center">
@@ -137,20 +148,20 @@ const FileUploadItem = memo(
                     gap="spacing.3"
                   >
                     <IconButton
-                      accessibilityLabel="Preview File"
+                      accessibilityLabel={`Preview ${name}`}
                       icon={EyeIcon}
                       onClick={() => onPreview?.({ file })}
                     />
                     <Divider orientation="vertical" thickness="thinner" variant="normal" />
                     <IconButton
-                      accessibilityLabel="Remove File"
+                      accessibilityLabel={`Remove ${name}`}
                       icon={TrashIcon}
                       onClick={() => onRemove?.({ file })}
                     />
                   </BaseBox>
                 ) : (
                   <IconButton
-                    accessibilityLabel="Remove File"
+                    accessibilityLabel={`Remove ${name}`}
                     icon={TrashIcon}
                     onClick={() => onRemove?.({ file })}
                   />
