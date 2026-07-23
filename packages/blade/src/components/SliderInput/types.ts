@@ -4,15 +4,10 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 
 type SliderInputBaseProps = Pick<
   BaseInputProps,
-  | 'labelPosition'
-  | 'name'
-  | 'onFocus'
-  | 'onBlur'
-  | 'isDisabled'
-  | 'isRequired'
-  | 'testID'
-  | keyof DataAnalyticsAttribute
+  'labelPosition' | 'name' | 'isDisabled' | 'isRequired' | 'testID' | keyof DataAnalyticsAttribute
 > & {
+  onFocus?: (args: { name?: string; value: number }) => void;
+  onBlur?: (args: { name?: string; value: number }) => void;
   /**
    * Accessible name for the slider when no visible `label` is rendered.
    *

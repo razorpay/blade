@@ -436,16 +436,17 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       const raw = parseFloat(inputStringValue);
       if (isNaN(raw)) {
         setInputStringValue(String(currentValueRef.current));
+        onBlur?.({ name, value: currentValueRef.current });
       } else {
         updateValue(raw);
+        onBlur?.({ name, value: raw });
       }
-      onBlur?.({ name, value: inputStringValue });
     }, [inputStringValue, updateValue, onBlur, name]);
 
     const handleInputFocus = useCallback(() => {
       setIsInputFocused(true);
-      onFocus?.({ name, value: inputStringValue });
-    }, [inputStringValue, onFocus, name]);
+      onFocus?.({ name, value: currentValueRef.current });
+    }, [onFocus, name]);
 
     const showHalo = !isDisabled && (isThumbHovered || isDragging);
     const thumbSize = isDragging ? tokens.thumb.pressedSize[size] : tokens.thumb.size[size];
