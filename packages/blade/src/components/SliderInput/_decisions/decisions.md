@@ -234,7 +234,7 @@ type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLab
 | **Component name** | `SliderInput` | Communicates the compound nature (slider + input). A standalone `Slider` can be added later. |
 | **`onChange` signature** | `({ value }) => void` | Matches CounterInput — the closest analog numeric input component. |
 | **`onChangeStart` / `onChangeEnd`** | Same `({ value }) => void` shape | All three callbacks use identical arg shape for consistency. |
-| **`size` values** | `'medium' \| 'large'` | Aligns with Blade's canonical size vocabulary. `medium` = 36px, `large` = 48px. `xsmall` is excluded because the slider thumb requires a 48px touch target (WCAG 2.5.5) regardless of visual size — `medium` is already the smallest practical size for this touch target constraint. |
+| **`size` values** | `'medium' \| 'large'` | Aligns with Blade's canonical size vocabulary. `medium` = 36px, `large` = 48px. `xsmall` is excluded because the slider thumb requires a 48px touch target (WCAG 2.5.5) regardless of visual size — `medium` is already the smallest practical size for this touch target constraint. `small` is omitted for the same reason it's absent from CounterInput (the closest analog): intentional parity, not an oversight. |
 | **`labelPosition` default** | `'top'` | Matches all other Blade input components. Consumers opt into `'left'` explicitly. |
 | **Standalone Slider** | Deferred to follow-up | Start with `SliderInput`; extract internal track/thumb as `Slider` later if needed. |
 | **React Native** | Web-only for v1 | RN requires `react-native-gesture-handler` for drag; scope separately. |

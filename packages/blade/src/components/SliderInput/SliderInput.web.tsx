@@ -694,6 +694,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
               {/* Numeric input */}
               <StyledNumericInput
                 id={inputId}
+                name={name}
                 type="number"
                 $size={size}
                 $validationState={validationState}

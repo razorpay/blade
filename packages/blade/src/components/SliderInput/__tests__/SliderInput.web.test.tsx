@@ -214,4 +214,11 @@ describe('<SliderInput />', () => {
     fireEvent.blur(input);
     expect(onChangeEnd).toHaveBeenCalledWith({ value: 18 });
   });
+
+  it('should set the name attribute on the numeric input for native form submission', () => {
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={50} name="radius" min={0} max={100} />,
+    );
+    expect(getByRole('spinbutton')).toHaveAttribute('name', 'radius');
+  });
 });
