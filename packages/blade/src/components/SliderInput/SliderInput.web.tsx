@@ -741,6 +741,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
 const SliderInput = assignWithoutSideEffects(_SliderInput, {
   componentId: MetaConstants.SliderInput,
+  displayName: 'SliderInput',
 });
 
 export { SliderInput };
