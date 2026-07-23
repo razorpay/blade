@@ -7,7 +7,7 @@
     parameters: {
       docs: {
         description: {
-          component: 'Installation guide and quick start examples for Blade Svelte. See the README.md for full documentation.',
+          component: 'Installation guide and quick start examples for Blade Svelte.',
         },
       },
     },
@@ -47,6 +47,9 @@
       <Heading size="large">Step 4: Use Components</Heading>
       <Text size="medium" color="surface.text.gray.muted">Import and use Blade components:</Text>
       <pre style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"><code>{`import { Button, Text, Heading } from '@razorpay/blade-svelte/components';`}</code></pre>
+      <Text size="small" color="surface.text.gray.muted">
+        Note: Blade Svelte uses React-style event prop names (e.g. onClick, onBlur, onFocus) rather than Svelte's native on:click directive. This is intentional for API parity with the React version of Blade.
+      </Text>
     </div>
   </div>
 </Story>
@@ -55,11 +58,30 @@
   <div style="padding: 24px; max-width: 600px;">
     <Heading size="large">Theme Switching</Heading>
     <Text size="medium" color="surface.text.gray.muted">
-      To enable dark mode, add data-theme="dark" to your body element:
+      To enable dark mode, add data-theme="dark" to your body element. Light mode is the default (no attribute needed):
     </Text>
     <pre style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"><code>{`<body data-theme="dark">
   <!-- Your app -->
 </body>`}</code></pre>
+    <Text size="medium" color="surface.text.gray.muted">
+      Or toggle it programmatically:
+    </Text>
+    <pre style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"><code>{`<script>
+  let isDark = $state(false);
+
+  function toggleTheme() {
+    isDark = !isDark;
+    if (isDark) {
+      document.body.setAttribute('data-theme', 'dark');
+    } else {
+      document.body.removeAttribute('data-theme');
+    }
+  }
+</script>
+
+<Button onClick={toggleTheme}>
+  Toggle Theme
+</Button>`}</code></pre>
     <Text size="small" color="surface.text.gray.muted">
       Use the theme switcher in the Storybook toolbar to preview dark mode.
     </Text>
