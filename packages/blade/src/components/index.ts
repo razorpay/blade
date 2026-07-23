@@ -59,6 +59,7 @@ export * from './QuickFilters';
 export * from './Radio';
 export * from './TrustBadge';
 export * from './Scale';
+export * from './SegmentedControl';
 export * from './SideNav';
 export * from './Skeleton';
 export * from './SkipNav';

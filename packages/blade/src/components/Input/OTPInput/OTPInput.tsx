@@ -266,6 +266,9 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
       // Could have used `onPaste` for web to achieve this but 1. React Native doesn't support onPaste and 2. Safari's autofill on web doesn't trigger onPaste
       setOtpValue(Array.from(value));
       onChange?.({ name, value: value.trim().slice(0, otpLength) });
+      // Move focus to the last filled input box after paste
+      const lastFilledIndex = Math.min(value.trim().length, otpLength) - 1;
+      focusOnOtpByIndex(lastFilledIndex);
     } else if (otpValue[currentOtpIndex] !== value?.trim()) {
       // Set the value at the current index to the entered value
       // only as long as its not the same as the already existing value (this prevents `onChange` being triggered unnecessarily)

@@ -2251,7 +2251,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom cell color
                   d="M 200.00000000000003 80 A 120 120 0 0 1 313.8243730336575 238.00015925617666 L 275.8829153557716 225.3334395041178 A 80 80 0 0 0 200.00000000000003 120 Z"
                   fill={
                     {
-                      "payload": 4293849329,
+                      "payload": 4294440951,
                       "type": 0,
                     }
                   }
@@ -2385,7 +2385,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom cell color
                   }
                   stroke={
                     {
-                      "payload": 4293849329,
+                      "payload": 4294440951,
                       "type": 0,
                     }
                   }
