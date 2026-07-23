@@ -72,10 +72,11 @@
 }
 
 /* Dark mode border. Matches the convention in
- * `@razorpay/blade-core/tokens/theme.css` (`body[data-theme='dark']`),
- * which the blade-svelte preview script sets on `<body>`. The bubble is
- * portaled to `document.body`, so this selector resolves correctly. */
-body[data-theme='dark'] .bubble {
+ * `@razorpay/blade-core/tokens/theme.css` (`body[data-theme='dark']` /
+ * `[data-blade-color-scheme='dark']`). Root BladeProvider syncs scheme onto
+ * `document.documentElement` so portaled bubbles still match. */
+body[data-theme='dark'] .bubble,
+:root [data-blade-color-scheme='dark'] .bubble {
   border: var(--border-width-thin) solid hsla(218, 9%, 30%, 1);
 }
 
@@ -119,7 +120,8 @@ body[data-theme='dark'] .bubble {
   stroke-width: 0;
 }
 
-body[data-theme='dark'] .arrow {
+body[data-theme='dark'] .arrow,
+:root [data-blade-color-scheme='dark'] .arrow {
   stroke: hsla(218, 9%, 30%, 1);
   stroke-width: 1;
 }

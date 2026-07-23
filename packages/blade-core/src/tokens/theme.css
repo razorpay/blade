@@ -577,8 +577,15 @@
   --transparent: hsla(0, 0%, 100%, 0);
 }
 
-/* Dark Mode */
-:root body[data-theme='dark'] {
+/* Dark Mode
+ * Transition period: both `body[data-theme='dark']` (legacy) and
+ * `[data-blade-color-scheme='dark']` (new scoped attribute) are supported.
+ * The `:root` prefix on both selectors equalizes CSS specificity so neither
+ * takes precedence when both attributes co-exist during migration.
+ * TODO: deprecate and remove `body[data-theme]` selector once all consumers
+ * migrate to `data-blade-color-scheme`. */
+:root body[data-theme='dark'],
+:root [data-blade-color-scheme='dark'] {
 
   /* Surface Colors - Dark */
   --surface-background-gray-subtle: hsla(210, 4%, 11%, 1);

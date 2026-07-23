@@ -1,6 +1,7 @@
 import tinycolor from 'tinycolor2';
 import type { WCAG2Options, ColorInput } from 'tinycolor2';
 import { colors as globalColors, opacity } from '~tokens/global';
+import type { Border } from '~tokens/global';
 import type { ColorChromaticScale } from '~tokens/global/colors';
 import { throwBladeError } from '~utils/logger';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
@@ -38,7 +39,7 @@ const getColorWithOpacity = (color: ColorInput, opacity: number): string => {
 const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromaticScale => {
   const baseColor = tinycolor(baseColorInput);
   const baseColorHslString = baseColor.toHslString();
-  if (__DEV__) {
+  if (typeof __DEV__ !== 'undefined' && __DEV__) {
     if (!baseColor.isValid()) {
       throwBladeError({
         message: 'Invalid brandColor passed',
@@ -302,16 +303,23 @@ const getOnDarkOverrides = (
 /**
  * @param {Object} themeConfig - The brand color and overrides to apply to the theme
  * @param {string} themeConfig.brandColor - The brand color to use to generate the theme. Can be in hex, rgb, or hsl format.
+ * @param {Partial<Border['radius']>} [themeConfig.borderRadius] - Optional border radius token overrides.
  * @description
- * Creates a Blade Theme based on the custom brand color
+ * Creates a Blade Theme based on the custom brand color (and optional border radius overrides)
  * @returns The Theme Tokens with the custom brand colors
  * @example
- * const { theme, brandColors } = createTheme({ brandColor: '#19BEA2'})
+ * const { theme, brandColors } = createTheme({ brandColor: '#19BEA2', borderRadius: { medium: 16 } })
  **/
 export const createTheme = ({
   brandColor,
+  borderRadius,
 }: {
   brandColor: ColorInput;
+  /**
+   * Optional border radius overrides. Values are CSS lengths in px (numbers)
+   * or raw CSS strings (e.g. `'50%'` for round).
+   */
+  borderRadius?: Partial<Record<keyof Border['radius'], number | string>>;
 }): { theme: ThemeTokens; brandColors: ColorChromaticScale } => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
   // Get onLight overrides
@@ -331,6 +339,14 @@ export const createTheme = ({
           ...brandedDarkTheme,
         },
       },
+      ...(borderRadius
+        ? {
+            border: {
+              // overrideTheme deep-merges; cast allows custom numeric radii beyond token literals
+              radius: borderRadius as Partial<Border['radius']>,
+            },
+          }
+        : {}),
     },
   });
 
