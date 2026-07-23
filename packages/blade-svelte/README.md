@@ -33,6 +33,63 @@ Blade is the Design System that powers [Razorpay](https://razorpay.com/). This p
 - TypeScript support out of the box
 - [White Labelling](https://blade.razorpay.com/?path=/docs/guides-theming-theme-playground--docs)
 
+## 📦 Installation
+
+### Prerequisites
+
+- Node.js version >= 18.12.1
+- Svelte version >= 5.35.0
+
+### Install the package
+
+```bash
+# Using yarn
+yarn add @razorpay/blade-svelte
+
+# Using npm
+npm install @razorpay/blade-svelte
+```
+
+> **Note:** `@razorpay/blade-core` (design tokens, CSS styles, and fonts) is automatically installed as a dependency.
+
+### Setup Theme CSS
+
+Import the theme CSS in your root layout or app entry file:
+
+```ts
+import '@razorpay/blade-core/tokens/theme.css';
+```
+
+### Install Fonts
+
+```ts
+import '@razorpay/blade-core/fonts.css';
+```
+
+Or via CDN:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@razorpay/blade-core@latest/fonts.css" />
+```
+
+### Usage
+
+```svelte
+<script>
+  import { Button, Text, Heading } from '@razorpay/blade-svelte/components';
+</script>
+
+<Heading size="large">Welcome to Blade</Heading>
+<Text>This is Blade Design System for Svelte.</Text>
+<Button variant="primary" onClick={() => alert('Clicked!')}>
+  Click me
+</Button>
+```
+
+> Blade Svelte uses React-style event prop names (e.g. `onClick`, `onBlur`, `onFocus`) rather than Svelte's native `on:click` directive. This is intentional for API parity with the React version of Blade.
+
+For full documentation including dark mode setup and all available components, see the [Installation Guide](https://blade.razorpay.com/?path=/docs/guides-installation--docs) in Storybook.
+
 ## 📝 License
 
 Licensed under the [MIT License](https://github.com/razorpay/blade/blob/master/LICENSE.md).
