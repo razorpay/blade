@@ -104,10 +104,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const [internalValue, setInternalValue] = useControllableState({
       value,
       defaultValue,
-      onChange: (newValue) => onChange?.({ name, value: newValue }),
+      onChange: (newValue) => onChange?.({ value: newValue }),
     });
 
     const [isDragging, setIsDragging] = useState(false);
+    const isDraggingRef = useRef(false);
     const [isThumbHovered, setIsThumbHovered] = useState(false);
     const [isThumbFocused, setIsThumbFocused] = useState(false);
     const isPointerFocusRef = useRef(false);
@@ -139,7 +140,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     ]);
 
     const clamp = useCallback((v: number) => Math.min(max, Math.max(min, v)), [min, max]);
-    const snap = useCallback((v: number) => Math.round(v / step) * step, [step]);
+    const effectiveStep = step > 0 ? step : 1;
+    const snap = useCallback((v: number) => Math.round(v / effectiveStep) * effectiveStep, [
+      effectiveStep,
+    ]);
     const pct = getRatio(currentValue) * 100;
 
     const updateValue = useCallback(
@@ -185,7 +189,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       (val: number) => {
         const p = getRatio(val) * 100;
         targetPctRef.current = p;
-        if (step > 1) {
+        if (step > 1 && !isDraggingRef.current) {
           animateToTarget();
         } else {
           visualPctRef.current = p;
@@ -210,9 +214,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       positionDomElements(currentValue);
     }, [currentValue, isDragging, positionDomElements]);
 
-    const setDragTransitions = useCallback((enable: boolean) => {
-      if (thumbRef.current) thumbRef.current.style.transition = enable ? 'none' : '';
-      if (fillRef.current) fillRef.current.style.transition = enable ? 'none' : '';
+    const setDragTransitions = useCallback((isDraggingActive: boolean) => {
+      if (thumbRef.current) thumbRef.current.style.transition = isDraggingActive ? 'none' : '';
+      if (fillRef.current) fillRef.current.style.transition = isDraggingActive ? 'none' : '';
     }, []);
 
     // Holds the teardown for the currently-attached drag listeners (if any).
@@ -243,9 +247,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         visualPctRef.current = p;
         targetPctRef.current = p;
         applyPosition(p);
+        isDraggingRef.current = false;
         setIsDragging(false);
         updateValue(val);
-        onChangeEnd?.({ name, value: val });
+        onChangeEnd?.({ value: val });
       };
       const handleMouseMove = (e: MouseEvent): void => onMove(e.clientX);
       const handleMouseUp = (e: MouseEvent): void => onEnd(e.clientX);
@@ -254,7 +259,13 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         onMove(e.touches[0].clientX);
       };
       const handleTouchEnd = (e: TouchEvent): void => {
-        if (!e.changedTouches.length) return;
+        if (!e.changedTouches.length) {
+          detachDragListenersRef.current();
+          setDragTransitions(false);
+          isDraggingRef.current = false;
+          setIsDragging(false);
+          return;
+        }
         onEnd(e.changedTouches[0].clientX);
       };
       window.addEventListener('mousemove', handleMouseMove);
@@ -279,7 +290,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       applyPosition,
       setDragTransitions,
       onChangeEnd,
-      name,
     ]);
 
     useEffect(() => {
@@ -293,11 +303,12 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       (clientX: number) => {
         isPointerFocusRef.current = true;
         setDragTransitions(true);
+        isDraggingRef.current = true;
         setIsDragging(true);
         const val = clamp(snap(getValueFromPosition(clientX)));
         dragValueRef.current = val;
         positionDomElements(val);
-        onChangeStart?.({ name, value: val });
+        onChangeStart?.({ value: val });
         updateValue(val);
         attachDragListeners();
       },
@@ -305,7 +316,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         getValueFromPosition,
         updateValue,
         onChangeStart,
-        name,
         clamp,
         snap,
         positionDomElements,
@@ -340,11 +350,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         switch (e.key) {
           case 'ArrowRight':
           case 'ArrowUp':
-            newVal = currentValue + step;
+            newVal = currentValue + effectiveStep;
             break;
           case 'ArrowLeft':
           case 'ArrowDown':
-            newVal = currentValue - step;
+            newVal = currentValue - effectiveStep;
             break;
           case 'Home':
             newVal = min;
@@ -353,10 +363,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
             newVal = max;
             break;
           case 'PageUp':
-            newVal = currentValue + step * 10;
+            newVal = currentValue + effectiveStep * 10;
             break;
           case 'PageDown':
-            newVal = currentValue - step * 10;
+            newVal = currentValue - effectiveStep * 10;
             break;
           default:
             return;
@@ -364,11 +374,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         e.preventDefault();
         if (!isKeyActiveRef.current) {
           isKeyActiveRef.current = true;
-          onChangeStart?.({ name, value: currentValue });
+          onChangeStart?.({ value: currentValue });
         }
         updateValue(newVal);
       },
-      [isDisabled, currentValue, step, min, max, updateValue, onChangeStart, name],
+      [isDisabled, currentValue, effectiveStep, min, max, updateValue, onChangeStart],
     );
 
     const handleKeyUp = useCallback(
@@ -385,9 +395,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         ].includes(e.key);
         if (!isSliderKey || !isKeyActiveRef.current) return;
         isKeyActiveRef.current = false;
-        onChangeEnd?.({ name, value: currentValueRef.current });
+        onChangeEnd?.({ value: currentValueRef.current });
       },
-      [onChangeEnd, name],
+      [onChangeEnd],
     );
 
     const handleThumbFocus = useCallback(() => {
@@ -397,6 +407,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const handleThumbBlur = useCallback(() => {
       setIsThumbFocused(false);
       isPointerFocusRef.current = false;
+      isKeyActiveRef.current = false;
     }, []);
 
     const handleThumbPointerDown = useCallback(() => {
@@ -423,12 +434,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const handleInputChange = useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputStringValue(e.target.value);
-        const raw = parseFloat(e.target.value);
-        if (!isNaN(raw)) {
-          updateValue(raw);
-        }
       },
-      [updateValue],
+      [],
     );
 
     const handleInputBlur = useCallback(() => {
@@ -458,14 +465,19 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
     // Auto-render tick marks for discrete sliders with a manageable number of steps,
     // matching the decisions.md heuristic: (max - min) / step <= 20.
-    const stepCount = step > 0 ? (max - min) / step : 0;
+    // Only render when stepCount is an integer to avoid misaligned or overflowing ticks.
+    const stepCount = effectiveStep > 0 ? (max - min) / effectiveStep : 0;
     const shouldShowTicks =
-      step > 0 && Number.isFinite(stepCount) && stepCount > 0 && stepCount <= 20;
+      effectiveStep > 0 &&
+      Number.isFinite(stepCount) &&
+      Number.isInteger(stepCount) &&
+      stepCount > 0 &&
+      stepCount <= 20;
     const tickSize = tokens.tick.size[size];
     const tickColorOnActiveTrack = get(theme.colors, tokens.color.tick.onActiveTrack, '');
     const tickColorOnInactiveTrack = get(theme.colors, tokens.color.tick.onInactiveTrack, '');
     const tickPositions = shouldShowTicks
-      ? Array.from({ length: Math.round(stepCount) + 1 }, (_, index) => (index / stepCount) * 100)
+      ? Array.from({ length: stepCount + 1 }, (_, index) => (index / stepCount) * 100)
       : [];
 
     const thumbColor = get(

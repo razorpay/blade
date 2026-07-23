@@ -20,7 +20,7 @@ import { SliderInput } from '@razorpay/blade/components';
 <SliderInput
   label="Corner Radius"
   value={12}
-  onChange={({ name, value }) => setRadius(value)}
+  onChange={({ value }) => setRadius(value)}
   min={0}
   max={24}
   step={2}
@@ -37,7 +37,7 @@ import { SliderInput } from '@razorpay/blade/components';
 ```jsx
 import { Slider, SliderTrack, SliderThumb, SliderInput } from '@razorpay/blade/components';
 
-<Slider value={12} onChange={({ name, value }) => setRadius(value)} min={0} max={24}>
+<Slider value={12} onChange={({ value }) => setRadius(value)} min={0} max={24}>
   <SliderTrack />
   <SliderThumb />
   <SliderInput suffix="px" />
@@ -61,7 +61,7 @@ import { Slider } from '@razorpay/blade/components';
 <Slider
   label="Corner Radius"
   value={12}
-  onChange={({ name, value }) => setRadius(value)}
+  onChange={({ value }) => setRadius(value)}
   min={0}
   max={24}
 />
@@ -125,20 +125,20 @@ type SliderInputCommonProps = {
    * Event handler called when the value changes via slider drag, keyboard,
    * or text input
    */
-  onChange?: (args: { name?: string; value: number }) => void;
+  onChange?: (args: { value: number }) => void;
 
   /**
    * Event handler called when the user begins interacting with the slider
    * (mousedown / touchstart on thumb or track click)
    */
-  onChangeStart?: (args: { name?: string; value: number }) => void;
+  onChangeStart?: (args: { value: number }) => void;
 
   /**
    * Event handler called when the user finishes interacting with the slider
    * (mouseup / touchend). Useful for committing the value only on drag end
    * rather than on every intermediate value.
    */
-  onChangeEnd?: (args: { name?: string; value: number }) => void;
+  onChangeEnd?: (args: { value: number }) => void;
 
   /**
    * The name attribute for form integration
@@ -232,8 +232,8 @@ type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLab
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
 | **Component name** | `SliderInput` | Communicates the compound nature (slider + input). A standalone `Slider` can be added later. |
-| **`onChange` signature** | `({ name?, value }) => void` | Consistent with Blade form components. `name` included for form integration (same as BaseInput). |
-| **`onChangeStart` / `onChangeEnd`** | Same `({ name?, value }) => void` shape | All three callbacks use identical arg shape for consistency. |
+| **`onChange` signature** | `({ value }) => void` | Matches CounterInput — the closest analog numeric input component. |
+| **`onChangeStart` / `onChangeEnd`** | Same `({ value }) => void` shape | All three callbacks use identical arg shape for consistency. |
 | **`size` values** | `'medium' \| 'large'` | Aligns with Blade's canonical size vocabulary. `medium` = 36px, `large` = 48px. `xsmall` is excluded because the slider thumb requires a 48px touch target (WCAG 2.5.5) regardless of visual size — `medium` is already the smallest practical size for this touch target constraint. |
 | **`labelPosition` default** | `'top'` | Matches all other Blade input components. Consumers opt into `'left'` explicitly. |
 | **Standalone Slider** | Deferred to follow-up | Start with `SliderInput`; extract internal track/thumb as `Slider` later if needed. |

@@ -17,7 +17,7 @@ describe('<SliderInput />', () => {
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 51 });
+    expect(onChange).toHaveBeenCalledWith({ value: 51 });
   });
 
   it('should respect min/max constraints via keyboard', () => {
@@ -37,9 +37,9 @@ describe('<SliderInput />', () => {
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'Home' });
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 0 });
+    expect(onChange).toHaveBeenCalledWith({ value: 0 });
     fireEvent.keyDown(slider, { key: 'End' });
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 100 });
+    expect(onChange).toHaveBeenCalledWith({ value: 100 });
   });
 
   it('should render in disabled state', () => {
@@ -80,14 +80,14 @@ describe('<SliderInput />', () => {
     expect(slider).toHaveAttribute('aria-valuetext', '12 px');
   });
 
-  it('should pass name to onChange', () => {
+  it('should call onChange with value only (no name) — matches CounterInput', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" value={50} name="mySlider" onChange={onChange} step={1} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
-    expect(onChange).toHaveBeenCalledWith({ name: 'mySlider', value: 51 });
+    expect(onChange).toHaveBeenCalledWith({ value: 51 });
   });
 
   it('should work as uncontrolled component', () => {
@@ -104,7 +104,7 @@ describe('<SliderInput />', () => {
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 15 });
+    expect(onChange).toHaveBeenCalledWith({ value: 15 });
   });
 
   it('should call onChangeStart on keydown and onChangeEnd on keyup', () => {
@@ -123,10 +123,10 @@ describe('<SliderInput />', () => {
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
-    expect(onChangeStart).toHaveBeenCalledWith({ name: undefined, value: 50 });
+    expect(onChangeStart).toHaveBeenCalledWith({ value: 50 });
     expect(onChangeEnd).not.toHaveBeenCalled();
     fireEvent.keyUp(slider, { key: 'ArrowRight' });
-    expect(onChangeEnd).toHaveBeenCalledWith({ name: undefined, value: 51 });
+    expect(onChangeEnd).toHaveBeenCalledWith({ value: 51 });
   });
 
   it('should not call onChangeStart again while a key is held down', () => {
