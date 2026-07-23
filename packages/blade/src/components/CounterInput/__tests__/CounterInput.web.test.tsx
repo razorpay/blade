@@ -2,9 +2,24 @@ import userEvent from '@testing-library/user-event';
 import { CounterInput } from '../CounterInput';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+import { baseInputCounterInputPaddingTokens } from '~components/Input/BaseInput/baseInputTokens';
+import { bladeTheme } from '~tokens/theme';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const getCounterInputFieldWidth = ({
+  digitCount,
+  size,
+}: {
+  digitCount: number;
+  size: 'xsmall' | 'medium' | 'large';
+}): string => {
+  const horizontalPadding =
+    bladeTheme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
+    bladeTheme.spacing[baseInputCounterInputPaddingTokens.right[size]];
+  return `calc(${digitCount}ch + ${horizontalPadding}px)`;
+};
 
 describe('<CounterInput />', () => {
   it('should render', () => {
@@ -192,6 +207,65 @@ describe('<CounterInput />', () => {
 
     const input = getByRole('spinbutton');
     expect(input).toHaveAttribute('name', name);
+  });
+
+  it('should reserve two digits and expand the minimum width for larger values', () => {
+    const { container: container1 } = renderWithTheme(<CounterInput label="Quantity" value={5} />);
+
+    expect(container1.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      flex: '1',
+      minWidth: getCounterInputFieldWidth({ digitCount: 2, size: 'medium' }),
+    });
+
+    const { container: container2 } = renderWithTheme(
+      <CounterInput label="Quantity" value={100} />,
+    );
+
+    expect(container2.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      minWidth: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    });
+  });
+
+  it.each(['xsmall', 'large'] as const)(
+    'should derive the minimum width from %s padding tokens',
+    (size) => {
+      const { container } = renderWithTheme(
+        <CounterInput label="Quantity" value={100} size={size} />,
+      );
+
+      expect(container.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+        minWidth: getCounterInputFieldWidth({ digitCount: 3, size }),
+      });
+    },
+  );
+
+  it('should account for minus sign width when value is negative', () => {
+    // -9 has 1 digit + minus sign → digitCount should be 2 (max) + 1 = 3
+    const { container: container1 } = renderWithTheme(
+      <CounterInput label="Quantity" value={-9} min={-999} />,
+    );
+
+    expect(container1.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      minWidth: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    });
+
+    // -99 has 2 digits + minus sign → digitCount should be 2 + 1 = 3
+    const { container: container2 } = renderWithTheme(
+      <CounterInput label="Quantity" value={-99} min={-999} />,
+    );
+
+    expect(container2.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      minWidth: getCounterInputFieldWidth({ digitCount: 3, size: 'medium' }),
+    });
+
+    // -100 has 3 digits + minus sign → digitCount should be 3 + 1 = 4
+    const { container: container3 } = renderWithTheme(
+      <CounterInput label="Quantity" value={-100} min={-999} />,
+    );
+
+    expect(container3.querySelector('.__blade-counter-input-number-wrapper')).toHaveStyle({
+      minWidth: getCounterInputFieldWidth({ digitCount: 4, size: 'medium' }),
+    });
   });
 
   it('should pass a11y', async () => {
