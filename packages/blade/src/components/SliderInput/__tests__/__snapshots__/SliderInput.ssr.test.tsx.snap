@@ -1,0 +1,328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SliderInput /> should render SliderInput with default properties 1`] = `"<div id="root"><div data-blade-component="slider-input" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc VXPkj"><div data-blade-component="base-box" class="BaseBox-bksIuc eXPttF"><label for="slider-input-undefined-input" style="width:100%;flex-shrink:0;margin-right:0px" id="slider-input-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bksIuc fhmUvk"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc gQLxiP"><p letter-spacing="50" class="StyledBaseText-foUshD lhkeBN" data-blade-component="text">Corner Radius</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 fVGPRy"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text"></p></div></div></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bksIuc doxPhm"><div style="touch-action:none" data-blade-component="base-box" class="BaseBox-bksIuc ePHyHr"><div data-blade-component="base-box" class="BaseBox-bksIuc iuuHpP"></div><div style="position:absolute;left:0;width:50%;height:2px;border-radius:9999px;background-color:hsla(0, 0%, 0%, 1);transition:width 200ms cubic-bezier(0.3, 0, 0.2, 1)"></div><div tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="24" aria-valuenow="12" aria-valuetext="12" aria-labelledby="slider-input-undefined-label" aria-disabled="false" aria-invalid="false" style="position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;cursor:grab;z-index:2;touch-action:none" class="SliderInputweb__StyledThumb-sc-1ay9soo-0 ipUuZg"><div style="position:absolute;width:0;height:0;border-radius:50%;background-color:hsla(0, 0%, 0%, 0.56);opacity:0;transition:opacity 160ms cubic-bezier(0.17, 0, 1, 1), width 160ms cubic-bezier(0.17, 0, 1, 1), height 160ms cubic-bezier(0.17, 0, 1, 1);pointer-events:none"></div><div style="width:16px;height:16px;border-radius:50%;background-color:hsla(0, 0%, 0%, 1);transition:all 160ms cubic-bezier(0.3, 0, 0.2, 1);pointer-events:none"></div></div></div><input id="slider-input-undefined-input" type="number" min="0" max="24" step="1" aria-invalid="false" aria-label="Corner Radius" class="SliderInputweb__StyledNumericInput-sc-1ay9soo-1 kAXoNr" value="12"/></div></div></div></div></div>"`;
+
+exports[`<SliderInput /> should render SliderInput with default properties 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: 44px;
+  cursor: pointer;
+}
+
+.c10.c10.c10.c10.c10 {
+  position: absolute;
+  height: 2px;
+  right: 0px;
+  left: 0px;
+  background-color: hsla(206,10%,29%,0.09);
+  border-radius: 9999px;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c6.c6.c6.c6.c6 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c11.c11.c11.c11.c11 {
+  outline: none;
+}
+
+.c12.c12.c12.c12.c12 {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  height: 36px;
+  width: 64px;
+  padding: 0 8px;
+  border: 1px solid;
+  border-color: hsla(204,8%,88%,1);
+  border-radius: 12px;
+  font-size: 12px;
+  text-align: right;
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+  outline: none;
+  cursor: inherit;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c12.c12.c12.c12.c12::-webkit-inner-spin-button,
+.c12.c12.c12.c12.c12::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.c12.c12.c12.c12.c12:focus {
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c12.c12.c12.c12.c12:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+<div
+  id="root"
+>
+  <div
+    class=""
+    data-blade-component="slider-input"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <label
+          data-blade-component="form-label"
+          for="slider-input-7-input"
+          id="slider-input-7-label"
+          style="width:100%;flex-shrink:0;margin-right:0px"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c3"
+              data-blade-component="base-box"
+            >
+              <div
+                class=""
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c5"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Corner Radius
+                  </p>
+                  <div
+                    class="c6"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </label>
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c9"
+            data-blade-component="base-box"
+            style="touch-action:none"
+          >
+            <div
+              class="c10"
+              data-blade-component="base-box"
+            />
+            <div
+              style="position:absolute;left:0;width:50%;height:2px;border-radius:9999px;background-color:hsla(0, 0%, 0%, 1);transition:width 200ms cubic-bezier(0.3, 0, 0.2, 1)"
+            />
+            <div
+              aria-disabled="false"
+              aria-invalid="false"
+              aria-labelledby="slider-input-7-label"
+              aria-valuemax="24"
+              aria-valuemin="0"
+              aria-valuenow="12"
+              aria-valuetext="12"
+              class="c11"
+              role="slider"
+              style="position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;cursor:grab;z-index:2;touch-action:none"
+              tabindex="0"
+            >
+              <div
+                style="position:absolute;width:0;height:0;border-radius:50%;background-color:hsla(0, 0%, 0%, 0.56);opacity:0;transition:opacity 160ms cubic-bezier(0.17, 0, 1, 1), width 160ms cubic-bezier(0.17, 0, 1, 1), height 160ms cubic-bezier(0.17, 0, 1, 1);pointer-events:none"
+              />
+              <div
+                style="width:16px;height:16px;border-radius:50%;background-color:hsla(0, 0%, 0%, 1);transition:all 160ms cubic-bezier(0.3, 0, 0.2, 1);pointer-events:none"
+              />
+            </div>
+          </div>
+          <input
+            aria-invalid="false"
+            aria-label="Corner Radius"
+            class="c12"
+            id="slider-input-7-input"
+            max="24"
+            min="0"
+            step="1"
+            type="number"
+            value="12"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
