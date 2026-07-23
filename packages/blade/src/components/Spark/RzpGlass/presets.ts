@@ -78,13 +78,22 @@ const DEFAULT_CONFIG: Required<RzpGlassConfig> = {
 // ============================================
 // PRESETS
 // ============================================
-export type RzpGlassPreset = 'default' | 'zoomed' | 'bottomWave' | 'rippleWave' | 'circleSlideUp';
+export type RzpGlassPreset =
+  | 'default'
+  | 'zoomed'
+  | 'bottomWave'
+  | 'rippleWave'
+  | 'circleSlideUp'
+  | 'legacy';
 
 /**
  * Get preset definitions with dynamic CDN path support.
  * Asset URLs in presets will use the provided assetsPath.
  */
 const getPresets = (assetsPath: string): Record<RzpGlassPreset, RzpGlassPresetDefinition> => ({
+  /** Explicit escape hatch for the original configurable default shader. */
+  legacy: {},
+
   /** Baseline — identical to DEFAULT_CONFIG, no overrides */
   default: {},
 

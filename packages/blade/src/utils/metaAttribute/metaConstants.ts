@@ -96,6 +96,7 @@ export const MetaConstants = {
   Radio: 'radio',
   RadioGroup: 'radio-group',
   RadioLabel: 'radio-label',
+  RazorSense: 'razorsense',
   SkipNav: 'skipnav',
   Spinner: 'spinner',
   SideNav: 'sidenav',
