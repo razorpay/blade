@@ -71,8 +71,5 @@ type SliderInputPropsWithA11yLabel = {
   accessibilityLabel: string;
 };
 
-export type SliderInputProps = (
-  | SliderInputPropsWithLabel
-  | SliderInputPropsWithA11yLabel
-) &
+export type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLabel) &
   SliderInputBaseProps;

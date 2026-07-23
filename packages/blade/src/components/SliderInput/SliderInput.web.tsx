@@ -431,12 +431,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       }
     }, [currentValue, isInputFocused]);
 
-    const handleInputChange = useCallback(
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputStringValue(e.target.value);
-      },
-      [],
-    );
+    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputStringValue(e.target.value);
+    }, []);
 
     const handleInputBlur = useCallback(() => {
       setIsInputFocused(false);
