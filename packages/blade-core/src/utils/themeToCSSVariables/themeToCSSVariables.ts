@@ -60,7 +60,7 @@ const borderValueToCss = (value: number | string): string => {
  * Convert a resolved theme slice into CSS custom property declarations.
  * Keys match `@razorpay/blade-core/tokens/theme.css` (e.g. `--surface-background-gray-subtle`).
  */
-export const themeToCssVariables = (theme: ThemeCssVariableSource): Record<string, string> => {
+export const themeToCSSVariables = (theme: ThemeCssVariableSource): Record<string, string> => {
   const cssVariables: Record<string, string> = {};
 
   flattenTokenTree(theme.colors, [], cssVariables);

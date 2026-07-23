@@ -10,9 +10,11 @@
   background-color: var(--surface-background-gray-subtle);
 }
 
-/* Dark color scheme — body[data-theme] (legacy) or data-blade-color-scheme (scoped) */
+/* Dark color scheme — body[data-theme] (legacy) or data-blade-color-scheme (scoped).
+ * `:root` prefix on the scoped selector equalizes specificity with the legacy selector.
+ * TODO: deprecate `body[data-theme]` once all consumers migrate to `data-blade-color-scheme`. */
 :global(body[data-theme='dark']) .announcement-banner,
-:global([data-blade-color-scheme='dark']) .announcement-banner {
+:global(:root [data-blade-color-scheme='dark']) .announcement-banner {
   background-color: var(--interactive-background-static-black-faded-highlighted);
 }
 
@@ -38,7 +40,7 @@
 }
 
 :global(body[data-theme='dark']) .text-color,
-:global([data-blade-color-scheme='dark']) .text-color {
+:global(:root [data-blade-color-scheme='dark']) .text-color {
   color: var(--surface-text-static-white-subtle);
 }
 
@@ -48,6 +50,6 @@
 }
 
 :global(body[data-theme='dark']) .icon-color,
-:global([data-blade-color-scheme='dark']) .icon-color {
+:global(:root [data-blade-color-scheme='dark']) .icon-color {
   color: var(--surface-icon-static-white-subtle);
 }

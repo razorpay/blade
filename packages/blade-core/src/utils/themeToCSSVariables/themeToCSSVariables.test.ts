@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { bladeTheme } from '~tokens/theme';
-import { themeToCssVariables, cssVariablesToInlineStyle } from '~utils/themeToCssVariables';
+import { themeToCSSVariables, cssVariablesToInlineStyle } from '~utils/themeToCSSVariables';
 
-describe('themeToCssVariables', () => {
+describe('themeToCSSVariables', () => {
   const resolvedTheme = {
     colors: bladeTheme.colors.onLight,
     elevation: bladeTheme.elevation.onLight,
@@ -10,7 +10,7 @@ describe('themeToCssVariables', () => {
   };
 
   it('maps surface color tokens to theme.css variable names', () => {
-    const vars = themeToCssVariables(resolvedTheme);
+    const vars = themeToCSSVariables(resolvedTheme);
 
     expect(vars['--surface-background-gray-subtle']).toBe(
       bladeTheme.colors.onLight.surface.background.gray.subtle,
@@ -24,7 +24,7 @@ describe('themeToCssVariables', () => {
   });
 
   it('normalizes onSea.onSubtle to --surface-text-on-sea-subtle', () => {
-    const vars = themeToCssVariables(resolvedTheme);
+    const vars = themeToCSSVariables(resolvedTheme);
 
     expect(vars['--surface-text-on-sea-subtle']).toBe(
       bladeTheme.colors.onLight.surface.text.onSea.onSubtle,
@@ -33,7 +33,7 @@ describe('themeToCssVariables', () => {
   });
 
   it('maps elevation and border tokens with units', () => {
-    const vars = themeToCssVariables(resolvedTheme);
+    const vars = themeToCSSVariables(resolvedTheme);
 
     expect(vars['--elevation-low-raised']).toBe(bladeTheme.elevation.onLight.lowRaised);
     expect(vars['--border-radius-medium']).toBe(`${bladeTheme.border.radius.medium}px`);

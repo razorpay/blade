@@ -32,8 +32,8 @@
     "build:rollup:dev": "NODE_ENV=development rollup --config rollup.config.mjs",
     "build:rollup:prod": "NODE_ENV=production rollup --config rollup.config.mjs",
     "build:rollup:watch": "NODE_ENV=development rollup --config rollup.config.mjs --watch",
-    "test": "NODE_PATH=../blade-mcp/node_modules ../blade-mcp/node_modules/.bin/vitest run --config vitest.config.ts",
-    "test:watch": "NODE_PATH=../blade-mcp/node_modules ../blade-mcp/node_modules/.bin/vitest --config vitest.config.ts"
+    "test": "vitest run --config vitest.config.ts",
+    "test:watch": "vitest --config vitest.config.ts"
   },
   "dependencies": {
     "@razorpay/i18nify-js": "1.12.3",

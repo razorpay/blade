@@ -76,8 +76,7 @@
  * `[data-blade-color-scheme='dark']`). Root BladeProvider syncs scheme onto
  * `document.documentElement` so portaled bubbles still match. */
 body[data-theme='dark'] .bubble,
-:global([data-blade-color-scheme='dark']) .bubble,
-[data-blade-color-scheme='dark'] .bubble {
+:root [data-blade-color-scheme='dark'] .bubble {
   border: var(--border-width-thin) solid hsla(218, 9%, 30%, 1);
 }
 
@@ -122,8 +121,7 @@ body[data-theme='dark'] .bubble,
 }
 
 body[data-theme='dark'] .arrow,
-:global([data-blade-color-scheme='dark']) .arrow,
-[data-blade-color-scheme='dark'] .arrow {
+:root [data-blade-color-scheme='dark'] .arrow {
   stroke: hsla(218, 9%, 30%, 1);
   stroke-width: 1;
 }
