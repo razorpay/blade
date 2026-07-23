@@ -1,11 +1,14 @@
 export const SLIDER_INPUT_TOKENS = {
   thumb: {
-    size: { medium: 12, large: 16 },
-    pressedSize: { medium: 16, large: 20 },
+    size: { medium: 16, large: 20 },
+    pressedSize: { medium: 20, large: 24 },
     haloMultiplier: 1.5,
   },
   track: {
     height: 2,
+  },
+  tick: {
+    size: { medium: 2, large: 4 },
   },
   label: {
     width: 100,
@@ -26,6 +29,10 @@ export const SLIDER_INPUT_TOKENS = {
     halo: {
       default: 'overlay.background.subtle',
       dragging: 'overlay.background.moderate',
+    },
+    tick: {
+      onActiveTrack: 'feedback.background.neutral.subtle',
+      onInactiveTrack: 'surface.icon.staticBlack.normal',
     },
     label: {
       text: 'surface.text.gray.muted',

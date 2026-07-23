@@ -127,6 +127,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const { helpTextId, errorTextId, successTextId } = useFormId('slider-input');
     const idBase = useId('slider-input');
     const labelId = `${idBase}-label`;
+    const inputId = `${idBase}-input`;
     const { theme } = useTheme();
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
@@ -140,13 +141,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const clamp = useCallback((v: number) => Math.min(max, Math.max(min, v)), [min, max]);
     const snap = useCallback((v: number) => Math.round(v / step) * step, [step]);
     const pct = getRatio(currentValue) * 100;
-
-    useEffect(() => {
-      if (!isDragging) {
-        visualPctRef.current = pct;
-        targetPctRef.current = pct;
-      }
-    }, [pct, isDragging]);
 
     const updateValue = useCallback(
       (newVal: number) => {
@@ -200,6 +194,21 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       },
       [getRatio, step, applyPosition, animateToTarget],
     );
+
+    // Position the thumb/fill imperatively via refs rather than through the JSX `style`
+    // attribute (see visualPctRef usage below), so a React re-render triggered by
+    // unrelated state (e.g. hover) can't stomp over an in-flight LERP animation with a
+    // stale target percentage.
+    const isFirstPositionRef = useRef(true);
+
+    useEffect(() => {
+      if (isDragging) return;
+      if (isFirstPositionRef.current) {
+        isFirstPositionRef.current = false;
+        return;
+      }
+      positionDomElements(currentValue);
+    }, [currentValue, isDragging, positionDomElements]);
 
     const setDragTransitions = useCallback((enable: boolean) => {
       if (thumbRef.current) thumbRef.current.style.transition = enable ? 'none' : '';
@@ -420,8 +429,22 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const showHalo = !isDisabled && (isThumbHovered || isDragging);
     const thumbSize = isDragging ? T.thumb.pressedSize[size] : T.thumb.size[size];
     const haloSize = thumbSize * T.thumb.haloMultiplier;
-    const haloTransitionDuration = castWebType(makeMotionTime(theme.motion.duration['2xquick']));
-    const haloTransitionEasing = castWebType(theme.motion.easing.emphasized);
+    const haloTransitionDuration = castWebType(makeMotionTime(theme.motion.duration.xquick));
+    const haloTransitionEasing = castWebType(
+      showHalo ? theme.motion.easing.entrance : theme.motion.easing.exit,
+    );
+
+    // Auto-render tick marks for discrete sliders with a manageable number of steps,
+    // matching the decisions.md heuristic: (max - min) / step <= 20.
+    const stepCount = step > 0 ? (max - min) / step : 0;
+    const shouldShowTicks =
+      step > 0 && Number.isFinite(stepCount) && stepCount > 0 && stepCount <= 20;
+    const tickSize = T.tick.size[size];
+    const tickColorOnActiveTrack = get(theme.colors, T.color.tick.onActiveTrack, '');
+    const tickColorOnInactiveTrack = get(theme.colors, T.color.tick.onInactiveTrack, '');
+    const tickPositions = shouldShowTicks
+      ? Array.from({ length: Math.round(stepCount) + 1 }, (_, index) => (index / stepCount) * 100)
+      : [];
 
     const thumbColor = get(
       theme.colors,
@@ -443,6 +466,16 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       (validationState === 'success' && Boolean(successText)) ||
       Boolean(helpText);
 
+    const describedById =
+      validationState === 'error' && errorText
+        ? errorTextId
+        : validationState === 'success' && successText
+        ? successTextId
+        : helpText
+        ? helpTextId
+        : undefined;
+    const isInvalid = validationState === 'error';
+
     return (
       <BaseBox
         ref={ref as React.Ref<HTMLDivElement>}
@@ -459,7 +492,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
           >
             {label && (
               <FormLabel
-                as="span"
+                as="label"
+                htmlFor={inputId}
                 position={labelPosition}
                 necessityIndicator={necessityIndicator}
                 id={labelId}
@@ -500,7 +534,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   style={{
                     position: 'absolute',
                     left: 0,
-                    width: `${pct}%`,
+                    width: `${visualPctRef.current}%`,
                     height: T.track.height,
                     borderRadius: theme.border.radius.max,
                     backgroundColor: trackFillColor,
@@ -511,6 +545,31 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                         )} ${castWebType(theme.motion.easing.standard)}`,
                   }}
                 />
+
+                {/* Tick marks — decorative, auto-rendered for manageable step counts */}
+                {shouldShowTicks && (
+                  <div
+                    aria-hidden="true"
+                    style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+                  >
+                    {tickPositions.map((tickPct) => (
+                      <div
+                        key={tickPct}
+                        style={{
+                          position: 'absolute',
+                          left: `${tickPct}%`,
+                          top: '50%',
+                          transform: 'translate(-50%, -50%)',
+                          width: tickSize,
+                          height: tickSize,
+                          borderRadius: '50%',
+                          backgroundColor:
+                            tickPct <= pct ? tickColorOnActiveTrack : tickColorOnInactiveTrack,
+                        }}
+                      />
+                    ))}
+                  </div>
+                )}
 
                 {/* Thumb wrapper — halo + visual thumb nested inside */}
                 <StyledThumb
@@ -527,6 +586,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   aria-labelledby={label ? labelId : undefined}
                   aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
                   aria-disabled={isDisabled}
+                  aria-invalid={isInvalid}
+                  aria-describedby={describedById}
                   onKeyDown={handleKeyDown}
                   onKeyUp={handleKeyUp}
                   onFocus={() => setIsThumbFocused(true)}
@@ -541,7 +602,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   onMouseLeave={() => setIsThumbHovered(false)}
                   style={{
                     position: 'absolute',
-                    left: `${pct}%`,
+                    left: `${visualPctRef.current}%`,
                     top: '50%',
                     transform: 'translate(-50%, -50%)',
                     width: 44,
@@ -593,6 +654,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
               {/* Numeric input */}
               <StyledNumericInput
+                id={inputId}
                 type="number"
                 $size={size}
                 $validationState={validationState}
@@ -602,6 +664,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 step={step}
                 disabled={isDisabled}
                 required={_isRequired}
+                aria-invalid={isInvalid}
+                aria-describedby={describedById}
                 aria-label={
                   suffix
                     ? `${label ?? accessibilityLabel ?? 'Slider'} value in ${suffix}`

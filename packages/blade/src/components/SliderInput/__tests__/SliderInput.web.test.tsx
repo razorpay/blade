@@ -106,4 +106,44 @@ describe('<SliderInput />', () => {
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
     expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 15 });
   });
+
+  it('should call onChangeStart on keydown and onChangeEnd on keyup', () => {
+    const onChangeStart = jest.fn();
+    const onChangeEnd = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput
+        label="Test"
+        defaultValue={50}
+        onChangeStart={onChangeStart}
+        onChangeEnd={onChangeEnd}
+        min={0}
+        max={100}
+        step={1}
+      />,
+    );
+    const slider = getByRole('slider');
+    fireEvent.keyDown(slider, { key: 'ArrowRight' });
+    expect(onChangeStart).toHaveBeenCalledWith({ name: undefined, value: 50 });
+    expect(onChangeEnd).not.toHaveBeenCalled();
+    fireEvent.keyUp(slider, { key: 'ArrowRight' });
+    expect(onChangeEnd).toHaveBeenCalledWith({ name: undefined, value: 51 });
+  });
+
+  it('should not call onChangeStart again while a key is held down', () => {
+    const onChangeStart = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput
+        label="Test"
+        defaultValue={50}
+        onChangeStart={onChangeStart}
+        min={0}
+        max={100}
+        step={1}
+      />,
+    );
+    const slider = getByRole('slider');
+    fireEvent.keyDown(slider, { key: 'ArrowRight' });
+    fireEvent.keyDown(slider, { key: 'ArrowRight' });
+    expect(onChangeStart).toHaveBeenCalledTimes(1);
+  });
 });
