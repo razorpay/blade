@@ -9,6 +9,7 @@ type SliderInputBaseProps = Pick<
   | 'onFocus'
   | 'onBlur'
   | 'isDisabled'
+  | 'isRequired'
   | 'testID'
   | keyof DataAnalyticsAttribute
 > & {

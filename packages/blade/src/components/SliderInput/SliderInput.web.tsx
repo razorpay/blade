@@ -18,6 +18,7 @@ import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import get from '~utils/lodashButBetter/get';
 
 const T = SLIDER_INPUT_TOKENS;
+const noop = (): void => undefined;
 
 const StyledThumb = styled.div<{
   $isFocused: boolean;
@@ -50,7 +51,7 @@ const StyledNumericInput = styled.input<{
     return get(theme.colors, 'interactive.border.gray.default', '');
   }};
   border-radius: ${({ theme }) => theme.border.radius.medium}px;
-  font-size: ${({ $size }) => ($size === 'large' ? 14 : 12)}px;
+  font-size: ${({ theme, $size }) => theme.typography.fonts.size[$size === 'large' ? 100 : 75]}px;
   text-align: right;
   font-family: inherit;
   background: transparent;
@@ -84,6 +85,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       suffix,
       size = 'medium',
       isDisabled = false,
+      isRequired = false,
       necessityIndicator,
       validationState = 'none',
       helpText,
@@ -128,6 +130,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const { theme } = useTheme();
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
+    const _isRequired = isRequired || necessityIndicator === 'required';
 
     const getRatio = useCallback((val: number) => (max === min ? 0 : (val - min) / (max - min)), [
       min,
@@ -168,10 +171,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       if (fillRef.current) fillRef.current.style.width = `${p}%`;
     }, []);
 
-    useEffect(() => {
-      return () => cancelAnimationFrame(lerpRafRef.current);
-    }, []);
-
     const animateToTarget = useCallback(() => {
       cancelAnimationFrame(lerpRafRef.current);
       const tick = (): void => {
@@ -207,48 +206,14 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       if (fillRef.current) fillRef.current.style.transition = enable ? 'none' : '';
     }, []);
 
-    const startDrag = useCallback(
-      (clientX: number) => {
-        isPointerFocusRef.current = true;
-        setDragTransitions(true);
-        setIsDragging(true);
-        const val = clamp(snap(getValueFromPosition(clientX)));
-        dragValueRef.current = val;
-        positionDomElements(val);
-        onChangeStart?.({ name, value: val });
-        updateValue(val);
-      },
-      [
-        getValueFromPosition,
-        updateValue,
-        onChangeStart,
-        name,
-        clamp,
-        snap,
-        positionDomElements,
-        setDragTransitions,
-      ],
-    );
+    // Holds the teardown for the currently-attached drag listeners (if any).
+    const detachDragListenersRef = useRef<() => void>(noop);
 
-    const handleMouseDown = useCallback(
-      (e: React.MouseEvent) => {
-        if (isDisabled) return;
-        e.preventDefault();
-        startDrag(e.clientX);
-      },
-      [isDisabled, startDrag],
-    );
-
-    const handleTouchStart = useCallback(
-      (e: React.TouchEvent) => {
-        if (isDisabled) return;
-        startDrag(e.touches[0].clientX);
-      },
-      [isDisabled, startDrag],
-    );
-
-    useEffect(() => {
-      if (!isDragging) return undefined;
+    // Attached synchronously from the mousedown/touchstart handler itself (not from a
+    // useEffect keyed on `isDragging`) so there's no gap between drag starting and the
+    // window listeners being live — closing a race where a very fast mouseup could fire
+    // before a state-driven effect had a chance to attach it, leaving isDragging stuck true.
+    const attachDragListeners = useCallback(() => {
       const onMove = (clientX: number): void => {
         const val = clamp(snap(getValueFromPosition(clientX)));
         if (val === dragValueRef.current) return;
@@ -260,6 +225,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         updateValue(val);
       };
       const onEnd = (clientX: number): void => {
+        detachDragListenersRef.current();
         cancelAnimationFrame(rafRef.current);
         cancelAnimationFrame(lerpRafRef.current);
         setDragTransitions(false);
@@ -280,33 +246,81 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       };
       const handleTouchEnd = (e: TouchEvent): void => {
         if (!e.changedTouches.length) return;
-        const touch = e.changedTouches[0];
-        onEnd(touch.clientX);
+        onEnd(e.changedTouches[0].clientX);
       };
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleMouseUp);
       window.addEventListener('touchmove', handleTouchMove, { passive: false });
       window.addEventListener('touchend', handleTouchEnd);
-      return (): void => {
+      detachDragListenersRef.current = (): void => {
         cancelAnimationFrame(rafRef.current);
-        cancelAnimationFrame(lerpRafRef.current);
         window.removeEventListener('mousemove', handleMouseMove);
         window.removeEventListener('mouseup', handleMouseUp);
         window.removeEventListener('touchmove', handleTouchMove);
         window.removeEventListener('touchend', handleTouchEnd);
+        detachDragListenersRef.current = noop;
       };
     }, [
-      isDragging,
-      getValueFromPosition,
-      getRatio,
-      updateValue,
-      onChangeEnd,
-      name,
       clamp,
       snap,
+      getValueFromPosition,
       positionDomElements,
+      updateValue,
+      getRatio,
+      applyPosition,
       setDragTransitions,
+      onChangeEnd,
+      name,
     ]);
+
+    useEffect(() => {
+      return () => {
+        detachDragListenersRef.current();
+        cancelAnimationFrame(lerpRafRef.current);
+      };
+    }, []);
+
+    const startDrag = useCallback(
+      (clientX: number) => {
+        isPointerFocusRef.current = true;
+        setDragTransitions(true);
+        setIsDragging(true);
+        const val = clamp(snap(getValueFromPosition(clientX)));
+        dragValueRef.current = val;
+        positionDomElements(val);
+        onChangeStart?.({ name, value: val });
+        updateValue(val);
+        attachDragListeners();
+      },
+      [
+        getValueFromPosition,
+        updateValue,
+        onChangeStart,
+        name,
+        clamp,
+        snap,
+        positionDomElements,
+        setDragTransitions,
+        attachDragListeners,
+      ],
+    );
+
+    const handleMouseDown = useCallback(
+      (e: React.MouseEvent) => {
+        if (isDisabled) return;
+        e.preventDefault();
+        startDrag(e.clientX);
+      },
+      [isDisabled, startDrag],
+    );
+
+    const handleTouchStart = useCallback(
+      (e: React.TouchEvent) => {
+        if (isDisabled) return;
+        startDrag(e.touches[0].clientX);
+      },
+      [isDisabled, startDrag],
+    );
 
     const isKeyActiveRef = useRef(false);
 
@@ -406,13 +420,19 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const showHalo = !isDisabled && (isThumbHovered || isDragging);
     const thumbSize = isDragging ? T.thumb.pressedSize[size] : T.thumb.size[size];
     const haloSize = thumbSize * T.thumb.haloMultiplier;
+    const haloTransitionDuration = castWebType(makeMotionTime(theme.motion.duration['2xquick']));
+    const haloTransitionEasing = castWebType(theme.motion.easing.emphasized);
 
-    const thumbColor = isDisabled
-      ? T.color.thumb.disabledHardcoded
-      : get(theme.colors, T.color.thumb.fill, '');
-    const trackFillColor = isDisabled
-      ? T.color.track.fillDisabledHardcoded
-      : get(theme.colors, T.color.track.fill, '');
+    const thumbColor = get(
+      theme.colors,
+      isDisabled ? T.color.thumb.disabled : T.color.thumb.fill,
+      '',
+    );
+    const trackFillColor = get(
+      theme.colors,
+      isDisabled ? T.color.track.fillDisabled : T.color.track.fill,
+      '',
+    );
 
     const suffixColor = isDisabled
       ? get(theme.colors, T.color.label.disabled, '')
@@ -549,7 +569,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                       opacity: showHalo ? 1 : 0,
                       transition: isDragging
                         ? 'none'
-                        : `opacity 100ms ease, width 100ms ease, height 100ms ease`,
+                        : `opacity ${haloTransitionDuration} ${haloTransitionEasing}, width ${haloTransitionDuration} ${haloTransitionEasing}, height ${haloTransitionDuration} ${haloTransitionEasing}`,
                       pointerEvents: 'none',
                     }}
                   />
@@ -581,6 +601,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 max={max}
                 step={step}
                 disabled={isDisabled}
+                required={_isRequired}
                 aria-label={
                   suffix
                     ? `${label ?? accessibilityLabel ?? 'Slider'} value in ${suffix}`
@@ -594,7 +615,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 <span
                   style={{
                     color: suffixColor,
-                    fontSize: size === 'large' ? 14 : 12,
+                    fontSize: theme.typography.fonts.size[size === 'large' ? 100 : 75],
                     flexShrink: 0,
                     whiteSpace: 'nowrap',
                   }}

@@ -17,11 +17,11 @@ export const SLIDER_INPUT_TOKENS = {
     track: {
       bg: 'feedback.background.neutral.subtle',
       fill: 'surface.icon.staticBlack.normal',
-      fillDisabledHardcoded: '#AFB6BB',
+      fillDisabled: 'surface.icon.staticBlack.disabled',
     },
     thumb: {
       fill: 'surface.icon.staticBlack.normal',
-      disabledHardcoded: '#AFB6BB',
+      disabled: 'surface.icon.staticBlack.disabled',
     },
     halo: {
       default: 'overlay.background.subtle',
