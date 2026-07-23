@@ -448,10 +448,13 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         setInputStringValue(String(currentValueRef.current));
         onBlur?.({ name, value: currentValueRef.current });
       } else {
+        // onBlur must report what was actually committed, not the raw typed value —
+        // updateValue clamps/snaps internally, so mirror that here for the callback.
+        const committed = clamp(snap(raw));
         updateValue(raw);
-        onBlur?.({ name, value: raw });
+        onBlur?.({ name, value: committed });
       }
-    }, [inputStringValue, updateValue, onBlur, name]);
+    }, [inputStringValue, updateValue, onBlur, name, clamp, snap]);
 
     const handleInputFocus = useCallback(() => {
       setIsInputFocused(true);

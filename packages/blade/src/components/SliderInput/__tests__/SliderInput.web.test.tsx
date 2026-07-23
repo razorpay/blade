@@ -192,4 +192,15 @@ describe('<SliderInput />', () => {
     fireEvent.blur(input);
     expect(onChange).toHaveBeenCalledWith({ value: 75 });
   });
+
+  it('should report the clamped value (not the raw typed value) to onBlur', () => {
+    const onBlur = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={12} onBlur={onBlur} min={0} max={24} />,
+    );
+    const input = getByRole('spinbutton') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '1000' } });
+    fireEvent.blur(input);
+    expect(onBlur).toHaveBeenCalledWith({ name: undefined, value: 24 });
+  });
 });
