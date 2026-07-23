@@ -16,6 +16,25 @@
 
 <script>
   import { Button, Text, Heading, Code } from '../components';
+
+  const themeToggleCode = `<script>
+  import { Button } from '@razorpay/blade-svelte/components';
+
+  let isDark = $state(false);
+
+  function toggleTheme() {
+    isDark = !isDark;
+    if (isDark) {
+      document.body.setAttribute('data-theme', 'dark');
+    } else {
+      document.body.removeAttribute('data-theme');
+    }
+  }
+<\/script>
+
+<Button onClick={toggleTheme}>
+  Toggle Theme
+</Button>`;
 </script>
 
 <Story name="Quick Start">
@@ -81,24 +100,7 @@ npm install @razorpay/blade-svelte`}</code></pre>
     <Text size="medium" color="surface.text.gray.muted">
       Or toggle it programmatically:
     </Text>
-    <pre style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"><code>{`<script>
-  import { Button } from '@razorpay/blade-svelte/components';
-
-  let isDark = $state(false);
-
-  function toggleTheme() {
-    isDark = !isDark;
-    if (isDark) {
-      document.body.setAttribute('data-theme', 'dark');
-    } else {
-      document.body.removeAttribute('data-theme');
-    }
-  }
-</script>
-
-<Button onClick={toggleTheme}>
-  Toggle Theme
-</Button>`}</code></pre>
+    <pre style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"><code>{themeToggleCode}</code></pre>
     <Text size="small" color="surface.text.gray.muted">
       Use the theme switcher in the Storybook toolbar to preview dark mode.
     </Text>
