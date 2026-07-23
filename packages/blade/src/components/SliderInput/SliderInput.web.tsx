@@ -407,8 +407,14 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const handleThumbBlur = useCallback(() => {
       setIsThumbFocused(false);
       isPointerFocusRef.current = false;
-      isKeyActiveRef.current = false;
-    }, []);
+      // If focus leaves mid-keypress, no keyup will ever arrive for this element. Beyond
+      // resetting the ref (so the next keydown isn't swallowed), fire onChangeEnd so a
+      // consumer that reacted to onChangeStart always gets a matching close for the gesture.
+      if (isKeyActiveRef.current) {
+        isKeyActiveRef.current = false;
+        onChangeEnd?.({ value: currentValueRef.current });
+      }
+    }, [onChangeEnd]);
 
     const handleThumbPointerDown = useCallback(() => {
       isPointerFocusRef.current = true;

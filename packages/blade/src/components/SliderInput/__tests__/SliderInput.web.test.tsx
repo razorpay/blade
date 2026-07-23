@@ -146,4 +146,50 @@ describe('<SliderInput />', () => {
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
     expect(onChangeStart).toHaveBeenCalledTimes(1);
   });
+
+  it('should not crash or produce NaN when step is 0', () => {
+    const onChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" value={50} onChange={onChange} min={0} max={100} step={0} />,
+    );
+    const slider = getByRole('slider');
+    fireEvent.keyDown(slider, { key: 'ArrowRight' });
+    expect(onChange).toHaveBeenCalledWith({ value: 51 });
+  });
+
+  it('should fire onChangeEnd and reset key-active state if focus leaves mid-keypress', () => {
+    const onChangeStart = jest.fn();
+    const onChangeEnd = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput
+        label="Test"
+        defaultValue={50}
+        onChangeStart={onChangeStart}
+        onChangeEnd={onChangeEnd}
+        min={0}
+        max={100}
+        step={1}
+      />,
+    );
+    const slider = getByRole('slider');
+    fireEvent.keyDown(slider, { key: 'ArrowRight' });
+    fireEvent.blur(slider);
+    expect(onChangeEnd).toHaveBeenCalledWith({ value: 51 });
+
+    fireEvent.focus(slider);
+    fireEvent.keyDown(slider, { key: 'ArrowRight' });
+    expect(onChangeStart).toHaveBeenCalledTimes(2);
+  });
+
+  it('should not commit the numeric input value until blur', () => {
+    const onChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={50} onChange={onChange} min={0} max={100} />,
+    );
+    const input = getByRole('spinbutton') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '75' } });
+    expect(onChange).not.toHaveBeenCalled();
+    fireEvent.blur(input);
+    expect(onChange).toHaveBeenCalledWith({ value: 75 });
+  });
 });
