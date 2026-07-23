@@ -17,7 +17,7 @@ import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import get from '~utils/lodashButBetter/get';
 
-const T = SLIDER_INPUT_TOKENS;
+const tokens = SLIDER_INPUT_TOKENS;
 const noop = (): void => undefined;
 
 const StyledThumb = styled.div<{
@@ -390,6 +390,27 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       [onChangeEnd, name],
     );
 
+    const handleThumbFocus = useCallback(() => {
+      setIsThumbFocused(true);
+    }, []);
+
+    const handleThumbBlur = useCallback(() => {
+      setIsThumbFocused(false);
+      isPointerFocusRef.current = false;
+    }, []);
+
+    const handleThumbPointerDown = useCallback(() => {
+      isPointerFocusRef.current = true;
+    }, []);
+
+    const handleThumbMouseEnter = useCallback(() => {
+      if (!isDisabled) setIsThumbHovered(true);
+    }, [isDisabled]);
+
+    const handleThumbMouseLeave = useCallback(() => {
+      setIsThumbHovered(false);
+    }, []);
+
     const [inputStringValue, setInputStringValue] = useState(String(currentValue));
     const [isInputFocused, setIsInputFocused] = useState(false);
 
@@ -427,8 +448,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     }, [inputStringValue, onFocus, name]);
 
     const showHalo = !isDisabled && (isThumbHovered || isDragging);
-    const thumbSize = isDragging ? T.thumb.pressedSize[size] : T.thumb.size[size];
-    const haloSize = thumbSize * T.thumb.haloMultiplier;
+    const thumbSize = isDragging ? tokens.thumb.pressedSize[size] : tokens.thumb.size[size];
+    const haloSize = thumbSize * tokens.thumb.haloMultiplier;
     const haloTransitionDuration = castWebType(makeMotionTime(theme.motion.duration.xquick));
     const haloTransitionEasing = castWebType(
       showHalo ? theme.motion.easing.entrance : theme.motion.easing.exit,
@@ -439,27 +460,27 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const stepCount = step > 0 ? (max - min) / step : 0;
     const shouldShowTicks =
       step > 0 && Number.isFinite(stepCount) && stepCount > 0 && stepCount <= 20;
-    const tickSize = T.tick.size[size];
-    const tickColorOnActiveTrack = get(theme.colors, T.color.tick.onActiveTrack, '');
-    const tickColorOnInactiveTrack = get(theme.colors, T.color.tick.onInactiveTrack, '');
+    const tickSize = tokens.tick.size[size];
+    const tickColorOnActiveTrack = get(theme.colors, tokens.color.tick.onActiveTrack, '');
+    const tickColorOnInactiveTrack = get(theme.colors, tokens.color.tick.onInactiveTrack, '');
     const tickPositions = shouldShowTicks
       ? Array.from({ length: Math.round(stepCount) + 1 }, (_, index) => (index / stepCount) * 100)
       : [];
 
     const thumbColor = get(
       theme.colors,
-      isDisabled ? T.color.thumb.disabled : T.color.thumb.fill,
+      isDisabled ? tokens.color.thumb.disabled : tokens.color.thumb.fill,
       '',
     );
     const trackFillColor = get(
       theme.colors,
-      isDisabled ? T.color.track.fillDisabled : T.color.track.fill,
+      isDisabled ? tokens.color.track.fillDisabled : tokens.color.track.fill,
       '',
     );
 
     const suffixColor = isDisabled
-      ? get(theme.colors, T.color.label.disabled, '')
-      : get(theme.colors, T.color.label.text, '');
+      ? get(theme.colors, tokens.color.label.disabled, '')
+      : get(theme.colors, tokens.color.label.text, '');
 
     const willRenderHintText =
       (validationState === 'error' && Boolean(errorText)) ||
@@ -523,9 +544,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   position="absolute"
                   left="spacing.0"
                   right="spacing.0"
-                  height={`${T.track.height}px`}
+                  height={`${tokens.track.height}px`}
                   borderRadius="max"
-                  backgroundColor={T.color.track.bg}
+                  backgroundColor={tokens.color.track.bg}
                 />
 
                 {/* Fill track */}
@@ -535,7 +556,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     position: 'absolute',
                     left: 0,
                     width: `${visualPctRef.current}%`,
-                    height: T.track.height,
+                    height: tokens.track.height,
                     borderRadius: theme.border.radius.max,
                     backgroundColor: trackFillColor,
                     transition: isDragging
@@ -590,16 +611,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   aria-describedby={describedById}
                   onKeyDown={handleKeyDown}
                   onKeyUp={handleKeyUp}
-                  onFocus={() => setIsThumbFocused(true)}
-                  onBlur={() => {
-                    setIsThumbFocused(false);
-                    isPointerFocusRef.current = false;
-                  }}
-                  onPointerDown={() => {
-                    isPointerFocusRef.current = true;
-                  }}
-                  onMouseEnter={() => !isDisabled && setIsThumbHovered(true)}
-                  onMouseLeave={() => setIsThumbHovered(false)}
+                  onFocus={handleThumbFocus}
+                  onBlur={handleThumbBlur}
+                  onPointerDown={handleThumbPointerDown}
+                  onMouseEnter={handleThumbMouseEnter}
+                  onMouseLeave={handleThumbMouseLeave}
                   style={{
                     position: 'absolute',
                     left: `${visualPctRef.current}%`,
@@ -625,8 +641,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                       height: showHalo ? haloSize : 0,
                       borderRadius: '50%',
                       backgroundColor: isDragging
-                        ? get(theme.colors, T.color.halo.dragging, '')
-                        : get(theme.colors, T.color.halo.default, ''),
+                        ? get(theme.colors, tokens.color.halo.dragging, '')
+                        : get(theme.colors, tokens.color.halo.default, ''),
                       opacity: showHalo ? 1 : 0,
                       transition: isDragging
                         ? 'none'
@@ -693,7 +709,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
           {willRenderHintText && (
             <BaseBox
               marginLeft={
-                isLabelLeftPositioned ? `${T.label.width + T.gap.labelToSlider}px` : undefined
+                isLabelLeftPositioned
+                  ? `${tokens.label.width + tokens.gap.labelToSlider}px`
+                  : undefined
               }
             >
               {validationState === 'error' && errorText ? (
