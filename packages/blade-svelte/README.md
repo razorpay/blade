@@ -22,7 +22,7 @@ Blade is the Design System that powers [Razorpay](https://razorpay.com/). This p
 ## 🔗 Links
 
 - [Docs](https://blade.razorpay.com)
-- [GitHub](https://github.com/razorpay/blade)
+- [Installation](https://blade.razorpay.com/?path=/docs/guides-installation--docs)
 - [@razorpay/blade](https://github.com/razorpay/blade/tree/master/packages/blade) (React version)
 
 ## ✨ Features
@@ -36,8 +36,6 @@ Blade is the Design System that powers [Razorpay](https://razorpay.com/). This p
 ## 📦 Installation
 
 ### Prerequisites
-
-Before you install the package, make sure that you have:
 
 - Node.js version >= 18.12.1
 - Svelte version >= 5.35.0
@@ -58,31 +56,17 @@ npm install @razorpay/blade-svelte
 
 Import the theme CSS in your root layout or app entry file:
 
-```svelte
-<!-- src/routes/+layout.svelte or App.svelte -->
-<script>
-  import '@razorpay/blade-core/tokens/theme.css';
-</script>
-```
-
-Or in a regular TypeScript/JavaScript file:
-
 ```ts
-// src/main.ts or src/app.ts
 import '@razorpay/blade-core/tokens/theme.css';
 ```
 
 ### Install Fonts
 
-Blade uses two fonts: [TASA Orbiter](https://tasatype.localremote.co/) (for headings) and [Inter](https://rsms.me/inter/) (for body text).
-
-You can install fonts by importing the fonts CSS from `@razorpay/blade-core`:
-
 ```ts
 import '@razorpay/blade-core/fonts.css';
 ```
 
-Or add fonts via CDN in your HTML:
+Or via CDN:
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/@razorpay/blade-core@latest/fonts.css" />
@@ -97,37 +81,14 @@ Or add fonts via CDN in your HTML:
 
 <Heading size="large">Welcome to Blade</Heading>
 <Text>This is Blade Design System for Svelte.</Text>
-<Button variant="primary" onclick={() => alert('Clicked!')}>
+<Button variant="primary" onClick={() => alert('Clicked!')}>
   Click me
 </Button>
 ```
 
-### Dark Mode
+> Blade Svelte uses React-style event prop names (e.g. `onClick`, `onBlur`, `onFocus`) rather than Svelte's native `on:click` directive. This is intentional for API parity with the React version of Blade.
 
-To enable dark mode, add the `data-theme="dark"` attribute to the `body` or a parent element:
-
-```html
-<body data-theme="dark">
-  <!-- Your app -->
-</body>
-```
-
-Or toggle it programmatically:
-
-```svelte
-<script>
-  let isDark = $state(false);
-  
-  function toggleTheme() {
-    isDark = !isDark;
-    document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
-  }
-</script>
-
-<Button onclick={toggleTheme}>
-  Toggle Theme
-</Button>
-```
+For full documentation including dark mode setup and all available components, see the [Installation Guide](https://blade.razorpay.com/?path=/docs/guides-installation--docs) in Storybook.
 
 ## 📝 License
 
@@ -136,4 +97,3 @@ Licensed under the [MIT License](https://github.com/razorpay/blade/blob/master/L
 <h1 aria-hidden="true"></h1>
 
 <p align="center">Interested in working with us? Checkout our <a href="https://razorpay.com/jobs">Jobs Page</a> for open roles 🤗</p>
-
