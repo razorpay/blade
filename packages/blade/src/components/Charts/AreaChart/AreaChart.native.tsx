@@ -508,48 +508,54 @@ const AreaSeries = ({
   const isDashedBridge = connectNulls && connectNullsStyle === 'dashed';
   const shouldGapAtNulls = !connectNulls || isDashedBridge;
 
-  const segments: SeriesPoint[][] = [];
-  if (shouldGapAtNulls) {
-    // Split at nulls (for hard gap or dashed bridge)
-    let current: SeriesPoint[] = [];
-    points.forEach((p) => {
-      if (p.isNull) {
-        if (current.length) segments.push(current);
-        current = [];
-      } else {
-        current.push(p);
-      }
-    });
-    if (current.length) segments.push(current);
-  } else {
-    // For 'solid': one continuous segment with null points filtered out,
-    // so the area and stroke connect directly across the gap (backward compatible).
-    const filtered = points.filter((p) => !p.isNull);
-    if (filtered.length) segments.push(filtered);
-  }
+  const segments = useMemo<SeriesPoint[][]>(() => {
+    const result: SeriesPoint[][] = [];
+    if (shouldGapAtNulls) {
+      // Split at nulls (for hard gap or dashed bridge)
+      let current: SeriesPoint[] = [];
+      points.forEach((p) => {
+        if (p.isNull) {
+          if (current.length) result.push(current);
+          current = [];
+        } else {
+          current.push(p);
+        }
+      });
+      if (current.length) result.push(current);
+    } else {
+      // For 'solid': one continuous segment with null points filtered out,
+      // so the area and stroke connect directly across the gap (backward compatible).
+      const filtered = points.filter((p) => !p.isNull);
+      if (filtered.length) result.push(filtered);
+    }
+    return result;
+  }, [points, shouldGapAtNulls]);
 
   // For a dashed bridge, draw a stroke-only line across each interior gap, densely sampled onto the
   // monotone spline through all real points so it follows the same curve as the flanking area line.
-  const bridgePaths: string[] = [];
-  if (isDashedBridge && segments.length > 1) {
-    const definedTop = points.filter((p) => !p.isNull);
-    const xs = definedTop.map((p) => p.x);
-    const ys = definedTop.map((p) => p.yTop);
-    for (let i = 0; i < segments.length - 1; i++) {
-      const from = segments[i][segments[i].length - 1];
-      const to = segments[i + 1][0];
-      if (!from || !to) continue;
-      const sampleCount = Math.max(2, Math.round(Math.abs(to.x - from.x) / 3));
-      let bridgeD = `M ${from.x} ${from.yTop}`;
-      for (let step = 1; step <= sampleCount; step++) {
-        const t = step / sampleCount;
-        const x = from.x + (to.x - from.x) * t;
-        const y = monotoneInterpolateFC(xs, ys, x);
-        bridgeD += ` L ${x} ${y}`;
+  const bridgePaths = useMemo<string[]>(() => {
+    const paths: string[] = [];
+    if (isDashedBridge && segments.length > 1) {
+      const definedTop = points.filter((p) => !p.isNull);
+      const xs = definedTop.map((p) => p.x);
+      const ys = definedTop.map((p) => p.yTop);
+      for (let i = 0; i < segments.length - 1; i++) {
+        const from = segments[i][segments[i].length - 1];
+        const to = segments[i + 1][0];
+        if (!from || !to) continue;
+        const sampleCount = Math.max(2, Math.round(Math.abs(to.x - from.x) / 3));
+        let bridgeD = `M ${from.x} ${from.yTop}`;
+        for (let step = 1; step <= sampleCount; step++) {
+          const t = step / sampleCount;
+          const x = from.x + (to.x - from.x) * t;
+          const y = monotoneInterpolateFC(xs, ys, x);
+          bridgeD += ` L ${x} ${y}`;
+        }
+        paths.push(bridgeD);
       }
-      bridgePaths.push(bridgeD);
     }
-  }
+    return paths;
+  }, [points, isDashedBridge, segments]);
 
   return (
     <G>

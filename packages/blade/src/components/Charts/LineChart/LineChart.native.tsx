@@ -636,8 +636,6 @@ const LineSeries = ({
     line.connectNullsStyle,
   ]);
   const dash = getStrokeDasharray(line.strokeStyle);
-  // Dash pattern for the stretch drawn across null points (only present for dashed bridges).
-  const nullBridgeDash = NULL_BRIDGE_DASHARRAY;
   const clipId = `line-${chartId}-reveal-${index}`;
 
   return (
@@ -655,7 +653,7 @@ const LineSeries = ({
             d={buildPath(segment.points, line.type)}
             stroke={color}
             strokeWidth={LINE_STROKE_WIDTH}
-            strokeDasharray={segment.isNullBridge ? nullBridgeDash : dash}
+            strokeDasharray={segment.isNullBridge ? NULL_BRIDGE_DASHARRAY : dash}
             strokeLinecap="round"
             strokeLinejoin="round"
             fill="none"
