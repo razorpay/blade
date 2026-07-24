@@ -56,10 +56,7 @@ const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => 
 };
 
 // Resolve a (possibly nested, e.g. `metrics.sales`) dataKey from a data row.
-const resolveDataKeyValue = (
-  row: Record<string, unknown>,
-  dataKey: DataKey,
-): unknown => {
+const resolveDataKeyValue = (row: Record<string, unknown>, dataKey: DataKey): unknown => {
   const path = String(dataKey);
   if (!path) return undefined;
   return path.split('.').reduce<unknown>((accumulator, key) => {
