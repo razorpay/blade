@@ -7,7 +7,6 @@
   } from '@razorpay/blade-core/utils';
   import { getActionListItemClasses, getActionListTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../Typography/Text/Text.svelte';
-  import Checkbox from '../Checkbox/Checkbox.svelte';
   import { getActionListContext, setActionListItemContext } from './actionListContext';
   import { getActionListItemRole } from './getA11yRoles';
   import type { ActionListItemContextValue, ActionListItemProps } from './types';
@@ -35,6 +34,18 @@
   const ctx = getActionListContext();
 
   const isMultiSelect = $derived(ctx?.selectionType === 'multiple');
+
+  // Lazy-load the Checkbox: it's only rendered as the selection indicator for
+  // multi-select lists, so single-select usage never pulls it into the bundle.
+  let Checkbox = $state<typeof import('../Checkbox/Checkbox.svelte').default | null>(null);
+
+  $effect(() => {
+    if (isMultiSelect && !Checkbox) {
+      void import('../Checkbox/Checkbox.svelte').then((module) => {
+        Checkbox = module.default;
+      });
+    }
+  });
 
   // Selection: explicit prop wins, else derive from ActionList `selectedValue`.
   // In multiple mode `selectedValue` is an array → membership check; in single
@@ -103,7 +114,9 @@
            non-interactive (`tabindex=-1`, pointer-events none via .itemSelector)
            and the row itself carries `aria-selected`. -->
       <span class={templateClasses.itemSelector} aria-hidden="true">
-        <Checkbox isChecked={isItemSelected} isDisabled={isDisabled} tabIndex={-1} />
+        {#if Checkbox}
+          <Checkbox isChecked={isItemSelected} isDisabled={isDisabled} tabIndex={-1} />
+        {/if}
       </span>
     {:else if leading}
       <span class={templateClasses.itemLeading}>{@render leading()}</span>

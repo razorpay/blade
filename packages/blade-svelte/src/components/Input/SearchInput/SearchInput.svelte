@@ -4,7 +4,6 @@
   import { useFormId } from '../BaseInput/useFormId';
   import BaseInput from '../BaseInput/BaseInput.svelte';
   import IconButton from '../../Button/IconButton/IconButton.svelte';
-  import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import { CloseIcon, SearchIcon } from '../../Icons';
   import type { SearchInputProps } from './types';
 
@@ -64,6 +63,20 @@
 
   const showInteractionElement = $derived(isLoading || shouldShowClearButton);
 
+  // Lazy-load the Spinner: it's only rendered while `isLoading`, so the common
+  // (non-loading) case never pulls it into the bundle.
+  let Spinner = $state<typeof import('../../Spinner/BaseSpinner/BaseSpinner.svelte').default | null>(
+    null,
+  );
+
+  $effect(() => {
+    if (isLoading && !Spinner) {
+      void import('../../Spinner/BaseSpinner/BaseSpinner.svelte').then((module) => {
+        Spinner = module.default;
+      });
+    }
+  });
+
   export function focus(): void {
     baseInput?.focus();
   }
@@ -76,7 +89,7 @@
 </script>
 
 {#snippet trailingInteraction()}
-  {#if isLoading}
+  {#if isLoading && Spinner}
     <Spinner accessibilityLabel="Loading Content" color="primary" size="medium" />
   {:else if shouldShowClearButton}
     <IconButton icon={CloseIcon} size="medium" {isDisabled} accessibilityLabel="Clear Input Content" onClick={clearInput} />

@@ -41,7 +41,6 @@
   import type { Snippet } from 'svelte';
   import { getBaseInputTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../../Typography/Text/Text.svelte';
-  import Tooltip from '../../Tooltip/Tooltip.svelte';
   import type { IconComponent } from '../../Icons/iconMap';
 
   const templateClasses = getBaseInputTemplateClasses();
@@ -190,6 +189,19 @@
         : '',
   );
 
+  // Lazy-load the Tooltip component: it's only needed when validation hints are
+  // shown as a tooltip (`showHintsAsTooltip`), so we avoid pulling it into the
+  // main bundle for the common case where it's never rendered.
+  let Tooltip = $state<typeof import('../../Tooltip/Tooltip.svelte').default | null>(null);
+
+  $effect(() => {
+    if (showValidationTooltip && !Tooltip) {
+      void import('../../Tooltip/Tooltip.svelte').then((module) => {
+        Tooltip = module.default;
+      });
+    }
+  });
+
   const iconColor = $derived<IconColor>(
     isDisabled ? 'interactive.icon.gray.disabled' : trailingIconColorMap[validationState],
   );
@@ -270,7 +282,7 @@
     {/if}
     {#if TrailingIcon}
       <div class={trailingIconClasses}>
-        {#if showValidationTooltip}
+        {#if showValidationTooltip && Tooltip}
           <Tooltip content={tooltipContent}>
             <div class={templateClasses.trailingIcon}>
               <TrailingIcon size={iconSize} color={iconColor} />

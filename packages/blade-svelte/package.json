@@ -4,6 +4,10 @@
   "description": "Blade Design System for Svelte",
   "license": "MIT",
   "type": "module",
+  "sideEffects": [
+    "**/*.css",
+    "**/*.module.css"
+  ],
   "engines": {
     "node": ">=18.12.1"
   },
