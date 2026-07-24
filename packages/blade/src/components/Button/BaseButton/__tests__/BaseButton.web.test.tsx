@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { fireEvent } from '@testing-library/react';
+import { act, fireEvent } from '@testing-library/react';
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import type { BaseButtonProps } from '../BaseButton';
@@ -20,6 +20,7 @@ const colors: BaseButtonProps['color'][] = [
 ];
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterEach(() => jest.useRealTimers());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<BaseButton />', () => {
@@ -236,6 +237,43 @@ describe('<BaseButton />', () => {
     expect(container).toMatchSnapshot();
     await user.click(loadingButton);
     expect(getByText(/Stopped loading/i)).toBeInTheDocument();
+  });
+
+  it('should keep content visible and call onLoadingComplete for definite loading', () => {
+    jest.useFakeTimers();
+    const onLoadingComplete = jest.fn();
+    const { getByRole, getByText } = renderWithTheme(
+      <BaseButton loadingType="definite" loadingTimer={1000} onLoadingComplete={onLoadingComplete}>
+        Pay Now
+      </BaseButton>,
+    );
+
+    const button = getByRole('button');
+    expect(button).toBeDisabled();
+    expect(button).toHaveAttribute('aria-busy', 'true');
+    expect(getByText('Pay Now')).toBeVisible();
+
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(onLoadingComplete).toHaveBeenCalledTimes(1);
+    expect(button).not.toBeDisabled();
+    expect(button).not.toHaveAttribute('aria-busy');
+    jest.useRealTimers();
+  });
+
+  it('should not treat isLoading as loading when loadingType is definite without loadingTimer', () => {
+    const { getByRole, getByText } = renderWithTheme(
+      <BaseButton isLoading={true} loadingType="definite">
+        Pay Now
+      </BaseButton>,
+    );
+
+    const button = getByRole('button');
+    expect(button).not.toBeDisabled();
+    expect(button).not.toHaveAttribute('aria-busy');
+    expect(getByText('Pay Now')).toBeVisible();
   });
 
   it('should not have accessibility violations', async () => {

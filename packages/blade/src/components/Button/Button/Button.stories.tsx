@@ -71,6 +71,7 @@ export default {
     iconPosition: 'left',
     isFullWidth: false,
     type: 'button',
+    loadingType: 'indefinite',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -81,6 +82,16 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
+    },
+    loadingType: {
+      control: 'select',
+      options: ['indefinite', 'definite'],
+      description:
+        '`indefinite` shows a 3-dot loader controlled by `isLoading`; `definite` shows a left-to-right progress overlay over `loadingTimer` ms',
+    },
+    loadingTimer: {
+      control: 'number',
+      description: 'Duration (ms) over which the `definite` progress overlay fills from 0% to 100%',
     },
   },
   parameters: {
@@ -95,6 +106,7 @@ const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', 
 };
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
+
 const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
@@ -409,6 +421,61 @@ ButtonLoading.parameters = {
     },
   },
 };
+
+ButtonLoading.storyName = 'Indefinite Loading (3-dot loader)';
+
+export const DefiniteLoadingWithoutTimer: StoryFn<typeof ButtonComponent> = ({
+  children = 'Button',
+  ...args
+}) => {
+  return (
+    <ButtonComponent {...args} loadingType="definite" isLoading={true}>
+      {children}
+    </ButtonComponent>
+  );
+};
+
+DefiniteLoadingWithoutTimer.storyName = 'Definite Loading Without Timer (falls back to dots)';
+
+DefiniteLoadingWithoutTimer.parameters = {
+  docs: {
+    description: {
+      story:
+        'When `loadingType="definite"` is set but `loadingTimer` is omitted, the button falls back to the indefinite 3-dot loader. A `__DEV__` warning is also emitted.',
+    },
+  },
+};
+
+export const DefiniteLoading: StoryFn<typeof ButtonComponent> = ({
+  children = 'Processing',
+  ...args
+}) => {
+  return (
+    <ButtonComponent {...args} loadingType="definite" loadingTimer={3000} size="large">
+      {children}
+    </ButtonComponent>
+  );
+};
+
+DefiniteLoading.storyName = 'Definite Loading';
+
+export const DefiniteLoadingWithCompleteCallback: StoryFn<typeof ButtonComponent> = () => {
+  const [isDefiniteLoadingDemoActive, setIsDefiniteLoadingDemoActive] = useState(false);
+
+  return (
+    <ButtonComponent
+      size="large"
+      loadingType={isDefiniteLoadingDemoActive ? 'definite' : 'indefinite'}
+      loadingTimer={isDefiniteLoadingDemoActive ? 2500 : undefined}
+      onClick={() => setIsDefiniteLoadingDemoActive(true)}
+      onLoadingComplete={() => setIsDefiniteLoadingDemoActive(false)}
+    >
+      {isDefiniteLoadingDemoActive ? 'Processing' : 'Complete in 2.5s'}
+    </ButtonComponent>
+  );
+};
+
+DefiniteLoadingWithCompleteCallback.storyName = 'Definite Loading With Complete Callback';
 
 export const FullWidthButton = ButtonWithVariantTemplate.bind({});
 FullWidthButton.storyName = 'Full Width';
