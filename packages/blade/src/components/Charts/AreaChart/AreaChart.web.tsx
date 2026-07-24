@@ -39,7 +39,7 @@ const Area: React.FC<ChartAreaProps> = ({
   _index,
   _colorTheme,
   _totalAreas,
-  _gradientNamespace,
+  _gradientNamespace = '',
   dataKey,
   name,
   hide,

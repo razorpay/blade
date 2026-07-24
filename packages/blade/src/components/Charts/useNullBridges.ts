@@ -32,7 +32,7 @@ const useNullBridges = ({
   selectedDataKeys,
   curveSelector,
 }: UseNullBridgesOptions): {
-  containerRef: React.RefObject<HTMLDivElement | null>;
+  containerRef: React.RefObject<HTMLDivElement>;
   bridgePaths: BridgePath[];
 } => {
   const containerRef = useRef<HTMLDivElement>(null);
