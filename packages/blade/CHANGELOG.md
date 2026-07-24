@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 12.112.0
+
+### Minor Changes
+
+- 8030a0aac: feat(tokens): add bladeNeutralTheme and support publishing multiple themes from the Figma token publisher
+- c55ea279d: feat(tokens): add new emphasis levels (faint, moderate, strong) for primary surface and accent color category. Also migrates primary button, focus-ring, and action colors from azure to black (neutral) for the neutral theme, and updates blueGrayLight ghost value from a1 to a0.
+
 ## 12.111.1
 
 ### Patch Changes
