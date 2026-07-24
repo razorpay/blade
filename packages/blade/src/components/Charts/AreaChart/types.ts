@@ -17,9 +17,9 @@ type ChartAreaProps = {
    *
    * - `false` (default): the area breaks at null points, leaving a gap (no fill either). Use this
    *   for genuine data outages where no continuity should be implied.
-   * - `true`: a line bridges across null points while the fill stays gapped underneath (there's
-   *   never a fill under a no-data stretch). Use `connectNullsStyle` to control whether that bridge
-   *   line is solid or dashed.
+   * - `true`: bridges across null points. With `connectNullsStyle="solid"` (default), the area
+   *   fills and strokes across nulls (backward compatible). With `connectNullsStyle="dashed"`, the
+   *   fill is gapped and only a dashed bridge line is drawn.
    *
    * Narrowed to `boolean` (instead of `RechartAreaProps['connectNulls']`) intentionally: Blade
    * restricts the API surface to a controlled subset so that `connectNullsStyle` — a Blade-specific
@@ -32,13 +32,11 @@ type ChartAreaProps = {
   /**
    * The style of the line drawn across null points. **Only takes effect when `connectNulls` is
    * `true`** — when `connectNulls` is `false` (or unset) the area simply breaks at null points and
-   * this prop is ignored. In both cases the area fill is omitted under the no-data stretch — only
-   * the bridge line differs.
+   * this prop is ignored.
    *
-   * - `'solid'` (default): real data renders as a solid area and the gap is bridged with a solid
-   *   line (no fill underneath).
-   * - `'dashed'`: real data renders as a solid area and the gap is bridged with a dashed line (no
-   *   fill underneath), signalling "no data for this period" without implying a measured value.
+   * - `'solid'` (default): the area fills and strokes across null points (backward compatible).
+   * - `'dashed'`: the fill is gapped and only a dashed bridge line is drawn across null points,
+   *   signalling "no data for this period" without implying a measured value.
    *
    * @default 'solid'
    * @see {@link connectNulls} — must be `true` for this prop to have any effect
