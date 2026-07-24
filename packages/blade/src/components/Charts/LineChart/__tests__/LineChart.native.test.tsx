@@ -117,6 +117,31 @@ describe('<ChartLineWrapper /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render a dashed bridge segment across nulls when connectNullsStyle is "dashed"', () => {
+    const dataWithNulls = [
+      { name: 'Jan', sales: 4000 },
+      { name: 'Feb', sales: null },
+      { name: 'Mar', sales: 2000 },
+    ];
+    const { getAllByTestId, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={dataWithNulls} testID="dashed-bridge">
+        <ChartLine dataKey="sales" connectNulls={true} connectNullsStyle="dashed" />
+      </ChartLineWrapper>,
+    );
+    fireLayout(getByTestId('dashed-bridge-layout'));
+    const paths = getAllByTestId('line-path-sales');
+    // Two solid data segments (no dash) plus a dashed bridge connecting them. react-native-svg
+    // normalizes the '5 5' dash string into ['5', '5'].
+    expect(paths.length).toBeGreaterThanOrEqual(3);
+    const dashValues = paths.map((path) => {
+      const dash = path.props.strokeDasharray;
+      return Array.isArray(dash) ? dash.join(' ') : dash;
+    });
+    expect(dashValues).toContain('5 5');
+    // The solid data segments must not carry the dashed pattern.
+    expect(dashValues.filter((dash) => dash === '5 5')).toHaveLength(1);
+  });
+
   it('should render a horizontal reference line (y)', () => {
     const { toJSON, getByTestId } = renderWithTheme(
       <ChartLineWrapper data={mockData} testID="ref-h">
