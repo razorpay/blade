@@ -254,11 +254,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
    */
   const containerRef = useRef<HTMLDivElement>(null);
   const [bridgePaths, setBridgePaths] = useState<
-    Array<{
-      id: string;
-      d: string;
-      stroke: string;
-    }>
+    Array<{ id: string; dataKey: string; d: string; stroke: string }>
   >([]);
 
   useLayoutEffect(() => {
@@ -286,6 +282,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
 
       const nextPaths: Array<{
         id: string;
+        dataKey: string;
         d: string;
         stroke: string;
       }> = [];
@@ -300,6 +297,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         getInteriorGaps(indices).forEach(({ from, to }) => {
           nextPaths.push({
             id: `null-bridge-${area.dataKey}-${indices[from]}`,
+            dataKey: area.dataKey,
             d: buildBridgePathData(anchors, from, to),
             stroke,
           });
@@ -365,18 +363,22 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     if (bridgePaths.length === 0) return null;
     return (
       <g className="blade-null-bridge-layer">
-        {bridgePaths.map(({ id, d, stroke }) => (
-          <path
-            key={id}
-            d={d}
-            fill="none"
-            stroke={stroke}
-            strokeWidth={1.5}
-            strokeDasharray={NULL_BRIDGE_DASHARRAY}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        ))}
+        {bridgePaths.map(({ id, dataKey, d, stroke }) => {
+          const isHidden = selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false;
+          if (isHidden) return null;
+          return (
+            <path
+              key={id}
+              d={d}
+              fill="none"
+              stroke={stroke}
+              strokeWidth={1.5}
+              strokeDasharray={NULL_BRIDGE_DASHARRAY}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          );
+        })}
       </g>
     );
   };
