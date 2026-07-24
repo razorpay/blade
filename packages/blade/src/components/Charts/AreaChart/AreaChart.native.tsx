@@ -22,7 +22,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { SharedValue } from 'react-native-reanimated';
 import { useChartsColorTheme, assignDataColorMapping, getHighestColorInRange } from '../utils';
-import { monotoneInterpolate } from '../LineChart/nullBridgeUtils';
+import { monotoneInterpolate } from '../utils/nullBridgeUtils';
 import {
   CommonChartComponentsContext,
   componentId as commonComponentIds,

@@ -38,7 +38,7 @@ import type {
 } from '../CommonChartComponents/types';
 import { componentIds } from './componentIds';
 import { LineChartContext } from './LineChartContext';
-import { monotoneInterpolate } from './nullBridgeUtils';
+import { monotoneInterpolate } from '../utils/nullBridgeUtils';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
@@ -503,6 +503,13 @@ type LineSegment = { points: Point[]; isNullBridge: boolean };
 // - connectNulls `true` + 'dashed': solid sub-paths for real data, plus dashed bridge segments
 //   that follow the monotone curve across each null run (gap points sampled onto the real curve so
 //   the bridge is curved rather than a straight line).
+//
+// **Note:** The dashed bridge is always sampled using `monotoneInterpolate`, regardless of the
+// line's `type` prop. For `type="step"`/`"stepBefore"`/`"stepAfter"`, the solid data segments
+// use `buildStepPath` but the bridge points follow a smooth monotone cubic curve. The bridge
+// shape will not match the stepped line for step-type curves. This matches the web behaviour,
+// where `connectNullsStyle="dashed"` is only supported for `type="monotone"` and `type="linear"`
+// (see `parsePathAnchors` in `nullBridgeUtils.ts`).
 const buildSegments = (
   points: LinePoint[],
   connectNulls: boolean,

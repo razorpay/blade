@@ -30,7 +30,7 @@ import {
   getInteriorGaps,
   parsePathAnchors,
   buildBridgePathData,
-} from './nullBridgeUtils';
+} from '../utils/nullBridgeUtils';
 import { LineChartContext, useLineChartContext } from './LineChartContext';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -407,6 +407,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeOpacity={isOtherLineHovered ? 0.2 : 1}
+              style={{ transition: 'stroke-opacity 0.5s ease-in-out' }}
             />
           );
         })}

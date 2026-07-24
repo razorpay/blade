@@ -1,4 +1,8 @@
-import type { ChartLineProps } from './types';
+// A dataKey can be a string (possibly dot-nested, e.g. `metrics.sales`), a number,
+// or a function — but the bridge utilities only handle the string/number form, which
+// is what Recharts' path rendering uses. Keeping this local avoids coupling the shared
+// utility to any specific chart component's types.
+type DataKey = string | number | ((row: Record<string, unknown>) => unknown);
 
 /**
  * Monotone cubic interpolation using d3's `curveMonotoneX` harmonic-mean tangent
@@ -54,7 +58,7 @@ const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => 
 // Resolve a (possibly nested, e.g. `metrics.sales`) dataKey from a data row.
 const resolveDataKeyValue = (
   row: Record<string, unknown>,
-  dataKey: ChartLineProps['dataKey'],
+  dataKey: DataKey,
 ): unknown => {
   const path = String(dataKey);
   if (!path) return undefined;
@@ -71,7 +75,7 @@ type DefinedPoints = { indices: number[]; values: number[] };
 // Extract the indices + numeric values of the non-null points for a dataKey.
 const getDefinedNumericPoints = (
   data: Array<Record<string, unknown>>,
-  dataKey: ChartLineProps['dataKey'],
+  dataKey: DataKey,
 ): DefinedPoints => {
   const indices: number[] = [];
   const values: number[] = [];
@@ -127,6 +131,15 @@ type PixelPoint = { x: number; y: number };
  * final control pair. Restart commands (`M`, from a gapped/`connectNulls={false}` line) contribute
  * their point too, so the result is the ordered list of the line's *defined* data points in pixel
  * space. Used to derive the null-bridge geometry from Recharts' own computed coordinates.
+ *
+ * **Limitation:** This parser only handles `M`, `L`, and `C` SVG commands. For step-type curves
+ * (`type="step"`, `"stepBefore"`, `"stepAfter"`), d3-shape generates extra `L` commands for
+ * intermediate step points (e.g. `curveStepAfter` produces 2n-1 `L`/`M` commands for n defined
+ * data points). The anchor count will not match the defined data point count, so the
+ * `anchors.length !== indices.length` guard in the calling code will bail out and the dashed
+ * bridge will not render. `connectNullsStyle="dashed"` is therefore only supported for
+ * `type="monotone"` and `type="linear"`. For step-type lines, use `connectNullsStyle="solid"`
+ * (which uses Recharts' native `connectNulls` and is unaffected by this limitation).
  */
 const parsePathAnchors = (pathData: string): PixelPoint[] => {
   const anchors: PixelPoint[] = [];
@@ -153,4 +166,4 @@ export {
   parsePathAnchors,
   buildBridgePathData,
 };
-export type { DefinedPoints, PixelPoint };
+export type { DefinedPoints, PixelPoint, DataKey };
