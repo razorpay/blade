@@ -13,3 +13,5 @@ feat(AreaChart): add `connectNullsStyle` for a dashed no-data bridge on `ChartAr
 Available on both React web and React Native.
 
 Also fixes a latent bug where multiple `AreaChart`s on the same page emitted gradients with the same id, causing every chart's fill to resolve to the first chart's gradient (and appear washed out / invisible). Gradient ids are now namespaced per chart instance.
+
+Note: the `connectNulls` prop type on `ChartArea` has been narrowed from `RechartAreaProps['connectNulls']` to `boolean`. This is unlikely to be breaking since the underlying Recharts prop only accepts boolean values, but it is a deliberate API surface restriction.

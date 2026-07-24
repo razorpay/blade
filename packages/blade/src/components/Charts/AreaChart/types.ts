@@ -90,7 +90,7 @@ type ChartAreaProps = {
   /**
    * @private
    */
-  _gradientNamespace?: string;
+  _gradientNamespace: string;
 };
 
 type data = {

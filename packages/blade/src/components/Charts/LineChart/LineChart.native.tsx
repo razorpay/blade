@@ -38,7 +38,7 @@ import type {
 } from '../CommonChartComponents/types';
 import { componentIds } from './componentIds';
 import { LineChartContext } from './LineChartContext';
-import { monotoneInterpolate } from './nullBridgeUtils';
+import { monotoneInterpolate, NULL_BRIDGE_DASHARRAY } from '../nullBridgeUtils';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
@@ -295,7 +295,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         dot: Boolean(props.dot),
         activeDot: props.activeDot !== false,
         connectNulls: Boolean(props.connectNulls),
-        connectNullsStyle: props.connectNullsStyle ?? 'solid',
+        connectNullsStyle: props.connectNullsStyle === 'dashed' ? 'dashed' : 'solid',
         showLegend: props.showLegend ?? true,
         hide: props.hide,
       });
@@ -637,7 +637,7 @@ const LineSeries = ({
   ]);
   const dash = getStrokeDasharray(line.strokeStyle);
   // Dash pattern for the stretch drawn across null points (only present for dashed bridges).
-  const nullBridgeDash = '5 5';
+  const nullBridgeDash = NULL_BRIDGE_DASHARRAY;
   const clipId = `line-${chartId}-reveal-${index}`;
 
   return (

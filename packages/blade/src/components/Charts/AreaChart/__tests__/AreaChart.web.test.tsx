@@ -120,6 +120,14 @@ describe('<AreaChart />', () => {
     // The area should have connectNulls enabled (the area fill connects across the null gap).
     const areaComponents = container.querySelectorAll('.recharts-area-area');
     expect(areaComponents.length).toBeGreaterThan(0);
+    // Verify that the area's curve has connectNulls enabled so it fills across the null gap.
+    const areaCurve = container.querySelector('.recharts-area-curve');
+    expect(areaCurve).not.toBeNull();
+    // When connectNulls is enabled, the area curve path should be a single continuous path
+    // (no restart with a second 'M' command from a gapped area).
+    const pathData = areaCurve?.getAttribute('d') ?? '';
+    const moveCount = (pathData.match(/M/g) ?? []).length;
+    expect(moveCount).toBe(1);
   });
 
   it('should render a curved dashed bridge path when connectNullsStyle is "dashed"', async () => {

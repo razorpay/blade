@@ -1,4 +1,8 @@
-import type { ChartLineProps } from './types';
+import type { ChartLineProps } from './LineChart/types';
+
+// Dash pattern used for the line drawn across null points on a dashed bridge.
+// Defined once here so all chart types share the same value.
+const NULL_BRIDGE_DASHARRAY = '5 5';
 
 /**
  * Monotone cubic interpolation using d3's `curveMonotoneX` harmonic-mean tangent
@@ -49,6 +53,67 @@ const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => 
   const h11 = t3 - t2;
 
   return h00 * ys[k] + h10 * h * tangent[k] + h01 * ys[k + 1] + h11 * h * tangent[k + 1];
+};
+
+/**
+ * Monotone cubic interpolation using the Fritsch–Carlson arithmetic-mean tangent formula
+ * with overshoot clamping — the same algorithm as `buildMonotone` in AreaChart.native.tsx.
+ * Given the defined points `(xs[i], ys[i])` (xs ascending), it returns the interpolated
+ * `y` at `xq`. Used on native to densely sample the null-bridge onto the same curve as
+ * the area's stroke line (which is drawn with `buildMonotone`), avoiding visible deviation.
+ */
+const monotoneInterpolateFC = (xs: number[], ys: number[], xq: number): number => {
+  const n = xs.length;
+  if (n === 0) return 0;
+  if (n === 1) return ys[0];
+
+  const delta: number[] = [];
+  for (let i = 0; i < n - 1; i++) {
+    const dx = xs[i + 1] - xs[i];
+    delta.push(dx === 0 ? 0 : (ys[i + 1] - ys[i]) / dx);
+  }
+
+  // Tangents at each point — arithmetic mean with Fritsch–Carlson overshoot clamping,
+  // matching buildMonotone so the dashed bridge follows the same curve as the area stroke.
+  const m: number[] = new Array(n).fill(0);
+  m[0] = delta[0];
+  m[n - 1] = delta[n - 2];
+  for (let i = 1; i < n - 1; i++) {
+    if (delta[i - 1] * delta[i] <= 0) {
+      m[i] = 0;
+    } else {
+      m[i] = (delta[i - 1] + delta[i]) / 2;
+    }
+  }
+  for (let i = 0; i < n - 1; i++) {
+    if (delta[i] === 0) {
+      m[i] = 0;
+      m[i + 1] = 0;
+    } else {
+      const a = m[i] / delta[i];
+      const b = m[i + 1] / delta[i];
+      const s = a * a + b * b;
+      if (s > 9) {
+        const t = 3 / Math.sqrt(s);
+        m[i] = t * a * delta[i];
+        m[i + 1] = t * b * delta[i];
+      }
+    }
+  }
+
+  // Locate the interval containing xq and evaluate the Hermite basis.
+  let k = 0;
+  while (k < n - 2 && xq > xs[k + 1]) k++;
+  const h = xs[k + 1] - xs[k];
+  const t = h === 0 ? 0 : (xq - xs[k]) / h;
+  const t2 = t * t;
+  const t3 = t2 * t;
+  const h00 = 2 * t3 - 3 * t2 + 1;
+  const h10 = t3 - 2 * t2 + t;
+  const h01 = -2 * t3 + 3 * t2;
+  const h11 = t3 - t2;
+
+  return h00 * ys[k] + h10 * h * m[k] + h01 * ys[k + 1] + h11 * h * m[k + 1];
 };
 
 // Resolve a (possibly nested, e.g. `metrics.sales`) dataKey from a data row.
@@ -147,10 +212,12 @@ const parsePathAnchors = (pathData: string): PixelPoint[] => {
 
 export {
   monotoneInterpolate,
+  monotoneInterpolateFC,
   resolveDataKeyValue,
   getDefinedNumericPoints,
   getInteriorGaps,
   parsePathAnchors,
   buildBridgePathData,
+  NULL_BRIDGE_DASHARRAY,
 };
 export type { DefinedPoints, PixelPoint };
