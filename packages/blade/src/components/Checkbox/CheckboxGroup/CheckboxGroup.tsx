@@ -129,6 +129,7 @@ const CheckboxGroup = ({
     labelPosition,
     validationState,
     size,
+    orientation,
   });
 
   const { theme } = useTheme();
