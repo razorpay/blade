@@ -313,6 +313,18 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'SliderInput',
+    description:
+      'SliderInput component provides a horizontal slider coupled with a numeric input for bounded value selection.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-api-spec',
+        storybookLink: 'Components/Input/SliderInput',
+      },
+    },
+  },
+  {
     name: 'Spinner',
     description:
       'Spinner component is an element with a looping animation that indicates loading is in process.',
