@@ -30,6 +30,11 @@ export type DataCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'in
   faint: string;
   strong: string;
 };
+
+export type SurfacePrimaryEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'intense'> & {
+  faint: string;
+  strong: string;
+};
 export type DataSequentialEmphasis = Omit<
   ColorChromaticScale,
   'a50' | 'a150' | 'a100' | 'a200' | 'a400' | 'a500' | 'a600' | 'a700'
@@ -131,9 +136,10 @@ export type Colors = {
   surface: {
     background: {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
-      primary: SubtleOrIntenseEmphasis;
+      primary: SurfacePrimaryEmphasis;
       sea: SubtleOrIntenseEmphasis;
       cloud: SubtleOrIntenseEmphasis;
+      accent: Pick<Emphasis, 'intense'>;
     };
     border: {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;

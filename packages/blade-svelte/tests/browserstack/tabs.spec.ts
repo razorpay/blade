@@ -21,6 +21,7 @@ test('Tabs switches active panel on click', async ({ page }) => {
   const firstTab = page.locator('[data-blade-tab-value]').nth(0);
   const secondTab = page.locator('[data-blade-tab-value]').nth(1);
 
+  await expect(firstTab).toBeVisible();
   await expect(firstTab).toHaveAttribute('aria-selected', 'true');
   await firstTab.focus();
   await page.keyboard.press('ArrowRight');
