@@ -106,7 +106,7 @@ describe('<AreaChart />', () => {
     expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(0);
   });
 
-  it('should not render a bridge path and should fill across nulls when connectNullsStyle is "solid" (backward compatible)', async () => {
+  it('should not render a bridge path and should fill across nulls when connectNullsStyle is "solid" (backward compatible)', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartAreaWrapper data={dataWithNullsForBridge}>
