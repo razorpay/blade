@@ -16,6 +16,7 @@ import { animate } from 'framer-motion';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
 import { NULL_BRIDGE_DASHARRAY } from '../nullBridgeUtils';
 import { useNullBridges } from '../useNullBridges';
+import type { ChartSeriesOrder } from '../useNullBridges';
 import { CommonChartComponentsContext } from '../CommonChartComponents';
 import type {
   DataColorMapping,
@@ -275,11 +276,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
    * line's curve exactly (Recharts v3 doesn't expose the axis scales to <Customized>) while spanning
    * only the no-data stretch, so nulls read as "no data" rather than a measured value.
    */
-  const chartSeriesOrder = useMemo(
+  const chartSeriesOrder = useMemo<ChartSeriesOrder>(
     () =>
       chartLineOrder.map((line) => ({
         dataKey: line.dataKey,
-        bridge: (line.isDashedBridge ? 'dashed' : 'none') as 'none' | 'dashed',
+        bridge: line.isDashedBridge ? 'dashed' : 'none',
       })),
     [chartLineOrder],
   );
