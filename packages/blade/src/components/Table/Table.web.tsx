@@ -16,7 +16,6 @@ import type { TableContextType } from './TableContext';
 import { TableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import {
-  checkboxCellWidth,
   firstColumnStickyZIndex,
   refreshWrapperZIndex,
   tableBackgroundColor,
@@ -182,6 +181,7 @@ const _Table = <Item,>({
   isHeaderSticky,
   isFooterSticky,
   isFirstColumnSticky,
+  stickyColumns,
   rowDensity = 'normal',
   onSortChange,
   sortFunctions,
@@ -215,8 +215,56 @@ const _Table = <Item,>({
   const [hasHoverActions, setHasHoverActions] = React.useState(false);
   const tableRootComponent = children([]);
   const isVirtualized = getComponentId(tableRootComponent) === ComponentIds.VirtualizedTable;
-  // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-  const shouldHeaderBeSticky = isVirtualized || isHeaderSticky || isFirstColumnSticky;
+
+  // stickyColumns takes precedence; isFirstColumnSticky is kept for backward compat
+  const effectiveStickyColumns = stickyColumns ?? (isFirstColumnSticky ? 1 : 0);
+
+  // Need to make header sticky if first/multiple columns are sticky, otherwise header cells won't be sticky
+  const shouldHeaderBeSticky = isVirtualized || isHeaderSticky || effectiveStickyColumns > 0;
+
+  // Measured left offsets for each sticky DOM column (including checkbox for multiselect)
+  const [stickyColumnOffsets, setStickyColumnOffsets] = React.useState<number[]>([0]);
+  const tableContainerRef = React.useRef<HTMLDivElement>(null);
+
+  useIsomorphicLayoutEffect(() => {
+    if (effectiveStickyColumns <= 0) return undefined;
+
+    const measureOffsets = (): void => {
+      const container = tableContainerRef.current;
+      if (!container) return;
+
+      const headerRow = container.querySelector('[role="rowheader"]');
+      if (!headerRow) return;
+
+      const cells = headerRow.querySelectorAll('th');
+      if (!cells.length) return;
+
+      // Checkbox column is always first when multiselect; it also becomes sticky
+      const totalStickyDOMCols =
+        selectionType === 'multiple' ? effectiveStickyColumns + 1 : effectiveStickyColumns;
+
+      const offsets: number[] = [];
+      let cumulative = 0;
+      for (let i = 0; i < Math.min(cells.length, totalStickyDOMCols); i++) {
+        offsets.push(cumulative);
+        cumulative += (cells[i] as HTMLElement).getBoundingClientRect().width;
+      }
+
+      setStickyColumnOffsets(offsets);
+    };
+
+    measureOffsets();
+
+    const resizeObserver =
+      typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measureOffsets) : null;
+
+    if (resizeObserver && tableContainerRef.current) {
+      resizeObserver.observe(tableContainerRef.current);
+    }
+
+    return () => resizeObserver?.disconnect();
+    // isLoading dependency ensures measurement re-runs when table transitions from skeleton to actual content
+  }, [effectiveStickyColumns, selectionType, isLoading]);
 
   const isMobile = useIsMobile();
   const lastHoverActionsColWidth = isMobile ? '1fr' : '0px';
@@ -232,69 +280,30 @@ const _Table = <Item,>({
 
   // Table Theme
   const columnCount = getTableHeaderCellCount(children);
-  const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
-    ? `
-  &:nth-of-type(1) {
-    left: 0 !important;
+
+  // Generate sticky CSS for all sticky columns (header, body, footer cells)
+  const stickyColumnsCellCSS = React.useMemo((): string => {
+    if (effectiveStickyColumns <= 0) return '';
+
+    const totalStickyDOMCols =
+      selectionType === 'multiple' ? effectiveStickyColumns + 1 : effectiveStickyColumns;
+
+    let css = '';
+    for (let i = 0; i < totalStickyDOMCols; i++) {
+      const nth = i + 1;
+      const left = stickyColumnOffsets[i] ?? 0;
+      css += `
+  &:nth-of-type(${nth}) {
+    left: ${left}px !important;
     position: sticky !important;
     z-index: ${firstColumnStickyZIndex} !important;
   }
-  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
-  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
+  &:nth-of-type(${nth}).${classes.HAS_ROW_SPANNING} {
     z-index: 3 !important;
-  }
-  ${
-    selectionType === 'multiple' &&
-    `&:nth-of-type(2) {
-    left: ${checkboxCellWidth}px !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
-  }
-  `
-  }`
-    : '';
-  const firstColumnStickyFooterCellCSS = isFirstColumnSticky
-    ? `
-  &:nth-of-type(1) {
-    left: 0 !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
-  }
-  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
-  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
-    z-index: 3 !important;
-  }
-  ${
-    selectionType === 'multiple' &&
-    `&:nth-of-type(2) {
-    left: ${checkboxCellWidth}px !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
-  }
-  `
-  }`
-    : '';
-  const firstColumnStickyBodyCellCSS = isFirstColumnSticky
-    ? `
-  &:nth-of-type(1) {
-    left: 0 !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
-  }
-  /* Higher z-index for sticky first column cells that also span rows to prevent stacking issues */
-  &:nth-of-type(1).${classes.HAS_ROW_SPANNING} {
-    z-index: 3 !important;
-  }
-  ${
-    selectionType === 'multiple' &&
-    `&:nth-of-type(2) {
-    left: ${checkboxCellWidth}px !important;
-    position: sticky !important;
-    z-index: ${firstColumnStickyZIndex} !important;
-  }
-  `
-  }`
-    : '';
+  }`;
+    }
+    return css;
+  }, [effectiveStickyColumns, selectionType, stickyColumnOffsets]);
 
   const tableTheme = useTableTheme({
     Table: `
@@ -324,19 +333,20 @@ const _Table = <Item,>({
     } !important;
     background-color: ${getIn(theme.colors, backgroundColor)};
     `,
+    ...(effectiveStickyColumns > 0 && { Row: 'overflow: visible !important;' }),
     HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
-    
+
     top: ${shouldHeaderBeSticky ? '0' : undefined};
-    ${firstColumnStickyHeaderCellCSS}
+    ${stickyColumnsCellCSS}
     `,
     Cell: `
-    ${firstColumnStickyBodyCellCSS}
+    ${stickyColumnsCellCSS}
     `,
     FooterCell: `
     position: ${isFooterSticky ? 'sticky' : 'relative'};
     bottom: ${isFooterSticky ? '0' : undefined};
-    ${firstColumnStickyFooterCellCSS}
+    ${stickyColumnsCellCSS}
     `,
   });
 
@@ -643,6 +653,7 @@ const _Table = <Item,>({
           </BaseBox>
         ) : (
           <BaseBox
+            ref={tableContainerRef}
             flex={1}
             position="relative"
             {...getStyledProps(rest)}

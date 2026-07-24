@@ -596,6 +596,75 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render table with stickyColumns={2}', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 5) }} height="300px" stickyColumns={2}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render table with stickyColumns and multiselect', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        height="300px"
+        stickyColumns={2}
+        selectionType="multiple"
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render table with sticky header, footer & first column', () => {
     const { container } = renderWithTheme(
       <Table
