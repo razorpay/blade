@@ -13,7 +13,7 @@ const ShimmerOverlay = (): React.ReactElement => {
 
   const shimmerColor =
     colorScheme === 'dark'
-      ? theme.colors.surface.text.gray.muted
+      ? theme.colors.surface.text.staticWhite.disabled
       : theme.colors.surface.text.staticWhite.muted;
   const shimmerDuration = msToSeconds(theme.motion.duration['2xgentle']);
   const shimmerDelay = msToSeconds(theme.motion.delay.gentle);
