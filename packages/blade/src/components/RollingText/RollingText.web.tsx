@@ -9,9 +9,12 @@ import type { MotionVariantsType } from '~components/BaseMotion';
 import { Box } from '~components/Box';
 
 const ShimmerOverlay = (): React.ReactElement => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
 
-  const shimmerColor = theme.colors.surface.text.staticWhite.muted;
+  const shimmerColor =
+    colorScheme === 'dark'
+      ? theme.colors.surface.text.gray.muted
+      : theme.colors.surface.text.staticWhite.muted;
   const shimmerDuration = msToSeconds(theme.motion.duration['2xgentle']);
   const shimmerDelay = msToSeconds(theme.motion.delay.gentle);
   const shimmerEase = cssBezierToArray(castWebType(theme.motion.easing.standard));
