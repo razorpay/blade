@@ -9,7 +9,7 @@ import type { FeedbackColors } from '~tokens/theme/theme';
 import { makeSize } from '~utils';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
-export type ButtonMinHeight = Size[28] | Size[32] | Size[36] | Size[48];
+export type ButtonMinHeight = Size[28] | Size[32] | Size[36] | Size[48] | Size[56];
 
 export type ButtonTypography = {
   fonts: {
@@ -246,6 +246,7 @@ const typography: ButtonTypography = {
       small: 75,
       medium: 100,
       large: 200,
+      xlarge: 200,
     },
   },
   lineHeights: {
@@ -253,6 +254,7 @@ const typography: ButtonTypography = {
     small: 75,
     medium: 100,
     large: 200,
+    xlarge: 200,
   },
 };
 
@@ -261,6 +263,7 @@ const minHeight: Record<NonNullable<BaseButtonProps['size']>, ButtonMinHeight> =
   small: size[32],
   medium: size[36],
   large: size[48],
+  xlarge: size[56],
 };
 
 const buttonPadding: Record<
@@ -291,6 +294,12 @@ const buttonPadding: Record<
     left: 5,
     right: 5,
   },
+  xlarge: {
+    top: 0,
+    bottom: 0,
+    left: 5,
+    right: 5,
+  },
 };
 
 const buttonBorderRadius = {
@@ -298,6 +307,7 @@ const buttonBorderRadius = {
   small: 'small',
   medium: 'small',
   large: 'medium',
+  xlarge: 'medium',
 } as const;
 
 const buttonIconOnlyHeightWidth = {
@@ -305,6 +315,7 @@ const buttonIconOnlyHeightWidth = {
   small: makeSize(size['32']),
   medium: makeSize(size['36']),
   large: makeSize(size['48']),
+  xlarge: makeSize(size['56']),
 } as const;
 
 const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
@@ -312,6 +323,7 @@ const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, Icon
   small: 'small',
   medium: 'medium',
   large: 'medium',
+  xlarge: 'medium',
 };
 
 const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
@@ -319,6 +331,7 @@ const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size'
   small: 'medium',
   medium: 'medium',
   large: 'medium',
+  xlarge: 'medium',
 };
 
 const buttonSizeToSpinnerSizeMap: Record<
@@ -329,6 +342,7 @@ const buttonSizeToSpinnerSizeMap: Record<
   small: 'medium',
   medium: 'medium',
   large: 'large',
+  xlarge: 'large',
 };
 
 /**
