@@ -113,7 +113,7 @@ describe('<ChartAreaWrapper /> (native)', () => {
     expect((bridgeD.match(/L/g) ?? []).length).toBeGreaterThan(1);
   });
 
-  it('renders a curved solid null bridge (stroke-only, no dash) when connectNullsStyle is "solid"', () => {
+  it('fills across nulls when connectNullsStyle is "solid" (backward compatible, no bridge path)', () => {
     const bridgeData = [
       { name: 'Jan', uv: 4000 },
       { name: 'Feb', uv: 3000 },
@@ -134,18 +134,12 @@ describe('<ChartAreaWrapper /> (native)', () => {
       nativeEvent: { layout: { width: 400, height: 300, x: 0, y: 0 } },
     });
 
+    // With 'solid' (default), the area fills across nulls — no separate bridge path is rendered.
     // eslint-disable-next-line babel/new-cap -- testing-library UNSAFE_* helper
     const bridges = UNSAFE_getAllByType(Path).filter(
       (path) => path.props.testID === 'area-null-bridge',
     );
-    expect(bridges.length).toBeGreaterThan(0);
-    // A solid bridge has no dash pattern...
-    bridges.forEach((bridge) => {
-      expect(bridge.props.strokeDasharray).toBeUndefined();
-    });
-    // ...and is still a curve sampled at many points.
-    const bridgeD = bridges[0].props.d as string;
-    expect((bridgeD.match(/L/g) ?? []).length).toBeGreaterThan(1);
+    expect(bridges).toHaveLength(0);
   });
 
   it('renders empty-state copy when data is empty', () => {

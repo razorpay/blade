@@ -505,13 +505,15 @@ const AreaSeries = ({
       AREA_FILL_OPACITY - scrubProgress.value * (AREA_FILL_OPACITY - AREA_FILL_OPACITY_DIMMED),
   }));
 
-  // The area is always split at null points so there's never a fill under the no-data stretch. When
-  // a bridge is requested, a stroke-only line is drawn across each gap — solid or dashed per
-  // `connectNullsStyle`.
+  // When connectNulls is true and the style is 'solid' (default), the area fills and strokes
+  // across nulls — preserving backward compatibility. Only the 'dashed' style gaps the area
+  // and draws a separate dashed bridge line across each interior null run.
   const isDashedBridge = connectNulls && connectNullsStyle === 'dashed';
+  const shouldGapAtNulls = !connectNulls || isDashedBridge;
 
   const segments: SeriesPoint[][] = [];
-  {
+  if (shouldGapAtNulls) {
+    // Split at nulls (for hard gap or dashed bridge)
     let current: SeriesPoint[] = [];
     points.forEach((p) => {
       if (p.isNull) {
@@ -522,12 +524,17 @@ const AreaSeries = ({
       }
     });
     if (current.length) segments.push(current);
+  } else {
+    // For 'solid': one continuous segment with null points filtered out,
+    // so the area and stroke connect directly across the gap (backward compatible).
+    const filtered = points.filter((p) => !p.isNull);
+    if (filtered.length) segments.push(filtered);
   }
 
-  // For a bridge, draw a stroke-only line across each interior gap, densely sampled onto the
+  // For a dashed bridge, draw a stroke-only line across each interior gap, densely sampled onto the
   // monotone spline through all real points so it follows the same curve as the flanking area line.
   const bridgePaths: string[] = [];
-  if (connectNulls && segments.length > 1) {
+  if (isDashedBridge && segments.length > 1) {
     const definedTop = points.filter((p) => !p.isNull);
     const xs = definedTop.map((p) => p.x);
     const ys = definedTop.map((p) => p.yTop);
@@ -586,7 +593,7 @@ const AreaSeries = ({
           d={bridgeD}
           stroke={strokeColor}
           strokeWidth={STROKE_WIDTH}
-          strokeDasharray={isDashedBridge ? NULL_BRIDGE_DASHARRAY : undefined}
+          strokeDasharray={NULL_BRIDGE_DASHARRAY}
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"

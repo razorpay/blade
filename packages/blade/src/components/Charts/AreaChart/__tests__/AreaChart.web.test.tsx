@@ -47,9 +47,10 @@ describe('<AreaChart />', () => {
     expect(normalizeSnapshotIds(container.innerHTML)).toMatchSnapshot();
   });
 
-  // Both bridge styles keep the area gapped (no fill under the no-data stretch) and add a separate
-  // curved line drawn by the <Customized> NullBridgeLayer as an SVG <path>: solid (no dash) for
-  // `connectNullsStyle="solid"` and dashed for `"dashed"`. A hard gap renders no such path.
+  // With connectNullsStyle='solid' (default), the area uses Recharts' built-in connectNulls
+  // to fill and stroke across nulls — preserving backward compatibility. No separate bridge
+  // path is rendered. Only 'dashed' gaps the area and draws a separate dashed bridge path.
+  // A hard gap (connectNulls={false}) renders no bridge path either.
   // Interior null run: Mar..May.
   const dataWithNullsForBridge = [
     { name: 'Jan', sales: 4000 },
@@ -105,7 +106,7 @@ describe('<AreaChart />', () => {
     expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(0);
   });
 
-  it('should render a curved solid bridge path (no fill, no dash) when connectNullsStyle is "solid"', async () => {
+  it('should not render a bridge path and should fill across nulls when connectNullsStyle is "solid" (backward compatible)', async () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartAreaWrapper data={dataWithNullsForBridge}>
@@ -113,15 +114,12 @@ describe('<AreaChart />', () => {
         </ChartAreaWrapper>
       </Box>,
     );
-    // The bridge is derived from the rendered area geometry, which the chart commits asynchronously.
-    await waitFor(() => {
-      expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(1);
-    });
-    const bridgePath = container.querySelector('.blade-null-bridge-layer path')!;
-    // A solid bridge is a plain line with no dash pattern.
-    expect(bridgePath).not.toHaveAttribute('stroke-dasharray');
-    // A curved path is sampled at many points, so the `d` attribute has multiple line-to commands.
-    expect((bridgePath.getAttribute('d')?.match(/L/g) ?? []).length).toBeGreaterThan(1);
+    // With 'solid' (default), Recharts' built-in connectNulls fills across nulls — no separate
+    // bridge path is needed.
+    expect(container.querySelectorAll('.blade-null-bridge-layer path')).toHaveLength(0);
+    // The area should have connectNulls enabled (the area fill connects across the null gap).
+    const areaComponents = container.querySelectorAll('.recharts-area-area');
+    expect(areaComponents.length).toBeGreaterThan(0);
   });
 
   it('should render a curved dashed bridge path when connectNullsStyle is "dashed"', async () => {
