@@ -226,6 +226,12 @@ const ChatMessageRollingLoadingTextTemplate: StoryFn<typeof ChatMessage> = () =>
 export const RollingLoadingText = ChatMessageRollingLoadingTextTemplate.bind({});
 RollingLoadingText.storyName = 'Rolling Loading Text';
 
+export const RollingLoadingTextDark = ChatMessageRollingLoadingTextTemplate.bind({});
+RollingLoadingTextDark.storyName = 'Rolling Loading Text (Dark Mode)';
+RollingLoadingTextDark.parameters = {
+  globals: { colorScheme: 'dark' },
+};
+
 const ChatMessageErrorTemplates: StoryFn<typeof ChatMessage> = () => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
