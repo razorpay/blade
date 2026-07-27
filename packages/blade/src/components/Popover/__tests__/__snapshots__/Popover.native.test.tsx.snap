@@ -828,7 +828,7 @@ exports[`<Popover /> should render 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 15659249,
+                    "payload": 16250871,
                     "type": 0,
                   }
                 }
@@ -1703,7 +1703,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 15659249,
+                    "payload": 16250871,
                     "type": 0,
                   }
                 }
@@ -2766,7 +2766,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 15659249,
+                    "payload": 16250871,
                     "type": 0,
                   }
                 }
