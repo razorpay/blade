@@ -7,22 +7,13 @@ import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { BaseMotionBox } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { Box } from '~components/Box';
-import { colors as globalColors } from '~tokens/global';
-
-// Highlight colors for the glyph shimmer, one per color scheme.
-// Chosen as the nearest palette steps to a ~45% lighten of the loading
-// text color (feedback.text.positive.intense: emerald.700 light / emerald.400 dark).
-const shimmerHighlightColor = {
-  onLight: globalColors.chromatic.emerald[300],
-  onDark: globalColors.chromatic.emerald[200],
-} as const;
 
 const ShimmerText = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  const { theme, colorScheme } = useTheme();
+  const { theme } = useTheme();
 
   const textColor = theme.colors.feedback.text.positive.intense;
-  const highlightColor =
-    colorScheme === 'dark' ? shimmerHighlightColor.onDark : shimmerHighlightColor.onLight;
+  // Lighter positive feedback token creates the sweeping glint; resolves per color scheme automatically.
+  const highlightColor = theme.colors.feedback.text.positive.subtle;
   const shimmerDuration = msToSeconds(theme.motion.duration['2xgentle']);
   const shimmerDelay = msToSeconds(theme.motion.delay.gentle);
   const shimmerEase = cssBezierToArray(castWebType(theme.motion.easing.standard));
