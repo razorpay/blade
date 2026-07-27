@@ -1295,7 +1295,7 @@ exports[`<ChartLineWrapper /> (native) should render a horizontal reference line
                 <RNSVGRect
                   fill={
                     {
-                      "payload": 4293849329,
+                      "payload": 4294440951,
                       "type": 0,
                     }
                   }
@@ -1632,7 +1632,7 @@ exports[`<ChartLineWrapper /> (native) should render a vertical reference line (
                 <RNSVGRect
                   fill={
                     {
-                      "payload": 4293849329,
+                      "payload": 4294440951,
                       "type": 0,
                     }
                   }

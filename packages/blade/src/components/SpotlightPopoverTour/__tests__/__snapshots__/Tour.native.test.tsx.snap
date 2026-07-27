@@ -1506,7 +1506,7 @@ exports[`<SpotlightPopoverTour /> (native) should render when open 1`] = `
                       }
                       stroke={
                         {
-                          "payload": 15659249,
+                          "payload": 16250871,
                           "type": 0,
                         }
                       }
