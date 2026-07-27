@@ -26,6 +26,7 @@ const ShimmerText = ({ children }: { children: React.ReactNode }): React.ReactEl
         WebkitBackgroundClip: 'text',
         backgroundClip: 'text',
         color: 'transparent',
+        WebkitTextFillColor: 'transparent',
       }}
       initial={{ backgroundPosition: '100% 0%' }}
       animate={{ backgroundPosition: '0% 0%' }}
@@ -124,7 +125,7 @@ const RollingText = ({
       <AnimatePresence mode="popLayout" initial={false}>
         <BaseMotionBox key={currentIndex} motionVariants={slideVariants}>
           <Box position="relative" overflow="hidden" whiteSpace="nowrap">
-            {showShimmer ? (
+            {showShimmer && !children ? (
               <ShimmerText>{renderContent(texts[currentIndex])}</ShimmerText>
             ) : (
               renderContent(texts[currentIndex])
