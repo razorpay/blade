@@ -54,7 +54,7 @@ const Page = (): React.ReactElement => {
           , but they solve different problems. Use <Code size="medium">Tabs</Code> to navigate
           between distinct views or sections of content, where selecting a tab reveals its own
           content panel. If you instead need a compact, form-like control to pick one of 2–5 options
-          that filter or change how the <b>same</b> content is displayed (e.g. Daily / Weekly /
+          that filter or change how the <Text as="span" weight="semibold">same</Text> content is displayed (e.g. Daily / Weekly /
           Monthly, List / Grid), use <Code size="medium">SegmentedControl</Code>.
         </Text>
       }
