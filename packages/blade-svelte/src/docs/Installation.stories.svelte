@@ -52,15 +52,12 @@
 
     <div style="margin-top: 24px;">
       <Heading size="large">Step 1: Install Package</Heading>
-      <Text size="medium" color="surface.text.gray.muted">Install the Blade Svelte package:</Text>
+      <Text size="medium" color="surface.text.gray.muted">Install the Blade Svelte package along with blade-core (design tokens, CSS, and fonts):</Text>
       <pre style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"><code>{`# Using yarn
-yarn add @razorpay/blade-svelte
+yarn add @razorpay/blade-svelte @razorpay/blade-core
 
 # Using npm
-npm install @razorpay/blade-svelte`}</code></pre>
-      <Text size="small" color="surface.text.gray.muted">
-        Note: @razorpay/blade-core (design tokens, CSS, fonts) is automatically installed as a dependency.
-      </Text>
+npm install @razorpay/blade-svelte @razorpay/blade-core`}</code></pre>
     </div>
 
     <div style="margin-top: 24px;">
