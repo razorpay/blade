@@ -43,6 +43,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/SegmentedControl',
   component: SegmentedControl,
+  tags: ['autodocs'],
   parameters: {
     docs: {
       page: Page,
