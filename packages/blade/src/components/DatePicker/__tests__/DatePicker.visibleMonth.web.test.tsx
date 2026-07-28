@@ -106,6 +106,52 @@ describe('<DatePicker/> visibleMonth', () => {
     );
   });
 
+  it("opens on maxDate's month when today is after maxDate and no value is set", async () => {
+    // Entire allowed range is in the past, so today's month has no selectable dates.
+    const minDate = dayjs().subtract(3, 'month').startOf('month').toDate();
+    const maxDate = dayjs().subtract(2, 'month').endOf('month').toDate();
+    const maxDateLabel = dayjs(maxDate).format('MMMM YYYY');
+
+    const { getByRole, getAllByText, queryByText } = renderWithTheme(
+      <DatePickerComponent
+        selectionType="single"
+        label="Select a date"
+        minDate={minDate}
+        maxDate={maxDate}
+      />,
+    );
+
+    const user = userEvent.setup();
+    const input = getByRole('combobox', { name: /Select a date/i });
+    await user.click(input);
+
+    await waitFor(() => expect(queryByText('Apply')).toBeVisible());
+    expect(getAllByText(maxDateLabel).length).toBeGreaterThan(0);
+  });
+
+  it("opens on minDate's month when today is before minDate and no value is set", async () => {
+    // Entire allowed range is in the future, so today's month has no selectable dates.
+    const minDate = dayjs().add(2, 'month').startOf('month').toDate();
+    const maxDate = dayjs().add(3, 'month').endOf('month').toDate();
+    const minDateLabel = dayjs(minDate).format('MMMM YYYY');
+
+    const { getByRole, getAllByText, queryByText } = renderWithTheme(
+      <DatePickerComponent
+        selectionType="single"
+        label="Select a date"
+        minDate={minDate}
+        maxDate={maxDate}
+      />,
+    );
+
+    const user = userEvent.setup();
+    const input = getByRole('combobox', { name: /Select a date/i });
+    await user.click(input);
+
+    await waitFor(() => expect(queryByText('Apply')).toBeVisible());
+    expect(getAllByText(minDateLabel).length).toBeGreaterThan(0);
+  });
+
   it('re-anchors to defaultVisibleMonth when the DatePicker is closed and reopened', async () => {
     const anchorMonth = dayjs().subtract(5, 'month').toDate();
     const anchorLabel = dayjs(anchorMonth).format('MMMM YYYY');
