@@ -221,20 +221,18 @@ const WithRoutingExample = ({
         </SideNavBody>
       </SideNav>
       <BottomNav {...args}>
-        {children ?? (
-          <>
-            {bottomNavItems.slice(0, -1).map((item, index) => (
-              <BottomNavRouterItem key={index} {...item} />
-            ))}
-            <BottomNavRouterItem
-              key="more"
-              title="More"
-              onClick={() => setIsSideNavOpen(true)}
-              icon={MenuDotsIcon}
-              activeOnLinks={Object.values(sideNavItems).map((item) => item.href)}
-            />
-          </>
-        )}
+        {children ?? [
+          ...bottomNavItems
+            .slice(0, -1)
+            .map((item, index) => <BottomNavRouterItem key={index} {...item} />),
+          <BottomNavRouterItem
+            key="more"
+            title="More"
+            onClick={() => setIsSideNavOpen(true)}
+            icon={MenuDotsIcon}
+            activeOnLinks={Object.values(sideNavItems).map((item) => item.href)}
+          />,
+        ]}
       </BottomNav>
     </>
   );
