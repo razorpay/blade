@@ -430,8 +430,10 @@ const buildStepPath = (points: Point[], variant: 'step' | 'stepAfter' | 'stepBef
   return d;
 };
 
-// Monotone cubic interpolation (d3 monotoneX algorithm) — matches recharts'
-// default `type="monotone"` curve.
+// Monotone cubic interpolation using a weighted-harmonic tangent formula. This approximates
+// (but is not pixel-identical to) d3-shape's `curveMonotoneX` that Recharts uses on web. The
+// null-bridge (`monotoneInterpolate`) shares this exact formula, so the dashed bridge follows
+// the same curve as this solid line on native LineChart.
 const buildMonotonePath = (points: Point[]): string => {
   const n = points.length;
   if (n === 0) return '';

@@ -387,7 +387,11 @@ const selectNonOverlappingXTickIndices = (
 
 type Point = { x: number; y: number };
 
-// Fritsch–Carlson monotone cubic interpolation, emitting SVG `C` segments.
+// Fritsch–Carlson monotone cubic interpolation (arithmetic-mean tangents + monotonicity clip),
+// emitting SVG `C` segments. Note: this differs from `monotoneInterpolate` (weighted-harmonic,
+// used by the dashed null-bridge) and from d3-shape's `curveMonotoneX` (Recharts on web), so the
+// dashed bridge's interior curvature can differ slightly from this solid area curve (endpoints
+// still coincide). Unifying all renderers on d3 `curveMonotoneX` is tracked as a follow-up.
 // Assumes the path is already positioned at pts[0] (caller emits the `M`).
 const buildMonotone = (pts: Point[]): string => {
   const n = pts.length;

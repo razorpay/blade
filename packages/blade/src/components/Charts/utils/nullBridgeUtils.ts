@@ -5,11 +5,19 @@
 type DataKey = string | number | ((row: Record<string, unknown>) => unknown);
 
 /**
- * Monotone cubic interpolation using d3's `curveMonotoneX` harmonic-mean tangent
- * formula — the same algorithm Recharts and `buildMonotonePath` use for `type="monotone"`.
- * Given the defined points `(xs[i], ys[i])` (xs ascending), it returns the interpolated
- * `y` at `xq`. Used to densely sample the null-bridge onto the real curve so the dashed
- * bridge follows the same shape as a solid connect instead of a straight line.
+ * Monotone cubic interpolation using a weighted-harmonic tangent formula
+ * (`3(dx₁+dx₂) / ((dx₁+2dx₂)/m₁ + (2dx₁+dx₂)/m₂)`). Given the defined points
+ * `(xs[i], ys[i])` (xs ascending), it returns the interpolated `y` at `xq`. Used to densely
+ * sample the null-bridge onto the real curve so the dashed bridge follows a monotone curve
+ * across the gap instead of a straight chord.
+ *
+ * **Note on curve parity:** this shares its formula with `buildMonotonePath` (native
+ * LineChart), so on native LineChart the bridge follows the same curve as the solid line.
+ * It is *not* pixel-identical to d3-shape's `curveMonotoneX` (Steffen `slope3`, which Recharts
+ * uses on web) nor to `buildMonotone` (native AreaChart, arithmetic-mean + Fritsch–Carlson
+ * clip). The bridge endpoints always coincide with the solid anchors, so junctions are
+ * continuous; only the interior curvature of the dashed span can differ slightly on web and
+ * native AreaChart. Unifying all renderers on d3 `curveMonotoneX` is tracked as a follow-up.
  */
 const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => {
   const n = xs.length;
@@ -22,8 +30,9 @@ const monotoneInterpolate = (xs: number[], ys: number[], xq: number): number => 
     slope[i] = dx === 0 ? 0 : (ys[i + 1] - ys[i]) / dx;
   }
 
-  // Tangents at each point — d3's curveMonotoneX harmonic-mean formula, matching
-  // buildMonotonePath's algorithm so the dashed bridge follows the same curve as the solid line.
+  // Tangents at each point — weighted-harmonic formula, matching buildMonotonePath (native
+  // LineChart) so the dashed bridge follows the same curve as the solid line on that renderer.
+  // (Close to, but not pixel-identical to, d3's curveMonotoneX / Recharts on web.)
   const tangent: number[] = new Array(n);
   tangent[0] = slope[0];
   tangent[n - 1] = slope[n - 2];
