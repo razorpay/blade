@@ -505,13 +505,19 @@ const AreaSeries = ({
       AREA_FILL_OPACITY - scrubProgress.value * (AREA_FILL_OPACITY - AREA_FILL_OPACITY_DIMMED),
   }));
 
-  // The area is always split at null points so there's never a fill under the no-data stretch. When
-  // a bridge is requested, a stroke-only line is drawn across each gap — solid or dashed per
-  // `connectNullsStyle`.
+  // `connectNullsStyle='solid'` (default) keeps the backward-compatible behaviour: null points are
+  // bridged (removed) so the series draws as one continuous filled shape across the gap, matching the
+  // web renderer which passes `connectNulls` through to RechartsArea. `connectNullsStyle='dashed'`
+  // instead splits the area at nulls (no fill under the no-data stretch) and draws a stroke-only
+  // dashed bridge across each gap.
+  const isSolidBridge = connectNulls && connectNullsStyle === 'solid';
   const isDashedBridge = connectNulls && connectNullsStyle === 'dashed';
 
   const segments: SeriesPoint[][] = [];
-  {
+  if (isSolidBridge) {
+    const nonNull = points.filter((p) => !p.isNull);
+    if (nonNull.length) segments.push(nonNull);
+  } else {
     let current: SeriesPoint[] = [];
     points.forEach((p) => {
       if (p.isNull) {
@@ -524,10 +530,11 @@ const AreaSeries = ({
     if (current.length) segments.push(current);
   }
 
-  // For a bridge, draw a stroke-only line across each interior gap, densely sampled onto the
+  // For a dashed bridge, draw a stroke-only line across each interior gap, densely sampled onto the
   // monotone spline through all real points so it follows the same curve as the flanking area line.
+  // The solid bridge needs no separate line — the continuous filled segment already spans the gap.
   const bridgePaths: string[] = [];
-  if (connectNulls && segments.length > 1) {
+  if (isDashedBridge && segments.length > 1) {
     const definedTop = points.filter((p) => !p.isNull);
     const xs = definedTop.map((p) => p.x);
     const ys = definedTop.map((p) => p.yTop);

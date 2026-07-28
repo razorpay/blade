@@ -483,55 +483,7 @@ ForecastLineChart.parameters = {
   controls: { disable: true },
 };
 
-// Line Chart that Connects Nulls
-export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
-  return (
-    <ChartsWrapper>
-      <Box display="flex" flexDirection="column" gap="spacing.8" width="100%">
-        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
-          <Heading size="small">Line Chart that Connects Nulls</Heading>
-          <Box width="100%" height="220px">
-            <ChartLineWrapper data={dataWithNulls}>
-              <ChartXAxis dataKey="month" />
-              <ChartYAxis />
-              <ChartTooltip />
-              <ChartLegend />
-              <ChartLine
-                dataKey="sales"
-                name="Sales (Connects Nulls)"
-                connectNulls={true}
-                color="data.background.categorical.green.moderate"
-              />
-            </ChartLineWrapper>
-          </Box>
-        </Box>
-        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
-          <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
-          <Box width="100%" height="220px">
-            <ChartLineWrapper data={dataWithNulls}>
-              <ChartXAxis dataKey="month" />
-              <ChartYAxis />
-              <ChartTooltip />
-              <ChartLegend />
-              <ChartLine
-                dataKey="sales"
-                name="Sales (Do Not Connects Nulls)"
-                color="data.background.categorical.green.moderate"
-              />
-            </ChartLineWrapper>
-          </Box>
-        </Box>
-      </Box>
-    </ChartsWrapper>
-  );
-};
-
-LineChartConnectNulls.parameters = {
-  controls: { disable: true },
-  layout: 'fullscreen',
-};
-
-// Line Chart null handling
+// Line Chart null handling — a single story covering all three ways nulls are represented:
 // - connectNulls={false} (default): the line breaks at null points (use for genuine outages).
 // - connectNulls={true} + connectNullsStyle="solid" (default): nulls bridged with a solid line.
 // - connectNulls={true} + connectNullsStyle="dashed": real data stays solid while the stretch
@@ -1352,7 +1304,7 @@ SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
-LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
+LineChartNullBridge.storyName = 'Line Chart (Connect Nulls)';
 SteppedLineChart.storyName = 'Stepped Line Chart';
 LineChartWithDefaultColorTheme.storyName = 'Line Chart with Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';

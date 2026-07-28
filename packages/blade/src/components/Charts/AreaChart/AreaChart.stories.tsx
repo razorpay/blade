@@ -307,83 +307,12 @@ export const StackedAreaChart: StoryFn<typeof ChartArea> = ({
   );
 };
 
-// 2.2.c - Area Chart that Connects Nulls
-export const AreaChartConnectNulls: StoryFn<typeof ChartArea> = ({
-  dataKey = 'uv',
-  name = 'Unique Visitors',
-  ...args
-}) => {
-  return (
-    <Box
-      width="100%"
-      display="flex"
-      flexDirection={{ base: 'column', m: 'row' }}
-      gap="spacing.5"
-      paddingBottom="spacing.7"
-    >
-      <Box width="100%" display="flex" flexDirection="column" gap="spacing.2">
-        <Heading size="small">Area Chart that does not Connects Nulls :- </Heading>
-        <Box
-          width="100%"
-          maxWidth="560px"
-          height="300px"
-          backgroundColor="surface.background.gray.intense"
-          borderRadius="medium"
-          paddingTop="spacing.4"
-          paddingX="spacing.0"
-          paddingBottom="spacing.6"
-        >
-          <ChartAreaWrapper data={data}>
-            <ChartXAxis dataKey="name" />
-            <ChartYAxis />
-            <ChartTooltip />
-            <ChartArea
-              type="monotone"
-              dataKey={dataKey}
-              name={name}
-              color="data.background.categorical.green.moderate"
-              {...args}
-            />
-          </ChartAreaWrapper>
-        </Box>
-      </Box>
-      <Box width="100%" display="flex" flexDirection="column" gap="spacing.2">
-        <Heading size="small">Area Chart that Connects Nulls :- </Heading>
-        <Box
-          width="100%"
-          maxWidth="560px"
-          height="300px"
-          backgroundColor="surface.background.gray.intense"
-          borderRadius="medium"
-          paddingTop="spacing.4"
-          paddingX="spacing.0"
-          paddingBottom="spacing.6"
-        >
-          <ChartAreaWrapper data={data}>
-            <ChartXAxis dataKey="name" />
-            <ChartYAxis />
-            <ChartTooltip />
-            <ChartArea
-              type="monotone"
-              dataKey={dataKey}
-              name={name}
-              connectNulls
-              color="data.background.categorical.green.moderate"
-              {...args}
-            />
-          </ChartAreaWrapper>
-        </Box>
-      </Box>
-    </Box>
-  );
-};
-
-// Area Chart null handling
+// Area Chart null handling — a single story covering all three ways nulls are represented:
 // - connectNulls={false} (default): the area breaks at null points (use for genuine outages).
-// - connectNulls={true} + connectNullsStyle="solid" (default): the gap is bridged with a solid line
-//   and no fill under the no-data stretch.
-// - connectNulls={true} + connectNullsStyle="dashed": the gap is bridged with a dashed line and no
-//   fill under the no-data stretch, signalling "no data for that period".
+// - connectNulls={true} + connectNullsStyle="solid" (default): the area fill bridges across the gap
+//   as one continuous shape (backward compatible).
+// - connectNulls={true} + connectNullsStyle="dashed": the fill is gapped and the stretch across null
+//   points is drawn as a dashed bridge line, signalling "no data for that period".
 export const AreaChartNullBridge: StoryFn<typeof ChartArea> = () => {
   return (
     <ChartsWrapper>
@@ -687,7 +616,7 @@ export const AreaChartWithCartesianGrid: StoryFn<typeof ChartArea> = () => {
 AreaChartWithDefaultColorTheme.storyName = 'Single Area Chart with Color Theme';
 SimpleAreaChart.storyName = 'Simple Area Chart';
 StackedAreaChart.storyName = 'Stacked Area Chart';
-AreaChartConnectNulls.storyName = 'Area Chart (Connect Nulls)';
+AreaChartNullBridge.storyName = 'Area Chart (Connect Nulls)';
 TinyAreaChart.storyName = 'Tiny Area Chart /  Chart ';
 AreaChartWithReferenceLine.storyName = 'Area Chart with Reference Line';
 AreaChartWithReferenceLineVertical.storyName = 'Area Chart with Reference Line (Vertical)';
