@@ -22,6 +22,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { SharedValue } from 'react-native-reanimated';
 import { useChartsColorTheme, assignDataColorMapping, getHighestColorInRange } from '../utils';
+import { monotoneInterpolateFC, NULL_BRIDGE_DASHARRAY } from '../nullBridgeUtils';
 import {
   CommonChartComponentsContext,
   componentId as commonComponentIds,
@@ -101,6 +102,7 @@ type AreaSlot = {
   stackId: string;
   type: CurveType;
   connectNulls: boolean;
+  connectNullsStyle: 'solid' | 'dashed';
   hide?: boolean;
   showLegend: boolean;
   dot: boolean;
@@ -168,6 +170,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         stackId: props.stackId != null ? String(props.stackId) : '1',
         type: props.type ?? 'monotone',
         connectNulls: Boolean(props.connectNulls),
+        connectNullsStyle: props.connectNullsStyle === 'dashed' ? 'dashed' : 'solid',
         hide: props.hide,
         showLegend: props.showLegend !== false,
         dot: Boolean(props.dot),
@@ -469,6 +472,7 @@ type AreaSeriesProps = {
   points: SeriesPoint[];
   type: CurveType;
   connectNulls: boolean;
+  connectNullsStyle: 'solid' | 'dashed';
   gradientId: string;
   strokeColor: string;
   dotColor: string;
@@ -483,6 +487,7 @@ const AreaSeries = ({
   points,
   type,
   connectNulls,
+  connectNullsStyle,
   gradientId,
   strokeColor,
   dotColor,
@@ -497,24 +502,60 @@ const AreaSeries = ({
       AREA_FILL_OPACITY - scrubProgress.value * (AREA_FILL_OPACITY - AREA_FILL_OPACITY_DIMMED),
   }));
 
-  // Split into contiguous segments. When connectNulls is true, null points are
-  // bridged (removed) so the series draws as one continuous shape.
-  const segments: SeriesPoint[][] = [];
-  if (connectNulls) {
-    const nonNull = points.filter((p) => !p.isNull);
-    if (nonNull.length) segments.push(nonNull);
-  } else {
-    let current: SeriesPoint[] = [];
-    points.forEach((p) => {
-      if (p.isNull) {
-        if (current.length) segments.push(current);
-        current = [];
-      } else {
-        current.push(p);
+  // When connectNulls is true and the style is 'solid' (default), the area fills and strokes
+  // across nulls — preserving backward compatibility. Only the 'dashed' style gaps the area
+  // and draws a separate dashed bridge line across each interior null run.
+  const isDashedBridge = connectNulls && connectNullsStyle === 'dashed';
+  const shouldGapAtNulls = !connectNulls || isDashedBridge;
+
+  const segments = useMemo<SeriesPoint[][]>(() => {
+    const result: SeriesPoint[][] = [];
+    if (shouldGapAtNulls) {
+      // Split at nulls (for hard gap or dashed bridge)
+      let current: SeriesPoint[] = [];
+      points.forEach((p) => {
+        if (p.isNull) {
+          if (current.length) result.push(current);
+          current = [];
+        } else {
+          current.push(p);
+        }
+      });
+      if (current.length) result.push(current);
+    } else {
+      // For 'solid': one continuous segment with null points filtered out,
+      // so the area and stroke connect directly across the gap (backward compatible).
+      const filtered = points.filter((p) => !p.isNull);
+      if (filtered.length) result.push(filtered);
+    }
+    return result;
+  }, [points, shouldGapAtNulls]);
+
+  // For a dashed bridge, draw a stroke-only line across each interior gap, densely sampled onto the
+  // monotone spline through all real points so it follows the same curve as the flanking area line.
+  const bridgePaths = useMemo<string[]>(() => {
+    const paths: string[] = [];
+    if (isDashedBridge && segments.length > 1) {
+      const definedTop = points.filter((p) => !p.isNull);
+      const xs = definedTop.map((p) => p.x);
+      const ys = definedTop.map((p) => p.yTop);
+      for (let i = 0; i < segments.length - 1; i++) {
+        const from = segments[i][segments[i].length - 1];
+        const to = segments[i + 1][0];
+        if (!from || !to) continue;
+        const sampleCount = Math.max(2, Math.round(Math.abs(to.x - from.x) / 3));
+        let bridgeD = `M ${from.x} ${from.yTop}`;
+        for (let step = 1; step <= sampleCount; step++) {
+          const t = step / sampleCount;
+          const x = from.x + (to.x - from.x) * t;
+          const y = monotoneInterpolateFC(xs, ys, x);
+          bridgeD += ` L ${x} ${y}`;
+        }
+        paths.push(bridgeD);
       }
-    });
-    if (current.length) segments.push(current);
-  }
+    }
+    return paths;
+  }, [points, isDashedBridge, segments]);
 
   return (
     <G>
@@ -548,6 +589,20 @@ const AreaSeries = ({
           </G>
         );
       })}
+
+      {bridgePaths.map((bridgeD, bridgeIndex) => (
+        <Path
+          key={`null-bridge-${bridgeIndex}`}
+          testID="area-null-bridge"
+          d={bridgeD}
+          stroke={strokeColor}
+          strokeWidth={STROKE_WIDTH}
+          strokeDasharray={NULL_BRIDGE_DASHARRAY}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ))}
 
       {showDot
         ? points.map((p, idx) =>
@@ -1223,6 +1278,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
                       points={points}
                       type={area.type}
                       connectNulls={area.connectNulls}
+                      connectNullsStyle={area.connectNullsStyle}
                       gradientId={gradientId}
                       strokeColor={strokeColor}
                       dotColor={strokeColor}

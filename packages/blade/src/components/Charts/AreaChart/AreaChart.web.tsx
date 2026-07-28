@@ -1,10 +1,13 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useId } from 'react';
 import {
   AreaChart as RechartsAreaChart,
   Area as RechartsArea,
   ResponsiveContainer,
+  Customized as RechartsCustomized,
 } from 'recharts';
 import { getHighestColorInRange, useChartsColorTheme, assignDataColorMapping } from '../utils';
+import { NULL_BRIDGE_DASHARRAY } from '../nullBridgeUtils';
+import { useNullBridges } from '../useNullBridges';
 import type {
   DataColorMapping,
   SecondaryLabelMap,
@@ -28,6 +31,7 @@ const Area: React.FC<ChartAreaProps> = ({
   color,
   type = 'monotone',
   connectNulls = false,
+  connectNullsStyle = 'solid',
   showLegend = true,
   stackId = 1,
   dot = false,
@@ -35,6 +39,7 @@ const Area: React.FC<ChartAreaProps> = ({
   _index,
   _colorTheme,
   _totalAreas,
+  _gradientNamespace = '',
   dataKey,
   name,
   hide,
@@ -53,16 +58,21 @@ const Area: React.FC<ChartAreaProps> = ({
   const animationBegin = theme.motion.delay.gentle;
   const animationDuration = theme.motion.duration.xgentle;
 
+  // When connectNulls is true and the style is 'solid' (default), Recharts' built-in
+  // connectNulls fills and strokes across nulls — preserving backward compatibility.
+  // Only the 'dashed' style gaps the area and draws a separate dashed bridge line.
+  const shouldConnectNulls = connectNulls && connectNullsStyle !== 'dashed';
+
   return (
     <RechartsArea
       {...props}
-      fill={`url(#color-${_index}-${dataKey})`}
+      fill={`url(#color-${_gradientNamespace}-${_index}-${dataKey})`}
       dataKey={dataKey}
       name={name}
       stroke={colorToken}
       fillOpacity={0.5}
       type={type}
-      connectNulls={connectNulls}
+      connectNulls={shouldConnectNulls}
       legendType={showLegend ? 'rect' : 'none'}
       strokeWidth={1.5}
       dot={dot}
@@ -121,6 +131,12 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     chartName: 'area',
   });
 
+  // Unique per-instance namespace for gradient ids. Without it, multiple AreaCharts on the same
+  // page emit gradients with the same id (e.g. `color-0-uv`) and every area's `fill="url(#...)"`
+  // resolves to the first one in the document, so all charts share (and can be washed out by) the
+  // first chart's fill color. Colons from `useId` are stripped so the id stays `url()`-safe.
+  const gradientNamespace = useId().replace(/[^a-zA-Z0-9]/g, '');
+
   // State to track which areas are currently selected (visible)
   const [selectedDataKeys, setSelectedDataKeys] = useState<string[] | undefined>(undefined);
 
@@ -172,6 +188,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
           _index: AreaChartIndex++,
           _colorTheme: colorTheme,
           _totalAreas: totalAreas,
+          _gradientNamespace: gradientNamespace,
           hide: selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false,
         } as Partial<ChartAreaProps>);
       }
@@ -185,7 +202,7 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
       dataColorMapping,
       secondaryDataKey,
     };
-  }, [children, colorTheme, themeColors, selectedDataKeys]);
+  }, [children, colorTheme, themeColors, selectedDataKeys, gradientNamespace]);
 
   // Build secondary label map internally from ChartXAxis's secondaryDataKey prop
   const secondaryLabelMap = React.useMemo<SecondaryLabelMap | undefined>(() => {
@@ -196,6 +213,69 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
     });
     return map;
   }, [data, secondaryDataKey]);
+
+  // Ordered ChartArea children (matching Recharts' render order) and which of them need a
+  // dashed bridge line. Only 'dashed' bridges need a separate overlay path — 'solid' bridges
+  // are handled by Recharts' built-in connectNulls on the area itself (backward compatible).
+  const chartAreaOrder = useMemo(() => {
+    const areas: Array<{ dataKey: string; bridge: 'none' | 'dashed' }> = [];
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child) && getComponentId(child) === componentIds.ChartArea) {
+        const childProps = child.props as ChartAreaProps;
+        const dataKey = childProps.dataKey as string;
+        if (dataKey) {
+          const bridge: 'none' | 'dashed' =
+            childProps.connectNulls === true && childProps.connectNullsStyle === 'dashed'
+              ? 'dashed'
+              : 'none';
+          areas.push({ dataKey, bridge });
+        }
+      }
+    });
+    return areas;
+  }, [children]);
+
+  const hasBridge = chartAreaOrder.some((area) => area.bridge === 'dashed');
+
+  /**
+   * Bridges are drawn as curved paths derived from Recharts' own rendered geometry: after layout we
+   * parse each visible area's top-line pixel anchors from its SVG path and densely sample the
+   * monotone spline through them across each interior null run. This matches the flanking line's
+   * curve exactly (Recharts v3 doesn't expose the axis scales to <Customized>) while spanning only
+   * the no-data stretch, so nulls read as "no data" (no fill under the gap, just a bridge line —
+   * solid or dashed) rather than a value.
+   */
+  const { containerRef, bridgePaths } = useNullBridges({
+    data,
+    chartSeriesOrder: chartAreaOrder,
+    hasBridge,
+    selectedDataKeys,
+    curveSelector: '.recharts-area-curve',
+  });
+
+  const renderNullBridges = (): React.ReactElement | null => {
+    if (bridgePaths.length === 0) return null;
+    return (
+      <g className="blade-null-bridge-layer">
+        {bridgePaths.map(({ id, dataKey, d, stroke }) => {
+          const isHidden = selectedDataKeys ? !selectedDataKeys.includes(dataKey) : false;
+          if (isHidden) return null;
+          return (
+            <path
+              key={id}
+              d={d}
+              fill="none"
+              stroke={stroke}
+              strokeWidth={1.5}
+              strokeDasharray={NULL_BRIDGE_DASHARRAY}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          );
+        })}
+      </g>
+    );
+  };
 
   return (
     <CommonChartComponentsContext.Provider
@@ -215,23 +295,26 @@ const ChartAreaWrapper: React.FC<ChartAreaWrapperProps & TestID & DataAnalyticsA
         width="100%"
         height="100%"
       >
-        <ResponsiveContainer>
-          <RechartsAreaChart data={data}>
-            <defs>
-              {Object.keys(dataColorMapping).map((dataKey, index) => (
-                <ChartColorGradient
-                  key={`color-${index}-${dataKey}`}
-                  id={`color-${index}-${dataKey}`}
-                  index={index}
-                  color={dataColorMapping[dataKey].colorToken}
-                  totalAreaChartChildren={totalAreaChartChildren}
-                />
-              ))}
-            </defs>
+        <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+          <ResponsiveContainer>
+            <RechartsAreaChart data={data}>
+              <defs>
+                {Object.keys(dataColorMapping).map((dataKey, index) => (
+                  <ChartColorGradient
+                    key={`color-${gradientNamespace}-${index}-${dataKey}`}
+                    id={`color-${gradientNamespace}-${index}-${dataKey}`}
+                    index={index}
+                    color={dataColorMapping[dataKey].colorToken}
+                    totalAreaChartChildren={totalAreaChartChildren}
+                  />
+                ))}
+              </defs>
 
-            {modifiedChildren}
-          </RechartsAreaChart>
-        </ResponsiveContainer>
+              {modifiedChildren}
+              {hasBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
+            </RechartsAreaChart>
+          </ResponsiveContainer>
+        </div>
       </BaseBox>
     </CommonChartComponentsContext.Provider>
   );
