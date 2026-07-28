@@ -24,9 +24,12 @@ const Page = (): React.ReactElement => {
           </Link>
           , but they solve different problems. Use <Code size="medium">SegmentedControl</Code> as a
           compact, form-like control to pick one of 2–5 options that filter or change how the{' '}
-          <Text as="span" weight="semibold">same</Text> content is displayed (e.g. Daily / Weekly / Monthly, List / Grid). If you
-          instead need to navigate between distinct views or sections, where each option reveals its
-          own content panel, use <Code size="medium">Tabs</Code>.
+          <Text as="span" weight="semibold">
+            same
+          </Text>{' '}
+          content is displayed (e.g. Daily / Weekly / Monthly, List / Grid). If you instead need to
+          navigate between distinct views or sections, where each option reveals its own content
+          panel, use <Code size="medium">Tabs</Code>.
         </Text>
       }
     >
