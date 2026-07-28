@@ -502,7 +502,7 @@ exports[`<ChartLineWrapper /> (native) should ignore null cells when computing y
                       "type": 0,
                     }
                   }
-                  name="line-line-15-reveal-0"
+                  name="line-line-16-reveal-0"
                 >
                   <RNSVGRect
                     fill={
@@ -519,7 +519,7 @@ exports[`<ChartLineWrapper /> (native) should ignore null cells when computing y
                 </RNSVGClipPath>
               </RNSVGDefs>
               <RNSVGGroup
-                clipPath="line-line-15-reveal-0"
+                clipPath="line-line-16-reveal-0"
                 fill={
                   {
                     "payload": 4278190080,
@@ -1194,7 +1194,7 @@ exports[`<ChartLineWrapper /> (native) should render a horizontal reference line
                       "type": 0,
                     }
                   }
-                  name="line-line-8-reveal-0"
+                  name="line-line-9-reveal-0"
                 >
                   <RNSVGRect
                     fill={
@@ -1211,7 +1211,7 @@ exports[`<ChartLineWrapper /> (native) should render a horizontal reference line
                 </RNSVGClipPath>
               </RNSVGDefs>
               <RNSVGGroup
-                clipPath="line-line-8-reveal-0"
+                clipPath="line-line-9-reveal-0"
                 fill={
                   {
                     "payload": 4278190080,
@@ -1531,7 +1531,7 @@ exports[`<ChartLineWrapper /> (native) should render a vertical reference line (
                       "type": 0,
                     }
                   }
-                  name="line-line-9-reveal-0"
+                  name="line-line-10-reveal-0"
                 >
                   <RNSVGRect
                     fill={
@@ -1548,7 +1548,7 @@ exports[`<ChartLineWrapper /> (native) should render a vertical reference line (
                 </RNSVGClipPath>
               </RNSVGDefs>
               <RNSVGGroup
-                clipPath="line-line-9-reveal-0"
+                clipPath="line-line-10-reveal-0"
                 fill={
                   {
                     "payload": 4278190080,
@@ -2944,7 +2944,7 @@ exports[`<ChartLineWrapper /> (native) should render with all-negative data with
                       "type": 0,
                     }
                   }
-                  name="line-line-14-reveal-0"
+                  name="line-line-15-reveal-0"
                 >
                   <RNSVGRect
                     fill={
@@ -2961,7 +2961,7 @@ exports[`<ChartLineWrapper /> (native) should render with all-negative data with
                 </RNSVGClipPath>
               </RNSVGDefs>
               <RNSVGGroup
-                clipPath="line-line-14-reveal-0"
+                clipPath="line-line-15-reveal-0"
                 fill={
                   {
                     "payload": 4278190080,
@@ -3853,7 +3853,7 @@ exports[`<ChartLineWrapper /> (native) should render with negative data values 1
                       "type": 0,
                     }
                   }
-                  name="line-line-13-reveal-0"
+                  name="line-line-14-reveal-0"
                 >
                   <RNSVGRect
                     fill={
@@ -3870,7 +3870,7 @@ exports[`<ChartLineWrapper /> (native) should render with negative data values 1
                 </RNSVGClipPath>
               </RNSVGDefs>
               <RNSVGGroup
-                clipPath="line-line-13-reveal-0"
+                clipPath="line-line-14-reveal-0"
                 fill={
                   {
                     "payload": 4278190080,
