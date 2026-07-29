@@ -1711,6 +1711,29 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render skeleton header row with compact minHeight regardless of rowDensity', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} rowDensity="comfortable" skeletonRowCount={3}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const headerSkeletonRow = skeleton?.children[0];
+    // The loaded header row is always compact (36px) regardless of rowDensity,
+    // so the skeleton header must match that, not the body rowDensity.
+    expect(headerSkeletonRow).toHaveStyle('min-height: 36px');
+  });
+
   it('should render skeleton with explicit skeletonRowHeight prop', () => {
     const { container } = renderWithTheme(
       <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonRowHeight="72px">

@@ -1229,6 +1229,7 @@ exports[`<Table /> should render skeleton with all enhancement props combined 1`
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
@@ -2144,6 +2145,7 @@ exports[`<Table /> should render skeleton with explicit skeletonRowCount prop 1`
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
@@ -2493,6 +2495,7 @@ exports[`<Table /> should render skeleton with explicit skeletonRowHeight prop 1
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
@@ -2688,6 +2691,7 @@ exports[`<Table /> should render skeleton with gridTemplateColumns matching cons
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
@@ -2903,6 +2907,7 @@ exports[`<Table /> should render skeleton with row count derived from pagination
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
@@ -3552,6 +3557,7 @@ exports[`<Table /> should render skeleton with rowDensity respecting comfortable
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
@@ -3742,6 +3748,7 @@ exports[`<Table /> should render skeleton with skeletonMinHeight reserving space
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;
@@ -14131,6 +14138,7 @@ exports[`<Table /> should render table with isLoading 1`] = `
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;

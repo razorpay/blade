@@ -633,11 +633,14 @@ const _Table = <Item,>({
             {...makeAnalyticsAttribute(rest)}
             testID="table-skeleton"
           >
-            {/* Header skeleton row */}
+            {/* Header skeleton row — always compact to match the loaded
+             * header row, which unconditionally sets headerRowDensity to
+             * 'compact' (see TableHeader.web.tsx _TableHeaderRow). */}
             <StyledSkeletonRow
               $columns={columnCount || 5}
               $isHeader
               $gridTemplateColumns={skeletonGridTemplateColumns}
+              $rowDensity="compact"
             >
               {Array.from({ length: columnCount || 5 }).map((_, i) => (
                 <Skeleton
