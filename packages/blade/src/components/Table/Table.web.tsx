@@ -37,7 +37,7 @@ import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
-import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
+import { getBaseBoxStyles, getSpacingValue } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import { Skeleton } from '~components/Skeleton';
@@ -164,7 +164,7 @@ const StyledSkeletonRow = styled(BaseBox)<{
   $isHeader?: boolean;
   $gridTemplateColumns?: string;
   $rowDensity?: NonNullable<TableProps<unknown>['rowDensity']>;
-  $skeletonRowHeight?: number;
+  $skeletonRowHeight?: BoxProps['height'];
 }>(({ theme, $columns, $isHeader, $gridTemplateColumns, $rowDensity, $skeletonRowHeight }) => ({
   display: 'grid',
   gridTemplateColumns: $gridTemplateColumns ?? `repeat(${$columns}, minmax(100px, 1fr))`,
@@ -173,7 +173,7 @@ const StyledSkeletonRow = styled(BaseBox)<{
   paddingTop: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
   paddingBottom: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
   minHeight: $skeletonRowHeight
-    ? `${$skeletonRowHeight}px`
+    ? getSpacingValue($skeletonRowHeight, theme)
     : $rowDensity
     ? makeSize(getIn(size, tableRow.minHeight[$rowDensity]))
     : undefined,

@@ -1713,7 +1713,7 @@ describe('<Table />', () => {
 
   it('should render skeleton with explicit skeletonRowHeight prop', () => {
     const { container } = renderWithTheme(
-      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonRowHeight={72}>
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonRowHeight="72px">
         {() => (
           <>
             <TableHeader>
@@ -1782,7 +1782,7 @@ describe('<Table />', () => {
         data={{ nodes: [] }}
         isLoading={true}
         skeletonRowCount={25}
-        skeletonRowHeight={48}
+        skeletonRowHeight="48px"
         skeletonMinHeight="1200px"
         gridTemplateColumns="176px 132px minmax(168px, 1.05fr) 100px 80px"
         rowDensity="normal"

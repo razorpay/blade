@@ -232,11 +232,12 @@ type TableProps<Item> = {
    **/
   skeletonRowCount?: number;
   /**
-   * Explicitly sets the height (in px) of each skeleton row when `isLoading` is true.
+   * Explicitly sets the height of each skeleton row when `isLoading` is true.
+   * Accepts any valid Blade height value (e.g. `"48px"`, `{ base: '36px', m: '48px' }`).
    * When not provided, the skeleton row height is derived from the `rowDensity` prop:
    * `compact` = 36px, `normal` = 48px, `comfortable` = 60px.
    **/
-  skeletonRowHeight?: number;
+  skeletonRowHeight?: BoxProps['height'];
   /**
    * Sets a minimum height for the skeleton container when `isLoading` is true.
    * This reserves the loaded table's footprint during loading so the page
