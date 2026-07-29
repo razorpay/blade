@@ -1,5 +1,5 @@
 import type { Snippet } from 'svelte';
-import type { TextAs } from '@razorpay/blade-core/styles';
+import type { TextAs, StyleOverride, TextSlot } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 
@@ -21,6 +21,8 @@ type TextCommonProps = {
   textDecorationLine?: BaseTextProps['textDecorationLine'];
   wordBreak?: BaseTextProps['wordBreak'];
   testID?: string;
+  className?: string;
+  styleOverride?: StyleOverride<TextSlot>;
 } & StyledPropsBlade;
 
 export type TextBodyVariant = TextCommonProps & {

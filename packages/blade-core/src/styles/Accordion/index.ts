@@ -1,5 +1,7 @@
 export {
   getAccordionWrapperClasses,
+  getAccordionWrapperClassNames,
+  getAccordionGraySurfaceClassNames,
   getAccordionButtonClasses,
   getAccordionButtonBorderClasses,
   getAccordionTemplateClasses,
@@ -9,3 +11,4 @@ export type {
   AccordionButtonVariants,
   AccordionButtonBorderVariants,
 } from './accordion';
+export type { AccordionSlot } from './slots';

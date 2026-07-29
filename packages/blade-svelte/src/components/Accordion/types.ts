@@ -1,4 +1,5 @@
 import type { Snippet } from 'svelte';
+import type { AccordionSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 export type AccordionVariantType = 'filled' | 'transparent';
@@ -67,6 +68,16 @@ export type AccordionProps = {
    * Test ID for the element.
    */
   testID?: string;
+
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.Accordion.styleOverride`;
+   * instance values win on conflicts.
+   *
+   * **`graySurface`:** with `hasGrayBody`, pass a {@link CardBackgroundColor} token for the same
+   * Blade background utility as Card. **`wrapper`:** targets the filled card shell (gradients /
+   * shadow); clear `background-image` in extra classes when replacing fill.
+   */
+  styleOverride?: StyleOverride<AccordionSlot>;
 
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;

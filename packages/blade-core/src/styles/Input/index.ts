@@ -33,3 +33,4 @@ export {
   getFormTemplateClasses,
 } from './form';
 export type { FormSize, FormLabelPosition, FormHintType } from './form';
+export type { InputSlot } from './slots';

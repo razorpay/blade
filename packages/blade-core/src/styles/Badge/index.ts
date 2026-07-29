@@ -16,3 +16,4 @@ export {
   getBadgeIconColorToken,
 } from './badge';
 export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './badge';
+export type { BadgeSlot } from './slots';

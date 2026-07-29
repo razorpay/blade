@@ -4,10 +4,24 @@ import { colors as globalColors, opacity } from '~tokens/global';
 import type { Border } from '~tokens/global';
 import type { ColorChromaticScale } from '~tokens/global/colors';
 import { throwBladeError } from '~utils/logger';
+import merge from '~utils/lodashButBetter/merge';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 import bladeTheme from './bladeTheme';
 import overrideTheme from './overrideTheme';
 import type { ThemeTokens } from './theme';
+import { buildFontFaceCss } from '~utils/buildFontFaceCss';
+import { buildSurfaceColorOverrides, buildTypographyOverrides } from './createThemeOverrides';
+import type { CreateThemeConfig, CreateThemeResult } from './createThemeConfig';
+
+export type {
+  CreateThemeConfig,
+  CreateThemeFontFace,
+  CreateThemeFontFamilyOverride,
+  CreateThemeFontSizeScaleOverride,
+  CreateThemeResult,
+  CreateThemeSurfaceBackgroundOverride,
+  CreateThemeSurfaceOverride,
+} from './createThemeConfig';
 
 // WCAG2ContrastOptions are the options used to determine if a color is readable
 const WCAG2ContrastOptions: WCAG2Options = {
@@ -301,54 +315,66 @@ const getOnDarkOverrides = (
 };
 
 /**
- * @param {Object} themeConfig - The brand color and overrides to apply to the theme
- * @param {string} themeConfig.brandColor - The brand color to use to generate the theme. Can be in hex, rgb, or hsl format.
- * @param {Partial<Border['radius']>} [themeConfig.borderRadius] - Optional border radius token overrides.
+ * @param themeConfig - Brand color and optional global theme overrides
  * @description
- * Creates a Blade Theme based on the custom brand color (and optional border radius overrides)
- * @returns The Theme Tokens with the custom brand colors
+ * Creates Blade theme tokens from a brand color plus optional typography, surface, and radius overrides.
  * @example
- * const { theme, brandColors } = createTheme({ brandColor: '#19BEA2', borderRadius: { medium: 16 } })
+ * const { theme, brandColors, fontFaceCss } = createTheme({
+ *   brandColor: '#19BEA2',
+ *   borderRadius: { medium: 16 },
+ *   fontFamily: { text: 'CustomBrand, Inter, sans-serif' },
+ *   fontFaces: [{ fontFamily: 'CustomBrand', src: '/fonts/custom.woff2', format: 'woff2' }],
+ *   fontSizeScaleFactor: 1.05,
+ *   surface: { background: { page: '#f5f5f5' } },
+ * })
  **/
 export const createTheme = ({
   brandColor,
   borderRadius,
-}: {
-  brandColor: ColorInput;
-  /**
-   * Optional border radius overrides. Values are CSS lengths in px (numbers)
-   * or raw CSS strings (e.g. `'50%'` for round).
-   */
-  borderRadius?: Partial<Record<keyof Border['radius'], number | string>>;
-}): { theme: ThemeTokens; brandColors: ColorChromaticScale } => {
+  fontFamily,
+  fontFaces,
+  fontSizeOverrides,
+  fontSizeScaleFactor,
+  surface,
+}: CreateThemeConfig): CreateThemeResult => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
-  // Get onLight overrides
   const brandedLightTheme = getOnLightOverrides(chromaticBrandColors);
-  // Get onDark overrides
   const brandedDarkTheme = getOnDarkOverrides(chromaticBrandColors);
-  // Override the payment theme with the brand colors
+  const surfaceColorOverrides = buildSurfaceColorOverrides(surface);
+  const typographyOverrides = buildTypographyOverrides({
+    fontFamily,
+    fontSizeOverrides,
+    fontSizeScaleFactor,
+  });
+
   const brandedThemeTokens = overrideTheme({
     baseThemeTokens: bladeTheme,
     overrides: {
       name: `custom-${tinycolor(brandColor).toHex()}`,
       colors: {
-        onLight: {
-          ...brandedLightTheme,
-        },
-        onDark: {
-          ...brandedDarkTheme,
-        },
+        onLight: merge(
+          {} as DeepPartial<ThemeTokens['colors']['onLight']>,
+          brandedLightTheme,
+          surfaceColorOverrides?.onLight ?? {},
+        ),
+        onDark: merge(
+          {} as DeepPartial<ThemeTokens['colors']['onDark']>,
+          brandedDarkTheme,
+          surfaceColorOverrides?.onDark ?? {},
+        ),
       },
       ...(borderRadius
         ? {
             border: {
-              // overrideTheme deep-merges; cast allows custom numeric radii beyond token literals
               radius: borderRadius as Partial<Border['radius']>,
             },
           }
         : {}),
+      ...(typographyOverrides ? { typography: typographyOverrides } : {}),
     },
   });
 
-  return { theme: brandedThemeTokens, brandColors: chromaticBrandColors };
+  const fontFaceCss = fontFaces && fontFaces.length > 0 ? buildFontFaceCss(fontFaces) : undefined;
+
+  return { theme: brandedThemeTokens, brandColors: chromaticBrandColors, fontFaceCss };
 };

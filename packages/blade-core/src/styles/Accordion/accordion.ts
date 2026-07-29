@@ -1,4 +1,9 @@
 import { cva } from 'class-variance-authority';
+import { cx } from '../../utils/cx';
+import {
+  extractCardBackgroundColorFromClassNames,
+  getCardSurfaceBackgroundUtilityClass,
+} from '../Card/card';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './accordion.module.css';
 
@@ -122,3 +127,59 @@ export type AccordionButtonBorderVariants = {
   isLastItem?: boolean;
   isExpanded?: boolean;
 };
+
+export type GetAccordionGraySurfaceClassNamesParams = {
+  isGrayBody: boolean;
+  isLastItem: boolean;
+  styleOverrideGraySurface?: string;
+};
+
+/**
+ * Gray accordion body wrapper classes. When `styleOverride.graySurface` includes a
+ * {@link CardBackgroundColor} token, fill uses the same Blade background utility as Card
+ * instead of the default `.collapsibleContentGray` module class.
+ */
+export function getAccordionGraySurfaceClassNames({
+  isGrayBody,
+  isLastItem,
+  styleOverrideGraySurface,
+}: GetAccordionGraySurfaceClassNamesParams): string {
+  if (!isGrayBody) {
+    return cx(styleOverrideGraySurface);
+  }
+
+  const { backgroundColor, remainingClassNames } = extractCardBackgroundColorFromClassNames(
+    styleOverrideGraySurface,
+  );
+
+  const fillClass = backgroundColor
+    ? getCardSurfaceBackgroundUtilityClass(backgroundColor)
+    : styles.collapsibleContentGray;
+
+  return cx(fillClass, isLastItem ? styles.collapsibleContentGrayLast : '', remainingClassNames);
+}
+
+export type GetAccordionWrapperClassNamesParams = {
+  variant?: 'filled' | 'transparent';
+  styleOverrideWrapper?: string;
+};
+
+/**
+ * Accordion inner wrapper (`filled` / `transparent`). A {@link CardBackgroundColor} token in
+ * `styleOverride.wrapper` adds the same background utility as Card. Filled variant still applies
+ * card-like `background-image` bands unless remaining classes clear them (e.g. `background-image: none`).
+ */
+export function getAccordionWrapperClassNames({
+  variant = 'transparent',
+  styleOverrideWrapper,
+}: GetAccordionWrapperClassNamesParams): string {
+  const { backgroundColor, remainingClassNames } = extractCardBackgroundColorFromClassNames(
+    styleOverrideWrapper,
+  );
+
+  return cx(
+    getAccordionWrapperClasses({ variant }),
+    backgroundColor ? getCardSurfaceBackgroundUtilityClass(backgroundColor) : '',
+    remainingClassNames,
+  );
+}

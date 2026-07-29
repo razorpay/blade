@@ -1,4 +1,5 @@
 import type { Snippet, Component } from 'svelte';
+import type { CardSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
@@ -138,6 +139,14 @@ type CardBaseProps = {
    * Test ID for testing
    */
   testID?: string;
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.Card.styleOverride`;
+   * instance values win on conflicts.
+   *
+   * **`surface`:** pass a {@link CardBackgroundColor} token key (space-separated with other classes)
+   * to apply fill via the same CVA utility as `backgroundColor` on `variant="theme"`.
+   */
+  styleOverride?: StyleOverride<CardSlot>;
   /**
    * Analytics data attributes
    */

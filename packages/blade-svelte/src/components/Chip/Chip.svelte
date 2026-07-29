@@ -5,6 +5,7 @@
     makeAccessible,
     getStyledPropsClasses,
     makeAnalyticsAttribute,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
     getAnimatedChipClasses,
@@ -89,9 +90,11 @@
   );
   const styledProps = $derived(getStyledPropsClasses(rest));
   const animatedChipClasses = $derived(
-    [outerClasses, isPressed ? templateClasses.pressed : '', ...(styledProps.classes || [])]
-      .filter(Boolean)
-      .join(' '),
+    cx(
+      outerClasses,
+      isPressed ? templateClasses.pressed : '',
+      ...(styledProps.classes || []),
+    ),
   );
 
   const textColorToken = $derived(
@@ -100,6 +103,7 @@
   const iconColorToken = $derived(
     getChipIconColorToken(_isChecked, chipColor, _isDisabled) as IconColor,
   );
+
   const fontSize = $derived(textSizes.fontSize[_size]);
   const lineHeight = $derived(textSizes.lineHeight[_size]);
   const letterSpacing = $derived(textSizes.letterSpacing[_size]);

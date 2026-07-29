@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { validHeadingAsValues } from '@razorpay/blade-core/styles';
+import type { validHeadingAsValues, StyleOverride, HeadingSlot } from '@razorpay/blade-core/styles';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 
 export type HeadingProps = {
@@ -19,4 +19,5 @@ export type HeadingProps = {
   textTransform?: BaseTextProps['textTransform'];
   wordBreak?: BaseTextProps['wordBreak'];
   testID?: string;
+  styleOverride?: StyleOverride<HeadingSlot>;
 } & StyledPropsBlade;

@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
-  import { getAccordionTemplateClasses } from '@razorpay/blade-core/styles';
+  import { metaAttribute, MetaConstants, cx } from '@razorpay/blade-core/utils';
+  import { getAccordionGraySurfaceClassNames, getAccordionTemplateClasses } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
   import CollapsibleBody from '../Collapsible/CollapsibleBody.svelte';
   import { getAccordionContext, getAccordionItemContext } from './context';
@@ -17,29 +17,31 @@
   const accordionCtx = $derived(getAccCtx());
 
   const accordionSize = $derived(accordionCtx.size);
+  const slotOverride = $derived(accordionCtx.styleOverride);
 
   const isGrayBody = $derived(accordionCtx.hasGrayBody);
-  // When the gray body belongs to the last item, round its bottom corners so the
-  // edge-to-edge gray surface follows the filled card's rounded bottom.
   const isLastItem = $derived(
     typeof itemCtx.index === 'number' && itemCtx.index === accordionCtx.numberOfItems - 1,
   );
 
-  // Gray surface + last-item radius live *inside* CollapsibleBody so they collapse
-  // along with the animated height instead of staying painted while collapsed.
   const grayWrapperClass = $derived(
-    [
-      isGrayBody ? templateClasses.collapsibleContentGray : '',
-      isGrayBody && isLastItem ? templateClasses.collapsibleContentGrayLast : '',
-    ]
-      .filter(Boolean)
-      .join(' '),
+    getAccordionGraySurfaceClassNames({
+      isGrayBody,
+      isLastItem,
+      styleOverrideGraySurface: slotOverride?.graySurface,
+    }),
   );
 
   const bodyClass = $derived(
-    [templateClasses.body, isGrayBody ? templateClasses.bodyGray : '']
-      .filter(Boolean)
-      .join(' '),
+    cx(
+      templateClasses.body,
+      isGrayBody ? templateClasses.bodyGray : '',
+      slotOverride?.body,
+    ),
+  );
+
+  const bodyTextColor = $derived(
+    slotOverride?.body ? ('currentColor' as const) : ('surface.text.gray.subtle' as const),
   );
 
   const descriptionFontSize = $derived(accordionSize === 'large' ? 100 : 75);
@@ -56,7 +58,7 @@
     <div class={bodyClass}>
       <BaseText
         as="div"
-        color="surface.text.gray.subtle"
+        color={bodyTextColor}
         fontSize={descriptionFontSize}
         lineHeight={descriptionLineHeight}
         letterSpacing={50}

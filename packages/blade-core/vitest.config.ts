@@ -7,6 +7,8 @@ export default defineConfig({
     globals: true,
     include: [
       'src/utils/themeToCSSVariables/**/*.test.ts',
+      'src/utils/**/*.test.ts',
+      'src/styles/**/*.test.ts',
       'src/tokens/theme/__tests__/createTheme.test.ts',
     ],
   },

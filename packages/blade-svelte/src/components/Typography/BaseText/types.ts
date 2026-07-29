@@ -4,7 +4,9 @@ import type {
   DotNotationToken,
   StyledPropsBlade,
 } from '@razorpay/blade-core/utils';
+import type { StyleOverride, TextSlot } from '@razorpay/blade-core/styles';
 import type { Theme } from '../../BladeProvider/types';
+import type { BladeComponentName } from '../../BladeProvider/types';
 
 // Text color types - using DotNotationToken from blade-core, matching React implementation exactly
 type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;
@@ -59,6 +61,13 @@ export type BaseTextProps = {
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   truncateAfterLines?: number;
   className?: string;
+  /**
+   * Per-slot classname overrides. When `styleOverrideRegistryKey` is set, merges with
+   * `BladeProvider` `componentConfig[styleOverrideRegistryKey].styleOverride`.
+   */
+  styleOverride?: StyleOverride<TextSlot>;
+  /** Registry key for provider-level styleOverride (e.g. `'Text'` | `'Heading'`). */
+  styleOverrideRegistryKey?: Extract<BladeComponentName, 'Text' | 'Heading'>;
   style?: string | Record<string, string | number>;
   children: Snippet | string;
   accessibilityProps?: Partial<AccessibilityProps>;

@@ -6,6 +6,7 @@
     hintIconSize,
     hintTextColor,
   } from '@razorpay/blade-core/styles';
+  import { cx } from '@razorpay/blade-core/utils';
   import Text from '../../Typography/Text/Text.svelte';
   import type { TextColors } from '../../Typography/BaseText/types';
   import { InfoIcon, CheckIcon } from '../../Icons';
@@ -22,25 +23,29 @@
     errorTextId,
     successTextId,
     size = 'medium',
+    className,
   }: FormHintProps = $props();
 
   const showError = $derived(type === 'error' && Boolean(errorText));
   const showSuccess = $derived(type === 'success' && Boolean(successText));
   const showHelp = $derived(!showError && !showSuccess && Boolean(helpText));
 
-  const hintClasses = $derived(getFormHintClasses({ size }));
+  const hintClasses = $derived(cx(getFormHintClasses({ size }), className));
   const textSize = $derived(hintTextSize[size]);
   const iconSize = $derived(hintIconSize[size]);
   const textMarginTop = $derived(size === 'large' ? 'spacing.1' : 'spacing.0');
   const helpColor = $derived(hintTextColor.help as TextColors);
   const errorColor = $derived(hintTextColor.error as TextColors);
   const successColor = $derived(hintTextColor.success as TextColors);
+  const hintRenderColor = $derived(
+    className ? ('currentColor' as const) : undefined,
+  );
 </script>
 
 {#if showHelp}
   <div class={hintClasses} id={helpTextId}>
     <span class={templateClasses.hintWrapper}>
-      <Text as="span" variant="caption" size={textSize} color={helpColor} wordBreak="break-word">
+      <Text as="span" variant="caption" size={textSize} color={hintRenderColor ?? helpColor} wordBreak="break-word">
         {helpText}
       </Text>
     </span>
@@ -57,7 +62,7 @@
         as="span"
         variant="caption"
         size={textSize}
-        color={errorColor}
+        color={hintRenderColor ?? errorColor}
         wordBreak="break-word"
         marginTop={textMarginTop}
       >
@@ -77,7 +82,7 @@
         as="span"
         variant="caption"
         size={textSize}
-        color={successColor}
+        color={hintRenderColor ?? successColor}
         wordBreak="break-word"
         marginTop={textMarginTop}
       >
