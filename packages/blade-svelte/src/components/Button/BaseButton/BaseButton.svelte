@@ -205,6 +205,15 @@
     }) as IconColor;
   });
 
+  /** Token fill on `<Icon>` ignores wrapper `color`; inherit when icon slot override is set. */
+  const iconRenderColor = $derived.by((): IconColor =>
+    resolvedStyleOverride?.icon ? 'currentColor' : iconColorToken,
+  );
+
+  const textRenderColor = $derived.by((): TextColors =>
+    resolvedStyleOverride?.text ? 'currentColor' : textColorToken,
+  );
+
   // Get icon size maps
   const buttonIconSizeMap = getButtonIconSize();
   const buttonIconOnlySizeMap = getButtonIconOnlySize();
@@ -495,13 +504,13 @@
     <span class={cx(buttonClasses.content, isIndefiniteLoading && buttonClasses.loading, 'focus-ring-child')}>
       {#if Icon && iconPosition === 'left'}
         <span class={cx(buttonClasses.icon, resolvedStyleOverride?.icon)}>
-          <Icon size={iconSize} color={iconColorToken} />
+          <Icon size={iconSize} color={iconRenderColor} />
         </span>
       {/if}
       {#if childrenString}
         <BaseText
           as="span"
-          color={textColorToken}
+          color={textRenderColor}
           fontSize={fontSize}
           lineHeight={lineHeight}
           fontFamily="text"
@@ -516,7 +525,7 @@
       {:else if children && typeof children === 'function'}
         <BaseText
           as="span"
-          color={textColorToken}
+          color={textRenderColor}
           fontSize={fontSize}
           lineHeight={lineHeight}
           fontFamily="text"
@@ -531,7 +540,7 @@
       {/if}
       {#if Icon && iconPosition === 'right'}
         <span class={cx(buttonClasses.icon, resolvedStyleOverride?.icon)}>
-          <Icon size={iconSize} color={iconColorToken} />
+          <Icon size={iconSize} color={iconRenderColor} />
         </span>
       {/if}
       {#if shouldShowAvatars && avatars}

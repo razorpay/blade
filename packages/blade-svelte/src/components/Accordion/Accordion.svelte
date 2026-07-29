@@ -4,15 +4,19 @@
     MetaConstants,
     getStyledPropsClasses,
     makeAnalyticsAttribute,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
-    getAccordionWrapperClasses,
+    getAccordionWrapperClassNames,
     getAccordionTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import { setAccordionContext } from './context';
+  import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import type { AccordionProps } from './types';
 
   const templateClasses = getAccordionTemplateClasses();
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     children,
@@ -26,8 +30,13 @@
     minWidth,
     hasGrayBody = false,
     testID,
+    styleOverride,
     ...rest
   }: AccordionProps = $props();
+
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('Accordion', styleOverride, themeContextGetter),
+  );
 
   let internalExpandedIndex = $state<number | undefined>(defaultExpandedIndex);
 
@@ -71,14 +80,18 @@
     size,
     registerItem,
     hasGrayBody,
+    styleOverride: resolvedStyleOverride,
   }));
 
-  const wrapperClass = $derived(getAccordionWrapperClasses({ variant }));
+  const wrapperClass = $derived(
+    getAccordionWrapperClassNames({
+      variant,
+      styleOverrideWrapper: resolvedStyleOverride?.wrapper,
+    }),
+  );
   const styledProps = $derived(getStyledPropsClasses(rest));
   const outerClasses = $derived(
-    [templateClasses.accordionOuter, ...(styledProps.classes || [])]
-      .filter(Boolean)
-      .join(' '),
+    cx(templateClasses.accordionOuter, ...(styledProps.classes || []), resolvedStyleOverride?.root),
   );
 
   const outerStyle = $derived.by(() => {

@@ -8,3 +8,4 @@ export type {
   FontSize,
   LineHeight,
 } from './text';
+export type { TextSlot } from './slots';

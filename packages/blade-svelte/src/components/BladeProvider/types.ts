@@ -27,13 +27,10 @@ export type BladeComponentName =
   | 'Amount'
   | 'AnnouncementBanner'
   | 'Card'
-  | 'AppBar'
-  | 'Input'
+  | 'AppBarLeading'
   | 'Accordion'
   | 'Divider'
-  | 'Badge'
-  | 'Chip'
-  | 'TrustBadge';
+  | 'Avatar';
 
 export type BladeComponentConfig = {
   /**

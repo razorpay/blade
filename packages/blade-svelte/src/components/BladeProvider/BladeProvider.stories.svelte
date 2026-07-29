@@ -15,6 +15,23 @@
     brandColor: '#F56651',
   }).theme;
 
+  const merchantFontTheme = createTheme({
+    brandColor: '#3669ff',
+    fontFamily: {
+      text: 'MerchantBrand, system-ui, sans-serif',
+      heading: 'MerchantBrand, system-ui, sans-serif',
+    },
+    fontFaces: [
+      {
+        fontFamily: 'MerchantBrand',
+        src: 'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2',
+        format: 'woff2',
+        fontWeight: 600,
+        fontDisplay: 'swap',
+      },
+    ],
+  });
+
   const { Story } = defineMeta({
     title: 'Guides/Theming/BladeProvider',
     component: BladeProvider,
@@ -134,6 +151,32 @@
   </div>
 </Story>
 
+<Story
+  name="fontFaces"
+  asChild
+  parameters={{
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          'Pass `fontFaceCss` from `createTheme({ fontFaces, fontFamily }).fontFaceCss` into BladeProvider so custom faces load before themed UI renders.',
+      },
+    },
+  }}
+>
+  <BladeProvider themeTokens={merchantFontTheme.theme} fontFaceCss={merchantFontTheme.fontFaceCss}>
+    <div class="font-face-story">
+      <Badge color="primary" emphasis="subtle" size="small">fontFaceCss</Badge>
+      <Heading size="large" weight="semibold">MerchantBrand heading</Heading>
+      <Text size="medium" color="surface.text.gray.muted">
+        Body text uses the same <Code size="small">MerchantBrand</Code> family from
+        <Code size="small">createTheme({'{ fontFaces, fontFamily }'})</Code>.
+      </Text>
+      <Button variant="primary">Pay with custom font</Button>
+    </div>
+  </BladeProvider>
+</Story>
+
 <style>
   .nested-layout {
     display: flex;
@@ -217,6 +260,20 @@
     justify-content: center;
     padding: var(--spacing-8);
     background-color: var(--surface-background-gray-subtle);
+  }
+
+  .font-face-story {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+    width: min(100%, 560px);
+    box-sizing: border-box;
+    padding: var(--spacing-8);
+    background-color: var(--surface-background-gray-subtle);
+    border-radius: var(--border-radius-large);
+    border: 1px solid var(--surface-border-gray-muted);
+    box-shadow: var(--elevation-low-raised);
   }
 
   @media (max-width: 768px) {

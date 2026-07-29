@@ -24,3 +24,4 @@ export type {
   ChipSize,
   ChipColor,
 } from './chip';
+export type { ChipSlot } from './slots';

@@ -7,6 +7,7 @@
   } from '@razorpay/blade-core/tokens';
   import BladeProvider from './BladeProvider.svelte';
   import Button from '../Button/Button.svelte';
+  import IconButton from '../Button/IconButton/IconButton.svelte';
   import Text from '../Typography/Text/Text.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
   import Badge from '../Badge/Badge.svelte';
@@ -17,6 +18,7 @@
   import ChipGroup from '../Chip/ChipGroup.svelte';
   import SegmentedControl from '../SegmentedControl/SegmentedControl.svelte';
   import SegmentedControlItem from '../SegmentedControl/SegmentedControlItem.svelte';
+  import { SearchIcon } from '../Icons';
 
   const BRAND_PRESETS: { label: string; hex: string }[] = [
     { label: 'Razorpay', hex: '' },
@@ -31,16 +33,23 @@
     { label: 'Nykaa', hex: '#DF005D' },
   ];
 
-  const DEFAULT_RADIUS = { small: 8, medium: 12, large: 16 } as const;
+  const DEFAULT_RADIUS = {
+    '2xsmall': 2,
+    xsmall: 4,
+    small: 8,
+    medium: 12,
+    large: 16,
+  } as const;
 
-  const RADIUS_PRESETS: Record<
-    string,
-    { small: number; medium: number; large: number }
-  > = {
+  type RadiusKey = keyof typeof DEFAULT_RADIUS;
+
+  const RADIUS_KEYS = Object.keys(DEFAULT_RADIUS) as RadiusKey[];
+
+  const RADIUS_PRESETS: Record<string, Record<RadiusKey, number>> = {
     default: { ...DEFAULT_RADIUS },
-    soft: { small: 4, medium: 8, large: 12 },
-    round: { small: 16, medium: 24, large: 32 },
-    sharp: { small: 0, medium: 0, large: 0 },
+    soft: { '2xsmall': 2, xsmall: 2, small: 4, medium: 8, large: 12 },
+    round: { '2xsmall': 4, xsmall: 8, small: 16, medium: 24, large: 32 },
+    sharp: { '2xsmall': 0, xsmall: 0, small: 0, medium: 0, large: 0 },
   };
 
   const PAGE_BG_PRESETS: { label: string; color: string }[] = [
@@ -73,11 +82,7 @@
 
   let brandLabel = $state('Razorpay');
   let radiusPreset = $state('default');
-  let radiusOverride = $state<{
-    small: number;
-    medium: number;
-    large: number;
-  } | null>(null);
+  let radiusOverride = $state<Record<RadiusKey, number> | null>(null);
   let colorScheme = $state<ColorSchemeNamesInput>('system');
   let pageBgLabel = $state('Default');
   let fontPresetLabel = $state('Blade default');
@@ -98,9 +103,7 @@
   const fontSizeFactor = $derived(Number(fontSizeScaleFactor));
 
   const hasCustomRadius = $derived(
-    borderRadius.small !== DEFAULT_RADIUS.small ||
-      borderRadius.medium !== DEFAULT_RADIUS.medium ||
-      borderRadius.large !== DEFAULT_RADIUS.large,
+    RADIUS_KEYS.some((key) => borderRadius[key] !== DEFAULT_RADIUS[key]),
   );
 
   const usesCreateTheme = $derived(
@@ -136,7 +139,7 @@
 
   const brandDisplay = $derived(brandHex || 'bladeTheme (default)');
   const radiusLabel = $derived(
-    `sm ${borderRadius.small} · md ${borderRadius.medium} · lg ${borderRadius.large}`,
+    RADIUS_KEYS.map((key) => `${key} ${borderRadius[key]}px`).join(' · '),
   );
 
   const usageSnippet = $derived.by((): string => {
@@ -153,7 +156,7 @@
     parts.push(`brandColor: '${brandHex || RAZORPAY_BRAND_FALLBACK}'`);
     if (hasCustomRadius) {
       parts.push(
-        `borderRadius: { small: ${borderRadius.small}, medium: ${borderRadius.medium}, large: ${borderRadius.large} }`,
+        `borderRadius: { ${RADIUS_KEYS.map((key) => `${key}: ${borderRadius[key]}`).join(', ')} }`,
       );
     }
     if (fontFamilyOverride) {
@@ -208,10 +211,22 @@
   }
 
   function bumpRadius(delta: number): void {
+    radiusOverride = Object.fromEntries(
+      RADIUS_KEYS.map((key) => [
+        key,
+        Math.max(0, Math.min(48, borderRadius[key] + delta)),
+      ]),
+    ) as Record<RadiusKey, number>;
+  }
+
+  function setRadiusValue(key: RadiusKey, value: string): void {
+    const parsed = Number.parseInt(value, 10);
+    if (Number.isNaN(parsed)) {
+      return;
+    }
     radiusOverride = {
-      small: Math.max(0, Math.min(32, borderRadius.small + delta)),
-      medium: Math.max(0, Math.min(40, borderRadius.medium + delta)),
-      large: Math.max(0, Math.min(48, borderRadius.large + delta)),
+      ...borderRadius,
+      [key]: Math.max(0, Math.min(48, parsed)),
     };
   }
 </script>
@@ -326,6 +341,22 @@
           Radius +
         </Button>
       </div>
+      <div class="radius-input-grid">
+        {#each RADIUS_KEYS as key (key)}
+          <label class="radius-input">
+            <Text size="small" weight="medium">{key}</Text>
+            <input
+              type="number"
+              min="0"
+              max="48"
+              value={borderRadius[key]}
+              aria-label="Border radius {key} in pixels"
+              oninput={(event) => setRadiusValue(key, event.currentTarget.value)}
+            />
+            <Text size="small" color="surface.text.gray.muted">px</Text>
+          </label>
+        {/each}
+      </div>
     </div>
 
     <div class="control-block">
@@ -346,6 +377,32 @@
       <div class="swatch moderate" title="gray moderate (page)"></div>
       <div class="swatch primary" title="primary intense"></div>
       <div class="swatch gray" title="gray subtle"></div>
+    </div>
+
+    <div class="surface-showcase">
+      <Text size="small" weight="semibold">Component radius showcase</Text>
+      <Text size="small" color="surface.text.gray.muted">
+        Button and IconButton corner radius follow theme tokens (IconButton uses
+        <Code size="small">2xsmall</Code> at small size).
+      </Text>
+      <div class="component-radius-row">
+        <Button variant="primary" size="medium">Primary</Button>
+        <Button variant="secondary" size="medium">Secondary</Button>
+        <IconButton
+          icon={SearchIcon}
+          emphasis="intense"
+          size="small"
+          accessibilityLabel="Search"
+          onClick={() => undefined}
+        />
+        <IconButton
+          icon={SearchIcon}
+          emphasis="moderate"
+          size="medium"
+          accessibilityLabel="Search"
+          onClick={() => undefined}
+        />
+      </div>
     </div>
 
     <div class="surface-showcase">
@@ -451,6 +508,39 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-3);
+  }
+
+  .component-radius-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-3);
+  }
+
+  .radius-input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+    gap: var(--spacing-3);
+    width: 100%;
+  }
+
+  .radius-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .radius-input input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--spacing-2) var(--spacing-3);
+    border: 1px solid var(--surface-border-gray-muted);
+    border-radius: var(--border-radius-small);
+    font-family: var(--font-family-code);
+    font-size: var(--font-size-75);
+    background-color: var(--surface-background-gray-subtle);
+    color: var(--surface-text-gray-normal);
   }
 
   .surface-cards {

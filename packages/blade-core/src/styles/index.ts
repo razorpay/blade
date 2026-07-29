@@ -24,9 +24,15 @@ export type {
 export { codeStyles, getCodeClasses, getCodeFontSizeAndLineHeight, getCodeColor } from './Code';
 export type { CodeVariants, CodeSize } from './Code';
 export { getHeadingProps, validHeadingAsValues } from './Heading';
-export type { HeadingSize, HeadingWeight, HeadingAs, HeadingPropsResult } from './Heading';
+export type {
+  HeadingSize,
+  HeadingWeight,
+  HeadingAs,
+  HeadingPropsResult,
+  HeadingSlot,
+} from './Heading';
 export { getTextProps, validTextAsValues } from './Text';
-export type { TextVariant, TextSize, TextWeight, TextAs, TextPropsResult } from './Text';
+export type { TextVariant, TextSize, TextWeight, TextAs, TextPropsResult, TextSlot } from './Text';
 export {
   buttonStyles,
   getButtonClasses,
@@ -66,7 +72,12 @@ export {
   getIconButtonTemplateClasses,
   highlightedButtonSizeMap,
 } from './IconButton';
-export type { IconButtonVariants, IconButtonEmphasis, IconButtonSize } from './IconButton';
+export type {
+  IconButtonVariants,
+  IconButtonEmphasis,
+  IconButtonSize,
+  IconButtonSlot,
+} from './IconButton';
 export { utilityClasses, getUtilityClass } from './utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 export { default as utilities } from './utilities.module.css';
@@ -107,7 +118,7 @@ export {
   getBadgeTextColorToken,
   getBadgeIconColorToken,
 } from './Badge';
-export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
+export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis, BadgeSlot } from './Badge';
 export {
   counterStyles,
   getCounterClasses,
@@ -119,7 +130,7 @@ export {
 } from './Counter';
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
 export { dividerStyles, getDividerClasses } from './Divider';
-export type { DividerVariants } from './Divider';
+export type { DividerVariants, DividerSlot } from './Divider';
 export {
   counterInputContainerStyles,
   getCounterInputContainerClasses,
@@ -141,6 +152,8 @@ export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from '.
 export type { SwitchSize, SwitchVariants } from './Switch';
 export {
   getAccordionWrapperClasses,
+  getAccordionWrapperClassNames,
+  getAccordionGraySurfaceClassNames,
   getAccordionButtonClasses,
   getAccordionButtonBorderClasses,
   getAccordionTemplateClasses,
@@ -149,6 +162,7 @@ export type {
   AccordionWrapperVariants,
   AccordionButtonVariants,
   AccordionButtonBorderVariants,
+  AccordionSlot,
 } from './Accordion';
 export {
   getCollapsibleChevronClasses,
@@ -178,10 +192,14 @@ export type {
 export {
   cardRootStyles,
   cardSurfaceStyles,
+  extractCardBackgroundColorFromClassNames,
   getCardBackgroundColor,
   getCardHeaderClasses,
   getCardFooterClasses,
+  getCardSurfaceBackgroundUtilityClass,
+  getCardSurfaceClassNames,
   getCardTemplateClasses,
+  isCardBackgroundColor,
 } from './Card';
 export type {
   CardRootVariants,
@@ -192,15 +210,17 @@ export type {
   CardType,
   CardHeaderVariants,
   CardFooterVariants,
+  CardSlot,
 } from './Card';
 export { appBarStyles, getAppBarClasses, getAppBarTemplateClasses } from './AppBar';
 export type { AppBarVariants } from './AppBar';
+export type { AppBarLeadingSlot } from './AppBarLeading';
 export {
   getTrustBadgeTextColorToken,
   getTrustBadgeVariantClass,
   getTrustBadgeTemplateClasses,
 } from './TrustBadge';
-export type { TrustBadgeVariant } from './TrustBadge';
+export type { TrustBadgeVariant, TrustBadgeSlot } from './TrustBadge';
 export {
   animatedChipCva,
   getAnimatedChipClasses,
@@ -226,6 +246,7 @@ export type {
   ChipGroupVariants,
   ChipSize,
   ChipColor,
+  ChipSlot,
 } from './Chip';
 export {
   checkboxIconCva,
@@ -319,6 +340,7 @@ export type {
   AnnouncementBannerVariants,
   AnnouncementBannerTheme,
   AnnouncementBannerAlignment,
+  AnnouncementBannerSlot,
 } from './AnnouncementBanner';
 export {
   avatarWrapperStyles,
@@ -344,6 +366,7 @@ export type {
   AvatarButtonVariants,
   AvatarGroupVariants,
   AvatarDensity,
+  AvatarSlot,
 } from './Avatar';
 export {
   breadcrumbNavClass,
@@ -504,6 +527,7 @@ export type {
   FormSize,
   FormLabelPosition,
   FormHintType,
+  InputSlot,
 } from './Input';
 export {
   inputGroupFieldCva,

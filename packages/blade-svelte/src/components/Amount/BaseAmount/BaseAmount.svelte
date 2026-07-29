@@ -96,6 +96,13 @@
 
   const { amountValueColor } = $derived(getTextColorProps(color));
 
+  const currencyTextColor = $derived(
+    resolvedStyleOverride?.currency ? ('currentColor' as const) : amountValueColor,
+  );
+  const valueTextColor = $derived(
+    resolvedStyleOverride?.value ? ('currentColor' as const) : amountValueColor,
+  );
+
   // Get formatted amount parts
   const renderedValue = $derived(getAmountByParts({ suffix, value, currency, fractionDigits }));
   const isPrefixSymbol = $derived(renderedValue.isPrefixSymbol ?? true);
@@ -179,7 +186,7 @@
         fontSize={normalAmountSizes[type][size]}
         fontWeight={weight}
         lineHeight={amountLineHeights[type][size]}
-        color={amountValueColor}
+        color={valueTextColor}
         as="span"
         marginX="spacing.2"
         className={valueOverrideClass}
@@ -193,7 +200,7 @@
         marginRight="spacing.1"
         fontWeight={weight}
         fontSize={currencyFontSize}
-        color={amountValueColor}
+        color={currencyTextColor}
         as="span"
         opacity={isAffixSubtle ? 0.64 : undefined}
         className={resolvedStyleOverride?.currency}
@@ -208,7 +215,7 @@
         fontSize={normalAmountSizes[type][size]}
         fontWeight={weight}
         lineHeight={amountLineHeights[type][size]}
-        color={amountValueColor}
+        color={valueTextColor}
         fontFamily={numberFontFamily}
         as="span"
         className={valueOverrideClass}
@@ -219,7 +226,7 @@
         fontWeight={weight}
         fontSize={affixFontSize}
         fontFamily={numberFontFamily}
-        color={amountValueColor}
+        color={valueTextColor}
         as="span"
         opacity={isAffixSubtle ? 0.64 : undefined}
         className={valueOverrideClass}
@@ -232,7 +239,7 @@
         fontSize={normalAmountSizes[type][size]}
         fontWeight={weight}
         fontFamily={numberFontFamily}
-        color={amountValueColor}
+        color={valueTextColor}
         lineHeight={amountLineHeights[type][size]}
         className={valueOverrideClass}
       >
@@ -245,7 +252,7 @@
         marginLeft="spacing.1"
         fontWeight={weight}
         fontSize={currencyFontSize}
-        color={amountValueColor}
+        color={currencyTextColor}
         as="span"
         opacity={isAffixSubtle ? 0.64 : undefined}
         className={resolvedStyleOverride?.currency}
