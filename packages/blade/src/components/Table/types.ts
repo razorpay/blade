@@ -225,6 +225,26 @@ type TableProps<Item> = {
    **/
   isLoading?: boolean;
   /**
+   * Explicitly sets the number of skeleton rows shown when `isLoading` is true.
+   * When not provided, the skeleton row count is derived from the `defaultPageSize`
+   * of the `TablePagination` component passed via the `pagination` prop.
+   * If neither is available, falls back to a default of 7 rows.
+   **/
+  skeletonRowCount?: number;
+  /**
+   * Explicitly sets the height (in px) of each skeleton row when `isLoading` is true.
+   * When not provided, the skeleton row height is derived from the `rowDensity` prop:
+   * `compact` = 36px, `normal` = 48px, `comfortable` = 60px.
+   **/
+  skeletonRowHeight?: number;
+  /**
+   * Sets a minimum height for the skeleton container when `isLoading` is true.
+   * This reserves the loaded table's footprint during loading so the page
+   * doesn't reflow for consumers whose loaded table is taller than the skeleton.
+   * Accepts any valid Blade height value (e.g. `"500px"`, `{ base: '300px', m: '500px' }`).
+   **/
+  skeletonMinHeight?: BoxProps['minHeight'];
+  /**
    * The isRefreshing prop determines whether the table is refreshing or not.
    * The default value is `false`.
    **/

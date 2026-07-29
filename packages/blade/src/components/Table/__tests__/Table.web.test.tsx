@@ -1596,4 +1596,225 @@ describe('<Table />', () => {
     expect(getByText('Expanded details for Flipkart')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
+
+  // Skeleton Enhancement Tests
+  it('should render skeleton with row count derived from pagination defaultPageSize', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        pagination={
+          <TablePagination
+            paginationType="server"
+            totalItemCount={100}
+            onPageChange={() => {}}
+            defaultPageSize={25}
+          />
+        }
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    // 25 body skeleton rows + 1 header skeleton row = 26 rows
+    // Each skeleton row is a div (not a <tr>), so we check by testID
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    expect(skeleton).toBeInTheDocument();
+    // Count the direct child divs that are skeleton rows (header + body)
+    const directChildren = skeleton?.children;
+    expect(directChildren?.length).toBe(26); // 1 header + 25 body
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with explicit skeletonRowCount prop', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={10}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const directChildren = skeleton?.children;
+    expect(directChildren?.length).toBe(11); // 1 header + 10 body
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with skeletonRowCount overriding pagination defaultPageSize', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={5}
+        pagination={
+          <TablePagination
+            paginationType="server"
+            totalItemCount={100}
+            onPageChange={() => {}}
+            defaultPageSize={25}
+          />
+        }
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const directChildren = skeleton?.children;
+    expect(directChildren?.length).toBe(6); // 1 header + 5 body
+  });
+
+  it('should render skeleton with rowDensity respecting comfortable density', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} rowDensity="comfortable" skeletonRowCount={3}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with explicit skeletonRowHeight prop', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonRowHeight={72}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with gridTemplateColumns matching consumer columns', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={3}
+        gridTemplateColumns="176px 132px minmax(168px, 1.05fr)"
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with skeletonMinHeight reserving space', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonMinHeight="500px">
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    expect(skeleton).toHaveStyle('min-height: 500px');
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with all enhancement props combined', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={25}
+        skeletonRowHeight={48}
+        skeletonMinHeight="1200px"
+        gridTemplateColumns="176px 132px minmax(168px, 1.05fr) 100px 80px"
+        rowDensity="normal"
+        pagination={
+          <TablePagination
+            paginationType="server"
+            totalItemCount={500}
+            onPageChange={() => {}}
+            defaultPageSize={25}
+          />
+        }
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    expect(skeleton).toHaveStyle('min-height: 1200px');
+    const directChildren = skeleton?.children;
+    expect(directChildren?.length).toBe(26); // 1 header + 25 body
+    expect(container).toMatchSnapshot();
+  });
 });
