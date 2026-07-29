@@ -20,7 +20,7 @@
  *
  * **Button `text` slot:** same `currentColor` pattern on {@link BaseText} when this slot is overridden.
  *
- * **Typography / Amount / Badge / Chip / Form label+hint:** slot class on wrapper or `className`;
+ * **Typography / Amount:** slot class on wrapper or `className`;
  * inner text/icon uses `currentColor` when that slot override is set so token color classes do not win.
  *
  * **Card `surface` slot:** include a {@link CardBackgroundColor} token key (e.g.

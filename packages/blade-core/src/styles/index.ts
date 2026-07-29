@@ -118,7 +118,7 @@ export {
   getBadgeTextColorToken,
   getBadgeIconColorToken,
 } from './Badge';
-export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis, BadgeSlot } from './Badge';
+export type { BadgeVariants, BadgeSize, BadgeColor, BadgeEmphasis } from './Badge';
 export {
   counterStyles,
   getCounterClasses,
@@ -220,7 +220,7 @@ export {
   getTrustBadgeVariantClass,
   getTrustBadgeTemplateClasses,
 } from './TrustBadge';
-export type { TrustBadgeVariant, TrustBadgeSlot } from './TrustBadge';
+export type { TrustBadgeVariant } from './TrustBadge';
 export {
   animatedChipCva,
   getAnimatedChipClasses,
@@ -246,7 +246,6 @@ export type {
   ChipGroupVariants,
   ChipSize,
   ChipColor,
-  ChipSlot,
 } from './Chip';
 export {
   checkboxIconCva,
@@ -527,7 +526,6 @@ export type {
   FormSize,
   FormLabelPosition,
   FormHintType,
-  InputSlot,
 } from './Input';
 export {
   inputGroupFieldCva,

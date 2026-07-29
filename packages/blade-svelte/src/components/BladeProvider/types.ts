@@ -28,7 +28,6 @@ export type BladeComponentName =
   | 'AnnouncementBanner'
   | 'Card'
   | 'AppBarLeading'
-  | 'Accordion'
   | 'Divider'
   | 'Avatar';
 

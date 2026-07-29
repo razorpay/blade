@@ -6,7 +6,7 @@
   import { onDestroy, onMount, untrack } from 'svelte';
   import {
     cssVariablesToInlineStyle,
-    themeToCssVariables,
+    themeToCSSVariables,
   } from '@razorpay/blade-core/utils';
   import type { ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
   import {
@@ -69,7 +69,7 @@
 
   const cssVariableStyle = $derived(
     cssVariablesToInlineStyle(
-      themeToCssVariables({
+      themeToCSSVariables({
         colors: theme.colors,
         elevation: theme.elevation,
         border: theme.border,

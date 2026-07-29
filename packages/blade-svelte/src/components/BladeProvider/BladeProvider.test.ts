@@ -1,7 +1,7 @@
 import { describe, expect, it, vi, afterEach } from 'vitest';
 import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
 import {
-  themeToCssVariables,
+  themeToCSSVariables,
   cssVariablesToInlineStyle,
   mergeStyleOverride,
 } from '@razorpay/blade-core/utils';
@@ -99,7 +99,7 @@ describe('resolveBladeTheme', () => {
       viewportWidth: 1200,
     });
 
-    const vars = themeToCssVariables({
+    const vars = themeToCSSVariables({
       colors: theme.colors,
       elevation: theme.elevation,
       border: theme.border,

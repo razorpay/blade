@@ -53,7 +53,7 @@
     },
     {
       title: 'BladeProvider → CSS vars',
-      detail: 'themeToCssVariables exposes tokens as --interactive-* / --surface-* for components.',
+      detail: 'themeToCSSVariables exposes tokens as --interactive-* / --surface-* for components.',
     },
   ] as const;
 

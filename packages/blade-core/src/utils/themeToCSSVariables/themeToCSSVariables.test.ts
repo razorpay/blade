@@ -42,7 +42,7 @@ describe('themeToCSSVariables', () => {
   });
 
   it('maps resolved typography to theme.css font variables', () => {
-    const vars = themeToCssVariables({
+    const vars = themeToCSSVariables({
       ...resolvedTheme,
       typography: bladeTheme.typography.onDesktop,
     });
