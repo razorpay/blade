@@ -35,7 +35,7 @@ import { getTableBodyStyles } from './commonStyles';
 import { TableSurface } from './TableSurface.web';
 import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
-import { throwBladeError } from '~utils/logger';
+import { logger, throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
@@ -204,7 +204,7 @@ const _Table = <Item,>({
   isGrouped = false,
   checkboxDisplay = 'always',
   skeletonRowCount,
-  skeletonRowHeight,
+  skeletonRowMinHeight,
   skeletonMinHeight,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
@@ -495,6 +495,19 @@ const _Table = <Item,>({
   // so column widths match between skeleton and loaded states.
   const skeletonGridTemplateColumns = gridTemplateColumns ?? undefined;
 
+  // Warn when an explicit skeleton row min-height is combined with a non-default
+  // rowDensity: skeletonRowMinHeight overrides the min-height that rowDensity
+  // would derive, so a mismatched value defeats the skeleton/loaded alignment.
+  if (__DEV__) {
+    if (skeletonRowMinHeight && rowDensity !== 'normal') {
+      logger({
+        message: `Both \`rowDensity="${rowDensity}"\` and \`skeletonRowMinHeight\` are set. \`skeletonRowMinHeight\` takes precedence and overrides the min-height that would be derived from \`rowDensity\`. Ensure this value matches your loaded table's row height for the given density, otherwise the skeleton won't align with the loaded table.`,
+        moduleName: 'Table',
+        type: 'warn',
+      });
+    }
+  }
+
   const paginationConfig = usePagination(
     data,
     {
@@ -656,8 +669,8 @@ const _Table = <Item,>({
                 key={rowIdx}
                 $columns={columnCount || 5}
                 $gridTemplateColumns={skeletonGridTemplateColumns}
-                $rowDensity={skeletonRowHeight ? undefined : rowDensity}
-                {...(skeletonRowHeight ? { minHeight: skeletonRowHeight } : {})}
+                $rowDensity={skeletonRowMinHeight ? undefined : rowDensity}
+                {...(skeletonRowMinHeight ? { minHeight: skeletonRowMinHeight } : {})}
               >
                 {Array.from({ length: columnCount || 5 }).map((_, colIdx) => {
                   const cols = columnCount || 5;

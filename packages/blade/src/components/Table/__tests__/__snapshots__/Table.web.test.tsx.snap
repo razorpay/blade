@@ -2412,7 +2412,7 @@ exports[`<Table /> should render skeleton with explicit skeletonRowCount prop 1`
 </div>
 `;
 
-exports[`<Table /> should render skeleton with explicit skeletonRowHeight prop 1`] = `
+exports[`<Table /> should render skeleton with explicit skeletonRowMinHeight prop 1`] = `
 .c0.c0.c0.c0.c0 {
   overflow: hidden;
   background-color: hsla(0,0%,100%,1);
@@ -2821,7 +2821,7 @@ exports[`<Table /> should render skeleton with gridTemplateColumns matching cons
 </div>
 `;
 
-exports[`<Table /> should render skeleton with responsive skeletonRowHeight prop 1`] = `
+exports[`<Table /> should render skeleton with responsive skeletonRowMinHeight prop 1`] = `
 .c0.c0.c0.c0.c0 {
   overflow: hidden;
   background-color: hsla(0,0%,100%,1);
@@ -2911,6 +2911,7 @@ exports[`<Table /> should render skeleton with responsive skeletonRowHeight prop
   padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  min-height: 36px;
   border-bottom-width: 1px;
   border-bottom-color: hsla(206,10%,29%,0.12);
   border-bottom-style: solid;

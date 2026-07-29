@@ -1763,9 +1763,9 @@ describe('<Table />', () => {
     expect(headerSkeletonRow).toHaveStyle('min-height: 36px');
   });
 
-  it('should render skeleton with explicit skeletonRowHeight prop', () => {
+  it('should render skeleton with explicit skeletonRowMinHeight prop', () => {
     const { container } = renderWithTheme(
-      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonRowHeight="72px">
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonRowMinHeight="72px">
         {() => (
           <>
             <TableHeader>
@@ -1787,13 +1787,13 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render skeleton with responsive skeletonRowHeight prop', () => {
+  it('should render skeleton with responsive skeletonRowMinHeight prop', () => {
     const { container } = renderWithTheme(
       <Table
         data={{ nodes: [] }}
         isLoading={true}
         skeletonRowCount={2}
-        skeletonRowHeight={{ base: '36px', m: '48px' }}
+        skeletonRowMinHeight={{ base: '36px', m: '48px' }}
       >
         {() => (
           <>
@@ -1863,7 +1863,7 @@ describe('<Table />', () => {
         data={{ nodes: [] }}
         isLoading={true}
         skeletonRowCount={25}
-        skeletonRowHeight="48px"
+        skeletonRowMinHeight="48px"
         skeletonMinHeight="1200px"
         gridTemplateColumns="176px 132px minmax(168px, 1.05fr) 100px 80px"
         rowDensity="normal"
@@ -1897,5 +1897,57 @@ describe('<Table />', () => {
     const directChildren = skeleton?.children;
     expect(directChildren?.length).toBe(26); // 1 header + 25 body
     expect(container).toMatchSnapshot();
+  });
+
+  it('should warn in __DEV__ when both non-default rowDensity and skeletonRowMinHeight are set', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={2}
+        rowDensity="comfortable"
+        skeletonRowMinHeight="48px"
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('Both `rowDensity="comfortable"` and `skeletonRowMinHeight` are set'),
+    );
+    warnSpy.mockRestore();
+  });
+
+  it('should not warn when skeletonRowMinHeight is set with default rowDensity', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={2} skeletonRowMinHeight="48px">
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    expect(warnSpy).not.toHaveBeenCalledWith(
+      expect.stringContaining('and `skeletonRowMinHeight` are set'),
+    );
+    warnSpy.mockRestore();
   });
 });
