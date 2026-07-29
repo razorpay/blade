@@ -1636,6 +1636,35 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render skeleton with default page size when pagination has no explicit defaultPageSize', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        pagination={
+          <TablePagination paginationType="server" totalItemCount={100} onPageChange={jest.fn()} />
+        }
+      >
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const directChildren = skeleton?.children;
+    // 10 body skeleton rows (tablePagination.defaultPageSize) + 1 header = 11
+    expect(directChildren?.length).toBe(11);
+  });
+
   it('should render skeleton with explicit skeletonRowCount prop', () => {
     const { container } = renderWithTheme(
       <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={10}>
@@ -1737,6 +1766,35 @@ describe('<Table />', () => {
   it('should render skeleton with explicit skeletonRowHeight prop', () => {
     const { container } = renderWithTheme(
       <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonRowHeight="72px">
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    // Body skeleton rows (skip header) should have min-height: 72px
+    const bodyRows = skeleton?.querySelectorAll('[data-blade-component="base-box"]');
+    expect(bodyRows?.length).toBeGreaterThan(0);
+    expect(bodyRows?.[bodyRows.length - 1]).toHaveStyle('min-height: 72px');
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render skeleton with responsive skeletonRowHeight prop', () => {
+    const { container } = renderWithTheme(
+      <Table
+        data={{ nodes: [] }}
+        isLoading={true}
+        skeletonRowCount={2}
+        skeletonRowHeight={{ base: '36px', m: '48px' }}
+      >
         {() => (
           <>
             <TableHeader>

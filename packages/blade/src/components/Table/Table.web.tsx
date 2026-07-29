@@ -37,7 +37,7 @@ import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
-import { getBaseBoxStyles, getSpacingValue } from '~components/Box/BaseBox/baseBoxStyles';
+import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import { Skeleton } from '~components/Skeleton';
@@ -164,19 +164,14 @@ const StyledSkeletonRow = styled(BaseBox)<{
   $isHeader?: boolean;
   $gridTemplateColumns?: string;
   $rowDensity?: NonNullable<TableProps<unknown>['rowDensity']>;
-  $skeletonRowHeight?: BoxProps['height'];
-}>(({ theme, $columns, $isHeader, $gridTemplateColumns, $rowDensity, $skeletonRowHeight }) => ({
+}>(({ theme, $columns, $isHeader, $gridTemplateColumns, $rowDensity }) => ({
   display: 'grid',
   gridTemplateColumns: $gridTemplateColumns ?? `repeat(${$columns}, minmax(100px, 1fr))`,
   paddingLeft: makeSpace(theme.spacing[4]),
   paddingRight: makeSpace(theme.spacing[4]),
   paddingTop: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
   paddingBottom: makeSpace(theme.spacing[$isHeader ? 3 : 4]),
-  minHeight: $skeletonRowHeight
-    ? getSpacingValue($skeletonRowHeight, theme)
-    : $rowDensity
-    ? makeSize(getIn(size, tableRow.minHeight[$rowDensity]))
-    : undefined,
+  minHeight: $rowDensity ? makeSize(getIn(size, tableRow.minHeight[$rowDensity])) : undefined,
   borderBottomWidth: makeSpace(theme.border.width.thin),
   borderBottomColor: theme.colors.surface.border.gray.muted,
   borderBottomStyle: 'solid',
@@ -493,7 +488,9 @@ const _Table = <Item,>({
   // Skeleton configuration: derive row count, row height, and grid template columns
   // from existing props so the skeleton matches the loaded table's geometry.
   const effectiveSkeletonRowCount =
-    skeletonRowCount ?? paginationDefaultPageSize ?? SKELETON_ROW_COUNT;
+    skeletonRowCount ??
+    paginationDefaultPageSize ??
+    (hasPagination ? tablePagination.defaultPageSize : SKELETON_ROW_COUNT);
   // When the consumer provides gridTemplateColumns, use it for skeleton rows too
   // so column widths match between skeleton and loaded states.
   const skeletonGridTemplateColumns = gridTemplateColumns ?? undefined;
@@ -659,8 +656,8 @@ const _Table = <Item,>({
                 key={rowIdx}
                 $columns={columnCount || 5}
                 $gridTemplateColumns={skeletonGridTemplateColumns}
-                $rowDensity={rowDensity}
-                $skeletonRowHeight={skeletonRowHeight}
+                $rowDensity={skeletonRowHeight ? undefined : rowDensity}
+                {...(skeletonRowHeight ? { minHeight: skeletonRowHeight } : {})}
               >
                 {Array.from({ length: columnCount || 5 }).map((_, colIdx) => {
                   const cols = columnCount || 5;

@@ -234,7 +234,11 @@ type TableProps<Item> = {
   /**
    * Explicitly sets the height of each skeleton row when `isLoading` is true.
    * Accepts any valid Blade height value (e.g. `"48px"`, `{ base: '36px', m: '48px' }`).
-   * When not provided, the skeleton row height is derived from the `rowDensity` prop:
+   *
+   * This is an escape hatch for consumers who have customized the loaded table's
+   * row height beyond the three `rowDensity` presets. For standard usage, the
+   * skeleton row height is automatically derived from `rowDensity` and this prop
+   * is not needed:
    * `compact` = 36px, `normal` = 48px, `comfortable` = 60px.
    **/
   skeletonRowHeight?: BoxProps['height'];
