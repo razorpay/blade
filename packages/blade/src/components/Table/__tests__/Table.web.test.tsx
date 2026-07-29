@@ -1607,7 +1607,7 @@ describe('<Table />', () => {
           <TablePagination
             paginationType="server"
             totalItemCount={100}
-            onPageChange={() => {}}
+            onPageChange={jest.fn()}
             defaultPageSize={25}
           />
         }
@@ -1669,7 +1669,7 @@ describe('<Table />', () => {
           <TablePagination
             paginationType="server"
             totalItemCount={100}
-            onPageChange={() => {}}
+            onPageChange={jest.fn()}
             defaultPageSize={25}
           />
         }
@@ -1790,7 +1790,7 @@ describe('<Table />', () => {
           <TablePagination
             paginationType="server"
             totalItemCount={500}
-            onPageChange={() => {}}
+            onPageChange={jest.fn()}
             defaultPageSize={25}
           />
         }
