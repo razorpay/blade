@@ -6,6 +6,10 @@ General documentation contains fundamental guides and references for using Blade
 
 The Usage guide covers the core fundamentals of implementing Blade in your application. It includes setup instructions for `BladeProvider` and how to do initial setup of blade in your app.
 
+## ChoosingComponents
+
+A decision guide for picking the right selection component (`Switch`, `Checkbox`, `Radio`, `Chip`, `SegmentedControl`, `Tabs`, `Dropdown`) based on how the selection behaves. Fetch this when you're unsure which component to use for letting a user choose from options, or when disambiguating visually-similar components like `Tabs` vs `SegmentedControl`.
+
 ## AvailableIcons
 
 A reference of which all icons are available in the blade design system. This includes usage examples showing how to import icons, use them in components with icon props, and implement them as standalone components.

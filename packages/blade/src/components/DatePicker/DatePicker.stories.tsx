@@ -431,6 +431,46 @@ export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
 
 MinMaxDates.storyName = 'MinMaxDates';
 
+export const InitialMonthWithDisabledToday: StoryFn<typeof DatePickerComponent> = () => {
+  // minDate and maxDate are both restricted to March 2026, so months outside it have no
+  // selectable dates and the calendar opens directly on March 2026.
+  const minDate = dayjs('2026-03-01').startOf('month').toDate();
+  const maxDate = dayjs('2026-03-31').endOf('month').toDate();
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        When today&apos;s month falls outside the allowed <Code size="medium">minDate</Code> /{' '}
+        <Code size="medium">maxDate</Code> range, the calendar no longer opens on a fully-disabled
+        month. Instead it opens clamped to the range — here directly on{' '}
+        <Code size="medium">March 2026</Code> (the only selectable month).
+      </Text>
+      <Box marginY="spacing.4" display="flex" gap="spacing.2" flexDirection="column">
+        <Text>Example (allowed range limited to March 2026): </Text>
+        <Text size="small">{`minDate={dayjs('2026-03-01').startOf('month').toDate()}`}</Text>
+        <Text size="small">{`maxDate={dayjs('2026-03-31').endOf('month').toDate()}`}</Text>
+      </Box>
+      <DatePickerComponent
+        label="Select a date"
+        selectionType="single"
+        minDate={minDate}
+        maxDate={maxDate}
+      />
+      <Box marginTop="spacing.8">
+        <Text marginBottom="spacing.3">Range DatePicker with the same March 2026 range:</Text>
+        <DatePickerComponent
+          label={{ start: 'Select a date range' }}
+          selectionType="range"
+          minDate={minDate}
+          maxDate={maxDate}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+InitialMonthWithDisabledToday.storyName = 'Initial Month (Disabled Today)';
+
 export const ExcludeDates: StoryFn<typeof DatePickerComponent> = () => {
   return (
     <Box>

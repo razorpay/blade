@@ -1,5 +1,40 @@
 # @razorpay/blade
 
+## 12.113.0
+
+### Minor Changes
+
+- a561db6cc: feat(AreaChart): add `connectNullsStyle` for a dashed no-data bridge on `ChartArea`
+
+  `ChartArea` now supports the same null-handling API as `ChartLine`:
+
+  - `connectNulls={false}` (default, unchanged): the area breaks at null points, leaving a hard gap. Use this for genuine data outages.
+  - `connectNulls={true}` + `connectNullsStyle="solid"` (default): real data renders as a solid area and the gap is bridged with a curved solid line, with no fill under the no-data stretch.
+  - `connectNulls={true}` + `connectNullsStyle="dashed"`: real data renders as a solid area and the gap is bridged with a curved dashed line, with no fill under the no-data stretch, signalling "no data for this period" without implying a measured value.
+
+  Available on both React web and React Native.
+
+  Also fixes a latent bug where multiple `AreaChart`s on the same page emitted gradients with the same id, causing every chart's fill to resolve to the first chart's gradient (and appear washed out / invisible). Gradient ids are now namespaced per chart instance.
+
+- a561db6cc: feat(ChartLine): add `connectNullsStyle` to draw a dashed bridge across null values
+
+  `ChartLine` now accepts a `connectNullsStyle` prop (`'solid' | 'dashed'`, default `'solid'`) that controls how the line is drawn across null points when `connectNulls` is `true`. With `'dashed'`, real data renders as a solid line while the stretch across `null` points renders dashed — signalling "no data for this period" without implying a measured value. `connectNulls={false}` (default) continues to leave a hard gap for genuine data outages, and `connectNulls={true}` remains a solid bridge by default.
+
+### Patch Changes
+
+- 05a7eeeea: fix(DatePicker): open on a selectable month when today is outside the `minDate`/`maxDate` range
+
+  Previously the calendar always opened on today's month even when every date in it was disabled by `minDate`/`maxDate`. Now, when no value or `visibleMonth`/`defaultVisibleMonth` is set, the initial month is clamped into the allowed range — opening on `maxDate`'s month when today is after `maxDate`, or `minDate`'s month when today is before `minDate`. Applies to both web and native.
+
+- 8ba8d1f26: Fix RollingText loading shimmer washing out dark backgrounds by clipping the highlight to text glyphs using `background-clip: text` instead of a white overlay.
+
+## 12.112.0
+
+### Minor Changes
+
+- 8030a0aac: feat(tokens): add bladeNeutralTheme and support publishing multiple themes from the Figma token publisher
+- c55ea279d: feat(tokens): add new emphasis levels (faint, moderate, strong) for primary surface and accent color category. Also migrates primary button, focus-ring, and action colors from azure to black (neutral) for the neutral theme, and updates blueGrayLight ghost value from a1 to a0.
+
 ## 12.111.1
 
 ### Patch Changes
