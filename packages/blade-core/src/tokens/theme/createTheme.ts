@@ -1,7 +1,6 @@
 import tinycolor from 'tinycolor2';
 import type { WCAG2Options, ColorInput } from 'tinycolor2';
 import { colors as globalColors, opacity } from '~tokens/global';
-import type { Border } from '~tokens/global';
 import type { ColorChromaticScale } from '~tokens/global/colors';
 import { throwBladeError } from '~utils/logger';
 import merge from '~utils/lodashButBetter/merge';
