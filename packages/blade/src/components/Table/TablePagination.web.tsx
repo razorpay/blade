@@ -4,7 +4,6 @@ import { ComponentIds } from './componentIds';
 import { tablePagination } from './tokens';
 import type { TablePaginationProps } from './types';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
-import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { Pagination } from '~components/Pagination';
@@ -148,23 +147,22 @@ const _TablePagination = ({
   }
 
   return (
-    <BaseBox>
-      <Pagination
-        totalPages={totalPages}
-        selectedPage={currentPage !== undefined ? currentPage + 1 : undefined}
-        defaultSelectedPage={1}
-        onSelectedPageChange={handlePageChange}
-        defaultPageSize={defaultPageSize}
-        pageSize={currentPageSize as 10 | 25 | 50}
-        onPageSizeChange={handlePageSizeChange}
-        showPageSizePicker={showPageSizePicker}
-        showPageNumberSelector={showPageNumberSelector}
-        showLabel={showLabel}
-        label={defaultLabel}
-        pageSizeLabel="rows / page"
-        {...rest}
-      />
-    </BaseBox>
+    <Pagination
+      totalPages={totalPages}
+      totalItemCount={totalItemCount ?? totalItems}
+      selectedPage={currentPage !== undefined ? currentPage + 1 : undefined}
+      defaultSelectedPage={1}
+      onSelectedPageChange={handlePageChange}
+      defaultPageSize={defaultPageSize}
+      pageSize={currentPageSize as 10 | 25 | 50}
+      onPageSizeChange={handlePageSizeChange}
+      showPageSizePicker={showPageSizePicker}
+      showPageNumberSelector={showPageNumberSelector}
+      showLabel={showLabel}
+      label={defaultLabel}
+      pageSizeLabel="rows / page"
+      {...rest}
+    />
   );
 };
 

@@ -108,6 +108,11 @@ export default {
       control: 'boolean',
       description: 'Whether the pagination component is disabled.',
     },
+    totalItemCount: {
+      control: 'number',
+      description:
+        'Total number of items being paginated. When all the items fit on a single page at the smallest page size, the pagination hides itself.',
+    },
   },
   parameters: {
     docs: {
@@ -193,6 +198,30 @@ export const UncontrolledExampleStory: StoryFn<typeof PaginationComponent> = () 
   return <UncontrolledExample />;
 };
 UncontrolledExampleStory.storyName = 'Uncontrolled Example';
+
+const FewItemsExample = (): React.ReactElement => {
+  return (
+    <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
+      <Text marginBottom="spacing.4">
+        With only 5 items, everything already fits on a single page, so the pagination renders
+        nothing at all — no page size picker and no navigation arrows.
+      </Text>
+      <PaginationComponent
+        totalPages={1}
+        totalItemCount={5}
+        onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
+        showPageSizePicker
+        showPageNumberSelector
+        showLabel
+      />
+    </Box>
+  );
+};
+
+export const WithFewItems: StoryFn<typeof PaginationComponent> = () => {
+  return <FewItemsExample />;
+};
+WithFewItems.storyName = 'Hidden When All Items Fit On One Page';
 
 export const Disabled = PaginationTemplate.bind({});
 Disabled.args = {
