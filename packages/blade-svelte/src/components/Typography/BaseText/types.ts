@@ -5,8 +5,7 @@ import type {
   StyledPropsBlade,
 } from '@razorpay/blade-core/utils';
 import type { StyleOverride, TextSlot } from '@razorpay/blade-core/styles';
-import type { Theme } from '../../BladeProvider/types';
-import type { BladeComponentName } from '../../BladeProvider/types';
+import type { Theme, BladeComponentName } from '../../BladeProvider/types';
 
 // Text color types - using DotNotationToken from blade-core, matching React implementation exactly
 type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;

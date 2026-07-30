@@ -112,7 +112,7 @@
 {/snippet}
 
 {#snippet defaultAppBarActions()}
-  <IconButton icon={filledIcon ? UserFilledIcon : UserIcon} emphasis="moderate" accessibilityLabel="Profile" onClick={noop} />
+  <IconButton icon={UserIcon} emphasis="moderate" accessibilityLabel="Profile" onClick={noop} />
 {/snippet}
 
 <!-- Playground — args-driven preview for docs + controls -->

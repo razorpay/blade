@@ -210,7 +210,7 @@
     resolvedStyleOverride?.icon ? 'currentColor' : iconColorToken,
   );
 
-  const textRenderColor = $derived.by((): TextColors =>
+  const textRenderColor = $derived.by((): TextColors | 'currentColor' =>
     resolvedStyleOverride?.text ? 'currentColor' : textColorToken,
   );
 

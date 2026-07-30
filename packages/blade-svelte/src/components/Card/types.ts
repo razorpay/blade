@@ -1,7 +1,6 @@
 import type { Snippet, Component } from 'svelte';
-import type { CardSlot, StyleOverride } from '@razorpay/blade-core/styles';
+import type { CardSlot, StyleOverride, CardBackgroundColor } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
