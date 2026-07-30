@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
-import type { StyleOverride } from '@razorpay/blade-core/styles';
 import type {
+  StyleOverride,
   ButtonSlot,
   IconButtonSlot,
   TextSlot,

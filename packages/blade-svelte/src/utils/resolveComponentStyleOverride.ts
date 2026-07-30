@@ -14,6 +14,7 @@ export function resolveComponentStyleOverride<Slot extends string>(
   instanceOverride: StyleOverride<Slot> | undefined,
   themeContextGetter: (() => BladeThemeContextValue) | undefined,
 ): StyleOverride<Slot> {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const providerOverride = themeContextGetter?.().componentConfig?.[componentName]
     ?.styleOverride as StyleOverride<Slot> | undefined;
 
