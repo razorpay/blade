@@ -10,7 +10,7 @@
       docs: {
         description: {
           component:
-            'Interactive catalog of typed `styleOverride` slots for playground components (Button, IconButton, Text, Heading, Amount, AnnouncementBanner, Card, AppBarLeading, Divider, Avatar). Edit per-slot classnames, copy the resolved prop, and preview CSS-variable utilities. Slot names follow checkout configurability spec (`surface`, `title`, `icon`, …).',
+            'Interactive catalog of typed `styleOverride` slots for playground components (Button, IconButton, Text, Heading, Amount, AnnouncementBanner, Card, AppBarLeading, Divider, Avatar, Accordion). Edit per-slot classnames, copy the resolved prop, and preview CSS-variable utilities. Slot names follow checkout configurability spec (`surface`, `title`, `icon`, …).',
         },
       },
       layout: 'fullscreen',

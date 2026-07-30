@@ -28,11 +28,6 @@
  * (inherited by the surface) instead of painting `border` or `box-shadow` on `root` directly.
  * Use `variant` and `backgroundColor` for surface fill; `secondary` has no border ring.
  *
- * **Accordion `wrapper` slot:** with `hasGrayBody`, {@link CardBackgroundColor} token keys
- * route through {@link getAccordionGraySurfaceClassNames} (Blade background utility). **`wrapper`**
- * slot targets the filled outer shell; token adds utility fill but `.filled` gradients remain unless
- * you add `background-image: none` (and optionally tame `box-shadow`) in the same string.
- *
  * @see getPrimaryBrandCssVars — checkout primary token bundle helper
  * @see SAFE_FILLED_BUTTON_ROOT_TOKEN_OVERRIDES — exhaustive safe root token list
  */

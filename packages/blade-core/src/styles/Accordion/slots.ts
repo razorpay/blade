@@ -1,9 +1,2 @@
 /** Accordion styleOverride slots. */
-export type AccordionSlot =
-  | 'root'
-  | 'wrapper'
-  | 'item'
-  | 'headerButton'
-  | 'body'
-  | 'title'
-  | 'subtitle';
+export type AccordionSlot = 'root' | 'item' | 'headerButton' | 'body' | 'title' | 'subtitle';

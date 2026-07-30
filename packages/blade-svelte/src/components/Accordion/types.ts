@@ -71,10 +71,7 @@ export type AccordionProps = {
 
   /**
    * Per-slot classname overrides. Merged under provider `componentConfig.Accordion.styleOverride`;
-   * instance values win on conflicts.
-   *
-   * **`wrapper`:** targets the filled card shell (gradients / shadow); clear `background-image`
-   * in extra classes when replacing fill.
+   * instance values win on conflicts. Ignored when `variant="filled"` (fixed checkout shell).
    */
   styleOverride?: StyleOverride<AccordionSlot>;
 

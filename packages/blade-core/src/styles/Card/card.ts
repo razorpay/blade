@@ -167,7 +167,6 @@ export function isCardBackgroundColor(value: string): value is CardBackgroundCol
 
 /**
  * Pulls a {@link CardBackgroundColor} token out of a space-separated class string.
- * Used by Accordion `styleOverride.wrapper` for background utility routing.
  */
 export function extractCardBackgroundColorFromClassNames(
   classNames: string | undefined,

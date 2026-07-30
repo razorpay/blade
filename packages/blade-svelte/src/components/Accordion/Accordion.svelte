@@ -5,6 +5,7 @@
     getStyledPropsClasses,
     makeAnalyticsAttribute,
     cx,
+    logger,
   } from '@razorpay/blade-core/utils';
   import {
     getAccordionWrapperClassNames,
@@ -34,9 +35,28 @@
     ...rest
   }: AccordionProps = $props();
 
-  const resolvedStyleOverride = $derived(
+  const mergedStyleOverride = $derived(
     resolveComponentStyleOverride('Accordion', styleOverride, themeContextGetter),
   );
+
+  const resolvedStyleOverride = $derived(
+    variant === 'filled' ? undefined : mergedStyleOverride,
+  );
+
+  $effect(() => {
+    if (
+      variant === 'filled' &&
+      mergedStyleOverride &&
+      Object.keys(mergedStyleOverride).length > 0
+    ) {
+      logger({
+        message:
+          'styleOverride is ignored when variant="filled". Use variant="transparent" for slot overrides.',
+        type: 'warn',
+        moduleName: 'Accordion',
+      });
+    }
+  });
 
   let internalExpandedIndex = $state<number | undefined>(defaultExpandedIndex);
 
@@ -83,12 +103,7 @@
     styleOverride: resolvedStyleOverride,
   }));
 
-  const wrapperClass = $derived(
-    getAccordionWrapperClassNames({
-      variant,
-      styleOverrideWrapper: resolvedStyleOverride?.wrapper,
-    }),
-  );
+  const wrapperClass = $derived(getAccordionWrapperClassNames({ variant }));
   const styledProps = $derived(getStyledPropsClasses(rest));
   const outerClasses = $derived(
     cx(templateClasses.accordionOuter, ...(styledProps.classes || []), resolvedStyleOverride?.root),

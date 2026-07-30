@@ -1,9 +1,4 @@
 import { cva } from 'class-variance-authority';
-import { cx } from '../../utils/cx';
-import {
-  extractCardBackgroundColorFromClassNames,
-  getCardSurfaceBackgroundUtilityClass,
-} from '../Card/card';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './accordion.module.css';
 
@@ -130,25 +125,11 @@ export type AccordionButtonBorderVariants = {
 
 export type GetAccordionWrapperClassNamesParams = {
   variant?: 'filled' | 'transparent';
-  styleOverrideWrapper?: string;
 };
 
-/**
- * Accordion inner wrapper (`filled` / `transparent`). A {@link CardBackgroundColor} token in
- * `styleOverride.wrapper` adds the same background utility as Card. Filled variant still applies
- * card-like `background-image` bands unless remaining classes clear them (e.g. `background-image: none`).
- */
+/** Accordion inner wrapper (`filled` / `transparent`). */
 export function getAccordionWrapperClassNames({
   variant = 'transparent',
-  styleOverrideWrapper,
-}: GetAccordionWrapperClassNamesParams): string {
-  const { backgroundColor, remainingClassNames } = extractCardBackgroundColorFromClassNames(
-    styleOverrideWrapper,
-  );
-
-  return cx(
-    getAccordionWrapperClasses({ variant }),
-    backgroundColor ? getCardSurfaceBackgroundUtilityClass(backgroundColor) : '',
-    remainingClassNames,
-  );
+}: GetAccordionWrapperClassNamesParams = {}): string {
+  return getAccordionWrapperClasses({ variant });
 }

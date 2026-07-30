@@ -29,7 +29,8 @@ export type BladeComponentName =
   | 'Card'
   | 'AppBarLeading'
   | 'Divider'
-  | 'Avatar';
+  | 'Avatar'
+  | 'Accordion';
 
 export type BladeComponentConfig = {
   /**

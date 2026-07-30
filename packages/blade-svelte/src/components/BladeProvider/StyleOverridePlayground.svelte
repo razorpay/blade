@@ -1,5 +1,6 @@
 <script lang="ts">
   import type {
+    AccordionSlot,
     AmountSlot,
     AnnouncementBannerSlot,
     AppBarLeadingSlot,
@@ -12,8 +13,10 @@
     StyleOverride,
     TextSlot,
   } from '@razorpay/blade-core/styles';
-  import { getPrimaryBrandCssVars } from '@razorpay/blade-core/styles';
-  import { cssVariablesToInlineStyle } from '@razorpay/blade-core/utils';
+  import Accordion from '../Accordion/Accordion.svelte';
+  import AccordionItem from '../Accordion/AccordionItem.svelte';
+  import AccordionItemBody from '../Accordion/AccordionItemBody.svelte';
+  import AccordionItemHeader from '../Accordion/AccordionItemHeader.svelte';
   import Amount from '../Amount/Amount.svelte';
   import AnnouncementBanner from '../AnnouncementBanner/AnnouncementBanner.svelte';
   import AppBar from '../AppBar/AppBar.svelte';
@@ -44,6 +47,7 @@
     'AppBarLeading',
     'Divider',
     'Avatar',
+    'Accordion',
   ] as const satisfies readonly BladeComponentName[];
 
   type StyleOverrideComponent = (typeof COMPONENT_OPTIONS)[number];
@@ -64,7 +68,7 @@
       slotType: 'AnnouncementBannerSlot',
       slots: ['root', 'icon', 'text'] satisfies readonly AnnouncementBannerSlot[],
     },
-    Card: { slotType: 'CardSlot', slots: ['root', 'surface'] satisfies readonly CardSlot[] },
+    Card: { slotType: 'CardSlot', slots: ['root'] satisfies readonly CardSlot[] },
     AppBarLeading: {
       slotType: 'AppBarLeadingSlot',
       slots: ['title'] satisfies readonly AppBarLeadingSlot[],
@@ -73,6 +77,17 @@
     Avatar: {
       slotType: 'AvatarSlot',
       slots: ['root'] satisfies readonly AvatarSlot[],
+    },
+    Accordion: {
+      slotType: 'AccordionSlot',
+      slots: [
+        'root',
+        'item',
+        'headerButton',
+        'body',
+        'title',
+        'subtitle',
+      ] satisfies readonly AccordionSlot[],
     },
   };
 
@@ -94,11 +109,19 @@
       icon: 'text-(--demo-accent)',
       text: 'announcement-banner-text',
     },
-    Card: { root: '', surface: 'surface.background.primary.subtle' },
+    Card: { root: 'card-brand-border' },
     AppBarLeading: { title: 'text-(--demo-text)' },
     Divider: { root: 'demo-divider' },
     Avatar: {
       root: 'avatar-custom-radius',
+    },
+    Accordion: {
+      root: 'bg-(--demo-accordion-root-bg)',
+      item: 'bg-(--demo-accordion-item-bg)',
+      headerButton: 'bg-(--demo-accordion-header-bg)',
+      title: 'text-(--demo-accordion-title)',
+      subtitle: 'text-(--demo-accordion-subtitle)',
+      body: 'text-(--demo-accordion-body)',
     },
   };
 
@@ -116,7 +139,13 @@
     'demo-divider': ['--demo-accent'],
     'demo-appbar-actions': ['--demo-accent'],
     'announcement-banner-text': [],
+    'card-brand-border': ['--demo-card-border'],
+    'avatar-custom-radius': ['--avatar-radius'],
+    'icon-btn-radius': ['--icon-btn-radius'],
+    'icon-btn-icon-size': ['--icon-btn-icon-size'],
   };
+
+  const LENGTH_CSS_VARS = new Set(['--avatar-radius', '--icon-btn-radius', '--icon-btn-icon-size']);
 
   const UTILITY_PROPERTY_BY_PREFIX: Record<string, string> = {
     bg: 'background-color',
@@ -137,7 +166,17 @@
     '--demo-accent': '#6c5ce7',
     '--demo-muted': '#888888',
     '--demo-surface': '#f3efff',
+    '--demo-accordion-root-bg': '#f3efff',
+    '--demo-accordion-item-bg': '#f8f5ff',
+    '--demo-accordion-header-bg': '#efe9ff',
+    '--demo-accordion-title': '#6c5ce7',
+    '--demo-accordion-subtitle': '#888888',
+    '--demo-accordion-body': '#1a1a1a',
     '--demo-appbar-bg': '#3669ff',
+    '--demo-card-border': '#6c5ce7',
+    '--avatar-radius': '6px',
+    '--icon-btn-radius': '6px',
+    '--icon-btn-icon-size': '20px',
   };
 
   const CSS_VAR_IN_UTILITY = /\(--([\w-]+)\)/g;
@@ -239,7 +278,7 @@
 
   const typeSnippet = $derived.by((): string => {
     const union = catalog.slots.map((slot) => `'${slot}'`).join(' | ');
-    return `type ${catalog.slotType} = ${union};\nstyleOverride?: StyleOverride<${catalog.slotType}>;`;
+    return `type ${catalog.slotType} = ${union};`;
   });
 
   const styleOverrideSnippet = $derived.by((): string => {
@@ -287,6 +326,32 @@
     return rules.join('\n');
   });
 
+  const dynamicMappedSlotCss = $derived.by((): string => {
+    const seen = new Set<string>();
+    const rules: string[] = [];
+
+    for (const slot of catalog.slots) {
+      const classNames = (slotClasses[slot] ?? '').trim();
+      if (!classNames) {
+        continue;
+      }
+
+      for (const token of classNames.split(/\s+/)) {
+        const mappedVars = SLOT_CLASS_TO_CSS_VARS[token];
+        if (!mappedVars?.length || seen.has(token)) {
+          continue;
+        }
+        seen.add(token);
+        const declarations = mappedVars
+          .map((varName) => `${varName}: ${getCssVarValue(varName)}`)
+          .join('; ');
+        rules.push(`.${token} { ${declarations}; }`);
+      }
+    }
+
+    return rules.join('\n');
+  });
+
   function defaultCssVarValue(varName: string): string {
     return INITIAL_CSS_VAR_VALUES[varName] ?? '#888888';
   }
@@ -297,6 +362,15 @@
 
   function setCssVarValue(varName: string, value: string): void {
     cssVarValues = { ...cssVarValues, [varName]: value };
+  }
+
+  function parseLengthPx(value: string): number {
+    const parsed = Number.parseFloat(value);
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  function setLengthVarValue(varName: string, px: number): void {
+    setCssVarValue(varName, `${Math.max(0, px)}px`);
   }
 
   function ensureCssVarsRegistered(varNames: readonly string[]): void {
@@ -323,7 +397,7 @@
 
   $effect(() => {
     const host = utilityStyleHost;
-    const css = dynamicUtilityCss;
+    const css = [dynamicUtilityCss, dynamicMappedSlotCss].filter(Boolean).join('\n');
     if (!host) {
       return;
     }
@@ -360,12 +434,6 @@
       [selectedComponent]: { ...DEFAULT_SLOT_CLASSES[selectedComponent] },
     };
   }
-
-  const brandBgTokenVars = getPrimaryBrandCssVars({ bg: 'var(--brand-bg)' });
-  const brandBgUtilityDeclarations = `${cssVariablesToInlineStyle(brandBgTokenVars)}; background-image: none;`;
-  const brandBgUtilitySnippet = $derived(`.bg-(--brand-bg) { ${brandBgUtilityDeclarations} }`);
-  const brandTextUtilitySnippet = '.text-(--brand-text) { color: var(--brand-text); }';
-  const brandColorUtilitySnippet = '.text-(--brand-color) { color: var(--brand-color); }';
 </script>
 
 <div bind:this={utilityStyleHost} hidden aria-hidden="true"></div>
@@ -431,13 +499,27 @@
               {#each slotCssVars as varName (varName)}
                 <label class="slot-var-control">
                   <span class="slot-var-name">{varName}</span>
-                  <input
-                    type="color"
-                    class="slot-var-swatch"
-                    value={getCssVarValue(varName)}
-                    aria-label="{selectedComponent} · {slot} · {varName}"
-                    oninput={(event) => setCssVarValue(varName, event.currentTarget.value)}
-                  />
+                  {#if LENGTH_CSS_VARS.has(varName)}
+                    <input
+                      type="number"
+                      class="slot-var-length"
+                      min="0"
+                      max="48"
+                      step="1"
+                      value={parseLengthPx(getCssVarValue(varName))}
+                      aria-label="{selectedComponent} · {slot} · {varName}"
+                      oninput={(event) =>
+                        setLengthVarValue(varName, event.currentTarget.valueAsNumber)}
+                    />
+                  {:else}
+                    <input
+                      type="color"
+                      class="slot-var-swatch"
+                      value={getCssVarValue(varName)}
+                      aria-label="{selectedComponent} · {slot} · {varName}"
+                      oninput={(event) => setCssVarValue(varName, event.currentTarget.value)}
+                    />
+                  {/if}
                   <span class="slot-var-hex">{getCssVarValue(varName)}</span>
                 </label>
               {/each}
@@ -601,18 +683,42 @@
               </div>
             </div>
           {/each}
+        {:else if selectedComponent === 'Accordion'}
+          <div class="accordion-preview-shell">
+            <Accordion
+              variant="transparent"
+              defaultExpandedIndex={0}
+              styleOverride={styleOverride as StyleOverride<AccordionSlot>}
+            >
+              {#snippet children()}
+                <AccordionItem>
+                  {#snippet children()}
+                    <AccordionItemHeader
+                      title="PhonePe Wallet"
+                      subtitle="+ ₹50 Extra Charge"
+                    />
+                    <AccordionItemBody>
+                      Enter phone number to continue with PhonePe Wallet payment.
+                    </AccordionItemBody>
+                  {/snippet}
+                </AccordionItem>
+                <AccordionItem>
+                  {#snippet children()}
+                    <AccordionItemHeader
+                      title="HDFC Credit Card"
+                      subtitle="No EMI Cost Available"
+                    />
+                    <AccordionItemBody>
+                      Enter card details to pay with HDFC Credit Card.
+                    </AccordionItemBody>
+                  {/snippet}
+                </AccordionItem>
+              {/snippet}
+            </Accordion>
+          </div>
         {/if}
       </div>
     </div>
-
-    {#if selectedComponent === 'Button'}
-      <div class="control-block">
-        <Text size="small" weight="semibold">Utility definitions (demo)</Text>
-        <Code size="small" isHighlighted={false}>{brandBgUtilitySnippet}</Code>
-        <Code size="small" isHighlighted={false}>{brandTextUtilitySnippet}</Code>
-        <Code size="small" isHighlighted={false}>{brandColorUtilitySnippet}</Code>
-      </div>
-    {/if}
   </div>
 </div>
 
@@ -745,6 +851,37 @@
     border-radius: var(--border-radius-small);
     cursor: pointer;
     background: transparent;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow: hidden;
+    appearance: none;
+  }
+
+  .slot-var-swatch::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  .slot-var-swatch::-webkit-color-swatch {
+    border: none;
+    border-radius: calc(var(--border-radius-small) - 1px);
+  }
+
+  .slot-var-swatch::-moz-color-swatch {
+    border: none;
+    border-radius: calc(var(--border-radius-small) - 1px);
+  }
+
+  .slot-var-length {
+    width: 4.5rem;
+    height: 2rem;
+    padding: 0 var(--spacing-2);
+    border: 1px solid var(--surface-border-gray-muted);
+    border-radius: var(--border-radius-small);
+    font-family: var(--font-family-code);
+    font-size: var(--font-size-75);
+    color: var(--surface-text-gray-normal);
+    background-color: var(--surface-background-gray-intense);
+    box-sizing: border-box;
     flex-shrink: 0;
   }
 
@@ -798,6 +935,10 @@
     overflow: hidden;
   }
 
+  .accordion-preview-shell {
+    width: min(100%, 480px);
+  }
+
   :global(.bg-\(--brand-bg\)) {
     --interactive-background-primary-default: var(--brand-bg);
     --interactive-background-primary-highlighted: color-mix(in srgb, var(--brand-bg) 80%, black);
@@ -817,17 +958,17 @@
     background-color: var(--demo-accent);
   }
 
-  :global(.avatar-custom-radius) {
-    --avatar-radius: 6px;
+  :global(.card-brand-border) {
+    --interactive-border-gray-disabled: var(--demo-card-border);
   }
 
   :global(.icon-btn-radius) {
-    border-radius: 6px;
+    border-radius: var(--icon-btn-radius);
   }
 
   :global(.icon-btn-icon-size svg) {
-    width: 20px;
-    height: 20px;
+    width: var(--icon-btn-icon-size);
+    height: var(--icon-btn-icon-size);
   }
 
   :global(.announcement-banner-text) {
