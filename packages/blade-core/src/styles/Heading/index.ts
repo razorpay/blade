@@ -7,3 +7,4 @@ export type {
   FontSize,
   LineHeight,
 } from './heading';
+export type { HeadingSlot } from './slots';

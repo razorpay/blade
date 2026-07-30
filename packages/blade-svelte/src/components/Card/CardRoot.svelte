@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { makeAccessible, metaAttribute, MetaConstants, getStyledPropsClasses } from '@razorpay/blade-core/utils';
+  import { makeAccessible, metaAttribute, MetaConstants, getStyledPropsClasses, cx } from '@razorpay/blade-core/utils';
   import { cardRootStyles } from '@razorpay/blade-core/styles';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
@@ -22,6 +22,7 @@
     maxWidth,
     cursor,
     testID,
+    styleOverrideRoot,
     ...rest
   }: {
     children: Snippet;
@@ -40,6 +41,7 @@
     maxWidth?: string;
     cursor?: string;
     testID?: string;
+    styleOverrideRoot?: string;
   } & StyledPropsBlade = $props();
 
   const rootClasses = $derived(
@@ -55,7 +57,7 @@
     if (styledProps.classes) {
       classes.push(...styledProps.classes);
     }
-    return classes.filter(Boolean).join(' ');
+    return cx(...classes.filter(Boolean), styleOverrideRoot);
   });
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.Card, testID }));

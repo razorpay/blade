@@ -1,4 +1,5 @@
 import type { Snippet } from 'svelte';
+import type { AnnouncementBannerSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
 import type { IconComponent } from '../Icons';
 
@@ -32,4 +33,10 @@ export interface AnnouncementBannerProps extends StyledPropsBlade, DataAnalytics
    * Test ID for the element.
    */
   testID?: string;
+
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.AnnouncementBanner.styleOverride`;
+   * instance values win on conflicts.
+   */
+  styleOverride?: StyleOverride<AnnouncementBannerSlot>;
 }

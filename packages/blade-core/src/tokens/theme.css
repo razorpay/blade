@@ -577,8 +577,17 @@
   --transparent: hsla(0, 0%, 100%, 0);
 }
 
-/* Dark Mode */
-:root body[data-theme='dark'] {
+/* Dark Mode
+ * Transition period: both `body[data-theme='dark']` (legacy) and
+ * `[data-blade-color-scheme='dark']` (new scoped attribute) are supported.
+ * `:root[data-blade-color-scheme]` is a compound selector (no space) so it
+ * matches `<html>` itself — where BladeProvider sets the attribute — and
+ * cascades to portaled content (tooltips, toasts) rendered outside the
+ * provider wrapper div.
+ * TODO: deprecate and remove `body[data-theme]` selector once all consumers
+ * migrate to `data-blade-color-scheme`. */
+:root body[data-theme='dark'],
+:root[data-blade-color-scheme='dark'] {
 
   /* Surface Colors - Dark */
   --surface-background-gray-subtle: hsla(210, 4%, 11%, 1);

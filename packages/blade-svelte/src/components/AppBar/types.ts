@@ -1,4 +1,5 @@
 import type { Snippet } from 'svelte';
+import type { AppBarLeadingSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { TooltipPlacement } from '../Tooltip/types';
 
@@ -142,6 +143,12 @@ export type AppBarLeadingProps = {
    * @default undefined
    */
   testID?: string;
+
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.AppBarLeading.styleOverride`;
+   * instance values win on conflicts.
+   */
+  styleOverride?: StyleOverride<AppBarLeadingSlot>;
 
   /**
    * Analytics data attributes.
