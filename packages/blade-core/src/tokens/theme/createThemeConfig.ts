@@ -17,7 +17,7 @@ export type CreateThemeFontFace = {
 
 export type CreateThemeFontFamilyOverride = Partial<FontFamily>;
 
-export type CreateThemeFontSizeScaleOverride = Partial<Record<keyof FontSize, number>>;
+export type CreateThemeFontSizeOverride = Partial<Record<keyof FontSize, number>>;
 
 /**
  * Merchant-friendly surface background overrides (hex / hsl / css colors).
@@ -47,12 +47,12 @@ export type CreateThemeConfig = {
   borderRadius?: Partial<Border['radius']>;
   fontFamily?: CreateThemeFontFamilyOverride;
   /**
-   * `@font-face` rules emitted as `fontFaceCss` on the result.
+   * `@font-face` rules emitted as `fontFaceCSS` on the result.
    * Pair with `fontFamily` names that match `fontFamily` on each face.
    */
   fontFaces?: CreateThemeFontFace[];
   /** Overrides named font-size tokens on desktop + mobile scales. */
-  fontSizeOverrides?: CreateThemeFontSizeScaleOverride;
+  fontSizeOverrides?: CreateThemeFontSizeOverride;
   /** Multiplies every font-size token on both platforms (applied after `fontSizeOverrides`). */
   fontSizeScaleFactor?: number;
   surface?: CreateThemeSurfaceOverride;
@@ -62,5 +62,5 @@ export type CreateThemeResult = {
   theme: ThemeTokens;
   brandColors: ColorChromaticScale;
   /** Inject once (e.g. `<style>` or BladeProvider) before themed UI renders. */
-  fontFaceCss?: string;
+  fontFaceCSS?: string;
 };

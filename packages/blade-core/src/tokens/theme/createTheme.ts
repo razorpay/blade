@@ -16,7 +16,7 @@ export type {
   CreateThemeConfig,
   CreateThemeFontFace,
   CreateThemeFontFamilyOverride,
-  CreateThemeFontSizeScaleOverride,
+  CreateThemeFontSizeOverride,
   CreateThemeResult,
   CreateThemeSurfaceBackgroundOverride,
   CreateThemeSurfaceOverride,
@@ -318,7 +318,7 @@ const getOnDarkOverrides = (
  * @description
  * Creates Blade theme tokens from a brand color plus optional typography, surface, and radius overrides.
  * @example
- * const { theme, brandColors, fontFaceCss } = createTheme({
+ * const { theme, brandColors, fontFaceCSS } = createTheme({
  *   brandColor: '#19BEA2',
  *   borderRadius: { medium: 16 },
  *   fontFamily: { text: 'CustomBrand, Inter, sans-serif' },
@@ -373,7 +373,7 @@ export const createTheme = ({
     },
   });
 
-  const fontFaceCss = fontFaces && fontFaces.length > 0 ? buildFontFaceCss(fontFaces) : undefined;
+  const fontFaceCSS = fontFaces && fontFaces.length > 0 ? buildFontFaceCss(fontFaces) : undefined;
 
-  return { theme: brandedThemeTokens, brandColors: chromaticBrandColors, fontFaceCss };
+  return { theme: brandedThemeTokens, brandColors: chromaticBrandColors, fontFaceCSS };
 };

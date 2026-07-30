@@ -194,7 +194,7 @@ export function extractCardBackgroundColorFromClassNames(
   };
 }
 
-export type GetCardSurfaceClassNamesParams = {
+export type GetCardSurfaceClassesParams = {
   type?: CardType;
   backgroundColor?: CardBackgroundColor;
   padding?: CardSurfaceVariants['padding'];
@@ -202,12 +202,12 @@ export type GetCardSurfaceClassNamesParams = {
 };
 
 /** Surface class list for {@link CardSurface}: CVA layout, type, and token background utilities. */
-export function getCardSurfaceClassNames({
+export function getCardSurfaceClasses({
   type = 'primary',
   backgroundColor,
   padding = 'spacing.7',
   borderRadius = 'medium',
-}: GetCardSurfaceClassNamesParams): string {
+}: GetCardSurfaceClassesParams): string {
   return cardSurfaceStyles({
     type,
     backgroundColor: getCardBackgroundColor(type, backgroundColor),

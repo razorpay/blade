@@ -4,7 +4,7 @@ import type { FontSize, Typography, TypographyWithPlatforms } from '~tokens/glob
 import type { ThemeTokens } from './theme';
 import type {
   CreateThemeFontFamilyOverride,
-  CreateThemeFontSizeScaleOverride,
+  CreateThemeFontSizeOverride,
   CreateThemeSurfaceBackgroundOverride,
   CreateThemeSurfaceOverride,
 } from './createThemeConfig';
@@ -95,9 +95,19 @@ const applyFontSizeScaleFactor = (size: FontSize, factor: number): FontSize => {
   return next;
 };
 
+const validateFontSizeScaleFactor = (factor: number): void => {
+  if (typeof __DEV__ !== 'undefined' && __DEV__) {
+    if (!(factor > 0 && Number.isFinite(factor))) {
+      throw new Error(
+        `[Blade: createTheme]: fontSizeScaleFactor must be a positive finite number but received ${factor}`,
+      );
+    }
+  }
+};
+
 const mergeFontSizeScale = (
   size: FontSize,
-  scale?: CreateThemeFontSizeScaleOverride,
+  scale?: CreateThemeFontSizeOverride,
   factor?: number,
 ): FontSize => {
   let next = scale ? { ...size, ...scale } : { ...size };
@@ -113,13 +123,17 @@ export const buildTypographyOverrides = ({
   fontSizeScaleFactor,
 }: {
   fontFamily?: CreateThemeFontFamilyOverride;
-  fontSizeOverrides?: CreateThemeFontSizeScaleOverride;
+  fontSizeOverrides?: CreateThemeFontSizeOverride;
   fontSizeScaleFactor?: number;
 }): DeepPartial<TypographyWithPlatforms> | undefined => {
   const hasFamily = fontFamily && Object.keys(fontFamily).length > 0;
   const hasSize =
     (fontSizeOverrides && Object.keys(fontSizeOverrides).length > 0) ||
     (fontSizeScaleFactor !== undefined && fontSizeScaleFactor !== 1);
+
+  if (fontSizeScaleFactor !== undefined && fontSizeScaleFactor !== 1) {
+    validateFontSizeScaleFactor(fontSizeScaleFactor);
+  }
 
   if (!hasFamily && !hasSize) {
     return undefined;

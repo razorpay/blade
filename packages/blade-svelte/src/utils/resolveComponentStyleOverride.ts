@@ -14,7 +14,8 @@ export function resolveComponentStyleOverride<Slot extends string>(
   instanceOverride: StyleOverride<Slot> | undefined,
   themeContextGetter: (() => BladeThemeContextValue) | undefined,
 ): StyleOverride<Slot> {
-  const providerOverride = themeContextGetter?.().componentConfig?.[componentName]?.styleOverride;
+  const providerOverride = themeContextGetter?.().componentConfig?.[componentName]
+    ?.styleOverride as StyleOverride<Slot> | undefined;
 
   return mergeStyleOverride(providerOverride, instanceOverride);
 }

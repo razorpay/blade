@@ -114,14 +114,14 @@
       fontSizeFactor !== 1,
   );
 
-  const themeBundle = $derived.by((): { themeTokens: ThemeTokens; fontFaceCss?: string } => {
+  const themeBundle = $derived.by((): { themeTokens: ThemeTokens; fontFaceCSS?: string } => {
     if (!usesCreateTheme) {
       return { themeTokens: bladeTheme };
     }
 
     const scaleFactor = fontSizeFactor !== 1 ? fontSizeFactor : undefined;
 
-    const { theme, fontFaceCss } = createTheme({
+    const { theme, fontFaceCSS } = createTheme({
       brandColor: brandHex || RAZORPAY_BRAND_FALLBACK,
       borderRadius: hasCustomRadius ? { ...borderRadius } : undefined,
       fontFamily: fontFamilyOverride,
@@ -131,11 +131,11 @@
         : undefined,
     });
 
-    return { themeTokens: theme, fontFaceCss };
+    return { themeTokens: theme, fontFaceCSS };
   });
 
   const themeTokens = $derived(themeBundle.themeTokens);
-  const fontFaceCss = $derived(themeBundle.fontFaceCss);
+  const fontFaceCSS = $derived(themeBundle.fontFaceCSS);
 
   const brandDisplay = $derived(brandHex || 'bladeTheme (default)');
   const radiusLabel = $derived(
@@ -144,7 +144,7 @@
 
   const usageSnippet = $derived.by((): string => {
     const schemeAttr = `colorScheme="${colorScheme}"`;
-    const fontFaceAttr = fontFaceCss ? '\n  fontFaceCss={fontFaceCss}' : '';
+    const fontFaceAttr = fontFaceCSS ? '\n  fontFaceCSS={fontFaceCSS}' : '';
 
     if (!usesCreateTheme) {
       return `<BladeProvider themeTokens={bladeTheme} ${schemeAttr}>
@@ -231,7 +231,7 @@
   }
 </script>
 
-<BladeProvider {themeTokens} {colorScheme} {fontFaceCss}>
+<BladeProvider {themeTokens} {colorScheme} {fontFaceCSS}>
   <div class="story-shell">
     <div class="playground">
       <Heading size="large" weight="semibold">createTheme playground</Heading>

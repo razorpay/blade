@@ -1,2 +1,1 @@
-export const cx = (...classes: Array<string | false | undefined>): string =>
-  classes.filter(Boolean).join(' ');
+export { cx } from 'class-variance-authority';

@@ -1,6 +1,5 @@
 export {
   getAccordionWrapperClasses,
-  getAccordionWrapperClassNames,
   getAccordionButtonClasses,
   getAccordionButtonBorderClasses,
   getAccordionTemplateClasses,

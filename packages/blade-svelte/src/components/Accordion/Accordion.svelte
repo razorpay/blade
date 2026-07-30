@@ -8,7 +8,7 @@
     logger,
   } from '@razorpay/blade-core/utils';
   import {
-    getAccordionWrapperClassNames,
+    getAccordionWrapperClasses,
     getAccordionTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import { setAccordionContext } from './context';
@@ -103,7 +103,7 @@
     styleOverride: resolvedStyleOverride,
   }));
 
-  const wrapperClass = $derived(getAccordionWrapperClassNames({ variant }));
+  const wrapperClass = $derived(getAccordionWrapperClasses({ variant }));
   const styledProps = $derived(getStyledPropsClasses(rest));
   const outerClasses = $derived(
     cx(templateClasses.accordionOuter, ...(styledProps.classes || []), resolvedStyleOverride?.root),

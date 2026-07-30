@@ -6,7 +6,7 @@ export {
   getCardHeaderClasses,
   getCardFooterClasses,
   getCardSurfaceBackgroundUtilityClass,
-  getCardSurfaceClassNames,
+  getCardSurfaceClasses,
   getCardTemplateClasses,
   isCardBackgroundColor,
 } from './card';

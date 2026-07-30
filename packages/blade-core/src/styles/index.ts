@@ -152,7 +152,6 @@ export { switchTrackStyles, getSwitchClasses, getSwitchTemplateClasses } from '.
 export type { SwitchSize, SwitchVariants } from './Switch';
 export {
   getAccordionWrapperClasses,
-  getAccordionWrapperClassNames,
   getAccordionButtonClasses,
   getAccordionButtonBorderClasses,
   getAccordionTemplateClasses,
@@ -196,7 +195,7 @@ export {
   getCardHeaderClasses,
   getCardFooterClasses,
   getCardSurfaceBackgroundUtilityClass,
-  getCardSurfaceClassNames,
+  getCardSurfaceClasses,
   getCardTemplateClasses,
   isCardBackgroundColor,
 } from './Card';

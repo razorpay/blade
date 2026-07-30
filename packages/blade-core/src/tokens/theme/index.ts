@@ -12,7 +12,7 @@ export type {
   CreateThemeConfig,
   CreateThemeFontFace,
   CreateThemeFontFamilyOverride,
-  CreateThemeFontSizeScaleOverride,
+  CreateThemeFontSizeOverride,
   CreateThemeResult,
   CreateThemeSurfaceBackgroundOverride,
   CreateThemeSurfaceOverride,

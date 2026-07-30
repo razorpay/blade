@@ -122,14 +122,3 @@ export type AccordionButtonBorderVariants = {
   isLastItem?: boolean;
   isExpanded?: boolean;
 };
-
-export type GetAccordionWrapperClassNamesParams = {
-  variant?: 'filled' | 'transparent';
-};
-
-/** Accordion inner wrapper (`filled` / `transparent`). */
-export function getAccordionWrapperClassNames({
-  variant = 'transparent',
-}: GetAccordionWrapperClassNamesParams = {}): string {
-  return getAccordionWrapperClasses({ variant });
-}

@@ -147,14 +147,14 @@
     docs: {
       description: {
         story:
-          'Pass `fontFaceCss` from `createTheme({ fontFaces, fontFamily }).fontFaceCss` into BladeProvider so custom faces load before themed UI renders.',
+          'Pass `fontFaceCSS` from `createTheme({ fontFaces, fontFamily }).fontFaceCSS` into BladeProvider so custom faces load before themed UI renders.',
       },
     },
   }}
 >
-  <BladeProvider themeTokens={merchantFontTheme.theme} fontFaceCss={merchantFontTheme.fontFaceCss}>
+  <BladeProvider themeTokens={merchantFontTheme.theme} fontFaceCSS={merchantFontTheme.fontFaceCSS}>
     <div class="font-face-story">
-      <Badge color="primary" emphasis="subtle" size="small">fontFaceCss</Badge>
+      <Badge color="primary" emphasis="subtle" size="small">fontFaceCSS</Badge>
       <Heading size="large" weight="semibold">MerchantBrand heading</Heading>
       <Text size="medium" color="surface.text.gray.muted">
         Body text uses the same <Code size="small">MerchantBrand</Code> family from

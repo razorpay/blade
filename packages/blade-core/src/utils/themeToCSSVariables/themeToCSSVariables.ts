@@ -7,7 +7,7 @@ import type { Colors as ThemeColors } from '~tokens/theme';
  * Resolved (mode-flattened) theme slice used to emit CSS custom properties.
  * Matches the runtime `Theme` shape consumed by BladeProvider.
  */
-export type ThemeCssVariableSource = {
+export type ThemeCSSVariableSource = {
   colors: ThemeColors;
   elevation: Elevation;
   border: Border;
@@ -71,7 +71,7 @@ const typographyValueToCss = (
 /**
  * Resolved platform typography → CSS vars matching `theme.css` (`--font-size-*`, etc.).
  */
-export const typographyToCssVariables = (typography: Typography): Record<string, string> => {
+export const typographyToCSSVariables = (typography: Typography): Record<string, string> => {
   const cssVariables: Record<string, string> = {};
 
   for (const [key, value] of Object.entries(typography.fonts.family)) {
@@ -107,7 +107,7 @@ export const typographyToCssVariables = (typography: Typography): Record<string,
  * Convert a resolved theme slice into CSS custom property declarations.
  * Keys match `@razorpay/blade-core/tokens/theme.css` (e.g. `--surface-background-gray-subtle`).
  */
-export const themeToCSSVariables = (theme: ThemeCssVariableSource): Record<string, string> => {
+export const themeToCSSVariables = (theme: ThemeCSSVariableSource): Record<string, string> => {
   const cssVariables: Record<string, string> = {};
 
   flattenTokenTree(theme.colors, [], cssVariables);
@@ -122,7 +122,7 @@ export const themeToCSSVariables = (theme: ThemeCssVariableSource): Record<strin
   }
 
   if (theme.typography) {
-    Object.assign(cssVariables, typographyToCssVariables(theme.typography));
+    Object.assign(cssVariables, typographyToCSSVariables(theme.typography));
   }
 
   return cssVariables;

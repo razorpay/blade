@@ -47,8 +47,8 @@ describe('createTheme', () => {
     expect(theme.colors.onLight.surface.background.primary.intense).toBeTruthy();
   });
 
-  it('returns fontFaceCss when fontFaces are provided', () => {
-    const { fontFaceCss } = createTheme({
+  it('returns fontFaceCSS when fontFaces are provided', () => {
+    const { fontFaceCSS } = createTheme({
       brandColor: '#19BEA2',
       fontFaces: [
         {
@@ -60,8 +60,8 @@ describe('createTheme', () => {
       ],
     });
 
-    expect(fontFaceCss).toContain('@font-face');
-    expect(fontFaceCss).toContain('MerchantBrand');
-    expect(fontFaceCss).toContain('brand.woff2');
+    expect(fontFaceCSS).toContain('@font-face');
+    expect(fontFaceCSS).toContain('MerchantBrand');
+    expect(fontFaceCSS).toContain('brand.woff2');
   });
 });

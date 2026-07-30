@@ -23,4 +23,6 @@ export type {
   BladeThemeContextValue,
   BladeComponentName,
   BladeComponentConfig,
+  BladeComponentConfigMap,
+  ComponentSlots,
 } from './types';

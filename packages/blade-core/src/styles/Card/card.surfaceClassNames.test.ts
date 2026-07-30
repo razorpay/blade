@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest';
 import {
   extractCardBackgroundColorFromClassNames,
   getCardBackgroundColor,
-  getCardSurfaceClassNames,
+  getCardSurfaceClasses,
 } from './card';
 
-describe('getCardSurfaceClassNames', () => {
+describe('getCardSurfaceClasses', () => {
   it('applies theme backgroundColor through CVA', () => {
-    const classes = getCardSurfaceClassNames({
+    const classes = getCardSurfaceClasses({
       type: 'theme',
       backgroundColor: 'surface.background.cloud.subtle',
       padding: 'spacing.7',
@@ -18,8 +18,8 @@ describe('getCardSurfaceClassNames', () => {
   });
 
   it('uses variant-owned fill for primary and secondary', () => {
-    const primary = getCardSurfaceClassNames({ type: 'primary' });
-    const secondary = getCardSurfaceClassNames({ type: 'secondary' });
+    const primary = getCardSurfaceClasses({ type: 'primary' });
+    const secondary = getCardSurfaceClasses({ type: 'secondary' });
 
     expect(primary).toContain('_background-surface-gray-intense');
     expect(secondary).toContain('_background-surface-gray-moderate');
