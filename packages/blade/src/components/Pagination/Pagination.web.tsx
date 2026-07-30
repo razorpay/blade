@@ -245,13 +245,8 @@ const _Pagination = ({
     [isDisabled, setInternalPageSize],
   );
 
-  const shouldDisableNextPage = (): boolean => {
-    return internalPage >= totalPages - 1 || isDisabled;
-  };
-
-  const shouldDisablePreviousPage = (): boolean => {
-    return internalPage <= 0 || isDisabled;
-  };
+  const isFirstPage = internalPage <= 0;
+  const isLastPage = internalPage >= totalPages - 1;
 
   const paginationButtons = getPaginationButtons({
     currentSelection: internalPage + 1,
@@ -320,15 +315,17 @@ const _Pagination = ({
           flex={onMobile ? 1 : undefined}
           alignItems="center"
         >
-          <Button
-            icon={ChevronLeftIcon}
-            accessibilityLabel="Previous Page"
-            variant="tertiary"
-            onClick={() => {
-              handlePageChange(internalPage - 1);
-            }}
-            isDisabled={shouldDisablePreviousPage()}
-          />
+          {!isFirstPage && (
+            <Button
+              icon={ChevronLeftIcon}
+              accessibilityLabel="Previous Page"
+              variant="tertiary"
+              onClick={() => {
+                handlePageChange(internalPage - 1);
+              }}
+              isDisabled={isDisabled}
+            />
+          )}
           {onMobile && (
             <BaseBox flex={1} alignItems="center" justifyContent="center">
               <Text textAlign="center" size="small" weight="regular">{`Showing ${
@@ -428,15 +425,17 @@ const _Pagination = ({
               </PageSelectionButton>
             </BaseBox>
           )}
-          <Button
-            variant="tertiary"
-            icon={ChevronRightIcon}
-            accessibilityLabel="Next Page"
-            onClick={() => {
-              handlePageChange(internalPage + 1);
-            }}
-            isDisabled={shouldDisableNextPage()}
-          />
+          {!isLastPage && (
+            <Button
+              variant="tertiary"
+              icon={ChevronRightIcon}
+              accessibilityLabel="Next Page"
+              onClick={() => {
+                handlePageChange(internalPage + 1);
+              }}
+              isDisabled={isDisabled}
+            />
+          )}
         </BaseBox>
       </BaseBox>
     </BaseBox>

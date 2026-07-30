@@ -75,7 +75,7 @@ type PaginationCommonProps = {
    * Current page size when controlled.
    * When provided, the page size is controlled.
    * When not provided, the component manages page size internally.
-   * @default 10 
+   * @default 10
    */
   pageSize?:  10 | 25 | 50;;
 
@@ -125,6 +125,15 @@ type PaginationProps = PaginationCommonProps & {
   pageSizeLabel?: string;
 };
 ```
+
+#### Boundary Navigation Buttons
+
+Navigation buttons that cannot do anything are not rendered at all, rather than being rendered in a
+disabled state: the **previous page button is not rendered** on the first page, and the **next page
+button is not rendered** on the last page. A permanently disabled control invites clicks and
+communicates nothing.
+
+`isDisabled` is unaffected — a disabled pagination still renders both buttons in their disabled state.
 
 #### Controlled vs Uncontrolled Behavior
 
@@ -176,7 +185,7 @@ type PaginationProps = PaginationCommonProps & {
 #### Usage Notes
 
 - **All `Pagination` props are supported**: `TablePagination` accepts all props from `Pagination` and passes them through.
-- **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for  `selectedPage` .
+- **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for `selectedPage` .
 - **Page Indexing**: Pages are 1-indexed (page 1 is the first page) in the API. If any internal logic uses 0-indexing, this is handled transparently and does not affect the API.
 
 ## Component Architecture
@@ -254,18 +263,19 @@ Full-featured pagination with all controls:
 />
 ```
 
-#### Required totalPages prop  
+#### Required totalPages prop
 
 Pagination requires the `totalPages` prop to be specified:  
-***jsx
+\*\*\*jsx
 <Pagination
 totalPages={100}
 selectedPage={0}
 onPageChange={({ page }) => setselectedPage(page)}
 defaultPageSize={10}
-  // totalPages will be calculated as Math.ceil(1000 / 10) = 100
+// totalPages will be calculated as Math.ceil(1000 / 10) = 100
 />
-```
+
+````
 
 #### Mixed Controlled/Uncontrolled
 
@@ -280,7 +290,7 @@ Page is controlled, page size is uncontrolled:
   showPageSizePicker
   // Page size is managed internally
 />
-```
+````
 
 #### Disabled State
 
