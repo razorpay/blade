@@ -12,6 +12,17 @@ import { Button } from '~components/Button';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
+type GetByRole = (role: string, options?: { name?: string | RegExp }) => HTMLElement;
+
+const navigateToMonth = async (targetDate: dayjs.Dayjs, getByRole: GetByRole): Promise<void> => {
+  let currentMonth = dayjs();
+  while (!targetDate.isSame(currentMonth, 'month')) {
+    await userEvent.click(getByRole('button', { name: /next/i }));
+    await sleep(200);
+    currentMonth = currentMonth.add(1, 'month');
+  }
+};
+
 let onOpenChange: Mock | null = null;
 
 export const DatePickerShouldShow: StoryFn<typeof DatePickerComponent> = (): React.ReactElement => {
@@ -111,6 +122,7 @@ DatePickerSingleSelect.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
+  await navigateToMonth(dateToSelect, getByRole);
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
@@ -140,6 +152,7 @@ DatePickerSingleSelectCancel.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
+  await navigateToMonth(dateToSelect, getByRole);
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // assert inputs value
@@ -199,6 +212,7 @@ DatePickerSingleSelectControlled.play = async () => {
   await expect(input).toHaveValue(dayjs().add(5, 'day').format('DD/MM/YYYY'));
   // select another date
   const dateToSelect = dayjs().add(2, 'day');
+  await navigateToMonth(dateToSelect, getByRole);
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
@@ -670,6 +684,7 @@ DatePickerSingleNoFooter.play = async () => {
 
   // Select a date - on blur should auto-close without footer
   const dateToSelect = dayjs().add(3, 'day');
+  await navigateToMonth(dateToSelect, getByRole);
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   await userEvent.click(document.body);
@@ -974,6 +989,7 @@ DatePickerCalendarToInput.play = async () => {
 
   // Select a date from calendar
   const targetDate = dayjs().add(4, 'day');
+  await navigateToMonth(targetDate, getByRole);
   const dateButton = getByRole('button', { name: targetDate.format('D MMMM YYYY') });
   await userEvent.click(dateButton);
 
@@ -1006,7 +1022,9 @@ DatePickerRangeCalendarToInput.play = async () => {
   const startDate = dayjs().add(2, 'day');
   const endDate = dayjs().add(8, 'day');
 
+  await navigateToMonth(startDate, getByRole);
   await userEvent.click(getByRole('button', { name: startDate.format('D MMMM YYYY') }));
+  await navigateToMonth(endDate, getByRole);
   await userEvent.click(getByRole('button', { name: endDate.format('D MMMM YYYY') }));
 
   // Apply the selection
