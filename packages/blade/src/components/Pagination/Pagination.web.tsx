@@ -165,7 +165,7 @@ const _Pagination = ({
   showLabel = false,
   label,
   isDisabled = false,
-  hideBoundaryButtons = true,
+  showBoundaryButtons = false,
   ...rest
 }: PaginationProps): React.ReactElement => {
   // Convert 1-based external page to 0-based internal page
@@ -249,10 +249,10 @@ const _Pagination = ({
   const isFirstPage = internalPage <= 0;
   const isLastPage = internalPage >= totalPages - 1;
 
-  const shouldShowPreviousButton = hideBoundaryButtons ? !isFirstPage || isDisabled : true;
-  const shouldShowNextButton = hideBoundaryButtons ? !isLastPage || isDisabled : true;
-  const isPreviousButtonDisabled = hideBoundaryButtons ? isDisabled : isFirstPage || isDisabled;
-  const isNextButtonDisabled = hideBoundaryButtons ? isDisabled : isLastPage || isDisabled;
+  const shouldShowPreviousButton = showBoundaryButtons ? true : !isFirstPage || isDisabled;
+  const shouldShowNextButton = showBoundaryButtons ? true : !isLastPage || isDisabled;
+  const isPreviousButtonDisabled = showBoundaryButtons ? isFirstPage || isDisabled : isDisabled;
+  const isNextButtonDisabled = showBoundaryButtons ? isLastPage || isDisabled : isDisabled;
 
   const paginationButtons = getPaginationButtons({
     currentSelection: internalPage + 1,

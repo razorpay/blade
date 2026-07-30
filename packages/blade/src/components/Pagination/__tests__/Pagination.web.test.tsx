@@ -223,7 +223,7 @@ describe('<Pagination />', () => {
     expect(queryByLabelText('Next Page')).toBeInTheDocument();
   });
 
-  it('should render disabled previous button on first page when hideBoundaryButtons is false', () => {
+  it('should render disabled previous button on first page when showBoundaryButtons is true', () => {
     const { queryByLabelText } = renderWithTheme(
       <Pagination
         totalPages={10}
@@ -231,7 +231,7 @@ describe('<Pagination />', () => {
         onSelectedPageChange={() => {
           console.log('page changed');
         }}
-        hideBoundaryButtons={false}
+        showBoundaryButtons
       />,
     );
 
@@ -241,7 +241,7 @@ describe('<Pagination />', () => {
     expect(queryByLabelText('Next Page')).toBeInTheDocument();
   });
 
-  it('should render disabled next button on last page when hideBoundaryButtons is false', () => {
+  it('should render disabled next button on last page when showBoundaryButtons is true', () => {
     const { queryByLabelText } = renderWithTheme(
       <Pagination
         totalPages={10}
@@ -249,7 +249,7 @@ describe('<Pagination />', () => {
         onSelectedPageChange={() => {
           console.log('page changed');
         }}
-        hideBoundaryButtons={false}
+        showBoundaryButtons
       />,
     );
 
@@ -259,7 +259,7 @@ describe('<Pagination />', () => {
     expect(queryByLabelText('Previous Page')).toBeInTheDocument();
   });
 
-  it('should hide previous button on first page when hideBoundaryButtons is true (default)', () => {
+  it('should hide previous button on first page when showBoundaryButtons is false (default)', () => {
     const { queryByLabelText } = renderWithTheme(
       <Pagination
         totalPages={10}
@@ -267,7 +267,7 @@ describe('<Pagination />', () => {
         onSelectedPageChange={() => {
           console.log('page changed');
         }}
-        hideBoundaryButtons
+        showBoundaryButtons={false}
       />,
     );
 

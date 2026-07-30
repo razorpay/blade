@@ -108,10 +108,10 @@ export default {
       control: 'boolean',
       description: 'Whether the pagination component is disabled.',
     },
-    hideBoundaryButtons: {
+    showBoundaryButtons: {
       control: 'boolean',
       description:
-        'Whether to hide the Previous button on the first page and the Next button on the last page (default: true).',
+        'Whether to show the Previous button on the first page and the Next button on the last page (default: false).',
     },
   },
   parameters: {
@@ -146,6 +146,7 @@ Default.args = {
   showPageNumberSelector: true,
   showPageSizePicker: true,
   showLabel: true,
+  showBoundaryButtons: false,
 };
 
 const ControlledExample = (): React.ReactElement => {

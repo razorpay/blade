@@ -8,4 +8,4 @@ feat(Pagination): hide boundary navigation buttons instead of disabling them
 
 Setting `isDisabled` is unaffected — a disabled pagination still renders both buttons, disabled.
 
-A new `hideBoundaryButtons` prop (default `true`) lets consumers opt out of the new behaviour: set it to `false` to restore the legacy disabled-arrow rendering at page boundaries.
+A new `showBoundaryButtons` prop (default `false`) lets consumers opt out of the new behaviour: set it to `true` to restore the legacy disabled-arrow rendering at page boundaries.
