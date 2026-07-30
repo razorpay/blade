@@ -28,6 +28,7 @@ import { useControllableState } from '~utils/useControllable';
 import { getStyledProps } from '~components/Box/styledProps';
 
 const pageSizeOptions: NonNullable<PaginationProps['defaultPageSize']>[] = [10, 25, 50];
+const smallestPageSize = Math.min(...pageSizeOptions);
 
 const PageSelectionButton = styled.button.attrs(() => {
   return {
@@ -165,8 +166,9 @@ const _Pagination = ({
   showLabel = false,
   label,
   isDisabled = false,
+  totalItemCount,
   ...rest
-}: PaginationProps): React.ReactElement => {
+}: PaginationProps): React.ReactElement | null => {
   // Convert 1-based external page to 0-based internal page
   const controlledInternalPage = useMemo(() => {
     if (isUndefined(controlledSelectedPage)) {
@@ -245,18 +247,28 @@ const _Pagination = ({
     [isDisabled, setInternalPageSize],
   );
 
-  const shouldDisableNextPage = (): boolean => {
-    return internalPage >= totalPages - 1 || isDisabled;
-  };
+  const isFirstPage = internalPage <= 0;
+  const isLastPage = internalPage >= totalPages - 1;
 
-  const shouldDisablePreviousPage = (): boolean => {
-    return internalPage <= 0 || isDisabled;
-  };
+  const shouldHidePagination = useMemo(() => {
+    if (!isUndefined(totalItemCount)) {
+      return totalItemCount <= smallestPageSize;
+    }
+    // Without an item count, a single page at the smallest page size is the only case
+    // where we can be sure that every item already fits on one page.
+    return totalPages <= 1 && internalPageSize === smallestPageSize;
+  }, [totalItemCount, totalPages, internalPageSize]);
 
   const paginationButtons = getPaginationButtons({
     currentSelection: internalPage + 1,
     totalPages,
   });
+
+  // On mobile the label and the page size picker are always hidden, so a single page leaves
+  // nothing behind but a dead "Showing 1 of 1 pages" string.
+  if (shouldHidePagination || (onMobile && totalPages <= 1)) {
+    return null;
+  }
 
   return (
     <BaseBox
@@ -320,15 +332,17 @@ const _Pagination = ({
           flex={onMobile ? 1 : undefined}
           alignItems="center"
         >
-          <Button
-            icon={ChevronLeftIcon}
-            accessibilityLabel="Previous Page"
-            variant="tertiary"
-            onClick={() => {
-              handlePageChange(internalPage - 1);
-            }}
-            isDisabled={shouldDisablePreviousPage()}
-          />
+          {!isFirstPage && (
+            <Button
+              icon={ChevronLeftIcon}
+              accessibilityLabel="Previous Page"
+              variant="tertiary"
+              onClick={() => {
+                handlePageChange(internalPage - 1);
+              }}
+              isDisabled={isDisabled}
+            />
+          )}
           {onMobile && (
             <BaseBox flex={1} alignItems="center" justifyContent="center">
               <Text textAlign="center" size="small" weight="regular">{`Showing ${
@@ -428,15 +442,17 @@ const _Pagination = ({
               </PageSelectionButton>
             </BaseBox>
           )}
-          <Button
-            variant="tertiary"
-            icon={ChevronRightIcon}
-            accessibilityLabel="Next Page"
-            onClick={() => {
-              handlePageChange(internalPage + 1);
-            }}
-            isDisabled={shouldDisableNextPage()}
-          />
+          {!isLastPage && (
+            <Button
+              variant="tertiary"
+              icon={ChevronRightIcon}
+              accessibilityLabel="Next Page"
+              onClick={() => {
+                handlePageChange(internalPage + 1);
+              }}
+              isDisabled={isDisabled}
+            />
+          )}
         </BaseBox>
       </BaseBox>
     </BaseBox>

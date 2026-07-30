@@ -99,7 +99,7 @@ describe('<Pagination />', () => {
   it('should handle page change with previous/next buttons (uncontrolled)', async () => {
     const user = userEvents.setup();
     const onSelectedPageChange = jest.fn();
-    const { getAllByRole } = renderWithTheme(
+    const { getByLabelText, queryByLabelText } = renderWithTheme(
       <Pagination
         totalPages={10}
         onSelectedPageChange={onSelectedPageChange}
@@ -107,18 +107,15 @@ describe('<Pagination />', () => {
       />,
     );
 
-    const buttons = getAllByRole('button');
-    const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
-    const prevButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Previous Page');
-
-    expect(prevButton).toBeDisabled();
+    // Previous button is not rendered on the first page
+    expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
 
     // Click next button
-    await user.click(nextButton as HTMLButtonElement);
+    await user.click(getByLabelText('Next Page'));
     expect(onSelectedPageChange).toHaveBeenCalledWith({ page: 2 });
 
-    // Click previous button
-    await user.click(prevButton as HTMLButtonElement);
+    // Previous button shows up once we are past the first page
+    await user.click(getByLabelText('Previous Page'));
     expect(onSelectedPageChange).toHaveBeenCalledWith({ page: 1 });
   });
 
@@ -178,8 +175,8 @@ describe('<Pagination />', () => {
     expect(onPageSizeChange).toHaveBeenCalledWith({ pageSize: 25 });
   });
 
-  it('should disable next button on last page', () => {
-    const { getAllByRole } = renderWithTheme(
+  it('should not render next button on last page', () => {
+    const { queryByLabelText } = renderWithTheme(
       <Pagination
         totalPages={10}
         selectedPage={10}
@@ -189,13 +186,12 @@ describe('<Pagination />', () => {
       />,
     );
 
-    const buttons = getAllByRole('button');
-    const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
-    expect(nextButton).toBeDisabled();
+    expect(queryByLabelText('Next Page')).not.toBeInTheDocument();
+    expect(queryByLabelText('Previous Page')).toBeInTheDocument();
   });
 
-  it('should disable previous button on first page', () => {
-    const { getAllByRole } = renderWithTheme(
+  it('should not render previous button on first page', () => {
+    const { queryByLabelText } = renderWithTheme(
       <Pagination
         totalPages={10}
         selectedPage={1}
@@ -205,9 +201,86 @@ describe('<Pagination />', () => {
       />,
     );
 
-    const buttons = getAllByRole('button');
-    const prevButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Previous Page');
-    expect(prevButton).toBeDisabled();
+    expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
+    expect(queryByLabelText('Next Page')).toBeInTheDocument();
+  });
+
+  it('should render both previous and next buttons on a middle page', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={3}
+        selectedPage={2}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
+    );
+
+    expect(queryByLabelText('Previous Page')).toBeInTheDocument();
+    expect(queryByLabelText('Next Page')).toBeInTheDocument();
+  });
+
+  it('should not render anything when all items fit on a single page', () => {
+    const { container } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={5}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+        showLabel
+      />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('should not render the page size picker when all items fit on a single page', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={9}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+      />,
+    );
+
+    expect(queryByLabelText('Select items per page')).not.toBeInTheDocument();
+  });
+
+  it('should keep the page size picker when a larger page size collapses items into one page', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={30}
+        pageSize={50}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+      />,
+    );
+
+    // Switching to a smaller page size would yield multiple pages, so the picker stays
+    expect(queryByLabelText('Select items per page')).toBeInTheDocument();
+    expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
+    expect(queryByLabelText('Next Page')).not.toBeInTheDocument();
+  });
+
+  it('should not render anything when totalPages is 1 and no item count is provided', () => {
+    const { container } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should handle ellipsis clicks', async () => {

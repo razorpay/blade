@@ -88,6 +88,13 @@ export type PaginationProps = {
    * @default 'items / page'
    */
   pageSizeLabel?: string;
+
+  /**
+   * Total number of items being paginated.
+   * When provided, the pagination hides itself entirely if all the items already fit
+   * on a single page at the smallest available page size.
+   */
+  totalItemCount?: number;
 } & DataAnalyticsAttribute &
   TestID &
   StyledPropsBlade;
