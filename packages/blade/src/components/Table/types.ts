@@ -475,13 +475,6 @@ type TablePaginationCommonProps = {
    * @default false
    */
   showLabel?: boolean;
-  /**
-   * Whether to show the Previous button on the first page and the Next button on the last page.
-   * When `false` (default), boundary buttons are hidden instead of rendered in a disabled state.
-   * When `true`, both buttons are always rendered and disabled at their respective boundaries (legacy behaviour).
-   * @default false
-   */
-  showBoundaryButtons?: boolean;
 } & DataAnalyticsAttribute;
 type TablePaginationType = 'client' | 'server';
 

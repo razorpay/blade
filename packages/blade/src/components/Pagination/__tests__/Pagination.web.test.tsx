@@ -90,8 +90,8 @@ describe('<Pagination />', () => {
       />,
     );
     expect(container).toMatchSnapshot();
-    // isDisabled should render both boundary buttons even on page 1
-    expect(queryByLabelText('Previous Page')).toBeInTheDocument();
+    // the boundary rule still applies while disabled: no Previous button on page 1
+    expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
     expect(queryByLabelText('Next Page')).toBeInTheDocument();
     const buttons = getAllByRole('button');
     buttons.forEach((button) => {
@@ -223,56 +223,21 @@ describe('<Pagination />', () => {
     expect(queryByLabelText('Next Page')).toBeInTheDocument();
   });
 
-  it('should render disabled previous button on first page when showBoundaryButtons is true', () => {
+  it('should not render the boundary button on the first page even when disabled', () => {
     const { queryByLabelText } = renderWithTheme(
       <Pagination
         totalPages={10}
         selectedPage={1}
+        isDisabled
         onSelectedPageChange={() => {
           console.log('page changed');
         }}
-        showBoundaryButtons
-      />,
-    );
-
-    const prevButton = queryByLabelText('Previous Page');
-    expect(prevButton).toBeInTheDocument();
-    expect(prevButton).toBeDisabled();
-    expect(queryByLabelText('Next Page')).toBeInTheDocument();
-  });
-
-  it('should render disabled next button on last page when showBoundaryButtons is true', () => {
-    const { queryByLabelText } = renderWithTheme(
-      <Pagination
-        totalPages={10}
-        selectedPage={10}
-        onSelectedPageChange={() => {
-          console.log('page changed');
-        }}
-        showBoundaryButtons
-      />,
-    );
-
-    const nextButton = queryByLabelText('Next Page');
-    expect(nextButton).toBeInTheDocument();
-    expect(nextButton).toBeDisabled();
-    expect(queryByLabelText('Previous Page')).toBeInTheDocument();
-  });
-
-  it('should hide previous button on first page when showBoundaryButtons is false (default)', () => {
-    const { queryByLabelText } = renderWithTheme(
-      <Pagination
-        totalPages={10}
-        selectedPage={1}
-        onSelectedPageChange={() => {
-          console.log('page changed');
-        }}
-        showBoundaryButtons={false}
       />,
     );
 
     expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
     expect(queryByLabelText('Next Page')).toBeInTheDocument();
+    expect(queryByLabelText('Next Page')).toBeDisabled();
   });
 
   it('should handle ellipsis clicks', async () => {

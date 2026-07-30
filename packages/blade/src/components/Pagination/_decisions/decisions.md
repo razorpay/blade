@@ -133,7 +133,12 @@ disabled state: the **previous page button is not rendered** on the first page, 
 button is not rendered** on the last page. A permanently disabled control invites clicks and
 communicates nothing.
 
-`isDisabled` is unaffected — a disabled pagination still renders both buttons in their disabled state.
+This rule is independent of `isDisabled`: the boundary button is not rendered even when the whole
+pagination is disabled, since it could not act in either case. `isDisabled` disables every control
+that *is* rendered, including the opposite navigation button.
+
+The behaviour is not configurable. A control that can never act is never the right thing to render,
+so there is no prop to opt back into the disabled-arrow rendering.
 
 #### Controlled vs Uncontrolled Behavior
 

@@ -165,7 +165,6 @@ const _Pagination = ({
   showLabel = false,
   label,
   isDisabled = false,
-  showBoundaryButtons = false,
   ...rest
 }: PaginationProps): React.ReactElement => {
   // Convert 1-based external page to 0-based internal page
@@ -249,11 +248,6 @@ const _Pagination = ({
   const isFirstPage = internalPage <= 0;
   const isLastPage = internalPage >= totalPages - 1;
 
-  const shouldShowPreviousButton = showBoundaryButtons ? true : !isFirstPage || isDisabled;
-  const shouldShowNextButton = showBoundaryButtons ? true : !isLastPage || isDisabled;
-  const isPreviousButtonDisabled = showBoundaryButtons ? isFirstPage || isDisabled : isDisabled;
-  const isNextButtonDisabled = showBoundaryButtons ? isLastPage || isDisabled : isDisabled;
-
   const paginationButtons = getPaginationButtons({
     currentSelection: internalPage + 1,
     totalPages,
@@ -321,7 +315,7 @@ const _Pagination = ({
           flex={onMobile ? 1 : undefined}
           alignItems="center"
         >
-          {shouldShowPreviousButton && (
+          {!isFirstPage && (
             <Button
               icon={ChevronLeftIcon}
               accessibilityLabel="Previous Page"
@@ -329,7 +323,7 @@ const _Pagination = ({
               onClick={() => {
                 handlePageChange(internalPage - 1);
               }}
-              isDisabled={isPreviousButtonDisabled}
+              isDisabled={isDisabled}
             />
           )}
           {onMobile && (
@@ -431,7 +425,7 @@ const _Pagination = ({
               </PageSelectionButton>
             </BaseBox>
           )}
-          {shouldShowNextButton && (
+          {!isLastPage && (
             <Button
               variant="tertiary"
               icon={ChevronRightIcon}
@@ -439,7 +433,7 @@ const _Pagination = ({
               onClick={() => {
                 handlePageChange(internalPage + 1);
               }}
-              isDisabled={isNextButtonDisabled}
+              isDisabled={isDisabled}
             />
           )}
         </BaseBox>
