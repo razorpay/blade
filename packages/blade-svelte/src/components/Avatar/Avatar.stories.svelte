@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Avatar from './Avatar.svelte';
   import { iconMap } from '../Icons';

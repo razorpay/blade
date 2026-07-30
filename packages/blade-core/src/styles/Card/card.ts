@@ -131,6 +131,91 @@ export const cardSurfaceStyles = cva(styles.cardSurface, {
   },
 });
 
+const CARD_SURFACE_BACKGROUND_COLOR_KEYS: readonly CardBackgroundColor[] = [
+  'surface.background.gray.subtle',
+  'surface.background.gray.moderate',
+  'surface.background.gray.intense',
+  'surface.background.primary.subtle',
+  'surface.background.primary.intense',
+  'surface.background.sea.subtle',
+  'surface.background.sea.intense',
+  'surface.background.cloud.subtle',
+  'surface.background.cloud.intense',
+];
+
+export const CARD_SURFACE_BACKGROUND_UTILITY: Record<CardBackgroundColor, string> = {
+  'surface.background.gray.subtle': utilityClasses['background-surface-gray-subtle'],
+  'surface.background.gray.moderate': utilityClasses['background-surface-gray-moderate'],
+  'surface.background.gray.intense': utilityClasses['background-surface-gray-intense'],
+  'surface.background.primary.subtle':
+    utilityClasses['background-surface-background-primary-subtle'],
+  'surface.background.primary.intense':
+    utilityClasses['background-surface-background-primary-intense'],
+  'surface.background.sea.subtle': utilityClasses['background-surface-background-sea-subtle'],
+  'surface.background.sea.intense': utilityClasses['background-surface-background-sea-intense'],
+  'surface.background.cloud.subtle': utilityClasses['background-surface-background-cloud-subtle'],
+  'surface.background.cloud.intense': utilityClasses['background-surface-background-cloud-intense'],
+};
+
+export function getCardSurfaceBackgroundUtilityClass(backgroundColor: CardBackgroundColor): string {
+  return CARD_SURFACE_BACKGROUND_UTILITY[backgroundColor];
+}
+
+export function isCardBackgroundColor(value: string): value is CardBackgroundColor {
+  return (CARD_SURFACE_BACKGROUND_COLOR_KEYS as readonly string[]).includes(value);
+}
+
+/**
+ * Pulls a {@link CardBackgroundColor} token out of a space-separated class string.
+ */
+export function extractCardBackgroundColorFromClassNames(
+  classNames: string | undefined,
+): {
+  backgroundColor?: CardBackgroundColor;
+  remainingClassNames?: string;
+} {
+  const trimmed = classNames?.trim();
+  if (!trimmed) {
+    return {};
+  }
+
+  const tokens = trimmed.split(/\s+/);
+  const backgroundColor = tokens.find(isCardBackgroundColor);
+
+  if (!backgroundColor) {
+    return { remainingClassNames: trimmed };
+  }
+
+  const remainingClassNames = tokens.filter((token) => token !== backgroundColor).join(' ');
+
+  return {
+    backgroundColor,
+    remainingClassNames: remainingClassNames || undefined,
+  };
+}
+
+export type GetCardSurfaceClassesParams = {
+  type?: CardType;
+  backgroundColor?: CardBackgroundColor;
+  padding?: CardSurfaceVariants['padding'];
+  borderRadius?: CardSurfaceVariants['borderRadius'];
+};
+
+/** Surface class list for {@link CardSurface}: CVA layout, type, and token background utilities. */
+export function getCardSurfaceClasses({
+  type = 'primary',
+  backgroundColor,
+  padding = 'spacing.7',
+  borderRadius = 'medium',
+}: GetCardSurfaceClassesParams): string {
+  return cardSurfaceStyles({
+    type,
+    backgroundColor: getCardBackgroundColor(type, backgroundColor),
+    padding,
+    borderRadius,
+  });
+}
+
 // --- CardHeader ---
 
 export type CardHeaderVariants = {

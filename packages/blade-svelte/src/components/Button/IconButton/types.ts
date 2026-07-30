@@ -1,5 +1,10 @@
 import type { DataAnalyticsAttribute, StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { IconButtonEmphasis, IconButtonSize } from '@razorpay/blade-core/styles';
+import type {
+  IconButtonEmphasis,
+  IconButtonSize,
+  IconButtonSlot,
+  StyleOverride,
+} from '@razorpay/blade-core/styles';
 import type { IconComponent } from '../../Icons/iconMap';
 
 export type { IconButtonEmphasis, IconButtonSize } from '@razorpay/blade-core/styles';
@@ -62,4 +67,9 @@ export interface IconButtonProps extends StyledPropsBlade, DataAnalyticsAttribut
   onTouchEnd?: (event: TouchEvent) => void;
   /** Called when a key is pressed while the IconButton is focused. */
   onKeyDown?: (event: KeyboardEvent) => void;
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.IconButton.styleOverride`;
+   * instance values win on conflicts.
+   */
+  styleOverride?: StyleOverride<IconButtonSlot>;
 }

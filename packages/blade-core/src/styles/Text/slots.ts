@@ -1,0 +1,1 @@
+export type TextSlot = 'root';
