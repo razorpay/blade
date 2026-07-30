@@ -130,6 +130,14 @@ type PaginationProps = PaginationCommonProps & {
    * on a single page at the smallest available page size.
    */
   totalItemCount?: number;
+
+  /**
+   * Whether to keep rendering the pagination even when every item already fits on a
+   * single page. By default the component hides itself in that case.
+   * Set this to `true` to preserve the previous always-render behaviour.
+   * @default false
+   */
+  showOnSinglePage?: boolean;
 };
 ```
 
@@ -143,6 +151,8 @@ disabled state:
   `totalPages <= 1` while the current page size is the smallest one. A larger page size collapsing
   the data into one page (e.g. 30 items at 50 / page) keeps the component visible, because switching
   to a smaller page size would still produce multiple pages.
+  Consumers that need the footer to always render can set `showOnSinglePage` to `true` to opt out of
+  the auto-hide — the label, page size picker and navigation arrows will all stay visible.
 - **The previous page button is not rendered** on the first page, and the **next page button is not
   rendered** on the last page. `isDisabled` is unaffected — a disabled pagination still renders both
   buttons in their disabled state.

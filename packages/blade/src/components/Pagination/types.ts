@@ -95,6 +95,15 @@ export type PaginationProps = {
    * on a single page at the smallest available page size.
    */
   totalItemCount?: number;
+
+  /**
+   * Whether to keep rendering the pagination even when every item already fits on a
+   * single page. By default the component hides itself in that case (see `totalItemCount`).
+   * Set this to `true` to preserve the previous always-render behaviour — the label,
+   * page size picker and navigation arrows will all stay visible.
+   * @default false
+   */
+  showOnSinglePage?: boolean;
 } & DataAnalyticsAttribute &
   TestID &
   StyledPropsBlade;

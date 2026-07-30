@@ -283,6 +283,26 @@ describe('<Pagination />', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
+  it('should render the pagination when showOnSinglePage is true even if all items fit on one page', () => {
+    const { queryByLabelText, getByText } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={5}
+        showOnSinglePage
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+        showLabel
+        label="Showing 1-5 items"
+      />,
+    );
+
+    // The auto-hide is bypassed — the page size picker and label stay visible
+    expect(queryByLabelText('Select items per page')).toBeInTheDocument();
+    expect(getByText('Showing 1-5 items')).toBeInTheDocument();
+  });
+
   it('should handle ellipsis clicks', async () => {
     const user = userEvents.setup();
     const onSelectedPageChange = jest.fn();

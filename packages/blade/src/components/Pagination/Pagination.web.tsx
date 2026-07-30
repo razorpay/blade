@@ -167,6 +167,7 @@ const _Pagination = ({
   label,
   isDisabled = false,
   totalItemCount,
+  showOnSinglePage = false,
   ...rest
 }: PaginationProps): React.ReactElement | null => {
   // Convert 1-based external page to 0-based internal page
@@ -266,7 +267,8 @@ const _Pagination = ({
 
   // On mobile the label and the page size picker are always hidden, so a single page leaves
   // nothing behind but a dead "Showing 1 of 1 pages" string.
-  if (shouldHidePagination || (onMobile && totalPages <= 1)) {
+  // showOnSinglePage lets consumers opt out of the auto-hide and always render the footer.
+  if (!showOnSinglePage && (shouldHidePagination || (onMobile && totalPages <= 1))) {
     return null;
   }
 

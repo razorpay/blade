@@ -475,6 +475,13 @@ type TablePaginationCommonProps = {
    * @default false
    */
   showLabel?: boolean;
+  /**
+   * Whether to keep rendering the pagination footer even when every item already fits on a
+   * single page. By default the footer hides itself in that case. Set this to `true` to
+   * preserve the previous always-render behaviour.
+   * @default false
+   */
+  showOnSinglePage?: boolean;
 } & DataAnalyticsAttribute;
 type TablePaginationType = 'client' | 'server';
 
