@@ -4,24 +4,33 @@ import { within, userEvent, expect, fn } from 'storybook/test';
 import type { Mock } from '@vitest/spy';
 import React from 'react';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
 import type { DatesRangeValue, DateValue } from '../types';
 import { DatePicker as DatePickerComponent } from '../';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 
+dayjs.extend(customParseFormat);
+
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
 type GetByRole = (role: string, options?: { name?: string | RegExp }) => HTMLElement;
 
+const getDisplayedMonth = (getByRole: GetByRole): dayjs.Dayjs =>
+  dayjs((getByRole('button', { name: /Change month/i }).textContent ?? '').trim(), 'MMMM YYYY');
+
 const navigateToMonth = async (targetDate: dayjs.Dayjs, getByRole: GetByRole): Promise<void> => {
-  let currentMonth = dayjs();
-  while (!targetDate.isSame(currentMonth, 'month')) {
+  let iterations = 0;
+  let displayedMonth = getDisplayedMonth(getByRole);
+  while (!targetDate.isSame(displayedMonth, 'month') && iterations < 12) {
+    const goForward = targetDate.isAfter(displayedMonth, 'month');
     // eslint-disable-next-line no-await-in-loop
-    await userEvent.click(getByRole('button', { name: /next/i }));
+    await userEvent.click(getByRole('button', { name: goForward ? /next/i : /previous/i }));
     // eslint-disable-next-line no-await-in-loop
     await sleep(200);
-    currentMonth = currentMonth.add(1, 'month');
+    displayedMonth = getDisplayedMonth(getByRole);
+    iterations += 1;
   }
 };
 
