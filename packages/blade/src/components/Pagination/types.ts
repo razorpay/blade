@@ -84,6 +84,14 @@ export type PaginationProps = {
   isDisabled?: boolean;
 
   /**
+   * Whether to hide the Previous button on the first page and the Next button on the last page.
+   * When `true`, boundary buttons are hidden instead of rendered in a disabled state.
+   * When `false`, both buttons are always rendered and disabled at their respective boundaries (legacy behaviour).
+   * @default true
+   */
+  hideBoundaryButtons?: boolean;
+
+  /**
    * The label to be shown in the page size picker.
    * @default 'items / page'
    */

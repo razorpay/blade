@@ -223,6 +223,58 @@ describe('<Pagination />', () => {
     expect(queryByLabelText('Next Page')).toBeInTheDocument();
   });
 
+  it('should render disabled previous button on first page when hideBoundaryButtons is false', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={10}
+        selectedPage={1}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        hideBoundaryButtons={false}
+      />,
+    );
+
+    const prevButton = queryByLabelText('Previous Page');
+    expect(prevButton).toBeInTheDocument();
+    expect(prevButton).toBeDisabled();
+    expect(queryByLabelText('Next Page')).toBeInTheDocument();
+  });
+
+  it('should render disabled next button on last page when hideBoundaryButtons is false', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={10}
+        selectedPage={10}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        hideBoundaryButtons={false}
+      />,
+    );
+
+    const nextButton = queryByLabelText('Next Page');
+    expect(nextButton).toBeInTheDocument();
+    expect(nextButton).toBeDisabled();
+    expect(queryByLabelText('Previous Page')).toBeInTheDocument();
+  });
+
+  it('should hide previous button on first page when hideBoundaryButtons is true (default)', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={10}
+        selectedPage={1}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        hideBoundaryButtons
+      />,
+    );
+
+    expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
+    expect(queryByLabelText('Next Page')).toBeInTheDocument();
+  });
+
   it('should handle ellipsis clicks', async () => {
     const user = userEvents.setup();
     const onSelectedPageChange = jest.fn();

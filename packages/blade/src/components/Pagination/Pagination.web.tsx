@@ -165,6 +165,7 @@ const _Pagination = ({
   showLabel = false,
   label,
   isDisabled = false,
+  hideBoundaryButtons = true,
   ...rest
 }: PaginationProps): React.ReactElement => {
   // Convert 1-based external page to 0-based internal page
@@ -248,6 +249,11 @@ const _Pagination = ({
   const isFirstPage = internalPage <= 0;
   const isLastPage = internalPage >= totalPages - 1;
 
+  const shouldShowPreviousButton = hideBoundaryButtons ? !isFirstPage || isDisabled : true;
+  const shouldShowNextButton = hideBoundaryButtons ? !isLastPage || isDisabled : true;
+  const isPreviousButtonDisabled = hideBoundaryButtons ? isDisabled : isFirstPage || isDisabled;
+  const isNextButtonDisabled = hideBoundaryButtons ? isDisabled : isLastPage || isDisabled;
+
   const paginationButtons = getPaginationButtons({
     currentSelection: internalPage + 1,
     totalPages,
@@ -315,7 +321,7 @@ const _Pagination = ({
           flex={onMobile ? 1 : undefined}
           alignItems="center"
         >
-          {(!isFirstPage || isDisabled) && (
+          {shouldShowPreviousButton && (
             <Button
               icon={ChevronLeftIcon}
               accessibilityLabel="Previous Page"
@@ -323,7 +329,7 @@ const _Pagination = ({
               onClick={() => {
                 handlePageChange(internalPage - 1);
               }}
-              isDisabled={isDisabled}
+              isDisabled={isPreviousButtonDisabled}
             />
           )}
           {onMobile && (
@@ -425,7 +431,7 @@ const _Pagination = ({
               </PageSelectionButton>
             </BaseBox>
           )}
-          {(!isLastPage || isDisabled) && (
+          {shouldShowNextButton && (
             <Button
               variant="tertiary"
               icon={ChevronRightIcon}
@@ -433,7 +439,7 @@ const _Pagination = ({
               onClick={() => {
                 handlePageChange(internalPage + 1);
               }}
-              isDisabled={isDisabled}
+              isDisabled={isNextButtonDisabled}
             />
           )}
         </BaseBox>

@@ -108,6 +108,11 @@ export default {
       control: 'boolean',
       description: 'Whether the pagination component is disabled.',
     },
+    hideBoundaryButtons: {
+      control: 'boolean',
+      description:
+        'Whether to hide the Previous button on the first page and the Next button on the last page (default: true).',
+    },
   },
   parameters: {
     docs: {
