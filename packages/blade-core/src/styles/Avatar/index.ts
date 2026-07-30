@@ -27,3 +27,4 @@ export type {
   AvatarGroupVariants,
   AvatarDensity,
 } from './avatar';
+export type { AvatarSlot } from './slots';

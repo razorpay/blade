@@ -2,8 +2,10 @@
 .avatar-wrapper {
   display: flex;
   position: relative;
+  overflow: hidden;
   background-color: var(--surface-background-gray-intense);
   outline: var(--border-width-thinner) solid var(--surface-border-gray-subtle);
+  border-radius: var(--avatar-radius, var(--border-radius-max));
 }
 
 /* Size variants for outer wrapper */
@@ -32,34 +34,33 @@
   height: 56px;
 }
 
-/* Shape variants for outer wrapper */
+/* Shape variants — set --avatar-radius consumed by wrapper, button, and img */
 .variant-circle {
-  border-radius: var(--border-radius-max);
+  --avatar-radius: var(--border-radius-max);
 }
 
 .variant-square {
-  /* border-radius applied via size-specific compound classes below */
+  /* --avatar-radius applied via size-specific compound classes below */
 }
 
-/* Square variant border-radius scales with size (matches React avatarBorderRadiusTokens) */
 .square-xsmall {
-  border-radius: var(--border-radius-xsmall);
+  --avatar-radius: var(--border-radius-xsmall);
 }
 
 .square-small {
-  border-radius: var(--border-radius-xsmall);
+  --avatar-radius: var(--border-radius-xsmall);
 }
 
 .square-medium {
-  border-radius: var(--border-radius-small);
+  --avatar-radius: var(--border-radius-small);
 }
 
 .square-large {
-  border-radius: var(--border-radius-small);
+  --avatar-radius: var(--border-radius-small);
 }
 
 .square-xlarge {
-  border-radius: var(--border-radius-medium);
+  --avatar-radius: var(--border-radius-medium);
 }
 
 /* Interactive hover on outer wrapper */
@@ -81,12 +82,14 @@
   background: none;
   cursor: default;
   overflow: hidden;
+  border-radius: var(--avatar-radius, var(--border-radius-max));
 
   & img {
     display: block;
     object-fit: cover;
     width: 100%;
     height: 100%;
+    border-radius: var(--avatar-radius, var(--border-radius-max));
   }
 }
 
@@ -95,104 +98,36 @@
   min-height: 20px;
   height: 20px;
   width: 20px;
-
-  & img {
-    border-radius: var(--border-radius-max);
-  }
 }
 
 .btn-size-small {
   min-height: 28px;
   height: 28px;
   width: 28px;
-
-  & img {
-    border-radius: var(--border-radius-max);
-  }
 }
 
 .btn-size-medium {
   min-height: 36px;
   height: 36px;
   width: 36px;
-
-  & img {
-    border-radius: var(--border-radius-max);
-  }
 }
 
 .btn-size-large {
   min-height: 48px;
   height: 48px;
   width: 48px;
-
-  & img {
-    border-radius: var(--border-radius-max);
-  }
 }
 
 .btn-size-xlarge {
   min-height: 56px;
   height: 56px;
   width: 56px;
-
-  & img {
-    border-radius: var(--border-radius-max);
-  }
 }
 
-/* AvatarButton shape variants */
-.btn-variant-circle {
-  border-radius: var(--border-radius-max);
-
-  & img {
-    border-radius: var(--border-radius-max);
-  }
-}
-
+/* AvatarButton shape variants — inherit --avatar-radius from wrapper */
+.btn-variant-circle,
 .btn-variant-square {
-  /* border-radius applied via size-specific compound classes below */
-}
-
-/* Button square variant border-radius scales with size */
-.btn-square-xsmall {
-  border-radius: var(--border-radius-xsmall);
-
-  & img {
-    border-radius: var(--border-radius-xsmall);
-  }
-}
-
-.btn-square-small {
-  border-radius: var(--border-radius-xsmall);
-
-  & img {
-    border-radius: var(--border-radius-xsmall);
-  }
-}
-
-.btn-square-medium {
-  border-radius: var(--border-radius-small);
-
-  & img {
-    border-radius: var(--border-radius-small);
-  }
-}
-
-.btn-square-large {
-  border-radius: var(--border-radius-small);
-
-  & img {
-    border-radius: var(--border-radius-small);
-  }
-}
-
-.btn-square-xlarge {
-  border-radius: var(--border-radius-medium);
-
-  & img {
-    border-radius: var(--border-radius-medium);
-  }
+  /* radius via --avatar-radius */
 }
 
 /* AvatarButton color variants (background) */
