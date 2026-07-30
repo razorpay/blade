@@ -14,8 +14,12 @@ const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout
 
 type GetByRole = (role: string, options?: { name?: string | RegExp }) => HTMLElement;
 
-const navigateToMonth = async (targetDate: dayjs.Dayjs, getByRole: GetByRole): Promise<void> => {
-  let currentMonth = dayjs();
+const navigateToMonth = async (
+  targetDate: dayjs.Dayjs,
+  getByRole: GetByRole,
+  fromMonth: dayjs.Dayjs = dayjs(),
+): Promise<void> => {
+  let currentMonth = fromMonth;
   while (!targetDate.isSame(currentMonth, 'month')) {
     // eslint-disable-next-line no-await-in-loop
     await userEvent.click(getByRole('button', { name: /next/i }));
@@ -1026,7 +1030,7 @@ DatePickerRangeCalendarToInput.play = async () => {
 
   await navigateToMonth(startDate, getByRole);
   await userEvent.click(getByRole('button', { name: startDate.format('D MMMM YYYY') }));
-  await navigateToMonth(endDate, getByRole);
+  await navigateToMonth(endDate, getByRole, startDate);
   await userEvent.click(getByRole('button', { name: endDate.format('D MMMM YYYY') }));
 
   // Apply the selection
