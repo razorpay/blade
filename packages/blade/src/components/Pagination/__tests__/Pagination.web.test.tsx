@@ -80,7 +80,7 @@ describe('<Pagination />', () => {
   });
 
   it('should render disabled state', () => {
-    const { container, getAllByRole } = renderWithTheme(
+    const { container, getAllByRole, queryByLabelText } = renderWithTheme(
       <Pagination
         totalPages={10}
         onSelectedPageChange={() => {
@@ -90,6 +90,9 @@ describe('<Pagination />', () => {
       />,
     );
     expect(container).toMatchSnapshot();
+    // isDisabled should render both boundary buttons even on page 1
+    expect(queryByLabelText('Previous Page')).toBeInTheDocument();
+    expect(queryByLabelText('Next Page')).toBeInTheDocument();
     const buttons = getAllByRole('button');
     buttons.forEach((button) => {
       expect(button).toBeDisabled();

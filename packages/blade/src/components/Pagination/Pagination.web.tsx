@@ -315,7 +315,7 @@ const _Pagination = ({
           flex={onMobile ? 1 : undefined}
           alignItems="center"
         >
-          {!isFirstPage && (
+          {(!isFirstPage || isDisabled) && (
             <Button
               icon={ChevronLeftIcon}
               accessibilityLabel="Previous Page"
@@ -425,7 +425,7 @@ const _Pagination = ({
               </PageSelectionButton>
             </BaseBox>
           )}
-          {!isLastPage && (
+          {(!isLastPage || isDisabled) && (
             <Button
               variant="tertiary"
               icon={ChevronRightIcon}
