@@ -9,7 +9,6 @@
   import Button from '../Button/Button.svelte';
   import ThemeTokensPlayground from './ThemeTokensPlayground.svelte';
   import ThemeExplorer from './ThemeExplorer.svelte';
-  import CreateThemeFlowExplorer from './CreateThemeFlowExplorer.svelte';
 
   const popPayTheme = createTheme({
     brandColor: '#F56651',
@@ -137,17 +136,6 @@
 <Story name="Theme Explorer" asChild parameters={{ controls: { disable: true } }}>
   <div class="explorer-story">
     <ThemeExplorer />
-  </div>
-</Story>
-
-<!-- createTheme flow — palette generation, shade usage, semantic token mapping (design review) -->
-<Story
-  name="createTheme Flow"
-  asChild
-  parameters={{ controls: { disable: true } }}
->
-  <div class="explorer-story">
-    <CreateThemeFlowExplorer />
   </div>
 </Story>
 

@@ -6,6 +6,7 @@
   import { onDestroy, onMount, untrack } from 'svelte';
   import {
     cssVariablesToInlineStyle,
+    isBrowser,
     themeToCSSVariables,
   } from '@razorpay/blade-core/utils';
   import type { ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
@@ -16,6 +17,7 @@
   import { colorSchemeNamesInput, isValidColorSchemeInput } from './getColorScheme';
   import { resolveBladeTheme } from './resolveBladeTheme';
   import type { BladeProviderProps, BladeThemeContextValue } from './types';
+  import { subscribeToViewportWidth } from '../../utils/subscribeToViewportWidth';
 
   let {
     themeTokens,
@@ -43,8 +45,8 @@
 
   /** Local override from setColorScheme; cleared when colorScheme prop changes. */
   let colorSchemeOverride = $state<ColorSchemeNamesInput | undefined>(undefined);
-  let viewportWidth = $state(typeof window !== 'undefined' ? window.innerWidth : 0);
-  let systemPreferenceVersion = $state(0);
+  let viewportWidth = $state(isBrowser() ? window.innerWidth : 0);
+  let systemPrefersDark = $state(false);
 
   $effect(() => {
     // Track prop; clear local override when parent drives a new scheme
@@ -55,14 +57,14 @@
   });
 
   const colorSchemeInput = $derived(colorSchemeOverride ?? colorSchemeProp);
-  const resolved = $derived.by(() => {
-    void systemPreferenceVersion;
-    return resolveBladeTheme({
+  const resolved = $derived.by(() =>
+    resolveBladeTheme({
       themeTokens,
       colorSchemeInput,
       viewportWidth,
-    });
-  });
+      systemPrefersDark,
+    }),
+  );
   const colorScheme = $derived(resolved.colorScheme);
   const platform = $derived(resolved.platform);
   const theme = $derived(resolved.theme);
@@ -112,31 +114,20 @@
   });
 
   onMount(() => {
-    viewportWidth = window.innerWidth;
-    let resizeRaf = 0;
-    const onResize = (): void => {
-      if (resizeRaf) {
-        return;
-      }
-      resizeRaf = requestAnimationFrame(() => {
-        viewportWidth = window.innerWidth;
-        resizeRaf = 0;
-      });
-    };
-    window.addEventListener('resize', onResize);
+    const unsubscribeViewport = subscribeToViewportWidth((width) => {
+      viewportWidth = width;
+    });
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const onSystemChange = (): void => {
-      systemPreferenceVersion += 1;
+    const syncSystemPreference = (): void => {
+      systemPrefersDark = mediaQuery.matches;
     };
-    mediaQuery.addEventListener('change', onSystemChange);
+    syncSystemPreference();
+    mediaQuery.addEventListener('change', syncSystemPreference);
 
     return () => {
-      if (resizeRaf) {
-        cancelAnimationFrame(resizeRaf);
-      }
-      window.removeEventListener('resize', onResize);
-      mediaQuery.removeEventListener('change', onSystemChange);
+      unsubscribeViewport();
+      mediaQuery.removeEventListener('change', syncSystemPreference);
     };
   });
 

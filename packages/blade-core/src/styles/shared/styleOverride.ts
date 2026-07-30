@@ -23,13 +23,12 @@
  * **Typography / Amount:** slot class on wrapper or `className`;
  * inner text/icon uses `currentColor` when that slot override is set so token color classes do not win.
  *
- * **Card `surface` slot:** include a {@link CardBackgroundColor} token key (e.g.
- * `surface.background.primary.subtle`) in the class string to apply fill through
- * {@link getCardSurfaceClassNames} — same CVA path as `backgroundColor` on `variant="theme"`.
- * Arbitrary classes (e.g. layout) can follow the token in the same string. Raw `background-color`
- * utilities do not replace elevation `background-image`; use a token key or `variant="secondary"`.
+ * **Card `root` — border ring:** elevated surfaces draw the stroke as
+ * `box-shadow: inset … var(--interactive-border-gray-disabled)`. Repoint that token on `root`
+ * (inherited by the surface) instead of painting `border` or `box-shadow` on `root` directly.
+ * Use `variant` and `backgroundColor` for surface fill; `secondary` has no border ring.
  *
- * **Accordion `graySurface` slot:** with `hasGrayBody`, same {@link CardBackgroundColor} token keys
+ * **Accordion `wrapper` slot:** with `hasGrayBody`, {@link CardBackgroundColor} token keys
  * route through {@link getAccordionGraySurfaceClassNames} (Blade background utility). **`wrapper`**
  * slot targets the filled outer shell; token adds utility fill but `.filled` gradients remain unless
  * you add `background-image: none` (and optionally tame `box-shadow`) in the same string.

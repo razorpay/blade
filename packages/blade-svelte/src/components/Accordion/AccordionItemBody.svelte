@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { metaAttribute, MetaConstants, cx } from '@razorpay/blade-core/utils';
-  import { getAccordionGraySurfaceClassNames, getAccordionTemplateClasses } from '@razorpay/blade-core/styles';
+  import { getAccordionTemplateClasses } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
   import CollapsibleBody from '../Collapsible/CollapsibleBody.svelte';
   import { getAccordionContext, getAccordionItemContext } from './context';
@@ -25,11 +25,10 @@
   );
 
   const grayWrapperClass = $derived(
-    getAccordionGraySurfaceClassNames({
-      isGrayBody,
-      isLastItem,
-      styleOverrideGraySurface: slotOverride?.graySurface,
-    }),
+    cx(
+      isGrayBody ? templateClasses.collapsibleContentGray : '',
+      isGrayBody && isLastItem ? templateClasses.collapsibleContentGrayLast : '',
+    ),
   );
 
   const bodyClass = $derived(

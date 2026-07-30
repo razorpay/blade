@@ -9,5 +9,8 @@ import type { StyleOverride } from '../styles/shared/styleOverride';
 export function mergeStyleOverride<Slot extends string>(
   ...overrides: Array<StyleOverride<Slot> | undefined>
 ): StyleOverride<Slot> {
-  return Object.assign({}, ...overrides.filter(Boolean));
+  return Object.assign(
+    {},
+    ...overrides.filter((override): override is StyleOverride<Slot> => override != null),
+  );
 }

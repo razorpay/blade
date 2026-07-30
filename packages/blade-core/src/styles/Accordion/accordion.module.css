@@ -45,6 +45,8 @@
 }
 
 /* Dark theme overrides for filled variant.
+ * Legacy `body[data-theme='dark']` is Blade's React provider hook (deprecated).
+ * Prefer scoped `[data-blade-color-scheme='dark']` on BladeProvider subtrees.
  * `:root` prefix equalizes specificity between legacy and scoped selectors. */
 :root body[data-theme='dark'] .filled,
 :root [data-blade-color-scheme='dark'] .filled {

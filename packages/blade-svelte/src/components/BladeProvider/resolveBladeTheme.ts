@@ -15,16 +15,18 @@ export const resolveBladeTheme = ({
   themeTokens,
   colorSchemeInput,
   viewportWidth,
+  systemPrefersDark,
 }: {
   themeTokens: ThemeTokens;
   colorSchemeInput: ColorSchemeNamesInput;
   viewportWidth?: number;
+  systemPrefersDark?: boolean;
 }): {
   theme: Theme;
   colorScheme: ColorSchemeNames;
   platform: TypographyPlatforms;
 } => {
-  const colorScheme = getColorScheme(colorSchemeInput);
+  const colorScheme = getColorScheme(colorSchemeInput, systemPrefersDark);
   const platform = getTypographyPlatform(themeTokens.breakpoints, viewportWidth);
   const onColorMode = colorScheme === 'dark' ? 'onDark' : 'onLight';
 

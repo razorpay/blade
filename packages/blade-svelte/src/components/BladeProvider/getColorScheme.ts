@@ -1,24 +1,26 @@
 import type { ColorSchemeNames, ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
+import { isBrowser } from '@razorpay/blade-core/utils';
 
 const colorSchemeNamesInput: ColorSchemeNamesInput[] = ['light', 'dark', 'system'];
 
 /**
  * Resolve a color scheme input to a concrete light/dark value.
- * `system` uses `prefers-color-scheme` when available.
+ * `system` uses `prefers-color-scheme` when available, or `systemPrefersDark` when passed
+ * (e.g. from a `matchMedia` listener in BladeProvider).
  */
-export const getColorScheme = (colorScheme: ColorSchemeNamesInput = 'light'): ColorSchemeNames => {
+export const getColorScheme = (
+  colorScheme: ColorSchemeNamesInput = 'light',
+  systemPrefersDark?: boolean,
+): ColorSchemeNames => {
   if (colorScheme === 'light' || colorScheme === 'dark') {
     return colorScheme;
   }
 
-  const supportsMatchMedia =
-    typeof window !== 'undefined' && typeof window.matchMedia === 'function';
+  if (systemPrefersDark != null) {
+    return systemPrefersDark ? 'dark' : 'light';
+  }
 
-  if (
-    colorScheme === 'system' &&
-    supportsMatchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  ) {
+  if (isBrowser() && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     return 'dark';
   }
 

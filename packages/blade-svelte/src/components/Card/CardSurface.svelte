@@ -16,7 +16,6 @@
     overflow,
     overflowX,
     overflowY,
-    styleOverrideSurface,
   }: {
     children: Snippet;
     type?: CardType;
@@ -28,7 +27,6 @@
     overflow?: OverflowValue;
     overflowX?: OverflowValue;
     overflowY?: OverflowValue;
-    styleOverrideSurface?: string;
   } = $props();
 
   const surfaceClasses = $derived(
@@ -37,7 +35,6 @@
       backgroundColor,
       padding,
       borderRadius,
-      styleOverrideSurface,
     }),
   );
 </script>

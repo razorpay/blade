@@ -6,68 +6,35 @@ import {
 } from './card';
 
 describe('getCardSurfaceClassNames', () => {
-  it('applies theme backgroundColor through CVA when surface override uses a token key', () => {
-    const fromProp = getCardSurfaceClassNames({
-      type: 'theme',
-      backgroundColor: 'surface.background.cloud.subtle',
-      padding: 'spacing.7',
-      borderRadius: 'medium',
-    });
-
-    const fromStyleOverride = getCardSurfaceClassNames({
-      type: 'theme',
-      padding: 'spacing.7',
-      borderRadius: 'medium',
-      styleOverrideSurface: 'surface.background.cloud.subtle',
-    });
-
-    expect(fromStyleOverride).toBe(fromProp);
-  });
-
-  it('lets surface override token beat the backgroundColor prop', () => {
+  it('applies theme backgroundColor through CVA', () => {
     const classes = getCardSurfaceClassNames({
       type: 'theme',
       backgroundColor: 'surface.background.cloud.subtle',
-      styleOverrideSurface: 'surface.background.primary.intense',
+      padding: 'spacing.7',
+      borderRadius: 'medium',
     });
 
-    const propOnly = getCardSurfaceClassNames({
-      type: 'theme',
-      backgroundColor: 'surface.background.primary.intense',
-    });
-
-    expect(classes).toBe(propOnly);
+    expect(classes).toContain('_background-surface-background-cloud-subtle');
   });
 
-  it('can replace primary default fill via surface token without changing variant type', () => {
-    const defaultPrimary = getCardBackgroundColor('primary', undefined);
-    const overridden = getCardSurfaceClassNames({
-      type: 'primary',
-      styleOverrideSurface: 'surface.background.primary.subtle',
-    });
-    const explicitToken = getCardSurfaceClassNames({
-      type: 'primary',
-      styleOverrideSurface: 'surface.background.primary.subtle',
-    });
+  it('uses variant-owned fill for primary and secondary', () => {
+    const primary = getCardSurfaceClassNames({ type: 'primary' });
+    const secondary = getCardSurfaceClassNames({ type: 'secondary' });
 
-    expect(defaultPrimary).toBe('surface.background.gray.intense');
-    expect(overridden).toBe(explicitToken);
-    expect(overridden).toContain('_background-surface-background-primary-subtle');
+    expect(primary).toContain('_background-surface-gray-intense');
+    expect(secondary).toContain('_background-surface-gray-moderate');
+    expect(getCardBackgroundColor('primary', undefined)).toBe('surface.background.gray.intense');
+    expect(getCardBackgroundColor('secondary', undefined)).toBe('surface.background.gray.moderate');
   });
+});
 
-  it('keeps non-token classes on the surface after CVA', () => {
+describe('extractCardBackgroundColorFromClassNames', () => {
+  it('splits token keys from remaining classes', () => {
     const { backgroundColor, remainingClassNames } = extractCardBackgroundColorFromClassNames(
       'surface.background.sea.subtle checkout-card-surface',
     );
 
     expect(backgroundColor).toBe('surface.background.sea.subtle');
     expect(remainingClassNames).toBe('checkout-card-surface');
-
-    const classes = getCardSurfaceClassNames({
-      type: 'theme',
-      styleOverrideSurface: 'surface.background.sea.subtle checkout-card-surface',
-    });
-
-    expect(classes).toContain('checkout-card-surface');
   });
 });

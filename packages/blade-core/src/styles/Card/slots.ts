@@ -1,1 +1,1 @@
-export type CardSlot = 'root' | 'surface';
+export type CardSlot = 'root';

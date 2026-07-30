@@ -128,37 +128,6 @@ export type AccordionButtonBorderVariants = {
   isExpanded?: boolean;
 };
 
-export type GetAccordionGraySurfaceClassNamesParams = {
-  isGrayBody: boolean;
-  isLastItem: boolean;
-  styleOverrideGraySurface?: string;
-};
-
-/**
- * Gray accordion body wrapper classes. When `styleOverride.graySurface` includes a
- * {@link CardBackgroundColor} token, fill uses the same Blade background utility as Card
- * instead of the default `.collapsibleContentGray` module class.
- */
-export function getAccordionGraySurfaceClassNames({
-  isGrayBody,
-  isLastItem,
-  styleOverrideGraySurface,
-}: GetAccordionGraySurfaceClassNamesParams): string {
-  if (!isGrayBody) {
-    return cx(styleOverrideGraySurface);
-  }
-
-  const { backgroundColor, remainingClassNames } = extractCardBackgroundColorFromClassNames(
-    styleOverrideGraySurface,
-  );
-
-  const fillClass = backgroundColor
-    ? getCardSurfaceBackgroundUtilityClass(backgroundColor)
-    : styles.collapsibleContentGray;
-
-  return cx(fillClass, isLastItem ? styles.collapsibleContentGrayLast : '', remainingClassNames);
-}
-
 export type GetAccordionWrapperClassNamesParams = {
   variant?: 'filled' | 'transparent';
   styleOverrideWrapper?: string;

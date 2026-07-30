@@ -153,7 +153,6 @@ export type { SwitchSize, SwitchVariants } from './Switch';
 export {
   getAccordionWrapperClasses,
   getAccordionWrapperClassNames,
-  getAccordionGraySurfaceClassNames,
   getAccordionButtonClasses,
   getAccordionButtonBorderClasses,
   getAccordionTemplateClasses,

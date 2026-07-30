@@ -1,5 +1,4 @@
 import { cva } from 'class-variance-authority';
-import { cx } from '../../utils/cx';
 import { utilityClasses } from '../utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './card.module.css';
@@ -168,8 +167,7 @@ export function isCardBackgroundColor(value: string): value is CardBackgroundCol
 
 /**
  * Pulls a {@link CardBackgroundColor} token out of a space-separated class string.
- * Used by `styleOverride.surface` so token keys route through {@link cardSurfaceStyles}
- * the same way as the `backgroundColor` prop on `variant="theme"`.
+ * Used by Accordion `styleOverride.wrapper` for background utility routing.
  */
 export function extractCardBackgroundColorFromClassNames(
   classNames: string | undefined,
@@ -202,41 +200,21 @@ export type GetCardSurfaceClassNamesParams = {
   backgroundColor?: CardBackgroundColor;
   padding?: CardSurfaceVariants['padding'];
   borderRadius?: CardSurfaceVariants['borderRadius'];
-  styleOverrideSurface?: string;
 };
 
-/**
- * Surface class list for {@link CardSurface}: CVA (layout, type, token background utilities)
- * plus any non-token classes from `styleOverride.surface`.
- *
- * When `styleOverride.surface` includes a {@link CardBackgroundColor} token (e.g.
- * `surface.background.primary.subtle`), that token wins over the `backgroundColor` prop and
- * is applied via the same CVA `backgroundColor` variant as `variant="theme"`.
- */
+/** Surface class list for {@link CardSurface}: CVA layout, type, and token background utilities. */
 export function getCardSurfaceClassNames({
   type = 'primary',
   backgroundColor,
   padding = 'spacing.7',
   borderRadius = 'medium',
-  styleOverrideSurface,
 }: GetCardSurfaceClassNamesParams): string {
-  const {
-    backgroundColor: overrideBackgroundColor,
-    remainingClassNames,
-  } = extractCardBackgroundColorFromClassNames(styleOverrideSurface);
-
-  const effectiveBackgroundColor =
-    overrideBackgroundColor ?? getCardBackgroundColor(type, backgroundColor);
-
-  return cx(
-    cardSurfaceStyles({
-      type,
-      backgroundColor: effectiveBackgroundColor,
-      padding,
-      borderRadius,
-    }),
-    remainingClassNames,
-  );
+  return cardSurfaceStyles({
+    type,
+    backgroundColor: getCardBackgroundColor(type, backgroundColor),
+    padding,
+    borderRadius,
+  });
 }
 
 // --- CardHeader ---

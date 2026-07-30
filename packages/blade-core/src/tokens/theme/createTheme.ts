@@ -366,7 +366,7 @@ export const createTheme = ({
       ...(borderRadius
         ? {
             border: {
-              radius: borderRadius as Partial<Border['radius']>,
+              radius: borderRadius,
             },
           }
         : {}),

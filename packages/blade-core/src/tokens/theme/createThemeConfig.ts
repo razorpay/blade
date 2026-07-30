@@ -44,7 +44,7 @@ export type CreateThemeSurfaceOverride = {
 
 export type CreateThemeConfig = {
   brandColor: ColorInput;
-  borderRadius?: Partial<Record<keyof Border['radius'], number | string>>;
+  borderRadius?: Partial<Border['radius']>;
   fontFamily?: CreateThemeFontFamilyOverride;
   /**
    * `@font-face` rules emitted as `fontFaceCss` on the result.

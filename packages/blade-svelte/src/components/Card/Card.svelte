@@ -128,7 +128,6 @@
     {overflow}
     {overflowX}
     {overflowY}
-    styleOverrideSurface={resolvedStyleOverride?.surface}
   >
     {@render linkOverlay()}
     {#if cardContent}

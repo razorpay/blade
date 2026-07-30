@@ -73,9 +73,8 @@ export type AccordionProps = {
    * Per-slot classname overrides. Merged under provider `componentConfig.Accordion.styleOverride`;
    * instance values win on conflicts.
    *
-   * **`graySurface`:** with `hasGrayBody`, pass a {@link CardBackgroundColor} token for the same
-   * Blade background utility as Card. **`wrapper`:** targets the filled card shell (gradients /
-   * shadow); clear `background-image` in extra classes when replacing fill.
+   * **`wrapper`:** targets the filled card shell (gradients / shadow); clear `background-image`
+   * in extra classes when replacing fill.
    */
   styleOverride?: StyleOverride<AccordionSlot>;
 

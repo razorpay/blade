@@ -12,10 +12,16 @@ import type { BladeComponentConfig } from './types';
 
 describe('getColorScheme', () => {
   const originalWindow = globalThis.window;
+  const originalDocument = globalThis.document;
 
   afterEach(() => {
     Object.defineProperty(globalThis, 'window', {
       value: originalWindow,
+      configurable: true,
+      writable: true,
+    });
+    Object.defineProperty(globalThis, 'document', {
+      value: originalDocument,
       configurable: true,
       writable: true,
     });
@@ -24,6 +30,11 @@ describe('getColorScheme', () => {
   it('returns light and dark as-is', () => {
     expect(getColorScheme('light')).toBe('light');
     expect(getColorScheme('dark')).toBe('dark');
+  });
+
+  it('resolves system via explicit systemPrefersDark', () => {
+    expect(getColorScheme('system', true)).toBe('dark');
+    expect(getColorScheme('system', false)).toBe('light');
   });
 
   it('resolves system via prefers-color-scheme when window exists', () => {
@@ -39,12 +50,22 @@ describe('getColorScheme', () => {
       configurable: true,
       writable: true,
     });
+    Object.defineProperty(globalThis, 'document', {
+      value: {},
+      configurable: true,
+      writable: true,
+    });
 
     expect(getColorScheme('system')).toBe('dark');
   });
 
   it('falls back to light for system without matchMedia', () => {
     Object.defineProperty(globalThis, 'window', {
+      value: undefined,
+      configurable: true,
+      writable: true,
+    });
+    Object.defineProperty(globalThis, 'document', {
       value: undefined,
       configurable: true,
       writable: true,

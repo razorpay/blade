@@ -141,10 +141,9 @@ type CardBaseProps = {
   testID?: string;
   /**
    * Per-slot classname overrides. Merged under provider `componentConfig.Card.styleOverride`;
-   * instance values win on conflicts.
-   *
-   * **`surface`:** pass a {@link CardBackgroundColor} token key (space-separated with other classes)
-   * to apply fill via the same CVA utility as `backgroundColor` on `variant="theme"`.
+   * instance values win on conflicts. Use `variant` and `backgroundColor` for surface fill.
+   * **`root`:** repoint `--interactive-border-gray-disabled` on the wrapper to tint the inset
+   * border ring on elevated surfaces (`primary`, `theme`).
    */
   styleOverride?: StyleOverride<CardSlot>;
   /**
