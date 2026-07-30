@@ -17,7 +17,9 @@ type GetByRole = (role: string, options?: { name?: string | RegExp }) => HTMLEle
 const navigateToMonth = async (targetDate: dayjs.Dayjs, getByRole: GetByRole): Promise<void> => {
   let currentMonth = dayjs();
   while (!targetDate.isSame(currentMonth, 'month')) {
+    // eslint-disable-next-line no-await-in-loop
     await userEvent.click(getByRole('button', { name: /next/i }));
+    // eslint-disable-next-line no-await-in-loop
     await sleep(200);
     currentMonth = currentMonth.add(1, 'month');
   }
