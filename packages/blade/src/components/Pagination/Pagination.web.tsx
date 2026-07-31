@@ -206,8 +206,14 @@ const _Pagination = ({
       return controlledTotalPages;
     }
 
+    // When only an item count is available, derive the page count from it so that
+    // the hide-on-single-page decision and the page navigation stay consistent.
+    if (!isUndefined(totalItemCount)) {
+      return Math.ceil(totalItemCount / internalPageSize);
+    }
+
     return 1;
-  }, [controlledTotalPages]);
+  }, [controlledTotalPages, totalItemCount, internalPageSize]);
 
   const [currentEllipseHover, setCurrentEllipseHover] = useState<'start' | 'end' | undefined>(
     undefined,

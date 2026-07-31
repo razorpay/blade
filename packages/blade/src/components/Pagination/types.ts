@@ -93,6 +93,11 @@ export type PaginationProps = {
    * Total number of items being paginated.
    * When provided, the pagination hides itself entirely if all the items already fit
    * on a single page at the smallest available page size.
+   *
+   * When `totalPages` is not explicitly provided, the page count is derived from this
+   * value (`Math.ceil(totalItemCount / pageSize)`) so the two props stay consistent.
+   * If you provide both, keep them consistent: `totalItemCount` drives the hide
+   * decision while `totalPages` drives navigation.
    */
   totalItemCount?: number;
 

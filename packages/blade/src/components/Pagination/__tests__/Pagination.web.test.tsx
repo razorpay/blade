@@ -258,6 +258,23 @@ describe('<Pagination />', () => {
     expect(queryByLabelText('Select items per page')).toBeInTheDocument();
   });
 
+  it('should derive totalPages from totalItemCount when totalPages is not provided', () => {
+    const { getAllByRole } = renderWithTheme(
+      <Pagination
+        totalItemCount={50}
+        pageSize={10}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
+    );
+
+    // 50 items at 10/page = 5 pages, so the next button is enabled on the first page
+    const buttons = getAllByRole('button');
+    const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
+    expect(nextButton).not.toBeDisabled();
+  });
+
   it('should not render anything when totalPages is 1 and no item count is provided', () => {
     const { container } = renderWithTheme(
       <Pagination
