@@ -5,6 +5,16 @@ import React, { useState } from 'react';
 import type { PaginationProps } from './types';
 import { Pagination as PaginationComponent } from './Pagination';
 import { Box } from '~components/Box';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableHeaderRow,
+  TablePagination,
+  TableRow,
+} from '~components/Table';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -222,6 +232,83 @@ export const WithFewItems: StoryFn<typeof PaginationComponent> = () => {
   return <FewItemsExample />;
 };
 WithFewItems.storyName = 'Hidden When All Items Fit On One Page';
+
+type PaymentItem = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  status: string;
+};
+
+const paymentNodes: PaymentItem[] = Array.from({ length: 12 }, (_, index) => ({
+  id: (index + 1).toString(),
+  paymentId: `rzp${(index + 1).toString().padStart(4, '0')}`,
+  amount: (index + 1) * 1000,
+  status: index % 2 === 0 ? 'Completed' : 'Pending',
+}));
+
+const PaginatedTable = ({ rowCount }: { rowCount: number }): React.ReactElement => {
+  return (
+    <Table
+      data={{ nodes: paymentNodes.slice(0, rowCount) }}
+      pagination={
+        <TablePagination
+          onPageChange={({ page }) => console.log('Page changed:', page)}
+          onPageSizeChange={({ pageSize }) => console.log('Page size changed:', pageSize)}
+          defaultPageSize={10}
+          showPageSizePicker
+          showPageNumberSelector
+        />
+      }
+    >
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+              <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+              <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+          <TableBody>
+            {tableData.map((tableItem, index) => (
+              <TableRow key={index} item={tableItem}>
+                <TableCell>{tableItem.paymentId}</TableCell>
+                <TableCell>{tableItem.amount}</TableCell>
+                <TableCell>{tableItem.status}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </Table>
+  );
+};
+
+const TableWithFewRowsExample = (): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.7" padding="spacing.4">
+      <Box>
+        <Text marginBottom="spacing.4">
+          5 rows — everything fits on one page, so the table renders its rows but no pagination
+          footer at all.
+        </Text>
+        <PaginatedTable rowCount={5} />
+      </Box>
+      <Box>
+        <Text marginBottom="spacing.4">
+          12 rows — more than one page at 10 rows / page, so the pagination footer stays.
+        </Text>
+        <PaginatedTable rowCount={12} />
+      </Box>
+    </Box>
+  );
+};
+
+export const TableWithFewRows: StoryFn<typeof PaginationComponent> = () => {
+  return <TableWithFewRowsExample />;
+};
+TableWithFewRows.storyName = 'Hidden In A Table With Few Rows';
 
 export const Disabled = PaginationTemplate.bind({});
 Disabled.args = {
