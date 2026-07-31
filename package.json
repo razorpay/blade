@@ -47,7 +47,9 @@
     "generate-docs-lockfile": "node packages/blade/scripts/generateDocsLockFile.mjs",
     "aicodemod:serve": "node packages/blade/codemods/aicodemod/server.mjs",
     "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds",
-    "ci:codesandbox": "yarn install --ignore-engines"
+    "ci:codesandbox": "yarn install --ignore-engines",
+    "ci:codesandbox:install": "yarn install --ignore-engines --ignore-scripts",
+    "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core && yarn build:blade-svelte"
   },
   "devDependencies": {
     "@babel/core": "7.21.8",
