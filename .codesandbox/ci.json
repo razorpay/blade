@@ -1,9 +1,9 @@
 {
   "node": "20",
-  "installCommand": "ci:codesandbox",
+  "installCommand": "yarn install --ignore-engines --ignore-scripts",
   "packages": ["packages/blade", "packages/blade-core", "packages/blade-svelte"],
-  "//": "we don't want to build since post install and prepublish our build automatically runs",
-  "buildCommand": false,
+  "//": "build packages explicitly in dependency order (blade-core before blade-svelte) since prepare scripts can fail in CI",
+  "buildCommand": "yarn build:blade && yarn build:blade-core && yarn build:blade-svelte",
   "sandboxes": ["/packages/examples/basic/"],
   "silent": true
 }
