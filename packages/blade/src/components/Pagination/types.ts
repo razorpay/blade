@@ -95,6 +95,15 @@ export type PaginationProps = {
    * on a single page at the smallest available page size.
    */
   totalItemCount?: number;
+
+  /**
+   * Whether to always render the pagination even when all items fit on a single page.
+   * By default the pagination hides itself when there is nothing to navigate or pick,
+   * which is a behaviour change from the previous always-render behaviour.
+   * Set this to `true` to opt back in to the old always-render behaviour.
+   * @default false
+   */
+  showOnSinglePage?: boolean;
 } & DataAnalyticsAttribute &
   TestID &
   StyledPropsBlade;

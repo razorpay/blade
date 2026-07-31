@@ -123,6 +123,11 @@ export default {
       description:
         'Total number of items being paginated. When all the items fit on a single page at the smallest page size, the pagination hides itself.',
     },
+    showOnSinglePage: {
+      control: 'boolean',
+      description:
+        'Whether to always render the pagination even when all items fit on a single page. Defaults to false (pagination hides).',
+    },
   },
   parameters: {
     docs: {
@@ -232,6 +237,32 @@ export const WithFewItems: StoryFn<typeof PaginationComponent> = () => {
   return <FewItemsExample />;
 };
 WithFewItems.storyName = 'Hidden When All Items Fit On One Page';
+
+const ShowOnSinglePageExample = (): React.ReactElement => {
+  return (
+    <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
+      <Text marginBottom="spacing.4">
+        With only 5 items, everything fits on a single page. Normally the pagination would hide, but
+        showOnSinglePage forces it to always render — useful for consistent layout during loading
+        states.
+      </Text>
+      <PaginationComponent
+        totalPages={1}
+        totalItemCount={5}
+        showOnSinglePage
+        onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
+        showPageSizePicker
+        showPageNumberSelector
+        showLabel
+      />
+    </Box>
+  );
+};
+
+export const WithShowOnSinglePage: StoryFn<typeof PaginationComponent> = () => {
+  return <ShowOnSinglePageExample />;
+};
+WithShowOnSinglePage.storyName = 'Always Render With showOnSinglePage';
 
 type PaymentItem = {
   id: string;

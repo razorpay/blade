@@ -271,6 +271,38 @@ describe('<Pagination />', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
+  it('should render when showOnSinglePage is true even if all items fit on one page', () => {
+    const { container, getByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={5}
+        showOnSinglePage
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+        showLabel
+      />,
+    );
+
+    expect(container).not.toBeEmptyDOMElement();
+    expect(getByLabelText('Select items per page')).toBeInTheDocument();
+  });
+
+  it('should render when showOnSinglePage is true even if totalPages is 1 and no item count is provided', () => {
+    const { container } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        showOnSinglePage
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
+    );
+
+    expect(container).not.toBeEmptyDOMElement();
+  });
+
   it('should handle ellipsis clicks', async () => {
     const user = userEvents.setup();
     const onSelectedPageChange = jest.fn();

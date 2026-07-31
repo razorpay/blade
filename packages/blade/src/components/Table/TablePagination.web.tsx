@@ -18,6 +18,7 @@ const _TablePagination = ({
   showLabel,
   label,
   totalItemCount,
+  showOnSinglePage = false,
   paginationType = 'client',
   ...rest
 }: TablePaginationProps): React.ReactElement => {
@@ -159,6 +160,7 @@ const _TablePagination = ({
       showPageSizePicker={showPageSizePicker}
       showPageNumberSelector={showPageNumberSelector}
       showLabel={showLabel}
+      showOnSinglePage={showOnSinglePage}
       label={defaultLabel}
       pageSizeLabel="rows / page"
       {...rest}
