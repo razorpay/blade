@@ -641,7 +641,83 @@ const _Table = <Item,>({
               </StyledSkeletonRow>
             ))}
           </BaseBox>
+        ) : hasPagination ? (
+          // When pagination is present, wrap the table content in its own positioned
+          // container so RefreshWrapper is scoped to the table area only. Pagination
+          // sits outside that container as a sibling, remaining visible and interactive
+          // even while the overlay is active.
+          //
+          // Two CSS issues are addressed here:
+          // 1. z-index stacking context: inner BaseBox gets zIndex={0} so it creates
+          //    its own stacking context. Without this, RefreshWrapper's z-index would
+          //    participate in the outer context and paint above the pagination sibling.
+          // 2. height resolution: using top/right/bottom/left (inset) instead of
+          //    height:"100%" because percentage heights require an explicit height on
+          //    the containing block. Inset positioning works regardless.
+          <BaseBox
+            flex={1}
+            display="flex"
+            flexDirection="column"
+            {...getStyledProps(rest)}
+            {...metaAttribute({ name: MetaConstants.Table })}
+            width={isVirtualized ? `100%` : undefined}
+            {...makeAnalyticsAttribute(rest)}
+          >
+            <BaseBox flex={1} position="relative" zIndex={0}>
+              {isRefreshSpinnerMounted && (
+                <RefreshWrapper
+                  position="absolute"
+                  top="0px"
+                  right="0px"
+                  bottom="0px"
+                  left="0px"
+                  zIndex={refreshWrapperZIndex}
+                  backgroundColor="overlay.background.subtle"
+                  justifyContent="center"
+                  alignItems="center"
+                  display="flex"
+                  isRefreshSpinnerEntering={isRefreshSpinnerEntering}
+                  isRefreshSpinnerExiting={isRefreshSpinnerExiting}
+                  isRefreshSpinnerVisible={isRefreshSpinnerVisible}
+                >
+                  <Spinner
+                    color="white"
+                    accessibilityLabel="Refreshing Table"
+                    size="large"
+                    testID="table-refreshing-overlay-spinner"
+                  />
+                </RefreshWrapper>
+              )}
+              {/* wrapping toolbar in BaseBox and passing the same analytics attributes as of table because in analytics POV, events triggered are from table */}
+              <BaseBox {...makeAnalyticsAttribute(rest)}>{toolbar}</BaseBox>
+              <StyledReactTable
+                role="table"
+                layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
+                data={data}
+                // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
+                theme={tableTheme}
+                select={selectionType !== 'none' ? rowSelectConfig : null}
+                sort={sortFunctions ? sort : null}
+                tree={isGrouped ? tree : null}
+                $styledProps={{
+                  height,
+                  width: isVirtualized ? `100%` : undefined,
+                  isVirtualized,
+                  isSelectable: selectionType !== 'none',
+                  showStripedRows,
+                }}
+                pagination={hasPagination ? paginationConfig : null}
+                {...makeAccessible({ multiSelectable: selectionType === 'multiple' })}
+                {...metaAttribute({ name: MetaConstants.Table })}
+                {...makeAnalyticsAttribute(rest)}
+              >
+                {children}
+              </StyledReactTable>
+            </BaseBox>
+            {pagination}
+          </BaseBox>
         ) : (
+          // No pagination: original single-container layout, no structural changes.
           <BaseBox
             flex={1}
             position="relative"
@@ -664,7 +740,12 @@ const _Table = <Item,>({
                 isRefreshSpinnerExiting={isRefreshSpinnerExiting}
                 isRefreshSpinnerVisible={isRefreshSpinnerVisible}
               >
-                <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
+                <Spinner
+                  color="white"
+                  accessibilityLabel="Refreshing Table"
+                  size="large"
+                  testID="table-refreshing-overlay-spinner"
+                />
               </RefreshWrapper>
             )}
             {/* wrapping toolbar in BaseBox and passing the same analytics attributes as of table because in analytics POV, events triggered are from table */}
@@ -692,7 +773,6 @@ const _Table = <Item,>({
             >
               {children}
             </StyledReactTable>
-            {pagination}
           </BaseBox>
         )}
       </TableSurface>

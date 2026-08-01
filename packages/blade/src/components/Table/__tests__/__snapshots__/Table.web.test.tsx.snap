@@ -3556,6 +3556,7 @@ exports[`<Table /> should render table with TableEditableCell and Bordered cells
         <div
           class=""
           data-blade-component="spinner"
+          data-testid="table-refreshing-overlay-spinner"
         >
           <div
             aria-label="Refreshing Table"
@@ -12237,6 +12238,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
         <div
           class=""
           data-blade-component="spinner"
+          data-testid="table-refreshing-overlay-spinner"
         >
           <div
             aria-label="Refreshing Table"

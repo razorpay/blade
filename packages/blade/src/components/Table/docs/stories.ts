@@ -1883,6 +1883,127 @@ function App() {
 export default App;
 `;
 
+const TableWithRefreshingAndPaginationStory = `
+import {
+  Table,
+  Box,
+  Heading,
+  Text,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Amount,
+  Badge,
+  TablePagination,
+  Button,
+} from '@razorpay/blade/components';
+import React, { useState } from 'react';
+
+const nodes = Array.from({ length: 50 }, (_, i) => ({
+  id: (i + 1).toString(),
+  paymentId: \`rzp\${String(i + 1).padStart(4, '0')}\`,
+  amount: Number(((i + 1) * 123.45).toFixed(2)),
+  status: ['Completed', 'Pending', 'Failed'][i % 3],
+}));
+
+const data = { nodes };
+
+function App() {
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handlePageChange = ({ page }) => {
+    if (currentPage !== page) {
+      setIsRefreshing(true);
+      setTimeout(() => {
+        setCurrentPage(page);
+        setIsRefreshing(false);
+      }, 2000);
+    }
+  };
+
+  const handlePageSizeChange = ({ size }) => {
+    // Simulate an API call that could fail for large page sizes
+    setIsRefreshing(true);
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 2000);
+  };
+
+  return (
+    <Box
+      backgroundColor="surface.background.gray.intense"
+      padding="spacing.5"
+      minHeight="500px"
+    >
+      <Box paddingBottom="spacing.4">
+        <Heading>Table: Footer accessible during refresh</Heading>
+        <Text>
+          The pagination stays interactive even while the table is refreshing.
+          Change the page or page size to trigger a refresh — the pagination
+          controls remain accessible throughout.
+        </Text>
+      </Box>
+      <Table
+        data={data}
+        isRefreshing={isRefreshing}
+        pagination={
+          <TablePagination
+            onPageChange={handlePageChange}
+            defaultPageSize={10}
+            onPageSizeChange={handlePageSizeChange}
+            showPageSizePicker
+            showPageNumberSelector
+            currentPage={currentPage}
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : 'negative'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -1899,4 +2020,5 @@ export {
   TableWithClientSidePaginationStory,
   TableWithServerSidePaginationStory,
   TableWithEditableCellsStory,
+  TableWithRefreshingAndPaginationStory,
 };

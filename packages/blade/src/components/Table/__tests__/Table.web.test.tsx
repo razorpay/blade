@@ -1596,4 +1596,64 @@ describe('<Table />', () => {
     expect(getByText('Expanded details for Flipkart')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
+
+  it('should keep pagination accessible when table is refreshing', () => {
+    const onPageChange = jest.fn();
+    const onPageSizeChange = jest.fn();
+    const { getByLabelText, getByTestId } = renderWithTheme(
+      <Table
+        data={{ nodes }}
+        isRefreshing={true}
+        pagination={
+          <TablePagination
+            onPageChange={onPageChange}
+            defaultPageSize={10}
+            onPageSizeChange={onPageSizeChange}
+            showPageSizePicker
+            showPageNumberSelector
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    // The refresh overlay spinner should be present
+    expect(getByTestId('table-refreshing-overlay-spinner')).toBeInTheDocument();
+
+    // Pagination controls must still be in the document and not hidden by the overlay
+    const nextPageButton = getByLabelText('Next Page');
+    const previousPageButton = getByLabelText('Previous Page');
+    expect(nextPageButton).toBeInTheDocument();
+    expect(previousPageButton).toBeInTheDocument();
+
+    // Interacting with pagination while refreshing should still fire callbacks
+    fireEvent.click(nextPageButton);
+    expect(onPageChange).toHaveBeenCalledTimes(1);
+  });
 });
