@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useMemo, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import dayjs from 'dayjs';
 import { formatNumber } from '@razorpay/i18nify-js';
@@ -14,6 +14,11 @@ import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
 import { createRehypeAnimate } from './rehypeAnimate';
 import { genUISpacingContract, getGenUIComponentTopSpacing } from './GenUISpacing';
+import { serializeTableToCsv, DEFAULT_CELL_DATE_FORMAT } from './exportUtils/csv';
+import { copyToClipboard } from './exportUtils/clipboard';
+import { downloadBlob } from './exportUtils/downloadBlob';
+import { captureNodeAsPng } from './exportUtils/captureNodeAsPng';
+import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute/makeAnalyticsConstants';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
@@ -64,6 +69,7 @@ import {
   EyeIcon,
   CopyIcon,
 } from '~components/Icons';
+import type { IconComponent } from '~components/Icons';
 import { InfoGroup, InfoItem, InfoItemKey, InfoItemValue } from '~components/InfoGroup';
 import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
@@ -1134,6 +1140,78 @@ const CopyableText = ({ value }: { value?: string }) => (
   </Box>
 );
 
+/**
+ * Text-link variant of the export action, used by the Card and Table action
+ * rows (icon + label, e.g. "Copy" · "Download as CSV"). Runs an async handler,
+ * shows a transient success label, forwards `data-analytics-name`, and dispatches
+ * runtime telemetry (`onActionClick`) on BOTH outcomes — merging
+ * `status: 'success' | 'error'` into the action's `data` so the host can track
+ * failures too.
+ */
+const GenUIActionLink = ({
+  icon,
+  label,
+  successLabel,
+  errorLabel,
+  analyticsName,
+  action,
+  onAction,
+}: {
+  icon: IconComponent;
+  label: string;
+  successLabel: string;
+  errorLabel: string;
+  analyticsName: string;
+  action: GenUIAction;
+  onAction: () => void | Promise<void>;
+}) => {
+  const onActionClick = useGenUIAction();
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleClick = async () => {
+    if (status !== 'idle') return;
+    setStatus('loading');
+    try {
+      await onAction();
+      onActionClick?.({ ...action, data: { ...action.data, status: 'success' } });
+      setStatus('success');
+      setTimeout(() => setStatus('idle'), 2000);
+    } catch {
+      onActionClick?.({ ...action, data: { ...action.data, status: 'error' } });
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 2000);
+    }
+  };
+
+  const isSuccess = status === 'success';
+  const isError = status === 'error';
+
+  return (
+    <Link
+      variant="button"
+      icon={isSuccess ? CheckIcon : isError ? CloseIcon : icon}
+      iconPosition="left"
+      size="medium"
+      color={isError ? 'negative' : 'primary'}
+      isDisabled={status === 'loading'}
+      onClick={handleClick}
+      data-analytics-name={analyticsName}
+    >
+      {isSuccess ? successLabel : isError ? errorLabel : label}
+    </Link>
+  );
+};
+
+// Builds a safe, lowercase, hyphenated file name stem from a title (falls back to `fallback`).
+const toFileNameSlug = (title?: string, fallback = 'export'): string => {
+  const slug = (title ?? '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return slug || fallback;
+};
+
 // Table cell link renderer - fires action for consumer to handle
 const TableCellLinkRenderer = ({ cell }: { cell?: Partial<TableCellLink> }) => {
   const onActionClick = useGenUIAction();
@@ -1232,10 +1310,10 @@ const RenderTableCellContent = ({ cell }: { cell?: Partial<TableCellType> }) => 
         return <Text size="medium">{cell.value}</Text>;
       }
 
-      // Use custom dateFormat if provided, otherwise use default
+      // Use custom dateFormat if provided, otherwise use the shared default
+      // (kept in sync with the CSV export via DEFAULT_CELL_DATE_FORMAT).
       // Format tokens: https://day.js.org/docs/en/display/format
-      const defaultFormat = 'DD MMM YYYY, HH:mm';
-      const formatted = dateValue.format(cell.dateFormat || defaultFormat);
+      const formatted = dateValue.format(cell.dateFormat || DEFAULT_CELL_DATE_FORMAT);
 
       return <Text size="medium">{formatted}</Text>;
     }
@@ -1352,6 +1430,21 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
     return null;
   }
 
+  // Handlers do the work and throw on failure; GenUIActionLink dispatches the
+  // success/error telemetry based on the outcome.
+  const handleCopyCsv = async (): Promise<void> => {
+    const csv = serializeTableToCsv(headers, rows);
+    const didCopy = await copyToClipboard(csv);
+    if (!didCopy) {
+      throw new Error('[GenUI]: Failed to copy table as CSV');
+    }
+  };
+
+  const handleDownloadCsv = (): void => {
+    const csv = serializeTableToCsv(headers, rows);
+    downloadBlob(csv, 'table.csv', 'text/csv;charset=utf-8');
+  };
+
   // Transform rows into table data format with id
   const tableData = {
     nodes: rows.map((row, index) => ({
@@ -1405,12 +1498,53 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
           </>
         )}
       </Table>
+      <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+        <GenUIActionLink
+          icon={CopyIcon}
+          label="Copy"
+          successLabel="Copied!"
+          errorLabel="Copy failed"
+          analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_COPY_BUTTON}
+          action={{
+            type: 'COPY',
+            eventName: 'table_copy',
+            data: { format: 'csv', rowCount: rows.length },
+          }}
+          onAction={handleCopyCsv}
+        />
+        <Text size="medium" color="surface.text.gray.muted">
+          •
+        </Text>
+        <GenUIActionLink
+          icon={DownloadIcon}
+          label="Download as CSV"
+          successLabel="Downloaded!"
+          errorLabel="Download failed"
+          analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_DOWNLOAD_BUTTON}
+          action={{
+            type: 'DOWNLOAD',
+            eventName: 'table_download',
+            data: { format: 'csv', rowCount: rows.length },
+          }}
+          onAction={handleDownloadCsv}
+        />
+      </Box>
     </Box>
   );
 });
 
 const RenderCardComponent = memo(({ title, description, footer, children }: CardComponent) => {
   const hasHeader = title || description;
+  const hasContent = Boolean(hasHeader) || Boolean(children?.length) || Boolean(footer);
+  const cardRef = useRef<HTMLElement>(null);
+
+  // Does the work and throws on failure; GenUIActionLink dispatches the
+  // success/error telemetry based on the outcome.
+  const handleDownloadPng = async (): Promise<void> => {
+    if (!cardRef.current) return;
+    const blob = await captureNodeAsPng(cardRef.current);
+    downloadBlob(blob, `${toFileNameSlug(title, 'card')}.png`, 'image/png');
+  };
 
   return (
     <Box
@@ -1419,7 +1553,12 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
       flexDirection="column"
       gap={genUISpacingContract.compactCardRowGap}
     >
-      <Card width="100%" height="100%" padding={genUISpacingContract.compactCardPadding}>
+      <Card
+        ref={cardRef}
+        width="100%"
+        height="100%"
+        padding={genUISpacingContract.compactCardPadding}
+      >
         {hasHeader ? (
           <CardHeader>
             <CardHeaderLeading title={title || ''} subtitle={description || ''} />
@@ -1446,6 +1585,19 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
           </CardFooter>
         ) : null}
       </Card>
+      {hasContent ? (
+        <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+          <GenUIActionLink
+            icon={DownloadIcon}
+            label="Download as PNG"
+            successLabel="Downloaded!"
+            errorLabel="Download failed"
+            analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.CARD_DOWNLOAD_BUTTON}
+            action={{ type: 'DOWNLOAD', eventName: 'card_download', data: { format: 'png' } }}
+            onAction={handleDownloadPng}
+          />
+        </Box>
+      ) : null}
     </Box>
   );
 });
@@ -1757,4 +1909,4 @@ export {
   ComponentType,
 };
 
-export type { GenUIComponent };
+export type { GenUIComponent, TableCellType };

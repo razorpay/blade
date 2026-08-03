@@ -19,6 +19,11 @@ export const MAKE_ANALYTICS_CONSTANTS = {
   FILE_UPLOAD: {
     REUPLOAD_BUTTON: 'file-reupload-button',
   },
+  GEN_UI: {
+    CARD_DOWNLOAD_BUTTON: 'genui-card-download-button',
+    TABLE_DOWNLOAD_BUTTON: 'genui-table-download-button',
+    TABLE_COPY_BUTTON: 'genui-table-copy-button',
+  },
   SPOTLIGHT_POPOVER_TOUR: {
     FOOTER_PRIMARY_ACTION: 'spotlight-popover-tour-footer-primary-action-button',
     FOOTER_SECONDARY_ACTION: 'spotlight-popover-tour-footer-secondary-action-button',
