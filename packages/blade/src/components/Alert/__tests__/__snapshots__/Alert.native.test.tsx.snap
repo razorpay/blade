@@ -48,15 +48,21 @@ exports[`<Alert /> should render 1`] = `
       textAlign="left"
     >
       <View
-        alignSelf="center"
+        alignItems="center"
+        alignSelf="flex-start"
         data-blade-component="base-box"
         display="flex"
+        height="17px"
+        justifyContent="center"
         style={
           [
             {
-              "alignSelf": "center",
+              "alignItems": "center",
+              "alignSelf": "flex-start",
               "display": "flex",
-              "marginTop": 1,
+              "height": 17,
+              "justifyContent": "center",
+              "marginTop": 0,
             },
           ]
         }
@@ -373,15 +379,21 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       textAlign="left"
     >
       <View
-        alignSelf="center"
+        alignItems="center"
+        alignSelf="flex-start"
         data-blade-component="base-box"
         display="flex"
+        height="17px"
+        justifyContent="center"
         style={
           [
             {
-              "alignSelf": "center",
+              "alignItems": "center",
+              "alignSelf": "flex-start",
               "display": "flex",
-              "marginTop": 1,
+              "height": 17,
+              "justifyContent": "center",
+              "marginTop": 0,
             },
           ]
         }
@@ -681,15 +693,21 @@ exports[`<Alert /> should render positive color and full width 2`] = `
       textAlign="left"
     >
       <View
-        alignSelf="center"
+        alignItems="center"
+        alignSelf="flex-start"
         data-blade-component="base-box"
         display="flex"
+        height="17px"
+        justifyContent="center"
         style={
           [
             {
-              "alignSelf": "center",
+              "alignItems": "center",
+              "alignSelf": "flex-start",
               "display": "flex",
-              "marginTop": 1,
+              "height": 17,
+              "justifyContent": "center",
+              "marginTop": 0,
             },
           ]
         }
