@@ -10,6 +10,7 @@ import { CalendarGradientStyles, CalendarStyles } from './CalendarStyles';
 import { useUncontrolledDates } from './useControlledDates';
 import { levelToPicker, pickerToLevel, classes } from './constants';
 import { shiftTimezone } from './shiftTimezone';
+import { clampDateToRange } from './utils';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
@@ -92,8 +93,14 @@ const Calendar = <Type extends DateSelectionType>({
     if (!isRangeSelection && selectedValue) {
       return selectedValue;
     }
-    return shiftTimezone('add', new Date());
-  }, [_visibleMonth, _date, selectedValue]);
+    // When nothing is selected, open on today's month clamped into the [minDate, maxDate]
+    // range so the calendar doesn't land on a month where every date is disabled.
+    return clampDateToRange({
+      date: shiftTimezone('add', new Date()),
+      minDate: props.minDate,
+      maxDate: props.maxDate,
+    });
+  }, [_visibleMonth, _date, selectedValue, props.minDate, props.maxDate]);
   const numberOfColumns = isMobile || !isRange ? 1 : 2;
   const columnsToScroll = numberOfColumns;
 

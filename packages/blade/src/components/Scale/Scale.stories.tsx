@@ -2,7 +2,6 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Title } from '@storybook/addon-docs/blocks';
 import { InternalCardExample } from '../Card/InternalCardExample';
-import qrCodesImage from './docs-qrcodes.svg';
 import { Scale } from './';
 import type { ScaleProps } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -62,7 +61,11 @@ const ScaleTemplate: StoryFn<typeof Scale> = (args) => {
 
 export const Default = ScaleTemplate.bind({});
 Default.args = {
-  children: <img src={qrCodesImage} alt="QR Codes" width="300px" />,
+  children: (
+    <Box display="inline-block">
+      <InternalCardExample />
+    </Box>
+  ),
 };
 
 export const Controlled = ControlledScaleTemplate.bind({});

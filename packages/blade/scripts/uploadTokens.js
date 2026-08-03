@@ -1,37 +1,66 @@
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 const execa = require('execa');
 const randomNameGenerator = require('moniker');
 
 const GITHUB_BOT_EMAIL = 'tools+cibot@razorpay.com';
 const GITHUB_BOT_USERNAME = 'rzpcibot';
 
+// The Figma plugin gzip + base64 encodes the tokens payload to stay under GitHub's
+// 65,535 character workflow_dispatch input limit. Decompress it here, falling back to
+// treating the argument as raw JSON for backward compatibility.
+const parseTokensArg = (arg) => {
+  try {
+    return JSON.parse(zlib.gunzipSync(Buffer.from(arg, 'base64')).toString('utf8'));
+  } catch (error) {
+    return JSON.parse(arg);
+  }
+};
+
 const uploadColorTokens = async () => {
   try {
     // 1. read the tokens object
-    const colorTokens = JSON.parse(process.argv[2]);
+    const colorTokens = parseTokensArg(process.argv[2]);
 
-    if (
-      Object.keys(colorTokens?.themeColorTokens?.onLight).length &&
-      Object.keys(colorTokens?.themeColorTokens?.onDark).length
-    ) {
-      const themeColorTokensRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
-      // 2. read the bladeTheme File
-      const bladeThemePath = path.resolve(__dirname, '../src/tokens/theme/bladeTheme.ts');
-      const bladeTheme = fs.readFileSync(bladeThemePath, 'utf8');
+    const themeColorTokensRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
+    // Each theme in the payload is written into its own source file.
+    const THEME_TARGETS = {
+      bladeTheme: 'src/tokens/theme/bladeTheme.ts',
+      bladeNeutralTheme: 'src/tokens/theme/bladeNeutralTheme.ts',
+    };
 
-      // 3. write the new tokens to bladeTheme file
-      const updatedbladeThemeColors = JSON.stringify(colorTokens.themeColorTokens, null, 2)
+    for (const [themeName, themeModes] of Object.entries(colorTokens?.themeColorTokens ?? {})) {
+      const targetRelativePath = THEME_TARGETS[themeName];
+      if (!targetRelativePath) {
+        console.warn(
+          `No target file configured for theme: ${themeName}. Update THEME_TARGETS in scripts/uploadTokens.js.`,
+        );
+        continue;
+      }
+      if (
+        !Object.keys(themeModes?.onLight ?? {}).length ||
+        !Object.keys(themeModes?.onDark ?? {}).length
+      ) {
+        continue;
+      }
+
+      // 2. read the theme file
+      const themeFilePath = path.resolve(__dirname, '..', targetRelativePath);
+      const themeFileContent = fs.readFileSync(themeFilePath, 'utf8');
+
+      // 3. write the new tokens to the theme file
+      const updatedThemeColors = JSON.stringify(themeModes, null, 2)
         .replace(/"([a-zA-Z_$][a-zA-Z0-9_$]*)":/g, '$1:') // Remove quotes only from valid JS identifiers
         .replace(/"(\d+)":/g, '$1:') // Remove quotes from numeric keys
         .replace(/: "([^"]+)"/g, ': $1'); // Remove quotes from values
-      const updatedbladeTheme = bladeTheme.replace(
+      const updatedThemeFile = themeFileContent.replace(
         themeColorTokensRegex,
-        `const colors: ColorsWithModes = ${updatedbladeThemeColors};`,
+        `const colors: ColorsWithModes = ${updatedThemeColors};`,
       );
-      fs.writeFileSync(bladeThemePath, updatedbladeTheme);
+      fs.writeFileSync(themeFilePath, updatedThemeFile);
       // prettify the file
-      execa.commandSync('yarn prettier --write src/tokens/theme/bladeTheme.ts');
+      execa.commandSync(`yarn prettier --write ${targetRelativePath}`);
     }
 
     if (Object.keys(colorTokens?.globalColorTokens).length) {

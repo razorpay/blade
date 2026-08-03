@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const { withStorybook } = require('@storybook/react-native/metro/withStorybook');
+const exclusionList = require('metro-config/src/defaults/exclusionList');
 
 /**
  * Metro configuration
@@ -10,9 +11,21 @@ const { withStorybook } = require('@storybook/react-native/metro/withStorybook')
  * @type {import('metro-config').MetroConfig}
  */
 
-const mocksDir = path.resolve(__dirname, '.storybook/react-native/mocks');
-const nodeModulesDir = path.resolve(__dirname, 'node_modules');
+const projectRoot = __dirname;
+const mocksDir = path.resolve(projectRoot, '.storybook/react-native/mocks');
+const nodeModulesDir = path.resolve(projectRoot, 'node_modules');
 const realNodeModulesDir = fs.realpathSync(nodeModulesDir);
+
+// Sibling git worktrees under `.claude/worktrees/*` share the same relative paths
+// (`src/components/Stagger/Stagger.native.tsx`, etc.). If Metro's haste map ever sees more than
+// one worktree it will pick an arbitrary copy (we observed LineChart's stub Stagger being
+// bundled while cwd was MotionPresets). Block every worktree except this one.
+const thisWorktreeName = path.basename(path.resolve(projectRoot, '../..')); // e.g. MotionPresets
+// Escape regex special characters in the worktree name so they're treated literally.
+const escapedWorktreeName = thisWorktreeName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const siblingWorktreesBlock = new RegExp(
+  `/\\.claude/worktrees/(?!${escapedWorktreeName}(?:/|$))[^/]+/`,
+);
 
 // Metro 0.76 doesn't fully support package.json "exports" for subpath imports.
 // Manually resolve subpath exports for storybook packages.
@@ -52,7 +65,10 @@ function resolveSubpathExport(moduleName) {
 const isWorktreeSymlink = realNodeModulesDir !== nodeModulesDir;
 
 const config = {
-  watchFolders: isWorktreeSymlink ? [realNodeModulesDir] : [nodeModulesDir],
+  projectRoot,
+  watchFolders: isWorktreeSymlink
+    ? [projectRoot, realNodeModulesDir]
+    : [projectRoot, nodeModulesDir],
   transformer: {
     unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
@@ -63,6 +79,14 @@ const config = {
     }),
   },
   resolver: {
+    blockList: exclusionList([siblingWorktreesBlock, /\/__tests__\/.*/]),
+    // Disabled because this repo uses yarn workspaces with hoisted node_modules. Metro's
+    // hierarchical lookup would traverse parent directories and could resolve modules from
+    // sibling worktree node_modules (when running inside a `.claude/worktrees/*` symlink),
+    // picking up stale or incompatible copies. With `nodeModulesPaths` explicitly set above
+    // and `unstable_enableSymlinks: true`, Metro resolves all dependencies from the correct
+    // node_modules without needing parent-directory traversal.
+    disableHierarchicalLookup: true,
     unstable_enableSymlinks: true,
     nodeModulesPaths: [nodeModulesDir],
     resolverMainFields: ['react-native', 'browser', 'main'],
@@ -113,8 +137,8 @@ const config = {
   },
 };
 
-module.exports = withStorybook(mergeConfig(getDefaultConfig(__dirname), config), {
-  configPath: path.resolve(__dirname, '.storybook/react-native'),
+module.exports = withStorybook(mergeConfig(getDefaultConfig(projectRoot), config), {
+  configPath: path.resolve(projectRoot, '.storybook/react-native'),
   enabled: true,
   docTools: false,
 });

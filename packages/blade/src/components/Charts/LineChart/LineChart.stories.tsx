@@ -483,13 +483,19 @@ ForecastLineChart.parameters = {
   controls: { disable: true },
 };
 
-// Line Chart that Connects Nulls
-export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
+// Line Chart null handling — a single story covering all three ways nulls are represented:
+// - connectNulls={false} (default): the line breaks at null points (use for genuine outages).
+// - connectNulls={true} + connectNullsStyle="solid" (default): nulls bridged with a solid line.
+// - connectNulls={true} + connectNullsStyle="dashed": real data stays solid while the stretch
+//   across null points (no data for that period) renders dashed, without implying a value.
+export const LineChartNullBridge: StoryFn<typeof ChartLine> = () => {
   return (
     <ChartsWrapper>
       <Box display="flex" flexDirection="column" gap="spacing.8" width="100%">
         <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
-          <Heading size="small">Line Chart that Connects Nulls</Heading>
+          <Heading size="small">
+            Hard gap for outages (connectNulls=&#123;false&#125;, default)
+          </Heading>
           <Box width="100%" height="220px">
             <ChartLineWrapper data={dataWithNulls}>
               <ChartXAxis dataKey="month" />
@@ -498,15 +504,16 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
               <ChartLegend />
               <ChartLine
                 dataKey="sales"
-                name="Sales (Connects Nulls)"
-                connectNulls={true}
-                color="data.background.categorical.green.moderate"
+                name="Sales (Gap on no-data)"
+                color="data.background.categorical.gray.strong"
               />
             </ChartLineWrapper>
           </Box>
         </Box>
         <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
-          <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
+          <Heading size="small">
+            Solid bridge across nulls (connectNullsStyle=&quot;solid&quot;)
+          </Heading>
           <Box width="100%" height="220px">
             <ChartLineWrapper data={dataWithNulls}>
               <ChartXAxis dataKey="month" />
@@ -515,7 +522,29 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
               <ChartLegend />
               <ChartLine
                 dataKey="sales"
-                name="Sales (Do Not Connects Nulls)"
+                name="Sales (Solid across no-data)"
+                connectNulls={true}
+                connectNullsStyle="solid"
+                color="data.background.categorical.blue.moderate"
+              />
+            </ChartLineWrapper>
+          </Box>
+        </Box>
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
+          <Heading size="small">
+            Dashed bridge across nulls (connectNullsStyle=&quot;dashed&quot;)
+          </Heading>
+          <Box width="100%" height="220px">
+            <ChartLineWrapper data={dataWithNulls}>
+              <ChartXAxis dataKey="month" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartLine
+                dataKey="sales"
+                name="Sales (Dashed across no-data)"
+                connectNulls={true}
+                connectNullsStyle="dashed"
                 color="data.background.categorical.green.moderate"
               />
             </ChartLineWrapper>
@@ -526,7 +555,7 @@ export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
   );
 };
 
-LineChartConnectNulls.parameters = {
+LineChartNullBridge.parameters = {
   controls: { disable: true },
   layout: 'fullscreen',
 };
@@ -1275,7 +1304,7 @@ SimpleLineChart.storyName = 'Simple Line Chart';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
-LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
+LineChartNullBridge.storyName = 'Line Chart (Connect Nulls)';
 SteppedLineChart.storyName = 'Stepped Line Chart';
 LineChartWithDefaultColorTheme.storyName = 'Line Chart with Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';

@@ -431,6 +431,46 @@ export const MinMaxDates: StoryFn<typeof DatePickerComponent> = () => {
 
 MinMaxDates.storyName = 'MinMaxDates';
 
+export const InitialMonthWithDisabledToday: StoryFn<typeof DatePickerComponent> = () => {
+  // minDate and maxDate are both restricted to March 2026, so months outside it have no
+  // selectable dates and the calendar opens directly on March 2026.
+  const minDate = dayjs('2026-03-01').startOf('month').toDate();
+  const maxDate = dayjs('2026-03-31').endOf('month').toDate();
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        When today&apos;s month falls outside the allowed <Code size="medium">minDate</Code> /{' '}
+        <Code size="medium">maxDate</Code> range, the calendar no longer opens on a fully-disabled
+        month. Instead it opens clamped to the range — here directly on{' '}
+        <Code size="medium">March 2026</Code> (the only selectable month).
+      </Text>
+      <Box marginY="spacing.4" display="flex" gap="spacing.2" flexDirection="column">
+        <Text>Example (allowed range limited to March 2026): </Text>
+        <Text size="small">{`minDate={dayjs('2026-03-01').startOf('month').toDate()}`}</Text>
+        <Text size="small">{`maxDate={dayjs('2026-03-31').endOf('month').toDate()}`}</Text>
+      </Box>
+      <DatePickerComponent
+        label="Select a date"
+        selectionType="single"
+        minDate={minDate}
+        maxDate={maxDate}
+      />
+      <Box marginTop="spacing.8">
+        <Text marginBottom="spacing.3">Range DatePicker with the same March 2026 range:</Text>
+        <DatePickerComponent
+          label={{ start: 'Select a date range' }}
+          selectionType="range"
+          minDate={minDate}
+          maxDate={maxDate}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+InitialMonthWithDisabledToday.storyName = 'Initial Month (Disabled Today)';
+
 export const ExcludeDates: StoryFn<typeof DatePickerComponent> = () => {
   return (
     <Box>
@@ -541,6 +581,48 @@ export const FilterChipDatePickerStorySingleStory: StoryFn<typeof FilterChipDate
 };
 
 FilterChipDatePickerStorySingleStory.storyName = 'FilterChipDatePicker (Single Selection)';
+
+export const FilterChipDatePickerClearButtonBehavior: StoryFn<typeof FilterChipDatePicker> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.8" maxWidth="760px">
+      <Text>
+        Use <Code size="medium">showClearButton</Code> to control the clear (cross) button on the
+        FilterChipDatePicker. It defaults to <Code size="medium">true</Code>.
+      </Text>
+
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Text weight="semibold">With clear button (default)</Text>
+        <Text size="small" color="surface.text.gray.muted">
+          Once a date is selected the cross appears; pressing it clears the value (fires{' '}
+          <Code size="medium">onChange</Code> with an empty value and{' '}
+          <Code size="medium">onClearButtonClick</Code>).
+        </Text>
+        <Box>
+          <FilterChipDatePicker label="Date" selectionType="single" defaultValue={new Date()} />
+        </Box>
+      </Box>
+
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Text weight="semibold">Without clear button (showClearButton={'{false}'})</Text>
+        <Text size="small" color="surface.text.gray.muted">
+          For filters that must always hold a value. The chip starts with a default date and never
+          shows the cross, so it can&apos;t be cleared to an empty state — the calendar can still be
+          opened to change the date.
+        </Text>
+        <Box>
+          <FilterChipDatePicker
+            label="Date"
+            selectionType="single"
+            defaultValue={new Date()}
+            showClearButton={false}
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+FilterChipDatePickerClearButtonBehavior.storyName = 'FilterChipDatePicker (Clear Button Behaviour)';
 
 export const FilterChipDatePickerStoryMultiSelectionStory: StoryFn<
   typeof FilterChipDatePicker

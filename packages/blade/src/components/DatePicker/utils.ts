@@ -786,9 +786,35 @@ const getHumanizedDate = ({
   return '';
 };
 
+/**
+ * Clamps a date into the `[minDate, maxDate]` range so the calendar opens on a month
+ * that actually contains selectable dates. When the anchor (usually today) is after
+ * `maxDate`, the last selectable date (`maxDate`) is returned; when it is before
+ * `minDate`, the first selectable date (`minDate`) is returned. Otherwise the anchor is
+ * returned unchanged. `excludeDate` gaps are intentionally not considered here.
+ */
+const clampDateToRange = ({
+  date,
+  minDate,
+  maxDate,
+}: {
+  date: Date;
+  minDate?: Date;
+  maxDate?: Date;
+}): Date => {
+  if (maxDate && dayjs(date).isAfter(dayjs(maxDate), 'day')) {
+    return maxDate;
+  }
+  if (minDate && dayjs(date).isBefore(dayjs(minDate), 'day')) {
+    return minDate;
+  }
+  return date;
+};
+
 export {
   convertIntlToDayjsLocale,
   loadScript,
+  clampDateToRange,
   getFormattedDate,
   getHumanizedDate,
   rangeFormattedValue,

@@ -682,9 +682,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -788,7 +786,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="topFade"
+                            name="topFade-r3"
                             x1="0"
                             x2="0"
                             y1="0"
@@ -805,7 +803,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="bottomFade"
+                            name="bottomFade-r3"
                             x1="0"
                             x2="0"
                             y1="1"
@@ -821,7 +819,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="topMask"
+                            name="topMask-r3"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -829,7 +827,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "topFade",
+                                  "brushRef": "topFade-r3",
                                   "type": 1,
                                 }
                               }
@@ -854,7 +852,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="bottomMask"
+                            name="bottomMask-r3"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -862,7 +860,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "bottomFade",
+                                  "brushRef": "bottomFade-r3",
                                   "type": 1,
                                 }
                               }
@@ -898,13 +896,13 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           strokeWidth={2}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="bottomMask"
+                          mask="bottomMask-r3"
                           propList={
                             [
                               "fill",
@@ -922,8 +920,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
@@ -1145,9 +1143,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1251,7 +1247,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="topFade"
+                            name="topFade-r4"
                             x1="0"
                             x2="0"
                             y1="0"
@@ -1268,7 +1264,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="bottomFade"
+                            name="bottomFade-r4"
                             x1="0"
                             x2="0"
                             y1="1"
@@ -1284,7 +1280,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="topMask"
+                            name="topMask-r4"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -1292,7 +1288,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "topFade",
+                                  "brushRef": "topFade-r4",
                                   "type": 1,
                                 }
                               }
@@ -1317,7 +1313,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="bottomMask"
+                            name="bottomMask-r4"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -1325,7 +1321,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "bottomFade",
+                                  "brushRef": "bottomFade-r4",
                                   "type": 1,
                                 }
                               }
@@ -1361,13 +1357,13 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           strokeWidth={2}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="bottomMask"
+                          mask="bottomMask-r4"
                           propList={
                             [
                               "fill",
@@ -1385,8 +1381,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
@@ -5930,9 +5926,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
-                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                onMouseOut={[Function]}
                 onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -6034,7 +6028,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           gradientTransform={null}
                           gradientUnits={0}
-                          name="topFade"
+                          name="topFade-r5"
                           x1="0"
                           x2="0"
                           y1="0"
@@ -6051,7 +6045,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           }
                           gradientTransform={null}
                           gradientUnits={0}
-                          name="bottomFade"
+                          name="bottomFade-r5"
                           x1="0"
                           x2="0"
                           y1="1"
@@ -6067,7 +6061,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           height="100%"
                           maskContentUnits={1}
                           maskUnits={0}
-                          name="topMask"
+                          name="topMask-r5"
                           width="100%"
                           x="0%"
                           y="0%"
@@ -6075,7 +6069,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           <RNSVGRect
                             fill={
                               {
-                                "brushRef": "topFade",
+                                "brushRef": "topFade-r5",
                                 "type": 1,
                               }
                             }
@@ -6100,7 +6094,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           height="100%"
                           maskContentUnits={1}
                           maskUnits={0}
-                          name="bottomMask"
+                          name="bottomMask-r5"
                           width="100%"
                           x="0%"
                           y="0%"
@@ -6108,7 +6102,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                           <RNSVGRect
                             fill={
                               {
-                                "brushRef": "bottomFade",
+                                "brushRef": "bottomFade-r5",
                                 "type": 1,
                               }
                             }
@@ -6144,13 +6138,13 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                         }
                         strokeWidth={2}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={null}
                         height="100%"
-                        mask="bottomMask"
+                        mask="bottomMask-r5"
                         propList={
                           [
                             "fill",
@@ -6168,8 +6162,8 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                         }
                         strokeWidth={4}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -6306,9 +6300,7 @@ exports[`<DatePicker /> (native) should render a range date picker 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
-                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                onMouseOut={[Function]}
                 onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -6970,9 +6962,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -7076,7 +7066,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="topFade"
+                            name="topFade-r0"
                             x1="0"
                             x2="0"
                             y1="0"
@@ -7093,7 +7083,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="bottomFade"
+                            name="bottomFade-r0"
                             x1="0"
                             x2="0"
                             y1="1"
@@ -7109,7 +7099,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="topMask"
+                            name="topMask-r0"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -7117,7 +7107,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "topFade",
+                                  "brushRef": "topFade-r0",
                                   "type": 1,
                                 }
                               }
@@ -7142,7 +7132,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="bottomMask"
+                            name="bottomMask-r0"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -7150,7 +7140,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "bottomFade",
+                                  "brushRef": "bottomFade-r0",
                                   "type": 1,
                                 }
                               }
@@ -7186,13 +7176,13 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           strokeWidth={2}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="bottomMask"
+                          mask="bottomMask-r0"
                           propList={
                             [
                               "fill",
@@ -7210,8 +7200,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
@@ -7578,9 +7568,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -7684,7 +7672,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="topFade"
+                            name="topFade-r1"
                             x1="0"
                             x2="0"
                             y1="0"
@@ -7701,7 +7689,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="bottomFade"
+                            name="bottomFade-r1"
                             x1="0"
                             x2="0"
                             y1="1"
@@ -7717,7 +7705,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="topMask"
+                            name="topMask-r1"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -7725,7 +7713,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "topFade",
+                                  "brushRef": "topFade-r1",
                                   "type": 1,
                                 }
                               }
@@ -7750,7 +7738,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="bottomMask"
+                            name="bottomMask-r1"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -7758,7 +7746,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "bottomFade",
+                                  "brushRef": "bottomFade-r1",
                                   "type": 1,
                                 }
                               }
@@ -7794,13 +7782,13 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           strokeWidth={2}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="bottomMask"
+                          mask="bottomMask-r1"
                           propList={
                             [
                               "fill",
@@ -7818,8 +7806,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
@@ -12237,9 +12225,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
-                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                onMouseOut={[Function]}
                 onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -12341,7 +12327,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           gradientTransform={null}
                           gradientUnits={0}
-                          name="topFade"
+                          name="topFade-r2"
                           x1="0"
                           x2="0"
                           y1="0"
@@ -12358,7 +12344,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           }
                           gradientTransform={null}
                           gradientUnits={0}
-                          name="bottomFade"
+                          name="bottomFade-r2"
                           x1="0"
                           x2="0"
                           y1="1"
@@ -12374,7 +12360,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           height="100%"
                           maskContentUnits={1}
                           maskUnits={0}
-                          name="topMask"
+                          name="topMask-r2"
                           width="100%"
                           x="0%"
                           y="0%"
@@ -12382,7 +12368,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           <RNSVGRect
                             fill={
                               {
-                                "brushRef": "topFade",
+                                "brushRef": "topFade-r2",
                                 "type": 1,
                               }
                             }
@@ -12407,7 +12393,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           height="100%"
                           maskContentUnits={1}
                           maskUnits={0}
-                          name="bottomMask"
+                          name="bottomMask-r2"
                           width="100%"
                           x="0%"
                           y="0%"
@@ -12415,7 +12401,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                           <RNSVGRect
                             fill={
                               {
-                                "brushRef": "bottomFade",
+                                "brushRef": "bottomFade-r2",
                                 "type": 1,
                               }
                             }
@@ -12451,13 +12437,13 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                         }
                         strokeWidth={2}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                       <RNSVGRect
                         fill={null}
                         height="100%"
-                        mask="bottomMask"
+                        mask="bottomMask-r2"
                         propList={
                           [
                             "fill",
@@ -12475,8 +12461,8 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                         }
                         strokeWidth={4}
                         width="100%"
-                        x="0"
-                        y="0"
+                        x={0}
+                        y={0}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -12613,9 +12599,7 @@ exports[`<DatePicker /> (native) should render a single date picker 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
-                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                onMouseOut={[Function]}
                 onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}

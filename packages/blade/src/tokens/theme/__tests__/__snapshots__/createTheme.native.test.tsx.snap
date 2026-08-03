@@ -627,6 +627,9 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
       },
       "surface": {
         "background": {
+          "accent": {
+            "intense": "transparent",
+          },
           "cloud": {
             "intense": "hsla(201, 39%, 93%, 1)",
             "subtle": "hsla(200, 91%, 13%, 1)",
@@ -637,7 +640,10 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "subtle": "hsla(210, 4%, 11%, 1)",
           },
           "primary": {
+            "faint": "transparent",
             "intense": "hsl(332, 100%, 26%)",
+            "moderate": "transparent",
+            "strong": "transparent",
             "subtle": "hsla(332, 100%, 26%, 0.09)",
           },
           "sea": {
@@ -742,7 +748,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "gray": {
               "faint": "hsla(0, 0%, 100%, 1)",
               "intense": "hsla(205, 8%, 71%, 1)",
-              "moderate": "hsla(200, 10%, 94%, 1)",
+              "moderate": "hsla(0, 0%, 97%, 1)",
               "strong": "hsla(204, 9%, 42%, 1)",
               "subtle": "hsla(0, 0%, 97%, 1)",
             },
@@ -818,7 +824,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             },
             "gray": {
               "0": "hsla(0, 0%, 100%, 1)",
-              "100": "hsla(200, 10%, 94%, 1)",
+              "100": "hsla(0, 0%, 97%, 1)",
               "1000": "hsla(205, 10%, 24%, 1)",
               "200": "hsla(204, 8%, 88%, 1)",
               "300": "hsla(203, 8%, 80%, 1)",
@@ -1287,7 +1293,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "border": {
           "gray": {
             "intense": "hsla(205, 10%, 24%, 1)",
-            "moderate": "hsla(200, 10%, 94%, 1)",
+            "moderate": "hsla(0, 0%, 97%, 1)",
             "subtle": "hsla(206, 10%, 29%, 0.09)",
           },
           "information": {
@@ -1306,11 +1312,14 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "positive": {
             "moderate": "hsla(150, 100%, 28%, 1)",
           },
-          "subtle": "hsla(200, 10%, 94%, 0)",
+          "subtle": "hsla(0, 0%, 97%, 0)",
         },
       },
       "surface": {
         "background": {
+          "accent": {
+            "intense": "transparent",
+          },
           "cloud": {
             "intense": "hsla(200, 61%, 20%, 1)",
             "subtle": "hsla(198, 39%, 95%, 1)",
@@ -1318,10 +1327,13 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "gray": {
             "intense": "hsla(0, 0%, 100%, 1)",
             "moderate": "hsla(0, 0%, 97%, 1)",
-            "subtle": "hsla(200, 10%, 94%, 1)",
+            "subtle": "hsla(0, 0%, 97%, 1)",
           },
           "primary": {
+            "faint": "transparent",
             "intense": "hsl(332, 100%, 26%)",
+            "moderate": "transparent",
+            "strong": "transparent",
             "subtle": "hsla(332, 100%, 26%, 0.09)",
           },
           "sea": {
@@ -1724,9 +1736,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -1828,7 +1838,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r0"
               x1="0"
               x2="0"
               y1="0"
@@ -1845,7 +1855,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r0"
               x1="0"
               x2="0"
               y1="1"
@@ -1861,7 +1871,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r0"
               width="100%"
               x="0%"
               y="0%"
@@ -1869,7 +1879,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r0",
                     "type": 1,
                   }
                 }
@@ -1894,7 +1904,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r0"
               width="100%"
               x="0%"
               y="0%"
@@ -1902,7 +1912,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r0",
                     "type": 1,
                   }
                 }
@@ -1932,7 +1942,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r0"
               rx={64}
               ry={64}
             />
@@ -1940,7 +1950,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r0"
             propList={
               [
                 "fill",
@@ -1958,13 +1968,13 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r0"
             propList={
               [
                 "fill",
@@ -1982,8 +1992,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -2005,13 +2015,13 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r0"
             propList={
               [
                 "fill",
@@ -2029,13 +2039,13 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r0",
                 "type": 1,
               }
             }
@@ -2759,6 +2769,9 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
       },
       "surface": {
         "background": {
+          "accent": {
+            "intense": "transparent",
+          },
           "cloud": {
             "intense": "hsla(201, 39%, 93%, 1)",
             "subtle": "hsla(200, 91%, 13%, 1)",
@@ -2769,7 +2782,10 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "subtle": "hsla(210, 4%, 11%, 1)",
           },
           "primary": {
+            "faint": "transparent",
             "intense": "hsl(57, 100%, 52%)",
+            "moderate": "transparent",
+            "strong": "transparent",
             "subtle": "hsla(57, 100%, 52%, 0.09)",
           },
           "sea": {
@@ -2874,7 +2890,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "gray": {
               "faint": "hsla(0, 0%, 100%, 1)",
               "intense": "hsla(205, 8%, 71%, 1)",
-              "moderate": "hsla(200, 10%, 94%, 1)",
+              "moderate": "hsla(0, 0%, 97%, 1)",
               "strong": "hsla(204, 9%, 42%, 1)",
               "subtle": "hsla(0, 0%, 97%, 1)",
             },
@@ -2950,7 +2966,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             },
             "gray": {
               "0": "hsla(0, 0%, 100%, 1)",
-              "100": "hsla(200, 10%, 94%, 1)",
+              "100": "hsla(0, 0%, 97%, 1)",
               "1000": "hsla(205, 10%, 24%, 1)",
               "200": "hsla(204, 8%, 88%, 1)",
               "300": "hsla(203, 8%, 80%, 1)",
@@ -3419,7 +3435,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
         "border": {
           "gray": {
             "intense": "hsla(205, 10%, 24%, 1)",
-            "moderate": "hsla(200, 10%, 94%, 1)",
+            "moderate": "hsla(0, 0%, 97%, 1)",
             "subtle": "hsla(206, 10%, 29%, 0.09)",
           },
           "information": {
@@ -3438,11 +3454,14 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           "positive": {
             "moderate": "hsla(150, 100%, 28%, 1)",
           },
-          "subtle": "hsla(200, 10%, 94%, 0)",
+          "subtle": "hsla(0, 0%, 97%, 0)",
         },
       },
       "surface": {
         "background": {
+          "accent": {
+            "intense": "transparent",
+          },
           "cloud": {
             "intense": "hsla(200, 61%, 20%, 1)",
             "subtle": "hsla(198, 39%, 95%, 1)",
@@ -3450,10 +3469,13 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           "gray": {
             "intense": "hsla(0, 0%, 100%, 1)",
             "moderate": "hsla(0, 0%, 97%, 1)",
-            "subtle": "hsla(200, 10%, 94%, 1)",
+            "subtle": "hsla(0, 0%, 97%, 1)",
           },
           "primary": {
+            "faint": "transparent",
             "intense": "hsl(57, 100%, 52%)",
+            "moderate": "transparent",
+            "strong": "transparent",
             "subtle": "hsla(57, 100%, 52%, 0.09)",
           },
           "sea": {
@@ -3856,9 +3878,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
-    onMouseOut={[Function]}
     onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -3960,7 +3980,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="topFade"
+              name="topFade-r1"
               x1="0"
               x2="0"
               y1="0"
@@ -3977,7 +3997,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               }
               gradientTransform={null}
               gradientUnits={0}
-              name="bottomFade"
+              name="bottomFade-r1"
               x1="0"
               x2="0"
               y1="1"
@@ -3993,7 +4013,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="topMask"
+              name="topMask-r1"
               width="100%"
               x="0%"
               y="0%"
@@ -4001,7 +4021,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "topFade",
+                    "brushRef": "topFade-r1",
                     "type": 1,
                   }
                 }
@@ -4026,7 +4046,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               height="100%"
               maskContentUnits={1}
               maskUnits={0}
-              name="bottomMask"
+              name="bottomMask-r1"
               width="100%"
               x="0%"
               y="0%"
@@ -4034,7 +4054,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               <RNSVGRect
                 fill={
                   {
-                    "brushRef": "bottomFade",
+                    "brushRef": "bottomFade-r1",
                     "type": 1,
                   }
                 }
@@ -4064,7 +4084,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
               }
               gradientTransform={null}
               gradientUnits={1}
-              name="btnGlow"
+              name="btnGlow-r1"
               rx={64}
               ry={64}
             />
@@ -4072,7 +4092,7 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r1"
             propList={
               [
                 "fill",
@@ -4090,13 +4110,13 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             }
             strokeWidth={7}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="topMask"
+            mask="topMask-r1"
             propList={
               [
                 "fill",
@@ -4114,8 +4134,8 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             }
             strokeWidth={4}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
@@ -4137,13 +4157,13 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             }
             strokeWidth={1}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={null}
             height="100%"
-            mask="bottomMask"
+            mask="bottomMask-r1"
             propList={
               [
                 "fill",
@@ -4161,13 +4181,13 @@ exports[`createTheme should create a theme with the correct brand colors 6`] = `
             }
             strokeWidth={5}
             width="100%"
-            x="0"
-            y="0"
+            x={0}
+            y={0}
           />
           <RNSVGRect
             fill={
               {
-                "brushRef": "btnGlow",
+                "brushRef": "btnGlow-r1",
                 "type": 1,
               }
             }

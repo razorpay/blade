@@ -24,7 +24,11 @@
     ...rest
   }: TabsProps = $props();
 
-  const baseId = `tabs-${crypto.randomUUID().slice(0, 8)}`;
+  const baseId = `tabs-${
+    typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID().slice(0, 8)
+      : Math.random().toString(36).slice(2, 10)
+  }`;
 
   let internalValue = $state<string>(defaultValue ?? '');
   let focusedValue = $state<string | null>(null);

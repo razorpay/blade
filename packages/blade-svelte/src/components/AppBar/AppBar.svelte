@@ -5,6 +5,7 @@
     makeAccessible,
     makeAnalyticsAttribute,
     getStyledPropsClasses,
+    cx,
   } from '@razorpay/blade-core/utils';
   import { getAppBarClasses, getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import { getUtilityClass } from '@razorpay/blade-core/styles';
@@ -13,7 +14,6 @@
   import { setAppBarContext } from './AppBarContext';
   import type { AppBarProps } from './types';
 
-  // Prevent CSS-module tree-shaking of structural classes.
   const templateClasses = getAppBarTemplateClasses();
 
   let {
@@ -64,9 +64,11 @@
   const variantClasses = $derived(getAppBarClasses({ variant }));
   const styledProps = $derived(getStyledPropsClasses(rest));
   const combinedClasses = $derived(
-    [variantClasses, backgroundOverrideClass, ...(styledProps.classes ?? [])]
-      .filter(Boolean)
-      .join(' '),
+    cx(
+      variantClasses,
+      backgroundOverrideClass,
+      ...(styledProps.classes ?? []),
+    ),
   );
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.AppBar, testID }));

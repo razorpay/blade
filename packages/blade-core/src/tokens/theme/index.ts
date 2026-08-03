@@ -8,3 +8,12 @@ export type {
   ThemeTokens,
 } from './theme';
 export { createTheme } from './createTheme';
+export type {
+  CreateThemeConfig,
+  CreateThemeFontFace,
+  CreateThemeFontFamilyOverride,
+  CreateThemeFontSizeOverride,
+  CreateThemeResult,
+  CreateThemeSurfaceBackgroundOverride,
+  CreateThemeSurfaceOverride,
+} from './createThemeConfig';

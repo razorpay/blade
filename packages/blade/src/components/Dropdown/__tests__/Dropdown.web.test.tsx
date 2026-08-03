@@ -569,4 +569,92 @@ describe('<Dropdown /> with <FilterChipSelectInput/>', () => {
       'profile-options-wrapper',
     );
   });
+
+  it('should show the clear button by default after selecting and clear on click', async () => {
+    const user = userEvent.setup();
+    const onClearButtonClick = jest.fn();
+    const { getByRole, queryByLabelText, findByLabelText } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="Fruits" onClearButtonClick={onClearButtonClick} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    await user.click(getByRole('button', { name: 'Fruits' }));
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+
+    const clearButton = await findByLabelText('Clear Fruits value');
+    expect(clearButton).toBeTruthy();
+
+    await user.click(clearButton);
+    expect(onClearButtonClick).toHaveBeenCalled();
+    await waitFor(() => expect(queryByLabelText('Clear Fruits value')).toBeFalsy());
+  });
+
+  it('should not render the clear button when showClearButton is false, even when selected', async () => {
+    const user = userEvent.setup();
+    const { getByRole, queryByLabelText } = renderWithTheme(
+      <Dropdown>
+        <FilterChipSelectInput label="Fruits" showClearButton={false} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    await user.click(getByRole('button', { name: 'Fruits' }));
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
+    await user.click(getByRole('menuitem', { name: 'Apple' }));
+
+    // chip is selected (shows the value) but the clear button is hidden
+    await waitFor(() => expect(getByRole('button', { name: /Fruits/i })).toBeInTheDocument());
+    expect(queryByLabelText('Clear Fruits value')).toBeFalsy();
+  });
+
+  it('should show the option name (not a counter) when exactly one option is selected in multiple mode', async () => {
+    const { getByRole, findByLabelText } = renderWithTheme(
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput label="Status" value={['active']} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Pending" value="pending" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const trigger = getByRole('button', { name: 'Status' });
+    // A single selection in multiple mode renders the option name, not a "1" counter.
+    await waitFor(() => expect(trigger).toHaveTextContent('Active'));
+    expect(trigger).not.toHaveTextContent('1');
+    expect(await findByLabelText('Clear Status value')).toBeTruthy();
+  });
+
+  it('should collapse to a counter when more than one option is selected in multiple mode', async () => {
+    const { getByRole } = renderWithTheme(
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput label="Status" value={['active', 'pending']} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Active" value="active" />
+            <ActionListItem title="Pending" value="pending" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const trigger = getByRole('button', { name: 'Status' });
+    // More than one selected → the chip collapses to a compact counter of the selection count.
+    await waitFor(() => expect(trigger).toHaveTextContent('2'));
+  });
 });

@@ -169,4 +169,6 @@ export const MetaConstants = {
   PreviewFooter: 'preview-footer',
   Pagination: 'pagination',
   TimePicker: 'time-picker',
+  SegmentedControl: 'segmented-control',
+  SegmentedControlItem: 'segmented-control-item',
 } as const;

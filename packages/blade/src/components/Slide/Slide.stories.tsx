@@ -134,7 +134,9 @@ export const WithDifferentComponents = (args: typeof Slide): React.ReactElement 
         </Slide>
 
         <Slide {...args} isVisible={isVisible}>
-          <p>Slide with custom components. Ensure you forward refs to your custom components</p>
+          <Text>
+            Slide with custom components. Ensure you forward refs to your custom components
+          </Text>
         </Slide>
       </Box>
     </Box>

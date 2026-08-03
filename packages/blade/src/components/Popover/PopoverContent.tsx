@@ -68,7 +68,18 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   (
-    { children, title, titleLeading, footer, arrow, side, style, isVisible, animationDuration },
+    {
+      children,
+      title,
+      titleLeading,
+      footer,
+      arrow,
+      side,
+      style,
+      isVisible,
+      animationDuration,
+      maxWidth,
+    },
     ref,
   ) => {
     const isMobile = useIsMobile();
@@ -82,6 +93,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         animationDuration={animationDuration}
         isMobile={isMobile}
         colorScheme={colorScheme}
+        maxWidth={maxWidth}
       >
         <BaseBox padding="spacing.5" display="flex" flexDirection="column" gap="spacing.5">
           <BaseBox display="flex" flexDirection="column" gap="spacing.2">
