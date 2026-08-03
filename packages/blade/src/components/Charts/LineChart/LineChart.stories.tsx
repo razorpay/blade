@@ -8,7 +8,7 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
-  ChartMinMaxRange,
+  ChartReferenceBand,
 } from '~components/Charts/CommonChartComponents';
 import { ChartLine, ChartLineWrapper } from '~components/Charts/LineChart';
 import { Heading } from '~components/Typography/Heading';
@@ -162,7 +162,7 @@ const chartData = [
   { month: 'Jun', teamA: 2390, teamB: 3800 },
 ];
 
-// Active users trend with a per-point min/max range band (the range other teams fall in).
+// Active users trend with a per-point reference band (the range other teams fall in).
 const activeUsersRangeData = [
   { month: 'Jan', activeUsers: 1180, min: 800, max: 1720 },
   { month: 'Feb', activeUsers: 1120, min: 820, max: 1780 },
@@ -398,16 +398,16 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
   );
 };
 
-// Line chart with a min-max range band — the trend line plotted against the range others fall in.
-export const LineChartWithMinMaxRange: StoryFn<typeof ChartLine> = () => {
+// Line chart with a reference band — the trend line plotted against the range others fall in.
+export const LineChartWithReferenceBand: StoryFn<typeof ChartLine> = () => {
   return (
     <ChartsWrapper>
       <Box width="100%" height="400px">
         <ChartLineWrapper data={activeUsersRangeData}>
-          <ChartMinMaxRange
+          <ChartReferenceBand
             lowerDataKey="min"
             upperDataKey="max"
-            name="Min-max range"
+            name="Reference band"
             upperLabel="p75"
             lowerLabel="p25"
           />
@@ -427,7 +427,7 @@ export const LineChartWithMinMaxRange: StoryFn<typeof ChartLine> = () => {
     </ChartsWrapper>
   );
 };
-LineChartWithMinMaxRange.parameters = { controls: { disable: true } };
+LineChartWithReferenceBand.parameters = { controls: { disable: true } };
 
 // Simple Line chart with vertical line
 export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = ({
@@ -1355,7 +1355,7 @@ LineChartWithSequentialColors.parameters = {
 };
 
 SimpleLineChart.storyName = 'Simple Line Chart';
-LineChartWithMinMaxRange.storyName = 'Line Chart with Min-Max Range';
+LineChartWithReferenceBand.storyName = 'Line Chart with Reference Band';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';

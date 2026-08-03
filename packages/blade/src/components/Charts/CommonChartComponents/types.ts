@@ -29,7 +29,7 @@ type ChartReferenceLineProps = {
   label: string;
 };
 
-type ChartMinMaxRangeProps = {
+type ChartReferenceBandProps = {
   /**
    * The data key for the lower (minimum) bound of the range.
    * Each data row should hold a numeric value at this key.
@@ -42,7 +42,7 @@ type ChartMinMaxRangeProps = {
   upperDataKey: string;
   /**
    * The label shown for the range in the legend.
-   * @default 'Min-max range'
+   * @default 'Reference band'
    */
   name?: string;
   /**
@@ -201,11 +201,11 @@ type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
 type SecondaryLabelMap = Record<number, string | number | undefined>;
 
 /**
- * Legend info for a min-max range band, surfaced through context so the shared
+ * Legend info for a reference band, surfaced through context so the shared
  * legend can render a swatch for it (the band's bound lines are invisible, so
  * they don't produce a Recharts legend entry).
  */
-type MinMaxRangeLegendInfo = {
+type ReferenceBandLegendInfo = {
   name: string;
   color: ChartsCategoricalColorToken | ChartSequentialColorToken;
   fillOpacity: number;
@@ -225,9 +225,9 @@ type CommonChartComponentsStateType = {
    */
   dataLength?: number;
   /**
-   * Legend info for a min-max range band, when present in the chart.
+   * Legend info for a reference band, when present in the chart.
    */
-  minMaxRange?: MinMaxRangeLegendInfo;
+  referenceBand?: ReferenceBandLegendInfo;
 };
 
 // Dispatch type - contains only the updater functions
@@ -269,8 +269,8 @@ export type {
   CommonChartComponentsStateType,
   CommonChartComponentsDispatchType,
   ChartReferenceLineProps,
-  ChartMinMaxRangeProps,
-  MinMaxRangeLegendInfo,
+  ChartReferenceBandProps,
+  ReferenceBandLegendInfo,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,

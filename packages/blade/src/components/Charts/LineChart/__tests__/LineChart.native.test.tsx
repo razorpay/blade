@@ -8,7 +8,7 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
-  ChartMinMaxRange,
+  ChartReferenceBand,
 } from '../../CommonChartComponents';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
@@ -398,7 +398,7 @@ describe('<ChartLineWrapper /> (native)', () => {
     expect(getByTestId('line-chart-test')).toBeTruthy();
   });
 
-  it('should render a min-max range band with a legend entry', () => {
+  it('should render a reference band with a legend entry', () => {
     const rangeData = [
       { name: 'Jan', sales: 4000, min: 3000, max: 5000 },
       { name: 'Feb', sales: 3000, min: 2200, max: 4200 },
@@ -407,10 +407,10 @@ describe('<ChartLineWrapper /> (native)', () => {
     ];
     const { toJSON, getByTestId } = renderWithTheme(
       <ChartLineWrapper data={rangeData} testID="range">
-        <ChartMinMaxRange
+        <ChartReferenceBand
           lowerDataKey="min"
           upperDataKey="max"
-          name="Min-max range"
+          name="Reference band"
           upperLabel="p75"
           lowerLabel="p25"
         />
@@ -421,7 +421,7 @@ describe('<ChartLineWrapper /> (native)', () => {
       </ChartLineWrapper>,
     );
     fireLayout(getByTestId('range-layout'));
-    expect(getByTestId('legend-min-max-range')).toBeTruthy();
+    expect(getByTestId('legend-reference-band')).toBeTruthy();
     // Range labels render on the band.
     expect(getByTestId('range-label-lower')).toBeTruthy();
     expect(getByTestId('range-label-upper')).toBeTruthy();

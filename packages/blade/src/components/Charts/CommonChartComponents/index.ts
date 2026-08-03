@@ -5,7 +5,7 @@ export type {
   ChartTooltipProps,
   ChartLegendProps,
   ChartReferenceLineProps,
-  ChartMinMaxRangeProps,
+  ChartReferenceBandProps,
   ChartLabelContentProps,
   DataColorMapping,
   SecondaryLabelMap,
@@ -17,7 +17,7 @@ export {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
-  ChartMinMaxRange,
+  ChartReferenceBand,
 } from './CommonChartComponents';
 export {
   CommonChartComponentsContext,

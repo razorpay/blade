@@ -661,22 +661,22 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
 > **Component Re-exports:** Components like ResponsiveContainer, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid , XAxis, YAxis we won't allow styling (i.e we won't be exposing props like stroke , strokeWidth , strokeDasharray, tick, tickLine and axisLine).
 
-#### 3.8.2\. MinMaxRange Component (LineChart)
+#### 3.8.2\. ReferenceBand Component (LineChart)
 
-`ChartMinMaxRange` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line can be compared against the range other series fall in.
+`ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line can be compared against the range other series fall in.
 
 | Prop           | Type                                            | Required | Default              | Description                                     |
 | -------------- | ----------------------------------------------- | -------- | -------------------- | ----------------------------------------------- |
 | `lowerDataKey` | `string`                                        | ✅       | -                    | Data key for the lower (min) bound              |
 | `upperDataKey` | `string`                                        | ✅       | -                    | Data key for the upper (max) bound              |
-| `name`         | `string`                                        | ❌       | `'Min-max range'`    | Legend label for the band                       |
+| `name`         | `string`                                        | ❌       | `'Reference band'`    | Legend label for the band                       |
 | `color`        | `ChartsCategoricalColorToken \| ChartSequentialColorToken` | ❌ | faint categorical blue | Band fill color token                    |
 | `showLegend`   | `boolean`                                       | ❌       | `true`               | Whether to show a legend swatch for the band    |
 | `upperLabel`   | `string`                                        | ❌       | `undefined`          | Label at the band's upper edge (e.g. `p75`)     |
 | `lowerLabel`   | `string`                                        | ❌       | `undefined`          | Label at the band's lower edge (e.g. `p25`)     |
 | `showRangeLabels` | `boolean`                                    | ❌       | `true`               | Toggle the `upperLabel` / `lowerLabel` labels   |
 
-> **Why not Recharts `ReferenceArea`?** `ReferenceArea` only draws a _fixed_ rectangle (constant `x1/x2/y1/y2`), whereas this band's bounds vary per data point. Recharts' `LineChart` also does not render `Area` children. So the band is drawn as a custom `<Customized>` SVG layer (web) / computed `<Path>` (native): `ChartMinMaxRange` renders two invisible bound lines so Recharts computes their geometry and folds them into the y-domain, then `ChartLineWrapper` reads those curves and fills the region between them (`buildBandAreaPath`). This mirrors the existing null-bridge layer, which draws custom geometry the same way because Recharts v3 doesn't expose axis scales to `<Customized>`.
+> **Why not Recharts `ReferenceArea`?** `ReferenceArea` only draws a _fixed_ rectangle (constant `x1/x2/y1/y2`), whereas this band's bounds vary per data point. Recharts' `LineChart` also does not render `Area` children. So the band is drawn as a custom `<Customized>` SVG layer (web) / computed `<Path>` (native): `ChartReferenceBand` renders two invisible bound lines so Recharts computes their geometry and folds them into the y-domain, then `ChartLineWrapper` reads those curves and fills the region between them (`buildBandAreaPath`). This mirrors the existing null-bridge layer, which draws custom geometry the same way because Recharts v3 doesn't expose axis scales to `<Customized>`.
 
 ## 4\. Open Questions
 

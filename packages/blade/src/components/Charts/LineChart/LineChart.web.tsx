@@ -21,16 +21,16 @@ import type {
   DataColorMapping,
   SecondaryLabelMap,
   ChartXAxisProps,
-  ChartMinMaxRangeProps,
-  MinMaxRangeLegendInfo,
+  ChartReferenceBandProps,
+  ReferenceBandLegendInfo,
 } from '../CommonChartComponents/types';
 import {
   componentId as commonComponentIds,
-  MIN_MAX_RANGE_DEFAULT_COLOR,
-  MIN_MAX_RANGE_FILL_OPACITY,
-  MIN_MAX_RANGE_LOWER_CLASS,
-  MIN_MAX_RANGE_UPPER_CLASS,
-  MIN_MAX_RANGE_LAYER_CLASS,
+  REFERENCE_BAND_DEFAULT_COLOR,
+  REFERENCE_BAND_FILL_OPACITY,
+  REFERENCE_BAND_LOWER_CLASS,
+  REFERENCE_BAND_UPPER_CLASS,
+  REFERENCE_BAND_LAYER_CLASS,
 } from '../CommonChartComponents/tokens';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { componentIds } from './componentIds';
@@ -41,7 +41,7 @@ import {
   buildBridgePathData,
 } from '../utils/nullBridgeUtils';
 import type { PixelPoint } from '../utils/nullBridgeUtils';
-import { buildBandAreaPath } from '../utils/minMaxRangeUtils';
+import { buildBandAreaPath } from '../utils/referenceBandUtils';
 import { LineChartContext, useLineChartContext } from './LineChartContext';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -208,22 +208,22 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     chartName: 'line',
   });
 
-  // Detect an optional <ChartMinMaxRange> child and resolve its band config once. The band renders a
-  // shaded region between two data-driven bounds (see the min-max band layer below).
-  const minMaxRange = useMemo(() => {
-    let found: ChartMinMaxRangeProps | undefined;
+  // Detect an optional <ChartReferenceBand> child and resolve its band config once. The band renders a
+  // shaded region between two data-driven bounds (see the reference band layer below).
+  const referenceBand = useMemo(() => {
+    let found: ChartReferenceBandProps | undefined;
     React.Children.forEach(children, (child) => {
-      if (isValidElement(child) && getComponentId(child) === commonComponentIds.chartMinMaxRange) {
-        found = child.props as ChartMinMaxRangeProps;
+      if (isValidElement(child) && getComponentId(child) === commonComponentIds.chartReferenceBand) {
+        found = child.props as ChartReferenceBandProps;
       }
     });
     if (!found) return undefined;
     const colorToken =
-      found.color ?? (MIN_MAX_RANGE_DEFAULT_COLOR as MinMaxRangeLegendInfo['color']);
+      found.color ?? (REFERENCE_BAND_DEFAULT_COLOR as ReferenceBandLegendInfo['color']);
     return {
       lowerDataKey: found.lowerDataKey,
       upperDataKey: found.upperDataKey,
-      name: found.name ?? 'Min-max range',
+      name: found.name ?? 'Reference band',
       colorToken,
       showLegend: found.showLegend ?? true,
       fillColor: getIn(theme.colors, colorToken),
@@ -233,7 +233,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     };
   }, [children, theme]);
 
-  const hasMinMaxRange = Boolean(minMaxRange);
+  const hasReferenceBand = Boolean(referenceBand);
 
   // State to track which line is currently hovered
   const [hoveredDataKey, setHoveredDataKey] = useState<string | null>(null);
@@ -455,7 +455,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   };
 
   /**
-   * The min-max range band is painted from Recharts' own computed geometry: <ChartMinMaxRange>
+   * The reference band is painted from Recharts' own computed geometry: <ChartReferenceBand>
    * renders two invisible bound lines, and after layout we read those two curves' pixel anchors
    * and fill the region between them. This mirrors the null-bridge approach (Recharts v3 doesn't
    * expose axis scales to <Customized>), and produces a data-driven band that follows the curve —
@@ -469,7 +469,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   useLayoutEffect(() => {
     const container = containerRef.current;
-    if (!container || !hasMinMaxRange) {
+    if (!container || !hasReferenceBand) {
       setBandGeom((prev) => (prev.d === '' ? prev : { d: '', upperStart: null, lowerStart: null }));
       return undefined;
     }
@@ -478,10 +478,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       const surface = container.querySelector('svg.recharts-surface');
       if (!surface) return;
       const upperCurve = surface.querySelector<SVGPathElement>(
-        `.${MIN_MAX_RANGE_UPPER_CLASS} .recharts-line-curve`,
+        `.${REFERENCE_BAND_UPPER_CLASS} .recharts-line-curve`,
       );
       const lowerCurve = surface.querySelector<SVGPathElement>(
-        `.${MIN_MAX_RANGE_LOWER_CLASS} .recharts-line-curve`,
+        `.${REFERENCE_BAND_LOWER_CLASS} .recharts-line-curve`,
       );
       if (!upperCurve || !lowerCurve) return;
       const upperAnchors = parsePathAnchors(upperCurve.getAttribute('d') ?? '');
@@ -508,7 +508,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       const mutationObserver = new MutationObserver((mutations) => {
         // Ignore mutations from our own band layer to avoid a re-entrant loop.
         const isBandMutation = mutations.some(
-          (m) => m.target instanceof Element && m.target.closest(`.${MIN_MAX_RANGE_LAYER_CLASS}`),
+          (m) => m.target instanceof Element && m.target.closest(`.${REFERENCE_BAND_LAYER_CLASS}`),
         );
         if (isBandMutation) return;
         if (rafId !== null) cancelAnimationFrame(rafId);
@@ -534,11 +534,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       cleanups.push(() => resizeObserver.disconnect());
     }
     return () => cleanups.forEach((cleanup) => cleanup());
-  }, [data, hasMinMaxRange, minMaxRange?.lowerDataKey, minMaxRange?.upperDataKey]);
+  }, [data, hasReferenceBand, referenceBand?.lowerDataKey, referenceBand?.upperDataKey]);
 
   const renderMinMaxBand = (): React.ReactElement | null => {
-    if (!hasMinMaxRange || !bandGeom.d) return null;
-    const showLabels = minMaxRange?.showRangeLabels;
+    if (!hasReferenceBand || !bandGeom.d) return null;
+    const showLabels = referenceBand?.showRangeLabels;
     const labelColor = getIn(theme.colors, 'surface.text.gray.subtle');
     const labelProps = {
       fill: labelColor,
@@ -548,21 +548,21 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       textAnchor: 'start' as const,
     };
     return (
-      <g className={MIN_MAX_RANGE_LAYER_CLASS}>
+      <g className={REFERENCE_BAND_LAYER_CLASS}>
         <path
           d={bandGeom.d}
-          fill={minMaxRange?.fillColor}
-          fillOpacity={MIN_MAX_RANGE_FILL_OPACITY}
+          fill={referenceBand?.fillColor}
+          fillOpacity={REFERENCE_BAND_FILL_OPACITY}
           stroke="none"
         />
-        {showLabels && minMaxRange?.upperLabel && bandGeom.upperStart ? (
+        {showLabels && referenceBand?.upperLabel && bandGeom.upperStart ? (
           <text x={bandGeom.upperStart.x + 4} y={bandGeom.upperStart.y - 6} {...labelProps}>
-            {minMaxRange.upperLabel}
+            {referenceBand.upperLabel}
           </text>
         ) : null}
-        {showLabels && minMaxRange?.lowerLabel && bandGeom.lowerStart ? (
+        {showLabels && referenceBand?.lowerLabel && bandGeom.lowerStart ? (
           <text x={bandGeom.lowerStart.x + 4} y={bandGeom.lowerStart.y + 14} {...labelProps}>
-            {minMaxRange.lowerLabel}
+            {referenceBand.lowerLabel}
           </text>
         ) : null}
       </g>
@@ -584,14 +584,14 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     hoveredDataKey,
   ]);
 
-  const minMaxRangeLegendInfo = useMemo<MinMaxRangeLegendInfo | undefined>(() => {
-    if (!minMaxRange?.showLegend) return undefined;
+  const referenceBandLegendInfo = useMemo<ReferenceBandLegendInfo | undefined>(() => {
+    if (!referenceBand?.showLegend) return undefined;
     return {
-      name: minMaxRange.name,
-      color: minMaxRange.colorToken,
-      fillOpacity: MIN_MAX_RANGE_FILL_OPACITY,
+      name: referenceBand.name,
+      color: referenceBand.colorToken,
+      fillOpacity: REFERENCE_BAND_FILL_OPACITY,
     };
-  }, [minMaxRange]);
+  }, [referenceBand]);
 
   const commonChartContextValue = useMemo(
     () => ({
@@ -601,9 +601,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       setSelectedDataKeys,
       secondaryLabelMap,
       dataLength: data?.length,
-      minMaxRange: minMaxRangeLegendInfo,
+      referenceBand: referenceBandLegendInfo,
     }),
-    [dataColorMapping, selectedDataKeys, secondaryLabelMap, data?.length, minMaxRangeLegendInfo],
+    [dataColorMapping, selectedDataKeys, secondaryLabelMap, data?.length, referenceBandLegendInfo],
   );
 
   return (
@@ -620,7 +620,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             <RechartsResponsiveContainer width="100%" height="100%">
               <RechartsLineChart data={data} onMouseLeave={() => setHoveredDataKey(null)}>
                 {/* Painted first so the shaded band sits behind the trend lines. */}
-                {hasMinMaxRange ? <RechartsCustomized component={renderMinMaxBand} /> : null}
+                {hasReferenceBand ? <RechartsCustomized component={renderMinMaxBand} /> : null}
                 {lineChartModifiedChildrens}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
               </RechartsLineChart>

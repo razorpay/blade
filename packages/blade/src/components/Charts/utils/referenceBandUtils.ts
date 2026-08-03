@@ -2,7 +2,7 @@ import { monotoneInterpolate } from './nullBridgeUtils';
 import type { PixelPoint } from './nullBridgeUtils';
 
 /**
- * Build a closed SVG `d` path for a min-max range band, given the upper and lower bound points in
+ * Build a closed SVG `d` path for a reference band, given the upper and lower bound points in
  * pixel space (both ordered left→right, x ascending). The top edge is sampled left→right and the
  * bottom edge right→left along the monotone spline through each bound's anchors, so the band's
  * edges follow the same curve the trend line does instead of straight chords, then closed with `Z`.

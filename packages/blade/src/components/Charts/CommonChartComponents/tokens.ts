@@ -30,17 +30,17 @@ const MAX_WIDTH = 200;
 
 const DEFAULT_COLOR = 'data.background.categorical.blue.moderate';
 
-// Default fill colour + opacity for the min-max range band. A faint categorical blue rendered at a
+// Default fill colour + opacity for the reference band. A faint categorical blue rendered at a
 // low opacity reads as a subtle shaded range behind the trend line (matches the Figma design).
-const MIN_MAX_RANGE_DEFAULT_COLOR = 'data.background.categorical.blue.faint';
-const MIN_MAX_RANGE_FILL_OPACITY = 0.5;
+const REFERENCE_BAND_DEFAULT_COLOR = 'data.background.categorical.blue.faint';
+const REFERENCE_BAND_FILL_OPACITY = 0.5;
 
 // Stable classNames applied to the band's invisible bound lines (web) so ChartLineWrapper can find
 // their rendered curves and paint the filled band between them.
-const MIN_MAX_RANGE_LOWER_CLASS = 'blade-minmax-range-lower';
-const MIN_MAX_RANGE_UPPER_CLASS = 'blade-minmax-range-upper';
+const REFERENCE_BAND_LOWER_CLASS = 'blade-reference-band-lower';
+const REFERENCE_BAND_UPPER_CLASS = 'blade-reference-band-upper';
 // className on the <g> layer that holds the painted band path.
-const MIN_MAX_RANGE_LAYER_CLASS = 'blade-minmax-range-layer';
+const REFERENCE_BAND_LAYER_CLASS = 'blade-reference-band-layer';
 
 const componentId = {
   chartLegend: 'chart-legend',
@@ -49,7 +49,7 @@ const componentId = {
   chartCartesianGrid: 'chart-cartesian-grid',
   chartTooltip: 'chart-tooltip',
   chartReferenceLine: 'chart-reference-line',
-  chartMinMaxRange: 'chart-min-max-range',
+  chartReferenceBand: 'chart-reference-band',
 };
 
 export {
@@ -72,10 +72,10 @@ export {
   MIN_WIDTH,
   MAX_WIDTH,
   DEFAULT_COLOR,
-  MIN_MAX_RANGE_DEFAULT_COLOR,
-  MIN_MAX_RANGE_FILL_OPACITY,
-  MIN_MAX_RANGE_LOWER_CLASS,
-  MIN_MAX_RANGE_UPPER_CLASS,
-  MIN_MAX_RANGE_LAYER_CLASS,
+  REFERENCE_BAND_DEFAULT_COLOR,
+  REFERENCE_BAND_FILL_OPACITY,
+  REFERENCE_BAND_LOWER_CLASS,
+  REFERENCE_BAND_UPPER_CLASS,
+  REFERENCE_BAND_LAYER_CLASS,
   X_AXIS_TEXT_BASELINE_WITH_SECONDARY_LABEL,
 };

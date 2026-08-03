@@ -1378,7 +1378,7 @@ exports[`<ChartLineWrapper /> (native) should render a horizontal reference line
 </View>
 `;
 
-exports[`<ChartLineWrapper /> (native) should render a min-max range band with a legend entry 1`] = `
+exports[`<ChartLineWrapper /> (native) should render a reference band with a legend entry 1`] = `
 <View
   style={
     {
@@ -2290,7 +2290,7 @@ exports[`<ChartLineWrapper /> (native) should render a min-max range band with a
         </Text>
       </View>
       <View
-        data-blade-component="chart-legend-item-min-max-range"
+        data-blade-component="chart-legend-item-reference-band"
         style={
           {
             "alignItems": "center",
@@ -2299,7 +2299,7 @@ exports[`<ChartLineWrapper /> (native) should render a min-max range band with a
             "paddingVertical": 2,
           }
         }
-        testID="legend-min-max-range"
+        testID="legend-reference-band"
       >
         <View
           style={
@@ -2346,7 +2346,7 @@ exports[`<ChartLineWrapper /> (native) should render a min-max range band with a
             ]
           }
         >
-          Min-max range
+          Reference band
         </Text>
       </View>
     </View>

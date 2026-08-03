@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChartMinMaxRange /> should render a LineChart with a min-max range band 1`] = `
+exports[`<ChartReferenceBand /> should render a LineChart with a reference band 1`] = `
 .c5.c5.c5.c5.c5 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -165,7 +165,7 @@ exports[`<ChartMinMaxRange /> should render a LineChart with a min-max range ban
                     data-blade-component="text"
                     letter-spacing="50"
                   >
-                    Min-max range
+                    Reference band
                   </p>
                 </div>
               </div>
@@ -216,7 +216,7 @@ exports[`<ChartMinMaxRange /> should render a LineChart with a min-max range ban
               tabindex="-1"
             >
               <g
-                class="recharts-layer recharts-line blade-minmax-range-lower"
+                class="recharts-layer recharts-line blade-reference-band-lower"
               >
                 <path
                   class="recharts-curve recharts-line-curve"
@@ -230,7 +230,7 @@ exports[`<ChartMinMaxRange /> should render a LineChart with a min-max range ban
                 />
               </g>
               <g
-                class="recharts-layer recharts-line blade-minmax-range-upper"
+                class="recharts-layer recharts-line blade-reference-band-upper"
               >
                 <path
                   class="recharts-curve recharts-line-curve"

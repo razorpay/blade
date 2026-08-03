@@ -17,7 +17,7 @@ import {
 } from '../utils';
 import type {
   ChartReferenceLineProps,
-  ChartMinMaxRangeProps,
+  ChartReferenceBandProps,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
@@ -40,8 +40,8 @@ import {
   X_AXIS_LABEL_HEIGHT,
   LEGEND_MARGIN_TOP,
   X_OFFSET,
-  MIN_MAX_RANGE_LOWER_CLASS,
-  MIN_MAX_RANGE_UPPER_CLASS,
+  REFERENCE_BAND_LOWER_CLASS,
+  REFERENCE_BAND_UPPER_CLASS,
   componentId,
 } from './tokens';
 import { calculateTextWidth } from './utils';
@@ -593,20 +593,20 @@ const LegendItem = ({
 };
 
 /**
- * Informational (non-toggleable) legend entry for a min-max range band. The band isn't a selectable
+ * Informational (non-toggleable) legend entry for a reference band. The band isn't a selectable
  * series, so it renders a static square swatch in the band's fill colour + its label.
  */
-const MinMaxRangeLegendSwatch = (): JSX.Element | null => {
+const ReferenceBandLegendSwatch = (): JSX.Element | null => {
   const { theme } = useTheme();
-  const { minMaxRange } = useCommonChartComponentsContext();
-  if (!minMaxRange) return null;
+  const { referenceBand } = useCommonChartComponentsContext();
+  if (!referenceBand) return null;
   return (
     <Box display="flex" alignItems="center" padding="spacing.2">
       <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
         <span
           style={{
-            backgroundColor: getIn(theme.colors, minMaxRange.color),
-            opacity: minMaxRange.fillOpacity,
+            backgroundColor: getIn(theme.colors, referenceBand.color),
+            opacity: referenceBand.fillOpacity,
             width: theme.spacing[4],
             height: theme.spacing[4],
             display: 'inline-block',
@@ -614,7 +614,7 @@ const MinMaxRangeLegendSwatch = (): JSX.Element | null => {
           }}
         />
         <Text size="medium" color="surface.text.gray.muted">
-          {minMaxRange.name}
+          {referenceBand.name}
         </Text>
       </Box>
     </Box>
@@ -637,7 +637,7 @@ const CustomSquareLegend = (props: {
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
-  const { chartName, dataColorMapping, minMaxRange } = useCommonChartComponentsContext();
+  const { chartName, dataColorMapping, referenceBand } = useCommonChartComponentsContext();
 
   /*
   This is a custom legend component that is used to display the legend for the chart.
@@ -695,7 +695,7 @@ const CustomSquareLegend = (props: {
   );
 
   // Nothing to render — no real series and no range band.
-  if (filteredPayload.length === 0 && !minMaxRange) {
+  if (filteredPayload.length === 0 && !referenceBand) {
     return null;
   }
 
@@ -718,8 +718,8 @@ const CustomSquareLegend = (props: {
           isClickable={isClickable}
         />
       ))}
-      {/* Static swatch for the min-max range band (not a toggleable series). */}
-      <MinMaxRangeLegendSwatch />
+      {/* Static swatch for the reference band (not a toggleable series). */}
+      <ReferenceBandLegendSwatch />
     </Box>
   );
 };
@@ -886,17 +886,17 @@ const ChartReferenceLine: React.FC<ChartReferenceLineProps> = ({ label, x, y }) 
 };
 
 /**
- * Min-max range band. Renders two invisible bound lines (`lowerDataKey` / `upperDataKey`) so
+ * Reference band. Renders two invisible bound lines (`lowerDataKey` / `upperDataKey`) so
  * Recharts computes their geometry and folds them into the y-domain; ChartLineWrapper then reads
  * those curves and paints the shaded band between them (a data-driven range that varies per point,
  * unlike Recharts' fixed-rectangle `ReferenceArea`). The band's fill + legend swatch are handled by
  * the wrapper and the shared legend via context.
  */
-const _ChartMinMaxRange: React.FC<ChartMinMaxRangeProps> = ({ lowerDataKey, upperDataKey }) => {
+const _ChartReferenceBand: React.FC<ChartReferenceBandProps> = ({ lowerDataKey, upperDataKey }) => {
   return (
     <>
       <RechartsLine
-        className={MIN_MAX_RANGE_LOWER_CLASS}
+        className={REFERENCE_BAND_LOWER_CLASS}
         type="monotone"
         dataKey={lowerDataKey}
         stroke="transparent"
@@ -909,7 +909,7 @@ const _ChartMinMaxRange: React.FC<ChartMinMaxRangeProps> = ({ lowerDataKey, uppe
         isAnimationActive={false}
       />
       <RechartsLine
-        className={MIN_MAX_RANGE_UPPER_CLASS}
+        className={REFERENCE_BAND_UPPER_CLASS}
         type="monotone"
         dataKey={upperDataKey}
         stroke="transparent"
@@ -925,8 +925,8 @@ const _ChartMinMaxRange: React.FC<ChartMinMaxRangeProps> = ({ lowerDataKey, uppe
   );
 };
 
-const ChartMinMaxRange = assignWithoutSideEffects(_ChartMinMaxRange, {
-  componentId: componentId.chartMinMaxRange,
+const ChartReferenceBand = assignWithoutSideEffects(_ChartReferenceBand, {
+  componentId: componentId.chartReferenceBand,
 });
 
 export {
@@ -936,5 +936,5 @@ export {
   ChartLegend,
   ChartTooltip,
   ChartReferenceLine,
-  ChartMinMaxRange,
+  ChartReferenceBand,
 };

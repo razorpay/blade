@@ -6,7 +6,7 @@ import {
   ChartCartesianGrid,
   ChartTooltip,
   ChartLegend,
-  ChartMinMaxRange,
+  ChartReferenceBand,
 } from '../../CommonChartComponents';
 import { waitFor } from '@testing-library/react';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -458,7 +458,7 @@ describe('LineChart Styling Tests', () => {
   });
 });
 
-describe('<ChartMinMaxRange />', () => {
+describe('<ChartReferenceBand />', () => {
   const rangeData = [
     { name: 'Jan', sales: 4000, min: 3000, max: 5000 },
     { name: 'Feb', sales: 3000, min: 2200, max: 4200 },
@@ -466,11 +466,11 @@ describe('<ChartMinMaxRange />', () => {
     { name: 'Apr', sales: 5000, min: 3500, max: 6000 },
   ];
 
-  it('should render a LineChart with a min-max range band', () => {
+  it('should render a LineChart with a reference band', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartLineWrapper data={rangeData}>
-          <ChartMinMaxRange lowerDataKey="min" upperDataKey="max" name="Min-max range" />
+          <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
           <ChartXAxis dataKey="name" />
           <ChartYAxis />
           <ChartLegend />
@@ -485,7 +485,7 @@ describe('<ChartMinMaxRange />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartLineWrapper data={rangeData}>
-          <ChartMinMaxRange lowerDataKey="min" upperDataKey="max" />
+          <ChartReferenceBand lowerDataKey="min" upperDataKey="max" />
           <ChartXAxis dataKey="name" />
           <ChartLine dataKey="sales" />
         </ChartLineWrapper>
@@ -493,16 +493,16 @@ describe('<ChartMinMaxRange />', () => {
     );
     // The band is derived from the rendered bound-line geometry, committed asynchronously.
     await waitFor(() => {
-      expect(container.querySelectorAll('.blade-minmax-range-layer path')).toHaveLength(1);
+      expect(container.querySelectorAll('.blade-reference-band-layer path')).toHaveLength(1);
     });
-    const bandPath = container.querySelector('.blade-minmax-range-layer path')!;
+    const bandPath = container.querySelector('.blade-reference-band-layer path')!;
     // A closed, filled area — has a fill and closes with Z.
     expect(bandPath).toHaveAttribute('fill');
     expect(bandPath.getAttribute('fill')).not.toBe('none');
     expect(bandPath.getAttribute('d')).toContain('Z');
   });
 
-  it('should not render a band layer when no ChartMinMaxRange is present', () => {
+  it('should not render a band layer when no ChartReferenceBand is present', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartLineWrapper data={rangeData}>
@@ -510,14 +510,14 @@ describe('<ChartMinMaxRange />', () => {
         </ChartLineWrapper>
       </Box>,
     );
-    expect(container.querySelectorAll('.blade-minmax-range-layer path')).toHaveLength(0);
+    expect(container.querySelectorAll('.blade-reference-band-layer path')).toHaveLength(0);
   });
 
   it('should render range labels (p25 / p75) on the band by default', async () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartLineWrapper data={rangeData}>
-          <ChartMinMaxRange
+          <ChartReferenceBand
             lowerDataKey="min"
             upperDataKey="max"
             lowerLabel="p25"
@@ -529,7 +529,7 @@ describe('<ChartMinMaxRange />', () => {
       </Box>,
     );
     await waitFor(() => {
-      const texts = Array.from(container.querySelectorAll('.blade-minmax-range-layer text')).map(
+      const texts = Array.from(container.querySelectorAll('.blade-reference-band-layer text')).map(
         (node) => node.textContent,
       );
       expect(texts).toEqual(expect.arrayContaining(['p25', 'p75']));
@@ -540,7 +540,7 @@ describe('<ChartMinMaxRange />', () => {
     const { container } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartLineWrapper data={rangeData}>
-          <ChartMinMaxRange
+          <ChartReferenceBand
             lowerDataKey="min"
             upperDataKey="max"
             lowerLabel="p25"
@@ -554,16 +554,16 @@ describe('<ChartMinMaxRange />', () => {
     );
     // Band still paints, but no label text nodes.
     await waitFor(() => {
-      expect(container.querySelectorAll('.blade-minmax-range-layer path')).toHaveLength(1);
+      expect(container.querySelectorAll('.blade-reference-band-layer path')).toHaveLength(1);
     });
-    expect(container.querySelectorAll('.blade-minmax-range-layer text')).toHaveLength(0);
+    expect(container.querySelectorAll('.blade-reference-band-layer text')).toHaveLength(0);
   });
 
   it('should show a legend entry for the range band', async () => {
     const { queryByText } = renderWithTheme(
       <Box width="500px" height="500px">
         <ChartLineWrapper data={rangeData}>
-          <ChartMinMaxRange lowerDataKey="min" upperDataKey="max" name="Peer range" />
+          <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Peer range" />
           <ChartXAxis dataKey="name" />
           <ChartLegend />
           <ChartLine dataKey="sales" name="Sales" />
