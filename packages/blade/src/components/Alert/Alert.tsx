@@ -166,24 +166,18 @@ const _Alert = (
   const isDescriptionOnly = !title && !actions?.primary && !actions?.secondary;
 
   const Icon = icon ?? intentIconMap[color];
-  const hasActions = Boolean(actions?.primary || actions?.secondary);
 
-  // Desktop full-width banners with inline actions are center-aligned as a whole
-  // row by StyledAlert (single-line copy by design), keep the icon row-centered there
-  const isInlineBanner = isFullWidth && isDesktop && hasActions && !title;
-
-  // Everywhere else, anchor the icon to the first line of the adjacent text
-  // (title when present, else description) instead of the whole text block,
-  // because a block-centered icon drifts once the description wraps to multiple lines.
+  // Anchor the icon to the first line of the adjacent text (title when present, else
+  // description) instead of the whole text block, because a block-centered icon drifts
+  // once the description wraps to multiple lines. This includes desktop full-width
+  // banners with inline actions: their copy is not guaranteed to stay single-line, and
+  // the icon + content group in the render below keeps the single-line case row-centered
+  // against the action buttons.
   // The wrapper is exactly one line-box tall and the icon centers inside it:
   // title is Text size="medium" (lineHeights[100]), description is Text size="small" (lineHeights[75])
   const firstLineHeight = makeSize(theme.typography.lineHeights[title ? 100 : 75]);
 
-  const leadingIcon = isInlineBanner ? (
-    <BaseBox display="flex" alignSelf="center" marginTop="spacing.1">
-      <Icon color={getAlertIconColor(color, emphasis)} size="medium" />
-    </BaseBox>
-  ) : (
+  const leadingIcon = (
     <BaseBox
       display="flex"
       alignSelf="flex-start"
@@ -335,15 +329,17 @@ const _Alert = (
         maxWidth={isFullWidth ? 'auto' : maxWidth ?? DEFAULT_MAX_WIDTH}
         textAlign={'left' as never}
       >
-        {leadingIcon}
-        <BaseBox
-          flex={1}
-          paddingLeft="spacing.3"
-          paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
-        >
-          {_title}
-          {_description}
-          {actionsVertical}
+        <BaseBox display="flex" flexDirection="row" alignItems="flex-start" flex={1} minWidth="0px">
+          {leadingIcon}
+          <BaseBox
+            flex={1}
+            paddingLeft="spacing.3"
+            paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+          >
+            {_title}
+            {_description}
+            {actionsVertical}
+          </BaseBox>
         </BaseBox>
         {actionsHorizontal}
         {closeButton}

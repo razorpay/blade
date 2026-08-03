@@ -11,6 +11,24 @@ exports[`<Alert /> should accept custom maxWidth 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -26,7 +44,7 @@ exports[`<Alert /> should accept custom maxWidth 1`] = `
   height: 17px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -34,7 +52,7 @@ exports[`<Alert /> should accept custom maxWidth 1`] = `
   padding-left: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   margin-top: 2px;
 }
 
@@ -56,7 +74,7 @@ exports[`<Alert /> should accept custom maxWidth 1`] = `
   box-sizing: border-box;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -84,12 +102,12 @@ exports[`<Alert /> should accept custom maxWidth 1`] = `
   margin-top: 2px;
 }
 
-.c6.c6.c6.c6.c6:hover:not([disabled]) {
+.c7.c7.c7.c7.c7:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:focus-visible {
+.c7.c7.c7.c7.c7:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -103,11 +121,11 @@ exports[`<Alert /> should accept custom maxWidth 1`] = `
   background-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:active {
+.c7.c7.c7.c7.c7:active {
   color: hsla(200,10%,18%,1);
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -138,54 +156,59 @@ exports[`<Alert /> should accept custom maxWidth 1`] = `
         class="c2"
         data-blade-component="base-box"
       >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
+        <div
+          class="c3"
+          data-blade-component="base-box"
         >
-          <path
-            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-            data-blade-component="svg-path"
-            fill="hsla(200, 10%, 18%, 1)"
-          />
-          <path
-            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-            data-blade-component="svg-path"
-            fill="hsla(200, 10%, 18%, 1)"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-            data-blade-component="svg-path"
-            fill="hsla(200, 10%, 18%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        data-blade-component="base-box"
-      >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+              data-blade-component="svg-path"
+              fill="hsla(200, 10%, 18%, 1)"
+            />
+            <path
+              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+              data-blade-component="svg-path"
+              fill="hsla(200, 10%, 18%, 1)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+              data-blade-component="svg-path"
+              fill="hsla(200, 10%, 18%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
         <div
           class="c4"
           data-blade-component="base-box"
         >
-          <p
+          <div
             class="c5"
-            data-blade-component="text"
-            letter-spacing="50"
+            data-blade-component="base-box"
           >
-            Test alert with custom max width
-          </p>
+            <p
+              class="c6"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Test alert with custom max width
+            </p>
+          </div>
         </div>
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="c7"
         data-blade-component="icon-button"
         type="button"
       >
@@ -221,6 +244,24 @@ exports[`<Alert /> should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -236,7 +277,7 @@ exports[`<Alert /> should render 1`] = `
   height: 17px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -244,7 +285,7 @@ exports[`<Alert /> should render 1`] = `
   padding-left: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   margin-top: 2px;
 }
 
@@ -266,7 +307,7 @@ exports[`<Alert /> should render 1`] = `
   box-sizing: border-box;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -294,12 +335,12 @@ exports[`<Alert /> should render 1`] = `
   margin-top: 2px;
 }
 
-.c6.c6.c6.c6.c6:hover:not([disabled]) {
+.c7.c7.c7.c7.c7:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:focus-visible {
+.c7.c7.c7.c7.c7:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -313,11 +354,11 @@ exports[`<Alert /> should render 1`] = `
   background-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:active {
+.c7.c7.c7.c7.c7:active {
   color: hsla(200,10%,18%,1);
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -348,54 +389,59 @@ exports[`<Alert /> should render 1`] = `
         class="c2"
         data-blade-component="base-box"
       >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
+        <div
+          class="c3"
+          data-blade-component="base-box"
         >
-          <path
-            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-            data-blade-component="svg-path"
-            fill="hsla(200, 10%, 18%, 1)"
-          />
-          <path
-            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-            data-blade-component="svg-path"
-            fill="hsla(200, 10%, 18%, 1)"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-            data-blade-component="svg-path"
-            fill="hsla(200, 10%, 18%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        data-blade-component="base-box"
-      >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+              data-blade-component="svg-path"
+              fill="hsla(200, 10%, 18%, 1)"
+            />
+            <path
+              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+              data-blade-component="svg-path"
+              fill="hsla(200, 10%, 18%, 1)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+              data-blade-component="svg-path"
+              fill="hsla(200, 10%, 18%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
         <div
           class="c4"
           data-blade-component="base-box"
         >
-          <p
+          <div
             class="c5"
-            data-blade-component="text"
-            letter-spacing="50"
+            data-blade-component="base-box"
           >
-            Currently you can only accept payments in international currencies using PayPal.
-          </p>
+            <p
+              class="c6"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Currently you can only accept payments in international currencies using PayPal.
+            </p>
+          </div>
         </div>
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="c7"
         data-blade-component="icon-button"
         type="button"
       >
@@ -431,6 +477,24 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -446,7 +510,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   height: 17px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -454,7 +518,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   padding-left: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   margin-top: 2px;
 }
 
@@ -477,7 +541,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   box-sizing: border-box;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -505,12 +569,12 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   margin-top: 2px;
 }
 
-.c6.c6.c6.c6.c6:hover:not([disabled]) {
+.c7.c7.c7.c7.c7:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:focus-visible {
+.c7.c7.c7.c7.c7:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -524,11 +588,11 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   background-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:active {
+.c7.c7.c7.c7.c7:active {
   color: hsla(200,10%,18%,1);
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -559,47 +623,52 @@ exports[`<Alert /> should render positive color and full width 1`] = `
         class="c2"
         data-blade-component="base-box"
       >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
+        <div
+          class="c3"
+          data-blade-component="base-box"
         >
-          <path
-            d="M4.15845 7.14673C6.74812 4.11682 11.0222 3.15114 14.663 4.77337C15.1675 4.99815 15.7586 4.77141 15.9834 4.26694C16.2082 3.76247 15.9815 3.17129 15.477 2.94651C11.0272 0.963789 5.80325 2.14407 2.6381 5.84729C-0.527049 9.55051 -0.879431 14.8945 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5428C18.7905 22.1615 21.9972 17.8715 22 12.9999V12.0699C22 11.5177 21.5523 11.0699 21 11.0699C20.4477 11.0699 20 11.5177 20 12.0699V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.755 5.61926 21.2364 3.44986 17.8927C1.28047 14.549 1.56878 10.1766 4.15845 7.14673Z"
-            data-blade-component="svg-path"
-            fill="hsla(150, 100%, 23%, 1)"
-          />
-          <path
-            d="M22.7071 4.70705C23.0976 4.31652 23.0976 3.68336 22.7071 3.29283C22.3166 2.90231 21.6834 2.90231 21.2929 3.29283L11 13.5857L8.70711 11.2928C8.31658 10.9023 7.68342 10.9023 7.29289 11.2928C6.90237 11.6834 6.90237 12.3165 7.29289 12.707L10.2929 15.707C10.6834 16.0976 11.3166 16.0976 11.7071 15.707L22.7071 4.70705Z"
-            data-blade-component="svg-path"
-            fill="hsla(150, 100%, 23%, 1)"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        data-blade-component="base-box"
-      >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              d="M4.15845 7.14673C6.74812 4.11682 11.0222 3.15114 14.663 4.77337C15.1675 4.99815 15.7586 4.77141 15.9834 4.26694C16.2082 3.76247 15.9815 3.17129 15.477 2.94651C11.0272 0.963789 5.80325 2.14407 2.6381 5.84729C-0.527049 9.55051 -0.879431 14.8945 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5428C18.7905 22.1615 21.9972 17.8715 22 12.9999V12.0699C22 11.5177 21.5523 11.0699 21 11.0699C20.4477 11.0699 20 11.5177 20 12.0699V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.755 5.61926 21.2364 3.44986 17.8927C1.28047 14.549 1.56878 10.1766 4.15845 7.14673Z"
+              data-blade-component="svg-path"
+              fill="hsla(150, 100%, 23%, 1)"
+            />
+            <path
+              d="M22.7071 4.70705C23.0976 4.31652 23.0976 3.68336 22.7071 3.29283C22.3166 2.90231 21.6834 2.90231 21.2929 3.29283L11 13.5857L8.70711 11.2928C8.31658 10.9023 7.68342 10.9023 7.29289 11.2928C6.90237 11.6834 6.90237 12.3165 7.29289 12.707L10.2929 15.707C10.6834 16.0976 11.3166 16.0976 11.7071 15.707L22.7071 4.70705Z"
+              data-blade-component="svg-path"
+              fill="hsla(150, 100%, 23%, 1)"
+            />
+          </svg>
+        </div>
         <div
           class="c4"
           data-blade-component="base-box"
         >
-          <p
+          <div
             class="c5"
-            data-blade-component="text"
-            letter-spacing="50"
+            data-blade-component="base-box"
           >
-            Currently you can only accept payments in international currencies using PayPal.
-          </p>
+            <p
+              class="c6"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Currently you can only accept payments in international currencies using PayPal.
+            </p>
+          </div>
         </div>
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="c7"
         data-blade-component="icon-button"
         type="button"
       >
@@ -635,6 +704,24 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -650,7 +737,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   height: 17px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -658,7 +745,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   padding-left: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   margin-top: 2px;
 }
 
@@ -681,7 +768,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   box-sizing: border-box;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -709,12 +796,12 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   margin-top: 2px;
 }
 
-.c6.c6.c6.c6.c6:hover:not([disabled]) {
+.c7.c7.c7.c7.c7:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:focus-visible {
+.c7.c7.c7.c7.c7:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -728,11 +815,11 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   background-color: transparent;
 }
 
-.c6.c6.c6.c6.c6:active {
+.c7.c7.c7.c7.c7:active {
   color: hsla(200,10%,18%,1);
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -763,47 +850,52 @@ exports[`<Alert /> should render positive color and full width 2`] = `
         class="c2"
         data-blade-component="base-box"
       >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
+        <div
+          class="c3"
+          data-blade-component="base-box"
         >
-          <path
-            d="M4.15845 7.14673C6.74812 4.11682 11.0222 3.15114 14.663 4.77337C15.1675 4.99815 15.7586 4.77141 15.9834 4.26694C16.2082 3.76247 15.9815 3.17129 15.477 2.94651C11.0272 0.963789 5.80325 2.14407 2.6381 5.84729C-0.527049 9.55051 -0.879431 14.8945 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5428C18.7905 22.1615 21.9972 17.8715 22 12.9999V12.0699C22 11.5177 21.5523 11.0699 21 11.0699C20.4477 11.0699 20 11.5177 20 12.0699V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.755 5.61926 21.2364 3.44986 17.8927C1.28047 14.549 1.56878 10.1766 4.15845 7.14673Z"
-            data-blade-component="svg-path"
-            fill="hsla(150, 100%, 23%, 1)"
-          />
-          <path
-            d="M22.7071 4.70705C23.0976 4.31652 23.0976 3.68336 22.7071 3.29283C22.3166 2.90231 21.6834 2.90231 21.2929 3.29283L11 13.5857L8.70711 11.2928C8.31658 10.9023 7.68342 10.9023 7.29289 11.2928C6.90237 11.6834 6.90237 12.3165 7.29289 12.707L10.2929 15.707C10.6834 16.0976 11.3166 16.0976 11.7071 15.707L22.7071 4.70705Z"
-            data-blade-component="svg-path"
-            fill="hsla(150, 100%, 23%, 1)"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        data-blade-component="base-box"
-      >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              d="M4.15845 7.14673C6.74812 4.11682 11.0222 3.15114 14.663 4.77337C15.1675 4.99815 15.7586 4.77141 15.9834 4.26694C16.2082 3.76247 15.9815 3.17129 15.477 2.94651C11.0272 0.963789 5.80325 2.14407 2.6381 5.84729C-0.527049 9.55051 -0.879431 14.8945 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5428C18.7905 22.1615 21.9972 17.8715 22 12.9999V12.0699C22 11.5177 21.5523 11.0699 21 11.0699C20.4477 11.0699 20 11.5177 20 12.0699V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.755 5.61926 21.2364 3.44986 17.8927C1.28047 14.549 1.56878 10.1766 4.15845 7.14673Z"
+              data-blade-component="svg-path"
+              fill="hsla(150, 100%, 23%, 1)"
+            />
+            <path
+              d="M22.7071 4.70705C23.0976 4.31652 23.0976 3.68336 22.7071 3.29283C22.3166 2.90231 21.6834 2.90231 21.2929 3.29283L11 13.5857L8.70711 11.2928C8.31658 10.9023 7.68342 10.9023 7.29289 11.2928C6.90237 11.6834 6.90237 12.3165 7.29289 12.707L10.2929 15.707C10.6834 16.0976 11.3166 16.0976 11.7071 15.707L22.7071 4.70705Z"
+              data-blade-component="svg-path"
+              fill="hsla(150, 100%, 23%, 1)"
+            />
+          </svg>
+        </div>
         <div
           class="c4"
           data-blade-component="base-box"
         >
-          <p
+          <div
             class="c5"
-            data-blade-component="text"
-            letter-spacing="50"
+            data-blade-component="base-box"
           >
-            Currently you can only accept payments in international currencies using PayPal.
-          </p>
+            <p
+              class="c6"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Currently you can only accept payments in international currencies using PayPal.
+            </p>
+          </div>
         </div>
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="c7"
         data-blade-component="icon-button"
         type="button"
       >
@@ -839,6 +931,24 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -854,7 +964,7 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   height: 20px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -862,11 +972,11 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   padding-left: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   margin-bottom: 4px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   margin-top: 0px;
 }
 
@@ -888,7 +998,7 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   box-sizing: border-box;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -916,12 +1026,12 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   margin-top: 0px;
 }
 
-.c8.c8.c8.c8.c8:hover:not([disabled]) {
+.c9.c9.c9.c9.c9:hover:not([disabled]) {
   color: hsla(0,0%,100%,0.8);
   background-color: transparent;
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
+.c9.c9.c9.c9.c9:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -935,11 +1045,11 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   background-color: transparent;
 }
 
-.c8.c8.c8.c8.c8:active {
+.c9.c9.c9.c9.c9:active {
   color: hsla(0,0%,100%,0.8);
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -956,7 +1066,7 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(0,0%,100%,0.88);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -987,66 +1097,71 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
         class="c2"
         data-blade-component="base-box"
       >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
+        <div
+          class="c3"
+          data-blade-component="base-box"
         >
-          <path
-            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-            data-blade-component="svg-path"
-            fill="hsla(0, 0%, 100%, 1)"
-          />
-          <path
-            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-            data-blade-component="svg-path"
-            fill="hsla(0, 0%, 100%, 1)"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-            data-blade-component="svg-path"
-            fill="hsla(0, 0%, 100%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        data-blade-component="base-box"
-      >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+              data-blade-component="svg-path"
+              fill="hsla(0, 0%, 100%, 1)"
+            />
+            <path
+              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+              data-blade-component="svg-path"
+              fill="hsla(0, 0%, 100%, 1)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+              data-blade-component="svg-path"
+              fill="hsla(0, 0%, 100%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
         <div
           class="c4"
           data-blade-component="base-box"
         >
-          <p
+          <div
             class="c5"
-            data-blade-component="text"
-            letter-spacing="50"
+            data-blade-component="base-box"
           >
-            Payment Link Created
-          </p>
-        </div>
-        <div
-          class="c6"
-          data-blade-component="base-box"
-        >
-          <p
+            <p
+              class="c6"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Payment Link Created
+            </p>
+          </div>
+          <div
             class="c7"
-            data-blade-component="text"
-            letter-spacing="50"
+            data-blade-component="base-box"
           >
-            Your payment link has been created successfully.
-          </p>
+            <p
+              class="c8"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Your payment link has been created successfully.
+            </p>
+          </div>
         </div>
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c8"
+        class="c9"
         data-blade-component="icon-button"
         type="button"
       >
@@ -1082,6 +1197,24 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1097,7 +1230,7 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
   height: 20px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1105,11 +1238,11 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
   padding-left: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   margin-bottom: 4px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   margin-top: 0px;
 }
 
@@ -1131,7 +1264,7 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
   box-sizing: border-box;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -1159,12 +1292,12 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
   margin-top: 0px;
 }
 
-.c8.c8.c8.c8.c8:hover:not([disabled]) {
+.c9.c9.c9.c9.c9:hover:not([disabled]) {
   color: hsla(200,10%,18%,1);
   background-color: transparent;
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
+.c9.c9.c9.c9.c9:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1178,11 +1311,11 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
   background-color: transparent;
 }
 
-.c8.c8.c8.c8.c8:active {
+.c9.c9.c9.c9.c9:active {
   color: hsla(200,10%,18%,1);
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1199,7 +1332,7 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -1230,66 +1363,71 @@ exports[`<Alert /> should render primary color with subtle emphasis 1`] = `
         class="c2"
         data-blade-component="base-box"
       >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="16px"
-          viewBox="0 0 24 24"
-          width="16px"
+        <div
+          class="c3"
+          data-blade-component="base-box"
         >
-          <path
-            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-            data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
-          />
-          <path
-            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-            data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-            data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        data-blade-component="base-box"
-      >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+              data-blade-component="svg-path"
+              fill="hsla(218, 89%, 51%, 1)"
+            />
+            <path
+              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+              data-blade-component="svg-path"
+              fill="hsla(218, 89%, 51%, 1)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+              data-blade-component="svg-path"
+              fill="hsla(218, 89%, 51%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
         <div
           class="c4"
           data-blade-component="base-box"
         >
-          <p
+          <div
             class="c5"
-            data-blade-component="text"
-            letter-spacing="50"
+            data-blade-component="base-box"
           >
-            Payment Link Created
-          </p>
-        </div>
-        <div
-          class="c6"
-          data-blade-component="base-box"
-        >
-          <p
+            <p
+              class="c6"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Payment Link Created
+            </p>
+          </div>
+          <div
             class="c7"
-            data-blade-component="text"
-            letter-spacing="50"
+            data-blade-component="base-box"
           >
-            Your payment link has been created successfully.
-          </p>
+            <p
+              class="c8"
+              data-blade-component="text"
+              letter-spacing="50"
+            >
+              Your payment link has been created successfully.
+            </p>
+          </div>
         </div>
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c8"
+        class="c9"
         data-blade-component="icon-button"
         type="button"
       >
