@@ -38,7 +38,7 @@ export function getAnnouncementBannerClasses(
 // Structural class for the leading icon wrapper
 export const announcementBannerIconWrapperClass = styles['icon-wrapper'];
 
-// CSS-driven color classes (respond to body[data-theme='dark'], no JS required)
+// CSS-driven color classes (respond to body[data-theme='dark'] / [data-blade-color-scheme='dark'], no JS required)
 export const announcementBannerTextColorClass = styles['text-color'];
 export const announcementBannerIconColorClass = styles['icon-color'];
 

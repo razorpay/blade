@@ -32,7 +32,10 @@ type StyledComponentAutoCompleteAndroid =
   | 'email'
   | 'username'
   | 'password'
+  | 'password-new'
+  | 'sms-otp'
   | 'postal-code'
+  | 'postal-address-country'
   | 'tel'
   | undefined;
 
@@ -87,7 +90,7 @@ type StyledComponentInputProps = Omit<
 > & {
   isTextArea?: boolean;
   isFocused: boolean;
-  autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
+  autoComplete?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
   editable?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
   $size: NonNullable<BaseInputProps['size']>;
@@ -416,7 +419,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       // source: https://reactnative.dev/docs/textinput/#keyboardtype
       keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
       returnKeyType={keyboardReturnKeyType}
-      autoCompleteType={
+      autoComplete={
         autoCompleteSuggestionType
           ? (autoCompleteSuggestionTypeAndroid[
               autoCompleteSuggestionType as Platform.CastNative<

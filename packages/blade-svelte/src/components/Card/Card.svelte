@@ -1,10 +1,14 @@
 <script lang="ts">
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
+  import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import CardRoot from './CardRoot.svelte';
   import CardSurface from './CardSurface.svelte';
   import LinkOverlay from './LinkOverlay.svelte';
   import { setCardContext } from './CardContext';
   import type { CardProps } from './types';
+
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     children: cardContent,
@@ -37,8 +41,13 @@
     overflowY,
     validationState = 'none',
     testID,
+    styleOverride,
     ...rest
   }: CardProps = $props();
+
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('Card', styleOverride, themeContextGetter),
+  );
 
   setCardContext(() => ({ size }));
 
@@ -105,6 +114,7 @@
   {maxWidth}
   {cursor}
   {testID}
+  styleOverrideRoot={resolvedStyleOverride?.root}
   {...rest}
   {...analyticsAttrs}
 >

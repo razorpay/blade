@@ -4,6 +4,7 @@
     MetaConstants,
     makeAnalyticsAttribute,
     getStyledPropsClasses,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
     getAvatarWrapperClasses,
@@ -15,10 +16,12 @@
   import AvatarButton from './AvatarButton.svelte';
   import { UserIcon } from '../Icons/UserIcon';
   import { getAvatarGroupContext } from './avatarContext';
+  import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import type { AvatarProps, AvatarImgProps } from './types';
 
-  // Prevent tree-shaking
   const templateClasses = getAvatarTemplateClasses();
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     name,
@@ -39,6 +42,7 @@
     crossOrigin,
     referrerPolicy,
     testID,
+    styleOverride,
     // Interaction props
     onClick,
     onBlur,
@@ -52,6 +56,10 @@
     onTouchEnd,
     ...rest
   }: AvatarProps = $props();
+
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('Avatar', styleOverride, themeContextGetter),
+  );
 
   // Group context overrides size and tracks whether this avatar is hidden by `maxCount`.
   const groupProps = getAvatarGroupContext();
@@ -73,7 +81,11 @@
   // Styled props
   const styledProps = $derived(getStyledPropsClasses(rest));
   const combinedClasses = $derived(
-    [wrapperClasses, ...(styledProps.classes || [])].filter(Boolean).join(' '),
+    cx(
+      wrapperClasses,
+      ...(styledProps.classes || []),
+      resolvedStyleOverride?.root,
+    ),
   );
 
   // Meta & analytics attributes
