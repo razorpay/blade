@@ -1555,7 +1555,7 @@ const RenderCardComponent = memo(({ title, description, footer, children, export
   // Does the work and throws on failure; GenUIActionLink dispatches the
   // success/error telemetry based on the outcome.
   const handleDownloadPng = async (): Promise<void> => {
-    if (!cardRef.current) return;
+    if (!cardRef.current) throw new Error('[GenUI]: Card ref not available');
     const blob = await captureNodeAsPng(cardRef.current);
     downloadBlob(blob, `${toFileNameSlug(title, 'card')}.png`, 'image/png');
   };
