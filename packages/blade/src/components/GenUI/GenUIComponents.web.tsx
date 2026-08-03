@@ -1427,194 +1427,202 @@ const calculateColumnWidths = (headers: string[], _rows: Partial<TableCellType>[
   return headers.map(() => 'minmax(max-content, 1fr)');
 };
 
-const RenderTableComponent = memo(({ headers, rows, rowActions, exportActions }: TableComponent) => {
-  const columnWidths = useMemo(
-    () => (headers && rows ? calculateColumnWidths(headers, rows) : []),
-    [headers, rows],
-  );
+const RenderTableComponent = memo(
+  ({ headers, rows, rowActions, exportActions }: TableComponent) => {
+    const columnWidths = useMemo(
+      () => (headers && rows ? calculateColumnWidths(headers, rows) : []),
+      [headers, rows],
+    );
 
-  if (!headers || !rows || headers.length === 0 || rows.length === 0) {
-    return null;
-  }
-
-  // Handlers do the work and throw on failure; GenUIActionLink dispatches the
-  // success/error telemetry based on the outcome.
-  const handleCopyCsv = async (): Promise<void> => {
-    const csv = serializeTableToCsv(headers, rows);
-    const didCopy = await copyToClipboard(csv);
-    if (!didCopy) {
-      throw new Error('[GenUI]: Failed to copy table as CSV');
+    if (!headers || !rows || headers.length === 0 || rows.length === 0) {
+      return null;
     }
-  };
 
-  const handleDownloadCsv = (): void => {
-    const csv = serializeTableToCsv(headers, rows);
-    downloadBlob(csv, 'table.csv', 'text/csv;charset=utf-8');
-  };
+    // Handlers do the work and throw on failure; GenUIActionLink dispatches the
+    // success/error telemetry based on the outcome.
+    const handleCopyCsv = async (): Promise<void> => {
+      const csv = serializeTableToCsv(headers, rows);
+      const didCopy = await copyToClipboard(csv);
+      if (!didCopy) {
+        throw new Error('[GenUI]: Failed to copy table as CSV');
+      }
+    };
 
-  // Transform rows into table data format with id
-  const tableData = {
-    nodes: rows.map((row, index) => ({
-      id: `row-${index}`,
-      cells: row,
-    })),
-  };
+    const handleDownloadCsv = (): void => {
+      const csv = serializeTableToCsv(headers, rows);
+      downloadBlob(csv, 'table.csv', 'text/csv;charset=utf-8');
+    };
 
-  return (
-    <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
-      <Table
-        data={tableData}
-        backgroundColor="transparent"
-        rowDensity="compact"
-        gridTemplateColumns={columnWidths.join(' ')}
-      >
-        {(data) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                {headers.map((header, index) => (
-                  <TableHeaderCell key={index}>{header}</TableHeaderCell>
-                ))}
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {data.map((item, rowIndex) => (
-                <TableRow
-                  key={rowIndex}
-                  item={item}
-                  // eslint-disable-next-line @typescript-eslint/no-empty-function
-                  onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
-                  hoverActions={
-                    rowActions && rowActions.length > 0 ? (
-                      <TableRowHoverActions
-                        rowActions={rowActions}
-                        rowIndex={rowIndex}
-                        rowData={item.cells}
-                      />
-                    ) : undefined
-                  }
-                >
-                  {item.cells.map((cell, cellIndex) => (
-                    <TableCell key={cellIndex}>
-                      <RenderTableCellContent cell={cell} />
-                    </TableCell>
+    // Transform rows into table data format with id
+    const tableData = {
+      nodes: rows.map((row, index) => ({
+        id: `row-${index}`,
+        cells: row,
+      })),
+    };
+
+    return (
+      <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
+        <Table
+          data={tableData}
+          backgroundColor="transparent"
+          rowDensity="compact"
+          gridTemplateColumns={columnWidths.join(' ')}
+        >
+          {(data) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  {headers.map((header, index) => (
+                    <TableHeaderCell key={index}>{header}</TableHeaderCell>
                   ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </>
-        )}
-      </Table>
-      {exportActions && (exportActions.copy || exportActions.downloadCsv) ? (
-        <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-          {exportActions.copy ? (
-            <GenUIActionLink
-              icon={CopyIcon}
-              label="Copy"
-              successLabel="Copied!"
-              errorLabel="Copy failed"
-              analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_COPY_BUTTON}
-              action={{
-                type: 'COPY',
-                eventName: 'table_copy',
-                data: { format: 'csv', rowCount: rows.length },
-              }}
-              onAction={handleCopyCsv}
-            />
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {data.map((item, rowIndex) => (
+                  <TableRow
+                    key={rowIndex}
+                    item={item}
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
+                    hoverActions={
+                      rowActions && rowActions.length > 0 ? (
+                        <TableRowHoverActions
+                          rowActions={rowActions}
+                          rowIndex={rowIndex}
+                          rowData={item.cells}
+                        />
+                      ) : undefined
+                    }
+                  >
+                    {item.cells.map((cell, cellIndex) => (
+                      <TableCell key={cellIndex}>
+                        <RenderTableCellContent cell={cell} />
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>
+        {exportActions && (exportActions.copy || exportActions.downloadCsv) ? (
+          <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+            {exportActions.copy ? (
+              <GenUIActionLink
+                icon={CopyIcon}
+                label="Copy"
+                successLabel="Copied!"
+                errorLabel="Copy failed"
+                analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_COPY_BUTTON}
+                action={{
+                  type: 'COPY',
+                  eventName: 'table_copy',
+                  data: { format: 'csv', rowCount: rows.length },
+                }}
+                onAction={handleCopyCsv}
+              />
+            ) : null}
+            {exportActions.copy && exportActions.downloadCsv ? (
+              <Text size="medium" color="surface.text.gray.muted">
+                •
+              </Text>
+            ) : null}
+            {exportActions.downloadCsv ? (
+              <GenUIActionLink
+                icon={DownloadIcon}
+                label="Download as CSV"
+                successLabel="Downloaded!"
+                errorLabel="Download failed"
+                analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_DOWNLOAD_BUTTON}
+                action={{
+                  type: 'DOWNLOAD',
+                  eventName: 'table_download',
+                  data: { format: 'csv', rowCount: rows.length },
+                }}
+                onAction={handleDownloadCsv}
+              />
+            ) : null}
+          </Box>
+        ) : null}
+      </Box>
+    );
+  },
+);
+
+const RenderCardComponent = memo(
+  ({ title, description, footer, children, exportActions }: CardComponent) => {
+    const hasHeader = title || description;
+    const cardRef = useRef<HTMLElement>(null);
+
+    // Does the work and throws on failure; GenUIActionLink dispatches the
+    // success/error telemetry based on the outcome.
+    const handleDownloadPng = async (): Promise<void> => {
+      if (!cardRef.current) throw new Error('[GenUI]: Card ref not available');
+      const blob = await captureNodeAsPng(cardRef.current);
+      downloadBlob(blob, `${toFileNameSlug(title, 'card')}.png`, 'image/png');
+    };
+
+    return (
+      <Box
+        height="100%"
+        display="flex"
+        flexDirection="column"
+        gap={genUISpacingContract.compactCardRowGap}
+      >
+        <Card
+          ref={cardRef}
+          width="100%"
+          height="100%"
+          padding={genUISpacingContract.compactCardPadding}
+        >
+          {hasHeader ? (
+            <CardHeader>
+              <CardHeaderLeading title={title || ''} subtitle={description || ''} />
+            </CardHeader>
           ) : null}
-          {exportActions.copy && exportActions.downloadCsv ? (
-            <Text size="medium" color="surface.text.gray.muted">
-              •
-            </Text>
+
+          {children && children.length > 0 ? (
+            <CardBody height="100%">
+              <Box
+                display="flex"
+                flexDirection="column"
+                gap={genUISpacingContract.compactCardRowGap}
+              >
+                {children.map((child, index) => {
+                  return <GenUIComponentRenderer key={index} component={child} index={index} />;
+                })}
+              </Box>
+            </CardBody>
           ) : null}
-          {exportActions.downloadCsv ? (
+
+          {footer ? (
+            <CardFooter
+              showDivider={true}
+              marginTop={genUISpacingContract.cardTableToFooterAction}
+              paddingTop={genUISpacingContract.cardTableToFooterAction}
+            >
+              <CardFooterLeading subtitle={footer} />
+            </CardFooter>
+          ) : null}
+        </Card>
+        {exportActions?.downloadPng ? (
+          <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
             <GenUIActionLink
               icon={DownloadIcon}
-              label="Download as CSV"
+              label="Download as PNG"
               successLabel="Downloaded!"
               errorLabel="Download failed"
-              analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_DOWNLOAD_BUTTON}
-              action={{
-                type: 'DOWNLOAD',
-                eventName: 'table_download',
-                data: { format: 'csv', rowCount: rows.length },
-              }}
-              onAction={handleDownloadCsv}
+              analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.CARD_DOWNLOAD_BUTTON}
+              action={{ type: 'DOWNLOAD', eventName: 'card_download', data: { format: 'png' } }}
+              onAction={handleDownloadPng}
             />
-          ) : null}
-        </Box>
-      ) : null}
-    </Box>
-  );
-});
-
-const RenderCardComponent = memo(({ title, description, footer, children, exportActions }: CardComponent) => {
-  const hasHeader = title || description;
-  const cardRef = useRef<HTMLElement>(null);
-
-  // Does the work and throws on failure; GenUIActionLink dispatches the
-  // success/error telemetry based on the outcome.
-  const handleDownloadPng = async (): Promise<void> => {
-    if (!cardRef.current) throw new Error('[GenUI]: Card ref not available');
-    const blob = await captureNodeAsPng(cardRef.current);
-    downloadBlob(blob, `${toFileNameSlug(title, 'card')}.png`, 'image/png');
-  };
-
-  return (
-    <Box
-      height="100%"
-      display="flex"
-      flexDirection="column"
-      gap={genUISpacingContract.compactCardRowGap}
-    >
-      <Card
-        ref={cardRef}
-        width="100%"
-        height="100%"
-        padding={genUISpacingContract.compactCardPadding}
-      >
-        {hasHeader ? (
-          <CardHeader>
-            <CardHeaderLeading title={title || ''} subtitle={description || ''} />
-          </CardHeader>
+          </Box>
         ) : null}
-
-        {children && children.length > 0 ? (
-          <CardBody height="100%">
-            <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
-              {children.map((child, index) => {
-                return <GenUIComponentRenderer key={index} component={child} index={index} />;
-              })}
-            </Box>
-          </CardBody>
-        ) : null}
-
-        {footer ? (
-          <CardFooter
-            showDivider={true}
-            marginTop={genUISpacingContract.cardTableToFooterAction}
-            paddingTop={genUISpacingContract.cardTableToFooterAction}
-          >
-            <CardFooterLeading subtitle={footer} />
-          </CardFooter>
-        ) : null}
-      </Card>
-      {exportActions?.downloadPng ? (
-        <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-          <GenUIActionLink
-            icon={DownloadIcon}
-            label="Download as PNG"
-            successLabel="Downloaded!"
-            errorLabel="Download failed"
-            analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.CARD_DOWNLOAD_BUTTON}
-            action={{ type: 'DOWNLOAD', eventName: 'card_download', data: { format: 'png' } }}
-            onAction={handleDownloadPng}
-          />
-        </Box>
-      ) : null}
-    </Box>
-  );
-});
+      </Box>
+    );
+  },
+);
 
 const RenderBadgeComponent = memo(({ text, color }: BadgeComponent) => {
   if (!text) return null;
