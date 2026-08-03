@@ -16967,8 +16967,8 @@ html-tags@^3.1.0:
 
 html-to-image@1.11.13:
   version "1.11.13"
-  resolved "https://registry.yarnpkg.com/html-to-image/-/html-to-image-1.11.13.tgz#7f3ad89b04b3471d5b12cf6e4af45fdf7e2ca6bb"
-  integrity sha512-NaGSOPVXDE93oePZQK/FvbMTGtjikrSh7zZvbh0k4qMylgOS6xLPABmDmY/OHNpZaTBgHIJAvbWGOq9UY8WLyw==
+  resolved "https://registry.yarnpkg.com/html-to-image/-/html-to-image-1.11.13.tgz#adbc989c993b7aaf90b629c0cacf833db84d5f43"
+  integrity "sha1-rbyYnJk7eq+QtinAys+DPbhNX0M= sha512-cuOPoI7WApyhBElTTb9oqsawRvZ0rHhaHwghRLlTuffoD1B2aDemlCruLeZrUIIdvG7gs9xeELEPm6PhuASqrg=="
 
 html-url-attributes@^3.0.0:
   version "3.0.1"
