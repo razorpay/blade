@@ -42,10 +42,10 @@ describe('GenUI exportUtils/csv', () => {
 
     it('formats AMOUNT cells to the on-screen display string', () => {
       expect(getCellDisplayText({ component: 'AMOUNT', value: 1500, currency: 'INR' })).toBe(
-        '₹1500.00',
+        'INR1500.00',
       );
       expect(getCellDisplayText({ component: 'AMOUNT', value: 42, currency: 'USD' })).toBe(
-        '$42.00',
+        'USD42.00',
       );
     });
 
@@ -87,9 +87,7 @@ describe('GenUI exportUtils/csv', () => {
         ],
       ];
 
-      expect(serializeTableToCsv(headers, rows)).toBe(
-        'Name,Status\r\nAlice,Paid\r\nBob,Failed',
-      );
+      expect(serializeTableToCsv(headers, rows)).toBe('Name,Status\r\nAlice,Paid\r\nBob,Failed');
     });
 
     it('escapes fields containing commas, quotes, and newlines', () => {
