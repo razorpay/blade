@@ -281,6 +281,9 @@ const getTextInputFormat = (formatStr?: string, isRangeInput?: boolean): string 
     return isRangeInput ? '##/##/####  –  ##/##/####' : '##/##/####';
   } else if (formatStr === 'MMMM') {
     return formatStr.replace(/MMMM/g, '#########');
+  } else if (formatStr === 'MMMM YYYY') {
+    // longest month name "September" (9 chars) + space + 4-digit year
+    return '######### ####';
   }
   return formatStr.replace(/[YMD]/g, '#');
 };
@@ -418,6 +421,33 @@ const parseSpecialSingleFormat = (
     };
   }
 
+  // Handle month + year formats (MMM YYYY, MMMM YYYY) - keep current day, change month and year
+  if ((format === 'MMM YYYY' || format === 'MMMM YYYY') && trimmedInput.length >= 3) {
+    const fullParse = dayjs(trimmedInput, format, true);
+    if (fullParse.isValid()) {
+      const year = fullParse.year();
+      if (year < 1000 || year > 3000) {
+        return {
+          isSpecialFormat: true,
+          shouldBlock: true,
+        };
+      }
+      return {
+        isSpecialFormat: true,
+        parsedDate: new Date(fullParse.year(), fullParse.month(), today.getDate()),
+        shouldBlock: false,
+      };
+    }
+    // Incomplete input while typing (e.g. "Mar", "Mar 20"): block only when the month
+    // token itself is invalid (e.g. "Xyz 2026"), otherwise allow the user to keep typing
+    const monthToken = format === 'MMM YYYY' ? 'MMM' : 'MMMM';
+    const [monthPart] = trimmedInput.split(' ');
+    return {
+      isSpecialFormat: true,
+      shouldBlock: !dayjs(monthPart, monthToken, true).isValid(),
+    };
+  }
+
   return { isSpecialFormat: false, shouldBlock: false };
 };
 
@@ -487,7 +517,11 @@ const validateAndParseDateInput = (
   if (!isRange && format) {
     const specialParse = parseSpecialSingleFormat(inputValue, format);
     if (specialParse.isSpecialFormat && !specialParse.shouldBlock) {
-      return { shouldBlock: false, parsedValue: specialParse.parsedDate || null };
+      // Only surface parsedValue when a date was actually parsed - returning null here
+      // would clear the selected value while the user is still typing (e.g. "Mar 2" en route to "Mar 2026")
+      return specialParse.parsedDate
+        ? { shouldBlock: false, parsedValue: specialParse.parsedDate }
+        : { shouldBlock: false };
     } else if (specialParse.shouldBlock) {
       return { shouldBlock: true, error: 'Please enter a valid date' };
     }
