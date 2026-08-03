@@ -988,7 +988,10 @@ const exportActionsComponents = [
         {
           component: 'LINK',
           text: 'View Details',
-          action: { type: 'CLICK', data: { url: 'https://dashboard.example.com/pay_NxGT5fK8mZ2abc' } },
+          action: {
+            type: 'CLICK',
+            data: { url: 'https://dashboard.example.com/pay_NxGT5fK8mZ2abc' },
+          },
         },
       ],
       [
@@ -999,7 +1002,10 @@ const exportActionsComponents = [
         {
           component: 'LINK',
           text: 'View Details',
-          action: { type: 'CLICK', data: { url: 'https://dashboard.example.com/pay_MwFS4eJ7lY1xyz' } },
+          action: {
+            type: 'CLICK',
+            data: { url: 'https://dashboard.example.com/pay_MwFS4eJ7lY1xyz' },
+          },
         },
       ],
     ],

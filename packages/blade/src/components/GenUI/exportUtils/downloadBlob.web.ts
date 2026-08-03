@@ -5,8 +5,7 @@
  * with the provided MIME type. The object URL is always revoked afterwards.
  */
 const downloadBlob = (content: Blob | string, filename: string, mimeType: string): void => {
-  const blob =
-    typeof content === 'string' ? new Blob([content], { type: mimeType }) : content;
+  const blob = typeof content === 'string' ? new Blob([content], { type: mimeType }) : content;
   const objectUrl = URL.createObjectURL(blob);
 
   try {

@@ -62,7 +62,7 @@ describe('<GenUI /> export actions', () => {
       configurable: true,
     });
     Object.defineProperty(URL, 'revokeObjectURL', { value: jest.fn(), configurable: true });
-    jest.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    jest.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => undefined);
   });
 
   afterEach(() => {

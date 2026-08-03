@@ -8,14 +8,13 @@
 const captureNodeAsPng = async (node: HTMLElement): Promise<Blob> => {
   // Wait for web fonts to finish loading so the capture uses the real fonts
   // (not fallbacks shown mid-load) — a prerequisite for matching the screen.
-  if (typeof document !== 'undefined' && document.fonts?.ready) {
+  if (typeof document !== 'undefined' && document.fonts) {
     try {
       await document.fonts.ready;
     } catch {
       // Non-fatal: proceed with whatever fonts are available.
     }
   }
-
   const { toBlob } = await import('html-to-image');
 
   // `pixelRatio: 2` for a crisp (retina) export. Font embedding stays ON so the

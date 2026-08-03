@@ -23,13 +23,13 @@ const formatAmountCellValue = (value?: number | string, currency?: string): stri
   const parts = getAmountByParts({
     suffix: 'decimals',
     value: numValue,
-    currency: (currency || 'INR') as CurrencyCodeType,
+    currency: (currency ?? 'INR') as CurrencyCodeType,
   });
   const digits = `${parts.integer ?? ''}${parts.decimal ?? ''}${parts.fraction ?? ''}${
     parts.compact ?? ''
   }`;
   const symbol = parts.currency ?? '';
-  return (parts.isPrefixSymbol ?? true) ? `${symbol}${digits}` : `${digits}${symbol}`;
+  return parts.isPrefixSymbol ?? true ? `${symbol}${digits}` : `${digits}${symbol}`;
 };
 
 /**

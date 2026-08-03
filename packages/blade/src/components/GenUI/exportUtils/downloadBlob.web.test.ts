@@ -20,7 +20,9 @@ describe('GenUI exportUtils/downloadBlob', () => {
   });
 
   it('creates an anchor with the filename and clicks it', () => {
-    const clickSpy = jest.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    const clickSpy = jest
+      .spyOn(HTMLAnchorElement.prototype, 'click')
+      .mockImplementation(() => undefined);
 
     downloadBlob('a,b\r\n1,2', 'table.csv', 'text/csv');
 
@@ -32,7 +34,7 @@ describe('GenUI exportUtils/downloadBlob', () => {
   });
 
   it('accepts a Blob directly without re-wrapping', () => {
-    jest.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    jest.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => undefined);
     const pngBlob = new Blob(['png-bytes'], { type: 'image/png' });
 
     downloadBlob(pngBlob, 'card.png', 'image/png');
@@ -41,7 +43,7 @@ describe('GenUI exportUtils/downloadBlob', () => {
   });
 
   it('revokes the object URL after the download starts', () => {
-    jest.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    jest.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => undefined);
 
     downloadBlob('data', 'file.csv', 'text/csv');
     expect(URL.revokeObjectURL).not.toHaveBeenCalled();
