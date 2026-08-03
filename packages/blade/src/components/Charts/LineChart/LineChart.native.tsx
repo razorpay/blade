@@ -1378,6 +1378,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     <>
                       {slots.minMaxRange.upperLabel && bandGeometry.upperStart ? (
                         <SvgText
+                          testID="range-label-upper"
                           x={bandGeometry.upperStart.x + 4}
                           y={bandGeometry.upperStart.y - 5}
                           fontSize={TICK_FONT_SIZE}
@@ -1390,6 +1391,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                       ) : null}
                       {slots.minMaxRange.lowerLabel && bandGeometry.lowerStart ? (
                         <SvgText
+                          testID="range-label-lower"
                           x={bandGeometry.lowerStart.x + 4}
                           y={bandGeometry.lowerStart.y + TICK_FONT_SIZE + 2}
                           fontSize={TICK_FONT_SIZE}
@@ -1704,8 +1706,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
           {/* Interactive legend — native Pressables (functionally identical to
               the web SVG legend: toggle show/hide, controllable, callback). */}
-          {slots.hasLegend &&
-          (legendLines.length > 0 || Boolean(slots.minMaxRange?.showLegend)) ? (
+          {slots.hasLegend && (legendLines.length > 0 || Boolean(slots.minMaxRange?.showLegend)) ? (
             <View
               style={{
                 flexDirection: slots.legend.layout === 'vertical' ? 'column' : 'row',

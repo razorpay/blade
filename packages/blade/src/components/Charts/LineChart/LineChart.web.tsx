@@ -218,7 +218,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       }
     });
     if (!found) return undefined;
-    const colorToken = found.color ?? (MIN_MAX_RANGE_DEFAULT_COLOR as MinMaxRangeLegendInfo['color']);
+    const colorToken =
+      found.color ?? (MIN_MAX_RANGE_DEFAULT_COLOR as MinMaxRangeLegendInfo['color']);
     return {
       lowerDataKey: found.lowerDataKey,
       upperDataKey: found.upperDataKey,
@@ -584,7 +585,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   ]);
 
   const minMaxRangeLegendInfo = useMemo<MinMaxRangeLegendInfo | undefined>(() => {
-    if (!minMaxRange || !minMaxRange.showLegend) return undefined;
+    if (!minMaxRange?.showLegend) return undefined;
     return {
       name: minMaxRange.name,
       color: minMaxRange.colorToken,

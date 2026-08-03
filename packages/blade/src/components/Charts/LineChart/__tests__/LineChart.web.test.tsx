@@ -529,9 +529,9 @@ describe('<ChartMinMaxRange />', () => {
       </Box>,
     );
     await waitFor(() => {
-      const texts = Array.from(
-        container.querySelectorAll('.blade-minmax-range-layer text'),
-      ).map((node) => node.textContent);
+      const texts = Array.from(container.querySelectorAll('.blade-minmax-range-layer text')).map(
+        (node) => node.textContent,
+      );
       expect(texts).toEqual(expect.arrayContaining(['p25', 'p75']));
     });
   });

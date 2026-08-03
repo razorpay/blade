@@ -405,7 +405,7 @@ describe('<ChartLineWrapper /> (native)', () => {
       { name: 'Mar', sales: 2000, min: 1500, max: 3200 },
       { name: 'Apr', sales: 5000, min: 3500, max: 6000 },
     ];
-    const { toJSON, getByTestId, queryByText } = renderWithTheme(
+    const { toJSON, getByTestId } = renderWithTheme(
       <ChartLineWrapper data={rangeData} testID="range">
         <ChartMinMaxRange
           lowerDataKey="min"
@@ -423,8 +423,8 @@ describe('<ChartLineWrapper /> (native)', () => {
     fireLayout(getByTestId('range-layout'));
     expect(getByTestId('legend-min-max-range')).toBeTruthy();
     // Range labels render on the band.
-    expect(queryByText('p25')).toBeTruthy();
-    expect(queryByText('p75')).toBeTruthy();
+    expect(getByTestId('range-label-lower')).toBeTruthy();
+    expect(getByTestId('range-label-upper')).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
   });
 });
