@@ -546,6 +546,10 @@ type TableComponent = GenUIBaseComponent & {
   headers?: string[];
   rows?: TableCellType[][];
   rowActions?: TableRowAction[];
+  exportActions?: {
+    copy?: boolean;
+    downloadCsv?: boolean;
+  };
 };
 
 type BadgeComponent = GenUIBaseComponent & {
@@ -584,6 +588,9 @@ type CardComponent = GenUIBaseComponent & {
   description?: string;
   footer?: string | null;
   children?: GenUIComponent[];
+  exportActions?: {
+    downloadPng?: boolean;
+  };
 };
 
 type InfoGroupItemValue = {
@@ -1420,7 +1427,7 @@ const calculateColumnWidths = (headers: string[], _rows: Partial<TableCellType>[
   return headers.map(() => 'minmax(max-content, 1fr)');
 };
 
-const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent) => {
+const RenderTableComponent = memo(({ headers, rows, rowActions, exportActions }: TableComponent) => {
   const columnWidths = useMemo(
     () => (headers && rows ? calculateColumnWidths(headers, rows) : []),
     [headers, rows],
@@ -1498,44 +1505,51 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
           </>
         )}
       </Table>
-      <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-        <GenUIActionLink
-          icon={CopyIcon}
-          label="Copy"
-          successLabel="Copied!"
-          errorLabel="Copy failed"
-          analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_COPY_BUTTON}
-          action={{
-            type: 'COPY',
-            eventName: 'table_copy',
-            data: { format: 'csv', rowCount: rows.length },
-          }}
-          onAction={handleCopyCsv}
-        />
-        <Text size="medium" color="surface.text.gray.muted">
-          •
-        </Text>
-        <GenUIActionLink
-          icon={DownloadIcon}
-          label="Download as CSV"
-          successLabel="Downloaded!"
-          errorLabel="Download failed"
-          analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_DOWNLOAD_BUTTON}
-          action={{
-            type: 'DOWNLOAD',
-            eventName: 'table_download',
-            data: { format: 'csv', rowCount: rows.length },
-          }}
-          onAction={handleDownloadCsv}
-        />
-      </Box>
+      {exportActions && (exportActions.copy || exportActions.downloadCsv) ? (
+        <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+          {exportActions.copy ? (
+            <GenUIActionLink
+              icon={CopyIcon}
+              label="Copy"
+              successLabel="Copied!"
+              errorLabel="Copy failed"
+              analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_COPY_BUTTON}
+              action={{
+                type: 'COPY',
+                eventName: 'table_copy',
+                data: { format: 'csv', rowCount: rows.length },
+              }}
+              onAction={handleCopyCsv}
+            />
+          ) : null}
+          {exportActions.copy && exportActions.downloadCsv ? (
+            <Text size="medium" color="surface.text.gray.muted">
+              •
+            </Text>
+          ) : null}
+          {exportActions.downloadCsv ? (
+            <GenUIActionLink
+              icon={DownloadIcon}
+              label="Download as CSV"
+              successLabel="Downloaded!"
+              errorLabel="Download failed"
+              analyticsName={MAKE_ANALYTICS_CONSTANTS.GEN_UI.TABLE_DOWNLOAD_BUTTON}
+              action={{
+                type: 'DOWNLOAD',
+                eventName: 'table_download',
+                data: { format: 'csv', rowCount: rows.length },
+              }}
+              onAction={handleDownloadCsv}
+            />
+          ) : null}
+        </Box>
+      ) : null}
     </Box>
   );
 });
 
-const RenderCardComponent = memo(({ title, description, footer, children }: CardComponent) => {
+const RenderCardComponent = memo(({ title, description, footer, children, exportActions }: CardComponent) => {
   const hasHeader = title || description;
-  const hasContent = Boolean(hasHeader) || Boolean(children?.length) || Boolean(footer);
   const cardRef = useRef<HTMLElement>(null);
 
   // Does the work and throws on failure; GenUIActionLink dispatches the
@@ -1585,7 +1599,7 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
           </CardFooter>
         ) : null}
       </Card>
-      {hasContent ? (
+      {exportActions?.downloadPng ? (
         <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
           <GenUIActionLink
             icon={DownloadIcon}
