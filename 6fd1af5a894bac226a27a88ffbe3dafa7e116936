@@ -1,0 +1,4 @@
+packages/blade/src/components/Input/BaseInput/StyledBaseInput.native.tsx
+  4d100366-c9de-46ff-8fe3-6ab34d9f8ed8:2026-08-03T09:14:21.415Z 35-36,38
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"4d100366-c9de-46ff-8fe3-6ab34d9f8ed8:2026-08-03T09:14:21.415Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "pranay.bagrecha@razorpay.com", "accepted_lines": 3, "overriden_lines": 0}}}
