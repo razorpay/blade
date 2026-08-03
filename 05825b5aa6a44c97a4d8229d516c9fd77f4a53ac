@@ -1,0 +1,10 @@
+packages/blade/src/components/Charts/AreaChart/types.ts
+  bc2c0309-9dce-4990-84c8-53839083490d:2026-05-15T07:44:14.067Z 2-5,38,85,92
+packages/blade/src/components/Charts/BarChart/BarChart.native.tsx
+  bc2c0309-9dce-4990-84c8-53839083490d:2026-05-15T07:42:18.697Z 23-26,62
+packages/blade/src/components/Charts/CommonChartComponents/types.ts
+  bc2c0309-9dce-4990-84c8-53839083490d:2026-05-15T07:42:46.328Z 109
+packages/blade/src/components/Charts/utils/assignDataColorMapping/assignDataColorMapping.ts
+  bc2c0309-9dce-4990-84c8-53839083490d:2026-05-15T07:43:29.783Z 1,7
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"bc2c0309-9dce-4990-84c8-53839083490d:2026-05-15T07:44:14.067Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 7, "overriden_lines": 0}, "bc2c0309-9dce-4990-84c8-53839083490d:2026-05-15T07:42:18.697Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 5, "overriden_lines": 0}, "bc2c0309-9dce-4990-84c8-53839083490d:2026-05-15T07:42:46.328Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 1, "overriden_lines": 0}, "bc2c0309-9dce-4990-84c8-53839083490d:2026-05-15T07:43:29.783Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 2, "overriden_lines": 0}}}

@@ -1,0 +1,21 @@
+.github/workflows/slash-review.yml
+  2896a15 29,33-48,57,59,61,64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "base_commit_sha": "a7aa7babd5849ca6946d33987991e9341e37c2be",
+  "tracker_version": "1.0.0",
+  "prompts": {
+    "2896a15": {
+      "agent_id": {
+        "tool": "claude",
+        "model": "claude-sonnet-4-6",
+        "id": "0d9b83c5-2d11-4b1f-808c-789668cd63eb"
+      },
+      "total_additions": 61,
+      "total_deletions": 0,
+      "accepted_lines": 7,
+      "overriden_lines": 0
+    }
+  }
+}

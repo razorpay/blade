@@ -1,0 +1,18 @@
+packages/blade/src/components/Slider/Slider.stories.tsx
+  e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:29.631Z 1-11,13-23,25-34,36-41,43-53,55-57,59-64,66-81,83-89,91-99,101-109,111-129
+packages/blade/src/components/Slider/Slider.tsx
+  e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:00.760Z 1-16,18-30,32-40,42-50,52-56,58-62,64-76,78-88,90-98,100-103,105-109,111-131,133-135,137-138,140-144,146-147,149-150,152-158,160-187,189-219,221-236,238-240,242
+packages/blade/src/components/Slider/__tests__/Slider.web.test.tsx
+  e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:48.884Z 1-5,7-11,13-19,21-27,29-34,36-41,43-50,52-62,64-69,71-76,78-91,93-108,110-116
+packages/blade/src/components/Slider/index.ts
+  e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:08.939Z 1-2
+packages/blade/src/components/Slider/sliderTokens.ts
+  e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:27:26.993Z 1-2,4-8,10-14,16
+packages/blade/src/components/Slider/types.ts
+  e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:27:18.517Z 1-2,4-10,12-16,18-22,24-28,30-34,36-39,41-45,47-51,53-57,59-63,65-69,71-74,76-83,85
+packages/blade/src/components/index.ts
+  e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:57.522Z 66
+packages/blade/src/utils/metaAttribute/metaConstants.ts
+  e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:29:05.231Z 160
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:29.631Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 118, "overriden_lines": 0}, "e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:00.760Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 220, "overriden_lines": 0}, "e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:48.884Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 104, "overriden_lines": 0}, "e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:08.939Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 2, "overriden_lines": 0}, "e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:27:26.993Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 13, "overriden_lines": 0}, "e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:27:18.517Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 71, "overriden_lines": 0}, "e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:28:57.522Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 1, "overriden_lines": 0}, "e67aefa4-640a-4492-a2a3-ca1c06bf6c73:2026-05-21T11:29:05.231Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 1, "overriden_lines": 0}}}

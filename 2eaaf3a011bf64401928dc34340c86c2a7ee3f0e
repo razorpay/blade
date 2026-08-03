@@ -1,0 +1,6 @@
+packages/blade/src/components/ChatInput/ChatInput.web.tsx
+  8302bc81-8ffb-4af3-8054-381c4db9f30b:2026-04-28T06:50:14.945Z 143,146-149
+packages/blade/src/components/ChatInput/docs/ChatInput.stories.tsx
+  8302bc81-8ffb-4af3-8054-381c4db9f30b:2026-04-28T06:51:14.222Z 17,841-854,856-862,864-873,875-898
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"8302bc81-8ffb-4af3-8054-381c4db9f30b:2026-04-28T06:50:14.945Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 5, "overriden_lines": 0}, "8302bc81-8ffb-4af3-8054-381c4db9f30b:2026-04-28T06:51:14.222Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 56, "overriden_lines": 0}}}

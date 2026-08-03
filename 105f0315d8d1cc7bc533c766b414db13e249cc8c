@@ -1,0 +1,4 @@
+.eslintrc.js
+  05997a6b-bd3c-4517-b49d-2a854db299f1:2026-05-15T08:23:36.513Z 35-52
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"05997a6b-bd3c-4517-b49d-2a854db299f1:2026-05-15T08:23:36.513Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "saurabh.daware@razorpay.com", "accepted_lines": 19, "overriden_lines": 0}}}

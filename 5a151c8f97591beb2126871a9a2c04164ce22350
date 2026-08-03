@@ -1,0 +1,19 @@
+.github/workflows/slash-review.yml
+  s_c009fee9cbdfcb::t_5dce14ad3b7e47 21,34,54-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "5a151c8f97591beb2126871a9a2c04164ce22350",
+  "prompts": {},
+  "sessions": {
+    "s_c009fee9cbdfcb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d9b83c5-2d11-4b1f-808c-789668cd63eb",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Richesh Gupta <richesh.gupta@razorpay.com>"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+packages/blade/src/components/Popover/Popover.native.tsx
+  0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-18T14:18:44.521Z 69
+packages/blade/src/components/Tooltip/Tooltip.native.tsx
+  0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-18T14:18:53.060Z 58
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-18T14:18:44.521Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "shivam.chaudhary@razorpay.com", "accepted_lines": 1, "overriden_lines": 0}, "0958db37-41e2-4db0-aa3f-4c8d4017a570:2026-05-18T14:18:53.060Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "shivam.chaudhary@razorpay.com", "accepted_lines": 1, "overriden_lines": 0}}}

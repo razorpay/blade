@@ -1,0 +1,21 @@
+packages/blade/src/components/Button/BaseButton/BaseButton.tsx
+  2896a15 418,426-433
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "base_commit_sha": "f56c6132e83455e321ec5517bed21e1fbd177388",
+  "tracker_version": "1.0.0",
+  "prompts": {
+    "2896a15": {
+      "agent_id": {
+        "tool": "claude",
+        "model": "claude-sonnet-4-6",
+        "id": "0d9b83c5-2d11-4b1f-808c-789668cd63eb"
+      },
+      "total_additions": 24,
+      "total_deletions": 0,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    }
+  }
+}
