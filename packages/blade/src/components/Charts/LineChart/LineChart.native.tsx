@@ -1706,7 +1706,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
           {/* Interactive legend — native Pressables (functionally identical to
               the web SVG legend: toggle show/hide, controllable, callback). */}
-          {slots.hasLegend && (legendLines.length > 0 || Boolean(slots.referenceBand?.showLegend)) ? (
+          {slots.hasLegend &&
+          (legendLines.length > 0 || Boolean(slots.referenceBand?.showLegend)) ? (
             <View
               style={{
                 flexDirection: slots.legend.layout === 'vertical' ? 'column' : 'row',

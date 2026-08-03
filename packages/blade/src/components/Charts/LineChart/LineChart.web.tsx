@@ -213,7 +213,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const referenceBand = useMemo(() => {
     let found: ChartReferenceBandProps | undefined;
     React.Children.forEach(children, (child) => {
-      if (isValidElement(child) && getComponentId(child) === commonComponentIds.chartReferenceBand) {
+      if (
+        isValidElement(child) &&
+        getComponentId(child) === commonComponentIds.chartReferenceBand
+      ) {
         found = child.props as ChartReferenceBandProps;
       }
     });
