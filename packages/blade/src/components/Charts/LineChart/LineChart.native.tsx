@@ -28,6 +28,7 @@ import type {
   ChartXAxisProps,
   ChartYAxisProps,
   ChartReferenceLineProps,
+  ChartMinMaxRangeProps,
   ChartTooltipProps,
   ChartLegendProps,
   DataColorMapping,
@@ -36,9 +37,14 @@ import type {
   ChartsCategoricalColorToken,
   ChartSequentialColorToken,
 } from '../CommonChartComponents/types';
+import {
+  MIN_MAX_RANGE_DEFAULT_COLOR,
+  MIN_MAX_RANGE_FILL_OPACITY,
+} from '../CommonChartComponents/tokens';
 import { componentIds } from './componentIds';
 import { LineChartContext } from './LineChartContext';
 import { monotoneInterpolate } from '../utils/nullBridgeUtils';
+import { buildBandAreaPath } from '../utils/minMaxRangeUtils';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
@@ -234,6 +240,17 @@ type ReferenceLineSlot = {
   label?: string;
 };
 
+type MinMaxRangeSlot = {
+  lowerDataKey: string;
+  upperDataKey: string;
+  name: string;
+  color: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  showLegend: boolean;
+  upperLabel?: string;
+  lowerLabel?: string;
+  showRangeLabels: boolean;
+};
+
 type TooltipFormatter = NonNullable<ChartTooltipProps['formatter']>;
 
 type LegendSlot = {
@@ -261,6 +278,7 @@ type ChildSlots = {
   legend: LegendSlot;
   hasGrid: boolean;
   referenceLines: ReferenceLineSlot[];
+  minMaxRange?: MinMaxRangeSlot;
   hasTooltip: boolean;
   tooltipFormatter?: TooltipFormatter;
   /** Recharts Tooltip `filterNull` — defaults to true (omit null/undefined rows). */
@@ -348,6 +366,18 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         x: props.x,
         label: typeof props.label === 'string' ? props.label : undefined,
       });
+    } else if (id === commonComponentIds.chartMinMaxRange) {
+      const props = child.props as ChartMinMaxRangeProps;
+      slots.minMaxRange = {
+        lowerDataKey: props.lowerDataKey,
+        upperDataKey: props.upperDataKey,
+        name: props.name ?? 'Min-max range',
+        color: props.color ?? (MIN_MAX_RANGE_DEFAULT_COLOR as MinMaxRangeSlot['color']),
+        showLegend: props.showLegend ?? true,
+        upperLabel: props.upperLabel,
+        lowerLabel: props.lowerLabel,
+        showRangeLabels: props.showRangeLabels ?? true,
+      };
     }
   });
 
@@ -850,11 +880,25 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         if (value < min) min = value;
         if (value > max) max = value;
       });
+      // Fold the range band's bounds into the domain so the band stays fully in view
+      // (mirrors web, where Recharts auto-includes the invisible bound lines).
+      if (slots.minMaxRange) {
+        const lower = getSeriesNumber(row, slots.minMaxRange.lowerDataKey);
+        const upper = getSeriesNumber(row, slots.minMaxRange.upperDataKey);
+        if (lower !== null) {
+          if (lower < min) min = lower;
+          if (lower > max) max = lower;
+        }
+        if (upper !== null) {
+          if (upper < min) min = upper;
+          if (upper > max) max = upper;
+        }
+      }
     });
     if (min === Infinity) min = 0;
     if (max === -Infinity) max = 0;
     return { dataMin: min, dataMax: max };
-  }, [data, visibleLines, allLines]);
+  }, [data, visibleLines, allLines, slots.minMaxRange]);
 
   // Honor ChartYAxis domain/tickCount when provided (AreaChart.native parity).
   const yMax = slots.yDomain ? Number(slots.yDomain[1]) : resolveYMax(dataMax);
@@ -979,6 +1023,33 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       return { line, color: resolveColor(line.dataKey, line.color), points };
     });
   }, [visibleLines, data, plotWidth, plotHeight, yMin, yRange, dataColorMapping, theme.colors]);
+
+  // Filled min-max range band, built from the same scales as the lines and painted behind them.
+  // Uses the shared `buildBandAreaPath` so the band curve matches web.
+  const bandGeometry = useMemo(() => {
+    const range = slots.minMaxRange;
+    if (!range || data.length === 0 || plotWidth <= 0 || plotHeight <= 0 || yRange <= 0) {
+      return null;
+    }
+    const toY = (value: number): number => plotHeight - ((value - yMin) / yRange) * plotHeight;
+    const upper: Point[] = [];
+    const lower: Point[] = [];
+    data.forEach((row, index) => {
+      const x = xForIndex(index);
+      const upperValue = getSeriesNumber(row, range.upperDataKey);
+      const lowerValue = getSeriesNumber(row, range.lowerDataKey);
+      if (upperValue !== null) upper.push({ x, y: toY(upperValue) });
+      if (lowerValue !== null) lower.push({ x, y: toY(lowerValue) });
+    });
+    const d = buildBandAreaPath(upper, lower);
+    if (!d) return null;
+    return {
+      d,
+      color: getIn(theme.colors, range.color) as string,
+      upperStart: upper[0] ?? null,
+      lowerStart: lower[0] ?? null,
+    };
+  }, [slots.minMaxRange, data, plotWidth, plotHeight, yMin, yRange, theme.colors]);
 
   const dataSignature = useMemo(() => `${data.length}:${allDataKeys.join(',')}`, [
     data.length,
@@ -1292,6 +1363,46 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     </>
                   )}
 
+                  {/* Min-max range band — painted before the lines so it sits behind them. */}
+                  {bandGeometry ? (
+                    <Path
+                      d={bandGeometry.d}
+                      fill={bandGeometry.color}
+                      fillOpacity={MIN_MAX_RANGE_FILL_OPACITY}
+                      stroke="none"
+                    />
+                  ) : null}
+
+                  {/* Range labels (e.g. p25 / p75) annotating the band's bounds. */}
+                  {bandGeometry && slots.minMaxRange?.showRangeLabels ? (
+                    <>
+                      {slots.minMaxRange.upperLabel && bandGeometry.upperStart ? (
+                        <SvgText
+                          x={bandGeometry.upperStart.x + 4}
+                          y={bandGeometry.upperStart.y - 5}
+                          fontSize={TICK_FONT_SIZE}
+                          fontWeight="500"
+                          fill={getIn(theme.colors, 'surface.text.gray.subtle')}
+                          textAnchor="start"
+                        >
+                          {slots.minMaxRange.upperLabel}
+                        </SvgText>
+                      ) : null}
+                      {slots.minMaxRange.lowerLabel && bandGeometry.lowerStart ? (
+                        <SvgText
+                          x={bandGeometry.lowerStart.x + 4}
+                          y={bandGeometry.lowerStart.y + TICK_FONT_SIZE + 2}
+                          fontSize={TICK_FONT_SIZE}
+                          fontWeight="500"
+                          fill={getIn(theme.colors, 'surface.text.gray.subtle')}
+                          textAnchor="start"
+                        >
+                          {slots.minMaxRange.lowerLabel}
+                        </SvgText>
+                      ) : null}
+                    </>
+                  ) : null}
+
                   {lineGeometries.map((geometry, idx) => (
                     <LineSeries
                       key={`line-${geometry.line.dataKey}`}
@@ -1593,7 +1704,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
           {/* Interactive legend — native Pressables (functionally identical to
               the web SVG legend: toggle show/hide, controllable, callback). */}
-          {slots.hasLegend && legendLines.length > 0 ? (
+          {slots.hasLegend &&
+          (legendLines.length > 0 || Boolean(slots.minMaxRange?.showLegend)) ? (
             <View
               style={{
                 flexDirection: slots.legend.layout === 'vertical' ? 'column' : 'row',
@@ -1647,6 +1759,33 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                   </Pressable>
                 );
               })}
+              {/* Static (non-toggleable) swatch for the min-max range band. */}
+              {slots.minMaxRange?.showLegend ? (
+                <View
+                  testID="legend-min-max-range"
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingVertical: theme.spacing[1],
+                    paddingHorizontal: theme.spacing[2],
+                  }}
+                  {...metaAttribute({ name: 'chart-legend-item-min-max-range' })}
+                >
+                  <View
+                    style={{
+                      width: LEGEND_DOT_SIZE,
+                      height: LEGEND_DOT_SIZE,
+                      borderRadius: theme.border.radius['2xsmall'],
+                      backgroundColor: getIn(theme.colors, slots.minMaxRange.color),
+                      opacity: MIN_MAX_RANGE_FILL_OPACITY,
+                      marginRight: theme.spacing[2],
+                    }}
+                  />
+                  <Text size="small" color="surface.text.gray.muted">
+                    {slots.minMaxRange.name}
+                  </Text>
+                </View>
+              ) : null}
             </View>
           ) : null}
         </BaseBox>

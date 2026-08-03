@@ -7,6 +7,7 @@ import {
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
+  Line as RechartsLine,
 } from 'recharts';
 import {
   getHighestColorInRange,
@@ -16,6 +17,7 @@ import {
 } from '../utils';
 import type {
   ChartReferenceLineProps,
+  ChartMinMaxRangeProps,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
@@ -38,6 +40,8 @@ import {
   X_AXIS_LABEL_HEIGHT,
   LEGEND_MARGIN_TOP,
   X_OFFSET,
+  MIN_MAX_RANGE_LOWER_CLASS,
+  MIN_MAX_RANGE_UPPER_CLASS,
   componentId,
 } from './tokens';
 import { calculateTextWidth } from './utils';
@@ -588,6 +592,35 @@ const LegendItem = ({
   );
 };
 
+/**
+ * Informational (non-toggleable) legend entry for a min-max range band. The band isn't a selectable
+ * series, so it renders a static square swatch in the band's fill colour + its label.
+ */
+const MinMaxRangeLegendSwatch = (): JSX.Element | null => {
+  const { theme } = useTheme();
+  const { minMaxRange } = useCommonChartComponentsContext();
+  if (!minMaxRange) return null;
+  return (
+    <Box display="flex" alignItems="center" padding="spacing.2">
+      <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
+        <span
+          style={{
+            backgroundColor: getIn(theme.colors, minMaxRange.color),
+            opacity: minMaxRange.fillOpacity,
+            width: theme.spacing[4],
+            height: theme.spacing[4],
+            display: 'inline-block',
+            borderRadius: theme.border.radius['2xsmall'],
+          }}
+        />
+        <Text size="medium" color="surface.text.gray.muted">
+          {minMaxRange.name}
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
 const CustomSquareLegend = (props: {
   payload?: Array<{
     payload: {
@@ -604,7 +637,7 @@ const CustomSquareLegend = (props: {
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
-  const { chartName, dataColorMapping } = useCommonChartComponentsContext();
+  const { chartName, dataColorMapping, minMaxRange } = useCommonChartComponentsContext();
 
   /*
   This is a custom legend component that is used to display the legend for the chart.
@@ -657,13 +690,14 @@ const CustomSquareLegend = (props: {
   }
 
   // For other chart types, use the payload from recharts
-  if (!payload || payload.length === 0) {
-    return null;
-  }
-
-  const filteredPayload = payload.filter(
+  const filteredPayload = (payload ?? []).filter(
     (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
   );
+
+  // Nothing to render — no real series and no range band.
+  if (filteredPayload.length === 0 && !minMaxRange) {
+    return null;
+  }
 
   return (
     <Box
@@ -684,6 +718,8 @@ const CustomSquareLegend = (props: {
           isClickable={isClickable}
         />
       ))}
+      {/* Static swatch for the min-max range band (not a toggleable series). */}
+      <MinMaxRangeLegendSwatch />
     </Box>
   );
 };
@@ -849,6 +885,50 @@ const ChartReferenceLine: React.FC<ChartReferenceLineProps> = ({ label, x, y }) 
   );
 };
 
+/**
+ * Min-max range band. Renders two invisible bound lines (`lowerDataKey` / `upperDataKey`) so
+ * Recharts computes their geometry and folds them into the y-domain; ChartLineWrapper then reads
+ * those curves and paints the shaded band between them (a data-driven range that varies per point,
+ * unlike Recharts' fixed-rectangle `ReferenceArea`). The band's fill + legend swatch are handled by
+ * the wrapper and the shared legend via context.
+ */
+const _ChartMinMaxRange: React.FC<ChartMinMaxRangeProps> = ({ lowerDataKey, upperDataKey }) => {
+  return (
+    <>
+      <RechartsLine
+        className={MIN_MAX_RANGE_LOWER_CLASS}
+        type="monotone"
+        dataKey={lowerDataKey}
+        stroke="transparent"
+        strokeWidth={1}
+        dot={false}
+        activeDot={false}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        isAnimationActive={false}
+      />
+      <RechartsLine
+        className={MIN_MAX_RANGE_UPPER_CLASS}
+        type="monotone"
+        dataKey={upperDataKey}
+        stroke="transparent"
+        strokeWidth={1}
+        dot={false}
+        activeDot={false}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        isAnimationActive={false}
+      />
+    </>
+  );
+};
+
+const ChartMinMaxRange = assignWithoutSideEffects(_ChartMinMaxRange, {
+  componentId: componentId.chartMinMaxRange,
+});
+
 export {
   ChartXAxis,
   ChartYAxis,
@@ -856,4 +936,5 @@ export {
   ChartLegend,
   ChartTooltip,
   ChartReferenceLine,
+  ChartMinMaxRange,
 };

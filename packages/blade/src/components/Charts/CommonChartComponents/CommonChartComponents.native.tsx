@@ -1,6 +1,7 @@
 import type React from 'react';
 import type {
   ChartReferenceLineProps,
+  ChartMinMaxRangeProps,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
@@ -51,8 +52,14 @@ const ChartReferenceLine = assignWithoutSideEffects(_ChartReferenceLine, {
   componentId: componentId.chartReferenceLine,
 });
 
+const _ChartMinMaxRange = (_props: ChartMinMaxRangeProps): React.ReactElement | null => null;
+const ChartMinMaxRange = assignWithoutSideEffects(_ChartMinMaxRange, {
+  componentId: componentId.chartMinMaxRange,
+});
+
 export type {
   ChartReferenceLineProps,
+  ChartMinMaxRangeProps,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
@@ -66,4 +73,5 @@ export {
   ChartLegend,
   ChartTooltip,
   ChartReferenceLine,
+  ChartMinMaxRange,
 };

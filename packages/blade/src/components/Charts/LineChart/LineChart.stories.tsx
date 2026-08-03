@@ -8,6 +8,7 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
+  ChartMinMaxRange,
 } from '~components/Charts/CommonChartComponents';
 import { ChartLine, ChartLineWrapper } from '~components/Charts/LineChart';
 import { Heading } from '~components/Typography/Heading';
@@ -159,6 +160,28 @@ const chartData = [
   { month: 'Apr', teamA: 2780, teamB: 3908 },
   { month: 'May', teamA: 1890, teamB: 4800 },
   { month: 'Jun', teamA: 2390, teamB: 3800 },
+];
+
+// Active users trend with a per-point min/max range band (the range other teams fall in).
+const activeUsersRangeData = [
+  { month: 'Jan', activeUsers: 1180, min: 800, max: 1720 },
+  { month: 'Feb', activeUsers: 1120, min: 820, max: 1780 },
+  { month: 'Mar', activeUsers: 1360, min: 900, max: 1880 },
+  { month: 'Apr', activeUsers: 1300, min: 900, max: 1840 },
+  { month: 'May', activeUsers: 1320, min: 940, max: 1900 },
+  { month: 'Jun', activeUsers: 1420, min: 980, max: 1960 },
+  { month: 'Jul', activeUsers: 1540, min: 1020, max: 2020 },
+  { month: 'Aug', activeUsers: 1500, min: 1040, max: 2040 },
+  { month: 'Sep', activeUsers: 1580, min: 1080, max: 2080 },
+  { month: 'Oct', activeUsers: 1660, min: 1100, max: 2140 },
+  { month: 'Nov', activeUsers: 1720, min: 1140, max: 2220 },
+  { month: 'Dec', activeUsers: 1600, min: 1120, max: 2180 },
+  { month: 'Jan ’25', activeUsers: 1780, min: 1160, max: 2260 },
+  { month: 'Feb ’25', activeUsers: 1840, min: 1180, max: 2160 },
+  { month: 'Mar ’25', activeUsers: 1720, min: 1160, max: 2120 },
+  { month: 'Apr ’25', activeUsers: 1700, min: 1140, max: 2200 },
+  { month: 'May ’25', activeUsers: 1860, min: 1180, max: 2260 },
+  { month: 'Jun ’25', activeUsers: 1900, min: 1080, max: 2280 },
 ];
 
 const forecastData = [
@@ -374,6 +397,37 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
     </ChartsWrapper>
   );
 };
+
+// Line chart with a min-max range band — the trend line plotted against the range others fall in.
+export const LineChartWithMinMaxRange: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={activeUsersRangeData}>
+          <ChartMinMaxRange
+            lowerDataKey="min"
+            upperDataKey="max"
+            name="Min-max range"
+            upperLabel="p75"
+            lowerLabel="p25"
+          />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis label="Active users" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey="activeUsers"
+            name="Active users"
+            strokeStyle="solid"
+            color="data.background.categorical.gray.intense"
+          />
+          <ChartReferenceLine y={1200} label="Avg: 1,200" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+LineChartWithMinMaxRange.parameters = { controls: { disable: true } };
 
 // Simple Line chart with vertical line
 export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = ({
@@ -1301,6 +1355,7 @@ LineChartWithSequentialColors.parameters = {
 };
 
 SimpleLineChart.storyName = 'Simple Line Chart';
+LineChartWithMinMaxRange.storyName = 'Line Chart with Min-Max Range';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';

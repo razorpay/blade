@@ -6,6 +6,7 @@ import {
   ChartCartesianGrid,
   ChartTooltip,
   ChartLegend,
+  ChartMinMaxRange,
 } from '../../CommonChartComponents';
 import { waitFor } from '@testing-library/react';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -454,5 +455,123 @@ describe('LineChart Styling Tests', () => {
       </Box>,
     );
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe('<ChartMinMaxRange />', () => {
+  const rangeData = [
+    { name: 'Jan', sales: 4000, min: 3000, max: 5000 },
+    { name: 'Feb', sales: 3000, min: 2200, max: 4200 },
+    { name: 'Mar', sales: 2000, min: 1500, max: 3200 },
+    { name: 'Apr', sales: 5000, min: 3500, max: 6000 },
+  ];
+
+  it('should render a LineChart with a min-max range band', () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={rangeData}>
+          <ChartMinMaxRange lowerDataKey="min" upperDataKey="max" name="Min-max range" />
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartLegend />
+          <ChartLine dataKey="sales" name="Sales" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should paint a filled band path between the bounds', async () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={rangeData}>
+          <ChartMinMaxRange lowerDataKey="min" upperDataKey="max" />
+          <ChartXAxis dataKey="name" />
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    // The band is derived from the rendered bound-line geometry, committed asynchronously.
+    await waitFor(() => {
+      expect(container.querySelectorAll('.blade-minmax-range-layer path')).toHaveLength(1);
+    });
+    const bandPath = container.querySelector('.blade-minmax-range-layer path')!;
+    // A closed, filled area — has a fill and closes with Z.
+    expect(bandPath).toHaveAttribute('fill');
+    expect(bandPath.getAttribute('fill')).not.toBe('none');
+    expect(bandPath.getAttribute('d')).toContain('Z');
+  });
+
+  it('should not render a band layer when no ChartMinMaxRange is present', () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={rangeData}>
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    expect(container.querySelectorAll('.blade-minmax-range-layer path')).toHaveLength(0);
+  });
+
+  it('should render range labels (p25 / p75) on the band by default', async () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={rangeData}>
+          <ChartMinMaxRange
+            lowerDataKey="min"
+            upperDataKey="max"
+            lowerLabel="p25"
+            upperLabel="p75"
+          />
+          <ChartXAxis dataKey="name" />
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    await waitFor(() => {
+      const texts = Array.from(
+        container.querySelectorAll('.blade-minmax-range-layer text'),
+      ).map((node) => node.textContent);
+      expect(texts).toEqual(expect.arrayContaining(['p25', 'p75']));
+    });
+  });
+
+  it('should not render range labels when showRangeLabels is false', async () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={rangeData}>
+          <ChartMinMaxRange
+            lowerDataKey="min"
+            upperDataKey="max"
+            lowerLabel="p25"
+            upperLabel="p75"
+            showRangeLabels={false}
+          />
+          <ChartXAxis dataKey="name" />
+          <ChartLine dataKey="sales" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    // Band still paints, but no label text nodes.
+    await waitFor(() => {
+      expect(container.querySelectorAll('.blade-minmax-range-layer path')).toHaveLength(1);
+    });
+    expect(container.querySelectorAll('.blade-minmax-range-layer text')).toHaveLength(0);
+  });
+
+  it('should show a legend entry for the range band', async () => {
+    const { queryByText } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={rangeData}>
+          <ChartMinMaxRange lowerDataKey="min" upperDataKey="max" name="Peer range" />
+          <ChartXAxis dataKey="name" />
+          <ChartLegend />
+          <ChartLine dataKey="sales" name="Sales" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    await waitFor(() => {
+      expect(queryByText('Peer range')).toBeInTheDocument();
+    });
   });
 });

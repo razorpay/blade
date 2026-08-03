@@ -29,6 +29,49 @@ type ChartReferenceLineProps = {
   label: string;
 };
 
+type ChartMinMaxRangeProps = {
+  /**
+   * The data key for the lower (minimum) bound of the range.
+   * Each data row should hold a numeric value at this key.
+   */
+  lowerDataKey: string;
+  /**
+   * The data key for the upper (maximum) bound of the range.
+   * Each data row should hold a numeric value at this key.
+   */
+  upperDataKey: string;
+  /**
+   * The label shown for the range in the legend.
+   * @default 'Min-max range'
+   */
+  name?: string;
+  /**
+   * The fill color of the range band.
+   * @default 'data.background.categorical.blue.faint'
+   */
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  /**
+   * Whether to show a legend entry for the range.
+   * @default true
+   */
+  showLegend?: boolean;
+  /**
+   * Text label annotating the upper (max) bound of the range, drawn at the band's upper edge
+   * (e.g. `'p75'`). Only shown when `showRangeLabels` is `true`.
+   */
+  upperLabel?: string;
+  /**
+   * Text label annotating the lower (min) bound of the range, drawn at the band's lower edge
+   * (e.g. `'p25'`). Only shown when `showRangeLabels` is `true`.
+   */
+  lowerLabel?: string;
+  /**
+   * Whether to show the `upperLabel` / `lowerLabel` range labels on the band.
+   * @default true
+   */
+  showRangeLabels?: boolean;
+};
+
 type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
    * The label of the x-axis.
@@ -157,6 +200,17 @@ type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
  */
 type SecondaryLabelMap = Record<number, string | number | undefined>;
 
+/**
+ * Legend info for a min-max range band, surfaced through context so the shared
+ * legend can render a swatch for it (the band's bound lines are invisible, so
+ * they don't produce a Recharts legend entry).
+ */
+type MinMaxRangeLegendInfo = {
+  name: string;
+  color: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  fillOpacity: number;
+};
+
 // State type - contains only the state values
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
@@ -170,6 +224,10 @@ type CommonChartComponentsStateType = {
    * The number of data points in the chart, used for tick width calculation
    */
   dataLength?: number;
+  /**
+   * Legend info for a min-max range band, when present in the chart.
+   */
+  minMaxRange?: MinMaxRangeLegendInfo;
 };
 
 // Dispatch type - contains only the updater functions
@@ -211,6 +269,8 @@ export type {
   CommonChartComponentsStateType,
   CommonChartComponentsDispatchType,
   ChartReferenceLineProps,
+  ChartMinMaxRangeProps,
+  MinMaxRangeLegendInfo,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
