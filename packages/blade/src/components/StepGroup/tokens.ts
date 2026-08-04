@@ -5,6 +5,11 @@ const markerLineDotWidth = sizeTokens['2'];
 const markerLineDotSpacing = sizeTokens['4'];
 const markerLineWidth = sizeTokens['2'];
 const itemTopMargin = sizeTokens['6'];
+// Fixed length of a single horizontal connector segment (each side of the marker).
+// Native cannot flex-grow this segment because the horizontal ScrollView gives an
+// unbounded main axis, so the length is a definite token value instead. It is sized to
+// roughly half the horizontal item width so adjacent connectors read as a continuous line.
+const markerLineHorizontalLength = sizeTokens['72'];
 
 /**
  * Returns the tokens that are related to marker line alignment and spacing
@@ -81,5 +86,6 @@ export {
   markerLineDotWidth,
   markerLineDotSpacing,
   markerLineWidth,
+  markerLineHorizontalLength,
   itemTopMargin,
 };

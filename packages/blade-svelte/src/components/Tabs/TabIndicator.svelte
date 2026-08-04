@@ -81,7 +81,7 @@
 
   const isFilled = $derived(ctx.variant === 'filled');
   const isVerticalBordered = $derived(ctx.isVertical && !isFilled);
-  const shouldHaveMediumRadius = $derived(ctx.size === 'small' && !ctx.isVertical);
+  const shouldHaveFilledHorizSmallRadius = $derived(ctx.size === 'small' && !ctx.isVertical);
 
   const transitionDuration = $derived(shouldAnimate ? 'var(--duration-moderate)' : '0ms');
 
@@ -91,7 +91,7 @@
       result.push(classes.indicatorVerticalBordered);
     } else if (isFilled) {
       result.push(classes.indicatorFilled);
-      result.push(shouldHaveMediumRadius ? classes.indicatorRadiusMedium : classes.indicatorRadiusSmall);
+      result.push(shouldHaveFilledHorizSmallRadius ? classes.indicatorRadiusFilledHorizSmall : classes.indicatorRadiusSmall);
     } else {
       result.push(classes.indicatorHorizontalBordered);
     }

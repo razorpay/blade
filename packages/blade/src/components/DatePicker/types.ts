@@ -60,6 +60,36 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   onPickerChange?: (picker: PickerType) => void;
 
   /**
+   * Controlled month that the calendar renders, independent of the selected `value`.
+   *
+   * Useful when you want the calendar to open on a specific month without pre-selecting
+   * a date — e.g. a "comparison" range picker that should default to the period
+   * immediately preceding a primary range picker's selection.
+   *
+   * Falls back to the first date of `value`/`defaultValue` (or today) when not set.
+   *
+   * When `visibleMonth` is controlled, you must handle `onVisibleMonthChange` to keep
+   * the prop in sync — otherwise calendar navigation will not work.
+   *
+   * @example
+   * // Anchor a comparison picker to the month before the primary range's start
+   * <DatePicker selectionType="range" visibleMonth={dayjs(primaryStart).subtract(1, 'month').toDate()} />
+   */
+  visibleMonth?: Date;
+  /**
+   * Uncontrolled variant of `visibleMonth`. Sets the initial month the calendar renders,
+   * without pre-selecting a date.
+   */
+  defaultVisibleMonth?: Date;
+  /**
+   * Callback which fires when the rendered month changes, either via calendar
+   * navigation (next/previous month, year, or decade) or when a date in a
+   * different month is selected. Does not fire when the `visibleMonth` prop
+   * is updated externally by the consumer.
+   */
+  onVisibleMonthChange?: (date: Date) => void;
+
+  /**
    * Controlled isOpen state
    */
   isOpen?: boolean;
@@ -138,6 +168,21 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
    */
   footer?: React.ReactElement;
   /**
+   * Override the BottomSheet / calendar popup header title.
+   * Useful for i18n (defaults to "Select Date" / "Select Date Range").
+   */
+  headerLabel?: string;
+  /**
+   * Override the Apply button label in the calendar footer.
+   * @default 'Apply'
+   */
+  applyLabel?: string;
+  /**
+   * Override the Cancel button label in the calendar footer.
+   * @default 'Cancel'
+   */
+  cancelLabel?: string;
+  /**
    * Controls how the selected date is displayed in the input field.
    *
    * - `compact`: Shows only the preset label (e.g., "Last 7 days") instead of the actual dates.
@@ -193,7 +238,14 @@ type DatePickerProps<Type extends DateSelectionType> = Omit<
      */
     inputPlaceHolder?: string;
     /**
-     * Decides whether to render a clear icon button
+     * Decides whether to render a clear (cross) button on the input.
+     *
+     * For the regular `DatePicker` input this is the existing opt-in behaviour. For the filter-chip
+     * variant (`FilterChipDatePicker`) the clear button is shown by default once a value is
+     * selected; pass `showClearButton={false}` there for filters that must always hold a value
+     * (e.g. a mandatory default date).
+     *
+     * @default true (filter-chip variant) / undefined (regular DatePicker input)
      */
     showClearButton?: boolean;
     /**
@@ -272,8 +324,16 @@ type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'labe
    */
   label: string;
   /**
+   * Callback which fires when the clear (cross) button is clicked.
    *
-   * Callback which fires when clear button is clicked
+   * Clearing also fires `onChange` with an empty value (`null` for single selection,
+   * `[null, null]` for range). When the FilterChipDatePicker is controlled (a `value` is
+   * provided), the chip cannot clear itself — you must reset `value` in response to
+   * `onChange`/`onClearButtonClick`. In the uncontrolled case (only `defaultValue`), the chip
+   * clears itself automatically.
+   *
+   * Tip: pass `showClearButton={false}` to hide the clear button for filters that must always
+   * hold a value.
    */
   onClearButtonClick?: () => void;
 };

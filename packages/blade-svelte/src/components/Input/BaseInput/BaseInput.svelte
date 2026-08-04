@@ -6,6 +6,7 @@
     makeAccessible,
     makeAnalyticsAttribute,
     getStyledPropsClasses,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
     getBaseInputWrapperClasses,
@@ -144,7 +145,7 @@
 
   // `__blade-base-input-wrapper` is the stable global hook the InputGroup
   // corner-rounding rules target. Harmless (unstyled) on standalone inputs.
-  const inputWrapperClasses = $derived(`${wrapperClasses} __blade-base-input-wrapper`);
+  const inputWrapperClasses = $derived(cx(`${wrapperClasses} __blade-base-input-wrapper`));
 
   const hasLeadingVisuals = $derived(
     Boolean(leadingInteractionElement) || Boolean(leadingIcon) || Boolean(prefix),
@@ -172,7 +173,7 @@
 
   const styledProps = $derived(getStyledPropsClasses(rest));
   const outerClasses = $derived(
-    [templateClasses.outer, ...(styledProps.classes ?? [])].filter(Boolean).join(' '),
+    cx(templateClasses.outer, ...(styledProps.classes ?? [])),
   );
   const outerStyles = $derived(
     Object.entries(styledProps.inlineStyles ?? {})

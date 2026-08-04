@@ -10,8 +10,8 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="TrustBadge"
-      componentDescription="A generic trust badge — a brand shield paired with a faded pill that displays a configurable trust label (default: 'Razorpay Trusted Business'). The component is designed to be generic so the label can evolve without a breaking API change."
-      figmaURL="https://www.figma.com/design/fc7NbN38dG7olgm9mzpVx4/Checkout-DS?node-id=340-10923&m=dev"
+      componentDescription="A generic trust badge — a brand shield paired with a sea-tinted pill that displays a configurable trust label (default: 'Razorpay Trusted Business'). The component is designed to be generic so the label can evolve without a breaking API change."
+      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=123352-128035&m=dev"
     >
       <Title>Usage</Title>
       <BaseBox
@@ -34,10 +34,6 @@ export default {
       control: { type: 'select' },
       options: ['default', 'icon-only'],
     },
-    emphasis: {
-      control: { type: 'select' },
-      options: ['intense', 'subtle'],
-    },
     label: {
       control: { type: 'text' },
     },
@@ -45,7 +41,6 @@ export default {
   },
   args: {
     variant: 'default',
-    emphasis: 'subtle',
     label: 'Razorpay Trusted Business',
   },
   parameters: {
@@ -56,30 +51,6 @@ export default {
 } as Meta<TrustBadgeProps>;
 
 const TrustBadgeTemplate: StoryFn<typeof TrustBadgeComponent> = (args) => {
-  const isSubtle = args.emphasis !== 'intense';
-  return (
-    <BaseBox
-      backgroundColor={
-        isSubtle ? 'surface.background.gray.subtle' : 'surface.background.gray.intense'
-      }
-      padding="spacing.5"
-      borderRadius="medium"
-      display="inline-flex"
-    >
-      <TrustBadgeComponent {...args} />
-    </BaseBox>
-  );
-};
-
-export const Default = TrustBadgeTemplate.bind({});
-
-export const Intense = TrustBadgeTemplate.bind({});
-Intense.args = {
-  emphasis: 'intense',
-};
-
-export const Subtle: StoryFn<typeof TrustBadgeComponent> = (args) => {
-  // The subtle variant uses static-black text, so render it over a light surface for contrast.
   return (
     <BaseBox
       backgroundColor="surface.background.gray.subtle"
@@ -91,9 +62,8 @@ export const Subtle: StoryFn<typeof TrustBadgeComponent> = (args) => {
     </BaseBox>
   );
 };
-Subtle.args = {
-  emphasis: 'subtle',
-};
+
+export const Default = TrustBadgeTemplate.bind({});
 
 export const IconOnly = TrustBadgeTemplate.bind({});
 IconOnly.args = {

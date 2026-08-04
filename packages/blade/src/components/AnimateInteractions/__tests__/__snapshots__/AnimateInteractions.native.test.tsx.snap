@@ -1,0 +1,232 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AnimateInteractions /> (native) should ignore motionTriggers on native (API parity only) 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View
+      data-blade-component="box"
+      style={
+        [
+          {},
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            {
+              "opacity": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 2%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.18200000000000002,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Reveal me
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<AnimateInteractions /> (native) should render its children as expected 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View
+      data-blade-component="box"
+      style={
+        [
+          {},
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        letterSpacing={50}
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(0, 0%, 2%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": -0.18200000000000002,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        Test
+      </Text>
+      <View
+        style={
+          [
+            {},
+            {
+              "opacity": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 2%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.18200000000000002,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Reveal me
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

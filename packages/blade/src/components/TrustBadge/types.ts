@@ -12,16 +12,6 @@ type TrustBadgeProps = {
   variant?: 'default' | 'icon-only';
 
   /**
-   * Text/foreground treatment. Only affects `variant='default'` — the shield keeps its
-   * fixed brand gradient regardless of emphasis.
-   * - `'intense'`: static-white text — for dark/colored surfaces.
-   * - `'subtle'` (default): static-black text — for light surfaces.
-   *
-   * @default 'subtle'
-   */
-  emphasis?: 'subtle' | 'intense';
-
-  /**
    * Trust label displayed in the pill (only visible when `variant='default'`).
    * Also used as the accessible label for the icon-only form.
    *

@@ -13,14 +13,24 @@ describe('getHumanizedDate', () => {
     expect(result).toBe('7 Jun 2026');
   });
 
-  it('should format a same-year range without repeating the year on the start date', () => {
+  it('should format a same-month range as a compact day range with a single month/year', () => {
     const result = getHumanizedDate({
-      date: [new Date(2026, 5, 7), new Date(2026, 5, 12)],
+      date: [new Date(2026, 5, 1), new Date(2026, 5, 23)],
       locale,
       selectionType: 'range',
     });
 
-    expect(result).toBe('7 Jun - 12 Jun 2026');
+    expect(result).toBe('1-23 Jun 2026');
+  });
+
+  it('should format a same-year, different-month range without repeating the year on the start date', () => {
+    const result = getHumanizedDate({
+      date: [new Date(2026, 5, 7), new Date(2026, 6, 12)],
+      locale,
+      selectionType: 'range',
+    });
+
+    expect(result).toBe('7 Jun - 12 Jul 2026');
   });
 
   it('should format a cross-year range with the year on both dates', () => {

@@ -4,12 +4,14 @@
   import type { IconProps } from '../types';
 
   // RazorpayTrustIcon is the branded "Razorpay Trusted Business" shield. Unlike standard Blade
-  // icons it keeps its brand gradients and drop-shadow, so the `color` prop is intentionally
-  // ignored. Raw SVG defs are inlined because the Blade `_Svg` primitives do not expose
+  // icons it keeps its brand gradients and drop-shadow by default. When `color` is
+  // `currentColor` (e.g. TrustBadge icon `styleOverride`), the shield inherits wrapper `color`.
+  // Raw SVG defs are inlined because the Blade `_Svg` primitives do not expose
   // gradient/filter elements.
   let { size = 'medium', color = 'surface.icon.gray.normal', ...rest }: IconProps = $props();
 
   const iconProps = $derived(getIconProps({ size, color }));
+  const useCurrentColor = $derived(color === 'currentColor');
 
   // Unique per-instance ids prevent gradient/filter collisions when multiple instances render
   // on the same page (SVG `id`s are document-global).
@@ -20,6 +22,19 @@
 </script>
 
 <Svg width={iconProps.width} height={iconProps.height} viewBox="0 0 24 24" {...rest}>
+  {#if useCurrentColor}
+    <path
+      d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z"
+      fill="currentColor"
+      stroke="currentColor"
+      stroke-width="0.666667"
+    />
+    <path
+      d="M11.5244 8.82L11.0532 10.6936L13.7494 8.80947L11.9861 15.9179L13.7767 15.9196L16.3815 5.42041L11.5244 8.82Z"
+      fill="white"
+    />
+    <path d="M8.62275 12.9321L7.88147 15.9204H11.5517L13.0534 9.8411L8.62275 12.9321Z" fill="white" />
+  {:else}
   <path
     d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z"
     fill="url(#{fillId})"
@@ -33,6 +48,8 @@
     />
     <path d="M8.62275 12.9321L7.88147 15.9204H11.5517L13.0534 9.8411L8.62275 12.9321Z" fill="white" />
   </g>
+  {/if}
+  {#if !useCurrentColor}
   <defs>
     <filter
       id={shadowId}
@@ -85,4 +102,5 @@
       <stop offset="1" stop-color="#00C67F" />
     </linearGradient>
   </defs>
+  {/if}
 </Svg>

@@ -13,9 +13,37 @@ type ChartAreaProps = {
    */
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   /**
-   * Whether to connect nulls.
+   * Whether to bridge gaps (`null` / `undefined` values) in the data.
+   *
+   * - `false` (default): the area breaks at null points, leaving a gap (no fill either). Use this
+   *   for genuine data outages where no continuity should be implied.
+   * - `true`: a line bridges across null points while the fill stays gapped underneath (there's
+   *   never a fill under a no-data stretch). Use `connectNullsStyle` to control whether that bridge
+   *   line is solid or dashed.
+   *
+   * Narrowed to `boolean` (instead of `RechartAreaProps['connectNulls']`) intentionally: Blade
+   * restricts the API surface to a controlled subset so that `connectNullsStyle` — a Blade-specific
+   * concept with no Recharts equivalent — can be offered alongside it. This mirrors `ChartLine`.
+   *
+   * @default false
+   * @see {@link connectNullsStyle} — only takes effect when this prop is `true`
    */
-  connectNulls?: RechartAreaProps['connectNulls'];
+  connectNulls?: boolean;
+  /**
+   * The style of the line drawn across null points. **Only takes effect when `connectNulls` is
+   * `true`** — when `connectNulls` is `false` (or unset) the area simply breaks at null points and
+   * this prop is ignored. In both cases the area fill is omitted under the no-data stretch — only
+   * the bridge line differs.
+   *
+   * - `'solid'` (default): real data renders as a solid area and the gap is bridged with a solid
+   *   line (no fill underneath).
+   * - `'dashed'`: real data renders as a solid area and the gap is bridged with a dashed line (no
+   *   fill underneath), signalling "no data for this period" without implying a measured value.
+   *
+   * @default 'solid'
+   * @see {@link connectNulls} — must be `true` for this prop to have any effect
+   */
+  connectNullsStyle?: 'solid' | 'dashed';
   /**
    * Whether to show the legend.
    */
@@ -61,6 +89,10 @@ type ChartAreaProps = {
    * @private
    */
   _totalAreas?: number;
+  /**
+   * @private
+   */
+  _gradientNamespace?: string;
 };
 
 type data = {

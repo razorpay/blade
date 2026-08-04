@@ -16,6 +16,11 @@ exports[`<TrustBadge /> should render the default badge with the default trust l
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding: 4px 8px;
+  height: 24px;
+  gap: 4px;
+  background-color: hsla(180,39%,95%,1);
+  border-radius: 9999px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -30,42 +35,10 @@ exports[`<TrustBadge /> should render the default badge with the default trust l
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  position: relative;
-  z-index: 2;
-  margin-right: -12px;
 }
 
 .c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 10px;
-  padding-left: 16px;
-  background-color: hsla(0,0%,0%,0.32);
-  border-radius: 16px;
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(0,0%,100%,1);
+  color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
@@ -207,18 +180,13 @@ exports[`<TrustBadge /> should render the default badge with the default trust l
         </defs>
       </svg>
     </div>
-    <div
+    <p
       class="c2"
-      data-blade-component="base-box"
+      data-blade-component="text"
+      letter-spacing="50"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
-        letter-spacing="50"
-      >
-        Razorpay Trusted Business
-      </p>
-    </div>
+      Razorpay Trusted Business
+    </p>
   </div>
 </div>
 `;
@@ -239,6 +207,7 @@ exports[`<TrustBadge /> should render the icon-only badge without the visible la
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding: 4px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -253,8 +222,6 @@ exports[`<TrustBadge /> should render the icon-only badge without the visible la
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  position: relative;
-  z-index: 2;
 }
 
 <div>
@@ -267,217 +234,6 @@ exports[`<TrustBadge /> should render the icon-only badge without the visible la
       class="c1"
       data-blade-component="base-box"
       role="img"
-    >
-      <svg
-        aria-hidden="true"
-        class="Svgweb__StyledSvg-vcmjs8-0"
-        data-blade-component="icon"
-        fill="none"
-        height="16px"
-        viewBox="0 0 24 24"
-        width="16px"
-      >
-        <path
-          d="M19.7981 3.96094V15.3838C19.798 16.163 19.4121 16.8915 18.7679 17.3301L12.1311 21.8467L5.49443 17.3301C4.85022 16.8915 4.46425 16.163 4.46415 15.3838V3.96094L12.1311 2.09277L19.7981 3.96094Z"
-          fill="url(#razorpayTrustFill-:r2:)"
-          stroke="url(#razorpayTrustStroke-:r2:)"
-          stroke-width="0.666667"
-        />
-        <g
-          filter="url(#razorpayTrustShadow-:r2:)"
-        >
-          <path
-            d="M11.5244 8.82L11.0532 10.6936L13.7494 8.80947L11.9861 15.9179L13.7767 15.9196L16.3815 5.42041L11.5244 8.82Z"
-            fill="white"
-          />
-          <path
-            d="M8.62275 12.9321L7.88147 15.9204H11.5517L13.0534 9.8411L8.62275 12.9321Z"
-            fill="white"
-          />
-        </g>
-        <defs>
-          <filter
-            color-interpolation-filters="sRGB"
-            filterUnits="userSpaceOnUse"
-            height="14.9444"
-            id="razorpayTrustShadow-:r2:"
-            width="12.9444"
-            x="5.65925"
-            y="3.19819"
-          >
-            <feflood
-              flood-opacity="0"
-              result="BackgroundImageFix"
-            />
-            <fecolormatrix
-              in="SourceAlpha"
-              result="hardAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            />
-            <feoffset />
-            <fegaussianblur
-              stdDeviation="1.11111"
-            />
-            <fecomposite
-              in2="hardAlpha"
-              operator="out"
-            />
-            <fecolormatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0.294097 0 0 0 0 0.152931 0 0 0 0.25 0"
-            />
-            <feblend
-              in2="BackgroundImageFix"
-              mode="normal"
-              result="effect1_dropShadow"
-            />
-            <feblend
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              mode="normal"
-              result="shape"
-            />
-          </filter>
-          <lineargradient
-            gradientUnits="userSpaceOnUse"
-            id="razorpayTrustFill-:r2:"
-            x1="4.13115"
-            x2="18.2093"
-            y1="5.0249"
-            y2="18.4295"
-          >
-            <stop
-              stop-color="#00FD0A"
-            />
-            <stop
-              offset="0.972213"
-              stop-color="#00AD8E"
-            />
-          </lineargradient>
-          <lineargradient
-            gradientUnits="userSpaceOnUse"
-            id="razorpayTrustStroke-:r2:"
-            x1="6.35337"
-            x2="17.5246"
-            y1="4.55055"
-            y2="17.4954"
-          >
-            <stop
-              stop-color="#65FF4D"
-            />
-            <stop
-              offset="0.302473"
-              stop-color="white"
-              stop-opacity="0.895"
-            />
-            <stop
-              offset="0.452125"
-              stop-color="#65FF4D"
-              stop-opacity="0.805"
-            />
-            <stop
-              offset="1"
-              stop-color="#00C67F"
-            />
-          </lineargradient>
-        </defs>
-      </svg>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TrustBadge /> should render the subtle variant 1`] = `
-.c0.c0.c0.c0.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-  margin-right: -12px;
-}
-
-.c2.c2.c2.c2.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 10px;
-  padding-left: 16px;
-  background-color: rgba(0,0,0,0.1);
-  border-radius: 16px;
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(0,0%,0%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.625rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 0.8125rem;
-  -webkit-letter-spacing: -0.13px;
-  -moz-letter-spacing: -0.13px;
-  -ms-letter-spacing: -0.13px;
-  letter-spacing: -0.13px;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <div
-    class="c0"
-    data-blade-component="trust-badge"
-  >
-    <div
-      aria-hidden="true"
-      class="c1"
-      data-blade-component="base-box"
     >
       <svg
         aria-hidden="true"
@@ -594,18 +350,6 @@ exports[`<TrustBadge /> should render the subtle variant 1`] = `
           </lineargradient>
         </defs>
       </svg>
-    </div>
-    <div
-      class="c2"
-      data-blade-component="base-box"
-    >
-      <p
-        class="c3"
-        data-blade-component="text"
-        letter-spacing="50"
-      >
-        Razorpay Trusted Business
-      </p>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { TrustBadgeVariant, TrustBadgeEmphasis } from '@razorpay/blade-core/styles';
+import type { TrustBadgeVariant } from '@razorpay/blade-core/styles';
 
-export type { TrustBadgeVariant, TrustBadgeEmphasis };
+export type { TrustBadgeVariant };
 
 export type TrustBadgeProps = {
   /**
@@ -12,16 +12,6 @@ export type TrustBadgeProps = {
    * @default 'default'
    */
   variant?: TrustBadgeVariant;
-
-  /**
-   * Text/foreground treatment. Only affects `variant='default'` — the shield keeps its
-   * fixed brand gradient regardless of emphasis.
-   * - `'intense'`: static-white text — for dark/colored surfaces.
-   * - `'subtle'` (default): static-black text — for light surfaces.
-   *
-   * @default 'subtle'
-   */
-  emphasis?: TrustBadgeEmphasis;
 
   /**
    * Trust label displayed in the pill (only visible when `variant='default'`).

@@ -1,13 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { throwBladeError } from '~utils/logger';
+import type { FilterChipDatePickerProps } from '../types';
+import { BaseDatePicker } from '../BaseDatePicker';
 
-const FilterChipDatePicker = (_props: any): React.ReactElement => {
-  throwBladeError({
-    message: 'FilterChipDatePicker is not yet implemented for native',
-    moduleName: 'FilterChipDatePicker',
-  });
-
-  return <></>;
+const FilterChipDatePicker = (props: FilterChipDatePickerProps): React.ReactElement => {
+  return <BaseDatePicker {...props} inputElementType="chip" />;
 };
 
 export { FilterChipDatePicker };

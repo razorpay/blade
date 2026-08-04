@@ -36,6 +36,7 @@
     name,
     size = 'medium',
     orientation = 'vertical',
+    flexWrap = 'nowrap',
     testID,
     ...rest
   }: RadioGroupProps = $props();
@@ -106,7 +107,7 @@
   const hintIconSize = $derived(size === 'large' ? 'medium' : 'small');
 
   const fieldClasses = $derived(getRadioGroupFieldClasses({ labelPosition }));
-  const itemsClasses = $derived(getRadioGroupItemsClasses({ orientation, size }));
+  const itemsClasses = $derived(getRadioGroupItemsClasses({ orientation, size, flexWrap }));
   const labelSizeClass = $derived(getRadioGroupLabelSizeClass(size, labelPosition));
   const hintTextClass = $derived(getRadioGroupHintTextClass(size));
   const hintMarginClass = $derived(getRadioGroupHintMarginClass(size));

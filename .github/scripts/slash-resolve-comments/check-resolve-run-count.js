@@ -19,7 +19,7 @@ const prNumber = parseInt(process.env.PR_NUMBER, 10);
 const reviewId = process.env.REVIEW_ID;
 const workflowRef = process.env.GITHUB_WORKFLOW_REF;
 const githubOutput = process.env.GITHUB_OUTPUT;
-const MAX_RUNS = 20;
+const MAX_RUNS = 10;
 const HUMAN_HELP_NEEDED_LABEL = 'Human Help Needed 🧑🏻‍💻';
 
 function output(allowed) {

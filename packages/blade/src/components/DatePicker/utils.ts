@@ -736,9 +736,11 @@ const stripDelimiters = (str?: string): string => str?.replace(/\//g, '') ?? '';
 
 /**
  * Formats a date / date-range into a humanised, easy-to-read format used by the
- * `displayFormat="compact"` mode (e.g. "7 Jun 2026" or "7 Jun - 12 Jun 2026").
+ * `displayFormat="compact"` mode (e.g. "7 Jun 2026", "1-23 Jun 2026", or "7 Jun - 12 Jul 2026").
  *
- * The year is only repeated on the start date when the range spans multiple years.
+ * - Same month & year: only the day is repeated on the start date, e.g. "1-23 Jun 2026".
+ * - Same year, different month: the year is only repeated on the end date, e.g. "7 Jun - 12 Jul 2026".
+ * - Different years: the year is repeated on both dates, e.g. "28 Dec 2025 - 3 Jan 2026".
  * This intentionally uses a fixed `D MMM YYYY` format (locale-aware) since it is only
  * used for the read-only compact display and not for editable input parsing.
  */
@@ -755,6 +757,8 @@ const getHumanizedDate = ({
 
   const withYear = (value: Date): string => dayjs(value).locale(locale).format('D MMM YYYY');
   const withoutYear = (value: Date): string => dayjs(value).locale(locale).format('D MMM');
+  const dayOnly = (value: Date): string => dayjs(value).locale(locale).format('D');
+  const monthYear = (value: Date): string => dayjs(value).locale(locale).format('MMM YYYY');
 
   if (selectionType === 'single' && date instanceof Date) {
     return withYear(date);
@@ -763,7 +767,15 @@ const getHumanizedDate = ({
   if (Array.isArray(date)) {
     const [startDate, endDate] = date;
     if (startDate && endDate) {
-      const isSameYear = dayjs(startDate).year() === dayjs(endDate).year();
+      const start = dayjs(startDate);
+      const end = dayjs(endDate);
+      const isSameYear = start.year() === end.year();
+      const isSameMonth = isSameYear && start.month() === end.month();
+
+      if (isSameMonth) {
+        return `${dayOnly(startDate)}-${dayOnly(endDate)} ${monthYear(endDate)}`;
+      }
+
       return `${isSameYear ? withoutYear(startDate) : withYear(startDate)} - ${withYear(endDate)}`;
     }
     if (startDate) {
@@ -774,9 +786,35 @@ const getHumanizedDate = ({
   return '';
 };
 
+/**
+ * Clamps a date into the `[minDate, maxDate]` range so the calendar opens on a month
+ * that actually contains selectable dates. When the anchor (usually today) is after
+ * `maxDate`, the last selectable date (`maxDate`) is returned; when it is before
+ * `minDate`, the first selectable date (`minDate`) is returned. Otherwise the anchor is
+ * returned unchanged. `excludeDate` gaps are intentionally not considered here.
+ */
+const clampDateToRange = ({
+  date,
+  minDate,
+  maxDate,
+}: {
+  date: Date;
+  minDate?: Date;
+  maxDate?: Date;
+}): Date => {
+  if (maxDate && dayjs(date).isAfter(dayjs(maxDate), 'day')) {
+    return maxDate;
+  }
+  if (minDate && dayjs(date).isBefore(dayjs(minDate), 'day')) {
+    return minDate;
+  }
+  return date;
+};
+
 export {
   convertIntlToDayjsLocale,
   loadScript,
+  clampDateToRange,
   getFormattedDate,
   getHumanizedDate,
   rangeFormattedValue,

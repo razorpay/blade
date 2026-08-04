@@ -388,7 +388,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
     >
       <label
         data-blade-component="form-label"
-        for="otp-4399-input-4400"
+        for="otp-4555-input-4556"
         style="width: 100%; flex-shrink: 0; margin-right: 0px;"
       >
         <div
@@ -435,7 +435,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
       >
         <input
           hidden=""
-          id="otp-4399-input-4400"
+          id="otp-4555-input-4556"
           readonly=""
           value=""
         />
@@ -470,7 +470,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
-                    id="otp-4399-input-4400-0-4405-input-4406"
+                    id="otp-4555-input-4556-0-4561-input-4562"
                     inputmode="decimal"
                     placeholder=""
                     required=""
@@ -513,7 +513,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
-                    id="otp-4399-input-4400-1-4411-input-4412"
+                    id="otp-4555-input-4556-1-4567-input-4568"
                     inputmode="decimal"
                     placeholder=""
                     required=""
@@ -556,7 +556,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
-                    id="otp-4399-input-4400-2-4417-input-4418"
+                    id="otp-4555-input-4556-2-4573-input-4574"
                     inputmode="decimal"
                     placeholder=""
                     required=""
@@ -599,7 +599,7 @@ exports[`<OTPInput /> should accept data-analytics attributes 1`] = `
                     data-analytics-event="change"
                     data-analytics-type="otp"
                     data-blade-component="styled-base-input"
-                    id="otp-4399-input-4400-3-4423-input-4424"
+                    id="otp-4555-input-4556-3-4579-input-4580"
                     inputmode="decimal"
                     placeholder=""
                     required=""

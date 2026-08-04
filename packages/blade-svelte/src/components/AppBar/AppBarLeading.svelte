@@ -3,11 +3,13 @@
   import { getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../Typography/Text/Text.svelte';
   import { TrustBadge } from '../TrustBadge';
+  import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import { getAppBarContext, useAppBarContext } from './AppBarContext';
   import type { AppBarLeadingProps, AppBarVariant } from './types';
 
-  // Prevent CSS-module tree-shaking of structural classes.
   const templateClasses = getAppBarTemplateClasses();
+  const themeContextGetter = getBladeThemeContextGetter();
 
   useAppBarContext('AppBarLeading');
   const getAppBarCtx = getAppBarContext() ?? (() => ({ variant: 'neutral' as AppBarVariant }));
@@ -19,14 +21,24 @@
     trustBadgeVariant,
     trustBadgeLabel,
     testID,
+    styleOverride,
     ...rest
   }: AppBarLeadingProps = $props();
 
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('AppBarLeading', styleOverride, themeContextGetter),
+  );
+
+  const titleSlotClass = $derived(resolvedStyleOverride?.title);
+
   const isNeutral = $derived(appBarContext.variant === 'neutral');
-  const trustBadgeEmphasis = $derived(isNeutral ? 'intense' : 'subtle');
 
   const titleColor = $derived(
-    isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal',
+    titleSlotClass
+      ? ('currentColor' as const)
+      : isNeutral
+        ? 'surface.text.staticWhite.normal'
+        : 'surface.text.gray.normal',
   );
 
   const showFullBadge = $derived(trustBadgeVariant === 'default');
@@ -46,7 +58,7 @@
           {@render logo()}
         </div>
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+          <TrustBadge variant="default" label={trustBadgeLabel} />
         </div>
       </div>
     {:else}
@@ -65,22 +77,28 @@
             : ''}"
         >
           <div class={templateClasses.appBarLeadingTitle}>
-            <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
+            <Text
+              size="large"
+              weight="semibold"
+              color={titleColor}
+              truncateAfterLines={1}
+              className={titleSlotClass}
+            >
               {title}
             </Text>
           </div>
           {#if showIconBadge}
-            <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+            <TrustBadge variant="icon-only" label={trustBadgeLabel} />
           {/if}
         </div>
       {/if}
       {#if showFullBadge && !stackFullBadgeBelowLogo}
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+          <TrustBadge variant="default" label={trustBadgeLabel} />
         </div>
       {/if}
     </div>
   {:else if showIconBadge}
-    <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+    <TrustBadge variant="icon-only" label={trustBadgeLabel} />
   {/if}
 </div>

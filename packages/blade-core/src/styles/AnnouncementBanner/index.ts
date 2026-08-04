@@ -11,3 +11,4 @@ export type {
   AnnouncementBannerTheme,
   AnnouncementBannerAlignment,
 } from './announcementBanner';
+export type { AnnouncementBannerSlot } from './slots';

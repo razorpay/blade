@@ -1,7 +1,7 @@
 export {
   getTrustBadgeTextColorToken,
-  getTrustBadgePillEmphasisClass,
+  getTrustBadgeVariantClass,
   getTrustBadgeTemplateClasses,
 } from './trustBadge';
 
-export type { TrustBadgeVariant, TrustBadgeEmphasis } from './trustBadge';
+export type { TrustBadgeVariant } from './trustBadge';

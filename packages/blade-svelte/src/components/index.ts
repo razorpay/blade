@@ -36,6 +36,14 @@ export { default as Badge } from './Badge/Badge.svelte';
 
 // Counter
 export { default as Counter } from './Counter/Counter.svelte';
+// CounterInput
+export { default as CounterInput } from './CounterInput/CounterInput.svelte';
+export type {
+  CounterInputProps,
+  CounterInputEmphasis,
+  CounterInputSize,
+  CounterInputOnChange,
+} from './CounterInput/types';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
 // Skeleton
@@ -90,7 +98,7 @@ export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant
 
 // TrustBadge
 export { TrustBadge } from './TrustBadge';
-export type { TrustBadgeProps, TrustBadgeVariant, TrustBadgeEmphasis } from './TrustBadge';
+export type { TrustBadgeProps, TrustBadgeVariant } from './TrustBadge';
 
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';

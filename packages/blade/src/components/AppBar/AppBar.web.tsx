@@ -142,7 +142,6 @@ const _AppBarLeading = ({
   const appBarContext = useAppBarContext();
   const isNeutral = (appBarContext?.variant ?? 'neutral') === 'neutral';
   const titleColor = isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal';
-  const trustBadgeEmphasis = isNeutral ? 'intense' : 'subtle';
   const showFullBadge = trustBadgeVariant === 'default';
   const showIconBadge = trustBadgeVariant === 'icon-only';
   const stackFullBadgeBelowLogo = showFullBadge && Boolean(logo) && !title;
@@ -179,7 +178,7 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+              <TrustBadge variant="default" label={trustBadgeLabel} />
             </BaseBox>
           </BaseBox>
         ) : (
@@ -195,13 +194,7 @@ const _AppBarLeading = ({
               <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
                 {title}
               </Text>
-              {showIconBadge ? (
-                <TrustBadge
-                  variant="icon-only"
-                  emphasis={trustBadgeEmphasis}
-                  label={trustBadgeLabel}
-                />
-              ) : null}
+              {showIconBadge ? <TrustBadge variant="icon-only" label={trustBadgeLabel} /> : null}
             </BaseBox>
           ) : null}
           {showFullBadge && !stackFullBadgeBelowLogo ? (
@@ -212,12 +205,12 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <TrustBadge variant="default" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+              <TrustBadge variant="default" label={trustBadgeLabel} />
             </BaseBox>
           ) : null}
         </BaseBox>
       ) : showIconBadge ? (
-        <TrustBadge variant="icon-only" emphasis={trustBadgeEmphasis} label={trustBadgeLabel} />
+        <TrustBadge variant="icon-only" label={trustBadgeLabel} />
       ) : null}
     </BaseBox>
   );

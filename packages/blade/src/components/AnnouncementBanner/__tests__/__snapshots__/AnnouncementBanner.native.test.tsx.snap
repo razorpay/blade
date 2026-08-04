@@ -18,7 +18,7 @@ exports[`<AnnouncementBanner /> should render default light treatment (centered,
         {},
         {
           "alignItems": "center",
-          "backgroundColor": "hsla(200, 10%, 94%, 1)",
+          "backgroundColor": "hsla(0, 0%, 97%, 1)",
           "boxSizing": "border-box",
           "display": "flex",
           "flexDirection": "row",
@@ -167,7 +167,7 @@ exports[`<AnnouncementBanner /> should render left aligned 1`] = `
         {},
         {
           "alignItems": "center",
-          "backgroundColor": "hsla(200, 10%, 94%, 1)",
+          "backgroundColor": "hsla(0, 0%, 97%, 1)",
           "boxSizing": "border-box",
           "display": "flex",
           "flexDirection": "row",

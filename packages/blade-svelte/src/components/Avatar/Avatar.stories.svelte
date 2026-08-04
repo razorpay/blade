@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Avatar from './Avatar.svelte';
   import { iconMap } from '../Icons';
@@ -66,7 +66,7 @@
 <Story name="Icon Avatars" asChild>
   <div style="display: flex; flex-direction: row; gap: 20px;">
     {#each sizes as avatarSize}
-      <Avatar size={avatarSize} icon={BuildingIcon} variant="square" />
+      <Avatar size={avatarSize} icon={BuildingIcon} variant="circle" />
     {/each}
   </div>
 </Story>

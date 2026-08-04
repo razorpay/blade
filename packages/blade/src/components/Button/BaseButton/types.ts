@@ -17,6 +17,17 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
  */
 export type IconColor = Exclude<IconProps['color'], 'currentColor'>;
 
+/**
+ * Per-corner border radii (in px). Used on React Native to round only the outer
+ * corners of the first/last buttons inside a ButtonGroup.
+ */
+export type ButtonCornerRadii = {
+  topLeft: number;
+  topRight: number;
+  bottomLeft: number;
+  bottomRight: number;
+};
+
 export type BaseButtonStyleProps = {
   iconSize: IconSize;
   spinnerSize: BaseSpinnerProps['size'];
@@ -49,6 +60,8 @@ export type BaseButtonStyleProps = {
   shadowBottomColor?: string;
   shadowBottomHeight?: number;
   shadowBorderColor?: string;
+  /** Highlighted/focus border color for native press feedback (matches web `:active`). */
+  focusShadowBorderColor?: string;
   shadowRingWidth?: number;
   isShadowGradientVisible?: boolean;
 };
@@ -81,12 +94,35 @@ export type StyledBaseButtonProps = Omit<
   motionDuration: DurationString;
   motionEasing: EasingString;
   borderRadius: BorderRadiusValues | number;
+  borderRadii?: ButtonCornerRadii;
+  /**
+   * When true, pulls the button 1px to the left so its border overlaps the
+   * previous button's border. Used on React Native for secondary/tertiary
+   * ButtonGroups (which separate buttons via their own gray border rather than a
+   * divider) to collapse the two adjacent borders into a single line, matching
+   * web's `marginLeft: -1px` behaviour.
+   */
+  isGroupBorderCollapsed?: boolean;
+  /**
+   * When true, the inset highlight/shadow overlay draws only horizontal edges
+   * (top/bottom), pushing vertical sides outside the button bounds so they are
+   * clipped. Prevents doubled inset shadow thickness at ButtonGroup junctions.
+   */
+  isInsetShadowSidesFlattened?: boolean;
+  /**
+   * When true (React Native ButtonGroup with `isFullWidth`), use `flex: 1`
+   * instead of `width: 100%` so sibling buttons share the row equally. Web
+   * does this via CSS child selectors (`flex: 1`); native has no cascade.
+   */
+  isInsideFullWidthButtonGroup?: boolean;
   borderWidth?: string;
   shadowHighlightColor?: string;
   shadowHighlightHeight?: number;
   shadowBottomColor?: string;
   shadowBottomHeight?: number;
   shadowBorderColor?: string;
+  /** Highlighted/focus border color for native press feedback (matches web `:active`). */
+  focusShadowBorderColor?: string;
   shadowRingWidth?: number;
   isShadowGradientVisible?: boolean;
   accessibilityProps: Record<string, unknown>;

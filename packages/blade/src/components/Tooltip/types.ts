@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import type { ColorSchemeNames } from '~tokens/theme/theme';
+import type { SpacingValueType } from '~components/Box/BaseBox/types/spacingTypes';
 
 type TooltipProps = {
   /**
@@ -30,6 +31,12 @@ type TooltipProps = {
    * @default 1100
    */
   zIndex?: number;
+  /**
+   * Sets the maximum width of the tooltip content
+   *
+   * @default 200px
+   */
+  maxWidth?: SpacingValueType;
 } & DataAnalyticsAttribute;
 
 type TooltipContentProps = {
@@ -46,6 +53,7 @@ type TooltipContentProps = {
    * react-native only
    */
   side?: Side;
+  maxWidth?: SpacingValueType;
 };
 
 type TooltipContentWrapperProps = {

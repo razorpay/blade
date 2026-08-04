@@ -51,6 +51,7 @@ const _Popover = ({
   defaultIsOpen,
   initialFocusRef,
   openInteraction = 'click',
+  maxWidth,
   ...rest
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
@@ -172,6 +173,7 @@ const _Popover = ({
                     titleLeading={titleLeading}
                     footer={footer}
                     style={styles}
+                    maxWidth={maxWidth}
                     arrow={
                       <PopupArrow
                         ref={arrowRef}

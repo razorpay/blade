@@ -58,6 +58,7 @@
 <script lang="ts">
   import InputRow from './InputRow.svelte';
   import TextInput from '../Input/TextInput/TextInput.svelte';
+  import PasswordInput from '../Input/PasswordInput/PasswordInput.svelte';
   import Button from '../Button/Button.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
   import ToastContainer from '../Toast/ToastContainer.svelte';
@@ -300,8 +301,7 @@
           onChange={({ value }) => setValidationField('expiryDate', value ?? '')}
           validationState={validationStateFor('expiryDate')}
         />
-        <!-- PasswordInput not migrated → TextInput substitute. -->
-        <TextInput
+        <PasswordInput
           placeholder="CVV"
           label="CVV"
           value={validationForm.cvv}
@@ -419,8 +419,7 @@
           onChange={({ value }) => setFormatField('expiryDate', value ?? '')}
           validationState={formatStateFor('expiryDate')}
         />
-        <!-- PasswordInput not migrated → TextInput substitute. -->
-        <TextInput
+        <PasswordInput
           label="CVV (3 digits)"
           placeholder="123"
           maxCharacters={3}

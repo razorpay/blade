@@ -38,7 +38,7 @@ interface SearchInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribut
   value?: string;
   /** Name of the input. */
   name?: string;
-  /** Change callback. */
+  /** Change callback. Fires on every keystroke (matches React SearchInput onChange). */
   onChange?: FormInputOnEvent;
   /** Focus callback. */
   onFocus?: FormInputOnEvent;
