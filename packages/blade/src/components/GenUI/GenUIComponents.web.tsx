@@ -1418,38 +1418,45 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
   const hasHeader = title || description;
 
   return (
-    <Card
-      width="100%"
+    <Box
       height="100%"
-      padding={genUISpacingContract.compactCardPadding}
-      data-genui-card-ref=""
+      display="flex"
+      flexDirection="column"
+      gap={genUISpacingContract.compactCardRowGap}
     >
-      {hasHeader ? (
-        <CardHeader>
-          <CardHeaderLeading title={title || ''} subtitle={description || ''} />
-        </CardHeader>
-      ) : null}
+      <Card
+        width="100%"
+        height="100%"
+        padding={genUISpacingContract.compactCardPadding}
+        data-genui-card-ref=""
+      >
+        {hasHeader ? (
+          <CardHeader>
+            <CardHeaderLeading title={title || ''} subtitle={description || ''} />
+          </CardHeader>
+        ) : null}
 
-      {children && children.length > 0 ? (
-        <CardBody height="100%">
-          <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
-            {children.map((child, index) => {
-              return <GenUIComponentRenderer key={index} component={child} index={index} />;
-            })}
-          </Box>
-        </CardBody>
-      ) : null}
+        {children && children.length > 0 ? (
+          <CardBody height="100%">
+            <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
+              {children.map((child, index) => {
+                return <GenUIComponentRenderer key={index} component={child} index={index} />;
+              })}
+            </Box>
+          </CardBody>
+        ) : null}
 
-      {footer ? (
-        <CardFooter
-          showDivider={true}
-          marginTop={genUISpacingContract.cardTableToFooterAction}
-          paddingTop={genUISpacingContract.cardTableToFooterAction}
-        >
-          <CardFooterLeading subtitle={footer} />
-        </CardFooter>
-      ) : null}
-    </Card>
+        {footer ? (
+          <CardFooter
+            showDivider={true}
+            marginTop={genUISpacingContract.cardTableToFooterAction}
+            paddingTop={genUISpacingContract.cardTableToFooterAction}
+          >
+            <CardFooterLeading subtitle={footer} />
+          </CardFooter>
+        ) : null}
+      </Card>
+    </Box>
   );
 });
 
