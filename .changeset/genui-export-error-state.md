@@ -2,6 +2,6 @@
 '@razorpay/blade': minor
 ---
 
-feat(GenUI): add error state UI for export actions and consumer-registered action slots
+feat(GenUI): add consumer-registered action slots for Card and Table components
 
-Adds error status to export action state machine with red X icon feedback for copy/download failures, error labels, and telemetry dispatch with status: 'error'. Also adds consumer-registered action slots via `componentActions` config on `GenUIProvider`, allowing consumers to register render props per component type that receive the component's data and DOM ref.
+Introduces a `componentActions` registry on `GenUIProvider` that lets consumers register render props for action UI below block-level components (CARD, TABLE). The design system renders the slot and hands the consumer the component's data and a `componentRef`, keeping all action logic (copy, download, export) on the consumer side with no DS dependency.
