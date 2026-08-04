@@ -541,6 +541,7 @@ type TableComponent = GenUIBaseComponent & {
   headers?: string[];
   rows?: TableCellType[][];
   rowActions?: TableRowAction[];
+  actions?: GenUIAction[];
 };
 
 type BadgeComponent = GenUIBaseComponent & {
@@ -579,6 +580,7 @@ type CardComponent = GenUIBaseComponent & {
   description?: string;
   footer?: string | null;
   children?: GenUIComponent[];
+  actions?: GenUIAction[];
 };
 
 type InfoGroupItemValue = {
@@ -1754,4 +1756,4 @@ export {
   ComponentType,
 };
 
-export type { GenUIComponent, TableCellType, CardComponent, TableComponent };
+export type { GenUIComponent, TableCellType, CardComponent, TableComponent, GenUIAction };
