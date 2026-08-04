@@ -7,6 +7,8 @@ import { useGenUI, GenUIContext } from './GenUIContext';
 import { getGenUIComponentTopSpacing } from './GenUISpacing';
 import type { AnimateOptions } from './rehypeAnimate';
 import { Box } from '~components/Box';
+import type { CardComponent, TableComponent } from './GenUIComponents';
+import { CardActionButton, TableActionButtons } from './GenUIActionButtons.web';
 import { useResize } from '~utils/useResize';
 
 /**
@@ -298,9 +300,16 @@ const ComponentRendererInner = memo(({ component, index }: ComponentRendererProp
     // 13px inset; custom components have no external margin so use 0.
     if (isBlockLevel) {
       return (
-        <AnimatedGradientBorder key={key}>
-          <Renderer {...component} index={index} />
-        </AnimatedGradientBorder>
+        <Box key={key} display="flex" flexDirection="column" width="100%">
+          <AnimatedGradientBorder>
+            <Renderer {...component} index={index} />
+          </AnimatedGradientBorder>
+          {componentType === 'CARD' && component ? (
+            <CardActionButton cardComponent={component as CardComponent} />
+          ) : componentType === 'TABLE' && component ? (
+            <TableActionButtons tableComponent={component as TableComponent} />
+          ) : null}
+        </Box>
       );
     }
 
@@ -371,9 +380,11 @@ const GenUISchemaRenderer = memo(
             const marginTop = getGenUIComponentTopSpacing(components[index - 1], component);
 
             return (
-              <Box key={getComponentKey(component, index)} marginTop={marginTop}>
-                <ComponentRenderer component={component} index={index} />
-              </Box>
+              <React.Fragment key={getComponentKey(component, index)}>
+                <Box marginTop={marginTop}>
+                  <ComponentRenderer component={component} index={index} />
+                </Box>
+              </React.Fragment>
             );
           })}
         </>
