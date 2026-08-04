@@ -3,10 +3,17 @@ import type { StoryFn, Meta } from '@storybook/react-vite';
 import { jsonrepair } from 'jsonrepair';
 import { GenUIProvider } from './GenUIProvider';
 import { GenUISchemaRenderer } from './GenUISchemaRenderer';
+import type {
+  GenUIActionSlotRenderer,
+  GenUIComponentActionsRegistry,
+  GenUIBaseComponent,
+} from './types';
 import { Box } from '~components/Box';
 import type { BoxProps } from '~components/Box';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Text } from '~components/Typography';
+import { Link } from '~components/Link';
+import { DownloadIcon, CopyIcon } from '~components/Icons';
 
 export default {
   title: 'Patterns/GenUI',
@@ -952,3 +959,125 @@ const TableExamplesTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Eleme
 };
 
 export const TableExamples = TableExamplesTemplate.bind({});
+
+/**
+ * Consumer-registered action slots.
+ *
+ * The consumer registers action UI per component type via `config.componentActions`.
+ * GenUI renders each registered render prop in a slot *below* the component (outside
+ * the gradient ring) and hands it the component's `data` (schema/props) and a
+ * `componentRef` to its DOM node — so the consumer fully owns the action UI + logic
+ * (CSV export, PNG capture, copy, ...) without GenUI prescribing the buttons.
+ */
+const componentActionsSchema = {
+  components: [
+    {
+      component: 'CARD',
+      title: 'Payment Link Created',
+      description: 'Your new payment link is ready',
+      children: [
+        {
+          component: 'INFO_GROUP',
+          items: [
+            {
+              key: { children: 'Amount' },
+              value: { children: { component: 'AMOUNT', value: 100, currency: 'INR' } },
+            },
+            {
+              key: { children: 'Status' },
+              value: { children: { component: 'BADGE', text: 'Created', color: 'positive' } },
+            },
+            { key: { children: 'Link ID' }, value: { children: 'plink_SP2rJtPRhJ5gZu' } },
+          ],
+        },
+      ],
+    },
+    {
+      component: 'TABLE',
+      headers: ['Transaction ID', 'Customer', 'Status', 'Amount'],
+      rows: [
+        [
+          { component: 'TEXT', value: 'pay_NxGT5fK8mZ2abc', copyable: true },
+          { component: 'TEXT', value: 'alice.johnson@example.com' },
+          { component: 'BADGE', value: 'Captured', color: 'positive' },
+          { component: 'AMOUNT', value: 1200, currency: 'INR' },
+        ],
+        [
+          { component: 'TEXT', value: 'pay_MwFS4eJ7lY1xyz', copyable: true },
+          { component: 'TEXT', value: 'bob.smith@company.org' },
+          { component: 'BADGE', value: 'Refunded', color: 'information' },
+          { component: 'AMOUNT', value: 850, currency: 'INR' },
+        ],
+      ],
+    },
+  ],
+};
+
+type TableLikeComponent = GenUIBaseComponent & {
+  headers?: string[];
+  rows?: Array<Array<{ component: string; value?: string | number }>>;
+};
+
+const WithComponentActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element => {
+  const [downloadedNodeTag, setDownloadedNodeTag] = useState<string>('');
+  const [copied, setCopied] = useState(false);
+
+  // CARD action slot: reads the component's DOM node via componentRef (for PNG capture, etc.)
+  const cardActions: GenUIActionSlotRenderer = ({ componentRef }) => (
+    <Link
+      variant="button"
+      icon={DownloadIcon}
+      size="medium"
+      onClick={() => {
+        const node = componentRef.current;
+        setDownloadedNodeTag(
+          node ? `${node.tagName.toLowerCase()} (${node.offsetWidth}px wide)` : 'no node',
+        );
+      }}
+    >
+      Download as PNG
+    </Link>
+  );
+
+  // TABLE action slot: reads the component's schema (rows/headers) via data (for CSV export, etc.)
+  const tableActions: GenUIActionSlotRenderer<TableLikeComponent> = ({ data }) => (
+    <Link
+      variant="button"
+      icon={CopyIcon}
+      size="medium"
+      onClick={() => {
+        const headers = (data.headers ?? []).join(',');
+        const rows = (data.rows ?? [])
+          .map((row) => row.map((cell) => String(cell.value ?? '')).join(','))
+          .join('\n');
+        void navigator.clipboard?.writeText(`${headers}\n${rows}`);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }}
+    >
+      {copied ? 'Copied!' : 'Copy as CSV'}
+    </Link>
+  );
+
+  const componentActions: GenUIComponentActionsRegistry = {
+    CARD: cardActions,
+    TABLE: tableActions,
+  };
+
+  return (
+    <Box maxWidth="900px">
+      <GenUIProvider config={{ componentActions }}>
+        <GenUISchemaRenderer components={componentActionsSchema.components as never} />
+      </GenUIProvider>
+      {downloadedNodeTag ? (
+        <Box marginTop="spacing.4">
+          <Text size="small" color="surface.text.gray.muted">
+            CARD action read componentRef.current → {downloadedNodeTag}
+          </Text>
+        </Box>
+      ) : null}
+    </Box>
+  );
+};
+
+export const WithComponentActions = WithComponentActionsTemplate.bind({});

@@ -1,5 +1,5 @@
 export { GenUIProvider } from './GenUIProvider';
-export { useGenUI, useGenUIAction } from './GenUIContext';
+export { useGenUI, useGenUIAction, useGenUIComponentActions } from './GenUIContext';
 export { GenUISchemaRenderer } from './GenUISchemaRenderer';
 
 export type { GenUISchemaRendererProps } from './GenUISchemaRenderer';
@@ -12,4 +12,7 @@ export type {
   GenUICustomComponent,
   GenUIComponentDefinition,
   GenUIComponentRenderer,
+  GenUIActionSlotProps,
+  GenUIActionSlotRenderer,
+  GenUIComponentActionsRegistry,
 } from './types';

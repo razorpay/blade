@@ -407,6 +407,9 @@ const ComponentType = {
   AMOUNT: 'AMOUNT',
 } as const;
 
+/**
+ * Default date format for table cells
+ */
 const DEFAULT_CELL_DATE_FORMAT = 'DD MMM YYYY, HH:mm';
 
 /**

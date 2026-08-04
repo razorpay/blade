@@ -2,12 +2,11 @@
 import React, { memo, useState, useEffect, useRef, useCallback } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import type { GenUIComponent, CardComponent, TableComponent } from './GenUIComponents';
-import { useGenUI, GenUIContext } from './GenUIContext';
+import type { GenUIComponent } from './GenUIComponents';
+import { useGenUI, useGenUIComponentActions, GenUIContext } from './GenUIContext';
 import { getGenUIComponentTopSpacing } from './GenUISpacing';
 import type { AnimateOptions } from './rehypeAnimate';
 import { Box } from '~components/Box';
-import { CardActionButton, TableActionButtons } from './GenUIActionButtons.web';
 import { useResize } from '~utils/useResize';
 
 /**
@@ -276,6 +275,10 @@ type ComponentRendererProps = {
  */
 const ComponentRendererInner = memo(({ component, index }: ComponentRendererProps) => {
   const { registry, validComponentTypes } = useGenUI();
+  const componentActions = useGenUIComponentActions();
+  // Ref to the DOM node wrapping the rendered component. Passed to registered action
+  // slots so consumers can read the component's node (e.g. for PNG capture).
+  const componentRef = useRef<HTMLDivElement>(null);
 
   // Handle incomplete components during streaming
   if (!component?.component) {
@@ -298,16 +301,23 @@ const ComponentRendererInner = memo(({ component, index }: ComponentRendererProp
     // Built-in components (CARD, TABLE) carry marginY="spacing.4" so need a
     // 13px inset; custom components have no external margin so use 0.
     if (isBlockLevel) {
+      // Consumer-registered action UI for this component type (render prop pattern).
+      const renderActionSlot = componentActions?.[componentType];
+
       return (
         <Box key={key} display="flex" flexDirection="column" width="100%">
-          <AnimatedGradientBorder>
-            <Renderer {...component} index={index} />
-          </AnimatedGradientBorder>
-          {componentType === 'CARD' && component ? (
-            <CardActionButton cardComponent={component as CardComponent} />
-          ) : componentType === 'TABLE' && component ? (
-            <TableActionButtons tableComponent={component as TableComponent} />
-          ) : null}
+          <Box ref={componentRef} width="100%">
+            <AnimatedGradientBorder>
+              <Renderer {...component} index={index} />
+            </AnimatedGradientBorder>
+          </Box>
+          {renderActionSlot
+            ? renderActionSlot({
+                data: component,
+                componentRef,
+                componentType,
+              })
+            : null}
         </Box>
       );
     }

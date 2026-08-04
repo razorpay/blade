@@ -1,5 +1,5 @@
 import React from 'react';
-import type { GenUIAction, GenUIComponentRegistry } from './types';
+import type { GenUIAction, GenUIComponentActionsRegistry, GenUIComponentRegistry } from './types';
 import type { AnimateOptions } from './rehypeAnimate';
 
 /**
@@ -10,6 +10,8 @@ type GenUIContextValue = {
   registry: GenUIComponentRegistry;
   /** Action click handler - performs the action and returns a promise that resolves when complete */
   onActionClick?: (action: GenUIAction) => Promise<void> | void;
+  /** Consumer-registered action slot render props, keyed by component type */
+  componentActions?: GenUIComponentActionsRegistry;
   /** All valid component type names */
   validComponentTypes: string[];
   /** Whether text animation is active (for streaming) */
@@ -41,6 +43,14 @@ const useGenUIAction = (): ((action: GenUIAction) => Promise<void> | void) | und
 };
 
 /**
+ * Hook to access the consumer-registered action slot registry (safe version that doesn't throw)
+ */
+const useGenUIComponentActions = (): GenUIComponentActionsRegistry | undefined => {
+  const context = React.useContext(GenUIContext);
+  return context?.componentActions;
+};
+
+/**
  * Hook to access animation state
  */
 const useGenUIAnimation = (): { isAnimating: boolean; animateOptions?: AnimateOptions } => {
@@ -51,5 +61,5 @@ const useGenUIAnimation = (): { isAnimating: boolean; animateOptions?: AnimateOp
   };
 };
 
-export { GenUIContext, useGenUI, useGenUIAction, useGenUIAnimation };
+export { GenUIContext, useGenUI, useGenUIAction, useGenUIComponentActions, useGenUIAnimation };
 export type { GenUIContextValue };
