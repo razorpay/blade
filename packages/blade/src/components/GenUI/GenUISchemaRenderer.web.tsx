@@ -2,12 +2,11 @@
 import React, { memo, useState, useEffect, useRef, useCallback } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import type { GenUIComponent } from './GenUIComponents';
+import type { GenUIComponent, CardComponent, TableComponent } from './GenUIComponents';
 import { useGenUI, GenUIContext } from './GenUIContext';
 import { getGenUIComponentTopSpacing } from './GenUISpacing';
 import type { AnimateOptions } from './rehypeAnimate';
 import { Box } from '~components/Box';
-import type { CardComponent, TableComponent } from './GenUIComponents';
 import { CardActionButton, TableActionButtons } from './GenUIActionButtons.web';
 import { useResize } from '~utils/useResize';
 

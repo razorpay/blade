@@ -50,7 +50,14 @@ const GenUIActionButton = memo(
 );
 
 const ActionButtonsContainer = memo(({ children }: { children: React.ReactNode }) => (
-  <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3" marginTop="spacing.3" width="100%">
+  <Box
+    display="flex"
+    flexDirection="row"
+    alignItems="center"
+    gap="spacing.3"
+    marginTop="spacing.3"
+    width="100%"
+  >
     {children}
   </Box>
 ));
