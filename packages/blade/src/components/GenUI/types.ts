@@ -25,44 +25,16 @@ type GenUIAction = {
   data?: Record<string, unknown>;
 };
 
-/**
- * Props passed to a registered action slot render prop.
- * GenUI hands the consumer the component instance's schema (`data`) and a ref to
- * its rendered DOM node (`componentRef`) so the consumer can implement behavior
- * like PNG capture or CSV export without GenUI owning the action UI.
- */
 type GenUIActionSlotProps<T extends GenUIBaseComponent = GenUIBaseComponent> = {
-  /** The component's schema / props */
   data: T;
-  /** Ref to the DOM node wrapping the rendered component (read lazily via `.current`) */
   componentRef: React.RefObject<HTMLElement>;
-  /** The component type this slot is registered against */
   componentType: string;
 };
 
-/**
- * Action slot render prop. Registered per component type via
- * `GenUIProvider config.componentActions`. Rendered by GenUI in a slot below the
- * component (outside the gradient ring for block-level components).
- *
- * This is a render prop (a function returning ReactNode), not a component type —
- * the consumer receives `data` / `componentRef` directly as arguments.
- *
- * @example
- * ```tsx
- * const tableActions: GenUIActionSlotRenderer<TableComponent> = ({ data, componentRef }) => (
- *   <Link onClick={() => exportCsv(data.rows)}>Download CSV</Link>
- * );
- * ```
- */
 type GenUIActionSlotRenderer<T extends GenUIBaseComponent = GenUIBaseComponent> = (
   props: GenUIActionSlotProps<T>,
 ) => React.ReactNode;
 
-/**
- * Registry mapping component type -> action slot render prop.
- * Registered via `GenUIProvider config.componentActions`.
- */
 type GenUIComponentActionsRegistry = Record<string, GenUIActionSlotRenderer<GenUIBaseComponent>>;
 
 /**

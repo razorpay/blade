@@ -8,8 +8,8 @@ import type { AnimateOptions } from './rehypeAnimate';
 type GenUIContextValue = {
   /** Complete component registry (built-in + custom) */
   registry: GenUIComponentRegistry;
-  /** Action click handler - performs the action and returns a promise that resolves when complete */
-  onActionClick?: (action: GenUIAction) => Promise<void> | void;
+  /** Action click handler */
+  onActionClick?: (action: GenUIAction) => void;
   /** Consumer-registered action slot render props, keyed by component type */
   componentActions?: GenUIComponentActionsRegistry;
   /** All valid component type names */
@@ -37,7 +37,7 @@ const useGenUI = (): GenUIContextValue => {
 /**
  * Hook to access action click handler (safe version that doesn't throw)
  */
-const useGenUIAction = (): ((action: GenUIAction) => Promise<void> | void) | undefined => {
+const useGenUIAction = (): ((action: GenUIAction) => void) | undefined => {
   const context = React.useContext(GenUIContext);
   return context?.onActionClick;
 };

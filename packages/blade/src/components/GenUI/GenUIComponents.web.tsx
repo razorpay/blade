@@ -545,7 +545,6 @@ type TableComponent = GenUIBaseComponent & {
   headers?: string[];
   rows?: TableCellType[][];
   rowActions?: TableRowAction[];
-  actions?: GenUIAction[];
 };
 
 type BadgeComponent = GenUIBaseComponent & {
@@ -1367,49 +1366,51 @@ const RenderTableComponent = memo(({ headers, rows, rowActions }: TableComponent
   };
 
   return (
-    <Table
-      data={tableData}
-      backgroundColor="transparent"
-      rowDensity="compact"
-      gridTemplateColumns={columnWidths.join(' ')}
-    >
-      {(data) => (
-        <>
-          <TableHeader>
-            <TableHeaderRow>
-              {headers.map((header, index) => (
-                <TableHeaderCell key={index}>{header}</TableHeaderCell>
-              ))}
-            </TableHeaderRow>
-          </TableHeader>
-          <TableBody>
-            {data.map((item, rowIndex) => (
-              <TableRow
-                key={rowIndex}
-                item={item}
-                // eslint-disable-next-line @typescript-eslint/no-empty-function
-                onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
-                hoverActions={
-                  rowActions && rowActions.length > 0 ? (
-                    <TableRowHoverActions
-                      rowActions={rowActions}
-                      rowIndex={rowIndex}
-                      rowData={item.cells}
-                    />
-                  ) : undefined
-                }
-              >
-                {item.cells.map((cell, cellIndex) => (
-                  <TableCell key={cellIndex}>
-                    <RenderTableCellContent cell={cell} />
-                  </TableCell>
+    <Box display="flex" flexDirection="column" gap={genUISpacingContract.compactCardRowGap}>
+      <Table
+        data={tableData}
+        backgroundColor="transparent"
+        rowDensity="compact"
+        gridTemplateColumns={columnWidths.join(' ')}
+      >
+        {(data) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                {headers.map((header, index) => (
+                  <TableHeaderCell key={index}>{header}</TableHeaderCell>
                 ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </>
-      )}
-    </Table>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {data.map((item, rowIndex) => (
+                <TableRow
+                  key={rowIndex}
+                  item={item}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onHover={rowActions && rowActions.length > 0 ? () => {} : undefined}
+                  hoverActions={
+                    rowActions && rowActions.length > 0 ? (
+                      <TableRowHoverActions
+                        rowActions={rowActions}
+                        rowIndex={rowIndex}
+                        rowData={item.cells}
+                      />
+                    ) : undefined
+                  }
+                >
+                  {item.cells.map((cell, cellIndex) => (
+                    <TableCell key={cellIndex}>
+                      <RenderTableCellContent cell={cell} />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
   );
 });
 

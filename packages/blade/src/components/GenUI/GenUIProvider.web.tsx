@@ -11,8 +11,8 @@ import type { GenUIContextValue } from './GenUIContext';
 type GenUIConfig = {
   /** Custom component renderers to register (also overrides built-in if same key) */
   components?: GenUIComponentRegistry;
-  /** Handler for action button clicks - performs the action and returns a promise that resolves when complete */
-  onActionClick?: (action: GenUIAction) => Promise<void> | void;
+  /** Handler for action button clicks */
+  onActionClick?: (action: GenUIAction) => void;
   /**
    * Consumer-registered action UI, keyed by component type. When a component of a
    * registered type renders, GenUI renders the matching render prop in a slot below
