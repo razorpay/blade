@@ -3,6 +3,7 @@ import type { CardComponent, TableComponent, GenUIAction } from './GenUIComponen
 import { CheckIcon, CloseIcon } from '~components/Icons';
 import { Box } from '~components/Box';
 import { Link } from '~components/Link';
+import { Text } from '~components/Typography';
 import { useGenUIAction } from './GenUIContext';
 
 type GenUIActionButtonProps = {
@@ -96,9 +97,9 @@ const TableActionButtons = memo(({ tableComponent }: { tableComponent: TableComp
       {actions.map((action, index) => (
         <React.Fragment key={index}>
           {index > 0 && (
-            <span style={{ margin: '0 spacing.2', color: 'var(--colors-surface-text-gray-muted)' }}>
+            <Text as="span" color="surface.text.gray.muted" marginX="spacing.2">
               •
-            </span>
+            </Text>
           )}
           <GenUIActionButton
             action={action}
