@@ -380,11 +380,9 @@ const GenUISchemaRenderer = memo(
             const marginTop = getGenUIComponentTopSpacing(components[index - 1], component);
 
             return (
-              <React.Fragment key={getComponentKey(component, index)}>
-                <Box marginTop={marginTop}>
-                  <ComponentRenderer component={component} index={index} />
-                </Box>
-              </React.Fragment>
+              <Box key={getComponentKey(component, index)} marginTop={marginTop}>
+                <ComponentRenderer component={component} index={index} />
+              </Box>
             );
           })}
         </>
