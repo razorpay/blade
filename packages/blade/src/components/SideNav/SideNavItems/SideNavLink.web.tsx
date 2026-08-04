@@ -33,7 +33,9 @@ const { SHOW_ON_LINK_HOVER, HIDE_WHEN_COLLAPSED, STYLED_NAV_LINK, PRESSED } = cl
 // the CSS below can shrink the inner content (icon, text, badge, chevron, trailing button)
 // while the row itself stays at full size.
 const navLinkPressHandlers = {
-  onPointerDown: (e: React.PointerEvent) => e.currentTarget.classList.add(PRESSED),
+  onPointerDown: (e: React.PointerEvent) => {
+    if (e.button === 0) e.currentTarget.classList.add(PRESSED);
+  },
   onPointerUp: (e: React.PointerEvent) => e.currentTarget.classList.remove(PRESSED),
   onPointerLeave: (e: React.PointerEvent) => e.currentTarget.classList.remove(PRESSED),
   onPointerCancel: (e: React.PointerEvent) => e.currentTarget.classList.remove(PRESSED),
