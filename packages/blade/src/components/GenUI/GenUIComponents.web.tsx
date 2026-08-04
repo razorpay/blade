@@ -72,6 +72,8 @@ import { Indicator } from '~components/Indicator';
 import { Alert } from '~components/Alert';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
+const DEFAULT_CELL_DATE_FORMAT = 'DD MMM YYYY, HH:mm';
+
 /**
  * Global styles for text streaming animations
  * Applied to [data-animate-word] spans created by rehypeAnimate
@@ -1236,8 +1238,7 @@ const RenderTableCellContent = ({ cell }: { cell?: Partial<TableCellType> }) => 
         return <Text size="medium">{cell.value}</Text>;
       }
 
-      // Use custom dateFormat if provided, otherwise use the shared default
-      // (kept in sync with the CSV export via DEFAULT_CELL_DATE_FORMAT).
+      // Use custom dateFormat if provided, otherwise use the default.
       // Format tokens: https://day.js.org/docs/en/display/format
       const formatted = dateValue.format(cell.dateFormat || DEFAULT_CELL_DATE_FORMAT);
 
