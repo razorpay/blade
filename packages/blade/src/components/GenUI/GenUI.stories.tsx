@@ -3,7 +3,6 @@ import type { StoryFn, Meta } from '@storybook/react-vite';
 import { jsonrepair } from 'jsonrepair';
 import { GenUIProvider } from './GenUIProvider';
 import { GenUISchemaRenderer } from './GenUISchemaRenderer';
-import type { GenUIComponent } from './GenUIComponents';
 import { Box } from '~components/Box';
 import type { BoxProps } from '~components/Box';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -953,82 +952,3 @@ const TableExamplesTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Eleme
 };
 
 export const TableExamples = TableExamplesTemplate.bind({});
-
-/**
- * Demonstrates the built-in export actions:
- * - Card exposes a "Download as PNG" link action below the card.
- * - Table exposes "Copy" and "Download as CSV" link actions below the table.
- *   Link cells serialize to their underlying URL, not the display label.
- *
- * Each action is dispatched through `onActionClick` (see the browser console)
- * and also carries a `data-analytics-name` for declarative telemetry.
- */
-const exportActionsComponents = [
-  {
-    component: 'CARD',
-    title: 'Revenue Summary',
-    description: 'Use the "Download as PNG" action below the card',
-    children: [
-      {
-        component: 'TEXT',
-        content: 'This card can be exported as a PNG using the download action below it.',
-      },
-    ],
-    footer: 'Updated just now',
-    exportActions: { downloadPng: true },
-  },
-  {
-    component: 'TABLE',
-    headers: ['Payment ID', 'Customer', 'Amount', 'Status', 'Details'],
-    rows: [
-      [
-        { component: 'TEXT', value: 'pay_NxGT5fK8mZ2abc', copyable: true },
-        { component: 'TEXT', value: 'Alice Johnson' },
-        { component: 'AMOUNT', value: 150000, currency: 'INR' },
-        { component: 'BADGE', value: 'Captured', color: 'positive' },
-        {
-          component: 'LINK',
-          text: 'View Details',
-          action: {
-            type: 'CLICK',
-            data: { url: 'https://dashboard.example.com/pay_NxGT5fK8mZ2abc' },
-          },
-        },
-      ],
-      [
-        { component: 'TEXT', value: 'pay_MwFS4eJ7lY1xyz', copyable: true },
-        { component: 'TEXT', value: 'Bob Smith' },
-        { component: 'AMOUNT', value: 89900, currency: 'INR' },
-        { component: 'BADGE', value: 'Refunded', color: 'notice' },
-        {
-          component: 'LINK',
-          text: 'View Details',
-          action: {
-            type: 'CLICK',
-            data: { url: 'https://dashboard.example.com/pay_MwFS4eJ7lY1xyz' },
-          },
-        },
-      ],
-    ],
-    exportActions: { copy: true, downloadCsv: true },
-  },
-] as GenUIComponent[];
-
-const ExportActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element => {
-  return (
-    <Box maxWidth="900px">
-      <GenUIProvider
-        config={{
-          onActionClick: (action) => {
-            // eslint-disable-next-line no-console
-            console.log('[GenUI action]', action);
-          },
-        }}
-      >
-        <GenUISchemaRenderer components={exportActionsComponents} />
-      </GenUIProvider>
-    </Box>
-  );
-};
-
-export const ExportActions = ExportActionsTemplate.bind({});
