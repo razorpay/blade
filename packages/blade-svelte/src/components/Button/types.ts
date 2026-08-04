@@ -94,6 +94,10 @@ export type ButtonProps = BaseButtonProps & {
    */
   'aria-expanded'?: boolean;
   /**
+   * aria-controls attribute
+   */
+  'aria-controls'?: string;
+  /**
    * aria-haspopup attribute
    */
   'aria-haspopup'?: 'menu' | boolean;

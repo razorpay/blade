@@ -138,6 +138,24 @@ type StepItemProps = {
 } & DataAnalyticsAttribute;
 ````
 
+## Usage Guidelines
+
+**Do**
+
+- Use `StepGroup` to visualize sequential processes like onboarding flows, wizards, multi-step forms, or transaction timelines.
+- Use `StepItemIcon` or `StepItemIndicator` as the `marker` prop to convey step status with semantic colors.
+- Use `stepProgress` to visually show completion progress along the connecting line between steps.
+- Use `onClick` or `href` on `StepItem` to make steps interactive — interactivity is determined by the presence of these props.
+- Use vertical orientation (default) for detailed timelines with descriptions, timestamps, and trailing badges.
+
+**Don't**
+
+- Don't use `Collapsible`, `trailing`, or nested `StepGroup` in horizontal orientation — they are only supported vertically.
+- Don't nest StepGroups beyond 3 levels deep — this is the maximum supported depth.
+- Don't confuse with `Breadcrumb` — StepGroup is for showing sequential processes, Breadcrumb is for navigational hierarchy.
+- Don't confuse with `Tabs` — Tabs switch between alternative views, StepGroup shows progression through ordered stages.
+- Don't use `StepGroup` for simple page navigation — use `Pagination` or `BottomNav` instead.
+
 ## Example
 
 ### Basic Vertical StepGroup

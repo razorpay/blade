@@ -194,6 +194,23 @@ type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCate
 type colorTheme = 'categorical';
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `LineChart` for displaying time-series trends and comparing multiple data series over time.
+- Wrap in `ChartLineWrapper` and compose with `ChartLine`, `ChartXAxis`, `ChartYAxis`, `ChartTooltip`, `ChartLegend`.
+- Use `strokeStyle="dashed"` for forecast or projected data to visually distinguish from actual data.
+- Use `connectNulls={true}` for datasets with missing values that should show continuous lines.
+- Use `ChartReferenceLine` to add target/threshold lines for context.
+
+**Don't**
+
+- Don't use `LineChart` when you want to emphasize volume or cumulative data — use `AreaChart` (same as LineChart but with filled region).
+- Don't use `LineChart` for categorical comparisons — use `BarChart` instead.
+- Don't use sequential color tokens — only categorical colors are supported.
+- Don't use `LineChart` for proportional data — use `DonutChart` for parts-of-a-whole visualization.
+
 ## Examples
 
 ### Basic Line Chart with Multiple Series

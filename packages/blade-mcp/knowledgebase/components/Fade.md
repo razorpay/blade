@@ -51,6 +51,22 @@ type FadeProps = {
 type MotionTrigger = 'hover' | 'focus' | 'press' | 'mount' | 'in-view' | 'on-animate-interactions';
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Fade` for opacity-only transitions: elements appearing/disappearing in-place without positional change.
+- Use `motionTriggers={['in-view']}` for scroll-triggered reveal animations.
+- Use `isVisible` prop for controlled show/hide without unmounting from the DOM.
+- Use `shouldUnmountWhenHidden` only when you need the element removed from DOM entirely.
+
+**Don't**
+
+- Don't use `Fade` when you also need positional movement — use `Move` (opacity + translate) or `Slide` (from viewport edge).
+- Don't pass multiple children — wrap in a single container element.
+- Don't use `Fade` for interactive feedback (hover/press) — use `Scale` or `Elevate` instead.
+- Don't forget to forward refs on custom components wrapped in Fade.
+
 ## Examples
 
 ### Controlled Fade Animation

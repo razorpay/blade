@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Button from './Button.svelte';
   import { iconMap } from '../Icons';
@@ -127,8 +127,18 @@
   ];
 </script>
 
-<script>
-  // Button is already imported in the module context
+<script lang="ts">
+  let isDefiniteLoadingDemoActive = $state(false);
+
+  function startDefiniteLoadingDemo(): void {
+    if (isDefiniteLoadingDemoActive) return;
+    isDefiniteLoadingDemoActive = true;
+  }
+
+  function handleDefiniteLoadingComplete(): void {
+    console.log('Loading complete!');
+    isDefiniteLoadingDemoActive = false;
+  }
 </script>
 
 <!-- Playground story - auto-renders Button with args -->
@@ -190,11 +200,12 @@
 <Story name="Definite Loading With Complete Callback" asChild>
   <Button
     size="large"
-    loadingType="definite"
-    loadingTimer={2500}
-    onLoadingComplete={() => window.alert('Loading complete!')}
+    loadingType={isDefiniteLoadingDemoActive ? 'definite' : 'indefinite'}
+    loadingTimer={isDefiniteLoadingDemoActive ? 2500 : undefined}
+    onClick={startDefiniteLoadingDemo}
+    onLoadingComplete={handleDefiniteLoadingComplete}
   >
-    Complete in 2.5s
+    {isDefiniteLoadingDemoActive ? 'Processing' : 'Complete in 2.5s'}
   </Button>
 </Story>
 
@@ -268,4 +279,3 @@
     <Button size="large" avatars={sampleAvatars}>Large (avatars shown)</Button>
   </div>
 </Story>
-

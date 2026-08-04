@@ -15,4 +15,14 @@ const focusBackgroundColorMap = {
   subtle: 'interactive.background.staticWhite.faded',
 } as const;
 
-export { highlightedButtonSizeMap, highlightedHoverColorMap, focusBackgroundColorMap };
+const moderateBackgroundColorMap = {
+  rest: 'interactive.background.staticWhite.faded',
+  hover: 'interactive.background.staticWhite.fadedHighlighted',
+} as const;
+
+export {
+  highlightedButtonSizeMap,
+  highlightedHoverColorMap,
+  focusBackgroundColorMap,
+  moderateBackgroundColorMap,
+};

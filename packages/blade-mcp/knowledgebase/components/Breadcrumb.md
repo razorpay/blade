@@ -94,6 +94,24 @@ type IconComponent = React.ComponentType<{
 }>;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Breadcrumb` to show the user's current location within a multi-level application hierarchy.
+- Mark the last item with `isCurrentPage={true}` to set proper `aria-current="page"` semantics.
+- Provide `accessibilityLabel` on icon-only breadcrumb items (e.g., a home icon without text).
+- Use `color="white"` on dark backgrounds and `"primary"` or `"neutral"` on light backgrounds for contrast.
+- Use the `as` prop with your router's link component for SPA navigation.
+
+**Don't**
+
+- Don't manually add separator characters — they are automatically inserted between items.
+- Don't use `Breadcrumb` as primary navigation — it's supplementary wayfinding, not a primary nav pattern.
+- Don't create excessively deep breadcrumb trails — keep to a reasonable depth for usability.
+- Don't confuse with `Pagination` — Breadcrumbs show hierarchy location, Pagination navigates list pages.
+- Don't use `Breadcrumb` for switching between content views — use `Tabs` instead.
+
 ## Example
 
 The following examples demonstrate how to use the Breadcrumb component in various scenarios.

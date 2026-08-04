@@ -96,6 +96,23 @@ type InputGroupContextType = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `InputGroup` to organize multiple related input fields (e.g., address, payment info) with shared validation and layout.
+- Use `InputRow` with `gridTemplateColumns` to control column distribution (e.g., `"1fr 2fr"` for a 1:2 ratio).
+- Use group-level `validationState` and `errorText` for unified validation messaging.
+- Use `isDisabled` on the group to disable all nested inputs at once.
+- Use `useIsMobile()` hook to conditionally adjust `gridTemplateColumns` for responsive layouts.
+
+**Don't**
+
+- Don't use `InputGroup` for a single input field — use the input component directly.
+- Don't nest `InputGroup` inside another `InputGroup`.
+- Don't mix non-input children inside `InputRow` — it's designed for input components only.
+- Don't rely on `labelPosition="left"` working on mobile — it auto-switches to `"top"`.
+
 ## Examples
 
 ### Payment Form with Validation

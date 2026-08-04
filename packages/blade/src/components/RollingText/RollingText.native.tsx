@@ -1,5 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { throwBladeError } from '~utils/logger';
+import React, { useState, useEffect } from 'react';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+  Easing,
+} from 'react-native-reanimated';
+import { useTheme } from '~components/BladeProvider';
+import { castNativeType } from '~utils';
+import { makeMotionTime } from '~utils/makeMotionTime';
+import getIn from '~utils/lodashButBetter/get';
+import { Text } from '~components/Typography';
 
 type RollingTextProps = {
   texts: string[];
@@ -9,13 +19,76 @@ type RollingTextProps = {
   showShimmer?: boolean;
 };
 
-const RollingText = (_props: RollingTextProps): React.ReactElement => {
-  throwBladeError({
-    message: 'RollingText is not yet implemented for native',
-    moduleName: 'RollingText',
-  });
+const RollingText = ({
+  texts,
+  children,
+  onIndexChange,
+  cycleDuration: cycleDurationProp,
+  showShimmer: _showShimmer,
+}: RollingTextProps): React.ReactElement => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const { theme } = useTheme();
+  const animDuration = castNativeType(makeMotionTime(getIn(theme.motion, 'duration.moderate')));
+  const cycleDuration = cycleDurationProp ?? 2500;
+  const opacity = useSharedValue(1);
+  const translateY = useSharedValue(0);
 
-  return <></>;
+  useEffect(() => {
+    if (texts.length <= 1) return undefined;
+
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    const interval = setInterval(() => {
+      opacity.value = withTiming(0, {
+        duration: animDuration / 2,
+        easing: Easing.out(Easing.ease),
+      });
+      translateY.value = withTiming(-12, {
+        duration: animDuration / 2,
+        easing: Easing.out(Easing.ease),
+      });
+
+      timeoutId = setTimeout(() => {
+        setCurrentIndex((prev) => {
+          const next = (prev + 1) % texts.length;
+          onIndexChange?.(next);
+          return next;
+        });
+        translateY.value = 12;
+        opacity.value = 0;
+        opacity.value = withTiming(1, {
+          duration: animDuration / 2,
+          easing: Easing.in(Easing.ease),
+        });
+        translateY.value = withTiming(0, {
+          duration: animDuration / 2,
+          easing: Easing.in(Easing.ease),
+        });
+      }, animDuration / 2);
+    }, cycleDuration);
+
+    return () => {
+      clearInterval(interval);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
+  }, [texts.length, animDuration, cycleDuration, opacity, translateY, onIndexChange]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+    transform: [{ translateY: translateY.value }],
+  }));
+
+  return (
+    <Animated.View style={animatedStyle}>
+      {children ? (
+        children(texts[currentIndex])
+      ) : (
+        <Text color="feedback.text.positive.intense" weight="regular" variant="body" size="medium">
+          {texts[currentIndex]}
+        </Text>
+      )}
+    </Animated.View>
+  );
 };
 
 export type { RollingTextProps };

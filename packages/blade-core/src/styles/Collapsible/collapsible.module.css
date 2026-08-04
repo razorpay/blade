@@ -1,0 +1,101 @@
+/* Chevron wrapper used by CollapsibleLink – rotates on expand */
+.triggerChevron {
+  display: flex;
+  align-items: center;
+  transform-origin: center center;
+  transition-property: transform;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: var(--easing-standard);
+}
+
+.chevronExpanded {
+  transform: rotate(-180deg);
+}
+
+/* Animated body-content wrapper.
+ * Initial height/display are based on `data-default-expanded` so SSR-rendered
+ * expanded bodies use `auto` (actual pixel height is unknown on the server).
+ * Inline styles take over after the first client render. */
+.bodyContent {
+  height: 0px;
+  display: none;
+  opacity: 0.8;
+  overflow-y: hidden;
+  transition-property: height, opacity;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: var(--easing-standard);
+}
+
+.bodyContent[data-default-expanded='true'] {
+  height: auto;
+  display: block;
+  opacity: 1;
+}
+
+/* Inner content area – margin is direction-aware via CVA compoundVariants. */
+.bodyInner {
+  display: block;
+}
+
+.bodyInnerMarginBottom {
+  margin-top: var(--spacing-4);
+  margin-bottom: 0px;
+}
+
+.bodyInnerMarginTop {
+  margin-top: 0px;
+  margin-bottom: var(--spacing-4);
+}
+
+.bodyInnerNoMargin {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* Text trigger used by CollapsibleText – full-width row with text + chevron.
+ * Rendered as a <button> so it is keyboard-focusable and announces correctly;
+ * the default button chrome is reset so it reads as plain text + chevron. */
+.trigger {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: var(--spacing-0);
+  padding: var(--spacing-0);
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--interactive-text-gray-subtle);
+}
+
+.trigger[disabled] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* Inner flex wrapper for Collapsible — direction + width restrictions are
+ * driven by props, applied via CVA variants instead of inline styles. */
+.inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.innerDirectionBottom {
+  flex-direction: column;
+}
+
+.innerDirectionTop {
+  flex-direction: column-reverse;
+}
+
+.innerWidthRestricted {
+  min-width: 200px;
+  max-width: min(calc(100vw - var(--spacing-10)), 1136px);
+}
+
+.innerWidthUnrestricted {
+  min-width: 0px;
+  max-width: none;
+}

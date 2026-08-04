@@ -4,9 +4,10 @@ import type { TooltipContentProps } from './types';
 import { Text } from '~components/Typography';
 import { isReactNative, makeSize } from '~utils';
 import { size } from '~tokens/global';
+import { DEFAULT_MAX_WIDTH } from './constants';
 
 const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
-  ({ children, title, arrow, side, style, isVisible, colorScheme }, ref) => {
+  ({ children, title, arrow, side, style, isVisible, colorScheme, maxWidth }, ref) => {
     return (
       <TooltipContentWrapper
         position={isReactNative() ? 'absolute' : 'relative'}
@@ -14,7 +15,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
         gap="spacing.2"
         display="flex"
         flexDirection="column"
-        maxWidth={makeSize(size[200])}
+        maxWidth={maxWidth ?? makeSize(size[DEFAULT_MAX_WIDTH])}
         ref={ref as never}
         styles={style}
         side={side}

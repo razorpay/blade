@@ -143,6 +143,25 @@ type TextInputPropsWithLabel = {
 type TextInputProps = TextInputPropsWithA11yLabel | TextInputPropsWithLabel;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `TextInput` for single-line text collection: names, emails, URLs, phone numbers, and general text.
+- Use the `type` prop to get the correct mobile keyboard (`email`, `tel`, `url`, `number`).
+- Use `format` prop with `#` patterns for structured inputs (card numbers, dates) — extract raw values from `onChange`.
+- Use `maxCharacters` to enforce hard limits with a visible character counter.
+- Use `leading`/`trailing` slots for icons, badges, or `Dropdown` components for contextual actions.
+- Use `showClearButton` for search-like inputs where users need to reset quickly.
+
+**Don't**
+
+- Don't use `TextInput` for passwords — use `PasswordInput` which handles masking and reveal.
+- Don't use `TextInput` for multi-line content — use `TextArea` instead.
+- Don't use `TextInput` for search — use `SearchInput` which has built-in search icon and Dropdown integration.
+- Don't use alphanumeric characters in `format` patterns — only `#` and special characters are allowed.
+- Don't mix `value` and `defaultValue` with `format` — it throws a conflict error.
+
 ## Example
 
 ### Basic Usage with Validation States

@@ -52,6 +52,22 @@ type DividerProps = {
   TestID;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Divider` to visually separate content sections or groups within a layout.
+- Use `orientation="horizontal"` (default) between vertically stacked content and `orientation="vertical"` between horizontally aligned items.
+- Place `Divider` inside flex containers for automatic stretch behavior.
+- Use `variant` to control prominence: `"muted"` (default) for subtle separation, `"normal"` for stronger emphasis.
+
+**Don't**
+
+- Don't use `height`/`width` props when the parent is a flex container — the Divider auto-stretches via flexGrow/alignSelf.
+- Don't use `Divider` for decorative borders on containers — use Box `borderWidth`/`borderColor` props instead.
+- Don't overuse Dividers — excessive use creates visual noise instead of clarity.
+- Don't use `Divider` as a spacing mechanism — use `Box` gap or margin for spacing.
+
 ## Examples
 
 ### Horizontal Divider

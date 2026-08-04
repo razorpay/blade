@@ -125,6 +125,24 @@ type IconComponent = React.ComponentType<{
 }>;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Button` for primary actions and calls-to-action that trigger operations (submit, save, create).
+- Use `variant` to establish visual hierarchy: `"primary"` for main actions, `"secondary"` for supporting, `"tertiary"` for de-emphasized.
+- Use `href` prop to render as an anchor element when the button navigates to a URL.
+- Use `isLoading` to show feedback during async operations.
+- Use `icon` with `iconPosition` for visual reinforcement of the action.
+
+**Don't**
+
+- Don't use `Button` for icon-only actions in tight spaces — use `IconButton` instead.
+- Don't use `Button` for navigation text that looks like a link — use `Link` instead.
+- Don't use `variant="tertiary"` with `color="positive"` or `color="negative"` — tertiary only supports `"primary"` and `"white"`.
+- Don't use `type="password"` on TextInput — but relevant here: don't pass `type="submit"` accidentally without a form context.
+- Don't use `Button` without text or `accessibilityLabel` when using icon-only mode.
+
 ## Example
 
 Here are comprehensive examples demonstrating various ways to use the Button component:

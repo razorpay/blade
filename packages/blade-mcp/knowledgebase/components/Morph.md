@@ -26,6 +26,22 @@ type MorphProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Morph` for smooth layout transitions between different UI states (button → input, circle → square, state changes).
+- Always wrap in Framer Motion's `<AnimatePresence>` for proper mount/unmount coordination.
+- Use the same `layoutId` on both the source and target `Morph` wrappers so they animate between each other.
+- Use with simple, similarly-shaped components for best visual results.
+
+**Don't**
+
+- Don't use `Morph` for entry/exit animations — use `Fade`, `Move`, or `Slide` instead.
+- Don't morph between complex components with many internal nodes — it causes text distortion artifacts.
+- Don't have two `Morph` elements with the same `layoutId` mounted simultaneously — one should unmount as the other mounts.
+- Don't use without `<AnimatePresence>` — conditional rendering won't animate properly.
+
 ## Example
 
 ### Basic Transformation Example

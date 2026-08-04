@@ -153,6 +153,24 @@ type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCate
 type colorTheme = 'categorical';
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `AreaChart` for showing trends over time with filled regions to emphasize volume or cumulative data.
+- Wrap in `ChartAreaWrapper` with `data` prop and compose with `ChartArea`, `ChartXAxis`, `ChartYAxis`, `ChartTooltip`, `ChartLegend`.
+- Use `stackId` on multiple `ChartArea` components to create stacked area visualizations showing cumulative proportions.
+- Use `connectNulls={true}` when your data has gaps that should be interpolated across.
+- Use `type="monotone"` (default) for smooth curves; `type="step"` for discrete step data.
+
+**Don't**
+
+- Don't use more than 10 `ChartArea` components per chart — this is the maximum enforced limit.
+- Don't use `AreaChart` for categorical comparisons — use `BarChart` instead.
+- Don't use `AreaChart` for showing parts of a whole — use `DonutChart` for proportional data.
+- Don't use sequential color tokens — only categorical color tokens are supported.
+- Don't try to customize chart margins — they are predefined internally.
+
 ## Examples
 
 ### Basic Area Chart with Single Data Series

@@ -42,6 +42,7 @@ const _Tooltip = ({
   placement = 'top',
   onOpenChange,
   zIndex = componentZIndices.tooltip,
+  maxWidth,
   ...rest
 }: TooltipProps): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
@@ -117,6 +118,7 @@ const _Tooltip = ({
               title={title}
               style={styles}
               colorScheme={colorScheme}
+              maxWidth={maxWidth}
               arrow={
                 <PopupArrow
                   ref={arrowRef}

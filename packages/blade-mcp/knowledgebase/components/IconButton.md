@@ -65,6 +65,22 @@ type IconComponent = React.ComponentType<{
 }>;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `IconButton` for icon-only actions in space-constrained interfaces (close buttons, card actions, toolbars).
+- Always provide a meaningful `accessibilityLabel` (e.g., "Close dialog", "Edit profile") — it's required.
+- Use `emphasis="subtle"` for less prominent actions and `"intense"` (default) for primary icon actions.
+- Use appropriate size relative to surrounding content: `"small"` in dense UI, `"large"` for prominent actions.
+
+**Don't**
+
+- Don't use `IconButton` when text + icon would be clearer — use `Button` with an icon instead.
+- Don't use generic labels like "Button" for `accessibilityLabel` — describe the action specifically.
+- Don't combine `size="large"` with `isHighlighted={true}` — this combination is not supported.
+- Don't use `IconButton` for navigation — use `Link` with an icon instead.
+
 ## Examples
 
 ### Basic IconButton Usage

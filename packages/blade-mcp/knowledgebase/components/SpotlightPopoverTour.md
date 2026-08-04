@@ -113,6 +113,24 @@ type SpotlightPopoverStepRenderProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `SpotlightPopoverTour` for multi-step guided onboarding that highlights specific UI elements.
+- Wrap the entire page/section content inside the tour component — not just the target elements.
+- Match `name` in `steps` array exactly with the `name` on `SpotlightPopoverTourStep` wrappers.
+- Use `SpotlightPopoverTourFooter` helper for consistent step navigation button layout.
+- Use render functions for `content` and `footer` to access step navigation props (`goToNext`, `stopTour`, etc.).
+
+**Don't**
+
+- Don't place multiple independent tour instances on the same page — React Context prevents it.
+- Don't use mismatched `name` values between steps config and `SpotlightPopoverTourStep` components.
+- Don't use `SpotlightPopoverTour` for simple contextual help — use `Popover` or `Tooltip` instead.
+- Don't pass static JSX to `content` or `footer` — they must be render functions receiving step props.
+- Don't forget `width: 100%; height: 100%` on body for iOS Safari compatibility.
+
 ## Example
 
 ### Basic Tour Example

@@ -2,7 +2,6 @@ const ignores = ['/node_modules/'];
 
 const baseConfig = {
   testPathIgnorePatterns: [...ignores, 'native.test'],
-  testTimeout: 10000,
   coverageThreshold: {
     global: {
       branches: 75,
@@ -35,6 +34,7 @@ const baseConfig = {
 };
 
 module.exports = {
+  testTimeout: 10000,
   projects: [
     {
       displayName: 'SSR Test',

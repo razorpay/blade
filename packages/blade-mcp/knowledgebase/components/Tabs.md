@@ -132,6 +132,31 @@ type TabPanelProps = {
 // TabList has no specific props other than children and common styling props
 ```
 
+## Usage Guidelines
+
+**When to Use**
+
+Use `Tabs` when a **single selection filters or changes the visible page content**. The key decision: if selecting an option doesn't just store a value but actively changes what the user sees on the page, Tabs is the right component.
+
+**Do**
+
+- Use `Tabs` to switch between related content views within the same page context.
+- Use `Tabs` when selection immediately filters or changes visible content (not just stores a value for later submission).
+- Structure as `<Tabs>` → `<TabList>` → `<TabItem>` + `<TabPanel>` (panels are siblings of `TabList`).
+- Give each `TabItem` and its corresponding `TabPanel` matching `value` props.
+- Use `isLazy` when tab panels contain heavy content to avoid mounting all panels at once.
+- Use `trailing` prop on `TabItem` for badges or counters showing tab-specific counts.
+- Use `variant="filled"` for visually distinct tab groups; `"bordered"` (default) for standard use.
+
+**Don't**
+
+- Don't use `Tabs` for page-level navigation between separate routes — use `SideNav`, `TopNav`, or `BottomNav` instead.
+- Don't use `Tabs` for selecting a value to be submitted in a form — use `Radio`, `Chip`, or `Dropdown` instead.
+- Don't use icon-only tabs without a text label — tabs must have readable text.
+- Don't nest `TabPanel` inside `TabList` — panels must be siblings of `TabList` within `Tabs`.
+- Don't use `Tabs` where an `Accordion` would be more appropriate (progressive disclosure of stacked content).
+- Don't forget `value` on both `TabItem` and `TabPanel` — mismatched values cause panels not to display.
+
 ## Example
 
 ### Basic Usage

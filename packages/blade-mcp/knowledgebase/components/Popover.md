@@ -103,6 +103,24 @@ type PopoverInteractiveWrapperProps = {
   DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Popover` for contextual information or actions triggered by click on a specific element.
+- Pass `content` as a React element (not a string) — it supports rich interactive content.
+- Use `PopoverInteractiveWrapper` when the trigger is a non-interactive element (icon, badge, etc.).
+- Use `placement` to position relative to the trigger — auto-flips at viewport edges.
+- Use `title` and `footer` props for structured popover layout with header and actions.
+
+**Don't**
+
+- Don't use `Popover` for brief, hover-only help text — use `Tooltip` instead.
+- Don't use `Popover` for critical decisions that block the entire page — use `Modal` instead.
+- Don't pass strings to `content` — it must be a React element.
+- Don't use non-interactive triggers without `PopoverInteractiveWrapper` — accessibility requires it.
+- Don't use `Popover` for large panels of content — use `Drawer` or `BottomSheet` instead.
+
 ## Example
 
 ### Basic Usage

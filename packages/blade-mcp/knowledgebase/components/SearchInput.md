@@ -51,6 +51,22 @@ type SearchInputPropsWithLabel = {
 type SearchInputProps = SearchInputPropsWithA11yLabel | SearchInputPropsWithLabel;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `SearchInput` for search and filtering scenarios: table filters, global search, product catalogs.
+- Use `trailing` prop with a `Dropdown` component to show search results below the input.
+- Use `isLoading` to indicate async search in progress — set to `false` when input is empty.
+- Provide `accessibilityLabel` when hiding the visible label for compact search bars.
+
+**Don't**
+
+- Don't use `SearchInput` for general text input — use `TextInput` instead.
+- Don't use `SearchInput` without a search context — it always shows a search icon and auto-clear behavior.
+- Don't add prefix/suffix, character counters, or formatting — these are not supported in SearchInput.
+- Don't try to move the search icon to the trailing position — it's fixed at the leading (left) side.
+
 ## Example
 
 ### Basic Search Input

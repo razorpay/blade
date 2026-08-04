@@ -99,6 +99,23 @@ type IconProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Link` with `variant="anchor"` for navigation to other pages (renders as `<a>` tag with proper semantics).
+- Use `variant="button"` for inline actions within text that are styled as links but behave as buttons.
+- Use inline within `Text` components for contextual navigation links.
+- Provide `href` for anchor variant — it enables proper link semantics and right-click behavior.
+
+**Don't**
+
+- Don't use `Link` for primary actions — use `Button` instead.
+- Don't use `isDisabled` with `variant="anchor"` — disabled state only works on button variant.
+- Don't use `href`, `target`, or `rel` with `variant="button"` — those are anchor-only props.
+- Don't omit both `icon` and text children — at least one is required.
+- Don't use `Link` when you need a button with link styling — that's exactly what `variant="button"` is for.
+
 ## Examples
 
 ### Standard Link Usage

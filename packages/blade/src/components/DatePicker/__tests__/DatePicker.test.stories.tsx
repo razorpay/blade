@@ -4,13 +4,35 @@ import { within, userEvent, expect, fn } from 'storybook/test';
 import type { Mock } from '@vitest/spy';
 import React from 'react';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
 import type { DatesRangeValue, DateValue } from '../types';
 import { DatePicker as DatePickerComponent } from '../';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 
+dayjs.extend(customParseFormat);
+
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+
+type GetByRole = (role: string, options?: { name?: string | RegExp }) => HTMLElement;
+
+const getDisplayedMonth = (getByRole: GetByRole): dayjs.Dayjs =>
+  dayjs((getByRole('button', { name: /Change month/i }).textContent ?? '').trim(), 'MMMM YYYY');
+
+const navigateToMonth = async (targetDate: dayjs.Dayjs, getByRole: GetByRole): Promise<void> => {
+  let iterations = 0;
+  let displayedMonth = getDisplayedMonth(getByRole);
+  while (!targetDate.isSame(displayedMonth, 'month') && iterations < 12) {
+    const goForward = targetDate.isAfter(displayedMonth, 'month');
+    // eslint-disable-next-line no-await-in-loop
+    await userEvent.click(getByRole('button', { name: goForward ? /next/i : /previous/i }));
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(200);
+    displayedMonth = getDisplayedMonth(getByRole);
+    iterations += 1;
+  }
+};
 
 let onOpenChange: Mock | null = null;
 
@@ -72,7 +94,7 @@ DatePickerMinMaxDate.play = async () => {
   // expect date to be disabled
   // if date is greater then 15 days then we should check add 6 days from it
   // if date is less then 15 days then we should check subtract 6 days from  it
-  const isGreaterThen15Days = dayjs().diff(dayjs(), 'day') > 15;
+  const isGreaterThen15Days = dayjs().date() > 15;
   const disabledDate = getByRole('button', {
     name: isGreaterThen15Days
       ? dayjs().subtract(6, 'day').format('D MMMM YYYY')
@@ -111,6 +133,7 @@ DatePickerSingleSelect.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
+  await navigateToMonth(dateToSelect, getByRole);
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
@@ -140,6 +163,7 @@ DatePickerSingleSelectCancel.play = async () => {
   await expect(queryByText('Sun')).toBeVisible();
   // select
   const dateToSelect = dayjs().add(1, 'day');
+  await navigateToMonth(dateToSelect, getByRole);
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // assert inputs value
@@ -199,6 +223,7 @@ DatePickerSingleSelectControlled.play = async () => {
   await expect(input).toHaveValue(dayjs().add(5, 'day').format('DD/MM/YYYY'));
   // select another date
   const dateToSelect = dayjs().add(2, 'day');
+  await navigateToMonth(dateToSelect, getByRole);
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   // press apply button
@@ -535,8 +560,11 @@ export const DatePickerRangeSelectAutoFocus: StoryFn<
 DatePickerRangeSelectAutoFocus.play = async () => {
   const { getByRole, getByLabelText } = within(document.body);
   const startInput = getByRole('combobox', { name: /Select a date range/i });
-  const selectedEndDate = dayjs().subtract(1, 'M').format('D MMMM YYYY');
-  const selectedStartDate = dayjs().subtract(1, 'M').subtract(1, 'd').format('D MMMM YYYY');
+  // Use mid-month dates to avoid month-boundary ambiguity where the last day of a month
+  // can appear twice: once as a real day and once as an "outside" day in the next month's calendar
+  const prevMonth = dayjs().subtract(1, 'M');
+  const selectedStartDate = prevMonth.date(15).format('D MMMM YYYY');
+  const selectedEndDate = prevMonth.date(20).format('D MMMM YYYY');
   await userEvent.click(startInput);
   await sleep(400);
   const previousButton = getByRole('button', { name: /previous/i });
@@ -667,6 +695,7 @@ DatePickerSingleNoFooter.play = async () => {
 
   // Select a date - on blur should auto-close without footer
   const dateToSelect = dayjs().add(3, 'day');
+  await navigateToMonth(dateToSelect, getByRole);
   const date = getByRole('button', { name: dateToSelect.format('D MMMM YYYY') });
   await userEvent.click(date);
   await userEvent.click(document.body);
@@ -971,6 +1000,7 @@ DatePickerCalendarToInput.play = async () => {
 
   // Select a date from calendar
   const targetDate = dayjs().add(4, 'day');
+  await navigateToMonth(targetDate, getByRole);
   const dateButton = getByRole('button', { name: targetDate.format('D MMMM YYYY') });
   await userEvent.click(dateButton);
 

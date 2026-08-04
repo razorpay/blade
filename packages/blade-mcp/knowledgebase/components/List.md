@@ -134,6 +134,24 @@ type IconProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `List` for presenting ordered or unordered sequences of items with proper semantic HTML (`<ul>`, `<ol>`, `<li>`).
+- Use `variant="ordered-filled"` for numbered lists with filled background circles (step-by-step instructions).
+- Use custom `icon` and `iconColor` props with `variant="unordered"` for branded bullet points.
+- Use `ListItemLink`, `ListItemCode`, and `ListItemText` for inline rich content within items.
+- Nest `List` components inside `ListItem` for hierarchical content (up to 3 levels).
+
+**Don't**
+
+- Don't use `icon` prop with `variant="ordered"` or `variant="ordered-filled"` — icons are only for unordered lists.
+- Don't nest lists deeper than 3 levels — this is the design-imposed maximum.
+- Don't nest lists within `variant="ordered-filled"` — nesting is not supported for this variant.
+- Don't use React Fragments as List children — only `ListItem` components are accepted.
+- Don't use `List` for interactive navigation — use `SideNav` or `BottomNav` instead.
+
 ## Examples
 
 ### Ordered Filled List with Links

@@ -44,6 +44,7 @@
   const accessibilityProps = $derived({
     label: accessibilityLabel,
     describedBy: rest['aria-describedby'],
+    controls: rest['aria-controls'],
     expanded: rest['aria-expanded'],
     hasPopup: rest['aria-haspopup'],
     role,

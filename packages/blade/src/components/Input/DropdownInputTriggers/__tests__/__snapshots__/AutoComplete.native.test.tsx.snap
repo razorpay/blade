@@ -398,12 +398,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                               }
                             }
                             accessible={true}
-                            autoCompleteType="off"
+                            autoComplete="off"
                             data-blade-component="styled-base-input"
                             editable={true}
                             hasLeadingDropdown={false}
                             hasTags={false}
                             id="dropdown-7-trigger-1-input-2"
+                            includeFontPadding={false}
                             isDropdownTrigger={true}
                             isFocused={false}
                             isInsideCounterInput={false}
@@ -825,12 +826,25 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 [
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 0.94)",
+                    "borderColor": "hsla(203, 8%, 80%, 1)",
                     "borderRadius": 12,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
                     "transform": [
                       {
                         "translateY": 8,
                       },
                     ],
+                  },
+                  {
+                    "elevation": 16,
+                    "shadowColor": "hsla(200, 10%, 18%, 1)",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.06,
+                    "shadowRadius": 4,
                   },
                 ],
               ]
@@ -1927,9 +1941,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
-                  onKeyUp={[Function]}
                   onMouseDown={[Function]}
-                  onMouseOut={[Function]}
                   onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -2031,7 +2043,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="topFade"
+                            name="topFade-r0"
                             x1="0"
                             x2="0"
                             y1="0"
@@ -2048,7 +2060,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={0}
-                            name="bottomFade"
+                            name="bottomFade-r0"
                             x1="0"
                             x2="0"
                             y1="1"
@@ -2064,7 +2076,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="topMask"
+                            name="topMask-r0"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -2072,7 +2084,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "topFade",
+                                  "brushRef": "topFade-r0",
                                   "type": 1,
                                 }
                               }
@@ -2097,7 +2109,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             height="100%"
                             maskContentUnits={1}
                             maskUnits={0}
-                            name="bottomMask"
+                            name="bottomMask-r0"
                             width="100%"
                             x="0%"
                             y="0%"
@@ -2105,7 +2117,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             <RNSVGRect
                               fill={
                                 {
-                                  "brushRef": "bottomFade",
+                                  "brushRef": "bottomFade-r0",
                                   "type": 1,
                                 }
                               }
@@ -2135,7 +2147,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             }
                             gradientTransform={null}
                             gradientUnits={1}
-                            name="btnGlow"
+                            name="btnGlow-r0"
                             rx={64}
                             ry={64}
                           />
@@ -2143,7 +2155,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="bottomMask"
+                          mask="bottomMask-r0"
                           propList={
                             [
                               "fill",
@@ -2161,13 +2173,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           }
                           strokeWidth={7}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="topMask"
+                          mask="topMask-r0"
                           propList={
                             [
                               "fill",
@@ -2185,8 +2197,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           }
                           strokeWidth={4}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
@@ -2208,13 +2220,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           }
                           strokeWidth={1}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={null}
                           height="100%"
-                          mask="bottomMask"
+                          mask="bottomMask-r0"
                           propList={
                             [
                               "fill",
@@ -2232,13 +2244,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           }
                           strokeWidth={5}
                           width="100%"
-                          x="0"
-                          y="0"
+                          x={0}
+                          y={0}
                         />
                         <RNSVGRect
                           fill={
                             {
-                              "brushRef": "btnGlow",
+                              "brushRef": "btnGlow-r0",
                               "type": 1,
                             }
                           }

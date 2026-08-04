@@ -348,15 +348,6 @@
   flex-shrink: 0;
 }
 
-/* Icon-to-text spacing — spacing.2 (4px) for all sizes. */
-.icon-left {
-  padding-right: var(--spacing-2);
-}
-
-.icon-right {
-  padding-left: var(--spacing-2);
-}
-
 /* Avatar group inside large button — centered vertically with spacing from the text. */
 .avatar-group {
   display: flex;
@@ -553,10 +544,7 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  background-color: var(
-    --btn-progress-surface-backing,
-    var(--surface-background-gray-intense)
-  );
+  background-color: var(--btn-progress-surface-backing, var(--surface-background-gray-intense));
   background-image: linear-gradient(
     var(--btn-progress-rest-color, var(--btn-accent-bg-disabled)),
     var(--btn-progress-rest-color, var(--btn-accent-bg-disabled))

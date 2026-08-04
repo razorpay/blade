@@ -107,6 +107,23 @@ type ListViewFiltersContextType = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `ListView` when you need a complete data display pattern with search, quick filters, advanced filters, and a table combined.
+- Compose with `ListViewFilters` (containing `QuickFilterGroup`) and `Table` as children.
+- Use `FilterChipGroup` inside `ListViewFilters` for advanced filter dropdowns and date pickers.
+- Omit `onSearchChange` entirely to hide the search feature — don't pass an empty handler.
+- Use the `actions` slot for custom action elements like export buttons or search with dropdown.
+
+**Don't**
+
+- Don't use `ListView` for simple tables without filtering needs — use `Table` standalone instead.
+- Don't try to customize the internal layout or search position — the layout is controlled by design for consistency.
+- Don't use `FilterChip` standalone outside of a `Dropdown` or `Menu` trigger — it's designed as a trigger component only.
+- Don't manually compose `Box` + `QuickFilterGroup` + `Table` when `ListView` provides the same pattern with consistent spacing and responsive behavior.
+
 ## Example
 
 Below is a comprehensive example demonstrating how to use the ListView component with various filtering options, search functionality, and table display:

@@ -6,6 +6,7 @@ import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
+import { Badge } from '~components/Badge';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -111,6 +112,32 @@ describe('<Radio />', () => {
       </RadioGroup>,
     );
     expect(getByTestId('radio-test')).toBeTruthy();
+  });
+
+  it('should render trailing element alongside label in vertical orientation', () => {
+    const { getByText, container } = renderWithTheme(
+      <RadioGroup label="Select plan" orientation="vertical">
+        <Radio value="pro" trailing={<Badge color="primary">Recommended</Badge>}>
+          Pro
+        </Radio>
+      </RadioGroup>,
+    );
+    expect(getByText('Recommended')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should not render trailing element in horizontal orientation', () => {
+    expect(() =>
+      renderWithTheme(
+        <RadioGroup label="Select plan" orientation="horizontal">
+          <Radio value="pro" trailing={<Badge color="primary">Recommended</Badge>}>
+            Pro
+          </Radio>
+        </RadioGroup>,
+      ),
+    ).toThrow(
+      '[Blade: Radio]: The `trailing` prop is not supported when the parent `RadioGroup` has `orientation="horizontal"`. Remove the `trailing` prop or switch to `orientation="vertical"`.',
+    );
   });
 
   it('should accepnt data-analytics attribute', () => {

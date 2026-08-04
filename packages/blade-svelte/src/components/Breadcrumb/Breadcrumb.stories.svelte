@@ -15,6 +15,10 @@
         control: 'select',
         options: ['neutral', 'primary', 'white'],
       },
+      variant: {
+        control: 'select',
+        options: ['default', 'stepper'],
+      },
       showLastSeparator: {
         control: 'boolean',
       },
@@ -22,6 +26,7 @@
     args: {
       size: 'medium',
       color: 'primary',
+      variant: 'default',
       showLastSeparator: false,
     },
   });
@@ -49,6 +54,18 @@
     };
   }
 
+  // Stepper demo: consumer owns navigation. Calling event.preventDefault()
+  // stops the default <a href> navigation, so the URL never changes and the
+  // consumer decides what to do (e.g. update local state / call a router).
+  let stepperCurrent = $state('/contact');
+
+  function goToStep(path: string) {
+    return (event: MouseEvent) => {
+      event.preventDefault();
+      stepperCurrent = path;
+    };
+  }
+
   // Build breadcrumb items based on current path
   const pathSegments = $derived.by(() => {
     const segments = [
@@ -62,6 +79,25 @@
     return currentIndex >= 0 ? segments.slice(0, currentIndex + 1) : [segments[0]];
   });
 </script>
+
+<Story name="Playground">
+  {#snippet template({ children: _children, ...args })}
+    <div
+      style:padding="var(--spacing-4)"
+      style:background-color={args.color === 'white' ? 'var(--surface-background-primary-intense)' : undefined}
+    >
+      <Breadcrumb {...args}>
+        {#snippet children()}
+          <BreadcrumbItem accessibilityLabel="Home" icon={HomeIcon} href="/home" />
+          <BreadcrumbItem href="/dashboard">Dashboard</BreadcrumbItem>
+          <BreadcrumbItem isCurrentPage href="/settlements">
+            Settlements
+          </BreadcrumbItem>
+        {/snippet}
+      </Breadcrumb>
+    </div>
+  {/snippet}
+</Story>
 
 <!-- Story 1: Basic -->
 <Story name="Basic" asChild>
@@ -159,6 +195,99 @@
           <BreadcrumbItem href="/item5">Item 5</BreadcrumbItem>
           <BreadcrumbItem href="/item6">Item 6</BreadcrumbItem>
           <BreadcrumbItem href="/item7">Item 7</BreadcrumbItem>
+        {/snippet}
+      </Breadcrumb>
+    </div>
+  </div>
+</Story>
+
+<!-- Story: Stepper variant.
+     Each item still has an `href` (for accessibility + open-in-new-tab), but
+     `onClick` calls event.preventDefault() so the browser does NOT navigate —
+     the consumer owns navigation and just updates local state here. -->
+<Story name="Stepper" asChild>
+  <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
+    <div style:padding="var(--spacing-4)">
+      <Breadcrumb variant="stepper" color="primary">
+        {#snippet children()}
+          <BreadcrumbItem
+            href="/contact"
+            isCurrentPage={stepperCurrent === '/contact'}
+            onClick={goToStep('/contact')}
+          >
+            Contact
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/address"
+            isCurrentPage={stepperCurrent === '/address'}
+            onClick={goToStep('/address')}
+          >
+            Address
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/payment"
+            isCurrentPage={stepperCurrent === '/payment'}
+            onClick={goToStep('/payment')}
+          >
+            Payment
+          </BreadcrumbItem>
+        {/snippet}
+      </Breadcrumb>
+    </div>
+    <div style:padding="var(--spacing-4)">
+      <Breadcrumb variant="stepper" color="neutral">
+        {#snippet children()}
+          <BreadcrumbItem
+            href="/contact"
+            isCurrentPage={stepperCurrent === '/contact'}
+            onClick={goToStep('/contact')}
+          >
+            Contact
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/address"
+            isCurrentPage={stepperCurrent === '/address'}
+            onClick={goToStep('/address')}
+          >
+            Address
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/payment"
+            isCurrentPage={stepperCurrent === '/payment'}
+            onClick={goToStep('/payment')}
+          >
+            Payment
+          </BreadcrumbItem>
+        {/snippet}
+      </Breadcrumb>
+    </div>
+    <div
+      style:padding="var(--spacing-4)"
+      style:background-color="var(--surface-background-cloud-intense)"
+    >
+      <Breadcrumb variant="stepper" color="white">
+        {#snippet children()}
+          <BreadcrumbItem
+            href="/contact"
+            isCurrentPage={stepperCurrent === '/contact'}
+            onClick={goToStep('/contact')}
+          >
+            Contact
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/address"
+            isCurrentPage={stepperCurrent === '/address'}
+            onClick={goToStep('/address')}
+          >
+            Address
+          </BreadcrumbItem>
+          <BreadcrumbItem
+            href="/payment"
+            isCurrentPage={stepperCurrent === '/payment'}
+            onClick={goToStep('/payment')}
+          >
+            Payment
+          </BreadcrumbItem>
         {/snippet}
       </Breadcrumb>
     </div>

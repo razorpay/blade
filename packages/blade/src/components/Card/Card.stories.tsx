@@ -19,6 +19,9 @@ import {
   CardHeaderLink,
   CardHeaderAmount,
   CardHeaderText,
+  InfoCard as InfoCardComponent,
+  InfoCardBody,
+  InfoCardFooter,
 } from './';
 import type { Elevation } from '~tokens/global';
 import { Amount } from '~components/Amount';
@@ -735,6 +738,47 @@ const SecondaryCardExample = (): React.ReactElement => {
 };
 
 export const SecondaryCard = SecondaryCardExample.bind({});
+
+const InfoCardExample = (): React.ReactElement => {
+  const renderInfoCard = (
+    label: string,
+    stateProps: { isSelected?: boolean; isDisabled?: boolean },
+  ): React.ReactElement => (
+    <InfoCardComponent width="280px" {...stateProps}>
+      <InfoCardBody>
+        <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+          <Text weight="semibold">Razorpay Summit 2026</Text>
+          <Text size="small" color="surface.text.gray.subtle">
+            {label}
+          </Text>
+        </Box>
+      </InfoCardBody>
+      <InfoCardFooter>
+        <Box display="flex" flexDirection="column" gap="spacing.2">
+          <Text size="small" color="surface.text.gray.subtle">
+            Venue
+          </Text>
+          <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+        </Box>
+      </InfoCardFooter>
+    </InfoCardComponent>
+  );
+
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.7" flexWrap="wrap">
+      {renderInfoCard('Default', {})}
+      {renderInfoCard('Selected', { isSelected: true })}
+      {renderInfoCard('Disabled', { isDisabled: true })}
+    </Box>
+  );
+};
+
+export const InfoCard = InfoCardExample.bind({});
+InfoCard.parameters = {
+  controls: {
+    disable: true,
+  },
+};
 
 const NestedCardExample = (): React.ReactElement => {
   return (

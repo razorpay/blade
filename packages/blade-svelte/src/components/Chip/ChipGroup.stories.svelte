@@ -9,6 +9,10 @@
     args: {
       isDisabled: false,
       accessibilityLabel: 'Choose one business type from the options below',
+      label: 'Select Business type:',
+      selectionType: 'single',
+      size: 'small',
+      color: 'primary',
     },
     argTypes: {
       label: {
@@ -119,6 +123,16 @@
   let controlledMultiValues = $state(['Automated Payment Links']);
   let chipRefValue = $state('');
 </script>
+
+<Story name="Playground">
+  {#snippet template({ children: _children, ...args })}
+    <ChipGroup {...args}>
+      {#each singleChipValues as chipValue}
+        <Chip value={chipValue}>{chipValue}</Chip>
+      {/each}
+    </ChipGroup>
+  {/snippet}
+</Story>
 
 <!-- Story 1: Single Selection -->
 <Story name="Single Selection" asChild>

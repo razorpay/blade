@@ -25,7 +25,7 @@ The script outputs the full markdown report. Then:
 
 | Metric                                                | Value                                                             | Description of Metric                                                        |
 | ----------------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| Metric 1: % PRs with auto-approval label              | {Percentage of PRs with `rcore:eligible-for-auto-approval` label} | Percentage of PRs that received the `rcore:eligible-for-auto-approval` label |
+| Metric 1: % PRs with auto-approval label              | {Percentage of PRs with `✨ Agentic Merge Ready ✨` label} | Percentage of PRs that received the `✨ Agentic Merge Ready ✨` label |
 | Submetric 1: % of comments on PRs (by human)          | {Comments by human / Total comments}                              | Percentage of review comments made by human contributors                     |
 | Submetric 2: % comments marked as resolved (by agent) | {Comments with "resolved by agent" mentioned}                     | Percentage of comments that were resolved by agent                           |
 
@@ -38,7 +38,7 @@ The script outputs the full markdown report. Then:
 | PRs raised (by human)      | {PRs raised by human}                                             | Total PRs minus PRs raised by agent                                      |
 | % of PRs raised (by human) | {PRs raised by human / Total PRs}                                 | Percentage of PRs opened by human contributors                           |
 | % of PRs raised (by agent) | {PRs raised by agent / Total PRs}                                 | Percentage of PRs opened by agent                                        |
-| Total PRs auto-approved                     | {Percentage of PRs with `rcore:eligible-for-auto-approval` label} | Percentage of PRs that have the `rcore:eligible-for-auto-approval` label |
+| Total PRs auto-approved                     | {Percentage of PRs with `✨ Agentic Merge Ready ✨` label} | Percentage of PRs that have the `✨ Agentic Merge Ready ✨` label |
 | Time to Merge (Average) | {Average time from PR creation to merge}                          | Average time from PR creation to merge; excludes "update version" PRs    |
 | Time to Merge (Median)  | {Median time from PR creation to merge}                           | Median time from PR creation to merge; excludes "update version" PRs     |
 

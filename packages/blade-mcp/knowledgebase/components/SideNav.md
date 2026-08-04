@@ -295,6 +295,26 @@ type SideNavLevelProps = {
 };
 ````
 
+## Usage Guidelines
+
+**Do**
+
+- Use `SideNav` for complex, hierarchical navigation with 5+ items and multi-level nesting (L1, L2, L3).
+- Pass the `as` prop on `SideNavLink` with your router's link component (e.g., React Router `Link`) — it's required.
+- Manage active state externally using `isActive` prop with `useLocation()` and `matchPath()`.
+- Use `SideNavSection` to group related links under collapsible headings.
+- Use `SideNavFooter` for utility items like Settings or Test Mode toggles.
+- Use the `banner` slot only for critical activation or onboarding UI, not promotions.
+- Pair with `SkipNav` for keyboard accessibility to let users skip past the navigation.
+
+**Don't**
+
+- Don't use `SideNav` for simple mobile-only navigation with 2–5 items — use `BottomNav` instead.
+- Don't use `SideNav` without a routing library integration — the `as` prop requires a router component.
+- Don't put promotional content in the `banner` slot — it's reserved for critical UI like activation cards.
+- Don't expect automatic active state detection — Blade is routing-library agnostic, so consumers manage it.
+- Don't use `SideNavItem` for navigable links — it's for static items with trailing interactions like switches.
+
 ## Example
 
 ### Comprehensive SideNav with React Router Integration

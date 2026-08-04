@@ -367,6 +367,25 @@ type FilterChipDatePickerProps<T extends DatePickerSelectionType = 'single'> = O
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `DatePicker` for date selection with a calendar interface — supports single date and date range modes.
+- Use `presets` prop with range selection to offer quick options like "Last 7 days", "This month".
+- Use `minDate`/`maxDate` to constrain selectable dates to valid ranges.
+- Use `excludeDate` function to disable specific dates (holidays, unavailable slots).
+- Use object syntax for `label` and `name` in range mode: `label={{ start: 'From', end: 'To' }}`.
+- The component auto-converts to BottomSheet on mobile — no manual handling needed.
+
+**Don't**
+
+- Don't use `picker="month"` or `picker="year"` with `selectionType="range"` — range only supports day-level selection.
+- Don't combine date and time selection in one component — use `DatePicker` + `TimePicker` separately.
+- Don't use `presets` with single date selection — presets are designed for range mode only.
+- Don't forget to handle state updates in controlled mode — `onChange` won't auto-update the value.
+- Don't use a generic `TextInput` for date entry — `DatePicker` provides calendar UI, validation, and formatting.
+
 ## Examples
 
 ### Single Date Selection

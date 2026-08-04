@@ -54,6 +54,22 @@ type BaseMotionEntryExitProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Stagger` to orchestrate sequential animations for lists or groups (cards appearing one after another).
+- Wrap each child in a motion preset (`Move`, `Fade`, `Slide`) — Stagger coordinates their timing.
+- Use Box props (`display`, `gap`, `flexDirection`) directly on Stagger since it renders as a Box.
+- Control the entire group's visibility with `isVisible` on the Stagger (not on individual children).
+
+**Don't**
+
+- Don't use `Stagger` when all items should animate simultaneously — use individual motion presets directly.
+- Don't set `isVisible` on child motion presets — control visibility at the Stagger level.
+- Don't expect `in-view` or `on-animate-interactions` triggers — Stagger only supports `mount`, `hover`, and `focus`.
+- Don't use Stagger for single elements — it's designed for coordinating multiple children.
+
 ## Example
 
 ### Basic Stagger Animation with Fade

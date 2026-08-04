@@ -93,6 +93,24 @@ type BottomNavItemProps = {
   DataAnalyticsAttribute;
 ````
 
+## Usage Guidelines
+
+**Do**
+
+- Use `BottomNav` for mobile-only navigation with 2–5 core app destinations.
+- Pair each `BottomNavItem` with a descriptive `title` and a meaningful `icon`.
+- Manage active state externally using React Router's `useLocation()` and `matchPath()`.
+- Use a "More" button (via `onClick`) to open a `SideNav` drawer for additional navigation items beyond the 2–5 limit.
+- Pass the `as` prop with your router's link component (e.g., `NavLink`) for proper navigation.
+
+**Don't**
+
+- Don't use `BottomNav` on desktop — it's designed exclusively for mobile touch interaction.
+- Don't exceed 5 items or go below 2 — the component validates this and throws errors in development.
+- Don't use `BottomNav` for deep or nested navigation — use `SideNav` for hierarchical structures.
+- Don't use `BottomNav` without icons — each item requires an icon displayed above the title.
+- Don't use `BottomNav` as a replacement for `Tabs` — Tabs switch content panels, BottomNav navigates between pages.
+
 ## Example
 
 This example demonstrates how to implement BottomNav with React Router for a mobile application, including active state management and integration with side navigation.

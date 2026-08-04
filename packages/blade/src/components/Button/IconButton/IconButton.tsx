@@ -12,6 +12,8 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
+export type IconButtonEmphasis = SubtleOrIntense | 'moderate';
+
 type IconButtonProps = {
   /**
    * Icon component to be rendered, eg. `CloseIcon`
@@ -28,9 +30,12 @@ type IconButtonProps = {
   /**
    * Icon contrast
    *
+   * `moderate` renders a persistent faded background in a fixed-size square
+   * container (web-only). Use for AppBar trailing actions on dark surfaces.
+   *
    * @default 'intense'
    */
-  emphasis?: SubtleOrIntense;
+  emphasis?: IconButtonEmphasis;
 
   /**
    * Sets aria-label to help users know what the action does, eg 'Dismiss alert'

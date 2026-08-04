@@ -71,8 +71,12 @@ export const usePresetState = ({
 
     // STEP 4: Get the label for display
     // Example: selectedPresetIndex = 0 → presetStates[0].preset.label = "Last 7 days"
+    // A custom selection has no meaningful label to display in place of the actual dates
+    // (e.g. "Custom"), so we return null and let consumers fall back to the date range.
     const selectedPresetLabel =
-      selectedPresetIndex !== -1 ? presetStates[selectedPresetIndex].preset.label : null;
+      selectedPresetIndex !== -1 && !presetStates[selectedPresetIndex].isCustomType
+        ? presetStates[selectedPresetIndex].preset.label
+        : null;
 
     // STEP 5: Calculate effective selection type based on selected preset
     // If preset returns same-day range (like "Today"), display as single date
@@ -94,15 +98,20 @@ export const usePresetState = ({
     }
 
     // Based on the displayFormat prop
-    // When displayFormat is 'compact', show only the preset label instead of dates
+    // When displayFormat is 'compact', show only the preset label instead of dates.
+    // Custom selections are excluded since they display the actual date range, not a label.
     const effectiveDisplayFormat: 'compact' | 'default' =
-      selectedPresetIndex !== -1 && displayFormat === 'compact' ? 'compact' : 'default';
+      selectedPresetIndex !== -1 &&
+      !presetStates[selectedPresetIndex].isCustomType &&
+      displayFormat === 'compact'
+        ? 'compact'
+        : 'default';
 
     // Return final calculated state - this gets shared with all components
     return {
       presetStates, // Array: [{ preset, value, isSelected, isCustomType }, ...]
       selectedPresetIndex, // Number: 0, 1, 2... or null
-      selectedPresetLabel, // String: "Last 7 days" or "Custom" or null
+      selectedPresetLabel, // String: "Last 7 days" or null (null for custom selections)
       isCustomSelected, // Boolean: true if custom dates selected
       effectiveSelectionType, // 'single' | 'range' based on preset analysis
       displayFormat: effectiveDisplayFormat, // 'compact' | 'default' based on preset analysis

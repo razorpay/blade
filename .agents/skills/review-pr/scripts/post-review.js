@@ -111,7 +111,7 @@ function formatOverviewComment(
     parts.push('**Status:** Approved ✅');
   }
 
-  if (isSelfReview) {
+  if (isSelfReview && reviewStatus === 'approved') {
     parts.push(
       '<img src="https://raw.githubusercontent.com/razorpay/blade/refs/heads/__ci_artifacts/artifacts/review-assets/Obama-giving-Obama-award.png" alt="obama giving obama medal" width="300px" />',
     );
@@ -141,7 +141,11 @@ const SEVERITY_EMOJI = { critical: '🔴', major: '🟠', minor: '🔵' };
 function formatInlineComment(c) {
   const confidenceStr = c.confidence != null ? ` · confidence: ${c.confidence}/10` : '';
   if (c.clarification) {
-    return [`🙏🏻 **[NEEDS CLARIFICATION]** · _${c.critique}_${confidenceStr}`, '', c.clarification].join('\n');
+    return [
+      `🙏🏻 **[NEEDS CLARIFICATION]** · _${c.critique}_${confidenceStr}`,
+      '',
+      c.clarification,
+    ].join('\n');
   }
   const emoji = SEVERITY_EMOJI[c.severity] || '⚪';
   const lines = [
@@ -162,7 +166,12 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
   const screenshots = uiStatuses.filter((s) => s.screenshot_path);
   if (screenshots.length === 0) return {};
 
-  const destDir = `artifacts/review/PR-${prNum}/ui-critique`;
+  const now = new Date();
+  const ts = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(
+    2,
+    '0',
+  )}-${String(now.getSeconds()).padStart(2, '0')}`;
+  const destDir = `artifacts/review/PR-${prNum}/ui-critique/${ts}`;
 
   const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
   const cdnMap = {};
@@ -185,13 +194,6 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
     } catch (_) {
       execSync('git checkout --orphan __ci_artifacts', { stdio: 'pipe' });
       execSync('git rm -rf . --quiet', { stdio: 'pipe' });
-    }
-
-    // Remove previous artifacts for this PR before writing new ones
-    try {
-      execSync(`git rm -rf ${destDir} --quiet`, { stdio: 'pipe' });
-    } catch (_) {
-      // destDir may not exist yet on first review — that's fine
     }
 
     execSync(`mkdir -p ${destDir}`);
@@ -342,6 +344,11 @@ if (isPending) {
 } else {
   console.log(`\nReview submitted as ${actualEvent} (id: ${created.id})`);
   console.log(`Review URL: ${created.html_url}`);
+}
+
+if (reviewStatus === 'approved') {
+  execSync(`gh pr edit ${prNumber} --repo ${repo} --add-label "rcore:eligible-for-auto-approval"`);
+  console.log('Added label: rcore:eligible-for-auto-approval');
 }
 
 const hasClarifications = allComments.some((c) => c.clarification);

@@ -119,6 +119,24 @@ type ActionListItemAssetProps = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `ActionList` inside `Dropdown` or `Menu` for presenting selectable or actionable item lists.
+- Use `ActionListSection` to group related items with automatic dividers and optional section titles.
+- Use `leading` prop with specific components: `ActionListItemIcon`, `ActionListItemAsset`, `ActionListItemAvatar`, `ActionListItemText`.
+- Use `intent="negative"` on `ActionListItem` for destructive actions (delete, remove, logout).
+- Use `isVirtualized` for lists with 100+ items to maintain performance.
+
+**Don't**
+
+- Don't use `ActionListItem` with `intent="negative"` when the parent Dropdown uses `SelectInput` as trigger.
+- Don't pass arbitrary components to `leading` or `trailing` — only specific ActionListItem sub-components are accepted.
+- Don't use `ActionList` for simple navigation — use `SideNav` or `Menu` with `MenuItem`.
+- Don't enable virtualization for small lists — it changes DOM structure unnecessarily.
+- Don't use `ActionList` standalone when `Menu` or `Dropdown` would provide better trigger/overlay behavior.
+
 ## Examples
 
 ### Basic ActionList

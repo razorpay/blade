@@ -1,4 +1,5 @@
 export { default as bladeTheme } from './bladeTheme';
+export { default as bladeNeutralTheme } from './bladeNeutralTheme';
 export { default as overrideTheme } from './overrideTheme';
 export type {
   ColorSchemeNames,

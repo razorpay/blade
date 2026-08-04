@@ -55,6 +55,11 @@ type RadioProps = {
    */
   size?: 'small' | 'medium' | 'large';
   /**
+   * Trailing element to display alongside the radio label (e.g. a `<Badge>`).
+   * Only rendered when the parent `RadioGroup` has `orientation="vertical"`.
+   */
+  trailing?: React.ReactElement;
+  /**
    * @private
    * Internal prop to hide the radio icon
    * @default false
@@ -72,6 +77,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
     helpText,
     isDisabled,
     size = 'medium',
+    trailing,
     _hideRadioIcon = false,
     testID,
     _motionMeta,
@@ -90,6 +96,13 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
         message: 'Cannot use <Radio /> outside of <RadioGroup />',
       });
     }
+    if (trailing && groupProps?.orientation === 'horizontal') {
+      throwBladeError({
+        moduleName: 'Radio',
+        message:
+          'The `trailing` prop is not supported when the parent `RadioGroup` has `orientation="horizontal"`. Remove the `trailing` prop or switch to `orientation="vertical"`.',
+      });
+    }
   }
 
   const isChecked = groupProps?.state?.isChecked(value);
@@ -103,6 +116,8 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const showHelpText = helpText;
   const isReactNative = getPlatformType() === 'react-native';
   const _size = groupProps.size ?? size;
+  const orientation = groupProps?.orientation ?? 'vertical';
+  const showTrailing = trailing && orientation === 'vertical';
 
   const handleChange: OnChange = ({ isChecked, value, event }) => {
     if (isChecked) {
@@ -156,6 +171,11 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               <SelectorTitle size={_size} isDisabled={_isDisabled}>
                 {children}
               </SelectorTitle>
+            ) : null}
+            {showTrailing ? (
+              <BaseBox marginLeft="spacing.2" display="flex" alignItems="center">
+                {trailing}
+              </BaseBox>
             ) : null}
           </BaseBox>
           {showHelpText && (

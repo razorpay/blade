@@ -21,9 +21,37 @@ interface ChartLineProps {
    */
   activeDot?: RechartsLineProps['activeDot'];
   /**
-   * If we don't have data for some points should we connect the line or should skip it.
+   * Whether to bridge gaps (`null` / `undefined` values) in the data.
+   *
+   * - `false` (default): the line breaks at null points, leaving a gap. Use this for genuine data
+   *   outages where no continuity should be implied.
+   * - `true`: the line is connected across null points. Use `connectNullsStyle` to control whether
+   *   the bridge is drawn as a solid or dashed line.
+   *
+   * @default false
    */
-  connectNulls?: RechartsLineProps['connectNulls'];
+  connectNulls?: boolean;
+  /**
+   * The style of the line drawn across null points when `connectNulls` is `true`.
+   *
+   * - `'solid'` (default): nulls are bridged with a solid line.
+   * - `'dashed'`: real data renders as a solid line while the stretch across null points renders
+   *   dashed, signalling "no data for this period" without implying a measured value.
+   *
+   * Note: `'dotted'` (which `strokeStyle` supports) is intentionally not offered for null bridges.
+   * A dotted bridge reads as a decorative line style rather than a "missing data" signal, and the
+   * dashed style is the agreed convention for representing gaps in this chart (see the
+   * SR-data-null discussion). If a dotted bridge is ever needed, extend this union and the
+   * rendering helpers together.
+   *
+   * Note: When `strokeStyle` is also set to `'dashed'`, the null bridge becomes visually
+   * indistinguishable from the rest of the line. In that case, consider using `connectNullsStyle`
+   * set to `'solid'` (the default) so the bridge reads as a continuous segment, or use a
+   * different `strokeStyle` for the line to keep the dashed bridge visually distinct.
+   *
+   * @default 'solid'
+   */
+  connectNullsStyle?: 'solid' | 'dashed';
   /**
    * Include this particular line in legend.
    *  @default : true

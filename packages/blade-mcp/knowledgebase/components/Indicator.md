@@ -57,6 +57,24 @@ Where:
 - `DataAnalyticsAttribute` adds data attributes for analytics tracking
 - `StyledPropsBlade` includes styled-system props for flexible styling
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Indicator` for showing the status or condition of an entity (e.g., "Online", "Pending", "Error").
+- Always provide `accessibilityLabel` when using Indicator without visible `children` text — color alone is not accessible.
+- Use `children` to display a visible text label alongside the dot for clarity.
+- Use `emphasis="intense"` when the indicator needs stronger visual prominence with a background circle.
+- Use absolute positioning with styled props to overlay an Indicator dot on another component (e.g., notification dot on a button).
+
+**Don't**
+
+- Don't rely solely on the dot color to convey meaning — always pair with text or `accessibilityLabel` for color-blind users.
+- Don't use `Indicator` for numeric counts — use `Counter` instead.
+- Don't use `Indicator` for descriptive metadata labels — use `Badge` instead.
+- Don't use `Indicator` as an interactive element — it is purely informational.
+- Don't omit `accessibilityLabel` on dot-only indicators — screen reader users cannot perceive color.
+
 ## Example
 
 This example demonstrates different variations of the Indicator component showing positive, negative, and notice states with different emphasis levels and text options.

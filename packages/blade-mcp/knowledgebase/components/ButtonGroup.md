@@ -46,6 +46,22 @@ type ButtonGroupProps = {
   DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `ButtonGroup` to visually associate related actions in toolbars or action areas.
+- Only pass `Button`, `Dropdown`, `Tooltip`, or `Popover` as children — other components are not allowed.
+- Use with `Dropdown` for split-button patterns (primary action + dropdown for alternatives).
+- Use consistent `variant` across the group — it's inherited via context.
+
+**Don't**
+
+- Don't pass non-allowed children (only Button, Dropdown, Tooltip, Popover are accepted).
+- Don't use `ButtonGroup` for unrelated actions — group only semantically related buttons.
+- Don't try to override individual button `variant`/`size`/`color` — they inherit from the group.
+- Don't use `ButtonGroup` for navigation — use `Tabs` or `BottomNav` instead.
+
 ## Examples
 
 ### ButtonGroup with Variants and State Management

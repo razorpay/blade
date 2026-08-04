@@ -44,8 +44,12 @@
     inset 0px -1.5px 0px 1px var(--surface-background-gray-intense);
 }
 
-/* Dark theme overrides for filled variant */
-:root body[data-theme='dark'] .filled {
+/* Dark theme overrides for filled variant.
+ * Legacy `body[data-theme='dark']` is Blade's React provider hook (deprecated).
+ * Prefer scoped `[data-blade-color-scheme='dark']` on BladeProvider subtrees.
+ * `:root` prefix equalizes specificity between legacy and scoped selectors. */
+:root body[data-theme='dark'] .filled,
+:root [data-blade-color-scheme='dark'] .filled {
   border-top: 1px solid var(--surface-border-gray-subtle);
   background-image: linear-gradient(to bottom, hsla(210, 5%, 16%, 1) 0%, hsla(210, 6%, 13%, 1) 100%),
     linear-gradient(to bottom, hsla(210, 6%, 13%, 1) 0%, hsla(210, 6%, 13%, 1) 100%);
@@ -55,7 +59,8 @@
   box-shadow: 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06);
 }
 
-:root body[data-theme='dark'] .filled::after {
+:root body[data-theme='dark'] .filled::after,
+:root [data-blade-color-scheme='dark'] .filled::after {
   box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
     inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
@@ -243,31 +248,20 @@
   min-height: var(--header-slot-height);
 }
 
+/* Chevron rotation + transition now live in collapsible.module.css via
+   CollapsibleChevronIcon. This wrapper only owns layout/alignment. */
 .headerChevron {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   margin-left: var(--spacing-3);
   min-height: var(--header-slot-height);
-  transition: transform var(--duration-moderate) var(--easing-standard);
-}
-
-.chevronExpanded {
-  transform: rotate(-180deg);
 }
 
 /* Header divider shown when expanded — full-width, no horizontal padding */
 .headerDivider {
   padding-left: var(--spacing-0);
   padding-right: var(--spacing-0);
-}
-
-/* Collapsible body content */
-.collapsibleContent {
-  overflow-y: hidden;
-  transition-property: height, opacity;
-  transition-duration: var(--duration-moderate);
-  transition-timing-function: var(--easing-standard);
 }
 
 /* Accordion item body */

@@ -22,6 +22,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative, makeSize } from '~utils';
 import { throwBladeError } from '~utils/logger';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useTruncationTitle } from '~utils/useTruncationTitle';
 
 type BadgeProps = {
   /**
@@ -122,6 +123,10 @@ const _Badge = (
     emphasis,
   });
 
+  const { containerRef, textRef } = useTruncationTitle({
+    content: childrenString,
+  });
+
   const badgeTextSizes = {
     xsmall: {
       variant: 'body',
@@ -156,6 +161,7 @@ const _Badge = (
         textAlign={'left' as never}
       >
         <BaseBox
+          ref={containerRef as never}
           paddingX={horizontalPadding[size]}
           display="flex"
           flexDirection="row"
@@ -169,6 +175,7 @@ const _Badge = (
             </BaseBox>
           ) : null}
           <Text
+            ref={textRef as never}
             {...badgeTextSizes[size]}
             weight={emphasis === 'intense' ? 'regular' : 'medium'}
             truncateAfterLines={1}

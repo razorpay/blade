@@ -75,8 +75,21 @@ jobs:
         run: |
           PROMPT="Heal the pull request at ${PR_URL} using the /heal-pr skill from the blade repo. PR_NUMBER=${PR_NUMBER}. Strictly use the heal-pr skill from the blade repo only. Do not use any other skill."
 
+          # Temporarily disable set -e so the script doesn't die
+          # before we can print the API response when node exits 1.
+          set +e
           RESPONSE_OUTPUT=$(node .github/scripts/run-slash.js "$PROMPT")
+          NODE_EXIT_CODE=$?
+          set -e
+
+          # Always print the full output so Status:/Response: are
+          # visible in the GitHub Actions logs — even on failure.
           echo "$RESPONSE_OUTPUT"
+
+          if [ "$NODE_EXIT_CODE" -ne 0 ]; then
+            echo "::error::Slash API call failed (exit code $NODE_EXIT_CODE). See Status: and Response: above for details."
+            exit 1
+          fi
 
           RESPONSE_JSON=$(echo "$RESPONSE_OUTPUT" | grep "^Response:" | sed 's/^Response: //')
           TASK_ID=$(echo "$RESPONSE_JSON" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d.get('task_id',''))" 2>/dev/null || true)

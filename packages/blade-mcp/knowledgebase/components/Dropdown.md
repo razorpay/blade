@@ -258,6 +258,32 @@ type FilterChipGroupProps = {
 type IconComponent = React.ComponentType<any>;
 ```
 
+## Usage Guidelines
+
+**When to Use**
+
+Use `Dropdown` (with `SelectInput`) when users must select from **more than 5 options** in a single-select context. The dropdown pattern keeps the UI compact by hiding options behind a trigger.
+
+For fewer options (2–5), prefer visible selection controls: `Radio` (longer labels) or `Chip` with `selectionType="single"` (short labels) to keep choices visible without an extra click.
+
+**Do**
+
+- Use `Dropdown` for selection-based interactions — selecting one or multiple items from a list.
+- Use `Dropdown` with `SelectInput` when there are more than 5 options to choose from (single select).
+- Always pair with `DropdownOverlay` containing `ActionList` for the options display.
+- Use predefined triggers: `SelectInput`, `AutoComplete`, `DropdownButton`, `DropdownLink`, or `FilterChipSelectInput`.
+- Use `selectionType="multiple"` when users should select more than one option.
+- Use `DropdownHeader` and `DropdownFooter` for structuring complex selection overlays.
+
+**Don't**
+
+- Don't use `Dropdown` for 5 or fewer options where choices can be shown inline — use `Radio`, `Chip`, or `Switch` instead to reduce interaction cost.
+- Don't use `Dropdown` for action menus (click-to-perform) — use `Menu` instead.
+- Don't pass arbitrary trigger components — only predefined Blade triggers are accepted.
+- Don't use `ActionListItem` with `intent="negative"` when using `SelectInput` as the trigger.
+- Don't use `Dropdown` for nested submenus — use `Menu` which supports nested overlays.
+- Don't expect responsive behavior on mobile — manually switch to `BottomSheet` for mobile UX.
+
 ## Examples
 
 ### Basic Dropdown with Button Trigger

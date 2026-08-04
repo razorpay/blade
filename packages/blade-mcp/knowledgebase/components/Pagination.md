@@ -117,6 +117,24 @@ type PaginationProps = PaginationCommonProps & {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Pagination` for navigating through large datasets divided into pages.
+- Always provide `totalPages` — it is the only required prop for the component to function.
+- Use controlled mode (`selectedPage` + `onSelectedPageChange`) when page state needs to sync with URL or external state.
+- Enable `showPageNumbers` for better navigation when there are many pages.
+- Enable `showPageSizePicker` when users should control items per page.
+
+**Don't**
+
+- Don't use `Pagination` for switching between content views — use `Tabs` instead.
+- Don't use custom page size values — only 10, 25, and 50 are supported.
+- Don't rely on `showPageSizePicker`, `showPageNumbers`, or `showLabel` being visible on mobile — they are automatically hidden on small screens.
+- Don't use 0-based page indexing — pages are 1-indexed externally.
+- Don't use `Pagination` when infinite scroll would provide a better user experience for browsing content.
+
 ## Example
 
 ### Controlled Pagination with All Features

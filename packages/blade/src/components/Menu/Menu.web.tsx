@@ -17,6 +17,7 @@ const MenuTree = ({
   openInteraction = 'click',
   onOpenChange,
   isOpen: isOpenControlled,
+  defaultPlacement,
 }: MenuProps): React.ReactElement => {
   const [hasFocusInside, setHasFocusInside] = React.useState(false);
 
@@ -48,6 +49,7 @@ const MenuTree = ({
     onOpenChange,
     isOpen: isOpenControlled,
     overlayOffset,
+    defaultPlacement,
   });
 
   const referenceProps = {
@@ -67,6 +69,7 @@ const MenuTree = ({
     ref: refs.setFloating as any,
     style: floatingStyles,
     _transitionStyle: floatingTransitionStyles,
+    'data-placement': context.placement,
     ...getFloatingProps(),
   };
 

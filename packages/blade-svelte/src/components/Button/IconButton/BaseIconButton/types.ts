@@ -5,6 +5,7 @@ import type {
 } from '@razorpay/blade-core/utils';
 import type { IconComponent } from '../../../Icons/iconMap';
 import type { IconButtonEmphasis, IconButtonSize } from '../types';
+import type { StyleOverride, IconButtonSlot } from '@razorpay/blade-core/styles';
 
 export interface BaseIconButtonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /**
@@ -16,7 +17,9 @@ export interface BaseIconButtonProps extends StyledPropsBlade, DataAnalyticsAttr
    */
   size?: IconButtonSize;
   /**
-   * Icon emphasis (contrast).
+   * Icon emphasis (contrast). `moderate` renders a persistent faded background
+   * in a fixed-size square container — web-only styling; native falls back to
+   * static-white icon colors without the background.
    */
   emphasis?: IconButtonEmphasis;
   /**
@@ -68,4 +71,5 @@ export interface BaseIconButtonProps extends StyledPropsBlade, DataAnalyticsAttr
    * Test id that can be used to select the element in testing environments.
    */
   testID?: string;
+  styleOverride?: StyleOverride<IconButtonSlot>;
 }

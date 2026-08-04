@@ -67,6 +67,22 @@ type MoveProps = {
 type MotionDelay = keyof Delay | { enter: keyof Delay; exit: keyof Delay };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Move` for combined opacity + subtle vertical translation animations (elements fading in while sliding up slightly).
+- Use for page/route transitions, conditional content reveals, and card entry animations.
+- Use `motionTriggers={['in-view']}` for scroll-triggered appearance.
+- Use `isVisible` for controlled show/hide with smooth animation.
+
+**Don't**
+
+- Don't use `Move` when you only need opacity change — use `Fade` (lighter, no position change).
+- Don't use `Move` for dramatic viewport-edge entrances — use `Slide` (which animates from 100vh/100vw).
+- Don't use `shouldUnmountWhenHidden` without setting `minHeight` on the container — it causes layout shift.
+- Don't pass plain text as children — only React elements (wrap in Box if needed).
+
 ## Example
 
 ### Basic Usage

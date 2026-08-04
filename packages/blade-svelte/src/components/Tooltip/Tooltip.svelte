@@ -302,13 +302,19 @@
         <p class={tooltipTitleClass}>{title}</p>
       {/if}
       <p class={tooltipContentClass}>{content}</p>
+      <!-- The SVG box is square (ARROW_WIDTH × ARROW_WIDTH), mirroring
+           @floating-ui/react's FloatingArrow (height={width}, viewBox 0 0 W W).
+           Left/right placements rotate the arrow ±90° about its center; a
+           non-square box would shift the flat base off the bubble edge by
+           (width - height) / 2, leaving a gap. The path apex still sits at
+           ARROW_HEIGHT within the taller viewBox. -->
       <svg
         bind:this={arrowEl}
         class={tooltipArrowClass}
         style={arrowStyle}
         width={ARROW_WIDTH}
-        height={ARROW_HEIGHT}
-        viewBox="0 0 {ARROW_WIDTH} {ARROW_HEIGHT}"
+        height={ARROW_WIDTH}
+        viewBox="0 0 {ARROW_WIDTH} {ARROW_WIDTH}"
         aria-hidden="true"
       >
         <path d={ARROW_PATH} />

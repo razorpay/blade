@@ -20,15 +20,13 @@ const Page = (): React.ReactElement => {
   );
 };
 
-// Helper to create a mock BladeFile
+// Helper to create a mock BladeFile (works on both web and native)
 const createMockFile = (name: string, size: number, overrides?: Partial<BladeFile>): BladeFile => {
-  const file = new File([''], name, { type: 'application/octet-stream' }) as BladeFile;
-  Object.defineProperty(file, 'size', { value: size });
   return {
-    ...file,
-    id: `file-${Date.now()}`,
+    id: `file-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
     name,
     size,
+    type: 'application/octet-stream',
     ...overrides,
   } as BladeFile;
 };

@@ -1,0 +1,161 @@
+/*
+ * InputGroup styles — ported from React `StyledInputGroup.tsx`.
+ *
+ * `.input-group` is the hashed CSS-module scope (React's StyledInputGroup root).
+ * The child input hooks (`__blade-input-row`, `__blade-base-input-wrapper`,
+ * `__blade-focus-ring-wrapper`) are literal global classes set by InputRow and
+ * BaseInput. blade-core modules are hashed, so cross-module wrappers can only be
+ * reached via these stable `:global()` hooks — mirroring React's literal-class
+ * convention. Corner radius is always `radius.small` (React ignores `size` here).
+ */
+
+/* ── Corner-rounding scope (descendant of the hashed .input-group root) ── */
+
+/* Reset all inner input + focus-ring wrappers to square corners. */
+.input-group :global(.__blade-input-row .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row .__blade-focus-ring-wrapper) {
+  border-radius: 0;
+}
+
+/* Row stacking: elevate the whole row on hover/focus so shadows don't clip. */
+.input-group :global(.__blade-input-row) {
+  position: relative;
+  z-index: 0;
+}
+.input-group :global(.__blade-input-row:hover),
+.input-group :global(.__blade-input-row:focus-within) {
+  z-index: 1;
+}
+
+/* Within-row stacking: elevate the hovered/focused input above its siblings. */
+.input-group :global(.__blade-input-row .__blade-base-input-wrapper) {
+  z-index: 0;
+}
+.input-group :global(.__blade-input-row .__blade-base-input-wrapper:hover),
+.input-group :global(.__blade-input-row .__blade-base-input-wrapper:focus-within) {
+  z-index: 1;
+}
+
+/* Multi-row: first row, first column. */
+.input-group :global(.__blade-input-row:first-child > div:first-child .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:first-child > div:first-child .__blade-focus-ring-wrapper) {
+  border-top-left-radius: var(--border-radius-small);
+}
+
+/* Multi-row: first row, last column. */
+.input-group :global(.__blade-input-row:first-child > div:last-child .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:first-child > div:last-child .__blade-focus-ring-wrapper) {
+  border-top-right-radius: var(--border-radius-small);
+}
+
+/* Multi-row: last row, first column. */
+.input-group :global(.__blade-input-row:last-child > div:first-child .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:last-child > div:first-child .__blade-focus-ring-wrapper) {
+  border-bottom-left-radius: var(--border-radius-small);
+}
+
+/* Multi-row: last row, last column. */
+.input-group :global(.__blade-input-row:last-child > div:last-child .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:last-child > div:last-child .__blade-focus-ring-wrapper) {
+  border-bottom-right-radius: var(--border-radius-small);
+}
+
+/* Multi-row: first row with a single column. */
+.input-group :global(.__blade-input-row:first-child > div:only-child .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:first-child > div:only-child .__blade-focus-ring-wrapper) {
+  border-top-left-radius: var(--border-radius-small);
+  border-top-right-radius: var(--border-radius-small);
+}
+
+/* Multi-row: last row with a single column. */
+.input-group :global(.__blade-input-row:last-child > div:only-child .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:last-child > div:only-child .__blade-focus-ring-wrapper) {
+  border-bottom-left-radius: var(--border-radius-small);
+  border-bottom-right-radius: var(--border-radius-small);
+}
+
+/* Single row: single column → round all four corners. */
+.input-group :global(.__blade-input-row:only-child > div:only-child .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:only-child > div:only-child .__blade-focus-ring-wrapper) {
+  border-radius: var(--border-radius-small);
+}
+
+/* Single row: first column (of many). */
+.input-group :global(.__blade-input-row:only-child > div:first-child:not(:only-child) .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:only-child > div:first-child:not(:only-child) .__blade-focus-ring-wrapper) {
+  border-top-left-radius: var(--border-radius-small);
+  border-bottom-left-radius: var(--border-radius-small);
+}
+
+/* Single row: last column (of many). */
+.input-group :global(.__blade-input-row:only-child > div:last-child:not(:only-child) .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:only-child > div:last-child:not(:only-child) .__blade-focus-ring-wrapper) {
+  border-top-right-radius: var(--border-radius-small);
+  border-bottom-right-radius: var(--border-radius-small);
+}
+
+/* Single row: middle columns → stay square. */
+.input-group :global(.__blade-input-row:only-child > div:not(:first-child):not(:last-child) .__blade-base-input-wrapper),
+.input-group :global(.__blade-input-row:only-child > div:not(:first-child):not(:last-child) .__blade-focus-ring-wrapper) {
+  border-radius: 0;
+}
+
+/* ── Layout (InputGroup's own DOM) ── */
+
+/* role="group" box — mirrors React's outer BaseBox. */
+.group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Label + inputs box — column by default (label on top). */
+.field-box {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inputs column — stacks the InputRows. */
+.inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each InputRow — grid; grid-template-columns is set inline (arbitrary value). */
+.input-row {
+  display: grid;
+}
+
+/* Hint row — indented under the input when the label is left-positioned. */
+.hint-box {
+  margin-left: 0;
+}
+
+.hint-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/*
+ * Left label is desktop-only (React gates on `matchedDeviceType === 'desktop'`).
+ * On < 768px it falls back to the top layout (column + no hint indent).
+ */
+@media (min-width: 768px) {
+  .field-box-left {
+    flex-direction: row;
+  }
+
+  /* React centers the label only when there are fewer than 2 input rows. */
+  .field-box-left:has(.input-row:only-child) {
+    align-items: center;
+  }
+
+  /* formHintLeftLabelMarginLeft: xsmall/small/medium → 136px, large → 192px. */
+  .hint-indent-medium {
+    margin-left: 136px;
+  }
+  .hint-indent-large {
+    margin-left: 192px;
+  }
+}

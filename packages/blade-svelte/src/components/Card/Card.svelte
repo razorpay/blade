@@ -1,14 +1,19 @@
 <script lang="ts">
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
+  import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import CardRoot from './CardRoot.svelte';
   import CardSurface from './CardSurface.svelte';
   import LinkOverlay from './LinkOverlay.svelte';
   import { setCardContext } from './CardContext';
   import type { CardProps } from './types';
 
+  const themeContextGetter = getBladeThemeContextGetter();
+
   let {
     children: cardContent,
-    backgroundColor = 'surface.background.gray.intense',
+    variant = 'primary',
+    backgroundColor,
     borderRadius = 'medium',
     /* `elevation` is deprecated and a no-op (matches React). Kept in the
        destructure so it's swallowed rather than forwarded onto the DOM
@@ -21,6 +26,7 @@
     minWidth,
     maxWidth,
     isSelected = false,
+    isDisabled = false,
     href,
     target,
     rel,
@@ -35,13 +41,23 @@
     overflowY,
     validationState = 'none',
     testID,
+    styleOverride,
     ...rest
   }: CardProps = $props();
 
-  // Set context with getter for reactivity
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('Card', styleOverride, themeContextGetter),
+  );
+
   setCardContext(() => ({ size }));
 
   let isFocused = $state(false);
+
+  const isCardSelected = $derived(isSelected && !isDisabled);
+
+  const surfaceType = $derived(
+    variant === 'secondary' || variant === 'theme' ? variant : 'primary'
+  );
 
   const defaultRel = $derived(
     target && target === '_blank' ? 'noreferrer noopener' : undefined
@@ -58,11 +74,36 @@
   }
 </script>
 
+{#snippet linkOverlay()}
+  {#if href && !isDisabled}
+    <LinkOverlay
+      {onClick}
+      {href}
+      {target}
+      rel={rel ?? defaultRel}
+      {accessibilityLabel}
+      isSelected={isCardSelected}
+      onFocus={handleLinkOverlayFocus}
+      onBlur={handleLinkOverlayBlur}
+    />
+  {:else if onClick && !isDisabled}
+    <LinkOverlay
+      as="button"
+      {onClick}
+      {accessibilityLabel}
+      isSelected={isCardSelected}
+      onFocus={handleLinkOverlayFocus}
+      onBlur={handleLinkOverlayBlur}
+    />
+  {/if}
+{/snippet}
+
 <CardRoot
   {as}
   {borderRadius}
-  {isSelected}
+  isSelected={isCardSelected}
   {isFocused}
+  {isDisabled}
   {validationState}
   {accessibilityLabel}
   {onHover}
@@ -73,44 +114,24 @@
   {maxWidth}
   {cursor}
   {testID}
+  styleOverrideRoot={resolvedStyleOverride?.root}
   {...rest}
   {...analyticsAttrs}
 >
-  {#snippet children()}
-    <CardSurface
-      {height}
-      {minHeight}
-      {padding}
-      {borderRadius}
-      {backgroundColor}
-      {overflow}
-      {overflowX}
-      {overflowY}
-    >
-      {#snippet children()}
-        {#if href}
-          <LinkOverlay
-            {onClick}
-            {href}
-            {target}
-            rel={rel ?? defaultRel}
-            {accessibilityLabel}
-            {isSelected}
-            onFocus={handleLinkOverlayFocus}
-            onBlur={handleLinkOverlayBlur}
-          />
-        {:else if onClick}
-          <LinkOverlay
-            as="button"
-            {onClick}
-            {accessibilityLabel}
-            {isSelected}
-            onFocus={handleLinkOverlayFocus}
-            onBlur={handleLinkOverlayBlur}
-          />
-        {/if}
-        {@render cardContent()}
-      {/snippet}
-    </CardSurface>
-  {/snippet}
+  <CardSurface
+    type={surfaceType}
+    {height}
+    {minHeight}
+    {padding}
+    {borderRadius}
+    {backgroundColor}
+    {overflow}
+    {overflowX}
+    {overflowY}
+  >
+    {@render linkOverlay()}
+    {#if cardContent}
+      {@render cardContent()}
+    {/if}
+  </CardSurface>
 </CardRoot>

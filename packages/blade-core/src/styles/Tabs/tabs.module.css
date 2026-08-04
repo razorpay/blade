@@ -1,0 +1,459 @@
+/* Tabs wrapper */
+.tabsWrapper {
+  display: flex;
+}
+
+.tabsHorizontal {
+  flex-direction: column;
+}
+
+.tabsVertical {
+  flex-direction: row;
+}
+
+/* TabList outer container */
+.tabListOuter {
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.tabListOuterHorizontal {
+  display: block;
+}
+
+.tabListOuterVertical {
+  display: flex;
+}
+
+.tabListScrollRow {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Scrollable area hides scrollbar */
+.scrollableArea {
+  position: relative;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  width: 100%;
+  overflow: auto hidden;
+}
+
+.scrollableArea::-webkit-scrollbar {
+  display: none;
+}
+
+/* TabList inner container (the tablist role element) */
+.tabListInner {
+  display: flex;
+  width: 100%;
+}
+
+.tabListHorizontal {
+  flex-direction: row;
+  align-items: center;
+}
+
+.tabListVertical {
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+/* Filled variant tablist wrapper */
+.tabListFilled {
+  border-radius: var(--border-radius-medium);
+  border-width: 0;
+  border-color: var(--interactive-border-gray-default);
+  padding: var(--spacing-2);
+  gap: var(--spacing-1);
+  background-color: var(--interactive-background-gray-faded);
+}
+
+.tabListFilledCompact {
+  border-radius: var(--border-radius-small);
+  padding: var(--spacing-1);
+}
+
+.tabListFilledVertical {
+  gap: var(--spacing-0);
+}
+
+/* Bordered variant tablist (no fill) */
+.tabListBordered {
+  padding: var(--spacing-0);
+  gap: var(--spacing-8);
+}
+
+.tabListBorderedVertical {
+  gap: var(--spacing-0);
+}
+
+/* Vertical track line (left border for vertical bordered) */
+.verticalTrack {
+  width: 0px;
+  height: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  border-color: var(--surface-border-gray-muted);
+  border-width: var(--border-width-thin);
+  border-style: solid;
+  transform: translateX(1.5px);
+}
+
+/* Bottom track line for horizontal bordered */
+.horizontalTrack {
+  transform: translateY(-1px);
+  border-bottom-color: var(--surface-border-gray-muted);
+  border-bottom-width: var(--border-width-thin);
+  border-bottom-style: solid;
+}
+
+/* ========== TAB ITEM (button) ========== */
+.tabButton {
+  appearance: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  transition-property: all;
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-gentle);
+}
+
+.tabButton * {
+  transition-property: color, fill;
+  transition-timing-function: var(--easing-standard);
+  transition-duration: var(--duration-xquick);
+}
+
+.tabButtonHorizontal {
+  justify-content: center;
+}
+
+.tabButtonVertical {
+  justify-content: left;
+}
+
+.tabButtonFullWidth {
+  width: 100%;
+}
+
+/* Size padding: bordered horizontal */
+.tabBorderedHorizSmall {
+  padding-top: var(--spacing-0);
+  padding-bottom: var(--spacing-3);
+  padding-left: var(--spacing-0);
+  padding-right: var(--spacing-0);
+}
+
+.tabBorderedHorizMedium {
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-4);
+  padding-left: var(--spacing-0);
+  padding-right: var(--spacing-0);
+}
+
+.tabBorderedHorizLarge {
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  padding-left: var(--spacing-0);
+  padding-right: var(--spacing-0);
+}
+
+/* Size padding: bordered vertical */
+.tabBorderedVertSmall {
+  padding-top: var(--spacing-1);
+  padding-bottom: var(--spacing-1);
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.tabBorderedVertMedium {
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.tabBorderedVertLarge {
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+/* Size padding: filled horizontal */
+.tabFilledHorizSmall {
+  padding-top: var(--spacing-1);
+  padding-bottom: var(--spacing-1);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+.tabFilledHorizMedium {
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+.tabFilledHorizLarge {
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+}
+
+/* Size padding: filled vertical */
+.tabFilledVertSmall {
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.tabFilledVertMedium {
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+.tabFilledVertLarge {
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+/* Border styles for bordered variant */
+.tabBorderedBorderBottom {
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width-thicker);
+  border-bottom-color: transparent;
+}
+
+.tabBorderedBorderLeft {
+  border-left-style: solid;
+  border-left-width: var(--border-width-thick);
+  border-left-color: transparent;
+}
+
+/* Border radius */
+.tabRadiusNone {
+  border-radius: 0;
+}
+
+.tabRadiusSmall {
+  border-radius: var(--border-radius-small);
+}
+
+.tabRadiusMedium {
+  border-radius: var(--border-radius-medium);
+}
+
+/* 4px (xsmall) for small filled horizontal tab items — mirrors SegmentedControl item radius.
+   The focus ring intentionally uses 8px (small, see tabFocusRadiusSmall) which is larger
+   than the item radius. This mirrors Blade React where the item is 6px and the focus ring
+   is 8px (small token) — the focus ring is deliberately larger to ensure the 4px box-shadow
+   inset is not clipped against the item's tighter corners. */
+.tabRadiusFilledHorizSmall {
+  border-radius: var(--border-radius-xsmall);
+}
+
+/* Background: default transparent */
+.tabBgTransparent {
+  background-color: transparent;
+}
+
+/* Filled selected vertical background */
+.tabBgFilledSelectedVertical {
+  background-color: var(--surface-background-gray-intense);
+}
+
+/* Stacking context for filled horizontal (indicator behind content) */
+.tabStackingContext {
+  position: relative;
+  z-index: 1;
+}
+
+/* State marker classes */
+.tabSelected {}
+
+.tabFilledUnselected {}
+
+.tabDisabledLink {
+  text-decoration: none;
+}
+
+/* Text and icon color/size classes */
+.tabItemText {
+  color: var(--interactive-text-gray-muted);
+  font-weight: var(--font-weight-medium);
+}
+
+.tabItemTextSelected {
+  color: var(--interactive-text-gray-normal);
+}
+
+.tabItemTextMedium {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+
+.tabItemTextLarge {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+.tabItemIcon {
+  color: var(--interactive-icon-gray-muted);
+}
+
+.tabItemIconSelected {
+  color: var(--interactive-icon-gray-normal);
+}
+
+/* Hover states */
+.tabButton:hover:not(:disabled):not(.tabDisabledLink) .tabItemText {
+  color: var(--interactive-text-gray-subtle);
+}
+
+.tabButton:hover:not(:disabled):not(.tabDisabledLink) .tabItemIcon {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.tabButton.tabSelected:hover:not(:disabled):not(.tabDisabledLink) .tabItemText {
+  color: var(--interactive-text-gray-normal);
+}
+
+.tabButton.tabSelected:hover:not(:disabled):not(.tabDisabledLink) .tabItemIcon {
+  color: var(--interactive-icon-gray-normal);
+}
+
+.tabButton:hover:not(:disabled):not(.tabDisabledLink).tabBorderedBorderBottom {
+  border-bottom-color: var(--interactive-border-gray-highlighted);
+}
+
+.tabButton:hover:not(:disabled):not(.tabDisabledLink).tabBorderedBorderLeft {
+  border-left-color: var(--interactive-border-gray-highlighted);
+}
+
+.tabButton.tabSelected:hover:not(:disabled):not(.tabDisabledLink).tabBorderedBorderBottom {
+  border-bottom-color: transparent;
+}
+
+.tabButton.tabSelected:hover:not(:disabled):not(.tabDisabledLink).tabBorderedBorderLeft {
+  border-left-color: transparent;
+}
+
+.tabButton:hover:not(:disabled):not(.tabDisabledLink).tabFilledUnselected {
+  background-color: var(--interactive-background-gray-default);
+}
+
+/* Focus-visible */
+.tabButton:focus-visible {
+  box-shadow: inset 0px 0px 0px 4px var(--surface-border-primary-muted);
+  border-color: transparent !important;
+}
+
+.tabButton:focus-visible.tabFocusRadiusSmall {
+  border-radius: var(--border-radius-small);
+}
+
+.tabButton:focus-visible.tabFocusRadiusMedium {
+  border-radius: var(--border-radius-medium);
+}
+
+.tabButton:focus-visible.tabBgTransparent:not(.tabSelected) {
+  background-color: var(--interactive-background-gray-default);
+}
+
+/* Disabled */
+.tabButton:disabled,
+.tabButton.tabDisabledLink {
+  cursor: not-allowed;
+  background-color: transparent;
+  border-color: transparent !important;
+  pointer-events: auto;
+}
+
+.tabButton:disabled .tabItemText,
+.tabButton.tabDisabledLink .tabItemText {
+  color: var(--interactive-text-gray-disabled);
+}
+
+.tabButton:disabled .tabItemIcon,
+.tabButton.tabDisabledLink .tabItemIcon {
+  color: var(--interactive-icon-gray-disabled);
+}
+
+.tabButton:disabled:hover,
+.tabButton.tabDisabledLink:hover {
+  background-color: transparent;
+  border-color: transparent !important;
+}
+
+.tabButton:disabled:hover .tabItemText,
+.tabButton.tabDisabledLink:hover .tabItemText {
+  color: var(--interactive-text-gray-disabled);
+}
+
+.tabButton:disabled:hover .tabItemIcon,
+.tabButton.tabDisabledLink:hover .tabItemIcon {
+  color: var(--interactive-icon-gray-disabled);
+}
+
+/* ========== TAB INDICATOR ========== */
+.tabIndicator {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Horizontal bordered indicator (bottom line) */
+.indicatorHorizontalBordered {
+  left: 0%;
+  top: -0.5px;
+  height: 2px;
+  background-color: var(--interactive-border-neutral-highlighted);
+}
+
+/* Vertical bordered indicator (left line) */
+.indicatorVerticalBordered {
+  left: 1.75px;
+  top: 0px;
+  width: 1.5px;
+  background-color: var(--interactive-border-neutral-highlighted);
+}
+
+/* Filled indicator (pill) */
+.indicatorFilled {
+  left: 0px;
+  top: 0px;
+  background-color: var(--surface-background-gray-intense);
+}
+
+.indicatorRadiusSmall {
+  border-radius: var(--border-radius-small);
+}
+
+.indicatorRadiusMedium {
+  border-radius: var(--border-radius-medium);
+}
+
+.indicatorRadiusFilledHorizSmall {
+  border-radius: var(--border-radius-xsmall);
+}
+
+/* ========== TAB PANEL ========== */
+.tabPanel {
+  outline: none;
+}
+
+.tabPanelHidden {
+  display: none;
+}

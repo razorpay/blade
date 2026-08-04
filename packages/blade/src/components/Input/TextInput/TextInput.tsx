@@ -79,6 +79,8 @@ type TextInputCommonProps = Pick<
   | 'hasPopup'
   | 'componentName'
   | 'onKeyDown'
+  | 'as'
+  | 'activeInteraction'
   | keyof DataAnalyticsAttribute
 > & {
   /**

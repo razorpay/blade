@@ -1,5 +1,6 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
+import { Text } from 'react-native';
 import { Chip } from '../Chip';
 import { ChipGroup } from '../ChipGroup';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
@@ -164,5 +165,31 @@ describe('<Chip />', () => {
     );
     expect(getByTestId('chip-apple-test')).toBeTruthy();
     expect(getByTestId('chip-mango-test')).toBeTruthy();
+  });
+
+  it('should render chip with leading element', () => {
+    const { getByText } = renderWithTheme(
+      <ChipGroup accessibilityLabel="Select country">
+        <Chip value="IN" leading={<Text>🇮🇳</Text>}>
+          India
+        </Chip>
+        <Chip value="US" leading={<Text>🇺🇸</Text>}>
+          United States
+        </Chip>
+      </ChipGroup>,
+    );
+    expect(getByText('India')).toBeDefined();
+    expect(getByText('United States')).toBeDefined();
+    expect(getByText('🇮🇳')).toBeDefined();
+    expect(getByText('🇺🇸')).toBeDefined();
+  });
+
+  it('should render chip with leading element and no children', () => {
+    const { getByText } = renderWithTheme(
+      <ChipGroup accessibilityLabel="Select country">
+        <Chip value="IN" leading={<Text>🇮🇳</Text>} />
+      </ChipGroup>,
+    );
+    expect(getByText('🇮🇳')).toBeDefined();
   });
 });

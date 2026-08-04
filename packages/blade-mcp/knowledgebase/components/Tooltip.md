@@ -44,6 +44,23 @@ type TooltipProps = {
 type TooltipInteractiveWrapperProps = Omit<BaseBoxProps, 'as'>;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Tooltip` for brief, supplementary hover help (icon explanations, abbreviations, feature hints).
+- Pass `content` as a string — Tooltip only accepts plain text, not React elements.
+- Use `TooltipInteractiveWrapper` when the trigger is a non-interactive element (icon, badge).
+- Use sparingly — too many tooltips create a noisy experience.
+
+**Don't**
+
+- Don't put interactive elements (buttons, links) inside Tooltip — it's read-only; use `Popover` for interactive content.
+- Don't use `Tooltip` for critical information — users may not hover to discover it.
+- Don't pass React elements to `content` — only strings are accepted (unlike Popover).
+- Don't use non-interactive triggers without `TooltipInteractiveWrapper`.
+- Don't use `Tooltip` when click-triggered contextual content is needed — use `Popover` instead.
+
 ## Example
 
 ### Basic Usage

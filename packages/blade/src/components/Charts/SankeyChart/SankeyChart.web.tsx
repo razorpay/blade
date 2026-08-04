@@ -34,8 +34,8 @@ import {
   CHIP_VALUE_BUDGET,
   NODE_MIN_HEIGHT,
   TOOLTIP_Z_INDEX,
-  MIN_CHART_WIDTH,
 } from './tokens';
+import { humanizeIndian } from './humanizeIndian';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import getIn from '~utils/lodashButBetter/get';
@@ -113,25 +113,6 @@ function SankeyTooltipContent({
 }
 
 // ─── Indian number humanizer (private default for formatValue) ────────────────
-// Truncates (never rounds up) to avoid overstating values.
-// Examples: 2550→2.5k, 17100→17.1k, 124500→1.24L, 1000000→10L, 15000000→1.5Cr
-
-function humanizeIndian(value: number): string {
-  if (value >= 1_00_00_000) {
-    const v = Math.floor((value / 1_00_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}Cr`;
-  }
-  if (value >= 1_00_000) {
-    const v = Math.floor((value / 1_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}L`;
-  }
-  if (value >= 1_000) {
-    const v = Math.floor((value / 1_000) * 10) / 10;
-    return `${parseFloat(v.toFixed(1))}k`;
-  }
-  return String(value);
-}
-
 // ─── ChartSankeyWrapper ───────────────────────────────────────────────────────
 // Orchestration layer — mirrors ChartDonutWrapper.
 // Inspects children to extract data, computes dataColorMapping,
@@ -196,14 +177,9 @@ const _ChartSankeyWrapper = ({
           {...restProps}
           position="relative"
         >
-          {/* Scroll wrapper — ensures minimum width on narrow viewports */}
-          <BaseBox width="100%" height="100%" overflowX="auto">
-            <BaseBox height="100%" minWidth={`${MIN_CHART_WIDTH}px`}>
-              <ResponsiveContainer width="100%" height="100%">
-                {children}
-              </ResponsiveContainer>
-            </BaseBox>
-          </BaseBox>
+          <ResponsiveContainer width="100%" height="100%">
+            {children}
+          </ResponsiveContainer>
         </BaseBox>
       </SankeyChartContext.Provider>
     </CommonChartComponentsContext.Provider>

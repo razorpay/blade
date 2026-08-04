@@ -318,6 +318,7 @@ export { default as QRCodeIcon } from './QRCodeIcon';
 export { default as RadioIcon } from './RadioIcon';
 export { default as RayIcon } from './RayIcon';
 export { default as RazorpayIcon } from './RazorpayIcon';
+export { default as RazorpayTrustIcon } from './RazorpayTrustIcon';
 export { default as RazorpayXIcon } from './RazorpayXIcon';
 export { default as RazorpayxPayrollFilledIcon } from './RazorpayxPayrollFilledIcon';
 export { default as RazorpayxPayrollIcon } from './RazorpayxPayrollIcon';

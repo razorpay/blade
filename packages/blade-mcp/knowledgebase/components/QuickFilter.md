@@ -73,6 +73,23 @@ type QuickFilterGroupContextType = Pick<QuickFilterGroupProps, 'selectionType'> 
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `QuickFilter` inside `QuickFilterGroup` for inline status/category filters with optional trailing metadata (counters, badges).
+- Use `trailing` prop with `Counter` component to show item counts per filter option.
+- Use `selectionType="single"` for exclusive filters and `selectionType="multiple"` for combined filters.
+- Use inside `ListView` component's `ListViewFilters` for table filtering patterns.
+
+**Don't**
+
+- Don't use `QuickFilter` outside `QuickFilterGroup` — it won't function standalone.
+- Don't use `QuickFilter` for more than 8–10 options — consider `SelectInput` or `AutoComplete` for larger lists.
+- Don't use React Fragments as children in `QuickFilterGroup`.
+- Don't confuse with `Chip` — QuickFilter has a built-in trailing slot for metadata; Chips are simpler tag-based selectors.
+- Don't put heavy/complex elements in `trailing` — keep it lightweight (Counter, small Badge, text).
+
 ## Example
 
 ### Basic Usage

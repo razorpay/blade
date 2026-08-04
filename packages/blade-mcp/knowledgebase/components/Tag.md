@@ -66,6 +66,24 @@ type TagProps = {
   TestID;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Tag` for dismissible keywords or selected items that users can remove (e.g., selected filters, applied categories).
+- Always implement the `onDismiss` callback to handle tag removal — it is required.
+- Use `icon` to add visual context when the tag represents a specific category or entity type.
+- Keep tag labels concise — long text auto-truncates with a tooltip on hover.
+- Group multiple tags in a flex container with appropriate gap spacing.
+
+**Don't**
+
+- Don't use `Tag` for non-interactive metadata labels — use `Badge` instead (Badge is non-interactive and non-dismissible).
+- Don't use `Tag` for toggle-able filter selections — use `Chip` instead (Chip supports checked/unchecked states).
+- Don't try to make tags non-dismissible — the dismiss button is always present by design.
+- Don't use tags for actions or navigation — they are purely for displaying removable selections.
+- Don't manage tag state without external state management — the consumer must handle visibility and removal.
+
 ## Example
 
 ### Basic Usage

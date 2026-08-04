@@ -132,6 +132,23 @@ type ChatInputProps = {
   StyledPropsBlade;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `ChatInput` for AI chat interfaces and conversational UIs with file upload and ghost suggestions.
+- Use `isGenerating` to swap the submit button to a stop button during AI response generation.
+- Use `suggestions` with `onSuggestionAccept` to show cycling ghost suggestions that users accept with Tab.
+- Use `fileList` with `onFileChange`/`onFileRemove` for file attachment workflows.
+- Handle Enter for submit and Shift+Enter for newline in the textarea.
+
+**Don't**
+
+- Don't use `ChatInput` for simple forms or single-line input — use `TextInput` or `TextArea`.
+- Don't use `suggestions` without `onSuggestionAccept` — they must be used together.
+- Don't expect automatic file uploads — the consumer manages the upload lifecycle and status.
+- Don't forget that the submit button auto-disables when there's no text and no files, or when files are uploading/errored.
+
 ## Examples
 
 ### Basic Chat Input with File Upload

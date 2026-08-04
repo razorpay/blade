@@ -173,6 +173,32 @@ type CheckboxGroupProps = {
   TestID;
 ```
 
+## Usage Guidelines
+
+**When to Use**
+
+Use `Checkbox` in two scenarios:
+1. **Multi-select with longer/inconsistent labels** — when users can select multiple options and the labels are more than 1-2 words or inconsistent in length (use in a list item layout).
+2. **Single option requiring confirmation** — when there is exactly 1 binary option but it requires a separate action (like a submit button) to take effect (e.g., "I accept the terms"). If no confirmation is needed, use `Switch` instead.
+
+**Do**
+
+- Use `Checkbox` for selecting multiple independent options from a set (multiple selections allowed).
+- Use `Checkbox` (single, standalone) when a binary choice needs an explicit confirmation/submit action (e.g., "I agree to terms" inside a form).
+- Use `Checkbox` in list items when multi-select labels are long or inconsistent in length — prefer over `Chip` which works best with short 1-2 word labels.
+- Use `CheckboxGroup` when grouping related checkboxes with shared validation, label, and state.
+- Use `isIndeterminate` for "select all" patterns when some (but not all) items are selected.
+- Inside `CheckboxGroup`, provide a unique `value` prop on each `Checkbox` — this is required.
+
+**Don't**
+
+- Don't use `Checkbox` when only one option can be selected from a set — use `Radio`/`RadioGroup` instead.
+- Don't use `Checkbox` for immediate on/off actions without form submission — use `Switch` instead.
+- Don't use `Checkbox` for multi-select with short (1-2 word), consistent labels — use `Chip` with `selectionType="multiple"` instead for a more compact UI.
+- Don't set `validationState`, `name`, `isChecked`, or `onChange` on individual Checkboxes inside a `CheckboxGroup` — use these on the group.
+- Don't use React Fragments as children in `CheckboxGroup` — only `Checkbox` components are accepted.
+- Don't mix controlled (`isChecked`) and uncontrolled (`defaultChecked`) on the same Checkbox.
+
 ## Examples
 
 ### Payment Setup Form with Checkboxes

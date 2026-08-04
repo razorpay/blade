@@ -1,8 +1,7 @@
-import type { IconButtonProps } from './IconButton';
+import type { IconButtonEmphasis, IconButtonProps } from './IconButton';
 import type { IconComponent } from '~components/Icons';
 import type { DataAnalyticsAttribute, RemoveUndefinedFromUnion, TestID } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
-import type { SubtleOrIntense } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { AccessibilityProps } from '~utils/makeAccessible';
 import type { Platform } from '~utils';
@@ -10,7 +9,7 @@ import type { Platform } from '~utils';
 export type StyledIconButtonProps = {
   icon: IconComponent;
   size: RemoveUndefinedFromUnion<IconButtonProps['size']>;
-  emphasis: SubtleOrIntense;
+  emphasis: IconButtonEmphasis;
   accessibilityLabel: string;
   accessibilityProps?: Partial<AccessibilityProps>;
   isDisabled?: IconButtonProps['isDisabled'];

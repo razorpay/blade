@@ -58,6 +58,23 @@ type SpinnerMotion = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Spinner` for indeterminate loading states where you don't know the completion percentage.
+- Use `color="white"` when placing the spinner on dark backgrounds for proper contrast.
+- Override `accessibilityLabel` with context-specific text (e.g., "Loading transactions" instead of generic "Loading").
+- Use `size="medium"` for inline loading within buttons or small sections; use `size="large"` or `size="xlarge"` for prominent full-page loading states.
+- Use `label` prop to provide visible loading context alongside the animation.
+
+**Don't**
+
+- Don't use `Spinner` when you know the progress percentage — use `ProgressBar` instead.
+- Don't use `Spinner` when the loading area's layout structure is known — use `Skeleton` to show content placeholders instead.
+- Don't place multiple spinners in the same view for the same operation — use one appropriately-sized spinner.
+- Don't use `Spinner` inside a `Button` directly — use the Button's built-in `isLoading` prop instead.
+
 ## Example
 
 ### Basic Usage

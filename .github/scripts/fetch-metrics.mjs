@@ -13,8 +13,8 @@ import { execSync } from "child_process";
 const REPO = "razorpay/blade";
 const AGENT_AUTHORS = new Set(["rzp-slash", "rzp-slash-public"]);
 const AGENT_REVIEWERS = new Set(["rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"]);
-const BOT_COMMENTERS = new Set(["changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]"]);
-const AUTO_APPROVE_LABEL = "rcore:eligible-for-auto-approval";
+const BOT_COMMENTERS = new Set(["changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]", "cursor[bot]", "rzpcibot"]);
+const AUTO_APPROVE_LABEL = "✨ Agentic Merge Ready ✨";
 const IGNORE_LABEL = "Ignore - Test PR";
 
 function gh(...args) {
@@ -61,9 +61,11 @@ for (const pr of prs) {
 
   for (const c of [...reviewComments, ...issueComments]) {
     const user = c.user.login;
-    if (BOT_COMMENTERS.has(user)) continue;
+    const normalizedUser = user.replace("app/", "").replace("[bot]", "");
+    const isAgentCommenter = AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(normalizedUser);
+    if (!isAgentCommenter && (BOT_COMMENTERS.has(user) || user.endsWith("[bot]") || user.startsWith("app/"))) continue;
     totalComments++;
-    if (AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(user.replace("app/", "").replace("[bot]", ""))) {
+    if (isAgentCommenter) {
       agentComments++;
     }
     if (c.body.toLowerCase().includes("resolved by agent")) {
@@ -107,7 +109,7 @@ const report = `> Agentic Blade Metrics — ${sinceLabel} to ${todayLabel} (${da
 
 | Metric                                                | Value | Description of Metric                                                        |
 | ----------------------------------------------------- | ----- | ---------------------------------------------------------------------------- |
-| Metric 1: % PRs with auto-approval label              | ${pct(autoApproved.length, totalPRs)} | Percentage of PRs that received the \`rcore:eligible-for-auto-approval\` label |
+| Metric 1: % PRs with auto-approval label              | ${pct(autoApproved.length, totalPRs)} | Percentage of PRs that received the \`✨ Agentic Merge Ready ✨\` label |
 | Submetric 1: % of comments on PRs (by human)          | ${pct(humanComments, totalComments)} | Percentage of review comments made by human contributors        |
 | Submetric 2: % comments marked as resolved (by agent) | ${pct(resolvedByAgent, totalComments)} | Percentage of comments that were resolved by agent           |
 
@@ -120,7 +122,7 @@ const report = `> Agentic Blade Metrics — ${sinceLabel} to ${todayLabel} (${da
 | PRs raised (by human)      | ${humanPRs} | Total PRs minus PRs raised by agent                                 |
 | % of PRs raised (by human) | ${pct(humanPRs, totalPRs)} | Percentage of PRs opened by human contributors              |
 | % of PRs raised (by agent) | ${pct(agentPRs.length, totalPRs)} | Percentage of PRs opened by agent                      |
-| Total PRs auto-approved    | ${pct(autoApproved.length, totalPRs)} | Percentage of PRs that have the \`rcore:eligible-for-auto-approval\` label |
+| Total PRs auto-approved    | ${pct(autoApproved.length, totalPRs)} | Percentage of PRs that have the \`✨ Agentic Merge Ready ✨\` label |
 | Time to Merge (Average) | ${formatHours(avgTtm)} | Average time from PR creation to merge; excludes "update version" PRs |
 | Time to Merge (Median)  | ${formatHours(medTtm)} | Median time from PR creation to merge; excludes "update version" PRs  |
 

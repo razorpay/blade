@@ -87,6 +87,27 @@ type UseToastReturn = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Toast` for brief, non-critical feedback after user actions (e.g., "Item saved", "Payment successful").
+- Use the imperative `useToast()` hook API — call `toast.show()` and `toast.dismiss()`.
+- Place `<ToastContainer />` once at the root of your app, outside nested `BladeProvider` instances.
+- Use `type="informational"` (default) with auto-dismiss for transient confirmations.
+- Use `type="promotional"` for richer content that requires user acknowledgment.
+- Keep action labels short — a single verb like "Undo" or "Retry".
+- Use semantic `color` values to match the feedback intent (`positive` for success, `negative` for errors).
+
+**Don't**
+
+- Don't use `Toast` for critical errors that need explicit acknowledgment — use `Alert` instead.
+- Don't use `Toast` for persistent, inline status messages — use `Alert` for in-page context.
+- Don't stack multiple promotional toasts — only one can be active at a time.
+- Don't render `ToastContainer` inside `BladeProvider` children if you have nested providers — place it at the app root.
+- Don't rely on `onDismissButtonClick` for detecting auto-dismiss — it only fires on manual dismiss.
+- Don't use long sentences as toast content — keep messages concise and scannable.
+
 ## Example
 
 ### Basic Usage

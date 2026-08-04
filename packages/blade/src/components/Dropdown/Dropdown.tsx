@@ -16,6 +16,8 @@ import type { BladeElementRef, ContainerElementType } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
+import { isReactNative } from '~utils';
 
 const validDropdownChildren = [
   // TODO: Remove Box once CountrySelector's button sizing is fixed
@@ -240,6 +242,12 @@ const _Dropdown = (
     };
   }, [dropdownHasBottomSheet, hasAutoCompleteInHeader, isDropdownOpen, close]);
 
+  // Inside ButtonGroup (split-button), `height: 100%` resolves against the
+  // Storybook/screen parent on React Native and stretches the whole group
+  // into a tall vertical strip. Keep content-sized height in that case.
+  const buttonGroupProps = useButtonGroupContext();
+  const isInsideButtonGroup = Boolean(buttonGroupProps.isInsideButtonGroup);
+
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
@@ -251,7 +259,11 @@ const _Dropdown = (
           {...makeAnalyticsAttribute(rest)}
           width={_width}
         >
-          <BaseBox position="relative" textAlign={'left' as never} height="100%">
+          <BaseBox
+            position="relative"
+            textAlign={'left' as never}
+            {...(isReactNative() && isInsideButtonGroup ? {} : { height: '100%' })}
+          >
             {children}
           </BaseBox>
         </BaseBox>

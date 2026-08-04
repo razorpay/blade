@@ -147,6 +147,24 @@ type ResponsiveValue<T> = {
 };
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Carousel` for showcasing multiple items (testimonials, cards, images) in a horizontally scrollable container.
+- Use `visibleItems` (1/2/3) for fixed-count fluid layouts; use `visibleItems="autofit"` with `carouselItemWidth` for bleed/overflow effects.
+- Use `accessibilityLabel` to describe the carousel content for screen readers.
+- Use `navigationButtonPosition="side"` for desktop-optimized navigation; `"bottom"` for compact layouts.
+- Only pass `CarouselItem` components as children.
+
+**Don't**
+
+- Don't pass arbitrary numbers to `visibleItems` — only 1, 2, 3, or `"autofit"` are supported.
+- Don't expect `onChange` to fire during `autoPlay` — it only fires on user interaction.
+- Don't use `shouldAddStartEndSpacing` or `scrollOverlayColor` with fixed `visibleItems` (1/2/3) — they only work with `"autofit"`.
+- Don't use `Carousel` for navigation or step-completion flows — use `Tabs` or `StepGroup` instead.
+- Don't pass non-CarouselItem children — the component throws errors for invalid children.
+
 ## Examples
 
 ### Basic Responsive Carousel

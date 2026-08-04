@@ -14,9 +14,11 @@ export interface PreviewImageMapping {
       };
     };
     keyByPlatform?: {
-      [platform in Platform]?: string | {
-        [signature: string]: string;
-      };
+      [platform in Platform]?:
+        | string
+        | {
+            [signature: string]: string;
+          };
     };
   };
 }
@@ -24,7 +26,7 @@ export interface PreviewImageMapping {
 // ========================================
 // PREVIEW IMAGE URLS
 // ========================================
-// These URLs point to GitHub-hosted preview images for each pattern variant.
+// These URLs point to bundled preview images for each pattern variant.
 // The structure mirrors the component key structure in componentKeys.ts
 //
 // Example signatures (must match the pattern definitions in componentKeys.ts):
@@ -32,109 +34,150 @@ export interface PreviewImageMapping {
 // Settings Desktop: "pageType=HomePage|showTabs=False|supportingElements=None|columnType=narrow"
 // Modal Template Desktop: "size=Large|contentType=Image + Text"
 export const PREVIEW_IMAGE_MAPPINGS: PreviewImageMapping = {
-  "dashboard-ui": {
+  'dashboard-ui': {
     variantsByPlatform: {
       desktop: {
-        "columnType=Full Width|showAside=True": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/dashboard-ui/Dashboard%20UI%2003.png?raw=true",
-        "columnType=Full Width|showAside=False": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/dashboard-ui/Dashboard%20UI%2005.png?raw=true", 
-        "columnType=Narrow|showAside=False": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/dashboard-ui/Dashboard%20UI%2004.png?raw=true"
-      }
+        'columnType=Full Width|showAside=True':
+          'assets/pattern-previews/dashboard-ui/Dashboard%20UI%2003.png',
+        'columnType=Full Width|showAside=False':
+          'assets/pattern-previews/dashboard-ui/Dashboard%20UI%2005.png',
+        'columnType=Narrow|showAside=False':
+          'assets/pattern-previews/dashboard-ui/Dashboard%20UI%2004.png',
+      },
     },
     keyByPlatform: {
       mobile: {
-        "showAside=True": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/dashboard-ui/Dashboard%20UI%2002.png?raw=true",
-        "showAside=False": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/dashboard-ui/Dashboard%20UI%2001.png?raw=true"
-      }
-    }
+        'showAside=True': 'assets/pattern-previews/dashboard-ui/Dashboard%20UI%2002.png',
+        'showAside=False': 'assets/pattern-previews/dashboard-ui/Dashboard%20UI%2001.png',
+      },
+    },
   },
-  "list-view": {
+  'list-view': {
     keyByPlatform: {
-      desktop: "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/list-view/List%20View%2001.png?raw=true",
-      mobile: "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/list-view/List%20View%2002.png?raw=true"
-    }
+      desktop: 'assets/pattern-previews/list-view/List%20View%2001.png',
+      mobile: 'assets/pattern-previews/list-view/List%20View%2002.png',
+    },
   },
-  "detail-view": {
+  'detail-view': {
     keyByPlatform: {
-      desktop: "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/detail-view/Detail%20View%2001.png?raw=true", 
-      mobile: "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/detail-view/Detail%20View%2002.png?raw=true"
-    }
+      desktop: 'assets/pattern-previews/detail-view/Detail%20View%2001.png',
+      mobile: 'assets/pattern-previews/detail-view/Detail%20View%2002.png',
+    },
   },
-  "creation-view": {
+  'creation-view': {
     variantsByPlatform: {
       desktop: {
         // Single Step Type combinations
-        "stepType=Single|viewType=Small Modal|columnType=Full Width|stepperType=StepGroup|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2003.png?raw=true",
-        "stepType=Single|viewType=Small Modal|columnType=Full Width|stepperType=StepGroup|content=Selection Cards": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2012.png?raw=true",
-        "stepType=Single|viewType=Medium Modal|columnType=Full Width|stepperType=StepGroup|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2002.png?raw=true",
-        "stepType=Single|viewType=Medium Modal|columnType=Full Width|stepperType=StepGroup|content=Selection Cards": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2013.png?raw=true",
-        "stepType=Single|viewType=Large Modal|columnType=Full Width|stepperType=StepGroup|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2015.png?raw=true",
-        "stepType=Single|viewType=Large Modal|columnType=Full Width|stepperType=StepGroup|content=Selection Cards": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2016.png?raw=true",
-        
+        'stepType=Single|viewType=Small Modal|columnType=Full Width|stepperType=StepGroup|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%2003.png',
+        'stepType=Single|viewType=Small Modal|columnType=Full Width|stepperType=StepGroup|content=Selection Cards':
+          'assets/pattern-previews/creation-view/Creation%20View%2012.png',
+        'stepType=Single|viewType=Medium Modal|columnType=Full Width|stepperType=StepGroup|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%2002.png',
+        'stepType=Single|viewType=Medium Modal|columnType=Full Width|stepperType=StepGroup|content=Selection Cards':
+          'assets/pattern-previews/creation-view/Creation%20View%2013.png',
+        'stepType=Single|viewType=Large Modal|columnType=Full Width|stepperType=StepGroup|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%2015.png',
+        'stepType=Single|viewType=Large Modal|columnType=Full Width|stepperType=StepGroup|content=Selection Cards':
+          'assets/pattern-previews/creation-view/Creation%20View%2016.png',
+
         // Multiple Step Type - Medium Modal (Content is hidden, using Default as placeholder)
-        "stepType=Multiple|viewType=Medium Modal|columnType=Full Width|stepperType=StepGroup|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2014.png?raw=true",
-        
+        'stepType=Multiple|viewType=Medium Modal|columnType=Full Width|stepperType=StepGroup|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%2014.png',
+
         // Multiple Step Type - Large Modal (Selection Cards removed)
-        "stepType=Multiple|viewType=Large Modal|columnType=Full Width|stepperType=StepGroup|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2017.png?raw=true",
-        "stepType=Multiple|viewType=Large Modal|columnType=Full Width|stepperType=StepGroup|content=Right Asset": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2018.png?raw=true",
-        
+        'stepType=Multiple|viewType=Large Modal|columnType=Full Width|stepperType=StepGroup|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%2017.png',
+        'stepType=Multiple|viewType=Large Modal|columnType=Full Width|stepperType=StepGroup|content=Right Asset':
+          'assets/pattern-previews/creation-view/Creation%20View%2018.png',
+
         // Multiple Step Type - Full Page (Full Width)
-        "stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=StepGroup|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2008.png?raw=true",
-        "stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=StepGroup|content=Right Asset": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2006.png?raw=true",
-        "stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=StepGroup|content=Left Asset": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2005.png?raw=true",
-        "stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=Progress Bar|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2010.png?raw=true",
-        "stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=Progress Bar|content=Right Asset": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2011.png?raw=true",
-        
+        'stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=StepGroup|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%2008.png',
+        'stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=StepGroup|content=Right Asset':
+          'assets/pattern-previews/creation-view/Creation%20View%2006.png',
+        'stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=StepGroup|content=Left Asset':
+          'assets/pattern-previews/creation-view/Creation%20View%2005.png',
+        'stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=Progress Bar|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%2010.png',
+        'stepType=Multiple|viewType=Full Page|columnType=Full Width|stepperType=Progress Bar|content=Right Asset':
+          'assets/pattern-previews/creation-view/Creation%20View%2011.png',
+
         // Multiple Step Type - Full Page (Narrow) - Content is hidden for Narrow
-        "stepType=Multiple|viewType=Full Page|columnType=Narrow|stepperType=StepGroup|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2007.png?raw=true",
-        "stepType=Multiple|viewType=Full Page|columnType=Narrow|stepperType=Progress Bar|content=Default": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%209.png?raw=true"
-      }
+        'stepType=Multiple|viewType=Full Page|columnType=Narrow|stepperType=StepGroup|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%2007.png',
+        'stepType=Multiple|viewType=Full Page|columnType=Narrow|stepperType=Progress Bar|content=Default':
+          'assets/pattern-previews/creation-view/Creation%20View%209.png',
+      },
     },
     keyByPlatform: {
       mobile: {
-        "viewType=Bottom Sheet": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2001.png?raw=true",
-        "viewType=Full Page": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/creation-view/Creation%20View%2004.png?raw=true"
-      }
-    }
+        'viewType=Bottom Sheet': 'assets/pattern-previews/creation-view/Creation%20View%2001.png',
+        'viewType=Full Page': 'assets/pattern-previews/creation-view/Creation%20View%2004.png',
+      },
+    },
   },
-  "settings": {
+  settings: {
     variantsByPlatform: {
       desktop: {
-        "pageType=HomePage|showTabs=False|supportingElements=None|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2016.png?raw=true",
-        "pageType=Internal Modules|showTabs=False|supportingElements=None|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2006.png?raw=true",
-        "pageType=Internal Modules|showTabs=False|supportingElements=None|columnType=Full Width": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2015.png?raw=true",
-        "pageType=Internal Modules|showTabs=False|supportingElements=Guidance Panel|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2004.png?raw=true",
-        "pageType=Internal Modules|showTabs=False|supportingElements=Preview|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2005.png?raw=true",
-        "pageType=Internal Modules|showTabs=True|supportingElements=None|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2001.png?raw=true",
-        "pageType=Internal Modules|showTabs=True|supportingElements=None|columnType=Full Width": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2014.png?raw=true",
-        "pageType=Internal Modules|showTabs=True|supportingElements=Guidance Panel|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2002.png?raw=true",
-        "pageType=Internal Modules|showTabs=True|supportingElements=Preview|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2003.png?raw=true"
+        'pageType=HomePage|showTabs=False|supportingElements=None|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2016.png',
+        'pageType=Internal Modules|showTabs=False|supportingElements=None|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2006.png',
+        'pageType=Internal Modules|showTabs=False|supportingElements=None|columnType=Full Width':
+          'assets/pattern-previews/settings/Settings%2015.png',
+        'pageType=Internal Modules|showTabs=False|supportingElements=Guidance Panel|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2004.png',
+        'pageType=Internal Modules|showTabs=False|supportingElements=Preview|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2005.png',
+        'pageType=Internal Modules|showTabs=True|supportingElements=None|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2001.png',
+        'pageType=Internal Modules|showTabs=True|supportingElements=None|columnType=Full Width':
+          'assets/pattern-previews/settings/Settings%2014.png',
+        'pageType=Internal Modules|showTabs=True|supportingElements=Guidance Panel|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2002.png',
+        'pageType=Internal Modules|showTabs=True|supportingElements=Preview|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2003.png',
       },
       mobile: {
-        "pageType=HomePage|showTabs=False|supportingElements=None|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2013.png?raw=true",
-        "pageType=Internal Modules|showTabs=False|supportingElements=None|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2012.png?raw=true",
-        "pageType=Internal Modules|showTabs=False|supportingElements=Guidance Panel|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2011.png?raw=true",
-        "pageType=Internal Modules|showTabs=False|supportingElements=Preview|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2010.png?raw=true",
-        "pageType=Internal Modules|showTabs=True|supportingElements=None|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2009.png?raw=true",
-        "pageType=Internal Modules|showTabs=True|supportingElements=Guidance Panel|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2008.png?raw=true",
-        "pageType=Internal Modules|showTabs=True|supportingElements=Preview|columnType=narrow": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/settings/Settings%2007.png?raw=true"
-      }
-    }
+        'pageType=HomePage|showTabs=False|supportingElements=None|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2013.png',
+        'pageType=Internal Modules|showTabs=False|supportingElements=None|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2012.png',
+        'pageType=Internal Modules|showTabs=False|supportingElements=Guidance Panel|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2011.png',
+        'pageType=Internal Modules|showTabs=False|supportingElements=Preview|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2010.png',
+        'pageType=Internal Modules|showTabs=True|supportingElements=None|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2009.png',
+        'pageType=Internal Modules|showTabs=True|supportingElements=Guidance Panel|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2008.png',
+        'pageType=Internal Modules|showTabs=True|supportingElements=Preview|columnType=narrow':
+          'assets/pattern-previews/settings/Settings%2007.png',
+      },
+    },
   },
-  "modal-template": {
+  'modal-template': {
     variantsByPlatform: {
       desktop: {
-        "size=Large|contentType=Image + Text": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/modal-template/Modal%20Template%2004.png?raw=true",
-        "size=Medium|contentType=Image + Text": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/modal-template/Modal%20Template%2005.png?raw=true",
-        "size=Medium|contentType=Preview": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/modal-template/Modal%20Template%2003.png?raw=true",
-        "size=Small|contentType=Image + Text": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/modal-template/Modal%20Template%2002.png?raw=true",
-        "size=Small|contentType=Subtle Context": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/modal-template/Modal%20Template%2006.png?raw=true",
-        "size=Small|contentType=Only Text": "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/modal-template/Modal%20Template%2007.png?raw=true"
-      }
+        'size=Large|contentType=Image + Text':
+          'assets/pattern-previews/modal-template/Modal%20Template%2004.png',
+        'size=Medium|contentType=Image + Text':
+          'assets/pattern-previews/modal-template/Modal%20Template%2005.png',
+        'size=Medium|contentType=Preview':
+          'assets/pattern-previews/modal-template/Modal%20Template%2003.png',
+        'size=Small|contentType=Image + Text':
+          'assets/pattern-previews/modal-template/Modal%20Template%2002.png',
+        'size=Small|contentType=Subtle Context':
+          'assets/pattern-previews/modal-template/Modal%20Template%2006.png',
+        'size=Small|contentType=Only Text':
+          'assets/pattern-previews/modal-template/Modal%20Template%2007.png',
+      },
     },
     keyByPlatform: {
-      mobile: "https://github.com/rkdotdesign/ui-pattern-creator-images/blob/main/modal-template/Modal%20Template%2001.png?raw=true"
-    }
-  }
+      mobile: 'assets/pattern-previews/modal-template/Modal%20Template%2001.png',
+    },
+  },
 };
 
 // ========================================
@@ -145,9 +188,9 @@ export const PREVIEW_IMAGE_MAPPINGS: PreviewImageMapping = {
  * Get preview image URL for a specific pattern and configuration
  */
 export function getPreviewImageUrl(
-  patternId: string, 
-  platform: Platform, 
-  signature?: string
+  patternId: string,
+  platform: Platform,
+  signature?: string,
 ): string | undefined {
   const mapping = PREVIEW_IMAGE_MAPPINGS[patternId];
   if (!mapping) return undefined;
@@ -163,7 +206,7 @@ export function getPreviewImageUrl(
   // Fall back to keyByPlatform (for simple patterns)
   if (mapping.keyByPlatform?.[platform]) {
     const platformMapping = mapping.keyByPlatform[platform];
-    
+
     if (typeof platformMapping === 'string') {
       return platformMapping;
     } else if (typeof platformMapping === 'object' && signature) {
@@ -177,7 +220,9 @@ export function getPreviewImageUrl(
 /**
  * Get all available preview images for a pattern
  */
-export function getAllPreviewImages(patternId: string): { platform: Platform; signature?: string; url: string }[] {
+export function getAllPreviewImages(
+  patternId: string,
+): { platform: Platform; signature?: string; url: string }[] {
   const mapping = PREVIEW_IMAGE_MAPPINGS[patternId];
   if (!mapping) return [];
 

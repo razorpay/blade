@@ -28,6 +28,22 @@ type HeadingProps = {
   StyledPropsBlade;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Heading` for section titles and page hierarchy — it auto-maps sizes to semantic h-tags (small=h6, medium=h5, large=h4, xlarge=h3, 2xlarge=h2).
+- Use `as` prop to override the auto-mapped tag only when the visual size differs from the semantic level.
+- Use `as="span"` with nested Headings for inline color/weight variations within a heading.
+- Keep heading hierarchy consistent on the page for accessibility (don't skip levels).
+
+**Don't**
+
+- Don't use `Heading` for body content or paragraphs — use `Text` instead.
+- Don't use `Heading` for hero/landing page titles — use `Display` for maximum visual impact.
+- Don't override `as` without reason — the auto-mapping ensures proper semantic structure.
+- Don't use `weight="regular"` on headings unless specifically required — semibold (default) provides proper visual hierarchy.
+
 ## Example
 
 Here's a comprehensive example showcasing the Heading component's various features and props, demonstrating different sizes, colors, weights, and semantic variations to create page hierarchy:

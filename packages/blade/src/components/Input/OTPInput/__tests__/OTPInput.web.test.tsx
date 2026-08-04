@@ -277,6 +277,27 @@ describe('<OTPInput />', () => {
     await assertAccessible(allInputs[3]);
   });
 
+  it('should move focus to last input when OTP is pasted', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter OTP';
+    const otp = '123456';
+
+    const { getAllByLabelText } = renderWithTheme(
+      // eslint-disable-next-line jsx-a11y/no-autofocus
+      <OTPInput label={label} name="otp" autoFocus={true} />,
+    );
+
+    const allInputs = getAllByLabelText(/character/);
+    expect(allInputs[0]).toHaveFocus();
+
+    await user.paste(otp);
+
+    allInputs.forEach((input, index) => {
+      expect(input).toHaveValue(Array.from(otp)[index]);
+    });
+    expect(allInputs[otp.length - 1]).toHaveFocus();
+  });
+
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(<OTPInput label="Enter OTP" testID="otp-input-test" />);
 

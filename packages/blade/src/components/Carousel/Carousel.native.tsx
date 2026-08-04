@@ -135,6 +135,8 @@ const _Carousel = (
     goToSlideIndex(slideIndex);
   };
 
+  const isAutoPlaying = Boolean(autoPlay && !shouldPauseAutoplay);
+
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
       isResponsive: false,
@@ -148,8 +150,9 @@ const _Carousel = (
       setActiveIndicator: setActiveSlide,
       carouselItemAlignment: undefined,
       shouldAddStartEndSpacing: false,
+      isAutoPlaying,
     };
-  }, [carouselItemWidth, id, totalNumberOfSlides, slideWidth, activeSlide]);
+  }, [carouselItemWidth, id, totalNumberOfSlides, slideWidth, activeSlide, isAutoPlaying]);
 
   // auto play
   useInterval(

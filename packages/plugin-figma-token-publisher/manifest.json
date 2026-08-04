@@ -1,10 +1,11 @@
 {
-  "name": "Token Publisher",
-  "id": "1316333516996895237",
+  "name": "Blade Token Publisher",
+  "id": "1661423237412340803",
   "api": "1.0.0",
   "main": "dist/plugin.js",
   "ui": "dist/ui.html",
   "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
   "menu": [
     {
       "name": "Publish Color Tokens",

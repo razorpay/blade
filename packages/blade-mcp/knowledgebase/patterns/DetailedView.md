@@ -28,6 +28,145 @@ A DetailedView is a pattern that displays comprehensive details of a transaction
 - Collapsible
 - Alert
 
+## When to Use
+
+- Displaying record-level details inline alongside a list/table
+- Showing financial summaries (amount, status, metadata) for a transaction, payout, or settlement
+- Presenting contextual information without losing the user's position in a long list
+- Actions that apply to a single item (approve, reject, download, copy)
+
+**Do not use** for full-page flows, multi-step wizards, or cases where the detail content requires its own navigation.
+
+## Anatomy
+
+### Desktop Layout (1280×800px)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  Top Navigation (56px, black)  — Logo | Tabs | Search | Avatar              │
+├──────────────┬──────────────────────────────────────┬────────────────────   ┤
+│              │  Page Title                Actions   │  ┌──────────────┐     │
+│  Side Nav    │  Tabs (Payments | Orders)            │  │ Drawer       │     │
+│  (240px)     ├──────────────────────────────────────┤  │  Header      │     │
+│              │  Quick Filters  Search  Export  CTA  │  │  ─────────── │     │
+│  Home        ├──────────────────────────────────────┤  │  Body (slot) │     │
+│  Transact.◀  │  Table Header (Showing X of Y)       │  │              │     │
+│  Settlement  │  ╔══════════════════════════════╗    │  └──────────────┘     │
+│  Reports     │  ║  Table rows (slot)           ║    │                       │
+│              │  ╚══════════════════════════════╝    │  ◀ Dim overlay        │
+│              │  Table Footer (Pagination)           │                       │
+└──────────────┴──────────────────────────────────────┘                       │
+```
+
+- **Drawer** — Slides in from the right at 380px width; semi-transparent overlay (`rgba(0,0,0,0.56)`) covers the rest
+
+### Mobile Layout (393×852px)
+
+```
+┌──────────────────────────────────────┐
+│  Top Navigation (56px, black)        │
+├──────────────────────────────────────┤
+│  Page Title            CTA   Button  │
+│  Tabs (Payments | Orders)            │
+├──────────────────────────────────────┤
+│  Quick Filters | Search | Actions    │
+│  ┌──────────────────────────────┐    │
+│  │  Table (slot)                │    │
+│  │  Pagination: < 1 of 60 >     │    │
+│  └──────────────────────────────┘    │
+│  ┌──────────────────────────────┐    │
+│  │  Drawer (351px, full-height) │    │
+│  └──────────────────────────────┘    │
+└──────────────────────────────────────┘
+```
+
+## Drawer Component Structure
+
+```
+Drawer
+├── overlay                        (optional, rgba(0,0,0,0.56))
+└── root (380px desktop / 351px mobile, border-radius: 16px, elevation: highRaised)
+    └── wrapper (white background)
+        ├── Drawer Header
+        │   ├── title-bar
+        │   │   ├── left-container
+        │   │   │   ├── Back Navigation icon (optional)
+        │   │   │   └── drawer-content
+        │   │   │       ├── title  +  title-affix Badge (optional)
+        │   │   │       └── subtitle (optional)
+        │   │   └── right-container
+        │   │       ├── trailing action icons (optional)
+        │   │       └── close (×) icon button
+        │   └── detail-view-content (optional)
+        │       ├── leading icon/slot
+        │       ├── Amount display (₹ value)
+        │       ├── badge-group (1–3 badges)
+        │       ├── lead-text (optional)
+        │       ├── highlights (key-value pairs, optional)
+        │       ├── slot card (optional)
+        │       ├── actions (Approve / Reject buttons, optional)
+        │       └── caption-text
+        ├── drawer-body (slot — replace with your content sections)
+        └── Drawer Footer (optional)
+            ├── Divider
+            └── actions-container
+                ├── Secondary Button
+                └── Primary Button
+```
+
+## Drawer Header — Detail View Content
+
+The gradient-tinted header block communicates the essential context of the selected record:
+
+### Amount Display
+Use the `Amount` component. Format: `₹ 1,000.00` (symbol + value + decimals). Larger size on desktop than mobile.
+
+### Badge Group
+Up to 3 semantic badge slots — use to communicate:
+- **Badge 1** (notice/orange): Transaction or payout status (e.g. Pending, Processing, Captured)
+- **Badge 2** (information/blue): Secondary status or payment method (e.g. UPI, NEFT, Card)
+- **Badge 3** (neutral/grey): Additional metadata (e.g. Internal, Refund, Test)
+
+### Caption Text
+Use `•` separated meta items (e.g. `14 May 2025 • 10:30 AM`). Render with muted text color.
+
+### Highlights (optional)
+Two-column key–value grid using `InfoItem` pairs. Use when 2–4 key facts need to surface without opening the body (e.g. Ref ID, Bank, Account number).
+
+## Drawer Body — Drawer Sections
+
+The drawer body is a **slot** — replace it with one or more `drawer-section` components.
+
+### Available Built-in Drawer Views
+
+| Component | Use Case |
+|---|---|
+| `.drawer / single-payout-view` | Single payout details (recipient, bank, amount, UTR) |
+| `.drawer / bulk-payout-view` | Bulk payout batch details |
+| `.drawer / transactions-view` | Transaction breakdown |
+| `.drawer / contact-view` | Contact / vendor information |
+| `.drawer / settlement-view` | Settlement summary and breakdown |
+| `.drawer / payment-link-view` | Payment link metadata |
+| `.drawer / link-view` | Linked entity reference |
+| `.drawer / tax-view` | Tax and invoice summary |
+| `.drawer / qr-code-view` | QR code display with sections |
+| `.drawer / cards / body-card` | Card-style body section (header + body sub-sections) |
+
+## Product Examples
+
+| Example | Context |
+|---|---|
+| `single-payout-view` | RazorpayX payout — recipient bank details, amount, UTR |
+| `bulk-payout-view` | Bulk payout batch — batch ID, file name, items count |
+| `transactions-view` | Payments dashboard — payment ID, order, method, gateway |
+| `contact-view` | Contacts — name, email, phone, fund accounts |
+| `tax-view` | Invoice/tax — GST, TDS, invoice number |
+| `link-view` | Payment Links — link URL, expiry, usage |
+| `settlements-view` | Settlements — UTR, settled amount, date |
+| `payment-links-view` | Payment Links page — link details with QR |
+| `qr-code-view` | QR code page — QR image, payment info |
+| `transactions-view` (2nd) | Alternate transaction detail variant |
+
 ## Example
 
 ### Transaction Details with Table Integration

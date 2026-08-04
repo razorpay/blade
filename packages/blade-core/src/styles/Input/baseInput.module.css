@@ -1,0 +1,380 @@
+/*
+ * BaseInput styles — ported from React `baseInputStyles.ts` +
+ * `getBaseInputBorderStyles.web.ts` + `StyledBaseInput.web.tsx`.
+ *
+ * Interaction states are pure CSS: `:hover` / `:focus-within` on the wrapper,
+ * `[disabled]` on the input. The React `useInteraction` state machine is
+ * dropped. Border is drawn as a `box-shadow` ring (not `border`) so it doesn't
+ * shift layout when width changes between thin/thick.
+ */
+
+/* ── Outer container (styled-props host) ──
+ * Mirrors React's outermost BaseBox, which sets NO width. As a block element it
+ * fills its container in block/column contexts, but shrinks to the input's
+ * intrinsic width inside a flex row (e.g. input + button). The inner `.field`
+ * carries `width: 100%`. Forcing `width: 100%` here would make the input stretch
+ * to fill flex rows, diverging from React. */
+.outer {
+  width: auto;
+}
+
+/* ── Label + input column ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.field.label-left {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Label row (label + trailing header slot) */
+.label-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.label-row.label-left {
+  flex-direction: column;
+}
+
+/* ── Focus-ring wrapper — owns radius + the focus ring ── */
+.focus-ring-wrapper {
+  width: 100%;
+  border-radius: var(--border-radius-small);
+}
+
+.focus-ring-wrapper.radius-medium {
+  border-radius: var(--border-radius-medium);
+}
+
+.focus-ring-wrapper:focus-within {
+  outline: 4px solid var(--surface-border-primary-muted);
+  outline-offset: 0px;
+  transition-property: outline;
+  transition-duration: var(--duration-xgentle);
+  transition-timing-function: var(--easing-emphasized);
+}
+
+/* ── Input wrapper — border (box-shadow ring) + background + radius ── */
+.input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-radius: var(--border-radius-small);
+  background-color: var(--surface-background-gray-intense);
+  box-shadow: var(--interactive-border-gray-default) 0px 0px 0px var(--border-width-thin);
+  transition-property: box-shadow, background-color;
+  transition-duration: var(--duration-xgentle);
+  transition-timing-function: var(--easing-emphasized);
+}
+
+.input-wrapper.radius-medium {
+  border-radius: var(--border-radius-medium);
+}
+
+/* Hover — border highlight (skipped when disabled/error) */
+.input-wrapper:hover:not([data-disabled]):not(.validation-error) {
+  box-shadow: var(--interactive-border-gray-highlighted) 0px 0px 0px var(--border-width-thin);
+}
+
+/* Focus — thick primary ring (skipped when disabled/error) */
+.focus-ring-wrapper:focus-within .input-wrapper:not([data-disabled]):not(.validation-error) {
+  box-shadow: var(--interactive-border-primary-default) 0px 0px 0px var(--border-width-thick);
+}
+
+/* Validation: error — thick negative ring always */
+.input-wrapper.validation-error {
+  box-shadow: var(--interactive-border-negative-default) 0px 0px 0px var(--border-width-thick);
+  z-index: 1;
+}
+
+/* Validation: success keeps the default gray thin border (mirrors React). */
+
+/* Disabled — moderate bg + gray thin border, no interaction */
+.input-wrapper[data-disabled] {
+  background-color: var(--surface-background-gray-moderate);
+  box-shadow: var(--interactive-border-gray-disabled) 0px 0px 0px var(--border-width-thin);
+}
+
+/* ── The native input / textarea ── */
+.input {
+  flex: 1;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  resize: none;
+  text-align: inherit;
+
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  font-weight: var(--font-weight-regular);
+  color: var(--interactive-text-gray-normal);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input[disabled] {
+  color: var(--surface-text-gray-disabled);
+  cursor: not-allowed;
+  -webkit-text-fill-color: var(--surface-text-gray-disabled);
+}
+
+.input::placeholder {
+  color: var(--surface-text-gray-disabled);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Text-align variants (mirrors React `textAlign` on the input) */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+/* ── Size: height + vertical padding ── */
+.size-xsmall {
+  height: 28px;
+  min-height: 28px;
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+.size-small {
+  height: 32px;
+  min-height: 32px;
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+.size-medium {
+  height: 36px;
+  min-height: 36px;
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+.size-large {
+  height: 48px;
+  min-height: 48px;
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+.size-xsmall::placeholder,
+.size-small::placeholder {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+.size-medium::placeholder {
+  font-size: var(--font-size-100);
+  line-height: var(--line-height-100);
+}
+.size-large::placeholder {
+  font-size: var(--font-size-200);
+  line-height: var(--line-height-200);
+}
+
+/* ── Left padding: default per size, collapses when a leading visual exists ── */
+.pad-left-xsmall {
+  padding-left: var(--spacing-3);
+}
+.pad-left-small {
+  padding-left: var(--spacing-3);
+}
+.pad-left-medium {
+  padding-left: var(--spacing-4);
+}
+.pad-left-large {
+  padding-left: var(--spacing-4);
+}
+
+/* When a leading icon/prefix/element is rendered, input hugs it with spacing.3 */
+.has-leading {
+  padding-left: var(--spacing-3);
+}
+
+/* ── Right padding: default per size, collapses when a trailing visual exists ── */
+.pad-right-xsmall {
+  padding-right: var(--spacing-3);
+}
+.pad-right-small {
+  padding-right: var(--spacing-3);
+}
+.pad-right-medium {
+  padding-right: var(--spacing-4);
+}
+.pad-right-large {
+  padding-right: var(--spacing-4);
+}
+
+.has-trailing {
+  padding-right: var(--spacing-3);
+}
+
+/* ── valueComponentType="heading" (OTPInput) — heading font family + sizes ── */
+.value-heading {
+  font-family: var(--font-family-heading);
+  color: var(--interactive-text-gray-normal);
+}
+.value-heading[disabled] {
+  color: var(--surface-text-gray-disabled);
+}
+/* xsmall maps up to heading `small`. */
+.value-heading.size-xsmall,
+.value-heading.size-small {
+  font-size: var(--font-size-300);
+  line-height: var(--line-height-300);
+}
+.value-heading.size-medium {
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-400);
+}
+.value-heading.size-large {
+  font-size: var(--font-size-500);
+  line-height: var(--line-height-500);
+}
+.value-heading.size-xsmall::placeholder,
+.value-heading.size-small::placeholder {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-300);
+  line-height: var(--line-height-300);
+}
+.value-heading.size-medium::placeholder {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-400);
+}
+.value-heading.size-large::placeholder {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-500);
+  line-height: var(--line-height-500);
+}
+
+/* ── Visuals containers (leading / trailing) ── */
+.visuals {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+}
+
+.visuals-stretch {
+  align-self: stretch;
+}
+
+/* interaction element / icon / prefix / suffix spacing helpers */
+.leading-icon {
+  padding-left: var(--spacing-4);
+  display: flex;
+}
+
+.prefix {
+  display: flex;
+  align-items: center;
+}
+.prefix-with-icon {
+  padding-left: var(--spacing-3);
+}
+.prefix-no-icon {
+  padding-left: var(--spacing-4);
+}
+
+.leading-interaction {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+}
+.leading-interaction-pad {
+  padding-left: var(--spacing-2);
+}
+
+.trailing-interaction {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+}
+/* trailing interaction alone (no suffix/icon/button) gets spacing.4, else spacing.2 */
+.trailing-interaction-solo {
+  padding-right: var(--spacing-4);
+}
+.trailing-interaction-combo {
+  padding-right: var(--spacing-2);
+}
+
+.suffix {
+  display: flex;
+  align-items: center;
+}
+.suffix-with-trailing {
+  padding-right: var(--spacing-3);
+}
+.suffix-no-trailing {
+  padding-right: var(--spacing-4);
+}
+
+.trailing-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.trailing-icon-with-button {
+  padding-right: var(--spacing-3);
+}
+.trailing-icon-no-button {
+  padding-right: var(--spacing-4);
+}
+
+.trailing-button {
+  padding-right: var(--spacing-4);
+  display: flex;
+}
+
+.inside-validation {
+  display: flex;
+  align-items: center;
+}
+.inside-validation-sm {
+  padding-right: var(--spacing-3);
+}
+.inside-validation-lg {
+  padding-right: var(--spacing-4);
+}
+
+/* ── FormHint row (help/error/success + trailing footer slot) ── */
+.hint-row {
+  display: flex;
+  flex-direction: row;
+}
+.hint-row.has-hint {
+  justify-content: space-between;
+}
+.hint-row.no-hint {
+  justify-content: flex-end;
+}

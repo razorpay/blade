@@ -100,6 +100,26 @@ type AlertProps = {
   DataAnalyticsAttribute;
 ```
 
+## Usage Guidelines
+
+**Do**
+
+- Use `Alert` for important, contextual messages that require user attention within a page section.
+- Use semantic `color` values to match intent: `negative` for errors, `notice` for warnings, `positive` for success confirmations, `information` for general info.
+- Provide a concise `title` and a descriptive `description` — the description can include `Link` components for related actions.
+- Use `isFullWidth` for page-level alerts that span the entire container width.
+- Provide a `primary` action when the user should take a specific next step; use `secondary` only alongside a primary action.
+- Use `emphasis="intense"` sparingly for critical alerts that need maximum visual prominence.
+
+**Don't**
+
+- Don't use `Alert` for transient feedback after user actions — use `Toast` instead.
+- Don't use `Alert` for page-level broadcast announcements — use `AnnouncementBanner` instead.
+- Don't pass complex components inside `description` — stick to plain text and `Link`.
+- Don't provide a `secondary` action without a `primary` action.
+- Don't override the default icon unless you have a strong reason — icons are automatically chosen based on `color` for consistent semantics.
+- Don't use `Alert` as a dismissible banner at the top of the page — it's designed for inline, contextual messaging.
+
 ## Examples
 
 ### Standard Alert with Title, Description, and Actions

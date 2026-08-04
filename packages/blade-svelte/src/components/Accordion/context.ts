@@ -1,4 +1,5 @@
 import { getContext, setContext } from 'svelte';
+import type { AccordionSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { AccordionVariantType } from './types';
 
 const ACCORDION_CONTEXT_KEY = 'blade-accordion-context';
@@ -6,6 +7,7 @@ const ACCORDION_ITEM_CONTEXT_KEY = 'blade-accordion-item-context';
 
 export type AccordionContextState = {
   expandedIndex: number | undefined;
+  defaultExpandedIndex: number | undefined;
   onExpandChange: (index: number) => void;
   showNumberPrefix: boolean;
   variant: AccordionVariantType;
@@ -13,14 +15,12 @@ export type AccordionContextState = {
   size: 'large' | 'medium';
   registerItem: () => number;
   hasGrayBody: boolean;
+  styleOverride?: StyleOverride<AccordionSlot>;
 };
 
 export type AccordionItemContextState = {
   index: number | undefined;
   isDisabled: boolean;
-  isExpanded: boolean;
-  toggle: () => void;
-  collapsibleBodyId: string;
 };
 
 export function setAccordionContext(getCtx: () => AccordionContextState): void {

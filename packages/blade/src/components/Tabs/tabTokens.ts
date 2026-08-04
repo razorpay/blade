@@ -205,7 +205,7 @@ const borderRadius: Record<
     vertical: { small: 'none', medium: 'none', large: 'none' },
   },
   filled: {
-    horizontal: { small: 'medium', medium: 'small', large: 'small' },
+    horizontal: { small: 'small', medium: 'small', large: 'small' },
     vertical: { small: 'small', medium: 'small', large: 'small' },
   },
 };
@@ -219,7 +219,7 @@ const focusBorderRadius: Record<
     vertical: { small: 'medium', medium: 'medium', large: 'medium' },
   },
   filled: {
-    horizontal: { small: 'medium', medium: 'small', large: 'small' },
+    horizontal: { small: 'small', medium: 'small', large: 'small' },
     vertical: { small: 'small', medium: 'small', large: 'small' },
   },
 };

@@ -16,8 +16,6 @@
  */
 type StringWithAutocomplete = string & Record<never, never>;
 
-type DataAnalyticsKey = `data-analytics-${string}`;
-
 /**
  * This type is used to add data-analytics attributes to components.
  * This is used to track user interactions on the components.
@@ -26,7 +24,7 @@ type DataAnalyticsKey = `data-analytics-${string}`;
  * eg: `data-analytics-section="header"`
  */
 type DataAnalyticsAttribute = {
-  [key: DataAnalyticsKey]: string;
+  [key: `data-analytics-${string}`]: string;
 };
 
 export type { StringWithAutocomplete, DataAnalyticsAttribute };

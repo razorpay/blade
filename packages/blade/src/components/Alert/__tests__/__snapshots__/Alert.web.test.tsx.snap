@@ -861,7 +861,7 @@ exports[`<Alert /> should render primary color with intense emphasis 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(0,0%,100%,0.64);
+  color: hsla(0,0%,100%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 160ms;

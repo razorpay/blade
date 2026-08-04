@@ -7,10 +7,11 @@ import {
   highlightedButtonSizeMap,
   highlightedHoverColorMap,
   focusBackgroundColorMap,
+  moderateBackgroundColorMap,
 } from './tokens';
 import { castWebType, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { SubtleOrIntense } from '~tokens/theme/theme';
+import type { IconButtonEmphasis } from './IconButton';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
@@ -20,7 +21,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
 
 type StyledButtonProps = {
-  emphasis: SubtleOrIntense;
+  emphasis: IconButtonEmphasis;
   $isHighlighted: StyledIconButtonProps['isHighlighted'];
   $size: StyledIconButtonProps['size'];
 };
@@ -29,13 +30,17 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
   const { theme, emphasis } = props;
   const motionToken = theme.motion;
   const styledPropsCSSObject = useStyledProps(props);
+  const isModerate = emphasis === 'moderate';
+  const hasContainer = props.$isHighlighted || isModerate;
   const emphasisColor = emphasis === 'intense' ? 'gray' : 'staticWhite';
+  const highlightedEmphasis = emphasis === 'intense' ? 'intense' : 'subtle';
+  const restIconColor = emphasisColor === 'staticWhite' ? 'normal' : 'muted';
 
   if (__DEV__) {
-    if (props.$size === 'large' && props.$isHighlighted) {
+    if (props.$size === 'large' && (props.$isHighlighted || isModerate)) {
       throwBladeError({
         moduleName: 'IconButton',
-        message: 'size large is not allowed with isHighlighted true',
+        message: 'size large is not allowed with isHighlighted true or emphasis moderate',
       });
       return null;
     }
@@ -45,37 +50,40 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
     border: 'none',
     cursor: props.disabled ? 'not-allowed' : 'pointer',
     padding: 0,
-    height: props.$isHighlighted
-      ? // We throw error for size large on top
-        makeSize(highlightedButtonSizeMap[props.$size as 'small' | 'medium'])
-      : undefined,
-    width: props.$isHighlighted
+    height: hasContainer
       ? makeSize(highlightedButtonSizeMap[props.$size as 'small' | 'medium'])
       : undefined,
-    borderRadius: props.$isHighlighted ? theme.border.radius.small : theme.border.radius['2xsmall'],
-    background: 'transparent',
+    width: hasContainer
+      ? makeSize(highlightedButtonSizeMap[props.$size as 'small' | 'medium'])
+      : undefined,
+    borderRadius: hasContainer ? theme.border.radius.small : theme.border.radius['2xsmall'],
+    background: isModerate ? getIn(theme.colors, moderateBackgroundColorMap.rest) : 'transparent',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     color: props.disabled
       ? theme.colors.interactive.icon[emphasisColor].disabled
-      : theme.colors.interactive.icon[emphasisColor].muted,
-    transitionProperty: 'color, box-shadow',
+      : theme.colors.interactive.icon[emphasisColor][restIconColor],
+    transitionProperty: isModerate ? 'color, background-color' : 'color, box-shadow',
     transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
     transitionTimingFunction: motionToken.easing.standard as string,
 
     '&:hover:not([disabled])': {
       color: theme.colors.interactive.icon[emphasisColor].subtle,
-      backgroundColor: props.$isHighlighted
-        ? getIn(theme.colors, highlightedHoverColorMap[emphasis])
+      backgroundColor: isModerate
+        ? getIn(theme.colors, moderateBackgroundColorMap.hover)
+        : props.$isHighlighted
+        ? getIn(theme.colors, highlightedHoverColorMap[highlightedEmphasis])
         : 'transparent',
     },
 
     '&:focus-visible': {
       ...getFocusRingStyles({ theme }),
       color: theme.colors.interactive.icon[emphasisColor].subtle,
-      backgroundColor: props.$isHighlighted
-        ? getIn(theme.colors, focusBackgroundColorMap[emphasis])
+      backgroundColor: isModerate
+        ? getIn(theme.colors, moderateBackgroundColorMap.hover)
+        : props.$isHighlighted
+        ? getIn(theme.colors, focusBackgroundColorMap[highlightedEmphasis])
         : 'transparent',
     },
 
@@ -138,7 +146,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       {...makeAnalyticsAttribute(rest)}
       {...rest}
     >
-      <Icon size={size} color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'} />
+      <Icon size={size} color="currentColor" />
     </StyledButton>
   ),
 );

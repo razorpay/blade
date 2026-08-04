@@ -1,5 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { ButtonSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../../Icons/types';
 
 // Icon component type - Svelte component that accepts IconProps
@@ -107,11 +108,17 @@ export interface BaseButtonProps extends StyledPropsBlade {
   accessibilityProps?: {
     label?: string;
     describedBy?: string;
+    controls?: string;
     expanded?: boolean;
     hasPopup?: 'menu';
     role?: string;
   };
   testID?: string;
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.Button.styleOverride`;
+   * instance values win on conflicts.
+   */
+  styleOverride?: StyleOverride<ButtonSlot>;
   // Event handlers
   onClick?: (event: MouseEvent) => void;
   onBlur?: (event: FocusEvent) => void;

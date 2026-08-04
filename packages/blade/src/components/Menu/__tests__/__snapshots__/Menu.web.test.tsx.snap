@@ -243,7 +243,7 @@ exports[`Menu renders a Menu 1`] = `
   margin-bottom: 2px;
 }
 
-.c22.c22.c22.c22.c22:hover:not([aria-disabled=true]),
+.c22.c22.c22.c22.c22:hover:not([aria-disabled=true]):not([aria-selected=true]),
 .c22.c22.c22.c22.c22[aria-expanded="true"] {
   background-color: hsla(206,10%,29%,0.06);
 }
@@ -286,7 +286,7 @@ exports[`Menu renders a Menu 1`] = `
   margin-bottom: 2px;
 }
 
-.c31.c31.c31.c31.c31:hover:not([aria-disabled=true]),
+.c31.c31.c31.c31.c31:hover:not([aria-disabled=true]):not([aria-selected=true]),
 .c31.c31.c31.c31.c31[aria-expanded="true"] {
   background-color: hsla(4,85%,44%,0.09);
 }
@@ -453,7 +453,7 @@ exports[`Menu renders a Menu 1`] = `
 .c8.c8.c8.c8.c8 {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(0,0%,97%,1);
 }
 
 .c20.c20.c20.c20.c20 {
@@ -688,6 +688,7 @@ exports[`Menu renders a Menu 1`] = `
       aria-orientation="vertical"
       class="c5 c6"
       data-blade-component="menu"
+      data-placement="bottom-start"
       id=":r1:"
       role="menu"
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -8px;"
@@ -1313,7 +1314,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   margin-bottom: 2px;
 }
 
-.c22.c22.c22.c22.c22:hover:not([aria-disabled=true]),
+.c22.c22.c22.c22.c22:hover:not([aria-disabled=true]):not([aria-selected=true]),
 .c22.c22.c22.c22.c22[aria-expanded="true"] {
   background-color: hsla(206,10%,29%,0.06);
 }
@@ -1356,7 +1357,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
   margin-bottom: 2px;
 }
 
-.c31.c31.c31.c31.c31:hover:not([aria-disabled=true]),
+.c31.c31.c31.c31.c31:hover:not([aria-disabled=true]):not([aria-selected=true]),
 .c31.c31.c31.c31.c31[aria-expanded="true"] {
   background-color: hsla(4,85%,44%,0.09);
 }
@@ -1523,7 +1524,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
 .c8.c8.c8.c8.c8 {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(0,0%,97%,1);
 }
 
 .c20.c20.c20.c20.c20 {
@@ -1759,6 +1760,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
       class="c5 c6"
       data-analytics-menu="user"
       data-blade-component="menu"
+      data-placement="bottom-start"
       id=":rt:"
       role="menu"
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 8px); max-height: -8px;"

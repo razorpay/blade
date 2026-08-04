@@ -34,6 +34,19 @@
   flex-direction: row;
 }
 
+/* flexWrap variants — applied on the items container (a real flex parent). */
+.flex-wrap-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-wrap-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
 /* Gap per size (radioSizes.group.gap → spacing 2/3/4) */
 .gapSmall {
   gap: var(--spacing-2);
