@@ -642,7 +642,7 @@ export const TableWithIsLoading = (): React.ReactElement => {
   const onMobile = platform === 'onMobile';
 
   React.useEffect(() => {
-    if (showData) return;
+    if (showData) return undefined;
     const timeoutId = setTimeout(() => setShowData(true), 2000);
     return () => clearTimeout(timeoutId);
   }, [showData]);

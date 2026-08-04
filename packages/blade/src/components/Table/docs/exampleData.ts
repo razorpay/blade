@@ -27,7 +27,7 @@ const names = [
   'Alice Doe',
 ];
 
-const pickRandom = <T,>(items: T[]): T => items[Math.floor(Math.random() * items.length)];
+const pickRandom = <T>(items: T[]): T => items[Math.floor(Math.random() * items.length)];
 
 const createTableNodes = (count: number): TableExampleItem[] =>
   Array.from({ length: count }, (_, index) => ({
