@@ -1,19 +1,5 @@
 # @razorpay/blade-core
 
-## 0.10.1
-
-### Patch Changes
-
-- 7ec4868c5: feat: reduce blade-svelte bundle size
-
-## 0.10.0
-
-### Minor Changes
-
-- b8e8c4687: feat(blade-svelte): add BladeProvider theme context and style overrides
-
-  Adds BladeProvider with theme context, color scheme management, and typography platform support for blade-svelte. Adds theme runtime utilities in blade-core (themeToCSSVariables, createTheme overrides, data-blade-color-scheme selectors), CSS cascade layers, component style override APIs, and button brand CSS vars.
-
 ## 0.9.0
 
 ### Minor Changes

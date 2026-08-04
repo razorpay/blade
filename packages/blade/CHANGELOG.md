@@ -1,25 +1,5 @@
 # @razorpay/blade
 
-## 12.113.2
-
-### Patch Changes
-
-- b168b2190: fix(BaseInput): pass Android autofill hint via `autoComplete` instead of the removed `autoCompleteType` prop
-
-  React Native renamed `autoCompleteType` to `autoComplete` in 0.66, so the Android autofill hint (e.g. `sms-otp` for `OTPInput`'s `autoCompleteSuggestionType="oneTimeCode"`) was silently dropped and never reached the native `EditText`. OTP keyboard suggestions and other autofill hints now work on Android.
-
-## 12.113.1
-
-### Patch Changes
-
-- b8e8c4687: feat(blade-svelte): add BladeProvider theme context and style overrides
-
-  Adds BladeProvider with theme context, color scheme management, and typography platform support for blade-svelte. Adds theme runtime utilities in blade-core (themeToCSSVariables, createTheme overrides, data-blade-color-scheme selectors), CSS cascade layers, component style override APIs, and button brand CSS vars.
-
-- 480b2de2f: fix: remove personal email from useTruncationTitle JSDoc
-
-  Replaces the personal email address in the JSDoc usage example of `useTruncationTitle.web.tsx` with a generic `user@example.com` to prevent personal emails from leaking in frontend source-map files.
-
 ## 12.113.0
 
 ### Minor Changes

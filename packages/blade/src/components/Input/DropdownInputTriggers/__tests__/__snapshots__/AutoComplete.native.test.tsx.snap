@@ -398,7 +398,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                               }
                             }
                             accessible={true}
-                            autoComplete="off"
+                            autoCompleteType="off"
                             data-blade-component="styled-base-input"
                             editable={true}
                             hasLeadingDropdown={false}

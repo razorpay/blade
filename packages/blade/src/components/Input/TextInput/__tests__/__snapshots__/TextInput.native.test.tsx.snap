@@ -270,7 +270,7 @@ exports[`<TextInput /> should render 1`] = `
                 }
               }
               accessible={true}
-              autoComplete="off"
+              autoCompleteType="off"
               data-blade-component="styled-base-input"
               editable={true}
               hasLeadingDropdown={false}
@@ -794,7 +794,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               }
               accessible={true}
               autoCapitalize="none"
-              autoComplete="off"
+              autoCompleteType="off"
               data-blade-component="styled-base-input"
               editable={true}
               hasLeadingDropdown={false}

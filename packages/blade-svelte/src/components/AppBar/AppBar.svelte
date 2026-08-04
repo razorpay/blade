@@ -10,6 +10,7 @@
   import { getAppBarClasses, getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import { getUtilityClass } from '@razorpay/blade-core/styles';
   import IconButton from '../Button/IconButton/IconButton.svelte';
+  import Tooltip from '../Tooltip/Tooltip.svelte';
   import { ArrowLeftIcon } from '../Icons';
   import { setAppBarContext } from './AppBarContext';
   import type { AppBarProps } from './types';
@@ -37,18 +38,6 @@
 
   // `subtle` emphasis renders a static-white icon for the dark `neutral` surface;
   // `intense` renders the gray icon for the light `subtle` surface.
-  // Lazy-load the Tooltip component: it's only rendered for the back button when a
-  // `backButtonTooltip` is provided, so we keep it out of the main bundle otherwise.
-  let Tooltip = $state<typeof import('../Tooltip/Tooltip.svelte').default | null>(null);
-
-  $effect(() => {
-    if (showBackButton && backButtonTooltip && !Tooltip) {
-      void import('../Tooltip/Tooltip.svelte').then((module) => {
-        Tooltip = module.default;
-      });
-    }
-  });
-
   const backButtonEmphasis = $derived<'subtle' | 'intense'>(
     variant === 'neutral' ? 'subtle' : 'intense',
   );
@@ -89,7 +78,7 @@
   <div class={templateClasses.appBarLeadingRow}>
     {#if showBackButton}
       <div class={templateClasses.appBarBackButton}>
-        {#if backButtonTooltip && Tooltip}
+        {#if backButtonTooltip}
           <Tooltip content={backButtonTooltip.content} placement={backButtonTooltip.placement}>
             <IconButton
               icon={ArrowLeftIcon}
