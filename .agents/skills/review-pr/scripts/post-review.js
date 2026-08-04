@@ -303,13 +303,8 @@ const submitEvent = isPending
   ? 'APPROVE'
   : 'COMMENT';
 
-const headSha = execSync(`gh api repos/${repo}/pulls/${prNumber} --jq '.head.sha'`)
-  .toString()
-  .trim();
-
 const reviewPayload = {
   body: overviewBody,
-  commit_id: headSha,
   ...(submitEvent ? { event: submitEvent } : {}),
   comments: allComments.map((c) => {
     const base = { path: c.file, body: formatInlineComment(c) };
