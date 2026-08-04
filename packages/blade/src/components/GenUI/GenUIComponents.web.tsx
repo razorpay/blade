@@ -14,7 +14,6 @@ import { useGenUIAction, useGenUIAnimation } from './GenUIContext';
 import { ComponentRenderer } from './GenUISchemaRenderer';
 import { createRehypeAnimate } from './rehypeAnimate';
 import { genUISpacingContract, getGenUIComponentTopSpacing } from './GenUISpacing';
-import { DEFAULT_CELL_DATE_FORMAT } from './exportUtils/csv';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Skeleton } from '~components/Skeleton';
@@ -407,6 +406,8 @@ const ComponentType = {
   ALERT: 'ALERT',
   AMOUNT: 'AMOUNT',
 } as const;
+
+const DEFAULT_CELL_DATE_FORMAT = 'DD MMM YYYY, HH:mm';
 
 /**
  * Valid feedback colors used across GenUI components (Badge, Indicator, Alert)
