@@ -8,7 +8,7 @@ type GenUIBaseComponent = {
  *
  * @example
  * ```tsx
- * type MyWidgetComponent = CustomComponent<'MY_WIDGET', {
+ * type MyWidgetComponent = GenUICustomComponent<'MY_WIDGET', {
  *   title: string;
  *   data: number[];
  * }>;

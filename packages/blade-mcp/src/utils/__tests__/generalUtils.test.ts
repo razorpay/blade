@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { describe, it, expect, afterEach } from 'vitest';
-import { hasOutdatedSkill } from '../generalUtils.js';
+import { getBladeDocsList, hasOutdatedSkill } from '../generalUtils.js';
 import { BLADE_SKILL_FILE_PATH, SKILL_VERSION_STRING } from '../tokens.js';
 
 describe('hasOutdatedSkill', () => {
@@ -28,5 +28,11 @@ describe('hasOutdatedSkill', () => {
     tmpFile = path.join(os.tmpdir(), 'test-current-SKILL.md');
     fs.writeFileSync(tmpFile, `metadata:\n  ${SKILL_VERSION_STRING}`);
     expect(hasOutdatedSkill(tmpFile)).toBe(false);
+  });
+});
+
+describe('getBladeDocsList', () => {
+  it('includes GenUI in the available component documentation', () => {
+    expect(getBladeDocsList('components')).toContain('GenUI');
   });
 });
