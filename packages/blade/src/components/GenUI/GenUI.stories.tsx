@@ -975,6 +975,7 @@ const exportActionsComponents = [
       },
     ],
     footer: 'Updated just now',
+    exportActions: { downloadPng: true },
   },
   {
     component: 'TABLE',
@@ -1009,6 +1010,7 @@ const exportActionsComponents = [
         },
       ],
     ],
+    exportActions: { copy: true, downloadCsv: true },
   },
 ] as GenUIComponent[];
 

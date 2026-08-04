@@ -26,6 +26,7 @@ const tableComponents: GenUIComponent[] = [
         { component: 'AMOUNT', value: 2500, currency: 'INR' },
       ],
     ],
+    exportActions: { copy: true, downloadCsv: true },
   },
 ];
 
@@ -34,6 +35,23 @@ const cardComponents: GenUIComponent[] = [
     component: 'CARD',
     title: 'Revenue Summary',
     description: 'Q1 overview',
+    children: [{ component: 'TEXT', content: 'Body' }],
+    exportActions: { downloadPng: true },
+  },
+];
+
+const tableWithoutExportActions: GenUIComponent[] = [
+  {
+    component: 'TABLE',
+    headers: ['Name'],
+    rows: [[{ component: 'TEXT', value: 'Alice' }]],
+  },
+];
+
+const cardWithoutExportActions: GenUIComponent[] = [
+  {
+    component: 'CARD',
+    title: 'No Export',
     children: [{ component: 'TEXT', content: 'Body' }],
   },
 ];
@@ -70,6 +88,21 @@ describe('<GenUI /> export actions', () => {
   });
 
   describe('Table', () => {
+    it('does not render export action buttons when exportActions is not provided', () => {
+      const { container } = renderWithTheme(
+        <GenUIProvider config={{}}>
+          <GenUISchemaRenderer components={tableWithoutExportActions} />
+        </GenUIProvider>,
+      );
+
+      expect(
+        container.querySelector('button[data-analytics-name="genui-table-copy-button"]'),
+      ).toBeNull();
+      expect(
+        container.querySelector('button[data-analytics-name="genui-table-download-button"]'),
+      ).toBeNull();
+    });
+
     it('copies display-formatted CSV to the clipboard and dispatches telemetry', async () => {
       const onActionClick = jest.fn();
       // Uses fireEvent (not userEvent) so the beforeEach clipboard mock isn't
@@ -150,6 +183,18 @@ describe('<GenUI /> export actions', () => {
   });
 
   describe('Card', () => {
+    it('does not render the download button when exportActions is not provided', () => {
+      const { container } = renderWithTheme(
+        <GenUIProvider config={{}}>
+          <GenUISchemaRenderer components={cardWithoutExportActions} />
+        </GenUIProvider>,
+      );
+
+      expect(
+        container.querySelector('button[data-analytics-name="genui-card-download-button"]'),
+      ).toBeNull();
+    });
+
     it('captures the card as a PNG, downloads it, and dispatches telemetry', async () => {
       const onActionClick = jest.fn();
       const pngBlob = new Blob(['png'], { type: 'image/png' });
