@@ -72,8 +72,6 @@ import { Indicator } from '~components/Indicator';
 import { Alert } from '~components/Alert';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
-const DEFAULT_CELL_DATE_FORMAT = 'DD MMM YYYY, HH:mm';
-
 /**
  * Global styles for text streaming animations
  * Applied to [data-animate-word] spans created by rehypeAnimate
