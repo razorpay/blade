@@ -408,11 +408,6 @@ const ComponentType = {
 } as const;
 
 /**
- * Default date format for table cells
- */
-const DEFAULT_CELL_DATE_FORMAT = 'DD MMM YYYY, HH:mm';
-
-/**
  * Valid feedback colors used across GenUI components (Badge, Indicator, Alert)
  * Used to validate streaming JSON where color values might be partial/incomplete
  */
@@ -1237,9 +1232,10 @@ const RenderTableCellContent = ({ cell }: { cell?: Partial<TableCellType> }) => 
         return <Text size="medium">{cell.value}</Text>;
       }
 
-      // Use custom dateFormat if provided, otherwise use the default.
+      // Use custom dateFormat if provided, otherwise use default
       // Format tokens: https://day.js.org/docs/en/display/format
-      const formatted = dateValue.format(cell.dateFormat || DEFAULT_CELL_DATE_FORMAT);
+      const defaultFormat = 'DD MMM YYYY, HH:mm';
+      const formatted = dateValue.format(cell.dateFormat || defaultFormat);
 
       return <Text size="medium">{formatted}</Text>;
     }
