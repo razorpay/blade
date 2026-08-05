@@ -1757,4 +1757,4 @@ export {
   ComponentType,
 };
 
-export type { GenUIComponent, CardComponent, TableComponent, TableCellType };
+export type { GenUIComponent, TableComponent };
