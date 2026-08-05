@@ -10,6 +10,20 @@ const bladeCoreRoot = resolve(dir, '../blade-core/src');
 // `.storybook/main.js` viteFinal so test resolution matches Storybook/dev exactly:
 // - exact `@razorpay/blade-core/*` entry points -> blade-core source index files
 // - blade-core's internal `~utils` / `~tokens` / `~src` imports -> blade-core source
+// - `.web.ts` extension resolution so platform-split modules (elevation, fontFamily) resolve
+const bladeCoreExtensions = [
+  '.web.ts',
+  '.web.tsx',
+  '.web.js',
+  '.mjs',
+  '.js',
+  '.mts',
+  '.ts',
+  '.jsx',
+  '.tsx',
+  '.json',
+];
+
 const bladeCoreAlias = [
   {
     find: /^@razorpay\/blade-core\/utils$/,
@@ -41,10 +55,12 @@ export default defineConfig({
     projects: [
       {
         plugins: [sveltePlugin()],
+        define: { __DEV__: true },
         resolve: {
           // Browser (client) entry points so Testing Library mounts real DOM under jsdom.
           conditions: ['browser'],
           alias: bladeCoreAlias,
+          extensions: bladeCoreExtensions,
         },
         test: {
           name: 'client',
@@ -57,7 +73,8 @@ export default defineConfig({
       },
       {
         plugins: [sveltePlugin()],
-        resolve: { alias: bladeCoreAlias },
+        define: { __DEV__: true },
+        resolve: { alias: bladeCoreAlias, extensions: bladeCoreExtensions },
         test: {
           name: 'ssr',
           environment: 'node',

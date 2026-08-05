@@ -1,4 +1,5 @@
 import type { Snippet } from 'svelte';
+import type { AccordionSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 export type AccordionVariantType = 'filled' | 'transparent';
@@ -67,6 +68,12 @@ export type AccordionProps = {
    * Test ID for the element.
    */
   testID?: string;
+
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.Accordion.styleOverride`;
+   * instance values win on conflicts. Ignored when `variant="filled"` (fixed checkout shell).
+   */
+  styleOverride?: StyleOverride<AccordionSlot>;
 
   /** Analytics data attributes. */
   [key: `data-analytics-${string}`]: string;
