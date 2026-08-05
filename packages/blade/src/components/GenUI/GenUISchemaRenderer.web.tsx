@@ -120,9 +120,7 @@ const AnimatedBorderContainer = styled.div<{ $showContent?: boolean }>`
  * The animation moves the gradient center along the horizontal axis while
  * rotating it at the corners to create the illusion of perimeter traversal.
  */
-const GradientBorder = styled.div.attrs({ 'data-genui-animation-overlay': '' })<{
-  $fadeOut?: boolean;
-}>`
+const GradientBorder = styled.div<{ $fadeOut?: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -158,7 +156,7 @@ const GradientBorder = styled.div.attrs({ 'data-genui-animation-overlay': '' })<
 `;
 
 /** Content container with mask reveal animation */
-const ContentContainer = styled.div.attrs({ 'data-genui-content-container': '' })<{
+const ContentContainer = styled.div<{
   ref?: React.Ref<HTMLDivElement>;
 }>`
   position: relative;
@@ -175,7 +173,7 @@ const ContentContainer = styled.div.attrs({ 'data-genui-content-container': '' }
 `;
 
 /** Green linear gradient shade overlay */
-const GradientShade = styled.div.attrs({ 'data-genui-animation-overlay': '' })`
+const GradientShade = styled.div`
   position: absolute;
   top: 0;
   left: 0;
