@@ -7,6 +7,9 @@ import { throwBladeError } from '~utils/logger';
 // Type definitions for React Native (placeholder)
 export type GenUIComponent = any;
 export type GenUIBaseComponent = any;
+export type CardComponent = any;
+export type TableComponent = any;
+export type TableCellType = any;
 
 // Placeholder component that throws error
 const GenUIComponentsNotSupported = (): React.ReactElement => {
