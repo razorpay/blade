@@ -1,3 +1,6 @@
+import './layers.css';
+
+export type { StyleOverride } from './shared/styleOverride';
 export { baseTextStyles, getBaseTextClasses } from './BaseText';
 export type { BaseTextVariants } from './BaseText';
 export {
@@ -21,9 +24,15 @@ export type {
 export { codeStyles, getCodeClasses, getCodeFontSizeAndLineHeight, getCodeColor } from './Code';
 export type { CodeVariants, CodeSize } from './Code';
 export { getHeadingProps, validHeadingAsValues } from './Heading';
-export type { HeadingSize, HeadingWeight, HeadingAs, HeadingPropsResult } from './Heading';
+export type {
+  HeadingSize,
+  HeadingWeight,
+  HeadingAs,
+  HeadingPropsResult,
+  HeadingSlot,
+} from './Heading';
 export { getTextProps, validTextAsValues } from './Text';
-export type { TextVariant, TextSize, TextWeight, TextAs, TextPropsResult } from './Text';
+export type { TextVariant, TextSize, TextWeight, TextAs, TextPropsResult, TextSlot } from './Text';
 export {
   buttonStyles,
   getButtonClasses,
@@ -45,15 +54,30 @@ export {
   getButtonMinHeight,
   getButtonIconSize,
   getButtonIconOnlySize,
+  getPrimaryBrandCssVars,
+  getAccentBrandCssVars,
+  SAFE_FILLED_BUTTON_ROOT_TOKEN_OVERRIDES,
 } from './Button';
-export type { ButtonVariants, ButtonColor, ButtonVariant } from './Button';
+export type {
+  ButtonVariants,
+  ButtonColor,
+  ButtonVariant,
+  ButtonSlot,
+  BrandCssVarsOptions,
+  AccentBrand,
+} from './Button';
 export {
   iconButtonStyles,
   getIconButtonClasses,
   getIconButtonTemplateClasses,
   highlightedButtonSizeMap,
 } from './IconButton';
-export type { IconButtonVariants, IconButtonEmphasis, IconButtonSize } from './IconButton';
+export type {
+  IconButtonVariants,
+  IconButtonEmphasis,
+  IconButtonSize,
+  IconButtonSlot,
+} from './IconButton';
 export { utilityClasses, getUtilityClass } from './utilities';
 // @ts-expect-error - CSS modules may not have type definitions in build
 export { default as utilities } from './utilities.module.css';
@@ -76,6 +100,7 @@ export type {
   AmountBodyProps,
   AmountDisplayProps,
   AmountHeadingProps,
+  AmountSlot,
 } from './Amount';
 export {
   badgeStyles,
@@ -105,7 +130,7 @@ export {
 } from './Counter';
 export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from './Counter';
 export { dividerStyles, getDividerClasses } from './Divider';
-export type { DividerVariants } from './Divider';
+export type { DividerVariants, DividerSlot } from './Divider';
 export {
   counterInputContainerStyles,
   getCounterInputContainerClasses,
@@ -135,6 +160,7 @@ export type {
   AccordionWrapperVariants,
   AccordionButtonVariants,
   AccordionButtonBorderVariants,
+  AccordionSlot,
 } from './Accordion';
 export {
   getCollapsibleChevronClasses,
@@ -164,10 +190,14 @@ export type {
 export {
   cardRootStyles,
   cardSurfaceStyles,
+  extractCardBackgroundColorFromClassNames,
   getCardBackgroundColor,
   getCardHeaderClasses,
   getCardFooterClasses,
+  getCardSurfaceBackgroundUtilityClass,
+  getCardSurfaceClasses,
   getCardTemplateClasses,
+  isCardBackgroundColor,
 } from './Card';
 export type {
   CardRootVariants,
@@ -178,9 +208,11 @@ export type {
   CardType,
   CardHeaderVariants,
   CardFooterVariants,
+  CardSlot,
 } from './Card';
 export { appBarStyles, getAppBarClasses, getAppBarTemplateClasses } from './AppBar';
 export type { AppBarVariants } from './AppBar';
+export type { AppBarLeadingSlot } from './AppBarLeading';
 export {
   getTrustBadgeTextColorToken,
   getTrustBadgeVariantClass,
@@ -305,6 +337,7 @@ export type {
   AnnouncementBannerVariants,
   AnnouncementBannerTheme,
   AnnouncementBannerAlignment,
+  AnnouncementBannerSlot,
 } from './AnnouncementBanner';
 export {
   avatarWrapperStyles,
@@ -330,6 +363,7 @@ export type {
   AvatarButtonVariants,
   AvatarGroupVariants,
   AvatarDensity,
+  AvatarSlot,
 } from './Avatar';
 export {
   breadcrumbNavClass,
