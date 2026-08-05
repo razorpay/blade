@@ -105,6 +105,12 @@ export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types
 export {
   Card,
   CardBody,
+  TicketCard,
+  TicketCardBody,
+  TicketCardFooter,
+  InfoCard,
+  InfoCardBody,
+  InfoCardFooter,
   CardHeader,
   CardHeaderLeading,
   CardHeaderTrailing,
@@ -207,8 +213,8 @@ export type {
   AlertActions,
   AlertColor,
   AlertEmphasis,
-  PrimaryAction,
-  SecondaryAction,
+  PrimaryAction as AlertPrimaryAction,
+  SecondaryAction as AlertSecondaryAction,
 } from './Alert';
 
 // AnnouncementBanner
