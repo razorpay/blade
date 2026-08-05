@@ -119,7 +119,7 @@ const AnimatedBorderContainer = styled.div<{ $showContent?: boolean }>`
  * The animation moves the gradient center along the horizontal axis while
  * rotating it at the corners to create the illusion of perimeter traversal.
  */
-const GradientBorder = styled.div<{ $fadeOut?: boolean }>`
+const GradientBorder = styled.div.attrs({ 'data-genui-animation-overlay': '' })<{ $fadeOut?: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -155,7 +155,7 @@ const GradientBorder = styled.div<{ $fadeOut?: boolean }>`
 `;
 
 /** Content container with mask reveal animation */
-const ContentContainer = styled.div`
+const ContentContainer = styled.div.attrs({ 'data-genui-content-container': '' })<{ ref?: React.Ref<HTMLDivElement> }>`
   position: relative;
   width: 100%;
   height: 100%;
@@ -170,7 +170,7 @@ const ContentContainer = styled.div`
 `;
 
 /** Green linear gradient shade overlay */
-const GradientShade = styled.div`
+const GradientShade = styled.div.attrs({ 'data-genui-animation-overlay': '' })`
   position: absolute;
   top: 0;
   left: 0;
@@ -202,7 +202,9 @@ const GradientShade = styled.div`
 const AnimatedGradientBorder: React.FC<{
   children: React.ReactNode;
   onAnimationComplete?: () => void;
-}> = ({ children, onAnimationComplete }) => {
+  /** Ref to the content container node (excludes the gradient ring + shade overlays) */
+  contentRef?: React.Ref<HTMLDivElement>;
+}> = ({ children, onAnimationComplete, contentRef }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showContent, setShowContent] = useState(false);
   // Initial default values to prevent animation from breaking before ResizeObserver fires
@@ -243,7 +245,7 @@ const AnimatedGradientBorder: React.FC<{
       <GlobalAnimationStyles />
       <AnimatedBorderContainer ref={containerRef} $showContent={showContent}>
         <GradientBorder $fadeOut={showContent} style={cssVars} />
-        <ContentContainer>
+        <ContentContainer ref={contentRef}>
           {children}
           <GradientShade />
         </ContentContainer>
@@ -276,8 +278,9 @@ type ComponentRendererProps = {
 const ComponentRendererInner = memo(({ component, index }: ComponentRendererProps) => {
   const { registry, validComponentTypes } = useGenUI();
   const componentActions = useGenUIComponentActions();
-  // Ref to the DOM node wrapping the rendered component. Passed to registered action
-  // slots so consumers can read the component's node (e.g. for PNG capture).
+  // Ref to the DOM node of the rendered component's content (excludes the gradient
+  // border animation overlays). Passed to registered action slots so consumers can
+  // read the component's node (e.g. for PNG capture).
   const componentRef = useRef<HTMLDivElement>(null);
 
   // Handle incomplete components during streaming
@@ -306,8 +309,8 @@ const ComponentRendererInner = memo(({ component, index }: ComponentRendererProp
 
       return (
         <Box key={key} display="flex" flexDirection="column" width="100%">
-          <Box ref={componentRef} width="100%">
-            <AnimatedGradientBorder>
+          <Box width="100%">
+            <AnimatedGradientBorder contentRef={componentRef}>
               <Renderer {...component} index={index} />
             </AnimatedGradientBorder>
           </Box>
