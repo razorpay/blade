@@ -54,7 +54,13 @@ import { BottomDock } from '~components/BottomDock';
 
  */
 const _BottomNav = (
-  { children, zIndex = componentZIndices.bottomNav, testID, accessibilityLabel, ...rest }: BottomNavProps,
+  {
+    children,
+    zIndex = componentZIndices.bottomNav,
+    testID,
+    accessibilityLabel,
+    ...rest
+  }: BottomNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   if (__DEV__) {

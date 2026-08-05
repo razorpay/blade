@@ -57,7 +57,13 @@ const openURL = async (href: string): Promise<void> => {
  * Checkout {@link https://blade.razorpay.com/??path=/docs/components-bottomnav--doc BottomNav Documentation}
  */
 const _BottomNav = (
-  { children, zIndex = componentZIndices.bottomNav, testID, accessibilityLabel, ...rest }: BottomNavProps,
+  {
+    children,
+    zIndex = componentZIndices.bottomNav,
+    testID,
+    accessibilityLabel,
+    ...rest
+  }: BottomNavProps,
   ref: React.Ref<BladeElementRef>,
 ): React.ReactElement => {
   const { theme } = useTheme();
