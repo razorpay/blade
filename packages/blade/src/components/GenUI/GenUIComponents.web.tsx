@@ -583,7 +583,6 @@ type CardComponent = GenUIBaseComponent & {
   description?: string;
   footer?: string | null;
   children?: GenUIComponent[];
-  actions?: GenUIAction[];
 };
 
 type InfoGroupItemValue = {
@@ -1424,12 +1423,7 @@ const RenderCardComponent = memo(({ title, description, footer, children }: Card
       flexDirection="column"
       gap={genUISpacingContract.compactCardRowGap}
     >
-      <Card
-        width="100%"
-        height="100%"
-        padding={genUISpacingContract.compactCardPadding}
-        data-genui-card-ref=""
-      >
+      <Card width="100%" height="100%" padding={genUISpacingContract.compactCardPadding}>
         {hasHeader ? (
           <CardHeader>
             <CardHeaderLeading title={title || ''} subtitle={description || ''} />
@@ -1767,4 +1761,4 @@ export {
   ComponentType,
 };
 
-export type { GenUIComponent, TableCellType, CardComponent, TableComponent, GenUIAction };
+export type { GenUIComponent };
