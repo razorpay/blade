@@ -1,5 +1,13 @@
 # @razorpay/blade-svelte
 
+## 0.11.1
+
+### Patch Changes
+
+- 7ec4868c5: feat: reduce blade-svelte bundle size
+- Updated dependencies [7ec4868c5]
+  - @razorpay/blade-core@0.10.1
+
 ## 0.11.0
 
 ### Minor Changes

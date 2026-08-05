@@ -361,7 +361,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'default');
     expect(input).toHaveProp('returnKeyType', 'default');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
   });
 
@@ -376,7 +376,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'phone-pad');
     expect(input).toHaveProp('returnKeyType', 'done');
-    expect(input).toHaveProp('autoCompleteType', 'tel');
+    expect(input).toHaveProp('autoComplete', 'tel');
     expect(input).toHaveProp('textContentType', 'telephoneNumber');
   });
 
@@ -391,7 +391,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'email-address');
     expect(input).toHaveProp('returnKeyType', 'done');
-    expect(input).toHaveProp('autoCompleteType', 'email');
+    expect(input).toHaveProp('autoComplete', 'email');
     expect(input).toHaveProp('textContentType', 'emailAddress');
   });
 
@@ -406,7 +406,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'url');
     expect(input).toHaveProp('returnKeyType', 'go');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
     expect(input).toHaveProp('autoCapitalize', 'none');
   });
@@ -422,7 +422,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'decimal-pad');
     expect(input).toHaveProp('returnKeyType', 'done');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
   });
 
@@ -437,7 +437,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'default');
     expect(input).toHaveProp('returnKeyType', 'search');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
   });
 
