@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': minor
+"@razorpay/blade": minor
 ---
 
 feat(GenUI): add consumer-registered action slots for Card and Table components
