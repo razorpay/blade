@@ -114,9 +114,13 @@ describe('<GenUI />', () => {
 
     it('should expose the component DOM node via componentRef.current', async () => {
       const user = userEvent.setup();
-      const capturedNode: { current: HTMLElement | null } = { current: null };
+      const capturedNode: { current: HTMLDivElement | null } = { current: null };
 
-      const cardActionSlot = ({ componentRef }: { componentRef: React.RefObject<HTMLElement> }) => (
+      const cardActionSlot = ({
+        componentRef,
+      }: {
+        componentRef: React.RefObject<HTMLDivElement>;
+      }) => (
         <button
           type="button"
           onClick={() => {
@@ -145,7 +149,7 @@ describe('<GenUI />', () => {
 
       // componentRef.current resolves to the DOM node wrapping the rendered card
       expect(capturedNode.current).not.toBeNull();
-      expect(capturedNode.current).toBeInstanceOf(HTMLElement);
+      expect(capturedNode.current).toBeInstanceOf(HTMLDivElement);
       expect(capturedNode.current?.textContent).toContain('Payment Link Created');
     });
 

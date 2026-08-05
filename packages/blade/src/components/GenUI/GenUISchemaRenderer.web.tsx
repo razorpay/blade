@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import type { GenUIComponent } from './GenUIComponents';
 import { useGenUI, useGenUIComponentActions, GenUIContext } from './GenUIContext';
+import type { GenUIBlockLevelComponentType } from './types';
 import { getGenUIComponentTopSpacing } from './GenUISpacing';
 import type { AnimateOptions } from './rehypeAnimate';
 import { Box } from '~components/Box';
@@ -309,7 +310,10 @@ const ComponentRendererInner = memo(({ component, index }: ComponentRendererProp
     // 13px inset; custom components have no external margin so use 0.
     if (isBlockLevel) {
       // Consumer-registered action UI for this component type (render prop pattern).
-      const renderActionSlot = componentActions?.[componentType];
+      // Cast: `componentType` is a string, but the registry is keyed by the block-level
+      // union ('CARD' | 'TABLE'). Non-matching keys (including custom block-level
+      // component names) just resolve to undefined and no slot renders.
+      const renderActionSlot = componentActions?.[componentType as GenUIBlockLevelComponentType];
 
       return (
         <Box key={key} display="flex" flexDirection="column" width="100%">

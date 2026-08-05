@@ -3,11 +3,8 @@ import type { StoryFn, Meta } from '@storybook/react-vite';
 import { jsonrepair } from 'jsonrepair';
 import { GenUIProvider } from './GenUIProvider';
 import { GenUISchemaRenderer } from './GenUISchemaRenderer';
-import type {
-  GenUIActionSlotRenderer,
-  GenUIComponentActionsRegistry,
-  GenUIBaseComponent,
-} from './types';
+import type { GenUIComponent, TableComponent } from './GenUIComponents';
+import type { GenUIActionSlotRenderer, GenUIComponentActionsRegistry } from './types';
 import { Box } from '~components/Box';
 import type { BoxProps } from '~components/Box';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -1013,11 +1010,6 @@ const componentActionsSchema = {
   ],
 };
 
-type TableLikeComponent = GenUIBaseComponent & {
-  headers?: string[];
-  rows?: Array<Array<{ component: string; value?: string | number }>>;
-};
-
 const WithComponentActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JSX.Element => {
   const [downloadedNodeTag, setDownloadedNodeTag] = useState<string>('');
   const [copied, setCopied] = useState(false);
@@ -1040,7 +1032,7 @@ const WithComponentActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JS
   );
 
   // TABLE action slot: reads the component's schema (rows/headers) via data (for CSV export, etc.)
-  const tableActions: GenUIActionSlotRenderer<TableLikeComponent> = ({ data }) => (
+  const tableActions: GenUIActionSlotRenderer<TableComponent> = ({ data }) => (
     <Link
       variant="button"
       icon={CopyIcon}
@@ -1048,7 +1040,10 @@ const WithComponentActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JS
       onClick={() => {
         const headers = (data.headers ?? []).join(',');
         const rows = (data.rows ?? [])
-          .map((row) => row.map((cell) => String(cell.value ?? '')).join(','))
+          .map((row) =>
+            // LINK cells carry `text`; all other cell types carry `value`
+            row.map((cell) => String('value' in cell ? cell.value : cell.text ?? '')).join(','),
+          )
           .join('\n');
         void navigator.clipboard?.writeText(`${headers}\n${rows}`);
         setCopied(true);
@@ -1067,7 +1062,11 @@ const WithComponentActionsTemplate: StoryFn<typeof GenUISchemaRenderer> = (): JS
   return (
     <Box maxWidth="900px">
       <GenUIProvider config={{ componentActions }}>
-        <GenUISchemaRenderer components={componentActionsSchema.components as never} />
+        {/* Cast needed: the demo schema is a plain object literal — in real usage the schema
+            comes from the LLM as JSON and is validated/typed at the consumer boundary */}
+        <GenUISchemaRenderer
+          components={(componentActionsSchema.components as unknown) as GenUIComponent[]}
+        />
       </GenUIProvider>
       {downloadedNodeTag ? (
         <Box marginTop="spacing.4">

@@ -3,7 +3,12 @@ export { useGenUI, useGenUIAction, useGenUIComponentActions } from './GenUIConte
 export { GenUISchemaRenderer } from './GenUISchemaRenderer';
 
 export type { GenUISchemaRendererProps } from './GenUISchemaRenderer';
-export type { GenUIComponent } from './GenUIComponents';
+export type {
+  GenUIComponent,
+  CardComponent,
+  TableComponent,
+  TableCellType,
+} from './GenUIComponents';
 
 export type {
   GenUIAction,
@@ -15,4 +20,5 @@ export type {
   GenUIActionSlotProps,
   GenUIActionSlotRenderer,
   GenUIComponentActionsRegistry,
+  GenUIBlockLevelComponentType,
 } from './types';
