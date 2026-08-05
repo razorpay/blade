@@ -21,7 +21,7 @@ const _TablePagination = ({
   showOnSinglePage = false,
   paginationType = 'client',
   ...rest
-}: TablePaginationProps): React.ReactElement => {
+}: TablePaginationProps): React.ReactElement | null => {
   const {
     setPaginationPage,
     currentPaginationState,
