@@ -1878,9 +1878,7 @@ describe('<Table />', () => {
     const headerRow = skeleton?.children[0];
     // The skeleton grid template should start with 'min-content' to mirror
     // the loaded table's checkbox column when selectionType is 'multiple'
-    expect(headerRow).toHaveStyle(
-      'grid-template-columns: min-content repeat(3,minmax(100px,1fr))',
-    );
+    expect(headerRow).toHaveStyle('grid-template-columns: min-content repeat(3,minmax(100px,1fr))');
     expect(container).toMatchSnapshot();
   });
 
