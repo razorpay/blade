@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync, rmSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sveld } from 'sveld';
@@ -20,6 +20,14 @@ if (!existsSync(typesOutDir)) {
   );
 }
 
+const componentBarrelPath = join(componentTypesOutDir, 'index.d.ts');
+const componentBarrelFromTsc = readFileSync(componentBarrelPath, 'utf8');
+if (!componentBarrelFromTsc.trim()) {
+  throw new Error(
+    'dist/types/components/index.d.ts is empty. Run build:generate-types (tsc) before build:generate-svelte-types.',
+  );
+}
+
 await sveld({
   entry: './src/components/sveld-entry.js',
   glob: true,
@@ -30,6 +38,9 @@ await sveld({
   },
 });
 
+// sveld overwrites the tsc barrel with an empty stub derived from sveld-entry.js
+writeFileSync(componentBarrelPath, componentBarrelFromTsc);
+
 removeExcludedStubs(componentTypesOutDir);
 removeMisplacedStubs(typesOutDir);
 
@@ -39,6 +50,12 @@ if (missingStubs.length > 0) {
     `Missing .svelte.d.ts stubs for ${missingStubs.length} import(s):\n${missingStubs
       .slice(0, 10)
       .join('\n')}${missingStubs.length > 10 ? '\n...' : ''}`,
+  );
+}
+
+if (!readFileSync(componentBarrelPath, 'utf8').trim()) {
+  throw new Error(
+    'dist/types/components/index.d.ts is empty after svelte type generation. Consumers cannot resolve @razorpay/blade-svelte/components types.',
   );
 }
 
