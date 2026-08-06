@@ -1836,9 +1836,9 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should apply the height prop to the skeleton so it reserves the loaded table footprint', () => {
+  it('should apply skeletonMinHeight to the skeleton so it reserves the loaded table footprint', () => {
     const { container } = renderWithTheme(
-      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} height="500px">
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3} skeletonMinHeight="500px">
         {() => (
           <>
             <TableHeader>
@@ -1853,8 +1853,28 @@ describe('<Table />', () => {
       </Table>,
     );
     const skeleton = container.querySelector('[data-testid="table-skeleton"]');
-    expect(skeleton).toHaveStyle('height: 500px');
+    expect(skeleton).toHaveStyle('min-height: 500px');
     expect(container).toMatchSnapshot();
+  });
+
+  it('should default to flex:1 on skeleton container when skeletonMinHeight is not set (backward compatible)', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} skeletonRowCount={3}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    expect(skeleton).toHaveStyle('flex: 1');
   });
 
   it('should render skeleton with min-content prefix when selectionType is multiple', () => {
@@ -1889,7 +1909,7 @@ describe('<Table />', () => {
         isLoading={true}
         skeletonRowCount={25}
         skeletonRowMinHeight="48px"
-        height="1200px"
+        skeletonMinHeight="1200px"
         gridTemplateColumns="176px 132px minmax(168px, 1.05fr) 100px 80px"
         rowDensity="normal"
         pagination={
@@ -1918,7 +1938,7 @@ describe('<Table />', () => {
       </Table>,
     );
     const skeleton = container.querySelector('[data-testid="table-skeleton"]');
-    expect(skeleton).toHaveStyle('height: 1200px');
+    expect(skeleton).toHaveStyle('min-height: 1200px');
     const directChildren = skeleton?.children;
     expect(directChildren?.length).toBe(26); // 1 header + 25 body
     expect(container).toMatchSnapshot();

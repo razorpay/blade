@@ -206,8 +206,6 @@ type TableProps<Item> = {
   pagination?: React.ReactElement;
   /**
    * The height prop is a responsive styled prop that determines the height of the table.
-   * It is also applied to the loading skeleton so the table reserves the same footprint
-   * while `isLoading` is true and the page does not reflow once data arrives.
    **/
   height?: BoxProps['height'];
 
@@ -249,6 +247,16 @@ type TableProps<Item> = {
    * `compact` = 36px, `normal` = 48px, `comfortable` = 60px.
    **/
   skeletonRowMinHeight?: BoxProps['minHeight'];
+  /**
+   * Sets the minimum height of the skeleton container shown when `isLoading` is true.
+   * Accepts any valid Blade height value (e.g. `"500px"`, `{ base: '400px', m: '600px' }`).
+   *
+   * When provided, the skeleton reserves the loaded table's footprint so the
+   * page does not reflow once data arrives. When omitted, the skeleton
+   * container defaults to `flex: 1` (the original behavior), preserving
+   * backward compatibility for existing consumers.
+   **/
+  skeletonMinHeight?: BoxProps['minHeight'];
   /**
    * The isRefreshing prop determines whether the table is refreshing or not.
    * The default value is `false`.

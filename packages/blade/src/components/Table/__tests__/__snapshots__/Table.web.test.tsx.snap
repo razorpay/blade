@@ -1136,7 +1136,7 @@ exports[`<Table /> should accept data-analytics-* props 1`] = `
 </div>
 `;
 
-exports[`<Table /> should apply the height prop to the skeleton so it reserves the loaded table footprint 1`] = `
+exports[`<Table /> should apply skeletonMinHeight to the skeleton so it reserves the loaded table footprint 1`] = `
 .c0.c0.c0.c0.c0 {
   overflow: hidden;
   background-color: hsla(0,0%,100%,1);
@@ -1144,7 +1144,7 @@ exports[`<Table /> should apply the height prop to the skeleton so it reserves t
 }
 
 .c2.c2.c2.c2.c2 {
-  height: 500px;
+  min-height: 500px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1332,7 +1332,7 @@ exports[`<Table /> should render skeleton with all enhancement props combined 1`
 }
 
 .c2.c2.c2.c2.c2 {
-  height: 1200px;
+  min-height: 1200px;
 }
 
 .c4.c4.c4.c4.c4 {

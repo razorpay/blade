@@ -205,6 +205,7 @@ const _Table = <Item,>({
   checkboxDisplay = 'always',
   skeletonRowCount,
   skeletonRowMinHeight,
+  skeletonMinHeight,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
@@ -643,11 +644,12 @@ const _Table = <Item,>({
       >
         {isLoading ? (
           <BaseBox
-            // Mirror the `height` applied to the loaded table so the skeleton reserves the
-            // same footprint and the page doesn't reflow once data arrives. `flex: 1`
-            // resolves to `flex-basis: 0`, which would override the height on this column
-            // flex item, so the two are mutually exclusive.
-            {...(height ? { height } : { flex: 1 })}
+            // When `skeletonMinHeight` is provided, apply it so the skeleton
+            // reserves the loaded table's footprint and the page doesn't reflow
+            // once data arrives. Otherwise, fall back to the original `flex: 1`
+            // behavior to preserve backward compatibility for existing consumers.
+            flex={skeletonMinHeight ? undefined : 1}
+            {...(skeletonMinHeight ? { minHeight: skeletonMinHeight } : {})}
             {...getStyledProps(rest)}
             {...metaAttribute({ name: MetaConstants.Table })}
             {...makeAnalyticsAttribute(rest)}
