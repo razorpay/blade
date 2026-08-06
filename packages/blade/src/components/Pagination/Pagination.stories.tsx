@@ -214,55 +214,64 @@ export const UncontrolledExampleStory: StoryFn<typeof PaginationComponent> = () 
 };
 UncontrolledExampleStory.storyName = 'Uncontrolled Example';
 
-const FewItemsExample = (): React.ReactElement => {
+const SinglePageExample = (): React.ReactElement => {
   return (
-    <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-      <Text marginBottom="spacing.4">
-        With only 5 items, everything already fits on a single page, so the pagination renders
-        nothing at all — no page size picker and no navigation arrows.
-      </Text>
-      <PaginationComponent
-        totalPages={1}
-        totalItemCount={5}
-        onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
-        showPageSizePicker
-        showPageNumberSelector
-        showLabel
-      />
+    <Box display="flex" flexDirection="column" gap="spacing.7" padding="spacing.4">
+      <Box>
+        <Text marginBottom="spacing.4">
+          <Text as="span" weight="semibold">
+            Default
+          </Text>{' '}
+          — with only 5 items everything already fits on a single page, so the pagination renders
+          nothing at all. No page size picker, no navigation arrows. The dashed outline below is
+          only here to show the empty slot; it is not part of the component.
+        </Text>
+        <Box
+          borderWidth="thin"
+          borderStyle="dashed"
+          borderColor="surface.border.gray.muted"
+          borderRadius="medium"
+          padding="spacing.4"
+          backgroundColor="surface.background.gray.intense"
+        >
+          <PaginationComponent
+            totalPages={1}
+            totalItemCount={5}
+            onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
+            showPageSizePicker
+            showPageNumberSelector
+            showLabel
+          />
+        </Box>
+      </Box>
+      <Box>
+        <Text marginBottom="spacing.4">
+          <Text as="span" weight="semibold">
+            With showOnSinglePage
+          </Text>{' '}
+          — same 5 items, but the pagination is forced to render. Useful when you need a stable
+          layout height across loading states or page transitions.
+        </Text>
+        <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
+          <PaginationComponent
+            totalPages={1}
+            totalItemCount={5}
+            showOnSinglePage
+            onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
+            showPageSizePicker
+            showPageNumberSelector
+            showLabel
+          />
+        </Box>
+      </Box>
     </Box>
   );
 };
 
-export const WithFewItems: StoryFn<typeof PaginationComponent> = () => {
-  return <FewItemsExample />;
+export const HiddenOnSinglePage: StoryFn<typeof PaginationComponent> = () => {
+  return <SinglePageExample />;
 };
-WithFewItems.storyName = 'Hidden When All Items Fit On One Page';
-
-const ShowOnSinglePageExample = (): React.ReactElement => {
-  return (
-    <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-      <Text marginBottom="spacing.4">
-        With only 5 items, everything fits on a single page. Normally the pagination would hide, but
-        showOnSinglePage forces it to always render — useful for consistent layout during loading
-        states.
-      </Text>
-      <PaginationComponent
-        totalPages={1}
-        totalItemCount={5}
-        showOnSinglePage
-        onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
-        showPageSizePicker
-        showPageNumberSelector
-        showLabel
-      />
-    </Box>
-  );
-};
-
-export const WithShowOnSinglePage: StoryFn<typeof PaginationComponent> = () => {
-  return <ShowOnSinglePageExample />;
-};
-WithShowOnSinglePage.storyName = 'Always Render With showOnSinglePage';
+HiddenOnSinglePage.storyName = 'Hidden When All Items Fit On One Page';
 
 type PaymentItem = {
   id: string;
