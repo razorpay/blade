@@ -1,6 +1,8 @@
 /* Blade Design System CSS Variables */
 /* Generated from theme and global tokens */
 
+@layer blade;
+
 :root {
   /* ===== GLOBAL TOKENS ===== */
 
@@ -1055,6 +1057,7 @@
   }
 }
 
+@layer blade {
 /* ===== UTILITY CLASSES ===== */
 /* These utility classes are used by components via getStyledPropsClasses */
 
@@ -1280,4 +1283,5 @@
   box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);
 }
 
+}
 
