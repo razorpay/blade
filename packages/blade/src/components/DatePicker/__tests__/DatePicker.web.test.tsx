@@ -171,3 +171,136 @@ describe('<FilterChipDatePicker/> clear button', () => {
     expect(queryByLabelText('Clear Date value')).toBeTruthy();
   });
 });
+
+describe('<FilterChipDatePicker/> open state', () => {
+  jest.setTimeout(15000);
+
+  // The flyout stays mounted after closing (floating-ui keeps it for the exit transition, which
+  // never completes in jsdom), so presence in the DOM cannot be used to assert open/closed state.
+  const expectExpanded = async (chip: HTMLElement, isExpanded: boolean): Promise<void> => {
+    await waitFor(() =>
+      expect(chip).toHaveAttribute('aria-expanded', isExpanded ? 'true' : 'false'),
+    );
+  };
+
+  it('should reopen when a complete range is already selected (controlled)', async () => {
+    const Comp = (): React.ReactElement => {
+      const [isOpen, setIsOpen] = React.useState(false);
+      const [date, setDate] = React.useState<DatesRangeValue>([
+        dayjs('1999-04-22').toDate(),
+        dayjs('1999-04-25').toDate(),
+      ]);
+
+      return (
+        <FilterChipDatePicker
+          label="Date"
+          selectionType="range"
+          isOpen={isOpen}
+          onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+          value={date}
+          onChange={(value) => setDate(value as DatesRangeValue)}
+        />
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<Comp />);
+    const chip = getByRole('combobox', { name: /Date/i });
+
+    await user.click(chip);
+    await expectExpanded(chip, true);
+
+    // a fresh selection still commits and closes the flyout
+    await user.click(getByRole('button', { name: '5 April 1999' }));
+    await expectExpanded(chip, true);
+    await user.click(getByRole('button', { name: '9 April 1999' }));
+    await expectExpanded(chip, false);
+
+    await user.click(chip);
+    await expectExpanded(chip, true);
+  });
+
+  it('should reopen when a complete range is already selected (uncontrolled)', async () => {
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(
+      <FilterChipDatePicker
+        label="Date"
+        selectionType="range"
+        defaultValue={[dayjs('1999-04-22').toDate(), dayjs('1999-04-25').toDate()]}
+      />,
+    );
+    const chip = getByRole('combobox', { name: /Date/i });
+
+    await user.click(chip);
+    await expectExpanded(chip, true);
+  });
+
+  it('should reopen when a date is already selected (controlled, single)', async () => {
+    const Comp = (): React.ReactElement => {
+      const [isOpen, setIsOpen] = React.useState(false);
+      const [date, setDate] = React.useState<Date | undefined>(dayjs('1999-04-22').toDate());
+
+      return (
+        <FilterChipDatePicker
+          label="Date"
+          selectionType="single"
+          isOpen={isOpen}
+          onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+          value={date}
+          onChange={(value) => setDate(value as Date)}
+        />
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<Comp />);
+    const chip = getByRole('combobox', { name: /Date/i });
+
+    await user.click(chip);
+    await expectExpanded(chip, true);
+
+    await user.click(getByRole('button', { name: '10 April 1999' }));
+    await expectExpanded(chip, false);
+
+    await user.click(chip);
+    await expectExpanded(chip, true);
+  });
+
+  it('should fire onOpenChange once per open and close (controlled)', async () => {
+    const onOpenChange = jest.fn();
+    const Comp = (): React.ReactElement => {
+      const [isOpen, setIsOpen] = React.useState(false);
+      const [date, setDate] = React.useState<DatesRangeValue>([null, null]);
+
+      return (
+        <FilterChipDatePicker
+          label="Date"
+          selectionType="range"
+          isOpen={isOpen}
+          onOpenChange={({ isOpen }) => {
+            onOpenChange(isOpen);
+            setIsOpen(isOpen);
+          }}
+          value={date}
+          onChange={(value) => setDate(value as DatesRangeValue)}
+        />
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<Comp />);
+    const chip = getByRole('combobox', { name: /Date/i });
+
+    await user.click(chip);
+    await expectExpanded(chip, true);
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+
+    const start = dayjs().startOf('month').add(9, 'day');
+    await user.click(getByRole('button', { name: start.format('D MMMM YYYY') }));
+    await user.click(getByRole('button', { name: start.add(3, 'day').format('D MMMM YYYY') }));
+
+    await expectExpanded(chip, false);
+    expect(onOpenChange).toHaveBeenCalledTimes(2);
+    expect(onOpenChange).toHaveBeenLastCalledWith(false);
+  });
+});
