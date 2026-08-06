@@ -214,65 +214,6 @@ export const UncontrolledExampleStory: StoryFn<typeof PaginationComponent> = () 
 };
 UncontrolledExampleStory.storyName = 'Uncontrolled Example';
 
-const SinglePageExample = (): React.ReactElement => {
-  return (
-    <Box display="flex" flexDirection="column" gap="spacing.7" padding="spacing.4">
-      <Box>
-        <Text marginBottom="spacing.4">
-          <Text as="span" weight="semibold">
-            Default
-          </Text>{' '}
-          — with only 5 items everything already fits on a single page, so the pagination renders
-          nothing at all. No page size picker, no navigation arrows. The dashed outline below is
-          only here to show the empty slot; it is not part of the component.
-        </Text>
-        <Box
-          borderWidth="thin"
-          borderStyle="dashed"
-          borderColor="surface.border.gray.muted"
-          borderRadius="medium"
-          padding="spacing.4"
-          backgroundColor="surface.background.gray.intense"
-        >
-          <PaginationComponent
-            totalPages={1}
-            totalItemCount={5}
-            onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
-            showPageSizePicker
-            showPageNumberSelector
-            showLabel
-          />
-        </Box>
-      </Box>
-      <Box>
-        <Text marginBottom="spacing.4">
-          <Text as="span" weight="semibold">
-            With showOnSinglePage
-          </Text>{' '}
-          — same 5 items, but the pagination is forced to render. Useful when you need a stable
-          layout height across loading states or page transitions.
-        </Text>
-        <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
-          <PaginationComponent
-            totalPages={1}
-            totalItemCount={5}
-            showOnSinglePage
-            onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
-            showPageSizePicker
-            showPageNumberSelector
-            showLabel
-          />
-        </Box>
-      </Box>
-    </Box>
-  );
-};
-
-export const HiddenOnSinglePage: StoryFn<typeof PaginationComponent> = () => {
-  return <SinglePageExample />;
-};
-HiddenOnSinglePage.storyName = 'Hidden When All Items Fit On One Page';
-
 type PaymentItem = {
   id: string;
   paymentId: string;
@@ -280,17 +221,17 @@ type PaymentItem = {
   status: string;
 };
 
-const paymentNodes: PaymentItem[] = Array.from({ length: 12 }, (_, index) => ({
+const paymentNodes: PaymentItem[] = Array.from({ length: 5 }, (_, index) => ({
   id: (index + 1).toString(),
   paymentId: `rzp${(index + 1).toString().padStart(4, '0')}`,
   amount: (index + 1) * 1000,
   status: index % 2 === 0 ? 'Completed' : 'Pending',
 }));
 
-const PaginatedTable = ({ rowCount }: { rowCount: number }): React.ReactElement => {
+const PaginatedTable = (): React.ReactElement => {
   return (
     <Table
-      data={{ nodes: paymentNodes.slice(0, rowCount) }}
+      data={{ nodes: paymentNodes }}
       pagination={
         <TablePagination
           onPageChange={({ page }) => console.log('Page changed:', page)}
@@ -325,30 +266,82 @@ const PaginatedTable = ({ rowCount }: { rowCount: number }): React.ReactElement 
   );
 };
 
-const TableWithFewRowsExample = (): React.ReactElement => {
+const Demo = ({
+  title,
+  description,
+  children,
+}: {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}): React.ReactElement => {
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.7" padding="spacing.4">
-      <Box>
-        <Text marginBottom="spacing.4">
-          5 rows — everything fits on one page, so the table renders its rows but no pagination
-          footer at all.
-        </Text>
-        <PaginatedTable rowCount={5} />
-      </Box>
-      <Box>
-        <Text marginBottom="spacing.4">
-          12 rows — more than one page at 10 rows / page, so the pagination footer stays.
-        </Text>
-        <PaginatedTable rowCount={12} />
-      </Box>
+    <Box>
+      <Text marginBottom="spacing.3">
+        <Text as="span" weight="semibold">
+          {title}
+        </Text>{' '}
+        — {description}
+      </Text>
+      {children}
     </Box>
   );
 };
 
-export const TableWithFewRows: StoryFn<typeof PaginationComponent> = () => {
-  return <TableWithFewRowsExample />;
+const SinglePageExample = (): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.7" padding="spacing.4">
+      <Demo
+        title="Default"
+        description="5 items already fit on one page, so the pagination renders nothing at all. The dashed outline marks the empty slot and is not part of the component."
+      >
+        <Box
+          borderWidth="thin"
+          borderStyle="dashed"
+          borderColor="surface.border.gray.muted"
+          borderRadius="medium"
+          padding="spacing.4"
+        >
+          <PaginationComponent
+            totalPages={1}
+            totalItemCount={5}
+            onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
+            showPageSizePicker
+            showPageNumberSelector
+            showLabel
+          />
+        </Box>
+      </Demo>
+      <Demo
+        title="With showOnSinglePage"
+        description="Same 5 items, but the pagination is forced to render. Use this when you need a stable layout height across loading states."
+      >
+        <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
+          <PaginationComponent
+            totalPages={1}
+            totalItemCount={5}
+            showOnSinglePage
+            onSelectedPageChange={({ page }) => console.log('Page changed:', page)}
+            showPageSizePicker
+            showPageNumberSelector
+            showLabel
+          />
+        </Box>
+      </Demo>
+      <Demo
+        title="Inside a Table"
+        description="TablePagination gets the same behaviour for free — 5 rows at 10 rows / page means no pagination footer is rendered."
+      >
+        <PaginatedTable />
+      </Demo>
+    </Box>
+  );
 };
-TableWithFewRows.storyName = 'Hidden In A Table With Few Rows';
+
+export const HiddenOnSinglePage: StoryFn<typeof PaginationComponent> = () => {
+  return <SinglePageExample />;
+};
+HiddenOnSinglePage.storyName = 'Hidden When All Items Fit On One Page';
 
 export const Disabled = PaginationTemplate.bind({});
 Disabled.args = {
