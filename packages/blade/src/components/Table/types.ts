@@ -228,9 +228,10 @@ type TableProps<Item> = {
   isLoading?: boolean;
   /**
    * Explicitly sets the number of skeleton rows shown when `isLoading` is true.
-   * When not provided, the skeleton row count is derived from the `defaultPageSize`
-   * of the `TablePagination` component passed via the `pagination` prop.
-   * If neither is available, falls back to a default of 7 rows.
+   * When omitted, the count is derived from `pagination.props.defaultPageSize`
+   * (the `defaultPageSize` prop passed to `TablePagination`), then from the
+   * default page size (10) when pagination is present but `defaultPageSize`
+   * is not explicitly set, and finally from 7 rows when there is no pagination.
    **/
   skeletonRowCount?: number;
   /**
