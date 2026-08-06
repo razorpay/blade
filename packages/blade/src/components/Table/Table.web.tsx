@@ -492,7 +492,15 @@ const _Table = <Item,>({
     (hasPagination ? tablePagination.defaultPageSize : SKELETON_ROW_COUNT);
   // When the consumer provides gridTemplateColumns, use it for skeleton rows too
   // so column widths match between skeleton and loaded states.
-  const skeletonGridTemplateColumns = gridTemplateColumns ?? undefined;
+  // When no custom gridTemplateColumns is provided, build the default template
+  // in the component body (instead of inside the styled callback) so we can
+  // prepend a `min-content` track for the checkbox column when
+  // selectionType === 'multiple', mirroring the loaded table's grid template.
+  const skeletonGridTemplateColumns = gridTemplateColumns
+    ? gridTemplateColumns
+    : `${selectionType === 'multiple' ? 'min-content ' : ''}repeat(${
+        columnCount || 5
+      }, minmax(100px, 1fr))`;
 
   // Warn when an explicit skeleton row min-height is combined with a non-default
   // rowDensity: skeletonRowMinHeight overrides the min-height that rowDensity

@@ -1857,6 +1857,33 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render skeleton with min-content prefix when selectionType is multiple', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: [] }} isLoading={true} selectionType="multiple" skeletonRowCount={2}>
+        {() => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>{[]}</TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const skeleton = container.querySelector('[data-testid="table-skeleton"]');
+    const headerRow = skeleton?.children[0];
+    // The skeleton grid template should start with 'min-content' to mirror
+    // the loaded table's checkbox column when selectionType is 'multiple'
+    expect(headerRow).toHaveStyle(
+      'grid-template-columns: min-content repeat(3,minmax(100px,1fr))',
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render skeleton with all enhancement props combined', () => {
     const { container } = renderWithTheme(
       <Table
