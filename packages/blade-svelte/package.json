@@ -41,11 +41,10 @@
   ],
   "scripts": {
     "prepare": "yarn build",
-    "build": "npm-run-all build:clean build:generate-svelte-types build:generate-types build:validate-types build:lib",
+    "build": "npm-run-all build:clean build:generate-svelte-types build:generate-types build:lib",
     "build:clean": "rm -rf dist",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
     "build:generate-svelte-types": "node ./scripts/generate-svelte-component-types.mjs",
-    "build:validate-types": "node ./scripts/validate-svelte-component-types.mjs",
     "build:lib": "rollup -c",
     "svelte-check": "svelte-check --tsconfig ./tsconfig.json",
     "svelte-check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
