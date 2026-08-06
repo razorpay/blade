@@ -4,6 +4,7 @@ export { GenUISchemaRenderer } from './GenUISchemaRenderer';
 
 export type { GenUISchemaRendererProps } from './GenUISchemaRenderer';
 export type { GenUIComponent } from './GenUIComponents';
+export type { GenUIDuplicateMarkdownTableEvent } from './duplicateMarkdownTableHandling';
 
 export type {
   GenUIAction,
