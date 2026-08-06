@@ -1,5 +1,13 @@
 # @razorpay/blade-svelte
 
+## 0.11.2
+
+### Patch Changes
+
+- 59b039ff8: fix: blade-svelte type pipeline - add sveld for svelte component type generation
+- Updated dependencies [a5d2dc639]
+  - @razorpay/blade-core@0.10.2
+
 ## 0.11.1
 
 ### Patch Changes
