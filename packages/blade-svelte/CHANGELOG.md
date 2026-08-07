@@ -1,5 +1,11 @@
 # @razorpay/blade-svelte
 
+## 0.11.3
+
+### Patch Changes
+
+- 937bc4c40: fix: run tsc after sveld so the components type barrel is not overwritten
+
 ## 0.11.2
 
 ### Patch Changes
