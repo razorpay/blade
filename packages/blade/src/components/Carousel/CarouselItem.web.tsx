@@ -65,8 +65,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       flexGrow: 0,
       flexShrink: 0,
       width: calculatedWidth,
-      height: '100%',
-      minHeight: '100%',
+      height: 'auto',
       scrollSnapAlign: snapAlign ?? 'start',
       marginLeft: calculatedMarginLeft,
 

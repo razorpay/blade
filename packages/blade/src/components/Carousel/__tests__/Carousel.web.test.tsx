@@ -90,6 +90,65 @@ describe('<Carousel />', () => {
 
     expect(queryAllByRole('tab').length).toBe(0);
   });
+
+  test('carouselItemAlignment="stretch" should not set height or min-height on slides so flexbox stretch works', () => {
+    const { container } = renderWithTheme(
+      <Carousel carouselItemAlignment="stretch">
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+
+    slides.forEach((slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      expect(computedStyle.height).not.toBe('100%');
+      expect(computedStyle.minHeight).not.toBe('100%');
+    });
+  });
+
+  test('when showIndicators=false and showNavigationButtons=false on mobile, no controls container should be rendered', () => {
+    const originalMatchMedia = window.matchMedia;
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+      matches: query.includes('max-width') && parseInt(query.match(/\d+/)?.[0] || '0') >= 320,
+      media: query,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    }));
+
+    const { container } = renderWithTheme(
+      <Carousel showIndicators={false} showNavigationButtons={false}>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const navButtons = container.querySelectorAll('[data-blade-component="NavigationButton"]');
+    expect(navButtons.length).toBe(0);
+
+    const indicators = container.querySelectorAll(
+      '[data-blade-component="carousel-indicator-button"]',
+    );
+    expect(indicators.length).toBe(0);
+
+    const controlsBoxes = container.querySelectorAll('[data-blade-component="box"]');
+    controlsBoxes.forEach((box) => {
+      const computedStyle = window.getComputedStyle(box);
+      expect(computedStyle.marginTop).not.toBe('24px');
+    });
+
+    window.matchMedia = originalMatchMedia;
+  });
 });
 
 describe('Carousel Snapshots', () => {
