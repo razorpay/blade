@@ -41,7 +41,7 @@
   ],
   "scripts": {
     "prepare": "yarn build",
-    "build": "npm-run-all build:clean build:generate-types build:generate-svelte-types build:lib",
+    "build": "npm-run-all build:clean build:generate-svelte-types build:generate-types build:lib",
     "build:clean": "rm -rf dist",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
     "build:generate-svelte-types": "node ./scripts/generate-svelte-component-types.mjs",
