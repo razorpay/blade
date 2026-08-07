@@ -21,11 +21,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayLight[0],
         },
         primary: {
-          faint: transparent,
+          faint: 'transparent',
           subtle: globalColors.chromatic.azure.a50,
-          moderate: transparent,
+          moderate: 'transparent',
           intense: globalColors.chromatic.azure[500],
-          strong: transparent,
+          strong: 'transparent',
         },
         sea: {
           subtle: globalColors.chromatic.sea[50],
@@ -36,7 +36,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.chromatic.cloud[800],
         },
         accent: {
-          intense: transparent,
+          intense: 'transparent',
         },
       },
       border: {
@@ -707,11 +707,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[1100],
         },
         primary: {
-          faint: transparent,
+          faint: 'transparent',
           subtle: globalColors.chromatic.azure.a200,
-          moderate: transparent,
+          moderate: 'transparent',
           intense: globalColors.chromatic.azure[500],
-          strong: transparent,
+          strong: 'transparent',
         },
         sea: {
           subtle: globalColors.chromatic.sea[900],
@@ -722,7 +722,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.chromatic.cloud[100],
         },
         accent: {
-          intense: transparent,
+          intense: 'transparent',
         },
       },
       border: {

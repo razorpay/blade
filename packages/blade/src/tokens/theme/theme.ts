@@ -98,12 +98,12 @@ type PopupDeprecatedTokens = {
    *
    * Use popup.[background|border].[color].subtle instead
    */
-  subtle: string;
+  subtle?: string;
   /**
    * @deprecated
    * Use popup.[background|border].[color].intense instead
    */
-  intense: string;
+  intense?: string;
 };
 
 export type Colors = {
