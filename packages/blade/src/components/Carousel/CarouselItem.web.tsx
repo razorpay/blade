@@ -15,7 +15,10 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getSpacingValue } from '~components/Box/BaseBox/baseBoxStyles';
 
-type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
+type StyledCarouselItemProps = Pick<
+  CarouselProps,
+  'visibleItems' | 'shouldAddStartEndSpacing' | 'carouselItemAlignment'
+> &
   Pick<
     CarouselItemProps,
     'shouldHaveEndSpacing' | 'shouldHaveStartSpacing' | 'snapAlign' | 'gap'
@@ -33,6 +36,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
     theme,
     snapAlign,
     gap,
+    carouselItemAlignment,
   }) => {
     const { matchedDeviceType, matchedBreakpoint } = useBreakpoint({
       breakpoints: theme.breakpoints,
@@ -65,7 +69,8 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       flexGrow: 0,
       flexShrink: 0,
       width: calculatedWidth,
-      height: 'auto',
+      height: carouselItemAlignment === 'stretch' ? 'auto' : '100%',
+      minHeight: carouselItemAlignment === 'stretch' ? undefined : '100%',
       scrollSnapAlign: snapAlign ?? 'start',
       marginLeft: calculatedMarginLeft,
 
@@ -106,6 +111,7 @@ const _CarouselItem = ({
     isResponsive,
     carouselItemWidth,
     shouldAddStartEndSpacing,
+    carouselItemAlignment,
   } = useCarouselContext();
   const { platform } = useTheme();
   const isMobile = platform === 'onMobile';
@@ -129,6 +135,7 @@ const _CarouselItem = ({
       shouldHaveEndSpacing={shouldHaveEndSpacing}
       snapAlign={snapAlign}
       gap={gap}
+      carouselItemAlignment={carouselItemAlignment}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}

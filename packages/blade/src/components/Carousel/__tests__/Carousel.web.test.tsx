@@ -91,7 +91,7 @@ describe('<Carousel />', () => {
     expect(queryAllByRole('tab').length).toBe(0);
   });
 
-  test('carouselItemAlignment="stretch" should not set height or min-height on slides so flexbox stretch works', () => {
+  test('carouselItemAlignment="stretch" should set height:auto (no min-height) so flexbox stretch works', () => {
     const { container } = renderWithTheme(
       <Carousel carouselItemAlignment="stretch">
         <CarouselItem>
@@ -108,8 +108,30 @@ describe('<Carousel />', () => {
 
     slides.forEach((slide) => {
       const computedStyle = window.getComputedStyle(slide);
-      expect(computedStyle.height).not.toBe('100%');
+      expect(computedStyle.height).toBe('auto');
       expect(computedStyle.minHeight).not.toBe('100%');
+    });
+  });
+
+  test('default carouselItemAlignment should preserve height:100% and min-height:100% on slides', () => {
+    const { container } = renderWithTheme(
+      <Carousel>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+
+    slides.forEach((slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      expect(computedStyle.height).toBe('100%');
+      expect(computedStyle.minHeight).toBe('100%');
     });
   });
 

@@ -526,6 +526,7 @@ const _Carousel = (
       startEndMargin,
       shouldAddStartEndSpacing,
       isAutoPlaying,
+      carouselItemAlignment,
     };
   }, [
     carouselId,
@@ -537,6 +538,7 @@ const _Carousel = (
     activeSlide,
     shouldAddStartEndSpacing,
     isAutoPlaying,
+    carouselItemAlignment,
   ]);
 
   return (
