@@ -43,7 +43,7 @@
   );
 
   const iconA11yAttrs = $derived(
-    isIconOnly ? makeAccessible({ role: 'img', label }) : { 'aria-hidden': 'true' },
+    isIconOnly ? makeAccessible({ role: 'img', label }) : { 'aria-hidden': true },
   );
 </script>
 
