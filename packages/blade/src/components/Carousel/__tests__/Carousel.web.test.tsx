@@ -116,7 +116,7 @@ describe('<Carousel />', () => {
   test('when showIndicators=false and showNavigationButtons=false on mobile, no controls container should be rendered', () => {
     const originalMatchMedia = window.matchMedia;
     window.matchMedia = jest.fn().mockImplementation((query) => ({
-      matches: query.includes('max-width') && parseInt(query.match(/\d+/)?.[0] || '0') >= 320,
+      matches: query.includes('max-width') && parseInt(query.match(/\d+/)?.[0] || '0', 10) >= 320,
       media: query,
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
