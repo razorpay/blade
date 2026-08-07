@@ -38,6 +38,7 @@
     "publish-npm": "node ./scripts/publishToNpm.js",
     "release": "node ./scripts/generateGitHubRegistryNpmrc.js && changeset publish",
     "postinstall": "yarn build:eslint-plugin-blade",
+    "reinstall": "rm -rf packages/blade-core/node_modules packages/blade-svelte/node_modules && yarn install",
     "build": "npm-run-all --parallel build:*",
     "build:blade": "lerna run --scope @razorpay/blade build",
     "build:blade-core": "lerna run --scope @razorpay/blade-core build",
