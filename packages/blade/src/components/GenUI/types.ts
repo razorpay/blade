@@ -25,6 +25,35 @@ type GenUIAction = {
   data?: Record<string, unknown>;
 };
 
+type GenUIActionSlotProps<T extends GenUIBaseComponent = GenUIBaseComponent> = {
+  data: T;
+  componentRef: React.RefObject<HTMLDivElement>;
+  componentType: string;
+};
+
+type GenUIActionSlotRenderer<T extends GenUIBaseComponent = GenUIBaseComponent> = (
+  props: GenUIActionSlotProps<T>,
+) => React.ReactNode;
+
+/**
+ * Component types that render as block-level elements (wrapped in the animated
+ * gradient border) and therefore support consumer-registered action slots.
+ * Custom components with `animation.name === 'gradient-ring-entry'` are also
+ * block-level at runtime, but their names are open-ended so they can't be
+ * included in this static union — cast the registry if you need them.
+ */
+type GenUIBlockLevelComponentType = 'CARD' | 'TABLE';
+
+/**
+ * Registry of consumer action slots, keyed by block-level component type.
+ * Action slots only render for block-level components (CARD, TABLE, or custom
+ * components with the gradient-ring-entry animation) — registering an action
+ * for any other component type has no effect.
+ */
+type GenUIComponentActionsRegistry = Partial<
+  Record<GenUIBlockLevelComponentType, GenUIActionSlotRenderer<GenUIBaseComponent>>
+>;
+
 /**
  * Component renderer function type
  */
@@ -61,4 +90,8 @@ export type {
   GenUIComponentRenderer,
   GenUIComponentDefinition,
   GenUIComponentRegistry,
+  GenUIActionSlotProps,
+  GenUIActionSlotRenderer,
+  GenUIComponentActionsRegistry,
+  GenUIBlockLevelComponentType,
 };
