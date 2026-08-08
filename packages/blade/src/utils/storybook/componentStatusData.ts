@@ -887,6 +887,22 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'TreeView',
+    description:
+      'TreeView renders a hierarchical list of expandable, selectable items. Works standalone or inside Dropdown in place of ActionList.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.115.0',
+        storybookLink: 'Components/TreeView',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'SideNav',
     description:
       'SideNav is a vertical navigation component that can be used to navigate between pages.',

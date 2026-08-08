@@ -1,0 +1,1162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TreeView /> should render standalone tree on server 1`] = `"<div id="root"><div data-blade-component="tree-view" class="BaseBox-bksIuc"><div role="tree" aria-multiselectable="true"><div data-blade-component="tree-view-item" class="BaseBox-bksIuc StyledTreeViewRowweb__StyledTreeViewRow-sc-10l3ch5-0  kZngbW"><div type="button" role="treeitem" tabindex="0" class="BaseBox-bksIuc StyledMenuItemContainerweb__StyledMenuItemContainer-cjjm5b-0  eZJQsB" data-value="india" data-tree-node-value="india" aria-expanded="true" aria-level="1" aria-posinset="1" aria-setsize="1" aria-checked="false" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc ebkwsn"><div aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc bUVcEN"><div data-blade-component="base-box" class="BaseBox-bksIuc TreeViewChevronweb__StyledChevronRotator-sc-18v4kok-0  eCqMdT"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z" clip-rule="evenodd" fill="hsla(204, 9%, 42%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc CYwED"><div data-blade-component="base-box" class="BaseBox-bksIuc gjKFmY"><div pointer-events="none" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc fOIotZ"><div data-blade-component="checkbox" class="BaseBox-bksIuc"><label style="cursor:pointer" data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 VrcmW"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc chMDmW"><input tabindex="-1" type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 hTAJIU"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 fBsGIi"><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"></div></div></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc hNGssR"><div data-blade-component="base-box" class="BaseBox-bksIuc bikTyS"><p class="StyledBaseText-foUshD fVzEOO" data-blade-component="text">India</p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc TreeViewAnimatorweb__StyledTreeViewAnimator-sc-1ssmrrr-0  iEwJPE"><div role="group" data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="tree-view-item" class="BaseBox-bksIuc StyledTreeViewRowweb__StyledTreeViewRow-sc-10l3ch5-0  gUmrrz"><div type="button" role="treeitem" tabindex="-1" class="BaseBox-bksIuc StyledMenuItemContainerweb__StyledMenuItemContainer-cjjm5b-0  eZJQsB" data-value="karnataka" data-tree-node-value="karnataka" aria-expanded="true" aria-level="2" aria-posinset="1" aria-setsize="2" aria-checked="false" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc ebkwsn"><div aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc bUVcEN"><div data-blade-component="base-box" class="BaseBox-bksIuc TreeViewChevronweb__StyledChevronRotator-sc-18v4kok-0  eCqMdT"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z" clip-rule="evenodd" fill="hsla(204, 9%, 42%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc CYwED"><div data-blade-component="base-box" class="BaseBox-bksIuc gjKFmY"><div pointer-events="none" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc fOIotZ"><div data-blade-component="checkbox" class="BaseBox-bksIuc"><label style="cursor:pointer" data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 VrcmW"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc chMDmW"><input tabindex="-1" type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 hTAJIU"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 fBsGIi"><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"></div></div></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc hNGssR"><div data-blade-component="base-box" class="BaseBox-bksIuc bikTyS"><p class="StyledBaseText-foUshD fVzEOO" data-blade-component="text">Karnataka</p></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc TreeViewAnimatorweb__StyledTreeViewAnimator-sc-1ssmrrr-0  iEwJPE"><div role="group" data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="tree-view-item" class="BaseBox-bksIuc StyledTreeViewRowweb__StyledTreeViewRow-sc-10l3ch5-0  cSsQVZ"><div type="button" role="treeitem" tabindex="-1" class="BaseBox-bksIuc StyledMenuItemContainerweb__StyledMenuItemContainer-cjjm5b-0  eZJQsB" data-value="bengaluru" data-tree-node-value="bengaluru" aria-level="3" aria-posinset="1" aria-setsize="3" aria-checked="false" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc ebkwsn"><div data-blade-component="base-box" class="BaseBox-bksIuc CYwED"><div data-blade-component="base-box" class="BaseBox-bksIuc gjKFmY"><div pointer-events="none" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc fOIotZ"><div data-blade-component="checkbox" class="BaseBox-bksIuc"><label style="cursor:pointer" data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 VrcmW"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc chMDmW"><input tabindex="-1" type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 hTAJIU"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 fBsGIi"><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"></div></div></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc hNGssR"><div data-blade-component="base-box" class="BaseBox-bksIuc bikTyS"><p class="StyledBaseText-foUshD fVzEOO" data-blade-component="text">Bengaluru</p></div></div></div></div></div></div><div data-blade-component="tree-view-item" class="BaseBox-bksIuc StyledTreeViewRowweb__StyledTreeViewRow-sc-10l3ch5-0  cSsQVZ"><div type="button" role="treeitem" tabindex="-1" class="BaseBox-bksIuc StyledMenuItemContainerweb__StyledMenuItemContainer-cjjm5b-0  eZJQsB" data-value="mysuru" data-tree-node-value="mysuru" aria-level="3" aria-posinset="2" aria-setsize="3" aria-checked="false" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc ebkwsn"><div data-blade-component="base-box" class="BaseBox-bksIuc CYwED"><div data-blade-component="base-box" class="BaseBox-bksIuc gjKFmY"><div pointer-events="none" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc fOIotZ"><div data-blade-component="checkbox" class="BaseBox-bksIuc"><label style="cursor:pointer" data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 VrcmW"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc chMDmW"><input tabindex="-1" type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 hTAJIU"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 fBsGIi"><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"></div></div></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc hNGssR"><div data-blade-component="base-box" class="BaseBox-bksIuc bikTyS"><p class="StyledBaseText-foUshD fVzEOO" data-blade-component="text">Mysuru</p></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc StyledTreeViewRowweb__StyledTreeViewRow-sc-10l3ch5-0  cSsQVZ"><div type="button" role="treeitem" aria-disabled="false" tabindex="-1" class="BaseBox-bksIuc StyledMenuItemContainerweb__StyledMenuItemContainer-cjjm5b-0  eZJQsB" data-value="__blade-tree-load-more__karnataka__3" data-tree-node-value="__blade-tree-load-more__karnataka__3" aria-level="3" aria-posinset="3" aria-setsize="3" data-blade-component="tree-view-load-more"><div data-blade-component="base-box" class="BaseBox-bksIuc ceufcq"><p letter-spacing="50" class="StyledBaseText-foUshD iBjJMZ" data-blade-component="text">Show more</p></div></div></div></div></div></div><div data-blade-component="tree-view-item" class="BaseBox-bksIuc StyledTreeViewRowweb__StyledTreeViewRow-sc-10l3ch5-0  gUmrrz"><div type="button" role="treeitem" tabindex="-1" class="BaseBox-bksIuc StyledMenuItemContainerweb__StyledMenuItemContainer-cjjm5b-0  eZJQsB" data-value="goa" data-tree-node-value="goa" aria-level="2" aria-posinset="2" aria-setsize="2" aria-checked="false" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bksIuc ebkwsn"><div data-blade-component="base-box" class="BaseBox-bksIuc CYwED"><div data-blade-component="base-box" class="BaseBox-bksIuc gjKFmY"><div pointer-events="none" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bksIuc fOIotZ"><div data-blade-component="checkbox" class="BaseBox-bksIuc"><label style="cursor:pointer" data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 VrcmW"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><div data-blade-component="base-box" class="BaseBox-bksIuc chMDmW"><input tabindex="-1" type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 hTAJIU"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 fBsGIi"><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" data-blade-component="checkbox-icon-fade" class="Fadeweb__AnimatedFade-sc-1h424tv-0 bnWHnz"></div></div></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc hNGssR"><div data-blade-component="base-box" class="BaseBox-bksIuc bikTyS"><p class="StyledBaseText-foUshD fVzEOO" data-blade-component="text">Goa</p></div></div></div></div></div></div></div></div></div></div></div></div>"`;
+
+exports[`<TreeView /> should render standalone tree on server 2`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+  gap: 8px;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 20px;
+}
+
+.c7.c7.c7.c7.c7 {
+  pointer-events: none;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c14.c14.c14.c14.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-width: 0px;
+}
+
+.c15.c15.c15.c15.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 20px;
+}
+
+.c20.c20.c20.c20.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 20px;
+}
+
+.c17.c17.c17.c17.c17 {
+  display: grid;
+  grid-template-rows: 1fr;
+  -webkit-transition: grid-template-rows 200ms cubic-bezier(0.3,0,0.2,1);
+  transition: grid-template-rows 200ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c17.c17.c17.c17.c17 > div {
+  overflow: hidden;
+  min-height: 0px;
+  visibility: visible;
+}
+
+.c16.c16.c16.c16.c16 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.c21.c21.c21.c21.c21 {
+  color: hsla(218,87%,43%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transition: -webkit-transform 200ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: transform 200ms cubic-bezier(0.3,0,0.2,1);
+  transition: transform 200ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c0.c0.c0.c0.c0 > [role="treeitem"] {
+  padding-left: 8px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.c0.c0.c0.c0.c0 > [role="treeitem"][aria-expanded="true"]:not(:hover):not([aria-selected="true"]) {
+  background-color: transparent;
+}
+
+.c18.c18.c18.c18.c18 > [role="treeitem"] {
+  padding-left: 32px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.c18.c18.c18.c18.c18 > [role="treeitem"][aria-expanded="true"]:not(:hover):not([aria-selected="true"]) {
+  background-color: transparent;
+}
+
+.c19.c19.c19.c19.c19 > [role="treeitem"] {
+  padding-left: 56px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.c19.c19.c19.c19.c19 > [role="treeitem"][aria-expanded="true"]:not(:hover):not([aria-selected="true"]) {
+  background-color: transparent;
+}
+
+.c1.c1.c1.c1.c1 {
+  border-width: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: left;
+  background-color: transparent;
+  border-radius: 8px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c1.c1.c1.c1.c1:hover:not([aria-disabled=true]):not([aria-selected=true]),
+.c1.c1.c1.c1.c1[aria-expanded="true"] {
+  background-color: hsla(206,10%,29%,0.06);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c1.c1.c1.c1.c1[aria-selected=true],
+.c1.c1.c1.c1.c1[aria-selected=true]:hover {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+.c12.c12.c12.c12.c12 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+  border-style: solid;
+  margin: 2px;
+  border-radius: 4px;
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(205,8%,71%,1);
+  padding-top: 0;
+}
+
+.c13.c13.c13.c13.c13 {
+  -webkit-animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 160ms cubic-bezier(0.17,0,1,1);
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c11.c11.c11.c11.c11 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c11.c11.c11.c11.c11:focus-visible + div {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c11.c11.c11.c11.c11:hover + div {
+  border-color: hsla(205,8%,71%,1);
+  background-color: hsla(206,10%,29%,0.06);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+}
+
+@media screen and (min-width:320px) {
+  .c7.c7.c7.c7.c7 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c7.c7.c7.c7.c7 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c7.c7.c7.c7.c7 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c7.c7.c7.c7.c7 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c7.c7.c7.c7.c7 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c1.c1.c1.c1.c1 {
+    padding: 8px;
+  }
+}
+
+<div
+  id="root"
+>
+  <div
+    class=""
+    data-blade-component="tree-view"
+  >
+    <div
+      aria-multiselectable="true"
+      role="tree"
+    >
+      <div
+        class=" c0"
+        data-blade-component="tree-view-item"
+      >
+        <div
+          aria-checked="false"
+          aria-expanded="true"
+          aria-level="1"
+          aria-posinset="1"
+          aria-setsize="1"
+          class=" c1"
+          data-blade-component="base-box"
+          data-tree-node-value="india"
+          data-value="india"
+          role="treeitem"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              aria-hidden="true"
+              class="c3"
+              data-blade-component="base-box"
+            >
+              <div
+                class=" c4"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
+                    data-blade-component="svg-path"
+                    fill="hsla(204, 9%, 42%, 1)"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              class="c5"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c6"
+                data-blade-component="base-box"
+              >
+                <div
+                  aria-hidden="true"
+                  class="c7"
+                  data-blade-component="base-box"
+                  pointer-events="none"
+                >
+                  <div
+                    class=""
+                    data-blade-component="checkbox"
+                  >
+                    <label
+                      class="c8"
+                      data-blade-component="checkbox-label"
+                      style="cursor:pointer"
+                    >
+                      <div
+                        class="c9"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class="c10"
+                          data-blade-component="base-box"
+                        >
+                          <input
+                            aria-checked="false"
+                            aria-disabled="false"
+                            aria-invalid="false"
+                            aria-required="false"
+                            class="c11"
+                            role="checkbox"
+                            tabindex="-1"
+                            type="checkbox"
+                            value=""
+                          />
+                          <div
+                            class="c12"
+                            data-blade-component="checkbox-icon-wrapper"
+                          >
+                            <div
+                              class="c13"
+                              data-blade-component="checkbox-icon-fade"
+                              style="opacity:0;position:absolute;display:flex"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="Svgweb__StyledSvg-vcmjs8-0"
+                                data-blade-component="icon"
+                                fill="none"
+                                height="12px"
+                                viewBox="0 0 8 8"
+                                width="12px"
+                              >
+                                <path
+                                  clip-rule="evenodd"
+                                  d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                                  data-blade-component="svg-path"
+                                  fill="hsla(0, 0%, 100%, 1)"
+                                  fill-rule="evenodd"
+                                  stroke="hsla(0, 0%, 100%, 1)"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="0.5"
+                                />
+                              </svg>
+                            </div>
+                            <div
+                              class="c13"
+                              data-blade-component="checkbox-icon-fade"
+                              style="opacity:0;position:absolute;display:flex"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c14"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c15"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c16"
+                    data-blade-component="text"
+                  >
+                    India
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class=" c17"
+          data-blade-component="base-box"
+        >
+          <div
+            class=""
+            data-blade-component="base-box"
+            role="group"
+          >
+            <div
+              class=" c18"
+              data-blade-component="tree-view-item"
+            >
+              <div
+                aria-checked="false"
+                aria-expanded="true"
+                aria-level="2"
+                aria-posinset="1"
+                aria-setsize="2"
+                class=" c1"
+                data-blade-component="base-box"
+                data-tree-node-value="karnataka"
+                data-value="karnataka"
+                role="treeitem"
+                tabindex="-1"
+                type="button"
+              >
+                <div
+                  class="c2"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    aria-hidden="true"
+                    class="c3"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class=" c4"
+                      data-blade-component="base-box"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="Svgweb__StyledSvg-vcmjs8-0"
+                        data-blade-component="icon"
+                        fill="none"
+                        height="16px"
+                        viewBox="0 0 24 24"
+                        width="16px"
+                      >
+                        <path
+                          clip-rule="evenodd"
+                          d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
+                          data-blade-component="svg-path"
+                          fill="hsla(204, 9%, 42%, 1)"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    class="c5"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c6"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        aria-hidden="true"
+                        class="c7"
+                        data-blade-component="base-box"
+                        pointer-events="none"
+                      >
+                        <div
+                          class=""
+                          data-blade-component="checkbox"
+                        >
+                          <label
+                            class="c8"
+                            data-blade-component="checkbox-label"
+                            style="cursor:pointer"
+                          >
+                            <div
+                              class="c9"
+                              data-blade-component="base-box"
+                            >
+                              <div
+                                class="c10"
+                                data-blade-component="base-box"
+                              >
+                                <input
+                                  aria-checked="false"
+                                  aria-disabled="false"
+                                  aria-invalid="false"
+                                  aria-required="false"
+                                  class="c11"
+                                  role="checkbox"
+                                  tabindex="-1"
+                                  type="checkbox"
+                                  value=""
+                                />
+                                <div
+                                  class="c12"
+                                  data-blade-component="checkbox-icon-wrapper"
+                                >
+                                  <div
+                                    class="c13"
+                                    data-blade-component="checkbox-icon-fade"
+                                    style="opacity:0;position:absolute;display:flex"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      class="Svgweb__StyledSvg-vcmjs8-0"
+                                      data-blade-component="icon"
+                                      fill="none"
+                                      height="12px"
+                                      viewBox="0 0 8 8"
+                                      width="12px"
+                                    >
+                                      <path
+                                        clip-rule="evenodd"
+                                        d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                                        data-blade-component="svg-path"
+                                        fill="hsla(0, 0%, 100%, 1)"
+                                        fill-rule="evenodd"
+                                        stroke="hsla(0, 0%, 100%, 1)"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="0.5"
+                                      />
+                                    </svg>
+                                  </div>
+                                  <div
+                                    class="c13"
+                                    data-blade-component="checkbox-icon-fade"
+                                    style="opacity:0;position:absolute;display:flex"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="c14"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c15"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c16"
+                          data-blade-component="text"
+                        >
+                          Karnataka
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=" c17"
+                data-blade-component="base-box"
+              >
+                <div
+                  class=""
+                  data-blade-component="base-box"
+                  role="group"
+                >
+                  <div
+                    class=" c19"
+                    data-blade-component="tree-view-item"
+                  >
+                    <div
+                      aria-checked="false"
+                      aria-level="3"
+                      aria-posinset="1"
+                      aria-setsize="3"
+                      class=" c1"
+                      data-blade-component="base-box"
+                      data-tree-node-value="bengaluru"
+                      data-value="bengaluru"
+                      role="treeitem"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <div
+                        class="c2"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class="c5"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="c6"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              aria-hidden="true"
+                              class="c7"
+                              data-blade-component="base-box"
+                              pointer-events="none"
+                            >
+                              <div
+                                class=""
+                                data-blade-component="checkbox"
+                              >
+                                <label
+                                  class="c8"
+                                  data-blade-component="checkbox-label"
+                                  style="cursor:pointer"
+                                >
+                                  <div
+                                    class="c9"
+                                    data-blade-component="base-box"
+                                  >
+                                    <div
+                                      class="c10"
+                                      data-blade-component="base-box"
+                                    >
+                                      <input
+                                        aria-checked="false"
+                                        aria-disabled="false"
+                                        aria-invalid="false"
+                                        aria-required="false"
+                                        class="c11"
+                                        role="checkbox"
+                                        tabindex="-1"
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                      <div
+                                        class="c12"
+                                        data-blade-component="checkbox-icon-wrapper"
+                                      >
+                                        <div
+                                          class="c13"
+                                          data-blade-component="checkbox-icon-fade"
+                                          style="opacity:0;position:absolute;display:flex"
+                                        >
+                                          <svg
+                                            aria-hidden="true"
+                                            class="Svgweb__StyledSvg-vcmjs8-0"
+                                            data-blade-component="icon"
+                                            fill="none"
+                                            height="12px"
+                                            viewBox="0 0 8 8"
+                                            width="12px"
+                                          >
+                                            <path
+                                              clip-rule="evenodd"
+                                              d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                                              data-blade-component="svg-path"
+                                              fill="hsla(0, 0%, 100%, 1)"
+                                              fill-rule="evenodd"
+                                              stroke="hsla(0, 0%, 100%, 1)"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              stroke-width="0.5"
+                                            />
+                                          </svg>
+                                        </div>
+                                        <div
+                                          class="c13"
+                                          data-blade-component="checkbox-icon-fade"
+                                          style="opacity:0;position:absolute;display:flex"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="c14"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              class="c15"
+                              data-blade-component="base-box"
+                            >
+                              <p
+                                class="c16"
+                                data-blade-component="text"
+                              >
+                                Bengaluru
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=" c19"
+                    data-blade-component="tree-view-item"
+                  >
+                    <div
+                      aria-checked="false"
+                      aria-level="3"
+                      aria-posinset="2"
+                      aria-setsize="3"
+                      class=" c1"
+                      data-blade-component="base-box"
+                      data-tree-node-value="mysuru"
+                      data-value="mysuru"
+                      role="treeitem"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <div
+                        class="c2"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class="c5"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="c6"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              aria-hidden="true"
+                              class="c7"
+                              data-blade-component="base-box"
+                              pointer-events="none"
+                            >
+                              <div
+                                class=""
+                                data-blade-component="checkbox"
+                              >
+                                <label
+                                  class="c8"
+                                  data-blade-component="checkbox-label"
+                                  style="cursor:pointer"
+                                >
+                                  <div
+                                    class="c9"
+                                    data-blade-component="base-box"
+                                  >
+                                    <div
+                                      class="c10"
+                                      data-blade-component="base-box"
+                                    >
+                                      <input
+                                        aria-checked="false"
+                                        aria-disabled="false"
+                                        aria-invalid="false"
+                                        aria-required="false"
+                                        class="c11"
+                                        role="checkbox"
+                                        tabindex="-1"
+                                        type="checkbox"
+                                        value=""
+                                      />
+                                      <div
+                                        class="c12"
+                                        data-blade-component="checkbox-icon-wrapper"
+                                      >
+                                        <div
+                                          class="c13"
+                                          data-blade-component="checkbox-icon-fade"
+                                          style="opacity:0;position:absolute;display:flex"
+                                        >
+                                          <svg
+                                            aria-hidden="true"
+                                            class="Svgweb__StyledSvg-vcmjs8-0"
+                                            data-blade-component="icon"
+                                            fill="none"
+                                            height="12px"
+                                            viewBox="0 0 8 8"
+                                            width="12px"
+                                          >
+                                            <path
+                                              clip-rule="evenodd"
+                                              d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                                              data-blade-component="svg-path"
+                                              fill="hsla(0, 0%, 100%, 1)"
+                                              fill-rule="evenodd"
+                                              stroke="hsla(0, 0%, 100%, 1)"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              stroke-width="0.5"
+                                            />
+                                          </svg>
+                                        </div>
+                                        <div
+                                          class="c13"
+                                          data-blade-component="checkbox-icon-fade"
+                                          style="opacity:0;position:absolute;display:flex"
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="c14"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              class="c15"
+                              data-blade-component="base-box"
+                            >
+                              <p
+                                class="c16"
+                                data-blade-component="text"
+                              >
+                                Mysuru
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=" c19"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      aria-disabled="false"
+                      aria-level="3"
+                      aria-posinset="3"
+                      aria-setsize="3"
+                      class=" c1"
+                      data-blade-component="tree-view-load-more"
+                      data-tree-node-value="__blade-tree-load-more__karnataka__3"
+                      data-value="__blade-tree-load-more__karnataka__3"
+                      role="treeitem"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <div
+                        class="c20"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c21"
+                          data-blade-component="text"
+                          letter-spacing="50"
+                        >
+                          Show more
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class=" c18"
+              data-blade-component="tree-view-item"
+            >
+              <div
+                aria-checked="false"
+                aria-level="2"
+                aria-posinset="2"
+                aria-setsize="2"
+                class=" c1"
+                data-blade-component="base-box"
+                data-tree-node-value="goa"
+                data-value="goa"
+                role="treeitem"
+                tabindex="-1"
+                type="button"
+              >
+                <div
+                  class="c2"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c5"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c6"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        aria-hidden="true"
+                        class="c7"
+                        data-blade-component="base-box"
+                        pointer-events="none"
+                      >
+                        <div
+                          class=""
+                          data-blade-component="checkbox"
+                        >
+                          <label
+                            class="c8"
+                            data-blade-component="checkbox-label"
+                            style="cursor:pointer"
+                          >
+                            <div
+                              class="c9"
+                              data-blade-component="base-box"
+                            >
+                              <div
+                                class="c10"
+                                data-blade-component="base-box"
+                              >
+                                <input
+                                  aria-checked="false"
+                                  aria-disabled="false"
+                                  aria-invalid="false"
+                                  aria-required="false"
+                                  class="c11"
+                                  role="checkbox"
+                                  tabindex="-1"
+                                  type="checkbox"
+                                  value=""
+                                />
+                                <div
+                                  class="c12"
+                                  data-blade-component="checkbox-icon-wrapper"
+                                >
+                                  <div
+                                    class="c13"
+                                    data-blade-component="checkbox-icon-fade"
+                                    style="opacity:0;position:absolute;display:flex"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      class="Svgweb__StyledSvg-vcmjs8-0"
+                                      data-blade-component="icon"
+                                      fill="none"
+                                      height="12px"
+                                      viewBox="0 0 8 8"
+                                      width="12px"
+                                    >
+                                      <path
+                                        clip-rule="evenodd"
+                                        d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                                        data-blade-component="svg-path"
+                                        fill="hsla(0, 0%, 100%, 1)"
+                                        fill-rule="evenodd"
+                                        stroke="hsla(0, 0%, 100%, 1)"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="0.5"
+                                      />
+                                    </svg>
+                                  </div>
+                                  <div
+                                    class="c13"
+                                    data-blade-component="checkbox-icon-fade"
+                                    style="opacity:0;position:absolute;display:flex"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="c14"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c15"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c16"
+                          data-blade-component="text"
+                        >
+                          Goa
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

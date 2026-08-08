@@ -27,7 +27,11 @@ type FilterChipSelectInputProps = Pick<
   | 'showClearButton'
 > & {
   accessibilityLabel?: string;
-  onChange?: (props: { name: string; values: string[] }) => void;
+  /**
+   * `selectedGroups` is only present when the Dropdown overlay content is a TreeView -
+   * it contains the values of the topmost fully-selected branches
+   */
+  onChange?: (props: { name: string; values: string[]; selectedGroups?: string[] }) => void;
   name?: string;
   onClearButtonClick?: (props: { name: string; values: string[] }) => void;
   isDisabled?: boolean;
@@ -68,6 +72,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     setSelectedIndices,
     controlledValueIndices,
     changeCallbackTriggerer,
+    treeViewControllerRef,
   } = useDropdown();
   const isUnControlled = options.length > 0 && props.value === undefined;
   // Currently we are having 2 context for selectedFilters. One is for FilterChipGroup and other is for  ListView
@@ -156,9 +161,14 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   useEffect(() => {
     if (!isFirstRender) {
+      // §6.5: additive - only present when overlay content is a TreeView
+      const selectedGroups = treeViewControllerRef.current?.getSelectedGroups(
+        isControlled ? controlledValueIndices : selectedIndices,
+      );
       props.onChange?.({
         name: props.name || idBase,
         values: getValuesArrayFromIndices(),
+        ...(selectedGroups ? { selectedGroups } : {}),
       });
       if (isUnControlled) {
         setUncontrolledInputValue(getValuesArrayFromIndices());
@@ -207,6 +217,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
         options,
         selectionType,
         uncontrolledInputValue,
+        displayOverride: treeViewControllerRef.current?.getDisplayOverride(selectedIndices),
       })}
       onClearButtonClick={handleClearButtonClick}
       showClearButton={showClearButton}
