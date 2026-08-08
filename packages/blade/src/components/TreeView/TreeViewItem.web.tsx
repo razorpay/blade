@@ -118,10 +118,10 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     }
     if (isInsideDropdown) {
       onDropdownNodeClick(event, props.value);
-      props.onClick?.({ name: props.value, value: props.value });
+      props.onClick?.({ name: props.value, value: isSelected, event });
     } else {
       onNodeSelect(props.value);
-      props.onClick?.({ name: props.value, value: props.value });
+      props.onClick?.({ name: props.value, value: isSelected, event });
     }
   };
 

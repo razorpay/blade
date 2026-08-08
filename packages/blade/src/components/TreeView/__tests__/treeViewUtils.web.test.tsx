@@ -180,7 +180,7 @@ describe('getTreeViewProperties', () => {
     );
 
     options[0].onClickTrigger?.(true);
-    expect(onClick).toHaveBeenCalledWith({ name: 'goa', value: 'goa' });
+    expect(onClick).toHaveBeenCalledWith({ name: 'goa', value: true });
   });
 });
 

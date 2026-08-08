@@ -107,9 +107,15 @@ type TreeViewItemProps = {
    */
   isLoading?: boolean;
   /**
-   * Per-item click handler
+   * Per-item click handler. Mirrors the ActionListItem precedent:
+   * `name` is the item's value (id), `value` is the post-click selected state,
+   * and `event` is the DOM event (present on click, absent on keyboard activation)
    */
-  onClick?: (event: { name: string; value: string }) => void;
+  onClick?: (clickProps: {
+    name: string;
+    value: boolean;
+    event?: React.MouseEvent<HTMLButtonElement>;
+  }) => void;
 } & TestID &
   DataAnalyticsAttribute;
 
