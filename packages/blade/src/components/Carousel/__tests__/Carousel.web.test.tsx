@@ -135,6 +135,61 @@ describe('<Carousel />', () => {
     });
   });
 
+  test('carouselItemAlignment="normal" should set height:auto (no min-height) since normal is flexbox-equivalent to stretch', () => {
+    const { container } = renderWithTheme(
+      <Carousel carouselItemAlignment="normal">
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+
+    slides.forEach((slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      expect(computedStyle.height).toBe('auto');
+      expect(computedStyle.minHeight).not.toBe('100%');
+    });
+  });
+
+  test('responsive carouselItemAlignment should resolve stretch at the correct breakpoint', () => {
+    const originalMatchMedia = window.matchMedia;
+    // Mock matchMedia to simulate the `m` breakpoint (768px–1023px)
+    window.matchMedia = jest.fn().mockImplementation((query) => ({
+      matches: query === 'screen and (min-width: 768px) and (max-width: 1023px)',
+      media: query,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    }));
+
+    const { container } = renderWithTheme(
+      <Carousel carouselItemAlignment={{ base: 'start', m: 'stretch' }}>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    const slides = container.querySelectorAll('[data-slide-index]');
+    expect(slides.length).toBe(2);
+
+    slides.forEach((slide) => {
+      const computedStyle = window.getComputedStyle(slide);
+      expect(computedStyle.height).toBe('auto');
+      expect(computedStyle.minHeight).not.toBe('100%');
+    });
+
+    window.matchMedia = originalMatchMedia;
+  });
+
   test('when showIndicators=false and showNavigationButtons=false on mobile, no controls container should be rendered', () => {
     const originalMatchMedia = window.matchMedia;
     window.matchMedia = jest.fn().mockImplementation((query) => ({

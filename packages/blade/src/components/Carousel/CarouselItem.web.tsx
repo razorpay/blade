@@ -15,16 +15,14 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getSpacingValue } from '~components/Box/BaseBox/baseBoxStyles';
 
-type StyledCarouselItemProps = Pick<
-  CarouselProps,
-  'visibleItems' | 'shouldAddStartEndSpacing' | 'carouselItemAlignment'
-> &
+type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
   Pick<
     CarouselItemProps,
     'shouldHaveEndSpacing' | 'shouldHaveStartSpacing' | 'snapAlign' | 'gap'
   > & {
     isMobile?: boolean;
     isResponsive?: boolean;
+    isStretch?: boolean;
   };
 
 const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
@@ -36,7 +34,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
     theme,
     snapAlign,
     gap,
-    carouselItemAlignment,
+    isStretch,
   }) => {
     const { matchedDeviceType, matchedBreakpoint } = useBreakpoint({
       breakpoints: theme.breakpoints,
@@ -69,8 +67,8 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       flexGrow: 0,
       flexShrink: 0,
       width: calculatedWidth,
-      height: carouselItemAlignment === 'stretch' ? 'auto' : '100%',
-      minHeight: carouselItemAlignment === 'stretch' ? undefined : '100%',
+      height: isStretch ? 'auto' : '100%',
+      minHeight: isStretch ? undefined : '100%',
       scrollSnapAlign: snapAlign ?? 'start',
       marginLeft: calculatedMarginLeft,
 
@@ -113,8 +111,32 @@ const _CarouselItem = ({
     shouldAddStartEndSpacing,
     carouselItemAlignment,
   } = useCarouselContext();
-  const { platform } = useTheme();
+  const { theme, platform } = useTheme();
   const isMobile = platform === 'onMobile';
+
+  const { matchedBreakpoint } = useBreakpoint({
+    breakpoints: theme.breakpoints,
+  });
+
+  // Resolve carouselItemAlignment for the current breakpoint so responsive objects
+  // (e.g. { base: 'start', m: 'stretch' }) are handled correctly. For responsive objects
+  // we cascade from the matched breakpoint down to base (mobile-first) to find the first
+  // defined value. 'normal' is equivalent to 'stretch' in flexbox, so we treat both as stretch.
+  const isStretchLike = (value: unknown): boolean => value === 'stretch' || value === 'normal';
+  let isStretch = false;
+  if (typeof carouselItemAlignment === 'string') {
+    isStretch = isStretchLike(carouselItemAlignment);
+  } else if (carouselItemAlignment) {
+    const breakpointKeys = Object.keys(theme.breakpoints) as (keyof typeof theme.breakpoints)[];
+    const startIdx = breakpointKeys.indexOf(matchedBreakpoint || 'base');
+    for (let i = startIdx; i >= 0; i--) {
+      const val = carouselItemAlignment[breakpointKeys[i]];
+      if (val !== undefined) {
+        isStretch = isStretchLike(val);
+        break;
+      }
+    }
+  }
 
   return (
     <StyledCarouselItem
@@ -135,7 +157,7 @@ const _CarouselItem = ({
       shouldHaveEndSpacing={shouldHaveEndSpacing}
       snapAlign={snapAlign}
       gap={gap}
-      carouselItemAlignment={carouselItemAlignment}
+      isStretch={isStretch}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
