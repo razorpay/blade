@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': minor
+"@razorpay/blade": minor
 ---
 
 feat(LineChart): add `ChartReferenceBand` for a data-driven reference band

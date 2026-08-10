@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': minor
+"@razorpay/blade": minor
 ---
 
 feat(LineChart): per-line reference bands + tooltip ranges (Industry SR)
