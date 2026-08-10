@@ -69,7 +69,10 @@ const geomsEqual = (a: BandGeometry[], b: BandGeometry[]): boolean =>
       item.upperStart?.x === other.upperStart?.x &&
       item.upperStart?.y === other.upperStart?.y &&
       item.lowerStart?.x === other.lowerStart?.x &&
-      item.lowerStart?.y === other.lowerStart?.y
+      item.lowerStart?.y === other.lowerStart?.y &&
+      item.showRangeLabels === other.showRangeLabels &&
+      item.upperLabel === other.upperLabel &&
+      item.lowerLabel === other.lowerLabel
     );
   });
 
@@ -150,7 +153,13 @@ const useReferenceBand = (
 
   // Stable key of the sources' identity so the effect re-runs when bands are added/removed/recolored.
   const sourceSignature = useMemo(
-    () => bandSources.map((s) => `${s.id}:${s.fillColor}`).join('|'),
+    () =>
+      bandSources
+        .map(
+          (s) =>
+            `${s.id}:${s.fillColor}:${s.showRangeLabels}:${s.upperLabel ?? ''}:${s.lowerLabel ?? ''}`,
+        )
+        .join('|'),
     [bandSources],
   );
 
