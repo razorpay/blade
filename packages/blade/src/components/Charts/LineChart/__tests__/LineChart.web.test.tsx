@@ -578,10 +578,42 @@ describe('<ChartReferenceBand />', () => {
 
 describe('LineChart per-line reference bands (range on ChartLine)', () => {
   const multiData = [
-    { name: 'Jan', payments: 62, paymentsMin: 50, paymentsMax: 74, refunds: 50, refundsMin: 38, refundsMax: 62 },
-    { name: 'Feb', payments: 66, paymentsMin: 54, paymentsMax: 78, refunds: 52, refundsMin: 40, refundsMax: 64 },
-    { name: 'Mar', payments: 70, paymentsMin: 58, paymentsMax: 82, refunds: 58, refundsMin: 46, refundsMax: 70 },
-    { name: 'Apr', payments: 74, paymentsMin: 62, paymentsMax: 86, refunds: 60, refundsMin: 48, refundsMax: 72 },
+    {
+      name: 'Jan',
+      payments: 62,
+      paymentsMin: 50,
+      paymentsMax: 74,
+      refunds: 50,
+      refundsMin: 38,
+      refundsMax: 62,
+    },
+    {
+      name: 'Feb',
+      payments: 66,
+      paymentsMin: 54,
+      paymentsMax: 78,
+      refunds: 52,
+      refundsMin: 40,
+      refundsMax: 64,
+    },
+    {
+      name: 'Mar',
+      payments: 70,
+      paymentsMin: 58,
+      paymentsMax: 82,
+      refunds: 58,
+      refundsMin: 46,
+      refundsMax: 70,
+    },
+    {
+      name: 'Apr',
+      payments: 74,
+      paymentsMin: 62,
+      paymentsMax: 86,
+      refunds: 60,
+      refundsMin: 48,
+      refundsMax: 72,
+    },
   ];
 
   it('should paint one band per line that declares a range', async () => {
@@ -589,8 +621,18 @@ describe('LineChart per-line reference bands (range on ChartLine)', () => {
       <Box width="500px" height="500px">
         <ChartLineWrapper data={multiData}>
           <ChartXAxis dataKey="name" />
-          <ChartLine dataKey="payments" name="Payments" rangeLowerDataKey="paymentsMin" rangeUpperDataKey="paymentsMax" />
-          <ChartLine dataKey="refunds" name="Refunds" rangeLowerDataKey="refundsMin" rangeUpperDataKey="refundsMax" />
+          <ChartLine
+            dataKey="payments"
+            name="Payments"
+            rangeLowerDataKey="paymentsMin"
+            rangeUpperDataKey="paymentsMax"
+          />
+          <ChartLine
+            dataKey="refunds"
+            name="Refunds"
+            rangeLowerDataKey="refundsMin"
+            rangeUpperDataKey="refundsMax"
+          />
         </ChartLineWrapper>
       </Box>,
     );
@@ -611,7 +653,12 @@ describe('LineChart per-line reference bands (range on ChartLine)', () => {
       <Box width="500px" height="500px">
         <ChartLineWrapper data={multiData}>
           <ChartXAxis dataKey="name" />
-          <ChartLine dataKey="payments" name="Payments" rangeLowerDataKey="paymentsMin" rangeUpperDataKey="paymentsMax" />
+          <ChartLine
+            dataKey="payments"
+            name="Payments"
+            rangeLowerDataKey="paymentsMin"
+            rangeUpperDataKey="paymentsMax"
+          />
           <ChartLine dataKey="refunds" name="Refunds" />
         </ChartLineWrapper>
       </Box>,
@@ -627,8 +674,20 @@ describe('LineChart per-line reference bands (range on ChartLine)', () => {
         <ChartLineWrapper data={multiData}>
           <ChartXAxis dataKey="name" />
           <ChartLegend />
-          <ChartLine dataKey="payments" name="Payments" rangeLowerDataKey="paymentsMin" rangeUpperDataKey="paymentsMax" rangeName="Payments industry range" />
-          <ChartLine dataKey="refunds" name="Refunds" rangeLowerDataKey="refundsMin" rangeUpperDataKey="refundsMax" rangeName="Refunds industry range" />
+          <ChartLine
+            dataKey="payments"
+            name="Payments"
+            rangeLowerDataKey="paymentsMin"
+            rangeUpperDataKey="paymentsMax"
+            rangeName="Payments industry range"
+          />
+          <ChartLine
+            dataKey="refunds"
+            name="Refunds"
+            rangeLowerDataKey="refundsMin"
+            rangeUpperDataKey="refundsMax"
+            rangeName="Refunds industry range"
+          />
         </ChartLineWrapper>
       </Box>,
     );

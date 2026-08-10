@@ -122,9 +122,10 @@ const useReferenceBand = (
         const dataKey = props.dataKey as string;
         if (!dataKey || !props.rangeLowerDataKey || !props.rangeUpperDataKey) return;
         // Color-match to the line: explicit rangeColor wins, else the line's resolved color.
-        const colorToken = (props.rangeColor ??
+        const colorToken =
+          props.rangeColor ??
           dataColorMapping[dataKey]?.colorToken ??
-          REFERENCE_BAND_DEFAULT_COLOR) as ReferenceBandLegendInfo['color'];
+          (REFERENCE_BAND_DEFAULT_COLOR as ReferenceBandLegendInfo['color']);
         sources.push({
           id: dataKey,
           lowerClass: perLineBandClass(dataKey, 'lower'),

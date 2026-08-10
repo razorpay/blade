@@ -432,7 +432,11 @@ LineChartWithReferenceBand.parameters = { controls: { disable: true } };
 // --- Industry SR: multiple lines, each with its own color-matched reference band ---
 // Each metric = the merchant's value for that metric; `<key>Min`/`<key>Max` = the industry range.
 const INDUSTRY_METRICS = [
-  { key: 'payments', name: 'Payments', color: 'data.background.categorical.blue.moderate' as const },
+  {
+    key: 'payments',
+    name: 'Payments',
+    color: 'data.background.categorical.blue.moderate' as const,
+  },
   { key: 'refunds', name: 'Refunds', color: 'data.background.categorical.green.moderate' as const },
   { key: 'payouts', name: 'Payouts', color: 'data.background.categorical.gray.moderate' as const },
   {

@@ -430,10 +430,42 @@ describe('<ChartLineWrapper /> (native)', () => {
 
   it('should render a color-matched band + legend entry per line with a range', () => {
     const multiData = [
-      { name: 'Jan', payments: 62, paymentsMin: 50, paymentsMax: 74, refunds: 50, refundsMin: 38, refundsMax: 62 },
-      { name: 'Feb', payments: 66, paymentsMin: 54, paymentsMax: 78, refunds: 52, refundsMin: 40, refundsMax: 64 },
-      { name: 'Mar', payments: 70, paymentsMin: 58, paymentsMax: 82, refunds: 58, refundsMin: 46, refundsMax: 70 },
-      { name: 'Apr', payments: 74, paymentsMin: 62, paymentsMax: 86, refunds: 60, refundsMin: 48, refundsMax: 72 },
+      {
+        name: 'Jan',
+        payments: 62,
+        paymentsMin: 50,
+        paymentsMax: 74,
+        refunds: 50,
+        refundsMin: 38,
+        refundsMax: 62,
+      },
+      {
+        name: 'Feb',
+        payments: 66,
+        paymentsMin: 54,
+        paymentsMax: 78,
+        refunds: 52,
+        refundsMin: 40,
+        refundsMax: 64,
+      },
+      {
+        name: 'Mar',
+        payments: 70,
+        paymentsMin: 58,
+        paymentsMax: 82,
+        refunds: 58,
+        refundsMin: 46,
+        refundsMax: 70,
+      },
+      {
+        name: 'Apr',
+        payments: 74,
+        paymentsMin: 62,
+        paymentsMax: 86,
+        refunds: 60,
+        refundsMin: 48,
+        refundsMax: 72,
+      },
     ];
     const { toJSON, getByTestId } = renderWithTheme(
       <ChartLineWrapper data={multiData} testID="multi">
