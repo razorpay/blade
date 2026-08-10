@@ -58,6 +58,7 @@
     onItemClick,
     flags,
     size,
+    portalTarget,
   }: CountrySelectorProps = $props();
 
   let isOpen = $state(false);
@@ -95,7 +96,7 @@
   </span>
 </button>
 
-<BottomSheet {isOpen} onDismiss={() => (isOpen = false)}>
+<BottomSheet {isOpen} onDismiss={() => (isOpen = false)} {portalTarget}>
   <BottomSheetHeader title="Select A Country" />
   <BottomSheetBody hasActionList>
     <ActionList selectionType="single" selectedValue={selectedCountry} onAction={handleSelect}>
