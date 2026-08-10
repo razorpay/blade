@@ -29,5 +29,16 @@ const useGenUIAction = (): ((action: GenUIAction) => void) | undefined => {
   return undefined;
 };
 
-export { GenUIContext, useGenUI, useGenUIAction };
+/**
+ * Hook to access the consumer-registered action slot registry (safe version that doesn't throw)
+ */
+const useGenUIComponentActions = (): undefined => {
+  throwBladeError({
+    message: 'useGenUIComponentActions is not yet implemented for React Native',
+    moduleName: 'useGenUIComponentActions',
+  });
+  return undefined;
+};
+
+export { GenUIContext, useGenUI, useGenUIAction, useGenUIComponentActions };
 export type { GenUIContextValue };
