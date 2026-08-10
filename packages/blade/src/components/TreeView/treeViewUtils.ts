@@ -204,8 +204,8 @@ const getTreeViewProperties = (children: React.ReactNode): TreeViewPropertiesTyp
         options.push({
           title,
           value,
-          onClickTrigger: () => {
-            onClick?.({ name: value, value });
+          onClickTrigger: (isSelected) => {
+            onClick?.({ name: value, value: isSelected });
           },
         });
         node.optionIndex = options.length - 1;

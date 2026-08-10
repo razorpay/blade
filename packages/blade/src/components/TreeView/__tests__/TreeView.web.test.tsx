@@ -579,7 +579,11 @@ describe('<TreeView /> standalone', () => {
     );
 
     await user.click(getByRole('treeitem', { name: 'Goa' }));
-    expect(onItemClick).toHaveBeenCalledWith({ name: 'goa', value: 'goa' });
+    expect(onItemClick).toHaveBeenCalledWith({
+      name: 'goa',
+      value: false,
+      event: expect.any(Object),
+    });
   });
 
   describe('keyboard map (§5)', () => {

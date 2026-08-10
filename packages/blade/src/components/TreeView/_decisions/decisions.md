@@ -93,7 +93,7 @@ type TreeViewItemProps = {
   /** Children fetching: chevron renders Spinner (B6). */
   isLoading?: boolean;
   /** Per-item click, mirroring the ActionListItem precedent shape. */
-  onClick?: (event: { name: string; value: string }) => void;
+  onClick?: (clickProps: { name: string; value: boolean; event?: React.MouseEvent<HTMLButtonElement> }) => void;
 } & TestID &
   DataAnalyticsAttribute;
 ```

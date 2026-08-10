@@ -6,6 +6,7 @@ import { TreeViewContext } from './useTreeView';
 import type { TreeViewContextType } from './useTreeView';
 import {
   getDisplayOverride,
+  getBranchSelectionState,
   getSelectedGroups,
   getSelectedLeafValues,
   getSelectionAfterLoad,
@@ -378,12 +379,14 @@ const _TreeView = ({
         if (node.isBranch && !node.isSelectable) {
           // non-selectable branch: Enter/Space toggle expansion, never select
           onNodeExpandToggle(node.value);
+          options[optionIndex].onClickTrigger?.(false);
           return true;
         }
         if (effectiveSelectionType === 'multiple' && node.isBranch) {
           // §6.2: branch toggle routes through the batch setter - exactly one onChange
+          const branchSelected = getBranchSelectionState(node, selectedValuesSet) === 'all';
           toggleBranchInDropdown(node);
-          options[optionIndex].onClickTrigger?.(true);
+          options[optionIndex].onClickTrigger?.(branchSelected);
           return true;
         }
         // leaf (and branch in single mode): default selectOption path
@@ -514,9 +517,18 @@ const _TreeView = ({
           }
           break;
         }
-        onNodeSelect(currentValue);
-        if (node.optionIndex >= 0) {
-          options[node.optionIndex].onClickTrigger?.(true);
+        {
+          const isNodeSelected =
+            node.isSelectable &&
+            (effectiveSelectionType === 'multiple'
+              ? node.isBranch
+                ? getBranchSelectionState(node, selectedValuesSet) === 'all'
+                : selectedValuesSet.has(currentValue)
+              : selectedValuesSet.has(currentValue));
+          onNodeSelect(currentValue);
+          if (node.optionIndex >= 0) {
+            options[node.optionIndex].onClickTrigger?.(isNodeSelected);
+          }
         }
         break;
       case ' ':
@@ -525,9 +537,18 @@ const _TreeView = ({
         if (node.kind === 'loadMore') {
           break;
         }
-        onNodeSelect(currentValue);
-        if (node.optionIndex >= 0) {
-          options[node.optionIndex].onClickTrigger?.(true);
+        {
+          const isNodeSelected =
+            node.isSelectable &&
+            (effectiveSelectionType === 'multiple'
+              ? node.isBranch
+                ? getBranchSelectionState(node, selectedValuesSet) === 'all'
+                : selectedValuesSet.has(currentValue)
+              : selectedValuesSet.has(currentValue));
+          onNodeSelect(currentValue);
+          if (node.optionIndex >= 0) {
+            options[node.optionIndex].onClickTrigger?.(isNodeSelected);
+          }
         }
         break;
       default:
