@@ -6,8 +6,8 @@ describe('DatePicker month + year formats (MMM YYYY / MMMM YYYY)', () => {
       expect(getTextInputFormat('MMM YYYY', false)).toBe('### ####');
     });
 
-    it('returns the mask for MMMM YYYY (wide enough for "September")', () => {
-      expect(getTextInputFormat('MMMM YYYY', false)).toBe('######### ####');
+    it('returns no mask for MMMM YYYY (variable-length month names break fixed masks)', () => {
+      expect(getTextInputFormat('MMMM YYYY', false)).toBeUndefined();
     });
 
     it('keeps existing masks unchanged', () => {

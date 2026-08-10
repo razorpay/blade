@@ -275,15 +275,18 @@ const finalInputFormat = (startValue: string, endValue: string, format: string |
  * @example "DD/MM/YYYY" – "##/##/####"
  * @example "MMMM" – "################" (longest month: "September")
  * @example "MMM" – "###"
+ * @example "MMMM YYYY" – undefined (variable-length month names break fixed masks)
  */
-const getTextInputFormat = (formatStr?: string, isRangeInput?: boolean): string => {
+const getTextInputFormat = (formatStr?: string, isRangeInput?: boolean): string | undefined => {
   if (!formatStr) {
     return isRangeInput ? '##/##/####  –  ##/##/####' : '##/##/####';
   } else if (formatStr === 'MMMM') {
     return formatStr.replace(/MMMM/g, '#########');
   } else if (formatStr === 'MMMM YYYY') {
-    // longest month name "September" (9 chars) + space + 4-digit year
-    return '######### ####';
+    // Variable-length month names (4–9 chars) make a fixed-position mask impossible —
+    // the mask's space delimiter would land at the wrong position. Skip masking; the
+    // display value from dayjs().format() already has the correct spacing.
+    return undefined;
   }
   return formatStr.replace(/[YMD]/g, '#');
 };
