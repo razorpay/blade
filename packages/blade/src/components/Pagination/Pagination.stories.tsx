@@ -126,7 +126,7 @@ export default {
     showOnSinglePage: {
       control: 'boolean',
       description:
-        'Whether to always render the pagination even when all items fit on a single page. Defaults to false (pagination hides).',
+        'Whether to always render the pagination even when all items fit on a single page. Use it when rows load asynchronously or filters change the row count, so the footer does not shift the layout. Defaults to false (pagination hides).',
     },
   },
   parameters: {
@@ -314,7 +314,7 @@ const SinglePageExample = (): React.ReactElement => {
       </Demo>
       <Demo
         title="With showOnSinglePage"
-        description="Same 5 items, but the pagination is forced to render. Use this when you need a stable layout height across loading states."
+        description="Same 5 items, but the pagination stays rendered. Use this when rows load asynchronously or filters change the row count, so the footer does not appear and disappear and shift the layout."
       >
         <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
           <PaginationComponent

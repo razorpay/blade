@@ -105,7 +105,10 @@ export type PaginationProps = {
    * Whether to always render the pagination even when all items fit on a single page.
    * By default the pagination hides itself when there is nothing to navigate or pick,
    * which is a behaviour change from the previous always-render behaviour.
-   * Set this to `true` to opt back in to the old always-render behaviour.
+   *
+   * Set this to `true` when rows load asynchronously or filters change the row count,
+   * so the footer does not appear and disappear and shift the layout. It also lets
+   * existing surfaces opt back in to the old always-render behaviour.
    * @default false
    */
   showOnSinglePage?: boolean;
