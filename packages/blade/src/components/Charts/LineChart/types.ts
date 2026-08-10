@@ -104,6 +104,16 @@ interface ChartLineProps {
   rangeLowerLabel?: string;
   /**
    * Whether to show the inline `rangeUpperLabel` / `rangeLowerLabel` edge labels on this line's band.
+   *
+   * Defaults to `false` because the per-line range API is designed for the Industry SR use case,
+   * where a chart can render multiple trend lines each with its own band. Drawing edge labels on
+   * every band by default would clutter the chart. Enable per-line when there is only one line, or
+   * when a specific line's bounds need to be called out.
+   *
+   * Note: the standalone `ChartReferenceBand` component defaults `showRangeLabels` to `true`,
+   * since it renders a single band where the labels aid readability. The defaults differ
+   * intentionally — see that prop's JSDoc for the rationale.
+   *
    * @default false
    */
   showRangeLabels?: boolean;

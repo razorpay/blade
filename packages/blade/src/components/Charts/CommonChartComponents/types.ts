@@ -67,6 +67,14 @@ type ChartReferenceBandProps = {
   lowerLabel?: string;
   /**
    * Whether to show the `upperLabel` / `lowerLabel` range labels on the band.
+   *
+   * Defaults to `true` because the standalone `ChartReferenceBand` renders a single range band,
+   * where the edge labels (e.g. `p75` / `p25`) aid readability.
+   *
+   * Note: the per-line range variant on `ChartLine` (`rangeLowerDataKey` / `rangeUpperDataKey`)
+   * defaults `showRangeLabels` to `false`, since multiple bands on one chart would clutter it.
+   * The defaults differ intentionally to suit each use case.
+   *
    * @default true
    */
   showRangeLabels?: boolean;
