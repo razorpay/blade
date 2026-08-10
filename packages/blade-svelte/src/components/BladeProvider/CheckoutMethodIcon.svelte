@@ -126,6 +126,6 @@
   .checkout-method-icon {
     display: block;
     flex-shrink: 0;
-    color: var(--surface-icon-gray-normal);
+    color: var(--surface-icon-primary-normal);
   }
 </style>

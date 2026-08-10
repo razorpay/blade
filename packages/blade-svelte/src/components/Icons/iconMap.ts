@@ -11,6 +11,7 @@ import { EyeIcon } from './EyeIcon';
 import { EyeOffIcon } from './EyeOffIcon';
 import { InfoIcon } from './InfoIcon';
 import { MoreFilledIcon } from './MoreFilledIcon';
+import { MoreHorizontalIcon } from './MoreHorizontalIcon';
 import { PhoneIcon } from './PhoneIcon';
 import { PlusIcon } from './PlusIcon';
 import { SearchIcon } from './SearchIcon';
@@ -42,6 +43,7 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   EyeOffIcon,
   InfoIcon,
   MoreFilledIcon,
+  MoreHorizontalIcon,
   PhoneIcon,
   PlusIcon,
   SearchIcon,

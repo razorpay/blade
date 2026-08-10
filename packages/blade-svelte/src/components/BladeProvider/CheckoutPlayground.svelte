@@ -18,6 +18,7 @@
   import SegmentedControl from '../SegmentedControl/SegmentedControl.svelte';
   import SegmentedControlItem from '../SegmentedControl/SegmentedControlItem.svelte';
   import TextInput from '../Input/TextInput/TextInput.svelte';
+  import Switch from '../Switch/Switch.svelte';
   import {
     BRAND_PRESETS,
     FONT_PRESETS,
@@ -38,6 +39,7 @@
     buildDynamicUtilityCss,
     buildPreviewVarsStyle,
     collectActiveCssVars,
+    collectCssVarsFromClassNames,
     createInitialCheckoutSlotClasses,
     defaultCssVarValue,
     isCheckoutStyleComponent,
@@ -54,8 +56,13 @@
   let fontSizeScaleFactor = $state('1');
 
   let selectedStyleComponent = $state<CheckoutStyleComponent>('Button');
+  let styleOverridesEnabled = $state(false);
   let slotClassByComponent = $state(createInitialCheckoutSlotClasses());
   let cssVarValues = $state<Record<string, string>>({ ...CHECKOUT_INITIAL_CSS_VAR_VALUES });
+  let appliedSlotClassByComponent = $state(createInitialCheckoutSlotClasses());
+  let appliedCssVarValues = $state<Record<string, string>>({
+    ...CHECKOUT_INITIAL_CSS_VAR_VALUES,
+  });
 
   const themeState = $derived({
     brandLabel,
@@ -86,14 +93,40 @@
   const styleSlotClasses = $derived(slotClassByComponent[selectedStyleComponent]);
   const activeCssVars = $derived(collectActiveCssVars(slotClassByComponent, selectedStyleComponent));
 
+  const appliedCssVarsForPreview = $derived.by((): string[] => {
+    const used = new Set<string>();
+    const order: string[] = [];
+    for (const component of CHECKOUT_STYLE_COMPONENTS) {
+      for (const slot of CHECKOUT_SLOT_CATALOG[component].slots) {
+        for (const varName of collectCssVarsFromClassNames(
+          appliedSlotClassByComponent[component][slot] ?? '',
+        )) {
+          if (!used.has(varName)) {
+            used.add(varName);
+            order.push(varName);
+          }
+        }
+      }
+    }
+    return order;
+  });
+
   const buttonStyleOverride = $derived(
-    resolveStyleOverride(slotClassByComponent.Button) as StyleOverride<ButtonSlot>,
+    styleOverridesEnabled
+      ? (resolveStyleOverride(appliedSlotClassByComponent.Button) as StyleOverride<ButtonSlot>)
+      : undefined,
   );
   const appBarLeadingStyleOverride = $derived(
-    resolveStyleOverride(slotClassByComponent.AppBarLeading) as StyleOverride<AppBarLeadingSlot>,
+    styleOverridesEnabled
+      ? (resolveStyleOverride(
+          appliedSlotClassByComponent.AppBarLeading,
+        ) as StyleOverride<AppBarLeadingSlot>)
+      : undefined,
   );
   const cardStyleOverride = $derived(
-    resolveStyleOverride(slotClassByComponent.Card) as StyleOverride<CardSlot>,
+    styleOverridesEnabled
+      ? (resolveStyleOverride(appliedSlotClassByComponent.Card) as StyleOverride<CardSlot>)
+      : undefined,
   );
 
   const styleOverrideSnippet = $derived.by((): string => {
@@ -106,11 +139,17 @@
     return `styleOverride={{ ${props} }}`;
   });
 
-  const previewVarsStyle = $derived(buildPreviewVarsStyle(cssVarValues, activeCssVars));
+  const previewVarsStyle = $derived(
+    styleOverridesEnabled
+      ? buildPreviewVarsStyle(appliedCssVarValues, appliedCssVarsForPreview)
+      : '',
+  );
   const appBarSurfaceStyle = 'background-color: var(--surface-background-primary-intense);';
 
   const dynamicUtilityCss = $derived(
-    buildDynamicUtilityCss(slotClassByComponent, cssVarValues),
+    styleOverridesEnabled
+      ? buildDynamicUtilityCss(appliedSlotClassByComponent, appliedCssVarValues)
+      : '',
   );
 
   let utilityStyleHost = $state<HTMLDivElement | undefined>(undefined);
@@ -210,6 +249,28 @@
     };
   }
 
+  function cloneSlotClasses(
+    source: Record<CheckoutStyleComponent, Record<string, string>>,
+  ): Record<CheckoutStyleComponent, Record<string, string>> {
+    return Object.fromEntries(
+      CHECKOUT_STYLE_COMPONENTS.map((name) => [name, { ...source[name] }]),
+    ) as Record<CheckoutStyleComponent, Record<string, string>>;
+  }
+
+  function applyStyleOverrides(): void {
+    appliedSlotClassByComponent = cloneSlotClasses(slotClassByComponent);
+    appliedCssVarValues = { ...cssVarValues };
+    styleOverridesEnabled = true;
+  }
+
+  function onStyleOverridesToggle(payload: { isChecked: boolean }): void {
+    if (payload.isChecked) {
+      applyStyleOverrides();
+      return;
+    }
+    styleOverridesEnabled = false;
+  }
+
   function getCssVarValue(varName: string): string {
     return cssVarValues[varName] ?? defaultCssVarValue(varName);
   }
@@ -226,8 +287,8 @@
     <aside class="controls-panel">
       <Heading size="large" weight="semibold">Checkout playground</Heading>
       <Text size="medium" color="surface.text.gray.muted">
-        Tune global theme via <Code size="small">createTheme</Code> and checkout-critical
-        <Code size="small">styleOverride</Code> slots. Preview updates live in the phone frame.
+        Tune global theme via <Code size="small">createTheme</Code> (live preview) and checkout
+        <Code size="small">styleOverride</Code> slots (Apply to preview).
       </Text>
 
       <div class="meta">
@@ -362,8 +423,19 @@
       <section class="control-section">
         <Heading size="small" weight="semibold">styleOverride (checkout)</Heading>
         <Text size="small" color="surface.text.gray.muted">
-          Button, AppBarLeading, Card.
+          Button, AppBarLeading, Card. Edit slots below, then Apply to update the phone preview.
         </Text>
+
+        <div class="control-block apply-row">
+          <Switch
+            isChecked={styleOverridesEnabled}
+            onChange={onStyleOverridesToggle}
+            accessibilityLabel="Apply style overrides to preview"
+            size="small"
+          />
+          <Text size="small" weight="medium">Apply to preview</Text>
+          <Button variant="secondary" size="small" onClick={applyStyleOverrides}>Apply</Button>
+        </div>
 
         <div class="control-block">
           <Text size="small" weight="semibold">Component</Text>
@@ -533,6 +605,12 @@
     font-size: var(--font-size-75);
     background-color: var(--surface-background-gray-intense);
     color: var(--surface-text-gray-normal);
+  }
+
+  .apply-row {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   .slot-grid-header {
