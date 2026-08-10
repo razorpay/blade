@@ -1,5 +1,6 @@
 ---
 '@razorpay/blade': minor
+'@razorpay/blade-mcp': minor
 ---
 
 feat(blade): add TreeView component
