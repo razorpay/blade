@@ -13,28 +13,28 @@
     StyleOverride,
     TextSlot,
   } from '@razorpay/blade-core/styles';
-  import Accordion from '../Accordion/Accordion.svelte';
-  import AccordionItem from '../Accordion/AccordionItem.svelte';
-  import AccordionItemBody from '../Accordion/AccordionItemBody.svelte';
-  import AccordionItemHeader from '../Accordion/AccordionItemHeader.svelte';
-  import Amount from '../Amount/Amount.svelte';
-  import AnnouncementBanner from '../AnnouncementBanner/AnnouncementBanner.svelte';
-  import AppBar from '../AppBar/AppBar.svelte';
-  import Avatar from '../Avatar/Avatar.svelte';
-  import AppBarLeading from '../AppBar/AppBarLeading.svelte';
-  import AppBarActions from '../AppBar/AppBarActions.svelte';
-  import Button from '../Button/Button.svelte';
-  import Card from '../Card/Card.svelte';
-  import Chip from '../Chip/Chip.svelte';
-  import ChipGroup from '../Chip/ChipGroup.svelte';
-  import Divider from '../Divider/Divider.svelte';
-  import IconButton from '../Button/IconButton/IconButton.svelte';
-  import TextInput from '../Input/TextInput/TextInput.svelte';
-  import { InfoIcon, SearchIcon, UserIcon } from '../Icons';
-  import Code from '../Typography/Code/Code.svelte';
-  import Heading from '../Typography/Heading/Heading.svelte';
-  import Text from '../Typography/Text/Text.svelte';
-  import type { BladeComponentName } from './types';
+  import Accordion from '../../../Accordion/Accordion.svelte';
+  import AccordionItem from '../../../Accordion/AccordionItem.svelte';
+  import AccordionItemBody from '../../../Accordion/AccordionItemBody.svelte';
+  import AccordionItemHeader from '../../../Accordion/AccordionItemHeader.svelte';
+  import Amount from '../../../Amount/Amount.svelte';
+  import AnnouncementBanner from '../../../AnnouncementBanner/AnnouncementBanner.svelte';
+  import AppBar from '../../../AppBar/AppBar.svelte';
+  import Avatar from '../../../Avatar/Avatar.svelte';
+  import AppBarLeading from '../../../AppBar/AppBarLeading.svelte';
+  import AppBarActions from '../../../AppBar/AppBarActions.svelte';
+  import Button from '../../../Button/Button.svelte';
+  import Card from '../../../Card/Card.svelte';
+  import Chip from '../../../Chip/Chip.svelte';
+  import ChipGroup from '../../../Chip/ChipGroup.svelte';
+  import Divider from '../../../Divider/Divider.svelte';
+  import IconButton from '../../../Button/IconButton/IconButton.svelte';
+  import TextInput from '../../../Input/TextInput/TextInput.svelte';
+  import { InfoIcon, SearchIcon, UserIcon } from '../../../Icons';
+  import Code from '../../../Typography/Code/Code.svelte';
+  import Heading from '../../../Typography/Heading/Heading.svelte';
+  import Text from '../../../Typography/Text/Text.svelte';
+  import type { BladeComponentName } from '../../types';
 
   const COMPONENT_OPTIONS = [
     'Button',

@@ -5,33 +5,33 @@
     CardSlot,
     StyleOverride,
   } from '@razorpay/blade-core/styles';
-  import AppBar from '../AppBar/AppBar.svelte';
-  import AppBarLeading from '../AppBar/AppBarLeading.svelte';
-  import AppBarActions from '../AppBar/AppBarActions.svelte';
-  import IconButton from '../Button/IconButton/IconButton.svelte';
-  import Avatar from '../Avatar/Avatar.svelte';
-  import AvatarGroup from '../Avatar/AvatarGroup.svelte';
-  import Text from '../Typography/Text/Text.svelte';
-  import Badge from '../Badge/Badge.svelte';
-  import Card from '../Card/Card.svelte';
-  import CardBody from '../Card/CardBody.svelte';
-  import Button from '../Button/Button.svelte';
-  import Amount from '../Amount/Amount.svelte';
-  import Link from '../Link/Link.svelte';
-  import AnnouncementBanner from '../AnnouncementBanner/AnnouncementBanner.svelte';
-  import Accordion from '../Accordion/Accordion.svelte';
-  import AccordionItem from '../Accordion/AccordionItem.svelte';
-  import AccordionItemHeader from '../Accordion/AccordionItemHeader.svelte';
-  import AccordionItemBody from '../Accordion/AccordionItemBody.svelte';
-  import Divider from '../Divider/Divider.svelte';
-  import BottomSheet from '../BottomSheet/BottomSheet.svelte';
-  import BottomSheetHeader from '../BottomSheet/BottomSheetHeader.svelte';
-  import BottomSheetBody from '../BottomSheet/BottomSheetBody.svelte';
-  import BottomSheetFooter from '../BottomSheet/BottomSheetFooter.svelte';
-  import PhoneNumberInput from '../Input/PhoneNumberInput/PhoneNumberInput.svelte';
+  import AppBar from '../../../AppBar/AppBar.svelte';
+  import AppBarLeading from '../../../AppBar/AppBarLeading.svelte';
+  import AppBarActions from '../../../AppBar/AppBarActions.svelte';
+  import IconButton from '../../../Button/IconButton/IconButton.svelte';
+  import Avatar from '../../../Avatar/Avatar.svelte';
+  import AvatarGroup from '../../../Avatar/AvatarGroup.svelte';
+  import Text from '../../../Typography/Text/Text.svelte';
+  import Badge from '../../../Badge/Badge.svelte';
+  import Card from '../../../Card/Card.svelte';
+  import CardBody from '../../../Card/CardBody.svelte';
+  import Button from '../../../Button/Button.svelte';
+  import Amount from '../../../Amount/Amount.svelte';
+  import Link from '../../../Link/Link.svelte';
+  import AnnouncementBanner from '../../../AnnouncementBanner/AnnouncementBanner.svelte';
+  import Accordion from '../../../Accordion/Accordion.svelte';
+  import AccordionItem from '../../../Accordion/AccordionItem.svelte';
+  import AccordionItemHeader from '../../../Accordion/AccordionItemHeader.svelte';
+  import AccordionItemBody from '../../../Accordion/AccordionItemBody.svelte';
+  import Divider from '../../../Divider/Divider.svelte';
+  import BottomSheet from '../../../BottomSheet/BottomSheet.svelte';
+  import BottomSheetHeader from '../../../BottomSheet/BottomSheetHeader.svelte';
+  import BottomSheetBody from '../../../BottomSheet/BottomSheetBody.svelte';
+  import BottomSheetFooter from '../../../BottomSheet/BottomSheetFooter.svelte';
+  import PhoneNumberInput from '../../../Input/PhoneNumberInput/PhoneNumberInput.svelte';
   import CheckoutMethodIcon from './CheckoutMethodIcon.svelte';
   import RazorpayLogo from './RazorpayLogo.svelte';
-  import { ChevronRightIcon, MoreHorizontalIcon, UserIcon } from '../Icons';
+  import { ChevronRightIcon, MoreHorizontalIcon, UserIcon } from '../../../Icons';
 
   const noop = (): void => undefined;
 
@@ -455,8 +455,6 @@
           </BottomSheetFooter>
         </BottomSheet>
       </div>
-
-      <div class="phone-home-indicator" aria-hidden="true"></div>
     </div>
   </div>
 </div>
@@ -468,18 +466,22 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100%;
-    padding: var(--spacing-6);
-    background-color: var(--surface-background-gray-intense);
+    width: max-content;
   }
 
+  /* iPhone 13 CSS viewport 390×844; 10px bezel → outer 410×864 */
   .phone-shell {
-    width: min(100%, 390px);
+    width: 410px;
+    height: 864px;
+    flex-shrink: 0;
   }
 
   .phone-bezel {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
     border: 10px solid #1f1f1f;
     border-radius: 36px;
     background-color: #1f1f1f;
@@ -546,7 +548,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 720px;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
     /* page canvas — createTheme `surface.background.page` → gray.moderate */
     background-color: var(--surface-background-gray-moderate);
     font-family: var(--font-family-text);
@@ -594,6 +598,10 @@
   .checkout-promo-banner {
     flex-shrink: 0;
     margin-top: var(--spacing-5);
+    /* strip the rounded content sheet overlaps; matches banner fill so the sheet's
+       top corners reveal banner color instead of a seam */
+    padding-bottom: var(--spacing-4);
+    background-color: var(--interactive-background-static-black-faded-highlighted);
   }
 
   :global(.checkout-promo-banner-root) {
@@ -609,6 +617,9 @@
     flex: 1;
     overflow: auto;
     min-height: 0;
+    margin-top: calc(-1 * var(--spacing-4));
+    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+    background-color: var(--surface-background-gray-moderate);
   }
 
   .checkout-content {
@@ -754,11 +765,4 @@
     gap: var(--spacing-3);
   }
 
-  .phone-home-indicator {
-    width: 120px;
-    height: 4px;
-    margin: 10px auto 8px;
-    border-radius: 999px;
-    background-color: rgba(255, 255, 255, 0.72);
-  }
 </style>

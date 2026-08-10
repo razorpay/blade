@@ -1,8 +1,8 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import BladeProvider from '../BladeProvider/BladeProvider.svelte';
-  import Button from '../Button/Button.svelte';
-  import Text from '../Typography/Text/Text.svelte';
+  import BladeProvider from '../../BladeProvider.svelte';
+  import Button from '../../../Button/Button.svelte';
+  import Text from '../../../Typography/Text/Text.svelte';
   import { bladeTheme } from '@razorpay/blade-core/tokens';
   import { getPrimaryBrandCssVars } from '@razorpay/blade-core/styles';
   import { cssVariablesToInlineStyle } from '@razorpay/blade-core/utils';

@@ -5,6 +5,10 @@ import type {
   ThemeTokens,
 } from '@razorpay/blade-core/tokens';
 
+export const CUSTOM_BRAND_LABEL = 'Custom';
+/** Approximate hex for `RAZORPAY_BRAND_FALLBACK` — valid for `<input type="color">`. */
+export const DEFAULT_CUSTOM_BRAND_COLOR = '#0E6CF2';
+
 export const BRAND_PRESETS: { label: string; hex: string }[] = [
   { label: 'Razorpay', hex: '' },
   { label: 'ICICI', hex: '#EE681A' },
@@ -16,6 +20,7 @@ export const BRAND_PRESETS: { label: string; hex: string }[] = [
   { label: 'Zomato', hex: '#CF2033' },
   { label: 'DSP', hex: '#19BEA2' },
   { label: 'Nykaa', hex: '#DF005D' },
+  { label: CUSTOM_BRAND_LABEL, hex: '' },
 ];
 
 export const DEFAULT_RADIUS = {
@@ -67,6 +72,7 @@ export const RAZORPAY_BRAND_FALLBACK = 'hsla(218, 89%, 51%, 1)';
 
 export type ThemeControlState = {
   brandLabel: string;
+  customBrandColor: string;
   radiusPreset: string;
   radiusOverride: Record<RadiusKey, number> | null;
   colorScheme: ColorSchemeNamesInput;
@@ -83,8 +89,15 @@ export function hasCustomRadius(borderRadius: Record<RadiusKey, number>): boolea
   return RADIUS_KEYS.some((key) => borderRadius[key] !== DEFAULT_RADIUS[key]);
 }
 
+export function resolveBrandHex(state: ThemeControlState): string {
+  if (state.brandLabel === CUSTOM_BRAND_LABEL) {
+    return state.customBrandColor;
+  }
+  return BRAND_PRESETS.find((b) => b.label === state.brandLabel)?.hex ?? '';
+}
+
 export function usesCreateTheme(state: ThemeControlState): boolean {
-  const brandHex = BRAND_PRESETS.find((b) => b.label === state.brandLabel)?.hex ?? '';
+  const brandHex = resolveBrandHex(state);
   const borderRadius = getBorderRadius(state);
   const pageBackground = PAGE_BG_PRESETS.find((p) => p.label === state.pageBgLabel)?.color ?? '';
   const fontFamilyOverride = FONT_PRESETS.find((f) => f.label === state.fontPresetLabel)?.family;
@@ -109,7 +122,7 @@ export function buildThemeBundle(state: ThemeControlState): ThemeBundle {
     return { themeTokens: bladeTheme };
   }
 
-  const brandHex = BRAND_PRESETS.find((b) => b.label === state.brandLabel)?.hex ?? '';
+  const brandHex = resolveBrandHex(state);
   const borderRadius = getBorderRadius(state);
   const pageBackground = PAGE_BG_PRESETS.find((p) => p.label === state.pageBgLabel)?.color ?? '';
   const fontFamilyOverride = FONT_PRESETS.find((f) => f.label === state.fontPresetLabel)?.family;
@@ -137,7 +150,7 @@ export function buildUsageSnippet(state: ThemeControlState): string {
 </BladeProvider>`;
   }
 
-  const brandHex = BRAND_PRESETS.find((b) => b.label === state.brandLabel)?.hex ?? '';
+  const brandHex = resolveBrandHex(state);
   const borderRadius = getBorderRadius(state);
   const pageBackground = PAGE_BG_PRESETS.find((p) => p.label === state.pageBgLabel)?.color ?? '';
   const fontFamilyOverride = FONT_PRESETS.find((f) => f.label === state.fontPresetLabel)?.family;
