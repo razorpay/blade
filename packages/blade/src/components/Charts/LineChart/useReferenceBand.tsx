@@ -5,6 +5,7 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import type {
   ChartReferenceBandProps,
   ReferenceBandLegendInfo,
+  DataColorMapping,
 } from '../CommonChartComponents/types';
 import {
   componentId as commonComponentIds,
@@ -16,128 +17,180 @@ import {
 } from '../CommonChartComponents/tokens';
 import { parsePathAnchors } from '../utils/nullBridgeUtils';
 import type { PixelPoint } from '../utils/nullBridgeUtils';
-import { buildBandAreaPath } from '../utils/referenceBandUtils';
+import { buildBandAreaPath, perLineBandClass } from '../utils/referenceBandUtils';
+import { componentIds } from './componentIds';
+import type { ChartLineProps } from './types';
 
 type ChartData = { [key: string]: unknown };
 
-type ResolvedReferenceBand = {
-  lowerDataKey: string;
-  upperDataKey: string;
+/**
+ * A single band to be drawn — either the standalone `<ChartReferenceBand>` or one derived from a
+ * `<ChartLine>` that declares `rangeLowerDataKey` / `rangeUpperDataKey`. `lowerClass` / `upperClass`
+ * are the classNames of the invisible bound lines whose rendered geometry we read.
+ */
+type BandSource = {
+  id: string;
+  lowerClass: string;
+  upperClass: string;
   name: string;
   colorToken: ReferenceBandLegendInfo['color'];
-  showLegend: boolean;
   fillColor: string;
+  showLegend: boolean;
   upperLabel?: string;
   lowerLabel?: string;
   showRangeLabels: boolean;
 };
 
 type BandGeometry = {
+  id: string;
   d: string;
+  fillColor: string;
   upperStart: PixelPoint | null;
   lowerStart: PixelPoint | null;
+  upperLabel?: string;
+  lowerLabel?: string;
+  showRangeLabels: boolean;
 };
 
 type UseReferenceBandResult = {
   hasReferenceBand: boolean;
-  renderMinMaxBand: () => React.ReactElement | null;
-  referenceBandLegendInfo: ReferenceBandLegendInfo | undefined;
+  renderReferenceBands: () => React.ReactElement | null;
+  referenceBandLegendInfos: ReferenceBandLegendInfo[];
 };
 
+const geomsEqual = (a: BandGeometry[], b: BandGeometry[]): boolean =>
+  a.length === b.length &&
+  a.every((item, index) => {
+    const other = b[index];
+    return (
+      item.id === other.id &&
+      item.d === other.d &&
+      item.fillColor === other.fillColor &&
+      item.upperStart?.x === other.upperStart?.x &&
+      item.upperStart?.y === other.upperStart?.y &&
+      item.lowerStart?.x === other.lowerStart?.x &&
+      item.lowerStart?.y === other.lowerStart?.y
+    );
+  });
+
 /**
- * Detects an optional `<ChartReferenceBand>` child inside `ChartLineWrapper` and manages the
- * web-only band rendering pipeline: after Recharts lays out the two invisible bound lines, the
- * hook reads their pixel anchor points from the rendered SVG, builds a filled area path between
- * them (via `buildBandAreaPath`), and re-computes on DOM/resize changes — mirroring the
- * null-bridge approach because Recharts v3 doesn't expose axis scales to `<Customized>`.
- *
- * Returns a `renderMinMaxBand` callback for `<RechartsCustomized>`, a `hasReferenceBand` flag,
- * and legend info so the legend can show a swatch for the band.
+ * Manages the web-only reference-band rendering pipeline for `ChartLineWrapper`. Collects every band
+ * source — the standalone `<ChartReferenceBand>` plus each `<ChartLine>` that declares a range — and,
+ * after Recharts lays out the invisible bound lines, reads their pixel anchors from the rendered SVG
+ * and fills the area between each pair (via `buildBandAreaPath`), recomputing on DOM/resize changes.
+ * Per-line bands are color-matched to their line via `dataColorMapping`. This mirrors the null-bridge
+ * approach because Recharts v3 doesn't expose axis scales to `<Customized>`.
  */
 const useReferenceBand = (
   children: React.ReactNode,
   data: ChartData[],
   containerRef: React.RefObject<HTMLDivElement | null>,
+  dataColorMapping: DataColorMapping,
 ): UseReferenceBandResult => {
   const { theme } = useTheme();
 
-  // Detect an optional <ChartReferenceBand> child and resolve its band config once. The band renders a
-  // shaded region between two data-driven bounds (see the reference band layer below).
-  const referenceBand = useMemo<ResolvedReferenceBand | undefined>(() => {
-    let found: ChartReferenceBandProps | undefined;
+  const bandSources = useMemo<BandSource[]>(() => {
+    const sources: BandSource[] = [];
+
     React.Children.forEach(children, (child) => {
-      if (
-        isValidElement(child) &&
-        getComponentId(child) === commonComponentIds.chartReferenceBand
-      ) {
-        found = child.props as ChartReferenceBandProps;
+      if (!isValidElement(child)) return;
+      const id = getComponentId(child);
+
+      // Standalone <ChartReferenceBand> (single band not tied to a specific line).
+      if (id === commonComponentIds.chartReferenceBand) {
+        const props = child.props as ChartReferenceBandProps;
+        const colorToken =
+          props.color ?? (REFERENCE_BAND_DEFAULT_COLOR as ReferenceBandLegendInfo['color']);
+        sources.push({
+          id: 'standalone',
+          lowerClass: REFERENCE_BAND_LOWER_CLASS,
+          upperClass: REFERENCE_BAND_UPPER_CLASS,
+          name: props.name ?? 'Reference band',
+          colorToken,
+          fillColor: getIn(theme.colors, colorToken),
+          showLegend: props.showLegend ?? true,
+          upperLabel: props.upperLabel,
+          lowerLabel: props.lowerLabel,
+          showRangeLabels: props.showRangeLabels ?? true,
+        });
+        return;
+      }
+
+      // Per-line band: a <ChartLine> that declares both range bounds.
+      if (id === componentIds.ChartLine) {
+        const props = child.props as ChartLineProps;
+        const dataKey = props.dataKey as string;
+        if (!dataKey || !props.rangeLowerDataKey || !props.rangeUpperDataKey) return;
+        // Color-match to the line: explicit rangeColor wins, else the line's resolved color.
+        const colorToken = (props.rangeColor ??
+          dataColorMapping[dataKey]?.colorToken ??
+          REFERENCE_BAND_DEFAULT_COLOR) as ReferenceBandLegendInfo['color'];
+        sources.push({
+          id: dataKey,
+          lowerClass: perLineBandClass(dataKey, 'lower'),
+          upperClass: perLineBandClass(dataKey, 'upper'),
+          name: props.rangeName ?? 'Industry range',
+          colorToken,
+          fillColor: getIn(theme.colors, colorToken),
+          showLegend: props.showLegend ?? true,
+          upperLabel: props.rangeUpperLabel,
+          lowerLabel: props.rangeLowerLabel,
+          showRangeLabels: props.showRangeLabels ?? false,
+        });
       }
     });
-    if (!found) return undefined;
-    const colorToken =
-      found.color ?? (REFERENCE_BAND_DEFAULT_COLOR as ReferenceBandLegendInfo['color']);
-    return {
-      lowerDataKey: found.lowerDataKey,
-      upperDataKey: found.upperDataKey,
-      name: found.name ?? 'Reference band',
-      colorToken,
-      showLegend: found.showLegend ?? true,
-      fillColor: getIn(theme.colors, colorToken),
-      upperLabel: found.upperLabel,
-      lowerLabel: found.lowerLabel,
-      showRangeLabels: found.showRangeLabels ?? true,
-    };
-  }, [children, theme]);
 
-  const hasReferenceBand = Boolean(referenceBand);
+    return sources;
+  }, [children, theme, dataColorMapping]);
 
-  /**
-   * The reference band is painted from Recharts' own computed geometry: <ChartReferenceBand>
-   * renders two invisible bound lines, and after layout we read those two curves' pixel anchors
-   * and fill the region between them. This mirrors the null-bridge approach (Recharts v3 doesn't
-   * expose axis scales to <Customized>), and produces a data-driven band that follows the curve —
-   * something Recharts' fixed-rectangle ReferenceArea can't do.
-   */
-  const [bandGeom, setBandGeom] = useState<BandGeometry>({
-    d: '',
-    upperStart: null,
-    lowerStart: null,
-  });
+  const hasReferenceBand = bandSources.length > 0;
+
+  const [bandGeoms, setBandGeoms] = useState<BandGeometry[]>([]);
+
+  // Stable key of the sources' identity so the effect re-runs when bands are added/removed/recolored.
+  const sourceSignature = useMemo(
+    () => bandSources.map((s) => `${s.id}:${s.fillColor}`).join('|'),
+    [bandSources],
+  );
 
   useLayoutEffect(() => {
     const container = containerRef.current;
     if (!container || !hasReferenceBand) {
-      setBandGeom((prev) => (prev.d === '' ? prev : { d: '', upperStart: null, lowerStart: null }));
+      setBandGeoms((prev) => (prev.length === 0 ? prev : []));
       return undefined;
     }
 
-    const computeBand = (): void => {
+    const computeBands = (): void => {
       const surface = container.querySelector('svg.recharts-surface');
       if (!surface) return;
-      const upperCurve = surface.querySelector<SVGPathElement>(
-        `.${REFERENCE_BAND_UPPER_CLASS} .recharts-line-curve`,
-      );
-      const lowerCurve = surface.querySelector<SVGPathElement>(
-        `.${REFERENCE_BAND_LOWER_CLASS} .recharts-line-curve`,
-      );
-      if (!upperCurve || !lowerCurve) return;
-      const upperAnchors = parsePathAnchors(upperCurve.getAttribute('d') ?? '');
-      const lowerAnchors = parsePathAnchors(lowerCurve.getAttribute('d') ?? '');
-      const nextPath = buildBandAreaPath(upperAnchors, lowerAnchors);
-      const upperStart = upperAnchors[0] ?? null;
-      const lowerStart = lowerAnchors[0] ?? null;
-      setBandGeom((prev) =>
-        prev.d === nextPath &&
-        prev.upperStart?.x === upperStart?.x &&
-        prev.upperStart?.y === upperStart?.y &&
-        prev.lowerStart?.x === lowerStart?.x &&
-        prev.lowerStart?.y === lowerStart?.y
-          ? prev
-          : { d: nextPath, upperStart, lowerStart },
-      );
+      const next: BandGeometry[] = [];
+      bandSources.forEach((source) => {
+        const upperCurve = surface.querySelector<SVGPathElement>(
+          `.${source.upperClass} .recharts-line-curve`,
+        );
+        const lowerCurve = surface.querySelector<SVGPathElement>(
+          `.${source.lowerClass} .recharts-line-curve`,
+        );
+        if (!upperCurve || !lowerCurve) return;
+        const upperAnchors = parsePathAnchors(upperCurve.getAttribute('d') ?? '');
+        const lowerAnchors = parsePathAnchors(lowerCurve.getAttribute('d') ?? '');
+        const d = buildBandAreaPath(upperAnchors, lowerAnchors);
+        if (!d) return;
+        next.push({
+          id: source.id,
+          d,
+          fillColor: source.fillColor,
+          upperStart: upperAnchors[0] ?? null,
+          lowerStart: lowerAnchors[0] ?? null,
+          upperLabel: source.upperLabel,
+          lowerLabel: source.lowerLabel,
+          showRangeLabels: source.showRangeLabels,
+        });
+      });
+      setBandGeoms((prev) => (geomsEqual(prev, next) ? prev : next));
     };
 
-    computeBand();
+    computeBands();
 
     const cleanups: Array<() => void> = [];
     if (typeof MutationObserver !== 'undefined') {
@@ -151,7 +204,7 @@ const useReferenceBand = (
         if (rafId !== null) cancelAnimationFrame(rafId);
         rafId = requestAnimationFrame(() => {
           rafId = null;
-          computeBand();
+          computeBands();
         });
       });
       mutationObserver.observe(container, {
@@ -166,16 +219,16 @@ const useReferenceBand = (
       });
     }
     if (typeof ResizeObserver !== 'undefined') {
-      const resizeObserver = new ResizeObserver(() => computeBand());
+      const resizeObserver = new ResizeObserver(() => computeBands());
       resizeObserver.observe(container);
       cleanups.push(() => resizeObserver.disconnect());
     }
     return () => cleanups.forEach((cleanup) => cleanup());
-  }, [data, hasReferenceBand, referenceBand?.lowerDataKey, referenceBand?.upperDataKey]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, hasReferenceBand, sourceSignature]);
 
-  const renderMinMaxBand = (): React.ReactElement | null => {
-    if (!hasReferenceBand || !bandGeom.d) return null;
-    const showLabels = referenceBand?.showRangeLabels;
+  const renderReferenceBands = (): React.ReactElement | null => {
+    if (!hasReferenceBand || bandGeoms.length === 0) return null;
     const labelColor = getIn(theme.colors, 'surface.text.gray.subtle');
     const labelProps = {
       fill: labelColor,
@@ -186,37 +239,39 @@ const useReferenceBand = (
     };
     return (
       <g className={REFERENCE_BAND_LAYER_CLASS}>
-        <path
-          d={bandGeom.d}
-          fill={referenceBand?.fillColor}
-          fillOpacity={REFERENCE_BAND_FILL_OPACITY}
-          stroke="none"
-        />
-        {showLabels && referenceBand?.upperLabel && bandGeom.upperStart ? (
-          <text x={bandGeom.upperStart.x + 4} y={bandGeom.upperStart.y - 6} {...labelProps}>
-            {referenceBand.upperLabel}
-          </text>
-        ) : null}
-        {showLabels && referenceBand?.lowerLabel && bandGeom.lowerStart ? (
-          <text x={bandGeom.lowerStart.x + 4} y={bandGeom.lowerStart.y + 14} {...labelProps}>
-            {referenceBand.lowerLabel}
-          </text>
-        ) : null}
+        {bandGeoms.map((band) => (
+          <g key={`reference-band-${band.id}`}>
+            <path d={band.d} fill={band.fillColor} fillOpacity={REFERENCE_BAND_FILL_OPACITY} stroke="none" />
+            {band.showRangeLabels && band.upperLabel && band.upperStart ? (
+              <text x={band.upperStart.x + 4} y={band.upperStart.y - 6} {...labelProps}>
+                {band.upperLabel}
+              </text>
+            ) : null}
+            {band.showRangeLabels && band.lowerLabel && band.lowerStart ? (
+              <text x={band.lowerStart.x + 4} y={band.lowerStart.y + 14} {...labelProps}>
+                {band.lowerLabel}
+              </text>
+            ) : null}
+          </g>
+        ))}
       </g>
     );
   };
 
-  const referenceBandLegendInfo = useMemo<ReferenceBandLegendInfo | undefined>(() => {
-    if (!referenceBand?.showLegend) return undefined;
-    return {
-      name: referenceBand.name,
-      color: referenceBand.colorToken,
-      fillOpacity: REFERENCE_BAND_FILL_OPACITY,
-    };
-  }, [referenceBand]);
+  const referenceBandLegendInfos = useMemo<ReferenceBandLegendInfo[]>(
+    () =>
+      bandSources
+        .filter((source) => source.showLegend)
+        .map((source) => ({
+          name: source.name,
+          color: source.colorToken,
+          fillOpacity: REFERENCE_BAND_FILL_OPACITY,
+        })),
+    [bandSources],
+  );
 
-  return { hasReferenceBand, renderMinMaxBand, referenceBandLegendInfo };
+  return { hasReferenceBand, renderReferenceBands, referenceBandLegendInfos };
 };
 
 export { useReferenceBand };
-export type { UseReferenceBandResult, ResolvedReferenceBand, BandGeometry };
+export type { UseReferenceBandResult, BandSource, BandGeometry };

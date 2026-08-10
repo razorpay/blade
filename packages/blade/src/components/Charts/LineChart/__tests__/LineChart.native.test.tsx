@@ -421,10 +421,45 @@ describe('<ChartLineWrapper /> (native)', () => {
       </ChartLineWrapper>,
     );
     fireLayout(getByTestId('range-layout'));
-    expect(getByTestId('legend-reference-band')).toBeTruthy();
+    expect(getByTestId('legend-reference-band-standalone')).toBeTruthy();
     // Range labels render on the band.
-    expect(getByTestId('range-label-lower')).toBeTruthy();
-    expect(getByTestId('range-label-upper')).toBeTruthy();
+    expect(getByTestId('range-label-lower-standalone')).toBeTruthy();
+    expect(getByTestId('range-label-upper-standalone')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render a color-matched band + legend entry per line with a range', () => {
+    const multiData = [
+      { name: 'Jan', payments: 62, paymentsMin: 50, paymentsMax: 74, refunds: 50, refundsMin: 38, refundsMax: 62 },
+      { name: 'Feb', payments: 66, paymentsMin: 54, paymentsMax: 78, refunds: 52, refundsMin: 40, refundsMax: 64 },
+      { name: 'Mar', payments: 70, paymentsMin: 58, paymentsMax: 82, refunds: 58, refundsMin: 46, refundsMax: 70 },
+      { name: 'Apr', payments: 74, paymentsMin: 62, paymentsMax: 86, refunds: 60, refundsMin: 48, refundsMax: 72 },
+    ];
+    const { toJSON, getByTestId } = renderWithTheme(
+      <ChartLineWrapper data={multiData} testID="multi">
+        <ChartXAxis dataKey="name" />
+        <ChartYAxis />
+        <ChartLegend />
+        <ChartLine
+          dataKey="payments"
+          name="Payments"
+          rangeLowerDataKey="paymentsMin"
+          rangeUpperDataKey="paymentsMax"
+          rangeName="Payments industry range"
+        />
+        <ChartLine
+          dataKey="refunds"
+          name="Refunds"
+          rangeLowerDataKey="refundsMin"
+          rangeUpperDataKey="refundsMax"
+          rangeName="Refunds industry range"
+        />
+      </ChartLineWrapper>,
+    );
+    fireLayout(getByTestId('multi-layout'));
+    // One legend swatch per line band.
+    expect(getByTestId('legend-reference-band-payments')).toBeTruthy();
+    expect(getByTestId('legend-reference-band-refunds')).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
   });
 });

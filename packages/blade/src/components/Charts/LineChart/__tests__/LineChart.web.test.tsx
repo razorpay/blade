@@ -575,3 +575,66 @@ describe('<ChartReferenceBand />', () => {
     });
   });
 });
+
+describe('LineChart per-line reference bands (range on ChartLine)', () => {
+  const multiData = [
+    { name: 'Jan', payments: 62, paymentsMin: 50, paymentsMax: 74, refunds: 50, refundsMin: 38, refundsMax: 62 },
+    { name: 'Feb', payments: 66, paymentsMin: 54, paymentsMax: 78, refunds: 52, refundsMin: 40, refundsMax: 64 },
+    { name: 'Mar', payments: 70, paymentsMin: 58, paymentsMax: 82, refunds: 58, refundsMin: 46, refundsMax: 70 },
+    { name: 'Apr', payments: 74, paymentsMin: 62, paymentsMax: 86, refunds: 60, refundsMin: 48, refundsMax: 72 },
+  ];
+
+  it('should paint one band per line that declares a range', async () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={multiData}>
+          <ChartXAxis dataKey="name" />
+          <ChartLine dataKey="payments" name="Payments" rangeLowerDataKey="paymentsMin" rangeUpperDataKey="paymentsMax" />
+          <ChartLine dataKey="refunds" name="Refunds" rangeLowerDataKey="refundsMin" rangeUpperDataKey="refundsMax" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    await waitFor(() => {
+      // Two lines with ranges → two filled band paths in the band layer.
+      expect(container.querySelectorAll('.blade-reference-band-layer > g').length).toBe(2);
+    });
+    const bandPaths = container.querySelectorAll('.blade-reference-band-layer path');
+    expect(bandPaths.length).toBe(2);
+    bandPaths.forEach((path) => {
+      expect(path.getAttribute('fill')).not.toBe('none');
+      expect(path.getAttribute('d')).toContain('Z');
+    });
+  });
+
+  it('should only paint bands for lines that declare a range', async () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={multiData}>
+          <ChartXAxis dataKey="name" />
+          <ChartLine dataKey="payments" name="Payments" rangeLowerDataKey="paymentsMin" rangeUpperDataKey="paymentsMax" />
+          <ChartLine dataKey="refunds" name="Refunds" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    await waitFor(() => {
+      expect(container.querySelectorAll('.blade-reference-band-layer path').length).toBe(1);
+    });
+  });
+
+  it('should render a legend swatch per line band', async () => {
+    const { queryByText } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartLineWrapper data={multiData}>
+          <ChartXAxis dataKey="name" />
+          <ChartLegend />
+          <ChartLine dataKey="payments" name="Payments" rangeLowerDataKey="paymentsMin" rangeUpperDataKey="paymentsMax" rangeName="Payments industry range" />
+          <ChartLine dataKey="refunds" name="Refunds" rangeLowerDataKey="refundsMin" rangeUpperDataKey="refundsMax" rangeName="Refunds industry range" />
+        </ChartLineWrapper>
+      </Box>,
+    );
+    await waitFor(() => {
+      expect(queryByText('Payments industry range')).toBeInTheDocument();
+      expect(queryByText('Refunds industry range')).toBeInTheDocument();
+    });
+  });
+});

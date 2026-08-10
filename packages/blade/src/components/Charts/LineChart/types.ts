@@ -72,6 +72,42 @@ interface ChartLineProps {
    */
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   /**
+   * Data key for the lower (minimum) bound of this line's reference band.
+   * When both `rangeLowerDataKey` and `rangeUpperDataKey` are provided, a shaded range band is
+   * drawn behind this line (e.g. the industry min–max range for this metric).
+   */
+  rangeLowerDataKey?: string;
+  /**
+   * Data key for the upper (maximum) bound of this line's reference band.
+   * @see rangeLowerDataKey
+   */
+  rangeUpperDataKey?: string;
+  /**
+   * Legend / tooltip label for this line's reference band.
+   * @default 'Industry range'
+   */
+  rangeName?: string;
+  /**
+   * Fill color of this line's reference band.
+   * @default the line's own color (auto color-matched)
+   */
+  rangeColor?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  /**
+   * Inline label annotating the upper bound of this line's band (e.g. `'p75'`), drawn at the band's
+   * upper edge. Only shown when `showRangeLabels` is `true`.
+   */
+  rangeUpperLabel?: string;
+  /**
+   * Inline label annotating the lower bound of this line's band (e.g. `'p25'`), drawn at the band's
+   * lower edge. Only shown when `showRangeLabels` is `true`.
+   */
+  rangeLowerLabel?: string;
+  /**
+   * Whether to show the inline `rangeUpperLabel` / `rangeLowerLabel` edge labels on this line's band.
+   * @default false
+   */
+  showRangeLabels?: boolean;
+  /**
    * Style of the line in line chart.
    * @default: solid
    */

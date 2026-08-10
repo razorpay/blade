@@ -676,7 +676,24 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 | `lowerLabel`   | `string`                                        | ❌       | `undefined`          | Label at the band's lower edge (e.g. `p25`)     |
 | `showRangeLabels` | `boolean`                                    | ❌       | `true`               | Toggle the `upperLabel` / `lowerLabel` labels   |
 
-> **Why not Recharts `ReferenceArea`?** `ReferenceArea` only draws a _fixed_ rectangle (constant `x1/x2/y1/y2`), whereas this band's bounds vary per data point. Recharts' `LineChart` also does not render `Area` children. So the band is drawn as a custom `<Customized>` SVG layer (web) / computed `<Path>` (native): `ChartReferenceBand` renders two invisible bound lines so Recharts computes their geometry and folds them into the y-domain, then `ChartLineWrapper` reads those curves and fills the region between them (`buildBandAreaPath`). This mirrors the existing null-bridge layer, which draws custom geometry the same way because Recharts v3 doesn't expose axis scales to `<Customized>`.
+> **Why not Recharts `ReferenceArea`?** `ReferenceArea` only draws a _fixed_ rectangle (constant `x1/x2/y1/y2`), whereas this band's bounds vary per data point. Recharts' `LineChart` also does not render `Area` children. So the band is drawn as a custom `<Customized>` SVG layer (web) / computed `<Path>` (native): the invisible bound lines let Recharts compute geometry and fold it into the y-domain, then `ChartLineWrapper` reads those curves and fills the region between them (`buildBandAreaPath`). This mirrors the existing null-bridge layer, which draws custom geometry the same way because Recharts v3 doesn't expose axis scales to `<Customized>`.
+
+#### 3.8.3\. Per-line reference bands (range on `ChartLine`) — Industry SR
+
+For the Industry SR use case (Optimizer), a chart can show **multiple trend lines, each with its own color-matched range band** (the industry min–max for that metric). Rather than N standalone `ChartReferenceBand`s, the range lives on `ChartLine` so the band auto-matches the line color and the tooltip pairs value+range:
+
+| Prop (on `ChartLine`) | Type      | Default              | Description                                             |
+| --------------------- | --------- | -------------------- | ------------------------------------------------------- |
+| `rangeLowerDataKey`   | `string`  | -                    | Lower (min) bound key; band shows when this + upper set |
+| `rangeUpperDataKey`   | `string`  | -                    | Upper (max) bound key                                   |
+| `rangeName`           | `string`  | `'Industry range'`   | Legend + tooltip label for this line's band             |
+| `rangeColor`          | color tok | the line's color     | Band fill; defaults to the line's resolved color        |
+| `rangeUpperLabel` / `rangeLowerLabel` | `string` | `undefined` | Inline edge labels (e.g. `p75` / `p25`)          |
+| `showRangeLabels`     | `boolean` | `false`              | Toggle the inline edge labels                           |
+
+- **Enable/disable range** = presence of `rangeLowerDataKey` + `rangeUpperDataKey` (the Figma `showReferenceBand` variant); **number of lines** = number of `<ChartLine>`s (1–5).
+- The **tooltip** shows each series' value plus an "industry range" row (`low–high`).
+- Each per-line band renders exactly like the standalone band (invisible bound lines → `<Customized>` fill), color-matched via `dataColorMapping`. See the *KitchenSink (Industry SR)* story.
 
 ## 4\. Open Questions
 

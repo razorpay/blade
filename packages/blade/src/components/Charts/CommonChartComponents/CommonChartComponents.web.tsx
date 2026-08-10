@@ -448,37 +448,61 @@ const CustomTooltip = ({
     value: string;
     color: string;
     dataKey: string;
-    payload: { fill: string };
+    payload: Record<string, unknown>;
   };
 }): JSX.Element => {
   const { theme } = useTheme();
-  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
+  const { dataColorMapping, chartName, rangeMap } = useCommonChartComponentsContext();
 
   const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping ?? {}, chartName);
+
+  // If this series has a reference band, show its industry range (low–high) beneath the value.
+  const range = rangeMap?.[item.dataKey];
+  const lowerValue = range ? item.payload?.[range.rangeLowerDataKey] : undefined;
+  const upperValue = range ? item.payload?.[range.rangeUpperDataKey] : undefined;
+  const hasRange =
+    range &&
+    lowerValue !== undefined &&
+    lowerValue !== null &&
+    upperValue !== undefined &&
+    upperValue !== null;
+
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-      gap="spacing.4"
-      key={`tooltip-${item.name}`}
-    >
-      <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
-        <div
-          style={{
-            width: theme.spacing[4],
-            height: theme.spacing[4],
-            backgroundColor: getIn(theme.colors, toolTipColor),
-            borderRadius: theme.border.radius.small,
-          }}
-        />
+    <Box key={`tooltip-${item.name}`} paddingY="spacing.1">
+      <Box display="flex" alignItems="center" justifyContent="space-between" gap="spacing.4">
+        <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
+          <div
+            style={{
+              width: theme.spacing[4],
+              height: theme.spacing[4],
+              backgroundColor: getIn(theme.colors, toolTipColor),
+              borderRadius: theme.border.radius.small,
+            }}
+          />
+          <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+            {item.name}
+          </Text>
+        </Box>
         <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-          {item.name}
+          {item.value}
         </Text>
       </Box>
-      <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-        {item.value}
-      </Text>
+      {hasRange ? (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          gap="spacing.4"
+          paddingLeft="spacing.5"
+        >
+          <Text size="xsmall" weight="regular" color="surface.text.staticWhite.muted">
+            {range?.rangeName ?? 'Industry'}
+          </Text>
+          <Text size="xsmall" weight="regular" color="surface.text.staticWhite.muted">
+            {`${String(lowerValue)}–${String(upperValue)}`}
+          </Text>
+        </Box>
+      ) : null}
     </Box>
   );
 };
@@ -593,31 +617,36 @@ const LegendItem = ({
 };
 
 /**
- * Informational (non-toggleable) legend entry for a reference band. The band isn't a selectable
- * series, so it renders a static square swatch in the band's fill colour + its label.
+ * Informational (non-toggleable) legend entries for the reference band(s). Bands aren't selectable
+ * series, so each renders a static square swatch in the band's fill colour + its label. One entry
+ * per band (a per-line band or the standalone band).
  */
 const ReferenceBandLegendSwatch = (): JSX.Element | null => {
   const { theme } = useTheme();
-  const { referenceBand } = useCommonChartComponentsContext();
-  if (!referenceBand) return null;
+  const { referenceBands } = useCommonChartComponentsContext();
+  if (!referenceBands || referenceBands.length === 0) return null;
   return (
-    <Box display="flex" alignItems="center" padding="spacing.2">
-      <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
-        <span
-          style={{
-            backgroundColor: getIn(theme.colors, referenceBand.color),
-            opacity: referenceBand.fillOpacity,
-            width: theme.spacing[4],
-            height: theme.spacing[4],
-            display: 'inline-block',
-            borderRadius: theme.border.radius['2xsmall'],
-          }}
-        />
-        <Text size="medium" color="surface.text.gray.muted">
-          {referenceBand.name}
-        </Text>
-      </Box>
-    </Box>
+    <>
+      {referenceBands.map((band, index) => (
+        <Box display="flex" alignItems="center" padding="spacing.2" key={`reference-band-${index}`}>
+          <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
+            <span
+              style={{
+                backgroundColor: getIn(theme.colors, band.color),
+                opacity: band.fillOpacity,
+                width: theme.spacing[4],
+                height: theme.spacing[4],
+                display: 'inline-block',
+                borderRadius: theme.border.radius['2xsmall'],
+              }}
+            />
+            <Text size="medium" color="surface.text.gray.muted">
+              {band.name}
+            </Text>
+          </Box>
+        </Box>
+      ))}
+    </>
   );
 };
 
@@ -637,7 +666,7 @@ const CustomSquareLegend = (props: {
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
-  const { chartName, dataColorMapping, referenceBand } = useCommonChartComponentsContext();
+  const { chartName, dataColorMapping, referenceBands } = useCommonChartComponentsContext();
 
   /*
   This is a custom legend component that is used to display the legend for the chart.
@@ -694,8 +723,8 @@ const CustomSquareLegend = (props: {
     (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
   );
 
-  // Nothing to render — no real series and no range band.
-  if (filteredPayload.length === 0 && !referenceBand) {
+  // Nothing to render — no real series and no reference band(s).
+  if (filteredPayload.length === 0 && (!referenceBands || referenceBands.length === 0)) {
     return null;
   }
 

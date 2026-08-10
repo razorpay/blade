@@ -41,4 +41,18 @@ const buildBandAreaPath = (upper: PixelPoint[], lower: PixelPoint[]): string => 
   return pathData.trim();
 };
 
-export { buildBandAreaPath };
+/**
+ * Sanitize a dataKey into a CSS-class-safe token (nested keys like `metrics.sales` contain dots,
+ * which are invalid in a single className). Shared by the ChartLine bound-line renderer and the
+ * reference-band hook so both derive the same className for a given line.
+ */
+const sanitizeBandKey = (dataKey: string): string => dataKey.replace(/[^a-zA-Z0-9_-]/g, '-');
+
+/**
+ * className applied to a per-line band's invisible lower/upper bound line, so the reference-band
+ * hook can locate the rendered curve in the SVG. Kept in sync between the renderer and the reader.
+ */
+const perLineBandClass = (dataKey: string, edge: 'lower' | 'upper'): string =>
+  `blade-reference-band-${sanitizeBandKey(dataKey)}-${edge}`;
+
+export { buildBandAreaPath, sanitizeBandKey, perLineBandClass };

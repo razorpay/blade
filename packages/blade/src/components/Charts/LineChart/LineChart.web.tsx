@@ -21,6 +21,7 @@ import type {
   DataColorMapping,
   SecondaryLabelMap,
   ChartXAxisProps,
+  RangeMap,
 } from '../CommonChartComponents/types';
 import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
 import type { ChartLineProps, ChartLineWrapperProps } from './types';
@@ -31,6 +32,7 @@ import {
   parsePathAnchors,
   buildBridgePathData,
 } from '../utils/nullBridgeUtils';
+import { perLineBandClass } from '../utils/referenceBandUtils';
 import { LineChartContext, useLineChartContext } from './LineChartContext';
 import { useReferenceBand } from './useReferenceBand';
 import getIn from '~utils/lodashButBetter/get';
@@ -62,6 +64,18 @@ const Line: React.FC<ChartLineProps> = ({
   _totalLines,
   hide,
   dataKey,
+  // `rangeLowerDataKey` / `rangeUpperDataKey` drive this line's invisible bound lines below. The
+  // remaining range-* props are consumed by ChartLineWrapper's band layer / tooltip / legend; they
+  // must be destructured out here so they don't leak onto the underlying Recharts <Line>.
+  rangeLowerDataKey,
+  rangeUpperDataKey,
+  /* eslint-disable @typescript-eslint/no-unused-vars */
+  rangeName,
+  rangeColor,
+  rangeLowerLabel,
+  rangeUpperLabel,
+  showRangeLabels,
+  /* eslint-enable @typescript-eslint/no-unused-vars */
   ...props
 }) => {
   const { theme } = useTheme();
@@ -131,8 +145,47 @@ const Line: React.FC<ChartLineProps> = ({
     [activeDot, dataKey, updateHoveredDataKey],
   );
 
+  // When this line declares a range, render two invisible bound lines so Recharts computes their
+  // geometry and folds them into the y-domain. ChartLineWrapper's reference-band layer reads these
+  // curves (by className) and paints the shaded band between them, color-matched to this line.
+  const hasRange = Boolean(rangeLowerDataKey && rangeUpperDataKey);
+
   return (
     <>
+      {hasRange ? (
+        <>
+          <RechartsLine
+            key={`band-${dataKey}-lower`}
+            className={perLineBandClass(dataKey as string, 'lower')}
+            type="monotone"
+            dataKey={rangeLowerDataKey}
+            stroke="transparent"
+            strokeWidth={1}
+            dot={false}
+            activeDot={false}
+            connectNulls
+            legendType="none"
+            tooltipType="none"
+            isAnimationActive={false}
+            hide={hide}
+          />
+          <RechartsLine
+            key={`band-${dataKey}-upper`}
+            className={perLineBandClass(dataKey as string, 'upper')}
+            type="monotone"
+            dataKey={rangeUpperDataKey}
+            stroke="transparent"
+            strokeWidth={1}
+            dot={false}
+            activeDot={false}
+            connectNulls
+            legendType="none"
+            tooltipType="none"
+            isAnimationActive={false}
+            hide={hide}
+          />
+        </>
+      ) : null}
       <RechartsLine
         key={`line-${dataKey}-background`}
         type="monotone"
@@ -287,11 +340,31 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
    */
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { hasReferenceBand, renderMinMaxBand, referenceBandLegendInfo } = useReferenceBand(
+  const { hasReferenceBand, renderReferenceBands, referenceBandLegendInfos } = useReferenceBand(
     children,
     data,
     containerRef,
+    dataColorMapping,
   );
+
+  // Map of line dataKey -> its range keys, so the tooltip can show the industry range per series.
+  const rangeMap = useMemo<RangeMap>(() => {
+    const map: RangeMap = {};
+    React.Children.forEach(children, (child) => {
+      if (isValidElement(child) && getComponentId(child) === componentIds.ChartLine) {
+        const props = child.props as ChartLineProps;
+        const dataKey = props.dataKey as string;
+        if (dataKey && props.rangeLowerDataKey && props.rangeUpperDataKey) {
+          map[dataKey] = {
+            rangeLowerDataKey: props.rangeLowerDataKey,
+            rangeUpperDataKey: props.rangeUpperDataKey,
+            rangeName: props.rangeName,
+          };
+        }
+      }
+    });
+    return map;
+  }, [children]);
 
   const [bridgePaths, setBridgePaths] = useState<
     Array<{ id: string; dataKey: string; d: string; stroke: string }>
@@ -446,9 +519,17 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
       setSelectedDataKeys,
       secondaryLabelMap,
       dataLength: data?.length,
-      referenceBand: referenceBandLegendInfo,
+      referenceBands: referenceBandLegendInfos,
+      rangeMap,
     }),
-    [dataColorMapping, selectedDataKeys, secondaryLabelMap, data?.length, referenceBandLegendInfo],
+    [
+      dataColorMapping,
+      selectedDataKeys,
+      secondaryLabelMap,
+      data?.length,
+      referenceBandLegendInfos,
+      rangeMap,
+    ],
   );
 
   return (
@@ -464,8 +545,8 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
             <RechartsResponsiveContainer width="100%" height="100%">
               <RechartsLineChart data={data} onMouseLeave={() => setHoveredDataKey(null)}>
-                {/* Painted first so the shaded band sits behind the trend lines. */}
-                {hasReferenceBand ? <RechartsCustomized component={renderMinMaxBand} /> : null}
+                {/* Painted first so the shaded bands sit behind the trend lines. */}
+                {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
                 {lineChartModifiedChildrens}
                 {hasDashedBridge ? <RechartsCustomized component={renderNullBridges} /> : null}
               </RechartsLineChart>

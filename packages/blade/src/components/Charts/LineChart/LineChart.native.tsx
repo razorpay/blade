@@ -232,6 +232,14 @@ type LineSlot = {
   connectNullsStyle: 'solid' | 'dashed';
   showLegend: boolean;
   hide?: boolean;
+  // Per-line reference band (industry range for this metric).
+  rangeLowerDataKey?: string;
+  rangeUpperDataKey?: string;
+  rangeName?: string;
+  rangeColor?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  rangeLowerLabel?: string;
+  rangeUpperLabel?: string;
+  showRangeLabels?: boolean;
 };
 
 type ReferenceLineSlot = {
@@ -246,6 +254,31 @@ type ReferenceBandSlot = {
   name: string;
   color: ChartsCategoricalColorToken | ChartSequentialColorToken;
   showLegend: boolean;
+  upperLabel?: string;
+  lowerLabel?: string;
+  showRangeLabels: boolean;
+};
+
+// A band resolved for rendering — one per line with a range, plus the standalone band. `fillColor`
+// is the already-resolved hex (line color-matched or the band's own token).
+type ResolvedBand = {
+  id: string;
+  lowerDataKey: string;
+  upperDataKey: string;
+  name: string;
+  fillColor: string;
+  showLegend: boolean;
+  upperLabel?: string;
+  lowerLabel?: string;
+  showRangeLabels: boolean;
+};
+
+type BandGeometryNative = {
+  id: string;
+  d: string;
+  color: string;
+  upperStart: { x: number; y: number } | null;
+  lowerStart: { x: number; y: number } | null;
   upperLabel?: string;
   lowerLabel?: string;
   showRangeLabels: boolean;
@@ -316,6 +349,13 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         connectNullsStyle: props.connectNullsStyle ?? 'solid',
         showLegend: props.showLegend ?? true,
         hide: props.hide,
+        rangeLowerDataKey: props.rangeLowerDataKey,
+        rangeUpperDataKey: props.rangeUpperDataKey,
+        rangeName: props.rangeName,
+        rangeColor: props.rangeColor,
+        rangeLowerLabel: props.rangeLowerLabel,
+        rangeUpperLabel: props.rangeUpperLabel,
+        showRangeLabels: props.showRangeLabels,
       });
     } else if (id === commonComponentIds.chartXAxis) {
       const props = child.props as ChartXAxisProps;
@@ -868,6 +908,20 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const { dataMin, dataMax } = useMemo(() => {
     if (!data.length) return { dataMin: 0, dataMax: 0 };
     const linesForDomain = visibleLines.length ? visibleLines : allLines;
+    // Every band's bound keys (per-line ranges + the standalone band) fold into the domain so the
+    // bands stay fully in view (mirrors web, where Recharts auto-includes the invisible bounds).
+    const rangeKeyPairs: Array<{ lower: string; upper: string }> = [];
+    linesForDomain.forEach((line) => {
+      if (line.rangeLowerDataKey && line.rangeUpperDataKey) {
+        rangeKeyPairs.push({ lower: line.rangeLowerDataKey, upper: line.rangeUpperDataKey });
+      }
+    });
+    if (slots.referenceBand) {
+      rangeKeyPairs.push({
+        lower: slots.referenceBand.lowerDataKey,
+        upper: slots.referenceBand.upperDataKey,
+      });
+    }
     let min = Infinity;
     let max = -Infinity;
     data.forEach((row) => {
@@ -880,11 +934,9 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         if (value < min) min = value;
         if (value > max) max = value;
       });
-      // Fold the range band's bounds into the domain so the band stays fully in view
-      // (mirrors web, where Recharts auto-includes the invisible bound lines).
-      if (slots.referenceBand) {
-        const lower = getSeriesNumber(row, slots.referenceBand.lowerDataKey);
-        const upper = getSeriesNumber(row, slots.referenceBand.upperDataKey);
+      rangeKeyPairs.forEach(({ lower: lowerKey, upper: upperKey }) => {
+        const lower = getSeriesNumber(row, lowerKey);
+        const upper = getSeriesNumber(row, upperKey);
         if (lower !== null) {
           if (lower < min) min = lower;
           if (lower > max) max = lower;
@@ -893,7 +945,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           if (upper < min) min = upper;
           if (upper > max) max = upper;
         }
-      }
+      });
     });
     if (min === Infinity) min = 0;
     if (max === -Infinity) max = 0;
@@ -1024,32 +1076,73 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     });
   }, [visibleLines, data, plotWidth, plotHeight, yMin, yRange, dataColorMapping, theme.colors]);
 
-  // Filled reference band, built from the same scales as the lines and painted behind them.
-  // Uses the shared `buildBandAreaPath` so the band curve matches web.
-  const bandGeometry = useMemo(() => {
-    const range = slots.referenceBand;
-    if (!range || data.length === 0 || plotWidth <= 0 || plotHeight <= 0 || yRange <= 0) {
-      return null;
-    }
-    const toY = (value: number): number => plotHeight - ((value - yMin) / yRange) * plotHeight;
-    const upper: Point[] = [];
-    const lower: Point[] = [];
-    data.forEach((row, index) => {
-      const x = xForIndex(index);
-      const upperValue = getSeriesNumber(row, range.upperDataKey);
-      const lowerValue = getSeriesNumber(row, range.lowerDataKey);
-      if (upperValue !== null) upper.push({ x, y: toY(upperValue) });
-      if (lowerValue !== null) lower.push({ x, y: toY(lowerValue) });
+  // Resolved bands: one per visible line that declares a range, color-matched to the line, plus the
+  // standalone <ChartReferenceBand> if present. Used for rendering, labels and the legend.
+  const resolvedBands = useMemo<ResolvedBand[]>(() => {
+    const bands: ResolvedBand[] = [];
+    visibleLines.forEach((line) => {
+      if (line.rangeLowerDataKey && line.rangeUpperDataKey) {
+        bands.push({
+          id: line.dataKey,
+          lowerDataKey: line.rangeLowerDataKey,
+          upperDataKey: line.rangeUpperDataKey,
+          name: line.rangeName ?? 'Industry range',
+          fillColor: resolveColor(line.dataKey, line.rangeColor ?? line.color),
+          showLegend: line.showLegend,
+          upperLabel: line.rangeUpperLabel,
+          lowerLabel: line.rangeLowerLabel,
+          showRangeLabels: line.showRangeLabels ?? false,
+        });
+      }
     });
-    const d = buildBandAreaPath(upper, lower);
-    if (!d) return null;
-    return {
-      d,
-      color: getIn(theme.colors, range.color) as string,
-      upperStart: upper[0] ?? null,
-      lowerStart: lower[0] ?? null,
-    };
-  }, [slots.referenceBand, data, plotWidth, plotHeight, yMin, yRange, theme.colors]);
+    if (slots.referenceBand) {
+      bands.push({
+        id: 'standalone',
+        lowerDataKey: slots.referenceBand.lowerDataKey,
+        upperDataKey: slots.referenceBand.upperDataKey,
+        name: slots.referenceBand.name,
+        fillColor: getIn(theme.colors, slots.referenceBand.color) as string,
+        showLegend: slots.referenceBand.showLegend,
+        upperLabel: slots.referenceBand.upperLabel,
+        lowerLabel: slots.referenceBand.lowerLabel,
+        showRangeLabels: slots.referenceBand.showRangeLabels,
+      });
+    }
+    return bands;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visibleLines, slots.referenceBand, dataColorMapping, theme.colors]);
+
+  // Filled reference bands, built from the same scales as the lines and painted behind them.
+  // Uses the shared `buildBandAreaPath` so the band curve matches web.
+  const bandGeometries = useMemo<BandGeometryNative[]>(() => {
+    if (data.length === 0 || plotWidth <= 0 || plotHeight <= 0 || yRange <= 0) return [];
+    const toY = (value: number): number => plotHeight - ((value - yMin) / yRange) * plotHeight;
+    return resolvedBands
+      .map((band) => {
+        const upper: Point[] = [];
+        const lower: Point[] = [];
+        data.forEach((row, index) => {
+          const x = xForIndex(index);
+          const upperValue = getSeriesNumber(row, band.upperDataKey);
+          const lowerValue = getSeriesNumber(row, band.lowerDataKey);
+          if (upperValue !== null) upper.push({ x, y: toY(upperValue) });
+          if (lowerValue !== null) lower.push({ x, y: toY(lowerValue) });
+        });
+        const d = buildBandAreaPath(upper, lower);
+        if (!d) return null;
+        return {
+          id: band.id,
+          d,
+          color: band.fillColor,
+          upperStart: upper[0] ?? null,
+          lowerStart: lower[0] ?? null,
+          upperLabel: band.upperLabel,
+          lowerLabel: band.lowerLabel,
+          showRangeLabels: band.showRangeLabels,
+        };
+      })
+      .filter((band): band is BandGeometryNative => band !== null);
+  }, [resolvedBands, data, plotWidth, plotHeight, yMin, yRange]);
 
   const dataSignature = useMemo(() => `${data.length}:${allDataKeys.join(',')}`, [
     data.length,
@@ -1174,7 +1267,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
   const tooltipRows = useMemo(() => {
     if (!activeRow) return [];
-    const rows: Array<{ key: string; color: string; displayValue: string; label: string }> = [];
+    const rows: Array<{
+      key: string;
+      color: string;
+      displayValue: string;
+      label: string;
+      range?: { name: string; text: string };
+    }> = [];
     visibleLines.forEach((line) => {
       const rawValue = getSeriesNumber(activeRow, line.dataKey);
       // Match Recharts Tooltip `filterNull` default (true): omit missing values.
@@ -1208,7 +1307,17 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           // Formatter threw — fall back to the raw value silently.
         }
       }
-      rows.push({ key: line.dataKey, color, displayValue, label });
+
+      // If this line has a reference band, show its industry range (low–high) beneath the value.
+      let range: { name: string; text: string } | undefined;
+      if (line.rangeLowerDataKey && line.rangeUpperDataKey) {
+        const lower = getSeriesNumber(activeRow, line.rangeLowerDataKey);
+        const upper = getSeriesNumber(activeRow, line.rangeUpperDataKey);
+        if (lower !== null && upper !== null) {
+          range = { name: line.rangeName ?? 'Industry', text: `${String(lower)}–${String(upper)}` };
+        }
+      }
+      rows.push({ key: line.dataKey, color, displayValue, label, range });
     });
     return rows;
   }, [
@@ -1224,6 +1333,30 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   // Lines eligible for a legend entry — include hidden ones so they can be
   // toggled back on (web parity).
   const legendLines = allLines.filter((line) => line.showLegend);
+
+  // Reference bands eligible for a legend swatch — one per line with a range, plus the standalone
+  // band. Based on all lines (not just visible) so entries persist when a line is toggled off.
+  const legendBands = useMemo<Array<{ id: string; name: string; fillColor: string }>>(() => {
+    const bands: Array<{ id: string; name: string; fillColor: string }> = [];
+    allLines.forEach((line) => {
+      if (line.showLegend && line.rangeLowerDataKey && line.rangeUpperDataKey) {
+        bands.push({
+          id: line.dataKey,
+          name: line.rangeName ?? 'Industry range',
+          fillColor: resolveColor(line.dataKey, line.rangeColor ?? line.color),
+        });
+      }
+    });
+    if (slots.referenceBand?.showLegend) {
+      bands.push({
+        id: 'standalone',
+        name: slots.referenceBand.name,
+        fillColor: getIn(theme.colors, slots.referenceBand.color) as string,
+      });
+    }
+    return bands;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allLines, slots.referenceBand, dataColorMapping, theme.colors]);
 
   const lineChartContextValue = useMemo(
     () => ({ hoveredDataKey: hoveredKey, setHoveredDataKey: setHoveredKey }),
@@ -1363,47 +1496,44 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                     </>
                   )}
 
-                  {/* Reference band — painted before the lines so it sits behind them. */}
-                  {bandGeometry ? (
-                    <Path
-                      d={bandGeometry.d}
-                      fill={bandGeometry.color}
-                      fillOpacity={REFERENCE_BAND_FILL_OPACITY}
-                      stroke="none"
-                    />
-                  ) : null}
-
-                  {/* Range labels (e.g. p25 / p75) annotating the band's bounds. */}
-                  {bandGeometry && slots.referenceBand?.showRangeLabels ? (
-                    <>
-                      {slots.referenceBand.upperLabel && bandGeometry.upperStart ? (
+                  {/* Reference bands — painted before the lines so they sit behind them. One per
+                      line with a range (color-matched), plus the standalone band. */}
+                  {bandGeometries.map((band) => (
+                    <G key={`reference-band-${band.id}`}>
+                      <Path
+                        d={band.d}
+                        fill={band.color}
+                        fillOpacity={REFERENCE_BAND_FILL_OPACITY}
+                        stroke="none"
+                      />
+                      {band.showRangeLabels && band.upperLabel && band.upperStart ? (
                         <SvgText
-                          testID="range-label-upper"
-                          x={bandGeometry.upperStart.x + 4}
-                          y={bandGeometry.upperStart.y - 5}
+                          testID={`range-label-upper-${band.id}`}
+                          x={band.upperStart.x + 4}
+                          y={band.upperStart.y - 5}
                           fontSize={TICK_FONT_SIZE}
                           fontWeight="500"
                           fill={getIn(theme.colors, 'surface.text.gray.subtle')}
                           textAnchor="start"
                         >
-                          {slots.referenceBand.upperLabel}
+                          {band.upperLabel}
                         </SvgText>
                       ) : null}
-                      {slots.referenceBand.lowerLabel && bandGeometry.lowerStart ? (
+                      {band.showRangeLabels && band.lowerLabel && band.lowerStart ? (
                         <SvgText
-                          testID="range-label-lower"
-                          x={bandGeometry.lowerStart.x + 4}
-                          y={bandGeometry.lowerStart.y + TICK_FONT_SIZE + 2}
+                          testID={`range-label-lower-${band.id}`}
+                          x={band.lowerStart.x + 4}
+                          y={band.lowerStart.y + TICK_FONT_SIZE + 2}
                           fontSize={TICK_FONT_SIZE}
                           fontWeight="500"
                           fill={getIn(theme.colors, 'surface.text.gray.subtle')}
                           textAnchor="start"
                         >
-                          {slots.referenceBand.lowerLabel}
+                          {band.lowerLabel}
                         </SvgText>
                       ) : null}
-                    </>
-                  ) : null}
+                    </G>
+                  ))}
 
                   {lineGeometries.map((geometry, idx) => (
                     <LineSeries
@@ -1687,6 +1817,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                       <Text size="xsmall" color="surface.text.staticWhite.normal">
                         {row.label}
                       </Text>
+                      {row.range ? (
+                        <Text size="xsmall" color="surface.text.staticWhite.muted">
+                          {row.range.name}
+                        </Text>
+                      ) : null}
                     </View>
                     <View style={{ width: TOOLTIP_VALUE_WIDTH }}>
                       <Text
@@ -1697,6 +1832,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                       >
                         {row.displayValue}
                       </Text>
+                      {row.range ? (
+                        <Text size="xsmall" color="surface.text.staticWhite.muted" textAlign="right">
+                          {row.range.text}
+                        </Text>
+                      ) : null}
                     </View>
                   </View>
                 ))}
@@ -1706,8 +1846,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
 
           {/* Interactive legend — native Pressables (functionally identical to
               the web SVG legend: toggle show/hide, controllable, callback). */}
-          {slots.hasLegend &&
-          (legendLines.length > 0 || Boolean(slots.referenceBand?.showLegend)) ? (
+          {slots.hasLegend && (legendLines.length > 0 || legendBands.length > 0) ? (
             <View
               style={{
                 flexDirection: slots.legend.layout === 'vertical' ? 'column' : 'row',
@@ -1761,33 +1900,35 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                   </Pressable>
                 );
               })}
-              {/* Static (non-toggleable) swatch for the reference band. */}
-              {slots.referenceBand?.showLegend ? (
+              {/* Static (non-toggleable) swatch per reference band (one per line with a range,
+                  plus the standalone band). */}
+              {legendBands.map((band) => (
                 <View
-                  testID="legend-reference-band"
+                  key={`legend-reference-band-${band.id}`}
+                  testID={`legend-reference-band-${band.id}`}
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
                     paddingVertical: theme.spacing[1],
                     paddingHorizontal: theme.spacing[2],
                   }}
-                  {...metaAttribute({ name: 'chart-legend-item-reference-band' })}
+                  {...metaAttribute({ name: `chart-legend-item-reference-band-${band.id}` })}
                 >
                   <View
                     style={{
                       width: LEGEND_DOT_SIZE,
                       height: LEGEND_DOT_SIZE,
                       borderRadius: theme.border.radius['2xsmall'],
-                      backgroundColor: getIn(theme.colors, slots.referenceBand.color),
+                      backgroundColor: band.fillColor,
                       opacity: REFERENCE_BAND_FILL_OPACITY,
                       marginRight: theme.spacing[2],
                     }}
                   />
                   <Text size="small" color="surface.text.gray.muted">
-                    {slots.referenceBand.name}
+                    {band.name}
                   </Text>
                 </View>
-              ) : null}
+              ))}
             </View>
           ) : null}
         </BaseBox>

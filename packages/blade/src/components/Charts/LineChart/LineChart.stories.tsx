@@ -429,6 +429,91 @@ export const LineChartWithReferenceBand: StoryFn<typeof ChartLine> = () => {
 };
 LineChartWithReferenceBand.parameters = { controls: { disable: true } };
 
+// --- Industry SR: multiple lines, each with its own color-matched reference band ---
+// Each metric = the merchant's value for that metric; `<key>Min`/`<key>Max` = the industry range.
+const INDUSTRY_METRICS = [
+  { key: 'payments', name: 'Payments', color: 'data.background.categorical.blue.moderate' as const },
+  { key: 'refunds', name: 'Refunds', color: 'data.background.categorical.green.moderate' as const },
+  { key: 'payouts', name: 'Payouts', color: 'data.background.categorical.gray.moderate' as const },
+  {
+    key: 'settlements',
+    name: 'Settlements',
+    color: 'data.background.categorical.orange.moderate' as const,
+  },
+  {
+    key: 'disputes',
+    name: 'Disputes',
+    color: 'data.background.categorical.purple.moderate' as const,
+  },
+];
+const INDUSTRY_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+const INDUSTRY_SERIES: Record<string, number[]> = {
+  payments: [62, 58, 66, 70, 68, 74, 78],
+  refunds: [50, 54, 52, 58, 60, 62, 64],
+  payouts: [40, 44, 46, 48, 50, 52, 52],
+  settlements: [28, 30, 33, 31, 34, 36, 33],
+  disputes: [44, 46, 45, 48, 47, 50, 47],
+};
+const industryComparisonData = INDUSTRY_MONTHS.map((month, index) => {
+  const row: Record<string, string | number> = { month };
+  INDUSTRY_METRICS.forEach((metric) => {
+    const value = INDUSTRY_SERIES[metric.key][index];
+    row[metric.key] = value;
+    row[`${metric.key}Min`] = Math.max(0, value - 12);
+    row[`${metric.key}Max`] = value + 12;
+  });
+  return row;
+});
+
+type IndustrySRArgs = { numberOfLines: number; showReferenceBand: boolean };
+
+// KitchenSink: reproduces the Figma "Industry SR" variant matrix — toggle the range on/off and
+// pick how many lines (1–5) to plot. Each line gets its own color-matched industry range band.
+export const LineChartIndustrySRKitchenSink: StoryFn<IndustrySRArgs> = ({
+  numberOfLines,
+  showReferenceBand,
+}) => {
+  const metrics = INDUSTRY_METRICS.slice(0, numberOfLines);
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={industryComparisonData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis label="Success rate (%)" />
+          <ChartTooltip />
+          <ChartLegend />
+          {metrics.map((metric) => (
+            <ChartLine
+              key={metric.key}
+              dataKey={metric.key}
+              name={metric.name}
+              color={metric.color}
+              {...(showReferenceBand
+                ? {
+                    rangeLowerDataKey: `${metric.key}Min`,
+                    rangeUpperDataKey: `${metric.key}Max`,
+                    rangeName: `${metric.name} industry range`,
+                  }
+                : {})}
+            />
+          ))}
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+LineChartIndustrySRKitchenSink.args = { numberOfLines: 3, showReferenceBand: true };
+LineChartIndustrySRKitchenSink.argTypes = {
+  numberOfLines: {
+    control: { type: 'range', min: 1, max: 5, step: 1 },
+    description: 'Number of trend lines to plot (1–5).',
+  },
+  showReferenceBand: {
+    control: { type: 'boolean' },
+    description: 'Show each line’s industry reference band.',
+  },
+};
+
 // Simple Line chart with vertical line
 export const SimpleLineChartWithVerticalLine: StoryFn<typeof ChartLine> = ({
   dataKey = 'teamA',
@@ -1356,6 +1441,7 @@ LineChartWithSequentialColors.parameters = {
 
 SimpleLineChart.storyName = 'Simple Line Chart';
 LineChartWithReferenceBand.storyName = 'Line Chart with Reference Band';
+LineChartIndustrySRKitchenSink.storyName = 'KitchenSink (Industry SR — multi-line + range)';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';

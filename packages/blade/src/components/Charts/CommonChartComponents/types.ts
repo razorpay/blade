@@ -211,6 +211,19 @@ type ReferenceBandLegendInfo = {
   fillOpacity: number;
 };
 
+/**
+ * Map of a line's dataKey to its reference-band range keys, surfaced through context so the shared
+ * tooltip can show the industry range (low–high) for each series next to its value.
+ */
+type RangeMap = Record<
+  string,
+  {
+    rangeLowerDataKey: string;
+    rangeUpperDataKey: string;
+    rangeName?: string;
+  }
+>;
+
 // State type - contains only the state values
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
@@ -225,9 +238,14 @@ type CommonChartComponentsStateType = {
    */
   dataLength?: number;
   /**
-   * Legend info for a reference band, when present in the chart.
+   * Legend info for each reference band present in the chart (one per line with a range, plus any
+   * standalone band), so the legend can render a swatch per band.
    */
-  referenceBand?: ReferenceBandLegendInfo;
+  referenceBands?: ReferenceBandLegendInfo[];
+  /**
+   * Map of line dataKey -> range keys, so the tooltip can show each series' industry range.
+   */
+  rangeMap?: RangeMap;
 };
 
 // Dispatch type - contains only the updater functions
@@ -271,6 +289,7 @@ export type {
   ChartReferenceLineProps,
   ChartReferenceBandProps,
   ReferenceBandLegendInfo,
+  RangeMap,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
