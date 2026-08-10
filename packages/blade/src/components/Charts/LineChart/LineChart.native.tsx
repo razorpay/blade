@@ -1118,7 +1118,7 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
     if (data.length === 0 || plotWidth <= 0 || plotHeight <= 0 || yRange <= 0) return [];
     const toY = (value: number): number => plotHeight - ((value - yMin) / yRange) * plotHeight;
     return resolvedBands
-      .map((band) => {
+      .map((band): BandGeometryNative | null => {
         const upper: Point[] = [];
         const lower: Point[] = [];
         data.forEach((row, index) => {
@@ -1833,7 +1833,11 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                         {row.displayValue}
                       </Text>
                       {row.range ? (
-                        <Text size="xsmall" color="surface.text.staticWhite.muted" textAlign="right">
+                        <Text
+                          size="xsmall"
+                          color="surface.text.staticWhite.muted"
+                          textAlign="right"
+                        >
                           {row.range.text}
                         </Text>
                       ) : null}
