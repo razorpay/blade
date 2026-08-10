@@ -92,7 +92,7 @@ exports[`<TreeView /> standalone should render tree with treeitem rows and no li
 }
 
 .c9.c9.c9.c9.c9 > div {
-  overflow: hidden;
+  overflow: visible;
   min-height: 0px;
   visibility: visible;
 }

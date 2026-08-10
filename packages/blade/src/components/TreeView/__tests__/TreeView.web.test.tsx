@@ -16,6 +16,14 @@ const withTheme = (ui: React.ReactElement): React.ReactElement => (
   </BladeProvider>
 );
 
+// jsdom's transitionend does not carry propertyName through React's synthetic event,
+// so the native event has to be built by hand
+const makeGridRowsTransitionEndEvent = (): Event => {
+  const event = new Event('transitionend', { bubbles: true });
+  Object.defineProperty(event, 'propertyName', { value: 'grid-template-rows' });
+  return event;
+};
+
 const getCanonicalTree = ({
   defaultIsExpanded = true,
 }: { defaultIsExpanded?: boolean } = {}): React.ReactElement => (
@@ -305,6 +313,42 @@ describe('<TreeView /> standalone', () => {
     await user.click(chevron);
     expect(karnataka).toHaveAttribute('aria-expanded', 'false');
     expect(onExpandChange).toHaveBeenLastCalledWith({ isExpanded: false });
+  });
+
+  // B5: the animation wrapper clips its content, which would cut off the focus ring
+  // (an outline painted outside the row's box) of every row nested inside it
+  it('should only clip the children group while it is collapsed or animating', async () => {
+    const user = userEvents.setup();
+    const { getByRole } = renderWithTheme(<TreeView>{getCanonicalTree()}</TreeView>);
+
+    const karnatakaRow = getByRole('treeitem', { name: 'Karnataka' });
+    // the group animator is the row's sibling; the clip sits on the role=group element it wraps
+    const animator = karnatakaRow.nextElementSibling as HTMLElement;
+    const getGroupOverflow = (): string =>
+      window.getComputedStyle(animator.firstElementChild as HTMLElement).overflow;
+
+    // a group that mounts already expanded never animates, so it must not clip from the start
+    expect(getGroupOverflow()).toBe('visible');
+
+    // collapsing clips immediately so the rows stay hidden as the group closes
+    const chevron = karnatakaRow.querySelector('[aria-hidden="true"]') as HTMLElement;
+    await user.click(chevron);
+    expect(getGroupOverflow()).toBe('hidden');
+
+    // re-expanding keeps clipping while the transition is in flight...
+    await user.click(chevron);
+    expect(getGroupOverflow()).toBe('hidden');
+
+    // ...and releases it once the group has settled open
+    fireEvent(animator, makeGridRowsTransitionEndEvent());
+    expect(getGroupOverflow()).toBe('visible');
+
+    // a transition bubbling up from a descendant must not release the clip early
+    await user.click(chevron);
+    expect(getGroupOverflow()).toBe('hidden');
+    await user.click(chevron);
+    fireEvent(animator.firstElementChild as HTMLElement, makeGridRowsTransitionEndEvent());
+    expect(getGroupOverflow()).toBe('hidden');
   });
 
   it('should support controlled expansion via isExpanded', () => {

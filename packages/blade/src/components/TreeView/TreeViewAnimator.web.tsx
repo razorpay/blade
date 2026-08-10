@@ -4,23 +4,72 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
-const StyledTreeViewAnimator = styled(BaseBox)<{ isExpanded: boolean }>((props) => ({
-  display: 'grid',
-  // B5: animate grid-template-rows (0fr <-> 1fr), never height
-  gridTemplateRows: props.isExpanded ? '1fr' : '0fr',
-  transition: `grid-template-rows ${makeMotionTime(
-    props.theme.motion.duration.quick,
-  )} ${castWebType(props.theme.motion.easing.standard)}`,
-  '& > div': {
-    overflow: 'hidden',
-    minHeight: '0px',
-    visibility: props.isExpanded ? 'visible' : 'hidden',
-    // keep content visible while the collapse animation runs, then hide it (also removes it from AT)
-    transition: props.isExpanded
-      ? undefined
-      : `visibility 0s linear ${makeMotionTime(props.theme.motion.duration.quick)}`,
-  },
-}));
+const StyledTreeViewAnimator = styled(BaseBox)<{ isExpanded: boolean; isClipped: boolean }>(
+  (props) => ({
+    display: 'grid',
+    // B5: animate grid-template-rows (0fr <-> 1fr), never height
+    gridTemplateRows: props.isExpanded ? '1fr' : '0fr',
+    transition: `grid-template-rows ${makeMotionTime(
+      props.theme.motion.duration.quick,
+    )} ${castWebType(props.theme.motion.easing.standard)}`,
+    '& > div': {
+      // clipping is only needed while the group is collapsed or moving: a clipping wrapper also
+      // cuts off the focus ring of the rows inside it, since the ring is an `outline` painted
+      // outside the row's box (getFocusRingStyles)
+      overflow: props.isClipped ? 'hidden' : 'visible',
+      minHeight: '0px',
+      visibility: props.isExpanded ? 'visible' : 'hidden',
+      // keep content visible while the collapse animation runs, then hide it (also removes it from AT)
+      transition: props.isExpanded
+        ? undefined
+        : `visibility 0s linear ${makeMotionTime(props.theme.motion.duration.quick)}`,
+    },
+  }),
+);
+
+/**
+ * Tracks whether the wrapper must clip its content.
+ *
+ * It has to clip while collapsed and while a transition is in flight, and must stop clipping
+ * once fully open and idle so the focus ring of rows inside can paint outside their box
+ */
+const useTreeViewAnimatorClip = (
+  isOpen: boolean,
+): {
+  isClipped: boolean;
+  animatorRef: React.RefObject<HTMLDivElement>;
+  onTransitionEnd: (event: React.TransitionEvent<HTMLElement>) => void;
+} => {
+  const animatorRef = React.useRef<HTMLDivElement>(null);
+  // a wrapper that mounts already open never transitions, so it starts released
+  // and does not wait for a transitionend that will never come
+  const [isClipReleased, setIsClipReleased] = React.useState(isOpen);
+  const previousIsOpenRef = React.useRef(isOpen);
+
+  if (previousIsOpenRef.current !== isOpen) {
+    previousIsOpenRef.current = isOpen;
+    if (isClipReleased) {
+      // a transition is starting: re-clip synchronously, so no frame is painted unclipped.
+      // Resetting here (rather than at the end of the closing transition) also covers a
+      // collapse that gets interrupted by a re-expand and never fires its transitionend
+      setIsClipReleased(false);
+    }
+  }
+
+  const onTransitionEnd = (event: React.TransitionEvent<HTMLElement>): void => {
+    // nested groups animate the same property and transitionend bubbles, so ignore descendants
+    if (event.target !== animatorRef.current || event.propertyName !== 'grid-template-rows') {
+      return;
+    }
+    setIsClipReleased(isOpen);
+  };
+
+  return {
+    isClipped: !isClipReleased,
+    animatorRef,
+    onTransitionEnd,
+  };
+};
 
 /**
  * Marks a "mount scope": the ref is `true` while the scope (the whole tree, or one
@@ -72,9 +121,17 @@ const TreeViewGroupAnimator = ({
     return () => cancelAnimationFrame(animationFrame);
   }, [isMountFramePending]);
 
+  const isOpen = isExpanded && !isMountFramePending;
+  const { isClipped, animatorRef, onTransitionEnd } = useTreeViewAnimatorClip(isOpen);
+
   return (
     <TreeViewMountScopeContext.Provider value={isScopeFirstRenderRef}>
-      <StyledTreeViewAnimator isExpanded={isExpanded && !isMountFramePending}>
+      <StyledTreeViewAnimator
+        ref={animatorRef as never}
+        isExpanded={isOpen}
+        isClipped={isClipped}
+        onTransitionEnd={onTransitionEnd}
+      >
         {children}
       </StyledTreeViewAnimator>
     </TreeViewMountScopeContext.Provider>
@@ -89,8 +146,18 @@ const AnimatedRowMount = ({ children }: { children: React.ReactNode }): React.Re
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
+  const isOpen = !isMountFramePending;
+  const { isClipped, animatorRef, onTransitionEnd } = useTreeViewAnimatorClip(isOpen);
+
   return (
-    <StyledTreeViewAnimator isExpanded={!isMountFramePending}>{children}</StyledTreeViewAnimator>
+    <StyledTreeViewAnimator
+      ref={animatorRef as never}
+      isExpanded={isOpen}
+      isClipped={isClipped}
+      onTransitionEnd={onTransitionEnd}
+    >
+      {children}
+    </StyledTreeViewAnimator>
   );
 };
 
