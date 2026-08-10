@@ -132,7 +132,7 @@ const useReferenceBand = (
           name: props.rangeName ?? 'Industry range',
           colorToken,
           fillColor: getIn(theme.colors, colorToken),
-          showLegend: props.showLegend ?? true,
+          showLegend: props.showRangeLegend ?? props.showLegend ?? true,
           upperLabel: props.rangeUpperLabel,
           lowerLabel: props.rangeLowerLabel,
           showRangeLabels: props.showRangeLabels ?? false,
@@ -241,7 +241,12 @@ const useReferenceBand = (
       <g className={REFERENCE_BAND_LAYER_CLASS}>
         {bandGeoms.map((band) => (
           <g key={`reference-band-${band.id}`}>
-            <path d={band.d} fill={band.fillColor} fillOpacity={REFERENCE_BAND_FILL_OPACITY} stroke="none" />
+            <path
+              d={band.d}
+              fill={band.fillColor}
+              fillOpacity={REFERENCE_BAND_FILL_OPACITY}
+              stroke="none"
+            />
             {band.showRangeLabels && band.upperLabel && band.upperStart ? (
               <text x={band.upperStart.x + 4} y={band.upperStart.y - 6} {...labelProps}>
                 {band.upperLabel}

@@ -240,6 +240,7 @@ type LineSlot = {
   rangeLowerLabel?: string;
   rangeUpperLabel?: string;
   showRangeLabels?: boolean;
+  showRangeLegend?: boolean;
 };
 
 type ReferenceLineSlot = {
@@ -356,6 +357,7 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         rangeLowerLabel: props.rangeLowerLabel,
         rangeUpperLabel: props.rangeUpperLabel,
         showRangeLabels: props.showRangeLabels,
+        showRangeLegend: props.showRangeLegend,
       });
     } else if (id === commonComponentIds.chartXAxis) {
       const props = child.props as ChartXAxisProps;
@@ -1087,8 +1089,10 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           lowerDataKey: line.rangeLowerDataKey,
           upperDataKey: line.rangeUpperDataKey,
           name: line.rangeName ?? 'Industry range',
-          fillColor: resolveColor(line.dataKey, line.rangeColor ?? line.color),
-          showLegend: line.showLegend,
+          fillColor: line.rangeColor
+            ? (getIn(theme.colors, line.rangeColor) as string)
+            : resolveColor(line.dataKey, line.color),
+          showLegend: line.showRangeLegend ?? line.showLegend,
           upperLabel: line.rangeUpperLabel,
           lowerLabel: line.rangeLowerLabel,
           showRangeLabels: line.showRangeLabels ?? false,
@@ -1339,11 +1343,17 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
   const legendBands = useMemo<Array<{ id: string; name: string; fillColor: string }>>(() => {
     const bands: Array<{ id: string; name: string; fillColor: string }> = [];
     allLines.forEach((line) => {
-      if (line.showLegend && line.rangeLowerDataKey && line.rangeUpperDataKey) {
+      if (
+        (line.showRangeLegend ?? line.showLegend) &&
+        line.rangeLowerDataKey &&
+        line.rangeUpperDataKey
+      ) {
         bands.push({
           id: line.dataKey,
           name: line.rangeName ?? 'Industry range',
-          fillColor: resolveColor(line.dataKey, line.rangeColor ?? line.color),
+          fillColor: line.rangeColor
+            ? (getIn(theme.colors, line.rangeColor) as string)
+            : resolveColor(line.dataKey, line.color),
         });
       }
     });

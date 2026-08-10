@@ -118,6 +118,20 @@ interface ChartLineProps {
    */
   showRangeLabels?: boolean;
   /**
+   * Whether to show this line's reference band as a separate entry in the legend.
+   *
+   * Defaults to the line's own `showLegend` value, so the band's swatch follows the line's legend
+   * visibility unless explicitly overridden. Set this to `false` to hide only the band's legend
+   * swatch while keeping the line's entry, or to `true` to show the band's swatch while hiding the
+   * line's entry (`showLegend={false}` + `showRangeLegend={true}`).
+   *
+   * This mirrors the standalone `ChartReferenceBand` component's `showLegend` prop, allowing
+   * independent control of the band's legend visibility for per-line bands.
+   *
+   * @default the line's `showLegend` value
+   */
+  showRangeLegend?: boolean;
+  /**
    * Style of the line in line chart.
    * @default: solid
    */

@@ -75,6 +75,7 @@ const Line: React.FC<ChartLineProps> = ({
   rangeLowerLabel,
   rangeUpperLabel,
   showRangeLabels,
+  showRangeLegend,
   /* eslint-enable @typescript-eslint/no-unused-vars */
   ...props
 }) => {
