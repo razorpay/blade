@@ -1,5 +1,13 @@
 # @razorpay/blade-svelte
 
+## 0.11.4
+
+### Patch Changes
+
+- bad271b0f: fix(TrustBadge): restore flat layout to fix icon and label vertical alignment within the pill
+- Updated dependencies [bad271b0f]
+  - @razorpay/blade-core@0.10.3
+
 ## 0.11.3
 
 ### Patch Changes
