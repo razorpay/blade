@@ -1,5 +1,17 @@
 # @razorpay/blade-core
 
+## 0.10.2
+
+### Patch Changes
+
+- a5d2dc639: Added @layer blade cascade layer to theme.css so Tailwind utilities override Blade utility classes
+
+## 0.10.1
+
+### Patch Changes
+
+- 7ec4868c5: feat: reduce blade-svelte bundle size
+
 ## 0.10.0
 
 ### Minor Changes

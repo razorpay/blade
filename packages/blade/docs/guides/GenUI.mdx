@@ -174,11 +174,13 @@ const ClickActionSchema = z.object({
 
 ```jsx
 <GenUIProvider
-  onActionClick={(action) => {
-    console.log(action.type, action.data);
-    // TODO: Send another message to the LLM
-    // send({ role: 'human', content: action.data.message })
-    // -> 'Say hello' sent to LLM
+  config={{
+    onActionClick: (action) => {
+      console.log(action.type, action.data);
+      // TODO: Send another message to the LLM
+      // send({ role: 'human', content: action.data.message })
+      // -> 'Say hello' sent to LLM
+    },
   }}
 >
   <GenUISchemaRenderer
@@ -192,3 +194,58 @@ const ClickActionSchema = z.object({
   />
 </GenUIProvider>
 ```
+
+## Consumer Action Slots
+
+Block-level components (**CARD**, **TABLE**) support consumer-registered action slots — a render prop that GenUI renders **below** the component (outside the gradient ring). GenUI hands your render prop the component's schema (`data`) and a `componentRef` to its DOM node, so you fully own the action UI and logic (CSV export, PNG capture, copy, ...) without GenUI prescribing any buttons.
+
+The render prop receives:
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `data` | `GenUIBaseComponent` (the component's schema) | Use this for data-driven actions like CSV export from a TABLE's `headers`/`rows` |
+| `componentRef` | `React.RefObject<HTMLDivElement>` | DOM node of the component's content container (excludes the gradient-ring animation overlays). Use this for capture actions like PNG export |
+| `componentType` | `string` | The resolved component type (e.g. `'CARD'`, `'TABLE'`) |
+
+```tsx
+import { GenUIProvider, GenUISchemaRenderer, type TableComponent } from '@razorpay/blade/components';
+
+<GenUIProvider
+  config={{
+    componentActions: {
+      // TABLE action slot: reads the component's schema via `data`
+      TABLE: ({ data }: { data: TableComponent }) => (
+        <Link
+          variant="button"
+          icon={CopyIcon}
+          onClick={() => {
+            const csv = [
+              (data.headers ?? []).join(','),
+              ...(data.rows ?? []).map((row) =>
+                row.map((cell) => String('value' in cell ? cell.value : cell.text ?? '')).join(','),
+              ),
+            ].join('\n');
+            void navigator.clipboard?.writeText(csv);
+          }}
+        >
+          Copy as CSV
+        </Link>
+      ),
+      // CARD action slot: reads the component's DOM node via `componentRef`
+      CARD: ({ componentRef }) => (
+        <Link
+          variant="button"
+          icon={DownloadIcon}
+          onClick={() => exportPng(componentRef.current)}
+        >
+          Download as PNG
+        </Link>
+      ),
+    },
+  }}
+>
+  <GenUISchemaRenderer components={components} />
+</GenUIProvider>
+```
+
+> **Note:** Action slots only render for block-level components (`CARD`, `TABLE`, and custom components registered with `animation.name: 'gradient-ring-entry'`). Registering an action for inline components like `TEXT`, `BADGE`, or `AMOUNT` has no effect — and the `GenUIComponentActionsRegistry` type will reject those keys at compile time.

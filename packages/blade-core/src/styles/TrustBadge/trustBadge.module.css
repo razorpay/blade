@@ -12,11 +12,8 @@
   flex-shrink: 0;
 }
 
-/* Default variant — icon + label in a sea-subtle pill. */
+/* Default variant — icon + label in a sea-subtle pill. Pair with `.trustBadge`. */
 .trustBadgeWithPill {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
   gap: var(--spacing-2);
   height: 24px;
   padding: var(--spacing-2) var(--spacing-3);
@@ -24,11 +21,8 @@
   background-color: var(--surface-background-sea-subtle);
 }
 
-/* Icon-only variant — shield with compact padding, no pill. */
+/* Icon-only variant — shield with compact padding, no pill. Pair with `.trustBadge`. */
 .trustBadgeIconOnly {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
   padding: var(--spacing-2);
 }
 

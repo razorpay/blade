@@ -4,8 +4,6 @@
   import { resolveComponentStyleOverride } from '../../../utils/resolveComponentStyleOverride';
   import { getBladeThemeContextGetter } from '../../BladeProvider/bladeThemeContext';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
-  import Avatar from '../../Avatar/Avatar.svelte';
-  import AvatarGroup from '../../Avatar/AvatarGroup.svelte';
   import type { BaseButtonProps } from './types';
   import type { TextColors } from '../../Typography/BaseText/types';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
@@ -259,6 +257,24 @@
   const shouldShowAvatars = $derived(
     Boolean(avatars && avatars.length > 0) && size === 'large' && !isIndefiniteLoading,
   );
+
+  // Lazy-load the Avatar components: they're only rendered when `avatars` are
+  // passed to a large button, so we avoid pulling them into the main bundle for
+  // the common case where the button has no avatar group.
+  let Avatar = $state<typeof import('../../Avatar/Avatar.svelte').default | null>(null);
+  let AvatarGroup = $state<typeof import('../../Avatar/AvatarGroup.svelte').default | null>(null);
+
+  $effect(() => {
+    if (shouldShowAvatars && (!Avatar || !AvatarGroup)) {
+      void Promise.all([
+        import('../../Avatar/Avatar.svelte'),
+        import('../../Avatar/AvatarGroup.svelte'),
+      ]).then(([avatarModule, avatarGroupModule]) => {
+        Avatar = avatarModule.default;
+        AvatarGroup = avatarGroupModule.default;
+      });
+    }
+  });
 
   // Generate button props reactively
   const buttonProps = $derived.by(() => {
@@ -543,7 +559,7 @@
           <Icon size={iconSize} color={iconRenderColor} />
         </span>
       {/if}
-      {#if shouldShowAvatars && avatars}
+      {#if shouldShowAvatars && avatars && Avatar && AvatarGroup}
         <span class={buttonClasses.avatarGroup}>
           <AvatarGroup size="xsmall">
             <!-- Key prefers a stable identity (src/name); the index fallback is a

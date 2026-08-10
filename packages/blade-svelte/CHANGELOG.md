@@ -1,5 +1,27 @@
 # @razorpay/blade-svelte
 
+## 0.11.3
+
+### Patch Changes
+
+- 937bc4c40: fix: run tsc after sveld so the components type barrel is not overwritten
+
+## 0.11.2
+
+### Patch Changes
+
+- 59b039ff8: fix: blade-svelte type pipeline - add sveld for svelte component type generation
+- Updated dependencies [a5d2dc639]
+  - @razorpay/blade-core@0.10.2
+
+## 0.11.1
+
+### Patch Changes
+
+- 7ec4868c5: feat: reduce blade-svelte bundle size
+- Updated dependencies [7ec4868c5]
+  - @razorpay/blade-core@0.10.1
+
 ## 0.11.0
 
 ### Minor Changes

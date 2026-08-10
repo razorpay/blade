@@ -1,9 +1,9 @@
 export { GenUIProvider } from './GenUIProvider';
-export { useGenUI, useGenUIAction } from './GenUIContext';
+export { useGenUI, useGenUIAction, useGenUIComponentActions } from './GenUIContext';
 export { GenUISchemaRenderer } from './GenUISchemaRenderer';
 
 export type { GenUISchemaRendererProps } from './GenUISchemaRenderer';
-export type { GenUIComponent } from './GenUIComponents';
+export type { GenUIComponent, TableComponent } from './GenUIComponents';
 
 export type {
   GenUIAction,
@@ -12,4 +12,8 @@ export type {
   GenUICustomComponent,
   GenUIComponentDefinition,
   GenUIComponentRenderer,
+  GenUIActionSlotProps,
+  GenUIActionSlotRenderer,
+  GenUIComponentActionsRegistry,
+  GenUIBlockLevelComponentType,
 } from './types';
