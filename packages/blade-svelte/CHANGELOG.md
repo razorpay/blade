@@ -12,7 +12,6 @@
 
 ### Patch Changes
 
-- fix: remove unintended border/shadow on standalone ActionList (match React web — outer shell is unstyled; border/shadow come from Dropdown overlay when embedded)
 - 937bc4c40: fix: run tsc after sveld so the components type barrel is not overwritten
 
 ## 0.11.2
