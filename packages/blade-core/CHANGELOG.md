@@ -10,6 +10,7 @@
 
 ### Patch Changes
 
+- fix: remove unused `getActionListBoxClasses` export (ActionList outer box styles were never used by React web)
 - a5d2dc639: Added @layer blade cascade layer to theme.css so Tailwind utilities override Blade utility classes
 
 ## 0.10.1

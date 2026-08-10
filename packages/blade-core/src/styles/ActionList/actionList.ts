@@ -2,31 +2,6 @@ import { cva } from 'class-variance-authority';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './actionList.module.css';
 
-export type ActionListBoxVariants = {
-  isInBottomSheet?: boolean;
-};
-
-/**
- * Outer StyledActionList box. Present ONLY when NOT inside a BottomSheet
- * (border + radius + mid-raised shadow). Inside a sheet the ActionList renders
- * the scroll wrapper directly, so no box class is emitted.
- */
-export const actionListBoxCva = cva('', {
-  variants: {
-    isInBottomSheet: {
-      true: null,
-      false: styles.box,
-    },
-  },
-  defaultVariants: {
-    isInBottomSheet: false,
-  },
-});
-
-export function getActionListBoxClasses(props: ActionListBoxVariants): string {
-  return actionListBoxCva(props);
-}
-
 export type ActionListWrapperVariants = {
   isInBottomSheet?: boolean;
 };
@@ -82,7 +57,6 @@ export function getActionListItemClasses(props: ActionListItemVariants): string 
  * not tree-shake CVA class references that only appear in compound selectors.
  */
 export function getActionListTemplateClasses(): {
-  box: string;
   wrapper: string;
   wrapperInSheet: string;
   item: string;
@@ -100,7 +74,6 @@ export function getActionListTemplateClasses(): {
   sectionItems: string;
 } {
   return {
-    box: styles.box,
     wrapper: styles.wrapper,
     wrapperInSheet: styles.wrapperInSheet,
     item: styles.item,
