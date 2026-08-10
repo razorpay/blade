@@ -157,7 +157,9 @@ const useReferenceBand = (
       bandSources
         .map(
           (s) =>
-            `${s.id}:${s.fillColor}:${s.showRangeLabels}:${s.upperLabel ?? ''}:${s.lowerLabel ?? ''}`,
+            `${s.id}:${s.fillColor}:${s.showRangeLabels}:${s.upperLabel ?? ''}:${
+              s.lowerLabel ?? ''
+            }`,
         )
         .join('|'),
     [bandSources],
