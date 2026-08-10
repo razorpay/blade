@@ -386,7 +386,7 @@ const _TreeView = ({
           // §6.2: branch toggle routes through the batch setter - exactly one onChange
           const branchSelected = getBranchSelectionState(node, selectedValuesSet) === 'all';
           toggleBranchInDropdown(node);
-          options[optionIndex].onClickTrigger?.(branchSelected);
+          options[optionIndex].onClickTrigger?.(!branchSelected);
           return true;
         }
         // leaf (and branch in single mode): default selectOption path
