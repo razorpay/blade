@@ -117,7 +117,7 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
             >
               {/* the row itself is aria-busy and the "Loading..." text is the announcement; the spinner is decorative */}
               <BaseBox display="flex" alignItems="center" {...makeAccessible({ hidden: true })}>
-                <Spinner accessibilityLabel="Loading" size="medium" />
+                <Spinner accessibilityLabel="Loading" size="medium" color="neutral" />
               </BaseBox>
               <Text size="medium" color="interactive.text.gray.muted">
                 Loading...
