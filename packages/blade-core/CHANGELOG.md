@@ -1,5 +1,11 @@
 # @razorpay/blade-core
 
+## 0.10.3
+
+### Patch Changes
+
+- bad271b0f: fix(TrustBadge): restore flat layout to fix icon and label vertical alignment within the pill
+
 ## 0.10.2
 
 ### Patch Changes

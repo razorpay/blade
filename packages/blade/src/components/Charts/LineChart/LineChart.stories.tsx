@@ -8,6 +8,7 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
+  ChartReferenceBand,
 } from '~components/Charts/CommonChartComponents';
 import { ChartLine, ChartLineWrapper } from '~components/Charts/LineChart';
 import { Heading } from '~components/Typography/Heading';
@@ -159,6 +160,28 @@ const chartData = [
   { month: 'Apr', teamA: 2780, teamB: 3908 },
   { month: 'May', teamA: 1890, teamB: 4800 },
   { month: 'Jun', teamA: 2390, teamB: 3800 },
+];
+
+// Active users trend with a per-point reference band (the range other teams fall in).
+const activeUsersRangeData = [
+  { month: 'Jan', activeUsers: 1180, min: 800, max: 1720 },
+  { month: 'Feb', activeUsers: 1120, min: 820, max: 1780 },
+  { month: 'Mar', activeUsers: 1360, min: 900, max: 1880 },
+  { month: 'Apr', activeUsers: 1300, min: 900, max: 1840 },
+  { month: 'May', activeUsers: 1320, min: 940, max: 1900 },
+  { month: 'Jun', activeUsers: 1420, min: 980, max: 1960 },
+  { month: 'Jul', activeUsers: 1540, min: 1020, max: 2020 },
+  { month: 'Aug', activeUsers: 1500, min: 1040, max: 2040 },
+  { month: 'Sep', activeUsers: 1580, min: 1080, max: 2080 },
+  { month: 'Oct', activeUsers: 1660, min: 1100, max: 2140 },
+  { month: 'Nov', activeUsers: 1720, min: 1140, max: 2220 },
+  { month: 'Dec', activeUsers: 1600, min: 1120, max: 2180 },
+  { month: 'Jan ’25', activeUsers: 1780, min: 1160, max: 2260 },
+  { month: 'Feb ’25', activeUsers: 1840, min: 1180, max: 2160 },
+  { month: 'Mar ’25', activeUsers: 1720, min: 1160, max: 2120 },
+  { month: 'Apr ’25', activeUsers: 1700, min: 1140, max: 2200 },
+  { month: 'May ’25', activeUsers: 1860, min: 1180, max: 2260 },
+  { month: 'Jun ’25', activeUsers: 1900, min: 1080, max: 2280 },
 ];
 
 const forecastData = [
@@ -373,6 +396,120 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
       </Box>
     </ChartsWrapper>
   );
+};
+
+// Line chart with a reference band — the trend line plotted against the range others fall in.
+export const LineChartWithReferenceBand: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={activeUsersRangeData}>
+          <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis label="Active users" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey="activeUsers"
+            name="Active users"
+            strokeStyle="solid"
+            color="data.background.categorical.gray.intense"
+          />
+          <ChartReferenceLine y={1200} label="Avg: 1,200" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+LineChartWithReferenceBand.parameters = { controls: { disable: true } };
+
+// --- Industry SR: multiple lines, each with its own color-matched reference band ---
+// Each metric = the merchant's value for that metric; `<key>Min`/`<key>Max` = the industry range.
+const INDUSTRY_METRICS = [
+  {
+    key: 'payments',
+    name: 'Payments',
+    color: 'data.background.categorical.blue.moderate' as const,
+  },
+  { key: 'refunds', name: 'Refunds', color: 'data.background.categorical.green.moderate' as const },
+  { key: 'payouts', name: 'Payouts', color: 'data.background.categorical.gray.moderate' as const },
+  {
+    key: 'settlements',
+    name: 'Settlements',
+    color: 'data.background.categorical.orange.moderate' as const,
+  },
+  {
+    key: 'disputes',
+    name: 'Disputes',
+    color: 'data.background.categorical.purple.moderate' as const,
+  },
+];
+const INDUSTRY_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+const INDUSTRY_SERIES: Record<string, number[]> = {
+  payments: [62, 58, 66, 70, 68, 74, 78],
+  refunds: [50, 54, 52, 58, 60, 62, 64],
+  payouts: [40, 44, 46, 48, 50, 52, 52],
+  settlements: [28, 30, 33, 31, 34, 36, 33],
+  disputes: [44, 46, 45, 48, 47, 50, 47],
+};
+const industryComparisonData = INDUSTRY_MONTHS.map((month, index) => {
+  const row: Record<string, string | number> = { month };
+  INDUSTRY_METRICS.forEach((metric) => {
+    const value = INDUSTRY_SERIES[metric.key][index];
+    row[metric.key] = value;
+    row[`${metric.key}Min`] = Math.max(0, value - 12);
+    row[`${metric.key}Max`] = value + 12;
+  });
+  return row;
+});
+
+type IndustrySRArgs = { numberOfLines: number; showReferenceBand: boolean };
+
+// KitchenSink: reproduces the Figma "Industry SR" variant matrix — toggle the range on/off and
+// pick how many lines (1–5) to plot. Each line gets its own color-matched industry range band.
+export const LineChartIndustrySRKitchenSink: StoryFn<IndustrySRArgs> = ({
+  numberOfLines,
+  showReferenceBand,
+}) => {
+  const metrics = INDUSTRY_METRICS.slice(0, numberOfLines);
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={industryComparisonData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis label="Success rate (%)" />
+          <ChartTooltip />
+          <ChartLegend />
+          {metrics.map((metric) => (
+            <ChartLine
+              key={metric.key}
+              dataKey={metric.key}
+              name={metric.name}
+              color={metric.color}
+              {...(showReferenceBand
+                ? {
+                    rangeLowerDataKey: `${metric.key}Min`,
+                    rangeUpperDataKey: `${metric.key}Max`,
+                    rangeName: `${metric.name} industry range`,
+                  }
+                : {})}
+            />
+          ))}
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+LineChartIndustrySRKitchenSink.args = { numberOfLines: 3, showReferenceBand: true };
+LineChartIndustrySRKitchenSink.argTypes = {
+  numberOfLines: {
+    control: { type: 'range', min: 1, max: 5, step: 1 },
+    description: 'Number of trend lines to plot (1–5).',
+  },
+  showReferenceBand: {
+    control: { type: 'boolean' },
+    description: 'Show each line’s industry reference band.',
+  },
 };
 
 // Simple Line chart with vertical line
@@ -1301,6 +1438,8 @@ LineChartWithSequentialColors.parameters = {
 };
 
 SimpleLineChart.storyName = 'Simple Line Chart';
+LineChartWithReferenceBand.storyName = 'Line Chart with Reference Band';
+LineChartIndustrySRKitchenSink.storyName = 'KitchenSink (Industry SR — multi-line + range)';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
