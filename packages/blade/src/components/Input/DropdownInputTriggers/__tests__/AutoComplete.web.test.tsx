@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import 'jest-styled-components';
 import userEvent from '@testing-library/user-event';
 import { waitFor, screen, act } from '@testing-library/react';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
@@ -223,6 +224,43 @@ describe('<Dropdown /> with <AutoComplete />', () => {
 
     await user.click(getByRole('button', { name: 'Clear Selection' }));
     expect(selectInput).toHaveValue('');
+  });
+
+  // Guard test: ensures AutoComplete defaults to single-line height (maxRows='single')
+  // to prevent height mismatch with other input components like DatePicker.
+  // See: https://github.com/razorpay/blade/pull/3682
+  it('should default maxRows to "single" so AutoComplete height matches other inputs (e.g. DatePicker)', () => {
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Cities" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const wrapper = container.querySelector('.__blade-base-input-wrapper');
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should respect maxRows="multiple" when explicitly set', () => {
+    const { container } = renderWithTheme(
+      <Dropdown selectionType="multiple">
+        <AutoComplete label="Cities" maxRows="multiple" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const wrapper = container.querySelector('.__blade-base-input-wrapper');
+    expect(wrapper).toMatchSnapshot();
   });
 });
 
