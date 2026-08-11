@@ -19,7 +19,7 @@
   padding-bottom: var(--spacing-3);
   padding-left: var(--spacing-5);
   padding-right: var(--spacing-5);
-  z-index: 1000;
+  z-index: 100;
 }
 
 /* Desktop horizontal padding bumps to spacing.6 (Figma: 24px) */
