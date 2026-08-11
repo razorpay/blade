@@ -10,6 +10,7 @@ export default defineConfig({
       'src/utils/**/*.test.ts',
       'src/styles/**/*.test.ts',
       'src/tokens/theme/__tests__/createTheme.test.ts',
+      'src/tokens/__tests__/theme-css-layers.test.ts',
     ],
   },
   define: {

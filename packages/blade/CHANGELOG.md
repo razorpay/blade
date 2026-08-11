@@ -1,5 +1,31 @@
 # @razorpay/blade
 
+## 12.114.0
+
+### Minor Changes
+
+- 5cd7f0961: feat(GenUI): add consumer-registered action slots for Card and Table components
+
+  Introduces a `componentActions` registry on `GenUIProvider` that lets consumers register render props for action UI below block-level components (CARD, TABLE). The design system renders the slot and hands the consumer the component's data and a `componentRef`, keeping all action logic (copy, download, export) on the consumer side with no DS dependency.
+
+## 12.113.3
+
+### Patch Changes
+
+- 3a2d9bd6e: fix(DatePicker): allow reopening a controlled range `FilterChipDatePicker` after a range is selected
+
+  The auto-close effect that commits a selection when `showFooterActions` is false compared the selected value by reference. For `selectionType="range"` in controlled mode (`value` + `onChange`) the value is rebuilt into a new array on every render, so the effect re-ran on each render and immediately closed the flyout whenever the existing range was already complete, making the picker impossible to reopen. The selection is now compared by content so auto-close only happens on an actual selection change.
+
+- d31fadf55: docs(Table): render Table example stories live instead of StackBlitz sandboxes
+
+## 12.113.2
+
+### Patch Changes
+
+- b168b2190: fix(BaseInput): pass Android autofill hint via `autoComplete` instead of the removed `autoCompleteType` prop
+
+  React Native renamed `autoCompleteType` to `autoComplete` in 0.66, so the Android autofill hint (e.g. `sms-otp` for `OTPInput`'s `autoCompleteSuggestionType="oneTimeCode"`) was silently dropped and never reached the native `EditText`. OTP keyboard suggestions and other autofill hints now work on Android.
+
 ## 12.113.1
 
 ### Patch Changes
