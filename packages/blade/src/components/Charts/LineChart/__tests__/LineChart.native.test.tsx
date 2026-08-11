@@ -407,13 +407,7 @@ describe('<ChartLineWrapper /> (native)', () => {
     ];
     const { toJSON, getByTestId } = renderWithTheme(
       <ChartLineWrapper data={rangeData} testID="range">
-        <ChartReferenceBand
-          lowerDataKey="min"
-          upperDataKey="max"
-          name="Reference band"
-          upperLabel="p75"
-          lowerLabel="p25"
-        />
+        <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
         <ChartXAxis dataKey="name" />
         <ChartYAxis />
         <ChartLegend />
@@ -422,9 +416,6 @@ describe('<ChartLineWrapper /> (native)', () => {
     );
     fireLayout(getByTestId('range-layout'));
     expect(getByTestId('legend-reference-band-standalone')).toBeTruthy();
-    // Range labels render on the band.
-    expect(getByTestId('range-label-lower-standalone')).toBeTruthy();
-    expect(getByTestId('range-label-upper-standalone')).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
   });
 

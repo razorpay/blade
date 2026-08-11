@@ -16,7 +16,6 @@ import {
   REFERENCE_BAND_LAYER_CLASS,
 } from '../CommonChartComponents/tokens';
 import { parsePathAnchors } from '../utils/nullBridgeUtils';
-import type { PixelPoint } from '../utils/nullBridgeUtils';
 import { buildBandAreaPath, perLineBandClass } from '../utils/referenceBandUtils';
 import { componentIds } from './componentIds';
 import type { ChartLineProps } from './types';
@@ -36,20 +35,12 @@ type BandSource = {
   colorToken: ReferenceBandLegendInfo['color'];
   fillColor: string;
   showLegend: boolean;
-  upperLabel?: string;
-  lowerLabel?: string;
-  showRangeLabels: boolean;
 };
 
 type BandGeometry = {
   id: string;
   d: string;
   fillColor: string;
-  upperStart: PixelPoint | null;
-  lowerStart: PixelPoint | null;
-  upperLabel?: string;
-  lowerLabel?: string;
-  showRangeLabels: boolean;
 };
 
 type UseReferenceBandResult = {
@@ -62,18 +53,7 @@ const geomsEqual = (a: BandGeometry[], b: BandGeometry[]): boolean =>
   a.length === b.length &&
   a.every((item, index) => {
     const other = b[index];
-    return (
-      item.id === other.id &&
-      item.d === other.d &&
-      item.fillColor === other.fillColor &&
-      item.upperStart?.x === other.upperStart?.x &&
-      item.upperStart?.y === other.upperStart?.y &&
-      item.lowerStart?.x === other.lowerStart?.x &&
-      item.lowerStart?.y === other.lowerStart?.y &&
-      item.showRangeLabels === other.showRangeLabels &&
-      item.upperLabel === other.upperLabel &&
-      item.lowerLabel === other.lowerLabel
-    );
+    return item.id === other.id && item.d === other.d && item.fillColor === other.fillColor;
   });
 
 /**
@@ -112,9 +92,6 @@ const useReferenceBand = (
           colorToken,
           fillColor: getIn(theme.colors, colorToken),
           showLegend: props.showLegend ?? true,
-          upperLabel: props.upperLabel,
-          lowerLabel: props.lowerLabel,
-          showRangeLabels: props.showRangeLabels ?? true,
         });
         return;
       }
@@ -137,9 +114,6 @@ const useReferenceBand = (
           colorToken,
           fillColor: getIn(theme.colors, colorToken),
           showLegend: props.showRangeLegend ?? props.showLegend ?? true,
-          upperLabel: props.rangeUpperLabel,
-          lowerLabel: props.rangeLowerLabel,
-          showRangeLabels: props.showRangeLabels ?? false,
         });
       }
     });
@@ -153,15 +127,7 @@ const useReferenceBand = (
 
   // Stable key of the sources' identity so the effect re-runs when bands are added/removed/recolored.
   const sourceSignature = useMemo(
-    () =>
-      bandSources
-        .map(
-          (s) =>
-            `${s.id}:${s.fillColor}:${s.showRangeLabels}:${s.upperLabel ?? ''}:${
-              s.lowerLabel ?? ''
-            }`,
-        )
-        .join('|'),
+    () => bandSources.map((s) => `${s.id}:${s.fillColor}`).join('|'),
     [bandSources],
   );
 
@@ -192,11 +158,6 @@ const useReferenceBand = (
           id: source.id,
           d,
           fillColor: source.fillColor,
-          upperStart: upperAnchors[0] ?? null,
-          lowerStart: lowerAnchors[0] ?? null,
-          upperLabel: source.upperLabel,
-          lowerLabel: source.lowerLabel,
-          showRangeLabels: source.showRangeLabels,
         });
       });
       setBandGeoms((prev) => (geomsEqual(prev, next) ? prev : next));
@@ -241,35 +202,16 @@ const useReferenceBand = (
 
   const renderReferenceBands = (): React.ReactElement | null => {
     if (!hasReferenceBand || bandGeoms.length === 0) return null;
-    const labelColor = getIn(theme.colors, 'surface.text.gray.subtle');
-    const labelProps = {
-      fill: labelColor,
-      fontSize: theme.typography.fonts.size[75],
-      fontFamily: theme.typography.fonts.family.text,
-      fontWeight: theme.typography.fonts.weight.medium,
-      textAnchor: 'start' as const,
-    };
     return (
       <g className={REFERENCE_BAND_LAYER_CLASS}>
         {bandGeoms.map((band) => (
-          <g key={`reference-band-${band.id}`}>
-            <path
-              d={band.d}
-              fill={band.fillColor}
-              fillOpacity={REFERENCE_BAND_FILL_OPACITY}
-              stroke="none"
-            />
-            {band.showRangeLabels && band.upperLabel && band.upperStart ? (
-              <text x={band.upperStart.x + 4} y={band.upperStart.y - 6} {...labelProps}>
-                {band.upperLabel}
-              </text>
-            ) : null}
-            {band.showRangeLabels && band.lowerLabel && band.lowerStart ? (
-              <text x={band.lowerStart.x + 4} y={band.lowerStart.y + 14} {...labelProps}>
-                {band.lowerLabel}
-              </text>
-            ) : null}
-          </g>
+          <path
+            key={`reference-band-${band.id}`}
+            d={band.d}
+            fill={band.fillColor}
+            fillOpacity={REFERENCE_BAND_FILL_OPACITY}
+            stroke="none"
+          />
         ))}
       </g>
     );

@@ -16,4 +16,4 @@ feat(LineChart): add `ChartReferenceBand` for a data-driven reference band
 </ChartLineWrapper>
 ```
 
-`ChartReferenceBand` accepts `lowerDataKey` and `upperDataKey` (required), plus optional `name` (legend label, default `'Reference band'`), `color` (band fill token, default a faint categorical blue) and `showLegend` (default `true`). It also supports **range labels** — `upperLabel` / `lowerLabel` (e.g. `p75` / `p25`) drawn at the band's edges, toggled with `showRangeLabels` (default `true`). The band renders behind the trend line and adds a swatch to the legend, on both web and React Native.
+`ChartReferenceBand` accepts `lowerDataKey` and `upperDataKey` (required), plus optional `name` (legend label, default `'Reference band'`), `color` (band fill token, default a faint categorical blue) and `showLegend` (default `true`). The band renders behind the trend line and adds a swatch to the legend, on both web and React Native.

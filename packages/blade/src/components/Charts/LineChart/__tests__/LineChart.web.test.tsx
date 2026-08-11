@@ -513,52 +513,6 @@ describe('<ChartReferenceBand />', () => {
     expect(container.querySelectorAll('.blade-reference-band-layer path')).toHaveLength(0);
   });
 
-  it('should render range labels (p25 / p75) on the band by default', async () => {
-    const { container } = renderWithTheme(
-      <Box width="500px" height="500px">
-        <ChartLineWrapper data={rangeData}>
-          <ChartReferenceBand
-            lowerDataKey="min"
-            upperDataKey="max"
-            lowerLabel="p25"
-            upperLabel="p75"
-          />
-          <ChartXAxis dataKey="name" />
-          <ChartLine dataKey="sales" />
-        </ChartLineWrapper>
-      </Box>,
-    );
-    await waitFor(() => {
-      const texts = Array.from(container.querySelectorAll('.blade-reference-band-layer text')).map(
-        (node) => node.textContent,
-      );
-      expect(texts).toEqual(expect.arrayContaining(['p25', 'p75']));
-    });
-  });
-
-  it('should not render range labels when showRangeLabels is false', async () => {
-    const { container } = renderWithTheme(
-      <Box width="500px" height="500px">
-        <ChartLineWrapper data={rangeData}>
-          <ChartReferenceBand
-            lowerDataKey="min"
-            upperDataKey="max"
-            lowerLabel="p25"
-            upperLabel="p75"
-            showRangeLabels={false}
-          />
-          <ChartXAxis dataKey="name" />
-          <ChartLine dataKey="sales" />
-        </ChartLineWrapper>
-      </Box>,
-    );
-    // Band still paints, but no label text nodes.
-    await waitFor(() => {
-      expect(container.querySelectorAll('.blade-reference-band-layer path')).toHaveLength(1);
-    });
-    expect(container.querySelectorAll('.blade-reference-band-layer text')).toHaveLength(0);
-  });
-
   it('should show a legend entry for the range band', async () => {
     const { queryByText } = renderWithTheme(
       <Box width="500px" height="500px">
@@ -638,7 +592,7 @@ describe('LineChart per-line reference bands (range on ChartLine)', () => {
     );
     await waitFor(() => {
       // Two lines with ranges → two filled band paths in the band layer.
-      expect(container.querySelectorAll('.blade-reference-band-layer > g').length).toBe(2);
+      expect(container.querySelectorAll('.blade-reference-band-layer path').length).toBe(2);
     });
     const bandPaths = container.querySelectorAll('.blade-reference-band-layer path');
     expect(bandPaths.length).toBe(2);

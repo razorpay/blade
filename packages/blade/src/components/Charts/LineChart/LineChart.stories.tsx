@@ -404,13 +404,7 @@ export const LineChartWithReferenceBand: StoryFn<typeof ChartLine> = () => {
     <ChartsWrapper>
       <Box width="100%" height="400px">
         <ChartLineWrapper data={activeUsersRangeData}>
-          <ChartReferenceBand
-            lowerDataKey="min"
-            upperDataKey="max"
-            name="Reference band"
-            upperLabel="p75"
-            lowerLabel="p25"
-          />
+          <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
           <ChartXAxis dataKey="month" />
           <ChartYAxis label="Active users" />
           <ChartTooltip />

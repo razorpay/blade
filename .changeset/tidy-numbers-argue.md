@@ -15,4 +15,4 @@ feat(LineChart): per-line reference bands + tooltip ranges (Industry SR)
 </ChartLineWrapper>
 ```
 
-Each line's band auto-matches the line color (override with `rangeColor`), the tooltip shows an "industry range" (`low–high`) row per series, and the legend gets a swatch per band. Optional inline edge labels (`rangeUpperLabel` / `rangeLowerLabel`, toggled with `showRangeLabels`). The standalone `ChartReferenceBand` remains for the single-band case. Web + React Native. A new *KitchenSink (Industry SR)* story exposes `numberOfLines` (1–5) and `showReferenceBand` controls.
+Each line's band auto-matches the line color (override with `rangeColor`), the tooltip shows an "industry range" (`low–high`) row per series, and the legend gets a swatch per band. The standalone `ChartReferenceBand` remains for the single-band case. Web + React Native. A new *KitchenSink (Industry SR)* story exposes `numberOfLines` (1–5) and `showReferenceBand` controls.

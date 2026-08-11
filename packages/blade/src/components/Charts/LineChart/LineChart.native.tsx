@@ -237,9 +237,6 @@ type LineSlot = {
   rangeUpperDataKey?: string;
   rangeName?: string;
   rangeColor?: ChartsCategoricalColorToken | ChartSequentialColorToken;
-  rangeLowerLabel?: string;
-  rangeUpperLabel?: string;
-  showRangeLabels?: boolean;
   showRangeLegend?: boolean;
 };
 
@@ -255,9 +252,6 @@ type ReferenceBandSlot = {
   name: string;
   color: ChartsCategoricalColorToken | ChartSequentialColorToken;
   showLegend: boolean;
-  upperLabel?: string;
-  lowerLabel?: string;
-  showRangeLabels: boolean;
 };
 
 // A band resolved for rendering — one per line with a range, plus the standalone band. `fillColor`
@@ -269,20 +263,12 @@ type ResolvedBand = {
   name: string;
   fillColor: string;
   showLegend: boolean;
-  upperLabel?: string;
-  lowerLabel?: string;
-  showRangeLabels: boolean;
 };
 
 type BandGeometryNative = {
   id: string;
   d: string;
   color: string;
-  upperStart: { x: number; y: number } | null;
-  lowerStart: { x: number; y: number } | null;
-  upperLabel?: string;
-  lowerLabel?: string;
-  showRangeLabels: boolean;
 };
 
 type TooltipFormatter = NonNullable<ChartTooltipProps['formatter']>;
@@ -354,9 +340,6 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         rangeUpperDataKey: props.rangeUpperDataKey,
         rangeName: props.rangeName,
         rangeColor: props.rangeColor,
-        rangeLowerLabel: props.rangeLowerLabel,
-        rangeUpperLabel: props.rangeUpperLabel,
-        showRangeLabels: props.showRangeLabels,
         showRangeLegend: props.showRangeLegend,
       });
     } else if (id === commonComponentIds.chartXAxis) {
@@ -416,9 +399,6 @@ const readChildSlots = (children: React.ReactNode): ChildSlots => {
         name: props.name ?? 'Reference band',
         color: props.color ?? (REFERENCE_BAND_DEFAULT_COLOR as ReferenceBandSlot['color']),
         showLegend: props.showLegend ?? true,
-        upperLabel: props.upperLabel,
-        lowerLabel: props.lowerLabel,
-        showRangeLabels: props.showRangeLabels ?? true,
       };
     }
   });
@@ -1093,9 +1073,6 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
             ? (getIn(theme.colors, line.rangeColor) as string)
             : resolveColor(line.dataKey, line.color),
           showLegend: line.showRangeLegend ?? line.showLegend,
-          upperLabel: line.rangeUpperLabel,
-          lowerLabel: line.rangeLowerLabel,
-          showRangeLabels: line.showRangeLabels ?? false,
         });
       }
     });
@@ -1107,9 +1084,6 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
         name: slots.referenceBand.name,
         fillColor: getIn(theme.colors, slots.referenceBand.color) as string,
         showLegend: slots.referenceBand.showLegend,
-        upperLabel: slots.referenceBand.upperLabel,
-        lowerLabel: slots.referenceBand.lowerLabel,
-        showRangeLabels: slots.referenceBand.showRangeLabels,
       });
     }
     return bands;
@@ -1138,11 +1112,6 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
           id: band.id,
           d,
           color: band.fillColor,
-          upperStart: upper[0] ?? null,
-          lowerStart: lower[0] ?? null,
-          upperLabel: band.upperLabel,
-          lowerLabel: band.lowerLabel,
-          showRangeLabels: band.showRangeLabels,
         };
       })
       .filter((band): band is BandGeometryNative => band !== null);
@@ -1509,40 +1478,13 @@ const ChartLineWrapper: React.FC<ChartLineWrapperProps & TestID & DataAnalyticsA
                   {/* Reference bands — painted before the lines so they sit behind them. One per
                       line with a range (color-matched), plus the standalone band. */}
                   {bandGeometries.map((band) => (
-                    <G key={`reference-band-${band.id}`}>
-                      <Path
-                        d={band.d}
-                        fill={band.color}
-                        fillOpacity={REFERENCE_BAND_FILL_OPACITY}
-                        stroke="none"
-                      />
-                      {band.showRangeLabels && band.upperLabel && band.upperStart ? (
-                        <SvgText
-                          testID={`range-label-upper-${band.id}`}
-                          x={band.upperStart.x + 4}
-                          y={band.upperStart.y - 5}
-                          fontSize={TICK_FONT_SIZE}
-                          fontWeight="500"
-                          fill={getIn(theme.colors, 'surface.text.gray.subtle')}
-                          textAnchor="start"
-                        >
-                          {band.upperLabel}
-                        </SvgText>
-                      ) : null}
-                      {band.showRangeLabels && band.lowerLabel && band.lowerStart ? (
-                        <SvgText
-                          testID={`range-label-lower-${band.id}`}
-                          x={band.lowerStart.x + 4}
-                          y={band.lowerStart.y + TICK_FONT_SIZE + 2}
-                          fontSize={TICK_FONT_SIZE}
-                          fontWeight="500"
-                          fill={getIn(theme.colors, 'surface.text.gray.subtle')}
-                          textAnchor="start"
-                        >
-                          {band.lowerLabel}
-                        </SvgText>
-                      ) : null}
-                    </G>
+                    <Path
+                      key={`reference-band-${band.id}`}
+                      d={band.d}
+                      fill={band.color}
+                      fillOpacity={REFERENCE_BAND_FILL_OPACITY}
+                      stroke="none"
+                    />
                   ))}
 
                   {lineGeometries.map((geometry, idx) => (

@@ -31,7 +31,6 @@ This document outlines the API of Charts component.
 
  <img src="./images/areaChart.png" alt="Area Chart Design"  height="400" width="600"/>
 
-
 **Components:**
 
 - `ResponsiveContainer` (The main responsive wrapper for all charts)(We decided to merge it with the Chart Type Wrapper)
@@ -316,15 +315,15 @@ import {
 
 #### Area Props
 
-| Prop           | Type                                                              | Required | Default       | Description                                                                                                                  |
-| -------------- | ----------------------------------------------------------------- | -------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `dataKey`      | `string`                                                          | ✅       | -             | The key used to identify the data value for this area in the dataset                                                         |
-| `name`         | `string`                                                          | ✅       | -             | Display name for the area, shown in legend and tooltips                                                                      |
-| `type`         | `'step' \| 'stepAfter' \| 'stepBefore' \| 'linear' \| 'monotone'` | ❌       | `'linear'`    | The interpolation type for connecting data points in the area                                                                |
-| `stackId`      | `string \| number`                                                | ❌       | `undefined`   | Identifier used to group areas into a stack. Areas with the same stackId will be stacked. Required when using multiple areas |
-| `connectNulls` | `boolean`                                                         | ❌       | `false`       | Whether to bridge gaps (null data points). `false` = hard gap (use for genuine outages), `true` = bridge the gap with a line while keeping the fill gapped underneath (see `connectNullsStyle`) |
-| `connectNullsStyle` | `'solid' \| 'dashed'`                                        | ❌       | `'solid'`     | Style of the bridge line drawn across nulls when `connectNulls` is `true`. In both cases there's no fill under the no-data stretch — `'solid'` bridges with a solid line, `'dashed'` with a dashed line (no data for that period) |
-| `color`        | `BladeColorToken`                                                 | ❌       | Auto-assigned | Color token for the area fill (automatically assigned from palette if not provided)                                          |
+| Prop                | Type                                                              | Required | Default       | Description                                                                                                                                                                                                                       |
+| ------------------- | ----------------------------------------------------------------- | -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dataKey`           | `string`                                                          | ✅       | -             | The key used to identify the data value for this area in the dataset                                                                                                                                                              |
+| `name`              | `string`                                                          | ✅       | -             | Display name for the area, shown in legend and tooltips                                                                                                                                                                           |
+| `type`              | `'step' \| 'stepAfter' \| 'stepBefore' \| 'linear' \| 'monotone'` | ❌       | `'linear'`    | The interpolation type for connecting data points in the area                                                                                                                                                                     |
+| `stackId`           | `string \| number`                                                | ❌       | `undefined`   | Identifier used to group areas into a stack. Areas with the same stackId will be stacked. Required when using multiple areas                                                                                                      |
+| `connectNulls`      | `boolean`                                                         | ❌       | `false`       | Whether to bridge gaps (null data points). `false` = hard gap (use for genuine outages), `true` = bridge the gap with a line while keeping the fill gapped underneath (see `connectNullsStyle`)                                   |
+| `connectNullsStyle` | `'solid' \| 'dashed'`                                             | ❌       | `'solid'`     | Style of the bridge line drawn across nulls when `connectNulls` is `true`. In both cases there's no fill under the no-data stretch — `'solid'` bridges with a solid line, `'dashed'` with a dashed line (no data for that period) |
+| `color`             | `BladeColorToken`                                                 | ❌       | Auto-assigned | Color token for the area fill (automatically assigned from palette if not provided)                                                                                                                                               |
 
 - Apart from this we would be exposing all the event handlers provided by recharts like `onCopy`, `onCopyCapture`, `onCut`, `onDrag` , `onMouseUp` , `onMouseDown` etc.
 
@@ -665,16 +664,13 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
 `ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line can be compared against the range other series fall in.
 
-| Prop           | Type                                            | Required | Default              | Description                                     |
-| -------------- | ----------------------------------------------- | -------- | -------------------- | ----------------------------------------------- |
-| `lowerDataKey` | `string`                                        | ✅       | -                    | Data key for the lower (min) bound              |
-| `upperDataKey` | `string`                                        | ✅       | -                    | Data key for the upper (max) bound              |
-| `name`         | `string`                                        | ❌       | `'Reference band'`    | Legend label for the band                       |
-| `color`        | `ChartsCategoricalColorToken \| ChartSequentialColorToken` | ❌ | faint categorical blue | Band fill color token                    |
-| `showLegend`   | `boolean`                                       | ❌       | `true`               | Whether to show a legend swatch for the band    |
-| `upperLabel`   | `string`                                        | ❌       | `undefined`          | Label at the band's upper edge (e.g. `p75`)     |
-| `lowerLabel`   | `string`                                        | ❌       | `undefined`          | Label at the band's lower edge (e.g. `p25`)     |
-| `showRangeLabels` | `boolean`                                    | ❌       | `true`               | Toggle the `upperLabel` / `lowerLabel` labels   |
+| Prop           | Type                                                       | Required | Default                | Description                                  |
+| -------------- | ---------------------------------------------------------- | -------- | ---------------------- | -------------------------------------------- |
+| `lowerDataKey` | `string`                                                   | ✅       | -                      | Data key for the lower (min) bound           |
+| `upperDataKey` | `string`                                                   | ✅       | -                      | Data key for the upper (max) bound           |
+| `name`         | `string`                                                   | ❌       | `'Reference band'`     | Legend label for the band                    |
+| `color`        | `ChartsCategoricalColorToken \| ChartSequentialColorToken` | ❌       | faint categorical blue | Band fill color token                        |
+| `showLegend`   | `boolean`                                                  | ❌       | `true`                 | Whether to show a legend swatch for the band |
 
 > **Why not Recharts `ReferenceArea`?** `ReferenceArea` only draws a _fixed_ rectangle (constant `x1/x2/y1/y2`), whereas this band's bounds vary per data point. Recharts' `LineChart` also does not render `Area` children. So the band is drawn as a custom `<Customized>` SVG layer (web) / computed `<Path>` (native): the invisible bound lines let Recharts compute geometry and fold it into the y-domain, then `ChartLineWrapper` reads those curves and fills the region between them (`buildBandAreaPath`). This mirrors the existing null-bridge layer, which draws custom geometry the same way because Recharts v3 doesn't expose axis scales to `<Customized>`.
 
@@ -682,18 +678,16 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
 For the Industry SR use case (Optimizer), a chart can show **multiple trend lines, each with its own color-matched range band** (the industry min–max for that metric). Rather than N standalone `ChartReferenceBand`s, the range lives on `ChartLine` so the band auto-matches the line color and the tooltip pairs value+range:
 
-| Prop (on `ChartLine`) | Type      | Default              | Description                                             |
-| --------------------- | --------- | -------------------- | ------------------------------------------------------- |
-| `rangeLowerDataKey`   | `string`  | -                    | Lower (min) bound key; band shows when this + upper set |
-| `rangeUpperDataKey`   | `string`  | -                    | Upper (max) bound key                                   |
-| `rangeName`           | `string`  | `'Industry range'`   | Legend + tooltip label for this line's band             |
-| `rangeColor`          | color tok | the line's color     | Band fill; defaults to the line's resolved color        |
-| `rangeUpperLabel` / `rangeLowerLabel` | `string` | `undefined` | Inline edge labels (e.g. `p75` / `p25`)          |
-| `showRangeLabels`     | `boolean` | `false`              | Toggle the inline edge labels                           |
+| Prop (on `ChartLine`) | Type      | Default            | Description                                             |
+| --------------------- | --------- | ------------------ | ------------------------------------------------------- |
+| `rangeLowerDataKey`   | `string`  | -                  | Lower (min) bound key; band shows when this + upper set |
+| `rangeUpperDataKey`   | `string`  | -                  | Upper (max) bound key                                   |
+| `rangeName`           | `string`  | `'Industry range'` | Legend + tooltip label for this line's band             |
+| `rangeColor`          | color tok | the line's color   | Band fill; defaults to the line's resolved color        |
 
 - **Enable/disable range** = presence of `rangeLowerDataKey` + `rangeUpperDataKey` (the Figma `showReferenceBand` variant); **number of lines** = number of `<ChartLine>`s (1–5).
 - The **tooltip** shows each series' value plus an "industry range" row (`low–high`).
-- Each per-line band renders exactly like the standalone band (invisible bound lines → `<Customized>` fill), color-matched via `dataColorMapping`. See the *KitchenSink (Industry SR)* story.
+- Each per-line band renders exactly like the standalone band (invisible bound lines → `<Customized>` fill), color-matched via `dataColorMapping`. See the _KitchenSink (Industry SR)_ story.
 
 ## 4\. Open Questions
 

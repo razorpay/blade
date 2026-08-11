@@ -55,29 +55,6 @@ type ChartReferenceBandProps = {
    * @default true
    */
   showLegend?: boolean;
-  /**
-   * Text label annotating the upper (max) bound of the range, drawn at the band's upper edge
-   * (e.g. `'p75'`). Only shown when `showRangeLabels` is `true`.
-   */
-  upperLabel?: string;
-  /**
-   * Text label annotating the lower (min) bound of the range, drawn at the band's lower edge
-   * (e.g. `'p25'`). Only shown when `showRangeLabels` is `true`.
-   */
-  lowerLabel?: string;
-  /**
-   * Whether to show the `upperLabel` / `lowerLabel` range labels on the band.
-   *
-   * Defaults to `true` because the standalone `ChartReferenceBand` renders a single range band,
-   * where the edge labels (e.g. `p75` / `p25`) aid readability.
-   *
-   * Note: the per-line range variant on `ChartLine` (`rangeLowerDataKey` / `rangeUpperDataKey`)
-   * defaults `showRangeLabels` to `false`, since multiple bands on one chart would clutter it.
-   * The defaults differ intentionally to suit each use case.
-   *
-   * @default true
-   */
-  showRangeLabels?: boolean;
 };
 
 type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {

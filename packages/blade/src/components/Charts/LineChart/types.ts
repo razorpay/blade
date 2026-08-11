@@ -93,31 +93,6 @@ interface ChartLineProps {
    */
   rangeColor?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   /**
-   * Inline label annotating the upper bound of this line's band (e.g. `'p75'`), drawn at the band's
-   * upper edge. Only shown when `showRangeLabels` is `true`.
-   */
-  rangeUpperLabel?: string;
-  /**
-   * Inline label annotating the lower bound of this line's band (e.g. `'p25'`), drawn at the band's
-   * lower edge. Only shown when `showRangeLabels` is `true`.
-   */
-  rangeLowerLabel?: string;
-  /**
-   * Whether to show the inline `rangeUpperLabel` / `rangeLowerLabel` edge labels on this line's band.
-   *
-   * Defaults to `false` because the per-line range API is designed for the Industry SR use case,
-   * where a chart can render multiple trend lines each with its own band. Drawing edge labels on
-   * every band by default would clutter the chart. Enable per-line when there is only one line, or
-   * when a specific line's bounds need to be called out.
-   *
-   * Note: the standalone `ChartReferenceBand` component defaults `showRangeLabels` to `true`,
-   * since it renders a single band where the labels aid readability. The defaults differ
-   * intentionally — see that prop's JSDoc for the rationale.
-   *
-   * @default false
-   */
-  showRangeLabels?: boolean;
-  /**
    * Whether to show this line's reference band as a separate entry in the legend.
    *
    * Defaults to the line's own `showLegend` value, so the band's swatch follows the line's legend
