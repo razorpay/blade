@@ -4,7 +4,6 @@ import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { fileUploadItemBackgroundColors, fileUploadHeightTokens } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
-import { makeSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { colors as globalColors } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
@@ -56,7 +55,6 @@ const StyledFileUploadItemWrapper = ({
       borderStyle="solid"
       borderWidth={borderWidth}
       borderRadius={borderRadius}
-      minHeight={makeSize(fileUploadHeightTokens[size === 'variable' ? 'large' : size])}
       width={width}
       minWidth={minWidth}
       maxWidth={maxWidth}
@@ -73,6 +71,7 @@ const StyledFileUploadItemWrapper = ({
           : getIn(theme.colors, 'surface.border.gray.subtle')
       }
       style={{
+        minHeight: fileUploadHeightTokens[size === 'variable' ? 'large' : size],
         shadowColor,
         shadowOffset: { width: 0, height: 0.5 },
         shadowOpacity: 0.15,
