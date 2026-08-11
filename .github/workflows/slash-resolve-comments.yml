@@ -44,7 +44,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
+          REVIEW_ID: ${{ github.event.review.id }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: node .github/scripts/slash-resolve-comments/check-resolve-run-count.js
 
