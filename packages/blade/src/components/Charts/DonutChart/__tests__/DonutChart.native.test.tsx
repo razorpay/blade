@@ -224,4 +224,32 @@ describe('<DonutChart /> interactions (native)', () => {
     const { selectedKeysArray } = onSelectedDataKeysChange.mock.calls[0][0];
     expect(selectedKeysArray).toEqual(expect.arrayContaining(['Group A', 'Group B']));
   });
+
+  it('should display tooltip with slice label and value when a slice is pressed', () => {
+    const { getByTestId, queryByText } = renderWithTheme(
+      <Box width="400px" height="400px">
+        <ChartDonutWrapper>
+          <ChartDonut data={mockData} dataKey="value" nameKey="name" />
+          <ChartTooltip />
+        </ChartDonutWrapper>
+      </Box>,
+    );
+    flushLayout(getByTestId);
+
+    // Tooltip should not be visible before pressing a slice
+    expect(queryByText('Desktop')).toBeNull();
+
+    // Press the first slice
+    fireEvent.press(getByTestId('donut-slice-0'));
+
+    // Tooltip should now display the slice's label and value
+    expect(queryByText('Desktop')).toBeTruthy();
+    expect(queryByText('400')).toBeTruthy();
+
+    // Press the same slice again — toggle should dismiss the tooltip
+    fireEvent.press(getByTestId('donut-slice-0'));
+
+    expect(queryByText('Desktop')).toBeNull();
+    expect(queryByText('400')).toBeNull();
+  });
 });
