@@ -51,6 +51,7 @@ export * from './LiveAnnouncer';
 export * from './Modal';
 export * from './Move';
 export * from './Morph';
+export * from './MetricsCard';
 export * from './Menu';
 export * from './Pagination';
 export * from './Popover';

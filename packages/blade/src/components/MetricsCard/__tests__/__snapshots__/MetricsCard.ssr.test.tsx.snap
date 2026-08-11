@@ -1,0 +1,1118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MetricsCard /> SSR should render collapsed expandable metrics card on server 1`] = `"<div id="root"><div data-blade-component="metrics-card" class="BaseBox-bksIuc NlUnh"><div data-blade-component="base-box" class="BaseBox-bksIuc gqmGxB"><div data-blade-component="base-box" class="BaseBox-bksIuc jjkqLB"><div data-blade-component="base-box" class="BaseBox-bksIuc hwoHko"><div role="button" tabindex="0" aria-pressed="false" aria-label="Total sales ₹2.89L 12%" class="MetricsCardweb__MetricTrigger-sc-816o36-0 irnTqC"><div data-blade-component="base-box" class="BaseBox-bksIuc jRobjt"><div data-blade-component="base-box" class="BaseBox-bksIuc hdZzAc"><div data-blade-component="base-box" class="BaseBox-bksIuc fZLfoV"><p letter-spacing="50" class="StyledBaseText-foUshD jfFmlB" data-blade-component="text">Total sales</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cOWWsM"><div data-blade-component="base-box" class="BaseBox-bksIuc goyVCp"><h4 class="StyledBaseText-foUshD cuVNVl" data-blade-component="heading">₹2.89L</h4><div data-blade-component="base-box" class="BaseBox-bksIuc gDzMoT"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M9 5C8.44772 5 8 5.44772 8 6C8 6.55228 8.44772 7 9 7H15.5858L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L17 8.41421V15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15V6C19 5.44772 18.5523 5 18 5H9Z" fill="hsla(150, 100%, 23%, 1)" data-blade-component="svg-path"></path></svg><p letter-spacing="50" class="StyledBaseText-foUshD fYysCk" data-blade-component="text">12%</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cGjphd"><svg width="72" height="24" viewBox="0 0 72 24" fill="none" aria-hidden="true"><path d="M 2 22 L 11.714285714285714 17.555555555555557 L 21.428571428571427 16.444444444444443 L 31.142857142857142 14.222222222222221 L 40.857142857142854 12 L 50.57142857142857 5.333333333333332 L 60.285714285714285 7.555555555555555 L 70 2" stroke="hsla(217, 100%, 73%, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc hwoHko"><div role="button" tabindex="0" aria-pressed="false" aria-label="Checkout conversion rate 10.12% 12%" class="MetricsCardweb__MetricTrigger-sc-816o36-0 irnTqC"><div data-blade-component="base-box" class="BaseBox-bksIuc jRobjt"><div data-blade-component="base-box" class="BaseBox-bksIuc hdZzAc"><div data-blade-component="base-box" class="BaseBox-bksIuc fZLfoV"><p letter-spacing="50" class="StyledBaseText-foUshD jfFmlB" data-blade-component="text">Checkout conversion rate</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cOWWsM"><div data-blade-component="base-box" class="BaseBox-bksIuc goyVCp"><h4 class="StyledBaseText-foUshD cuVNVl" data-blade-component="heading">10.12%</h4><div data-blade-component="base-box" class="BaseBox-bksIuc gDzMoT"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M9 5C8.44772 5 8 5.44772 8 6C8 6.55228 8.44772 7 9 7H15.5858L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L17 8.41421V15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15V6C19 5.44772 18.5523 5 18 5H9Z" fill="hsla(150, 100%, 23%, 1)" data-blade-component="svg-path"></path></svg><p letter-spacing="50" class="StyledBaseText-foUshD fYysCk" data-blade-component="text">12%</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cGjphd"><svg width="72" height="24" viewBox="0 0 72 24" fill="none" aria-hidden="true"><path d="M 2 22 L 11.714285714285714 17.384615384615383 L 21.428571428571427 15.846153846153847 L 31.142857142857142 12.769230769230768 L 40.857142857142854 11.230769230769232 L 50.57142857142857 5.076923076923077 L 60.285714285714285 8.153846153846153 L 70 2" stroke="hsla(217, 100%, 73%, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc izkxdq"><button type="button" aria-label="Expand metrics card" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 bZgFnT"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button></div></div></div></div>"`;
+
+exports[`<MetricsCard /> SSR should render collapsed expandable metrics card on server 2`] = `
+.c0.c0.c0.c0.c0 {
+  overflow: hidden;
+  width: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: hsla(206,10%,29%,0.12);
+  border-style: solid;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  padding: 12px;
+  width: 100%;
+  gap: 12px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
+  gap: 12px;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 100%;
+  min-width: auto;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 100%;
+  gap: 12px;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.c7.c7.c7.c7.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-width: 0px;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  gap: 32px;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  gap: 4px;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.c14.c14.c14.c14.c14 {
+  display: none;
+}
+
+.c15.c15.c15.c15.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: dotted;
+  text-decoration-style: dotted;
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  -webkit-text-decoration-thickness: 10%;
+  text-decoration-thickness: 10%;
+  text-underline-offset: 20%;
+  -webkit-text-decoration-color: hsla(200,10%,18%,1);
+  text-decoration-color: hsla(200,10%,18%,1);
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(0,0%,2%,1);
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(150,100%,23%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c16.c16.c16.c16.c16 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(204,9%,42%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 160ms;
+  transition-duration: 160ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c16.c16.c16.c16.c16:hover:not([disabled]) {
+  color: hsla(200,10%,18%,1);
+  background-color: transparent;
+}
+
+.c16.c16.c16.c16.c16:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+  color: hsla(200,10%,18%,1);
+  background-color: transparent;
+}
+
+.c16.c16.c16.c16.c16:active {
+  color: hsla(200,10%,18%,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  border: 1px solid hsla(0,0%,100%,0);
+  border-radius: 12px;
+  background: hsla(0,0%,100%,0);
+  cursor: pointer;
+  text-align: left;
+}
+
+.c4.c4.c4.c4.c4:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+@media screen and (min-width:1200px) {
+  .c1.c1.c1.c1.c1 {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c2.c2.c2.c2.c2 {
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c3.c3.c3.c3.c3 {
+    min-width: 0px;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c5.c5.c5.c5.c5 {
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9.c9.c9.c9.c9 {
+    -webkit-align-items: flex-end;
+    -webkit-box-align: flex-end;
+    -ms-flex-align: flex-end;
+    align-items: flex-end;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c14.c14.c14.c14.c14 {
+    display: block;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c15.c15.c15.c15.c15 {
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+  }
+}
+
+@media (hover:hover) {
+  .c4.c4.c4.c4.c4:hover {
+    border-color: hsla(206,10%,29%,0.12);
+    background: hsla(200,10%,94%,1);
+  }
+}
+
+<div
+  id="root"
+>
+  <div
+    class="c0"
+    data-blade-component="metrics-card"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            aria-label="Total sales ₹2.89L 12%"
+            aria-pressed="false"
+            class="c4"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="c5"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c6"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c8"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Total sales
+                  </p>
+                </div>
+              </div>
+              <div
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c10"
+                  data-blade-component="base-box"
+                >
+                  <h4
+                    class="c11"
+                    data-blade-component="heading"
+                  >
+                    ₹2.89L
+                  </h4>
+                  <div
+                    class="c12"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="12px"
+                      viewBox="0 0 24 24"
+                      width="12px"
+                    >
+                      <path
+                        d="M9 5C8.44772 5 8 5.44772 8 6C8 6.55228 8.44772 7 9 7H15.5858L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L17 8.41421V15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15V6C19 5.44772 18.5523 5 18 5H9Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(150, 100%, 23%, 1)"
+                      />
+                    </svg>
+                    <p
+                      class="c13"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      12%
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="c14"
+                  data-blade-component="base-box"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="24"
+                    viewBox="0 0 72 24"
+                    width="72"
+                  >
+                    <path
+                      d="M 2 22 L 11.714285714285714 17.555555555555557 L 21.428571428571427 16.444444444444443 L 31.142857142857142 14.222222222222221 L 40.857142857142854 12 L 50.57142857142857 5.333333333333332 L 60.285714285714285 7.555555555555555 L 70 2"
+                      stroke="hsla(217, 100%, 73%, 1)"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            aria-label="Checkout conversion rate 10.12% 12%"
+            aria-pressed="false"
+            class="c4"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="c5"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c6"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c8"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Checkout conversion rate
+                  </p>
+                </div>
+              </div>
+              <div
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c10"
+                  data-blade-component="base-box"
+                >
+                  <h4
+                    class="c11"
+                    data-blade-component="heading"
+                  >
+                    10.12%
+                  </h4>
+                  <div
+                    class="c12"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="12px"
+                      viewBox="0 0 24 24"
+                      width="12px"
+                    >
+                      <path
+                        d="M9 5C8.44772 5 8 5.44772 8 6C8 6.55228 8.44772 7 9 7H15.5858L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L17 8.41421V15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15V6C19 5.44772 18.5523 5 18 5H9Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(150, 100%, 23%, 1)"
+                      />
+                    </svg>
+                    <p
+                      class="c13"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      12%
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="c14"
+                  data-blade-component="base-box"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="24"
+                    viewBox="0 0 72 24"
+                    width="72"
+                  >
+                    <path
+                      d="M 2 22 L 11.714285714285714 17.384615384615383 L 21.428571428571427 15.846153846153847 L 31.142857142857142 12.769230769230768 L 40.857142857142854 11.230769230769232 L 50.57142857142857 5.076923076923077 L 60.285714285714285 8.153846153846153 L 70 2"
+                      stroke="hsla(217, 100%, 73%, 1)"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c15"
+        data-blade-component="base-box"
+      >
+        <button
+          aria-label="Expand metrics card"
+          class="c16"
+          data-blade-component="icon-button"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="16px"
+            viewBox="0 0 24 24"
+            width="16px"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+              data-blade-component="svg-path"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<MetricsCard /> SSR should render non-expandable collapsed metrics card on server 1`] = `"<div id="root"><div data-blade-component="metrics-card" class="BaseBox-bksIuc NlUnh"><div data-blade-component="base-box" class="BaseBox-bksIuc gqmGxB"><div data-blade-component="base-box" class="BaseBox-bksIuc jjkqLB"><div data-blade-component="base-box" class="BaseBox-bksIuc hwoHko"><div role="button" tabindex="0" aria-pressed="false" aria-label="Total sales ₹2.89L 12%" class="MetricsCardweb__MetricTrigger-sc-816o36-0 irnTqC"><div data-blade-component="base-box" class="BaseBox-bksIuc jRobjt"><div data-blade-component="base-box" class="BaseBox-bksIuc hdZzAc"><div data-blade-component="base-box" class="BaseBox-bksIuc fZLfoV"><p letter-spacing="50" class="StyledBaseText-foUshD jfFmlB" data-blade-component="text">Total sales</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cOWWsM"><div data-blade-component="base-box" class="BaseBox-bksIuc goyVCp"><h4 class="StyledBaseText-foUshD cuVNVl" data-blade-component="heading">₹2.89L</h4><div data-blade-component="base-box" class="BaseBox-bksIuc gDzMoT"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M9 5C8.44772 5 8 5.44772 8 6C8 6.55228 8.44772 7 9 7H15.5858L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L17 8.41421V15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15V6C19 5.44772 18.5523 5 18 5H9Z" fill="hsla(150, 100%, 23%, 1)" data-blade-component="svg-path"></path></svg><p letter-spacing="50" class="StyledBaseText-foUshD fYysCk" data-blade-component="text">12%</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cGjphd"><svg width="72" height="24" viewBox="0 0 72 24" fill="none" aria-hidden="true"><path d="M 2 22 L 11.714285714285714 17.555555555555557 L 21.428571428571427 16.444444444444443 L 31.142857142857142 14.222222222222221 L 40.857142857142854 12 L 50.57142857142857 5.333333333333332 L 60.285714285714285 7.555555555555555 L 70 2" stroke="hsla(217, 100%, 73%, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc hwoHko"><div role="button" tabindex="0" aria-pressed="false" aria-label="Checkout conversion rate 10.12% 12%" class="MetricsCardweb__MetricTrigger-sc-816o36-0 irnTqC"><div data-blade-component="base-box" class="BaseBox-bksIuc jRobjt"><div data-blade-component="base-box" class="BaseBox-bksIuc hdZzAc"><div data-blade-component="base-box" class="BaseBox-bksIuc fZLfoV"><p letter-spacing="50" class="StyledBaseText-foUshD jfFmlB" data-blade-component="text">Checkout conversion rate</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cOWWsM"><div data-blade-component="base-box" class="BaseBox-bksIuc goyVCp"><h4 class="StyledBaseText-foUshD cuVNVl" data-blade-component="heading">10.12%</h4><div data-blade-component="base-box" class="BaseBox-bksIuc gDzMoT"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M9 5C8.44772 5 8 5.44772 8 6C8 6.55228 8.44772 7 9 7H15.5858L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L17 8.41421V15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15V6C19 5.44772 18.5523 5 18 5H9Z" fill="hsla(150, 100%, 23%, 1)" data-blade-component="svg-path"></path></svg><p letter-spacing="50" class="StyledBaseText-foUshD fYysCk" data-blade-component="text">12%</p></div></div><div data-blade-component="base-box" class="BaseBox-bksIuc cGjphd"><svg width="72" height="24" viewBox="0 0 72 24" fill="none" aria-hidden="true"><path d="M 2 22 L 11.714285714285714 17.384615384615383 L 21.428571428571427 15.846153846153847 L 31.142857142857142 12.769230769230768 L 40.857142857142854 11.230769230769232 L 50.57142857142857 5.076923076923077 L 60.285714285714285 8.153846153846153 L 70 2" stroke="hsla(217, 100%, 73%, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div></div></div></div></div></div></div>"`;
+
+exports[`<MetricsCard /> SSR should render non-expandable collapsed metrics card on server 2`] = `
+.c0.c0.c0.c0.c0 {
+  overflow: hidden;
+  width: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: hsla(206,10%,29%,0.12);
+  border-style: solid;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  padding: 12px;
+  width: 100%;
+  gap: 12px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
+  gap: 12px;
+}
+
+.c3.c3.c3.c3.c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 100%;
+  min-width: auto;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 100%;
+  gap: 12px;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.c7.c7.c7.c7.c7 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-width: 0px;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  gap: 32px;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  gap: 4px;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.c14.c14.c14.c14.c14 {
+  display: none;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: dotted;
+  text-decoration-style: dotted;
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  -webkit-text-decoration-thickness: 10%;
+  text-decoration-thickness: 10%;
+  text-underline-offset: 20%;
+  -webkit-text-decoration-color: hsla(200,10%,18%,1);
+  text-decoration-color: hsla(200,10%,18%,1);
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c11.c11.c11.c11.c11 {
+  color: hsla(0,0%,2%,1);
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(150,100%,23%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4 {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  border: 1px solid hsla(0,0%,100%,0);
+  border-radius: 12px;
+  background: hsla(0,0%,100%,0);
+  cursor: pointer;
+  text-align: left;
+}
+
+.c4.c4.c4.c4.c4:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+@media screen and (min-width:1200px) {
+  .c1.c1.c1.c1.c1 {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c2.c2.c2.c2.c2 {
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c3.c3.c3.c3.c3 {
+    min-width: 0px;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c5.c5.c5.c5.c5 {
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9.c9.c9.c9.c9 {
+    -webkit-align-items: flex-end;
+    -webkit-box-align: flex-end;
+    -ms-flex-align: flex-end;
+    align-items: flex-end;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c14.c14.c14.c14.c14 {
+    display: block;
+  }
+}
+
+@media (hover:hover) {
+  .c4.c4.c4.c4.c4:hover {
+    border-color: hsla(206,10%,29%,0.12);
+    background: hsla(200,10%,94%,1);
+  }
+}
+
+<div
+  id="root"
+>
+  <div
+    class="c0"
+    data-blade-component="metrics-card"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            aria-label="Total sales ₹2.89L 12%"
+            aria-pressed="false"
+            class="c4"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="c5"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c6"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c8"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Total sales
+                  </p>
+                </div>
+              </div>
+              <div
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c10"
+                  data-blade-component="base-box"
+                >
+                  <h4
+                    class="c11"
+                    data-blade-component="heading"
+                  >
+                    ₹2.89L
+                  </h4>
+                  <div
+                    class="c12"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="12px"
+                      viewBox="0 0 24 24"
+                      width="12px"
+                    >
+                      <path
+                        d="M9 5C8.44772 5 8 5.44772 8 6C8 6.55228 8.44772 7 9 7H15.5858L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L17 8.41421V15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15V6C19 5.44772 18.5523 5 18 5H9Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(150, 100%, 23%, 1)"
+                      />
+                    </svg>
+                    <p
+                      class="c13"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      12%
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="c14"
+                  data-blade-component="base-box"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="24"
+                    viewBox="0 0 72 24"
+                    width="72"
+                  >
+                    <path
+                      d="M 2 22 L 11.714285714285714 17.555555555555557 L 21.428571428571427 16.444444444444443 L 31.142857142857142 14.222222222222221 L 40.857142857142854 12 L 50.57142857142857 5.333333333333332 L 60.285714285714285 7.555555555555555 L 70 2"
+                      stroke="hsla(217, 100%, 73%, 1)"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            aria-label="Checkout conversion rate 10.12% 12%"
+            aria-pressed="false"
+            class="c4"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="c5"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c6"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c8"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Checkout conversion rate
+                  </p>
+                </div>
+              </div>
+              <div
+                class="c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c10"
+                  data-blade-component="base-box"
+                >
+                  <h4
+                    class="c11"
+                    data-blade-component="heading"
+                  >
+                    10.12%
+                  </h4>
+                  <div
+                    class="c12"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="12px"
+                      viewBox="0 0 24 24"
+                      width="12px"
+                    >
+                      <path
+                        d="M9 5C8.44772 5 8 5.44772 8 6C8 6.55228 8.44772 7 9 7H15.5858L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L17 8.41421V15C17 15.5523 17.4477 16 18 16C18.5523 16 19 15.5523 19 15V6C19 5.44772 18.5523 5 18 5H9Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(150, 100%, 23%, 1)"
+                      />
+                    </svg>
+                    <p
+                      class="c13"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    >
+                      12%
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="c14"
+                  data-blade-component="base-box"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="24"
+                    viewBox="0 0 72 24"
+                    width="72"
+                  >
+                    <path
+                      d="M 2 22 L 11.714285714285714 17.384615384615383 L 21.428571428571427 15.846153846153847 L 31.142857142857142 12.769230769230768 L 40.857142857142854 11.230769230769232 L 50.57142857142857 5.076923076923077 L 60.285714285714285 8.153846153846153 L 70 2"
+                      stroke="hsla(217, 100%, 73%, 1)"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
