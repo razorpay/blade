@@ -157,7 +157,9 @@ const Toast = (
             >
               <Icon
                 size="medium"
-                color={isPromotional ? 'surface.icon.gray.normal' : 'surface.icon.staticWhite.normal'}
+                color={
+                  isPromotional ? 'surface.icon.gray.normal' : 'surface.icon.staticWhite.normal'
+                }
               />
             </Box>
           ) : null}
@@ -165,7 +167,9 @@ const Toast = (
             {typeof content === 'string' ? (
               <Text
                 size="small"
-                color={isPromotional ? 'surface.text.gray.normal' : 'surface.text.staticWhite.normal'}
+                color={
+                  isPromotional ? 'surface.text.gray.normal' : 'surface.text.staticWhite.normal'
+                }
               >
                 {content}
               </Text>
@@ -178,9 +182,7 @@ const Toast = (
               </Box>
             ) : null}
           </Box>
-          {!isPromotional && actionButton ? (
-            <Box marginLeft="spacing.3">{actionButton}</Box>
-          ) : null}
+          {!isPromotional && actionButton ? <Box marginLeft="spacing.3">{actionButton}</Box> : null}
           <Box marginLeft="spacing.2" alignSelf={isPromotional ? 'flex-start' : 'center'}>
             <IconButton
               icon={CloseIcon}
