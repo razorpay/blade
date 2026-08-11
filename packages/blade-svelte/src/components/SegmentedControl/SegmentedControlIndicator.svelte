@@ -15,7 +15,6 @@
 
   let shouldAnimate = $state(false);
   let dimensions = $state({ width: 0, height: 0, x: 0, y: 0 });
-  let measureGeneration = 0;
 
   const updateDimensions = () => {
     if (!containerEl) return;
@@ -40,13 +39,18 @@
 
   $effect(() => {
     void ctx.selectedValue;
-    if (ctx.selectedValue && containerEl) {
-      measureGeneration += 1;
-      const gen = measureGeneration;
-      void tick().then(() => {
-        if (gen === measureGeneration) updateDimensions();
-      });
-    }
+    if (!ctx.selectedValue || !containerEl) return;
+
+    // Per-invocation cancelled flag: the cleanup function sets it to true when
+    // the effect re-runs (new selection) or the component unmounts, ensuring a
+    // stale tick() callback never overwrites a newer measurement.
+    let cancelled = false;
+    void tick().then(() => {
+      if (!cancelled) updateDimensions();
+    });
+    return () => {
+      cancelled = true;
+    };
   });
 
   $effect(() => {
