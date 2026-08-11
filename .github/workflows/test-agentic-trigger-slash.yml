@@ -1,6 +1,9 @@
 name: Test - Trigger Slash via razorpay/actions
 
 on:
+  push:
+    branches:
+      - feat/test-agentic-trigger-slash
   workflow_dispatch:
     inputs:
       prompt:
@@ -12,7 +15,7 @@ jobs:
   test-trigger:
     uses: razorpay/actions/.github/workflows/agentic-trigger-slash.yml@feat/agentic-actions
     with:
-      prompt: ${{ inputs.prompt }}
+      prompt: ${{ inputs.prompt || 'Say hello and confirm you received this test prompt.' }}
     secrets: inherit
 
   show-result:
