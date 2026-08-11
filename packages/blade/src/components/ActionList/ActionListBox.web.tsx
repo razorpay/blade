@@ -37,6 +37,8 @@ type ActionListBoxProps = {
 const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
   ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...rest }, ref) => {
     const { isInBottomSheet } = useBottomSheetContext();
+    const items = React.Children.toArray(childrenWithId);
+    const { itemData } = useFilteredItems(items);
 
     return (
       <StyledListBoxWrapper
@@ -48,7 +50,7 @@ const _ActionListBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
         })}
         {...makeAnalyticsAttribute(rest)}
       >
-        {childrenWithId}
+        {itemData}
       </StyledListBoxWrapper>
     );
   },
