@@ -38,7 +38,6 @@
 
   let selectedStyleComponent = $state<CheckoutStyleComponent>('Button');
   let isStyleOverrideApplied = $state(false);
-  let isComparingStyleOverrides = $state(false);
   let slotClassByComponent = $state<Record<CheckoutStyleComponent, SlotClassMap>>(
     createCheckoutSlotClasses(),
   );
@@ -65,10 +64,11 @@
 
   /**
    * Overrides stay off until Apply is toggled on, so the checkout loads on the baseline even with
-   * the inputs pre-filled. Compare then drops them again to show the before/after.
+   * the inputs pre-filled. Only the component picked in the dropdown gets patched — Apply never
+   * touches the other components.
    */
   const overrideFor = (component: CheckoutStyleComponent): StyleOverride<string> | undefined =>
-    !isStyleOverrideApplied || isComparingStyleOverrides
+    !isStyleOverrideApplied || component !== selectedStyleComponent
       ? undefined
       : resolveStyleOverride(slotClassByComponent[component]);
 
@@ -136,7 +136,6 @@
         bind:slotClassByComponent
         bind:cssVarValues
         bind:isStyleOverrideApplied
-        bind:isComparingStyleOverrides
       />
     </div>
   </div>

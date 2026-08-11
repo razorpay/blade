@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
   import Badge from '../../../../Badge/Badge.svelte';
-  import Button from '../../../../Button/Button.svelte';
   import Tabs from '../../../../Tabs/Tabs.svelte';
   import TabList from '../../../../Tabs/TabList.svelte';
   import TabItem from '../../../../Tabs/TabItem.svelte';
@@ -29,11 +28,9 @@
   import {
     CHECKOUT_INERT_COMPONENT_NOTES,
     CHECKOUT_STYLE_COMPONENTS,
-    createCheckoutSlotClasses,
     isCheckoutStyleComponent,
     type CheckoutStyleComponent,
   } from '../checkoutPlaygroundStyleOverride';
-  import CompareButton from '../../styleOverride/CompareButton.svelte';
   import SnippetTabs from '../../styleOverride/SnippetTabs.svelte';
   import Switch from '../../../../Switch/Switch.svelte';
   import {
@@ -57,7 +54,6 @@
     slotClassByComponent = $bindable(),
     cssVarValues = $bindable(),
     isStyleOverrideApplied = $bindable(),
-    isComparingStyleOverrides = $bindable(),
   }: {
     brandLabel: string;
     customBrandColor: string;
@@ -71,7 +67,6 @@
     slotClassByComponent: Record<CheckoutStyleComponent, SlotClassMap>;
     cssVarValues: Record<string, string>;
     isStyleOverrideApplied: boolean;
-    isComparingStyleOverrides: boolean;
   } = $props();
 
   const RADIUS_PRESET_OPTIONS = Object.keys(RADIUS_PRESETS).map((preset) => ({
@@ -173,13 +168,6 @@
     };
   }
 
-  function resetSlotClasses(): void {
-    slotClassByComponent = {
-      ...slotClassByComponent,
-      [selectedStyleComponent]: createCheckoutSlotClasses()[selectedStyleComponent],
-    };
-  }
-
   function getCssVarValue(varName: string): string {
     return readCssVar(cssVarValues, varName);
   }
@@ -210,7 +198,7 @@
     <div class="studio-panel-tabbar">
       <TabList>
         <TabItem value="foundations">Foundations</TabItem>
-        <TabItem value="widgets">Widgets</TabItem>
+        <TabItem value="widgets">Overrides</TabItem>
       </TabList>
     </div>
 
@@ -373,10 +361,6 @@
             />
           </StudioField>
         {/each}
-        <div class="studio-actions">
-          <Button variant="tertiary" size="small" onClick={resetSlotClasses}>Reset</Button>
-          <CompareButton bind:isComparing={isComparingStyleOverrides} />
-        </div>
       </StudioSection>
 
       {#if activeCssVars.length > 0}
@@ -517,12 +501,6 @@
     color: var(--surface-text-gray-normal);
     font-family: var(--font-family-code);
     font-size: var(--font-size-25);
-  }
-
-  .studio-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-3);
   }
 
   .studio-apply {

@@ -136,7 +136,13 @@
           </span>
         </div>
 
-          <AppBar variant="neutral" isSticky={false}>
+          <AppBar
+            variant="neutral"
+            isSticky={false}
+            showBackButton
+            onBackButtonClick={noop}
+            backButtonAccessibilityLabel="Go back"
+          >
             <AppBarLeading title="Maven Shop" trustBadgeVariant="default">
               {#snippet logo()}
                 <Avatar name="Maven Shop" variant="square" size="large" />
@@ -186,7 +192,7 @@
             </Card>
           </div>
 
-          <div class="checkout-promo-banner">
+          <div class="checkout-promo-banner" >
             <AnnouncementBanner alignment="center">
               🪔 Diwali sale Flat 10% Off
             </AnnouncementBanner>
@@ -671,19 +677,9 @@
     /* strip the rounded content sheet overlaps; matches banner fill so the sheet's
        top corners reveal banner color instead of a seam */
     padding-bottom: var(--spacing-4);
-    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
     /* clips the banner root's square top corners to the wrapper's rounding */
     overflow: hidden;
     background-color: var(--interactive-background-static-black-faded-highlighted);
-  }
-
-  :global(.checkout-promo-banner-root) {
-    background-color: var(--interactive-background-static-black-faded-highlighted);
-  }
-
-  :global(.checkout-promo-banner-text) {
-    color: var(--surface-text-static-white-subtle);
-    font-family: var(--font-family-text);
   }
 
   .checkout-scroll {
