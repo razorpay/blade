@@ -1,12 +1,11 @@
 import React from 'react';
-import { ChartLineWrapper, ChartLine } from '../LineChart';
+import { ChartLineWrapper, ChartLine, ChartReferenceBand } from '../LineChart';
 import {
   ChartXAxis,
   ChartYAxis,
   ChartCartesianGrid,
   ChartTooltip,
   ChartLegend,
-  ChartReferenceBand,
 } from '../../CommonChartComponents';
 import { waitFor } from '@testing-library/react';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
