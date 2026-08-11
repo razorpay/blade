@@ -4,7 +4,7 @@
     name,
     size = 20,
   }: {
-    name: 'upi' | 'card' | 'netbanking' | 'emi' | 'paylater';
+    name: 'upi' | 'card' | 'netbanking' | 'emi' | 'paylater' | 'cod';
     size?: number;
   } = $props();
 </script>
@@ -94,6 +94,55 @@
       d="M5 2V0H3.5V2H1V15H15V2H12.5V0H11V2H5ZM13.5 3.5H2.5V6H13.5V3.5ZM2.5 13.5V7.5H13.5V13.5H2.5Z"
       fill="currentColor"
     />
+  </svg>
+{:else if name === 'paylater'}
+  <svg
+    class="checkout-method-icon"
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      fill="currentColor"
+      fill-opacity=".1"
+      fill-rule="evenodd"
+      d="M8 14.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13ZM7 3h1.5v4.7l3 2.7-1 1.2L7 8.3V3Z"
+      clip-rule="evenodd"
+    />
+    <path fill="currentColor" d="M7 3v5.3l3.5 3.3 1-1.2-3-2.7V3H7Z" />
+    <path
+      fill="currentColor"
+      fill-rule="evenodd"
+      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-1.5 0a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"
+      clip-rule="evenodd"
+    />
+  </svg>
+{:else if name === 'cod'}
+  <svg
+    class="checkout-method-icon"
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <rect
+      x="0.75"
+      y="3.25"
+      width="14.5"
+      height="9.5"
+      rx="1.75"
+      fill="currentColor"
+      fill-opacity="0.09"
+      stroke="currentColor"
+      stroke-width="1.5"
+    />
+    <circle cx="8" cy="8" r="2.25" stroke="currentColor" stroke-width="1.5" />
+    <path d="M3.25 8h0.5M12.25 8h0.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
   </svg>
 {:else}
   <svg

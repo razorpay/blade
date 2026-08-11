@@ -1,12 +1,8 @@
 <script lang="ts">
-  import type {
-    AppBarLeadingSlot,
-    ButtonSlot,
-    CardSlot,
-    StyleOverride,
-  } from '@razorpay/blade-core/styles';
+  import type { StyleOverride } from '@razorpay/blade-core/styles';
   import { bladeTheme, type ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
   import BladeProvider from '../../BladeProvider.svelte';
+  import type { BladeComponentConfigMap } from '../../types';
   import Text from '../../../Typography/Text/Text.svelte';
   import CheckoutPreview from './CheckoutPreview.svelte';
   import StudioPanel from './studio/StudioPanel.svelte';
@@ -16,16 +12,20 @@
     buildThemeBundle,
   } from './checkoutPlaygroundTheme';
   import {
-    CHECKOUT_INITIAL_CSS_VAR_VALUES,
-    CHECKOUT_SLOT_CATALOG,
     CHECKOUT_STYLE_COMPONENTS,
-    buildDynamicUtilityCss,
-    buildPreviewVarsStyle,
-    collectCssVarsFromClassNames,
-    createInitialCheckoutSlotClasses,
-    resolveStyleOverride,
+    createCheckoutCssVars,
+    createCheckoutSlotClasses,
     type CheckoutStyleComponent,
   } from './checkoutPlaygroundStyleOverride';
+  import {
+    STATIC_SLOT_CLASS_CSS,
+    buildDynamicCss,
+    buildPreviewVarsStyle,
+    collectCssVarsForComponents,
+    mountDemoStylesheet,
+    resolveStyleOverride,
+    type SlotClassMap,
+  } from '../styleOverride/styleOverrideEngine';
 
   let brandLabel = $state('Razorpay');
   let customBrandColor = $state(DEFAULT_CUSTOM_BRAND_COLOR);
@@ -37,13 +37,12 @@
   let fontSizeScaleFactor = $state('1');
 
   let selectedStyleComponent = $state<CheckoutStyleComponent>('Button');
-  let styleOverridesEnabled = $state(false);
-  let slotClassByComponent = $state(createInitialCheckoutSlotClasses());
-  let cssVarValues = $state<Record<string, string>>({ ...CHECKOUT_INITIAL_CSS_VAR_VALUES });
-  let appliedSlotClassByComponent = $state(createInitialCheckoutSlotClasses());
-  let appliedCssVarValues = $state<Record<string, string>>({
-    ...CHECKOUT_INITIAL_CSS_VAR_VALUES,
-  });
+  let isStyleOverrideApplied = $state(false);
+  let isComparingStyleOverrides = $state(false);
+  let slotClassByComponent = $state<Record<CheckoutStyleComponent, SlotClassMap>>(
+    createCheckoutSlotClasses(),
+  );
+  let cssVarValues = $state(createCheckoutCssVars());
 
   const themeBundle = $derived(
     buildThemeBundle({
@@ -60,88 +59,51 @@
   const themeTokens = $derived(themeBundle.themeTokens);
   const fontFaceCSS = $derived(themeBundle.fontFaceCSS);
 
-  const appliedCssVarsForPreview = $derived.by((): string[] => {
-    const used = new Set<string>();
-    const order: string[] = [];
-    for (const component of CHECKOUT_STYLE_COMPONENTS) {
-      for (const slot of CHECKOUT_SLOT_CATALOG[component].slots) {
-        for (const varName of collectCssVarsFromClassNames(
-          appliedSlotClassByComponent[component][slot] ?? '',
-        )) {
-          if (!used.has(varName)) {
-            used.add(varName);
-            order.push(varName);
-          }
-        }
-      }
-    }
-    return order;
-  });
-
-  const buttonStyleOverride = $derived(
-    styleOverridesEnabled
-      ? (resolveStyleOverride(appliedSlotClassByComponent.Button) as StyleOverride<ButtonSlot>)
-      : undefined,
-  );
-  const appBarLeadingStyleOverride = $derived(
-    styleOverridesEnabled
-      ? (resolveStyleOverride(
-          appliedSlotClassByComponent.AppBarLeading,
-        ) as StyleOverride<AppBarLeadingSlot>)
-      : undefined,
-  );
-  const cardStyleOverride = $derived(
-    styleOverridesEnabled
-      ? (resolveStyleOverride(appliedSlotClassByComponent.Card) as StyleOverride<CardSlot>)
-      : undefined,
+  const activeCssVars = $derived(
+    collectCssVarsForComponents(slotClassByComponent, CHECKOUT_STYLE_COMPONENTS),
   );
 
-  const previewVarsStyle = $derived(
-    styleOverridesEnabled
-      ? buildPreviewVarsStyle(appliedCssVarValues, appliedCssVarsForPreview)
-      : '',
+  /**
+   * Overrides stay off until Apply is toggled on, so the checkout loads on the baseline even with
+   * the inputs pre-filled. Compare then drops them again to show the before/after.
+   */
+  const overrideFor = (component: CheckoutStyleComponent): StyleOverride<string> | undefined =>
+    !isStyleOverrideApplied || isComparingStyleOverrides
+      ? undefined
+      : resolveStyleOverride(slotClassByComponent[component]);
+
+  /**
+   * Provider config rather than instance props: every component in the panel gets patched
+   * wherever the checkout renders it, without threading a prop per component into the preview.
+   */
+  const componentConfig = $derived(
+    Object.fromEntries(
+      CHECKOUT_STYLE_COMPONENTS.map((component) => [
+        component,
+        { styleOverride: overrideFor(component) },
+      ]),
+    ) as BladeComponentConfigMap,
   );
+
+  const previewVarsStyle = $derived(buildPreviewVarsStyle(cssVarValues, activeCssVars));
   const appBarSurfaceStyle = 'background-color: var(--surface-background-primary-intense);';
 
-  const dynamicUtilityCss = $derived(
-    styleOverridesEnabled
-      ? buildDynamicUtilityCss(appliedSlotClassByComponent, appliedCssVarValues)
-      : '',
+  const dynamicCss = $derived(
+    buildDynamicCss(slotClassByComponent, CHECKOUT_STYLE_COMPONENTS, cssVarValues),
   );
 
-  let utilityStyleHost = $state<HTMLDivElement | undefined>(undefined);
+  let styleHost = $state<HTMLDivElement | undefined>(undefined);
 
   $effect(() => {
-    const host = utilityStyleHost;
-    if (!host) {
-      return;
-    }
-
-    let styleEl = host.querySelector<HTMLStyleElement>('style[data-checkout-playground-utilities]');
-    if (!styleEl) {
-      styleEl = document.createElement('style');
-      styleEl.setAttribute('data-checkout-playground-utilities', '');
-      host.appendChild(styleEl);
-    }
-    styleEl.textContent = dynamicUtilityCss;
+    mountDemoStylesheet(
+      styleHost,
+      'data-checkout-playground-css',
+      [STATIC_SLOT_CLASS_CSS, dynamicCss].filter(Boolean).join('\n\n'),
+    );
   });
-
-  function cloneSlotClasses(
-    source: Record<CheckoutStyleComponent, Record<string, string>>,
-  ): Record<CheckoutStyleComponent, Record<string, string>> {
-    return Object.fromEntries(
-      CHECKOUT_STYLE_COMPONENTS.map((name) => [name, { ...source[name] }]),
-    ) as Record<CheckoutStyleComponent, Record<string, string>>;
-  }
-
-  function applyStyleOverrides(): void {
-    appliedSlotClassByComponent = cloneSlotClasses(slotClassByComponent);
-    appliedCssVarValues = { ...cssVarValues };
-    styleOverridesEnabled = true;
-  }
 </script>
 
-<div bind:this={utilityStyleHost} hidden aria-hidden="true"></div>
+<div bind:this={styleHost} hidden aria-hidden="true"></div>
 
 <!-- Studio chrome stays on the default theme so the preview owns the themed surface. -->
 <BladeProvider themeTokens={bladeTheme} colorScheme="light">
@@ -154,14 +116,8 @@
             <Text size="small" weight="medium">Payment Page</Text>
           </div>
           <div class="studio-frame">
-            <BladeProvider {themeTokens} {colorScheme} {fontFaceCSS}>
-              <CheckoutPreview
-                {buttonStyleOverride}
-                {appBarLeadingStyleOverride}
-                {cardStyleOverride}
-                {previewVarsStyle}
-                {appBarSurfaceStyle}
-              />
+            <BladeProvider {themeTokens} {colorScheme} {fontFaceCSS} {componentConfig}>
+              <CheckoutPreview {previewVarsStyle} {appBarSurfaceStyle} />
             </BladeProvider>
           </div>
         </div>
@@ -179,8 +135,8 @@
         bind:selectedStyleComponent
         bind:slotClassByComponent
         bind:cssVarValues
-        bind:styleOverridesEnabled
-        onApplyStyleOverrides={applyStyleOverrides}
+        bind:isStyleOverrideApplied
+        bind:isComparingStyleOverrides
       />
     </div>
   </div>
@@ -245,25 +201,6 @@
   /* BladeProvider renders a plain wrapper div; stretch it so the frame can size. */
   .studio-frame :global([data-blade-provider]) {
     width: 100%;
-  }
-
-  /*
-   * `bg-(--brand-bg)` and `card-brand-border` are slot classnames typed into the
-   * panel, so their rules must live outside the generated utility stylesheet.
-   * Both remap Blade interactive tokens instead of setting a single property, so
-   * hover/disabled states stay consistent with the picked brand color.
-   */
-  :global(.bg-\(--brand-bg\)) {
-    --interactive-background-primary-default: var(--brand-bg);
-    --interactive-background-primary-highlighted: color-mix(in srgb, var(--brand-bg) 80%, black);
-    --interactive-background-primary-disabled: color-mix(in srgb, var(--brand-bg) 18%, transparent);
-    --interactive-border-primary-default: var(--brand-bg);
-    --interactive-border-primary-highlighted: color-mix(in srgb, var(--brand-bg) 80%, black);
-    background-image: none;
-  }
-
-  :global(.card-brand-border) {
-    --interactive-border-gray-disabled: var(--demo-card-border);
   }
 
   @media (max-width: 900px) {

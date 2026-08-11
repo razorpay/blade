@@ -2,8 +2,6 @@
   import type { ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
   import Badge from '../../../../Badge/Badge.svelte';
   import Button from '../../../../Button/Button.svelte';
-  import SegmentedControl from '../../../../SegmentedControl/SegmentedControl.svelte';
-  import SegmentedControlItem from '../../../../SegmentedControl/SegmentedControlItem.svelte';
   import Tabs from '../../../../Tabs/Tabs.svelte';
   import TabList from '../../../../Tabs/TabList.svelte';
   import TabItem from '../../../../Tabs/TabItem.svelte';
@@ -29,15 +27,22 @@
     usesCreateTheme,
   } from '../checkoutPlaygroundTheme';
   import {
-    CHECKOUT_DEFAULT_SLOT_CLASSES,
-    CHECKOUT_SLOT_CATALOG,
+    CHECKOUT_INERT_COMPONENT_NOTES,
     CHECKOUT_STYLE_COMPONENTS,
-    collectActiveCssVars,
-    defaultCssVarValue,
+    createCheckoutSlotClasses,
     isCheckoutStyleComponent,
-    resolveStyleOverride,
     type CheckoutStyleComponent,
   } from '../checkoutPlaygroundStyleOverride';
+  import CompareButton from '../../styleOverride/CompareButton.svelte';
+  import SnippetTabs from '../../styleOverride/SnippetTabs.svelte';
+  import Switch from '../../../../Switch/Switch.svelte';
+  import {
+    LENGTH_CSS_VARS,
+    collectCssVarsForComponents,
+    getCssVarValue as readCssVar,
+    getSlotMeta,
+    type SlotClassMap,
+  } from '../../styleOverride/styleOverrideEngine';
 
   let {
     brandLabel = $bindable(),
@@ -51,8 +56,8 @@
     selectedStyleComponent = $bindable(),
     slotClassByComponent = $bindable(),
     cssVarValues = $bindable(),
-    styleOverridesEnabled = $bindable(),
-    onApplyStyleOverrides,
+    isStyleOverrideApplied = $bindable(),
+    isComparingStyleOverrides = $bindable(),
   }: {
     brandLabel: string;
     customBrandColor: string;
@@ -63,10 +68,10 @@
     radiusOverride: Record<RadiusKey, number> | null;
     colorScheme: ColorSchemeNamesInput;
     selectedStyleComponent: CheckoutStyleComponent;
-    slotClassByComponent: Record<CheckoutStyleComponent, Record<string, string>>;
+    slotClassByComponent: Record<CheckoutStyleComponent, SlotClassMap>;
     cssVarValues: Record<string, string>;
-    styleOverridesEnabled: boolean;
-    onApplyStyleOverrides: () => void;
+    isStyleOverrideApplied: boolean;
+    isComparingStyleOverrides: boolean;
   } = $props();
 
   const RADIUS_PRESET_OPTIONS = Object.keys(RADIUS_PRESETS).map((preset) => ({
@@ -114,18 +119,12 @@
   const usageSnippet = $derived(buildUsageSnippet(themeState));
   const isThemed = $derived(usesCreateTheme(themeState));
 
-  const styleCatalog = $derived(CHECKOUT_SLOT_CATALOG[selectedStyleComponent]);
+  const styleSlotMeta = $derived(getSlotMeta(selectedStyleComponent));
   const styleSlotClasses = $derived(slotClassByComponent[selectedStyleComponent]);
-  const activeCssVars = $derived(collectActiveCssVars(slotClassByComponent, selectedStyleComponent));
-
-  const styleOverrideSnippet = $derived.by((): string => {
-    const override = resolveStyleOverride(styleSlotClasses);
-    const keys = Object.keys(override);
-    if (keys.length === 0) {
-      return 'styleOverride={undefined}';
-    }
-    return `styleOverride={{ ${keys.map((key) => `${key}: '${override[key]}'`).join(', ')} }}`;
-  });
+  const activeCssVars = $derived(
+    collectCssVarsForComponents(slotClassByComponent, [selectedStyleComponent]),
+  );
+  const inertComponentNote = $derived(CHECKOUT_INERT_COMPONENT_NOTES[selectedStyleComponent]);
 
   function setBrandLabel(value: string): void {
     if (value === CUSTOM_BRAND_LABEL) {
@@ -177,36 +176,37 @@
   function resetSlotClasses(): void {
     slotClassByComponent = {
       ...slotClassByComponent,
-      [selectedStyleComponent]: { ...CHECKOUT_DEFAULT_SLOT_CLASSES[selectedStyleComponent] },
+      [selectedStyleComponent]: createCheckoutSlotClasses()[selectedStyleComponent],
     };
   }
 
   function getCssVarValue(varName: string): string {
-    return cssVarValues[varName] ?? defaultCssVarValue(varName);
+    return readCssVar(cssVarValues, varName);
   }
 
   function setCssVarValue(varName: string, value: string): void {
     cssVarValues = { ...cssVarValues, [varName]: value };
   }
 
-  function toggleStyleOverrides(payload: { name?: string; value: string }): void {
-    if (payload.value === 'on') {
-      onApplyStyleOverrides();
-      return;
-    }
-    styleOverridesEnabled = false;
+  function getCssVarLength(varName: string): number {
+    const parsed = Number.parseFloat(getCssVarValue(varName));
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  function setCssVarLength(varName: string, px: number): void {
+    setCssVarValue(varName, `${Math.max(0, Number.isFinite(px) ? px : 0)}px`);
   }
 </script>
 
 <aside class="studio-panel">
   <div class="studio-panel-header">
-    <Text size="medium" weight="semibold">Payment Page</Text>
+    <Text size="medium" weight="semibold">Customisations</Text>
     {#if isThemed}
       <Badge color="information" emphasis="subtle" size="small">createTheme</Badge>
     {/if}
   </div>
 
-  <Tabs defaultValue="foundations" size="small" variant="bordered" isFullWidthTabItem>
+  <Tabs defaultValue="foundations" size="small" variant="bordered">
     <div class="studio-panel-tabbar">
       <TabList>
         <TabItem value="foundations">Foundations</TabItem>
@@ -331,19 +331,23 @@
     <TabPanel value="widgets">
       <StudioSection title="Style override">
         <Text size="small" color="surface.text.gray.muted">
-          Slot classnames for checkout components. Apply pushes them to the preview.
+          Foundations change the whole system; styleOverride patches one component's slots. The
+          inputs are pre-filled — flip Apply to push them onto the checkout.
         </Text>
-        <StudioField label="Apply">
-          <SegmentedControl
-            accessibilityLabel="Apply style overrides to preview"
+        <div class="studio-apply">
+          <Switch
+            id="studio-style-apply"
             size="small"
-            value={styleOverridesEnabled ? 'on' : 'off'}
-            onChange={toggleStyleOverrides}
-          >
-            <SegmentedControlItem value="on">On</SegmentedControlItem>
-            <SegmentedControlItem value="off">Off</SegmentedControlItem>
-          </SegmentedControl>
-        </StudioField>
+            isChecked={isStyleOverrideApplied}
+            accessibilityLabel="Apply styleOverride to the checkout"
+            onChange={({ isChecked }) => (isStyleOverrideApplied = isChecked)}
+          />
+          <label for="studio-style-apply" class="studio-apply-label">
+            <Text size="small" color="surface.text.gray.muted">
+              {isStyleOverrideApplied ? 'styleOverride applied' : 'Apply styleOverride'}
+            </Text>
+          </label>
+        </div>
         <StudioField label="Component" controlId="studio-style-component">
           <StudioSelect
             id="studio-style-component"
@@ -352,47 +356,77 @@
             onChange={setStyleComponent}
           />
         </StudioField>
+        {#if inertComponentNote}
+          <Text size="xsmall" color="surface.text.notice.subtle">{inertComponentNote}</Text>
+        {/if}
       </StudioSection>
 
       <StudioSection title="{selectedStyleComponent} slots">
-        {#each styleCatalog.slots as slot (slot)}
-          <StudioField label={slot}>
+        {#each styleSlotMeta.slots as slot (slot.name)}
+          <StudioField label={slot.name}>
             <TextInput
               size="small"
-              accessibilityLabel="{selectedStyleComponent} {slot} classname"
-              value={styleSlotClasses[slot] ?? ''}
+              accessibilityLabel="{selectedStyleComponent} {slot.name} classname"
+              value={styleSlotClasses[slot.name] ?? ''}
               placeholder="utility or global class"
-              onChange={({ value }) => updateSlotClass(slot, value ?? '')}
+              onChange={({ value }) => updateSlotClass(slot.name, value ?? '')}
             />
           </StudioField>
         {/each}
         <div class="studio-actions">
           <Button variant="tertiary" size="small" onClick={resetSlotClasses}>Reset</Button>
-          <Button variant="secondary" size="small" onClick={onApplyStyleOverrides}>
-            Apply to preview
-          </Button>
+          <CompareButton bind:isComparing={isComparingStyleOverrides} />
         </div>
-        <pre class="studio-code"><code>{styleOverrideSnippet}</code></pre>
       </StudioSection>
 
       {#if activeCssVars.length > 0}
-        <StudioSection title="CSS variables">
+        <StudioSection title="Demo variables" defaultIsExpanded={false}>
+          <Text size="xsmall" color="surface.text.gray.muted">
+            Scaffolding for this playground, not part of the styleOverride API — the seeded
+            classnames happen to read these variables.
+          </Text>
           {#each activeCssVars as varName (varName)}
             <StudioField label={varName} controlId="studio-var-{varName}">
-              <div class="studio-readout">
-                <input
-                  id="studio-var-{varName}"
-                  class="studio-color-input"
-                  type="color"
-                  value={getCssVarValue(varName)}
-                  oninput={(event) => setCssVarValue(varName, event.currentTarget.value)}
-                />
-                <Text size="small">{getCssVarValue(varName)}</Text>
-              </div>
+              {#if LENGTH_CSS_VARS.has(varName)}
+                <div class="studio-readout">
+                  <input
+                    id="studio-var-{varName}"
+                    class="studio-length-input"
+                    type="number"
+                    min="0"
+                    max="48"
+                    step="1"
+                    value={getCssVarLength(varName)}
+                    oninput={(event) => setCssVarLength(varName, event.currentTarget.valueAsNumber)}
+                  />
+                  <Text size="small">{getCssVarValue(varName)}</Text>
+                </div>
+              {:else}
+                <div class="studio-readout">
+                  <input
+                    id="studio-var-{varName}"
+                    class="studio-color-input"
+                    type="color"
+                    value={getCssVarValue(varName)}
+                    oninput={(event) => setCssVarValue(varName, event.currentTarget.value)}
+                  />
+                  <Text size="small">{getCssVarValue(varName)}</Text>
+                </div>
+              {/if}
             </StudioField>
           {/each}
         </StudioSection>
       {/if}
+
+      <StudioSection title="Copy">
+        <SnippetTabs
+          component={selectedStyleComponent}
+          components={CHECKOUT_STYLE_COMPONENTS}
+          slotClassesByComponent={slotClassByComponent}
+          {cssVarValues}
+          availableForms={['instance']}
+        />
+      </StudioSection>
     </TabPanel>
   </Tabs>
 </aside>
@@ -424,8 +458,8 @@
     position: sticky;
     top: 45px;
     z-index: 1;
-    padding: 0 var(--spacing-7);
-    border-bottom: 1px solid var(--surface-border-gray-muted);
+    padding: var(--spacing-7) var(--spacing-7) 0;
+    /* border-bottom: 1px solid var(--surface-border-gray-muted); */
     background-color: var(--surface-background-gray-intense);
   }
 
@@ -471,10 +505,35 @@
     border-radius: 2px;
   }
 
+  .studio-length-input {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 64px;
+    height: 24px;
+    padding: 0 var(--spacing-2);
+    border: 1px solid var(--surface-border-gray-subtle);
+    border-radius: var(--border-radius-xsmall);
+    background-color: var(--surface-background-gray-intense);
+    color: var(--surface-text-gray-normal);
+    font-family: var(--font-family-code);
+    font-size: var(--font-size-25);
+  }
+
   .studio-actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-3);
+  }
+
+  .studio-apply {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-3);
+  }
+
+  .studio-apply-label {
+    cursor: pointer;
+    user-select: none;
   }
 
   .studio-code {

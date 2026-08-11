@@ -1,10 +1,4 @@
 <script lang="ts">
-  import type {
-    AppBarLeadingSlot,
-    ButtonSlot,
-    CardSlot,
-    StyleOverride,
-  } from '@razorpay/blade-core/styles';
   import AppBar from '../../../AppBar/AppBar.svelte';
   import AppBarLeading from '../../../AppBar/AppBarLeading.svelte';
   import AppBarActions from '../../../AppBar/AppBarActions.svelte';
@@ -12,7 +6,7 @@
   import Avatar from '../../../Avatar/Avatar.svelte';
   import AvatarGroup from '../../../Avatar/AvatarGroup.svelte';
   import Text from '../../../Typography/Text/Text.svelte';
-  import Badge from '../../../Badge/Badge.svelte';
+  import Heading from '../../../Typography/Heading/Heading.svelte';
   import Card from '../../../Card/Card.svelte';
   import CardBody from '../../../Card/CardBody.svelte';
   import Button from '../../../Button/Button.svelte';
@@ -83,16 +77,47 @@
     { name: 'CRED', logo: 'https://cdn.razorpay.com/app/cred.svg' },
   ] as const;
 
+  const recommendedApps = [
+    { name: 'Google Pay', logo: 'https://cdn.razorpay.com/app/googlepay.svg' },
+    { name: 'Paytm', logo: 'https://cdn.razorpay.com/app/paytm.svg' },
+  ] as const;
+
+  // Method-specific brand logos sourced from the checkout CDN
+  const cardNetworks = [
+    { name: 'Visa', logo: 'https://cdn.razorpay.com/card-networks/visa.svg' },
+    { name: 'Mastercard', logo: 'https://cdn.razorpay.com/card-networks/mastercard.svg' },
+    { name: 'RuPay', logo: 'https://cdn.razorpay.com/card-networks/rupay.svg' },
+    { name: 'Amex', logo: 'https://cdn.razorpay.com/card-networks/amex.svg' },
+  ] as const;
+
+  const netbankingBanks = [
+    { name: 'SBI', logo: 'https://cdn.razorpay.com/bank/SBIN.gif' },
+    { name: 'ICICI Bank', logo: 'https://cdn.razorpay.com/bank/ICIC.gif' },
+    { name: 'HDFC Bank', logo: 'https://cdn.razorpay.com/bank/HDFC.gif' },
+    { name: 'Axis Bank', logo: 'https://cdn.razorpay.com/bank/UTIB.gif' },
+  ] as const;
+
+  const emiBanks = [
+    { name: 'HDFC Bank', logo: 'https://cdn.razorpay.com/bank/HDFC.gif' },
+    { name: 'ICICI Bank', logo: 'https://cdn.razorpay.com/bank/ICIC.gif' },
+    { name: 'Axis Bank', logo: 'https://cdn.razorpay.com/bank/UTIB.gif' },
+  ] as const;
+
+  const paylaterProviders = [
+    { name: 'LazyPay', logo: 'https://cdn.razorpay.com/paylater/lazypay.svg' },
+    { name: 'ICICI Bank', logo: 'https://cdn.razorpay.com/paylater/icic.svg' },
+    { name: 'Amazon Pay', logo: 'https://cdn.razorpay.com/app/amazonpay.svg' },
+  ] as const;
+
+  /**
+   * Slot overrides arrive through the surrounding `BladeProvider`'s `componentConfig`, so this
+   * preview stays free of instance `styleOverride` props — an instance one would outrank the
+   * studio panel and silently ignore its edits.
+   */
   let {
-    buttonStyleOverride,
-    appBarLeadingStyleOverride,
-    cardStyleOverride,
     previewVarsStyle = '',
     appBarSurfaceStyle = '',
   }: {
-    buttonStyleOverride?: StyleOverride<ButtonSlot>;
-    appBarLeadingStyleOverride?: StyleOverride<AppBarLeadingSlot>;
-    cardStyleOverride?: StyleOverride<CardSlot>;
     previewVarsStyle?: string;
     appBarSurfaceStyle?: string;
   } = $props();
@@ -100,20 +125,19 @@
 
 <div class="preview-root" style={previewVarsStyle}>
   <div class="phone-shell">
-    <div class="phone-bezel">
-      <div class="phone-status-bar" aria-hidden="true">
-        <span class="phone-time">9:41</span>
-        <span class="phone-status-icons">
-          <span class="phone-signal"></span>
-          <span class="phone-wifi"></span>
-          <span class="phone-battery"></span>
-        </span>
-      </div>
+    <div class="phone-viewport" bind:this={phoneViewportEl}>
+      <div class="app-bar-surface" style={appBarSurfaceStyle}>
+        <div class="phone-status-bar" aria-hidden="true">
+          <span class="phone-time">9:41</span>
+          <span class="phone-status-icons">
+            <span class="phone-signal"></span>
+            <span class="phone-wifi"></span>
+            <span class="phone-battery"></span>
+          </span>
+        </div>
 
-      <div class="phone-viewport" bind:this={phoneViewportEl}>
-        <div class="app-bar-surface" style={appBarSurfaceStyle}>
           <AppBar variant="neutral" isSticky={false}>
-            <AppBarLeading title="Maven Shop" trustBadgeVariant="default" styleOverride={appBarLeadingStyleOverride}>
+            <AppBarLeading title="Maven Shop" trustBadgeVariant="default">
               {#snippet logo()}
                 <Avatar name="Maven Shop" variant="square" size="large" />
               {/snippet}
@@ -128,7 +152,6 @@
               variant="primary"
               padding="spacing.4"
               marginTop="spacing.4"
-              styleOverride={cardStyleOverride}
               accessibilityLabel="Price summary"
             >
               <CardBody>
@@ -149,7 +172,6 @@
             <Card
               variant="primary"
               padding="spacing.4"
-              styleOverride={cardStyleOverride}
               accessibilityLabel="Phone number"
               onClick={openContactDetails}
             >
@@ -165,47 +187,37 @@
           </div>
 
           <div class="checkout-promo-banner">
-            <AnnouncementBanner
-              alignment="center"
-              styleOverride={{ root: 'checkout-promo-banner-root', text: 'checkout-promo-banner-text' }}
-            >
+            <AnnouncementBanner alignment="center">
               🪔 Diwali sale Flat 10% Off
             </AnnouncementBanner>
           </div>
         </div>
 
         <div class="checkout-scroll">
+          <Heading size="medium" marginX="spacing.5" marginTop="spacing.5">
+            Payment options
+          </Heading>
           <div class="checkout-content">
 
             <section class="checkout-section">
               <Text size="medium" weight="medium" color="surface.text.gray.muted">Recommended</Text>
               <Card
                 variant="primary"
-                padding="spacing.4"
-                styleOverride={cardStyleOverride}
+                padding="spacing.0"
                 accessibilityLabel="Recommended UPI options"
               >
                 <CardBody>
                   <div class="payment-list">
-                    <button type="button" class="payment-row" onclick={noop}>
-                      <img
-                        class="payment-logo"
-                        src="https://cdn.razorpay.com/app/googlepay.svg"
-                        alt=""
-                      />
-                      <Text size="medium" weight="medium">UPI - Google Pay</Text>
-                      <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
-                    </button>
-                    <Divider />
-                    <button type="button" class="payment-row" onclick={noop}>
-                      <img
-                        class="payment-logo"
-                        src="https://cdn.razorpay.com/app/phonepe.svg"
-                        alt=""
-                      />
-                      <Text size="medium" weight="medium">UPI - PhonePe</Text>
-                      <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
-                    </button>
+                    {#each recommendedApps as app, index (app.name)}
+                      {#if index > 0}
+                        <Divider />
+                      {/if}
+                      <button type="button" class="payment-row" onclick={noop}>
+                        <img class="payment-logo" src={app.logo} alt="" />
+                        <Text size="medium" weight="medium">{app.name}</Text>
+                        <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+                      </button>
+                    {/each}
                   </div>
                 </CardBody>
               </Card>
@@ -233,7 +245,6 @@
                                 {/each}
                               </AvatarGroup>
                             </div>
-                            <Badge color="positive" emphasis="subtle" size="small">7 Offers</Badge>
                           </div>
                         {/snippet}
                       </AccordionItemHeader>
@@ -245,9 +256,9 @@
                                 variant="primary"
                                 padding="spacing.0"
                                 size="medium"
+                                height="100%"
                                 accessibilityLabel={app.name}
                                 onClick={noop}
-                                styleOverride={cardStyleOverride}
                               >
                                 <CardBody>
                                   <div class="upi-option-row">
@@ -256,7 +267,9 @@
                                         <MoreHorizontalIcon size="medium" color="surface.icon.gray.normal" />
                                       </span>
                                     {:else if app.name === 'CRED'}
-                                      <Avatar name={app.name} src={app.logo} alt="" size="xsmall" />
+                                      <span class="upi-option-icon">
+                                        <Avatar name={app.name} src={app.logo} alt="" size="xsmall" />
+                                      </span>
                                     {:else}
                                       <img class="upi-option-logo" src={app.logo} alt="" />
                                     {/if}
@@ -282,10 +295,12 @@
                           <div class="accordion-header-content">
                             <div class="accordion-header-title-row">
                               <Text size="medium" weight="semibold">Cards</Text>
+                              <AvatarGroup size="xsmall" density="comfortable">
+                                {#each cardNetworks as network (network.name)}
+                                  <Avatar name={network.name} src={network.logo} alt="" />
+                                {/each}
+                              </AvatarGroup>
                             </div>
-                            <Badge color="positive" emphasis="subtle" size="small">
-                              Unlimited 1% cashback with Amazon ...
-                            </Badge>
                           </div>
                         {/snippet}
                       </AccordionItemHeader>
@@ -307,7 +322,15 @@
                           <div class="accordion-header-content">
                             <div class="accordion-header-title-row">
                               <Text size="medium" weight="semibold">Netbanking</Text>
+                              <AvatarGroup size="xsmall" density="comfortable">
+                                {#each netbankingBanks as bank (bank.name)}
+                                  <Avatar name={bank.name} src={bank.logo} alt="" />
+                                {/each}
+                              </AvatarGroup>
                             </div>
+                            <Text size="small" weight="regular" color="feedback.text.positive.intense">
+                              Save ₹150
+                            </Text>
                           </div>
                         {/snippet}
                       </AccordionItemHeader>
@@ -329,10 +352,15 @@
                           <div class="accordion-header-content">
                             <div class="accordion-header-title-row">
                               <Text size="medium" weight="semibold">EMI</Text>
+                              <AvatarGroup size="xsmall" density="comfortable">
+                                {#each emiBanks as bank (bank.name)}
+                                  <Avatar name={bank.name} src={bank.logo} alt="" />
+                                {/each}
+                              </AvatarGroup>
                             </div>
-                            <Badge color="positive" emphasis="subtle" size="small">
-                              5% Cashback up to Rs 1000 on Min C...
-                            </Badge>
+                            <Text size="small" weight="regular" color="feedback.text.positive.intense">
+                              Starting from 1500/mo
+                            </Text>
                           </div>
                         {/snippet}
                       </AccordionItemHeader>
@@ -354,13 +382,43 @@
                           <div class="accordion-header-content">
                             <div class="accordion-header-title-row">
                               <Text size="medium" weight="semibold">Pay Later</Text>
+                              <AvatarGroup size="xsmall" density="comfortable">
+                                {#each paylaterProviders as provider (provider.name)}
+                                  <Avatar name={provider.name} src={provider.logo} alt="" />
+                                {/each}
+                              </AvatarGroup>
                             </div>
                           </div>
                         {/snippet}
                       </AccordionItemHeader>
                       <AccordionItemBody>
                         <Text size="small" color="surface.text.gray.muted">
-                          Simpl, LazyPay, and other pay-later options.
+                          Buy now and pay later in easy instalments.
+                        </Text>
+                      </AccordionItemBody>
+                    {/snippet}
+                  </AccordionItem>
+
+                  <AccordionItem>
+                    {#snippet children()}
+                      <AccordionItemHeader>
+                        {#snippet leading()}
+                          <CheckoutMethodIcon name="cod" />
+                        {/snippet}
+                        {#snippet children()}
+                          <div class="accordion-header-content">
+                            <div class="accordion-header-title-row">
+                              <Text size="medium" weight="semibold">Cash On Delivery</Text>
+                            </div>
+                            <Text size="small" weight="regular" color="feedback.text.negative.intense">
+                              +50 Extra Charge
+                            </Text>
+                          </div>
+                        {/snippet}
+                      </AccordionItemHeader>
+                      <AccordionItemBody>
+                        <Text size="small" color="surface.text.gray.muted">
+                          Pay with cash when your order is delivered.
                         </Text>
                       </AccordionItemBody>
                     {/snippet}
@@ -370,11 +428,11 @@
             </section>
 
             <div class="secured-by-row">
-              <Text size="small" color="surface.text.gray.muted" weight="medium">
+              <Text size="small" color="surface.text.gray.muted" weight="regular">
                 Secured by
               </Text>
               <RazorpayLogo height={12} />
-              <Text size="small" color="surface.text.gray.muted" weight="medium">
+              <Text size="small" color="surface.text.gray.muted" weight="regular">
                 · Account & Terms
               </Text>
             </div>
@@ -385,12 +443,12 @@
           <Divider variant="subtle" />
           <div class="footer-bar">
             <div class="footer-amount">
-              <Amount value={10000} size="large" weight="semibold" styleOverride={{ value: 'text-(--footer-amount-value)', currency: 'text-(--footer-amount-currency)' }} />
+              <Amount value={2000} size="large" weight="semibold" />
               <Link variant="button" color="neutral" size="small" onClick={openPriceSummary}>
                 View Details
               </Link>
             </div>
-            <Button variant="primary" size="large" isFullWidth styleOverride={buttonStyleOverride} onClick={noop}>
+            <Button variant="primary" size="large" isFullWidth onClick={noop}>
               Continue
             </Button>
           </div>
@@ -447,15 +505,21 @@
               variant="primary"
               size="large"
               isFullWidth
-              styleOverride={buttonStyleOverride}
               onClick={saveContactDetails}
             >
               Continue
             </Button>
           </BottomSheetFooter>
         </BottomSheet>
-      </div>
     </div>
+
+    <img
+      class="phone-frame"
+      src="https://checkout-static-next.razorpay.com/build/customize/assets/mobile-frame-BWT5QWJP.png"
+      alt=""
+      aria-hidden="true"
+      draggable="false"
+    />
   </div>
 </div>
 
@@ -469,33 +533,35 @@
     width: max-content;
   }
 
-  /* iPhone 13 CSS viewport 390×844; 10px bezel → outer 410×864 */
+  /*
+   * Device frame is a transparent PNG overlay (native 342×690, screen rect inset
+   * L5.556% T2.319% W88.6% H95.362%, inner corner radius ~7.3% of width). Scaled
+   * ×1.287 so the screen area lands at ~390×847 (iPhone 13 logical viewport).
+   */
   .phone-shell {
-    width: 410px;
-    height: 864px;
+    position: relative;
+    width: 440px;
+    height: 888px;
     flex-shrink: 0;
   }
 
-  .phone-bezel {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+  .phone-frame {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
     width: 100%;
     height: 100%;
-    border: 10px solid #1f1f1f;
-    border-radius: 36px;
-    background-color: #1f1f1f;
-    box-shadow:
-      0 24px 48px rgba(15, 23, 42, 0.18),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+    filter: drop-shadow(0 24px 48px rgba(15, 23, 42, 0.18));
   }
 
   .phone-status-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px 6px;
+    /* generous side padding keeps the time/icons out of the frame's centered notch */
+    padding: 14px 26px 6px;
     background-color: var(--surface-background-primary-intense);
     color: var(--interactive-text-on-primary-normal);
     font-family: var(--font-family-text);
@@ -545,12 +611,16 @@
   }
 
   .phone-viewport {
-    position: relative;
+    position: absolute;
+    top: 2.319%;
+    left: 5.556%;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    width: 100%;
+    width: 88.6%;
+    height: 95.362%;
+    /* matches the frame PNG's inner screen corner radius (~7.3% of frame width) */
+    border-radius: 32px;
     /* page canvas — createTheme `surface.background.page` → gray.moderate */
     background-color: var(--surface-background-gray-moderate);
     font-family: var(--font-family-text);
@@ -601,6 +671,9 @@
     /* strip the rounded content sheet overlaps; matches banner fill so the sheet's
        top corners reveal banner color instead of a seam */
     padding-bottom: var(--spacing-4);
+    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+    /* clips the banner root's square top corners to the wrapper's rounding */
+    overflow: hidden;
     background-color: var(--interactive-background-static-black-faded-highlighted);
   }
 
@@ -618,14 +691,18 @@
     overflow: auto;
     min-height: 0;
     margin-top: calc(-1 * var(--spacing-4));
+    /* push the top corner cutouts past the phone viewport's clip so only the
+       banner's rounding reads at the edges; padding cancels the width gain */
+    margin-inline: calc(-1 * var(--border-radius-medium));
+    padding-inline: var(--border-radius-medium);
     border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
-    background-color: var(--surface-background-gray-moderate);
+    background-color: var(--surface-background-gray-intense);
   }
 
   .checkout-content {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-5);
+    gap: var(--spacing-7);
     padding: var(--spacing-5);
   }
 
@@ -635,16 +712,9 @@
     gap: var(--spacing-3);
   }
 
-  .offer-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-2);
-  }
-
   .payment-list {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-3);
   }
 
   .payment-row {
@@ -654,7 +724,7 @@
     gap: var(--spacing-3);
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: var(--spacing-4);
     border: none;
     background: transparent;
     cursor: pointer;
@@ -683,6 +753,9 @@
     gap: var(--spacing-3);
     flex-shrink: 0;
     overflow: visible;
+    /* Match the fixed slot height the accordion header gives its leading/chevron
+       slots so the title centers on the same axis as the leading icon. */
+    min-height: var(--header-slot-height, 28px);
   }
 
   .accordion-header-title-row :global(.avatar-group) {
@@ -690,8 +763,13 @@
     overflow: visible;
   }
 
-  .accordion-header-title-row :global(.avatar-btn img) {
-    object-fit: contain;
+  /* blade-core hashes CSS-module class names, so target the avatar logo <img>
+     directly — it is the only image rendered inside the title row. */
+  .accordion-header-title-row :global(img) {
+    object-fit: contain !important;
+    box-sizing: border-box;
+    padding: 2px;
+    background-color: #fff;
   }
 
   .upi-grid {
@@ -734,7 +812,7 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     gap: var(--spacing-3);
     align-items: center;
-    padding: var(--spacing-4);
+    padding: var(--spacing-4) var(--spacing-5) var(--spacing-7);
   }
 
   .footer-amount {

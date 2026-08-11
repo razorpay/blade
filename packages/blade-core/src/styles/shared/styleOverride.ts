@@ -30,5 +30,6 @@
  *
  * @see getPrimaryBrandCssVars — checkout primary token bundle helper
  * @see SAFE_FILLED_BUTTON_ROOT_TOKEN_OVERRIDES — exhaustive safe root token list
+ * @see BLADE_SLOT_METADATA — the rules above, per slot, in machine-readable form
  */
 export type StyleOverride<Slot extends string> = Partial<Record<Slot, string>>;

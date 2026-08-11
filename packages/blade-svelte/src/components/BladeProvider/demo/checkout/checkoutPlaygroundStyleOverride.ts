@@ -1,239 +1,74 @@
-import type {
-  AppBarLeadingSlot,
-  ButtonSlot,
-  CardSlot,
-  StyleOverride,
-} from '@razorpay/blade-core/styles';
+import {
+  DEMO_CSS_VAR_DEFAULTS,
+  STYLE_OVERRIDE_COMPONENTS,
+  isStyleOverrideComponent,
+  type SlotClassMap,
+  type StyleOverrideComponent,
+} from '../styleOverride/styleOverrideEngine';
+import { SIGNATURE_SLOT_CLASSES } from '../styleOverride/styleOverridePresets';
 
-export const CHECKOUT_STYLE_COMPONENTS = ['Button', 'AppBarLeading', 'Card'] as const;
+/**
+ * Checkout's slice of the shared `styleOverride` engine: which components the preview wires to
+ * the panel, and the seed values this surface has to differ on. Everything else — the slot
+ * catalog, class parsing, generated CSS and snippets — lives in `demo/styleOverride/`.
+ */
 
-export type CheckoutStyleComponent = (typeof CHECKOUT_STYLE_COMPONENTS)[number];
+/** Every component the engine knows about is selectable; the preview applies them via provider config. */
+export type CheckoutStyleComponent = StyleOverrideComponent;
 
-export const CHECKOUT_SLOT_CATALOG: Record<
-  CheckoutStyleComponent,
-  { slotType: string; slots: readonly string[] }
-> = {
-  Button: { slotType: 'ButtonSlot', slots: ['root', 'icon', 'text'] satisfies readonly ButtonSlot[] },
-  AppBarLeading: {
-    slotType: 'AppBarLeadingSlot',
-    slots: ['title'] satisfies readonly AppBarLeadingSlot[],
+export const CHECKOUT_STYLE_COMPONENTS: readonly CheckoutStyleComponent[] =
+  STYLE_OVERRIDE_COMPONENTS;
+
+/**
+ * Slots whose checkout look belongs to the page design rather than to a preset: the promo banner
+ * reads light on a dark faded strip, and the app bar title sits on the dark primary surface (the
+ * standalone playground previews the same slot on light surfaces, so it keeps `--demo-text`).
+ * These are seeds, not locks — the panel replaces them and `Reset` restores them.
+ */
+const CHECKOUT_SLOT_CLASS_SEED: Partial<Record<CheckoutStyleComponent, SlotClassMap>> = {
+  AnnouncementBanner: {
+    root: 'checkout-promo-banner-root',
+    text: 'checkout-promo-banner-text',
   },
-  Card: { slotType: 'CardSlot', slots: ['root'] satisfies readonly CardSlot[] },
+  AppBarLeading: { title: 'text-(--demo-appbar-title)' },
 };
 
-export const CHECKOUT_DEFAULT_SLOT_CLASSES: Record<
-  CheckoutStyleComponent,
-  Record<string, string>
-> = {
-  Button: {
-    root: 'bg-(--brand-bg)',
-    text: 'text-(--brand-text)',
-    icon: 'text-(--brand-color)',
-  },
-  AppBarLeading: { title: 'text-(--demo-text)' },
-  Card: { root: 'card-brand-border' },
+const CHECKOUT_CSS_VAR_SEED: Record<string, string> = {
+  '--demo-appbar-title': '#FFFFFF',
 };
 
-export const CHECKOUT_INITIAL_CSS_VAR_VALUES: Record<string, string> = {
-  '--brand-bg': '#171717',
-  '--brand-text': '#FFFFFF',
-  '--brand-color': '#FFFFFF',
-  '--demo-text': '#FFFFFF',
-  '--demo-card-border': '#e2e8f0',
+/**
+ * Components this checkout renders in a mode that discards `styleOverride`. They stay selectable
+ * — the slot catalog and copy-ready snippets are still worth reading — but they are seeded empty
+ * so no look appears applied and the component logs no ignored-override warning.
+ */
+export const CHECKOUT_INERT_COMPONENT_NOTES: Partial<Record<CheckoutStyleComponent, string>> = {
+  Accordion:
+    'This checkout renders Accordion with variant="filled", which ignores styleOverride. Use variant="transparent" in your app to patch these slots.',
 };
 
-const SLOT_CLASS_TO_CSS_VARS: Record<string, readonly string[]> = {
-  'card-brand-border': ['--demo-card-border'],
+export const createCheckoutSlotClasses = (): Record<CheckoutStyleComponent, SlotClassMap> => {
+  const slotClasses = Object.fromEntries(
+    CHECKOUT_STYLE_COMPONENTS.map((name) => [name, { ...SIGNATURE_SLOT_CLASSES[name] }]),
+  ) as Record<CheckoutStyleComponent, SlotClassMap>;
+  for (const component of Object.keys(CHECKOUT_SLOT_CLASS_SEED) as CheckoutStyleComponent[]) {
+    slotClasses[component] = {
+      ...slotClasses[component],
+      ...CHECKOUT_SLOT_CLASS_SEED[component],
+    };
+  }
+  for (const component of Object.keys(
+    CHECKOUT_INERT_COMPONENT_NOTES,
+  ) as CheckoutStyleComponent[]) {
+    slotClasses[component] = {};
+  }
+  return slotClasses;
 };
 
-const LENGTH_CSS_VARS = new Set<string>();
+export const createCheckoutCssVars = (): Record<string, string> => ({
+  ...DEMO_CSS_VAR_DEFAULTS,
+  ...CHECKOUT_CSS_VAR_SEED,
+});
 
-const UTILITY_PROPERTY_BY_PREFIX: Record<string, string> = {
-  bg: 'background-color',
-  text: 'color',
-};
-
-const STATIC_UTILITY_CLASS_TOKENS = new Set(['bg-(--brand-bg)']);
-
-const CSS_VAR_IN_UTILITY = /\(--([\w-]+)\)/g;
-const UTILITY_CLASS_PATTERN = /^([a-z]+)-\(--([\w-]+)\)$/;
-
-type ParsedUtilityClass = {
-  classToken: string;
-  cssVar: string;
-  property: string;
-};
-
-function parseUtilityClassToken(token: string): ParsedUtilityClass | null {
-  const match = UTILITY_CLASS_PATTERN.exec(token);
-  if (!match) {
-    return null;
-  }
-  const [, prefix, varStem] = match;
-  const property = UTILITY_PROPERTY_BY_PREFIX[prefix];
-  if (!property) {
-    return null;
-  }
-  return { classToken: token, cssVar: `--${varStem}`, property };
-}
-
-function escapeUtilityClassSelector(classToken: string): string {
-  return classToken.replace(/([()])/g, '\\$1');
-}
-
-export function collectCssVarsFromClassNames(classNames: string): string[] {
-  const used = new Set<string>();
-  const order: string[] = [];
-  const trimmed = classNames.trim();
-  if (!trimmed) {
-    return [];
-  }
-
-  const registerVar = (varName: string): void => {
-    if (!used.has(varName)) {
-      used.add(varName);
-      order.push(varName);
-    }
-  };
-
-  for (const token of trimmed.split(/\s+/)) {
-    const parsedUtility = parseUtilityClassToken(token);
-    if (parsedUtility) {
-      registerVar(parsedUtility.cssVar);
-    } else {
-      CSS_VAR_IN_UTILITY.lastIndex = 0;
-      let match: RegExpExecArray | null;
-      while ((match = CSS_VAR_IN_UTILITY.exec(token)) !== null) {
-        registerVar(`--${match[1]}`);
-      }
-    }
-
-    const mappedVars = SLOT_CLASS_TO_CSS_VARS[token];
-    if (mappedVars) {
-      for (const varName of mappedVars) {
-        registerVar(varName);
-      }
-    }
-  }
-
-  return order;
-}
-
-function collectUtilityClassesFromClassNames(classNames: string): ParsedUtilityClass[] {
-  const seen = new Set<string>();
-  const utilities: ParsedUtilityClass[] = [];
-  const trimmed = classNames.trim();
-  if (!trimmed) {
-    return [];
-  }
-
-  for (const token of trimmed.split(/\s+/)) {
-    const parsed = parseUtilityClassToken(token);
-    if (!parsed || seen.has(parsed.classToken) || STATIC_UTILITY_CLASS_TOKENS.has(parsed.classToken)) {
-      continue;
-    }
-    seen.add(parsed.classToken);
-    utilities.push(parsed);
-  }
-
-  return utilities;
-}
-
-export function createInitialCheckoutSlotClasses(): Record<
-  CheckoutStyleComponent,
-  Record<string, string>
-> {
-  return Object.fromEntries(
-    CHECKOUT_STYLE_COMPONENTS.map((name) => [name, { ...CHECKOUT_DEFAULT_SLOT_CLASSES[name] }]),
-  ) as Record<CheckoutStyleComponent, Record<string, string>>;
-}
-
-export function resolveStyleOverride(
-  slotClasses: Record<string, string>,
-): StyleOverride<string> {
-  const entries = Object.entries(slotClasses).filter(([, className]) => className.trim());
-  return Object.fromEntries(entries);
-}
-
-export function buildPreviewVarsStyle(
-  cssVarValues: Record<string, string>,
-  activeCssVars: string[],
-): string {
-  return activeCssVars
-    .map((varName) => `${varName}: ${cssVarValues[varName] ?? CHECKOUT_INITIAL_CSS_VAR_VALUES[varName] ?? '#888888'}`)
-    .join('; ');
-}
-
-export function buildDynamicUtilityCss(
-  slotClassesByComponent: Record<CheckoutStyleComponent, Record<string, string>>,
-  cssVarValues: Record<string, string>,
-): string {
-  const seen = new Set<string>();
-  const rules: string[] = [];
-
-  for (const component of CHECKOUT_STYLE_COMPONENTS) {
-    for (const slot of CHECKOUT_SLOT_CATALOG[component].slots) {
-      const classNames = (slotClassesByComponent[component][slot] ?? '').trim();
-      if (!classNames) {
-        continue;
-      }
-
-      for (const utility of collectUtilityClassesFromClassNames(classNames)) {
-        if (seen.has(utility.classToken)) {
-          continue;
-        }
-        seen.add(utility.classToken);
-        const selector = `.${escapeUtilityClassSelector(utility.classToken)}`;
-        rules.push(`${selector} { ${utility.property}: var(${utility.cssVar}); }`);
-      }
-
-      for (const token of classNames.split(/\s+/)) {
-        const mappedVars = SLOT_CLASS_TO_CSS_VARS[token];
-        if (!mappedVars?.length || seen.has(`mapped:${token}`)) {
-          continue;
-        }
-        seen.add(`mapped:${token}`);
-        const declarations = mappedVars
-          .map(
-            (varName) =>
-              `${varName}: ${cssVarValues[varName] ?? CHECKOUT_INITIAL_CSS_VAR_VALUES[varName] ?? '#888888'}`,
-          )
-          .join('; ');
-        rules.push(`.${token} { ${declarations}; }`);
-      }
-    }
-  }
-
-  return rules.join('\n');
-}
-
-export function collectActiveCssVars(
-  slotClassesByComponent: Record<CheckoutStyleComponent, Record<string, string>>,
-  selectedComponent: CheckoutStyleComponent,
-): string[] {
-  const used = new Set<string>();
-  const order: string[] = [];
-
-  for (const slot of CHECKOUT_SLOT_CATALOG[selectedComponent].slots) {
-    for (const varName of collectCssVarsFromClassNames(
-      slotClassesByComponent[selectedComponent][slot] ?? '',
-    )) {
-      if (!used.has(varName)) {
-        used.add(varName);
-        order.push(varName);
-      }
-    }
-  }
-
-  return order;
-}
-
-export function isCheckoutStyleComponent(value: string): value is CheckoutStyleComponent {
-  return (CHECKOUT_STYLE_COMPONENTS as readonly string[]).includes(value);
-}
-
-export function defaultCssVarValue(varName: string): string {
-  return CHECKOUT_INITIAL_CSS_VAR_VALUES[varName] ?? '#888888';
-}
-
-export { LENGTH_CSS_VARS };
+export const isCheckoutStyleComponent = (value: string): value is CheckoutStyleComponent =>
+  isStyleOverrideComponent(value);
