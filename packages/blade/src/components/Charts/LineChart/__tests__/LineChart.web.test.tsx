@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChartLineWrapper, ChartLine, ChartReferenceBand } from '../LineChart';
+import { ChartLineWrapper, ChartLine } from '../LineChart';
+import { ChartReferenceBand } from '../index';
 import {
   ChartXAxis,
   ChartYAxis,
