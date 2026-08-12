@@ -8,7 +8,7 @@ jobs:
     name: Slash Hello World
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
-      - uses: razorpay/actions/slash@master
+      - uses: razorpay/actions/slash@feat/slash-action
         id: slash
         with:
           mode: run
