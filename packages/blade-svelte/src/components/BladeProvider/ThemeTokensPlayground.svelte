@@ -123,6 +123,7 @@
 
     const { theme, fontFaceCSS } = createTheme({
       brandColor: brandHex || RAZORPAY_BRAND_FALLBACK,
+      baseTheme: bladeNeutralTheme,
       borderRadius: hasCustomRadius ? { ...borderRadius } : undefined,
       fontFamily: fontFamilyOverride,
       fontSizeScaleFactor: scaleFactor,

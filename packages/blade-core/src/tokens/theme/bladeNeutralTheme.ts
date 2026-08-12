@@ -715,6 +715,9 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[1100],
         },
         primary: {
+          // Intentional: onDark uses transparent for faint/moderate/strong to
+          // match bladeTheme's onDark structure. The neutral theme only
+          // overrides onLight with real azure/forest values for checkout.
           faint: 'transparent',
           subtle: globalColors.chromatic.azure.a200,
           moderate: 'transparent',
@@ -729,6 +732,9 @@ const colors: ColorsWithModes = {
           subtle: globalColors.chromatic.cloud[900],
           intense: globalColors.chromatic.cloud[100],
         },
+        // Intentional: onDark accent.intense is transparent to match
+        // bladeTheme's onDark structure. Only onLight carries the real
+        // forest[500] value for the neutral checkout theme.
         accent: {
           intense: 'transparent',
         },
@@ -1388,6 +1394,10 @@ const colors: ColorsWithModes = {
             200: globalColors.neutral.blueGrayDark[1000],
             300: globalColors.neutral.blueGrayDark[900],
             400: globalColors.neutral.blueGrayDark[800],
+            // Known duplicate: blueGrayDark scale has no step between [800]
+            // (24% lightness) and [700] (36% lightness). This duplicate is
+            // inherited from bladeTheme.ts and should be fixed when the color
+            // scale gains an intermediate step.
             500: globalColors.neutral.blueGrayDark[800],
             600: globalColors.neutral.blueGrayDark[700],
             700: globalColors.neutral.blueGrayDark[600],
