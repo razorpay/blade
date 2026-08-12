@@ -36,6 +36,3 @@ export type SlotMetadataComponentName = keyof typeof BLADE_SLOT_METADATA;
 export const SLOT_METADATA_COMPONENT_NAMES = Object.keys(
   BLADE_SLOT_METADATA,
 ) as SlotMetadataComponentName[];
-
-export const getComponentSlotNames = (name: SlotMetadataComponentName): readonly string[] =>
-  BLADE_SLOT_METADATA[name].slots.map((slot) => slot.name);

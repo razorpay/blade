@@ -7,7 +7,13 @@ export const cardSlotMeta = defineComponentSlotMeta<CardSlot>('CardSlot', {
     description:
       'Card wrapper. Owns interactive-state rings (selected/focused/validation) and layout (width, styled props). Elevated surfaces draw their stroke as an inset shadow, so repoint the border token here instead of painting a border — the token cascades down to the surface.',
     safeProperties: ['padding', 'width'],
-    safeTokens: ['--interactive-border-gray-disabled'],
+    safeTokens: [
+      '--interactive-border-gray-disabled',
+      '--surface-border-primary-normal',
+      '--surface-border-primary-muted',
+      '--interactive-border-negative-default',
+      '--interactive-border-positive-default',
+    ],
     unsafeProperties: ['border', 'box-shadow'],
   },
   surface: {

@@ -27,6 +27,9 @@
  * `box-shadow: inset … var(--interactive-border-gray-disabled)`. Repoint that token on `root`
  * (inherited by the surface) instead of painting `border` or `box-shadow` on `root` directly.
  * Use `variant` and `backgroundColor` for surface fill; `secondary` has no border ring.
+ * Interactive-state rings (selected/focused/validation) are also repointable on `root`:
+ * `--surface-border-primary-normal` (selected), `--surface-border-primary-muted` (focused),
+ * `--interactive-border-negative-default` (error), `--interactive-border-positive-default` (success).
  *
  * @see getPrimaryBrandCssVars — checkout primary token bundle helper
  * @see SAFE_FILLED_BUTTON_ROOT_TOKEN_OVERRIDES — exhaustive safe root token list

@@ -6,7 +6,6 @@ export type { SlotDescriptor, SlotMeta, ComponentSlotMeta } from './shared/slotM
 export {
   BLADE_SLOT_METADATA,
   SLOT_METADATA_COMPONENT_NAMES,
-  getComponentSlotNames,
 } from './slotMetadata';
 export type { SlotMetadataComponentName } from './slotMetadata';
 export { baseTextStyles, getBaseTextClasses } from './BaseText';
