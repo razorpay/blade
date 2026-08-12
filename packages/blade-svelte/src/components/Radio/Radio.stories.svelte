@@ -105,7 +105,41 @@
 <script lang="ts">
   import Radio from './Radio.svelte';
   import Button from '../Button/Button.svelte';
+  import Badge from '../Badge/Badge.svelte';
+  import Text from '../Typography/Text/Text.svelte';
+  import ChevronRightIcon from '../Icons/ChevronRightIcon/ChevronRightIcon.svelte';
+  import AlertTriangleIcon from '../Icons/AlertTriangleIcon/AlertTriangleIcon.svelte';
   import type { RadioInstance, RadioSize, RadioGroupProps } from './types';
+
+  const paymentMethods = [
+    {
+      value: 'hdfc',
+      logo: 'HD',
+      logoBg: '#004C8F',
+      title: 'HDFC Bank',
+      subtitle: '•••• 4521 · Credit Card',
+      offer: '10% OFF',
+      downtime: undefined,
+    },
+    {
+      value: 'icici',
+      logo: 'IC',
+      logoBg: '#AE282E',
+      title: 'ICICI Bank',
+      subtitle: '•••• 8890 · Debit Card',
+      offer: 'No Cost EMI',
+      downtime: 'Bank facing downtime',
+    },
+    {
+      value: 'upi',
+      logo: 'UP',
+      logoBg: '#097939',
+      title: 'UPI',
+      subtitle: 'Pay via any UPI app',
+      offer: undefined,
+      downtime: undefined,
+    },
+  ];
 
   let kitchenSinkSelected = $state('orange');
   let radioInstance: RadioInstance | undefined = $state();
@@ -363,7 +397,78 @@
   </div>
 </Story>
 
-<!-- 17. Showcase -->
+<!-- 17. Custom Label (Snippet children) -->
+<Story name="Custom Label (Snippet children)" asChild>
+  <RadioGroup label="Choose a plan" defaultValue="pro" helpText="Pass a snippet as children for custom label markup">
+    <Radio value="basic">
+      {#snippet children()}
+        <span style="display:inline-flex;align-items:center;gap:var(--spacing-3)">
+          <Text as="span" weight="semibold">Basic</Text>
+          <Badge color="neutral">Free</Badge>
+        </span>
+      {/snippet}
+    </Radio>
+    <Radio value="pro">
+      {#snippet children()}
+        <span style="display:inline-flex;align-items:center;gap:var(--spacing-3)">
+          <Text as="span" weight="semibold">Pro</Text>
+          <Badge color="notice">Popular</Badge>
+        </span>
+      {/snippet}
+    </Radio>
+    <Radio value="enterprise">
+      {#snippet children()}
+        <span style="display:inline-flex;align-items:center;gap:var(--spacing-3)">
+          <Text as="span" weight="semibold">Enterprise</Text>
+          <Badge color="information">Custom</Badge>
+        </span>
+      {/snippet}
+    </Radio>
+  </RadioGroup>
+</Story>
+
+<!-- 18. Payment Method Row (rich Snippet children) -->
+<Story name="Payment Method Row (Snippet children)" asChild>
+  <div style="max-width:420px">
+    <RadioGroup label="Select payment method" defaultValue="hdfc">
+      {#each paymentMethods as method (method.value)}
+        <Radio value={method.value}>
+          {#snippet children()}
+            <span style="display:flex;align-items:center;gap:var(--spacing-4);width:100%">
+              <span
+                style={`display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:36px;height:36px;border-radius:var(--border-radius-medium);background:${method.logoBg};color:#fff;font-family:var(--font-family-text);font-size:var(--font-size-75);font-weight:var(--font-weight-semibold)`}
+              >
+                {method.logo}
+              </span>
+              <span style="display:flex;flex-direction:column;gap:var(--spacing-1);flex:1;min-width:0">
+                <span style="display:flex;align-items:center;gap:var(--spacing-3)">
+                  <Text as="span" weight="semibold">{method.title}</Text>
+                  {#if method.offer}
+                    <Badge color="positive" size="small">{method.offer}</Badge>
+                  {/if}
+                </span>
+                <Text as="span" variant="caption" size="small" color="surface.text.gray.subtle">
+                  {method.subtitle}
+                </Text>
+                {#if method.downtime}
+                  <span style="display:inline-flex;align-items:center;gap:var(--spacing-2)">
+                    <AlertTriangleIcon size="small" color="feedback.icon.negative.intense" />
+                    <Text as="span" variant="caption" size="small" color="feedback.text.negative.intense">
+                      {method.downtime}
+                    </Text>
+                  </span>
+                {/if}
+              </span>
+              <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+            </span>
+          {/snippet}
+        </Radio>
+      {/each}
+    </RadioGroup>
+  </div>
+</Story>
+
+<!-- 19. Showcase -->
 <Story name="Showcase" asChild>
   <div style="display:flex;flex-direction:column;gap:var(--spacing-7)">
     {#each showcaseSizes as { id: sizeId, label, size } (sizeId)}
