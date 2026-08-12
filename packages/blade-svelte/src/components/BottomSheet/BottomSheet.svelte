@@ -538,15 +538,9 @@
 </script>
 
 {#if isMounted}
-  {#if portalTarget}
-    <div use:portal={portalTarget}>
-      {@render overlay()}
-    </div>
-  {:else}
-    <div use:portal={document.body}>
-      {@render overlay()}
-    </div>
-  {/if}
+  <div use:portal={portalTarget ?? document.body}>
+    {@render overlay()}
+  </div>
 {/if}
 
 {#snippet overlay()}

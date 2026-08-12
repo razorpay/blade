@@ -3,10 +3,7 @@ import './layers.css';
 export type { StyleOverride } from './shared/styleOverride';
 export { defineComponentSlotMeta } from './shared/slotMeta';
 export type { SlotDescriptor, SlotMeta, ComponentSlotMeta } from './shared/slotMeta';
-export {
-  BLADE_SLOT_METADATA,
-  SLOT_METADATA_COMPONENT_NAMES,
-} from './slotMetadata';
+export { BLADE_SLOT_METADATA, SLOT_METADATA_COMPONENT_NAMES } from './slotMetadata';
 export type { SlotMetadataComponentName } from './slotMetadata';
 export { baseTextStyles, getBaseTextClasses } from './BaseText';
 export type { BaseTextVariants } from './BaseText';
