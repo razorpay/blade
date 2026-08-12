@@ -543,7 +543,9 @@
       {@render overlay()}
     </div>
   {:else}
-    {@render overlay()}
+    <div use:portal={document.body}>
+      {@render overlay()}
+    </div>
   {/if}
 {/if}
 
