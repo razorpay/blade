@@ -139,7 +139,7 @@ export type Colors = {
       primary: SubtleOrIntenseEmphasis & Partial<SurfacePrimaryEmphasis>;
       sea: SubtleOrIntenseEmphasis;
       cloud: SubtleOrIntenseEmphasis;
-      accent?: Pick<Emphasis, 'intense'>;
+      accent?: Partial<Pick<Emphasis, 'intense'>>;
     };
     border: {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
