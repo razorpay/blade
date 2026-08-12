@@ -4,7 +4,6 @@ import {
   STYLE_OVERRIDE_COMPONENTS,
   isStyleOverrideComponent,
 } from '../styleOverride/styleOverrideEngine';
-import type { SlotClassMap, StyleOverrideComponent } from '../styleOverride/styleOverrideEngine';
 import { SIGNATURE_SLOT_CLASSES } from '../styleOverride/styleOverridePresets';
 
 /**
