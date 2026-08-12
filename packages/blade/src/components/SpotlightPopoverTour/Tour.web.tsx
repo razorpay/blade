@@ -132,13 +132,35 @@ const SpotlightPopoverTour = ({
     const el = asHTMLElement(ref?.current ?? null);
     if (!el) return;
 
+    const scrollMode = steps[delayedActiveStep]?.scrollMode ?? 'auto';
+
+    // If scroll is disabled for this step, just update the mask
+    if (scrollMode === 'none') {
+      updateMaskSize(true);
+      return;
+    }
+
     // If the element is already in view, don't scroll
     if (intersection?.isIntersecting) return;
+
+    // For 'auto' mode, use 'nearest' when the element is taller than the viewport
+    // to prevent scroll-jump on mobile. 'center' tries to vertically center the
+    // element, which pushes parts of a tall element off-screen and displaces the popover.
+    const rect = el.getBoundingClientRect();
+    const isTallerThanViewport = rect.height > window.innerHeight;
+    const block =
+      scrollMode === 'center'
+        ? 'center'
+        : scrollMode === 'nearest'
+        ? 'nearest'
+        : isTallerThanViewport
+        ? 'nearest'
+        : 'center';
 
     setIsScrolling(true);
     smoothScroll(el, {
       behavior: 'smooth',
-      block: 'center',
+      block,
       inline: 'center',
     })
       .then(() => {

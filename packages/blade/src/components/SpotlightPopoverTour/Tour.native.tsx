@@ -226,9 +226,13 @@ const SpotlightPopoverTour = ({
       return;
     }
 
+    const scrollMode = step?.scrollMode ?? 'auto';
+
     const needsScroll =
-      !isRectVisibleInWindow(rect, 0.5) ||
-      !hasRoomForPopoverPlacement(rect, step?.placement, popoverGap);
+      scrollMode === 'none'
+        ? false
+        : !isRectVisibleInWindow(rect, 0.5) ||
+          !hasRoomForPopoverPlacement(rect, step?.placement, popoverGap);
 
     const resolvedParent = scrollParentRef.current ?? findScrollableAncestor(ref.current) ?? null;
     if (resolvedParent) {

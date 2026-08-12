@@ -57,6 +57,19 @@ type Step = {
    * @default "top"
    */
   placement?: UseFloatingOptions['placement'];
+  /**
+   * Controls how the step's anchored element is scrolled into view.
+   *
+   * - `'auto'` (default): Uses `'nearest'` when the element is taller than the viewport
+   *   to prevent scroll-jump, otherwise uses `'center'`.
+   * - `'center'`: Always scroll to vertically center the element (original behavior).
+   *   May cause the popover to go off-screen for elements taller than the viewport.
+   * - `'nearest'`: Scroll the minimum amount needed to bring the element into view.
+   * - `'none'`: Disable scroll for this step entirely.
+   *
+   * @default "auto"
+   */
+  scrollMode?: 'auto' | 'center' | 'nearest' | 'none';
 };
 
 // This will also be useful for consumers

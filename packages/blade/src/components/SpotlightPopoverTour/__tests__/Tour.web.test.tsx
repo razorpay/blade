@@ -68,12 +68,14 @@ const openTourButtonText = 'Open Tour';
 const steps: SpotlightPopoverTourSteps = [
   {
     name: 'step-1',
+    title: 'Step 1 Title',
     content: () => <Text>Step 1</Text>,
     placement: 'bottom',
     footer: CustomFooter,
   },
   {
     name: 'step-2',
+    title: 'Step 2 Title',
     content: () => <Text>Step 2</Text>,
     placement: 'bottom',
     footer: CustomFooter,
@@ -266,7 +268,165 @@ describe('<Tour />', () => {
       jest.advanceTimersByTime(animationDuration);
     });
 
+    // axe uses real timers internally, so switch back temporarily
+    jest.useRealTimers();
     // check for a11y violations
-    assertAccessible(baseElement);
+    await assertAccessible(baseElement);
+    jest.useFakeTimers();
+  });
+
+  describe('scroll behavior', () => {
+    const scrollSteps: SpotlightPopoverTourSteps = [
+      {
+        name: 'step-1',
+        title: 'Tour Step',
+        content: () => <Text>Step 1</Text>,
+        placement: 'bottom',
+        footer: CustomFooter,
+      },
+    ];
+
+    const ScrollTourExample = ({
+      stepScrollMode,
+    }: {
+      stepScrollMode?: 'auto' | 'center' | 'nearest' | 'none';
+    }) => {
+      const [activeStep, setActiveStep] = React.useState(0);
+      const [isOpen, setIsOpen] = React.useState(false);
+      const stepsWithMode = React.useMemo(
+        () => scrollSteps.map((s) => ({ ...s, scrollMode: stepScrollMode })),
+        [stepScrollMode],
+      );
+
+      return (
+        <Box>
+          <Button marginBottom="spacing.9" onClick={() => setIsOpen((prev) => !prev)}>
+            {openTourButtonText}
+          </Button>
+          <SpotlightPopoverTour
+            steps={stepsWithMode}
+            isOpen={isOpen}
+            activeStep={activeStep}
+            onStepChange={(step) => {
+              setActiveStep(step);
+              onStepChangeFn(step);
+            }}
+            onOpenChange={({ isOpen }) => {
+              setIsOpen(isOpen);
+              onOpenChangeFn(isOpen);
+            }}
+            onFinish={() => {
+              setActiveStep(0);
+              setIsOpen(false);
+              onFinishFn();
+            }}
+          >
+            <SpotlightPopoverTourStep name="step-1">
+              <Box>
+                <Text>Trigger 1</Text>
+              </Box>
+            </SpotlightPopoverTourStep>
+          </SpotlightPopoverTour>
+        </Box>
+      );
+    };
+
+    /**
+     * Temporarily set window.innerHeight to simulate viewport constraints.
+     * In jsdom, elements have height 0 by default. Setting innerHeight to -1
+     * makes 0 > -1 true, simulating a "taller than viewport" element.
+     */
+    const mockViewportHeight = (viewportHeight: number) => {
+      const originalInnerHeight = window.innerHeight;
+      Object.defineProperty(window, 'innerHeight', {
+        value: viewportHeight,
+        writable: true,
+      });
+      return () => {
+        Object.defineProperty(window, 'innerHeight', {
+          value: originalInnerHeight,
+          writable: true,
+        });
+      };
+    };
+
+    /**
+     * Advance fake timers in increments so React act() can process
+     * state updates and effects between ticks (single large advance
+     * doesn't flush intermediate layout effects).
+     */
+    const advanceTimers = async (totalMs: number, step = 200) => {
+      for (let elapsed = 0; elapsed < totalMs; elapsed += step) {
+        await act(async () => {
+          jest.advanceTimersByTime(step);
+        });
+      }
+    };
+
+    // scroll fires after transitionDelay (480ms) + scrollDelay (100ms) = ~580ms
+    const scrollTimeout = animationDuration * 2;
+
+    beforeEach(() => {
+      (window.HTMLElement.prototype.scrollIntoView as jest.Mock).mockClear();
+    });
+
+    it('should use block:nearest when anchored element is taller than viewport (auto mode)', async () => {
+      // innerHeight=-1 makes jsdom's default element height (0) > viewport, simulating tall element
+      const restore = mockViewportHeight(-1);
+      try {
+        const { getByRole } = renderWithTheme(<ScrollTourExample stepScrollMode="auto" />);
+        fireEvent.click(getByRole('button', { name: openTourButtonText }));
+        await advanceTimers(scrollTimeout);
+
+        expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalledWith(
+          expect.objectContaining({ block: 'nearest' }),
+        );
+      } finally {
+        restore();
+      }
+    });
+
+    it('should use block:center when anchored element fits in viewport (auto mode)', async () => {
+      const { getByRole } = renderWithTheme(<ScrollTourExample stepScrollMode="auto" />);
+      fireEvent.click(getByRole('button', { name: openTourButtonText }));
+      await advanceTimers(scrollTimeout);
+
+      expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalledWith(
+        expect.objectContaining({ block: 'center' }),
+      );
+    });
+
+    it('should use block:center when scrollMode is center even for tall elements', async () => {
+      const restore = mockViewportHeight(-1);
+      try {
+        const { getByRole } = renderWithTheme(<ScrollTourExample stepScrollMode="center" />);
+        fireEvent.click(getByRole('button', { name: openTourButtonText }));
+        await advanceTimers(scrollTimeout);
+
+        expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalledWith(
+          expect.objectContaining({ block: 'center' }),
+        );
+      } finally {
+        restore();
+      }
+    });
+
+    it('should use block:nearest when scrollMode is nearest even for short elements', async () => {
+      const { getByRole } = renderWithTheme(<ScrollTourExample stepScrollMode="nearest" />);
+      fireEvent.click(getByRole('button', { name: openTourButtonText }));
+      await advanceTimers(scrollTimeout);
+
+      expect(window.HTMLElement.prototype.scrollIntoView).toHaveBeenCalledWith(
+        expect.objectContaining({ block: 'nearest' }),
+      );
+    });
+
+    it('should not scroll when scrollMode is none', async () => {
+      const { getByRole } = renderWithTheme(<ScrollTourExample stepScrollMode="none" />);
+      fireEvent.click(getByRole('button', { name: openTourButtonText }));
+      await advanceTimers(scrollTimeout);
+
+      expect(window.HTMLElement.prototype.scrollIntoView).not.toHaveBeenCalled();
+    });
   });
 });
