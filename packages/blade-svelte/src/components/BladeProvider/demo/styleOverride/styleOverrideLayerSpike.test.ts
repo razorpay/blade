@@ -8,7 +8,7 @@ import { getButtonClasses } from '@razorpay/blade-core/styles';
 
 const localRequire = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const bladeCoreRoot = path.resolve(__dirname, '../../../../../blade-core');
+const bladeCoreRoot = path.resolve(__dirname, '../../../../../../blade-core');
 const postcssBladeLayer = localRequire(path.join(bladeCoreRoot, 'postcss-blade-layer.cjs'));
 
 describe('styleOverride layer spike', () => {

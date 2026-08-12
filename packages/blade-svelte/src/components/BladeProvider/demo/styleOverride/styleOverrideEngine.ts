@@ -87,7 +87,11 @@ export const STATIC_SLOT_CLASS_CSS = Object.values(STATIC_CLASS_RULES).join('\n\
  * drives and whose name the heuristic misses. The seeded radius vars are already covered by their
  * `rounded-(--var)` utilities; keep this for hand-typed vars that need forcing.
  */
-export const LENGTH_CSS_VARS = new Set(['--demo-avatar-radius', '--icon-btn-radius', '--card-radius']);
+export const LENGTH_CSS_VARS = new Set([
+  '--demo-avatar-radius',
+  '--icon-btn-radius',
+  '--card-radius',
+]);
 
 export const DEMO_CSS_VAR_DEFAULTS: Record<string, string> = {
   '--brand-bg': '#171717',
@@ -163,8 +167,7 @@ const LENGTH_UTILITY_PROPERTIES = new Set(['border-radius']);
  * reads). Deliberately narrow — `border` is excluded so color vars like `--demo-card-border`
  * stay colors, while `--*-radius`, `--*-width` and friends read as lengths.
  */
-const LENGTH_CSS_VAR_NAME_PATTERN =
-  /(?:radius|width|height|size|gap|spacing|padding|margin|offset|inset|thickness)/;
+const LENGTH_CSS_VAR_NAME_PATTERN = /(?:radius|width|height|size|gap|spacing|padding|margin|offset|inset|thickness)/;
 
 /** Which utility in `classNames`, if any, drives `varName`, and whether that property is a length. */
 const utilityLengthKindForVar = (

@@ -77,8 +77,7 @@ export const FONT_PRESETS: {
       text: 'Poppins, system-ui, sans-serif',
       heading: 'Poppins, system-ui, sans-serif',
     },
-    importUrl:
-      'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap',
+    importUrl: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap',
   },
   {
     label: 'Montserrat',
@@ -163,9 +162,10 @@ export function buildThemeBundle(state: ThemeControlState): ThemeBundle {
 
   // `@import` must precede any other rule in the stylesheet, so it goes ahead of the
   // `@font-face` blocks `createTheme` may emit.
-  const fontImportCSS = fontPreset?.importUrl ? `@import url('${fontPreset.importUrl}');` : undefined;
-  const combinedFontCSS =
-    [fontImportCSS, fontFaceCSS].filter(Boolean).join('\n') || undefined;
+  const fontImportCSS = fontPreset?.importUrl
+    ? `@import url('${fontPreset.importUrl}');`
+    : undefined;
+  const combinedFontCSS = [fontImportCSS, fontFaceCSS].filter(Boolean).join('\n') || undefined;
 
   return { themeTokens: theme, fontFaceCSS: combinedFontCSS };
 }

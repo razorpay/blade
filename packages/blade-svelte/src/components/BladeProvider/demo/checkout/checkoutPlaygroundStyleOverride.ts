@@ -2,9 +2,8 @@ import {
   DEMO_CSS_VAR_DEFAULTS,
   STYLE_OVERRIDE_COMPONENTS,
   isStyleOverrideComponent,
-  type SlotClassMap,
-  type StyleOverrideComponent,
 } from '../styleOverride/styleOverrideEngine';
+import type { SlotClassMap, StyleOverrideComponent } from '../styleOverride/styleOverrideEngine';
 import { SIGNATURE_SLOT_CLASSES } from '../styleOverride/styleOverridePresets';
 
 /**
@@ -16,8 +15,7 @@ import { SIGNATURE_SLOT_CLASSES } from '../styleOverride/styleOverridePresets';
 /** Every component the engine knows about is selectable; the preview applies them via provider config. */
 export type CheckoutStyleComponent = StyleOverrideComponent;
 
-export const CHECKOUT_STYLE_COMPONENTS: readonly CheckoutStyleComponent[] =
-  STYLE_OVERRIDE_COMPONENTS;
+export const CHECKOUT_STYLE_COMPONENTS: readonly CheckoutStyleComponent[] = STYLE_OVERRIDE_COMPONENTS;
 
 /**
  * Slots whose checkout look belongs to the page design rather than to a preset: the promo banner
