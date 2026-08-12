@@ -472,7 +472,9 @@ const _Carousel = (
       const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
       const goTo = Math.ceil(slideIndex / _visibleItems);
       setActiveSlide(() => goTo, isProgrammaticScrollRef.current);
-      setActiveIndicator(goTo);
+      if (!isProgrammaticScrollRef.current) {
+        setActiveIndicator(goTo);
+      }
     }, 50);
 
     carouselContainer.addEventListener('scroll', handleScroll);
