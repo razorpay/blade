@@ -1,0 +1,22 @@
+name: Agentic Repo / Slash Hello World
+
+on:
+  workflow_dispatch:
+
+jobs:
+  slash:
+    name: Slash Hello World
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - uses: razorpay/actions/slash@master
+        id: slash
+        with:
+          mode: run
+          prompt: hello world
+          username: ${{ secrets.SLASH_API_USERNAME }}
+          password: ${{ secrets.SLASH_API_PASSWORD }}
+
+      - run: |
+          echo "Slash status: ${{ steps.slash.outputs.status }}"
+          echo "Task ID: ${{ steps.slash.outputs.task_id }}"
+          echo "PR URL: ${{ steps.slash.outputs.pr_url }}"
