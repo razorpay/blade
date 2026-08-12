@@ -357,6 +357,7 @@ describe('<Tour />', () => {
      */
     const advanceTimers = async (totalMs: number, step = 200) => {
       for (let elapsed = 0; elapsed < totalMs; elapsed += step) {
+        // eslint-disable-next-line no-await-in-loop
         await act(async () => {
           jest.advanceTimersByTime(step);
         });
