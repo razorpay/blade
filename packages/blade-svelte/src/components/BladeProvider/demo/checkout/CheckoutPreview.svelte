@@ -22,6 +22,9 @@
   import BottomSheetHeader from '../../../BottomSheet/BottomSheetHeader.svelte';
   import BottomSheetBody from '../../../BottomSheet/BottomSheetBody.svelte';
   import BottomSheetFooter from '../../../BottomSheet/BottomSheetFooter.svelte';
+  import ActionList from '../../../ActionList/ActionList.svelte';
+  import ActionListItem from '../../../ActionList/ActionListItem.svelte';
+  import ActionListItemIcon from '../../../ActionList/ActionListItemIcon.svelte';
   import PhoneNumberInput from '../../../Input/PhoneNumberInput/PhoneNumberInput.svelte';
   import CheckoutMethodIcon from './CheckoutMethodIcon.svelte';
   import RazorpayLogo from './RazorpayLogo.svelte';
@@ -648,93 +651,83 @@
           portalTarget={phoneViewportEl}
         >
           <BottomSheetHeader title="Account & Terms" />
-          <BottomSheetBody padding="spacing.0">
-            <div class="menu-list">
-              <button type="button" class="menu-row" onclick={openAccount}>
-                <span class="menu-row-icon">
-                  <UserIcon size="small" color="surface.icon.gray.subtle" />
-                </span>
-                <span class="menu-row-text">
-                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Account</Text>
-                  <Text size="small" weight="regular" color="surface.text.gray.muted">Contact, Login</Text>
-                </span>
-                <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
-              </button>
-
-              <button type="button" class="menu-row" onclick={openTerms}>
-                <span class="menu-row-icon">
-                  {@render fileTextIcon()}
-                </span>
-                <span class="menu-row-text">
-                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Razorpay T&Cs</Text>
-                  <Text size="small" weight="regular" color="surface.text.gray.muted">Policies, Terms of service</Text>
-                </span>
-                <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
-              </button>
-
-              <button type="button" class="menu-row" onclick={noop}>
-                <span class="menu-row-icon">
-                  {@render translateIcon()}
-                </span>
-                <span class="menu-row-text">
-                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Language</Text>
-                  <Text size="small" weight="regular" color="surface.text.gray.muted">English</Text>
-                </span>
-                <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
-              </button>
-            </div>
+          <BottomSheetBody hasActionList>
+            <ActionList>
+              {#snippet children()}
+                <ActionListItem title="Account" description="Contact, Login" value="account" onClick={openAccount}>
+                  {#snippet leading()}
+                    <ActionListItemIcon icon={UserIcon} />
+                  {/snippet}
+                  {#snippet trailing()}
+                    <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+                  {/snippet}
+                </ActionListItem>
+                <ActionListItem title="Razorpay T&Cs" description="Policies, Terms of service" value="terms" onClick={openTerms}>
+                  {#snippet leading()}
+                    <span class="menu-leading-svg">{@render fileTextIcon()}</span>
+                  {/snippet}
+                  {#snippet trailing()}
+                    <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+                  {/snippet}
+                </ActionListItem>
+                <ActionListItem title="Language" description="English" value="language" onClick={noop}>
+                  {#snippet leading()}
+                    <span class="menu-leading-svg">{@render translateIcon()}</span>
+                  {/snippet}
+                  {#snippet trailing()}
+                    <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+                  {/snippet}
+                </ActionListItem>
+              {/snippet}
+            </ActionList>
           </BottomSheetBody>
         </BottomSheet>
 
         <BottomSheet
           isOpen={isAccountOpen}
-          onDismiss={closeAccountTerms}
+          onDismiss={closeAccount}
           portalTarget={phoneViewportEl}
         >
-          <BottomSheetHeader title="Account" showBackButton onBackButtonClick={closeAccount} />
-          <BottomSheetBody padding="spacing.0">
-            <div class="menu-list">
-              <button type="button" class="menu-row" onclick={openContactDetails}>
-                <span class="menu-row-text">
-                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Edit contact details</Text>
-                </span>
-                <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
-              </button>
-
-              <button type="button" class="menu-row" onclick={noop}>
-                <span class="menu-row-text">
-                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Login</Text>
-                </span>
-                <span class="menu-row-trailing">
-                  <UserIcon size="medium" color="surface.icon.gray.normal" />
-                </span>
-              </button>
-            </div>
+          <BottomSheetHeader title="Account" />
+          <BottomSheetBody hasActionList>
+            <ActionList>
+              {#snippet children()}
+                <ActionListItem title="Edit contact details" value="edit-contact" onClick={openContactDetails}>
+                  {#snippet trailing()}
+                    <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+                  {/snippet}
+                </ActionListItem>
+                <ActionListItem title="Login" value="login" onClick={noop}>
+                  {#snippet trailing()}
+                    <ActionListItemIcon icon={UserIcon} />
+                  {/snippet}
+                </ActionListItem>
+              {/snippet}
+            </ActionList>
           </BottomSheetBody>
         </BottomSheet>
 
         <BottomSheet
           isOpen={isTermsOpen}
-          onDismiss={closeAccountTerms}
+          onDismiss={closeTerms}
           portalTarget={phoneViewportEl}
         >
-          <BottomSheetHeader title="Razorpay T&Cs" showBackButton onBackButtonClick={closeTerms} />
-          <BottomSheetBody padding="spacing.0">
-            <div class="menu-list">
-              <a
-                class="menu-row"
-                href="https://razorpay.com/terms/"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <span class="menu-row-text">
-                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Razorpay Terms of Service</Text>
-                </span>
-                <span class="menu-row-trailing">
-                  {@render externalLinkIcon()}
-                </span>
-              </a>
-            </div>
+          <BottomSheetHeader title="Razorpay T&Cs" />
+          <BottomSheetBody hasActionList>
+            <ActionList>
+              {#snippet children()}
+                <ActionListItem
+                  title="Razorpay Terms of Service"
+                  value="tos"
+                  href="https://razorpay.com/terms/"
+                  target="_blank"
+                >
+                  {#snippet trailing()}
+                    <span class="menu-leading-svg">{@render externalLinkIcon()}</span>
+                  {/snippet}
+                </ActionListItem>
+              {/snippet}
+            </ActionList>
           </BottomSheetBody>
         </BottomSheet>
     </div>
@@ -750,7 +743,7 @@
 </div>
 
 {#snippet fileTextIcon()}
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
     <path d="M14 2v6h6" />
     <line x1="8" y1="13" x2="16" y2="13" />
@@ -760,7 +753,7 @@
 {/snippet}
 
 {#snippet translateIcon()}
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M4 5h7" />
     <path d="M7 4c0 4.5-2 8-5 10" />
     <path d="M5 8c1.5 2.5 4 4.5 6 5.5" />
@@ -1089,66 +1082,14 @@
     gap: var(--spacing-3);
   }
 
-  /* Account & Terms menu — spacing/typography tokens sourced from Figma
-     (Checkout Studio Playground, node 3376:171649 _ActionListItemGroup). */
-  .menu-list {
-    display: flex;
-    flex-direction: column;
-    /* body py 8px + group wrapper py 4px = 12px block; items own the inline inset */
-    padding: var(--spacing-4) var(--spacing-3);
-  }
-
-  .menu-row {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    /* leading→body and body→trailing gap = spacing.4 (12px) */
-    gap: var(--spacing-4);
-    width: 100%;
-    margin: 0;
-    /* _Menu Item wrapper padding = spacing.4 (12px) */
-    padding: var(--spacing-4);
-    border: none;
-    /* _Menu Item wrapper radius = borderRadius.small (8px) */
-    border-radius: var(--border-radius-small);
-    background: transparent;
-    cursor: pointer;
-    text-align: left;
-    text-decoration: none;
-    transition: background-color var(--duration-xquick, 70ms) ease;
-  }
-
-  .menu-row:hover {
-    background-color: var(--interactive-background-gray-faded);
-  }
-
-  /* Rows without a leading icon (Account / T&Cs sub-sheets) keep title + trailing
-     aligned to the row edges. */
-  .menu-row:not(:has(.menu-row-icon)) {
-    grid-template-columns: 1fr auto;
-  }
-
-  .menu-row-icon,
-  .menu-row-trailing {
+  /* Wrapper for the inline SVGs used as ActionListItem leading/trailing slots
+     (blade-svelte lacks file-text / translate / external-link icons). Colored
+     to match ActionListItemIcon's `interactive.icon.gray.normal`. */
+  .menu-leading-svg {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    /* _Menu Item leading/trailing slot = 20px */
-    width: 20px;
-    height: 20px;
-  }
-
-  .menu-row-icon {
-    color: var(--surface-icon-gray-subtle);
-  }
-
-  .menu-row-text {
-    display: flex;
-    flex-direction: column;
-    /* title→description gap = spacing.1 (2px) */
-    gap: var(--spacing-1);
-    min-width: 0;
+    color: var(--interactive-icon-gray-normal);
   }
 
   /*

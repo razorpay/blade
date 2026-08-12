@@ -49,7 +49,12 @@ export const PAGE_BG_PRESETS: { label: string; color: string }[] = [
   { label: 'Mint wash', color: '#edf8f5' },
 ];
 
-export const FONT_PRESETS: { label: string; family?: CreateThemeFontFamilyOverride }[] = [
+export const FONT_PRESETS: {
+  label: string;
+  family?: CreateThemeFontFamilyOverride;
+  /** Google Fonts stylesheet loaded via `@import` when the preset needs a web font. */
+  importUrl?: string;
+}[] = [
   { label: 'Blade default' },
   {
     label: 'System UI',
@@ -65,6 +70,24 @@ export const FONT_PRESETS: { label: string; family?: CreateThemeFontFamilyOverri
       text: 'Georgia, Times New Roman, serif',
       heading: 'Georgia, Times New Roman, serif',
     },
+  },
+  {
+    label: 'Poppins',
+    family: {
+      text: 'Poppins, system-ui, sans-serif',
+      heading: 'Poppins, system-ui, sans-serif',
+    },
+    importUrl:
+      'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap',
+  },
+  {
+    label: 'Montserrat',
+    family: {
+      text: 'Montserrat, system-ui, sans-serif',
+      heading: 'Montserrat, system-ui, sans-serif',
+    },
+    importUrl:
+      'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap',
   },
 ];
 
@@ -125,7 +148,8 @@ export function buildThemeBundle(state: ThemeControlState): ThemeBundle {
   const brandHex = resolveBrandHex(state);
   const borderRadius = getBorderRadius(state);
   const pageBackground = PAGE_BG_PRESETS.find((p) => p.label === state.pageBgLabel)?.color ?? '';
-  const fontFamilyOverride = FONT_PRESETS.find((f) => f.label === state.fontPresetLabel)?.family;
+  const fontPreset = FONT_PRESETS.find((f) => f.label === state.fontPresetLabel);
+  const fontFamilyOverride = fontPreset?.family;
   const fontSizeFactor = Number(state.fontSizeScaleFactor);
   const scaleFactor = fontSizeFactor !== 1 ? fontSizeFactor : undefined;
 
@@ -137,7 +161,13 @@ export function buildThemeBundle(state: ThemeControlState): ThemeBundle {
     surface: pageBackground ? { background: { page: pageBackground } } : undefined,
   });
 
-  return { themeTokens: theme, fontFaceCSS };
+  // `@import` must precede any other rule in the stylesheet, so it goes ahead of the
+  // `@font-face` blocks `createTheme` may emit.
+  const fontImportCSS = fontPreset?.importUrl ? `@import url('${fontPreset.importUrl}');` : undefined;
+  const combinedFontCSS =
+    [fontImportCSS, fontFaceCSS].filter(Boolean).join('\n') || undefined;
+
+  return { themeTokens: theme, fontFaceCSS: combinedFontCSS };
 }
 
 export function buildUsageSnippet(state: ThemeControlState): string {

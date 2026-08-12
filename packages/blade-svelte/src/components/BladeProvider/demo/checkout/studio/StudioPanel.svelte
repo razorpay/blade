@@ -325,10 +325,12 @@
     </TabPanel>
 
     <TabPanel value="widgets">
-      <StudioSection title="Style override">
+      <div class="studio-panel-intro">
         <Text size="small" color="surface.text.gray.muted">
           Foundations change the whole system; styleOverride patches component's slots.
         </Text>
+      </div>
+      <StudioSection title="Style override">
         <div class="studio-apply">
           <Switch
             id="studio-style-apply"
@@ -511,6 +513,10 @@
     color: var(--surface-text-gray-normal);
     font-family: var(--font-family-code);
     font-size: var(--font-size-25);
+  }
+
+  .studio-panel-intro {
+    padding: var(--spacing-4) var(--spacing-7) 0;
   }
 
   .studio-apply {
