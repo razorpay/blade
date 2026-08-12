@@ -1,3 +1,4 @@
+import type { SlotClassMap, StyleOverrideComponent } from '../styleOverride/styleOverrideEngine';
 import {
   DEMO_CSS_VAR_DEFAULTS,
   STYLE_OVERRIDE_COMPONENTS,
