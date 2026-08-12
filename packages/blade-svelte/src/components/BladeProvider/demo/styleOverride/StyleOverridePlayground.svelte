@@ -37,7 +37,6 @@
   import CompareButton from './CompareButton.svelte';
   import SnippetTabs from './SnippetTabs.svelte';
   import {
-    LENGTH_CSS_VARS,
     STATIC_SLOT_CLASS_CSS,
     STYLE_OVERRIDE_COMPONENTS,
     buildDynamicCss,
@@ -45,6 +44,7 @@
     collectCssVarsFromClassNames,
     getCssVarValue as readCssVar,
     getSlotMeta,
+    isLengthCssVar,
     isStyleOverrideComponent,
     mountDemoStylesheet,
     resolveStyleOverride,
@@ -223,7 +223,7 @@
                   <div class="slot-var-controls">
                     {#each slotCssVars as varName (varName)}
                       <label class="slot-var-control">
-                        {#if LENGTH_CSS_VARS.has(varName)}
+                        {#if isLengthCssVar(varName, slotClassNames)}
                           <input
                             type="number"
                             class="slot-var-length"

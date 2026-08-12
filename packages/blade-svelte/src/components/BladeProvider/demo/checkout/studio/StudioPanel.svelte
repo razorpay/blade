@@ -34,10 +34,10 @@
   import SnippetTabs from '../../styleOverride/SnippetTabs.svelte';
   import Switch from '../../../../Switch/Switch.svelte';
   import {
-    LENGTH_CSS_VARS,
     collectCssVarsForComponents,
     getCssVarValue as readCssVar,
     getSlotMeta,
+    isLengthCssVar,
     type SlotClassMap,
   } from '../../styleOverride/styleOverrideEngine';
 
@@ -122,6 +122,8 @@
   const activeCssVars = $derived(
     collectCssVarsForComponents(slotClassByComponent, [selectedStyleComponent]),
   );
+  /** Every classname typed on this component, so a var's control can follow the utility driving it. */
+  const activeClassNames = $derived(Object.values(styleSlotClasses ?? {}).join(' '));
   const componentNote = $derived(CHECKOUT_COMPONENT_NOTES[selectedStyleComponent]);
 
   function setBrandLabel(value: string): void {
@@ -379,7 +381,7 @@
           </Text>
           {#each activeCssVars as varName (varName)}
             <StudioField label={varName} controlId="studio-var-{varName}">
-              {#if LENGTH_CSS_VARS.has(varName)}
+              {#if isLengthCssVar(varName, activeClassNames)}
                 <div class="studio-readout">
                   <input
                     id="studio-var-{varName}"
@@ -391,7 +393,7 @@
                     value={getCssVarLength(varName)}
                     oninput={(event) => setCssVarLength(varName, event.currentTarget.valueAsNumber)}
                   />
-                  <Text size="small">{getCssVarValue(varName)}</Text>
+                  <Text size="small">{getCssVarLength(varName)}px</Text>
                 </div>
               {:else}
                 <div class="studio-readout">

@@ -82,7 +82,11 @@ const CLASS_CSS_VARS: Record<string, readonly string[]> = {
 /** Every named demo rule, for the live stylesheet a surface mounts once. */
 export const STATIC_SLOT_CLASS_CSS = Object.values(STATIC_CLASS_RULES).join('\n\n');
 
-/** Variables edited as a length rather than a color. */
+/**
+ * Explicit "edit as a length" overrides for {@link isLengthCssVar}, for vars no length utility
+ * drives and whose name the heuristic misses. The seeded radius vars are already covered by their
+ * `rounded-(--var)` utilities; keep this for hand-typed vars that need forcing.
+ */
 export const LENGTH_CSS_VARS = new Set(['--demo-avatar-radius', '--icon-btn-radius', '--card-radius']);
 
 export const DEMO_CSS_VAR_DEFAULTS: Record<string, string> = {
@@ -149,6 +153,47 @@ const escapeUtilityClassSelector = (classToken: string): string =>
 const splitClassNames = (classNames: string): string[] => {
   const trimmed = classNames.trim();
   return trimmed ? trimmed.split(/\s+/) : [];
+};
+
+/** Utility properties whose value is a length, so their variable is edited as px, not a color. */
+const LENGTH_UTILITY_PROPERTIES = new Set(['border-radius']);
+
+/**
+ * Last-resort guess for a variable no length utility drives (e.g. one only a named static class
+ * reads). Deliberately narrow — `border` is excluded so color vars like `--demo-card-border`
+ * stay colors, while `--*-radius`, `--*-width` and friends read as lengths.
+ */
+const LENGTH_CSS_VAR_NAME_PATTERN =
+  /(?:radius|width|height|size|gap|spacing|padding|margin|offset|inset|thickness)/;
+
+/** Which utility in `classNames`, if any, drives `varName`, and whether that property is a length. */
+const utilityLengthKindForVar = (
+  varName: string,
+  classNames: string,
+): 'length' | 'color' | null => {
+  for (const token of splitClassNames(classNames)) {
+    const utility = parseUtilityClassToken(token);
+    if (utility && utility.cssVar === varName) {
+      return LENGTH_UTILITY_PROPERTIES.has(utility.property) ? 'length' : 'color';
+    }
+  }
+  return null;
+};
+
+/**
+ * Whether a demo variable should be edited as a length (px input) rather than a color (picker).
+ *
+ * The utility driving it wins: `rounded-(--x)` is a `border-radius`, so `--x` is a length even if
+ * its name gives nothing away — and `bg-(--x)` stays a color even if the name looks length-y. Only
+ * when no utility drives the var do the explicit {@link LENGTH_CSS_VARS} and the name heuristic
+ * decide. `classNames` is the slot class string(s) the var appears in.
+ */
+export const isLengthCssVar = (varName: string, classNames = ''): boolean => {
+  const byUsage = utilityLengthKindForVar(varName, classNames);
+  if (byUsage) {
+    return byUsage === 'length';
+  }
+  return LENGTH_CSS_VARS.has(varName) || LENGTH_CSS_VAR_NAME_PATTERN.test(varName);
 };
 
 /** Ordered, de-duplicated list of demo variables a slot's classnames depend on. */

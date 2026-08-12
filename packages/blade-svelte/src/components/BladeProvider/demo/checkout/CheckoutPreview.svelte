@@ -404,6 +404,11 @@
                           </div>
                         {/snippet}
                       </AccordionItemHeader>
+                      <AccordionItemBody>
+                        <Text size="small" color="surface.text.gray.muted">
+                          Pay using credit or debit card.
+                        </Text>
+                      </AccordionItemBody>
                     {/snippet}
                   </AccordionItem>
 
