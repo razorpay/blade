@@ -4,7 +4,7 @@
    * Reads colorScheme / brandColor from Storybook globals via props.
    */
   import type { Snippet } from 'svelte';
-  import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
+  import { bladeNeutralTheme, createTheme } from '@razorpay/blade-core/tokens';
   import type { ColorSchemeNamesInput, ThemeTokens } from '@razorpay/blade-core/tokens';
   import BladeProvider from '../src/components/BladeProvider/BladeProvider.svelte';
 
@@ -31,10 +31,10 @@
           brandColor,
           error,
         );
-        return bladeTheme;
+        return bladeNeutralTheme;
       }
     }
-    return bladeTheme;
+    return bladeNeutralTheme;
   });
 </script>
 
