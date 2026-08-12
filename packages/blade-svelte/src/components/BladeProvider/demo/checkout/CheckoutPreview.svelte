@@ -420,7 +420,7 @@
 
                   <AccordionItem>
                     {#snippet children()}
-                      <AccordionItemHeader href="#cards">
+                      <AccordionItemHeader>
                         {#snippet leading()}
                           <CheckoutMethodIcon name="card" />
                         {/snippet}

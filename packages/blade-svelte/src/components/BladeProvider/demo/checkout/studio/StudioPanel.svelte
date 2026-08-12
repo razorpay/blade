@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
-  import Badge from '../../../../Badge/Badge.svelte';
   import Tabs from '../../../../Tabs/Tabs.svelte';
   import TabList from '../../../../Tabs/TabList.svelte';
   import TabItem from '../../../../Tabs/TabItem.svelte';
@@ -23,7 +22,6 @@
     buildUsageSnippet,
     getBorderRadius,
     resolveBrandHex,
-    usesCreateTheme,
   } from '../checkoutPlaygroundTheme';
   import {
     CHECKOUT_COMPONENT_NOTES,
@@ -115,8 +113,6 @@
   );
   const borderRadius = $derived(getBorderRadius(themeState));
   const usageSnippet = $derived(buildUsageSnippet(themeState));
-  const isThemed = $derived(usesCreateTheme(themeState));
-
   const styleSlotMeta = $derived(getSlotMeta(selectedStyleComponent));
   const styleSlotClasses = $derived(slotClassByComponent[selectedStyleComponent]);
   const activeCssVars = $derived(
