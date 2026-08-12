@@ -36,6 +36,9 @@
 
   let isPriceSummaryOpen = $state(false);
   let isContactDetailsOpen = $state(false);
+  let isAccountTermsOpen = $state(false);
+  let isAccountOpen = $state(false);
+  let isTermsOpen = $state(false);
   let phoneNumber = $state('8800726381');
   let editPhoneNumber = $state('8800726381');
   let phoneViewportEl = $state<HTMLDivElement | null>(null);
@@ -46,6 +49,33 @@
 
   const closePriceSummary = (): void => {
     isPriceSummaryOpen = false;
+  };
+
+  const openAccountTerms = (): void => {
+    isAccountTermsOpen = true;
+  };
+
+  /* Closing the root Account & Terms sheet tears down the whole stack. */
+  const closeAccountTerms = (): void => {
+    isAccountTermsOpen = false;
+    isAccountOpen = false;
+    isTermsOpen = false;
+  };
+
+  const openAccount = (): void => {
+    isAccountOpen = true;
+  };
+
+  const closeAccount = (): void => {
+    isAccountOpen = false;
+  };
+
+  const openTerms = (): void => {
+    isTermsOpen = true;
+  };
+
+  const closeTerms = (): void => {
+    isTermsOpen = false;
   };
 
   const openContactDetails = (): void => {
@@ -243,7 +273,7 @@
               {/snippet}
             </AppBarLeading>
             <AppBarActions>
-              <IconButton icon={UserIcon} emphasis="subtle" accessibilityLabel="Profile" onClick={noop} />
+              <IconButton icon={UserIcon} emphasis="subtle" accessibilityLabel="Profile" onClick={openAccountTerms} />
             </AppBarActions>
           </AppBar>
 
@@ -611,6 +641,102 @@
             </Button>
           </BottomSheetFooter>
         </BottomSheet>
+
+        <BottomSheet
+          isOpen={isAccountTermsOpen}
+          onDismiss={closeAccountTerms}
+          portalTarget={phoneViewportEl}
+        >
+          <BottomSheetHeader title="Account & Terms" />
+          <BottomSheetBody padding="spacing.0">
+            <div class="menu-list">
+              <button type="button" class="menu-row" onclick={openAccount}>
+                <span class="menu-row-icon">
+                  <UserIcon size="small" color="surface.icon.gray.subtle" />
+                </span>
+                <span class="menu-row-text">
+                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Account</Text>
+                  <Text size="small" weight="regular" color="surface.text.gray.muted">Contact, Login</Text>
+                </span>
+                <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+              </button>
+
+              <button type="button" class="menu-row" onclick={openTerms}>
+                <span class="menu-row-icon">
+                  {@render fileTextIcon()}
+                </span>
+                <span class="menu-row-text">
+                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Razorpay T&Cs</Text>
+                  <Text size="small" weight="regular" color="surface.text.gray.muted">Policies, Terms of service</Text>
+                </span>
+                <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+              </button>
+
+              <button type="button" class="menu-row" onclick={noop}>
+                <span class="menu-row-icon">
+                  {@render translateIcon()}
+                </span>
+                <span class="menu-row-text">
+                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Language</Text>
+                  <Text size="small" weight="regular" color="surface.text.gray.muted">English</Text>
+                </span>
+                <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+              </button>
+            </div>
+          </BottomSheetBody>
+        </BottomSheet>
+
+        <BottomSheet
+          isOpen={isAccountOpen}
+          onDismiss={closeAccountTerms}
+          portalTarget={phoneViewportEl}
+        >
+          <BottomSheetHeader title="Account" showBackButton onBackButtonClick={closeAccount} />
+          <BottomSheetBody padding="spacing.0">
+            <div class="menu-list">
+              <button type="button" class="menu-row" onclick={openContactDetails}>
+                <span class="menu-row-text">
+                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Edit contact details</Text>
+                </span>
+                <ChevronRightIcon size="medium" color="surface.icon.gray.muted" />
+              </button>
+
+              <button type="button" class="menu-row" onclick={noop}>
+                <span class="menu-row-text">
+                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Login</Text>
+                </span>
+                <span class="menu-row-trailing">
+                  <UserIcon size="medium" color="surface.icon.gray.normal" />
+                </span>
+              </button>
+            </div>
+          </BottomSheetBody>
+        </BottomSheet>
+
+        <BottomSheet
+          isOpen={isTermsOpen}
+          onDismiss={closeAccountTerms}
+          portalTarget={phoneViewportEl}
+        >
+          <BottomSheetHeader title="Razorpay T&Cs" showBackButton onBackButtonClick={closeTerms} />
+          <BottomSheetBody padding="spacing.0">
+            <div class="menu-list">
+              <a
+                class="menu-row"
+                href="https://razorpay.com/terms/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <span class="menu-row-text">
+                  <Text size="medium" weight="regular" color="surface.text.gray.normal">Razorpay Terms of Service</Text>
+                </span>
+                <span class="menu-row-trailing">
+                  {@render externalLinkIcon()}
+                </span>
+              </a>
+            </div>
+          </BottomSheetBody>
+        </BottomSheet>
     </div>
 
     <img
@@ -622,6 +748,34 @@
     />
   </div>
 </div>
+
+{#snippet fileTextIcon()}
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <path d="M14 2v6h6" />
+    <line x1="8" y1="13" x2="16" y2="13" />
+    <line x1="8" y1="17" x2="16" y2="17" />
+    <line x1="8" y1="9" x2="10" y2="9" />
+  </svg>
+{/snippet}
+
+{#snippet translateIcon()}
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 5h7" />
+    <path d="M7 4c0 4.5-2 8-5 10" />
+    <path d="M5 8c1.5 2.5 4 4.5 6 5.5" />
+    <path d="M11 20l4-9 4 9" />
+    <path d="M12.5 17h5" />
+  </svg>
+{/snippet}
+
+{#snippet externalLinkIcon()}
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
+  </svg>
+{/snippet}
 
 <style>
   .preview-root {
@@ -933,6 +1087,68 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-3);
+  }
+
+  /* Account & Terms menu — spacing/typography tokens sourced from Figma
+     (Checkout Studio Playground, node 3376:171649 _ActionListItemGroup). */
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    /* body py 8px + group wrapper py 4px = 12px block; items own the inline inset */
+    padding: var(--spacing-4) var(--spacing-3);
+  }
+
+  .menu-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    /* leading→body and body→trailing gap = spacing.4 (12px) */
+    gap: var(--spacing-4);
+    width: 100%;
+    margin: 0;
+    /* _Menu Item wrapper padding = spacing.4 (12px) */
+    padding: var(--spacing-4);
+    border: none;
+    /* _Menu Item wrapper radius = borderRadius.small (8px) */
+    border-radius: var(--border-radius-small);
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    transition: background-color var(--duration-xquick, 70ms) ease;
+  }
+
+  .menu-row:hover {
+    background-color: var(--interactive-background-gray-faded);
+  }
+
+  /* Rows without a leading icon (Account / T&Cs sub-sheets) keep title + trailing
+     aligned to the row edges. */
+  .menu-row:not(:has(.menu-row-icon)) {
+    grid-template-columns: 1fr auto;
+  }
+
+  .menu-row-icon,
+  .menu-row-trailing {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    /* _Menu Item leading/trailing slot = 20px */
+    width: 20px;
+    height: 20px;
+  }
+
+  .menu-row-icon {
+    color: var(--surface-icon-gray-subtle);
+  }
+
+  .menu-row-text {
+    display: flex;
+    flex-direction: column;
+    /* title→description gap = spacing.1 (2px) */
+    gap: var(--spacing-1);
+    min-width: 0;
   }
 
   /*
