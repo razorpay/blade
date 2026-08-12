@@ -221,7 +221,13 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
   return cdnMap;
 }
 
-const screenshotCdnMap = archiveUiScreenshots(reviewJson, repo, prNumber);
+let screenshotCdnMap = {};
+try {
+  screenshotCdnMap = archiveUiScreenshots(reviewJson, repo, prNumber);
+} catch (err) {
+  console.warn('\nWarning: Failed to archive UI screenshots — continuing without them.');
+  console.warn(`  Reason: ${err.message.split('\n')[0]}`);
+}
 
 // ---------------------------------------------------------------------------
 // Build payload
