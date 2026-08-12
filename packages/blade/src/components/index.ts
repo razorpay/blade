@@ -23,6 +23,7 @@ export * from './ChatMessage';
 export * from './Charts';
 export * from './Chip';
 export * from './Collapsible';
+export * from './CurrencySelector';
 export * from './Counter';
 export * from './CounterInput';
 export * from './Divider';
