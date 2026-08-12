@@ -791,6 +791,7 @@
     position: relative;
     width: 440px;
     height: 888px;
+    margin-top: 2rem;
     flex-shrink: 0;
   }
 

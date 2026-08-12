@@ -125,10 +125,6 @@
     <div class="studio-body">
       <main class="studio-canvas">
         <div class="studio-canvas-stage">
-          <div class="studio-frame-chip">
-            <span class="studio-frame-chip-glyph" aria-hidden="true"></span>
-            <Text size="small" weight="medium">Payment Page</Text>
-          </div>
           <div class="studio-frame">
             <BladeProvider {themeTokens} {colorScheme} {fontFaceCSS} {componentConfig}>
               <CheckoutPreview
@@ -167,8 +163,11 @@
 
 <style>
   .studio-shell {
-    height: 100vh;
-    width: 100%;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
     background-color: var(--surface-background-gray-subtle);
   }
 
@@ -177,13 +176,14 @@
     grid-template-columns: minmax(0, 1fr) 320px;
     height: 100%;
     min-height: 0;
+    overflow: hidden;
   }
 
   .studio-canvas {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     min-height: 0;
-    padding: var(--spacing-8) var(--spacing-7);
     overflow: auto;
     background-color: var(--surface-background-gray-subtle);
   }
@@ -199,24 +199,6 @@
     flex-shrink: 0;
   }
 
-  .studio-frame-chip {
-    display: inline-flex;
-    align-self: flex-start;
-    align-items: center;
-    gap: var(--spacing-2);
-    padding: var(--spacing-2) var(--spacing-3);
-    border: 1px solid var(--surface-border-gray-subtle);
-    border-radius: var(--border-radius-small);
-    background-color: var(--surface-background-gray-intense);
-  }
-
-  .studio-frame-chip-glyph {
-    width: 10px;
-    height: 12px;
-    border: 1px solid var(--surface-icon-gray-muted);
-    border-radius: 2px;
-  }
-
   .studio-frame {
     width: 100%;
   }
@@ -227,13 +209,9 @@
   }
 
   @media (max-width: 900px) {
-    .studio-shell {
-      height: auto;
-      min-height: 100vh;
-    }
-
     .studio-body {
       grid-template-columns: minmax(0, 1fr);
+      overflow: auto;
     }
   }
 </style>

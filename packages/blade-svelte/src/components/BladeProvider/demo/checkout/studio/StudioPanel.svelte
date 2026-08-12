@@ -190,10 +190,6 @@
 </script>
 
 <aside class="studio-panel">
-  <div class="studio-panel-header">
-    <Text size="medium" weight="semibold">Customisations</Text>
-  </div>
-
   <Tabs defaultValue="foundations" size="small" variant="bordered">
     <div class="studio-panel-tabbar">
       <TabList>
@@ -372,7 +368,7 @@
       </StudioSection>
 
       {#if activeCssVars.length > 0}
-        <StudioSection title="Demo variables" defaultIsExpanded={false}>
+        <StudioSection title="Variable values">
           <Text size="xsmall" color="surface.text.gray.muted">
             Scaffolding for this playground, not part of the styleOverride API — the seeded
             classnames happen to read these variables.
@@ -433,22 +429,9 @@
     background-color: var(--surface-background-gray-intense);
   }
 
-  .studio-panel-header {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-3);
-    padding: var(--spacing-4) var(--spacing-7);
-    border-bottom: 1px solid var(--surface-border-gray-muted);
-    background-color: var(--surface-background-gray-intense);
-  }
-
   .studio-panel-tabbar {
     position: sticky;
-    top: 45px;
+    top: 0;
     z-index: 1;
     padding: var(--spacing-7) var(--spacing-7) 0;
     /* border-bottom: 1px solid var(--surface-border-gray-muted); */
