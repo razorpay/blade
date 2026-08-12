@@ -61,6 +61,7 @@ const _Accordion = (
     children,
     variant = 'transparent',
     size = 'large',
+    headingLevel = 3,
     maxWidth,
     minWidth,
     testID,
@@ -98,6 +99,7 @@ const _Accordion = (
       variant,
       numberOfItems,
       size,
+      headingLevel,
     }),
     [
       expandedAccordionItemIndex,
@@ -108,6 +110,7 @@ const _Accordion = (
       variant,
       numberOfItems,
       size,
+      headingLevel,
     ],
   );
 
