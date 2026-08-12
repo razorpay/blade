@@ -67,6 +67,11 @@ type Step = {
    * - `'nearest'`: Scroll the minimum amount needed to bring the element into view.
    * - `'none'`: Disable scroll for this step entirely.
    *
+   * **Platform note:** On native (React Native), `'center'` and `'nearest'` behave like
+   * `'auto'` because native scrolling uses platform-specific scroll APIs that do not
+   * expose the CSS `block` alignment options. Only `'none'` has distinct behavior on
+   * both platforms (skips scroll entirely).
+   *
    * @default "auto"
    */
   scrollMode?: 'auto' | 'center' | 'nearest' | 'none';
