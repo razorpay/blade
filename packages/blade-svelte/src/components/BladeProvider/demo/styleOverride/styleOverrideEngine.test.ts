@@ -97,7 +97,7 @@ describe('styleOverride demo engine', () => {
     });
 
     it('emits variables and the rules in play in the CSS snippet', () => {
-      const css = buildCssSnippet({ Card: slotClasses.Card }, ['Card'], {
+      const css = buildCssSnippet({ Card: { root: 'card-brand-border' } }, ['Card'], {
         '--demo-card-border': '#abcdef',
       });
       expect(css).toContain('--demo-card-border: #abcdef;');
@@ -109,6 +109,6 @@ describe('styleOverride demo engine', () => {
   it('collects variables across a component subset in first-use order', () => {
     expect(
       collectCssVarsForComponents(getPresetSlotClasses('signature', ['Button']), ['Button']),
-    ).toEqual(['--brand-bg', '--brand-color', '--brand-text']);
+    ).toEqual(['--brand-bg', '--brand-icon', '--brand-text']);
   });
 });

@@ -27,24 +27,36 @@ export const CHECKOUT_STYLE_COMPONENTS: readonly CheckoutStyleComponent[] =
  */
 const CHECKOUT_SLOT_CLASS_SEED: Partial<Record<CheckoutStyleComponent, SlotClassMap>> = {
   AnnouncementBanner: {
-    root: 'checkout-promo-banner-root',
-    text: 'checkout-promo-banner-text',
+    root: 'bg-transparent',
+    text: 'text-(--demo-promo-text)',
   },
   AppBarLeading: { title: 'text-(--demo-appbar-title)' },
+  /**
+   * This checkout renders each Accordion header with a custom `children` snippet and custom body
+   * content, so the `title` / `subtitle` spans never mount and `body`'s inherited text color is
+   * overridden by the inner `Text`s. Seed only the slots that paint here — `body` as a background,
+   * not text — and blank the rest so no dead classname is advertised.
+   */
+  Accordion: {
+    title: '',
+    subtitle: '',
+    body: 'bg-(--demo-accordion-body-bg)',
+  },
 };
 
 const CHECKOUT_CSS_VAR_SEED: Record<string, string> = {
   '--demo-appbar-title': '#FFFFFF',
+  '--demo-promo-text': '#FFFFFF',
 };
 
 /**
- * Components this checkout renders in a mode that discards `styleOverride`. They stay selectable
- * — the slot catalog and copy-ready snippets are still worth reading — but they are seeded empty
- * so no look appears applied and the component logs no ignored-override warning.
+ * Notes surfaced under the component picker. Accordion renders as a fixed `variant="filled"` shell
+ * in this checkout, which discards `styleOverride`; while Accordion is the applied override target
+ * the preview flips it to `variant="transparent"` so its seeded slot classes actually paint.
  */
-export const CHECKOUT_INERT_COMPONENT_NOTES: Partial<Record<CheckoutStyleComponent, string>> = {
+export const CHECKOUT_COMPONENT_NOTES: Partial<Record<CheckoutStyleComponent, string>> = {
   Accordion:
-    'This checkout renders Accordion with variant="filled", which ignores styleOverride. Use variant="transparent" in your app to patch these slots.',
+    'This checkout renders Accordion as variant="filled". While it is the applied override target the preview switches it to variant="transparent" so these slots paint — do the same in your app.',
 };
 
 export const createCheckoutSlotClasses = (): Record<CheckoutStyleComponent, SlotClassMap> => {
@@ -56,11 +68,6 @@ export const createCheckoutSlotClasses = (): Record<CheckoutStyleComponent, Slot
       ...slotClasses[component],
       ...CHECKOUT_SLOT_CLASS_SEED[component],
     };
-  }
-  for (const component of Object.keys(
-    CHECKOUT_INERT_COMPONENT_NOTES,
-  ) as CheckoutStyleComponent[]) {
-    slotClasses[component] = {};
   }
   return slotClasses;
 };

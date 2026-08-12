@@ -38,12 +38,15 @@ export const isStyleOverrideComponent = (value: string): value is StyleOverrideC
 // ---------------------------------------------------------------------------
 
 /**
- * Rules for the named demo classes, keyed by the classname a consumer types into a slot.
+ * Classes that ship their own CSS, keyed by the classname a consumer types into a slot. Slots
+ * are seeded with `property-(--var)` utilities (see {@link UTILITY_PROPERTY_BY_PREFIX}) whose CSS
+ * is generated; the entries here are the exceptions that can't be a single property utility.
  * Kept as a map (not one CSS blob) so the CSS snippet can emit only the rules in play.
  *
  * `bg-(--brand-bg)` and `card-brand-border` repoint Blade interactive tokens rather than
  * painting a property, which is what keeps hover / disabled states working — see the safety
- * rules on `StyleOverride` in blade-core.
+ * rules on `StyleOverride` in blade-core. `cta-*` are fixed-value looks; `bg-transparent` lets a
+ * surface behind the slot show through.
  */
 const STATIC_CLASS_RULES: Record<string, string> = {
   'bg-(--brand-bg)': `.bg-\\(--brand-bg\\) {
@@ -66,54 +69,26 @@ const STATIC_CLASS_RULES: Record<string, string> = {
   'cta-disabled-fade': `.cta-disabled-fade[disabled] {
   opacity: 0.5;
 }`,
-  'demo-divider': `.demo-divider {
-  background-color: var(--demo-accent);
-}`,
-  'demo-appbar-actions': `.demo-appbar-actions {
-  box-shadow: inset 0 0 0 2px var(--demo-accent);
-  border-radius: var(--border-radius-medium);
-  padding: var(--spacing-1);
-}`,
-  'announcement-banner-text': `.announcement-banner-text {
-  font-size: 14px;
-  font-weight: 600;
-}`,
-  'avatar-custom-radius': `.avatar-custom-radius {
-  border-radius: var(--avatar-radius);
-}`,
-  'icon-btn-radius': `.icon-btn-radius {
-  border-radius: var(--icon-btn-radius);
-}`,
-  'icon-btn-icon-size': `.icon-btn-icon-size svg {
-  width: var(--icon-btn-icon-size);
-  height: var(--icon-btn-icon-size);
+  'bg-transparent': `.bg-transparent {
+  background-color: transparent;
 }`,
 };
 
 /** Named classes read these demo variables, so a surface can offer a control for them. */
 const CLASS_CSS_VARS: Record<string, readonly string[]> = {
   'card-brand-border': ['--demo-card-border'],
-  'demo-divider': ['--demo-accent'],
-  'demo-appbar-actions': ['--demo-accent'],
-  'avatar-custom-radius': ['--avatar-radius'],
-  'icon-btn-radius': ['--icon-btn-radius'],
-  'icon-btn-icon-size': ['--icon-btn-icon-size'],
 };
 
 /** Every named demo rule, for the live stylesheet a surface mounts once. */
 export const STATIC_SLOT_CLASS_CSS = Object.values(STATIC_CLASS_RULES).join('\n\n');
 
 /** Variables edited as a length rather than a color. */
-export const LENGTH_CSS_VARS = new Set([
-  '--avatar-radius',
-  '--icon-btn-radius',
-  '--icon-btn-icon-size',
-]);
+export const LENGTH_CSS_VARS = new Set(['--demo-avatar-radius', '--icon-btn-radius', '--card-radius']);
 
 export const DEMO_CSS_VAR_DEFAULTS: Record<string, string> = {
   '--brand-bg': '#171717',
   '--brand-text': '#FFFFFF',
-  '--brand-color': '#FFFFFF',
+  '--brand-icon': '#FFFFFF',
   '--footer-amount-value': '#1a1a1a',
   '--footer-amount-currency': '#888888',
   '--demo-text': '#1a1a1a',
@@ -125,10 +100,12 @@ export const DEMO_CSS_VAR_DEFAULTS: Record<string, string> = {
   '--demo-accordion-title': '#6c5ce7',
   '--demo-accordion-subtitle': '#888888',
   '--demo-accordion-body': '#1a1a1a',
+  '--demo-accordion-body-bg': '#f3efff',
   '--demo-card-border': '#94a3b8',
-  '--avatar-radius': '6px',
+  '--card-radius': '8px',
+  '--demo-avatar-radius': '6px',
   '--icon-btn-radius': '6px',
-  '--icon-btn-icon-size': '20px',
+  '--icon-btn-icon-color': '#6c5ce7',
 };
 
 export const getCssVarValue = (cssVarValues: Record<string, string>, varName: string): string =>
@@ -141,6 +118,7 @@ export const getCssVarValue = (cssVarValues: Record<string, string>, varName: st
 const UTILITY_PROPERTY_BY_PREFIX: Record<string, string> = {
   bg: 'background-color',
   text: 'color',
+  rounded: 'border-radius',
 };
 
 const UTILITY_CLASS_PATTERN = /^([a-z]+)-\(--([\w-]+)\)$/;

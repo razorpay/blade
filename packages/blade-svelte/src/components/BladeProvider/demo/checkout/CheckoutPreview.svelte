@@ -25,7 +25,9 @@
   import PhoneNumberInput from '../../../Input/PhoneNumberInput/PhoneNumberInput.svelte';
   import CheckoutMethodIcon from './CheckoutMethodIcon.svelte';
   import RazorpayLogo from './RazorpayLogo.svelte';
-  import { ChevronRightIcon, MoreHorizontalIcon, UserIcon } from '../../../Icons';
+  import { ChevronRightIcon, InfoIcon, MoreHorizontalIcon, UserIcon } from '../../../Icons';
+  import type { RadiusKey } from './checkoutPlaygroundTheme';
+  import type { AccordionVariantType } from '../../../Accordion/types';
 
   const noop = (): void => undefined;
 
@@ -117,10 +119,102 @@
   let {
     previewVarsStyle = '',
     appBarSurfaceStyle = '',
+    pulseRadiusKeys = [],
+    pulseNonce = 0,
+    accordionVariant = 'filled',
   }: {
     previewVarsStyle?: string;
     appBarSurfaceStyle?: string;
+    /** One-shot pulse on every element bound to one of these radius tokens (radius edited). */
+    pulseRadiusKeys?: RadiusKey[];
+    /** Bumped by the parent on each edit so an unchanged radius still re-triggers the pulse. */
+    pulseNonce?: number;
+    /**
+     * Checkout renders the method Accordion as `filled` (a fixed shell that discards
+     * `styleOverride`). The studio flips this to `transparent` while Accordion is the active
+     * override target so its seeded slot classes actually paint.
+     */
+    accordionVariant?: AccordionVariantType;
   } = $props();
+
+  const PULSE_DURATION_MS = 700;
+  // Overlays (bottom sheets, menus) mount on demand, so they miss the edit-time scan.
+  // Keep the pulse "armed" this long after an edit so opening one still flashes it.
+  const PULSE_OVERLAY_GRACE_MS = 12000;
+  // Sentinel radius used to probe which elements are bound to a token's CSS var. Chosen
+  // to not collide with any real token px so the match is unambiguous.
+  const RADIUS_PROBE_PX = 111;
+  const RADIUS_PROBE_TOLERANCE_PX = 1.5;
+
+  const elementsIn = (node: HTMLElement): HTMLElement[] => [
+    node,
+    ...node.querySelectorAll<HTMLElement>('*'),
+  ];
+
+  /**
+   * Token-accurate matcher. Matching by resolved px is ambiguous — two tokens can share a
+   * value (e.g. `small` at 12px collides with default `medium`), which flashed everything.
+   * Instead, briefly override each token's CSS var on the scan root with a sentinel px,
+   * read back which candidates now resolve to it, then restore. Set→read→restore runs
+   * synchronously, so the browser never paints the sentinel (no flicker). Works even when
+   * the token is 0px, since the override replaces the value outright.
+   */
+  function probeTokenMatches(
+    root: HTMLElement,
+    keys: RadiusKey[],
+    candidates: HTMLElement[],
+  ): HTMLElement[] {
+    const found = new Set<HTMLElement>();
+    for (const key of keys) {
+      const varName = `--border-radius-${key}`;
+      const previous = root.style.getPropertyValue(varName);
+      root.style.setProperty(varName, `${RADIUS_PROBE_PX}px`);
+      for (const el of candidates) {
+        const radius = Number.parseFloat(getComputedStyle(el).borderTopLeftRadius);
+        if (Number.isFinite(radius) && Math.abs(radius - RADIUS_PROBE_PX) <= RADIUS_PROBE_TOLERANCE_PX) {
+          found.add(el);
+        }
+      }
+      if (previous) root.style.setProperty(varName, previous);
+      else root.style.removeProperty(varName);
+    }
+    return [...found];
+  }
+
+  /** Fire the one-shot pulse animation on an element (reflow restarts it on rapid edits). */
+  function pulseElement(el: HTMLElement): void {
+    el.classList.remove('radius-locate-pulse');
+    void el.offsetWidth;
+    el.classList.add('radius-locate-pulse');
+    setTimeout(() => el.classList.remove('radius-locate-pulse'), PULSE_DURATION_MS);
+  }
+
+  // Pulse: flash matches once after an edit (nonce re-runs even on same value).
+  // Mounted matches flash now; the observer keeps flashing newly-mounted overlays
+  // (bottom sheets, menus) for a grace window so their corners aren't a silent change.
+  $effect(() => {
+    void pulseNonce;
+    const root = phoneViewportEl;
+    if (!root || pulseRadiusKeys.length === 0) return;
+    const keys = pulseRadiusKeys;
+
+    for (const el of probeTokenMatches(root, keys, elementsIn(root))) pulseElement(el);
+
+    const observer = new MutationObserver((records) => {
+      for (const record of records) {
+        for (const node of record.addedNodes) {
+          if (!(node instanceof HTMLElement)) continue;
+          for (const el of probeTokenMatches(root, keys, elementsIn(node))) pulseElement(el);
+        }
+      }
+    });
+    observer.observe(root, { childList: true, subtree: true });
+    const stopTimer = setTimeout(() => observer.disconnect(), PULSE_OVERLAY_GRACE_MS);
+    return () => {
+      observer.disconnect();
+      clearTimeout(stopTimer);
+    };
+  });
 </script>
 
 <div class="preview-root" style={previewVarsStyle}>
@@ -193,8 +287,8 @@
           </div>
 
           <div class="checkout-promo-banner" >
-            <AnnouncementBanner alignment="center">
-              🪔 Diwali sale Flat 10% Off
+            <AnnouncementBanner alignment="center" icon={InfoIcon}>
+              Diwali sale Flat 10% Off
             </AnnouncementBanner>
           </div>
         </div>
@@ -233,7 +327,7 @@
               <Text size="medium" weight="medium" color="surface.text.gray.muted">
                 All Payment Options
               </Text>
-              <Accordion variant="filled" hasGrayBody defaultExpandedIndex={0} minWidth="0" maxWidth="100%">
+              <Accordion variant={accordionVariant} hasGrayBody={accordionVariant === 'filled'} defaultExpandedIndex={0} minWidth="0" maxWidth="100%">
                 {#snippet children()}
                   <AccordionItem>
                     {#snippet children()}
@@ -293,7 +387,7 @@
 
                   <AccordionItem>
                     {#snippet children()}
-                      <AccordionItemHeader>
+                      <AccordionItemHeader href="#cards">
                         {#snippet leading()}
                           <CheckoutMethodIcon name="card" />
                         {/snippet}
@@ -310,11 +404,6 @@
                           </div>
                         {/snippet}
                       </AccordionItemHeader>
-                      <AccordionItemBody>
-                        <Text size="small" color="surface.text.gray.muted">
-                          Pay with Visa, Mastercard, RuPay, or Amex.
-                        </Text>
-                      </AccordionItemBody>
                     {/snippet}
                   </AccordionItem>
 
@@ -533,6 +622,8 @@
   .preview-root {
     --footer-amount-value: var(--surface-text-gray-normal);
     --footer-amount-currency: var(--surface-text-gray-muted);
+    --radius-locate-color: #ffb800;
+    --radius-locate-color-soft: rgba(255, 184, 0, 0.45);
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -837,6 +928,36 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-3);
+  }
+
+  /*
+   * Radius "locate" affordances. Rings are injected as classes onto matched blade
+   * elements from CheckoutPreview's runtime scan. Inset box-shadow is used so the ring
+   * follows each element's own border-radius and is never clipped by an ancestor's
+   * overflow:hidden (cards, accordion, scroll area all clip). !important beats the
+   * component's own shadow tokens for the duration of the highlight.
+   */
+  .phone-viewport :global(.radius-locate-pulse) {
+    animation: radius-locate-pulse 700ms ease-out;
+  }
+
+  @keyframes radius-locate-pulse {
+    0% {
+      box-shadow:
+        inset 0 0 0 3px var(--radius-locate-color),
+        0 0 0 5px var(--radius-locate-color-soft);
+    }
+    100% {
+      box-shadow:
+        inset 0 0 0 0 transparent,
+        0 0 0 0 transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phone-viewport :global(.radius-locate-pulse) {
+      animation-duration: 1ms;
+    }
   }
 
 </style>

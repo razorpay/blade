@@ -26,7 +26,7 @@
     usesCreateTheme,
   } from '../checkoutPlaygroundTheme';
   import {
-    CHECKOUT_INERT_COMPONENT_NOTES,
+    CHECKOUT_COMPONENT_NOTES,
     CHECKOUT_STYLE_COMPONENTS,
     isCheckoutStyleComponent,
     type CheckoutStyleComponent,
@@ -54,6 +54,7 @@
     slotClassByComponent = $bindable(),
     cssVarValues = $bindable(),
     isStyleOverrideApplied = $bindable(),
+    onRadiusPulse,
   }: {
     brandLabel: string;
     customBrandColor: string;
@@ -67,6 +68,8 @@
     slotClassByComponent: Record<CheckoutStyleComponent, SlotClassMap>;
     cssVarValues: Record<string, string>;
     isStyleOverrideApplied: boolean;
+    /** Locate helper: pulse every preview element bound to these radius tokens after an edit. */
+    onRadiusPulse?: (keys: RadiusKey[]) => void;
   } = $props();
 
   const RADIUS_PRESET_OPTIONS = Object.keys(RADIUS_PRESETS).map((preset) => ({
@@ -119,7 +122,7 @@
   const activeCssVars = $derived(
     collectCssVarsForComponents(slotClassByComponent, [selectedStyleComponent]),
   );
-  const inertComponentNote = $derived(CHECKOUT_INERT_COMPONENT_NOTES[selectedStyleComponent]);
+  const componentNote = $derived(CHECKOUT_COMPONENT_NOTES[selectedStyleComponent]);
 
   function setBrandLabel(value: string): void {
     if (value === CUSTOM_BRAND_LABEL) {
@@ -139,11 +142,13 @@
     if (preset in RADIUS_PRESETS) {
       radiusOverride = null;
       radiusPreset = preset;
+      onRadiusPulse?.(RADIUS_KEYS);
     }
   }
 
   function setRadiusValue(key: RadiusKey, value: number): void {
     radiusOverride = { ...borderRadius, [key]: value };
+    onRadiusPulse?.([key]);
   }
 
   function setColorScheme(value: string): void {
@@ -189,9 +194,6 @@
 <aside class="studio-panel">
   <div class="studio-panel-header">
     <Text size="medium" weight="semibold">Customisations</Text>
-    {#if isThemed}
-      <Badge color="information" emphasis="subtle" size="small">createTheme</Badge>
-    {/if}
   </div>
 
   <Tabs defaultValue="foundations" size="small" variant="bordered">
@@ -280,6 +282,10 @@
             />
           </StudioField>
         {/each}
+        <Text size="xsmall" color="surface.text.gray.muted">
+          Editing a radius flashes affected elements in the preview. Overlays (sheets, menus) update
+          too — open one within a few seconds of editing to see it flash.
+        </Text>
       </StudioSection>
 
       <StudioSection title="Surface">
@@ -319,8 +325,7 @@
     <TabPanel value="widgets">
       <StudioSection title="Style override">
         <Text size="small" color="surface.text.gray.muted">
-          Foundations change the whole system; styleOverride patches one component's slots. The
-          inputs are pre-filled — flip Apply to push them onto the checkout.
+          Foundations change the whole system; styleOverride patches component's slots.
         </Text>
         <div class="studio-apply">
           <Switch
@@ -344,12 +349,15 @@
             onChange={setStyleComponent}
           />
         </StudioField>
-        {#if inertComponentNote}
-          <Text size="xsmall" color="surface.text.notice.subtle">{inertComponentNote}</Text>
+        {#if componentNote}
+          <Text size="xsmall" color="surface.text.notice.subtle">{componentNote}</Text>
         {/if}
       </StudioSection>
 
       <StudioSection title="{selectedStyleComponent} slots">
+        <Text size="small" color="surface.text.gray.muted">
+        The inputs are pre-filled; flip Apply to push them onto the checkout preview.
+        </Text>
         {#each styleSlotMeta.slots as slot (slot.name)}
           <StudioField label={slot.name}>
             <TextInput
@@ -402,7 +410,7 @@
         </StudioSection>
       {/if}
 
-      <StudioSection title="Copy">
+      <StudioSection title="Code Snippet">
         <SnippetTabs
           component={selectedStyleComponent}
           components={CHECKOUT_STYLE_COMPONENTS}

@@ -36,6 +36,11 @@
   let fontPresetLabel = $state('Blade default');
   let fontSizeScaleFactor = $state('1');
 
+  // Radius "locate" helper: pulse = one-shot ring on every element bound to an edited radius
+  // token. Preview matches by token (not px) so tokens that share a value don't cross-highlight.
+  let pulseRadiusKeys = $state<RadiusKey[]>([]);
+  let pulseNonce = $state(0);
+
   let selectedStyleComponent = $state<CheckoutStyleComponent>('Button');
   let isStyleOverrideApplied = $state(false);
   let slotClassByComponent = $state<Record<CheckoutStyleComponent, SlotClassMap>>(
@@ -88,6 +93,15 @@
   const previewVarsStyle = $derived(buildPreviewVarsStyle(cssVarValues, activeCssVars));
   const appBarSurfaceStyle = 'background-color: var(--surface-background-primary-intense);';
 
+  /**
+   * Accordion ignores `styleOverride` while `variant="filled"`, so flip the checkout's method
+   * accordion to `transparent` exactly when it's the applied override target — that's the only
+   * time its slot classes are pushed through the provider config.
+   */
+  const accordionVariant = $derived(
+    isStyleOverrideApplied && selectedStyleComponent === 'Accordion' ? 'transparent' : 'filled',
+  );
+
   const dynamicCss = $derived(
     buildDynamicCss(slotClassByComponent, CHECKOUT_STYLE_COMPONENTS, cssVarValues),
   );
@@ -117,7 +131,13 @@
           </div>
           <div class="studio-frame">
             <BladeProvider {themeTokens} {colorScheme} {fontFaceCSS} {componentConfig}>
-              <CheckoutPreview {previewVarsStyle} {appBarSurfaceStyle} />
+              <CheckoutPreview
+                {previewVarsStyle}
+                {appBarSurfaceStyle}
+                {pulseRadiusKeys}
+                {pulseNonce}
+                {accordionVariant}
+              />
             </BladeProvider>
           </div>
         </div>
@@ -136,6 +156,10 @@
         bind:slotClassByComponent
         bind:cssVarValues
         bind:isStyleOverrideApplied
+        onRadiusPulse={(keys) => {
+          pulseRadiusKeys = keys;
+          pulseNonce += 1;
+        }}
       />
     </div>
   </div>
