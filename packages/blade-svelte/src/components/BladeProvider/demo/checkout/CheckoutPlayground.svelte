@@ -3,7 +3,6 @@
   import { bladeTheme, type ColorSchemeNamesInput } from '@razorpay/blade-core/tokens';
   import BladeProvider from '../../BladeProvider.svelte';
   import type { BladeComponentConfigMap } from '../../types';
-  import Text from '../../../Typography/Text/Text.svelte';
   import CheckoutPreview from './CheckoutPreview.svelte';
   import StudioPanel from './studio/StudioPanel.svelte';
   import {
