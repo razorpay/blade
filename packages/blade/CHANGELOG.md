@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.115.1
+
+### Patch Changes
+
+- d0f2310d9: feat: add BookmarkFilledIcon component
+
 ## 12.115.0
 
 ### Minor Changes

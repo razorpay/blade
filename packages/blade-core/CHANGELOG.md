@@ -1,5 +1,15 @@
 # @razorpay/blade-core
 
+## 0.11.0
+
+### Minor Changes
+
+- 41ff76ed3: Remove unintended border and shadow on standalone ActionList in blade-svelte to match React web. Drop unused `getActionListBoxClasses`, `actionListBoxCva`, and `ActionListBoxVariants` exports from blade-core.
+
+### Patch Changes
+
+- 84923f364: fix: resolve avatar addon clipping by separating root positioning context from clipped body
+
 ## 0.10.3
 
 ### Patch Changes
