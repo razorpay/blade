@@ -263,7 +263,8 @@ export const avatarToIndicatorSize = {
  */
 export function getAvatarTemplateClasses(): Record<string, string> {
   return {
-    // Wrapper
+    // Root + body wrapper
+    avatarRoot: styles['avatar-root'],
     avatarWrapper: styles['avatar-wrapper'],
     interactive: styles.interactive,
     // Button
@@ -272,7 +273,6 @@ export function getAvatarTemplateClasses(): Record<string, string> {
     btnInteractive: styles['btn-interactive'],
     btnSelected: styles['btn-selected'],
     // Addon containers
-    addonWrapper: styles['addon-wrapper'],
     topAddon: styles['top-addon'],
     bottomAddon: styles['bottom-addon'],
     // Top addon offsets - circle

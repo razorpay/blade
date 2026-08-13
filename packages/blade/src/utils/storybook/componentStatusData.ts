@@ -1296,7 +1296,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'LineChart',
     description:
-      'A Line Chart component built on top of Recharts with Blade design system styling.',
+      'A Line Chart component built on top of Recharts with Blade design system styling. Supports a reference band (ChartReferenceBand) to compare a trend against an industry min-max range.',
     platform: 'web',
     frameworks: {
       react: {
