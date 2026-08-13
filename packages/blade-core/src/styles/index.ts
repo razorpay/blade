@@ -459,6 +459,7 @@ export {
   getBottomSheetTemplateClasses,
   bottomSheetSurfaceClass,
   bottomSheetBackdropClass,
+  bottomSheetPortalRootClass,
   bottomSheetInnerWrapperClass,
   bottomSheetGrabHandleClass,
   bottomSheetGrabHandleFloatingClass,

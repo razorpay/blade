@@ -20,6 +20,7 @@
     bottomSheetInnerWrapperClass,
     bottomSheetGrabHandleClass,
     bottomSheetGrabHandleFloatingClass,
+    bottomSheetPortalRootClass,
     getBottomSheetTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import {
@@ -538,9 +539,15 @@
 </script>
 
 {#if isMounted}
-  <div use:portal={portalTarget ?? document.body}>
-    {@render overlay()}
-  </div>
+  {#if portalTarget}
+    <div use:portal={portalTarget} class={bottomSheetPortalRootClass}>
+      {@render overlay()}
+    </div>
+  {:else}
+    <div use:portal={document.body}>
+      {@render overlay()}
+    </div>
+  {/if}
 {/if}
 
 {#snippet overlay()}

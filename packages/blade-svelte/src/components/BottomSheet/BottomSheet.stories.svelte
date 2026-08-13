@@ -88,6 +88,8 @@
   let productSelectedSim = $state<string | undefined>();
   let productSimError = $state<string | undefined>();
   let isNonDismissibleOpen = $state(false);
+  let isPortalTargetOpen = $state(false);
+  let portalTargetEl = $state<HTMLDivElement | null>(null);
 
   let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
     $state();
@@ -847,7 +849,81 @@
   {/snippet}
 </Story>
 
-<!-- Story 13: Non-Dismissible BottomSheet — locked open, must use footer buttons.
+<!-- Story 13: With Portal Target — mounts overlay into a bounded container. -->
+<Story name="With Portal Target">
+  {#snippet template()}
+    <div>
+      <Text marginBottom="spacing.4">
+        Pass portalTarget when the sheet sits inside a bounded container (phone preview, modal,
+        ancestor with overflow hidden). Overlay mounts into that element instead of document.body;
+        snap points use the container height.
+      </Text>
+
+      <div
+        bind:this={portalTargetEl}
+        style="
+          position: relative;
+          width: 320px;
+          height: 560px;
+          overflow: hidden;
+          border-radius: var(--radius-medium);
+          border: 2px solid var(--surface-border-gray-subtle);
+          background: var(--surface-background-gray-subtle);
+        "
+      >
+        <div
+          style="
+            padding: var(--spacing-5);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+            height: 100%;
+          "
+        >
+          <Heading size="small">Mobile checkout preview</Heading>
+          <Text color="surface.text.gray.muted" size="small">
+            Open the sheet — backdrop and surface stay inside this frame, not the Storybook canvas.
+          </Text>
+          <Button onClick={() => (isPortalTargetOpen = true)}>Open bottom sheet</Button>
+        </div>
+
+        <BottomSheet
+          isOpen={isPortalTargetOpen}
+          onDismiss={() => (isPortalTargetOpen = false)}
+          portalTarget={portalTargetEl}
+        >
+          {#snippet children()}
+            <BottomSheetHeader
+              title="Price summary"
+              subtitle="Snap points are relative to the phone frame height"
+            />
+            <BottomSheetBody>
+              {#snippet children()}
+                <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
+                  <div style="display: flex; justify-content: space-between;">
+                    <Text>Subtotal</Text>
+                    <Text weight="semibold">₹2,000</Text>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <Text weight="semibold">Grand total</Text>
+                    <Text weight="semibold">₹2,000</Text>
+                  </div>
+                </div>
+              {/snippet}
+            </BottomSheetBody>
+            <BottomSheetFooter>
+              {#snippet children()}
+                <Button isFullWidth onClick={() => (isPortalTargetOpen = false)}>Continue</Button>
+              {/snippet}
+            </BottomSheetFooter>
+          {/snippet}
+        </BottomSheet>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 14: Non-Dismissible BottomSheet — locked open, must use footer buttons.
      The exported storyName in React is verbatim "Non-Dismissible BottomSheet" — DO NOT change. -->
 <Story name="Non-Dismissible BottomSheet">
   {#snippet template()}
