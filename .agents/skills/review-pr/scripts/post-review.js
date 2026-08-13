@@ -221,7 +221,16 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
   return cdnMap;
 }
 
-const screenshotCdnMap = archiveUiScreenshots(reviewJson, repo, prNumber);
+let screenshotCdnMap = {};
+try {
+  screenshotCdnMap = archiveUiScreenshots(reviewJson, repo, prNumber);
+} catch (e) {
+  console.warn(`\nScreenshot archiving failed (non-fatal): ${e.message}`);
+  const currentBranch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
+  if (currentBranch === '__ci_artifacts' || currentBranch === 'pr-3871') {
+    try { execSync(`git checkout ${reviewJson._originalBranch || 'fix/blade-svelte-version-mismatch-temp'}`, { stdio: 'pipe' }); } catch (_) {}
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Build payload
