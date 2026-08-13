@@ -45,7 +45,7 @@ const DefaultMessageBubble = ({
         </BaseBox>
 
         <BaseBox display="flex" flexDirection="column" flex={1}>
-          {hasReasoningTraces && reasoningStatus === 'loading' && isLoading && (
+          {hasReasoningTraces && reasoningStatus === 'loading' && (
             <BaseBox paddingY={isChildText ? 'spacing.2' : 'spacing.0'}>{children}</BaseBox>
           )}
 
@@ -58,7 +58,7 @@ const DefaultMessageBubble = ({
             />
           )}
 
-          {hasReasoningTraces && reasoningStatus === 'complete' && !isLoading && children && (
+          {hasReasoningTraces && reasoningStatus === 'complete' && children && (
             <BaseBox paddingY={isChildText ? 'spacing.2' : 'spacing.0'}>{children}</BaseBox>
           )}
 
