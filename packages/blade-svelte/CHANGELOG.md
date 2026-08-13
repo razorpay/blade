@@ -1,5 +1,16 @@
 # @razorpay/blade-svelte
 
+## 0.11.5
+
+### Patch Changes
+
+- 41ff76ed3: Remove unintended border and shadow on standalone ActionList in blade-svelte to match React web. Drop unused `getActionListBoxClasses`, `actionListBoxCva`, and `ActionListBoxVariants` exports from blade-core.
+- 84923f364: fix: resolve avatar addon clipping by separating root positioning context from clipped body
+- 349e25f85: fix: add optional `portalTarget` prop to BottomSheet and PhoneNumberInput for custom portal mounting
+- Updated dependencies [41ff76ed3]
+- Updated dependencies [84923f364]
+  - @razorpay/blade-core@0.11.0
+
 ## 0.11.4
 
 ### Patch Changes
