@@ -29,3 +29,14 @@ fi
 ```
 
 When intent is `perform-task-end-to-end`, load `perform-task-end-to-end` skill in your context and do the task end-to-end as guided by the skill.
+
+## Never Commit Your Working Notes
+
+A commit must contain only the change itself. Notes you produce *about* the change — review reports, summaries, plans, discovery/verification reports, status trackers, checklists, screenshots — are not part of it and must never be committed.
+
+- Report your findings in your response to the user, or as a PR/review comment. Not as a file in the repo.
+- If you genuinely need to persist something across steps, write it to `/tmp` or an ignored `.agents/artifacts/` path — never to a new directory at the repo root or under `.agents/`, `.claude/`, `.cursor/`.
+- Never use `git add -f` to stage a file that is ignored, and never `git add -A`/`git add .` without first checking `git status` for stray files.
+- Before committing, confirm every staged file is something a reviewer would expect in this change.
+
+`yarn lint:agent-artifacts` enforces this on pre-commit and in CI. If it fails, delete the files — do not add exceptions for them.

@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 22
+      - name: Check For Agent Scratch Files
+        run: node ./scripts/checkAgentArtifacts.js
       - name: Pre-Generate Documentation Lock File
         run: yarn generate-docs-lockfile
       - name: Setup Cache & Install Dependencies
