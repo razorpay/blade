@@ -17,6 +17,7 @@ import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
 import { useTheme } from '~components/BladeProvider';
+import { isBrowser } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const asHTMLElement = (el: TourElement | null): HTMLElement | null => el as HTMLElement | null;
@@ -130,6 +131,8 @@ const SpotlightPopoverTour = ({
   );
 
   const scrollToStep = useCallback(() => {
+    if (!isBrowser()) return;
+
     const ref = refIdMap.get(steps[delayedActiveStep]?.name);
     const el = asHTMLElement(ref?.current ?? null);
     if (!el) return;
