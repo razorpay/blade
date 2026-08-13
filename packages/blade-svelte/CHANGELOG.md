@@ -1,5 +1,11 @@
 # @razorpay/blade-svelte
 
+## 0.11.6
+
+### Patch Changes
+
+- d7e6f4c5b: fix: bump Svelte to 5.56.3 and update optional parameter defaults for compatibility with checkout
+
 ## 0.11.5
 
 ### Patch Changes
