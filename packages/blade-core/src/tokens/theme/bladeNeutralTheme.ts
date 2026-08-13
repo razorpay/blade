@@ -21,11 +21,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayLight[0],
         },
         primary: {
-          faint: 'transparent',
-          subtle: globalColors.chromatic.azure.a50,
-          moderate: 'transparent',
-          intense: globalColors.chromatic.azure[500],
-          strong: 'transparent',
+          faint: globalColors.chromatic.azure[50],
+          subtle: globalColors.chromatic.azure[100],
+          moderate: globalColors.chromatic.azure[500],
+          intense: globalColors.chromatic.azure[600],
+          strong: globalColors.chromatic.azure[900],
         },
         sea: {
           subtle: globalColors.chromatic.sea[50],
@@ -36,7 +36,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.chromatic.cloud[800],
         },
         accent: {
-          intense: 'transparent',
+          intense: globalColors.chromatic.forest[500],
         },
       },
       border: {
@@ -246,18 +246,18 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayLight.a906,
           faded: globalColors.neutral.blueGrayLight.a906,
           fadedHighlighted: globalColors.neutral.blueGrayLight.a909,
-          ghost: globalColors.neutral.blueGrayLight.a1,
+          ghost: globalColors.neutral.blueGrayLight.a0,
         },
         primary: {
-          default: globalColors.chromatic.azure[500],
-          highlighted: globalColors.chromatic.azure[600],
-          disabled: globalColors.chromatic.azure.a100,
-          faded: globalColors.chromatic.azure.a50,
-          fadedHighlighted: globalColors.chromatic.azure.a100,
+          default: globalColors.neutral.black[500],
+          highlighted: globalColors.neutral.black[450],
+          disabled: globalColors.neutral.black[100],
+          faded: globalColors.neutral.black[50],
+          fadedHighlighted: globalColors.neutral.black[100],
         },
         staticBlack: {
           default: globalColors.neutral.black[500],
-          highlighted: globalColors.neutral.black[500],
+          highlighted: globalColors.neutral.black[450],
           disabled: globalColors.neutral.black[200],
           faded: globalColors.neutral.black[50],
           fadedHighlighted: globalColors.neutral.black[100],
@@ -310,10 +310,10 @@ const colors: ColorsWithModes = {
           faded: globalColors.neutral.blueGrayLight.a918,
         },
         primary: {
-          default: globalColors.chromatic.azure[500],
-          highlighted: globalColors.chromatic.azure[600],
-          disabled: globalColors.chromatic.azure.a100,
-          faded: globalColors.chromatic.azure.a100,
+          default: globalColors.neutral.black[500],
+          highlighted: globalColors.neutral.black[450],
+          disabled: globalColors.neutral.black[100],
+          faded: globalColors.neutral.black[100],
         },
         staticWhite: {
           default: globalColors.neutral.white[500],
@@ -368,10 +368,10 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayLight.a932,
         },
         primary: {
-          normal: globalColors.chromatic.azure[600],
-          subtle: globalColors.chromatic.azure[500],
-          muted: globalColors.chromatic.azure[400],
-          disabled: globalColors.chromatic.azure.a200,
+          normal: globalColors.neutral.black[500],
+          subtle: globalColors.neutral.black[450],
+          muted: globalColors.neutral.black[400],
+          disabled: globalColors.neutral.black[200],
         },
         onPrimary: {
           normal: globalColors.neutral.white[500],
@@ -430,10 +430,10 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayLight.a932,
         },
         primary: {
-          normal: globalColors.chromatic.azure[600],
-          subtle: globalColors.chromatic.azure[500],
-          muted: globalColors.chromatic.azure[400],
-          disabled: globalColors.chromatic.azure.a200,
+          normal: globalColors.neutral.black[500],
+          subtle: globalColors.neutral.black[450],
+          muted: globalColors.neutral.black[400],
+          disabled: globalColors.neutral.black[200],
         },
         onPrimary: {
           normal: globalColors.neutral.white[500],
@@ -715,6 +715,9 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[1100],
         },
         primary: {
+          // Intentional: onDark uses transparent for faint/moderate/strong to
+          // match bladeTheme's onDark structure. The neutral theme only
+          // overrides onLight with real azure/forest values for checkout.
           faint: 'transparent',
           subtle: globalColors.chromatic.azure.a200,
           moderate: 'transparent',
@@ -729,6 +732,9 @@ const colors: ColorsWithModes = {
           subtle: globalColors.chromatic.cloud[900],
           intense: globalColors.chromatic.cloud[100],
         },
+        // Intentional: onDark accent.intense is transparent to match
+        // bladeTheme's onDark structure. Only onLight carries the real
+        // forest[500] value for the neutral checkout theme.
         accent: {
           intense: 'transparent',
         },
@@ -1388,6 +1394,10 @@ const colors: ColorsWithModes = {
             200: globalColors.neutral.blueGrayDark[1000],
             300: globalColors.neutral.blueGrayDark[900],
             400: globalColors.neutral.blueGrayDark[800],
+            // Known duplicate: blueGrayDark scale has no step between [800]
+            // (24% lightness) and [700] (36% lightness). This duplicate is
+            // inherited from bladeTheme.ts and should be fixed when the color
+            // scale gains an intermediate step.
             500: globalColors.neutral.blueGrayDark[800],
             600: globalColors.neutral.blueGrayDark[700],
             700: globalColors.neutral.blueGrayDark[600],
@@ -1402,8 +1412,8 @@ const colors: ColorsWithModes = {
   },
 };
 
-const bladeTheme: ThemeTokens = {
-  name: 'bladeTheme',
+const bladeNeutralTheme: ThemeTokens = {
+  name: 'bladeNeutralTheme',
   border,
   backdropBlur,
   breakpoints,
@@ -1414,4 +1424,4 @@ const bladeTheme: ThemeTokens = {
   typography,
 };
 
-export default bladeTheme;
+export default bladeNeutralTheme;
