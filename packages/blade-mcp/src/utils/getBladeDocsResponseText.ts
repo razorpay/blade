@@ -1,31 +1,54 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import { KNOWLEDGEBASE_DIRECTORY } from './tokens.js';
+import type { BladeFramework } from '../types/framework.js';
+import { DEFAULT_FRAMEWORK } from '../types/framework.js';
+import { getBladeDocsList, getKnowledgebaseDirectory } from './generalUtils.js';
 import type { DocumentationType } from './generalUtils.js';
+
+const getUnavailableSvelteComponentMessage = (
+  componentName: string,
+  availableComponents: string[],
+): string => {
+  const availableList =
+    availableComponents.length > 0 ? availableComponents.join(', ') : 'none yet';
+
+  return `⚠️ Svelte documentation for ${componentName} is not available yet. Available Svelte components: ${availableList}. Use framework="react" for the full React component catalog.`;
+};
 
 const getBladeDocsResponseText = ({
   docsList,
   documentationType,
+  framework = DEFAULT_FRAMEWORK,
 }: {
   docsList: string;
   documentationType: DocumentationType;
+  framework?: BladeFramework;
 }): string => {
-  // Parse the comma-separated string into an array of component names
   const docNames = docsList.split(',').map((name: string) => name.trim());
+  const knowledgebaseDirectory = getKnowledgebaseDirectory(documentationType, framework);
+  const availableSvelteComponents =
+    framework === 'svelte' && documentationType === 'components'
+      ? getBladeDocsList('components', 'svelte')
+      : [];
 
-  // Build the formatted documentation text
-  let responseText = `Blade ${documentationType} documentation for: ${docsList}\n\n`;
+  let responseText = `Blade ${framework} ${documentationType} documentation for: ${docsList}\n\n`;
 
-  // Process each component
   for (const docName of docNames) {
     responseText += `# ${docName}\n`;
 
     try {
-      const filePath = resolve(KNOWLEDGEBASE_DIRECTORY, documentationType, `${docName}.md`);
+      const filePath = resolve(knowledgebaseDirectory, `${docName}.md`);
       const content = readFileSync(filePath, 'utf8');
       responseText += `${content}\n\n`;
     } catch (error: unknown) {
-      responseText += `⚠️ Error: Could not read documentation for ${docName} in ${documentationType}. The documentation may not exist or there may be an issue with the file.\n\n`;
+      if (framework === 'svelte' && documentationType === 'components') {
+        responseText += `${getUnavailableSvelteComponentMessage(
+          docName,
+          availableSvelteComponents,
+        )}\n\n`;
+      } else {
+        responseText += `⚠️ Error: Could not read documentation for ${docName} in ${documentationType}. The documentation may not exist or there may be an issue with the file.\n\n`;
+      }
     }
   }
 

@@ -13,6 +13,7 @@ import { SKILL_VERSION_STRING } from '../../utils/tokens.js';
 vi.mock('../../utils/analyticsUtils.js');
 vi.mock('../../utils/skillUtils.js');
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const createMockContext = (): any => ({
   signal: new AbortController().signal,
   requestId: 'test-request-id',
