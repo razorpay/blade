@@ -49,7 +49,8 @@
   const isControlled = untrack(() => value !== undefined);
   const isLabelLeftPositioned = $derived(labelPosition === 'left');
 
-  const otpToArray = (code?: string): string[] => code?.split('') ?? Array(otpLength).fill('');
+  const otpToArray = (code: string | undefined = undefined): string[] =>
+    code?.split('') ?? Array(otpLength).fill('');
 
   let otpValue = $state<string[]>(untrack(() => otpToArray(value)));
   const inputEls: BaseInputInstance[] = $state([]);
