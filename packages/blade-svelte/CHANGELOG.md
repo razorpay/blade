@@ -1,5 +1,17 @@
 # @razorpay/blade-svelte
 
+## 0.11.7
+
+### Patch Changes
+
+- 2b2f8ec0e: fix(blade-svelte): constrain BottomSheet portalTarget to container bounds
+
+  Fixed BottomSheet `portalTarget` so backdrop and surface render inside the target container instead of escaping to the viewport. Adds portal root wrapper styles in blade-core that switch surface/backdrop from `position: fixed` to `position: absolute` when portaling into a bounded element.
+
+- Updated dependencies [59f21bda8]
+- Updated dependencies [2b2f8ec0e]
+  - @razorpay/blade-core@0.12.0
+
 ## 0.11.6
 
 ### Patch Changes

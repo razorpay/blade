@@ -1439,7 +1439,7 @@ LineChartWithSequentialColors.parameters = {
 
 SimpleLineChart.storyName = 'Simple Line Chart';
 LineChartWithReferenceBand.storyName = 'Line Chart with Reference Band';
-LineChartIndustrySRKitchenSink.storyName = 'KitchenSink (Industry SR — multi-line + range)';
+LineChartIndustrySRKitchenSink.storyName = 'Line Chart with Multiple Reference Bands';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
