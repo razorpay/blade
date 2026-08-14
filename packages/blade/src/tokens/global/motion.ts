@@ -92,6 +92,17 @@ type Easing = {
   emphasized: EasingType<'cubic-bezier(0.5, 0, 0, 1)'>;
 
   /**
+   * Settle Easing
+   *
+   * Use Case: Surfaces that grow, reflow, or settle into place — a composer
+   * expanding, a bar entering, chips reflowing. Leaves quickly and decelerates
+   * hard into its final position.
+   *
+   * Returns cubic-bezier string in web and EasingFactoryFn of react-native-reanimated in native
+   */
+  settle: EasingType<'cubic-bezier(0.32, 0.72, 0, 1)'>;
+
+  /**
    * Overshoot Easing
    *
    * Use Case: Toast notifications
@@ -149,6 +160,7 @@ const easing: Easing = {
   exit: makeBezier(0.17, 0, 1, 1),
   standard: makeBezier(0.3, 0, 0.2, 1),
   emphasized: makeBezier(0.5, 0, 0, 1),
+  settle: makeBezier(0.32, 0.72, 0, 1),
   overshoot: makeBezier(0.5, 0, 0.3, 1.5),
   shake: makeBezier(1, 0.5, 0, 0.5),
 };
