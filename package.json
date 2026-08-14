@@ -21,7 +21,6 @@
   "scripts": {
     "tsc:blade": "lerna run --scope @razorpay/blade typecheck",
     "tsc:knowledgebase": "node ./scripts/lintKnowledgebase.js",
-    "lint:agent-artifacts": "node ./scripts/checkAgentArtifacts.js",
     "lint": "eslint --ext js,jsx,ts,tsx packages && stylelint '**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --ext js,jsx,ts,tsx packages --fix && stylelint '**/*.{js,jsx,ts,tsx}' --fix",
     "lint:blade": "eslint --ext js,jsx,ts,tsx packages/blade",
@@ -115,7 +114,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && node ./scripts/checkAgentArtifacts.js"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {

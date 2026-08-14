@@ -24,6 +24,7 @@ disable-model-invocation: true
 
 ## Instructions
 
+- You should never add any review.md file in PR or anywhere in the codebase. post-review script takes care of posting review and if it fails, you can add review as a comment on the PR
 - If you're unable to spawn the subagents, stop the skill immediately and respond with error message.
   ```json
   {
@@ -142,9 +143,3 @@ When `--pending` is used, the script prints the review ID and a command to submi
 # To submit the pending review later:
 gh api repos/razorpay/blade/pulls/{PR_NUMBER}/reviews/{REVIEW_ID}/events --method POST --field event=COMMENT
 ```
-
-### 6. Do not write a review report file
-
-The review lives on GitHub and the JSON stays in `/tmp`. Do not save a report, summary or
-recap of this review anywhere inside the repo, and do not commit one — summarise in your
-response to the user instead.
