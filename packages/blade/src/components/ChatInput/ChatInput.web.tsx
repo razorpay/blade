@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import type { ChatInputProps } from './types';
 import { chatInputFilePreviewItemWidth } from './chatInputTokens';
 import { ChatInputActionBar } from './ChatInputActionBar';
+import { ChatInputFeedback } from './ChatInputFeedback.web';
 import { ChatInputGhostSuggestion } from './ChatInputGhostSuggestion';
 import { useChatInput } from './useChatInput';
 import { useTheme } from '~components/BladeProvider';
@@ -56,6 +57,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     hideFileUpload = false,
     autoFocus = false,
     accessibilityLabel = 'Chat input',
+    feedback,
     testID,
     ...rest
   },
@@ -216,9 +218,46 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
 
   const isError = validationState === 'error';
 
+  /*
+   * The surface that holds prompt and composer together.
+   *
+   * Only drawn while the prompt is actually showing: with the prompt gone the composer has to look
+   * exactly as it does with the feature switched off, and a leftover border with 4px of padding
+   * around a lone composer is a worse artefact than no feature at all.
+   *
+   * Nothing at all is emitted when the feature is unused, rather than the same properties set to
+   * transparent and zero. A composer without a feedback prompt should render byte-for-byte as it
+   * did before this existed — a border-style and a radius that no consumer asked for is the kind of
+   * change that shows up as unexplained diff noise in every snapshot downstream.
+   */
+  const isFeedbackVisible = Boolean(feedback) && feedback?.isVisible !== false;
+  const frameProps = feedback
+    ? ({
+        display: 'flex',
+        flexDirection: 'column',
+        // 4px between the prompt and the card, per the design.
+        gap: 'spacing.2',
+        /*
+         * A tinted surface rather than a grey one: the prompt is Ray asking for something, not a
+         * disabled or secondary region, and the azure wash ties it to the assistant rather than to
+         * the page chrome. No border — the tint alone separates it from the page, and an outline
+         * around an outline (the card carries its own) reads as two boxes rather than one.
+         */
+        backgroundColor: isFeedbackVisible ? 'surface.background.primary.subtle' : 'transparent',
+        // 20px outside, 16px on the card within, per the design.
+        borderRadius: 'xlarge',
+        /*
+         * The design asks for 6px, which is not on Blade's spacing scale — it steps 4 to 8 — so
+         * this rounds up rather than inventing a value off-scale.
+         */
+        padding: isFeedbackVisible ? 'spacing.3' : 'spacing.0',
+      } as const)
+    : {};
+
   return (
     <BaseBox
       position="relative"
+      {...frameProps}
       {...metaAttribute({ name: MetaConstants.ChatInput, testID })}
       {...getStyledProps(rest)}
     >
@@ -233,6 +272,8 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         style={{ display: 'none' }}
         aria-hidden="true"
       />
+
+      {feedback ? <ChatInputFeedback {...feedback} /> : null}
 
       <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
         <BaseInput
@@ -291,8 +332,9 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         /*
          * This region stays mounted when there is no error — `BaseMotionEntryExit` keeps it for
          * the exit animation — and a full-width transparent box directly above the composer will
-         * happily swallow clicks meant for whatever a consumer has put there. It only needs to be
-         * interactive when it is actually saying something.
+         * happily swallow clicks meant for whatever a consumer has put there. It did: the mood
+         * scale's lower 20px stopped responding, with nothing on screen to explain why. It only
+         * needs to be interactive when it is actually saying something.
          */
         pointerEvents={isError ? 'auto' : 'none'}
       >

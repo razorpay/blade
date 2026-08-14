@@ -2,6 +2,30 @@ import type { DataAnalyticsAttribute, TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeFile, BladeFileList } from '~components/FileUpload/types';
 import type { FormInputOnEvent } from '~components/Form/FormTypes';
+import type { ChatFeedbackProps } from '~components/ChatFeedback';
+
+/**
+ * The feedback prompt attached to the top of a `ChatInput`.
+ *
+ * A subset of `ChatFeedback`'s props: the flow is the same one, but the parts that describe how
+ * it is *laid out* are decided by the composer it is attached to, not by the caller. `isFullWidth`
+ * is fixed because a strip spanning a composer has a width already, and the thank-you copy and
+ * dismissal are left to `ChatFeedback`'s own defaults.
+ */
+type ChatInputFeedbackProps = Pick<
+  ChatFeedbackProps,
+  'question' | 'moodConfig' | 'moodIcons' | 'isDisabled' | 'onMoodSelect' | 'onSubmit' | 'onDismiss'
+> & {
+  /**
+   * Whether the prompt is showing.
+   *
+   * The prompt does not remove itself — hide it in response to `onSubmit` or `onDismiss`. Setting
+   * this back to `true` starts a fresh flow.
+   *
+   * @default true
+   */
+  isVisible?: boolean;
+};
 
 type ChatInputProps = {
   /**
@@ -167,8 +191,19 @@ type ChatInputProps = {
    * Accessibility label for the input. Required when no visible label is present.
    */
   accessibilityLabel?: string;
+
+  /**
+   * Attaches a feedback prompt to the top of the composer.
+   *
+   * The two share one surface, so they read as a single object rather than as a prompt that
+   * happens to be sitting above an input. Omit this and the composer looks exactly as it does
+   * without the feature — the surface is only drawn while the prompt is there.
+   *
+   * Web only.
+   */
+  feedback?: ChatInputFeedbackProps;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
 
-export type { ChatInputProps };
+export type { ChatInputProps, ChatInputFeedbackProps };

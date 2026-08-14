@@ -875,3 +875,112 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
   );
 };
 WithManyFiles.storyName = 'With Many Files (Autoscroll)';
+
+/**
+ * The set is one object, declared once and reused.
+ *
+ * `moodIcons` swaps the *glyphs*, not the control: Blade keeps the four buttons, the radio group,
+ * the tooltips, the 32px targets and the selected state. So an icon set is a plain object — or a
+ * module exporting one — rather than a component that owns the row.
+ *
+ * Defining it apart from the component is what makes it swappable: every surface in a product
+ * imports the same object, so changing the scale is one edit rather than one per composer.
+ */
+const emojiMoodIcons = {
+  'very-dissatisfied': <span>😢</span>,
+  dissatisfied: <span>😕</span>,
+  satisfied: <span>🙂</span>,
+  'very-satisfied': <span>😍</span>,
+};
+
+/**
+ * The composer can carry a feedback prompt on its top edge. Prompt and composer share one
+ * surface, so they read as a single object rather than as two things that happen to be adjacent.
+ *
+ * `ChatFeedback` never removes itself — hide the prompt in response to `onSubmit` or `onDismiss`,
+ * as below. With `feedback` gone the composer looks exactly as it does without the feature.
+ *
+ * Blade ships no artwork for the rating scale yet, so `moodIcons` is required — pass your own
+ * icons or plain emoji characters, declared once and imported wherever the composer appears.
+ */
+export const WithFeedback: StoryFn<typeof ChatInput> = () => {
+  const [value, setValue] = useState('');
+  const [showFeedback, setShowFeedback] = useState(true);
+  const [answer, setAnswer] = useState<string | null>(null);
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+      <ChatInput
+        placeholder="Ask anything..."
+        value={value}
+        onChange={({ value: next }) => setValue(next)}
+        onSubmit={() => setValue('')}
+        feedback={{
+          moodIcons: emojiMoodIcons,
+          isVisible: showFeedback,
+          question: "How's this assistant doing so far?",
+          onSubmit: ({ mood, tags }) => {
+            setAnswer(`${mood}${tags.length ? ` — ${tags.join(', ')}` : ''}`);
+            setShowFeedback(false);
+          },
+          onDismiss: () => setShowFeedback(false),
+        }}
+      />
+      {answer ? (
+        <Text size="small" color="surface.text.gray.muted">
+          Recorded: {answer}
+        </Text>
+      ) : null}
+      {showFeedback ? null : (
+        <Box>
+          <Text size="small" color="surface.text.gray.muted">
+            The prompt is gone and the composer is back to its plain state.
+          </Text>
+        </Box>
+      )}
+    </Box>
+  );
+};
+WithFeedback.storyName = 'With feedback prompt (attached)';
+
+/**
+ * Every point of the scale takes a glyph of your own — a product's icon set, or plain emoji
+ * characters as below.
+ *
+ * Hover or pick one: the selected state is drawn on the *button*, not the glyph, so it reads the
+ * same even though an emoji cannot be tinted.
+ */
+export const WithCustomMoodIcons: StoryFn<typeof ChatInput> = () => {
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+
+  const record = (row: string) => ({ mood }: { mood: string }) =>
+    setAnswers((prev) => ({ ...prev, [row]: mood }));
+
+  const rows = [
+    {
+      key: 'emoji',
+      label: 'moodIcons — emoji characters (cannot be tinted)',
+      feedback: { question: "How's Ray doing so far?", moodIcons: emojiMoodIcons },
+    },
+  ];
+
+  return (
+    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.7">
+      {rows.map((row) => (
+        <Box key={row.key} display="flex" flexDirection="column" gap="spacing.3">
+          <Text size="small" color="surface.text.gray.muted">
+            {row.label}
+          </Text>
+          <ChatInput
+            placeholder="Ask anything..."
+            feedback={{ ...row.feedback, onMoodSelect: record(row.key) }}
+          />
+          <Text size="small" color="surface.text.gray.muted">
+            picked: {answers[row.key] ?? '—'}
+          </Text>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+WithCustomMoodIcons.storyName = 'With custom mood icons';

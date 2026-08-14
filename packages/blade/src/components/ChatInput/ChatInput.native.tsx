@@ -52,6 +52,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     autoFocus = false,
     accessibilityLabel = 'Chat input',
     accept: _accept,
+    feedback: _feedback,
     testID,
     ...rest
   },
@@ -65,6 +66,14 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       throwBladeError({
         message:
           'The `accept` prop has no effect on React Native. File filtering should be handled by your file picker (see onFileChange).',
+        moduleName: 'ChatInput',
+      });
+    }
+
+    if (_feedback) {
+      throwBladeError({
+        message:
+          'The `feedback` prop is not supported on React Native yet. Render `ChatFeedback` yourself above the composer until it is.',
         moduleName: 'ChatInput',
       });
     }

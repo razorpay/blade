@@ -25,6 +25,21 @@ type ComponentStatusDataType = {
 
 const componentData: ComponentStatusDataType = [
   {
+    name: 'ChatInput',
+    description:
+      'Composer for conversational surfaces, with file attachments, ghost suggestions and an optional attached feedback prompt.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/ChatInput',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'ChatFeedback',
     description:
       'Four-point rating flow for conversational surfaces — mood, follow-up tags, and an optional free-text comment.',

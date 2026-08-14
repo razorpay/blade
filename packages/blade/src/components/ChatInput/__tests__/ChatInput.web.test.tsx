@@ -6,6 +6,14 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 
 const accessibilityLabel = 'Chat input';
 
+/** Blade ships no artwork for the scale yet, so every render supplies its own. */
+const moodIcons = {
+  'very-dissatisfied': <span>😢</span>,
+  dissatisfied: <span>😕</span>,
+  satisfied: <span>🙂</span>,
+  'very-satisfied': <span>😍</span>,
+};
+
 describe('<ChatInput />', () => {
   it('should render ChatInput', () => {
     const { container } = renderWithTheme(
@@ -147,5 +155,82 @@ describe('<ChatInput />', () => {
       <ChatInput accessibilityLabel={accessibilityLabel} placeholder="Ask a question..." />,
     );
     await assertAccessible(container);
+  });
+
+  describe('feedback prompt', () => {
+    it('should render the attached prompt when feedback is passed', () => {
+      const { getByText, getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          feedback={{ moodIcons, question: 'How are we doing?' }}
+        />,
+      );
+
+      expect(getByText('How are we doing?')).toBeTruthy();
+      expect(getByRole('radiogroup', { name: 'Rate this experience' })).toBeTruthy();
+    });
+
+    it('should not render the prompt when it is hidden', () => {
+      const { queryByText } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          feedback={{ moodIcons, question: 'How are we doing?', isVisible: false }}
+        />,
+      );
+
+      expect(queryByText('How are we doing?')).toBeNull();
+    });
+
+    it('should render no prompt at all when feedback is omitted', () => {
+      const { queryByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} />,
+      );
+
+      expect(queryByRole('radiogroup', { name: 'Rate this experience' })).toBeNull();
+    });
+
+    it('should report the mood the user picks', async () => {
+      const onMoodSelect = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          feedback={{ moodIcons, onMoodSelect }}
+        />,
+      );
+
+      await userEvent.click(getByRole('radio', { name: 'Good' }));
+
+      expect(onMoodSelect).toHaveBeenCalledWith({ mood: 'satisfied' });
+    });
+
+    /*
+     * The regression that made this worth a test: ChatInput keeps its validation region mounted
+     * above the card even with no error, and it used to swallow clicks aimed at anything stacked
+     * there — the lower two-thirds of every mood button, with nothing on screen to explain it.
+     */
+    it('should keep the prompt clickable while no error is showing', async () => {
+      const onMoodSelect = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          validationState="none"
+          feedback={{ moodIcons, onMoodSelect }}
+        />,
+      );
+
+      await userEvent.click(getByRole('radio', { name: 'Love it!' }));
+
+      expect(onMoodSelect).toHaveBeenCalledWith({ mood: 'very-satisfied' });
+    });
+
+    it('should not have accessibility violations with the prompt attached', async () => {
+      const { container } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          feedback={{ moodIcons, question: 'How are we doing?' }}
+        />,
+      );
+      await assertAccessible(container);
+    });
   });
 });
