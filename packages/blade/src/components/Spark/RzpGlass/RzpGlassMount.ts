@@ -22,12 +22,31 @@ import { loadImage, loadVideo, isSafari, bestGuessBrowserZoom } from './utils';
 import { createProgram, setupFullscreenQuad, Texture } from './webgl-utils';
 import { WebGLPerformanceController, LEVEL_RENDER_SETTINGS } from './PerformanceManager';
 import type { PerformanceLevel } from './PerformanceManager';
+import type { RazorSenseResolvedPlaybackPlan } from './razorSensePrograms';
 
 // Reference resolution for zoom-independent displacement
 const REF_RESOLUTION = { width: 3000, height: 2000 };
 
 // Default max pixel count (1920 * 1080 * 4 = 8,294,400 pixels)
 const DEFAULT_MAX_PIXEL_COUNT = 1920 * 1080 * 4;
+
+// Legacy sources were authored at 30fps. Holding one source frame before the
+// configured boundary avoids seeking past the final decodable frame.
+const LEGACY_SOURCE_FRAME_SECONDS = 1 / 30;
+
+type RzpGlassPlaybackOccurrence = {
+  occurrenceId: number;
+  playback: RazorSenseResolvedPlaybackPlan;
+  onPresentationReady?: () => void;
+  onIteration?: (iteration: number) => void;
+  onTerminal?: (iterationCount: number) => void;
+};
+
+type RzpGlassPendingPlaybackFrame = {
+  generation: number;
+  kind: 'presentation' | 'iteration-start' | 'terminal';
+  iterationCount: number;
+};
 
 // Default styles for the shader container
 const defaultStyle = `@layer rzp-glass {
@@ -125,6 +144,14 @@ export class RzpGlassMount {
   private hasBeenDisposed = false;
   private isInitialized = false;
   private resolutionChanged = true;
+
+  // Declarative playback is opt-in. Without an occurrence, the legacy mount
+  // keeps its historical native-loop behavior unchanged.
+  private playbackOccurrence: RzpGlassPlaybackOccurrence | null = null;
+  private playbackGeneration = 0;
+  private playbackIterationCount = 0;
+  private isPlaybackTerminal = false;
+  private pendingPlaybackFrame: RzpGlassPendingPlaybackFrame | null = null;
 
   // Visible UV bounds (where container clips the canvas)
   // vec4(minX, minY, maxX, maxY) - portion of canvas UV that's visible
@@ -250,11 +277,14 @@ export class RzpGlassMount {
         this.setupImageTexture('uVideoTexture', baseAsset as HTMLImageElement, 0);
       } else {
         this.video = baseAsset as HTMLVideoElement;
+        this.video.loop = this.playbackOccurrence === null;
         this.setupVideoTexture();
         // Set video to start time and apply playback rate before playback
         this.video.currentTime = this.config.startTime;
         this.video.playbackRate = this.config.playbackRate;
-        if (!this.config.paused) {
+        if (this.playbackOccurrence) {
+          this.video.pause();
+        } else if (!this.config.paused) {
           await this.video.play().catch((e) => {
             console.warn('Video autoplay failed:', e);
           });
@@ -272,6 +302,10 @@ export class RzpGlassMount {
 
       // Initial resize
       this.handleResize();
+
+      if (this.playbackOccurrence) {
+        this.preparePlaybackFrame('presentation', this.config.startTime, 0);
+      }
 
       // Start the render loop (runs continuously)
       this.startRenderLoop();
@@ -540,7 +574,9 @@ export class RzpGlassMount {
       // Resume render loop when tab is visible
       this.startRenderLoop();
       // Only resume video if not paused
-      if (!this.config.paused) {
+      if (this.playbackOccurrence) {
+        this.playManagedVideoIfAllowed();
+      } else if (!this.config.paused) {
         this.video?.play().catch(() => {});
       }
     }
@@ -668,6 +704,157 @@ export class RzpGlassMount {
     }
   }
 
+  private getPlaybackEndTime(): number {
+    const startTime = this.config.startTime;
+    const configuredEndTime = this.config.endTime;
+    const sourceDuration = this.video?.duration;
+    const finiteSourceDuration =
+      sourceDuration !== undefined && Number.isFinite(sourceDuration) && sourceDuration > startTime
+        ? sourceDuration
+        : undefined;
+    const finiteConfiguredEndTime =
+      Number.isFinite(configuredEndTime) && configuredEndTime > startTime
+        ? configuredEndTime
+        : finiteSourceDuration;
+
+    if (finiteConfiguredEndTime === undefined) {
+      return startTime + LEGACY_SOURCE_FRAME_SECONDS;
+    }
+
+    return finiteSourceDuration === undefined
+      ? finiteConfiguredEndTime
+      : Math.min(finiteConfiguredEndTime, finiteSourceDuration);
+  }
+
+  private canManagedPlaybackRun(): boolean {
+    return (
+      this.playbackOccurrence !== null &&
+      !this.config.paused &&
+      !this.isPlaybackTerminal &&
+      this.pendingPlaybackFrame === null &&
+      !document.hidden
+    );
+  }
+
+  private playManagedVideoIfAllowed(): void {
+    if (!this.canManagedPlaybackRun()) return;
+    this.video?.play().catch(() => {});
+  }
+
+  private preparePlaybackFrame(
+    kind: RzpGlassPendingPlaybackFrame['kind'],
+    time: number,
+    iterationCount: number,
+  ): void {
+    const video = this.video;
+    const occurrence = this.playbackOccurrence;
+    if (!video || !occurrence) return;
+
+    video.pause();
+    this.pendingPlaybackFrame = {
+      generation: this.playbackGeneration,
+      kind,
+      iterationCount,
+    };
+    const maximumSeekTime = Number.isFinite(video.duration)
+      ? Math.max(0, video.duration - Number.EPSILON)
+      : time;
+    video.currentTime = Math.max(0, Math.min(time, maximumSeekTime));
+  }
+
+  private completePendingPlaybackFrame(): void {
+    const pendingFrame = this.pendingPlaybackFrame;
+    if (!pendingFrame || pendingFrame.generation !== this.playbackGeneration) return;
+
+    this.pendingPlaybackFrame = null;
+    const occurrence = this.playbackOccurrence;
+    if (!occurrence || this.hasBeenDisposed) return;
+
+    if (pendingFrame.kind === 'presentation') {
+      occurrence.onPresentationReady?.();
+      if (pendingFrame.generation !== this.playbackGeneration) return;
+      this.playManagedVideoIfAllowed();
+      return;
+    }
+
+    if (pendingFrame.kind === 'iteration-start') {
+      this.playManagedVideoIfAllowed();
+      return;
+    }
+
+    occurrence.onTerminal?.(pendingFrame.iterationCount);
+  }
+
+  private shouldContinueManagedPlayback(iterationCount: number): boolean {
+    const playback = this.playbackOccurrence?.playback;
+    return (
+      playback?.playback === 'loop' ||
+      (playback?.playback === 'repeat' && iterationCount < playback.repeatCount + 1)
+    );
+  }
+
+  private handleManagedPlaybackBoundary(): void {
+    const video = this.video;
+    const occurrence = this.playbackOccurrence;
+    if (!video || !occurrence || this.pendingPlaybackFrame || this.isPlaybackTerminal) return;
+
+    video.pause();
+    const generation = this.playbackGeneration;
+    const iterationCount = ++this.playbackIterationCount;
+    occurrence.onIteration?.(iterationCount);
+    if (generation !== this.playbackGeneration || this.hasBeenDisposed) return;
+
+    if (this.shouldContinueManagedPlayback(iterationCount)) {
+      this.preparePlaybackFrame('iteration-start', this.config.startTime, iterationCount);
+      return;
+    }
+
+    this.isPlaybackTerminal = true;
+    const endBehavior =
+      occurrence.playback.playback === 'loop' ? 'hold' : occurrence.playback.endBehavior;
+    const terminalTime =
+      endBehavior === 'reset-to-start'
+        ? this.config.startTime
+        : Math.max(this.config.startTime, this.getPlaybackEndTime() - LEGACY_SOURCE_FRAME_SECONDS);
+    this.preparePlaybackFrame('terminal', terminalTime, iterationCount);
+  }
+
+  /**
+   * Opts the legacy renderer into declarative playback milestones. Updating
+   * callbacks or policy for the same occurrence is non-destructive; changing
+   * occurrence identity replays the source without remounting WebGL.
+   */
+  public setPlaybackOccurrence(occurrence?: RzpGlassPlaybackOccurrence): void {
+    if (!occurrence) {
+      this.playbackGeneration += 1;
+      this.playbackOccurrence = null;
+      this.playbackIterationCount = 0;
+      this.isPlaybackTerminal = false;
+      this.pendingPlaybackFrame = null;
+      if (this.video) {
+        this.video.loop = true;
+        if (!this.config.paused && !document.hidden) this.video.play().catch(() => {});
+      }
+      return;
+    }
+
+    const isSameOccurrence = this.playbackOccurrence?.occurrenceId === occurrence.occurrenceId;
+    this.playbackOccurrence = occurrence;
+    if (this.video) this.video.loop = false;
+    if (isSameOccurrence) return;
+
+    this.playbackGeneration += 1;
+    this.playbackIterationCount = 0;
+    this.isPlaybackTerminal = false;
+    this.pendingPlaybackFrame = null;
+    this.currentFrame = 0;
+    this.independentLightTime = 0;
+    this.lastVideoTime = 0;
+    if (this.video && this.isInitialized) {
+      this.preparePlaybackFrame('presentation', this.config.startTime, 0);
+    }
+  }
+
   /**
    * Update uniforms from config (partial update supported)
    */
@@ -683,6 +870,8 @@ export class RzpGlassMount {
     if (newConfig.paused !== undefined) {
       if (newConfig.paused) {
         this.video?.pause();
+      } else if (this.playbackOccurrence) {
+        this.playManagedVideoIfAllowed();
       } else {
         this.video?.play().catch(() => {});
       }
@@ -745,8 +934,36 @@ export class RzpGlassMount {
         this.videoTexture.update(video);
       }
 
-      // Handle video looping within start/end time range (only when not paused)
-      if (!this.config.paused) {
+      if (this.playbackOccurrence) {
+        // `currentTime` updates synchronously, but the decoded frame does not.
+        // Keep the previously drawn canvas until the media element confirms
+        // the seek completed, then upload/draw the requested frame.
+        if (this.pendingPlaybackFrame && video.seeking) return;
+
+        // A pending seek must upload the exact decoded frame before readiness
+        // or terminal callbacks become observable.
+        if (this.pendingPlaybackFrame && this.videoTexture) {
+          this.videoTexture.update(video);
+        }
+
+        if (!this.pendingPlaybackFrame && !this.isPlaybackTerminal && !this.config.paused) {
+          if (video.currentTime < this.config.startTime) {
+            this.preparePlaybackFrame(
+              'iteration-start',
+              this.config.startTime,
+              this.playbackIterationCount,
+            );
+            return;
+          }
+          if (video.currentTime >= this.getPlaybackEndTime()) {
+            // Preserve the last drawn canvas while preparing the calibrated
+            // next or terminal source frame. This prevents a start-frame flash.
+            this.handleManagedPlaybackBoundary();
+            return;
+          }
+        }
+      } else if (!this.config.paused) {
+        // Historical raw legacy behavior: loop inside the configured range.
         if (video.currentTime < this.config.startTime || video.currentTime >= this.config.endTime) {
           video.currentTime = this.config.startTime;
         }
@@ -842,6 +1059,7 @@ export class RzpGlassMount {
 
     // Draw
     gl.drawArrays(gl.TRIANGLES, 0, 6);
+    this.completePendingPlaybackFrame();
   };
 
   // ===== Public API (paper-shader style) =====
@@ -871,7 +1089,11 @@ export class RzpGlassMount {
   /** Play video */
   public play(): void {
     this.config.paused = false;
-    this.video?.play().catch(() => {});
+    if (this.playbackOccurrence) {
+      this.playManagedVideoIfAllowed();
+    } else {
+      this.video?.play().catch(() => {});
+    }
   }
 
   /** Pause video */
@@ -913,6 +1135,9 @@ export class RzpGlassMount {
   public dispose(): void {
     // Immediately mark as disposed to prevent future renders
     this.hasBeenDisposed = true;
+    this.playbackGeneration += 1;
+    this.playbackOccurrence = null;
+    this.pendingPlaybackFrame = null;
 
     // Cancel any pending RAF
     if (this.rafId !== null) {
@@ -977,3 +1202,5 @@ export class RzpGlassMount {
     this.parentElement.removeAttribute('data-rzp-glass');
   }
 }
+
+export type { RzpGlassPlaybackOccurrence };

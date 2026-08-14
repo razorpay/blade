@@ -27,14 +27,14 @@ const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentName="RazorSense"
-      componentDescription="This is the RazorSense component which can be used for showing a RazorSense effect on the screen"
+      componentDescription="Legacy compatibility and shader-calibration surfaces. New product code uses the declarative RazorSense state, sequence, and controller APIs."
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=80952-9051&t=ozxGdqCDqI9hRYY8-1&scaling=min-zoom&page-id=614%3A1&mode=design"
     />
   );
 };
 
 export default {
-  title: 'Components/RazorSense',
+  title: 'Components/RazorSense/Legacy Compatibility',
   component: RazorSenseComponent,
   args: {},
   tags: ['autodocs'],
@@ -49,7 +49,7 @@ export default {
 const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
   return (
     <Box width="100%" height="100vh">
-      <RazorSenseComponent preset={args.preset} {...args} />
+      <RazorSenseComponent assetsPath="/assets/spark" preset={args.preset} {...args} />
     </Box>
   );
 };
@@ -59,10 +59,14 @@ export const Default = RazorSenseTemplate.bind({});
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {
   paused: true,
-  startTime: 8,
-  animateLightIndependently: true,
-  lightStartFrame: 0,
+  startTime: 3.75,
 };
+
+export const LegacyDefault: StoryFn<typeof RazorSenseComponent> = () => (
+  <Box width="100%" height="100vh">
+    <RazorSenseComponent preset="legacy" assetsPath="/assets/spark" width="100%" height="100%" />
+  </Box>
+);
 
 export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
   return (
@@ -78,7 +82,12 @@ export const Zoomed: StoryFn<typeof RazorSenseComponent> = () => {
         margin="auto"
         zIndex={0}
       >
-        <RazorSenseComponent preset="zoomed" width="100%" height="100%" />
+        <RazorSenseComponent
+          preset="zoomed"
+          assetsPath="/assets/spark"
+          width="100%"
+          height="100%"
+        />
       </Box>
       <Box marginLeft="200px" position="relative" zIndex={1} maxWidth="500px">
         <ChatMessage
@@ -106,7 +115,7 @@ const BottomWaveTemplate: StoryFn<typeof RazorSenseComponent> = () => {
           width="100%"
           height="250px"
           preset="bottomWave"
-          backgroundColor={[1, 1, 1]}
+          assetsPath="/assets/spark"
         />
       </Box>
       {/* ChatInput in the middle, offset 8px from bottom */}
@@ -988,7 +997,7 @@ const OnboardingPlaybackControlsTemplate: StoryFn<typeof RazorSenseComponent> = 
   });
 
   useEffect(() => {
-    preloadRazorSenseAssets('default')
+    preloadRazorSenseAssets('default', '/assets/spark')
       .then(() => setAssetsPreloaded(true))
       .catch(console.error);
   }, []);
@@ -1721,7 +1730,7 @@ const LoginPageTemplate: StoryFn<typeof RazorSenseComponent> = () => {
   const [assetsPreloaded, setAssetsPreloaded] = useState(false);
 
   useEffect(() => {
-    preloadRazorSenseAssets('default')
+    preloadRazorSenseAssets('default', '/assets/spark')
       .then(() => setAssetsPreloaded(true))
       .catch(console.error);
   }, []);
