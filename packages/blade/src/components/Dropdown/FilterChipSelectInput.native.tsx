@@ -122,13 +122,20 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     } else if (listViewSelectedFilters[label]) {
       const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
       setSelectedIndices(savedIndices);
-    } else if (valueNotEmpty && !isValueAndSelectedIndicesSynced && options.length > 0) {
-      const newSelectedIndices =
-        typeof value === 'string'
-          ? [options.findIndex((option) => option.value === value)]
-          : options
-              .map((option, index) => (value.includes(option.value) ? index : -1))
-              .filter((index) => index !== -1);
+      // An emptied value clears the selection too, so consumers can reset from outside the chip
+      // (e.g. a Clear button in the dropdown footer)
+    } else if (!isValueAndSelectedIndicesSynced && options.length > 0) {
+      const newSelectedIndices = !valueNotEmpty
+        ? []
+        : options
+            .map((option, index) => {
+              const isSelected =
+                typeof value === 'string'
+                  ? option.value === value
+                  : Array.isArray(value) && value.includes(option.value);
+              return isSelected ? index : -1;
+            })
+            .filter((index) => index !== -1);
       setSelectedIndices(newSelectedIndices);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
