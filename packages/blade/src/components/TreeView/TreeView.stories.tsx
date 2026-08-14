@@ -350,9 +350,11 @@ DropdownWithSelectInput.storyName = 'Dropdown: SelectInput (Single)';
 
 const DropdownFilterChipTemplate: StoryFn<typeof TreeViewComponent> = () => {
   const [values, setValues] = React.useState<string[]>([]);
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <Box minHeight="500px">
-      <Dropdown selectionType="multiple">
+      {/* the overlay is controlled so the footer's Apply can close it */}
+      <Dropdown selectionType="multiple" isOpen={isOpen} onOpenChange={setIsOpen}>
         <FilterChipSelectInput
           label="Regions"
           value={values}
@@ -384,7 +386,7 @@ const DropdownFilterChipTemplate: StoryFn<typeof TreeViewComponent> = () => {
               <Button isFullWidth size="small" variant="tertiary" onClick={() => setValues([])}>
                 Clear
               </Button>
-              <Button isFullWidth size="small">
+              <Button isFullWidth size="small" onClick={() => setIsOpen(false)}>
                 Apply
               </Button>
             </Box>

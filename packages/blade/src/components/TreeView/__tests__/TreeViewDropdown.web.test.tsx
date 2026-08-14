@@ -6,9 +6,15 @@ import { TreeViewItem } from '../TreeViewItem';
 import { TreeViewLoadMore } from '../TreeViewLoadMore';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
-import { Dropdown, DropdownOverlay, FilterChipSelectInput } from '~components/Dropdown';
+import {
+  Dropdown,
+  DropdownFooter,
+  DropdownOverlay,
+  FilterChipSelectInput,
+} from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers/SelectInput';
 import { BladeProvider } from '~components/BladeProvider';
+import { Button } from '~components/Button';
 import { bladeTheme } from '~tokens/theme';
 
 // `renderWithTheme` wraps only the initial render; rerenders need the provider again
@@ -520,6 +526,53 @@ describe('<TreeView /> inside <Dropdown /> with <FilterChipSelectInput />', () =
       selectedGroups: ['india'],
     });
     await waitFor(() => expect(trigger).toHaveTextContent('India'));
+  });
+
+  it('should clear the tree when the controlled value is emptied from a footer action', async () => {
+    const user = userEvents.setup();
+    const ControlledFilterChip = (): React.ReactElement => {
+      const [values, setValues] = React.useState<string[]>([]);
+      const [isOpen, setIsOpen] = React.useState(false);
+
+      return (
+        <Dropdown selectionType="multiple" isOpen={isOpen} onOpenChange={setIsOpen}>
+          <FilterChipSelectInput
+            label="Regions"
+            value={values}
+            onChange={({ values: nextValues }) => setValues(nextValues)}
+          />
+          <DropdownOverlay zIndex={1002}>
+            <TreeView>{getCanonicalTree()}</TreeView>
+            <DropdownFooter>
+              <Button onClick={() => setValues([])}>Clear</Button>
+              <Button onClick={() => setIsOpen(false)}>Apply</Button>
+            </DropdownFooter>
+          </DropdownOverlay>
+        </Dropdown>
+      );
+    };
+    const { getByRole } = renderWithTheme(<ControlledFilterChip />);
+
+    const trigger = getByRole('button', { name: 'Regions' });
+    await user.click(trigger);
+    await waitFor(() => expect(getByRole('tree')).toBeVisible());
+
+    await user.click(getByRole('treeitem', { name: 'Karnataka' }));
+    await waitFor(() =>
+      expect(getByRole('treeitem', { name: 'Karnataka' })).toHaveAttribute('aria-checked', 'true'),
+    );
+    expect(trigger).toHaveTextContent('Karnataka');
+
+    // footer Clear only empties the consumer's state: the tree and the chip must follow it
+    await user.click(getByRole('button', { name: 'Clear' }));
+    await waitFor(() =>
+      expect(getByRole('treeitem', { name: 'Karnataka' })).toHaveAttribute('aria-checked', 'false'),
+    );
+    expect(getByRole('treeitem', { name: 'Bengaluru' })).toHaveAttribute('aria-checked', 'false');
+    expect(trigger).not.toHaveTextContent('Karnataka');
+
+    await user.click(getByRole('button', { name: 'Apply' }));
+    await waitFor(() => expect(getByRole('tree')).not.toBeVisible());
   });
 
   it('should show a counter of the describing set for disjoint selections', async () => {
