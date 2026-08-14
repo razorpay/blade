@@ -76,6 +76,7 @@ export * from './TimePicker';
 export * from './Tooltip';
 export * from './Toast';
 export * from './TopNav';
+export * from './TreeView';
 export * from './types';
 export * from './Typography';
 export * from './VisuallyHidden';
