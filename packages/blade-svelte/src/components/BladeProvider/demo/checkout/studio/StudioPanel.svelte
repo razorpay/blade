@@ -136,6 +136,11 @@
     customBrandColor = value;
   }
 
+  function pickBrandColorFromSwatch(value: string): void {
+    customBrandColor = value;
+    brandLabel = CUSTOM_BRAND_LABEL;
+  }
+
   function setRadiusPreset(preset: string): void {
     if (preset in RADIUS_PRESETS) {
       radiusOverride = null;
@@ -208,30 +213,23 @@
             onChange={setBrandLabel}
           />
         </StudioField>
-        {#if isCustomBrand}
-          <StudioField label="Brand color" controlId="studio-brand-color">
-            <div class="studio-readout">
-              <input
-                id="studio-brand-color"
-                class="studio-color-input"
-                type="color"
-                value={customBrandColor}
-                oninput={(event) => setCustomBrandColor(event.currentTarget.value)}
-              />
-              <Text size="small">{customBrandColor}</Text>
-            </div>
-          </StudioField>
-        {:else}
-          <StudioField label="Brand color">
-            <div class="studio-readout">
-              <span
-                class="studio-swatch"
-                style="background-color: {brandHex || 'var(--surface-background-primary-intense)'};"
-              ></span>
-              <Text size="small">{brandHex || 'bladeTheme default'}</Text>
-            </div>
-          </StudioField>
-        {/if}
+        <StudioField label="Brand color" controlId="studio-brand-color">
+          <label class="studio-readout studio-color-readout" for="studio-brand-color">
+            <input
+              id="studio-brand-color"
+              class="studio-color-input"
+              type="color"
+              value={isCustomBrand ? customBrandColor : brandHex || DEFAULT_CUSTOM_BRAND_COLOR}
+              oninput={(event) =>
+                isCustomBrand
+                  ? setCustomBrandColor(event.currentTarget.value)
+                  : pickBrandColorFromSwatch(event.currentTarget.value)}
+            />
+            <Text size="small">
+              {isCustomBrand ? customBrandColor : brandHex || 'bladeTheme default'}
+            </Text>
+          </label>
+        </StudioField>
       </StudioSection>
 
       <StudioSection title="Typography">
@@ -450,6 +448,10 @@
     border-radius: var(--border-radius-small);
     background-color: var(--surface-background-gray-intense);
     overflow: hidden;
+  }
+
+  .studio-color-readout {
+    cursor: pointer;
   }
 
   .studio-swatch {
