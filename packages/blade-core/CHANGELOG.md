@@ -1,5 +1,27 @@
 # @razorpay/blade-core
 
+## 0.12.0
+
+### Minor Changes
+
+- 59f21bda8: feat(theme): add bladeNeutralTheme export for checkout in blade-core
+
+### Patch Changes
+
+- 2b2f8ec0e: fix(blade-svelte): constrain BottomSheet portalTarget to container bounds
+
+  Fixed BottomSheet `portalTarget` so backdrop and surface render inside the target container instead of escaping to the viewport. Adds portal root wrapper styles in blade-core that switch surface/backdrop from `position: fixed` to `position: absolute` when portaling into a bounded element.
+
+## 0.11.0
+
+### Minor Changes
+
+- 41ff76ed3: Remove unintended border and shadow on standalone ActionList in blade-svelte to match React web. Drop unused `getActionListBoxClasses`, `actionListBoxCva`, and `ActionListBoxVariants` exports from blade-core.
+
+### Patch Changes
+
+- 84923f364: fix: resolve avatar addon clipping by separating root positioning context from clipped body
+
 ## 0.10.3
 
 ### Patch Changes

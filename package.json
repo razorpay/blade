@@ -15,7 +15,7 @@
       "packages/blade-svelte"
     ],
     "nohoist": [
-      "**"
+      "@razorpay/blade/**"
     ]
   },
   "scripts": {
