@@ -19,6 +19,7 @@ const bladeLightTheme: Theme = {
       exit: Easing.bezier(0.17, 0, 1, 1),
       standard: Easing.bezier(0.3, 0, 0.2, 1),
       emphasized: Easing.bezier(0.5, 0, 0, 1),
+      settle: Easing.bezier(0.32, 0.72, 0, 1),
       overshoot: Easing.bezier(0.5, 0, 0.3, 1.5),
       shake: Easing.bezier(1, 0.5, 0, 0.5),
     },
