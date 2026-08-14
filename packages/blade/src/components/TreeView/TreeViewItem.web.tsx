@@ -86,8 +86,9 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   }
 
   const isExpanded = expandedValues.has(props.value);
-  // only read when node.isBranch (leaf rows don't render the chevron slot)
-  const chevronState: TreeViewChevronState = node.isLoading
+  const chevronState: TreeViewChevronState = !node.isBranch
+    ? 'leaf'
+    : node.isLoading
     ? 'loading'
     : isExpanded
     ? 'expanded'
@@ -125,8 +126,9 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     }
   };
 
-  // Figma layout: [20px chevron slot (branches only)] -4px- [checkbox] -8px- [leading] -8px- [title]
-  // Leaf rows have no chevron slot, so their content starts at the same column as the parent's content
+  // Figma layout: [20px chevron slot] -4px- [checkbox] -8px- [leading] -8px- [title]
+  // The chevron slot is reserved on every row (empty on leaves), so rows of the
+  // same level line up whether or not they have children
   const rowContent = (
     <BaseBox
       display="flex"
@@ -135,13 +137,11 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
       gap="spacing.2"
       width="100%"
     >
-      {node.isBranch ? (
-        <TreeViewChevron
-          state={chevronState}
-          isDisabled={node.isDisabled}
-          onClick={handleChevronClick}
-        />
-      ) : null}
+      <TreeViewChevron
+        state={chevronState}
+        isDisabled={node.isDisabled}
+        onClick={handleChevronClick}
+      />
       <BaseBox
         display="flex"
         flexDirection="row"

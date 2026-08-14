@@ -28,6 +28,7 @@ import { logger, throwBladeError } from '~utils/logger';
 import { useId } from '~utils/useId';
 
 const StyledTreeViewListBoxWrapper = styled(BaseBox)((props) => ({
+  overflowY: 'auto',
   ...getBaseListBoxWrapperStyles({ theme: props.theme, isInBottomSheet: false }),
 }));
 

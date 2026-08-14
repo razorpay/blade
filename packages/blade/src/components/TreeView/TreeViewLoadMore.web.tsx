@@ -104,15 +104,16 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
           {...metaAttribute({ name: MetaConstants.TreeViewLoadMore, testID: props.testID })}
           {...makeAnalyticsAttribute(props)}
         >
-          {/* B7: no chevron slot and no checkbox - the label sits flush at the row's indentation,
-            aligning with the content of sibling leaf rows (Figma: TreeViewItem/LoadMore) */}
+          {/* B7: no chevron and no checkbox of its own - the label is offset by one
+            chevron slot (20px + the 4px gap after it) so it lines up with the content
+            of sibling rows (Figma: TreeViewItem/LoadMore) */}
           {props.isLoading ? (
             <BaseBox
               display="flex"
               flexDirection="row"
               alignItems="center"
               gap="spacing.3"
-              paddingX="spacing.1"
+              paddingLeft="spacing.7"
               height={makeSize(itemFirstRowHeight)}
             >
               {/* the row itself is aria-busy and the "Loading..." text is the announcement; the spinner is decorative */}
@@ -128,6 +129,7 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
               display="flex"
               flexDirection="row"
               alignItems="center"
+              paddingLeft="spacing.7"
               height={makeSize(itemFirstRowHeight)}
             >
               <Text

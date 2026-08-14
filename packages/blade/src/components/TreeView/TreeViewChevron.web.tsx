@@ -10,7 +10,7 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 
 const CHEVRON_GUTTER_SIZE = size[20];
 
-type TreeViewChevronState = 'collapsed' | 'expanded' | 'loading';
+type TreeViewChevronState = 'collapsed' | 'expanded' | 'loading' | 'leaf';
 
 type TreeViewChevronProps = {
   state: TreeViewChevronState;
@@ -29,10 +29,9 @@ const StyledChevronRotator = styled(BaseBox)<{ isExpanded: boolean }>((props) =>
 }));
 
 /**
- * Internal chevron slot of branch TreeViewItems: a 20px slot with a 16px chevron
- * (or Spinner while loading). Together with the 4px gap after it, the slot spans
- * exactly one indentation step, so a branch's content starts at the child column (B9).
- * Leaf rows don't render this slot at all - their content sits flush at the indentation
+ * Internal chevron slot of TreeViewItem: a 20px slot with a 16px chevron
+ * (or Spinner while loading). Every row reserves the slot - on leaves it stays empty (B9)
+ * so a leaf's content lines up with the content of its branch siblings
  */
 const TreeViewChevron = ({
   state,

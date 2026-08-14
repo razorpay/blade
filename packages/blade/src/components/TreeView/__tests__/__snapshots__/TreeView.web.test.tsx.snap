@@ -415,6 +415,11 @@ exports[`<TreeView /> standalone should render tree with treeitem rows and no li
                         data-blade-component="base-box"
                       >
                         <div
+                          aria-hidden="true"
+                          class="c3"
+                          data-blade-component="base-box"
+                        />
+                        <div
                           class="c5"
                           data-blade-component="base-box"
                         >
@@ -459,6 +464,11 @@ exports[`<TreeView /> standalone should render tree with treeitem rows and no li
                         class="c2"
                         data-blade-component="base-box"
                       >
+                        <div
+                          aria-hidden="true"
+                          class="c3"
+                          data-blade-component="base-box"
+                        />
                         <div
                           class="c5"
                           data-blade-component="base-box"
@@ -507,6 +517,11 @@ exports[`<TreeView /> standalone should render tree with treeitem rows and no li
                   class="c2"
                   data-blade-component="base-box"
                 >
+                  <div
+                    aria-hidden="true"
+                    class="c3"
+                    data-blade-component="base-box"
+                  />
                   <div
                     class="c5"
                     data-blade-component="base-box"

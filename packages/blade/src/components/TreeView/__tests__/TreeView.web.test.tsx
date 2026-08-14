@@ -551,7 +551,7 @@ describe('<TreeView /> standalone', () => {
   });
 
   // B12 + B9
-  it('should render an item without children and without hasChildren as a leaf without a chevron slot (B12, B9)', () => {
+  it('should render an item without children and without hasChildren as a leaf with an empty chevron slot (B12, B9)', () => {
     const { getByRole } = renderWithTheme(
       <TreeView>
         <TreeViewItem title="Karnataka" value="karnataka" defaultIsExpanded>
@@ -561,9 +561,10 @@ describe('<TreeView /> standalone', () => {
     );
 
     const bengaluru = getByRole('treeitem', { name: 'Bengaluru' });
-    // leaf: no expansion semantics and no chevron slot - content sits flush at the
-    // row's own indentation (B9: alignment comes from per-level row padding)
+    // leaf: no expansion semantics, and the reserved chevron slot stays empty so the
+    // row still aligns with its branch siblings (B9)
     expect(bengaluru).not.toHaveAttribute('aria-expanded');
+    expect(bengaluru.querySelector('[aria-hidden="true"]')).toBeInTheDocument();
     expect(bengaluru.querySelector('svg')).toBeNull();
 
     // branch rows do render the chevron

@@ -5,8 +5,8 @@ import { makeSize } from '~utils';
 
 /**
  * One indentation step per depth: the 20px chevron slot + the 4px (spacing.2) gap after it.
- * Because a branch's chevron occupies exactly one step, a child's content starts at the
- * same column as its parent's content (Figma: TreeView.Indentation.level-N = 8 + 24N)
+ * Every row reserves that slot, so a child's content sits exactly one step to the right of
+ * its parent's content (Figma: TreeView.Indentation.level-N = 8 + 24N)
  */
 const TREEVIEW_INDENTATION_PER_LEVEL = size[24];
 
