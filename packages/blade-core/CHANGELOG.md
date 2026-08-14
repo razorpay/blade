@@ -1,5 +1,17 @@
 # @razorpay/blade-core
 
+## 0.12.0
+
+### Minor Changes
+
+- 59f21bda8: feat(theme): add bladeNeutralTheme export for checkout in blade-core
+
+### Patch Changes
+
+- 2b2f8ec0e: fix(blade-svelte): constrain BottomSheet portalTarget to container bounds
+
+  Fixed BottomSheet `portalTarget` so backdrop and surface render inside the target container instead of escaping to the viewport. Adds portal root wrapper styles in blade-core that switch surface/backdrop from `position: fixed` to `position: absolute` when portaling into a bounded element.
+
 ## 0.11.0
 
 ### Minor Changes
