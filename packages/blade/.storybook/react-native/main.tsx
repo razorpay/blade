@@ -25,6 +25,8 @@ const WEB_ONLY_STORIES = [
   'TopNav',
   'LightBox',
   'Preview',
+  'TreeView',
+  'DropdownWithTreeView',
 ];
 
 const exclusionGlob = `!(${WEB_ONLY_STORIES.join('|')})`;

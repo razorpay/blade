@@ -1,0 +1,555 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TreeView /> standalone should render tree with treeitem rows and no listbox/menuitem roles (AC5) 1`] = `
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 0px;
+  gap: 8px;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-width: 0px;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 20px;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: grid;
+  grid-template-rows: 1fr;
+  -webkit-transition: grid-template-rows 200ms cubic-bezier(0.3,0,0.2,1);
+  transition: grid-template-rows 200ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9 > div {
+  overflow: visible;
+  min-height: 0px;
+  visibility: visible;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transition: -webkit-transform 200ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: transform 200ms cubic-bezier(0.3,0,0.2,1);
+  transition: transform 200ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c0.c0.c0.c0.c0 > [role="treeitem"] {
+  padding-left: 8px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.c0.c0.c0.c0.c0 > [role="treeitem"][aria-expanded="true"]:not(:hover):not([aria-selected="true"]) {
+  background-color: transparent;
+}
+
+.c10.c10.c10.c10.c10 > [role="treeitem"] {
+  padding-left: 32px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.c10.c10.c10.c10.c10 > [role="treeitem"][aria-expanded="true"]:not(:hover):not([aria-selected="true"]) {
+  background-color: transparent;
+}
+
+.c11.c11.c11.c11.c11 > [role="treeitem"] {
+  padding-left: 56px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.c11.c11.c11.c11.c11 > [role="treeitem"][aria-expanded="true"]:not(:hover):not([aria-selected="true"]) {
+  background-color: transparent;
+}
+
+.c1.c1.c1.c1.c1 {
+  border-width: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: left;
+  background-color: transparent;
+  border-radius: 8px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c1.c1.c1.c1.c1:hover:not([aria-disabled=true]):not([aria-selected=true]),
+.c1.c1.c1.c1.c1[aria-expanded="true"] {
+  background-color: hsla(206,10%,29%,0.06);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  outline: 4px solid hsla(218,89%,51%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  z-index: 2;
+}
+
+.c1.c1.c1.c1.c1[aria-selected=true],
+.c1.c1.c1.c1.c1[aria-selected=true]:hover {
+  background-color: hsla(206,10%,29%,0.09);
+}
+
+@media screen and (min-width:768px) {
+  .c1.c1.c1.c1.c1 {
+    padding: 8px;
+  }
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="tree-view"
+  >
+    <div
+      role="tree"
+    >
+      <div
+        class=" c0"
+        data-blade-component="tree-view-item"
+      >
+        <div
+          aria-expanded="true"
+          aria-level="1"
+          aria-posinset="1"
+          aria-selected="false"
+          aria-setsize="1"
+          class=" c1"
+          data-blade-component="base-box"
+          data-tree-node-value="india"
+          data-value="india"
+          role="treeitem"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              aria-hidden="true"
+              class="c3"
+              data-blade-component="base-box"
+            >
+              <div
+                class=" c4"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
+                    data-blade-component="svg-path"
+                    fill="hsla(204, 9%, 42%, 1)"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              class="c5"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c6"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c7"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c8"
+                    data-blade-component="text"
+                  >
+                    India
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class=" c9"
+          data-blade-component="base-box"
+        >
+          <div
+            class=""
+            data-blade-component="base-box"
+            role="group"
+          >
+            <div
+              class=" c10"
+              data-blade-component="tree-view-item"
+            >
+              <div
+                aria-expanded="true"
+                aria-level="2"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="2"
+                class=" c1"
+                data-blade-component="base-box"
+                data-tree-node-value="karnataka"
+                data-value="karnataka"
+                role="treeitem"
+                tabindex="-1"
+                type="button"
+              >
+                <div
+                  class="c2"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    aria-hidden="true"
+                    class="c3"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class=" c4"
+                      data-blade-component="base-box"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="Svgweb__StyledSvg-vcmjs8-0"
+                        data-blade-component="icon"
+                        fill="none"
+                        height="16px"
+                        viewBox="0 0 24 24"
+                        width="16px"
+                      >
+                        <path
+                          clip-rule="evenodd"
+                          d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
+                          data-blade-component="svg-path"
+                          fill="hsla(204, 9%, 42%, 1)"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div
+                    class="c5"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c6"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c7"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c8"
+                          data-blade-component="text"
+                        >
+                          Karnataka
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=" c9"
+                data-blade-component="base-box"
+              >
+                <div
+                  class=""
+                  data-blade-component="base-box"
+                  role="group"
+                >
+                  <div
+                    class=" c11"
+                    data-blade-component="tree-view-item"
+                  >
+                    <div
+                      aria-level="3"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=" c1"
+                      data-blade-component="base-box"
+                      data-tree-node-value="bengaluru"
+                      data-value="bengaluru"
+                      role="treeitem"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <div
+                        class="c2"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          aria-hidden="true"
+                          class="c3"
+                          data-blade-component="base-box"
+                        />
+                        <div
+                          class="c5"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="c6"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              class="c7"
+                              data-blade-component="base-box"
+                            >
+                              <p
+                                class="c8"
+                                data-blade-component="text"
+                              >
+                                Bengaluru
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class=" c11"
+                    data-blade-component="tree-view-item"
+                  >
+                    <div
+                      aria-level="3"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=" c1"
+                      data-blade-component="base-box"
+                      data-tree-node-value="mysuru"
+                      data-value="mysuru"
+                      role="treeitem"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <div
+                        class="c2"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          aria-hidden="true"
+                          class="c3"
+                          data-blade-component="base-box"
+                        />
+                        <div
+                          class="c5"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="c6"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              class="c7"
+                              data-blade-component="base-box"
+                            >
+                              <p
+                                class="c8"
+                                data-blade-component="text"
+                              >
+                                Mysuru
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class=" c10"
+              data-blade-component="tree-view-item"
+            >
+              <div
+                aria-level="2"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="2"
+                class=" c1"
+                data-blade-component="base-box"
+                data-tree-node-value="goa"
+                data-value="goa"
+                role="treeitem"
+                tabindex="-1"
+                type="button"
+              >
+                <div
+                  class="c2"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    aria-hidden="true"
+                    class="c3"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="c5"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c6"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c7"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c8"
+                          data-blade-component="text"
+                        >
+                          Goa
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

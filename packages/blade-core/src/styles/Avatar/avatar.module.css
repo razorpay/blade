@@ -1,4 +1,13 @@
-/* ===== StyledAvatar (outer wrapper) ===== */
+/* ===== Avatar root (non-clipping positioning context) ===== */
+/* Wraps the clipped body + the addons. Has NO `overflow: hidden` so the
+   absolutely-positioned top/bottom addons are never clipped, while the body
+   below can safely clip its contents (incl. arbitrary `styleOverride` radii). */
+.avatar-root {
+  display: inline-flex;
+  position: relative;
+}
+
+/* ===== StyledAvatar body (visual avatar box, clips its contents) ===== */
 .avatar-wrapper {
   display: flex;
   position: relative;
@@ -190,12 +199,8 @@
 }
 
 /* ===== Addon containers ===== */
-.addon-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
+/* Addons are siblings of `.avatar-wrapper` inside `.avatar-root`, so they anchor
+   to the non-clipping root and are never cut off by the body's `overflow: hidden`. */
 .top-addon {
   position: absolute;
   z-index: 2;
