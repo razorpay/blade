@@ -897,8 +897,10 @@ const emojiMoodIcons = {
  * The composer can carry a feedback prompt on its top edge. Prompt and composer share one
  * surface, so they read as a single object rather than as two things that happen to be adjacent.
  *
- * `ChatFeedback` never removes itself — hide the prompt in response to `onSubmit` or `onDismiss`,
- * as below. With `feedback` gone the composer looks exactly as it does without the feature.
+ * `ChatFeedback` never removes itself. Hide the prompt on **`onDismiss`**, not on `onSubmit` —
+ * submitting moves the flow to its thank-you step, and taking the prompt away there means the
+ * confirmation is never seen. `onDismiss` fires once that step has been held. With `feedback`
+ * gone the composer looks exactly as it does without the feature.
  *
  * Blade ships no artwork for the rating scale yet, so `moodIcons` is required — pass your own
  * icons or plain emoji characters, declared once and imported wherever the composer appears.
@@ -919,10 +921,15 @@ export const WithFeedback: StoryFn<typeof ChatInput> = () => {
           moodIcons: emojiMoodIcons,
           isVisible: showFeedback,
           question: "How's this assistant doing so far?",
+          /*
+           * Record the answer here, but do not take the prompt away — `ChatFeedback` still has a
+           * thank-you step to show. Hiding on submit removes it before the confirmation renders,
+           * which reads as the prompt vanishing the instant you answer.
+           */
           onSubmit: ({ mood, tags }) => {
             setAnswer(`${mood}${tags.length ? ` — ${tags.join(', ')}` : ''}`);
-            setShowFeedback(false);
           },
+          // Fired once the thank-you step has been held; this is where the prompt leaves.
           onDismiss: () => setShowFeedback(false),
         }}
       />

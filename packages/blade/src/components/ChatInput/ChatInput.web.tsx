@@ -31,6 +31,22 @@ const HiddenScrollbarBox = styled(BaseBox)(() => ({
   scrollbarWidth: 'none' as const,
 }));
 
+/**
+ * Carries the attached surface's dissolve.
+ *
+ * The prompt *fades* as it leaves, and the surface holding it used to lose its background and
+ * padding in the same frame — so the composer jumped up by the padding at the exact moment the
+ * user was watching the confirmation go. Transitioning both across the same beat as the fade
+ * means the surface recedes with its contents instead of being pulled out from under them.
+ *
+ * A `styled` wrapper rather than props on `BaseBox`, which has no way to express a transition.
+ */
+const FeedbackSurface = styled(BaseBox)(({ theme }) => ({
+  transition: `background-color ${theme.motion.duration.moderate}ms ${castWebType(
+    theme.motion.easing.exit,
+  )}, padding ${theme.motion.duration.moderate}ms ${castWebType(theme.motion.easing.exit)}`,
+}));
+
 const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps> = (
   {
     value,
@@ -254,8 +270,10 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       } as const)
     : {};
 
+  const Frame = feedback ? FeedbackSurface : BaseBox;
+
   return (
-    <BaseBox
+    <Frame
       position="relative"
       {...frameProps}
       {...metaAttribute({ name: MetaConstants.ChatInput, testID })}
@@ -369,7 +387,7 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           </BaseBox>
         </BaseMotionEntryExit>
       </BaseBox>
-    </BaseBox>
+    </Frame>
   );
 };
 
