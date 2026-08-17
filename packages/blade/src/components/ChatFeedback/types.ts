@@ -5,17 +5,33 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 /** The four points of the sentiment scale, worst to best. */
 type ChatFeedbackMood = 'very-dissatisfied' | 'dissatisfied' | 'satisfied' | 'very-satisfied';
 
-type ChatFeedbackStep = 'mood' | 'tags' | 'thanks' | 'comment';
+type ChatFeedbackStep = 'mood' | 'tags' | 'thanks';
 
 type ChatFeedbackMoodConfig = {
   /** Follow-up question shown once this mood is picked */
   question: string;
   /** Quick-select tags offered for this mood */
   tags: string[];
+  /**
+   * Closing line for this mood.
+   *
+   * A single thank-you across all four points rings false at the unhappy end: someone who has
+   * just said the assistant got it wrong is told their feedback was lovely to receive. The
+   * negative moods acknowledge and commit to something instead.
+   */
+  thanksLabel?: string;
 };
 
 /** One glyph per point of the scale. */
 type ChatFeedbackMoodIcons = Record<ChatFeedbackMood, React.ReactNode>;
+
+/** The parts of a running flow a host may need to drive. */
+type ChatFeedbackControls = {
+  /** Submits the current mood and tags, as the flow's own tick would. */
+  submit: () => void;
+  /** Replaces the selected tags. */
+  setTags: (tags: string[]) => void;
+};
 
 type ChatFeedbackSubmitPayload = {
   mood: ChatFeedbackMood;
@@ -45,6 +61,32 @@ type ChatFeedbackProps = {
   onMoodSelect?: ({ mood }: { mood: ChatFeedbackMood }) => void;
 
   /**
+   * Callback fired whenever the selected tags change.
+   *
+   * Use it to react to a particular tag being picked — a host that wants to collect free text in
+   * its own input rather than this component's, for example.
+   */
+  onTagsChange?: ({ tags }: { tags: string[] }) => void;
+
+  /**
+   * Hides this flow's own submit control.
+   *
+   * Set it when the surrounding surface is showing a submit of its own — a composer collecting
+   * the free-text comment, say. Two ticks on screen doing the same thing is worse than one in the
+   * place the user is already looking.
+   */
+  isSubmitHidden?: boolean;
+
+  /**
+   * Receives a handle on this flow, so a surrounding surface can drive it.
+   *
+   * Set when the host has controls of its own that must act on the same state — a composer that
+   * collects the free-text comment needs to submit the flow from its own send button, and to
+   * release the tag again when the user backs out of typing.
+   */
+  controlsRef?: React.MutableRefObject<ChatFeedbackControls | null>;
+
+  /**
    * Callback fired when the user submits their feedback.
    *
    * Fires once when tags are submitted, and again with `comment` populated if the user
@@ -59,22 +101,11 @@ type ChatFeedbackProps = {
   onDismiss?: () => void;
 
   /**
-   * Message shown on the thank-you step.
-   * @default 'Thanks for the feedback!'
+   * Message shown on the thank-you step, for every mood.
+   *
+   * Leave it unset to use the per-mood copy from `moodConfig`, which differs by sentiment.
    */
   thanksLabel?: string;
-
-  /**
-   * Label of the link that opens the free-text follow-up.
-   * @default 'Add more feedback'
-   */
-  addCommentLabel?: string;
-
-  /**
-   * Placeholder for the free-text follow-up field.
-   * @default 'Anything else you would like to share?'
-   */
-  commentPlaceholder?: string;
 
   /**
    * Whether the flow dismisses itself shortly after the thank-you step.
@@ -123,6 +154,7 @@ type ChatFeedbackProps = {
   StyledPropsBlade;
 
 export type {
+  ChatFeedbackControls,
   ChatFeedbackMoodIcons,
   ChatFeedbackProps,
   ChatFeedbackMood,

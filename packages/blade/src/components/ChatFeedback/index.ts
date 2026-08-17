@@ -1,4 +1,5 @@
 export type {
+  ChatFeedbackControls,
   ChatFeedbackProps,
   ChatFeedbackMood,
   ChatFeedbackMoodConfig,

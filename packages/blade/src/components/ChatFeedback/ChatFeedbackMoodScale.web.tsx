@@ -149,7 +149,7 @@ const ChatFeedbackMoodScale = ({
                 three. The slot only bounds its size, and the button carries the selected state —
                 which is why that state had to move off the glyph.
               */}
-              <MoodIconSlot aria-hidden="true">{moodIcons[mood]}</MoodIconSlot>
+              <MoodIconSlot aria-hidden="true">{moodIcons?.[mood]}</MoodIconSlot>
             </MoodButton>
           </Tooltip>
         );

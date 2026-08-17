@@ -5,7 +5,7 @@ import { useTheme } from '~components/BladeProvider';
 
 type UseChatFeedbackProps = Pick<
   ChatFeedbackProps,
-  'moodConfig' | 'onMoodSelect' | 'onSubmit' | 'onDismiss' | 'autoDismiss'
+  'moodConfig' | 'onMoodSelect' | 'onTagsChange' | 'onSubmit' | 'onDismiss' | 'autoDismiss'
 >;
 
 /**
@@ -18,6 +18,7 @@ type UseChatFeedbackProps = Pick<
 const useChatFeedback = ({
   moodConfig,
   onMoodSelect,
+  onTagsChange,
   onSubmit,
   onDismiss,
   autoDismiss = true,
@@ -26,22 +27,37 @@ const useChatFeedback = ({
   selectedMood: ChatFeedbackMood | null;
   selectedTags: string[];
   question: string;
+  thanksLabel?: string;
   tags: string[];
   hasSelectedTags: boolean;
-  hasSubmittedComment: boolean;
   selectMood: (mood: ChatFeedbackMood) => void;
   setSelectedTags: (values: string[]) => void;
   submitTags: () => void;
   goBackToMood: () => void;
-  openComment: () => void;
-  submitComment: (comment: string) => void;
 } => {
   const { theme } = useTheme();
 
   const [step, setStep] = React.useState<ChatFeedbackStep>('mood');
   const [selectedMood, setSelectedMood] = React.useState<ChatFeedbackMood | null>(null);
-  const [selectedTags, setSelectedTags] = React.useState<string[]>([]);
-  const [hasSubmittedComment, setHasSubmittedComment] = React.useState(false);
+  const [selectedTags, setSelectedTagsState] = React.useState<string[]>([]);
+
+  /*
+   * Every route that changes the selection reports it.
+   *
+   * The chip group used to be the only one that did, so the two internal clears — going back to
+   * the moods, and picking a new mood — changed the selection silently. A host mirroring it to
+   * drive its own UI then held tags that no longer existed, and acted on them: a composer handed
+   * the free-text tag stayed in feedback mode after the strip had walked back to the mood step,
+   * with no tag selected and no way out. Reporting from one place makes drift impossible rather
+   * than merely unlikely.
+   */
+  const setSelectedTags = React.useCallback(
+    (values: string[]) => {
+      setSelectedTagsState(values);
+      onTagsChange?.({ tags: values });
+    },
+    [onTagsChange],
+  );
 
   const timers = React.useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
 
@@ -80,7 +96,7 @@ const useChatFeedback = ({
       // A beat before the follow-up, so the selection is seen before the step changes.
       schedule(() => setStep('tags'), theme.motion.duration.quick);
     },
-    [clearTimers, onMoodSelect, schedule, theme.motion.duration.quick],
+    [clearTimers, onMoodSelect, schedule, setSelectedTags, theme.motion.duration.quick],
   );
 
   const submitTags = React.useCallback(() => {
@@ -94,25 +110,7 @@ const useChatFeedback = ({
     setSelectedMood(null);
     setSelectedTags([]);
     setStep('mood');
-  }, [clearTimers]);
-
-  const openComment = React.useCallback(() => {
-    clearTimers();
-    setStep('comment');
-  }, [clearTimers]);
-
-  const submitComment = React.useCallback(
-    (comment: string) => {
-      if (!selectedMood) return;
-      onSubmit?.({ mood: selectedMood, tags: selectedTags, comment });
-      setHasSubmittedComment(true);
-      clearTimers();
-      setStep('thanks');
-      if (!autoDismiss) return;
-      schedule(() => onDismiss?.(), chatFeedbackThanksDurationMs);
-    },
-    [autoDismiss, clearTimers, onDismiss, onSubmit, schedule, selectedMood, selectedTags],
-  );
+  }, [clearTimers, setSelectedTags]);
 
   return {
     step,
@@ -120,14 +118,12 @@ const useChatFeedback = ({
     selectedTags,
     question: resolvedConfig?.question ?? '',
     tags: resolvedConfig?.tags ?? [],
+    thanksLabel: resolvedConfig?.thanksLabel,
     hasSelectedTags: selectedTags.length > 0,
-    hasSubmittedComment,
     selectMood,
     setSelectedTags,
     submitTags,
     goBackToMood,
-    openComment,
-    submitComment,
   };
 };
 

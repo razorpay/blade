@@ -79,7 +79,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   });
 
   it('should show the thanks step after submitting', async () => {
-    const { getByLabelText, findByRole, findByText, getByText } = renderWithTheme(
+    const { getByLabelText, findByRole, findByText } = renderWithTheme(
       <ChatFeedback moodIcons={moodIcons} autoDismiss={false} />,
     );
 
@@ -88,7 +88,6 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
     await userEvent.click(await findByRole('button', { name: 'Submit feedback' }));
 
     expect(await findByText('Thanks for the feedback!')).toBeInTheDocument();
-    expect(getByText('Add more feedback')).toBeInTheDocument();
   });
 
   it('should clear the selection when going back to the mood step', async () => {
@@ -102,27 +101,19 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
     });
   });
 
-  it('should submit a free-text comment and hide the add-more link afterwards', async () => {
-    const onSubmit = jest.fn();
-    const { getByLabelText, findByRole, findByText, getByRole, queryByText } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} onSubmit={onSubmit} autoDismiss={false} />,
+  it('should not offer a free-text follow-up of its own', async () => {
+    const { getByLabelText, findByRole, findByText, queryByRole } = renderWithTheme(
+      <ChatFeedback moodIcons={moodIcons} autoDismiss={false} />,
     );
 
     await userEvent.click(getByLabelText('Good'));
     await userEvent.click(await findByText('Helpful'));
     await userEvent.click(await findByRole('button', { name: 'Submit feedback' }));
-    await userEvent.click(await findByText('Add more feedback'));
+    await findByText('Thanks for the feedback!');
 
-    await userEvent.type(getByRole('textbox'), 'the tone was great');
-    await userEvent.click(getByRole('button', { name: 'Send' }));
-
-    expect(onSubmit).toHaveBeenLastCalledWith({
-      mood: 'satisfied',
-      tags: ['Helpful'],
-      comment: 'the tone was great',
-    });
-    expect(await findByText('Thanks for the feedback!')).toBeInTheDocument();
-    expect(queryByText('Add more feedback')).not.toBeInTheDocument();
+    // Free text is the surrounding surface's job now — a composer, typically. This component
+    // ends on the confirmation rather than opening a second act.
+    expect(queryByRole('textbox')).toBeNull();
   });
 
   it('should call onDismiss after the thanks step when autoDismiss is on', async () => {

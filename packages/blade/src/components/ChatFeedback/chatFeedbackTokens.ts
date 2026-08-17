@@ -78,19 +78,23 @@ const chatFeedbackMoodTokens: Record<
 const chatFeedbackDefaultMoodConfig: Record<ChatFeedbackMood, ChatFeedbackMoodConfig> = {
   'very-dissatisfied': {
     question: 'Sorry to hear that. What went wrong?',
-    tags: ['Wrong answers', 'Too slow', 'Missed the point', 'Other'],
+    tags: ['Wrong answers', 'Too slow', 'Inaccurate', 'Other'],
+    thanksLabel: "Thanks for flagging it — we'll look into this.",
   },
   dissatisfied: {
     question: 'Thanks. What could be better?',
     tags: ['Accuracy', 'Speed', 'Tone', 'Other'],
+    thanksLabel: "Thanks — we'll work on this.",
   },
   satisfied: {
     question: 'Glad it helped! What worked well?',
     tags: ['Helpful', 'Fast', 'Clear', 'Other'],
+    thanksLabel: 'Thanks for the feedback!',
   },
   'very-satisfied': {
     question: 'Love it! What stood out most?',
     tags: ['Nailed it', 'Super fast', 'Great tone', 'Other'],
+    thanksLabel: 'Thanks — glad it helped!',
   },
 };
 

@@ -14,8 +14,6 @@ import { Button } from '~components/Button';
 import { IconButton } from '~components/Button/IconButton';
 import { Chip, ChipGroup } from '~components/Chip';
 import { CheckIcon, ChevronLeftIcon } from '~components/Icons';
-import { Link } from '~components/Link';
-import { TextInput } from '~components/Input/TextInput';
 import { Text } from '~components/Typography';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -43,11 +41,12 @@ const _ChatFeedback = ({
   question = 'How are we doing so far?',
   moodConfig,
   onMoodSelect,
+  onTagsChange,
+  controlsRef,
+  isSubmitHidden = false,
   onSubmit,
   onDismiss,
-  thanksLabel = 'Thanks for the feedback!',
-  addCommentLabel = 'Add more feedback',
-  commentPlaceholder = 'Anything else you would like to share?',
+  thanksLabel,
   autoDismiss = true,
   isFullWidth = true,
   isDisabled = false,
@@ -73,18 +72,25 @@ const _ChatFeedback = ({
     selectedMood,
     selectedTags,
     question: followUpQuestion,
+    thanksLabel: moodThanksLabel,
     tags,
     hasSelectedTags,
-    hasSubmittedComment,
     selectMood,
     setSelectedTags,
     submitTags,
     goBackToMood,
-    openComment,
-    submitComment,
-  } = useChatFeedback({ moodConfig, onMoodSelect, onSubmit, onDismiss, autoDismiss });
+  } = useChatFeedback({
+    moodConfig,
+    onMoodSelect,
+    onTagsChange,
+    onSubmit,
+    onDismiss,
+    autoDismiss,
+  });
 
-  const [comment, setComment] = React.useState('');
+  // Rebuilt each render rather than memoised: `submitTags` closes over the selection, so a stale
+  // handle would submit whatever happened to be picked when the flow mounted.
+  if (controlsRef) controlsRef.current = { submit: submitTags, setTags: setSelectedTags };
 
   // Steps arrive on the settle curve. The exit is a plain fade — the incoming step is the
   // thing worth watching, so the outgoing one should get out of the way quickly.
@@ -105,13 +111,6 @@ const _ChatFeedback = ({
         ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
       },
     },
-  };
-
-  const handleCommentSubmit = (event: React.FormEvent): void => {
-    event.preventDefault();
-    if (!comment.trim()) return;
-    submitComment(comment.trim());
-    setComment('');
   };
 
   // A record rather than a switch, so TypeScript can prove every step renders an element
@@ -201,17 +200,22 @@ const _ChatFeedback = ({
             </ChipGroup>
           </ChipGroupAligner>
 
-          {/* Always rendered rather than revealed on first pick — a button that appears
-                  mid-flow shifts the row and gives the user nothing to aim at beforehand. */}
-          <Button
-            icon={CheckIcon}
-            variant="primary"
-            color="primary"
-            size="xsmall"
-            accessibilityLabel="Submit feedback"
-            isDisabled={isDisabled || !hasSelectedTags}
-            onClick={submitTags}
-          />
+          {/*
+            Hidden when the surrounding surface owns the submit, so the free-text case has one
+            place to press rather than two. Otherwise always rendered rather than revealed on
+            first pick — a button that appears mid-flow shifts the row and gives the user nothing
+            to aim at beforehand. */}
+          {isSubmitHidden ? null : (
+            <Button
+              icon={CheckIcon}
+              variant="primary"
+              color="primary"
+              size="xsmall"
+              accessibilityLabel="Submit feedback"
+              isDisabled={isDisabled || !hasSelectedTags}
+              onClick={submitTags}
+            />
+          )}
         </BaseBox>
       </BaseBox>
     ),
@@ -228,64 +232,15 @@ const _ChatFeedback = ({
         <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
           <ChatFeedbackCheck />
           <Text size="medium" weight="medium" color="surface.text.gray.subtle">
-            {thanksLabel}
+            {/*
+              An explicit `thanksLabel` speaks for every mood; without one the copy follows the
+              sentiment, so someone who has just said this went wrong is answered with an
+              acknowledgement rather than with delight at their feedback.
+            */}
+            {thanksLabel ?? moodThanksLabel ?? 'Thanks for the feedback!'}
           </Text>
         </BaseBox>
-        {hasSubmittedComment ? null : (
-          <Link variant="button" size="small" color="neutral" onClick={openComment}>
-            {addCommentLabel}
-          </Link>
-        )}
       </BaseBox>
-    ),
-
-    comment: () => (
-      <form onSubmit={handleCommentSubmit} style={{ width: isFullWidth ? '100%' : 'auto' }}>
-        <BaseBox
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          gap="spacing.3"
-          width={rowLayout.width}
-          // Hugging the content would otherwise collapse the field to the width of its
-          // placeholder; a floor keeps it usable without stretching the whole bar.
-          minWidth={isFullWidth ? undefined : '320px'}
-        >
-          <BaseBox flex="1" minWidth="spacing.0">
-            <TextInput
-              label=""
-              accessibilityLabel={commentPlaceholder}
-              placeholder={commentPlaceholder}
-              /*
-               * Small, matching the submit beside it and the row it replaces. This step stands in
-               * for the mood scale on a strip attached to a composer, so it has to occupy about
-               * the same height — a medium field made the whole composer step down as the flow
-               * moved on, at the point where nothing about the layout should be changing.
-               */
-              size="small"
-              /*
-               * The user reaches this field by clicking "Add more feedback" — they asked for it,
-               * and the only thing on the step is the field itself. Focus follows the action
-               * rather than stealing it, which is the case the rule exists to prevent.
-               */
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
-              isDisabled={isDisabled}
-              value={comment}
-              onChange={({ value }) => setComment(value ?? '')}
-            />
-          </BaseBox>
-          <Button
-            type="submit"
-            variant="primary"
-            color="primary"
-            size="small"
-            isDisabled={isDisabled || !comment.trim()}
-          >
-            Send
-          </Button>
-        </BaseBox>
-      </form>
     ),
   };
 
