@@ -2,6 +2,7 @@ import { existsSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sveld } from 'sveld';
+import { fixSveldComponentTypesInDirectory } from './fix-sveld-component-types.mjs';
 
 const packageRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const typesOutDir = join(packageRoot, 'dist/types');
@@ -27,6 +28,7 @@ await sveld({
 // sveld writes an empty index.d.ts from sveld-entry.js; tsc runs next and emits the real barrel.
 removeExcludedStubs(componentTypesOutDir);
 removeMisplacedStubs(typesOutDir);
+fixSveldComponentTypesInDirectory(componentTypesOutDir);
 
 function removeExcludedStubs(dir) {
   if (!existsSync(dir)) return;
