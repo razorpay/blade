@@ -293,6 +293,10 @@ function CityPicker() {
 import React from 'react';
 import { TreeView, TreeViewItem, TreeViewLoadMore } from '@razorpay/blade/components';
 
+// Stubbed data fetchers - replace with your real API calls
+const fetchCities = (): Promise<string[]> => Promise.resolve(['Bengaluru', 'Mysuru']);
+const fetchMoreCities = (): Promise<string[]> => Promise.resolve(['Hubli', 'Mangaluru']);
+
 function AsyncTree() {
   const [cities, setCities] = React.useState<string[]>([]);
   const [isLoadingChildren, setIsLoadingChildren] = React.useState(false);
