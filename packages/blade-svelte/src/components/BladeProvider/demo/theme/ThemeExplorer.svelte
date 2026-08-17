@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { bladeTheme } from '@razorpay/blade-core/tokens';
+  import { bladeNeutralTheme } from '@razorpay/blade-core/tokens';
   import { useTheme } from '../../useTheme';
   import Heading from '../../../Typography/Heading/Heading.svelte';
   import Text from '../../../Typography/Text/Text.svelte';
@@ -121,16 +121,17 @@
   }
 
   const baselineTheme = $derived({
-    name: bladeTheme.name,
-    border: bladeTheme.border,
-    backdropBlur: bladeTheme.backdropBlur,
-    breakpoints: bladeTheme.breakpoints,
-    spacing: bladeTheme.spacing,
-    motion: bladeTheme.motion,
-    colors: ctx.colorScheme === 'dark' ? bladeTheme.colors.onDark : bladeTheme.colors.onLight,
+    name: bladeNeutralTheme.name,
+    border: bladeNeutralTheme.border,
+    backdropBlur: bladeNeutralTheme.backdropBlur,
+    breakpoints: bladeNeutralTheme.breakpoints,
+    spacing: bladeNeutralTheme.spacing,
+    motion: bladeNeutralTheme.motion,
+    colors:
+      ctx.colorScheme === 'dark' ? bladeNeutralTheme.colors.onDark : bladeNeutralTheme.colors.onLight,
     elevation:
-      ctx.colorScheme === 'dark' ? bladeTheme.elevation.onDark : bladeTheme.elevation.onLight,
-    typography: bladeTheme.typography[ctx.platform],
+      ctx.colorScheme === 'dark' ? bladeNeutralTheme.elevation.onDark : bladeNeutralTheme.elevation.onLight,
+    typography: bladeNeutralTheme.typography[ctx.platform],
   } as unknown as Record<string, unknown>);
   const diffTree = $derived(
     Object.fromEntries(
@@ -271,7 +272,7 @@
         <Text as="span" size="small" color="surface.text.gray.muted">
           {query
             ? `${visibleTokens} matching tokens`
-            : `${changedTokens} tokens differ from default bladeTheme`}
+            : `${changedTokens} tokens differ from default bladeNeutralTheme`}
         </Text>
       </div>
       <div class="search" oninput={onSearchInput}>

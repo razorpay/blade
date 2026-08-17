@@ -1,5 +1,39 @@
 # @razorpay/blade
 
+## 12.116.0
+
+### Minor Changes
+
+- dd8501226: feat(blade): add TreeView component
+
+  TreeView: hierarchical selectable list, standalone and inside Dropdown. First snowflake promotion (original Tree Hierarchy snowflake by Prarthana Gogoi).
+
+  - `TreeView`, `TreeViewItem`, `TreeViewLoadMore` exports (web-only; native entry throws a dev error)
+  - Standalone: single select (radio semantics) and multiple select with branch cascade, indeterminate checkboxes, roving tabindex keyboard map, `tree`/`treeitem` ARIA
+  - Inside Dropdown: drop-in replacement for ActionList - selection controlled through the trigger's `value`/`onChange` (SelectInput, FilterChipSelectInput), with an additive optional `selectedGroups` field in the onChange payload and smallest-describing-set display on the trigger
+  - Async children (`hasChildren` + `isLoading`) with selection inheritance, and `TreeViewLoadMore` for progressive loading at any depth
+
+### Patch Changes
+
+- dd8501226: fix(FilterChipSelectInput): sync selection when the controlled `value` changes
+
+  `FilterChipSelectInput` only mapped its controlled `value` to the dropdown selection on mount, so
+  later updates from the consumer were ignored — a "Clear" action in the dropdown footer emptied the
+  consumer's state but left the options (and the chip label) selected. The controlled `value` is now
+  the source of truth on every change, including when it is emptied.
+
+## 12.115.2
+
+### Patch Changes
+
+- 2db706e7a: Fixed `SpotlightPopoverTour` scrolling indefinitely and locking the page when a step's anchor is taller than the viewport (e.g. a large table). The tour now detects oversized anchors and scroll-aligns them to the top instead of trying to center them, so the page no longer freezes with the popover pushed off-screen.
+
+## 12.115.1
+
+### Patch Changes
+
+- d0f2310d9: feat: add BookmarkFilledIcon component
+
 ## 12.115.0
 
 ### Minor Changes

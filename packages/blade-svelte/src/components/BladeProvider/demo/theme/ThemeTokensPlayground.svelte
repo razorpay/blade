@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
+  import { bladeNeutralTheme, createTheme } from '@razorpay/blade-core/tokens';
   import type {
     ColorSchemeNamesInput,
     CreateThemeFontFamilyOverride,
@@ -116,13 +116,14 @@
 
   const themeBundle = $derived.by((): { themeTokens: ThemeTokens; fontFaceCSS?: string } => {
     if (!usesCreateTheme) {
-      return { themeTokens: bladeTheme };
+      return { themeTokens: bladeNeutralTheme };
     }
 
     const scaleFactor = fontSizeFactor !== 1 ? fontSizeFactor : undefined;
 
     const { theme, fontFaceCSS } = createTheme({
       brandColor: brandHex || RAZORPAY_BRAND_FALLBACK,
+      baseTheme: bladeNeutralTheme,
       borderRadius: hasCustomRadius ? { ...borderRadius } : undefined,
       fontFamily: fontFamilyOverride,
       fontSizeScaleFactor: scaleFactor,
@@ -137,7 +138,7 @@
   const themeTokens = $derived(themeBundle.themeTokens);
   const fontFaceCSS = $derived(themeBundle.fontFaceCSS);
 
-  const brandDisplay = $derived(brandHex || 'bladeTheme (default)');
+  const brandDisplay = $derived(brandHex || 'bladeNeutralTheme (default)');
   const radiusLabel = $derived(
     RADIUS_KEYS.map((key) => `${key} ${borderRadius[key]}px`).join(' · '),
   );
@@ -147,7 +148,7 @@
     const fontFaceAttr = fontFaceCSS ? '\n  fontFaceCSS={fontFaceCSS}' : '';
 
     if (!usesCreateTheme) {
-      return `<BladeProvider themeTokens={bladeTheme} ${schemeAttr}>
+      return `<BladeProvider themeTokens={bladeNeutralTheme} ${schemeAttr}>
   ...
 </BladeProvider>`;
     }
