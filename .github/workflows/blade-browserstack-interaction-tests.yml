@@ -1,0 +1,142 @@
+name: Blade BrowserStack Interaction Tests
+
+# Runs Blade's Storybook interaction tests on real older browsers via BrowserStack.
+#
+# This workflow is OPT-IN — it does NOT run on every PR.
+# Trigger it by either:
+#   1. Adding the label "Run BrowserStack Interaction Tests" to a PR
+#   2. Manually dispatching from the Actions tab
+#
+# Required GitHub secrets:
+#   BROWSERSTACK_USERNAME    – BrowserStack account username
+#   BROWSERSTACK_ACCESS_KEY  – BrowserStack access key
+#
+# See packages/blade/docs/browserstack-interaction-tests.md for full documentation.
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser (chrome, edge, firefox)'
+        required: false
+        default: 'chrome'
+      browser_version:
+        description: 'Browser version (e.g. 83, latest)'
+        required: false
+        default: '83'
+      os:
+        description: 'OS (Windows, macOS)'
+        required: false
+        default: 'Windows'
+      os_version:
+        description: 'OS version (e.g. 10, 11)'
+        required: false
+        default: '10'
+  pull_request:
+    types: [labeled]
+
+jobs:
+  browserstack-interaction-tests:
+    name: BrowserStack Interaction Tests
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'Run BrowserStack Interaction Tests' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - browser: chrome
+            browser_version: '83'
+            os: Windows
+            os_version: '10'
+          - browser: edge
+            browser_version: '83'
+            os: Windows
+            os_version: '10'
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Use Node v22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Check BrowserStack credentials
+        id: bs_creds
+        env:
+          BS_USER: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run: |
+          if [ -z "$BS_USER" ] || [ -z "$BS_KEY" ]; then
+            echo "::error::BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY secrets are required."
+            echo "::error::Add them in GitHub Settings > Secrets and Variables > Actions."
+            exit 1
+          fi
+          echo "has_creds=true" >> $GITHUB_OUTPUT
+
+      - name: Determine browser target
+        id: target
+        env:
+          IS_WORKFLOW_DISPATCH: ${{ github.event_name == 'workflow_dispatch' }}
+          INPUT_BROWSER: ${{ github.event.inputs.browser }}
+          INPUT_BROWSER_VERSION: ${{ github.event.inputs.browser_version }}
+          INPUT_OS: ${{ github.event.inputs.os }}
+          INPUT_OS_VERSION: ${{ github.event.inputs.os_version }}
+          MATRIX_BROWSER: ${{ matrix.browser }}
+          MATRIX_BROWSER_VERSION: ${{ matrix.browser_version }}
+          MATRIX_OS: ${{ matrix.os }}
+          MATRIX_OS_VERSION: ${{ matrix.os_version }}
+        run: |
+          if [ "$IS_WORKFLOW_DISPATCH" = "true" ]; then
+            echo "browser=$INPUT_BROWSER" >> "$GITHUB_OUTPUT"
+            echo "browser_version=$INPUT_BROWSER_VERSION" >> "$GITHUB_OUTPUT"
+            echo "os=$INPUT_OS" >> "$GITHUB_OUTPUT"
+            echo "os_version=$INPUT_OS_VERSION" >> "$GITHUB_OUTPUT"
+          else
+            echo "browser=$MATRIX_BROWSER" >> "$GITHUB_OUTPUT"
+            echo "browser_version=$MATRIX_BROWSER_VERSION" >> "$GITHUB_OUTPUT"
+            echo "os=$MATRIX_OS" >> "$GITHUB_OUTPUT"
+            echo "os_version=$MATRIX_OS_VERSION" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: BrowserStack Env Setup
+        uses: browserstack/github-actions/setup-env@93aebce225b754566349151c0676b26b005e591b # v1.0.4
+        with:
+          username: ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          build-name: BUILD_INFO
+          project-name: Blade
+
+      - name: Start BrowserStack Local
+        uses: browserstack/github-actions/setup-local@93aebce225b754566349151c0676b26b005e591b # v1.0.4
+        with:
+          local-testing: start
+          local-identifier: ${{ github.run_id }}-${{ steps.target.outputs.browser }}
+
+      - name: Install Playwright Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2t64 libffi8 libx264-dev
+
+      - name: Run BrowserStack Interaction Tests
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          BROWSERSTACK_BROWSER: ${{ steps.target.outputs.browser }}
+          BROWSERSTACK_BROWSER_VERSION: ${{ steps.target.outputs.browser_version }}
+          BROWSERSTACK_OS: ${{ steps.target.outputs.os }}
+          BROWSERSTACK_OS_VERSION: ${{ steps.target.outputs.os_version }}
+          BROWSERSTACK_LOCAL_IDENTIFIER: ${{ github.run_id }}-${{ steps.target.outputs.browser }}
+        working-directory: packages/blade
+        run: |
+          echo "Running BrowserStack interaction tests on ${{ steps.target.outputs.os }} ${{ steps.target.outputs.os_version }} / ${{ steps.target.outputs.browser }} ${{ steps.target.outputs.browser_version }}"
+          yarn test:react:interaction:browserstack:ci
+
+      - name: Stop BrowserStack Local
+        if: always()
+        uses: browserstack/github-actions/setup-local@93aebce225b754566349151c0676b26b005e591b # v1.0.4
+        with:
+          local-testing: stop
