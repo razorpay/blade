@@ -7099,30 +7099,10 @@
     react-dom "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-docs@~10.2.0":
-  version "10.2.19"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-10.2.19.tgz#e6071ee91b4c326176367621d0ea76c759a918cb"
-  integrity sha512-tXugthdzjX5AkGWDSP4pnRgA/CWlOaEKp/+y9JOGXHLQmm1GHjW+4brNvNkKbjBl06LALXwlcTOyU4lyVRDLAw==
-  dependencies:
-    "@mdx-js/react" "^3.0.0"
-    "@storybook/csf-plugin" "10.2.19"
-    "@storybook/icons" "^2.0.1"
-    "@storybook/react-dom-shim" "10.2.19"
-    react "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
-    react-dom "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
-    ts-dedent "^2.0.0"
-
 "@storybook/addon-links@10.2.16":
   version "10.2.16"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-10.2.16.tgz#da0ef51971b4ad18564ccd4a70df2b20b2d6a6f1"
   integrity sha512-UERo185b0+AOfVUkh/Ho33Bq5s/sntVxqh3WXGjWZsaz4ng5UG943S+Tzm1eobLaD82+phXuS1ZBaW5cfioduA==
-  dependencies:
-    "@storybook/global" "^5.0.0"
-
-"@storybook/addon-links@~10.2.0":
-  version "10.2.19"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-10.2.19.tgz#f630dd393c53ecd5df518dfc74b75aea53445e97"
-  integrity sha512-3uZqbjlEmPg+X82nkwjBHshaCjDKLT75/NnbscvXPBiIl7ew+lhKDnufYLhChQmuAKQqfqBhdtwa2ISzw+O1XQ==
   dependencies:
     "@storybook/global" "^5.0.0"
 
@@ -7172,15 +7152,6 @@
     svelte-ast-print "^0.4.0"
     zimmerframe "^1.1.2"
 
-"@storybook/builder-vite@10.2.0":
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/@storybook/builder-vite/-/builder-vite-10.2.0.tgz#9da769502e7a6c1f3d116e56c048e6946e54f518"
-  integrity sha512-S1+62ipGmQzGPZfcbgNqpbrCezsqkvbhj+MBbQ6VS46b2HcPjm4H8V6FzGly0Ja2pSgu8gT1BQ5N+3yOG8UNTw==
-  dependencies:
-    "@storybook/csf-plugin" "10.2.0"
-    "@vitest/mocker" "3.2.4"
-    ts-dedent "^2.0.0"
-
 "@storybook/builder-vite@10.2.16":
   version "10.2.16"
   resolved "https://registry.yarnpkg.com/@storybook/builder-vite/-/builder-vite-10.2.16.tgz#24bc1b1f01713dc8e2d7a1579feb752cbf8ac363"
@@ -7189,24 +7160,10 @@
     "@storybook/csf-plugin" "10.2.16"
     ts-dedent "^2.0.0"
 
-"@storybook/csf-plugin@10.2.0":
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/@storybook/csf-plugin/-/csf-plugin-10.2.0.tgz#42514b552531e4e028de3a63fcc799fe42577377"
-  integrity sha512-Cty+tZ0r1AZhwBBzqI4RyCpMVGt9wHGTtG4YCRUuNgVFO1MnjaFBHKRT+oT7md28+BWYjFz4Qtpge/fcWANJ0w==
-  dependencies:
-    unplugin "^2.3.5"
-
 "@storybook/csf-plugin@10.2.16":
   version "10.2.16"
   resolved "https://registry.yarnpkg.com/@storybook/csf-plugin/-/csf-plugin-10.2.16.tgz#dc9907e5a573c4cf227b0501d1886951b56ea7e1"
   integrity sha512-4p4ZFloO70BQwwLYXSH7N1FdZEXISVxJW16941MLSBDtHBqZxVLL+507424hCATi7d65yPKFL2460WVNodTXig==
-  dependencies:
-    unplugin "^2.3.5"
-
-"@storybook/csf-plugin@10.2.19":
-  version "10.2.19"
-  resolved "https://registry.yarnpkg.com/@storybook/csf-plugin/-/csf-plugin-10.2.19.tgz#2c08da16808eddf4b759488e812ae665b9ff9c53"
-  integrity sha512-BpjYIOdyQn/Rm6MjUAc5Gl8HlARZrskD/OhUNShiOh2fznb523dHjiE5mbU1kKM/+L1uvRlEqqih40rTx+xCrg==
   dependencies:
     unplugin "^2.3.5"
 
@@ -7231,11 +7188,6 @@
   version "10.2.16"
   resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-10.2.16.tgz#03978efc84c754501e5de651df95d90be30d8a1a"
   integrity sha512-waDfcEx8OW78qH8COQLKD2nDtDEXzw1zwXm47VPrRKiyhdea5z8OwO/SIk3y1lcoFMCT1RVJKBdYUPeVAoIB6w==
-
-"@storybook/react-dom-shim@10.2.19":
-  version "10.2.19"
-  resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-10.2.19.tgz#7971868fc0eb6a3101190251c46640b44fbdde28"
-  integrity sha512-BXCEfBGVBRYBTYeBeH/PJsy0Bq5MERe/HiaylR+ah/XrvIr2Z9bkne1J8yYiXCjiyq5HQa7Bj11roz0+vyUaEw==
 
 "@storybook/react-native-theming@^10.2.3":
   version "10.2.3"
@@ -7310,21 +7262,21 @@
     "@storybook/react-dom-shim" "10.2.16"
     react-docgen "^8.0.2"
 
-"@storybook/svelte-vite@^10.1.2":
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/@storybook/svelte-vite/-/svelte-vite-10.2.0.tgz#5403fc4bd39c040d2d835e6a38b550a8ece064a6"
-  integrity sha512-dg2r4KySTdfvcAQDLUhidmG9l/UlJXPWp+09XPsrOEvH2sLoYVPwk/Q6NfMW5KIsKmNz/XFEM4uNv2jKW3uwaQ==
+"@storybook/svelte-vite@10.2.16":
+  version "10.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/svelte-vite/-/svelte-vite-10.2.16.tgz#219c0008f1b06cc14827de0a7cf71f15fed4d016"
+  integrity sha512-yd3b4NqW+U4yvkLQ3iQmPUwmrKDhCuq5kBClD5zqG0fTktlJ3X220muRpaPN73IOGahNF2cpcofsn7L6lyVTFw==
   dependencies:
-    "@storybook/builder-vite" "10.2.0"
-    "@storybook/svelte" "10.2.0"
+    "@storybook/builder-vite" "10.2.16"
+    "@storybook/svelte" "10.2.16"
     magic-string "^0.30.0"
     svelte2tsx "^0.7.44"
     typescript "^4.9.4 || ^5.0.0"
 
-"@storybook/svelte@10.2.0":
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/@storybook/svelte/-/svelte-10.2.0.tgz#8d3dc6e038b1a8cdf2fcb26c529e541f5907aeb8"
-  integrity sha512-YfaYB5VuTCyu0vQyX7CXm/sQ04FNOnBTrT9iEAwId2GMEcOZVf+YSj/Zj68/Nxe749iSjgk85bCVoroycV03IA==
+"@storybook/svelte@10.2.16":
+  version "10.2.16"
+  resolved "https://registry.yarnpkg.com/@storybook/svelte/-/svelte-10.2.16.tgz#5764798def12b12f4359b62b753506f52345a5ef"
+  integrity sha512-snm/4A53OZ4feksXcfqH1/xta4nUSmsnReLdPqkxvvnqYJGhOfNFD8tfBIq3r2+sdl9o+P9fC2K2z2zc/3C5dg==
   dependencies:
     ts-dedent "^2.0.0"
     type-fest "~2.19"
@@ -9239,15 +9191,6 @@
     "@vitest/spy" "2.1.9"
     estree-walker "^3.0.3"
     magic-string "^0.30.12"
-
-"@vitest/mocker@3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@vitest/mocker/-/mocker-3.2.4.tgz#4471c4efbd62db0d4fa203e65cc6b058a85cabd3"
-  integrity sha512-46ryTE9RZO/rfDd7pEqFl7etuyzekzEhUbTW3BvmeO/BcCMEgq59BKhek3dXDWgAj4oMK6OZi+vRr1wPW6qjEQ==
-  dependencies:
-    "@vitest/spy" "3.2.4"
-    estree-walker "^3.0.3"
-    magic-string "^0.30.17"
 
 "@vitest/mocker@3.2.6":
   version "3.2.6"
@@ -28508,24 +28451,6 @@ storybook@10.2.16:
     use-sync-external-store "^1.5.0"
     ws "^8.18.0"
 
-storybook@^10.1.2:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/storybook/-/storybook-10.2.0.tgz#2f7acaa0898afd51035c58d18a8a31137f85af60"
-  integrity sha512-fIQnFtpksRRgHR1CO1onGX3djaog4qsW/c5U8arqYTkUEr2TaWpn05mIJDOBoPJFlOdqFrB4Ttv0PZJxV7avhw==
-  dependencies:
-    "@storybook/global" "^5.0.0"
-    "@storybook/icons" "^2.0.1"
-    "@testing-library/jest-dom" "^6.6.3"
-    "@testing-library/user-event" "^14.6.1"
-    "@vitest/expect" "3.2.4"
-    "@vitest/spy" "3.2.4"
-    esbuild "^0.18.0 || ^0.19.0 || ^0.20.0 || ^0.21.0 || ^0.22.0 || ^0.23.0 || ^0.24.0 || ^0.25.0 || ^0.26.0 || ^0.27.0"
-    open "^10.2.0"
-    recast "^0.23.5"
-    semver "^7.7.3"
-    use-sync-external-store "^1.5.0"
-    ws "^8.18.0"
-
 stream-buffers@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/stream-buffers/-/stream-buffers-3.0.3.tgz#9fc6ae267d9c4df1190a781e011634cac58af3cd"
@@ -28607,7 +28532,7 @@ string-natural-compare@^3.0.1:
   resolved "https://registry.yarnpkg.com/string-natural-compare/-/string-natural-compare-3.0.1.tgz#7a42d58474454963759e8e8b7ae63d71c1e7fdf4"
   integrity sha512-n3sPwynL1nwKi3WJ6AIsClwBMa0zTi54fn2oLU6ndfTSIO05xaznjSf15PcBZU6FNWbmN5Q6cxT4V5hGvB4taw==
 
-"string-width-cjs@npm:string-width@^4.2.0", "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.2, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -28624,6 +28549,15 @@ string-width@^1.0.1:
     code-point-at "^1.0.0"
     is-fullwidth-code-point "^1.0.0"
     strip-ansi "^3.0.0"
+
+"string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.2, string-width@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
+  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.1"
 
 string-width@^5.0.0, string-width@^5.0.1, string-width@^5.1.2:
   version "5.1.2"
@@ -28757,7 +28691,7 @@ stringify-object@^3.3.0:
     is-obj "^1.0.1"
     is-regexp "^1.0.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -28777,6 +28711,13 @@ strip-ansi@^5.0.0, strip-ansi@^5.2.0:
   integrity sha512-DuRs1gKbBqsMKIZlrffwlug8MHkcnpjs5VPmL1PAh+mA30U0DTotfDZ0d2UUsXpPmPmMMJ6W773MaA3J+lbiWA==
   dependencies:
     ansi-regex "^4.1.0"
+
+strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  dependencies:
+    ansi-regex "^5.0.1"
 
 strip-ansi@^7.0.1:
   version "7.1.2"
@@ -31816,7 +31757,7 @@ workbox-window@6.6.1:
     "@types/trusted-types" "^2.0.2"
     workbox-core "6.6.1"
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -31829,6 +31770,15 @@ wrap-ansi@^6.0.1, wrap-ansi@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-6.2.0.tgz#e9393ba07102e6c91a3b221478f0257cd2856e53"
   integrity sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+
+wrap-ansi@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
   dependencies:
     ansi-styles "^4.0.0"
     string-width "^4.1.0"
