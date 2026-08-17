@@ -9,7 +9,7 @@
   text-decoration: none;
   overflow: hidden;
   border-radius: var(--border-radius-small);
-  transition-property: background-color, background-image, box-shadow;
+  transition-property: background-color, box-shadow;
   transition-timing-function: var(--easing-standard);
   transition-duration: var(--duration-xquick);
   font-family: var(--font-family-text);
@@ -134,49 +134,74 @@
 .color-positive.primary,
 .color-negative.primary {
   background-color: var(--btn-accent-bg-default);
-  background-image: radial-gradient(
-    var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
-    var(--interactive-background-static-white-faded) 0%,
-    transparent 100%
-  );
   box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
     inset 0 0 0 0.5px var(--btn-accent-border-default),
     inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
     inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
 
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background-image: radial-gradient(
+      var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
+      var(--interactive-background-static-white-faded) 0%,
+      transparent 100%
+    );
+    opacity: 1;
+    transition-property: opacity;
+    transition-timing-function: var(--easing-standard);
+    transition-duration: var(--duration-xquick);
+  }
+
   &:hover:not([disabled]) {
     background-color: var(--btn-accent-bg-highlighted);
-    background-image: none;
     box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
       inset 0 0 0 0.5px var(--btn-accent-border-highlighted),
       inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
       inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
+
+    &::before {
+      opacity: 0;
+    }
   }
 
   &:active:not([disabled]) {
     background-color: var(--btn-accent-bg-highlighted);
-    background-image: none;
     box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
       inset 0 0 0 0.5px var(--btn-accent-border-highlighted),
       inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
       inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
+
+    &::before {
+      opacity: 0;
+    }
   }
 
   &:focus-visible:not([disabled]) {
     background-color: var(--btn-accent-bg-highlighted);
-    background-image: none;
     outline: 1px solid var(--surface-background-primary-subtle);
     box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted),
       inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
       inset 0 0 0 0.5px var(--btn-accent-border-highlighted),
       inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
       inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
+
+    &::before {
+      opacity: 0;
+    }
   }
 
   &[disabled] {
     background-color: var(--btn-accent-bg-disabled);
-    background-image: none;
     box-shadow: none;
+
+    &::before {
+      opacity: 0;
+    }
   }
 }
 
@@ -223,41 +248,66 @@
 .color-white {
   &.primary {
     background-color: var(--interactive-background-static-white-default);
-    background-image: radial-gradient(
-      var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
-      var(--interactive-background-static-white-faded) 0%,
-      transparent 100%
-    );
     box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
       inset 0 0 0 0.5px var(--interactive-border-static-white-default);
 
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background-image: radial-gradient(
+        var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
+        var(--interactive-background-static-white-faded) 0%,
+        transparent 100%
+      );
+      opacity: 1;
+      transition-property: opacity;
+      transition-timing-function: var(--easing-standard);
+      transition-duration: var(--duration-xquick);
+    }
+
     &:hover:not([disabled]) {
       background-color: var(--interactive-background-static-white-highlighted);
-      background-image: none;
       box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 0.5px var(--interactive-border-static-white-default);
+
+      &::before {
+        opacity: 0;
+      }
     }
 
     &:active:not([disabled]) {
       background-color: var(--interactive-background-static-white-highlighted);
-      background-image: none;
       box-shadow: inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 0.5px var(--interactive-border-static-white-default);
+
+      &::before {
+        opacity: 0;
+      }
     }
 
     &:focus-visible:not([disabled]) {
       background-color: var(--interactive-background-static-white-highlighted);
-      background-image: none;
       outline: 1px solid var(--surface-background-primary-subtle);
       box-shadow: 0px 0px 0px 4px var(--surface-border-primary-muted),
         inset 0 -1.5px 0 0 var(--interactive-border-static-black-faded-highlighted),
         inset 0 0 0 0.5px var(--interactive-border-static-white-default);
+
+      &::before {
+        opacity: 0;
+      }
     }
 
     &[disabled] {
       background-color: var(--interactive-background-static-white-disabled);
-      background-image: none;
       box-shadow: none;
+
+      &::before {
+        opacity: 0;
+      }
     }
   }
 
