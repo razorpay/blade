@@ -926,8 +926,10 @@ export const WithFeedback: StoryFn<typeof ChatInput> = () => {
            * thank-you step to show. Hiding on submit removes it before the confirmation renders,
            * which reads as the prompt vanishing the instant you answer.
            */
-          onSubmit: ({ mood, tags }) => {
-            setAnswer(`${mood}${tags.length ? ` — ${tags.join(', ')}` : ''}`);
+          onSubmit: ({ mood, tags, comment }) => {
+            setAnswer(
+              [mood, tags.join(', '), comment && `“${comment}”`].filter(Boolean).join(' — '),
+            );
           },
           // Fired once the thank-you step has been held; this is where the prompt leaves.
           onDismiss: () => setShowFeedback(false),

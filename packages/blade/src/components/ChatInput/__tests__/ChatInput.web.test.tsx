@@ -1,4 +1,5 @@
 import userEvent from '@testing-library/user-event';
+import { waitFor } from '@testing-library/react';
 import React from 'react';
 import { ChatInput } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -231,6 +232,111 @@ describe('<ChatInput />', () => {
         />,
       );
       await assertAccessible(container);
+    });
+  });
+
+  describe('free-text feedback in the composer', () => {
+    type Queries = Pick<ReturnType<typeof renderWithTheme>, 'getByRole' | 'findByText'>;
+
+    /** Rate, then pick the tag that hands the composer over. */
+    const openFreeText = async ({ getByRole, findByText }: Queries): Promise<void> => {
+      await userEvent.click(getByRole('radio', { name: 'Good' }));
+      await userEvent.click(await findByText('Other'));
+    };
+
+    it('should hand the composer over when the free-text tag is picked', async () => {
+      const { getByRole, findByText, getByPlaceholderText } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+      );
+
+      await openFreeText({ getByRole, findByText });
+
+      expect(getByPlaceholderText('Anything else? (optional)')).toBeTruthy();
+      expect(await findByText('Feedback')).toBeTruthy();
+      expect(await findByText('esc to cancel')).toBeTruthy();
+    });
+
+    /*
+     * The draft belongs to the user, not to us. Without stashing it, picking the tag silently
+     * destroys a half-written message.
+     */
+    it('should stash the chat draft and put it back on cancel', async () => {
+      const { getByRole, findByText, getByLabelText } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+      );
+      const composer = getByLabelText(accessibilityLabel);
+
+      await userEvent.type(composer, 'half written message');
+      await openFreeText({ getByRole, findByText });
+      expect(composer).toHaveValue('');
+
+      await userEvent.type(composer, '{Escape}');
+
+      expect(composer).toHaveValue('half written message');
+    });
+
+    it('should release the tag on cancel, so the user is not left with an unsendable choice', async () => {
+      const { getByRole, findByText, getByLabelText } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+      );
+
+      await openFreeText({ getByRole, findByText });
+      await userEvent.type(getByLabelText(accessibilityLabel), '{Escape}');
+
+      await waitFor(() => expect(getByRole('checkbox', { name: 'Other' })).not.toBeChecked());
+    });
+
+    /*
+     * The one mistake that cannot be walked back: sending candid feedback to the assistant as a
+     * prompt. The chat path is blocked while the mode is on, not merely redirected.
+     */
+    it('should never submit the chat while collecting feedback', async () => {
+      const onSubmit = jest.fn();
+      const onFeedbackSubmit = jest.fn();
+      const { getByRole, findByText, getByLabelText } = renderWithTheme(
+        <ChatInput
+          accessibilityLabel={accessibilityLabel}
+          onSubmit={onSubmit}
+          feedback={{ moodIcons, onSubmit: onFeedbackSubmit }}
+        />,
+      );
+
+      await openFreeText({ getByRole, findByText });
+      await userEvent.type(getByLabelText(accessibilityLabel), 'the tone was great{Enter}');
+
+      expect(onSubmit).not.toHaveBeenCalled();
+      expect(onFeedbackSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({ mood: 'satisfied', comment: 'the tone was great' }),
+      );
+    });
+
+    it('should leave the mode once the feedback is submitted', async () => {
+      const { getByRole, findByText, getByLabelText, queryByText } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+      );
+
+      await openFreeText({ getByRole, findByText });
+      await userEvent.type(getByLabelText(accessibilityLabel), 'done{Enter}');
+
+      await waitFor(() => expect(queryByText('esc to cancel')).toBeNull());
+    });
+
+    it('should show its own submit only once a tag that stands alone is picked', async () => {
+      const { getByRole, findByText, queryByRole } = renderWithTheme(
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+      );
+
+      await userEvent.click(getByRole('radio', { name: 'Good' }));
+      await findByText('Other');
+      expect(queryByRole('button', { name: 'Submit feedback' })).toBeNull();
+
+      await userEvent.click(await findByText('Other'));
+      expect(queryByRole('button', { name: 'Submit feedback' })).toBeNull();
+
+      await userEvent.click(await findByText('Helpful'));
+      await waitFor(() =>
+        expect(queryByRole('button', { name: 'Submit feedback' })).not.toBeNull(),
+      );
     });
   });
 });

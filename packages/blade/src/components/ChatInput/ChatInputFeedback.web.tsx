@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import type { ChatInputFeedbackProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { ChatFeedback } from '~components/ChatFeedback';
+import type { ChatFeedbackControls } from '~components/ChatFeedback';
 import { Move } from '~components/Move';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils';
@@ -18,6 +19,9 @@ import { makeSpace } from '~utils';
  */
 const StripPadding = styled(BaseBox)(({ theme }) => ({
   padding: makeSpace(theme.spacing[2]),
+  // A touch more on the left, so the question clears the surface's rounded corner rather than
+  // sitting tight against it. The right stays at 4px — the submit control needs no such relief.
+  paddingLeft: makeSpace(theme.spacing[3]),
 }));
 
 /**
@@ -53,7 +57,19 @@ const ChatInputFeedback = ({
   onMoodSelect,
   onSubmit,
   onDismiss,
-}: ChatInputFeedbackProps): React.ReactElement => {
+  onTagsChange,
+  isSubmitHidden,
+  comment,
+  controlsRef,
+}: ChatInputFeedbackProps & {
+  onTagsChange?: ({ tags }: { tags: string[] }) => void;
+  /** Hides the strip's own tick while the composer is the submit. */
+  isSubmitHidden?: boolean;
+  /** Free text collected by the composer, folded into the payload on submit. */
+  comment?: string;
+  /** Lets the composer drive this flow — submit it, and release the tag on the way out. */
+  controlsRef?: React.MutableRefObject<ChatFeedbackControls | null>;
+}): React.ReactElement => {
   const { theme } = useTheme();
 
   /*
@@ -85,7 +101,19 @@ const ChatInputFeedback = ({
             moodConfig={moodConfig}
             isDisabled={isDisabled}
             onMoodSelect={onMoodSelect}
-            onSubmit={onSubmit}
+            onTagsChange={onTagsChange}
+            isSubmitHidden={isSubmitHidden}
+            controlsRef={controlsRef}
+            onSubmit={(payload) =>
+              onSubmit?.({
+                /*
+                 * A blank composer is not a comment. Trimmed rather than passed through, so
+                 * whitespace does not arrive as feedback someone has to read.
+                 */
+                ...payload,
+                comment: comment?.trim() ? comment.trim() : payload.comment,
+              })
+            }
             onDismiss={onDismiss}
             /*
              * The strip spans the composer, so each step spreads to the full width and the

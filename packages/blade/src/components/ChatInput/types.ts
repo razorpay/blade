@@ -25,6 +25,25 @@ type ChatInputFeedbackProps = Pick<
    * @default true
    */
   isVisible?: boolean;
+
+  /**
+   * The tag that collects free text rather than standing on its own.
+   *
+   * Picking it hands the composer over to feedback: the placeholder changes, a dismissable
+   * `Feedback` tag appears in the action bar, and what the user types is submitted as the comment.
+   * Anything they had typed for the chat is stashed and put back when they leave.
+   *
+   * Named rather than inferred from the copy, so it survives translation and a custom `moodConfig`.
+   *
+   * @default 'Other'
+   */
+  freeTextTag?: string;
+
+  /**
+   * Placeholder shown while the composer is collecting free-text feedback.
+   * @default 'Anything else? (optional)'
+   */
+  commentPlaceholder?: string;
 };
 
 type ChatInputProps = {

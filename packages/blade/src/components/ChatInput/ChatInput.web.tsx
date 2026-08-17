@@ -15,8 +15,10 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import { FileUploadItem } from '~components/FileUpload/FileUploadItem';
 import { CloseIcon, InfoIcon } from '~components/Icons';
-import { BaseInput } from '~components/Input/BaseInput/BaseInput';
+import { Tag } from '~components/Tag';
+import type { ChatFeedbackControls } from '~components/ChatFeedback';
 import { Text } from '~components/Typography';
+import { BaseInput } from '~components/Input/BaseInput/BaseInput';
 import { castWebType, makeSpace } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -220,6 +222,108 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
     </AnimatePresence>
   );
 
+  /*
+   * Free-text feedback borrows this composer rather than opening a field of its own.
+   *
+   * The alternative — a second input inside the prompt — puts two places to type directly above
+   * one another, and the one that looks like the composer is not the one that has focus. Handing
+   * the composer over means there is only ever one.
+   *
+   * Two things this has to get right, both of them silent when wrong:
+   *
+   *  - **Anything already typed is the user's, not ours.** Entering the mode stashes the chat
+   *    draft and restores it on the way out; without that, picking a tag quietly destroys a
+   *    half-written message.
+   *  - **Enter must not reach the chat.** Sending someone's candid feedback to the assistant as a
+   *    prompt is not a recoverable mistake, so the chat path is blocked outright while the mode
+   *    is on rather than merely redirected.
+   */
+  const freeTextTag = feedback?.freeTextTag ?? 'Other';
+  const feedbackControls = React.useRef<ChatFeedbackControls | null>(null);
+  /*
+   * Mirrors the mode as a ref, because leaving it is re-entrant.
+   *
+   * Exiting releases the free-text tag, which fires `onTagsChange`, which routes back here as
+   * another exit. State read from a closure is still `true` at that point, so the second pass
+   * would restore an already-cleared draft over the one just put back. The ref is the only value
+   * that is current by then.
+   */
+  const isFeedbackInputRef = React.useRef(false);
+  const [isFeedbackInput, setIsFeedbackInput] = React.useState(false);
+  const [feedbackTags, setFeedbackTags] = React.useState<string[]>([]);
+  const stashedDraft = React.useRef('');
+
+  const enterFeedbackInput = React.useCallback(() => {
+    stashedDraft.current = textValue;
+    handleTextChange({ value: '' });
+    isFeedbackInputRef.current = true;
+    setIsFeedbackInput(true);
+  }, [handleTextChange, textValue]);
+
+  const exitFeedbackInput = React.useCallback(() => {
+    if (!isFeedbackInputRef.current) return;
+    isFeedbackInputRef.current = false;
+    setIsFeedbackInput(false);
+    handleTextChange({ value: stashedDraft.current });
+    stashedDraft.current = '';
+
+    /*
+     * Release the tag as well as the mode.
+     *
+     * Leaving it selected strands the user: the tick stays hidden because the only tag picked is
+     * the free-text one, and the composer is back to chatting — so they have chosen something
+     * with no way left to send it. Backing out has to undo the choice that got them here.
+     */
+    feedbackControls.current?.setTags(
+      feedbackTags.filter((tag) => tag !== (feedback?.freeTextTag ?? 'Other')),
+    );
+  }, [feedback?.freeTextTag, feedbackTags, handleTextChange]);
+
+  /*
+   * Move the caret to the composer as the mode opens.
+   *
+   * Picking the tag is the user saying they have something to type; leaving focus where it was
+   * makes them click a second time to start, and on a strip this small the field is easy to miss
+   * changing at all. Focus is what makes the handover legible — the composer lights up, so it is
+   * obvious which of the two things on screen is now listening.
+   *
+   * In an effect rather than inside the handler, so it runs after the placeholder and the cleared
+   * value have been committed.
+   */
+  React.useEffect(() => {
+    if (!isFeedbackInput) return;
+    if (inputRef.current instanceof HTMLElement) inputRef.current.focus();
+  }, [isFeedbackInput]);
+
+  /*
+   * Submitting ends the mode as surely as cancelling does.
+   *
+   * Firing the flow's submit is not enough on its own: the prompt going away is the *strip's*
+   * business, and the composer stays in feedback mode until told otherwise — leaving a Feedback
+   * tag, an "esc to cancel" hint and the wrong placeholder attached to a composer with nothing
+   * left to give feedback to.
+   */
+  const submitFeedbackInput = React.useCallback(() => {
+    feedbackControls.current?.submit();
+    exitFeedbackInput();
+  }, [exitFeedbackInput]);
+
+  const handleFeedbackTagsChange = React.useCallback(
+    ({ tags }: { tags: string[] }) => {
+      setFeedbackTags(tags);
+      const wantsFreeText = tags.includes(freeTextTag);
+      /*
+       * Read from the ref rather than from state. This runs inside `ChatFeedback`'s callbacks,
+       * which can be memoised against an older render — so the state copy here may say the mode is
+       * off when it is on, and the exit never happens. That is how the back-chevron left a composer
+       * stranded in feedback mode with nothing selected.
+       */
+      if (wantsFreeText && !isFeedbackInputRef.current) enterFeedbackInput();
+      if (!wantsFreeText && isFeedbackInputRef.current) exitFeedbackInput();
+    },
+    [enterFeedbackInput, exitFeedbackInput, freeTextTag],
+  );
+
   const actionBarContent = (
     <ChatInputActionBar
       isDisabled={isDisabled}
@@ -227,8 +331,25 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
       isSubmitDisabled={isSubmitDisabled}
       hideFileUpload={hideFileUpload}
       onUploadClick={handleUploadClick}
-      onSubmit={handleSubmit}
+      onSubmit={isFeedbackInput ? submitFeedbackInput : handleSubmit}
       onStop={onStop}
+      leadingSlot={
+        isFeedbackInput ? (
+          <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+            {/*
+              A dismissable tag rather than a line of instructions: it says which mode you are in
+              and is itself the way out. Esc does the same thing, but there is no Esc key on a
+              phone, so the tap target is the affordance that has to exist.
+            */}
+            <Tag size="small" onDismiss={exitFeedbackInput} isDisabled={isDisabled}>
+              Feedback
+            </Tag>
+            <Text size="xsmall" color="surface.text.gray.muted">
+              esc to cancel
+            </Text>
+          </BaseBox>
+        ) : undefined
+      }
     />
   );
 
@@ -246,7 +367,42 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
    * did before this existed — a border-style and a radius that no consumer asked for is the kind of
    * change that shows up as unexplained diff noise in every snapshot downstream.
    */
+  const handleComposerKeyDown = React.useCallback(
+    (args: Parameters<typeof handleKeyDown>[0]) => {
+      if (!isFeedbackInput) {
+        handleKeyDown(args);
+        return;
+      }
+
+      if (args.event?.key === 'Escape') {
+        args.event.preventDefault();
+        exitFeedbackInput();
+        return;
+      }
+
+      // Enter submits the feedback; Shift+Enter still breaks the line. Nothing here reaches the
+      // chat's own submit, which is the point.
+      if (args.event?.key === 'Enter' && !args.event.shiftKey) {
+        args.event.preventDefault();
+        submitFeedbackInput();
+      }
+    },
+    [exitFeedbackInput, handleKeyDown, isFeedbackInput, submitFeedbackInput],
+  );
+
   const isFeedbackVisible = Boolean(feedback) && feedback?.isVisible !== false;
+
+  /*
+   * The mode cannot outlive the prompt.
+   *
+   * A consumer can take the prompt away at any moment — on submit, on dismiss, or because the
+   * whole surface is being torn down — and none of those routes go through the handlers above.
+   * Without this the composer is left wearing a Feedback tag with nothing behind it, and Enter
+   * still routed away from the chat.
+   */
+  React.useEffect(() => {
+    if (!isFeedbackVisible && isFeedbackInput) exitFeedbackInput();
+  }, [exitFeedbackInput, isFeedbackInput, isFeedbackVisible]);
   const frameProps = feedback
     ? ({
         display: 'flex',
@@ -291,7 +447,23 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         aria-hidden="true"
       />
 
-      {feedback ? <ChatInputFeedback {...feedback} /> : null}
+      {feedback ? (
+        <ChatInputFeedback
+          {...feedback}
+          onTagsChange={handleFeedbackTagsChange}
+          /*
+           * The tick appears only once there is something for it to send.
+           *
+           * At rest it would be a disabled control with nothing to do, and while the free-text tag
+           * is the selection the composer's own send arrow is the submit — a second tick would sit
+           * in the place the user is *not* looking. Either way it arrives with the first tag that
+           * stands on its own.
+           */
+          isSubmitHidden={!feedbackTags.some((tag) => tag !== freeTextTag)}
+          comment={isFeedbackInput ? textValue : undefined}
+          controlsRef={feedbackControls}
+        />
+      ) : null}
 
       <BaseBox position="relative" zIndex={1} onMouseDownCapture={handleInnerMouseDownCapture}>
         <BaseInput
@@ -303,12 +475,18 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
           accessibilityLabel={accessibilityLabel}
           hideLabelText
           hideFormHint
-          placeholder={showGhostSuggestion ? '' : placeholder}
+          placeholder={
+            isFeedbackInput
+              ? feedback?.commentPlaceholder ?? 'Anything else? (optional)'
+              : showGhostSuggestion
+              ? ''
+              : placeholder
+          }
           value={textValue}
           onChange={handleTextChange}
           onFocus={onFocus}
           onBlur={onBlur}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleComposerKeyDown}
           onPaste={handlePaste}
           isDisabled={isDisabled}
           numberOfLines={2}
