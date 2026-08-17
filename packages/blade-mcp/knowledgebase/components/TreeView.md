@@ -301,6 +301,7 @@ function AsyncTree() {
   const [cities, setCities] = React.useState<string[]>([]);
   const [isLoadingChildren, setIsLoadingChildren] = React.useState(false);
   const [isLoadingMore, setIsLoadingMore] = React.useState(false);
+  const [hasMore, setHasMore] = React.useState(true);
 
   return (
     <TreeView selectionType="multiple">
@@ -322,16 +323,19 @@ function AsyncTree() {
         {cities.map((city) => (
           <TreeViewItem key={city} title={city} value={city.toLowerCase()} />
         ))}
-        <TreeViewLoadMore
-          isLoading={isLoadingMore}
-          onClick={() => {
-            setIsLoadingMore(true);
-            fetchMoreCities().then((moreCities) => {
-              setCities((previous) => [...previous, ...moreCities]);
-              setIsLoadingMore(false);
-            });
-          }}
-        />
+        {hasMore && (
+          <TreeViewLoadMore
+            isLoading={isLoadingMore}
+            onClick={() => {
+              setIsLoadingMore(true);
+              fetchMoreCities().then((moreCities) => {
+                setCities((previous) => [...previous, ...moreCities]);
+                setIsLoadingMore(false);
+                setHasMore(false);
+              });
+            }}
+          />
+        )}
       </TreeViewItem>
       <TreeViewItem title="Goa" value="goa" />
     </TreeView>
