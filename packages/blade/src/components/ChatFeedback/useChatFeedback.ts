@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ChatFeedbackMood, ChatFeedbackProps, ChatFeedbackStep } from './types';
-import { chatFeedbackDefaultMoodConfig } from './chatFeedbackTokens';
+import { chatFeedbackDefaultMoodConfig, chatFeedbackThanksDurationMs } from './chatFeedbackTokens';
 import { useTheme } from '~components/BladeProvider';
 
 type UseChatFeedbackProps = Pick<
@@ -68,8 +68,8 @@ const useChatFeedback = ({
     clearTimers();
     setStep('thanks');
     if (!autoDismiss) return;
-    schedule(() => onDismiss?.(), theme.motion.delay.long);
-  }, [autoDismiss, clearTimers, onDismiss, schedule, theme.motion.delay.long]);
+    schedule(() => onDismiss?.(), chatFeedbackThanksDurationMs);
+  }, [autoDismiss, clearTimers, onDismiss, schedule]);
 
   const selectMood = React.useCallback(
     (mood: ChatFeedbackMood) => {
@@ -109,18 +109,9 @@ const useChatFeedback = ({
       clearTimers();
       setStep('thanks');
       if (!autoDismiss) return;
-      schedule(() => onDismiss?.(), theme.motion.delay.xgentle);
+      schedule(() => onDismiss?.(), chatFeedbackThanksDurationMs);
     },
-    [
-      autoDismiss,
-      clearTimers,
-      onDismiss,
-      onSubmit,
-      schedule,
-      selectedMood,
-      selectedTags,
-      theme.motion.delay.xgentle,
-    ],
+    [autoDismiss, clearTimers, onDismiss, onSubmit, schedule, selectedMood, selectedTags],
   );
 
   return {

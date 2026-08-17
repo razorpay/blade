@@ -101,9 +101,22 @@ const chatFeedbackDefaultMoodConfig: Record<ChatFeedbackMood, ChatFeedbackMoodCo
  */
 const chatFeedbackChipSize = 'xsmall' as const;
 
+/**
+ * How long the thank-you step is held before the flow dismisses itself.
+ *
+ * Long enough to be read — the previous value came from `motion.delay.xgentle` (960ms), and on a
+ * strip that is also fading out the confirmation was gone before it registered. Short enough that
+ * nobody waits on it: this sits above a composer someone is trying to type in.
+ *
+ * A literal rather than a delay token because the scale steps 960 → 2000 with nothing between,
+ * and both ends are wrong here. If a token lands in that gap, this should become it.
+ */
+const chatFeedbackThanksDurationMs = 1300;
+
 export {
   chatFeedbackMoods,
   chatFeedbackMoodTokens,
   chatFeedbackDefaultMoodConfig,
   chatFeedbackChipSize,
+  chatFeedbackThanksDurationMs,
 };
