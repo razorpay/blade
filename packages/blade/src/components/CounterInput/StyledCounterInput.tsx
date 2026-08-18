@@ -32,8 +32,10 @@ const StyledNumberWrapper = styled(BaseBox)<{
   $fontSize: string;
   $fontWeight: string | number;
 }>`
-  flex: 1;
-  min-width: ${({ $width }) => $width};
+  /* Fixed width so the container's fit-content sizing tracks the digit count
+     instead of the input's default intrinsic width */
+  flex: none;
+  width: ${({ $width }) => $width};
   font-family: ${({ $fontFamily }) => $fontFamily};
   font-size: ${({ $fontSize }) => $fontSize};
   font-weight: ${({ $fontWeight }) => $fontWeight};
