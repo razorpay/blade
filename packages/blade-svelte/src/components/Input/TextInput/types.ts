@@ -131,6 +131,8 @@ interface TextInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute 
   componentName?: string;
   /** Test ID for the element. */
   testID?: string;
+  /** Optional stable HTML id for the underlying input. Auto-generated when omitted. */
+  id?: string;
 }
 
 export type TextInputProps = (TextInputPropsWithLabel | TextInputPropsWithA11yLabel) &
