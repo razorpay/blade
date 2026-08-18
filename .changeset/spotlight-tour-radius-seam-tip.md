@@ -12,7 +12,7 @@ Three visual fixes. All three apply to light and dark — none introduces a colo
 - the element has a corner radius → the spotlight takes **the same radius**;
 - the element draws no corner at all (e.g. the step highlights plain text) → the spotlight falls back to `border.radius.large`, matching the popover, instead of squaring off to a hard corner.
 
-Because `SpotlightPopoverTourStep` clones its child to attach a ref, consumers commonly wrap their UI in a layout element that draws no corner of its own; the measurement falls through to the first element child so a wrapped `Card` is still matched.
+Because `SpotlightPopoverTourStep` clones its child to attach a ref, consumers commonly wrap their UI in a layout element just to forward one. Measuring that wrapper is wrong twice over: it has no corner radius to inherit, and a wrapper stretched by its parent's layout (e.g. `alignItems="stretch"` in a flex row) is taller than the component inside it — which left the spotlight's padding uneven, 6px on three sides and 18px at the bottom. So when the step's element paints nothing itself and wraps a single child that fills it on at least one axis, the spotlight traces that child instead, for both geometry and radius. The padding is now even on all four sides. The fill check stops it shrinking onto an inner element that merely happens to be first — a wrapper around narrower content is still measured as the wrapper.
 
 > **⚠️ Visual change (no API break):** every existing web tour's spotlight will change shape, and will now differ per step depending on what that step highlights. This is the intended behaviour. `SpotlightPopoverTourMaskRect` gains an optional `borderRadius` field (internal to the component).
 >
