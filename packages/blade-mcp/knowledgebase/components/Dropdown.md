@@ -270,7 +270,7 @@ For fewer options (2–5), prefer visible selection controls: `Radio` (longer la
 
 - Use `Dropdown` for selection-based interactions — selecting one or multiple items from a list.
 - Use `Dropdown` with `SelectInput` when there are more than 5 options to choose from (single select).
-- Always pair with `DropdownOverlay` containing `ActionList` for the options display.
+- Always pair with `DropdownOverlay` containing `ActionList` for the options display. For hierarchical options (region > state > city), use `TreeView` in place of `ActionList` — selection still lives on the trigger's `value`/`onChange`.
 - Use predefined triggers: `SelectInput`, `AutoComplete`, `DropdownButton`, `DropdownLink`, or `FilterChipSelectInput`.
 - Use `selectionType="multiple"` when users should select more than one option.
 - Use `DropdownHeader` and `DropdownFooter` for structuring complex selection overlays.
