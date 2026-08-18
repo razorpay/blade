@@ -456,8 +456,8 @@ exports[`<Tour /> should render 1`] = `
         fill="transparent"
         height="10"
         opacity="0"
-        rx="3"
-        ry="3"
+        rx="15"
+        ry="15"
         stroke="hsla(218, 89%, 51%, 1)"
         stroke-width="2px"
         width="10"
@@ -613,14 +613,14 @@ exports[`<Tour /> should render 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          fill="hsla(0, 0%, 100%, 1)"
+          fill="hsla(0, 0%, 100%, 0.94)"
           height="22"
           style="position: absolute; pointer-events: none; bottom: 100%; transform: rotate(180deg); left: -1px;"
           viewBox="0 0 22 22"
           width="22"
         >
           <path
-            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
+            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
             stroke="none"
           />
           <clippath

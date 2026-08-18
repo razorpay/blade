@@ -22,6 +22,40 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const asHTMLElement = (el: TourElement | null): HTMLElement | null => el as HTMLElement | null;
 
+/**
+ * Resolves the corner radius the spotlight should take, so it matches the shape of
+ * the component it highlights instead of using a fixed radius.
+ *
+ * `SpotlightPopoverTourStep` clones its child to attach a ref, so consumers commonly
+ * wrap their UI in a layout element to forward one. Such a wrapper draws no corner of
+ * its own, so we fall through to its first element child before giving up — otherwise a
+ * spotlit Card would be measured as a square wrapper.
+ *
+ * Returns `0` when nothing in that chain draws a corner (e.g. the step is plain text);
+ * the mask turns that into the popover's radius rather than a hard square.
+ */
+const getSpotlightBorderRadius = (element: HTMLElement): number => {
+  const readRadius = (el: HTMLElement): number => {
+    const { borderTopLeftRadius } = window.getComputedStyle(el);
+    const parsed = Number.parseFloat(borderTopLeftRadius);
+
+    if (Number.isNaN(parsed)) return 0;
+    // Percentage radii (e.g. `50%` on a circular avatar) resolve against the box itself.
+    if (borderTopLeftRadius.includes('%')) {
+      const { width, height } = el.getBoundingClientRect();
+      return (Math.min(width, height) * parsed) / 100;
+    }
+
+    return parsed;
+  };
+
+  const ownRadius = readRadius(element);
+  if (ownRadius > 0) return ownRadius;
+
+  const firstChild = element.firstElementChild;
+  return firstChild ? readRadius(firstChild as HTMLElement) : 0;
+};
+
 const SpotlightPopoverTour = ({
   steps,
   activeStep,
@@ -112,19 +146,17 @@ const SpotlightPopoverTour = ({
       if (!el) return;
 
       const rect = el.getBoundingClientRect();
-      setSize({
+      const nextSize = {
         x: rect.x,
         y: rect.y,
         width: rect.width,
         height: rect.height,
-      });
+        borderRadius: getSpotlightBorderRadius(el),
+      };
+
+      setSize(nextSize);
       if (shouldSkipDelay) {
-        setDelayedSize({
-          x: rect.x,
-          y: rect.y,
-          width: rect.width,
-          height: rect.height,
-        });
+        setDelayedSize(nextSize);
       }
     },
     [activeStep, refIdMap, setDelayedSize, steps],
@@ -195,6 +227,7 @@ const SpotlightPopoverTour = ({
         y: 0,
         width: 0,
         height: 0,
+        borderRadius: 0,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

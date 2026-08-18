@@ -360,13 +360,13 @@ exports[`<Popover /> should render 1`] = `
         >
           <path
             clip-path="url(#:r3:)"
-            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
+            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
             fill="none"
             stroke="hsla(0, 0%, 97%, 1)"
             stroke-width="3"
           />
           <path
-            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
+            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
             stroke="hsla(0, 0%, 100%, 0.94)"
           />
           <clippath
@@ -754,13 +754,13 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
         >
           <path
             clip-path="url(#:rb:)"
-            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
+            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
             fill="none"
             stroke="hsla(0, 0%, 97%, 1)"
             stroke-width="3"
           />
           <path
-            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
+            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
             stroke="hsla(0, 0%, 100%, 0.94)"
           />
           <clippath
@@ -1212,13 +1212,13 @@ exports[`<Popover /> should render with title,footer 1`] = `
         >
           <path
             clip-path="url(#:r7:)"
-            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
+            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
             fill="none"
             stroke="hsla(0, 0%, 97%, 1)"
             stroke-width="3"
           />
           <path
-            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
+            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
             stroke="hsla(0, 0%, 100%, 0.94)"
           />
           <clippath
