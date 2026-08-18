@@ -1,5 +1,56 @@
 # @razorpay/blade-svelte
 
+## 0.11.7
+
+### Patch Changes
+
+- 2b2f8ec0e: fix(blade-svelte): constrain BottomSheet portalTarget to container bounds
+
+  Fixed BottomSheet `portalTarget` so backdrop and surface render inside the target container instead of escaping to the viewport. Adds portal root wrapper styles in blade-core that switch surface/backdrop from `position: fixed` to `position: absolute` when portaling into a bounded element.
+
+- Updated dependencies [59f21bda8]
+- Updated dependencies [2b2f8ec0e]
+  - @razorpay/blade-core@0.12.0
+
+## 0.11.6
+
+### Patch Changes
+
+- d7e6f4c5b: fix: bump Svelte to 5.56.3 and update optional parameter defaults for compatibility with checkout
+
+## 0.11.5
+
+### Patch Changes
+
+- 41ff76ed3: Remove unintended border and shadow on standalone ActionList in blade-svelte to match React web. Drop unused `getActionListBoxClasses`, `actionListBoxCva`, and `ActionListBoxVariants` exports from blade-core.
+- 84923f364: fix: resolve avatar addon clipping by separating root positioning context from clipped body
+- 349e25f85: fix: add optional `portalTarget` prop to BottomSheet and PhoneNumberInput for custom portal mounting
+- Updated dependencies [41ff76ed3]
+- Updated dependencies [84923f364]
+  - @razorpay/blade-core@0.11.0
+
+## 0.11.4
+
+### Patch Changes
+
+- bad271b0f: fix(TrustBadge): restore flat layout to fix icon and label vertical alignment within the pill
+- Updated dependencies [bad271b0f]
+  - @razorpay/blade-core@0.10.3
+
+## 0.11.3
+
+### Patch Changes
+
+- 937bc4c40: fix: run tsc after sveld so the components type barrel is not overwritten
+
+## 0.11.2
+
+### Patch Changes
+
+- 59b039ff8: fix: blade-svelte type pipeline - add sveld for svelte component type generation
+- Updated dependencies [a5d2dc639]
+  - @razorpay/blade-core@0.10.2
+
 ## 0.11.1
 
 ### Patch Changes

@@ -69,23 +69,24 @@
 
   const isInteractive = $derived(Boolean(onClick || href));
 
-  // Wrapper classes
-  const wrapperClasses = $derived(
-    getAvatarWrapperClasses({
-      size: avatarSize,
-      variant,
-      isInteractive,
-    }),
-  );
-
-  // Styled props
-  const styledProps = $derived(getStyledPropsClasses(rest));
-  const combinedClasses = $derived(
+  // Body (visual avatar box) classes — `styleOverride.root` targets this element
+  // so bg/border/radius overrides are clipped by its `overflow: hidden`.
+  const bodyClasses = $derived(
     cx(
-      wrapperClasses,
-      ...(styledProps.classes || []),
+      getAvatarWrapperClasses({
+        size: avatarSize,
+        variant,
+        isInteractive,
+      }),
       resolvedStyleOverride?.root,
     ),
+  );
+
+  // Root (non-clipping positioning context) carries layout styled props so the
+  // addons, which are siblings of the body, are never clipped.
+  const styledProps = $derived(getStyledPropsClasses(rest));
+  const rootClasses = $derived(
+    cx(templateClasses.avatarRoot, ...(styledProps.classes || [])),
   );
 
   // Meta & analytics attributes
@@ -152,18 +153,12 @@
 </script>
 
 <div
-  class={combinedClasses}
+  class={rootClasses}
   style:display={isHiddenByGroup ? 'none' : null}
   {...metaAttrs}
   {...analyticsAttrs}
 >
-  <div class={templateClasses.addonWrapper}>
-    {#if topAddon}
-      <div class="{templateClasses.topAddon} {topAddonPositionClass}">
-        {@render topAddon()}
-      </div>
-    {/if}
-
+  <div class={bodyClasses}>
     {#if src}
       <AvatarButton
         {...commonButtonProps}
@@ -180,11 +175,17 @@
         icon={resolvedIcon}
       />
     {/if}
-
-    {#if BottomAddon}
-      <div class="{templateClasses.bottomAddon} {bottomAddonPositionClass}">
-        <BottomAddon display="block" size={bottomAddonSize} />
-      </div>
-    {/if}
   </div>
+
+  {#if topAddon}
+    <div class="{templateClasses.topAddon} {topAddonPositionClass}">
+      {@render topAddon()}
+    </div>
+  {/if}
+
+  {#if BottomAddon}
+    <div class="{templateClasses.bottomAddon} {bottomAddonPositionClass}">
+      <BottomAddon display="block" size={bottomAddonSize} />
+    </div>
+  {/if}
 </div>

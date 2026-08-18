@@ -1,7 +1,8 @@
-import { existsSync, readdirSync, readFileSync, rmSync, statSync } from 'node:fs';
-import { dirname, join, relative, resolve } from 'node:path';
+import { existsSync, readdirSync, rmSync, statSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sveld } from 'sveld';
+import { fixSveldComponentTypesInDirectory } from './fix-sveld-component-types.mjs';
 
 const packageRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const typesOutDir = join(packageRoot, 'dist/types');
@@ -14,12 +15,6 @@ const EXCLUDED_STUB_PATTERNS = [
   '/ThemeSwitcher.svelte.d.ts',
 ];
 
-if (!existsSync(typesOutDir)) {
-  throw new Error(
-    'dist/types does not exist. Run build:generate-types (tsc) before build:generate-svelte-types.',
-  );
-}
-
 await sveld({
   entry: './src/components/sveld-entry.js',
   glob: true,
@@ -30,29 +25,10 @@ await sveld({
   },
 });
 
+// sveld writes an empty index.d.ts from sveld-entry.js; tsc runs next and emits the real barrel.
 removeExcludedStubs(componentTypesOutDir);
 removeMisplacedStubs(typesOutDir);
-
-const missingStubs = findMissingSvelteStubs(typesOutDir);
-if (missingStubs.length > 0) {
-  throw new Error(
-    `Missing .svelte.d.ts stubs for ${missingStubs.length} import(s):\n${missingStubs
-      .slice(0, 10)
-      .join('\n')}${missingStubs.length > 10 ? '\n...' : ''}`,
-  );
-}
-
-function walkDeclarationFiles(dir, files = []) {
-  for (const entry of readdirSync(dir)) {
-    const filePath = join(dir, entry);
-    if (statSync(filePath).isDirectory()) {
-      walkDeclarationFiles(filePath, files);
-    } else if (filePath.endsWith('.d.ts') && !filePath.endsWith('.svelte.d.ts')) {
-      files.push(filePath);
-    }
-  }
-  return files;
-}
+fixSveldComponentTypesInDirectory(componentTypesOutDir);
 
 function removeExcludedStubs(dir) {
   if (!existsSync(dir)) return;
@@ -74,6 +50,8 @@ function removeExcludedStubs(dir) {
 }
 
 function removeMisplacedStubs(dir) {
+  if (!existsSync(dir)) return;
+
   for (const entry of readdirSync(dir)) {
     const filePath = join(dir, entry);
     if (!statSync(filePath).isDirectory()) continue;
@@ -82,23 +60,4 @@ function removeMisplacedStubs(dir) {
     // sveld glob output can land directly under dist/types when outDir is misconfigured
     rmSync(filePath, { recursive: true, force: true });
   }
-}
-
-function findMissingSvelteStubs(dir) {
-  const missing = [];
-
-  for (const declarationFile of walkDeclarationFiles(dir)) {
-    const content = readFileSync(declarationFile, 'utf8');
-    const declarationDir = dirname(declarationFile);
-
-    for (const match of content.matchAll(/from ['"](\.\/?[^'"]+\.svelte)['"]/g)) {
-      const importPath = match[1];
-      const stubPath = resolve(declarationDir, `${importPath}.d.ts`);
-      if (!existsSync(stubPath)) {
-        missing.push(relative(packageRoot, stubPath));
-      }
-    }
-  }
-
-  return [...new Set(missing)];
 }

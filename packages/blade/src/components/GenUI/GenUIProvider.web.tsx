@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useMemo } from 'react';
-import type { GenUIAction, GenUIComponentRegistry } from './types';
+import type { GenUIAction, GenUIComponentActionsRegistry, GenUIComponentRegistry } from './types';
 import { createBuiltInRegistry } from './GenUIComponents';
 import { GenUIContext } from './GenUIContext';
 import type { GenUIContextValue } from './GenUIContext';
@@ -13,6 +13,12 @@ type GenUIConfig = {
   components?: GenUIComponentRegistry;
   /** Handler for action button clicks */
   onActionClick?: (action: GenUIAction) => void;
+  /**
+   * Consumer-registered action UI, keyed by component type. When a component of a
+   * registered type renders, GenUI renders the matching render prop in a slot below
+   * the component and hands it the component's `data` and a `componentRef`.
+   */
+  componentActions?: GenUIComponentActionsRegistry;
 };
 
 // ============================================================================
@@ -48,6 +54,22 @@ type GenUIProviderProps = {
  * >
  *   <GenUISchemaRenderer components={components} />
  * </GenUIProvider>
+ *
+ * // With consumer-registered action slots (render prop gets the component's data + ref)
+ * <GenUIProvider
+ *   config={{
+ *     componentActions: {
+ *       TABLE: ({ data, componentRef }) => (
+ *         <Link onClick={() => exportCsv(data.rows)}>Download CSV</Link>
+ *       ),
+ *       CARD: ({ componentRef }) => (
+ *         <Link onClick={() => exportPng(componentRef.current)}>Download PNG</Link>
+ *       ),
+ *     },
+ *   }}
+ * >
+ *   <GenUISchemaRenderer components={components} />
+ * </GenUIProvider>
  * ```
  */
 const GenUIProvider = ({ children, config = {} }: GenUIProviderProps) => {
@@ -61,6 +83,7 @@ const GenUIProvider = ({ children, config = {} }: GenUIProviderProps) => {
     return {
       registry,
       onActionClick: config.onActionClick,
+      componentActions: config.componentActions,
       validComponentTypes: Object.keys(registry),
     };
   }, [config]);
