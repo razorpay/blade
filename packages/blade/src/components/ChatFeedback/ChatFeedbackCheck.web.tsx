@@ -1,6 +1,8 @@
 import React from 'react';
+import styled, { keyframes } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { CheckIcon } from '~components/Icons';
+import { castWebType } from '~utils';
 
 /**
  * The mark the thank-you step ends on: a filled positive disc carrying a white check.
@@ -37,8 +39,44 @@ type ChatFeedbackCheckProps = {
   size?: keyof typeof DISC_SIZE;
 };
 
+/**
+ * The one place on this strip where a little delight is affordable.
+ *
+ * Everything else here is seen on the way to something — the faces are a control, the chips are a
+ * control, and motion on either would be motion in the user's way. This mark is terminal: it is
+ * shown once, at the end, and the flow leaves a moment later. That is the whole delight budget,
+ * so it is spent here and nowhere else.
+ *
+ * It starts at 0.9 rather than 0. Nothing in the world appears out of nothing, and a disc
+ * inflating from a point reads as a spinner starting rather than as an answer landing. The
+ * `overshoot` curve carries it a hair past its size and back, which is what makes it feel
+ * stamped rather than faded in — small enough at a 0.1 delta to stay a confirmation, not a
+ * celebration.
+ */
+const pop = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const Disc = styled(BaseBox)`
+  animation: ${pop} ${({ theme }) => theme.motion.duration.quick}ms
+    ${({ theme }) => castWebType(theme.motion.easing.overshoot)} both;
+
+  /* The fade still says "this is new"; the scale is the part that only decorates. */
+  @media (prefers-reduced-motion: reduce) {
+    animation-name: none;
+    opacity: 1;
+  }
+`;
+
 const ChatFeedbackCheck = ({ size = 'small' }: ChatFeedbackCheckProps): React.ReactElement => (
-  <BaseBox
+  <Disc
     display="flex"
     alignItems="center"
     justifyContent="center"
@@ -49,7 +87,7 @@ const ChatFeedbackCheck = ({ size = 'small' }: ChatFeedbackCheckProps): React.Re
     backgroundColor="feedback.background.positive.intense"
   >
     <CheckIcon size={ICON_SIZE[size]} color="surface.icon.staticWhite.subtle" />
-  </BaseBox>
+  </Disc>
 );
 
 export { ChatFeedbackCheck };

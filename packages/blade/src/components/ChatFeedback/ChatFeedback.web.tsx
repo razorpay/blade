@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { ChatFeedbackProps, ChatFeedbackStep } from './types';
-import { chatFeedbackChipSize } from './chatFeedbackTokens';
+import { chatFeedbackChipSize, chatFeedbackSubmitRevealWidth } from './chatFeedbackTokens';
 import { useChatFeedback } from './useChatFeedback';
 import { ChatFeedbackMoodScale } from './ChatFeedbackMoodScale.web';
 import { ChatFeedbackCheck } from './ChatFeedbackCheck.web';
@@ -16,7 +16,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { Chip, ChipGroup } from '~components/Chip';
 import { CheckIcon, ChevronLeftIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
-import { castWebType } from '~utils';
+import { castWebType, makeSize } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -37,6 +37,46 @@ import getIn from '~utils/lodashButBetter/get';
 const ChipGroupAligner = styled(BaseBox)(({ theme }) => ({
   marginBottom: `-${getIn(theme, chipGroupGapTokens[chatFeedbackChipSize].bottom)}px`,
 }));
+
+/**
+ * Holds the space its submit control will occupy, before the control exists.
+ *
+ * Ported from the prototype's chip row. The control is revealed on the first tag pick; letting it
+ * arrive in the flow moved every chip 36px left in the same frame, which is the one moment the
+ * user is reading those chips. So the row grows its own right edge on the settle curve and the
+ * control fades into the space that opens, and the chips never move at all.
+ */
+const SubmitReserve = styled(BaseBox)<{ $hasSubmit: boolean }>(({ theme, $hasSubmit }) => ({
+  position: 'relative',
+  paddingRight: $hasSubmit ? makeSize(chatFeedbackSubmitRevealWidth) : '0px',
+  transition: `padding-right ${theme.motion.duration.moderate}ms ${castWebType(
+    theme.motion.easing.settle,
+  )}`,
+}));
+
+/**
+ * The control itself, parked in the space above.
+ *
+ * Absolute so its arrival cannot lay anything out, and `visibility` trails the fade by the fade's
+ * own duration so it leaves the tab order only once it has actually gone — a transparent button
+ * that still takes focus is worse than one that pops.
+ */
+const SubmitSlot = styled.span<{ $isReady: boolean }>(({ theme, $isReady }) => {
+  const fade = theme.motion.duration.moderate;
+  return {
+    position: 'absolute',
+    right: 0,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    display: 'inline-flex',
+    opacity: $isReady ? 1 : 0,
+    visibility: $isReady ? 'visible' : 'hidden',
+    pointerEvents: $isReady ? 'auto' : 'none',
+    transition: `opacity ${fade}ms ${castWebType(theme.motion.easing.entrance)}, visibility 0s ${
+      $isReady ? '0s' : `${fade}ms`
+    }`,
+  };
+});
 
 const _ChatFeedback = ({
   question = 'How are we doing so far?',
@@ -199,7 +239,8 @@ const _ChatFeedback = ({
           </Text>
         </BaseBox>
 
-        <BaseBox
+        <SubmitReserve
+          $hasSubmit={!isSubmitHidden}
           display="flex"
           flexDirection="row"
           alignItems="center"
@@ -228,11 +269,11 @@ const _ChatFeedback = ({
           </ChipGroupAligner>
 
           {/*
-            Hidden when the surrounding surface owns the submit, so the free-text case has one
-            place to press rather than two. Otherwise always rendered rather than revealed on
-            first pick — a button that appears mid-flow shifts the row and gives the user nothing
-            to aim at beforehand. */}
-          {isSubmitHidden ? null : (
+            Kept mounted and revealed, rather than mounted on first pick. `SubmitReserve` above has
+            already opened the space it lands in, so revealing it costs the chips nothing — which is
+            what makes it safe to hide in the first place.
+          */}
+          <SubmitSlot $isReady={!isSubmitHidden}>
             <Button
               icon={CheckIcon}
               variant="primary"
@@ -242,8 +283,8 @@ const _ChatFeedback = ({
               isDisabled={isDisabled || !hasSelectedTags}
               onClick={submitTags}
             />
-          )}
-        </BaseBox>
+          </SubmitSlot>
+        </SubmitReserve>
       </BaseBox>
     ),
 
