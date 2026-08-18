@@ -431,6 +431,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
   return (
     <Frame
       position="relative"
+      /*
+       * The composer is a writing surface, not a field. Below about this width a prompt wraps
+       * after a handful of words and the feedback strip — a question, four faces and a submit on
+       * one line — starts folding onto a second row. Placed before the spreads below so a
+       * consumer's own styled props still win.
+       */
+      minWidth="700px"
       {...frameProps}
       {...metaAttribute({ name: MetaConstants.ChatInput, testID })}
       {...getStyledProps(rest)}
