@@ -298,6 +298,14 @@ function AsyncTree() {
   const [isLoadingChildren, setIsLoadingChildren] = React.useState(false);
   const [isLoadingMore, setIsLoadingMore] = React.useState(false);
 
+  // Simulated API calls — replace with your real fetch logic
+  const fetchCities = async (): Promise<string[]> => {
+    return ['Bengaluru', 'Mysuru', 'Mangaluru'];
+  };
+  const fetchMoreCities = async (): Promise<string[]> => {
+    return ['Hubli', 'Belagavi'];
+  };
+
   return (
     <TreeView selectionType="multiple">
       <TreeViewItem
