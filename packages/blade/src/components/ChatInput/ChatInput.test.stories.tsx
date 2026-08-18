@@ -32,11 +32,7 @@ const feedbackIcons = {
   'very-satisfied': <span>😍</span>,
 };
 
-const FeedbackComposer = ({
-  validationState,
-}: {
-  validationState?: 'error' | 'none';
-}): React.ReactElement => {
+const FeedbackComposer = (): React.ReactElement => {
   const [isVisible, setIsVisible] = React.useState(true);
   const [picked, setPicked] = React.useState<string | null>(null);
 
@@ -44,8 +40,6 @@ const FeedbackComposer = ({
     <Box maxWidth="600px">
       <ChatInput
         placeholder="Ask anything..."
-        validationState={validationState}
-        errorText={validationState === 'error' ? 'Something went wrong' : undefined}
         feedback={{
           feedbackIcons,
           isVisible,
@@ -89,17 +83,41 @@ MoodScaleIsNotCovered.play = async ({ canvasElement }) => {
   });
 };
 
-/** The same, with an error actually showing: the alert takes its layer back and stays reachable. */
-export const ErrorRegionIsReachableWhenShowing: StoryFn = (): React.ReactElement => (
-  <FeedbackComposer validationState="error" />
-);
+/**
+ * The other half of the same contract: when the validation region *is* saying something, it has to
+ * stay interactive.
+ *
+ * Deliberately without a feedback prompt. The two are not a combination this composer is expected
+ * to be in — feedback is asked for once a response has rendered, and an error arriving mid-answer
+ * takes the prompt away with it — so pairing them here would put a state in Storybook that no
+ * product reaches, and invite it to be treated as a supported layout. The contract being guarded
+ * belongs to the error region alone: it must not be left permanently inert by the fix that stops
+ * it swallowing clicks when idle.
+ */
+export const ErrorRegionStaysInteractive: StoryFn = (): React.ReactElement => {
+  const [isDismissed, setIsDismissed] = React.useState(false);
 
-ErrorRegionIsReachableWhenShowing.play = async ({ canvasElement }) => {
-  const { getByRole } = within(canvasElement);
+  return (
+    <Box maxWidth="600px">
+      <ChatInput
+        placeholder="Ask anything..."
+        validationState={isDismissed ? 'none' : 'error'}
+        errorText="Something went wrong"
+        onErrorDismiss={() => setIsDismissed(true)}
+      />
+    </Box>
+  );
+};
+
+ErrorRegionStaysInteractive.play = async ({ canvasElement }) => {
+  const { getByRole, queryByRole } = within(canvasElement);
   const alert = getByRole('alert');
 
   await waitFor(() => expect(alert).toBeVisible());
   await waitFor(() => expect(window.getComputedStyle(alert).pointerEvents).not.toBe('none'));
+  // Reachable in practice, not merely painted: its dismiss control must be clickable.
+  await userEvent.click(getByRole('button', { name: 'Dismiss error' }));
+  await waitFor(() => expect(queryByRole('alert')).toBeNull());
 };
 
 /** Picking a mood records it and moves the flow on to the follow-up step. */
