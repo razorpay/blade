@@ -14,6 +14,7 @@ import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
+import { defaultFeedbackIcons } from '~components/ChatFeedback/moodIcons';
 import { isReactNative } from '~utils';
 
 /** Native onFileChange fires before pick with the current list — simulate a picked file for Storybook. */
@@ -82,7 +83,7 @@ export default {
 
 const ChatInputTemplate: StoryFn<typeof ChatInput> = (args) => {
   return (
-    <Box maxWidth="600px">
+    <Box maxWidth="720px">
       <ChatInput {...args} />
     </Box>
   );
@@ -109,7 +110,7 @@ Disabled.args = {
 
 export const WithGhostSuggestions: StoryFn<typeof ChatInput> = () => {
   return (
-    <Box maxWidth="600px">
+    <Box maxWidth="720px">
       <ChatInput
         placeholder="Ask a question..."
         suggestions={[
@@ -131,7 +132,7 @@ export const WithFileUpload: StoryFn<typeof ChatInput> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
 
   return (
-    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+    <Box maxWidth="720px" display="flex" flexDirection="column" gap="spacing.5">
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
@@ -160,7 +161,7 @@ export const WithValidationError: StoryFn<typeof ChatInput> = () => {
 
   return (
     <Box
-      maxWidth="600px"
+      maxWidth="720px"
       paddingTop="spacing.8"
       display="flex"
       flexDirection="column"
@@ -187,7 +188,7 @@ export const StopGeneration: StoryFn<typeof ChatInput> = () => {
   const abortRef = useRef<AbortController | null>(null);
 
   return (
-    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+    <Box maxWidth="720px" display="flex" flexDirection="column" gap="spacing.5">
       <ChatInput
         placeholder="Ask a question..."
         isGenerating={isGenerating}
@@ -234,7 +235,7 @@ export const FullFeatured: StoryFn<typeof ChatInput> = () => {
   };
 
   return (
-    <Box maxWidth="600px">
+    <Box maxWidth="720px">
       <ChatInput
         value={text}
         onChange={({ value }) => setText(value)}
@@ -267,7 +268,7 @@ export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
   const [files, setFiles] = useState<BladeFileList>([]);
 
   return (
-    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.8">
+    <Box maxWidth="720px" display="flex" flexDirection="column" gap="spacing.8">
       <ChatInput
         placeholder="Try pasting an image here..."
         fileList={files}
@@ -766,7 +767,7 @@ export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
   ]);
 
   return (
-    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+    <Box maxWidth="720px" display="flex" flexDirection="column" gap="spacing.5">
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
@@ -813,7 +814,7 @@ export const WithFileReupload: StoryFn<typeof ChatInput> = () => {
   ]);
 
   return (
-    <Box maxWidth="600px">
+    <Box maxWidth="720px">
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
@@ -855,7 +856,7 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
   ]);
 
   return (
-    <Box maxWidth="600px" display="flex" flexDirection="column" gap="spacing.5">
+    <Box maxWidth="720px" display="flex" flexDirection="column" gap="spacing.5">
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
@@ -875,3 +876,104 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
   );
 };
 WithManyFiles.storyName = 'With Many Files (Autoscroll)';
+
+/**
+ * The composer can carry a feedback prompt on its top edge. Prompt and composer share one
+ * surface, so they read as a single object rather than as two things that happen to be adjacent.
+ *
+ * `ChatFeedback` never removes itself. Hide the prompt on **`onDismiss`**, not on `onSubmit` —
+ * submitting moves the flow to its thank-you step, and taking the prompt away there means the
+ * confirmation is never seen. `onDismiss` fires once that step has been held. With `feedback`
+ * gone the composer looks exactly as it does without the feature.
+ *
+ * Blade ships an animated set for the rating scale, so nothing extra is required. Pass
+ * `feedbackIcons` only to use a product's own artwork.
+ */
+export const WithFeedback: StoryFn<typeof ChatInput> = () => {
+  const [value, setValue] = useState('');
+  const [showFeedback, setShowFeedback] = useState(true);
+  const [answer, setAnswer] = useState<string | null>(null);
+
+  return (
+    <Box maxWidth="720px" display="flex" flexDirection="column" gap="spacing.5">
+      <ChatInput
+        placeholder="Ask anything..."
+        value={value}
+        onChange={({ value: next }) => setValue(next)}
+        onSubmit={() => setValue('')}
+        feedback={{
+          feedbackIcons: defaultFeedbackIcons,
+          isVisible: showFeedback,
+          question: "How's Ray doing so far?",
+          /*
+           * Record the answer here, but do not take the prompt away — `ChatFeedback` still has a
+           * thank-you step to show. Hiding on submit removes it before the confirmation renders,
+           * which reads as the prompt vanishing the instant you answer.
+           */
+          onSubmit: ({ mood, tags, comment }) => {
+            setAnswer(
+              [mood, tags.join(', '), comment && `“${comment}”`].filter(Boolean).join(' — '),
+            );
+          },
+          // Fired once the thank-you step has been held; this is where the prompt leaves.
+          onDismiss: () => setShowFeedback(false),
+        }}
+      />
+      {answer ? (
+        <Text size="small" color="surface.text.gray.muted">
+          Recorded: {answer}
+        </Text>
+      ) : null}
+      {showFeedback ? null : (
+        <Box>
+          <Text size="small" color="surface.text.gray.muted">
+            The prompt is gone and the composer is back to its plain state.
+          </Text>
+        </Box>
+      )}
+    </Box>
+  );
+};
+WithFeedback.storyName = 'With feedback prompt (attached)';
+
+/**
+ * Every point of the scale takes a glyph of your own — a product's icon set, or plain emoji
+ * characters as below.
+ *
+ * Hover or pick one: the selected state is drawn on the *button*, not the glyph, and the glyph
+ * animates off that same state, so pointer, keyboard and selection all read alike.
+ */
+export const WithCustomMoodIcons: StoryFn<typeof ChatInput> = () => {
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+
+  const record = (row: string) => ({ mood }: { mood: string }) =>
+    setAnswers((prev) => ({ ...prev, [row]: mood }));
+
+  const rows = [
+    {
+      key: 'animated',
+      label: 'feedbackIcons — animated faces (hover or focus a button)',
+      feedback: { question: "How's Ray doing so far?", feedbackIcons: defaultFeedbackIcons },
+    },
+  ];
+
+  return (
+    <Box maxWidth="720px" display="flex" flexDirection="column" gap="spacing.7">
+      {rows.map((row) => (
+        <Box key={row.key} display="flex" flexDirection="column" gap="spacing.3">
+          <Text size="small" color="surface.text.gray.muted">
+            {row.label}
+          </Text>
+          <ChatInput
+            placeholder="Ask anything..."
+            feedback={{ ...row.feedback, onMoodSelect: record(row.key) }}
+          />
+          <Text size="small" color="surface.text.gray.muted">
+            picked: {answers[row.key] ?? '—'}
+          </Text>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+WithCustomMoodIcons.storyName = 'With custom mood icons';

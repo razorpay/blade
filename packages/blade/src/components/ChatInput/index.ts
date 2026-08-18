@@ -1,2 +1,2 @@
-export type { ChatInputProps } from './types';
+export type { ChatInputProps, ChatInputFeedbackProps } from './types';
 export { ChatInput } from './ChatInput';

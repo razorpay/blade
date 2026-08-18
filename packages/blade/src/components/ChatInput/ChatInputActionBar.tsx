@@ -5,6 +5,14 @@ import { Link } from '~components/Link';
 import { ArrowUpIcon, StopCircleIcon, PlusIcon } from '~components/Icons';
 
 type ChatInputActionBarProps = {
+  /**
+   * Replaces the upload link on the left of the bar.
+   *
+   * Used when the composer is doing something other than composing a message — collecting
+   * feedback, say — where offering an attachment would be meaningless and the space is better
+   * spent saying what mode you are in and how to leave it.
+   */
+  leadingSlot?: React.ReactNode;
   isDisabled?: boolean;
   isGenerating?: boolean;
   isSubmitDisabled?: boolean;
@@ -22,6 +30,7 @@ const ChatInputActionBar = ({
   onUploadClick,
   onSubmit,
   onStop,
+  leadingSlot,
 }: ChatInputActionBarProps): React.ReactElement => {
   return (
     <BaseBox
@@ -31,22 +40,23 @@ const ChatInputActionBar = ({
       alignItems="center"
       padding="spacing.5"
     >
-      {hideFileUpload ? (
-        <BaseBox />
-      ) : (
-        <BaseBox display="flex" alignItems="center">
-          <Link
-            variant="button"
-            color="neutral"
-            size="small"
-            icon={PlusIcon}
-            onClick={onUploadClick}
-            isDisabled={isDisabled}
-          >
-            Upload file
-          </Link>
-        </BaseBox>
-      )}
+      {leadingSlot ??
+        (hideFileUpload ? (
+          <BaseBox />
+        ) : (
+          <BaseBox display="flex" alignItems="center">
+            <Link
+              variant="button"
+              color="neutral"
+              size="small"
+              icon={PlusIcon}
+              onClick={onUploadClick}
+              isDisabled={isDisabled}
+            >
+              Upload file
+            </Link>
+          </BaseBox>
+        ))}
       <BaseBox>
         {isGenerating ? (
           <Button

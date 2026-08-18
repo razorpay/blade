@@ -3,6 +3,7 @@
 exports[`<ChatInput /> should render ChatInput 1`] = `
 .c0.c0.c0.c0.c0 {
   position: relative;
+  min-width: 700px;
 }
 
 .c1.c1.c1.c1.c1 {
