@@ -25,6 +25,22 @@ type ComponentStatusDataType = {
 
 const componentData: ComponentStatusDataType = [
   {
+    name: 'ChatFeedback',
+    description:
+      'Four-point rating flow for conversational surfaces — mood, follow-up tags, and an optional free-text comment.',
+    // Web only for now: the native counterpart throws until it is implemented.
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/ChatFeedback',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'Avatar',
     description: 'Avatar component for displaying user profile images or initials.',
     platform: 'all',

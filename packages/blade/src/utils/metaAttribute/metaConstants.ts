@@ -29,6 +29,8 @@ export const MetaConstants = {
   BottomNav: 'bottomnav',
   BottomNavItem: 'bottomnav-item',
   Carousel: 'carousel',
+  ChatComposer: 'chat-composer',
+  ChatFeedback: 'chat-feedback',
   ChatInput: 'chat-input',
   ChatMessage: 'chat-message',
   ChatMessageThumbnailPreview: 'chat-message-thumbnail-preview',
