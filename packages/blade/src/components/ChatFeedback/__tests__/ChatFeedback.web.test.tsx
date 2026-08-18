@@ -5,23 +5,15 @@ import type { ChatFeedbackControls } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
-/** Blade ships no artwork for the scale yet, so every render supplies its own. */
-const moodIcons = {
-  'very-dissatisfied': <span>😢</span>,
-  dissatisfied: <span>😕</span>,
-  satisfied: <span>🙂</span>,
-  'very-satisfied': <span>😍</span>,
-};
-
-describe('<ChatFeedback moodIcons={moodIcons} />', () => {
+describe('<ChatFeedback />', () => {
   it('should render the mood step by default', () => {
-    const { container } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} />);
+    const { container } = renderWithTheme(<ChatFeedback />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render the question and all four moods', () => {
     const { getByText, getByLabelText } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} question="How did that go?" />,
+      <ChatFeedback question="How did that go?" />,
     );
 
     expect(getByText('How did that go?')).toBeInTheDocument();
@@ -34,7 +26,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   it('should fire onMoodSelect and move to the tags step', async () => {
     const onMoodSelect = jest.fn();
     const { getByLabelText, findByText } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} onMoodSelect={onMoodSelect} />,
+      <ChatFeedback onMoodSelect={onMoodSelect} />,
     );
 
     await userEvent.click(getByLabelText('Love it!'));
@@ -44,7 +36,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   });
 
   it('should mark the picked mood as checked', async () => {
-    const { getByLabelText } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} />);
+    const { getByLabelText } = renderWithTheme(<ChatFeedback />);
     const satisfied = getByLabelText('Good');
 
     expect(satisfied).toHaveAttribute('aria-checked', 'false');
@@ -53,9 +45,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   });
 
   it('should keep submit disabled until at least one tag is picked', async () => {
-    const { getByLabelText, findByRole, getByText } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} />,
-    );
+    const { getByLabelText, findByRole, getByText } = renderWithTheme(<ChatFeedback />);
 
     await userEvent.click(getByLabelText('Good'));
     const submit = await findByRole('button', { name: 'Submit feedback' });
@@ -68,7 +58,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   it('should submit the mood and selected tags', async () => {
     const onSubmit = jest.fn();
     const { getByLabelText, findByRole, findByText, getByText } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} onSubmit={onSubmit} autoDismiss={false} />,
+      <ChatFeedback onSubmit={onSubmit} autoDismiss={false} />,
     );
 
     await userEvent.click(getByLabelText('Good'));
@@ -81,7 +71,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
 
   it('should show the thanks step after submitting', async () => {
     const { getByLabelText, findByRole, findByText } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} autoDismiss={false} />,
+      <ChatFeedback autoDismiss={false} />,
     );
 
     await userEvent.click(getByLabelText('Good'));
@@ -92,7 +82,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   });
 
   it('should clear the selection when going back to the mood step', async () => {
-    const { getByLabelText, findByRole } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} />);
+    const { getByLabelText, findByRole } = renderWithTheme(<ChatFeedback />);
 
     await userEvent.click(getByLabelText('Good'));
     await userEvent.click(await findByRole('button', { name: 'Back to rating' }));
@@ -104,7 +94,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
 
   it('should not offer a free-text follow-up of its own', async () => {
     const { getByLabelText, findByRole, findByText, queryByRole } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} autoDismiss={false} />,
+      <ChatFeedback autoDismiss={false} />,
     );
 
     await userEvent.click(getByLabelText('Good'));
@@ -120,7 +110,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   it('should call onDismiss after the thanks step when autoDismiss is on', async () => {
     const onDismiss = jest.fn();
     const { getByLabelText, findByRole, findByText } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} onDismiss={onDismiss} />,
+      <ChatFeedback onDismiss={onDismiss} />,
     );
 
     await userEvent.click(getByLabelText('Good'));
@@ -134,9 +124,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   it('should not call onDismiss when autoDismiss is off', () => {
     jest.useFakeTimers();
     const onDismiss = jest.fn();
-    renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} onDismiss={onDismiss} autoDismiss={false} />,
-    );
+    renderWithTheme(<ChatFeedback onDismiss={onDismiss} autoDismiss={false} />);
 
     jest.advanceTimersByTime(5000);
     expect(onDismiss).not.toHaveBeenCalled();
@@ -146,7 +134,6 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   it('should honour a custom moodConfig', async () => {
     const { getByLabelText, findByText } = renderWithTheme(
       <ChatFeedback
-        moodIcons={moodIcons}
         moodConfig={{ satisfied: { question: 'Nice! Why?', tags: ['Speedy', 'Accurate'] } }}
       />,
     );
@@ -158,19 +145,17 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   });
 
   it('should disable every control when isDisabled is true', () => {
-    const { getByLabelText } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} isDisabled />);
+    const { getByLabelText } = renderWithTheme(<ChatFeedback isDisabled />);
     expect(getByLabelText('Good')).toBeDisabled();
   });
 
   it('should not have accessibility violations', async () => {
-    const { container } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} />);
+    const { container } = renderWithTheme(<ChatFeedback />);
     await assertAccessible(container);
   });
 
   it('should not have accessibility violations on the follow-up step', async () => {
-    const { container, getByLabelText, findByRole } = renderWithTheme(
-      <ChatFeedback moodIcons={moodIcons} />,
-    );
+    const { container, getByLabelText, findByRole } = renderWithTheme(<ChatFeedback />);
 
     await userEvent.click(getByLabelText('Good'));
     await findByRole('button', { name: 'Back to rating' });
@@ -179,7 +164,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
   });
 
   it('should expose the scale as a radio group with a name for every point', () => {
-    const { getByRole } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} />);
+    const { getByRole } = renderWithTheme(<ChatFeedback />);
 
     expect(getByRole('radiogroup', { name: 'Rate this experience' })).toBeTruthy();
     ['Terrible', 'Bad', 'Good', 'Love it!'].forEach((label) => {
@@ -187,16 +172,27 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
     });
   });
 
-  describe('moodIcons', () => {
+  describe('feedbackIcons', () => {
+    /*
+     * Emoji rather than the shipped SVGs. Untintable artwork with no filled twin is the case worth
+     * proving: it is where the selected state has to survive on the button alone.
+     */
+    const emojiIcons = {
+      'very-dissatisfied': <span>😢</span>,
+      dissatisfied: <span>😕</span>,
+      satisfied: <span>🙂</span>,
+      'very-satisfied': <span>😍</span>,
+    };
+
     it('should render the supplied artwork for every mood', () => {
-      const { getByRole } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} />);
+      const { getByRole } = renderWithTheme(<ChatFeedback feedbackIcons={emojiIcons} />);
 
       expect(getByRole('radio', { name: 'Good' })).toHaveTextContent('🙂');
       expect(getByRole('radio', { name: 'Terrible' })).toHaveTextContent('😢');
     });
 
     it('should keep supplied artwork out of the accessibility tree', () => {
-      const { getByRole } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} />);
+      const { getByRole } = renderWithTheme(<ChatFeedback feedbackIcons={emojiIcons} />);
       const button = getByRole('radio', { name: 'Good' });
 
       // The button already carries the mood's name; the glyph naming itself again is noise.
@@ -209,7 +205,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
      * the only sign that a rating registered.
      */
     it('should still show a selected state with untintable artwork', async () => {
-      const { getByRole } = renderWithTheme(<ChatFeedback moodIcons={moodIcons} />);
+      const { getByRole } = renderWithTheme(<ChatFeedback feedbackIcons={emojiIcons} />);
       const button = getByRole('radio', { name: 'Good' });
       // jsdom reports an unpainted background as either spelling, depending on how it was set.
       const isUnpainted = (): boolean =>
@@ -235,12 +231,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
       const onSubmit = jest.fn();
       const controlsRef: { current: ChatFeedbackControls | null } = { current: null };
       const { getByLabelText, findByText } = renderWithTheme(
-        <ChatFeedback
-          moodIcons={moodIcons}
-          controlsRef={controlsRef}
-          autoDismiss={false}
-          onSubmit={onSubmit}
-        />,
+        <ChatFeedback controlsRef={controlsRef} autoDismiss={false} onSubmit={onSubmit} />,
       );
 
       await userEvent.click(getByLabelText('Good'));
@@ -256,7 +247,7 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
     it('should let a host replace the selection', async () => {
       const controlsRef: { current: ChatFeedbackControls | null } = { current: null };
       const { getByLabelText, findByRole } = renderWithTheme(
-        <ChatFeedback moodIcons={moodIcons} controlsRef={controlsRef} autoDismiss={false} />,
+        <ChatFeedback controlsRef={controlsRef} autoDismiss={false} />,
       );
 
       await userEvent.click(getByLabelText('Good'));

@@ -9,17 +9,6 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
-/**
- * Blade ships no artwork for the scale yet, so every usage supplies its own. Declared once here
- * and passed to each story, which is how a product should hold it too — one object to swap.
- */
-const moodIcons = {
-  'very-dissatisfied': <span>😢</span>,
-  dissatisfied: <span>😕</span>,
-  satisfied: <span>🙂</span>,
-  'very-satisfied': <span>😍</span>,
-};
-
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
@@ -32,14 +21,6 @@ const Page = (): React.ReactElement => {
         {`
         import { ChatFeedback } from '@razorpay/blade/components';
 
-        // Blade ships no artwork for the scale yet — supply your own, declared once.
-        const moodIcons = {
-          'very-dissatisfied': <span>😢</span>,
-          dissatisfied: <span>😕</span>,
-          satisfied: <span>🙂</span>,
-          'very-satisfied': <span>😍</span>,
-        };
-
         function App() {
           const [show, setShow] = React.useState(true);
 
@@ -48,7 +29,7 @@ const Page = (): React.ReactElement => {
 
           return (
             <ChatFeedback
-              moodIcons={moodIcons}
+             
               question="How's Ray doing so far?"
               onSubmit={(payload) => console.log('feedback', payload)}
               onDismiss={() => setShow(false)}
@@ -86,7 +67,6 @@ const ChatFeedbackTemplate: StoryFn<typeof ChatFeedback> = (args) => {
     <Box width="100%" maxWidth="660px" display="flex" flexDirection="column" gap="spacing.4">
       {show ? (
         <ChatFeedback
-          moodIcons={moodIcons}
           {...args}
           onSubmit={(payload) => {
             // eslint-disable-next-line no-console

@@ -16,3 +16,5 @@ feat(ChatFeedback): add `onTagsChange`, `controlsRef` and `isSubmitHidden`, so a
 
 fix(ChatFeedback): report every change to the tag selection through `onTagsChange`, not only the ones made in the chip group. Picking a new mood and going back both clear the tags, and were previously silent — so a host mirroring the selection acted on tags that no longer existed
 
+feat(ChatFeedback): ship an animated four-point icon set as the default artwork. Each face is static at rest and animates only while its button is hovered, focused or selected
+

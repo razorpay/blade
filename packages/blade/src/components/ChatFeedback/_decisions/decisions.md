@@ -32,7 +32,7 @@ removes itself cannot be animated out by whatever contains it.
 
 | | |
 |---|---|
-| Shows | the question, and four buttons carrying `moodIcons` |
+| Shows | the question, and four buttons carrying `feedbackIcons` |
 | Sub-states | nothing selected · one selected (200ms, then `tags`) |
 | Emits | `onMoodSelect` |
 
@@ -102,7 +102,7 @@ may be stale. That is the second way the same bug appeared.
 ```jsx
 <ChatFeedback
   question="How's Ray doing so far?"
-  moodIcons={moodIcons}
+  feedbackIcons={feedbackIcons}
   onSubmit={({ mood, tags, comment }) => record(mood, tags, comment)}
   onDismiss={() => setShowFeedback(false)}
 />
@@ -113,7 +113,7 @@ may be stale. That is the second way the same bug appeared.
 ```ts
 type ChatFeedbackMood = 'very-dissatisfied' | 'dissatisfied' | 'satisfied' | 'very-satisfied';
 type ChatFeedbackStep = 'mood' | 'tags' | 'thanks';
-type ChatFeedbackMoodIcons = Record<ChatFeedbackMood, React.ReactNode>;
+type ChatFeedbackIcons = Record<ChatFeedbackMood, React.ReactNode>;
 
 type ChatFeedbackMoodConfig = {
   /** Follow-up question shown once this mood is picked. */
@@ -143,10 +143,10 @@ type ChatFeedbackProps = {
   question?: string;
 
   /**
-   * Artwork for the scale, one entry per mood. **Required** — Blade ships no set for this yet.
-   * Rendered as given, in a 20px box, hidden from assistive technology.
+   * Artwork for the scale, one entry per mood. Optional — Blade ships an animated set and uses it
+   * when omitted. Rendered as given, in a fixed box, hidden from assistive technology.
    */
-  moodIcons: ChatFeedbackMoodIcons;
+  feedbackIcons?: ChatFeedbackIcons;
 
   /** Overrides follow-up copy, tags and closing line per mood. Partial: unlisted moods keep defaults. */
   moodConfig?: Partial<Record<ChatFeedbackMood, ChatFeedbackMoodConfig>>;
@@ -186,7 +186,7 @@ type ChatFeedbackProps = {
   placeholder="Ask anything..."
   feedback={{
     question: "How's Ray doing so far?",
-    moodIcons,
+    feedbackIcons,
     onSubmit: ({ mood, tags, comment }) => record(mood, tags, comment),
     onDismiss: () => setShowFeedback(false),
   }}
@@ -196,7 +196,7 @@ type ChatFeedbackProps = {
 ```ts
 type ChatInputFeedbackProps = Pick<
   ChatFeedbackProps,
-  'question' | 'moodConfig' | 'moodIcons' | 'isDisabled' | 'onMoodSelect' | 'onSubmit' | 'onDismiss'
+  'question' | 'moodConfig' | 'feedbackIcons' | 'isDisabled' | 'onMoodSelect' | 'onSubmit' | 'onDismiss'
 > & {
   /** @default true */
   isVisible?: boolean;
@@ -245,12 +245,12 @@ would also hand every consumer the a11y, hit targets and selected state — the 
 were hardest to get right here.
 
 **A slot for the scale.** Same objection at smaller scale, plus it hides a contract types cannot
-express ("an SVG that inherits `currentColor`"). `moodIcons` swaps the glyphs, not the control.
+express ("an SVG that inherits `currentColor`"). `feedbackIcons` swaps the glyphs, not the control.
 
-**`moodScale: 'faces' | 'thumbs'`.** Built, then removed: both values depended on artwork that is
-not shipping in the first pass. A switch with no working position is worse than no switch. When a
-designed set lands, `moodIcons` becomes optional and `moodScale` returns — required → optional
-breaks nobody, which is why the artwork is *missing* rather than provisional.
+**`moodScale: 'faces' | 'thumbs'`.** Built, then removed: both values depended on artwork that did
+not exist at the time. A switch with no working position is worse than no switch. Blade now ships a
+single animated set as the default, and `feedbackIcons` is the override — if a second named set
+ever earns its place, `moodScale` can return alongside it.
 
 **Its own free-text step.** The component used to own a `comment` step behind an
 "Add more feedback" link. Removed: two places to type stacked vertically, and the one that looks

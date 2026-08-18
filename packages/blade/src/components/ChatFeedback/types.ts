@@ -23,7 +23,7 @@ type ChatFeedbackMoodConfig = {
 };
 
 /** One glyph per point of the scale. */
-type ChatFeedbackMoodIcons = Record<ChatFeedbackMood, React.ReactNode>;
+type ChatFeedbackIcons = Record<ChatFeedbackMood, React.ReactNode>;
 
 /** The parts of a running flow a host may need to drive. */
 type ChatFeedbackControls = {
@@ -132,17 +132,18 @@ type ChatFeedbackProps = {
   /**
    * Artwork for the rating scale, one entry per mood.
    *
-   * Required, because Blade ships no set for this scale yet. Pass a product's own icons or plain
-   * emoji characters; each is rendered as given, inside a 20px box and hidden from assistive
-   * technology, since the button already carries the mood's name.
+   * Optional — Blade ships an animated set and uses it when this is omitted, so the component
+   * renders properly on install. Supply your own to use a product's icon set, or plain emoji
+   * characters; each is rendered as given, in a fixed box and hidden from assistive technology,
+   * since the button already carries the mood's name.
    *
-   * Declare the set once in a module and import it, rather than inline — when Blade's own artwork
-   * lands, deleting that one object is the whole migration.
+   * Declare a replacement once in a module and import it, rather than inline — swapping the scale
+   * should be one edit rather than one per surface.
    *
    * Hover and selected states are drawn on the button, not the glyph, so they read the same
    * whether what you pass can be tinted or not.
    */
-  moodIcons: ChatFeedbackMoodIcons;
+  feedbackIcons?: ChatFeedbackIcons;
 
   /**
    * Disables every control in the flow.
@@ -155,7 +156,7 @@ type ChatFeedbackProps = {
 
 export type {
   ChatFeedbackControls,
-  ChatFeedbackMoodIcons,
+  ChatFeedbackIcons,
   ChatFeedbackProps,
   ChatFeedbackMood,
   ChatFeedbackMoodConfig,

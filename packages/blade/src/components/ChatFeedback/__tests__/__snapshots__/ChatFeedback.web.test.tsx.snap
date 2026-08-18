@@ -1,6 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by default 1`] = `
+exports[`<ChatFeedback /> should render the mood step by default 1`] = `
+.c6.c6.c6.c6.c6 .face {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+
+.c6.c6.c6.c6.c6 .tear {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+
+button:hover:not(:disabled) .c6.c6.c6.c6.c6 .face,
+button:focus-visible .c6.c6.c6.c6.c6 .face,
+button[aria-checked='true'] .c6.c6.c6.c6.c6 .face {
+  -webkit-animation: guTmwE-450290765 2.8s ease-in-out infinite;
+  animation: guTmwE-450290765 2.8s ease-in-out infinite;
+}
+
+button:hover:not(:disabled) .c6.c6.c6.c6.c6 .tear,
+button:focus-visible .c6.c6.c6.c6.c6 .tear,
+button[aria-checked='true'] .c6.c6.c6.c6.c6 .tear {
+  -webkit-animation: TeClM-450290765 2.8s linear infinite;
+  animation: TeClM-450290765 2.8s linear infinite;
+}
+
+.c8.c8.c8.c8.c8 {
+  overflow: visible;
+}
+
+.c8.c8.c8.c8.c8 .face {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+
+.c8.c8.c8.c8.c8 .thumb {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: 50% 8%;
+  -ms-transform-origin: 50% 8%;
+  transform-origin: 50% 8%;
+}
+
+button:hover:not(:disabled) .c8.c8.c8.c8.c8 .thumb,
+button:focus-visible .c8.c8.c8.c8.c8 .thumb,
+button[aria-checked='true'] .c8.c8.c8.c8.c8 .thumb {
+  -webkit-animation: cipsOa-450290765 0.6s forwards;
+  animation: cipsOa-450290765 0.6s forwards;
+}
+
+button:hover:not(:disabled) .c8.c8.c8.c8.c8 .face,
+button:focus-visible .c8.c8.c8.c8.c8 .face,
+button[aria-checked='true'] .c8.c8.c8.c8.c8 .face {
+  -webkit-animation: hNtKvL-450290765 0.6s cubic-bezier(0.33,0,0.3,1) forwards;
+  animation: hNtKvL-450290765 0.6s cubic-bezier(0.33,0,0.3,1) forwards;
+}
+
+.c10.c10.c10.c10.c10 .thumb {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: 50% 92%;
+  -ms-transform-origin: 50% 92%;
+  transform-origin: 50% 92%;
+}
+
+button:hover:not(:disabled) .c10.c10.c10.c10.c10 .thumb,
+button:focus-visible .c10.c10.c10.c10.c10 .thumb,
+button[aria-checked='true'] .c10.c10.c10.c10.c10 .thumb {
+  -webkit-animation: kBdBkO-450290765 0.6s forwards;
+  animation: kBdBkO-450290765 0.6s forwards;
+}
+
+.c11.c11.c11.c11.c11 .heart {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+
+button:hover:not(:disabled) .c11.c11.c11.c11.c11 .heart,
+button:focus-visible .c11.c11.c11.c11.c11 .heart,
+button[aria-checked='true'] .c11.c11.c11.c11.c11 .heart {
+  -webkit-animation: gBVWHx-450290765 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards,cAtlcO-450290765 1s ease-in-out 0.5s infinite;
+  animation: gBVWHx-450290765 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards,cAtlcO-450290765 1s ease-in-out 0.5s infinite;
+}
+
+button:hover:not(:disabled) .c11.c11.c11.c11.c11 .right,
+button:focus-visible .c11.c11.c11.c11.c11 .right,
+button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
+  -webkit-animation-delay: 0.05s,0.55s;
+  animation-delay: 0.05s,0.55s;
+}
+
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -121,57 +228,6 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
   color: hsla(206,10%,29%,0.32);
 }
 
-.c6.c6.c6.c6.c6 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-width: 32px;
-  min-height: 32px;
-  padding: 8px;
-  border: none;
-  background-color: transparent;
-  border-radius: 9999px;
-  cursor: pointer;
-  color: hsla(204,9%,42%,1);
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: -webkit-transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
-  -webkit-transition: transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
-  transition: transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
-}
-
-.c6.c6.c6.c6.c6:hover:not(:disabled) {
-  color: hsla(25,100%,39%,1);
-  background-color: hsla(25,100%,44%,0.09);
-  -webkit-transform: scale(1.12);
-  -ms-transform: scale(1.12);
-  transform: scale(1.12);
-}
-
-.c6.c6.c6.c6.c6:focus-visible {
-  color: hsla(25,100%,39%,1);
-  background-color: hsla(25,100%,44%,0.09);
-  -webkit-transform: scale(1.12);
-  -ms-transform: scale(1.12);
-  transform: scale(1.12);
-  outline: none;
-}
-
-.c6.c6.c6.c6.c6:disabled {
-  cursor: not-allowed;
-  color: hsla(206,10%,29%,0.32);
-}
-
 .c7.c7.c7.c7.c7 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -202,6 +258,57 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
 }
 
 .c7.c7.c7.c7.c7:hover:not(:disabled) {
+  color: hsla(25,100%,39%,1);
+  background-color: hsla(25,100%,44%,0.09);
+  -webkit-transform: scale(1.12);
+  -ms-transform: scale(1.12);
+  transform: scale(1.12);
+}
+
+.c7.c7.c7.c7.c7:focus-visible {
+  color: hsla(25,100%,39%,1);
+  background-color: hsla(25,100%,44%,0.09);
+  -webkit-transform: scale(1.12);
+  -ms-transform: scale(1.12);
+  transform: scale(1.12);
+  outline: none;
+}
+
+.c7.c7.c7.c7.c7:disabled {
+  cursor: not-allowed;
+  color: hsla(206,10%,29%,0.32);
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 8px;
+  border: none;
+  background-color: transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  color: hsla(204,9%,42%,1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: -webkit-transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
+  -webkit-transition: transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
+  transition: transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
+}
+
+.c9.c9.c9.c9.c9:hover:not(:disabled) {
   color: hsla(150,100%,23%,1);
   background-color: hsla(150,100%,28%,0.09);
   -webkit-transform: scale(1.12);
@@ -209,7 +316,7 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
   transform: scale(1.12);
 }
 
-.c7.c7.c7.c7.c7:focus-visible {
+.c9.c9.c9.c9.c9:focus-visible {
   color: hsla(150,100%,23%,1);
   background-color: hsla(150,100%,28%,0.09);
   -webkit-transform: scale(1.12);
@@ -218,7 +325,7 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
   outline: none;
 }
 
-.c7.c7.c7.c7.c7:disabled {
+.c9.c9.c9.c9.c9:disabled {
   cursor: not-allowed;
   color: hsla(206,10%,29%,0.32);
 }
@@ -245,6 +352,34 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
 .c5.c5.c5.c5.c5 > * {
   max-width: 100%;
   max-height: 100%;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c6.c6.c6.c6.c6 * {
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c8.c8.c8.c8.c8 * {
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c10.c10.c10.c10.c10 * {
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c11.c11.c11.c11.c11 * {
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
 }
 
 <div>
@@ -284,15 +419,96 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
               aria-hidden="true"
               class="c5"
             >
-              <span>
-                😢
-              </span>
+              <svg
+                aria-hidden="true"
+                class="c6"
+                fill="none"
+                focusable="false"
+                height="28"
+                viewBox="0 0 24 24"
+                width="28"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  transform="translate(3 3)"
+                >
+                  <circle
+                    cx="9"
+                    cy="9"
+                    fill="url(#:r2:)"
+                    r="9"
+                  />
+                  <path
+                    d="M16.6502 13.7289L15.9014 12.5276C15.8715 12.4797 15.8309 12.4395 15.7827 12.4099C15.7345 12.3803 15.6801 12.3623 15.6235 12.3572C15.5669 12.352 15.5098 12.3599 15.4565 12.3803C15.4032 12.4006 15.3552 12.4329 15.3162 12.4745C14.2605 13.6213 13.8499 14.9328 14.0845 16.4092C11.1874 18.2015 8.32163 18.4793 5.48725 17.2427C0.495016 15.0567 -1.5387 9.02198 1.27659 4.42543C3.89137 0.159827 9.24779 -1.24978 13.5239 1.20171C15.379 2.26403 16.6884 3.87793 17.4522 6.04342C18.3907 8.70193 18.1233 11.2637 16.6502 13.7289ZM5.72867 8.58889C5.72867 8.26705 5.60063 7.95839 5.37271 7.73082C5.1448 7.50325 4.83568 7.3754 4.51335 7.3754C4.19103 7.3754 3.88191 7.50325 3.65399 7.73082C3.42607 7.95839 3.29803 8.26705 3.29803 8.58889C3.29803 8.91072 3.42607 9.21938 3.65399 9.44695C3.88191 9.67453 4.19103 9.80238 4.51335 9.80238C4.83568 9.80238 5.1448 9.67453 5.37271 9.44695C5.60063 9.21938 5.72867 8.91072 5.72867 8.58889ZM14.7311 8.58889C14.7311 8.26705 14.603 7.95839 14.3751 7.73082C14.1472 7.50325 13.8381 7.3754 13.5157 7.3754C13.1934 7.3754 12.8843 7.50325 12.6564 7.73082C12.4285 7.95839 12.3004 8.26705 12.3004 8.58889C12.3004 8.91072 12.4285 9.21938 12.6564 9.44695C12.8843 9.67453 13.1934 9.80238 13.5157 9.80238C13.8381 9.80238 14.1472 9.67453 14.3751 9.44695C14.603 9.21938 14.7311 8.91072 14.7311 8.58889ZM6.47751 12.8872C8.01201 10.9219 10.0335 10.9382 11.6375 12.928C11.7252 13.0366 11.8489 13.1103 11.9862 13.1358C12.1235 13.1613 12.2655 13.1369 12.3863 13.067C12.5418 12.9771 12.6605 12.8599 12.7423 12.7156C13.007 12.2471 12.9442 11.8276 12.5541 11.4571C10.2353 9.25079 7.91516 9.21538 5.59364 11.3509C5.3563 11.5715 5.20353 11.8712 5.13533 12.2498C5.10533 12.4132 5.14352 12.5589 5.24991 12.687C5.47634 12.9621 5.76004 13.0942 6.10104 13.0833C6.17397 13.0808 6.24559 13.0619 6.3107 13.0279C6.37581 12.994 6.43279 12.9459 6.47751 12.8872Z"
+                    fill="url(#:r2:)"
+                  />
+                  <g
+                    class="face"
+                  >
+                    <g
+                      class="tear"
+                    >
+                      <g
+                        transform="translate(15.621 12.355) scale(1.5) translate(-15.621 -12.355)"
+                      >
+                        <path
+                          d="M16.6499 13.7287C17.5311 15.3358 17.3933 16.4389 16.2366 17.0382C15.5383 17.3977 14.8208 17.188 14.0842 16.409C13.8496 14.9326 14.2602 13.6211 15.3159 12.4743C15.3549 12.4327 15.403 12.4005 15.4562 12.3801C15.5095 12.3598 15.5667 12.3519 15.6232 12.357C15.6798 12.3621 15.7343 12.3802 15.7825 12.4097C15.8306 12.4393 15.8712 12.4796 15.9011 12.5274L16.6499 13.7287Z"
+                          fill="#2EB6FF"
+                        />
+                        <ellipse
+                          cx="15.35"
+                          cy="15.95"
+                          fill="#FFFFFF"
+                          opacity="0.5"
+                          rx="0.4"
+                          ry="0.62"
+                          transform="rotate(-16 15.35 15.95)"
+                        />
+                      </g>
+                    </g>
+                    <path
+                      d="M4.51354 9.80296C5.18494 9.80296 5.72922 9.25966 5.72922 8.58947C5.72922 7.91927 5.18494 7.37598 4.51354 7.37598C3.84213 7.37598 3.29785 7.91927 3.29785 8.58947C3.29785 9.25966 3.84213 9.80296 4.51354 9.80296Z"
+                      fill="#50505A"
+                    />
+                    <path
+                      d="M13.516 9.80296C14.1874 9.80296 14.7317 9.25966 14.7317 8.58947C14.7317 7.91927 14.1874 7.37598 13.516 7.37598C12.8446 7.37598 12.3003 7.91927 12.3003 8.58947C12.3003 9.25966 12.8446 9.80296 13.516 9.80296Z"
+                      fill="#50505A"
+                    />
+                    <path
+                      d="M11.6378 12.928C10.0338 10.9382 8.01231 10.9219 6.47781 12.8872C6.43309 12.9459 6.37611 12.994 6.311 13.0279C6.24589 13.0619 6.17427 13.0808 6.10134 13.0833C5.76035 13.0942 5.47664 12.9621 5.25021 12.687C5.14382 12.559 5.10563 12.4132 5.13563 12.2498C5.20383 11.8712 5.3566 11.5715 5.59394 11.3509C7.91546 9.21538 10.2356 9.2508 12.5544 11.4571C12.9445 11.8276 13.0073 12.2471 12.7426 12.7156C12.6608 12.8599 12.5421 12.9771 12.3866 13.067C12.2658 13.1369 12.1238 13.1613 11.9865 13.1358C11.8492 13.1103 11.7255 13.0366 11.6378 12.928Z"
+                      fill="#50505A"
+                    />
+                  </g>
+                </g>
+                <defs>
+                  <radialgradient
+                    cx="0"
+                    cy="0"
+                    gradientTransform="translate(9 9) rotate(90) scale(9)"
+                    gradientUnits="userSpaceOnUse"
+                    id=":r2:"
+                    r="1"
+                  >
+                    <stop
+                      stop-color="#FDC54E"
+                    />
+                    <stop
+                      offset="0.586893"
+                      stop-color="#FB7157"
+                    />
+                    <stop
+                      offset="1"
+                      stop-color="#FD6364"
+                    />
+                  </radialgradient>
+                </defs>
+              </svg>
             </span>
           </button>
           <button
             aria-checked="false"
             aria-label="Bad"
-            class="c6"
+            class="c7"
             role="radio"
             type="button"
           >
@@ -300,15 +516,89 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
               aria-hidden="true"
               class="c5"
             >
-              <span>
-                😕
-              </span>
+              <svg
+                aria-hidden="true"
+                class="c8"
+                fill="none"
+                focusable="false"
+                height="28"
+                viewBox="0 0 24 24"
+                width="28"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  transform="translate(1.295 1.795)"
+                >
+                  <circle
+                    cx="12.4092"
+                    cy="9"
+                    fill="url(#:r5:)"
+                    r="9"
+                  />
+                  <path
+                    d="M21.4092 9C21.4092 10.1819 21.1764 11.3522 20.7241 12.4442C20.2718 13.5361 19.6089 14.5282 18.7731 15.364C17.9374 16.1997 16.9453 16.8626 15.8533 17.3149C14.7614 17.7672 13.5911 18 12.4092 18C10.0222 18 7.73305 17.0518 6.04522 15.364C4.35739 13.6761 3.40918 11.3869 3.40918 9C3.40918 6.61305 4.35739 4.32387 6.04522 2.63604C7.73305 0.948212 10.0222 0 12.4092 0C14.7961 0 17.0853 0.948212 18.7731 2.63604C20.461 4.32387 21.4092 6.61305 21.4092 9ZM8.95331 7.45223C9.14712 7.41947 9.33275 7.36078 9.51018 7.27616C10.0548 7.02229 10.063 6.28935 9.65759 5.88399C9.56936 5.79704 9.45841 5.73671 9.33747 5.70991C9.21653 5.68312 9.09049 5.69094 8.97379 5.73248C8.13848 6.03003 7.28543 6.31392 6.41464 6.58417C5.97652 6.71929 5.82092 7.14923 5.86596 7.56688C5.87836 7.67071 5.9193 7.7692 5.98431 7.85154C6.04932 7.93388 6.13587 7.9969 6.23448 8.03367C6.52383 8.14013 6.68216 8.34895 6.70946 8.66014C6.85686 10.4782 9.54294 9.98271 9.05977 8.18926C9.02975 8.08553 8.97515 7.99955 8.89599 7.9313C8.85504 7.89581 8.81956 7.8535 8.78953 7.80437C8.67215 7.6051 8.72674 7.48772 8.95331 7.45223ZM16.0043 7.73476C14.6162 9.62648 18.0188 10.8631 18.1335 8.51274C18.1389 8.36533 18.2072 8.25751 18.3382 8.18926L18.6207 8.03776C18.7524 7.9674 18.8607 7.86006 18.9321 7.72897C19.0036 7.59789 19.0352 7.44876 19.023 7.29995C19.0108 7.15114 18.9554 7.00914 18.8636 6.89142C18.7717 6.7737 18.6475 6.68541 18.5061 6.6374L15.82 5.73658C15.6792 5.69 15.5266 5.69255 15.3869 5.74382C15.2472 5.79509 15.1286 5.89208 15.0502 6.01911C14.8482 6.35487 14.8168 6.67152 14.956 6.96906C15.0216 7.10828 15.1294 7.19973 15.2795 7.2434L15.9019 7.43176C16.0793 7.48362 16.1135 7.58462 16.0043 7.73476ZM9.56751 12.3617C9.25085 12.55 9.10754 12.8244 9.13757 13.1847C9.14948 13.3283 9.20027 13.4652 9.2849 13.5818C9.36953 13.6984 9.48506 13.7907 9.62001 13.8494C9.75496 13.9082 9.90463 13.9315 10.0542 13.9168C10.2037 13.9022 10.3479 13.8503 10.4724 13.7662C11.6517 12.9677 13.4124 13.025 14.7964 13.111C15.3532 13.1438 15.6439 12.8831 15.6685 12.3289L15.6767 12.2061C15.6931 11.8157 15.5075 11.5933 15.1198 11.5387C13.2158 11.2684 11.1521 11.4158 9.56751 12.3617Z"
+                    fill="url(#:r5:)"
+                  />
+                  <g
+                    class="face"
+                  >
+                    <path
+                      d="M8.78968 7.8044C8.81971 7.85353 8.8552 7.89584 8.89614 7.93133C8.9753 7.99958 9.0299 8.08556 9.05993 8.18929C9.54309 9.98274 6.85702 10.4782 6.70961 8.66018C6.68231 8.34898 6.52399 8.14016 6.23463 8.0337C6.13602 7.99693 6.04947 7.93391 5.98447 7.85157C5.91946 7.76923 5.87851 7.67074 5.86611 7.56691C5.82107 7.14926 5.97667 6.71932 6.4148 6.5842C7.28559 6.31395 8.13864 6.03006 8.97394 5.73251C9.09064 5.69097 9.21668 5.68315 9.33763 5.70994C9.45857 5.73674 9.56951 5.79707 9.65774 5.88402C10.0631 6.28938 10.0549 7.02232 9.51034 7.27619C9.3329 7.36081 9.14728 7.4195 8.95347 7.45226C8.7269 7.48775 8.6723 7.60513 8.78968 7.8044Z"
+                      fill="#50505A"
+                    />
+                    <path
+                      d="M15.9017 7.43147L15.2793 7.24311C15.1291 7.19944 15.0213 7.10799 14.9558 6.96877C14.8166 6.67123 14.848 6.35458 15.05 6.01882C15.1283 5.89179 15.2469 5.7948 15.3866 5.74353C15.5263 5.69226 15.6789 5.68971 15.8198 5.73629L18.5059 6.63711C18.6472 6.68512 18.7715 6.77341 18.8633 6.89113C18.9552 7.00885 19.0106 7.15085 19.0228 7.29966C19.035 7.44847 19.0034 7.5976 18.9319 7.72869C18.8604 7.85977 18.7522 7.96711 18.6205 8.03747L18.338 8.18897C18.2069 8.25722 18.1387 8.36504 18.1332 8.51245C18.0186 10.8628 14.616 9.62619 16.004 7.73447C16.1132 7.58433 16.0791 7.48333 15.9017 7.43147Z"
+                      fill="#50505A"
+                    />
+                    <path
+                      d="M9.56738 12.3624C11.152 11.4166 13.2157 11.2692 15.1197 11.5394C15.5073 11.594 15.693 11.8165 15.6766 12.2068L15.6684 12.3297C15.6438 12.8838 15.3531 13.1445 14.7962 13.1118C13.4122 13.0258 11.6515 12.9684 10.4723 13.7669C10.3478 13.851 10.2036 13.903 10.054 13.9176C9.90451 13.9322 9.75483 13.909 9.61988 13.8502C9.48493 13.7914 9.3694 13.6991 9.28477 13.5825C9.20014 13.4659 9.14935 13.329 9.13745 13.1855C9.10742 12.8251 9.25073 12.5508 9.56738 12.3624Z"
+                      fill="#50505A"
+                    />
+                  </g>
+                  <g
+                    class="thumb"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M5.6377 19.7571C5.57108 19.9048 5.42243 20 5.2584 20C4.34143 20 3.59809 19.2674 3.59809 18.3636V17.1364H1.66595C1.30156 17.1397 0.95393 16.9855 0.714762 16.7145C0.475031 16.4428 0.368464 16.081 0.423289 15.725L0.996089 12.0433C1.08921 11.4392 1.61906 10.9944 2.23879 11.0001H8.16395C8.85167 11.0001 9.40918 11.5495 9.40918 12.2273V15.0909C9.40918 15.7687 8.85167 16.3182 8.16395 16.3182H7.18846L5.6377 19.7571Z"
+                      fill="white"
+                      fill-rule="evenodd"
+                      stroke="#A8180E"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="0.818182"
+                    />
+                  </g>
+                </g>
+                <defs>
+                  <radialgradient
+                    cx="0"
+                    cy="0"
+                    gradientTransform="translate(12.4092 9) rotate(90) scale(9)"
+                    gradientUnits="userSpaceOnUse"
+                    id=":r5:"
+                    r="1"
+                  >
+                    <stop
+                      stop-color="#FDC54E"
+                    />
+                    <stop
+                      offset="0.586893"
+                      stop-color="#FDB62A"
+                    />
+                    <stop
+                      offset="1"
+                      stop-color="#FD6364"
+                    />
+                  </radialgradient>
+                </defs>
+              </svg>
             </span>
           </button>
           <button
             aria-checked="false"
             aria-label="Good"
-            class="c7"
+            class="c9"
             role="radio"
             type="button"
           >
@@ -316,15 +606,67 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
               aria-hidden="true"
               class="c5"
             >
-              <span>
-                🙂
-              </span>
+              <svg
+                aria-hidden="true"
+                class="c10"
+                fill="none"
+                focusable="false"
+                height="28"
+                viewBox="0 0 24 24"
+                width="28"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  transform="translate(1.795 1.795)"
+                >
+                  <circle
+                    cx="9"
+                    cy="9"
+                    fill="#FCC145"
+                    r="9"
+                  />
+                  <path
+                    d="M18 9C18 11.387 17.0518 13.6761 15.364 15.364C13.6762 17.0518 11.387 18 9.00001 18C6.61306 18 4.32387 17.0518 2.63604 15.364C0.948217 13.6761 0 11.387 0 9C0 6.61305 0.948217 4.32387 2.63604 2.63604C4.32387 0.948214 6.61306 0 9.00001 0C11.387 0 13.6762 0.948214 15.364 2.63604C17.0518 4.32387 18 6.61305 18 9ZM5.71202 8.59464C5.71202 8.43493 5.68056 8.2768 5.61945 8.12925C5.55833 7.98171 5.46875 7.84764 5.35582 7.73472C5.2429 7.62179 5.10884 7.53221 4.96129 7.4711C4.81375 7.40998 4.65561 7.37853 4.49591 7.37853C4.17338 7.37853 3.86406 7.50665 3.636 7.73472C3.40793 7.96278 3.2798 8.2721 3.2798 8.59464C3.2798 8.91717 3.40793 9.22649 3.636 9.45455C3.86406 9.68262 4.17338 9.81074 4.49591 9.81074C4.65561 9.81074 4.81375 9.77929 4.96129 9.71817C5.10884 9.65705 5.2429 9.56748 5.35582 9.45455C5.46875 9.34163 5.55833 9.20756 5.61945 9.06002C5.68056 8.91247 5.71202 8.75434 5.71202 8.59464ZM14.7202 8.59464C14.7202 8.2721 14.5921 7.96278 14.364 7.73472C14.136 7.50665 13.8266 7.37853 13.5041 7.37853C13.1816 7.37853 12.8723 7.50665 12.6442 7.73472C12.4161 7.96278 12.288 8.2721 12.288 8.59464C12.288 8.91717 12.4161 9.22649 12.6442 9.45455C12.8723 9.68262 13.1816 9.81074 13.5041 9.81074C13.8266 9.81074 14.136 9.68262 14.364 9.45455C14.5921 9.22649 14.7202 8.91717 14.7202 8.59464ZM11.5141 10.8917C10.2284 12.5419 7.86989 12.8899 6.63741 11.0555C6.36989 10.657 6.01228 10.5423 5.5646 10.7116C5.48817 10.7389 5.42403 10.7866 5.37217 10.8549C5.03914 11.2889 5.04868 11.7161 5.40082 12.1365C7.42766 14.5646 10.9531 14.5319 12.7507 11.8908C13.081 11.4076 12.9855 11.035 12.4641 10.773L12.333 10.7075C12.0082 10.5437 11.7352 10.6051 11.5141 10.8917Z"
+                    fill="#FCC145"
+                  />
+                  <g
+                    class="face"
+                  >
+                    <path
+                      d="M4.49614 9.81112C5.16777 9.81112 5.71224 9.26665 5.71224 8.59501C5.71224 7.92338 5.16777 7.37891 4.49614 7.37891C3.8245 7.37891 3.28003 7.92338 3.28003 8.59501C3.28003 9.26665 3.8245 9.81112 4.49614 9.81112Z"
+                      fill="#50505A"
+                    />
+                    <path
+                      d="M13.5039 9.81112C14.1756 9.81112 14.72 9.26665 14.72 8.59501C14.72 7.92338 14.1756 7.37891 13.5039 7.37891C12.8323 7.37891 12.2878 7.92338 12.2878 8.59501C12.2878 9.26665 12.8323 9.81112 13.5039 9.81112Z"
+                      fill="#50505A"
+                    />
+                    <path
+                      d="M6.6372 11.0555C7.86969 12.8899 10.2282 12.5419 11.5139 10.8918C11.735 10.6051 12.008 10.5437 12.3328 10.7075L12.4639 10.773C12.9853 11.0351 13.0808 11.4077 12.7505 11.8908C10.9529 14.5319 7.42746 14.5646 5.40061 12.1365C5.04848 11.7161 5.03893 11.2889 5.37196 10.8549C5.42383 10.7867 5.48796 10.7389 5.5644 10.7116C6.01208 10.5424 6.36969 10.657 6.6372 11.0555Z"
+                      fill="#50505A"
+                    />
+                  </g>
+                  <g
+                    class="thumb"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M14.7715 11.2429C14.8381 11.0952 14.9867 11 15.1508 11C16.0677 11 16.8111 11.7326 16.8111 12.6364V13.8636H18.7432C19.1076 13.8603 19.4552 14.0145 19.6944 14.2855C19.9341 14.5572 20.0407 14.919 19.9859 15.275L19.4131 18.9567C19.32 19.5608 18.7901 20.0056 18.1704 19.9999H12.2452C11.5575 19.9999 11 19.4505 11 18.7727V15.9091C11 15.2313 11.5575 14.6818 12.2452 14.6818H13.2207L14.7715 11.2429Z"
+                      fill="white"
+                      fill-rule="evenodd"
+                      stroke="#00733A"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="0.818182"
+                    />
+                  </g>
+                </g>
+              </svg>
             </span>
           </button>
           <button
             aria-checked="false"
             aria-label="Love it!"
-            class="c7"
+            class="c9"
             role="radio"
             type="button"
           >
@@ -332,9 +674,61 @@ exports[`<ChatFeedback moodIcons={moodIcons} /> should render the mood step by d
               aria-hidden="true"
               class="c5"
             >
-              <span>
-                😍
-              </span>
+              <svg
+                aria-hidden="true"
+                class="c11"
+                fill="none"
+                focusable="false"
+                height="28"
+                viewBox="0 0 24 24"
+                width="28"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  transform="translate(3 3)"
+                >
+                  <circle
+                    cx="9"
+                    cy="9"
+                    fill="#FCC145"
+                    r="9"
+                  />
+                  <path
+                    d="M18 9C18 10.1819 17.7672 11.3522 17.3149 12.4442C16.8626 13.5361 16.1997 14.5282 15.364 15.364C14.5283 16.1997 13.5361 16.8626 12.4442 17.3149C11.3522 17.7672 10.1819 18 9 18C6.61305 18 4.32385 17.0518 2.63602 15.364C0.948192 13.6761 0 11.3869 0 9C0 6.61305 0.948192 4.32387 2.63602 2.63604C4.32385 0.948212 6.61305 0 9 0C11.387 0 13.6762 0.948212 15.364 2.63604C17.0518 4.32387 18 6.61305 18 9ZM4.5138 9.82703C4.67511 9.82563 4.83438 9.77118 4.98251 9.66679C5.13065 9.5624 5.26473 9.41012 5.37713 9.21864C5.48953 9.02716 5.57804 8.80023 5.6376 8.55081C5.69715 8.30139 5.72659 8.03436 5.72424 7.76498C5.71949 7.22093 5.58553 6.7003 5.35182 6.31761C5.1181 5.93493 4.80378 5.72153 4.47801 5.72438C4.3167 5.72578 4.15742 5.78023 4.00929 5.88462C3.86116 5.98901 3.72707 6.14129 3.61467 6.33277C3.50227 6.52425 3.41377 6.75118 3.35421 7.0006C3.29465 7.25002 3.26521 7.51705 3.26756 7.78643C3.27231 8.33048 3.40627 8.85111 3.63999 9.23379C3.8737 9.61648 4.18802 9.82987 4.5138 9.82703ZM13.522 9.82703C13.6833 9.82563 13.8426 9.77118 13.9907 9.66679C14.1388 9.5624 14.2729 9.41012 14.3853 9.21864C14.4977 9.02716 14.5862 8.80023 14.6458 8.55081C14.7054 8.30139 14.7348 8.03436 14.7324 7.76498C14.7277 7.22093 14.5937 6.7003 14.36 6.31761C14.1263 5.93493 13.812 5.72153 13.4862 5.72438C13.3249 5.72578 13.1656 5.78023 13.0175 5.88462C12.8694 5.98901 12.7353 6.14129 12.6229 6.33277C12.5105 6.52425 12.422 6.75118 12.3624 7.0006C12.3028 7.25002 12.2734 7.51705 12.2758 7.78643C12.2805 8.33048 12.4145 8.85111 12.6482 9.23379C12.8819 9.61648 13.1962 9.82987 13.522 9.82703ZM12.763 12.505C13.4345 11.2602 13.0632 10.6379 11.6492 10.6379H5.84303C5.69533 10.6377 5.54974 10.6726 5.41809 10.7396C5.28645 10.8067 5.17249 10.9041 5.08548 11.0238C4.99847 11.1435 4.94088 11.2822 4.91741 11.4286C4.89394 11.575 4.90524 11.725 4.9504 11.8662C5.55641 13.7498 7.38671 14.8348 9.35213 14.712C10.1601 14.6629 10.8863 14.394 11.5305 13.9054C12.0655 13.5014 12.4763 13.0346 12.763 12.505Z"
+                    fill="#FCC145"
+                  />
+                  <path
+                    d="M3.26751 7.78664C3.2774 8.91956 3.83536 9.83317 4.51376 9.82725C5.19215 9.82133 5.73409 8.89812 5.7242 7.7652C5.71431 6.63228 5.15635 5.71867 4.47796 5.72459C3.79956 5.73051 3.25763 6.65372 3.26751 7.78664Z"
+                    fill="#FCC145"
+                  />
+                  <path
+                    d="M12.2758 7.78664C12.2857 8.91956 12.8437 9.83317 13.5221 9.82725C14.2005 9.82133 14.7424 8.89812 14.7325 7.7652C14.7226 6.63228 14.1647 5.71867 13.4863 5.72459C12.8079 5.73051 12.2659 6.65372 12.2758 7.78664Z"
+                    fill="#FCC145"
+                  />
+                  <g
+                    class="face"
+                  >
+                    <path
+                      d="M12.7628 12.5039C12.4761 13.0334 12.0653 13.5002 11.5303 13.9042C10.886 14.3929 10.1599 14.6617 9.35191 14.7109C7.38649 14.8337 5.55619 13.7486 4.95018 11.8651C4.90502 11.7238 4.89372 11.5739 4.91719 11.4275C4.94066 11.2811 4.99825 11.1424 5.08526 11.0227C5.17227 10.9029 5.28623 10.8056 5.41787 10.7385C5.54952 10.6714 5.69511 10.6366 5.84281 10.6367H11.649C13.063 10.6367 13.4343 11.2591 12.7628 12.5039Z"
+                      fill="#50505A"
+                    />
+                    <path
+                      class="heart"
+                      clip-rule="evenodd"
+                      d="M4.66489 4.99989C4.52529 4.8468 4.35608 4.7236 4.16752 4.63775C3.97895 4.5519 3.77493 4.50518 3.56779 4.50041C3.36066 4.49564 3.1547 4.53292 2.96238 4.61C2.77006 4.68708 2.59537 4.80236 2.44886 4.94886C2.30236 5.09537 2.18708 5.27006 2.11 5.46238C2.03292 5.6547 1.99564 5.86066 2.00041 6.06779C2.00518 6.27493 2.0519 6.47895 2.13775 6.66752C2.2236 6.85608 2.3468 7.02529 2.49989 7.16489L4.835 9.5L7.17011 7.16953C7.34249 6.9955 7.47106 6.783 7.54523 6.54955C7.6194 6.31609 7.63705 6.06836 7.59674 5.82674C7.55642 5.58513 7.45928 5.35655 7.31332 5.15983C7.16736 4.96311 6.97676 4.80388 6.75721 4.69525C6.54928 4.59176 6.31986 4.53878 6.08761 4.5406C5.88616 4.54072 5.68675 4.58083 5.50092 4.65861C5.3151 4.73639 5.14657 4.85029 5.00511 4.99371L4.835 5.17L4.66489 4.99989Z"
+                      fill="#F23F43"
+                      fill-rule="evenodd"
+                    />
+                    <path
+                      class="heart right"
+                      clip-rule="evenodd"
+                      d="M12.6649 4.99989C12.5253 4.8468 12.3561 4.7236 12.1675 4.63775C11.9789 4.5519 11.7749 4.50518 11.5678 4.50041C11.3607 4.49564 11.1547 4.53292 10.9624 4.61C10.7701 4.68708 10.5954 4.80236 10.4489 4.94886C10.3024 5.09537 10.1871 5.27006 10.11 5.46238C10.0329 5.6547 9.99564 5.86066 10.0004 6.06779C10.0052 6.27493 10.0519 6.47895 10.1378 6.66752C10.2236 6.85608 10.3468 7.02529 10.4999 7.16489L12.835 9.5L15.1701 7.16953C15.3425 6.9955 15.4711 6.783 15.5452 6.54955C15.6194 6.31609 15.6371 6.06836 15.5967 5.82674C15.5564 5.58513 15.4593 5.35655 15.3133 5.15983C15.1674 4.96311 14.9768 4.80388 14.7572 4.69525C14.5493 4.59176 14.3199 4.53878 14.0876 4.5406C13.8862 4.54072 13.6867 4.58083 13.5009 4.65861C13.3151 4.73639 13.1466 4.85029 13.0051 4.99371L12.835 5.17L12.6649 4.99989Z"
+                      fill="#F23F43"
+                      fill-rule="evenodd"
+                    />
+                  </g>
+                </g>
+              </svg>
             </span>
           </button>
         </div>

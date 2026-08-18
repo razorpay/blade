@@ -23,8 +23,13 @@ export default {
   },
 };
 
-/** Emoji rather than SVG on purpose: untintable artwork is the harder case for selection. */
-const moodIcons = {
+/**
+ * Emoji rather than the shipped SVGs on purpose.
+ *
+ * Untintable artwork is the harder case: colour does nothing to it and it has no filled twin, so
+ * these stories prove the selected state survives on the worst input rather than the best.
+ */
+const feedbackIcons = {
   'very-dissatisfied': <span>😢</span>,
   dissatisfied: <span>😕</span>,
   satisfied: <span>🙂</span>,
@@ -33,7 +38,7 @@ const moodIcons = {
 
 const Flow = (): React.ReactElement => (
   <Box maxWidth="600px">
-    <ChatFeedback question="How's this going?" moodIcons={moodIcons} autoDismiss={false} />
+    <ChatFeedback question="How's this going?" feedbackIcons={feedbackIcons} autoDismiss={false} />
   </Box>
 );
 

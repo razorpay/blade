@@ -14,9 +14,9 @@ const chatFeedbackMoods: ChatFeedbackMood[] = [
  *
  * The four points, their colours and their names are settled; the glyphs are not. Rather than
  * ship a placeholder set and have products build on it, the component asks for the artwork:
- * `moodIcons` is required, and this table carries everything *except* the icons.
+ * `feedbackIcons` is required, and this table carries everything *except* the icons.
  *
- * When a designed set does land it goes here, `moodIcons` becomes optional, and a `moodScale`
+ * When a designed set does land it goes here, `feedbackIcons` becomes optional, and a `moodScale`
  * prop picks between the sets. That direction is safe — a required prop becoming optional breaks
  * no one, which is why the artwork is missing rather than provisional.
  *
@@ -41,7 +41,7 @@ const chatFeedbackMoodTokens: Record<
      *
      * Selection used to be carried entirely by the glyph — recoloured, and swapped for its filled
      * twin. That only works while Blade owns the artwork. A consumer supplying its own icons
-     * through `moodIcons` may pass something that cannot be tinted at all (a system emoji, a
+     * through `feedbackIcons` may pass something that cannot be tinted at all (a system emoji, a
      * raster), and then two of the three selected cues silently vanish, leaving a 12% scale as the
      * only sign that an answer registered. Putting the state on the button instead means it reads
      * the same whatever is sitting on top of it.

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { ChatFeedbackMood, ChatFeedbackMoodIcons } from './types';
+import type { ChatFeedbackMood, ChatFeedbackIcons } from './types';
+import { defaultFeedbackIcons } from './moodIcons';
 import { chatFeedbackMoods, chatFeedbackMoodTokens } from './chatFeedbackTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -18,7 +19,7 @@ const MoodButton = styled.button<{
    * the button, the mood's colour on the glyph, a slight lift, and — where Blade owns the artwork
    * — the filled face swapped in for the outline.
    *
-   * The background is what makes this survive `moodIcons`. Every other cue acts on the glyph, and
+   * The background is what makes this survive `feedbackIcons`. Every other cue acts on the glyph, and
    * a consumer-supplied one may be untintable and has no filled twin, so those cues quietly do
    * nothing; a 12% scale on its own is not enough to tell someone their rating registered.
    * Colouring the button reads the same whatever is drawn on top of it.
@@ -83,7 +84,7 @@ type ChatFeedbackMoodScaleProps = {
   selectedMood: ChatFeedbackMood | null;
   isDisabled?: boolean;
   onSelect: (mood: ChatFeedbackMood) => void;
-  moodIcons: ChatFeedbackMoodIcons;
+  feedbackIcons?: ChatFeedbackIcons;
 };
 
 /**
@@ -108,7 +109,7 @@ const ChatFeedbackMoodScale = ({
   selectedMood,
   isDisabled,
   onSelect,
-  moodIcons,
+  feedbackIcons = defaultFeedbackIcons,
 }: ChatFeedbackMoodScaleProps): React.ReactElement => {
   const { theme } = useTheme();
 
@@ -149,7 +150,7 @@ const ChatFeedbackMoodScale = ({
                 three. The slot only bounds its size, and the button carries the selected state —
                 which is why that state had to move off the glyph.
               */}
-              <MoodIconSlot aria-hidden="true">{moodIcons?.[mood]}</MoodIconSlot>
+              <MoodIconSlot aria-hidden="true">{feedbackIcons?.[mood]}</MoodIconSlot>
             </MoodButton>
           </Tooltip>
         );

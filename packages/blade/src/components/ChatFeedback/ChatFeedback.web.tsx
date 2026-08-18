@@ -5,6 +5,7 @@ import { chatFeedbackChipSize } from './chatFeedbackTokens';
 import { useChatFeedback } from './useChatFeedback';
 import { ChatFeedbackMoodScale } from './ChatFeedbackMoodScale.web';
 import { ChatFeedbackCheck } from './ChatFeedbackCheck.web';
+import { defaultFeedbackIcons } from './moodIcons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { BaseMotionBox } from '~components/BaseMotion';
@@ -50,7 +51,7 @@ const _ChatFeedback = ({
   autoDismiss = true,
   isFullWidth = true,
   isDisabled = false,
-  moodIcons,
+  feedbackIcons = defaultFeedbackIcons,
   testID,
   ...rest
 }: ChatFeedbackProps): React.ReactElement => {
@@ -158,7 +159,7 @@ const _ChatFeedback = ({
           selectedMood={selectedMood}
           isDisabled={isDisabled}
           onSelect={selectMood}
-          moodIcons={moodIcons}
+          feedbackIcons={feedbackIcons}
         />
       </BaseBox>
     ),
