@@ -231,6 +231,12 @@ type ChatInputProps = {
   accessibilityLabel?: string;
 
   /**
+   * Attaches a feedback prompt to the top of the composer, on a shared surface. Web only.
+   * Omit it and the composer is unchanged. See "Attached Feedback Prompt" below.
+   */
+  feedback?: ChatInputFeedbackProps;
+
+  /**
    * Test ID for automation testing
    */
   testID?: string;
@@ -448,6 +454,79 @@ The uploading guard prevents `onSubmit` from receiving a not-yet-ready file in `
 ### No Extra Tooltip or Error Text for the File-Driven Disable
 
 When submit is disabled because of an error or uploading file, no additional tooltip or `errorText` is surfaced on the submit button itself. The visual feedback is already present on the `FileUploadItem` chip (red error state, spinner for uploading). Adding a redundant tooltip or `errorText` slot message would duplicate that signal without adding clarity. If a consumer needs custom messaging they can use the `validationState` / `errorText` props.
+
+## Attached Feedback Prompt
+
+Passing a `feedback` object attaches a `ChatFeedback` flow to the composer's top edge, the two
+sharing one tinted surface so they read as a single object. There is no `showFeedback` boolean —
+passing the object is the switch, the same way `Tooltip` has no `showTitle`. Omit it and the
+composer renders byte-for-byte as it does without the feature: the surface properties are only
+emitted when the prop is present, rather than set to transparent and zero.
+
+```ts
+type ChatInputFeedbackProps = Pick<
+  ChatFeedbackProps,
+  'question' | 'moodConfig' | 'moodIcons' | 'isDisabled' | 'onMoodSelect' | 'onSubmit' | 'onDismiss'
+> & {
+  /** @default true */
+  isVisible?: boolean;
+  /** The tag that collects free text instead of standing alone. @default 'Other' */
+  freeTextTag?: string;
+  /** Placeholder while the composer is collecting that text. @default 'Anything else? (optional)' */
+  commentPlaceholder?: string;
+};
+```
+
+`isFullWidth`, `isSubmitHidden`, `controlsRef`, `comment` and `onTagsChange` are deliberately not
+forwarded: they describe how the flow is laid out and driven, which is the composer's business
+rather than the caller's.
+
+### Why the prompt lives inside ChatInput
+
+The obvious composition — render `ChatFeedback` above a `ChatInput` — is silently broken. The
+composer keeps its validation region mounted directly above the card even when there is no error,
+and as a full-width transparent box it swallows clicks aimed at anything stacked there. Measured
+against a mood scale placed in that space, it covered the lower two-thirds of every button: hover
+fired late and a click near the middle of a control did nothing, with nothing on screen to explain
+why.
+
+Owning the prompt here means the layer it sits on is decided in the same file as the layer the
+error region sits on, so the two cannot be composed into conflict.
+
+### The composer takeover
+
+Picking `freeTextTag` hands the composer over to the feedback flow:
+
+| | |
+|---|---|
+| Placeholder | becomes `commentPlaceholder` |
+| Chat draft | stashed on entry, restored on exit |
+| Action bar | upload link replaced by a dismissable `Feedback` tag and an `esc to cancel` hint |
+| Focus | moves to the composer |
+| Enter | submits the feedback; the chat path is **blocked**, not redirected |
+| The flow's own tick | hidden — the composer's send arrow is the submit |
+| Exits | Esc · the tag's dismiss · submitting · deselecting the tag · the prompt going away |
+
+Two properties here are silent when wrong, and both have unit tests:
+
+**The draft belongs to the user.** Without stashing it, picking the tag destroys a half-written
+message with no warning and no undo.
+
+**Enter must never reach the chat.** Sending someone's candid feedback to the assistant as a prompt
+is not a recoverable mistake, so the path is blocked outright rather than merely redirected.
+
+**Every exit also releases the tag.** Leaving it selected strands the user: the tick stays hidden
+because the only tag picked is the free-text one, and the composer has gone back to chatting — a
+choice made with no way left to send it. This was reached by three separate routes during
+development (Esc, submit, and the back control) before the exit was made common to all of them.
+
+### Reading the mode from a ref
+
+`ChatFeedback`'s callbacks can be invoked from a memoised closure belonging to an earlier render, so
+a state copy read inside them may say the mode is off when it is on. The mode is mirrored in a ref
+and read from there. Leaving the mode is also re-entrant — releasing the tag fires `onTagsChange`,
+which routes back into the same exit — so the exit returns early when the ref says it has already
+run, rather than restoring an already-cleared draft over the one just put back.
 
 ## Accessibility
 
