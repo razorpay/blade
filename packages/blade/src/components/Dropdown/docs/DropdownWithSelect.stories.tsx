@@ -241,7 +241,7 @@ export const WithValidationState = (): React.ReactElement => {
   return (
     <Box minHeight="300px" padding="spacing.5">
       <Alert
-        intent="information"
+        color="information"
         description="Select more than 2 options to see error state"
         isFullWidth
         isDismissible={false}

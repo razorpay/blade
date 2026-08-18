@@ -354,10 +354,13 @@ export const CreatableItems = (): React.ReactElement => {
               isFullWidth
               variant="secondary"
               iconPosition="right"
+              isDisabled={!inputValue.trim() || items.includes(inputValue)}
               onClick={() => {
-                autoCompleteRef.current?.focus();
-                setInputValue('');
-                setItems([...items, inputValue]);
+                if (inputValue.trim() && !items.includes(inputValue)) {
+                  autoCompleteRef.current?.focus();
+                  setInputValue('');
+                  setItems([...items, inputValue]);
+                }
               }}
             >
               Create {inputValue}
