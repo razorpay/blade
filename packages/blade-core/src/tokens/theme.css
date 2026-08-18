@@ -1,6 +1,8 @@
 /* Blade Design System CSS Variables */
 /* Generated from theme and global tokens */
 
+@layer blade;
+
 :root {
   /* ===== GLOBAL TOKENS ===== */
 
@@ -146,12 +148,16 @@
   --surface-background-gray-subtle: hsla(200, 10%, 94%, 1);
   --surface-background-gray-moderate: hsla(0, 0%, 97%, 1);
   --surface-background-gray-intense: hsla(0, 0%, 100%, 1);
+  --surface-background-primary-faint: transparent;
   --surface-background-primary-subtle: hsla(218, 89%, 51%, 0.09);
+  --surface-background-primary-moderate: transparent;
   --surface-background-primary-intense: hsla(218, 89%, 51%, 1);
+  --surface-background-primary-strong: transparent;
   --surface-background-sea-subtle: hsla(180, 39%, 95%, 1);
   --surface-background-sea-intense: hsla(180, 61%, 20%, 1);
   --surface-background-cloud-subtle: hsla(198, 39%, 95%, 1);
   --surface-background-cloud-intense: hsla(200, 61%, 20%, 1);
+  --surface-background-accent-intense: transparent;
   --surface-border-gray-normal: hsla(203, 8%, 80%, 1);
   --surface-border-gray-subtle: hsla(204, 8%, 88%, 1);
   --surface-border-gray-muted: hsla(206, 10%, 29%, 0.12);
@@ -593,12 +599,16 @@
   --surface-background-gray-subtle: hsla(210, 4%, 11%, 1);
   --surface-background-gray-moderate: hsla(210, 5%, 8%, 1);
   --surface-background-gray-intense: hsla(210, 6%, 13%, 1);
+  --surface-background-primary-faint: transparent;
   --surface-background-primary-subtle: hsla(218, 89%, 51%, 0.32);
+  --surface-background-primary-moderate: transparent;
   --surface-background-primary-intense: hsla(218, 89%, 51%, 1);
+  --surface-background-primary-strong: transparent;
   --surface-background-sea-subtle: hsla(180, 91%, 13%, 1);
   --surface-background-sea-intense: hsla(180, 42%, 92%, 1);
   --surface-background-cloud-subtle: hsla(200, 91%, 13%, 1);
   --surface-background-cloud-intense: hsla(201, 39%, 93%, 1);
+  --surface-background-accent-intense: transparent;
   --surface-border-gray-normal: hsla(210, 4%, 47%, 1);
   --surface-border-gray-subtle: hsla(216, 4%, 24%, 1);
   --surface-border-gray-muted: hsla(207, 4%, 52%, 0.18);
@@ -1055,6 +1065,7 @@
   }
 }
 
+@layer blade {
 /* ===== UTILITY CLASSES ===== */
 /* These utility classes are used by components via getStyledPropsClasses */
 
@@ -1280,4 +1291,5 @@
   box-shadow: 0px 0px 0px 4px var(--interactive-background-primary-faded);
 }
 
+}
 

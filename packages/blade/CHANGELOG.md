@@ -1,5 +1,104 @@
 # @razorpay/blade
 
+## 12.116.0
+
+### Minor Changes
+
+- dd8501226: feat(blade): add TreeView component
+
+  TreeView: hierarchical selectable list, standalone and inside Dropdown. First snowflake promotion (original Tree Hierarchy snowflake by Prarthana Gogoi).
+
+  - `TreeView`, `TreeViewItem`, `TreeViewLoadMore` exports (web-only; native entry throws a dev error)
+  - Standalone: single select (radio semantics) and multiple select with branch cascade, indeterminate checkboxes, roving tabindex keyboard map, `tree`/`treeitem` ARIA
+  - Inside Dropdown: drop-in replacement for ActionList - selection controlled through the trigger's `value`/`onChange` (SelectInput, FilterChipSelectInput), with an additive optional `selectedGroups` field in the onChange payload and smallest-describing-set display on the trigger
+  - Async children (`hasChildren` + `isLoading`) with selection inheritance, and `TreeViewLoadMore` for progressive loading at any depth
+
+### Patch Changes
+
+- dd8501226: fix(FilterChipSelectInput): sync selection when the controlled `value` changes
+
+  `FilterChipSelectInput` only mapped its controlled `value` to the dropdown selection on mount, so
+  later updates from the consumer were ignored — a "Clear" action in the dropdown footer emptied the
+  consumer's state but left the options (and the chip label) selected. The controlled `value` is now
+  the source of truth on every change, including when it is emptied.
+
+## 12.115.2
+
+### Patch Changes
+
+- 2db706e7a: Fixed `SpotlightPopoverTour` scrolling indefinitely and locking the page when a step's anchor is taller than the viewport (e.g. a large table). The tour now detects oversized anchors and scroll-aligns them to the top instead of trying to center them, so the page no longer freezes with the popover pushed off-screen.
+
+## 12.115.1
+
+### Patch Changes
+
+- d0f2310d9: feat: add BookmarkFilledIcon component
+
+## 12.115.0
+
+### Minor Changes
+
+- 51c91bfa0: feat(LineChart): add `ChartReferenceBand` and per-line reference bands for industry comparison
+
+  `LineChart` now supports reference bands — shaded min–max ranges drawn behind the trend line so a trend can be compared against an industry comparison range. Two capabilities:
+
+  1. **Standalone `ChartReferenceBand`** — a single data-driven band via `lowerDataKey`/`upperDataKey`:
+
+  ```tsx
+  <ChartLineWrapper data={data}>
+    <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
+    <ChartXAxis dataKey="month" />
+    <ChartYAxis />
+    <ChartLine dataKey="activeUsers" name="Active users" />
+    <ChartLegend />
+  </ChartLineWrapper>
+  ```
+
+  `ChartReferenceBand` accepts `lowerDataKey` and `upperDataKey` (required), plus optional `name` (legend label, default `'Reference band'`), `color` (band fill token, default a faint categorical blue) and `showLegend` (default `true`).
+
+  2. **Per-line bands on `ChartLine`** — each line can declare its own `rangeLowerDataKey` / `rangeUpperDataKey` so a chart shows multiple trend lines, each with its own color-matched industry range band:
+
+  ```tsx
+  <ChartLineWrapper data={data}>
+    <ChartLine
+      dataKey="payments"
+      name="Payments"
+      rangeLowerDataKey="paymentsMin"
+      rangeUpperDataKey="paymentsMax"
+      rangeName="Payments industry range"
+    />
+    <ChartLine
+      dataKey="refunds"
+      name="Refunds"
+      rangeLowerDataKey="refundsMin"
+      rangeUpperDataKey="refundsMax"
+      rangeName="Refunds industry range"
+    />
+    <ChartXAxis dataKey="month" />
+    <ChartLegend />
+  </ChartLineWrapper>
+  ```
+
+  Each line's band auto-matches the line color (override with `rangeColor`), the tooltip shows an "industry range" (`low–high`) row per series, and the legend gets a swatch per band. The band renders behind the trend line on both web and React Native. A new _KitchenSink (Industry SR)_ story exposes `numberOfLines` (1–5) and `showReferenceBand` controls.
+
+## 12.114.0
+
+### Minor Changes
+
+- 5cd7f0961: feat(GenUI): add consumer-registered action slots for Card and Table components
+
+  Introduces a `componentActions` registry on `GenUIProvider` that lets consumers register render props for action UI below block-level components (CARD, TABLE). The design system renders the slot and hands the consumer the component's data and a `componentRef`, keeping all action logic (copy, download, export) on the consumer side with no DS dependency.
+
+## 12.113.3
+
+### Patch Changes
+
+- 3a2d9bd6e: fix(DatePicker): allow reopening a controlled range `FilterChipDatePicker` after a range is selected
+
+  The auto-close effect that commits a selection when `showFooterActions` is false compared the selected value by reference. For `selectionType="range"` in controlled mode (`value` + `onChange`) the value is rebuilt into a new array on every render, so the effect re-ran on each render and immediately closed the flyout whenever the existing range was already complete, making the picker impossible to reopen. The selection is now compared by content so auto-close only happens on an actual selection change.
+
+- d31fadf55: docs(Table): render Table example stories live instead of StackBlitz sandboxes
+
 ## 12.113.2
 
 ### Patch Changes

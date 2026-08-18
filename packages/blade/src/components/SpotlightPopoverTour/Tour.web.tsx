@@ -17,6 +17,7 @@ import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
 import { useTheme } from '~components/BladeProvider';
+import { isBrowser } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const asHTMLElement = (el: TourElement | null): HTMLElement | null => el as HTMLElement | null;
@@ -47,10 +48,12 @@ const SpotlightPopoverTour = ({
   const [isScrolling, setIsScrolling] = useState(false);
 
   const currentStepRef = refIdMap.get(steps[activeStep]?.name);
+  // Anchors taller than the viewport can never reach 50% visibility, so we also observe the
+  // 0% crossing as a fallback threshold for those cases (see scrollToStep below).
   const intersection = useIntersectionObserver(
     (currentStepRef as React.RefObject<Element> | undefined)!,
     {
-      threshold: 0.5,
+      threshold: [0, 0.5],
     },
   );
   // main step logic
@@ -128,17 +131,28 @@ const SpotlightPopoverTour = ({
   );
 
   const scrollToStep = useCallback(() => {
+    if (!isBrowser()) return;
+
     const ref = refIdMap.get(steps[delayedActiveStep]?.name);
     const el = asHTMLElement(ref?.current ?? null);
     if (!el) return;
 
-    // If the element is already in view, don't scroll
-    if (intersection?.isIntersecting) return;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const isAnchorTallerThanViewport = el.getBoundingClientRect().height > viewportHeight;
+
+    // An anchor taller than the viewport can never satisfy the 0.5 threshold, so require only
+    // partial visibility (ratio > 0) for it instead of waiting on an unreachable isIntersecting.
+    const isVisibleEnough = isAnchorTallerThanViewport
+      ? (intersection?.intersectionRatio ?? 0) > 0
+      : Boolean(intersection?.isIntersecting);
+    if (isVisibleEnough) return;
 
     setIsScrolling(true);
     smoothScroll(el, {
       behavior: 'smooth',
-      block: 'center',
+      // Centering an anchor taller than the viewport pushes its edges (and the popover
+      // attached near them) outside the viewport, so align to the top instead.
+      block: isAnchorTallerThanViewport ? 'start' : 'center',
       inline: 'center',
     })
       .then(() => {
@@ -149,7 +163,7 @@ const SpotlightPopoverTour = ({
       .finally(() => {
         setIsScrolling(false);
       });
-  }, [delayedActiveStep, refIdMap, steps, updateMaskSize, intersection?.isIntersecting]);
+  }, [delayedActiveStep, refIdMap, steps, updateMaskSize, intersection]);
 
   // Update the size of the mask when the active step changes
   useIsomorphicLayoutEffect(() => {
