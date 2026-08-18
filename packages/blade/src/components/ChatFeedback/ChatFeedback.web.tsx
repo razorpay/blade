@@ -88,9 +88,35 @@ const _ChatFeedback = ({
     autoDismiss,
   });
 
-  // Rebuilt each render rather than memoised: `submitTags` closes over the selection, so a stale
-  // handle would submit whatever happened to be picked when the flow mounted.
-  if (controlsRef) controlsRef.current = { submit: submitTags, setTags: setSelectedTags };
+  /*
+   * The handle is published in an effect, and delegates through refs.
+   *
+   * Two constraints pull against each other. It cannot be written during render — that is a side
+   * effect in render, which double-fires under StrictMode and is unsafe once rendering can be
+   * interrupted. But it also cannot be captured once, because `submitTags` closes over the current
+   * selection: a handle built on mount would submit whatever happened to be picked at the time.
+   *
+   * Delegating satisfies both. The published functions are stable and read the latest
+   * implementations out of refs when called, so the handle is written once per `controlsRef`,
+   * never during render, and is never stale. It is cleared on unmount so a host cannot drive a
+   * flow that is no longer on screen.
+   */
+  const latest = React.useRef({ submitTags, setSelectedTags });
+  React.useLayoutEffect(() => {
+    latest.current = { submitTags, setSelectedTags };
+  });
+
+  React.useLayoutEffect(() => {
+    if (!controlsRef) return undefined;
+    controlsRef.current = {
+      submit: () => latest.current.submitTags(),
+      setTags: (values) => latest.current.setSelectedTags(values),
+    };
+
+    return () => {
+      controlsRef.current = null;
+    };
+  }, [controlsRef]);
 
   // Steps arrive on the settle curve. The exit is a plain fade — the incoming step is the
   // thing worth watching, so the outgoing one should get out of the way quickly.

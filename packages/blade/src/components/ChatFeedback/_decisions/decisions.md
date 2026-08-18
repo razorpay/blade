@@ -262,10 +262,10 @@ like the composer was not the one with focus.
    — which together express one idea: *the surrounding surface is collecting the free text*. It
    works, and every piece is load-bearing, but a single higher-level prop would be harder to
    misuse. Worth revisiting once a second host exists; premature to design for one.
-2. **`controlsRef` is assigned during render**, so the handle is never stale. That is at odds with
-   React's guidance on refs and would need revisiting for concurrent rendering. `useImperativeHandle`
-   on a forwarded ref is the idiomatic alternative, and would make the flow's identity a ref rather
-   than a prop.
+2. **`controlsRef` is a prop rather than a forwarded ref.** The handle itself is published from a
+   layout effect and delegates through refs, so it is neither written during render nor ever stale.
+   A forwarded ref with `useImperativeHandle` would be the more idiomatic shape, but it would make
+   the flow's identity a ref — which `ChatInput` already spends on the composer's own input.
 3. **`freeTextTag` fails silently** when it matches no tag in `moodConfig` — the composer simply
    never engages. A `__DEV__` warning would fail fast instead.
 4. **Native.** The whole component throws. The mood scale and tags step have no platform-specific

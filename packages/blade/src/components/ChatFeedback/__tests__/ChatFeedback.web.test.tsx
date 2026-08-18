@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event';
-import { waitFor } from '@testing-library/react';
+import { act, waitFor } from '@testing-library/react';
 import { ChatFeedback } from '../ChatFeedback';
+import type { ChatFeedbackControls } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
@@ -221,6 +222,52 @@ describe('<ChatFeedback moodIcons={moodIcons} />', () => {
       await userEvent.click(button);
 
       await waitFor(() => expect(isUnpainted()).toBe(false));
+    });
+  });
+
+  describe('controlsRef', () => {
+    /*
+     * The handle has to reflect the selection at the moment it is called, not at mount. It is
+     * published from an effect rather than during render, so it delegates through refs — this is
+     * the test that the delegation actually keeps it current.
+     */
+    it('should submit the selection as it stands when the handle is called', async () => {
+      const onSubmit = jest.fn();
+      const controlsRef: { current: ChatFeedbackControls | null } = { current: null };
+      const { getByLabelText, findByText } = renderWithTheme(
+        <ChatFeedback
+          moodIcons={moodIcons}
+          controlsRef={controlsRef}
+          autoDismiss={false}
+          onSubmit={onSubmit}
+        />,
+      );
+
+      await userEvent.click(getByLabelText('Good'));
+      await userEvent.click(await findByText('Helpful'));
+
+      controlsRef.current?.submit();
+
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({ mood: 'satisfied', tags: ['Helpful'] }),
+      );
+    });
+
+    it('should let a host replace the selection', async () => {
+      const controlsRef: { current: ChatFeedbackControls | null } = { current: null };
+      const { getByLabelText, findByRole } = renderWithTheme(
+        <ChatFeedback moodIcons={moodIcons} controlsRef={controlsRef} autoDismiss={false} />,
+      );
+
+      await userEvent.click(getByLabelText('Good'));
+      await findByRole('checkbox', { name: 'Helpful' });
+
+      // Synchronous state update, wrapped so React flushes it before the assertion.
+      act(() => {
+        controlsRef.current?.setTags(['Helpful']);
+      });
+
+      await waitFor(() => expect(getByLabelText('Helpful')).toBeChecked());
     });
   });
 });
