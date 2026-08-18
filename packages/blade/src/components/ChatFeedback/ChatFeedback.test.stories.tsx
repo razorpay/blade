@@ -82,17 +82,15 @@ export const SelectionIsVisibleWithUntintableArtwork: StoryFn = (): React.ReactE
 SelectionIsVisibleWithUntintableArtwork.play = async ({ canvasElement }) => {
   const { getByRole } = within(canvasElement);
   const button = getByRole('radio', { name: 'Terrible' });
-  const isUnpainted = (): boolean =>
-    ['transparent', 'rgba(0, 0, 0, 0)', ''].includes(
-      window.getComputedStyle(button).backgroundColor,
-    );
+  // The disc is a pseudo-element, so this is the only place it can be read — a real browser.
+  const discOpacity = (): string => window.getComputedStyle(button, '::before').opacity;
 
   await waitFor(() => expect(button).toBeVisible());
-  expect(isUnpainted()).toBe(true);
+  expect(discOpacity()).toBe('0');
 
   await userEvent.click(button);
 
-  await waitFor(() => expect(isUnpainted()).toBe(false));
+  await waitFor(() => expect(discOpacity()).toBe('1'));
 };
 
 /** The flow advances to the follow-up, and can be walked back to the scale. */

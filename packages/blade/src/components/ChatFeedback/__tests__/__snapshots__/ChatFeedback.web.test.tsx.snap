@@ -1,113 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ChatFeedback /> should render the mood step by default 1`] = `
-.c6.c6.c6.c6.c6 .face {
-  -webkit-transform-box: fill-box;
-  -ms-transform-box: fill-box;
-  transform-box: fill-box;
-  -webkit-transform-origin: center;
-  -ms-transform-origin: center;
-  transform-origin: center;
-}
-
-.c6.c6.c6.c6.c6 .tear {
-  -webkit-transform-box: fill-box;
-  -ms-transform-box: fill-box;
-  transform-box: fill-box;
-  -webkit-transform-origin: 50% 0%;
-  -ms-transform-origin: 50% 0%;
-  transform-origin: 50% 0%;
-}
-
-button:hover:not(:disabled) .c6.c6.c6.c6.c6 .face,
-button:focus-visible .c6.c6.c6.c6.c6 .face,
-button[aria-checked='true'] .c6.c6.c6.c6.c6 .face {
-  -webkit-animation: guTmwE-450290765 2.8s ease-in-out infinite;
-  animation: guTmwE-450290765 2.8s ease-in-out infinite;
-}
-
-button:hover:not(:disabled) .c6.c6.c6.c6.c6 .tear,
-button:focus-visible .c6.c6.c6.c6.c6 .tear,
-button[aria-checked='true'] .c6.c6.c6.c6.c6 .tear {
-  -webkit-animation: TeClM-450290765 2.8s linear infinite;
-  animation: TeClM-450290765 2.8s linear infinite;
-}
-
-.c8.c8.c8.c8.c8 {
-  overflow: visible;
-}
-
-.c8.c8.c8.c8.c8 .face {
-  -webkit-transform-box: fill-box;
-  -ms-transform-box: fill-box;
-  transform-box: fill-box;
-  -webkit-transform-origin: center;
-  -ms-transform-origin: center;
-  transform-origin: center;
-}
-
-.c8.c8.c8.c8.c8 .thumb {
-  -webkit-transform-box: fill-box;
-  -ms-transform-box: fill-box;
-  transform-box: fill-box;
-  -webkit-transform-origin: 50% 8%;
-  -ms-transform-origin: 50% 8%;
-  transform-origin: 50% 8%;
-}
-
-button:hover:not(:disabled) .c8.c8.c8.c8.c8 .thumb,
-button:focus-visible .c8.c8.c8.c8.c8 .thumb,
-button[aria-checked='true'] .c8.c8.c8.c8.c8 .thumb {
-  -webkit-animation: cipsOa-450290765 0.6s forwards;
-  animation: cipsOa-450290765 0.6s forwards;
-}
-
-button:hover:not(:disabled) .c8.c8.c8.c8.c8 .face,
-button:focus-visible .c8.c8.c8.c8.c8 .face,
-button[aria-checked='true'] .c8.c8.c8.c8.c8 .face {
-  -webkit-animation: hNtKvL-450290765 0.6s cubic-bezier(0.33,0,0.3,1) forwards;
-  animation: hNtKvL-450290765 0.6s cubic-bezier(0.33,0,0.3,1) forwards;
-}
-
-.c10.c10.c10.c10.c10 .thumb {
-  -webkit-transform-box: fill-box;
-  -ms-transform-box: fill-box;
-  transform-box: fill-box;
-  -webkit-transform-origin: 50% 92%;
-  -ms-transform-origin: 50% 92%;
-  transform-origin: 50% 92%;
-}
-
-button:hover:not(:disabled) .c10.c10.c10.c10.c10 .thumb,
-button:focus-visible .c10.c10.c10.c10.c10 .thumb,
-button[aria-checked='true'] .c10.c10.c10.c10.c10 .thumb {
-  -webkit-animation: kBdBkO-450290765 0.6s forwards;
-  animation: kBdBkO-450290765 0.6s forwards;
-}
-
-.c11.c11.c11.c11.c11 .heart {
-  -webkit-transform-box: fill-box;
-  -ms-transform-box: fill-box;
-  transform-box: fill-box;
-  -webkit-transform-origin: center;
-  -ms-transform-origin: center;
-  transform-origin: center;
-}
-
-button:hover:not(:disabled) .c11.c11.c11.c11.c11 .heart,
-button:focus-visible .c11.c11.c11.c11.c11 .heart,
-button[aria-checked='true'] .c11.c11.c11.c11.c11 .heart {
-  -webkit-animation: gBVWHx-450290765 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards,cAtlcO-450290765 1s ease-in-out 0.5s infinite;
-  animation: gBVWHx-450290765 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards,cAtlcO-450290765 1s ease-in-out 0.5s infinite;
-}
-
-button:hover:not(:disabled) .c11.c11.c11.c11.c11 .right,
-button:focus-visible .c11.c11.c11.c11.c11 .right,
-button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
-  -webkit-animation-delay: 0.05s,0.55s;
-  animation-delay: 0.05s,0.55s;
-}
-
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -190,11 +83,12 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 8px;
   border: none;
   background-color: transparent;
+  position: relative;
   border-radius: 9999px;
   cursor: pointer;
   color: hsla(204,9%,42%,1);
@@ -206,21 +100,56 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
   transition: transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
 }
 
+.c4.c4.c4.c4.c4::before {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background-color: hsla(4,85%,44%,0.09);
+  opacity: 0;
+  -webkit-transition: opacity 160ms cubic-bezier(0.32,0.72,0,1);
+  transition: opacity 160ms cubic-bezier(0.32,0.72,0,1);
+}
+
+.c4.c4.c4.c4.c4 > * {
+  position: relative;
+}
+
 .c4.c4.c4.c4.c4:hover:not(:disabled) {
   color: hsla(4,85%,44%,1);
-  background-color: hsla(4,85%,44%,0.09);
   -webkit-transform: scale(1.12);
   -ms-transform: scale(1.12);
   transform: scale(1.12);
 }
 
+.c4.c4.c4.c4.c4:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
 .c4.c4.c4.c4.c4:focus-visible {
   color: hsla(4,85%,44%,1);
-  background-color: hsla(4,85%,44%,0.09);
   -webkit-transform: scale(1.12);
   -ms-transform: scale(1.12);
   transform: scale(1.12);
   outline: none;
+}
+
+.c4.c4.c4.c4.c4:focus-visible::before {
+  opacity: 1;
+}
+
+.c4.c4.c4.c4.c4:active:not(:disabled) {
+  color: hsla(4,85%,44%,1);
+  -webkit-transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  transform: scale(1.06);
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+}
+
+.c4.c4.c4.c4.c4:active:not(:disabled)::before {
+  opacity: 1;
 }
 
 .c4.c4.c4.c4.c4:disabled {
@@ -241,11 +170,12 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 8px;
   border: none;
   background-color: transparent;
+  position: relative;
   border-radius: 9999px;
   cursor: pointer;
   color: hsla(204,9%,42%,1);
@@ -257,21 +187,56 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
   transition: transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
 }
 
+.c7.c7.c7.c7.c7::before {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background-color: hsla(25,100%,44%,0.09);
+  opacity: 0;
+  -webkit-transition: opacity 160ms cubic-bezier(0.32,0.72,0,1);
+  transition: opacity 160ms cubic-bezier(0.32,0.72,0,1);
+}
+
+.c7.c7.c7.c7.c7 > * {
+  position: relative;
+}
+
 .c7.c7.c7.c7.c7:hover:not(:disabled) {
   color: hsla(25,100%,39%,1);
-  background-color: hsla(25,100%,44%,0.09);
   -webkit-transform: scale(1.12);
   -ms-transform: scale(1.12);
   transform: scale(1.12);
 }
 
+.c7.c7.c7.c7.c7:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
 .c7.c7.c7.c7.c7:focus-visible {
   color: hsla(25,100%,39%,1);
-  background-color: hsla(25,100%,44%,0.09);
   -webkit-transform: scale(1.12);
   -ms-transform: scale(1.12);
   transform: scale(1.12);
   outline: none;
+}
+
+.c7.c7.c7.c7.c7:focus-visible::before {
+  opacity: 1;
+}
+
+.c7.c7.c7.c7.c7:active:not(:disabled) {
+  color: hsla(25,100%,39%,1);
+  -webkit-transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  transform: scale(1.06);
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+}
+
+.c7.c7.c7.c7.c7:active:not(:disabled)::before {
+  opacity: 1;
 }
 
 .c7.c7.c7.c7.c7:disabled {
@@ -279,7 +244,7 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
   color: hsla(206,10%,29%,0.32);
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -292,11 +257,12 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 8px;
   border: none;
   background-color: transparent;
+  position: relative;
   border-radius: 9999px;
   cursor: pointer;
   color: hsla(204,9%,42%,1);
@@ -308,24 +274,59 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
   transition: transform 160ms cubic-bezier(0.32,0.72,0,1),color 160ms cubic-bezier(0.32,0.72,0,1),background-color 160ms cubic-bezier(0.32,0.72,0,1);
 }
 
-.c9.c9.c9.c9.c9:hover:not(:disabled) {
-  color: hsla(150,100%,23%,1);
+.c10.c10.c10.c10.c10::before {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
   background-color: hsla(150,100%,28%,0.09);
+  opacity: 0;
+  -webkit-transition: opacity 160ms cubic-bezier(0.32,0.72,0,1);
+  transition: opacity 160ms cubic-bezier(0.32,0.72,0,1);
+}
+
+.c10.c10.c10.c10.c10 > * {
+  position: relative;
+}
+
+.c10.c10.c10.c10.c10:hover:not(:disabled) {
+  color: hsla(150,100%,23%,1);
   -webkit-transform: scale(1.12);
   -ms-transform: scale(1.12);
   transform: scale(1.12);
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c10.c10.c10.c10.c10:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.c10.c10.c10.c10.c10:focus-visible {
   color: hsla(150,100%,23%,1);
-  background-color: hsla(150,100%,28%,0.09);
   -webkit-transform: scale(1.12);
   -ms-transform: scale(1.12);
   transform: scale(1.12);
   outline: none;
 }
 
-.c9.c9.c9.c9.c9:disabled {
+.c10.c10.c10.c10.c10:focus-visible::before {
+  opacity: 1;
+}
+
+.c10.c10.c10.c10.c10:active:not(:disabled) {
+  color: hsla(150,100%,23%,1);
+  -webkit-transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  transform: scale(1.06);
+  -webkit-transition-duration: 80ms;
+  transition-duration: 80ms;
+}
+
+.c10.c10.c10.c10.c10:active:not(:disabled)::before {
+  opacity: 1;
+}
+
+.c10.c10.c10.c10.c10:disabled {
   cursor: not-allowed;
   color: hsla(206,10%,29%,0.32);
 }
@@ -343,15 +344,234 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
   line-height: 1;
+  -webkit-animation: dISXmL-450290765 160ms cubic-bezier(0,0,0.2,1) 0ms both;
+  animation: dISXmL-450290765 160ms cubic-bezier(0,0,0.2,1) 0ms both;
 }
 
 .c5.c5.c5.c5.c5 > * {
   max-width: 100%;
   max-height: 100%;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  line-height: 1;
+  -webkit-animation: dISXmL-450290765 160ms cubic-bezier(0,0,0.2,1) 30ms both;
+  animation: dISXmL-450290765 160ms cubic-bezier(0,0,0.2,1) 30ms both;
+}
+
+.c8.c8.c8.c8.c8 > * {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  line-height: 1;
+  -webkit-animation: dISXmL-450290765 160ms cubic-bezier(0,0,0.2,1) 60ms both;
+  animation: dISXmL-450290765 160ms cubic-bezier(0,0,0.2,1) 60ms both;
+}
+
+.c11.c11.c11.c11.c11 > * {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.c13.c13.c13.c13.c13 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  line-height: 1;
+  -webkit-animation: dISXmL-450290765 160ms cubic-bezier(0,0,0.2,1) 90ms both;
+  animation: dISXmL-450290765 160ms cubic-bezier(0,0,0.2,1) 90ms both;
+}
+
+.c13.c13.c13.c13.c13 > * {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.c6.c6.c6.c6.c6 .face {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+
+.c6.c6.c6.c6.c6 .tear {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+
+button:hover:not(:disabled) .c6.c6.c6.c6.c6 .face,
+button:focus-visible .c6.c6.c6.c6.c6 .face,
+button[aria-checked='true'] .c6.c6.c6.c6.c6 .face {
+  -webkit-animation: guTmwE-450290765 2.8s ease-in-out infinite;
+  animation: guTmwE-450290765 2.8s ease-in-out infinite;
+}
+
+button:hover:not(:disabled) .c6.c6.c6.c6.c6 .tear,
+button:focus-visible .c6.c6.c6.c6.c6 .tear,
+button[aria-checked='true'] .c6.c6.c6.c6.c6 .tear {
+  -webkit-animation: TeClM-450290765 2.8s linear infinite;
+  animation: TeClM-450290765 2.8s linear infinite;
+}
+
+.c9.c9.c9.c9.c9 {
+  overflow: visible;
+}
+
+.c9.c9.c9.c9.c9 .face {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+
+.c9.c9.c9.c9.c9 .thumb {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: 50% 8%;
+  -ms-transform-origin: 50% 8%;
+  transform-origin: 50% 8%;
+}
+
+button:hover:not(:disabled) .c9.c9.c9.c9.c9 .thumb,
+button:focus-visible .c9.c9.c9.c9.c9 .thumb,
+button[aria-checked='true'] .c9.c9.c9.c9.c9 .thumb {
+  -webkit-animation: cipsOa-450290765 0.6s forwards;
+  animation: cipsOa-450290765 0.6s forwards;
+}
+
+button:hover:not(:disabled) .c9.c9.c9.c9.c9 .face,
+button:focus-visible .c9.c9.c9.c9.c9 .face,
+button[aria-checked='true'] .c9.c9.c9.c9.c9 .face {
+  -webkit-animation: hNtKvL-450290765 0.6s cubic-bezier(0.33,0,0.3,1) forwards;
+  animation: hNtKvL-450290765 0.6s cubic-bezier(0.33,0,0.3,1) forwards;
+}
+
+.c12.c12.c12.c12.c12 .thumb {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: 50% 92%;
+  -ms-transform-origin: 50% 92%;
+  transform-origin: 50% 92%;
+}
+
+button:hover:not(:disabled) .c12.c12.c12.c12.c12 .thumb,
+button:focus-visible .c12.c12.c12.c12.c12 .thumb,
+button[aria-checked='true'] .c12.c12.c12.c12.c12 .thumb {
+  -webkit-animation: kBdBkO-450290765 0.6s forwards;
+  animation: kBdBkO-450290765 0.6s forwards;
+}
+
+.c14.c14.c14.c14.c14 .heart {
+  -webkit-transform-box: fill-box;
+  -ms-transform-box: fill-box;
+  transform-box: fill-box;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+
+button:hover:not(:disabled) .c14.c14.c14.c14.c14 .heart,
+button:focus-visible .c14.c14.c14.c14.c14 .heart,
+button[aria-checked='true'] .c14.c14.c14.c14.c14 .heart {
+  -webkit-animation: gBVWHx-450290765 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards,cAtlcO-450290765 1s ease-in-out 0.5s infinite;
+  animation: gBVWHx-450290765 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards,cAtlcO-450290765 1s ease-in-out 0.5s infinite;
+}
+
+button:hover:not(:disabled) .c14.c14.c14.c14.c14 .right,
+button:focus-visible .c14.c14.c14.c14.c14 .right,
+button[aria-checked='true'] .c14.c14.c14.c14.c14 .right {
+  -webkit-animation-delay: 0.05s,0.55s;
+  animation-delay: 0.05s,0.55s;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c5.c5.c5.c5.c5 {
+    -webkit-animation-name: none;
+    animation-name: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c8.c8.c8.c8.c8 {
+    -webkit-animation-name: none;
+    animation-name: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c11.c11.c11.c11.c11 {
+    -webkit-animation-name: none;
+    animation-name: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c13.c13.c13.c13.c13 {
+    -webkit-animation-name: none;
+    animation-name: none;
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -362,21 +582,21 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
 }
 
 @media (prefers-reduced-motion:reduce) {
-  .c8.c8.c8.c8.c8 * {
+  .c9.c9.c9.c9.c9 * {
     -webkit-animation: none !important;
     animation: none !important;
   }
 }
 
 @media (prefers-reduced-motion:reduce) {
-  .c10.c10.c10.c10.c10 * {
+  .c12.c12.c12.c12.c12 * {
     -webkit-animation: none !important;
     animation: none !important;
   }
 }
 
 @media (prefers-reduced-motion:reduce) {
-  .c11.c11.c11.c11.c11 * {
+  .c14.c14.c14.c14.c14 * {
     -webkit-animation: none !important;
     animation: none !important;
   }
@@ -514,11 +734,11 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
           >
             <span
               aria-hidden="true"
-              class="c5"
+              class="c8"
             >
               <svg
                 aria-hidden="true"
-                class="c8"
+                class="c9"
                 fill="none"
                 focusable="false"
                 height="28"
@@ -598,17 +818,17 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
           <button
             aria-checked="false"
             aria-label="Good"
-            class="c9"
+            class="c10"
             role="radio"
             type="button"
           >
             <span
               aria-hidden="true"
-              class="c5"
+              class="c11"
             >
               <svg
                 aria-hidden="true"
-                class="c10"
+                class="c12"
                 fill="none"
                 focusable="false"
                 height="28"
@@ -666,17 +886,17 @@ button[aria-checked='true'] .c11.c11.c11.c11.c11 .right {
           <button
             aria-checked="false"
             aria-label="Love it!"
-            class="c9"
+            class="c10"
             role="radio"
             type="button"
           >
             <span
               aria-hidden="true"
-              class="c5"
+              class="c13"
             >
               <svg
                 aria-hidden="true"
-                class="c11"
+                class="c14"
                 fill="none"
                 focusable="false"
                 height="28"

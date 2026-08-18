@@ -117,10 +117,65 @@ const chatFeedbackChipSize = 'xsmall' as const;
  */
 const chatFeedbackThanksDurationMs = 1300;
 
+/**
+ * Edge of the square a mood glyph is drawn in.
+ *
+ * Off the spacing scale, which stops at 24 and jumps to 32. A face is not an icon: an icon is one
+ * shape read at a glance, while these carry eyes, a mouth and — on two of them — a thumb, and
+ * every one has to survive the same pass. At the 20px this used to be, the faces landed around
+ * 15px and read as coloured dots rather than as expressions.
+ */
+const chatFeedbackMoodGlyphSize = 28;
+
+/**
+ * Height of a mood button, and so of the tallest step the strip has to hold.
+ *
+ * The glyph plus `spacing[3]` of padding on each side.
+ *
+ * It is exported because the strip must reserve this much for *every* step, not just the mood
+ * one. The three steps have different natural heights, and a strip that only reserves what the
+ * current step needs changes height on each swap — pushing the composer below it up and down at
+ * the exact moment someone is reading the step that just replaced the last one.
+ *
+ * Anything that sets the strip's height reads it from here so the two cannot drift, which they
+ * did once already: the glyph grew from 20px and the reserved height was left behind, and the
+ * composer started jumping 12px on every transition.
+ */
+const chatFeedbackMoodButtonSize = chatFeedbackMoodGlyphSize + 8 * 2;
+
+/**
+ * The tinted disc shown behind a glyph on hover, focus and selection.
+ *
+ * Smaller than the button on purpose. The button's size is a tap target and belongs at 44px; the
+ * disc is decoration. Sizing the disc off the button would force a choice between a comfortable
+ * target and a tidy circle — shrinking the target to tighten the circle is what let the
+ * adjacent-rating mis-taps back in once already.
+ *
+ * At 36px it clears the 28px glyph by 4px on every side: enough to read as a halo behind the face
+ * rather than as a chip around it, and still 4px inside the button it sits in.
+ */
+const chatFeedbackMoodDiscSize = 36;
+
+/**
+ * Space the tags step holds open for its submit control.
+ *
+ * Blade's `xsmall` icon-only `Button` measures 28px, plus `spacing[3]` of gap before it.
+ *
+ * It is reserved rather than occupied. The control is revealed on the first tag pick, and a button
+ * that arrives *in* the flex row shoves every chip 36px to the left at the moment the user is
+ * reading them — measured, not assumed. Holding the space and fading the control into it means the
+ * row makes room instead of being pushed aside.
+ */
+const chatFeedbackSubmitRevealWidth = 28 + 8;
+
 export {
   chatFeedbackMoods,
   chatFeedbackMoodTokens,
   chatFeedbackDefaultMoodConfig,
   chatFeedbackChipSize,
   chatFeedbackThanksDurationMs,
+  chatFeedbackMoodGlyphSize,
+  chatFeedbackMoodButtonSize,
+  chatFeedbackMoodDiscSize,
+  chatFeedbackSubmitRevealWidth,
 };

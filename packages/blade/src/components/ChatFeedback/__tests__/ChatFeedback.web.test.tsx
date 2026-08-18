@@ -200,24 +200,20 @@ describe('<ChatFeedback />', () => {
     });
 
     /*
-     * The reason the selected state lives on the button. Supplied artwork may be untintable, so
-     * colouring the glyph does nothing — without a treatment on the button, a 12% scale would be
-     * the only sign that a rating registered.
+     * The selected treatment is a tinted disc drawn by a pseudo-element, which jsdom cannot
+     * compute — `getComputedStyle(el, '::before')` returns nothing useful here. The visual is
+     * asserted in `ChatFeedback.test.stories.tsx`, which runs in a real browser; what this level
+     * can prove is that selection is recorded at all with artwork that carries none of it.
      */
-    it('should still show a selected state with untintable artwork', async () => {
+    it('should record the selection with untintable artwork', async () => {
       const { getByRole } = renderWithTheme(<ChatFeedback feedbackIcons={emojiIcons} />);
       const button = getByRole('radio', { name: 'Good' });
-      // jsdom reports an unpainted background as either spelling, depending on how it was set.
-      const isUnpainted = (): boolean =>
-        ['transparent', 'rgba(0, 0, 0, 0)', ''].includes(
-          window.getComputedStyle(button).backgroundColor,
-        );
 
-      expect(isUnpainted()).toBe(true);
+      expect(button).toHaveAttribute('aria-checked', 'false');
 
       await userEvent.click(button);
 
-      await waitFor(() => expect(isUnpainted()).toBe(false));
+      expect(button).toHaveAttribute('aria-checked', 'true');
     });
   });
 
