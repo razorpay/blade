@@ -14,7 +14,13 @@ import type { ChatFeedbackProps } from '~components/ChatFeedback';
  */
 type ChatInputFeedbackProps = Pick<
   ChatFeedbackProps,
-  'question' | 'moodConfig' | 'moodIcons' | 'isDisabled' | 'onMoodSelect' | 'onSubmit' | 'onDismiss'
+  | 'question'
+  | 'moodConfig'
+  | 'feedbackIcons'
+  | 'isDisabled'
+  | 'onMoodSelect'
+  | 'onSubmit'
+  | 'onDismiss'
 > & {
   /**
    * Whether the prompt is showing.

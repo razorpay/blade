@@ -50,7 +50,7 @@ const StripPadding = styled(BaseBox)(({ theme }) => ({
  */
 const ChatInputFeedback = ({
   isVisible = true,
-  moodIcons,
+  feedbackIcons,
   question,
   moodConfig,
   isDisabled,
@@ -97,7 +97,7 @@ const ChatInputFeedback = ({
         <BaseBox display="flex" alignItems="center" minHeight={makeSpace(theme.spacing[8])}>
           <ChatFeedback
             question={question}
-            moodIcons={moodIcons}
+            feedbackIcons={feedbackIcons}
             moodConfig={moodConfig}
             isDisabled={isDisabled}
             onMoodSelect={onMoodSelect}

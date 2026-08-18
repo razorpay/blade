@@ -25,7 +25,7 @@ export default {
 };
 
 /** Blade ships no artwork for the scale yet, so every render supplies its own. */
-const moodIcons = {
+const feedbackIcons = {
   'very-dissatisfied': <span>😢</span>,
   dissatisfied: <span>😕</span>,
   satisfied: <span>🙂</span>,
@@ -47,7 +47,7 @@ const FeedbackComposer = ({
         validationState={validationState}
         errorText={validationState === 'error' ? 'Something went wrong' : undefined}
         feedback={{
-          moodIcons,
+          feedbackIcons,
           isVisible,
           question: "How's this assistant doing so far?",
           onMoodSelect: ({ mood }) => setPicked(mood),

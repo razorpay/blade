@@ -879,7 +879,7 @@ WithManyFiles.storyName = 'With Many Files (Autoscroll)';
 /**
  * The set is one object, declared once and reused.
  *
- * `moodIcons` swaps the *glyphs*, not the control: Blade keeps the four buttons, the radio group,
+ * `feedbackIcons` swaps the *glyphs*, not the control: Blade keeps the four buttons, the radio group,
  * the tooltips, the 32px targets and the selected state. So an icon set is a plain object — or a
  * module exporting one — rather than a component that owns the row.
  *
@@ -902,8 +902,8 @@ const emojiMoodIcons = {
  * confirmation is never seen. `onDismiss` fires once that step has been held. With `feedback`
  * gone the composer looks exactly as it does without the feature.
  *
- * Blade ships no artwork for the rating scale yet, so `moodIcons` is required — pass your own
- * icons or plain emoji characters, declared once and imported wherever the composer appears.
+ * Blade ships an animated set for the rating scale, so nothing extra is required. Pass
+ * `feedbackIcons` only to use a product's own artwork.
  */
 export const WithFeedback: StoryFn<typeof ChatInput> = () => {
   const [value, setValue] = useState('');
@@ -918,7 +918,7 @@ export const WithFeedback: StoryFn<typeof ChatInput> = () => {
         onChange={({ value: next }) => setValue(next)}
         onSubmit={() => setValue('')}
         feedback={{
-          moodIcons: emojiMoodIcons,
+          feedbackIcons: emojiMoodIcons,
           isVisible: showFeedback,
           question: "How's this assistant doing so far?",
           /*
@@ -968,8 +968,8 @@ export const WithCustomMoodIcons: StoryFn<typeof ChatInput> = () => {
   const rows = [
     {
       key: 'emoji',
-      label: 'moodIcons — emoji characters (cannot be tinted)',
-      feedback: { question: "How's Ray doing so far?", moodIcons: emojiMoodIcons },
+      label: 'feedbackIcons — emoji characters (cannot be tinted)',
+      feedback: { question: "How's Ray doing so far?", feedbackIcons: emojiMoodIcons },
     },
   ];
 

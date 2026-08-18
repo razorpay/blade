@@ -8,7 +8,7 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 const accessibilityLabel = 'Chat input';
 
 /** Blade ships no artwork for the scale yet, so every render supplies its own. */
-const moodIcons = {
+const feedbackIcons = {
   'very-dissatisfied': <span>😢</span>,
   dissatisfied: <span>😕</span>,
   satisfied: <span>🙂</span>,
@@ -163,7 +163,7 @@ describe('<ChatInput />', () => {
       const { getByText, getByRole } = renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          feedback={{ moodIcons, question: 'How are we doing?' }}
+          feedback={{ feedbackIcons, question: 'How are we doing?' }}
         />,
       );
 
@@ -175,7 +175,7 @@ describe('<ChatInput />', () => {
       const { queryByText } = renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          feedback={{ moodIcons, question: 'How are we doing?', isVisible: false }}
+          feedback={{ feedbackIcons, question: 'How are we doing?', isVisible: false }}
         />,
       );
 
@@ -195,7 +195,7 @@ describe('<ChatInput />', () => {
       const { getByRole } = renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          feedback={{ moodIcons, onMoodSelect }}
+          feedback={{ feedbackIcons, onMoodSelect }}
         />,
       );
 
@@ -215,7 +215,7 @@ describe('<ChatInput />', () => {
         <ChatInput
           accessibilityLabel={accessibilityLabel}
           validationState="none"
-          feedback={{ moodIcons, onMoodSelect }}
+          feedback={{ feedbackIcons, onMoodSelect }}
         />,
       );
 
@@ -228,7 +228,7 @@ describe('<ChatInput />', () => {
       const { container } = renderWithTheme(
         <ChatInput
           accessibilityLabel={accessibilityLabel}
-          feedback={{ moodIcons, question: 'How are we doing?' }}
+          feedback={{ feedbackIcons, question: 'How are we doing?' }}
         />,
       );
       await assertAccessible(container);
@@ -246,7 +246,7 @@ describe('<ChatInput />', () => {
 
     it('should hand the composer over when the free-text tag is picked', async () => {
       const { getByRole, findByText, getByPlaceholderText } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ feedbackIcons }} />,
       );
 
       await openFreeText({ getByRole, findByText });
@@ -262,7 +262,7 @@ describe('<ChatInput />', () => {
      */
     it('should stash the chat draft and put it back on cancel', async () => {
       const { getByRole, findByText, getByLabelText } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ feedbackIcons }} />,
       );
       const composer = getByLabelText(accessibilityLabel);
 
@@ -277,7 +277,7 @@ describe('<ChatInput />', () => {
 
     it('should release the tag on cancel, so the user is not left with an unsendable choice', async () => {
       const { getByRole, findByText, getByLabelText } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ feedbackIcons }} />,
       );
 
       await openFreeText({ getByRole, findByText });
@@ -297,7 +297,7 @@ describe('<ChatInput />', () => {
         <ChatInput
           accessibilityLabel={accessibilityLabel}
           onSubmit={onSubmit}
-          feedback={{ moodIcons, onSubmit: onFeedbackSubmit }}
+          feedback={{ feedbackIcons, onSubmit: onFeedbackSubmit }}
         />,
       );
 
@@ -312,7 +312,7 @@ describe('<ChatInput />', () => {
 
     it('should leave the mode once the feedback is submitted', async () => {
       const { getByRole, findByText, getByLabelText, queryByText } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ feedbackIcons }} />,
       );
 
       await openFreeText({ getByRole, findByText });
@@ -323,7 +323,7 @@ describe('<ChatInput />', () => {
 
     it('should show its own submit only once a tag that stands alone is picked', async () => {
       const { getByRole, findByText, queryByRole } = renderWithTheme(
-        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ moodIcons }} />,
+        <ChatInput accessibilityLabel={accessibilityLabel} feedback={{ feedbackIcons }} />,
       );
 
       await userEvent.click(getByRole('radio', { name: 'Good' }));

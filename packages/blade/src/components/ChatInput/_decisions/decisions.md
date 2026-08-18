@@ -466,7 +466,7 @@ emitted when the prop is present, rather than set to transparent and zero.
 ```ts
 type ChatInputFeedbackProps = Pick<
   ChatFeedbackProps,
-  'question' | 'moodConfig' | 'moodIcons' | 'isDisabled' | 'onMoodSelect' | 'onSubmit' | 'onDismiss'
+  'question' | 'moodConfig' | 'feedbackIcons' | 'isDisabled' | 'onMoodSelect' | 'onSubmit' | 'onDismiss'
 > & {
   /** @default true */
   isVisible?: boolean;
