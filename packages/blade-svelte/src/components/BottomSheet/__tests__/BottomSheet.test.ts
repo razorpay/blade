@@ -9,10 +9,7 @@ function spyOnFocus(): ReturnType<typeof vi.spyOn> {
 }
 
 /* Find the options arg of the focus() call made against a specific element. */
-function focusOptionsFor(
-  spy: ReturnType<typeof vi.spyOn>,
-  el: Element,
-): FocusOptions | undefined {
+function focusOptionsFor(spy: ReturnType<typeof vi.spyOn>, el: Element): FocusOptions | undefined {
   const idx = spy.mock.contexts.indexOf(el);
   if (idx === -1) return undefined;
   return spy.mock.calls[idx][0] as FocusOptions | undefined;
