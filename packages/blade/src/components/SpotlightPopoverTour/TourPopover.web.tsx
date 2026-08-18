@@ -19,6 +19,7 @@ import { PopoverContent } from '../Popover/PopoverContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from '../Popover/constants';
 import { PopoverContext } from '../Popover/PopoverContext';
 import { transitionDelay } from './tourTokens';
+import { resolveSpotlightTarget } from './utils';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -125,8 +126,13 @@ const TourPopover = ({
   React.useLayoutEffect(() => {
     window.setTimeout(() => {
       if (!attachTo) return;
-      refs.setReference(attachTo.current);
-      refs.setPositionReference(attachTo.current);
+      const element = attachTo.current;
+      refs.setReference(element);
+      // The spotlight traces the painted component rather than the layout wrapper the step's
+      // ref happens to sit on, so `GAP` has to be measured from that same rectangle. Anchoring
+      // to the wrapper instead leaks its overhang — a wrapper stretched by a flex row is taller
+      // than the card inside it — into the gap between the arrow tip and the spotlight.
+      refs.setPositionReference(element ? resolveSpotlightTarget(element) : null);
     });
   }, [attachTo, refs, isOpen]);
 

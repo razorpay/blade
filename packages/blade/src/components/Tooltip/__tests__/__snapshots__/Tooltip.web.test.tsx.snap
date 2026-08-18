@@ -271,7 +271,7 @@ exports[`<Tooltip /> should render 1`] = `
           width="14"
         >
           <path
-            d="M0,0 H14 L10.5,4 Q7,8 3.5,4 Z"
+            d="M0,0 H14 L8.75,6 Q7,8 5.25,6 Z"
             stroke="none"
           />
           <clippath
@@ -552,7 +552,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           width="14"
         >
           <path
-            d="M0,0 H14 L10.5,4 Q7,8 3.5,4 Z"
+            d="M0,0 H14 L8.75,6 Q7,8 5.25,6 Z"
             stroke="none"
           />
           <clippath
@@ -857,7 +857,7 @@ exports[`<Tooltip /> should render with title 1`] = `
           width="14"
         >
           <path
-            d="M0,0 H14 L10.5,4 Q7,8 3.5,4 Z"
+            d="M0,0 H14 L8.75,6 Q7,8 5.25,6 Z"
             stroke="none"
           />
           <clippath
