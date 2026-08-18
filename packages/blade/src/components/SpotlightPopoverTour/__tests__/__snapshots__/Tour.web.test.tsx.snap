@@ -615,22 +615,29 @@ exports[`<Tour /> should render 1`] = `
           aria-hidden="true"
           fill="hsla(0, 0%, 100%, 0.94)"
           height="22"
-          style="position: absolute; pointer-events: none; bottom: 100%; transform: rotate(180deg); left: -1px;"
+          style="position: absolute; pointer-events: none; bottom: 100%; transform: rotate(180deg)translateY(-1px); left: -1px;"
           viewBox="0 0 22 22"
-          width="22"
+          width="24"
         >
           <path
+            clip-path="url(#:r7:)"
             d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
-            stroke="none"
+            fill="none"
+            stroke="hsla(0, 0%, 97%, 1)"
+            stroke-width="3"
+          />
+          <path
+            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
+            stroke="hsla(0, 0%, 100%, 0.94)"
           />
           <clippath
             id=":r7:"
           >
             <rect
               height="22"
-              width="22"
-              x="0"
-              y="0"
+              width="24"
+              x="-1"
+              y="1"
             />
           </clippath>
         </svg>
