@@ -29,3 +29,14 @@ fi
 ```
 
 When intent is `perform-task-end-to-end`, load `perform-task-end-to-end` skill in your context and do the task end-to-end as guided by the skill.
+
+## Cursor Cloud specific instructions
+
+Environment notes for future cloud agents (dependencies are already installed by the startup update script — `yarn install` from the repo root):
+
+- **Node:** `packages/blade` requires Node `>=20` (the strictest constraint in the monorepo). The VM ships Node 22, which works. Do not downgrade below 20.
+- **Package manager:** Yarn Classic (v1) with Lerna. The root `package.json` uses `"nohoist": ["**"]`, so dependencies are **not** hoisted — each workspace package keeps its own `node_modules`. Re-run `yarn install` from the repo root after pulling to refresh all packages; the root `postinstall` rebuilds `eslint-plugin-blade`.
+- **Primary product = `@razorpay/blade`** (React web + React Native components), developed/tested through Storybook. Standard lint/test/build/typecheck commands are documented in the root `package.json` scripts and `packages/blade/AGENTS.md` — use those rather than duplicating here.
+- **Running the web Storybook (main dev surface):** `cd packages/blade && yarn start:web` serves on http://localhost:9009. The first load triggers a Vite dependency pre-bundle that takes ~30–60s before stories render; wait for `Local: http://localhost:9009/` in the logs before hitting the server.
+- **Running tests directly:** prefer the documented `yarn test:react <Component>` form (e.g. `yarn test:react Button/Button`) from `packages/blade`, which works with or without the `SHARD` env var. Invoking `jest`/`cross-env` directly from a raw shell fails unless you use the package's local bin (`./node_modules/.bin/jest`) because `cross-env` is not on the global PATH.
+- **Optional services (only when working on those packages):** Svelte components — `cd packages/blade-svelte && yarn dev` (Storybook on port 6007, also builds `blade-core` in watch mode); MCP server — `cd packages/blade-mcp && yarn dev` (stdio-based, no HTTP port). Neither is needed to develop/test the core `blade` package.
