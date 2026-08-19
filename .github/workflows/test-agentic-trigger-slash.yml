@@ -1,0 +1,27 @@
+name: Test - Trigger Slash via razorpay/actions
+
+on:
+  push:
+    branches:
+      - feat/test-agentic-trigger-slash
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'Prompt to send to Slash'
+        required: false
+        default: 'Say hello and confirm you received this test prompt.'
+
+jobs:
+  test-trigger:
+    uses: razorpay/actions/.github/workflows/agentic-trigger-slash.yml@feat/agentic-actions
+    with:
+      prompt: ${{ inputs.prompt || 'Say hello and confirm you received this test prompt.' }}
+    secrets: inherit
+
+  show-result:
+    needs: test-trigger
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Task ID: ${{ needs.test-trigger.outputs.task_id }}"
+          echo "Execution URL: ${{ needs.test-trigger.outputs.execution_url }}"
