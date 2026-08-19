@@ -28,6 +28,7 @@ import { useControllableState } from '~utils/useControllable';
 import { getStyledProps } from '~components/Box/styledProps';
 
 const pageSizeOptions: NonNullable<PaginationProps['defaultPageSize']>[] = [10, 25, 50];
+const smallestPageSize = Math.min(...pageSizeOptions);
 
 const PageSelectionButton = styled.button.attrs(() => {
   return {
@@ -165,8 +166,10 @@ const _Pagination = ({
   showLabel = false,
   label,
   isDisabled = false,
+  totalItemCount,
+  showOnSinglePage = false,
   ...rest
-}: PaginationProps): React.ReactElement => {
+}: PaginationProps): React.ReactElement | null => {
   // Convert 1-based external page to 0-based internal page
   const controlledInternalPage = useMemo(() => {
     if (isUndefined(controlledSelectedPage)) {
@@ -203,8 +206,14 @@ const _Pagination = ({
       return controlledTotalPages;
     }
 
+    // When only an item count is available, derive the page count from it so that
+    // the hide-on-single-page decision and the page navigation stay consistent.
+    if (!isUndefined(totalItemCount)) {
+      return Math.ceil(totalItemCount / internalPageSize);
+    }
+
     return 1;
-  }, [controlledTotalPages]);
+  }, [controlledTotalPages, totalItemCount, internalPageSize]);
 
   const [currentEllipseHover, setCurrentEllipseHover] = useState<'start' | 'end' | undefined>(
     undefined,
@@ -253,10 +262,26 @@ const _Pagination = ({
     return internalPage <= 0 || isDisabled;
   };
 
+  const shouldHidePagination = useMemo(() => {
+    if (!isUndefined(totalItemCount)) {
+      return totalItemCount <= smallestPageSize;
+    }
+    // Without an item count, a single page at the smallest page size is the only case
+    // where we can be sure that every item already fits on one page.
+    return totalPages <= 1 && internalPageSize === smallestPageSize;
+  }, [totalItemCount, totalPages, internalPageSize]);
+
   const paginationButtons = getPaginationButtons({
     currentSelection: internalPage + 1,
     totalPages,
   });
+
+  // On mobile the label and the page size picker are always hidden, so a single page leaves
+  // nothing behind but a dead "Showing 1 of 1 pages" string.
+  // showOnSinglePage lets consumers opt back in to the old always-render behaviour.
+  if (!showOnSinglePage && (shouldHidePagination || (onMobile && totalPages <= 1))) {
+    return null;
+  }
 
   return (
     <BaseBox
