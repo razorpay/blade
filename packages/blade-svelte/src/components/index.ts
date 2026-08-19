@@ -49,6 +49,17 @@ export type {
 
 // Icons
 export * from './Icons';
+// Box
+export { Box, BaseBox } from './Box';
+export type {
+  BoxProps,
+  BaseBoxProps,
+  BoxAsType,
+  SpacingValueType,
+  MakeValueResponsive,
+  StyledPropsBlade,
+} from './Box';
+export { validBoxAsValues } from './Box';
 // Badge
 export { default as Badge } from './Badge/Badge.svelte';
 export type { BadgeProps } from './Badge';

@@ -1,5 +1,6 @@
 import './layers.css';
 
+export { getBoxClasses, getBoxStyles } from './Box';
 export type { StyleOverride } from './shared/styleOverride';
 export { baseTextStyles, getBaseTextClasses } from './BaseText';
 export type { BaseTextVariants } from './BaseText';
