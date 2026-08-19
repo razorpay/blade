@@ -664,6 +664,8 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
 `ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line can be compared against the range other series fall in.
 
+> **Export scope:** `ChartReferenceBand` is exported from the `LineChart` module (not the shared `CommonChartComponents` barrel) because the band-rendering layer only exists in `ChartLineWrapper`'s `useReferenceBand`. Using it inside a `BarChart`/`AreaChart` would silently render invisible bound lines with no visible band — a silent no-op/footgun.
+
 | Prop           | Type                                                       | Required | Default                | Description                                  |
 | -------------- | ---------------------------------------------------------- | -------- | ---------------------- | -------------------------------------------- |
 | `lowerDataKey` | `string`                                                   | ✅       | -                      | Data key for the lower (min) bound           |
