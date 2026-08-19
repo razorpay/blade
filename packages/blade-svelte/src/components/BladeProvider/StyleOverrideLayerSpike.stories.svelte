@@ -14,7 +14,7 @@
       docs: {
         description: {
           component:
-            'Phase 1 proof: `styleOverride` on Button merges provider + instance classes; unlayered consumer classes beat `@layer blade` internals without `!important`. Includes unsafe painted override (layer proof) and safe token bundle counterpart.',
+            'Phase 1 proof: `styleOverride` on Button merges provider + instance classes; unlayered consumer classes beat `@layer blade` internals without `!important`. Includes safe token bundle counterpart.',
         },
       },
     },
@@ -43,27 +43,6 @@
     background-image: none;
   }
 </style>
-
-<Story
-  name="Unsafe — painted background breaks hover"
-  parameters={{
-    docs: {
-      description: {
-        story:
-          'Intentionally unsafe: unlayered `background-color` beats `@layer blade` `:hover`. Use for cascade proof only — not for checkout CTAs.',
-      },
-    },
-  }}
->
-  <Button
-    styleOverride={{
-      root: 'checkout-cta-unsafe',
-      text: 'checkout-cta-label',
-    }}
-  >
-    Pay Now
-  </Button>
-</Story>
 
 <Story
   name="Safe — getPrimaryBrandCssVars preserves states"
