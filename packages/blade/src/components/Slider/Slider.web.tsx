@@ -1,0 +1,384 @@
+import React from 'react';
+import type { SliderProps, SliderRangeValue, SliderValue } from './types';
+import {
+  clampValue,
+  getGeneratedMarks,
+  getPercent,
+  isSameValue,
+  normalizeValue,
+  snapValue,
+} from './sliderUtils';
+import { getKeyboardValue, sliderKeyboardKeys } from './sliderKeyboard';
+import { SliderControls } from './SliderControls.web';
+import { SliderFooter, SliderHeader } from './SliderLabels.web';
+import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
+import { useFormId } from '~components/Form/useFormId';
+import { useControllableState } from '~utils/useControllable';
+import { useBreakpoint } from '~utils';
+import { throwBladeError } from '~utils/logger';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStyledProps } from '~components/Box/styledProps';
+import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BladeElementRef } from '~utils/types';
+import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { mergeRefs } from '~utils/useMergeRefs';
+
+type InternalChangeHandler = (args: {
+  name?: string;
+  value: SliderValue;
+  event?: React.SyntheticEvent;
+}) => void;
+
+type InternalCommitHandler = (args: { name?: string; value: SliderValue }) => void;
+
+const _Slider: React.ForwardRefRenderFunction<BladeElementRef, SliderProps> = (props, ref) => {
+  const {
+    accessibilityLabel,
+    color = 'information',
+    defaultValue,
+    errorText,
+    helpText,
+    isDisabled = false,
+    isRequired = false,
+    label,
+    labelPosition = 'top',
+    marks,
+    max = 100,
+    maxLabel,
+    min = 0,
+    minLabel,
+    name,
+    necessityIndicator = 'none',
+    onChange,
+    onChangeEnd,
+    showMarks = false,
+    showMinMax = false,
+    showThumbValue = false,
+    showValue = true,
+    size = 'medium',
+    step = 1,
+    successText,
+    testID,
+    validationState = 'none',
+    value,
+    valueFormatter = String,
+    valueText,
+    selectionType = 'single',
+    _motionMeta,
+    ...rest
+  } = props;
+
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
+
+  if (max <= min) {
+    throwBladeError({ message: '`max` must be greater than `min`.', moduleName: 'Slider' });
+  }
+  if (step <= 0) {
+    throwBladeError({ message: '`step` must be greater than zero.', moduleName: 'Slider' });
+  }
+  if (__DEV__) {
+    if (!label && !accessibilityLabel) {
+      throwBladeError({
+        message: 'Either `label` or `accessibilityLabel` must be provided.',
+        moduleName: 'Slider',
+      });
+    }
+    if (marks && !showMarks) {
+      throwBladeError({
+        message:
+          '`marks` was provided but `showMarks` is false. Set `showMarks={true}` to display marks.',
+        moduleName: 'Slider',
+      });
+    }
+  }
+
+  // initialValue is computed only on mount. Stale values are acceptable here
+  // because this is the uncontrolled default; subsequent renders use
+  // controllableValue which reads from the controlled `value` prop or
+  // the internal state that was seeded by this initial value.
+  const initialValue = React.useMemo(
+    () =>
+      normalizeValue(
+        (defaultValue as SliderValue | undefined) ?? (selectionType === 'range' ? [min, max] : min),
+        selectionType,
+        min,
+        max,
+        step,
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+  const onChangeValue = onChange as InternalChangeHandler | undefined;
+  const onChangeEndValue = onChangeEnd as InternalCommitHandler | undefined;
+  const latestValueRef = React.useRef<SliderValue>(initialValue);
+  const latestEventRef = React.useRef<React.SyntheticEvent | undefined>(undefined);
+  const [controllableValue, setControllableValue] = useControllableState<SliderValue>({
+    value: value as SliderValue | undefined,
+    defaultValue: initialValue,
+    onChange: (nextValue) =>
+      onChangeValue?.({ name, value: nextValue, event: latestEventRef.current }),
+    shouldUpdate: (previous, next) => !isSameValue(previous, next),
+  });
+  const currentValue = React.useMemo(() => clampValue(controllableValue, selectionType, min, max), [
+    controllableValue,
+    selectionType,
+    min,
+    max,
+  ]);
+  React.useEffect(() => {
+    latestValueRef.current = currentValue;
+  }, [currentValue]);
+
+  const { inputId, errorTextId, helpTextId, labelId, successTextId } = useFormId('slider');
+  const startInputRef = React.useRef<HTMLInputElement>(null);
+  const endInputRef = React.useRef<HTMLInputElement>(null);
+  const trackRef = React.useRef<HTMLDivElement>(null);
+  const pointerStartedOnThumbRef = React.useRef(false);
+  const [activeThumb, setActiveThumb] = React.useState<0 | 1>(0);
+  const [isThumbDragging, setIsThumbDragging] = React.useState(false);
+  const hasError = validationState === 'error';
+  const hasSuccess = validationState === 'success';
+  const rangeValue: SliderRangeValue = React.useMemo(
+    () => (typeof currentValue === 'number' ? [min, currentValue] : currentValue),
+    [currentValue, min],
+  );
+  const rangeValueRef = React.useRef(rangeValue);
+  rangeValueRef.current = rangeValue;
+  const startValue = selectionType === 'range' ? rangeValue[0] : min;
+  const endValue = typeof currentValue === 'number' ? currentValue : rangeValue[1];
+  const startPercent = getPercent(startValue, min, max);
+  const endPercent = getPercent(endValue, min, max);
+  const generatedMarks = React.useMemo(
+    () => (showMarks ? marks ?? getGeneratedMarks(min, max, step) : []),
+    [showMarks, marks, min, max, step],
+  );
+  const visibleMarks = React.useMemo(
+    () => generatedMarks.filter((mark) => mark.value >= min && mark.value <= max),
+    [generatedMarks, min, max],
+  );
+  const describedByParts: string[] = [];
+  if (helpText) describedByParts.push(helpTextId);
+  if (hasError && errorText) describedByParts.push(errorTextId);
+  if (hasSuccess && successText) describedByParts.push(successTextId);
+  const describedBy = describedByParts.length > 0 ? describedByParts.join(' ') : undefined;
+  const displayValue =
+    valueText ??
+    (selectionType === 'range'
+      ? `${valueFormatter(rangeValue[0])} - ${valueFormatter(rangeValue[1])}`
+      : valueFormatter(endValue));
+
+  const updateValue = React.useCallback(
+    (nextValue: SliderValue): SliderValue => {
+      const normalized = normalizeValue(nextValue, selectionType, min, max, step);
+      latestValueRef.current = normalized;
+      setControllableValue(() => normalized);
+      return normalized;
+    },
+    [max, min, setControllableValue, step, selectionType],
+  );
+
+  const commitValue = React.useCallback(
+    (valueToCommit?: SliderValue) => {
+      onChangeEndValue?.({ name, value: valueToCommit ?? latestValueRef.current });
+    },
+    [name, onChangeEndValue],
+  );
+
+  const updateThumbValue = React.useCallback(
+    (index: 0 | 1, nextValue: number): void => {
+      const next = snapValue(nextValue, min, max, step);
+      if (selectionType === 'single') {
+        updateValue(next);
+        return;
+      }
+
+      const currentRange = rangeValueRef.current;
+      updateValue(
+        index === 0
+          ? [Math.min(next, currentRange[1]), currentRange[1]]
+          : [currentRange[0], Math.max(next, currentRange[0])],
+      );
+    },
+    [max, min, step, updateValue, selectionType],
+  );
+
+  const handleInputChange = React.useCallback(
+    (index: 0 | 1) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (isDisabled) return;
+      latestEventRef.current = event;
+      updateThumbValue(index, Number(event.currentTarget.value));
+    },
+    [isDisabled, updateThumbValue],
+  );
+
+  const handleInputKeyDown = React.useCallback(
+    (index: 0 | 1) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (!sliderKeyboardKeys.has(event.key)) return;
+      const next = getKeyboardValue({
+        current: Number(event.currentTarget.value),
+        inputMax: Number(event.currentTarget.max),
+        inputMin: Number(event.currentTarget.min),
+        key: event.key,
+        step,
+      });
+      if (next === undefined) return;
+      event.preventDefault();
+      latestEventRef.current = event;
+      updateThumbValue(index, next);
+    },
+    [step, updateThumbValue],
+  );
+
+  const handleInputKeyUp = React.useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>): void => {
+      if (sliderKeyboardKeys.has(event.key)) {
+        commitValue();
+      }
+    },
+    [commitValue],
+  );
+
+  const handleTrackPointerDown = React.useCallback(
+    (event: React.PointerEvent<HTMLDivElement>): void => {
+      if (isDisabled || event.target !== event.currentTarget || !trackRef.current) return;
+      latestEventRef.current = event;
+      pointerStartedOnThumbRef.current = false;
+      const bounds = trackRef.current.getBoundingClientRect();
+      const ratio = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
+      const next = snapValue(min + ratio * (max - min), min, max, step);
+
+      let committedValue: SliderValue;
+      if (selectionType === 'single') {
+        committedValue = updateValue(next);
+        startInputRef.current?.focus();
+      } else {
+        const dist0 = Math.abs(next - rangeValue[0]);
+        const dist1 = Math.abs(next - rangeValue[1]);
+        const nextThumb = dist0 < dist1 ? 0 : dist1 < dist0 ? 1 : next > rangeValue[0] ? 1 : 0;
+        setActiveThumb(nextThumb);
+        committedValue = updateValue(
+          nextThumb === 0
+            ? [Math.min(next, rangeValue[1]), rangeValue[1]]
+            : [rangeValue[0], Math.max(next, rangeValue[0])],
+        );
+        (nextThumb === 0 ? startInputRef : endInputRef).current?.focus();
+      }
+      commitValue(committedValue);
+    },
+    [commitValue, isDisabled, max, min, rangeValue, step, updateValue, selectionType],
+  );
+
+  const handleThumbPointerDown = React.useCallback((index: 0 | 1) => {
+    pointerStartedOnThumbRef.current = true;
+    setActiveThumb(index);
+    setIsThumbDragging(true);
+  }, []);
+
+  const handleThumbPointerUp = React.useCallback(() => {
+    if (pointerStartedOnThumbRef.current) {
+      commitValue();
+    }
+    pointerStartedOnThumbRef.current = false;
+    setIsThumbDragging(false);
+  }, [commitValue]);
+
+  React.useEffect(() => {
+    if (!isThumbDragging) return undefined;
+    const onDocPointerUp = (): void => {
+      if (pointerStartedOnThumbRef.current) {
+        commitValue();
+      }
+      pointerStartedOnThumbRef.current = false;
+      setIsThumbDragging(false);
+    };
+    document.addEventListener('pointerup', onDocPointerUp);
+    return () => document.removeEventListener('pointerup', onDocPointerUp);
+  }, [isThumbDragging, commitValue]);
+
+  return (
+    <BaseBox
+      ref={getOuterMotionRef({ _motionMeta, ref })}
+      display="flex"
+      flexDirection="column"
+      width="100%"
+      {...metaAttribute({ testID, name: MetaConstants.Slider })}
+      {...getStyledProps(rest)}
+      {...makeAnalyticsAttribute(rest)}
+    >
+      <BaseBox
+        display="flex"
+        flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
+        alignItems={isLabelLeftPositioned ? 'center' : undefined}
+        width="100%"
+      >
+        <SliderHeader
+          displayValue={displayValue}
+          inputId={inputId}
+          label={label}
+          labelId={labelId}
+          labelPosition={labelPosition}
+          necessityIndicator={necessityIndicator}
+          showValue={showValue}
+          size={size}
+          selectionType={selectionType}
+        />
+        <SliderControls
+          accessibilityLabel={accessibilityLabel}
+          activeThumb={activeThumb}
+          color={color}
+          describedBy={describedBy}
+          endInputRef={endInputRef}
+          endPercent={endPercent}
+          endValue={endValue}
+          hasError={hasError}
+          inputId={inputId}
+          isDisabled={isDisabled}
+          isRequired={isRequired}
+          label={label}
+          labelId={labelId}
+          max={max}
+          min={min}
+          name={name}
+          onInputChange={handleInputChange}
+          onInputKeyDown={handleInputKeyDown}
+          onInputKeyUp={handleInputKeyUp}
+          onThumbPointerDown={handleThumbPointerDown}
+          onThumbPointerUp={handleThumbPointerUp}
+          onTrackPointerDown={handleTrackPointerDown}
+          rangeValue={rangeValue}
+          showThumbValue={showThumbValue}
+          size={size}
+          startInputRef={mergeRefs(getInnerMotionRef({ _motionMeta, ref }), startInputRef)}
+          startPercent={startPercent}
+          step={step}
+          trackRef={trackRef}
+          valueFormatter={valueFormatter}
+          selectionType={selectionType}
+          visibleMarks={visibleMarks}
+        />
+      </BaseBox>
+      <SliderFooter
+        errorText={errorText}
+        errorTextId={errorTextId}
+        hasError={hasError}
+        hasSuccess={hasSuccess}
+        helpText={helpText}
+        helpTextId={helpTextId}
+        successText={successText}
+        successTextId={successTextId}
+        maxText={maxLabel ?? valueFormatter(max)}
+        minText={minLabel ?? valueFormatter(min)}
+        showMinMax={showMinMax}
+        size={size}
+      />
+    </BaseBox>
+  );
+};
+
+const Slider = assignWithoutSideEffects(React.forwardRef(_Slider), { displayName: 'Slider' });
+
+export { Slider };

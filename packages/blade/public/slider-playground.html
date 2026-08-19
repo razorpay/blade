@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Blade Slider QA Lab</title>
+    <link rel="stylesheet" href="./slider-playground.css" />
+    <link rel="stylesheet" href="./slider-playground-preview.css" />
+    <link rel="stylesheet" href="./slider-playground-responsive.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Blade component review</p>
+        <h1>Slider QA Lab</h1>
+      </div>
+      <div class="header-status" aria-label="Playground status">
+        <span><i class="status-dot"></i>Actual Storybook stories</span>
+        <span>Blade primitives</span>
+        <span>All variants</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="workbench" aria-labelledby="workbench-title">
+        <div class="preview-column">
+          <div class="workbench-heading">
+            <p class="eyebrow">Blade-native configuration</p>
+            <h2 id="workbench-title">Interactive component lab</h2>
+            <p>
+              The controls, layout, feedback, and Slider below are rendered by Blade components.
+            </p>
+          </div>
+          <div class="preview-toolbar">
+            <div class="viewport-control" role="group" aria-label="Preview width">
+              <button type="button" data-viewport="360">360</button>
+              <button type="button" data-viewport="768">768</button>
+              <button class="is-active" type="button" data-viewport="full">Full</button>
+            </div>
+            <a href="./?path=/docs/components-slider--docs" target="_blank" rel="noreferrer"
+              >Open docs</a
+            >
+          </div>
+          <div class="preview-stage" id="preview-stage">
+            <iframe
+              id="playground-frame"
+              title="Blade Slider component lab story"
+              src="./iframe.html?id=components-slider--component-lab&amp;viewMode=story&amp;qa=20260716-2"
+            ></iframe>
+          </div>
+
+          <div class="health-grid" aria-label="Automated layout checks">
+            <div><span>Horizontal fit</span><strong id="fit-check">Checking</strong></div>
+            <div><span>Touch targets</span><strong id="target-check">Checking</strong></div>
+            <div><span>Labels</span><strong id="label-check">Checking</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section" aria-labelledby="matrix-title">
+        <div class="section-heading story-heading">
+          <div>
+            <p class="eyebrow">Coverage matrix</p>
+            <h2 id="matrix-title">Stories without the Storybook chrome</h2>
+          </div>
+          <p>
+            Every frame below renders the production Storybook story, with enough height to avoid
+            cropped content.
+          </p>
+        </div>
+        <div class="story-grid" id="story-grid"></div>
+      </section>
+    </main>
+
+    <template id="story-card-template">
+      <article class="story-card">
+        <header>
+          <div>
+            <p></p>
+            <h3></h3>
+          </div>
+          <span>Live</span>
+        </header>
+        <iframe loading="lazy"></iframe>
+      </article>
+    </template>
+    <script src="./slider-playground.js?v=20260716-2"></script>
+  </body>
+</html>
