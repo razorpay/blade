@@ -7,11 +7,18 @@ export const SLIDER_INPUT_TOKENS = {
   track: {
     height: 2,
   },
+  // WCAG 2.5.5 minimum pointer target — shared by the track hit-area and the thumb
+  // wrapper so the draggable/tappable region stays >= 44px regardless of thumb size.
+  interactionArea: 44,
   tick: {
     size: { medium: 2, large: 4 },
   },
   label: {
     width: 100,
+  },
+  input: {
+    width: 64,
+    height: { medium: 36, large: 48 },
   },
   gap: {
     labelToSlider: 8,

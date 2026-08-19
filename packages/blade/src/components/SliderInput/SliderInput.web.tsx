@@ -14,6 +14,7 @@ import { useFormId } from '~components/Form/useFormId';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
+import { makeBorderSize } from '~utils/makeBorderSize';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import get from '~utils/lodashButBetter/get';
 
@@ -39,10 +40,10 @@ const StyledNumericInput = styled.input<{
     appearance: none;
     margin: 0;
   }
-  height: ${({ $size }) => ($size === 'large' ? 48 : 36)}px;
-  width: 64px;
-  padding: 0 8px;
-  border: 1px solid;
+  height: ${({ $size }) => tokens.input.height[$size]}px;
+  width: ${tokens.input.width}px;
+  padding: ${({ theme }) => `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[3])}`};
+  border: ${({ theme }) => `${makeBorderSize(theme.border.width.thin)} solid`};
   border-color: ${({ theme, $validationState }) => {
     if ($validationState === 'error')
       return get(theme.colors, 'feedback.border.negative.intense', '');
@@ -65,7 +66,7 @@ const StyledNumericInput = styled.input<{
     }
     &:disabled {
       cursor: not-allowed;
-      opacity: 0.6;
+      color: ${get(theme.colors, tokens.color.label.disabled, '')};
     }
   `}
 `;
@@ -554,7 +555,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 ref={trackRef}
                 position="relative"
                 flex="1"
-                height={makeSpace(44)}
+                height={makeSpace(tokens.interactionArea)}
                 display="flex"
                 alignItems="center"
                 cursor={isDisabled ? 'not-allowed' : 'pointer'}
@@ -606,7 +607,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                           transform: 'translate(-50%, -50%)',
                           width: tickSize,
                           height: tickSize,
-                          borderRadius: '50%',
+                          borderRadius: theme.border.radius.round,
                           backgroundColor:
                             tickPct <= pct ? tickColorOnActiveTrack : tickColorOnInactiveTrack,
                         }}
@@ -644,8 +645,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     left: `${visualPctRef.current}%`,
                     top: '50%',
                     transform: 'translate(-50%, -50%)',
-                    width: 44,
-                    height: 44,
+                    width: tokens.interactionArea,
+                    height: tokens.interactionArea,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -662,7 +663,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                       position: 'absolute',
                       width: showHalo ? haloSize : 0,
                       height: showHalo ? haloSize : 0,
-                      borderRadius: '50%',
+                      borderRadius: theme.border.radius.round,
                       backgroundColor: isDragging
                         ? get(theme.colors, tokens.color.halo.dragging, '')
                         : get(theme.colors, tokens.color.halo.default, ''),
@@ -678,7 +679,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     style={{
                       width: thumbSize,
                       height: thumbSize,
-                      borderRadius: '50%',
+                      borderRadius: theme.border.radius.round,
                       backgroundColor: thumbColor,
                       transition: isDragging
                         ? 'none'
