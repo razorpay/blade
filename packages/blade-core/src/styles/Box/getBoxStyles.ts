@@ -155,7 +155,11 @@ const pushGlobalProps = (props: BoxStyleInput, prefix: string, breakpoint: Break
     classes.push(`${prefix}flex-${flexValue}`);
   }
   const flexGrow = r(props.flexGrow);
-  if (flexGrow !== undefined && flexGrow !== null && FLEX_GROW_SHRINK_VALUES.has(String(flexGrow))) {
+  if (
+    flexGrow !== undefined &&
+    flexGrow !== null &&
+    FLEX_GROW_SHRINK_VALUES.has(String(flexGrow))
+  ) {
     classes.push(`${prefix}flex-grow-${flexGrow}`);
   }
   const flexShrink = r(props.flexShrink);
