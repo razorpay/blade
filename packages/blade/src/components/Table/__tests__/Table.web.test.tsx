@@ -1020,7 +1020,13 @@ describe('<Table />', () => {
     const onPageChange = jest.fn();
     const onPageSizeChange = jest.fn();
     const user = userEvent.setup();
-    const { getByLabelText, queryByText, getByRole, getAllByRole } = renderWithTheme(
+    const {
+      getByLabelText,
+      queryByLabelText,
+      queryByText,
+      getByRole,
+      getAllByRole,
+    } = renderWithTheme(
       <Table
         data={{
           nodes: [...nodes, ...nodes, ...nodes, ...nodes, ...nodes, ...nodes, ...nodes, ...nodes],
@@ -1074,11 +1080,11 @@ describe('<Table />', () => {
       </Table>,
     );
     const nextPageButton = getByLabelText('Next Page');
-    const previousPageButton = getByLabelText('Previous Page');
     const goForward5PagesButton = getByLabelText('Go forward 5 pages');
     // Check if pagination buttons work
     expect(nextPageButton).toBeInTheDocument();
-    expect(previousPageButton).toBeInTheDocument();
+    // Previous page button is not rendered on the first page
+    expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
     expect(goForward5PagesButton).toBeInTheDocument();
     expect(queryByText('rzp01')).toBeInTheDocument();
     // Go to next page
@@ -1087,7 +1093,7 @@ describe('<Table />', () => {
     expect(queryByText('rzp11')).toBeInTheDocument();
     expect(onPageChange).toHaveBeenCalledTimes(1);
     // Go to previous page
-    fireEvent.click(previousPageButton);
+    fireEvent.click(getByLabelText('Previous Page'));
     expect(queryByText('rzp01')).toBeInTheDocument();
 
     // Check if page size picker works
@@ -1154,19 +1160,21 @@ describe('<Table />', () => {
         </Table>
       );
     };
-    const { getByLabelText, queryByText } = renderWithTheme(<ServerPaginatedTable />);
+    const { getByLabelText, queryByLabelText, queryByText } = renderWithTheme(
+      <ServerPaginatedTable />,
+    );
     const nextPageButton = getByLabelText('Next Page');
-    const previousPageButton = getByLabelText('Previous Page');
     // Check if pagination buttons work
     expect(nextPageButton).toBeInTheDocument();
-    expect(previousPageButton).toBeInTheDocument();
+    // Previous page button is not rendered on the first page
+    expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
     expect(queryByText('rzp01')).toBeInTheDocument();
     // Go to next page
     fireEvent.click(nextPageButton);
     expect(queryByText('rzp01')).not.toBeInTheDocument();
     expect(queryByText('rzp11')).toBeInTheDocument();
     // Go to previous page
-    fireEvent.click(previousPageButton);
+    fireEvent.click(getByLabelText('Previous Page'));
     expect(queryByText('rzp01')).toBeInTheDocument();
   });
 
