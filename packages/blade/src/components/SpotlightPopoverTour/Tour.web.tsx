@@ -22,6 +22,66 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const asHTMLElement = (el: TourElement | null): HTMLElement | null => el as HTMLElement | null;
 
+const readBorderRadius = (el: HTMLElement): number => {
+  const { borderTopLeftRadius } = window.getComputedStyle(el);
+  const parsed = Number.parseFloat(borderTopLeftRadius);
+
+  if (Number.isNaN(parsed)) return 0;
+  // Percentage radii (e.g. `50%` on a circular avatar) resolve against the box itself.
+  if (borderTopLeftRadius.includes('%')) {
+    const { width, height } = el.getBoundingClientRect();
+    return (Math.min(width, height) * parsed) / 100;
+  }
+
+  return parsed;
+};
+
+// `getComputedStyle` reports unset properties as an empty string in some environments
+// (notably jsdom), so treat "unset" the same as "not painted" rather than as a value.
+const isPainted = (value: string): boolean =>
+  Boolean(value) && value !== 'none' && value !== 'transparent' && value !== 'rgba(0, 0, 0, 0)';
+
+/** Whether an element paints anything of its own, or is a bare layout shell. */
+const drawsOwnShape = (el: HTMLElement): boolean => {
+  const { borderTopWidth, backgroundColor, backgroundImage } = window.getComputedStyle(el);
+  return (
+    readBorderRadius(el) > 0 ||
+    Number.parseFloat(borderTopWidth) > 0 ||
+    isPainted(backgroundColor) ||
+    isPainted(backgroundImage)
+  );
+};
+
+/**
+ * Resolves the element the spotlight should actually trace.
+ *
+ * `SpotlightPopoverTourStep` clones its child to attach a ref, so consumers commonly wrap
+ * their UI in a layout element just to forward one. Measuring that wrapper is wrong twice
+ * over: it has no corner radius to inherit, and a wrapper stretched by its parent's layout
+ * (e.g. `alignItems="stretch"` in a flex row) is taller than the component inside it, which
+ * makes the spotlight's padding look uneven — 6px on three sides and more at the bottom.
+ *
+ * So when the step's element paints nothing itself and simply wraps a single child that
+ * fills it on at least one axis, we trace that child instead. The fill check keeps us from
+ * shrinking onto an inner element that merely happens to be first — a wrapper around
+ * narrower content is still measured as the wrapper.
+ */
+const resolveSpotlightTarget = (element: HTMLElement): HTMLElement => {
+  if (drawsOwnShape(element)) return element;
+
+  const { children } = element;
+  if (children.length !== 1) return element;
+
+  const child = children[0] as HTMLElement;
+  const parentRect = element.getBoundingClientRect();
+  const childRect = child.getBoundingClientRect();
+  const fillsAnAxis =
+    Math.abs(childRect.width - parentRect.width) <= 1 ||
+    Math.abs(childRect.height - parentRect.height) <= 1;
+
+  return fillsAnAxis ? child : element;
+};
+
 const SpotlightPopoverTour = ({
   steps,
   activeStep,
@@ -111,20 +171,21 @@ const SpotlightPopoverTour = ({
       const el = asHTMLElement(ref?.current ?? null);
       if (!el) return;
 
-      const rect = el.getBoundingClientRect();
-      setSize({
+      // Trace the component the merchant sees, not the layout wrapper around it, so the
+      // spotlight's padding stays even on all four sides.
+      const target = resolveSpotlightTarget(el);
+      const rect = target.getBoundingClientRect();
+      const nextSize = {
         x: rect.x,
         y: rect.y,
         width: rect.width,
         height: rect.height,
-      });
+        borderRadius: readBorderRadius(target),
+      };
+
+      setSize(nextSize);
       if (shouldSkipDelay) {
-        setDelayedSize({
-          x: rect.x,
-          y: rect.y,
-          width: rect.width,
-          height: rect.height,
-        });
+        setDelayedSize(nextSize);
       }
     },
     [activeStep, refIdMap, setDelayedSize, steps],
@@ -195,6 +256,7 @@ const SpotlightPopoverTour = ({
         y: 0,
         width: 0,
         height: 0,
+        borderRadius: 0,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

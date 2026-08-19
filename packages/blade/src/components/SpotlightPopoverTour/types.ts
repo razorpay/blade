@@ -102,6 +102,17 @@ type SpotlightPopoverTourMaskRect = {
   height: number;
   x: number;
   y: number;
+  /**
+   * Corner radius of the spotlit element, in px, so the spotlight can take the
+   * same shape as the component it highlights. `0` when the element draws no
+   * corner of its own (e.g. plain text), in which case the mask falls back to
+   * the popover's radius.
+   *
+   * Web only — resolved from the element's computed style. React Native measures
+   * via `measureInWindow`, which reports geometry but no style, so this is left
+   * `undefined` there and the native mask keeps its own default radius.
+   */
+  borderRadius?: number;
 };
 
 export type {

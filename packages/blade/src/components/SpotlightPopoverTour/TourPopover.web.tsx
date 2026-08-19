@@ -157,12 +157,21 @@ const TourPopover = ({
                 footer={footer}
                 style={styles}
                 arrow={
+                  // Kept at parity with Popover's arrow. The stroke matters beyond the arrow's
+                  // own outline: the popup's surface carries a 1px inset hairline on every edge,
+                  // including the one the arrow sits on, so without a stroke that hairline is
+                  // drawn straight across the join and the arrow reads as a separate shape. A
+                  // non-zero strokeWidth also offsets the arrow onto that edge, letting its fill
+                  // cover the hairline underneath it.
                   <PopupArrow
                     ref={arrowRef}
                     context={context}
                     width={ARROW_WIDTH}
                     height={ARROW_HEIGHT}
-                    fillColor={theme.colors.popup.background.gray.subtle}
+                    fillColor={theme.colors.popup.background.gray.moderate}
+                    strokeColor={theme.colors.popup.border.gray.moderate}
+                    strokeWidth={theme.border.width.thin}
+                    style={{ transform: 'translateY(-1px)' }}
                   />
                 }
               >
