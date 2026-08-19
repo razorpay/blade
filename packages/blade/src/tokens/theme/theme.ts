@@ -88,24 +88,6 @@ type ColorCategories = {
 
 type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
 
-/**
- * @deprecated
- * Use popup.[background|border].[color] instead
- */
-type PopupDeprecatedTokens = {
-  /**
-   * @deprecated
-   *
-   * Use popup.[background|border].[color].subtle instead
-   */
-  subtle: string;
-  /**
-   * @deprecated
-   * Use popup.[background|border].[color].intense instead
-   */
-  intense: string;
-};
-
 export type Colors = {
   interactive: {
     background: Record<
@@ -154,10 +136,10 @@ export type Colors = {
   popup: {
     background: Record<FeedbackColors, Pick<Emphasis, 'moderate'>> & {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
-    } & PopupDeprecatedTokens;
+    };
     border: Record<FeedbackColors, Pick<Emphasis, 'moderate'>> & {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
-    } & PopupDeprecatedTokens;
+    };
   };
   transparent: string;
   data: {
