@@ -1,32 +1,23 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
-import {
-  getSimpleSelectCode,
-  WithAutoPositioningSelectStory,
-  WithControlledMultiSelectStory,
-  WithControlledSelectStory,
-  WithHeaderFooterScroll,
-  WithHTMLFormSubmissionStory,
-  WithMultipleDropdownsStory,
-  WithRefUsageStory,
-  WithValidationStateStory,
-  WithValueDisplayStory,
-  WithSizesStory,
-} from './stories';
-
-import { Sandbox } from '~utils/storybook/Sandbox';
+import type { SelectInputProps } from '~components/Input/DropdownInputTriggers';
 import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
 import {
   ActionList,
   ActionListItem,
+  ActionListItemAsset,
   ActionListItemIcon,
   ActionListItemText,
   ActionListSection,
 } from '~components/ActionList';
-import { HomeIcon } from '~components/Icons';
+import { ArrowRightIcon, DownloadIcon, HomeIcon, SettingsIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
+import { Alert } from '~components/Alert';
+import { Badge } from '~components/Badge';
+import { Code, Heading, Text } from '~components/Typography';
+import type { BladeElementRef } from '~utils/types';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With Select',
@@ -47,9 +38,26 @@ const DropdownStoryMeta: Meta = {
 
 const DropdownTemplate: StoryFn<typeof Dropdown> = ({ selectionType = 'single' }) => {
   return (
-    <Sandbox showConsole padding="spacing.0" editorHeight="100vh">
-      {getSimpleSelectCode(selectionType)}
-    </Sandbox>
+    <Box minHeight="300px" padding="spacing.5">
+      <Dropdown selectionType={selectionType}>
+        <SelectInput
+          label="City"
+          placeholder="Select your City"
+          name="action"
+          onChange={({ name, values }) => {
+            console.log({ name, values });
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
@@ -68,82 +76,441 @@ WithMultiSelect.parameters = {
 };
 
 export const WithHeaderFooterScrollbar = (): React.ReactElement => {
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithHeaderFooterScroll}
-    </Sandbox>
+    <Box minHeight="300px" padding="spacing.5">
+      <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+        <SelectInput
+          label="Select Action"
+          onChange={({ name, values }) => {
+            console.log({ name, values });
+          }}
+        />
+        <DropdownOverlay>
+          <DropdownHeader title="Header Title" />
+          <ActionList>
+            <ActionListItem
+              leading={<ActionListItemIcon icon={HomeIcon} />}
+              trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
+              title="Home"
+              description="This is Home"
+              value="home"
+            />
+            <ActionListSection title="Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download"
+              />
+            </ActionListSection>
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing"
+            />
+            <ActionListSection title="More Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings-2"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download-2"
+              />
+            </ActionListSection>
+            <ActionListSection title="Even More Options">
+              <ActionListItem
+                leading={<ActionListItemIcon icon={SettingsIcon} />}
+                title="Settings"
+                value="settings-3"
+              />
+              <ActionListItem
+                leading={<ActionListItemIcon icon={DownloadIcon} />}
+                title="Download"
+                value="download-3"
+              />
+            </ActionListSection>
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing-2"
+            />
+            <ActionListItem
+              leading={<ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />}
+              title="Pricing"
+              value="pricing-3"
+            />
+          </ActionList>
+          <DropdownFooter>
+            <Button
+              isFullWidth
+              onClick={() => {
+                setIsDropdownOpen(false);
+              }}
+            >
+              Close
+            </Button>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
 export const WithValueDisplay = (): React.ReactElement => {
+  const [currentSelections, setCurrentSelections] = React.useState<string[]>([]);
+
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithValueDisplayStory}
-    </Sandbox>
+    <Box minHeight="300px" padding="spacing.5">
+      <Box paddingY="spacing.4" display="flex" gap="spacing.4">
+        {currentSelections.map((currentSelection) => (
+          <Badge key={currentSelection}>{currentSelection}</Badge>
+        ))}
+      </Box>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="City"
+          placeholder="Select your City"
+          name="action"
+          onChange={({ values }) => {
+            setCurrentSelections(values);
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
 export const WithHTMLFormSubmission = (): React.ReactElement => {
+  const [submissionValues, setSubmissionValues] = React.useState('');
+
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithHTMLFormSubmissionStory}
-    </Sandbox>
+    <Box minHeight="300px" padding="spacing.5">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const data = new FormData(e.currentTarget);
+          const formData: Record<string, string> = {};
+          for (const [name, value] of data) {
+            formData[name] = String(value);
+          }
+          setSubmissionValues(JSON.stringify(formData));
+        }}
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Cities" placeholder="Select Cities" name="cities" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+              <ActionListItem title="Bangalore" value="bangalore" />
+              <ActionListItem title="Mysore" value="mysore" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+        <Button marginTop="spacing.8" marginBottom="spacing.4" type="submit">
+          Submit
+        </Button>
+        <Text>Form Submitted with {submissionValues}</Text>
+      </form>
+    </Box>
   );
 };
 
 export const WithValidationState = (): React.ReactElement => {
+  const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>(
+    'none',
+  );
+
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithValidationStateStory}
-    </Sandbox>
+    <Box minHeight="300px" padding="spacing.5">
+      <Alert
+        color="information"
+        description="Select more than 2 options to see error state"
+        isFullWidth
+        isDismissible={false}
+        marginBottom="spacing.4"
+      />
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          name="design-systems"
+          label="Top 2 design systems"
+          validationState={validationState}
+          errorText="You selected more than 2 options"
+          successText="Yay! Nice choice"
+          helpText="Select only two"
+          placeholder="Select Multiple Options"
+          onChange={({ values }) => {
+            if (values.length === 2) {
+              setValidationState('success');
+            } else if (values.length > 2) {
+              setValidationState('error');
+            } else {
+              setValidationState('none');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Blade" value="blade" />
+            <ActionListItem title="Primer" value="primer" />
+            <ActionListItem title="Geist" description="by Vercel" value="geist" />
+            <ActionListItem title="Airbnb Design" value="airbnb" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
 export const WithRefUsage = (): React.ReactElement => {
+  const selectRef = React.useRef<BladeElementRef>(null);
+
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithRefUsageStory}
-    </Sandbox>
+    <Box minHeight="300px" padding="spacing.5">
+      <Dropdown>
+        <SelectInput ref={selectRef} label="City" placeholder="Select your City" name="city" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Box paddingTop="spacing.3">
+        <Button
+          onClick={() => {
+            selectRef.current?.focus();
+          }}
+        >
+          Click to focus
+        </Button>
+      </Box>
+      <Box paddingTop="spacing.3">
+        <Text>
+          We are using <Code size="medium">selectRef.current.focus()</Code> here to focus on input
+        </Text>
+      </Box>
+    </Box>
   );
 };
 
 export const WithAutoPositioning = (): React.ReactElement => {
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithAutoPositioningSelectStory}
-    </Sandbox>
+    <Box>
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.gray.moderate"
+        width="100%"
+        minHeight="100px"
+        overflow="scroll"
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Select fruits" labelPosition="left" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.gray.moderate"
+        width="100%"
+        position="fixed"
+        bottom="spacing.0"
+        minHeight="100px"
+        overflow="scroll"
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Select fruits" labelPosition="left" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
   );
 };
 
 export const WithMultipleDropdowns = (): React.ReactElement => {
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithMultipleDropdownsStory}
-    </Sandbox>
+    <Box display="flex" flexDirection="row" minHeight="300px" gap="spacing.2" padding="spacing.5">
+      <Box flex={1}>
+        <Dropdown>
+          <SelectInput label="Top 2 design systems" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Primer" value="primer" />
+              <ActionListItem title="Geist" description="by Vercel" value="geist" />
+              <ActionListItem title="Airbnb Design" value="airbnb" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+      <Box flex={1}>
+        <Dropdown>
+          <SelectInput label="Top 2 Languages" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="HTML" value="html" />
+              <ActionListItem title="CSS" value="css" />
+              <ActionListItem title="JavaScript" value="javascript" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
   );
 };
 
 export const WithControlledSelect = (): React.ReactElement => {
+  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithControlledSelectStory}
-    </Sandbox>
+    <Box minHeight="300px" padding="spacing.5">
+      <Button marginBottom="spacing.4" onClick={() => setCurrentSelection('bangalore')}>
+        Select Bangalore
+      </Button>
+      <Button
+        marginBottom="spacing.4"
+        marginLeft="spacing.4"
+        variant="secondary"
+        onClick={() => setCurrentSelection('')}
+      >
+        Clear Selection
+      </Button>
+      <Dropdown selectionType="single">
+        <SelectInput
+          label="Select City"
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values[0]);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
 export const WithControlledMultiSelect = (): React.ReactElement => {
+  const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithControlledMultiSelectStory}
-    </Sandbox>
+    <Box minHeight="300px" padding="spacing.5">
+      <Button
+        marginBottom="spacing.4"
+        onClick={() => {
+          if (!currentSelection.includes('bangalore')) {
+            setCurrentSelection([...currentSelection, 'bangalore']);
+          }
+        }}
+      >
+        Select Bangalore
+      </Button>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Select City"
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
 export const WithSizes = (): React.ReactElement => {
   return (
-    <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithSizesStory}
-    </Sandbox>
+    <Box minHeight="400px" padding="spacing.5">
+      <Heading size="medium" marginBottom="spacing.3">
+        Medium:
+      </Heading>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="City"
+          placeholder="Select your City"
+          name="action"
+          onChange={({ name, values }) => {
+            console.log({ name, values });
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Heading size="medium" marginBottom="spacing.3" marginTop="spacing.5">
+        Large:
+      </Heading>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="City"
+          placeholder="Select your City"
+          name="action"
+          size="large"
+          onChange={({ name, values }) => {
+            console.log({ name, values });
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
