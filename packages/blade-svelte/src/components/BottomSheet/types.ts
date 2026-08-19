@@ -71,6 +71,16 @@ export interface BottomSheetProps extends StyledPropsBlade {
    */
   portalTarget?: HTMLElement | null;
 
+  /**
+   * Toggles the drag handle (the pill affordance rendered at the top of the
+   * sheet). Set to `false` to hide it. Since the handle is the drag surface,
+   * hiding it also removes the drag-to-move affordance; the sheet can still be
+   * dismissed via the backdrop, `esc`, or programmatically.
+   *
+   * @default true
+   */
+  showDragHandle?: boolean;
+
   /** Test ID applied to the surface element. */
   testID?: string;
 

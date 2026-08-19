@@ -51,6 +51,7 @@
     zIndex = BOTTOM_SHEET_Z_INDEX,
     portalTarget,
     testID,
+    showDragHandle = true,
     ...rest
   }: BottomSheetProps = $props();
 
@@ -575,7 +576,9 @@
     {...analyticsAttrs}
   >
     <div class={bottomSheetInnerWrapperClass}>
-      <div bind:this={grabHandleEl} class={grabHandleClasses} {...grabHandleMetaAttrs}></div>
+      {#if showDragHandle}
+        <div bind:this={grabHandleEl} class={grabHandleClasses} {...grabHandleMetaAttrs}></div>
+      {/if}
       {@render children()}
     </div>
   </div>
