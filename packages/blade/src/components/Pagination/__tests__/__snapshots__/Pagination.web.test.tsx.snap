@@ -244,6 +244,7 @@ exports[`<Pagination /> should render basic pagination 1`] = `
         data-blade-component="base-box"
       >
         <button
+          aria-disabled="true"
           aria-label="Previous Page"
           class="c3"
           data-blade-component="button"
@@ -508,6 +509,7 @@ exports[`<Pagination /> should render disabled state 1`] = `
         data-blade-component="base-box"
       >
         <button
+          aria-disabled="true"
           aria-label="Previous Page"
           class="c3"
           data-blade-component="button"
@@ -549,6 +551,7 @@ exports[`<Pagination /> should render disabled state 1`] = `
           </div>
         </button>
         <button
+          aria-disabled="true"
           aria-label="Next Page"
           class="c3"
           data-blade-component="button"
@@ -1630,6 +1633,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
         data-blade-component="base-box"
       >
         <button
+          aria-disabled="true"
           aria-label="Previous Page"
           class="c27"
           data-blade-component="button"
@@ -2108,6 +2112,7 @@ exports[`<Pagination /> should render with label 1`] = `
         data-blade-component="base-box"
       >
         <button
+          aria-disabled="true"
           aria-label="Previous Page"
           class="c5"
           data-blade-component="button"
@@ -3622,6 +3627,7 @@ exports[`<Pagination /> should render with page size picker 1`] = `
         data-blade-component="base-box"
       >
         <button
+          aria-disabled="true"
           aria-label="Previous Page"
           class="c26"
           data-blade-component="button"

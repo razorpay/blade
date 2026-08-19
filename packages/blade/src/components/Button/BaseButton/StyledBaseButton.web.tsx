@@ -24,7 +24,7 @@ const StyledBaseButton = styled.button
   } as const;
   const gradientSize = gradientSizeMap[props.size ?? 'medium'];
   const mouseGradient =
-    props.variant === 'primary' && !props.disabled
+    props.variant === 'primary' && (!props.disabled || props.isDefiniteLoading)
       ? `radial-gradient(${gradientSize}px ${gradientSize}px at var(--mouse-x, 0%) var(--mouse-y, 0%), ${props.theme.colors.interactive.background.staticWhite.faded} 0%, transparent 100%)`
       : 'none';
 

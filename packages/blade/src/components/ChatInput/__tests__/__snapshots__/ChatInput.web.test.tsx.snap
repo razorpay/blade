@@ -676,6 +676,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
                     data-blade-component="base-box"
                   >
                     <button
+                      aria-disabled="true"
                       aria-label="Submit"
                       class="c16"
                       data-blade-component="button"

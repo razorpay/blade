@@ -2096,6 +2096,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
     role="group"
   >
     <button
+      aria-disabled="true"
       class="c1"
       data-blade-component="button"
       disabled=""
@@ -2124,6 +2125,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
       data-blade-component="base-box"
     />
     <button
+      aria-disabled="true"
       class="c1"
       data-blade-component="button"
       disabled=""
@@ -2152,6 +2154,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
       data-blade-component="base-box"
     />
     <button
+      aria-disabled="true"
       class="c1"
       data-blade-component="button"
       disabled=""
@@ -2300,6 +2303,7 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2450,6 +2454,7 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2597,6 +2602,7 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2747,6 +2753,7 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -2894,6 +2901,7 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3044,6 +3052,7 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3194,6 +3203,7 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3341,6 +3351,7 @@ exports[`<ButtonGroup /> should render disabled white color primary button 1`] =
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3491,6 +3502,7 @@ exports[`<ButtonGroup /> should render disabled white color secondary button 1`]
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""
@@ -3641,6 +3653,7 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
 
 <div>
   <button
+    aria-disabled="true"
     class="c0"
     data-blade-component="button"
     disabled=""

@@ -5,7 +5,7 @@ import { avatarTextSizeMapping, avatarIconSizeTokens } from './avatarTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils/makeAccessible';
 import { Heading, Text } from '~components/Typography';
-import { getTextColorToken } from '~components/Button/BaseButton/BaseButton';
+import { getTextColorToken } from '~components/Button/BaseButton/getTextColorToken';
 import type { IconColor } from '~components/Button/BaseButton/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { MAKE_ANALYTICS_CONSTANTS } from '~utils/makeAnalyticsAttribute';

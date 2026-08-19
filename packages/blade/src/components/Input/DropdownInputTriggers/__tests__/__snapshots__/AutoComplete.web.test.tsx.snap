@@ -1239,17 +1239,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   margin-left: 4px;
 }
 
-.c23.c23.c23.c23.c23 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c22.c22.c22.c22.c22 {
-  display: none;
-}
-
 .c57.c57.c57.c57.c57 {
   opacity: 1;
 }
@@ -1312,6 +1301,17 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+}
+
+.c23.c23.c23.c23.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c22.c22.c22.c22.c22 {
+  display: none;
 }
 
 .c39.c39.c39.c39.c39 {

@@ -14,7 +14,7 @@ import type {
 } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
-import type { AriaRoles } from '~utils/makeAccessible';
+import type { AccessibilityProps, AriaRoles } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
 type ButtonCommonProps = {
@@ -41,6 +41,22 @@ type ButtonCommonProps = {
   isDisabled?: boolean;
   isFullWidth?: boolean;
   isLoading?: boolean;
+  /**
+   * Type of loading indicator to show.
+   * - `indefinite`: 3-dot loader controlled by `isLoading`
+   * - `definite`: left-to-right progress bar over `loadingTimer` ms
+   * @default 'indefinite'
+   */
+  loadingType?: BaseButtonProps['loadingType'];
+  /**
+   * Duration (in milliseconds) over which the `definite` progress bar fills from 0% to 100%.
+   * Required when `loadingType` is `definite`.
+   */
+  loadingTimer?: BaseButtonProps['loadingTimer'];
+  /**
+   * Called once when the `definite` progress bar reaches 100%.
+   */
+  onLoadingComplete?: BaseButtonProps['onLoadingComplete'];
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
 
@@ -67,7 +83,7 @@ type ButtonCommonProps = {
    *
    * @private
    */
-  'aria-haspopup'?: 'menu';
+  'aria-haspopup'?: AccessibilityProps['hasPopup'];
   /**
    * It is exposed for internal usage with menu.
    *
@@ -111,6 +127,9 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    loadingType = 'indefinite',
+    loadingTimer,
+    onLoadingComplete,
     href,
     target,
     rel,
@@ -147,6 +166,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       accessibilityProps={{
         label: accessibilityLabel,
         describedBy: rest['aria-describedby'],
+        controls: rest['aria-controls'],
         expanded: rest['aria-expanded'],
         hasPopup: rest['aria-haspopup'],
         role,
@@ -160,6 +180,9 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       type={type}
       variant={variant}
       isLoading={isLoading}
+      loadingType={loadingType}
+      loadingTimer={loadingTimer}
+      onLoadingComplete={onLoadingComplete}
       testID={testID}
       onBlur={onBlur}
       onFocus={onFocus}

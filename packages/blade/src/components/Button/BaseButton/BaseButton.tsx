@@ -6,10 +6,8 @@ import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonBoxShadow } from './buttonTokens';
 import {
-  textColor,
   backgroundGradient,
   boxShadow,
-  spinnerColor,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
@@ -19,8 +17,10 @@ import {
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
 } from './buttonTokens';
-import type { BaseButtonStyleProps, IconColor } from './types';
+import type { BaseButtonStyleProps, IconColor, ButtonLoadingType } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
+import { ButtonProgressLoader } from './ButtonProgressLoader';
+import { getTextColorToken } from './getTextColorToken';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
@@ -34,7 +34,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
-import { BaseSpinner } from '~components/Spinner/BaseSpinner';
+import { ButtonDotLoader } from './ButtonDotLoader';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type {
@@ -77,6 +77,22 @@ type BaseButtonCommonProps = {
   }>;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
+  /**
+   * Type of loading indicator to show.
+   * - `indefinite`: 3-dot loader controlled by `isLoading`
+   * - `definite`: left-to-right progress bar over `loadingTimer` ms
+   * @default 'indefinite'
+   */
+  loadingType?: ButtonLoadingType;
+  /**
+   * Duration (in milliseconds) over which the `definite` progress bar fills from 0% to 100%.
+   * Required when `loadingType` is `definite`.
+   */
+  loadingTimer?: number;
+  /**
+   * Called once when the `definite` progress bar reaches 100%.
+   */
+  onLoadingComplete?: () => void;
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?:
@@ -192,46 +208,21 @@ export const getBoxShadowToken = ({
   return tokens.base[variant][_state];
 };
 
-export const getTextColorToken = ({
-  property,
-  variant,
-  state,
-  color,
-}: BaseButtonColorTokenModifiers & {
-  property: 'icon' | 'text';
-}): DotNotationToken<Theme['colors']> => {
-  const tokens = textColor(property);
-  const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
+export { getTextColorToken };
 
-  if (color === 'white') {
-    return tokens.white[variant][_state];
+const resolveBackgroundValue = ({ theme, value }: { theme: Theme; value: string }): string => {
+  if (value === 'transparent' || value.startsWith('linear-gradient')) {
+    return value;
   }
 
-  if (color === 'transparent') {
-    if (variant !== 'tertiary') {
-      throw new Error(
-        `Transparent color can only be used with tertiary variant but received "${variant}"`,
-      );
-    }
-    return tokens.transparent.tertiary[_state];
-  }
-
-  if (color && color !== 'primary') {
-    if (variant === 'tertiary') {
-      throw new Error(
-        `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
-      );
-    }
-    return tokens.color(color)[variant][_state];
-  }
-
-  return tokens.base[variant][_state];
+  return getIn(theme.colors, value as DotNotationToken<Theme['colors']>);
 };
 
 const getProps = ({
   buttonTypographyTokens,
   childrenString,
   isDisabled,
+  isDefiniteLoading,
   size,
   theme,
   variant,
@@ -241,6 +232,7 @@ const getProps = ({
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
   isDisabled: boolean;
+  isDefiniteLoading: boolean;
   hasIcon: boolean;
   theme: Theme;
   size: NonNullable<BaseButtonProps['size']>;
@@ -261,16 +253,11 @@ const getProps = ({
 
   const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
 
-  // Resolve background value - either a gradient string or a token path
-  const resolveBackgroundValue = (value: string): string => {
-    if (value.startsWith('linear-gradient')) {
-      return value;
-    }
-    return getIn(theme.colors, value as DotNotationToken<Theme['colors']>);
-  };
-
   const getDefaultBackground = (): string => {
-    return resolveBackgroundValue(getBackgroundColorToken({ variant, color, state: 'default' }));
+    return resolveBackgroundValue({
+      theme,
+      value: getBackgroundColorToken({ variant, color, state: 'default' }),
+    });
   };
 
   const getBoxShadow = (
@@ -399,9 +386,10 @@ const getProps = ({
     text: childrenString?.trim(),
     defaultBackgroundColor: getDefaultBackground(),
     defaultBoxShadow: getBoxShadow('default', color),
-    hoverBackgroundColor: resolveBackgroundValue(
-      getBackgroundColorToken({ variant, color, state: 'hover' }),
-    ),
+    hoverBackgroundColor: resolveBackgroundValue({
+      theme,
+      value: getBackgroundColorToken({ variant, color, state: 'hover' }),
+    }),
     hoverBoxShadow: getBoxShadow('hover', color),
     hoverIconColor: getIn(
       theme.colors,
@@ -412,21 +400,24 @@ const getProps = ({
         state: 'hover',
       }),
     ),
-    focusBackgroundColor: resolveBackgroundValue(
-      getBackgroundColorToken({ variant, color, state: 'focus' }),
-    ),
+    focusBackgroundColor: resolveBackgroundValue({
+      theme,
+      value: getBackgroundColorToken({ variant, color, state: 'focus' }),
+    }),
     focusBoxShadow: getBoxShadow('focus', color),
     focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
     borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
-    ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
+    ...(isReactNative() && (!isDisabled || (isDefiniteLoading && variant === 'primary'))
+      ? getNativeShadowColors(color)
+      : {}),
   };
 
-  if (isDisabled) {
-    const disabledBackgroundColor = resolveBackgroundValue(
-      getBackgroundColorToken({ variant, color, state: 'disabled' }),
-    );
+  const shouldUseDisabledBackground = isDisabled && !(isDefiniteLoading && variant === 'primary');
+  const shouldUseDisabledContent = isDisabled && !isDefiniteLoading;
+
+  if (shouldUseDisabledContent) {
     props.iconColor = getTextColorToken({
       property: 'icon',
       variant,
@@ -439,15 +430,49 @@ const getProps = ({
       color,
       state: 'disabled',
     }) as BaseTextProps['color'];
+  }
+
+  if (shouldUseDisabledBackground) {
+    const disabledBackgroundColor = resolveBackgroundValue({
+      theme,
+      value: getBackgroundColorToken({ variant, color, state: 'disabled' }),
+    });
     props.defaultBackgroundColor = disabledBackgroundColor;
     props.defaultBoxShadow = getBoxShadow('disabled', color);
     props.hoverBackgroundColor = disabledBackgroundColor;
     props.hoverBoxShadow = getBoxShadow('disabled', color);
     props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBoxShadow = getBoxShadow('disabled', color);
+  } else if (isDisabled) {
+    props.hoverBackgroundColor = props.defaultBackgroundColor;
+    props.hoverBoxShadow = props.defaultBoxShadow;
+    props.focusBackgroundColor = props.defaultBackgroundColor;
+    props.focusBoxShadow = props.defaultBoxShadow;
   }
 
   return props;
+};
+
+const getButtonDotLoaderColor = ({
+  theme,
+  variant,
+  color,
+}: {
+  theme: Theme;
+  variant: NonNullable<BaseButtonCommonProps['variant']>;
+  color: BaseButtonCommonProps['color'];
+}): string => {
+  const dotColorToken =
+    variant === 'primary' && color === 'primary'
+      ? 'interactive.icon.primary.normal'
+      : getTextColorToken({
+          property: 'icon',
+          variant,
+          color,
+          state: 'default',
+        });
+
+  return getIn(theme.colors, dotColorToken as DotNotationToken<Theme['colors']>);
 };
 
 const ButtonContent = styled(BaseBox)<{ isHidden: boolean }>(({ isHidden }) => ({
@@ -469,6 +494,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     isDisabled = false,
     isFullWidth = false,
     isLoading = false,
+    loadingType = 'indefinite',
+    loadingTimer,
+    onLoadingComplete,
     onClick,
     onBlur,
     onKeyDown,
@@ -494,11 +522,22 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
   const isChildrenComponent = React.isValidElement(children);
+  const buttonVariant = buttonGroupProps.variant ?? variant;
+  const buttonColor = buttonGroupProps.color ?? color;
+  const buttonSize = buttonGroupProps.size ?? size;
+  const buttonFullWidth = buttonGroupProps.isFullWidth ?? isFullWidth;
+  const isDefiniteLoadingConfigured =
+    loadingType === 'definite' && typeof loadingTimer === 'number' && loadingTimer > 0;
+  const isIndefiniteLoading = isLoading && loadingType === 'indefinite';
+  const [hasDefiniteLoadingCompleted, setHasDefiniteLoadingCompleted] = React.useState(false);
+  const onLoadingCompleteRef = React.useRef(onLoadingComplete);
+  const isDefiniteLoading = isDefiniteLoadingConfigured && !hasDefiniteLoadingCompleted;
+  const isAnyLoading = isIndefiniteLoading || isDefiniteLoading;
 
   // Button cannot be disabled when its rendered as Link
   // button should be allowed to be disabled in any case...
   // either through button group or we should allow to disable an individual button
-  const disabled = buttonGroupProps.isDisabled || isLoading || (isDisabled && !isLink);
+  const disabled = buttonGroupProps.isDisabled || isAnyLoading || (isDisabled && !isLink);
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -509,13 +548,31 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     }
   }
 
-  const prevLoading = usePrevious(isLoading);
+  const prevLoading = usePrevious(isAnyLoading);
 
   React.useEffect(() => {
-    if (isLoading) announce('Started loading');
+    if (isAnyLoading) announce('Started loading');
 
-    if (!isLoading && prevLoading) announce('Stopped loading');
-  }, [isLoading, prevLoading]);
+    if (!isAnyLoading && prevLoading) announce('Stopped loading');
+  }, [isAnyLoading, prevLoading]);
+
+  React.useEffect(() => {
+    onLoadingCompleteRef.current = onLoadingComplete;
+  }, [onLoadingComplete]);
+
+  React.useEffect(() => {
+    if (!isDefiniteLoadingConfigured || typeof loadingTimer !== 'number') {
+      setHasDefiniteLoadingCompleted(false);
+      return undefined;
+    }
+
+    setHasDefiniteLoadingCompleted(false);
+    const timerId = setTimeout(() => {
+      setHasDefiniteLoadingCompleted(true);
+      onLoadingCompleteRef.current?.();
+    }, loadingTimer);
+    return () => clearTimeout(timerId);
+  }, [isDefiniteLoadingConfigured, loadingTimer]);
 
   // Keep ButtonGroup press index in sync so border-collapse / z-index can
   // reveal this button's highlighted right edge while pressed (RN only).
@@ -572,11 +629,29 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     buttonTypographyTokens: buttonTypography,
     childrenString,
     isDisabled: disabled,
-    size: buttonGroupProps.size ?? size,
-    variant: buttonGroupProps.variant ?? variant,
+    isDefiniteLoading,
+    size: buttonSize,
+    variant: buttonVariant,
     theme,
-    color: buttonGroupProps.color ?? color,
+    color: buttonColor,
     hasIcon: Boolean(Icon),
+  });
+
+  const isDefinitePrimaryLoading = isDefiniteLoading && buttonVariant === 'primary';
+  const progressRestColor = isDefiniteLoading
+    ? resolveBackgroundValue({
+        theme,
+        value: getBackgroundColorToken({
+          variant: buttonVariant,
+          color: buttonColor,
+          state: 'disabled',
+        }),
+      })
+    : '';
+  const dotLoaderColor = getButtonDotLoaderColor({
+    theme,
+    variant: buttonVariant,
+    color: buttonColor,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
@@ -598,6 +673,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // Pressable itself is square, while borderRadii rounds only the outer corners
   // via per-corner style overrides (and feeds the SVG border overlay).
   const buttonBorderRadiusValue = isInsideRNButtonGroup ? makeBorderSize(0) : borderRadius;
+  const numericButtonBorderRadius = Number(String(buttonBorderRadiusValue).replace('px', '')) || 0;
 
   // The group container clips with `overflow: hidden` + `borderRadius`. Since the
   // buttons are square (radius 0), the native border overlay (drawn as a square
@@ -605,7 +681,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // only the outer corners of the first/last buttons (both the background and the
   // border overlay) so the ring follows the rounded corner instead of being cut.
   const groupCornerRadius = isInsideRNButtonGroup
-    ? theme.border.radius[buttonBorderRadius[buttonGroupProps.size ?? size]]
+    ? theme.border.radius[buttonBorderRadius[buttonSize]]
     : 0;
   const isFirstInGroup = Boolean(buttonGroupProps.isFirstInButtonGroup);
   const isLastInGroup = Boolean(buttonGroupProps.isLastInButtonGroup);
@@ -635,8 +711,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // Web ButtonGroup sets `flex: 1` on children when isFullWidth. On native,
   // isFullWidth alone applies `width: 100%`, which overflows in a row — use
   // flex instead so siblings share space equally.
-  const isInsideFullWidthButtonGroup =
-    isInsideRNButtonGroup && Boolean(buttonGroupProps.isFullWidth ?? isFullWidth);
+  const isInsideFullWidthButtonGroup = isInsideRNButtonGroup && Boolean(buttonFullWidth);
 
   const handlePointerPressedIn = React.useCallback(() => {
     if (disabled) return;
@@ -682,12 +757,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         ...makeAccessible({
           ...accessibilityProps,
           role: accessibilityProps?.role ?? defaultRole,
+          disabled: !isLink && disabled ? true : undefined,
+          busy: isAnyLoading || undefined,
         }),
       }}
-      variant={buttonGroupProps.variant ?? variant}
-      color={buttonGroupProps.color ?? color}
-      size={buttonGroupProps.size ?? size}
-      isLoading={isLoading}
+      variant={buttonVariant}
+      color={buttonColor}
+      size={buttonSize}
+      isLoading={isAnyLoading}
       disabled={disabled}
       minHeight={minHeight}
       buttonPaddingTop={buttonPaddingTop}
@@ -701,7 +778,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       focusRingColor={focusRingColor}
       hoverBoxShadow={hoverBoxShadow}
       hoverBackgroundColor={hoverBackgroundColor}
-      isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
+      isFullWidth={buttonFullWidth}
       onClick={onClick}
       onBlur={onBlur}
       onFocus={onFocus}
@@ -734,8 +811,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       height={height}
       width={width}
       isPressed={isPressed}
+      {...(isDefiniteLoading ? { isDefiniteLoading } : {})}
       hoverIconColor={
-        isDisabled
+        disabled && !isDefiniteLoading
           ? getIn(theme.colors, iconColor as DotNotationToken<Theme['colors']>)
           : hoverIconColor
       }
@@ -759,12 +837,40 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
     >
+      {isDefiniteLoading ? (
+        <ButtonProgressLoader
+          duration={loadingTimer ?? 0}
+          restColor={progressRestColor}
+          borderRadius={numericButtonBorderRadius}
+          {...(!isReactNative()
+            ? {
+                frameBoxShadow: isDefinitePrimaryLoading ? defaultBoxShadow : undefined,
+              }
+            : {})}
+          {...(isReactNative()
+            ? {
+                borderRadii: buttonBorderRadii,
+                shadowHighlightColor: isDefinitePrimaryLoading
+                  ? effectiveShadowHighlightColor
+                  : undefined,
+                shadowHighlightHeight: isDefinitePrimaryLoading ? shadowHighlightHeight : undefined,
+                shadowBottomColor: isDefinitePrimaryLoading ? shadowBottomColor : undefined,
+                shadowBottomHeight: isDefinitePrimaryLoading ? shadowBottomHeight : undefined,
+                shadowBorderColor: isDefinitePrimaryLoading ? shadowBorderColor : undefined,
+                shadowRingWidth: isDefinitePrimaryLoading ? shadowRingWidth : undefined,
+                showGradient: isDefinitePrimaryLoading ? showShadowGradient : undefined,
+                isInsetShadowSidesFlattened:
+                  isDefinitePrimaryLoading && isNonFirstInButtonGroup ? true : undefined,
+              }
+            : {})}
+        />
+      ) : null}
       <AnimatedButtonContent
         motionDuration={motionDuration}
         motionEasing={motionEasing}
         isPressed={isPressed}
       >
-        {isLoading ? (
+        {isIndefiniteLoading ? (
           <BaseBox
             display="flex"
             justifyContent="center"
@@ -776,16 +882,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             right="0px"
             zIndex={1}
           >
-            <BaseSpinner
-              accessibilityLabel="Loading"
-              size={spinnerSize}
-              color={
-                color && color !== 'primary' && color !== 'transparent' && color in spinnerColor
-                  ? spinnerColor[color as keyof typeof spinnerColor][
-                      variant as 'primary' | 'secondary'
-                    ]
-                  : spinnerColor.base[variant]
-              }
+            <ButtonDotLoader
+              size={spinnerSize === 'large' ? 20 : 16}
+              color={dotLoaderColor}
+              {...makeAccessible({ label: 'Loading', role: 'progressbar' })}
             />
           </BaseBox>
         ) : null}
@@ -795,7 +895,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           alignItems="center"
           justifyContent="center"
           flex={1}
-          isHidden={isLoading}
+          isHidden={isIndefiniteLoading}
           zIndex={1}
         >
           {Icon && iconPosition == 'left' ? (
