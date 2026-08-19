@@ -293,10 +293,15 @@ function CityPicker() {
 import React from 'react';
 import { TreeView, TreeViewItem, TreeViewLoadMore } from '@razorpay/blade/components';
 
+// Stubbed data fetchers - replace with your real API calls
+const fetchCities = (): Promise<string[]> => Promise.resolve(['Bengaluru', 'Mysuru']);
+const fetchMoreCities = (): Promise<string[]> => Promise.resolve(['Hubli', 'Mangaluru']);
+
 function AsyncTree() {
   const [cities, setCities] = React.useState<string[]>([]);
   const [isLoadingChildren, setIsLoadingChildren] = React.useState(false);
   const [isLoadingMore, setIsLoadingMore] = React.useState(false);
+  const [hasMore, setHasMore] = React.useState(true);
 
   // Simulated API calls — replace with your real fetch logic
   const fetchCities = async (): Promise<string[]> => {
@@ -326,16 +331,19 @@ function AsyncTree() {
         {cities.map((city) => (
           <TreeViewItem key={city} title={city} value={city.toLowerCase()} />
         ))}
-        <TreeViewLoadMore
-          isLoading={isLoadingMore}
-          onClick={() => {
-            setIsLoadingMore(true);
-            fetchMoreCities().then((moreCities) => {
-              setCities((previous) => [...previous, ...moreCities]);
-              setIsLoadingMore(false);
-            });
-          }}
-        />
+        {hasMore && (
+          <TreeViewLoadMore
+            isLoading={isLoadingMore}
+            onClick={() => {
+              setIsLoadingMore(true);
+              fetchMoreCities().then((moreCities) => {
+                setCities((previous) => [...previous, ...moreCities]);
+                setIsLoadingMore(false);
+                setHasMore(false);
+              });
+            }}
+          />
+        )}
       </TreeViewItem>
       <TreeViewItem title="Goa" value="goa" />
     </TreeView>
