@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade-svelte",
-  "version": "0.11.7",
+  "version": "0.11.8",
   "description": "Blade Design System for Svelte",
   "license": "MIT",
   "type": "module",
