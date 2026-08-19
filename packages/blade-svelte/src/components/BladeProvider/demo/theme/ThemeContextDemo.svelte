@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { useTheme } from './useTheme';
-  import Button from '../Button/Button.svelte';
-  import Text from '../Typography/Text/Text.svelte';
-  import Heading from '../Typography/Heading/Heading.svelte';
-  import Badge from '../Badge/Badge.svelte';
-  import Code from '../Typography/Code/Code.svelte';
-  import Card from '../Card/Card.svelte';
-  import CardBody from '../Card/CardBody.svelte';
+  import { useTheme } from '../../useTheme';
+  import Button from '../../../Button/Button.svelte';
+  import Text from '../../../Typography/Text/Text.svelte';
+  import Heading from '../../../Typography/Heading/Heading.svelte';
+  import Badge from '../../../Badge/Badge.svelte';
+  import Code from '../../../Typography/Code/Code.svelte';
+  import Card from '../../../Card/Card.svelte';
+  import CardBody from '../../../Card/CardBody.svelte';
 
   const ctx = $derived(useTheme());
 

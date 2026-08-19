@@ -17,6 +17,10 @@
   position: relative;
   border-radius: var(--border-radius-medium);
   border: none;
+  /* Solid fill under gradient bands — without this, transparent header buttons
+     show the page background through the middle of the card shell. Matches React
+     AccordionSurface backgroundColor="surface.background.gray.intense". */
+  background-color: var(--surface-background-gray-intense);
   background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 1) 100%),
     linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 97%, 1) 100%);
   background-position: center top, center calc(100% - 2px);

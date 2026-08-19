@@ -19,7 +19,7 @@
   padding-bottom: var(--spacing-3);
   padding-left: var(--spacing-5);
   padding-right: var(--spacing-5);
-  z-index: 1000;
+  z-index: 100;
 }
 
 /* Desktop horizontal padding bumps to spacing.6 (Figma: 24px) */
@@ -50,9 +50,9 @@
   background-color: var(--transparent);
 }
 
-/* --- Variant: subtle (adaptive gray surface) --- */
+/* --- Variant: subtle (transparent surface, adaptive gray foreground) --- */
 .appBarSubtle {
-  background-color: var(--surface-background-gray-intense);
+  background-color: var(--transparent);
 }
 
 /* --- AppBar leading row (back button + AppBarLeading + AppBarActions) --- */

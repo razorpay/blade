@@ -264,7 +264,7 @@
   </div>
 </Story>
 
-<!-- Story 6: Subtle Variant — adaptive gray surface on a light background -->
+<!-- Story 6: Subtle Variant — gray foreground on consumer page background -->
 <Story name="Subtle Variant" asChild>
   <div style="background-color: var(--surface-background-gray-subtle); min-height: 200px;">
     <AppBar variant="subtle" showBackButton onBackButtonClick={noop}>

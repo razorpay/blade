@@ -7,8 +7,8 @@
   import Code from '../Typography/Code/Code.svelte';
   import Badge from '../Badge/Badge.svelte';
   import Button from '../Button/Button.svelte';
-  import ThemeTokensPlayground from './ThemeTokensPlayground.svelte';
-  import ThemeExplorer from './ThemeExplorer.svelte';
+  import ThemeTokensPlayground from './demo/theme/ThemeTokensPlayground.svelte';
+  import ThemeExplorer from './demo/theme/ThemeExplorer.svelte';
 
   const popPayTheme = createTheme({
     brandColor: '#F56651',
