@@ -2,7 +2,7 @@
 '@razorpay/blade': minor
 ---
 
-fix(SpotlightPopoverTour, PopupArrow): match the spotlight to the highlighted component, remove the popover's arrow seam, and round the arrow tip
+fix(SpotlightPopoverTour): match the spotlight to the highlighted component, remove the popover's arrow seam, and even out the arrow-to-spotlight gap
 
 Three visual fixes. All three apply to light and dark — none introduces a colour-scheme branch.
 
@@ -25,7 +25,7 @@ Because `SpotlightPopoverTourStep` clones its child to attach a ref, consumers c
 
 > React Native is intentionally left alone here. Its `PopupArrow` draws an opaque backing path (`surface.background.gray.intense`) beneath the fill and adds a stroke, so swapping the fill token alone does not make the arrow match the card — it only moves the mismatch (measured on the dark theme: from ~2/255 darker than the card to ~3/255 lighter). Fixing native means addressing that backing path, and is left as a follow-up.
 
-**3. `PopupArrow` — the arrow tip now reads as rounded.**
-`tipRadius` was set from `border.radius['2xsmall']` (2). `tipRadius` is a *ratio* rather than a px value, scaled against the arrow's own dimensions, so on a 22×12 arrow that blunted the tip by only 1.5px — invisible at 1x, leaving the tip looking like a hard point against the popup's rounded corners. Raised to `border.radius.xsmall` (4), the largest value that still leaves straight edges; the shape degenerates into a lens by 8.
+**3. `SpotlightPopoverTour` — the gap between the arrow tip and the spotlight is now the same on every step.**
+Nothing sets that gap directly; it falls out of two numbers measured from two different rectangles. `TourPopover` offsets the popup by `spacing[4] + ARROW_HEIGHT` (24px) so that, after the arrow's own 12px protrusion, the tip lands `GAP` (12px) from the anchor's edge — while `TourMask` draws the halo 6px past the traced element. The intended result is a constant 6px.
 
-> **⚠️ Visual change (no API break):** `PopupArrow` is shared, so this affects the arrows on `Popover` and `Tooltip` as well as `SpotlightPopoverTour`.
+That held only when both measured the same element, and they did not. The mask resolves the step's ref through `resolveSpotlightTarget` to trace the painted component, but `TourPopover` set its position reference to the raw ref — so any overhang between the wrapper and the component inside it was added straight to the gap. A step whose wrapper is stretched by a flex row (`alignItems="stretch"`) sat visibly further from its spotlight than a step whose wrapper happened to match its card. `resolveSpotlightTarget` moves into the shared web utils and both now resolve through it, so the gap no longer depends on how a consumer wraps their markup.
