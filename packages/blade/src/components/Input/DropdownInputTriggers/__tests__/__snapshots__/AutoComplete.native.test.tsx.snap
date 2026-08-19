@@ -1219,11 +1219,19 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           />
                         </View>
                         <View
+                          alignItems="center"
                           data-blade-component="box"
+                          display="flex"
+                          justifyContent="center"
+                          minHeight="20px"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "justifyContent": "center",
                                 "marginLeft": "auto",
+                                "minHeight": 20,
                               },
                             ]
                           }
@@ -1524,11 +1532,19 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           />
                         </View>
                         <View
+                          alignItems="center"
                           data-blade-component="box"
+                          display="flex"
+                          justifyContent="center"
+                          minHeight="20px"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "justifyContent": "center",
                                 "marginLeft": "auto",
+                                "minHeight": 20,
                               },
                             ]
                           }
@@ -1829,11 +1845,19 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           />
                         </View>
                         <View
+                          alignItems="center"
                           data-blade-component="box"
+                          display="flex"
+                          justifyContent="center"
+                          minHeight="20px"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "justifyContent": "center",
                                 "marginLeft": "auto",
+                                "minHeight": 20,
                               },
                             ]
                           }
