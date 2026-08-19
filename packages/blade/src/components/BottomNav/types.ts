@@ -18,6 +18,12 @@ type BottomNavProps = {
    * @default 100
    */
   zIndex?: number;
+
+  /**
+   * Accessible label for the BottomNav navigation landmark.
+   * Passed through to `aria-label` on web and `accessibilityLabel` on native.
+   */
+  accessibilityLabel?: string;
 } & StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute;

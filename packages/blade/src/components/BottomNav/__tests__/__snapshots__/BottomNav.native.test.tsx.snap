@@ -14,7 +14,6 @@ exports[`<BottomNav /> (native) should render 1`] = `
     borderTopColor="hsla(206, 10%, 29%, 0.12)"
     borderTopWidth={1}
     data-blade-component="bottomnav"
-    paddingHorizontal={4}
     style={
       [
         {
@@ -22,9 +21,7 @@ exports[`<BottomNav /> (native) should render 1`] = `
           "borderTopColor": "hsla(206, 10%, 29%, 0.12)",
           "borderTopWidth": 1,
           "bottom": 0,
-          "flexDirection": "row",
           "left": 0,
-          "paddingHorizontal": 4,
           "position": "absolute",
           "width": "100%",
         },
@@ -36,6 +33,10 @@ exports[`<BottomNav /> (native) should render 1`] = `
           },
           "shadowOpacity": 1,
           "shadowRadius": 24,
+        },
+        {
+          "flexDirection": "row",
+          "paddingHorizontal": 4,
         },
         {
           "paddingBottom": 34,
@@ -486,7 +487,6 @@ exports[`<BottomNav /> (native) should render with active item 1`] = `
     borderTopColor="hsla(206, 10%, 29%, 0.12)"
     borderTopWidth={1}
     data-blade-component="bottomnav"
-    paddingHorizontal={4}
     style={
       [
         {
@@ -494,9 +494,7 @@ exports[`<BottomNav /> (native) should render with active item 1`] = `
           "borderTopColor": "hsla(206, 10%, 29%, 0.12)",
           "borderTopWidth": 1,
           "bottom": 0,
-          "flexDirection": "row",
           "left": 0,
-          "paddingHorizontal": 4,
           "position": "absolute",
           "width": "100%",
         },
@@ -508,6 +506,10 @@ exports[`<BottomNav /> (native) should render with active item 1`] = `
           },
           "shadowOpacity": 1,
           "shadowRadius": 24,
+        },
+        {
+          "flexDirection": "row",
+          "paddingHorizontal": 4,
         },
         {
           "paddingBottom": 34,
