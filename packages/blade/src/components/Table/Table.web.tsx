@@ -197,6 +197,7 @@ const _Table = <Item,>({
   backgroundColor = tableBackgroundColor,
   isGrouped = false,
   checkboxDisplay = 'always',
+  columnCount: columnCountProp,
   ...rest
 }: TableProps<Item>): React.ReactElement => {
   const { theme, colorScheme } = useTheme();
@@ -231,7 +232,21 @@ const _Table = <Item,>({
   });
 
   // Table Theme
-  const columnCount = getTableHeaderCellCount(children);
+  const autoColumnCount = getTableHeaderCellCount(children);
+  // Allow callers to pass an explicit columnCount when TableHeader is omitted.
+  // gridTemplateColumns already takes full precedence over the count-based formula.
+  const columnCount = columnCountProp ?? autoColumnCount;
+
+  if (__DEV__) {
+    if (autoColumnCount === 0 && !columnCountProp && !gridTemplateColumns) {
+      throwBladeError({
+        message:
+          'Table: TableHeader not found and neither `columnCount` nor `gridTemplateColumns` was provided. ' +
+          'Pass `columnCount={n}` so the CSS grid renders correctly when TableHeader is omitted.',
+        moduleName: 'Table',
+      });
+    }
+  }
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
     ? `
   &:nth-of-type(1) {
