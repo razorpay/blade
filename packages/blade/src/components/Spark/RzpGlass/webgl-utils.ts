@@ -69,12 +69,19 @@ function createProgram(
   }
 
   const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexSource);
+  if (!vertexShader) return null;
   const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentSource);
-
-  if (!vertexShader || !fragmentShader) return null;
+  if (!fragmentShader) {
+    gl.deleteShader(vertexShader);
+    return null;
+  }
 
   const program = gl.createProgram();
-  if (!program) return null;
+  if (!program) {
+    gl.deleteShader(vertexShader);
+    gl.deleteShader(fragmentShader);
+    return null;
+  }
 
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
@@ -120,6 +127,7 @@ function setupFullscreenQuad(
 ): FullscreenQuadBuffers | null {
   // Position attribute
   const positionLocation = gl.getAttribLocation(program, positionAttr);
+  if (positionLocation < 0) return null;
   const positionBuffer = gl.createBuffer();
   if (!positionBuffer) return null;
 
@@ -130,8 +138,15 @@ function setupFullscreenQuad(
 
   // UV attribute
   const uvLocation = gl.getAttribLocation(program, uvAttr);
+  if (uvLocation < 0) {
+    gl.deleteBuffer(positionBuffer);
+    return null;
+  }
   const uvBuffer = gl.createBuffer();
-  if (!uvBuffer) return null;
+  if (!uvBuffer) {
+    gl.deleteBuffer(positionBuffer);
+    return null;
+  }
 
   gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, FULLSCREEN_QUAD_UVS, gl.STATIC_DRAW);
@@ -175,6 +190,8 @@ class Texture {
   private wrapS: number;
   private wrapT: number;
   private flipY: boolean;
+  private allocatedWidth = 0;
+  private allocatedHeight = 0;
 
   constructor(gl: WebGLRenderingContext, params: TextureParams = {}) {
     this.gl = gl;
@@ -186,6 +203,7 @@ class Texture {
     this.flipY = params.flipY ?? true;
 
     this.texture = gl.createTexture();
+    if (!this.texture) throw new Error('RazorSense: Failed to create a WebGL texture');
     this.bind();
     this.setParameters();
   }
@@ -213,23 +231,57 @@ class Texture {
 
     this.bind();
 
-    if (this.flipY) {
-      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    }
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, this.flipY);
 
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+    const size = this.getSourceSize(source);
+    this.allocatedWidth = size.width;
+    this.allocatedHeight = size.height;
   }
 
   /**
    * Update texture from video frame (call each frame for video textures)
    */
   update(source: TextureSource): void {
-    this.image(source);
+    if (!source) return;
+
+    const { gl } = this;
+    const size = this.getSourceSize(source);
+    if (
+      size.width <= 0 ||
+      size.height <= 0 ||
+      size.width !== this.allocatedWidth ||
+      size.height !== this.allocatedHeight
+    ) {
+      this.image(source);
+      return;
+    }
+
+    this.bind();
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, this.flipY);
+    gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, source);
+  }
+
+  private getSourceSize(
+    source: Exclude<TextureSource, null>,
+  ): {
+    width: number;
+    height: number;
+  } {
+    if (source instanceof HTMLVideoElement) {
+      return { width: source.videoWidth, height: source.videoHeight };
+    }
+    if (source instanceof HTMLImageElement) {
+      return { width: source.naturalWidth, height: source.naturalHeight };
+    }
+    return { width: source.width, height: source.height };
   }
 
   destroy(): void {
     this.gl.deleteTexture(this.texture);
     this.texture = null;
+    this.allocatedWidth = 0;
+    this.allocatedHeight = 0;
   }
 }
 

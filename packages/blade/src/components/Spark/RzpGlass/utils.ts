@@ -4,14 +4,29 @@
 
 import type { RzpGlassPreset } from './presets';
 import { getPresets } from './presets';
+import type { RazorSenseMode, RazorSenseOperationalMode } from './modes';
+import { getRazorSenseOperationalModeVideoSources } from './modes';
+import { selectRazorSenseVideoSource } from './razorSenseAssets';
+import { preloadRazorSenseVideo } from './RazorSensePreloadBroker';
+import { getRazorSenseDirectVideoSource, getRazorSenseProgram } from './razorSensePrograms';
+import type { RazorSenseTarget } from './razorSenseMotionTypes';
+import type { RazorSensePreloadReadiness } from './RazorSensePreloadBroker';
 import type {
+  LegacyRzpGlassProps,
+  PreloadRazorSenseOptions,
   RzpGlassAssets,
   RzpGlassConfig,
   RzpGlassPresetDefinition,
-  RzpGlassProps,
 } from './types';
+import type { ColorSchemeNames } from '~tokens/theme';
 
-const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade@latest/assets/spark';
+const DEFAULT_CDN_PATH = `https://cdn.jsdelivr.net/npm/@razorpay/blade@${__BLADE_VERSION__}/assets/spark`;
+
+const AUTHORED_PRESET_MODES: Partial<Record<RzpGlassPreset, RazorSenseOperationalMode>> = {
+  default: 'neutral',
+  zoomed: 'thinking',
+  bottomWave: 'typing',
+};
 
 const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
   videoSrc: `${assetsPath}/spark-base-video.mp4`,
@@ -25,7 +40,7 @@ const getDefaultAssets = (assetsPath: string): Required<RzpGlassAssets> => ({
  * Extract config from props (exclude non-config props).
  * Strips undefined values so they don't clobber preset defaults.
  */
-function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
+function extractConfig(props: LegacyRzpGlassProps): Partial<RzpGlassConfig> {
   const {
     width: _width,
     height: _height,
@@ -34,9 +49,12 @@ function extractConfig(props: RzpGlassProps): Partial<RzpGlassConfig> {
     onLoad: _onLoad,
     onError: _onError,
     preset: _preset,
+    mode: _mode,
     assetsPath: _assetsPath,
+    videoSrc: _videoSrc,
     gradientMapSrc: _gradientMapSrc,
     gradientMap2Src: _gradientMap2Src,
+    centerGradientMapSrc: _centerGradientMapSrc,
     gradientMapCanvas: _gradientMapCanvas,
     imageSrc: _imageSrc,
     ...config
@@ -91,7 +109,7 @@ function getPresetAssets(
  * Merge preset config with user-provided config.
  * Preset values are used as base; any explicit prop overrides them.
  */
-function resolveConfig(props: RzpGlassProps, assetsPath: string): Partial<RzpGlassConfig> {
+function resolveConfig(props: LegacyRzpGlassProps, assetsPath: string): Partial<RzpGlassConfig> {
   return {
     ...getPresetConfig(props.preset, assetsPath),
     ...extractConfig(props),
@@ -130,6 +148,65 @@ function loadVideo(src: string): Promise<HTMLVideoElement> {
 }
 
 /**
+ * Paint the visible, object-fit: cover video frame into a canvas. RazorSense
+ * uses this as a decode bridge while switching between phase-matched light and
+ * dark composites, so the previous material never drops to a blank frame.
+ */
+function captureVideoCoverFrame(
+  video: HTMLVideoElement,
+  canvas: HTMLCanvasElement | null,
+  container: HTMLElement | null,
+  verticalAlignment: 'center' | 'bottom' = 'center',
+  opacity = 1,
+  clearCanvas = true,
+): void {
+  if (
+    !canvas ||
+    !container ||
+    video.readyState < video.HAVE_CURRENT_DATA ||
+    video.videoWidth === 0 ||
+    video.videoHeight === 0
+  ) {
+    return;
+  }
+
+  const renderScale = Math.min(Math.max(window.devicePixelRatio, 1), 2);
+  const width = Math.max(1, Math.round(container.clientWidth * renderScale));
+  const height = Math.max(1, Math.round(container.clientHeight * renderScale));
+  if (canvas.width !== width || canvas.height !== height) {
+    canvas.width = width;
+    canvas.height = height;
+  }
+
+  const context = canvas.getContext('2d');
+  if (!context) return;
+
+  const sourceAspect = video.videoWidth / video.videoHeight;
+  const targetAspect = width / height;
+  let sourceX = 0;
+  let sourceY = 0;
+  let sourceWidth = video.videoWidth;
+  let sourceHeight = video.videoHeight;
+
+  if (sourceAspect > targetAspect) {
+    sourceWidth = video.videoHeight * targetAspect;
+    sourceX = (video.videoWidth - sourceWidth) / 2;
+  } else {
+    sourceHeight = video.videoWidth / targetAspect;
+    sourceY =
+      verticalAlignment === 'bottom'
+        ? video.videoHeight - sourceHeight
+        : (video.videoHeight - sourceHeight) / 2;
+  }
+
+  if (clearCanvas) context.clearRect(0, 0, width, height);
+  context.save();
+  context.globalAlpha = opacity;
+  context.drawImage(video, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, width, height);
+  context.restore();
+}
+
+/**
  * Check if browser is Safari
  */
 function isSafari(): boolean {
@@ -162,6 +239,37 @@ function bestGuessBrowserZoom(): number {
   return ratio;
 }
 
+const preloadRazorSenseWithReadiness = async (
+  options: PreloadRazorSenseOptions,
+  readiness: RazorSensePreloadReadiness,
+): Promise<void> => {
+  const modes: readonly RazorSenseMode[] = Array.isArray(options.modes)
+    ? options.modes
+    : [options.modes as RazorSenseMode];
+  const colorSchemesOrScheme = options.colorSchemes ?? 'light';
+  const colorSchemes: readonly ColorSchemeNames[] = Array.isArray(colorSchemesOrScheme)
+    ? colorSchemesOrScheme
+    : [colorSchemesOrScheme as ColorSchemeNames];
+  const isMobileViewport =
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(max-width: 809.98px)').matches;
+  const viewport = isMobileViewport ? 'mobile' : 'desktop';
+  const assetsPath = options.assetsPath ?? DEFAULT_CDN_PATH;
+  const selected = await Promise.all(
+    colorSchemes.flatMap((colorScheme) =>
+      modes.map((mode) => selectRazorSenseVideoSource({ assetsPath, mode, colorScheme, viewport })),
+    ),
+  );
+
+  await Promise.all(selected.map(({ src }) => preloadRazorSenseVideo(src, readiness)));
+};
+
+/** Preload one or more semantic RazorSense modes for the active viewport. */
+async function preloadRazorSense(options: PreloadRazorSenseOptions): Promise<void> {
+  await preloadRazorSenseWithReadiness(options, 'loadeddata');
+}
+
 /**
  * Preload all assets for a given RazorSense preset.
  * This ensures videos and images are fully loaded before the component mounts,
@@ -184,6 +292,9 @@ async function preloadRazorSenseAssets(
   preset: RzpGlassPreset = 'default',
   assetsPath: string = DEFAULT_CDN_PATH,
 ): Promise<void> {
+  if (typeof document === 'undefined' || typeof Image === 'undefined') return;
+
+  const authoredMode = AUTHORED_PRESET_MODES[preset];
   const presets = getPresets(assetsPath);
   const presetDef = presets[preset] || {};
   const defaultAssets = getDefaultAssets(assetsPath);
@@ -196,10 +307,15 @@ async function preloadRazorSenseAssets(
 
   const loadPromises: Promise<unknown>[] = [];
 
+  if (authoredMode) {
+    const source = getRazorSenseOperationalModeVideoSources(assetsPath)[authoredMode];
+    loadPromises.push(preloadRazorSenseVideo(source, 'canplaythrough'));
+  }
+
   if (imageSrc) {
     loadPromises.push(loadImage(imageSrc));
   } else if (videoSrc) {
-    loadPromises.push(loadVideo(videoSrc));
+    loadPromises.push(preloadRazorSenseVideo(videoSrc, 'canplaythrough'));
   }
 
   loadPromises.push(
@@ -211,14 +327,70 @@ async function preloadRazorSenseAssets(
   await Promise.all(loadPromises);
 }
 
+/** Preload one or more semantic RazorSense modes for the active viewport. */
+async function preloadRazorSenseModeAssets(
+  modesOrModes: RazorSenseMode | readonly RazorSenseMode[] = 'neutral',
+  assetsPath: string = DEFAULT_CDN_PATH,
+  colorScheme: ColorSchemeNames = 'light',
+): Promise<void> {
+  await preloadRazorSenseWithReadiness(
+    {
+      modes: modesOrModes,
+      assetsPath,
+      colorSchemes: colorScheme,
+    },
+    'canplaythrough',
+  );
+}
+
+/** Prepares a declarative target without mounting its renderer. */
+async function preloadRazorSenseTarget(
+  target: RazorSenseTarget,
+  assetsPath: string = DEFAULT_CDN_PATH,
+  colorScheme: ColorSchemeNames = 'light',
+): Promise<void> {
+  if (typeof document === 'undefined' || typeof Image === 'undefined') return;
+  const program = getRazorSenseProgram(target);
+  const isMobile =
+    typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 809.98px)').matches;
+  const still = program.representativeStills[colorScheme][isMobile ? 'mobile' : 'desktop'];
+  const stillPromise = loadImage(
+    `${assetsPath.replace(/\/$/, '')}/${still.file.replace(/^\//, '')}`,
+  );
+
+  let rendererPromise: Promise<void>;
+  if (program.rendererFamily === 'legacy') {
+    rendererPromise = preloadRazorSenseAssets(program.legacyPreset, assetsPath);
+  } else if (
+    program.authoredAssetKey === 'audioWave' ||
+    program.authoredAssetKey === 'bottomWave'
+  ) {
+    const sourceFile = getRazorSenseDirectVideoSource(program, colorScheme);
+    rendererPromise = preloadRazorSenseVideo(
+      `${assetsPath.replace(/\/$/, '')}/${sourceFile}`,
+      'loadeddata',
+    );
+  } else if (program.visualMode) {
+    rendererPromise = preloadRazorSenseModeAssets(program.visualMode, assetsPath, colorScheme);
+  } else {
+    rendererPromise = Promise.resolve();
+  }
+
+  await Promise.all([stillPromise, rendererPromise]);
+}
+
 export {
   DEFAULT_CDN_PATH,
   getDefaultAssets,
+  captureVideoCoverFrame,
   loadImage,
   loadVideo,
   isSafari,
   bestGuessBrowserZoom,
+  preloadRazorSense,
   preloadRazorSenseAssets,
+  preloadRazorSenseModeAssets,
+  preloadRazorSenseTarget,
   getPresetAssets,
   resolveConfig,
 };

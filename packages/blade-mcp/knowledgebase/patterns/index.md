@@ -1,6 +1,7 @@
 # When to Use Patterns
 
 ## Confirmation
+
 A pattern for seeking user confirmation before proceeding with important or irreversible actions. Use this pattern when you need to get explicit user acknowledgment for critical actions like deletions, platform switches, or important changes, with support for different emotional states (neutral, negative, positive) to match the action's impact.
 
 ## CreationView
@@ -25,8 +26,12 @@ Settings is a pattern that provides a structured way to organize application con
 
 ## Dashboard Template
 
-Dashboard Template is a full dashboard template with SideNav, TopNav and main workspace area. It also includes a navigation structure with sections and items implemented via react-router-dom. 
+Dashboard Template is a full dashboard template with SideNav, TopNav and main workspace area. It also includes a navigation structure with sections and items implemented via react-router-dom.
 
 ## Spark Animation
 
-Spark Animation combines RazorSense (WebGL glass refraction background) and RazorSenseGradient (animated gradient icon mask) to create rich visual treatments for success states, loading screens, and branded moments. Use this pattern when you need animated WebGL backgrounds with coordinated icon overlays, asset preloading, and framer-motion entrance animations.
+Spark Animation is the compatibility pattern for pairing a specialized RazorSense branded preset with a separately animated RazorSenseGradient icon mask. Use it only when that two-layer authored composition is required. For semantic product states, managed transitions, interruption, or sequences, use RazorSense Journeys instead.
+
+## RazorSense Journeys
+
+RazorSense Journeys is the primary pattern for expressive AI, loading, login-to-dashboard, result, caution, and failure flows. Use one stable RazorSense host, declare semantic product state, and let Blade own renderer readiness, transitions, playback, interruption, accessibility, and lifecycle. Use typed sequences only for reusable linear choreography; keep business branching in application state.

@@ -2,16 +2,20 @@
 
 ## Description
 
-The Spark Animation pattern combines RazorSense (WebGL glass refraction) and RazorSenseGradient (animated gradient mask) to create rich, animated visual treatments for success states, loading screens, and branded moments. RazorSense provides the full-screen or contained background animation while RazorSenseGradient renders a fluid gradient clipped to an SVG icon/logo shape on top. Assets should always be preloaded before mounting to avoid visible loading artifacts.
+Spark Animation is a specialized compatibility pattern that combines a managed RazorSense branded preset with a separately animated RazorSenseGradient mask. Retain it when the authored two-layer composition itself is required. For semantic product state, AI chat, loading, success, caution, failure, interruption, or multi-step journeys, fetch and use the **RazorSense Journeys** pattern instead.
+
+RazorSense owns its renderer readiness and fallback. A consumer may speculatively preload one probable target, but must not hide the component behind an asset-ready flag, add an opacity wrapper, seek media, or coordinate cleanup. The surrounding icon animation remains independent and cannot be the only product status.
 
 For detailed props and individual usage, refer to the component docs:
-- **RazorSense** — WebGL background animation with presets (`default`, `zoomed`, `bottomWave`, `rippleWave`, `circleSlideUp`)
+
+- **RazorSense** — managed branded material (`rippleWave`, `bottomWave`, `success`, `compactLoader`, `audioWave`)
 - **RazorSenseGradient** — Animated gradient clipped to SVG mask shapes (children must use `fill="white"`)
 
 ## Components Used
+
 - RazorSense
 - RazorSenseGradient
-- preloadRazorSenseAssets
+- preloadRazorSenseTarget
 - Box
 - Button
 - Typography (Heading, Text)
@@ -25,31 +29,30 @@ For detailed props and individual usage, refer to the component docs:
 A full-screen ripple wave background with an animated RazorSenseGradient icon centered on top — useful for branded loading or transition states.
 
 ```tsx
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { m as motion } from 'framer-motion';
 import {
   RazorSense,
   RazorSenseGradient,
-  preloadRazorSenseAssets,
+  preloadRazorSenseTarget,
   Box,
 } from '@razorpay/blade/components';
 
 const RippleWaveScreen = () => {
-  const [assetsPreloaded, setAssetsPreloaded] = useState(false);
-
   useEffect(() => {
-    preloadRazorSenseAssets('rippleWave')
-      .then(() => setAssetsPreloaded(true))
-      .catch(console.error);
+    void preloadRazorSenseTarget({ preset: 'rippleWave' });
   }, []);
 
-  if (!assetsPreloaded) return <div>Loading...</div>;
-
   return (
-    <Box position="relative" width="100%" height="100vh" backgroundColor="surface.background.gray.intense">
+    <Box
+      position="relative"
+      width="100%"
+      height="100vh"
+      backgroundColor="surface.background.gray.intense"
+    >
       {/* Layer 1: Full-screen ripple wave background */}
       <Box position="absolute" top="0px" left="0px" right="0px" bottom="0px">
-        <RazorSense width="100%" height="100%" preset="rippleWave" />
+        <RazorSense width="100%" height="100%" preset="rippleWave" playback="loop" />
       </Box>
 
       {/* Layer 2: Centered animated gradient icon */}
@@ -89,8 +92,11 @@ const RippleWaveScreen = () => {
 export default RippleWaveScreen;
 ```
 
-This pattern showcases:
-- Preloading assets with `preloadRazorSenseAssets()` before mounting to avoid frame skipping
-- Layering RazorSense as a background with RazorSenseGradient as a foreground icon overlay
-- Different presets for different contexts: `circleSlideUp` for success, `rippleWave` for loading/transitions, `bottomWave` for decorative strips
-- SVG children in RazorSenseGradient with `fill="white"` and framer-motion animation
+This compatibility pattern permits:
+
+- speculative target preload without delaying mount;
+- managed RazorSense playback and fallback;
+- a separate RazorSenseGradient icon overlay;
+- SVG children with `fill="white"` and independent Framer Motion mask animation.
+
+It does not permit manual opacity transitions around RazorSense, `circleSlideUp` in new code, timer-driven product truth, or using the animated material/icon as the only loading or result signal.
