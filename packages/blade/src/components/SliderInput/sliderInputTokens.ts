@@ -34,8 +34,10 @@ export const SLIDER_INPUT_TOKENS = {
       fill: 'surface.icon.staticBlack.normal',
       disabled: 'surface.icon.staticBlack.disabled',
     },
-    // Same color/opacity for hover and drag, per the design spec.
-    halo: 'overlay.background.subtle',
+    // Same color/opacity for hover and drag, per the design spec (~8% light wash).
+    // Note: this is the interactive-state tint — overlay.background.* is the much
+    // darker modal-scrim scale and must not be used for the halo.
+    halo: 'interactive.background.gray.fadedHighlighted',
     tick: {
       onActiveTrack: 'feedback.background.neutral.subtle',
       onInactiveTrack: 'surface.icon.staticBlack.normal',
