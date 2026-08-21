@@ -17,9 +17,9 @@ export const SLIDER_INPUT_TOKENS = {
     width: 100,
   },
   input: {
-    // Width of the numeric TextInput slot — sized for a 3-digit value plus a short
-    // unit suffix (e.g. "100 px") rendered inside the field, per the Figma spec.
-    width: 96,
+    // Width of the numeric TextInput slot — 60px per the Figma spec (design-verified
+    // to accommodate up to "100" alongside a short unit suffix like px/%).
+    width: 60,
   },
   gap: {
     labelToSlider: 8,
@@ -34,10 +34,8 @@ export const SLIDER_INPUT_TOKENS = {
       fill: 'surface.icon.staticBlack.normal',
       disabled: 'surface.icon.staticBlack.disabled',
     },
-    halo: {
-      default: 'overlay.background.subtle',
-      dragging: 'overlay.background.moderate',
-    },
+    // Same color/opacity for hover and drag, per the design spec.
+    halo: 'overlay.background.subtle',
     tick: {
       onActiveTrack: 'feedback.background.neutral.subtle',
       onInactiveTrack: 'surface.icon.staticBlack.normal',

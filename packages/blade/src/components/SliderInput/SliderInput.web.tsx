@@ -503,10 +503,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
             {/* Track + numeric input row */}
             <BaseBox display="flex" alignItems="center" flex="1" gap="spacing.3">
-              {/* Track area */}
+              {/* Track hit-area — inset horizontally by half the (pressed) thumb so the
+                  thumb never overhangs the row edge: this keeps the 8px flex gap to the
+                  numeric input visually intact at min/max values. All positioning math is
+                  relative to the inner (inset) box, so drag geometry stays consistent. */}
               <BaseBox
-                ref={trackRef}
-                position="relative"
                 flex="1"
                 height={makeSpace(tokens.interactionArea)}
                 display="flex"
@@ -514,138 +515,147 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 cursor={isDisabled ? 'not-allowed' : 'pointer'}
                 onMouseDown={(handleMouseDown as unknown) as React.MouseEventHandler}
                 onTouchStart={(handleTouchStart as unknown) as React.TouchEventHandler}
+                paddingLeft={makeSpace(tokens.thumb.pressedSize[size] / 2)}
+                paddingRight={makeSpace(tokens.thumb.pressedSize[size] / 2)}
                 style={{ touchAction: 'none' }}
               >
-                {/* Track background */}
                 <BaseBox
-                  position="absolute"
-                  left="spacing.0"
-                  right="spacing.0"
-                  height={`${tokens.track.height}px`}
-                  borderRadius="max"
-                  backgroundColor={tokens.color.track.bg}
-                />
-
-                {/* Fill track */}
-                <div
-                  ref={fillRef}
-                  style={{
-                    position: 'absolute',
-                    left: 0,
-                    width: `${visualPctRef.current}%`,
-                    height: tokens.track.height,
-                    borderRadius: theme.border.radius.max,
-                    backgroundColor: trackFillColor,
-                    transition: isDragging
-                      ? 'none'
-                      : `width ${castWebType(
-                          makeMotionTime(theme.motion.duration.quick),
-                        )} ${castWebType(theme.motion.easing.standard)}`,
-                  }}
-                />
-
-                {/* Tick marks — decorative, auto-rendered for manageable step counts */}
-                {shouldShowTicks && (
-                  <div
-                    aria-hidden="true"
-                    style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
-                  >
-                    {tickPositions.map((tickPct) => (
-                      <div
-                        key={tickPct}
-                        style={{
-                          position: 'absolute',
-                          left: `${tickPct}%`,
-                          top: '50%',
-                          transform: 'translate(-50%, -50%)',
-                          width: tickSize,
-                          height: tickSize,
-                          borderRadius: theme.border.radius.round,
-                          backgroundColor:
-                            tickPct <= pct ? tickColorOnActiveTrack : tickColorOnInactiveTrack,
-                        }}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                {/* Thumb wrapper — halo + visual thumb nested inside */}
-                <StyledThumb
-                  ref={thumbRef}
-                  $isFocused={isThumbFocused}
-                  $isDragging={isDragging}
-                  $showFocusRing={isThumbFocused && !isPointerFocusRef.current}
-                  tabIndex={isDisabled ? -1 : 0}
-                  role="slider"
-                  aria-valuemin={min}
-                  aria-valuemax={max}
-                  aria-valuenow={currentValue}
-                  aria-valuetext={suffix ? `${currentValue} ${suffix}` : String(currentValue)}
-                  aria-labelledby={label ? labelId : undefined}
-                  aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
-                  aria-disabled={isDisabled}
-                  // The optional help text is associated with the slider (the primary control)
-                  // only. The embedded TextInput and the thumb represent the same value, so
-                  // describing both would make screen readers announce the hint twice — once
-                  // per tab stop.
-                  aria-describedby={describedById}
-                  onKeyDown={handleKeyDown}
-                  onKeyUp={handleKeyUp}
-                  onFocus={handleThumbFocus}
-                  onBlur={handleThumbBlur}
-                  onPointerDown={handleThumbPointerDown}
-                  onMouseEnter={handleThumbMouseEnter}
-                  onMouseLeave={handleThumbMouseLeave}
-                  style={{
-                    position: 'absolute',
-                    left: `${visualPctRef.current}%`,
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: tokens.interactionArea,
-                    height: tokens.interactionArea,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: 'none',
-                    background: 'transparent',
-                    cursor: isDisabled ? 'not-allowed' : isDragging ? 'grabbing' : 'grab',
-                    zIndex: 2,
-                    touchAction: 'none',
-                  }}
+                  ref={trackRef}
+                  position="relative"
+                  flex="1"
+                  height="100%"
+                  display="flex"
+                  alignItems="center"
                 >
-                  {/* Halo */}
+                  {/* Track background */}
+                  <BaseBox
+                    position="absolute"
+                    left="spacing.0"
+                    right="spacing.0"
+                    height={`${tokens.track.height}px`}
+                    borderRadius="max"
+                    backgroundColor={tokens.color.track.bg}
+                  />
+
+                  {/* Fill track */}
                   <div
+                    ref={fillRef}
                     style={{
                       position: 'absolute',
-                      width: showHalo ? haloSize : 0,
-                      height: showHalo ? haloSize : 0,
-                      borderRadius: theme.border.radius.round,
-                      backgroundColor: isDragging
-                        ? get(theme.colors, tokens.color.halo.dragging, '')
-                        : get(theme.colors, tokens.color.halo.default, ''),
-                      opacity: showHalo ? 1 : 0,
+                      left: 0,
+                      width: `${visualPctRef.current}%`,
+                      height: tokens.track.height,
+                      borderRadius: theme.border.radius.max,
+                      backgroundColor: trackFillColor,
                       transition: isDragging
                         ? 'none'
-                        : `opacity ${haloTransitionDuration} ${haloTransitionEasing}, width ${haloTransitionDuration} ${haloTransitionEasing}, height ${haloTransitionDuration} ${haloTransitionEasing}`,
-                      pointerEvents: 'none',
-                    }}
-                  />
-                  {/* Visual thumb */}
-                  <div
-                    style={{
-                      width: thumbSize,
-                      height: thumbSize,
-                      borderRadius: theme.border.radius.round,
-                      backgroundColor: thumbColor,
-                      transition: isDragging
-                        ? 'none'
-                        : `all ${castWebType(
-                            makeMotionTime(theme.motion.duration.xquick),
+                        : `width ${castWebType(
+                            makeMotionTime(theme.motion.duration.quick),
                           )} ${castWebType(theme.motion.easing.standard)}`,
-                      pointerEvents: 'none',
                     }}
                   />
-                </StyledThumb>
+
+                  {/* Tick marks — decorative, auto-rendered for manageable step counts */}
+                  {shouldShowTicks && (
+                    <div
+                      aria-hidden="true"
+                      style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+                    >
+                      {tickPositions.map((tickPct) => (
+                        <div
+                          key={tickPct}
+                          style={{
+                            position: 'absolute',
+                            left: `${tickPct}%`,
+                            top: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: tickSize,
+                            height: tickSize,
+                            borderRadius: theme.border.radius.round,
+                            backgroundColor:
+                              tickPct <= pct ? tickColorOnActiveTrack : tickColorOnInactiveTrack,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Thumb wrapper — halo + visual thumb nested inside */}
+                  <StyledThumb
+                    ref={thumbRef}
+                    $isFocused={isThumbFocused}
+                    $isDragging={isDragging}
+                    $showFocusRing={isThumbFocused && !isPointerFocusRef.current}
+                    tabIndex={isDisabled ? -1 : 0}
+                    role="slider"
+                    aria-valuemin={min}
+                    aria-valuemax={max}
+                    aria-valuenow={currentValue}
+                    aria-valuetext={suffix ? `${currentValue} ${suffix}` : String(currentValue)}
+                    aria-labelledby={label ? labelId : undefined}
+                    aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
+                    aria-disabled={isDisabled}
+                    // The optional help text is associated with the slider (the primary control)
+                    // only. The embedded TextInput and the thumb represent the same value, so
+                    // describing both would make screen readers announce the hint twice — once
+                    // per tab stop.
+                    aria-describedby={describedById}
+                    onKeyDown={handleKeyDown}
+                    onKeyUp={handleKeyUp}
+                    onFocus={handleThumbFocus}
+                    onBlur={handleThumbBlur}
+                    onPointerDown={handleThumbPointerDown}
+                    onMouseEnter={handleThumbMouseEnter}
+                    onMouseLeave={handleThumbMouseLeave}
+                    style={{
+                      position: 'absolute',
+                      left: `${visualPctRef.current}%`,
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: tokens.interactionArea,
+                      height: tokens.interactionArea,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      border: 'none',
+                      background: 'transparent',
+                      cursor: isDisabled ? 'not-allowed' : isDragging ? 'grabbing' : 'grab',
+                      zIndex: 2,
+                      touchAction: 'none',
+                    }}
+                  >
+                    {/* Halo */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        width: showHalo ? haloSize : 0,
+                        height: showHalo ? haloSize : 0,
+                        borderRadius: theme.border.radius.round,
+                        backgroundColor: get(theme.colors, tokens.color.halo, ''),
+                        opacity: showHalo ? 1 : 0,
+                        transition: isDragging
+                          ? 'none'
+                          : `opacity ${haloTransitionDuration} ${haloTransitionEasing}, width ${haloTransitionDuration} ${haloTransitionEasing}, height ${haloTransitionDuration} ${haloTransitionEasing}`,
+                        pointerEvents: 'none',
+                      }}
+                    />
+                    {/* Visual thumb */}
+                    <div
+                      style={{
+                        width: thumbSize,
+                        height: thumbSize,
+                        borderRadius: theme.border.radius.round,
+                        backgroundColor: thumbColor,
+                        transition: isDragging
+                          ? 'none'
+                          : `all ${castWebType(
+                              makeMotionTime(theme.motion.duration.xquick),
+                            )} ${castWebType(theme.motion.easing.standard)}`,
+                        pointerEvents: 'none',
+                      }}
+                    />
+                  </StyledThumb>
+                </BaseBox>
               </BaseBox>
 
               {/* Numeric input — composed from Blade's TextInput so border, focus, disabled,
@@ -665,7 +675,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   name={name}
                   value={inputStringValue}
                   suffix={suffix}
-                  textAlign="right"
                   isDisabled={isDisabled}
                   isRequired={_isRequired}
                   onChange={handleInputChange}
