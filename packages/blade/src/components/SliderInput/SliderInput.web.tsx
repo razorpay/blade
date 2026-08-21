@@ -100,8 +100,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const dragValueRef = useRef(0);
     const rafRef = useRef(0);
     const visualPctRef = useRef(max === min ? 0 : ((currentValue - min) / (max - min)) * 100);
-    const targetPctRef = useRef(visualPctRef.current);
-    const lerpRafRef = useRef(0);
     const { helpTextId } = useFormId('slider-input');
     const idBase = useId('slider-input');
     const labelId = `${idBase}-label`;
@@ -135,45 +133,29 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       [min, max],
     );
 
+    // Both the thumb (left) and the fill (width) are positioned here, in the same
+    // frame, and both carry the SAME CSS transition (see JSX) — one shared animation
+    // is what keeps them moving in lockstep for programmatic jumps (Enter/keyboard/
+    // track-click). During drag the transition is disabled (setDragTransitions), so
+    // both track the pointer 1:1. Do NOT animate these separately (an earlier JS
+    // lerp on top of the fill's CSS transition made them move at different paces).
     const applyPosition = useCallback((p: number) => {
+      visualPctRef.current = p;
       if (thumbRef.current) thumbRef.current.style.left = `${p}%`;
       if (fillRef.current) fillRef.current.style.width = `${p}%`;
     }, []);
 
-    const animateToTarget = useCallback(() => {
-      cancelAnimationFrame(lerpRafRef.current);
-      const tick = (): void => {
-        const diff = targetPctRef.current - visualPctRef.current;
-        if (Math.abs(diff) < 0.1) {
-          visualPctRef.current = targetPctRef.current;
-          applyPosition(visualPctRef.current);
-          return;
-        }
-        visualPctRef.current += diff * 0.3;
-        applyPosition(visualPctRef.current);
-        lerpRafRef.current = requestAnimationFrame(tick);
-      };
-      lerpRafRef.current = requestAnimationFrame(tick);
-    }, [applyPosition]);
-
     const positionDomElements = useCallback(
       (val: number) => {
-        const p = getRatio(val) * 100;
-        targetPctRef.current = p;
-        if (step > 1 && !isDraggingRef.current) {
-          animateToTarget();
-        } else {
-          visualPctRef.current = p;
-          applyPosition(p);
-        }
+        applyPosition(getRatio(val) * 100);
       },
-      [getRatio, step, applyPosition, animateToTarget],
+      [getRatio, applyPosition],
     );
 
     // Position the thumb/fill imperatively via refs rather than through the JSX `style`
     // attribute (see visualPctRef usage below), so a React re-render triggered by
-    // unrelated state (e.g. hover) can't stomp over an in-flight LERP animation with a
-    // stale target percentage.
+    // unrelated state (e.g. hover) can't stomp over an in-flight move with a stale
+    // percentage.
     const isFirstPositionRef = useRef(true);
 
     useEffect(() => {
@@ -211,13 +193,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       const onEnd = (clientX: number): void => {
         detachDragListenersRef.current();
         cancelAnimationFrame(rafRef.current);
-        cancelAnimationFrame(lerpRafRef.current);
         setDragTransitions(false);
         const val = clamp(snap(getValueFromPosition(clientX)));
-        const p = getRatio(val) * 100;
-        visualPctRef.current = p;
-        targetPctRef.current = p;
-        applyPosition(p);
+        applyPosition(getRatio(val) * 100);
         isDraggingRef.current = false;
         setIsDragging(false);
         updateValue(val);
@@ -271,7 +249,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     useEffect(() => {
       return () => {
         detachDragListenersRef.current();
-        cancelAnimationFrame(lerpRafRef.current);
       };
     }, []);
 
@@ -458,6 +435,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const showHalo = !isDisabled && (isThumbHovered || isDragging);
     const thumbSize = isDragging ? tokens.thumb.pressedSize[size] : tokens.thumb.size[size];
     const haloSize = thumbSize * tokens.thumb.haloMultiplier;
+    // One shared movement animation for programmatic jumps (Enter/keyboard/track-click):
+    // the thumb's `left` and the fill's `width` use the identical duration + easing so
+    // both move in lockstep. During drag, transitions are disabled for 1:1 tracking.
+    const moveTransitionDuration = castWebType(makeMotionTime(theme.motion.duration.quick));
+    const moveTransitionEasing = castWebType(theme.motion.easing.standard);
     const haloTransitionDuration = castWebType(makeMotionTime(theme.motion.duration.xquick));
     const haloTransitionEasing = castWebType(
       showHalo ? theme.motion.easing.entrance : theme.motion.easing.exit,
@@ -571,9 +553,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                       backgroundColor: trackFillColor,
                       transition: isDragging
                         ? 'none'
-                        : `width ${castWebType(
-                            makeMotionTime(theme.motion.duration.quick),
-                          )} ${castWebType(theme.motion.easing.standard)}`,
+                        : `width ${moveTransitionDuration} ${moveTransitionEasing}`,
                     }}
                   />
 
@@ -644,6 +624,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                       cursor: isDisabled ? 'not-allowed' : isDragging ? 'grabbing' : 'grab',
                       zIndex: 2,
                       touchAction: 'none',
+                      // Must be the exact same duration/easing as the fill's width
+                      // transition — see moveTransitionDuration above.
+                      transition: isDragging
+                        ? 'none'
+                        : `left ${moveTransitionDuration} ${moveTransitionEasing}`,
                     }}
                   >
                     {/* Halo */}
