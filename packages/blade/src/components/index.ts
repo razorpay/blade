@@ -33,6 +33,7 @@ export * from './Elevate';
 export * from './EmptyState';
 export * from './Fade';
 export * from './FileUpload';
+export * from './FloatingActionButton';
 export * from './Icons';
 export * from './InfoGroup';
 export * from './Indicator';
