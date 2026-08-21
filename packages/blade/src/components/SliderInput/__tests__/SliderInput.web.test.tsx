@@ -90,6 +90,19 @@ describe('<SliderInput />', () => {
     expect(onChange).toHaveBeenCalledWith({ value: 51 });
   });
 
+  it('should clamp an unset initial value up to min (not start at 0)', () => {
+    const { getByRole } = renderWithTheme(<SliderInput label="Test" min={10} max={20} />);
+    expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '10');
+    expect(getByRole('spinbutton')).toHaveValue(10);
+  });
+
+  it('should clamp an out-of-range defaultValue into [min, max]', () => {
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={500} min={0} max={100} />,
+    );
+    expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '100');
+  });
+
   it('should work as uncontrolled component', () => {
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" defaultValue={25} min={0} max={100} step={1} />,

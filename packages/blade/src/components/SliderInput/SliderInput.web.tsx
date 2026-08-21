@@ -117,7 +117,16 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const trackRef = useRef<HTMLDivElement>(null);
     const thumbRef = useRef<HTMLDivElement>(null);
     const fillRef = useRef<HTMLDivElement>(null);
-    const currentValue = internalValue ?? defaultValue;
+    const effectiveStep = step > 0 ? step : 1;
+    const clamp = useCallback((v: number) => Math.min(max, Math.max(min, v)), [min, max]);
+    const snap = useCallback((v: number) => Math.round(v / effectiveStep) * effectiveStep, [
+      effectiveStep,
+    ]);
+    // Clamp/snap the resolved initial value into [min, max] before first paint. Without this,
+    // e.g. min={10} with no value/defaultValue leaves the initial value at 0 → the thumb/fill
+    // render off the left edge and the numeric input shows a below-min number. This mirrors the
+    // clamp+snap that updateValue applies on interaction, so the value is always in-range.
+    const currentValue = clamp(snap(internalValue ?? defaultValue));
     const currentValueRef = useRef(currentValue);
     currentValueRef.current = currentValue;
 
@@ -140,11 +149,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       max,
     ]);
 
-    const clamp = useCallback((v: number) => Math.min(max, Math.max(min, v)), [min, max]);
-    const effectiveStep = step > 0 ? step : 1;
-    const snap = useCallback((v: number) => Math.round(v / effectiveStep) * effectiveStep, [
-      effectiveStep,
-    ]);
     const pct = getRatio(currentValue) * 100;
 
     const updateValue = useCallback(
