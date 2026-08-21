@@ -105,7 +105,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const [internalValue, setInternalValue] = useControllableState({
       value,
       defaultValue,
-      onChange: (newValue) => onChange?.({ value: newValue }),
+      onChange: (newValue) => onChange?.({ name, value: newValue }),
     });
 
     const [isDragging, setIsDragging] = useState(false);
@@ -255,7 +255,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         isDraggingRef.current = false;
         setIsDragging(false);
         updateValue(val);
-        onChangeEnd?.({ value: val });
+        onChangeEnd?.({ name, value: val });
       };
       const handleMouseMove = (e: MouseEvent): void => onMove(e.clientX);
       const handleMouseUp = (e: MouseEvent): void => onEnd(e.clientX);
@@ -313,7 +313,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         const val = clamp(snap(getValueFromPosition(clientX)));
         dragValueRef.current = val;
         positionDomElements(val);
-        onChangeStart?.({ value: val });
+        onChangeStart?.({ name, value: val });
         updateValue(val);
         attachDragListeners();
       },
@@ -379,7 +379,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         e.preventDefault();
         if (!isKeyActiveRef.current) {
           isKeyActiveRef.current = true;
-          onChangeStart?.({ value: currentValue });
+          onChangeStart?.({ name, value: currentValue });
         }
         updateValue(newVal);
       },
@@ -400,7 +400,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         ].includes(e.key);
         if (!isSliderKey || !isKeyActiveRef.current) return;
         isKeyActiveRef.current = false;
-        onChangeEnd?.({ value: currentValueRef.current });
+        onChangeEnd?.({ name, value: currentValueRef.current });
       },
       [onChangeEnd],
     );
@@ -417,7 +417,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       // consumer that reacted to onChangeStart always gets a matching close for the gesture.
       if (isKeyActiveRef.current) {
         isKeyActiveRef.current = false;
-        onChangeEnd?.({ value: currentValueRef.current });
+        onChangeEnd?.({ name, value: currentValueRef.current });
       }
     }, [onChangeEnd]);
 
@@ -461,7 +461,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         // Typing + blur is also a way of finalizing a value, same as releasing the thumb
         // or letting go of an arrow key — consumers relying on onChangeEnd as "the value
         // is final now" should see it fire here too, not just for drag/keyboard.
-        onChangeEnd?.({ value: committed });
+        onChangeEnd?.({ name, value: committed });
       }
     }, [inputStringValue, updateValue, onBlur, onChangeEnd, name, clamp, snap]);
 
@@ -636,7 +636,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
                   aria-disabled={isDisabled}
                   aria-invalid={isInvalid}
-                  aria-describedby={describedById}
+                  // Help/error text is associated with the numeric input only (the committing
+                  // form control). The slider thumb and the input represent the same value, so
+                  // describing both would make screen readers announce the hint twice — once per
+                  // tab stop. The thumb still conveys its state via aria-valuetext.
                   onKeyDown={handleKeyDown}
                   onKeyUp={handleKeyUp}
                   onFocus={handleThumbFocus}

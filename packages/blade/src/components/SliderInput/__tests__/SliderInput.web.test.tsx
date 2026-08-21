@@ -80,14 +80,14 @@ describe('<SliderInput />', () => {
     expect(slider).toHaveAttribute('aria-valuetext', '12 px');
   });
 
-  it('should call onChange with value only (no name) — matches CounterInput', () => {
+  it('should call onChange with both name and value', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" value={50} name="mySlider" onChange={onChange} step={1} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
-    expect(onChange).toHaveBeenCalledWith({ value: 51 });
+    expect(onChange).toHaveBeenCalledWith({ name: 'mySlider', value: 51 });
   });
 
   it('should clamp an unset initial value up to min (not start at 0)', () => {

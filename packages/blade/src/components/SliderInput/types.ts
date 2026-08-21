@@ -36,16 +36,20 @@ type SliderInputBaseProps = Pick<
   helpText?: string;
   errorText?: string;
   successText?: string;
-  onChangeStart?: (args: { value: number }) => void;
-  onChangeEnd?: (args: { value: number }) => void;
+  onChangeStart?: (args: { name?: string; value: number }) => void;
+  onChangeEnd?: (args: { name?: string; value: number }) => void;
   /**
    * onChange fires on every value change, including continuously during drag.
    *
    * Note: Unlike most Blade inputs where `onChange` fires only on committed values,
    * this `onChange` fires in real-time as the slider moves. Use `onChangeEnd` for
    * performance-critical scenarios where you only need the final committed value.
+   *
+   * All value callbacks (`onChange`, `onChangeStart`, `onChangeEnd`, `onFocus`, `onBlur`)
+   * report `{ name, value }`. `value` is a `number` — an intentional deviation from the
+   * string-based `FormInputOnEvent` shape, since the slider models a numeric value.
    */
-  onChange?: (args: { value: number }) => void;
+  onChange?: (args: { name?: string; value: number }) => void;
 } & StyledPropsBlade;
 
 type SliderInputPropsWithLabel = {

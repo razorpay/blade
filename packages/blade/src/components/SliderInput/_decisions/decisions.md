@@ -232,8 +232,8 @@ type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLab
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
 | **Component name** | `SliderInput` | Communicates the compound nature (slider + input). A standalone `Slider` can be added later. |
-| **`onChange` signature** | `({ value }) => void` | Matches CounterInput — the closest analog numeric input component. |
-| **`onChangeStart` / `onChangeEnd`** | Same `({ value }) => void` shape | All three callbacks use identical arg shape for consistency. |
+| **Value callback signature** | `({ name, value }) => void` | All value callbacks (`onChange`, `onChangeStart`, `onChangeEnd`, `onFocus`, `onBlur`) report both `name` and `value` so they are consistent with each other and usable by form libraries keying off `name`. `value` is a `number` — an intentional deviation from the string-based `FormInputOnEvent`, since the slider models a numeric value. |
+| **Dual control (thumb + numeric input)** | Both focusable, intentional | The draggable thumb and the numeric input are two ways to set the same value (drag/keyboard for approximate, typing for exact) — analogous to a color picker's slider + hex field. To avoid a screen reader announcing the help/error twice (once per tab stop), the `aria-describedby` for help/error is associated with the numeric input only; the thumb conveys its state via `aria-valuetext`. |
 | **`size` values** | `'medium' \| 'large'` | Aligns with Blade's canonical size vocabulary. `medium` = 36px, `large` = 48px. `xsmall` is excluded because the slider thumb requires a 48px touch target (WCAG 2.5.5) regardless of visual size — `medium` is already the smallest practical size for this touch target constraint. `small` is omitted for the same reason it's absent from CounterInput (the closest analog): intentional parity, not an oversight. |
 | **`labelPosition` default** | `'top'` | Matches all other Blade input components. Consumers opt into `'left'` explicitly. |
 | **Standalone Slider** | Deferred to follow-up | Start with `SliderInput`; extract internal track/thumb as `Slider` later if needed. |
