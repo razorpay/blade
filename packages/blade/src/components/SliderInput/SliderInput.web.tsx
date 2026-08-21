@@ -86,6 +86,17 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const currentValueRef = useRef(currentValue);
     currentValueRef.current = currentValue;
 
+    // Draft state of the numeric input. While the input is focused, the user's draft wins;
+    // once it isn't (or a track/thumb gesture sets a value), it mirrors the committed value.
+    const [inputStringValue, setInputStringValue] = useState(String(currentValue));
+    const [isInputFocused, setIsInputFocused] = useState(false);
+
+    useEffect(() => {
+      if (!isInputFocused) {
+        setInputStringValue(String(currentValue));
+      }
+    }, [currentValue, isInputFocused]);
+
     const dragValueRef = useRef(0);
     const rafRef = useRef(0);
     const visualPctRef = useRef(max === min ? 0 : ((currentValue - min) / (max - min)) * 100);
@@ -210,6 +221,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         isDraggingRef.current = false;
         setIsDragging(false);
         updateValue(val);
+        // The numeric input may still be focused with a stale draft (mousedown on the
+        // track preventDefaults, so the input never blurs). Sync the draft to the gesture
+        // value so it can't later commit over what the user just picked on the track.
+        setInputStringValue(String(val));
         onChangeEnd?.({ name, value: val });
       };
       const handleMouseMove = (e: MouseEvent): void => onMove(e.clientX);
@@ -271,6 +286,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         positionDomElements(val);
         onChangeStart?.({ name, value: val });
         updateValue(val);
+        // See onEnd: keep a still-focused input's draft in sync with the gesture value.
+        setInputStringValue(String(val));
         attachDragListeners();
       },
       [
@@ -390,40 +407,45 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       setIsThumbHovered(false);
     }, []);
 
-    const [inputStringValue, setInputStringValue] = useState(String(currentValue));
-    const [isInputFocused, setIsInputFocused] = useState(false);
-
-    useEffect(() => {
-      if (!isInputFocused) {
-        setInputStringValue(String(currentValue));
-      }
-    }, [currentValue, isInputFocused]);
-
     const handleInputChange = useCallback(({ value: typed }: { name?: string; value?: string }) => {
       setInputStringValue(typed ?? '');
     }, []);
 
+    // Parse + clamp/snap the current draft and commit it. Returns the committed value.
+    // Shared by Enter (commit while staying focused) and blur (commit on leaving).
+    // An unparseable draft resets the field to the current value and commits nothing new.
+    const commitInputDraft = useCallback(() => {
+      const raw = parseFloat(inputStringValue);
+      const committed = isNaN(raw) ? currentValueRef.current : clamp(snap(raw));
+      if (!isNaN(raw)) {
+        updateValue(raw);
+      }
+      // Reflect the committed (clamped/snapped) value in the field immediately — e.g.
+      // typing 26 with max 24 and pressing Enter must show 24, not the raw 26.
+      setInputStringValue(String(committed));
+      return committed;
+    }, [inputStringValue, clamp, snap, updateValue]);
+
     const handleInputBlur = useCallback(() => {
       setIsInputFocused(false);
-      const raw = parseFloat(inputStringValue);
-      if (isNaN(raw)) {
-        setInputStringValue(String(currentValueRef.current));
-        onBlur?.({ name, value: currentValueRef.current });
-        // Even when nothing valid was typed, close the gesture opened by onChangeStart on
-        // focus, so start/end callbacks always come in pairs (value unchanged).
-        onChangeEnd?.({ name, value: currentValueRef.current });
-      } else {
-        // onBlur must report what was actually committed, not the raw typed value —
-        // updateValue clamps/snaps internally, so mirror that here for the callback.
-        const committed = clamp(snap(raw));
-        updateValue(raw);
-        onBlur?.({ name, value: committed });
-        // Typing + blur is also a way of finalizing a value, same as releasing the thumb
-        // or letting go of an arrow key — consumers relying on onChangeEnd as "the value
-        // is final now" should see it fire here too, not just for drag/keyboard.
+      // onBlur/onChangeEnd report what was actually committed (clamped/snapped), and the
+      // gesture opened by onChangeStart on focus is always closed — even when nothing
+      // valid was typed — so start/end callbacks come in pairs.
+      const committed = commitInputDraft();
+      onBlur?.({ name, value: committed });
+      onChangeEnd?.({ name, value: committed });
+    }, [commitInputDraft, onBlur, onChangeEnd, name]);
+
+    // Enter commits the draft (slider thumb snaps to it) while keeping focus in the
+    // field, matching the standard expectation for numeric steppers.
+    const handleInputKeyDown = useCallback(
+      ({ key }: { name?: string; key?: string }) => {
+        if (key !== 'Enter') return;
+        const committed = commitInputDraft();
         onChangeEnd?.({ name, value: committed });
-      }
-    }, [inputStringValue, updateValue, onBlur, onChangeEnd, name, clamp, snap]);
+      },
+      [commitInputDraft, onChangeEnd, name],
+    );
 
     const handleInputFocus = useCallback(() => {
       setIsInputFocused(true);
@@ -680,6 +702,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
                   onBlur={handleInputBlur}
+                  onKeyDown={handleInputKeyDown}
                 />
               </BaseBox>
             </BaseBox>

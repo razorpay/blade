@@ -225,6 +225,29 @@ describe('<SliderInput />', () => {
     expect(onChangeEnd).toHaveBeenCalledWith({ value: 18 });
   });
 
+  it('should commit the typed value on Enter and move the slider to it', () => {
+    const onChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={50} onChange={onChange} min={0} max={100} />,
+    );
+    const input = getByRole('textbox') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '75' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 75 });
+    expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '75');
+  });
+
+  it('should snap to max when a value above max is committed via Enter', () => {
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={12} min={0} max={24} />,
+    );
+    const input = getByRole('textbox') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '26' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+    expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '24');
+    expect(input).toHaveValue('24');
+  });
+
   it('should set the name attribute on the numeric input for native form submission', () => {
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" defaultValue={50} name="radius" min={0} max={100} />,
