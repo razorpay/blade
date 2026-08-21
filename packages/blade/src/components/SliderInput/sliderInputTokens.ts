@@ -17,8 +17,9 @@ export const SLIDER_INPUT_TOKENS = {
     width: 100,
   },
   input: {
-    width: 64,
-    height: { medium: 36, large: 48 },
+    // Width of the numeric TextInput slot — sized for a 3-digit value plus a short
+    // unit suffix (e.g. "100 px") rendered inside the field, per the Figma spec.
+    width: 96,
   },
   gap: {
     labelToSlider: 8,
@@ -41,12 +42,5 @@ export const SLIDER_INPUT_TOKENS = {
       onActiveTrack: 'feedback.background.neutral.subtle',
       onInactiveTrack: 'surface.icon.staticBlack.normal',
     },
-    label: {
-      text: 'surface.text.gray.muted',
-      disabled: 'surface.text.gray.disabled',
-    },
-    error: 'feedback.text.negative.intense',
-    help: 'surface.text.gray.muted',
-    focusRing: 'surface.border.primary.muted',
   },
 } as const;

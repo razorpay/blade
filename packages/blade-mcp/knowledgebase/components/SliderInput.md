@@ -11,7 +11,7 @@ SliderInput is a horizontal slider component coupled with a numeric input field 
 - Either `label` or `accessibilityLabel` must be provided — at least one is required for accessibility.
 - `step` must be a positive number; if omitted, defaults to `1`.
 - When `step` is provided and `(max - min) / step` is an integer ≤ 20, tick marks are auto-rendered on the track.
-- `validationState` of `'error'` requires `errorText` to display the error message; `'success'` requires `successText`.
+- There is no validation/error state by design: the value self-corrects into `[min, max]` (typing past max resets to max; the thumb stops at the bounds), so an invalid value cannot exist. This matches CounterInput.
 - The native (React Native) implementation is not yet available and will throw an error if used.
 - `suffix` only supports a trailing unit label (e.g. 'px', '%'); a leading prefix is not supported in v1.
 
@@ -34,13 +34,10 @@ type SliderInputBaseProps = Pick<
   suffix?: string;
   size?: 'medium' | 'large';
   necessityIndicator?: 'required' | 'optional' | 'none';
-  validationState?: 'none' | 'error' | 'success';
   helpText?: string;
-  errorText?: string;
-  successText?: string;
-  onChangeStart?: (args: { value: number }) => void;
-  onChangeEnd?: (args: { value: number }) => void;
-  onChange?: (args: { value: number }) => void;
+  onChangeStart?: (args: { name?: string; value: number }) => void;
+  onChangeEnd?: (args: { name?: string; value: number }) => void;
+  onChange?: (args: { name?: string; value: number }) => void;
 } & StyledPropsBlade;
 
 type SliderInputPropsWithLabel = {
@@ -61,7 +58,7 @@ export type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWith
 
 - Use `onChange` for real-time value tracking during drag; use `onChangeEnd` for performance-critical scenarios where you only need the final committed value.
 - Provide `helpText` to guide users on acceptable value ranges or units.
-- Use `validationState` with `errorText` to indicate when a value falls outside acceptable bounds.
+- Values cannot go out of bounds — typed values are clamped into `[min, max]` on blur, so no error state exists or is needed.
 - Prefer `labelPosition="top"` for most use cases; use `"left"` only when horizontal space is constrained and the label is short.
 - When using `suffix`, keep it short (e.g. 'px', '%', 'rem') to avoid layout overflow in the numeric input.
 - Do not use SliderInput for unbounded values — it requires `min` and `max` bounds.

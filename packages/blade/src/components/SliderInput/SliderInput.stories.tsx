@@ -16,17 +16,12 @@ export default {
     defaultValue: 12,
     size: 'medium',
     isDisabled: false,
-    validationState: 'none',
     labelPosition: 'top',
   },
   argTypes: {
     size: {
       control: { type: 'select' },
       options: ['medium', 'large'],
-    },
-    validationState: {
-      control: { type: 'select' },
-      options: ['none', 'error', 'success'],
     },
     labelPosition: {
       control: { type: 'select' },
@@ -88,8 +83,8 @@ export const Continuous: StoryFn<typeof SliderInput> = () => {
   );
 };
 
-export const ErrorState: StoryFn<typeof SliderInput> = () => {
-  const [fontSize, setFontSize] = useState(10);
+export const WithUnitSuffix: StoryFn<typeof SliderInput> = () => {
+  const [fontSize, setFontSize] = useState(16);
   return (
     <SliderInput
       label="Font Size"
@@ -98,9 +93,8 @@ export const ErrorState: StoryFn<typeof SliderInput> = () => {
       min={8}
       max={32}
       step={1}
-      validationState={fontSize < 12 ? 'error' : 'none'}
-      errorText="Below 12px does not meet accessibility standards"
-      helpText="Minimum 12px recommended"
+      suffix="px"
+      helpText="Minimum 12px recommended for accessibility"
     />
   );
 };

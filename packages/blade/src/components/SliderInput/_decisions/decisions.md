@@ -239,6 +239,8 @@ type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLab
 | **Standalone Slider** | Deferred to follow-up | Start with `SliderInput`; extract internal track/thumb as `Slider` later if needed. |
 | **React Native** | Web-only for v1 | RN requires `react-native-gesture-handler` for drag; scope separately. |
 | **Tick marks** | Auto-render when `(max - min) / step <= 20` | Avoids visual clutter. No `showTicks` prop needed — the heuristic covers all practical cases. |
+| **No validation/error state** | `validationState`/`errorText`/`successText` removed | The value self-corrects into `[min, max]` (typing past max resets to max; the thumb stops at the bounds), so an invalid value cannot exist. Matches CounterInput, Blade's closest bounded numeric input. Optional `helpText` is retained for guidance (e.g. "Recommended 20–40px"), rendered once below the whole component. |
+| **Numeric field composition** | Blade `TextInput` with trailing `suffix` | The numeric box is the stock Blade TextInput — border, focus, disabled, sizing, and the unit (px/%) all come from the design system rather than a bespoke input. The field intentionally exposes only the editable value + unit: the visible label, help text, and value semantics live on the slider, so nothing is announced twice by screen readers. The visible label is rendered as a span and names the slider via `aria-labelledby` (WAI-ARIA slider pattern); the TextInput carries its own `accessibilityLabel`. |
 | **Input width** | Fixed width, auto-sized to `max` value + suffix | Prevents layout shift. Truncates with ellipsis if value overflows. |
 
 ## Component Variants
@@ -419,7 +421,7 @@ Every interactive sub-element must have these states defined. This follows the [
 |----------|----------|---------|
 | Component height | 36px | 48px |
 | Input field height | 36px | 48px |
-| Track height | 4px | 4px |
+| Track height | 2px | 2px |
 | Track border radius | `borderRadius.max` (9999px) | `borderRadius.max` (9999px) |
 | Thumb diameter (default) | 16px | 20px |
 | Thumb diameter (pressed) | 20px | 24px |

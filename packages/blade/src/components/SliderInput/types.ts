@@ -31,11 +31,14 @@ type SliderInputBaseProps = Pick<
   /** @default 'medium' */
   size?: 'medium' | 'large';
   necessityIndicator?: 'required' | 'optional' | 'none';
-  /** @default 'none' */
-  validationState?: 'none' | 'error' | 'success';
+  /**
+   * Optional guidance text rendered once below the whole component (e.g. "Recommended 20–40px").
+   *
+   * @note SliderInput has no validation/error state by design: the value self-corrects into
+   * `[min, max]` (typing past max resets to max; the thumb stops at the bounds), so an invalid
+   * value cannot exist. This matches CounterInput, Blade's closest bounded numeric input.
+   */
   helpText?: string;
-  errorText?: string;
-  successText?: string;
   onChangeStart?: (args: { name?: string; value: number }) => void;
   onChangeEnd?: (args: { name?: string; value: number }) => void;
   /**

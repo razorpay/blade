@@ -49,24 +49,21 @@ describe('<SliderInput />', () => {
     expect(getByRole('slider')).toHaveAttribute('aria-disabled', 'true');
   });
 
-  it('should render error text when validationState is error', () => {
-    const { getByText } = renderWithTheme(
-      <SliderInput
-        label="Test"
-        value={50}
-        onChange={jest.fn()}
-        validationState="error"
-        errorText="Something went wrong"
-      />,
-    );
-    expect(getByText('Something went wrong')).toBeTruthy();
-  });
-
-  it('should render help text', () => {
-    const { getByText } = renderWithTheme(
+  it('should render help text exactly once (no duplicate hint from the inner TextInput)', () => {
+    const { getAllByText } = renderWithTheme(
       <SliderInput label="Test" value={50} onChange={jest.fn()} helpText="Some guidance" />,
     );
-    expect(getByText('Some guidance')).toBeTruthy();
+    expect(getAllByText('Some guidance')).toHaveLength(1);
+  });
+
+  it('should render the unit suffix inside the numeric input box', () => {
+    const { getByText, getByRole } = renderWithTheme(
+      <SliderInput label="Radius" value={12} onChange={jest.fn()} min={0} max={24} suffix="px" />,
+    );
+    const input = getByRole('textbox');
+    const suffixEl = getByText('px');
+    // The suffix must live inside the Blade TextInput's container, not floating outside it.
+    expect(input.closest('[data-blade-component="textinput"]')).toContainElement(suffixEl);
   });
 
   it('should set correct ARIA attributes', () => {
@@ -93,7 +90,7 @@ describe('<SliderInput />', () => {
   it('should clamp an unset initial value up to min (not start at 0)', () => {
     const { getByRole } = renderWithTheme(<SliderInput label="Test" min={10} max={20} />);
     expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '10');
-    expect(getByRole('spinbutton')).toHaveValue(10);
+    expect(getByRole('textbox')).toHaveValue('10');
   });
 
   it('should clamp an out-of-range defaultValue into [min, max]', () => {
@@ -199,7 +196,7 @@ describe('<SliderInput />', () => {
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" defaultValue={50} onChange={onChange} min={0} max={100} />,
     );
-    const input = getByRole('spinbutton') as HTMLInputElement;
+    const input = getByRole('textbox') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '75' } });
     expect(onChange).not.toHaveBeenCalled();
     fireEvent.blur(input);
@@ -211,7 +208,7 @@ describe('<SliderInput />', () => {
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" defaultValue={12} onBlur={onBlur} min={0} max={24} />,
     );
-    const input = getByRole('spinbutton') as HTMLInputElement;
+    const input = getByRole('textbox') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '1000' } });
     fireEvent.blur(input);
     expect(onBlur).toHaveBeenCalledWith({ name: undefined, value: 24 });
@@ -222,7 +219,7 @@ describe('<SliderInput />', () => {
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" defaultValue={12} onChangeEnd={onChangeEnd} min={0} max={24} />,
     );
-    const input = getByRole('spinbutton') as HTMLInputElement;
+    const input = getByRole('textbox') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '18' } });
     fireEvent.blur(input);
     expect(onChangeEnd).toHaveBeenCalledWith({ value: 18 });
@@ -232,6 +229,6 @@ describe('<SliderInput />', () => {
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" defaultValue={50} name="radius" min={0} max={100} />,
     );
-    expect(getByRole('spinbutton')).toHaveAttribute('name', 'radius');
+    expect(getByRole('textbox')).toHaveAttribute('name', 'radius');
   });
 });

@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import type { SliderInputProps } from './types';
 import { SLIDER_INPUT_TOKENS } from './sliderInputTokens';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -14,9 +14,9 @@ import { useFormId } from '~components/Form/useFormId';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
-import { makeBorderSize } from '~utils/makeBorderSize';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import get from '~utils/lodashButBetter/get';
+import { TextInput } from '~components/Input/TextInput';
 
 const tokens = SLIDER_INPUT_TOKENS;
 const noop = (): void => undefined;
@@ -28,47 +28,6 @@ const StyledThumb = styled.div<{
 }>`
   outline: none;
   ${({ theme, $showFocusRing }) => $showFocusRing && getFocusRingStyles({ theme })}
-`;
-
-const StyledNumericInput = styled.input<{
-  $size: 'medium' | 'large';
-  $validationState: 'none' | 'error' | 'success';
-}>`
-  appearance: textfield;
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    appearance: none;
-    margin: 0;
-  }
-  height: ${({ $size }) => tokens.input.height[$size]}px;
-  width: ${tokens.input.width}px;
-  padding: ${({ theme }) => `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[3])}`};
-  border: ${({ theme }) => `${makeBorderSize(theme.border.width.thin)} solid`};
-  border-color: ${({ theme, $validationState }) => {
-    if ($validationState === 'error')
-      return get(theme.colors, 'feedback.border.negative.intense', '');
-    if ($validationState === 'success')
-      return get(theme.colors, 'feedback.border.positive.intense', '');
-    return get(theme.colors, 'interactive.border.gray.default', '');
-  }};
-  border-radius: ${({ theme }) => theme.border.radius.medium}px;
-  font-size: ${({ theme, $size }) => theme.typography.fonts.size[$size === 'large' ? 100 : 75]}px;
-  text-align: right;
-  font-family: inherit;
-  background: transparent;
-  color: inherit;
-  outline: none;
-  cursor: inherit;
-  flex-shrink: 0;
-  ${({ theme }) => css`
-    &:focus {
-      border-color: ${get(theme.colors, 'interactive.border.primary.default', '')};
-    }
-    &:disabled {
-      cursor: not-allowed;
-      color: ${get(theme.colors, tokens.color.label.disabled, '')};
-    }
-  `}
 `;
 
 const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
@@ -88,10 +47,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       isDisabled = false,
       isRequired = false,
       necessityIndicator,
-      validationState = 'none',
       helpText,
-      errorText,
-      successText,
       onChange,
       onChangeStart,
       onChangeEnd,
@@ -135,10 +91,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const visualPctRef = useRef(max === min ? 0 : ((currentValue - min) / (max - min)) * 100);
     const targetPctRef = useRef(visualPctRef.current);
     const lerpRafRef = useRef(0);
-    const { helpTextId, errorTextId, successTextId } = useFormId('slider-input');
+    const { helpTextId } = useFormId('slider-input');
     const idBase = useId('slider-input');
     const labelId = `${idBase}-label`;
-    const inputId = `${idBase}-input`;
     const { theme } = useTheme();
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
@@ -295,6 +250,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       applyPosition,
       setDragTransitions,
       onChangeEnd,
+      name,
     ]);
 
     useEffect(() => {
@@ -326,6 +282,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         positionDomElements,
         setDragTransitions,
         attachDragListeners,
+        name,
       ],
     );
 
@@ -383,7 +340,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         }
         updateValue(newVal);
       },
-      [isDisabled, currentValue, effectiveStep, min, max, updateValue, onChangeStart],
+      [isDisabled, currentValue, effectiveStep, min, max, updateValue, onChangeStart, name],
     );
 
     const handleKeyUp = useCallback(
@@ -402,7 +359,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         isKeyActiveRef.current = false;
         onChangeEnd?.({ name, value: currentValueRef.current });
       },
-      [onChangeEnd],
+      [onChangeEnd, name],
     );
 
     const handleThumbFocus = useCallback(() => {
@@ -419,7 +376,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         isKeyActiveRef.current = false;
         onChangeEnd?.({ name, value: currentValueRef.current });
       }
-    }, [onChangeEnd]);
+    }, [onChangeEnd, name]);
 
     const handleThumbPointerDown = useCallback(() => {
       isPointerFocusRef.current = true;
@@ -442,8 +399,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       }
     }, [currentValue, isInputFocused]);
 
-    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-      setInputStringValue(e.target.value);
+    const handleInputChange = useCallback(({ value: typed }: { name?: string; value?: string }) => {
+      setInputStringValue(typed ?? '');
     }, []);
 
     const handleInputBlur = useCallback(() => {
@@ -452,6 +409,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       if (isNaN(raw)) {
         setInputStringValue(String(currentValueRef.current));
         onBlur?.({ name, value: currentValueRef.current });
+        // Even when nothing valid was typed, close the gesture opened by onChangeStart on
+        // focus, so start/end callbacks always come in pairs (value unchanged).
+        onChangeEnd?.({ name, value: currentValueRef.current });
       } else {
         // onBlur must report what was actually committed, not the raw typed value —
         // updateValue clamps/snaps internally, so mirror that here for the callback.
@@ -468,7 +428,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const handleInputFocus = useCallback(() => {
       setIsInputFocused(true);
       onFocus?.({ name, value: currentValueRef.current });
-    }, [onFocus, name]);
+      // Typing is a value-editing gesture like drag/keyboard: open it with onChangeStart on
+      // focus so the start → change → end contract holds for all three interaction modes.
+      onChangeStart?.({ name, value: currentValueRef.current });
+    }, [onFocus, onChangeStart, name]);
 
     const showHalo = !isDisabled && (isThumbHovered || isDragging);
     const thumbSize = isDragging ? tokens.thumb.pressedSize[size] : tokens.thumb.size[size];
@@ -506,24 +469,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       '',
     );
 
-    const suffixColor = isDisabled
-      ? get(theme.colors, tokens.color.label.disabled, '')
-      : get(theme.colors, tokens.color.label.text, '');
-
-    const willRenderHintText =
-      (validationState === 'error' && Boolean(errorText)) ||
-      (validationState === 'success' && Boolean(successText)) ||
-      Boolean(helpText);
-
-    const describedById =
-      validationState === 'error' && errorText
-        ? errorTextId
-        : validationState === 'success' && successText
-        ? successTextId
-        : helpText
-        ? helpTextId
-        : undefined;
-    const isInvalid = validationState === 'error';
+    const describedById = helpText ? helpTextId : undefined;
 
     return (
       <BaseBox
@@ -540,9 +486,12 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
             gap="spacing.3"
           >
             {label && (
+              // Rendered as a span (not a native <label htmlFor>): the visible label names the
+              // slider via aria-labelledby (the WAI-ARIA slider pattern), and the embedded
+              // TextInput owns its internal input id and carries its own accessibilityLabel —
+              // there is no reachable id for htmlFor to point at.
               <FormLabel
-                as="label"
-                htmlFor={inputId}
+                as="span"
                 position={labelPosition}
                 necessityIndicator={necessityIndicator}
                 id={labelId}
@@ -635,11 +584,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   aria-labelledby={label ? labelId : undefined}
                   aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
                   aria-disabled={isDisabled}
-                  aria-invalid={isInvalid}
-                  // Help/error text is associated with the numeric input only (the committing
-                  // form control). The slider thumb and the input represent the same value, so
-                  // describing both would make screen readers announce the hint twice — once per
-                  // tab stop. The thumb still conveys its state via aria-valuetext.
+                  // The optional help text is associated with the slider (the primary control)
+                  // only. The embedded TextInput and the thumb represent the same value, so
+                  // describing both would make screen readers announce the hint twice — once
+                  // per tab stop.
+                  aria-describedby={describedById}
                   onKeyDown={handleKeyDown}
                   onKeyUp={handleKeyUp}
                   onFocus={handleThumbFocus}
@@ -699,46 +648,35 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                 </StyledThumb>
               </BaseBox>
 
-              {/* Numeric input */}
-              <StyledNumericInput
-                id={inputId}
-                name={name}
-                type="number"
-                $size={size}
-                $validationState={validationState}
-                value={inputStringValue}
-                min={min}
-                max={max}
-                step={step}
-                disabled={isDisabled}
-                required={_isRequired}
-                aria-invalid={isInvalid}
-                aria-describedby={describedById}
-                aria-label={
-                  suffix
-                    ? `${label ?? accessibilityLabel ?? 'Slider'} value in ${suffix}`
-                    : label ?? accessibilityLabel ?? 'Slider value'
-                }
-                onChange={handleInputChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-              />
-              {suffix && (
-                <span
-                  style={{
-                    color: suffixColor,
-                    fontSize: theme.typography.fonts.size[size === 'large' ? 100 : 75],
-                    flexShrink: 0,
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {suffix}
-                </span>
-              )}
+              {/* Numeric input — composed from Blade's TextInput so border, focus, disabled,
+                  sizing, and the trailing unit (suffix) all come from the design system.
+                  It deliberately exposes only the editable value and the unit: the visible
+                  label, help text, and value semantics live on the slider, so nothing is
+                  announced twice. */}
+              <BaseBox width={makeSpace(tokens.input.width)} flexShrink={0}>
+                <TextInput
+                  accessibilityLabel={
+                    suffix
+                      ? `${label ?? accessibilityLabel ?? 'Slider'} value in ${suffix}`
+                      : `${label ?? accessibilityLabel ?? 'Slider'} value`
+                  }
+                  type="number"
+                  size={size}
+                  name={name}
+                  value={inputStringValue}
+                  suffix={suffix}
+                  textAlign="right"
+                  isDisabled={isDisabled}
+                  isRequired={_isRequired}
+                  onChange={handleInputChange}
+                  onFocus={handleInputFocus}
+                  onBlur={handleInputBlur}
+                />
+              </BaseBox>
             </BaseBox>
           </BaseBox>
 
-          {willRenderHintText && (
+          {Boolean(helpText) && (
             <BaseBox
               marginLeft={
                 isLabelLeftPositioned
@@ -746,13 +684,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   : undefined
               }
             >
-              {validationState === 'error' && errorText ? (
-                <FormHint type="error" errorText={errorText} errorTextId={errorTextId} />
-              ) : validationState === 'success' && successText ? (
-                <FormHint type="success" successText={successText} successTextId={successTextId} />
-              ) : helpText ? (
-                <FormHint type="help" helpText={helpText} helpTextId={helpTextId} />
-              ) : null}
+              <FormHint type="help" helpText={helpText} helpTextId={helpTextId} />
             </BaseBox>
           )}
         </BaseBox>
