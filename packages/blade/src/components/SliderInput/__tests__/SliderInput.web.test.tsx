@@ -107,6 +107,34 @@ describe('<SliderInput />', () => {
     expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '25');
   });
 
+  it('should keep max reachable when the range is not a multiple of step', () => {
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={6} min={0} max={10} step={3} />,
+    );
+    const slider = getByRole('slider');
+    fireEvent.keyDown(slider, { key: 'End' });
+    expect(slider).toHaveAttribute('aria-valuenow', '10');
+  });
+
+  it('should snap steps anchored at min, not at zero', () => {
+    const onChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={1} min={1} max={9} step={2} onChange={onChange} />,
+    );
+    fireEvent.keyDown(getByRole('slider'), { key: 'ArrowRight' });
+    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 3 });
+  });
+
+  it('should not leak floating-point artifacts for fractional steps', () => {
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" defaultValue={0.2} min={0} max={1} step={0.1} />,
+    );
+    const slider = getByRole('slider');
+    fireEvent.keyDown(slider, { key: 'ArrowRight' });
+    expect(slider).toHaveAttribute('aria-valuenow', '0.3');
+    expect(getByRole('textbox')).toHaveValue('0.3');
+  });
+
   it('should snap to step values', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(

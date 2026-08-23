@@ -125,20 +125,30 @@ type SliderInputCommonProps = {
    * Event handler called when the value changes via slider drag, keyboard,
    * or text input
    */
-  onChange?: (args: { value: number }) => void;
+  onChange?: (args: { name?: string; value: number }) => void;
 
   /**
    * Event handler called when the user begins interacting with the slider
-   * (mousedown / touchstart on thumb or track click)
+   * (mousedown / touchstart on thumb or track click, keyboard, input focus)
    */
-  onChangeStart?: (args: { value: number }) => void;
+  onChangeStart?: (args: { name?: string; value: number }) => void;
 
   /**
    * Event handler called when the user finishes interacting with the slider
-   * (mouseup / touchend). Useful for committing the value only on drag end
-   * rather than on every intermediate value.
+   * (mouseup / touchend, keyup, Enter/blur commit). Useful for committing the
+   * value only when the gesture ends rather than on every intermediate value.
    */
-  onChangeEnd?: (args: { value: number }) => void;
+  onChangeEnd?: (args: { name?: string; value: number }) => void;
+
+  /**
+   * Called when the numeric input gains focus
+   */
+  onFocus?: (args: { name?: string; value: number }) => void;
+
+  /**
+   * Called when the numeric input loses focus (reports the committed value)
+   */
+  onBlur?: (args: { name?: string; value: number }) => void;
 
   /**
    * The name attribute for form integration
@@ -175,25 +185,13 @@ type SliderInputCommonProps = {
   necessityIndicator?: 'required' | 'optional' | 'none';
 
   /**
-   * State indicating validation status
-   * @default 'none'
-   */
-  validationState?: 'none' | 'error' | 'success';
-
-  /**
-   * Text shown below the component when validationState is 'success'
-   */
-  successText?: string;
-
-  /**
-   * Text shown below the component providing guidance
+   * Text shown below the component providing guidance.
+   *
+   * Note: there is no validationState/errorText/successText — the value
+   * self-corrects into [min, max], so an invalid value cannot exist (see the
+   * "No validation/error state" decision below).
    */
   helpText?: string;
-
-  /**
-   * Text shown below the component when validationState is 'error'
-   */
-  errorText?: string;
 
   /**
    * Test ID for automation
@@ -583,27 +581,27 @@ const ConfiguratorPanel = () => {
 };
 ```
 
-### With Validation
+### With Help Text
 
-Error state when the value falls outside business rules beyond just min/max constraints.
+There is no error state (see the "No validation/error state" decision) — values
+self-correct into `[min, max]`. Use `helpText` for guidance; if a rule can't be
+expressed via min/max, constrain the bounds or surface it at the form level.
 
 ```jsx
 import { SliderInput } from '@razorpay/blade/components';
 
 const App = () => {
   const [fontSize, setFontSize] = useState(14);
-  const isAccessible = fontSize >= 12;
 
   return (
     <SliderInput
       label="Font Size"
       value={fontSize}
       onChange={({ value }) => setFontSize(value)}
-      min={8}
+      min={12}
       max={32}
       suffix="px"
-      validationState={isAccessible ? 'none' : 'error'}
-      errorText="Font size below 12px does not meet accessibility standards"
+      helpText="Minimum 12px recommended for accessibility"
     />
   );
 };
@@ -636,8 +634,7 @@ const App = () => {
 | `aria-labelledby` | Slider thumb | ID of the label element |
 | `aria-orientation` | Slider thumb | `"horizontal"` (omitted — default) |
 | `aria-disabled` | Slider thumb + Input | `"true"` when `isDisabled` |
-| `aria-describedby` | Component root | ID of help/error text element |
-| `aria-invalid` | Input field | `"true"` when `validationState="error"` |
+| `aria-describedby` | Slider thumb | ID of the help text element (associated once — the numeric input is not also described, to avoid double announcement) |
 
 ### Keyboard Navigation
 
@@ -661,7 +658,7 @@ const App = () => {
 ### Screen Reader
 
 - Value changes on the slider are announced with the suffix (e.g. "Corner Radius: 12 px")
-- Error text is associated via `aria-describedby` and announced on focus
+- Help text is associated via `aria-describedby` on the slider and announced on focus
 
 ### Touch Targets
 
@@ -680,10 +677,8 @@ SliderInput
 │   ├── InactiveTrack
 │   ├── TickMarks (when step && stepCount <= 20)
 │   └── SliderThumb (draggable, keyboard-accessible)
-├── NumericInput (internal, not BaseInput — too heavy)
-│   ├── Value text
-│   └── Suffix text
-└── FormHint (helpText / errorText)
+├── TextInput (Blade — value + trailing unit via `suffix`; border/focus/disabled/sizing from the design system)
+└── FormHint (helpText)
 ```
 
 ### State Management

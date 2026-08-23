@@ -1,3 +1,4 @@
+import React from 'react';
 import { composeStories } from '@storybook/react-vite';
 import * as sliderInputStories from './SliderInput.stories';
 import { Box } from '~components/Box';
@@ -10,10 +11,10 @@ export const SliderInput = (): JSX.Element => {
     <Box display="flex" flexDirection="column" gap="spacing.4">
       {allStories.map((Story) => {
         return (
-          <>
+          <React.Fragment key={Story.storyName}>
             <Heading>{Story.storyName}</Heading>
             <Story />
-          </>
+          </React.Fragment>
         );
       })}
     </Box>

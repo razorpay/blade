@@ -16,6 +16,7 @@ import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import get from '~utils/lodashButBetter/get';
+import { throwBladeError } from '~utils/logger';
 import { TextInput } from '~components/Input/TextInput';
 
 const tokens = SLIDER_INPUT_TOKENS;
@@ -73,11 +74,36 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const trackRef = useRef<HTMLDivElement>(null);
     const thumbRef = useRef<HTMLDivElement>(null);
     const fillRef = useRef<HTMLDivElement>(null);
+    if (__DEV__) {
+      if (min > max) {
+        throwBladeError({
+          message: `\`min\` (${min}) must not be greater than \`max\` (${max}) for SliderInput.`,
+          moduleName: 'SliderInput',
+        });
+      }
+    }
+
     const effectiveStep = step > 0 ? step : 1;
     const clamp = useCallback((v: number) => Math.min(max, Math.max(min, v)), [min, max]);
-    const snap = useCallback((v: number) => Math.round(v / effectiveStep) * effectiveStep, [
-      effectiveStep,
-    ]);
+    // Snap to the nearest step anchored at `min` (not at zero), with two fixes over the
+    // naive round(v / step) * step:
+    // 1. `max` is always reachable — when the range isn't a multiple of step (e.g. min=0,
+    //    max=10, step=3), dragging to the end / End key / typing the max would otherwise
+    //    land on the last full step (9) and never reach 10. If the candidate is closer to
+    //    max than to its snapped step, max wins.
+    // 2. Results are rounded to the precision of min/step so fractional steps don't leak
+    //    floating-point artifacts into the field (0.1 + 0.2 → 0.3, not 0.30000000000000004).
+    const snap = useCallback(
+      (v: number) => {
+        const decimalsOf = (n: number): number => (String(n).split('.')[1] ?? '').length;
+        const decimals = Math.max(decimalsOf(effectiveStep), decimalsOf(min));
+        const snapped = min + Math.round((v - min) / effectiveStep) * effectiveStep;
+        if (snapped >= max) return max;
+        const nearest = Math.abs(max - v) < Math.abs(v - snapped) ? max : snapped;
+        return Number(nearest.toFixed(decimals));
+      },
+      [effectiveStep, min, max],
+    );
     // Clamp/snap the resolved initial value into [min, max] before first paint. Without this,
     // e.g. min={10} with no value/defaultValue leaves the initial value at 0 → the thumb/fill
     // render off the left edge and the numeric input shows a below-min number. This mirrors the
