@@ -1823,13 +1823,13 @@ exports[`<FloatingActionButton /> (native) should render white color 1`] = `
         color="white"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
-        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
+        defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
         focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
-        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
+        focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
         focusRingColor="hsla(218, 89%, 51%, 0.18)"
         focusable={true}
         hoverBackgroundColor="hsla(0, 0%, 100%, 0.8)"
-        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 100%, 1)"
+        hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 0.18), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 0.18)"
         hoverIconColor="hsla(0, 0%, 0%, 0.72)"
         isFullWidth={false}
         isLoading={false}
@@ -2065,7 +2065,7 @@ exports[`<FloatingActionButton /> (native) should render white color 1`] = `
                 ry={9999}
                 stroke={
                   {
-                    "payload": 4294967295,
+                    "payload": 771751936,
                     "type": 0,
                   }
                 }

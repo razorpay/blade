@@ -153,11 +153,21 @@ const boxShadow = (
       primary: {
         default: [
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+          {
+            y: 0,
+            blur: 0,
+            spread: 0.5,
+            color: 'interactive.border.staticBlack.fadedHighlighted',
+          },
         ],
         highlighted: [
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+          {
+            y: 0,
+            blur: 0,
+            spread: 0.5,
+            color: 'interactive.border.staticBlack.fadedHighlighted',
+          },
         ],
         disabled: [],
       },
