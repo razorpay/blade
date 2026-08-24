@@ -8,6 +8,7 @@ export type ButtonVariants = {
   color?:
     | 'primary'
     | 'white'
+    | 'black'
     | 'positive'
     | 'negative'
     | 'information'
@@ -23,6 +24,7 @@ export type ButtonVariants = {
 export type ButtonColor =
   | 'primary'
   | 'white'
+  | 'black'
   | 'positive'
   | 'negative'
   | 'information'
@@ -73,6 +75,21 @@ export function getButtonBackgroundColorToken({
       return _state === 'highlighted'
         ? 'interactive.background.staticBlack.faded'
         : 'interactive.background.staticWhite.faded';
+    }
+  }
+
+  if (color === 'black') {
+    if (variant === 'primary') {
+      return `interactive.${property}.staticBlack.${_state}`;
+    }
+    // secondary/tertiary render the same as the default (gray) buttons
+    if (variant === 'secondary') {
+      return isBorder ? 'interactive.border.primary.default' : 'surface.background.gray.intense';
+    }
+    if (variant === 'tertiary') {
+      return _state === 'disabled'
+        ? 'interactive.background.staticWhite.ghost'
+        : 'surface.background.gray.intense';
     }
   }
 
@@ -172,6 +189,19 @@ export function getButtonTextColorToken({
     }
     if (variant === 'tertiary') {
       return `interactive.${property}.staticWhite.${stateSuffix}`;
+    }
+  }
+
+  if (color === 'black') {
+    if (variant === 'primary') {
+      return `interactive.${property}.staticWhite.${state === 'disabled' ? 'disabled' : 'normal'}`;
+    }
+    // secondary/tertiary render the same as the default (gray) buttons
+    if (variant === 'secondary') {
+      return `interactive.${property}.gray.${state === 'disabled' ? 'disabled' : 'normal'}`;
+    }
+    if (variant === 'tertiary') {
+      return `interactive.${property}.gray.${stateSuffix}`;
     }
   }
 
@@ -297,6 +327,7 @@ export const buttonStyles = cva(styles.btn, {
     color: {
       primary: styles['color-primary'],
       white: styles['color-white'],
+      black: styles['color-black'],
       positive: styles['color-positive'],
       negative: styles['color-negative'],
       information: styles['color-information'],

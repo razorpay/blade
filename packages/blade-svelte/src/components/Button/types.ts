@@ -29,7 +29,7 @@ export type ButtonProps = BaseButtonProps & {
    * Note: Not all color and variant combinations are valid
    * @default 'primary'
    */
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  color?: 'primary' | 'white' | 'black' | 'positive' | 'negative';
   /**
    * Size of the button
    * @default 'medium'
