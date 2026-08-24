@@ -5,6 +5,7 @@ const DEFAULT_CDN_PATH = 'https://cdn.jsdelivr.net/npm/@razorpay/blade@latest/as
 async function preloadRazorSenseAssets(
   _preset: RzpGlassPreset = 'default',
   _assetsPath: string = DEFAULT_CDN_PATH,
+  _colorScheme: 'light' | 'dark' = 'light',
 ): Promise<void> {
   // no-op on native
 }
@@ -32,13 +33,18 @@ function getDefaultAssets(_assetsPath: string): Record<string, string> {
   return {};
 }
 
-function getPresetAssets(_preset: string | undefined, _assetsPath: string): Record<string, string> {
+function getPresetAssets(
+  _preset: string | undefined,
+  _assetsPath: string,
+  _isDark = false,
+): Record<string, string> {
   return {};
 }
 
 function resolveConfig(
   _props: Record<string, unknown>,
   _assetsPath: string,
+  _isDark = false,
 ): Record<string, unknown> {
   return {};
 }
