@@ -3,7 +3,7 @@
  */
 
 import type { RzpGlassPreset } from './presets';
-import { getPresets } from './presets';
+import { getDarkOverlay, getPresets } from './presets';
 import type {
   RzpGlassAssets,
   RzpGlassConfig,
@@ -61,17 +61,24 @@ const ASSET_KEYS = new Set<string>([
 function getPresetDefinition(
   preset: RzpGlassPreset | undefined,
   assetsPath: string,
+  isDark: boolean = false,
 ): RzpGlassPresetDefinition {
   const presets = getPresets(assetsPath);
-  if (preset && preset in presets) return { ...presets[preset] };
-  return {};
+  const definition: RzpGlassPresetDefinition =
+    preset && preset in presets ? { ...presets[preset] } : {};
+
+  // In dark mode every preset gets its dark counterpart layered on top. The
+  // overlay reads the preset's own gamma so the ccWhitePoint guard stays correct.
+  if (!isDark) return definition;
+  return { ...definition, ...getDarkOverlay(assetsPath, definition) };
 }
 
 function getPresetConfig(
   preset: RzpGlassPreset | undefined,
   assetsPath: string,
+  isDark: boolean = false,
 ): Partial<RzpGlassConfig> {
-  const def = getPresetDefinition(preset, assetsPath) as Record<string, unknown>;
+  const def = getPresetDefinition(preset, assetsPath, isDark) as Record<string, unknown>;
   return Object.fromEntries(
     Object.entries(def).filter(([k]) => !ASSET_KEYS.has(k)),
   ) as Partial<RzpGlassConfig>;
@@ -80,8 +87,9 @@ function getPresetConfig(
 function getPresetAssets(
   preset: RzpGlassPreset | undefined,
   assetsPath: string,
+  isDark: boolean = false,
 ): Partial<RzpGlassAssets> {
-  const def = getPresetDefinition(preset, assetsPath) as Record<string, unknown>;
+  const def = getPresetDefinition(preset, assetsPath, isDark) as Record<string, unknown>;
   return Object.fromEntries(
     Object.entries(def).filter(([k]) => ASSET_KEYS.has(k)),
   ) as Partial<RzpGlassAssets>;
@@ -89,11 +97,16 @@ function getPresetAssets(
 
 /**
  * Merge preset config with user-provided config.
- * Preset values are used as base; any explicit prop overrides them.
+ * Preset values (plus the dark overlay when the color scheme is dark) are used as
+ * base; any explicit prop overrides them.
  */
-function resolveConfig(props: RzpGlassProps, assetsPath: string): Partial<RzpGlassConfig> {
+function resolveConfig(
+  props: RzpGlassProps,
+  assetsPath: string,
+  isDark: boolean = false,
+): Partial<RzpGlassConfig> {
   return {
-    ...getPresetConfig(props.preset, assetsPath),
+    ...getPresetConfig(props.preset, assetsPath, isDark),
     ...extractConfig(props),
   };
 }
@@ -169,6 +182,9 @@ function bestGuessBrowserZoom(): number {
  *
  * @param preset - The preset name to preload assets for
  * @param assetsPath - Optional CDN path for assets (defaults to Blade CDN)
+ * @param colorScheme - Color scheme to preload for. Pass `'dark'` to preload the
+ * dark gradient maps. Since this runs outside React it cannot read Blade's color
+ * scheme itself, so pass the value from `useTheme()` when preloading in dark mode.
  * @returns Promise that resolves when all assets are loaded
  *
  * @example
@@ -178,14 +194,18 @@ function bestGuessBrowserZoom(): number {
  *
  * // Now mount the component - assets are already cached
  * <RazorSense preset="circleSlideUp" />
+ *
+ * // In dark mode, preload the dark asset set
+ * const { colorScheme } = useTheme();
+ * await preloadRazorSenseAssets('circleSlideUp', undefined, colorScheme);
  * ```
  */
 async function preloadRazorSenseAssets(
   preset: RzpGlassPreset = 'default',
   assetsPath: string = DEFAULT_CDN_PATH,
+  colorScheme: 'light' | 'dark' = 'light',
 ): Promise<void> {
-  const presets = getPresets(assetsPath);
-  const presetDef = presets[preset] || {};
+  const presetDef = getPresetDefinition(preset, assetsPath, colorScheme === 'dark');
   const defaultAssets = getDefaultAssets(assetsPath);
 
   const videoSrc = presetDef.videoSrc ?? defaultAssets.videoSrc;
