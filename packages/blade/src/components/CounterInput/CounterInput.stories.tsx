@@ -147,6 +147,9 @@ export const SizeVariants: StoryFn<typeof CounterInputComponent> = ({ ...args })
   const [xsmallValue, setXsmallValue] = useState(1);
   const [mediumValue, setMediumValue] = useState(2);
   const [largeValue, setLargeValue] = useState(3);
+  const [xsmallThreeDigitValue, setXsmallThreeDigitValue] = useState(100);
+  const [mediumThreeDigitValue, setMediumThreeDigitValue] = useState(999);
+  const [largeThreeDigitValue, setLargeThreeDigitValue] = useState(100);
 
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.6">
@@ -191,6 +194,36 @@ export const SizeVariants: StoryFn<typeof CounterInputComponent> = ({ ...args })
           value={largeValue}
           onChange={({ value }) => setLargeValue(value)}
           min={0}
+        />
+      </BaseBox>
+
+      <BaseBox display="flex" flexDirection="column" gap="spacing.3">
+        <Text size="medium" weight="medium">
+          Three Digit Values
+        </Text>
+        <CounterInputComponent
+          label="XSmall Counter"
+          size="xsmall"
+          value={xsmallThreeDigitValue}
+          onChange={({ value }) => setXsmallThreeDigitValue(value)}
+          min={0}
+          max={999}
+        />
+        <CounterInputComponent
+          label="Medium Counter"
+          size="medium"
+          value={mediumThreeDigitValue}
+          onChange={({ value }) => setMediumThreeDigitValue(value)}
+          min={0}
+          max={999}
+        />
+        <CounterInputComponent
+          label="Large Counter"
+          size="large"
+          value={largeThreeDigitValue}
+          onChange={({ value }) => setLargeThreeDigitValue(value)}
+          min={0}
+          max={999}
         />
       </BaseBox>
     </BaseBox>

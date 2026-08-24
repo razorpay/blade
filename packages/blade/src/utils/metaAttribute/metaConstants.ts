@@ -58,6 +58,7 @@ export const MetaConstants = {
   FileUploadItem: 'file-upload-item',
   FileUploadLabel: 'file-upload-label',
   FilterChipGroup: 'filter-chip-group',
+  FloatingActionButton: 'floating-action-button',
   Icon: 'icon',
   IconButton: 'icon-button',
   InfoGroup: 'info-group',
