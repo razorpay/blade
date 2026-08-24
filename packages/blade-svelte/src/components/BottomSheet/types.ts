@@ -62,6 +62,15 @@ export interface BottomSheetProps extends StyledPropsBlade {
    */
   zIndex?: number;
 
+  /**
+   * Mounts the overlay (backdrop + surface) into this element. Defaults to
+   * `document.body`. Use a custom target when the sheet is nested inside
+   * another overlay or an ancestor with `overflow: hidden` / `transform`
+   * (e.g. a phone-frame preview). Snap-point math uses the target's height
+   * when set.
+   */
+  portalTarget?: HTMLElement | null;
+
   /** Test ID applied to the surface element. */
   testID?: string;
 

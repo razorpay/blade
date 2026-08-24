@@ -49,6 +49,7 @@
     allowedCountries,
     placeholder,
     id,
+    portalTarget,
     ...rest
   }: PhoneNumberInputProps = $props();
 
@@ -160,6 +161,7 @@
       {flags}
       {isDisabled}
       {selectedCountry}
+      {portalTarget}
       onItemClick={handleCountrySelect}
     />
   {/if}

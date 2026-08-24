@@ -27,6 +27,42 @@ type OptionsType = {
   onClickTrigger?: (isSelected: boolean) => void;
 }[];
 
+/**
+ * Controller published by TreeView when it is rendered as Dropdown overlay content.
+ *
+ * All tree-specific behaviour inside Dropdown is gated on this being present, so
+ * ActionList (and any other overlay content) paths stay behaviourally identical
+ */
+type TreeViewDropdownControllerType = {
+  /**
+   * Option indices of rows that are currently traversable (not hidden under a collapsed branch).
+   * Used for visibility-aware keyboard traversal (same idea as AutoComplete's filteredValues)
+   */
+  getVisibleOptionIndices: () => number[];
+  /**
+   * ArrowRight: expand the active collapsed branch, or move to its first child
+   */
+  onArrowRightKeydown: (activeIndex: number) => void;
+  /**
+   * ArrowLeft: collapse the active expanded branch, or move to its parent
+   */
+  onArrowLeftKeydown: (activeIndex: number) => void;
+  /**
+   * Returns true when the tree handled the selection itself
+   * (branch cascade toggle in multiple selection / load-more activation).
+   * Returning false falls through to the default selectOption path
+   */
+  handleOptionSelect: (index: number, properties?: { key?: string }) => boolean;
+  /**
+   * Values of the topmost fully-selected branches, included in the trigger's onChange payload
+   */
+  getSelectedGroups: (selectedIndices: number[]) => string[];
+  /**
+   * Smallest describing set for the trigger display (D5)
+   */
+  getDisplayOverride: (selectedIndices: number[]) => { label: string; count: number } | undefined;
+};
+
 type DropdownContextType = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
@@ -123,6 +159,12 @@ type DropdownContextType = {
    */
   isControlled: boolean;
   setIsControlled: (isControlled: boolean) => void;
+
+  /**
+   * Set by TreeView when it is rendered as the overlay content. null for every other
+   * overlay content (ActionList, Menu, custom slots)
+   */
+  treeViewControllerRef: React.MutableRefObject<TreeViewDropdownControllerType | null>;
 };
 
 const DropdownContext = React.createContext<DropdownContextType>({
@@ -172,6 +214,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
   triggererWrapperRef: {
     current: null,
   },
+  treeViewControllerRef: {
+    current: null,
+  },
 });
 
 let searchTimeout: number;
@@ -202,6 +247,12 @@ type UseDropdownReturnValue = DropdownContextType & {
    * Removes the option with given optionsIndex
    */
   removeOption: (index: number) => void;
+
+  /**
+   * Selects / deselects multiple options in one state update with a single onChange.
+   * Used by TreeView branch cascade toggles
+   */
+  selectOptionsBatch: (indices: number[], action: 'select' | 'deselect') => void;
 
   /**
    * value that is used during form submissions
@@ -318,6 +369,35 @@ const useDropdown = (): UseDropdownReturnValue => {
   };
 
   /**
+   * Marks multiple indices as selected / deselected in a single state update and
+   * bumps the change callback triggerer exactly once.
+   *
+   * Used by TreeView for branch cascade toggles (one branch toggle mutates many leaf
+   * indices but must fire a single `onChange`). Routes through the same controlled /
+   * uncontrolled fork as `selectOption`. ActionList does not use this
+   */
+  const selectOptionsBatch = (indices: number[], action: 'select' | 'deselect'): void => {
+    if (indices.length === 0) {
+      return;
+    }
+
+    let updatedIndices: number[];
+    if (action === 'select') {
+      updatedIndices = [...selectedIndices];
+      for (const index of indices) {
+        if (index >= 0 && index <= options.length - 1 && !updatedIndices.includes(index)) {
+          updatedIndices.push(index);
+        }
+      }
+    } else {
+      updatedIndices = selectedIndices.filter((selectedIndex) => !indices.includes(selectedIndex));
+    }
+
+    setIndices(updatedIndices);
+    setChangeCallbackTriggerer(changeCallbackTriggerer + 1);
+  };
+
+  /**
    * Click listener for combobox (or any triggerer of the dropdown)
    */
   const onTriggerClick = (): void => {
@@ -338,7 +418,20 @@ const useDropdown = (): UseDropdownReturnValue => {
     const hasAutoComplete =
       rest.hasAutoCompleteInHeader ||
       dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
-    if (hasAutoComplete && filteredValues.length > 0) {
+    const treeViewController = rest.treeViewControllerRef?.current;
+    if (treeViewController) {
+      // When overlay content is a TreeView, traversal skips rows hidden under collapsed
+      // branches (indices stay stable across expand / collapse, only traversal changes)
+      const visibleIndexes = treeViewController.getVisibleOptionIndices();
+      updatedIndex =
+        visibleIndexes[
+          getUpdatedIndex({
+            currentIndex: visibleIndexes.indexOf(newIndex),
+            maxIndex: visibleIndexes.length - 1,
+            actionType,
+          })
+        ] ?? newIndex;
+    } else if (hasAutoComplete && filteredValues.length > 0) {
       // When its autocomplete, we don't loop over all options. We only loop on filtered options
 
       const filteredIndexes = filteredValues
@@ -458,8 +551,14 @@ const useDropdown = (): UseDropdownReturnValue => {
         close,
         onOptionChange,
         onComboType,
-        selectCurrentOption: () => {
+        selectCurrentOption: (event) => {
           if (activeIndex < 0) {
+            return;
+          }
+
+          // TreeView handles branch cascade toggles and load-more rows itself
+          const treeViewController = rest.treeViewControllerRef?.current;
+          if (treeViewController?.handleOptionSelect(activeIndex, { key: event?.key })) {
             return;
           }
 
@@ -470,6 +569,17 @@ const useDropdown = (): UseDropdownReturnValue => {
 
           options[activeIndex].onClickTrigger?.(isSelected);
         },
+        // present only when overlay content is a TreeView; undefined keeps
+        // ArrowLeft / ArrowRight behaviour unchanged for every other content
+        onTreeExpandCollapse: rest.treeViewControllerRef?.current
+          ? (action) => {
+              if (action === 'Expand') {
+                rest.treeViewControllerRef.current?.onArrowRightKeydown(activeIndex);
+              } else {
+                rest.treeViewControllerRef.current?.onArrowLeftKeydown(activeIndex);
+              }
+            }
+          : undefined,
       });
     }
   };
@@ -482,6 +592,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setSelectedIndices,
     filteredValues,
     removeOption,
+    selectOptionsBatch,
     setControlledValueIndices,
     onTriggerClick,
     onTriggerKeydown,
@@ -498,12 +609,16 @@ const useDropdown = (): UseDropdownReturnValue => {
     isControlled,
     options,
     value: makeInputValue(selectedIndices, options),
-    displayValue: makeInputDisplayValue(selectedIndices, options),
+    displayValue: makeInputDisplayValue(
+      selectedIndices,
+      options,
+      rest.treeViewControllerRef?.current?.getDisplayOverride(selectedIndices),
+    ),
     selectionType,
     dropdownTriggerer,
     ...rest,
   };
 };
 
-export type { DropdownContextType, OptionsType };
+export type { DropdownContextType, OptionsType, TreeViewDropdownControllerType };
 export { useDropdown, DropdownContext };

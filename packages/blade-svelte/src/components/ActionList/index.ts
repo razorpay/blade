@@ -7,8 +7,10 @@
  * Selection is controlled via `selectedValue` + `onAction` (keyed on each
  * item's `value`) — a `string` in `single` mode, a `string[]` in `multiple`
  * mode. When rendered inside a `BottomSheet`, `isInBottomSheet` is auto-detected
- * from the BottomSheet context, so the outer box (border/shadow/padding) is
- * dropped and `BottomSheetBody` owns scrolling.
+ * from the BottomSheet context and the extra outer wrapper layer is skipped
+ * so `BottomSheetBody` owns scrolling. React web never renders an outer box
+ * with border/shadow on ActionList — those come from the Dropdown overlay
+ * when embedded.
  *
  * ### Deviations from React
  * - **Story title:** stories use `Components/ActionList` (blade-svelte

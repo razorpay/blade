@@ -20,9 +20,9 @@
     bottomSheetInnerWrapperClass,
     bottomSheetGrabHandleClass,
     bottomSheetGrabHandleFloatingClass,
+    bottomSheetPortalRootClass,
     getBottomSheetTemplateClasses,
   } from '@razorpay/blade-core/styles';
-  import { portal } from '../../utils/portal';
   import {
     bottomSheetStack,
     addBottomSheetToStack,
@@ -33,6 +33,7 @@
   import type { BottomSheetProps, SnapPoints } from './types';
   import { computeMaxContent, computeSnapPointBounds } from './utils';
   import BottomSheetBackdrop from './BottomSheetBackdrop.svelte';
+  import { portal } from '../../utils/portal';
 
   /* Anchor structural classes against the Rollup tree-shaker — CSS modules
    * export ESM objects whose unused individual exports otherwise get
@@ -48,6 +49,7 @@
     snapPoints = [...BOTTOM_SHEET_DEFAULT_SNAP_POINTS] as SnapPoints,
     isDismissible = true,
     zIndex = BOTTOM_SHEET_Z_INDEX,
+    portalTarget,
     testID,
     ...rest
   }: BottomSheetProps = $props();
@@ -136,7 +138,10 @@
   function returnFocus(): void {
     if (!originalFocusEl) return;
     try {
-      originalFocusEl.focus();
+      /* `preventScroll` stops the browser scrolling the focus target into
+       * view — otherwise returning focus to a trigger inside a scrollable
+       * ancestor jumps the host content. Focus still moves for a11y. */
+      originalFocusEl.focus({ preventScroll: true });
     } catch {
       /* ignore — element may have been unmounted. */
     }
@@ -147,7 +152,12 @@
     const target = initialFocusRef ?? defaultFocusEl;
     if (!target) return;
     try {
-      target.focus();
+      /* `preventScroll` suppresses the native scroll-focused-element-into-view.
+       * The surface is fixed/absolute pinned to the bottom, so without this the
+       * browser scrolls the nearest scrollable ancestor of the portal target
+       * (e.g. a Checkout modal) and shoves the host content up. Focus still
+       * moves into the dialog, so screen-reader/keyboard behaviour is intact. */
+      target.focus({ preventScroll: true });
     } catch {
       /* ignore */
     }
@@ -248,9 +258,24 @@
     }
   });
 
-  /* Track viewport height for snap-point math. */
+  /* Track viewport height for snap-point math — use portal target height when
+   * portaling into a bounded container (e.g. checkout phone frame). */
+  $effect(() => {
+    const target = portalTarget;
+    if (target) {
+      windowHeight = target.clientHeight;
+      const observer = new ResizeObserver(() => {
+        windowHeight = target.clientHeight;
+      });
+      observer.observe(target);
+      return () => observer.disconnect();
+    }
+    return undefined;
+  });
+
   onMount(() => {
     if (typeof window === 'undefined') return undefined;
+    if (portalTarget) return undefined;
     windowHeight = window.innerHeight;
     const handler = (): void => {
       windowHeight = window.innerHeight;
@@ -522,26 +547,36 @@
 </script>
 
 {#if isMounted}
-  <div use:portal={document.body}>
-    <BottomSheetBackdrop
-      isOpen={isVisible}
-      zIndex={bottomSheetZIndex}
-      {isDismissible}
-      onClose={close}
-    />
-    <div
-      class="{bottomSheetSurfaceClass} {surfaceExtraClasses}"
-      style={surfaceStyle}
-      data-state={surfaceState}
-      data-dragging={isDragging}
-      {...surfaceMetaAttrs}
-      {...surfaceA11yAttrs}
-      {...analyticsAttrs}
-    >
-      <div class={bottomSheetInnerWrapperClass}>
-        <div bind:this={grabHandleEl} class={grabHandleClasses} {...grabHandleMetaAttrs}></div>
-        {@render children()}
-      </div>
+  {#if portalTarget}
+    <div use:portal={portalTarget} class={bottomSheetPortalRootClass}>
+      {@render overlay()}
+    </div>
+  {:else}
+    <div use:portal={document.body}>
+      {@render overlay()}
+    </div>
+  {/if}
+{/if}
+
+{#snippet overlay()}
+  <BottomSheetBackdrop
+    isOpen={isVisible}
+    zIndex={bottomSheetZIndex}
+    {isDismissible}
+    onClose={close}
+  />
+  <div
+    class="{bottomSheetSurfaceClass} {surfaceExtraClasses}"
+    style={surfaceStyle}
+    data-state={surfaceState}
+    data-dragging={isDragging}
+    {...surfaceMetaAttrs}
+    {...surfaceA11yAttrs}
+    {...analyticsAttrs}
+  >
+    <div class={bottomSheetInnerWrapperClass}>
+      <div bind:this={grabHandleEl} class={grabHandleClasses} {...grabHandleMetaAttrs}></div>
+      {@render children()}
     </div>
   </div>
-{/if}
+{/snippet}

@@ -1,6 +1,6 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  import { bladeTheme, createTheme } from '@razorpay/blade-core/tokens';
+  import { bladeNeutralTheme, createTheme } from '@razorpay/blade-core/tokens';
   import BladeProvider from './BladeProvider.svelte';
   import Text from '../Typography/Text/Text.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
@@ -49,7 +49,7 @@
       docs: {
         description: {
           component:
-            'Theme scope for Blade Svelte. Pass `themeTokens` (`bladeTheme` or `createTheme(...).theme`) and optional `colorScheme`. Nested providers scope scheme via `data-blade-color-scheme`. Use `useTheme()` for runtime scheme changes.',
+            'Theme scope for Blade Svelte. Pass `themeTokens` (`bladeNeutralTheme` or `createTheme(...).theme`) and optional `colorScheme`. Nested providers scope scheme via `data-blade-color-scheme`. Use `useTheme()` for runtime scheme changes.',
         },
       },
     },
@@ -75,17 +75,17 @@
   parameters={{ controls: { disable: true } }}
 >
   <div class="nested-layout">
-    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+    <BladeProvider themeTokens={bladeNeutralTheme} colorScheme="light">
       <section class="brand-scope">
         <div class="scope-header">
           <div class="scope-heading">
             <Badge color="primary" emphasis="subtle" size="small">Parent provider</Badge>
             <Heading as="h2" size="large" weight="semibold">Default Blade checkout</Heading>
             <Text size="small" color="surface.text.gray.muted">
-              Default Blade theme on light scheme.
+              Default Blade Neutral theme on light scheme.
             </Text>
           </div>
-          <Code size="small">bladeTheme · light</Code>
+          <Code size="small">bladeNeutralTheme · light</Code>
         </div>
         <div class="scope-preview">
           <div class="scope-copy">

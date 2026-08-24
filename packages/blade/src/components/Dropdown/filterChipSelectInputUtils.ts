@@ -18,6 +18,11 @@ type GetFilterChipDisplayValueParams = {
   selectionType: BaseFilterChipProps['selectionType'];
   /** Internally tracked selection used in the uncontrolled case. */
   uncontrolledInputValue: string[];
+  /**
+   * Published by TreeView (D5): smallest describing set of the current selection where a
+   * fully-selected branch counts as 1. Absent for every other overlay content
+   */
+  displayOverride?: { label: string; count: number };
 };
 
 /**
@@ -33,9 +38,22 @@ const getFilterChipDisplayValue = ({
   options,
   selectionType,
   uncontrolledInputValue,
+  displayOverride,
 }: GetFilterChipDisplayValueParams): string | string[] => {
   const titleForValue = (selectionValue: string): string =>
     getTitleFromValue(options, selectionValue) || selectionValue;
+
+  if (displayOverride) {
+    if (selectionType === 'single') {
+      return displayOverride.label;
+    }
+    // BaseFilterChip renders the single name at length 1 and a Counter of the array
+    // length at 2+, so we synthesize an array of the override's count (only the first
+    // entry is ever rendered as text)
+    return Array.from({ length: displayOverride.count }, (_, index) =>
+      index === 0 ? displayOverride.label : '',
+    );
+  }
 
   // Uncontrolled: derive display value from the internally tracked selection.
   if (value === undefined) {

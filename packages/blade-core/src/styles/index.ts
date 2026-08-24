@@ -282,19 +282,13 @@ export type {
   CheckboxGroupOptionsVariants,
 } from './Checkbox';
 export {
-  actionListBoxCva,
-  getActionListBoxClasses,
   actionListWrapperCva,
   getActionListWrapperClasses,
   actionListItemCva,
   getActionListItemClasses,
   getActionListTemplateClasses,
 } from './ActionList';
-export type {
-  ActionListBoxVariants,
-  ActionListWrapperVariants,
-  ActionListItemVariants,
-} from './ActionList';
+export type { ActionListWrapperVariants, ActionListItemVariants } from './ActionList';
 export {
   alertStyles,
   getAlertClasses,
@@ -465,6 +459,7 @@ export {
   getBottomSheetTemplateClasses,
   bottomSheetSurfaceClass,
   bottomSheetBackdropClass,
+  bottomSheetPortalRootClass,
   bottomSheetInnerWrapperClass,
   bottomSheetGrabHandleClass,
   bottomSheetGrabHandleFloatingClass,
