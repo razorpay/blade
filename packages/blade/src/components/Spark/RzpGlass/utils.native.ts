@@ -36,7 +36,7 @@ function getDefaultAssets(_assetsPath: string): Record<string, string> {
 function getPresetAssets(
   _preset: string | undefined,
   _assetsPath: string,
-  _isDark: boolean = false,
+  _isDark = false,
 ): Record<string, string> {
   return {};
 }
@@ -44,7 +44,7 @@ function getPresetAssets(
 function resolveConfig(
   _props: Record<string, unknown>,
   _assetsPath: string,
-  _isDark: boolean = false,
+  _isDark = false,
 ): Record<string, unknown> {
   return {};
 }

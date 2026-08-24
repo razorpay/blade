@@ -61,7 +61,7 @@ const ASSET_KEYS = new Set<string>([
 function getPresetDefinition(
   preset: RzpGlassPreset | undefined,
   assetsPath: string,
-  isDark: boolean = false,
+  isDark = false,
 ): RzpGlassPresetDefinition {
   const presets = getPresets(assetsPath);
   const definition: RzpGlassPresetDefinition =
@@ -76,7 +76,7 @@ function getPresetDefinition(
 function getPresetConfig(
   preset: RzpGlassPreset | undefined,
   assetsPath: string,
-  isDark: boolean = false,
+  isDark = false,
 ): Partial<RzpGlassConfig> {
   const def = getPresetDefinition(preset, assetsPath, isDark) as Record<string, unknown>;
   return Object.fromEntries(
@@ -87,7 +87,7 @@ function getPresetConfig(
 function getPresetAssets(
   preset: RzpGlassPreset | undefined,
   assetsPath: string,
-  isDark: boolean = false,
+  isDark = false,
 ): Partial<RzpGlassAssets> {
   const def = getPresetDefinition(preset, assetsPath, isDark) as Record<string, unknown>;
   return Object.fromEntries(
@@ -103,7 +103,7 @@ function getPresetAssets(
 function resolveConfig(
   props: RzpGlassProps,
   assetsPath: string,
-  isDark: boolean = false,
+  isDark = false,
 ): Partial<RzpGlassConfig> {
   return {
     ...getPresetConfig(props.preset, assetsPath, isDark),
