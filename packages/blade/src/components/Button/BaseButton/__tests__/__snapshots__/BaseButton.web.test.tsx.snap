@@ -6330,7 +6330,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
   background-color: hsla(0,0%,100%,1);
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 12px;
@@ -6362,13 +6362,13 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
 
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(0,0%,100%,0.8);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
   background-image: none;
 }
 
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(0,0%,100%,0.8);
-  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,100%,1);
+  box-shadow: inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
   background-image: none;
 }
 
@@ -6376,7 +6376,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
   background-color: hsla(0,0%,100%,0.8);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,100%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1.5px 0px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 0.5px hsla(0,0%,0%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {

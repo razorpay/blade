@@ -1371,6 +1371,21 @@ const componentData: ComponentStatusDataType = [
       },
     },
   },
+  {
+    name: 'FloatingActionButton',
+    description:
+      'FloatingActionButton is a persistent, elevated button anchored to the bottom of the viewport, used for the single most important action on a screen.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/FloatingActionButton',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
 ];
 
 export type { ComponentStatuses, ComponentStatusDataType, FrameworkStatus };

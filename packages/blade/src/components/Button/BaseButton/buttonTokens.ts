@@ -62,6 +62,15 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
         disabled: 'interactive.background.gray.disabled',
       },
     },
+    // Only the `primary` emphasis exists in the design for the black color, which
+    // is currently used by FloatingActionButton and is not exposed on `Button`.
+    black: {
+      primary: {
+        default: 'interactive.background.staticBlack.default',
+        highlighted: 'interactive.background.staticBlack.highlighted',
+        disabled: 'interactive.background.staticBlack.fadedHighlighted',
+      },
+    },
   } as const;
 };
 
@@ -89,6 +98,7 @@ const boxShadow = (
     'primary' | 'secondary' | 'tertiary',
     Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>
   >;
+  black: Record<'primary', Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>>;
 } => {
   return {
     base: {
@@ -143,11 +153,21 @@ const boxShadow = (
       primary: {
         default: [
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+          {
+            y: 0,
+            blur: 0,
+            spread: 0.5,
+            color: 'interactive.border.staticBlack.fadedHighlighted',
+          },
         ],
         highlighted: [
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+          {
+            y: 0,
+            blur: 0,
+            spread: 0.5,
+            color: 'interactive.border.staticBlack.fadedHighlighted',
+          },
         ],
         disabled: [],
       },
@@ -172,6 +192,23 @@ const boxShadow = (
           { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
         ],
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
+      },
+    },
+    black: {
+      primary: {
+        default: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.highlighted' },
+          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticBlack.highlighted' },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+        ],
+        highlighted: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.highlighted' },
+          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticBlack.highlighted' },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+        ],
+        disabled: [],
       },
     },
   };
@@ -208,6 +245,13 @@ const textColor = (property: 'icon' | 'text') => {
         disabled: `interactive.${property}.staticWhite.disabled`,
       },
       tertiary: {
+        default: `interactive.${property}.staticWhite.normal`,
+        highlighted: `interactive.${property}.staticWhite.normal`,
+        disabled: `interactive.${property}.staticWhite.disabled`,
+      },
+    },
+    black: {
+      primary: {
         default: `interactive.${property}.staticWhite.normal`,
         highlighted: `interactive.${property}.staticWhite.normal`,
         disabled: `interactive.${property}.staticWhite.disabled`,
@@ -345,6 +389,9 @@ const spinnerColor = {
     primary: 'white',
     secondary: 'white',
     tertiary: 'white',
+  },
+  black: {
+    primary: 'white',
   },
   positive: {
     primary: 'positive',

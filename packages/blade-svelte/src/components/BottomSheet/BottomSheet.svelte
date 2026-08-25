@@ -138,7 +138,10 @@
   function returnFocus(): void {
     if (!originalFocusEl) return;
     try {
-      originalFocusEl.focus();
+      /* `preventScroll` stops the browser scrolling the focus target into
+       * view — otherwise returning focus to a trigger inside a scrollable
+       * ancestor jumps the host content. Focus still moves for a11y. */
+      originalFocusEl.focus({ preventScroll: true });
     } catch {
       /* ignore — element may have been unmounted. */
     }
@@ -149,7 +152,12 @@
     const target = initialFocusRef ?? defaultFocusEl;
     if (!target) return;
     try {
-      target.focus();
+      /* `preventScroll` suppresses the native scroll-focused-element-into-view.
+       * The surface is fixed/absolute pinned to the bottom, so without this the
+       * browser scrolls the nearest scrollable ancestor of the portal target
+       * (e.g. a Checkout modal) and shoves the host content up. Focus still
+       * moves into the dialog, so screen-reader/keyboard behaviour is intact. */
+      target.focus({ preventScroll: true });
     } catch {
       /* ignore */
     }

@@ -70,6 +70,30 @@ const isPatternFrameExemptNode = (node: SceneNode): boolean => {
   return TRUTHY_SHARED_DATA_VALUES.includes(sharedPluginDataValue);
 };
 
+const isBladeInstance = (node: BaseNode): node is InstanceNode =>
+  node.type === 'INSTANCE' &&
+  (BLADE_COMPONENT_IDS.includes((node.mainComponent?.parent as ComponentSetNode)?.key ?? '') ||
+    BLADE_COMPONENT_IDS.includes(node.mainComponent?.key ?? ''));
+
+/**
+ * Figma does not allow adding or removing children of an instance, so any plain FRAME found
+ * inside one belongs to that component's own definition rather than to the designer. When the
+ * owning component is Blade's, that frame is internal chrome we should ignore entirely.
+ *
+ * Only the nearest instance decides this. A custom component dropped into a Blade slot still
+ * owns its frames, so those must keep showing up in the coverage.
+ */
+const isInsideBladeComponent = (node: BaseNode): boolean => {
+  let currentNode = node.parent;
+  while (currentNode && currentNode.type !== 'PAGE' && currentNode.type !== 'DOCUMENT') {
+    if (currentNode.type === 'INSTANCE') {
+      return isBladeInstance(currentNode);
+    }
+    currentNode = currentNode.parent;
+  }
+  return false;
+};
+
 const highlightNonBladeNode = (node: SceneNode, desc?: string): void => {
   const highlighterBox = figma.createRectangle();
   const nodeType = `${node.type
@@ -158,8 +182,8 @@ const renderCoverageCard = async ({
 
     let coverageColorIntent = BLADE_INTENT_COLOR_KEYS.negative.id;
     let bladeCoverageType = 'Below 95% 😪';
-    const PROGRESS_BAR_MAX_WIDTH = 254;
-    const bladeCoverageProgress = (bladeCoverage / 100) * PROGRESS_BAR_MAX_WIDTH;
+    // only used if the Progress node's track parent can't be measured
+    const PROGRESS_BAR_FALLBACK_WIDTH = 298;
 
     // calculate coverage type and intent colors for coverage
     if (bladeCoverage > 95) {
@@ -201,7 +225,15 @@ const renderCoverageCard = async ({
           traversedNode.fills = [newFill];
         }
       } else if (traversedNode.type === 'RECTANGLE' && traversedNode.name === 'Progress') {
-        traversedNode.resizeWithoutConstraints(bladeCoverageProgress || 0.1, 4);
+        // measure the track (the parent ProgressBar frame) instead of hardcoding a width,
+        // so the fill stays accurate if the coverage card gets resized in Figma
+        const track = traversedNode.parent;
+        const trackWidth = track && 'width' in track ? track.width : PROGRESS_BAR_FALLBACK_WIDTH;
+        const trackHeight = track && 'height' in track ? track.height : traversedNode.height;
+        traversedNode.resizeWithoutConstraints(
+          (bladeCoverage / 100) * trackWidth || 0.1,
+          trackHeight,
+        );
         const newFill = createVariableBoundPaint(coverageColorIntent);
         traversedNode.fills = [newFill];
       }
@@ -250,20 +282,16 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         const isLocalComponent =
           traversedNode.type === 'COMPONENT' || traversedNode.type === 'COMPONENT_SET';
 
-        if (
-          (traversedNode.type === 'INSTANCE' &&
-            (BLADE_COMPONENT_IDS.includes(
-              (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
-            ) ||
-              BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? ''))) ||
-          isLocalComponent
-        ) {
+        if (isBladeInstance(traversedNode) || isLocalComponent) {
           // few components that have slots we need to check if the children are valid Blade instances
           if (
             !isLocalComponent &&
-            BLADE_COMPONENT_IDS_HAVING_SLOT.includes(
+            // slot holders can be variants (matched via the parent set) or standalone
+            // components like _Modal Header (matched via their own key)
+            (BLADE_COMPONENT_IDS_HAVING_SLOT.includes(
               (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
-            )
+            ) ||
+              BLADE_COMPONENT_IDS_HAVING_SLOT.includes(traversedNode.mainComponent?.key ?? ''))
           ) {
             // this will recursively follow the same process we follow.
             // check for Blade's instance and if there are certain components that has slot inside it then we recursively check inside them for blade components
@@ -310,7 +338,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 );
                 if (
                   // (traversedNode.mainComponent?.parent as ComponentSetNode)?.key
-                  (traversedNode.mainComponent?.parent as ComponentSetNode)?.key.includes(
+                  (traversedNode.mainComponent?.parent as ComponentSetNode)?.key?.includes(
                     bladeThemeData.components.Card.key,
                   ) &&
                   isCardBorderRadiusValid
@@ -517,6 +545,11 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           'card-content-holder',
         ];
 
+        // a Blade component's own internal frames are not the designer's responsibility, so they
+        // are neither flagged nor counted as layers
+        const isBladeInternalFrame =
+          traversedNode.type === 'FRAME' && isInsideBladeComponent(traversedNode);
+
         /** check if a frame/custom instance created using frame is being used as a custom component
          * has fills?
          * has strokes?
@@ -525,12 +558,8 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
          * */
         if (
           (traversedNode.type === 'FRAME' ||
-            (traversedNode.type === 'INSTANCE' &&
-              !(
-                BLADE_COMPONENT_IDS.includes(
-                  (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
-                ) || BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? '')
-              ))) &&
+            (traversedNode.type === 'INSTANCE' && !isBladeInstance(traversedNode))) &&
+          !isBladeInternalFrame &&
           !isPatternExemptFrameNode &&
           !ignoreInstanceFrameNodeNames.includes(traversedNode.name) &&
           getParentNode(traversedNode)?.type !== 'PAGE' &&
@@ -576,6 +605,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           getParentNode(traversedNode)?.type !== 'PAGE' &&
           getParentNode(traversedNode)?.type !== 'SECTION' &&
           !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type) &&
+          !isBladeInternalFrame &&
           !isPatternExemptFrameNode &&
           // if the frame instances are from Blade's components then we don't want to include them in the count because these are components with slots
           !ignoreInstanceFrameNodeNames.includes(traversedNode.name)
@@ -603,13 +633,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           return true;
         }
 
-        if (
-          traversedNode.type === 'INSTANCE' &&
-          (BLADE_COMPONENT_IDS.includes(
-            (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
-          ) ||
-            BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? ''))
-        ) {
+        if (isBladeInstance(traversedNode)) {
           // we shall stop traversal further if we have found that an instance is Blade instance
           // if we keep traversing then chances are the metrics will be skewed because Blade components are composed of non-blade themselves
           // in code analytics we can add "data-*" to all the children till leaf nodes but over here we can't hence we stop

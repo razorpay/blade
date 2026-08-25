@@ -19,6 +19,7 @@ import { PopoverContent } from '../Popover/PopoverContent';
 import { ARROW_HEIGHT, ARROW_WIDTH } from '../Popover/constants';
 import { PopoverContext } from '../Popover/PopoverContext';
 import { transitionDelay } from './tourTokens';
+import { resolveSpotlightTarget } from './utils';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -125,8 +126,13 @@ const TourPopover = ({
   React.useLayoutEffect(() => {
     window.setTimeout(() => {
       if (!attachTo) return;
-      refs.setReference(attachTo.current);
-      refs.setPositionReference(attachTo.current);
+      const element = attachTo.current;
+      refs.setReference(element);
+      // The spotlight traces the painted component rather than the layout wrapper the step's
+      // ref happens to sit on, so `GAP` has to be measured from that same rectangle. Anchoring
+      // to the wrapper instead leaks its overhang — a wrapper stretched by a flex row is taller
+      // than the card inside it — into the gap between the arrow tip and the spotlight.
+      refs.setPositionReference(element ? resolveSpotlightTarget(element) : null);
     });
   }, [attachTo, refs, isOpen]);
 
@@ -157,12 +163,21 @@ const TourPopover = ({
                 footer={footer}
                 style={styles}
                 arrow={
+                  // Kept at parity with Popover's arrow. The stroke matters beyond the arrow's
+                  // own outline: the popup's surface carries a 1px inset hairline on every edge,
+                  // including the one the arrow sits on, so without a stroke that hairline is
+                  // drawn straight across the join and the arrow reads as a separate shape. A
+                  // non-zero strokeWidth also offsets the arrow onto that edge, letting its fill
+                  // cover the hairline underneath it.
                   <PopupArrow
                     ref={arrowRef}
                     context={context}
                     width={ARROW_WIDTH}
                     height={ARROW_HEIGHT}
-                    fillColor={theme.colors.popup.background.gray.subtle}
+                    fillColor={theme.colors.popup.background.gray.moderate}
+                    strokeColor={theme.colors.popup.border.gray.moderate}
+                    strokeWidth={theme.border.width.thin}
+                    style={{ transform: 'translateY(-1px)' }}
                   />
                 }
               >

@@ -50,7 +50,9 @@ const config: StorybookConfig = {
     GITHUB_REF: process.env.GITHUB_REF || '',
   }),
 
-  staticDirs: ['../../public'],
+  // '../../assets' is served at /assets so stories can point RazorSense's
+  // assetsPath at the local (unpublished) spark assets via "/assets/spark".
+  staticDirs: ['../../public', { from: '../../assets', to: '/assets' }],
 
   viteFinal: async (config) => {
     const { mergeConfig } = await import('vite');

@@ -7,6 +7,8 @@ import { TourContext } from './TourContext';
 import type { TourElement } from './TourContext';
 import { TourPopover } from './TourPopover';
 import {
+  readBorderRadius,
+  resolveSpotlightTarget,
   smoothScroll,
   useDelayedState,
   useIntersectionObserver,
@@ -111,20 +113,21 @@ const SpotlightPopoverTour = ({
       const el = asHTMLElement(ref?.current ?? null);
       if (!el) return;
 
-      const rect = el.getBoundingClientRect();
-      setSize({
+      // Trace the component the merchant sees, not the layout wrapper around it, so the
+      // spotlight's padding stays even on all four sides.
+      const target = resolveSpotlightTarget(el);
+      const rect = target.getBoundingClientRect();
+      const nextSize = {
         x: rect.x,
         y: rect.y,
         width: rect.width,
         height: rect.height,
-      });
+        borderRadius: readBorderRadius(target),
+      };
+
+      setSize(nextSize);
       if (shouldSkipDelay) {
-        setDelayedSize({
-          x: rect.x,
-          y: rect.y,
-          width: rect.width,
-          height: rect.height,
-        });
+        setDelayedSize(nextSize);
       }
     },
     [activeStep, refIdMap, setDelayedSize, steps],
@@ -195,6 +198,7 @@ const SpotlightPopoverTour = ({
         y: 0,
         width: 0,
         height: 0,
+        borderRadius: 0,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
