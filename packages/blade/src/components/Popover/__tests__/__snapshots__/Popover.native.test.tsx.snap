@@ -828,7 +828,7 @@ exports[`<Popover /> should render 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 16250871,
+                    "payload": 4294440951,
                     "type": 0,
                   }
                 }
@@ -854,7 +854,7 @@ exports[`<Popover /> should render 1`] = `
                 d="M0,0 H22 L11,12 Q11,12 11,12 Z"
                 fill={
                   {
-                    "payload": 4294967295,
+                    "payload": 4043309055,
                     "type": 0,
                   }
                 }
@@ -1703,7 +1703,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 16250871,
+                    "payload": 4294440951,
                     "type": 0,
                   }
                 }
@@ -1729,7 +1729,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                 d="M0,0 H22 L11,12 Q11,12 11,12 Z"
                 fill={
                   {
-                    "payload": 4294967295,
+                    "payload": 4043309055,
                     "type": 0,
                   }
                 }
@@ -2766,7 +2766,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 }
                 stroke={
                   {
-                    "payload": 16250871,
+                    "payload": 4294440951,
                     "type": 0,
                   }
                 }
@@ -2792,7 +2792,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 d="M0,0 H22 L11,12 Q11,12 11,12 Z"
                 fill={
                   {
-                    "payload": 4294967295,
+                    "payload": 4043309055,
                     "type": 0,
                   }
                 }

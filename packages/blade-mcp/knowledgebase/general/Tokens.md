@@ -234,9 +234,11 @@ theme.colors.interactive.text.gray.default
 // Icon in actionable context
 theme.colors.interactive.icon.primary.default
 
-// Text/icon on primary background
-theme.colors.interactive.text.onPrimary.default
-theme.colors.interactive.icon.onPrimary.default
+// Text/icon on primary or neutral background
+theme.colors.interactive.text.onPrimary.normal
+theme.colors.interactive.icon.onPrimary.normal
+theme.colors.interactive.text.onNeutral.normal
+theme.colors.interactive.icon.onNeutral.normal
 ```
 
 ### Feedback Colors (`theme.colors.feedback.*`)
@@ -314,10 +316,10 @@ theme.colors.overlay.background.moderate   // Standard overlay
 theme.colors.overlay.background.subtle     // Light overlay
 
 // Popup surfaces (tooltips, popovers)
-theme.colors.popup.background.subtle
-theme.colors.popup.background.intense
-theme.colors.popup.border.subtle
-theme.colors.popup.border.intense
+theme.colors.popup.background.gray.subtle
+theme.colors.popup.background.gray.intense
+theme.colors.popup.border.gray.subtle
+theme.colors.popup.border.gray.intense
 ```
 
 ### Transparent

@@ -382,8 +382,8 @@ const TourPopover = ({
                   context={context}
                   width={ARROW_WIDTH}
                   height={ARROW_HEIGHT}
-                  fillColor={theme.colors.popup.background.gray.subtle}
-                  strokeColor={theme.colors.popup.border.subtle}
+                  fillColor={theme.colors.popup.background.gray.moderate}
+                  strokeColor={theme.colors.popup.border.gray.moderate}
                 />
               }
             >
