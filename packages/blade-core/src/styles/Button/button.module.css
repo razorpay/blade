@@ -130,12 +130,12 @@
 }
 
 /*
- * Black reuses the filled pattern. Its border/bottom-bevel are both pure black, so
+ * Neutral reuses the filled pattern. Its border/bottom-bevel are both pure black, so
  * `--btn-accent-border-*` map to the static-black tokens; `--btn-accent-bevel`
  * overrides the top/bottom white bevel with the higher-contrast faded-highlighted
  * token the design specifies for a dark surface.
  */
-.color-black {
+.color-neutral {
   --btn-accent-bg-default: var(--interactive-background-static-black-default);
   --btn-accent-bg-highlighted: var(--interactive-background-static-black-highlighted);
   --btn-accent-bg-disabled: var(--interactive-background-static-black-disabled);
@@ -148,7 +148,7 @@
 .color-primary.primary,
 .color-positive.primary,
 .color-negative.primary,
-.color-black.primary {
+.color-neutral.primary {
   background-color: var(--btn-accent-bg-default);
   background-image: radial-gradient(
     var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
@@ -201,8 +201,8 @@
 .color-primary.tertiary,
 .color-positive.secondary,
 .color-negative.secondary,
-.color-black.secondary,
-.color-black.tertiary {
+.color-neutral.secondary,
+.color-neutral.tertiary {
   background-color: var(--surface-background-gray-intense);
   box-shadow: inset 0 -1px 0.5px 0 var(--interactive-border-static-black-faded-highlighted),
     inset 0 0 0 1px var(--interactive-border-gray-default),

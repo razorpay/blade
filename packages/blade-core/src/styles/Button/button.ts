@@ -8,7 +8,6 @@ export type ButtonVariants = {
   color?:
     | 'primary'
     | 'white'
-    | 'black'
     | 'positive'
     | 'negative'
     | 'information'
@@ -24,7 +23,6 @@ export type ButtonVariants = {
 export type ButtonColor =
   | 'primary'
   | 'white'
-  | 'black'
   | 'positive'
   | 'negative'
   | 'information'
@@ -78,7 +76,7 @@ export function getButtonBackgroundColorToken({
     }
   }
 
-  if (color === 'black') {
+  if (color === 'neutral') {
     if (variant === 'primary') {
       return `interactive.${property}.staticBlack.${_state}`;
     }
@@ -192,7 +190,7 @@ export function getButtonTextColorToken({
     }
   }
 
-  if (color === 'black') {
+  if (color === 'neutral') {
     if (variant === 'primary') {
       return `interactive.${property}.staticWhite.${state === 'disabled' ? 'disabled' : 'normal'}`;
     }
@@ -327,7 +325,6 @@ export const buttonStyles = cva(styles.btn, {
     color: {
       primary: styles['color-primary'],
       white: styles['color-white'],
-      black: styles['color-black'],
       positive: styles['color-positive'],
       negative: styles['color-negative'],
       information: styles['color-information'],

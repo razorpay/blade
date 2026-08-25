@@ -63,7 +63,6 @@ export interface BaseButtonProps extends StyledPropsBlade {
   color?:
     | 'primary'
     | 'white'
-    | 'black'
     | 'positive'
     | 'negative'
     | 'notice'
