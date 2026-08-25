@@ -621,13 +621,13 @@ exports[`<Tour /> should render 1`] = `
         >
           <path
             clip-path="url(#:r7:)"
-            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
+            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
             fill="none"
             stroke="hsla(0, 0%, 97%, 1)"
             stroke-width="3"
           />
           <path
-            d="M0,0 H22 L16.5,6 Q11,12 5.5,6 Z"
+            d="M0,0 H22 L13.75,9 Q11,12 8.25,9 Z"
             stroke="hsla(0, 0%, 100%, 0.94)"
           />
           <clippath
