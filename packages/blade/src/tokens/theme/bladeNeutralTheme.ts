@@ -250,14 +250,14 @@ const colors: ColorsWithModes = {
         },
         primary: {
           default: globalColors.neutral.black[500],
-          highlighted: globalColors.neutral.black[450],
+          highlighted: globalColors.neutral.black[500],
           disabled: globalColors.neutral.black[100],
           faded: globalColors.neutral.black[50],
           fadedHighlighted: globalColors.neutral.black[100],
         },
         staticBlack: {
           default: globalColors.neutral.black[500],
-          highlighted: globalColors.neutral.black[450],
+          highlighted: globalColors.neutral.black[500],
           disabled: globalColors.neutral.black[200],
           faded: globalColors.neutral.black[50],
           fadedHighlighted: globalColors.neutral.black[100],
@@ -379,6 +379,12 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.white[300],
           disabled: globalColors.neutral.white[100],
         },
+        onNeutral: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[500],
+          muted: globalColors.neutral.white[500],
+          disabled: globalColors.neutral.white[500],
+        },
         staticWhite: {
           normal: globalColors.neutral.white[500],
           subtle: globalColors.neutral.white[400],
@@ -441,6 +447,12 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.white[300],
           disabled: globalColors.neutral.white[100],
         },
+        onNeutral: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[500],
+          muted: globalColors.neutral.white[500],
+          disabled: globalColors.neutral.white[500],
+        },
         staticWhite: {
           normal: globalColors.neutral.white[500],
           subtle: globalColors.neutral.white[400],
@@ -463,10 +475,6 @@ const colors: ColorsWithModes = {
     },
     popup: {
       background: {
-        // @deprecated
-        subtle: globalColors.neutral.blueGrayLight[0],
-        // @deprecated
-        intense: globalColors.neutral.blueGrayLight[1000],
         gray: {
           subtle: globalColors.neutral.blueGrayLight[0],
           moderate: globalColors.neutral.blueGrayLight.a48,
@@ -489,10 +497,6 @@ const colors: ColorsWithModes = {
         },
       },
       border: {
-        // @deprecated
-        subtle: globalColors.neutral.blueGrayLight.a100,
-        // @deprecated
-        intense: globalColors.neutral.blueGrayLight[900],
         gray: {
           subtle: globalColors.neutral.blueGrayLight.a909,
           moderate: globalColors.neutral.blueGrayLight[100],
@@ -715,11 +719,11 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[1100],
         },
         primary: {
-          faint: 'transparent',
+          faint: transparent,
           subtle: globalColors.chromatic.azure.a200,
-          moderate: 'transparent',
+          moderate: transparent,
           intense: globalColors.chromatic.azure[500],
-          strong: 'transparent',
+          strong: transparent,
         },
         sea: {
           subtle: globalColors.chromatic.sea[900],
@@ -730,7 +734,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.chromatic.cloud[100],
         },
         accent: {
-          intense: 'transparent',
+          intense: transparent,
         },
       },
       border: {
@@ -1073,6 +1077,12 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.white[300],
           disabled: globalColors.neutral.white[100],
         },
+        onNeutral: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[500],
+          muted: globalColors.neutral.white[500],
+          disabled: globalColors.neutral.white[500],
+        },
         staticWhite: {
           normal: globalColors.neutral.white[500],
           subtle: globalColors.neutral.white[400],
@@ -1135,6 +1145,12 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.white[300],
           disabled: globalColors.neutral.white[100],
         },
+        onNeutral: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[500],
+          muted: globalColors.neutral.white[500],
+          disabled: globalColors.neutral.white[500],
+        },
         staticWhite: {
           normal: globalColors.neutral.white[500],
           subtle: globalColors.neutral.white[400],
@@ -1157,10 +1173,6 @@ const colors: ColorsWithModes = {
     },
     popup: {
       background: {
-        // @deprecated
-        subtle: globalColors.neutral.blueGrayDark[1000],
-        // @deprecated
-        intense: globalColors.neutral.blueGrayDark[700],
         gray: {
           subtle: globalColors.neutral.blueGrayDark[1300],
           moderate: globalColors.neutral.blueGrayDark.a1188,
@@ -1183,10 +1195,6 @@ const colors: ColorsWithModes = {
         },
       },
       border: {
-        // @deprecated
-        subtle: globalColors.neutral.blueGrayDark.a100,
-        // @deprecated
-        intense: globalColors.neutral.blueGrayDark.a100,
         gray: {
           subtle: globalColors.neutral.blueGrayDark.a512,
           moderate: globalColors.neutral.blueGrayDark[800],
