@@ -513,15 +513,14 @@
  */
 .primary.definite-loading[data-definite-loading='true'][disabled] {
   background-color: var(--btn-accent-bg-default);
-  background-image: radial-gradient(
-    var(--btn-gradient-size, 64px) var(--btn-gradient-size, 64px) at 0% 0%,
-    var(--interactive-background-static-white-faded) 0%,
-    transparent 100%
-  );
   box-shadow: inset 0 -1.5px 0 0 var(--btn-accent-border-highlighted),
     inset 0 0 0 0.5px var(--btn-accent-border-default),
     inset 0 1.5px 0 0 var(--interactive-border-static-white-faded),
     inset 0 -2px 0 0 var(--interactive-border-static-white-faded);
+
+  &::before {
+    opacity: 1;
+  }
 }
 
 .progress-overlay {
