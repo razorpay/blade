@@ -280,6 +280,10 @@ export type {
   SnapPoints,
 } from './BottomSheet';
 
+// Modal
+export { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
+export type { ModalProps, ModalHeaderProps, ModalBodyProps, ModalFooterProps } from './Modal';
+
 // SegmentedControl
 export { SegmentedControl, SegmentedControlItem } from './SegmentedControl';
 export type {
