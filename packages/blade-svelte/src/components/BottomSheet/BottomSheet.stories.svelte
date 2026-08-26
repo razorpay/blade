@@ -66,7 +66,7 @@
 
   /* Default story state (one bucket per story to keep them independent). */
   let isDefaultOpen = $state(false);
-  let isDragHandleOpen = $state(false);
+  let isWithoutDragHandleOpen = $state(false);
   let isHeaderFooterOpen = $state(false);
   let isSingleSelectOpen = $state(false);
   let isDropdownButtonOpen = $state(false);
@@ -309,14 +309,14 @@
   {/snippet}
 </Story>
 
-<!-- Story: Without Drag Handle — hides the drag handle pill via showDragHandle={false}. -->
+<!-- Without Drag Handle — hides the handle and disables drag gestures via showDragHandle={false}. -->
 <Story name="Without Drag Handle">
   {#snippet template()}
     <div>
-      <Button onClick={() => (isDragHandleOpen = true)}>Open</Button>
+      <Button onClick={() => (isWithoutDragHandleOpen = true)}>Open</Button>
       <BottomSheet
-        isOpen={isDragHandleOpen}
-        onDismiss={() => (isDragHandleOpen = false)}
+        isOpen={isWithoutDragHandleOpen}
+        onDismiss={() => (isWithoutDragHandleOpen = false)}
         showDragHandle={false}
       >
         {#snippet children()}
@@ -324,14 +324,14 @@
           <BottomSheetBody>
             {#snippet children()}
               <Text>
-                The drag handle (grab handle pill) is hidden. The sheet can still be dismissed via
-                the backdrop or the escape key.
+                The drag handle is hidden and drag-to-move/dismiss is disabled. Dismiss via the
+                backdrop, escape key, or the Continue button below.
               </Text>
             {/snippet}
           </BottomSheetBody>
           <BottomSheetFooter>
             {#snippet children()}
-              <Button isFullWidth onClick={() => (isDragHandleOpen = false)}>Continue</Button>
+              <Button isFullWidth onClick={() => (isWithoutDragHandleOpen = false)}>Continue</Button>
             {/snippet}
           </BottomSheetFooter>
         {/snippet}

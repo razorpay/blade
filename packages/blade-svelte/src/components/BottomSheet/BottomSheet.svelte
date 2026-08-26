@@ -50,8 +50,8 @@
     isDismissible = true,
     zIndex = BOTTOM_SHEET_Z_INDEX,
     portalTarget,
-    testID,
     showDragHandle = true,
+    testID,
     ...rest
   }: BottomSheetProps = $props();
 
@@ -429,8 +429,11 @@
   /* Wire `DragGesture` instances reactively. We attach to the same elements
    * React binds: the grab handle (with no `args`, so `isContentDragging` is
    * false) and the body's scroll element (with `isContentDragging: true`).
+   * Both are skipped when `showDragHandle` is false — desktop flows that hide
+   * the handle should not expose drag-to-move/dismiss either.
    * `from` is a getter so each drag-start picks up the *current* `positionY`. */
   $effect(() => {
+    if (!showDragHandle) return undefined;
     if (!grabHandleEl) return undefined;
     if (!isOnTopOfStack || !isOpen) return undefined;
     const gesture = new DragGesture(
@@ -448,6 +451,7 @@
   });
 
   $effect(() => {
+    if (!showDragHandle) return undefined;
     if (!scrollEl) return undefined;
     if (!isOnTopOfStack || !isOpen) return undefined;
     const gesture = new DragGesture(
