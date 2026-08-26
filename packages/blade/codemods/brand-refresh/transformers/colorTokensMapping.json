@@ -31,7 +31,7 @@
   "surface.action.icon.disabled.highContrast": "interactive.icon.gray.disabled",
   "surface.overlay.background.400": "overlay.background.moderate",
   "surface.overlay.background.800": "overlay.background.subtle",
-  "surface.popup.background": "popup.background.subtle",
+  "surface.popup.background": "popup.background.gray.subtle",
   "brand.primary.300": "surface.background.primary.subtle",
   "brand.primary.400": "surface.background.primary.subtle",
   "brand.primary.500": "surface.background.primary.intense",
