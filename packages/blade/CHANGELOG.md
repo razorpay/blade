@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 12.120.0
+
+### Minor Changes
+
+- 9edbd8f33: update design tokens from Figma
+
+  Added 32 tokens and removed 0 tokens.
+
 ## 12.119.1
 
 ### Patch Changes
