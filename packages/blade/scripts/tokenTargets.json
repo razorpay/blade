@@ -1,0 +1,99 @@
+{
+  "$comment": [
+    "Every place a Figma token payload has to land. `blade` and `blade-core` keep byte-identical",
+    "copies of the theme files, so a payload that only writes one of them leaves the other stale",
+    "and breaks the blade-core typecheck. Add a file here rather than in uploadTokens.js.",
+    "",
+    "`declaration` picks the exact statement inside each file that gets replaced. It is matched",
+    "as a regex against the file source and must match exactly once."
+  ],
+  "themes": {
+    "bladeTheme": {
+      "declaration": "const colors: ColorsWithModes = \\{(.|\\n)+?\\n\\};",
+      "replacement": "const colors: ColorsWithModes = {{SERIALIZED}};",
+      "files": [
+        "packages/blade/src/tokens/theme/bladeTheme.ts",
+        "packages/blade-core/src/tokens/theme/bladeTheme.ts"
+      ]
+    },
+    "bladeNeutralTheme": {
+      "declaration": "const colors: ColorsWithModes = \\{(.|\\n)+?\\n\\};",
+      "replacement": "const colors: ColorsWithModes = {{SERIALIZED}};",
+      "files": [
+        "packages/blade/src/tokens/theme/bladeNeutralTheme.ts",
+        "packages/blade-core/src/tokens/theme/bladeNeutralTheme.ts"
+      ]
+    }
+  },
+  "globalColors": {
+    "declaration": "export const colors: Color = \\{(.|\\n)+?\\n\\};",
+    "replacement": "export const colors: Color = {{SERIALIZED}};",
+    "files": [
+      "packages/blade/src/tokens/global/colors.ts",
+      "packages/blade-core/src/tokens/global/colors.ts"
+    ]
+  },
+
+  "$comment_expressionRoots": [
+    "Identifiers a token value is allowed to start with when it is written unquoted. Anything",
+    "else coming out of Figma is written as a string literal instead of a bare identifier —",
+    "this is what stops `faint: 'transparent'` from becoming `faint: transparent`."
+  ],
+  "expressionRoots": ["globalColors", "opacity"],
+
+  "$comment_preservedTokenPaths": [
+    "Tokens that live in code and not in Figma. A push regenerates the whole declaration from the",
+    "payload, so anything Figma has never heard of is deleted — which is how the deprecated popup",
+    "aliases were dropped out from under a release. Paths listed here keep whatever the file",
+    "already says, comments included.",
+    "",
+    "`*` matches exactly one segment, so the leading one covers both `onLight` and `onDark`.",
+    "A path Figma DOES define is not affected: the payload always wins where it has an opinion.",
+    "",
+    "Remove an entry here when the token is genuinely ready to go, and the next push deletes it."
+  ],
+  "preservedTokenPaths": [
+    "*.popup.background.subtle",
+    "*.popup.background.intense",
+    "*.popup.border.subtle",
+    "*.popup.border.intense"
+  ],
+
+  "$comment_referenceScanRoots": [
+    "Searched for the text of every token path this payload deletes, so a removal that still",
+    "has consumers (components, codemod maps, docs) blocks the PR instead of shipping broken."
+  ],
+  "referenceScanRoots": [
+    "packages/blade/src",
+    "packages/blade/codemods",
+    "packages/blade-core/src",
+    "packages/blade-svelte/src",
+    "packages/blade-mcp/knowledgebase"
+  ],
+  "referenceScanExtensions": [".ts", ".tsx", ".js", ".jsx", ".svelte", ".json", ".md", ".mdx"],
+
+  "verify": {
+    "typecheck": [
+      { "name": "@razorpay/blade", "cwd": "packages/blade", "command": "yarn typecheck" },
+      { "name": "@razorpay/blade-core", "cwd": "packages/blade-core", "command": "yarn typecheck" }
+    ],
+    "$comment_snapshots": [
+      "Token values are baked into component snapshots (BaseButton, Popover, Tabs, createTheme…),",
+      "so a token push always dirties them. Regenerate here instead of leaving it to review."
+    ],
+    "snapshots": [
+      {
+        "name": "web snapshots",
+        "cwd": "packages/blade",
+        "command": "cross-env FRAMEWORK=REACT yarn jest -c ./jest.web.config.js --updateSnapshot --forceExit --ci=false"
+      },
+      {
+        "name": "native snapshots",
+        "cwd": "packages/blade",
+        "command": "cross-env FRAMEWORK=REACT_NATIVE yarn jest -c ./jest.native.config.js --updateSnapshot --forceExit --ci=false"
+      }
+    ]
+  },
+
+  "changesetPackages": ["@razorpay/blade", "@razorpay/blade-core"]
+}
