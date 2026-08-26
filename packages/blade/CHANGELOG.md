@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 12.119.1
+
+### Patch Changes
+
+- 83be08d99: feat(tokens): add new tokens - `onNeutral` has been added to `interactive.text` & `interactive.icon`
+
 ## 12.119.0
 
 ### Minor Changes

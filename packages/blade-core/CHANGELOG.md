@@ -1,5 +1,11 @@
 # @razorpay/blade-core
 
+## 0.12.1
+
+### Patch Changes
+
+- 73f7e9655: fix(Button): fade highlight overlay via opacity instead of toggling background-image, preventing flash on definite-loading end
+
 ## 0.12.0
 
 ### Minor Changes
