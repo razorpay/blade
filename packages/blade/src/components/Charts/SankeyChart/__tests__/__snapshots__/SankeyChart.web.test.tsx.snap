@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SankeyChart — rendering matches snapshot 1`] = `
 .c0.c0.c0.c0.c0 {
@@ -236,7 +236,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="90.35546875"
+                  width="90.5439453125"
                   x="331.5"
                   y="14.5"
                 />
@@ -288,7 +288,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="107.69921875"
+                  width="107.1162109375"
                   x="331.5"
                   y="62.5"
                 />
@@ -340,7 +340,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="143.72265625"
+                  width="143.4892578125"
                   x="632.5"
                   y="26"
                 />
@@ -392,7 +392,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="112.375"
+                  width="112.4443359375"
                   x="632.5"
                   y="74"
                 />
