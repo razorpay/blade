@@ -97,11 +97,11 @@ export type Colors = {
     > &
       Record<InteractiveBorderColorsWithFadedHighlighted, InteractiveStatesWithFadedHighlighted>;
     text: Record<
-      InteractiveColorKeys | 'onPrimary',
+      InteractiveColorKeys | 'onPrimary' | 'onNeutral',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
     >;
     icon: Record<
-      InteractiveColorKeys | 'onPrimary',
+      InteractiveColorKeys | 'onPrimary' | 'onNeutral',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
     >;
   };
