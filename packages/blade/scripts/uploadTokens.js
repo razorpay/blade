@@ -500,17 +500,17 @@ const uploadColorTokens = async () => {
   });
   execa.commandSync(`git push origin ${branchName}`, { cwd: REPO_ROOT });
 
-  const title = blockers.length
-    ? 'feat(tokens): update tokens from figma (needs attention)'
-    : 'feat(tokens): update tokens from figma';
-
+  // The title is constant. Draft state carries "this could not verify itself", and the reasons are
+  // written into the body — both of which clear themselves as the PR is fixed and marked ready. A
+  // marker in the title does not: it survives into the squashed commit on master unless somebody
+  // remembers to strip it, which is exactly the kind of cleanup that gets missed.
   execa.sync(
     'gh',
     [
       'pr',
       'create',
       '--title',
-      title,
+      'feat(tokens): update tokens from figma',
       '--head',
       branchName,
       '--repo',
