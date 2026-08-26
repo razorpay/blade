@@ -1,5 +1,17 @@
 # @razorpay/blade-core
 
+## 0.13.0
+
+### Minor Changes
+
+- 9edbd8f33: update design tokens from Figma
+
+  Added 32 tokens and removed 0 tokens.
+
+### Patch Changes
+
+- 9edbd8f33: feat(tokens): added a new token for svelte `onNeutral` in `interactive.text` & `interactive.icon` along with minor updates
+
 ## 0.12.1
 
 ### Patch Changes
