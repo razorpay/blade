@@ -1,7 +1,7 @@
 ---
-'@razorpay/blade': major
+'@razorpay/blade': minor
 '@razorpay/blade-mcp': patch
-'@razorpay/blade-core': major
+'@razorpay/blade-core': minor
 ---
 
-feat(tokens): add `interactive.text/icon.onNeutral` tokens and remove deprecated popup background/border aliases
+feat(tokens): add `interactive.text/icon.onNeutral` tokens
