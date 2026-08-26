@@ -8,7 +8,7 @@ on:
 jobs:
   test-pmg-allows-clean-install:
     name: PMG - Clean package should not be blocked
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    runs-on: ubuntu-latest
     steps:
       - name: Setup PMG proxy
         uses: safedep/pmg@v1
@@ -34,7 +34,7 @@ jobs:
 
   test-pmg-blocks-malicious-package:
     name: PMG - Malicious package should be blocked
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    runs-on: ubuntu-latest
     steps:
       - name: Setup PMG proxy
         uses: safedep/pmg@v1

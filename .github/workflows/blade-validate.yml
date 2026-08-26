@@ -19,12 +19,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup PMG proxy
         id: pmg-setup
-        uses: safedep/pmg@5ac0f275b83d9d5a9342c6aae977ec32fa330daa
+        uses: safedep/pmg@v1
         with:
           server-mode: true
           api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
           tenant-id: ${{ secrets.PMG_TENANT_ID }}
-          timeout-minutes: 5
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -71,7 +70,6 @@ jobs:
           else
             pmg proxy stop || true
           fi
-        timeout-minutes: 2
 
   test:
     name: Run Tests (${{ matrix.shard }})
@@ -86,12 +84,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup PMG proxy
         id: pmg-setup
-        uses: safedep/pmg@5ac0f275b83d9d5a9342c6aae977ec32fa330daa
+        uses: safedep/pmg@v1
         with:
           server-mode: true
           api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
           tenant-id: ${{ secrets.PMG_TENANT_ID }}
-          timeout-minutes: 5
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -117,7 +114,6 @@ jobs:
           else
             pmg proxy stop || true
           fi
-        timeout-minutes: 2
 
   svelte-test:
     name: Run Svelte Tests
@@ -127,12 +123,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup PMG proxy
         id: pmg-setup
-        uses: safedep/pmg@5ac0f275b83d9d5a9342c6aae977ec32fa330daa
+        uses: safedep/pmg@v1
         with:
           server-mode: true
           api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
           tenant-id: ${{ secrets.PMG_TENANT_ID }}
-          timeout-minutes: 5
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -150,7 +145,6 @@ jobs:
           else
             pmg proxy stop || true
           fi
-        timeout-minutes: 2
 
   coverage-report:
     name: Generate Coverage Report
@@ -168,12 +162,11 @@ jobs:
           fetch-depth: 0
       - name: Setup PMG proxy
         id: pmg-setup
-        uses: safedep/pmg@5ac0f275b83d9d5a9342c6aae977ec32fa330daa
+        uses: safedep/pmg@v1
         with:
           server-mode: true
           api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
           tenant-id: ${{ secrets.PMG_TENANT_ID }}
-          timeout-minutes: 5
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -263,4 +256,3 @@ jobs:
           else
             pmg proxy stop || true
           fi
-        timeout-minutes: 2
