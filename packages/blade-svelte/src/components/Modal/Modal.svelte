@@ -10,6 +10,7 @@
     makeAccessible,
     makeAnalyticsAttribute,
     getStyledPropsClasses,
+    logger,
   } from '@razorpay/blade-core/utils';
   import {
     MODAL_Z_INDEX,
@@ -100,6 +101,9 @@
     }
 
     isVisible = false;
+    /* Return focus whenever isOpen flips to false, even when driven by the
+     * parent directly (not just via close()/onDismiss). */
+    returnFocus();
     if (isMounted) {
       unmountTimeoutId = setTimeout(() => {
         unmountTimeoutId = null;
@@ -132,6 +136,49 @@
         clearAllBodyScrollLocks();
       }
     };
+  });
+
+  let portalWrapperEl = $state<HTMLElement | null>(null);
+
+  /* Make background content inert (or aria-hidden as a fallback) while
+   * mounted, so background elements are not focusable/clickable and are
+   * hidden from assistive tech. Restored on unmount. */
+  $effect(() => {
+    if (!isMounted || typeof document === 'undefined' || !portalWrapperEl) return undefined;
+
+    const supportsInert = 'inert' in HTMLElement.prototype;
+    const siblings = Array.from(document.body.children).filter(
+      (el) => el !== portalWrapperEl,
+    ) as HTMLElement[];
+
+    siblings.forEach((el) => {
+      if (supportsInert) {
+        (el as HTMLElement & { inert: boolean }).inert = true;
+      } else {
+        el.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    return () => {
+      siblings.forEach((el) => {
+        if (supportsInert) {
+          (el as HTMLElement & { inert: boolean }).inert = false;
+        } else {
+          el.removeAttribute('aria-hidden');
+        }
+      });
+    };
+  });
+
+  /* APG requires dialogs to have an accessible name. */
+  $effect(() => {
+    if (isMounted && !accessibilityLabel) {
+      logger({
+        message: 'accessibilityLabel is required for Modal to be accessible.',
+        type: 'warn',
+        moduleName: 'Modal',
+      });
+    }
   });
 
   const FOCUSABLE_SELECTOR = [
@@ -217,7 +264,7 @@
 </script>
 
 {#if isMounted}
-  <div use:portal={document.body}>
+  <div bind:this={portalWrapperEl} use:portal={document.body}>
     <div class={modalWrapperClass} style={wrapperStyle} data-blade-component="modal-wrapper">
       <ModalBackdrop />
       <div
