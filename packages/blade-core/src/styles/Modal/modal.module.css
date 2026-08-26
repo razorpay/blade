@@ -1,0 +1,242 @@
+/* Modal — surface, backdrop, header, body, footer.
+ *
+ * Mirrors the React Modal styles in blade/src/components/Modal/. The surface
+ * centers in the viewport for non-`full` sizes (top/left 50% + translate) and
+ * switches to a fixed 8px inset for `size="full"`. Enter/exit is driven by the
+ * `data-state="open|closed"` attribute set from the Svelte component:
+ *   opacity + scale transform on the surface, opacity on the backdrop.
+ *
+ * The wrapper receives the z-index via an inline `--modal-z-index` CSS var. */
+
+/* ===== WRAPPER ===== */
+.wrapper {
+  position: fixed;
+  z-index: var(--modal-z-index, 1000);
+}
+
+/* ===== BACKDROP ===== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--overlay-background-subtle);
+  opacity: 0;
+  pointer-events: none;
+
+  transition-property: opacity;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: var(--easing-exit);
+}
+
+.backdrop[data-state='open'] {
+  opacity: 1;
+  pointer-events: all;
+  transition-timing-function: var(--easing-entrance);
+}
+
+/* ===== SURFACE ===== */
+.surface {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 320px;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--elevation-high-raised);
+  background-color: var(--popup-background-gray-subtle);
+
+  opacity: 0;
+
+  will-change: transform, opacity;
+  transition-property: opacity, transform;
+  transition-duration: var(--duration-moderate);
+  transition-timing-function: var(--easing-exit);
+}
+
+/* Non-full sizes center in the viewport and animate a scale-in. */
+.surface:not(.sizeFull) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  max-height: 80vh;
+  width: calc(100vw - 48px);
+}
+
+.surface:not(.sizeFull)[data-state='open'] {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition-timing-function: var(--easing-entrance);
+}
+
+.sizeSmall {
+  max-width: 400px;
+}
+
+.sizeMedium {
+  max-width: 760px;
+}
+
+.sizeLarge {
+  max-width: 1024px;
+}
+
+/* `full` pins to a fixed 8px inset with no transform (only opacity animates). */
+.sizeFull {
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  width: calc(100vw - 16px);
+  max-width: 100%;
+  max-height: 100vh;
+  transform: none;
+}
+
+.sizeFull[data-state='open'] {
+  opacity: 1;
+  transition-timing-function: var(--easing-entrance);
+}
+
+/* ===== HEADER ===== */
+.header {
+  flex-shrink: 0;
+}
+
+/* Empty header renders only a floating close-button capsule anchored top-right. */
+.emptyHeaderCapsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: var(--spacing-5);
+  right: var(--spacing-5);
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background-color: var(--popup-background-gray-subtle);
+  border-radius: var(--border-radius-max);
+  z-index: 1;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--spacing-5);
+  gap: var(--spacing-3);
+}
+
+.headerLeading {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.headerTitleBlock {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.headerTrailing {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--border-radius-max);
+  color: var(--interactive-icon-gray-muted);
+  flex-shrink: 0;
+  transition-property: color;
+  transition-duration: var(--duration-xquick);
+  transition-timing-function: var(--easing-standard);
+}
+
+.closeButton:hover:not([disabled]),
+.closeButton:active {
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1));
+  outline-offset: 2px;
+  color: var(--interactive-icon-gray-subtle);
+}
+
+.headerCloseButton {
+  margin-left: var(--spacing-3);
+}
+
+.headerDivider {
+  border-bottom-width: var(--border-width-thin);
+  border-bottom-style: solid;
+  border-bottom-color: var(--surface-border-gray-muted);
+  width: 100%;
+}
+
+/* ===== BODY ===== */
+.body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.bodyPaddingDefault {
+  padding: var(--spacing-6);
+}
+
+.bodyPaddingZero {
+  padding: var(--spacing-0);
+}
+
+.bodyHasHeight {
+  height: var(--modal-body-height);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+}
+
+.footerDivider {
+  border-top-width: var(--border-width-thin);
+  border-top-style: solid;
+  border-top-color: var(--surface-border-gray-muted);
+  width: 100%;
+}
+
+.footerInner {
+  padding: var(--spacing-5);
+}
+
+@media (min-width: 768px) {
+  .headerContent {
+    padding: var(--spacing-6);
+  }
+
+  .footerInner {
+    padding: var(--spacing-6);
+  }
+}
