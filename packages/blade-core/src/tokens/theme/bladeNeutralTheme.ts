@@ -257,7 +257,7 @@ const colors: ColorsWithModes = {
         },
         staticBlack: {
           default: globalColors.neutral.black[500],
-          highlighted: globalColors.neutral.black[450],
+          highlighted: globalColors.neutral.black[500],
           disabled: globalColors.neutral.black[200],
           faded: globalColors.neutral.black[50],
           fadedHighlighted: globalColors.neutral.black[100],
@@ -379,6 +379,12 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.white[300],
           disabled: globalColors.neutral.white[100],
         },
+        onNeutral: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[500],
+          muted: globalColors.neutral.white[500],
+          disabled: globalColors.neutral.white[500],
+        },
         staticWhite: {
           normal: globalColors.neutral.white[500],
           subtle: globalColors.neutral.white[400],
@@ -440,6 +446,12 @@ const colors: ColorsWithModes = {
           subtle: globalColors.neutral.white[400],
           muted: globalColors.neutral.white[300],
           disabled: globalColors.neutral.white[100],
+        },
+        onNeutral: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[500],
+          muted: globalColors.neutral.white[500],
+          disabled: globalColors.neutral.white[500],
         },
         staticWhite: {
           normal: globalColors.neutral.white[500],
@@ -1079,6 +1091,12 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.white[300],
           disabled: globalColors.neutral.white[100],
         },
+        onNeutral: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[500],
+          muted: globalColors.neutral.white[500],
+          disabled: globalColors.neutral.white[500],
+        },
         staticWhite: {
           normal: globalColors.neutral.white[500],
           subtle: globalColors.neutral.white[400],
@@ -1140,6 +1158,12 @@ const colors: ColorsWithModes = {
           subtle: globalColors.neutral.white[400],
           muted: globalColors.neutral.white[300],
           disabled: globalColors.neutral.white[100],
+        },
+        onNeutral: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[500],
+          muted: globalColors.neutral.white[500],
+          disabled: globalColors.neutral.white[500],
         },
         staticWhite: {
           normal: globalColors.neutral.white[500],
