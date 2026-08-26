@@ -10,7 +10,7 @@
 
 ### Patch Changes
 
-- 9edbd8f33: feat(tokens): added a new token for svelte `onNeutral` in `interactive.text` & `interactive.icon` along with minor updates
+- 9edbd8f33: feat(tokens): added a new token for svelte `onNeutral` in `interactive.text` & `interactive.icon` along with minor updates on neutral palette.
 
 ## 0.12.1
 
