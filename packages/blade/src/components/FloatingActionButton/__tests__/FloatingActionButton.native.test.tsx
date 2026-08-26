@@ -118,4 +118,14 @@ describe('<FloatingActionButton /> (native)', () => {
 
     expect(getByLabelText('Create payment')).toBeTruthy();
   });
+
+  it('should render a loading neutral button with an inverted spinner', () => {
+    const { toJSON } = renderWithTheme(
+      <FloatingActionButton icon={PlusIcon} color="neutral" isLoading>
+        Create payment
+      </FloatingActionButton>,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

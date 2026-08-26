@@ -400,7 +400,7 @@ const spinnerColor = {
   neutral: {
     // The primary emphasis renders content on a filled neutral surface, so the
     // spinner follows the same inverted treatment as the label.
-    primary: 'white',
+    primary: 'onNeutral',
     secondary: 'neutral',
   },
 } as const;
