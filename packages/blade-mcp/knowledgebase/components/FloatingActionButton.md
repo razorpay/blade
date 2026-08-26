@@ -40,7 +40,7 @@ type FloatingActionButtonCommonProps = {
    *
    * @default 'primary'
    */
-  color?: 'primary' | 'white' | 'black';
+  color?: 'primary' | 'white' | 'neutral';
 
   /**
    * Corner of the viewport the button is anchored to.
@@ -139,7 +139,7 @@ type FloatingActionButtonProps =
 - Always pass `accessibilityLabel` when rendering the icon-only form, so screen readers can name the action.
 - Keep the label to one or two words — the button floats over content, so it should stay compact.
 - Raise `offset` when the button would otherwise overlap fixed content at the bottom of the page.
-- Use `color="white"` or `color="black"` when the button sits over a colored or image background that the `primary` blue would not read against.
+- Use `color="white"` or `color="neutral"` when the button sits over a colored or image background that the `primary` blue would not read against.
 
 **Don't**
 

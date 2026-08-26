@@ -557,7 +557,7 @@ exports[`<FloatingActionButton /> (native) should render as an icon-only button 
 </View>
 `;
 
-exports[`<FloatingActionButton /> (native) should render black color 1`] = `
+exports[`<FloatingActionButton /> (native) should render neutral color 1`] = `
 <View
   style={
     {
@@ -644,15 +644,15 @@ exports[`<FloatingActionButton /> (native) should render black color 1`] = `
         buttonPaddingRight="16px"
         buttonPaddingTop="0px"
         collapsable={false}
-        color="black"
+        color="neutral"
         data-blade-component="button"
         defaultBackgroundColor="hsla(0, 0%, 0%, 1)"
         defaultBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 1), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
-        focusBackgroundColor="hsla(0, 0%, 0%, 1)"
+        focusBackgroundColor="hsla(0, 0%, 0%, 0.88)"
         focusBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 1), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
-        focusRingColor="hsla(218, 89%, 51%, 0.18)"
+        focusRingColor="hsla(206, 10%, 29%, 0.12)"
         focusable={true}
-        hoverBackgroundColor="hsla(0, 0%, 0%, 1)"
+        hoverBackgroundColor="hsla(0, 0%, 0%, 0.88)"
         hoverBoxShadow="inset 0 -1.5px 0px 0px hsla(0, 0%, 0%, 1), inset 0 0px 0px 0.5px hsla(0, 0%, 0%, 1), inset 0 1.5px 0px 0px hsla(0, 0%, 100%, 0.32), inset 0 -2px 0px 0px hsla(0, 0%, 100%, 0.32)"
         hoverIconColor="hsla(0, 0%, 100%, 1)"
         isFullWidth={false}
@@ -1104,7 +1104,7 @@ exports[`<FloatingActionButton /> (native) should render black color 1`] = `
             </View>
             <Text
               accessible={true}
-              color="interactive.text.staticWhite.normal"
+              color="interactive.text.onNeutral.normal"
               data-blade-component="base-text"
               fontSize={200}
               fontWeight="medium"

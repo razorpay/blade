@@ -88,12 +88,7 @@ type BaseButtonCommonProps = {
     | 'notice'
     | 'information'
     | 'neutral'
-    | 'transparent'
-    /**
-     * Only supported with `variant="primary"`. Consumed by FloatingActionButton
-     * and intentionally not exposed on `Button`.
-     */
-    | 'black';
+    | 'transparent';
   /**
    * Overrides the size-derived border radius. Used by FloatingActionButton to
    * render a pill. `round` is excluded because a percentage radius distorts on
@@ -142,14 +137,23 @@ type BaseButtonColorTokenModifiers = {
 };
 
 /**
- * `white`, `black` and `transparent` are not feedback colors, so the token
- * factories are still called with `primary` and the value is looked up under its
- * own key instead of under `base`.
+ * `white` and `transparent` are not feedback colors, so the token factories are
+ * still called with `primary` and the value is looked up under its own key
+ * instead of under `base`.
  */
 const isStaticOrTransparentColor = (
   color: BaseButtonProps['color'],
-): color is 'white' | 'black' | 'transparent' =>
-  color === 'white' || color === 'black' || color === 'transparent';
+): color is 'white' | 'transparent' => color === 'white' || color === 'transparent';
+
+/**
+ * The filled `neutral` surface needs inverted content and a heavier inner shadow
+ * than the shared feedback treatment, so its `primary` emphasis is looked up
+ * under a dedicated key. The remaining emphases fall back to `base`.
+ */
+const isFilledNeutral = (
+  color: BaseButtonProps['color'],
+  variant: NonNullable<BaseButtonProps['variant']>,
+): boolean => color === 'neutral' && variant === 'primary';
 
 const getSpinnerColor = ({
   variant,
@@ -158,28 +162,13 @@ const getSpinnerColor = ({
   variant: NonNullable<BaseButtonProps['variant']>;
   color: NonNullable<BaseButtonProps['color']>;
 }): BaseSpinnerProps['color'] => {
-  // `black` only exists as a primary button, so it is looked up separately from
-  // the colors that carry a full variant record.
-  if (color === 'black') {
-    return spinnerColor.black.primary;
-  }
-
   if (color !== 'primary' && color !== 'transparent' && color in spinnerColor) {
-    return spinnerColor[color as Exclude<keyof typeof spinnerColor, 'base' | 'black'>][
+    return spinnerColor[color as Exclude<keyof typeof spinnerColor, 'base'>][
       variant as 'primary' | 'secondary'
     ];
   }
 
   return spinnerColor.base[variant];
-};
-
-const assertBlackIsPrimary = (variant: NonNullable<BaseButtonProps['variant']>): void => {
-  if (variant !== 'primary') {
-    throwBladeError({
-      moduleName: 'BaseButton',
-      message: `Black color can only be used with primary variant but received "${variant}"`,
-    });
-  }
 };
 
 const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
@@ -201,18 +190,13 @@ export const getBackgroundColorToken = ({
 }: BaseButtonColorTokenModifiers) => {
   const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
 
-  // For white, black and transparent colors, we use 'primary' as the base color
-  // since the actual token lookup uses the white/black/transparent specific paths
+  // For white and transparent colors, we use 'primary' as the base color
+  // since the actual token lookup uses the white/transparent specific paths
   const gradientColor = isStaticOrTransparentColor(color) || !color ? 'primary' : color;
   const tokens = backgroundGradient(gradientColor);
 
   if (color === 'white') {
     return tokens.white[variant][_state];
-  }
-
-  if (color === 'black') {
-    assertBlackIsPrimary(variant);
-    return tokens.black.primary[_state];
   }
 
   if (color === 'transparent') {
@@ -248,9 +232,8 @@ export const getBoxShadowToken = ({
     return tokens.white[variant][_state];
   }
 
-  if (color === 'black') {
-    assertBlackIsPrimary(variant);
-    return tokens.black.primary[_state];
+  if (isFilledNeutral(color, variant)) {
+    return tokens.neutral.primary[_state];
   }
 
   if (color === 'transparent') {
@@ -280,9 +263,8 @@ export const getTextColorToken = ({
     return tokens.white[variant][_state];
   }
 
-  if (color === 'black') {
-    assertBlackIsPrimary(variant);
-    return tokens.black.primary[_state];
+  if (isFilledNeutral(color, variant)) {
+    return tokens.neutral.primary[_state];
   }
 
   if (color === 'transparent') {
@@ -500,7 +482,14 @@ const getProps = ({
       getBackgroundColorToken({ variant, color, state: 'focus' }),
     ),
     focusBoxShadow: getBoxShadow('focus', color),
-    focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
+    // The system focus ring is a faded primary blue, which the design replaces
+    // with a faded neutral ring on the filled neutral surface.
+    focusRingColor: getIn(
+      theme.colors,
+      isFilledNeutral(color, variant)
+        ? 'interactive.border.neutral.faded'
+        : 'surface.border.primary.muted',
+    ),
     borderRadius: makeBorderSize(theme.border.radius[_borderRadius ?? buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
