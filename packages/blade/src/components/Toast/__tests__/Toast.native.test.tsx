@@ -122,7 +122,7 @@ describe('useToastActions (native)', () => {
 
   it('does not subscribe to toast-state changes (no re-render on show)', () => {
     let renderCount = 0;
-    const TestComponent = () => {
+    const TestComponent = (): React.ReactElement | null => {
       renderCount++;
       useToastActions();
       return null;
