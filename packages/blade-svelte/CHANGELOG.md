@@ -1,5 +1,26 @@
 # @razorpay/blade-svelte
 
+## 0.13.0
+
+### Minor Changes
+
+- 29ca5194c: feat: add `black` color variant to Button
+
+  fix: focus-ring transition and offset flash on inputs
+
+  fix: use `bladeTheme` as default Storybook theme in blade-svelte
+
+### Patch Changes
+
+- a98fed065: fix(Button): use `interactive.border.neutral.faded` for the neutral variant's focus ring instead of the shared blue ring used by primary/positive/negative
+
+  fix: correct several Button Storybook stories where Controls didn't drive the rendered output (hardcoded `asChild` demos, dead `variant`/`color` controls on loading-matrix stories)
+
+- a61f11e3d: fix(Button): remove redundant focus-ring-parent/child classes so secondary button shows a single focus ring instead of an extra box around the text
+- Updated dependencies [a98fed065]
+- Updated dependencies [29ca5194c]
+  - @razorpay/blade-core@0.14.0
+
 ## 0.12.1
 
 ### Patch Changes
