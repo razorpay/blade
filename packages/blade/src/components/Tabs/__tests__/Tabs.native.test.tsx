@@ -45,6 +45,26 @@ describe('Tabs', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render with filled variant and small size', () => {
+    const { toJSON } = renderWithTheme(
+      <Tabs variant="filled" size="small">
+        <TabList>
+          <TabItem value="payments">Payments</TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+        </TabList>
+
+        <TabPanel value="payments">
+          <Text>Payments Panel</Text>
+        </TabPanel>
+        <TabPanel value="refunds">
+          <Text>Refunds Panel</Text>
+        </TabPanel>
+      </Tabs>,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render with isFullWidthTabItem', () => {
     const { toJSON } = renderWithTheme(
       <Tabs isFullWidthTabItem>
