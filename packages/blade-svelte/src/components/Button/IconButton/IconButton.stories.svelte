@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import IconButton from './IconButton.svelte';
   import { iconMap } from '../../Icons/iconMap';
@@ -15,6 +15,8 @@
       emphasis: 'intense',
       accessibilityLabel: 'Close',
       icon: CloseIcon,
+      isDisabled: false,
+      isHighlighted: false,
     },
     argTypes: {
       icon: {
