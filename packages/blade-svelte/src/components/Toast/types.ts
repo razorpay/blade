@@ -142,15 +142,24 @@ export type BladeToast = ToastProps & {
 };
 
 /**
+ * Imperative toast actions — the subset of `UseToastReturn` that does
+ * not include the reactive `toasts` store. Returned by `useToastActions()`
+ * for consumers that only need to show/dismiss toasts and want to avoid
+ * re-rendering on toast-state changes.
+ */
+export type ToastActions = {
+  show: (props: ToastProps) => string;
+  dismiss: (id?: string) => void;
+};
+
+/**
  * Return shape of the `useToast` helper.
  *
  * `toasts` is the live `writable` from `toastStore` so consumers can either
  * `$toasts` (auto-subscribe inside Svelte) or call `toasts.subscribe(...)`
  * outside Svelte.
  */
-export type UseToastReturn = {
-  show: (props: ToastProps) => string;
-  dismiss: (id?: string) => void;
+export type UseToastReturn = ToastActions & {
   toasts: Writable<BladeToast[]>;
 };
 

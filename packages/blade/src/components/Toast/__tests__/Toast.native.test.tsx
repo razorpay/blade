@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toast } from '../Toast.native';
 import { ToastContainer } from '../ToastContainer.native';
-import { toastStore, TOAST_REJECTED } from '../useToast.native';
+import { toastStore, TOAST_REJECTED, useToastActions } from '../useToast.native';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Toast /> (native)', () => {
@@ -83,5 +83,59 @@ describe('toastStore (native)', () => {
     toastStore.dismiss(id);
     expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(false);
     jest.advanceTimersByTime(2000);
+  });
+});
+
+describe('useToastActions (native)', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+    toastStore.dismiss();
+    jest.runAllTimers();
+    jest.useRealTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('returns referentially-stable show and dismiss', () => {
+    const a = useToastActions();
+    const b = useToastActions();
+    expect(a.show).toBe(b.show);
+    expect(a.dismiss).toBe(b.dismiss);
+  });
+
+  it('show delegates to toastStore.show', () => {
+    const { show } = useToastActions();
+    const id = show({ content: 'Hello' });
+    expect(id).not.toBe(TOAST_REJECTED);
+    expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(true);
+  });
+
+  it('dismiss delegates to toastStore.dismiss', () => {
+    const { show, dismiss } = useToastActions();
+    const id = show({ content: 'Hello' });
+    expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(true);
+    dismiss(id);
+    expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(false);
+  });
+
+  it('does not subscribe to toast-state changes (no re-render on show)', () => {
+    let renderCount = 0;
+    const TestComponent = () => {
+      renderCount++;
+      useToastActions();
+      return null;
+    };
+
+    renderWithTheme(<TestComponent />);
+    const initialRenderCount = renderCount;
+
+    // Show and dismiss toasts — the component should NOT re-render
+    toastStore.show({ content: 'Toast A' });
+    toastStore.show({ content: 'Toast B' });
+    toastStore.dismiss();
+
+    expect(renderCount).toBe(initialRenderCount);
   });
 });

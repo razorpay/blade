@@ -85,6 +85,12 @@ type UseToastReturn = {
   show: (props: ToastProps) => string; // Show a toast and return its ID
   dismiss: (id?: string) => void; // Dismiss a specific toast or all toasts
 };
+
+// Return type of useToastActions hook (no toasts list — no subscription)
+type ToastActions = {
+  show: (props: ToastProps) => string;
+  dismiss: (id?: string) => void;
+};
 ```
 
 ## Usage Guidelines
@@ -93,6 +99,7 @@ type UseToastReturn = {
 
 - Use `Toast` for brief, non-critical feedback after user actions (e.g., "Item saved", "Payment successful").
 - Use the imperative `useToast()` hook API — call `toast.show()` and `toast.dismiss()`.
+- Use `useToastActions()` instead of `useToast()` when your component only needs to show/dismiss toasts and never reads the active toasts list. This avoids unnecessary re-renders — `show` and `dismiss` are referentially stable and the hook does not subscribe to toast-state changes.
 - Place `<ToastContainer />` once at the root of your app, outside nested `BladeProvider` instances.
 - Use `type="informational"` (default) with auto-dismiss for transient confirmations.
 - Use `type="promotional"` for richer content that requires user acknowledgment.
@@ -131,6 +138,33 @@ function BasicToastExample() {
             content: 'Payment successful',
             color: 'positive',
           });
+        }}
+      >
+        Show Success Toast
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Actions-Only Usage (useToastActions)
+
+Use `useToastActions()` when your component only needs to trigger toasts. The returned `show` and `dismiss` are referentially stable and the hook does **not** subscribe to toast-state changes, so the component will not re-render when toasts are shown or dismissed.
+
+```tsx
+import { ToastContainer, useToastActions, Box, Button } from '@razorpay/blade/components';
+
+function ActionsOnlyToastExample() {
+  // show and dismiss are stable — same reference across re-renders
+  const { show, dismiss } = useToastActions();
+
+  return (
+    <Box>
+      <ToastContainer />
+
+      <Button
+        onClick={() => {
+          show({ content: 'Payment successful', color: 'positive' });
         }}
       >
         Show Success Toast

@@ -4,10 +4,13 @@ import { logger } from '~utils/logger';
 
 type ToastEntry = ToastProps & { id: string; visible: boolean };
 
-type UseToastReturn = {
-  toasts: ToastEntry[];
+type ToastActions = {
   show: (props: ToastProps) => string;
   dismiss: (id?: string) => void;
+};
+
+type UseToastReturn = ToastActions & {
+  toasts: ToastEntry[];
 };
 
 // Mirrors the exit animation duration in Toast.native.tsx + a small grace
@@ -135,6 +138,23 @@ class ToastStore {
 
 const toastStore = new ToastStore();
 
+/**
+ * Returns referentially-stable `show` and `dismiss` functions that do
+ * **not** subscribe to the toast-state store.
+ *
+ * Use this instead of `useToast()` when your component only needs to
+ * trigger toasts and never reads the active toasts list. Components
+ * using `useToastActions()` will NOT re-render when toasts are shown
+ * or dismissed.
+ *
+ * On native, `toastStore.show` and `toastStore.dismiss` are already
+ * stable (singleton class methods), so this hook simply returns them
+ * without calling `useSyncExternalStore`.
+ */
+const useToastActions = (): ToastActions => {
+  return { show: toastStore.show, dismiss: toastStore.dismiss };
+};
+
 const useToast = (): UseToastReturn => {
   const toasts = React.useSyncExternalStore(
     toastStore.subscribe,
@@ -144,5 +164,5 @@ const useToast = (): UseToastReturn => {
   return { toasts, show: toastStore.show, dismiss: toastStore.dismiss };
 };
 
-export type { UseToastReturn };
-export { useToast, toastStore, TOAST_REJECTED };
+export type { UseToastReturn, ToastActions };
+export { useToast, useToastActions, toastStore, TOAST_REJECTED };
