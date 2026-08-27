@@ -321,7 +321,6 @@
       baseButtonClasses,
       isIndefiniteLoading ? buttonClasses.loading : '',
       isDefiniteLoading ? buttonClasses.definiteLoading : '',
-      'focus-ring-parent',
     ];
     return classes.filter(Boolean).join(' ');
   });
@@ -517,7 +516,7 @@
     {#if isIndefiniteLoading}
       <span class={buttonClasses.dotsLoader} style:--btn-dots-color={dotsColorCSSVar}></span>
     {/if}
-    <span class={cx(buttonClasses.content, isIndefiniteLoading && buttonClasses.loading, 'focus-ring-child')}>
+    <span class={cx(buttonClasses.content, isIndefiniteLoading && buttonClasses.loading)}>
       {#if Icon && iconPosition === 'left'}
         <span class={cx(buttonClasses.icon, resolvedStyleOverride?.icon)}>
           <Icon size={iconSize} color={iconRenderColor} />
