@@ -145,7 +145,7 @@
   /* ===== THEME TOKENS - LIGHT MODE ===== */
 
   /* Surface Colors */
-  --surface-background-gray-subtle: hsla(200, 10%, 94%, 1);
+  --surface-background-gray-subtle: hsla(0, 0%, 97%, 1);
   --surface-background-gray-moderate: hsla(0, 0%, 97%, 1);
   --surface-background-gray-intense: hsla(0, 0%, 100%, 1);
   --surface-background-primary-faint: transparent;
@@ -261,9 +261,9 @@
   --interactive-background-information-disabled: hsla(200, 100%, 41%, 0.09);
   --interactive-background-information-faded: hsla(200, 100%, 41%, 0.09);
   --interactive-background-information-faded-highlighted: hsla(200, 100%, 41%, 0.18);
-  --interactive-background-neutral-default: hsla(205, 10%, 24%, 1);
-  --interactive-background-neutral-highlighted: hsla(200, 10%, 18%, 1);
-  --interactive-background-neutral-disabled: hsla(206, 10%, 29%, 0.18);
+  --interactive-background-neutral-default: hsla(0, 0%, 0%, 1);
+  --interactive-background-neutral-highlighted: hsla(0, 0%, 0%, 0.88);
+  --interactive-background-neutral-disabled: hsla(0, 0%, 0%, 0.18);
   --interactive-background-neutral-faded: hsla(206, 10%, 29%, 0.12);
   --interactive-background-neutral-faded-highlighted: hsla(206, 10%, 29%, 0.18);
   --interactive-background-gray-default: hsla(206, 10%, 29%, 0.06);
@@ -305,8 +305,8 @@
   --interactive-border-information-highlighted: hsla(200, 100%, 33%, 1);
   --interactive-border-information-disabled: hsla(200, 100%, 41%, 0.18);
   --interactive-border-information-faded: hsla(200, 100%, 41%, 0.18);
-  --interactive-border-neutral-default: hsla(200, 11%, 11%, 1);
-  --interactive-border-neutral-highlighted: hsla(0, 0%, 2%, 1);
+  --interactive-border-neutral-default: hsla(0, 0%, 0%, 1);
+  --interactive-border-neutral-highlighted: hsla(0, 0%, 0%, 0.88);
   --interactive-border-neutral-disabled: hsla(203, 8%, 80%, 1);
   --interactive-border-neutral-faded: hsla(206, 10%, 29%, 0.12);
   --interactive-border-gray-default: hsla(204, 8%, 88%, 1);
@@ -359,6 +359,10 @@
   --interactive-text-on-primary-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-text-on-primary-muted: hsla(0, 0%, 100%, 0.64);
   --interactive-text-on-primary-disabled: hsla(0, 0%, 100%, 0.32);
+  --interactive-text-on-neutral-normal: hsla(0, 0%, 100%, 1);
+  --interactive-text-on-neutral-subtle: hsla(0, 0%, 100%, 0.8);
+  --interactive-text-on-neutral-muted: hsla(0, 0%, 100%, 0.64);
+  --interactive-text-on-neutral-disabled: hsla(0, 0%, 100%, 0.32);
   --interactive-text-static-white-normal: hsla(0, 0%, 100%, 1);
   --interactive-text-static-white-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-text-static-white-muted: hsla(0, 0%, 100%, 0.64);
@@ -399,6 +403,10 @@
   --interactive-icon-on-primary-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-icon-on-primary-muted: hsla(0, 0%, 100%, 0.64);
   --interactive-icon-on-primary-disabled: hsla(0, 0%, 100%, 0.32);
+  --interactive-icon-on-neutral-normal: hsla(0, 0%, 100%, 1);
+  --interactive-icon-on-neutral-subtle: hsla(0, 0%, 100%, 0.8);
+  --interactive-icon-on-neutral-muted: hsla(0, 0%, 100%, 0.64);
+  --interactive-icon-on-neutral-disabled: hsla(0, 0%, 100%, 0.32);
   --interactive-icon-static-white-normal: hsla(0, 0%, 100%, 1);
   --interactive-icon-static-white-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-icon-static-white-muted: hsla(0, 0%, 100%, 0.64);

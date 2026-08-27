@@ -130,17 +130,16 @@
 }
 
 /*
- * Neutral reuses the filled pattern. Its border/bottom-bevel are both pure black, so
- * `--btn-accent-border-*` map to the static-black tokens; `--btn-accent-bevel`
- * overrides the top/bottom white bevel with the higher-contrast faded-highlighted
- * token the design specifies for a dark surface.
+ * Neutral reuses the filled pattern. `--btn-accent-bevel` overrides the top/bottom
+ * white bevel with the higher-contrast faded-highlighted token the design specifies
+ * for a dark surface.
  */
 .color-neutral {
-  --btn-accent-bg-default: var(--interactive-background-static-black-default);
-  --btn-accent-bg-highlighted: var(--interactive-background-static-black-highlighted);
-  --btn-accent-bg-disabled: var(--interactive-background-static-black-disabled);
-  --btn-accent-border-default: var(--interactive-border-static-black-highlighted);
-  --btn-accent-border-highlighted: var(--interactive-background-static-black-highlighted);
+  --btn-accent-bg-default: var(--interactive-background-neutral-default);
+  --btn-accent-bg-highlighted: var(--interactive-background-neutral-highlighted);
+  --btn-accent-bg-disabled: var(--interactive-background-neutral-disabled);
+  --btn-accent-border-default: var(--interactive-border-neutral-default);
+  --btn-accent-border-highlighted: var(--interactive-border-neutral-highlighted);
   --btn-accent-bevel: var(--interactive-border-static-white-faded-highlighted);
 }
 
