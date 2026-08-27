@@ -19,11 +19,10 @@ The Figma spec is, geometrically and tonally, `Button` at `size="large"` with tw
 
 Reimplementing these in a standalone component would have duplicated the press animation, the loading state, the native SVG inset-shadow overlay, the link handling and the analytics wiring — and would have let the FAB drift away from `Button` whenever the shared token map changes. So `FloatingActionButton` renders `BaseButton` with `variant="primary"` and `size="large"` and adds only what the spec actually introduces.
 
-`BaseButton` gained three private props for this (it is an internal component, so this follows the existing `_isNestedDropdown` / `isInsideFullWidthButtonGroup` convention):
+`BaseButton` gained two private props for this (it is an internal component, so this follows the existing `_isNestedDropdown` / `isInsideFullWidthButtonGroup` convention):
 
 - `_borderRadius` — overrides the size-derived radius so the FAB can use `border.radius.max`.
 - `_spinnerColor` — overrides the loading spinner colour, because the FAB's contrast requirements differ from `Button`'s (see below).
-- `color="black"` — a new value in the internal colour union, additive to the shared token maps.
 
 ## Why `elevation` lives on a wrapper, not on the button
 
@@ -79,7 +78,7 @@ type FloatingActionButtonProps = {
   /**
    * @default 'primary'
    */
-  color?: 'primary' | 'white' | 'black';
+  color?: 'primary' | 'white' | 'neutral';
 
   /**
    * Corner of the viewport the button is anchored to.
@@ -132,11 +131,11 @@ type FloatingActionButtonProps = {
 
 **No `variant` prop.** All three colours in the spec are the `primary` emphasis; `secondary`/`tertiary` FABs do not exist. `color` alone therefore covers the full matrix.
 
-**`color` uses `black`, not `staticBlack`.** `Button` already exposes `white` (not `staticWhite`) for the equivalent token family, so `black` keeps the two components readable side by side. The value stays internal to `BaseButton` — it is deliberately *not* added to `Button`'s public colour union, since design has not specified a black `Button`.
+**`color` uses `neutral`, which is a shared `BaseButton` colour rather than a FAB-only one.** The dark FAB is the same treatment as a filled `neutral` button: `interactive.background.neutral.*` for the surface and `interactive.*.onNeutral.*` for the content, both of which invert with the theme. Only the `primary` emphasis is specified, so `neutral` keeps its existing `secondary` behaviour and picks up the dedicated treatment only when `variant="primary"`. `neutral` is deliberately *not* added to `Button`'s public colour union, since design has not specified a neutral `Button`.
 
 **`offset` is a single token rather than per-axis.** It covers the common case, and `StyledPropsBlade` is applied after the placement styles, so a caller needing asymmetric offsets (for example clearing a `BottomNav`) can pass `bottom="spacing.10"` directly without a second offset API.
 
-**Spinner colour is set explicitly per FAB colour.** `BaseButton`'s shared `spinnerColor` map would render a white spinner on the white FAB, which is invisible. The FAB passes `white` for `primary` and `black`, and `neutral` for `white`, matching the spec's loading state. This is scoped to the FAB rather than fixed in the shared map, which would change `Button`'s appearance.
+**Spinner colour is set explicitly per FAB colour.** `BaseButton`'s shared `spinnerColor` map would render a white spinner on the white FAB and a blue one on the primary FAB, both of which are invisible. The FAB passes `white` for `primary` and `neutral`, and `neutral` for `white`, matching the spec's loading state. This is scoped to the FAB rather than fixed in the shared map, which would change `Button`'s appearance.
 
 ## Accessibility
 

@@ -28,7 +28,7 @@ describe('<FloatingActionButton /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it.each(['primary', 'white', 'black'] as const)('should render %s color', (color) => {
+  it.each(['primary', 'white', 'neutral'] as const)('should render %s color', (color) => {
     const { toJSON } = renderWithTheme(
       <FloatingActionButton icon={PlusIcon} color={color}>
         Create payment
@@ -117,5 +117,15 @@ describe('<FloatingActionButton /> (native)', () => {
     );
 
     expect(getByLabelText('Create payment')).toBeTruthy();
+  });
+
+  it('should render a loading neutral button with an inverted spinner', () => {
+    const { toJSON } = renderWithTheme(
+      <FloatingActionButton icon={PlusIcon} color="neutral" isLoading>
+        Create payment
+      </FloatingActionButton>,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
   });
 });

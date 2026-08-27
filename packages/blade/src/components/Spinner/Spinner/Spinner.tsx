@@ -9,7 +9,7 @@ type SpinnerProps = BaseSpinnerProps & {
    *
    * @default 'default'
    */
-  color?: 'primary' | 'neutral' | 'white';
+  color?: 'primary' | 'neutral' | 'white' | 'onNeutral';
 };
 
 const _Spinner = (

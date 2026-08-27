@@ -62,15 +62,6 @@ const backgroundGradient = (color: FeedbackColors | 'primary') => {
         disabled: 'interactive.background.gray.disabled',
       },
     },
-    // Only the `primary` emphasis exists in the design for the black color, which
-    // is currently used by FloatingActionButton and is not exposed on `Button`.
-    black: {
-      primary: {
-        default: 'interactive.background.staticBlack.default',
-        highlighted: 'interactive.background.staticBlack.highlighted',
-        disabled: 'interactive.background.staticBlack.fadedHighlighted',
-      },
-    },
   } as const;
 };
 
@@ -98,7 +89,7 @@ const boxShadow = (
     'primary' | 'secondary' | 'tertiary',
     Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>
   >;
-  black: Record<'primary', Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>>;
+  neutral: Record<'primary', Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>>;
 } => {
   return {
     base: {
@@ -194,7 +185,7 @@ const boxShadow = (
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
       },
     },
-    black: {
+    neutral: {
       primary: {
         default: [
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.highlighted' },
@@ -250,11 +241,11 @@ const textColor = (property: 'icon' | 'text') => {
         disabled: `interactive.${property}.staticWhite.disabled`,
       },
     },
-    black: {
+    neutral: {
       primary: {
-        default: `interactive.${property}.staticWhite.normal`,
-        highlighted: `interactive.${property}.staticWhite.normal`,
-        disabled: `interactive.${property}.staticWhite.disabled`,
+        default: `interactive.${property}.onNeutral.normal`,
+        highlighted: `interactive.${property}.onNeutral.normal`,
+        disabled: `interactive.${property}.onNeutral.disabled`,
       },
     },
     transparent: {
@@ -390,9 +381,6 @@ const spinnerColor = {
     secondary: 'white',
     tertiary: 'white',
   },
-  black: {
-    primary: 'white',
-  },
   positive: {
     primary: 'positive',
     secondary: 'positive',
@@ -410,7 +398,9 @@ const spinnerColor = {
     secondary: 'information',
   },
   neutral: {
-    primary: 'neutral',
+    // The primary emphasis renders content on a filled neutral surface, so the
+    // spinner follows the same inverted treatment as the label.
+    primary: 'onNeutral',
     secondary: 'neutral',
   },
 } as const;

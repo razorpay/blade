@@ -24,7 +24,7 @@ describe('<FloatingActionButton />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it.each(['primary', 'white', 'black'] as const)('should render %s color', (color) => {
+  it.each(['primary', 'white', 'neutral'] as const)('should render %s color', (color) => {
     const { container } = renderWithTheme(
       <FloatingActionButton icon={PlusIcon} color={color}>
         Create payment
@@ -168,6 +168,16 @@ describe('<FloatingActionButton />', () => {
     );
 
     expect(getByTestId('fab')).toHaveAttribute('data-analytics-name', 'create-payment');
+  });
+
+  it('should render a loading neutral button with an inverted spinner', () => {
+    const { container } = renderWithTheme(
+      <FloatingActionButton icon={PlusIcon} color="neutral" isLoading>
+        Create payment
+      </FloatingActionButton>,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   it('should pass general a11y with a label', async () => {

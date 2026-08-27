@@ -27,7 +27,7 @@ type FloatingActionButtonCommonProps = {
    *
    * @default 'primary'
    */
-  color?: 'primary' | 'white' | 'black';
+  color?: 'primary' | 'white' | 'neutral';
 
   /**
    * Corner of the viewport the button is anchored to.
