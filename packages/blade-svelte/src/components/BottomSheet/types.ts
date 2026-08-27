@@ -71,6 +71,17 @@ export interface BottomSheetProps extends StyledPropsBlade {
    */
   portalTarget?: HTMLElement | null;
 
+  /**
+   * Toggles the drag handle (the pill affordance rendered at the top of the
+   * sheet) and drag-to-move/dismiss gestures. Set to `false` for desktop flows
+   * where dragging is not expected — this hides the handle and disables all
+   * sheet drag gestures. The sheet can still be dismissed via the backdrop,
+   * `esc`, or programmatically.
+   *
+   * @default true
+   */
+  showDragHandle?: boolean;
+
   /** Test ID applied to the surface element. */
   testID?: string;
 

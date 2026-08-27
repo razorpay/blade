@@ -1,5 +1,26 @@
 # @razorpay/blade-svelte
 
+## 0.12.1
+
+### Patch Changes
+
+- 2d5b85d86: feat(blade-svelte): add Modal component
+
+  Adds `Modal`, `ModalHeader`, `ModalBody`, and `ModalFooter` to `@razorpay/blade-svelte`. Focus is trapped within the surface while open, moves to the close button (or a caller-supplied `initialFocusRef`) on open, and returns to the previously focused element on close — including when a controlled `isOpen` prop flips to `false` directly. Background content is marked `inert` (falling back to `aria-hidden` where unsupported) while the modal is mounted, and a dev-only warning is logged if `accessibilityLabel` is missing.
+
+## 0.12.0
+
+### Minor Changes
+
+- 26428686f: feat(blade-svelte): add `showDragHandle` prop to BottomSheet to optionally hide the drag handle
+
+  `BottomSheet` now accepts a `showDragHandle` boolean prop (default `true`). Set it to `false` to hide the drag handle (the pill affordance at the top of the sheet) and disable drag-to-move/dismiss gestures — useful for desktop flows where dragging is not expected. The sheet can still be dismissed via the backdrop, `esc`, or programmatically.
+
+### Patch Changes
+
+- Updated dependencies [73f7e9655]
+  - @razorpay/blade-core@0.12.1
+
 ## 0.11.8
 
 ### Patch Changes

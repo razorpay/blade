@@ -13,6 +13,7 @@
       isOpen: undefined,
       snapPoints: undefined,
       isDismissible: true,
+      showDragHandle: true,
       title: 'Address Details',
       subtitle: 'Saving addresses will improve your checkout experience',
       showBackButton: false,
@@ -23,6 +24,7 @@
       onDismiss: { table: { disable: true } },
       initialFocusRef: { table: { disable: true } },
       isDismissible: { control: 'boolean' },
+      showDragHandle: { control: 'boolean' },
       zIndex: { control: 'number' },
       title: {
         control: 'text',
@@ -64,6 +66,7 @@
 
   /* Default story state (one bucket per story to keep them independent). */
   let isDefaultOpen = $state(false);
+  let isWithoutDragHandleOpen = $state(false);
   let isHeaderFooterOpen = $state(false);
   let isSingleSelectOpen = $state(false);
   let isDropdownButtonOpen = $state(false);
@@ -298,6 +301,37 @@
                 </Checkbox>
                 <Button>Continue</Button>
               </div>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Without Drag Handle — hides the handle and disables drag gestures via showDragHandle={false}. -->
+<Story name="Without Drag Handle">
+  {#snippet template()}
+    <div>
+      <Button onClick={() => (isWithoutDragHandleOpen = true)}>Open</Button>
+      <BottomSheet
+        isOpen={isWithoutDragHandleOpen}
+        onDismiss={() => (isWithoutDragHandleOpen = false)}
+        showDragHandle={false}
+      >
+        {#snippet children()}
+          <BottomSheetHeader title="Terms & Conditions" subtitle="No drag handle is shown." />
+          <BottomSheetBody>
+            {#snippet children()}
+              <Text>
+                The drag handle is hidden and drag-to-move/dismiss is disabled. Dismiss via the
+                backdrop, escape key, or the Continue button below.
+              </Text>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isWithoutDragHandleOpen = false)}>Continue</Button>
             {/snippet}
           </BottomSheetFooter>
         {/snippet}
