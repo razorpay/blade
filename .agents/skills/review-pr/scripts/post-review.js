@@ -221,7 +221,12 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
   return cdnMap;
 }
 
-const screenshotCdnMap = archiveUiScreenshots(reviewJson, repo, prNumber);
+let screenshotCdnMap = {};
+try {
+  screenshotCdnMap = archiveUiScreenshots(reviewJson, repo, prNumber);
+} catch (e) {
+  console.warn('Screenshot archiving failed — continuing without CDN screenshots:', e.message);
+}
 
 // ---------------------------------------------------------------------------
 // Build payload

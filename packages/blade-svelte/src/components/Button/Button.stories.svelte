@@ -46,7 +46,7 @@
       },
       color: {
         control: 'select',
-        options: ['primary', 'white', 'positive', 'negative'],
+        options: ['primary', 'white', 'neutral', 'positive', 'negative'],
         description: 'Color theme of the button',
         table: {
           defaultValue: { summary: 'primary' },

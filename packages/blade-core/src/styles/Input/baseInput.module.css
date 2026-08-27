@@ -55,8 +55,12 @@
 
 .focus-ring-wrapper:focus-within {
   outline: 4px solid var(--surface-border-primary-muted);
-  outline-offset: 0px;
-  transition-property: outline;
+  outline-offset: 1px;
+  /* Transition only outline-width: transitioning the full `outline` shorthand
+   * also animates outline-color from the resting `currentcolor` (dark) to the
+   * muted ring color, which flashes a solid dark outline on focus before it
+   * settles. Animating width alone grows the ring in cleanly (mirrors React). */
+  transition-property: outline-width;
   transition-duration: var(--duration-xgentle);
   transition-timing-function: var(--easing-emphasized);
 }
