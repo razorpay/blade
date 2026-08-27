@@ -12,7 +12,7 @@ import type { BladeElementRef } from '~utils/types';
  */
 const colorToSpinnerColor = {
   primary: 'white',
-  black: 'white',
+  neutral: 'onNeutral',
   white: 'neutral',
 } as const;
 

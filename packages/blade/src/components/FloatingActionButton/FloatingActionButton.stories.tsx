@@ -116,7 +116,7 @@ IconOnly.args = {
 
 export const Colors = (): React.ReactElement => (
   <Box display="flex" flexDirection="column" gap="spacing.5">
-    {(['primary', 'white', 'black'] as const).map((color) => (
+    {(['primary', 'white', 'neutral'] as const).map((color) => (
       <Box key={color} display="flex" flexDirection="column" gap="spacing.3">
         <Text weight="semibold">{color}</Text>
         <Box
