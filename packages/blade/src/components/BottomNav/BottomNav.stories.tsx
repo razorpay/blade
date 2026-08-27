@@ -192,8 +192,15 @@ const BottomNavTemplate: StoryFn<BottomNavProps> = ({ children, ...args }) => {
   );
 };
 
-const WithRoutingTemplate: StoryFn<BottomNavProps> = ({ children, ...args }) => {
+const WithRoutingExample = ({
+  children,
+  args,
+}: {
+  children?: React.ReactNode;
+  args: Omit<BottomNavProps, 'children'>;
+}): React.ReactElement => {
   const [isSideNavOpen, setIsSideNavOpen] = React.useState(false);
+
   return (
     <>
       <Switch>
@@ -214,22 +221,25 @@ const WithRoutingTemplate: StoryFn<BottomNavProps> = ({ children, ...args }) => 
         </SideNavBody>
       </SideNav>
       <BottomNav {...args}>
-        {children ?? (
-          <>
-            {bottomNavItems.slice(0, -1).map((item, index) => (
-              <BottomNavRouterItem key={index} {...item} />
-            ))}
-            <BottomNavRouterItem
-              title="More"
-              onClick={() => setIsSideNavOpen(true)}
-              icon={MenuDotsIcon}
-              activeOnLinks={Object.values(sideNavItems).map((item) => item.href)}
-            />
-          </>
-        )}
+        {children ?? [
+          ...bottomNavItems
+            .slice(0, -1)
+            .map((item, index) => <BottomNavRouterItem key={index} {...item} />),
+          <BottomNavRouterItem
+            key="more"
+            title="More"
+            onClick={() => setIsSideNavOpen(true)}
+            icon={MenuDotsIcon}
+            activeOnLinks={Object.values(sideNavItems).map((item) => item.href)}
+          />,
+        ]}
       </BottomNav>
     </>
   );
+};
+
+const WithRoutingTemplate: StoryFn<BottomNavProps> = ({ children, ...args }) => {
+  return <WithRoutingExample args={args}>{children}</WithRoutingExample>;
 };
 
 export const SimpleBottomNav = BottomNavTemplate.bind({});
