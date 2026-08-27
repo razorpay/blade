@@ -22,6 +22,7 @@ type UseCheckboxGroupProps = Pick<
   | 'defaultValue'
   | 'onChange'
   | 'size'
+  | 'orientation'
 >;
 
 export type State = {
@@ -43,6 +44,7 @@ const useCheckboxGroup = ({
   name,
   necessityIndicator,
   size,
+  orientation,
 }: UseCheckboxGroupProps) => {
   const { platform } = useTheme();
   const { labelId } = useFormId('checkbox-group');
@@ -95,6 +97,7 @@ const useCheckboxGroup = ({
       necessityIndicator,
       state,
       size,
+      orientation,
     };
   }, [
     validationState,
@@ -106,6 +109,7 @@ const useCheckboxGroup = ({
     necessityIndicator,
     state,
     size,
+    orientation,
   ]);
 
   return { state, contextValue, ids: { labelId } };

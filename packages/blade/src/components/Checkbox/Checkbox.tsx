@@ -23,6 +23,8 @@ import { makeSize, useTheme } from '~utils';
 import { getInnerMotionRef, getOuterMotionRef } from '~utils/getMotionRefs';
 import type { MotionMetaProp } from '~components/BaseMotion';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import type { BadgeProps } from '~components/Badge';
+import { Badge } from '~components/Badge';
 
 type OnChange = ({
   isChecked,
@@ -112,6 +114,13 @@ type CheckboxProps = {
    *
    */
   tabIndex?: number;
+  /**
+   * Renders a Badge inline after the checkbox label.
+   * Useful for flagging items, e.g. "Recommended".
+   *
+   * Only supported in vertical `CheckboxGroup` orientation — throws a dev error when used inside a horizontal group.
+   */
+  badge?: Pick<BadgeProps, 'children' | 'color' | 'emphasis' | 'size'>;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade &
@@ -133,6 +142,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     errorText,
     size = 'medium',
     tabIndex,
+    badge,
     testID,
     _motionMeta,
     ...rest
@@ -179,6 +189,14 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
       </CheckboxGroup>
       `,
       );
+    }
+
+    if (badge && groupProps?.orientation === 'horizontal') {
+      throwBladeError({
+        message:
+          'The `badge` prop on <Checkbox /> is not supported when the parent <CheckboxGroup /> has `orientation="horizontal"`. Use `orientation="vertical"` instead.',
+        moduleName: 'Checkbox',
+      });
     }
   }
 
@@ -261,6 +279,9 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               <SelectorTitle size={_size} isDisabled={_isDisabled}>
                 {children}
               </SelectorTitle>
+            ) : null}
+            {badge && groupProps?.orientation !== 'horizontal' ? (
+              <Badge size="small" marginLeft="spacing.2" {...badge} />
             ) : null}
           </BaseBox>
           {showSupportingText ? (
