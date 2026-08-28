@@ -1,22 +1,8 @@
 /**
- * Machine-readable counterpart to the prose safety rules on {@link StyleOverride}.
- * Consumed by docs surfaces and playgrounds so the slot catalog is never retyped by hand.
+ * Runtime slot catalog for components that accept `styleOverride`. Docs surfaces and playgrounds
+ * iterate this instead of retyping slot names by hand, so it cannot drift from the slot unions.
  */
-export type SlotDescriptor = {
-  /** What the slot targets in the rendered DOM. */
-  description: string;
-  /** Properties a consumer class can set on this slot without fighting `@layer blade`. */
-  safeProperties: readonly string[];
-  /** Custom properties to repoint instead of painting {@link SlotDescriptor.unsafeProperties}. */
-  safeTokens?: readonly string[];
-  /**
-   * Properties whose layered pseudo-state rules an unlayered consumer class silently kills
-   * (hover / focus-visible / disabled stop repainting).
-   */
-  unsafeProperties?: readonly string[];
-};
-
-export type SlotMeta<Slot extends string = string> = SlotDescriptor & { name: Slot };
+export type SlotMeta<Slot extends string = string> = { name: Slot };
 
 export type ComponentSlotMeta<Slot extends string = string> = {
   /** Name of the exported slot union, e.g. `'ButtonSlot'`. */
@@ -25,13 +11,13 @@ export type ComponentSlotMeta<Slot extends string = string> = {
 };
 
 /**
- * Keying descriptors by slot name makes metadata exhaustive against the slot union:
- * adding a slot to the union without documenting it fails to compile.
+ * Keying by slot name makes the catalog exhaustive against the slot union: adding a slot to the
+ * union without listing it here fails to compile, and a typo'd name is rejected too.
  */
-export const defineComponentSlotMeta = <Slot extends string>(
+export const defineComponentSlots = <Slot extends string>(
   slotType: string,
-  descriptors: Record<Slot, SlotDescriptor>,
+  slots: Record<Slot, true>,
 ): ComponentSlotMeta<Slot> => ({
   slotType,
-  slots: (Object.keys(descriptors) as Slot[]).map((name) => ({ name, ...descriptors[name] })),
+  slots: (Object.keys(slots) as Slot[]).map((name) => ({ name })),
 });
