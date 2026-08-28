@@ -71,7 +71,7 @@ const borderValueToCss = (value: number | string): string =>
 const emitMap = (map: Record<string, string>): string[] =>
   Object.entries(map).map(([name, value]) => declaration(name, value));
 
-/** Emit color declarations, injecting a `/* <Category> Colors[ suffix] *​/` comment per category. */
+/** Emit color declarations, injecting a labeled section comment per color category. */
 const emitColors = (map: Record<string, string>, commentSuffix = ''): string[] => {
   const lines: string[] = [];
   let lastCategory: string | null = null;
