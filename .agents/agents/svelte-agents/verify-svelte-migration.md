@@ -17,8 +17,8 @@ You are a Senior UI Engineer. Your job is to ensure the Svelte implementation ac
 
 Use the Read tool to load these files before starting:
 
-1. `.claude/rules/svelte-migration.md`
-2. `.claude/rules/agent-base-directory.md`
+1. `.claude/context/svelte-migration.md`
+2. `.claude/context/agent-base-directory.md`
 
 ## Input
 
