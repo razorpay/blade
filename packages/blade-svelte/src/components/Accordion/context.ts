@@ -8,6 +8,8 @@ const ACCORDION_ITEM_CONTEXT_KEY = 'blade-accordion-item-context';
 export type AccordionContextState = {
   expandedIndex: number | undefined;
   defaultExpandedIndex: number | undefined;
+  expandedIndices: number[];
+  allowMultiple: boolean;
   onExpandChange: (index: number) => void;
   showNumberPrefix: boolean;
   variant: AccordionVariantType;

@@ -9,6 +9,7 @@ import type {
   FormInputOnEvent,
   FormInputOnKeyDownEvent,
   KeyboardReturnKeyType,
+  KeyboardType,
   AutoCompleteSuggestionType,
   AutoCapitalize,
 } from '../BaseInput/types';
@@ -74,6 +75,12 @@ interface TextInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute 
   autoFocus?: boolean;
   /** Return-key type on virtual keyboards. */
   keyboardReturnKeyType?: KeyboardReturnKeyType;
+  /**
+   * Overrides the virtual keyboard hint derived from `type` (maps to `inputMode`).
+   * Use `'numeric'` for digit-only entry (card number, CVV) where `type="number"`'s
+   * default `decimal` inputmode would show an unwanted decimal-point key.
+   */
+  keyboardType?: KeyboardType;
   /** Autocomplete suggestion type. */
   autoCompleteSuggestionType?: AutoCompleteSuggestionType;
   /** Autocapitalize behaviour. */

@@ -23,6 +23,9 @@
     children,
     defaultExpandedIndex,
     expandedIndex: controlledExpandedIndex,
+    allowMultiple = false,
+    defaultExpandedIndices,
+    expandedIndices: controlledExpandedIndices,
     onExpandChange,
     showNumberPrefix = false,
     variant = 'transparent',
@@ -59,6 +62,7 @@
   });
 
   let internalExpandedIndex = $state<number | undefined>(defaultExpandedIndex);
+  let internalExpandedIndices = $state<number[]>(defaultExpandedIndices ?? []);
 
   // Registration counter — plain JS, not reactive
   let _itemCounter = 0;
@@ -80,19 +84,35 @@
   const currentExpandedIndex = $derived(
     controlledExpandedIndex !== undefined ? controlledExpandedIndex : internalExpandedIndex,
   );
+  const currentExpandedIndices = $derived(
+    controlledExpandedIndices !== undefined ? controlledExpandedIndices : internalExpandedIndices,
+  );
 
-  const handleExpandChange = (nextExpandedIndex: number) => {
-    if (controlledExpandedIndex !== undefined) {
-      onExpandChange?.({ expandedIndex: nextExpandedIndex });
+  // Toggles `index` in the expanded set when `allowMultiple` is true; otherwise
+  // sets/clears the single expanded index (`-1` = none), matching React's protocol.
+  const handleExpandChange = (index: number) => {
+    if (allowMultiple) {
+      const current = currentExpandedIndices;
+      const next = current.includes(index)
+        ? current.filter((i) => i !== index)
+        : [...current, index];
+      if (controlledExpandedIndices === undefined) {
+        internalExpandedIndices = next;
+      }
+      onExpandChange?.({ expandedIndex: index, expandedIndices: next });
+    } else if (controlledExpandedIndex !== undefined) {
+      onExpandChange?.({ expandedIndex: index });
     } else {
-      internalExpandedIndex = nextExpandedIndex;
-      onExpandChange?.({ expandedIndex: nextExpandedIndex });
+      internalExpandedIndex = index;
+      onExpandChange?.({ expandedIndex: index });
     }
   };
 
   setAccordionContext(() => ({
     expandedIndex: currentExpandedIndex,
     defaultExpandedIndex,
+    expandedIndices: currentExpandedIndices,
+    allowMultiple,
     onExpandChange: handleExpandChange,
     showNumberPrefix,
     variant,

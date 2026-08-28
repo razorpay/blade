@@ -68,7 +68,7 @@ interface OTPInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /** Placeholder — one character per field. */
   placeholder?: string;
   /** Number of OTP fields. @default 6 */
-  otpLength?: 4 | 6;
+  otpLength?: 4 | 6 | 8;
   /** Masks the entered characters (renders `password` after entry). */
   isMasked?: boolean;
   /** Autocomplete suggestion type. @default 'oneTimeCode' */

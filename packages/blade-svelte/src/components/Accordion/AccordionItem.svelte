@@ -18,7 +18,11 @@
   // Register once during initialization — runs in DOM order
   const itemIndex = getAccCtx().registerItem();
 
-  const isExpanded = $derived(accordionCtx.expandedIndex === itemIndex);
+  const isExpanded = $derived(
+    accordionCtx.allowMultiple
+      ? accordionCtx.expandedIndices.includes(itemIndex)
+      : accordionCtx.expandedIndex === itemIndex,
+  );
   const isDefaultExpanded = $derived(accordionCtx.defaultExpandedIndex === itemIndex);
   const variant = $derived(accordionCtx.variant);
   const numberOfItems = $derived(accordionCtx.numberOfItems);
@@ -28,11 +32,17 @@
   const showDivider = $derived(!isLastItem || variant === 'transparent');
 
   // Bridge Collapsible's boolean expand state onto the Accordion's index
-  // protocol: expanding an item sets the accordion to this item's index,
-  // collapsing resets it to -1 (no item expanded).
+  // protocol. Single-expand: expanding an item sets the accordion to this
+  // item's index, collapsing resets it to -1 (no item expanded). Multi-expand:
+  // the accordion toggles this item's membership in the expanded set, so it
+  // only needs the index — the direction is derived from current membership.
   const handleExpandChange = ({ isExpanded: nextIsExpanded }: { isExpanded: boolean }) => {
     if (isDisabled) return;
-    accordionCtx.onExpandChange(nextIsExpanded ? itemIndex : -1);
+    if (accordionCtx.allowMultiple) {
+      accordionCtx.onExpandChange(itemIndex);
+    } else {
+      accordionCtx.onExpandChange(nextIsExpanded ? itemIndex : -1);
+    }
   };
 
   setAccordionItemContext(() => ({
