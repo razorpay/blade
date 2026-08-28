@@ -33,7 +33,8 @@
     "build:rollup:prod": "NODE_ENV=production rollup --config rollup.config.mjs",
     "build:rollup:watch": "NODE_ENV=development rollup --config rollup.config.mjs --watch",
     "test": "vitest run --config vitest.config.ts",
-    "test:watch": "vitest --config vitest.config.ts"
+    "test:watch": "vitest --config vitest.config.ts",
+    "generate:tokens-css": "vite-node --config vitest.config.ts scripts/writeThemeCSS.ts"
   },
   "dependencies": {
     "@razorpay/i18nify-js": "1.12.3",

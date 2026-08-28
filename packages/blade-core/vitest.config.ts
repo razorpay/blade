@@ -11,6 +11,7 @@ export default defineConfig({
       'src/styles/**/*.test.ts',
       'src/tokens/theme/__tests__/createTheme.test.ts',
       'src/tokens/__tests__/theme-css-layers.test.ts',
+      'src/tokens/__tests__/theme-css-generated.test.ts',
     ],
   },
   define: {
