@@ -54,6 +54,8 @@
     onBlur,
     isDisabled = false,
     isRequired = false,
+    readOnly = false,
+    spellCheck,
     leadingIcon,
     prefix,
     trailingInteractionElement,
@@ -357,6 +359,8 @@
               value={currentValue}
               disabled={effectiveDisabled || undefined}
               required={isRequired || undefined}
+              readonly={readOnly || undefined}
+              spellcheck={spellCheck}
               maxlength={maxCharacters}
               tabindex={tabIndex}
               autocomplete={domAutoComplete}
@@ -383,6 +387,8 @@
               value={currentValue}
               disabled={effectiveDisabled || undefined}
               required={isRequired || undefined}
+              readonly={readOnly || undefined}
+              spellcheck={spellCheck}
               maxlength={maxCharacters}
               tabindex={tabIndex}
               autocomplete={domAutoComplete}

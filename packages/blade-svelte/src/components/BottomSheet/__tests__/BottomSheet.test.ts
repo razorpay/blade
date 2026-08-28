@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import BottomSheetFocusTestHarness from './BottomSheetFocusTestHarness.svelte';
+import BottomSheetBindableTestHarness from './BottomSheetBindableTestHarness.svelte';
 
 /* Spy on the prototype so the focus call is captured regardless of when the
  * target element mounts (the sheet portals + defers focus across two rAFs). */
@@ -55,5 +56,17 @@ describe('<BottomSheet /> focus management', () => {
     await waitFor(() => expect(onDismiss).toHaveBeenCalledTimes(1));
     await waitFor(() => expect(focusSpy.mock.contexts).toContain(trigger));
     expect(focusOptionsFor(focusSpy, trigger)).toEqual({ preventScroll: true });
+  });
+
+  it('writes isOpen back into the bound variable on dismiss (bind:isOpen)', async () => {
+    render(BottomSheetBindableTestHarness, { props: { isOpen: false } });
+
+    /* Open the sheet by setting the bound variable to true. */
+    await fireEvent.click(screen.getByTestId('open-sheet'));
+    await waitFor(() => expect(screen.getByTestId('bound-is-open')).toHaveTextContent('true'));
+
+    /* Escape dismisses the dismissible sheet — the bound `isOpen` must flip back. */
+    await fireEvent.keyDown(window, { key: 'Escape' });
+    await waitFor(() => expect(screen.getByTestId('bound-is-open')).toHaveTextContent('false'));
   });
 });

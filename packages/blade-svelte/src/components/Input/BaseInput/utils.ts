@@ -101,6 +101,7 @@ const autoCompleteSuggestionTypeMap: Record<AutoCompleteSuggestionType, string> 
   password: 'current-password',
   newPassword: 'new-password',
   oneTimeCode: 'one-time-code',
+  newOtp: 'one-time-code',
   telephone: 'tel',
   postalCode: 'postal-code',
   countryName: 'country',

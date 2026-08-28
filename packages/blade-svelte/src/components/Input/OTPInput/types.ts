@@ -16,6 +16,15 @@ export type OTPInputOnEventWithIndex = (event: {
   inputIndex: number;
 }) => void;
 
+/** Event payload for OTP `onKeyDown`, including the field index. */
+export type OTPInputOnKeyDownEvent = (event: {
+  name?: string;
+  key?: string;
+  code?: string;
+  event: KeyboardEvent;
+  inputIndex: number;
+}) => void;
+
 type OTPInputPropsWithLabel = {
   /** Label shown above/beside the OTP fields. */
   label: string;
@@ -72,7 +81,9 @@ interface OTPInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /** Masks the entered characters (renders `password` after entry). */
   isMasked?: boolean;
   /** Autocomplete suggestion type. @default 'oneTimeCode' */
-  autoCompleteSuggestionType?: 'none' | 'oneTimeCode';
+  autoCompleteSuggestionType?: 'none' | 'oneTimeCode' | 'newOtp';
+  /** KeyDown callback for custom keyboard navigation between fields. */
+  onKeyDown?: OTPInputOnKeyDownEvent;
   /** Input size. @default 'medium' */
   size?: BaseInputSize;
   /** Test ID for the outer wrapper. */

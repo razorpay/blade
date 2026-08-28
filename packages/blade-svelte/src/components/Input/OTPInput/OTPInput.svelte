@@ -31,6 +31,7 @@
     onFocus,
     onBlur,
     onOTPFilled,
+    onKeyDown,
     value,
     isDisabled = false,
     autoFocus = false,
@@ -147,6 +148,7 @@
     { key, code, event }: Parameters<FormInputOnKeyDownEvent>[0],
     currentOtpIndex: number,
   ): void => {
+    onKeyDown?.({ name, key, code, event, inputIndex: currentOtpIndex });
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       event.preventDefault?.();
       if (isControlled ? value?.[currentOtpIndex] : otpValue[currentOtpIndex]) {

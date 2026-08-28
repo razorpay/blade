@@ -38,6 +38,7 @@ export type AutoCompleteSuggestionType =
   | 'password'
   | 'newPassword'
   | 'oneTimeCode'
+  | 'newOtp'
   | 'telephone'
   | 'postalCode'
   | 'countryName'
@@ -156,6 +157,10 @@ export type BaseInputCommonProps = FormInputLabelProps &
     isDisabled?: boolean;
     /** Marks the input required (adds `required`). */
     isRequired?: boolean;
+    /** Makes the input read-only (adds `readonly`, keeps it focusable). */
+    readOnly?: boolean;
+    /** Controls the browser spellcheck on the input. */
+    spellCheck?: boolean;
     /** Leading icon component. */
     leadingIcon?: IconComponent;
     /** Prefix text rendered at the start of the input. */
