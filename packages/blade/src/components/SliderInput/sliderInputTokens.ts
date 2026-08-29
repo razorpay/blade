@@ -23,9 +23,14 @@ export const SLIDER_INPUT_TOKENS = {
   },
   color: {
     track: {
-      // Per the Figma spec bindings: the empty track uses the muted gray border
-      // token, and disabled states use the neutral interactive-disabled token.
-      bg: 'surface.border.gray.muted',
+      // Per the Figma spec bindings (interactive.background.neutral family):
+      // empty track = .faded, disabled = .disabled.
+      bg: 'interactive.background.neutral.faded',
+      // The Figma spec binds fill/thumb to interactive.background.neutral.default,
+      // whose value in the Figma (Spark v12) library is #000000 — but the code
+      // theme still resolves that token to dark gray-blue (blueGrayLight[1000]).
+      // Until the code theme catches up with the Figma library, staticBlack.normal
+      // is the token that actually renders the spec's #000.
       fill: 'surface.icon.staticBlack.normal',
       fillDisabled: 'interactive.background.neutral.disabled',
     },
