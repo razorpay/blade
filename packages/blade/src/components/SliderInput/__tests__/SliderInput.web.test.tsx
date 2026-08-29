@@ -107,6 +107,15 @@ describe('<SliderInput />', () => {
     expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '25');
   });
 
+  it('should jump by step * 10 on Shift+Arrow (large step)', () => {
+    const onChange = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Test" value={50} onChange={onChange} min={0} max={100} step={1} />,
+    );
+    fireEvent.keyDown(getByRole('slider'), { key: 'ArrowRight', shiftKey: true });
+    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 60 });
+  });
+
   it('should keep max reachable when the range is not a multiple of step', () => {
     const { getByRole } = renderWithTheme(
       <SliderInput label="Test" defaultValue={6} min={0} max={10} step={3} />,

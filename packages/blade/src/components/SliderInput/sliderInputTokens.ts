@@ -10,9 +10,6 @@ export const SLIDER_INPUT_TOKENS = {
   // WCAG 2.5.5 minimum pointer target — shared by the track hit-area and the thumb
   // wrapper so the draggable/tappable region stays >= 44px regardless of thumb size.
   interactionArea: 44,
-  tick: {
-    size: { medium: 2, large: 4 },
-  },
   label: {
     width: 100,
   },
@@ -38,9 +35,5 @@ export const SLIDER_INPUT_TOKENS = {
     // Note: this is the interactive-state tint — overlay.background.* is the much
     // darker modal-scrim scale and must not be used for the halo.
     halo: 'interactive.background.gray.fadedHighlighted',
-    tick: {
-      onActiveTrack: 'feedback.background.neutral.subtle',
-      onInactiveTrack: 'surface.icon.staticBlack.normal',
-    },
   },
 } as const;

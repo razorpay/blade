@@ -2,7 +2,7 @@
 
 SliderInput is a compound input component that combines a horizontal slider with a numeric text field, allowing users to adjust a value by either dragging the slider thumb or typing directly into the input. It is designed for configurator surfaces where merchants need precise control over a bounded numeric value — for example, adjusting corner radius, spacing, or opacity in the Checkout Studio customization interface.
 
-The component provides real-time two-way sync between the slider and the input field, supports discrete steps with visual tick marks, and follows the same controlled/uncontrolled patterns used by other Blade input components (CounterInput, TextInput, FileUpload).
+The component provides real-time two-way sync between the slider and the input field, supports discrete steps, and follows the same controlled/uncontrolled patterns used by other Blade input components (CounterInput, TextInput, FileUpload).
 
 ## Design
 
@@ -110,8 +110,7 @@ type SliderInputCommonProps = {
 
   /**
    * Step increment for the slider. When defined, the slider snaps to discrete
-   * values and tick marks are rendered along the track (auto-hidden when step
-   * count exceeds 20 to avoid visual clutter).
+   * values along the track (anchored at `min`; `max` is always reachable).
    * @default 1
    */
   step?: number;
@@ -236,7 +235,7 @@ type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLab
 | **`labelPosition` default** | `'top'` | Matches all other Blade input components. Consumers opt into `'left'` explicitly. |
 | **Standalone Slider** | Deferred to follow-up | Start with `SliderInput`; extract internal track/thumb as `Slider` later if needed. |
 | **React Native** | Web-only for v1 | RN requires `react-native-gesture-handler` for drag; scope separately. |
-| **Tick marks** | Auto-render when `(max - min) / step <= 20` | Avoids visual clutter. No `showTicks` prop needed — the heuristic covers all practical cases. |
+| **No tick marks** | Removed per final design | The Figma spec has no tick dots on the track, and neither shadcn/Base UI's slider renders them. Discrete steps are still fully honored via value snapping; the numeric input communicates the exact value. |
 | **No validation/error state** | `validationState`/`errorText`/`successText` removed | The value self-corrects into `[min, max]` (typing past max resets to max; the thumb stops at the bounds), so an invalid value cannot exist. Matches CounterInput, Blade's closest bounded numeric input. Optional `helpText` is retained for guidance (e.g. "Recommended 20–40px"), rendered once below the whole component. |
 | **Numeric field composition** | Blade `TextInput` with trailing `suffix` | The numeric box is the stock Blade TextInput — border, focus, disabled, sizing, and the unit (px/%) all come from the design system rather than a bespoke input. The field intentionally exposes only the editable value + unit: the visible label, help text, and value semantics live on the slider, so nothing is announced twice by screen readers. The visible label is rendered as a span and names the slider via `aria-labelledby` (WAI-ARIA slider pattern); the TextInput carries its own `accessibilityLabel`. |
 | **Input width** | Fixed width, auto-sized to `max` value + suffix | Prevents layout shift. Truncates with ellipsis if value overflows. |
@@ -246,7 +245,7 @@ type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLab
 | Variant | Description | In Scope |
 |---------|-------------|----------|
 | **Continuous** | Selects any value in range, no snapping | Yes |
-| **Discrete (Stepped)** | Snaps to `step` increments, shows tick marks | Yes |
+| **Discrete (Stepped)** | Snaps to `step` increments | Yes |
 | **Centered** | Zero at middle, supports positive/negative ranges | No |
 | **Range (Multi-thumb)** | Two thumbs for selecting min and max | No |
 
@@ -261,7 +260,6 @@ Every interactive sub-element must have these states defined. This follows the [
 | **Thumb** | Solid fill, 16px circle | + Halo ring (~40px, 8% opacity overlay) | + Focus ring (2px primary border) | + Scale to 20px, halo intensifies (12% opacity) | Muted fill, `opacity.6`, no halo, `cursor: not-allowed` | — |
 | **Active Track** | Solid fill | — | — | — | Muted, `opacity.6` | — |
 | **Inactive Track** | Subtle background (~9% opacity) | — | — | — | Muted, `opacity.6` | — |
-| **Tick Marks** | Visible (contrast with respective track) | — | — | — | Muted, `opacity.6` | — |
 | **Input Field** | Default border | Border: `highlighted` | Border: `primary.default` + focus ring | — | Muted bg + border, `cursor: not-allowed` | Border: `negative.default` (red) |
 | **Label** | Muted text color | — | — | — | Dimmed, `opacity.6` | — |
 | **Help/Error Text** | Muted text / hidden | — | — | — | Dimmed | Error text visible (red) |
@@ -387,8 +385,6 @@ Every interactive sub-element must have these states defined. This follows the [
 | **Thumb halo** | Hovered | `surface.icon.staticBlack.normal` @ 8% opacity | — |
 | **Thumb halo** | Pressed | `surface.icon.staticBlack.normal` @ 12% opacity | — |
 | **Thumb focus ring** | Focused | `interactive.border.primary.default` | — |
-| **Tick marks (on active track)** | Enabled | `feedback.background.neutral.subtle` | Contrast with active |
-| **Tick marks (on inactive track)** | Enabled | `surface.icon.staticBlack.normal` | Contrast with inactive |
 | **Input border** | Default | `interactive.border.gray.default` | `#DEE1E3` |
 | **Input border** | Hovered | `interactive.border.gray.highlighted` | — |
 | **Input border** | Focused | `interactive.border.primary.default` | — |
@@ -410,7 +406,6 @@ Every interactive sub-element must have these states defined. This follows the [
 | Slider → Input gap | `spacing.3` | 8px |
 | Input internal padding (horizontal) | `spacing.3` | 8px |
 | Input internal padding (vertical) | `spacing.3` | 8px |
-| Tick mark interval | Computed: `trackWidth / ((max - min) / step)` | Dynamic |
 | Thumb track gap (M3) | Hardcoded | 6px |
 
 ### Sizing
@@ -424,7 +419,6 @@ Every interactive sub-element must have these states defined. This follows the [
 | Thumb diameter (default) | 16px | 20px |
 | Thumb diameter (pressed) | 20px | 24px |
 | Thumb touch target | 48px | 48px |
-| Tick mark diameter | 2px | 4px |
 | Input border radius | `borderRadius.large` (8px) | `borderRadius.large` (8px) |
 | Input border width | `borderWidth.thin` (1px) | `borderWidth.thin` (1px) |
 | Label typography | `Body/SmallMedium` (12px/500) | `Body/MediumMedium` (14px/500) |
@@ -445,8 +439,6 @@ Every interactive sub-element must have these states defined. This follows the [
 ### Contrast Requirements
 
 - Active track vs inactive track: ≥ 3:1 contrast ratio with background
-- Tick marks on active track must contrast with active track at ≥ 3:1
-- Tick marks on inactive track must contrast with inactive track at ≥ 3:1
 - Thumb must contrast with both track segments at ≥ 3:1
 
 ## Examples
@@ -644,6 +636,7 @@ const App = () => {
 | **Left Arrow / Down Arrow** | Decrease value by one `step` |
 | **Home** | Set to `min` value |
 | **End** | Set to `max` value |
+| **Shift + Arrow** | Increase/decrease by `step * 10` (large step) |
 | **Page Up** | Increase by `step * 10` |
 | **Page Down** | Decrease by `step * 10` |
 | **Tab** | Move focus: slider thumb → input field |
@@ -675,7 +668,6 @@ SliderInput
 ├── SliderTrack (internal)
 │   ├── ActiveTrack
 │   ├── InactiveTrack
-│   ├── TickMarks (when step && stepCount <= 20)
 │   └── SliderThumb (draggable, keyboard-accessible)
 ├── TextInput (Blade — value + trailing unit via `suffix`; border/focus/disabled/sizing from the design system)
 └── FormHint (helpText)

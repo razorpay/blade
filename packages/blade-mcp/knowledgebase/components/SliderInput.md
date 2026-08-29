@@ -4,13 +4,13 @@ SliderInput
 
 ## Description
 
-SliderInput is a horizontal slider component coupled with a numeric input field for bounded value selection. It supports controlled and uncontrolled modes, keyboard navigation, touch/drag interaction, discrete stepping with auto-rendered tick marks, and accessibility features including ARIA slider role, labeledby, and describedby. Primarily designed for configurator UIs where users adjust numeric properties like corner radius, opacity, or spacing.
+SliderInput is a horizontal slider component coupled with a numeric input field for bounded value selection. It supports controlled and uncontrolled modes, keyboard navigation, touch/drag interaction, discrete stepping, and accessibility features including ARIA slider role, labeledby, and describedby. Primarily designed for configurator UIs where users adjust numeric properties like corner radius, opacity, or spacing.
 
 ## Important Constraints
 
 - Either `label` or `accessibilityLabel` must be provided — at least one is required for accessibility.
 - `step` must be a positive number; if omitted, defaults to `1`.
-- When `step` is provided and `(max - min) / step` is an integer ≤ 20, tick marks are auto-rendered on the track.
+- Discrete steps snap the value; no tick marks are rendered on the track (per the design spec).
 - There is no validation/error state by design: the value self-corrects into `[min, max]` (typing past max resets to max; the thumb stops at the bounds), so an invalid value cannot exist. This matches CounterInput.
 - The native (React Native) implementation is not yet available and will throw an error if used.
 - `suffix` only supports a trailing unit label (e.g. 'px', '%'); a leading prefix is not supported in v1.

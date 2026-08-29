@@ -139,8 +139,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       max,
     ]);
 
-    const pct = getRatio(currentValue) * 100;
-
     const updateValue = useCallback(
       (newVal: number) => {
         const clamped = clamp(snap(newVal));
@@ -329,14 +327,17 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       (e: React.KeyboardEvent) => {
         if (isDisabled) return;
         let newVal = currentValue;
+        // Shift+Arrow jumps by step * 10 (the same "large step" as PageUp/PageDown),
+        // matching the WAI-ARIA slider pattern and Base UI's largeStep behavior.
+        const arrowStep = e.shiftKey ? effectiveStep * 10 : effectiveStep;
         switch (e.key) {
           case 'ArrowRight':
           case 'ArrowUp':
-            newVal = currentValue + effectiveStep;
+            newVal = currentValue + arrowStep;
             break;
           case 'ArrowLeft':
           case 'ArrowDown':
-            newVal = currentValue - effectiveStep;
+            newVal = currentValue - arrowStep;
             break;
           case 'Home':
             newVal = min;
@@ -471,23 +472,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       showHalo ? theme.motion.easing.entrance : theme.motion.easing.exit,
     );
 
-    // Auto-render tick marks for discrete sliders with a manageable number of steps,
-    // matching the decisions.md heuristic: (max - min) / step <= 20.
-    // Only render when stepCount is an integer to avoid misaligned or overflowing ticks.
-    const stepCount = effectiveStep > 0 ? (max - min) / effectiveStep : 0;
-    const shouldShowTicks =
-      effectiveStep > 0 &&
-      Number.isFinite(stepCount) &&
-      Number.isInteger(stepCount) &&
-      stepCount > 0 &&
-      stepCount <= 20;
-    const tickSize = tokens.tick.size[size];
-    const tickColorOnActiveTrack = get(theme.colors, tokens.color.tick.onActiveTrack, '');
-    const tickColorOnInactiveTrack = get(theme.colors, tokens.color.tick.onInactiveTrack, '');
-    const tickPositions = shouldShowTicks
-      ? Array.from({ length: stepCount + 1 }, (_, index) => (index / stepCount) * 100)
-      : [];
-
     const thumbColor = get(
       theme.colors,
       isDisabled ? tokens.color.thumb.disabled : tokens.color.thumb.fill,
@@ -582,31 +566,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                         : `width ${moveTransitionDuration} ${moveTransitionEasing}`,
                     }}
                   />
-
-                  {/* Tick marks — decorative, auto-rendered for manageable step counts */}
-                  {shouldShowTicks && (
-                    <div
-                      aria-hidden="true"
-                      style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
-                    >
-                      {tickPositions.map((tickPct) => (
-                        <div
-                          key={tickPct}
-                          style={{
-                            position: 'absolute',
-                            left: `${tickPct}%`,
-                            top: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            width: tickSize,
-                            height: tickSize,
-                            borderRadius: theme.border.radius.round,
-                            backgroundColor:
-                              tickPct <= pct ? tickColorOnActiveTrack : tickColorOnInactiveTrack,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )}
 
                   {/* Thumb wrapper — halo + visual thumb nested inside */}
                   <StyledThumb
