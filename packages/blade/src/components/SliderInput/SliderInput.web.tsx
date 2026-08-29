@@ -477,6 +477,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       isDisabled ? tokens.color.thumb.disabled : tokens.color.thumb.fill,
       '',
     );
+    // The disabled tint is translucent; without an opaque base the track line shows
+    // through the marker. Mirrors the Figma construction: base-filled frame + tint circle.
+    const thumbDisabledBaseColor = get(theme.colors, tokens.color.thumb.disabledBase, '');
     const trackFillColor = get(
       theme.colors,
       isDisabled ? tokens.color.track.fillDisabled : tokens.color.track.fill,
@@ -631,13 +634,15 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                         pointerEvents: 'none',
                       }}
                     />
-                    {/* Visual thumb */}
+                    {/* Visual thumb — when disabled, an opaque base circle sits under the
+                        translucent tint so the track can't show through (per Figma). */}
                     <div
                       style={{
+                        position: 'relative',
                         width: thumbSize,
                         height: thumbSize,
                         borderRadius: theme.border.radius.round,
-                        backgroundColor: thumbColor,
+                        backgroundColor: isDisabled ? thumbDisabledBaseColor : thumbColor,
                         transition: isDragging
                           ? 'none'
                           : `all ${castWebType(
@@ -645,7 +650,18 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                             )} ${castWebType(theme.motion.easing.standard)}`,
                         pointerEvents: 'none',
                       }}
-                    />
+                    >
+                      {isDisabled && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            borderRadius: theme.border.radius.round,
+                            backgroundColor: thumbColor,
+                          }}
+                        />
+                      )}
+                    </div>
                   </StyledThumb>
                 </BaseBox>
               </BaseBox>

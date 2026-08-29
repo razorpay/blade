@@ -30,11 +30,15 @@ export const SLIDER_INPUT_TOKENS = {
       // interactive.background.neutral.disabled.
       bg: 'interactive.background.neutral.faded',
       fill: 'interactive.background.staticBlack.default',
-      fillDisabled: 'interactive.background.neutral.disabled',
+      fillDisabled: 'interactive.background.neutral.fadedHighlighted',
     },
     thumb: {
       fill: 'interactive.background.staticBlack.default',
-      disabled: 'interactive.background.neutral.disabled',
+      // Disabled marker per the Figma construction (node 3715-21936): an opaque
+      // base circle so the track can't show through the translucent tint, with
+      // the disabled tint layered on top.
+      disabled: 'interactive.background.neutral.fadedHighlighted',
+      disabledBase: 'surface.background.gray.subtle',
     },
     // Same color/opacity for hover and drag, per the design spec (~8% light wash).
     // Note: this is the interactive-state tint — overlay.background.* is the much
