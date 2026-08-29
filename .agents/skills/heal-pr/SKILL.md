@@ -51,6 +51,30 @@ These require manual intervention."
 
 ### 4. Push
 
+**PR Commit Policy (STRICT):**
+
+- You must ONLY commit to the existing PR branch. NEVER create a new PR with `gh pr create` when the target PR is still open.
+- Before pushing, check if the PR is already merged:
+
+```bash
+PR_STATE=$(gh pr view {PR_NUMBER} --repo razorpay/blade --json state -q '.state')
+```
+
+- **If PR state is `OPEN`**: commit and push to the existing PR branch only:
+
 ```bash
 git add -A && git diff --cached --quiet || (git commit -m "fix: auto-heal PR via Slash PR Healer" && git push)
 ```
+
+- **If PR state is `MERGED`**: the original branch is frozen. Create a new branch from `master`, apply the fix, and create a new PR:
+
+```bash
+git checkout master && git pull origin master
+git checkout -b fix/<short-description>
+# apply the fix
+git add -A && git commit -m "fix: auto-heal via Slash PR Healer [from merged PR #{PR_NUMBER}]"
+git push -u origin fix/<short-description>
+gh pr create --title "fix: auto-heal from merged PR #{PR_NUMBER}" --body "Heal fixes from merged PR #{PR_NUMBER}" --repo razorpay/blade
+```
+
+- **If PR state is `CLOSED`**: do not push or create a PR. Post a comment explaining the PR was closed and the heal cannot be applied.
