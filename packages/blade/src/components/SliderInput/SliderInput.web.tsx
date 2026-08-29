@@ -663,7 +663,10 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                       : `${label ?? accessibilityLabel ?? 'Slider'} value`
                   }
                   type="number"
-                  size={size}
+                  // The Figma spec binds the field to Form.Input.Textfield.Small (32px,
+                  // 12px text) for the medium slider — one size down from the slider's
+                  // own size, so medium → small and large → medium.
+                  size={size === 'large' ? 'medium' : 'small'}
                   name={name}
                   value={inputStringValue}
                   suffix={suffix}

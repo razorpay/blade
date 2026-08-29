@@ -23,13 +23,15 @@ export const SLIDER_INPUT_TOKENS = {
   },
   color: {
     track: {
-      bg: 'feedback.background.neutral.subtle',
+      // Per the Figma spec bindings: the empty track uses the muted gray border
+      // token, and disabled states use the neutral interactive-disabled token.
+      bg: 'surface.border.gray.muted',
       fill: 'surface.icon.staticBlack.normal',
-      fillDisabled: 'surface.icon.staticBlack.disabled',
+      fillDisabled: 'interactive.background.neutral.disabled',
     },
     thumb: {
       fill: 'surface.icon.staticBlack.normal',
-      disabled: 'surface.icon.staticBlack.disabled',
+      disabled: 'interactive.background.neutral.disabled',
     },
     // Same color/opacity for hover and drag, per the design spec (~8% light wash).
     // Note: this is the interactive-state tint — overlay.background.* is the much
