@@ -6,17 +6,17 @@ import {
   getFlagsForAllCountries,
 } from '@razorpay/i18nify-js';
 import React from 'react';
+import { MetaConstants } from '~utils/metaAttribute';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
+import type { BladeElementRef } from '~utils/types';
 import type { PhoneNumberInputProps } from './types';
 import { countryNameFormatter, CountrySelector } from './CountrySelector';
 import { BaseInput } from '~components/Input/BaseInput';
 import { IconButton } from '~components/Button/IconButton';
-import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { getKeyboardAndAutocompleteProps } from '~components/Input/BaseInput/utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import type { BladeElementRef } from '~utils/types';
 import { CloseIcon } from '~components/Icons';
-import { MetaConstants } from '~utils/metaAttribute';
 import { useControllableState } from '~utils/useControllable';
 
 const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNumberInputProps> = (
