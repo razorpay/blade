@@ -226,7 +226,18 @@ type BoxVisualProps = MakeObjectResponsive<{
 type StyledPropsBlade = Partial<
   Omit<
     MarginProps &
-      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order' | 'flexWrap'> &
+      Pick<
+        FlexboxProps,
+        | 'alignSelf'
+        | 'justifySelf'
+        | 'placeSelf'
+        | 'order'
+        | 'flexWrap'
+        | 'flex'
+        | 'flexGrow'
+        | 'flexShrink'
+        | 'flexBasis'
+      > &
       PositionProps &
       Pick<
         GridProps,
