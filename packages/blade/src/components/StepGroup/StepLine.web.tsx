@@ -254,16 +254,23 @@ const StepLineStart = ({
 }: StepLineSubComponentProps): React.ReactElement => {
   const { size } = useStepGroup();
   const spacingTokens = getMarkerLineSpacings(size);
+  const isDotted = stepProgress === 'none' || stepProgress === 'end';
+  // StepTopCurveVertical renders at 14px (solid) or 20px (dotted).
+  // correctedMarkerTopAlignment places the marker top at itemTopMargin (6px)
+  // from the container top — the same offset used by StepLineVertical — so the
+  // icon and label stay vertically aligned for the first item in a nested group.
+  const curveHeight = isDotted ? 20 : 14;
+  const correctedMarkerTopAlignment = itemTopMargin - curveHeight;
 
   return (
     <Box position="relative" display="flex" flexDirection="column">
       <StepTopCurveVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        isDotted={stepProgress === 'none' || stepProgress === 'end'}
+        isDotted={isDotted}
       />
       <Box
         marginLeft={makeSize(-spacingTokens.markerLeftAlignment + spacingTokens.indentationWidth)}
-        marginTop={makeSize(spacingTokens.markerTopAlignment)}
+        marginTop={makeSize(correctedMarkerTopAlignment)}
       >
         {marker}
       </Box>
@@ -346,16 +353,21 @@ const StepLineSingleItem = ({
 }: StepLineSubComponentProps): React.ReactElement => {
   const { size } = useStepGroup();
   const spacingTokens = getMarkerLineSpacings(size);
+  const isDotted = stepProgress === 'none' || stepProgress === 'end';
+  // Same correction as StepLineStart: ensure marker top = itemTopMargin (6px)
+  // for consistent icon-label alignment across all nested step types.
+  const curveHeight = isDotted ? 20 : 14;
+  const correctedMarkerTopAlignment = itemTopMargin - curveHeight;
   return (
     <Box position="relative" display="flex" flexDirection="column">
       <StepTopCurveVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        isDotted={stepProgress === 'none' || stepProgress === 'end'}
+        isDotted={isDotted}
       />
       <Box
         // -12 (markerLeftAlginment) + 33 (indentationWidth)
         marginLeft={makeSize(-spacingTokens.markerLeftAlignment + spacingTokens.indentationWidth)}
-        marginTop={makeSize(spacingTokens.markerTopAlignment)}
+        marginTop={makeSize(correctedMarkerTopAlignment)}
       >
         {marker}
       </Box>
