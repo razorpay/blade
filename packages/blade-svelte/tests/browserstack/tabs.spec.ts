@@ -7,7 +7,7 @@ test('Tabs switches active panel on click', async ({ page }) => {
   // BrowserStack mobile SDK's accessibility-tree/role-locator resolution is
   // unreliable for this tablist on real devices — intermittently can't find
   // the tab elements at all (by role or by attribute), on both Google Pixel
-  // and iPhone. Not reproducible on desktop. See MOBILE_TESTS_STATUS.md.
+  // and iPhone. Not reproducible on desktop.
   test.skip(
     !!process.env.BROWSERSTACK_MOBILE,
     'Flaky tab locator resolution on BrowserStack mobile SDK',

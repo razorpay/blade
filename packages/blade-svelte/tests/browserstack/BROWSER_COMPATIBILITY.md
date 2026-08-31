@@ -17,6 +17,3 @@ from `playwright.config.cts` (desktop) and `browserstack.yml` (mobile, via
 | --- | --- | --- |
 | Android | 13.0 | Chrome — Google Pixel 7 |
 | iOS | latest | Safari — iPhone 15 Pro |
-
-See [`MOBILE_TESTS_STATUS.md`](./MOBILE_TESTS_STATUS.md) for known mobile-SDK-specific
-test gaps against this matrix.
