@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Browser Compatibility" />
+
+# 🌐 Browser Compatibility
+
+Blade Svelte components are tested on BrowserStack against the following
+browser/OS matrix, defined in
+[`playwright.config.cts`](https://github.com/razorpay/blade/blob/master/packages/blade-svelte/tests/browserstack/playwright.config.cts)
+(desktop) and
+[`browserstack.yml`](https://github.com/razorpay/blade/blob/master/packages/blade-svelte/browserstack.yml)
+(mobile).
+
+## Desktop
+
+| OS | Version | Browser |
+| --- | --- | --- |
+| Windows | 11 | Chrome (latest) |
+| OS X | Ventura | Playwright-WebKit (latest) |
+
+## Mobile
+
+| OS | Version | Browser / Device |
+| --- | --- | --- |
+| Android | 13.0 | Chrome — Google Pixel 7 |
+| iOS | latest | Safari — iPhone 15 Pro |
+
+For known mobile-SDK-specific test gaps against this matrix, see
+[`MOBILE_TESTS_STATUS.md`](https://github.com/razorpay/blade/blob/master/packages/blade-svelte/tests/browserstack/MOBILE_TESTS_STATUS.md).
