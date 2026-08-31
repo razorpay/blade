@@ -81,7 +81,7 @@ interface OTPInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /** Masks the entered characters (renders `password` after entry). */
   isMasked?: boolean;
   /** Autocomplete suggestion type. @default 'oneTimeCode' */
-  autoCompleteSuggestionType?: 'none' | 'oneTimeCode' | 'newOtp';
+  autoCompleteSuggestionType?: 'none' | 'oneTimeCode';
   /** KeyDown callback for custom keyboard navigation between fields. */
   onKeyDown?: OTPInputOnKeyDownEvent;
   /** Input size. @default 'medium' */

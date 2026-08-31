@@ -149,6 +149,9 @@
     currentOtpIndex: number,
   ): void => {
     onKeyDown?.({ name, key, code, event, inputIndex: currentOtpIndex });
+    // Consumers can call event.preventDefault() in onKeyDown to fully opt out of
+    // the internal Backspace/Arrow navigation (e.g. custom field navigation).
+    if (event.defaultPrevented) return;
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       event.preventDefault?.();
       if (isControlled ? value?.[currentOtpIndex] : otpValue[currentOtpIndex]) {

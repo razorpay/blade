@@ -27,14 +27,40 @@ describe('<OTPInput />', () => {
     });
   });
 
-  it('maps autoCompleteSuggestionType=newOtp to the one-time-code autocomplete', async () => {
+  it('maps autoCompleteSuggestionType=oneTimeCode to the one-time-code autocomplete', async () => {
     render(OTPInput, {
-      props: { accessibilityLabel: 'OTP', otpLength: 6, autoCompleteSuggestionType: 'newOtp' },
+      props: {
+        accessibilityLabel: 'OTP',
+        otpLength: 6,
+        autoCompleteSuggestionType: 'oneTimeCode',
+      },
     });
 
     const fields = await findFields();
-    // The first field (and every field) receives the autocomplete value mapped
-    // from `newOtp` → `one-time-code`.
     expect(fields[0]).toHaveAttribute('autocomplete', 'one-time-code');
+  });
+
+  it('respects event.defaultPrevented and skips internal key handling', async () => {
+    const user = userEvent.setup();
+    const onKeyDown = vi.fn(({ event }) => {
+      event.preventDefault();
+    });
+    render(OTPInput, {
+      props: { label: 'OTP', otpLength: 6, onKeyDown },
+    });
+
+    const fields = await findFields();
+    await user.click(fields[1]);
+
+    // Without the guard, Backspace on an empty focused field would move focus
+    // back to the previous field. defaultPrevented must skip that internal nav.
+    await user.keyboard('{Backspace}');
+
+    await waitFor(() => {
+      const call = onKeyDown.mock.calls.find(([payload]) => payload.event instanceof KeyboardEvent);
+      expect(call).toBeDefined();
+    });
+
+    expect(fields[1]).toHaveFocus();
   });
 });

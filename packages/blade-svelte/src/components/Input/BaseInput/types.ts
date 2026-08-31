@@ -38,7 +38,6 @@ export type AutoCompleteSuggestionType =
   | 'password'
   | 'newPassword'
   | 'oneTimeCode'
-  | 'newOtp'
   | 'telephone'
   | 'postalCode'
   | 'countryName'
