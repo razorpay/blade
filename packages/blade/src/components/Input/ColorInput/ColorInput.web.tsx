@@ -286,7 +286,7 @@ const _ColorInput: React.ForwardRefRenderFunction<BladeElementRef, ColorInputPro
           </FormLabel>
         )}
 
-        <StyledColorInput>
+        <StyledColorInput $size={size}>
           <BaseBox flex="1" minWidth="0px" className={COLOR_INPUT_ROW_CLASSNAME}>
             <BaseInput
               ref={hexInputRef}

@@ -3,7 +3,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';
-import { size } from '~tokens/global';
+import { opacity, size } from '~tokens/global';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { padHexForPicker } from './ColorInput.utils';
 import getIn from '~utils/lodashButBetter/get';
@@ -22,10 +22,21 @@ type ColorSwatchRef = {
 };
 
 const swatchSizeTokens = {
-  xsmall: size['20'],
-  small: size['24'],
-  medium: size['28'],
-  large: size['40'],
+  xsmall: size['16'],
+  small: size['16'],
+  medium: size['20'],
+  large: size['24'],
+} as const;
+
+/**
+ * BaseInput insets the leading interaction element by spacing.2 (4px). The spec places the
+ * swatch 8px from the field edge, and 12px at large, so make up the difference here.
+ */
+const swatchLeftPaddingTokens = {
+  xsmall: 'spacing.2',
+  small: 'spacing.2',
+  medium: 'spacing.2',
+  large: 'spacing.3',
 } as const;
 
 const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
@@ -69,6 +80,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
         onKeyDown={handleKeyDown}
         onFocus={onFocus}
         onBlur={onBlur}
+        paddingLeft={swatchLeftPaddingTokens[inputSize]}
         cursor={isDisabled ? 'not-allowed' : 'pointer'}
       >
         <BaseBox
@@ -80,7 +92,7 @@ const _ColorSwatch = forwardRef<ColorSwatchRef, ColorSwatchProps>(
           style={{
             backgroundColor: padHexForPicker(color),
             border: `1px solid ${borderColor}`,
-            opacity: isDisabled ? 0.5 : 1,
+            opacity: isDisabled ? opacity['500'] : 1,
           }}
         />
         {/* Positioned over the swatch so clicks go directly to the input — avoids
