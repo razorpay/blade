@@ -53,7 +53,7 @@ export type OTPInputCommonProps = Pick<
    * Determines the number of input fields to show for the OTP
    * @default 6
    */
-  otpLength?: 4 | 6;
+  otpLength?: 4 | 6 | 8;
   /**
    * The callback function to be invoked when all the values of the OTPInput are filled
    */
