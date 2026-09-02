@@ -47,6 +47,9 @@
   --breakpoint-xl: 1200px;
 
   /* Typography - Desktop */
+  --font-family-text: 'Inter', 'Inter Fallback Arial', Arial;
+  --font-family-heading: 'TASA Orbiter', 'TASA Orbiter Fallback Arial', Arial;
+  --font-family-code: 'Menlo', San Francisco Mono, Courier New, Roboto Mono, monospace;
   --font-size-25: 10px;
   --font-size-50: 11px;
   --font-size-75: 12px;
@@ -61,7 +64,10 @@
   --font-size-900: 56px;
   --font-size-1000: 64px;
   --font-size-1100: 72px;
-
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
   --line-height-0: 0px;
   --line-height-25: 13px;
   --line-height-50: 16px;
@@ -77,19 +83,9 @@
   --line-height-900: 64px;
   --line-height-1000: 70px;
   --line-height-1100: 78px;
-
   --letter-spacing-25: -3.3%;
   --letter-spacing-50: -1.3%;
   --letter-spacing-100: 0%;
-
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  --font-family-text: 'Inter', 'Inter Fallback Arial', Arial;
-  --font-family-heading: 'TASA Orbiter', 'TASA Orbiter Fallback Arial', Arial;
-  --font-family-code: 'Menlo', San Francisco Mono, Courier New, Roboto Mono, monospace;
 
   /* Motion */
   --duration-2xquick: 80ms;
@@ -431,10 +427,10 @@
   --popup-background-notice-moderate: hsla(25, 100%, 44%, 0.88);
   --popup-background-information-moderate: hsla(200, 100%, 41%, 0.88);
   --popup-background-neutral-moderate: hsla(200, 11%, 11%, 0.88);
-  --popup-border-subtle: hsla(200, 10%, 94%, 0);
+  --popup-border-subtle: hsla(0, 0%, 97%, 0);
   --popup-border-intense: hsla(206, 10%, 29%, 1);
   --popup-border-gray-subtle: hsla(206, 10%, 29%, 0.09);
-  --popup-border-gray-moderate: hsla(200, 10%, 94%, 1);
+  --popup-border-gray-moderate: hsla(0, 0%, 97%, 1);
   --popup-border-gray-intense: hsla(205, 10%, 24%, 1);
   --popup-border-positive-moderate: hsla(150, 100%, 28%, 1);
   --popup-border-negative-moderate: hsla(4, 85%, 44%, 1);
@@ -485,7 +481,7 @@
   --data-background-categorical-gold-strong: hsla(44, 100%, 37%, 1);
   --data-background-categorical-gray-faint: hsla(0, 0%, 100%, 1);
   --data-background-categorical-gray-subtle: hsla(0, 0%, 97%, 1);
-  --data-background-categorical-gray-moderate: hsla(200, 10%, 94%, 1);
+  --data-background-categorical-gray-moderate: hsla(0, 0%, 97%, 1);
   --data-background-categorical-gray-intense: hsla(205, 8%, 71%, 1);
   --data-background-categorical-gray-strong: hsla(204, 9%, 42%, 1);
   --data-background-sequential-blue-50: hsla(217, 100%, 98%, 1);
@@ -578,7 +574,7 @@
   --data-background-sequential-gold-1000: hsla(33, 100%, 7%, 1);
   --data-background-sequential-gray-0: hsla(0, 0%, 100%, 1);
   --data-background-sequential-gray-50: hsla(0, 0%, 97%, 1);
-  --data-background-sequential-gray-100: hsla(200, 10%, 94%, 1);
+  --data-background-sequential-gray-100: hsla(0, 0%, 97%, 1);
   --data-background-sequential-gray-200: hsla(204, 8%, 88%, 1);
   --data-background-sequential-gray-300: hsla(203, 8%, 80%, 1);
   --data-background-sequential-gray-400: hsla(205, 8%, 71%, 1);
@@ -602,7 +598,6 @@
  * migrate to `data-blade-color-scheme`. */
 :root body[data-theme='dark'],
 :root[data-blade-color-scheme='dark'] {
-
   /* Surface Colors - Dark */
   --surface-background-gray-subtle: hsla(210, 4%, 11%, 1);
   --surface-background-gray-moderate: hsla(210, 5%, 8%, 1);
@@ -720,9 +715,9 @@
   --interactive-background-information-disabled: hsla(200, 100%, 41%, 0.18);
   --interactive-background-information-faded: hsla(200, 100%, 41%, 0.24);
   --interactive-background-information-faded-highlighted: hsla(200, 100%, 41%, 0.32);
-  --interactive-background-neutral-default: hsla(180, 2%, 92%, 1);
-  --interactive-background-neutral-highlighted: hsla(210, 3%, 76%, 1);
-  --interactive-background-neutral-disabled: hsla(207, 4%, 52%, 0.18);
+  --interactive-background-neutral-default: hsla(0, 0%, 100%, 1);
+  --interactive-background-neutral-highlighted: hsla(0, 0%, 100%, 0.88);
+  --interactive-background-neutral-disabled: hsla(0, 0%, 100%, 0.18);
   --interactive-background-neutral-faded: hsla(207, 4%, 52%, 0.12);
   --interactive-background-neutral-faded-highlighted: hsla(207, 4%, 52%, 0.18);
   --interactive-background-gray-default: hsla(207, 4%, 52%, 0.12);
@@ -764,8 +759,8 @@
   --interactive-border-information-highlighted: hsla(200, 100%, 33%, 1);
   --interactive-border-information-disabled: hsla(200, 100%, 41%, 0.18);
   --interactive-border-information-faded: hsla(200, 100%, 41%, 0.18);
-  --interactive-border-neutral-default: hsla(210, 2%, 84%, 1);
-  --interactive-border-neutral-highlighted: hsla(0, 0%, 100%, 1);
+  --interactive-border-neutral-default: hsla(0, 0%, 100%, 1);
+  --interactive-border-neutral-highlighted: hsla(0, 0%, 100%, 0.88);
   --interactive-border-neutral-disabled: hsla(216, 4%, 24%, 1);
   --interactive-border-neutral-faded: hsla(207, 4%, 52%, 0.18);
   --interactive-border-gray-default: hsla(216, 4%, 24%, 1);
@@ -818,6 +813,10 @@
   --interactive-text-on-primary-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-text-on-primary-muted: hsla(0, 0%, 100%, 0.64);
   --interactive-text-on-primary-disabled: hsla(0, 0%, 100%, 0.32);
+  --interactive-text-on-neutral-normal: hsla(0, 0%, 0%, 1);
+  --interactive-text-on-neutral-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-text-on-neutral-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-text-on-neutral-disabled: hsla(0, 0%, 0%, 0.32);
   --interactive-text-static-white-normal: hsla(0, 0%, 100%, 1);
   --interactive-text-static-white-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-text-static-white-muted: hsla(0, 0%, 100%, 0.64);
@@ -858,6 +857,10 @@
   --interactive-icon-on-primary-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-icon-on-primary-muted: hsla(0, 0%, 100%, 0.64);
   --interactive-icon-on-primary-disabled: hsla(0, 0%, 100%, 0.32);
+  --interactive-icon-on-neutral-normal: hsla(0, 0%, 0%, 1);
+  --interactive-icon-on-neutral-subtle: hsla(0, 0%, 0%, 0.8);
+  --interactive-icon-on-neutral-muted: hsla(0, 0%, 0%, 0.72);
+  --interactive-icon-on-neutral-disabled: hsla(0, 0%, 0%, 0.32);
   --interactive-icon-static-white-normal: hsla(0, 0%, 100%, 1);
   --interactive-icon-static-white-subtle: hsla(0, 0%, 100%, 0.8);
   --interactive-icon-static-white-muted: hsla(0, 0%, 100%, 0.64);
@@ -1072,7 +1075,6 @@
     --line-height-1100: 48px;
   }
 }
-
 @layer blade {
 /* ===== UTILITY CLASSES ===== */
 /* These utility classes are used by components via getStyledPropsClasses */

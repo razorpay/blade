@@ -166,7 +166,7 @@
   value={inputValue}
   {name}
   maxCharacters={effectiveMaxCharacters}
-  onChange={handleChange}
+  onInput={handleChange}
   {onFocus}
   {onBlur}
   {onClick}
