@@ -228,3 +228,15 @@
     />
   </div>
 </Story>
+
+<!-- 16 -->
+<Story name="SearchableCountrySelector (Mweb)" asChild>
+  <div>
+    <Text marginBottom="spacing.5">
+      On mobile/mweb, the country selector opens as a BottomSheet. Tap the flag chip below to open
+      it, then use the search field in the sheet header to filter the country list by name or
+      dial code.
+    </Text>
+    <PhoneNumberInput label="Enter phone number" name="phonenumber" />
+  </div>
+</Story>

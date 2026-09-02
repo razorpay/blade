@@ -48,6 +48,7 @@
     ActionListItemText,
   } from '../../ActionList';
   import { BottomSheet, BottomSheetHeader, BottomSheetBody } from '../../BottomSheet';
+  import { SearchInput } from '../SearchInput';
   import { ChevronUpDownIcon } from '../../Icons';
   import type { CountrySelectorProps } from './types';
 
@@ -62,11 +63,22 @@
   }: CountrySelectorProps = $props();
 
   let isOpen = $state(false);
+  let searchQuery = $state('');
 
   const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
   const flagSrc = $derived(getFlagOfCountry(selectedCountry)['4X3']);
   const triggerLabel = $derived(`${countryNameFormatter.of(selectedCountry)} - Select Country`);
+
+  const filteredCountryData = $derived.by(() => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return countryData;
+    return countryData.filter(
+      (country) =>
+        country.name.toLowerCase().includes(query) ||
+        getDialCodeByCountryCode(country.code).toLowerCase().includes(query),
+    );
+  });
 
   const handleSelect = ({ value }: { value: string }): void => {
     onItemClick({ name: value });
@@ -96,11 +108,27 @@
   </span>
 </button>
 
-<BottomSheet {isOpen} onDismiss={() => (isOpen = false)} {portalTarget}>
-  <BottomSheetHeader title="Select A Country" />
+<BottomSheet
+  {isOpen}
+  onDismiss={() => {
+    isOpen = false;
+    searchQuery = '';
+  }}
+  {portalTarget}
+>
+  <BottomSheetHeader title="Select A Country">
+    <SearchInput
+      accessibilityLabel="Search country or dial code"
+      placeholder="Search country or dial code"
+      value={searchQuery}
+      onChange={({ value }) => {
+        searchQuery = value ?? '';
+      }}
+    />
+  </BottomSheetHeader>
   <BottomSheetBody hasActionList>
     <ActionList selectionType="single" selectedValue={selectedCountry} onAction={handleSelect}>
-      {#each countryData as country (country.code)}
+      {#each filteredCountryData as country (country.code)}
         <ActionListItem title={country.name} value={country.code}>
           {#snippet leading()}
             <ActionListItemAsset src={flags[country.code]?.['4X3'] ?? ''} alt={country.name} />
