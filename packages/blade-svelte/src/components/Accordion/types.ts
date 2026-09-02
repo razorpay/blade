@@ -17,34 +17,14 @@ export type AccordionProps = {
 
   /**
    * Expands the passed index (controlled), `-1` implies no expanded items.
-   * Ignored when `allowMultiple` is `true` — use `expandedIndices` instead.
    */
   expandedIndex?: number;
 
   /**
-   * Allows more than one `AccordionItem` to stay expanded at the same time
-   * (e.g. EMI plan sections that must be compared side by side).
-   * @default false
-   */
-  allowMultiple?: boolean;
-
-  /**
-   * Indices expanded by default (uncontrolled), only used when `allowMultiple` is `true`.
-   */
-  defaultExpandedIndices?: number[];
-
-  /**
-   * Expanded indices (controlled), only used when `allowMultiple` is `true`.
-   */
-  expandedIndices?: number[];
-
-  /**
    * Callback for change in any item's expanded state.
-   * `expandedIndex` is the index that toggled; `-1` implies no expanded items
-   * (single-expand mode only). `expandedIndices` is present when `allowMultiple`
-   * is `true` and reflects the full set of expanded indices after the toggle.
+   * `-1` implies no expanded items.
    */
-  onExpandChange?: (payload: { expandedIndex: number; expandedIndices?: number[] }) => void;
+  onExpandChange?: (payload: { expandedIndex: number }) => void;
 
   /**
    * Adds numeric index at the beginning of items.
