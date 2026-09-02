@@ -54,7 +54,7 @@
     onBlur,
     isDisabled = false,
     isRequired = false,
-    readOnly = false,
+    isReadOnly = false,
     spellCheck,
     leadingIcon,
     prefix,
@@ -359,7 +359,7 @@
               value={currentValue}
               disabled={effectiveDisabled || undefined}
               required={isRequired || undefined}
-              readonly={readOnly || undefined}
+              readonly={isReadOnly || undefined}
               spellcheck={spellCheck}
               maxlength={maxCharacters}
               tabindex={tabIndex}
@@ -387,7 +387,7 @@
               value={currentValue}
               disabled={effectiveDisabled || undefined}
               required={isRequired || undefined}
-              readonly={readOnly || undefined}
+              readonly={isReadOnly || undefined}
               spellcheck={spellCheck}
               maxlength={maxCharacters}
               tabindex={tabIndex}

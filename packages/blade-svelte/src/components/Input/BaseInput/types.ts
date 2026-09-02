@@ -157,7 +157,7 @@ export type BaseInputCommonProps = FormInputLabelProps &
     /** Marks the input required (adds `required`). */
     isRequired?: boolean;
     /** Makes the input read-only (adds `readonly`, keeps it focusable). */
-    readOnly?: boolean;
+    isReadOnly?: boolean;
     /** Controls the browser spellcheck on the input. */
     spellCheck?: boolean;
     /** Leading icon component. */

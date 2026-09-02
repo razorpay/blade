@@ -6,15 +6,15 @@ async function findInput(): Promise<HTMLElement> {
   return screen.findByRole('textbox');
 }
 
-describe('<TextInput /> readOnly & spellCheck', () => {
+describe('<TextInput /> isReadOnly & spellCheck', () => {
   it('does not render readonly by default', async () => {
     render(TextInput, { props: { label: 'Email', value: 'a@b.com' } });
     const input = await findInput();
     expect(input).not.toHaveAttribute('readonly');
   });
 
-  it('renders readonly when readOnly is set', async () => {
-    render(TextInput, { props: { label: 'Email', value: 'a@b.com', readOnly: true } });
+  it('renders readonly when isReadOnly is set', async () => {
+    render(TextInput, { props: { label: 'Email', value: 'a@b.com', isReadOnly: true } });
     const input = await findInput();
     expect(input).toHaveAttribute('readonly');
   });

@@ -29,7 +29,7 @@
     onKeyDown,
     isDisabled = false,
     isRequired = false,
-    readOnly = false,
+    isReadOnly = false,
     spellCheck,
     prefix,
     suffix,
@@ -173,7 +173,7 @@
   {onKeyDown}
   {isDisabled}
   {isRequired}
-  {readOnly}
+  {isReadOnly}
   {spellCheck}
   {prefix}
   {suffix}

@@ -63,7 +63,7 @@ interface TextInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute 
   /** Disables the input. */
   isDisabled?: boolean;
   /** Makes the input read-only (keeps it focusable, disables editing). */
-  readOnly?: boolean;
+  isReadOnly?: boolean;
   /** Controls the browser spellcheck on the input. */
   spellCheck?: boolean;
   /** Marks the input required. */
