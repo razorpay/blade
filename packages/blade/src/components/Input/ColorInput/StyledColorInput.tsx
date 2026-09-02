@@ -1,16 +1,29 @@
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
-import { makeBorderSize } from '~utils';
+import type { BaseInputProps } from '~components/Input/BaseInput';
+import { baseInputBorderRadius } from '~components/Input/BaseInput/baseInputTokens';
+import { makeBorderSize, makeSpace } from '~utils';
 
 const CLASSNAME = '__blade-color-input-row';
 
-const StyledColorInput = styled(BaseBox)`
-  ${({ theme }) => {
-    const radius = makeBorderSize(theme.border.radius.small);
+type StyledColorInputProps = {
+  $size: NonNullable<BaseInputProps['size']>;
+};
+
+const StyledColorInput = styled(BaseBox)<StyledColorInputProps>`
+  ${({ theme, $size }) => {
+    const radius = makeBorderSize(theme.border.radius[baseInputBorderRadius[$size]]);
     return `
       display: flex;
       flex-direction: row;
       align-items: stretch;
+
+      /* BaseInput spaces the value 12px from the leading slot at medium/large.
+         ColorInput keeps the swatch-to-hex gap at 8px across every size.
+         The color picker input is excluded — it is absolutely positioned over the swatch. */
+      & .${CLASSNAME}:first-child input:not([type='color']) {
+        padding-left: ${makeSpace(theme.spacing[3])};
+      }
 
       /* Reset border-radius on all inputs */
       & .${CLASSNAME} .__blade-base-input-wrapper,

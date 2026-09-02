@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, View } from 'react-native';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { useTheme } from '~components/BladeProvider';
-import { size } from '~tokens/global';
+import { opacity, size } from '~tokens/global';
 import getIn from '~utils/lodashButBetter/get';
 import { padHexForPicker } from './ColorInput.utils';
 
@@ -16,10 +16,21 @@ type ColorSwatchProps = {
 };
 
 const swatchSizeTokens = {
-  xsmall: size['20'],
-  small: size['24'],
-  medium: size['28'],
-  large: size['40'],
+  xsmall: size['16'],
+  small: size['16'],
+  medium: size['20'],
+  large: size['24'],
+} as const;
+
+/**
+ * BaseInput insets the leading interaction element by spacing.2 (4px). The spec places the
+ * swatch 8px from the field edge, and 12px at large, so make up the difference here.
+ */
+const swatchLeftPaddingTokens = {
+  xsmall: 2,
+  small: 2,
+  medium: 2,
+  large: 3,
 } as const;
 
 const ColorSwatch = ({
@@ -43,7 +54,11 @@ const ColorSwatch = ({
   };
 
   return (
-    <Pressable onPress={handlePress} disabled={isDisabled}>
+    <Pressable
+      onPress={handlePress}
+      disabled={isDisabled}
+      style={{ paddingLeft: theme.spacing[swatchLeftPaddingTokens[inputSize]] }}
+    >
       <View
         style={{
           width: dimension,
@@ -52,7 +67,7 @@ const ColorSwatch = ({
           borderRadius: theme.border.radius.xsmall,
           borderWidth: theme.border.width.thin,
           borderColor,
-          opacity: isDisabled ? 0.5 : 1,
+          opacity: isDisabled ? opacity['500'] : 1,
         }}
       />
     </Pressable>
