@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Slider /> should render Slider with default properties 1`] = `"<div id="root"><div data-blade-component="slider" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc VXPkj"><div data-blade-component="base-box" class="BaseBox-bksIuc eXPttF"><span style="width:100%;flex-shrink:0;margin-right:0px" id="slider-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bksIuc fhmUvk"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc gQLxiP"><p letter-spacing="50" class="StyledBaseText-foUshD lhkeBN" data-blade-component="text">Corner Radius</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 fVGPRy"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text"></p></div></div></div></div></div></span><div data-blade-component="base-box" class="BaseBox-bksIuc kiCMLR"><div style="touch-action:none" data-blade-component="base-box" class="BaseBox-bksIuc ia-DqDo"><div data-blade-component="base-box" class="BaseBox-bksIuc kCFGkb"><div class="Sliderweb__StyledTrackBackground-sc-12i1ciy-0 kezDUm"></div><div style="position:absolute;left:0;width:50%;height:2px;border-radius:9999px;background-color:hsla(0, 0%, 0%, 1);transition:width 200ms cubic-bezier(0.3, 0, 0.2, 1)"></div><div tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="24" aria-valuenow="12" aria-valuetext="12" aria-labelledby="slider-undefined-label" aria-disabled="false" style="position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;cursor:grab;z-index:2;touch-action:none;transition:left 200ms cubic-bezier(0.3, 0, 0.2, 1)" class="Sliderweb__StyledThumb-sc-12i1ciy-1 gqfehs"><div style="position:absolute;width:0;height:0;border-radius:50%;background-color:hsla(206, 10%, 29%, 0.09);opacity:0;transition:opacity 160ms cubic-bezier(0.17, 0, 1, 1), width 160ms cubic-bezier(0.17, 0, 1, 1), height 160ms cubic-bezier(0.17, 0, 1, 1);pointer-events:none"></div><div style="position:relative;width:16px;height:16px;border-radius:50%;background-color:hsla(0, 0%, 0%, 1);transition:all 160ms cubic-bezier(0.3, 0, 0.2, 1);pointer-events:none"></div></div></div></div></div></div></div></div></div>"`;
+
+exports[`<Slider /> should render Slider with default properties 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  height: 44px;
+  cursor: pointer;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(200,10%,18%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.0625rem;
+  -webkit-letter-spacing: -0.15600000000000003px;
+  -moz-letter-spacing: -0.15600000000000003px;
+  -ms-letter-spacing: -0.15600000000000003px;
+  letter-spacing: -0.15600000000000003px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(0,0%,2%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: -0.18200000000000002px;
+  -moz-letter-spacing: -0.18200000000000002px;
+  -ms-letter-spacing: -0.18200000000000002px;
+  letter-spacing: -0.18200000000000002px;
+  margin: 0;
+  padding: 0;
+}
+
+.c6.c6.c6.c6.c6 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c11.c11.c11.c11.c11 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 9999px;
+  background-color: hsla(206,10%,29%,0.12);
+}
+
+.c12.c12.c12.c12.c12 {
+  outline: none;
+}
+
+<div
+  id="root"
+>
+  <div
+    class=""
+    data-blade-component="slider"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <span
+          data-blade-component="form-label"
+          id="slider-7-label"
+          style="width:100%;flex-shrink:0;margin-right:0px"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c3"
+              data-blade-component="base-box"
+            >
+              <div
+                class=""
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <p
+                    class="c5"
+                    data-blade-component="text"
+                    letter-spacing="50"
+                  >
+                    Corner Radius
+                  </p>
+                  <div
+                    class="c6"
+                    data-blade-component="visually-hidden"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                      letter-spacing="50"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c9"
+            data-blade-component="base-box"
+            style="touch-action:none"
+          >
+            <div
+              class="c10"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c11"
+              />
+              <div
+                style="position:absolute;left:0;width:50%;height:2px;border-radius:9999px;background-color:hsla(0, 0%, 0%, 1);transition:width 200ms cubic-bezier(0.3, 0, 0.2, 1)"
+              />
+              <div
+                aria-disabled="false"
+                aria-labelledby="slider-7-label"
+                aria-valuemax="24"
+                aria-valuemin="0"
+                aria-valuenow="12"
+                aria-valuetext="12"
+                class="c12"
+                role="slider"
+                style="position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;cursor:grab;z-index:2;touch-action:none;transition:left 200ms cubic-bezier(0.3, 0, 0.2, 1)"
+                tabindex="0"
+              >
+                <div
+                  style="position:absolute;width:0;height:0;border-radius:50%;background-color:hsla(206, 10%, 29%, 0.09);opacity:0;transition:opacity 160ms cubic-bezier(0.17, 0, 1, 1), width 160ms cubic-bezier(0.17, 0, 1, 1), height 160ms cubic-bezier(0.17, 0, 1, 1);pointer-events:none"
+                />
+                <div
+                  style="position:relative;width:16px;height:16px;border-radius:50%;background-color:hsla(0, 0%, 0%, 1);transition:all 160ms cubic-bezier(0.3, 0, 0.2, 1);pointer-events:none"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

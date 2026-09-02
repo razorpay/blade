@@ -60,7 +60,7 @@ export * from './RTBBadge';
 export * from './Scale';
 export * from './SideNav';
 export * from './Skeleton';
-export * from './SliderInput';
+export * from './Slider';
 export * from './SkipNav';
 export * from './Spinner';
 export * from './SpotlightPopoverTour';

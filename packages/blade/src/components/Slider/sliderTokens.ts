@@ -1,4 +1,4 @@
-export const SLIDER_INPUT_TOKENS = {
+export const SLIDER_TOKENS = {
   thumb: {
     size: { medium: 16, large: 20 },
     pressedSize: { medium: 20, large: 24 },
@@ -6,17 +6,20 @@ export const SLIDER_INPUT_TOKENS = {
   },
   track: {
     height: 2,
+    // Width of the gap sliced into the track at each step position when
+    // `showSteps` is on. 2px (not 1px): stays crisp on 1x displays where a
+    // fractional/1px gap anti-aliases away, and matches the 2px track height.
+    stepGap: 2,
+    // Minimum on-screen width of one step block for the segments to render.
+    // Below this the gaps read as noise, so the track auto-falls-back to
+    // continuous — mirroring Material's tick auto-hide for dense sliders.
+    stepMinBlockWidth: 8,
   },
   // WCAG 2.5.5 minimum pointer target — shared by the track hit-area and the thumb
   // wrapper so the draggable/tappable region stays >= 44px regardless of thumb size.
   interactionArea: 44,
   label: {
     width: 100,
-  },
-  input: {
-    // Width of the numeric TextInput slot — 60px per the Figma spec (design-verified
-    // to accommodate up to "100" alongside a short unit suffix like px/%).
-    width: 60,
   },
   gap: {
     labelToSlider: 8,

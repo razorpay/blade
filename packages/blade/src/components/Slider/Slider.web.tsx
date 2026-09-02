@@ -1,7 +1,16 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
+import {
+  useFloating,
+  offset,
+  flip,
+  shift,
+  arrow as floatingArrowMiddleware,
+  autoUpdate,
+  FloatingPortal,
+} from '@floating-ui/react';
 import styled from 'styled-components';
-import type { SliderInputProps } from './types';
-import { SLIDER_INPUT_TOKENS } from './sliderInputTokens';
+import type { SliderProps } from './types';
+import { SLIDER_TOKENS } from './sliderTokens';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -16,11 +25,28 @@ import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import get from '~utils/lodashButBetter/get';
-import { throwBladeError } from '~utils/logger';
-import { TextInput } from '~components/Input/TextInput';
+import { throwBladeError, logger } from '~utils/logger';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { TooltipContent } from '~components/Tooltip/TooltipContent';
+import { ARROW_WIDTH, ARROW_HEIGHT } from '~components/Tooltip/constants';
+import { PopupArrow } from '~components/PopupArrow/PopupArrow';
+import { componentZIndices } from '~utils/componentZIndices';
+import { useMergeRefs } from '~utils/useMergeRefs';
 
-const tokens = SLIDER_INPUT_TOKENS;
+const tokens = SLIDER_TOKENS;
 const noop = (): void => undefined;
+
+// Background track — a styled component (class CSS, not inline style) because the
+// step-segmented variant paints with a repeating-linear-gradient, which inline styles
+// can't carry through jsdom for tests/snapshots.
+const StyledTrackBackground = styled.div<{ $background: string }>`
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: ${tokens.track.height}px;
+  border-radius: ${({ theme }) => theme.border.radius.max}px;
+  ${({ $background }) => $background}
+`;
 
 const StyledThumb = styled.div<{
   $isFocused: boolean;
@@ -31,7 +57,7 @@ const StyledThumb = styled.div<{
   ${({ theme, $showFocusRing }) => $showFocusRing && getFocusRingStyles({ theme })}
 `;
 
-const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
+const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
   (
     {
       label,
@@ -45,6 +71,8 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       step = 1,
       suffix,
       size = 'medium',
+      showTooltip = true,
+      showSteps = false,
       isDisabled = false,
       isRequired = false,
       necessityIndicator,
@@ -77,9 +105,22 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     if (__DEV__) {
       if (min > max) {
         throwBladeError({
-          message: `\`min\` (${min}) must not be greater than \`max\` (${max}) for SliderInput.`,
-          moduleName: 'SliderInput',
+          message: `\`min\` (${min}) must not be greater than \`max\` (${max}) for Slider.`,
+          moduleName: 'Slider',
         });
+      }
+      // Material's slider hard-errors when step doesn't divide the range. We stay
+      // lenient (max remains reachable via snap), but with showSteps the leftover
+      // makes the last segment visibly shorter — worth a heads-up while developing.
+      if (showSteps && step > 0 && max > min) {
+        const stepsInRange = (max - min) / step;
+        if (Math.abs(Math.round(stepsInRange) - stepsInRange) > 1e-9) {
+          logger({
+            message: `\`step\` (${step}) does not divide the \`min\`–\`max\` range (${min}–${max}) evenly. With \`showSteps\`, the last step segment will render shorter than the rest. Consider a step that is a factor of the range.`,
+            moduleName: 'Slider',
+            type: 'warn',
+          });
+        }
       }
     }
 
@@ -112,27 +153,17 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
     const currentValueRef = useRef(currentValue);
     currentValueRef.current = currentValue;
 
-    // Draft state of the numeric input. While the input is focused, the user's draft wins;
-    // once it isn't (or a track/thumb gesture sets a value), it mirrors the committed value.
-    const [inputStringValue, setInputStringValue] = useState(String(currentValue));
-    const [isInputFocused, setIsInputFocused] = useState(false);
-
-    useEffect(() => {
-      if (!isInputFocused) {
-        setInputStringValue(String(currentValue));
-      }
-    }, [currentValue, isInputFocused]);
-
     const dragValueRef = useRef(0);
     const rafRef = useRef(0);
     const visualPctRef = useRef(max === min ? 0 : ((currentValue - min) / (max - min)) * 100);
-    const { helpTextId } = useFormId('slider-input');
-    const idBase = useId('slider-input');
+    const { helpTextId } = useFormId('slider');
+    const idBase = useId('slider');
     const labelId = `${idBase}-label`;
-    const { theme } = useTheme();
+    const { theme, colorScheme } = useTheme();
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
-    const _isRequired = isRequired || necessityIndicator === 'required';
+    const _necessityIndicator =
+      necessityIndicator ?? (isRequired ? ('required' as const) : undefined);
 
     const getRatio = useCallback((val: number) => (max === min ? 0 : (val - min) / (max - min)), [
       min,
@@ -223,10 +254,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         isDraggingRef.current = false;
         setIsDragging(false);
         updateValue(val);
-        // The numeric input may still be focused with a stale draft (mousedown on the
-        // track preventDefaults, so the input never blurs). Sync the draft to the gesture
-        // value so it can't later commit over what the user just picked on the track.
-        setInputStringValue(String(val));
         onChangeEnd?.({ name, value: val });
       };
       const handleMouseMove = (e: MouseEvent): void => onMove(e.clientX);
@@ -287,8 +314,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         positionDomElements(val);
         onChangeStart?.({ name, value: val });
         updateValue(val);
-        // See onEnd: keep a still-focused input's draft in sync with the gesture value.
-        setInputStringValue(String(val));
         attachDragListeners();
       },
       [
@@ -385,11 +410,13 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
     const handleThumbFocus = useCallback(() => {
       setIsThumbFocused(true);
-    }, []);
+      onFocus?.({ name, value: currentValueRef.current });
+    }, [onFocus, name]);
 
     const handleThumbBlur = useCallback(() => {
       setIsThumbFocused(false);
       isPointerFocusRef.current = false;
+      onBlur?.({ name, value: currentValueRef.current });
       // If focus leaves mid-keypress, no keyup will ever arrive for this element. Beyond
       // resetting the ref (so the next keydown isn't swallowed), fire onChangeEnd so a
       // consumer that reacted to onChangeStart always gets a matching close for the gesture.
@@ -397,7 +424,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
         isKeyActiveRef.current = false;
         onChangeEnd?.({ name, value: currentValueRef.current });
       }
-    }, [onChangeEnd, name]);
+    }, [onBlur, onChangeEnd, name]);
 
     const handleThumbPointerDown = useCallback(() => {
       isPointerFocusRef.current = true;
@@ -411,55 +438,43 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       setIsThumbHovered(false);
     }, []);
 
-    const handleInputChange = useCallback(({ value: typed }: { name?: string; value?: string }) => {
-      setInputStringValue(typed ?? '');
-    }, []);
-
-    // Parse + clamp/snap the current draft and commit it. Returns the committed value.
-    // Shared by Enter (commit while staying focused) and blur (commit on leaving).
-    // An unparseable draft resets the field to the current value and commits nothing new.
-    const commitInputDraft = useCallback(() => {
-      const raw = parseFloat(inputStringValue);
-      const committed = isNaN(raw) ? currentValueRef.current : clamp(snap(raw));
-      if (!isNaN(raw)) {
-        updateValue(raw);
-      }
-      // Reflect the committed (clamped/snapped) value in the field immediately — e.g.
-      // typing 26 with max 24 and pressing Enter must show 24, not the raw 26.
-      setInputStringValue(String(committed));
-      return committed;
-    }, [inputStringValue, clamp, snap, updateValue]);
-
-    const handleInputBlur = useCallback(() => {
-      setIsInputFocused(false);
-      // onBlur/onChangeEnd report what was actually committed (clamped/snapped), and the
-      // gesture opened by onChangeStart on focus is always closed — even when nothing
-      // valid was typed — so start/end callbacks come in pairs.
-      const committed = commitInputDraft();
-      onBlur?.({ name, value: committed });
-      onChangeEnd?.({ name, value: committed });
-    }, [commitInputDraft, onBlur, onChangeEnd, name]);
-
-    // Enter commits the draft (slider thumb snaps to it) while keeping focus in the
-    // field, matching the standard expectation for numeric steppers.
-    const handleInputKeyDown = useCallback(
-      ({ key }: { name?: string; key?: string }) => {
-        if (key !== 'Enter') return;
-        const committed = commitInputDraft();
-        onChangeEnd?.({ name, value: committed });
-      },
-      [commitInputDraft, onChangeEnd, name],
-    );
-
-    const handleInputFocus = useCallback(() => {
-      setIsInputFocused(true);
-      onFocus?.({ name, value: currentValueRef.current });
-      // Typing is a value-editing gesture like drag/keyboard: open it with onChangeStart on
-      // focus so the start → change → end contract holds for all three interaction modes.
-      onChangeStart?.({ name, value: currentValueRef.current });
-    }, [onFocus, onChangeStart, name]);
-
     const showHalo = !isDisabled && (isThumbHovered || isDragging);
+    // The value tooltip is the slider's readout: it shows above the thumb while it is
+    // hovered/dragged/keyboard-focused (mirroring Material's value indicator) and is
+    // purely decorative for screen readers — the thumb already announces its value
+    // via aria-valuenow/valuetext.
+    const showValueTooltip =
+      showTooltip && !isDisabled && (isThumbHovered || isDragging || isThumbFocused);
+    const valueTooltipText = suffix ? `${currentValue} ${suffix}` : String(currentValue);
+
+    // The value tooltip is positioned by the exact same floating-ui setup Blade's Tooltip
+    // uses internally (same gap, middleware, and PopupArrow) — only `open` is controlled
+    // by the slider's hover/drag/focus state, since a hover-triggered Tooltip would close
+    // the moment the pointer drifts off the thumb mid-drag. `animationFrame: true` keeps
+    // it glued to the thumb, whose position updates imperatively during drag. flip/shift
+    // also move it out of the way when there's no room (e.g. under the label at the top
+    // of the viewport) instead of covering other content.
+    const tooltipArrowRef = useRef<SVGSVGElement>(null);
+    const tooltipGap = theme.spacing[2];
+    const {
+      refs: tooltipRefs,
+      floatingStyles: tooltipFloatingStyles,
+      context: tooltipContext,
+    } = useFloating({
+      placement: 'top',
+      open: showValueTooltip,
+      strategy: 'fixed',
+      middleware: [
+        shift({ crossAxis: false, padding: tooltipGap }),
+        flip({ padding: tooltipGap }),
+        offset(tooltipGap + ARROW_HEIGHT),
+        floatingArrowMiddleware({ element: tooltipArrowRef, padding: ARROW_WIDTH }),
+      ],
+      whileElementsMounted: (reference, floating, update) =>
+        autoUpdate(reference, floating, update, { animationFrame: true }),
+    });
+    const thumbMergedRef = useMergeRefs(thumbRef, tooltipRefs.setReference);
+    const isDarkMode = colorScheme === 'dark';
     const thumbSize = isDragging ? tokens.thumb.pressedSize[size] : tokens.thumb.size[size];
     const haloSize = thumbSize * tokens.thumb.haloMultiplier;
     // One shared movement animation for programmatic jumps (Enter/keyboard/track-click):
@@ -485,13 +500,52 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
       isDisabled ? tokens.color.track.fillDisabled : tokens.color.track.fill,
       '',
     );
+    const trackBgColor = get(theme.colors, tokens.color.track.bg, '');
+    // Step-segmented track (showSteps): the background track is painted as blocks
+    // with a transparent gap sliced at every step position, so the discrete
+    // stops read visually. A single repeating gradient (one cycle per step) keeps
+    // it one DOM node regardless of step count. The solid fill renders on top, so
+    // the filled portion stays continuous — matching the Figma spec.
+    const stepPct = max > min ? (effectiveStep / (max - min)) * 100 : 100;
+    // Density guard, mirroring Material's tick auto-hide: segments render only while
+    // each step block is at least stepMinBlockWidth px wide on screen. Denser than
+    // that, the gaps stop being discernible increments and the track falls back to
+    // continuous.
+    const [trackWidth, setTrackWidth] = useState<number | null>(null);
+    useIsomorphicLayoutEffect(() => {
+      if (!showSteps || !trackRef.current) {
+        return undefined;
+      }
+      // Measured in a layout effect — before the browser paints — so the density
+      // decision lands in the same frame as layout, exactly like Material's canvas
+      // draw pass. A too-dense track can never flash its segments for a frame.
+      setTrackWidth(trackRef.current.getBoundingClientRect().width);
+      if (typeof ResizeObserver === 'undefined') {
+        return undefined;
+      }
+      const resizeObserver = new ResizeObserver((entries) => {
+        setTrackWidth(entries[0].contentRect.width);
+      });
+      resizeObserver.observe(trackRef.current);
+      return () => resizeObserver.disconnect();
+    }, [showSteps]);
+    const stepBlockWidth = trackWidth === null ? null : (trackWidth * stepPct) / 100;
+    // A 0 width means the slider isn't laid out (hidden tab/accordion, SSR) — nothing
+    // is visible there, so segments stay on and the next real measurement decides.
+    const showStepSegments =
+      showSteps &&
+      stepPct < 100 &&
+      (stepBlockWidth === null ||
+        trackWidth === 0 ||
+        stepBlockWidth >= tokens.track.stepMinBlockWidth);
+    const segmentedTrackBackground = `repeating-linear-gradient(to right, ${trackBgColor} 0, ${trackBgColor} calc(${stepPct}% - ${tokens.track.stepGap}px), transparent calc(${stepPct}% - ${tokens.track.stepGap}px), transparent ${stepPct}%)`;
 
     const describedById = helpText ? helpTextId : undefined;
 
     return (
       <BaseBox
         ref={ref as React.Ref<HTMLDivElement>}
-        {...metaAttribute({ name: MetaConstants.SliderInput, testID })}
+        {...metaAttribute({ name: MetaConstants.Slider, testID })}
         {...getStyledProps(rest)}
         {...makeAnalyticsAttribute(rest)}
       >
@@ -504,13 +558,12 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
           >
             {label && (
               // Rendered as a span (not a native <label htmlFor>): the visible label names the
-              // slider via aria-labelledby (the WAI-ARIA slider pattern), and the embedded
-              // TextInput owns its internal input id and carries its own accessibilityLabel —
-              // there is no reachable id for htmlFor to point at.
+              // slider via aria-labelledby (the WAI-ARIA slider pattern) — a slider thumb is
+              // not a labelable form element, so there is no id for htmlFor to point at.
               <FormLabel
                 as="span"
                 position={labelPosition}
-                necessityIndicator={necessityIndicator}
+                necessityIndicator={_necessityIndicator}
                 id={labelId}
                 size={size}
               >
@@ -518,12 +571,11 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
               </FormLabel>
             )}
 
-            {/* Track + numeric input row */}
-            <BaseBox display="flex" alignItems="center" flex="1" gap="spacing.3">
+            {/* Track row */}
+            <BaseBox display="flex" alignItems="center" flex="1">
               {/* Track hit-area — inset horizontally by half the (pressed) thumb so the
-                  thumb never overhangs the row edge: this keeps the 8px flex gap to the
-                  numeric input visually intact at min/max values. All positioning math is
-                  relative to the inner (inset) box, so drag geometry stays consistent. */}
+                  thumb never overhangs the row edge at min/max values. All positioning math
+                  is relative to the inner (inset) box, so drag geometry stays consistent. */}
               <BaseBox
                 flex="1"
                 height={makeSpace(tokens.interactionArea)}
@@ -545,13 +597,12 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                   alignItems="center"
                 >
                   {/* Track background */}
-                  <BaseBox
-                    position="absolute"
-                    left="spacing.0"
-                    right="spacing.0"
-                    height={`${tokens.track.height}px`}
-                    borderRadius="max"
-                    backgroundColor={tokens.color.track.bg}
+                  <StyledTrackBackground
+                    $background={
+                      showStepSegments
+                        ? `background-image: ${segmentedTrackBackground};`
+                        : `background-color: ${trackBgColor};`
+                    }
                   />
 
                   {/* Fill track */}
@@ -572,7 +623,7 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
 
                   {/* Thumb wrapper — halo + visual thumb nested inside */}
                   <StyledThumb
-                    ref={thumbRef}
+                    ref={thumbMergedRef}
                     $isFocused={isThumbFocused}
                     $isDragging={isDragging}
                     $showFocusRing={isThumbFocused && !isPointerFocusRef.current}
@@ -585,10 +636,6 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                     aria-labelledby={label ? labelId : undefined}
                     aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
                     aria-disabled={isDisabled}
-                    // The optional help text is associated with the slider (the primary control)
-                    // only. The embedded TextInput and the thumb represent the same value, so
-                    // describing both would make screen readers announce the hint twice — once
-                    // per tab stop.
                     aria-describedby={describedById}
                     onKeyDown={handleKeyDown}
                     onKeyUp={handleKeyUp}
@@ -663,36 +710,44 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
                       )}
                     </div>
                   </StyledThumb>
-                </BaseBox>
-              </BaseBox>
 
-              {/* Numeric input — composed from Blade's TextInput so border, focus, disabled,
-                  sizing, and the trailing unit (suffix) all come from the design system.
-                  It deliberately exposes only the editable value and the unit: the visible
-                  label, help text, and value semantics live on the slider, so nothing is
-                  announced twice. */}
-              <BaseBox width={makeSpace(tokens.input.width)} flexShrink={0}>
-                <TextInput
-                  accessibilityLabel={
-                    suffix
-                      ? `${label ?? accessibilityLabel ?? 'Slider'} value in ${suffix}`
-                      : `${label ?? accessibilityLabel ?? 'Slider'} value`
-                  }
-                  type="number"
-                  // The Figma spec binds the field to Form.Input.Textfield.Small (32px,
-                  // 12px text) for the medium slider — one size down from the slider's
-                  // own size, so medium → small and large → medium.
-                  size={size === 'large' ? 'medium' : 'small'}
-                  name={name}
-                  value={inputStringValue}
-                  suffix={suffix}
-                  isDisabled={isDisabled}
-                  isRequired={_isRequired}
-                  onChange={handleInputChange}
-                  onFocus={handleInputFocus}
-                  onBlur={handleInputBlur}
-                  onKeyDown={handleInputKeyDown}
-                />
+                  {/* Value tooltip — shown when the numeric field is hidden, while the
+                      thumb is hovered/dragged/focused. Rendered with Blade's own tooltip
+                      pieces (TooltipContent + PopupArrow) in a portal, positioned by the
+                      floating-ui setup above. Decorative for screen readers: the thumb
+                      already announces its value via aria-valuenow/valuetext. */}
+                  {showValueTooltip && (
+                    <FloatingPortal>
+                      <BaseBox
+                        ref={tooltipRefs.setFloating}
+                        style={tooltipFloatingStyles}
+                        pointerEvents="none"
+                        zIndex={componentZIndices.tooltip}
+                        aria-hidden="true"
+                      >
+                        <TooltipContent
+                          style={{}}
+                          colorScheme={colorScheme}
+                          arrow={
+                            <PopupArrow
+                              ref={tooltipArrowRef}
+                              context={tooltipContext}
+                              width={ARROW_WIDTH}
+                              height={ARROW_HEIGHT}
+                              fillColor={theme.colors.popup.background.gray.intense}
+                              strokeColor={
+                                isDarkMode ? theme.colors.popup.border.gray.intense : undefined
+                              }
+                              strokeWidth={isDarkMode ? 1 : 0}
+                            />
+                          }
+                        >
+                          {valueTooltipText}
+                        </TooltipContent>
+                      </BaseBox>
+                    </FloatingPortal>
+                  )}
+                </BaseBox>
               </BaseBox>
             </BaseBox>
           </BaseBox>
@@ -714,9 +769,9 @@ const _SliderInput = React.forwardRef<BladeElementRef, SliderInputProps>(
   },
 );
 
-const SliderInput = assignWithoutSideEffects(_SliderInput, {
-  componentId: MetaConstants.SliderInput,
-  displayName: 'SliderInput',
+const Slider = assignWithoutSideEffects(_Slider, {
+  componentId: MetaConstants.Slider,
+  displayName: 'Slider',
 });
 
-export { SliderInput };
+export { Slider };

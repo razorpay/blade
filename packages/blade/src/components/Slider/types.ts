@@ -2,7 +2,7 @@ import type { BaseInputProps } from '~components/Input/BaseInput';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { DataAnalyticsAttribute } from '~utils/types';
 
-type SliderInputBaseProps = Pick<
+type SliderBaseProps = Pick<
   BaseInputProps,
   'labelPosition' | 'name' | 'isDisabled' | 'isRequired' | 'testID' | keyof DataAnalyticsAttribute
 > & {
@@ -23,20 +23,40 @@ type SliderInputBaseProps = Pick<
   /** @default 1 */
   step?: number;
   /**
-   * Unit label displayed after the numeric input (e.g. 'px', '%', 'rem').
+   * Unit label appended to the value in the value tooltip and the accessible
+   * value text (e.g. 'px', '%', 'rem').
    * @note v1 only supports a trailing suffix. A leading prefix (e.g. '$') is a known
    * omission and may be added in a future release.
    */
   suffix?: string;
   /** @default 'medium' */
   size?: 'medium' | 'large';
+  /**
+   * Shows the value tooltip above the thumb while it is hovered, dragged, or
+   * keyboard-focused. The tooltip is the slider's value readout — disable it only
+   * when the consuming surface renders its own readout next to the slider.
+   *
+   * @default true
+   */
+  showTooltip?: boolean;
+  /**
+   * Renders the track as step segments — a small gap at each step position —
+   * to visually communicate that the slider snaps to discrete values.
+   * The filled portion of the track stays solid.
+   *
+   * When the steps are too dense for the gaps to be discernible (each step
+   * block narrower than ~8px on screen), the segments auto-hide and the track
+   * renders continuous — mirroring Material's tick auto-hide guidance.
+   *
+   * @default false
+   */
+  showSteps?: boolean;
   necessityIndicator?: 'required' | 'optional' | 'none';
   /**
    * Optional guidance text rendered once below the whole component (e.g. "Recommended 20–40px").
    *
-   * @note SliderInput has no validation/error state by design: the value self-corrects into
-   * `[min, max]` (typing past max resets to max; the thumb stops at the bounds), so an invalid
-   * value cannot exist. This matches CounterInput, Blade's closest bounded numeric input.
+   * @note Slider has no validation/error state by design: the thumb stops at the bounds,
+   * so an invalid value cannot exist.
    */
   helpText?: string;
   onChangeStart?: (args: { name?: string; value: number }) => void;
@@ -55,7 +75,7 @@ type SliderInputBaseProps = Pick<
   onChange?: (args: { name?: string; value: number }) => void;
 } & StyledPropsBlade;
 
-type SliderInputPropsWithLabel = {
+type SliderPropsWithLabel = {
   /**
    * Label describing the value being controlled.
    * When provided, this is used for both the visible label and the accessible name.
@@ -67,7 +87,7 @@ type SliderInputPropsWithLabel = {
   accessibilityLabel?: string;
 };
 
-type SliderInputPropsWithA11yLabel = {
+type SliderPropsWithA11yLabel = {
   /**
    * Label describing the value being controlled — absent when using `accessibilityLabel`.
    */
@@ -78,5 +98,4 @@ type SliderInputPropsWithA11yLabel = {
   accessibilityLabel: string;
 };
 
-export type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLabel) &
-  SliderInputBaseProps;
+export type SliderProps = (SliderPropsWithLabel | SliderPropsWithA11yLabel) & SliderBaseProps;

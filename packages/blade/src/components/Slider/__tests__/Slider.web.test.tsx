@@ -1,11 +1,11 @@
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
-import { SliderInput } from '../index';
+import { act, fireEvent } from '@testing-library/react';
+import { Slider } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
-describe('<SliderInput />', () => {
+describe('<Slider />', () => {
   it('should render with default props', () => {
-    const { getByRole, getByText } = renderWithTheme(<SliderInput label="Test Slider" />);
+    const { getByRole, getByText } = renderWithTheme(<Slider label="Test Slider" />);
     expect(getByRole('slider')).toBeTruthy();
     expect(getByText('Test Slider')).toBeTruthy();
   });
@@ -13,7 +13,7 @@ describe('<SliderInput />', () => {
   it('should call onChange when value changes via keyboard', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={50} onChange={onChange} min={0} max={100} step={1} />,
+      <Slider label="Test" value={50} onChange={onChange} min={0} max={100} step={1} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
@@ -23,7 +23,7 @@ describe('<SliderInput />', () => {
   it('should respect min/max constraints via keyboard', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={100} onChange={onChange} min={0} max={100} step={1} />,
+      <Slider label="Test" value={100} onChange={onChange} min={0} max={100} step={1} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
@@ -33,7 +33,7 @@ describe('<SliderInput />', () => {
   it('should jump to min/max on Home/End keys', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={50} onChange={onChange} min={0} max={100} step={1} />,
+      <Slider label="Test" value={50} onChange={onChange} min={0} max={100} step={1} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'Home' });
@@ -44,31 +44,21 @@ describe('<SliderInput />', () => {
 
   it('should render in disabled state', () => {
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={50} onChange={jest.fn()} isDisabled />,
+      <Slider label="Test" value={50} onChange={jest.fn()} isDisabled />,
     );
     expect(getByRole('slider')).toHaveAttribute('aria-disabled', 'true');
   });
 
   it('should render help text exactly once (no duplicate hint from the inner TextInput)', () => {
     const { getAllByText } = renderWithTheme(
-      <SliderInput label="Test" value={50} onChange={jest.fn()} helpText="Some guidance" />,
+      <Slider label="Test" value={50} onChange={jest.fn()} helpText="Some guidance" />,
     );
     expect(getAllByText('Some guidance')).toHaveLength(1);
   });
 
-  it('should render the unit suffix inside the numeric input box', () => {
-    const { getByText, getByRole } = renderWithTheme(
-      <SliderInput label="Radius" value={12} onChange={jest.fn()} min={0} max={24} suffix="px" />,
-    );
-    const input = getByRole('textbox');
-    const suffixEl = getByText('px');
-    // The suffix must live inside the Blade TextInput's container, not floating outside it.
-    expect(input.closest('[data-blade-component="textinput"]')).toContainElement(suffixEl);
-  });
-
   it('should set correct ARIA attributes', () => {
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Radius" value={12} onChange={jest.fn()} min={0} max={24} suffix="px" />,
+      <Slider label="Radius" value={12} onChange={jest.fn()} min={0} max={24} suffix="px" />,
     );
     const slider = getByRole('slider');
     expect(slider).toHaveAttribute('aria-valuemin', '0');
@@ -80,7 +70,7 @@ describe('<SliderInput />', () => {
   it('should call onChange with both name and value', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={50} name="mySlider" onChange={onChange} step={1} />,
+      <Slider label="Test" value={50} name="mySlider" onChange={onChange} step={1} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
@@ -88,21 +78,20 @@ describe('<SliderInput />', () => {
   });
 
   it('should clamp an unset initial value up to min (not start at 0)', () => {
-    const { getByRole } = renderWithTheme(<SliderInput label="Test" min={10} max={20} />);
+    const { getByRole } = renderWithTheme(<Slider label="Test" min={10} max={20} />);
     expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '10');
-    expect(getByRole('textbox')).toHaveValue('10');
   });
 
   it('should clamp an out-of-range defaultValue into [min, max]', () => {
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={500} min={0} max={100} />,
+      <Slider label="Test" defaultValue={500} min={0} max={100} />,
     );
     expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '100');
   });
 
   it('should work as uncontrolled component', () => {
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={25} min={0} max={100} step={1} />,
+      <Slider label="Test" defaultValue={25} min={0} max={100} step={1} />,
     );
     expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '25');
   });
@@ -110,7 +99,7 @@ describe('<SliderInput />', () => {
   it('should jump by step * 10 on Shift+Arrow (large step)', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={50} onChange={onChange} min={0} max={100} step={1} />,
+      <Slider label="Test" value={50} onChange={onChange} min={0} max={100} step={1} />,
     );
     fireEvent.keyDown(getByRole('slider'), { key: 'ArrowRight', shiftKey: true });
     expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 60 });
@@ -118,7 +107,7 @@ describe('<SliderInput />', () => {
 
   it('should keep max reachable when the range is not a multiple of step', () => {
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={6} min={0} max={10} step={3} />,
+      <Slider label="Test" defaultValue={6} min={0} max={10} step={3} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'End' });
@@ -128,7 +117,7 @@ describe('<SliderInput />', () => {
   it('should snap steps anchored at min, not at zero', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={1} min={1} max={9} step={2} onChange={onChange} />,
+      <Slider label="Test" defaultValue={1} min={1} max={9} step={2} onChange={onChange} />,
     );
     fireEvent.keyDown(getByRole('slider'), { key: 'ArrowRight' });
     expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 3 });
@@ -136,18 +125,17 @@ describe('<SliderInput />', () => {
 
   it('should not leak floating-point artifacts for fractional steps', () => {
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={0.2} min={0} max={1} step={0.1} />,
+      <Slider label="Test" defaultValue={0.2} min={0} max={1} step={0.1} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
     expect(slider).toHaveAttribute('aria-valuenow', '0.3');
-    expect(getByRole('textbox')).toHaveValue('0.3');
   });
 
   it('should snap to step values', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={10} onChange={onChange} min={0} max={100} step={5} />,
+      <Slider label="Test" value={10} onChange={onChange} min={0} max={100} step={5} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
@@ -158,7 +146,7 @@ describe('<SliderInput />', () => {
     const onChangeStart = jest.fn();
     const onChangeEnd = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput
+      <Slider
         label="Test"
         defaultValue={50}
         onChangeStart={onChangeStart}
@@ -179,7 +167,7 @@ describe('<SliderInput />', () => {
   it('should not call onChangeStart again while a key is held down', () => {
     const onChangeStart = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput
+      <Slider
         label="Test"
         defaultValue={50}
         onChangeStart={onChangeStart}
@@ -197,7 +185,7 @@ describe('<SliderInput />', () => {
   it('should not crash or produce NaN when step is 0', () => {
     const onChange = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" value={50} onChange={onChange} min={0} max={100} step={0} />,
+      <Slider label="Test" value={50} onChange={onChange} min={0} max={100} step={0} />,
     );
     const slider = getByRole('slider');
     fireEvent.keyDown(slider, { key: 'ArrowRight' });
@@ -208,7 +196,7 @@ describe('<SliderInput />', () => {
     const onChangeStart = jest.fn();
     const onChangeEnd = jest.fn();
     const { getByRole } = renderWithTheme(
-      <SliderInput
+      <Slider
         label="Test"
         defaultValue={50}
         onChangeStart={onChangeStart}
@@ -228,67 +216,100 @@ describe('<SliderInput />', () => {
     expect(onChangeStart).toHaveBeenCalledTimes(2);
   });
 
-  it('should not commit the numeric input value until blur', () => {
-    const onChange = jest.fn();
-    const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={50} onChange={onChange} min={0} max={100} />,
+  it('should show a value tooltip with the suffix on thumb hover', () => {
+    const { getByRole, queryByRole, getByText } = renderWithTheme(
+      <Slider label="Test" value={12} onChange={jest.fn()} min={0} max={24} suffix="px" />,
     );
-    const input = getByRole('textbox') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '75' } });
-    expect(onChange).not.toHaveBeenCalled();
-    fireEvent.blur(input);
-    expect(onChange).toHaveBeenCalledWith({ value: 75 });
+    // Slider is a pure slider — it renders no text field
+    expect(queryByRole('textbox')).toBeNull();
+    fireEvent.mouseEnter(getByRole('slider'));
+    expect(getByText('12 px')).toBeInTheDocument();
   });
 
-  it('should report the clamped value (not the raw typed value) to onBlur', () => {
-    const onBlur = jest.fn();
-    const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={12} onBlur={onBlur} min={0} max={24} />,
+  it('should not show the value tooltip when showTooltip is false', () => {
+    const { getByRole, queryByText } = renderWithTheme(
+      <Slider label="Test" value={12} onChange={jest.fn()} min={0} max={24} showTooltip={false} />,
     );
-    const input = getByRole('textbox') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '1000' } });
-    fireEvent.blur(input);
-    expect(onBlur).toHaveBeenCalledWith({ name: undefined, value: 24 });
+    fireEvent.mouseEnter(getByRole('slider'));
+    fireEvent.focus(getByRole('slider'));
+    expect(queryByText('12')).toBeNull();
   });
 
-  it('should fire onChangeEnd when a value is committed via input blur', () => {
-    const onChangeEnd = jest.fn();
-    const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={12} onChangeEnd={onChangeEnd} min={0} max={24} />,
+  it('should show the value tooltip on keyboard focus and update it live', () => {
+    const { getByRole, getByText } = renderWithTheme(
+      <Slider label="Test" defaultValue={12} min={0} max={24} />,
     );
-    const input = getByRole('textbox') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '18' } });
-    fireEvent.blur(input);
-    expect(onChangeEnd).toHaveBeenCalledWith({ value: 18 });
+    const slider = getByRole('slider');
+    fireEvent.focus(slider);
+    expect(getByText('12')).toBeInTheDocument();
+    fireEvent.keyDown(slider, { key: 'ArrowRight' });
+    expect(getByText('13')).toBeInTheDocument();
   });
 
-  it('should commit the typed value on Enter and move the slider to it', () => {
-    const onChange = jest.fn();
-    const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={50} onChange={onChange} min={0} max={100} />,
+  it('should render the track as step segments when showSteps is true', () => {
+    // jest-styled-components serializes the class CSS into the snapshot, so the
+    // repeating-linear-gradient (one 10% cycle per step, 1px gap) is asserted there.
+    const { container } = renderWithTheme(
+      <Slider label="Test" defaultValue={50} min={0} max={100} step={10} showSteps />,
     );
-    const input = getByRole('textbox') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '75' } });
-    fireEvent.keyDown(input, { key: 'Enter' });
-    expect(onChange).toHaveBeenCalledWith({ name: undefined, value: 75 });
-    expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '75');
+    expect(container).toMatchSnapshot();
   });
 
-  it('should snap to max when a value above max is committed via Enter', () => {
+  it('should auto-hide step segments when steps are too dense for the track width', () => {
+    // jsdom has no ResizeObserver — install a mock that lets the test control
+    // the measured track width, mirroring what a real browser reports.
+    let resizeCallback: (entries: { contentRect: { width: number } }[]) => void = () => undefined;
+    const observe = jest.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (global as any).ResizeObserver = class {
+      constructor(callback: typeof resizeCallback) {
+        resizeCallback = callback;
+      }
+      observe = observe;
+      disconnect = jest.fn();
+      unobserve = jest.fn();
+    };
+
     const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={12} min={0} max={24} />,
+      <Slider label="Test" defaultValue={50} min={0} max={100} step={1} showSteps />,
     );
-    const input = getByRole('textbox') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '26' } });
-    fireEvent.keyDown(input, { key: 'Enter' });
-    expect(getByRole('slider')).toHaveAttribute('aria-valuenow', '24');
-    expect(input).toHaveValue('24');
+    const track = getByRole('slider').parentElement?.firstElementChild as HTMLElement;
+    expect(observe).toHaveBeenCalled();
+    // Reads the CSS declarations styled-components generated for the track's
+    // current hash class (the gradient lives in class CSS, not inline style).
+    const trackCss = (): string => {
+      const hashClass = [...track.classList].find((c) => !c.includes('StyledTrackBackground'));
+      const css = [...document.querySelectorAll('style')]
+        .map((styleTag) => styleTag.textContent ?? '')
+        .join('\n');
+      const start = css.indexOf(`.${hashClass}{`);
+      return start === -1 ? '' : css.slice(start, css.indexOf('}', start));
+    };
+
+    // 100 steps on a 300px track → 3px per block, below the 8px minimum → hidden
+    act(() => resizeCallback([{ contentRect: { width: 300 } }]));
+    expect(trackCss()).not.toContain('repeating-linear-gradient');
+    expect(trackCss()).toContain('background-color');
+
+    // Same slider on a 1600px track → 16px per block → segments shown
+    act(() => resizeCallback([{ contentRect: { width: 1600 } }]));
+    expect(trackCss()).toContain('repeating-linear-gradient');
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    delete (global as any).ResizeObserver;
   });
 
-  it('should set the name attribute on the numeric input for native form submission', () => {
-    const { getByRole } = renderWithTheme(
-      <SliderInput label="Test" defaultValue={50} name="radius" min={0} max={100} />,
+  it('should warn in dev when step does not divide the range evenly and showSteps is on', () => {
+    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    renderWithTheme(<Slider label="Test" defaultValue={0} min={0} max={10} step={3} showSteps />);
+    expect(console.warn).toHaveBeenCalledWith(
+      expect.stringContaining('does not divide the `min`–`max` range'),
     );
-    expect(getByRole('textbox')).toHaveAttribute('name', 'radius');
+
+    consoleWarnSpy.mockClear();
+    // Evenly divisible range → no warning (fractional steps included: 0–1 by 0.1)
+    renderWithTheme(<Slider label="Test" defaultValue={0} min={0} max={1} step={0.1} showSteps />);
+    expect(console.warn).not.toHaveBeenCalled();
+    consoleWarnSpy.mockRestore();
   });
 });

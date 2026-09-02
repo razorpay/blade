@@ -1,0 +1,752 @@
+# Slider
+
+> **Decision update (Sep 2026):** the component ships as a pure **`Slider`** — the embedded numeric text field and its configs (`showNumericInput`, input width token, draft/commit handling) were removed by design decision. The value readout is now the built-in value tooltip (shown on hover/drag/keyboard-focus, built from Blade's Tooltip internals). A compound slider + text field component (`SliderInput`) can be composed later as a separate component on top of this one. Sections below that describe the embedded input are retained as decision history.
+
+Slider is a horizontal slider for bounded numeric value selection, designed for configurator surfaces where merchants adjust values like corner radius, spacing, or opacity in the Checkout Studio customization interface. It supports discrete steps (with optional step segments on the track), a value tooltip readout, and follows the same controlled/uncontrolled patterns used by other Blade input components.
+
+## Design
+
+- [Figma - SliderInput](https://www.figma.com/design/azf0t1g6SuGPbzIZwB8YNi/Checkout-Studio---Playground?node-id=2161-86083&t=w0AJVqcXKnaXXPyf-11)
+- [M3 Sliders Reference](https://m3.material.io/components/sliders/overview)
+- [WAI-ARIA Slider Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/)
+
+## API
+
+Overall structure of the API showing the main usage pattern with realistic example:
+
+```jsx
+import { SliderInput } from '@razorpay/blade/components';
+
+<SliderInput
+  label="Corner Radius"
+  value={12}
+  onChange={({ value }) => setRadius(value)}
+  min={0}
+  max={24}
+  step={2}
+  suffix="px"
+  size="medium"
+/>;
+```
+
+<details>
+  <summary>Alternate APIs</summary>
+
+### Alternate API 1 — Compound component (Slider + Input as children)
+
+```jsx
+import { Slider, SliderTrack, SliderThumb, SliderInput } from '@razorpay/blade/components';
+
+<Slider value={12} onChange={({ value }) => setRadius(value)} min={0} max={24}>
+  <SliderTrack />
+  <SliderThumb />
+  <SliderInput suffix="px" />
+</Slider>;
+```
+
+- Pros
+  - Maximum composability — consumers can rearrange or omit sub-components
+  - Follows the compound component pattern used by Tabs and Modal in Blade
+- Cons
+  - Over-engineered for this use case — the layout is fixed (label → slider → input in a row)
+  - Consumers will almost always render the same sub-components in the same order
+  - Increases the number of exports and API surface area without clear benefit
+  - The Figma design shows a single rigid layout, not a composable one
+
+### Alternate API 2 — Standalone Slider (no coupled input)
+
+```jsx
+import { Slider } from '@razorpay/blade/components';
+
+<Slider
+  label="Corner Radius"
+  value={12}
+  onChange={({ value }) => setRadius(value)}
+  min={0}
+  max={24}
+/>;
+```
+
+- Pros
+  - Simpler component — just a slider, no input field complexity
+  - Could be composed with a separate TextInput by the consumer
+- Cons
+  - Loses the two-way sync DX that makes this component valuable
+  - Consumers would need to wire up the sync between a separate Slider and TextInput themselves
+  - The Figma design explicitly couples the slider and input as a single component
+  - Doesn't match the primary use case (configurator surfaces always need the input field)
+
+**Recommendation:** Start with the flat `SliderInput` API. If a standalone `Slider` is needed later, the internal track/thumb sub-components can be extracted and exposed without breaking changes.
+
+</details>
+
+### Props
+
+#### SliderInput
+
+```typescript
+type SliderInputCommonProps = {
+  /**
+   * Current value of the slider input (controlled mode)
+   */
+  value?: number;
+
+  /**
+   * Default value when component is uncontrolled
+   */
+  defaultValue?: number;
+
+  /**
+   * Minimum allowed value. The slider track starts at this value.
+   * @default 0
+   */
+  min?: number;
+
+  /**
+   * Maximum allowed value. The slider track ends at this value.
+   * @default 100
+   */
+  max?: number;
+
+  /**
+   * Step increment for the slider. When defined, the slider snaps to discrete
+   * values along the track (anchored at `min`; `max` is always reachable).
+   * @default 1
+   */
+  step?: number;
+
+  /**
+   * Unit suffix displayed inside the input field (e.g. "px", "%", "rem")
+   */
+  suffix?: string;
+
+  /**
+   * Event handler called when the value changes via slider drag, keyboard,
+   * or text input
+   */
+  onChange?: (args: { name?: string; value: number }) => void;
+
+  /**
+   * Event handler called when the user begins interacting with the slider
+   * (mousedown / touchstart on thumb or track click, keyboard, input focus)
+   */
+  onChangeStart?: (args: { name?: string; value: number }) => void;
+
+  /**
+   * Event handler called when the user finishes interacting with the slider
+   * (mouseup / touchend, keyup, Enter/blur commit). Useful for committing the
+   * value only when the gesture ends rather than on every intermediate value.
+   */
+  onChangeEnd?: (args: { name?: string; value: number }) => void;
+
+  /**
+   * Called when the numeric input gains focus
+   */
+  onFocus?: (args: { name?: string; value: number }) => void;
+
+  /**
+   * Called when the numeric input loses focus (reports the committed value)
+   */
+  onBlur?: (args: { name?: string; value: number }) => void;
+
+  /**
+   * The name attribute for form integration
+   */
+  name?: string;
+
+  /**
+   * Label position relative to the slider.
+   * @default 'top'
+   */
+  labelPosition?: 'top' | 'left';
+
+  /**
+   * Size of the component. Affects input height, thumb size, and typography.
+   * @default 'medium'
+   */
+  size?: 'medium' | 'large';
+
+  /**
+   * Disables the slider and input
+   * @default false
+   */
+  isDisabled?: boolean;
+
+  /**
+   * Marks the field as required
+   * @default false
+   */
+  isRequired?: boolean;
+
+  /**
+   * Renders a necessity indicator after the label
+   */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+
+  /**
+   * Text shown below the component providing guidance.
+   *
+   * Note: there is no validationState/errorText/successText — the value
+   * self-corrects into [min, max], so an invalid value cannot exist (see the
+   * "No validation/error state" decision below).
+   */
+  helpText?: string;
+
+  /**
+   * Test ID for automation
+   */
+  testID?: string;
+} & StyledPropsBlade;
+
+type SliderInputPropsWithLabel = {
+  /**
+   * Label describing the value being controlled
+   */
+  label: string;
+  /**
+   * Accessibility label for the input (optional override)
+   */
+  accessibilityLabel?: string;
+};
+
+type SliderInputPropsWithA11yLabel = {
+  /**
+   * Label describing the value being controlled
+   */
+  label?: undefined;
+  /**
+   * Accessibility label — required when label is not provided
+   */
+  accessibilityLabel: string;
+};
+
+type SliderInputProps = (SliderInputPropsWithLabel | SliderInputPropsWithA11yLabel) &
+  SliderInputCommonProps;
+```
+
+### Key API Decisions
+
+| Decision                                 | Choice                                              | Rationale                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ---------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Component name**                       | `SliderInput`                                       | Communicates the compound nature (slider + input). A standalone `Slider` can be added later.                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Value callback signature**             | `({ name, value }) => void`                         | All value callbacks (`onChange`, `onChangeStart`, `onChangeEnd`, `onFocus`, `onBlur`) report both `name` and `value` so they are consistent with each other and usable by form libraries keying off `name`. `value` is a `number` — an intentional deviation from the string-based `FormInputOnEvent`, since the slider models a numeric value.                                                                                                                                                                           |
+| **Dual control (thumb + numeric input)** | Both focusable, intentional                         | The draggable thumb and the numeric input are two ways to set the same value (drag/keyboard for approximate, typing for exact) — analogous to a color picker's slider + hex field. To avoid a screen reader announcing the help/error twice (once per tab stop), the `aria-describedby` for help/error is associated with the numeric input only; the thumb conveys its state via `aria-valuetext`.                                                                                                                       |
+| **`size` values**                        | `'medium' \| 'large'`                               | Aligns with Blade's canonical size vocabulary. `medium` = 36px, `large` = 48px. `xsmall` is excluded because the slider thumb requires a 48px touch target (WCAG 2.5.5) regardless of visual size — `medium` is already the smallest practical size for this touch target constraint. `small` is omitted for the same reason it's absent from CounterInput (the closest analog): intentional parity, not an oversight.                                                                                                    |
+| **`labelPosition` default**              | `'top'`                                             | Matches all other Blade input components. Consumers opt into `'left'` explicitly.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Standalone Slider**                    | Deferred to follow-up                               | Start with `SliderInput`; extract internal track/thumb as `Slider` later if needed.                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| **React Native**                         | Web-only for v1                                     | RN requires `react-native-gesture-handler` for drag; scope separately.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| **No tick marks**                        | Removed per final design                            | The Figma spec has no tick dots on the track, and neither shadcn/Base UI's slider renders them. Discrete steps are still fully honored via value snapping; the numeric input communicates the exact value.                                                                                                                                                                                                                                                                                                                |
+| **No validation/error state**            | `validationState`/`errorText`/`successText` removed | The value self-corrects into `[min, max]` (typing past max resets to max; the thumb stops at the bounds), so an invalid value cannot exist. Matches CounterInput, Blade's closest bounded numeric input. Optional `helpText` is retained for guidance (e.g. "Recommended 20–40px"), rendered once below the whole component.                                                                                                                                                                                              |
+| **Numeric field composition**            | Blade `TextInput` with trailing `suffix`            | The numeric box is the stock Blade TextInput — border, focus, disabled, sizing, and the unit (px/%) all come from the design system rather than a bespoke input. The field intentionally exposes only the editable value + unit: the visible label, help text, and value semantics live on the slider, so nothing is announced twice by screen readers. The visible label is rendered as a span and names the slider via `aria-labelledby` (WAI-ARIA slider pattern); the TextInput carries its own `accessibilityLabel`. |
+| **Input width**                          | Fixed width, auto-sized to `max` value + suffix     | Prevents layout shift. Truncates with ellipsis if value overflows.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+
+## Component Variants
+
+| Variant                 | Description                                       | In Scope |
+| ----------------------- | ------------------------------------------------- | -------- |
+| **Continuous**          | Selects any value in range, no snapping           | Yes      |
+| **Discrete (Stepped)**  | Snaps to `step` increments                        | Yes      |
+| **Centered**            | Zero at middle, supports positive/negative ranges | No       |
+| **Range (Multi-thumb)** | Two thumbs for selecting min and max              | No       |
+
+## States
+
+### State Matrix
+
+Every interactive sub-element must have these states defined. This follows the [M3 interaction states model](https://m3.material.io/foundations/interaction/states/applying-states) and the [WAI-ARIA slider pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/).
+
+|                     | **Enabled (Default)**           | **Hovered**                             | **Focused**                            | **Pressed / Dragging**                          | **Disabled**                                            | **Error**                        |
+| ------------------- | ------------------------------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------- | ------------------------------------------------------- | -------------------------------- |
+| **Thumb**           | Solid fill, 16px circle         | + Halo ring (~40px, 8% opacity overlay) | + Focus ring (2px primary border)      | + Scale to 20px, halo intensifies (12% opacity) | Muted fill, `opacity.6`, no halo, `cursor: not-allowed` | —                                |
+| **Active Track**    | Solid fill                      | —                                       | —                                      | —                                               | Muted, `opacity.6`                                      | —                                |
+| **Inactive Track**  | Subtle background (~9% opacity) | —                                       | —                                      | —                                               | Muted, `opacity.6`                                      | —                                |
+| **Input Field**     | Default border                  | Border: `highlighted`                   | Border: `primary.default` + focus ring | —                                               | Muted bg + border, `cursor: not-allowed`                | Border: `negative.default` (red) |
+| **Label**           | Muted text color                | —                                       | —                                      | —                                               | Dimmed, `opacity.6`                                     | —                                |
+| **Help/Error Text** | Muted text / hidden             | —                                       | —                                      | —                                               | Dimmed                                                  | Error text visible (red)         |
+
+### Thumb States Detail
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ DEFAULT        HOVERED        FOCUSED        PRESSED    │
+│                                                         │
+│   ●              ◉              ◎              ◉        │
+│  16px        16px+halo     16px+ring      20px+halo     │
+│  solid       +8% overlay   +2px primary   +12% overlay  │
+│  black       bg circle     border ring    scale up      │
+│                                                         │
+│ DISABLED                                                │
+│   ●                                                     │
+│  16px, muted fill, opacity.6                            │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Track States Detail
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ ENABLED                                                 │
+│  ████████████░░░░░░░░░░░░░░░                            │
+│  ← active →   ← inactive →                             │
+│  solid black   9% opacity gray                          │
+│                                                         │
+│ WITH GAP (M3 pattern)                                   │
+│  ████████████ · ○ · ░░░░░░░░░░░░                        │
+│              ↑ 6px gap around thumb                      │
+│              rounded inside corners (2px)                │
+│                                                         │
+│ DISABLED                                                │
+│  ████████████░░░░░░░░░░░░░░░                            │
+│  both tracks at opacity.6                               │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Input Field States Detail
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ DEFAULT         HOVERED         FOCUSED         ERROR   │
+│ ┌────────┐     ┌────────┐     ┌────────┐     ┌────────┐│
+│ │ 12 px  │     │ 12 px  │     │ 12 px  │     │ 12 px  ││
+│ └────────┘     └────────┘     └────────┘     └────────┘│
+│ gray border   dark border    primary border  red border │
+│ 1px           1px            1px             1px        │
+│                                                         │
+│ DISABLED                                                │
+│ ┌────────┐                                              │
+│ │ 12 px  │  muted bg, muted border, dimmed text         │
+│ └────────┘                                              │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Interaction Patterns
+
+### Mouse / Pointer
+
+| Interaction       | Behavior                                                                                                                                                                                 |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Drag thumb**    | Value updates continuously (snaps to `step` if defined). Input field syncs in real-time. Fires `onChangeStart` on mousedown, `onChange` on every value change, `onChangeEnd` on mouseup. |
+| **Click track**   | Thumb jumps to clicked position immediately. Value snaps to nearest `step`. Fires `onChangeStart` → `onChange` → `onChangeEnd` in sequence.                                              |
+| **Type in input** | Slider thumb moves to match. Value is clamped to `[min, max]` on blur. Fires `onChange` on blur with clamped value.                                                                      |
+| **Hover thumb**   | Halo ring appears (8% opacity overlay, ~40px). Cursor changes to `grab`.                                                                                                                 |
+| **Hover track**   | Cursor changes to `pointer` (indicates click-to-jump).                                                                                                                                   |
+
+### Keyboard (follows WAI-ARIA slider pattern)
+
+| Key                         | Behavior                                                    |
+| --------------------------- | ----------------------------------------------------------- |
+| **Right Arrow / Up Arrow**  | Increase value by one `step`                                |
+| **Left Arrow / Down Arrow** | Decrease value by one `step`                                |
+| **Home**                    | Set to `min` value                                          |
+| **End**                     | Set to `max` value                                          |
+| **Page Up**                 | Increase by `step * 10` (large jump)                        |
+| **Page Down**               | Decrease by `step * 10` (large jump)                        |
+| **Tab**                     | Move focus: slider thumb → input field (standard tab order) |
+
+### Touch
+
+| Interaction            | Behavior                                                                             |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| **Touch & drag thumb** | Same as mouse drag. Touch target is 48px minimum (even though visual thumb is 16px). |
+| **Tap track**          | Same as click track — thumb jumps to tapped position.                                |
+
+### Two-Way Sync Logic
+
+```
+┌──────────────┐     onChange({ value })     ┌──────────────┐
+│              │ ──────────────────────────→  │              │
+│   Slider     │                              │  Input Field │
+│   (drag)     │ ←──────────────────────────  │  (type)      │
+│              │     onChange({ value })       │              │
+└──────────────┘                              └──────────────┘
+                         ↓
+              Value clamped to [min, max]
+              Snapped to nearest step
+              Fires onChange with final value
+```
+
+- **Slider → Input**: Updates on every drag tick (real-time)
+- **Input → Slider**: Updates on blur (after user finishes typing), not on every keystroke
+- **Clamping**: If user types a value outside `[min, max]`, it is clamped on blur
+- **Invalid input**: Non-numeric input is rejected (reverts to previous valid value on blur)
+
+## Token Mapping
+
+### Colors
+
+| Element              | State    | Blade Token                                        | Resolved Value        |
+| -------------------- | -------- | -------------------------------------------------- | --------------------- |
+| **Active track**     | Enabled  | `surface.icon.staticBlack.normal`                  | `#000000`             |
+| **Active track**     | Disabled | `surface.icon.staticBlack.normal` + `opacity.6`    | —                     |
+| **Inactive track**   | Enabled  | `feedback.background.neutral.subtle`               | `rgba(67,75,81,0.09)` |
+| **Inactive track**   | Disabled | `feedback.background.neutral.subtle` + `opacity.6` | —                     |
+| **Thumb fill**       | Enabled  | `surface.icon.staticBlack.normal`                  | `#000000`             |
+| **Thumb stroke**     | Enabled  | `surface.background.gray.intense` (white)          | `#FFFFFF`             |
+| **Thumb halo**       | Hovered  | `surface.icon.staticBlack.normal` @ 8% opacity     | —                     |
+| **Thumb halo**       | Pressed  | `surface.icon.staticBlack.normal` @ 12% opacity    | —                     |
+| **Thumb focus ring** | Focused  | `interactive.border.primary.default`               | —                     |
+| **Input border**     | Default  | `interactive.border.gray.default`                  | `#DEE1E3`             |
+| **Input border**     | Hovered  | `interactive.border.gray.highlighted`              | —                     |
+| **Input border**     | Focused  | `interactive.border.primary.default`               | —                     |
+| **Input border**     | Error    | `interactive.border.negative.default`              | —                     |
+| **Input border**     | Disabled | `interactive.border.gray.disabled`                 | —                     |
+| **Input background** | Default  | `surface.background.gray.intense`                  | `#FFFFFF`             |
+| **Input background** | Disabled | `surface.background.gray.subtle`                   | —                     |
+| **Label text**       | Enabled  | `surface.text.gray.muted`                          | `#616D75`             |
+| **Value text**       | Enabled  | `interactive.text.gray.normal`                     | `#050505`             |
+| **Suffix text**      | Enabled  | `surface.text.gray.muted`                          | `#616D75`             |
+| **Error text**       | Error    | `feedback.text.negative.intense`                   | —                     |
+| **Help text**        | Enabled  | `surface.text.gray.muted`                          | —                     |
+
+### Spacing
+
+| Property                            | Blade Token | Value |
+| ----------------------------------- | ----------- | ----- |
+| Label → Slider gap                  | `spacing.3` | 8px   |
+| Slider → Input gap                  | `spacing.3` | 8px   |
+| Input internal padding (horizontal) | `spacing.3` | 8px   |
+| Input internal padding (vertical)   | `spacing.3` | 8px   |
+| Thumb track gap (M3)                | Hardcoded   | 6px   |
+
+### Sizing
+
+| Property                 | `medium`                       | `large`                         |
+| ------------------------ | ------------------------------ | ------------------------------- |
+| Component height         | 36px                           | 48px                            |
+| Input field height       | 36px                           | 48px                            |
+| Track height             | 2px                            | 2px                             |
+| Track border radius      | `borderRadius.max` (9999px)    | `borderRadius.max` (9999px)     |
+| Thumb diameter (default) | 16px                           | 20px                            |
+| Thumb diameter (pressed) | 20px                           | 24px                            |
+| Thumb touch target       | 48px                           | 48px                            |
+| Input border radius      | `borderRadius.large` (8px)     | `borderRadius.large` (8px)      |
+| Input border width       | `borderWidth.thin` (1px)       | `borderWidth.thin` (1px)        |
+| Label typography         | `Body/SmallMedium` (12px/500)  | `Body/MediumMedium` (14px/500)  |
+| Value typography         | `Body/SmallMedium` (12px/500)  | `Body/MediumMedium` (14px/500)  |
+| Suffix typography        | `Body/SmallRegular` (12px/400) | `Body/MediumRegular` (14px/400) |
+
+### Motion
+
+| Transition                      | Duration Token                    | Easing Token                                    |
+| ------------------------------- | --------------------------------- | ----------------------------------------------- |
+| Thumb position (value change)   | `motion.duration.quick` (200ms)   | `motion.easing.standard`                        |
+| Halo appear/disappear           | `motion.duration.xquick` (160ms)  | `motion.easing.entrance` / `motion.easing.exit` |
+| Thumb scale (press/release)     | `motion.duration.xquick` (160ms)  | `motion.easing.standard`                        |
+| Track fill update               | Instant (follows thumb)           | —                                               |
+| Focus ring (input)              | `motion.duration.xgentle` (640ms) | `motion.easing.emphasized`                      |
+| Border color transition (input) | `motion.duration.gentle` (480ms)  | `motion.easing.standard`                        |
+
+### Contrast Requirements
+
+- Active track vs inactive track: ≥ 3:1 contrast ratio with background
+- Thumb must contrast with both track segments at ≥ 3:1
+
+## Examples
+
+### Basic Usage
+
+A simple slider with label, range, and unit suffix. The slider and input field stay in sync automatically.
+
+```jsx
+import { SliderInput } from '@razorpay/blade/components';
+
+const App = () => {
+  const [radius, setRadius] = useState(8);
+
+  return (
+    <SliderInput
+      label="Corner Radius"
+      value={radius}
+      onChange={({ value }) => setRadius(value)}
+      min={0}
+      max={24}
+      suffix="px"
+    />
+  );
+};
+```
+
+### With Discrete Steps
+
+When `step` is provided, the slider snaps to increments and renders tick marks along the track. Useful for values with a fixed set of valid options.
+
+```jsx
+import { SliderInput } from '@razorpay/blade/components';
+
+const App = () => {
+  const [opacity, setOpacity] = useState(100);
+
+  return (
+    <SliderInput
+      label="Opacity"
+      value={opacity}
+      onChange={({ value }) => setOpacity(value)}
+      min={0}
+      max={100}
+      step={10}
+      suffix="%"
+    />
+  );
+};
+```
+
+### Uncontrolled Usage
+
+For simpler forms where you only need the final value on submit.
+
+```jsx
+import { SliderInput } from '@razorpay/blade/components';
+
+const App = () => {
+  return (
+    <form onSubmit={handleSubmit}>
+      <SliderInput
+        label="Border Width"
+        name="borderWidth"
+        defaultValue={1}
+        min={0}
+        max={8}
+        step={1}
+        suffix="px"
+      />
+      <Button type="submit">Apply</Button>
+    </form>
+  );
+};
+```
+
+### Checkout Studio Configurator
+
+Real-world usage in a merchant-facing configurator panel where multiple SliderInputs control visual properties. Uses `onChangeEnd` for performance — applies changes only when the user releases the slider.
+
+```jsx
+import { SliderInput } from '@razorpay/blade/components';
+
+const ConfiguratorPanel = () => {
+  const [config, setConfig] = useState({
+    cornerRadius: 12,
+    spacing: 16,
+    shadowBlur: 4,
+  });
+
+  const updateConfig = (key) => ({ value }) => {
+    setConfig((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const applyConfig = (key) => ({ value }) => {
+    applyToPreview({ ...config, [key]: value });
+  };
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <SliderInput
+        label="Corner Radius"
+        value={config.cornerRadius}
+        onChange={updateConfig('cornerRadius')}
+        onChangeEnd={applyConfig('cornerRadius')}
+        min={0}
+        max={24}
+        step={2}
+        suffix="px"
+      />
+      <SliderInput
+        label="Spacing"
+        value={config.spacing}
+        onChange={updateConfig('spacing')}
+        onChangeEnd={applyConfig('spacing')}
+        min={0}
+        max={48}
+        step={4}
+        suffix="px"
+      />
+      <SliderInput
+        label="Shadow Blur"
+        value={config.shadowBlur}
+        onChange={updateConfig('shadowBlur')}
+        onChangeEnd={applyConfig('shadowBlur')}
+        min={0}
+        max={20}
+        suffix="px"
+      />
+    </Box>
+  );
+};
+```
+
+### With Help Text
+
+There is no error state (see the "No validation/error state" decision) — values
+self-correct into `[min, max]`. Use `helpText` for guidance; if a rule can't be
+expressed via min/max, constrain the bounds or surface it at the form level.
+
+```jsx
+import { SliderInput } from '@razorpay/blade/components';
+
+const App = () => {
+  const [fontSize, setFontSize] = useState(14);
+
+  return (
+    <SliderInput
+      label="Font Size"
+      value={fontSize}
+      onChange={({ value }) => setFontSize(value)}
+      min={12}
+      max={32}
+      suffix="px"
+      helpText="Minimum 12px recommended for accessibility"
+    />
+  );
+};
+```
+
+### Disabled State
+
+```jsx
+<SliderInput label="Corner Radius" value={8} min={0} max={24} suffix="px" isDisabled />
+```
+
+## Accessibility
+
+### ARIA Attributes
+
+| Attribute          | Element              | Value                                                                                                                 |
+| ------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `role`             | Slider thumb         | `"slider"`                                                                                                            |
+| `aria-valuemin`    | Slider thumb         | Value of `min` prop                                                                                                   |
+| `aria-valuemax`    | Slider thumb         | Value of `max` prop                                                                                                   |
+| `aria-valuenow`    | Slider thumb         | Current numeric value                                                                                                 |
+| `aria-valuetext`   | Slider thumb         | `"{value} {suffix}"` (e.g. "12 px") — provides screen reader context                                                  |
+| `aria-labelledby`  | Slider thumb         | ID of the label element                                                                                               |
+| `aria-orientation` | Slider thumb         | `"horizontal"` (omitted — default)                                                                                    |
+| `aria-disabled`    | Slider thumb + Input | `"true"` when `isDisabled`                                                                                            |
+| `aria-describedby` | Slider thumb         | ID of the help text element (associated once — the numeric input is not also described, to avoid double announcement) |
+
+### Keyboard Navigation
+
+| Key                         | Behavior                                      |
+| --------------------------- | --------------------------------------------- |
+| **Right Arrow / Up Arrow**  | Increase value by one `step`                  |
+| **Left Arrow / Down Arrow** | Decrease value by one `step`                  |
+| **Home**                    | Set to `min` value                            |
+| **End**                     | Set to `max` value                            |
+| **Shift + Arrow**           | Increase/decrease by `step * 10` (large step) |
+| **Page Up**                 | Increase by `step * 10`                       |
+| **Page Down**               | Decrease by `step * 10`                       |
+| **Tab**                     | Move focus: slider thumb → input field        |
+| **Shift + Tab**             | Move focus: input field → slider thumb        |
+
+### Focus Management
+
+- Both slider thumb and input field are individually focusable
+- Visible focus ring on both elements (consistent with Blade's focus ring pattern)
+- When disabled, both elements are removed from tab order (`tabIndex={-1}`)
+
+### Screen Reader
+
+- Value changes on the slider are announced with the suffix (e.g. "Corner Radius: 12 px")
+- Help text is associated via `aria-describedby` on the slider and announced on focus
+
+### Touch Targets
+
+- Minimum touch target on thumb: **48px** (even though visual thumb is 16-20px)
+- Achieved via transparent hit area expansion, not by scaling the visual thumb
+
+## Implementation Notes
+
+### Internal Architecture
+
+```
+SliderInput
+├── FormGroupHeader (label, necessityIndicator)
+├── SliderTrack (internal)
+│   ├── ActiveTrack
+│   ├── InactiveTrack
+│   └── SliderThumb (draggable, keyboard-accessible)
+├── TextInput (Blade — value + trailing unit via `suffix`; border/focus/disabled/sizing from the design system)
+└── FormHint (helpText)
+```
+
+### State Management
+
+- Uses `useControllableState` hook for controlled/uncontrolled support (same as CounterInput)
+- Internal ref tracks drag state to differentiate `onChange` sources
+- Input field debounces to avoid slider jitter during typing
+
+### File Structure
+
+```
+packages/blade/src/components/SliderInput/
+├── SliderInput.tsx
+├── SliderTrack.tsx
+├── sliderInputTokens.ts
+├── types.ts
+├── index.ts
+├── SliderInput.stories.tsx
+├── _decisions/
+│   └── decisions.md
+└── __tests__/
+    └── SliderInput.web.test.tsx
+```
+
+### Platform
+
+- **Web only** for v1
+- React Native support deferred — requires `react-native-gesture-handler` and `react-native-reanimated` for drag interactions
+
+## Value Tooltip
+
+The value tooltip is the slider's readout: it appears above the thumb while it is hovered, dragged, or keyboard-focused — mirroring Material 3's value indicator, which appears only during interaction. (Historical note: it was introduced behind a `showNumericInput={false}` prop; when the embedded input was removed from the component, the tooltip became the default and only readout and the prop was dropped.)
+
+**Built entirely from Blade's tooltip internals — no custom UI:**
+
+- Pill: `TooltipContent` (the same renderer `Tooltip` uses)
+- Pointer: `PopupArrow` (the same arrow as every Blade tooltip)
+- Positioning: the identical floating-ui middleware stack `Tooltip` uses internally (`shift` + `flip` + `offset(gap + arrow height)` + `arrow`), so the tooltip automatically repositions when there's no room (e.g. near the viewport top or the field label) instead of covering content.
+
+**Why not wrap the thumb in `<Tooltip>` directly:** Blade's `Tooltip` opens on hover/focus of a static trigger. A slider thumb moves imperatively during drag and the pointer can drift off it mid-drag, which would close the tooltip. Visibility is therefore driven by the slider's own hover/drag/focus state, and `autoUpdate(..., { animationFrame: true })` keeps the tooltip glued to the moving thumb.
+
+**Accessibility:** the tooltip is `aria-hidden` — the thumb already announces its value via `aria-valuenow`/`aria-valuetext`, so screen readers hear the value exactly once.
+
+**Opt-out:** a `showTooltip` prop (default `true`) disables the tooltip for surfaces that render their own readout next to the slider.
+
+## Step segments & density auto-hide
+
+`showSteps` (default `false`) renders the _unfilled_ portion of the track as step blocks — a 2px transparent gap sliced at every step position — so discrete snapping is visible. The filled portion stays solid, per the Figma spec. Implemented as a single `repeating-linear-gradient` (one cycle per step): one DOM node regardless of step count, colors bound to the same track tokens.
+
+**Gap width — 2px, not 1px/1.5px:** screens can't render half a pixel; 1px and fractional gaps anti-alias into invisibility on 1x displays. 2px stays crisp everywhere and matches the 2px track height.
+
+**Density auto-hide logic:** each step block must be at least 8px wide on screen to earn its gap (`track.stepMinBlockWidth` token). The track width is measured in a layout effect — before the browser paints — so the density decision lands in the same frame as layout, exactly like Material's canvas draw pass: a too-dense track can never flash its segments for a frame. A `ResizeObserver` keeps the guard honest across layout resizes. When blocks would be narrower than 8px, the gaps are no longer discernible increments and the track falls back to continuous; the same slider in a wider container shows the blocks again automatically. A measured width of 0 means the slider isn't laid out (hidden tab/accordion, SSR) — nothing is visible there, so segments stay on and the next real measurement decides.
+
+**Non-divisible ranges:** Material's slider hard-errors when `step` doesn't divide the `min`–`max` range. SliderInput stays lenient (max remains reachable via snapping), but since the leftover makes the last segment visibly shorter with `showSteps`, a dev-only console warning flags it (decimal-safe check, so fractional steps like 0–1 by 0.1 don't false-positive).
+
+**Sources:**
+
+- Material guidance: step marks are optional and each mark must be a "discernible increment"; hide marks when too dense ([M2 slider guidelines](https://m2.material.io/go/design-sliders/), carried into M3). Android's Material Slider ships this exact behavior as [`tickVisibilityMode`](https://developer.android.com/reference/com/google/android/material/slider/Slider) auto-hide.
+- [Base UI](https://base-ui.com/react/components/slider#api-reference) (shadcn's foundation) has no step marks at all — no constraint borrowed.
+
+## Open Questions
+
+All questions include a recommendation. Feedback welcome.
+
+1. **Standalone `Slider` component?** — RESOLVED (Sep 2026)
+
+   - **Decision:** Yes — reversed from the earlier recommendation. The component ships as standalone `Slider` (no embedded input); a compound slider + text field can be layered on later as a separate `SliderInput` component.
+
+2. **React Native scope?**
+
+   - **Recommendation:** Web-only for v1. RN requires `react-native-gesture-handler` and a fundamentally different interaction model. Scope separately once web component is stable.
+
+3. **Tick mark rendering threshold?** — RESOLVED, see [Step segments & density auto-hide](#step-segments--density-auto-hide)
+
+   - **Decision:** Opt-in via a `showSteps` prop (design direction changed: segmented track, not dot ticks), with a pixel-density auto-hide instead of a fixed step-count cap — a count cap behaves wrong across container widths (20 steps are legible in a wide panel and noise in a narrow one).
+
+4. **Experimental PRs (#3407, #3423, #3430)?**
+
+   - **Recommendation:** Start fresh through formal SDLC. The experimental PRs were AI agent tests that didn't go through design review or API decisions. However, implementation patterns from those PRs can be referenced during development.
+
+5. **Input width?**
+
+   - **Recommendation:** Auto-size based on `max` value digit count + suffix width. Prevents layout shift as value changes. Falls back to truncation with ellipsis if content overflows.
+
+6. **Track gap (M3 pattern)?**
+   - **Recommendation:** Include the 6px gap between thumb and track edges with 2px inside corner radius. This is an M3 accessibility improvement that ensures non-text contrast compliance.

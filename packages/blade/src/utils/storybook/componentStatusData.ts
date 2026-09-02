@@ -313,14 +313,14 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
-    name: 'SliderInput',
+    name: 'Slider',
     description:
-      'SliderInput component provides a horizontal slider coupled with a numeric input for bounded value selection.',
+      'Slider component provides a horizontal slider for bounded value selection, with a value tooltip and optional step segments.',
     platform: 'web',
     frameworks: {
       react: {
         status: 'in-api-spec',
-        storybookLink: 'Components/Input/SliderInput',
+        storybookLink: 'Components/Slider',
       },
     },
   },
