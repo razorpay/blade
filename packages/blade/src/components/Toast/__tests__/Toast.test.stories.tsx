@@ -4,7 +4,7 @@ import type { StoryFn } from '@storybook/react-vite';
 import { within, userEvent, expect, fn } from 'storybook/test';
 import React from 'react';
 import type { ToastProps } from '../types';
-import { useToast, useToastActions } from '../useToast';
+import { useToast } from '../useToast';
 import { ToastContainer } from '../ToastContainer';
 import type { Toast } from '../Toast';
 import { Button } from '~components/Button';
@@ -314,37 +314,6 @@ ToastZIndex.play = async () => {
   // Container zIndex remains 3000 even after dismissing all toasts
   computedStyle = window.getComputedStyle(toastContainerElement);
   void expect(parseInt(computedStyle.zIndex, 10)).toBe(3000);
-};
-
-export const TestToastActions: StoryFn<typeof Toast> = (): React.ReactElement => {
-  const { show } = useToastActions();
-
-  return (
-    <Box>
-      <Button
-        onClick={() => {
-          show({ content: 'Payment successful', color: 'positive' });
-        }}
-      >
-        Show Toast (Actions)
-      </Button>
-      <ToastContainer />
-    </Box>
-  );
-};
-
-TestToastActions.play = async () => {
-  const { getByRole, queryByText } = within(document.body);
-  await sleep(1000);
-
-  const toastContent = 'Payment successful';
-  await expect(queryByText(toastContent)).not.toBeInTheDocument();
-  const button = getByRole('button', { name: 'Show Toast (Actions)' });
-  await userEvent.click(button);
-  await sleep(400);
-  await expect(queryByText(toastContent)).toBeVisible();
-  await sleep(4000);
-  await expect(queryByText(toastContent)).not.toBeVisible();
 };
 
 export default {

@@ -258,14 +258,13 @@ export type {
 // Toast
 export { default as Toast } from './Toast/Toast.svelte';
 export { default as ToastContainer } from './Toast/ToastContainer.svelte';
-export { useToast, useToastActions } from './Toast/useToast';
+export { useToast } from './Toast/useToast';
 export type {
   ToastProps,
   ToastContainerProps,
   ToastType,
   ToastColor,
   ToastAction,
-  ToastActions,
   ToastCallbackPayload,
   BladeToast,
   UseToastReturn,

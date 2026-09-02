@@ -102,8 +102,8 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number; zIndex?: number 
   ...rest
 }) => {
   const { toasts, handlers } = useToaster(toastOptions);
-  // Keep the module-level toast snapshot in sync so that `useToastActions()`
-  // callers can check for active promotional toasts without subscribing.
+  // Keep the module-level toast snapshot in sync so that `useToast()`'s
+  // stable `show` function can check for active promotional toasts.
   syncToasts(toasts);
   const { theme } = useTheme();
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);

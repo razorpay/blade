@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toast } from '../Toast.native';
 import { ToastContainer } from '../ToastContainer.native';
-import { toastStore, TOAST_REJECTED, useToastActions } from '../useToast.native';
+import { toastStore, TOAST_REJECTED, useToast } from '../useToast.native';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Toast /> (native)', () => {
@@ -86,7 +86,7 @@ describe('toastStore (native)', () => {
   });
 });
 
-describe('useToastActions (native)', () => {
+describe('useToast (native) — referential stability', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     toastStore.dismiss();
@@ -98,44 +98,26 @@ describe('useToastActions (native)', () => {
     jest.useRealTimers();
   });
 
-  it('returns referentially-stable show and dismiss', () => {
-    const a = useToastActions();
-    const b = useToastActions();
-    expect(a.show).toBe(b.show);
-    expect(a.dismiss).toBe(b.dismiss);
-  });
+  it('returns referentially-stable show and dismiss across re-renders', () => {
+    const showRef = { current: null as ((props: { content: string }) => string) | null };
+    const dismissRef = { current: null as ((id?: string) => void) | null };
 
-  it('show delegates to toastStore.show', () => {
-    const { show } = useToastActions();
-    const id = show({ content: 'Hello' });
-    expect(id).not.toBe(TOAST_REJECTED);
-    expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(true);
-  });
-
-  it('dismiss delegates to toastStore.dismiss', () => {
-    const { show, dismiss } = useToastActions();
-    const id = show({ content: 'Hello' });
-    expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(true);
-    dismiss(id);
-    expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(false);
-  });
-
-  it('does not subscribe to toast-state changes (no re-render on show)', () => {
-    let renderCount = 0;
-    const TestComponent = (): React.ReactElement | null => {
-      renderCount++;
-      useToastActions();
+    const TestComponent = () => {
+      const toast = useToast();
+      showRef.current = toast.show;
+      dismissRef.current = toast.dismiss;
       return null;
     };
 
-    renderWithTheme(<TestComponent />);
-    const initialRenderCount = renderCount;
+    const { rerender: rerenderFn } = renderWithTheme(<TestComponent />);
 
-    // Show and dismiss toasts — the component should NOT re-render
-    toastStore.show({ content: 'Toast A' });
-    toastStore.show({ content: 'Toast B' });
-    toastStore.dismiss();
+    const firstShow = showRef.current;
+    const firstDismiss = dismissRef.current;
 
-    expect(renderCount).toBe(initialRenderCount);
+    // Force a re-render
+    rerenderFn(<TestComponent />);
+
+    expect(showRef.current).toBe(firstShow);
+    expect(dismissRef.current).toBe(firstDismiss);
   });
 });

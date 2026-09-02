@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { logger } from '@razorpay/blade-core/utils';
 import { toastStore, showToast, dismissToast, generateId } from './toastStore';
-import type { ToastProps, ToastActions, UseToastReturn } from './types';
+import type { ToastProps, UseToastReturn } from './types';
 
 declare const __DEV__: boolean;
 
@@ -11,7 +11,8 @@ const PROMOTIONAL_DURATION = 8000;
 /**
  * Stable `show` function — defined once at module scope so every caller
  * receives the same reference. Reads the promotional-toast guard
- * synchronously via `get(toastStore)` (no reactive subscription).
+ * synchronously via `get(toastStore)` (no reactive subscription needed
+ * for the guard check).
  */
 function show(props: ToastProps): string {
   const type = props.type ?? 'informational';
@@ -51,31 +52,6 @@ function show(props: ToastProps): string {
   });
 }
 
-const toastActions: ToastActions = {
-  show,
-  dismiss: dismissToast,
-};
-
-/**
- * Returns referentially-stable `show` and `dismiss` functions without
- * the reactive `toasts` store.
- *
- * Use this instead of `useToast()` when your component only needs to
- * trigger toasts and never reads the active toasts list. In Svelte this
- * avoids unnecessary store subscriptions.
- *
- * @example
- * ```svelte
- * <script>
- *   import { useToastActions } from '@razorpay/blade-svelte/components';
- *   const { show, dismiss } = useToastActions();
- * </script>
- * ```
- */
-export function useToastActions(): ToastActions {
-  return toastActions;
-}
-
 /**
  * Returns helpers to show, dismiss, and observe toasts.
  *
@@ -83,6 +59,9 @@ export function useToastActions(): ToastActions {
  * from anywhere — Svelte components, plain `.ts` modules, or event handlers.
  * The returned `toasts` is the live `Writable` store, so consumers can either
  * `$toasts` (auto-subscribe inside Svelte) or `toasts.subscribe(...)` outside.
+ *
+ * `show` and `dismiss` are referentially stable — defined once at module
+ * scope, so the same function references are returned on every call.
  */
 export function useToast(): UseToastReturn {
   return {

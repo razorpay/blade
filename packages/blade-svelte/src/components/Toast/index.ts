@@ -21,7 +21,7 @@
  */
 export { default as Toast } from './Toast.svelte';
 export { default as ToastContainer } from './ToastContainer.svelte';
-export { useToast, useToastActions } from './useToast';
+export { useToast } from './useToast';
 export {
   toastStore,
   showToast,
@@ -36,7 +36,6 @@ export type {
   ToastType,
   ToastColor,
   ToastAction,
-  ToastActions,
   ToastCallbackPayload,
   BladeToast,
   UseToastReturn,
