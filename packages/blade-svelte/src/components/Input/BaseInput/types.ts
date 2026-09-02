@@ -20,7 +20,14 @@ export type BaseInputType =
   | 'search'
   | 'password';
 
-export type KeyboardType = 'text' | 'search' | 'telephone' | 'email' | 'url' | 'decimal';
+export type KeyboardType =
+  | 'text'
+  | 'search'
+  | 'telephone'
+  | 'email'
+  | 'url'
+  | 'decimal'
+  | 'numeric';
 export type KeyboardReturnKeyType =
   | 'default'
   | 'go'

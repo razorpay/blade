@@ -7,7 +7,7 @@
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import { CloseIcon } from '../../Icons';
   import { useFormId } from '../BaseInput/useFormId';
-  import { createFormattedInput } from './useFormattedInput';
+  import { createFormattedInput, stripPatternCharacters } from './useFormattedInput';
   import type { TextInputProps } from './types';
 
   let {
@@ -34,6 +34,7 @@
     maxCharacters,
     autoFocus = false,
     keyboardReturnKeyType,
+    keyboardType,
     autoCompleteSuggestionType,
     autoCapitalize,
     validationState = 'none',
@@ -62,14 +63,25 @@
   );
   const ids = useFormId('textinput');
 
-  const formatter = untrack(() =>
-    format ? createFormattedInput({ pattern: format, onChange }) : null,
-  );
+  // Rebuilds when `format` changes (e.g. card network detection swapping the
+  // grouping pattern), so the pattern isn't frozen at mount time.
+  const formatter = $derived(format ? createFormattedInput({ pattern: format, onChange }) : null);
 
   // Formatted display value (only used when `format` is set); seeded once.
   let formattedValue = $state(
     untrack(() => (formatter ? formatter.formatValue(value ?? defaultValue ?? '') : '')),
   );
+
+  // Re-format the current raw value whenever the pattern changes at runtime.
+  $effect(() => {
+    const currentFormatter = formatter;
+    untrack(() => {
+      if (currentFormatter) {
+        const raw = stripPatternCharacters(formattedValue);
+        formattedValue = currentFormatter.formatValue(raw);
+      }
+    });
+  });
 
   const effectiveMaxCharacters = $derived(format ? formatter?.maxLength : maxCharacters);
 
@@ -187,6 +199,7 @@
   {textAlign}
   {autoFocus}
   {keyboardReturnKeyType}
+  {keyboardType}
   {autoCompleteSuggestionType}
   {autoCapitalize}
   trailingFooterSlot={footerCounter}

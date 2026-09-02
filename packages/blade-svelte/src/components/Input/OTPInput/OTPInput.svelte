@@ -77,10 +77,20 @@
   const metaAttrs = $derived(metaAttribute({ name: 'otpinput', testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 
+  // Latch the last-fired value so onOTPFilled only fires on a transition to a
+  // new complete OTP, not on every reactive update while the value stays full.
+  let lastFilledValue: string | undefined = $state(undefined);
+
   $effect(() => {
     const joined = isControlled ? (value ?? '') : otpValue.join('');
     if (joined.length >= otpLength) {
-      onOTPFilled?.({ name, value: joined.slice(0, otpLength) });
+      const filled = joined.slice(0, otpLength);
+      if (filled !== lastFilledValue) {
+        lastFilledValue = filled;
+        onOTPFilled?.({ name, value: filled });
+      }
+    } else {
+      lastFilledValue = undefined;
     }
   });
 
