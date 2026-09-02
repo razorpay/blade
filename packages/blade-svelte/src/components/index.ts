@@ -32,6 +32,8 @@ export { BaseIconButton } from './Button/IconButton/BaseIconButton';
 
 // Link
 export { default as Link } from './Link/Link.svelte';
+export type { LinkProps } from './Link/types';
+export type { BaseLinkProps } from './Link/BaseLink/types';
 
 // Spinner (alias to BaseSpinner for backward compatibility)
 export { default as Spinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
@@ -132,6 +134,7 @@ export type {
   CardHeaderLeadingProps,
   CardHeaderTrailingProps,
   CardHeaderIconButtonProps,
+  CardHeaderLinkProps,
   CardFooterProps,
   CardFooterAction,
   CardFooterLeadingProps,
@@ -276,6 +279,10 @@ export type {
   BottomSheetFooterProps,
   SnapPoints,
 } from './BottomSheet';
+
+// Modal
+export { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
+export type { ModalProps, ModalHeaderProps, ModalBodyProps, ModalFooterProps } from './Modal';
 
 // SegmentedControl
 export { SegmentedControl, SegmentedControlItem } from './SegmentedControl';

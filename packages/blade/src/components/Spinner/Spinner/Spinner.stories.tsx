@@ -4,6 +4,7 @@ import type { ReactElement } from 'react';
 import type { SpinnerProps } from './Spinner';
 import { Spinner as SpinnerComponent } from './Spinner';
 import BaseBox from '~components/Box/BaseBox';
+import type { TextProps } from '~components/Typography';
 import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -88,35 +89,76 @@ const SpinnerSizesTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => 
 export const SpinnerSizes = SpinnerSizesTemplate.bind({});
 SpinnerSizes.storyName = 'Sizes';
 
+const ColorSwatch = ({
+  title,
+  description,
+  backgroundColor,
+  textColor,
+  children,
+}: {
+  title: string;
+  description: string;
+  backgroundColor: string;
+  textColor?: TextProps<{ variant: 'body' }>['color'];
+  children: ReactElement;
+}): ReactElement => {
+  return (
+    <BaseBox
+      marginBottom="spacing.4"
+      paddingTop="spacing.5"
+      paddingBottom="spacing.5"
+      paddingLeft="spacing.5"
+      paddingRight="spacing.5"
+      borderRadius="medium"
+      backgroundColor={backgroundColor}
+    >
+      <Text color={textColor} weight="medium">
+        {title}
+      </Text>
+      <Text color={textColor} size="small">
+        {description}
+      </Text>
+      <BaseBox marginBottom="spacing.4" />
+      {children}
+    </BaseBox>
+  );
+};
+
 const SpinnerColorTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   const { theme } = useTheme();
 
   return (
     <BaseBox>
-      <BaseBox
-        marginBottom="spacing.3"
-        marginTop="spacing.3"
-        paddingTop="spacing.3"
-        paddingBottom="spacing.3"
-        paddingLeft="spacing.3"
+      <ColorSwatch
+        title="neutral"
+        description="The default. Tracks the page surface, so it stays readable in both color schemes."
         backgroundColor={theme.colors.surface.background.gray.subtle}
       >
-        <Text>Primary Color</Text>
-        <BaseBox marginBottom="spacing.2" />
+        <SpinnerComponent {...args} color="neutral" />
+      </ColorSwatch>
+      <ColorSwatch
+        title="primary"
+        description="For a spinner that should carry the brand color."
+        backgroundColor={theme.colors.surface.background.gray.subtle}
+      >
         <SpinnerComponent {...args} color="primary" />
-      </BaseBox>
-      <BaseBox
-        marginBottom="spacing.3"
-        marginTop="spacing.3"
-        paddingTop="spacing.3"
-        paddingBottom="spacing.3"
-        paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.gray.subtle}
+      </ColorSwatch>
+      <ColorSwatch
+        title="white"
+        description="Static white. Use it on a surface that is dark in both color schemes."
+        backgroundColor={theme.colors.interactive.background.staticBlack.default}
+        textColor="surface.text.staticWhite.normal"
       >
-        <Text contrast="high">White Color</Text>
-        <BaseBox marginBottom="spacing.2" />
         <SpinnerComponent {...args} color="white" />
-      </BaseBox>
+      </ColorSwatch>
+      <ColorSwatch
+        title="onNeutral"
+        description="For a filled neutral surface. It inverts with the theme — switch the toolbar between light and dark to see the surface and the spinner flip together."
+        backgroundColor={theme.colors.interactive.background.neutral.default}
+        textColor="interactive.text.onNeutral.normal"
+      >
+        <SpinnerComponent {...args} color="onNeutral" />
+      </ColorSwatch>
     </BaseBox>
   );
 };

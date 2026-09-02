@@ -1,5 +1,39 @@
 # @razorpay/blade-core
 
+## 0.14.0
+
+### Minor Changes
+
+- 29ca5194c: feat: add `black` color variant to Button
+
+  fix: focus-ring transition and offset flash on inputs
+
+  fix: use `bladeTheme` as default Storybook theme in blade-svelte
+
+### Patch Changes
+
+- a98fed065: fix(Button): use `interactive.border.neutral.faded` for the neutral variant's focus ring instead of the shared blue ring used by primary/positive/negative
+
+  fix: correct several Button Storybook stories where Controls didn't drive the rendered output (hardcoded `asChild` demos, dead `variant`/`color` controls on loading-matrix stories)
+
+## 0.13.0
+
+### Minor Changes
+
+- 9edbd8f33: update design tokens from Figma
+
+  Added 32 tokens and removed 0 tokens.
+
+### Patch Changes
+
+- 9edbd8f33: feat(tokens): added a new token for svelte `onNeutral` in `interactive.text` & `interactive.icon` along with minor updates on neutral palette.
+
+## 0.12.1
+
+### Patch Changes
+
+- 73f7e9655: fix(Button): fade highlight overlay via opacity instead of toggling background-image, preventing flash on definite-loading end
+
 ## 0.12.0
 
 ### Minor Changes

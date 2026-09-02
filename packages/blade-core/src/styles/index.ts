@@ -488,6 +488,28 @@ export {
   bottomSheetBodyClass,
 } from './BottomSheet';
 export type { BottomSheetBodyPadding, BottomSheetBodyOverflow } from './BottomSheet';
+export {
+  MODAL_Z_INDEX,
+  getModalSurfaceClasses,
+  getModalBodyClasses,
+  getModalTemplateClasses,
+  modalWrapperClass,
+  modalBackdropClass,
+  modalHeaderClass,
+  modalEmptyHeaderCapsuleClass,
+  modalHeaderContentClass,
+  modalHeaderLeadingClass,
+  modalHeaderTitleBlockClass,
+  modalHeaderTitleRowClass,
+  modalHeaderTrailingClass,
+  modalCloseButtonClass,
+  modalHeaderCloseButtonClass,
+  modalHeaderDividerClass,
+  modalFooterClass,
+  modalFooterDividerClass,
+  modalFooterInnerClass,
+} from './Modal';
+export type { ModalSize, ModalBodyPadding } from './Modal';
 export { getTabsTemplateClasses } from './Tabs';
 export { getSegmentedControlTemplateClasses } from './SegmentedControl';
 export {

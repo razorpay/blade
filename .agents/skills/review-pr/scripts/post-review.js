@@ -224,9 +224,8 @@ function archiveUiScreenshots(reviewJson, repoArg, prNum) {
 let screenshotCdnMap = {};
 try {
   screenshotCdnMap = archiveUiScreenshots(reviewJson, repo, prNumber);
-} catch (err) {
-  console.warn('\nWarning: Failed to archive UI screenshots — continuing without them.');
-  console.warn(`  Reason: ${err.message.split('\n')[0]}`);
+} catch (e) {
+  console.warn('Screenshot archiving failed — continuing without CDN screenshots:', e.message);
 }
 
 // ---------------------------------------------------------------------------

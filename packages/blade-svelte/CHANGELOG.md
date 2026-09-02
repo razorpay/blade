@@ -1,5 +1,59 @@
 # @razorpay/blade-svelte
 
+## 0.13.0
+
+### Minor Changes
+
+- 29ca5194c: feat: add `black` color variant to Button
+
+  fix: focus-ring transition and offset flash on inputs
+
+  fix: use `bladeTheme` as default Storybook theme in blade-svelte
+
+### Patch Changes
+
+- a98fed065: fix(Button): use `interactive.border.neutral.faded` for the neutral variant's focus ring instead of the shared blue ring used by primary/positive/negative
+
+  fix: correct several Button Storybook stories where Controls didn't drive the rendered output (hardcoded `asChild` demos, dead `variant`/`color` controls on loading-matrix stories)
+
+- a61f11e3d: fix(Button): remove redundant focus-ring-parent/child classes so secondary button shows a single focus ring instead of an extra box around the text
+- Updated dependencies [a98fed065]
+- Updated dependencies [29ca5194c]
+  - @razorpay/blade-core@0.14.0
+
+## 0.12.1
+
+### Patch Changes
+
+- 2d5b85d86: feat(blade-svelte): add Modal component
+
+  Adds `Modal`, `ModalHeader`, `ModalBody`, and `ModalFooter` to `@razorpay/blade-svelte`. Focus is trapped within the surface while open, moves to the close button (or a caller-supplied `initialFocusRef`) on open, and returns to the previously focused element on close — including when a controlled `isOpen` prop flips to `false` directly. Background content is marked `inert` (falling back to `aria-hidden` where unsupported) while the modal is mounted, and a dev-only warning is logged if `accessibilityLabel` is missing.
+
+## 0.12.0
+
+### Minor Changes
+
+- 26428686f: feat(blade-svelte): add `showDragHandle` prop to BottomSheet to optionally hide the drag handle
+
+  `BottomSheet` now accepts a `showDragHandle` boolean prop (default `true`). Set it to `false` to hide the drag handle (the pill affordance at the top of the sheet) and disable drag-to-move/dismiss gestures — useful for desktop flows where dragging is not expected. The sheet can still be dismissed via the backdrop, `esc`, or programmatically.
+
+### Patch Changes
+
+- Updated dependencies [73f7e9655]
+  - @razorpay/blade-core@0.12.1
+
+## 0.11.8
+
+### Patch Changes
+
+- fd3e1e2d1: fix(blade-svelte): prevent BottomSheet focus from scrolling host content
+
+  Use `focus({ preventScroll: true })` when moving focus into the sheet on open and when returning focus to the trigger on dismiss. Stops the browser from scrolling scrollable ancestors (e.g. Checkout modals) while preserving keyboard and screen-reader focus behavior.
+
+- 788641ea1: fix(blade-svelte): export Link and CardHeaderLink prop types from components barrel
+
+  Export `LinkProps`, `BaseLinkProps`, and `CardHeaderLinkProps` from `@razorpay/blade-svelte/components` so consumers can import them without deep paths.
+
 ## 0.11.7
 
 ### Patch Changes

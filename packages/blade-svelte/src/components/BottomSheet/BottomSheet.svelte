@@ -50,6 +50,7 @@
     isDismissible = true,
     zIndex = BOTTOM_SHEET_Z_INDEX,
     portalTarget,
+    showDragHandle = true,
     testID,
     ...rest
   }: BottomSheetProps = $props();
@@ -138,7 +139,10 @@
   function returnFocus(): void {
     if (!originalFocusEl) return;
     try {
-      originalFocusEl.focus();
+      /* `preventScroll` stops the browser scrolling the focus target into
+       * view — otherwise returning focus to a trigger inside a scrollable
+       * ancestor jumps the host content. Focus still moves for a11y. */
+      originalFocusEl.focus({ preventScroll: true });
     } catch {
       /* ignore — element may have been unmounted. */
     }
@@ -149,7 +153,12 @@
     const target = initialFocusRef ?? defaultFocusEl;
     if (!target) return;
     try {
-      target.focus();
+      /* `preventScroll` suppresses the native scroll-focused-element-into-view.
+       * The surface is fixed/absolute pinned to the bottom, so without this the
+       * browser scrolls the nearest scrollable ancestor of the portal target
+       * (e.g. a Checkout modal) and shoves the host content up. Focus still
+       * moves into the dialog, so screen-reader/keyboard behaviour is intact. */
+      target.focus({ preventScroll: true });
     } catch {
       /* ignore */
     }
@@ -420,8 +429,11 @@
   /* Wire `DragGesture` instances reactively. We attach to the same elements
    * React binds: the grab handle (with no `args`, so `isContentDragging` is
    * false) and the body's scroll element (with `isContentDragging: true`).
+   * Both are skipped when `showDragHandle` is false — desktop flows that hide
+   * the handle should not expose drag-to-move/dismiss either.
    * `from` is a getter so each drag-start picks up the *current* `positionY`. */
   $effect(() => {
+    if (!showDragHandle) return undefined;
     if (!grabHandleEl) return undefined;
     if (!isOnTopOfStack || !isOpen) return undefined;
     const gesture = new DragGesture(
@@ -439,6 +451,7 @@
   });
 
   $effect(() => {
+    if (!showDragHandle) return undefined;
     if (!scrollEl) return undefined;
     if (!isOnTopOfStack || !isOpen) return undefined;
     const gesture = new DragGesture(
@@ -567,7 +580,9 @@
     {...analyticsAttrs}
   >
     <div class={bottomSheetInnerWrapperClass}>
-      <div bind:this={grabHandleEl} class={grabHandleClasses} {...grabHandleMetaAttrs}></div>
+      {#if showDragHandle}
+        <div bind:this={grabHandleEl} class={grabHandleClasses} {...grabHandleMetaAttrs}></div>
+      {/if}
       {@render children()}
     </div>
   </div>

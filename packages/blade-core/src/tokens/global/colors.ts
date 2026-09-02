@@ -436,7 +436,7 @@ export const colors: Color = {
     blueGrayLight: {
       0: `hsla(0, 0%, 100%, ${opacity[1300]})`,
       50: `hsla(0, 0%, 97%, ${opacity[1300]})`,
-      100: `hsla(200, 10%, 94%, ${opacity[1300]})`,
+      100: `hsla(0, 0%, 97%, ${opacity[1300]})`,
       200: `hsla(204, 8%, 88%, ${opacity[1300]})`,
       300: `hsla(203, 8%, 80%, ${opacity[1300]})`,
       400: `hsla(205, 8%, 71%, ${opacity[1300]})`,
@@ -455,7 +455,7 @@ export const colors: Color = {
       a48: `hsla(0, 0%, 100%, ${opacity[1200]})`,
       a50: `hsla(0, 0%, 97%, ${opacity[0]})`,
       a75: `hsla(0, 0%, 97%, ${opacity[600]})`,
-      a100: `hsla(200, 10%, 94%, ${opacity[0]})`,
+      a100: `hsla(0, 0%, 97%, ${opacity[0]})`,
       a200: `hsla(204, 8%, 88%, ${opacity[0]})`,
       a400: `hsla(205, 8%, 71%, ${opacity[0]})`,
       a406: `hsla(205, 8%, 71%, ${opacity[50]})`,
