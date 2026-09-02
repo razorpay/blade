@@ -207,7 +207,7 @@ exports[`<Slider /> should render Slider with default properties 2`] = `
       >
         <span
           data-blade-component="form-label"
-          id="slider-7-label"
+          id="slider-1-label"
           style="width:100%;flex-shrink:0;margin-right:0px"
         >
           <div
@@ -269,7 +269,7 @@ exports[`<Slider /> should render Slider with default properties 2`] = `
               />
               <div
                 aria-disabled="false"
-                aria-labelledby="slider-7-label"
+                aria-labelledby="slider-1-label"
                 aria-valuemax="24"
                 aria-valuemin="0"
                 aria-valuenow="12"

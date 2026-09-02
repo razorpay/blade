@@ -103,7 +103,6 @@ export const WithUnitSuffix: StoryFn<typeof Slider> = () => {
       max={32}
       step={1}
       suffix="px"
-      helpText="Hover or drag the thumb to see the value tooltip. Minimum 12px recommended for accessibility."
     />
   );
 };

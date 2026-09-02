@@ -49,13 +49,6 @@ describe('<Slider />', () => {
     expect(getByRole('slider')).toHaveAttribute('aria-disabled', 'true');
   });
 
-  it('should render help text exactly once (no duplicate hint from the inner TextInput)', () => {
-    const { getAllByText } = renderWithTheme(
-      <Slider label="Test" value={50} onChange={jest.fn()} helpText="Some guidance" />,
-    );
-    expect(getAllByText('Some guidance')).toHaveLength(1);
-  });
-
   it('should set correct ARIA attributes', () => {
     const { getByRole } = renderWithTheme(
       <Slider label="Radius" value={12} onChange={jest.fn()} min={0} max={24} suffix="px" />,

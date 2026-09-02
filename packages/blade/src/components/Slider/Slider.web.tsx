@@ -18,8 +18,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { BladeElementRef } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
 import BaseBox from '~components/Box/BaseBox';
-import { FormLabel, FormHint } from '~components/Form';
-import { useFormId } from '~components/Form/useFormId';
+import { FormLabel } from '~components/Form';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint, makeSpace, castWebType, makeMotionTime } from '~utils';
@@ -74,9 +73,6 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
       showTooltip = true,
       showSteps = false,
       isDisabled = false,
-      isRequired = false,
-      necessityIndicator,
-      helpText,
       onChange,
       onChangeStart,
       onChangeEnd,
@@ -156,14 +152,11 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
     const dragValueRef = useRef(0);
     const rafRef = useRef(0);
     const visualPctRef = useRef(max === min ? 0 : ((currentValue - min) / (max - min)) * 100);
-    const { helpTextId } = useFormId('slider');
     const idBase = useId('slider');
     const labelId = `${idBase}-label`;
     const { theme, colorScheme } = useTheme();
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
-    const _necessityIndicator =
-      necessityIndicator ?? (isRequired ? ('required' as const) : undefined);
 
     const getRatio = useCallback((val: number) => (max === min ? 0 : (val - min) / (max - min)), [
       min,
@@ -540,8 +533,6 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
         stepBlockWidth >= tokens.track.stepMinBlockWidth);
     const segmentedTrackBackground = `repeating-linear-gradient(to right, ${trackBgColor} 0, ${trackBgColor} calc(${stepPct}% - ${tokens.track.stepGap}px), transparent calc(${stepPct}% - ${tokens.track.stepGap}px), transparent ${stepPct}%)`;
 
-    const describedById = helpText ? helpTextId : undefined;
-
     return (
       <BaseBox
         ref={ref as React.Ref<HTMLDivElement>}
@@ -560,13 +551,7 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
               // Rendered as a span (not a native <label htmlFor>): the visible label names the
               // slider via aria-labelledby (the WAI-ARIA slider pattern) — a slider thumb is
               // not a labelable form element, so there is no id for htmlFor to point at.
-              <FormLabel
-                as="span"
-                position={labelPosition}
-                necessityIndicator={_necessityIndicator}
-                id={labelId}
-                size={size}
-              >
+              <FormLabel as="span" position={labelPosition} id={labelId} size={size}>
                 {label}
               </FormLabel>
             )}
@@ -636,7 +621,6 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
                     aria-labelledby={label ? labelId : undefined}
                     aria-label={!label ? accessibilityLabel ?? 'Slider' : undefined}
                     aria-disabled={isDisabled}
-                    aria-describedby={describedById}
                     onKeyDown={handleKeyDown}
                     onKeyUp={handleKeyUp}
                     onFocus={handleThumbFocus}
@@ -751,18 +735,6 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
               </BaseBox>
             </BaseBox>
           </BaseBox>
-
-          {Boolean(helpText) && (
-            <BaseBox
-              marginLeft={
-                isLabelLeftPositioned
-                  ? `${tokens.label.width + tokens.gap.labelToSlider}px`
-                  : undefined
-              }
-            >
-              <FormHint type="help" helpText={helpText} helpTextId={helpTextId} />
-            </BaseBox>
-          )}
         </BaseBox>
       </BaseBox>
     );

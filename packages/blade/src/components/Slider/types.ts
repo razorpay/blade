@@ -4,7 +4,7 @@ import type { DataAnalyticsAttribute } from '~utils/types';
 
 type SliderBaseProps = Pick<
   BaseInputProps,
-  'labelPosition' | 'name' | 'isDisabled' | 'isRequired' | 'testID' | keyof DataAnalyticsAttribute
+  'labelPosition' | 'name' | 'isDisabled' | 'testID' | keyof DataAnalyticsAttribute
 > & {
   onFocus?: (args: { name?: string; value: number }) => void;
   onBlur?: (args: { name?: string; value: number }) => void;
@@ -51,14 +51,6 @@ type SliderBaseProps = Pick<
    * @default false
    */
   showSteps?: boolean;
-  necessityIndicator?: 'required' | 'optional' | 'none';
-  /**
-   * Optional guidance text rendered once below the whole component (e.g. "Recommended 20–40px").
-   *
-   * @note Slider has no validation/error state by design: the thumb stops at the bounds,
-   * so an invalid value cannot exist.
-   */
-  helpText?: string;
   onChangeStart?: (args: { name?: string; value: number }) => void;
   onChangeEnd?: (args: { name?: string; value: number }) => void;
   /**

@@ -18,12 +18,6 @@ export const SLIDER_TOKENS = {
   // WCAG 2.5.5 minimum pointer target — shared by the track hit-area and the thumb
   // wrapper so the draggable/tappable region stays >= 44px regardless of thumb size.
   interactionArea: 44,
-  label: {
-    width: 100,
-  },
-  gap: {
-    labelToSlider: 8,
-  },
   color: {
     track: {
       // Bound 1:1 to the Figma spec's tokens: fill/thumb use
