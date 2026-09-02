@@ -730,11 +730,11 @@ describe('<TextInput />', () => {
         offsetHeightSpy = jest
           .spyOn(HTMLElement.prototype, 'offsetHeight', 'get')
           .mockReturnValue(20);
-        window.ResizeObserver = class {
-          observe(): void {}
-          unobserve(): void {}
-          disconnect(): void {}
-        } as never;
+        window.ResizeObserver = jest.fn().mockImplementation(() => ({
+          observe: jest.fn(),
+          unobserve: jest.fn(),
+          disconnect: jest.fn(),
+        })) as never;
       });
 
       afterEach(() => {
