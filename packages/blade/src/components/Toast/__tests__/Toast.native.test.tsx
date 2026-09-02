@@ -102,7 +102,7 @@ describe('useToast (native) — referential stability', () => {
     const showRef = { current: null as ((props: { content: string }) => string) | null };
     const dismissRef = { current: null as ((id?: string) => void) | null };
 
-    const TestComponent = () => {
+    const TestComponent = (): null => {
       const toast = useToast();
       showRef.current = toast.show;
       dismissRef.current = toast.dismiss;
