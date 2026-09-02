@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
