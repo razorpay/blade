@@ -71,6 +71,18 @@ const labelLeftMarginRight = {
   large: 'spacing.5',
 } as const;
 
+/**
+ * Motion for contextual help text — the help text revealed on focus via
+ * `showHelpTextOnFocus`. `enter` plays on focus, `exit` on blur.
+ *
+ * Follows the same shape as `baseInputBorderBackgroundMotion` so both the
+ * border and the hint below it read as one coordinated focus transition.
+ */
+const formHintMotion = {
+  enter: { duration: 'moderate', easing: 'entrance' },
+  exit: { duration: 'moderate', easing: 'exit' },
+} as const;
+
 export {
   labelTextSize,
   labelTextColor,
@@ -81,4 +93,5 @@ export {
   labelMarginBottom,
   labelWidth,
   labelLeftMarginRight,
+  formHintMotion,
 };
