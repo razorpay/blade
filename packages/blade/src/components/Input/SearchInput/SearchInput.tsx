@@ -26,6 +26,7 @@ import { Divider } from '~components/Divider';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { TopNavOverlayThemeOverride } from '~components/TopNav/TopNavOverlayThemeOverride';
 import { useModalContext } from '~components/Modal/ModalContext';
+import type { SpacingValueType } from '~components/Box/BaseBox/types/spacingTypes';
 
 type SearchInputCommonProps = Pick<
   BaseInputProps,
@@ -70,6 +71,26 @@ type SearchInputCommonProps = Pick<
    * Optional trailing  to be shown at the end of the input.
    */
   trailing?: React.ReactNode;
+  /**
+   * Sets the width of the SearchInput.
+   *
+   * Accepts spacing tokens (e.g. `"spacing.10"`), CSS values (e.g. `"300px"`, `"50%"`), or `"100%"`.
+   *
+   * @default "100%"
+   */
+  width?: SpacingValueType;
+  /**
+   * Sets the minimum width of the SearchInput.
+   *
+   * Accepts spacing tokens (e.g. `"spacing.10"`), CSS values (e.g. `"200px"`, `"20%"`).
+   */
+  minWidth?: SpacingValueType;
+  /**
+   * Sets the maximum width of the SearchInput.
+   *
+   * Accepts spacing tokens (e.g. `"spacing.10"`), CSS values (e.g. `"500px"`, `"80%"`).
+   */
+  maxWidth?: SpacingValueType;
 } & StyledPropsBlade;
 
 /*
@@ -135,6 +156,9 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     size = 'medium',
     showSearchIcon = true,
     trailing,
+    width,
+    minWidth,
+    maxWidth,
     ...rest
   },
   ref,
@@ -259,7 +283,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   };
 
   const searchContent = (
-    <BaseBox position="relative">
+    <BaseBox position="relative" width={width} minWidth={minWidth} maxWidth={maxWidth}>
       <BaseInput
         id="searchinput"
         componentName={MetaConstants.SearchInput}
