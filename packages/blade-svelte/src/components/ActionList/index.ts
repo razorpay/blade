@@ -89,6 +89,7 @@ export type {
   ActionListItemBadgeGroupProps,
   ActionListSectionProps,
   ActionListSelectionType,
+  ActionListDensity,
   ActionListItemClickPayload,
   ActionListItemSelectPayload,
 } from './types';

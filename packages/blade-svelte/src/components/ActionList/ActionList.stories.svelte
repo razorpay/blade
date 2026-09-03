@@ -11,11 +11,13 @@
     tags: ['autodocs'],
     args: {
       selectionType: 'single',
+      density: 'dense',
     },
     argTypes: {
       children: { table: { disable: true } },
       onAction: { table: { disable: true } },
       selectionType: { control: 'select', options: ['single', 'multiple'] },
+      density: { control: 'select', options: ['normal', 'dense'] },
       selectedValue: { control: 'text' },
     } as Record<string, unknown>,
   } as Parameters<typeof defineMeta>[0] & { argTypes: Record<string, unknown> });

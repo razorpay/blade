@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/svelte';
 import { describe, it, expect } from 'vitest';
-import { getActionListWrapperClasses } from '@razorpay/blade-core/styles';
+import { getActionListItemClasses, getActionListWrapperClasses } from '@razorpay/blade-core/styles';
 import ActionListTestHarness from './ActionListTestHarness.svelte';
 import ActionListInBottomSheetTestHarness from './ActionListInBottomSheetTestHarness.svelte';
 
@@ -26,6 +26,31 @@ describe('<ActionList />', () => {
     const inner = outer.firstElementChild as HTMLElement;
 
     expect(inner.querySelector('[role="option"]')).toBeInTheDocument();
+  });
+
+  it('density: default (omitted) applies no density override class to rows', () => {
+    render(ActionListTestHarness, { props: { testID: 'action-list' } });
+
+    const item = screen.getByRole('option');
+    const denseClass = getActionListItemClasses({ density: 'dense' });
+    const normalClass = getActionListItemClasses({ density: 'normal' });
+
+    expect(item).not.toHaveClass(denseClass);
+    expect(item).not.toHaveClass(normalClass);
+  });
+
+  it('density="dense" applies the dense (compact) padding class to rows', () => {
+    render(ActionListTestHarness, { props: { testID: 'action-list', density: 'dense' } });
+
+    const item = screen.getByRole('option');
+    expect(item).toHaveClass(getActionListItemClasses({ density: 'dense' }));
+  });
+
+  it('density="normal" applies the normal (roomy) padding class to rows', () => {
+    render(ActionListTestHarness, { props: { testID: 'action-list', density: 'normal' } });
+
+    const item = screen.getByRole('option');
+    expect(item).toHaveClass(getActionListItemClasses({ density: 'normal' }));
   });
 
   it('in BottomSheet: renders a single scroll wrapper without an outer shell', () => {

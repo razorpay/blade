@@ -27,8 +27,21 @@ export function getActionListWrapperClasses(props: ActionListWrapperVariants): s
   return actionListWrapperCva(props);
 }
 
+/**
+ * Item density, controlled via the `ActionList` `density` prop.
+ *
+ * When `undefined`, items fall back to the default responsive behavior
+ * (compact `spacing-2` padding on mobile, roomier `spacing-3` on desktop,
+ * driven by the `@media (min-width: 768px)` block in the stylesheet). Setting a
+ * density pins the item padding to a single value across all breakpoints so
+ * consumers (e.g. surfaces that must match a specific design) get predictable,
+ * controllable density.
+ */
+export type ActionListDensity = 'normal' | 'dense';
+
 export type ActionListItemVariants = {
   intent?: 'default' | 'negative';
+  density?: ActionListDensity;
 };
 
 /**
@@ -41,6 +54,10 @@ export const actionListItemCva = cva(styles.item, {
     intent: {
       default: null,
       negative: styles.itemNegative,
+    },
+    density: {
+      normal: styles.itemNormal,
+      dense: styles.itemDense,
     },
   },
   defaultVariants: {
@@ -61,6 +78,8 @@ export function getActionListTemplateClasses(): {
   wrapperInSheet: string;
   item: string;
   itemNegative: string;
+  itemNormal: string;
+  itemDense: string;
   itemInner: string;
   itemLeading: string;
   itemSelector: string;
@@ -78,6 +97,8 @@ export function getActionListTemplateClasses(): {
     wrapperInSheet: styles.wrapperInSheet,
     item: styles.item,
     itemNegative: styles.itemNegative,
+    itemNormal: styles.itemNormal,
+    itemDense: styles.itemDense,
     itemInner: styles.itemInner,
     itemLeading: styles.itemLeading,
     itemSelector: styles.itemSelector,
