@@ -31,7 +31,7 @@
   import { setBottomSheetContext } from './bottomSheetContext';
   import type { BottomSheetContextValue } from './bottomSheetContext';
   import type { BottomSheetProps, SnapPoints } from './types';
-  import { computeMaxContent, computeSnapPointBounds } from './utils';
+  import { computeSnapPointBounds } from './utils';
   import BottomSheetBackdrop from './BottomSheetBackdrop.svelte';
   import { portal } from '../../utils/portal';
 
@@ -122,18 +122,12 @@
     }
   });
 
-  function setPositionY(value: number, limit = true): void {
-    if (!limit) {
-      positionY = value;
-      return;
-    }
-    const maxValue = computeMaxContent({
-      contentHeight,
-      footerHeight,
-      headerHeight: headerHeight > 0 ? headerHeight + grabHandleHeight : 0,
-      maxHeight: value,
-    });
-    positionY = maxValue;
+  // Snap to the exact requested fraction. Do NOT clamp to content height —
+  // consumers rely on snapPoints (e.g. 0.85) mapping to that share of the
+  // viewport, even when body content is shorter. This diverges from React
+  // parity (which caps positionY to content via computeMaxContent).
+  function setPositionY(value: number): void {
+    positionY = value;
   }
 
   function returnFocus(): void {
@@ -184,7 +178,7 @@
   }
 
   function handleOnClose(): void {
-    setPositionY(0, false);
+    setPositionY(0);
   }
 
   /* Sync controlled open state to internal animation/position. */
@@ -412,7 +406,7 @@
         isDragging = false;
         cancel();
         const firstSnapPoint = windowHeight * snapPoints[0];
-        setPositionY(firstSnapPoint, true);
+        setPositionY(firstSnapPoint);
         return;
       }
 
@@ -423,7 +417,7 @@
       }
     }
 
-    setPositionY(newY, !down);
+    setPositionY(newY);
   }
   /* eslint-enable @typescript-eslint/no-explicit-any */
 
