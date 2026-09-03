@@ -123,7 +123,7 @@
     <div class="country-selector-search">
       <SearchInput
         accessibilityLabel="Search country"
-        placeholder="Search country or dial code"
+        placeholder="Search"
         value={searchQuery}
         onChange={handleSearchChange}
       />
@@ -186,7 +186,7 @@
   }
 
   .country-selector-search {
-    padding: var(--spacing-3) var(--spacing-4);
+    padding: 0 var(--spacing-4) var(--spacing-5);
   }
 
   .country-selector-empty {
