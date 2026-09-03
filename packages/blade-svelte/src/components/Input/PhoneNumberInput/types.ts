@@ -105,11 +105,6 @@ export interface PhoneNumberInputProps extends StyledPropsBlade, DataAnalyticsAt
    * target used by a parent `BottomSheet` when the input lives inside one.
    */
   portalTarget?: HTMLElement | null;
-  /**
-   * Text shown in the country selector when the search query matches no country.
-   * @default 'No countries found'
-   */
-  noResultsText?: string;
 }
 
 /** Imperative handle exposed via `bind:this`. */
@@ -136,6 +131,4 @@ export type CountrySelectorProps = {
   size: BaseInputSize;
   /** Portals the country list bottom sheet into this element. */
   portalTarget?: HTMLElement | null;
-  /** Text shown when the search query matches no country. */
-  noResultsText?: string;
 };

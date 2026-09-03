@@ -61,7 +61,6 @@
     flags,
     size,
     portalTarget,
-    noResultsText = 'No countries found',
   }: CountrySelectorProps = $props();
 
   let isOpen = $state(false);
@@ -133,7 +132,7 @@
   <BottomSheetBody hasActionList>
     {#if filteredCountryData.length === 0}
       <div class="country-selector-empty">
-        <Text color="surface.text.gray.muted">{noResultsText}</Text>
+        <Text color="surface.text.gray.muted">No countries found</Text>
       </div>
     {:else}
       <ActionList selectionType="single" selectedValue={selectedCountry} onAction={handleSelect}>
