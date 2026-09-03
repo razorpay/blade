@@ -49,6 +49,8 @@
   } from '../../ActionList';
   import { BottomSheet, BottomSheetHeader, BottomSheetBody } from '../../BottomSheet';
   import { ChevronUpDownIcon } from '../../Icons';
+  import Text from '../../Typography/Text/Text.svelte';
+  import SearchInput from '../SearchInput/SearchInput.svelte';
   import type { CountrySelectorProps } from './types';
 
   let {
@@ -59,18 +61,39 @@
     flags,
     size,
     portalTarget,
+    noResultsText = 'No countries found',
   }: CountrySelectorProps = $props();
 
   let isOpen = $state(false);
+  let searchQuery = $state('');
 
   const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
   const flagSrc = $derived(getFlagOfCountry(selectedCountry)['4X3']);
   const triggerLabel = $derived(`${countryNameFormatter.of(selectedCountry)} - Select Country`);
 
+  const filteredCountryData = $derived.by(() => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return countryData;
+    return countryData.filter(
+      (country) =>
+        country.name.toLowerCase().includes(query) ||
+        getDialCodeByCountryCode(country.code).toLowerCase().includes(query),
+    );
+  });
+
+  const closeSheet = (): void => {
+    isOpen = false;
+    searchQuery = '';
+  };
+
   const handleSelect = ({ value }: { value: string }): void => {
     onItemClick({ name: value });
-    isOpen = false;
+    closeSheet();
+  };
+
+  const handleSearchChange = ({ value }: { value?: string }): void => {
+    searchQuery = value ?? '';
   };
 </script>
 
@@ -96,21 +119,36 @@
   </span>
 </button>
 
-<BottomSheet {isOpen} onDismiss={() => (isOpen = false)} {portalTarget}>
-  <BottomSheetHeader title="Select A Country" />
+<BottomSheet {isOpen} onDismiss={closeSheet} {portalTarget}>
+  <BottomSheetHeader title="Select A Country">
+    <div class="country-selector-search">
+      <SearchInput
+        accessibilityLabel="Search country"
+        placeholder="Search country or dial code"
+        value={searchQuery}
+        onChange={handleSearchChange}
+      />
+    </div>
+  </BottomSheetHeader>
   <BottomSheetBody hasActionList>
-    <ActionList selectionType="single" selectedValue={selectedCountry} onAction={handleSelect}>
-      {#each countryData as country (country.code)}
-        <ActionListItem title={country.name} value={country.code}>
-          {#snippet leading()}
-            <ActionListItemAsset src={flags[country.code]?.['4X3'] ?? ''} alt={country.name} />
-          {/snippet}
-          {#snippet trailing()}
-            <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
-          {/snippet}
-        </ActionListItem>
-      {/each}
-    </ActionList>
+    {#if filteredCountryData.length === 0}
+      <div class="country-selector-empty">
+        <Text color="surface.text.gray.muted">{noResultsText}</Text>
+      </div>
+    {:else}
+      <ActionList selectionType="single" selectedValue={selectedCountry} onAction={handleSelect}>
+        {#each filteredCountryData as country (country.code)}
+          <ActionListItem title={country.name} value={country.code}>
+            {#snippet leading()}
+              <ActionListItemAsset src={flags[country.code]?.['4X3'] ?? ''} alt={country.name} />
+            {/snippet}
+            {#snippet trailing()}
+              <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
+            {/snippet}
+          </ActionListItem>
+        {/each}
+      </ActionList>
+    {/if}
   </BottomSheetBody>
 </BottomSheet>
 
@@ -146,5 +184,15 @@
   .country-selector-chevron {
     display: inline-flex;
     align-items: center;
+  }
+
+  .country-selector-search {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  .country-selector-empty {
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-6) var(--spacing-4);
   }
 </style>
