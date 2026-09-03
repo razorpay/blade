@@ -94,6 +94,14 @@ Not covered by this prop, and why:
 - **`SelectInput` / `AutoComplete`** (`DropdownInputTriggers`) have focus semantics coupled to the dropdown's open state and already offer `showHintsAsTooltip` as an alternative hint treatment. Gating their help text on focus needs its own design decision.
 - **`prefers-reduced-motion`** is not handled here because it is not handled anywhere in Blade today. Adding it belongs in a system-wide motion pass, not in this prop.
 
+Known limits of the current behaviour:
+
+- **Disabled inputs never reveal the help text.** A disabled field cannot take focus. Consumers who need guidance on a disabled field should keep `helpText` persistent.
+- **`maxCharacters` keeps the footer row visible.** The character counter sits in the same row as the hint, so the "no row at rest" benefit does not apply there.
+- **`SearchInput` with a `Dropdown` paints over the hint.** The dropdown opens below the input and covers the revealed help text.
+- **`PhoneNumberInput`'s country selector does not count as field focus.** Focusing or opening the selector blurs the number input, so the help text collapses while the field border still shows the focus style. Open question, see PR #3954.
+- **Content below the field moves on blur.** The hint collapses over `duration.moderate`, so anything under the field shifts up by the hint's height while the user's pointer may still be pressed on it.
+
 ## Notes
 
 Reusable components candidate

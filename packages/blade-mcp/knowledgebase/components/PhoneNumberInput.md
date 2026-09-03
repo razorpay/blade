@@ -131,6 +131,7 @@ type PhoneNumberInputProps = {
 - Don't use `TextInput` with `format` for international phone numbers — `PhoneNumberInput` handles dial codes and country selection.
 - Don't rely on the placeholder format for auto-formatting during typing — formatting is shown as a hint only.
 - Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
 
 ## Example
 

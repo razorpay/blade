@@ -155,6 +155,8 @@ type IconButtonProps = {
 - Don't use `necessityIndicator="optional"` — it only supports `"required"` or `"none"`.
 - Don't add leading icons, dropdowns, or prefix/suffix — PasswordInput has a simplified visual feature set.
 - Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't expect `showHelpTextOnFocus` to remove the footer row when `maxCharacters` is set — the character counter keeps that row visible at rest.
 
 ## Example
 

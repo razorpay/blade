@@ -288,6 +288,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * When `false`, help text renders exactly as it does today — always visible,
      * with no transition.
      *
+     * Known limits:
+     * - A disabled input cannot take focus, so its help text is never revealed.
+     * - With `maxCharacters` the character counter keeps the footer row visible at rest.
+     * - `SearchInput` with a `Dropdown` paints the open dropdown over the revealed help text.
+     *
      * @default false
      */
     showHelpTextOnFocus?: boolean;

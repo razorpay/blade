@@ -164,6 +164,8 @@ type TextInputProps = TextInputPropsWithA11yLabel | TextInputPropsWithLabel;
 - Don't use alphanumeric characters in `format` patterns — only `#` and special characters are allowed.
 - Don't mix `value` and `defaultValue` with `format` — it throws a conflict error.
 - Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't expect `showHelpTextOnFocus` to remove the footer row when `maxCharacters` is set — the character counter keeps that row visible at rest.
 
 ## Example
 

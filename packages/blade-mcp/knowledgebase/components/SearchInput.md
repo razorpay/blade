@@ -69,6 +69,8 @@ type SearchInputProps = SearchInputPropsWithA11yLabel | SearchInputPropsWithLabe
 - Don't add prefix/suffix, character counters, or formatting — these are not supported in SearchInput.
 - Don't try to move the search icon to the trailing position — it's fixed at the leading (left) side.
 - Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't combine `showHelpTextOnFocus` with a `Dropdown` — the open dropdown paints over the revealed help text, so it is never readable.
 
 ## Example
 

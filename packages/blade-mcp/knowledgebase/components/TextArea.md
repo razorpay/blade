@@ -85,6 +85,8 @@ type TextAreaProps = TextAreaPropsWithA11yLabel | TextAreaPropsWithLabel;
 - Don't use `TextArea` with leading/trailing icons, dropdowns, or prefix/suffix — these are only supported in `TextInput`.
 - Don't use `TextArea` for chat input — use `ChatInput` which has file upload, suggestions, and submit/stop behavior.
 - Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't expect `showHelpTextOnFocus` to remove the footer row when `maxCharacters` is set — the character counter keeps that row visible at rest.
 
 ## Example
 
