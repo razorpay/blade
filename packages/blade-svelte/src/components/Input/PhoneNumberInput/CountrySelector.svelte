@@ -126,6 +126,7 @@
         placeholder="Search"
         value={searchQuery}
         onChange={handleSearchChange}
+        onClearButtonClick={() => (searchQuery = '')}
       />
     </div>
   </BottomSheetHeader>
