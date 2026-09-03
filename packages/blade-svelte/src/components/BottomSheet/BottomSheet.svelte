@@ -42,7 +42,7 @@
   void getBottomSheetTemplateClasses();
 
   let {
-    isOpen = false,
+    isOpen = $bindable(false),
     onDismiss,
     children,
     initialFocusRef = null,
@@ -166,6 +166,7 @@
 
   function close(): void {
     if (isDismissible) {
+      isOpen = false;
       onDismiss?.();
     }
     returnFocus();
