@@ -63,6 +63,10 @@ interface TextInputCommonProps extends StyledPropsBlade, DataAnalyticsAttribute 
   onKeyDown?: FormInputOnKeyDownEvent;
   /** Disables the input. */
   isDisabled?: boolean;
+  /** Makes the input read-only (keeps it focusable, disables editing). */
+  isReadOnly?: boolean;
+  /** Controls the browser spellcheck on the input. */
+  spellCheck?: boolean;
   /** Marks the input required. */
   isRequired?: boolean;
   /** Prefix text rendered at the start. */

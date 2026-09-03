@@ -29,6 +29,8 @@
     onKeyDown,
     isDisabled = false,
     isRequired = false,
+    isReadOnly = false,
+    spellCheck,
     prefix,
     suffix,
     maxCharacters,
@@ -183,6 +185,8 @@
   {onKeyDown}
   {isDisabled}
   {isRequired}
+  {isReadOnly}
+  {spellCheck}
   {prefix}
   {suffix}
   {leadingIcon}
