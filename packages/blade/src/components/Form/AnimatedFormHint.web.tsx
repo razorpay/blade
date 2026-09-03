@@ -10,15 +10,17 @@ const HEIGHT_INTRINSIC = 'auto';
 const HEIGHT_COLLAPSED = '0px';
 
 const StyledAnimatedFormHint = styled(BaseBox)<{
-  isVisible: boolean;
+  $isVisible: boolean;
   $height: string;
-}>(({ theme, isVisible, $height }) => {
-  const phase = isVisible ? 'enter' : 'exit';
+}>(({ theme, $isVisible, $height }) => {
+  const phase = $isVisible ? 'enter' : 'exit';
 
   return {
-    overflowY: 'hidden',
+    // both axes, so a hidden y-axis can't compute overflow-x to `auto` and
+    // silently establish a horizontal scroll container
+    overflow: 'hidden',
     height: $height,
-    opacity: isVisible ? 1 : 0,
+    opacity: $isVisible ? 1 : 0,
     transitionProperty: 'height, opacity',
     transitionDuration: castWebType(
       makeMotionTime(getIn(theme.motion.duration, formHintMotion[phase].duration)),
@@ -107,7 +109,7 @@ const AnimatedFormHint = ({ isVisible, children }: AnimatedFormHintProps): React
 
   return (
     <StyledAnimatedFormHint
-      isVisible={isVisible}
+      $isVisible={isVisible}
       $height={height}
       // stable hook for tests and debugging, same convention as `__blade-base-input-wrapper`
       className="__blade-animated-form-hint"

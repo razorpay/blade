@@ -42,7 +42,6 @@ const AnimatedFormHint = ({ isVisible, children }: AnimatedFormHintProps): React
    * every hint plays its entry transition as soon as it is measured.
    */
   const hasSettled = React.useRef(false);
-  const defaultIsVisible = React.useRef(isVisible).current;
   const isMeasured = contentHeight !== null;
 
   const phase = isVisible ? 'enter' : 'exit';
@@ -81,11 +80,13 @@ const AnimatedFormHint = ({ isVisible, children }: AnimatedFormHintProps): React
 
   /**
    * Until the first measurement lands there is no pixel value to animate between,
-   * so the hint is held at rest in whichever state it mounted in.
+   * so the hint is held at rest in its *current* state — not the state it mounted
+   * in. Using the mount-time value would render an `autoFocus` input's hint
+   * collapsed for a frame before the first measurement snapped it open.
    */
   const staticStyle = {
-    maxHeight: defaultIsVisible ? undefined : 0,
-    opacity: defaultIsVisible ? 1 : 0,
+    maxHeight: isVisible ? undefined : 0,
+    opacity: isVisible ? 1 : 0,
   };
 
   const handleLayout = (event: LayoutChangeEvent): void => {

@@ -39,6 +39,7 @@ const meta: Meta<PhoneNumberInputProps> = {
     trailingIcon: undefined,
     leadingIcon: undefined,
     accessibilityLabel: undefined,
+    showHelpTextOnFocus: false,
   },
   argTypes: {
     country: {
@@ -189,6 +190,11 @@ const meta: Meta<PhoneNumberInputProps> = {
       },
     },
     helpText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    showHelpTextOnFocus: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },

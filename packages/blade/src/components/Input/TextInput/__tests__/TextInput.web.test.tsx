@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { act, screen, waitFor } from '@testing-library/react';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -725,22 +724,23 @@ describe('<TextInput />', () => {
      */
     describe('with a measurable hint', () => {
       const originalResizeObserver = window.ResizeObserver;
-      let offsetHeightSpy: jest.SpyInstance | undefined;
+      // notifyResize lets a test simulate the hint reflowing to a different height
+      let offsetHeightSpy: jest.SpyInstance | undefined, notifyResize: (() => void) | undefined;
 
       beforeEach(() => {
         offsetHeightSpy = jest
           .spyOn(HTMLElement.prototype, 'offsetHeight', 'get')
           .mockReturnValue(20);
-        window.ResizeObserver = jest.fn().mockImplementation(() => ({
-          observe: jest.fn(),
-          unobserve: jest.fn(),
-          disconnect: jest.fn(),
-        })) as never;
+        window.ResizeObserver = jest.fn().mockImplementation((onResize: () => void) => {
+          notifyResize = onResize;
+          return { observe: jest.fn(), unobserve: jest.fn(), disconnect: jest.fn() };
+        }) as never;
       });
 
       afterEach(() => {
         offsetHeightSpy?.mockRestore();
         window.ResizeObserver = originalResizeObserver;
+        notifyResize = undefined;
       });
 
       it('should animate between the measured height and zero', async () => {
@@ -759,6 +759,28 @@ describe('<TextInput />', () => {
         await user.tab();
 
         await waitFor(() => expect(hintWrapper).toHaveStyle({ height: '0px', opacity: '0' }));
+      });
+
+      it('should re-measure when the hint reflows to a taller height', async () => {
+        const user = userEvent.setup();
+        const { container, getByLabelText } = renderWithTheme(
+          <TextInput label={label} helpText="Help" showHelpTextOnFocus />,
+        );
+
+        const hintWrapper = getHintWrapper(container);
+        await user.click(getByLabelText(label));
+        await waitFor(() => expect(hintWrapper).toHaveStyle({ height: '20px' }));
+
+        /**
+         * Simulates the hint wrapping to a second line — a longer message, a
+         * narrower container, or a font swap. The ResizeObserver is the only thing
+         * that re-measures after mount, so without it the container would stay
+         * pinned to the original single-line height and clip the new content.
+         */
+        offsetHeightSpy?.mockReturnValue(40);
+        act(() => notifyResize?.());
+
+        await waitFor(() => expect(hintWrapper).toHaveStyle({ height: '40px' }));
       });
     });
   });
