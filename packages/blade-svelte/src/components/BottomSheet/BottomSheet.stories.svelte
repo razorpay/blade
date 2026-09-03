@@ -1,7 +1,7 @@
 <script module lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import BottomSheet from './BottomSheet.svelte';
-  import type { BottomSheetProps } from './types';
+  import type { BottomSheetProps, SnapPoints } from './types';
 
   /* Storybook title MUST match the React export verbatim:
    *   blade/src/components/BottomSheet/BottomSheet.stories.tsx → 'Components/BottomSheet'. */
@@ -93,6 +93,11 @@
   let isNonDismissibleOpen = $state(false);
   let isPortalTargetOpen = $state(false);
   let portalTargetEl = $state<HTMLDivElement | null>(null);
+  let isPortalSnapOpen = $state(false);
+  let portalSnapTargetEl = $state<HTMLDivElement | null>(null);
+  let snapLow = $state(0.4);
+  let snapMid = $state(0.65);
+  let snapHigh = $state(0.9);
 
   let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
     $state();
@@ -999,6 +1004,109 @@
           </BottomSheetFooter>
         {/snippet}
       </BottomSheet>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 15: Portal Target With Snap Points — custom snapPoints resolved
+     against a bounded portalTarget. Verifies snap-point math uses the
+     container height, not the viewport. Snap points are wired to in-canvas
+     range sliders so you can tweak them live and re-open to check. -->
+<Story name="Portal Target With Snap Points">
+  {#snippet template()}
+    {@const snapPoints = [snapLow, snapMid, snapHigh] as SnapPoints}
+    <div>
+      <Text marginBottom="spacing.4">
+        Combines portalTarget + custom snapPoints. Drag the sliders below to change the three snap
+        points, then open the sheet and drag the grab handle. Snap points resolve against the
+        bounded frame height (not the viewport).
+      </Text>
+
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-3);
+          max-width: 320px;
+          margin-bottom: var(--spacing-5);
+          padding: var(--spacing-4);
+          border-radius: var(--radius-medium);
+          border: 1px solid var(--surface-border-gray-subtle);
+        "
+      >
+        <label style="display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-3);">
+          <Text size="small">Low</Text>
+          <input type="range" min="0.1" max="1" step="0.05" bind:value={snapLow} style="flex: 1;" />
+          <Text size="small" weight="semibold">{Math.round(snapLow * 100)}%</Text>
+        </label>
+        <label style="display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-3);">
+          <Text size="small">Mid</Text>
+          <input type="range" min="0.1" max="1" step="0.05" bind:value={snapMid} style="flex: 1;" />
+          <Text size="small" weight="semibold">{Math.round(snapMid * 100)}%</Text>
+        </label>
+        <label style="display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-3);">
+          <Text size="small">High</Text>
+          <input type="range" min="0.1" max="1" step="0.05" bind:value={snapHigh} style="flex: 1;" />
+          <Text size="small" weight="semibold">{Math.round(snapHigh * 100)}%</Text>
+        </label>
+        <Text weight="semibold">
+          Current: [{Math.round(snapLow * 100)}%, {Math.round(snapMid * 100)}%, {Math.round(snapHigh * 100)}%]
+        </Text>
+      </div>
+
+      <div
+        bind:this={portalSnapTargetEl}
+        style="
+          position: relative;
+          width: 320px;
+          height: 560px;
+          overflow: hidden;
+          border-radius: var(--radius-medium);
+          border: 2px solid var(--surface-border-gray-subtle);
+          background: var(--surface-background-gray-subtle);
+        "
+      >
+        <div
+          style="
+            padding: var(--spacing-5);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+            height: 100%;
+          "
+        >
+          <Heading size="small">Mobile checkout preview</Heading>
+          <Text color="surface.text.gray.muted" size="small">
+            Snap points are relative to this 560px frame. Adjust them using the sliders above.
+          </Text>
+          <Button onClick={() => (isPortalSnapOpen = true)}>Open bottom sheet</Button>
+        </div>
+
+        <BottomSheet
+          isOpen={isPortalSnapOpen}
+          onDismiss={() => (isPortalSnapOpen = false)}
+          portalTarget={portalSnapTargetEl}
+          {snapPoints}
+        >
+          {#snippet children()}
+            <BottomSheetHeader
+              title="Filter By Cuisines"
+              subtitle="Drag the handle to snap between the configured points"
+            />
+            <BottomSheetBody hasActionList>
+              {#snippet children()}
+                <ActionList>
+                  {#snippet children()}
+                    {#each cuisines as cuisine (cuisine)}
+                      <ActionListItem title={cuisine} value={cuisine} />
+                    {/each}
+                  {/snippet}
+                </ActionList>
+              {/snippet}
+            </BottomSheetBody>
+          {/snippet}
+        </BottomSheet>
+      </div>
     </div>
   {/snippet}
 </Story>
