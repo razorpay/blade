@@ -101,7 +101,8 @@ export interface PhoneNumberInputProps extends StyledPropsBlade, DataAnalyticsAt
   /** Optional stable HTML id for the underlying input. Auto-generated when omitted. */
   id?: string;
   /**
-   * Portals the country-selector bottom sheet into this element. Pass the same
+   * Portals the country-selector bottom sheet into this element (mobile only;
+   * the desktop popover always portals to `document.body`). Pass the same
    * target used by a parent `BottomSheet` when the input lives inside one.
    */
   portalTarget?: HTMLElement | null;
@@ -129,6 +130,6 @@ export type CountrySelectorProps = {
   isDisabled?: boolean;
   /** Size of the trigger (drives flag size). */
   size: BaseInputSize;
-  /** Portals the country list bottom sheet into this element. */
+  /** Portals the country list bottom sheet into this element (desktop popover ignores it). */
   portalTarget?: HTMLElement | null;
 };

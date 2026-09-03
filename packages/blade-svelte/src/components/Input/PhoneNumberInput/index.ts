@@ -5,11 +5,12 @@
  * powered by `@razorpay/i18nify-js`.
  *
  * ### Deviations from React
- * - **Country list is a `BottomSheet` on BOTH mobile and desktop.** React opens
- *   an anchored `DropdownOverlay` on desktop and a `BottomSheet` on mobile
- *   (via `useIsMobile`). Since Dropdown is not yet migrated, the Svelte
- *   `CountrySelector` always opens the migrated `BottomSheet` + `ActionList` —
- *   there is no anchored popover and no `useIsMobile` branch.
+ * - **Country list uses a desktop popover, BottomSheet on mobile (like React).**
+ *   On desktop (≥ 768px) the selector opens an anchored, floating `ActionList`
+ *   popover positioned with `@floating-ui/dom` and portaled to `body`; on mobile
+ *   (and SSR/non-browser where `matchMedia` is unavailable) it falls back to the
+ *   migrated `BottomSheet`. There is no eager Dropdown migration — the desktop
+ *   popover reuses the standalone `ActionList` render branch.
  * - **`ref` → `focus()` / `getInput()`:** bind the component instance and call
  *   `instance.focus()` or `instance.getInput()`.
  *
