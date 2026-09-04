@@ -18,6 +18,13 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v4
+      - name: Setup PMG proxy
+        id: pmg-setup
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
+          tenant-id: ${{ secrets.PMG_TENANT_ID }}
       - name: Use Node v20
         uses: actions/setup-node@v4
         with:
@@ -33,6 +40,14 @@ jobs:
         env:
           DANGER_GITHUB_API_TOKEN: ${{ env.GITHUB_ACCESS_TOKEN }}
           DANGER_DISABLE_TRANSPILATION: 'true'
+      - name: Enforce PMG policy
+        if: always()
+        run: |
+          if [ "${{ steps.pmg-setup.outcome }}" = "success" ]; then
+            pmg proxy stop --fail-on-violation
+          else
+            pmg proxy stop || true
+          fi
 
   master-bundle-size:
     name: Update Base Stats
@@ -47,6 +62,13 @@ jobs:
         with:
           token: ${{ secrets.CI_BOT_TOKEN }}
           ref: master
+      - name: Setup PMG proxy
+        id: pmg-setup
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
+          tenant-id: ${{ secrets.PMG_TENANT_ID }}
       - name: Use Node v20
         uses: actions/setup-node@v4
         with:
@@ -74,3 +96,11 @@ jobs:
           git commit -m "chore: update bundle size data [skip ci]"
           git push origin master:bundle-size-stats --force
         working-directory: packages/blade
+      - name: Enforce PMG policy
+        if: always()
+        run: |
+          if [ "${{ steps.pmg-setup.outcome }}" = "success" ]; then
+            pmg proxy stop --fail-on-violation
+          else
+            pmg proxy stop || true
+          fi

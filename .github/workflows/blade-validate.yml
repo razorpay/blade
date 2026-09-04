@@ -17,6 +17,13 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
+      - name: Setup PMG proxy
+        id: pmg-setup
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
+          tenant-id: ${{ secrets.PMG_TENANT_ID }}
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -55,6 +62,14 @@ jobs:
       - name: Run Svelte Checks (Blade Svelte)
         run: yarn svelte-check
         working-directory: packages/blade-svelte
+      - name: Enforce PMG policy
+        if: always()
+        run: |
+          if [ "${{ steps.pmg-setup.outcome }}" = "success" ]; then
+            pmg proxy stop --fail-on-violation
+          else
+            pmg proxy stop || true
+          fi
 
   test:
     name: Run Tests (${{ matrix.shard }})
@@ -67,6 +82,13 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
+      - name: Setup PMG proxy
+        id: pmg-setup
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
+          tenant-id: ${{ secrets.PMG_TENANT_ID }}
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -84,6 +106,14 @@ jobs:
           name: coverage-report-${{ matrix.shard }}
           path: packages/blade/coverage
           retention-days: 1
+      - name: Enforce PMG policy
+        if: always()
+        run: |
+          if [ "${{ steps.pmg-setup.outcome }}" = "success" ]; then
+            pmg proxy stop --fail-on-violation
+          else
+            pmg proxy stop || true
+          fi
 
   svelte-test:
     name: Run Svelte Tests
@@ -91,6 +121,13 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v3
+      - name: Setup PMG proxy
+        id: pmg-setup
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
+          tenant-id: ${{ secrets.PMG_TENANT_ID }}
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -100,6 +137,14 @@ jobs:
       - name: Run Unit Tests
         run: yarn test
         working-directory: packages/blade-svelte
+      - name: Enforce PMG policy
+        if: always()
+        run: |
+          if [ "${{ steps.pmg-setup.outcome }}" = "success" ]; then
+            pmg proxy stop --fail-on-violation
+          else
+            pmg proxy stop || true
+          fi
 
   coverage-report:
     name: Generate Coverage Report
@@ -115,6 +160,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Setup PMG proxy
+        id: pmg-setup
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.PMG_PUBLIC_REPOS_TOKEN }}
+          tenant-id: ${{ secrets.PMG_TENANT_ID }}
       - name: Use Node v22
         uses: actions/setup-node@v3
         with:
@@ -196,3 +248,11 @@ jobs:
           body-file: coverage-comment.md
           token: ${{ secrets.CI_BOT_TOKEN }}
           edit-mode: replace
+      - name: Enforce PMG policy
+        if: always()
+        run: |
+          if [ "${{ steps.pmg-setup.outcome }}" = "success" ]; then
+            pmg proxy stop --fail-on-violation
+          else
+            pmg proxy stop || true
+          fi
