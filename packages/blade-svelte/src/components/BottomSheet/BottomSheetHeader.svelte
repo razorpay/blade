@@ -57,15 +57,14 @@
   });
 
   /* Measure the header height after mount/open so the parent can size its
-   * total content. Mirrors React's `useIsomorphicLayoutEffect` measurement.
-   * Run for any non-empty header (covers leading/trailing/showBackButton/children
-   * cases too — not just title/subtitle) so snap-point math always accounts for
-   * the rendered header. */
+   * total content. An empty header still occupies a band above the body, so it
+   * is measured too — skipping it leaves the body scrollable by that height.
+   * When the header floats its content is out of flow and this measures 0. */
   $effect(() => {
     if (!headerEl) return;
-    if (isHeaderEmpty) return;
-    // Re-run on isOpen toggle by reading it.
+    // Re-run on isOpen / float toggles by reading them.
     void ctx?.isOpen;
+    void ctx?.isHeaderFloating;
     ctx?.setHeaderHeight(headerEl.getBoundingClientRect().height);
   });
 
