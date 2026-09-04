@@ -1,5 +1,23 @@
 # @razorpay/blade-svelte
 
+## 0.15.0
+
+### Minor Changes
+
+- 8bb1c2efd: feat(blade-svelte): add `backdropPortalTarget` to BottomSheet
+
+  Adds an optional `backdropPortalTarget` prop so the dim overlay can mount into a wider ancestor while the sheet surface stays in a nested container. When the targets differ, backdrop and surface render in separate portals with stacking tuned so the surface still paints above the dim layer.
+
+### Patch Changes
+
+- 08b3ddc5c: feat(blade-svelte): add country search to PhoneNumberInput selector
+
+  Adds a `SearchInput` inside `CountrySelector`'s `BottomSheetHeader` for `PhoneNumberInput`. Filters the country list by name or dial code (case-insensitive substring match) and shows a "No countries found" empty state when the filter matches nothing.
+
+- a12fdbe9f: fix(blade-svelte): budget grab handle and empty header in BottomSheet height
+
+  Measure empty `BottomSheetHeader` height instead of skipping it, and always budget grab-handle height in snap/scroll math. Zero both only when the header floats (zero body padding). Fixes spurious body scroll (~28px) on short sheets with an empty header and drag handle.
+
 ## 0.14.0
 
 ### Minor Changes
