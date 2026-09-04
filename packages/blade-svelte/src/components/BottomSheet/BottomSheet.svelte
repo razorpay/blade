@@ -15,7 +15,6 @@
   } from '@razorpay/blade-core/utils';
   import {
     BOTTOM_SHEET_Z_INDEX,
-    BOTTOM_SHEET_DEFAULT_SNAP_POINTS,
     bottomSheetSurfaceClass,
     bottomSheetInnerWrapperClass,
     bottomSheetGrabHandleClass,
@@ -46,7 +45,8 @@
     onDismiss,
     children,
     initialFocusRef = null,
-    snapPoints = [...BOTTOM_SHEET_DEFAULT_SNAP_POINTS] as SnapPoints,
+    snapPoints,
+    maxHeight = 0.97,
     isDismissible = true,
     zIndex = BOTTOM_SHEET_Z_INDEX,
     portalTarget,
@@ -110,20 +110,27 @@
    * flow, so neither consumes height in the surface's flex column. */
   const isHeaderFloating = $derived(!hasBodyPadding && isHeaderEmpty);
 
+  const isAutoMode = $derived(snapPoints === undefined);
+  /* In auto mode a single implicit snap point at maxHeight acts as the ceiling. */
+  const effectiveSnapPoints = $derived(
+    isAutoMode
+      ? ([maxHeight, maxHeight, maxHeight] as SnapPoints)
+      : (snapPoints as SnapPoints),
+  );
+
   const totalHeight = $derived(grabHandleHeight + headerHeight + footerHeight + contentHeight);
 
-  let initialSnapPointFraction = $state(snapPoints[1]);
-
-  /* Adjust the initial snap point so a small total content sits on the
-   * lowest snap point, otherwise stays on the middle one. Mirrors React. */
-  $effect(() => {
-    const middleSnapPoint = snapPoints[1] * windowHeight;
-    const lowerSnapPoint = snapPoints[0] * windowHeight;
+  /* In auto mode the sheet always opens at content height — never at a fixed
+   * fraction. In snap-point mode keep the existing React logic. */
+  const initialSnapPointFraction = $derived.by(() => {
+    if (isAutoMode) return Math.min(totalHeight / windowHeight, maxHeight);
+    const pts = snapPoints as SnapPoints;
+    const middleSnapPoint = pts[1] * windowHeight;
+    const lowerSnapPoint = pts[0] * windowHeight;
     if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
-      initialSnapPointFraction = snapPoints[0];
-    } else {
-      initialSnapPointFraction = snapPoints[1];
+      return pts[0];
     }
+    return pts[1];
   });
 
   function setPositionY(value: number, limit = true): void {
@@ -179,6 +186,14 @@
   }
 
   function handleOnOpen(): void {
+    /* Sync the viewport height to the portal container synchronously before
+     * positioning. `windowHeight` initializes to `window.innerHeight` and is
+     * only corrected to the portal height by a later effect — positioning
+     * before that correction would cap against the full window, letting the
+     * sheet grow far taller than a bounded portal container. */
+    windowHeight =
+      portalTarget?.clientHeight ??
+      (typeof window !== 'undefined' ? window.innerHeight : windowHeight);
     setPositionY(windowHeight * initialSnapPointFraction);
     if (typeof document !== 'undefined') {
       originalFocusEl = originalFocusEl ?? (document.activeElement as HTMLElement | null);
@@ -231,6 +246,24 @@
         unmountTimeoutId = null;
       }
     };
+  });
+
+  /* Re-clamp the sheet height when measured content changes while open.
+   * React gets this from `setPositionY`/`handleOnOpen` identity churn feeding
+   * its open-sync effect; here it needs to be explicit. Skipped mid-drag so
+   * the gesture stays authoritative over the position. */
+  $effect(() => {
+    const total = totalHeight;
+    if (!isOpen || isDragging || total === 0) return;
+    /* Guard against a stale `windowHeight` (still the full window instead of a
+     * bounded portal): re-sync first, then let the derived cap recompute on the
+     * next run. Assign-if-changed avoids an effect loop. */
+    const viewportHeight = portalTarget?.clientHeight ?? windowHeight;
+    if (viewportHeight !== windowHeight) {
+      windowHeight = viewportHeight;
+      return;
+    }
+    setPositionY(windowHeight * initialSnapPointFraction);
   });
 
   /* Stack registration. */
@@ -362,21 +395,29 @@
     isDragging = Boolean(dragging);
 
     const rawY = lastOffsetY - movementY;
-    const lowerSnapPoint = windowHeight * snapPoints[0];
-    const upperSnapPoint = windowHeight * snapPoints[snapPoints.length - 1];
+    const pts = effectiveSnapPoints;
+    const lowerSnapPoint = windowHeight * pts[0];
+    const upperSnapPoint = windowHeight * pts[pts.length - 1];
+
+    /* In auto mode the sheet has a single resting height — upward drag is a
+     * no-op (rubber-bands back to rest). Downward drag is the dismiss gesture. */
+    const autoUpperCap = isAutoMode ? windowHeight * initialSnapPointFraction : upperSnapPoint;
 
     /* Velocity-driven momentum — same formula as React. */
     const predictedDistance = movementY * (velocityY / 2);
     const predictedY = Math.max(
       lowerSnapPoint,
-      Math.min(upperSnapPoint, rawY - predictedDistance * 2),
+      Math.min(autoUpperCap, rawY - predictedDistance * 2),
     );
 
     let newY = rawY;
 
     if (down) {
       const dampening = 0.55;
-      if (totalHeight < upperSnapPoint) {
+      if (isAutoMode) {
+        /* Rubber-band both ends — downward toward dismiss, upward toward rest. */
+        newY = rubberbandIfOutOfBounds(rawY, 0, autoUpperCap, dampening);
+      } else if (totalHeight < upperSnapPoint) {
         newY = rubberbandIfOutOfBounds(rawY, 0, totalHeight, dampening);
       } else {
         newY = rubberbandIfOutOfBounds(rawY, 0, upperSnapPoint, dampening);
@@ -385,51 +426,73 @@
       newY = predictedY;
     }
 
-    const isPosAtUpperSnapPoint = newY >= upperSnapPoint;
+    const isPosAtUpperSnapPoint = newY >= autoUpperCap;
 
     if (isContentDragging) {
       if (isPosAtUpperSnapPoint) {
-        newY = upperSnapPoint;
+        newY = autoUpperCap;
       }
 
       /* Pin to upper snap point while content isn't scrolled to top — keeps
        * the scroll feel natural when crossing the boundary between sheet
        * drag and content scroll. */
       const isContentScrolledAtTop = scrollEl != null && scrollEl.scrollTop <= 0;
-      if (lastOffsetY === upperSnapPoint && !isContentScrolledAtTop) {
-        newY = upperSnapPoint;
+      if (lastOffsetY === autoUpperCap && !isContentScrolledAtTop) {
+        newY = autoUpperCap;
       }
-      preventScrolling = newY < upperSnapPoint;
+      preventScrolling = newY < autoUpperCap;
     }
 
     if (last) {
-      const [nearest, lower] = computeSnapPointBounds(
-        newY,
-        snapPoints.map((point) => windowHeight * point) as SnapPoints,
-      );
-
       const lowerPointBuffer = 60;
-      const lowerestSnap = Math.min(lower, totalHeight) - lowerPointBuffer;
-      const shouldClose = rawY < lowerestSnap;
 
-      if (shouldClose) {
-        if (isDismissible) {
+      if (isAutoMode) {
+        /* Auto mode: only dismiss or snap back — no middle detents. */
+        const dismissThreshold = autoUpperCap - lowerPointBuffer;
+        const shouldClose = rawY < dismissThreshold;
+        if (shouldClose) {
+          if (isDismissible) {
+            isDragging = false;
+            cancel();
+            close();
+            return;
+          }
           isDragging = false;
           cancel();
-          close();
+          setPositionY(autoUpperCap, false);
           return;
         }
-        isDragging = false;
-        cancel();
-        const firstSnapPoint = windowHeight * snapPoints[0];
-        setPositionY(firstSnapPoint, true);
-        return;
-      }
+        if (!active && !tap) {
+          newY = autoUpperCap;
+        }
+      } else {
+        const [nearest, lower] = computeSnapPointBounds(
+          newY,
+          pts.map((point) => windowHeight * point) as SnapPoints,
+        );
 
-      /* `filterTaps: true` makes taps fire with `last: true, tap: true` —
-       * skip the snap-to-nearest branch so a tap doesn't trigger a flicker. */
-      if (!active && !tap) {
-        newY = nearest;
+        const lowerestSnap = Math.min(lower, totalHeight) - lowerPointBuffer;
+        const shouldClose = rawY < lowerestSnap;
+
+        if (shouldClose) {
+          if (isDismissible) {
+            isDragging = false;
+            cancel();
+            close();
+            return;
+          }
+          isDragging = false;
+          cancel();
+          const firstSnapPoint = windowHeight * pts[0];
+          setPositionY(firstSnapPoint, true);
+          return;
+        }
+
+        /* `filterTaps: true` makes taps fire with `last: true, tap: true` —
+         * skip the snap-to-nearest branch so a tap doesn't trigger a flicker. */
+        if (!active && !tap) {
+          newY = nearest;
+        }
       }
     }
 

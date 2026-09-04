@@ -52,6 +52,8 @@
   import Badge from '../Badge/Badge.svelte';
   import Counter from '../Counter/Counter.svelte';
   import Link from '../Link/Link.svelte';
+  import Amount from '../Amount/Amount.svelte';
+  import Divider from '../Divider/Divider.svelte';
   import ActionList from '../ActionList/ActionList.svelte';
   import ActionListItem from '../ActionList/ActionListItem.svelte';
   import ActionListSection from '../ActionList/ActionListSection.svelte';
@@ -60,6 +62,7 @@
   import Checkbox from '../Checkbox/Checkbox.svelte';
   import RadioGroup from '../Radio/RadioGroup.svelte';
   import Radio from '../Radio/Radio.svelte';
+  import TrustBadge from '../TrustBadge/TrustBadge.svelte';
 
   /* Playground story state — separate from product-demo stories. */
   let isPlaygroundOpen = $state(false);
@@ -92,6 +95,9 @@
   let productSimError = $state<string | undefined>();
   let isNonDismissibleOpen = $state(false);
   let isPortalTargetOpen = $state(false);
+  let isAutoModeOpen = $state(false);
+  let autoModeItemCount = $state(3);
+  let autoModePortalEl = $state<HTMLDivElement | null>(null);
   let portalTargetEl = $state<HTMLDivElement | null>(null);
 
   let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
@@ -948,6 +954,135 @@
             <BottomSheetFooter>
               {#snippet children()}
                 <Button isFullWidth onClick={() => (isPortalTargetOpen = false)}>Continue</Button>
+              {/snippet}
+            </BottomSheetFooter>
+          {/snippet}
+        </BottomSheet>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story: Content Height Adapts — checkout-like sidebar + main; sheet renders in main, height tracks content. -->
+<Story name="Content Height Adapts">
+  {#snippet template()}
+    <div
+      style="
+        display: flex;
+        width: 1024px;
+        height: 616px;
+        border-radius: var(--border-radius-large);
+        overflow: hidden;
+        box-shadow: 0 8px 32px hsla(217, 56%, 17%, 0.18);
+        font-family: var(--font-family-text);
+      "
+    >
+      <!-- ===== SIDEBAR ===== -->
+      <div
+        style="
+          width: 340px;
+          flex-shrink: 0;
+          background: var(--surface-background-primary-intense);
+          padding: var(--spacing-6);
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-5);
+        "
+      >
+        <div style="display: flex; align-items: center; gap: var(--spacing-3);">
+          <div
+            style="width: 40px; height: 40px; border-radius: var(--border-radius-medium); background: var(--surface-background-gray-intense); display: flex; align-items: center; justify-content: center;"
+          >
+            <Text weight="semibold">R</Text>
+          </div>
+          <div>
+            <Text weight="semibold" color="surface.text.staticWhite.normal">Razorpay</Text>
+            <TrustBadge label="Trusted Business" />
+          </div>
+        </div>
+
+        <div
+          style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-5); display: flex; flex-direction: column; gap: var(--spacing-2);"
+        >
+          <Text size="small" color="surface.text.staticWhite.muted">Price Summary</Text>
+          <Amount value={2138.51} currency="AED" type="heading" size="large" color="surface.text.staticWhite.normal" />
+          <Text size="xsmall" color="surface.text.staticWhite.muted">
+            Order amount updated as Tabby charges in AED
+          </Text>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+          <div style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-4);">
+            <Text size="small" color="surface.text.staticWhite.normal">Using as +91 93478 41747</Text>
+          </div>
+          <div style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-4);">
+            <Text size="small" color="surface.text.staticWhite.normal">Offers on IndusInd, SBI …</Text>
+          </div>
+        </div>
+
+        <div style="margin-top: auto;">
+          <Text size="xsmall" color="surface.text.staticWhite.muted">Money Back Promise by Razorpay</Text>
+        </div>
+      </div>
+
+      <!-- ===== MAIN — sheet portals into here ===== -->
+      <div
+        bind:this={autoModePortalEl}
+        style="
+          position: relative;
+          flex: 1;
+          background: var(--surface-background-gray-intense);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="flex: 1; padding: var(--spacing-8) var(--spacing-7); display: flex; flex-direction: column; gap: var(--spacing-5); align-items: center; overflow: auto;">
+          <Heading size="medium">Choose a payment method</Heading>
+          <Text color="surface.text.gray.subtle" textAlign="center">
+            Split your purchase into interest-free instalments
+          </Text>
+          <div style="width: 100%; max-width: 360px; margin-top: var(--spacing-5);">
+            <Button isFullWidth onClick={() => (isAutoModeOpen = true)}>
+              Select instalment plan
+            </Button>
+          </div>
+        </div>
+
+        <BottomSheet
+          isOpen={isAutoModeOpen}
+          onDismiss={() => (isAutoModeOpen = false)}
+          portalTarget={autoModePortalEl}
+        >
+          {#snippet children()}
+            <BottomSheetHeader title="Instalment plans" subtitle="Sheet height follows content" />
+            <BottomSheetBody>
+              {#snippet children()}
+                <div style="display: flex; gap: var(--spacing-3); margin-bottom: var(--spacing-4);">
+                  <Button size="small" onClick={() => (autoModeItemCount += 1)}>Add plan</Button>
+                  <Button
+                    size="small"
+                    variant="secondary"
+                    onClick={() => (autoModeItemCount = Math.max(0, autoModeItemCount - 1))}
+                  >
+                    Remove plan
+                  </Button>
+                </div>
+                {#each Array.from({ length: autoModeItemCount }), index}
+                  <div style="padding: var(--spacing-4) 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <Text weight="semibold">{index + 1} × monthly</Text>
+                      <Amount value={2138.51 / (index + 1)} currency="AED" type="body" size="medium" />
+                    </div>
+                    {#if index < autoModeItemCount - 1}
+                      <div style="margin-top: var(--spacing-4);"><Divider /></div>
+                    {/if}
+                  </div>
+                {/each}
+              {/snippet}
+            </BottomSheetBody>
+            <BottomSheetFooter>
+              {#snippet children()}
+                <Button isFullWidth onClick={() => (isAutoModeOpen = false)}>Continue</Button>
               {/snippet}
             </BottomSheetFooter>
           {/snippet}

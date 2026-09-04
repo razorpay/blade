@@ -33,14 +33,22 @@
     return () => ctx?.setScrollElement(null);
   });
 
-  /* Measure content height every time the body re-renders. The parent uses
-   * this to compute snap-point bounds. Mirrors React's `useIsomorphicLayoutEffect`
-   * with `[contentRef, isOpen, children]` deps — Svelte's `$effect` re-runs
-   * automatically when reactive deps change. */
+  /* Measure content height and keep it in sync as the content grows/shrinks.
+   * React re-measures via a `children` dep — a new element object on every
+   * parent render. Svelte snippets render in the caller's reactive scope, so
+   * this effect would never see consumer state changes. Observe layout
+   * directly instead: `ResizeObserver` fires regardless of what caused the
+   * resize. The parent uses this to compute snap-point bounds. */
   $effect(() => {
-    if (!contentEl) return;
+    if (!contentEl) return undefined;
+    const node = contentEl;
     void ctx?.isOpen;
-    ctx?.setContentHeight(contentEl.getBoundingClientRect().height);
+    ctx?.setContentHeight(node.getBoundingClientRect().height);
+    const observer = new ResizeObserver(() => {
+      ctx?.setContentHeight(node.getBoundingClientRect().height);
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
   });
 
   /* Inform the parent whether the body has zero padding. React tracks this
