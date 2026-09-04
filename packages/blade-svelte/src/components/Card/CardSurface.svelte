@@ -2,6 +2,7 @@
   import type { Snippet } from 'svelte';
   import { getCardSurfaceClasses } from '@razorpay/blade-core/styles';
   import type { CardSurfaceVariants, CardType } from '@razorpay/blade-core/styles';
+  import { cx } from '@razorpay/blade-core/utils';
 
   type OverflowValue = 'visible' | 'hidden' | 'scroll' | 'auto' | 'clip';
 
@@ -16,6 +17,7 @@
     overflow,
     overflowX,
     overflowY,
+    styleOverrideSurface,
   }: {
     children: Snippet;
     type?: CardType;
@@ -27,15 +29,19 @@
     overflow?: OverflowValue;
     overflowX?: OverflowValue;
     overflowY?: OverflowValue;
+    styleOverrideSurface?: string;
   } = $props();
 
   const surfaceClasses = $derived(
-    getCardSurfaceClasses({
-      type,
-      backgroundColor,
-      padding,
-      borderRadius,
-    }),
+    cx(
+      getCardSurfaceClasses({
+        type,
+        backgroundColor,
+        padding,
+        borderRadius,
+      }),
+      styleOverrideSurface,
+    ),
   );
 </script>
 
