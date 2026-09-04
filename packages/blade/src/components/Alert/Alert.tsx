@@ -17,7 +17,6 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
@@ -26,12 +25,7 @@ import type { SubtleOrIntense } from '~tokens/theme/theme';
 import type { AlertColors } from './types';
 import { getAlertIconColor } from './styles';
 import { useTheme } from '~components/BladeProvider';
-import type {
-  DataAnalyticsAttribute,
-  BladeElementRef,
-  DotNotationSpacingStringToken,
-  TestID,
-} from '~utils/types';
+import type { DataAnalyticsAttribute, BladeElementRef, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 import { MAKE_ANALYTICS_CONSTANTS, makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 
@@ -168,44 +162,33 @@ const _Alert = (
   const [isVisible, setIsVisible] = useState(true);
 
   const isDesktop = matchedDeviceType === 'desktop';
-  const isMobile = !isDesktop;
 
   const isDescriptionOnly = !title && !actions?.primary && !actions?.secondary;
 
   const Icon = icon ?? intentIconMap[color];
-  let iconOffset: DotNotationSpacingStringToken | SpacingValueType = 'spacing.1';
 
-  // certain special cases below needs special care for near perfect alignment
-  if (isReactNative) {
-    if (isFullWidth && !title) {
-      iconOffset = 'spacing.1';
-    } else if (!isFullWidth && !title) {
-      iconOffset = 'spacing.0';
-    } else if (!isFullWidth && title) {
-      iconOffset = 'spacing.2';
-    }
-  } else if (isMobile) {
-    if (!isFullWidth && title) {
-      iconOffset = 'spacing.2';
-    } else if (isFullWidth && !title) {
-      iconOffset = 'spacing.2';
-    }
-  } else if (isFullWidth) {
-    iconOffset = 'spacing.1';
-  }
-
-  const shouldCenterAlign = isFullWidth && !title;
-  let alignment: 'center' | 'flex-start' = 'flex-start';
-  if (!isFullWidth) alignment = 'flex-start';
-  if (shouldCenterAlign) alignment = 'center';
-
-  if (isDescriptionOnly) {
-    alignment = 'center';
-    iconOffset = makeSize(1);
-  }
+  // Anchor the icon to the first line of the adjacent text (title when present, else
+  // description) instead of the whole text block, because a block-centered icon drifts
+  // once the description wraps to multiple lines. This includes desktop full-width
+  // banners with inline actions: their copy is not guaranteed to stay single-line, and
+  // the icon + content group in the render below keeps the single-line case row-centered
+  // against the action buttons.
+  // The wrapper is exactly one line-box tall and the icon centers inside it:
+  // title is Text size="medium" (lineHeights[100]), description is Text size="small" (lineHeights[75])
+  const firstLineHeight = makeSize(theme.typography.lineHeights[title ? 100 : 75]);
 
   const leadingIcon = (
-    <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
+    <BaseBox
+      display="flex"
+      alignSelf="flex-start"
+      // center on both axes: web flex defaults to row (alignItems is the vertical axis),
+      // React Native defaults to column (justifyContent is the vertical axis)
+      alignItems="center"
+      justifyContent="center"
+      height={firstLineHeight}
+      // mirrors _description's own top margin so the two line-boxes coincide
+      marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}
+    >
       <Icon color={getAlertIconColor(color, emphasis)} size="medium" />
     </BaseBox>
   );
@@ -346,15 +329,17 @@ const _Alert = (
         maxWidth={isFullWidth ? 'auto' : maxWidth ?? DEFAULT_MAX_WIDTH}
         textAlign={'left' as never}
       >
-        {leadingIcon}
-        <BaseBox
-          flex={1}
-          paddingLeft="spacing.3"
-          paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
-        >
-          {_title}
-          {_description}
-          {actionsVertical}
+        <BaseBox display="flex" flexDirection="row" alignItems="flex-start" flex={1} minWidth="0px">
+          {leadingIcon}
+          <BaseBox
+            flex={1}
+            paddingLeft="spacing.3"
+            paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+          >
+            {_title}
+            {_description}
+            {actionsVertical}
+          </BaseBox>
         </BaseBox>
         {actionsHorizontal}
         {closeButton}
