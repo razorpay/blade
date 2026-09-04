@@ -313,6 +313,18 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'Slider',
+    description:
+      'Slider component provides a horizontal slider for bounded value selection, with a value tooltip and optional step segments.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'in-api-spec',
+        storybookLink: 'Components/Slider',
+      },
+    },
+  },
+  {
     name: 'Spinner',
     description:
       'Spinner component is an element with a looping animation that indicates loading is in process.',

@@ -164,6 +164,7 @@ export const MetaConstants = {
   SwitchLabel: 'switch-label',
   StyledBaseInput: 'styled-base-input',
   Skeleton: 'skeleton',
+  Slider: 'slider',
   StepGroup: 'step-group',
   StepItem: 'step-item',
   StepItemButton: 'step-item-button',
