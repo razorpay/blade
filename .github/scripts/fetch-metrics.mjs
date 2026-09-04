@@ -9,6 +9,7 @@
  */
 
 import { execSync } from "child_process";
+import { readFileSync, unlinkSync } from "fs";
 
 const REPO = "razorpay/blade";
 const AGENT_AUTHORS = new Set(["rzp-slash", "rzp-slash-public"]);
@@ -18,8 +19,14 @@ const AUTO_APPROVE_LABEL = "✨ Agentic Merge Ready ✨";
 const IGNORE_LABEL = "Ignore - Test PR";
 
 function gh(...args) {
-  const result = execSync(`gh ${args.join(" ")}`, { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] });
-  return result.trim() ? JSON.parse(result) : [];
+  const tmpFile = `/tmp/gh-output-${Date.now()}-${Math.random().toString(36).slice(2)}.json`;
+  try {
+    execSync(`gh ${args.join(" ")} > ${tmpFile}`, { encoding: "utf8", stdio: ["pipe", "ignore", "pipe"] });
+    const result = readFileSync(tmpFile, "utf8");
+    return result.trim() ? JSON.parse(result) : [];
+  } finally {
+    try { unlinkSync(tmpFile); } catch {}
+  }
 }
 
 function pct(n, d) {
