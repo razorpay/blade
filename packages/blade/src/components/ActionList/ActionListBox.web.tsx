@@ -255,8 +255,8 @@ const VirtualListItem = React.memo(
 const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBoxProps>(
   ({ childrenWithId, actionListItemWrapperRole, isMultiSelectable, ...rest }, ref) => {
     const virtualizedListRef = React.useRef<VariableSizeList>(null);
-    const [visibleStartIndex, setVisibleStartIndex] = React.useState(0);
-    const [visibleStopIndex, setVisibleStopIndex] = React.useState(0);
+    const visibleStartIndexRef = React.useRef(0);
+    const visibleStopIndexRef = React.useRef(0);
     const items = React.Children.toArray(childrenWithId); // Convert children to an array
     const { isInBottomSheet } = useBottomSheetContext();
     const { itemData, itemCount } = useFilteredItems(items);
@@ -300,39 +300,36 @@ const _ActionListVirtualizedBox = React.forwardRef<HTMLDivElement, ActionListBox
             itemData[index]?.props.key
           }
           onItemsRendered={({ visibleStartIndex, visibleStopIndex }) => {
-            setVisibleStartIndex(visibleStartIndex);
-            setVisibleStopIndex(visibleStopIndex);
+            visibleStartIndexRef.current = visibleStartIndex;
+            visibleStopIndexRef.current = visibleStopIndex;
           }}
           outerElementType={isInBottomSheet ? BottomSheetCompatibleOuterElement : undefined}
         >
-          {useCallback(
-            ({ index, style, data }) => {
-              return (
-                <VirtualListItem
-                  index={index}
-                  style={style}
-                  data={data}
-                  onVirtualizedFocus={(index) => {
-                    // We need scroll Direction to determine the index to focus
-                    const scrollDirection =
-                      Math.round((visibleStartIndex + visibleStopIndex) / 2) > index
-                        ? 'top'
-                        : 'bottom';
-                    virtualizedListRef?.current?.resetAfterIndex(0);
-                    /**
-                     * we are scrolling to the item which is 3 items away from the current item.
-                     * since we can have 2 item sectoin header and divider which are not focusable.
-                     */
-                    virtualizedListRef?.current?.scrollToItem(
-                      index + (scrollDirection === 'top' ? -3 : 3),
-                      'smart',
-                    );
-                  }}
-                />
-              );
-            },
-            [visibleStartIndex, visibleStopIndex],
-          )}
+          {useCallback(({ index, style, data }) => {
+            return (
+              <VirtualListItem
+                index={index}
+                style={style}
+                data={data}
+                onVirtualizedFocus={(index) => {
+                  // We need scroll Direction to determine the index to focus
+                  const scrollDirection =
+                    Math.round((visibleStartIndexRef.current + visibleStopIndexRef.current) / 2) >
+                    index
+                      ? 'top'
+                      : 'bottom';
+                  /**
+                   * we are scrolling to the item which is 3 items away from the current item.
+                   * since we can have 2 item sectoin header and divider which are not focusable.
+                   */
+                  virtualizedListRef?.current?.scrollToItem(
+                    index + (scrollDirection === 'top' ? -3 : 3),
+                    'smart',
+                  );
+                }}
+              />
+            );
+          }, [])}
         </VirtualizedList>
       </StyledListBoxWrapper>
     );
