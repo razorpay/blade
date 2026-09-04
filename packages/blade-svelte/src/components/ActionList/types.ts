@@ -7,6 +7,15 @@ import type { BadgeProps } from '../Badge/types';
 /** Selection mode of the list — `single` (default) or `multiple`. */
 export type ActionListSelectionType = 'single' | 'multiple';
 
+/**
+ * Density of `ActionListItem` rows.
+ *
+ * `undefined` keeps the default responsive behavior (compact `spacing-2`
+ * padding on mobile, roomier `spacing-3` on desktop). Setting a density pins
+ * every row to a single value across breakpoints.
+ */
+export type ActionListDensity = 'normal' | 'dense';
+
 /** Payload passed to `ActionList`'s `onAction` when a row is activated. */
 export type ActionListItemSelectPayload = { value: string };
 
@@ -34,6 +43,13 @@ interface ActionListBaseProps extends StyledPropsBlade, DataAnalyticsAttribute {
    * auto-manage the array.
    */
   onAction?: (payload: ActionListItemSelectPayload) => void;
+  /**
+   * Density of item rows. When set, pins row padding to a single value across
+   * all breakpoints (`'normal'` = roomy, `'dense'` = compact). When omitted,
+   * rows follow the default responsive behavior (compact on mobile, roomy on
+   * desktop).
+   */
+  density?: ActionListDensity;
   /**
    * Test ID for the container element.
    */
@@ -211,6 +227,8 @@ export type ActionListContextValue = {
   selectedValue?: string | string[];
   isInBottomSheet: boolean;
   onAction?: (payload: ActionListItemSelectPayload) => void;
+  /** Row density forwarded from the `ActionList` `density` prop. */
+  density?: ActionListDensity;
   /** No-op-safe hook reserved for future focus/index needs. */
   registerItem?: (value: string) => void;
 };

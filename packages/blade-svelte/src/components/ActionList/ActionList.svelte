@@ -19,6 +19,7 @@
     children,
     selectionType = 'single',
     selectedValue,
+    density,
     onAction,
     testID,
     ...rest
@@ -39,6 +40,9 @@
     },
     get isInBottomSheet() {
       return isInBottomSheet;
+    },
+    get density() {
+      return density;
     },
     get onAction() {
       return onAction;

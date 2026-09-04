@@ -288,7 +288,11 @@ export {
   getActionListItemClasses,
   getActionListTemplateClasses,
 } from './ActionList';
-export type { ActionListWrapperVariants, ActionListItemVariants } from './ActionList';
+export type {
+  ActionListWrapperVariants,
+  ActionListItemVariants,
+  ActionListDensity,
+} from './ActionList';
 export {
   alertStyles,
   getAlertClasses,

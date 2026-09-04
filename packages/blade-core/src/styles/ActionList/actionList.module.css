@@ -78,6 +78,32 @@
   }
 }
 
+/*
+ * Explicit `density` override classes, driven by the `ActionList` `density`
+ * prop (opt-in; the default leaves the responsive spacing-2 mobile /
+ * spacing-3 desktop switch untouched). Each pins the row padding to a single
+ * value across all breakpoints — `normal` = roomy (spacing-3), `dense` =
+ * compact (spacing-2). Declared after the `.item` media query so these
+ * single-class selectors win at equal specificity on every breakpoint.
+ */
+.itemNormal {
+  padding: var(--spacing-3);
+}
+
+.itemDense {
+  padding: var(--spacing-2);
+}
+
+@media (min-width: 768px) {
+  .itemNormal {
+    padding: var(--spacing-3);
+  }
+
+  .itemDense {
+    padding: var(--spacing-2);
+  }
+}
+
 /* Negative intent row — negative faded hover (mirrors React `color==='negative'`). */
 .itemNegative {
   &:hover:not([disabled]):not([aria-disabled='true']):not([aria-selected='true']) {

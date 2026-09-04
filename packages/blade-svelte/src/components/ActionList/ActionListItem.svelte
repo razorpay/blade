@@ -82,7 +82,12 @@
     isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.muted',
   );
 
-  const rowClasses = $derived(getActionListItemClasses({ intent: intent === 'negative' ? 'negative' : 'default' }));
+  const rowClasses = $derived(
+    getActionListItemClasses({
+      intent: intent === 'negative' ? 'negative' : 'default',
+      density: ctx?.density,
+    }),
+  );
 
   function handleClick(event: MouseEvent): void {
     if (isDisabled) {
