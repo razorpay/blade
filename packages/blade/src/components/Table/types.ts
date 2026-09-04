@@ -225,6 +225,39 @@ type TableProps<Item> = {
    **/
   isLoading?: boolean;
   /**
+   * Explicitly sets the number of skeleton rows shown when `isLoading` is true.
+   * When omitted, the count is derived from `pagination.props.defaultPageSize`
+   * (the `defaultPageSize` prop passed to `TablePagination`), then from the
+   * default page size (10) when pagination is present but `defaultPageSize`
+   * is not explicitly set, and finally from 7 rows when there is no pagination.
+   **/
+  skeletonRowCount?: number;
+  /**
+   * Explicitly sets the minimum height of each skeleton row when `isLoading` is true.
+   * Accepts any valid Blade height value (e.g. `"48px"`, `{ base: '36px', m: '48px' }`).
+   *
+   * This is applied as a CSS `min-height` (not a fixed `height`), matching how
+   * `rowDensity` controls row height — rows may still grow taller if their
+   * content requires it.
+   *
+   * This is an escape hatch for consumers who have customized the loaded table's
+   * row height beyond the three `rowDensity` presets. For standard usage, the
+   * skeleton row minimum height is automatically derived from `rowDensity` and
+   * this prop is not needed:
+   * `compact` = 36px, `normal` = 48px, `comfortable` = 60px.
+   **/
+  skeletonRowMinHeight?: BoxProps['minHeight'];
+  /**
+   * Sets the minimum height of the skeleton container shown when `isLoading` is true.
+   * Accepts any valid Blade height value (e.g. `"500px"`, `{ base: '400px', m: '600px' }`).
+   *
+   * When provided, the skeleton reserves the loaded table's footprint so the
+   * page does not reflow once data arrives. When omitted, the skeleton
+   * container defaults to `flex: 1` (the original behavior), preserving
+   * backward compatibility for existing consumers.
+   **/
+  skeletonMinHeight?: BoxProps['minHeight'];
+  /**
    * The isRefreshing prop determines whether the table is refreshing or not.
    * The default value is `false`.
    **/
