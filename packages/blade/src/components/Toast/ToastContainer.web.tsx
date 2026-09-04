@@ -21,6 +21,7 @@ import type { Theme } from '~components/BladeProvider';
 import { useIsMobile } from '~utils/useIsMobile';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
+import { syncToasts } from './useToast';
 
 type CalculateYPositionProps = {
   toast: Toast;
@@ -101,6 +102,9 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number; zIndex?: number 
   ...rest
 }) => {
   const { toasts, handlers } = useToaster(toastOptions);
+  // Keep the module-level toast snapshot in sync so that `useToast()`'s
+  // stable `show` function can check for active promotional toasts.
+  syncToasts(toasts);
   const { theme } = useTheme();
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);
   const [hasManuallyExpanded, setHasManuallyExpanded] = React.useState(false);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Toast } from '../Toast.native';
 import { ToastContainer } from '../ToastContainer.native';
-import { toastStore, TOAST_REJECTED } from '../useToast.native';
+import { toastStore, TOAST_REJECTED, useToast } from '../useToast.native';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Toast /> (native)', () => {
@@ -83,5 +83,41 @@ describe('toastStore (native)', () => {
     toastStore.dismiss(id);
     expect(toastStore.getSnapshot().find((t) => t.id === id)?.visible).toBe(false);
     jest.advanceTimersByTime(2000);
+  });
+});
+
+describe('useToast (native) — referential stability', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+    toastStore.dismiss();
+    jest.runAllTimers();
+    jest.useRealTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('returns referentially-stable show and dismiss across re-renders', () => {
+    const showRef = { current: null as ((props: { content: string }) => string) | null };
+    const dismissRef = { current: null as ((id?: string) => void) | null };
+
+    const TestComponent = (): null => {
+      const toast = useToast();
+      showRef.current = toast.show;
+      dismissRef.current = toast.dismiss;
+      return null;
+    };
+
+    const { rerender: rerenderFn } = renderWithTheme(<TestComponent />);
+
+    const firstShow = showRef.current;
+    const firstDismiss = dismissRef.current;
+
+    // Force a re-render
+    rerenderFn(<TestComponent />);
+
+    expect(showRef.current).toBe(firstShow);
+    expect(dismissRef.current).toBe(firstDismiss);
   });
 });

@@ -141,6 +141,9 @@ const useToast = (): UseToastReturn => {
     toastStore.getSnapshot,
     toastStore.getSnapshot,
   );
+  // toastStore.show and toastStore.dismiss are already referentially stable
+  // (singleton class methods bound at construction), so we return them
+  // directly — no useCallback needed.
   return { toasts, show: toastStore.show, dismiss: toastStore.dismiss };
 };
 
