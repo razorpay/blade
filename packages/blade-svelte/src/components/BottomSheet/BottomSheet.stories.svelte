@@ -85,6 +85,8 @@
   let isInitialFocusOpen = $state(false);
   let isZeroPaddingOpen = $state(false);
   let isCustomSnapOpen = $state(false);
+  let isFitContentOpen = $state(false);
+  let fitContentItemCount = $state(3);
   let isOTPOpen = $state(false);
   let isOTPLoading = $state(false);
   let isProductOpen = $state(false);
@@ -794,6 +796,53 @@
           here for more details
         </Text>
       </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 10b: fit-content snap point — rests at content height, capped at 97%. -->
+<Story name="Fit Content Snap Point">
+  {#snippet template()}
+    <div>
+      <Text marginBottom="spacing.4">
+        With <Text weight="semibold">snapPoints=&#123;[0.35, 0.5, 'fit-content']&#125;</Text> the sheet
+        opens at exactly the height its content needs — no body scroll — up to
+        <Text weight="semibold">fitContentMaxHeight</Text> (97% by default). Change the item count and
+        reopen: the resting height follows the content until it hits the cap.
+      </Text>
+
+      <div style="display: flex; gap: var(--spacing-3); align-items: center; flex-wrap: wrap;">
+        <Button onClick={() => (isFitContentOpen = true)}>Open sheet</Button>
+        <Button
+          variant="secondary"
+          onClick={() => (fitContentItemCount = Math.max(1, fitContentItemCount - 3))}
+        >
+          Fewer items
+        </Button>
+        <Button variant="secondary" onClick={() => (fitContentItemCount += 3)}>More items</Button>
+        <Text>{fitContentItemCount} items</Text>
+      </div>
+
+      <BottomSheet
+        isOpen={isFitContentOpen}
+        onDismiss={() => (isFitContentOpen = false)}
+        snapPoints={[0.35, 0.5, 'fit-content']}
+      >
+        {#snippet children()}
+          <BottomSheetHeader title="Cuisines" subtitle="Rests at content height" />
+          <BottomSheetBody hasActionList>
+            {#snippet children()}
+              <ActionList>
+                {#snippet children()}
+                  {#each Array.from({ length: fitContentItemCount }, (_, i) => i) as index (index)}
+                    <ActionListItem title={`Item ${index + 1}`} value={`item-${index + 1}`} />
+                  {/each}
+                {/snippet}
+              </ActionList>
+            {/snippet}
+          </BottomSheetBody>
+        {/snippet}
+      </BottomSheet>
     </div>
   {/snippet}
 </Story>

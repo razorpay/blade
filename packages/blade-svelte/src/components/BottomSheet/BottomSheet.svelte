@@ -31,7 +31,8 @@
   import { setBottomSheetContext } from './bottomSheetContext';
   import type { BottomSheetContextValue } from './bottomSheetContext';
   import type { BottomSheetProps, SnapPoints } from './types';
-  import { computeMaxContent, computeSnapPointBounds } from './utils';
+  import type { SnapPoints as ResolvedSnapPoints } from './utils';
+  import { computeMaxContent, computeSnapPointBounds, resolveSnapPoints } from './utils';
   import BottomSheetBackdrop from './BottomSheetBackdrop.svelte';
   import { portal } from '../../utils/portal';
 
@@ -47,6 +48,7 @@
     children,
     initialFocusRef = null,
     snapPoints = [...BOTTOM_SHEET_DEFAULT_SNAP_POINTS] as SnapPoints,
+    fitContentMaxHeight = 0.97,
     isDismissible = true,
     zIndex = BOTTOM_SHEET_Z_INDEX,
     portalTarget,
@@ -108,18 +110,36 @@
 
   const totalHeight = $derived(grabHandleHeight + headerHeight + footerHeight + contentHeight);
 
-  let initialSnapPointFraction = $state(snapPoints[1]);
+  const hasFitContentSnapPoint = $derived(snapPoints.includes('fit-content'));
 
-  /* Adjust the initial snap point so a small total content sits on the
-   * lowest snap point, otherwise stays on the middle one. Mirrors React. */
+  /* Height at which the body needs no scrolling, capped so a tall sheet still
+   * leaves backdrop to tap. */
+  const fitContentSnapPoint = $derived(
+    Math.min(totalHeight, fitContentMaxHeight * windowHeight)
+  );
+
+  const snapPointsPx: ResolvedSnapPoints = $derived(
+    resolveSnapPoints({ snapPoints, windowHeight, totalHeight, fitContentMaxHeight })
+  );
+
+  /* Set once the user drags, so content resizes stop re-positioning a sheet
+   * they have deliberately moved. */
+  let hasUserAdjustedPosition = $state(false);
+
+  const initialSnapPointPx = $derived.by(() => {
+    if (hasFitContentSnapPoint) return fitContentSnapPoint;
+    /* Small total content sits on the lowest snap point, otherwise the middle
+     * one. Mirrors React. */
+    const [lower, middle] = snapPointsPx;
+    return totalHeight > lower && totalHeight < middle ? lower : middle;
+  });
+
+  /* Children are measured after mount, so the open-time position is computed
+   * from a stale `totalHeight`. Re-settle on the fit-content snap point until
+   * the user drags. */
   $effect(() => {
-    const middleSnapPoint = snapPoints[1] * windowHeight;
-    const lowerSnapPoint = snapPoints[0] * windowHeight;
-    if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
-      initialSnapPointFraction = snapPoints[0];
-    } else {
-      initialSnapPointFraction = snapPoints[1];
-    }
+    if (!isOpen || !hasFitContentSnapPoint || hasUserAdjustedPosition || isDragging) return;
+    setPositionY(fitContentSnapPoint);
   });
 
   function setPositionY(value: number, limit = true): void {
@@ -173,7 +193,8 @@
   }
 
   function handleOnOpen(): void {
-    setPositionY(windowHeight * initialSnapPointFraction);
+    hasUserAdjustedPosition = false;
+    setPositionY(initialSnapPointPx);
     if (typeof document !== 'undefined') {
       originalFocusEl = originalFocusEl ?? (document.activeElement as HTMLElement | null);
     }
@@ -352,8 +373,8 @@
     isDragging = Boolean(dragging);
 
     const rawY = lastOffsetY - movementY;
-    const lowerSnapPoint = windowHeight * snapPoints[0];
-    const upperSnapPoint = windowHeight * snapPoints[snapPoints.length - 1];
+    const lowerSnapPoint = snapPointsPx[0];
+    const upperSnapPoint = snapPointsPx[snapPointsPx.length - 1];
 
     /* Velocity-driven momentum — same formula as React. */
     const predictedDistance = movementY * (velocityY / 2);
@@ -393,10 +414,9 @@
     }
 
     if (last) {
-      const [nearest, lower] = computeSnapPointBounds(
-        newY,
-        snapPoints.map((point) => windowHeight * point) as SnapPoints,
-      );
+      hasUserAdjustedPosition = true;
+
+      const [nearest, lower] = computeSnapPointBounds(newY, snapPointsPx);
 
       const lowerPointBuffer = 60;
       const lowerestSnap = Math.min(lower, totalHeight) - lowerPointBuffer;
@@ -411,8 +431,7 @@
         }
         isDragging = false;
         cancel();
-        const firstSnapPoint = windowHeight * snapPoints[0];
-        setPositionY(firstSnapPoint, true);
+        setPositionY(snapPointsPx[0], true);
         return;
       }
 

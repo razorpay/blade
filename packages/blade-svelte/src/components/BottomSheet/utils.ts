@@ -8,6 +8,32 @@
 export type SnapPoints = [number, number, number];
 
 /**
+ * Resolve the authored snap points to pixels.
+ *
+ * `'fit-content'` becomes the measured content height, capped at
+ * `fitContentMaxHeight` of the viewport. The result is sorted ascending
+ * because `'fit-content'` depends on runtime measurement and can therefore
+ * land anywhere in the tuple, while `computeSnapPointBounds` picks neighbours
+ * by index.
+ */
+export function resolveSnapPoints({
+  snapPoints,
+  windowHeight,
+  totalHeight,
+  fitContentMaxHeight,
+}: {
+  snapPoints: readonly (number | 'fit-content')[];
+  windowHeight: number;
+  totalHeight: number;
+  fitContentMaxHeight: number;
+}): SnapPoints {
+  const fitContent = Math.min(totalHeight, fitContentMaxHeight * windowHeight);
+  return snapPoints
+    .map((point) => (point === 'fit-content' ? fitContent : point * windowHeight))
+    .sort((a, b) => a - b) as SnapPoints;
+}
+
+/**
  * Find the nearest snap point to `unsafeHeight`, plus the snap points
  * immediately below and above it. Returns `[nearest, lower, upper]`.
  *

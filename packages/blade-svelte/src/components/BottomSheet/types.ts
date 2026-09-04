@@ -3,10 +3,17 @@ import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 import type { BottomSheetBodyPadding, BottomSheetBodyOverflow } from '@razorpay/blade-core/styles';
 
 /**
+ * A single snap point — either a fraction of the viewport height (between 0
+ * and 1), or `'fit-content'` which resolves at runtime to the sheet's measured
+ * content height, capped by `fitContentMaxHeight`.
+ */
+export type SnapPoint = number | 'fit-content';
+
+/**
  * Snap points expressed as fractions of the viewport height (between 0 and 1).
  * `[lower, middle, upper]` — e.g. `[0.35, 0.5, 0.85]`.
  */
-export type SnapPoints = [number, number, number];
+export type SnapPoints = [SnapPoint, SnapPoint, SnapPoint];
 
 export interface BottomSheetProps extends StyledPropsBlade {
   /**
@@ -19,9 +26,24 @@ export interface BottomSheetProps extends StyledPropsBlade {
    * SnapPoints in which the bottom sheet will rest on. Each value is a
    * fraction of the viewport height; e.g. `0.5` means 50% of the screen.
    *
+   * Pass `'fit-content'` for a snap point that tracks the sheet's measured
+   * content height (capped by `fitContentMaxHeight`), so the sheet rests at a
+   * height where the body needs no scrolling. When present, the sheet also
+   * opens at that snap point and follows content resizes until the user drags.
+   *
    * @default [0.35, 0.5, 0.85]
    */
   snapPoints?: SnapPoints;
+
+  /**
+   * Upper bound for a `'fit-content'` snap point, as a fraction of the
+   * viewport height. Prevents tall content from producing a full-bleed sheet
+   * with no backdrop left to tap. Ignored when no snap point is
+   * `'fit-content'`.
+   *
+   * @default 0.97
+   */
+  fitContentMaxHeight?: number;
 
   /**
    * Called when the bottom sheet is closed via swipe down or backdrop tap.

@@ -46,5 +46,6 @@ export type {
   BottomSheetHeaderProps,
   BottomSheetBodyProps,
   BottomSheetFooterProps,
+  SnapPoint,
   SnapPoints,
 } from './types';
