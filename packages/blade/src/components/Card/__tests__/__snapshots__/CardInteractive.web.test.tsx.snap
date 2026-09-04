@@ -13,6 +13,10 @@ exports[`<Card /> should render a clickable Card 1`] = `
   border-radius: 12px;
 }
 
+.c5.c5.c5.c5.c5 {
+  width: 100%;
+}
+
 .c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
@@ -96,7 +100,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
         data-blade-component="card-link-overlay"
       />
       <div
-        class=""
+        class="c5"
         data-blade-component="card-body"
       >
         Plain Card
@@ -119,6 +123,10 @@ exports[`<Card /> should render a linkable Card 1`] = `
   border-radius: 12px;
 }
 
+.c5.c5.c5.c5.c5 {
+  width: 100%;
+}
+
 .c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
@@ -203,7 +211,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
         href="https://google.com"
       />
       <div
-        class=""
+        class="c5"
         data-blade-component="card-body"
       >
         Plain Card
@@ -226,6 +234,10 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   border-radius: 12px;
 }
 
+.c5.c5.c5.c5.c5 {
+  width: 100%;
+}
+
 .c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
@@ -310,7 +322,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
         href="https://google.com"
       />
       <div
-        class=""
+        class="c5"
         data-blade-component="card-body"
       >
         Plain Card
@@ -331,6 +343,10 @@ exports[`<Card /> should render an interactive Card 1`] = `
   padding: 24px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
+}
+
+.c5.c5.c5.c5.c5 {
+  width: 100%;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -429,7 +445,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
         data-blade-component="card-link-overlay"
       />
       <div
-        class=""
+        class="c5"
         data-blade-component="card-body"
       >
         Plain Card
