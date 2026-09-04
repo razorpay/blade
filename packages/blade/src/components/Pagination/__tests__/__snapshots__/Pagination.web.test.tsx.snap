@@ -88,72 +88,6 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   min-height: 36px;
   height: 36px;
   width: 36px;
-  cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
-  border: none;
-  border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  background-image: none;
-  -webkit-transition-property: background-color,background-image,box-shadow;
-  transition-property: background-color,background-image,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c3.c3.c3.c3.c3:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c3.c3.c3.c3.c3:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
-  background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
-}
-
-.c3.c3.c3.c3.c3 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c8.c8.c8.c8.c8 {
-  min-height: 36px;
-  height: 36px;
-  width: 36px;
   cursor: pointer;
   background-color: hsla(0,0%,100%,1);
   border: none;
@@ -188,26 +122,26 @@ exports[`<Pagination /> should render basic pagination 1`] = `
   position: relative;
 }
 
-.c8.c8.c8.c8.c8:hover {
+.c3.c3.c3.c3.c3:hover {
   background-color: hsla(0,0%,100%,1);
   box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   background-image: none;
 }
 
-.c8.c8.c8.c8.c8:active {
+.c3.c3.c3.c3.c3:active {
   background-color: hsla(0,0%,100%,1);
   box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   background-image: none;
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
+.c3.c3.c3.c3.c3:focus-visible {
   background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c8.c8.c8.c8.c8 * {
+.c3.c3.c3.c3.c3 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -244,49 +178,8 @@ exports[`<Pagination /> should render basic pagination 1`] = `
         data-blade-component="base-box"
       >
         <button
-          aria-label="Previous Page"
-          class="c3"
-          data-blade-component="button"
-          disabled=""
-          role="button"
-          type="button"
-        >
-          <div
-            class=" c4"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c5 c6"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c7"
-                data-blade-component="base-box"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  width="16px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
-                    data-blade-component="svg-path"
-                    fill="hsla(206, 10%, 29%, 0.32)"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </button>
-        <button
           aria-label="Next Page"
-          class="c8"
+          class="c3"
           data-blade-component="button"
           role="button"
           type="button"
@@ -507,47 +400,6 @@ exports[`<Pagination /> should render disabled state 1`] = `
         class="c2"
         data-blade-component="base-box"
       >
-        <button
-          aria-label="Previous Page"
-          class="c3"
-          data-blade-component="button"
-          disabled=""
-          role="button"
-          type="button"
-        >
-          <div
-            class=" c4"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c5 c6"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c7"
-                data-blade-component="base-box"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  width="16px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
-                    data-blade-component="svg-path"
-                    fill="hsla(206, 10%, 29%, 0.32)"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </button>
         <button
           aria-label="Next Page"
           class="c3"
@@ -800,7 +652,18 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   gap: 4px;
 }
 
-.c29.c29.c29.c29.c29 {
+.c27.c27.c27.c27.c27 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.c34.c34.c34.c34.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -822,17 +685,6 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 1;
 }
 
-.c31.c31.c31.c31.c31 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  gap: 2px;
-}
-
 .c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -844,73 +696,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   display: none;
 }
 
-.c27.c27.c27.c27.c27 {
-  min-height: 36px;
-  height: 36px;
-  width: 36px;
-  cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
-  border: none;
-  border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  background-image: none;
-  -webkit-transition-property: background-color,background-image,box-shadow;
-  transition-property: background-color,background-image,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c27.c27.c27.c27.c27:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c27.c27.c27.c27.c27:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c27.c27.c27.c27.c27:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
-  background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
-}
-
-.c27.c27.c27.c27.c27 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c36.c36.c36.c36.c36 {
+.c32.c32.c32.c32.c32 {
   min-height: 36px;
   height: 36px;
   width: 36px;
@@ -948,26 +734,26 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   position: relative;
 }
 
-.c36.c36.c36.c36.c36:hover {
+.c32.c32.c32.c32.c32:hover {
   background-color: hsla(0,0%,100%,1);
   box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   background-image: none;
 }
 
-.c36.c36.c36.c36.c36:active {
+.c32.c32.c32.c32.c32:active {
   background-color: hsla(0,0%,100%,1);
   box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   background-image: none;
 }
 
-.c36.c36.c36.c36.c36:focus-visible {
+.c32.c32.c32.c32.c32:focus-visible {
   background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c36.c36.c36.c36.c36 * {
+.c32.c32.c32.c32.c32 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -976,7 +762,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c28.c28.c28.c28.c28 {
+.c33.c33.c33.c33.c33 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1003,7 +789,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   padding: 0;
 }
 
-.c33.c33.c33.c33.c33 {
+.c29.c29.c29.c29.c29 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1020,7 +806,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   padding: 0;
 }
 
-.c35.c35.c35.c35.c35 {
+.c31.c31.c31.c31.c31 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1061,7 +847,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   overflow-wrap: break-word;
 }
 
-.c30.c30.c30.c30.c30 {
+.c35.c35.c35.c35.c35 {
   opacity: 1;
 }
 
@@ -1319,7 +1105,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c32.c32.c32.c32.c32 {
+.c28.c28.c28.c28.c28 {
   background-color: hsla(206,10%,29%,0.09);
   border: none;
   cursor: pointer;
@@ -1341,11 +1127,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   opacity: 1;
 }
 
-.c32.c32.c32.c32.c32:hover {
+.c28.c28.c28.c28.c28:hover {
   background-color: hsla(206,10%,29%,0.09);
 }
 
-.c32.c32.c32.c32.c32:focus-visible {
+.c28.c28.c28.c28.c28:focus-visible {
   background-color: hsla(206,10%,29%,0.09);
   outline: none;
   outline-offset: 1px;
@@ -1358,7 +1144,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c32.c32.c32.c32.c32:focus-visible:focus-visible {
+.c28.c28.c28.c28.c28:focus-visible:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1370,11 +1156,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c32.c32.c32.c32.c32:active {
+.c28.c28.c28.c28.c28:active {
   background-color: hsla(206,10%,29%,0.09);
 }
 
-.c34.c34.c34.c34.c34 {
+.c30.c30.c30.c30.c30 {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -1396,11 +1182,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   opacity: 1;
 }
 
-.c34.c34.c34.c34.c34:hover {
+.c30.c30.c30.c30.c30:hover {
   background-color: hsla(206,10%,29%,0.06);
 }
 
-.c34.c34.c34.c34.c34:focus-visible {
+.c30.c30.c30.c30.c30:focus-visible {
   background-color: hsla(206,10%,29%,0.06);
   outline: none;
   outline-offset: 1px;
@@ -1413,7 +1199,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c34.c34.c34.c34.c34:focus-visible:focus-visible {
+.c30.c30.c30.c30.c30:focus-visible:focus-visible {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1425,7 +1211,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
   z-index: 2;
 }
 
-.c34.c34.c34.c34.c34:active {
+.c30.c30.c30.c30.c30:active {
   background-color: hsla(206,10%,29%,0.06);
 }
 
@@ -1629,58 +1415,17 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
         class="c26"
         data-blade-component="base-box"
       >
-        <button
-          aria-label="Previous Page"
-          class="c27"
-          data-blade-component="button"
-          disabled=""
-          role="button"
-          type="button"
-        >
-          <div
-            class=" c28"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c29 c30"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c1"
-                data-blade-component="base-box"
-              >
-                <svg
-                  aria-hidden="true"
-                  class=""
-                  data-blade-component="icon"
-                  fill="none"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  width="16px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
-                    data-blade-component="svg-path"
-                    fill="hsla(206, 10%, 29%, 0.32)"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </button>
         <div
-          class="c31"
+          class="c27"
           data-blade-component="base-box"
         >
           <button
             aria-label="Page 1"
-            class="c32"
+            class="c28"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c33"
+              class="c29"
               data-blade-component="text"
               letter-spacing="50"
             >
@@ -1689,11 +1434,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           </button>
           <button
             aria-label="Page 2"
-            class="c34"
+            class="c30"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c35"
+              class="c31"
               data-blade-component="text"
               letter-spacing="50"
             >
@@ -1702,11 +1447,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           </button>
           <button
             aria-label="Page 3"
-            class="c34"
+            class="c30"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c35"
+              class="c31"
               data-blade-component="text"
               letter-spacing="50"
             >
@@ -1715,11 +1460,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           </button>
           <button
             aria-label="Page 4"
-            class="c34"
+            class="c30"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c35"
+              class="c31"
               data-blade-component="text"
               letter-spacing="50"
             >
@@ -1728,11 +1473,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           </button>
           <button
             aria-label="Page 5"
-            class="c34"
+            class="c30"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c35"
+              class="c31"
               data-blade-component="text"
               letter-spacing="50"
             >
@@ -1741,11 +1486,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           </button>
           <button
             aria-label="Page 6"
-            class="c34"
+            class="c30"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c35"
+              class="c31"
               data-blade-component="text"
               letter-spacing="50"
             >
@@ -1754,7 +1499,7 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           </button>
           <button
             aria-label="Go forward 5 pages"
-            class="c34"
+            class="c30"
             data-blade-component="table-page-selection-button"
           >
             <svg
@@ -1777,11 +1522,11 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
           </button>
           <button
             aria-label="Page 100"
-            class="c34"
+            class="c30"
             data-blade-component="table-page-selection-button"
           >
             <p
-              class="c35"
+              class="c31"
               data-blade-component="text"
               letter-spacing="50"
             >
@@ -1791,17 +1536,17 @@ exports[`<Pagination /> should render with all features enabled 1`] = `
         </div>
         <button
           aria-label="Next Page"
-          class="c36"
+          class="c32"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class=" c28"
+            class=" c33"
             data-blade-component="base-box"
           >
             <div
-              class="c29 c30"
+              class="c34 c35"
               data-blade-component="base-box"
             >
               <div
@@ -1923,72 +1668,6 @@ exports[`<Pagination /> should render with label 1`] = `
   min-height: 36px;
   height: 36px;
   width: 36px;
-  cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
-  border: none;
-  border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  background-image: none;
-  -webkit-transition-property: background-color,background-image,box-shadow;
-  transition-property: background-color,background-image,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c5.c5.c5.c5.c5:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c5.c5.c5.c5.c5:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c5.c5.c5.c5.c5:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
-  background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
-}
-
-.c5.c5.c5.c5.c5 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9 {
-  min-height: 36px;
-  height: 36px;
-  width: 36px;
   cursor: pointer;
   background-color: hsla(0,0%,100%,1);
   border: none;
@@ -2023,26 +1702,26 @@ exports[`<Pagination /> should render with label 1`] = `
   position: relative;
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c5.c5.c5.c5.c5:hover {
   background-color: hsla(0,0%,100%,1);
   box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   background-image: none;
 }
 
-.c9.c9.c9.c9.c9:active {
+.c5.c5.c5.c5.c5:active {
   background-color: hsla(0,0%,100%,1);
   box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   background-image: none;
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c5.c5.c5.c5.c5:focus-visible {
   background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c9.c9.c9.c9.c9 * {
+.c5.c5.c5.c5.c5 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -2108,49 +1787,8 @@ exports[`<Pagination /> should render with label 1`] = `
         data-blade-component="base-box"
       >
         <button
-          aria-label="Previous Page"
-          class="c5"
-          data-blade-component="button"
-          disabled=""
-          role="button"
-          type="button"
-        >
-          <div
-            class=" c6"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c7 c8"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c1"
-                data-blade-component="base-box"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  width="16px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
-                    data-blade-component="svg-path"
-                    fill="hsla(206, 10%, 29%, 0.32)"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </button>
-        <button
           aria-label="Next Page"
-          class="c9"
+          class="c5"
           data-blade-component="button"
           role="button"
           type="button"
@@ -2996,72 +2634,6 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   min-height: 36px;
   height: 36px;
   width: 36px;
-  cursor: not-allowed;
-  background-color: hsla(0,0%,100%,0.01);
-  border: none;
-  border-radius: 8px;
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  background-image: none;
-  -webkit-transition-property: background-color,background-image,box-shadow;
-  transition-property: background-color,background-image,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  position: relative;
-}
-
-.c26.c26.c26.c26.c26:hover {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c26.c26.c26.c26.c26:active {
-  background-color: hsla(0,0%,100%,0.01);
-  box-shadow: inset 0 0px 0px 1px hsla(204,8%,88%,1);
-  background-image: none;
-}
-
-.c26.c26.c26.c26.c26:focus-visible {
-  background-color: hsla(0,0%,100%,0.01);
-  outline: 1px solid hsla(218,89%,51%,0.09);
-  background-image: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 0px 0px 1px hsla(204,8%,88%,1);
-}
-
-.c26.c26.c26.c26.c26 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 160ms;
-  transition-duration: 160ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c31.c31.c31.c31.c31 {
-  min-height: 36px;
-  height: 36px;
-  width: 36px;
   cursor: pointer;
   background-color: hsla(0,0%,100%,1);
   border: none;
@@ -3096,26 +2668,26 @@ exports[`<Pagination /> should render with page size picker 1`] = `
   position: relative;
 }
 
-.c31.c31.c31.c31.c31:hover {
+.c26.c26.c26.c26.c26:hover {
   background-color: hsla(0,0%,100%,1);
   box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   background-image: none;
 }
 
-.c31.c31.c31.c31.c31:active {
+.c26.c26.c26.c26.c26:active {
   background-color: hsla(0,0%,100%,1);
   box-shadow: inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
   background-image: none;
 }
 
-.c31.c31.c31.c31.c31:focus-visible {
+.c26.c26.c26.c26.c26:focus-visible {
   background-color: hsla(0,0%,100%,1);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18),inset 0 -1px 0.5px 0px hsla(0,0%,0%,0.18),inset 0 0px 0px 1px hsla(205,8%,71%,1),inset 0 -1.5px 0px 0px hsla(204,8%,88%,1);
 }
 
-.c31.c31.c31.c31.c31 * {
+.c26.c26.c26.c26.c26 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -3622,49 +3194,8 @@ exports[`<Pagination /> should render with page size picker 1`] = `
         data-blade-component="base-box"
       >
         <button
-          aria-label="Previous Page"
-          class="c26"
-          data-blade-component="button"
-          disabled=""
-          role="button"
-          type="button"
-        >
-          <div
-            class=" c27"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c28 c29"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c30"
-                data-blade-component="base-box"
-              >
-                <svg
-                  aria-hidden="true"
-                  class=""
-                  data-blade-component="icon"
-                  fill="none"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  width="16px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
-                    data-blade-component="svg-path"
-                    fill="hsla(206, 10%, 29%, 0.32)"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </button>
-        <button
           aria-label="Next Page"
-          class="c31"
+          class="c26"
           data-blade-component="button"
           role="button"
           type="button"
