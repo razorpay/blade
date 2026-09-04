@@ -93,6 +93,9 @@
   let isNonDismissibleOpen = $state(false);
   let isPortalTargetOpen = $state(false);
   let portalTargetEl = $state<HTMLDivElement | null>(null);
+  let isSplitPortalOpen = $state(false);
+  let backdropPortalTargetEl = $state<HTMLDivElement | null>(null);
+  let surfacePortalTargetEl = $state<HTMLDivElement | null>(null);
 
   let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
     $state();
@@ -957,7 +960,109 @@
   {/snippet}
 </Story>
 
-<!-- Story 14: Non-Dismissible BottomSheet — locked open, must use footer buttons.
+<!-- Story 14: With Split Portal Targets — backdrop covers a wider frame, surface stays nested. -->
+<Story name="With Split Portal Targets">
+  {#snippet template()}
+    <div style="max-width: 640px;">
+      <Text marginBottom="spacing.5">
+        Pass <b>backdropPortalTarget</b> when the dim overlay must cover a wider ancestor (e.g. a
+        checkout sidebar + main pane) while the sheet surface stays portaled into a nested
+        container. The surface host needs its own stacking context (z-index: 1) so it paints above
+        the backdrop.
+      </Text>
+
+      <div
+        bind:this={backdropPortalTargetEl}
+        style="
+          position: relative;
+          width: 100%;
+          height: 420px;
+          overflow: hidden;
+          border-radius: var(--border-radius-large);
+          border: 1px solid var(--surface-border-gray-muted);
+          background: var(--surface-background-gray-subtle);
+          box-shadow: var(--elevation-low);
+        "
+      >
+        <div style="display: flex; height: 100%;">
+          <aside
+            style="
+              width: 176px;
+              flex-shrink: 0;
+              padding: var(--spacing-6) var(--spacing-5);
+              border-right: 1px solid var(--surface-border-gray-muted);
+              background: var(--surface-background-gray-moderate);
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-4);
+            "
+          >
+            <Text size="xsmall" weight="semibold" color="surface.text.gray.muted">CHECKOUT</Text>
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+              <Text size="small" color="surface.text.gray.subtle">Contact</Text>
+              <Text size="small" color="surface.text.gray.subtle">Delivery address</Text>
+              <Text size="small" weight="semibold">Payment</Text>
+            </div>
+            <div style="margin-top: auto;">
+              <Text size="xsmall" color="surface.text.gray.muted">
+                Dims with the surface when the sheet opens.
+              </Text>
+            </div>
+          </aside>
+
+          <div
+            bind:this={surfacePortalTargetEl}
+            style="
+              position: relative;
+              z-index: 1;
+              flex: 1;
+              padding: var(--spacing-7) var(--spacing-6);
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-5);
+            "
+          >
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+              <Heading size="medium">Pay ₹2,499</Heading>
+              <Text color="surface.text.gray.muted" size="small">
+                Choose a payment method to continue.
+              </Text>
+            </div>
+            <Button isFullWidth onClick={() => (isSplitPortalOpen = true)}>
+              Select bank for Netbanking
+            </Button>
+
+            <BottomSheet
+              isOpen={isSplitPortalOpen}
+              onDismiss={() => (isSplitPortalOpen = false)}
+              portalTarget={surfacePortalTargetEl}
+              backdropPortalTarget={backdropPortalTargetEl}
+            >
+              {#snippet children()}
+                <BottomSheetHeader title="Select bank" subtitle="Netbanking" />
+                <BottomSheetBody hasActionList>
+                  {#snippet children()}
+                    <ActionList>
+                      {#snippet children()}
+                        <ActionListItem title="HDFC Bank" value="hdfc" />
+                        <ActionListItem title="ICICI Bank" value="icici" />
+                        <ActionListItem title="State Bank of India" value="sbi" />
+                        <ActionListItem title="Axis Bank" value="axis" />
+                        <ActionListItem title="Kotak Mahindra Bank" value="kotak" />
+                      {/snippet}
+                    </ActionList>
+                  {/snippet}
+                </BottomSheetBody>
+              {/snippet}
+            </BottomSheet>
+          </div>
+        </div>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 15: Non-Dismissible BottomSheet — locked open, must use footer buttons.
      The exported storyName in React is verbatim "Non-Dismissible BottomSheet" — DO NOT change. -->
 <Story name="Non-Dismissible BottomSheet">
   {#snippet template()}

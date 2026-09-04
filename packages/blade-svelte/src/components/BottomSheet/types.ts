@@ -72,6 +72,16 @@ export interface BottomSheetProps extends StyledPropsBlade {
   portalTarget?: HTMLElement | null;
 
   /**
+   * Mounts the backdrop into this element. Defaults to `portalTarget`. Set a
+   * wider ancestor when the sheet surface should stay in a nested container
+   * but the dim overlay must cover a larger region (e.g. a checkout card
+   * sidebar + main pane). The surface `portalTarget` must be a descendant of
+   * this element, and an intermediate ancestor should establish a higher
+   * stacking context for the surface (e.g. `z-index: 1`).
+   */
+  backdropPortalTarget?: HTMLElement | null;
+
+  /**
    * Toggles the drag handle (the pill affordance rendered at the top of the
    * sheet) and drag-to-move/dismiss gestures. Set to `false` for desktop flows
    * where dragging is not expected — this hides the handle and disables all
