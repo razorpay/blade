@@ -6,7 +6,7 @@ registerBrowserStackStatusReporter(test);
 test('TextInput accepts typed input', async ({ page }) => {
   // BrowserStack mobile SDK's keystroke simulation reliably drops the space
   // character on both Google Pixel and iPhone, regardless of typing strategy
-  // tried. Not reproducible on desktop. See MOBILE_TESTS_STATUS.md.
+  // tried. Not reproducible on desktop.
   test.skip(
     !!process.env.BROWSERSTACK_MOBILE,
     'Space character dropped by BrowserStack mobile SDK keystroke simulation',
