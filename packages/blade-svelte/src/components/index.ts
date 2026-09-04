@@ -7,6 +7,10 @@ export { default as BaseAmount } from './Amount/BaseAmount/BaseAmount.svelte';
 export { default as BaseLink } from './Link/BaseLink/BaseLink.svelte';
 export { default as BaseCounter } from './Counter/BaseCounter/BaseCounter.svelte';
 
+// Box
+export { default as Box } from './Box/Box.svelte';
+export type { BoxProps, BoxAs } from './Box';
+
 // Typography
 export { default as Text } from './Typography/Text/Text.svelte';
 export { default as Heading } from './Typography/Heading/Heading.svelte';
