@@ -963,40 +963,51 @@
 <!-- Story 14: With Split Portal Targets — backdrop covers a wider frame, surface stays nested. -->
 <Story name="With Split Portal Targets">
   {#snippet template()}
-    <div>
-      <Text marginBottom="spacing.4">
-        Pass backdropPortalTarget when the dim overlay must cover a wider ancestor (e.g. checkout
-        sidebar + main pane) while the sheet surface stays portaled into a nested container. The
-        surface host needs its own stacking context (e.g. z-index: 1) so it paints above the
-        backdrop.
+    <div style="max-width: 640px;">
+      <Text marginBottom="spacing.5">
+        Pass <b>backdropPortalTarget</b> when the dim overlay must cover a wider ancestor (e.g. a
+        checkout sidebar + main pane) while the sheet surface stays portaled into a nested
+        container. The surface host needs its own stacking context (z-index: 1) so it paints above
+        the backdrop.
       </Text>
 
       <div
         bind:this={backdropPortalTargetEl}
         style="
           position: relative;
-          width: 480px;
-          height: 360px;
+          width: 100%;
+          height: 420px;
           overflow: hidden;
-          border-radius: var(--radius-medium);
-          border: 2px solid var(--surface-border-gray-subtle);
+          border-radius: var(--border-radius-large);
+          border: 1px solid var(--surface-border-gray-muted);
           background: var(--surface-background-gray-subtle);
+          box-shadow: var(--elevation-low);
         "
       >
         <div style="display: flex; height: 100%;">
           <aside
             style="
-              width: 140px;
-              padding: var(--spacing-4);
-              border-right: 1px solid var(--surface-border-gray-subtle);
-              background: var(--surface-background-gray-intense);
+              width: 176px;
+              flex-shrink: 0;
+              padding: var(--spacing-6) var(--spacing-5);
+              border-right: 1px solid var(--surface-border-gray-muted);
+              background: var(--surface-background-gray-moderate);
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-4);
             "
           >
-            <Text size="small" weight="semibold" marginBottom="spacing.3">Sidebar</Text>
-            <Text size="small" color="surface.text.gray.muted">
-              This pane is outside the sheet portal but inside the backdrop target — it dims when the
-              sheet opens.
-            </Text>
+            <Text size="xsmall" weight="semibold" color="surface.text.gray.muted">CHECKOUT</Text>
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+              <Text size="small" color="surface.text.gray.subtle">Contact</Text>
+              <Text size="small" color="surface.text.gray.subtle">Delivery address</Text>
+              <Text size="small" weight="semibold">Payment</Text>
+            </div>
+            <div style="margin-top: auto;">
+              <Text size="xsmall" color="surface.text.gray.muted">
+                Dims with the surface when the sheet opens.
+              </Text>
+            </div>
           </aside>
 
           <div
@@ -1005,17 +1016,21 @@
               position: relative;
               z-index: 1;
               flex: 1;
-              padding: var(--spacing.5);
+              padding: var(--spacing-7) var(--spacing-6);
               display: flex;
               flex-direction: column;
-              gap: var(--spacing.4);
+              gap: var(--spacing-5);
             "
           >
-            <Heading size="small">Main checkout pane</Heading>
-            <Text color="surface.text.gray.muted" size="small">
-              The sheet surface mounts here; the backdrop mounts on the outer frame.
-            </Text>
-            <Button onClick={() => (isSplitPortalOpen = true)}>Open bottom sheet</Button>
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+              <Heading size="medium">Pay ₹2,499</Heading>
+              <Text color="surface.text.gray.muted" size="small">
+                Choose a payment method to continue.
+              </Text>
+            </div>
+            <Button isFullWidth onClick={() => (isSplitPortalOpen = true)}>
+              Select bank for Netbanking
+            </Button>
 
             <BottomSheet
               isOpen={isSplitPortalOpen}
@@ -1024,10 +1039,7 @@
               backdropPortalTarget={backdropPortalTargetEl}
             >
               {#snippet children()}
-                <BottomSheetHeader
-                  title="Select bank"
-                  subtitle="Backdrop covers sidebar + main pane; surface stays in the main pane"
-                />
+                <BottomSheetHeader title="Select bank" subtitle="Netbanking" />
                 <BottomSheetBody hasActionList>
                   {#snippet children()}
                     <ActionList>
@@ -1036,6 +1048,7 @@
                         <ActionListItem title="ICICI Bank" value="icici" />
                         <ActionListItem title="State Bank of India" value="sbi" />
                         <ActionListItem title="Axis Bank" value="axis" />
+                        <ActionListItem title="Kotak Mahindra Bank" value="kotak" />
                       {/snippet}
                     </ActionList>
                   {/snippet}
