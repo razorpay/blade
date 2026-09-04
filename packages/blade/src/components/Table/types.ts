@@ -475,6 +475,13 @@ type TablePaginationCommonProps = {
    * @default false
    */
   showLabel?: boolean;
+  /**
+   * Whether to always render the pagination even when all items fit on a single page.
+   * By default the pagination hides itself when there is nothing to navigate or pick.
+   * Set this to `true` to opt back in to the old always-render behaviour.
+   * @default false
+   */
+  showOnSinglePage?: boolean;
 } & DataAnalyticsAttribute;
 type TablePaginationType = 'client' | 'server';
 

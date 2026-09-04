@@ -210,6 +210,116 @@ describe('<Pagination />', () => {
     expect(prevButton).toBeDisabled();
   });
 
+  it('should not render anything when all items fit on a single page', () => {
+    const { container } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={5}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+        showLabel
+      />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('should not render the page size picker when all items fit on a single page', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={9}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+      />,
+    );
+
+    expect(queryByLabelText('Select items per page')).not.toBeInTheDocument();
+  });
+
+  it('should keep the page size picker when a larger page size collapses items into one page', () => {
+    const { queryByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={30}
+        pageSize={50}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+      />,
+    );
+
+    // Switching to a smaller page size would yield multiple pages, so the picker stays
+    expect(queryByLabelText('Select items per page')).toBeInTheDocument();
+  });
+
+  it('should derive totalPages from totalItemCount when totalPages is not provided', () => {
+    const { getAllByRole } = renderWithTheme(
+      <Pagination
+        totalItemCount={50}
+        pageSize={10}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
+    );
+
+    // 50 items at 10/page = 5 pages, so the next button is enabled on the first page
+    const buttons = getAllByRole('button');
+    const nextButton = buttons.find((btn) => btn.getAttribute('aria-label') === 'Next Page');
+    expect(nextButton).not.toBeDisabled();
+  });
+
+  it('should not render anything when totalPages is 1 and no item count is provided', () => {
+    const { container } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('should render when showOnSinglePage is true even if all items fit on one page', () => {
+    const { container, getByLabelText } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        totalItemCount={5}
+        showOnSinglePage
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+        showPageSizePicker
+        showLabel
+      />,
+    );
+
+    expect(container).not.toBeEmptyDOMElement();
+    expect(getByLabelText('Select items per page')).toBeInTheDocument();
+  });
+
+  it('should render when showOnSinglePage is true even if totalPages is 1 and no item count is provided', () => {
+    const { container } = renderWithTheme(
+      <Pagination
+        totalPages={1}
+        showOnSinglePage
+        onSelectedPageChange={() => {
+          console.log('page changed');
+        }}
+      />,
+    );
+
+    expect(container).not.toBeEmptyDOMElement();
+  });
+
   it('should handle ellipsis clicks', async () => {
     const user = userEvents.setup();
     const onSelectedPageChange = jest.fn();

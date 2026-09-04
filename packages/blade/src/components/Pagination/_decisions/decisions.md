@@ -75,7 +75,7 @@ type PaginationCommonProps = {
    * Current page size when controlled.
    * When provided, the page size is controlled.
    * When not provided, the component manages page size internally.
-   * @default 10 
+   * @default 10
    */
   pageSize?:  10 | 25 | 50;;
 
@@ -123,8 +123,42 @@ type PaginationProps = PaginationCommonProps & {
    * @default 'items / page'
    */
   pageSizeLabel?: string;
+
+  /**
+   * Total number of items being paginated.
+   * When provided, the pagination hides itself entirely if all the items already fit
+   * on a single page at the smallest available page size.
+   */
+  totalItemCount?: number;
+
+  /**
+   * Whether to always render the pagination even when all items fit on a single page.
+   * Set this to `true` to opt back in to the old always-render behaviour.
+   * @default false
+   */
+  showOnSinglePage?: boolean;
 };
 ```
+
+#### Hiding Pagination On A Single Page
+
+Pagination that cannot do anything is not rendered at all: **the whole component hides** when every
+item already fits on a single page. There is nothing to navigate and nothing useful to pick, so the
+page size picker and the navigation buttons are pure visual noise.
+
+This is derived from `totalItemCount` when provided (`totalItemCount <= 10`, the smallest page size),
+and otherwise from `totalPages <= 1` while the current page size is the smallest one. A larger page
+size collapsing the data into one page (e.g. 30 items at 50 / page) keeps the component visible,
+because switching to a smaller page size would still produce multiple pages.
+
+`TablePagination` forwards the table's item count (`totalItemCount` for server pagination, the row
+count from `TableContext` for client pagination), so a table with fewer rows than a page shows no
+pagination footer.
+
+Consumers who need the pagination to always render (e.g. for consistent layout during loading
+states) can set `showOnSinglePage` to `true`. This opts back in to the previous always-render
+behaviour, bypassing the hide heuristic entirely. The prop follows the component's existing
+`show*` naming pattern and defaults to `false`.
 
 #### Controlled vs Uncontrolled Behavior
 
@@ -176,7 +210,7 @@ type PaginationProps = PaginationCommonProps & {
 #### Usage Notes
 
 - **All `Pagination` props are supported**: `TablePagination` accepts all props from `Pagination` and passes them through.
-- **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for  `selectedPage` .
+- **Controlled/Uncontrolled**: Supports the same controlled/uncontrolled patterns as `Pagination` for `selectedPage` .
 - **Page Indexing**: Pages are 1-indexed (page 1 is the first page) in the API. If any internal logic uses 0-indexing, this is handled transparently and does not affect the API.
 
 ## Component Architecture
@@ -254,18 +288,19 @@ Full-featured pagination with all controls:
 />
 ```
 
-#### Required totalPages prop  
+#### Required totalPages prop
 
 Pagination requires the `totalPages` prop to be specified:  
-***jsx
+\*\*\*jsx
 <Pagination
 totalPages={100}
 selectedPage={0}
 onPageChange={({ page }) => setselectedPage(page)}
 defaultPageSize={10}
-  // totalPages will be calculated as Math.ceil(1000 / 10) = 100
+// totalPages will be calculated as Math.ceil(1000 / 10) = 100
 />
-```
+
+````
 
 #### Mixed Controlled/Uncontrolled
 
@@ -280,7 +315,7 @@ Page is controlled, page size is uncontrolled:
   showPageSizePicker
   // Page size is managed internally
 />
-```
+````
 
 #### Disabled State
 

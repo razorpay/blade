@@ -1170,6 +1170,44 @@ describe('<Table />', () => {
     expect(queryByText('rzp01')).toBeInTheDocument();
   });
 
+  it('should not render pagination when all rows fit on a single page', () => {
+    const { queryByLabelText, queryByText } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        pagination={
+          <TablePagination
+            defaultPageSize={10}
+            showPageSizePicker
+            showPageNumberSelector
+            showLabel
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    expect(queryByText('rzp01')).toBeInTheDocument();
+    expect(queryByLabelText('Next Page')).not.toBeInTheDocument();
+    expect(queryByLabelText('Previous Page')).not.toBeInTheDocument();
+    expect(queryByLabelText('Select items per page')).not.toBeInTheDocument();
+  });
+
   beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
   afterAll(() => jest.restoreAllMocks());
 
