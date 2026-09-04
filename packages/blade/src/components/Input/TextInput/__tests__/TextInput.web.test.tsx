@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { act, screen, waitFor } from '@testing-library/react';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -597,5 +597,191 @@ describe('<TextInput />', () => {
 
     expect(container).toMatchSnapshot();
     expect(getByLabelText('Enter name')).toHaveAttribute('data-analytics-name', 'Enter name');
+  });
+
+  /**
+   * Kept last on purpose. `useId` counters leak into the snapshots in this file, so
+   * inserting renders above a `toMatchSnapshot` test renumbers its ids and forces
+   * unrelated snapshot churn.
+   */
+  describe('showHelpTextOnFocus', () => {
+    const label = 'Enter name';
+    const getHintWrapper = (container: HTMLElement): HTMLElement | null =>
+      container.querySelector('.__blade-animated-form-hint');
+
+    it('should not wrap the help text when the prop is not set', () => {
+      const { container, getByText } = renderWithTheme(<TextInput label={label} helpText="Help" />);
+
+      expect(getByText('Help')).toBeVisible();
+      expect(getHintWrapper(container)).toBeNull();
+    });
+
+    it('should keep the help text collapsed until the input is focused', async () => {
+      const user = userEvent.setup();
+      const { container, getByLabelText, getByText } = renderWithTheme(
+        <TextInput label={label} helpText="Help" showHelpTextOnFocus />,
+      );
+
+      const hintWrapper = getHintWrapper(container);
+      expect(hintWrapper).not.toBeNull();
+      expect(hintWrapper).toHaveStyle({ opacity: '0', height: '0px' });
+
+      await user.click(getByLabelText(label));
+
+      await waitFor(() => expect(hintWrapper).toHaveStyle({ opacity: '1' }));
+      expect(getByText('Help')).toBeInTheDocument();
+    });
+
+    it('should collapse the help text again on blur', async () => {
+      const user = userEvent.setup();
+      const { container, getByLabelText } = renderWithTheme(
+        <TextInput label={label} helpText="Help" showHelpTextOnFocus />,
+      );
+
+      const hintWrapper = getHintWrapper(container);
+      await user.click(getByLabelText(label));
+      await waitFor(() => expect(hintWrapper).toHaveStyle({ opacity: '1' }));
+
+      await user.tab();
+
+      await waitFor(() => expect(hintWrapper).toHaveStyle({ opacity: '0' }));
+    });
+
+    it('should keep the help text as the accessible description while collapsed', () => {
+      const { getByLabelText } = renderWithTheme(
+        <TextInput label={label} helpText="Help" showHelpTextOnFocus />,
+      );
+
+      // the hint is clipped, not unmounted, so screen readers still announce it on focus
+      expect(getByLabelText(label)).toHaveAccessibleDescription('Help');
+    });
+
+    it('should not gate error text behind focus', () => {
+      const { container, getByText, getByLabelText } = renderWithTheme(
+        <TextInput
+          label={label}
+          helpText="Help"
+          errorText="Error"
+          validationState="error"
+          showHelpTextOnFocus
+        />,
+      );
+
+      // validation feedback must never depend on focus
+      expect(getByText('Error')).toBeVisible();
+      expect(getHintWrapper(container)).toBeNull();
+      expect(getByLabelText(label)).toHaveAccessibleDescription('Error');
+    });
+
+    it('should not gate success text behind focus', () => {
+      const { container, getByText } = renderWithTheme(
+        <TextInput
+          label={label}
+          helpText="Help"
+          successText="Success"
+          validationState="success"
+          showHelpTextOnFocus
+        />,
+      );
+
+      expect(getByText('Success')).toBeVisible();
+      expect(getHintWrapper(container)).toBeNull();
+    });
+
+    it('should have no accessibility violations', async () => {
+      const { container } = renderWithTheme(
+        <TextInput label={label} helpText="Help" showHelpTextOnFocus />,
+      );
+
+      await assertAccessible(container);
+    });
+
+    it('should stay contextual when validationState is error but no errorText is given', async () => {
+      const user = userEvent.setup();
+      const { container, getByLabelText, getByText } = renderWithTheme(
+        <TextInput label={label} helpText="Help" validationState="error" showHelpTextOnFocus />,
+      );
+
+      /**
+       * `getHintType` resolves to 'error' here, but FormHint falls through to help
+       * text because no `errorText` was supplied — so the help text must still be
+       * gated on focus rather than silently reverting to persistent.
+       */
+      const hintWrapper = getHintWrapper(container);
+      expect(hintWrapper).not.toBeNull();
+      expect(hintWrapper).toHaveStyle({ opacity: '0' });
+      expect(getByText('Help')).toBeInTheDocument();
+
+      await user.click(getByLabelText(label));
+
+      await waitFor(() => expect(hintWrapper).toHaveStyle({ opacity: '1' }));
+    });
+
+    /**
+     * jsdom reports `offsetHeight` as 0 and has no ResizeObserver, so by default
+     * these tests only exercise the pre-measurement fallback. This stubs both so the
+     * measured branch — the one that actually ships — is covered too.
+     */
+    describe('with a measurable hint', () => {
+      const originalResizeObserver = window.ResizeObserver;
+      // notifyResize lets a test simulate the hint reflowing to a different height
+      let offsetHeightSpy: jest.SpyInstance | undefined, notifyResize: (() => void) | undefined;
+
+      beforeEach(() => {
+        offsetHeightSpy = jest
+          .spyOn(HTMLElement.prototype, 'offsetHeight', 'get')
+          .mockReturnValue(20);
+        window.ResizeObserver = jest.fn().mockImplementation((onResize: () => void) => {
+          notifyResize = onResize;
+          return { observe: jest.fn(), unobserve: jest.fn(), disconnect: jest.fn() };
+        }) as never;
+      });
+
+      afterEach(() => {
+        offsetHeightSpy?.mockRestore();
+        window.ResizeObserver = originalResizeObserver;
+        notifyResize = undefined;
+      });
+
+      it('should animate between the measured height and zero', async () => {
+        const user = userEvent.setup();
+        const { container, getByLabelText } = renderWithTheme(
+          <TextInput label={label} helpText="Help" showHelpTextOnFocus />,
+        );
+
+        const hintWrapper = getHintWrapper(container);
+        await waitFor(() => expect(hintWrapper).toHaveStyle({ height: '0px' }));
+
+        await user.click(getByLabelText(label));
+
+        await waitFor(() => expect(hintWrapper).toHaveStyle({ height: '20px', opacity: '1' }));
+
+        await user.tab();
+
+        await waitFor(() => expect(hintWrapper).toHaveStyle({ height: '0px', opacity: '0' }));
+      });
+
+      it('should re-measure when the hint reflows to a taller height', async () => {
+        const user = userEvent.setup();
+        const { container, getByLabelText } = renderWithTheme(
+          <TextInput label={label} helpText="Help" showHelpTextOnFocus />,
+        );
+
+        const hintWrapper = getHintWrapper(container);
+        await user.click(getByLabelText(label));
+        await waitFor(() => expect(hintWrapper).toHaveStyle({ height: '20px' }));
+
+        /**
+         * Simulates the hint wrapping to a second line — a longer message, a
+         * narrower container, or a font swap. The ResizeObserver is the only thing
+         * that re-measures after mount, so without it the container would stay
+         * pinned to the original single-line height and clip the new content.
+         */
+        offsetHeightSpy?.mockReturnValue(40);
+        act(() => notifyResize?.());
+
+        await waitFor(() => expect(hintWrapper).toHaveStyle({ height: '40px' }));
+      });
+    });
   });
 });

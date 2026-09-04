@@ -22,6 +22,7 @@ type TextInputCommonProps = {
   necessityIndicator?: 'optional' | 'required';
   validationState?: 'none' | 'error' | 'success';
   helpText?: string;
+  showHelpTextOnFocus?: boolean;
   errorText?: string;
   successText?: string;
   placeholder?: string;
@@ -153,6 +154,7 @@ type TextInputProps = TextInputPropsWithA11yLabel | TextInputPropsWithLabel;
 - Use `maxCharacters` to enforce hard limits with a visible character counter.
 - Use `leading`/`trailing` slots for icons, badges, or `Dropdown` components for contextual actions.
 - Use `showClearButton` for search-like inputs where users need to reset quickly.
+- Use `showHelpTextOnFocus` when `helpText` is guidance rather than a permanent label, to keep it out of the layout until the user is actually in the field. `errorText` and `successText` stay visible regardless.
 
 **Don't**
 
@@ -161,8 +163,51 @@ type TextInputProps = TextInputPropsWithA11yLabel | TextInputPropsWithLabel;
 - Don't use `TextInput` for search — use `SearchInput` which has built-in search icon and Dropdown integration.
 - Don't use alphanumeric characters in `format` patterns — only `#` and special characters are allowed.
 - Don't mix `value` and `defaultValue` with `format` — it throws a conflict error.
+- Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't expect `showHelpTextOnFocus` to remove the footer row when `maxCharacters` is set — the character counter keeps that row visible at rest.
 
 ## Example
+
+### Contextual Help Text on Focus
+
+This example demonstrates `showHelpTextOnFocus`, which keeps `helpText` out of the layout until the field is focused. Note that the third field's `errorText` stays visible whether or not the field is focused — validation feedback is never gated behind focus.
+
+```tsx
+import { TextInput, Box } from '@razorpay/blade/components';
+
+function ContextualHelpTextExample() {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <TextInput
+        label="Account Number"
+        placeholder="0000 0000 0000"
+        name="accountNumber"
+        helpText="As printed on your cheque book"
+        showHelpTextOnFocus
+      />
+
+      <TextInput
+        label="Beneficiary Name"
+        placeholder="Enter beneficiary name"
+        name="beneficiaryName"
+        helpText="Must match the name on the bank account"
+        showHelpTextOnFocus
+      />
+
+      <TextInput
+        label="IFSC Code"
+        placeholder="HDFC0000001"
+        name="ifscCode"
+        helpText="Only shown while this field is focused"
+        errorText="Enter a valid 11 character IFSC code"
+        validationState="error"
+        showHelpTextOnFocus
+      />
+    </Box>
+  );
+}
+```
 
 ### Basic Usage with Validation States
 

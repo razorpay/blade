@@ -48,6 +48,7 @@ export default {
     isRequired: false,
     validationState: 'none',
     helpText: undefined,
+    showHelpTextOnFocus: false,
     errorText: undefined,
     successText: undefined,
     showClearButton: undefined,
@@ -171,6 +172,11 @@ export default {
       },
     },
     helpText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    showHelpTextOnFocus: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },

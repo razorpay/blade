@@ -35,6 +35,7 @@ type SearchInputCommonProps = Pick<
   | 'labelSuffix'
   | 'labelTrailing'
   | 'helpText'
+  | 'showHelpTextOnFocus'
   | 'placeholder'
   | 'defaultValue'
   | 'name'
