@@ -451,6 +451,15 @@ const _Carousel = (
     if (!carouselContainer) return;
 
     const handleScroll = debounce(() => {
+      // During programmatic scrolls (e.g. indicator click, next/prev button,
+      // autoplay) skip scroll-sync entirely. Firefox fires scroll events
+      // during smooth-scroll animation that detect intermediate slide
+      // positions via document.elementFromPoint and override the correct
+      // activeSlide value already set by the programmatic action. This causes
+      // navigation buttons to remain visible at carousel boundaries where they
+      // should be hidden.
+      if (isProgrammaticScrollRef.current) return;
+
       // carousel bounding box
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
@@ -471,7 +480,7 @@ const _Carousel = (
 
       const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
       const goTo = Math.ceil(slideIndex / _visibleItems);
-      setActiveSlide(() => goTo, isProgrammaticScrollRef.current);
+      setActiveSlide(() => goTo);
       setActiveIndicator(goTo);
     }, 50);
 
