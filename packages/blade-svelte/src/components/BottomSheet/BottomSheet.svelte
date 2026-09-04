@@ -118,6 +118,10 @@
    * at z-index 1) so the sheet still paints above the dim layer. */
   const backdropZIndex = $derived(useSplitPortals ? 0 : bottomSheetZIndex);
 
+  /* Empty header + zero body padding floats the header and grab handle out of
+   * flow, so neither consumes height in the surface's flex column. */
+  const isHeaderFloating = $derived(!hasBodyPadding && isHeaderEmpty);
+
   const totalHeight = $derived(grabHandleHeight + headerHeight + footerHeight + contentHeight);
 
   let initialSnapPointFraction = $state(snapPoints[1]);
@@ -142,7 +146,9 @@
     const maxValue = computeMaxContent({
       contentHeight,
       footerHeight,
-      headerHeight: headerHeight > 0 ? headerHeight + grabHandleHeight : 0,
+      /* Grab handle and header sit above the body in the same flex column, so
+       * both must be budgeted or the body scrolls by exactly their height. */
+      headerHeight: headerHeight + grabHandleHeight,
       maxHeight: value,
     });
     positionY = maxValue;
@@ -302,6 +308,10 @@
   $effect(() => {
     if (!grabHandleEl) return;
     void isOpen;
+    if (isHeaderFloating) {
+      grabHandleHeight = 0;
+      return;
+    }
     const cs = getComputedStyle(grabHandleEl);
     const marginBottom = parseFloat(cs.marginBottom) || 0;
     grabHandleHeight = grabHandleEl.getBoundingClientRect().height + marginBottom;
@@ -511,7 +521,7 @@
     },
     close,
     get isHeaderFloating() {
-      return !hasBodyPadding && isHeaderEmpty;
+      return isHeaderFloating;
     },
     get isDismissible() {
       return isDismissible;
@@ -548,7 +558,7 @@
   const surfaceExtraClasses = $derived((styledProps.classes || []).filter(Boolean).join(' '));
 
   const grabHandleClasses = $derived(
-    [bottomSheetGrabHandleClass, !hasBodyPadding && isHeaderEmpty ? bottomSheetGrabHandleFloatingClass : '']
+    [bottomSheetGrabHandleClass, isHeaderFloating ? bottomSheetGrabHandleFloatingClass : '']
       .filter(Boolean)
       .join(' '),
   );
