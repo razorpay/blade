@@ -50,6 +50,7 @@
     isDismissible = true,
     zIndex = BOTTOM_SHEET_Z_INDEX,
     portalTarget,
+    backdropPortalTarget = portalTarget,
     showDragHandle = true,
     testID,
     ...rest
@@ -105,6 +106,17 @@
   const currentStackIndex = $derived(stackArr.indexOf(id));
   const isOnTopOfStack = $derived(stackArr[0] === id);
   const bottomSheetZIndex = $derived(zIndex - Math.max(0, currentStackIndex));
+
+  const useSplitPortals = $derived(
+    backdropPortalTarget != null &&
+      portalTarget != null &&
+      backdropPortalTarget !== portalTarget,
+  );
+
+  /* When the backdrop sits in a wider ancestor than the surface, keep it
+   * under an intermediate stacking context (e.g. checkout `#main-container`
+   * at z-index 1) so the sheet still paints above the dim layer. */
+  const backdropZIndex = $derived(useSplitPortals ? 0 : bottomSheetZIndex);
 
   /* Empty header + zero body padding floats the header and grab handle out of
    * flow, so neither consumes height in the surface's flex column. */
@@ -626,7 +638,19 @@
 </script>
 
 {#if isMounted}
-  {#if portalTarget}
+  {#if useSplitPortals}
+    <div use:portal={backdropPortalTarget} class={bottomSheetPortalRootClass}>
+      <BottomSheetBackdrop
+        isOpen={isVisible}
+        zIndex={backdropZIndex}
+        {isDismissible}
+        onClose={close}
+      />
+    </div>
+    <div use:portal={portalTarget} class={bottomSheetPortalRootClass}>
+      {@render surface()}
+    </div>
+  {:else if portalTarget}
     <div use:portal={portalTarget} class={bottomSheetPortalRootClass}>
       {@render overlay()}
     </div>
@@ -640,10 +664,14 @@
 {#snippet overlay()}
   <BottomSheetBackdrop
     isOpen={isVisible}
-    zIndex={bottomSheetZIndex}
+    zIndex={backdropZIndex}
     {isDismissible}
     onClose={close}
   />
+  {@render surface()}
+{/snippet}
+
+{#snippet surface()}
   <div
     class="{bottomSheetSurfaceClass} {surfaceExtraClasses}"
     style={surfaceStyle}
