@@ -20,3 +20,4 @@ export * from './toTitleCase';
 export * from './usePrevious';
 
 export { default as useTheme, ThemeContext } from '~components/BladeProvider/useTheme';
+export { PAN_REGEX, validatePAN, isValidPAN } from '~components/Input/validators';
