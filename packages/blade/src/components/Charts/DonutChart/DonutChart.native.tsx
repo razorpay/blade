@@ -307,7 +307,7 @@ const ChartDonutWrapper = ({
   // whenever the rendered slice set changes (mount, data, filter, or type).
   const sweepProgress = useSharedValue(0);
   const motionDuration = castNativeType(makeMotionTime(getIn(theme.motion, 'duration.gentle')));
-  const motionEasing = getIn(theme.motion, 'easing.standard');
+  const motionEasing = castNativeType(getIn(theme.motion, 'easing.standard'));
   const sweepKey = `${filteredData.length}-${selectedKeysArray.join(',')}-${donutType}`;
 
   useEffect(() => {
@@ -536,6 +536,7 @@ const ChartDonutWrapper = ({
                 sweepProgress={sweepProgress}
                 isDimmed={activeIndex !== null && activeIndex !== index}
                 onPress={() => handleSlicePress(index)}
+                testID={`donut-slice-${index}`}
                 motionDuration={motionDuration}
                 motionEasing={motionEasing}
               />
@@ -601,6 +602,7 @@ const ChartDonutWrapper = ({
       {tooltipInfo && tooltipPosition ? (
         <View
           pointerEvents="none"
+          testID="donut-tooltip"
           style={{
             position: 'absolute',
             left: tooltipPosition.left,
