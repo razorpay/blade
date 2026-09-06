@@ -108,6 +108,7 @@ exports[`<DonutChart /> (native) should handle data with null values without cra
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d=""
@@ -130,6 +131,7 @@ exports[`<DonutChart /> (native) should handle data with null values without cra
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 147.126707626894 307.72379010055323 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 164.75113841792933 271.8158600670355 Z"
@@ -152,6 +154,7 @@ exports[`<DonutChart /> (native) should handle data with null values without cra
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -437,6 +440,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all chart types 1
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 162.44227497712873 270.63580742871414 A 80 80 0 0 0 269.62845567519196 239.3938848082774 Z"
@@ -459,6 +463,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all chart types 1
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 129.36419257128586 162.4422749771287 A 80 80 0 0 0 160.6061151917226 269.62845567519196 Z"
@@ -481,6 +486,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all chart types 1
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 130.37154432480804 160.60611519172264 Z"
@@ -503,6 +509,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all chart types 1
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -728,6 +735,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all chart types 2
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 140.00000000000003 96.07695154586736 A 120 120 0 0 1 228.776535758602 83.50145498876863 L 219.18435717240132 122.33430332584575 A 80 80 0 0 0 160 130.7179676972449 Z"
@@ -750,6 +758,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all chart types 2
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 231.816251149209 84.29465801956049 A 120 120 0 0 1 303.12876938017433 138.64482967075375 L 268.7525129201162 159.09655311383582 A 80 80 0 0 0 221.21083409947266 122.86310534637366 Z"
@@ -772,6 +781,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all chart types 2
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 304.6995208487357 141.3654510203654 A 120 120 0 0 1 320 200 L 280 200 A 80 80 0 0 0 269.7996805658238 160.9103006802436 Z"
@@ -794,6 +804,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all chart types 2
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -1019,6 +1030,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 269.62845567519196 239.3938848082774 A 80 80 0 0 1 162.44227497712873 270.63580742871414 L 175.5874787351337 245.9132748286642 A 52 52 0 0 0 245.25849618887477 225.6060251253803 Z"
@@ -1041,6 +1053,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 160.6061151917226 269.62845567519196 A 80 80 0 0 1 129.36419257128586 162.4422749771287 L 154.08672517133581 175.58747873513366 A 52 52 0 0 0 174.39397487461972 245.25849618887477 Z"
@@ -1063,6 +1076,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 130.37154432480804 160.60611519172264 A 80 80 0 0 1 197.90584413537016 120.02741400195542 L 198.6387986879906 148.01781910127102 A 52 52 0 0 0 154.7415038111252 174.39397487461972 Z"
@@ -1085,6 +1099,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -1310,6 +1325,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 162.44227497712873 270.63580742871414 A 80 80 0 0 0 269.62845567519196 239.3938848082774 Z"
@@ -1332,6 +1348,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 129.36419257128586 162.4422749771287 A 80 80 0 0 0 160.6061151917226 269.62845567519196 Z"
@@ -1354,6 +1371,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 130.37154432480804 160.60611519172264 Z"
@@ -1376,6 +1394,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -1601,6 +1620,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 340.99762274226373 279.77261673676173 A 162 162 0 0 1 123.9456068286857 343.0375100431462 L 153.0528437214109 288.2947592858927 A 100 100 0 0 0 287.03556959399 249.24235601034673 Z"
@@ -1623,6 +1643,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 120.22738326323831 340.99762274226373 A 162 162 0 0 1 56.96248995685386 123.94560682868564 L 111.70524071410732 153.0528437214109 A 100 100 0 0 0 150.75764398965327 287.03556959399 Z"
@@ -1645,6 +1666,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 59.00237725773624 120.22738326323832 A 162 162 0 0 1 195.75933437412456 38.055513353959725 L 197.38230516921269 100.03426750244428 A 100 100 0 0 0 112.96443040601002 150.75764398965327 Z"
@@ -1667,6 +1689,7 @@ exports[`<DonutChart /> (native) should render DonutChart with all radius sizes 
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -1892,6 +1915,7 @@ exports[`<DonutChart /> (native) should render DonutChart with center text 1`] =
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 162.44227497712873 270.63580742871414 A 80 80 0 0 0 269.62845567519196 239.3938848082774 Z"
@@ -1914,6 +1938,7 @@ exports[`<DonutChart /> (native) should render DonutChart with center text 1`] =
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 129.36419257128586 162.4422749771287 A 80 80 0 0 0 160.6061151917226 269.62845567519196 Z"
@@ -1936,6 +1961,7 @@ exports[`<DonutChart /> (native) should render DonutChart with center text 1`] =
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 130.37154432480804 160.60611519172264 Z"
@@ -1958,6 +1984,7 @@ exports[`<DonutChart /> (native) should render DonutChart with center text 1`] =
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -2268,6 +2295,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom cell color
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 312.7906400593061 240.96671227975287 A 120 120 0 0 1 176.470664483333 317.6706011293565 L 184.313776322222 278.447067419571 A 80 80 0 0 0 275.1937600395374 227.31114151983525 Z"
@@ -2290,6 +2318,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom cell color
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 173.39847015583672 317.01435215369986 A 120 120 0 0 1 80.31522203702107 191.30782398058844 L 120.21014802468072 194.20521598705895 A 80 80 0 0 0 182.26564677055782 278.0095681024666 Z"
@@ -2312,6 +2341,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom cell color
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 80.58376966357802 188.17782032624214 A 120 120 0 0 1 139.79083726611373 96.19799268374238 L 159.86055817740913 130.7986617891616 A 80 80 0 0 0 120.38917977571869 192.11854688416142 Z"
@@ -2334,6 +2364,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom cell color
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
                 <RNSVGPath
                   d="M 142.5286892221964 94.65747089859141 A 120 120 0 0 1 196.85876620305527 80.04112100293312 L 197.9058441353702 120.02741400195542 A 80 80 0 0 0 161.6857928147976 129.7716472657276 Z"
@@ -2356,6 +2387,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom cell color
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-4"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -2605,6 +2637,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom center pos
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 344.44268351278794 219.09082721241606 A 120 120 0 0 1 183.6634124656931 265.95371114307125 L 202.44227497712873 230.63580742871414 A 80 80 0 0 0 309.62845567519196 199.3938848082774 Z"
@@ -2627,6 +2660,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom center pos
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 180.90917278758394 264.44268351278794 A 120 120 0 0 1 134.04628885692878 103.66341246569307 L 169.36419257128586 122.4422749771287 A 80 80 0 0 0 200.6061151917226 229.62845567519196 Z"
@@ -2649,6 +2683,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom center pos
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 135.55731648721203 100.90917278758394 A 120 120 0 0 1 236.85876620305524 40.041121002933124 L 237.90584413537016 80.02741400195542 A 80 80 0 0 0 170.37154432480804 120.60611519172264 Z"
@@ -2671,6 +2706,7 @@ exports[`<DonutChart /> (native) should render DonutChart with custom center pos
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -2896,6 +2932,7 @@ exports[`<DonutChart /> (native) should render an interactive legend and tooltip
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 312.7906400593061 240.96671227975287 A 120 120 0 0 1 176.470664483333 317.6706011293565 L 184.313776322222 278.447067419571 A 80 80 0 0 0 275.1937600395374 227.31114151983525 Z"
@@ -2918,6 +2955,7 @@ exports[`<DonutChart /> (native) should render an interactive legend and tooltip
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 173.39847015583672 317.01435215369986 A 120 120 0 0 1 80.31522203702107 191.30782398058844 L 120.21014802468072 194.20521598705895 A 80 80 0 0 0 182.26564677055782 278.0095681024666 Z"
@@ -2940,6 +2978,7 @@ exports[`<DonutChart /> (native) should render an interactive legend and tooltip
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 80.58376966357802 188.17782032624214 A 120 120 0 0 1 139.79083726611373 96.19799268374238 L 159.86055817740913 130.7986617891616 A 80 80 0 0 0 120.38917977571869 192.11854688416142 Z"
@@ -2962,6 +3001,7 @@ exports[`<DonutChart /> (native) should render an interactive legend and tooltip
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
                 <RNSVGPath
                   d="M 142.5286892221964 94.65747089859141 A 120 120 0 0 1 196.85876620305527 80.04112100293312 L 197.9058441353702 120.02741400195542 A 80 80 0 0 0 161.6857928147976 129.7716472657276 Z"
@@ -2984,6 +3024,7 @@ exports[`<DonutChart /> (native) should render an interactive legend and tooltip
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-4"
                 />
               </RNSVGGroup>
               <RNSVGGroup
@@ -3772,6 +3813,7 @@ exports[`<DonutChart /> (native) should render basic DonutChart 1`] = `
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-0"
                 />
                 <RNSVGPath
                   d="M 304.44268351278794 259.09082721241606 A 120 120 0 0 1 143.6634124656931 305.95371114307125 L 162.44227497712873 270.63580742871414 A 80 80 0 0 0 269.62845567519196 239.3938848082774 Z"
@@ -3794,6 +3836,7 @@ exports[`<DonutChart /> (native) should render basic DonutChart 1`] = `
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-1"
                 />
                 <RNSVGPath
                   d="M 140.90917278758394 304.44268351278794 A 120 120 0 0 1 94.04628885692878 143.66341246569306 L 129.36419257128586 162.4422749771287 A 80 80 0 0 0 160.6061151917226 269.62845567519196 Z"
@@ -3816,6 +3859,7 @@ exports[`<DonutChart /> (native) should render basic DonutChart 1`] = `
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-2"
                 />
                 <RNSVGPath
                   d="M 95.55731648721203 140.90917278758394 A 120 120 0 0 1 196.85876620305524 80.04112100293312 L 197.90584413537016 120.02741400195542 A 80 80 0 0 0 130.37154432480804 160.60611519172264 Z"
@@ -3838,6 +3882,7 @@ exports[`<DonutChart /> (native) should render basic DonutChart 1`] = `
                     ]
                   }
                   responsible={true}
+                  testID="donut-slice-3"
                 />
               </RNSVGGroup>
               <RNSVGGroup
