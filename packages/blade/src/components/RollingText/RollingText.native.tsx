@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -27,9 +27,17 @@ const RollingText = ({
   showShimmer: _showShimmer,
 }: RollingTextProps): React.ReactElement => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const currentIndexRef = useRef(0);
   const { theme } = useTheme();
   const animDuration = castNativeType(makeMotionTime(getIn(theme.motion, 'duration.moderate')));
-  const cycleDuration = cycleDurationProp ?? 2500;
+  const cycleDuration =
+    cycleDurationProp ?? castNativeType(makeMotionTime(getIn(theme.motion, 'delay.xlong')));
+
+  if (__DEV__ && _showShimmer === true) {
+    console.warn(
+      '[Blade:RollingText] The `showShimmer` prop is not yet supported on React Native and will be ignored.',
+    );
+  }
   const opacity = useSharedValue(1);
   const translateY = useSharedValue(0);
 
@@ -49,11 +57,10 @@ const RollingText = ({
       });
 
       timeoutId = setTimeout(() => {
-        setCurrentIndex((prev) => {
-          const next = (prev + 1) % texts.length;
-          onIndexChange?.(next);
-          return next;
-        });
+        const next = (currentIndexRef.current + 1) % texts.length;
+        currentIndexRef.current = next;
+        setCurrentIndex(next);
+        onIndexChange?.(next);
         translateY.value = 12;
         opacity.value = 0;
         opacity.value = withTiming(1, {
