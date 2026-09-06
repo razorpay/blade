@@ -220,6 +220,27 @@ type TableProps<Item> = {
    **/
   gridTemplateColumns?: string;
   /**
+   * Explicit column count. Required when `TableHeader` is omitted — the Table normally infers
+   * column count by counting `TableHeaderCell` elements, so without a header it would be 0.
+   * Ignored when `gridTemplateColumns` is provided (that takes full precedence over grid sizing).
+   * @example
+   * // Header-less table — must supply columnCount
+   * <Table data={data} columnCount={3}>
+   *   {(tableData) => (
+   *     <TableBody>
+   *       {tableData.map((item) => (
+   *         <TableRow key={item.id} item={item}>
+   *           <TableCell isRowHeader>{item.name}</TableCell>
+   *           <TableCell>{item.amount}</TableCell>
+   *           <TableCell>{item.status}</TableCell>
+   *         </TableRow>
+   *       ))}
+   *     </TableBody>
+   *   )}
+   * </Table>
+   **/
+  columnCount?: number;
+  /**
    * The isLoading prop determines whether the table is loading or not.
    * The default value is `false`.
    **/
@@ -357,6 +378,15 @@ type TableCellProps = {
    * The default value is `transparent`.
    **/
   backgroundColor?: TableBackgroundColors | 'transparent';
+  /**
+   * Marks this cell as a row header for accessibility (`role="rowheader"`).
+   * Use on the identifying cell of each row (typically the first cell) when the table has no
+   * `TableHeader`, so screen readers can announce which row the other cells belong to.
+   * @default false
+   * @example
+   * <TableCell isRowHeader>{item.name}</TableCell>
+   **/
+  isRowHeader?: boolean;
 } & TableCellGridSpanningProps &
   DataAnalyticsAttribute;
 
