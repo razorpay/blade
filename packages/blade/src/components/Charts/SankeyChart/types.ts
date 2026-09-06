@@ -82,7 +82,7 @@ export type ChartSankeyWrapperProps = {
    *
    * @default 'horizontal'
    */
-  orientation?: 'horizontal' | 'vertical';
+  layout?: 'horizontal' | 'vertical';
 } & TestID &
   DataAnalyticsAttribute &
   BoxProps;
