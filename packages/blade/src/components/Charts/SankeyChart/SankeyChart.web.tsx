@@ -31,6 +31,7 @@ import {
   NODE_WIDTH,
   CHIP_MIN_WIDTH,
   CHIP_MAX_WIDTH,
+  CHIP_MAX_WIDTH_LAST_COLUMN,
   CHIP_VALUE_BUDGET,
   NODE_MIN_HEIGHT,
   TOOLTIP_Z_INDEX,
@@ -445,27 +446,6 @@ const _ChartSankey = ({
     [data.links, nodeIdToIndex],
   );
 
-  // Dynamic right margin — based on widest chip across all nodes
-  const dynamicRightMargin = useMemo(() => {
-    if (!showLabels) return theme.spacing[3];
-    if (!showLabelChip) {
-      const maxTextW = data.nodes.reduce((max, node) => {
-        const nameW = measureText(node.name, theme.typography.fonts.weight.semibold);
-        return Math.max(max, nameW + theme.spacing[2] + CHIP_VALUE_BUDGET);
-      }, 0);
-      return Math.min(CHIP_MAX_WIDTH, maxTextW) + CHIP_GAP + theme.spacing[3];
-    }
-    const maxChipW = data.nodes.reduce((max, node) => {
-      const nameW = measureText(node.name, theme.typography.fonts.weight.semibold);
-      const chipW = Math.min(
-        CHIP_MAX_WIDTH,
-        Math.max(CHIP_MIN_WIDTH, nameW + theme.spacing[2] + CHIP_VALUE_BUDGET + CHIP_PAD_X * 2),
-      );
-      return Math.max(max, chipW);
-    }, 0);
-    return maxChipW + CHIP_GAP + theme.spacing[3];
-  }, [showLabels, showLabelChip, data.nodes, measureText, theme, CHIP_PAD_X, CHIP_GAP]);
-
   // Node depth map + count per level — suppress percentage for sole node at a level
   const nodeDepthInfo = useMemo(() => {
     const incomingCount = new Map<string, number>(data.nodes.map((n) => [n.id, 0]));
@@ -486,9 +466,47 @@ const _ChartSankey = ({
       });
     }
     const countPerDepth = new Map<number, number>();
-    depthOf.forEach((d) => countPerDepth.set(d, (countPerDepth.get(d) ?? 0) + 1));
-    return { depthOf, countPerDepth };
+    let maxDepth = 0;
+    depthOf.forEach((d) => {
+      countPerDepth.set(d, (countPerDepth.get(d) ?? 0) + 1);
+      if (d > maxDepth) maxDepth = d;
+    });
+    return { depthOf, countPerDepth, maxDepth };
   }, [data.nodes, data.links]);
+
+  // Dynamic right margin — based on widest chip in the LAST column only
+  const dynamicRightMargin = useMemo(() => {
+    if (!showLabels) return theme.spacing[3];
+    const lastColNodes = data.nodes.filter(
+      (n) => nodeDepthInfo.depthOf.get(n.id) === nodeDepthInfo.maxDepth,
+    );
+    const candidates = lastColNodes.length > 0 ? lastColNodes : data.nodes;
+    if (!showLabelChip) {
+      const maxTextW = candidates.reduce((max, node) => {
+        const nameW = measureText(node.name, theme.typography.fonts.weight.semibold);
+        return Math.max(max, nameW + theme.spacing[2] + CHIP_VALUE_BUDGET);
+      }, 0);
+      return Math.min(CHIP_MAX_WIDTH_LAST_COLUMN, maxTextW) + CHIP_GAP + theme.spacing[3];
+    }
+    const maxChipW = candidates.reduce((max, node) => {
+      const nameW = measureText(node.name, theme.typography.fonts.weight.semibold);
+      const chipW = Math.min(
+        CHIP_MAX_WIDTH_LAST_COLUMN,
+        Math.max(CHIP_MIN_WIDTH, nameW + theme.spacing[2] + CHIP_VALUE_BUDGET + CHIP_PAD_X * 2),
+      );
+      return Math.max(max, chipW);
+    }, 0);
+    return maxChipW + CHIP_GAP + theme.spacing[3];
+  }, [
+    showLabels,
+    showLabelChip,
+    data.nodes,
+    nodeDepthInfo,
+    measureText,
+    theme,
+    CHIP_PAD_X,
+    CHIP_GAP,
+  ]);
 
   // Total value = sum of outflows from root nodes
   const totalValue = useMemo(() => {
@@ -555,12 +573,11 @@ const _ChartSankey = ({
       const labelW = measureText(labelValue, theme.typography.fonts.weight.regular);
       const contentW = nameW + theme.spacing[2] + labelW;
 
-      const shouldWrap = contentW + CHIP_PAD_X * 2 > CHIP_MAX_WIDTH;
+      const isLastColumn = nodeDepth === nodeDepthInfo.maxDepth;
+      const chipMaxW = isLastColumn ? CHIP_MAX_WIDTH_LAST_COLUMN : CHIP_MAX_WIDTH;
+      const shouldWrap = contentW + CHIP_PAD_X * 2 > chipMaxW;
       const chipW = shouldWrap
-        ? Math.min(
-            CHIP_MAX_WIDTH,
-            Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2),
-          )
+        ? Math.min(chipMaxW, Math.max(CHIP_MIN_WIDTH, Math.max(nameW, labelW) + CHIP_PAD_X * 2))
         : Math.max(CHIP_MIN_WIDTH, contentW + CHIP_PAD_X * 2);
 
       const lineGap = theme.spacing[2]; // 4px — fixed y-formula gives 16px baseline-to-baseline at size[75]
