@@ -242,6 +242,28 @@ CheckboxGroupWithLabelSuffixTrailing.args = {
   labelTrailing: <Link size="small">Learn more</Link>,
 };
 
+export const CheckboxGroupWithBadge = (): React.ReactElement => {
+  return (
+    <CheckboxGroupComponent label="Select payment methods">
+      <CheckboxComponent value="upi" badge={{ children: 'Recommended', color: 'positive' }}>
+        UPI
+      </CheckboxComponent>
+      <CheckboxComponent value="card">Credit / Debit Card</CheckboxComponent>
+      <CheckboxComponent value="netbanking" badge={{ children: 'New', color: 'information' }}>
+        Net Banking
+      </CheckboxComponent>
+      <CheckboxComponent
+        value="wallet"
+        isDisabled
+        badge={{ children: 'Coming Soon', color: 'neutral' }}
+      >
+        Wallet
+      </CheckboxComponent>
+    </CheckboxGroupComponent>
+  );
+};
+CheckboxGroupWithBadge.storyName = 'CheckboxGroup with Badge';
+
 export const KitchenSink = (): React.ReactElement => {
   const [selected, setSelected] = React.useState(['mango', 'apple']);
 

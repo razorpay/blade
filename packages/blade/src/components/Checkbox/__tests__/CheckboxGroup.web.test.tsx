@@ -211,6 +211,54 @@ describe('<CheckboxGroup />', () => {
   });
 });
 
+describe('<CheckboxGroup /> with badge', () => {
+  it('should render badge next to checkbox label in vertical orientation', () => {
+    const { getByText } = renderWithTheme(
+      <CheckboxGroup label="Select options">
+        <Checkbox value="upi" badge={{ children: 'Recommended', color: 'positive' }}>
+          UPI
+        </Checkbox>
+        <Checkbox value="card">Card</Checkbox>
+      </CheckboxGroup>,
+    );
+
+    expect(getByText('Recommended')).toBeInTheDocument();
+  });
+
+  it('should not render badge in horizontal orientation and throw dev error', () => {
+    let renderResult: ReturnType<typeof renderWithTheme> | undefined;
+    try {
+      renderResult = renderWithTheme(
+        <CheckboxGroup label="Select options" orientation="horizontal">
+          <Checkbox value="upi" badge={{ children: 'Recommended', color: 'positive' }}>
+            UPI
+          </Checkbox>
+          <Checkbox value="card">Card</Checkbox>
+        </CheckboxGroup>,
+      );
+    } catch (err: any) {
+      expect(err.message).toMatch(
+        'The `badge` prop on <Checkbox /> is not supported when the parent <CheckboxGroup /> has `orientation="horizontal"`',
+      );
+    }
+    if (renderResult) {
+      expect(renderResult.queryByText('Recommended')).not.toBeInTheDocument();
+    }
+  });
+
+  it('should render badge with correct children', () => {
+    const { getByText } = renderWithTheme(
+      <CheckboxGroup label="Select options">
+        <Checkbox value="upi" badge={{ children: 'New', color: 'information' }}>
+          UPI
+        </Checkbox>
+      </CheckboxGroup>,
+    );
+
+    expect(getByText('New')).toBeInTheDocument();
+  });
+});
+
 describe('<CheckboxGroup /> runtime errors', () => {
   it('should throw error if defaultChecked,isChecked,onChange is passed to checkboxes', () => {
     const labelText = 'Select fruit';
