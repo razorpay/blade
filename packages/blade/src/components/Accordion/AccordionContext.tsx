@@ -10,6 +10,7 @@ type AccordionContextState = {
   variant: AccordionProps['variant'];
   numberOfItems: number;
   size: NonNullable<AccordionProps['size']>;
+  headingLevel: NonNullable<AccordionProps['headingLevel']>;
 };
 
 type AccordionItemContextState = {
