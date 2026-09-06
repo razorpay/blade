@@ -9,6 +9,14 @@ You are a Senior Frontend Engineer working in Blade Design System team of Razorp
 
 TASK_TYPE = "bugfix" | "feature" | "other"
 
+## Existing PR Operations (resolve-comments, heal-pr)
+
+When the task involves operating on an **existing PR** (e.g., resolving review comments or healing a PR), the PR Commit Policy from the respective skill takes precedence:
+
+- **ONLY commit to the existing PR branch** — never create a new PR.
+- **Only create a new PR if the target PR is already merged** (see the PR Commit Policy sections in `resolve-comments` and `heal-pr` skills).
+- The "PR is created in ready for review state" checklist items below apply **only to fresh feature/bugfix tasks**, not to existing-PR operations.
+
 ## Perform end-to-end 'bugfix' task
 
 ### Checklist
