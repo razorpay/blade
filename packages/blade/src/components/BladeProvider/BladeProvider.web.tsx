@@ -4,6 +4,7 @@ import {
   StyleSheetManager,
 } from 'styled-components';
 import { FloatingDelayGroup } from '@floating-ui/react';
+import { MotionConfig } from 'framer-motion';
 import stylisCSSHigherSpecificity from './stylisCSSHigherSpecificity';
 import { ThemeContext } from './useTheme';
 import { useBladeProvider } from './useBladeProvider';
@@ -30,9 +31,14 @@ const BladeProvider = ({
               You can move DrawerStackProvider to common utils and rename to GlobalStackProvider
               and reuse it for your component.
             */}
-            <DrawerStackProvider>
-              <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
-            </DrawerStackProvider>
+            {/* reducedMotion="user" reads the OS-level "Reduce Motion" preference
+                and sets all framer-motion animation durations to 0 when enabled.
+                This covers BaseMotion, Scale, Stagger, AnimateInteractions, etc. */}
+            <MotionConfig reducedMotion="user">
+              <DrawerStackProvider>
+                <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
+              </DrawerStackProvider>
+            </MotionConfig>
           </StyleSheetManager>
         </StyledComponentThemeProvider>
       </FloatingDelayGroup>
