@@ -8,14 +8,13 @@ vi.mock('fs');
 vi.mock('path');
 vi.mock('../tokens.js', () => ({
   KNOWLEDGEBASE_DIRECTORY: '/mock/knowledgebase',
+  SVELTE_KNOWLEDGEBASE_DIRECTORY: '/mock/knowledgebase/svelte',
 }));
 
 describe('getBladeDocsResponseText', () => {
-  const mockKnowledgeBaseDir = '/mock/knowledgebase';
-
   beforeEach(() => {
     vi.clearAllMocks();
-    // Setup default mock for resolve
+    vi.spyOn(path, 'join').mockImplementation((...args) => args.join('/'));
     vi.spyOn(path, 'resolve').mockImplementation((...args) => {
       return args.join('/');
     });
@@ -30,12 +29,12 @@ describe('getBladeDocsResponseText', () => {
       documentationType: 'components',
     });
 
-    expect(result).toContain('Blade components documentation for: Button');
+    expect(result).toContain('Blade react components documentation for: Button');
     expect(result).toContain('# Button');
     expect(result).toContain(mockContent);
-    expect(path.resolve).toHaveBeenCalledWith(mockKnowledgeBaseDir, 'components', 'Button.md');
+    expect(path.resolve).toHaveBeenCalledWith('/mock/knowledgebase/components', 'Button.md');
     expect(fs.readFileSync).toHaveBeenCalledWith(
-      `${mockKnowledgeBaseDir}/components/Button.md`,
+      '/mock/knowledgebase/components/Button.md',
       'utf8',
     );
   });
@@ -52,7 +51,7 @@ describe('getBladeDocsResponseText', () => {
       documentationType: 'components',
     });
 
-    expect(result).toContain('Blade components documentation for: Button, Accordion');
+    expect(result).toContain('Blade react components documentation for: Button, Accordion');
     expect(result).toContain('# Button');
     expect(result).toContain(mockButtonContent);
     expect(result).toContain('# Accordion');
@@ -71,8 +70,8 @@ describe('getBladeDocsResponseText', () => {
 
     expect(result).toContain('# Button');
     expect(result).toContain('# Accordion');
-    expect(path.resolve).toHaveBeenCalledWith(mockKnowledgeBaseDir, 'components', 'Button.md');
-    expect(path.resolve).toHaveBeenCalledWith(mockKnowledgeBaseDir, 'components', 'Accordion.md');
+    expect(path.resolve).toHaveBeenCalledWith('/mock/knowledgebase/components', 'Button.md');
+    expect(path.resolve).toHaveBeenCalledWith('/mock/knowledgebase/components', 'Accordion.md');
   });
 
   it('should return error message when file does not exist', () => {
@@ -85,7 +84,7 @@ describe('getBladeDocsResponseText', () => {
       documentationType: 'components',
     });
 
-    expect(result).toContain('Blade components documentation for: NonExistent');
+    expect(result).toContain('Blade react components documentation for: NonExistent');
     expect(result).toContain('# NonExistent');
     expect(result).toContain(
       '⚠️ Error: Could not read documentation for NonExistent in components. The documentation may not exist or there may be an issue with the file.',
@@ -122,10 +121,10 @@ describe('getBladeDocsResponseText', () => {
       documentationType: 'patterns',
     });
 
-    expect(result).toContain('Blade patterns documentation for: ListView');
+    expect(result).toContain('Blade react patterns documentation for: ListView');
     expect(result).toContain('# ListView');
     expect(result).toContain(mockContent);
-    expect(path.resolve).toHaveBeenCalledWith(mockKnowledgeBaseDir, 'patterns', 'ListView.md');
+    expect(path.resolve).toHaveBeenCalledWith('/mock/knowledgebase/patterns', 'ListView.md');
   });
 
   it('should work with general documentation type', () => {
@@ -137,10 +136,10 @@ describe('getBladeDocsResponseText', () => {
       documentationType: 'general',
     });
 
-    expect(result).toContain('Blade general documentation for: Usage');
+    expect(result).toContain('Blade react general documentation for: Usage');
     expect(result).toContain('# Usage');
     expect(result).toContain(mockContent);
-    expect(path.resolve).toHaveBeenCalledWith(mockKnowledgeBaseDir, 'general', 'Usage.md');
+    expect(path.resolve).toHaveBeenCalledWith('/mock/knowledgebase/general', 'Usage.md');
   });
 
   it('should handle multiple patterns', () => {
@@ -155,7 +154,7 @@ describe('getBladeDocsResponseText', () => {
       documentationType: 'patterns',
     });
 
-    expect(result).toContain('Blade patterns documentation for: ListView, DetailedView');
+    expect(result).toContain('Blade react patterns documentation for: ListView, DetailedView');
     expect(result).toContain('# ListView');
     expect(result).toContain(mockListViewContent);
     expect(result).toContain('# DetailedView');
@@ -171,6 +170,36 @@ describe('getBladeDocsResponseText', () => {
       documentationType: 'components',
     });
 
-    expect(result).toContain('Blade components documentation for: Button, Accordion, Input');
+    expect(result).toContain('Blade react components documentation for: Button, Accordion, Input');
+  });
+
+  it('should resolve svelte component documentation paths', () => {
+    const mockContent = 'Svelte Button component documentation.';
+    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockContent);
+
+    const result = getBladeDocsResponseText({
+      docsList: 'Button',
+      documentationType: 'components',
+      framework: 'svelte',
+    });
+
+    expect(result).toContain('Blade svelte components documentation for: Button');
+    expect(result).toContain(mockContent);
+    expect(path.resolve).toHaveBeenCalledWith('/mock/knowledgebase/svelte/components', 'Button.md');
+  });
+
+  it('should return svelte availability message for missing component docs', () => {
+    vi.spyOn(fs, 'readFileSync').mockImplementation(() => {
+      throw new Error('File not found');
+    });
+
+    const result = getBladeDocsResponseText({
+      docsList: 'Accordion',
+      documentationType: 'components',
+      framework: 'svelte',
+    });
+
+    expect(result).toContain('Svelte documentation for Accordion is not available yet');
+    expect(result).toContain('Available Svelte components:');
   });
 });

@@ -1,7 +1,14 @@
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import * as Sentry from '@sentry/node';
-import { SKILL_VERSION_STRING, KNOWLEDGEBASE_DIRECTORY, PROJECT_ROOT_DIRECTORY } from './tokens.js';
+import {
+  SKILL_VERSION_STRING,
+  KNOWLEDGEBASE_DIRECTORY,
+  SVELTE_KNOWLEDGEBASE_DIRECTORY,
+  PROJECT_ROOT_DIRECTORY,
+} from './tokens.js';
+import type { BladeFramework } from '../types/framework.js';
+import { DEFAULT_FRAMEWORK } from '../types/framework.js';
 
 const hasOutdatedSkill = (skillFilePath: string): boolean => {
   const skillFileContent = readFileSync(skillFilePath, 'utf8');
@@ -17,14 +24,31 @@ const getPackageJSONVersion = (): string => {
 
 type DocumentationType = 'components' | 'patterns' | 'general';
 
+const getKnowledgebaseDirectory = (
+  documentationType: DocumentationType,
+  framework: BladeFramework = DEFAULT_FRAMEWORK,
+): string => {
+  if (framework === 'svelte') {
+    return join(SVELTE_KNOWLEDGEBASE_DIRECTORY, documentationType);
+  }
+
+  return join(KNOWLEDGEBASE_DIRECTORY, documentationType);
+};
+
 /**
  * Reads the given documentation type directory and returns a list of available blade docs
  */
-const getBladeDocsList = (documentationType: DocumentationType): string[] => {
+const getBladeDocsList = (
+  documentationType: DocumentationType,
+  framework: BladeFramework = DEFAULT_FRAMEWORK,
+): string[] => {
+  if (framework === 'svelte' && documentationType === 'patterns') {
+    return [];
+  }
+
   const bladeDocsList: string[] = [];
   try {
-    // Read all markdown files and strip the .md extension
-    const files = readdirSync(join(KNOWLEDGEBASE_DIRECTORY, documentationType));
+    const files = readdirSync(getKnowledgebaseDirectory(documentationType, framework));
     for (const file of files) {
       if (file.endsWith('.md') && !file.includes('index.md')) {
         bladeDocsList.push(file.replace('.md', '').trim());
@@ -39,5 +63,5 @@ const getBladeDocsList = (documentationType: DocumentationType): string[] => {
   return bladeDocsList;
 };
 
-export { hasOutdatedSkill, getPackageJSONVersion, getBladeDocsList };
+export { hasOutdatedSkill, getPackageJSONVersion, getBladeDocsList, getKnowledgebaseDirectory };
 export type { DocumentationType };
