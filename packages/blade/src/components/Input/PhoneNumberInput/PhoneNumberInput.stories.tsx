@@ -290,6 +290,32 @@ CountriesToShow.args = {
   allowedCountries: ['IN', 'MY'],
 };
 
+const CountrySearchTemplate: StoryFn<typeof PhoneNumberInput> = ({ ...args }) => {
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        The country selector has a built-in search that filters by country name, ISO code (e.g.{' '}
+        <Code size="medium">AU</Code>), or dial code (e.g. <Code size="medium">+91</Code> or{' '}
+        <Code size="medium">91</Code>). Open the dropdown and start typing to try it.
+      </Text>
+      <PhoneNumberInput {...args} />
+    </Box>
+  );
+};
+export const CountrySearch = CountrySearchTemplate.bind({});
+CountrySearch.storyName = 'Country Search';
+CountrySearch.args = {
+  allowedCountries: ['IN', 'US', 'GB', 'AU', 'DE', 'MY', 'SG', 'JP', 'FR', 'BR'],
+};
+CountrySearch.parameters = {
+  docs: {
+    description: {
+      story:
+        'The country selector includes a search input that filters countries by name, ISO country code, or dial code (with or without leading `+`). The search input is auto-focused when the dropdown opens on both desktop and mobile.',
+    },
+  },
+};
+
 export const SizeLarge = PhoneNumberInputTemplate.bind({});
 SizeLarge.storyName = 'Size: Large';
 SizeLarge.args = {
