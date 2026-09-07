@@ -118,17 +118,19 @@
   </span>
 </button>
 
-<BottomSheet {isOpen} onDismiss={closeSheet} {portalTarget}>
+<BottomSheet {isOpen} onDismiss={closeSheet} {portalTarget} snapPoints={[0.35, 0.5, 0.85]}>
   <BottomSheetHeader title="Select A Country">
-    <div class="country-selector-search">
-      <SearchInput
-        accessibilityLabel="Search country"
-        placeholder="Search"
-        value={searchQuery}
-        onChange={handleSearchChange}
-        onClearButtonClick={() => (searchQuery = '')}
-      />
-    </div>
+    {#if countryData.length > 1}
+      <div class="country-selector-search">
+        <SearchInput
+          accessibilityLabel="Search country"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          onClearButtonClick={() => (searchQuery = '')}
+        />
+      </div>
+    {/if}
   </BottomSheetHeader>
   <BottomSheetBody hasActionList>
     {#if filteredCountryData.length === 0}
