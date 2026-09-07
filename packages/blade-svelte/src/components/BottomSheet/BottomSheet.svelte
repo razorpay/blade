@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, untrack } from 'svelte';
   import { DragGesture, rubberbandIfOutOfBounds } from '@use-gesture/vanilla';
   import {
     disableBodyScroll,
@@ -263,11 +263,14 @@
 
   /* Re-clamp the sheet height when measured content changes while open.
    * React gets this from `setPositionY`/`handleOnOpen` identity churn feeding
-   * its open-sync effect; here it needs to be explicit. Skipped mid-drag so
-   * the gesture stays authoritative over the position. */
+   * its open-sync effect; here it needs to be explicit. Auto mode only — in
+   * snap-point mode the resting detent belongs to the gesture, not to content
+   * size. `isDragging` is read untracked so drag-end flipping it false cannot
+   * re-trigger this effect and overwrite the position the gesture committed. */
   $effect(() => {
     const total = totalHeight;
-    if (!isOpen || isDragging || total === 0) return;
+    if (!isAutoMode || !isOpen || total === 0) return;
+    if (untrack(() => isDragging)) return;
     /* Guard against a stale `windowHeight` (still the full window instead of a
      * bounded portal): re-sync first, then let the derived cap recompute on the
      * next run. Assign-if-changed avoids an effect loop. */
