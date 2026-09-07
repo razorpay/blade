@@ -15,14 +15,14 @@ export const APP_BAR_HEIGHT = size[64];
  * - `neutral`: transparent surface (matches Figma — the AppBar has no background
  *   of its own and sits directly over the page). Foreground stays light via the
  *   forced dark color scheme so it remains legible over a dark page.
- * - `subtle`: gray surface that adapts to an embedded/light page context.
+ * - `subtle`: transparent surface with adaptive gray foreground for embedded/light contexts.
  */
 export const APP_BAR_BACKGROUND_COLOR: Record<
   NonNullable<AppBarProps['variant']>,
   BaseBoxProps['backgroundColor']
 > = {
   neutral: 'transparent',
-  subtle: 'surface.background.gray.intense',
+  subtle: 'transparent',
 };
 
 /**

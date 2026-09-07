@@ -32,6 +32,7 @@ export { RazorpayTrustIcon } from './RazorpayTrustIcon';
 
 // Filled Icons
 export { MoreFilledIcon } from './MoreFilledIcon';
+export { MoreHorizontalIcon } from './MoreHorizontalIcon';
 
 // Utilities (for internal use or advanced usage)
 export { getIconProps } from './getIconProps';
