@@ -9,6 +9,7 @@
     getBottomSheetBodyContentClasses,
   } from '@razorpay/blade-core/styles';
   import { getBottomSheetContext } from './bottomSheetContext';
+  import { observeResize } from '../../utils/observeResize';
   import type { BottomSheetBodyProps } from './types';
 
   let {
@@ -44,11 +45,9 @@
     const node = contentEl;
     void ctx?.isOpen;
     ctx?.setContentHeight(node.getBoundingClientRect().height);
-    const observer = new ResizeObserver(() => {
+    return observeResize(node, () => {
       ctx?.setContentHeight(node.getBoundingClientRect().height);
     });
-    observer.observe(node);
-    return () => observer.disconnect();
   });
 
   /* Inform the parent whether the body has zero padding. React tracks this

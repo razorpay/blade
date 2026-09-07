@@ -33,6 +33,7 @@
   import { computeMaxContent, computeSnapPointBounds } from './utils';
   import BottomSheetBackdrop from './BottomSheetBackdrop.svelte';
   import { portal } from '../../utils/portal';
+  import { observeResize } from '../../utils/observeResize';
 
   /* Anchor structural classes against the Rollup tree-shaker — CSS modules
    * export ESM objects whose unused individual exports otherwise get
@@ -317,11 +318,9 @@
     const target = portalTarget;
     if (target) {
       windowHeight = target.clientHeight;
-      const observer = new ResizeObserver(() => {
+      return observeResize(target, () => {
         windowHeight = target.clientHeight;
       });
-      observer.observe(target);
-      return () => observer.disconnect();
     }
     return undefined;
   });
