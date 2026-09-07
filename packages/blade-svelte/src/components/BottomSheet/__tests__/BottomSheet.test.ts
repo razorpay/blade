@@ -1,6 +1,8 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
-import { describe, it, expect, vi, afterEach } from 'vitest';
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 import BottomSheetFocusTestHarness from './BottomSheetFocusTestHarness.svelte';
+import BottomSheetBindableTestHarness from './BottomSheetBindableTestHarness.svelte';
+import BottomSheetSplitPortalTestHarness from './BottomSheetSplitPortalTestHarness.svelte';
 
 /* Spy on the prototype so the focus call is captured regardless of when the
  * target element mounts (the sheet portals + defers focus across two rAFs). */
@@ -17,6 +19,14 @@ function focusOptionsFor(spy: ReturnType<typeof vi.spyOn>, el: Element): FocusOp
 
 afterEach(() => {
   vi.restoreAllMocks();
+});
+
+beforeEach(() => {
+  globalThis.ResizeObserver = (vi.fn().mockImplementation(() => ({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+  })) as unknown) as typeof ResizeObserver;
 });
 
 describe('<BottomSheet /> focus management', () => {
@@ -55,5 +65,33 @@ describe('<BottomSheet /> focus management', () => {
     await waitFor(() => expect(onDismiss).toHaveBeenCalledTimes(1));
     await waitFor(() => expect(focusSpy.mock.contexts).toContain(trigger));
     expect(focusOptionsFor(focusSpy, trigger)).toEqual({ preventScroll: true });
+  });
+
+  it('writes isOpen back into the bound variable on dismiss (bind:isOpen)', async () => {
+    render(BottomSheetBindableTestHarness, { props: { isOpen: false } });
+
+    /* Open the sheet by setting the bound variable to true. */
+    await fireEvent.click(screen.getByTestId('open-sheet'));
+    await waitFor(() => expect(screen.getByTestId('bound-is-open')).toHaveTextContent('true'));
+
+    /* Escape dismisses the dismissible sheet — the bound `isOpen` must flip back. */
+    await fireEvent.keyDown(window, { key: 'Escape' });
+    await waitFor(() => expect(screen.getByTestId('bound-is-open')).toHaveTextContent('false'));
+  });
+
+  it('mounts backdrop and surface into separate portal targets', async () => {
+    render(BottomSheetSplitPortalTestHarness, { props: { isOpen: true } });
+
+    const backdropHost = screen.getByTestId('backdrop-host');
+    const surfaceHost = screen.getByTestId('surface-host');
+
+    await waitFor(() => expect(screen.getByTestId('sheet-content')).toBeInTheDocument());
+
+    const backdrop = backdropHost.querySelector('[data-testid="bottomsheet-backdrop"]');
+    const surface = surfaceHost.querySelector('[data-testid="bottomsheet-surface"]');
+
+    expect(backdrop).toBeTruthy();
+    expect(surface).toBeTruthy();
+    expect(surfaceHost.contains(backdrop as Node)).toBe(false);
   });
 });

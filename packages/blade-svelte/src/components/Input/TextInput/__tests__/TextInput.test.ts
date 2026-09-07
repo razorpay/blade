@@ -1,11 +1,39 @@
 import { tick } from 'svelte';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/svelte';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
 import TextInput from '../TextInput.svelte';
 import TextInputControlled from './TextInputControlled.svelte';
 
-describe('<TextInput />', () => {
+async function findInput(): Promise<HTMLElement> {
+  return screen.findByRole('textbox');
+}
+
+describe('<TextInput /> isReadOnly & spellCheck', () => {
+  it('does not render readonly by default', async () => {
+    render(TextInput, { props: { label: 'Email', value: 'a@b.com' } });
+    const input = await findInput();
+    expect(input).not.toHaveAttribute('readonly');
+  });
+
+  it('renders readonly when isReadOnly is set', async () => {
+    render(TextInput, { props: { label: 'Email', value: 'a@b.com', isReadOnly: true } });
+    const input = await findInput();
+    expect(input).toHaveAttribute('readonly');
+  });
+
+  it('renders spellcheck off when spellCheck is set', async () => {
+    render(TextInput, { props: { label: 'Email', value: 'a@b.com', spellCheck: false } });
+    const input = await findInput();
+    expect(input).toHaveAttribute('spellcheck', 'false');
+  });
+
+  it('renders spellcheck on when spellCheck is true', async () => {
+    render(TextInput, { props: { label: 'Email', value: 'a@b.com', spellCheck: true } });
+    const input = await findInput();
+    expect(input).toHaveAttribute('spellcheck', 'true');
+  });
+
   it('fires onChange on every keystroke (not just on blur)', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();

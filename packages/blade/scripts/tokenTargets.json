@@ -73,6 +73,19 @@
   "referenceScanExtensions": [".ts", ".tsx", ".js", ".jsx", ".svelte", ".json", ".md", ".mdx"],
 
   "verify": {
+    "$comment_generated": [
+      "Files derived from the token sources rather than written directly by this script. Run",
+      "before typecheck/snapshots so the derived output is part of the same touchedFiles set —",
+      "and part of the same PR — as the tokens it was derived from."
+    ],
+    "generated": [
+      {
+        "name": "theme.css",
+        "cwd": "packages/blade-core",
+        "command": "yarn generate:tokens-css",
+        "outputs": ["packages/blade-core/src/tokens/theme.css"]
+      }
+    ],
     "typecheck": [
       { "name": "@razorpay/blade", "cwd": "packages/blade", "command": "yarn typecheck" },
       { "name": "@razorpay/blade-core", "cwd": "packages/blade-core", "command": "yarn typecheck" }

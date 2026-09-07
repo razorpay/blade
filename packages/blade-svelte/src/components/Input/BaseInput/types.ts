@@ -20,7 +20,14 @@ export type BaseInputType =
   | 'search'
   | 'password';
 
-export type KeyboardType = 'text' | 'search' | 'telephone' | 'email' | 'url' | 'decimal';
+export type KeyboardType =
+  | 'text'
+  | 'search'
+  | 'telephone'
+  | 'email'
+  | 'url'
+  | 'decimal'
+  | 'numeric';
 export type KeyboardReturnKeyType =
   | 'default'
   | 'go'
@@ -156,6 +163,10 @@ export type BaseInputCommonProps = FormInputLabelProps &
     isDisabled?: boolean;
     /** Marks the input required (adds `required`). */
     isRequired?: boolean;
+    /** Makes the input read-only (adds `readonly`, keeps it focusable). */
+    isReadOnly?: boolean;
+    /** Controls the browser spellcheck on the input. */
+    spellCheck?: boolean;
     /** Leading icon component. */
     leadingIcon?: IconComponent;
     /** Prefix text rendered at the start of the input. */

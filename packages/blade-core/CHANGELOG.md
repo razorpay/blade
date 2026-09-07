@@ -1,5 +1,22 @@
 # @razorpay/blade-core
 
+## 0.15.0
+
+### Minor Changes
+
+- a807ec77a: feat: add checkout studio story with style override playground
+
+  - Export slot metadata API (defineComponentSlots, BLADE_SLOT_METADATA) for style override introspection
+  - Add Card 'surface' slot for per-slot style overrides
+  - Fix AppBar z-index from 1000 to 100 so it no longer overlays modal surfaces like BottomSheet (default z-index 100)
+  - Fix Input focus-ring transition to animate outline-width only, avoiding black→blue color flash on focus
+
+## 0.14.1
+
+### Patch Changes
+
+- bb7fec430: Auto-generate `theme.css` from the bladeTheme token sources instead of hand-editing it. Adds `yarn generate:tokens-css` and a drift-guard test so `theme.css` can't silently fall out of sync with the token TS files. The token-upload CI pipeline now regenerates it automatically as part of every Figma token push.
+
 ## 0.14.0
 
 ### Minor Changes

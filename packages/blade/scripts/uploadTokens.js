@@ -445,6 +445,15 @@ const uploadColorTokens = async () => {
     warnings.push('The payload contained no global color tokens, so `colors.ts` was not touched.');
   }
 
+  // Derived files (e.g. theme.css from the token TS files) regenerate before the touchedFiles
+  // guard below, so a generator failure blocks the same way a write failure does, and a
+  // successful run lands its output in the same PR as the tokens it was derived from.
+  (targets.verify.generated ?? []).forEach((step) => {
+    if (runStep(step)) {
+      step.outputs.forEach((output) => touchedFiles.add(toRepoPath(output)));
+    }
+  });
+
   if (!touchedFiles.size) {
     console.error('Nothing was written.');
     blockers.forEach((blocker) => console.error(`- ${blocker}`));

@@ -13,7 +13,7 @@
 export type PortalTarget = HTMLElement | string;
 
 export type PortalActionReturn = {
-  update?: (target: PortalTarget) => void;
+  update?: (target: PortalTarget | null | undefined) => void;
   destroy: () => void;
 };
 
@@ -30,14 +30,14 @@ const resolveTarget = (target: PortalTarget): HTMLElement => {
 
 export function portal(
   node: HTMLElement,
-  target: PortalTarget = document.body,
+  target: PortalTarget | null | undefined = document.body,
 ): PortalActionReturn {
-  let resolved = resolveTarget(target);
+  let resolved = resolveTarget(target ?? document.body);
   resolved.appendChild(node);
 
   return {
-    update(next: PortalTarget) {
-      resolved = resolveTarget(next);
+    update(next: PortalTarget | null | undefined) {
+      resolved = resolveTarget(next ?? document.body);
       resolved.appendChild(node);
     },
     destroy() {
