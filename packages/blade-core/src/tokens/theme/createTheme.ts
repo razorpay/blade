@@ -329,6 +329,7 @@ const getOnDarkOverrides = (
  **/
 export const createTheme = ({
   brandColor,
+  baseTheme,
   borderRadius,
   fontFamily,
   fontFaces,
@@ -347,7 +348,7 @@ export const createTheme = ({
   });
 
   const brandedThemeTokens = overrideTheme({
-    baseThemeTokens: bladeTheme,
+    baseThemeTokens: baseTheme ?? bladeTheme,
     overrides: {
       name: `custom-${tinycolor(brandColor).toHex()}`,
       colors: {

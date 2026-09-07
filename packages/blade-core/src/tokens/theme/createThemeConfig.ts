@@ -44,6 +44,12 @@ export type CreateThemeSurfaceOverride = {
 
 export type CreateThemeConfig = {
   brandColor: ColorInput;
+  /**
+   * Base theme tokens to build on top of.
+   * Defaults to `bladeTheme`. Pass `bladeNeutralTheme` when the neutral
+   * checkout theme should remain the base even after brand-color overrides.
+   */
+  baseTheme?: ThemeTokens;
   borderRadius?: Partial<Border['radius']>;
   fontFamily?: CreateThemeFontFamilyOverride;
   /**

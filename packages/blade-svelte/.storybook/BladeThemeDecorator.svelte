@@ -24,7 +24,7 @@
   const themeTokens = $derived.by((): ThemeTokens => {
     if (brandColor) {
       try {
-        return createTheme({ brandColor }).theme;
+        return createTheme({ brandColor, baseTheme: bladeTheme }).theme;
       } catch (error) {
         console.warn(
           '[BladeThemeDecorator]: Invalid brandColor, falling back to default theme',

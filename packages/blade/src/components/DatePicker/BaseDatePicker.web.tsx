@@ -44,6 +44,16 @@ import { fireNativeEvent } from '~utils/fireNativeEvent';
 import { useListViewFilterContext } from '~components/ListView/ListViewFiltersContext.web';
 import { useFilterChipGroupContext } from '~components/Dropdown/FilterChipGroupContext.web';
 
+// `controlledValue` is rebuilt (via shiftTimezone) on every render when the picker is
+// controlled, so its identity cannot be used to detect a selection change. This serialises
+// the selection so it can be compared by content instead.
+const getSelectionKey = (value: DatesRangeValue | Date | null | undefined): string => {
+  if (Array.isArray(value)) {
+    return value.map((date) => (date ? date.getTime() : 'null')).join('|');
+  }
+  return value ? String(value.getTime()) : 'null';
+};
+
 // Calendar dimensions for consistent layout
 const CALENDAR_HEIGHTS = {
   // Height includes: Calendar grid (6 weeks * ~44px) + header (~48px) + footer actions (~64px) + padding
@@ -166,6 +176,7 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
     },
   });
   const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
+  const lastSelectionKey = React.useRef(getSelectionKey(controlledValue));
 
   // Sync selectedPreset with controlledValue for initial preset matching
   React.useEffect(() => {
@@ -260,9 +271,19 @@ const BaseDatePicker = <Type extends DateSelectionType = 'single'>({
   // and the selection is complete — this is the chip/filter mode behaviour where
   // selecting a date range is itself the confirmation.
   React.useEffect(() => {
+    const previousSelectionKey = lastSelectionKey.current;
+    const currentSelectionKey = getSelectionKey(controlledValue);
+    lastSelectionKey.current = currentSelectionKey;
+
     if (shouldApplyAfterPresetSelection.current) {
       shouldApplyAfterPresetSelection.current = false;
       handleApply();
+      return;
+    }
+
+    // Bail out when the selection did not actually change, otherwise reopening a picker that
+    // already holds a complete selection would auto-close it right away.
+    if (currentSelectionKey === previousSelectionKey) {
       return;
     }
 

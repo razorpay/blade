@@ -7,6 +7,22 @@
  *   --bs-z-index   → z-index for surface and backdrop
  */
 
+/* ===== PORTAL ROOT ===== */
+/* Fills a custom portalTarget so surface/backdrop position against the
+ * container instead of the viewport (position: fixed → absolute). */
+.portalRoot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.portalRoot .surface,
+.portalRoot .backdrop {
+  position: absolute;
+}
+
 /* ===== SURFACE ===== */
 .surface {
   position: fixed;

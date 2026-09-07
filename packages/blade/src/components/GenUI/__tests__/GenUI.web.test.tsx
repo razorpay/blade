@@ -77,6 +77,93 @@ describe('<GenUI />', () => {
     });
   });
 
+  describe('componentActions (registered action slots)', () => {
+    const tableComponents: GenUIComponent[] = [
+      {
+        component: 'TABLE',
+        headers: ['ID', 'Status'],
+        rows: [
+          [
+            { component: 'TEXT', value: 'pay_123' },
+            { component: 'BADGE', value: 'Captured', color: 'positive' },
+          ],
+        ],
+      } as GenUIComponent,
+    ];
+
+    it('should render a registered action slot below the component with data and componentRef', () => {
+      const tableActionSlot = jest.fn(() => <button type="button">Download CSV</button>);
+
+      const { getByText } = renderWithTheme(
+        <GenUIProvider config={{ componentActions: { TABLE: tableActionSlot } }}>
+          <GenUISchemaRenderer components={tableComponents} />
+        </GenUIProvider>,
+      );
+
+      // Action slot UI is rendered
+      expect(getByText('Download CSV')).toBeInTheDocument();
+      // Render prop received the component's schema (data) and a componentRef
+      expect(tableActionSlot).toHaveBeenCalledWith(
+        expect.objectContaining({
+          componentType: 'TABLE',
+          data: expect.objectContaining({ headers: ['ID', 'Status'] }),
+          componentRef: expect.objectContaining({ current: expect.anything() }),
+        }),
+      );
+    });
+
+    it('should expose the component DOM node via componentRef.current', async () => {
+      const user = userEvent.setup();
+      const capturedNode: { current: HTMLDivElement | null } = { current: null };
+
+      const cardActionSlot = ({
+        componentRef,
+      }: {
+        componentRef: React.RefObject<HTMLDivElement>;
+      }) => (
+        <button
+          type="button"
+          onClick={() => {
+            capturedNode.current = componentRef.current;
+          }}
+        >
+          Download PNG
+        </button>
+      );
+
+      const cardComponents: GenUIComponent[] = [
+        {
+          component: 'CARD',
+          title: 'Payment Link Created',
+          children: [{ component: 'TEXT', value: 'plink_123' }],
+        } as GenUIComponent,
+      ];
+
+      const { getByText } = renderWithTheme(
+        <GenUIProvider config={{ componentActions: { CARD: cardActionSlot } }}>
+          <GenUISchemaRenderer components={cardComponents} />
+        </GenUIProvider>,
+      );
+
+      await user.click(getByText('Download PNG'));
+
+      // componentRef.current resolves to the DOM node wrapping the rendered card
+      expect(capturedNode.current).not.toBeNull();
+      expect(capturedNode.current).toBeInstanceOf(HTMLDivElement);
+      expect(capturedNode.current?.textContent).toContain('Payment Link Created');
+    });
+
+    it('should not render an action slot when none is registered for the component type', () => {
+      const { queryByText } = renderWithTheme(
+        <GenUIProvider>
+          <GenUISchemaRenderer components={tableComponents} />
+        </GenUIProvider>,
+      );
+
+      expect(queryByText('Download CSV')).not.toBeInTheDocument();
+    });
+  });
+
   describe('TEXT Component', () => {
     it('should render text component with markdown', () => {
       const components: GenUIComponent[] = [

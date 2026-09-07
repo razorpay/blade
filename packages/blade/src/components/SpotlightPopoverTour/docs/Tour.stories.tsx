@@ -768,6 +768,120 @@ WithScrollablePage.parameters = {
   viewMode: 'story',
 };
 
+/**
+ * Reproduction for a reported bug: when the anchor (e.g. a large table) is taller than the
+ * viewport, it can never satisfy the 0.5 intersection threshold used internally by the tour.
+ * That causes the tour to keep calling `scrollIntoView({ block: 'center' })`, which can push the
+ * popover itself off-screen, while body scroll is locked and a full-screen mask blocks
+ * interaction — making the page feel frozen.
+ */
+export const WithLargeAnchor = () => {
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const steps = React.useMemo<SpotlightPopoverTourSteps>(
+    () => [
+      {
+        name: 'large-table',
+        title: 'Your Transactions',
+        content: () => {
+          return (
+            <Box>
+              <Text color="surface.text.gray.subtle">
+                This step is anchored to a table that is taller than the viewport, reproducing the
+                reported freeze/off-screen-popover issue.
+              </Text>
+            </Box>
+          );
+        },
+        placement: 'bottom',
+        footer: CustomTourFooter,
+      },
+      {
+        name: 'small-row',
+        title: 'A Single Row',
+        content: () => {
+          return (
+            <Box>
+              <Text color="surface.text.gray.subtle">
+                This step is anchored to a single row instead — it should behave normally.
+              </Text>
+            </Box>
+          );
+        },
+        placement: 'bottom',
+        footer: CustomTourFooter,
+      },
+    ],
+    [],
+  );
+
+  return (
+    <Box>
+      <Button
+        marginBottom="spacing.5"
+        onClick={() => {
+          setIsOpen((prev) => !prev);
+        }}
+      >
+        {isOpen ? 'Tour In Progress' : 'Start Tour'}
+      </Button>
+      <SpotlightPopoverTour
+        steps={steps}
+        isOpen={isOpen}
+        activeStep={activeStep}
+        onFinish={() => {
+          setActiveStep(0);
+          setIsOpen(false);
+        }}
+        onOpenChange={({ isOpen }) => {
+          setIsOpen(isOpen);
+        }}
+        onStepChange={(step) => {
+          setActiveStep(step);
+        }}
+      >
+        <SpotlightPopoverTourStep name="large-table">
+          {/* Anchor is intentionally taller than any reasonable viewport (200vh) so it can
+              never reach 50% visibility, forcing the tour to repeatedly center-scroll it. */}
+          <Box
+            minHeight="200vh"
+            padding="spacing.4"
+            backgroundColor="surface.background.gray.intense"
+            borderWidth="thin"
+            borderColor="surface.border.gray.normal"
+          >
+            <Text weight="semibold" marginBottom="spacing.4">
+              Large Table (200vh tall — taller than the viewport)
+            </Text>
+            {Array.from({ length: 40 }).map((_, index) => (
+              <Box
+                key={index}
+                paddingY="spacing.3"
+                borderBottomWidth="thin"
+                borderColor="surface.border.gray.muted"
+              >
+                <Text>Row {index + 1}</Text>
+              </Box>
+            ))}
+          </Box>
+        </SpotlightPopoverTourStep>
+        <Box marginTop="spacing.9">
+          <SpotlightPopoverTourStep name="small-row">
+            <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
+              <Text>A small row anchor for comparison</Text>
+            </Box>
+          </SpotlightPopoverTourStep>
+        </Box>
+      </SpotlightPopoverTour>
+    </Box>
+  );
+};
+WithLargeAnchor.storyName = 'With Large Anchor (Bug Repro)';
+WithLargeAnchor.parameters = {
+  docs: { disable: true },
+  viewMode: 'story',
+};
+
 const InterruptibleTourFooter = ({
   activeStep,
   goToNext,

@@ -346,6 +346,22 @@ export type CardHeaderIconButtonProps = {
   testID?: string;
 };
 
+export type CardHeaderLinkProps = {
+  children?: Snippet | string;
+  href?: string;
+  target?: string;
+  rel?: string;
+  icon?: IconComponent;
+  iconPosition?: 'left' | 'right';
+  color?: 'primary' | 'white' | 'neutral' | 'negative' | 'positive';
+  isDisabled?: boolean;
+  onClick?: (event: MouseEvent) => void;
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'anchor' | 'button';
+  testID?: string;
+  [key: `data-analytics-${string}`]: string;
+};
+
 export type CardFooterProps = {
   /**
    * Card footer contents (CardFooterLeading and/or CardFooterTrailing)

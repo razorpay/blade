@@ -83,6 +83,7 @@ export type {
   CardHeaderLeadingProps,
   CardHeaderTrailingProps,
   CardHeaderIconButtonProps,
+  CardHeaderLinkProps,
   CardFooterProps,
   CardFooterAction,
   CardFooterLeadingProps,

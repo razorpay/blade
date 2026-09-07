@@ -1897,7 +1897,7 @@ exports[`<AppBar /> should render with variant="subtle" 1`] = `
   -webkit-column-gap: 8px;
   column-gap: 8px;
   top: 0px;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c1.c1.c1.c1.c1 {

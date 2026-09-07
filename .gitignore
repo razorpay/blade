@@ -100,10 +100,16 @@ buck-out/
 **/ios/Pods/
 
 knowledgebase-ts-errors.json
-.cursor/artifacts/
-.cursor/worktrees/
-.agents/artifacts/
-.claude/artifacts/
-.claude/worktrees/
 .cursor/rules/frontend-blade-rules.mdc
 .playwright-mcp/
+
+# Agent scratch output — reports, plans and worktrees an agent writes while
+# working. These are throwaway notes about the change, not part of the change.
+# Templates and examples under .agents|.claude|.cursor are tracked on purpose.
+.agents/artifacts/
+.agents/reviews/
+.claude/artifacts/
+.claude/worktrees/
+.cursor/artifacts/
+.cursor/worktrees/
+/announcement.md

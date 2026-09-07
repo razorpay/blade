@@ -13,6 +13,7 @@
       isOpen: undefined,
       snapPoints: undefined,
       isDismissible: true,
+      showDragHandle: true,
       title: 'Address Details',
       subtitle: 'Saving addresses will improve your checkout experience',
       showBackButton: false,
@@ -23,6 +24,7 @@
       onDismiss: { table: { disable: true } },
       initialFocusRef: { table: { disable: true } },
       isDismissible: { control: 'boolean' },
+      showDragHandle: { control: 'boolean' },
       zIndex: { control: 'number' },
       title: {
         control: 'text',
@@ -50,6 +52,8 @@
   import Badge from '../Badge/Badge.svelte';
   import Counter from '../Counter/Counter.svelte';
   import Link from '../Link/Link.svelte';
+  import Amount from '../Amount/Amount.svelte';
+  import Divider from '../Divider/Divider.svelte';
   import ActionList from '../ActionList/ActionList.svelte';
   import ActionListItem from '../ActionList/ActionListItem.svelte';
   import ActionListSection from '../ActionList/ActionListSection.svelte';
@@ -58,12 +62,14 @@
   import Checkbox from '../Checkbox/Checkbox.svelte';
   import RadioGroup from '../Radio/RadioGroup.svelte';
   import Radio from '../Radio/Radio.svelte';
+  import TrustBadge from '../TrustBadge/TrustBadge.svelte';
 
   /* Playground story state — separate from product-demo stories. */
   let isPlaygroundOpen = $state(false);
 
   /* Default story state (one bucket per story to keep them independent). */
   let isDefaultOpen = $state(false);
+  let isWithoutDragHandleOpen = $state(false);
   let isHeaderFooterOpen = $state(false);
   let isSingleSelectOpen = $state(false);
   let isDropdownButtonOpen = $state(false);
@@ -88,6 +94,14 @@
   let productSelectedSim = $state<string | undefined>();
   let productSimError = $state<string | undefined>();
   let isNonDismissibleOpen = $state(false);
+  let isPortalTargetOpen = $state(false);
+  let isAutoModeOpen = $state(false);
+  let autoModeItemCount = $state(3);
+  let autoModePortalEl = $state<HTMLDivElement | null>(null);
+  let portalTargetEl = $state<HTMLDivElement | null>(null);
+  let isSplitPortalOpen = $state(false);
+  let backdropPortalTargetEl = $state<HTMLDivElement | null>(null);
+  let surfacePortalTargetEl = $state<HTMLDivElement | null>(null);
 
   let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
     $state();
@@ -296,6 +310,37 @@
                 </Checkbox>
                 <Button>Continue</Button>
               </div>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Without Drag Handle — hides the handle and disables drag gestures via showDragHandle={false}. -->
+<Story name="Without Drag Handle">
+  {#snippet template()}
+    <div>
+      <Button onClick={() => (isWithoutDragHandleOpen = true)}>Open</Button>
+      <BottomSheet
+        isOpen={isWithoutDragHandleOpen}
+        onDismiss={() => (isWithoutDragHandleOpen = false)}
+        showDragHandle={false}
+      >
+        {#snippet children()}
+          <BottomSheetHeader title="Terms & Conditions" subtitle="No drag handle is shown." />
+          <BottomSheetBody>
+            {#snippet children()}
+              <Text>
+                The drag handle is hidden and drag-to-move/dismiss is disabled. Dismiss via the
+                backdrop, escape key, or the Continue button below.
+              </Text>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isWithoutDragHandleOpen = false)}>Continue</Button>
             {/snippet}
           </BottomSheetFooter>
         {/snippet}
@@ -847,7 +892,312 @@
   {/snippet}
 </Story>
 
-<!-- Story 13: Non-Dismissible BottomSheet — locked open, must use footer buttons.
+<!-- Story 13: With Portal Target — mounts overlay into a bounded container. -->
+<Story name="With Portal Target">
+  {#snippet template()}
+    <div>
+      <Text marginBottom="spacing.4">
+        Pass portalTarget when the sheet sits inside a bounded container (phone preview, modal,
+        ancestor with overflow hidden). Overlay mounts into that element instead of document.body;
+        snap points use the container height.
+      </Text>
+
+      <div
+        bind:this={portalTargetEl}
+        style="
+          position: relative;
+          width: 320px;
+          height: 560px;
+          overflow: hidden;
+          border-radius: var(--radius-medium);
+          border: 2px solid var(--surface-border-gray-subtle);
+          background: var(--surface-background-gray-subtle);
+        "
+      >
+        <div
+          style="
+            padding: var(--spacing-5);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+            height: 100%;
+          "
+        >
+          <Heading size="small">Mobile checkout preview</Heading>
+          <Text color="surface.text.gray.muted" size="small">
+            Open the sheet — backdrop and surface stay inside this frame, not the Storybook canvas.
+          </Text>
+          <Button onClick={() => (isPortalTargetOpen = true)}>Open bottom sheet</Button>
+        </div>
+
+        <BottomSheet
+          isOpen={isPortalTargetOpen}
+          onDismiss={() => (isPortalTargetOpen = false)}
+          portalTarget={portalTargetEl}
+        >
+          {#snippet children()}
+            <BottomSheetHeader
+              title="Price summary"
+              subtitle="Snap points are relative to the phone frame height"
+            />
+            <BottomSheetBody>
+              {#snippet children()}
+                <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
+                  <div style="display: flex; justify-content: space-between;">
+                    <Text>Subtotal</Text>
+                    <Text weight="semibold">₹2,000</Text>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <Text weight="semibold">Grand total</Text>
+                    <Text weight="semibold">₹2,000</Text>
+                  </div>
+                </div>
+              {/snippet}
+            </BottomSheetBody>
+            <BottomSheetFooter>
+              {#snippet children()}
+                <Button isFullWidth onClick={() => (isPortalTargetOpen = false)}>Continue</Button>
+              {/snippet}
+            </BottomSheetFooter>
+          {/snippet}
+        </BottomSheet>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 14: Content Height Adapts — checkout-like sidebar + main; sheet renders in main, height tracks content. -->
+<Story name="Content Height Adapts">
+  {#snippet template()}
+    <div
+      style="
+        display: flex;
+        width: 1024px;
+        height: 616px;
+        border-radius: var(--border-radius-large);
+        overflow: hidden;
+        box-shadow: 0 8px 32px hsla(217, 56%, 17%, 0.18);
+        font-family: var(--font-family-text);
+      "
+    >
+      <!-- ===== SIDEBAR ===== -->
+      <div
+        style="
+          width: 340px;
+          flex-shrink: 0;
+          background: var(--surface-background-primary-intense);
+          padding: var(--spacing-6);
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-5);
+        "
+      >
+        <div style="display: flex; align-items: center; gap: var(--spacing-3);">
+          <div
+            style="width: 40px; height: 40px; border-radius: var(--border-radius-medium); background: var(--surface-background-gray-intense); display: flex; align-items: center; justify-content: center;"
+          >
+            <Text weight="semibold">R</Text>
+          </div>
+          <div>
+            <Text weight="semibold" color="surface.text.staticWhite.normal">Razorpay</Text>
+            <TrustBadge label="Trusted Business" />
+          </div>
+        </div>
+
+        <div
+          style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-5); display: flex; flex-direction: column; gap: var(--spacing-2);"
+        >
+          <Text size="small" color="surface.text.staticWhite.muted">Price Summary</Text>
+          <Amount value={2138.51} currency="AED" type="heading" size="large" color="surface.text.staticWhite.normal" />
+          <Text size="xsmall" color="surface.text.staticWhite.muted">
+            Order amount updated as Tabby charges in AED
+          </Text>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+          <div style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-4);">
+            <Text size="small" color="surface.text.staticWhite.normal">Using as +91 93478 41747</Text>
+          </div>
+          <div style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-4);">
+            <Text size="small" color="surface.text.staticWhite.normal">Offers on IndusInd, SBI …</Text>
+          </div>
+        </div>
+
+        <div style="margin-top: auto;">
+          <Text size="xsmall" color="surface.text.staticWhite.muted">Money Back Promise by Razorpay</Text>
+        </div>
+      </div>
+
+      <!-- ===== MAIN — sheet portals into here ===== -->
+      <div
+        bind:this={autoModePortalEl}
+        style="
+          position: relative;
+          flex: 1;
+          background: var(--surface-background-gray-intense);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="flex: 1; padding: var(--spacing-8) var(--spacing-7); display: flex; flex-direction: column; gap: var(--spacing-5); align-items: center; overflow: auto;">
+          <Heading size="medium">Choose a payment method</Heading>
+          <Text color="surface.text.gray.subtle" textAlign="center">
+            Split your purchase into interest-free instalments
+          </Text>
+          <div style="width: 100%; max-width: 360px; margin-top: var(--spacing-5);">
+            <Button isFullWidth onClick={() => (isAutoModeOpen = true)}>
+              Select instalment plan
+            </Button>
+          </div>
+        </div>
+
+        <BottomSheet
+          isOpen={isAutoModeOpen}
+          onDismiss={() => (isAutoModeOpen = false)}
+          portalTarget={autoModePortalEl}
+        >
+          {#snippet children()}
+            <BottomSheetHeader title="Instalment plans" subtitle="Sheet height follows content" />
+            <BottomSheetBody>
+              {#snippet children()}
+                <div style="display: flex; gap: var(--spacing-3); margin-bottom: var(--spacing-4);">
+                  <Button size="small" onClick={() => (autoModeItemCount += 1)}>Add plan</Button>
+                  <Button
+                    size="small"
+                    variant="secondary"
+                    onClick={() => (autoModeItemCount = Math.max(0, autoModeItemCount - 1))}
+                  >
+                    Remove plan
+                  </Button>
+                </div>
+                {#each Array.from({ length: autoModeItemCount }), index}
+                  <div style="padding: var(--spacing-4) 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <Text weight="semibold">{index + 1} × monthly</Text>
+                      <Amount value={2138.51 / (index + 1)} currency="AED" type="body" size="medium" />
+                    </div>
+                    {#if index < autoModeItemCount - 1}
+                      <div style="margin-top: var(--spacing-4);"><Divider /></div>
+                    {/if}
+                  </div>
+                {/each}
+              {/snippet}
+            </BottomSheetBody>
+            <BottomSheetFooter>
+              {#snippet children()}
+                <Button isFullWidth onClick={() => (isAutoModeOpen = false)}>Continue</Button>
+              {/snippet}
+            </BottomSheetFooter>
+          {/snippet}
+        </BottomSheet>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 15: With Split Portal Targets — backdrop covers a wider frame, surface stays nested. -->
+<Story name="With Split Portal Targets">
+  {#snippet template()}
+    <div style="max-width: 640px;">
+      <Text marginBottom="spacing.5">
+        Pass <b>backdropPortalTarget</b> when the dim overlay must cover a wider ancestor (e.g. a
+        checkout sidebar + main pane) while the sheet surface stays portaled into a nested
+        container. The surface host needs its own stacking context (z-index: 1) so it paints above
+        the backdrop.
+      </Text>
+
+      <div
+        bind:this={backdropPortalTargetEl}
+        style="
+          position: relative;
+          width: 100%;
+          height: 420px;
+          overflow: hidden;
+          border-radius: var(--border-radius-large);
+          border: 1px solid var(--surface-border-gray-muted);
+          background: var(--surface-background-gray-subtle);
+          box-shadow: var(--elevation-low);
+        "
+      >
+        <div style="display: flex; height: 100%;">
+          <aside
+            style="
+              width: 176px;
+              flex-shrink: 0;
+              padding: var(--spacing-6) var(--spacing-5);
+              border-right: 1px solid var(--surface-border-gray-muted);
+              background: var(--surface-background-gray-moderate);
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-4);
+            "
+          >
+            <Text size="xsmall" weight="semibold" color="surface.text.gray.muted">CHECKOUT</Text>
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+              <Text size="small" color="surface.text.gray.subtle">Contact</Text>
+              <Text size="small" color="surface.text.gray.subtle">Delivery address</Text>
+              <Text size="small" weight="semibold">Payment</Text>
+            </div>
+            <div style="margin-top: auto;">
+              <Text size="xsmall" color="surface.text.gray.muted">
+                Dims with the surface when the sheet opens.
+              </Text>
+            </div>
+          </aside>
+
+          <div
+            bind:this={surfacePortalTargetEl}
+            style="
+              position: relative;
+              z-index: 1;
+              flex: 1;
+              padding: var(--spacing-7) var(--spacing-6);
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-5);
+            "
+          >
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+              <Heading size="medium">Pay ₹2,499</Heading>
+              <Text color="surface.text.gray.muted" size="small">
+                Choose a payment method to continue.
+              </Text>
+            </div>
+            <Button isFullWidth onClick={() => (isSplitPortalOpen = true)}>
+              Select bank for Netbanking
+            </Button>
+
+            <BottomSheet
+              isOpen={isSplitPortalOpen}
+              onDismiss={() => (isSplitPortalOpen = false)}
+              portalTarget={surfacePortalTargetEl}
+              backdropPortalTarget={backdropPortalTargetEl}
+            >
+              {#snippet children()}
+                <BottomSheetHeader title="Select bank" subtitle="Netbanking" />
+                <BottomSheetBody hasActionList>
+                  {#snippet children()}
+                    <ActionList>
+                      {#snippet children()}
+                        <ActionListItem title="HDFC Bank" value="hdfc" />
+                        <ActionListItem title="ICICI Bank" value="icici" />
+                        <ActionListItem title="State Bank of India" value="sbi" />
+                        <ActionListItem title="Axis Bank" value="axis" />
+                        <ActionListItem title="Kotak Mahindra Bank" value="kotak" />
+                      {/snippet}
+                    </ActionList>
+                  {/snippet}
+                </BottomSheetBody>
+              {/snippet}
+            </BottomSheet>
+          </div>
+        </div>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 16: Non-Dismissible BottomSheet — locked open, must use footer buttons.
      The exported storyName in React is verbatim "Non-Dismissible BottomSheet" — DO NOT change. -->
 <Story name="Non-Dismissible BottomSheet">
   {#snippet template()}

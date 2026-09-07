@@ -19,6 +19,7 @@
       isFullWidth: false,
       icon: undefined,
       iconPosition: 'left',
+      accessibilityLabel: undefined,
     },
     argTypes: {
       children: {
@@ -46,7 +47,7 @@
       },
       color: {
         control: 'select',
-        options: ['primary', 'white', 'positive', 'negative'],
+        options: ['primary', 'white', 'neutral', 'positive', 'negative'],
         description: 'Color theme of the button',
         table: {
           defaultValue: { summary: 'primary' },
@@ -88,6 +89,13 @@
         description: 'Position of the icon relative to the button text',
         table: {
           defaultValue: { summary: 'left' },
+        },
+      },
+      accessibilityLabel: {
+        control: 'text',
+        description: 'Accessible label for the button. Required for icon-only buttons',
+        table: {
+          defaultValue: { summary: 'undefined' },
         },
       },
       loadingType: {
@@ -139,6 +147,7 @@
     console.log('Loading complete!');
     isDefiniteLoadingDemoActive = false;
   }
+
 </script>
 
 <!-- Playground story - auto-renders Button with args -->
@@ -157,21 +166,27 @@
   args={{ children: 'Loading...', isLoading: true, loadingType: 'indefinite' }}
 />
 
-<Story name="Indefinite Loading Sizes" asChild>
-  <div class="display-flex gap-spacing-4 items-center">
-    <Button size="xsmall" isLoading loadingType="indefinite">Pay Now</Button>
-    <Button size="small" isLoading loadingType="indefinite">Pay Now</Button>
-    <Button size="medium" isLoading loadingType="indefinite">Pay Now</Button>
-    <Button size="large" isLoading loadingType="indefinite">Pay Now</Button>
-  </div>
+<Story name="Indefinite Loading Sizes">
+  {#snippet template(args)}
+    {@const { size, loadingType, isLoading, children, ...rest } = args}
+    <div class="display-flex gap-spacing-4 items-center">
+      <Button size="xsmall" isLoading loadingType="indefinite" {...rest}>Pay Now</Button>
+      <Button size="small" isLoading loadingType="indefinite" {...rest}>Pay Now</Button>
+      <Button size="medium" isLoading loadingType="indefinite" {...rest}>Pay Now</Button>
+      <Button size="large" isLoading loadingType="indefinite" {...rest}>Pay Now</Button>
+    </div>
+  {/snippet}
 </Story>
 
-<Story name="Indefinite Loading Variants" asChild>
-  <div class="display-flex gap-spacing-4 items-center">
-    <Button variant="primary" isLoading loadingType="indefinite">Primary</Button>
-    <Button variant="secondary" isLoading loadingType="indefinite">Secondary</Button>
-    <Button variant="tertiary" isLoading loadingType="indefinite">Tertiary</Button>
-  </div>
+<Story name="Indefinite Loading Variants">
+  {#snippet template(args)}
+    {@const { variant, loadingType, isLoading, children, ...rest } = args}
+    <div class="display-flex gap-spacing-4 items-center">
+      <Button variant="primary" isLoading loadingType="indefinite" {...rest}>Primary</Button>
+      <Button variant="secondary" isLoading loadingType="indefinite" {...rest}>Secondary</Button>
+      <Button variant="tertiary" isLoading loadingType="indefinite" {...rest}>Tertiary</Button>
+    </div>
+  {/snippet}
 </Story>
 
 <!-- Definite loading: left-to-right progress overlay, content stays visible -->
@@ -185,28 +200,37 @@
   }}
 />
 
-<Story name="Definite Loading Variants" asChild>
-  <div class="display-flex gap-spacing-4 items-center">
-    <Button variant="primary" loadingType="definite" loadingTimer={3000}>Primary</Button>
-    <Button variant="primary" color="positive" loadingType="definite" loadingTimer={3000}>
-      Positive
-    </Button>
-    <Button variant="primary" color="negative" loadingType="definite" loadingTimer={3000}>
-      Negative
-    </Button>
-  </div>
+<Story
+  name="Definite Loading Variants"
+  args={{ loadingTimer: 3000 }}
+  argTypes={{
+    variant: { table: { disable: true } },
+    color: { table: { disable: true } },
+  }}
+>
+  {#snippet template(args)}
+    {@const { variant, color, loadingType, children, ...rest } = args}
+    <div class="display-flex gap-spacing-4 items-center">
+      <Button variant="primary" loadingType="definite" {...rest}>Primary</Button>
+      <Button variant="primary" color="positive" loadingType="definite" {...rest}>Positive</Button>
+      <Button variant="primary" color="negative" loadingType="definite" {...rest}>Negative</Button>
+    </div>
+  {/snippet}
 </Story>
 
-<Story name="Definite Loading With Complete Callback" asChild>
-  <Button
-    size="large"
-    loadingType={isDefiniteLoadingDemoActive ? 'definite' : 'indefinite'}
-    loadingTimer={isDefiniteLoadingDemoActive ? 2500 : undefined}
-    onClick={startDefiniteLoadingDemo}
-    onLoadingComplete={handleDefiniteLoadingComplete}
-  >
-    {isDefiniteLoadingDemoActive ? 'Processing' : 'Complete in 2.5s'}
-  </Button>
+<Story name="Definite Loading With Complete Callback" args={{ size: 'large' }}>
+  {#snippet template(args)}
+    {@const { children, ...rest } = args}
+    <Button
+      {...rest}
+      loadingType={isDefiniteLoadingDemoActive ? 'definite' : 'indefinite'}
+      loadingTimer={isDefiniteLoadingDemoActive ? 2500 : undefined}
+      onClick={startDefiniteLoadingDemo}
+      onLoadingComplete={handleDefiniteLoadingComplete}
+    >
+      {isDefiniteLoadingDemoActive ? 'Processing' : 'Complete in 2.5s'}
+    </Button>
+  {/snippet}
 </Story>
 
 <Story name="Disabled" args={{ children: 'Disabled Button', isDisabled: true }} />
@@ -214,17 +238,20 @@
 <Story name="Full Width" args={{ children: 'Full Width Button', isFullWidth: true }} />
 
 <!-- Icon Stories -->
-<Story name="With Icon Left" asChild>
-  <Button icon={SearchIcon} iconPosition="left">Search</Button>
-</Story>
+<Story
+  name="With Icon Left"
+  args={{ children: 'Search', icon: SearchIcon, iconPosition: 'left' }}
+/>
 
-<Story name="With Icon Right" asChild>
-  <Button icon={CloseIcon} iconPosition="right">Close</Button>
-</Story>
+<Story
+  name="With Icon Right"
+  args={{ children: 'Close', icon: CloseIcon, iconPosition: 'right' }}
+/>
 
-<Story name="Icon Only" asChild>
-  <Button icon={SearchIcon} accessibilityLabel="Search" />
-</Story>
+<Story
+  name="Icon Only"
+  args={{ children: undefined, icon: SearchIcon, accessibilityLabel: 'Search' }}
+/>
 
 <Story name="Icon Variants" asChild>
   <div class="display-flex gap-spacing-4 items-center">
@@ -267,11 +294,16 @@
 <!-- Avatar group renders after the text, only on large buttons -->
 <Story name="With Avatar Group" args={{ children: 'Shared with', size: 'large', avatars: sampleAvatars }} />
 
-<Story name="Avatar Group With Icon" asChild>
-  <Button size="large" icon={SearchIcon} iconPosition="left" avatars={sampleAvatars}>
-    Reviewers
-  </Button>
-</Story>
+<Story
+  name="Avatar Group With Icon"
+  args={{
+    children: 'Reviewers',
+    size: 'large',
+    icon: SearchIcon,
+    iconPosition: 'left',
+    avatars: sampleAvatars,
+  }}
+/>
 
 <Story name="Avatar Group Ignored Below Large" asChild>
   <div class="display-flex flex-col gap-spacing-4 items-start">

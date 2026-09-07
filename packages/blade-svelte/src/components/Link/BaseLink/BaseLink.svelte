@@ -1,55 +1,15 @@
 <script lang="ts">
-  import type { Snippet, Component } from 'svelte';
   import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, type AriaRoles } from '@razorpay/blade-core/utils';
   import { useInteraction } from '../../../utils/useInteraction';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
   import type { TextColors } from '../../Typography/BaseText/types';
-  import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import { getBaseLinkClasses, getBaseLinkContentClasses, getBaseLinkTemplateClasses, getLinkColorToken, getLinkTextSizes, getLinkIconSizeMap, type ActionStatesType } from '@razorpay/blade-core/styles';
-  import type { IconProps, IconColor } from '../../Icons/types';
+  import type { IconColor } from '../../Icons/types';
+  import type { BaseLinkProps } from './types';
 
   // Get template classes via function call to prevent Svelte tree-shaking
   const linkClasses = getBaseLinkTemplateClasses();
-
-  // Icon component type - Svelte component that accepts IconProps
-  type IconComponent = Component<IconProps>;
-
-  interface BaseLinkProps extends StyledPropsBlade {
-    children?: Snippet | string;
-    icon?: IconComponent;
-    iconPosition?: 'left' | 'right';
-    variant?: 'anchor' | 'button';
-    href?: string;
-    target?: string;
-    rel?: string;
-    isDisabled?: boolean;
-    onClick?: (event: MouseEvent) => void;
-    color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-    size?: 'xsmall' | 'small' | 'medium' | 'large';
-    accessibilityProps?: {
-      label?: string;
-      describedBy?: string;
-      controls?: string;
-      expanded?: boolean;
-    };
-    testID?: string;
-    htmlTitle?: string;
-    opacity?: number;
-    // Event handlers
-    onBlur?: (event: FocusEvent) => void;
-    onFocus?: (event: FocusEvent) => void;
-    onMouseLeave?: (event: MouseEvent) => void;
-    onMouseMove?: (event: MouseEvent) => void;
-    onPointerDown?: (event: PointerEvent) => void;
-    onPointerEnter?: (event: PointerEvent) => void;
-    onTouchStart?: (event: TouchEvent) => void;
-    onTouchEnd?: (event: TouchEvent) => void;
-    onMouseDown?: (event: MouseEvent) => void;
-    onMouseUp?: (event: MouseEvent) => void;
-    // Analytics attributes
-    [key: `data-analytics-${string}`]: string;
-  }
 
   let {
     children,

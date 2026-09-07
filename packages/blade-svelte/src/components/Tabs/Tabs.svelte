@@ -43,7 +43,7 @@
     focusedValue = value;
   };
 
-  const setSelectedValue = (newValue: string, skipOnChange?: boolean) => {
+  const setSelectedValue = (newValue: string, skipOnChange: boolean | undefined = undefined) => {
     if (controlledValue === undefined) {
       internalValue = newValue;
     }

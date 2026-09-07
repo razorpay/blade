@@ -54,6 +54,8 @@
     onBlur,
     isDisabled = false,
     isRequired = false,
+    isReadOnly = false,
+    spellCheck,
     leadingIcon,
     prefix,
     trailingInteractionElement,
@@ -102,7 +104,10 @@
 
   // Controlled vs uncontrolled: seed internal state from defaultValue once. When
   // `value` is provided the input is controlled and `currentValue` reads it.
-  const isControlled = untrack(() => value !== undefined);
+  // Reactive (`$derived`) so a `value` that starts undefined and is supplied
+  // later (e.g. after an async fetch) still switches the input to controlled
+  // instead of staying uncontrolled forever.
+  const isControlled = $derived(value !== undefined);
   let internalValue = $state(untrack(() => defaultValue ?? ''));
   const currentValue = $derived(isControlled ? (value ?? '') : internalValue);
 
@@ -357,6 +362,8 @@
               value={currentValue}
               disabled={effectiveDisabled || undefined}
               required={isRequired || undefined}
+              readonly={isReadOnly || undefined}
+              spellcheck={spellCheck}
               maxlength={maxCharacters}
               tabindex={tabIndex}
               autocomplete={domAutoComplete}
@@ -383,6 +390,8 @@
               value={currentValue}
               disabled={effectiveDisabled || undefined}
               required={isRequired || undefined}
+              readonly={isReadOnly || undefined}
+              spellcheck={spellCheck}
               maxlength={maxCharacters}
               tabindex={tabIndex}
               autocomplete={domAutoComplete}

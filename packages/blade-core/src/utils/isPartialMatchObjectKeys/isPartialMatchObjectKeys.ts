@@ -3,7 +3,9 @@ import isObject from '../lodashButBetter/isObject';
 import { logger } from '../logger';
 
 export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends Record<number | string, unknown> ? DeepPartial<T[P]> : T[P];
+  [P in keyof T]?: NonNullable<T[P]> extends Record<number | string, unknown>
+    ? DeepPartial<NonNullable<T[P]>>
+    : T[P];
 };
 
 export const isPartialMatchObjectKeys = <ActualObject>({

@@ -105,6 +105,10 @@ const _Dropdown = (
   const isTagDismissedRef = React.useRef<{ value: boolean } | null>({ value: false });
   const visibleTagsCountRef = React.useRef<{ value: number }>({ value: 0 });
   const dropdownContainerRef = React.useRef<HTMLDivElement>(null);
+  // set by TreeView when it is the overlay content; stays null for every other content
+  const treeViewControllerRef = React.useRef<
+    DropdownContextType['treeViewControllerRef']['current']
+  >(null);
 
   const dropdownBaseId = useId('dropdown');
   const isDropdownOpenRef = React.useRef(isOpenControlled);
@@ -210,6 +214,7 @@ const _Dropdown = (
       isControlled,
       setIsControlled,
       isTagDismissedRef,
+      treeViewControllerRef,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [

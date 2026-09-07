@@ -325,6 +325,7 @@ export class RzpGlassMount {
       'uReverse',
       'uBlendWithOriginal',
       'uLightIntensity',
+      'uSpecularTint',
       'uFrameCount',
       'uLightStartFrame',
       'uNumSegments',
@@ -560,6 +561,11 @@ export class RzpGlassMount {
     // Set all config-based uniforms
     this.setUniformValues(this.config);
 
+    // Specular tint defaults to white (no tint) when not configured
+    if (this.config.specularTint === undefined) {
+      gl.uniform3f(this.uniformLocations.uSpecularTint, 1.0, 1.0, 1.0);
+    }
+
     // Explicitly set pan uniform (vertex shader uniform)
     gl.uniform2f(this.uniformLocations.uPan, this.config.panX, this.config.panY);
 
@@ -645,6 +651,16 @@ export class RzpGlassMount {
       if (!this.areUniformValuesEqual(this.uniformCache[panCacheKey], panValue)) {
         this.uniformCache[panCacheKey] = panValue;
         gl.uniform2f(this.uniformLocations.uPan, panValue[0], panValue[1]);
+      }
+    }
+
+    // Handle special specularTint uniform (vec3 in fragment shader)
+    if (config.specularTint !== undefined) {
+      const tintCacheKey = 'specularTint';
+      if (!this.areUniformValuesEqual(this.uniformCache[tintCacheKey], config.specularTint)) {
+        this.uniformCache[tintCacheKey] = config.specularTint;
+        const [r, g, b] = config.specularTint;
+        gl.uniform3f(this.uniformLocations.uSpecularTint, r, g, b);
       }
     }
 

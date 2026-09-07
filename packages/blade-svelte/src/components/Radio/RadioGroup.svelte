@@ -60,7 +60,7 @@
       if (val === undefined || checkedValue === undefined) return false;
       return checkedValue === val;
     },
-    setValue(val: string, event?: Event): void {
+    setValue(val: string, event: Event | undefined = undefined): void {
       if (isDisabled) return;
       if (!isControlled) {
         internalValue = val;

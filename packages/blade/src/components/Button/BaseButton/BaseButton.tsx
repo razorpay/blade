@@ -25,7 +25,7 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
-import type { IconComponent } from '~components/Icons';
+import type { IconComponent, IconSize } from '~components/Icons';
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -34,6 +34,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
+import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
@@ -88,6 +89,22 @@ type BaseButtonCommonProps = {
     | 'information'
     | 'neutral'
     | 'transparent';
+  /**
+   * Overrides the size-derived border radius. Used by FloatingActionButton to
+   * render a pill. `round` is excluded because a percentage radius distorts on
+   * a non-square button.
+   */
+  _borderRadius?: Exclude<keyof Theme['border']['radius'], 'round'>;
+  /**
+   * Overrides the size-derived icon size. Used by FloatingActionButton, whose
+   * icon is larger than a `size="large"` Button's.
+   */
+  _iconSize?: IconSize;
+  /**
+   * Overrides the color of the loading spinner. Used by FloatingActionButton,
+   * whose contrast requirements differ from `Button`'s.
+   */
+  _spinnerColor?: BaseSpinnerProps['color'];
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -119,6 +136,41 @@ type BaseButtonColorTokenModifiers = {
   color: BaseButtonProps['color'];
 };
 
+/**
+ * `white` and `transparent` are not feedback colors, so the token factories are
+ * still called with `primary` and the value is looked up under its own key
+ * instead of under `base`.
+ */
+const isStaticOrTransparentColor = (
+  color: BaseButtonProps['color'],
+): color is 'white' | 'transparent' => color === 'white' || color === 'transparent';
+
+/**
+ * The filled `neutral` surface needs inverted content and a heavier inner shadow
+ * than the shared feedback treatment, so its `primary` emphasis is looked up
+ * under a dedicated key. The remaining emphases fall back to `base`.
+ */
+const isFilledNeutral = (
+  color: BaseButtonProps['color'],
+  variant: NonNullable<BaseButtonProps['variant']>,
+): boolean => color === 'neutral' && variant === 'primary';
+
+const getSpinnerColor = ({
+  variant,
+  color,
+}: {
+  variant: NonNullable<BaseButtonProps['variant']>;
+  color: NonNullable<BaseButtonProps['color']>;
+}): BaseSpinnerProps['color'] => {
+  if (color !== 'primary' && color !== 'transparent' && color in spinnerColor) {
+    return spinnerColor[color as Exclude<keyof typeof spinnerColor, 'base'>][
+      variant as 'primary' | 'secondary'
+    ];
+  }
+
+  return spinnerColor.base[variant];
+};
+
 const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
   if (isReactNative()) {
     return undefined; // as property doesn't work with react native
@@ -140,7 +192,7 @@ export const getBackgroundColorToken = ({
 
   // For white and transparent colors, we use 'primary' as the base color
   // since the actual token lookup uses the white/transparent specific paths
-  const gradientColor = color === 'white' || color === 'transparent' || !color ? 'primary' : color;
+  const gradientColor = isStaticOrTransparentColor(color) || !color ? 'primary' : color;
   const tokens = backgroundGradient(gradientColor);
 
   if (color === 'white') {
@@ -173,11 +225,15 @@ export const getBoxShadowToken = ({
   color,
 }: BaseButtonColorTokenModifiers): ButtonBoxShadow => {
   const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
-  const tokenColor = color === 'white' || color === 'transparent' || !color ? 'primary' : color;
+  const tokenColor = isStaticOrTransparentColor(color) || !color ? 'primary' : color;
   const tokens = boxShadow(tokenColor);
 
   if (color === 'white') {
     return tokens.white[variant][_state];
+  }
+
+  if (isFilledNeutral(color, variant)) {
+    return tokens.neutral.primary[_state];
   }
 
   if (color === 'transparent') {
@@ -205,6 +261,10 @@ export const getTextColorToken = ({
 
   if (color === 'white') {
     return tokens.white[variant][_state];
+  }
+
+  if (isFilledNeutral(color, variant)) {
+    return tokens.neutral.primary[_state];
   }
 
   if (color === 'transparent') {
@@ -237,6 +297,8 @@ const getProps = ({
   variant,
   color,
   hasIcon,
+  _borderRadius,
+  _iconSize,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -246,6 +308,8 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
+  _borderRadius?: BaseButtonCommonProps['_borderRadius'];
+  _iconSize?: BaseButtonCommonProps['_iconSize'];
 }): BaseButtonStyleProps => {
   if (
     variant === 'tertiary' &&
@@ -367,7 +431,9 @@ const getProps = ({
   };
 
   const props: BaseButtonStyleProps = {
-    iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
+    iconSize:
+      _iconSize ??
+      (isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size]),
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
@@ -416,8 +482,15 @@ const getProps = ({
       getBackgroundColorToken({ variant, color, state: 'focus' }),
     ),
     focusBoxShadow: getBoxShadow('focus', color),
-    focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
-    borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
+    // The system focus ring is a faded primary blue, which the design replaces
+    // with a faded neutral ring on the filled neutral surface.
+    focusRingColor: getIn(
+      theme.colors,
+      isFilledNeutral(color, variant)
+        ? 'interactive.border.neutral.faded'
+        : 'surface.border.primary.muted',
+    ),
+    borderRadius: makeBorderSize(theme.border.radius[_borderRadius ?? buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
     ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
@@ -484,6 +557,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     accessibilityProps,
     onTouchEnd,
     onTouchStart,
+    _borderRadius,
+    _iconSize,
+    _spinnerColor,
     ...rest
   },
   ref,
@@ -577,6 +653,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     theme,
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
+    _borderRadius,
+    _iconSize,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
@@ -779,13 +857,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             <BaseSpinner
               accessibilityLabel="Loading"
               size={spinnerSize}
-              color={
-                color && color !== 'primary' && color !== 'transparent' && color in spinnerColor
-                  ? spinnerColor[color as keyof typeof spinnerColor][
-                      variant as 'primary' | 'secondary'
-                    ]
-                  : spinnerColor.base[variant]
-              }
+              color={_spinnerColor ?? getSpinnerColor({ variant, color })}
             />
           </BaseBox>
         ) : null}

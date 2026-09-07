@@ -1,20 +1,6 @@
 /* ───────────────────────── ActionList ───────────────────────── */
 
 /*
- * Outer StyledActionList box — rendered ONLY when the list is NOT inside a
- * BottomSheet. Mirrors React `getBaseActionListStyles`: thin gray border,
- * medium radius, mid-raised elevation. Inside a BottomSheet these are dropped
- * (ActionList renders the wrapper directly) so BottomSheetBody owns the scroll.
- */
-.box {
-  border-width: var(--border-width-thin);
-  border-style: solid;
-  border-color: var(--surface-border-gray-normal);
-  border-radius: var(--border-radius-medium);
-  box-shadow: var(--elevation-mid-raised);
-}
-
-/*
  * ListBox scroll wrapper — standalone (not-in-sheet) branch.
  * React `getBaseListBoxWrapperStyles`: max-height size[300]=300px, spacing.3
  * padding, overflow-y auto.

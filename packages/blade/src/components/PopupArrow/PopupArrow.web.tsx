@@ -15,6 +15,12 @@ const PopupArrow = React.forwardRef<SVGSVGElement, PopupArrowProps>(
         fill={fillColor}
         stroke={strokeColor}
         strokeWidth={strokeWidth ?? 0}
+        /**
+         * `tipRadius` is a ratio, not a px value — FloatingArrow scales it against the arrow's
+         * own width/height, so the rounding grows much faster than the token number suggests.
+         * `xsmall` (4) visibly bows the arrow's edges; `2xsmall` (2) softens the tip while
+         * keeping the sides straight.
+         */
         tipRadius={theme.border.radius['2xsmall']}
         style={{ ...style }}
       />

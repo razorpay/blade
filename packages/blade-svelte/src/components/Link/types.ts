@@ -1,0 +1,31 @@
+import type { Snippet } from 'svelte';
+import type { IconComponent } from '../Icons/iconMap';
+
+export type LinkProps = {
+  variant?: 'anchor' | 'button';
+  icon?: IconComponent;
+  color?: 'primary' | 'white' | 'neutral' | 'negative' | 'positive';
+  iconPosition?: 'left' | 'right';
+  isDisabled?: boolean;
+  onClick?: (event: MouseEvent) => void;
+  href?: string;
+  target?: string;
+  rel?: string;
+  accessibilityLabel?: string;
+  'aria-describedby'?: string;
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  testID?: string;
+  htmlTitle?: string;
+  children?: Snippet | string;
+  onBlur?: (event: FocusEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+  onMouseLeave?: (event: MouseEvent) => void;
+  onMouseMove?: (event: MouseEvent) => void;
+  onPointerDown?: (event: PointerEvent) => void;
+  onPointerEnter?: (event: PointerEvent) => void;
+  onTouchStart?: (event: TouchEvent) => void;
+  onTouchEnd?: (event: TouchEvent) => void;
+  onMouseDown?: (event: MouseEvent) => void;
+  onMouseUp?: (event: MouseEvent) => void;
+  [key: `data-analytics-${string}`]: string;
+};

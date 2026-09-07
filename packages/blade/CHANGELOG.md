@@ -1,5 +1,210 @@
 # @razorpay/blade
 
+## 12.121.1
+
+### Patch Changes
+
+- cdd0bf164: fix(ColorInput): align swatch sizing, spacing and radius with the Figma spec
+
+  - Resize the colour swatch to 16px (small), 20px (medium) and 24px (large), down from 24/28/40
+  - Inset the swatch 8px from the field edge, and 12px at large
+  - Reduce the swatch-to-hex gap to 8px at medium and large, so it is consistent across all sizes
+  - Use the 32% disabled opacity token instead of a hardcoded 50%
+  - Round the outer corners at 12px for `size="large"` instead of forcing 8px at every size
+
+- cdd0bf164: fix(ColorInput): align swatch sizing, spacing and radius with Figma spec
+
+## 12.121.0
+
+### Minor Changes
+
+- 4dd93e1a4: feat(FloatingActionButton): rename the dark color from `black` to `neutral` and align it with the neutral button tokens
+
+  `<FloatingActionButton color="black" />` becomes `<FloatingActionButton color="neutral" />`. The dark FAB is now the same treatment as a filled `neutral` button — it reads its surface from `interactive.background.neutral.*` and its label, icon and spinner from `interactive.*.onNeutral.*`, so it inverts with the theme instead of always being black on white. The hover surface is now slightly translucent and the disabled surface is lighter, matching the updated design.
+
+  On focus, the filled `neutral` surface now draws its ring from `interactive.border.neutral.faded` instead of the faded primary blue used everywhere else, matching the design.
+
+  `color="black"` was never exposed on `Button` and has no consumers, so it is removed rather than deprecated.
+
+- 4dd93e1a4: feat(Spinner): add an `onNeutral` color for spinners on a filled neutral surface
+
+  `<Spinner color="onNeutral" />` reads `interactive.icon.onNeutral.normal`, which inverts with the theme. Every other spinner color is either static (`white`) or tracks the page surface (`neutral`, the feedback colors), so none of them stayed visible on a filled `neutral` surface, which is black on light and white on dark.
+
+  A loading `Button color="neutral" variant="primary"` and `FloatingActionButton color="neutral"` now use it. Both previously hardcoded a static white spinner, which disappeared against the white surface in dark mode. Fixes #3915 for the `neutral` surface.
+
+## 12.120.0
+
+### Minor Changes
+
+- 9edbd8f33: update design tokens from Figma
+
+  Added 32 tokens and removed 0 tokens.
+
+## 12.119.1
+
+### Patch Changes
+
+- 83be08d99: feat(tokens): add new tokens - `onNeutral` has been added to `interactive.text` & `interactive.icon`
+
+## 12.119.0
+
+### Minor Changes
+
+- d20559e43: feat(blade): add razorsense dark mode
+
+### Patch Changes
+
+- 15e71cc6b: fix(Button): use `interactive.border.staticBlack.fadedHighlighted` for the white primary button's border shadow
+
+  The white `primary` button's second inner shadow — the 0.5px spread one that draws the button's border — was painted with `interactive.border.staticWhite.default`, an opaque white. Figma's `_components/Button/White/Primary/Default` effect style now resolves both of its inner shadows to `interactive.border.staticBlack.fadedHighlighted`, so the token map is brought in line with the design source.
+
+  This applies to the `default` and `highlighted` states, which between them cover the button's rest, hover, active, and focus-ring appearance. Web and native both read the same `boxShadow` token map, so the change lands on both platforms. The white `secondary` and `tertiary` variants are untouched and keep `interactive.border.staticWhite.highlighted`.
+
+  > **Visual change (no API change):** the border of every white primary button shifts from opaque white to a faded black. `ButtonGroup` renders white buttons too, so its snapshots move with it.
+
+## 12.118.0
+
+### Minor Changes
+
+- 3cd283e97: feat(FloatingActionButton): add FloatingActionButton component
+
+  Adds `FloatingActionButton`, a persistent pill-shaped button anchored to the bottom of the viewport for the single most important action on a screen. It supports `primary`, `white` and `black` colors, anchors via `placement` (`bottom-end`, `bottom-start`, `bottom`) with a configurable `offset` and `zIndex`, and renders either an icon with a short label or an icon on its own, in which case `accessibilityLabel` is required. Positioning is `fixed` on web and `absolute` with safe-area insets on React Native.
+
+### Patch Changes
+
+- 60b8ad0c8: fix(CounterInput): prevent value clipping by reserving two digits minimum and expanding for larger values; add tabular-nums font variant for stable digit widths
+
+## 12.117.0
+
+### Minor Changes
+
+- bb4a9fc1f: fix(SpotlightPopoverTour): match the spotlight to the highlighted component, remove the popover's arrow seam, and even out the arrow-to-spotlight gap
+
+  Three visual fixes. All three apply to light and dark — none introduces a colour-scheme branch.
+
+  **1. `SpotlightPopoverTour` — the spotlight now takes the shape of what it highlights.**
+  `TourMask` hardcoded its corner radius to `theme.spacing[2]` (4px — a _spacing_ token used as a radius), so the spotlight was drawn at 4px around a soft-cornered `Card`, a pill, or a square button alike, and nothing in the public API could change it. The mask now derives its radius from the spotlit element:
+
+  - the element has a corner radius → the spotlight takes **the same radius**;
+  - the element draws no corner at all (e.g. the step highlights plain text) → the spotlight falls back to `border.radius.large`, matching the popover, instead of squaring off to a hard corner.
+
+  Because `SpotlightPopoverTourStep` clones its child to attach a ref, consumers commonly wrap their UI in a layout element just to forward one. Measuring that wrapper is wrong twice over: it has no corner radius to inherit, and a wrapper stretched by its parent's layout (e.g. `alignItems="stretch"` in a flex row) is taller than the component inside it — which left the spotlight's padding uneven, 6px on three sides and 18px at the bottom. So when the step's element paints nothing itself and wraps a single child that fills it on at least one axis, the spotlight traces that child instead, for both geometry and radius. The padding is now even on all four sides. The fill check stops it shrinking onto an inner element that merely happens to be first — a wrapper around narrower content is still measured as the wrapper.
+
+  > **⚠️ Visual change (no API break):** every existing web tour's spotlight will change shape, and will now differ per step depending on what that step highlights. This is the intended behaviour. `SpotlightPopoverTourMaskRect` gains an optional `borderRadius` field (internal to the component).
+  >
+  > React Native is unchanged here — it measures via `measureInWindow`, which reports geometry but no style, so there is no computed radius to read. The native mask keeps its existing radius; matching it there needs an explicit prop and is left as a follow-up.
+
+  **2. `SpotlightPopoverTour` — the popover no longer shows a line where the arrow meets the card.**
+  `TourPopover` painted the arrow with `popup.background.gray.subtle` while the card body uses `popup.background.gray.moderate`, so a visible seam ran along the junction. `Popover` already passes the matching token — this was drift introduced in the v11 → v12 popup-token migration, where the card was moved to `gray.moderate` and the tour's arrow was missed. Matching the fill token removes the colour step, but a line survived it: the popup surface carries a 1px inset hairline (`getPopupBoxShadowString`) on **every** edge, including the one the arrow sits on — so the container's own border was drawn straight across the join and the arrow still read as a separate shape stuck on top.
+
+  `TourPopover` was passing only `fillColor` to its arrow. `Popover` passes four props, and the other three are what close the join: a `strokeColor` so the outline continues around the arrow, a non-zero `strokeWidth` (which also offsets the arrow onto the container edge so its fill masks the hairline beneath it), and a `translateY(-1px)` nudge. Bringing the tour to parity with `Popover` makes the body and arrow read as one container with a single outline.
+
+  > React Native is intentionally left alone here. Its `PopupArrow` draws an opaque backing path (`surface.background.gray.intense`) beneath the fill and adds a stroke, so swapping the fill token alone does not make the arrow match the card — it only moves the mismatch (measured on the dark theme: from ~2/255 darker than the card to ~3/255 lighter). Fixing native means addressing that backing path, and is left as a follow-up.
+
+  **3. `SpotlightPopoverTour` — the gap between the arrow tip and the spotlight is now the same on every step.**
+  Nothing sets that gap directly; it falls out of two numbers measured from two different rectangles. `TourPopover` offsets the popup by `spacing[4] + ARROW_HEIGHT` (24px) so that, after the arrow's own 12px protrusion, the tip lands `GAP` (12px) from the anchor's edge — while `TourMask` draws the halo 6px past the traced element. The intended result is a constant 6px.
+
+  That held only when both measured the same element, and they did not. The mask resolves the step's ref through `resolveSpotlightTarget` to trace the painted component, but `TourPopover` set its position reference to the raw ref — so any overhang between the wrapper and the component inside it was added straight to the gap. A step whose wrapper is stretched by a flex row (`alignItems="stretch"`) sat visibly further from its spotlight than a step whose wrapper happened to match its card. `resolveSpotlightTarget` moves into the shared web utils and both now resolve through it, so the gap no longer depends on how a consumer wraps their markup.
+
+## 12.116.0
+
+### Minor Changes
+
+- dd8501226: feat(blade): add TreeView component
+
+  TreeView: hierarchical selectable list, standalone and inside Dropdown. First snowflake promotion (original Tree Hierarchy snowflake by Prarthana Gogoi).
+
+  - `TreeView`, `TreeViewItem`, `TreeViewLoadMore` exports (web-only; native entry throws a dev error)
+  - Standalone: single select (radio semantics) and multiple select with branch cascade, indeterminate checkboxes, roving tabindex keyboard map, `tree`/`treeitem` ARIA
+  - Inside Dropdown: drop-in replacement for ActionList - selection controlled through the trigger's `value`/`onChange` (SelectInput, FilterChipSelectInput), with an additive optional `selectedGroups` field in the onChange payload and smallest-describing-set display on the trigger
+  - Async children (`hasChildren` + `isLoading`) with selection inheritance, and `TreeViewLoadMore` for progressive loading at any depth
+
+### Patch Changes
+
+- dd8501226: fix(FilterChipSelectInput): sync selection when the controlled `value` changes
+
+  `FilterChipSelectInput` only mapped its controlled `value` to the dropdown selection on mount, so
+  later updates from the consumer were ignored — a "Clear" action in the dropdown footer emptied the
+  consumer's state but left the options (and the chip label) selected. The controlled `value` is now
+  the source of truth on every change, including when it is emptied.
+
+## 12.115.2
+
+### Patch Changes
+
+- 2db706e7a: Fixed `SpotlightPopoverTour` scrolling indefinitely and locking the page when a step's anchor is taller than the viewport (e.g. a large table). The tour now detects oversized anchors and scroll-aligns them to the top instead of trying to center them, so the page no longer freezes with the popover pushed off-screen.
+
+## 12.115.1
+
+### Patch Changes
+
+- d0f2310d9: feat: add BookmarkFilledIcon component
+
+## 12.115.0
+
+### Minor Changes
+
+- 51c91bfa0: feat(LineChart): add `ChartReferenceBand` and per-line reference bands for industry comparison
+
+  `LineChart` now supports reference bands — shaded min–max ranges drawn behind the trend line so a trend can be compared against an industry comparison range. Two capabilities:
+
+  1. **Standalone `ChartReferenceBand`** — a single data-driven band via `lowerDataKey`/`upperDataKey`:
+
+  ```tsx
+  <ChartLineWrapper data={data}>
+    <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
+    <ChartXAxis dataKey="month" />
+    <ChartYAxis />
+    <ChartLine dataKey="activeUsers" name="Active users" />
+    <ChartLegend />
+  </ChartLineWrapper>
+  ```
+
+  `ChartReferenceBand` accepts `lowerDataKey` and `upperDataKey` (required), plus optional `name` (legend label, default `'Reference band'`), `color` (band fill token, default a faint categorical blue) and `showLegend` (default `true`).
+
+  2. **Per-line bands on `ChartLine`** — each line can declare its own `rangeLowerDataKey` / `rangeUpperDataKey` so a chart shows multiple trend lines, each with its own color-matched industry range band:
+
+  ```tsx
+  <ChartLineWrapper data={data}>
+    <ChartLine
+      dataKey="payments"
+      name="Payments"
+      rangeLowerDataKey="paymentsMin"
+      rangeUpperDataKey="paymentsMax"
+      rangeName="Payments industry range"
+    />
+    <ChartLine
+      dataKey="refunds"
+      name="Refunds"
+      rangeLowerDataKey="refundsMin"
+      rangeUpperDataKey="refundsMax"
+      rangeName="Refunds industry range"
+    />
+    <ChartXAxis dataKey="month" />
+    <ChartLegend />
+  </ChartLineWrapper>
+  ```
+
+  Each line's band auto-matches the line color (override with `rangeColor`), the tooltip shows an "industry range" (`low–high`) row per series, and the legend gets a swatch per band. The band renders behind the trend line on both web and React Native. A new _KitchenSink (Industry SR)_ story exposes `numberOfLines` (1–5) and `showReferenceBand` controls.
+
+## 12.114.0
+
+### Minor Changes
+
+- 5cd7f0961: feat(GenUI): add consumer-registered action slots for Card and Table components
+
+  Introduces a `componentActions` registry on `GenUIProvider` that lets consumers register render props for action UI below block-level components (CARD, TABLE). The design system renders the slot and hands the consumer the component's data and a `componentRef`, keeping all action logic (copy, download, export) on the consumer side with no DS dependency.
+
+## 12.113.3
+
+### Patch Changes
+
+- 3a2d9bd6e: fix(DatePicker): allow reopening a controlled range `FilterChipDatePicker` after a range is selected
+
+  The auto-close effect that commits a selection when `showFooterActions` is false compared the selected value by reference. For `selectionType="range"` in controlled mode (`value` + `onChange`) the value is rebuilt into a new array on every render, so the effect re-ran on each render and immediately closed the flyout whenever the existing range was already complete, making the picker impossible to reopen. The selection is now compared by content so auto-close only happens on an actual selection change.
+
+- d31fadf55: docs(Table): render Table example stories live instead of StackBlitz sandboxes
+
 ## 12.113.2
 
 ### Patch Changes
