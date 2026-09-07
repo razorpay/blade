@@ -10,6 +10,7 @@ import {
   ChartCartesianGrid,
   ChartTooltip,
   ChartLegend,
+  ChartReferenceBand,
 } from '~components/Charts';
 import { Heading, Text } from '~components/Typography';
 import { ArrowSquareDownIcon, ArrowUpIcon } from '~components/Icons';
@@ -257,6 +258,127 @@ export const GroupedBarChart: StoryFn<typeof ChartBar> = () => {
 
 GroupedBarChart.parameters = {
   controls: { disable: true },
+};
+
+// --- Reference bands: a bar compared against a min–max range for the same period ---
+
+// Success rate per day, plus the industry's 25th–75th percentile range for that day.
+const successRateRangeData = [
+  { period: 'Apr 1', successRate: 45, industryLow: 38, industryHigh: 58 },
+  { period: 'Apr 2', successRate: 52, industryLow: 42, industryHigh: 64 },
+  { period: 'Apr 3', successRate: 62, industryLow: 48, industryHigh: 70 },
+  { period: 'Apr 4', successRate: 70, industryLow: 52, industryHigh: 73 },
+  { period: 'Apr 5', successRate: 73, industryLow: 55, industryHigh: 75 },
+  { period: 'Apr 6', successRate: 71, industryLow: 54, industryHigh: 74 },
+  { period: 'Apr 7', successRate: 78, industryLow: 56, industryHigh: 76 },
+];
+
+// Values are percentages, so the tooltip formats both the bar's value and the range bounds.
+const formatPercent = (value: unknown): string => `${Number(value)}%`;
+
+// A single bar series measured against one always-visible reference band. Hovering a bar shows its
+// success rate plus the industry min–max for that same day.
+export const BarChartWithReferenceBand: StoryFn<typeof ChartBar> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={successRateRangeData}>
+          {/* Bounds are the industry's 25th and 75th percentile for each day. */}
+          <ChartReferenceBand
+            lowerDataKey="industryLow"
+            upperDataKey="industryHigh"
+            name="Industry range"
+          />
+          <ChartXAxis dataKey="period" />
+          <ChartYAxis label="Success rate (%)" />
+          <ChartTooltip formatter={formatPercent} />
+          <ChartLegend />
+          <ChartBar dataKey="successRate" name="Success rate" barSize={24} />
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+BarChartWithReferenceBand.parameters = { controls: { disable: true } };
+
+// --- Grouped bars, each with its own reference band ---
+// Each payment method has its own success rate and its own industry range for that method.
+const PAYMENT_METHODS = [
+  { key: 'card', name: 'Card', palette: 'purple' as const },
+  { key: 'upi', name: 'UPI', palette: 'blue' as const },
+  { key: 'netbanking', name: 'Netbanking', palette: 'green' as const },
+  { key: 'wallet', name: 'Wallet', palette: 'orange' as const },
+  { key: 'emi', name: 'EMI', palette: 'gold' as const },
+];
+const METHOD_SUCCESS_RATES: Record<string, number[]> = {
+  card: [54, 57, 50, 59, 40, 32, 56],
+  upi: [76, 79, 72, 81, 62, 54, 78],
+  netbanking: [39, 42, 35, 44, 25, 17, 41],
+  wallet: [48, 51, 45, 53, 34, 27, 50],
+  emi: [61, 64, 58, 66, 47, 39, 63],
+};
+const groupedSuccessRateData = successRateRangeData.map((row, index) => {
+  const next: Record<string, string | number> = { period: row.period };
+  PAYMENT_METHODS.forEach((method) => {
+    const value = METHOD_SUCCESS_RATES[method.key][index];
+    next[method.key] = value;
+    next[`${method.key}Low`] = Math.max(0, value - 12);
+    next[`${method.key}High`] = Math.min(100, value + 10);
+  });
+  return next;
+});
+
+type MultiBandArgs = { numberOfBars: number; showReferenceBand: boolean };
+
+/**
+ * Grouped bars where each bar declares its own min–max range. The bands are revealed on hover —
+ * one at a time — so several ranges can coexist without overlapping into an unreadable wash.
+ * Hover any bar to see its range, the other series fade, and the hovered period is shaded.
+ */
+export const GroupedBarChartWithMultipleReferenceBands: StoryFn<MultiBandArgs> = ({
+  numberOfBars,
+  showReferenceBand,
+}) => {
+  const methods = PAYMENT_METHODS.slice(0, numberOfBars);
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartBarWrapper data={groupedSuccessRateData}>
+          <ChartXAxis dataKey="period" />
+          <ChartYAxis label="Success rate (%)" />
+          <ChartTooltip formatter={formatPercent} />
+          <ChartLegend />
+          {methods.map((method) => (
+            <ChartBar
+              key={method.key}
+              dataKey={method.key}
+              name={method.name}
+              color={`data.background.categorical.${method.palette}.moderate`}
+              barSize={methods.length > 4 ? 10 : 16}
+              {...(showReferenceBand
+                ? {
+                    rangeLowerDataKey: `${method.key}Low`,
+                    rangeUpperDataKey: `${method.key}High`,
+                    rangeName: `${method.name} industry range`,
+                  }
+                : {})}
+            />
+          ))}
+        </ChartBarWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+GroupedBarChartWithMultipleReferenceBands.args = { numberOfBars: 3, showReferenceBand: true };
+GroupedBarChartWithMultipleReferenceBands.argTypes = {
+  numberOfBars: {
+    control: { type: 'range', min: 1, max: 5, step: 1 },
+    description: 'Number of bar series to plot (1–5).',
+  },
+  showReferenceBand: {
+    control: { type: 'boolean' },
+    description: 'Give each bar its own industry reference band.',
+  },
 };
 
 // MetricCard component to display above each bar group (matches the funnel chart design)
