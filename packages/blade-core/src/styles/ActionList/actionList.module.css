@@ -33,7 +33,7 @@
 /*
  * Mirrors `getBaseMenuItemStyles` + `StyledMenuItemContainer`: transparent
  * button/link, left-aligned text, small radius, full width, spacing.1 vertical
- * margin, spacing.2 padding on mobile → spacing.3 on desktop (@media m).
+ * margin, spacing.3 padding.
  */
 .item {
   display: flex;
@@ -42,7 +42,7 @@
   width: 100%;
   margin-top: var(--spacing-1);
   margin-bottom: var(--spacing-1);
-  padding: var(--spacing-2);
+  padding: var(--spacing-3);
   border-width: 0;
   border-radius: var(--border-radius-small);
   background-color: transparent;
@@ -69,12 +69,6 @@
   &[disabled],
   &[aria-disabled='true'] {
     cursor: not-allowed;
-  }
-}
-
-@media (min-width: 768px) {
-  .item {
-    padding: var(--spacing-3);
   }
 }
 
