@@ -310,6 +310,30 @@ describe('SankeyChart — edge cases', () => {
     ).not.toThrow();
   });
 
+  it('does not emit NaN geometry for a node that has no links', () => {
+    const { container } = renderWithTheme(
+      <ChartSankeyWrapper>
+        <ChartSankey
+          data={{
+            nodes: [{ id: 'x', name: 'Orphan' }],
+            links: [],
+          }}
+        />
+      </ChartSankeyWrapper>,
+    );
+
+    // A node with no links has no value for Recharts to lay out, so it must be
+    // skipped rather than rendered with NaN x/y/height attributes.
+    container.querySelectorAll('rect').forEach((rect) => {
+      ['x', 'y', 'width', 'height'].forEach((attribute) => {
+        expect(rect.getAttribute(attribute)).not.toBe('NaN');
+      });
+    });
+    container.querySelectorAll('path').forEach((path) => {
+      expect(path.getAttribute('d') ?? '').not.toContain('NaN');
+    });
+  });
+
   it('silently ignores links that reference unknown node ids', () => {
     const { container } = renderWithTheme(
       <ChartSankeyWrapper>
