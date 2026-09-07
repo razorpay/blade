@@ -236,7 +236,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="95.078125"
+                  width="90.35546875"
                   x="331.5"
                   y="14.5"
                 />
@@ -288,7 +288,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="114.0166015625"
+                  width="107.69921875"
                   x="331.5"
                   y="62.5"
                 />
@@ -340,7 +340,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="149.869140625"
+                  width="143.72265625"
                   x="632.5"
                   y="26"
                 />
@@ -392,7 +392,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="115.7431640625"
+                  width="112.375"
                   x="632.5"
                   y="74"
                 />
