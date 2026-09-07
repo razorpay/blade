@@ -1076,8 +1076,8 @@
   }
 }
 @layer blade {
-  /* ===== UTILITY CLASSES ===== */
-  /* These utility classes are used by components via getStyledPropsClasses */
+/* ===== UTILITY CLASSES ===== */
+/* These utility classes are used by components via getStyledPropsClasses */
 
   /* Display */
   .display-block {

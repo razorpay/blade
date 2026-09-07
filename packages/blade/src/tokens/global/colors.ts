@@ -195,6 +195,14 @@ export type ColorNeutralStaticScale = Readonly<{
   500: string;
 }>;
 
+export type ColorNeutralSolidScale = Readonly<{
+  200: string;
+  300: string;
+  400: string;
+  450: string;
+  500: string;
+}>;
+
 export type Color = Readonly<{
   chromatic: {
     azure: ColorChromaticScale;
@@ -216,6 +224,8 @@ export type Color = Readonly<{
     ashGrayDark: ColorNeutralGrayScale;
     white: ColorNeutralStaticScale;
     black: ColorNeutralStaticScale;
+    whiteSolid: ColorNeutralSolidScale;
+    blackSolid: ColorNeutralSolidScale;
   };
 }>;
 

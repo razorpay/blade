@@ -346,7 +346,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "disabled": "hsla(0, 0%, 100%, 0.18)",
             "faded": "hsla(207, 4%, 52%, 0.12)",
             "fadedHighlighted": "hsla(207, 4%, 52%, 0.18)",
-            "highlighted": "hsla(0, 0%, 100%, 0.88)",
+            "highlighted": "hsla(210, 0%, 89%, 1)",
           },
           "notice": {
             "default": "hsla(25, 100%, 44%, 1)",
@@ -1048,7 +1048,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "disabled": "hsla(0, 0%, 0%, 0.18)",
             "faded": "hsla(206, 10%, 29%, 0.12)",
             "fadedHighlighted": "hsla(206, 10%, 29%, 0.18)",
-            "highlighted": "hsla(0, 0%, 0%, 0.88)",
+            "highlighted": "hsla(0, 0%, 12%, 1)",
           },
           "notice": {
             "default": "hsla(25, 100%, 44%, 1)",
@@ -2512,7 +2512,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "disabled": "hsla(0, 0%, 100%, 0.18)",
             "faded": "hsla(207, 4%, 52%, 0.12)",
             "fadedHighlighted": "hsla(207, 4%, 52%, 0.18)",
-            "highlighted": "hsla(0, 0%, 100%, 0.88)",
+            "highlighted": "hsla(210, 0%, 89%, 1)",
           },
           "notice": {
             "default": "hsla(25, 100%, 44%, 1)",
@@ -3214,7 +3214,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
             "disabled": "hsla(0, 0%, 0%, 0.18)",
             "faded": "hsla(206, 10%, 29%, 0.12)",
             "fadedHighlighted": "hsla(206, 10%, 29%, 0.18)",
-            "highlighted": "hsla(0, 0%, 0%, 0.88)",
+            "highlighted": "hsla(0, 0%, 12%, 1)",
           },
           "notice": {
             "default": "hsla(25, 100%, 44%, 1)",
