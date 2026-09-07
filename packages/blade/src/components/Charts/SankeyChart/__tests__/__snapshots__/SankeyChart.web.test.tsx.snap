@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SankeyChart — rendering matches snapshot 1`] = `
 .c0.c0.c0.c0.c0 {
@@ -180,31 +180,30 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
-                  height="43"
+                  height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="95"
+                  width="79"
                   x="30.5"
-                  y="25.04369962503995"
+                  y="33.04369962503995"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                  x="38"
+                  y="50.86369962503995"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
                     font-weight="600"
-                    x="38"
-                    y="42.86369962503995"
                   >
                     Total
                   </tspan>
                   <tspan
+                    dx="4"
                     fill="hsla(204, 9%, 42%, 1)"
                     font-weight="400"
-                    x="38"
-                    y="58.86369962503995"
                   >
                     7.2k
                   </tspan>
@@ -233,31 +232,30 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
-                  height="43"
+                  height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="95"
+                  width="90.35546875"
                   x="331.5"
-                  y="6.5"
+                  y="14.5"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                  x="339"
+                  y="32.32"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
                     font-weight="600"
-                    x="339"
-                    y="24.32"
                   >
                     UPI
                   </tspan>
                   <tspan
+                    dx="4"
                     fill="hsla(204, 9%, 42%, 1)"
                     font-weight="400"
-                    x="339"
-                    y="40.32"
                   >
                     4k  (56%)
                   </tspan>
@@ -286,31 +284,30 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
-                  height="43"
+                  height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="95"
+                  width="107.69921875"
                   x="331.5"
-                  y="54.5"
+                  y="62.5"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                  x="339"
+                  y="80.32"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
                     font-weight="600"
-                    x="339"
-                    y="72.32"
                   >
                     Card
                   </tspan>
                   <tspan
+                    dx="4"
                     fill="hsla(204, 9%, 42%, 1)"
                     font-weight="400"
-                    x="339"
-                    y="88.32"
                   >
                     3.2k  (44%)
                   </tspan>
@@ -339,31 +336,30 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
-                  height="43"
+                  height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="95"
+                  width="143.72265625"
                   x="632.5"
-                  y="18"
+                  y="26"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                  x="640"
+                  y="43.82"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
                     font-weight="600"
-                    x="640"
-                    y="35.82"
                   >
                     Successful
                   </tspan>
                   <tspan
+                    dx="4"
                     fill="hsla(204, 9%, 42%, 1)"
                     font-weight="400"
-                    x="640"
-                    y="51.82"
                   >
                     6.3k  (88%)
                   </tspan>
@@ -392,31 +388,30 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
-                  height="43"
+                  height="27"
                   rx="8"
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
-                  width="95"
+                  width="112.375"
                   x="632.5"
-                  y="66"
+                  y="74"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
+                  x="640"
+                  y="91.82"
                 >
                   <tspan
                     fill="hsla(0, 0%, 2%, 1)"
                     font-weight="600"
-                    x="640"
-                    y="83.82"
                   >
                     Failed
                   </tspan>
                   <tspan
+                    dx="4"
                     fill="hsla(204, 9%, 42%, 1)"
                     font-weight="400"
-                    x="640"
-                    y="99.82"
                   >
                     900  (13%)
                   </tspan>
