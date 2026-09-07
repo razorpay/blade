@@ -586,5 +586,19 @@ export const colors: Color = {
       450: `hsla(0, 0%, 0%, ${opacity[1100]})`,
       500: `hsla(0, 0%, 0%, ${opacity[1300]})`,
     },
+    whiteSolid: {
+      200: `hsla(210, 0%, 54%, ${opacity[1300]})`,
+      300: `hsla(210, 0%, 68%, ${opacity[1300]})`,
+      400: `hsla(210, 0%, 82%, ${opacity[1300]})`,
+      450: `hsla(210, 0%, 89%, ${opacity[1300]})`,
+      500: `hsla(0, 0%, 100%, ${opacity[1300]})`,
+    },
+    blackSolid: {
+      200: `hsla(0, 0%, 42%, ${opacity[1300]})`,
+      300: `hsla(0, 0%, 27%, ${opacity[1300]})`,
+      400: `hsla(0, 0%, 19%, ${opacity[1300]})`,
+      450: `hsla(0, 0%, 12%, ${opacity[1300]})`,
+      500: `hsla(0, 0%, 0%, ${opacity[1300]})`,
+    },
   },
 };
