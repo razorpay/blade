@@ -16,12 +16,28 @@ export interface BottomSheetProps extends StyledPropsBlade {
   children: Snippet;
 
   /**
-   * SnapPoints in which the bottom sheet will rest on. Each value is a
-   * fraction of the viewport height; e.g. `0.5` means 50% of the screen.
+   * Multi-detent snap points. Each value is a fraction of the viewport height;
+   * e.g. `0.5` means 50% of the screen.
    *
-   * @default [0.35, 0.5, 0.85]
+   * When omitted the sheet enters **auto mode**: it opens at its natural content
+   * height (capped by `maxHeight`), resizes as content changes, and collapses
+   * entirely on dismiss. Drag-to-dismiss is available; drag-to-resize is not.
+   *
+   * @default undefined (auto mode)
    */
   snapPoints?: SnapPoints;
+
+  /**
+   * Maximum height the sheet may reach in auto mode, expressed as a fraction
+   * of the viewport (or portal container) height. Content taller than this cap
+   * scrolls inside the body instead of growing the sheet further.
+   *
+   * Has no effect when `snapPoints` is provided — in that case the upper snap
+   * point is the effective ceiling.
+   *
+   * @default 0.97
+   */
+  maxHeight?: number;
 
   /**
    * Called when the bottom sheet is closed via swipe down or backdrop tap.
