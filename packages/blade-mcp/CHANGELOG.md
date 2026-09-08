@@ -1,5 +1,31 @@
 # @razorpay/blade-mcp
 
+## 1.31.0
+
+### Minor Changes
+
+- 4dd93e1a4: feat(FloatingActionButton): rename the dark color from `black` to `neutral` and align it with the neutral button tokens
+
+  `<FloatingActionButton color="black" />` becomes `<FloatingActionButton color="neutral" />`. The dark FAB is now the same treatment as a filled `neutral` button — it reads its surface from `interactive.background.neutral.*` and its label, icon and spinner from `interactive.*.onNeutral.*`, so it inverts with the theme instead of always being black on white. The hover surface is now slightly translucent and the disabled surface is lighter, matching the updated design.
+
+  On focus, the filled `neutral` surface now draws its ring from `interactive.border.neutral.faded` instead of the faded primary blue used everywhere else, matching the design.
+
+  `color="black"` was never exposed on `Button` and has no consumers, so it is removed rather than deprecated.
+
+- 4dd93e1a4: feat(Spinner): add an `onNeutral` color for spinners on a filled neutral surface
+
+  `<Spinner color="onNeutral" />` reads `interactive.icon.onNeutral.normal`, which inverts with the theme. Every other spinner color is either static (`white`) or tracks the page surface (`neutral`, the feedback colors), so none of them stayed visible on a filled `neutral` surface, which is black on light and white on dark.
+
+  A loading `Button color="neutral" variant="primary"` and `FloatingActionButton color="neutral"` now use it. Both previously hardcoded a static white spinner, which disappeared against the white surface in dark mode. Fixes #3915 for the `neutral` surface.
+
+## 1.30.0
+
+### Minor Changes
+
+- 3cd283e97: feat(FloatingActionButton): add FloatingActionButton component
+
+  Adds `FloatingActionButton`, a persistent pill-shaped button anchored to the bottom of the viewport for the single most important action on a screen. It supports `primary`, `white` and `black` colors, anchors via `placement` (`bottom-end`, `bottom-start`, `bottom`) with a configurable `offset` and `zIndex`, and renders either an icon with a short label or an icon on its own, in which case `accessibilityLabel` is required. Positioning is `fixed` on web and `absolute` with safe-area insets on React Native.
+
 ## 1.29.0
 
 ### Minor Changes

@@ -10,7 +10,12 @@ export { SearchInput } from './SearchInput';
 export type { SearchInputProps } from './SearchInput';
 
 export { OTPInput } from './OTPInput';
-export type { OTPInputProps, OTPInputInstance, OTPInputOnEventWithIndex } from './OTPInput';
+export type {
+  OTPInputProps,
+  OTPInputInstance,
+  OTPInputOnEventWithIndex,
+  OTPInputOnKeyDownEvent,
+} from './OTPInput';
 
 export { PhoneNumberInput } from './PhoneNumberInput';
 export type {

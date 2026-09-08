@@ -37,4 +37,20 @@ const useLockBodyScroll = (_shouldLock: boolean): void => {
   // no-op — native uses useTourScrollLock
 };
 
-export { smoothScroll, useIntersectionObserver, useLockBodyScroll };
+/** @internal web-only — stubbed for native typecheck of shared imports */
+const readBorderRadius = (_el: HTMLElement): number => {
+  return 0;
+};
+
+/** @internal web-only — stubbed for native typecheck of shared imports */
+const resolveSpotlightTarget = (element: HTMLElement): HTMLElement => {
+  return element;
+};
+
+export {
+  smoothScroll,
+  useIntersectionObserver,
+  useLockBodyScroll,
+  readBorderRadius,
+  resolveSpotlightTarget,
+};

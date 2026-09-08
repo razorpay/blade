@@ -1,6 +1,10 @@
 import './layers.css';
 
 export type { StyleOverride } from './shared/styleOverride';
+export { defineComponentSlots } from './shared/slotMeta';
+export type { SlotMeta, ComponentSlotMeta } from './shared/slotMeta';
+export { BLADE_SLOT_METADATA, SLOT_METADATA_COMPONENT_NAMES } from './slotMetadata';
+export type { SlotMetadataComponentName } from './slotMetadata';
 export { baseTextStyles, getBaseTextClasses } from './BaseText';
 export type { BaseTextVariants } from './BaseText';
 export {
@@ -484,6 +488,28 @@ export {
   bottomSheetBodyClass,
 } from './BottomSheet';
 export type { BottomSheetBodyPadding, BottomSheetBodyOverflow } from './BottomSheet';
+export {
+  MODAL_Z_INDEX,
+  getModalSurfaceClasses,
+  getModalBodyClasses,
+  getModalTemplateClasses,
+  modalWrapperClass,
+  modalBackdropClass,
+  modalHeaderClass,
+  modalEmptyHeaderCapsuleClass,
+  modalHeaderContentClass,
+  modalHeaderLeadingClass,
+  modalHeaderTitleBlockClass,
+  modalHeaderTitleRowClass,
+  modalHeaderTrailingClass,
+  modalCloseButtonClass,
+  modalHeaderCloseButtonClass,
+  modalHeaderDividerClass,
+  modalFooterClass,
+  modalFooterDividerClass,
+  modalFooterInnerClass,
+} from './Modal';
+export type { ModalSize, ModalBodyPadding } from './Modal';
 export { getTabsTemplateClasses } from './Tabs';
 export { getSegmentedControlTemplateClasses } from './SegmentedControl';
 export {
