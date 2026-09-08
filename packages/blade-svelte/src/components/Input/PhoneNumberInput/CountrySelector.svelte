@@ -118,7 +118,7 @@
   </span>
 </button>
 
-<BottomSheet {isOpen} onDismiss={closeSheet} {portalTarget} snapPoints={[0.35, 0.5, 0.85]}>
+<BottomSheet {isOpen} onDismiss={closeSheet} {portalTarget} snapPoints={[0.5, 0.85, 0.85]}>
   <BottomSheetHeader title="Select A Country">
     {#if countryData.length > 1}
       <div class="country-selector-search">
