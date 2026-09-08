@@ -9,13 +9,7 @@ import type { MetaConstants } from '~utils/metaAttribute';
 type MetaConstantsValues = typeof MetaConstants[keyof typeof MetaConstants];
 type BottomDockLayoutProps = Pick<
   BaseBoxProps,
-  | 'display'
-  | 'flexDirection'
-  | 'gap'
-  | 'paddingX'
-  | 'paddingTop'
-  | 'alignItems'
-  | 'justifyContent'
+  'display' | 'flexDirection' | 'gap' | 'paddingX' | 'paddingTop' | 'alignItems' | 'justifyContent'
 >;
 
 type BottomDockProps = {
