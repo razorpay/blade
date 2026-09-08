@@ -61,6 +61,11 @@ type SankeyChartContextType = {
 // throws a descriptive Blade error rather than silently failing with an empty palette.
 const SankeyChartContext = createContext<SankeyChartContextType | null>(null);
 
+// Recharts derives a node's value from its links, so a node with no links (or an
+// otherwise degenerate dataset) yields NaN geometry. Rendering that produces invalid
+// SVG attributes, so skip the element instead.
+const hasFiniteGeometry = (...values: number[]): boolean => values.every(Number.isFinite);
+
 // ─── Hover state ──────────────────────────────────────────────────────────────
 
 type HoverState = { type: 'node' | 'link'; index: number } | null;
@@ -531,6 +536,7 @@ const _ChartSankey = ({
       const { x, y, width, height: nodeHeight, index, payload } = props;
       const nodeData = data.nodes[index] as SankeyDataNode | undefined;
       if (!nodeData) return <g />;
+      if (!hasFiniteGeometry(x, y, width, nodeHeight)) return <g />;
 
       const colorToken =
         nodeColorOverride ??
@@ -664,6 +670,19 @@ const _ChartSankey = ({
         index,
         payload,
       } = props;
+
+      if (
+        !hasFiniteGeometry(
+          sourceX,
+          targetX,
+          sourceY,
+          targetY,
+          sourceControlX,
+          targetControlX,
+          linkWidth,
+        )
+      )
+        return <path />;
 
       const resolveSourceIndex = (source: typeof payload.source): number => {
         if (typeof source === 'number') return source;
