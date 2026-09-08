@@ -49,6 +49,7 @@
   import Link from '../../Link/Link.svelte';
   import Tooltip from '../../Tooltip/Tooltip.svelte';
   import Text from '../../Typography/Text/Text.svelte';
+  import Heading from '../../Typography/Heading/Heading.svelte';
   import Code from '../../Typography/Code/Code.svelte';
   import Button from '../../Button/Button.svelte';
   import { InfoIcon, PhoneIcon } from '../../Icons';
@@ -59,6 +60,7 @@
   let changeData = $state<PhoneNumberChangePayload | null>(null);
   let validationValue = $state('');
   let isValid = $state(true);
+  let portalTargetEl = $state<HTMLDivElement | null>(null);
 </script>
 
 <!-- 1 -->
@@ -226,5 +228,51 @@
         isValid = isValidPhoneNumber(value ?? '', country);
       }}
     />
+  </div>
+</Story>
+
+<!-- 16 -->
+<Story name="WithPortalTarget" asChild>
+  <div>
+    <Text marginBottom="spacing.5">
+      Pass <Code size="medium">portalTarget</Code> when the input lives inside a bounded container
+      (phone preview, modal, ancestor with <Code size="medium">overflow: hidden</Code>). The
+      country-selector bottom sheet then mounts into that element instead of
+      <Code size="medium">document.body</Code>, so its backdrop and surface stay within the frame.
+    </Text>
+
+    <div
+      bind:this={portalTargetEl}
+      style="
+        position: relative;
+        width: 320px;
+        height: 560px;
+        overflow: hidden;
+        border-radius: var(--radius-medium);
+        border: 2px solid var(--surface-border-gray-subtle);
+        background: var(--surface-background-gray-subtle);
+      "
+    >
+      <div
+        style="
+          padding: var(--spacing-5);
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-4);
+          height: 100%;
+        "
+      >
+        <Heading size="small">Mobile checkout preview</Heading>
+        <Text color="surface.text.gray.muted" size="small">
+          Open the country selector — the sheet stays inside this frame, not the Storybook canvas.
+        </Text>
+        <PhoneNumberInput
+          label="Enter phone number"
+          name="phonenumber"
+          defaultCountry="IN"
+          portalTarget={portalTargetEl}
+        />
+      </div>
+    </div>
   </div>
 </Story>

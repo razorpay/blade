@@ -126,7 +126,15 @@ const _BaseMenuItem: React.ForwardRefRenderFunction<BladeElementRef, BaseMenuIte
                 ) : null}
               </Box>
             </Box>
-            <Box marginLeft="auto">{trailing}</Box>
+            <Box
+              marginLeft="auto"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              minHeight={makeSize(itemFirstRowHeight)}
+            >
+              {trailing}
+            </Box>
           </Box>
         )}
       </StyledMenuItemContainer>

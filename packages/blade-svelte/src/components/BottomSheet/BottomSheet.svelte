@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, untrack } from 'svelte';
   import { DragGesture, rubberbandIfOutOfBounds } from '@use-gesture/vanilla';
   import {
     disableBodyScroll,
@@ -15,7 +15,6 @@
   } from '@razorpay/blade-core/utils';
   import {
     BOTTOM_SHEET_Z_INDEX,
-    BOTTOM_SHEET_DEFAULT_SNAP_POINTS,
     bottomSheetSurfaceClass,
     bottomSheetInnerWrapperClass,
     bottomSheetGrabHandleClass,
@@ -34,6 +33,7 @@
   import { computeMaxContent, computeSnapPointBounds } from './utils';
   import BottomSheetBackdrop from './BottomSheetBackdrop.svelte';
   import { portal } from '../../utils/portal';
+  import { observeResize } from '../../utils/observeResize';
 
   /* Anchor structural classes against the Rollup tree-shaker — CSS modules
    * export ESM objects whose unused individual exports otherwise get
@@ -46,10 +46,12 @@
     onDismiss,
     children,
     initialFocusRef = null,
-    snapPoints = [...BOTTOM_SHEET_DEFAULT_SNAP_POINTS] as SnapPoints,
+    snapPoints,
+    maxHeight = 0.97,
     isDismissible = true,
     zIndex = BOTTOM_SHEET_Z_INDEX,
     portalTarget,
+    backdropPortalTarget = portalTarget,
     showDragHandle = true,
     testID,
     ...rest
@@ -106,20 +108,42 @@
   const isOnTopOfStack = $derived(stackArr[0] === id);
   const bottomSheetZIndex = $derived(zIndex - Math.max(0, currentStackIndex));
 
+  const useSplitPortals = $derived(
+    backdropPortalTarget != null &&
+      portalTarget != null &&
+      backdropPortalTarget !== portalTarget,
+  );
+
+  /* When the backdrop sits in a wider ancestor than the surface, keep it
+   * under an intermediate stacking context (e.g. checkout `#main-container`
+   * at z-index 1) so the sheet still paints above the dim layer. */
+  const backdropZIndex = $derived(useSplitPortals ? 0 : bottomSheetZIndex);
+
+  /* Empty header + zero body padding floats the header and grab handle out of
+   * flow, so neither consumes height in the surface's flex column. */
+  const isHeaderFloating = $derived(!hasBodyPadding && isHeaderEmpty);
+
+  const isAutoMode = $derived(snapPoints === undefined);
+  /* In auto mode a single implicit snap point at maxHeight acts as the ceiling. */
+  const effectiveSnapPoints = $derived(
+    isAutoMode
+      ? ([maxHeight, maxHeight, maxHeight] as SnapPoints)
+      : (snapPoints as SnapPoints),
+  );
+
   const totalHeight = $derived(grabHandleHeight + headerHeight + footerHeight + contentHeight);
 
-  let initialSnapPointFraction = $state(snapPoints[1]);
-
-  /* Adjust the initial snap point so a small total content sits on the
-   * lowest snap point, otherwise stays on the middle one. Mirrors React. */
-  $effect(() => {
-    const middleSnapPoint = snapPoints[1] * windowHeight;
-    const lowerSnapPoint = snapPoints[0] * windowHeight;
+  /* In auto mode the sheet always opens at content height — never at a fixed
+   * fraction. In snap-point mode keep the existing React logic. */
+  const initialSnapPointFraction = $derived.by(() => {
+    if (isAutoMode) return Math.min(totalHeight / windowHeight, maxHeight);
+    const pts = snapPoints as SnapPoints;
+    const middleSnapPoint = pts[1] * windowHeight;
+    const lowerSnapPoint = pts[0] * windowHeight;
     if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
-      initialSnapPointFraction = snapPoints[0];
-    } else {
-      initialSnapPointFraction = snapPoints[1];
+      return pts[0];
     }
+    return pts[1];
   });
 
   function setPositionY(value: number, limit = true): void {
@@ -130,7 +154,9 @@
     const maxValue = computeMaxContent({
       contentHeight,
       footerHeight,
-      headerHeight: headerHeight > 0 ? headerHeight + grabHandleHeight : 0,
+      /* Grab handle and header sit above the body in the same flex column, so
+       * both must be budgeted or the body scrolls by exactly their height. */
+      headerHeight: headerHeight + grabHandleHeight,
       maxHeight: value,
     });
     positionY = maxValue;
@@ -173,6 +199,14 @@
   }
 
   function handleOnOpen(): void {
+    /* Sync the viewport height to the portal container synchronously before
+     * positioning. `windowHeight` initializes to `window.innerHeight` and is
+     * only corrected to the portal height by a later effect — positioning
+     * before that correction would cap against the full window, letting the
+     * sheet grow far taller than a bounded portal container. */
+    windowHeight =
+      portalTarget?.clientHeight ??
+      (typeof window !== 'undefined' ? window.innerHeight : windowHeight);
     setPositionY(windowHeight * initialSnapPointFraction);
     if (typeof document !== 'undefined') {
       originalFocusEl = originalFocusEl ?? (document.activeElement as HTMLElement | null);
@@ -227,6 +261,27 @@
     };
   });
 
+  /* Re-clamp the sheet height when measured content changes while open.
+   * React gets this from `setPositionY`/`handleOnOpen` identity churn feeding
+   * its open-sync effect; here it needs to be explicit. Auto mode only — in
+   * snap-point mode the resting detent belongs to the gesture, not to content
+   * size. `isDragging` is read untracked so drag-end flipping it false cannot
+   * re-trigger this effect and overwrite the position the gesture committed. */
+  $effect(() => {
+    const total = totalHeight;
+    if (!isAutoMode || !isOpen || total === 0) return;
+    if (untrack(() => isDragging)) return;
+    /* Guard against a stale `windowHeight` (still the full window instead of a
+     * bounded portal): re-sync first, then let the derived cap recompute on the
+     * next run. Assign-if-changed avoids an effect loop. */
+    const viewportHeight = portalTarget?.clientHeight ?? windowHeight;
+    if (viewportHeight !== windowHeight) {
+      windowHeight = viewportHeight;
+      return;
+    }
+    setPositionY(windowHeight * initialSnapPointFraction);
+  });
+
   /* Stack registration. */
   $effect(() => {
     if (isMounted) {
@@ -266,11 +321,9 @@
     const target = portalTarget;
     if (target) {
       windowHeight = target.clientHeight;
-      const observer = new ResizeObserver(() => {
+      return observeResize(target, () => {
         windowHeight = target.clientHeight;
       });
-      observer.observe(target);
-      return () => observer.disconnect();
     }
     return undefined;
   });
@@ -290,6 +343,10 @@
   $effect(() => {
     if (!grabHandleEl) return;
     void isOpen;
+    if (isHeaderFloating) {
+      grabHandleHeight = 0;
+      return;
+    }
     const cs = getComputedStyle(grabHandleEl);
     const marginBottom = parseFloat(cs.marginBottom) || 0;
     grabHandleHeight = grabHandleEl.getBoundingClientRect().height + marginBottom;
@@ -352,21 +409,29 @@
     isDragging = Boolean(dragging);
 
     const rawY = lastOffsetY - movementY;
-    const lowerSnapPoint = windowHeight * snapPoints[0];
-    const upperSnapPoint = windowHeight * snapPoints[snapPoints.length - 1];
+    const pts = effectiveSnapPoints;
+    const lowerSnapPoint = windowHeight * pts[0];
+    const upperSnapPoint = windowHeight * pts[pts.length - 1];
+
+    /* In auto mode the sheet has a single resting height — upward drag is a
+     * no-op (rubber-bands back to rest). Downward drag is the dismiss gesture. */
+    const autoUpperCap = isAutoMode ? windowHeight * initialSnapPointFraction : upperSnapPoint;
 
     /* Velocity-driven momentum — same formula as React. */
     const predictedDistance = movementY * (velocityY / 2);
     const predictedY = Math.max(
       lowerSnapPoint,
-      Math.min(upperSnapPoint, rawY - predictedDistance * 2),
+      Math.min(autoUpperCap, rawY - predictedDistance * 2),
     );
 
     let newY = rawY;
 
     if (down) {
       const dampening = 0.55;
-      if (totalHeight < upperSnapPoint) {
+      if (isAutoMode) {
+        /* Rubber-band both ends — downward toward dismiss, upward toward rest. */
+        newY = rubberbandIfOutOfBounds(rawY, 0, autoUpperCap, dampening);
+      } else if (totalHeight < upperSnapPoint) {
         newY = rubberbandIfOutOfBounds(rawY, 0, totalHeight, dampening);
       } else {
         newY = rubberbandIfOutOfBounds(rawY, 0, upperSnapPoint, dampening);
@@ -375,51 +440,73 @@
       newY = predictedY;
     }
 
-    const isPosAtUpperSnapPoint = newY >= upperSnapPoint;
+    const isPosAtUpperSnapPoint = newY >= autoUpperCap;
 
     if (isContentDragging) {
       if (isPosAtUpperSnapPoint) {
-        newY = upperSnapPoint;
+        newY = autoUpperCap;
       }
 
       /* Pin to upper snap point while content isn't scrolled to top — keeps
        * the scroll feel natural when crossing the boundary between sheet
        * drag and content scroll. */
       const isContentScrolledAtTop = scrollEl != null && scrollEl.scrollTop <= 0;
-      if (lastOffsetY === upperSnapPoint && !isContentScrolledAtTop) {
-        newY = upperSnapPoint;
+      if (lastOffsetY === autoUpperCap && !isContentScrolledAtTop) {
+        newY = autoUpperCap;
       }
-      preventScrolling = newY < upperSnapPoint;
+      preventScrolling = newY < autoUpperCap;
     }
 
     if (last) {
-      const [nearest, lower] = computeSnapPointBounds(
-        newY,
-        snapPoints.map((point) => windowHeight * point) as SnapPoints,
-      );
-
       const lowerPointBuffer = 60;
-      const lowerestSnap = Math.min(lower, totalHeight) - lowerPointBuffer;
-      const shouldClose = rawY < lowerestSnap;
 
-      if (shouldClose) {
-        if (isDismissible) {
+      if (isAutoMode) {
+        /* Auto mode: only dismiss or snap back — no middle detents. */
+        const dismissThreshold = autoUpperCap - lowerPointBuffer;
+        const shouldClose = rawY < dismissThreshold;
+        if (shouldClose) {
+          if (isDismissible) {
+            isDragging = false;
+            cancel();
+            close();
+            return;
+          }
           isDragging = false;
           cancel();
-          close();
+          setPositionY(autoUpperCap, false);
           return;
         }
-        isDragging = false;
-        cancel();
-        const firstSnapPoint = windowHeight * snapPoints[0];
-        setPositionY(firstSnapPoint, true);
-        return;
-      }
+        if (!active && !tap) {
+          newY = autoUpperCap;
+        }
+      } else {
+        const [nearest, lower] = computeSnapPointBounds(
+          newY,
+          pts.map((point) => windowHeight * point) as SnapPoints,
+        );
 
-      /* `filterTaps: true` makes taps fire with `last: true, tap: true` —
-       * skip the snap-to-nearest branch so a tap doesn't trigger a flicker. */
-      if (!active && !tap) {
-        newY = nearest;
+        const lowerestSnap = Math.min(lower, totalHeight) - lowerPointBuffer;
+        const shouldClose = rawY < lowerestSnap;
+
+        if (shouldClose) {
+          if (isDismissible) {
+            isDragging = false;
+            cancel();
+            close();
+            return;
+          }
+          isDragging = false;
+          cancel();
+          const firstSnapPoint = windowHeight * pts[0];
+          setPositionY(firstSnapPoint, true);
+          return;
+        }
+
+        /* `filterTaps: true` makes taps fire with `last: true, tap: true` —
+         * skip the snap-to-nearest branch so a tap doesn't trigger a flicker. */
+        if (!active && !tap) {
+          newY = nearest;
+        }
       }
     }
 
@@ -499,7 +586,7 @@
     },
     close,
     get isHeaderFloating() {
-      return !hasBodyPadding && isHeaderEmpty;
+      return isHeaderFloating;
     },
     get isDismissible() {
       return isDismissible;
@@ -536,7 +623,7 @@
   const surfaceExtraClasses = $derived((styledProps.classes || []).filter(Boolean).join(' '));
 
   const grabHandleClasses = $derived(
-    [bottomSheetGrabHandleClass, !hasBodyPadding && isHeaderEmpty ? bottomSheetGrabHandleFloatingClass : '']
+    [bottomSheetGrabHandleClass, isHeaderFloating ? bottomSheetGrabHandleFloatingClass : '']
       .filter(Boolean)
       .join(' '),
   );
@@ -553,7 +640,19 @@
 </script>
 
 {#if isMounted}
-  {#if portalTarget}
+  {#if useSplitPortals}
+    <div use:portal={backdropPortalTarget} class={bottomSheetPortalRootClass}>
+      <BottomSheetBackdrop
+        isOpen={isVisible}
+        zIndex={backdropZIndex}
+        {isDismissible}
+        onClose={close}
+      />
+    </div>
+    <div use:portal={portalTarget} class={bottomSheetPortalRootClass}>
+      {@render surface()}
+    </div>
+  {:else if portalTarget}
     <div use:portal={portalTarget} class={bottomSheetPortalRootClass}>
       {@render overlay()}
     </div>
@@ -567,10 +666,14 @@
 {#snippet overlay()}
   <BottomSheetBackdrop
     isOpen={isVisible}
-    zIndex={bottomSheetZIndex}
+    zIndex={backdropZIndex}
     {isDismissible}
     onClose={close}
   />
+  {@render surface()}
+{/snippet}
+
+{#snippet surface()}
   <div
     class="{bottomSheetSurfaceClass} {surfaceExtraClasses}"
     style={surfaceStyle}

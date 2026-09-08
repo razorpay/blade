@@ -49,7 +49,7 @@ export type AppBarProps = {
    * Visual emphasis of the AppBar surface.
    * - `'neutral'`: transparent surface, light (static-white) foreground — the AppBar has
    *   no background of its own and sits directly over the page (matches Figma).
-   * - `'subtle'`: gray surface that adapts to an embedded/light page context.
+   * - `'subtle'`: transparent surface with adaptive gray foreground for embedded/light contexts.
    *
    * @default 'neutral'
    */
