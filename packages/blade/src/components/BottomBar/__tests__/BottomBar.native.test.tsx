@@ -23,10 +23,10 @@ describe('<BottomBar /> (native)', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should set accessibilityRole to group', () => {
+  it('should set accessibilityRole to none', () => {
     const { getByTestId } = renderBottomBar();
 
-    expect(getByTestId('bottombar-test').props.accessibilityRole).toBe('summary');
+    expect(getByTestId('bottombar-test').props.accessibilityRole).toBe('none');
   });
 
   it('should support accessibilityLabel', () => {

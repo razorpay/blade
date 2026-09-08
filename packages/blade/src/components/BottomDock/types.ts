@@ -30,7 +30,7 @@ type BottomDockProps = {
    *
    * @default false
    */
-  safeAreaBottom?: boolean;
+  isSafeAreaBottom?: boolean;
 
   /**
    * zIndex of the bottom dock surface.

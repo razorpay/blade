@@ -39,9 +39,9 @@ const _BottomBar = (
   return (
     <BottomDock
       ref={ref as never}
-      role="region"
+      role="group"
       accessibilityLabel={accessibilityLabel}
-      safeAreaBottom
+      isSafeAreaBottom
       zIndex={zIndex}
       testID={testID}
       metaName={MetaConstants.BottomBar}

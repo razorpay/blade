@@ -18,15 +18,15 @@ const BOTTOM_DOCK_SAFE_AREA_FALLBACK = '23px';
 
 const StyledBottomDock = styled(BaseBox)<{
   $boxShadowColor: string;
-  $safeAreaBottom?: boolean;
-}>(({ $boxShadowColor, $safeAreaBottom }) => {
+  $isSafeAreaBottom?: boolean;
+}>(({ $boxShadowColor, $isSafeAreaBottom }) => {
   return {
     // Figma _components/Bottom Nav: 0px -8px 24px 0px _styles.bottomNav.color.
     boxShadow: `0px ${BOTTOM_DOCK_SHADOW_Y_OFFSET}px ${BOTTOM_DOCK_SHADOW_BLUR_RADIUS}px 0px ${$boxShadowColor}`,
     // Figma's Dragger is device chrome; reserve its layout space without rendering the pill.
-    // Gated behind safeAreaBottom to avoid unintentional layout shift for consumers like BottomNav
+    // Gated behind isSafeAreaBottom to avoid unintentional layout shift for consumers like BottomNav
     // that did not have safe-area padding before the BottomDock extraction.
-    ...($safeAreaBottom && {
+    ...($isSafeAreaBottom && {
       paddingBottom: `max(env(safe-area-inset-bottom), ${BOTTOM_DOCK_SAFE_AREA_FALLBACK})`,
     }),
   };
@@ -35,7 +35,7 @@ const StyledBottomDock = styled(BaseBox)<{
 const _BottomDock = (
   {
     children,
-    safeAreaBottom = false,
+    isSafeAreaBottom = false,
     zIndex = componentZIndices.bottomNav,
     role,
     accessibilityLabel,
@@ -64,7 +64,7 @@ const _BottomDock = (
     <StyledBottomDock
       ref={ref as never}
       $boxShadowColor={boxShadowColor}
-      $safeAreaBottom={safeAreaBottom}
+      $isSafeAreaBottom={isSafeAreaBottom}
       {...makeAccessible({ role, label: accessibilityLabel })}
       position="fixed"
       bottom="spacing.0"

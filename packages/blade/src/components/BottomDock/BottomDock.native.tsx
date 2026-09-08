@@ -35,7 +35,7 @@ const StyledBottomDock = styled(View)<{
 const _BottomDock = (
   {
     children,
-    safeAreaBottom = false,
+    isSafeAreaBottom = false,
     zIndex = componentZIndices.bottomNav,
     role,
     accessibilityLabel,
@@ -75,7 +75,7 @@ const _BottomDock = (
       style={[
         shadowStyle,
         nativeStyle,
-        { zIndex, ...(safeAreaBottom && { paddingBottom: insets.bottom }) },
+        { zIndex, ...(isSafeAreaBottom && { paddingBottom: insets.bottom }) },
       ]}
       {...makeAccessible({ role, label: accessibilityLabel })}
       {...metaAttribute({

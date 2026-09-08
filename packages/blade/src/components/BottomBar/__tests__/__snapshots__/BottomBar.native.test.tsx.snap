@@ -9,11 +9,8 @@ exports[`<BottomBar /> (native) should render 1`] = `
   }
 >
   <View
-    accessibilityRole="summary"
+    accessibilityRole="none"
     accessible={true}
-    backgroundColor="hsla(0, 0%, 100%, 1)"
-    borderTopColor="hsla(206, 10%, 29%, 0.12)"
-    borderTopWidth={1}
     data-blade-component="bottombar"
     style={
       [

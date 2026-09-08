@@ -83,7 +83,7 @@ const _BottomNav = (
       ref={ref as never}
       role="navigation"
       accessibilityLabel={accessibilityLabel}
-      safeAreaBottom
+      isSafeAreaBottom
       zIndex={zIndex}
       testID={testID}
       metaName={MetaConstants.BottomNav}
