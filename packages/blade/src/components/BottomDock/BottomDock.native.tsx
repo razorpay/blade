@@ -19,17 +19,17 @@ const BOTTOM_DOCK_SHADOW_OPACITY = 1;
 const BOTTOM_DOCK_ANDROID_ELEVATION = 8;
 
 const StyledBottomDock = styled(View)<{
-  backgroundColor: string;
-  borderTopWidth: number;
-  borderTopColor: string;
+  $backgroundColor: string;
+  $borderTopWidth: number;
+  $borderTopColor: string;
 }>((props) => ({
   position: 'absolute' as const,
   bottom: 0,
   left: 0,
   width: '100%',
-  backgroundColor: props.backgroundColor,
-  borderTopWidth: props.borderTopWidth,
-  borderTopColor: props.borderTopColor,
+  backgroundColor: props.$backgroundColor,
+  borderTopWidth: props.$borderTopWidth,
+  borderTopColor: props.$borderTopColor,
 }));
 
 const _BottomDock = (
@@ -69,9 +69,9 @@ const _BottomDock = (
   return (
     <StyledBottomDock
       ref={ref as never}
-      backgroundColor={theme.colors.surface.background.gray.intense}
-      borderTopWidth={theme.border.width.thin}
-      borderTopColor={theme.colors.surface.border.gray.muted}
+      $backgroundColor={theme.colors.surface.background.gray.intense}
+      $borderTopWidth={theme.border.width.thin}
+      $borderTopColor={theme.colors.surface.border.gray.muted}
       style={[
         shadowStyle,
         nativeStyle,

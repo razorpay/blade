@@ -27,7 +27,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 const _BottomBar = (
   {
     children,
-    zIndex = componentZIndices.bottomNav,
+    zIndex = componentZIndices.bottomBar,
     testID,
     accessibilityLabel,
     ...rest
