@@ -46,7 +46,6 @@ const _BottomDock = (
     gap,
     paddingTop,
     paddingX,
-    paddingBottom,
     alignItems,
     justifyContent,
     nativeStyle: _nativeStyle,
@@ -78,7 +77,6 @@ const _BottomDock = (
       gap={gap}
       paddingTop={paddingTop}
       paddingX={paddingX}
-      paddingBottom={paddingBottom}
       alignItems={alignItems}
       justifyContent={justifyContent}
       {...getStyledProps(rest)}

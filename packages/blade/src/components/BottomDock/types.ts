@@ -14,7 +14,6 @@ type BottomDockLayoutProps = Pick<
   | 'gap'
   | 'paddingX'
   | 'paddingTop'
-  | 'paddingBottom'
   | 'alignItems'
   | 'justifyContent'
 >;
