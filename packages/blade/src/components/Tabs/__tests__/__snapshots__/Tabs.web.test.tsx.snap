@@ -65,7 +65,7 @@ exports[`Tabs should render 1`] = `
   height: 2px;
   top: -0.5px;
   left: 0%;
-  background-color: hsla(0,0%,2%,1);
+  background-color: hsla(0,0%,0%,0.88);
   pointer-events: none;
 }
 
@@ -995,7 +995,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   height: 2px;
   top: -0.5px;
   left: 0%;
-  background-color: hsla(0,0%,2%,1);
+  background-color: hsla(0,0%,0%,0.88);
   pointer-events: none;
 }
 
@@ -1465,7 +1465,7 @@ exports[`Tabs should render with size 1`] = `
   height: 2px;
   top: -0.5px;
   left: 0%;
-  background-color: hsla(0,0%,2%,1);
+  background-color: hsla(0,0%,0%,0.88);
   pointer-events: none;
 }
 
@@ -1942,7 +1942,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
   width: 1.5px;
   top: 0px;
   left: 1.75px;
-  background-color: hsla(0,0%,2%,1);
+  background-color: hsla(0,0%,0%,0.88);
   pointer-events: none;
 }
 
@@ -2398,7 +2398,7 @@ exports[`Tabs should support adding data-analytics attribute 1`] = `
   height: 2px;
   top: -0.5px;
   left: 0%;
-  background-color: hsla(0,0%,2%,1);
+  background-color: hsla(0,0%,0%,0.88);
   pointer-events: none;
 }
 

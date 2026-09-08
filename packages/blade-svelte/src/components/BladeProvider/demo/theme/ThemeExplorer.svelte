@@ -1,13 +1,13 @@
 <script lang="ts">
   import { bladeNeutralTheme } from '@razorpay/blade-core/tokens';
-  import { useTheme } from './useTheme';
-  import Heading from '../Typography/Heading/Heading.svelte';
-  import Text from '../Typography/Text/Text.svelte';
-  import Code from '../Typography/Code/Code.svelte';
-  import Badge from '../Badge/Badge.svelte';
-  import Button from '../Button/Button.svelte';
-  import SearchInput from '../Input/SearchInput/SearchInput.svelte';
-  import Switch from '../Switch/Switch.svelte';
+  import { useTheme } from '../../useTheme';
+  import Heading from '../../../Typography/Heading/Heading.svelte';
+  import Text from '../../../Typography/Text/Text.svelte';
+  import Code from '../../../Typography/Code/Code.svelte';
+  import Badge from '../../../Badge/Badge.svelte';
+  import Button from '../../../Button/Button.svelte';
+  import SearchInput from '../../../Input/SearchInput/SearchInput.svelte';
+  import Switch from '../../../Switch/Switch.svelte';
 
   type DiffNode = {
     value: unknown;

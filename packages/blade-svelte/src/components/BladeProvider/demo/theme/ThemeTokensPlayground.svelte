@@ -5,20 +5,20 @@
     CreateThemeFontFamilyOverride,
     ThemeTokens,
   } from '@razorpay/blade-core/tokens';
-  import BladeProvider from './BladeProvider.svelte';
-  import Button from '../Button/Button.svelte';
-  import IconButton from '../Button/IconButton/IconButton.svelte';
-  import Text from '../Typography/Text/Text.svelte';
-  import Heading from '../Typography/Heading/Heading.svelte';
-  import Badge from '../Badge/Badge.svelte';
-  import Code from '../Typography/Code/Code.svelte';
-  import Card from '../Card/Card.svelte';
-  import CardBody from '../Card/CardBody.svelte';
-  import Chip from '../Chip/Chip.svelte';
-  import ChipGroup from '../Chip/ChipGroup.svelte';
-  import SegmentedControl from '../SegmentedControl/SegmentedControl.svelte';
-  import SegmentedControlItem from '../SegmentedControl/SegmentedControlItem.svelte';
-  import { SearchIcon } from '../Icons';
+  import BladeProvider from '../../BladeProvider.svelte';
+  import Button from '../../../Button/Button.svelte';
+  import IconButton from '../../../Button/IconButton/IconButton.svelte';
+  import Text from '../../../Typography/Text/Text.svelte';
+  import Heading from '../../../Typography/Heading/Heading.svelte';
+  import Badge from '../../../Badge/Badge.svelte';
+  import Code from '../../../Typography/Code/Code.svelte';
+  import Card from '../../../Card/Card.svelte';
+  import CardBody from '../../../Card/CardBody.svelte';
+  import Chip from '../../../Chip/Chip.svelte';
+  import ChipGroup from '../../../Chip/ChipGroup.svelte';
+  import SegmentedControl from '../../../SegmentedControl/SegmentedControl.svelte';
+  import SegmentedControlItem from '../../../SegmentedControl/SegmentedControlItem.svelte';
+  import { SearchIcon } from '../../../Icons';
 
   const BRAND_PRESETS: { label: string; hex: string }[] = [
     { label: 'Razorpay', hex: '' },

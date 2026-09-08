@@ -1,5 +1,116 @@
 # @razorpay/blade-svelte
 
+## 0.15.0
+
+### Minor Changes
+
+- ba92bf1e4: feat(blade-svelte): add BottomSheet auto mode and maxHeight cap
+
+  When `snapPoints` is omitted, BottomSheet now opens at its natural content height (capped by `maxHeight`, default `0.97` of the viewport or portal container). Content height is tracked via `ResizeObserver` and the sheet re-clamps as content grows or shrinks. Drag-to-dismiss remains; drag-to-resize is disabled in auto mode. Passing `snapPoints` keeps the existing multi-detent behaviour unchanged. Also fixes portal-target sheets occasionally exceeding `maxHeight` when height math used `window.innerHeight` before the container height was synced.
+
+- 8bb1c2efd: feat(blade-svelte): add `backdropPortalTarget` to BottomSheet
+
+  Adds an optional `backdropPortalTarget` prop so the dim overlay can mount into a wider ancestor while the sheet surface stays in a nested container. When the targets differ, backdrop and surface render in separate portals with stacking tuned so the surface still paints above the dim layer.
+
+- a807ec77a: feat: add checkout studio story with style override playground
+
+  - Export slot metadata API (defineComponentSlots, BLADE_SLOT_METADATA) for style override introspection
+  - Add Card 'surface' slot for per-slot style overrides
+  - Fix AppBar z-index from 1000 to 100 so it no longer overlays modal surfaces like BottomSheet (default z-index 100)
+  - Fix Input focus-ring transition to animate outline-width only, avoiding black→blue color flash on focus
+
+### Patch Changes
+
+- 08b3ddc5c: feat(blade-svelte): add country search to PhoneNumberInput selector
+
+  Adds a `SearchInput` inside `CountrySelector`'s `BottomSheetHeader` for `PhoneNumberInput`. Filters the country list by name or dial code (case-insensitive substring match) and shows a "No countries found" empty state when the filter matches nothing.
+
+- 0f2aed9e1: docs(blade-svelte): add portalTarget story for PhoneNumberInput
+
+  Adds a `WithPortalTarget` Storybook example for `PhoneNumberInput` that renders the input inside a bounded container and passes `portalTarget`, showing how the country-selector bottom sheet mounts into that element instead of `document.body`.
+
+- a12fdbe9f: fix(blade-svelte): budget grab handle and empty header in BottomSheet height
+
+  Measure empty `BottomSheetHeader` height instead of skipping it, and always budget grab-handle height in snap/scroll math. Zero both only when the header floats (zero body padding). Fixes spurious body scroll (~28px) on short sheets with an empty header and drag handle.
+
+- Updated dependencies [a807ec77a]
+  - @razorpay/blade-core@0.15.0
+
+## 0.14.0
+
+### Minor Changes
+
+- 6b908dc7f: fix(blade-svelte): friction fixes for TextInput, OTPInput & BottomSheet
+
+  - `TextInput`/`BaseInput`: added `isReadOnly` and `spellCheck` props
+  - `OTPInput`: added `onKeyDown` callback (with field `inputIndex`) for custom keyboard navigation; consumers can call `event.preventDefault()` to opt out of internal Backspace/Arrow navigation
+  - `BottomSheet`: made `isOpen` `$bindable`
+
+### Patch Changes
+
+- 05b9981a5: - **TextInput**: `format` is now reactive — pattern changes reformat the current value instead of freezing at mount.
+  - **TextInput**: added `keyboardType` prop + `'numeric'` to `KeyboardType` for digit-only virtual keyboards.
+  - **OTPInput**: `otpLength` widened to `4 | 6 | 8` for 8-digit bank OTPs.
+  - **OTPInput**: `onOTPFilled` now latches the last-fired value, firing once per completed OTP instead of re-firing on every reactive update.
+  - **Accordion**: added `allowMultiple` + `expandedIndices`/`defaultExpandedIndices` for multi-expand support. Existing single-expand API unchanged.
+- 049760516: fix(blade-svelte): TextInput onChange per keystroke + controlled value fixes
+- Updated dependencies [bb7fec430]
+  - @razorpay/blade-core@0.14.1
+
+## 0.13.0
+
+### Minor Changes
+
+- 29ca5194c: feat: add `black` color variant to Button
+
+  fix: focus-ring transition and offset flash on inputs
+
+  fix: use `bladeTheme` as default Storybook theme in blade-svelte
+
+### Patch Changes
+
+- a98fed065: fix(Button): use `interactive.border.neutral.faded` for the neutral variant's focus ring instead of the shared blue ring used by primary/positive/negative
+
+  fix: correct several Button Storybook stories where Controls didn't drive the rendered output (hardcoded `asChild` demos, dead `variant`/`color` controls on loading-matrix stories)
+
+- a61f11e3d: fix(Button): remove redundant focus-ring-parent/child classes so secondary button shows a single focus ring instead of an extra box around the text
+- Updated dependencies [a98fed065]
+- Updated dependencies [29ca5194c]
+  - @razorpay/blade-core@0.14.0
+
+## 0.12.1
+
+### Patch Changes
+
+- 2d5b85d86: feat(blade-svelte): add Modal component
+
+  Adds `Modal`, `ModalHeader`, `ModalBody`, and `ModalFooter` to `@razorpay/blade-svelte`. Focus is trapped within the surface while open, moves to the close button (or a caller-supplied `initialFocusRef`) on open, and returns to the previously focused element on close — including when a controlled `isOpen` prop flips to `false` directly. Background content is marked `inert` (falling back to `aria-hidden` where unsupported) while the modal is mounted, and a dev-only warning is logged if `accessibilityLabel` is missing.
+
+## 0.12.0
+
+### Minor Changes
+
+- 26428686f: feat(blade-svelte): add `showDragHandle` prop to BottomSheet to optionally hide the drag handle
+
+  `BottomSheet` now accepts a `showDragHandle` boolean prop (default `true`). Set it to `false` to hide the drag handle (the pill affordance at the top of the sheet) and disable drag-to-move/dismiss gestures — useful for desktop flows where dragging is not expected. The sheet can still be dismissed via the backdrop, `esc`, or programmatically.
+
+### Patch Changes
+
+- Updated dependencies [73f7e9655]
+  - @razorpay/blade-core@0.12.1
+
+## 0.11.8
+
+### Patch Changes
+
+- fd3e1e2d1: fix(blade-svelte): prevent BottomSheet focus from scrolling host content
+
+  Use `focus({ preventScroll: true })` when moving focus into the sheet on open and when returning focus to the trigger on dismiss. Stops the browser from scrolling scrollable ancestors (e.g. Checkout modals) while preserving keyboard and screen-reader focus behavior.
+
+- 788641ea1: fix(blade-svelte): export Link and CardHeaderLink prop types from components barrel
+
+  Export `LinkProps`, `BaseLinkProps`, and `CardHeaderLinkProps` from `@razorpay/blade-svelte/components` so consumers can import them without deep paths.
+
 ## 0.11.7
 
 ### Patch Changes

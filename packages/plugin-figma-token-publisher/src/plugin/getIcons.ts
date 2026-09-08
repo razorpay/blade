@@ -65,6 +65,8 @@ const getIcons = async (): Promise<void> => {
     type: 'export-svg-icons',
     data: svgStrings,
   });
+  // the exported SVG blob needs a readable textarea, not the default token-field sized window
+  figma.ui.resize(460, 560);
   figma.ui.show();
 };
 

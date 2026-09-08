@@ -104,6 +104,27 @@ export const typographyToCSSVariables = (typography: Typography): Record<string,
 };
 
 /**
+ * Colors slice → CSS vars. Same names `themeToCSSVariables` emits for colors, but on its own so
+ * the `theme.css` generator can emit colors in the dark block without re-emitting global border/
+ * typography (which belong once in `:root`).
+ */
+export const colorsToCSSVariables = (colors: ThemeColors): Record<string, string> => {
+  const cssVariables: Record<string, string> = {};
+  flattenTokenTree(colors, [], cssVariables);
+  return cssVariables;
+};
+
+/**
+ * Elevation slice → CSS vars (`--elevation-*`). Split out for the same reason as
+ * `colorsToCSSVariables`.
+ */
+export const elevationToCSSVariables = (elevation: Elevation): Record<string, string> => {
+  const cssVariables: Record<string, string> = {};
+  flattenTokenTree(elevation, ['elevation'], cssVariables);
+  return cssVariables;
+};
+
+/**
  * Convert a resolved theme slice into CSS custom property declarations.
  * Keys match `@razorpay/blade-core/tokens/theme.css` (e.g. `--surface-background-gray-subtle`).
  */

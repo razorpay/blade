@@ -37,9 +37,16 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
+// `@figma/plugin-typings` has no SlotNode yet, so slots can only be recognised by their runtime
+// type string. Keep it here so every comparison stays in sync.
+const SLOT_NODE_TYPE = 'SLOT';
 const NODES_SKIP_FROM_COVERAGE = [
   'GROUP',
   'SECTION',
+  // a SLOT is a placeholder that belongs to the component's own definition, not to the designer.
+  // whatever gets dropped into it is still traversed and measured, so counting or flagging the
+  // slot itself would both mark Blade internals as non-Blade and inflate the layer count
+  SLOT_NODE_TYPE,
   'VECTOR',
   'ELLIPSE',
   'INSTANCE',
@@ -76,16 +83,23 @@ const isBladeInstance = (node: BaseNode): node is InstanceNode =>
     BLADE_COMPONENT_IDS.includes(node.mainComponent?.key ?? ''));
 
 /**
- * Figma does not allow adding or removing children of an instance, so any plain FRAME found
- * inside one belongs to that component's own definition rather than to the designer. When the
- * owning component is Blade's, that frame is internal chrome we should ignore entirely.
+ * Outside of slots, Figma does not allow adding or removing children of an instance, so any plain
+ * FRAME found inside one belongs to that component's own definition rather than to the designer.
+ * When the owning component is Blade's, that frame is internal chrome we should ignore entirely.
  *
- * Only the nearest instance decides this. A custom component dropped into a Blade slot still
+ * Slots are the exception: they are the one place where a descendant of an instance is authored by
+ * the designer, so anything below a SLOT stays in the coverage no matter which component owns it.
+ *
+ * Past that, only the nearest instance decides. A custom component dropped into a Blade slot still
  * owns its frames, so those must keep showing up in the coverage.
  */
 const isInsideBladeComponent = (node: BaseNode): boolean => {
   let currentNode = node.parent;
   while (currentNode && currentNode.type !== 'PAGE' && currentNode.type !== 'DOCUMENT') {
+    // the plugin typings have no SlotNode yet, so the runtime type has to be compared as a string
+    if ((currentNode.type as string) === SLOT_NODE_TYPE) {
+      return false;
+    }
     if (currentNode.type === 'INSTANCE') {
       return isBladeInstance(currentNode);
     }
@@ -301,6 +315,8 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 bladeComponents += slotComponentsCoverage?.bladeComponents;
                 bladeTextStyles += slotComponentsCoverage?.bladeTextStyles;
                 bladeColorStyles += slotComponentsCoverage?.bladeColorStyles;
+                // patterns can be dropped into a slot too, so they have to roll up like the rest
+                patternsUsed += slotComponentsCoverage?.patternsUsed;
                 nonBladeComponents += slotComponentsCoverage?.nonBladeComponents;
                 nonBladeTextStyles += slotComponentsCoverage?.nonBladeTextStyles;
                 nonBladeColorStyles += slotComponentsCoverage?.nonBladeColorStyles;
