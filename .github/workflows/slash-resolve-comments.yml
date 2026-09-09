@@ -12,9 +12,10 @@ concurrency:
 jobs:
   resolve-comments:
     name: Resolve PR review comments via Slash
-    # Bot comments with confidence >= 5/10 should be auto-resolved (except for github-actions[bot]).
+    # Allow human reviewers and rzp-slash-public[bot] reviews through; exclude
+    # all other bots to prevent feedback loops and avoid wasted CI runs.
     if: |
-      github.actor != 'github-actions[bot]'
+      github.event.review.user.type != 'Bot' || github.actor == 'rzp-slash-public[bot]'
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout repository
