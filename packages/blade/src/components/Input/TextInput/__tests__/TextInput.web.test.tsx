@@ -683,3 +683,67 @@ describe('<TextInput /> formatted + controlled value', () => {
     });
   });
 });
+
+// ─── Formatted TextInput — uncontrolled value ──────────────────────────────────
+// Mirrors the controlled tests but uses `defaultValue` (no `value` prop), so the
+// component manages its own state without parent reconciliation.
+describe('<TextInput /> formatted + uncontrolled value', () => {
+  it('formats typed digits with delimiters', async () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" />,
+    );
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111222233334444');
+    expect(input).toHaveValue('4111 2222 3333 4444');
+  });
+
+  it('formats defaultValue on initial render', () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" defaultValue="4111222233334444" />,
+    );
+    expect(getByLabelText('Card')).toHaveValue('4111 2222 3333 4444');
+  });
+
+  it('does not leak a trailing delimiter when value ends on a group boundary', async () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" />,
+    );
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111111111111111');
+    expect(input).toHaveValue('4111 1111 1111 1111');
+    expect((input as HTMLInputElement).value.endsWith(' ')).toBe(false);
+  });
+
+  it('places caret after typed digit when formatter inserts a delimiter at a group boundary', async () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" />,
+    );
+    const input = getByLabelText('Card') as HTMLInputElement;
+
+    await userEvent.type(input, '12345');
+    await waitFor(() => {
+      expect(input.value).toBe('1234 5');
+      expect(input.selectionStart).toBe(6); // after "5"
+    });
+  });
+
+  it('calls onChange with rawValue stripped of delimiters', async () => {
+    const onChange = jest.fn();
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" onChange={onChange} />,
+    );
+    const input = getByLabelText('Card');
+    await userEvent.type(input, '4111');
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ rawValue: '4111' }),
+    );
+  });
+
+  it('respects maxLength derived from the format pattern', () => {
+    const { getByLabelText } = renderWithTheme(
+      <TextInput label="Card" format="#### #### #### ####" />,
+    );
+    const input = getByLabelText('Card') as HTMLInputElement;
+    expect(input).toHaveAttribute('maxlength', '19');
+  });
+});
