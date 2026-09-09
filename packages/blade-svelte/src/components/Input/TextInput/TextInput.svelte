@@ -89,9 +89,20 @@
     const currentDisplay = formattedValue;
     untrack(() => {
       if (!currentFormatter) return;
-      // Uncontrolled (`value` never supplied): keep the optimistic display so
-      // typing works without a parent feeding the value back.
-      if (userValue === undefined) return;
+      // Uncontrolled (`value` never supplied): the display is the source of
+      // truth, so we keep the optimistic value typed by the user. But the
+      // pattern can still change at runtime (e.g. card-network detection
+      // swapping the grouping mask), so re-format the current raw chars against
+      // the new pattern. The guard keeps this idempotent per keystroke, so the
+      // caret is only touched when the pattern actually changed.
+      if (userValue === undefined) {
+        const raw = stripPatternCharacters(currentDisplay);
+        const expected = currentFormatter.formatValue(raw);
+        if (expected !== currentDisplay) {
+          formattedValue = expected;
+        }
+        return;
+      }
 
       // Controlled: empty string resets to the formatted shell; otherwise
       // reformat from the raw characters the consumer stored.
