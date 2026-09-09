@@ -29,8 +29,6 @@ type SliderBaseProps = Pick<
    * omission and may be added in a future release.
    */
   suffix?: string;
-  /** @default 'medium' */
-  size?: 'medium' | 'large';
   /**
    * Shows the value tooltip above the thumb while it is hovered, dragged, or
    * keyboard-focused. The tooltip is the slider's value readout — disable it only

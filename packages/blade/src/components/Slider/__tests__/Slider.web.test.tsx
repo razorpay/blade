@@ -239,16 +239,23 @@ describe('<Slider />', () => {
     expect(getByText('13')).toBeInTheDocument();
   });
 
-  it('should render the track as step segments when showSteps is true', () => {
-    // jest-styled-components serializes the class CSS into the snapshot, so the
-    // repeating-linear-gradient (one 10% cycle per step, 1px gap) is asserted there.
+  it('should render step stop-indicator dots on a continuous track when showSteps is true', () => {
+    // 0–100 by 10, value 50 → dots mark the stops ahead of the thumb (60–90);
+    // endpoints and passed stops stay clean.
     const { container } = renderWithTheme(
       <Slider label="Test" defaultValue={50} min={0} max={100} step={10} showSteps />,
     );
+    const dots = container.querySelectorAll('[class*="StyledStepDot"]');
+    expect(dots).toHaveLength(4);
     expect(container).toMatchSnapshot();
+
+    const { container: plain } = renderWithTheme(
+      <Slider label="Test" defaultValue={50} min={0} max={100} step={10} />,
+    );
+    expect(plain.querySelectorAll('[class*="StyledStepDot"]')).toHaveLength(0);
   });
 
-  it('should auto-hide step segments when steps are too dense for the track width', () => {
+  it('should auto-hide step dots when steps are too dense for the track width', () => {
     // jsdom has no ResizeObserver — install a mock that lets the test control
     // the measured track width, mirroring what a real browser reports.
     let resizeCallback: (entries: { contentRect: { width: number } }[]) => void = () => undefined;
@@ -266,27 +273,17 @@ describe('<Slider />', () => {
     const { getByRole } = renderWithTheme(
       <Slider label="Test" defaultValue={50} min={0} max={100} step={1} showSteps />,
     );
-    const track = getByRole('slider').parentElement?.firstElementChild as HTMLElement;
     expect(observe).toHaveBeenCalled();
-    // Reads the CSS declarations styled-components generated for the track's
-    // current hash class (the gradient lives in class CSS, not inline style).
-    const trackCss = (): string => {
-      const hashClass = [...track.classList].find((c) => !c.includes('StyledTrackBackground'));
-      const css = [...document.querySelectorAll('style')]
-        .map((styleTag) => styleTag.textContent ?? '')
-        .join('\n');
-      const start = css.indexOf(`.${hashClass}{`);
-      return start === -1 ? '' : css.slice(start, css.indexOf('}', start));
-    };
+    const dotCount = (): number =>
+      getByRole('slider').parentElement?.querySelectorAll('[class*="StyledStepDot"]').length ?? 0;
 
-    // 100 steps on a 300px track → 3px per block, below the 8px minimum → hidden
-    act(() => resizeCallback([{ contentRect: { width: 300 } }]));
-    expect(trackCss()).not.toContain('repeating-linear-gradient');
-    expect(trackCss()).toContain('background-color');
-
-    // Same slider on a 1600px track → 16px per block → segments shown
+    // 100 steps on a 1600px track → 16px between dots, below the 24px minimum → hidden
     act(() => resizeCallback([{ contentRect: { width: 1600 } }]));
-    expect(trackCss()).toContain('repeating-linear-gradient');
+    expect(dotCount()).toBe(0);
+
+    // Same slider on a 3000px track → 30px between dots → dots shown
+    act(() => resizeCallback([{ contentRect: { width: 3000 } }]));
+    expect(dotCount()).toBe(49);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     delete (global as any).ResizeObserver;

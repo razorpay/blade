@@ -35,9 +35,8 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 const tokens = SLIDER_TOKENS;
 const noop = (): void => undefined;
 
-// Background track — a styled component (class CSS, not inline style) because the
-// step-segmented variant paints with a repeating-linear-gradient, which inline styles
-// can't carry through jsdom for tests/snapshots.
+// Background track — a styled component (class CSS, not inline style) so its
+// declarations show up in jsdom tests/snapshots.
 const StyledTrackBackground = styled.div<{ $background: string }>`
   position: absolute;
   left: 0;
@@ -45,6 +44,21 @@ const StyledTrackBackground = styled.div<{ $background: string }>`
   height: ${tokens.track.height}px;
   border-radius: ${({ theme }) => theme.border.radius.max}px;
   ${({ $background }) => $background}
+`;
+
+// Step stop-indicator dot (Material 3 discrete-slider pattern): the track line
+// stays CONTINUOUS and small contrast dots mark each snap position — background-
+// colored on the filled rail, fill-colored on the empty wash. A styled component
+// (class CSS) so tests/snapshots can assert on it.
+const StyledStepDot = styled.div<{ $left: string; $color: string }>`
+  position: absolute;
+  left: ${({ $left }) => $left};
+  width: ${tokens.track.stepDotSize}px;
+  height: ${tokens.track.stepDotSize}px;
+  transform: translateX(-50%);
+  border-radius: ${({ theme }) => theme.border.radius.round};
+  background-color: ${({ $color }) => $color};
+  pointer-events: none;
 `;
 
 const StyledThumb = styled.div<{
@@ -69,7 +83,6 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
       max = 100,
       step = 1,
       suffix,
-      size = 'medium',
       showTooltip = true,
       showSteps = false,
       isDisabled = false,
@@ -468,7 +481,7 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
     });
     const thumbMergedRef = useMergeRefs(thumbRef, tooltipRefs.setReference);
     const isDarkMode = colorScheme === 'dark';
-    const thumbSize = isDragging ? tokens.thumb.pressedSize[size] : tokens.thumb.size[size];
+    const thumbSize = isDragging ? tokens.thumb.pressedSize : tokens.thumb.size;
     const haloSize = thumbSize * tokens.thumb.haloMultiplier;
     // One shared movement animation for programmatic jumps (Enter/keyboard/track-click):
     // the thumb's `left` and the fill's `width` use the identical duration + easing so
@@ -531,7 +544,18 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
       (stepBlockWidth === null ||
         trackWidth === 0 ||
         stepBlockWidth >= tokens.track.stepMinBlockWidth);
-    const segmentedTrackBackground = `repeating-linear-gradient(to right, ${trackBgColor} 0, ${trackBgColor} calc(${stepPct}% - ${tokens.track.stepGap}px), transparent calc(${stepPct}% - ${tokens.track.stepGap}px), transparent ${stepPct}%)`;
+    // Dot positions: one per interior snap position AHEAD of the thumb (endpoints
+    // skipped — the rounded track caps mark them; passed stops stay a clean solid
+    // fill line). On a hairline track only the unfilled side takes dots: a light
+    // contrast dot on the dark fill reads as a hole, not a mark.
+    const fillPct = getRatio(currentValue) * 100;
+    const stepDotPositions: number[] = [];
+    if (showStepSegments) {
+      for (let pct = stepPct; pct < 100 - stepPct / 2; pct += stepPct) {
+        if (pct > fillPct) stepDotPositions.push(pct);
+      }
+    }
+    const stepDotColor = get(theme.colors, tokens.color.stepDot, '');
 
     return (
       <BaseBox
@@ -551,7 +575,7 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
               // Rendered as a span (not a native <label htmlFor>): the visible label names the
               // slider via aria-labelledby (the WAI-ARIA slider pattern) — a slider thumb is
               // not a labelable form element, so there is no id for htmlFor to point at.
-              <FormLabel as="span" position={labelPosition} id={labelId} size={size}>
+              <FormLabel as="span" position={labelPosition} id={labelId} size="medium">
                 {label}
               </FormLabel>
             )}
@@ -569,8 +593,8 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
                 cursor={isDisabled ? 'not-allowed' : 'pointer'}
                 onMouseDown={(handleMouseDown as unknown) as React.MouseEventHandler}
                 onTouchStart={(handleTouchStart as unknown) as React.TouchEventHandler}
-                paddingLeft={makeSpace(tokens.thumb.pressedSize[size] / 2)}
-                paddingRight={makeSpace(tokens.thumb.pressedSize[size] / 2)}
+                paddingLeft={makeSpace(tokens.thumb.pressedSize / 2)}
+                paddingRight={makeSpace(tokens.thumb.pressedSize / 2)}
                 style={{ touchAction: 'none' }}
               >
                 <BaseBox
@@ -582,13 +606,7 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
                   alignItems="center"
                 >
                   {/* Track background */}
-                  <StyledTrackBackground
-                    $background={
-                      showStepSegments
-                        ? `background-image: ${segmentedTrackBackground};`
-                        : `background-color: ${trackBgColor};`
-                    }
-                  />
+                  <StyledTrackBackground $background={`background-color: ${trackBgColor};`} />
 
                   {/* Fill track */}
                   <div
@@ -605,6 +623,16 @@ const _Slider = React.forwardRef<BladeElementRef, SliderProps>(
                         : `width ${moveTransitionDuration} ${moveTransitionEasing}`,
                     }}
                   />
+
+                  {/* Step stop-indicator dots — continuous track, Material 3 style */}
+                  {stepDotPositions.map((pct) => (
+                    <StyledStepDot
+                      key={pct}
+                      aria-hidden="true"
+                      $left={`${pct}%`}
+                      $color={stepDotColor}
+                    />
+                  ))}
 
                   {/* Thumb wrapper — halo + visual thumb nested inside */}
                   <StyledThumb

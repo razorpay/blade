@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Slider /> should render the track as step segments when showSteps is true 1`] = `
+exports[`<Slider /> should render step stop-indicator dots on a continuous track when showSteps is true 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -181,10 +181,62 @@ exports[`<Slider /> should render the track as step segments when showSteps is t
   right: 0;
   height: 2px;
   border-radius: 9999px;
-  background-image: repeating-linear-gradient(to right,hsla(206,10%,29%,0.12) 0,hsla(206,10%,29%,0.12) calc(10% - 2px),transparent calc(10% - 2px),transparent 10%);
+  background-color: hsla(206,10%,29%,0.18);
 }
 
 .c12.c12.c12.c12.c12 {
+  position: absolute;
+  left: 60%;
+  width: 6px;
+  height: 6px;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: hsla(203,8%,80%,1);
+  pointer-events: none;
+}
+
+.c13.c13.c13.c13.c13 {
+  position: absolute;
+  left: 70%;
+  width: 6px;
+  height: 6px;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: hsla(203,8%,80%,1);
+  pointer-events: none;
+}
+
+.c14.c14.c14.c14.c14 {
+  position: absolute;
+  left: 80%;
+  width: 6px;
+  height: 6px;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: hsla(203,8%,80%,1);
+  pointer-events: none;
+}
+
+.c15.c15.c15.c15.c15 {
+  position: absolute;
+  left: 90%;
+  width: 6px;
+  height: 6px;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: hsla(203,8%,80%,1);
+  pointer-events: none;
+}
+
+.c16.c16.c16.c16.c16 {
   outline: none;
 }
 
@@ -263,13 +315,29 @@ exports[`<Slider /> should render the track as step segments when showSteps is t
                 style="position: absolute; left: 0px; width: 50%; height: 2px; border-radius: 9999px; background-color: rgb(0, 0, 0); transition: width 200ms cubic-bezier(0.3, 0, 0.2, 1);"
               />
               <div
+                aria-hidden="true"
+                class="c12"
+              />
+              <div
+                aria-hidden="true"
+                class="c13"
+              />
+              <div
+                aria-hidden="true"
+                class="c14"
+              />
+              <div
+                aria-hidden="true"
+                class="c15"
+              />
+              <div
                 aria-disabled="false"
                 aria-labelledby="slider-63-label"
                 aria-valuemax="100"
                 aria-valuemin="0"
                 aria-valuenow="50"
                 aria-valuetext="50"
-                class="c12"
+                class="c16"
                 role="slider"
                 style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; cursor: grab; z-index: 2; transition: left 200ms cubic-bezier(0.3, 0, 0.2, 1);"
                 tabindex="0"

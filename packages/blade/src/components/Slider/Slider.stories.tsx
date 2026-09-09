@@ -14,7 +14,6 @@ export default {
     max: 24,
     step: 2,
     defaultValue: 12,
-    size: 'medium',
     isDisabled: false,
     showTooltip: true,
     showSteps: false,
@@ -26,10 +25,6 @@ export default {
     },
     showSteps: {
       control: { type: 'boolean' },
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['medium', 'large'],
     },
     labelPosition: {
       control: { type: 'select' },
