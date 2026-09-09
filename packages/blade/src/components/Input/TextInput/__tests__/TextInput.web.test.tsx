@@ -683,3 +683,63 @@ describe('<TextInput /> formatted + controlled value', () => {
     });
   });
 });
+
+// ─── Formatted TextInput — bracket delimiter handling ─────────────────────────
+// When the format pattern contains structural bracket pairs like "(###) ###-####",
+// the closing bracket must always be emitted even when the value ends exactly
+// on a group boundary inside the brackets.  Non-bracket delimiters (spaces,
+// dashes, slashes) should still be suppressed to avoid trailing junk.
+const BracketFormatInput = ({
+  pattern,
+  value,
+}: {
+  pattern: string;
+  value: string;
+}): ReactElement => {
+  const onlyDigits = (v: string): string => v.replace(/\D/g, '');
+  const [internalValue, setInternalValue] = useState<string>(value);
+  return (
+    <TextInput
+      label="Phone"
+      format={pattern}
+      value={internalValue}
+      onChange={({ rawValue }) => setInternalValue(onlyDigits(rawValue ?? ''))}
+    />
+  );
+};
+
+describe('<TextInput /> formatted — bracket delimiters', () => {
+  it('preserves closing bracket when value fills the bracketed group exactly', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BracketFormatInput pattern="(###) ###-####" value="123" />,
+    );
+    // "(123)" not "(123" — the ")" must survive even though value is exhausted.
+    expect(getByLabelText('Phone')).toHaveValue('(123)');
+  });
+
+  it('does not emit trailing non-bracket delimiters after the closing bracket', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BracketFormatInput pattern="(###) ###-####" value="123" />,
+    );
+    const input = getByLabelText('Phone') as HTMLInputElement;
+    // No trailing space or dash after "(123)".
+    expect(input.value).toBe('(123)');
+  });
+
+  it('preserves closing bracket for (####)-####-#### custom pattern', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BracketFormatInput pattern="(####)-####-####" value="1234" />,
+    );
+    // "(1234)" not "(1234" — the ")" must survive.
+    expect(getByLabelText('Phone')).toHaveValue('(1234)');
+  });
+
+  it('still strips trailing space for non-bracket patterns (card number)', () => {
+    const { getByLabelText } = renderWithTheme(
+      <BracketFormatInput pattern="#### #### #### ####" value="4111111111111111" />,
+    );
+    const input = getByLabelText('Phone') as HTMLInputElement;
+    expect(input.value).toBe('4111 1111 1111 1111');
+    expect(input.value.endsWith(' ')).toBe(false);
+  });
+});

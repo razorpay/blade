@@ -10,6 +10,7 @@ const format = (value: string, pattern: string): string => {
 
   let result = '';
   let valueIndex = 0;
+  const openBrackets: string[] = [];
 
   for (let i = 0; i < pattern.length; i++) {
     const patternChar = pattern[i]; // "#" or "/"
@@ -22,10 +23,25 @@ const format = (value: string, pattern: string): string => {
         break; // No more input chars, stop
       }
     } else {
+      // Track opening brackets so their matching closings are always emitted.
+      if ('([{'.includes(patternChar)) openBrackets.push(patternChar);
+
       // Stop before appending a delimiter when the value ended exactly on a
       // group boundary; otherwise a trailing delimiter leaks into the output
       // (e.g. 16 digits into "#### #### #### #### ###" → "6785 ").
-      if (valueIndex >= value.length) break;
+      // Closing brackets that match an already-emitted opening bracket are
+      // always emitted so structural delimiters like "(###)" stay intact
+      // (e.g. format('123', '(###) ###-####') → "(123)" not "(123").
+      if (valueIndex >= value.length) {
+        if (')]}'.includes(patternChar) && openBrackets.length > 0) {
+          openBrackets.pop();
+          result += patternChar;
+          continue;
+        }
+        break;
+      }
+
+      if (')]}'.includes(patternChar) && openBrackets.length > 0) openBrackets.pop();
       result += patternChar; // add "/" delimiter
     }
   }
