@@ -101,7 +101,7 @@ describe('<TextInput /> isReadOnly & spellCheck', () => {
       const user = userEvent.setup();
       render(TextInputFormattedControlled);
 
-      const input = screen.getByLabelText('Card') as HTMLInputElement;
+      const input = screen.getByLabelText('Card');
 
       await user.type(input, '1234');
       await tick();
@@ -159,7 +159,7 @@ describe('<TextInput /> isReadOnly & spellCheck', () => {
     const user = userEvent.setup();
     render(TextInputFormattedControlled);
 
-    const inputEl = screen.getByLabelText('Card') as HTMLInputElement;
+    const inputEl = screen.getByLabelText('Card');
 
     await user.type(inputEl, '4111a2222');
     await tick();
@@ -177,7 +177,7 @@ describe('<TextInput /> isReadOnly & spellCheck', () => {
     const user = userEvent.setup();
     render(TextInputFormattedControlled);
 
-    const inputEl = screen.getByLabelText('Card') as HTMLInputElement;
+    const inputEl = screen.getByLabelText('Card');
 
     await user.type(inputEl, '12345');
     await tick();
