@@ -146,6 +146,62 @@ describe('<TextInput /> isReadOnly & spellCheck', () => {
     });
   });
 
+  describe('formatted + uncontrolled value', () => {
+    it('formats the value into groups as the user types', async () => {
+      const user = userEvent.setup();
+      render(TextInput, {
+        props: { label: 'Card', format: '#### #### #### ####' },
+      });
+
+      const input = screen.getByLabelText('Card');
+      await user.type(input, '4111222');
+      await tick();
+
+      expect(input).toHaveValue('4111 222');
+    });
+
+    it('does not show a trailing delimiter when the value fills all groups exactly', async () => {
+      const user = userEvent.setup();
+      render(TextInput, {
+        props: { label: 'Card', format: '#### #### #### ####' },
+      });
+
+      const input = screen.getByLabelText('Card');
+      await user.type(input, '4111111111111111');
+      await tick();
+
+      expect(input).toHaveValue('4111 1111 1111 1111');
+    });
+
+    it('does not show a trailing delimiter when value ends on a group boundary with extra slots remaining', async () => {
+      const user = userEvent.setup();
+      render(TextInput, {
+        props: { label: 'Card', format: '#### #### #### #### ###' },
+      });
+
+      const input = screen.getByLabelText('Card');
+      await user.type(input, '4111111111111111');
+      await tick();
+
+      expect(input).toHaveValue('4111 1111 1111 1111');
+    });
+
+    it('keeps the caret after the typed char when formatting inserts a delimiter at a group boundary', async () => {
+      const user = userEvent.setup();
+      render(TextInput, {
+        props: { label: 'Card', format: '#### #### #### ####' },
+      });
+
+      const inputEl = screen.getByLabelText('Card');
+      await user.type(inputEl, '12345');
+      await tick();
+      await Promise.resolve();
+
+      expect(inputEl.value).toBe('1234 5');
+      expect(inputEl.selectionStart).toBe(inputEl.value.length);
+    });
+  });
+
   it('inputEl.value matches the state stored by onChange after typing a letter', async () => {
     // Reproduction recipe from the bug report:
     //   1. Render TextInput with `format` and `value` bound to $state.
