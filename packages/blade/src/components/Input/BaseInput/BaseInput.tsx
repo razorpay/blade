@@ -19,7 +19,7 @@ import type {
   FormInputOnEvent,
   FormHintProps,
 } from '~components/Form';
-import { FormHint, FormLabel } from '~components/Form';
+import { AnimatedFormHint, FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -278,6 +278,24 @@ type BaseInputCommonProps = FormInputLabelProps &
      * Hides the form hint text
      */
     hideFormHint?: boolean;
+    /**
+     * Makes `helpText` contextual instead of persistent — it stays hidden at rest
+     * and eases in only while the input is focused, easing back out on blur.
+     *
+     * `errorText` and `successText` are unaffected and always remain visible, since
+     * validation feedback must not depend on focus.
+     *
+     * When `false`, help text renders exactly as it does today — always visible,
+     * with no transition.
+     *
+     * Known limits:
+     * - A disabled input cannot take focus, so its help text is never revealed.
+     * - With `maxCharacters` the character counter keeps the footer row visible at rest.
+     * - `SearchInput` with a `Dropdown` paints the open dropdown over the revealed help text.
+     *
+     * @default false
+     */
+    showHelpTextOnFocus?: boolean;
     /**
      * componentName prop sets the data-blade-component attribute name
      * for internal metric collection purposes
@@ -934,6 +952,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
     hideLabelText,
     hideFormHint,
+    showHelpTextOnFocus = false,
     hasPopup,
     popupId,
     isPopupExpanded,
@@ -1068,6 +1087,29 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
       ((validationState === 'success' && Boolean(successText)) ||
         (validationState === 'error' && Boolean(errorText))));
 
+  const hintType = getHintType({
+    validationState: isValidationTextInside ? 'none' : validationState,
+    hasHelpText: Boolean(helpText),
+  });
+  const footerErrorText = isValidationTextInside ? undefined : errorText;
+  const footerSuccessText = isValidationTextInside ? undefined : successText;
+  /**
+   * Mirrors FormHint's own resolution rather than testing `hintType` alone. A
+   * `validationState` of error or success only wins if the matching text was
+   * actually supplied — `validationState="error"` with no `errorText` still falls
+   * through to help text, and that help text must stay contextual.
+   */
+  const willShowHelpText =
+    !(hintType === 'error' && Boolean(footerErrorText)) &&
+    !(hintType === 'success' && Boolean(footerSuccessText)) &&
+    Boolean(helpText);
+  /**
+   * `showHelpTextOnFocus` only ever gates help text. Once validation resolves to
+   * error or success the hint is feedback, not guidance, so it renders persistently
+   * and untransitioned exactly as it does without the prop.
+   */
+  const isHelpTextContextual = showHelpTextOnFocus && willShowHelpText;
+
   if (__DEV__) {
     if (
       autoCompleteSuggestionType &&
@@ -1096,6 +1138,24 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   const hasTrailingDropdown = Boolean(trailingDropDown);
 
   const shouldAddLimitedFocus = hasLeadingDropdown || hasTrailingDropdown;
+
+  /**
+   * Held in a variable so the contextual branch below can wrap the *same* element
+   * rather than duplicating it. When `showHelpTextOnFocus` is off this renders
+   * unwrapped, leaving the existing markup byte for byte unchanged.
+   */
+  const formHint = (
+    <FormHint
+      type={hintType}
+      helpText={helpText}
+      errorText={footerErrorText}
+      successText={footerSuccessText}
+      helpTextId={helpTextId}
+      errorTextId={errorTextId}
+      successTextId={successTextId}
+      size={_size}
+    />
+  );
 
   return (
     <BaseBox
@@ -1305,19 +1365,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             flexDirection="row"
             justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
           >
-            <FormHint
-              type={getHintType({
-                validationState: isValidationTextInside ? 'none' : validationState,
-                hasHelpText: Boolean(helpText),
-              })}
-              helpText={helpText}
-              errorText={isValidationTextInside ? undefined : errorText}
-              successText={isValidationTextInside ? undefined : successText}
-              helpTextId={helpTextId}
-              errorTextId={errorTextId}
-              successTextId={successTextId}
-              size={_size}
-            />
+            {isHelpTextContextual ? (
+              <AnimatedFormHint isVisible={currentInteraction === 'focus'}>
+                {formHint}
+              </AnimatedFormHint>
+            ) : (
+              formHint
+            )}
             {trailingFooterSlot?.(value ?? inputValue)}
           </BaseBox>
         </BaseBox>

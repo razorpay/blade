@@ -59,6 +59,7 @@ export default {
     validationState: 'none',
     validationTextPlacement: 'outside',
     helpText: undefined,
+    showHelpTextOnFocus: false,
     errorText: undefined,
     successText: undefined,
     icon: undefined,
@@ -205,6 +206,11 @@ export default {
       },
     },
     helpText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    showHelpTextOnFocus: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },
@@ -928,6 +934,37 @@ export const TextInputWithTrailingElement: StoryFn<typeof TextInputComponent> = 
     />
   );
 };
+
+export const TextInputWithHelpTextOnFocus: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6" maxWidth="320px">
+      <Text size="small" color="surface.text.gray.muted">
+        Focus each field to compare. The first keeps its help text visible at all times, the second
+        reveals it only while focused so the row below never gets pushed down at rest.
+      </Text>
+      <TextInputComponent
+        label="Account number"
+        placeholder="0000 0000 0000"
+        helpText="As printed on your cheque book"
+      />
+      <TextInputComponent
+        label="Account number"
+        placeholder="0000 0000 0000"
+        helpText="As printed on your cheque book"
+        showHelpTextOnFocus
+      />
+      <TextInputComponent
+        label="IFSC code"
+        placeholder="HDFC0000001"
+        helpText="You won't see this — error text is never gated behind focus"
+        errorText="Enter a valid 11 character IFSC code"
+        validationState="error"
+        showHelpTextOnFocus
+      />
+    </Box>
+  );
+};
+TextInputWithHelpTextOnFocus.storyName = 'TextInput with Help Text on Focus';
 
 export const TextInputWithLabelSuffixTrailing = TextInputTemplate.bind({});
 TextInputWithLabelSuffixTrailing.storyName = 'TextInput with Label Suffix & Trailing';

@@ -538,4 +538,62 @@ describe('<TextInput />', () => {
 
     expect(getByTestId('text-input-test-id')).toBeTruthy();
   });
+
+  /**
+   * Kept last on purpose. `useId` counters leak into the snapshots in this file, so
+   * inserting renders above a snapshot test renumbers its ids and forces unrelated
+   * snapshot churn.
+   */
+  describe('showHelpTextOnFocus', () => {
+    it('should keep the help text mounted while collapsed', () => {
+      const { getByText } = renderWithTheme(
+        <TextInput label="Enter name" helpText="Help" showHelpTextOnFocus />,
+      );
+
+      // clipped by the animated container rather than unmounted, so the id that
+      // accessibilityDescribedBy points at stays resolvable
+      expect(getByText('Help')).toBeTruthy();
+    });
+
+    /**
+     * The reveal itself can't be asserted here — it's driven by a reanimated shared
+     * value that only has a target height once `onLayout` has measured the content,
+     * which does not happen under the native test renderer. This guards the focus /
+     * blur cycle against crashing and against the hint being unmounted; the motion
+     * is verified manually on device.
+     */
+    it('should survive the focus and blur cycle with the hint mounted', () => {
+      const placeholder = 'Enter your name';
+      const { getByPlaceholderText, getByText } = renderWithTheme(
+        <TextInput
+          label="Enter name"
+          placeholder={placeholder}
+          helpText="Help"
+          showHelpTextOnFocus
+        />,
+      );
+
+      const input = getByPlaceholderText(placeholder);
+
+      fireEvent(input, 'focus');
+      expect(getByText('Help')).toBeTruthy();
+
+      fireEvent(input, 'blur');
+      expect(getByText('Help')).toBeTruthy();
+    });
+
+    it('should not gate error text behind focus', () => {
+      const { getByText } = renderWithTheme(
+        <TextInput
+          label="Enter name"
+          helpText="Help"
+          errorText="Error"
+          validationState="error"
+          showHelpTextOnFocus
+        />,
+      );
+
+      expect(getByText('Error')).toBeTruthy();
+    });
+  });
 });
