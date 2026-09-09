@@ -74,13 +74,45 @@
     untrack(() => (formatter ? formatter.formatValue(value ?? defaultValue ?? '') : '')),
   );
 
-  // Re-format the current raw value whenever the pattern changes at runtime.
+  // In controlled `format` mode the parent's `value` is the source of truth, so
+  // reconcile the display against it after EVERY change — not just when the
+  // `value` reference changes. Tracking `formattedValue` (the optimistic value
+  // `handleChange` writes) is what makes consumer sanitisation stick: when the
+  // parent strips a just-typed character (e.g. a letter in a digit-only card
+  // field), the sanitised value is byte-identical to the previous one, so a
+  // `value`-only effect never re-runs and the rejected character lingers on
+  // screen. Re-deriving here snaps the field back to exactly what the consumer
+  // stored (letter stripping, IIN truncation, programmatic prefill/reset).
   $effect(() => {
     const currentFormatter = formatter;
+    const userValue = value;
+    const currentDisplay = formattedValue;
     untrack(() => {
-      if (currentFormatter) {
-        const raw = stripPatternCharacters(formattedValue);
-        formattedValue = currentFormatter.formatValue(raw);
+      if (!currentFormatter) return;
+      // Uncontrolled (`value` never supplied): the display is the source of
+      // truth, so we keep the optimistic value typed by the user. But the
+      // pattern can still change at runtime (e.g. card-network detection
+      // swapping the grouping mask), so re-format the current raw chars against
+      // the new pattern. The guard keeps this idempotent per keystroke, so the
+      // caret is only touched when the pattern actually changed.
+      if (userValue === undefined) {
+        const raw = stripPatternCharacters(currentDisplay);
+        const expected = currentFormatter.formatValue(raw);
+        if (expected !== currentDisplay) {
+          formattedValue = expected;
+        }
+        return;
+      }
+
+      // Controlled: empty string resets to the formatted shell; otherwise
+      // reformat from the raw characters the consumer stored.
+      const expected =
+        userValue === ''
+          ? currentFormatter.formatValue('')
+          : currentFormatter.formatValue(stripPatternCharacters(userValue));
+
+      if (expected !== currentDisplay) {
+        formattedValue = expected;
       }
     });
   });
