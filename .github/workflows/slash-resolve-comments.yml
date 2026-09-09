@@ -12,20 +12,9 @@ concurrency:
 jobs:
   resolve-comments:
     name: Resolve PR review comments via Slash
-    # Skip reviews from bots to prevent feedback loops, except rzp-slash-public
-    # whose comments with confidence >= 5/10 should be auto-resolved.
-    # kamaleshs-bridge4 and slash-code-reviewer are automation bots and are
-    # skipped like other bots.
+    # Bot comments with confidence >= 5/10 should be auto-resolved (except for github-actions[bot]).
     if: |
-      github.actor != 'github-actions[bot]' &&
-      github.actor != 'kamaleshs-bridge4' &&
-      github.actor != 'rzp-slash' &&
-      github.actor != 'rzp-slash[bot]' &&
-      github.actor != 'rzp-slash-public' &&
-      github.actor != 'rzp-slash-reviewer' &&
-      github.actor != 'rzp-slash-reviewer[bot]' &&
-      github.actor != 'slash-code-reviewer' &&
-      github.actor != 'slash-code-reviewer[bot]'
+      github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout repository
