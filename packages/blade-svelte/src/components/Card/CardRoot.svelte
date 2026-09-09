@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { makeAccessible, metaAttribute, MetaConstants, getStyledPropsClasses } from '@razorpay/blade-core/utils';
+  import { makeAccessible, metaAttribute, MetaConstants, getStyledPropsClasses, cx } from '@razorpay/blade-core/utils';
   import { cardRootStyles } from '@razorpay/blade-core/styles';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
@@ -11,6 +11,7 @@
     borderRadius = 'medium',
     isSelected = false,
     isFocused = false,
+    isDisabled = false,
     validationState = 'none',
     accessibilityLabel,
     onHover,
@@ -21,6 +22,7 @@
     maxWidth,
     cursor,
     testID,
+    styleOverrideRoot,
     ...rest
   }: {
     children: Snippet;
@@ -28,6 +30,7 @@
     borderRadius?: 'medium' | 'large' | 'xlarge';
     isSelected?: boolean;
     isFocused?: boolean;
+    isDisabled?: boolean;
     validationState?: 'none' | 'error' | 'success';
     accessibilityLabel?: string;
     onHover?: () => void;
@@ -38,6 +41,7 @@
     maxWidth?: string;
     cursor?: string;
     testID?: string;
+    styleOverrideRoot?: string;
   } & StyledPropsBlade = $props();
 
   const rootClasses = $derived(
@@ -53,7 +57,7 @@
     if (styledProps.classes) {
       classes.push(...styledProps.classes);
     }
-    return classes.filter(Boolean).join(' ');
+    return cx(...classes.filter(Boolean), styleOverrideRoot);
   });
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.Card, testID }));
@@ -61,6 +65,7 @@
   const a11yAttrs = $derived(
     makeAccessible({
       label: as === 'label' ? accessibilityLabel : undefined,
+      disabled: isDisabled ? true : undefined,
     })
   );
 
@@ -73,9 +78,9 @@
     validationState && validationState !== 'none' ? validationState : undefined
   );
 
-  // Compute cursor style
+  // Compute cursor style. A disabled card always shows not-allowed, overriding any provided cursor.
   const cursorValue = $derived(
-    cursor ? cursor : as === 'label' ? 'pointer' : 'initial'
+    isDisabled ? 'not-allowed' : cursor ? cursor : as === 'label' ? 'pointer' : 'initial'
   );
 
   function handleMouseEnter(): void {

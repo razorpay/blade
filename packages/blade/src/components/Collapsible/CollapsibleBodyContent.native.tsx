@@ -117,15 +117,26 @@ const CollapsibleBodyContent = ({
            * avoid shrinking the animation target to an intermediate measurement.
            */
           layoutHeightRef.current = newHeight;
-          height.value = withTiming(newHeight, { duration, easing });
+          // Only drive the visible height while expanding. Growing it during a collapse (or the
+          // initial collapse-to-0 on mount) would reveal the content while it should stay hidden.
+          if (isExpanded) {
+            height.value = withTiming(newHeight, { duration, easing });
+          }
         }
       } else if (newHeight !== layoutHeightRef.current) {
         // When not animating, always sync layoutHeightRef to the latest measurement so
         // dynamic content changes (e.g. items added to the slot) are picked up correctly.
         layoutHeightRef.current = newHeight;
+        // When expanded, the real content height frequently arrives via onLayout *after* the
+        // (short) expand animation has already settled — especially for complex slotted content
+        // like StepGroup. Without reflecting it here the first open stays clipped/blank until a
+        // close→open cycle re-measures. Sync the visible height to the true content height.
+        if (isExpanded) {
+          height.value = newHeight;
+        }
       }
     },
-    [height, duration, easing],
+    [height, duration, easing, isExpanded],
   );
 
   return (

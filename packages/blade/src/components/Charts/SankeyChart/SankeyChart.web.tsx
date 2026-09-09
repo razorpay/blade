@@ -35,6 +35,7 @@ import {
   NODE_MIN_HEIGHT,
   TOOLTIP_Z_INDEX,
 } from './tokens';
+import { humanizeIndian } from './humanizeIndian';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import getIn from '~utils/lodashButBetter/get';
@@ -59,6 +60,11 @@ type SankeyChartContextType = {
 // Default is null — rendering ChartSankey outside ChartSankeyWrapper is detected and
 // throws a descriptive Blade error rather than silently failing with an empty palette.
 const SankeyChartContext = createContext<SankeyChartContextType | null>(null);
+
+// Recharts derives a node's value from its links, so a node with no links (or an
+// otherwise degenerate dataset) yields NaN geometry. Rendering that produces invalid
+// SVG attributes, so skip the element instead.
+const hasFiniteGeometry = (...values: number[]): boolean => values.every(Number.isFinite);
 
 // ─── Hover state ──────────────────────────────────────────────────────────────
 
@@ -112,25 +118,6 @@ function SankeyTooltipContent({
 }
 
 // ─── Indian number humanizer (private default for formatValue) ────────────────
-// Truncates (never rounds up) to avoid overstating values.
-// Examples: 2550→2.5k, 17100→17.1k, 124500→1.24L, 1000000→10L, 15000000→1.5Cr
-
-function humanizeIndian(value: number): string {
-  if (value >= 1_00_00_000) {
-    const v = Math.floor((value / 1_00_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}Cr`;
-  }
-  if (value >= 1_00_000) {
-    const v = Math.floor((value / 1_00_000) * 100) / 100;
-    return `${parseFloat(v.toFixed(2))}L`;
-  }
-  if (value >= 1_000) {
-    const v = Math.floor((value / 1_000) * 10) / 10;
-    return `${parseFloat(v.toFixed(1))}k`;
-  }
-  return String(value);
-}
-
 // ─── ChartSankeyWrapper ───────────────────────────────────────────────────────
 // Orchestration layer — mirrors ChartDonutWrapper.
 // Inspects children to extract data, computes dataColorMapping,
@@ -549,6 +536,7 @@ const _ChartSankey = ({
       const { x, y, width, height: nodeHeight, index, payload } = props;
       const nodeData = data.nodes[index] as SankeyDataNode | undefined;
       if (!nodeData) return <g />;
+      if (!hasFiniteGeometry(x, y, width, nodeHeight)) return <g />;
 
       const colorToken =
         nodeColorOverride ??
@@ -682,6 +670,19 @@ const _ChartSankey = ({
         index,
         payload,
       } = props;
+
+      if (
+        !hasFiniteGeometry(
+          sourceX,
+          targetX,
+          sourceY,
+          targetY,
+          sourceControlX,
+          targetControlX,
+          linkWidth,
+        )
+      )
+        return <path />;
 
       const resolveSourceIndex = (source: typeof payload.source): number => {
         if (typeof source === 'number') return source;

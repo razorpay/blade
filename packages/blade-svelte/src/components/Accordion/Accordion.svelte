@@ -4,15 +4,20 @@
     MetaConstants,
     getStyledPropsClasses,
     makeAnalyticsAttribute,
+    cx,
+    logger,
   } from '@razorpay/blade-core/utils';
   import {
     getAccordionWrapperClasses,
     getAccordionTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import { setAccordionContext } from './context';
+  import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import type { AccordionProps } from './types';
 
   const templateClasses = getAccordionTemplateClasses();
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     children,
@@ -26,8 +31,32 @@
     minWidth,
     hasGrayBody = false,
     testID,
+    styleOverride,
     ...rest
   }: AccordionProps = $props();
+
+  const mergedStyleOverride = $derived(
+    resolveComponentStyleOverride('Accordion', styleOverride, themeContextGetter),
+  );
+
+  const resolvedStyleOverride = $derived(
+    variant === 'filled' ? undefined : mergedStyleOverride,
+  );
+
+  $effect(() => {
+    if (
+      variant === 'filled' &&
+      mergedStyleOverride &&
+      Object.keys(mergedStyleOverride).length > 0
+    ) {
+      logger({
+        message:
+          'styleOverride is ignored when variant="filled". Use variant="transparent" for slot overrides.',
+        type: 'warn',
+        moduleName: 'Accordion',
+      });
+    }
+  });
 
   let internalExpandedIndex = $state<number | undefined>(defaultExpandedIndex);
 
@@ -71,14 +100,13 @@
     size,
     registerItem,
     hasGrayBody,
+    styleOverride: resolvedStyleOverride,
   }));
 
   const wrapperClass = $derived(getAccordionWrapperClasses({ variant }));
   const styledProps = $derived(getStyledPropsClasses(rest));
   const outerClasses = $derived(
-    [templateClasses.accordionOuter, ...(styledProps.classes || [])]
-      .filter(Boolean)
-      .join(' '),
+    cx(templateClasses.accordionOuter, ...(styledProps.classes || []), resolvedStyleOverride?.root),
   );
 
   const outerStyle = $derived.by(() => {

@@ -24,6 +24,7 @@ disable-model-invocation: true
 
 ## Instructions
 
+- You should never add any review.md file in PR or anywhere in the codebase. post-review script takes care of posting review and if it fails, you can add review as a comment on the PR
 - If you're unable to spawn the subagents, stop the skill immediately and respond with error message.
   ```json
   {

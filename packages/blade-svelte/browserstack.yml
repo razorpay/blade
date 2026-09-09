@@ -1,0 +1,11 @@
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
+projectName: Blade Interaction Tests
+buildName: Blade Interaction Test Suite
+platforms:
+  - browserName: chrome
+    osVersion: 13.0
+    deviceName: Google Pixel 7
+  - browserName: safari
+    osVersion: latest
+    deviceName: iPhone 15 Pro

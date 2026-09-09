@@ -13,6 +13,7 @@
       isOpen: undefined,
       snapPoints: undefined,
       isDismissible: true,
+      showDragHandle: true,
       title: 'Address Details',
       subtitle: 'Saving addresses will improve your checkout experience',
       showBackButton: false,
@@ -23,6 +24,7 @@
       onDismiss: { table: { disable: true } },
       initialFocusRef: { table: { disable: true } },
       isDismissible: { control: 'boolean' },
+      showDragHandle: { control: 'boolean' },
       zIndex: { control: 'number' },
       title: {
         control: 'text',
@@ -50,19 +52,36 @@
   import Badge from '../Badge/Badge.svelte';
   import Counter from '../Counter/Counter.svelte';
   import Link from '../Link/Link.svelte';
+  import Amount from '../Amount/Amount.svelte';
+  import Divider from '../Divider/Divider.svelte';
+  import ActionList from '../ActionList/ActionList.svelte';
+  import ActionListItem from '../ActionList/ActionListItem.svelte';
+  import ActionListSection from '../ActionList/ActionListSection.svelte';
+  import OTPInput from '../Input/OTPInput/OTPInput.svelte';
+  import TextInput from '../Input/TextInput/TextInput.svelte';
+  import Checkbox from '../Checkbox/Checkbox.svelte';
+  import RadioGroup from '../Radio/RadioGroup.svelte';
+  import Radio from '../Radio/Radio.svelte';
+  import TrustBadge from '../TrustBadge/TrustBadge.svelte';
 
   /* Playground story state — separate from product-demo stories. */
   let isPlaygroundOpen = $state(false);
 
   /* Default story state (one bucket per story to keep them independent). */
   let isDefaultOpen = $state(false);
+  let isWithoutDragHandleOpen = $state(false);
   let isHeaderFooterOpen = $state(false);
   let isSingleSelectOpen = $state(false);
   let isDropdownButtonOpen = $state(false);
   let dropdownButtonStatus = $state('approve');
   let isMultiSelectOpen = $state(false);
   let isSectionsSelectOpen = $state(false);
-  let multiSelectChosen = $state<Set<string>>(new Set());
+  let sortBy = $state<string | undefined>();
+  let cuisinesMulti = $state<string[]>([]);
+  let sectionsMulti = $state<string[]>([]);
+  let headerFooterAddress = $state<string | undefined>();
+  let stackAddress = $state<string | undefined>();
+  let termsAccepted = $state(false);
   let stackingFirstOpen = $state(false);
   let stackingSecondOpen = $state(false);
   let stackingThirdOpen = $state(false);
@@ -75,14 +94,21 @@
   let productSelectedSim = $state<string | undefined>();
   let productSimError = $state<string | undefined>();
   let isNonDismissibleOpen = $state(false);
+  let isPortalTargetOpen = $state(false);
+  let isAutoModeOpen = $state(false);
+  let autoModeItemCount = $state(3);
+  let autoModePortalEl = $state<HTMLDivElement | null>(null);
+  let portalTargetEl = $state<HTMLDivElement | null>(null);
+  let isSplitPortalOpen = $state(false);
+  let backdropPortalTargetEl = $state<HTMLDivElement | null>(null);
+  let surfacePortalTargetEl = $state<HTMLDivElement | null>(null);
 
-  let initialFocusInputEl: HTMLInputElement | null = $state(null);
+  let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
+    $state();
+  const initialFocusInputEl = $derived(searchInput?.getInput() ?? null);
 
-  function toggleMulti(item: string): void {
-    const next = new Set(multiSelectChosen);
-    if (next.has(item)) next.delete(item);
-    else next.add(item);
-    multiSelectChosen = next;
+  function toggleInArray(list: string[], value: string): string[] {
+    return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
   }
 
   const cuisines = [
@@ -134,6 +160,20 @@
 
   const phoneNumbers = ['1234567890', '0987654321'];
 
+  const sortOptions = [
+    { title: 'Relevance (Default)', value: 'relevance' },
+    { title: 'Delivery Time', value: 'delivery-time' },
+    { title: 'Rating', value: 'rating' },
+    { title: 'Cost: Low to High', value: 'cost-low-high' },
+    { title: 'Cost: High to Low', value: 'cost-high-low' },
+  ];
+
+  const statusOptions: Array<{ title: string; value: string; intent?: 'negative' }> = [
+    { title: 'Approve', value: 'approve' },
+    { title: 'In Progress', value: 'in-progress' },
+    { title: 'Reject', value: 'reject', intent: 'negative' },
+  ];
+
   function submitOTP(): void {
     isOTPLoading = true;
     setTimeout(() => {
@@ -155,27 +195,6 @@
     productSimError = undefined;
   }
 </script>
-
-{#snippet actionListSubstitute(items: string[], selectionType: 'none' | 'single' | 'multi')}
-  <ul style="list-style: none; padding: 0; margin: 0;" role="listbox">
-    {#each items as item}
-      <li role="presentation">
-        <button
-          type="button"
-          role={selectionType === 'multi' ? 'option' : undefined}
-          aria-selected={selectionType === 'multi' ? multiSelectChosen.has(item) : undefined}
-          onclick={() => selectionType === 'multi' && toggleMulti(item)}
-          style="display: flex; align-items: center; gap: var(--spacing-3); padding: var(--spacing-3) var(--spacing-4); width: 100%; text-align: left; background: transparent; border: none; cursor: pointer; border-radius: var(--border-radius-medium); font-family: var(--font-family-text); font-size: var(--font-size-100);"
-        >
-          {item}
-          {#if selectionType === 'multi' && multiSelectChosen.has(item)}
-            <span style="margin-left: auto;">✓</span>
-          {/if}
-        </button>
-      </li>
-    {/each}
-  </ul>
-{/snippet}
 
 <!-- Playground — controls drive BottomSheet + header props. -->
 <Story name="Playground">
@@ -283,12 +302,45 @@
           <BottomSheetFooter>
             {#snippet children()}
               <div style="display: flex; align-items: center; justify-content: space-between;">
-                <label style="display: flex; align-items: center; gap: var(--spacing-2);">
-                  <input type="checkbox" />
+                <Checkbox
+                  isChecked={termsAccepted}
+                  onChange={({ isChecked }) => (termsAccepted = isChecked)}
+                >
                   I accept terms and condition
-                </label>
+                </Checkbox>
                 <Button>Continue</Button>
               </div>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Without Drag Handle — hides the handle and disables drag gestures via showDragHandle={false}. -->
+<Story name="Without Drag Handle">
+  {#snippet template()}
+    <div>
+      <Button onClick={() => (isWithoutDragHandleOpen = true)}>Open</Button>
+      <BottomSheet
+        isOpen={isWithoutDragHandleOpen}
+        onDismiss={() => (isWithoutDragHandleOpen = false)}
+        showDragHandle={false}
+      >
+        {#snippet children()}
+          <BottomSheetHeader title="Terms & Conditions" subtitle="No drag handle is shown." />
+          <BottomSheetBody>
+            {#snippet children()}
+              <Text>
+                The drag handle is hidden and drag-to-move/dismiss is disabled. Dismiss via the
+                backdrop, escape key, or the Continue button below.
+              </Text>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isWithoutDragHandleOpen = false)}>Continue</Button>
             {/snippet}
           </BottomSheetFooter>
         {/snippet}
@@ -323,21 +375,15 @@
           </BottomSheetHeader>
           <BottomSheetBody>
             {#snippet children()}
-              <fieldset style="border: none; padding: 0; margin: 0;">
-                <legend style="font-weight: 600; margin-bottom: var(--spacing-3);">Addresses</legend>
-                <label style="display: flex; gap: var(--spacing-3); padding: var(--spacing-3) 0;">
-                  <input type="radio" name="story2-addr" value="home" />
-                  Home - 11850 Florida 24, Cedar Key, Florida
-                </label>
-                <label style="display: flex; gap: var(--spacing-3); padding: var(--spacing-3) 0;">
-                  <input type="radio" name="story2-addr" value="office-1" />
-                  Office - 2033 Florida 21, Cedar Key, Florida
-                </label>
-                <label style="display: flex; gap: var(--spacing-3); padding: var(--spacing-3) 0;">
-                  <input type="radio" name="story2-addr" value="office-2" />
-                  Work - 5938 New York, Main Street
-                </label>
-              </fieldset>
+              <RadioGroup
+                label="Addresses"
+                value={headerFooterAddress}
+                onChange={({ value }) => (headerFooterAddress = value)}
+              >
+                <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+                <Radio value="office-1">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+                <Radio value="office-2">Work - 5938 New York, Main Street</Radio>
+              </RadioGroup>
             {/snippet}
           </BottomSheetBody>
           <BottomSheetFooter>
@@ -363,10 +409,19 @@
           <BottomSheetHeader title="Sort By" />
           <BottomSheetBody hasActionList>
             {#snippet children()}
-              {@render actionListSubstitute(
-                ['Relevance (Default)', 'Delivery Time', 'Rating', 'Cost: Low to High', 'Cost: High to Low'],
-                'none',
-              )}
+              <ActionList
+                selectedValue={sortBy}
+                onAction={({ value }) => {
+                  sortBy = value;
+                  isSingleSelectOpen = false;
+                }}
+              >
+                {#snippet children()}
+                  {#each sortOptions as option (option.value)}
+                    <ActionListItem title={option.title} value={option.value} />
+                  {/each}
+                {/snippet}
+              </ActionList>
             {/snippet}
           </BottomSheetBody>
         {/snippet}
@@ -384,27 +439,22 @@
       </Button>
       <BottomSheet isOpen={isDropdownButtonOpen} onDismiss={() => (isDropdownButtonOpen = false)}>
         {#snippet children()}
-          <BottomSheetHeader />
           <BottomSheetBody hasActionList>
             {#snippet children()}
-              <ul style="list-style: none; padding: 0; margin: 0;" role="listbox">
-                {#each ['approve', 'in-progress', 'reject'] as status}
-                  <li role="presentation">
-                    <button
-                      type="button"
-                      role="option"
-                      aria-selected={dropdownButtonStatus === status}
-                      onclick={() => {
-                        dropdownButtonStatus = status;
-                        isDropdownButtonOpen = false;
-                      }}
-                      style="display: flex; align-items: center; gap: var(--spacing-3); padding: var(--spacing-3) var(--spacing-4); width: 100%; text-align: left; background: transparent; border: none; cursor: pointer; border-radius: var(--border-radius-medium); font-family: var(--font-family-text); font-size: var(--font-size-100);"
-                    >
-                      {status === 'approve' ? 'Approve' : status === 'in-progress' ? 'In Progress' : 'Reject'}
-                    </button>
-                  </li>
-                {/each}
-              </ul>
+              <BottomSheetHeader />
+              <ActionList
+                selectedValue={dropdownButtonStatus}
+                onAction={({ value }) => {
+                  dropdownButtonStatus = value;
+                  isDropdownButtonOpen = false;
+                }}
+              >
+                {#snippet children()}
+                  {#each statusOptions as option (option.value)}
+                    <ActionListItem title={option.title} value={option.value} intent={option.intent} />
+                  {/each}
+                {/snippet}
+              </ActionList>
             {/snippet}
           </BottomSheetBody>
         {/snippet}
@@ -423,7 +473,17 @@
           <BottomSheetHeader title="Filter By Cuisines" />
           <BottomSheetBody hasActionList>
             {#snippet children()}
-              {@render actionListSubstitute(cuisines, 'multi')}
+              <ActionList
+                selectionType="multiple"
+                selectedValue={cuisinesMulti}
+                onAction={({ value }) => (cuisinesMulti = toggleInArray(cuisinesMulti, value))}
+              >
+                {#snippet children()}
+                  {#each cuisines as cuisine (cuisine)}
+                    <ActionListItem title={cuisine} value={cuisine} />
+                  {/each}
+                {/snippet}
+              </ActionList>
             {/snippet}
           </BottomSheetBody>
         {/snippet}
@@ -442,14 +502,23 @@
           <BottomSheetHeader title="Filter By Cuisines" />
           <BottomSheetBody hasActionList>
             {#snippet children()}
-              {#each cuisineSections as section}
-                <div style="margin-bottom: var(--spacing-4);">
-                  <h6 style="margin: 0 0 var(--spacing-2) 0; padding: 0 var(--spacing-4); font-size: var(--font-size-75); color: var(--surface-text-gray-muted); text-transform: uppercase; letter-spacing: 0.05em;">
-                    {section.title}
-                  </h6>
-                  {@render actionListSubstitute(section.items, 'multi')}
-                </div>
-              {/each}
+              <ActionList
+                selectionType="multiple"
+                selectedValue={sectionsMulti}
+                onAction={({ value }) => (sectionsMulti = toggleInArray(sectionsMulti, value))}
+              >
+                {#snippet children()}
+                  {#each cuisineSections as section (section.title)}
+                    <ActionListSection title={section.title}>
+                      {#snippet children()}
+                        {#each section.items as item (item)}
+                          <ActionListItem title={item} value={item} />
+                        {/each}
+                      {/snippet}
+                    </ActionListSection>
+                  {/each}
+                {/snippet}
+              </ActionList>
             {/snippet}
           </BottomSheetBody>
         {/snippet}
@@ -473,17 +542,15 @@
           <BottomSheetHeader title="1. Saved Address" />
           <BottomSheetBody>
             {#snippet children()}
-              <fieldset style="border: none; padding: 0; margin: 0;">
-                <legend style="font-weight: 600; margin-bottom: var(--spacing-3);">Addresses</legend>
-                <label style="display: block; padding: var(--spacing-2) 0;">
-                  <input type="radio" name="stack1-addr" value="home" />
-                  Home - 11850 Florida 24, Cedar Key, Florida
-                </label>
-                <label style="display: block; padding: var(--spacing-2) 0;">
-                  <input type="radio" name="stack1-addr" value="office" />
-                  Office - 2033 Florida 21, Cedar Key, Florida
-                </label>
-              </fieldset>
+              <RadioGroup
+                label="Addresses"
+                marginBottom="spacing.4"
+                value={stackAddress}
+                onChange={({ value }) => (stackAddress = value)}
+              >
+                <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+                <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+              </RadioGroup>
             {/snippet}
           </BottomSheetBody>
           <BottomSheetFooter>
@@ -509,7 +576,13 @@
           <BottomSheetHeader title="2. Sort By" />
           <BottomSheetBody hasActionList>
             {#snippet children()}
-              {@render actionListSubstitute(cuisines, 'none')}
+              <ActionList>
+                {#snippet children()}
+                  {#each cuisines as cuisine (cuisine)}
+                    <ActionListItem title={cuisine} value={cuisine} />
+                  {/each}
+                {/snippet}
+              </ActionList>
             {/snippet}
           </BottomSheetBody>
           <BottomSheetFooter>
@@ -535,14 +608,19 @@
           <BottomSheetHeader title="3. Sort By" />
           <BottomSheetBody hasActionList>
             {#snippet children()}
-              {#each cuisineSections as section}
-                <div style="margin-bottom: var(--spacing-4);">
-                  <h6 style="margin: 0 0 var(--spacing-2) 0; padding: 0 var(--spacing-4); font-size: var(--font-size-75); color: var(--surface-text-gray-muted); text-transform: uppercase;">
-                    {section.title}
-                  </h6>
-                  {@render actionListSubstitute(section.items, 'none')}
-                </div>
-              {/each}
+              <ActionList>
+                {#snippet children()}
+                  {#each cuisineSections as section (section.title)}
+                    <ActionListSection title={section.title}>
+                      {#snippet children()}
+                        {#each section.items as item (item)}
+                          <ActionListItem title={item} value={item} />
+                        {/each}
+                      {/snippet}
+                    </ActionListSection>
+                  {/each}
+                {/snippet}
+              </ActionList>
             {/snippet}
           </BottomSheetBody>
           <BottomSheetFooter>
@@ -566,7 +644,7 @@
   {/snippet}
 </Story>
 
-<!-- Story 8: Initial Focus — focuses an input via initialFocusElement. -->
+<!-- Story 8: Initial Focus — focuses an input via initialFocusRef. -->
 <Story name="Initial Focus">
   {#snippet template()}
     <div>
@@ -580,19 +658,15 @@
           <BottomSheetHeader title="Users" />
           <BottomSheetBody>
             {#snippet children()}
-              <label style="display: block; margin-bottom: var(--spacing-3);">
-                Search Users
-                <input
-                  bind:this={initialFocusInputEl}
-                  type="text"
-                  placeholder="Type a name…"
-                  style="width: 100%; padding: var(--spacing-3); border: 1px solid var(--surface-border-gray-muted); border-radius: var(--border-radius-medium); margin-top: var(--spacing-2);"
-                />
-              </label>
+              <TextInput
+                bind:this={searchInput}
+                label="Search Users"
+                placeholder="Type a name…"
+              />
               <Button>Search Users</Button>
               <Text marginTop="spacing.5">
                 By default the initial focus is set to the close button, but you can modify it by passing the
-                `initialFocusElement` prop
+                `initialFocusRef` prop
               </Text>
               <ul>
                 <li>Anurag Hazra</li>
@@ -663,7 +737,13 @@
             <BottomSheetHeader title="Fruits" />
             <BottomSheetBody hasActionList>
               {#snippet children()}
-                {@render actionListSubstitute(fruits, 'none')}
+                <ActionList>
+                  {#snippet children()}
+                    {#each fruits as fruit (fruit)}
+                      <ActionListItem title={fruit} value={fruit} />
+                    {/each}
+                  {/snippet}
+                </ActionList>
               {/snippet}
             </BottomSheetBody>
           {/snippet}
@@ -738,16 +818,11 @@
           <BottomSheetBody>
             {#snippet children()}
               <div style="display: flex; flex-direction: column; align-items: center;">
-                <div style="display: flex; gap: var(--spacing-2); margin-bottom: var(--spacing-5);">
-                  {#each Array(6) as _, i}
-                    <input
-                      type="tel"
-                      maxlength="1"
-                      aria-label={`OTP digit ${i + 1}`}
-                      style="width: 36px; height: 44px; text-align: center; font-size: var(--font-size-200); border: 1px solid var(--surface-border-gray-muted); border-radius: var(--border-radius-medium);"
-                    />
-                  {/each}
-                </div>
+                <OTPInput
+                  label="Enter the OTP sent to +9190909090"
+                  marginBottom="spacing.5"
+                  onOTPFilled={submitOTP}
+                />
                 <Text>
                   By clicking "Submit OTP", I agree to <Link href="#">Terms and Conditions</Link>,
                   <Link href="#">Privacy Policy</Link>, and <Link href="#">Service Agreement</Link>.
@@ -789,28 +864,18 @@
           />
           <BottomSheetBody>
             {#snippet children()}
-              <fieldset style="border: none; padding: 0; margin: 0;">
-                <legend style="font-weight: 600; margin-bottom: var(--spacing-3);">
-                  Please select a SIM to verify your mobile number
-                </legend>
-                {#each phoneNumbers as number}
-                  <label
-                    style="display: flex; gap: var(--spacing-3); padding: var(--spacing-3) 0; align-items: center;"
-                  >
-                    <input
-                      type="radio"
-                      name="product-sim"
-                      value={number}
-                      checked={productSelectedSim === number}
-                      onchange={() => selectSim(number)}
-                    />
-                    {number}
-                  </label>
+              <RadioGroup
+                name="select-sim"
+                label="Please select a SIM to verify your mobile number"
+                value={productSelectedSim}
+                onChange={({ value }) => selectSim(value)}
+                validationState={productSimError ? 'error' : 'none'}
+                errorText={productSimError}
+              >
+                {#each phoneNumbers as number (number)}
+                  <Radio value={number}>{number}</Radio>
                 {/each}
-                {#if productSimError}
-                  <Text color="feedback.text.negative.intense">{productSimError}</Text>
-                {/if}
-              </fieldset>
+              </RadioGroup>
             {/snippet}
           </BottomSheetBody>
           <BottomSheetFooter>
@@ -827,7 +892,312 @@
   {/snippet}
 </Story>
 
-<!-- Story 13: Non-Dismissible BottomSheet — locked open, must use footer buttons.
+<!-- Story 13: With Portal Target — mounts overlay into a bounded container. -->
+<Story name="With Portal Target">
+  {#snippet template()}
+    <div>
+      <Text marginBottom="spacing.4">
+        Pass portalTarget when the sheet sits inside a bounded container (phone preview, modal,
+        ancestor with overflow hidden). Overlay mounts into that element instead of document.body;
+        snap points use the container height.
+      </Text>
+
+      <div
+        bind:this={portalTargetEl}
+        style="
+          position: relative;
+          width: 320px;
+          height: 560px;
+          overflow: hidden;
+          border-radius: var(--radius-medium);
+          border: 2px solid var(--surface-border-gray-subtle);
+          background: var(--surface-background-gray-subtle);
+        "
+      >
+        <div
+          style="
+            padding: var(--spacing-5);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+            height: 100%;
+          "
+        >
+          <Heading size="small">Mobile checkout preview</Heading>
+          <Text color="surface.text.gray.muted" size="small">
+            Open the sheet — backdrop and surface stay inside this frame, not the Storybook canvas.
+          </Text>
+          <Button onClick={() => (isPortalTargetOpen = true)}>Open bottom sheet</Button>
+        </div>
+
+        <BottomSheet
+          isOpen={isPortalTargetOpen}
+          onDismiss={() => (isPortalTargetOpen = false)}
+          portalTarget={portalTargetEl}
+        >
+          {#snippet children()}
+            <BottomSheetHeader
+              title="Price summary"
+              subtitle="Snap points are relative to the phone frame height"
+            />
+            <BottomSheetBody>
+              {#snippet children()}
+                <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
+                  <div style="display: flex; justify-content: space-between;">
+                    <Text>Subtotal</Text>
+                    <Text weight="semibold">₹2,000</Text>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <Text weight="semibold">Grand total</Text>
+                    <Text weight="semibold">₹2,000</Text>
+                  </div>
+                </div>
+              {/snippet}
+            </BottomSheetBody>
+            <BottomSheetFooter>
+              {#snippet children()}
+                <Button isFullWidth onClick={() => (isPortalTargetOpen = false)}>Continue</Button>
+              {/snippet}
+            </BottomSheetFooter>
+          {/snippet}
+        </BottomSheet>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 14: Content Height Adapts — checkout-like sidebar + main; sheet renders in main, height tracks content. -->
+<Story name="Content Height Adapts">
+  {#snippet template()}
+    <div
+      style="
+        display: flex;
+        width: 1024px;
+        height: 616px;
+        border-radius: var(--border-radius-large);
+        overflow: hidden;
+        box-shadow: 0 8px 32px hsla(217, 56%, 17%, 0.18);
+        font-family: var(--font-family-text);
+      "
+    >
+      <!-- ===== SIDEBAR ===== -->
+      <div
+        style="
+          width: 340px;
+          flex-shrink: 0;
+          background: var(--surface-background-primary-intense);
+          padding: var(--spacing-6);
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-5);
+        "
+      >
+        <div style="display: flex; align-items: center; gap: var(--spacing-3);">
+          <div
+            style="width: 40px; height: 40px; border-radius: var(--border-radius-medium); background: var(--surface-background-gray-intense); display: flex; align-items: center; justify-content: center;"
+          >
+            <Text weight="semibold">R</Text>
+          </div>
+          <div>
+            <Text weight="semibold" color="surface.text.staticWhite.normal">Razorpay</Text>
+            <TrustBadge label="Trusted Business" />
+          </div>
+        </div>
+
+        <div
+          style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-5); display: flex; flex-direction: column; gap: var(--spacing-2);"
+        >
+          <Text size="small" color="surface.text.staticWhite.muted">Price Summary</Text>
+          <Amount value={2138.51} currency="AED" type="heading" size="large" color="surface.text.staticWhite.normal" />
+          <Text size="xsmall" color="surface.text.staticWhite.muted">
+            Order amount updated as Tabby charges in AED
+          </Text>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+          <div style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-4);">
+            <Text size="small" color="surface.text.staticWhite.normal">Using as +91 93478 41747</Text>
+          </div>
+          <div style="background: hsla(0, 0%, 100%, 0.08); border-radius: var(--border-radius-medium); padding: var(--spacing-4);">
+            <Text size="small" color="surface.text.staticWhite.normal">Offers on IndusInd, SBI …</Text>
+          </div>
+        </div>
+
+        <div style="margin-top: auto;">
+          <Text size="xsmall" color="surface.text.staticWhite.muted">Money Back Promise by Razorpay</Text>
+        </div>
+      </div>
+
+      <!-- ===== MAIN — sheet portals into here ===== -->
+      <div
+        bind:this={autoModePortalEl}
+        style="
+          position: relative;
+          flex: 1;
+          background: var(--surface-background-gray-intense);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="flex: 1; padding: var(--spacing-8) var(--spacing-7); display: flex; flex-direction: column; gap: var(--spacing-5); align-items: center; overflow: auto;">
+          <Heading size="medium">Choose a payment method</Heading>
+          <Text color="surface.text.gray.subtle" textAlign="center">
+            Split your purchase into interest-free instalments
+          </Text>
+          <div style="width: 100%; max-width: 360px; margin-top: var(--spacing-5);">
+            <Button isFullWidth onClick={() => (isAutoModeOpen = true)}>
+              Select instalment plan
+            </Button>
+          </div>
+        </div>
+
+        <BottomSheet
+          isOpen={isAutoModeOpen}
+          onDismiss={() => (isAutoModeOpen = false)}
+          portalTarget={autoModePortalEl}
+        >
+          {#snippet children()}
+            <BottomSheetHeader title="Instalment plans" subtitle="Sheet height follows content" />
+            <BottomSheetBody>
+              {#snippet children()}
+                <div style="display: flex; gap: var(--spacing-3); margin-bottom: var(--spacing-4);">
+                  <Button size="small" onClick={() => (autoModeItemCount += 1)}>Add plan</Button>
+                  <Button
+                    size="small"
+                    variant="secondary"
+                    onClick={() => (autoModeItemCount = Math.max(0, autoModeItemCount - 1))}
+                  >
+                    Remove plan
+                  </Button>
+                </div>
+                {#each Array.from({ length: autoModeItemCount }), index}
+                  <div style="padding: var(--spacing-4) 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <Text weight="semibold">{index + 1} × monthly</Text>
+                      <Amount value={2138.51 / (index + 1)} currency="AED" type="body" size="medium" />
+                    </div>
+                    {#if index < autoModeItemCount - 1}
+                      <div style="margin-top: var(--spacing-4);"><Divider /></div>
+                    {/if}
+                  </div>
+                {/each}
+              {/snippet}
+            </BottomSheetBody>
+            <BottomSheetFooter>
+              {#snippet children()}
+                <Button isFullWidth onClick={() => (isAutoModeOpen = false)}>Continue</Button>
+              {/snippet}
+            </BottomSheetFooter>
+          {/snippet}
+        </BottomSheet>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 15: With Split Portal Targets — backdrop covers a wider frame, surface stays nested. -->
+<Story name="With Split Portal Targets">
+  {#snippet template()}
+    <div style="max-width: 640px;">
+      <Text marginBottom="spacing.5">
+        Pass <b>backdropPortalTarget</b> when the dim overlay must cover a wider ancestor (e.g. a
+        checkout sidebar + main pane) while the sheet surface stays portaled into a nested
+        container. The surface host needs its own stacking context (z-index: 1) so it paints above
+        the backdrop.
+      </Text>
+
+      <div
+        bind:this={backdropPortalTargetEl}
+        style="
+          position: relative;
+          width: 100%;
+          height: 420px;
+          overflow: hidden;
+          border-radius: var(--border-radius-large);
+          border: 1px solid var(--surface-border-gray-muted);
+          background: var(--surface-background-gray-subtle);
+          box-shadow: var(--elevation-low);
+        "
+      >
+        <div style="display: flex; height: 100%;">
+          <aside
+            style="
+              width: 176px;
+              flex-shrink: 0;
+              padding: var(--spacing-6) var(--spacing-5);
+              border-right: 1px solid var(--surface-border-gray-muted);
+              background: var(--surface-background-gray-moderate);
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-4);
+            "
+          >
+            <Text size="xsmall" weight="semibold" color="surface.text.gray.muted">CHECKOUT</Text>
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+              <Text size="small" color="surface.text.gray.subtle">Contact</Text>
+              <Text size="small" color="surface.text.gray.subtle">Delivery address</Text>
+              <Text size="small" weight="semibold">Payment</Text>
+            </div>
+            <div style="margin-top: auto;">
+              <Text size="xsmall" color="surface.text.gray.muted">
+                Dims with the surface when the sheet opens.
+              </Text>
+            </div>
+          </aside>
+
+          <div
+            bind:this={surfacePortalTargetEl}
+            style="
+              position: relative;
+              z-index: 1;
+              flex: 1;
+              padding: var(--spacing-7) var(--spacing-6);
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-5);
+            "
+          >
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+              <Heading size="medium">Pay ₹2,499</Heading>
+              <Text color="surface.text.gray.muted" size="small">
+                Choose a payment method to continue.
+              </Text>
+            </div>
+            <Button isFullWidth onClick={() => (isSplitPortalOpen = true)}>
+              Select bank for Netbanking
+            </Button>
+
+            <BottomSheet
+              isOpen={isSplitPortalOpen}
+              onDismiss={() => (isSplitPortalOpen = false)}
+              portalTarget={surfacePortalTargetEl}
+              backdropPortalTarget={backdropPortalTargetEl}
+            >
+              {#snippet children()}
+                <BottomSheetHeader title="Select bank" subtitle="Netbanking" />
+                <BottomSheetBody hasActionList>
+                  {#snippet children()}
+                    <ActionList>
+                      {#snippet children()}
+                        <ActionListItem title="HDFC Bank" value="hdfc" />
+                        <ActionListItem title="ICICI Bank" value="icici" />
+                        <ActionListItem title="State Bank of India" value="sbi" />
+                        <ActionListItem title="Axis Bank" value="axis" />
+                        <ActionListItem title="Kotak Mahindra Bank" value="kotak" />
+                      {/snippet}
+                    </ActionList>
+                  {/snippet}
+                </BottomSheetBody>
+              {/snippet}
+            </BottomSheet>
+          </div>
+        </div>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 16: Non-Dismissible BottomSheet — locked open, must use footer buttons.
      The exported storyName in React is verbatim "Non-Dismissible BottomSheet" — DO NOT change. -->
 <Story name="Non-Dismissible BottomSheet">
   {#snippet template()}

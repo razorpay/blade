@@ -23,4 +23,5 @@ export type {
   BreadcrumbItemProps,
   BreadcrumbSize,
   BreadcrumbColor,
+  BreadcrumbVariant,
 } from './types';

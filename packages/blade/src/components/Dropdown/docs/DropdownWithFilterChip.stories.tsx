@@ -241,4 +241,68 @@ export const FilterChipSelectInputDisabled = (): React.ReactElement => {
   );
 };
 
+export const WithoutClearButton = (): React.ReactElement => {
+  return (
+    <Box>
+      <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.4">
+        Pass{' '}
+        <Text as="span" size="small" weight="semibold">
+          showClearButton={'{false}'}
+        </Text>{' '}
+        for filters that must always hold a value. The chip never shows the clear (cross) button,
+        even when a value is selected — the selection can still be changed from the dropdown.
+      </Text>
+      <Dropdown selectionType="single">
+        <FilterChipSelectInput label="Filter Chip" showClearButton={false} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Latest Added" value="latest-added" />
+            <ActionListItem title="Latest Invoice" value="latest-invoice" />
+            <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+export const MultiSelectValueDisplay = (): React.ReactElement => {
+  const [value, setSelectedValue] = React.useState<string[]>(['latest-added']);
+
+  return (
+    <Box>
+      <Text size="small" color="surface.text.gray.muted" marginBottom="spacing.4">
+        In{' '}
+        <Text as="span" size="small" weight="semibold">
+          selectionType=&quot;multiple&quot;
+        </Text>{' '}
+        the chip shows the selected option&apos;s name when a single option is selected (e.g.{' '}
+        <Text as="span" size="small" weight="semibold">
+          Filter Chip: Latest Added
+        </Text>
+        ), and collapses to a compact counter once more than one is selected (e.g.{' '}
+        <Text as="span" size="small" weight="semibold">
+          Filter Chip: 2
+        </Text>
+        ). Select more than one option below to see it switch.
+      </Text>
+      <Dropdown selectionType="multiple">
+        <FilterChipSelectInput
+          label="Filter Chip"
+          value={value}
+          onChange={({ values }) => setSelectedValue(values)}
+          onClearButtonClick={() => setSelectedValue([])}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Latest Added" value="latest-added" />
+            <ActionListItem title="Latest Invoice" value="latest-invoice" />
+            <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
 export default DropdownStoryMeta;

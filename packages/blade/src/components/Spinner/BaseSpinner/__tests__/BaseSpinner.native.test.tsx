@@ -10,6 +10,7 @@ const colors: BaseSpinnerProps['color'][] = [
   'information',
   'notice',
   'neutral',
+  'onNeutral',
 ];
 
 describe('<BaseSpinner />', () => {

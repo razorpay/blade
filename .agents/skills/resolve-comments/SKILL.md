@@ -32,9 +32,9 @@ For each comment in `COMMENT_URLS`, determine the appropriate resolution:
   - Go through the rest of the relevant code, commits, PR info, whenever applicable, to determine if the comment is invalid or irrelevant.
 - **Needs PR author input**: add the label `Human Help Needed 🧑🏻‍💻` to the PR instead of guessing.
 
-### 2.5 How to deal with different kind of comments
+#### Handling mismatched changes
 
-- Case 1: Diff has peice of change that doesn't match the title or description of the PR.
+- Case 1: Diff has piece of change that doesn't match the title or description of the PR.
   - In most cases, its safe to assume that the code was changed but the PR info was not updated to reflect the changes. You can go and update the PR info instead of reverting the change.
 
 ### 3. Making Changes in branch

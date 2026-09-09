@@ -20,6 +20,7 @@ type TextAreaCommonProps = {
   necessityIndicator?: 'optional' | 'required';
   validationState?: 'none' | 'error' | 'success';
   helpText?: string;
+  showHelpTextOnFocus?: boolean;
   errorText?: string;
   successText?: string;
   placeholder?: string;
@@ -75,6 +76,7 @@ type TextAreaProps = TextAreaPropsWithA11yLabel | TextAreaPropsWithLabel;
 - Use `numberOfLines` (2–5) to set the visible height appropriate for the expected content length.
 - Use `maxCharacters` to enforce character limits with a visible counter below the field.
 - Use `onKeyDown` for custom keyboard handling (e.g., Shift+Enter to submit).
+- Use `showHelpTextOnFocus` when `helpText` is guidance rather than a permanent label, to keep it out of the layout until the user is actually in the field. `errorText` and `successText` stay visible regardless.
 
 **Don't**
 
@@ -82,6 +84,9 @@ type TextAreaProps = TextAreaPropsWithA11yLabel | TextAreaPropsWithLabel;
 - Don't expect `numberOfLines` to auto-grow — it sets a fixed height.
 - Don't use `TextArea` with leading/trailing icons, dropdowns, or prefix/suffix — these are only supported in `TextInput`.
 - Don't use `TextArea` for chat input — use `ChatInput` which has file upload, suggestions, and submit/stop behavior.
+- Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't expect `showHelpTextOnFocus` to remove the footer row when `maxCharacters` is set — the character counter keeps that row visible at rest.
 
 ## Example
 

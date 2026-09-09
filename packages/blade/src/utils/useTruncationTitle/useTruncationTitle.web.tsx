@@ -6,11 +6,11 @@ import React from 'react';
  * ## Usage
  *
  * ```tsx
- * const { containerRef, textRef } = useTruncationTitle({ content: 'saurabhdaware99@gmail.com' });
+ * const { containerRef, textRef } = useTruncationTitle({ content: 'user@example.com' });
  *
  * <Box ref={containerRef}>
  *    <BaseText ref={textRef} truncateAfterLines={1}>
- *      saurabhdaware99@gmail.com
+ *      user@example.com
  *    </BaseText>
  * </Box>
  * ```

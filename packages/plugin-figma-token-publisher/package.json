@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "@figma/plugin-typings": "1.81.0",
+    "@figma/plugin-typings": "1.131.0",
     "@types/react": "17.0.0",
     "@types/react-dom": "17.0.0",
     "@types/set-value": "4.0.1",
@@ -23,6 +23,8 @@
     "is-plain-object": "5.0.0",
     "is-primitive": "3.0.1",
     "js-string-compression": "1.0.1",
+    "pako": "2.1.0",
+    "@types/pako": "2.0.3",
     "set-value": "4.1.0",
     "style-loader": "3.3.1",
     "ts-loader": "9.4.2",

@@ -38,6 +38,9 @@ jobs:
     name: Update Base Stats
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     if: ${{ github.event_name == 'push' }}
+    concurrency:
+      group: bundle-size-stats-update
+      cancel-in-progress: false
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v4

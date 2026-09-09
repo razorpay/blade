@@ -1,5 +1,452 @@
 # @razorpay/blade
 
+## 12.122.0
+
+### Minor Changes
+
+- ec066cfee: update design tokens from Figma
+
+  Added 10 tokens and removed 0 tokens.
+
+### Patch Changes
+
+- 1e8e987b3: fix(ActionList/Menu): vertically center `trailing` slot of items so that it aligns with the `title` and `leading` slot
+- 936678fd9: fix(SankeyChart): skip nodes and links with non-finite geometry so a node with no links no longer renders NaN SVG attributes
+
+## 12.121.1
+
+### Patch Changes
+
+- cdd0bf164: fix(ColorInput): align swatch sizing, spacing and radius with the Figma spec
+
+  - Resize the colour swatch to 16px (small), 20px (medium) and 24px (large), down from 24/28/40
+  - Inset the swatch 8px from the field edge, and 12px at large
+  - Reduce the swatch-to-hex gap to 8px at medium and large, so it is consistent across all sizes
+  - Use the 32% disabled opacity token instead of a hardcoded 50%
+  - Round the outer corners at 12px for `size="large"` instead of forcing 8px at every size
+
+- cdd0bf164: fix(ColorInput): align swatch sizing, spacing and radius with Figma spec
+
+## 12.121.0
+
+### Minor Changes
+
+- 4dd93e1a4: feat(FloatingActionButton): rename the dark color from `black` to `neutral` and align it with the neutral button tokens
+
+  `<FloatingActionButton color="black" />` becomes `<FloatingActionButton color="neutral" />`. The dark FAB is now the same treatment as a filled `neutral` button — it reads its surface from `interactive.background.neutral.*` and its label, icon and spinner from `interactive.*.onNeutral.*`, so it inverts with the theme instead of always being black on white. The hover surface is now slightly translucent and the disabled surface is lighter, matching the updated design.
+
+  On focus, the filled `neutral` surface now draws its ring from `interactive.border.neutral.faded` instead of the faded primary blue used everywhere else, matching the design.
+
+  `color="black"` was never exposed on `Button` and has no consumers, so it is removed rather than deprecated.
+
+- 4dd93e1a4: feat(Spinner): add an `onNeutral` color for spinners on a filled neutral surface
+
+  `<Spinner color="onNeutral" />` reads `interactive.icon.onNeutral.normal`, which inverts with the theme. Every other spinner color is either static (`white`) or tracks the page surface (`neutral`, the feedback colors), so none of them stayed visible on a filled `neutral` surface, which is black on light and white on dark.
+
+  A loading `Button color="neutral" variant="primary"` and `FloatingActionButton color="neutral"` now use it. Both previously hardcoded a static white spinner, which disappeared against the white surface in dark mode. Fixes #3915 for the `neutral` surface.
+
+## 12.120.0
+
+### Minor Changes
+
+- 9edbd8f33: update design tokens from Figma
+
+  Added 32 tokens and removed 0 tokens.
+
+## 12.119.1
+
+### Patch Changes
+
+- 83be08d99: feat(tokens): add new tokens - `onNeutral` has been added to `interactive.text` & `interactive.icon`
+
+## 12.119.0
+
+### Minor Changes
+
+- d20559e43: feat(blade): add razorsense dark mode
+
+### Patch Changes
+
+- 15e71cc6b: fix(Button): use `interactive.border.staticBlack.fadedHighlighted` for the white primary button's border shadow
+
+  The white `primary` button's second inner shadow — the 0.5px spread one that draws the button's border — was painted with `interactive.border.staticWhite.default`, an opaque white. Figma's `_components/Button/White/Primary/Default` effect style now resolves both of its inner shadows to `interactive.border.staticBlack.fadedHighlighted`, so the token map is brought in line with the design source.
+
+  This applies to the `default` and `highlighted` states, which between them cover the button's rest, hover, active, and focus-ring appearance. Web and native both read the same `boxShadow` token map, so the change lands on both platforms. The white `secondary` and `tertiary` variants are untouched and keep `interactive.border.staticWhite.highlighted`.
+
+  > **Visual change (no API change):** the border of every white primary button shifts from opaque white to a faded black. `ButtonGroup` renders white buttons too, so its snapshots move with it.
+
+## 12.118.0
+
+### Minor Changes
+
+- 3cd283e97: feat(FloatingActionButton): add FloatingActionButton component
+
+  Adds `FloatingActionButton`, a persistent pill-shaped button anchored to the bottom of the viewport for the single most important action on a screen. It supports `primary`, `white` and `black` colors, anchors via `placement` (`bottom-end`, `bottom-start`, `bottom`) with a configurable `offset` and `zIndex`, and renders either an icon with a short label or an icon on its own, in which case `accessibilityLabel` is required. Positioning is `fixed` on web and `absolute` with safe-area insets on React Native.
+
+### Patch Changes
+
+- 60b8ad0c8: fix(CounterInput): prevent value clipping by reserving two digits minimum and expanding for larger values; add tabular-nums font variant for stable digit widths
+
+## 12.117.0
+
+### Minor Changes
+
+- bb4a9fc1f: fix(SpotlightPopoverTour): match the spotlight to the highlighted component, remove the popover's arrow seam, and even out the arrow-to-spotlight gap
+
+  Three visual fixes. All three apply to light and dark — none introduces a colour-scheme branch.
+
+  **1. `SpotlightPopoverTour` — the spotlight now takes the shape of what it highlights.**
+  `TourMask` hardcoded its corner radius to `theme.spacing[2]` (4px — a _spacing_ token used as a radius), so the spotlight was drawn at 4px around a soft-cornered `Card`, a pill, or a square button alike, and nothing in the public API could change it. The mask now derives its radius from the spotlit element:
+
+  - the element has a corner radius → the spotlight takes **the same radius**;
+  - the element draws no corner at all (e.g. the step highlights plain text) → the spotlight falls back to `border.radius.large`, matching the popover, instead of squaring off to a hard corner.
+
+  Because `SpotlightPopoverTourStep` clones its child to attach a ref, consumers commonly wrap their UI in a layout element just to forward one. Measuring that wrapper is wrong twice over: it has no corner radius to inherit, and a wrapper stretched by its parent's layout (e.g. `alignItems="stretch"` in a flex row) is taller than the component inside it — which left the spotlight's padding uneven, 6px on three sides and 18px at the bottom. So when the step's element paints nothing itself and wraps a single child that fills it on at least one axis, the spotlight traces that child instead, for both geometry and radius. The padding is now even on all four sides. The fill check stops it shrinking onto an inner element that merely happens to be first — a wrapper around narrower content is still measured as the wrapper.
+
+  > **⚠️ Visual change (no API break):** every existing web tour's spotlight will change shape, and will now differ per step depending on what that step highlights. This is the intended behaviour. `SpotlightPopoverTourMaskRect` gains an optional `borderRadius` field (internal to the component).
+  >
+  > React Native is unchanged here — it measures via `measureInWindow`, which reports geometry but no style, so there is no computed radius to read. The native mask keeps its existing radius; matching it there needs an explicit prop and is left as a follow-up.
+
+  **2. `SpotlightPopoverTour` — the popover no longer shows a line where the arrow meets the card.**
+  `TourPopover` painted the arrow with `popup.background.gray.subtle` while the card body uses `popup.background.gray.moderate`, so a visible seam ran along the junction. `Popover` already passes the matching token — this was drift introduced in the v11 → v12 popup-token migration, where the card was moved to `gray.moderate` and the tour's arrow was missed. Matching the fill token removes the colour step, but a line survived it: the popup surface carries a 1px inset hairline (`getPopupBoxShadowString`) on **every** edge, including the one the arrow sits on — so the container's own border was drawn straight across the join and the arrow still read as a separate shape stuck on top.
+
+  `TourPopover` was passing only `fillColor` to its arrow. `Popover` passes four props, and the other three are what close the join: a `strokeColor` so the outline continues around the arrow, a non-zero `strokeWidth` (which also offsets the arrow onto the container edge so its fill masks the hairline beneath it), and a `translateY(-1px)` nudge. Bringing the tour to parity with `Popover` makes the body and arrow read as one container with a single outline.
+
+  > React Native is intentionally left alone here. Its `PopupArrow` draws an opaque backing path (`surface.background.gray.intense`) beneath the fill and adds a stroke, so swapping the fill token alone does not make the arrow match the card — it only moves the mismatch (measured on the dark theme: from ~2/255 darker than the card to ~3/255 lighter). Fixing native means addressing that backing path, and is left as a follow-up.
+
+  **3. `SpotlightPopoverTour` — the gap between the arrow tip and the spotlight is now the same on every step.**
+  Nothing sets that gap directly; it falls out of two numbers measured from two different rectangles. `TourPopover` offsets the popup by `spacing[4] + ARROW_HEIGHT` (24px) so that, after the arrow's own 12px protrusion, the tip lands `GAP` (12px) from the anchor's edge — while `TourMask` draws the halo 6px past the traced element. The intended result is a constant 6px.
+
+  That held only when both measured the same element, and they did not. The mask resolves the step's ref through `resolveSpotlightTarget` to trace the painted component, but `TourPopover` set its position reference to the raw ref — so any overhang between the wrapper and the component inside it was added straight to the gap. A step whose wrapper is stretched by a flex row (`alignItems="stretch"`) sat visibly further from its spotlight than a step whose wrapper happened to match its card. `resolveSpotlightTarget` moves into the shared web utils and both now resolve through it, so the gap no longer depends on how a consumer wraps their markup.
+
+## 12.116.0
+
+### Minor Changes
+
+- dd8501226: feat(blade): add TreeView component
+
+  TreeView: hierarchical selectable list, standalone and inside Dropdown. First snowflake promotion (original Tree Hierarchy snowflake by Prarthana Gogoi).
+
+  - `TreeView`, `TreeViewItem`, `TreeViewLoadMore` exports (web-only; native entry throws a dev error)
+  - Standalone: single select (radio semantics) and multiple select with branch cascade, indeterminate checkboxes, roving tabindex keyboard map, `tree`/`treeitem` ARIA
+  - Inside Dropdown: drop-in replacement for ActionList - selection controlled through the trigger's `value`/`onChange` (SelectInput, FilterChipSelectInput), with an additive optional `selectedGroups` field in the onChange payload and smallest-describing-set display on the trigger
+  - Async children (`hasChildren` + `isLoading`) with selection inheritance, and `TreeViewLoadMore` for progressive loading at any depth
+
+### Patch Changes
+
+- dd8501226: fix(FilterChipSelectInput): sync selection when the controlled `value` changes
+
+  `FilterChipSelectInput` only mapped its controlled `value` to the dropdown selection on mount, so
+  later updates from the consumer were ignored — a "Clear" action in the dropdown footer emptied the
+  consumer's state but left the options (and the chip label) selected. The controlled `value` is now
+  the source of truth on every change, including when it is emptied.
+
+## 12.115.2
+
+### Patch Changes
+
+- 2db706e7a: Fixed `SpotlightPopoverTour` scrolling indefinitely and locking the page when a step's anchor is taller than the viewport (e.g. a large table). The tour now detects oversized anchors and scroll-aligns them to the top instead of trying to center them, so the page no longer freezes with the popover pushed off-screen.
+
+## 12.115.1
+
+### Patch Changes
+
+- d0f2310d9: feat: add BookmarkFilledIcon component
+
+## 12.115.0
+
+### Minor Changes
+
+- 51c91bfa0: feat(LineChart): add `ChartReferenceBand` and per-line reference bands for industry comparison
+
+  `LineChart` now supports reference bands — shaded min–max ranges drawn behind the trend line so a trend can be compared against an industry comparison range. Two capabilities:
+
+  1. **Standalone `ChartReferenceBand`** — a single data-driven band via `lowerDataKey`/`upperDataKey`:
+
+  ```tsx
+  <ChartLineWrapper data={data}>
+    <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
+    <ChartXAxis dataKey="month" />
+    <ChartYAxis />
+    <ChartLine dataKey="activeUsers" name="Active users" />
+    <ChartLegend />
+  </ChartLineWrapper>
+  ```
+
+  `ChartReferenceBand` accepts `lowerDataKey` and `upperDataKey` (required), plus optional `name` (legend label, default `'Reference band'`), `color` (band fill token, default a faint categorical blue) and `showLegend` (default `true`).
+
+  2. **Per-line bands on `ChartLine`** — each line can declare its own `rangeLowerDataKey` / `rangeUpperDataKey` so a chart shows multiple trend lines, each with its own color-matched industry range band:
+
+  ```tsx
+  <ChartLineWrapper data={data}>
+    <ChartLine
+      dataKey="payments"
+      name="Payments"
+      rangeLowerDataKey="paymentsMin"
+      rangeUpperDataKey="paymentsMax"
+      rangeName="Payments industry range"
+    />
+    <ChartLine
+      dataKey="refunds"
+      name="Refunds"
+      rangeLowerDataKey="refundsMin"
+      rangeUpperDataKey="refundsMax"
+      rangeName="Refunds industry range"
+    />
+    <ChartXAxis dataKey="month" />
+    <ChartLegend />
+  </ChartLineWrapper>
+  ```
+
+  Each line's band auto-matches the line color (override with `rangeColor`), the tooltip shows an "industry range" (`low–high`) row per series, and the legend gets a swatch per band. The band renders behind the trend line on both web and React Native. A new _KitchenSink (Industry SR)_ story exposes `numberOfLines` (1–5) and `showReferenceBand` controls.
+
+## 12.114.0
+
+### Minor Changes
+
+- 5cd7f0961: feat(GenUI): add consumer-registered action slots for Card and Table components
+
+  Introduces a `componentActions` registry on `GenUIProvider` that lets consumers register render props for action UI below block-level components (CARD, TABLE). The design system renders the slot and hands the consumer the component's data and a `componentRef`, keeping all action logic (copy, download, export) on the consumer side with no DS dependency.
+
+## 12.113.3
+
+### Patch Changes
+
+- 3a2d9bd6e: fix(DatePicker): allow reopening a controlled range `FilterChipDatePicker` after a range is selected
+
+  The auto-close effect that commits a selection when `showFooterActions` is false compared the selected value by reference. For `selectionType="range"` in controlled mode (`value` + `onChange`) the value is rebuilt into a new array on every render, so the effect re-ran on each render and immediately closed the flyout whenever the existing range was already complete, making the picker impossible to reopen. The selection is now compared by content so auto-close only happens on an actual selection change.
+
+- d31fadf55: docs(Table): render Table example stories live instead of StackBlitz sandboxes
+
+## 12.113.2
+
+### Patch Changes
+
+- b168b2190: fix(BaseInput): pass Android autofill hint via `autoComplete` instead of the removed `autoCompleteType` prop
+
+  React Native renamed `autoCompleteType` to `autoComplete` in 0.66, so the Android autofill hint (e.g. `sms-otp` for `OTPInput`'s `autoCompleteSuggestionType="oneTimeCode"`) was silently dropped and never reached the native `EditText`. OTP keyboard suggestions and other autofill hints now work on Android.
+
+## 12.113.1
+
+### Patch Changes
+
+- b8e8c4687: feat(blade-svelte): add BladeProvider theme context and style overrides
+
+  Adds BladeProvider with theme context, color scheme management, and typography platform support for blade-svelte. Adds theme runtime utilities in blade-core (themeToCSSVariables, createTheme overrides, data-blade-color-scheme selectors), CSS cascade layers, component style override APIs, and button brand CSS vars.
+
+- 480b2de2f: fix: remove personal email from useTruncationTitle JSDoc
+
+  Replaces the personal email address in the JSDoc usage example of `useTruncationTitle.web.tsx` with a generic `user@example.com` to prevent personal emails from leaking in frontend source-map files.
+
+## 12.113.0
+
+### Minor Changes
+
+- a561db6cc: feat(AreaChart): add `connectNullsStyle` for a dashed no-data bridge on `ChartArea`
+
+  `ChartArea` now supports the same null-handling API as `ChartLine`:
+
+  - `connectNulls={false}` (default, unchanged): the area breaks at null points, leaving a hard gap. Use this for genuine data outages.
+  - `connectNulls={true}` + `connectNullsStyle="solid"` (default): real data renders as a solid area and the gap is bridged with a curved solid line, with no fill under the no-data stretch.
+  - `connectNulls={true}` + `connectNullsStyle="dashed"`: real data renders as a solid area and the gap is bridged with a curved dashed line, with no fill under the no-data stretch, signalling "no data for this period" without implying a measured value.
+
+  Available on both React web and React Native.
+
+  Also fixes a latent bug where multiple `AreaChart`s on the same page emitted gradients with the same id, causing every chart's fill to resolve to the first chart's gradient (and appear washed out / invisible). Gradient ids are now namespaced per chart instance.
+
+- a561db6cc: feat(ChartLine): add `connectNullsStyle` to draw a dashed bridge across null values
+
+  `ChartLine` now accepts a `connectNullsStyle` prop (`'solid' | 'dashed'`, default `'solid'`) that controls how the line is drawn across null points when `connectNulls` is `true`. With `'dashed'`, real data renders as a solid line while the stretch across `null` points renders dashed — signalling "no data for this period" without implying a measured value. `connectNulls={false}` (default) continues to leave a hard gap for genuine data outages, and `connectNulls={true}` remains a solid bridge by default.
+
+### Patch Changes
+
+- 05a7eeeea: fix(DatePicker): open on a selectable month when today is outside the `minDate`/`maxDate` range
+
+  Previously the calendar always opened on today's month even when every date in it was disabled by `minDate`/`maxDate`. Now, when no value or `visibleMonth`/`defaultVisibleMonth` is set, the initial month is clamped into the allowed range — opening on `maxDate`'s month when today is after `maxDate`, or `minDate`'s month when today is before `minDate`. Applies to both web and native.
+
+- 8ba8d1f26: Fix RollingText loading shimmer washing out dark backgrounds by clipping the highlight to text glyphs using `background-clip: text` instead of a white overlay.
+
+## 12.112.0
+
+### Minor Changes
+
+- 8030a0aac: feat(tokens): add bladeNeutralTheme and support publishing multiple themes from the Figma token publisher
+- c55ea279d: feat(tokens): add new emphasis levels (faint, moderate, strong) for primary surface and accent color category. Also migrates primary button, focus-ring, and action colors from azure to black (neutral) for the neutral theme, and updates blueGrayLight ghost value from a1 to a0.
+
+## 12.111.1
+
+### Patch Changes
+
+- 1ca6de095: Fix OTPInput focus to move to last input box after paste
+
+## 12.111.0
+
+### Minor Changes
+
+- d6be63acf: feat(rn): add React Native support for motion presets — Fade, Move, Slide, Scale, Morph, Stagger, and AnimateInteractions (built on the native BaseMotion engine)
+- ba4a59413: feat(FilterChip): honour `showClearButton`, add group-level Reset support, and improve multi-select value display
+
+  - `FilterChipSelectInput` & `FilterChipDatePicker`: now respect the `showClearButton` prop (default `true`). Set `showClearButton={false}` to hide the clear (cross) button for filters that must always hold a value.
+  - `FilterChipGroup`: added a group-level **Reset** action alongside the existing **Clear** action. `onResetButtonClick` renders a Reset link that fires a single callback WITHOUT emptying the chips (so controlled consumers can restore their own defaults), while `onClearButtonClick`/`showClearButton` keep the existing empty-everything behaviour. Both actions can be shown together, and each has an optional custom label (`resetButtonText` / `clearButtonText`).
+  - Multi-select filter chips now show the selected option's name when exactly one option is selected (instead of a redundant `1` counter) and collapse to a compact counter only when more than one option is selected.
+
+  **⚠️ Behavioral/visual change (no API break):** in `selectionType="multiple"`, a single selection previously always rendered a `Counter` (showing `1`) and now renders the option name as text. This changes the chip's rendered content, width, and layout for the single-selection case, and can shift layouts for existing consumers without any code change on their side. There is no code/type break and no opt-out prop today, so consumers who need the old always-counter rendering should pin the previous version until they've verified their layouts. If demand exists we can add an explicit display-mode prop in a follow-up.
+
+- 41f08ff48: feat(SegmentedControl): add new value-selector component
+
+## 12.110.0
+
+### Minor Changes
+
+- e78663d65: feat(Breadcrumb): Add React Native support for Breadcrumb and BreadcrumbItem components
+- efd3183a5: feat: expose maxWidth prop for Popover & Tooltip components
+- 06263c562: feat(AreaChart): add React Native support
+
+  Adds `AreaChart.native.tsx` with SVG-based rendering, reveal animation, interactive legend toggling, press-and-scrub tooltip, and reference lines for React Native.
+
+- 79c0ea1f3: feat(rn): add React Native support for BaseMotion engine
+- 7a7c21d09: feat(Card): add `ticket` and `info` card variants
+
+  Adds `TicketCard` and `InfoCard` with `Body` + `Footer` subcomponents.
+
+- 19e47319b: feat(native): add React Native implementation for ChatInput component
+- 1a681834d: feat(DatePicker): add `visibleMonth`/`defaultVisibleMonth` to control the rendered calendar month independently of `value`
+
+  `DatePicker`/`DateRangePicker` now accept `visibleMonth` (controlled), `defaultVisibleMonth` (uncontrolled), and `onVisibleMonthChange` props. These let the calendar open on a specific month without pre-selecting a date — useful for a "comparison" range picker that should default to the period immediately preceding a primary range picker's selection, while leaving the comparison `value` empty for the user to pick.
+
+  ```tsx
+  <DatePicker
+    selectionType="range"
+    label={{ start: 'Compare to' }}
+    defaultVisibleMonth={dayjs(primaryRangeStart)
+      .subtract(rangeLengthInDays + 1, 'day')
+      .toDate()}
+  />
+  ```
+
+  Falls back to the existing behavior (first date of `value`/`defaultValue`, or today) when not set — fully backwards compatible.
+
+- b9c86ecf7: feat(DonutChart): add React Native support
+
+  - Added `DonutChart.native.tsx` with full React Native implementation using `react-native-svg` and `react-native-reanimated`
+  - Added `AnimatedDonutSlice.native.tsx` for animated donut slice rendering with sweep-in animation
+  - Supports legend, tooltip, center content, custom colors, and data filtering parity with web DonutChart
+
+- e8471c128: feat(rn): add React Native support for Drawer component
+- d4a3a7d0d: feat(blade): add React Native implementation for FileUpload component
+
+  ### Platform differences
+
+  **`onChange` / `onUploadPress` semantics:** On web, `onChange` fires after the user picks files and passes the selected `fileList`. On React Native, tapping the upload area fires **`onUploadPress` only** — use it to open your own file picker (e.g. `react-native-document-picker`). FileUpload does **not** fire `onChange` on tap; update `fileList` yourself after the picker returns. Prefer controlled mode (`fileList` + updating it after the picker resolves). `onUploadPress` is typed with `Platform.Select` so it is native-only.
+
+  **Built-in validation (`accept`, `maxCount`, `maxSize`):** On web, these props are enforced internally (file-type filtering, count limits, size limits with inline error messages). On React Native they have no effect — validation must be handled by the consumer after the picker returns.
+
+  **`labelPosition`:** On web, `labelPosition="left"` renders the label beside the upload area. On React Native, labels always render above the upload area; `labelPosition="left"` is ignored with a `__DEV__` warning.
+
+  **`ref`:** Supported on native via `forwardRef`, but attaches to the outer container `BaseBox` (not a hidden file input as on web).
+
+  **Not supported on React Native:** `_motionMeta` (motion ref wiring is web-only), `onDrop` (no drag-and-drop), and `data-analytics-*` / `elementtiming` props (on web these are attached to the hidden file input). Passing unsupported props emits a `__DEV__` warning on native.
+
+  **Types:** `BladeFile` is platform-split (`bladeFile.ts` / `bladeFile.web.ts`). Web still extends the DOM `File` API; native is a plain object (`type` is optional because pickers may omit MIME types). Callbacks (`onPreview` / `onRemove` / `onReupload` / `onDismiss`) take `{ file: BladeFile }`.
+
+- 6797b1297: feat(DatePicker): support `displayFormat="compact"` in `FilterChipDatePicker`
+
+  The `FilterChipDatePicker` now accepts the `displayFormat="compact"` prop (previously only supported on `DatePicker`). In compact mode, selecting a named preset (e.g. "Past 7 days") shows the preset label inside the chip's selected state, while a custom range shows a humanised, easy-to-read date range (e.g. `7 Jun - 12 Jun 2026`) instead of the raw `DD/MM/YYYY` format.
+
+  The humanised compact format is also applied to the regular `DatePicker` input for custom range selections on the day picker (the field reverts to the editable `DD/MM/YYYY` format on focus, and the submitted form value is unchanged).
+
+- fa51cbdc8: fix(DatePicker): auto-close FilterChipDatePicker flyout on range/preset selection
+- 2df7adac1: feat(native): Add React Native support for InfoGroup component
+- 0150f07cd: feat(rn): add React Native support for LineChart
+
+  - SVG-based native line rendering with monotone and linear interpolation
+  - Tap-to-stay scrub tooltip on a single responder surface
+  - Reference lines with label placement matching web
+  - Opaque tooltip styled to match the web appearance
+
+- b24318bce: feat(ColorInput): add ColorInput component to the input family
+- b05f2902c: feat(rn): add React Native support for QuickFilter and QuickFilterGroup components
+- 601771cad: feat(rn): add React Native support for ButtonGroup
+
+  Also includes supporting native changes for grouped buttons:
+
+  - BaseButton press/active border color and per-corner radii inside ButtonGroup
+  - Dropdown height / overlay behavior when used as a split-button trigger
+  - Popover native trigger now listens to both `onClick`/`onPress` and `onTouchEnd` (debounced) so taps open reliably inside ScrollView / ButtonGroup
+
+- 203456462: feat(rn): add React Native support for FilterChipSelectInput
+- 39529e14a: feat(rn): add React Native support for StepGroup
+- 7d19fc5e1: feat(rn): add React Native support for SankeyChart component
+- d62a43518: feat(Chip): add `leading` prop for flags and custom elements
+- 28fff3670: feat(native): Add React Native support for SpotlightPopoverTour component
+- 6a676b6fe: Add React Native support for TimePicker with spin-wheel picker inside BottomSheet
+- 3c9addbe4: fix(TrustBadge): remove `emphasis` prop and align with Blade DSL trust marker design
+
+  The `emphasis` prop (`'subtle' | 'intense'`) and the `TrustBadgeEmphasis` type have been removed from TrustBadge. The new Blade DSL design uses a single sea-subtle pill treatment regardless of surface color. Migrate by removing any `emphasis` prop usage — the updated component renders correctly on all surfaces.
+
+  - `@razorpay/blade`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-svelte`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-core`: `TrustBadgeEmphasis` type and `getTrustBadgePillEmphasisClass` removed; replaced by `getTrustBadgeVariantClass`
+
+### Patch Changes
+
+- 97b1d0c37: feat(rn): add React Native implementation for ChatMessage with rolling text animations, reasoning traces, and thumbnail preview support
+- 71a4f49ae: feat(rn): add React Native support for DatePicker
+- 28fff3670: fix(rn): fix TypeScript errors and test failures in SpotlightPopoverTour native component
+- 0bd5c4a24: feat(blade): refine GenUI markdown text rendering
+- dfa88a896: fix: prevent Carousel onChange from firing during programmatic scroll animations
+
+  In controlled Carousel, browsers like Firefox could fire scroll events before a smooth-scroll animation completed, causing the debounced scroll handler to detect a stale slide index and call onChange with the wrong value. This fix tracks programmatic scrolls with a ref flag so onChange is skipped during those animations. Uncontrolled and user-initiated (drag/swipe) interactions are unaffected.
+
+- 5edce67b2: fix(Charts): legend styling and spacing fixes
+
+  - Chart legend color swatches (web and native) now use `theme.border.radius['2xsmall']` (2px) instead of `theme.border.radius.small` (8px), aligning the legend dot styling with the design spec.
+  - Chart legend items (web) now have `theme.spacing[2]` (4px) padding on all sides, so each item's clickable/hoverable bounding box has 4px of breathing room around the color swatch and 4px after the label, in addition to the existing 8px gap between swatch and label and 16px gap between items.
+  - Fixed the gap between the X-axis and the legend (web) growing whenever `ChartXAxis` had a `label` prop set. The space for the axis label is now always reserved, so the legend's position relative to the axis stays constant whether or not an X-axis label is present.
+
+  Affects `BarChart`, `LineChart`, `AreaChart`, and `DonutChart`.
+
+- f2cf0ffaa: fix(DatePicker): collapse same-month ranges in compact display format
+
+  `displayFormat="compact"` now shows same-month date ranges as `1-23 Jun 2026` instead of repeating the month, e.g. `1 Jun - 23 Jun 2026`. Ranges spanning different months or years keep their existing format (`7 Jun - 12 Jul 2026`, `28 Dec 2025 - 3 Jan 2026`).
+
+- 086718d4a: feat(carousel): circular progress indicator on mobile
+- 754ed4c0a: fix(DonutChart): update legend selection behavior
+
+  - Keep uncontrolled donut chart legends fully selected when data keys arrive after initial render
+  - Add strikethrough styling for deselected legend items
+
+- c6f1e576e: fix(Tabs): align small filled horizontal tab corner radius with SegmentedControl
+
+  - TabList container: 16px → 8px (`border.radius.small`)
+  - TabItem: 12px → 6px (deliberate mid-point between xsmall=4px and small=8px, mirrors SegmentedControl item)
+  - TabIndicator: 12px → 6px (mirrors SegmentedControl indicator)
+  - Focus ring: 12px → 8px (`border.radius.small`)
+
+- 361b0605d: fix(Card): refactor ticket card outline with SVG for accurate notch UI
+
+## 12.109.0
+
+### Minor Changes
+
+- adff0f113: feat(AnnouncementBanner): add AnnouncementBanner component to blade, blade-core, and blade-svelte
+- 75288e989: feat(AppBar, TrustBadge): add AppBar and TrustBadge components
+
+  TrustBadge renders the "Razorpay Trusted Business" trust marker; its label is configurable
+  via a `label` prop (default: "Razorpay Trusted Business") so it can evolve (e.g. "Razorpay
+  Verified") without a breaking API change. AppBar surfaces it through the `trustBadgeVariant`
+  prop on `AppBarLeading`.
+
+- 39f4f843f: feat(Radio): add `trailing` prop to display an element (e.g. a Badge) alongside a radio label in vertical orientation
+
+### Patch Changes
+
+- 0724d3d38: feat(blade-svelte): add ActionList component
+
+  Also fixes a React BaseMenu hover style: the hover background is now suppressed when `aria-selected=true` so a selected row's `fadedHighlighted` background is not overridden on pointer-enter. This intentional fix applies to all React `BaseMenu`-based consumers (ActionList, Select, etc.) and matches the expected selected-item UX.
+
+- 4c5c93823: fix(blade): update default chart color to blue
+
 ## 12.108.5
 
 ### Patch Changes

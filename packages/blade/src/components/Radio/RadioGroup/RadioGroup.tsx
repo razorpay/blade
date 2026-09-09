@@ -137,6 +137,7 @@ const RadioGroup = ({
     validationState,
     value,
     size,
+    orientation,
   });
 
   const { theme } = useTheme();

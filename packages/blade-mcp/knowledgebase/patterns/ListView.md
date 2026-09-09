@@ -22,6 +22,178 @@ ListView is a comprehensive data presentation pattern that combines tables with 
 - ButtonGroup
 - Tooltip
 
+## How to Use
+
+The pattern is assembled in two steps:
+
+1. **Create a Table** — Build your data table using the Blade `Table` component.
+2. **Place the Table in the List View template** — Drop the table into the `Table` slot inside the `ListView` component, replacing the placeholder.
+
+**Key rules:**
+- Quick filters and All Filters are always visible in a List View.
+- Search inputs and action buttons are optional — include them only when the use case requires them.
+
+## Desktop Layout
+
+**Canvas:** 1280 × 800px
+
+```
+┌─ Top Navigation (56px) ───────────────────────────────────────────────────┤
+│  [Logo] [Option] [Option] [Option] [Option]    [Search] [🔔] [⚙] [RK]   │
+├─ Side Navigation (240px) ─┬─ Content Area (968px) ────────────────────────┤
+│  • Home                   │  Page Title                    Link 2 | Link 1│
+│  ◉ Transactions           │  ──────────────────────────────── [+ Button]  │
+│  • Settlements            │  [Payments tab] [Orders tab]                  │
+│  • Reports                │                                               │
+│  ─ PAYMENTS PRODUCTS ─    │  ┌─ List View Card ──────────────────────────┐│
+│  • Payment Link           │  │ Quick Filters         [Search] [🔍 Button] ││
+│  • Affordability          │  │ Filter chips (Parameter ˅) × N            ││
+│  • QR code                │  │                                            ││
+│  +13 more                 │  │ ┌─ Table Slot ───────────────────────────┐ ││
+│  ─ BANKING PRODUCTS ─     │  │ │  Replace with Blade Table component    │ ││
+│  • Line of Credit         │  │ └────────────────────────────────────────┘ ││
+│  ─────────────────        │  │                                            ││
+│  ⊙ Test Mode  ○           │  │ Footer: Showing 10 of 240 [Items]          ││
+│  • Settings               │  │         [10 ˅] rows/page  [‹] [›]         ││
+└───────────────────────────┴──┴────────────────────────────────────────────┘┘
+```
+
+### Top Navigation
+
+| Element | Details |
+|---|---|
+| **Blade Component** | `TopNavigation` |
+| **Logo** | Razorpay wordmark (left-aligned) |
+| **Tab Nav** | Multiple tab items; active tab has white underline bar with glow effect |
+| **Search Input** | Placeholder: "Search in payments"; 180px wide; dark theme |
+| **Icon Buttons** | 2× icon buttons (notification / settings); 32×32px |
+| **Avatar** | Initials-based Avatar; 28px diameter, rounded |
+
+### Side Navigation
+
+| Element | Details |
+|---|---|
+| **Blade Component** | `SideNavigation` |
+| **Width** | 240px |
+| **Background** | `surface.background.gray.moderate` (#f8f8f8) |
+| **Active item** | `interactive.background.primary.faded` (blue tint), blue text |
+| **Section headers** | Small caps labels: "PAYMENTS PRODUCTS", "BANKING PRODUCTS" |
+| **Footer** | Test Mode toggle (Switch) + Settings |
+
+### Content Area Header
+
+| Element | Details |
+|---|---|
+| **Page Title** | `Heading/XLargeSemibold` · TASA Orbiter Display SemiBold · 32px · `surface.text.gray.normal` |
+| **Action group** | Right-aligned; contains Link 2 + vertical Divider + Link 1 + primary Button |
+| **Tabs** | Active tab: bold underline; `surface.border.gray.muted` bottom border |
+
+### Filter Group
+
+| Element | Variant | Notes |
+|---|---|---|
+| **Quick Filters** | Selected (highlighted bg) / Default | Each filter shows label + Counter badge |
+| **Search Input** | Joined left side; right-side search Button | Placeholder: "Column Data" |
+| **Filter Panel** | Up to N filter chips | Chips use dashed border when active |
+
+### Table
+
+The table body is a **slot** — replace it with your Blade `Table` instance.
+
+| Column type | Recommended Blade usage |
+|---|---|
+| ID / Code | `Code` component |
+| Links | `Link` component (`variant="button" color="primary"`) |
+| Monetary values | `Amount` component (right-aligned) |
+| Status | `Badge` component |
+| 2-line cells | Stacked text (primary + muted) |
+
+**Row height:** 48px | **Header height:** 36px | **Header background:** `surface.background.gray.moderate`
+
+### Table Footer
+
+| Element | Details |
+|---|---|
+| **"Showing" text** | "Showing 10 of 240 [Items]"; 12px Regular; `surface.text.gray.subtle` |
+| **Rows per page** | `SelectInput` (64px wide) |
+| **Pagination** | `Pagination` with chevron-left and chevron-right buttons |
+
+## Mobile Layout
+
+**Canvas:** 375 × 812px
+
+```
+┌────────────────────────────────────────────────────────┐
+│  Transactions                                          │
+│  ─────────────────                                     │
+│  [Payments] [Orders]                                   │
+├────────────────────────────────────────────────────────┤
+│  [🔍 Payment ID, Ref ID, etc.         ]  │ [filter ▽] │
+├────────────────────────────────────────────────────────┤
+│  ⬤ All 320   ○ Captured 300   ○ Failed                 │
+├─ Table ────────────────────────────────────────────────┤
+│  Payment ID          Bank RRN                          │
+│  plink_uin68fdwisk…  8765976350893467                  │
+│  ────────────────────────────────────────              │
+│  Showing 10 of 240  [10 ˅] rows/page  [‹][›]          │
+└────────────────────────────────────────────────────────┘
+```
+
+- **Search Input:** 335px wide; leading search icon
+- **Filter Button:** Icon-only (`filter` icon); launches All Filters panel
+- **Quick Filter Group:** Horizontally arranged `Card` components (elevation=None)
+- **Table:** Same Blade Table structure as Desktop; columns scroll horizontally on 375px viewport
+- **Header height on mobile:** 48px (vs. 36px on desktop)
+
+## Blade Components Used
+
+| Component | Import Path | Usage |
+|---|---|---|
+| `Button` | `@razorpay/blade/components` | Action buttons, pagination, search trigger |
+| `Link` | `@razorpay/blade/components` | Table cell links, header links |
+| `Badge` | `@razorpay/blade/components` | Table Status column |
+| `Table` | `@razorpay/blade/components` | Data grid (slotted in) |
+| `Tabs` | `@razorpay/blade/components` | Page-level tab navigation |
+| `SearchInput` | `@razorpay/blade/components` | Filter search field |
+| `SelectInput` | `@razorpay/blade/components` | Rows-per-page selector in footer |
+| `SideNavigation` | `@razorpay/blade/components` | Left nav panel (Desktop) |
+| `TopNavigation` | `@razorpay/blade/components` | App top bar (Desktop) |
+| `Switch` | `@razorpay/blade/components` | Test Mode toggle |
+| `Counter` | `@razorpay/blade/components` | Filter count badges |
+| `Divider` | `@razorpay/blade/components` | Vertical separator between Search & Filter |
+| `Avatar` | `@razorpay/blade/components` | User initials in top nav |
+| `Card` | `@razorpay/blade/components` | Quick Filter items (Mobile) |
+| `Amount` | `@razorpay/blade/components` | Monetary display with currency symbol |
+| `Pagination` | `@razorpay/blade/components` | Footer prev/next navigation |
+
+## Anatomy Summary
+
+```
+List View
+├── [Desktop only] Top Navigation
+│   ├── Logo
+│   ├── Tab Navigation
+│   └── Right Section (Search, Icon Buttons, Avatar)
+├── [Desktop only] Side Navigation
+│   ├── Main nav items
+│   ├── Section groups (Payments Products, Banking Products)
+│   └── Footer (Test Mode switch, Settings)
+├── Content Area
+│   ├── Page Title + Action Group (Links + Button)
+│   ├── Tabs
+│   └── List View Card
+│       ├── Filter Group
+│       │   ├── Quick Filters (horizontal strip)
+│       │   ├── Search Input + Search Button  [optional]
+│       │   └── Filter Panel (filter chips)   [visible when filters applied]
+│       ├── Table [SLOT — replace with Blade Table]
+│       └── Table Footer
+│           ├── "Showing X of Y [Items]"
+│           ├── Rows per page (SelectInput)
+│           └── Pagination (prev/next Buttons)
+└── [Mobile only] Filter Button (alongside Search Input)
+```
+
 ## Example
 
 ### Basic ListView with Comprehensive Filtering

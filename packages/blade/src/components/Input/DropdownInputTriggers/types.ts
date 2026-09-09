@@ -45,7 +45,20 @@ type DropdownInputTriggersCommonProps = Pick<
    * Used to set the default value of SelectInput when it's uncontrolled. Use `value` instead for controlled SelectInput
    */
   defaultValue?: string | string[];
-  onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
+  /**
+   * Selection change handler.
+   *
+   * `selectedGroups` is only present when the Dropdown overlay content is a TreeView -
+   * it contains the values of the topmost fully-selected branches
+   */
+  onChange?: ({
+    name,
+    values,
+  }: {
+    name?: string;
+    values: string[];
+    selectedGroups?: string[];
+  }) => void;
   /**
    * Syncs the selected value to inputValue in AutoComplete
    *

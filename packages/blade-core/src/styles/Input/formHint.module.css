@@ -1,0 +1,33 @@
+/*
+ * FormHint styles — ported from React `Form/FormHint.tsx` +
+ * `FormHintWrapper.web.tsx` + `formTokens.ts` (web subset). The hint text is
+ * rendered via the migrated `Text` component; this module handles the wrapper
+ * layout, the icon/text row, and the per-size top margin.
+ */
+
+.hint {
+  margin-top: var(--spacing-2);
+}
+.hint.size-large {
+  margin-top: var(--spacing-3);
+}
+
+/* Icon + text row (FormHintWrapper). */
+.hint-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}
+
+/* Offset the block icon 2px down to align with the text baseline (web). */
+.hint-icon {
+  flex-shrink: 0;
+  margin-top: var(--spacing-1);
+  display: flex;
+}
+
+/* large size + icon nudges the text down 2px to match React. */
+.hint-text-large-with-icon {
+  margin-top: var(--spacing-1);
+}

@@ -199,7 +199,20 @@ exports[`Menu renders a Menu 1`] = `
 }
 
 .c28.c28.c28.c28.c28 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-left: auto;
+  min-height: 20px;
 }
 
 .c29.c29.c29.c29.c29 {
@@ -453,7 +466,7 @@ exports[`Menu renders a Menu 1`] = `
 .c8.c8.c8.c8.c8 {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(0,0%,97%,1);
 }
 
 .c20.c20.c20.c20.c20 {
@@ -1270,7 +1283,20 @@ exports[`Menu should support data-analytics attribute 1`] = `
 }
 
 .c28.c28.c28.c28.c28 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-left: auto;
+  min-height: 20px;
 }
 
 .c29.c29.c29.c29.c29 {
@@ -1524,7 +1550,7 @@ exports[`Menu should support data-analytics attribute 1`] = `
 .c8.c8.c8.c8.c8 {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(200,10%,94%,1);
+  box-shadow: inset 0px 0px 0px 1px hsla(206,10%,29%,0.09),0px 16px 12px 0px hsla(200,10%,18%,0.06),inset 0px 0px 0px 0px hsla(0,0%,97%,1);
 }
 
 .c20.c20.c20.c20.c20 {

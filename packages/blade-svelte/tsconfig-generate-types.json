@@ -10,5 +10,13 @@
     "noEmit": false
   },
   "include": ["src/**/*.ts", "src/**/*.svelte"],
-  "exclude": ["node_modules", "**/*.stories.svelte", "**/*.test.ts", "src/main.ts", "src/App.svelte", "src/ThemeSwitcher.svelte"]
+  "exclude": [
+    "node_modules",
+    "**/*.stories.svelte",
+    "**/*.test.ts",
+    "src/testing.d.ts",
+    "src/main.ts",
+    "src/App.svelte",
+    "src/ThemeSwitcher.svelte"
+  ]
 }

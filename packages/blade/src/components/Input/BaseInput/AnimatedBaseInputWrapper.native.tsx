@@ -36,6 +36,7 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isDropdownTrigger: props.isDropdownTrigger,
     isTableInputCell: props.isTableInputCell,
     size: props.size,
+    borderRadius: props.borderRadius,
   }),
 }));
 
@@ -136,7 +137,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   const inputBorderRadius = rest.isTableInputCell
     ? theme.border.radius.none
-    : theme.border.radius[baseInputBorderRadius[rest.size]];
+    : theme.border.radius[rest.borderRadius ?? baseInputBorderRadius[rest.size]];
 
   const animatedBorderAndBackgroundStyle = useAnimatedStyle(
     () => ({

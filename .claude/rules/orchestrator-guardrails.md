@@ -26,7 +26,7 @@ description: Enforce agent boundaries when the orchestrator is running a migrati
 
 4. **Read artifacts** each agent produces (discovery report, migration plan, verification report) from `.claude/worktrees/{Name}/.claude/artifacts/{Name}/...` and present them at human gates.
 
-5. **Open one PR per component** via `git push` + `gh pr create`, run inside the worktree.
+5. **Open one PR per component** via `git push` + `gh pr create`, run inside the worktree — **only after explicit human approval at the Final Gate**.
 
 6. **Update** `.claude/artifacts/batch-status.md` (in the **main checkout**) after every state change.
 
@@ -34,6 +34,7 @@ description: Enforce agent boundaries when the orchestrator is running a migrati
 
 - **Don't read `.claude/agents/*.md` to follow the steps yourself.** Spawn the matching `subagent_type` via the Agent tool.
 - **Don't `git worktree remove` until the user asks.**
+- **Don't `git push` or `gh pr create` without explicit human approval at the Final Gate.** A passing verification report is not approval — only the user's confirmation in the conversation is. Approval is per component: one component's approval never covers another.
 
 ## 🔁 Phase Ordering
 

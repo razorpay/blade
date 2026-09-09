@@ -195,6 +195,14 @@ export type ColorNeutralStaticScale = Readonly<{
   500: string;
 }>;
 
+export type ColorNeutralSolidScale = Readonly<{
+  200: string;
+  300: string;
+  400: string;
+  450: string;
+  500: string;
+}>;
+
 export type Color = Readonly<{
   chromatic: {
     azure: ColorChromaticScale;
@@ -216,6 +224,8 @@ export type Color = Readonly<{
     ashGrayDark: ColorNeutralGrayScale;
     white: ColorNeutralStaticScale;
     black: ColorNeutralStaticScale;
+    whiteSolid: ColorNeutralSolidScale;
+    blackSolid: ColorNeutralSolidScale;
   };
 }>;
 
@@ -436,7 +446,7 @@ export const colors: Color = {
     blueGrayLight: {
       0: `hsla(0, 0%, 100%, ${opacity[1300]})`,
       50: `hsla(0, 0%, 97%, ${opacity[1300]})`,
-      100: `hsla(200, 10%, 94%, ${opacity[1300]})`,
+      100: `hsla(0, 0%, 97%, ${opacity[1300]})`,
       200: `hsla(204, 8%, 88%, ${opacity[1300]})`,
       300: `hsla(203, 8%, 80%, ${opacity[1300]})`,
       400: `hsla(205, 8%, 71%, ${opacity[1300]})`,
@@ -455,7 +465,7 @@ export const colors: Color = {
       a48: `hsla(0, 0%, 100%, ${opacity[1200]})`,
       a50: `hsla(0, 0%, 97%, ${opacity[0]})`,
       a75: `hsla(0, 0%, 97%, ${opacity[600]})`,
-      a100: `hsla(200, 10%, 94%, ${opacity[0]})`,
+      a100: `hsla(0, 0%, 97%, ${opacity[0]})`,
       a200: `hsla(204, 8%, 88%, ${opacity[0]})`,
       a400: `hsla(205, 8%, 71%, ${opacity[0]})`,
       a406: `hsla(205, 8%, 71%, ${opacity[50]})`,
@@ -584,6 +594,20 @@ export const colors: Color = {
       300: `hsla(0, 0%, 0%, ${opacity[900]})`,
       400: `hsla(0, 0%, 0%, ${opacity[1000]})`,
       450: `hsla(0, 0%, 0%, ${opacity[1100]})`,
+      500: `hsla(0, 0%, 0%, ${opacity[1300]})`,
+    },
+    whiteSolid: {
+      200: `hsla(210, 0%, 54%, ${opacity[1300]})`,
+      300: `hsla(210, 0%, 68%, ${opacity[1300]})`,
+      400: `hsla(210, 0%, 82%, ${opacity[1300]})`,
+      450: `hsla(210, 0%, 89%, ${opacity[1300]})`,
+      500: `hsla(0, 0%, 100%, ${opacity[1300]})`,
+    },
+    blackSolid: {
+      200: `hsla(0, 0%, 42%, ${opacity[1300]})`,
+      300: `hsla(0, 0%, 27%, ${opacity[1300]})`,
+      400: `hsla(0, 0%, 19%, ${opacity[1300]})`,
+      450: `hsla(0, 0%, 12%, ${opacity[1300]})`,
       500: `hsla(0, 0%, 0%, ${opacity[1300]})`,
     },
   },

@@ -1,0 +1,1 @@
+export { getTabsTemplateClasses } from './tabs';

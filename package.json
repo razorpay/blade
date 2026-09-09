@@ -15,7 +15,7 @@
       "packages/blade-svelte"
     ],
     "nohoist": [
-      "**"
+      "@razorpay/blade/**"
     ]
   },
   "scripts": {
@@ -38,6 +38,7 @@
     "publish-npm": "node ./scripts/publishToNpm.js",
     "release": "node ./scripts/generateGitHubRegistryNpmrc.js && changeset publish",
     "postinstall": "yarn build:eslint-plugin-blade",
+    "reinstall": "rm -rf packages/blade-core/node_modules packages/blade-svelte/node_modules && yarn install",
     "build": "npm-run-all --parallel build:*",
     "build:blade": "lerna run --scope @razorpay/blade build",
     "build:blade-core": "lerna run --scope @razorpay/blade-core build",
@@ -47,7 +48,9 @@
     "generate-docs-lockfile": "node packages/blade/scripts/generateDocsLockFile.mjs",
     "aicodemod:serve": "node packages/blade/codemods/aicodemod/server.mjs",
     "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds",
-    "ci:codesandbox": "yarn install --ignore-engines"
+    "ci:codesandbox": "yarn install --ignore-engines",
+    "ci:codesandbox:install": "yarn install --ignore-engines --ignore-scripts",
+    "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core && yarn build:blade-svelte"
   },
   "devDependencies": {
     "@babel/core": "7.21.8",
@@ -97,7 +100,17 @@
     "@types/styled-components": "5.1.34",
     "styled-components": "^5",
     "framer-motion": "11.12.0",
-    "@octokit/rest": "21.0.2"
+    "@octokit/rest": "21.0.2",
+    "form-data": "^4.0.0",
+    "fast-xml-parser": "^4.5.0",
+    "shell-quote": "^1.8.2",
+    "http-proxy-middleware": "2.0.10",
+    "hono": "4.12.25",
+    "vite": "6.4.3",
+    "@hono/node-server": "1.19.13",
+    "handlebars": "4.7.9",
+    "yaml": "1.10.3",
+    "trim": "0.0.3"
   },
   "husky": {
     "hooks": {
@@ -108,5 +121,14 @@
     "*.(json|js|jsx|ts|tsx)": [
       "prettier --write"
     ]
+  },
+  "overrides": {
+    "http-proxy-middleware": "2.0.10",
+    "hono": "4.12.25",
+    "vite": "6.4.3",
+    "@hono/node-server": "1.19.13",
+    "handlebars": "4.7.9",
+    "yaml": "1.10.3",
+    "trim": "0.0.3"
   }
 }

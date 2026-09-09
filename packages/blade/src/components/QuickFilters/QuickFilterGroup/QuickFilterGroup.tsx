@@ -62,14 +62,28 @@ const QuickFilterGroup = ({
       : defaultValue ?? []) as string[] | undefined,
     onChange: (values: string[]) => onChange?.({ values, name: name ?? idBase }),
   });
+
+  const onSelect = React.useCallback(
+    (val: string) => {
+      if (selectionType === 'single') {
+        setSelectedQuickFilters((prev = []) => (prev[0] === val ? prev : [val]));
+      } else {
+        setSelectedQuickFilters((prev = []) =>
+          prev.includes(val) ? prev.filter((v) => v !== val) : [...prev, val],
+        );
+      }
+    },
+    [selectionType, setSelectedQuickFilters],
+  );
+
   return (
-    <QuickFilterGroupProvider value={{ selectionType, selectedQuickFilters }}>
+    <QuickFilterGroupProvider value={{ selectionType, selectedQuickFilters, onSelect }}>
       <QuickFilterWrapper
         onChange={onChange}
         setSelectedQuickFilters={setSelectedQuickFilters}
         {...rest}
       >
-        <BaseBox display="flex" flexDirection="row" gap="spacing.3">
+        <BaseBox display="flex" flexDirection="row" flexWrap="wrap" gap="spacing.3">
           {children}
         </BaseBox>
       </QuickFilterWrapper>

@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Amount from './Amount.svelte';
   import Heading from '../Typography/Heading/Heading.svelte'
@@ -82,10 +82,6 @@
       },
     },
   });
-</script>
-
-<script>
-  // Amount is already imported in the module context
 </script>
 
 <!-- Playground story with all controls -->

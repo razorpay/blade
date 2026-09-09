@@ -2,57 +2,7 @@
 import '../src/global.css';
 import '@razorpay/blade-core/tokens/theme.css';
 import './preview.css';
-
-// Theme management function
-function updateTheme(scheme) {
-  if (scheme === 'dark') {
-    document.body.setAttribute('data-theme', 'dark');
-  } else if (scheme === 'system') {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-      document.body.setAttribute('data-theme', 'dark');
-    } else {
-      document.body.removeAttribute('data-theme');
-    }
-  } else {
-    document.body.removeAttribute('data-theme');
-  }
-}
-
-// Listen for Storybook global updates via window channel
-if (typeof window !== 'undefined') {
-  // Wait for Storybook to initialize
-  setTimeout(() => {
-    if (window.__STORYBOOK_ADDONS_CHANNEL__) {
-      const channel = window.__STORYBOOK_ADDONS_CHANNEL__;
-      
-      // Listen for global updates
-      channel.on('updateGlobals', (update) => {
-        if (update?.globals?.colorScheme !== undefined) {
-          updateTheme(update.globals.colorScheme);
-        }
-      });
-      
-      // Apply initial theme from current globals
-      const currentGlobals = channel.lastEvent?.globals || {};
-      if (currentGlobals.colorScheme) {
-        updateTheme(currentGlobals.colorScheme);
-      }
-    }
-  }, 0);
-  
-  // Listen for system theme changes
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  mediaQuery.addEventListener('change', () => {
-    if (window.__STORYBOOK_ADDONS_CHANNEL__) {
-      const channel = window.__STORYBOOK_ADDONS_CHANNEL__;
-      const currentGlobals = channel.lastEvent?.globals || {};
-      if (currentGlobals.colorScheme === 'system') {
-        updateTheme('system');
-      }
-    }
-  });
-}
+import BladeThemeDecorator from './BladeThemeDecorator.svelte';
 
 /** @type { import('@storybook/svelte-vite').Preview } */
 const preview = {
@@ -122,20 +72,24 @@ const preview = {
           'Guides',
           ['Installation'],
           'Components',
-          [
-            'Amount',
-            'Button',
-            'Link',
-            'Typography',
-            ['Code','Heading', 'Text'],
-            'Spinner',
-          ],
+          ['Amount', 'Button', 'Link', 'Typography', ['Code', 'Heading', 'Text'], 'Spinner'],
         ],
       },
     },
   },
-  // Note: Decorators removed - they don't work correctly with svelte-csf
-  // Theme switching is handled via preview-head.html script
+  decorators: [
+    (storyFn, context) => ({
+      Component: BladeThemeDecorator,
+      props: {
+        colorScheme: context.globals.colorScheme ?? 'light',
+        brandColor: context.globals.brandColor,
+        skipProvider: context.parameters.skipBladeProviderDecorator === true,
+      },
+      slots: {
+        default: storyFn,
+      },
+    }),
+  ],
   globalTypes: {
     colorScheme: {
       name: 'Color Scheme',
@@ -153,7 +107,7 @@ const preview = {
     },
     brandColor: {
       name: 'Brand Color',
-      description: 'Brand Color (You can pass any valid color to BladeProvider)',
+      description: 'Brand Color passed to createTheme for BladeProvider',
       defaultValue: undefined,
       toolbar: {
         icon: 'paintbrush',

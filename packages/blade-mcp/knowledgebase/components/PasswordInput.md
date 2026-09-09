@@ -60,6 +60,7 @@ export type PasswordInputProps = (
   errorText?: string;
   successText?: string;
   helpText?: string;
+  showHelpTextOnFocus?: boolean;
   isDisabled?: boolean;
   defaultValue?: string;
   placeholder?: string;
@@ -145,6 +146,7 @@ type IconButtonProps = {
 - Use `autoCompleteSuggestionType="newPassword"` for registration/change flows and `"password"` for login.
 - Use `showRevealButton` (default true) to let users verify their typed password.
 - Use `maxCharacters` with validation feedback (`errorText`/`successText`) for password strength guidance.
+- Use `showHelpTextOnFocus` when `helpText` is guidance rather than a permanent label, to keep it out of the layout until the user is actually in the field. `errorText` and `successText` stay visible regardless.
 
 **Don't**
 
@@ -152,6 +154,9 @@ type IconButtonProps = {
 - Don't use `PasswordInput` for non-password fields — it's specifically designed for secure credential entry.
 - Don't use `necessityIndicator="optional"` — it only supports `"required"` or `"none"`.
 - Don't add leading icons, dropdowns, or prefix/suffix — PasswordInput has a simplified visual feature set.
+- Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't expect `showHelpTextOnFocus` to remove the footer row when `maxCharacters` is set — the character counter keeps that row visible at rest.
 
 ## Example
 

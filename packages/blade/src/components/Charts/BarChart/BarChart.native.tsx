@@ -635,7 +635,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
                             y={0}
                             width={LEGEND_DOT_SIZE}
                             height={LEGEND_DOT_SIZE}
-                            rx={2}
+                            rx={theme.border.radius['2xsmall']}
                             fill={fill}
                           />
                           <SvgText

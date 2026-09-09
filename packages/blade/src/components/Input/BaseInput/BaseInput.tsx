@@ -19,7 +19,7 @@ import type {
   FormInputOnEvent,
   FormHintProps,
 } from '~components/Form';
-import { FormHint, FormLabel } from '~components/Form';
+import { AnimatedFormHint, FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -250,6 +250,13 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     numberOfLines?: 1 | 2 | 3 | 4 | 5;
     /**
+     * When set on React Native textareas, grows the input height with content
+     * up to this maximum (in px). Uses `numberOfLines` as the minimum height.
+     *
+     * **Note (Web):** No effect. Web textareas grow via DOM `scrollHeight` instead.
+     */
+    autoGrowMaxHeight?: number;
+    /**
      * Sets the accessibility label for the input
      */
     accessibilityLabel?: string;
@@ -272,6 +279,24 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     hideFormHint?: boolean;
     /**
+     * Makes `helpText` contextual instead of persistent — it stays hidden at rest
+     * and eases in only while the input is focused, easing back out on blur.
+     *
+     * `errorText` and `successText` are unaffected and always remain visible, since
+     * validation feedback must not depend on focus.
+     *
+     * When `false`, help text renders exactly as it does today — always visible,
+     * with no transition.
+     *
+     * Known limits:
+     * - A disabled input cannot take focus, so its help text is never revealed.
+     * - With `maxCharacters` the character counter keeps the footer row visible at rest.
+     * - `SearchInput` with a `Dropdown` paints the open dropdown over the revealed help text.
+     *
+     * @default false
+     */
+    showHelpTextOnFocus?: boolean;
+    /**
      * componentName prop sets the data-blade-component attribute name
      * for internal metric collection purposes
      */
@@ -288,6 +313,16 @@ type BaseInputCommonProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
+    /**
+     * @internal Forces the input's visual interaction state (border color + focus ring)
+     * regardless of the real focus/hover events tracked internally.
+     *
+     * Used by press-to-open triggers that render as a `button` (e.g. DatePicker on native)
+     * and therefore never receive DOM/RN focus, but should still look "active"
+     * (blue border + focus ring) while their popup is open. When omitted, the input falls
+     * back to its own internally tracked interaction state.
+     */
+    activeInteraction?: ActionStates;
     setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
@@ -827,29 +862,39 @@ const FocusRingWrapper = styled(BaseBox)<{
         : theme.border.radius[$borderRadius ?? baseInputBorderRadius[$size]],
     ),
     width: '100%',
-    '&:focus-within':
-      !isTableInputCell && (shouldAddLimitedFocus ? currentInteraction === 'focus' : true)
-        ? {
-            ...getFocusRingStyles({
-              theme,
-            }),
-            transitionDuration: castWebType(
-              makeMotionTime(
-                getIn(
-                  theme.motion.duration,
-                  baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-                    .duration,
-                ),
-              ),
-            ),
-            transitionTimingFunction: castWebType(
-              theme.motion.easing[
-                baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-                  .easing
-              ],
-            ),
-          }
-        : {},
+    // `&:focus-within` is a web-only pseudo-selector. On React Native,
+    // styled-components/native (css-to-react-native) cannot parse a nested rule and
+    // logs "Node of type rule not supported as an inline style" for every rendered
+    // input. focus-within has no effect on native, so we omit the nested rule there.
+    ...(getPlatformType() === 'react-native'
+      ? {}
+      : {
+          '&:focus-within':
+            !isTableInputCell && (shouldAddLimitedFocus ? currentInteraction === 'focus' : true)
+              ? {
+                  ...getFocusRingStyles({
+                    theme,
+                  }),
+                  transitionDuration: castWebType(
+                    makeMotionTime(
+                      getIn(
+                        theme.motion.duration,
+                        baseInputBorderBackgroundMotion[
+                          currentInteraction === 'focus' ? 'enter' : 'exit'
+                        ].duration,
+                      ),
+                    ),
+                  ),
+                  transitionTimingFunction: castWebType(
+                    theme.motion.easing[
+                      baseInputBorderBackgroundMotion[
+                        currentInteraction === 'focus' ? 'enter' : 'exit'
+                      ].easing
+                    ],
+                  ),
+                }
+              : {},
+        }),
   }),
 );
 
@@ -899,6 +944,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     trailingHeaderSlot,
     trailingFooterSlot,
     numberOfLines,
+    autoGrowMaxHeight,
     id,
     componentName,
     accessibilityLabel,
@@ -906,9 +952,11 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     activeDescendant,
     hideLabelText,
     hideFormHint,
+    showHelpTextOnFocus = false,
     hasPopup,
     popupId,
     isPopupExpanded,
+    activeInteraction,
     maxTagRows,
     shouldIgnoreBlurAnimation,
     setShouldIgnoreBlurAnimation,
@@ -1002,6 +1050,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
   const { currentInteraction, setCurrentInteraction } = useInteraction();
+  // `activeInteraction` lets a press-to-open trigger (e.g. DatePicker on native, which
+  // renders as a button and never receives real focus) force the "active" visual state
+  // — the blue border + focus ring — while its popup is open. The real
+  // `currentInteraction` is still handed to the underlying input element so its own
+  // event wiring (focus/blur) keeps working; only the border/focus-ring wrappers read
+  // this overridden value.
+  const visualInteraction = activeInteraction ?? currentInteraction;
   const _isRequired = isRequired || necessityIndicator === 'required';
 
   const accessibilityProps = makeAccessible({
@@ -1032,6 +1087,29 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
       ((validationState === 'success' && Boolean(successText)) ||
         (validationState === 'error' && Boolean(errorText))));
 
+  const hintType = getHintType({
+    validationState: isValidationTextInside ? 'none' : validationState,
+    hasHelpText: Boolean(helpText),
+  });
+  const footerErrorText = isValidationTextInside ? undefined : errorText;
+  const footerSuccessText = isValidationTextInside ? undefined : successText;
+  /**
+   * Mirrors FormHint's own resolution rather than testing `hintType` alone. A
+   * `validationState` of error or success only wins if the matching text was
+   * actually supplied — `validationState="error"` with no `errorText` still falls
+   * through to help text, and that help text must stay contextual.
+   */
+  const willShowHelpText =
+    !(hintType === 'error' && Boolean(footerErrorText)) &&
+    !(hintType === 'success' && Boolean(footerSuccessText)) &&
+    Boolean(helpText);
+  /**
+   * `showHelpTextOnFocus` only ever gates help text. Once validation resolves to
+   * error or success the hint is feedback, not guidance, so it renders persistently
+   * and untransitioned exactly as it does without the prop.
+   */
+  const isHelpTextContextual = showHelpTextOnFocus && willShowHelpText;
+
   if (__DEV__) {
     if (
       autoCompleteSuggestionType &&
@@ -1060,6 +1138,24 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   const hasTrailingDropdown = Boolean(trailingDropDown);
 
   const shouldAddLimitedFocus = hasLeadingDropdown || hasTrailingDropdown;
+
+  /**
+   * Held in a variable so the contextual branch below can wrap the *same* element
+   * rather than duplicating it. When `showHelpTextOnFocus` is off this renders
+   * unwrapped, leaving the existing markup byte for byte unchanged.
+   */
+  const formHint = (
+    <FormHint
+      type={hintType}
+      helpText={helpText}
+      errorText={footerErrorText}
+      successText={footerSuccessText}
+      helpTextId={helpTextId}
+      errorTextId={errorTextId}
+      successTextId={successTextId}
+      size={_size}
+    />
+  );
 
   return (
     <BaseBox
@@ -1100,7 +1196,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           </BaseBox>
         )}
         <FocusRingWrapper
-          currentInteraction={currentInteraction}
+          currentInteraction={visualInteraction}
           isTableInputCell={isTableInputCell}
           className="focus-ring-wrapper"
           shouldAddLimitedFocus={shouldAddLimitedFocus}
@@ -1113,7 +1209,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             isTextArea={isTextArea}
             isDisabled={_isDisabled}
             validationState={validationState}
-            currentInteraction={currentInteraction}
+            currentInteraction={visualInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
             showAllTags={showAllTags}
             setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
@@ -1214,6 +1310,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 currentInteraction={currentInteraction}
                 setCurrentInteraction={setCurrentInteraction}
                 numberOfLines={numberOfLines}
+                // Native-only: do not forward to web StyledBaseInput
+                {...(isReactNative && autoGrowMaxHeight ? { autoGrowMaxHeight } : null)}
                 isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
                 hasPopup={hasPopup}
                 hasTags={!!(tags && tags.length > 0)}
@@ -1267,19 +1365,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             flexDirection="row"
             justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
           >
-            <FormHint
-              type={getHintType({
-                validationState: isValidationTextInside ? 'none' : validationState,
-                hasHelpText: Boolean(helpText),
-              })}
-              helpText={helpText}
-              errorText={isValidationTextInside ? undefined : errorText}
-              successText={isValidationTextInside ? undefined : successText}
-              helpTextId={helpTextId}
-              errorTextId={errorTextId}
-              successTextId={successTextId}
-              size={_size}
-            />
+            {isHelpTextContextual ? (
+              <AnimatedFormHint isVisible={currentInteraction === 'focus'}>
+                {formHint}
+              </AnimatedFormHint>
+            ) : (
+              formHint
+            )}
             {trailingFooterSlot?.(value ?? inputValue)}
           </BaseBox>
         </BaseBox>

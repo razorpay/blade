@@ -36,6 +36,7 @@
     name,
     size = 'medium',
     orientation = 'vertical',
+    flexWrap = 'nowrap',
     testID,
     ...rest
   }: RadioGroupProps = $props();
@@ -59,7 +60,7 @@
       if (val === undefined || checkedValue === undefined) return false;
       return checkedValue === val;
     },
-    setValue(val: string, event?: Event): void {
+    setValue(val: string, event: Event | undefined = undefined): void {
       if (isDisabled) return;
       if (!isControlled) {
         internalValue = val;
@@ -106,7 +107,7 @@
   const hintIconSize = $derived(size === 'large' ? 'medium' : 'small');
 
   const fieldClasses = $derived(getRadioGroupFieldClasses({ labelPosition }));
-  const itemsClasses = $derived(getRadioGroupItemsClasses({ orientation, size }));
+  const itemsClasses = $derived(getRadioGroupItemsClasses({ orientation, size, flexWrap }));
   const labelSizeClass = $derived(getRadioGroupLabelSizeClass(size, labelPosition));
   const hintTextClass = $derived(getRadioGroupHintTextClass(size));
   const hintMarginClass = $derived(getRadioGroupHintMarginClass(size));

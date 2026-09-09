@@ -22,6 +22,8 @@
 </script>
 
 <script lang="ts">
+  import { untrack } from 'svelte';
+  import { getFlagOfCountry, getFlagsForAllCountries } from '@razorpay/i18nify-js/geo';
   import ActionListItem from './ActionListItem.svelte';
   import ActionListItemAsset from './ActionListItemAsset.svelte';
   import ActionListItemText from './ActionListItemText.svelte';
@@ -44,9 +46,12 @@
     CloseIcon,
   } from '../Icons';
 
+  const flags = untrack(() => getFlagsForAllCountries()) as Record<string, { '4X3': string }>;
+  const indiaFlagSrc = getFlagOfCountry('IN')['4X3'];
+
   // Country List is the only BottomSheet story, so it owns the single open-state bucket.
   let isCountryOpen = $state(false);
-  let selectedCountry = $state<string | undefined>('in');
+  let selectedCountry = $state<string | undefined>('IN');
 
   // Drives the interactive standalone single-select story.
   let selectedStandalone = $state<string | undefined>('transactions');
@@ -62,21 +67,17 @@
   }
 
   const countries = [
-    { value: 'in', name: 'India', code: 'in', dialCode: '+91' },
-    { value: 'us', name: 'United States', code: 'us', dialCode: '+1' },
-    { value: 'gb', name: 'United Kingdom', code: 'gb', dialCode: '+44' },
-    { value: 'au', name: 'Australia', code: 'au', dialCode: '+61' },
-    { value: 'de', name: 'Germany', code: 'de', dialCode: '+49' },
-    { value: 'fr', name: 'France', code: 'fr', dialCode: '+33' },
-    { value: 'jp', name: 'Japan', code: 'jp', dialCode: '+81' },
-    { value: 'sg', name: 'Singapore', code: 'sg', dialCode: '+65' },
-    { value: 'ae', name: 'United Arab Emirates', code: 'ae', dialCode: '+971' },
-    { value: 'br', name: 'Brazil', code: 'br', dialCode: '+55' },
+    { value: 'IN', name: 'India', code: 'IN', dialCode: '+91' },
+    { value: 'US', name: 'United States', code: 'US', dialCode: '+1' },
+    { value: 'GB', name: 'United Kingdom', code: 'GB', dialCode: '+44' },
+    { value: 'AU', name: 'Australia', code: 'AU', dialCode: '+61' },
+    { value: 'DE', name: 'Germany', code: 'DE', dialCode: '+49' },
+    { value: 'FR', name: 'France', code: 'FR', dialCode: '+33' },
+    { value: 'JP', name: 'Japan', code: 'JP', dialCode: '+81' },
+    { value: 'SG', name: 'Singapore', code: 'SG', dialCode: '+65' },
+    { value: 'AE', name: 'United Arab Emirates', code: 'AE', dialCode: '+971' },
+    { value: 'BR', name: 'Brazil', code: 'BR', dialCode: '+55' },
   ];
-
-  function flagSrc(code: string): string {
-    return `https://flagcdn.com/w20/${code}.png`;
-  }
 </script>
 
 <!-- Mirrors React `Default`. Args drive Controls panel. -->
@@ -108,7 +109,7 @@
         </ActionListItem>
         <ActionListItem title="Pricing" value="pricing">
           {#snippet leading()}
-            <ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="india" />
+            <ActionListItemAsset src={indiaFlagSrc} alt="India" />
           {/snippet}
         </ActionListItem>
       {/snippet}
@@ -399,7 +400,10 @@
                   {#each countries as country (country.value)}
                     <ActionListItem title={country.name} value={country.value}>
                       {#snippet leading()}
-                        <ActionListItemAsset src={flagSrc(country.code)} alt={`${country.name} flag`} />
+                        <ActionListItemAsset
+                          src={flags[country.code]?.['4X3'] ?? ''}
+                          alt={`${country.name} flag`}
+                        />
                       {/snippet}
                       {#snippet trailing()}
                         <ActionListItemText>{country.dialCode}</ActionListItemText>

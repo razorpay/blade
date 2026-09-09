@@ -21,7 +21,7 @@ type BaseSpinnerProps = {
    *
    * @default 'default'
    */
-  color?: 'primary' | 'white' | FeedbackColors;
+  color?: 'primary' | 'white' | 'onNeutral' | FeedbackColors;
   /**
    * Sets the label of the spinner.
    *
@@ -50,6 +50,11 @@ type BaseSpinnerProps = {
 const getColor = ({ color, theme }: { color: BaseSpinnerProps['color']; theme: Theme }): string => {
   if (color && color === 'white') {
     return getIn(theme.colors, 'interactive.icon.staticWhite.subtle');
+  }
+  // `onNeutral` renders on a filled neutral surface, which inverts with the
+  // theme, so it tracks the surface instead of resolving to a static color.
+  if (color && color === 'onNeutral') {
+    return getIn(theme.colors, 'interactive.icon.onNeutral.normal');
   }
   if (color && color !== 'neutral') {
     return getIn(theme.colors, `interactive.icon.${color}.subtle`);

@@ -8,12 +8,14 @@ import {
   ChartTooltip,
   ChartLegend,
   ChartReferenceLine,
+  ChartReferenceBand,
 } from '~components/Charts/CommonChartComponents';
 import { ChartLine, ChartLineWrapper } from '~components/Charts/LineChart';
 import { Heading } from '~components/Typography/Heading';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 import { ChipGroup, Chip } from '~components/Chip';
 
 const Page = (): React.ReactElement => {
@@ -145,6 +147,8 @@ export default {
     docs: {
       page: Page,
     },
+    // Fill the canvas (avoid `centered` shrink-wrap) but keep story L/R inset via ChartsWrapper.
+    layout: 'fullscreen',
   },
 } as Meta<typeof ChartLine>;
 
@@ -156,6 +160,28 @@ const chartData = [
   { month: 'Apr', teamA: 2780, teamB: 3908 },
   { month: 'May', teamA: 1890, teamB: 4800 },
   { month: 'Jun', teamA: 2390, teamB: 3800 },
+];
+
+// Active users trend with a per-point reference band (the range other teams fall in).
+const activeUsersRangeData = [
+  { month: 'Jan', activeUsers: 1180, min: 800, max: 1720 },
+  { month: 'Feb', activeUsers: 1120, min: 820, max: 1780 },
+  { month: 'Mar', activeUsers: 1360, min: 900, max: 1880 },
+  { month: 'Apr', activeUsers: 1300, min: 900, max: 1840 },
+  { month: 'May', activeUsers: 1320, min: 940, max: 1900 },
+  { month: 'Jun', activeUsers: 1420, min: 980, max: 1960 },
+  { month: 'Jul', activeUsers: 1540, min: 1020, max: 2020 },
+  { month: 'Aug', activeUsers: 1500, min: 1040, max: 2040 },
+  { month: 'Sep', activeUsers: 1580, min: 1080, max: 2080 },
+  { month: 'Oct', activeUsers: 1660, min: 1100, max: 2140 },
+  { month: 'Nov', activeUsers: 1720, min: 1140, max: 2220 },
+  { month: 'Dec', activeUsers: 1600, min: 1120, max: 2180 },
+  { month: 'Jan ’25', activeUsers: 1780, min: 1160, max: 2260 },
+  { month: 'Feb ’25', activeUsers: 1840, min: 1180, max: 2160 },
+  { month: 'Mar ’25', activeUsers: 1720, min: 1160, max: 2120 },
+  { month: 'Apr ’25', activeUsers: 1700, min: 1140, max: 2200 },
+  { month: 'May ’25', activeUsers: 1860, min: 1180, max: 2260 },
+  { month: 'Jun ’25', activeUsers: 1900, min: 1080, max: 2280 },
 ];
 
 const forecastData = [
@@ -311,21 +337,36 @@ const regionalSalesData = [
   },
 ];
 
-const ChartsWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const ChartsWrapper = ({
+  children,
+  fullWidth = false,
+}: {
+  children: React.ReactNode;
+  // Long category labels need the whole canvas to wrap cleanly without overlap.
+  fullWidth?: boolean;
+}): React.ReactElement => {
+  // IMPORTANT: use BaseBox + style. `Box` strips `style`, and % width/padding via
+  // Blade props doesn't reliably size on RN Storybook — so edge whitespace never showed.
   return (
-    <Box
-      width="100%"
+    <BaseBox
       height="100%"
       backgroundColor="surface.background.gray.intense"
       display="flex"
-      justifyContent="center"
-      alignItems="center"
-      padding="spacing.8"
+      flexDirection="column"
+      justifyContent="flex-start"
+      alignItems="stretch"
+      paddingY="spacing.3"
       borderRadius="medium"
+      // Default 70% width leaves ~15% whitespace each side; long-label stories
+      // opt into full width so all categories fit and wrap without overlap.
+      style={
+        fullWidth
+          ? { width: '100%', alignSelf: 'center' }
+          : { width: '70%', alignSelf: 'center', maxWidth: '70%' }
+      }
     >
-      {' '}
-      {children}{' '}
-    </Box>
+      {children}
+    </BaseBox>
   );
 };
 
@@ -337,7 +378,7 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
 }) => {
   return (
     <ChartsWrapper>
-      <Box width="95%" height="400px">
+      <Box width="100%" height="400px">
         <ChartLineWrapper data={chartData}>
           <ChartXAxis dataKey="month" />
           <ChartYAxis />
@@ -355,6 +396,120 @@ export const SimpleLineChart: StoryFn<typeof ChartLine> = ({
       </Box>
     </ChartsWrapper>
   );
+};
+
+// Line chart with a reference band — the trend line plotted against the range others fall in.
+export const LineChartWithReferenceBand: StoryFn<typeof ChartLine> = () => {
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={activeUsersRangeData}>
+          <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis label="Active users" />
+          <ChartTooltip />
+          <ChartLegend />
+          <ChartLine
+            dataKey="activeUsers"
+            name="Active users"
+            strokeStyle="solid"
+            color="data.background.categorical.gray.intense"
+          />
+          <ChartReferenceLine y={1200} label="Avg: 1,200" />
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+LineChartWithReferenceBand.parameters = { controls: { disable: true } };
+
+// --- Industry SR: multiple lines, each with its own color-matched reference band ---
+// Each metric = the merchant's value for that metric; `<key>Min`/`<key>Max` = the industry range.
+const INDUSTRY_METRICS = [
+  {
+    key: 'payments',
+    name: 'Payments',
+    color: 'data.background.categorical.blue.moderate' as const,
+  },
+  { key: 'refunds', name: 'Refunds', color: 'data.background.categorical.green.moderate' as const },
+  { key: 'payouts', name: 'Payouts', color: 'data.background.categorical.gray.moderate' as const },
+  {
+    key: 'settlements',
+    name: 'Settlements',
+    color: 'data.background.categorical.orange.moderate' as const,
+  },
+  {
+    key: 'disputes',
+    name: 'Disputes',
+    color: 'data.background.categorical.purple.moderate' as const,
+  },
+];
+const INDUSTRY_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+const INDUSTRY_SERIES: Record<string, number[]> = {
+  payments: [62, 58, 66, 70, 68, 74, 78],
+  refunds: [50, 54, 52, 58, 60, 62, 64],
+  payouts: [40, 44, 46, 48, 50, 52, 52],
+  settlements: [28, 30, 33, 31, 34, 36, 33],
+  disputes: [44, 46, 45, 48, 47, 50, 47],
+};
+const industryComparisonData = INDUSTRY_MONTHS.map((month, index) => {
+  const row: Record<string, string | number> = { month };
+  INDUSTRY_METRICS.forEach((metric) => {
+    const value = INDUSTRY_SERIES[metric.key][index];
+    row[metric.key] = value;
+    row[`${metric.key}Min`] = Math.max(0, value - 12);
+    row[`${metric.key}Max`] = value + 12;
+  });
+  return row;
+});
+
+type IndustrySRArgs = { numberOfLines: number; showReferenceBand: boolean };
+
+// KitchenSink: reproduces the Figma "Industry SR" variant matrix — toggle the range on/off and
+// pick how many lines (1–5) to plot. Each line gets its own color-matched industry range band.
+export const LineChartIndustrySRKitchenSink: StoryFn<IndustrySRArgs> = ({
+  numberOfLines,
+  showReferenceBand,
+}) => {
+  const metrics = INDUSTRY_METRICS.slice(0, numberOfLines);
+  return (
+    <ChartsWrapper>
+      <Box width="100%" height="400px">
+        <ChartLineWrapper data={industryComparisonData}>
+          <ChartXAxis dataKey="month" />
+          <ChartYAxis label="Success rate (%)" />
+          <ChartTooltip />
+          <ChartLegend />
+          {metrics.map((metric) => (
+            <ChartLine
+              key={metric.key}
+              dataKey={metric.key}
+              name={metric.name}
+              color={metric.color}
+              {...(showReferenceBand
+                ? {
+                    rangeLowerDataKey: `${metric.key}Min`,
+                    rangeUpperDataKey: `${metric.key}Max`,
+                    rangeName: `${metric.name} industry range`,
+                  }
+                : {})}
+            />
+          ))}
+        </ChartLineWrapper>
+      </Box>
+    </ChartsWrapper>
+  );
+};
+LineChartIndustrySRKitchenSink.args = { numberOfLines: 3, showReferenceBand: true };
+LineChartIndustrySRKitchenSink.argTypes = {
+  numberOfLines: {
+    control: { type: 'range', min: 1, max: 5, step: 1 },
+    description: 'Number of trend lines to plot (1–5).',
+  },
+  showReferenceBand: {
+    control: { type: 'boolean' },
+    description: 'Show each line’s industry reference band.',
+  },
 };
 
 // Simple Line chart with vertical line
@@ -465,47 +620,81 @@ ForecastLineChart.parameters = {
   controls: { disable: true },
 };
 
-// Line Chart that Connects Nulls
-export const LineChartConnectNulls: StoryFn<typeof ChartLine> = () => {
+// Line Chart null handling — a single story covering all three ways nulls are represented:
+// - connectNulls={false} (default): the line breaks at null points (use for genuine outages).
+// - connectNulls={true} + connectNullsStyle="solid" (default): nulls bridged with a solid line.
+// - connectNulls={true} + connectNullsStyle="dashed": real data stays solid while the stretch
+//   across null points (no data for that period) renders dashed, without implying a value.
+export const LineChartNullBridge: StoryFn<typeof ChartLine> = () => {
   return (
-    <Box width="100%" height="100%">
-      <ChartsWrapper>
-        <Box display="flex" gap="spacing.4" flexDirection="column" width="50%" height="400px">
-          <Heading size="small">Line Chart that Connects Nulls</Heading>
-          <ChartLineWrapper data={dataWithNulls}>
-            <ChartXAxis dataKey="month" />
-            <ChartYAxis />
-            <ChartTooltip />
-            <ChartLegend />
-            <ChartLine
-              dataKey="sales"
-              name="Sales (Connects Nulls)"
-              connectNulls={true}
-              color="data.background.categorical.green.moderate"
-            />
-          </ChartLineWrapper>
+    <ChartsWrapper>
+      <Box display="flex" flexDirection="column" gap="spacing.8" width="100%">
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
+          <Heading size="small">
+            Hard gap for outages (connectNulls=&#123;false&#125;, default)
+          </Heading>
+          <Box width="100%" height="220px">
+            <ChartLineWrapper data={dataWithNulls}>
+              <ChartXAxis dataKey="month" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartLine
+                dataKey="sales"
+                name="Sales (Gap on no-data)"
+                color="data.background.categorical.gray.strong"
+              />
+            </ChartLineWrapper>
+          </Box>
         </Box>
-        <Box display="flex" gap="spacing.4" flexDirection="column" width="50%" height="400px">
-          <Heading size="small">Line Chart that do not Connects Nulls (default)</Heading>
-          <ChartLineWrapper data={dataWithNulls}>
-            <ChartXAxis dataKey="month" />
-            <ChartYAxis />
-            <ChartTooltip />
-            <ChartLegend />
-            <ChartLine
-              dataKey="sales"
-              name="Sales (Do Not Connects Nulls)"
-              color="data.background.categorical.green.moderate"
-            />
-          </ChartLineWrapper>
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
+          <Heading size="small">
+            Solid bridge across nulls (connectNullsStyle=&quot;solid&quot;)
+          </Heading>
+          <Box width="100%" height="220px">
+            <ChartLineWrapper data={dataWithNulls}>
+              <ChartXAxis dataKey="month" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartLine
+                dataKey="sales"
+                name="Sales (Solid across no-data)"
+                connectNulls={true}
+                connectNullsStyle="solid"
+                color="data.background.categorical.blue.moderate"
+              />
+            </ChartLineWrapper>
+          </Box>
         </Box>
-      </ChartsWrapper>
-    </Box>
+        <Box display="flex" flexDirection="column" gap="spacing.3" width="100%">
+          <Heading size="small">
+            Dashed bridge across nulls (connectNullsStyle=&quot;dashed&quot;)
+          </Heading>
+          <Box width="100%" height="220px">
+            <ChartLineWrapper data={dataWithNulls}>
+              <ChartXAxis dataKey="month" />
+              <ChartYAxis />
+              <ChartTooltip />
+              <ChartLegend />
+              <ChartLine
+                dataKey="sales"
+                name="Sales (Dashed across no-data)"
+                connectNulls={true}
+                connectNullsStyle="dashed"
+                color="data.background.categorical.green.moderate"
+              />
+            </ChartLineWrapper>
+          </Box>
+        </Box>
+      </Box>
+    </ChartsWrapper>
   );
 };
 
-LineChartConnectNulls.parameters = {
+LineChartNullBridge.parameters = {
   controls: { disable: true },
+  layout: 'fullscreen',
 };
 
 // Stepped Line Chart Example
@@ -762,7 +951,7 @@ const largeLabelsData = [
 // Line Chart with Large Labels (labels are automatically truncated to prevent overlap)
 export const LineChartWithLargeLabels: StoryFn<typeof ChartLine> = () => {
   return (
-    <ChartsWrapper>
+    <ChartsWrapper fullWidth>
       <Box width="100%" height="500px">
         <ChartLineWrapper data={largeLabelsData} colorTheme="categorical">
           <ChartXAxis dataKey="category" />
@@ -818,7 +1007,7 @@ const largeLabelsWithSecondaryData = [
 // Line Chart with Large Labels and Secondary Labels
 export const LineChartWithLargeLabelsAndSecondary: StoryFn<typeof ChartLine> = () => {
   return (
-    <ChartsWrapper>
+    <ChartsWrapper fullWidth>
       <Box width="100%" height="500px">
         <ChartLineWrapper data={largeLabelsWithSecondaryData} colorTheme="categorical">
           <ChartXAxis dataKey="category" secondaryDataKey="quarter" />
@@ -1249,10 +1438,12 @@ LineChartWithSequentialColors.parameters = {
 };
 
 SimpleLineChart.storyName = 'Simple Line Chart';
+LineChartWithReferenceBand.storyName = 'Line Chart with Reference Band';
+LineChartIndustrySRKitchenSink.storyName = 'Line Chart with Multiple Reference Bands';
 SimpleLineChartWithVerticalLine.storyName = 'Simple Line Chart with vertical line';
 TinyLineChart.storyName = 'Tiny Line Chart';
 ForecastLineChart.storyName = 'Forecast Line Chart';
-LineChartConnectNulls.storyName = 'Line Chart (Connect Nulls)';
+LineChartNullBridge.storyName = 'Line Chart (Connect Nulls)';
 SteppedLineChart.storyName = 'Stepped Line Chart';
 LineChartWithDefaultColorTheme.storyName = 'Line Chart with Color Theme';
 LineChartWithXAndYAxisLabels.storyName = 'Line Chart with X and Y axis labels';

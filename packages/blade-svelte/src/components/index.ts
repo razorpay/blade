@@ -11,9 +11,19 @@ export { default as BaseCounter } from './Counter/BaseCounter/BaseCounter.svelte
 export { default as Text } from './Typography/Text/Text.svelte';
 export { default as Heading } from './Typography/Heading/Heading.svelte';
 export { default as Code } from './Typography/Code/Code.svelte';
+export type { HeadingProps } from './Typography/Heading';
+export type { CodeProps } from './Typography/Code';
+export type {
+  TextProps,
+  TextBodyVariant,
+  TextCaptionVariant,
+  TextVariant,
+  GetTextProps,
+} from './Typography/Text/types';
 
 // Button
 export { default as Button } from './Button/Button.svelte';
+export type { ButtonProps, BaseButtonProps } from './Button';
 
 // IconButton
 export { default as IconButton } from './Button/IconButton/IconButton.svelte';
@@ -22,28 +32,56 @@ export { BaseIconButton } from './Button/IconButton/BaseIconButton';
 
 // Link
 export { default as Link } from './Link/Link.svelte';
+export type { LinkProps } from './Link/types';
+export type { BaseLinkProps } from './Link/BaseLink/types';
 
 // Spinner (alias to BaseSpinner for backward compatibility)
 export { default as Spinner } from './Spinner/BaseSpinner/BaseSpinner.svelte';
 
 // Amount
 export { default as Amount } from './Amount/Amount.svelte';
+export type {
+  BaseAmountProps,
+  AmountTypeProps,
+  AmountCommonProps,
+  AmountDisplayProps,
+  AmountHeadingProps,
+  AmountBodyProps,
+} from './Amount';
 
 // Icons
 export * from './Icons';
 // Badge
 export { default as Badge } from './Badge/Badge.svelte';
+export type { BadgeProps } from './Badge';
 
 // Counter
 export { default as Counter } from './Counter/Counter.svelte';
+export type { CounterProps, BaseCounterProps } from './Counter';
+// CounterInput
+export { default as CounterInput } from './CounterInput/CounterInput.svelte';
+export type {
+  CounterInputProps,
+  CounterInputEmphasis,
+  CounterInputSize,
+  CounterInputOnChange,
+} from './CounterInput/types';
 // Divider
 export { default as Divider } from './Divider/Divider.svelte';
+export type { DividerProps } from './Divider';
 // Skeleton
 export { default as Skeleton } from './Skeleton/Skeleton.svelte';
 export type { SkeletonProps } from './Skeleton/types';
 
 // Accordion
 export { Accordion, AccordionItem, AccordionItemHeader, AccordionItemBody } from './Accordion';
+export type {
+  AccordionProps,
+  AccordionItemProps,
+  AccordionItemHeaderProps,
+  AccordionItemBodyProps,
+  AccordionVariantType,
+} from './Accordion';
 
 // Collapsible
 export {
@@ -69,6 +107,12 @@ export type { SwitchProps, SwitchOnChange, SwitchInstance } from './Switch/types
 export {
   Card,
   CardBody,
+  TicketCard,
+  TicketCardBody,
+  TicketCardFooter,
+  InfoCard,
+  InfoCardBody,
+  InfoCardFooter,
   CardHeader,
   CardHeaderLeading,
   CardHeaderTrailing,
@@ -83,18 +127,37 @@ export {
   CardFooterLeading,
   CardFooterTrailing,
 } from './Card';
+export type {
+  CardProps,
+  CardBodyProps,
+  CardHeaderProps,
+  CardHeaderLeadingProps,
+  CardHeaderTrailingProps,
+  CardHeaderIconButtonProps,
+  CardHeaderLinkProps,
+  CardFooterProps,
+  CardFooterAction,
+  CardFooterLeadingProps,
+  CardFooterTrailingProps,
+  CardSpacingValueType,
+  TicketCardProps,
+  InfoCardProps,
+  SectionedCardBodyProps,
+  SectionedCardFooterProps,
+} from './Card';
 
 // AppBar
 export { AppBar, AppBarLeading, AppBarActions } from './AppBar';
 export type { AppBarProps, AppBarLeadingProps, AppBarActionsProps, AppBarVariant } from './AppBar';
 
-// RTBBadge
-export { RTBBadge } from './RTBBadge';
-export type { RTBBadgeProps, RTBBadgeVariant, RTBBadgeType } from './RTBBadge';
+// TrustBadge
+export { TrustBadge } from './TrustBadge';
+export type { TrustBadgeProps, TrustBadgeVariant } from './TrustBadge';
 
 // Chip
 export { default as Chip } from './Chip/Chip.svelte';
 export { default as ChipGroup } from './Chip/ChipGroup.svelte';
+export type { ChipProps, ChipGroupProps } from './Chip';
 
 // Checkbox
 export { default as Checkbox } from './Checkbox/Checkbox.svelte';
@@ -148,6 +211,14 @@ export type {
 
 // Alert
 export { default as Alert } from './Alert/Alert.svelte';
+export type {
+  AlertProps,
+  AlertActions,
+  AlertColor,
+  AlertEmphasis,
+  PrimaryAction as AlertPrimaryAction,
+  SecondaryAction as AlertSecondaryAction,
+} from './Alert';
 
 // AnnouncementBanner
 export { default as AnnouncementBanner } from './AnnouncementBanner/AnnouncementBanner.svelte';
@@ -156,10 +227,24 @@ export type { AnnouncementBannerProps } from './AnnouncementBanner/types';
 // Avatar
 export { default as Avatar } from './Avatar/Avatar.svelte';
 export { default as AvatarGroup } from './Avatar/AvatarGroup.svelte';
+export type {
+  AvatarProps,
+  AvatarGroupProps,
+  AvatarSize,
+  AvatarVariant,
+  AvatarColor,
+} from './Avatar';
 
 // Breadcrumb
 export { default as Breadcrumb } from './Breadcrumb/Breadcrumb.svelte';
 export { default as BreadcrumbItem } from './Breadcrumb/BreadcrumbItem.svelte';
+export type {
+  BreadcrumbProps,
+  BreadcrumbItemProps,
+  BreadcrumbSize,
+  BreadcrumbColor,
+  BreadcrumbVariant,
+} from './Breadcrumb';
 
 // Tooltip
 export { default as Tooltip } from './Tooltip/Tooltip.svelte';
@@ -195,5 +280,44 @@ export type {
   SnapPoints,
 } from './BottomSheet';
 
+// Modal
+export { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
+export type { ModalProps, ModalHeaderProps, ModalBodyProps, ModalFooterProps } from './Modal';
+
+// SegmentedControl
+export { SegmentedControl, SegmentedControlItem } from './SegmentedControl';
+export type {
+  SegmentedControlProps,
+  SegmentedControlItemProps,
+  SegmentedControlSize,
+} from './SegmentedControl';
+
+// Input
+export { TextInput } from './Input/TextInput';
+export type { TextInputProps, TextInputType } from './Input/TextInput';
+export { SearchInput } from './Input/SearchInput';
+export type { SearchInputProps } from './Input/SearchInput';
+export { PasswordInput } from './Input/PasswordInput';
+export type { PasswordInputProps } from './Input/PasswordInput';
+export { OTPInput } from './Input/OTPInput';
+export type { OTPInputProps, OTPInputInstance, OTPInputOnEventWithIndex } from './Input/OTPInput';
+export { PhoneNumberInput } from './Input/PhoneNumberInput';
+export type {
+  PhoneNumberInputProps,
+  PhoneNumberInputInstance,
+  PhoneNumberChangePayload,
+} from './Input/PhoneNumberInput';
+
+// InputGroup
+export { InputGroup, InputRow } from './InputGroup';
+export type { InputGroupProps, InputRowProps } from './InputGroup';
+
 // BladeProvider
 export * from './BladeProvider';
+
+// Tabs
+export { default as Tabs } from './Tabs/Tabs.svelte';
+export { default as TabList } from './Tabs/TabList.svelte';
+export { default as TabItem } from './Tabs/TabItem.svelte';
+export { default as TabPanel } from './Tabs/TabPanel.svelte';
+export type { TabsProps, TabItemProps, TabListProps, TabPanelProps } from './Tabs/types';

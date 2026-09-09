@@ -2,29 +2,49 @@
   import { metaAttribute, MetaConstants, makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import { getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import Text from '../Typography/Text/Text.svelte';
-  import { RTBBadge } from '../RTBBadge';
+  import { TrustBadge } from '../TrustBadge';
+  import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import { getAppBarContext, useAppBarContext } from './AppBarContext';
   import type { AppBarLeadingProps, AppBarVariant } from './types';
 
-  // Prevent CSS-module tree-shaking of structural classes.
   const templateClasses = getAppBarTemplateClasses();
+  const themeContextGetter = getBladeThemeContextGetter();
 
   useAppBarContext('AppBarLeading');
   const getAppBarCtx = getAppBarContext() ?? (() => ({ variant: 'neutral' as AppBarVariant }));
   const appBarContext = $derived(getAppBarCtx());
 
-  let { title, logo, rtbBadge, testID, ...rest }: AppBarLeadingProps = $props();
+  let {
+    title,
+    logo,
+    trustBadgeVariant,
+    trustBadgeLabel,
+    testID,
+    styleOverride,
+    ...rest
+  }: AppBarLeadingProps = $props();
+
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('AppBarLeading', styleOverride, themeContextGetter),
+  );
+
+  const titleSlotClass = $derived(resolvedStyleOverride?.title);
 
   const isNeutral = $derived(appBarContext.variant === 'neutral');
 
   const titleColor = $derived(
-    isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal',
+    titleSlotClass
+      ? ('currentColor' as const)
+      : isNeutral
+        ? 'surface.text.staticWhite.normal'
+        : 'surface.text.gray.normal',
   );
 
-  const showFullRtb = $derived(rtbBadge === 'full');
-  const showIconRtb = $derived(rtbBadge === 'icon');
-  const hasTitleColumn = $derived(Boolean(title) || (showFullRtb && !logo));
-  const stackFullRtbBelowLogo = $derived(showFullRtb && Boolean(logo) && !title);
+  const showFullBadge = $derived(trustBadgeVariant === 'default');
+  const showIconBadge = $derived(trustBadgeVariant === 'icon-only');
+  const hasTitleColumn = $derived(Boolean(title) || (showFullBadge && !logo));
+  const stackFullBadgeBelowLogo = $derived(showFullBadge && Boolean(logo) && !title);
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.AppBarLeading, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
@@ -32,13 +52,13 @@
 
 <div class={templateClasses.appBarLeading} {...metaAttrs} {...analyticsAttrs}>
   {#if logo}
-    {#if stackFullRtbBelowLogo}
+    {#if stackFullBadgeBelowLogo}
       <div class={templateClasses.appBarLeadingLogoStack}>
         <div class={templateClasses.appBarLeadingLogo}>
           {@render logo()}
         </div>
         <div class={templateClasses.appBarLeadingBadge}>
-          <RTBBadge type="full" variant={appBarContext.variant} />
+          <TrustBadge variant="default" label={trustBadgeLabel} />
         </div>
       </div>
     {:else}
@@ -52,27 +72,33 @@
     <div class={templateClasses.appBarLeadingTitleWrap}>
       {#if title}
         <div
-          class="{templateClasses.appBarLeadingTitleRow}{showIconRtb
-            ? ` ${templateClasses.appBarLeadingTitleRowWithIconRtb}`
+          class="{templateClasses.appBarLeadingTitleRow}{showIconBadge
+            ? ` ${templateClasses.appBarLeadingTitleRowWithIconBadge}`
             : ''}"
         >
           <div class={templateClasses.appBarLeadingTitle}>
-            <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
+            <Text
+              size="large"
+              weight="semibold"
+              color={titleColor}
+              truncateAfterLines={1}
+              className={titleSlotClass}
+            >
               {title}
             </Text>
           </div>
-          {#if showIconRtb}
-            <RTBBadge type="icon" variant={appBarContext.variant} />
+          {#if showIconBadge}
+            <TrustBadge variant="icon-only" label={trustBadgeLabel} />
           {/if}
         </div>
       {/if}
-      {#if showFullRtb && !stackFullRtbBelowLogo}
+      {#if showFullBadge && !stackFullBadgeBelowLogo}
         <div class={templateClasses.appBarLeadingBadge}>
-          <RTBBadge type="full" variant={appBarContext.variant} />
+          <TrustBadge variant="default" label={trustBadgeLabel} />
         </div>
       {/if}
     </div>
-  {:else if showIconRtb}
-    <RTBBadge type="icon" variant={appBarContext.variant} />
+  {:else if showIconBadge}
+    <TrustBadge variant="icon-only" label={trustBadgeLabel} />
   {/if}
 </div>

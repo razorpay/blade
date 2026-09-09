@@ -14,6 +14,28 @@ import { Card, CardBody } from '~components/Card';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Move } from '~components/Move';
 import { Badge } from '~components/Badge';
+import { isReactNative } from '~utils';
+
+/** Native onFileChange fires before pick with the current list — simulate a picked file for Storybook. */
+const createMockNativeAttachment = (index: number): BladeFileList[0] =>
+  ({
+    id: `native-mock-${Date.now()}-${index}`,
+    name: `attachment-${index}.pdf`,
+    size: 1024,
+    status: 'success',
+  } as BladeFileList[0]);
+
+const handlePlatformFileChange = (
+  setFiles: React.Dispatch<React.SetStateAction<BladeFileList>>,
+): ((args: { fileList: BladeFileList }) => void) => {
+  return ({ fileList }) => {
+    if (isReactNative()) {
+      setFiles((prev) => [...prev, createMockNativeAttachment(prev.length + 1)]);
+      return;
+    }
+    setFiles(fileList);
+  };
+};
 
 const Page = (): React.ReactElement => {
   return (
@@ -113,7 +135,7 @@ export const WithFileUpload: StoryFn<typeof ChatInput> = () => {
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
-        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileChange={handlePlatformFileChange(setFiles)}
         onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         accept=".jpg,.png,.pdf,.xlsx"
         onSubmit={({ value, fileList }) => {
@@ -123,6 +145,9 @@ export const WithFileUpload: StoryFn<typeof ChatInput> = () => {
       />
       <Text size="small" color="surface.text.gray.muted">
         Attached files: {files.length}
+        {isReactNative()
+          ? ' (native: tap upload to attach a mock file — wire your own picker in app code)'
+          : ''}
       </Text>
     </Box>
   );
@@ -221,7 +246,7 @@ export const FullFeatured: StoryFn<typeof ChatInput> = () => {
           setIsGenerating(false);
         }}
         fileList={files}
-        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileChange={handlePlatformFileChange(setFiles)}
         onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         accept=".jpg,.png,.pdf,.xlsx"
         suggestions={[
@@ -246,7 +271,7 @@ export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
       <ChatInput
         placeholder="Try pasting an image here..."
         fileList={files}
-        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileChange={handlePlatformFileChange(setFiles)}
         onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         accept="image/*"
         onSubmit={({ value, fileList }) => {
@@ -254,16 +279,18 @@ export const PasteImageUpload: StoryFn<typeof ChatInput> = () => {
           setFiles([]);
         }}
       />
-      <Box display="flex" flexDirection="column" gap="spacing.3">
-        <Text size="small" color="surface.text.gray.muted">
-          Right-click the image below and copy it, then paste (Ctrl/Cmd+V) into the input above.
-        </Text>
-        <img
-          src="https://picsum.photos/300/200"
-          alt="Sample"
-          style={{ width: 300, borderRadius: 8 }}
-        />
-      </Box>
+      {!isReactNative() && (
+        <Box display="flex" flexDirection="column" gap="spacing.3">
+          <Text size="small" color="surface.text.gray.muted">
+            Right-click the image below and copy it, then paste (Ctrl/Cmd+V) into the input above.
+          </Text>
+          <img
+            src="https://picsum.photos/300/200"
+            alt="Sample"
+            style={{ width: 300, borderRadius: 8 }}
+          />
+        </Box>
+      )}
     </Box>
   );
 };
@@ -485,7 +512,7 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [inputErrorText, setInputErrorText] = useState<string | undefined>(undefined);
   const abortRef = useRef<AbortController | null>(null);
-  const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
 
   const suggestions = [
     'Set up webhooks',
@@ -496,7 +523,9 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
   ];
 
   useEffect(() => {
-    scrollAnchorRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (!isReactNative()) {
+      scrollAnchorRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   const handleRetry = useCallback((failedMsgId: string, originalContent: string) => {
@@ -673,7 +702,7 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
             </Box>
           </Move>
         ))}
-        <div ref={scrollAnchorRef} />
+        <Box ref={scrollAnchorRef} />
       </Box>
 
       {/* Input area */}
@@ -691,6 +720,16 @@ export const ProductUsecaseChatExperience: StoryFn<typeof ChatInput> = () => {
           onStop={handleStop}
           fileList={files}
           onFileChange={({ fileList }) => {
+            if (isReactNative()) {
+              setFiles((prev) => {
+                if (prev.length >= 3) {
+                  setInputErrorText('You can attach a maximum of 3 files.');
+                  return prev;
+                }
+                return [...prev, createMockNativeAttachment(prev.length + 1)];
+              });
+              return;
+            }
             if (fileList.length > 3) {
               setInputErrorText('You can attach a maximum of 3 files.');
               return;
@@ -731,7 +770,7 @@ export const WithFileDismissDuringUpload: StoryFn<typeof ChatInput> = () => {
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
-        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileChange={handlePlatformFileChange(setFiles)}
         onFileRemove={({ file }) => {
           console.log('onFileRemove (trash icon):', file.name);
           setFiles((prev) => prev.filter((f) => f.id !== file.id));
@@ -820,7 +859,7 @@ export const WithManyFiles: StoryFn<typeof ChatInput> = () => {
       <ChatInput
         placeholder="Ask a question..."
         fileList={files}
-        onFileChange={({ fileList }) => setFiles(fileList)}
+        onFileChange={handlePlatformFileChange(setFiles)}
         onFileRemove={({ file }) => setFiles((prev) => prev.filter((f) => f.id !== file.id))}
         accept=".jpg,.png,.pdf,.xlsx,.pptx"
         onSubmit={({ value, fileList }) => {

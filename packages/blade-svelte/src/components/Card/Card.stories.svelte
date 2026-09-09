@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import { defineMeta } from '@storybook/addon-svelte-csf';
   import Card from './Card.svelte';
 
@@ -48,6 +48,9 @@
 </script>
 
 <script lang="ts">
+  import InfoCard from './InfoCard.svelte';
+  import InfoCardBody from './InfoCardBody.svelte';
+  import InfoCardFooter from './InfoCardFooter.svelte';
   import CardBody from './CardBody.svelte';
   import CardHeader from './CardHeader.svelte';
   import CardHeaderLeading from './CardHeaderLeading.svelte';
@@ -62,6 +65,8 @@
   import Text from '../Typography/Text/Text.svelte';
   import Heading from '../Typography/Heading/Heading.svelte';
   import Amount from '../Amount/Amount.svelte';
+  import { BladeProvider } from '../BladeProvider';
+  import { bladeTheme } from '@razorpay/blade-core/tokens';
   import { CreditCardIcon, InfoIcon, CloseIcon, CheckIcon, SearchIcon, ChevronRightIcon } from '../Icons';
   import type { CardBackgroundColor } from '@razorpay/blade-core/styles';
   import type { CardSpacingValueType } from './types';
@@ -82,7 +87,10 @@
     if (args.variant === 'theme') {
       return { ...common, variant: 'theme', backgroundColor: args.backgroundColor };
     }
-    return { ...common, variant: (args.variant ?? 'primary') as 'primary' | 'secondary' };
+    // The Playground only exercises the standard surface treatments; TicketCard and InfoCard have
+    // their own dedicated stories.
+    const standardVariant = args.variant === 'secondary' ? 'secondary' : 'primary';
+    return { ...common, variant: standardVariant };
   }
 </script>
 
@@ -90,7 +98,7 @@
 <Story name="Playground">
   {#snippet template(args)}
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card {...getCardSurfaceProps(args)}>
         <CardHeader>
@@ -136,16 +144,11 @@
   {/snippet}
 </Story>
 
-<!-- Story 1: Card Example
-     React renders a split light+dark layout via a scoped <BladeProvider colorScheme="dark">.
-     Svelte's BladeProvider isn't migrated yet and dark tokens are body-scoped in theme.css,
-     so we keep React's split-pane structure (gray.moderate backdrops, two cards side by side)
-     but render both halves in light mode. TODO: re-enable dark half once Svelte BladeProvider
-     (or a scoped theme primitive) ships. -->
+<!-- Story 1: Card Example — light + nested dark BladeProvider (scoped scheme). -->
 <Story name="Card Example" asChild>
   <div style="display: flex;">
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -188,50 +191,52 @@
         </CardFooter>
       </Card>
     </div>
-    <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
-    >
-      <Card>
-        <CardHeader>
-          <CardHeaderLeading
-            title="Payment Links"
-            subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
-          >
-            {#snippet prefix()}
-              <CardHeaderIcon icon={CreditCardIcon} />
-            {/snippet}
-            {#snippet suffix()}
-              <CardHeaderCounter value={12} />
-            {/snippet}
-          </CardHeaderLeading>
-          <CardHeaderTrailing>
-            {#snippet visual()}
-              <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
-            {/snippet}
-          </CardHeaderTrailing>
-        </CardHeader>
-        <CardBody>
-          <Text>
-            Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
-          </Text>
-        </CardBody>
-        <CardFooter>
-          <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
-          <CardFooterTrailing
-            actions={{
-              primary: {
-                text: 'Learn More',
-                onClick: () => console.log('Primary Action Clicked'),
-              },
-              secondary: {
-                text: 'Try Demo',
-                onClick: () => console.log('Secondary Action Clicked'),
-              },
-            }}
-          />
-        </CardFooter>
-      </Card>
-    </div>
+    <BladeProvider themeTokens={bladeTheme} colorScheme="dark">
+      <div
+        style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      >
+        <Card>
+          <CardHeader>
+            <CardHeaderLeading
+              title="Payment Links"
+              subtitle="Share payment link via an email, SMS, messenger, chatbot etc."
+            >
+              {#snippet prefix()}
+                <CardHeaderIcon icon={CreditCardIcon} />
+              {/snippet}
+              {#snippet suffix()}
+                <CardHeaderCounter value={12} />
+              {/snippet}
+            </CardHeaderLeading>
+            <CardHeaderTrailing>
+              {#snippet visual()}
+                <CardHeaderBadge color="positive">NEW</CardHeaderBadge>
+              {/snippet}
+            </CardHeaderTrailing>
+          </CardHeader>
+          <CardBody>
+            <Text>
+              Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
+            </Text>
+          </CardBody>
+          <CardFooter>
+            <CardFooterLeading title="Built for Developers" subtitle="By Developers." />
+            <CardFooterTrailing
+              actions={{
+                primary: {
+                  text: 'Learn More',
+                  onClick: () => console.log('Primary Action Clicked'),
+                },
+                secondary: {
+                  text: 'Try Demo',
+                  onClick: () => console.log('Secondary Action Clicked'),
+                },
+              }}
+            />
+          </CardFooter>
+        </Card>
+      </div>
+    </BladeProvider>
   </div>
 </Story>
 
@@ -239,7 +244,7 @@
 <Story name="Figma Example" asChild>
   <div style="display: flex;">
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -280,7 +285,7 @@
       </Card>
     </div>
     <div
-      style="background-color: var(--surface-background-gray-moderate); padding: var(--spacing-8);"
+      style="padding: var(--spacing-8);"
     >
       <Card>
         <CardHeader>
@@ -576,7 +581,7 @@
 
 <!-- Story 8: Card Types — primary / secondary / theme treatments -->
 <Story name="Card Types" asChild>
-  <div style="display: flex; flex-direction: column; gap: 24px; background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+  <div style="display: flex; flex-direction: column; gap: 24px; padding: var(--spacing-8);">
     <Card variant="primary" maxWidth="500px">
       <CardHeader showDivider={false}>
         <CardHeaderLeading
@@ -617,7 +622,7 @@
 
 <!-- Story 9: Order Summary — order item with SKU image, details, and pricing -->
 <Story name="Order Summary" asChild>
-  <div style="background-color: var(--surface-background-gray-subtle); padding: var(--spacing-8);">
+  <div style="padding: var(--spacing-8);">
     <Card maxWidth="380px" size="medium">
       <CardHeader>
         <CardHeaderLeading title="Order summary" />
@@ -661,5 +666,36 @@
         </div>
       </CardBody>
     </Card>
+  </div>
+</Story>
+
+<!-- Reusable renderers for the sectioned-variant showcase stories below. Defined at component
+     top-level (not inside <Story>) so they aren't mistaken for Story snippet props. -->
+{#snippet infoCard(label: string, isSelected: boolean, isDisabled: boolean)}
+  <InfoCard width="280px" {isSelected} {isDisabled}>
+    <InfoCardBody>
+      <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">{label}</Text>
+      </div>
+    </InfoCardBody>
+    <InfoCardFooter>
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-2);">
+        <Text size="small" color="surface.text.gray.subtle">Venue</Text>
+        <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+      </div>
+    </InfoCardFooter>
+  </InfoCard>
+{/snippet}
+
+<!-- Story 10: Info Card — emphasized header over subtle body inside single rounded border.
+     Compose with `InfoCardBody` and `InfoCardFooter`. -->
+<Story name="Info Card" asChild>
+  <div
+    style="display: flex; flex-direction: row; gap: var(--spacing-7); flex-wrap: wrap; padding: var(--spacing-8);"
+  >
+    {@render infoCard('Default', false, false)}
+    {@render infoCard('Selected', true, false)}
+    {@render infoCard('Disabled', false, true)}
   </div>
 </Story>

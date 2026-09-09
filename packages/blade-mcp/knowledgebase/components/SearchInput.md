@@ -18,6 +18,7 @@ type SearchInputCommonProps = {
   accessibilityLabel?: string;
   labelPosition?: 'top' | 'left';
   helpText?: string;
+  showHelpTextOnFocus?: boolean;
   placeholder?: string;
   defaultValue?: string;
   name?: string;
@@ -59,6 +60,7 @@ type SearchInputProps = SearchInputPropsWithA11yLabel | SearchInputPropsWithLabe
 - Use `trailing` prop with a `Dropdown` component to show search results below the input.
 - Use `isLoading` to indicate async search in progress — set to `false` when input is empty.
 - Provide `accessibilityLabel` when hiding the visible label for compact search bars.
+- Use `showHelpTextOnFocus` when `helpText` is guidance rather than a permanent label, to keep it out of the layout until the user is actually in the field. `errorText` and `successText` stay visible regardless.
 
 **Don't**
 
@@ -66,6 +68,9 @@ type SearchInputProps = SearchInputPropsWithA11yLabel | SearchInputPropsWithLabe
 - Don't use `SearchInput` without a search context — it always shows a search icon and auto-clear behavior.
 - Don't add prefix/suffix, character counters, or formatting — these are not supported in SearchInput.
 - Don't try to move the search icon to the trailing position — it's fixed at the leading (left) side.
+- Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't combine `showHelpTextOnFocus` with a `Dropdown` — the open dropdown paints over the revealed help text, so it is never readable.
 
 ## Example
 

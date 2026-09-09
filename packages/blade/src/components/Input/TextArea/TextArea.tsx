@@ -33,6 +33,7 @@ type TextAreaCommonProps = Pick<
   | 'necessityIndicator'
   | 'validationState'
   | 'helpText'
+  | 'showHelpTextOnFocus'
   | 'errorText'
   | 'successText'
   | 'placeholder'

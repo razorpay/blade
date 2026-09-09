@@ -9,3 +9,4 @@ export type {
   AccordionButtonVariants,
   AccordionButtonBorderVariants,
 } from './accordion';
+export type { AccordionSlot } from './slots';

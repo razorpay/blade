@@ -30,21 +30,33 @@
   const showDash = $derived(Boolean(isIndeterminate));
   const showTick = $derived(Boolean(isChecked) && !isIndeterminate);
 
-  // Mirror React's Fade: `show === undefined` on first mount → no animation
-  // (prevents a flash of animation). After mount, animate enter/exit.
-  let mounted = $state(false);
-  $effect(() => {
-    mounted = true;
-  });
+  function fadeBaseClasses(show: boolean): string {
+    return [templateClasses.fade, show ? templateClasses.fadeShown : ''].filter(Boolean).join(' ');
+  }
 
-  function fadeClasses(show: boolean): string {
-    return [
-      templateClasses.fade,
-      show ? templateClasses.fadeShown : '',
-      mounted ? (show ? templateClasses.fadeIn : templateClasses.fadeOut) : '',
-    ]
-      .filter(Boolean)
-      .join(' ');
+  // Mirror React's Fade: skip animation on first paint (`prev === undefined`).
+  // Only animate when visibility actually changes — avoids fadeOut on a never-shown
+  // icon (its keyframe starts at opacity 1, which flashes the dash on mount).
+  function fadeIcon(node: HTMLElement, show: boolean) {
+    let prev: boolean | undefined = undefined;
+
+    function apply(nextShow: boolean): void {
+      if (prev === nextShow) return;
+      const shouldAnimate = prev !== undefined && prev !== nextShow;
+      node.classList.remove(templateClasses.fadeIn, templateClasses.fadeOut);
+      if (shouldAnimate) {
+        node.classList.add(nextShow ? templateClasses.fadeIn : templateClasses.fadeOut);
+      }
+      prev = nextShow;
+    }
+
+    apply(show);
+
+    return {
+      update(nextShow: boolean) {
+        apply(nextShow);
+      },
+    };
   }
 
   const wrapperMeta = metaAttribute({ name: 'checkbox-icon-wrapper' });
@@ -52,7 +64,7 @@
 </script>
 
 <div class={iconClasses} {...wrapperMeta}>
-  <div class={fadeClasses(showDash)} {...fadeMeta}>
+  <div class={fadeBaseClasses(showDash)} use:fadeIcon={showDash} {...fadeMeta}>
     <svg
       class={svgClasses}
       viewBox="0 0 8 8"
@@ -72,7 +84,7 @@
       />
     </svg>
   </div>
-  <div class={fadeClasses(showTick)} {...fadeMeta}>
+  <div class={fadeBaseClasses(showTick)} use:fadeIcon={showTick} {...fadeMeta}>
     <svg
       class={svgClasses}
       viewBox="0 0 8 8"

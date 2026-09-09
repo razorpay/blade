@@ -462,7 +462,7 @@ exports[`<SearchInput /> should render 1`] = `
                           }
                         }
                         accessible={true}
-                        autoCompleteType="off"
+                        autoComplete="off"
                         data-blade-component="styled-base-input"
                         editable={true}
                         hasLeadingDropdown={false}

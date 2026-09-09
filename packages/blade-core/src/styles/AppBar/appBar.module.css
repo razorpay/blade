@@ -19,7 +19,7 @@
   padding-bottom: var(--spacing-3);
   padding-left: var(--spacing-5);
   padding-right: var(--spacing-5);
-  z-index: 1000;
+  z-index: 100;
 }
 
 /* Desktop horizontal padding bumps to spacing.6 (Figma: 24px) */
@@ -50,9 +50,9 @@
   background-color: var(--transparent);
 }
 
-/* --- Variant: subtle (adaptive gray surface) --- */
+/* --- Variant: subtle (transparent surface, adaptive gray foreground) --- */
 .appBarSubtle {
-  background-color: var(--surface-background-gray-intense);
+  background-color: var(--transparent);
 }
 
 /* --- AppBar leading row (back button + AppBarLeading + AppBarActions) --- */
@@ -74,7 +74,9 @@
 }
 
 /* --- AppBarLeading ---
-   React: flex row, align center, gap spacing.3, minWidth 0 (truncation). */
+   React: flex row, align center, gap spacing.3, minWidth 0 (truncation).
+   No overflow:hidden here — it clips Avatar wrapper outlines that extend
+   outside the box. Title truncation uses overflow on title wrappers below. */
 .appBarLeading {
   display: flex;
   flex-direction: row;
@@ -82,7 +84,6 @@
   gap: var(--spacing-3);
   min-width: 0;
   flex: 1 1 0;
-  overflow: hidden;
 }
 
 .appBarLeadingLogo {
@@ -103,7 +104,7 @@
   object-fit: contain;
 }
 
-/* Logo + full RTB when there is no title — badge stacks below the logo. */
+/* Logo + full badge when there is no title — badge stacks below the logo. */
 .appBarLeadingLogoStack {
   display: flex;
   flex-direction: column;
@@ -130,8 +131,8 @@
   width: 100%;
 }
 
-/* Icon RTB stays adjacent to title (React: title + badge shrink-wrap in one row). */
-.appBarLeadingTitleRowWithIconRtb {
+/* Icon badge stays adjacent to title (React: title + badge shrink-wrap in one row). */
+.appBarLeadingTitleRowWithIconBadge {
   width: fit-content;
   max-width: 100%;
 }
@@ -144,11 +145,11 @@
   align-items: center;
 }
 
-.appBarLeadingTitleRowWithIconRtb .appBarLeadingTitle {
+.appBarLeadingTitleRowWithIconBadge .appBarLeadingTitle {
   flex: 0 1 auto;
 }
 
-/* RTB badge stacked below the title row when rtbBadge='full'. */
+/* Trust badge stacked below the title row when trustBadgeVariant='default'. */
 .appBarLeadingBadge {
   display: flex;
   align-items: center;

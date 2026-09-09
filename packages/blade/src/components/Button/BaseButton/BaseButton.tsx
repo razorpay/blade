@@ -25,7 +25,7 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
-import type { IconComponent } from '~components/Icons';
+import type { IconComponent, IconSize } from '~components/Icons';
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -34,6 +34,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
+import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
@@ -88,6 +89,22 @@ type BaseButtonCommonProps = {
     | 'information'
     | 'neutral'
     | 'transparent';
+  /**
+   * Overrides the size-derived border radius. Used by FloatingActionButton to
+   * render a pill. `round` is excluded because a percentage radius distorts on
+   * a non-square button.
+   */
+  _borderRadius?: Exclude<keyof Theme['border']['radius'], 'round'>;
+  /**
+   * Overrides the size-derived icon size. Used by FloatingActionButton, whose
+   * icon is larger than a `size="large"` Button's.
+   */
+  _iconSize?: IconSize;
+  /**
+   * Overrides the color of the loading spinner. Used by FloatingActionButton,
+   * whose contrast requirements differ from `Button`'s.
+   */
+  _spinnerColor?: BaseSpinnerProps['color'];
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -119,6 +136,41 @@ type BaseButtonColorTokenModifiers = {
   color: BaseButtonProps['color'];
 };
 
+/**
+ * `white` and `transparent` are not feedback colors, so the token factories are
+ * still called with `primary` and the value is looked up under its own key
+ * instead of under `base`.
+ */
+const isStaticOrTransparentColor = (
+  color: BaseButtonProps['color'],
+): color is 'white' | 'transparent' => color === 'white' || color === 'transparent';
+
+/**
+ * The filled `neutral` surface needs inverted content and a heavier inner shadow
+ * than the shared feedback treatment, so its `primary` emphasis is looked up
+ * under a dedicated key. The remaining emphases fall back to `base`.
+ */
+const isFilledNeutral = (
+  color: BaseButtonProps['color'],
+  variant: NonNullable<BaseButtonProps['variant']>,
+): boolean => color === 'neutral' && variant === 'primary';
+
+const getSpinnerColor = ({
+  variant,
+  color,
+}: {
+  variant: NonNullable<BaseButtonProps['variant']>;
+  color: NonNullable<BaseButtonProps['color']>;
+}): BaseSpinnerProps['color'] => {
+  if (color !== 'primary' && color !== 'transparent' && color in spinnerColor) {
+    return spinnerColor[color as Exclude<keyof typeof spinnerColor, 'base'>][
+      variant as 'primary' | 'secondary'
+    ];
+  }
+
+  return spinnerColor.base[variant];
+};
+
 const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
   if (isReactNative()) {
     return undefined; // as property doesn't work with react native
@@ -140,7 +192,7 @@ export const getBackgroundColorToken = ({
 
   // For white and transparent colors, we use 'primary' as the base color
   // since the actual token lookup uses the white/transparent specific paths
-  const gradientColor = color === 'white' || color === 'transparent' || !color ? 'primary' : color;
+  const gradientColor = isStaticOrTransparentColor(color) || !color ? 'primary' : color;
   const tokens = backgroundGradient(gradientColor);
 
   if (color === 'white') {
@@ -173,11 +225,15 @@ export const getBoxShadowToken = ({
   color,
 }: BaseButtonColorTokenModifiers): ButtonBoxShadow => {
   const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
-  const tokenColor = color === 'white' || color === 'transparent' || !color ? 'primary' : color;
+  const tokenColor = isStaticOrTransparentColor(color) || !color ? 'primary' : color;
   const tokens = boxShadow(tokenColor);
 
   if (color === 'white') {
     return tokens.white[variant][_state];
+  }
+
+  if (isFilledNeutral(color, variant)) {
+    return tokens.neutral.primary[_state];
   }
 
   if (color === 'transparent') {
@@ -205,6 +261,10 @@ export const getTextColorToken = ({
 
   if (color === 'white') {
     return tokens.white[variant][_state];
+  }
+
+  if (isFilledNeutral(color, variant)) {
+    return tokens.neutral.primary[_state];
   }
 
   if (color === 'transparent') {
@@ -237,6 +297,8 @@ const getProps = ({
   variant,
   color,
   hasIcon,
+  _borderRadius,
+  _iconSize,
 }: {
   buttonTypographyTokens: ButtonTypography;
   childrenString?: string;
@@ -246,6 +308,8 @@ const getProps = ({
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
+  _borderRadius?: BaseButtonCommonProps['_borderRadius'];
+  _iconSize?: BaseButtonCommonProps['_iconSize'];
 }): BaseButtonStyleProps => {
   if (
     variant === 'tertiary' &&
@@ -299,46 +363,77 @@ const getProps = ({
     shadowBottomColor?: string;
     shadowBottomHeight?: number;
     shadowBorderColor?: string;
+    /**
+     * Border color from the highlighted/focus box-shadow tokens. Used on press
+     * to match web `&:active { boxShadow: focusBoxShadow }` (e.g. secondary/
+     * tertiary gray.default → gray.highlighted).
+     */
+    focusShadowBorderColor?: string;
     shadowRingWidth?: number;
     isShadowGradientVisible?: boolean;
   } => {
-    const shadowTokens = getBoxShadowToken({ variant, color: btnColor, state: 'default' });
-    if (shadowTokens.length === 0) return {};
+    const resolveShadowColors = (
+      shadowTokens: ReturnType<typeof getBoxShadowToken>,
+    ): {
+      highlightColor?: string;
+      bottomColor?: string;
+      borderColor?: string;
+      highlightHeight: number;
+      bottomHeight: number;
+      ringWidth: number;
+    } => {
+      let highlightColor: string | undefined,
+        bottomColor: string | undefined,
+        borderColor: string | undefined;
+      let highlightHeight = 0;
+      let bottomHeight = 0;
+      let ringWidth = 0;
 
-    let highlightColor: string | undefined,
-      bottomColor: string | undefined,
-      borderColor: string | undefined;
-    let highlightHeight = 0;
-    let bottomHeight = 0;
-    let ringWidth = 0;
-
-    for (const shadow of shadowTokens) {
-      const resolved = getIn(theme.colors, shadow.color);
-      if (shadow.y > 0 && !highlightColor) {
-        highlightColor = resolved;
-        highlightHeight = shadow.y;
-      } else if (shadow.y < 0 && !bottomColor) {
-        bottomColor = resolved;
-        bottomHeight = Math.abs(shadow.y);
-      } else if (shadow.spread > 0 && !borderColor) {
-        borderColor = resolved;
-        ringWidth = shadow.spread;
+      for (const shadow of shadowTokens) {
+        const resolved = getIn(theme.colors, shadow.color);
+        if (shadow.y > 0 && !highlightColor) {
+          highlightColor = resolved;
+          highlightHeight = shadow.y;
+        } else if (shadow.y < 0 && !bottomColor) {
+          bottomColor = resolved;
+          bottomHeight = Math.abs(shadow.y);
+        } else if (shadow.spread > 0 && !borderColor) {
+          borderColor = resolved;
+          ringWidth = shadow.spread;
+        }
       }
+
+      return { highlightColor, bottomColor, borderColor, highlightHeight, bottomHeight, ringWidth };
+    };
+
+    const defaultColors = resolveShadowColors(
+      getBoxShadowToken({ variant, color: btnColor, state: 'default' }),
+    );
+    if (!defaultColors.highlightColor && !defaultColors.bottomColor && !defaultColors.borderColor) {
+      return {};
     }
 
+    const focusColors = resolveShadowColors(
+      getBoxShadowToken({ variant, color: btnColor, state: 'focus' }),
+    );
+
     return {
-      shadowHighlightColor: highlightColor,
-      shadowHighlightHeight: highlightHeight !== 0 ? highlightHeight : undefined,
-      shadowBottomColor: bottomColor,
-      shadowBottomHeight: bottomHeight !== 0 ? bottomHeight : undefined,
-      shadowBorderColor: borderColor,
-      shadowRingWidth: ringWidth !== 0 ? ringWidth : undefined,
+      shadowHighlightColor: defaultColors.highlightColor,
+      shadowHighlightHeight:
+        defaultColors.highlightHeight !== 0 ? defaultColors.highlightHeight : undefined,
+      shadowBottomColor: defaultColors.bottomColor,
+      shadowBottomHeight: defaultColors.bottomHeight !== 0 ? defaultColors.bottomHeight : undefined,
+      shadowBorderColor: defaultColors.borderColor,
+      focusShadowBorderColor: focusColors.borderColor,
+      shadowRingWidth: defaultColors.ringWidth !== 0 ? defaultColors.ringWidth : undefined,
       isShadowGradientVisible: variant === 'primary',
     };
   };
 
   const props: BaseButtonStyleProps = {
-    iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
+    iconSize:
+      _iconSize ??
+      (isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size]),
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
@@ -387,8 +482,15 @@ const getProps = ({
       getBackgroundColorToken({ variant, color, state: 'focus' }),
     ),
     focusBoxShadow: getBoxShadow('focus', color),
-    focusRingColor: getIn(theme.colors, 'surface.border.primary.muted'),
-    borderRadius: makeBorderSize(theme.border.radius[buttonBorderRadius[size]]),
+    // The system focus ring is a faded primary blue, which the design replaces
+    // with a faded neutral ring on the filled neutral surface.
+    focusRingColor: getIn(
+      theme.colors,
+      isFilledNeutral(color, variant)
+        ? 'interactive.border.neutral.faded'
+        : 'surface.border.primary.muted',
+    ),
+    borderRadius: makeBorderSize(theme.border.radius[_borderRadius ?? buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard',
     ...(isReactNative() && !isDisabled ? getNativeShadowColors(color) : {}),
@@ -455,6 +557,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     accessibilityProps,
     onTouchEnd,
     onTouchStart,
+    _borderRadius,
+    _iconSize,
+    _spinnerColor,
     ...rest
   },
   ref,
@@ -488,6 +593,23 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     if (!isLoading && prevLoading) announce('Stopped loading');
   }, [isLoading, prevLoading]);
 
+  // Keep ButtonGroup press index in sync so border-collapse / z-index can
+  // reveal this button's highlighted right edge while pressed (RN only).
+  // useLayoutEffect ensures the z-index update happens before paint, keeping
+  // it in sync with Reanimated's UI-thread press state change.
+  React.useLayoutEffect(() => {
+    if (typeof buttonGroupProps.buttonIndex !== 'number') return;
+    const { buttonIndex, setPressedButtonIndex } = buttonGroupProps;
+    if (isPressed) {
+      setPressedButtonIndex?.(buttonIndex);
+    } else {
+      // Only clear if this button still owns the pressed index — otherwise a
+      // multi-touch release on A would wipe B's press state.
+      setPressedButtonIndex?.((prev) => (prev === buttonIndex ? null : prev));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPressed, buttonGroupProps.buttonIndex]);
+
   const {
     defaultBackgroundColor,
     defaultBoxShadow,
@@ -519,6 +641,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     shadowBottomColor,
     shadowBottomHeight,
     shadowBorderColor,
+    focusShadowBorderColor,
     shadowRingWidth,
     isShadowGradientVisible,
   } = getProps({
@@ -530,10 +653,68 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     theme,
     color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
+    _borderRadius,
+    _iconSize,
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRole = isLink ? 'link' : 'button';
+
+  // On web, ButtonGroup flattens the child buttons' border radius via CSS child
+  // selectors and rounds only the outer edges using the group container's
+  // `overflow: hidden` + `borderRadius`. React Native has no CSS cascade, so we
+  // flatten each button's border radius to 0 here and let the group container do
+  // the outer rounding — otherwise the inner (middle) buttons show rounded corners.
+  // An explicit `isInsideButtonGroup` flag set by ButtonGroupContext signals we're
+  // inside a group; this avoids relying on the presence of `variant` in the
+  // default context.
+  const isInsideRNButtonGroup = isReactNative() && Boolean(buttonGroupProps.isInsideButtonGroup);
+
+  // buttonBorderRadiusValue flattens the base borderRadius to 0 for all buttons
+  // in a group. buttonBorderRadii provides per-corner rounding for the outer
+  // edges of the first/last buttons. Both are needed: the base value ensures the
+  // Pressable itself is square, while borderRadii rounds only the outer corners
+  // via per-corner style overrides (and feeds the SVG border overlay).
+  const buttonBorderRadiusValue = isInsideRNButtonGroup ? makeBorderSize(0) : borderRadius;
+
+  // The group container clips with `overflow: hidden` + `borderRadius`. Since the
+  // buttons are square (radius 0), the native border overlay (drawn as a square
+  // ring) gets clipped at the group's rounded outer corners. To match web, round
+  // only the outer corners of the first/last buttons (both the background and the
+  // border overlay) so the ring follows the rounded corner instead of being cut.
+  const groupCornerRadius = isInsideRNButtonGroup
+    ? theme.border.radius[buttonBorderRadius[buttonGroupProps.size ?? size]]
+    : 0;
+  const isFirstInGroup = Boolean(buttonGroupProps.isFirstInButtonGroup);
+  const isLastInGroup = Boolean(buttonGroupProps.isLastInButtonGroup);
+  const buttonBorderRadii = isInsideRNButtonGroup
+    ? {
+        topLeft: isFirstInGroup ? groupCornerRadius : 0,
+        bottomLeft: isFirstInGroup ? groupCornerRadius : 0,
+        topRight: isLastInGroup ? groupCornerRadius : 0,
+        bottomRight: isLastInGroup ? groupCornerRadius : 0,
+      }
+    : undefined;
+
+  // ButtonGroup computes isGroupBorderCollapsed based on its variant and passes it
+  // through context, so BaseButton doesn't need to inspect the variant string.
+  const isGroupBorderCollapsed =
+    isInsideRNButtonGroup && !isFirstInGroup && Boolean(buttonGroupProps.isGroupBorderCollapsed);
+
+  // Match web ButtonGroup: only the first child keeps the radial glow
+  // (`backgroundImage: none` on `:not(:first-child)`). On native the white
+  // top/left "glassy" edge also comes from the inset highlight stroke mapped
+  // from box-shadow — suppress that on non-first buttons too so junctions
+  // don't show a white left edge on Share/Download.
+  const isNonFirstInButtonGroup = isInsideRNButtonGroup && !isFirstInGroup;
+  const showShadowGradient = Boolean(isShadowGradientVisible) && !isNonFirstInButtonGroup;
+  const effectiveShadowHighlightColor = isNonFirstInButtonGroup ? undefined : shadowHighlightColor;
+
+  // Web ButtonGroup sets `flex: 1` on children when isFullWidth. On native,
+  // isFullWidth alone applies `width: 100%`, which overflows in a row — use
+  // flex instead so siblings share space equally.
+  const isInsideFullWidthButtonGroup =
+    isInsideRNButtonGroup && Boolean(buttonGroupProps.isFullWidth ?? isFullWidth);
 
   const handlePointerPressedIn = React.useCallback(() => {
     if (disabled) return;
@@ -621,7 +802,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         onTouchEnd?.(event);
       }}
       type={type}
-      borderRadius={borderRadius}
+      borderRadius={buttonBorderRadiusValue}
+      {...(buttonBorderRadii ? { borderRadii: buttonBorderRadii } : {})}
+      {...(isGroupBorderCollapsed ? { isGroupBorderCollapsed } : {})}
+      {...(isNonFirstInButtonGroup ? { isInsetShadowSidesFlattened: true } : {})}
+      {...(isInsideFullWidthButtonGroup ? { isInsideFullWidthButtonGroup: true } : {})}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       height={height}
@@ -637,15 +822,17 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         onMouseDown?.(event);
       }}
       onMouseUp={handlePointerPressedOut}
-      onMouseOut={handlePointerPressedOut}
-      onKeyUp={handleKeyboardPressedOut}
-      shadowHighlightColor={shadowHighlightColor}
-      shadowHighlightHeight={shadowHighlightHeight}
+      {...(!isReactNative()
+        ? { onMouseOut: handlePointerPressedOut, onKeyUp: handleKeyboardPressedOut }
+        : {})}
+      shadowHighlightColor={effectiveShadowHighlightColor}
+      shadowHighlightHeight={isNonFirstInButtonGroup ? undefined : shadowHighlightHeight}
       shadowBottomColor={shadowBottomColor}
       shadowBottomHeight={shadowBottomHeight}
       shadowBorderColor={shadowBorderColor}
+      focusShadowBorderColor={focusShadowBorderColor}
       shadowRingWidth={shadowRingWidth}
-      isShadowGradientVisible={isShadowGradientVisible}
+      isShadowGradientVisible={showShadowGradient}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
       {...makeAnalyticsAttribute(rest)}
@@ -670,13 +857,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             <BaseSpinner
               accessibilityLabel="Loading"
               size={spinnerSize}
-              color={
-                color && color !== 'primary' && color !== 'transparent' && color in spinnerColor
-                  ? spinnerColor[color as keyof typeof spinnerColor][
-                      variant as 'primary' | 'secondary'
-                    ]
-                  : spinnerColor.base[variant]
-              }
+              color={_spinnerColor ?? getSpinnerColor({ variant, color })}
             />
           </BaseBox>
         ) : null}

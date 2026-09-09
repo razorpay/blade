@@ -19,10 +19,12 @@
     children,
     color,
     testID,
+    className,
     textAlign,
     textDecorationLine,
     wordBreak,
     textTransform,
+    styleOverride,
     ...rest
   }: TextComponentProps = $props();
 
@@ -62,6 +64,9 @@
     truncateAfterLines,
     wordBreak,
     textTransform,
+    className,
+    styleOverride,
+    styleOverrideRegistryKey: 'Text',
     ...rest,
   });
 </script>

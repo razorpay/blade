@@ -8,6 +8,175 @@ Dashboard Template
 
 Dashboard Template is a full dashboard template with SideNav, TopNav and main workspace area. It also includes a navigation structure with sections and items implemented via react-router-dom.
 
+## UI Principles
+
+| # | Principle | Description |
+|---|---|---|
+| 1 | **One surface container only** | A page must have a single primary surface container. Avoid layering multiple competing containers on the same view. |
+| 2 | **Balance UI from the centre** | Layout and visual weight should be anchored from the centre of the workspace. |
+| 3 | **Neutral colour palette** | Use a neutral, restrained colour palette. Avoid heavy use of saturated or brand colours in the workspace content area. |
+| 4 | **Navigation is always sticky / fixed** | Top Nav and Side Nav must remain fixed/sticky at all times so users always have access to navigation, regardless of scroll position. |
+
+## Dashboard Anatomy
+
+The dashboard shell is composed of three structural regions:
+
+```
+┌──────────────────────────────────────────────────┐
+│                    TOP NAV                        │  ← Always sticky / fixed
+├───────────┬──────────────────────────────────────┤
+│           │                                      │
+│  SIDE NAV │         WORKSPACE AREA               │
+│           │                                      │
+│ (sticky)  │   (scrollable content region)        │
+│           │                                      │
+└───────────┴──────────────────────────────────────┘
+```
+
+- **Top Nav** — Persistent horizontal bar; contains logo, primary product navigation tabs/links, and utility actions (search, notifications, account). Always fixed.
+- **Side Nav** — Persistent vertical navigation panel on the left. Always fixed. Depth and items vary by Architecture Level.
+- **Workspace Area** — The main scrollable region to the right of the Side Nav. All page content lives here.
+
+## Section Types in Workspace Area
+
+The workspace area supports three distinct section types, each mapped to a specific column grid:
+
+| Section Type | Grid | Use Case |
+|---|---|---|
+| **Full Width Section** | 12-column grid | Default content pages; high-density data tables, dashboards |
+| **Narrow Section** | 8-column grid | Forms, focused content, wizard flows, detail pages |
+| **With Preview Section** | 6-column grid + 504px fixed aside | Settings pages where changes need a live preview panel |
+
+## How to Build a Page
+
+Follow these three steps to correctly design any page in the Razorpay dashboard.
+
+### Step 1 — Choose Page Position in Architecture
+
+| Level | Description | Side Nav State |
+|---|---|---|
+| **Level 0** | Top-level landing / root page | No side nav items active; minimal sidebar |
+| **Level 1** | First-level section page | Single list of nav items visible in sidebar |
+| **Level 2, 3** | Nested sub-pages (child of a Level 1 page) | Sidebar shows parent item + indented children |
+
+> **Rule:** L2 and L3 pages must **always include a Back navigation element** to allow users to return to the parent page.
+
+### Step 2 — Select Page Type in Workspace
+
+#### L1 Page Types (Level 0 and Level 1)
+
+| Page Type | Description |
+|---|---|
+| **No L1 Page Header** | Content begins immediately below the Top Nav. Used for homepages or self-describing pages. |
+| **L1 Page Header** | A page-level header band sits above content. Contains page title and optional CTAs. |
+| **Tabs Only** | No page header title; only a tabs row above the content. |
+| **L1 Page Header + Tabs** | Combines a page header with a tabs row below it. |
+
+#### L2 Page Types (Level 2 and Level 3)
+
+| Page Type | Description |
+|---|---|
+| **L2 Page Header** | Header with a **Back** navigation link above the page title. |
+| **L2 Page Header + Tabs** | Combines the L2 header (with Back) and a tabs row below it. |
+
+### Step 3 — Choose Section Type & Layout
+
+> **Rule:** Try to use only **one section type per page**. Mixing section types on the same page is strongly discouraged.
+
+#### Full Width Section Layouts (12-column grid)
+
+| Layout | Description |
+|---|---|
+| **Single Section** | One full-width content block with a section title |
+| **Grid Layout** | Multiple content blocks in a responsive grid (1-col, 2-col, 3-col) |
+| **2 Column Layout** | Two side-by-side content blocks |
+
+#### Narrow Section Layouts (8-column grid)
+
+| Layout | Description |
+|---|---|
+| **Single Section** | One centred content block (8 columns) |
+| **Grid Layout** | Multiple content blocks in a grid within the 8-column space |
+| **Left-Right Layout** | Label/description on left, content on right |
+
+#### With Preview Section (6-column grid)
+
+| Layout | Description |
+|---|---|
+| **Settings Page** | Content form/list on left (6 columns); fixed 504px Preview panel on right |
+
+## Grid & Workspace Anatomy
+
+### Desktop Dashboard Configurations
+
+| Config | Sidebar | Breakpoint | Grid |
+|---|---|---|---|
+| Wide Dashboard + Sidebar Nav | Expanded | ≥ 1360px | 12-col |
+| Mini Dashboard + Sidebar Nav | Collapsed/icon | 1280–1359px | 12-col (narrower) |
+| Grand Dashboard + Sidebar Nav | Expanded | ≥ 1440px | 12-col (wider gutter) |
+| Mobile Dashboard | Bottom Nav | ≤ 768px | Single column |
+
+### Section Grid Details
+
+```
+12-Column (Full Width):
+[ Top Nav                                              ]
+[ Side Nav | Section Title                             ]
+[ Side Nav | ┌──────────────────────────────────────┐ ]
+[           │  Content (Slot Block)                  │ ]
+[           └──────────────────────────────────────┘ ]
+
+8-Column (Narrow):
+[ Top Nav                                              ]
+[ Side Nav |  [gap]  Section Title  [gap]              ]
+[ Side Nav |  [gap]  ┌──────────────────┐  [gap]       ]
+[           |  [gap]  │  Content Slot     │  [gap]       ]
+[           |  [gap]  └──────────────────┘  [gap]       ]
+
+6-Column + Aside (With Preview):
+[ Top Nav                                              ]
+[ Side Nav | Section Title   |  504px Aside (fixed)   ]
+[ Side Nav | ┌────────────┐  |  ┌─────────────────┐   ]
+[           │  Main Form  │  |  │  Preview Panel  │   ]
+[           └────────────┘  |  └─────────────────┘   ]
+```
+
+### Mobile Blueprint
+
+| Layer | Description |
+|---|---|
+| `Top Navigation` | Sticky header bar |
+| `Bottom Navigation` | Fixed bottom tab bar (replaces Side Nav on mobile) |
+| `Workspace` | Main scrollable content area |
+| `Tabs` | Optional tab row within the workspace |
+| `Breadcrumb` | Back/breadcrumb navigation for L2+ pages |
+| `Bottom Sheet` | Slide-up overlay panel |
+
+## Quick Reference Decision Tree
+
+```
+START
+  │
+  ├─ What level is this page in the IA?
+  │     ├─ Level 0 (top-level)     → Side Nav: minimal
+  │     ├─ Level 1 (section root)  → Side Nav: expanded list
+  │     └─ Level 2/3 (sub-page)    → Side Nav: parent + children; add Back nav
+  │
+  ├─ What header does the workspace need?
+  │     ├─ No header needed             → No L1 Page Header
+  │     ├─ Title + CTAs only            → L1/L2 Page Header
+  │     ├─ Sub-sections via tabs only   → Tabs Only
+  │     └─ Title + CTAs + tab nav       → L1/L2 Page Header + Tabs
+  │
+  └─ What section type fits the content?
+        ├─ Tables, dashboards, analytics  → Full Width (12-col)
+        │     └─ Layout: Single / Grid / 2-Column
+        ├─ Forms, wizards, focused tasks  → Narrow (8-col)
+        │     └─ Layout: Single / Grid / Left-Right
+        └─ Settings with live preview     → With Preview (6-col)
+              └─ Layout: Settings page
+```
+
 ## Components Used
 
 - SideNav

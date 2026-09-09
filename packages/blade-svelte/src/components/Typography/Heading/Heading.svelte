@@ -15,6 +15,7 @@
     textDecorationLine,
     wordBreak,
     textTransform,
+    styleOverride,
     ...rest
   }: HeadingProps = $props();
 
@@ -53,6 +54,8 @@
     textDecorationLine,
     textTransform,
     wordBreak,
+    styleOverride,
+    styleOverrideRegistryKey: 'Heading',
     ...rest,
   });
 </script>

@@ -5,6 +5,7 @@
     MetaConstants,
     throwBladeError,
     getTokenCSSVariable,
+    cx,
   } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
   import { utilityClasses } from '@razorpay/blade-core/styles';
@@ -12,6 +13,10 @@
   import { getAmountByParts } from '@razorpay/blade-core/utils';
   import { normalAmountSizes, subtleFontSizes, amountLineHeights } from '@razorpay/blade-core/styles';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
+  import { resolveComponentStyleOverride } from '../../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../../BladeProvider/bladeThemeContext';
+
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     value,
@@ -26,8 +31,13 @@
     currency = 'INR',
     fractionDigits = 2,
     testID,
+    styleOverride,
     ...rest
   }: BaseAmountProps = $props();
+
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('Amount', styleOverride, themeContextGetter),
+  );
 
   // Validation in development mode
   $effect(() => {
@@ -86,6 +96,13 @@
 
   const { amountValueColor } = $derived(getTextColorProps(color));
 
+  const currencyTextColor = $derived(
+    resolvedStyleOverride?.currency ? ('currentColor' as const) : amountValueColor,
+  );
+  const valueTextColor = $derived(
+    resolvedStyleOverride?.value ? ('currentColor' as const) : amountValueColor,
+  );
+
   // Get formatted amount parts
   const renderedValue = $derived(getAmountByParts({ suffix, value, currency, fractionDigits }));
   const isPrefixSymbol = $derived(renderedValue.isPrefixSymbol ?? true);
@@ -119,25 +136,24 @@
   const styledProps = $derived(getStyledPropsClasses(rest));
 
   // Combine classes for outer container
-  const outerContainerClasses = $derived(() => {
-    const classes = [
+  const valueOverrideClass = $derived(resolvedStyleOverride?.value);
+
+  const outerContainerClasses = $derived(
+    cx(
       utilityClasses['display-inline-flex'],
       utilityClasses['flex-direction-row'],
-    ];
-    if (styledProps.classes) {
-      classes.push(...styledProps.classes);
-    }
-    return classes.filter(Boolean).join(' ');
-  });
+      ...(styledProps.classes ?? []),
+    ),
+  );
 
   // Inner container classes - match React implementation exactly
-  const innerContainerClasses = $derived(() => {
-    return [
+  const innerContainerClasses = $derived(
+    cx(
       utilityClasses['display-inline-flex'],
       utilityClasses['flex-direction-row'],
       utilityClasses['position-relative'],
-    ].join(' ');
-  });
+    ),
+  );
 
   // Inner container style - use baseline alignment like React
   const innerContainerStyle = $derived(() => {
@@ -163,16 +179,17 @@
   });
 </script>
 
-<div class={outerContainerClasses()} {...metaAttrs} {...analyticsAttrs}>
-  <div class={innerContainerClasses()} style={innerContainerStyle()}>
+<div class={outerContainerClasses} {...metaAttrs} {...analyticsAttrs}>
+  <div class={innerContainerClasses} style={innerContainerStyle()}>
     {#if renderedValue.minusSign}
       <BaseText
         fontSize={normalAmountSizes[type][size]}
         fontWeight={weight}
         lineHeight={amountLineHeights[type][size]}
-        color={amountValueColor}
+        color={valueTextColor}
         as="span"
         marginX="spacing.2"
+        className={valueOverrideClass}
       >
         {renderedValue.minusSign}
       </BaseText>
@@ -183,9 +200,10 @@
         marginRight="spacing.1"
         fontWeight={weight}
         fontSize={currencyFontSize}
-        color={amountValueColor}
+        color={currencyTextColor}
         as="span"
         opacity={isAffixSubtle ? 0.64 : undefined}
+        className={resolvedStyleOverride?.currency}
       >
         {currencySymbolOrCode}
       </BaseText>
@@ -197,9 +215,10 @@
         fontSize={normalAmountSizes[type][size]}
         fontWeight={weight}
         lineHeight={amountLineHeights[type][size]}
-        color={amountValueColor}
+        color={valueTextColor}
         fontFamily={numberFontFamily}
         as="span"
+        className={valueOverrideClass}
       >
         {renderedValue.integer}
       </BaseText>
@@ -207,9 +226,10 @@
         fontWeight={weight}
         fontSize={affixFontSize}
         fontFamily={numberFontFamily}
-        color={amountValueColor}
+        color={valueTextColor}
         as="span"
         opacity={isAffixSubtle ? 0.64 : undefined}
+        className={valueOverrideClass}
       >
         {renderedValue.decimal}{renderedValue.fraction}
       </BaseText>
@@ -219,8 +239,9 @@
         fontSize={normalAmountSizes[type][size]}
         fontWeight={weight}
         fontFamily={numberFontFamily}
-        color={amountValueColor}
+        color={valueTextColor}
         lineHeight={amountLineHeights[type][size]}
+        className={valueOverrideClass}
       >
         {amountString()}
       </BaseText>
@@ -231,9 +252,10 @@
         marginLeft="spacing.1"
         fontWeight={weight}
         fontSize={currencyFontSize}
-        color={amountValueColor}
+        color={currencyTextColor}
         as="span"
         opacity={isAffixSubtle ? 0.64 : undefined}
+        className={resolvedStyleOverride?.currency}
       >
         {currencySymbolOrCode}
       </BaseText>

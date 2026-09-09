@@ -70,4 +70,4 @@ const useDrawerStack = (): GlobalStackStateType => {
   return React.useContext(StackingContext);
 };
 
-export { DrawerStackProvider, useDrawerStack };
+export { DrawerStackProvider, useDrawerStack, StackingContext };

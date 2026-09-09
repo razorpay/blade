@@ -245,7 +245,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to right,hsla(200,10%,94%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to right,hsla(0,0%,97%,1),hsla(0,0%,100%,0));
   left: -1px;
   opacity: 1;
   pointer-events: none;
@@ -263,7 +263,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to left,hsla(200,10%,94%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to left,hsla(0,0%,97%,1),hsla(0,0%,100%,0));
   right: -1px;
   opacity: 1;
   pointer-events: none;
@@ -1891,7 +1891,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to right,hsla(200,10%,94%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to right,hsla(0,0%,97%,1),hsla(0,0%,100%,0));
   left: -1px;
   opacity: 1;
   pointer-events: none;
@@ -1909,7 +1909,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to left,hsla(200,10%,94%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to left,hsla(0,0%,97%,1),hsla(0,0%,100%,0));
   right: -1px;
   opacity: 1;
   pointer-events: none;

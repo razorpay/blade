@@ -34,7 +34,10 @@ This document outlines the API details of the `FileUpload` component, encompassi
 ## `FileUpload` Props
 
 ```ts
-// Check the File type from MDN for more details: https://developer.mozilla.org/en-US/docs/Web/API/File
+// Platform-split: on web, BladeFile extends the DOM File API (see bladeFile.web.ts).
+// On React Native, BladeFile is a plain object (see bladeFile.ts) because File/Blob
+// globals are unavailable. Check the File type from MDN for web details:
+// https://developer.mozilla.org/en-US/docs/Web/API/File
 interface BladeFile extends File {
   /**
    * The unique identifier of the file.
@@ -110,15 +113,15 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when the preview icon is clicked
    */
-  onPreview?: ({ file }: { file: File }) => void;
+  onPreview?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file is removed
    */
-  onRemove?: ({ file }: { file: File }) => void;
+  onRemove?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function triggered when a file upload is dismissed
    */
-  onDismiss?: ({ file }: { file: File }) => void;
+  onDismiss?: ({ file }: { file: BladeFile }) => void;
   /**
    * Callback function executed when files are dropped into the upload area
    */

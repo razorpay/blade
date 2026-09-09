@@ -15,6 +15,29 @@ type BaseFilterChipProps = {
   onClearButtonClick?: ({ value }: { value: string | string[] }) => void;
 
   /**
+   * Whether to render the clear (cross) button when the chip has a selected value.
+   *
+   * Set to `false` for filters that should always hold a value (e.g. a date filter
+   * with a mandatory default) so users can't clear it to an empty state.
+   *
+   * **Controlled / uncontrolled clearing contract:**
+   * When the clear button is clicked, `onClearButtonClick` fires. If the parent
+   * controls `value` (passes it explicitly), the chip cannot clear itself — the
+   * parent must reset `value` in response to `onClearButtonClick`. In the uncontrolled
+   * case, the chip clears itself automatically.
+   *
+   * Note: this only controls the chip's own visual cross button. It does NOT opt the chip
+   * out of a group-level clear — a `FilterChipGroup`'s Clear action (`onClearButtonClick`) still
+   * empties every chip (including those with `showClearButton={false}`). For a filter that must
+   * never be emptied from the group, offer a Reset action instead (`onResetButtonClick`) and
+   * restore the filter's default yourself, or hide the group's Clear action via
+   * `showClearButton={false}` on the group.
+   *
+   * @default true
+   */
+  showClearButton?: boolean;
+
+  /**
    * Children. Title of the Chip
    */
   label: string;

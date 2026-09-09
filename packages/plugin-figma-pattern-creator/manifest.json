@@ -8,10 +8,6 @@
   "permissions": ["currentuser"],
   "documentAccess": "dynamic-page",
   "networkAccess": {
-    "allowedDomains": [
-      "https://api.segment.io",
-      "https://github.com",
-      "https://raw.githubusercontent.com"
-    ]
+    "allowedDomains": ["https://api.segment.io"]
   }
 }

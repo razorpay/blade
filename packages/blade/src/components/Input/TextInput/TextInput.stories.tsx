@@ -59,6 +59,7 @@ export default {
     validationState: 'none',
     validationTextPlacement: 'outside',
     helpText: undefined,
+    showHelpTextOnFocus: false,
     errorText: undefined,
     successText: undefined,
     icon: undefined,
@@ -205,6 +206,11 @@ export default {
       },
     },
     helpText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    showHelpTextOnFocus: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },
@@ -382,6 +388,118 @@ TextInputSuccess.args = {
   validationState: 'success',
   successText: 'Name validated',
 };
+
+const TextInputValidationInsideTemplate: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <TextInputComponent
+        label="Card Number"
+        defaultValue="4111 1111 1111 1111"
+        validationState="success"
+        successText="Verified"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+      <TextInputComponent
+        label="Card Number"
+        defaultValue="4111 1111 1111"
+        validationState="error"
+        errorText="Invalid"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+    </Box>
+  );
+};
+export const TextInputValidationInside = TextInputValidationInsideTemplate.bind({});
+TextInputValidationInside.storyName = 'TextInput with validation text inside';
+
+const TextInputValidationPlacementTemplate: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6">
+      <Box display="flex" flexDirection="column" gap="spacing.5">
+        <Text size="large" weight="semibold" marginBottom="spacing.2">
+          Inside
+        </Text>
+        <TextInputComponent
+          label="Amount"
+          defaultValue="1000"
+          validationState="success"
+          successText="Verified"
+          validationTextPlacement="inside"
+          showClearButton={false}
+        />
+        <TextInputComponent
+          label="Amount"
+          defaultValue="10"
+          validationState="error"
+          errorText="Too low"
+          validationTextPlacement="inside"
+          showClearButton={false}
+        />
+      </Box>
+      <Box display="flex" flexDirection="column" gap="spacing.5">
+        <Text size="large" weight="semibold" marginBottom="spacing.2">
+          Outside
+        </Text>
+        <TextInputComponent
+          label="Amount"
+          defaultValue="1000"
+          validationState="success"
+          successText="Verified"
+          validationTextPlacement="outside"
+          showClearButton={false}
+        />
+        <TextInputComponent
+          label="Amount"
+          defaultValue="10"
+          validationState="error"
+          errorText="Too low"
+          validationTextPlacement="outside"
+          showClearButton={false}
+        />
+      </Box>
+    </Box>
+  );
+};
+export const TextInputValidationPlacement = TextInputValidationPlacementTemplate.bind({});
+TextInputValidationPlacement.storyName = 'TextInput validation placement (inside vs outside)';
+
+const TextInputValidationInsideSizesTemplate: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <TextInputComponent
+        size="small"
+        label="Label"
+        defaultValue="Value"
+        validationState="success"
+        successText="Success Text"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+      <TextInputComponent
+        size="medium"
+        label="Label"
+        defaultValue="Value"
+        validationState="success"
+        successText="Success Text"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+      <TextInputComponent
+        size="large"
+        label="Label"
+        defaultValue="Value"
+        validationState="success"
+        successText="Success Text"
+        validationTextPlacement="inside"
+        showClearButton={false}
+      />
+    </Box>
+  );
+};
+export const TextInputValidationInsideSizes = TextInputValidationInsideSizesTemplate.bind({});
+TextInputValidationInsideSizes.storyName = 'TextInput validation inside - sizes';
 
 export const TextInputWithoutLabel = TextInputTemplate.bind({});
 TextInputWithoutLabel.storyName = 'TextInput without label';
@@ -816,6 +934,37 @@ export const TextInputWithTrailingElement: StoryFn<typeof TextInputComponent> = 
     />
   );
 };
+
+export const TextInputWithHelpTextOnFocus: StoryFn<typeof TextInputComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.6" maxWidth="320px">
+      <Text size="small" color="surface.text.gray.muted">
+        Focus each field to compare. The first keeps its help text visible at all times, the second
+        reveals it only while focused so the row below never gets pushed down at rest.
+      </Text>
+      <TextInputComponent
+        label="Account number"
+        placeholder="0000 0000 0000"
+        helpText="As printed on your cheque book"
+      />
+      <TextInputComponent
+        label="Account number"
+        placeholder="0000 0000 0000"
+        helpText="As printed on your cheque book"
+        showHelpTextOnFocus
+      />
+      <TextInputComponent
+        label="IFSC code"
+        placeholder="HDFC0000001"
+        helpText="You won't see this — error text is never gated behind focus"
+        errorText="Enter a valid 11 character IFSC code"
+        validationState="error"
+        showHelpTextOnFocus
+      />
+    </Box>
+  );
+};
+TextInputWithHelpTextOnFocus.storyName = 'TextInput with Help Text on Focus';
 
 export const TextInputWithLabelSuffixTrailing = TextInputTemplate.bind({});
 TextInputWithLabelSuffixTrailing.storyName = 'TextInput with Label Suffix & Trailing';

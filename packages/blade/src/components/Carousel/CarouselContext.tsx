@@ -13,6 +13,7 @@ type CarouselContextProps =
       totalNumberOfSlides: number;
       isResponsive?: boolean;
       visibleItems?: 1 | 2 | 3;
+      isAutoPlaying?: boolean;
       /**
        * React native only
        */

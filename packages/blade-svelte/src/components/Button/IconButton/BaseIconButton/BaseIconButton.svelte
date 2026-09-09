@@ -5,15 +5,18 @@
     metaAttribute,
     MetaConstants,
     getStyledPropsClasses,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
     getIconButtonClasses,
     getIconButtonTemplateClasses,
   } from '@razorpay/blade-core/styles';
+  import { resolveComponentStyleOverride } from '../../../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../../../BladeProvider/bladeThemeContext';
   import type { BaseIconButtonProps } from './types';
 
-  // Call template classes fn to prevent Svelte tree-shaking of CVA-only classes.
   getIconButtonTemplateClasses();
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     icon: Icon,
@@ -35,8 +38,13 @@
     onTouchStart,
     onTouchEnd,
     onKeyDown,
+    styleOverride,
     ...rest
   }: BaseIconButtonProps = $props();
+
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('IconButton', styleOverride, themeContextGetter),
+  );
 
   // `size="large"` with `isHighlighted` or `emphasis="moderate"` is invalid (React throws in
   // __DEV__). Surface it as a localhost-only console error; still render the button.
@@ -58,7 +66,7 @@
   const cvaClasses = $derived(getIconButtonClasses({ emphasis, size, isHighlighted }));
   const styledProps = $derived(getStyledPropsClasses(rest));
   const combinedClasses = $derived(
-    [cvaClasses, ...(styledProps.classes ?? [])].filter(Boolean).join(' '),
+    cx(cvaClasses, ...(styledProps.classes ?? []), resolvedStyleOverride?.root),
   );
 
   const accessibilityAttrs = $derived(
@@ -151,5 +159,7 @@
   ontouchend={handleTouchEnd}
   onkeydown={handleKeyDown}
 >
-  <Icon {size} color="currentColor" />
+  <span class={resolvedStyleOverride?.icon}>
+    <Icon {size} color="currentColor" />
+  </span>
 </button>

@@ -32,6 +32,208 @@ CreationView is a pattern used in creation flows to guide users through the proc
 - ChipGroup
 - Chip
 
+## When to Use
+
+Use the following decision tree to select the right template:
+
+```
+Is your creation flow a single-step process?
+│
+├── YES → Use a Modal variant
+│         Pick size based on content complexity:
+│         • Small Modal   → minimal content / single input (~480px)
+│         • Medium Modal  → standard form / moderate content (~640px)
+│         • Large Modal   → complex form / rich content (~800px)
+│
+└── NO  → Do you show steps through StepGroup?
+          │
+          ├── YES → Full Page Modal (with left-nav StepGroup)
+          └── NO  → Full Page Modal (with progress-bar stepper)
+```
+
+**Key rule:** Single-step flows live in modals. Multi-step flows live in the full-page modal with a StepGroup sidebar or a progress bar.
+
+## Templates
+
+| Template | Width | When to use |
+|---|---|---|
+| Small Modal | ~480px | Minimal content, single input field |
+| Medium Modal | ~640px | Standard form, moderate content |
+| Large Modal | ~800px | Complex form, rich content, selection grids, asset previews |
+| Full Page Modal | Full viewport (1280×800px blueprint) | Multi-step flows with StepGroup navigation |
+
+All modal variants share the same shell structure: Header + Body Slot + Footer with Secondary/Primary buttons.
+
+## Anatomy
+
+### Modal (Small / Medium / Large)
+
+```
+┌──────────────────────────────────────┐
+│  Header Title                    [×] │  ← _Modal Header
+│  Header Subtitle                     │
+├──────────────────────────────────────┤  ← Divider
+│                                      │
+│        [ Content Slot ]              │  ← modal-body
+│                                      │
+├──────────────────────────────────────┤  ← Divider
+│  [ Secondary ]        [ Primary ]    │  ← _Modal Footer
+└──────────────────────────────────────┘
+```
+
+### Full Page Modal
+
+```
+┌─────────┬──────────────────────────────────────────────────────────────┐
+│  Header Title                                                      [×] │  ← Header
+├─────────┼────────────────────────────────────────────────────────────  ┤
+│         │                                                              │
+│  ✓ Step │   Step Title                                                 │  ← Step Header
+│  ✓ Step │   Step Description                                           │
+│  · Step │                                                              │
+│  · Step │        [ Content Slot ]                                      │  ← Content Area
+│  · Step │                                                              │
+│         │                                                              │
+│(224px)  │                                                              │
+├─────────┴────────────────────────────────────────────────────────────  ┤
+│  [ Save and Close ]                       [ Previous ] [ Next ]        │  ← Footer
+└──────────────────────────────────────────────────────────────────────  ┘
+```
+
+### Multi-Step Modal (`stepType=multiple`)
+
+```
+┌─────────────────────────────────────────────┬───┐
+│ Header Title                                │ × │
+├───────────────────┬─────────────────────────┴───┤
+│ ✓ Step name       │  Step Title                 │
+│ ● Step name (cur) │  Step subtitle              │
+│ ○ Step name       │                             │
+│ ○ Step name       │    [ Content Area ]         │
+│ ○ Step name       │                             │
+│                   ├─────────────────────────────┤
+│                   │ [Save & Close] [Prev] [Next] │
+└───────────────────┴─────────────────────────────┘
+```
+
+### Mobile — Bottom Sheet
+
+```
+┌──────────────────────────┐
+│  ━━━  (drag handle)      │
+│ Header Title          ×  │
+├──────────────────────────┤
+│    [ Content Area ]      │
+├──────────────────────────┤
+│  [ Secondary ][ Primary ]│
+└──────────────────────────┘
+```
+
+### Mobile — Full Page
+
+```
+┌──────────────────────────────┐
+│ Page / Flow Title         ×  │
+├──────────────────────────────┤
+│ ‹  2/3  Payment Details  ▾ › │  ← Step navigator
+│ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ │  ← Progress bar
+├──────────────────────────────┤
+│  [ Form content area ]       │
+├──────────────────────────────┤
+│ 📄  [ Previous ]  [ Next ]  │  ← Footer
+└──────────────────────────────┘
+```
+
+## Component Properties
+
+### `stepType`
+
+| Value | Description |
+|---|---|
+| `single` | One step only — no step navigator shown |
+| `multiple` | Multiple steps — step list/sidebar is shown |
+
+### `viewType`
+
+| Value | Breakpoint | Description |
+|---|---|---|
+| `small-modal` | Desktop | Narrow centred dialog (~480px wide) |
+| `medium-modal` | Desktop | Mid-width centred dialog (~640px wide) |
+| `large-modal` | Desktop | Wide centred dialog (~800px wide) |
+| `full-page-modal` | Desktop | Takes over the full viewport |
+| `Bottom Sheet` | Mobile | Sheet that slides up from the bottom |
+| `Full Page` | Mobile | Full-screen takeover |
+
+### `columnType` (full-page-modal only)
+
+| Value | Description |
+|---|---|
+| `full-width` | Content stretches to fill the content pane |
+| `narrow` | Content centred in a narrower column — better for dense forms |
+
+### `stepperType`
+
+| Value | Description |
+|---|---|
+| `none` | No stepper — rely on the step sidebar alone |
+| `progress-bar` | Blue linear progress bar appears directly under the header title |
+
+### `content`
+
+| Value | Description |
+|---|---|
+| `default` | Single content pane (form area only) |
+| `selection-cards` | Content area renders as a card-picker grid |
+| `right-asset` | Preview panel appears on the right (download + fullscreen controls) |
+| `left-asset` | Preview panel appears on the left; form is on the right |
+
+## Variant Matrix
+
+### Desktop — All Combinations
+
+| `stepType` | `viewType` | `columnType` | `stepperType` | `content` | Node ID |
+|---|---|---|---|---|---|
+| single | small-modal | full-width | none | default | `5:153508` |
+| single | small-modal | full-width | none | selection-cards | `141:150809` |
+| single | medium-modal | full-width | none | default | `5:153507` |
+| single | medium-modal | full-width | none | selection-cards | `141:151410` |
+| single | large-modal | full-width | none | default | `141:154120` |
+| single | large-modal | full-width | none | selection-cards | `141:154375` |
+| multiple | medium-modal | full-width | none | default | `141:152029` |
+| multiple | large-modal | full-width | none | default | `141:153129` |
+| multiple | large-modal | full-width | none | right-asset | `141:155461` |
+| multiple | full-page-modal | narrow | none | default | `5:153503` |
+| multiple | full-page-modal | narrow | progress-bar | default | `139:672568` |
+| multiple | full-page-modal | full-width | none | default | `5:153504` |
+| multiple | full-page-modal | full-width | progress-bar | default | `141:157564` |
+| multiple | full-page-modal | full-width | none | right-asset | `5:153506` |
+| multiple | full-page-modal | full-width | progress-bar | right-asset | `141:158563` |
+| multiple | full-page-modal | full-width | none | left-asset | `5:153505` |
+
+### Mobile — All Combinations
+
+| `viewType` | Node ID |
+|---|---|
+| Bottom Sheet | `5:152990` |
+| Full Page | `5:152989` |
+
+## Action Button Labels
+
+| Position | Single-step | Multi-step (first) | Multi-step (mid) | Multi-step (last) |
+|---|---|---|---|---|
+| Left | Secondary | Save and Close | Save and Close | Save and Close |
+| Centre-left | — | — | Previous | Previous |
+| Right | Primary | Next | Next | Submit / Finish |
+
+## Implementation Notes
+
+1. **Slot content is a placeholder** — Replace the `Slot Block` placeholder with actual form content, selection grids, or asset panels.
+2. **StepGroup steps are controlled externally** — The consuming screen owns the step state and passes it to `StepGroup`.
+3. **"Save and Close" is separate from "Next"** — Save and Close persists draft state and exits; Previous/Next navigates without saving.
+4. **Column width controls content centering** — `columnType=narrow` uses 320px horizontal padding. `columnType=full-width` expands edge-to-edge.
+5. **Mobile Bottom Sheet** — On mobile, the Bottom Sheet variant slides up from the bottom, replacing the full-page modal for multi-step flows.
+6. **Modal vs Full Page choice is structural** — Do not use a Large Modal as a substitute for the Full Page Modal on complex multi-step flows; StepGroup navigation is only available in the Full Page template.
+
 ## Example
 
 ### Single Step Creation Flow with Form and Preview

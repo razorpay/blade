@@ -1,5 +1,181 @@
 # @razorpay/blade-core
 
+## 0.16.0
+
+### Minor Changes
+
+- ec066cfee: update design tokens from Figma
+
+  Added 10 tokens and removed 0 tokens.
+
+### Patch Changes
+
+- 5cf3b248e: fix(blade-svelte): stabilize PhoneNumberInput country selector BottomSheet
+
+  Pin the country selector BottomSheet to fixed snap points so filtering the country list no longer resizes the sheet mid-search. Hide the country search field when only one country is available. Use desktop ActionList item padding (`spacing.3`) on all breakpoints for consistent list density.
+
+## 0.15.0
+
+### Minor Changes
+
+- a807ec77a: feat: add checkout studio story with style override playground
+
+  - Export slot metadata API (defineComponentSlots, BLADE_SLOT_METADATA) for style override introspection
+  - Add Card 'surface' slot for per-slot style overrides
+  - Fix AppBar z-index from 1000 to 100 so it no longer overlays modal surfaces like BottomSheet (default z-index 100)
+  - Fix Input focus-ring transition to animate outline-width only, avoiding black→blue color flash on focus
+
+## 0.14.1
+
+### Patch Changes
+
+- bb7fec430: Auto-generate `theme.css` from the bladeTheme token sources instead of hand-editing it. Adds `yarn generate:tokens-css` and a drift-guard test so `theme.css` can't silently fall out of sync with the token TS files. The token-upload CI pipeline now regenerates it automatically as part of every Figma token push.
+
+## 0.14.0
+
+### Minor Changes
+
+- 29ca5194c: feat: add `black` color variant to Button
+
+  fix: focus-ring transition and offset flash on inputs
+
+  fix: use `bladeTheme` as default Storybook theme in blade-svelte
+
+### Patch Changes
+
+- a98fed065: fix(Button): use `interactive.border.neutral.faded` for the neutral variant's focus ring instead of the shared blue ring used by primary/positive/negative
+
+  fix: correct several Button Storybook stories where Controls didn't drive the rendered output (hardcoded `asChild` demos, dead `variant`/`color` controls on loading-matrix stories)
+
+## 0.13.0
+
+### Minor Changes
+
+- 9edbd8f33: update design tokens from Figma
+
+  Added 32 tokens and removed 0 tokens.
+
+### Patch Changes
+
+- 9edbd8f33: feat(tokens): added a new token for svelte `onNeutral` in `interactive.text` & `interactive.icon` along with minor updates on neutral palette.
+
+## 0.12.1
+
+### Patch Changes
+
+- 73f7e9655: fix(Button): fade highlight overlay via opacity instead of toggling background-image, preventing flash on definite-loading end
+
+## 0.12.0
+
+### Minor Changes
+
+- 59f21bda8: feat(theme): add bladeNeutralTheme export for checkout in blade-core
+
+### Patch Changes
+
+- 2b2f8ec0e: fix(blade-svelte): constrain BottomSheet portalTarget to container bounds
+
+  Fixed BottomSheet `portalTarget` so backdrop and surface render inside the target container instead of escaping to the viewport. Adds portal root wrapper styles in blade-core that switch surface/backdrop from `position: fixed` to `position: absolute` when portaling into a bounded element.
+
+## 0.11.0
+
+### Minor Changes
+
+- 41ff76ed3: Remove unintended border and shadow on standalone ActionList in blade-svelte to match React web. Drop unused `getActionListBoxClasses`, `actionListBoxCva`, and `ActionListBoxVariants` exports from blade-core.
+
+### Patch Changes
+
+- 84923f364: fix: resolve avatar addon clipping by separating root positioning context from clipped body
+
+## 0.10.3
+
+### Patch Changes
+
+- bad271b0f: fix(TrustBadge): restore flat layout to fix icon and label vertical alignment within the pill
+
+## 0.10.2
+
+### Patch Changes
+
+- a5d2dc639: Added @layer blade cascade layer to theme.css so Tailwind utilities override Blade utility classes
+
+## 0.10.1
+
+### Patch Changes
+
+- 7ec4868c5: feat: reduce blade-svelte bundle size
+
+## 0.10.0
+
+### Minor Changes
+
+- b8e8c4687: feat(blade-svelte): add BladeProvider theme context and style overrides
+
+  Adds BladeProvider with theme context, color scheme management, and typography platform support for blade-svelte. Adds theme runtime utilities in blade-core (themeToCSSVariables, createTheme overrides, data-blade-color-scheme selectors), CSS cascade layers, component style override APIs, and button brand CSS vars.
+
+## 0.9.0
+
+### Minor Changes
+
+- 5a6fd8882: feat(blade-svelte): add `flexWrap` support to `RadioGroup`
+
+  `RadioGroup` now accepts a `flexWrap` prop (`'nowrap' | 'wrap' | 'wrap-reverse'`, default `'nowrap'`), mirroring `CheckboxGroup` and the React implementation. This is useful with `orientation="horizontal"` when radios (or radio-wrapped cards) should wrap onto multiple lines instead of overflowing.
+
+- 3c9addbe4: fix(TrustBadge): remove `emphasis` prop and align with Blade DSL trust marker design
+
+  The `emphasis` prop (`'subtle' | 'intense'`) and the `TrustBadgeEmphasis` type have been removed from TrustBadge. The new Blade DSL design uses a single sea-subtle pill treatment regardless of surface color. Migrate by removing any `emphasis` prop usage — the updated component renders correctly on all surfaces.
+
+  - `@razorpay/blade`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-svelte`: `emphasis` prop removed from `TrustBadgeProps`
+  - `@razorpay/blade-core`: `TrustBadgeEmphasis` type and `getTrustBadgePillEmphasisClass` removed; replaced by `getTrustBadgeVariantClass`
+
+### Patch Changes
+
+- e616a3de2: feat(blade-svelte): add CounterInput component
+- 7a7c21d09: feat(Card): add `ticket` and `info` card variants
+
+  Adds `TicketCard` and `InfoCard` with `Body` + `Footer` subcomponents.
+
+- bbe9e0034: feat(blade-svelte): add Tabs component
+- 73b15cea1: feat(blade-svelte): add SegmentedControl component
+- 21de8bc90: fix(Tabs): align small filled horizontal tab corner radius with Blade React
+
+  - TabList container: 16px → 8px (`border.radius.small`)
+  - TabItem: 12px → 4px (`border.radius.xsmall`, mirrors SegmentedControl item)
+  - TabIndicator: 12px → 4px (`border.radius.xsmall`, mirrors SegmentedControl indicator)
+  - Focus ring: 12px → 8px (`border.radius.small` — intentionally larger than item radius to prevent 4px box-shadow inset clipping, consistent with Blade React)
+
+- 361b0605d: fix(Card): refactor ticket card outline with SVG for accurate notch UI
+
+## 0.8.0
+
+### Minor Changes
+
+- adff0f113: feat(AnnouncementBanner): add AnnouncementBanner component to blade, blade-core, and blade-svelte
+- 75288e989: feat(AppBar, TrustBadge): add AppBar and TrustBadge components
+
+  TrustBadge renders the "Razorpay Trusted Business" trust marker; its label is configurable
+  via a `label` prop (default: "Razorpay Trusted Business") so it can evolve (e.g. "Razorpay
+  Verified") without a breaking API change. AppBar surfaces it through the `trustBadgeVariant`
+  prop on `AppBarLeading`.
+
+### Patch Changes
+
+- 0724d3d38: feat(blade-svelte): add ActionList component
+
+  Also fixes a React BaseMenu hover style: the hover background is now suppressed when `aria-selected=true` so a selected row's `fadedHighlighted` background is not overridden on pointer-enter. This intentional fix applies to all React `BaseMenu`-based consumers (ActionList, Select, etc.) and matches the expected selected-item UX.
+
+- ec73575f0: feat(blade-svelte): add Card variant prop with primary, secondary, and theme treatments
+- 7fe2a5a65: feat(blade-svelte): add Checkbox and CheckboxGroup components
+- db72ca068: feat(blade-svelte): add Input family (BaseInput, TextInput, SearchInput, OTPInput, PhoneNumberInput)
+- ee333ee75: feat(blade-svelte): add InputGroup component
+- 39f33f521: feat(blade-svelte): compose Accordion on Collapsible primitive and add CollapsibleText
+
+  - `AccordionItem` now wraps its content in `<Collapsible>` so expand/collapse animation, body `id`, and `role="region"` accessibility are owned by `CollapsibleBody` instead of duplicated in the Accordion.
+  - `AccordionItemHeader` reads the Collapsible context for toggle + `aria-controls`/`aria-expanded` and renders `<CollapsibleChevronIcon>` (chevron rotation now lives in `collapsible.module.css`).
+  - `AccordionItemBody` delegates animation to `<CollapsibleBody>` and only renders the body content + gray-body styling.
+  - Add `CollapsibleText` (text + chevron trigger, keyboard accessible) and accept `_dangerouslyDisableValidations` on `Collapsible` for API parity with React.
+
 ## 0.7.1
 
 ### Patch Changes

@@ -48,6 +48,7 @@ type TextInputCommonProps = Pick<
   | 'validationState'
   | 'validationTextPlacement'
   | 'helpText'
+  | 'showHelpTextOnFocus'
   | 'errorText'
   | 'successText'
   | 'placeholder'
@@ -79,6 +80,8 @@ type TextInputCommonProps = Pick<
   | 'hasPopup'
   | 'componentName'
   | 'onKeyDown'
+  | 'as'
+  | 'activeInteraction'
   | keyof DataAnalyticsAttribute
 > & {
   /**

@@ -75,7 +75,18 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding: 16px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -89,7 +100,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   align-items: center;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -101,7 +112,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding-right: 4px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -123,7 +134,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   z-index: 1;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -138,7 +149,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   justify-content: center;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   position: absolute;
   z-index: 0;
   right: 0px;
@@ -146,7 +157,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   left: 0px;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,7 +179,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   border-top-right-radius: 12px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   min-height: 32px;
   height: 32px;
   width: 32px;
@@ -205,24 +216,24 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   position: relative;
 }
 
-.c15.c15.c15.c15.c15:hover {
+.c16.c16.c16.c16.c16:hover {
   background-color: hsla(218,89%,51%,0.18);
   background-image: none;
 }
 
-.c15.c15.c15.c15.c15:active {
+.c16.c16.c16.c16.c16:active {
   background-color: hsla(218,89%,51%,0.18);
   background-image: none;
 }
 
-.c15.c15.c15.c15.c15:focus-visible {
+.c16.c16.c16.c16.c16:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   outline: 1px solid hsla(218,89%,51%,0.09);
   background-image: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c15.c15.c15.c15.c15 * {
+.c16.c16.c16.c16.c16 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 160ms;
@@ -231,7 +242,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -241,7 +252,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-timing-function: 160px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   color: hsla(0,0%,2%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -259,7 +270,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   padding: 0;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   color: hsla(4,85%,44%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -282,11 +293,11 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   overflow-wrap: break-word;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   opacity: 1;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -304,19 +315,19 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-duration: 80ms;
 }
 
-.c11.c11.c11.c11.c11 .content-container {
+.c12.c12.c12.c12.c12 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 4px;
 }
 
-.c11.c11.c11.c11.c11:focus-visible .content-container {
+.c12.c12.c12.c12.c12:focus-visible .content-container {
   outline: 4px solid hsla(218,89%,51%,0.18);
   outline-offset: 1px;
 }
 
-.c11.c11.c11.c11.c11 * {
+.c12.c12.c12.c12.c12 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -325,7 +336,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   transition-duration: 80ms;
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -616,67 +627,72 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
                   class="c10"
                   data-blade-component="base-box"
                 >
-                  <button
-                    aria-disabled="false"
+                  <div
                     class="c11"
-                    data-blade-component="link"
-                    role="button"
-                    type="button"
+                    data-blade-component="base-box"
                   >
-                    <span
-                      class="c12 content-container"
-                      data-blade-component="base-box"
+                    <button
+                      aria-disabled="false"
+                      class="c12"
+                      data-blade-component="link"
+                      role="button"
+                      type="button"
                     >
                       <span
-                        class="c13"
+                        class="c13 content-container"
                         data-blade-component="base-box"
                       >
-                        <svg
-                          aria-hidden="true"
-                          class="Svgweb__StyledSvg-vcmjs8-0"
-                          data-blade-component="icon"
-                          fill="none"
-                          height="12px"
-                          viewBox="0 0 24 24"
-                          width="12px"
+                        <span
+                          class="c14"
+                          data-blade-component="base-box"
                         >
-                          <path
-                            d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
-                            data-blade-component="svg-path"
-                            fill="hsla(0, 0%, 2%, 1)"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            class="Svgweb__StyledSvg-vcmjs8-0"
+                            data-blade-component="icon"
+                            fill="none"
+                            height="12px"
+                            viewBox="0 0 24 24"
+                            width="12px"
+                          >
+                            <path
+                              d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
+                              data-blade-component="svg-path"
+                              fill="hsla(0, 0%, 2%, 1)"
+                            />
+                          </svg>
+                        </span>
+                        <span
+                          class="c15"
+                          data-blade-component="base-text"
+                        >
+                          Upload file
+                        </span>
                       </span>
-                      <span
-                        class="c14"
-                        data-blade-component="base-text"
-                      >
-                        Upload file
-                      </span>
-                    </span>
-                  </button>
+                    </button>
+                  </div>
                   <div
                     class=""
                     data-blade-component="base-box"
                   >
                     <button
                       aria-label="Submit"
-                      class="c15"
+                      class="c16"
                       data-blade-component="button"
                       disabled=""
                       role="button"
                       type="button"
                     >
                       <div
-                        class=" c16"
+                        class=" c17"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c17 c18"
+                          class="c18 c19"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c19"
+                            class="c20"
                             data-blade-component="base-box"
                           >
                             <svg
@@ -707,11 +723,11 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
       </div>
     </div>
     <div
-      class="c20"
+      class="c21"
       data-blade-component="base-box"
     >
       <div
-        class="c21 c22"
+        class="c22 c23"
         data-blade-component="base-box"
         role="alert"
         style="opacity: 0;"
@@ -744,7 +760,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
           />
         </svg>
         <p
-          class="c23"
+          class="c24"
           data-blade-component="text"
           letter-spacing="50"
         />

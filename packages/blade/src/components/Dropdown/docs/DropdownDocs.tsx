@@ -59,7 +59,9 @@ const DropdownDocs = (): React.ReactElement => {
             <ListItemLink href="/?path=/docs/components-dropdown-actionlist-docs--docs">
               ActionList
             </ListItemLink>{' '}
-            - List of Actionable items inside Dropdown
+            - List of Actionable items inside Dropdown. It can also be a{' '}
+            <ListItemLink href="/?path=/docs/components-treeview--docs">TreeView</ListItemLink> when
+            the options are hierarchical
           </ListItem>
         </List>
         <ArgsTable

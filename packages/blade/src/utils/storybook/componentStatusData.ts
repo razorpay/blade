@@ -899,6 +899,22 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'TreeView',
+    description:
+      'TreeView renders a hierarchical list of expandable, selectable items. Works standalone or inside Dropdown in place of ActionList.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.115.0',
+        storybookLink: 'Components/TreeView',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'SideNav',
     description:
       'SideNav is a vertical navigation component that can be used to navigate between pages.',
@@ -1292,7 +1308,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'LineChart',
     description:
-      'A Line Chart component built on top of Recharts with Blade design system styling.',
+      'A Line Chart component built on top of Recharts with Blade design system styling. Supports a reference band (ChartReferenceBand) to compare a trend against an industry min-max range.',
     platform: 'web',
     frameworks: {
       react: {
@@ -1361,6 +1377,21 @@ const componentData: ComponentStatusDataType = [
         status: 'released',
         releasedIn: '12.65.1',
         storybookLink: 'Components/Pagination',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'FloatingActionButton',
+    description:
+      'FloatingActionButton is a persistent, elevated button anchored to the bottom of the viewport, used for the single most important action on a screen.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/FloatingActionButton',
       },
       svelte: {
         status: 'to-be-decided',
