@@ -172,7 +172,11 @@ export const CheckoutCardControlled: StoryFn<typeof TextInputComponent> = () => 
           Switch to GPay (DCC)
         </Button>
       </Box>
-      <Box backgroundColor="surface.background.gray.moderate" padding="spacing.4" borderRadius="medium">
+      <Box
+        backgroundColor="surface.background.gray.moderate"
+        padding="spacing.4"
+        borderRadius="medium"
+      >
         <Text>
           number: "{cardNumber}" · expiry: "{expiry}" · cvv: "{cvv}"
         </Text>

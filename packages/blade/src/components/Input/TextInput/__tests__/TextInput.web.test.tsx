@@ -734,9 +734,7 @@ describe('<TextInput /> formatted + uncontrolled value', () => {
     );
     const input = getByLabelText('Card');
     await userEvent.type(input, '4111');
-    expect(onChange).toHaveBeenLastCalledWith(
-      expect.objectContaining({ rawValue: '4111' }),
-    );
+    expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ rawValue: '4111' }));
   });
 
   it('respects maxLength derived from the format pattern', () => {
