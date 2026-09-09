@@ -84,28 +84,30 @@ export const useFormattedInput = ({
 
   const maxLength = useMemo(() => pattern?.length, [pattern]);
 
-  // Reset internal state when parent clears value (form resets, external state changes)
-  // Preserves format delimiters for visual guidance. Example: "(###)" → "(   )" when cleared
+  // In controlled mode the parent's `value` is the source of truth, so reconcile
+  // the display against it after EVERY change — not just when `value` changes.
+  // Depending on `internalValue` is what makes consumer sanitisation stick: when
+  // the parent strips a just-typed character (e.g. a letter in a digit-only card
+  // field), the sanitised value is byte-identical to the previous one, so a
+  // `value`-only effect never re-runs and the rejected character lingers on
+  // screen. Re-deriving here snaps the field back to exactly what the consumer
+  // stored (letter stripping, IIN truncation, programmatic prefill/reset —
+  // including DatePicker writing the value from the calendar).
   useEffect(() => {
-    if ((userValue === '' || userValue === undefined) && defaultValue === '') {
-      const emptyFormatted = format('', pattern ?? '');
-      setInternalValue(emptyFormatted);
-    }
-    // DATEPICKER FIX: Sync internal state when external value changes
-    // This addresses the issue where DatePicker programmatically updates the value prop
-    // (e.g., when user selects date from calendar), but the formatted input's internal
-    // state doesn't update, causing the input to not reflect the new value.
-    // Without this, only user typing and empty resets were handled.
-    if (userValue !== undefined && userValue !== '' && pattern) {
-      const rawValue = stripPatternCharacters(userValue);
-      const newFormatted = format(rawValue, pattern);
+    if (!pattern) return;
+    // Uncontrolled (`value` never supplied): keep the optimistic display so
+    // typing works without a parent feeding the value back.
+    if (userValue === undefined) return;
 
-      // Only update if the formatted value actually changed to avoid unnecessary re-renders
-      if (newFormatted !== internalValue) {
-        setInternalValue(newFormatted);
-      }
+    // Controlled: empty string resets to the formatted shell; otherwise reformat
+    // from the raw characters the consumer stored.
+    const expected =
+      userValue === '' ? format('', pattern) : format(stripPatternCharacters(userValue), pattern);
+
+    if (expected !== internalValue) {
+      setInternalValue(expected);
     }
-  }, [userValue, pattern]);
+  }, [userValue, pattern, internalValue]);
 
   // Apply calculated cursor position after value updates
   useEffect(() => {
