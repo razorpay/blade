@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 12.122.0
+
+### Minor Changes
+
+- ec066cfee: update design tokens from Figma
+
+  Added 10 tokens and removed 0 tokens.
+
+### Patch Changes
+
+- 1e8e987b3: fix(ActionList/Menu): vertically center `trailing` slot of items so that it aligns with the `title` and `leading` slot
+- 936678fd9: fix(SankeyChart): skip nodes and links with non-finite geometry so a node with no links no longer renders NaN SVG attributes
+
 ## 12.121.1
 
 ### Patch Changes

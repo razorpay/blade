@@ -1,5 +1,17 @@
 # @razorpay/blade-svelte
 
+## 0.15.1
+
+### Patch Changes
+
+- 5cf3b248e: fix(blade-svelte): stabilize PhoneNumberInput country selector BottomSheet
+
+  Pin the country selector BottomSheet to fixed snap points so filtering the country list no longer resizes the sheet mid-search. Hide the country search field when only one country is available. Use desktop ActionList item padding (`spacing.3`) on all breakpoints for consistent list density.
+
+- Updated dependencies [ec066cfee]
+- Updated dependencies [5cf3b248e]
+  - @razorpay/blade-core@0.16.0
+
 ## 0.15.0
 
 ### Minor Changes
