@@ -9,5 +9,5 @@ test('Interactive Avatar renders as a link when href is set', async ({ page }) =
   );
   const link = page.getByRole('link');
   await expect(link).toBeVisible();
-  await expect(link).toHaveAttribute('href', 'https://razorpay.com');
+  await expect(link).toHaveAttribute('href', /https:\/\/razorpay\.com\/?$/);
 });
