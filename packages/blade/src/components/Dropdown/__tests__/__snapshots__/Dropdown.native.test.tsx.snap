@@ -1322,11 +1322,19 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           />
                         </View>
                         <View
+                          alignItems="center"
                           data-blade-component="box"
+                          display="flex"
+                          justifyContent="center"
+                          minHeight="20px"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "justifyContent": "center",
                                 "marginLeft": "auto",
+                                "minHeight": 20,
                               },
                             ]
                           }
@@ -1501,11 +1509,19 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           />
                         </View>
                         <View
+                          alignItems="center"
                           data-blade-component="box"
+                          display="flex"
+                          justifyContent="center"
+                          minHeight="20px"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "justifyContent": "center",
                                 "marginLeft": "auto",
+                                "minHeight": 20,
                               },
                             ]
                           }
