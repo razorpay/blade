@@ -3,7 +3,9 @@ import { registerBrowserStackStatusReporter } from './reportStatus';
 
 registerBrowserStackStatusReporter(test);
 
-test('BottomSheet opens on trigger click, locks body scroll while open, and restores on dismiss', async ({ page }) => {
+test('BottomSheet opens on trigger click, locks body scroll while open, and restores on dismiss', async ({
+  page,
+}) => {
   await page.goto('iframe.html?id=components-bottomsheet--default');
 
   // The Default story renders enough Lorem Ipsum to make the page scrollable.
