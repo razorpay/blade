@@ -132,6 +132,7 @@ export type ColorBlueGrayLightScale = Readonly<{
   a909: string;
   a912: string;
   a918: string;
+  a924: string;
   a932: string;
   a964: string;
   a1072: string;
@@ -171,6 +172,7 @@ export type ColorBlueGrayDarkScale = Readonly<{
   a509: string;
   a512: string;
   a518: string;
+  a524: string;
   a532: string;
   a564: string;
   a572: string;
@@ -196,6 +198,12 @@ export type ColorNeutralStaticScale = Readonly<{
 }>;
 
 export type ColorNeutralSolidScale = Readonly<{
+  1: string;
+  5: string;
+  10: string;
+  25: string;
+  50: string;
+  100: string;
   200: string;
   300: string;
   400: string;
