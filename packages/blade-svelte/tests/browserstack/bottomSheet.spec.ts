@@ -3,16 +3,7 @@ import { registerBrowserStackStatusReporter } from './reportStatus';
 
 registerBrowserStackStatusReporter(test);
 
-test('BottomSheet opens on trigger click', async ({ page }) => {
-  await page.goto('iframe.html?id=components-bottomsheet--default');
-  const openButton = page.getByRole('button', { name: 'open' });
-  await openButton.click();
-
-  const sheet = page.getByRole('dialog');
-  await expect(sheet).toBeVisible();
-});
-
-test('BottomSheet locks body scroll while open and restores on dismiss', async ({ page }) => {
+test('BottomSheet opens on trigger click, locks body scroll while open, and restores on dismiss', async ({ page }) => {
   await page.goto('iframe.html?id=components-bottomsheet--default');
 
   // The Default story renders enough Lorem Ipsum to make the page scrollable.
@@ -20,8 +11,11 @@ test('BottomSheet locks body scroll while open and restores on dismiss', async (
   const scrollYBeforeOpen = await page.evaluate(() => window.scrollY);
 
   // Open the BottomSheet.
-  await page.getByRole('button', { name: 'open' }).click();
-  await expect(page.getByRole('dialog')).toBeVisible();
+  const openButton = page.getByRole('button', { name: 'open' });
+  await openButton.click();
+
+  const sheet = page.getByRole('dialog');
+  await expect(sheet).toBeVisible();
 
   // The scroll lock runs in an effect after the sheet content is measured,
   // so wait for the inline overflow style rather than checking synchronously.
