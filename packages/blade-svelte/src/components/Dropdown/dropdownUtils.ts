@@ -64,7 +64,7 @@ export function filterOptions(
 export function getActionFromKey(
   e: MouseEvent | KeyboardEvent,
   isOpen: boolean,
-  dropdownTriggerer: DropdownTriggerer,
+  _dropdownTriggerer: DropdownTriggerer,
 ): SelectActionsType | undefined {
   if (!e) {
     return undefined;

@@ -149,33 +149,34 @@ export function createDropdownController(state: DropdownControllerState): Dropdo
 
   const onTriggerKeydown = (payload: { event: KeyboardEvent }): void => {
     const { event } = payload;
-    if (
-      !state.getIsKeydownPressed() &&
-      ![' ', 'Enter', 'Escape', 'Meta'].includes(event.key)
-    ) {
+    if (!state.getIsKeydownPressed() && ![' ', 'Enter', 'Escape', 'Meta'].includes(event.key)) {
       state.setIsKeydownPressed(true);
     }
 
     const actionType = getActionFromKey(event, state.getIsOpen(), state.getDropdownTriggerer());
 
     if (actionType) {
-      performAction(actionType, { event }, {
-        setIsOpen: state.setIsOpen,
-        close: state.close,
-        onOptionChange,
-        onComboType,
-        selectCurrentOption: () => {
-          const activeIndex = state.getActiveIndex();
-          if (activeIndex < 0) {
-            return;
-          }
-          const isSelected = selectOption(activeIndex);
-          if (state.getHasFooterAction()) {
-            state.getTriggererEl()?.focus();
-          }
-          state.getOptions()[activeIndex]?.onClickTrigger?.(isSelected);
+      performAction(
+        actionType,
+        { event },
+        {
+          setIsOpen: state.setIsOpen,
+          close: state.close,
+          onOptionChange,
+          onComboType,
+          selectCurrentOption: () => {
+            const activeIndex = state.getActiveIndex();
+            if (activeIndex < 0) {
+              return;
+            }
+            const isSelected = selectOption(activeIndex);
+            if (state.getHasFooterAction()) {
+              state.getTriggererEl()?.focus();
+            }
+            state.getOptions()[activeIndex]?.onClickTrigger?.(isSelected);
+          },
         },
-      });
+      );
     }
   };
 

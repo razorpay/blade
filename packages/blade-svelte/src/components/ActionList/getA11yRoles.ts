@@ -24,9 +24,9 @@ const isRoleMenu = (dropdownTriggerer: DropdownTriggerer): boolean => {
  * overlay has footer actions, `menu` for menu triggers, else `listbox`.
  */
 export function getActionListContainerRole(
-  hasFooterAction: boolean = false,
+  hasFooterAction = false,
   dropdownTriggerer: DropdownTriggerer = undefined,
-  isInsideDropdown: boolean = false,
+  isInsideDropdown = false,
 ): 'dialog' | 'listbox' | 'menu' {
   if (!isInsideDropdown) {
     return 'listbox';
@@ -49,7 +49,7 @@ export function getActionListItemRole(
   dropdownTriggerer: DropdownTriggerer = undefined,
   href?: string,
   selectionType?: DropdownSelectionType,
-  isInsideDropdown: boolean = false,
+  isInsideDropdown = false,
 ): 'menuitem' | 'menuitemcheckbox' | 'option' | 'link' {
   if (href) {
     return 'link';
