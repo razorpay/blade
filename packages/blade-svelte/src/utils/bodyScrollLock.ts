@@ -46,8 +46,7 @@ let locks: Lock[] = [];
 /* Nested consumers can lock the same target more than once (a BottomSheet
  * effect re-running, a Modal inside a Modal); only the last unlock releases. */
 const lockCounts = new Map<HTMLElement, number>();
-let previousBodyOverflow: string | undefined;
-let previousBodyPaddingRight: string | undefined;
+let previousBodyOverflow: string | undefined, previousBodyPaddingRight: string | undefined;
 let touchListenersAdded = false;
 let initialClientY = -1;
 
