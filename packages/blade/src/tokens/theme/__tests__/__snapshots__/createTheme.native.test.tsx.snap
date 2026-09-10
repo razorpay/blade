@@ -344,8 +344,9 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "neutral": {
             "default": "hsla(0, 0%, 100%, 1)",
             "disabled": "hsla(0, 0%, 100%, 0.18)",
-            "faded": "hsla(207, 4%, 52%, 0.12)",
-            "fadedHighlighted": "hsla(207, 4%, 52%, 0.18)",
+            "disabledSolid": "hsla(210, 1%, 39%, 1)",
+            "faded": "hsla(207, 4%, 52%, 0.18)",
+            "fadedHighlighted": "hsla(207, 4%, 52%, 0.24)",
             "highlighted": "hsla(210, 0%, 89%, 1)",
           },
           "notice": {
@@ -1046,6 +1047,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "neutral": {
             "default": "hsla(0, 0%, 0%, 1)",
             "disabled": "hsla(0, 0%, 0%, 0.18)",
+            "disabledSolid": "hsla(0, 0%, 66%, 1)",
             "faded": "hsla(206, 10%, 29%, 0.12)",
             "fadedHighlighted": "hsla(206, 10%, 29%, 0.18)",
             "highlighted": "hsla(0, 0%, 12%, 1)",
@@ -2510,8 +2512,9 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           "neutral": {
             "default": "hsla(0, 0%, 100%, 1)",
             "disabled": "hsla(0, 0%, 100%, 0.18)",
-            "faded": "hsla(207, 4%, 52%, 0.12)",
-            "fadedHighlighted": "hsla(207, 4%, 52%, 0.18)",
+            "disabledSolid": "hsla(210, 1%, 39%, 1)",
+            "faded": "hsla(207, 4%, 52%, 0.18)",
+            "fadedHighlighted": "hsla(207, 4%, 52%, 0.24)",
             "highlighted": "hsla(210, 0%, 89%, 1)",
           },
           "notice": {
@@ -3212,6 +3215,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           "neutral": {
             "default": "hsla(0, 0%, 0%, 1)",
             "disabled": "hsla(0, 0%, 0%, 0.18)",
+            "disabledSolid": "hsla(0, 0%, 66%, 1)",
             "faded": "hsla(206, 10%, 29%, 0.12)",
             "fadedHighlighted": "hsla(206, 10%, 29%, 0.18)",
             "highlighted": "hsla(0, 0%, 12%, 1)",
