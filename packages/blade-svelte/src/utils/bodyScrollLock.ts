@@ -108,6 +108,7 @@ const handleTouchMove = (event: TouchEvent): void => {
   if (((isAtTop && deltaY > 0) || (isAtBottom && deltaY < 0)) && event.cancelable) {
     event.preventDefault();
   }
+  initialClientY = event.touches[0].clientY;
 };
 
 const addTouchListeners = (): void => {
