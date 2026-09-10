@@ -14,7 +14,7 @@ test('Checkbox toggles checked state, respects isDisabled, and shows indetermina
 }) => {
   // Multiple sequential page.goto() calls within a single mobile Safari SDK
   // session are slow/flaky on iPhone 15 Pro specifically — not reproduced on
-  // Android or desktop Safari. See MOBILE_TESTS_STATUS.md.
+  // Android or desktop Safari.
   test.skip(
     !!process.env.BROWSERSTACK_MOBILE,
     'Sequential page.goto() navigation times out on iPhone via BrowserStack mobile SDK',

@@ -44,7 +44,7 @@ The script outputs the full markdown report. Then:
 
 === Review Metric ===
 
-Note: exclude all comments by `changeset-bot`, `github-actions`, `codesandbox-ci` bots in all the metrics below as they are not applicable. PRs with the `Ignore - Test PR` label are excluded from all calculations.
+Note: exclude all comments by `changeset-bot`, `github-actions`, `codesandbox-ci`, `kamaleshs-bridge4`, and `slash-code-reviewer` bots in all the metrics below as they are not applicable. PRs with the `Ignore - Test PR` label are excluded from all calculations.
 
 | Metric                                      | Value                                         | Description of Metric                                                         |
 | ------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------- |

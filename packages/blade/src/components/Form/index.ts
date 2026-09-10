@@ -1,5 +1,7 @@
 export { FormHint } from './FormHint';
 export type { FormHintProps } from './FormHint';
+export { AnimatedFormHint } from './AnimatedFormHint';
+export type { AnimatedFormHintProps } from './AnimatedFormHint';
 export { FormLabel } from './FormLabel';
 export type { FormInputLabelProps } from './FormLabel';
 export type {

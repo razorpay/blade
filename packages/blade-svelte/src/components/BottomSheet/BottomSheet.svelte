@@ -1,11 +1,6 @@
 <script lang="ts">
-  import { onMount, untrack } from 'svelte';
+  import { onDestroy, onMount, untrack } from 'svelte';
   import { DragGesture, rubberbandIfOutOfBounds } from '@use-gesture/vanilla';
-  import {
-    disableBodyScroll,
-    enableBodyScroll,
-    clearAllBodyScrollLocks,
-  } from 'body-scroll-lock-upgrade';
   import {
     metaAttribute,
     MetaConstants,
@@ -34,6 +29,7 @@
   import BottomSheetBackdrop from './BottomSheetBackdrop.svelte';
   import { portal } from '../../utils/portal';
   import { observeResize } from '../../utils/observeResize';
+  import { lockBodyScroll, unlockBodyScroll } from '../../utils/bodyScrollLock';
 
   /* Anchor structural classes against the Rollup tree-shaker — CSS modules
    * export ESM objects whose unused individual exports otherwise get
@@ -291,29 +287,52 @@
     return undefined;
   });
 
-  /* Body scroll lock — defer to `body-scroll-lock-upgrade` so we get
-   * `reserveScrollBarGap: true` (no layout shift on Windows / non-overlay
-   * scrollbars) and proper iOS Safari momentum handling. Mirrors React's
-   * `useScrollLock({ targetRef: scrollRef, reserveScrollBarGap: true })`. */
+  /* Body scroll lock. Mirrors React's
+   * `useScrollLock({ targetRef: scrollRef, reserveScrollBarGap: true })`, but
+   * on our own lock (see utils/bodyScrollLock) rather than
+   * `body-scroll-lock-upgrade`, whose iOS branch loses the page's scroll
+   * position.
+   *
+   * Acquire at most once per open: `contentHeight` changes on every
+   * ResizeObserver tick, and a lock that is released and re-acquired on each
+   * of those ticks lets the page settle back into a scrollable state in
+   * between. */
+  let lockedScrollEl: HTMLElement | null = null;
+
+  function releaseScrollLock(): void {
+    if (!lockedScrollEl) return;
+    unlockBodyScroll(lockedScrollEl);
+    lockedScrollEl = null;
+  }
+
+  function acquireScrollLock(target: HTMLElement): void {
+    if (lockedScrollEl === target) return;
+    releaseScrollLock();
+    lockedScrollEl = target;
+    lockBodyScroll(target, {
+      reserveScrollBarGap: true,
+      /* Same escape hatch the drag handler honours, so nested scrollers keep
+       * working under the lock's touchmove interception. */
+      allowTouchMove: (el) => Boolean(el.closest('[data-allow-scroll]')),
+    });
+  }
+
   $effect(() => {
-    if (!scrollEl) return undefined;
     const target = scrollEl;
     const isReady = contentHeight > 0;
-    const shouldLock = isReady && stackArr.length > 0;
+    const shouldLock = target !== null && isReady && stackArr.length > 0;
     if (shouldLock) {
-      disableBodyScroll(target, { reserveScrollBarGap: true });
-      return () => enableBodyScroll(target);
+      acquireScrollLock(target);
+    } else {
+      releaseScrollLock();
     }
-    return undefined;
   });
 
-  /* Belt-and-braces: clear all body locks when the last sheet unmounts
-   * (matches React's `clearAllBodyScrollLocks()` cleanup). */
-  $effect(() => {
-    if (stackArr.length === 0 && typeof document !== 'undefined') {
-      clearAllBodyScrollLocks();
-    }
-  });
+  /* Release on teardown. Stacked sheets each hold a lock keyed by their own
+   * scroll element and the page is restored once the last one is released, so
+   * there is no blanket clear here — it would also drop the lock held by an
+   * enclosing Modal. */
+  onDestroy(releaseScrollLock);
 
   /* Track viewport height for snap-point math — use portal target height when
    * portaling into a bounded container (e.g. checkout phone frame). */

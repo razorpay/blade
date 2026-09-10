@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SankeyChart — rendering matches snapshot 1`] = `
 .c0.c0.c0.c0.c0 {
