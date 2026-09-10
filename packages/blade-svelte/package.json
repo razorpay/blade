@@ -67,7 +67,6 @@
     "@razorpay/blade-core": ">=0.16.0",
     "@razorpay/i18nify-js": "1.12.3",
     "@use-gesture/vanilla": "10.2.24",
-    "body-scroll-lock-upgrade": "1.1.0",
     "class-variance-authority": "^0.7.0"
   },
   "devDependencies": {
