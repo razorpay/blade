@@ -259,6 +259,7 @@
   --interactive-background-information-faded-highlighted: hsla(200, 100%, 41%, 0.18);
   --interactive-background-neutral-default: hsla(0, 0%, 0%, 1);
   --interactive-background-neutral-highlighted: hsla(0, 0%, 12%, 1);
+  --interactive-background-neutral-disabled-solid: hsla(0, 0%, 66%, 1);
   --interactive-background-neutral-disabled: hsla(0, 0%, 0%, 0.18);
   --interactive-background-neutral-faded: hsla(206, 10%, 29%, 0.12);
   --interactive-background-neutral-faded-highlighted: hsla(206, 10%, 29%, 0.18);
@@ -717,9 +718,10 @@
   --interactive-background-information-faded-highlighted: hsla(200, 100%, 41%, 0.32);
   --interactive-background-neutral-default: hsla(0, 0%, 100%, 1);
   --interactive-background-neutral-highlighted: hsla(210, 0%, 89%, 1);
+  --interactive-background-neutral-disabled-solid: hsla(210, 1%, 39%, 1);
   --interactive-background-neutral-disabled: hsla(0, 0%, 100%, 0.18);
-  --interactive-background-neutral-faded: hsla(207, 4%, 52%, 0.12);
-  --interactive-background-neutral-faded-highlighted: hsla(207, 4%, 52%, 0.18);
+  --interactive-background-neutral-faded: hsla(207, 4%, 52%, 0.18);
+  --interactive-background-neutral-faded-highlighted: hsla(207, 4%, 52%, 0.24);
   --interactive-background-gray-default: hsla(207, 4%, 52%, 0.12);
   --interactive-background-gray-highlighted: hsla(207, 4%, 52%, 0.32);
   --interactive-background-gray-disabled: hsla(207, 4%, 52%, 0.09);
@@ -1076,8 +1078,8 @@
   }
 }
 @layer blade {
-/* ===== UTILITY CLASSES ===== */
-/* These utility classes are used by components via getStyledPropsClasses */
+  /* ===== UTILITY CLASSES ===== */
+  /* These utility classes are used by components via getStyledPropsClasses */
 
   /* Display */
   .display-block {
