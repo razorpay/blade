@@ -105,7 +105,8 @@ const handleTouchMove = (event: TouchEvent): void => {
   const deltaY = event.touches[0].clientY - initialClientY;
   const isAtTop = scroller.scrollTop <= 0;
   const isAtBottom = scroller.scrollHeight - scroller.scrollTop <= scroller.clientHeight;
-  if (((isAtTop && deltaY > 0) || (isAtBottom && deltaY < 0)) && event.cancelable) {
+  const cannotScroll = isAtTop && isAtBottom;
+  if ((cannotScroll || (isAtTop && deltaY > 0) || (isAtBottom && deltaY < 0)) && event.cancelable) {
     event.preventDefault();
   }
   initialClientY = event.touches[0].clientY;
