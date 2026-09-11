@@ -192,11 +192,11 @@ const BaseAnimatedValue = ({
   const durationMs = theme.motion.duration[duration];
 
   /*
-   * The odometer needs two things: a number to drive the columns, and text whose digits line up
-   * with it. Children that are not plain text could be anything, so those swap instead.
+   * The odometer works off the text, since that is what it has to keep consistent — the number
+   * driving the columns is the one the text spells out, not the value it was formatted from.
+   * Children that are not plain text could be anything, so those swap instead.
    */
   const content = children ?? value;
-  const numericValue = toNumber(value);
   const parsed =
     typeof content === 'string' || typeof content === 'number'
       ? parseNumericText(String(content))
@@ -204,13 +204,8 @@ const BaseAnimatedValue = ({
 
   return (
     <Stack {...metaAttribute({ name: MetaConstants.AnimatedValue, testID })}>
-      {parsed && Number.isFinite(numericValue) ? (
-        <OdometerValue
-          value={numericValue}
-          text={String(content)}
-          parsed={parsed}
-          durationMs={durationMs}
-        />
+      {parsed ? (
+        <OdometerValue text={String(content)} parsed={parsed} durationMs={durationMs} />
       ) : (
         <SwappedValue value={value} direction={direction} durationMs={durationMs}>
           {content}

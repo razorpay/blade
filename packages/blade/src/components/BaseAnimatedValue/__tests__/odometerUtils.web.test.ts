@@ -47,6 +47,28 @@ describe('parseNumericText', () => {
     expect(parseNumericText('draft')).toBeNull();
     expect(parseNumericText('')).toBeNull();
   });
+
+  describe('the number the text spells out', () => {
+    it('should read the digits that are actually printed, not the value behind them', () => {
+      // `formatValue={(v) => `₹${v / 1000}k`}` prints ₹3k for 3000. Driving the column from
+      // 3000 lands it on 3000 % 10, which is why the indicator read ₹0k.
+      expect(parseNumericText('₹3k')?.value).toBe(3);
+    });
+
+    it('should ignore separators and units', () => {
+      expect(parseNumericText('₹1,200')?.value).toBe(1200);
+      expect(parseNumericText('50%')?.value).toBe(50);
+    });
+
+    it('should keep decimals exact rather than drifting through powers of ten', () => {
+      expect(parseNumericText('33.33')?.value).toBe(33.33);
+      expect(parseNumericText('99.99')?.value).toBe(99.99);
+    });
+
+    it('should take a leading minus as part of the number', () => {
+      expect(parseNumericText('-12')?.value).toBe(-12);
+    });
+  });
 });
 
 describe('getColumnPosition', () => {

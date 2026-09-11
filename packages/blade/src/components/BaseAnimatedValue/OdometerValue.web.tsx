@@ -96,17 +96,15 @@ const DigitColumn = ({
  * moves, and settle crisply when it stops.
  */
 const OdometerValue = ({
-  value,
   text,
   parsed,
   durationMs,
 }: {
-  value: number;
   text: string;
   parsed: ParsedNumber;
   durationMs: number;
 }): React.ReactElement => {
-  const target = useMotionValue(value);
+  const target = useMotionValue(parsed.value);
   /*
    * A spring rather than a tween, because the target here is not a destination so much as
    * something to chase. Re-aiming a tween on every change restarts its easing from a standstill,
@@ -123,8 +121,8 @@ const OdometerValue = ({
   const displayed = useSpring(target, { duration: durationMs, bounce: 0 });
 
   React.useEffect(() => {
-    target.set(value);
-  }, [value, target]);
+    target.set(parsed.value);
+  }, [parsed.value, target]);
 
   return (
     <Row>

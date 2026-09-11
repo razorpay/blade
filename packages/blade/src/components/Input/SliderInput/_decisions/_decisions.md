@@ -187,9 +187,10 @@ So the swap animates the whole value rather than individual digits: one behaviou
 correctly for a number and for a word, on Blade's existing motion system, with no new
 dependency. The trade is that it does not have NumberFlow's per-digit roll.
 
-`BaseAnimatedValue` takes the raw value and the formatted text separately. Direction comes from
-the raw value, so a `formatValue` that adds a unit or a currency still moves the right way
-instead of falling back to a cross-fade.
+`BaseAnimatedValue` takes the raw value and the formatted text separately. The raw value gives a
+swap its direction; the columns, though, are driven by the number the text itself spells out.
+A `formatValue` is free to rescale what it prints — `₹${value / 1000}k` shows `₹3k` for 3000 —
+and a column reading `3` that was driven from 3000 would land on `3000 % 10` and print `₹0k`.
 
 The roll runs on `moderate`, and is the one piece of motion here not tuned for keeping up.
 Everything else moves at `2xquick` because it is chasing a pointer or a held arrow key, but a

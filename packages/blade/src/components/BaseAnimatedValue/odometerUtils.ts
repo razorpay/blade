@@ -23,6 +23,14 @@ type ParsedNumber = {
   slots: Slot[];
   /** The smallest place present, which is the only column that rolls continuously. */
   lowestPlace: number;
+  /**
+   * The number the text itself spells out, which is what drives the columns.
+   *
+   * Deliberately not the value the text was formatted from. A `formatValue` is free to rescale
+   * what it prints — `₹${value / 1000}k` turns 3000 into `₹3k` — and driving a column that
+   * reads `3` from a value of 3000 lands it on `3000 % 10`, which is 0.
+   */
+  value: number;
 };
 
 /**
@@ -75,7 +83,18 @@ const parseNumericText = (text: string): ParsedNumber | null => {
         : { type: 'literal', char },
     );
 
-  return { slots, lowestPlace: Math.min(...Array.from(placeOf.values())) };
+  const lowestPlace = Math.min(...Array.from(placeOf.values()));
+
+  let magnitude = 0;
+  placeOf.forEach((place, index) => {
+    magnitude += Number(text[index]) * 10 ** place;
+  });
+  // Summing powers of ten drifts, and the columns compare against whole digits.
+  const rounded = Number(magnitude.toFixed(Math.max(0, -lowestPlace)));
+  // A minus belongs to the number even though it renders as a literal of its own.
+  const isNegative = text.slice(0, digitIndexes[0]).includes('-');
+
+  return { slots, lowestPlace, value: isNegative ? -rounded : rounded };
 };
 
 /**
