@@ -10,7 +10,12 @@ BarChart is a comprehensive data visualization component that renders interactiv
 
 ## Important Constraints
 
-- `ChartBarWrapper` component only accepts `ChartBar`, `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip`, `ChartLegend`, and `ChartReferenceLine` components as children.
+- `ChartBarWrapper` component only accepts `ChartBar`, `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip`, `ChartLegend`, `ChartReferenceLine`, and `ChartReferenceBand` components as children.
+- A reference band shows a min–max range behind the bars. Two ways to declare one, and they behave differently:
+  - `ChartReferenceBand` — one range for the whole chart, **always visible**, gets a legend swatch by default.
+  - `rangeLowerDataKey` + `rangeUpperDataKey` on `ChartBar` — a range per bar, **revealed only while that bar is hovered** (so several ranges in a grouped chart don't overlap into an unreadable wash), colour-matched to its bar, no legend swatch by default.
+- A band needs **both** range bound keys set. Only one is ignored — nothing renders.
+- Reference band values must be numeric and present on every row of `data`, under the keys named by the lower/upper props.
 - `data` prop is required and must be an array of objects with consistent data structure
 - `dataKey` prop is required for each `ChartBar` component and must correspond to a property in the data array
 - `stackId` must be consistent across all bars that should be stacked together
@@ -68,6 +73,59 @@ type ChartBarProps = Omit<RechartsBarProps, 'fill' | 'dataKey' | 'name' | 'label
    * The width of the bar in pixels.
    */
   barSize?: RechartsBarProps['barSize'];
+  /**
+   * Data key for the lower (min) bound of this bar's reference range.
+   * A band is drawn for this bar only when both rangeLowerDataKey and rangeUpperDataKey are set.
+   * The band is revealed while this bar is hovered.
+   */
+  rangeLowerDataKey?: string;
+  /**
+   * Data key for the upper (max) bound of this bar's reference range.
+   */
+  rangeUpperDataKey?: string;
+  /**
+   * Label shown for this bar's range in the legend and the tooltip.
+   * @default 'Industry range'
+   */
+  rangeName?: string;
+  /**
+   * Fill color of this bar's range band.
+   * @default the bar's own resolved color
+   */
+  rangeColor?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  /**
+   * Whether to show a legend swatch for this bar's range band.
+   * Off by default because the band is only on screen while its bar is hovered.
+   * @default false
+   */
+  showRangeLegend?: boolean;
+};
+
+type ChartReferenceBandProps = {
+  /**
+   * The data key for the lower (minimum) bound of the range.
+   * Each data row should hold a numeric value at this key.
+   */
+  lowerDataKey: string;
+  /**
+   * The data key for the upper (maximum) bound of the range.
+   */
+  upperDataKey: string;
+  /**
+   * The label shown for the range in the legend and the tooltip.
+   * @default 'Reference band'
+   */
+  name?: string;
+  /**
+   * The fill color of the range band.
+   * @default 'data.background.categorical.blue.faint'
+   */
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  /**
+   * Whether to show a legend entry for the range.
+   * @default true
+   */
+  showLegend?: boolean;
 };
 
 type data = {
@@ -209,6 +267,9 @@ type ChartReferenceLineProps = {
 - Use `stackId` on multiple `ChartBar` components to create stacked bars showing composition.
 - Use `layout="vertical"` for horizontal bars — remember to set `ChartXAxis type="number"` and `ChartYAxis type="category"`.
 - Use both categorical and sequential color tokens — BarChart supports both palettes unlike other charts.
+- Use `ChartReferenceBand` when there is **one** range the whole chart is measured against (e.g. a single success-rate series vs the industry percentile band).
+- Use the `range*` props on `ChartBar` when **each** bar has its own range (e.g. grouped bars per payment method, each with its own industry band).
+- Pass `formatter` to `ChartTooltip` when values carry a unit — it formats the bar's value and both range bounds, so the tooltip reads `62%` and `48%–70%`.
 
 **Don't**
 
@@ -216,6 +277,8 @@ type ChartReferenceLineProps = {
 - Don't use `BarChart` for proportional/percentage composition — use `DonutChart` instead.
 - Don't add `<Defs/>` elements — color and gradient handling is managed internally.
 - Don't forget to swap axis types when using `layout="vertical"`.
+- Don't set `showRangeLegend` on many grouped bars at once — the bands are hover-revealed one at a time, so a row of permanent swatches advertises ranges that aren't on screen.
+- Don't combine a chart-wide `ChartReferenceBand` with per-bar `range*` props on the same bar — the bar's own range wins and the chart-wide one is ignored for it.
 
 ## Example
 
@@ -263,6 +326,100 @@ const BasicBarChart = () => {
           dataKey="expenses"
           name="Expenses"
           color="data.background.categorical.gold.moderate"
+        />
+      </ChartBarWrapper>
+    </div>
+  );
+};
+```
+
+### BarChart with a Reference Band (one range for the whole chart)
+
+```tsx
+import React from 'react';
+import {
+  ChartBar,
+  ChartBarWrapper,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+  ChartReferenceBand,
+} from '@razorpay/blade/components';
+
+// `industryLow` / `industryHigh` are the industry's 25th and 75th percentile for that day.
+const successRateData = [
+  { period: 'Apr 1', successRate: 45, industryLow: 38, industryHigh: 58 },
+  { period: 'Apr 2', successRate: 52, industryLow: 42, industryHigh: 64 },
+  { period: 'Apr 3', successRate: 62, industryLow: 48, industryHigh: 70 },
+  { period: 'Apr 4', successRate: 70, industryLow: 52, industryHigh: 73 },
+];
+
+const SuccessRateVsIndustry = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <ChartBarWrapper data={successRateData}>
+        <ChartReferenceBand
+          lowerDataKey="industryLow"
+          upperDataKey="industryHigh"
+          name="Industry range"
+        />
+        <ChartXAxis dataKey="period" />
+        <ChartYAxis label="Success rate (%)" />
+        <ChartTooltip formatter={(value) => `${Number(value)}%`} />
+        <ChartLegend />
+        <ChartBar dataKey="successRate" name="Success rate" barSize={24} />
+      </ChartBarWrapper>
+    </div>
+  );
+};
+```
+
+### Grouped BarChart with a Reference Band per Bar
+
+Each bar declares its own range. The bands are revealed on hover, one at a time — hovering a bar
+also fades the other series and shades that category.
+
+```tsx
+import React from 'react';
+import {
+  ChartBar,
+  ChartBarWrapper,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+} from '@razorpay/blade/components';
+
+const methodData = [
+  { period: 'Apr 1', card: 54, cardLow: 42, cardHigh: 64, upi: 76, upiLow: 64, upiHigh: 86 },
+  { period: 'Apr 2', card: 57, cardLow: 45, cardHigh: 67, upi: 79, upiLow: 67, upiHigh: 89 },
+  { period: 'Apr 3', card: 50, cardLow: 38, cardHigh: 60, upi: 72, upiLow: 60, upiHigh: 82 },
+];
+
+const SuccessRateByMethod = () => {
+  return (
+    <div style={{ width: '100%', height: '400px' }}>
+      <ChartBarWrapper data={methodData}>
+        <ChartXAxis dataKey="period" />
+        <ChartYAxis label="Success rate (%)" />
+        <ChartTooltip formatter={(value) => `${Number(value)}%`} />
+        <ChartLegend />
+        <ChartBar
+          dataKey="card"
+          name="Card"
+          color="data.background.categorical.purple.moderate"
+          rangeLowerDataKey="cardLow"
+          rangeUpperDataKey="cardHigh"
+          rangeName="Card industry range"
+        />
+        <ChartBar
+          dataKey="upi"
+          name="UPI"
+          color="data.background.categorical.blue.moderate"
+          rangeLowerDataKey="upiLow"
+          rangeUpperDataKey="upiHigh"
+          rangeName="UPI industry range"
         />
       </ChartBarWrapper>
     </div>

@@ -427,6 +427,34 @@ import {
 
 - Apart from this we would be exposing all the event handlers provided by recharts like `onCopy`, `onCopyCapture`, `onCut`, `onDrag` , `onMouseUp` , `onMouseDown` etc.
 
+#### Per-bar reference range (Industry SR)
+
+A bar can be measured against a min–max range for the same category — the industry's percentile
+band for that period. In a grouped chart every bar can carry its own range, so the ranges are
+revealed **on hover, one at a time**: several translucent bands behind opaque grouped bars read as
+mush, and only the hovered bar's range is being asked about.
+
+| Prop (on `ChartBar`) | Type      | Default            | Description                                              |
+| -------------------- | --------- | ------------------ | -------------------------------------------------------- |
+| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set  |
+| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                    |
+| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range              |
+| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour         |
+| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only    |
+
+- Hovering a bar fades the other series and shades the hovered category, so the revealed band reads
+  against its own bar. The **tooltip** shows the bar's value plus a `low–high` range row — for a
+  standalone band too, not just per-bar ranges. Pass `formatter` to `ChartTooltip` to add units; it
+  formats the value and both range bounds (`62%`, `48%–70%`).
+- Use a standalone `<ChartReferenceBand>` instead when there is a single range for the whole chart
+  (the unfiltered case) — that one is always visible and gets a legend swatch by default.
+- **Geometry:** the range's **y** comes from two invisible bound series so it folds into the
+  y-domain and a band taller than the bars is never clipped. Its **x** is re-anchored to the owning
+  series' bar centres, read from the rendered bar rects — a bound series sits at the *category*
+  centre, which would stack every band on the same x in a grouped chart. Edges are straight chords
+  (a bar chart has no trend curve to follow) flat-extended to both plot edges. See
+  _Bar Chart with Reference Band_ and _Grouped Bar Chart with Multiple Reference Bands_ stories.
+
 > **Colors** : In case of Bar Charts We would be handling both Categorical and Sequential color. Also there will be a limit on Sequential Colors.
 > For that, best would be to have an internal check how many colors are already used.
 
@@ -660,9 +688,11 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
 > **Component Re-exports:** Components like ResponsiveContainer, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid , XAxis, YAxis we won't allow styling (i.e we won't be exposing props like stroke , strokeWidth , strokeDasharray, tick, tickLine and axisLine).
 
-#### 3.8.2\. ReferenceBand Component (LineChart)
+#### 3.8.2\. ReferenceBand Component (LineChart, BarChart)
 
-`ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line can be compared against the range other series fall in.
+`ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line or a bar can be compared against the range other series fall in.
+
+> **Export scope:** the band renders in the two chart wrappers that have a band layer — `ChartLineWrapper` (`useReferenceBand`) and `ChartBarWrapper` (`useBarReferenceBand`). It is exported from the shared `CommonChartComponents` barrel only. Do **not** also re-export it from a chart module: `Charts/index.ts` star-exports every chart module plus `CommonChartComponents`, so a second export of the same name trips eslint `import/export` ("Multiple exports of name 'ChartReferenceBand'") even though TypeScript accepts it. Inside an `AreaChart` it still silently renders invisible bound lines with no visible band, so if it is ever scoped out of the shared barrel it must be re-exported from **both** `LineChart` and `BarChart` — and the shared barrel's export removed in the same change.
 
 | Prop           | Type                                                       | Required | Default                | Description                                  |
 | -------------- | ---------------------------------------------------------- | -------- | ---------------------- | -------------------------------------------- |
