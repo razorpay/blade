@@ -48,7 +48,8 @@ describe('<Box />', () => {
     });
 
     const box = screen.getByTestId('box');
-    expect(box).toHaveStyle({ '--cols': '3', color: 'red' });
+    expect(box.style.getPropertyValue('--cols')).toBe('3');
+    expect(box.style.color).toBe('red');
   });
 
   it('sets the data-testid meta attribute from testID', () => {

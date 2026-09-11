@@ -14,20 +14,9 @@ import type { HTMLAttributes } from 'svelte/elements';
  * full-featured Blade components instead.
  */
 export type BoxAs =
-  | 'div'
-  | 'section'
-  | 'footer'
-  | 'header'
-  | 'main'
-  | 'aside'
-  | 'nav'
-  | 'span'
-  | 'label';
+  'div' | 'section' | 'footer' | 'header' | 'main' | 'aside' | 'nav' | 'span' | 'label';
 
-export type BoxProps = Omit<
-  HTMLAttributes<HTMLElement>,
-  'class' | 'children' | 'this'
-> & {
+export type BoxProps = Omit<HTMLAttributes<HTMLElement>, 'class' | 'children' | 'this'> & {
   /**
    * Element/tag Box renders as.
    *
