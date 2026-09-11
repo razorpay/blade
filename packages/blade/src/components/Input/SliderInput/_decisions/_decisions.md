@@ -223,3 +223,15 @@ left out rather than shipped as a lookalike that drifts from the web behaviour.
 - RTL uses logical properties throughout and the pointer maths reads the computed direction so
   the two cannot disagree, but Blade has no RTL infrastructure to test against and no RTL
   support is claimed.
+
+- `prefers-reduced-motion` is not handled, deliberately and for now. Nothing in Blade handles
+  it — the setting appears nowhere in the source — and the decision is to address it across the
+  system at once rather than one component at a time.
+
+  Worth flagging that the usual justification is weaker here than where it was first written.
+  `BaseInput` could reasonably defer it because it barely moves. This component eases the thumb
+  and the fill, fades and lifts the indicator, and rolls the digits from a spring that runs
+  whenever the value does. None of it flashes or plays on its own, so it is WCAG 2.3.3 at AAA
+  rather than a blocker, but a spinning odometer is close to the centre of what the setting
+  exists to switch off. Whenever the system-wide pass happens, this component is the one to
+  check first.
