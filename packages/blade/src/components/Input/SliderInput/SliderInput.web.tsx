@@ -343,6 +343,7 @@ const _SliderInput = (
                   centeringTransform={centeringTransform}
                   isVisible={isHighlighted && !isDisabled}
                   isScrubbing={isScrubbing}
+                  value={currentValue}
                 >
                   {format(currentValue)}
                 </SliderValueIndicator>

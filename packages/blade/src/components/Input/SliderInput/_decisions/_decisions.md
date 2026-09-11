@@ -171,6 +171,26 @@ the focus the browser would otherwise move, which would leave the keyboard dead 
 tabbed in separately. The ring itself still only appears for `:focus-visible`, so it stays
 hidden during mouse use.
 
+## The value indicator animates its number
+
+The number in the indicator swaps with `BaseAnimatedValue` rather than being replaced outright,
+so a rising value visibly rises.
+
+The reference for this was [NumberFlow](https://number-flow.barvian.me/), which was not used.
+It renders through a custom element with declarative shadow DOM, so it is web-only where every
+other Blade component is cross-platform; it would be a new runtime dependency; and its own
+documentation rules out RTL locales and non-Latin digits, which this component is deliberately
+positioned not to block. It is also numbers-only, and the indicator is expected to hold
+arbitrary text later.
+
+So the swap animates the whole value rather than individual digits: one behaviour that reads
+correctly for a number and for a word, on Blade's existing motion system, with no new
+dependency. The trade is that it does not have NumberFlow's per-digit roll.
+
+`BaseAnimatedValue` takes the raw value and the formatted text separately. Direction comes from
+the raw value, so a `formatValue` that adds a unit or a currency still moves the right way
+instead of falling back to a cross-fade.
+
 ## Not on React Native
 
 The mask compositing that draws the markers has no equivalent in React Native's style system.

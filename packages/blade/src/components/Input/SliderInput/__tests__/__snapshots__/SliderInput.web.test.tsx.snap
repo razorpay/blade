@@ -142,6 +142,18 @@ exports[`<SliderInput /> should render a slider 1`] = `
   min-width: 1003px;
 }
 
+.c17.c17.c17.c17.c17 {
+  display: inline-block;
+}
+
+.c16.c16.c16.c16.c16 {
+  display: inline-grid;
+}
+
+.c16.c16.c16.c16.c16 > * {
+  grid-area: 1 / 1;
+}
+
 .c14.c14.c14.c14.c14 {
   position: absolute;
   bottom: 22px;
@@ -331,7 +343,18 @@ exports[`<SliderInput /> should render a slider 1`] = `
                 data-blade-component="text"
                 letter-spacing="50"
               >
-                0
+                <span
+                  class="c16"
+                  data-blade-component="animated-value"
+                >
+                  <span
+                    class="c17"
+                    display="inline-block"
+                    style="opacity: 1; transform: none;"
+                  >
+                    0
+                  </span>
+                </span>
               </p>
             </div>
           </div>
@@ -421,7 +444,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   padding: 0;
 }
 
-.c18.c18.c18.c18.c18 {
+.c20.c20.c20.c20.c20 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -504,6 +527,18 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   -ms-flex: 1;
   flex: 1;
   min-width: 79px;
+}
+
+.c17.c17.c17.c17.c17 {
+  display: inline-block;
+}
+
+.c16.c16.c16.c16.c16 {
+  display: inline-grid;
+}
+
+.c16.c16.c16.c16.c16 > * {
+  grid-area: 1 / 1;
 }
 
 .c14.c14.c14.c14.c14 {
@@ -593,14 +628,14 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16 {
+.c18.c18.c18.c18.c18 {
   position: absolute;
   inset-inline: 0;
   top: 24px;
   pointer-events: none;
 }
 
-.c17.c17.c17.c17.c17 {
+.c19.c19.c19.c19.c19 {
   position: absolute;
   white-space: nowrap;
 }
@@ -707,20 +742,31 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
                 data-blade-component="text"
                 letter-spacing="50"
               >
-                16
+                <span
+                  class="c16"
+                  data-blade-component="animated-value"
+                >
+                  <span
+                    class="c17"
+                    display="inline-block"
+                    style="opacity: 1; transform: none;"
+                  >
+                    16
+                  </span>
+                </span>
               </p>
             </div>
           </div>
           <div
             aria-hidden="true"
-            class="c16"
+            class="c18"
           >
             <div
-              class="c17"
+              class="c19"
               style="inset-inline-start: calc(1.5px + 0 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c18"
+                class="c20"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -728,11 +774,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c17"
+              class="c19"
               style="inset-inline-start: calc(1.5px + 0.2 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c18"
+                class="c20"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -740,11 +786,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c17"
+              class="c19"
               style="inset-inline-start: calc(1.5px + 0.4 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c18"
+                class="c20"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -752,11 +798,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c17"
+              class="c19"
               style="inset-inline-start: calc(1.5px + 0.6 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c18"
+                class="c20"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -764,11 +810,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c17"
+              class="c19"
               style="inset-inline-start: calc(1.5px + 0.8 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c18"
+                class="c20"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -776,11 +822,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c17"
+              class="c19"
               style="inset-inline-start: calc(1.5px + 1 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c18"
+                class="c20"
                 data-blade-component="text"
                 letter-spacing="50"
               >

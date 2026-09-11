@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseAnimatedValue /> should match snapshot 1`] = `
+.c1.c1.c1.c1.c1 {
+  display: inline-block;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: inline-grid;
+}
+
+.c0.c0.c0.c0.c0 > * {
+  grid-area: 1 / 1;
+}
+
+<div>
+  <span
+    class="c0"
+    data-blade-component="animated-value"
+  >
+    <span
+      class="c1"
+      display="inline-block"
+      style="opacity: 1; transform: none;"
+    >
+      7
+    </span>
+  </span>
+</div>
+`;

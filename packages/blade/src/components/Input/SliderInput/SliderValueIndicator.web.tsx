@@ -7,11 +7,15 @@ import {
   SLIDER_INDICATOR_RISE,
 } from './sliderInputTokens';
 import { Text } from '~components/Typography';
+import { BaseAnimatedValue } from '~components/BaseAnimatedValue';
 import { makeSize, makeSpace, makeMotionTime } from '~utils';
 import get from '~utils/lodashButBetter/get';
 
 type SliderValueIndicatorProps = {
+  /** The formatted text to show. */
   children: string;
+  /** The raw value behind that text, which gives the swap its direction. */
+  value: number;
   /** CSS length of the thumb centre from the track's inline start. */
   offset: string;
   /** Flips with direction, since `inset-inline-start` resolves to `right` under RTL. */
@@ -73,6 +77,7 @@ const IndicatorAnchor = styled.div<{ $isVisible: boolean; $isScrubbing: boolean 
 
 const SliderValueIndicator = ({
   children,
+  value,
   offset,
   centeringTransform,
   isVisible,
@@ -91,7 +96,11 @@ const SliderValueIndicator = ({
       aria-hidden={true}
     >
       <Text size="xsmall" weight="regular" color={sliderInputColors.indicator.text}>
-        {children}
+        {/*
+         * Keyed on the raw value rather than the formatted string, so a custom `formatValue`
+         * that adds a unit or a currency still moves in the direction the value went.
+         */}
+        <BaseAnimatedValue value={value}>{children}</BaseAnimatedValue>
       </Text>
     </IndicatorAnchor>
   );
