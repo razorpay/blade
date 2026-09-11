@@ -155,6 +155,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   right: 0px;
   bottom: calc(100% - 12px);
   left: 0px;
+  pointer-events: none;
 }
 
 .c22.c22.c22.c22.c22 {
@@ -568,6 +569,36 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
   z-index: 2;
 }
 
+@media screen and (min-width:320px) {
+  .c21.c21.c21.c21.c21 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c21.c21.c21.c21.c21 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c21.c21.c21.c21.c21 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c21.c21.c21.c21.c21 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c21.c21.c21.c21.c21 {
+    pointer-events: none;
+  }
+}
+
 <div>
   <div
     class="c0"
@@ -725,6 +756,7 @@ exports[`<ChatInput /> should render ChatInput 1`] = `
     <div
       class="c21"
       data-blade-component="base-box"
+      pointer-events="none"
     >
       <div
         class="c22 c23"
