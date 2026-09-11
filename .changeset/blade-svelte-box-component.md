@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade-svelte": minor
+'@razorpay/blade-svelte': minor
 ---
 
 feat(blade-svelte): add Box component with className passthrough
