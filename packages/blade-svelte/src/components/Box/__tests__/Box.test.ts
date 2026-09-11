@@ -42,6 +42,15 @@ describe('<Box />', () => {
     expect(box).toHaveAttribute('aria-label', 'Summary');
   });
 
+  it('forwards style prop (including CSS custom properties) to the underlying element', () => {
+    render(Box, {
+      props: { testID: 'box', style: { '--cols': '3', color: 'red' } },
+    });
+
+    const box = screen.getByTestId('box');
+    expect(box).toHaveStyle({ '--cols': '3', color: 'red' });
+  });
+
   it('sets the data-testid meta attribute from testID', () => {
     render(Box, { props: { testID: 'my-box' } });
     expect(screen.getByTestId('my-box')).toBeInTheDocument();
