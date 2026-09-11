@@ -3,6 +3,7 @@ export const componentZIndices = {
   fab: 99, // should be behind bottomNav and bottomSheet, which are allowed to cover it
   bottomSheet: 100,
   bottomNav: 100, // should be behind drawer since sidenav opens in drawer in mobile
+  bottomBar: 100, // distinct from bottomNav for semantic clarity and independent future adjustability
   modal: 1000,
   drawer: 1001,
   dropdownOverlay: 1002,
