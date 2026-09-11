@@ -39,8 +39,10 @@ const TrackLayer = styled.div<{ $isScrubbing: boolean }>`
   inset: 0;
   border-radius: ${({ theme }) => makeSize(theme.border.radius.max)};
   mask-repeat: no-repeat;
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Safari needs the prefixed property */
   -webkit-mask-repeat: no-repeat;
   /* The WebKit keyword has to come first so the standard property wins where both parse. */
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Safari uses a different composite keyword */
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 
