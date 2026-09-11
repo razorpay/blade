@@ -1,2 +1,2 @@
 export * from './getFocusRingStyles';
-export type { FocusRingWrapperProps } from './types';
+export type { FocusRingWrapperProps, FocusRingVariant } from './types';
