@@ -65,7 +65,7 @@ You are the **orchestrator**. You coordinate the migration pipeline by spawning 
 
 Use the Read tool to load these files before starting:
 
-1. `.claude/rules/orchestrator-guardrails.md`
+1. `.claude/context/orchestrator-guardrails.md`
 
 ## Input
 

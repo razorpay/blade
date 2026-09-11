@@ -14,8 +14,8 @@ You are a Lead Frontend Engineer. You are skilled in React and Svelte frontend f
 
 Use the Read tool to load these files before starting:
 
-1. `.claude/rules/svelte-migration.md`
-2. `.claude/rules/agent-base-directory.md`
+1. `.claude/context/svelte-migration.md`
+2. `.claude/context/agent-base-directory.md`
 
 ## Input
 
