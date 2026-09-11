@@ -2,17 +2,12 @@ import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 
 export type BoxAs =
-  | 'div'
-  | 'section'
-  | 'footer'
-  | 'header'
-  | 'main'
-  | 'aside'
-  | 'nav'
-  | 'span'
-  | 'label';
+  'div' | 'section' | 'footer' | 'header' | 'main' | 'aside' | 'nav' | 'span' | 'label';
 
-export type BoxProps = Omit<HTMLAttributes<HTMLElement>, 'class' | 'children' | 'style' | 'this'> & {
+export type BoxProps = Omit<
+  HTMLAttributes<HTMLElement>,
+  'class' | 'children' | 'style' | 'this'
+> & {
   /**
    * Element/tag Box renders as.
    *
