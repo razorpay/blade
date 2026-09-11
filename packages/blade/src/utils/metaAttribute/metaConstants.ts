@@ -80,6 +80,8 @@ export const MetaConstants = {
   OTPInput: 'otp-input',
   PasswordInput: 'password-input',
   SearchInput: 'search-input',
+  SliderInput: 'slider-input',
+  AnimatedValue: 'animated-value',
   TextArea: 'textarea',
   TextInput: 'textinput',
   PhoneNumberInput: 'phone-number-input',
