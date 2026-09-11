@@ -307,7 +307,11 @@ describe('<SliderInput />', () => {
     const { container } = renderWithTheme(<SliderInput label="Volume" defaultValue={50} />);
     const indicator = container.querySelector('[aria-hidden="true"]');
 
-    expect(indicator).toHaveTextContent('50');
+    // The number rolls, so every digit is present in each column. The value itself is stated
+    // once, on the node that assistive technology reads.
+    expect(indicator?.querySelector('[data-blade-component="visually-hidden"]')).toHaveTextContent(
+      '50',
+    );
     const { paddingTop, paddingRight, paddingBottom, paddingLeft } = getComputedStyle(
       indicator as Element,
     );

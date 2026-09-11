@@ -5,6 +5,8 @@ import { AnimatePresence } from 'framer-motion';
 // variant, which is the whole mechanism the exit direction relies on below.
 import type { Variants } from 'framer-motion';
 import type { BaseAnimatedValueProps, AnimatedValueDirection } from './types';
+import { OdometerValue } from './OdometerValue';
+import { parseNumericText } from './odometerUtils';
 import { MotionDiv } from '~components/BaseMotion';
 import { castWebType, useTheme } from '~utils';
 import { cssBezierToArray } from '~utils/cssBezierToArray';
@@ -60,32 +62,25 @@ const Stack = styled.span`
 `;
 
 /**
- * Animates a change of content: the outgoing value leaves and the incoming one arrives from
- * the opposite side, so a rising number reads as rising.
+ * Replaces the whole content, moving it in the direction the value went.
  *
- * Private on purpose. It is general enough to move beyond its first consumer, but it should
- * earn a public API on the back of a second one rather than ahead of it.
- *
- * Only isolated changes are animated. A value that changes again before the previous swap has
- * finished is written straight into place instead, because a roll is only legible when there
- * is time to read it: a slider being dragged can change fifty times a second, and animating
- * each one leaves a stack of half-faded copies that never resolves into a number. Coarse
- * changes — a keyboard step, a click, a slider whose steps are far apart — still roll.
- *
- * Presentational only: it renders whatever it is given and takes no view on how that content
- * is announced. During a swap both copies are briefly in the DOM, so a consumer that needs
- * this read out should own the accessible name itself and keep this subtree hidden from
- * assistive technology. `SliderInput` does exactly that, announcing through `aria-valuetext`.
+ * Used for anything the odometer cannot roll — words, or a value with no digits in it. Only
+ * isolated changes animate: content that changes again before the previous swap has finished
+ * is written straight into place, because a swap has to complete before the next can start and
+ * stacking them leaves a pile of half-faded copies that never resolves into anything readable.
  */
-const BaseAnimatedValue = ({
+const SwappedValue = ({
   value,
   children,
   direction,
-  duration = 'moderate',
-  testID,
-}: BaseAnimatedValueProps): React.ReactElement => {
+  durationMs,
+}: {
+  value: string | number;
+  children: React.ReactNode;
+  direction?: AnimatedValueDirection;
+  durationMs: number;
+}): React.ReactElement => {
   const { theme } = useTheme();
-  const durationMs = theme.motion.duration[duration];
 
   /**
    * `key` is what drives the swap, so holding it still is how a change is written in place
@@ -94,7 +89,7 @@ const BaseAnimatedValue = ({
    */
   const [swap, setSwap] = React.useState(() => ({
     key: String(value),
-    shown: value as string | number,
+    shown: value,
     from: undefined as string | number | undefined,
     at: 0,
   }));
@@ -152,23 +147,75 @@ const BaseAnimatedValue = ({
   };
 
   return (
+    // `initial={false}` so the very first render lands without animating in from nowhere.
+    <AnimatePresence initial={false} custom={travel}>
+      <MotionDiv
+        key={swap.key}
+        // Inline for the same reason as the wrapper above.
+        as="span"
+        display="inline-block"
+        custom={travel}
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        {children}
+      </MotionDiv>
+    </AnimatePresence>
+  );
+};
+
+/**
+ * Animates a change of content.
+ *
+ * Numbers roll their digits, driven continuously from the value itself, so they keep animating
+ * however fast the value moves — a slider being dragged included. Anything without a digit in
+ * it, a word or a label, swaps as a whole instead, travelling in the direction the value went.
+ *
+ * Private on purpose. It is general enough to move beyond its first consumer, but it should
+ * earn a public API on the back of a second one rather than ahead of it.
+ *
+ * Presentational only: it renders whatever it is given and takes no view on how that content
+ * is announced. A rolling number is a column of every digit, so a consumer that needs this read
+ * out should own the accessible name itself and keep this subtree hidden from assistive
+ * technology. `SliderInput` does exactly that, announcing through `aria-valuetext`.
+ */
+const BaseAnimatedValue = ({
+  value,
+  children,
+  direction,
+  duration = 'moderate',
+  testID,
+}: BaseAnimatedValueProps): React.ReactElement => {
+  const { theme } = useTheme();
+  const durationMs = theme.motion.duration[duration];
+
+  /*
+   * The odometer needs two things: a number to drive the columns, and text whose digits line up
+   * with it. Children that are not plain text could be anything, so those swap instead.
+   */
+  const content = children ?? value;
+  const numericValue = toNumber(value);
+  const parsed =
+    typeof content === 'string' || typeof content === 'number'
+      ? parseNumericText(String(content))
+      : null;
+
+  return (
     <Stack {...metaAttribute({ name: MetaConstants.AnimatedValue, testID })}>
-      {/* `initial={false}` so the very first render lands without animating in from nowhere. */}
-      <AnimatePresence initial={false} custom={travel}>
-        <MotionDiv
-          key={swap.key}
-          // Inline for the same reason as the wrapper above.
-          as="span"
-          display="inline-block"
-          custom={travel}
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          {children ?? value}
-        </MotionDiv>
-      </AnimatePresence>
+      {parsed && Number.isFinite(numericValue) ? (
+        <OdometerValue
+          value={numericValue}
+          text={String(content)}
+          parsed={parsed}
+          durationMs={durationMs}
+        />
+      ) : (
+        <SwappedValue value={value} direction={direction} durationMs={durationMs}>
+          {content}
+        </SwappedValue>
+      )}
     </Stack>
   );
 };

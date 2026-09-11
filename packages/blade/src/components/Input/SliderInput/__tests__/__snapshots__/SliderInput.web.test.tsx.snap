@@ -142,8 +142,58 @@ exports[`<SliderInput /> should render a slider 1`] = `
   min-width: 1003px;
 }
 
+.c5.c5.c5.c5.c5 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c19.c19.c19.c19.c19 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.c20.c20.c20.c20.c20 {
+  visibility: hidden;
+}
+
+.c18.c18.c18.c18.c18 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c21.c21.c21.c21.c21 {
+  display: block;
+}
+
 .c17.c17.c17.c17.c17 {
   display: inline-block;
+  font-variant-numeric: tabular-nums;
 }
 
 .c16.c16.c16.c16.c16 {
@@ -166,23 +216,6 @@ exports[`<SliderInput /> should render a slider 1`] = `
   -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
   transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c5.c5.c5.c5.c5 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -349,10 +382,87 @@ exports[`<SliderInput /> should render a slider 1`] = `
                 >
                   <span
                     class="c17"
-                    display="inline-block"
-                    style="opacity: 1; transform: none;"
                   >
-                    0
+                    <span
+                      class="c18"
+                      data-blade-component="visually-hidden"
+                    >
+                      0
+                    </span>
+                    <span
+                      aria-hidden="true"
+                    >
+                      <span
+                        class="c19"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="c20"
+                        >
+                          0
+                        </span>
+                        <span
+                          class="BaseMotionweb__StyledDiv-gsyvko-0"
+                          style="position: absolute; top: 0px; left: 0px; transform: none;"
+                        >
+                          <span
+                            class="c21"
+                          >
+                            0
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            1
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            2
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            3
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            4
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            5
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            6
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            7
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            8
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            9
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            0
+                          </span>
+                        </span>
+                      </span>
+                    </span>
                   </span>
                 </span>
               </p>
@@ -444,7 +554,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c24.c24.c24.c24.c24 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -529,8 +639,58 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   min-width: 79px;
 }
 
+.c5.c5.c5.c5.c5 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c19.c19.c19.c19.c19 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.c20.c20.c20.c20.c20 {
+  visibility: hidden;
+}
+
+.c18.c18.c18.c18.c18 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c21.c21.c21.c21.c21 {
+  display: block;
+}
+
 .c17.c17.c17.c17.c17 {
   display: inline-block;
+  font-variant-numeric: tabular-nums;
 }
 
 .c16.c16.c16.c16.c16 {
@@ -553,23 +713,6 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
   -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
   transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c5.c5.c5.c5.c5 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -628,14 +771,14 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c18.c18.c18.c18.c18 {
+.c22.c22.c22.c22.c22 {
   position: absolute;
   inset-inline: 0;
   top: 24px;
   pointer-events: none;
 }
 
-.c19.c19.c19.c19.c19 {
+.c23.c23.c23.c23.c23 {
   position: absolute;
   white-space: nowrap;
 }
@@ -748,10 +891,157 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
                 >
                   <span
                     class="c17"
-                    display="inline-block"
-                    style="opacity: 1; transform: none;"
                   >
-                    16
+                    <span
+                      class="c18"
+                      data-blade-component="visually-hidden"
+                    >
+                      16
+                    </span>
+                    <span
+                      aria-hidden="true"
+                    >
+                      <span
+                        class="c19"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="c20"
+                        >
+                          0
+                        </span>
+                        <span
+                          class="BaseMotionweb__StyledDiv-gsyvko-0"
+                          style="position: absolute; top: 0px; left: 0px; transform: translateY(-9.090909090909092%);"
+                        >
+                          <span
+                            class="c21"
+                          >
+                            0
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            1
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            2
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            3
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            4
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            5
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            6
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            7
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            8
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            9
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            0
+                          </span>
+                        </span>
+                      </span>
+                      <span
+                        class="c19"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="c20"
+                        >
+                          0
+                        </span>
+                        <span
+                          class="BaseMotionweb__StyledDiv-gsyvko-0"
+                          style="position: absolute; top: 0px; left: 0px; transform: translateY(-54.54545454545454%);"
+                        >
+                          <span
+                            class="c21"
+                          >
+                            0
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            1
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            2
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            3
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            4
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            5
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            6
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            7
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            8
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            9
+                          </span>
+                          <span
+                            class="c21"
+                          >
+                            0
+                          </span>
+                        </span>
+                      </span>
+                    </span>
                   </span>
                 </span>
               </p>
@@ -759,14 +1049,14 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
           </div>
           <div
             aria-hidden="true"
-            class="c18"
+            class="c22"
           >
             <div
-              class="c19"
+              class="c23"
               style="inset-inline-start: calc(1.5px + 0 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c20"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -774,11 +1064,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c19"
+              class="c23"
               style="inset-inline-start: calc(1.5px + 0.2 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c20"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -786,11 +1076,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c19"
+              class="c23"
               style="inset-inline-start: calc(1.5px + 0.4 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c20"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -798,11 +1088,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c19"
+              class="c23"
               style="inset-inline-start: calc(1.5px + 0.6 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c20"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -810,11 +1100,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c19"
+              class="c23"
               style="inset-inline-start: calc(1.5px + 0.8 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c20"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -822,11 +1112,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c19"
+              class="c23"
               style="inset-inline-start: calc(1.5px + 1 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c20"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >

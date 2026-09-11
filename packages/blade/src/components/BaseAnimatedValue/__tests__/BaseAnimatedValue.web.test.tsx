@@ -3,20 +3,27 @@ import userEvents from '@testing-library/user-event';
 import { BaseAnimatedValue } from '../BaseAnimatedValue.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
+/**
+ * A rolling number carries every digit in each column, so its text reads `01234567890`. The one
+ * node that states the actual value is the hidden one, which is what a screen reader gets and
+ * what these assertions go by.
+ */
+const readValue = (container: HTMLElement): string =>
+  container.querySelector('[data-blade-component="visually-hidden"]')?.textContent ?? '';
+
 describe('<BaseAnimatedValue />', () => {
   it('should render the value when given no children', () => {
-    const { getByText } = renderWithTheme(<BaseAnimatedValue value={42} />);
-    expect(getByText('42')).toBeInTheDocument();
+    const { container } = renderWithTheme(<BaseAnimatedValue value={42} />);
+    expect(readValue(container)).toBe('42');
   });
 
   it('should render children in place of the value', () => {
-    // The raw value drives the direction while the formatted string is what is shown, so a
-    // unit or a currency does not stop the swap from moving the right way.
-    const { getByText, queryByText } = renderWithTheme(
+    // The raw value drives the roll while the formatted string is what is shown, so a unit or
+    // a currency rides along as literals between the digit columns.
+    const { container } = renderWithTheme(
       <BaseAnimatedValue value={1200}>₹1,200</BaseAnimatedValue>,
     );
-    expect(getByText('₹1,200')).toBeInTheDocument();
-    expect(queryByText('1200')).not.toBeInTheDocument();
+    expect(readValue(container)).toBe('₹1,200');
   });
 
   /**
@@ -43,16 +50,15 @@ describe('<BaseAnimatedValue />', () => {
 
   it('should show the new value after a change', async () => {
     const user = userEvents.setup();
-    const { getByText } = renderWithTheme(<Swapper from={1} to={2} />);
-    expect(getByText('1')).toBeInTheDocument();
+    const { container, getByText } = renderWithTheme(<Swapper from={1} to={2} />);
+    expect(readValue(container)).toBe('1');
 
     await user.click(getByText('swap'));
-    expect(getByText('2')).toBeInTheDocument();
+    expect(readValue(container)).toBe('2');
   });
 
-  it('should take non-numeric content without complaint', async () => {
-    // There is no meaningful "up" between two words, so this cross-fades rather than
-    // travelling. It still has to render.
+  it('should swap the whole value when there are no digits to roll', async () => {
+    // Words have no places to drive columns from, so they cross-fade as a whole instead.
     const user = userEvents.setup();
     const { getByText } = renderWithTheme(<Swapper from="draft" to="published" />);
     expect(getByText('draft')).toBeInTheDocument();
@@ -61,14 +67,14 @@ describe('<BaseAnimatedValue />', () => {
     expect(getByText('published')).toBeInTheDocument();
   });
 
-  it('should write rapid changes in place rather than stacking animated copies', async () => {
+  it('should write rapid changes to a swapped value in place rather than stacking copies', async () => {
     const user = userEvents.setup();
     const Rapid = (): React.ReactElement => {
-      const [value, setValue] = React.useState(0);
+      const [value, setValue] = React.useState('a');
       return (
         <>
           {/* One click, many changes, exactly as a drag produces. */}
-          <button type="button" onClick={() => [1, 2, 3, 4, 5].forEach((v) => setValue(v))}>
+          <button type="button" onClick={() => ['b', 'c', 'd', 'e'].forEach((v) => setValue(v))}>
             churn
           </button>
           <BaseAnimatedValue value={value} testID="rapid" />
@@ -79,10 +85,10 @@ describe('<BaseAnimatedValue />', () => {
     const { getByText, getByTestId } = renderWithTheme(<Rapid />);
     await user.click(getByText('churn'));
 
-    // A roll only reads when there is time to read it, so changes arriving mid-swap replace
-    // the content instead of queueing another copy behind it.
+    // A swap only reads when there is time to read it, so changes arriving mid-swap replace the
+    // content instead of queueing another copy behind it.
     expect(getByTestId('rapid').children).toHaveLength(1);
-    expect(getByText('5')).toBeInTheDocument();
+    expect(getByText('e')).toBeInTheDocument();
   });
 
   it('should match snapshot', () => {
