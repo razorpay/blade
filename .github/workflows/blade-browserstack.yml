@@ -47,6 +47,16 @@ jobs:
           node-version: 20.19.5
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+      - name: Ensure BrowserStack CLI Directory
+        run: mkdir -p "$HOME/.browserstack" && chmod 777 "$HOME/.browserstack"
+      - name: Resolve BrowserStack Config Credentials
+        working-directory: packages/blade-svelte
+        run: |
+          sed -i 's|${BROWSERSTACK_USERNAME}|'"$BROWSERSTACK_USERNAME"'|g' browserstack.yml
+          sed -i 's|${BROWSERSTACK_ACCESS_KEY}|'"$BROWSERSTACK_ACCESS_KEY"'|g' browserstack.yml
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
       - name: Run BrowserStack Tests
         working-directory: packages/blade-svelte
         run: yarn test:browserstack:mobile
