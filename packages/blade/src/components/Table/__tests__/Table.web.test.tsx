@@ -508,6 +508,41 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render correct number of columns in skeleton loader when selectionType is multiple', () => {
+    const { getByTestId } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 2) }} selectionType="multiple" isLoading={true}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const skeletonContainer = getByTestId('table-skeleton');
+    const skeletonRows = skeletonContainer.childNodes;
+    expect(skeletonRows.length).toBeGreaterThan(0);
+
+    skeletonRows.forEach((row) => {
+      expect(row.childNodes.length).toBe(4); // 3 content columns + 1 checkbox column
+    });
+  });
+
   it('should render table with isRefreshing', () => {
     const { container } = renderWithTheme(
       <Table data={{ nodes: nodes.slice(0, 2) }} isRefreshing={true}>
