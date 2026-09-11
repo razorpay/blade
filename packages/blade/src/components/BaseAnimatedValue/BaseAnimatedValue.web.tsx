@@ -70,9 +70,11 @@ const BaseAnimatedValue = ({
   value,
   children,
   direction,
+  duration = 'xquick',
   testID,
 }: BaseAnimatedValueProps): React.ReactElement => {
   const { theme } = useTheme();
+  const motionDuration = msToSeconds(theme.motion.duration[duration]);
 
   // Tracks the value the current content is replacing, so the travel has a direction.
   const previousValue = React.useRef<string | number | undefined>(undefined);
@@ -104,7 +106,7 @@ const BaseAnimatedValue = ({
       opacity: 1,
       y: 0,
       transition: {
-        duration: msToSeconds(theme.motion.duration.xquick),
+        duration: motionDuration,
         ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
       },
     },
@@ -112,7 +114,7 @@ const BaseAnimatedValue = ({
       opacity: 0,
       y: -distance,
       transition: {
-        duration: msToSeconds(theme.motion.duration.xquick),
+        duration: motionDuration,
         ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
       },
     }),

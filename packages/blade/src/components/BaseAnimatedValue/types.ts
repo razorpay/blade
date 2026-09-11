@@ -1,5 +1,8 @@
 import type React from 'react';
+import type { Theme } from '~components/BladeProvider';
 import type { TestID } from '~utils/types';
+
+type MotionDurationToken = keyof Theme['motion']['duration'];
 
 /**
  * Where the outgoing content leaves, and where the incoming content arrives from.
@@ -30,6 +33,16 @@ type BaseAnimatedValueProps = {
 
   /** Overrides the direction derived from `value`. */
   direction?: AnimatedValueDirection;
+
+  /**
+   * Motion duration token for the swap.
+   *
+   * Worth passing when this sits inside something that animates on its own timing, so the two
+   * stay in step when either is retuned rather than agreeing by coincidence.
+   *
+   * @default 'xquick'
+   */
+  duration?: MotionDurationToken;
 } & TestID;
 
-export type { BaseAnimatedValueProps, AnimatedValueDirection };
+export type { BaseAnimatedValueProps, AnimatedValueDirection, MotionDurationToken };
