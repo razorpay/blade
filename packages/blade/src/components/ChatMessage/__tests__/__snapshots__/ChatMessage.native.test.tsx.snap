@@ -1012,9 +1012,12 @@ exports[`<ChatMessage /> (native) should render with Card child correctly 1`] = 
                     data-blade-component="card-body"
                     style={
                       [
-                        {},
+                        {
+                          "width": "100%",
+                        },
                       ]
                     }
+                    width="100%"
                   >
                     <View
                       data-blade-component="box"
