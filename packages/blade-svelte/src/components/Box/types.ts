@@ -12,7 +12,7 @@ export type BoxAs =
   | 'span'
   | 'label';
 
-export type BoxProps = Omit<HTMLAttributes<HTMLElement>, 'class' | 'children'> & {
+export type BoxProps = Omit<HTMLAttributes<HTMLElement>, 'class' | 'children' | 'style' | 'this'> & {
   /**
    * Element/tag Box renders as.
    *

@@ -2,7 +2,8 @@
   import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
   import type { BoxProps } from './types';
 
-  let { as = 'div', className, testID, children, ...rest }: BoxProps = $props();
+  // style and this are intentionally omitted — Box does not support inline styles; use className instead
+  let { as = 'div', className, testID, children, style: _style, this: _this, ...rest }: BoxProps & { style?: unknown; this?: unknown } = $props();
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.Box, testID }));
 </script>
