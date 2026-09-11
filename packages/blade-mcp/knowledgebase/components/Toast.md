@@ -82,8 +82,8 @@ type ToastProps = {
 // Return type of useToast hook
 type UseToastReturn = {
   toasts: BladeToast[]; // Currently active toasts
-  show: (props: ToastProps) => string; // Show a toast and return its ID
-  dismiss: (id?: string) => void; // Dismiss a specific toast or all toasts
+  show: (props: ToastProps) => string; // Show a toast and return its ID (referentially stable)
+  dismiss: (id?: string) => void; // Dismiss a specific toast or all toasts (referentially stable)
 };
 ```
 
@@ -92,7 +92,7 @@ type UseToastReturn = {
 **Do**
 
 - Use `Toast` for brief, non-critical feedback after user actions (e.g., "Item saved", "Payment successful").
-- Use the imperative `useToast()` hook API — call `toast.show()` and `toast.dismiss()`.
+- Use the imperative `useToast()` hook API — call `toast.show()` and `toast.dismiss()`. The returned `show` and `dismiss` functions are referentially stable (same reference across re-renders).
 - Place `<ToastContainer />` once at the root of your app, outside nested `BladeProvider` instances.
 - Use `type="informational"` (default) with auto-dismiss for transient confirmations.
 - Use `type="promotional"` for richer content that requires user acknowledgment.
