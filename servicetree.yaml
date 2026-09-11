@@ -1,0 +1,38 @@
+service: blade  # required, canonical slug — immutable once registered
+displayName: "Blade Design System"  # required, human-readable name — README: "Blade is the Design System that powers Razorpay"
+description: "Razorpay's cross-platform design system: the @razorpay/blade npm package provides the shared React web and React Native component library, theming and accessibility primitives used by every Razorpay frontend, with docs at blade.razorpay.com."  # required, one-sentence description — from the repo README (monorepo of design-system packages published as @razorpay/blade on npm)
+type: library  # required, one of: service | worker | cron | library | pipeline — an npm-published shared component library consumed by other apps; no server deployment of its own (no Dockerfile, helm or Spinnaker pipeline)
+tier: T2  # required, one of: T0 | T1 | T2 | T3 — org-wide frontend dependency: a bad release can break many customer-facing UIs at build time, but it is not a runtime service in any request path, so it sits below T1 production services
+lifecycle: live  # optional, one of: incubating | live | deprecated | retired — very actively developed (last push 2026-09-08); the README names @razorpay/blade-old as the deprecated predecessor, so this is the live successor
+aliases: ["@razorpay/blade"]  # other names this service is known by — the npm package name under which every Razorpay frontend consumes it
+
+domain: razorpay1/experience  # required, two-level domain/subgroup slug — family razorpay1 from the registry seed l1 (BU SME Payments, team Frontend Platform); area experience reused from the existing "razorpay1/experience" slug, which is where shared frontend-experience assets sit
+
+owner:
+  team:  # required, owning team slug — TO FILL: this repo has no CODEOWNERS file, .github/repo_owners.json carries no team slug, and the GitHub repository-teams API is not readable with the current token; ask the POD lead for the owning GitHub team
+  em:  # name | @slack | email — TO FILL: DevRev runnable owner not found in SuccessFactors
+  org_group:  # SuccessFactors group of the EM — TO FILL: the declared owner has no SuccessFactors record, so the org tree cannot be resolved; ask the POD lead
+  org_sub_group:  # SuccessFactors sub-group of the EM — TO FILL: the declared owner has no SuccessFactors record; ask the POD lead
+  org_pod:  # SuccessFactors pod of the EM — TO FILL: the declared owner has no SuccessFactors record; ask the POD lead
+  pm:  # product manager — TO FILL: nothing in the repo or registry names a PM; ask the Frontend Platform POD lead
+  overrides: []  # optional, region-scoped owner overrides — TO FILL only if some region is owned by a different team; each entry is a "region" code plus the owning "team" slug
+
+links:
+  repo: "https://github.com/razorpay/blade"  # canonical GitHub repo URL
+  alerts_repo:  # this service's alert rules in razorpay/alert-rules — TO FILL: no matching ruleset found; add one in razorpay/alert-rules, then link the file here
+  slos:  # SLO definitions — TO FILL: no slo.yaml at this repo root and no sloth ruleset for it under razorpay/alert-rules/slo/prod (the two places SLOs are defined today); add one there and link it here
+  slack_channel:  # primary Slack channel for this service — TO FILL: no slack_candidates in the draft and the README points to Discord for external contributions, not an internal channel; ask the Frontend Platform POD lead (EM Ravikumar R)
+  zenduty_policy:  # Zenduty policy/service name used for paging — TO FILL: the service-to-policy mapping is not in DevRev or alert-rules for this service; it lives in the external Zenduty policies sheet
+  escalation_l1:  # service EM — TO FILL: no owner could be resolved for this service
+  escalation_l2:  # EM's manager — TO FILL: the EM has no SuccessFactors record, so no manager chain is available
+  escalation_l3:  # manager's manager — TO FILL: the EM has no SuccessFactors record, so no manager chain is available
+  oncall_handle:  # Slack/PagerDuty oncall handle or usergroup — TO FILL: not set on the DevRev runnable
+  runbook:  # link to the incident runbook — TO FILL: no runbook directory for this service in razorpay/rzp-oncall-agent; add one or link the Google Doc / alpha.razorpay.com page
+  api_docs:  # API documentation — TO FILL: no swagger/openapi/proto found in the repo tree; link the API spec or Postman collection
+  dashboard:  # primary dashboard — TO FILL: no Grafana hits in the draft; a component library has no runtime dashboard
+  logs_and_traces: "https://razorpay-prod.app.coralogix.in/#/query-new/archive-logs"  # org-standard prod Coralogix — filter subsystem "blade"
+  strategy_okr:  # TO FILL: link the FY strategy doc for the owning group.
+  risk_assessment:  # TO FILL: no .agents/skills/risk-assessment in this repo; add the per-repo risk-assessment skill
+  regions:  # per-region links — TO FILL: no prod region deployment found for this service in spinacode or alert-rules; add a block per geography once it ships
+
+dependencies: []  # optional, declared service dependencies — TO FILL: shape: - service: <slug> for internal deps, - vendor: <name> for external (gateways, banks)
