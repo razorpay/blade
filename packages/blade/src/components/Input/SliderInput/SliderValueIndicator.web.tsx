@@ -100,8 +100,7 @@ const SliderValueIndicator = ({
          * Keyed on the raw value rather than the formatted string, so a custom `formatValue`
          * that adds a unit or a currency still moves in the direction the value went.
          */}
-        {/* Shares the indicator's own duration, so retuning one retunes both. */}
-        <BaseAnimatedValue value={value} duration={sliderInputMotion.indicator.duration}>
+        <BaseAnimatedValue value={value} duration={sliderInputMotion.valueRoll.duration}>
           {children}
         </BaseAnimatedValue>
       </Text>

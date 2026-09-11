@@ -118,6 +118,14 @@ const sliderInputMotion = {
   color: { duration: 'xquick', easing: 'standard' },
   /** The indicator fading in and out with the highlight, and its small rise on entry. */
   indicator: { duration: 'xquick', enterEasing: 'entrance', exitEasing: 'exit' },
+  /**
+   * The number rolling over inside the indicator.
+   *
+   * Deliberately slower than the indicator's own fade, and the one thing here that is not
+   * tuned for keeping up. A roll exists to be read, so it needs longer than the movement it
+   * accompanies; at the indicator's own duration the change goes by unnoticed.
+   */
+  valueRoll: { duration: 'moderate' },
 } as const;
 
 /** How far the indicator rises as it fades in, in px. */

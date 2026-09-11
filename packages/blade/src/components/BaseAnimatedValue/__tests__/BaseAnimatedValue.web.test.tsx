@@ -61,6 +61,30 @@ describe('<BaseAnimatedValue />', () => {
     expect(getByText('published')).toBeInTheDocument();
   });
 
+  it('should write rapid changes in place rather than stacking animated copies', async () => {
+    const user = userEvents.setup();
+    const Rapid = (): React.ReactElement => {
+      const [value, setValue] = React.useState(0);
+      return (
+        <>
+          {/* One click, many changes, exactly as a drag produces. */}
+          <button type="button" onClick={() => [1, 2, 3, 4, 5].forEach((v) => setValue(v))}>
+            churn
+          </button>
+          <BaseAnimatedValue value={value} testID="rapid" />
+        </>
+      );
+    };
+
+    const { getByText, getByTestId } = renderWithTheme(<Rapid />);
+    await user.click(getByText('churn'));
+
+    // A roll only reads when there is time to read it, so changes arriving mid-swap replace
+    // the content instead of queueing another copy behind it.
+    expect(getByTestId('rapid').children).toHaveLength(1);
+    expect(getByText('5')).toBeInTheDocument();
+  });
+
   it('should match snapshot', () => {
     const { container } = renderWithTheme(<BaseAnimatedValue value={7} />);
     expect(container).toMatchSnapshot();

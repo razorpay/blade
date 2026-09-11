@@ -11,8 +11,13 @@ import { cssBezierToArray } from '~utils/cssBezierToArray';
 import { msToSeconds } from '~utils/msToSeconds';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
-/** How far content travels as it swaps, in px. Short enough to read as a nudge, not a scroll. */
-const TRAVEL = 8;
+/**
+ * How far content travels as it swaps, in px.
+ *
+ * Far enough that the swap reads as movement rather than a flicker. The fade runs over the
+ * same duration, so a copy is already invisible by the time it is this far out.
+ */
+const TRAVEL = 12;
 
 /**
  * `Number` is too permissive on its own: it reads an empty or blank string as 0, which would
@@ -61,6 +66,12 @@ const Stack = styled.span`
  * Private on purpose. It is general enough to move beyond its first consumer, but it should
  * earn a public API on the back of a second one rather than ahead of it.
  *
+ * Only isolated changes are animated. A value that changes again before the previous swap has
+ * finished is written straight into place instead, because a roll is only legible when there
+ * is time to read it: a slider being dragged can change fifty times a second, and animating
+ * each one leaves a stack of half-faded copies that never resolves into a number. Coarse
+ * changes — a keyboard step, a click, a slider whose steps are far apart — still roll.
+ *
  * Presentational only: it renders whatever it is given and takes no view on how that content
  * is announced. During a swap both copies are briefly in the DOM, so a consumer that needs
  * this read out should own the accessible name itself and keep this subtree hidden from
@@ -70,18 +81,38 @@ const BaseAnimatedValue = ({
   value,
   children,
   direction,
-  duration = 'xquick',
+  duration = 'moderate',
   testID,
 }: BaseAnimatedValueProps): React.ReactElement => {
   const { theme } = useTheme();
-  const motionDuration = msToSeconds(theme.motion.duration[duration]);
+  const durationMs = theme.motion.duration[duration];
 
-  // Tracks the value the current content is replacing, so the travel has a direction.
-  const previousValue = React.useRef<string | number | undefined>(undefined);
-  const resolvedDirection = direction ?? getDirection(previousValue.current, value);
-  React.useEffect(() => {
-    previousValue.current = value;
-  }, [value]);
+  /**
+   * `key` is what drives the swap, so holding it still is how a change is written in place
+   * rather than animated. `at` is when the content last changed at all, animated or not, which
+   * is what keeps a continuous stream of changes from ever looking isolated.
+   */
+  const [swap, setSwap] = React.useState(() => ({
+    key: String(value),
+    shown: value as string | number,
+    from: undefined as string | number | undefined,
+    at: 0,
+  }));
+
+  if (swap.shown !== value) {
+    const now = Date.now();
+    const isIsolated = now - swap.at >= durationMs;
+    setSwap({
+      // Timestamped so the same value returning still counts as a change worth animating.
+      key: isIsolated ? `${value}-${now}` : swap.key,
+      shown: value,
+      from: isIsolated ? swap.shown : undefined,
+      at: now,
+    });
+  }
+
+  const resolvedDirection =
+    direction ?? (swap.from === undefined ? 'none' : getDirection(swap.from, value));
 
   /**
    * Which way, and whether at all: +1 rises, -1 falls, 0 cross-fades in place.
@@ -106,7 +137,7 @@ const BaseAnimatedValue = ({
       opacity: 1,
       y: 0,
       transition: {
-        duration: motionDuration,
+        duration: msToSeconds(durationMs),
         ease: cssBezierToArray(castWebType(theme.motion.easing.entrance)),
       },
     },
@@ -114,7 +145,7 @@ const BaseAnimatedValue = ({
       opacity: 0,
       y: -distance,
       transition: {
-        duration: motionDuration,
+        duration: msToSeconds(durationMs),
         ease: cssBezierToArray(castWebType(theme.motion.easing.exit)),
       },
     }),
@@ -125,7 +156,7 @@ const BaseAnimatedValue = ({
       {/* `initial={false}` so the very first render lands without animating in from nowhere. */}
       <AnimatePresence initial={false} custom={travel}>
         <MotionDiv
-          key={String(value)}
+          key={swap.key}
           // Inline for the same reason as the wrapper above.
           as="span"
           display="inline-block"

@@ -191,6 +191,17 @@ dependency. The trade is that it does not have NumberFlow's per-digit roll.
 the raw value, so a `formatValue` that adds a unit or a currency still moves the right way
 instead of falling back to a cross-fade.
 
+The roll runs on `moderate`, and is the one piece of motion here not tuned for keeping up.
+Everything else moves at `2xquick` because it is chasing a pointer or a held arrow key, but a
+roll exists to be read, and at those durations the change goes by unnoticed.
+
+It is also skipped when changes arrive faster than it can play. Dragging a fine-grained slider
+changes the value roughly every 20ms, and animating each one left nineteen half-faded copies
+stacked on top of each other after a single drag — never resolving into a readable number, and
+growing for as long as the drag lasted. Only isolated changes roll now; the rest are written
+straight into place, so a drag shows one crisp value. Coarse-step sliders still roll mid-drag,
+because their changes are far enough apart to read.
+
 ## Not on React Native
 
 The mask compositing that draws the markers has no equivalent in React Native's style system.
