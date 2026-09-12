@@ -8,6 +8,7 @@
   } from '@razorpay/blade-core/utils';
   import { getActionListWrapperClasses, getActionListTemplateClasses } from '@razorpay/blade-core/styles';
   import { getBottomSheetContext } from '../BottomSheet/bottomSheetContext';
+  import { getDropdownContext } from '../Dropdown/dropdownContext';
   import { setActionListContext } from './actionListContext';
   import { getActionListContainerRole } from './getA11yRoles';
   import type { ActionListContextValue, ActionListProps } from './types';
@@ -28,6 +29,19 @@
   // (not a public prop) — mirrors React's `useBottomSheetContext()`.
   const bs = getBottomSheetContext();
   const isInBottomSheet = $derived(bs?.isInBottomSheet ?? false);
+
+  // Optional Dropdown bridge — undefined for standalone / BottomSheet usage, so
+  // that path stays unchanged. When present, the container adopts the Dropdown
+  // a11y role + id and exposes its scroll element for keyboard scroll-visibility.
+  const dropdown = getDropdownContext();
+  const isInsideDropdown = Boolean(dropdown);
+
+  let scrollWrapperEl = $state<HTMLDivElement | null>(null);
+  $effect(() => {
+    if (!dropdown) return;
+    dropdown.setActionListContainerEl(scrollWrapperEl);
+    return () => dropdown.setActionListContainerEl(null);
+  });
 
   // Reactive context for child items (getters keep `selectedValue` live).
   const contextValue: ActionListContextValue = {
@@ -59,11 +73,24 @@
 
   const isMultiSelectable = $derived(selectionType === 'multiple');
 
+  const containerRole = $derived(
+    isInsideDropdown
+      ? getActionListContainerRole(
+          dropdown?.hasFooterAction ?? false,
+          dropdown?.dropdownTriggerer,
+          true,
+        )
+      : getActionListContainerRole(),
+  );
+  const containerId = $derived(
+    isInsideDropdown && dropdown ? `${dropdown.dropdownBaseId}-actionlist` : undefined,
+  );
+
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.ActionList, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
   const a11yAttrs = $derived(
     makeAccessible({
-      role: getActionListContainerRole(),
+      role: containerRole,
       multiSelectable: isMultiSelectable,
     }),
   );
@@ -85,8 +112,15 @@
   <!-- Standalone: plain outer shell (a11y/meta/analytics/styled props) + inner scroll
        wrapper — mirrors React's BaseBox + ActionListBox. Border/shadow come from the
        Dropdown overlay when embedded, not ActionList itself. -->
-  <div class={styledClassString || undefined} style={styledStyleString} {...a11yAttrs} {...metaAttrs} {...analyticsAttrs}>
-    <div class={wrapperClasses}>
+  <div
+    id={containerId}
+    class={styledClassString || undefined}
+    style={styledStyleString}
+    {...a11yAttrs}
+    {...metaAttrs}
+    {...analyticsAttrs}
+  >
+    <div class={wrapperClasses} bind:this={scrollWrapperEl}>
       {@render children()}
     </div>
   </div>

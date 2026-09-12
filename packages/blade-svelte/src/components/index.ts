@@ -315,6 +315,25 @@ export type { InputGroupProps, InputRowProps } from './InputGroup';
 // BladeProvider
 export * from './BladeProvider';
 
+// Dropdown
+export {
+  Dropdown,
+  DropdownOverlay,
+  DropdownHeader,
+  DropdownFooter,
+  InputDropdownButton,
+} from './Dropdown';
+export type {
+  DropdownProps,
+  DropdownOverlayProps,
+  DropdownHeaderProps,
+  DropdownFooterProps,
+  InputDropdownButtonProps,
+  DropdownSelectionType,
+  DropdownContextValue,
+  DropdownOption,
+} from './Dropdown';
+
 // Tabs
 export { default as Tabs } from './Tabs/Tabs.svelte';
 export { default as TabList } from './Tabs/TabList.svelte';
