@@ -18,7 +18,7 @@ type TagProps = {
    *
    * @default medium
    */
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Leading icon for your Tag
@@ -33,37 +33,23 @@ type TagProps = {
   /**
    * Text that renders inside Tag
    */
-  children: StringChildrenType;
+  children: string | number | (string | number)[];
 
   /**
    * Disable tag
    */
   isDisabled?: boolean;
-
-  /**
-   * Private property for Blade.
-   *
-   * Should not be used by consumers.
-   *
-   * Used for adding virtual focus on tag.
-   *
-   * @private
-   */
-  _isVirtuallyFocused?: boolean;
-
-  /**
-   * Private property for Blade.
-   *
-   * Should not be used by consumers.
-   *
-   * Is tag placed inside an input
-   *
-   * @private
-   */
-  _isTagInsideInput?: boolean;
 } & StyledPropsBlade &
   DataAnalyticsAttribute &
   TestID;
+
+/**
+ * Type for Blade icon components
+ */
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
 ```
 
 ## Usage Guidelines

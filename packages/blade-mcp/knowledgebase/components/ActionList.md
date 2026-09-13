@@ -50,7 +50,7 @@ type ActionListItemProps = {
     value?: boolean;
     event: Platform.Select<{
       web: React.MouseEvent;
-      native: React.TouchEvent<TouchableOpacity>;
+      native: React.TouchEvent;
     }>;
   }) => void;
   /**
@@ -87,7 +87,7 @@ type ActionListItemProps = {
   /**
    * Visual color style - currently only supports 'negative'
    */
-  intent?: Extract<FeedbackColors, 'negative'>;
+  intent?: 'negative';
   /**
    * Whether the item is selected
    */

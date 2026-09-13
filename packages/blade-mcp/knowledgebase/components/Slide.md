@@ -84,12 +84,15 @@ type SlideProps = {
    * Can be a single delay value or different values for enter/exit.
    */
   delay?:
-    | keyof Delay
+    | Delay
     | {
-        enter: keyof Delay;
-        exit: keyof Delay;
+        enter: Delay;
+        exit: Delay;
       };
 };
+
+// Motion delay tokens
+type Delay = '2xquick' | 'xquick' | 'moderate' | 'gentle' | 'xgentle' | 'long' | 'xlong' | '2xlong';
 ```
 
 ## Usage Guidelines

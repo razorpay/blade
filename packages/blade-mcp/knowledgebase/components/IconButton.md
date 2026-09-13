@@ -33,9 +33,10 @@ type IconButtonProps = {
 
   /**
    * Visual emphasis of the IconButton
+   * `moderate` shows a persistent faded background in a fixed-size square container (web only).
    * @default 'intense'
    */
-  emphasis?: 'intense' | 'subtle';
+  emphasis?: 'intense' | 'subtle' | 'moderate';
 
   /**
    * Whether the IconButton is disabled
@@ -53,14 +54,36 @@ type IconButtonProps = {
    * Function called when the IconButton is clicked
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-} & StyledPropsBlade &
+
+  /**
+   * Changes the hover interaction to highlight the icon more (web only)
+   */
+  isHighlighted?: boolean;
+} & BladeCommonEvents &
+  StyledPropsBlade &
   DataAnalyticsAttribute;
+
+/**
+ * Common event handlers accepted by interactive Blade components (web)
+ */
+type BladeCommonEvents = {
+  onBlur?: React.FocusEventHandler;
+  onFocus?: React.FocusEventHandler;
+  onMouseLeave?: React.MouseEventHandler;
+  onMouseMove?: React.MouseEventHandler;
+  onMouseDown?: React.MouseEventHandler;
+  onMouseUp?: React.MouseEventHandler;
+  onPointerDown?: React.PointerEventHandler;
+  onPointerEnter?: React.PointerEventHandler;
+  onTouchStart?: React.TouchEventHandler;
+  onTouchEnd?: React.TouchEventHandler;
+};
 
 /**
  * Type for icon components
  */
 type IconComponent = React.ComponentType<{
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
   color?: string;
 }>;
 ```

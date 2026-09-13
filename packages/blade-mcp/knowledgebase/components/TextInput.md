@@ -11,7 +11,7 @@ TextInput is a component for collecting user input in a text field. It supports 
 The following types define the props that the TextInput component accepts. These types are essential for proper usage of the component in TypeScript projects.
 
 ```typescript
-type TextInputSizes = 'medium' | 'large';
+type TextInputSizes = 'xsmall' | 'small' | 'medium' | 'large';
 
 type Type = 'text' | 'telephone' | 'email' | 'url' | 'number' | 'search';
 
@@ -19,8 +19,21 @@ type TextInputCommonProps = {
   label?: string;
   accessibilityLabel?: string;
   labelPosition?: 'top' | 'left';
-  necessityIndicator?: 'optional' | 'required';
+  /**
+   * Suffix element shown right after the label text (e.g. an info icon with Tooltip)
+   */
+  labelSuffix?: React.ReactNode;
+  /**
+   * Trailing element shown at the end of the label row (e.g. a Link)
+   */
+  labelTrailing?: React.ReactNode;
+  necessityIndicator?: 'optional' | 'required' | 'none';
   validationState?: 'none' | 'error' | 'success';
+  /**
+   * Placement of the validation text relative to the input
+   * @default 'outside'
+   */
+  validationTextPlacement?: 'outside' | 'inside';
   helpText?: string;
   showHelpTextOnFocus?: boolean;
   errorText?: string;
@@ -46,7 +59,7 @@ type TextInputCommonProps = {
   suffix?: string;
   maxCharacters?: number;
   autoFocus?: boolean;
-  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'search' | 'send';
+  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
   autoCompleteSuggestionType?:
     | 'none'
     | 'name'
@@ -65,6 +78,17 @@ type TextInputCommonProps = {
     | 'creditCardExpiryYear'
     | 'on';
   onSubmit?: ({ name, value }: { name?: string; value?: string }) => void;
+  onKeyDown?: ({
+    name,
+    key,
+    code,
+    event,
+  }: {
+    name?: string;
+    key?: string;
+    code?: string;
+    event: React.KeyboardEvent<HTMLInputElement>;
+  }) => void;
   onClick?: ({ name, value }: { name?: string; value?: string }) => void;
   size?: TextInputSizes;
   leadingIcon?: React.ComponentType<any>;

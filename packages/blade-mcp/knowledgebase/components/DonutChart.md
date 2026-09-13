@@ -8,7 +8,7 @@ DonutChart is a circular data visualization component built on top of Recharts w
 
 - `ChartDonut` component must be wrapped inside `ChartDonutWrapper` component
 - `data` prop is required and must be an array of objects with consistent structure
-- `dataKey` and `nameKey` props are required to specify which properties to use for values and labels
+- Set `dataKey` and `nameKey` props to specify which properties to use for values and labels
 - `ChartDonutCell` components should be used to customize individual segment colors
 - `radius` prop only accepts 'small', 'medium', or 'large' values
 - `type` prop only accepts 'circle' or 'semicircle' values
@@ -24,11 +24,11 @@ type ChartDonutProps = {
   /**
    * The data key of the Donut chart.
    */
-  dataKey: RechartsPieProps['dataKey'];
+  dataKey?: RechartsPieProps['dataKey'];
   /**
    * The name key of the Donut chart.
    */
-  nameKey: RechartsPieProps['name'];
+  nameKey?: RechartsPieProps['nameKey'];
   /**
    * The x coordinate of the Donut chart.
    */
@@ -50,7 +50,7 @@ type ChartDonutProps = {
    * The color theme of the chart.
    * @default 'categorical'
    */
-  colorTheme?:  'categorical';;
+  colorTheme?: 'categorical';
   /**
    * The type of the Donut chart.
    */
@@ -71,7 +71,7 @@ type ChartDonutWrapperProps = {
 } & BoxProps;
 
 
- ChartDonutCellProps = CellProps & {
+type ChartDonutCellProps = CellProps & {
   color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
 };
 
@@ -106,7 +106,6 @@ type ChartSequentialColorToken = `data.background.sequential.${Exclude<
 - Don't put multiple `ChartDonut` components inside one wrapper — only one is allowed.
 - Don't use `DonutChart` for time-series trends — use `LineChart` or `AreaChart` instead.
 - Don't use `DonutChart` for comparing absolute values across categories — use `BarChart` instead.
-- Don't use sequential color tokens — only categorical colors are supported.
 - Don't mismatch the number of `ChartDonutCell` components with data items.
 
 ## Example

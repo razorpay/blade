@@ -34,14 +34,35 @@ type ResponsiveValue<T> =
     };
 
 /**
+ * Spacing token (e.g. 'spacing.0' to 'spacing.11'), a CSS size string (e.g. '100px', '50%'),
+ * or a keyword: 'none' | 'initial' | 'auto' | 'fit-content' | 'max-content' | 'min-content'
+ */
+type SpacingValueType = `spacing.${number}` | 'none' | 'initial' | 'auto' | 'fit-content' | 'max-content' | 'min-content' | (string & {});
+
+/**
+ * Background color token of shape `surface.background.*`, `overlay.background.*`, `feedback.background.*`
+ * @example 'surface.background.gray.intense' | 'feedback.background.positive.subtle' | 'transparent'
+ */
+type BoxBackgroundColor = `surface.background.${string}` | `overlay.background.${string}` | `feedback.background.${string}` | 'transparent';
+
+/**
+ * Border color token of shape `surface.border.*`, `popup.border.*`, `interactive.border.*`
+ * @example 'surface.border.gray.muted'
+ */
+type BoxBorderColor = `surface.border.${string}` | `popup.border.${string}` | `interactive.border.${string}`;
+
+type BorderRadiusToken = 'none' | '2xsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | 'max' | 'round';
+type BorderWidthToken = 'none' | 'thinner' | 'thin' | 'thick' | 'thicker';
+
+/**
  * Props for the Box component
  */
 type BoxProps = {
   /**
-   * The HTML element to render the Box as
+   * The HTML element to render the Box as. Not supported on React Native.
    * @default 'div'
    */
-  as?: 'div' | 'section' | 'article' | 'main' | 'header' | 'footer' | 'aside' | 'nav';
+  as?: 'div' | 'section' | 'footer' | 'header' | 'main' | 'aside' | 'nav' | 'span' | 'label';
 
   /**
    * ID attribute of the Box
@@ -49,70 +70,59 @@ type BoxProps = {
   id?: string;
 
   /**
+   * Tab index of the Box
+   */
+  tabIndex?: number;
+
+  /**
    * The children to render inside the Box
    */
-  children?: React.ReactNode;
+  children?: React.ReactNode | React.ReactNode[];
 
   /**
-   * Flex property - defines how the item will grow or shrink
-   * @example "1" | "auto" | "initial" | "none"
-   */
-  flex?: ResponsiveValue<string | number>;
-
-  /**
-   * Flex direction property - defines the direction of the flex items
-   * @example "row" | "column" | "row-reverse" | "column-reverse"
-   */
-  flexDirection?: ResponsiveValue<string>;
-
-  /**
-   * Flex wrap property - defines whether flex items should wrap
-   * @example "nowrap" | "wrap" | "wrap-reverse"
-   */
-  flexWrap?: ResponsiveValue<string>;
-
-  /**
-   * Flex basis property - defines the initial main size of a flex item
-   */
-  flexBasis?: ResponsiveValue<string | number>;
-
-  /**
-   * Flex grow property - defines how much a flex item will grow
-   */
-  flexGrow?: ResponsiveValue<string | number>;
-
-  /**
-   * Flex shrink property - defines how much a flex item will shrink
-   */
-  flexShrink?: ResponsiveValue<string | number>;
-
-  /**
-   * Display property - defines the display type of an element
-   * @example "flex" | "block" | "inline" | "inline-block" | "grid" | "none"
+   * Flexbox properties
    */
   display?: ResponsiveValue<string>;
-
-  /**
-   * Align items property - defines how flex items are aligned along the cross axis
-   * @example "flex-start" | "flex-end" | "center" | "baseline" | "stretch"
-   */
-  alignItems?: ResponsiveValue<string>;
-
-  /**
-   * Align self property - overrides the align-items property for a specific flex item
-   */
+  flex?: ResponsiveValue<string | number>;
+  flexDirection?: ResponsiveValue<'row' | 'column' | 'row-reverse' | 'column-reverse'>;
+  flexWrap?: ResponsiveValue<'nowrap' | 'wrap' | 'wrap-reverse'>;
+  flexBasis?: ResponsiveValue<string | number>;
+  flexGrow?: ResponsiveValue<number>;
+  flexShrink?: ResponsiveValue<number>;
+  alignItems?: ResponsiveValue<'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | 'start' | 'end' | 'normal'>;
+  alignContent?: ResponsiveValue<string>;
   alignSelf?: ResponsiveValue<string>;
-
+  justifyContent?: ResponsiveValue<'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'start' | 'end' | 'left' | 'right' | 'normal' | 'stretch'>;
+  justifyItems?: ResponsiveValue<string>;
+  justifySelf?: ResponsiveValue<string>;
+  placeItems?: ResponsiveValue<string>;
+  placeSelf?: ResponsiveValue<string>;
+  order?: ResponsiveValue<number>;
   /**
-   * Justify content property - defines how flex items are aligned along the main axis
-   * @example "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly"
-   */
-  justifyContent?: ResponsiveValue<string>;
-
-  /**
-   * Gap property - defines the gap between flex/grid items
+   * Uses the native gap property
    */
   gap?: ResponsiveValue<SpacingValueType>;
+  rowGap?: ResponsiveValue<SpacingValueType>;
+  columnGap?: ResponsiveValue<SpacingValueType>;
+
+  /**
+   * Grid properties
+   */
+  grid?: ResponsiveValue<string>;
+  gridTemplate?: ResponsiveValue<string>;
+  gridTemplateAreas?: ResponsiveValue<string>;
+  gridTemplateColumns?: ResponsiveValue<string>;
+  gridTemplateRows?: ResponsiveValue<string>;
+  gridAutoFlow?: ResponsiveValue<string>;
+  gridAutoRows?: ResponsiveValue<string>;
+  gridAutoColumns?: ResponsiveValue<string>;
+  gridArea?: ResponsiveValue<string>;
+  gridColumn?: ResponsiveValue<string>;
+  gridRow?: ResponsiveValue<string>;
+  gridColumnStart?: ResponsiveValue<string>;
+  gridColumnEnd?: ResponsiveValue<string>;
+  gridRowStart?: ResponsiveValue<string>;
+  gridRowEnd?: ResponsiveValue<string>;
 
   /**
    * Margin properties
@@ -137,117 +147,104 @@ type BoxProps = {
   paddingY?: ResponsiveValue<SpacingValueType>;
 
   /**
-   * Width property
-   * @example "100%" | "200px" | "auto" | "fit-content"
+   * Layout properties
    */
-  width?: ResponsiveValue<string | number>;
+  width?: ResponsiveValue<SpacingValueType>;
+  height?: ResponsiveValue<SpacingValueType>;
+  minWidth?: ResponsiveValue<SpacingValueType>;
+  minHeight?: ResponsiveValue<SpacingValueType>;
+  maxWidth?: ResponsiveValue<SpacingValueType>;
+  maxHeight?: ResponsiveValue<SpacingValueType>;
+  overflow?: ResponsiveValue<'visible' | 'hidden' | 'clip' | 'scroll' | 'auto'>;
+  overflowX?: ResponsiveValue<'visible' | 'hidden' | 'clip' | 'scroll' | 'auto'>;
+  overflowY?: ResponsiveValue<'visible' | 'hidden' | 'clip' | 'scroll' | 'auto'>;
+  textAlign?: ResponsiveValue<'left' | 'right' | 'center' | 'justify' | 'start' | 'end'>;
+  whiteSpace?: ResponsiveValue<string>;
 
   /**
-   * Height property
-   * @example "100%" | "200px" | "auto" | "fit-content"
+   * Position properties
    */
-  height?: ResponsiveValue<string | number>;
+  position?: ResponsiveValue<'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'>;
+  top?: ResponsiveValue<SpacingValueType>;
+  right?: ResponsiveValue<SpacingValueType>;
+  bottom?: ResponsiveValue<SpacingValueType>;
+  left?: ResponsiveValue<SpacingValueType>;
+  zIndex?: ResponsiveValue<number>;
 
   /**
-   * Min-width property
+   * Background properties
    */
-  minWidth?: ResponsiveValue<string | number>;
+  backgroundColor?: ResponsiveValue<BoxBackgroundColor>;
+  backgroundImage?: ResponsiveValue<string>;
+  backgroundSize?: ResponsiveValue<string>;
+  backgroundPosition?: ResponsiveValue<string>;
+  backgroundOrigin?: ResponsiveValue<string>;
+  backgroundRepeat?: ResponsiveValue<string>;
+  backdropFilter?: ResponsiveValue<string>;
 
   /**
-   * Min-height property
+   * Border properties. Use tokens for radius, width and color.
    */
-  minHeight?: ResponsiveValue<string | number>;
-
-  /**
-   * Max-width property
-   */
-  maxWidth?: ResponsiveValue<string | number>;
-
-  /**
-   * Max-height property
-   */
-  maxHeight?: ResponsiveValue<string | number>;
-
-  /**
-   * Background color property
-   * Uses theme color tokens
-   * @example "surface.background.gray.intense"
-   */
-  backgroundColor?: ResponsiveValue<string>;
-
-  /**
-   * Border properties
-   */
-  border?: ResponsiveValue<string>;
-  borderTop?: ResponsiveValue<string>;
-  borderRight?: ResponsiveValue<string>;
-  borderBottom?: ResponsiveValue<string>;
-  borderLeft?: ResponsiveValue<string>;
-  borderColor?: ResponsiveValue<string>;
-  borderRadius?: ResponsiveValue<string>;
-  borderStyle?: ResponsiveValue<string>;
-  borderWidth?: ResponsiveValue<string>;
-
-  /**
-   * Position property
-   * @example "static" | "relative" | "absolute" | "fixed" | "sticky"
-   */
-  position?: ResponsiveValue<string>;
-
-  /**
-   * Top, right, bottom, left properties for positioning
-   */
-  top?: ResponsiveValue<string | number>;
-  right?: ResponsiveValue<string | number>;
-  bottom?: ResponsiveValue<string | number>;
-  left?: ResponsiveValue<string | number>;
-
-  /**
-   * Z-index property
-   */
-  zIndex?: ResponsiveValue<number | string>;
-
-  /**
-   * Overflow properties
-   */
-  overflow?: ResponsiveValue<string>;
-  overflowX?: ResponsiveValue<string>;
-  overflowY?: ResponsiveValue<string>;
+  borderRadius?: ResponsiveValue<BorderRadiusToken>;
+  borderTopLeftRadius?: ResponsiveValue<BorderRadiusToken>;
+  borderTopRightRadius?: ResponsiveValue<BorderRadiusToken>;
+  borderBottomRightRadius?: ResponsiveValue<BorderRadiusToken>;
+  borderBottomLeftRadius?: ResponsiveValue<BorderRadiusToken>;
+  borderWidth?: ResponsiveValue<BorderWidthToken>;
+  borderTopWidth?: ResponsiveValue<BorderWidthToken>;
+  borderRightWidth?: ResponsiveValue<BorderWidthToken>;
+  borderBottomWidth?: ResponsiveValue<BorderWidthToken>;
+  borderLeftWidth?: ResponsiveValue<BorderWidthToken>;
+  borderColor?: ResponsiveValue<BoxBorderColor>;
+  borderTopColor?: ResponsiveValue<`surface.border.${string}`>;
+  borderRightColor?: ResponsiveValue<`surface.border.${string}`>;
+  borderBottomColor?: ResponsiveValue<`surface.border.${string}`>;
+  borderLeftColor?: ResponsiveValue<`surface.border.${string}`>;
+  borderStyle?: ResponsiveValue<'none' | 'hidden' | 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'>;
+  borderTopStyle?: ResponsiveValue<string>;
+  borderRightStyle?: ResponsiveValue<string>;
+  borderBottomStyle?: ResponsiveValue<string>;
+  borderLeftStyle?: ResponsiveValue<string>;
 
   /**
    * Elevation - applies box-shadow based on theme elevation tokens
-   * @example "lowRaised" | "midRaised" | "highRaised"
    */
-  elevation?: 'lowRaised' | 'midRaised' | 'highRaised';
+  elevation?: ResponsiveValue<'none' | 'lowRaised' | 'midRaised' | 'highRaised'>;
 
   /**
-   * Transform property
+   * Other visual properties
    */
-  transform?: string;
+  opacity?: ResponsiveValue<number | string>;
+  visibility?: ResponsiveValue<'visible' | 'hidden' | 'collapse'>;
+  pointerEvents?: ResponsiveValue<string>;
+  transform?: ResponsiveValue<string>;
+  transformOrigin?: ResponsiveValue<string>;
+  transition?: ResponsiveValue<string>;
+  clipPath?: ResponsiveValue<string>;
 
   /**
-   * Transform origin property
+   * Event handlers (web only)
    */
-  transformOrigin?: string;
+  onMouseOver?: React.MouseEventHandler<HTMLElement>;
+  onMouseEnter?: React.MouseEventHandler<HTMLElement>;
+  onMouseLeave?: React.MouseEventHandler<HTMLElement>;
+  onScroll?: React.UIEventHandler<HTMLElement>;
 
   /**
-   * Clip path property
+   * Drag and drop (web only)
    */
-  clipPath?: string;
+  draggable?: boolean;
+  onDragStart?: React.DragEventHandler<HTMLElement>;
+  onDragEnd?: React.DragEventHandler<HTMLElement>;
+  onDragEnter?: React.DragEventHandler<HTMLElement>;
+  onDragOver?: React.DragEventHandler<HTMLElement>;
+  onDragLeave?: React.DragEventHandler<HTMLElement>;
+  onDrop?: React.DragEventHandler<HTMLElement>;
 
   /**
-   * Event handlers
+   * Element timing attribute to track the render performance of the element
    */
-  onMouseOver?: React.MouseEventHandler;
-  onMouseEnter?: React.MouseEventHandler;
-  onMouseLeave?: React.MouseEventHandler;
-  onScroll?: React.UIEventHandler;
-  onDragStart?: React.DragEventHandler;
-  onDragEnd?: React.DragEventHandler;
-  onDragEnter?: React.DragEventHandler;
-  onDragOver?: React.DragEventHandler;
-  onDragLeave?: React.DragEventHandler;
-  onDrop?: React.DragEventHandler;
+  elementtiming?: string;
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -262,7 +259,7 @@ type BoxRefType = HTMLElement;
 **Do**
 
 - Use `Box` as the foundational layout primitive for creating flex/grid layouts, spacing, and positioning.
-- Use the `as` prop for semantic HTML rendering (`section`, `article`, `nav`, `main`, `header`, `footer`, `aside`).
+- Use the `as` prop for semantic HTML rendering (`section`, `nav`, `main`, `header`, `footer`, `aside`).
 - Use responsive value objects (e.g., `flexDirection={{ base: 'column', m: 'row' }}`) for mobile-first responsive design.
 - Use `elevation` prop for visual depth (`lowRaised`, `midRaised`, `highRaised`).
 - Use `backgroundColor` only with approved tokens: `transparent`, `surface.background.*`, or `overlay.*`.

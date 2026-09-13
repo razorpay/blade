@@ -53,8 +53,10 @@ type SpinnerDimensions = {
 
 // Motion configuration
 type SpinnerMotion = {
-  duration: DurationString;
-  easing: EasingString;
+  // Motion token path, e.g. 'duration.2xgentle'
+  duration: `duration.${string}`;
+  // Motion token path, e.g. 'easing.linear'
+  easing: `easing.${string}`;
 };
 ```
 

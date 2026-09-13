@@ -57,6 +57,8 @@ type ScaleProps = {
    */
   type?: 'in' | 'out' | 'inout';
 };
+
+type MotionTriggersType = 'mount' | 'in-view' | 'focus' | 'on-animate-interactions' | 'hover' | 'tap';
 ```
 
 ## Usage Guidelines

@@ -20,6 +20,12 @@ Below are the component props types that Accordion and its subcomponents accept.
 ```typescript
 type AccordionVariantType = 'filled' | 'transparent';
 
+// Blade icon component, e.g. `StarIcon`
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+
 type AccordionProps = {
   /**
    * Makes the passed item index expanded by default (uncontrolled)
@@ -62,7 +68,19 @@ type AccordionProps = {
    * maxWidth prop of Accordion
    *
    */
-  maxWidth?: BoxProps['maxWidth'];
+  maxWidth?: string | number;
+
+  /**
+   * minWidth prop of Accordion
+   *
+   * @default { s: '200px', m: '360px', l: '360px' }
+   */
+  minWidth?: string | number;
+
+  /**
+   * Element timing value to track render performance (web)
+   */
+  elementtiming?: string;
 
   /**
    * Accepts `AccordionItem` child nodes
@@ -96,7 +114,7 @@ type AccordionItemProps = {
   /**
    * Slot, renders any custom content
    */
-  children?: ReactNode | ReactNode[];
+  children?: React.ReactNode | React.ReactNode[];
 
   /**
    * Disabled state of the item
@@ -107,16 +125,28 @@ type AccordionItemProps = {
 } & TestID &
   DataAnalyticsAttribute;
 
-// AccordionItemHeader props (derived from BaseHeaderProps)
-type AccordionItemHeaderProps = Pick<
-  BaseHeaderProps,
-  'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
-> &
-  DataAnalyticsAttribute;
+// AccordionItemHeader props
+type AccordionItemHeaderProps = {
+  title?: string;
+  subtitle?: string;
+  /**
+   * Leading part of the header placed at the left most side of the header
+   */
+  leading?: React.ReactNode;
+  /**
+   * Trailing part of the header placed at the right most side of the header
+   */
+  trailing?: React.ReactNode;
+  /**
+   * Placed adjacent to the title text
+   */
+  titleSuffix?: React.ReactNode;
+  children?: React.ReactElement | React.ReactElement[];
+} & DataAnalyticsAttribute;
 
 // AccordionItemBody props
 type AccordionItemBodyProps = {
-  children?: React.ReactNode | StringChildrenType;
+  children?: React.ReactNode | string | number;
 } & DataAnalyticsAttribute;
 ```
 

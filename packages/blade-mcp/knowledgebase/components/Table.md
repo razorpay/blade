@@ -119,7 +119,7 @@ type TableProps<Item> = {
   /**
    * The height prop is a responsive styled prop that determines the height of the table.
    **/
-  height?: BoxProps['height'];
+  height?: string | Partial<Record<'base' | 's' | 'm' | 'l' | 'xl', string>>;
 
   /**
    * The showStripedRows prop determines whether the table should have striped rows or not.
@@ -269,6 +269,28 @@ type TableEditableCellProps = {
   successText?: string;
   // Required prop
   accessibilityLabel: string;
+};
+
+// TableEditableDropdownCell component props (web only)
+// Renders a Dropdown inside an editable table cell.
+type TableEditableDropdownCellProps = {
+  /**
+   * Dropdown children: a trigger (e.g. `AutoComplete`, `SelectInput`) and `DropdownOverlay`
+   */
+  children: React.ReactNode[];
+  /**
+   * Controls open / close state of the dropdown
+   */
+  isOpen?: boolean;
+  /**
+   * Callback when open state of the dropdown changes
+   */
+  onOpenChange?: (isOpen: boolean) => void;
+  /**
+   * @default 'single'
+   */
+  selectionType?: 'single' | 'multiple';
+  zIndex?: number;
 };
 
 // TableFooter component props
@@ -967,4 +989,66 @@ const TableGroupingExample = () => {
     </Table>
   );
 };
+```
+
+### Table with Editable Dropdown Cell
+
+Use `TableEditableDropdownCell` to let users select a value from a dropdown inside a table row.
+
+```tsx
+import React from 'react';
+import {
+  Table,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableEditableDropdownCell,
+  AutoComplete,
+  DropdownOverlay,
+  ActionList,
+  ActionListItem,
+} from '@razorpay/blade/components';
+
+const nodes = [
+  { id: '1', name: 'Order 1' },
+  { id: '2', name: 'Order 2' },
+];
+
+const EditableDropdownTable = (): React.ReactElement => {
+  return (
+    <Table data={{ nodes }}>
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Name</TableHeaderCell>
+              <TableHeaderCell>Method</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+          <TableBody>
+            {tableData.map((tableItem) => (
+              <TableRow key={tableItem.id} item={tableItem}>
+                <TableCell>{tableItem.name}</TableCell>
+                <TableEditableDropdownCell>
+                  <AutoComplete accessibilityLabel="Method" />
+                  <DropdownOverlay>
+                    <ActionList>
+                      <ActionListItem title="UPI" value="upi" />
+                      <ActionListItem title="Card" value="card" />
+                    </ActionList>
+                  </DropdownOverlay>
+                </TableEditableDropdownCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </>
+      )}
+    </Table>
+  );
+};
+
+export default EditableDropdownTable;
 ```

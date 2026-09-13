@@ -17,7 +17,7 @@ type IndicatorProps = {
    *
    * @default neutral
    */
-  color?: FeedbackColors | 'primary';
+  color?: 'information' | 'negative' | 'neutral' | 'notice' | 'positive' | 'primary';
 
   /**
    * Sets the emphasis of the indicator
@@ -38,7 +38,7 @@ type IndicatorProps = {
   /**
    * A text label to show alongside the indicator dot
    */
-  children?: StringChildrenType;
+  children?: string | number | (string | number)[];
 
   /**
    * a11y label for screen readers
@@ -51,8 +51,6 @@ type IndicatorProps = {
 
 Where:
 
-- `FeedbackColors` is a union type of possible feedback colors
-- `StringChildrenType` represents text content that can be passed as children
 - `TestID` provides test identifiers for testing frameworks
 - `DataAnalyticsAttribute` adds data attributes for analytics tracking
 - `StyledPropsBlade` includes styled-system props for flexible styling
