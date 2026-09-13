@@ -1,0 +1,62 @@
+{
+  "values": {
+    "reason": "CSS-wide keywords, vendor-prefixed and rarely used CSS values from csstype. Docs don't need to list them.",
+    "ignore": ["inherit", "initial", "revert", "revert-layer", "unset", "anchor-center", "math-auto"],
+    "ignorePrefixes": ["-moz-", "-webkit-", "-ms-"]
+  },
+  "components": {
+    "Tabs": {
+      "reason": "orientation is Platform.Select (web: horizontal | vertical, native: horizontal); the checker can't resolve it",
+      "ignoreValues": { "orientation": ["horizontal", "vertical"] }
+    },
+    "AutoComplete": {
+      "reason": "Injected by the dropdown input trigger, not set by consumers",
+      "ignoreProps": ["syncInputValueWithSelection"]
+    },
+    "SelectInput": {
+      "reason": "Injected by the dropdown input trigger, not set by consumers",
+      "ignoreProps": ["syncInputValueWithSelection"]
+    },
+    "Button": {
+      "reason": "@private props used by Tooltip and Menu triggers",
+      "ignoreProps": ["aria-describedby", "aria-controls", "aria-expanded", "aria-haspopup", "role"]
+    },
+    "Link": {
+      "reason": "@private prop used by Tooltip trigger",
+      "ignoreProps": ["aria-describedby"]
+    },
+    "TextInput": {
+      "reason": "Internal props used by Dropdown/AutoComplete input triggers",
+      "ignoreProps": ["popupId", "isPopupExpanded", "hasPopup", "componentName", "as", "activeInteraction"]
+    },
+    "TimePicker": {
+      "reason": "Internal state wiring between TimePicker input and dropdown",
+      "ignoreProps": [
+        "referenceProps",
+        "timeValue",
+        "internalTimeValue",
+        "setControlledValue",
+        "onTimeValueChange",
+        "createCompleteTime",
+        "isDropdownOpen",
+        "setIsDropdownOpen"
+      ]
+    },
+    "Stagger": {
+      "reason": "Stagger accepts all Box props; its doc points to the Box doc",
+      "inheritDocProps": ["Box"]
+    }
+  },
+  "skippedDocs": {
+    "AreaChart": "Composed from ChartArea* parts; no AreaChart export",
+    "BarChart": "Composed from ChartBar* parts; no BarChart export",
+    "DonutChart": "Composed from ChartDonut* parts; no DonutChart export",
+    "LineChart": "Composed from ChartLine* parts; no LineChart export",
+    "SankeyChart": "Composed from ChartSankey* parts; no SankeyChart export",
+    "Icons": "Documents the icon set, not a single component",
+    "SkipNav": "Documents SkipNavLink and SkipNavContent; no SkipNav export"
+  },
+  "missingDocs": {
+    "GenUISchemaRenderer": "Part of the GenUI SDK; used only inside GenUIProvider"
+  }
+}
