@@ -5,12 +5,13 @@ import { TreeViewParentContext, useTreeViewContext } from './useTreeView';
 import { StyledTreeViewRow } from './StyledTreeViewRow.web';
 import { TreeViewRowMountAnimator } from './TreeViewAnimator.web';
 import { DEFAULT_LOAD_MORE_LABEL } from './treeViewUtils';
+import { getItemFirstRowHeight, treeViewTokens } from './treeViewTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseMenuItem } from '~components/BaseMenu';
-import { itemFirstRowHeight } from '~components/BaseMenu/BaseMenuItem/tokens';
 import { Spinner } from '~components/Spinner';
 import { Text } from '~components/Typography';
 import { useDropdown } from '~components/Dropdown/useDropdown';
+import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -20,6 +21,7 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | null => {
   const {
     isInsideDropdown,
+    size,
     nodeMap,
     tabbableValue,
     onDropdownNodeClick,
@@ -32,7 +34,10 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
     isKeydownPressed,
     setShouldIgnoreBlurAnimation,
   } = useDropdown();
+  const { theme } = useTheme();
   const parentValue = React.useContext(TreeViewParentContext);
+  const itemFirstRowHeight = getItemFirstRowHeight(theme, size);
+  const { loadMoreIndentation, loadMoreTextSize } = treeViewTokens[size];
 
   // loadMore rows have no consumer-facing value, so we find our synthetic node
   // in the registry by parent (TreeView dev-warns on more than one per branch)
@@ -59,7 +64,7 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
 
   return (
     <TreeViewRowMountAnimator>
-      <StyledTreeViewRow level={node.level}>
+      <StyledTreeViewRow level={node.level} treeViewSize={size}>
         <BaseMenuItem
           ref={(element) => registerRowRef(node.value, element as HTMLElement | null)}
           // div row, same as TreeViewItem (treeitem role is not permitted on button)
@@ -105,22 +110,22 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
           {...makeAnalyticsAttribute(props)}
         >
           {/* B7: no chevron and no checkbox of its own - the label is offset by one
-            chevron slot (20px + the 4px gap after it) so it lines up with the content
-            of sibling rows (Figma: TreeViewItem/LoadMore) */}
+            chevron slot plus the 4px gap after it (24px on medium, 20px on small) so it
+            lines up with the content of sibling rows (Figma: TreeViewItem/LoadMore) */}
           {props.isLoading ? (
             <BaseBox
               display="flex"
               flexDirection="row"
               alignItems="center"
               gap="spacing.3"
-              paddingLeft="spacing.7"
+              paddingLeft={loadMoreIndentation}
               height={makeSize(itemFirstRowHeight)}
             >
               {/* the row itself is aria-busy and the "Loading..." text is the announcement; the spinner is decorative */}
               <BaseBox display="flex" alignItems="center" {...makeAccessible({ hidden: true })}>
                 <Spinner accessibilityLabel="Loading" size="medium" color="neutral" />
               </BaseBox>
-              <Text size="medium" color="interactive.text.gray.muted">
+              <Text size={loadMoreTextSize} color="interactive.text.gray.muted">
                 Loading...
               </Text>
             </BaseBox>
@@ -129,11 +134,11 @@ const _TreeViewLoadMore = (props: TreeViewLoadMoreProps): React.ReactElement | n
               display="flex"
               flexDirection="row"
               alignItems="center"
-              paddingLeft="spacing.7"
+              paddingLeft={loadMoreIndentation}
               height={makeSize(itemFirstRowHeight)}
             >
               <Text
-                size="medium"
+                size={loadMoreTextSize}
                 weight="medium"
                 color={
                   node.isDisabled

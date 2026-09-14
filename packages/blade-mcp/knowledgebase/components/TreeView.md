@@ -18,6 +18,14 @@ TreeView renders a hierarchical list of expandable, selectable items. It works s
 - Nesting beyond 3 levels logs a dev warning
 - `TreeViewLoadMore` should be the last child of its branch, at most one per branch
 - In `onChange`, `values` contains only selected **leaf** values; a branch's own value never appears in `values`. `selectedGroups` contains the topmost fully-selected branch values.
+- `size` is set once on `TreeView` and applies to the whole tree — there is no per-item size. It scales the row height, title, chevron, checkbox and indentation, but **not** `leading` / `trailing`, which are your own nodes and must be sized by you:
+  - **Icons follow the tree's `size`** — this applies to `leading` _and_ to a trailing icon. Use `size="small"` (12px) icons in a `size="small"` tree and `size="medium"` (16px) in a `medium` tree.
+  - **Trailing Counter / Badge / Text are always `size="small"`, at both tree sizes.** Counter and Badge default to `medium`, so you must pass `size="small"` explicitly — they should never out-weigh the title they annotate.
+- The four supported `trailing` treatments:
+  - **Counter** — `<Counter value={12} size="small" />` (same at both tree sizes)
+  - **Badge** — `<Badge size="small">Live</Badge>` (same at both tree sizes)
+  - **Icon** — any Blade icon, sized like `leading`: `<LockIcon color="surface.icon.gray.muted" size="small" />` in a small tree, `size="medium"` in a medium tree. This is the only trailing type that varies by tree size.
+  - **Text** — `<Text size="small" color="surface.text.gray.muted">Updated 2d ago</Text>`, also used for shortcut keys (same at both tree sizes)
 
 ## TypeScript Types
 
@@ -58,6 +66,15 @@ type TreeViewProps = {
    * Name of the tree, passed in the `onChange` payload
    */
   name?: string;
+  /**
+   * Visual density of every row in the tree. Applies tree-wide; individual rows cannot opt out.
+   *
+   * Note: `leading` and `trailing` are consumer-provided nodes, so their own `size`
+   * must be set by you (use `size="small"` on icons/avatars in a `size="small"` tree).
+   *
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -161,8 +178,74 @@ type TreeViewLoadMoreProps = {
 - Use `TreeViewLoadMore` as the last child of a branch (or the root) for progressive loading.
 - Keyboard: ArrowUp/ArrowDown move across visible rows; ArrowRight expands / enters a branch; ArrowLeft collapses / moves to the parent; Home/End jump to the first/last visible row; Enter/Space select (Space is a no-op on TreeViewLoadMore).
 - Branches are selectable by default (in single mode a branch is a valid selection; in multiple mode toggling it cascades). Set `isSelectable={false}` on a branch to make it a pure grouping row — clicking it (or Enter/Space) toggles expansion instead, and only leaf items can be selected.
+- Use `size="small"` for dense surfaces such as sidebars, file trees, or long dropdown overlays where many rows must stay visible; keep the default `size="medium"` for primary in-page trees. Match all icons (leading and trailing) to the tree's size, and always pass `size="small"` to trailing Counters and Badges.
 
 ## Examples
+
+### Dense tree with size="small", leading icons and trailing content
+
+```tsx
+import React from 'react';
+import {
+  TreeView,
+  TreeViewItem,
+  FolderIcon,
+  FileTextIcon,
+  LockIcon,
+  Counter,
+  Badge,
+  Text,
+} from '@razorpay/blade/components';
+
+function SidebarTree() {
+  return (
+    // `size` is tree-wide. Icons follow it; trailing Counter / Badge / Text are always small
+    <TreeView size="small" selectionType="multiple">
+      <TreeViewItem
+        title="Reports"
+        value="reports"
+        description="Generated every night"
+        leading={<FolderIcon color="interactive.icon.gray.muted" size="small" />}
+        // trailing: Counter
+        trailing={<Counter value={12} color="information" size="small" />}
+        defaultIsExpanded
+      >
+        <TreeViewItem
+          title="Settlements"
+          value="settlements"
+          leading={<FileTextIcon color="interactive.icon.gray.muted" size="small" />}
+          // trailing: Badge
+          trailing={
+            <Badge color="positive" size="small">
+              Live
+            </Badge>
+          }
+        />
+        <TreeViewItem
+          title="Payouts"
+          value="payouts"
+          leading={<FileTextIcon color="interactive.icon.gray.muted" size="small" />}
+          // trailing: Text
+          trailing={
+            <Text size="small" color="surface.text.gray.muted">
+              Updated 2d ago
+            </Text>
+          }
+        />
+        <TreeViewItem
+          title="Vendor payments"
+          value="vendor-payments"
+          leading={<FileTextIcon color="interactive.icon.gray.muted" size="small" />}
+          // trailing: Icon
+          trailing={<LockIcon color="surface.icon.gray.muted" size="small" />}
+        />
+      </TreeViewItem>
+    </TreeView>
+  );
+}
+
+export default SidebarTree;
+```
 
 ### Standalone multiple selection with cascade
 
@@ -294,11 +377,9 @@ import React from 'react';
 import { TreeView, TreeViewItem, TreeViewLoadMore } from '@razorpay/blade/components';
 
 // Mock API functions for demonstration
-const fetchCities = (): Promise<string[]> =>
-  Promise.resolve(['Bengaluru', 'Mysuru', 'Mangaluru']);
+const fetchCities = (): Promise<string[]> => Promise.resolve(['Bengaluru', 'Mysuru', 'Mangaluru']);
 
-const fetchMoreCities = (): Promise<string[]> =>
-  Promise.resolve(['Hubli', 'Belagavi', 'Gulbarga']);
+const fetchMoreCities = (): Promise<string[]> => Promise.resolve(['Hubli', 'Belagavi', 'Gulbarga']);
 
 function AsyncTree() {
   const [cities, setCities] = React.useState<string[]>([]);

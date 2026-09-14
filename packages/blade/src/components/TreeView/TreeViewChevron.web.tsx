@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { treeViewTokens } from './treeViewTokens';
+import { useTreeViewContext } from './useTreeView';
 import BaseBox from '~components/Box/BaseBox';
 import { ChevronRightIcon } from '~components/Icons';
 import { Spinner } from '~components/Spinner';
-import { size } from '~tokens/global';
 import { castWebType, makeSize } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeMotionTime } from '~utils/makeMotionTime';
-
-const CHEVRON_GUTTER_SIZE = size[20];
 
 type TreeViewChevronState = 'collapsed' | 'expanded' | 'loading' | 'leaf';
 
@@ -29,15 +28,18 @@ const StyledChevronRotator = styled(BaseBox)<{ isExpanded: boolean }>((props) =>
 }));
 
 /**
- * Internal chevron slot of TreeViewItem: a 20px slot with a 16px chevron
- * (or Spinner while loading). Every row reserves the slot - on leaves it stays empty (B9)
- * so a leaf's content lines up with the content of its branch siblings
+ * Internal chevron slot of TreeViewItem: a 20px slot with a 16px chevron on `medium`
+ * and a 16px slot with a 12px chevron on `small` (or a Spinner while loading).
+ * Every row reserves the slot - on leaves it stays empty (B9) so a leaf's content
+ * lines up with the content of its branch siblings
  */
 const TreeViewChevron = ({
   state,
   isDisabled,
   onClick,
 }: TreeViewChevronProps): React.ReactElement => {
+  const { size } = useTreeViewContext();
+  const { chevronSlotSize, chevronIconSize } = treeViewTokens[size];
   const isExpandable = state === 'collapsed' || state === 'expanded';
 
   return (
@@ -45,8 +47,8 @@ const TreeViewChevron = ({
       display="flex"
       alignItems="center"
       justifyContent="center"
-      width={makeSize(CHEVRON_GUTTER_SIZE)}
-      height={makeSize(CHEVRON_GUTTER_SIZE)}
+      width={makeSize(chevronSlotSize)}
+      height={makeSize(chevronSlotSize)}
       flexShrink={0}
       onClick={isExpandable && !isDisabled ? castWebType(onClick) : undefined}
       // treeitem's aria-expanded carries the expansion semantics; the chevron is decorative
@@ -56,7 +58,7 @@ const TreeViewChevron = ({
       {isExpandable ? (
         <StyledChevronRotator isExpanded={state === 'expanded'}>
           <ChevronRightIcon
-            size="medium"
+            size={chevronIconSize}
             color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
           />
         </StyledChevronRotator>
@@ -65,5 +67,5 @@ const TreeViewChevron = ({
   );
 };
 
-export { TreeViewChevron, CHEVRON_GUTTER_SIZE };
+export { TreeViewChevron };
 export type { TreeViewChevronState };
