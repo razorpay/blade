@@ -136,7 +136,7 @@ type CounterInputCommonProps = Pick<
    * Size of the counter input
    * @default 'medium'
    */
-  size?: 'xsmall' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Decides whether to show a loading spinner and disable interaction

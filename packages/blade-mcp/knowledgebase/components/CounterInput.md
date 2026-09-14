@@ -15,7 +15,7 @@ CounterInput is a specialized numerical input component that allows users to inc
 - Use `CounterInput` for small integer quantities under 100 (e.g., item counts, subscription seats, retry attempts, timeout values).
 - Use `min` and `max` props to enforce sensible boundaries — buttons auto-disable at limits.
 - Use `isLoading` to show a spinner during async updates (e.g., cart quantity changes).
-- Use `size="xsmall"` for compact inline controls and `size="large"` for prominent form fields.
+- Use `size="xsmall"` or `size="small"` for compact inline controls and `size="large"` for prominent form fields.
 
 **Don't**
 
@@ -81,7 +81,7 @@ type CounterInputCommonProps = Pick<
    * Size of the counter input
    * @default 'medium'
    */
-  size?: 'xsmall' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Decides whether to show a loading spinner and disable interaction
@@ -144,6 +144,7 @@ import { useState } from 'react';
 function CounterInputExample(): React.ReactElement {
   const [values, setValues] = useState({
     xsmall: 1,
+    small: 3,
     medium: 5,
     large: 10,
     intense: 3,
@@ -180,6 +181,16 @@ function CounterInputExample(): React.ReactElement {
         max={20}
         name="xsmall-counter"
         testID="xsmall-counter"
+      />
+
+      <CounterInput
+        label="Small Size"
+        size="small"
+        emphasis="subtle"
+        value={values.small}
+        onChange={handleChange('small')}
+        min={0}
+        max={20}
       />
 
       <CounterInput

@@ -51,6 +51,7 @@
 
   const iconSizeMap = {
     xsmall: 'small',
+    small: 'medium',
     medium: 'large',
     large: 'xlarge',
   } as const;
