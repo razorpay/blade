@@ -1,5 +1,16 @@
 # @razorpay/blade-svelte
 
+## 0.16.0
+
+### Minor Changes
+
+- eae82a35c: feat(CounterInput): add `small` size between `xsmall` and `medium`
+
+### Patch Changes
+
+- Updated dependencies [eae82a35c]
+  - @razorpay/blade-core@0.18.0
+
 ## 0.15.3
 
 ### Patch Changes

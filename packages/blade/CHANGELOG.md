@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 12.125.0
+
+### Minor Changes
+
+- 67644e0df: feat: add BottomBar with shared BottomDock surface
+- eae82a35c: feat(CounterInput): add `small` size between `xsmall` and `medium`
+
+### Patch Changes
+
+- 23603710e: fix(ActionList): resolve scroll jitter in virtualized ActionList on initial scroll by replacing useState with useRef for visible indices and removing unnecessary cache resets
+
 ## 12.124.0
 
 ### Minor Changes
