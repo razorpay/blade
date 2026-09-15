@@ -1,5 +1,11 @@
 # @razorpay/blade-core
 
+## 0.18.0
+
+### Minor Changes
+
+- eae82a35c: feat(CounterInput): add `small` size between `xsmall` and `medium`
+
 ## 0.17.0
 
 ### Minor Changes
