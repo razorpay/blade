@@ -14,14 +14,22 @@ type SliderInputProps = Pick<
   Pick<
     BaseInputProps,
     | 'name'
-    | 'onFocus'
-    | 'onBlur'
     | 'isDisabled'
     | 'isRequired'
     | 'accessibilityLabel'
     | 'testID'
     | keyof DataAnalyticsAttribute
   > & {
+    /**
+     * Called when the thumb receives focus.
+     */
+    onFocus?: (args: { name?: string; value: number }) => void;
+
+    /**
+     * Called when the thumb loses focus.
+     */
+    onBlur?: (args: { name?: string; value: number }) => void;
+
     /**
      * The value of the slider, in controlled mode.
      *

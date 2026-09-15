@@ -54,7 +54,8 @@ const snapValue = (value: number, { min, max, step }: ValueRange): number => {
  * Every value that gets a marker: one per step, plus `max` when it is not already a stop.
  */
 const getMarkerValues = ({ min, max, step }: ValueRange): number[] => {
-  if (step <= 0 || max <= min) return [min, max];
+  if (max <= min) return [min];
+  if (step <= 0) return [min, max];
 
   const wholeSteps = Math.floor((max - min) / step);
   const values: number[] = [];

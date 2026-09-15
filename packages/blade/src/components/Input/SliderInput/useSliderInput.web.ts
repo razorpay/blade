@@ -172,18 +172,33 @@ const useSliderInput = ({
     [isDragging, isScrubbing, isDisabled, setValue, getValueAtPointer],
   );
 
+  const releaseDrag = React.useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    setIsDragging(false);
+    setIsScrubbing(false);
+    pointerDownX.current = null;
+  }, []);
+
   const stopDragging = React.useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
       if (!isDragging) return;
-      if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
-        event.currentTarget.releasePointerCapture(event.pointerId);
-      }
-      setIsDragging(false);
-      setIsScrubbing(false);
-      pointerDownX.current = null;
+      releaseDrag(event);
       endInteraction(getValueAtPointer(event.clientX));
     },
-    [isDragging, endInteraction, getValueAtPointer],
+    [isDragging, releaseDrag, endInteraction, getValueAtPointer],
+  );
+
+  // A cancelled pointer can report an unreliable `clientX` (0 in some Safari versions), so the
+  // interaction commits the last value it reached rather than reading the pointer position.
+  const cancelDragging = React.useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => {
+      if (!isDragging) return;
+      releaseDrag(event);
+      endInteraction(value);
+    },
+    [isDragging, releaseDrag, endInteraction, value],
   );
 
   const onKeyDown = React.useCallback(
@@ -249,7 +264,7 @@ const useSliderInput = ({
       onPointerDown,
       onPointerMove,
       onPointerUp: stopDragging,
-      onPointerCancel: stopDragging,
+      onPointerCancel: cancelDragging,
     },
     thumbProps: { onKeyDown, onKeyUp },
   };

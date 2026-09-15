@@ -327,11 +327,11 @@ const _SliderInput = (
                 // which always holds a value. `isRequired` shows on the label instead.
                 onFocus={() => {
                   setIsFocused(true);
-                  onFocus?.({ name, value: String(currentValue) });
+                  onFocus?.({ name, value: currentValue });
                 }}
                 onBlur={() => {
                   setIsFocused(false);
-                  onBlur?.({ name, value: String(currentValue) });
+                  onBlur?.({ name, value: currentValue });
                 }}
                 {...thumbProps}
               />

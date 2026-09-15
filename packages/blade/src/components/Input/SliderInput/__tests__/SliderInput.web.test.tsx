@@ -194,6 +194,57 @@ describe('<SliderInput />', () => {
     });
   });
 
+  describe('focus events', () => {
+    it('should pass the value as a number to onFocus and onBlur', async () => {
+      const user = userEvents.setup();
+      const onFocus = jest.fn();
+      const onBlur = jest.fn();
+      renderWithTheme(
+        <SliderInput
+          label="Volume"
+          name="volume"
+          defaultValue={30}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />,
+      );
+      await user.tab();
+      expect(onFocus).toHaveBeenCalledWith({ name: 'volume', value: 30 });
+      await user.tab();
+      expect(onBlur).toHaveBeenCalledWith({ name: 'volume', value: 30 });
+    });
+  });
+
+  describe('pointer cancel', () => {
+    it('should commit the last reached value instead of the cancelled pointer position', () => {
+      const onChangeEnd = jest.fn();
+      const { getByRole } = renderWithTheme(
+        <SliderInput label="Volume" defaultValue={0} onChangeEnd={onChangeEnd} />,
+      );
+      const slider = getByRole('slider');
+      // jsdom has no PointerEvent, so without this `button` and `clientX` never reach the handler.
+      if (!window.PointerEvent) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        window.PointerEvent = class extends MouseEvent {
+          pointerId: number;
+          constructor(type: string, init: PointerEventInit = {}) {
+            super(type, init);
+            this.pointerId = init.pointerId ?? 0;
+          }
+        };
+      }
+      const rectSpy = jest
+        .spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+        .mockReturnValue({ left: 0, width: 116, top: 0, height: 32 } as DOMRect);
+      fireEvent.pointerDown(slider, { button: 0, clientX: 58, pointerId: 1 });
+      fireEvent.pointerCancel(slider, { clientX: 0, pointerId: 1 });
+      expect(onChangeEnd).toHaveBeenCalledTimes(1);
+      expect(onChangeEnd).toHaveBeenCalledWith({ value: 50 });
+      rectSpy.mockRestore();
+    });
+  });
+
   describe('controlled and uncontrolled', () => {
     it('should not move on its own when controlled', async () => {
       const user = userEvents.setup();

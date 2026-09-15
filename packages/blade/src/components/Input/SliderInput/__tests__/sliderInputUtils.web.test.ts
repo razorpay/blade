@@ -50,6 +50,10 @@ describe('SliderInput utils', () => {
       expect(getMarkerValues({ min: 0, max: 100, step: 25 })).toEqual([0, 25, 50, 75, 100]);
     });
 
+    it('should return a single marker when min equals max', () => {
+      expect(getMarkerValues({ min: 10, max: 10, step: 1 })).toEqual([10]);
+    });
+
     it('should append max when it is not itself a step', () => {
       expect(getMarkerValues({ min: 0, max: 100, step: 30 })).toEqual([0, 30, 60, 90, 100]);
     });
