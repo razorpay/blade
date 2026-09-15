@@ -2,6 +2,7 @@ import React from 'react';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import type { CSSProperties } from 'styled-components';
 import type { GetFocusRingArgs, FocusRingWrapperProps } from './types';
+import { focusRingColorTokens } from './focusRingTokens';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import { castNativeType, makeMotionTime } from '~utils';
@@ -18,10 +19,11 @@ const FocusRingWrapper = ({
   isFocused,
   borderRadius,
   disabled,
+  variant = 'primary',
   children,
 }: FocusRingWrapperProps): React.ReactElement => {
   const { theme } = useTheme();
-  const focusRingColor = getIn(theme.colors, 'surface.border.primary.muted');
+  const focusRingColor = getIn(theme.colors, focusRingColorTokens[variant]);
 
   const motionConfig = {
     duration: castNativeType(makeMotionTime(getIn(theme.motion.duration, 'xgentle') as number)),
