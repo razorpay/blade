@@ -224,9 +224,7 @@ describe('<SliderInput />', () => {
       const slider = getByRole('slider');
       // jsdom has no PointerEvent, so without this `button` and `clientX` never reach the handler.
       if (!window.PointerEvent) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        window.PointerEvent = class extends MouseEvent {
+        ((window as unknown) as { PointerEvent: unknown }).PointerEvent = class extends MouseEvent {
           pointerId: number;
           constructor(type: string, init: PointerEventInit = {}) {
             super(type, init);
