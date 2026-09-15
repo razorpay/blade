@@ -135,8 +135,12 @@
 
 .headerEmpty {
   position: relative;
-  /* Matches React `makeSize(size[8])` — grab handle (20px) + 8px = 28px header band. */
-  height: var(--spacing-3);
+  /* Match the grab handle's total flow height (padding-top spacing-4 + 4px
+   * bar + margin-bottom spacing-2 = 20px) so the body's top offset is
+   * identical whether showDragHandle is true or false. Also gives the
+   * non-floating close capsule (24px below this box's top edge: top: -4px +
+   * 28px height) clearance before body content instead of overlapping it. */
+  height: var(--spacing-6);
   touch-action: none;
 }
 
