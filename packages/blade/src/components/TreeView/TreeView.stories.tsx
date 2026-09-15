@@ -15,7 +15,7 @@ import { Dropdown, DropdownOverlay, FilterChipSelectInput } from '~components/Dr
 import { DropdownFooter } from '~components/Dropdown/DropdownHeaderFooter';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { FileTextIcon, FolderIcon, LockIcon } from '~components/Icons';
-import { List, ListItem } from '~components/List';
+import { List, ListItem, ListItemCode } from '~components/List';
 import { Avatar } from '~components/Avatar';
 import { Badge } from '~components/Badge';
 
@@ -57,22 +57,24 @@ const Page = (): React.ReactElement => {
       <Title>Keyboard Interactions</Title>
       <List>
         <ListItem>
-          <Code>ArrowDown</Code> / <Code>ArrowUp</Code> — move focus to the next / previous visible
-          row (rows hidden under collapsed branches are skipped)
+          <ListItemCode>ArrowDown</ListItemCode> / <ListItemCode>ArrowUp</ListItemCode> — move focus
+          to the next / previous visible row (rows hidden under collapsed branches are skipped)
         </ListItem>
         <ListItem>
-          <Code>ArrowRight</Code> — expand a collapsed branch; on an expanded branch, move to its
-          first child
+          <ListItemCode>ArrowRight</ListItemCode> — expand a collapsed branch; on an expanded
+          branch, move to its first child
         </ListItem>
         <ListItem>
-          <Code>ArrowLeft</Code> — collapse an expanded branch; on a leaf, move to its parent
+          <ListItemCode>ArrowLeft</ListItemCode> — collapse an expanded branch; on a leaf, move to
+          its parent
         </ListItem>
         <ListItem>
-          <Code>Home</Code> / <Code>End</Code> — move focus to the first / last visible row
+          <ListItemCode>Home</ListItemCode> / <ListItemCode>End</ListItemCode> — move focus to the
+          first / last visible row
         </ListItem>
         <ListItem>
-          <Code>Enter</Code> / <Code>Space</Code> — select the focused row (Space is a no-op on
-          TreeViewLoadMore; Enter activates it)
+          <ListItemCode>Enter</ListItemCode> / <ListItemCode>Space</ListItemCode> — select the
+          focused row (Space is a no-op on TreeViewLoadMore; Enter activates it)
         </ListItem>
       </List>
       <Text marginTop="spacing.4">
