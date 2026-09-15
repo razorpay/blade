@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './counterInput.module.css';
 
-export type CounterInputSize = 'xsmall' | 'medium' | 'large';
+export type CounterInputSize = 'xsmall' | 'small' | 'medium' | 'large';
 export type CounterInputEmphasis = 'subtle' | 'intense';
 export type CounterInputButtonDirection = 'decrement' | 'increment';
 
@@ -31,6 +31,7 @@ export const counterInputContainerStyles = cva(styles.container, {
   variants: {
     size: {
       xsmall: styles['container-xsmall'],
+      small: styles['container-small'],
       medium: styles['container-medium'],
       large: styles['container-large'],
     },
@@ -57,6 +58,7 @@ export const counterInputButtonStyles = cva(styles.button, {
   variants: {
     size: {
       xsmall: styles['button-xsmall'],
+      small: styles['button-small'],
       medium: styles['button-medium'],
       large: styles['button-large'],
     },
@@ -88,6 +90,7 @@ export const counterInputInputStyles = cva(styles.input, {
   variants: {
     size: {
       xsmall: styles['input-xsmall'],
+      small: styles['input-small'],
       medium: styles['input-medium'],
       large: styles['input-large'],
     },

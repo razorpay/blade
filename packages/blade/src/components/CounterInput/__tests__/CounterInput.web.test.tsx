@@ -13,7 +13,7 @@ const getCounterInputFieldWidth = ({
   size,
 }: {
   digitCount: number;
-  size: 'xsmall' | 'medium' | 'large';
+  size: 'xsmall' | 'small' | 'medium' | 'large';
 }): string => {
   const horizontalPadding =
     bladeTheme.spacing[baseInputCounterInputPaddingTokens.left[size]] +
@@ -24,6 +24,11 @@ const getCounterInputFieldWidth = ({
 describe('<CounterInput />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<CounterInput label="Quantity" />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render small size', () => {
+    const { container } = renderWithTheme(<CounterInput label="Quantity" size="small" />);
     expect(container).toMatchSnapshot();
   });
 
@@ -226,7 +231,7 @@ describe('<CounterInput />', () => {
     });
   });
 
-  it.each(['xsmall', 'large'] as const)(
+  it.each(['xsmall', 'small', 'large'] as const)(
     'should derive the width from %s padding tokens',
     (size) => {
       const { container } = renderWithTheme(

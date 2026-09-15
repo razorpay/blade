@@ -8,7 +8,7 @@ export type CounterInputEmphasis = 'subtle' | 'intense';
 /**
  * Size of the `CounterInput`.
  */
-export type CounterInputSize = 'xsmall' | 'medium' | 'large';
+export type CounterInputSize = 'xsmall' | 'small' | 'medium' | 'large';
 
 /**
  * Payload passed to the `onChange` callback when the value changes.
