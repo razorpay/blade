@@ -61,6 +61,15 @@ type AccordionProps = {
   size?: 'large' | 'medium';
 
   /**
+   * Sets the heading level (`aria-level`) for each accordion item's trigger.
+   * Match this to the surrounding document hierarchy so screen readers announce
+   * the correct heading depth (e.g. use `2` when the accordion lives inside an `<h2>` section).
+   *
+   * @default 3
+   */
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+
+  /**
    * maxWidth prop of Accordion
    *
    */
