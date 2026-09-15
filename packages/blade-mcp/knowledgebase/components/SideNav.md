@@ -22,13 +22,52 @@ The SideNav component provides a responsive side navigation layout positioned al
 
 The following types represent the props that the SideNav component and its subcomponents accept. These types help configure the navigation structure properly.
 
-````typescript
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
-import type { Theme } from '~components/BladeProvider';
+```typescript
+/**
+ * Gray surface background color tokens
+ */
+type SideNavBackgroundColor =
+  | 'surface.background.gray.subtle'
+  | 'surface.background.gray.moderate'
+  | 'surface.background.gray.intense';
 
-type SideNavBackgroundColor = `surface.background.gray.${DotNotationToken<
-  Theme['colors']['surface']['background']['gray']
->}`;
+/**
+ * Blade icon component, for example `CheckIcon` from `@razorpay/blade/components`
+ */
+type IconComponent = React.ComponentType<any>;
+
+/**
+ * Subset of Blade LinkProps used in this doc
+ */
+type LinkProps = {
+  href?: string;
+  target?: string;
+  rel?: string;
+};
+
+/**
+ * Subset of Blade DrawerProps used in this doc
+ */
+type DrawerProps = {
+  isOpen?: boolean;
+  onDismiss?: () => void;
+};
+
+/**
+ * Tooltip config, same as Tooltip component props
+ */
+type TooltipifyComponentProps = {
+  tooltip?: {
+    title?: string;
+    content: string;
+    placement?: 'top' | 'right' | 'bottom' | 'left';
+  };
+};
+
+/**
+ * Blade background color token, for example `surface.background.gray.subtle`
+ */
+type BackgroundColorToken = string;
 
 /**
  * Props for the SideNav component
@@ -99,7 +138,7 @@ type SideNavProps = {
    *
    * @default 'fixed'
    */
-  position?: StyledPropsBlade['position'];
+  position?: 'fixed' | 'absolute' | 'relative' | 'static' | 'sticky';
 } & StyledPropsBlade &
   TestID;
 
@@ -140,11 +179,9 @@ type SideNavLinkProps = {
   /**
    * as prop to pass ReactRouter's Link component.
    *
-   * ```jsx
    * import { Link } from 'react-router-dom';
    *
    * <SideNavLink as={Link} />
-   * ```
    */
   as: React.ComponentType<any>;
   /**
@@ -160,27 +197,23 @@ type SideNavLinkProps = {
   /**
    * Children slot to add Nested Menu
    *
-   * ```jsx
    * <SideNavLink title="L2 Trigger" href="/l2-first-item">
    *  <SideNavLevel>
    *    <SideNavLink title="L2 Item" href="/l2-first-item" />
    *    <SideNavLink title="L2 Item 2" href="/l2-second-item" />
    *  </SideNavLevel>
    * </SideNavLink>
-   * ```
    */
   children?: React.ReactElement;
   /**
    * Tooltip object to add tooltip to SideNavLink
    *
-   * ```jsx
    * <SideNavLink
    *  tooltip={{
    *    title: 'Tooltip Title',
    *    content: 'Tooltip description'
    *  }}
    * />
-   * ```
    */
   tooltip?: TooltipifyComponentProps['tooltip'];
   /**
@@ -226,7 +259,7 @@ type SideNavItemProps = {
    *
    * Meant for Indicator, Icon, etc
    */
-  leading: React.ReactElement;
+  leading: React.ReactElement | IconComponent;
   /**
    * Trailing slot for SideNavItem.
    *
@@ -248,18 +281,16 @@ type SideNavItemProps = {
    *
    * @default undefined
    */
-  backgroundColor?: BaseBoxProps['backgroundColor'];
+  backgroundColor?: BackgroundColorToken;
   /**
    * Tooltip object to add tooltip to SideNavItem
    *
-   * ```jsx
    * <SideNavItem
    *  tooltip={{
    *    title: 'Tooltip Title',
    *    content: 'Tooltip description'
    *  }}
    * />
-   * ```
    */
   tooltip?: SideNavLinkProps['tooltip'];
 } & DataAnalyticsAttribute;
@@ -292,8 +323,14 @@ type SideNavLevelProps = {
    * Children slot for nested SideNavLink components
    */
   children: React.ReactElement | React.ReactElement[];
+  /**
+   * Slot after the title of the level.
+   *
+   * @default undefined
+   */
+  titleSuffix?: React.ReactElement;
 };
-````
+```
 
 ## Usage Guidelines
 

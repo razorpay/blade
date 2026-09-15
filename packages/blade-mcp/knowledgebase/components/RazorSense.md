@@ -136,6 +136,11 @@ type RazorSenseProps = {
   // --- Light Effect ---
   /** Strength of light sweep effect (default: 0.2) */
   lightIntensity?: number;
+  /**
+   * Tint of the center element's specular highlight as RGB [0-1, 0-1, 0-1].
+   * Use [0, 0, 0] to remove the highlight on dark backgrounds. (default: [1, 1, 1])
+   */
+  specularTint?: [number, number, number];
   /** Frame when light effect starts (default: 140) */
   lightStartFrame?: number;
 

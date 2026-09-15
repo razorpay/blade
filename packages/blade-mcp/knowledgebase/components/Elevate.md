@@ -18,13 +18,19 @@ type ElevateProps = {
   /**
    * Content to be elevated
    */
-  children: React.ReactNode;
+  children: React.ReactElement;
 
   /**
    * Controls whether the element is in the highlighted state
    * @default false
    */
   isHighlighted?: boolean;
+
+  /**
+   * Whether component should animate in, animate out, or animate both in and out
+   * @default 'inout'
+   */
+  type?: 'in' | 'out' | 'inout';
 
   /**
    * Events that trigger the motion animation
@@ -37,7 +43,7 @@ type ElevateProps = {
 /**
  * Motion triggers for animation components
  */
-type MotionTrigger = 'hover' | 'focus' | 'press' | 'on-animate-interactions';
+type MotionTrigger = 'mount' | 'in-view' | 'focus' | 'on-animate-interactions' | 'hover' | 'tap';
 ```
 
 ## Usage Guidelines

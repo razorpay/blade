@@ -11,55 +11,72 @@ The Skeleton component is a placeholder UI element that displays a pulsing anima
 These types define the props that the Skeleton component accepts, allowing you to configure how the loading placeholders appear.
 
 ```typescript
+/**
+ * Type for responsive values, allowing different values at different breakpoints
+ */
+type ResponsiveValue<T> = T | { base?: T; xs?: T; s?: T; m?: T; l?: T; xl?: T };
+
+/**
+ * Spacing token (e.g. 'spacing.4'), a CSS size string (e.g. '100px', '50%'),
+ * or a keyword: 'none' | 'initial' | 'auto' | 'fit-content' | 'max-content' | 'min-content'
+ */
+type SpacingValueType = `spacing.${number}` | 'none' | 'initial' | 'auto' | 'fit-content' | 'max-content' | 'min-content' | (string & {});
+
+type BorderRadiusToken = 'none' | '2xsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | 'max' | 'round';
+
 type SkeletonProps = {
   /**
    * Sets the width of the skeleton.
-   * Can be any valid CSS width value or responsive object.
    */
-  width?: string | number | ResponsiveValue<string | number>;
-
+  width?: ResponsiveValue<SpacingValueType>;
   /**
    * Sets the maximum width of the skeleton.
-   * Can be any valid CSS max-width value or responsive object.
    */
-  maxWidth?: string | number | ResponsiveValue<string | number>;
-
+  maxWidth?: ResponsiveValue<SpacingValueType>;
   /**
    * Sets the minimum width of the skeleton.
-   * Can be any valid CSS min-width value or responsive object.
    */
-  minWidth?: string | number | ResponsiveValue<string | number>;
-
+  minWidth?: ResponsiveValue<SpacingValueType>;
   /**
    * Sets the height of the skeleton.
-   * Can be any valid CSS height value or responsive object.
    */
-  height?: string | number | ResponsiveValue<string | number>;
-
+  height?: ResponsiveValue<SpacingValueType>;
   /**
    * Sets the maximum height of the skeleton.
-   * Can be any valid CSS max-height value or responsive object.
    */
-  maxHeight?: string | number | ResponsiveValue<string | number>;
-
+  maxHeight?: ResponsiveValue<SpacingValueType>;
   /**
    * Sets the minimum height of the skeleton.
-   * Can be any valid CSS min-height value or responsive object.
    */
-  minHeight?: string | number | ResponsiveValue<string | number>;
-
+  minHeight?: ResponsiveValue<SpacingValueType>;
   /**
    * Sets the border radius of the skeleton.
    * @default 'medium'
    */
-  borderRadius?: BorderRadiusToken;
+  borderRadius?: ResponsiveValue<BorderRadiusToken>;
+
+  /**
+   * Flexbox properties
+   */
+  flex?: ResponsiveValue<string | number>;
+  flexDirection?: ResponsiveValue<'row' | 'column' | 'row-reverse' | 'column-reverse'>;
+  flexBasis?: ResponsiveValue<string | number>;
+  flexGrow?: ResponsiveValue<number>;
+  flexShrink?: ResponsiveValue<number>;
+  alignItems?: ResponsiveValue<string>;
+  alignContent?: ResponsiveValue<string>;
+  justifyContent?: ResponsiveValue<string>;
+  justifyItems?: ResponsiveValue<string>;
+  placeItems?: ResponsiveValue<string>;
+  gap?: ResponsiveValue<SpacingValueType>;
+  rowGap?: ResponsiveValue<SpacingValueType>;
+  columnGap?: ResponsiveValue<SpacingValueType>;
 
   /**
    * Unique identifier for testing purposes.
    */
   testID?: string;
-} & StyledPropsBlade &
-  Partial<FlexboxProps>;
+} & StyledPropsBlade;
 ```
 
 ## Usage Guidelines

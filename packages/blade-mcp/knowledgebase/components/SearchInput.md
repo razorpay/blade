@@ -11,12 +11,20 @@ SearchInput is a specialized input component designed for search functionality. 
 The following types define the props that the SearchInput component accepts. These types are essential for proper usage of the component in TypeScript projects.
 
 ```typescript
-type SearchInputSizes = 'medium' | 'large';
+type SearchInputSizes = 'xsmall' | 'small' | 'medium' | 'large';
 
 type SearchInputCommonProps = {
   label?: string;
   accessibilityLabel?: string;
   labelPosition?: 'top' | 'left';
+  /**
+   * Suffix element shown right after the label text (e.g. an info icon with Tooltip)
+   */
+  labelSuffix?: React.ReactNode;
+  /**
+   * Trailing element shown at the end of the label row (e.g. a Link)
+   */
+  labelTrailing?: React.ReactNode;
   helpText?: string;
   showHelpTextOnFocus?: boolean;
   placeholder?: string;
@@ -36,6 +44,10 @@ type SearchInputCommonProps = {
   onClearButtonClick?: () => void;
   isLoading?: boolean;
   showSearchIcon?: boolean;
+  /**
+   * Optional trailing element to be shown at the end of the input
+   */
+  trailing?: React.ReactNode;
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 

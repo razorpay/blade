@@ -17,13 +17,26 @@ type HeadingProps = {
    * Overrides the color of the Heading component.
    *
    * **Note** This takes priority over `type` and `contrast` prop to decide color of heading
+   * Accepts a text color token, e.g. 'surface.text.gray.normal', 'feedback.text.positive.intense', 'interactive.text.primary.normal'
    */
   color?: string;
-  weight?: 'regular' | 'semibold';
+  weight?: 'regular' | 'medium' | 'semibold';
   children: React.ReactNode;
-  textAlign?: string;
-  textDecorationLine?: string;
+  textAlign?: 'left' | 'right' | 'center' | 'justify';
+  textDecorationLine?: 'none' | 'dotted' | 'line-through' | 'underline';
   size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  /**
+   * Sets the CSS text-transform of the text
+   */
+  textTransform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase' | 'full-width' | 'full-size-kana';
+  /**
+   * Sets the CSS word-break of the text
+   */
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
+  /**
+   * Element timing value to track the render performance of the element
+   */
+  elementtiming?: string;
 } & TestID &
   StyledPropsBlade;
 ```

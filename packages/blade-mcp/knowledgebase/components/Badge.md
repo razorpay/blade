@@ -21,25 +21,25 @@ type BadgeProps = {
   /**
    * Sets the label for the badge.
    */
-  children: StringChildrenType;
+  children: string | number | (string | number)[];
 
   /**
    * Sets the color of the badge.
    * @default 'neutral'
    */
-  color?: FeedbackColors | 'primary';
+  color?: 'information' | 'negative' | 'neutral' | 'notice' | 'positive' | 'primary';
 
   /**
    * Sets the contrast of the badge.
    * @default 'subtle'
    */
-  emphasis?: SubtleOrIntense;
+  emphasis?: 'subtle' | 'intense';
 
   /**
    * Sets the size of the badge.
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Icon to be displayed in the badge.
@@ -53,6 +53,14 @@ type BadgeProps = {
   testID?: string;
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
+
+/**
+ * Type for Blade icon components
+ */
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
 ```
 
 ## Usage Guidelines

@@ -15,6 +15,12 @@ The Tabs component is a navigation element used to switch between different view
 These types represent the props that the Tabs component and its subcomponents accept.
 
 ```typescript
+// Blade icon component, e.g. `HomeIcon`
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+
 // Main Tabs component props
 type TabsProps = {
   /**
@@ -49,7 +55,7 @@ type TabsProps = {
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * The variant of the tabs.

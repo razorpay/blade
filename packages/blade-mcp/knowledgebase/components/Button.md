@@ -20,9 +20,10 @@ The following types represent the props that the Button component accepts. These
  */
 type ButtonProps = {
   /**
-   * The content of the button
+   * The text content of the button
+   * Required when icon is not provided
    */
-  children?: React.ReactNode;
+  children?: string | number | (string | number)[];
 
   /**
    * Button variant that defines the visual style
@@ -94,7 +95,7 @@ type ButtonProps = {
    * Where to open the linked URL
    * Only applicable when href is provided
    */
-  target?: '_blank' | '_self' | '_parent' | '_top';
+  target?: string;
 
   /**
    * Relationship between the current page and the linked URL
@@ -109,10 +110,16 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
 
   /**
+   * Sets tabindex property on the button element
+   */
+  tabIndex?: number;
+
+  /**
    * Ref object for the button element
    */
   ref?: React.RefObject<HTMLButtonElement | HTMLAnchorElement>;
-} & StyledPropsBlade &
+} & BladeCommonEvents &
+  StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute;
 
@@ -120,9 +127,25 @@ type ButtonProps = {
  * Type for icon components
  */
 type IconComponent = React.ComponentType<{
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
   color?: string;
 }>;
+
+/**
+ * Common event handlers accepted by interactive Blade components (web)
+ */
+type BladeCommonEvents = {
+  onBlur?: React.FocusEventHandler;
+  onFocus?: React.FocusEventHandler;
+  onMouseLeave?: React.MouseEventHandler;
+  onMouseMove?: React.MouseEventHandler;
+  onMouseDown?: React.MouseEventHandler;
+  onMouseUp?: React.MouseEventHandler;
+  onPointerDown?: React.PointerEventHandler;
+  onPointerEnter?: React.PointerEventHandler;
+  onTouchStart?: React.TouchEventHandler;
+  onTouchEnd?: React.TouchEventHandler;
+};
 ```
 
 ## Usage Guidelines

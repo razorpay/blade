@@ -15,6 +15,9 @@ Modal is a dialog component that appears in front of the app content to provide 
 These types represent the props that the Modal component and its subcomponents accept. When using the Modal component along with its subcomponents, you'll need these type definitions to understand the available props.
 
 ```typescript
+// Spacing token string like 'spacing.4', or a CSS length like '12px'
+type SpacingValueType = `spacing.${number}` | `${number}px` | `${number}%`;
+
 // The main Modal component props
 type ModalProps = {
   /**

@@ -25,6 +25,34 @@ The following types represent the props that the FloatingActionButton component 
  * Values mirror `Popover`'s `placement`, where the unsuffixed value is centered
  * and `start` / `end` name the inline edges.
  */
+/**
+ * Spacing token (e.g. 'spacing.5') or a CSS length (e.g. '20px')
+ */
+type SpacingValueType = `spacing.${number}` | 'auto' | 'initial' | 'none' | (string & {});
+
+/**
+ * Type for Blade icon components
+ */
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+/**
+ * Common event handlers accepted by interactive Blade components (web)
+ */
+type BladeCommonEvents = {
+  onBlur?: React.FocusEventHandler;
+  onFocus?: React.FocusEventHandler;
+  onMouseLeave?: React.MouseEventHandler;
+  onMouseMove?: React.MouseEventHandler;
+  onMouseDown?: React.MouseEventHandler;
+  onMouseUp?: React.MouseEventHandler;
+  onPointerDown?: React.PointerEventHandler;
+  onPointerEnter?: React.PointerEventHandler;
+  onTouchStart?: React.TouchEventHandler;
+  onTouchEnd?: React.TouchEventHandler;
+};
+
 type FloatingActionButtonPlacement = 'bottom-end' | 'bottom-start' | 'bottom';
 
 type FloatingActionButtonCommonProps = {
@@ -102,7 +130,7 @@ type FloatingActionButtonCommonProps = {
    */
   type?: 'button' | 'reset' | 'submit';
 
-  onClick?: (event: React.MouseEvent<HTMLButtonElement> | GestureResponderEvent) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 } & TestID &
   StyledPropsBlade &
   DataAnalyticsAttribute &
@@ -113,7 +141,7 @@ type FloatingActionButtonCommonProps = {
  * the action.
  */
 type FloatingActionButtonWithLabelProps = FloatingActionButtonCommonProps & {
-  children: StringChildrenType;
+  children: string | number | (string | number)[];
   accessibilityLabel?: string;
 };
 

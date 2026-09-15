@@ -11,6 +11,11 @@ The Tooltip component provides additional context about elements or their functi
 These types represent the props that the Tooltip component and its subcomponents accept.
 
 ```typescript
+import type { UseFloatingOptions } from '@floating-ui/react';
+
+// Spacing token string like 'spacing.4', or a CSS length like '200px'
+type SpacingValueType = `spacing.${number}` | `${number}px` | `${number}%`;
+
 // Main Tooltip component props
 type TooltipProps = {
   /**
@@ -37,11 +42,16 @@ type TooltipProps = {
    * @default 1100
    */
   zIndex?: number;
+  /**
+   * Sets the maximum width of the tooltip content
+   * @default 200px
+   */
+  maxWidth?: SpacingValueType | 'auto' | 'none' | 'initial' | 'fit-content' | 'max-content' | 'min-content';
 } & DataAnalyticsAttribute;
 
 // Props for TooltipInteractiveWrapper - used for non-interactive triggers like icons
-// Accepts all BaseBox props except 'as'
-type TooltipInteractiveWrapperProps = Omit<BaseBoxProps, 'as'>;
+// Accepts children and Box-like layout/styling props (margin, padding, display, etc.)
+type TooltipInteractiveWrapperProps = { children?: React.ReactNode } & StyledPropsBlade;
 ```
 
 ## Usage Guidelines

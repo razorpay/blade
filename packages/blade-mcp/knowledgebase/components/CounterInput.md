@@ -30,16 +30,30 @@ CounterInput is a specialized numerical input component that allows users to inc
 These types define the props that the CounterInput component accepts, along with its context types for internal state management.
 
 ```typescript
-type CounterInputCommonProps = Pick<
-  BaseInputProps,
-  | 'labelPosition'
-  | 'name'
-  | 'onFocus'
-  | 'onBlur'
-  | 'isDisabled'
-  | 'testID'
-  | keyof DataAnalyticsAttribute
-> & {
+type CounterInputCommonProps = {
+  /**
+   * Position of the label relative to the input
+   * @default 'top'
+   */
+  labelPosition?: 'top' | 'left';
+  /**
+   * Name of the input field
+   */
+  name?: string;
+  /**
+   * Callback invoked when the input receives focus
+   */
+  onFocus?: ({ name, value }: { name?: string; value?: string }) => void;
+  /**
+   * Callback invoked when the input loses focus
+   */
+  onBlur?: ({ name, value }: { name?: string; value?: string }) => void;
+  /**
+   * Whether the counter input is disabled
+   * @default false
+   */
+  isDisabled?: boolean;
+  testID?: string;
   /**
    * Accessibility label for the input (optional override)
    */
@@ -93,8 +107,8 @@ type CounterInputCommonProps = Pick<
    * Event handler called when the value changes via increment, decrement, or manual input
    */
   onChange?: (args: { value: number }) => void;
-} & StyledPropsBlade &
-  MotionMetaProp;
+} & DataAnalyticsAttribute &
+  StyledPropsBlade;
 
 export type CounterInputProps = CounterInputCommonProps;
 
@@ -118,11 +132,11 @@ type CounterInputContextType = {
   /**
    * Color of the counter input
    */
-  color?: BaseTextProps['color'];
+  color?: string;
   /**
    * Disabled color text of the counter input
    */
-  disabledTextColor?: BaseTextProps['color'];
+  disabledTextColor?: string;
   /**
    * Whether the counter input is inside an input group
    */
