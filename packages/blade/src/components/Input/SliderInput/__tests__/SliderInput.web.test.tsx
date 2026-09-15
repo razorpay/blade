@@ -172,6 +172,28 @@ describe('<SliderInput />', () => {
     });
   });
 
+  describe('name forwarding', () => {
+    it('should forward name in onChange and onChangeEnd callbacks', async () => {
+      const user = userEvents.setup();
+      const onChange = jest.fn();
+      const onChangeEnd = jest.fn();
+      renderWithTheme(
+        <SliderInput
+          label="Volume"
+          name="volume"
+          defaultValue={50}
+          onChange={onChange}
+          onChangeEnd={onChangeEnd}
+        />,
+      );
+      await user.tab();
+
+      await user.keyboard('{ArrowRight}');
+      expect(onChange).toHaveBeenLastCalledWith({ name: 'volume', value: 51 });
+      expect(onChangeEnd).toHaveBeenCalledWith({ name: 'volume', value: 51 });
+    });
+  });
+
   describe('controlled and uncontrolled', () => {
     it('should not move on its own when controlled', async () => {
       const user = userEvents.setup();

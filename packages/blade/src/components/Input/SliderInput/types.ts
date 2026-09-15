@@ -40,13 +40,13 @@ type SliderInputProps = Pick<
      *
      * Bind live display to this. For anything expensive, use `onChangeEnd` instead.
      */
-    onChange?: (args: { value: number }) => void;
+    onChange?: (args: { name?: string; value: number }) => void;
 
     /**
      * Called once when an interaction commits: on pointer release, or on the key up of a
      * keyboard adjustment. Use this for network calls and other expensive work.
      */
-    onChangeEnd?: (args: { value: number }) => void;
+    onChangeEnd?: (args: { name?: string; value: number }) => void;
 
     /**
      * Lowest selectable value.

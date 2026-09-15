@@ -191,7 +191,7 @@ const _SliderInput = (
     isScrubbing,
     controlProps,
     thumbProps,
-  } = useSliderInput({ value, defaultValue, onChange, onChangeEnd, range, isDisabled });
+  } = useSliderInput({ value, defaultValue, onChange, onChangeEnd, name, range, isDisabled });
 
   const markerValues = React.useMemo(() => getMarkerValues(range), [range]);
   const markerRatios = React.useMemo(

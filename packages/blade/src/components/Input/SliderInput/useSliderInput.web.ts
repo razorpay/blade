@@ -7,8 +7,9 @@ import { useControllableState } from '~utils/useControllable';
 type UseSliderInputProps = {
   value?: number;
   defaultValue?: number;
-  onChange?: (args: { value: number }) => void;
-  onChangeEnd?: (args: { value: number }) => void;
+  onChange?: (args: { name?: string; value: number }) => void;
+  onChangeEnd?: (args: { name?: string; value: number }) => void;
+  name?: string;
   range: ValueRange;
   isDisabled: boolean;
 };
@@ -45,6 +46,7 @@ const useSliderInput = ({
   defaultValue,
   onChange,
   onChangeEnd,
+  name,
   range,
   isDisabled,
 }: UseSliderInputProps): UseSliderInputReturn => {
@@ -67,7 +69,7 @@ const useSliderInput = ({
   const [rawValue, setRawValue] = useControllableState<number>({
     value: valueProp,
     defaultValue: defaultValue ?? range.min,
-    onChange: (next) => onChange?.({ value: next }),
+    onChange: (next) => onChange?.({ name, value: next }),
   });
 
   // A controlled value that is off-step still renders on the nearest step, so what the thumb
@@ -85,10 +87,10 @@ const useSliderInput = ({
       const startValue = valueAtInteractionStart.current;
       valueAtInteractionStart.current = null;
       if (startValue !== null && startValue !== finalValue) {
-        onChangeEnd?.({ value: finalValue });
+        onChangeEnd?.({ name, value: finalValue });
       }
     },
-    [onChangeEnd],
+    [onChangeEnd, name],
   );
 
   React.useEffect(() => {
