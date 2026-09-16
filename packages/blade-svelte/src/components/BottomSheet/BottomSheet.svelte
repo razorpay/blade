@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount, untrack } from 'svelte';
-  import { DragGesture, rubberbandIfOutOfBounds } from '@use-gesture/vanilla';
+  import { DragGesture } from '@use-gesture/vanilla';
+  import { rubberbandIfOutOfBounds } from '@use-gesture/core/utils';
   import {
     metaAttribute,
     MetaConstants,

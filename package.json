@@ -12,7 +12,8 @@
       "packages/blade-core",
       "packages/eslint-plugin-blade",
       "packages/blade-mcp",
-      "packages/blade-svelte"
+      "packages/blade-svelte",
+      "packages/examples/svelte-app"
     ],
     "nohoist": [
       "@razorpay/blade/**"
