@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseAnimatedValue /> should match snapshot 1`] = `
+.c3.c3.c3.c3.c3 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.c4.c4.c4.c4.c4 {
+  visibility: hidden;
+}
+
+.c2.c2.c2.c2.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: block;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: inline-grid;
+}
+
+.c0.c0.c0.c0.c0 > * {
+  grid-area: 1 / 1;
+}
+
+<div>
+  <span
+    class="c0"
+    data-blade-component="animated-value"
+  >
+    <span
+      class="c1"
+    >
+      <span
+        class="c2"
+        data-blade-component="visually-hidden"
+      >
+        7
+      </span>
+      <span
+        aria-hidden="true"
+      >
+        <span
+          class="c3"
+        >
+          <span
+            aria-hidden="true"
+            class="c4"
+          >
+            0
+          </span>
+          <span
+            class="BaseMotionweb__StyledDiv-gsyvko-0"
+            style="position: absolute; top: 0px; left: 0px; transform: translateY(-63.63636363636363%);"
+          >
+            <span
+              class="c5"
+            >
+              0
+            </span>
+            <span
+              class="c5"
+            >
+              1
+            </span>
+            <span
+              class="c5"
+            >
+              2
+            </span>
+            <span
+              class="c5"
+            >
+              3
+            </span>
+            <span
+              class="c5"
+            >
+              4
+            </span>
+            <span
+              class="c5"
+            >
+              5
+            </span>
+            <span
+              class="c5"
+            >
+              6
+            </span>
+            <span
+              class="c5"
+            >
+              7
+            </span>
+            <span
+              class="c5"
+            >
+              8
+            </span>
+            <span
+              class="c5"
+            >
+              9
+            </span>
+            <span
+              class="c5"
+            >
+              0
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+`;

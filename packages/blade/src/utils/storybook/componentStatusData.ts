@@ -1040,6 +1040,21 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'SliderInput',
+    description:
+      'SliderInput lets users pick a number from a range by dragging along a track, with optional step markers and a value scale.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        storybookLink: 'Components/Input/SliderInput',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'PhoneNumberInput',
     description:
       'A phone number input is an input field that allow users to input phone numbers with a keyboard. It supports entering phone numbers from different geographic locations.',
