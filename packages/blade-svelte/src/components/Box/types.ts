@@ -24,7 +24,7 @@ export type BoxAs =
   | 'span'
   | 'label';
 
-export type BoxProps = Omit<HTMLAttributes<HTMLElement>, 'class' | 'children' | 'this'> & {
+export type BoxProps = Omit<HTMLAttributes<HTMLElement>, 'class' | 'style' | 'children' | 'this'> & {
   /**
    * Element/tag Box renders as.
    *
