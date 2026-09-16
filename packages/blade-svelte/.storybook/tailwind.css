@@ -1,0 +1,9 @@
+/*
+ * Blade Tailwind entry for Storybook / dev.
+ *
+ * NO `@tailwind base` — Blade is a library and must not inject Tailwind's global reset (preflight is
+ * also disabled in the preset). Only components (the plugin's `blade-*` hard-case classes) and
+ * utilities (the atomic CVA classes) are emitted, over the union of blade-core + blade-svelte source.
+ */
+@tailwind components;
+@tailwind utilities;

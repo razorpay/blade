@@ -1,7 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { utilityClasses } from '../utilities';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './badge.module.css';
+import { cn } from '~utils/cx';
 
 export type BadgeSize = 'xsmall' | 'small' | 'medium' | 'large';
 export type BadgeColor = 'neutral' | 'positive' | 'negative' | 'notice' | 'information' | 'primary';
@@ -123,68 +121,107 @@ export function getBadgeIconColorToken({
 }
 
 /**
- * CVA-based badge styles
+ * CVA-based badge styles (Tailwind).
+ *
+ * `color` and `emphasis` are declared as variants with empty strings because the background depends
+ * on BOTH together — in CSS Modules this was a chained selector (`.color-neutral.emphasis-subtle`);
+ * with no stylesheet to hold it, each combination becomes a `compoundVariants` entry. Heights are
+ * arbitrary one-offs (`h-[14px]`) since Badge heights (14/16/20/24) are not spacing tokens. Radius
+ * is fully determined by the checkout-scoped shape rules below, so it lives entirely in
+ * `compoundVariants` (no base radius to conflict with).
  */
-export const badgeStyles = cva(styles.badge, {
-  variants: {
-    size: {
-      xsmall: styles.xsmall,
-      small: styles.small,
-      medium: styles.medium,
-      large: styles.large,
+export const badgeStyles = cva(
+  'inline-flex items-center justify-center w-fit flex-nowrap bg-transparent',
+  {
+    variants: {
+      size: {
+        xsmall: 'h-[14px] px-spacing-2',
+        small: 'h-[16px] px-spacing-2',
+        medium: 'h-[20px] px-spacing-2',
+        large: 'h-[24px] px-spacing-3',
+      },
+      color: {
+        neutral: '',
+        positive: '',
+        negative: '',
+        notice: '',
+        information: '',
+        primary: '',
+      },
+      emphasis: {
+        subtle: '',
+        intense: '',
+      },
     },
-    color: {
-      neutral: styles['color-neutral'],
-      positive: styles['color-positive'],
-      negative: styles['color-negative'],
-      notice: styles['color-notice'],
-      information: styles['color-information'],
-      primary: styles['color-primary'],
-    },
-    emphasis: {
-      subtle: styles['emphasis-subtle'],
-      intense: styles['emphasis-intense'],
+    compoundVariants: [
+      // Background: color × emphasis (was chained `.color-*.emphasis-*` selectors).
+      { color: 'neutral', emphasis: 'subtle', class: 'bg-feedback-background-neutral-subtle' },
+      { color: 'neutral', emphasis: 'intense', class: 'bg-feedback-background-neutral-intense' },
+      { color: 'positive', emphasis: 'subtle', class: 'bg-feedback-background-positive-subtle' },
+      { color: 'positive', emphasis: 'intense', class: 'bg-feedback-background-positive-intense' },
+      { color: 'negative', emphasis: 'subtle', class: 'bg-feedback-background-negative-subtle' },
+      { color: 'negative', emphasis: 'intense', class: 'bg-feedback-background-negative-intense' },
+      { color: 'notice', emphasis: 'subtle', class: 'bg-feedback-background-notice-subtle' },
+      { color: 'notice', emphasis: 'intense', class: 'bg-feedback-background-notice-intense' },
+      {
+        color: 'information',
+        emphasis: 'subtle',
+        class: 'bg-feedback-background-information-subtle',
+      },
+      {
+        color: 'information',
+        emphasis: 'intense',
+        class: 'bg-feedback-background-information-intense',
+      },
+      { color: 'primary', emphasis: 'subtle', class: 'bg-surface-background-primary-subtle' },
+      { color: 'primary', emphasis: 'intense', class: 'bg-surface-background-primary-intense' },
+      // Checkout-scoped shape:
+      // subtle → pill (border-radius-max)
+      // intense + large → border-radius-small; intense + xsmall/small/medium → border-radius-xsmall
+      { emphasis: 'subtle', class: 'rounded-max' },
+      { emphasis: 'intense', size: 'large', class: 'rounded-small' },
+      { emphasis: 'intense', size: 'xsmall', class: 'rounded-xsmall' },
+      { emphasis: 'intense', size: 'small', class: 'rounded-xsmall' },
+      { emphasis: 'intense', size: 'medium', class: 'rounded-xsmall' },
+    ],
+    defaultVariants: {
+      size: 'medium',
+      color: 'neutral',
+      emphasis: 'subtle',
     },
   },
-  // Checkout-scoped shape variants:
-  // subtle → pill (border-radius-max)
-  // intense + large → border-radius-small; intense + xsmall/small/medium → border-radius-xsmall
-  compoundVariants: [
-    { emphasis: 'subtle', class: styles['shape-pill'] },
-    { emphasis: 'intense', size: 'large', class: styles['shape-size-large'] },
-    { emphasis: 'intense', size: 'xsmall', class: styles['shape-size-default'] },
-    { emphasis: 'intense', size: 'small', class: styles['shape-size-default'] },
-    { emphasis: 'intense', size: 'medium', class: styles['shape-size-default'] },
-  ],
-  defaultVariants: {
-    size: 'medium',
-    color: 'neutral',
-    emphasis: 'subtle',
-  },
-});
+);
 
-// Export content and icon classes for use in component templates
-export const badgeContentClass = styles.content;
-export const badgeIconClass = styles.icon;
+// Content and icon wrapper classes for use in component templates (literal so the JIT scanner sees them).
+export const badgeContentClass =
+  'flex flex-row items-center justify-center overflow-hidden bg-transparent';
+export const badgeIconClass = 'flex items-center justify-center shrink-0';
+
+const badgeIconPaddingClasses: Record<BadgeSize, string> = {
+  xsmall: 'pr-spacing-1',
+  small: 'pr-spacing-1',
+  medium: 'pr-spacing-2',
+  large: 'pr-spacing-2',
+};
 
 /**
  * Get icon padding class based on size
  */
 export function getBadgeIconPaddingClass(size: BadgeSize): string {
-  return styles[`icon-padding-${size}`];
+  return badgeIconPaddingClasses[size];
 }
 
 /**
- * Get text margin class based on size, using utility classes
+ * Get text margin class based on size (namespaced Tailwind margin utility)
  */
 export function getBadgeTextMarginClass(size: BadgeSize): string {
   const marginMap: Record<BadgeSize, string> = {
-    xsmall: 'margin-x-spacing-1',
-    small: 'margin-x-spacing-1',
-    medium: 'margin-x-spacing-2',
-    large: 'margin-x-spacing-2',
+    xsmall: 'mx-spacing-1',
+    small: 'mx-spacing-1',
+    medium: 'mx-spacing-2',
+    large: 'mx-spacing-2',
   };
-  return utilityClasses[marginMap[size] as keyof typeof utilityClasses];
+  return marginMap[size];
 }
 
 /**
@@ -196,24 +233,24 @@ export function getBadgeTemplateClasses(): Record<string, string> {
   return {
     content: badgeContentClass,
     icon: badgeIconClass,
-    iconPaddingXsmall: styles['icon-padding-xsmall'],
-    iconPaddingSmall: styles['icon-padding-small'],
-    iconPaddingMedium: styles['icon-padding-medium'],
-    iconPaddingLarge: styles['icon-padding-large'],
-    shapePill: styles['shape-pill'],
-    shapeSizeLarge: styles['shape-size-large'],
-    shapeSizeDefault: styles['shape-size-default'],
+    iconPaddingXsmall: 'pr-spacing-1',
+    iconPaddingSmall: 'pr-spacing-1',
+    iconPaddingMedium: 'pr-spacing-2',
+    iconPaddingLarge: 'pr-spacing-2',
+    shapePill: 'rounded-max',
+    shapeSizeLarge: 'rounded-small',
+    shapeSizeDefault: 'rounded-xsmall',
   } as const;
 }
 
 /**
  * Generate all classes for Badge component
- * This is the single source of truth for all Badge styling
+ * This is the single source of truth for all Badge styling.
+ * Routed through `cn` so the checkout shape radius and any `className` override
+ * win deterministically over the base (Tailwind utility conflict resolution).
  */
 export function getBadgeClasses(props: BadgeVariants & { className?: string }): string {
   const { className, ...cvaProps } = props;
 
-  const classes = [badgeStyles(cvaProps), className].filter(Boolean).join(' ');
-
-  return classes;
+  return cn(badgeStyles(cvaProps), className);
 }

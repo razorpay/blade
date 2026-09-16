@@ -1,7 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { utilityClasses } from '../utilities';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './button.module.css';
+import { cn } from '~utils/cx';
 
 export type ButtonVariants = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -315,39 +313,50 @@ export function getButtonIconOnlySize(): Record<'xsmall' | 'small' | 'medium' | 
   } as const;
 }
 
-export const buttonStyles = cva(styles.btn, {
+/**
+ * CVA-based button styles (Tailwind).
+ *
+ * The heavy button styling (filled/outlined box-shadow stacks, radial-highlight `::before`,
+ * accent `--btn-*` var bundles, loaders, keyframes) is emitted as `blade-btn-*` COMPONENT classes by
+ * the Blade Tailwind plugin (`tailwind/plugin.cjs`) — CVA just references them by literal name here.
+ *
+ * `information` / `notice` colors intentionally map to '' : the original CSS module defined no
+ * `.color-information` / `.color-notice` rule (so `styles['color-*']` was `undefined`), and this
+ * preserves that behavior exactly.
+ */
+export const buttonStyles = cva('blade-btn', {
   variants: {
     variant: {
-      primary: styles.primary,
-      secondary: styles.secondary,
-      tertiary: styles.tertiary,
+      primary: 'blade-btn-primary',
+      secondary: 'blade-btn-secondary',
+      tertiary: 'blade-btn-tertiary',
     },
     color: {
-      primary: styles['color-primary'],
-      white: styles['color-white'],
-      positive: styles['color-positive'],
-      negative: styles['color-negative'],
-      information: styles['color-information'],
-      notice: styles['color-notice'],
-      neutral: styles['color-neutral'],
-      transparent: styles['color-transparent'],
+      primary: 'blade-btn-color-primary',
+      white: 'blade-btn-color-white',
+      positive: 'blade-btn-color-positive',
+      negative: 'blade-btn-color-negative',
+      information: '',
+      notice: '',
+      neutral: 'blade-btn-color-neutral',
+      transparent: 'blade-btn-color-transparent',
     },
     size: {
-      xsmall: styles.xsmall,
-      small: styles.small,
-      medium: styles.medium,
-      large: styles.large,
+      xsmall: 'blade-btn-xsmall',
+      small: 'blade-btn-small',
+      medium: 'blade-btn-medium',
+      large: 'blade-btn-large',
     },
     isDisabled: {
-      true: utilityClasses['cursor-not-allowed'],
-      false: utilityClasses['cursor-pointer'],
+      true: 'cursor-not-allowed',
+      false: 'cursor-pointer',
     },
     isFullWidth: {
-      true: utilityClasses['width-full'],
+      true: 'w-full',
       false: '',
     },
     isIconOnly: {
-      true: styles['icon-only'],
+      true: 'blade-btn-icon-only',
       false: '',
     },
   },
@@ -361,17 +370,17 @@ export const buttonStyles = cva(styles.btn, {
   },
 });
 
-// Export content and icon classes for use in component templates
-export const buttonContentClass = styles.content;
-export const buttonIconClass = styles.icon;
-export const loadingClass = styles.loading;
-export const animatedContentClass = styles['animated-content'];
-export const pressedClass = styles.pressed;
-export const dotsLoaderClass = styles['dots-loader'];
-export const progressOverlayClass = styles['progress-overlay'];
-export const progressFillClass = styles['progress-overlay-fill'];
-export const definiteLoadingClass = styles['definite-loading'];
-export const liveRegionClass = styles['live-region'];
+// Component class names for use in templates (defined in tailwind/plugin.cjs).
+export const buttonContentClass = 'blade-btn-content';
+export const buttonIconClass = 'blade-btn-icon';
+export const loadingClass = 'blade-btn-loading';
+export const animatedContentClass = 'blade-btn-animated-content';
+export const pressedClass = 'blade-btn-pressed';
+export const dotsLoaderClass = 'blade-btn-dots-loader';
+export const progressOverlayClass = 'blade-btn-progress-overlay';
+export const progressFillClass = 'blade-btn-progress-overlay-fill';
+export const definiteLoadingClass = 'blade-btn-definite-loading';
+export const liveRegionClass = 'blade-btn-live-region';
 
 /**
  * Get all Button component template classes as an object.
@@ -386,7 +395,7 @@ export function getButtonTemplateClasses(): Record<string, string> {
   return {
     content: buttonContentClass,
     icon: buttonIconClass,
-    avatarGroup: styles['avatar-group'],
+    avatarGroup: 'blade-btn-avatar-group',
     loading: loadingClass,
     animatedContent: animatedContentClass,
     pressed: pressedClass,
@@ -406,7 +415,8 @@ export function getButtonTemplateClasses(): Record<string, string> {
 export function getButtonClasses(props: ButtonVariants & { className?: string }): string {
   const { className, ...cvaProps } = props;
 
-  const classes = [buttonStyles(cvaProps), className].filter(Boolean).join(' ');
-
-  return classes;
+  // Routed through `cn` so a `className` override (e.g. styled-props / styleOverride utilities) wins
+  // over the base for the same CSS property. Blade's `blade-btn-*` component classes are unknown to
+  // tailwind-merge and pass through unchanged, preserving their source order.
+  return cn(buttonStyles(cvaProps), className);
 }
