@@ -51,4 +51,8 @@ export type BoxProps = Omit<
    */
   testID?: string;
   children?: Snippet | string;
+  /**
+   * Analytics data attributes (`data-analytics-*`).
+   */
+  [key: `data-analytics-${string}`]: string;
 };

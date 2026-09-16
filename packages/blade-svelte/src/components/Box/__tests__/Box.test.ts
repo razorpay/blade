@@ -42,6 +42,20 @@ describe('<Box />', () => {
     expect(box).toHaveAttribute('aria-label', 'Summary');
   });
 
+  it('forwards data-analytics-* attributes via makeAnalyticsAttribute', () => {
+    render(Box, {
+      props: {
+        testID: 'box',
+        'data-analytics-name': 'checkout-box',
+        'data-analytics-section': 'summary',
+      },
+    });
+
+    const box = screen.getByTestId('box');
+    expect(box).toHaveAttribute('data-analytics-name', 'checkout-box');
+    expect(box).toHaveAttribute('data-analytics-section', 'summary');
+  });
+
   it('forwards style prop (including CSS custom properties) to the underlying element', () => {
     render(Box, {
       props: { testID: 'box', style: { '--cols': '3', color: 'red' } },
