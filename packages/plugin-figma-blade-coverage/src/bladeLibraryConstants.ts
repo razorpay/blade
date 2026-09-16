@@ -710,7 +710,7 @@ export const bladeThemeData = {
 
     // Inputs
     'Color Input': {
-      key: 'b89088d893cabff3049e0b578b9aae6a122a735c',
+      key: '27e74ca32ecefaf0e006417424a57355485543fd',
     },
     'Counter Input': {
       key: '9b763196fd3ce08461b0971f5f6dd5dadd5844bc',
@@ -777,9 +777,312 @@ export const bladeThemeData = {
       key: 'f9a4bb36917c41ce510ec4454903ad2f6141fca9',
     },
 
+
+    // Chat History - Pattern
+    '_chat sidebar': {
+      key: '21316f97d05a3f26d9f16e883ee56c7ec3626f30',
+    },
+    '_Ray Side Nav Header': {
+      key: '0ab29e7535737223e009fc8cab5b0413ef755744',
+    },
+
+    // Custom Menu Item
+    '_Custom Menu/ Leading Item': {
+      key: '0c7d3c67f6e2688a3a0cd8af39712141fa465045',
+    },
+    '_Custom Menu/ Trailing Item': {
+      key: 'af47915992d310846e04c40a11bffd2d55e7c0ca',
+    },
+    _customMenuItem: {
+      key: 'ba0af568f9be24b33441fd44254afb766da7cfa6',
+    },
+    '_customMenuItem/ Leading Item': {
+      key: 'bc951842c7cb41da408fdaab0fb80d65d293bfc4',
+    },
+    '_customMenuItem/ Trailing Item': {
+      key: 'f5e62b2aebef60be274d1b9ca2b8157728eba3c5',
+    },
+    '.topNav-slot-replacement': {
+      key: 'bfe0465e47803c1619aad614e20e8b4490d11da7',
+    },
+
+    // Global Search
+    '_Global Search [PATTERN]': {
+      key: 'a9de4d8e9662377fde67dd0e1ecf043783b77d89',
+    },
+
+    // Lightbox
+    _img: {
+      key: 'aa2e1fd00e554201ea9cc8a87c65181a204a0700',
+    },
+
+    // Media Card
+    _MediaCard: {
+      key: '1d93993e02fd4d401a9706aa63d67f4028e294aa',
+    },
+    _MediaCardFooter: {
+      key: '6f130e96f150f635d68c8d0119a9188032adf8da',
+    },
+    '_Test Image': {
+      key: '0e9936a8d7171cb46562452c2d25bed06cb87d61',
+    },
+
+    // Mobile Search
+    '_Mobile Search [PATTERN]': {
+      key: 'bf4f023e88689a2f1722d22a7d5f8d96a27bbf37',
+    },
+
+    // Input SliderInput
+    '_Slider Track': {
+      key: '78fa1e932a2c475d2621d765fb9858b323513964',
+    },
+    SliderInput: {
+      key: '594017a7ef95eb1c229a675551c3a866e48714f4',
+    },
+
+    // Bottom Navigation
+    '_Bottom Dock': {
+      key: 'aaeb961a0f9b5041e51780235cf4b6f1fda5d143',
+    },
+    '_Bottom Nav Item': {
+      key: '5b4b923797415efc27995f67f4854678518c74d3',
+    },
+    '.BottomNavItems': {
+      key: 'f8b58a92af17333a02ecfe3a2271b5f1b5a10f4f',
+    },
+
+    // Breadcrumb
+    '.stepper-item': {
+      key: '0aacdbba892674631f5701534fc31b7332eccd26',
+    },
+
+    // Buttons & Actions
+    'Floating Action Button (FAB)': {
+      key: 'cfbfdeaabdbfe46164cdc92fa0ab0eb75f37cf7d',
+    },
+
+    // Card
+    '_list-frame-padded': {
+      key: '6bf0543da037af4b7e461bef07de9eb5d5338f20',
+    },
+    '_Selectable Card': {
+      key: '5b255f197b837610b2ad57537ab213ace8d481c9',
+    },
+    '_Selectable Card Group/ Base': {
+      key: '08d8222b101bfa0ef275ddccf7caecc1bb6aa880',
+    },
+    '_Selectable Card Group/ Leading': {
+      key: '06abf52811ef07a8a913ea9b59bda80793bb25d1',
+    },
+    '_Selectable Card Group/ Trailing': {
+      key: '0a828cbc3ded14d6e41b7f6c55481b328aea0760',
+    },
+
+    // Card Group
+    '_Action List Country': {
+      key: 'b86a22e08451e76c812ac4b2e397f8496a7799cc',
+    },
+    '_Card Group Collapsible Item': {
+      key: '4fc972b81dcce02bc9010fe5acce6cc0dff9c4d2',
+    },
+    '_Card Group Collapsible Item Body': {
+      key: '56528ad6ec90cc9caa4d0d03973169f2c50e38c5',
+    },
+    '_Card Group Item': {
+      key: '44c2fe8a8c9948c390b356921bd32126626baba7',
+    },
+    'Card Group': {
+      key: 'd693ecd11eb524f667217452ea0e2e6416b390ff',
+    },
+
+    // Chart Utilities
+    '_Chart Column': {
+      key: 'adefe103818d41d9822cfacb6486ecedd7e8b6cb',
+    },
+    '_Chart Label X': {
+      key: 'e85d54286c009b6fa382eb3e6e70fe1b2366b182',
+    },
+    '_Chart Label Y': {
+      key: '2ca9ca248c0bdaf1c51b2e578558dcc04b52cef5',
+    },
+    '_Chart Row': {
+      key: '5cb17a6681039e9a3ccb951257e0a8c0283efef2',
+    },
+    '_X-Axis Label': {
+      key: '8ba927416e37e715fdf9f95072285d18df5b10e5',
+    },
+    '_Y-Axis Label': {
+      key: '96fd2bf2904c073e660d1d9ab159f9609dc5214a',
+    },
+
+    // Chat Message
+    '_chat message/ chat-file-preview': {
+      key: 'e95401f12758bdb9f0e30f081c3389ec1b4d353e',
+    },
+    '.chat message/ chain of thought': {
+      key: '45d07e0d0f550abab66bcf5277105e4f5edc16c8',
+    },
+    '.container': {
+      key: '22f8cbc610f07a8209119872887c8c12db8407ef',
+    },
+    '.text-container': {
+      key: '7aa67a4f85914205e9c7f1ec12aad6f9c6782354',
+    },
+
+    // Chip
+    _Chip: {
+      key: '3a19f8d92c4f0de6ab6f05e1103abd50db8226a4',
+    },
+
+    // Date Picker
+    '_Clock Base': {
+      key: '1771b3be7bca034ad82e9bef27df1ec190f30c9d',
+    },
+    '_Date Picker / Calendar Base': {
+      key: '48bb82b04da1f827c1a8e721c5956791402cab8f',
+    },
+    '_Date Picker / Date Cell': {
+      key: 'bffa03a9f4c25412a914f3c898718213074319ca',
+    },
+    '_Date Picker / Footer': {
+      key: 'c53a44375a2eb4a84228bed48ef7ffec39a01166',
+    },
+    '_Date Picker / Month Year Cell': {
+      key: 'b23ee8b4744cbef519bb0456957946bae74df99e',
+    },
+    '_Date Picker Base': {
+      key: 'c3d2466e99acfba9e601b573fbe4f01816bb2ac4',
+    },
+    '_Date Picker/  Menu': {
+      key: '4377d6756326d4d7426a0b500285e5e241882f00',
+    },
+    '_Date Picker/ Quick Range Item': {
+      key: '4d52b3e39622582e03744c927cfe9e142e981161',
+    },
+
+    // File Upload
+    '_thumbnail Vector': {
+      key: 'c2d19fc856abbe5c3779101c340c825816df0e44',
+    },
+    _uploadCTA: {
+      key: '972473bcc8c95fc3a9be5d74a89307a0826becab',
+    },
+    _uploadItem: {
+      key: 'a04da44d4616acd5faaa04755c5d19decceefa4a',
+    },
+
+    // Form Group
+    _BaseInput: {
+      key: '2ce20175cb60d96d87f174280c594333534da474',
+    },
+    '_Color Swatch': {
+      key: '80f41f09f61dc62435d070fe97ee58da482be164',
+    },
+
+    // Input Group
+    '_Input Group Element': {
+      key: 'b35b661a98be7e1d79ff13a50bfed9d6daccc7e5',
+    },
+    '_Input Group Row': {
+      key: '1ae3c9138dd57e665570f4af0b62dc5848ece01e',
+    },
+
+    // Input PaymentInput
+    '.payment-carrier': {
+      key: 'ce1b9a7b15e1e64bc32a9ba24b81d4db1b849075',
+    },
+
+    // List
+    '_List Item': {
+      key: '40d95748c4527fb1f61fe6f73529ec3722465334',
+    },
+    '_List Item Assets': {
+      key: 'dae6ea147efaba24c18ef4ef373e3e72f03f1242',
+    },
+
+    // Radio
+    '_Radio Base': {
+      key: '02541af5527a1e94ac7cc833d2922219b75be5aa',
+    },
+
+    // Side Navigation
+    '_Side Nav / Activation Banner': {
+      key: 'fe2b01b9e7068b49669e43d83ae7f0e27c457ac1',
+    },
+    '_Side Nav / Test Nav Item': {
+      key: 'b6c2b2297da6a2d6691348863c283ad67ee3e4da',
+    },
+    '_Side Nav L1 Mobile Replacement': {
+      key: '1506fc163dd01de7ff7e7c2aa9616c68ce258778',
+    },
+    '_Side Nav L2 Mobile Replacement': {
+      key: '1b17503e4240bb87f1e43383e4e18e4be2178e62',
+    },
+    '_Side Nav L2 Nav Group': {
+      key: 'ff6c79b9ceeeb8c08c3a9c62af5accf11ce1300c',
+    },
+    '_Side Nav L2 Nav Item': {
+      key: '2a9c08a4f629bb662817f35e13bc95cebb94094d',
+    },
+    '_Side Nav L3 Branch': {
+      key: '413ef001c20af6fc33055591c39f1e237955ae13',
+    },
+    '_Side Nav L3 Nav Item': {
+      key: '06abae727ff848bc35e5a7f0472cedcc8d09f615',
+    },
+    '_Side Nav Main Nav Item': {
+      key: '4e66a0af1155a29b9c6987485adff4ed4712ab3b',
+    },
+    '_Side Nav Sub Nav Item': {
+      key: '87a0a58cc111eb13ea741e8ee7090c87c782bc48',
+    },
+    '_Side Nav Trailing Item': {
+      key: 'efd0970c15f321c885bd166dff6469551ddeb637',
+    },
+
+    // Table
+    '_Base - sortingIndicator': {
+      key: '80418ac91788e634b7245716fe51412f34756718',
+    },
+    '_bulk action item': {
+      key: '1500d286a8f8bf56bd09393c06c8da7162b785b0',
+    },
+    '_link-group': {
+      key: '2385d04e6fe81ce89f41f5342ae8e73126de6d41',
+    },
+    '_Table Internal Row Overlay': {
+      key: '17a81764e397ad0ba4358abcbf02a81d853a4eaa',
+    },
+
+    // Toast
+    _AutoDismissDuration: {
+      key: 'de38235e8090021f4bac1f4475ec15906a19fb94',
+    },
+    '_Toast/ Leading Item': {
+      key: '33165b8329af0f7e34edf885ed7c132f582ede7b',
+    },
+
+    // Tooltip
+    '_Value Indicator': {
+      key: '0526d900a933768dddc44205426e5fcfe9857589',
+    },
+
+    // Top Navigation
+    '_Top Navigation/ slot-replacement': {
+      key: '2eb38974dffff300504f0aff038b21e753bbb14e',
+    },
+
+    // Utilities
+    '_Dragger (SafeArea)': {
+      key: '8523ea6912e66abc7953a4cb078cd97646baac78',
+    },
+    '.trusted-badge': {
+      key: '117763d0676653e4844c54a99c27ef55ba559c5a',
+    },
+
     // icons
     trash: {
-      key: 'aba22da852e03403a1d5586807fa696359605547',
+      key: '00b40d9bd58d0f51d4254a57afd09b375bc84b40',
     },
     facebook: {
       key: '00e8748d94e367056af2dc30ebd5d1b1e43b90bf',
@@ -794,13 +1097,13 @@ export const bladeThemeData = {
       key: '023a2bee8e348fe53d8e370e480945863e6dedc7',
     },
     clipboard: {
-      key: '68da6e55fb530a62c498505bb6c393eb10369a0e',
+      key: '032bafa0be8a028637f9c028e9eb2202b1aebe0e',
     },
     package: {
       key: '0588c2c8d7f82651f8b0ef7f1aa1543e7a6248a5',
     },
     'shopping-cart': {
-      key: 'eec95f907f3cb37152418e0735e94338a96717ff',
+      key: '05a501200825883daf4f2c9fdcf137be3709e17f',
     },
     sun: {
       key: 'ec1e0ba51c96a303c21b9452163663c5ea247e5c',
@@ -824,7 +1127,7 @@ export const bladeThemeData = {
       key: '08cf65a99610d252b7f41c91db60d1247cdb8045',
     },
     'external-link': {
-      key: 'b8bd3d60a30bdb1f3824ed9a6a981a59bb22b728',
+      key: '091c6fe3245f7a33d45985293cf2f4c6ca009a13',
     },
     slash: {
       key: '096c1ef8499023ac24c135fc8bb5f6f78aa85aac',
@@ -857,7 +1160,7 @@ export const bladeThemeData = {
       key: '12838816c79114c3ad1dcc180773399b79fbc4a3',
     },
     'payment-pages': {
-      key: '1482f54300c435b904cda873814c9a083bf1949e',
+      key: 'c2c22435ed6fe800ec2f20c16e90e0a6cc576d11',
     },
     'rotate-cw': {
       key: '14ec8eb4da912af03cfee3e3d9b7213e3efe86cb',
@@ -866,10 +1169,10 @@ export const bladeThemeData = {
       key: '152a95ed1eeb72b55037c262c19c09523f712168',
     },
     bookmark: {
-      key: '166c328f0a22fb4d4c71b617e7e019b262f22890',
+      key: 'd44f4c75ddf948cc81d472b85728aad4abe90d07',
     },
     shuffle: {
-      key: '3d9a2d6981a3e3ca96fb9a355645a059b09766d1',
+      key: '17563cfdcf9608e0d699d1d82aa5a7ff1ad4304b',
     },
     share: {
       key: '18c4da9f2c429515845ee0faeedece25384f6272',
@@ -881,13 +1184,13 @@ export const bladeThemeData = {
       key: '1a2b2c7f5a8f37b3e30cb9d1a4edd8e8def71da8',
     },
     folder: {
-      key: '3c8f68aba4bea283d39ae44d0c99ebd23da4bbce',
+      key: '1b88d5e28a92bc6534200d0991ec2fb475c91c8a',
     },
     save: {
-      key: '58bc33f55135ddf287851272aeeebdf84fd3108e',
+      key: '1ba3f39626558eb09c8c845286b57e013e1c507b',
     },
     link: {
-      key: '2e2c68457f41cc75e5e71c9cfd36ad375d4acc30',
+      key: '1c0f0cd309d9839f6b671f274f3275c8bc10ba37',
     },
     layout: {
       key: '1d2b40b7df4f10db9a85f26cfaa36ae0a40782bd',
@@ -896,7 +1199,7 @@ export const bladeThemeData = {
       key: '1e51f085a76a6261d60cade873c4dd24c8bb54cc',
     },
     'edit-compose': {
-      key: 'b1d38d6fedf8dee1784a66bee0ea56ecbcec5d71',
+      key: '1ef94703f873e0d13a9761676bd07b4b77e58767',
     },
     image: {
       key: '20233ce57794b1dd7d97c22b26a928679b98f279',
@@ -922,7 +1225,7 @@ export const bladeThemeData = {
       key: 'f43eb2bcaa08009e41ff5a7dfc8d449bc084c5a4',
     },
     // Bar Charts
-    'bar-chart': {
+    'Bar Chart': {
       key: 'd993057fb8403b7849447cc66eeb1ed4d2bc6aed',
     },
     'bar-base': {
@@ -974,13 +1277,13 @@ export const bladeThemeData = {
       key: '23503397aa0ae195d975c7373d44efba62e19493',
     },
     maximize: {
-      key: '96476ed144eee43f190805204ee67241727f41ae',
+      key: '239b19e111a0828a67bc783dd97fefd9d30480cf',
     },
     'more-horizontal': {
       key: '23bbf7ffd8c11f55b53cea0a0ffaeb2c1ad3b482',
     },
     repeat: {
-      key: '84a8a7eda2f8c278b2769b170bff147c049868d1',
+      key: '24aa448f6a67d9a49b5e55658b539ce89b842bc1',
     },
     dashboard: {
       key: '255b87f64b737876e6318960fcba909b02f7cb95',
@@ -995,7 +1298,7 @@ export const bladeThemeData = {
       key: '28d90e57d36eb65163bd6714caea93aa281e45af',
     },
     paperclip: {
-      key: 'e79941961baf3ed7d379fde0b1a454ee1abedd75',
+      key: '28f7fd190f2381f865c6f8e1011cfaa6a9d5436d',
     },
     'camera-off': {
       key: '2a033340ae9f5364bd2fac854e3383fa6f82ce9c',
@@ -1043,7 +1346,7 @@ export const bladeThemeData = {
       key: '36f056a30cf0ab0773be5782641c4ea02721f57f',
     },
     settings: {
-      key: 'e63d2e2df68f8f50574b88f354a5c5f6ab92a952',
+      key: '375a9bf62b3db178f05e4f68bf2ef84d0da2534b',
     },
     razorpay: {
       key: '379c2c8429633164a969a7afb041dea351885ed5',
@@ -1055,7 +1358,7 @@ export const bladeThemeData = {
       key: '3896db76afb1b5530a00beb448924ce9c2edd668',
     },
     play: {
-      key: 'ab0ec409113ae1eaaf83ec27972642de973b15f6',
+      key: '38ab8b084a1e3a471f1c20254f3ba08842c97921',
     },
     'at-sign': {
       key: '38e26453d951e5c21ca48d5d8b87af2434c182fd',
@@ -1069,8 +1372,8 @@ export const bladeThemeData = {
     users: {
       key: '3caff79e38ba903ad47b34f42f6be6ee18cc9b84',
     },
-    'skip-back': {
-      key: '3cd15f84b0439e697b8f023d2c3202e5556e2eb9',
+    '_skip-back': {
+      key: 'a597bd3008d2b2a45b52b3a1375e68642ba75177',
     },
     pause: {
       key: '526d28fecc42fb3b615e7e92911795c2e9343096',
@@ -1091,13 +1394,13 @@ export const bladeThemeData = {
       key: '42f3e4c5f9b954ee18f09d6e8ecfa830cea8f2ec',
     },
     copy: {
-      key: 'eaca28c1e83156d8178171e320ebc59da60a5004',
+      key: '435c418ee1f951d65c53ae8e84ca7eabc314a82e',
     },
     'mic-off': {
       key: 'e031246bd86bdb75a6e957459b4b2cc13bcd0895',
     },
     'trending-down': {
-      key: '52747a689328c5d0d50be78a26f426d45b641f44',
+      key: '4840e197ad44ab0f102c4edb02a90d2b1fb062cf',
     },
     loader: {
       key: '48d379d1426e1dce868235a6d4128569f18c078d',
@@ -1109,7 +1412,7 @@ export const bladeThemeData = {
       key: '49b6a7b21c8313c96113ee5b87e48f2ac22a34ef',
     },
     inbox: {
-      key: '50455509344c3dcaf8abdbead74c50a35e5470c2',
+      key: '4b73b16888de986ce166661cbfc43f0d88e8c3cf',
     },
     rupees: {
       key: '4d3ecaad58c7faa0c4468138a2dcdbe4d938754b',
@@ -1136,19 +1439,19 @@ export const bladeThemeData = {
       key: '5461b259adce1642f95e4ac70486f11b2adedbec',
     },
     'smart-collect': {
-      key: '55caf52f8fc7df4fa0c3f27c4b7a112b742a56aa',
+      key: 'cf626453496029a2f3ad034c54aa84dec2027e0d',
     },
     'file-plus': {
-      key: '95ab7f12a56584119b421d25465512e26e18d225',
+      key: '5724dd3403bf54f8ed3e5634f9ad3c36be77ecc9',
     },
     video: {
-      key: '5fba66b4be7b4dec3d1b2a030c8329c54485ec38',
+      key: '58fdaf3a23fa21cdb1b04d2cf52ec7cfc364e42b',
     },
-    'volume-low': {
-      key: '5911749f7a79bbf7f5461eca4f10c9ee70f58011',
+    '_volume-low': {
+      key: 'ea6f6e289a3c3c4852d9b21dc18503b449d84942',
     },
-    music: {
-      key: '59da881a760443b36431db2a37f5e3e07a9ecef6',
+    _music: {
+      key: '04ef529b255e4018ae1152ccb8d394b67c8c8406',
     },
     minimize: {
       key: 'ac0d6df3ea16344124fbd06f007336a60f8ba5de',
@@ -1162,7 +1465,7 @@ export const bladeThemeData = {
     move: {
       key: '5d6eb07c920dd50e95827b573b8275e66bcce133',
     },
-    flag: {
+    Flag: {
       key: '76e4373e74ab214f3da7bdfbfd368a6af9377b18',
     },
     'file-text': {
@@ -1175,7 +1478,7 @@ export const bladeThemeData = {
       key: '638712828f88cc106fa0726a0d26d5b204a21919',
     },
     'pause-circle': {
-      key: '7fb401a3963d2c5309613011916292c77f002dfc',
+      key: '63f3fb231a32d5ac6e0633ddec62ae4c2ec86d9b',
     },
     scissors: {
       key: '641cdad8b8dcb7b4ce1212ac526d0c6a02deed1c',
@@ -1193,7 +1496,7 @@ export const bladeThemeData = {
       key: '67bf9af174c8650027431b0c77625907b2097de9',
     },
     ticket: {
-      key: '68a941ceed6b1f00573061bef807200a06584676',
+      key: '30abb6468087bcf17d4143d341a575a6dca8fcd7',
     },
     'zoom-out': {
       key: '6965e6bf4858508069065709faa3ca136dffddfe',
@@ -1232,13 +1535,13 @@ export const bladeThemeData = {
       key: '70fefae08c1c2976d42adb6d4858b3d8921f70bb',
     },
     subscriptions: {
-      key: '7152b2bec549b88580a9e616e3b450ce2e14340e',
+      key: '2a4e4e48cb0e4a727057b7714b264a6203f408e9',
     },
     settlements: {
       key: '730877d9517965b494d4d0d91b2354fe1787e085',
     },
     clock: {
-      key: '73a0c0d2bf0634d846e99e2f221de444e640f374',
+      key: '7f5ce5bcb59013dc219093bd73747774815b2ac1',
     },
     'minus-square': {
       key: '7468614348b2b0e3d51d955aa484742a40fd9030',
@@ -1289,7 +1592,7 @@ export const bladeThemeData = {
       key: '80af6fe7e1ace4591dd1c17ae0ef17a22e4d4106',
     },
     'file-minus': {
-      key: 'e2102dd30e8453abe88b8d722408f9d7129f111c',
+      key: '81c51dbd032c22a91ed70269fc8a093b606118ce',
     },
     'corner-left-down': {
       key: '831ea6502636806411bf5cfc927adba256b3d825',
@@ -1307,7 +1610,7 @@ export const bladeThemeData = {
       key: '8b0db1aed3617943c83b6ed51c23a6e2b5e72ac0',
     },
     sliders: {
-      key: 'e71652262327824a4623bc0e3f4fd2da41041f25',
+      key: '8b1c6cfcc88ce0348c72cde54c83713c69705b8f',
     },
     film: {
       key: '8b3a6deed5583fd64183f3109dae65ac5eb306c6',
@@ -1356,7 +1659,7 @@ export const bladeThemeData = {
       key: '98632605d134e9fe10c2d304c360301755807892',
     },
     'trending-up': {
-      key: 'd5683fd1da720c1dca2bb1fb48c337ba8ad7136b',
+      key: '9aac55d5231b842b59c4320bf314217c34d12887',
     },
     'download-cloud': {
       key: '9b77ca1f794e94847284f54025f63a9ddcedabd4',
@@ -1365,7 +1668,7 @@ export const bladeThemeData = {
       key: '9bd1599d504f33369f386579819b76a63336ef14',
     },
     calendar: {
-      key: '9dd8539ed65a97d338491e70bde1b76de0a1819a',
+      key: '5b949d8166abee77f1139e46aacc7d444414f237',
     },
     'toggle-left': {
       key: 'a0503744f2b200ac0e670b417ce52d91bfd1dd9b',
@@ -1373,8 +1676,8 @@ export const bladeThemeData = {
     power: {
       key: 'd9363e8e0b154d877505c3920d9d4f7c543266a4',
     },
-    rewind: {
-      key: 'a25b292558a2f489fb528ce8412fead59a68b4c5',
+    _rewind: {
+      key: '377f5d760529c1e8c43cc92dac366f83df81e3cf',
     },
     'chevron-left': {
       key: 'a2929eadc104626073f8b57f6438d8aed78ef61a',
@@ -1398,10 +1701,10 @@ export const bladeThemeData = {
       key: 'a8833fd8a7e4db2b28abe85458e77c11e9a83b3d',
     },
     'bulk-payouts': {
-      key: 'a9748bd7a7b6c2be12626eebba560df2447e94e5',
+      key: '63d2364125acb8c3dbf97f732ed73c34a4e2edb8',
     },
     'credit-card': {
-      key: 'aa5e9ecaaa9a16977b1439b9985fdc390dfa6888',
+      key: '9b16cc993346dbcbfdecb5a44b6a2d933951223f',
     },
     'minus-circle': {
       key: 'aa80b9a02513c769903e111863064c69d0cd5f55',
@@ -1409,8 +1712,8 @@ export const bladeThemeData = {
     eye: {
       key: 'aaa86a2d2adce8d7d3ca4ccb7fdc73ae4a1fdc25',
     },
-    'skip-forward': {
-      key: 'ac2806273d1076ed2b88043c54c4f891ede9cd3c',
+    '_skip-forward': {
+      key: '0705995291b74a76622f59a41b0f77f427f2218b',
     },
     cut: {
       key: 'ac4ff43c790efe035353e8d6ff0c2a50d5eab2c8',
@@ -1418,8 +1721,8 @@ export const bladeThemeData = {
     'arrow-right': {
       key: 'ac6403075848a1d530facc5d40d85dc805f99dab',
     },
-    'volume-mute': {
-      key: 'b1107807b0446233391c7760bc71c53af6dd1afc',
+    '_volume-mute': {
+      key: '2ce1659114a87951080ee698756a30ceb821955d',
     },
     upload: {
       key: 'b22a1b58052ee424324742d93827b1535bd602d1',
@@ -1490,8 +1793,8 @@ export const bladeThemeData = {
     'chevrons-left': {
       key: 'd0bccf0a71b114539db8cbd7e5ac9a55fe5218dd',
     },
-    'fast-forward': {
-      key: 'd206c80a4d3be66a540017e85bce57b5500008e5',
+    '_fast-forward': {
+      key: '8a25a5a7d1130e60620b75560fbe625fb4a0d96d',
     },
     'phone-off': {
       key: 'd295ebae21847bb04dd3180726c15f356bb7f7be',
@@ -1499,8 +1802,8 @@ export const bladeThemeData = {
     briefcase: {
       key: 'd363e054f66083f76c7e079b2bcc1511197b2b01',
     },
-    volume: {
-      key: 'd7b5edca6b03bb5306c1bdccb22fcd78a5db8da9',
+    _volume: {
+      key: '08bf618bd85b88f707fe5f2e2475493c0997bf9c',
     },
     headphones: {
       key: 'd8b04a27bc3abe8a3c85a51c8dcf83119948a750',
@@ -1521,7 +1824,7 @@ export const bladeThemeData = {
       key: 'dc60b37e56862e46f9b9585c6a8a4a204f48bfc5',
     },
     user: {
-      key: 'dd1f849eaa6bb569b7df9662e2278ad400940632',
+      key: 'e2b5b6fa4c394906eb31e8207bed22046110da8d',
     },
     sidebar: {
       key: 'dd76b75590775e877ec29da41f7494dc16e603b2',
@@ -1548,7 +1851,7 @@ export const bladeThemeData = {
       key: 'e452216340a26f7e0d9301e9298346dafff717c2',
     },
     mic: {
-      key: 'e8092627177ea2447c4d8640ef071670c00769b6',
+      key: 'e6dbdd97101a7a7a5d97eb2f6b1944970d2dbb4a',
     },
     'eye-off': {
       key: 'e6e36b26e157b755795be113b73288fc069eee7f',
@@ -1637,11 +1940,11 @@ export const bladeThemeData = {
     'wifi-off': {
       key: 'fd064bfede73a330bdf0402dc849030f5607fc33',
     },
-    'volume-high': {
-      key: 'fd12cf15735f5178856551c753ee228b865a5040',
+    '_volume-high': {
+      key: '6a56d6975a50fce3bdd2a16127d69fe1d739e188',
     },
     invoices: {
-      key: 'fd4d573099d6f1d691cb3ed6c43124722326659a',
+      key: '90dff900b96dfa05a8a3fa775d007232ad8468a0',
     },
     building: {
       key: '6f4cc17cae44cb4604a3bd34081608ce2f5f1f35',
@@ -1708,6 +2011,329 @@ export const bladeThemeData = {
     },
     'check-circle-2': {
       key: '097b141914a95a9df34a3eb5f7e7bac30c3b962a',
+    },
+
+    // icons added to the library after the last sync
+    _shuffle: {
+      key: 'cfcb1b355cd051d439fb7af8782e49001a34bde4',
+    },
+    'accept-payments': {
+      key: '35c42d17681ee3ec8e1f97b5821c38103cea64c7',
+    },
+    affordability: {
+      key: '1e15d73235f9b8f0dd115872a42476e09dbf70fa',
+    },
+    'agent-studio': {
+      key: '0754fe3135d0ba73401709b43a5e4e20a2133743',
+    },
+    android: {
+      key: '26376ce65b6090932d5aada1e55a697aca1ef2f4',
+    },
+    apple: {
+      key: '479d27283683078d39f6e615077d02f51ca655b2',
+    },
+    'arrow-square-down': {
+      key: '97636e4df3509edc4e440e8e6941eed3a3f9d993',
+    },
+    'arrow-square-down-left': {
+      key: 'e0ea6fdc3a6f40176746f8c269ffa8dad0f6af80',
+    },
+    'arrow-square-down-right': {
+      key: 'ac472b047214fddd5f1b3d038bd437f63180cfbd',
+    },
+    'arrow-square-left': {
+      key: '13486a9109e889a08644bdc37ff5d6267963f065',
+    },
+    'arrow-square-right': {
+      key: '5fbdb6ad35db02a4a27fb91e49f313de60836f24',
+    },
+    'arrow-square-up': {
+      key: '74cfe63b2603858c7c4ea84966766f862f1f4750',
+    },
+    'arrow-square-up-left': {
+      key: '8af49109b348bf31c068379ea8b4538bcd033327',
+    },
+    'arrow-square-up-right': {
+      key: 'ac113bf06aba210f1b80690395e79dd9cf750cf0',
+    },
+    'automate-accounting': {
+      key: '5a03a41162d752e0577267049a59fb90b7ca3c0d',
+    },
+    'automate-payroll': {
+      key: '049a0d7d43e650df803fe90147e6b8287d0c9f28',
+    },
+    'bank-account-verification': {
+      key: '4da0894d924c61ea8fc304883ffcf7ad75a8fb3f',
+    },
+    'bar-chart': {
+      key: '664b37a76b2633e70a6d1eb1341c77a8a525e73c',
+    },
+    'bar-chart-alt': {
+      key: '6b879da0fd360df1c8b203ed8eaeafa06cbcf03f',
+    },
+    flag: {
+      key: 'de1ac1673d3bb28aea1d984abf8e0cc71cde71ab',
+    },
+    'battery-100-percent': {
+      key: '2cb54854c25bc904761f405adab4a7eaab224fa9',
+    },
+    'battery-20-percent': {
+      key: 'b6aa5600134f232843084cbe586d380316346116',
+    },
+    'battery-40-percent': {
+      key: 'c5968509366aa65c6eb23dc12a292cee203a8203',
+    },
+    'battery-60-percent': {
+      key: 'a9cd05ab32836bb266077e3715171544b49883ed',
+    },
+    'battery-80-percent': {
+      key: '0a790d128d3546334793de372fe20a902468457f',
+    },
+    bfsi: {
+      key: 'ca7dfa7e9c65d2d29cbd4f96fe725d7848ba7482',
+    },
+    'bill-me': {
+      key: '71f9986f5615e73e2a99ea87c6734d99805d867a',
+    },
+    board: {
+      key: '67a5f0b650e498a34152878e83229620678f4586',
+    },
+    bug: {
+      key: '5a4e350ba101e02f99ef1f8dda0e89e47e178d66',
+    },
+    'business-banking': {
+      key: '92775a8a532fe638b090ca5f54b81d3fb3ca4b8c',
+    },
+    'business-spend-management': {
+      key: 'd6f7eb12b371066fd0f603d2195f671fc06eab69',
+    },
+    'chevron-up-down': {
+      key: '143513615b145cd009724c58ecdb2a3f050cc40b',
+    },
+    'company-registration': {
+      key: '53a8a080fcc609065890df3ef6da71808644399e',
+    },
+    'contactless-payment': {
+      key: '098c81c1090e8b4d5af070bb69157b87c1c67f17',
+    },
+    'credits-and-loans': {
+      key: 'fb51e29d346bf3eacb12e4fb40f8b3317c715ff0',
+    },
+    'current-account': {
+      key: '8d1423a18e72cc83691654c97f1defad37a8d292',
+    },
+    'diamond-blocks': {
+      key: '3d98ffc87ac09a92e03a3747e80e83217d265dfe',
+    },
+    'digital-lending': {
+      key: '37bc5a446e2ac1532a35c7c376a572f0e873d6fb',
+    },
+    'disburse-payments': {
+      key: 'e43a9a614f7e8c271b5e4538ed02987b778dec8d',
+    },
+    'drag-handle': {
+      key: '9fc34146f604ed2727abddaff23fbbd9b1322a8c',
+    },
+    ecommerce: {
+      key: '439741cb1fad6a599e2a9b629edfd74c4caf079b',
+    },
+    education: {
+      key: 'e0fc97000d22f2f9a91f3590f4498f601a20ada3',
+    },
+    engage: {
+      key: '9ee806e366677b1857794435be2785495aabaac6',
+    },
+    equals: {
+      key: '6a44522c9f551778f9ab88156edca17c89ba12dd',
+    },
+    'escrow-account': {
+      key: '8ceaf3e7eb0e1e98c6abae14821d09b251e0bfcd',
+    },
+    'file-zip': {
+      key: 'f59232fa26a0af73e1a69dd982125fc12e61c5d6',
+    },
+    flask: {
+      key: '9596108ec02b73bb4acfd95337741b95a513238e',
+    },
+    'forex-management': {
+      key: 'f07091373946467967d6f73aa358fdcc241e546a',
+    },
+    freelance: {
+      key: '81105fa3cb2d4d479481538c6c21b2f75a1bceef',
+    },
+    'horizontal-blocks': {
+      key: '242b26f968a500324b8e1de519901361757a7c1d',
+    },
+    india: {
+      key: '384058922acf071449e2f51479a2526beead1d6f',
+    },
+    'india-and-global': {
+      key: 'c3ece046785c89fe33926382ecac6b930123e5bf',
+    },
+    'instant-settlement': {
+      key: '8dbd6720763c2074ce17bc5d584fdd31ab5d2f94',
+    },
+    'international-payments': {
+      key: 'e79abba41b7e94a77ce1a0d43ca35b3e761c035a',
+    },
+    key: {
+      key: '999729a89c0ffa0f978a16616f960d279c8e8f32',
+    },
+    keyboard: {
+      key: 'dd825f3e28141c89e49547bfb681d902fec0ee61',
+    },
+    'left-circular-corner': {
+      key: '79c77baacfb84b226d0739e291ca9d74e7de5cc7',
+    },
+    'list-search': {
+      key: '044613291d7c1add0947b4518966d5930e5ac88b',
+    },
+    'loans-for-businesses': {
+      key: 'c1ce8b18d8059aca4b14224182adfde0e0aa1250',
+    },
+    'magic-checkout': {
+      key: '568a8120b9adc82c52f943175a772355a0082839',
+    },
+    'magic-konnect': {
+      key: 'ac62c743b1479b636a2fd6850c4c78feee68e270',
+    },
+    'mobile-app': {
+      key: '98b2fcba3ec049dee97a17ab18ef28d396b2c099',
+    },
+    more: {
+      key: '5464c512dcff84b629edc02e564e1021cd17b208',
+    },
+    'no-signal': {
+      key: '9f15f563e96a9529a2d10036ca5cde7e72a77e65',
+    },
+    omnichannel: {
+      key: 'a15948be1df0a011c33b47441b0cf199e4161933',
+    },
+    optimizer: {
+      key: 'a7fb4dd19d3beec640bd4ff55b0e6d9b76121ba7',
+    },
+    'payment-button': {
+      key: '4335d965901577cd85e8c5e711b625af706174a3',
+    },
+    'payment-gateway': {
+      key: 'b857a4c270cb9f537f4ed9087229cc6e83daa1c5',
+    },
+    'payment-link': {
+      key: 'e43812a1c09b7e01cc5f0cc31036d6b7f9a5dcc0',
+    },
+    'payout-link / Outlined': {
+      key: '10de1b7703bb83fac4f8afa1a43bc751c4e9b0c7',
+    },
+    'payroll-addons': {
+      key: 'a597538ebfa45598adbed250371fa5320ae41b40',
+    },
+    'payroll-for-ca': {
+      key: 'e9d84b7952d7e55158b25a0bac4fda3db0c20bea',
+    },
+    'payroll-for-startup-or-sme': {
+      key: 'd0abc9aa92cb396ad2ca04672d2db995eb5cd84d',
+    },
+    'petty-cash-budget': {
+      key: '9171cf5dee221dd45151e76812b9cc90d546160c',
+    },
+    'pie-chart': {
+      key: '21ae87284a377483e57da248ae5e735e4987ca42',
+    },
+    pos: {
+      key: '3b0eda3e55557f5bfb7b710f057b8e1331007e49',
+    },
+    prompt: {
+      key: 'a55df402ea71c65e06188104cda27f127c735c7a',
+    },
+    ray: {
+      key: '3738a81f081990524e89f5764eba74a64330fc60',
+    },
+    'razorpayx-payroll': {
+      key: 'f8b3c9c10e368f16bbc2c024cbbc13d731013dd8',
+    },
+    resizer: {
+      key: '71a57b9bbc6b0fe1cafd54e0b7f6a9e89892be6f',
+    },
+    reticle: {
+      key: '201a9cee5b6b4cf479cf331c14761ca53c5a7ea0',
+    },
+    route: {
+      key: 'ee9ed52ca07a392ce7ddffca11ab648d7621513d',
+    },
+    saas: {
+      key: '03e7d5d56e03ae68d29e3a54f1365204b0d36349',
+    },
+    'signal-0-bar': {
+      key: '81770b6ce5d26b1af582576a3812bc456666dd66',
+    },
+    'signal-1-bar': {
+      key: '0437688195cce9ac0388ed1f4e6337a797cc5190',
+    },
+    'signal-2-bar': {
+      key: 'f92170a0fcc3a09c7b01bc5fe9930d0381808246',
+    },
+    'signal-3-bar': {
+      key: 'c7122262ceb157c9cee7100f90d025ca77ecf170',
+    },
+    'signal-4-bar': {
+      key: 'a328e61b136a409ffc4b2be591ed56e5f9c6484b',
+    },
+    'sim-card': {
+      key: 'b19466bc5eaed80a1d5c34cb3d27a4ce0d0d510e',
+    },
+    solutions: {
+      key: '2e2c1735c6a1d57da89c865caaab844dfcbde9bf',
+    },
+    sort: {
+      key: '0ef3fa7ef97d28603536498131af4293ab00914e',
+    },
+    'source-to-pay': {
+      key: 'ddaecca32c6733269f519ff348507bc3760642df',
+    },
+    'tax-payments': {
+      key: 'f907b0d4dfcbe2109d047f964a011a10328413b5',
+    },
+    'token-hq': {
+      key: '8e2d826a6d66008f584bb4eb48aed9e996e47362',
+    },
+    'top-left-rounded-corner': {
+      key: '41b88d53eef6841e17042d6b93fe1f8449107bd7',
+    },
+    'top-left-sharp-corner': {
+      key: '957bfe44dd8b976f2e03e047633b856c2df7ba72',
+    },
+    translate: {
+      key: '19ce3868bf14aec4f707dd464637ff1299ce854e',
+    },
+    upi: {
+      key: 'cc77c0b88ef98a019e6e9f81d1a34508567465f1',
+    },
+    'upi-autopay': {
+      key: 'ae5ef5f5540326f57d13682cf350e77fe4be4e17',
+    },
+    'vendor-payments': {
+      key: 'cb8991cc416a02f5c3517f8c78d80d978e06d957',
+    },
+    'vertical-blocks': {
+      key: '3b6df5b5c1fc656096c154b5eadf8748d6110bd2',
+    },
+    'view-live-demo': {
+      key: '7b589c1994f91de090399c2c7b6fe93c765078ef',
+    },
+    'volume-off': {
+      key: 'a3f3f34063757a13cde6fa32507a27a080a31b74',
+    },
+    'volume-on': {
+      key: 'e7346f9d12b50189c94a29af914295419cb0e6da',
+    },
+    wallet: {
+      key: '5e187c33b6b0c97cc7b5a649f84737b841bbf01f',
+    },
+    whatsapp: {
+      key: 'f84343d552c9ae2850463d17f524534fd764d51f',
+    },
+    youtube: {
+      key: '52aa4e2d066cf31639385fa71fad6e32b7fd3019',
     },
   },
   colorStyles: {
