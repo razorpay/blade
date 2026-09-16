@@ -49,6 +49,7 @@
     portalTarget,
     backdropPortalTarget = portalTarget,
     showDragHandle = true,
+    disableScrollLock = false,
     testID,
     ...rest
   }: BottomSheetProps = $props();
@@ -320,7 +321,8 @@
   $effect(() => {
     const target = scrollEl;
     const isReady = contentHeight > 0;
-    const shouldLock = target !== null && isReady && stackArr.length > 0;
+    const shouldLock =
+      !disableScrollLock && target !== null && isReady && stackArr.length > 0;
     if (shouldLock) {
       acquireScrollLock(target);
     } else {

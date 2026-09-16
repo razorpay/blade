@@ -108,6 +108,16 @@ export interface BottomSheetProps extends StyledPropsBlade {
    */
   showDragHandle?: boolean;
 
+  /**
+   * Disables the body scroll lock the sheet applies while open. By default the
+   * page behind the sheet is frozen (`overflow: hidden` on the body, plus
+   * `touchmove` interception on iOS) so only the sheet scrolls. Set to `true`
+   * to leave the background page scrollable while the sheet is open.
+   *
+   * @default false
+   */
+  disableScrollLock?: boolean;
+
   /** Test ID applied to the surface element. */
   testID?: string;
 
