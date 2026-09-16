@@ -14,8 +14,10 @@ import { Counter } from '~components/Counter';
 import { Dropdown, DropdownOverlay, FilterChipSelectInput } from '~components/Dropdown';
 import { DropdownFooter } from '~components/Dropdown/DropdownHeaderFooter';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import { FolderIcon } from '~components/Icons';
-import { List, ListItem } from '~components/List';
+import { FileTextIcon, FolderIcon, LockIcon } from '~components/Icons';
+import { List, ListItem, ListItemCode } from '~components/List';
+import { Avatar } from '~components/Avatar';
+import { Badge } from '~components/Badge';
 
 const Page = (): React.ReactElement => {
   return (
@@ -55,22 +57,24 @@ const Page = (): React.ReactElement => {
       <Title>Keyboard Interactions</Title>
       <List>
         <ListItem>
-          <Code>ArrowDown</Code> / <Code>ArrowUp</Code> — move focus to the next / previous visible
-          row (rows hidden under collapsed branches are skipped)
+          <ListItemCode>ArrowDown</ListItemCode> / <ListItemCode>ArrowUp</ListItemCode> — move focus
+          to the next / previous visible row (rows hidden under collapsed branches are skipped)
         </ListItem>
         <ListItem>
-          <Code>ArrowRight</Code> — expand a collapsed branch; on an expanded branch, move to its
-          first child
+          <ListItemCode>ArrowRight</ListItemCode> — expand a collapsed branch; on an expanded
+          branch, move to its first child
         </ListItem>
         <ListItem>
-          <Code>ArrowLeft</Code> — collapse an expanded branch; on a leaf, move to its parent
+          <ListItemCode>ArrowLeft</ListItemCode> — collapse an expanded branch; on a leaf, move to
+          its parent
         </ListItem>
         <ListItem>
-          <Code>Home</Code> / <Code>End</Code> — move focus to the first / last visible row
+          <ListItemCode>Home</ListItemCode> / <ListItemCode>End</ListItemCode> — move focus to the
+          first / last visible row
         </ListItem>
         <ListItem>
-          <Code>Enter</Code> / <Code>Space</Code> — select the focused row (Space is a no-op on
-          TreeViewLoadMore; Enter activates it)
+          <ListItemCode>Enter</ListItemCode> / <ListItemCode>Space</ListItemCode> — select the
+          focused row (Space is a no-op on TreeViewLoadMore; Enter activates it)
         </ListItem>
       </List>
       <Text marginTop="spacing.4">
@@ -85,6 +89,16 @@ export default {
   title: 'Components/TreeView',
   component: TreeViewComponent,
   args: {},
+  // without this the `docs.page` below never renders - there is no global autodocs setting
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: { type: 'radio' },
+      options: ['small', 'medium'],
+      description: 'Visual density of every row in the tree',
+      table: { defaultValue: { summary: 'medium' } },
+    },
+  },
   parameters: {
     docs: {
       page: Page,
@@ -113,8 +127,8 @@ const StandaloneSingleTemplate: StoryFn<typeof TreeViewComponent> = () => {
     </Box>
   );
 };
-export const StandaloneSingle = StandaloneSingleTemplate.bind({});
-StandaloneSingle.storyName = 'Standalone: Single Select';
+export const SingleSelect = StandaloneSingleTemplate.bind({});
+SingleSelect.storyName = 'Single Select';
 
 const StandaloneMultipleTemplate: StoryFn<typeof TreeViewComponent> = () => {
   const [payload, setPayload] = React.useState<{ values: string[]; selectedGroups: string[] }>({
@@ -136,8 +150,8 @@ const StandaloneMultipleTemplate: StoryFn<typeof TreeViewComponent> = () => {
     </Box>
   );
 };
-export const StandaloneMultiple = StandaloneMultipleTemplate.bind({});
-StandaloneMultiple.storyName = 'Standalone: Multiple with Pre-selection';
+export const MultipleSelect = StandaloneMultipleTemplate.bind({});
+MultipleSelect.storyName = 'Multiple Select';
 
 const ControlledTemplate: StoryFn<typeof TreeViewComponent> = () => {
   const [values, setValues] = React.useState<string[]>(['mysuru']);
@@ -180,8 +194,8 @@ const ControlledTemplate: StoryFn<typeof TreeViewComponent> = () => {
     </Box>
   );
 };
-export const ControlledStandalone = ControlledTemplate.bind({});
-ControlledStandalone.storyName = 'Standalone: Controlled Selection & Expansion';
+export const Controlled = ControlledTemplate.bind({});
+Controlled.storyName = 'Controlled';
 
 const DisabledBranchTemplate: StoryFn<typeof TreeViewComponent> = () => (
   <Box maxWidth="400px">
@@ -247,7 +261,7 @@ const AsyncChildrenTemplate: StoryFn<typeof TreeViewComponent> = () => {
   );
 };
 export const AsyncChildren = AsyncChildrenTemplate.bind({});
-AsyncChildren.storyName = 'Async Children with Spinner';
+AsyncChildren.storyName = 'Async Children';
 
 // fixed pools sliced by a visible count: repeated "Show more" clicks can never
 // produce duplicate values, and the LoadMore row disappears once exhausted
@@ -304,7 +318,7 @@ const LoadMoreTemplate: StoryFn<typeof TreeViewComponent> = () => {
   );
 };
 export const LoadMore = LoadMoreTemplate.bind({});
-LoadMore.storyName = 'LoadMore at Branch and Root';
+LoadMore.storyName = 'Load More';
 
 const DropdownSingleTemplate: StoryFn<typeof TreeViewComponent> = () => (
   <Box display="flex" gap="spacing.8" flexWrap="wrap" minHeight="400px">
@@ -345,8 +359,8 @@ const DropdownSingleTemplate: StoryFn<typeof TreeViewComponent> = () => (
     </Box>
   </Box>
 );
-export const DropdownWithSelectInput = DropdownSingleTemplate.bind({});
-DropdownWithSelectInput.storyName = 'Dropdown: SelectInput (Single)';
+export const InDropdown = DropdownSingleTemplate.bind({});
+InDropdown.storyName = 'In Dropdown';
 
 const DropdownFilterChipTemplate: StoryFn<typeof TreeViewComponent> = () => {
   const [values, setValues] = React.useState<string[]>([]);
@@ -373,7 +387,7 @@ const DropdownFilterChipTemplate: StoryFn<typeof TreeViewComponent> = () => {
                 title="Karnataka"
                 value="karnataka"
                 defaultIsExpanded
-                trailing={<Counter value={2} color="information" />}
+                trailing={<Counter value={2} color="information" size="small" />}
               >
                 <TreeViewItem title="Bengaluru" value="bengaluru" />
                 <TreeViewItem title="Mysuru" value="mysuru" />
@@ -399,8 +413,8 @@ const DropdownFilterChipTemplate: StoryFn<typeof TreeViewComponent> = () => {
     </Box>
   );
 };
-export const DropdownWithFilterChip = DropdownFilterChipTemplate.bind({});
-DropdownWithFilterChip.storyName = 'Dropdown: FilterChip + Footer (Optimiser case)';
+export const InDropdownWithFilterChip = DropdownFilterChipTemplate.bind({});
+InDropdownWithFilterChip.storyName = 'In Dropdown with Filter Chip';
 
 const TruncationTemplate: StoryFn<typeof TreeViewComponent> = () => (
   // 360px viewport simulation: depth-3 titles truncate instead of wrapping
@@ -423,5 +437,175 @@ const TruncationTemplate: StoryFn<typeof TreeViewComponent> = () => (
     </TreeViewComponent>
   </Box>
 );
-export const Depth3Truncation = TruncationTemplate.bind({});
-Depth3Truncation.storyName = 'Depth-3 Truncation at 360px';
+export const Truncation = TruncationTemplate.bind({});
+Truncation.storyName = 'Truncation';
+
+/**
+ * Every slot of TreeViewItem in one tree: `leading` (icon / avatar), `description`, and
+ * all four trailing types the design supports - Counter, Badge, Icon and Text.
+ *
+ * `leading` and `trailing` are consumer-provided nodes, so their size is set here rather
+ * than by TreeView:
+ * - icons (`leading`, and a trailing icon) track the tree's `size`
+ * - trailing Counter / Badge / Text are always `small`, at both tree sizes - they are
+ *   secondary markers and should never out-weigh the title they annotate
+ */
+const anatomyTree = ({
+  iconSize,
+  avatarSize,
+  extraTitles = [],
+  loadMore = null,
+}: {
+  iconSize: 'small' | 'medium';
+  avatarSize: 'xsmall' | 'small';
+  /**
+   * Extra leaves appended by the Sizes story's "Show more"
+   */
+  extraTitles?: string[];
+  /**
+   * A TreeViewLoadMore element, rendered last. Kept as a prop (rather than state inside
+   * this helper) because TreeView validates its children, so this has to stay a function
+   * returning TreeViewItem / TreeViewLoadMore elements rather than become a component
+   */
+  loadMore?: React.ReactNode;
+}): React.ReactElement => (
+  <TreeViewItem
+    title="Reports"
+    value="reports"
+    description="Branch with a leading icon and a trailing counter"
+    leading={<FolderIcon color="interactive.icon.gray.muted" size={iconSize} />}
+    // trailing: Counter
+    trailing={<Counter value={12} color="information" size="small" />}
+    defaultIsExpanded
+  >
+    <TreeViewItem
+      title="Settlements"
+      value="settlements"
+      leading={<FileTextIcon color="interactive.icon.gray.muted" size={iconSize} />}
+      // trailing: Badge
+      trailing={
+        <Badge color="positive" size="small">
+          Live
+        </Badge>
+      }
+    />
+    <TreeViewItem
+      title="Payouts"
+      value="payouts"
+      description="Leaf with a description and plain trailing text"
+      leading={<FileTextIcon color="interactive.icon.gray.muted" size={iconSize} />}
+      // trailing: Text
+      trailing={
+        <Text size="small" color="surface.text.gray.muted">
+          Updated 2d ago
+        </Text>
+      }
+    />
+    <TreeViewItem
+      title="Shared with Saurabh"
+      value="shared"
+      leading={<Avatar name="Saurabh Daware" size={avatarSize} />}
+      // trailing: Icon - the one trailing type that tracks the tree's size
+      trailing={<LockIcon color="surface.icon.gray.muted" size={iconSize} />}
+    />
+    {extraTitles.map((title) => (
+      <TreeViewItem
+        key={title}
+        title={title}
+        value={title.toLowerCase().replace(/\s+/g, '-')}
+        leading={<FileTextIcon color="interactive.icon.gray.muted" size={iconSize} />}
+      />
+    ))}
+    {loadMore}
+  </TreeViewItem>
+);
+
+const ItemAnatomyTemplate: StoryFn<typeof TreeViewComponent> = () => (
+  <Box display="flex" gap="spacing.8" flexWrap="wrap">
+    <Box maxWidth="400px" flexGrow={1}>
+      <Text size="small" weight="semibold" marginBottom="spacing.3">
+        Single select
+      </Text>
+      <TreeViewComponent selectionType="single">
+        {anatomyTree({ iconSize: 'medium', avatarSize: 'small' })}
+      </TreeViewComponent>
+    </Box>
+    <Box maxWidth="400px" flexGrow={1}>
+      <Text size="small" weight="semibold" marginBottom="spacing.3">
+        Multiple select (leading renders after the checkbox)
+      </Text>
+      <TreeViewComponent selectionType="multiple" defaultValue={['payouts']}>
+        {anatomyTree({ iconSize: 'medium', avatarSize: 'small' })}
+      </TreeViewComponent>
+    </Box>
+  </Box>
+);
+export const LeadingAndTrailing = ItemAnatomyTemplate.bind({});
+LeadingAndTrailing.storyName = 'Leading & Trailing';
+
+// same fixed-pool-sliced-by-visible-count approach as the LoadMore story, so repeated
+// clicks can never produce duplicate values and the row disappears once exhausted
+const MORE_REPORTS = ['Refunds', 'Disputes', 'Invoices', 'Tax deductions'];
+
+/**
+ * One labelled column of the Sizes story. The load-more state lives here rather than in
+ * `anatomyTree`, because that helper has to stay a function returning TreeViewItem /
+ * TreeViewLoadMore elements - TreeView rejects any other component as a child
+ */
+const SizedAnatomyTree = ({
+  size,
+  label,
+  iconSize,
+  avatarSize,
+}: {
+  size: NonNullable<TreeViewProps['size']>;
+  label: string;
+  iconSize: 'small' | 'medium';
+  avatarSize: 'xsmall' | 'small';
+}): React.ReactElement => {
+  const [visibleCount, setVisibleCount] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  return (
+    <Box maxWidth="400px" flexGrow={1}>
+      <Text size="small" weight="semibold" marginBottom="spacing.3">
+        {label}
+      </Text>
+      <TreeViewComponent selectionType="multiple" size={size}>
+        {anatomyTree({
+          iconSize,
+          avatarSize,
+          extraTitles: MORE_REPORTS.slice(0, visibleCount),
+          loadMore:
+            visibleCount < MORE_REPORTS.length ? (
+              <TreeViewLoadMore
+                isLoading={isLoading}
+                onClick={() => {
+                  setIsLoading(true);
+                  setTimeout(() => {
+                    setVisibleCount((count) => Math.min(count + PAGE_SIZE, MORE_REPORTS.length));
+                    setIsLoading(false);
+                  }, 1500);
+                }}
+              />
+            ) : null,
+        })}
+      </TreeViewComponent>
+    </Box>
+  );
+};
+
+const SizesTemplate: StoryFn<typeof TreeViewComponent> = () => (
+  // icons scale down with the tree - Counter / Badge / Text stay small at both sizes
+  <Box display="flex" gap="spacing.8" flexWrap="wrap">
+    <SizedAnatomyTree
+      size="medium"
+      label={'size="medium" (default)'}
+      iconSize="medium"
+      avatarSize="small"
+    />
+    <SizedAnatomyTree size="small" label={'size="small"'} iconSize="small" avatarSize="xsmall" />
+  </Box>
+);
+export const Sizes = SizesTemplate.bind({});
+Sizes.storyName = 'Sizes';

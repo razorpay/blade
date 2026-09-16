@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent, waitFor, within } from '@testing-library/react';
 import { TreeView } from '../TreeView';
 import { TreeViewItem } from '../TreeViewItem';
 import { TreeViewLoadMore } from '../TreeViewLoadMore';
@@ -570,6 +570,94 @@ describe('<TreeView /> standalone', () => {
     // branch rows do render the chevron
     const karnataka = getByRole('treeitem', { name: 'Karnataka' });
     expect(karnataka.querySelector('[aria-hidden="true"] svg')).toBeInTheDocument();
+  });
+
+  describe('size', () => {
+    // styled-components generates repeated classes for specificity (`.c4.c4.c4.c4.c4`),
+    // which neither toHaveStyle nor toHaveStyleRule can resolve - especially for the
+    // indentation, which is a nested `& > [role="treeitem"]` rule on the row wrapper
+    // (kept nested so row backgrounds stay full-bleed). So rules are matched against
+    // the injected stylesheet using the element's own generated class
+    const expectCssRule = (
+      element: HTMLElement | null,
+      declaration: string,
+      { nestedSelector = '' }: { nestedSelector?: string } = {},
+    ): void => {
+      const css = Array.from(document.querySelectorAll('style'))
+        .map((styleTag) => styleTag.textContent ?? '')
+        .join('');
+      const hasRule = (element?.className ?? '')
+        .split(' ')
+        .filter(Boolean)
+        .some((className) =>
+          new RegExp(`\\.${className}[^{]*${nestedSelector}\\s*{[^}]*${declaration}`).test(css),
+        );
+
+      expect(hasRule).toBe(true);
+    };
+
+    const expectIndentation = (row: HTMLElement, paddingLeft: string): void =>
+      expectCssRule(row.parentElement, `padding-left:\\s*${paddingLeft}`, {
+        nestedSelector: '>\\s*\\[role="treeitem"\\]',
+      });
+
+    const expectTitleFontSize = (row: HTMLElement, fontSize: string): void =>
+      expectCssRule(row.querySelector('p'), `font-size:\\s*${fontSize}`);
+
+    it('should default to medium: 24px indentation per level and a 20px chevron slot', () => {
+      const { getByRole, container } = renderWithTheme(<TreeView>{getCanonicalTree()}</TreeView>);
+
+      // spacing.3 + 24 * (level - 1)
+      expectIndentation(getByRole('treeitem', { name: 'India' }), '8px');
+      expectIndentation(getByRole('treeitem', { name: 'Karnataka' }), '32px');
+      expectIndentation(getByRole('treeitem', { name: 'Bengaluru' }), '56px');
+
+      expectCssRule(
+        getByRole('treeitem', { name: 'India' }).querySelector('[aria-hidden="true"]'),
+        'width:\\s*20px',
+      );
+      // Body Medium: 14px
+      expectTitleFontSize(getByRole('treeitem', { name: 'India' }), '0.875rem');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render size="small" with 20px indentation per level and a 16px chevron slot', () => {
+      const { getByRole, container } = renderWithTheme(
+        <TreeView size="small">{getCanonicalTree()}</TreeView>,
+      );
+
+      // spacing.3 + 20 * (level - 1)
+      expectIndentation(getByRole('treeitem', { name: 'India' }), '8px');
+      expectIndentation(getByRole('treeitem', { name: 'Karnataka' }), '28px');
+      expectIndentation(getByRole('treeitem', { name: 'Bengaluru' }), '48px');
+
+      expectCssRule(
+        getByRole('treeitem', { name: 'India' }).querySelector('[aria-hidden="true"]'),
+        'width:\\s*16px',
+      );
+      // Body Small: 12px
+      expectTitleFontSize(getByRole('treeitem', { name: 'India' }), '0.75rem');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should offset the load more label by one chevron slot at each size', () => {
+      const getLoadMoreLabel = (treeViewSize: 'small' | 'medium'): HTMLElement | null => {
+        // both trees render into the same document, so scope the query to this container
+        const { container } = renderWithTheme(
+          <TreeView size={treeViewSize} selectionType="multiple">
+            <TreeViewItem title="Karnataka" value="karnataka" defaultIsExpanded>
+              <TreeViewItem title="Bengaluru" value="bengaluru" />
+              <TreeViewLoadMore onClick={jest.fn()} />
+            </TreeViewItem>
+          </TreeView>,
+        );
+        return within(container).getByRole('treeitem', { name: 'Show more' }).querySelector('div');
+      };
+
+      // one chevron slot + the 4px gap after it: 16 + 4 on small, 20 + 4 on medium
+      expectCssRule(getLoadMoreLabel('small'), 'padding-left:\\s*20px');
+      expectCssRule(getLoadMoreLabel('medium'), 'padding-left:\\s*24px');
+    });
   });
 
   // B11: controlled/uncontrolled standalone selection

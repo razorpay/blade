@@ -1,5 +1,5 @@
 import React from 'react';
-import type { TreeViewNodeType } from './types';
+import type { TreeViewNodeType, TreeViewProps } from './types';
 import { throwBladeError } from '~utils/logger';
 
 type TreeViewContextType = {
@@ -7,6 +7,10 @@ type TreeViewContextType = {
    * Effective selection type. Inside Dropdown, inherited from Dropdown's selectionType
    */
   selectionType: 'single' | 'multiple';
+  /**
+   * Visual density of every row, set once on TreeView
+   */
+  size: NonNullable<TreeViewProps['size']>;
   /**
    * true when TreeView is rendered inside a Dropdown (detected via dropdownBaseId)
    */
