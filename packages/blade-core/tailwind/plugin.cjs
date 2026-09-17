@@ -422,6 +422,82 @@ const buttonComponents = {
   },
 };
 
+// BaseLink — the only irreducible bit is the descendant transition (`& *`) that animates
+// color/fill on the link's children (icon + text) during hover/focus. Everything else on the
+// link is expressible as plain utilities on the root element.
+const linkComponents = {
+  '.blade-link': {
+    '& *': {
+      transitionProperty: 'color, fill',
+      transitionTimingFunction: 'var(--easing-standard)',
+      transitionDuration: 'var(--duration-2xquick)',
+    },
+  },
+};
+
+// AnnouncementBanner — its background / text / icon colors swap to DIFFERENT tokens in dark mode
+// (not the same var flipping), under BOTH the scoped `[data-blade-color-scheme='dark']` and the
+// legacy `body[data-theme='dark']` selectors. A `bg-*`/`text-*` utility (utilities layer) would beat
+// a component-layer dark override, and the preset's `dark:` variant only covers the scoped selector,
+// so light+dark are emitted together here (no competing utility) to preserve dual-selector support.
+const DARK_SCOPES = (selector) =>
+  `body[data-theme='dark'] ${selector}, :root [data-blade-color-scheme='dark'] ${selector}`;
+
+const announcementBannerComponents = {
+  '.blade-announcement-banner-surface': {
+    backgroundColor: 'var(--surface-background-gray-subtle)',
+  },
+  [DARK_SCOPES('.blade-announcement-banner-surface')]: {
+    backgroundColor: 'var(--interactive-background-static-black-faded-highlighted)',
+  },
+  '.blade-announcement-banner-text': { color: 'var(--surface-text-gray-subtle)' },
+  [DARK_SCOPES('.blade-announcement-banner-text')]: {
+    color: 'var(--surface-text-static-white-subtle)',
+  },
+  '.blade-announcement-banner-icon': { color: 'var(--surface-icon-gray-subtle)' },
+  [DARK_SCOPES('.blade-announcement-banner-icon')]: {
+    color: 'var(--surface-icon-static-white-subtle)',
+  },
+};
+
+// Breadcrumb — the separator show/hide rules use `:last-child` + child combinators, and the stepper
+// variant widens the item gap via a descendant selector. These structural relationships can't be
+// expressed as utilities on a single element, so the structural classes live here as component
+// classes (the stepper gap override wins by descendant-selector specificity, in the same layer).
+// The stepper pill's hover/focus tints ARE plain pseudo-variants and stay in the CVA utility strings.
+const breadcrumbComponents = {
+  '.blade-breadcrumb-nav': { display: 'block' },
+  '.blade-breadcrumb-list': {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 'var(--spacing-2)',
+    alignItems: 'center',
+    listStyle: 'none',
+    margin: 'var(--spacing-0)',
+    padding: 'var(--spacing-0)',
+  },
+  '.blade-breadcrumb-list-item': {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'var(--spacing-2)',
+  },
+  '.blade-breadcrumb-separator': { display: 'flex', alignItems: 'center' },
+  '.blade-breadcrumb-list-item:last-child > .blade-breadcrumb-separator': { display: 'none' },
+  '.blade-breadcrumb-show-last-separator > .blade-breadcrumb-list-item:last-child > .blade-breadcrumb-separator':
+    { display: 'flex' },
+  '.blade-breadcrumb-current-page': {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'var(--spacing-2)',
+  },
+  // Stepper variant widens the gap (later source order / descendant specificity wins).
+  '.blade-breadcrumb-list-stepper': { gap: 'var(--spacing-7)' },
+  '.blade-breadcrumb-list-stepper .blade-breadcrumb-list-item': { gap: 'var(--spacing-7)' },
+};
+
 module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(buttonComponents);
+  addComponents(linkComponents);
+  addComponents(announcementBannerComponents);
+  addComponents(breadcrumbComponents);
 });

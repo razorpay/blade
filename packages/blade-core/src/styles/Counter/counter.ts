@@ -1,6 +1,5 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './counter.module.css';
+import { cn } from '~utils/cx';
 
 export type CounterSize = 'small' | 'medium' | 'large';
 export type CounterColor =
@@ -58,46 +57,76 @@ export function getCounterTextColorToken({
 }
 
 /**
- * CVA-based counter styles
+ * CVA-based counter styles (Tailwind).
+ *
+ * Background depends on `color` AND `emphasis` together — in CSS Modules this was a chained selector
+ * (`.color-neutral.emphasis-subtle`); with no stylesheet to hold it each pairing becomes a
+ * `compoundVariants` entry, so `color`/`emphasis` are empty `variants`. Sizes are min-height/width
+ * one-offs (16/20/24) that are not spacing tokens, so they use arbitrary values.
  */
-export const counterStyles = cva(styles.counter, {
-  variants: {
-    size: {
-      small: styles.small,
-      medium: styles.medium,
-      large: styles.large,
+export const counterStyles = cva(
+  'inline-flex items-center justify-center rounded-max w-fit flex-nowrap bg-transparent',
+  {
+    variants: {
+      size: {
+        small: 'min-h-[16px] min-w-[16px]',
+        medium: 'min-h-[20px] min-w-[20px]',
+        large: 'min-h-[24px] min-w-[24px]',
+      },
+      color: {
+        neutral: '',
+        positive: '',
+        negative: '',
+        notice: '',
+        information: '',
+        primary: '',
+      },
+      emphasis: {
+        subtle: '',
+        intense: '',
+      },
     },
-    color: {
-      neutral: styles['color-neutral'],
-      positive: styles['color-positive'],
-      negative: styles['color-negative'],
-      notice: styles['color-notice'],
-      information: styles['color-information'],
-      primary: styles['color-primary'],
-    },
-    emphasis: {
-      subtle: styles['emphasis-subtle'],
-      intense: styles['emphasis-intense'],
+    compoundVariants: [
+      // Background: color × emphasis (was chained `.color-*.emphasis-*` selectors).
+      { color: 'neutral', emphasis: 'subtle', class: 'bg-feedback-background-neutral-subtle' },
+      { color: 'neutral', emphasis: 'intense', class: 'bg-feedback-background-neutral-intense' },
+      { color: 'positive', emphasis: 'subtle', class: 'bg-feedback-background-positive-subtle' },
+      { color: 'positive', emphasis: 'intense', class: 'bg-feedback-background-positive-intense' },
+      { color: 'negative', emphasis: 'subtle', class: 'bg-feedback-background-negative-subtle' },
+      { color: 'negative', emphasis: 'intense', class: 'bg-feedback-background-negative-intense' },
+      { color: 'notice', emphasis: 'subtle', class: 'bg-feedback-background-notice-subtle' },
+      { color: 'notice', emphasis: 'intense', class: 'bg-feedback-background-notice-intense' },
+      {
+        color: 'information',
+        emphasis: 'subtle',
+        class: 'bg-feedback-background-information-subtle',
+      },
+      {
+        color: 'information',
+        emphasis: 'intense',
+        class: 'bg-feedback-background-information-intense',
+      },
+      { color: 'primary', emphasis: 'subtle', class: 'bg-surface-background-primary-subtle' },
+      { color: 'primary', emphasis: 'intense', class: 'bg-surface-background-primary-intense' },
+    ],
+    defaultVariants: {
+      size: 'medium',
+      color: 'neutral',
+      emphasis: 'subtle',
     },
   },
-  defaultVariants: {
-    size: 'medium',
-    color: 'neutral',
-    emphasis: 'subtle',
-  },
-});
+);
 
-// Export content class for use in component templates
-export const counterContentClass = styles.content;
+// Content wrapper class for use in component templates (literal so the JIT scanner sees it).
+export const counterContentClass = 'flex flex-row items-center justify-center overflow-hidden';
 
 /**
- * CSS module classes for conditional horizontal padding on the Counter content
- * wrapper.
+ * Conditional horizontal padding on the Counter content wrapper (multi-digit values).
  */
 export const counterContentPaddingClass: Record<CounterSize, string> = {
-  small: styles['content-padding-small'],
-  medium: styles['content-padding-medium'],
-  large: styles['content-padding-large'],
+  small: 'px-spacing-2',
+  medium: 'px-spacing-3',
+  large: 'px-spacing-3',
 };
 
 /**
@@ -126,7 +155,5 @@ export function getCounterContentClasses({
 export function getCounterClasses(props: CounterVariants & { className?: string }): string {
   const { className, ...cvaProps } = props;
 
-  const classes = [counterStyles(cvaProps), className].filter(Boolean).join(' ');
-
-  return classes;
+  return cn(counterStyles(cvaProps), className);
 }
