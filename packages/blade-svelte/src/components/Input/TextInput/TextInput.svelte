@@ -7,7 +7,6 @@
   import IconButton from '../../Button/IconButton/IconButton.svelte';
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import { CloseIcon } from '../../Icons';
-  import { useFormId } from '../BaseInput/useFormId';
   import { createFormattedInput, stripPatternCharacters } from './useFormattedInput';
   import type { TextInputProps } from './types';
 
@@ -67,7 +66,6 @@
   let baseInput = $state<{ focus: () => void; getInput: () => HTMLInputElement | null } | null>(
     null,
   );
-  const ids = useFormId('textinput');
 
   // Rebuilds when `format` changes (e.g. card network detection swapping the
   // grouping pattern), so the pattern isn't frozen at mount time.
