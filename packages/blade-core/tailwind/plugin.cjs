@@ -593,6 +593,188 @@ const baseTextComponents = {
   ':where(.blade-text-base)': { margin: '0' },
 };
 
+// Spinner — the rotating box carries a `@keyframes` animation. The per-color rules resolve without
+// a descendant selector: the color is set on the root as a `text-*` utility and the SVG inherits it
+// via `fill=currentColor`, so only the animation lives here.
+const spinnerComponents = {
+  '.blade-spinner-box': {
+    padding: '1px',
+    width: 'max-content',
+    display: 'inline-flex',
+    animation: 'spinner-rotate var(--duration-2xgentle) var(--easing-overshoot) infinite',
+  },
+  '@keyframes spinner-rotate': {
+    from: { transform: 'rotate(0deg)' },
+    to: { transform: 'rotate(360deg)' },
+  },
+};
+
+// Skeleton — the base composes two `@keyframes` (a one-shot fade-in + an infinite alternating pulse)
+// via per-animation duration/delay/timing/iteration/direction lists that a utility can't express.
+const skeletonComponents = {
+  '.blade-skeleton': {
+    display: 'block',
+    opacity: '0',
+    backgroundColor: 'var(--interactive-background-gray-default)',
+    animationName: 'skeleton-fade-in, skeleton-pulse',
+    animationDuration: 'var(--duration-2xgentle), 1320ms',
+    animationDelay: '0ms, var(--duration-2xgentle)',
+    animationTimingFunction: 'var(--easing-standard), var(--easing-standard)',
+    animationIterationCount: '1, infinite',
+    animationDirection: 'normal, alternate',
+    animationFillMode: 'forwards',
+  },
+  '@keyframes skeleton-fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+  '@keyframes skeleton-pulse': {
+    '0%': { backgroundColor: 'var(--interactive-background-gray-default)' },
+    '25%': { backgroundColor: 'var(--interactive-background-gray-default)' },
+    '100%': { backgroundColor: 'var(--interactive-background-gray-highlighted)' },
+  },
+};
+
+// Switch — a faithful port of `switch.module.css`. The `size-*` modifier means different dimensions
+// on the track (bare), thumb and icon (compound); the track reacts to label hover and to the hidden
+// input's focus via an adjacent-sibling selector; the thumb animates through compound pressed/checked
+// states; the icon fill responds to a disabled ancestor; and a `@media` block supplies mobile sizing.
+// None of this is expressible as single-element utilities, so it lives here as `.blade-switch-*`.
+const switchComponents = {
+  '.blade-switch': { display: 'inline-block' },
+  '.blade-switch-label': {
+    display: 'inline-flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    margin: '0',
+    padding: '0',
+    userSelect: 'none',
+    '&[data-disabled]': { cursor: 'not-allowed' },
+  },
+  '.blade-switch-input': {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: '0',
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0 0 0 0)',
+    whiteSpace: 'nowrap',
+    border: '0',
+  },
+  '.blade-switch-track': {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    flexShrink: '0',
+    pointerEvents: 'none',
+    margin: 'var(--spacing-1)',
+    padding: 'var(--spacing-1)',
+    borderRadius: 'var(--border-radius-max)',
+    transitionProperty: 'background-color, outline',
+    transitionTimingFunction: 'var(--easing-standard)',
+    transitionDuration: 'var(--duration-2xquick)',
+  },
+  // Track sizes (desktop) — bare `size-*` targets the track.
+  '.blade-switch-size-small': { width: '28px', height: 'var(--spacing-5)' },
+  '.blade-switch-size-medium': { width: '36px', height: 'var(--spacing-6)' },
+  '.blade-switch-track.blade-switch-checked': {
+    backgroundColor: 'var(--interactive-background-primary-default)',
+    '&[data-disabled]': { backgroundColor: 'var(--interactive-background-primary-faded)' },
+  },
+  '.blade-switch-track.blade-switch-unchecked': {
+    backgroundColor: 'var(--interactive-background-gray-default)',
+    '&[data-disabled]': { backgroundColor: 'var(--interactive-background-gray-disabled)' },
+  },
+  '.blade-switch-label:hover .blade-switch-track.blade-switch-checked:not([data-disabled])': {
+    backgroundColor: 'var(--interactive-background-primary-highlighted)',
+  },
+  '.blade-switch-label:hover .blade-switch-track.blade-switch-unchecked:not([data-disabled])': {
+    backgroundColor: 'var(--interactive-background-gray-highlighted)',
+  },
+  '.blade-switch-input:focus-visible + .blade-switch-track': {
+    outline: '4px solid var(--surface-border-primary-muted)',
+    outlineOffset: '1px',
+  },
+  '.blade-switch-thumb': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+  },
+  '.blade-switch-thumb.blade-switch-size-small': {
+    width: 'var(--spacing-4)',
+    height: 'var(--spacing-4)',
+  },
+  '.blade-switch-thumb.blade-switch-size-medium': {
+    width: 'var(--spacing-5)',
+    height: 'var(--spacing-5)',
+  },
+  '.blade-switch-animated-thumb': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: '0',
+    position: 'relative',
+    height: '100%',
+    width: '100%',
+    left: '0%',
+    transform: 'translateX(0%)',
+    borderRadius: 'var(--border-radius-max)',
+    backgroundColor: 'var(--interactive-background-static-white-default)',
+    transitionProperty: 'width, left, transform, background-color',
+    transitionDuration: 'var(--duration-quick)',
+    transitionTimingFunction: 'var(--easing-standard)',
+    willChange: 'transform, left, width',
+  },
+  '.blade-switch-animated-thumb.blade-switch-checked': { transform: 'translateX(100%)' },
+  '.blade-switch-animated-thumb.blade-switch-pressed.blade-switch-checked': {
+    width: '125%',
+    left: '-39%',
+  },
+  '.blade-switch-animated-thumb.blade-switch-pressed.blade-switch-unchecked': {
+    width: '125%',
+    left: '12.5%',
+  },
+  '.blade-switch-animated-thumb[data-disabled]': {
+    backgroundColor: 'var(--interactive-background-static-white-disabled)',
+  },
+  '.blade-switch-thumb-icon': {
+    opacity: '0',
+    transitionProperty: 'opacity',
+    transitionDuration: 'var(--duration-quick)',
+    transitionTimingFunction: 'var(--easing-standard)',
+    transitionDelay: '0ms',
+  },
+  '.blade-switch-thumb-icon.blade-switch-effective-checked': {
+    opacity: '1',
+    transitionDelay: 'var(--delay-2xquick)',
+  },
+  '.blade-switch-thumb-icon path': { fill: 'var(--interactive-icon-primary-subtle)' },
+  '.blade-switch-label[data-disabled] .blade-switch-thumb-icon path': {
+    fill: 'var(--interactive-icon-primary-disabled)',
+  },
+  '.blade-switch-thumb-icon.blade-switch-size-small': { width: '6px', height: '6px' },
+  '.blade-switch-thumb-icon.blade-switch-size-medium': {
+    width: 'var(--spacing-3)',
+    height: 'var(--spacing-3)',
+  },
+  '@media (max-width: 767px)': {
+    '.blade-switch-size-small': { width: '36px', height: 'var(--spacing-6)' },
+    '.blade-switch-size-medium': { width: '44px', height: 'var(--spacing-7)' },
+    '.blade-switch-thumb.blade-switch-size-small': {
+      width: 'var(--spacing-5)',
+      height: 'var(--spacing-5)',
+    },
+    '.blade-switch-thumb.blade-switch-size-medium': {
+      width: 'var(--spacing-6)',
+      height: 'var(--spacing-6)',
+    },
+    '.blade-switch-thumb-icon.blade-switch-size-small': {
+      width: 'var(--spacing-3)',
+      height: 'var(--spacing-3)',
+    },
+    '.blade-switch-thumb-icon.blade-switch-size-medium': { width: '10px', height: '10px' },
+  },
+};
+
 module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(buttonComponents);
   addComponents(linkComponents);
@@ -602,4 +784,7 @@ module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(segmentedControlComponents);
   addComponents(appBarComponents);
   addComponents(baseTextComponents);
+  addComponents(spinnerComponents);
+  addComponents(skeletonComponents);
+  addComponents(switchComponents);
 });

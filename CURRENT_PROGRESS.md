@@ -68,7 +68,11 @@ Migrate the rest, deleting each `.module.css`. Unmigrated components currently k
 
 **Remaining (24 `.module.css`):** Spinner, Input(baseInput/formHint/formLabel) + InputGroup, CounterInput, Tabs, Modal, BottomSheet, Toast(+toastContainer), Checkbox, Radio(+radioGroup), Chip(+chipGroup), Accordion, Card, Avatar, Tooltip, Switch, Skeleton, IconButton, Alert.
 
-**Commits (stacked branch `feat/blade-tailwind-phase2` on top of `feat/blade-tailwind-migration`):** wave 1 (8 components), wave 2 (4 components).
+**Wave 3 done + verified (3):** Spinner, Skeleton, Switch. Plugin: `.blade-spinner-box` + `@keyframes spinner-rotate` (color set on root as `text-*`, SVG inherits via currentColor); `.blade-skeleton` dual-`@keyframes` fade-in+pulse; full `.blade-switch-*` port (compound size across track/thumb/icon, sibling focus ring, label-hover, `path` fills, `@media` mobile sizing). Skeleton flex tables remapped to Tailwind (`self-*`, `flex-*`). Verified: typecheck, svelte-check 0, visual (spinner ring, skeleton pulse, switch on/off with checkmark).
+
+**Remaining (21 `.module.css`):** IconButton, Input(baseInput/formHint/formLabel) + InputGroup, CounterInput, Tabs, Modal, BottomSheet, Toast(+toastContainer), Checkbox, Radio(+radioGroup), Chip(+chipGroup), Accordion, Card, Avatar, Tooltip, Alert.
+
+**Commits (stacked branch `feat/blade-tailwind-phase2` on top of `feat/blade-tailwind-migration`):** wave 1 (8), wave 2 (4), wave 3 (3).
 
 - Mostly atomic (lower risk): Divider, Code, Counter, TrustBadge, CounterInput, Breadcrumb, AppBar, ActionList, AnnouncementBanner, Collapsible, BaseText, BaseLink, InputGroup, SegmentedControl, Tabs.
 - Hard cases (need plugin component classes — keyframes / pseudo-elements / box-shadow / nested selectors): **Spinner** (spinner-rotate keyframes, nested `.color-* .spinner-icon`), **Input** (baseInput/formHint/formLabel), **Modal**, **BottomSheet**, **Toast** (toast/toastContainer), **Checkbox**, **Radio** (radio/radioGroup), **Chip** (chip/chipGroup), **Accordion**, **Card**, **Avatar**, **Tooltip**, **Switch**, **Skeleton** (flex-utility mapping tables emit `align-self-*` etc. → remap to Tailwind `self-*`).
