@@ -495,9 +495,111 @@ const breadcrumbComponents = {
   '.blade-breadcrumb-list-stepper .blade-breadcrumb-list-item': { gap: 'var(--spacing-7)' },
 };
 
+// ActionList — the row (`.blade-actionlist-item`) carries an interactive-state stack with `:not()`
+// chains on `[disabled]`/`[aria-disabled]`/`[aria-selected]` plus `:focus-visible`, and the scroll
+// wrapper hides the trailing section separator via a `[role]`-based descendant selector. Neither is
+// expressible as utilities on a single element, so both live here; layout stays atomic in the CVA.
+const actionListComponents = {
+  '.blade-actionlist-scroll [role=\'group\']:last-child > [role=\'separator\']:last-child': {
+    display: 'none',
+  },
+  '.blade-actionlist-item': {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    width: '100%',
+    marginTop: 'var(--spacing-1)',
+    marginBottom: 'var(--spacing-1)',
+    padding: 'var(--spacing-3)',
+    borderWidth: '0',
+    borderRadius: 'var(--border-radius-small)',
+    backgroundColor: 'transparent',
+    textAlign: 'left',
+    textDecoration: 'none',
+    cursor: 'pointer',
+    color: 'inherit',
+    fontFamily: 'inherit',
+    "&:hover:not([disabled]):not([aria-disabled='true']):not([aria-selected='true'])": {
+      backgroundColor: 'var(--interactive-background-gray-default)',
+    },
+    '&:focus-visible': {
+      outline: '4px solid var(--surface-border-primary-muted)',
+      outlineOffset: '1px',
+    },
+    "&[aria-selected='true'], &[aria-selected='true']:hover": {
+      backgroundColor: 'var(--interactive-background-gray-faded-highlighted)',
+    },
+    "&[disabled], &[aria-disabled='true']": { cursor: 'not-allowed' },
+  },
+  ".blade-actionlist-item-negative:hover:not([disabled]):not([aria-disabled='true']):not([aria-selected='true'])":
+    { backgroundColor: 'var(--interactive-background-negative-faded)' },
+};
+
+// SegmentedControl — the item button carries a focus/hover/disabled state stack (including
+// `:focus:not(:focus-visible)` and a selected-item hover override that must win by specificity).
+// These pseudo-state relationships live here; layout/size/text stay atomic in the template classes.
+const segmentedControlComponents = {
+  '.blade-segmented-item': {
+    appearance: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 'var(--spacing-3)',
+    flex: '1',
+    backgroundColor: 'transparent',
+    position: 'relative',
+    zIndex: '1',
+    transitionProperty: 'background-color',
+    transitionTimingFunction: 'var(--easing-standard)',
+    transitionDuration: 'var(--duration-gentle)',
+    '&:focus:not(:focus-visible)': { outline: 'none' },
+    '&:focus-visible': {
+      outline: 'none',
+      boxShadow: 'inset 0px 0px 0px 4px var(--surface-border-primary-muted)',
+    },
+    '&:disabled': { cursor: 'not-allowed', backgroundColor: 'transparent' },
+    '&:hover:not(:disabled)': { backgroundColor: 'var(--interactive-background-gray-default)' },
+  },
+  // Selected item: hover stays transparent (the sliding indicator supplies the background).
+  // Compound `.item.item-selected` beats the base `.item:hover` by specificity regardless of order.
+  '.blade-segmented-item.blade-segmented-item-selected:hover:not(:disabled)': {
+    backgroundColor: 'transparent',
+  },
+};
+
+// AppBar — two descendant relationships that utilities can't express on a single element:
+// the logo constrains any child img/svg, and the title's `flex` shorthand flips to shrink-wrap when
+// the title row also holds an icon badge (kept in the component layer so the descendant override
+// wins over the base). Root grid / data-sticky / responsive padding stay atomic in the CVA.
+const appBarComponents = {
+  '.blade-appbar-logo img, .blade-appbar-logo svg': {
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '20px',
+    width: 'auto',
+    height: 'auto',
+    objectFit: 'contain',
+  },
+  '.blade-appbar-title': { flex: '1 1 0' },
+  '.blade-appbar-title-row-icon-badge .blade-appbar-title': { flex: '0 1 auto' },
+};
+
+// BaseText — a zero-specificity margin reset (`:where(.base){margin:0}`) so any styled-prop margin
+// utility overrides it regardless of source order. Kept as-is via `:where()`; everything else on
+// BaseText is atomic.
+const baseTextComponents = {
+  ':where(.blade-text-base)': { margin: '0' },
+};
+
 module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(buttonComponents);
   addComponents(linkComponents);
   addComponents(announcementBannerComponents);
   addComponents(breadcrumbComponents);
+  addComponents(actionListComponents);
+  addComponents(segmentedControlComponents);
+  addComponents(appBarComponents);
+  addComponents(baseTextComponents);
 });

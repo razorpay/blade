@@ -62,7 +62,13 @@ Migrate the rest, deleting each `.module.css`. Unmigrated components currently k
 
 **⚠️ Workflow gotcha:** editing `tailwind/plugin.cjs` requires a **Storybook restart** — Vite HMR reloads source/CSS but NOT the Tailwind config, so new `.blade-*` component classes silently don't generate until restart. Batch plugin edits per wave, restart once, then visual-verify.
 
-**Remaining (28 `.module.css`):** Atomic — AppBar, ActionList, InputGroup, SegmentedControl, Tabs, BaseText, CounterInput. Hard/plugin — Spinner, Input(baseInput/formHint/formLabel), Modal, BottomSheet, Toast(+toastContainer), Checkbox, Radio(+radioGroup), Chip(+chipGroup), Accordion, Card, Avatar, Tooltip, Switch, Skeleton, IconButton, Alert.
+**Wave 2 done + verified (4):** ActionList, SegmentedControl, AppBar, BaseText. Plugin additions: `.blade-actionlist-*` (row state stack + section-separator hide), `.blade-segmented-item*` (focus/hover/disabled + selected hover override), `.blade-appbar-*` (logo img/svg descendant + title flex override), `:where(.blade-text-base)` (zero-specificity margin reset). BaseText color now emits safelisted `text-<token>` utilities; opacity/line-clamp/tracking are literal utilities. Verified: blade-core 84/85 (preset-drift PASS), blade-svelte 101/101 + svelte-check 0, visual (Text/Heading/ActionList/SegmentedControl/AppBar).
+
+**Reclassified as hard/plugin (were listed "atomic"):** InputGroup (`:global()` corner-rounding into Input's `__blade-*` wrapper hooks — do WITH Input), CounterInput (`@keyframes` ×3 + `::-webkit-*-spin-button` + `[data-keyboard-focus]`), Tabs (large; assess).
+
+**Remaining (24 `.module.css`):** Spinner, Input(baseInput/formHint/formLabel) + InputGroup, CounterInput, Tabs, Modal, BottomSheet, Toast(+toastContainer), Checkbox, Radio(+radioGroup), Chip(+chipGroup), Accordion, Card, Avatar, Tooltip, Switch, Skeleton, IconButton, Alert.
+
+**Commits (stacked branch `feat/blade-tailwind-phase2` on top of `feat/blade-tailwind-migration`):** wave 1 (8 components), wave 2 (4 components).
 
 - Mostly atomic (lower risk): Divider, Code, Counter, TrustBadge, CounterInput, Breadcrumb, AppBar, ActionList, AnnouncementBanner, Collapsible, BaseText, BaseLink, InputGroup, SegmentedControl, Tabs.
 - Hard cases (need plugin component classes — keyframes / pseudo-elements / box-shadow / nested selectors): **Spinner** (spinner-rotate keyframes, nested `.color-* .spinner-icon`), **Input** (baseInput/formHint/formLabel), **Modal**, **BottomSheet**, **Toast** (toast/toastContainer), **Checkbox**, **Radio** (radio/radioGroup), **Chip** (chip/chipGroup), **Accordion**, **Card**, **Avatar**, **Tooltip**, **Switch**, **Skeleton** (flex-utility mapping tables emit `align-self-*` etc. → remap to Tailwind `self-*`).
