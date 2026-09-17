@@ -1,5 +1,17 @@
 # @razorpay/blade-svelte
 
+## 0.17.0
+
+### Minor Changes
+
+- 3cea3fb39: feat(blade-svelte): add Box component with className passthrough
+
+  Ships a minimal, polymorphic `Box` for blade-svelte. The `as` prop picks the rendered tag, `className` is forwarded as-is to the DOM element. No Blade style/spacing props — intended for consumers styling layout with utility CSS (e.g. checkout's Tailwind setup).
+
+### Patch Changes
+
+- a90addbf2: fix(PhoneNumberInput): fire `onChange` on every keystroke instead of only on blur/commit
+
 ## 0.16.0
 
 ### Minor Changes
