@@ -105,6 +105,31 @@
   let isScrollLockDemoOpen = $state(false);
   let isNoScrollLockDemoOpen = $state(false);
 
+  /* The Storybook canvas (`#storybook-root`, see .storybook/preview.css) is
+   * `height: 100vh; overflow: auto`, so it — not the document body — is the
+   * scroller. The body scroll lock targets `body`, which makes the comparison
+   * story inert in that setup: nothing behind the sheet can scroll either way.
+   * While this story is mounted, hand scrolling back to the document so it
+   * behaves like a real app page. */
+  function documentScroller(_node: HTMLElement): { destroy: () => void } {
+    const root = document.getElementById('storybook-root');
+    const previous = root
+      ? { height: root.style.height, overflow: root.style.overflow }
+      : undefined;
+    if (root) {
+      root.style.height = 'auto';
+      root.style.overflow = 'visible';
+    }
+    return {
+      destroy() {
+        if (root && previous) {
+          root.style.height = previous.height;
+          root.style.overflow = previous.overflow;
+        }
+      },
+    };
+  }
+
   let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
     $state();
   const initialFocusInputEl = $derived(searchInput?.getInput() ?? null);
@@ -128,17 +153,6 @@
     'Vietnamese',
     'Brazilian',
     'Moroccan',
-    'Caribbean',
-    'Turkish',
-    'Lebanese',
-    'Malaysian',
-    'Indonesian',
-    'Peruvian',
-    'Ethiopian',
-    'Filipino',
-    'Cuban',
-    'German',
-    'Nigerian',
   ];
 
   const cuisineSections = [
@@ -1250,7 +1264,7 @@
       scroll-lock discussion — not part of React story parity. -->
 <Story name="Scroll Lock Comparison">
   {#snippet template()}
-    <div>
+    <div use:documentScroller>
       <Heading size="small" marginBottom="spacing.3">Body scroll lock: with vs without</Heading>
       <Text marginBottom="spacing.4">
         Both sheets below are identical — same content, same snap behaviour. The only difference
