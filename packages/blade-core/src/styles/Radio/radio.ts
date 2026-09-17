@@ -261,7 +261,8 @@ export function getRadioGroupTemplateClasses(): {
       'inline-flex flex-row items-center gap-spacing-2 font-text font-medium text-surface-text-gray-subtle mb-spacing-2',
     // React renders `*` immediately after the label (gap spacing.0); Tailwind's content utility
     // handles the pseudo-element without a plugin class.
-    necessityRequired: "gap-spacing-0 after:content-['*'] after:text-feedback-text-negative-intense",
+    necessityRequired:
+      "gap-spacing-0 after:content-['*'] after:text-feedback-text-negative-intense",
     necessityOptional:
       "after:content-['(optional)'] after:text-surface-text-gray-muted after:font-regular after:text-50 after:leading-50 after:tracking-50",
     helpText: 'block font-text font-regular text-surface-text-gray-muted',

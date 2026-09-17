@@ -71,10 +71,14 @@ export const chipInnerCva = cva(
   {
     variants: {
       size: {
-        xsmall: 'h-[24px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-3 border-thinner',
-        small: 'h-[28px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-3 border-thinner',
-        medium: 'h-[36px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-4 border-thin',
-        large: 'h-[48px] rounded-[calc(var(--border-radius-medium)-var(--border-width-thin))] px-spacing-5 border-thin',
+        xsmall:
+          'h-[24px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-3 border-thinner',
+        small:
+          'h-[28px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-3 border-thinner',
+        medium:
+          'h-[36px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-4 border-thin',
+        large:
+          'h-[48px] rounded-[calc(var(--border-radius-medium)-var(--border-width-thin))] px-spacing-5 border-thin',
       },
       colorVariant: {
         unchecked:

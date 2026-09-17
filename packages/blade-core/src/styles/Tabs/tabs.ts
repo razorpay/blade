@@ -68,7 +68,8 @@ export const getTabsTemplateClasses = (): Record<string, string> => ({
   tabIndicator: 'absolute pointer-events-none',
   indicatorHorizontalBordered:
     'left-0 top-[-0.5px] h-[2px] bg-interactive-border-neutral-highlighted',
-  indicatorVerticalBordered: 'left-[1.75px] top-0 w-[1.5px] bg-interactive-border-neutral-highlighted',
+  indicatorVerticalBordered:
+    'left-[1.75px] top-0 w-[1.5px] bg-interactive-border-neutral-highlighted',
   indicatorFilled: 'left-0 top-0 bg-surface-background-gray-intense',
   indicatorRadiusSmall: 'rounded-small',
   indicatorRadiusMedium: 'rounded-medium',

@@ -96,7 +96,8 @@ export const getCollapsibleInnerClasses = cva('flex items-start', {
 
 export function getCollapsibleTemplateClasses(): Record<string, string> {
   return {
-    triggerChevron: 'flex items-center origin-center transition-transform duration-moderate ease-standard',
+    triggerChevron:
+      'flex items-center origin-center transition-transform duration-moderate ease-standard',
     chevronExpanded: '-rotate-180',
     bodyContent:
       'h-spacing-0 hidden opacity-80 overflow-y-hidden transition-[height,opacity] duration-moderate ease-standard',
