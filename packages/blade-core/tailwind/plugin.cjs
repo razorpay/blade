@@ -1389,6 +1389,296 @@ const alertComponents = {
   },
 };
 
+// Tabs — a faithful port of `tabs.module.css`. The tab button carries descendant color rules for
+// its text/icon (`.tabButton:hover .tabItemText`) crossed with disabled/selected/variant state,
+// `!important` border-color resets, a scrollbar-hiding pseudo-element, and `:focus-visible` box-
+// shadow + compound radius. None of this reduces to single-element utilities.
+const tabsComponents = {
+  '.blade-tabs-scrollable-area': {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    flex: '1 1 auto',
+    width: '100%',
+    overflow: 'auto hidden',
+    '&::-webkit-scrollbar': { display: 'none' },
+  },
+  '.blade-tabs-vertical-track': {
+    width: '0px',
+    height: 'auto',
+    flexGrow: '1',
+    flexShrink: '0',
+    borderColor: 'var(--surface-border-gray-muted)',
+    borderWidth: 'var(--border-width-thin)',
+    borderStyle: 'solid',
+    transform: 'translateX(1.5px)',
+  },
+  '.blade-tabs-horizontal-track': {
+    transform: 'translateY(-1px)',
+    borderBottomColor: 'var(--surface-border-gray-muted)',
+    borderBottomWidth: 'var(--border-width-thin)',
+    borderBottomStyle: 'solid',
+  },
+  '.blade-tabs-button': {
+    appearance: 'none',
+    textDecoration: 'none',
+    border: 'none',
+    outline: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'var(--spacing-3)',
+    transitionProperty: 'all',
+    transitionTimingFunction: 'var(--easing-standard)',
+    transitionDuration: 'var(--duration-gentle)',
+    '& *': {
+      transitionProperty: 'color, fill',
+      transitionTimingFunction: 'var(--easing-standard)',
+      transitionDuration: 'var(--duration-xquick)',
+    },
+    '&:focus-visible': {
+      boxShadow: 'inset 0px 0px 0px 4px var(--surface-border-primary-muted)',
+      borderColor: 'transparent !important',
+    },
+    "&:focus-visible.blade-tabs-focus-radius-small": { borderRadius: 'var(--border-radius-small)' },
+    "&:focus-visible.blade-tabs-focus-radius-medium": {
+      borderRadius: 'var(--border-radius-medium)',
+    },
+    '&:focus-visible.blade-tabs-bg-transparent:not(.blade-tabs-selected)': {
+      backgroundColor: 'var(--interactive-background-gray-default)',
+    },
+    '&:disabled, &.blade-tabs-disabled-link': {
+      cursor: 'not-allowed',
+      backgroundColor: 'transparent',
+      borderColor: 'transparent !important',
+      pointerEvents: 'auto',
+    },
+    '&:disabled .blade-tabs-item-text, &.blade-tabs-disabled-link .blade-tabs-item-text': {
+      color: 'var(--interactive-text-gray-disabled)',
+    },
+    '&:disabled .blade-tabs-item-icon, &.blade-tabs-disabled-link .blade-tabs-item-icon': {
+      color: 'var(--interactive-icon-gray-disabled)',
+    },
+    '&:disabled:hover, &.blade-tabs-disabled-link:hover': {
+      backgroundColor: 'transparent',
+      borderColor: 'transparent !important',
+    },
+    '&:disabled:hover .blade-tabs-item-text, &.blade-tabs-disabled-link:hover .blade-tabs-item-text':
+      { color: 'var(--interactive-text-gray-disabled)' },
+    '&:disabled:hover .blade-tabs-item-icon, &.blade-tabs-disabled-link:hover .blade-tabs-item-icon':
+      { color: 'var(--interactive-icon-gray-disabled)' },
+  },
+  '.blade-tabs-item-text': {
+    color: 'var(--interactive-text-gray-muted)',
+    fontWeight: 'var(--font-weight-medium)',
+  },
+  '.blade-tabs-item-text-selected': { color: 'var(--interactive-text-gray-normal)' },
+  '.blade-tabs-item-icon': { color: 'var(--interactive-icon-gray-muted)' },
+  '.blade-tabs-item-icon-selected': { color: 'var(--interactive-icon-gray-normal)' },
+  ".blade-tabs-button:hover:not(:disabled):not(.blade-tabs-disabled-link) .blade-tabs-item-text": {
+    color: 'var(--interactive-text-gray-subtle)',
+  },
+  ".blade-tabs-button:hover:not(:disabled):not(.blade-tabs-disabled-link) .blade-tabs-item-icon": {
+    color: 'var(--interactive-icon-gray-subtle)',
+  },
+  ".blade-tabs-button.blade-tabs-selected:hover:not(:disabled):not(.blade-tabs-disabled-link) .blade-tabs-item-text":
+    { color: 'var(--interactive-text-gray-normal)' },
+  ".blade-tabs-button.blade-tabs-selected:hover:not(:disabled):not(.blade-tabs-disabled-link) .blade-tabs-item-icon":
+    { color: 'var(--interactive-icon-gray-normal)' },
+  ".blade-tabs-button:hover:not(:disabled):not(.blade-tabs-disabled-link).blade-tabs-bordered-border-bottom":
+    { borderBottomColor: 'var(--interactive-border-gray-highlighted)' },
+  ".blade-tabs-button:hover:not(:disabled):not(.blade-tabs-disabled-link).blade-tabs-bordered-border-left":
+    { borderLeftColor: 'var(--interactive-border-gray-highlighted)' },
+  ".blade-tabs-button.blade-tabs-selected:hover:not(:disabled):not(.blade-tabs-disabled-link).blade-tabs-bordered-border-bottom":
+    { borderBottomColor: 'transparent' },
+  ".blade-tabs-button.blade-tabs-selected:hover:not(:disabled):not(.blade-tabs-disabled-link).blade-tabs-bordered-border-left":
+    { borderLeftColor: 'transparent' },
+  ".blade-tabs-button:hover:not(:disabled):not(.blade-tabs-disabled-link).blade-tabs-filled-unselected":
+    { backgroundColor: 'var(--interactive-background-gray-default)' },
+  '.blade-tabs-bordered-border-bottom': {
+    borderBottomStyle: 'solid',
+    borderBottomWidth: 'var(--border-width-thicker)',
+    borderBottomColor: 'transparent',
+  },
+  '.blade-tabs-bordered-border-left': {
+    borderLeftStyle: 'solid',
+    borderLeftWidth: 'var(--border-width-thick)',
+    borderLeftColor: 'transparent',
+  },
+  '.blade-tabs-bg-filled-selected-vertical': {
+    backgroundColor: 'var(--surface-background-gray-intense)',
+  },
+};
+
+// Checkbox — the visible icon box reacts to hover on the surrounding label (not itself, since the
+// real input is visually hidden) and to the hidden input's focus via an adjacent sibling; the
+// variant×checked compounds set background/border and must be visible to that hover descendant
+// selector; and the fade-in/out wrappers use two `@keyframes`. Everything else (sizes, typography,
+// spacing) stays atomic in checkbox.ts.
+const checkboxComponents = {
+  '.blade-checkbox-label': {
+    display: 'flex',
+    marginTop: 'var(--spacing-1)',
+    marginBottom: 'var(--spacing-1)',
+    padding: '0',
+    cursor: 'pointer',
+    userSelect: 'none',
+    '&[data-disabled]': { cursor: 'not-allowed' },
+  },
+  '.blade-checkbox-input:focus-visible + .blade-checkbox-icon': {
+    outline: '4px solid var(--surface-border-primary-muted)',
+    outlineOffset: '1px',
+  },
+  '.blade-checkbox-default-checked': {
+    backgroundColor: 'var(--interactive-background-primary-default)',
+    borderColor: 'var(--interactive-border-primary-default)',
+  },
+  '.blade-checkbox-default-unchecked': {
+    backgroundColor: 'transparent',
+    borderColor: 'var(--interactive-border-gray-highlighted)',
+  },
+  '.blade-checkbox-disabled-checked': {
+    backgroundColor: 'var(--interactive-background-primary-disabled)',
+    borderColor: 'transparent',
+  },
+  '.blade-checkbox-disabled-unchecked': {
+    backgroundColor: 'transparent',
+    borderColor: 'var(--interactive-border-gray-disabled)',
+  },
+  '.blade-checkbox-negative-checked': {
+    backgroundColor: 'var(--interactive-background-negative-default)',
+    borderColor: 'var(--interactive-border-negative-default)',
+  },
+  '.blade-checkbox-negative-unchecked': {
+    backgroundColor: 'transparent',
+    borderColor: 'var(--interactive-border-negative-default)',
+  },
+  '.blade-checkbox-label:hover:not([data-disabled]) .blade-checkbox-default-checked': {
+    backgroundColor: 'var(--interactive-background-primary-highlighted)',
+    borderColor: 'var(--interactive-background-primary-highlighted)',
+  },
+  '.blade-checkbox-label:hover:not([data-disabled]) .blade-checkbox-default-unchecked': {
+    backgroundColor: 'var(--interactive-background-gray-faded)',
+    borderColor: 'var(--interactive-border-gray-highlighted)',
+  },
+  '.blade-checkbox-fade-in': { animation: 'checkboxFadeIn var(--duration-xquick) var(--easing-entrance)' },
+  '.blade-checkbox-fade-out': { animation: 'checkboxFadeOut var(--duration-xquick) var(--easing-exit)' },
+  '@keyframes checkboxFadeIn': {
+    from: { transform: 'scale(0.6)', opacity: '0' },
+    to: { transform: 'scale(1)', opacity: '1' },
+  },
+  '@keyframes checkboxFadeOut': {
+    from: { transform: 'scale(1)', opacity: '1' },
+    to: { transform: 'scale(0.6)', opacity: '0' },
+  },
+};
+
+// Radio — the circle icon reacts to the hidden input's hover/focus via adjacent-sibling selectors
+// (React parity: `input:hover + div`), the variant×checked compounds must be visible to that
+// selector, and the animated dot uses a `.checked` compound transform/opacity transition.
+const radioComponents = {
+  '.blade-radio-icon-wrapper': {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 'var(--border-width-thick)',
+    borderStyle: 'solid',
+    margin: 'var(--spacing-1)',
+    borderRadius: 'var(--border-radius-max)',
+    backgroundColor: 'transparent',
+    transitionProperty: 'background-color, border-color',
+    transitionDuration: 'var(--duration-xquick)',
+    transitionTimingFunction: 'var(--easing-exit)',
+  },
+  '.blade-radio-default-unchecked': {
+    backgroundColor: 'transparent',
+    borderColor: 'var(--interactive-border-gray-highlighted)',
+  },
+  '.blade-radio-default-checked': {
+    backgroundColor: 'var(--interactive-background-primary-default)',
+    borderColor: 'var(--interactive-border-primary-default)',
+  },
+  '.blade-radio-disabled-unchecked': {
+    backgroundColor: 'transparent',
+    borderColor: 'var(--interactive-border-gray-disabled)',
+  },
+  '.blade-radio-disabled-checked': {
+    backgroundColor: 'var(--interactive-background-primary-disabled)',
+    borderColor: 'transparent',
+  },
+  '.blade-radio-negative-unchecked': {
+    backgroundColor: 'transparent',
+    borderColor: 'var(--interactive-border-negative-default)',
+  },
+  '.blade-radio-negative-checked': {
+    backgroundColor: 'var(--interactive-background-negative-default)',
+    borderColor: 'var(--interactive-border-negative-default)',
+  },
+  '.blade-radio-input:hover + .blade-radio-icon-wrapper.blade-radio-default-unchecked': {
+    backgroundColor: 'var(--interactive-background-gray-faded)',
+    borderColor: 'var(--interactive-border-gray-highlighted)',
+  },
+  '.blade-radio-input:hover + .blade-radio-icon-wrapper.blade-radio-default-checked': {
+    backgroundColor: 'var(--interactive-background-primary-highlighted)',
+    borderColor: 'var(--interactive-background-primary-highlighted)',
+  },
+  '.blade-radio-input:focus-visible + .blade-radio-icon-wrapper': {
+    outline: '4px solid var(--surface-border-primary-muted)',
+    outlineOffset: '1px',
+  },
+  '.blade-radio-dot': {
+    position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: '0',
+    transform: 'scale(0.3)',
+    transitionProperty: 'opacity, transform',
+    transitionDuration: 'var(--duration-xquick)',
+    transitionTimingFunction: 'var(--easing-exit)',
+  },
+  '.blade-radio-dot.blade-radio-checked': {
+    opacity: '1',
+    transform: 'scale(1)',
+    transitionTimingFunction: 'var(--easing-entrance)',
+  },
+};
+
+// RadioGroup — the left-positioned field/label collapse to a stacked, full-width layout below the
+// 768px breakpoint (React forces `top` label position on mobile), and the error text inside the
+// hint wrapper must not double its top margin.
+const radioGroupComponents = {
+  '.blade-radio-group-field-left': { flexDirection: 'row', alignItems: 'flex-start' },
+  '@media (max-width: 767px)': {
+    '.blade-radio-group-field-left': { flexDirection: 'column' },
+    '.blade-radio-group-label-left': {
+      width: '100%',
+      marginRight: '0',
+      marginBottom: 'var(--spacing-2)',
+    },
+    '.blade-radio-group-label-left-medium': {
+      fontSize: 'var(--font-size-75)',
+      lineHeight: 'var(--line-height-75)',
+      letterSpacing: 'var(--letter-spacing-50)',
+    },
+    '.blade-radio-group-label-left-large': {
+      fontSize: 'var(--font-size-100)',
+      lineHeight: 'var(--line-height-100)',
+      letterSpacing: 'var(--letter-spacing-50)',
+    },
+  },
+  '.blade-radio-group-hint-wrapper .blade-radio-group-error-text': { marginTop: '0' },
+};
+
+// Chip — the only irreducible bit is the focus ring on the visually-hidden input's general sibling
+// (`~`, not adjacent `+`, since the label wraps icon/text elements between input and chip).
+const chipComponents = {
+  '.blade-chip-sr-only:focus-visible ~ .blade-chip-animated': {
+    outline: '2px solid var(--interactive-border-primary-default)',
+    outlineOffset: '2px',
+  },
+};
+
 module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(buttonComponents);
   addComponents(linkComponents);
@@ -1408,4 +1698,9 @@ module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(counterInputComponents);
   addComponents(tooltipComponents);
   addComponents(alertComponents);
+  addComponents(tabsComponents);
+  addComponents(checkboxComponents);
+  addComponents(radioComponents);
+  addComponents(radioGroupComponents);
+  addComponents(chipComponents);
 });

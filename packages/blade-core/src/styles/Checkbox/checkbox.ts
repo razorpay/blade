@@ -1,6 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './checkbox.module.css';
 
 export type CheckboxSize = 'small' | 'medium' | 'large';
 export type CheckboxIconVariant = 'default' | 'disabled' | 'negative';
@@ -13,48 +11,52 @@ export type CheckboxIconVariants = {
 };
 
 /**
- * Icon-wrapper (the visible box) classes. Combines `size` (width/height +
- * border-width + small padding) with `variant` × `isChecked` compounds that
- * drive background-color and border-color. `isIndeterminate` only affects the
- * small padding-top (suppressed when indeterminate, mirroring React).
+ * Icon-wrapper (the visible box) classes. Combines `size` (width/height + border-width + small
+ * padding) with `variant` × `isChecked` compounds that drive background-color and border-color.
+ * The compound classes (`.blade-checkbox-*-checked/unchecked`) and the label-hover override live in
+ * the plugin — the hover selector targets these class names directly. `isIndeterminate` only
+ * affects the small padding-top (suppressed when indeterminate, mirroring React).
  */
-export const checkboxIconCva = cva(styles.icon, {
-  variants: {
-    size: {
-      small: styles['icon-small'],
-      medium: styles['icon-medium'],
-      large: styles['icon-large'],
+export const checkboxIconCva = cva(
+  'blade-checkbox-icon relative flex items-center justify-center shrink-0 border-solid m-spacing-1 rounded-xsmall box-border',
+  {
+    variants: {
+      size: {
+        small: 'w-[12px] h-[12px] border-thick',
+        medium: 'w-[16px] h-[16px] border-thick',
+        large: 'w-[20px] h-[20px] border-thicker',
+      },
+      variant: {
+        default: null,
+        disabled: null,
+        negative: null,
+      },
+      isChecked: {
+        true: 'blade-checkbox-checked',
+        false: 'blade-checkbox-unchecked',
+      },
+      isIndeterminate: {
+        true: null,
+        false: null,
+      },
     },
-    variant: {
-      default: null,
-      disabled: null,
-      negative: null,
-    },
-    isChecked: {
-      true: styles.checked,
-      false: styles.unchecked,
-    },
-    isIndeterminate: {
-      true: null,
-      false: null,
+    compoundVariants: [
+      { variant: 'default', isChecked: true, class: 'blade-checkbox-default-checked' },
+      { variant: 'default', isChecked: false, class: 'blade-checkbox-default-unchecked' },
+      { variant: 'disabled', isChecked: true, class: 'blade-checkbox-disabled-checked' },
+      { variant: 'disabled', isChecked: false, class: 'blade-checkbox-disabled-unchecked' },
+      { variant: 'negative', isChecked: true, class: 'blade-checkbox-negative-checked' },
+      { variant: 'negative', isChecked: false, class: 'blade-checkbox-negative-unchecked' },
+      { size: 'small', isIndeterminate: false, class: 'pt-[1px]' },
+    ],
+    defaultVariants: {
+      size: 'medium',
+      variant: 'default',
+      isChecked: false,
+      isIndeterminate: false,
     },
   },
-  compoundVariants: [
-    { variant: 'default', isChecked: true, class: styles['default-checked'] },
-    { variant: 'default', isChecked: false, class: styles['default-unchecked'] },
-    { variant: 'disabled', isChecked: true, class: styles['disabled-checked'] },
-    { variant: 'disabled', isChecked: false, class: styles['disabled-unchecked'] },
-    { variant: 'negative', isChecked: true, class: styles['negative-checked'] },
-    { variant: 'negative', isChecked: false, class: styles['negative-unchecked'] },
-    { size: 'small', isIndeterminate: false, class: styles['icon-small-pad'] },
-  ],
-  defaultVariants: {
-    size: 'medium',
-    variant: 'default',
-    isChecked: false,
-    isIndeterminate: false,
-  },
-});
+);
 
 export function getCheckboxIconClasses(props: CheckboxIconVariants): string {
   return checkboxIconCva(props);
@@ -75,15 +77,15 @@ export type CheckboxSvgVariants = {
   isDisabled?: boolean;
 };
 
-export const checkboxSvgCva = cva(styles.svg, {
+export const checkboxSvgCva = cva('text-interactive-icon-on-primary-normal', {
   variants: {
     size: {
-      small: styles['svg-small'],
-      medium: styles['svg-medium'],
-      large: styles['svg-large'],
+      small: 'w-[8px] h-[8px]',
+      medium: 'w-[12px] h-[12px]',
+      large: 'w-[16px] h-[16px]',
     },
     isDisabled: {
-      true: styles['svg-disabled'],
+      true: 'text-interactive-icon-static-white-disabled',
       false: null,
     },
   },
@@ -102,23 +104,26 @@ export type CheckboxTitleVariants = {
   isDisabled?: boolean;
 };
 
-export const checkboxTitleCva = cva(styles.title, {
-  variants: {
-    size: {
-      small: styles['title-small'],
-      medium: styles['title-medium'],
-      large: styles['title-large'],
+export const checkboxTitleCva = cva(
+  'ml-spacing-2 font-text font-regular text-surface-text-gray-subtle',
+  {
+    variants: {
+      size: {
+        small: 'text-75 leading-75',
+        medium: 'text-100 leading-100',
+        large: 'text-200 leading-200',
+      },
+      isDisabled: {
+        true: 'text-surface-text-gray-disabled',
+        false: null,
+      },
     },
-    isDisabled: {
-      true: styles['title-disabled'],
-      false: null,
+    defaultVariants: {
+      size: 'medium',
+      isDisabled: false,
     },
   },
-  defaultVariants: {
-    size: 'medium',
-    isDisabled: false,
-  },
-});
+);
 
 export function getCheckboxTitleClasses(props: CheckboxTitleVariants): string {
   return checkboxTitleCva(props);
@@ -131,12 +136,12 @@ export type CheckboxSupportVariants = {
 /** Support-text block wrapper — carries the size-keyed left spacing only.
  * Font styling lives on the inline `.support-text` child (see below) so the
  * wrapper can establish React's taller line box for correct vertical leading. */
-export const checkboxSupportCva = cva(styles.support, {
+export const checkboxSupportCva = cva('block text-200 [line-height:normal]', {
   variants: {
     size: {
-      small: styles['support-spacing-small'],
-      medium: styles['support-spacing-medium'],
-      large: styles['support-spacing-large'],
+      small: 'ml-[20px]',
+      medium: 'ml-[24px]',
+      large: 'ml-[28px]',
     },
   },
   defaultVariants: {
@@ -149,18 +154,21 @@ export function getCheckboxSupportClasses(props: CheckboxSupportVariants): strin
 }
 
 /** Inline support-text — caption font/line-height + color. */
-export const checkboxSupportTextCva = cva(styles['support-text'], {
-  variants: {
-    size: {
-      small: styles['support-small'],
-      medium: styles['support-medium'],
-      large: styles['support-large'],
+export const checkboxSupportTextCva = cva(
+  'font-text font-regular text-surface-text-gray-muted',
+  {
+    variants: {
+      size: {
+        small: 'text-50 leading-50',
+        medium: 'text-50 leading-50',
+        large: 'text-100 leading-50',
+      },
+    },
+    defaultVariants: {
+      size: 'medium',
     },
   },
-  defaultVariants: {
-    size: 'medium',
-  },
-});
+);
 
 export function getCheckboxSupportTextClasses(props: CheckboxSupportVariants): string {
   return checkboxSupportTextCva(props);
@@ -171,21 +179,21 @@ export type CheckboxHintVariants = {
   type?: 'help' | 'error';
 };
 
-export const checkboxHintCva = cva(styles.hint, {
+export const checkboxHintCva = cva('font-text font-regular', {
   variants: {
     size: {
-      small: styles['hint-small'],
-      medium: styles['hint-medium'],
-      large: styles['hint-large'],
+      small: 'text-50 leading-50',
+      medium: 'text-50 leading-50',
+      large: 'text-100 leading-50',
     },
     type: {
-      help: styles['hint-help'],
-      error: styles['hint-error'],
+      help: 'text-surface-text-gray-muted',
+      error: 'text-feedback-text-negative-intense',
     },
   },
   compoundVariants: [
     // React offsets the large error Text 2px down to align with the larger icon.
-    { size: 'large', type: 'error', class: styles['hint-large-error'] },
+    { size: 'large', type: 'error', class: 'mt-spacing-1' },
   ],
   defaultVariants: {
     size: 'medium',
@@ -202,15 +210,15 @@ export type CheckboxHintWrapperVariants = {
 };
 
 /**
- * Form-hint wrapper classes — combines the structural `hint-wrapper` (flex row)
- * with the size-keyed top spacing that mirrors React's `hintMarginTop`.
+ * Form-hint wrapper classes — combines the structural flex row with the size-keyed top spacing
+ * that mirrors React's `hintMarginTop`.
  */
-export const checkboxHintWrapperCva = cva(styles['hint-wrapper'], {
+export const checkboxHintWrapperCva = cva('flex flex-row items-start gap-spacing-2', {
   variants: {
     size: {
-      small: styles['hint-wrapper-spacing-small'],
-      medium: styles['hint-wrapper-spacing-medium'],
-      large: styles['hint-wrapper-spacing-large'],
+      small: 'mt-spacing-2',
+      medium: 'mt-spacing-2',
+      large: 'mt-spacing-3',
     },
   },
   defaultVariants: {
@@ -237,17 +245,20 @@ export function getCheckboxTemplateClasses(): {
   hintIcon: string;
 } {
   return {
-    checkbox: styles.checkbox,
-    label: styles.label,
-    field: styles.field,
-    row: styles.row,
-    input: styles.input,
-    fade: styles.fade,
-    fadeShown: styles['fade-shown'],
-    fadeIn: styles['fade-in'],
-    fadeOut: styles['fade-out'],
-    hintWrapper: styles['hint-wrapper'],
-    hintIcon: styles['hint-icon'],
+    checkbox: 'block',
+    label: 'blade-checkbox-label',
+    field: 'flex flex-col',
+    row: 'flex flex-row',
+    input:
+      'absolute w-[1px] h-[1px] p-spacing-0 -m-px overflow-hidden [clip:rect(0,0,0,0)] whitespace-nowrap border-0 blade-checkbox-input',
+    fade: 'absolute flex opacity-0',
+    fadeShown: 'opacity-100',
+    fadeIn: 'blade-checkbox-fade-in',
+    fadeOut: 'blade-checkbox-fade-out',
+    hintWrapper: 'flex flex-row items-start gap-spacing-2',
+    // One-off descendant rule (`svg` inside the hint icon renders block) — an arbitrary variant is
+    // simpler here than a dedicated plugin class for a single declaration.
+    hintIcon: 'shrink-0 mt-spacing-1 flex [line-height:0] [&>svg]:block',
   };
 }
 
@@ -257,11 +268,11 @@ export type CheckboxGroupFieldVariants = {
   labelPosition?: 'top' | 'left';
 };
 
-export const checkboxGroupFieldCva = cva(styles['group-field'], {
+export const checkboxGroupFieldCva = cva('flex', {
   variants: {
     labelPosition: {
-      top: styles['field-top'],
-      left: styles['field-left'],
+      top: 'flex-col',
+      left: 'flex-row items-start gap-spacing-4',
     },
   },
   defaultVariants: {
@@ -279,21 +290,21 @@ export type CheckboxGroupOptionsVariants = {
   flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
 };
 
-export const checkboxGroupOptionsCva = cva(styles.options, {
+export const checkboxGroupOptionsCva = cva('flex', {
   variants: {
     orientation: {
-      vertical: styles['options-vertical'],
-      horizontal: styles['options-horizontal'],
+      vertical: 'flex-col',
+      horizontal: 'flex-row',
     },
     size: {
-      small: styles['gap-small'],
-      medium: styles['gap-medium'],
-      large: styles['gap-large'],
+      small: 'gap-spacing-2',
+      medium: 'gap-spacing-3',
+      large: 'gap-spacing-3',
     },
     flexWrap: {
-      nowrap: styles['flex-wrap-nowrap'],
-      wrap: styles['flex-wrap-wrap'],
-      'wrap-reverse': styles['flex-wrap-wrap-reverse'],
+      nowrap: 'flex-nowrap',
+      wrap: 'flex-wrap',
+      'wrap-reverse': 'flex-wrap-reverse',
     },
   },
   defaultVariants: {
@@ -309,9 +320,9 @@ export function getCheckboxGroupOptionsClasses(props: CheckboxGroupOptionsVarian
 
 export function getCheckboxGroupLabelSizeClass(size: CheckboxSize): string {
   const map: Record<CheckboxSize, string> = {
-    small: styles['group-label-small'],
-    medium: styles['group-label-medium'],
-    large: styles['group-label-large'],
+    small: 'text-75 leading-75 text-surface-text-gray-muted',
+    medium: 'text-75 leading-75 text-surface-text-gray-subtle',
+    large: 'text-100 leading-100 text-surface-text-gray-subtle',
   };
   return map[size];
 }
@@ -332,17 +343,21 @@ export function getCheckboxGroupTemplateClasses(): {
   srOnly: string;
 } {
   return {
-    groupLabel: styles['group-label'],
-    labelRow: styles['label-row'],
-    labelSuffix: styles['label-suffix'],
-    labelTrailing: styles['label-trailing'],
-    necessityRequired: styles['necessity-required'],
-    necessityOptional: styles['necessity-optional'],
-    hint: styles.hint,
-    hintHelp: styles['hint-help'],
-    hintError: styles['hint-error'],
-    hintWrapper: styles['hint-wrapper'],
-    hintIcon: styles['hint-icon'],
-    srOnly: styles['sr-only'],
+    groupLabel:
+      'inline-flex items-center font-text font-medium mb-spacing-3 gap-spacing-2',
+    labelRow: 'flex items-center w-full',
+    labelSuffix: 'inline-flex items-center ml-spacing-2',
+    labelTrailing: 'inline-flex items-center ml-auto',
+    // `after:content-[...]` uses Tailwind's underscore-for-space escaping in arbitrary values.
+    necessityRequired: "after:content-['_*'] after:text-feedback-text-negative-intense",
+    necessityOptional:
+      "after:content-['_(optional)'] after:text-surface-text-gray-muted after:font-regular",
+    hint: 'font-text font-regular',
+    hintHelp: 'text-surface-text-gray-muted',
+    hintError: 'text-feedback-text-negative-intense',
+    hintWrapper: 'flex flex-row items-start gap-spacing-2',
+    hintIcon: 'shrink-0 mt-spacing-1 flex [line-height:0] [&>svg]:block',
+    srOnly:
+      'absolute w-[1px] h-[1px] p-spacing-0 -m-px overflow-hidden [clip:rect(0,0,0,0)] whitespace-nowrap border-0',
   };
 }
