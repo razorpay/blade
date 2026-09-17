@@ -1117,6 +1117,278 @@ const inputGroupComponents = {
   },
 };
 
+// CounterInput — a faithful port of `counterInput.module.css`: container border/size/emphasis with
+// `[data-disabled]` overrides, buttons with hover/focus/disabled color states, a native number input
+// with `::-webkit-*-spin-button` pseudo-elements, the `[data-keyboard-focus]` focus ring, a
+// slide-in animation, and an oscillating loading bar. All `@keyframes` + selectors live here.
+const counterInputComponents = {
+  '.blade-counter-input': { display: 'inline-block' },
+  '.blade-counter-input-layout': { display: 'flex', flexDirection: 'column' },
+  '.blade-counter-input-container': {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    borderStyle: 'solid',
+    borderWidth: 'var(--border-width-thin)',
+    backgroundColor: 'var(--surface-background-gray-intense)',
+    '&[data-disabled]': { backgroundColor: 'var(--surface-background-gray-subtle)' },
+  },
+  '.blade-counter-input-container-xsmall': {
+    width: '78px',
+    height: '30px',
+    borderRadius: 'var(--border-radius-small)',
+  },
+  '.blade-counter-input-container-small': {
+    width: '86px',
+    height: '34px',
+    borderRadius: 'var(--border-radius-small)',
+  },
+  '.blade-counter-input-container-medium': {
+    width: '94px',
+    height: '38px',
+    borderRadius: 'var(--border-radius-small)',
+  },
+  '.blade-counter-input-container-large': {
+    width: '122px',
+    height: '50px',
+    borderRadius: 'var(--border-radius-medium)',
+  },
+  '.blade-counter-input-container-subtle': {
+    borderColor: 'var(--interactive-border-gray-default)',
+  },
+  '.blade-counter-input-container-intense': {
+    borderColor: 'var(--interactive-border-primary-highlighted)',
+    '&[data-disabled]': { borderColor: 'var(--interactive-border-primary-disabled)' },
+  },
+  '.blade-counter-input-controls': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  '.blade-counter-input-button': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxSizing: 'border-box',
+    backgroundColor: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    transitionProperty: 'background-color, color',
+    transitionDuration: 'var(--duration-xquick)',
+    transitionTimingFunction: 'var(--easing-standard)',
+    '&:disabled': { cursor: 'not-allowed' },
+    '&:focus-visible': {
+      outline: '4px solid var(--surface-border-primary-muted)',
+      outlineOffset: '-4px',
+    },
+  },
+  '.blade-counter-input-button-xsmall, .blade-counter-input-button-small, .blade-counter-input-button-medium':
+    { padding: 'var(--spacing-2)', borderRadius: 'var(--border-radius-xsmall)' },
+  '.blade-counter-input-button-large': {
+    padding: 'var(--spacing-3)',
+    borderRadius: 'var(--border-radius-small)',
+  },
+  '.blade-counter-input-button-decrement': {
+    margin: 'var(--spacing-2) var(--spacing-0) var(--spacing-2) var(--spacing-2)',
+  },
+  '.blade-counter-input-button-increment': {
+    margin: 'var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--spacing-0)',
+  },
+  '.blade-counter-input-button-subtle': {
+    color: 'var(--interactive-icon-gray-subtle)',
+    '&:disabled': { color: 'var(--interactive-icon-gray-disabled)' },
+    '&:hover:not(:disabled)': {
+      backgroundColor: 'var(--interactive-background-gray-faded-highlighted)',
+      color: 'var(--interactive-icon-gray-normal)',
+    },
+  },
+  '.blade-counter-input-button-intense': {
+    color: 'var(--interactive-icon-primary-subtle)',
+    '&:disabled': { color: 'var(--interactive-icon-primary-disabled)' },
+    '&:hover:not(:disabled)': {
+      backgroundColor: 'var(--interactive-background-primary-faded-highlighted)',
+      color: 'var(--interactive-icon-primary-normal)',
+    },
+  },
+  '.blade-counter-input-input-wrapper': {
+    display: 'flex',
+    flex: '1',
+    minWidth: '0',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+  },
+  '.blade-counter-input .blade-counter-input-input-wrapper:focus-within': { outline: 'none' },
+  '.blade-counter-input[data-keyboard-focus] .blade-counter-input-input-wrapper:focus-within': {
+    outline: '4px solid var(--surface-border-primary-muted)',
+    outlineOffset: '-4px',
+  },
+  '.blade-counter-input-animate-slide-up': {
+    animation: 'counter-input-slide-up var(--duration-quick) ease-out',
+  },
+  '.blade-counter-input-animate-slide-down': {
+    animation: 'counter-input-slide-down var(--duration-quick) ease-out',
+  },
+  '@keyframes counter-input-slide-up': {
+    '0%': { transform: 'translateY(30%)', opacity: '0' },
+    '100%': { transform: 'translateY(0)', opacity: '1' },
+  },
+  '@keyframes counter-input-slide-down': {
+    '0%': { transform: 'translateY(-30%)', opacity: '0' },
+    '100%': { transform: 'translateY(0)', opacity: '1' },
+  },
+  '.blade-counter-input-input': {
+    width: '100%',
+    minWidth: '0',
+    padding: 'var(--spacing-2)',
+    border: 'none',
+    outline: 'none',
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    boxSizing: 'border-box',
+    fontFamily: 'var(--font-family-text)',
+    fontWeight: 'var(--font-weight-semibold)',
+    appearance: 'textfield',
+    '-moz-appearance': 'textfield',
+    '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+      '-webkit-appearance': 'none',
+      margin: '0',
+    },
+  },
+  '.blade-counter-input-input-xsmall, .blade-counter-input-input-small': {
+    fontSize: 'var(--font-size-75)',
+    lineHeight: 'var(--line-height-75)',
+  },
+  '.blade-counter-input-input-medium': {
+    fontSize: 'var(--font-size-100)',
+    lineHeight: 'var(--line-height-100)',
+  },
+  '.blade-counter-input-input-large': {
+    fontSize: 'var(--font-size-200)',
+    lineHeight: 'var(--line-height-200)',
+  },
+  '.blade-counter-input-input-subtle': {
+    color: 'var(--surface-text-gray-subtle)',
+    '&:disabled': { color: 'var(--surface-text-gray-disabled)' },
+  },
+  '.blade-counter-input-input-intense': {
+    color: 'var(--interactive-text-primary-subtle)',
+    '&:disabled': { color: 'var(--interactive-text-primary-disabled)' },
+  },
+  '.blade-counter-input-progress-bar-wrapper': {
+    position: 'absolute',
+    left: '0',
+    bottom: '0',
+    width: '100%',
+    height: '2px',
+    overflow: 'hidden',
+  },
+  '.blade-counter-input-progress-bar': {
+    position: 'absolute',
+    top: '0',
+    height: '100%',
+    width: '40%',
+    borderRadius: 'var(--border-radius-max)',
+    animation:
+      'counter-input-progress-oscillate var(--duration-2xgentle) var(--easing-linear) infinite',
+  },
+  '.blade-counter-input-progress-bar-subtle': {
+    backgroundColor: 'var(--interactive-icon-gray-muted)',
+  },
+  '.blade-counter-input-progress-bar-intense': {
+    backgroundColor: 'var(--interactive-background-primary-default)',
+  },
+  '@keyframes counter-input-progress-oscillate': {
+    '0%': { left: '-40%' },
+    '25%': { left: '50%' },
+    '50%': { left: '100%' },
+    '75%': { left: '50%' },
+    '100%': { left: '-40%' },
+  },
+  '@media (min-width: 768px)': {
+    '.blade-counter-input-layout-left': { flexDirection: 'row', alignItems: 'center' },
+  },
+};
+
+// Tooltip — the dark bubble uses hsla colors, a backdrop blur, `[data-state]` open/closed
+// transitions, per-side enter transforms (compound with `[data-state=closed]`), a dark-mode border,
+// and an arrow whose fill/stroke change in dark mode — plus a portal that reads a z-index CSS var.
+// All emitted here; the trigger + typography stay atomic in the template classes.
+const tooltipComponents = {
+  '.blade-tooltip-portal': {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    width: 'max-content',
+    pointerEvents: 'none',
+    zIndex: 'var(--tooltip-z-index, 1100)',
+  },
+  '.blade-tooltip-bubble': {
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    padding: 'var(--spacing-4)',
+    gap: 'var(--spacing-2)',
+    maxWidth: '200px',
+    borderRadius: 'var(--border-radius-medium)',
+    backgroundColor: 'hsla(0, 0%, 0%, 0.72)',
+    boxShadow: '0 2px 4px 0 hsla(200, 10%, 18%, 0.06)',
+    backdropFilter: 'blur(12px)',
+    '-webkit-backdrop-filter': 'blur(12px)',
+    pointerEvents: 'none',
+    opacity: '0',
+    transition: 'opacity var(--duration-quick) ease, transform var(--duration-quick) ease',
+    "&[data-state='closed']": { opacity: '0' },
+    "&[data-state='open']": { opacity: '1', transform: 'translate(0, 0)' },
+  },
+  "body[data-theme='dark'] .blade-tooltip-bubble, :root[data-blade-color-scheme='dark'] .blade-tooltip-bubble":
+    { border: 'var(--border-width-thin) solid hsla(218, 9%, 30%, 1)' },
+  ".blade-tooltip-side-top[data-state='closed']": { transform: 'translateY(4px)' },
+  ".blade-tooltip-side-bottom[data-state='closed']": { transform: 'translateY(-4px)' },
+  ".blade-tooltip-side-left[data-state='closed']": { transform: 'translateX(4px)' },
+  ".blade-tooltip-side-right[data-state='closed']": { transform: 'translateX(-4px)' },
+  '.blade-tooltip-arrow': {
+    position: 'absolute',
+    pointerEvents: 'none',
+    fill: 'hsla(0, 0%, 0%, 0.72)',
+    stroke: 'transparent',
+    strokeWidth: '0',
+  },
+  "body[data-theme='dark'] .blade-tooltip-arrow, :root[data-blade-color-scheme='dark'] .blade-tooltip-arrow":
+    { stroke: 'hsla(218, 9%, 30%, 1)', strokeWidth: '1' },
+};
+
+// Alert — full-width alerts swap their action layout (vertical ↔ horizontal) via ancestor descendant
+// rules across a breakpoint, and align-items flips to center on desktop full-width. These display
+// toggles must sit in the component layer (a utility `flex`/`items-start` would beat them), so the
+// alert root's align-items + the action containers' display live here. Color×emphasis + everything
+// else stays atomic (CVA compoundVariants / template utilities).
+const alertComponents = {
+  '.blade-alert': { alignItems: 'flex-start' },
+  '.blade-alert-actions-vertical': {
+    marginTop: 'var(--spacing-4)',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  '.blade-alert-actions-horizontal': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  '.blade-alert-full-width .blade-alert-actions-horizontal': { display: 'none' },
+  '.blade-alert-full-width .blade-alert-actions-vertical': { display: 'flex' },
+  '@media (min-width: 768px)': {
+    '.blade-alert.blade-alert-full-width': { alignItems: 'center' },
+    '.blade-alert-full-width .blade-alert-actions-horizontal': { display: 'flex' },
+    '.blade-alert-full-width .blade-alert-actions-vertical': { display: 'none' },
+  },
+};
+
 module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(buttonComponents);
   addComponents(linkComponents);
@@ -1133,4 +1405,7 @@ module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(baseInputComponents);
   addComponents(formComponents);
   addComponents(inputGroupComponents);
+  addComponents(counterInputComponents);
+  addComponents(tooltipComponents);
+  addComponents(alertComponents);
 });
