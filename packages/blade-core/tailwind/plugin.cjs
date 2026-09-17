@@ -1894,6 +1894,406 @@ const cardComponents = {
   },
 };
 
+// Toast — the root's background/border is a `type × color` compound (informational ignores color
+// unless combined with `.type-informational`, promotional always gray) crossed with descendant
+// icon/content/trailing alignment overrides for the promotional type, a stateful dismiss button,
+// and enter/exit `@keyframes`. All ported verbatim as `.blade-toast-*`.
+const toastComponents = {
+  '.blade-toast': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 'var(--spacing-3)',
+    width: '100%',
+    paddingInline: 'var(--spacing-4)',
+    paddingBlock: 'var(--spacing-3)',
+    borderRadius: 'var(--border-radius-medium)',
+    overflow: 'hidden',
+    boxSizing: 'border-box',
+    pointerEvents: 'auto',
+    backdropFilter: 'blur(8px)',
+  },
+  '.blade-toast-type-promotional': {
+    backgroundColor: 'var(--popup-background-gray-moderate)',
+    boxShadow:
+      'inset 0 0 0 1px var(--popup-border-gray-moderate), inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted)',
+    paddingBlock: 'var(--spacing-4)',
+  },
+  '.blade-toast-type-informational.blade-toast-color-neutral': {
+    backgroundColor: 'var(--popup-background-neutral-moderate)',
+    boxShadow:
+      'inset 0 0 0 1px var(--popup-border-neutral-moderate), inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted)',
+  },
+  '.blade-toast-type-informational.blade-toast-color-positive': {
+    backgroundColor: 'var(--popup-background-positive-moderate)',
+    boxShadow:
+      'inset 0 0 0 1px var(--popup-border-positive-moderate), inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted)',
+  },
+  '.blade-toast-type-informational.blade-toast-color-negative': {
+    backgroundColor: 'var(--popup-background-negative-moderate)',
+    boxShadow:
+      'inset 0 0 0 1px var(--popup-border-negative-moderate), inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted)',
+  },
+  '.blade-toast-type-informational.blade-toast-color-notice': {
+    backgroundColor: 'var(--popup-background-notice-moderate)',
+    boxShadow:
+      'inset 0 0 0 1px var(--popup-border-notice-moderate), inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted)',
+  },
+  '.blade-toast-type-informational.blade-toast-color-information': {
+    backgroundColor: 'var(--popup-background-information-moderate)',
+    boxShadow:
+      'inset 0 0 0 1px var(--popup-border-information-moderate), inset 0 1.5px 0 0 var(--interactive-background-static-white-faded-highlighted)',
+  },
+  '.blade-toast-icon-wrapper': {
+    display: 'flex',
+    alignItems: 'center',
+    flexShrink: '0',
+    alignSelf: 'center',
+  },
+  '.blade-toast-type-promotional .blade-toast-icon-wrapper': {
+    alignSelf: 'flex-start',
+    marginTop: 'var(--spacing-1)',
+  },
+  '.blade-toast-content': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'var(--spacing-3)',
+    paddingBlock: 'var(--spacing-2)',
+    flex: '1 1 auto',
+    minWidth: '0',
+  },
+  '.blade-toast-type-promotional .blade-toast-content': { paddingBlock: 'var(--spacing-0)' },
+  '.blade-toast-trailing': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 'var(--spacing-4)',
+    marginLeft: 'auto',
+    flexShrink: '0',
+    alignSelf: 'center',
+  },
+  '.blade-toast-type-promotional .blade-toast-trailing': { alignSelf: 'flex-start' },
+  '.blade-toast-dismiss-button': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    padding: 'var(--spacing-2)',
+    borderRadius: 'var(--border-radius-medium)',
+    color: 'inherit',
+    flexShrink: '0',
+    '&:hover': { opacity: '0.8' },
+    '&:focus-visible': {
+      outline: '2px solid var(--interactive-border-primary-default)',
+      outlineOffset: '2px',
+    },
+  },
+  '.blade-toast-enter': {
+    opacity: '0',
+    animation: 'toastSlideIn var(--duration-gentle) var(--easing-entrance) forwards',
+  },
+  '.blade-toast-exit': {
+    opacity: '1',
+    animation: 'toastSlideOut var(--duration-moderate) var(--easing-exit) forwards',
+  },
+  '@keyframes toastSlideIn': {
+    from: { opacity: '0', transform: 'translateY(100%)' },
+    to: { opacity: '1', transform: 'translateY(0)' },
+  },
+  '@keyframes toastSlideOut': {
+    from: { opacity: '1', transform: 'translateY(0)' },
+    to: { opacity: '0', transform: 'translateY(100%)' },
+  },
+};
+
+// ToastContainer — every geometric value (offset/scale/height/opacity/gutter/z-index) is JS-driven
+// via inline CSS custom properties (`style="--toast-offset: …"`); the classes here only declare
+// how to CONSUME those vars (with fallbacks), plus `[data-expanded]`/`[data-visible]` attribute
+// toggles, a child-combinator pointer-events rule, and a mobile gutter override.
+const toastContainerComponents = {
+  '.blade-toast-container': {
+    position: 'fixed',
+    bottom: 'var(--toast-container-gutter, 24px)',
+    left: 'var(--toast-container-gutter, 24px)',
+    right: 'var(--toast-container-gutter, 24px)',
+    width: 'calc(100% - var(--toast-container-gutter-double, 48px))',
+    maxWidth: '360px',
+    pointerEvents: 'none',
+    zIndex: 'var(--toast-container-zindex, 2001)',
+  },
+  '@media (max-width: 767px)': {
+    '.blade-toast-container': {
+      '--toast-container-gutter': '16px',
+      '--toast-container-gutter-double': '32px',
+    },
+  },
+  '.blade-toast-hover-region': {
+    position: 'absolute',
+    left: '0',
+    width: '100%',
+    bottom: 'var(--hover-region-bottom, 0px)',
+    height: 'var(--hover-region-height, 0px)',
+    zIndex: '-100',
+    "&[data-expanded='true']": { pointerEvents: 'all' },
+    "&[data-expanded='false']": { pointerEvents: 'none' },
+  },
+  '.blade-toast-wrapper': {
+    position: 'absolute',
+    left: '0',
+    right: '0',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    transformOrigin: 'center',
+    transition:
+      'transform var(--duration-gentle) var(--easing-standard), opacity var(--duration-gentle) var(--easing-standard), height var(--duration-gentle) var(--easing-standard)',
+    bottom: '0',
+    transform: 'translateY(calc(var(--toast-offset, 0px) * -1)) scale(var(--toast-scale, 1))',
+    zIndex: 'var(--toast-zindex, 0)',
+    height: 'var(--toast-height, auto)',
+    opacity: 'var(--toast-opacity, 1)',
+    overflow: 'hidden',
+    '& > *': { pointerEvents: 'auto' },
+    "&[data-visible='false'] > *": { pointerEvents: 'none' },
+  },
+};
+
+// Modal — the backdrop/surface enter/exit animation is driven by a `[data-state='open'|'closed']`
+// attribute (not a class toggle), the surface's centering/scale-in is gated by `:not(.sizeFull)`
+// (size="full" instead pins to a fixed inset with no transform), the close button has hover/active/
+// focus-visible color states, and header/footer padding steps up at the `m` (768px) breakpoint.
+const modalComponents = {
+  '.blade-modal-backdrop': {
+    position: 'fixed',
+    inset: '0',
+    backgroundColor: 'var(--overlay-background-subtle)',
+    opacity: '0',
+    pointerEvents: 'none',
+    transitionProperty: 'opacity',
+    transitionDuration: 'var(--duration-moderate)',
+    transitionTimingFunction: 'var(--easing-exit)',
+    "&[data-state='open']": {
+      opacity: '1',
+      pointerEvents: 'all',
+      transitionTimingFunction: 'var(--easing-entrance)',
+    },
+  },
+  '.blade-modal-surface': {
+    position: 'fixed',
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
+    minWidth: '320px',
+    borderRadius: 'var(--border-radius-large)',
+    boxShadow: 'var(--elevation-high-raised)',
+    backgroundColor: 'var(--popup-background-gray-subtle)',
+    opacity: '0',
+    willChange: 'transform, opacity',
+    transitionProperty: 'opacity, transform',
+    transitionDuration: 'var(--duration-moderate)',
+    transitionTimingFunction: 'var(--easing-exit)',
+    '&:not(.blade-modal-size-full)': {
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%) scale(0.9)',
+      maxHeight: '80vh',
+      width: 'calc(100vw - 48px)',
+    },
+    "&:not(.blade-modal-size-full)[data-state='open']": {
+      opacity: '1',
+      transform: 'translate(-50%, -50%) scale(1)',
+      transitionTimingFunction: 'var(--easing-entrance)',
+    },
+  },
+  '.blade-modal-size-full': {
+    top: '8px',
+    left: '8px',
+    right: '8px',
+    bottom: '8px',
+    width: 'calc(100vw - 16px)',
+    maxWidth: '100%',
+    maxHeight: '100vh',
+    transform: 'none',
+    "&[data-state='open']": { opacity: '1', transitionTimingFunction: 'var(--easing-entrance)' },
+  },
+  '.blade-modal-close-button': {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '28px',
+    height: '28px',
+    padding: '0',
+    border: 'none',
+    background: 'transparent',
+    cursor: 'pointer',
+    borderRadius: 'var(--border-radius-max)',
+    color: 'var(--interactive-icon-gray-muted)',
+    flexShrink: '0',
+    transitionProperty: 'color',
+    transitionDuration: 'var(--duration-xquick)',
+    transitionTimingFunction: 'var(--easing-standard)',
+    '&:hover:not([disabled]), &:active': { color: 'var(--interactive-icon-gray-subtle)' },
+    '&:focus-visible': {
+      outline: '2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1))',
+      outlineOffset: '2px',
+      color: 'var(--interactive-icon-gray-subtle)',
+    },
+  },
+  '@media (min-width: 768px)': {
+    '.blade-modal-header-content': { padding: 'var(--spacing-6)' },
+    '.blade-modal-footer-inner': { padding: 'var(--spacing-6)' },
+  },
+};
+
+// BottomSheet — a faithful port of `bottomSheet.module.css`: the portal root repositions its
+// surface/backdrop descendants from fixed to absolute, the surface height/z-index are JS-driven
+// custom properties with `[data-state]`/`[data-dragging]` transition toggles, the grab handle draws
+// its pill via `::after`, the header has an empty/non-empty attribute toggle, and three
+// near-identical buttons (close, back, header-close) share the same hover/active/focus-visible
+// color stack. Responsive header padding steps up at 768px.
+const bottomSheetButtonBase = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '0',
+  border: 'none',
+  background: 'transparent',
+  cursor: 'pointer',
+  borderRadius: 'var(--border-radius-max)',
+  color: 'var(--interactive-icon-gray-muted)',
+  flexShrink: '0',
+  transitionProperty: 'color',
+  transitionDuration: 'var(--duration-xquick)',
+  transitionTimingFunction: 'var(--easing-standard)',
+  '&:hover:not([disabled]), &:active': { color: 'var(--interactive-icon-gray-subtle)' },
+  '&:focus-visible': {
+    outline: '2px solid var(--interactive-border-primary-default, hsla(218, 89%, 51%, 1))',
+    outlineOffset: '2px',
+    color: 'var(--interactive-icon-gray-subtle)',
+  },
+};
+
+const bottomSheetComponents = {
+  '.blade-bottomsheet-portal-root': {
+    position: 'absolute',
+    inset: '0',
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none',
+    '& .blade-bottomsheet-surface, & .blade-bottomsheet-backdrop': { position: 'absolute' },
+  },
+  '.blade-bottomsheet-surface': {
+    position: 'fixed',
+    left: '0',
+    right: '0',
+    bottom: '0',
+    top: 'auto',
+    backgroundColor: 'var(--popup-background-gray-subtle)',
+    borderColor: 'var(--popup-border-gray-subtle)',
+    borderTopLeftRadius: 'var(--border-radius-large)',
+    borderTopRightRadius: 'var(--border-radius-large)',
+    boxShadow: '0 -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
+    height: 'var(--bs-position-y, 0px)',
+    zIndex: 'var(--bs-z-index, 100)',
+    opacity: '0',
+    pointerEvents: 'none',
+    touchAction: 'none',
+    overflow: 'clip',
+    justifyContent: 'center',
+    alignItems: 'center',
+    willChange: 'transform, opacity, height',
+    transitionProperty: 'transform, opacity, height',
+    transitionDuration: 'var(--duration-moderate)',
+    transitionTimingFunction: 'cubic-bezier(0.15, 0, 0.24, 0.97)',
+    "&[data-state='open']": { opacity: '1', pointerEvents: 'all' },
+    "&[data-dragging='true']": { transitionDuration: '0s' },
+  },
+  '.blade-bottomsheet-backdrop': {
+    position: 'fixed',
+    left: '0',
+    top: '0',
+    right: '0',
+    bottom: '0',
+    zIndex: 'var(--bs-z-index, 100)',
+    backgroundColor: 'var(--overlay-background-subtle)',
+    opacity: '0',
+    pointerEvents: 'none',
+    transitionProperty: 'opacity',
+    transitionDuration: 'var(--duration-moderate)',
+    transitionTimingFunction: 'var(--easing-exit)',
+    "&[data-state='open']": {
+      opacity: '1',
+      pointerEvents: 'all',
+      transitionTimingFunction: 'var(--easing-entrance)',
+    },
+  },
+  '.blade-bottomsheet-grab-handle': {
+    position: 'relative',
+    flexShrink: '0',
+    paddingTop: 'var(--spacing-4)',
+    marginBottom: 'var(--spacing-2)',
+    touchAction: 'none',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: '100',
+    '&::after': {
+      content: '""',
+      margin: 'auto',
+      width: '56px',
+      height: '4px',
+      backgroundColor: 'var(--interactive-background-gray-faded)',
+      borderRadius: 'var(--spacing-5)',
+    },
+  },
+  '.blade-bottomsheet-header': { flexShrink: '0', overflow: 'auto' },
+  ".blade-bottomsheet-header[data-empty='true']": { overflow: 'visible' },
+  '.blade-bottomsheet-header-empty': {
+    position: 'relative',
+    height: 'var(--spacing-3)',
+    touchAction: 'none',
+  },
+  '.blade-bottomsheet-close-button-capsule': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: '-4px',
+    right: 'var(--spacing-5)',
+    width: '28px',
+    height: '28px',
+    flexShrink: '0',
+    backgroundColor: 'var(--popup-background-gray-subtle)',
+    borderRadius: 'var(--border-radius-max)',
+    zIndex: '100',
+  },
+  '.blade-bottomsheet-close-button': { ...bottomSheetButtonBase, width: '100%', height: '100%' },
+  '.blade-bottomsheet-header-back-button': { ...bottomSheetButtonBase, width: '28px', height: '28px' },
+  '.blade-bottomsheet-header-close-button': {
+    ...bottomSheetButtonBase,
+    height: '28px',
+    marginLeft: 'var(--spacing-3)',
+  },
+  '.blade-bottomsheet-header-content': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    padding: 'var(--spacing-5)',
+    gap: 'var(--spacing-3)',
+  },
+  '.blade-bottomsheet-footer-inner': {
+    padding: 'var(--spacing-5)',
+    borderTop: '1px solid var(--surface-border-gray-muted)',
+  },
+  '@media (min-width: 768px)': {
+    '.blade-bottomsheet-header-content': { padding: 'var(--spacing-6)' },
+  },
+};
+
 module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(buttonComponents);
   addComponents(linkComponents);
@@ -1920,4 +2320,8 @@ module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(chipComponents);
   addComponents(accordionComponents);
   addComponents(cardComponents);
+  addComponents(toastComponents);
+  addComponents(toastContainerComponents);
+  addComponents(modalComponents);
+  addComponents(bottomSheetComponents);
 });

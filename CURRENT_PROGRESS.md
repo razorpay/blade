@@ -1,5 +1,8 @@
 # Tailwind Migration — Current Progress
 
+**Phase 2 (component sweep) is functionally COMPLETE as of 2026-09-17.** All 36 component `.module.css` files migrated and verified. Only `utilities.module.css` remains — that's Phase 3 cleanup, not started. See "Phase 2 — COMPLETE" section below for the full wave-by-wave record and the final verification sweep.
+
+
 Migrating `blade-svelte` + `blade-core` styling from **CSS Modules → Tailwind v3 (CVA retained)**, per [`TAILWIND_MIGRATION_PLAN.md`](./TAILWIND_MIGRATION_PLAN.md).
 
 - **Branch:** `feat/blade-tailwind-migration`
@@ -83,9 +86,33 @@ Migrate the rest, deleting each `.module.css`. Unmigrated components currently k
 
 Verified: blade-core typecheck + 84/85 tests, blade-svelte svelte-check 0 errors, Storybook visual — Card elevated surface (light + dark, gradient bands + inset ring), Avatar circle/square + addon positioning across sizes, AvatarGroup density overlap (compact/normal/comfortable).
 
-**Remaining (3 `.module.css`):** Toast(+toastContainer), Modal, BottomSheet.
+**Wave 8 done + verified (Toast+ToastContainer, Modal, BottomSheet — the final 3):**
+- Toast: `.blade-toast-*` full port — `type × color` compound background/border, descendant icon/content/trailing alignment overrides for the promotional type, dismiss-button hover/focus states, enter/exit `@keyframes`. ToastContainer: `.blade-toast-container/-hover-region/-wrapper` — every geometric value (offset/scale/height/opacity/z-index) stays JS-driven via inline CSS custom properties; the classes only declare how to *consume* those vars (with fallbacks), plus `[data-expanded]`/`[data-visible]` toggles and a mobile gutter override.
+- Modal: `.blade-modal-backdrop/-surface/-size-full/-close-button` — `[data-state]`-driven enter/exit, `:not(.sizeFull)` compound (full pins to a fixed inset, no transform), close-button hover/active/focus-visible stack, responsive header/footer padding.
+- BottomSheet (the largest single file, 384 lines): `.blade-bottomsheet-*` — portal-root repositions fixed→absolute descendants, surface height/z-index via JS-driven custom properties with `[data-state]`/`[data-dragging]` toggles, grab-handle `::after` pill, header empty/non-empty attribute toggle, three near-identical stateful buttons (close/back/header-close) sharing one hover/active/focus-visible color stack.
 
-**Commits (stacked branch `feat/blade-tailwind-phase2` on top of `feat/blade-tailwind-migration`):** wave 1 (8), wave 2 (4), wave 3 (3), wave 4 (IconButton + Input family), wave 5 (CounterInput, Tooltip, Alert), wave 6 (Tabs, Checkbox, Radio, Chip). **Wave 7 (Accordion, Card, Avatar) migrated + verified but NOT YET COMMITTED** — pausing here per user request; commit before continuing to Toast/Modal/BottomSheet.
+**🐛 Real bug caught + fixed during final verification:** `border-{side}-{key}` directional width utilities (e.g. `border-b-thin`) used *without* a companion `border-0` left the other three sides at the browser's default `medium`-width black border, because Blade's preset disables `preflight` (by design, so it never resets a consumer's globals) — there's no global `border-width:0` reset to fall back on. Audited every `border-solid`/`border-dashed` usage across all 36 migrated files; only **`Modal.headerDivider`, `Modal.footerDivider`, `BottomSheet.headerDivider`** were affected (rendered as thick black bars instead of thin gray hairlines) — fixed by prepending `border-0`. `Divider` was already safe (its CVA base is `'border-0'`); everywhere else used the unprefixed all-sides `border-{key}` so no gap existed. **Lesson for any future border-side utility: always pair with `border-0` when preflight is off.**
+
+**Full verification sweep (2026-09-17):**
+- `find src/styles -name "*.module.css"` → only `utilities.module.css` remains (Phase 3, untouched).
+- blade-core: `yarn typecheck` clean, `yarn test` 84/85 (1 pre-existing `theme-css-layers` fail, unrelated), `yarn build` succeeds.
+- blade-svelte: `yarn test` 101/101, `yarn svelte-check` 0 errors, `yarn build` succeeds.
+- Verified `dist/` carries zero real `.module.css` imports (only migration-note comments + the intentional Phase-3 `utilities.module.css` re-export) and does carry the new literal/plugin classes (spot-checked `blade-switch-track` in `dist/lib/web/production/styles/Switch/switch/index.js`).
+- Storybook visual pass on Modal (open via click, address-list example), BottomSheet (open via click, header+grab-handle), Toast (shown via click, informational dark bg + action + dismiss) — all after the divider fix.
+
+**Commits (stacked branch `feat/blade-tailwind-phase2` on top of `feat/blade-tailwind-migration`):** wave 1 (8), wave 2 (4), wave 3 (3), wave 4 (IconButton + Input family), wave 5 (CounterInput, Tooltip, Alert), wave 6 (Tabs, Checkbox, Radio, Chip), wave 7 (Accordion, Card, Avatar). **Wave 8 (Toast, Modal, BottomSheet) + the border-divider bugfix are migrated and verified but NOT YET COMMITTED** — next step is to commit this final wave, then move to the Phase 2 gate items below.
+
+---
+
+## ⏳ Phase 2 gate / Phase 3 (NOT done)
+
+- [ ] **Live visual-parity verification against the PRE-migration Storybook** for the full ~28-component sweep (waves 1–8) — the structural/typecheck/test verification + per-wave Storybook spot-checks above are strong but not a formal side-by-side diff against master. Recommended before merging `feat/blade-tailwind-phase2`.
+- [ ] Merge `feat/blade-tailwind-phase2` → `feat/blade-tailwind-migration` (or open its own PR) once the above is signed off.
+- [ ] **Phase 3 cleanup:** delete `utilities.module.css` + `utilities.ts` once nothing references them (check `src/styles/index.ts`'s `utilities`/`utilityClasses` re-export and any remaining consumers — none found among the migrated components, but blade-svelte component-level `.svelte` files were not audited for direct `utilityClasses` imports).
+- [ ] Remove `rollup-plugin-postcss` module handling from `blade-core/rollup.config.mjs`; shrink/remove `getStylesConfig`.
+- [ ] Optional prebuilt stylesheet for non-Tailwind consumers (`./styles.css` export) — designed in the plan, not built.
+- [ ] Update `blade-core`/`blade-svelte` READMEs + `Installation.stories.svelte`; publish the standard integration doc (Appendix A in the plan).
+- [ ] Add the two guardrail tests the plan calls for but that were never written: a preflight-absence test, and a dedicated `@layer blade` override-wins test (the `postcss-blade-layer.test.ts` that exists may already partially cover this — verify before writing a new one).
 
 - Mostly atomic (lower risk): Divider, Code, Counter, TrustBadge, CounterInput, Breadcrumb, AppBar, ActionList, AnnouncementBanner, Collapsible, BaseText, BaseLink, InputGroup, SegmentedControl, Tabs.
 - Hard cases (need plugin component classes — keyframes / pseudo-elements / box-shadow / nested selectors): **Spinner** (spinner-rotate keyframes, nested `.color-* .spinner-icon`), **Input** (baseInput/formHint/formLabel), **Modal**, **BottomSheet**, **Toast** (toast/toastContainer), **Checkbox**, **Radio** (radio/radioGroup), **Chip** (chip/chipGroup), **Accordion**, **Card**, **Avatar**, **Tooltip**, **Switch**, **Skeleton** (flex-utility mapping tables emit `align-self-*` etc. → remap to Tailwind `self-*`).
