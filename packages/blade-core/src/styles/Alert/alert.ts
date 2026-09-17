@@ -35,7 +35,11 @@ export const alertStyles = cva(alertBaseClass, {
     { color: 'negative', emphasis: 'intense', class: 'bg-feedback-background-negative-intense' },
     { color: 'notice', emphasis: 'subtle', class: 'bg-feedback-background-notice-subtle' },
     { color: 'notice', emphasis: 'intense', class: 'bg-feedback-background-notice-intense' },
-    { color: 'information', emphasis: 'subtle', class: 'bg-feedback-background-information-subtle' },
+    {
+      color: 'information',
+      emphasis: 'subtle',
+      class: 'bg-feedback-background-information-subtle',
+    },
     {
       color: 'information',
       emphasis: 'intense',

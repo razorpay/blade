@@ -154,21 +154,18 @@ export function getCheckboxSupportClasses(props: CheckboxSupportVariants): strin
 }
 
 /** Inline support-text — caption font/line-height + color. */
-export const checkboxSupportTextCva = cva(
-  'font-text font-regular text-surface-text-gray-muted',
-  {
-    variants: {
-      size: {
-        small: 'text-50 leading-50',
-        medium: 'text-50 leading-50',
-        large: 'text-100 leading-50',
-      },
-    },
-    defaultVariants: {
-      size: 'medium',
+export const checkboxSupportTextCva = cva('font-text font-regular text-surface-text-gray-muted', {
+  variants: {
+    size: {
+      small: 'text-50 leading-50',
+      medium: 'text-50 leading-50',
+      large: 'text-100 leading-50',
     },
   },
-);
+  defaultVariants: {
+    size: 'medium',
+  },
+});
 
 export function getCheckboxSupportTextClasses(props: CheckboxSupportVariants): string {
   return checkboxSupportTextCva(props);
@@ -343,8 +340,7 @@ export function getCheckboxGroupTemplateClasses(): {
   srOnly: string;
 } {
   return {
-    groupLabel:
-      'inline-flex items-center font-text font-medium mb-spacing-3 gap-spacing-2',
+    groupLabel: 'inline-flex items-center font-text font-medium mb-spacing-3 gap-spacing-2',
     labelRow: 'flex items-center w-full',
     labelSuffix: 'inline-flex items-center ml-spacing-2',
     labelTrailing: 'inline-flex items-center ml-auto',

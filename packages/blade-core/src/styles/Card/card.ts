@@ -341,7 +341,7 @@ export function getCardTemplateClasses(): Record<string, string> {
     cardTicketSectionBottom:
       'bg-surface-background-gray-moderate bg-[radial-gradient(circle_4px_at_8px_0px,var(--surface-background-gray-intense)_3.5px,transparent_4px)] bg-repeat-x bg-[length:16px_100%] bg-left-top',
     cardInfoWrapper:
-      "relative flex flex-col w-full overflow-hidden border-solid border-thin border-surface-border-gray-subtle rounded-medium data-[selected=true]:border-surface-border-primary-normal data-[disabled=true]:border-dashed",
+      'relative flex flex-col w-full overflow-hidden border-solid border-thin border-surface-border-gray-subtle rounded-medium data-[selected=true]:border-surface-border-primary-normal data-[disabled=true]:border-dashed',
     cardInfoSectionTop: 'bg-surface-background-gray-intense p-spacing-4',
     cardInfoSectionBottom: 'bg-surface-background-gray-moderate p-spacing-4',
     linkOverlay: 'blade-card-link-overlay',

@@ -16,7 +16,7 @@ export type AvatarWrapperVariants = {
  * via a single arbitrary property to stay byte-faithful to the original declaration.
  */
 export const avatarWrapperStyles = cva(
-  "flex relative overflow-hidden bg-surface-background-gray-intense [outline:var(--border-width-thinner)_solid_var(--surface-border-gray-subtle)] rounded-[var(--avatar-radius,var(--border-radius-max))]",
+  'flex relative overflow-hidden bg-surface-background-gray-intense [outline:var(--border-width-thinner)_solid_var(--surface-border-gray-subtle)] rounded-[var(--avatar-radius,var(--border-radius-max))]',
   {
     variants: {
       size: {
@@ -31,7 +31,8 @@ export const avatarWrapperStyles = cva(
         square: '',
       },
       isInteractive: {
-        true: "hover:[outline:var(--border-width-thick)_solid_var(--surface-border-gray-muted)] hover:bg-surface-background-gray-moderate",
+        true:
+          'hover:[outline:var(--border-width-thick)_solid_var(--surface-border-gray-muted)] hover:bg-surface-background-gray-moderate',
         false: '',
       },
     },
@@ -91,7 +92,8 @@ export const avatarButtonStyles = cva(avatarButtonBase, {
       neutral: 'bg-interactive-background-neutral-faded',
     },
     isInteractive: {
-      true: "cursor-pointer focus-visible:[outline:1px_solid_var(--surface-background-primary-subtle)] focus-visible:shadow-[0px_0px_0px_4px_var(--surface-border-primary-muted)]",
+      true:
+        'cursor-pointer focus-visible:[outline:1px_solid_var(--surface-background-primary-subtle)] focus-visible:shadow-[0px_0px_0px_4px_var(--surface-border-primary-muted)]',
       false: '',
     },
     isSelected: {
@@ -300,12 +302,12 @@ export function getAvatarTemplateClasses(): Record<string, string> {
     avatarRoot: 'inline-flex relative',
     avatarWrapper: avatarWrapperStyles({}),
     interactive:
-      "hover:[outline:var(--border-width-thick)_solid_var(--surface-border-gray-muted)] hover:bg-surface-background-gray-moderate",
+      'hover:[outline:var(--border-width-thick)_solid_var(--surface-border-gray-muted)] hover:bg-surface-background-gray-moderate',
     // Button
     avatarBtn: avatarButtonBase,
     btnContent: 'flex flex-row items-center justify-center z-[1] h-full',
     btnInteractive:
-      "cursor-pointer focus-visible:[outline:1px_solid_var(--surface-background-primary-subtle)] focus-visible:shadow-[0px_0px_0px_4px_var(--surface-border-primary-muted)]",
+      'cursor-pointer focus-visible:[outline:1px_solid_var(--surface-background-primary-subtle)] focus-visible:shadow-[0px_0px_0px_4px_var(--surface-border-primary-muted)]',
     btnSelected: '[border:var(--border-width-thicker)_solid_var(--surface-border-primary-normal)]',
     // Addon containers
     topAddon: 'absolute z-[2]',
