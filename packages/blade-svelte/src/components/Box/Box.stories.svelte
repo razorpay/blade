@@ -42,7 +42,7 @@
 <Story name="Polymorphic as" asChild>
   <div style="display: flex; flex-direction: column; gap: 12px;">
     {#each tags as tag (tag)}
-      <Box as={tag} className="padding-spacing-3" style="border: 1px solid #eee;">
+      <Box as={tag} className="padding-spacing-3">
         Rendered as &lt;{tag}&gt;
       </Box>
     {/each}
@@ -51,7 +51,7 @@
 
 <!-- className passthrough (e.g. Tailwind utility classes) -->
 <Story name="className passthrough" asChild>
-  <Box as="section" className="m-2 py-2 flex flex-row" style="border: 1px dashed #ccc;">
+  <Box as="section" className="m-2 py-2 flex flex-row">
     Box with consumer-supplied className
   </Box>
 </Story>

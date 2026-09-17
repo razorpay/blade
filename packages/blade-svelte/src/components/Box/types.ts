@@ -41,12 +41,6 @@ export type BoxProps = Omit<
    */
   className?: string;
   /**
-   * Inline styles, forwarded as-is to the underlying DOM element.
-   * Useful for CSS custom properties (e.g. `--cols: 3`) that cannot be
-   * set via `className`.
-   */
-  style?: string | Record<string, string | number>;
-  /**
    * Test ID for testing
    */
   testID?: string;
