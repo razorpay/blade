@@ -18,6 +18,12 @@ Avatar is a standardized visual representation of a user or entity, displayed as
 The following types represent the props that the Avatar and AvatarGroup components accept. These types allow you to properly configure the components according to your needs.
 
 ```typescript
+// Type for icon components
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+
 // Common size options for Avatar
 type AvatarSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 
@@ -42,7 +48,16 @@ type AvatarImgProps = {
   /**
    * Defines which referrer is sent when fetching the resource.
    */
-  referrerPolicy?: HTMLAttributeReferrerPolicy;
+  referrerPolicy?:
+    | ''
+    | 'no-referrer'
+    | 'no-referrer-when-downgrade'
+    | 'origin'
+    | 'origin-when-cross-origin'
+    | 'same-origin'
+    | 'strict-origin'
+    | 'strict-origin-when-cross-origin'
+    | 'unsafe-url';
 };
 
 // Common properties for Avatar
@@ -80,7 +95,7 @@ type AvatarCommonProps = {
    * anchor target attribute
    * Should only be used alongside `href`
    */
-  target?: '_blank' | '_self' | '_parent' | '_top';
+  target?: string;
   /**
    * anchor rel attribute
    * Should only be used alongside `href`
@@ -115,6 +130,7 @@ type AvatarCommonProps = {
   onMouseLeave?: React.MouseEventHandler;
   onMouseMove?: React.MouseEventHandler;
   onMouseDown?: React.MouseEventHandler;
+  onMouseUp?: React.MouseEventHandler;
   onPointerDown?: React.PointerEventHandler;
   onPointerEnter?: React.PointerEventHandler;
   onTouchStart?: React.TouchEventHandler;

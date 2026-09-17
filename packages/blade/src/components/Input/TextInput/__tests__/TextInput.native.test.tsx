@@ -361,7 +361,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'default');
     expect(input).toHaveProp('returnKeyType', 'default');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
   });
 
@@ -376,7 +376,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'phone-pad');
     expect(input).toHaveProp('returnKeyType', 'done');
-    expect(input).toHaveProp('autoCompleteType', 'tel');
+    expect(input).toHaveProp('autoComplete', 'tel');
     expect(input).toHaveProp('textContentType', 'telephoneNumber');
   });
 
@@ -391,7 +391,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'email-address');
     expect(input).toHaveProp('returnKeyType', 'done');
-    expect(input).toHaveProp('autoCompleteType', 'email');
+    expect(input).toHaveProp('autoComplete', 'email');
     expect(input).toHaveProp('textContentType', 'emailAddress');
   });
 
@@ -406,7 +406,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'url');
     expect(input).toHaveProp('returnKeyType', 'go');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
     expect(input).toHaveProp('autoCapitalize', 'none');
   });
@@ -422,7 +422,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'decimal-pad');
     expect(input).toHaveProp('returnKeyType', 'done');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
   });
 
@@ -437,7 +437,7 @@ describe('<TextInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'default');
     expect(input).toHaveProp('returnKeyType', 'search');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
   });
 
@@ -537,5 +537,63 @@ describe('<TextInput />', () => {
     );
 
     expect(getByTestId('text-input-test-id')).toBeTruthy();
+  });
+
+  /**
+   * Kept last on purpose. `useId` counters leak into the snapshots in this file, so
+   * inserting renders above a snapshot test renumbers its ids and forces unrelated
+   * snapshot churn.
+   */
+  describe('showHelpTextOnFocus', () => {
+    it('should keep the help text mounted while collapsed', () => {
+      const { getByText } = renderWithTheme(
+        <TextInput label="Enter name" helpText="Help" showHelpTextOnFocus />,
+      );
+
+      // clipped by the animated container rather than unmounted, so the id that
+      // accessibilityDescribedBy points at stays resolvable
+      expect(getByText('Help')).toBeTruthy();
+    });
+
+    /**
+     * The reveal itself can't be asserted here — it's driven by a reanimated shared
+     * value that only has a target height once `onLayout` has measured the content,
+     * which does not happen under the native test renderer. This guards the focus /
+     * blur cycle against crashing and against the hint being unmounted; the motion
+     * is verified manually on device.
+     */
+    it('should survive the focus and blur cycle with the hint mounted', () => {
+      const placeholder = 'Enter your name';
+      const { getByPlaceholderText, getByText } = renderWithTheme(
+        <TextInput
+          label="Enter name"
+          placeholder={placeholder}
+          helpText="Help"
+          showHelpTextOnFocus
+        />,
+      );
+
+      const input = getByPlaceholderText(placeholder);
+
+      fireEvent(input, 'focus');
+      expect(getByText('Help')).toBeTruthy();
+
+      fireEvent(input, 'blur');
+      expect(getByText('Help')).toBeTruthy();
+    });
+
+    it('should not gate error text behind focus', () => {
+      const { getByText } = renderWithTheme(
+        <TextInput
+          label="Enter name"
+          helpText="Help"
+          errorText="Error"
+          validationState="error"
+          showHelpTextOnFocus
+        />,
+      );
+
+      expect(getByText('Error')).toBeTruthy();
+    });
   });
 });

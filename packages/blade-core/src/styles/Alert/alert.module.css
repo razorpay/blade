@@ -5,17 +5,16 @@
   padding: var(--spacing-4);
   box-sizing: border-box;
   align-items: flex-start;
+  border-radius: var(--border-radius-medium);
 }
 
 .alert:not(.full-width) {
   max-width: 584px;
-  border-radius: var(--border-radius-medium);
 }
 
 /* Full Width Variant */
 .full-width {
   width: 100%;
-  border-radius: var(--border-radius-none);
 }
 
 /* Color × Emphasis compound variants */

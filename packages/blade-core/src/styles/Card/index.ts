@@ -1,10 +1,14 @@
 export {
   cardRootStyles,
   cardSurfaceStyles,
+  extractCardBackgroundColorFromClassNames,
   getCardBackgroundColor,
   getCardHeaderClasses,
   getCardFooterClasses,
+  getCardSurfaceBackgroundUtilityClass,
+  getCardSurfaceClasses,
   getCardTemplateClasses,
+  isCardBackgroundColor,
 } from './card';
 export type {
   CardRootVariants,
@@ -16,3 +20,4 @@ export type {
   CardHeaderVariants,
   CardFooterVariants,
 } from './card';
+export type { CardSlot } from './slots';

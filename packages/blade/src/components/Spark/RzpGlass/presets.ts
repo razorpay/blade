@@ -47,6 +47,7 @@ const DEFAULT_CONFIG: Required<RzpGlassConfig> = {
 
   // Light Effect
   lightIntensity: 0.2,
+  specularTint: [1, 1, 1],
   lightStartFrame: 140,
 
   // Effect Toggles
@@ -166,4 +167,37 @@ const getPresets = (assetsPath: string): Record<RzpGlassPreset, RzpGlassPresetDe
   },
 });
 
-export { DEFAULT_CONFIG, getPresets };
+/**
+ * Dark-mode overlay, applied on top of the resolved preset whenever Blade's
+ * colorScheme is `dark`. This is not a preset of its own — every preset gets its
+ * dark counterpart by layering these values over it.
+ *
+ * Swaps in the dark gradient maps (a near-black centre ramp so the centre dome
+ * doesn't glow, plus a darkened outer map) and tunes the passes for a black
+ * background: bloom off, a damped light sweep, and a black `specularTint` that
+ * suppresses the centre element's hard-coded white specular highlight.
+ *
+ * `ccWhitePoint` has to be lifted above 1.0 or the darkened maps clip. The guard
+ * depends on the preset's gamma product, so it is derived from the config the
+ * preset actually resolved to rather than hardcoded.
+ */
+const getDarkOverlay = (
+  assetsPath: string,
+  config: Pick<RzpGlassConfig, 'ccMidtoneGamma' | 'ccGamma'>,
+): RzpGlassPresetDefinition => {
+  const gammaProduct =
+    (config.ccMidtoneGamma ?? DEFAULT_CONFIG.ccMidtoneGamma) *
+    (config.ccGamma ?? DEFAULT_CONFIG.ccGamma);
+
+  return {
+    gradientMapSrc: `${assetsPath}/colorama-gradient-map-dark.png`,
+    centerGradientMapSrc: `${assetsPath}/colorama-center-gradient-map-dark.jpg`,
+    backgroundColor: [0, 0, 0],
+    ccWhitePoint: Math.round(0.94 ** -gammaProduct * 1.02 * 1000) / 1000,
+    enableBloom: false,
+    lightIntensity: -0.35,
+    specularTint: [0, 0, 0],
+  };
+};
+
+export { DEFAULT_CONFIG, getPresets, getDarkOverlay };

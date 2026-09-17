@@ -68,7 +68,7 @@ type ChatMessageProps = {
   /**
    * Validation state of the message
    */
-  validationState?: 'error';
+  validationState?: 'error' | 'none';
 
   /**
    * Text to display when the message is in an error state
@@ -101,6 +101,37 @@ type ChatMessageProps = {
    * onThumbnailClick is called when the image preview is clicked.
    */
   onThumbnailClick?: () => void;
+
+  /**
+   * Maximum width of the chat message
+   */
+  maxWidth?: string | Partial<Record<'base' | 's' | 'm' | 'l' | 'xl', string>>;
+
+  /**
+   * Reasoning steps to show above the message content in a collapsible panel.
+   * Each item is a string, or an object with `label` and an optional `completedLabel`.
+   * Works only when senderType is 'other'.
+   */
+  reasoningTraces?: (string | { label: string; completedLabel?: string })[];
+
+  /**
+   * State of the reasoning panel. 'loading' keeps the panel open and animated.
+   * 'complete' collapses the panel automatically.
+   * @default 'loading'
+   */
+  reasoningStatus?: 'loading' | 'complete';
+
+  /**
+   * Title text in the reasoning panel header
+   * @default 'Explored'
+   */
+  reasoningTitle?: string;
+
+  /**
+   * Index (0-based) of the active step, when all steps are known upfront.
+   * When not set, the last item in `reasoningTraces` is the active step (streaming mode).
+   */
+  reasoningActiveStepIndex?: number;
 } & StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute;

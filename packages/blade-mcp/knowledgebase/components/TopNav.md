@@ -10,7 +10,49 @@ The TopNav component is a navigation bar positioned at the top of the screen tha
 
 Below are the props that the TopNav component and its subcomponents accept. These types allow you to properly configure each component to build a complete navigation system.
 
-````typescript
+```typescript
+/**
+ * Blade icon component, for example `CheckIcon` from `@razorpay/blade/components`
+ */
+type IconComponent = React.ComponentType<any>;
+
+/**
+ * Subset of Blade LinkProps used in this doc
+ */
+type LinkProps = {
+  href?: string;
+  target?: string;
+};
+
+/**
+ * Blade spacing token, for example `'spacing.4'`, or a responsive object of it
+ */
+type SpacingValue = string;
+
+/**
+ * Subset of Blade BoxProps that TopNav accepts
+ */
+type BoxProps = {
+  padding?: SpacingValue;
+  paddingTop?: SpacingValue;
+  paddingBottom?: SpacingValue;
+  paddingLeft?: SpacingValue;
+  paddingRight?: SpacingValue;
+  paddingX?: SpacingValue;
+  paddingY?: SpacingValue;
+  /**
+   * Blade background color token, for example `surface.background.gray.intense`
+   */
+  backgroundColor?: string;
+  position?: 'fixed' | 'absolute' | 'relative' | 'static' | 'sticky';
+  top?: SpacingValue;
+  bottom?: SpacingValue;
+  left?: SpacingValue;
+  right?: SpacingValue;
+  width?: SpacingValue;
+  zIndex?: number;
+} & DataAnalyticsAttribute;
+
 // Main TopNav Component Types
 type TopNavProps = {
   children: React.ReactNode;
@@ -18,7 +60,7 @@ type TopNavProps = {
    * Sets the background color variant of the TopNav.
    *
    * - `'neutral'` (default): Uses the static black background. Existing behavior.
-   * - `'primary'`: Uses the primary brand color (`surface.background.primary.intense`). The selected tab indicator glow becomes white.
+   * - `'primary'`: Uses the primary brand color (`surface.background.primary.intense`).
    *
    * Passing an explicit `backgroundColor` prop will override this variant.
    *
@@ -96,11 +138,9 @@ type TabNavItemProps = {
    * @default 'a'
    *
    * @example
-   * ```
    * import { Link } from 'react-router-dom';
    *
    * <TabNavItem as={Link} />
-   * ```
    */
   as?: React.ComponentType<any> | 'a' | 'button';
   /**
@@ -111,10 +151,11 @@ type TabNavItemProps = {
   isActive?: boolean;
   /**
    * Leading icon for TabNavItem.
+   * Pass one icon, or an object with `default` and `selected` icons to change the icon in selected state.
    *
    * @default undefined
    */
-  icon?: IconComponent;
+  icon?: TabNavIconProp;
   /**
    * Element to render after the navigation item.
    *
@@ -126,19 +167,34 @@ type TabNavItemProps = {
    */
   title?: string;
   /**
+   * Element shown right after the title text, before the trailing element.
+   * Use it for status tags like Badge (for example BETA, NEW).
+   *
+   * @default undefined
+   */
+  titleSuffix?: React.ReactElement;
+  /**
    * Accessibility label for the navigation item.
    */
   accessibilityLabel?: string;
 } & MenuTriggerProps;
 
+type TabNavIconProp =
+  | IconComponent
+  | {
+      default: IconComponent;
+      selected: IconComponent;
+    };
+
+// Web-only event handlers (native value is undefined)
 type MenuTriggerProps = {
-  onMouseDown?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
-  onPointerDown?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
-  onKeyDown?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
-  onKeyUp?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
-  onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onMouseDown?: React.MouseEventHandler;
+  onPointerDown?: React.PointerEventHandler;
+  onKeyDown?: React.KeyboardEventHandler;
+  onKeyUp?: React.KeyboardEventHandler;
+  onClick?: React.MouseEventHandler;
 };
-````
+```
 
 ## Usage Guidelines
 

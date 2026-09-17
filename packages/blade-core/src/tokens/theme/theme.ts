@@ -30,6 +30,7 @@ export type DataCategoricalEmphasis = Pick<Emphasis, 'subtle' | 'moderate' | 'in
   faint: string;
   strong: string;
 };
+
 export type DataSequentialEmphasis = Omit<
   ColorChromaticScale,
   'a50' | 'a150' | 'a100' | 'a200' | 'a400' | 'a500' | 'a600' | 'a700'
@@ -58,6 +59,10 @@ type InteractiveStates = {
 
 type InteractiveStatesWithFadedHighlighted = InteractiveStates & {
   fadedHighlighted: string;
+};
+
+type InteractiveStatesWithDisabledSolid = InteractiveStatesWithFadedHighlighted & {
+  disabledSolid: string;
 };
 
 type InteractiveBackgroundStatesWithGhost = InteractiveStatesWithFadedHighlighted & {
@@ -104,9 +109,10 @@ type PopupDeprecatedTokens = {
 export type Colors = {
   interactive: {
     background: Record<
-      Exclude<InteractiveColorKeys, InteractiveBackgroundColorsWithGhost>,
+      Exclude<InteractiveColorKeys, InteractiveBackgroundColorsWithGhost | 'neutral'>,
       InteractiveStatesWithFadedHighlighted
     > &
+      Record<'neutral', InteractiveStatesWithDisabledSolid> &
       Record<InteractiveBackgroundColorsWithGhost, InteractiveBackgroundStatesWithGhost>;
     border: Record<
       Exclude<InteractiveColorKeys, InteractiveBorderColorsWithFadedHighlighted>,
@@ -114,11 +120,11 @@ export type Colors = {
     > &
       Record<InteractiveBorderColorsWithFadedHighlighted, InteractiveStatesWithFadedHighlighted>;
     text: Record<
-      InteractiveColorKeys | 'onPrimary',
+      InteractiveColorKeys | 'onPrimary' | 'onNeutral',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
     >;
     icon: Record<
-      InteractiveColorKeys | 'onPrimary',
+      InteractiveColorKeys | 'onPrimary' | 'onNeutral',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
     >;
   };
@@ -131,9 +137,11 @@ export type Colors = {
   surface: {
     background: {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
-      primary: SubtleOrIntenseEmphasis;
+      primary: SubtleOrIntenseEmphasis &
+        Partial<Pick<DataCategoricalEmphasis, 'moderate' | 'faint' | 'strong'>>;
       sea: SubtleOrIntenseEmphasis;
       cloud: SubtleOrIntenseEmphasis;
+      accent?: Pick<Emphasis, 'intense'>;
     };
     border: {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
@@ -165,7 +173,7 @@ export type Colors = {
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
 
 export type ThemeTokens = {
-  name: 'bladeTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
+  name: 'bladeTheme' | 'bladeNeutralTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
   border: Border;
   backdropBlur: BackdropBlur;
   breakpoints: Breakpoints;

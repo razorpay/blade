@@ -1,5 +1,42 @@
+blade:
+  - changed-files:
+      - any-glob-to-any-file: ['packages/blade/**']
+
 blade-svelte:
   - changed-files:
+      - any-glob-to-any-file: ['packages/blade-svelte/**']
+
+blade-core:
+  - changed-files:
+      - any-glob-to-any-file: ['packages/blade-core/**']
+
+blade-mcp:
+  - changed-files:
+      - any-glob-to-any-file: ['packages/blade-mcp/**']
+
+react-native:
+  - changed-files:
       - any-glob-to-any-file:
-          - packages/blade-svelte/**
-          - packages/blade-core/**
+          - 'packages/blade/**/*.native.*'
+          - 'packages/blade/android/**'
+          - 'packages/blade/ios/**'
+          - 'packages/blade/.storybook/react-native/**'
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file: ['.github/**']
+
+figma-plugins:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'packages/plugin-figma-*/**'
+          - 'packages/plugin-blade-*/**'
+          - 'packages/widget-figma-*/**'
+
+eslint-plugin-blade:
+  - changed-files:
+      - any-glob-to-any-file: ['packages/eslint-plugin-blade/**']
+
+examples:
+  - changed-files:
+      - any-glob-to-any-file: ['packages/examples/**']

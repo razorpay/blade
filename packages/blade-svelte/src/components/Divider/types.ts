@@ -1,3 +1,4 @@
+import type { DividerSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
 
 export type DividerProps = {
@@ -33,4 +34,9 @@ export type DividerProps = {
    * Additional class names
    */
   class?: string;
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.Divider.styleOverride`;
+   * instance values win on conflicts.
+   */
+  styleOverride?: StyleOverride<DividerSlot>;
 } & StyledPropsBlade;

@@ -13,7 +13,7 @@ export type AppBarVariants = {
  *
  * `variant` is the only style that depends on a single prop:
  * - `neutral` → transparent surface + static-white foreground (forced "dark" look)
- * - `subtle`  → gray surface that adapts to the page background
+ * - `subtle`  → transparent surface + gray foreground for light/embedded contexts
  *
  * Sticky/position is applied via a `data-sticky` attribute on the element (driven
  * by the `isSticky` prop) rather than a CVA variant, mirroring how React toggles
@@ -49,7 +49,7 @@ export function getAppBarTemplateClasses(): Record<string, string> {
     appBarLeadingLogoStack: styles.appBarLeadingLogoStack,
     appBarLeadingTitleWrap: styles.appBarLeadingTitleWrap,
     appBarLeadingTitleRow: styles.appBarLeadingTitleRow,
-    appBarLeadingTitleRowWithIconRtb: styles.appBarLeadingTitleRowWithIconRtb,
+    appBarLeadingTitleRowWithIconBadge: styles.appBarLeadingTitleRowWithIconBadge,
     appBarLeadingTitle: styles.appBarLeadingTitle,
     appBarLeadingBadge: styles.appBarLeadingBadge,
     appBarActions: styles.appBarActions,

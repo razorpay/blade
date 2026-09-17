@@ -6,6 +6,7 @@ import { useDatesContext } from '@mantine/dates';
 import type { DatePickerInputProps, DateInputProps } from './types';
 import {
   getFormattedDate,
+  getHumanizedDate,
   rangeFormattedValue,
   rangeInputPlaceHolder,
   finalInputFormat,
@@ -52,6 +53,7 @@ const _DateInput = (
   const isPopupOpen = datePickerContext?.isDatePickerBodyOpen ?? false;
   const displayFormat = datePickerContext?.displayFormat ?? 'default';
   const isCompactMode = displayFormat === 'compact';
+  const { locale } = useDatesContext();
 
   const [inputValue, setInputValue] = React.useState(['']);
   const [validationError, setValidationError] = React.useState<string | undefined>(undefined);
@@ -207,6 +209,16 @@ const _DateInput = (
   const showPresetLabel =
     displayFormat === 'compact' && selectedPresetLabel && hasValidSelection && !isDatePickerActive;
 
+  // Show a humanised date range (e.g. "7 Jun - 12 Jun 2026") for compact mode custom selections
+  // (i.e. no matching preset label). Only applies to the day picker (DD/MM/YYYY) since it is a
+  // read-only display; the field reverts to the editable DD/MM/YYYY format once it becomes active.
+  const showCompactHumanizedDate =
+    isCompactMode &&
+    !selectedPresetLabel &&
+    hasValidSelection &&
+    !isDatePickerActive &&
+    format === 'DD/MM/YYYY';
+
   const getInputDisplayProps = (): {
     type: 'text' | 'number';
     value: string;
@@ -224,6 +236,25 @@ const _DateInput = (
       return {
         type: 'text',
         value: selectedPresetLabel,
+        leadingIcon: CalendarIcon,
+        format: undefined,
+        validationState: textInputProps.validationState,
+        errorText: textInputProps.errorText,
+        onChange: handleInputChange,
+        onBlur: handleBlurWithFocusState,
+        onFocus: handleFocus,
+      };
+    }
+
+    if (showCompactHumanizedDate) {
+      // Compact custom selection: show a humanised, read-only date range (not focused)
+      return {
+        type: 'text',
+        value: getHumanizedDate({
+          date: date ?? null,
+          locale,
+          selectionType: isRange ? 'range' : 'single',
+        }),
         leadingIcon: CalendarIcon,
         format: undefined,
         validationState: textInputProps.validationState,

@@ -4,8 +4,11 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
 import { TourContext } from './TourContext';
+import type { TourElement } from './TourContext';
 import { TourPopover } from './TourPopover';
 import {
+  readBorderRadius,
+  resolveSpotlightTarget,
   smoothScroll,
   useDelayedState,
   useIntersectionObserver,
@@ -16,7 +19,10 @@ import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
 import { useTheme } from '~components/BladeProvider';
+import { isBrowser } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+
+const asHTMLElement = (el: TourElement | null): HTMLElement | null => el as HTMLElement | null;
 
 const SpotlightPopoverTour = ({
   steps,
@@ -28,7 +34,7 @@ const SpotlightPopoverTour = ({
   children,
 }: SpotlightPopoverTourProps): React.ReactElement => {
   const { theme } = useTheme();
-  const [refIdMap, setRefIdMap] = useState(new Map<string, React.RefObject<HTMLElement>>());
+  const [refIdMap, setRefIdMap] = useState(new Map<string, React.RefObject<TourElement>>());
   const [size, setSize] = useState<SpotlightPopoverTourMaskRect>({
     x: 0,
     y: 0,
@@ -44,10 +50,14 @@ const SpotlightPopoverTour = ({
   const [isScrolling, setIsScrolling] = useState(false);
 
   const currentStepRef = refIdMap.get(steps[activeStep]?.name);
-  const intersection = useIntersectionObserver(currentStepRef!, {
-    threshold: 0.5,
-  });
-
+  // Anchors taller than the viewport can never reach 50% visibility, so we also observe the
+  // 0% crossing as a fallback threshold for those cases (see scrollToStep below).
+  const intersection = useIntersectionObserver(
+    (currentStepRef as React.RefObject<Element> | undefined)!,
+    {
+      threshold: [0, 0.5],
+    },
+  );
   // main step logic
   const totalSteps = steps.length;
   const currentStepData = useMemo(() => {
@@ -82,7 +92,7 @@ const SpotlightPopoverTour = ({
     onFinish?.();
   }, [onFinish]);
 
-  const attachStep = useCallback((id: string, ref: React.RefObject<HTMLElement>) => {
+  const attachStep = useCallback((id: string, ref: React.RefObject<TourElement>) => {
     if (!ref) return;
     setRefIdMap((prev) => {
       return new Map(prev).set(id, ref);
@@ -100,38 +110,52 @@ const SpotlightPopoverTour = ({
   const updateMaskSize = useCallback(
     (shouldSkipDelay = false) => {
       const ref = refIdMap.get(steps[activeStep]?.name);
-      if (!ref?.current) return;
+      const el = asHTMLElement(ref?.current ?? null);
+      if (!el) return;
 
-      const rect = ref.current.getBoundingClientRect();
-      setSize({
+      // Trace the component the merchant sees, not the layout wrapper around it, so the
+      // spotlight's padding stays even on all four sides.
+      const target = resolveSpotlightTarget(el);
+      const rect = target.getBoundingClientRect();
+      const nextSize = {
         x: rect.x,
         y: rect.y,
         width: rect.width,
         height: rect.height,
-      });
+        borderRadius: readBorderRadius(target),
+      };
+
+      setSize(nextSize);
       if (shouldSkipDelay) {
-        setDelayedSize({
-          x: rect.x,
-          y: rect.y,
-          width: rect.width,
-          height: rect.height,
-        });
+        setDelayedSize(nextSize);
       }
     },
     [activeStep, refIdMap, setDelayedSize, steps],
   );
 
   const scrollToStep = useCallback(() => {
-    const ref = refIdMap.get(steps[delayedActiveStep]?.name);
-    if (!ref?.current) return;
+    if (!isBrowser()) return;
 
-    // If the element is already in view, don't scroll
-    if (intersection?.isIntersecting) return;
+    const ref = refIdMap.get(steps[delayedActiveStep]?.name);
+    const el = asHTMLElement(ref?.current ?? null);
+    if (!el) return;
+
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const isAnchorTallerThanViewport = el.getBoundingClientRect().height > viewportHeight;
+
+    // An anchor taller than the viewport can never satisfy the 0.5 threshold, so require only
+    // partial visibility (ratio > 0) for it instead of waiting on an unreachable isIntersecting.
+    const isVisibleEnough = isAnchorTallerThanViewport
+      ? (intersection?.intersectionRatio ?? 0) > 0
+      : Boolean(intersection?.isIntersecting);
+    if (isVisibleEnough) return;
 
     setIsScrolling(true);
-    smoothScroll(ref.current, {
+    smoothScroll(el, {
       behavior: 'smooth',
-      block: 'center',
+      // Centering an anchor taller than the viewport pushes its edges (and the popover
+      // attached near them) outside the viewport, so align to the top instead.
+      block: isAnchorTallerThanViewport ? 'start' : 'center',
       inline: 'center',
     })
       .then(() => {
@@ -142,7 +166,7 @@ const SpotlightPopoverTour = ({
       .finally(() => {
         setIsScrolling(false);
       });
-  }, [delayedActiveStep, refIdMap, steps, updateMaskSize, intersection?.isIntersecting]);
+  }, [delayedActiveStep, refIdMap, steps, updateMaskSize, intersection]);
 
   // Update the size of the mask when the active step changes
   useIsomorphicLayoutEffect(() => {
@@ -174,6 +198,7 @@ const SpotlightPopoverTour = ({
         y: 0,
         width: 0,
         height: 0,
+        borderRadius: 0,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -232,7 +257,7 @@ const SpotlightPopoverTour = ({
               totalSteps,
               stopTour,
             })}
-            attachTo={attachTo}
+            attachTo={attachTo as React.RefObject<HTMLElement> | undefined}
           />
         );
       })}

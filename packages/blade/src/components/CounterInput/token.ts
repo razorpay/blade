@@ -2,19 +2,28 @@ import { size as sizeTokens, spacing, border } from '~tokens/global';
 
 export const COUNTER_INPUT_ICON_SIZE_MAP = {
   xsmall: 'small',
-  small: 'small',
+  small: 'medium',
   medium: 'large',
   large: 'xlarge',
+} as const;
+
+export const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
 } as const;
 
 export const COUNTER_INPUT_TOKEN = {
   width: {
     xsmall: sizeTokens[78],
+    small: sizeTokens[86],
     medium: sizeTokens[94],
     large: sizeTokens[122],
   },
   height: {
     xsmall: sizeTokens[30],
+    small: sizeTokens[34],
     medium: sizeTokens[38],
     large: sizeTokens[50],
   },
@@ -37,6 +46,7 @@ export const COUNTER_INPUT_TOKEN = {
 
   iconPadding: {
     xsmall: spacing[2],
+    small: spacing[2],
     medium: spacing[2],
     large: spacing[3],
   },

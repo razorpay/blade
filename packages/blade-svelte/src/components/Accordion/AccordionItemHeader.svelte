@@ -5,6 +5,7 @@
     MetaConstants,
     makeAccessible,
     makeAnalyticsAttribute,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
     getAccordionButtonClasses,
@@ -44,8 +45,6 @@
   const itemCtx = $derived(getItemCtx());
   const collapsibleCtx = $derived(getCollapsibleCtx());
 
-  // index + disabled come from the item; expanded state + toggle + body id come
-  // from the Collapsible that AccordionItem wraps its content in.
   const isExpanded = $derived(collapsibleCtx.isExpanded);
   const isDisabled = $derived(itemCtx.isDisabled);
   const index = $derived(itemCtx.index);
@@ -55,6 +54,7 @@
   const numberOfItems = $derived(accordionCtx.numberOfItems);
   const accordionSize = $derived(accordionCtx.size);
   const showNumberPrefix = $derived(accordionCtx.showNumberPrefix);
+  const slotOverride = $derived(accordionCtx.styleOverride);
 
   const isFirstItem = $derived(index === 0);
   const isLastItem = $derived(index === numberOfItems - 1);
@@ -97,15 +97,22 @@
     return 'interactive.icon.gray.muted' as const;
   });
 
-  // Button classes
   const buttonClass = $derived(
     getAccordionButtonClasses({ isExpanded, isDisabled }),
   );
   const borderClass = $derived(
     getAccordionButtonBorderClasses({ variant, isFirstItem, isLastItem, isExpanded }),
   );
+
+  const titleTextColor = $derived(
+    slotOverride?.title ? ('currentColor' as const) : ('surface.text.gray.normal' as const),
+  );
+  const subtitleTextColor = $derived(
+    slotOverride?.subtitle ? ('currentColor' as const) : ('surface.text.gray.muted' as const),
+  );
+
   const combinedButtonClass = $derived(
-    [buttonClass, borderClass].filter(Boolean).join(' '),
+    cx(buttonClass, borderClass, slotOverride?.headerButton),
   );
 
   const onClick = () => {
@@ -144,7 +151,7 @@
               lineHeight={titleLineHeight}
               fontFamily="text"
               fontWeight="semibold"
-              color="surface.text.gray.normal"
+              color={titleTextColor}
             >
               {index + 1}.
             </BaseText>
@@ -168,14 +175,14 @@
           <div class={templateClasses.headerMain}>
             <div class={templateClasses.headerTitleRow}>
               {#if title}
-                <span class={templateClasses.headerTitleText}>
+                <span class={cx(templateClasses.headerTitleText, slotOverride?.title)}>
                   <BaseText
                     as="span"
                     fontSize={titleFontSize}
                     lineHeight={titleLineHeight}
                     fontFamily="text"
                     fontWeight="semibold"
-                    color="surface.text.gray.normal"
+                    color={titleTextColor}
                   >
                     {title}
                   </BaseText>
@@ -186,16 +193,18 @@
               {/if}
             </div>
             {#if subtitle}
-              <BaseText
-                as="span"
-                fontSize={subtitleFontSize}
-                lineHeight={subtitleLineHeight}
-                fontFamily="text"
-                fontWeight="regular"
-                color="surface.text.gray.muted"
-              >
-                {subtitle}
-              </BaseText>
+              <span class={slotOverride?.subtitle}>
+                <BaseText
+                  as="span"
+                  fontSize={subtitleFontSize}
+                  lineHeight={subtitleLineHeight}
+                  fontFamily="text"
+                  fontWeight="regular"
+                  color={subtitleTextColor}
+                >
+                  {subtitle}
+                </BaseText>
+              </span>
             {/if}
           </div>
         {/if}

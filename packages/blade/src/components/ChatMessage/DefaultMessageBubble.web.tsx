@@ -37,8 +37,15 @@ const DefaultMessageBubble = ({
         columnGap="spacing.4"
         alignItems="start"
       >
-        {/* Icon aligns with message content */}
-        <BaseBox padding="spacing.1">
+        <BaseBox
+          paddingX="spacing.1"
+          paddingTop="spacing.3"
+          paddingBottom="spacing.2"
+          height="20px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
           <Rotate animate={isLoading}>{leading as React.ReactElement}</Rotate>
         </BaseBox>
 

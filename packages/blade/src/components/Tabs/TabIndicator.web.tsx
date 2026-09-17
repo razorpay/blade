@@ -108,20 +108,22 @@ const TabIndicator = ({
   }
 
   if (variant === 'filled') {
-    const shouldHaveMediumBorderRadius = size === 'small' && !isVertical;
+    const isSmallHorizontal = size === 'small' && !isVertical;
     return (
       <StyledTabIndicator
         pointerEvents="none"
         position="absolute"
         left="0px"
         top="0px"
-        borderRadius={shouldHaveMediumBorderRadius ? 'medium' : 'small'}
+        borderRadius={isSmallHorizontal ? undefined : 'small'}
         backgroundColor="surface.background.gray.intense"
         style={{
           ...transitionProps,
           width: `${dimensions.width}px`,
           height: `${dimensions.height}px`,
           transform: `translate(${dimensions.x}px, ${dimensions.y}px)`,
+          // 6px for small — deliberate: between xsmall(4px) and small(8px) for visual proportion, mirrors SegmentedControl indicator radius
+          ...(isSmallHorizontal ? { borderRadius: 6 } : {}),
         }}
         {...metaAttribute({ name: MetaConstants.TabIndicator })}
       />

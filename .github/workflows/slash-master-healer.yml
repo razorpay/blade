@@ -18,6 +18,9 @@ on:
     workflows:
       - 'Blade Interaction Tests'
       - 'Blade Bundle Size'
+      - 'Blade Chromatic'
+      - 'Blade Release'
+      - 'Agentic Blade Metrics'
     types: [completed]
     branches:
       - master

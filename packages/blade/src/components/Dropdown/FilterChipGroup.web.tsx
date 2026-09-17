@@ -12,6 +12,9 @@ const FilterChipGroup = ({
   children,
   showClearButton = true,
   onClearButtonClick,
+  onResetButtonClick,
+  clearButtonText,
+  resetButtonText,
   ...rest
 }: FilterChipGroupProps): React.ReactElement => {
   const [filterChipGroupSelectedFilters, setFilterChipGroupSelectedFilters] = useState<string[]>(
@@ -19,12 +22,40 @@ const FilterChipGroup = ({
   );
   const [clearFilterCallbackTriggerer, setClearFilterCallbackTriggerer] = useState<number>(0);
   const { selectedFiltersCount, setListViewSelectedFilters } = useListViewFilterContext();
-  const handleClearButtonClick = (): void => {
-    onClearButtonClick?.();
+
+  // Shared bookkeeping reset: both actions clear the group's "has changes" tracking so the action
+  // link(s) hide after use (a lingering action with nothing to revert is confusing). They reappear
+  // on the next filter change.
+  const clearGroupBookkeeping = (): void => {
     setListViewSelectedFilters({});
     setFilterChipGroupSelectedFilters([]);
+  };
+
+  // "Clear" empties every filter. Bumping the triggerer makes each child chip run its clear effect
+  // (fires onChange([]) and drops its selection).
+  const handleClearButtonClick = (): void => {
+    onClearButtonClick?.();
+    clearGroupBookkeeping();
     setClearFilterCallbackTriggerer((prev) => prev + 1);
   };
+
+  // "Reset" only fires the consumer callback and clears the group's bookkeeping. We intentionally
+  // do NOT bump the clear triggerer, so child chips keep their internal state and do not fire
+  // onChange([]) — the consumer restores each filter's default inside onResetButtonClick and those
+  // values are not stomped.
+  // TODO (FilterChip reset — Phase 2): support restoring defaults for UNCONTROLLED filters. That
+  // needs a `defaultValue` on FilterChipSelectInput and a reset path that restores it instead of
+  // emptying. See packages/blade/src/components/Dropdown/_decisions/filter-chip-reset.md
+  const handleResetButtonClick = (): void => {
+    onResetButtonClick?.();
+    clearGroupBookkeeping();
+  };
+
+  const hasSelectedFilters = filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0;
+  const selectedCount = Math.max(filterChipGroupSelectedFilters.length, selectedFiltersCount);
+  const isPlural = selectedCount > 1;
+  const clearActionText = clearButtonText ?? `Clear Filter${isPlural ? 's' : ''}`;
+  const resetActionText = resetButtonText ?? 'Reset';
   return (
     <FilterChipGroupProvider
       value={{
@@ -46,11 +77,15 @@ const FilterChipGroup = ({
         flexWrap="wrap"
       >
         {children}
-        {showClearButton &&
-        (filterChipGroupSelectedFilters.length > 0 || selectedFiltersCount > 0) ? (
-          <Link size="small" color="neutral" onClick={handleClearButtonClick}>{`Clear Filter${
-            filterChipGroupSelectedFilters.length > 1 || selectedFiltersCount > 1 ? 's' : ''
-          }`}</Link>
+        {hasSelectedFilters && onResetButtonClick ? (
+          <Link size="small" color="neutral" onClick={handleResetButtonClick}>
+            {resetActionText}
+          </Link>
+        ) : null}
+        {hasSelectedFilters && showClearButton ? (
+          <Link size="small" color="neutral" onClick={handleClearButtonClick}>
+            {clearActionText}
+          </Link>
         ) : null}
       </BaseBox>
     </FilterChipGroupProvider>

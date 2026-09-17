@@ -18,7 +18,7 @@ type SpinnerProps = {
    *
    * @default 'neutral'
    */
-  color?: 'primary' | 'neutral' | 'white';
+  color?: 'primary' | 'neutral' | 'white' | 'onNeutral';
   /**
    * Sets the label of the spinner.
    */
@@ -53,8 +53,10 @@ type SpinnerDimensions = {
 
 // Motion configuration
 type SpinnerMotion = {
-  duration: DurationString;
-  easing: EasingString;
+  // Motion token path, e.g. 'duration.2xgentle'
+  duration: `duration.${string}`;
+  // Motion token path, e.g. 'easing.linear'
+  easing: `easing.${string}`;
 };
 ```
 
@@ -63,7 +65,8 @@ type SpinnerMotion = {
 **Do**
 
 - Use `Spinner` for indeterminate loading states where you don't know the completion percentage.
-- Use `color="white"` when placing the spinner on dark backgrounds for proper contrast.
+- Use `color="white"` when placing the spinner on a background that is dark in both color schemes.
+- Use `color="onNeutral"` when placing the spinner on a filled `neutral` surface, such as a loading `Button color="neutral"` or `FloatingActionButton color="neutral"`. It inverts with the theme, so it stays visible in both color schemes.
 - Override `accessibilityLabel` with context-specific text (e.g., "Loading transactions" instead of generic "Loading").
 - Use `size="medium"` for inline loading within buttons or small sections; use `size="large"` or `size="xlarge"` for prominent full-page loading states.
 - Use `label` prop to provide visible loading context alongside the animation.

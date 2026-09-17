@@ -73,6 +73,7 @@ export default {
     label: 'Search here',
     labelPosition: 'top',
     helpText: undefined,
+    showHelpTextOnFocus: false,
     autoCapitalize: undefined,
   },
   tags: ['autodocs'],
@@ -180,6 +181,11 @@ export default {
       },
     },
     helpText: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    showHelpTextOnFocus: {
       table: {
         category: propsCategory.BASE_PROPS,
       },

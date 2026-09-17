@@ -105,7 +105,7 @@
 
   let inputEl: HTMLInputElement | undefined = $state();
 
-  export function focus(options?: FocusOptions): void {
+  export function focus(options: FocusOptions | undefined = undefined): void {
     inputEl?.focus(options);
   }
 

@@ -1,14 +1,42 @@
-/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable consistent-return */
+import React from 'react';
+import { View } from 'react-native';
+import type { LayoutChangeEvent } from 'react-native';
+import { useTourContext } from './TourContext';
 import type { SpotlightPopoverTourStepProps } from './types';
-import { throwBladeError } from '~utils/logger';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const SpotlightPopoverTourStep = (_props: SpotlightPopoverTourStepProps): React.ReactElement => {
-  throwBladeError({
-    message: 'TourStep is not yet implemented for native',
-    moduleName: 'TourStep',
-  });
+const _SpotlightPopoverTourStep = ({
+  name,
+  children,
+}: SpotlightPopoverTourStepProps): React.ReactElement => {
+  const ref = React.useRef<View>(null);
+  const { attachStep, removeStep, onStepLayout } = useTourContext();
 
-  return <></>;
+  React.useLayoutEffect(() => {
+    attachStep(name, ref);
+
+    return () => {
+      removeStep(name);
+    };
+  }, [attachStep, name, removeStep]);
+
+  return (
+    <View
+      collapsable={false}
+      ref={ref}
+      style={{ alignSelf: 'stretch' }}
+      onLayout={(_event: LayoutChangeEvent) => {
+        onStepLayout?.(name);
+      }}
+    >
+      {children}
+    </View>
+  );
 };
+
+const SpotlightPopoverTourStep = assignWithoutSideEffects(React.memo(_SpotlightPopoverTourStep), {
+  displayName: 'TourStep',
+});
 
 export { SpotlightPopoverTourStep };

@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
+import { getFilterChipDisplayValue } from './filterChipSelectInputUtils';
 import { useFilterChipGroupContext } from './FilterChipGroupContext.web';
 import type { DataAnalyticsAttribute } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -16,10 +17,21 @@ import { useFirstRender } from '~utils/useFirstRender';
 
 type FilterChipSelectInputProps = Pick<
   BaseFilterChipProps,
-  'onKeyDown' | 'value' | 'label' | 'testID' | 'onClick' | 'selectionType' | 'onBlur'
+  | 'onKeyDown'
+  | 'value'
+  | 'label'
+  | 'testID'
+  | 'onClick'
+  | 'selectionType'
+  | 'onBlur'
+  | 'showClearButton'
 > & {
   accessibilityLabel?: string;
-  onChange?: (props: { name: string; values: string[] }) => void;
+  /**
+   * `selectedGroups` is only present when the Dropdown overlay content is a TreeView -
+   * it contains the values of the topmost fully-selected branches
+   */
+  onChange?: (props: { name: string; values: string[]; selectedGroups?: string[] }) => void;
   name?: string;
   onClearButtonClick?: (props: { name: string; values: string[] }) => void;
   isDisabled?: boolean;
@@ -39,6 +51,7 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     onChange,
     name,
     isDisabled,
+    showClearButton = true,
     ...rest
   } = props;
   const [uncontrolledInputValue, setUncontrolledInputValue] = React.useState<string[]>([]);
@@ -59,9 +72,8 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     setSelectedIndices,
     controlledValueIndices,
     changeCallbackTriggerer,
+    treeViewControllerRef,
   } = useDropdown();
-  const valueTitle = options.find((option) => option.value === value)?.title ?? value;
-
   const isUnControlled = options.length > 0 && props.value === undefined;
   // Currently we are having 2 context for selectedFilters. One is for FilterChipGroup and other is for  ListView
   const { listViewSelectedFilters, setListViewSelectedFilters } = useListViewFilterContext();
@@ -115,33 +127,25 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
     } else if (listViewSelectedFilters[label]) {
       const savedIndices = (listViewSelectedFilters[label] as unknown) as number[];
       setSelectedIndices(savedIndices);
-      // Sync selected indices when controlled value changes or on first render with options loaded
-    } else if (valueNotEmpty && !isValueAndSelectedIndicesSynced && options.length > 0) {
-      const newSelectedIndices =
-        typeof value === 'string'
-          ? [options.findIndex((option) => option.value === value)]
-          : options
-              .map((option, index) => (value.includes(option.value) ? index : -1))
-              .filter((index) => index !== -1);
+      // Sync selected indices when controlled value changes or on first render with options loaded.
+      // An emptied value clears the selection too, so consumers can reset from outside the chip
+      // (e.g. a Clear button in the dropdown footer)
+    } else if (!isValueAndSelectedIndicesSynced && options.length > 0) {
+      const newSelectedIndices = !valueNotEmpty
+        ? []
+        : options
+            .map((option, index) => {
+              const isSelected =
+                typeof value === 'string'
+                  ? option.value === value
+                  : Array.isArray(value) && value.includes(option.value);
+              return isSelected ? index : -1;
+            })
+            .filter((index) => index !== -1);
       setSelectedIndices(newSelectedIndices);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUnControlled, options]);
-
-  const getTitleFromValue = (value: string): string => {
-    const option = options.find((option) => option.value === value);
-    return option ? option.title : '';
-  };
-
-  const getUnControlledFilterChipValue = (): string | string[] => {
-    if (selectionType === 'single') {
-      if (uncontrolledInputValue.length > 0) {
-        return getTitleFromValue(uncontrolledInputValue[0]);
-      }
-      return '';
-    }
-    return uncontrolledInputValue;
-  };
+  }, [isUnControlled, options, value]);
 
   const handleClearButtonClick = (): void => {
     props.onClearButtonClick?.({ name: name ?? idBase, values: getValuesArrayFromIndices() });
@@ -164,9 +168,14 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
 
   useEffect(() => {
     if (!isFirstRender) {
+      // §6.5: additive - only present when overlay content is a TreeView
+      const selectedGroups = treeViewControllerRef.current?.getSelectedGroups(
+        isControlled ? controlledValueIndices : selectedIndices,
+      );
       props.onChange?.({
         name: props.name || idBase,
         values: getValuesArrayFromIndices(),
+        ...(selectedGroups ? { selectedGroups } : {}),
       });
       if (isUnControlled) {
         setUncontrolledInputValue(getValuesArrayFromIndices());
@@ -210,8 +219,15 @@ const _FilterChipSelectInput = (props: FilterChipSelectInputProps): React.ReactE
   return (
     <BaseFilterChip
       label={label}
-      value={valueTitle ?? getUnControlledFilterChipValue()}
+      value={getFilterChipDisplayValue({
+        value: props.value,
+        options,
+        selectionType,
+        uncontrolledInputValue,
+        displayOverride: treeViewControllerRef.current?.getDisplayOverride(selectedIndices),
+      })}
       onClearButtonClick={handleClearButtonClick}
+      showClearButton={showClearButton}
       selectionType={selectionType}
       {...rest}
       ref={triggererRef as any}

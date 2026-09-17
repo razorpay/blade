@@ -8,26 +8,51 @@ Cards are containers that group related content and actions on a single topic. T
 
 ## Important Constraints
 
-- `Card` component only accepts `CardHeader`, `CardBody`, `CardFooter` components as children
-- `CardHeader` component only accepts `CardHeaderLeading`, `CardHeaderTrailing` components as children
-- `CardFooter` component only accepts `CardFooterLeading`, `CardFooterTrailing` components as children
+- Allowed `Card` children depend on `variant`:
+  - `primary` (default): `CardHeader`, `CardBody`, `CardFooter`
+  - `secondary`: `CardBody` only
+- Use `TicketCard` for ticket/coupon layouts and `InfoCard` for two-tone header/body layouts
 
 Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
+
+- `CardHeader` component only accepts `CardHeaderLeading`, `CardHeaderTrailing` components as children
+- `CardFooter` component only accepts `CardFooterLeading`, `CardFooterTrailing` components as children
 
 ## TypeScript Types
 
 The following types define the props that the Card component and its subcomponents accept:
 
 ```typescript
+type CardSpacingValueType = 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
+
+// Box size value: a CSS size string/number or a responsive object, e.g. `{ base: '100%', m: '320px' }`
+type BoxSizeValue = string | number | Partial<Record<'base' | 's' | 'm' | 'l' | 'xl', string | number>>;
+
+// Blade icon component, e.g. `PlusIcon`
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+
 export type CardProps = {
   /**
-   * Card contents
+   * Card contents. Structure depends on `variant` — see Important Constraints.
    */
   children: React.ReactNode;
+  /**
+   * Sets the visual variant of the Card
+   *
+   * - `primary`: Standard card with full composition (CardHeader, CardBody, CardFooter)
+   * - `secondary`: Simplified card that only accepts CardBody as children
+   *
+   * @default 'primary'
+   */
+  variant?: 'primary' | 'secondary';
   /**
    * Sets the background color of the Card
    *
    * @default `surface.background.gray.intense`
+   * @deprecated No-op. Card always uses `surface.background.gray.intense`.
    */
   backgroundColor?:
     | 'surface.background.gray.intense'
@@ -37,16 +62,17 @@ export type CardProps = {
    * Sets the border radius of the Card
    *
    * @default `medium`
+   * @deprecated No-op. Card always uses `medium` border radius.
    */
-  borderRadius?: Extract<BoxProps['borderRadius'], 'medium' | 'large' | 'xlarge'>;
+  borderRadius?: 'medium' | 'large' | 'xlarge';
   /**
    * Sets the elevation for Cards
    *
    * eg: `theme.elevation.midRaised`
    *
-   * @default `theme.elevation.lowRaised`
+   * @deprecated No-op. Card always uses a custom elevation.
    */
-  elevation?: keyof Elevation;
+  elevation?: 'none' | 'lowRaised' | 'midRaised' | 'highRaised';
   /**
    * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
    * @default `spacing.7`
@@ -55,23 +81,23 @@ export type CardProps = {
   /**
    * Sets the width of the card
    */
-  width?: BoxProps['width'];
+  width?: BoxSizeValue;
   /**
    * Sets the height of the card
    */
-  height?: BoxProps['height'];
+  height?: BoxSizeValue;
   /**
    * Sets minimum height of the card
    */
-  minHeight?: BoxProps['minHeight'];
+  minHeight?: BoxSizeValue;
   /**
    * Sets minimum width of the card
    */
-  minWidth?: BoxProps['minWidth'];
+  minWidth?: BoxSizeValue;
   /**
    * Sets maximum width of the card
    */
-  maxWidth?: BoxProps['maxWidth'];
+  maxWidth?: BoxSizeValue;
   /**
    * If `true`, the card will be in selected state
    * Card will have a primary color border around it.
@@ -79,6 +105,15 @@ export type CardProps = {
    * @default false
    */
   isSelected?: boolean;
+  /**
+   * If `true`, the card is disabled: it becomes non-interactive (`href`/`onClick` are ignored)
+   * and is announced as disabled to assistive tech.
+   *
+   * `isDisabled` takes precedence over `isSelected`.
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
    *
@@ -117,7 +152,7 @@ export type CardProps = {
   onClick?: (
     event: Platform.Select<{
       web: React.MouseEvent;
-      native: GestureResponderEvent;
+      native: unknown; // GestureResponderEvent from react-native
     }>,
   ) => void;
   /**
@@ -129,15 +164,63 @@ export type CardProps = {
    * @default undefined
    */
   as?: 'label';
+  /**
+   * Sets the size of the card header title
+   *
+   * @default 'large'
+   */
+  size?: 'large' | 'medium';
+  /**
+   * CSS cursor of the card (web only)
+   */
+  cursor?: string;
+  opacity?: number;
+  /**
+   * CSS transition of the card (web only)
+   */
+  transition?: string;
+  flexShrink?: number;
+  /**
+   * Sets the overflow behavior of the card content
+   */
+  overflow?: 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto' | 'overlay';
+  /**
+   * Sets the horizontal overflow behavior of the card content
+   */
+  overflowX?: 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto' | 'overlay';
+  /**
+   * Sets the vertical overflow behavior of the card content
+   */
+  overflowY?: 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto' | 'overlay';
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type CardBodyProps = {
   children: React.ReactNode;
-  height?: BoxProps['height'];
+  height?: BoxSizeValue;
 } & TestID &
   DataAnalyticsAttribute;
+
+type TicketCardProps = Omit<CardProps, 'variant'>;
+
+type TicketCardBodyProps = TestID & DataAnalyticsAttribute & {
+  children: React.ReactNode;
+};
+
+type TicketCardFooterProps = TestID & DataAnalyticsAttribute & {
+  children: React.ReactNode;
+};
+
+type InfoCardProps = Omit<CardProps, 'variant'>;
+
+type InfoCardBodyProps = TestID & DataAnalyticsAttribute & {
+  children: React.ReactNode;
+};
+
+type InfoCardFooterProps = TestID & DataAnalyticsAttribute & {
+  children: React.ReactNode;
+};
 
 type CardHeaderProps = {
   children?: React.ReactNode;
@@ -182,11 +265,15 @@ type CardHeaderTrailingProps = {
   visual?: React.ReactNode;
 };
 
-export type CardFooterAction = Pick<
-  ButtonProps,
-  'type' | 'accessibilityLabel' | 'isLoading' | 'isDisabled' | 'icon' | 'iconPosition' | 'onClick'
-> & {
-  text: ButtonProps['children'];
+export type CardFooterAction = {
+  text: string;
+  type?: 'button' | 'reset' | 'submit';
+  accessibilityLabel?: string;
+  isLoading?: boolean;
+  isDisabled?: boolean;
+  icon?: IconComponent;
+  iconPosition?: 'left' | 'right';
+  onClick?: (event: React.MouseEvent) => void;
 };
 
 type CardFooterProps = {
@@ -228,10 +315,12 @@ type CardFooterTrailingProps = {
 - Use `CardHeaderIcon`, `CardHeaderCounter`, `CardHeaderBadge` for header visual elements — not raw components.
 - Use `onClick` or `href` to make cards interactive; provide `accessibilityLabel` for interactive cards.
 - Use `variant="secondary"` when you only need a body section without header/footer.
+- Use `TicketCard` with `TicketCardBody` and `TicketCardFooter` for coupon/ticket layouts.
+- Use `InfoCard` with `InfoCardBody` and `InfoCardFooter` for two-tone body/footer layouts.
 
 **Don't**
 
-- Don't pass arbitrary children directly — only `CardHeader`, `CardBody`, and `CardFooter` are accepted (primary variant).
+- Don't pass arbitrary children directly — allowed children depend on `variant` (see Important Constraints).
 - Don't use React Fragments as Card children — they are not allowed.
 - Don't use deprecated props (`backgroundColor`, `borderRadius`, `elevation`) — they are no-ops.
 - Don't use `Box` with elevation for card-like surfaces — use `Card` for content grouping with structure.
@@ -298,6 +387,75 @@ const BasicCardExample = () => {
     </Card>
   );
 };
+```
+
+### Ticket Card
+
+Two stacked content regions split by a perforated tear line with side notches. Use `isSelected` for a primary border and `isDisabled` for a dashed, non-interactive state.
+
+```tsx
+import {
+  TicketCard,
+  TicketCardBody,
+  TicketCardFooter,
+  Box,
+  Text,
+  Amount,
+} from '@razorpay/blade/components';
+
+const TicketCardExample = () => (
+  <TicketCard width="280px">
+    <TicketCardBody>
+      <Box display="flex" flexDirection="column" gap="spacing.2">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">
+          General Admission
+        </Text>
+      </Box>
+    </TicketCardBody>
+    <TicketCardFooter>
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+        <Box display="flex" flexDirection="column">
+          <Text size="small" color="surface.text.gray.subtle">
+            Seat
+          </Text>
+          <Text weight="semibold">A-24</Text>
+        </Box>
+        <Amount value={4999} type="body" weight="semibold" />
+      </Box>
+    </TicketCardFooter>
+  </TicketCard>
+);
+```
+
+
+### Info Card
+
+Two-tone card with an emphasized header section over a subtle body section, wrapped by a single rounded border. No perforation or notches.
+
+```tsx
+import { InfoCard, InfoCardBody, InfoCardFooter, Box, Text } from '@razorpay/blade/components';
+
+const InfoCardExample = () => (
+  <InfoCard width="280px" isSelected>
+    <InfoCardBody>
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+        <Text weight="semibold">Razorpay Summit 2026</Text>
+        <Text size="small" color="surface.text.gray.subtle">
+          Selected
+        </Text>
+      </Box>
+    </InfoCardBody>
+    <InfoCardFooter>
+      <Box display="flex" flexDirection="column" gap="spacing.2">
+        <Text size="small" color="surface.text.gray.subtle">
+          Venue
+        </Text>
+        <Text weight="semibold">Jio World Convention Centre, Mumbai</Text>
+      </Box>
+    </InfoCardFooter>
+  </InfoCard>
+);
 ```
 
 ### Metric Card

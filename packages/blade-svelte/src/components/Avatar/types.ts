@@ -1,6 +1,6 @@
 import type { Snippet, Component } from 'svelte';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { AvatarDensity } from '@razorpay/blade-core/styles';
+import type { AvatarDensity, AvatarSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { IconProps } from '../Icons/types';
 
 /**
@@ -132,6 +132,11 @@ export type AvatarProps = {
    * Test ID for the element.
    */
   testID?: string;
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.Avatar.styleOverride`;
+   * instance values win on conflicts.
+   */
+  styleOverride?: StyleOverride<AvatarSlot>;
   /**
    * Function called when the avatar loses focus.
    */

@@ -29,6 +29,34 @@ type ChartReferenceLineProps = {
   label: string;
 };
 
+type ChartReferenceBandProps = {
+  /**
+   * The data key for the lower (minimum) bound of the range.
+   * Each data row should hold a numeric value at this key.
+   */
+  lowerDataKey: string;
+  /**
+   * The data key for the upper (maximum) bound of the range.
+   * Each data row should hold a numeric value at this key.
+   */
+  upperDataKey: string;
+  /**
+   * The label shown for the range in the legend.
+   * @default 'Reference band'
+   */
+  name?: string;
+  /**
+   * The fill color of the range band.
+   * @default 'data.background.categorical.blue.faint'
+   */
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  /**
+   * Whether to show a legend entry for the range.
+   * @default true
+   */
+  showLegend?: boolean;
+};
+
 type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
   /**
    * The label of the x-axis.
@@ -157,6 +185,30 @@ type ChartColorToken = ChartsCategoricalColorToken | ChartSequentialColorToken;
  */
 type SecondaryLabelMap = Record<number, string | number | undefined>;
 
+/**
+ * Legend info for a reference band, surfaced through context so the shared
+ * legend can render a swatch for it (the band's bound lines are invisible, so
+ * they don't produce a Recharts legend entry).
+ */
+type ReferenceBandLegendInfo = {
+  name: string;
+  color: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  fillOpacity: number;
+};
+
+/**
+ * Map of a line's dataKey to its reference-band range keys, surfaced through context so the shared
+ * tooltip can show the industry range (low–high) for each series next to its value.
+ */
+type RangeMap = Record<
+  string,
+  {
+    rangeLowerDataKey: string;
+    rangeUpperDataKey: string;
+    rangeName?: string;
+  }
+>;
+
 // State type - contains only the state values
 type CommonChartComponentsStateType = {
   dataColorMapping?: DataColorMapping;
@@ -170,6 +222,15 @@ type CommonChartComponentsStateType = {
    * The number of data points in the chart, used for tick width calculation
    */
   dataLength?: number;
+  /**
+   * Legend info for each reference band present in the chart (one per line with a range, plus any
+   * standalone band), so the legend can render a swatch per band.
+   */
+  referenceBands?: ReferenceBandLegendInfo[];
+  /**
+   * Map of line dataKey -> range keys, so the tooltip can show each series' industry range.
+   */
+  rangeMap?: RangeMap;
 };
 
 // Dispatch type - contains only the updater functions
@@ -211,6 +272,9 @@ export type {
   CommonChartComponentsStateType,
   CommonChartComponentsDispatchType,
   ChartReferenceLineProps,
+  ChartReferenceBandProps,
+  ReferenceBandLegendInfo,
+  RangeMap,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,

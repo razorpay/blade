@@ -86,6 +86,24 @@ type ChatInputProps = {
   onFileReupload?: ({ file }: { file: BladeFile }) => void;
 
   /**
+   * Callback fired when the dismiss button is clicked on a file with uploading status.
+   * Use this to cancel an in-flight upload request.
+   */
+  onFileDismiss?: ({ file }: { file: BladeFile }) => void;
+
+  /**
+   * Hides the file upload button in the action bar.
+   * @default false
+   */
+  hideFileUpload?: boolean;
+
+  /**
+   * When true, the input gets focus automatically on mount.
+   * @default false
+   */
+  autoFocus?: boolean;
+
+  /**
    * File types that can be accepted. Follows the HTML input accept attribute format.
    * @example ".jpg,.png,.pdf" or "image/*"
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept

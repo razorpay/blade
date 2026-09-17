@@ -1,5 +1,6 @@
 import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
+import type { AmountSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { BaseTextProps } from '../../Typography/BaseText/types';
 
 // Amount size types
@@ -78,6 +79,11 @@ export type AmountCommonProps = {
    */
   fractionDigits?: number;
   testID?: string;
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.Amount.styleOverride`;
+   * instance values win on conflicts.
+   */
+  styleOverride?: StyleOverride<AmountSlot>;
   // Analytics attributes
   [key: `data-analytics-${string}`]: string;
 };

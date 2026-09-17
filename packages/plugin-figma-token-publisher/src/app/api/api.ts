@@ -1,9 +1,27 @@
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import pako from 'pako';
+
 const GITHUB_BASE_URL = 'https://api.github.com/repos';
 
 type ColorTokens = Record<string, any>;
+
+// GitHub's workflow_dispatch inputs are capped at 65,535 characters. The token payload can
+// exceed that (especially with multiple themes), so we gzip + base64 it before sending.
+// The workflow's uploadTokens.js script decompresses it back.
+const compressTokens = (colorTokens: ColorTokens): string => {
+  const gzipped = pako.gzip(JSON.stringify(colorTokens));
+  let binary = '';
+  const chunkSize = 0x8000;
+  for (let i = 0; i < gzipped.length; i += chunkSize) {
+    binary += String.fromCharCode.apply(
+      null,
+      (gzipped.subarray(i, i + chunkSize) as unknown) as number[],
+    );
+  }
+  return btoa(binary);
+};
 
 export const uploadTokens = async ({
   orgName = 'razorpay',
@@ -30,7 +48,7 @@ export const uploadTokens = async ({
     body: JSON.stringify({
       ref: 'master',
       inputs: {
-        tokens: JSON.stringify(colorTokens),
+        tokens: compressTokens(colorTokens),
       },
     }),
   });

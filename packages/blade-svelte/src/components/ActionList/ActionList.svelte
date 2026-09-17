@@ -6,11 +6,7 @@
     makeAnalyticsAttribute,
     getStyledPropsClasses,
   } from '@razorpay/blade-core/utils';
-  import {
-    getActionListBoxClasses,
-    getActionListWrapperClasses,
-    getActionListTemplateClasses,
-  } from '@razorpay/blade-core/styles';
+  import { getActionListWrapperClasses, getActionListTemplateClasses } from '@razorpay/blade-core/styles';
   import { getBottomSheetContext } from '../BottomSheet/bottomSheetContext';
   import { setActionListContext } from './actionListContext';
   import { getActionListContainerRole } from './getA11yRoles';
@@ -51,7 +47,6 @@
   };
   setActionListContext(() => contextValue);
 
-  const boxClasses = $derived(getActionListBoxClasses({ isInBottomSheet }));
   const wrapperClasses = $derived(getActionListWrapperClasses({ isInBottomSheet }));
 
   const styledProps = $derived(getStyledPropsClasses(rest));
@@ -61,8 +56,6 @@
       .map(([prop, val]) => `${prop}: ${val}`)
       .join('; ') || undefined,
   );
-
-  const outerClasses = $derived([boxClasses, styledClassString].filter(Boolean).join(' ') || undefined);
 
   const isMultiSelectable = $derived(selectionType === 'multiple');
 
@@ -89,7 +82,10 @@
     {@render children()}
   </div>
 {:else}
-  <div class={outerClasses} style={styledStyleString} {...a11yAttrs} {...metaAttrs} {...analyticsAttrs}>
+  <!-- Standalone: plain outer shell (a11y/meta/analytics/styled props) + inner scroll
+       wrapper — mirrors React's BaseBox + ActionListBox. Border/shadow come from the
+       Dropdown overlay when embedded, not ActionList itself. -->
+  <div class={styledClassString || undefined} style={styledStyleString} {...a11yAttrs} {...metaAttrs} {...analyticsAttrs}>
     <div class={wrapperClasses}>
       {@render children()}
     </div>

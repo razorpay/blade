@@ -7,8 +7,10 @@
  * Selection is controlled via `selectedValue` + `onAction` (keyed on each
  * item's `value`) — a `string` in `single` mode, a `string[]` in `multiple`
  * mode. When rendered inside a `BottomSheet`, `isInBottomSheet` is auto-detected
- * from the BottomSheet context, so the outer box (border/shadow/padding) is
- * dropped and `BottomSheetBody` owns scrolling.
+ * from the BottomSheet context and the extra outer wrapper layer is skipped
+ * so `BottomSheetBody` owns scrolling. React web never renders an outer box
+ * with border/shadow on ActionList — those come from the Dropdown overlay
+ * when embedded.
  *
  * ### Deviations from React
  * - **Story title:** stories use `Components/ActionList` (blade-svelte
@@ -23,6 +25,7 @@
  * @example
  * ```svelte
  * <script lang="ts">
+ *   import { getFlagOfCountry } from '@razorpay/i18nify-js/geo';
  *   import {
  *     ActionList,
  *     ActionListItem,
@@ -34,7 +37,7 @@
  *   } from '@razorpay/blade-svelte/components';
  *
  *   let isOpen = $state(false);
- *   let selected = $state<string | undefined>('in');
+ *   let selected = $state<string | undefined>('IN');
  * </script>
  *
  * <BottomSheet {isOpen} onDismiss={() => (isOpen = false)}>
@@ -50,9 +53,9 @@
  *           }}
  *         >
  *           {#snippet children()}
- *             <ActionListItem title="India" value="in">
+ *             <ActionListItem title="India" value="IN">
  *               {#snippet leading()}
- *                 <ActionListItemAsset src="https://flagcdn.com/w20/in.png" alt="India" />
+ *                 <ActionListItemAsset src={getFlagOfCountry('IN')['4X3']} alt="India" />
  *               {/snippet}
  *               {#snippet trailing()}
  *                 <ActionListItemText>+91</ActionListItemText>

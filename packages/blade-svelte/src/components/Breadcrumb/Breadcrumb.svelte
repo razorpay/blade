@@ -12,6 +12,7 @@
     breadcrumbNavClass,
     breadcrumbListClass,
     showLastSeparatorClass,
+    breadcrumbListStepperClass,
   } from '@razorpay/blade-core/styles';
   import type { BreadcrumbProps, BreadcrumbContextValue } from './types';
   import { BREADCRUMB_CONTEXT_KEY } from './constants';
@@ -23,6 +24,7 @@
     children,
     size = 'medium',
     color = 'primary',
+    variant = 'default',
     showLastSeparator = false,
     accessibilityLabel = 'Breadcrumb',
     testID,
@@ -33,6 +35,7 @@
   setContext(BREADCRUMB_CONTEXT_KEY, (): BreadcrumbContextValue => ({
     size,
     color,
+    variant,
   }));
 
   // Meta attributes
@@ -50,9 +53,13 @@
     [breadcrumbNavClass, ...(styledProps.classes || [])].filter(Boolean).join(' '),
   );
 
-  // List classes - include showLastSeparator class when needed
+  // List classes - include showLastSeparator + stepper classes when needed
   const listClasses = $derived(
-    [breadcrumbListClass, showLastSeparator ? showLastSeparatorClass : '']
+    [
+      breadcrumbListClass,
+      showLastSeparator ? showLastSeparatorClass : '',
+      variant === 'stepper' ? breadcrumbListStepperClass : '',
+    ]
       .filter(Boolean)
       .join(' '),
   );

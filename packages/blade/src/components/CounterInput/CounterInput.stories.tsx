@@ -74,7 +74,7 @@ const meta: Meta<CounterInputProps> = {
     },
     size: {
       control: { type: 'select' },
-      options: ['xsmall', 'medium', 'large'],
+      options: ['xsmall', 'small', 'medium', 'large'],
     },
     value: {
       control: { disable: true },
@@ -145,8 +145,13 @@ export const BasicUsage: StoryFn<typeof CounterInputComponent> = ({ ...args }) =
 // Size Variants
 export const SizeVariants: StoryFn<typeof CounterInputComponent> = ({ ...args }) => {
   const [xsmallValue, setXsmallValue] = useState(1);
+  const [smallValue, setSmallValue] = useState(2);
   const [mediumValue, setMediumValue] = useState(2);
   const [largeValue, setLargeValue] = useState(3);
+  const [xsmallThreeDigitValue, setXsmallThreeDigitValue] = useState(100);
+  const [smallThreeDigitValue, setSmallThreeDigitValue] = useState(100);
+  const [mediumThreeDigitValue, setMediumThreeDigitValue] = useState(100);
+  const [largeThreeDigitValue, setLargeThreeDigitValue] = useState(100);
 
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.6">
@@ -156,41 +161,74 @@ export const SizeVariants: StoryFn<typeof CounterInputComponent> = ({ ...args })
 
       <BaseBox display="flex" flexDirection="column" gap="spacing.3">
         <Text size="medium" weight="medium">
-          XSmall Size
+          Single Digit Values
         </Text>
         <CounterInputComponent
-          label="XSmall Counter"
           {...args}
+          label="XSmall Counter"
           size="xsmall"
           value={xsmallValue}
           onChange={({ value }) => setXsmallValue(value)}
           min={0}
         />
-      </BaseBox>
-
-      <BaseBox display="flex" flexDirection="column" gap="spacing.3">
-        <Text size="medium" weight="medium">
-          Medium Size (Default)
-        </Text>
         <CounterInputComponent
-          label="Medium Counter"
+          label="Small Counter"
+          size="small"
+          value={smallValue}
+          onChange={({ value }) => setSmallValue(value)}
+          min={0}
+        />
+        <CounterInputComponent
+          label="Medium Counter (Default)"
           size="medium"
           value={mediumValue}
           onChange={({ value }) => setMediumValue(value)}
           min={0}
         />
-      </BaseBox>
-
-      <BaseBox display="flex" flexDirection="column" gap="spacing.3">
-        <Text size="medium" weight="medium">
-          Large Size
-        </Text>
         <CounterInputComponent
           label="Large Counter"
           size="large"
           value={largeValue}
           onChange={({ value }) => setLargeValue(value)}
           min={0}
+        />
+      </BaseBox>
+
+      <BaseBox display="flex" flexDirection="column" gap="spacing.3">
+        <Text size="medium" weight="medium">
+          Three Digit Values
+        </Text>
+        <CounterInputComponent
+          label="XSmall Counter"
+          size="xsmall"
+          value={xsmallThreeDigitValue}
+          onChange={({ value }) => setXsmallThreeDigitValue(value)}
+          min={0}
+          max={999}
+        />
+        <CounterInputComponent
+          label="Small Counter"
+          size="small"
+          value={smallThreeDigitValue}
+          onChange={({ value }) => setSmallThreeDigitValue(value)}
+          min={0}
+          max={999}
+        />
+        <CounterInputComponent
+          label="Medium Counter"
+          size="medium"
+          value={mediumThreeDigitValue}
+          onChange={({ value }) => setMediumThreeDigitValue(value)}
+          min={0}
+          max={999}
+        />
+        <CounterInputComponent
+          label="Large Counter"
+          size="large"
+          value={largeThreeDigitValue}
+          onChange={({ value }) => setLargeThreeDigitValue(value)}
+          min={0}
+          max={999}
         />
       </BaseBox>
     </BaseBox>

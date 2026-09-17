@@ -56,19 +56,23 @@ const StyledFilterChip = styled(BaseBox)<{ $isSelected?: boolean; $isDisabled?: 
   },
 );
 
-const StyledFilterTrigger = styled.button<{ $isSelected?: boolean }>(({ theme, $isSelected }) => {
-  const { spacing } = theme;
-  return {
-    backgroundColor: theme.colors.transparent,
-    borderRadius: $isSelected ? theme.border.radius.none : theme.border.radius.small,
-    borderTopLeftRadius: theme.border.radius.small,
-    borderBottomLeftRadius: theme.border.radius.small,
-    paddingLeft: makeSpace(spacing[4]),
-    paddingRight: $isSelected ? makeSpace(spacing[2]) : makeSpace(spacing[3]),
-    gap: makeSpace(spacing[2]),
-    ...getInteractiveFilterItemStyles({ theme }),
-  };
-});
+const StyledFilterTrigger = styled.button<{ $hasClearButton?: boolean }>(
+  ({ theme, $hasClearButton }) => {
+    const { spacing } = theme;
+    return {
+      backgroundColor: theme.colors.transparent,
+      // When a clear button follows the trigger its right corners butt against the divider,
+      // so they're squared off. Without a clear button the trigger is a self-contained pill.
+      borderRadius: $hasClearButton ? theme.border.radius.none : theme.border.radius.small,
+      borderTopLeftRadius: theme.border.radius.small,
+      borderBottomLeftRadius: theme.border.radius.small,
+      paddingLeft: makeSpace(spacing[4]),
+      paddingRight: $hasClearButton ? makeSpace(spacing[2]) : makeSpace(spacing[3]),
+      gap: makeSpace(spacing[2]),
+      ...getInteractiveFilterItemStyles({ theme }),
+    };
+  },
+);
 
 const StyledFilterCloseButton = styled.button(({ theme }) => {
   return {
@@ -88,22 +92,32 @@ const renderValue = (
   value: BaseFilterChipProps['value'],
   isDisabled?: boolean,
 ): React.ReactElement => {
-  if (selectionType === 'multiple' && Array.isArray(value)) {
+  const valueColor = isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.normal';
+
+  // For multiple selection: when a single option is selected we show its name (no redundant
+  // "1" counter); once more than one is selected we collapse to a compact counter.
+  // Use an explicit type guard so a non-array value (e.g. a plain string returned by
+  // getFilterChipDisplayValue) never enters the array branch where .length would be
+  // misinterpreted as character count.
+  if (selectionType === 'multiple') {
+    const valueArray = Array.isArray(value) ? value : value != null ? [value] : [];
+    if (valueArray.length === 1) {
+      return (
+        <Text as="span" size="small" weight="medium" color={valueColor} truncateAfterLines={1}>
+          {String(valueArray[0] ?? '')}
+        </Text>
+      );
+    }
     return (
       <Box display="flex" alignItems="center">
-        <Counter value={value.length} color="neutral" size="small" />
+        <Counter value={valueArray.length} color="neutral" size="small" />
       </Box>
     );
   }
 
   return (
-    <Text
-      as="span"
-      size="small"
-      weight="medium"
-      color={isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.normal'}
-    >
-      {value}
+    <Text as="span" size="small" weight="medium" color={valueColor}>
+      {value != null ? String(value) : ''}
     </Text>
   );
 };
@@ -115,6 +129,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
     label,
     isDisabled,
     selectionType = 'single',
+    showClearButton = true,
     onClick,
     onKeyDown,
     accessibilityProps,
@@ -125,6 +140,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
 ): React.ReactElement => {
   const isSelected =
     selectionType === 'multiple' ? Array.isArray(value) && value.length > 0 : !!value;
+  const shouldShowClearButton = isSelected && showClearButton;
 
   return (
     <StyledFilterChip
@@ -133,7 +149,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
       ref={ref as React.Ref<HTMLDivElement>}
     >
       <StyledFilterTrigger
-        $isSelected={isSelected}
+        $hasClearButton={shouldShowClearButton}
         disabled={isDisabled}
         id={id}
         onClick={(e) => {
@@ -168,7 +184,7 @@ const _BaseFilterChip: React.ForwardRefRenderFunction<BladeElementRef, BaseFilte
           <ChevronDownIcon size="small" color="interactive.icon.gray.muted" />
         </Box>
       </StyledFilterTrigger>
-      {isSelected ? (
+      {shouldShowClearButton ? (
         <>
           <Divider orientation="vertical" variant={isDisabled ? 'muted' : 'subtle'} />
           <StyledFilterCloseButton

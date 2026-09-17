@@ -1,0 +1,56 @@
+name: Blade Svelte BrowserStack Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      chromatic_url:
+        description: 'Chromatic build URL (from a completed Blade Chromatic run) to test against'
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      chromatic_url:
+        description: 'Chromatic build URL (from a completed Blade Chromatic run) to test against'
+        required: true
+        type: string
+
+jobs:
+  browserstack-tests:
+    name: Run BrowserStack Tests (Desktop)
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.19.5
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Run BrowserStack Tests
+        working-directory: packages/blade-svelte
+        run: yarn test:browserstack
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          CHROMATIC_URL: ${{ inputs.chromatic_url }}
+
+  browserstack-tests-mobile:
+    name: Run BrowserStack Tests (Mobile)
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.19.5
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Run BrowserStack Tests
+        working-directory: packages/blade-svelte
+        run: yarn test:browserstack:mobile
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          CHROMATIC_URL: ${{ inputs.chromatic_url }}

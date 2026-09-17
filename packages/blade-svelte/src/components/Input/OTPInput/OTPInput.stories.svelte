@@ -20,7 +20,7 @@
       label: { control: { type: 'text' }, description: 'Label shown above/beside the fields.' },
       otpLength: {
         control: { type: 'inline-radio' },
-        options: [4, 6],
+        options: [4, 6, 8],
         description: 'Number of OTP fields.',
         table: { defaultValue: { summary: '6' } },
       },

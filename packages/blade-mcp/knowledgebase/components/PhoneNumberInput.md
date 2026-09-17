@@ -90,25 +90,53 @@ type PhoneNumberInputProps = {
   onClearButtonClick?: () => void;
 
   /* Common input props */
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   label?: string;
   accessibilityLabel?: string;
   labelPosition?: 'top' | 'left';
+  /**
+   * Suffix element shown right after the label text (e.g. an info icon with Tooltip)
+   */
+  labelSuffix?: React.ReactNode;
+  /**
+   * Trailing element shown at the end of the label row (e.g. a Link)
+   */
+  labelTrailing?: React.ReactNode;
   helpText?: string;
+  showHelpTextOnFocus?: boolean;
   placeholder?: string;
   name?: string;
   validationState?: 'none' | 'error' | 'success';
   errorText?: string;
   successText?: string;
-  necessityIndicator?: 'optional' | 'required';
+  necessityIndicator?: 'optional' | 'required' | 'none';
   isRequired?: boolean;
   isDisabled?: boolean;
   autoFocus?: boolean;
-  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'search' | 'send';
+  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
   leadingIcon?: React.ComponentType<any>;
   trailingIcon?: React.ComponentType<any>;
   testID?: string;
-  autoCompleteSuggestionType?: 'none' | 'telephone' | 'oneTimeCode';
+  autoCompleteSuggestionType?:
+    | 'none'
+    | 'name'
+    | 'email'
+    | 'username'
+    | 'password'
+    | 'newPassword'
+    | 'oneTimeCode'
+    | 'telephone'
+    | 'postalCode'
+    | 'countryName'
+    | 'creditCardNumber'
+    | 'creditCardCSC'
+    | 'creditCardExpiry'
+    | 'creditCardExpiryMonth'
+    | 'creditCardExpiryYear'
+    | 'on';
+  onFocus?: ({ name, value }: { name?: string; value?: string }) => void;
+  onBlur?: ({ name, value }: { name?: string; value?: string }) => void;
+  onClick?: ({ name, value }: { name?: string; value?: string }) => void;
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 ```
@@ -121,6 +149,7 @@ type PhoneNumberInputProps = {
 - Use `allowedCountries` to restrict the country selector to relevant countries for your use case.
 - Use `showCountrySelector={false}` for single-country applications where only domestic numbers are accepted.
 - Use `onCountryChange` to react to country selection and adjust validation accordingly.
+- Use `showHelpTextOnFocus` when `helpText` is guidance rather than a permanent label, to keep it out of the layout until the user is actually in the field. `errorText` and `successText` stay visible regardless.
 
 **Don't**
 
@@ -128,6 +157,8 @@ type PhoneNumberInputProps = {
 - Don't assume the component validates phone numbers — validation is the consumer's responsibility.
 - Don't use `TextInput` with `format` for international phone numbers — `PhoneNumberInput` handles dial codes and country selection.
 - Don't rely on the placeholder format for auto-formatting during typing — formatting is shown as a hint only.
+- Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
 
 ## Example
 

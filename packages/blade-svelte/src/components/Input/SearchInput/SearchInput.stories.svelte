@@ -37,7 +37,34 @@
   import Link from '../../Link/Link.svelte';
   import Tooltip from '../../Tooltip/Tooltip.svelte';
   import Text from '../../Typography/Text/Text.svelte';
-  import { InfoIcon } from '../../Icons';
+  import ActionList from '../../ActionList/ActionList.svelte';
+  import ActionListItem from '../../ActionList/ActionListItem.svelte';
+  import ActionListSection from '../../ActionList/ActionListSection.svelte';
+  import ActionListItemIcon from '../../ActionList/ActionListItemIcon.svelte';
+  import {
+    BankIcon,
+    BuildingIcon,
+    CreditCardIcon,
+    InfoIcon,
+    LockIcon,
+    UserIcon,
+    type IconComponent,
+  } from '../../Icons';
+
+  const menuItems: { title: string; icon: IconComponent }[] = [
+    { title: 'Account & Settings', icon: LockIcon },
+    { title: 'Profile', icon: UserIcon },
+    { title: 'Transactions', icon: CreditCardIcon },
+    { title: 'Help', icon: InfoIcon },
+    { title: 'Settlements', icon: BankIcon },
+    { title: 'Payouts', icon: BuildingIcon },
+  ];
+
+  let searchTerm = $state('');
+
+  const filteredItems = $derived(
+    menuItems.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase())),
+  );
 </script>
 
 <!-- 1 -->
@@ -50,7 +77,25 @@
 <!-- 2 -->
 <Story name="SearchInput with Help Text" args={{ helpText: 'Please enter an item to search' }}>
   {#snippet template(args)}
-    <SearchInput {...args} />
+    <div>
+      <SearchInput
+        {...args}
+        onChange={({ value }) => {
+          searchTerm = value ?? '';
+        }}
+      />
+      <ActionList>
+        <ActionListSection title={`${filteredItems.length} items found`}>
+          {#each filteredItems as item, index (index)}
+            <ActionListItem title={item.title} value={item.title}>
+              {#snippet leading()}
+                <ActionListItemIcon icon={item.icon} />
+              {/snippet}
+            </ActionListItem>
+          {/each}
+        </ActionListSection>
+      </ActionList>
+    </div>
   {/snippet}
 </Story>
 

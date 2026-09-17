@@ -17,13 +17,22 @@ type DisplayProps = {
    * Overrides the color of the Display component.
    *
    * **Note** This takes priority over `type` and `contrast` prop to decide color of title
+   * Accepts a text color token, e.g. 'surface.text.gray.normal', 'feedback.text.positive.intense', 'interactive.text.primary.normal'
    */
   color?: string;
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   weight?: 'regular' | 'medium' | 'semibold';
   children: React.ReactNode;
-  textAlign?: string;
-  textDecorationLine?: string;
+  textAlign?: 'left' | 'right' | 'center' | 'justify';
+  textDecorationLine?: 'none' | 'dotted' | 'line-through' | 'underline';
+  /**
+   * Sets the CSS text-transform of the text
+   */
+  textTransform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase' | 'full-width' | 'full-size-kana';
+  /**
+   * Element timing value to track the render performance of the element
+   */
+  elementtiming?: string;
 } & TestID &
   StyledPropsBlade;
 ```

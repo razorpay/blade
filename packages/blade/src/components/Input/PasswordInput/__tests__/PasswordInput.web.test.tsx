@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import type { ReactElement } from 'react';
 import { useRef, useState } from 'react';
+import { waitFor } from '@testing-library/react';
 import { PasswordInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -291,5 +292,46 @@ describe('<PasswordInput />', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  /**
+   * Kept last on purpose — `useId` counters leak into this file's snapshots, so
+   * inserting renders above a `toMatchSnapshot` test forces unrelated churn.
+   */
+  describe('showHelpTextOnFocus', () => {
+    const getHintWrapper = (container: HTMLElement): HTMLElement | null =>
+      container.querySelector('.__blade-animated-form-hint');
+
+    it('should wire showHelpTextOnFocus through to BaseInput', async () => {
+      const user = userEvent.setup();
+      const { container, getByLabelText, getByText } = renderWithTheme(
+        <PasswordInput label="Password" helpText="Help" showHelpTextOnFocus />,
+      );
+
+      const hintWrapper = getHintWrapper(container);
+      expect(hintWrapper).not.toBeNull();
+      expect(hintWrapper).toHaveStyle({ opacity: '0' });
+      // clipped, not unmounted — the aria-describedby target must stay resolvable
+      expect(getByText('Help')).toBeInTheDocument();
+
+      await user.click(getByLabelText('Password'));
+
+      await waitFor(() => expect(hintWrapper).toHaveStyle({ opacity: '1' }));
+    });
+
+    it('should not gate error text behind focus', () => {
+      const { container, getByText } = renderWithTheme(
+        <PasswordInput
+          label="Password"
+          helpText="Help"
+          errorText="Error"
+          validationState="error"
+          showHelpTextOnFocus
+        />,
+      );
+
+      expect(getByText('Error')).toBeVisible();
+      expect(getHintWrapper(container)).toBeNull();
+    });
   });
 });

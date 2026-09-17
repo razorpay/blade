@@ -24,9 +24,10 @@ The following types represent the props that the Chip component and its subcompo
  */
 type ChipProps = {
   /**
-   * The content to display inside the chip
+   * The text to display inside the chip
+   * Required when neither `icon` nor `leading` is provided
    */
-  children?: React.ReactNode;
+  children?: string | number | (string | number)[];
 
   /**
    * Sets the visual color of the chip, overriding the color set by parent ChipGroup
@@ -36,8 +37,15 @@ type ChipProps = {
 
   /**
    * Icon to display within the chip
+   * Cannot be used with `leading`
    */
   icon?: IconComponent;
+
+  /**
+   * Custom leading element shown before the label (e.g. a flag image or avatar)
+   * Cannot be used with `icon`
+   */
+  leading?: React.ReactNode;
 
   /**
    * Whether the chip is disabled
@@ -48,13 +56,24 @@ type ChipProps = {
   /**
    * Value associated with the chip, used for selection state
    */
-  value: string;
+  value?: string;
 
   /**
-   * Callback fired when chip is clicked
+   * Sets the width of the chip (e.g. '100%', '200px')
    */
-  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  width?: string;
+
+  /**
+   * Sets the maxWidth of the chip
+   */
+  maxWidth?: string;
+
+  /**
+   * Sets the minWidth of the chip
+   */
+  minWidth?: string;
 } & StyledPropsBlade &
+  DataAnalyticsAttribute &
   TestID;
 
 /**
@@ -159,7 +178,10 @@ type ChipGroupProps = {
 /**
  * Type for Icon Component
  */
-type IconComponent = React.ComponentType<IconProps>;
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
 ```
 
 ## Usage Guidelines

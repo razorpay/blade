@@ -3,7 +3,8 @@ import React, { memo, useState, useEffect, useRef, useCallback } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import type { GenUIComponent } from './GenUIComponents';
-import { useGenUI, GenUIContext } from './GenUIContext';
+import { useGenUI, useGenUIComponentActions, GenUIContext } from './GenUIContext';
+import type { GenUIBlockLevelComponentType } from './types';
 import { getGenUIComponentTopSpacing } from './GenUISpacing';
 import type { AnimateOptions } from './rehypeAnimate';
 import { Box } from '~components/Box';
@@ -155,7 +156,9 @@ const GradientBorder = styled.div<{ $fadeOut?: boolean }>`
 `;
 
 /** Content container with mask reveal animation */
-const ContentContainer = styled.div`
+const ContentContainer = styled.div<{
+  ref?: React.Ref<HTMLDivElement>;
+}>`
   position: relative;
   width: 100%;
   height: 100%;
@@ -202,7 +205,9 @@ const GradientShade = styled.div`
 const AnimatedGradientBorder: React.FC<{
   children: React.ReactNode;
   onAnimationComplete?: () => void;
-}> = ({ children, onAnimationComplete }) => {
+  /** Ref to the content container node (excludes the gradient ring + shade overlays) */
+  contentRef?: React.Ref<HTMLDivElement>;
+}> = ({ children, onAnimationComplete, contentRef }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showContent, setShowContent] = useState(false);
   // Initial default values to prevent animation from breaking before ResizeObserver fires
@@ -243,7 +248,7 @@ const AnimatedGradientBorder: React.FC<{
       <GlobalAnimationStyles />
       <AnimatedBorderContainer ref={containerRef} $showContent={showContent}>
         <GradientBorder $fadeOut={showContent} style={cssVars} />
-        <ContentContainer>
+        <ContentContainer ref={contentRef}>
           {children}
           <GradientShade />
         </ContentContainer>
@@ -275,6 +280,11 @@ type ComponentRendererProps = {
  */
 const ComponentRendererInner = memo(({ component, index }: ComponentRendererProps) => {
   const { registry, validComponentTypes } = useGenUI();
+  const componentActions = useGenUIComponentActions();
+  // Ref to the DOM node of the rendered component's content (excludes the gradient
+  // border animation overlays). Passed to registered action slots so consumers can
+  // read the component's node (e.g. for PNG capture).
+  const componentRef = useRef<HTMLDivElement>(null);
 
   // Handle incomplete components during streaming
   if (!component?.component) {
@@ -297,10 +307,27 @@ const ComponentRendererInner = memo(({ component, index }: ComponentRendererProp
     // Built-in components (CARD, TABLE) carry marginY="spacing.4" so need a
     // 13px inset; custom components have no external margin so use 0.
     if (isBlockLevel) {
+      // Consumer-registered action UI for this component type (render prop pattern).
+      // Cast: `componentType` is a string, but the registry is keyed by the block-level
+      // union ('CARD' | 'TABLE'). Non-matching keys (including custom block-level
+      // component names) just resolve to undefined and no slot renders.
+      const renderActionSlot = componentActions?.[componentType as GenUIBlockLevelComponentType];
+
       return (
-        <AnimatedGradientBorder key={key}>
-          <Renderer {...component} index={index} />
-        </AnimatedGradientBorder>
+        <Box key={key} display="flex" flexDirection="column" width="100%">
+          <Box width="100%">
+            <AnimatedGradientBorder contentRef={componentRef}>
+              <Renderer {...component} index={index} />
+            </AnimatedGradientBorder>
+          </Box>
+          {renderActionSlot
+            ? renderActionSlot({
+                data: component,
+                componentRef,
+                componentType,
+              })
+            : null}
+        </Box>
       );
     }
 

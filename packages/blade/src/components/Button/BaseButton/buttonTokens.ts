@@ -89,6 +89,7 @@ const boxShadow = (
     'primary' | 'secondary' | 'tertiary',
     Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>
   >;
+  neutral: Record<'primary', Record<'default' | 'highlighted' | 'disabled', ButtonBoxShadow>>;
 } => {
   return {
     base: {
@@ -143,11 +144,21 @@ const boxShadow = (
       primary: {
         default: [
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+          {
+            y: 0,
+            blur: 0,
+            spread: 0.5,
+            color: 'interactive.border.staticBlack.fadedHighlighted',
+          },
         ],
         highlighted: [
           { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.fadedHighlighted' },
-          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticWhite.default' },
+          {
+            y: 0,
+            blur: 0,
+            spread: 0.5,
+            color: 'interactive.border.staticBlack.fadedHighlighted',
+          },
         ],
         disabled: [],
       },
@@ -172,6 +183,23 @@ const boxShadow = (
           { y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.highlighted' },
         ],
         disabled: [{ y: 0, blur: 0, spread: 1, color: 'interactive.border.staticWhite.disabled' }],
+      },
+    },
+    neutral: {
+      primary: {
+        default: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.highlighted' },
+          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticBlack.highlighted' },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+        ],
+        highlighted: [
+          { y: -1.5, blur: 0, spread: 0, color: 'interactive.border.staticBlack.highlighted' },
+          { y: 0, blur: 0, spread: 0.5, color: 'interactive.border.staticBlack.highlighted' },
+          { y: 1.5, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+          { y: -2, blur: 0, spread: 0, color: 'interactive.border.staticWhite.fadedHighlighted' },
+        ],
+        disabled: [],
       },
     },
   };
@@ -211,6 +239,13 @@ const textColor = (property: 'icon' | 'text') => {
         default: `interactive.${property}.staticWhite.normal`,
         highlighted: `interactive.${property}.staticWhite.normal`,
         disabled: `interactive.${property}.staticWhite.disabled`,
+      },
+    },
+    neutral: {
+      primary: {
+        default: `interactive.${property}.onNeutral.normal`,
+        highlighted: `interactive.${property}.onNeutral.normal`,
+        disabled: `interactive.${property}.onNeutral.disabled`,
       },
     },
     transparent: {
@@ -363,7 +398,9 @@ const spinnerColor = {
     secondary: 'information',
   },
   neutral: {
-    primary: 'neutral',
+    // The primary emphasis renders content on a filled neutral surface, so the
+    // spinner follows the same inverted treatment as the label.
+    primary: 'onNeutral',
     secondary: 'neutral',
   },
 } as const;

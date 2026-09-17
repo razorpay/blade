@@ -1,8 +1,12 @@
 <script lang="ts">
-  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
+  import { makeAccessible, makeAnalyticsAttribute, metaAttribute, MetaConstants, cx } from '@razorpay/blade-core/utils';
   import type { BaseTextProps } from './types';
   import { getBaseTextClasses } from '@razorpay/blade-core/styles';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
+  import { resolveComponentStyleOverride } from '../../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../../BladeProvider/bladeThemeContext';
+
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     id,
@@ -21,6 +25,8 @@
     wordBreak,
     opacity,
     className,
+    styleOverride,
+    styleOverrideRegistryKey,
     accessibilityProps = {},
     componentName = MetaConstants.BaseText,
     testID,
@@ -29,8 +35,22 @@
     ...rest
   }: BaseTextProps = $props();
 
+  const resolvedStyleOverride = $derived(
+    styleOverrideRegistryKey
+      ? resolveComponentStyleOverride(
+          styleOverrideRegistryKey,
+          styleOverride,
+          themeContextGetter,
+        )
+      : styleOverride,
+  );
+
   // Use truncateAfterLines if provided, otherwise numberOfLines (for API consistency)
   const lineClamp = truncateAfterLines ?? numberOfLines;
+
+  const renderColor = $derived(
+    resolvedStyleOverride?.root ? ('currentColor' as const) : color,
+  );
 
   // Generate all classes from blade-core (single source of truth)
   // Everything is class-based - no inline styles or data attributes
@@ -46,10 +66,10 @@
       textTransform,
       wordBreak,
       letterSpacing,
-      color,
+      color: renderColor,
       opacity,
       numberOfLines: lineClamp,
-      className,
+      className: cx(className, resolvedStyleOverride?.root),
     }),
   );
 

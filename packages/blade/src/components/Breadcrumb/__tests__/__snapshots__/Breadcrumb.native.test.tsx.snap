@@ -1,0 +1,2549 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumb /> should render 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Breadcrumb"
+    accessible={true}
+    data-blade-component="breadcrumb"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.2"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Home
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              About
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Contact
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Breadcrumb /> should render current page item as text (not a link) 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Breadcrumb"
+    accessible={true}
+    data-blade-component="breadcrumb"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.2"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Home
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "selected": true,
+          }
+        }
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(0, 0%, 2%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Contact
+          </Text>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Breadcrumb /> should render with large size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Breadcrumb"
+    accessible={true}
+    data-blade-component="breadcrumb"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.2"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={200}
+              fontWeight="medium"
+              lineHeight={200}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Home
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={200}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={25}
+            lineHeight={200}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.528,
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={200}
+              fontWeight="medium"
+              lineHeight={200}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              About
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Breadcrumb /> should render with small size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Breadcrumb"
+    accessible={true}
+    data-blade-component="breadcrumb"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.2"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={75}
+              fontWeight="medium"
+              lineHeight={75}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 17,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Home
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.15600000000000003,
+                  "lineHeight": 17,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={75}
+              fontWeight="medium"
+              lineHeight={75}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 17,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              About
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Breadcrumb /> should render with white color 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Breadcrumb"
+    accessible={true}
+    data-blade-component="breadcrumb"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.2"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={0.56}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 0.56,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.staticWhite.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(0, 0%, 100%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Home
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "selected": true,
+          }
+        }
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          gap="spacing.2"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "gap": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.staticWhite.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(0, 0%, 100%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            About
+          </Text>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Breadcrumb /> should support data-analytics attributes 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Breadcrumb"
+    accessible={true}
+    data-analytics-breadcrumb="basicRoutes"
+    data-blade-component="breadcrumb"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.2"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Home
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              About
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Breadcrumb"
+    accessible={true}
+    data-blade-component="breadcrumb"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.2"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Home
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        alignItems="center"
+        data-blade-component="breadcrumb-item"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "flex-start",
+                "backgroundColor": "transparent",
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "outline": "none",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationColor": "black",
+                "textDecorationLine": "none",
+                "textDecorationStyle": "solid",
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            className="content-container"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            opacity={1}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="interactive.text.primary.normal"
+              data-blade-component="base-text"
+              fontSize={100}
+              fontWeight="medium"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(218, 87%, 43%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "500",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "center",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              textAlign="center"
+              textDecorationLine="none"
+            >
+              Contact
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityElementsHidden={true}
+          data-blade-component="base-box"
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.muted"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="medium"
+            letterSpacing={50}
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(204, 9%, 42%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": -0.18200000000000002,
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            /
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

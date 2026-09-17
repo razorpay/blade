@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
+import type { AppBarLeadingSlot, StyleOverride } from '@razorpay/blade-core/styles';
 import type { StyledPropsBlade } from '@razorpay/blade-core/utils';
-import type { RTBBadgeType } from '@razorpay/blade-core/styles';
 import type { TooltipPlacement } from '../Tooltip/types';
 
 /**
@@ -49,7 +49,7 @@ export type AppBarProps = {
    * Visual emphasis of the AppBar surface.
    * - `'neutral'`: transparent surface, light (static-white) foreground — the AppBar has
    *   no background of its own and sits directly over the page (matches Figma).
-   * - `'subtle'`: gray surface that adapts to an embedded/light page context.
+   * - `'subtle'`: transparent surface with adaptive gray foreground for embedded/light contexts.
    *
    * @default 'neutral'
    */
@@ -120,13 +120,22 @@ export type AppBarLeadingProps = {
   logo?: Snippet;
 
   /**
-   * Razorpay Trusted Business badge form.
-   * - `'full'`: shield + pill below the title/logo row
-   * - `'icon'`: shield only, inline with `title` (beside `logo` when no title)
+   * Trust badge form, forwarded to `TrustBadge`.
+   * - `'default'`: shield + pill below the title/logo row
+   * - `'icon-only'`: shield only, inline with `title` (beside `logo` when no title)
    *
    * @default undefined
    */
-  rtbBadge?: RTBBadgeType;
+  trustBadgeVariant?: 'default' | 'icon-only';
+
+  /**
+   * Custom trust label forwarded to `TrustBadge`.
+   * Overrides the default "Razorpay Trusted Business" text shown in the pill
+   * and used as the accessible label for the icon-only form.
+   *
+   * @default undefined
+   */
+  trustBadgeLabel?: string;
 
   /**
    * Test ID for the element.
@@ -134,6 +143,12 @@ export type AppBarLeadingProps = {
    * @default undefined
    */
   testID?: string;
+
+  /**
+   * Per-slot classname overrides. Merged under provider `componentConfig.AppBarLeading.styleOverride`;
+   * instance values win on conflicts.
+   */
+  styleOverride?: StyleOverride<AppBarLeadingSlot>;
 
   /**
    * Analytics data attributes.

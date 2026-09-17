@@ -49,6 +49,7 @@
     allowedCountries,
     placeholder,
     id,
+    portalTarget,
     ...rest
   }: PhoneNumberInputProps = $props();
 
@@ -160,6 +161,7 @@
       {flags}
       {isDisabled}
       {selectedCountry}
+      {portalTarget}
       onItemClick={handleCountrySelect}
     />
   {/if}
@@ -195,7 +197,7 @@
   prefix={resolvedPrefix}
   leadingInteractionElement={showCountrySelector ? countrySelectorSlot : undefined}
   trailingInteractionElement={shouldShowClearButton ? clearButtonSlot : undefined}
-  onChange={handleInputChange}
+  onInput={handleInputChange}
   {onClick}
   {onFocus}
   {onBlur}

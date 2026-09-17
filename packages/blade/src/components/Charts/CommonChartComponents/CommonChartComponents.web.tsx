@@ -7,6 +7,7 @@ import {
   Tooltip as RechartsTooltip,
   Legend as RechartsLegend,
   ReferenceLine as RechartsReferenceLine,
+  Line as RechartsLine,
 } from 'recharts';
 import {
   getHighestColorInRange,
@@ -16,6 +17,7 @@ import {
 } from '../utils';
 import type {
   ChartReferenceLineProps,
+  ChartReferenceBandProps,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
@@ -38,6 +40,8 @@ import {
   X_AXIS_LABEL_HEIGHT,
   LEGEND_MARGIN_TOP,
   X_OFFSET,
+  REFERENCE_BAND_LOWER_CLASS,
+  REFERENCE_BAND_UPPER_CLASS,
   componentId,
 } from './tokens';
 import { calculateTextWidth } from './utils';
@@ -327,9 +331,10 @@ const _ChartXAxis: React.FC<ChartXAxisProps> = ({
 
   // Calculate total axis height:
   // - Tick labels height (dynamic)
-  // - X-axis label height + offset (if label prop is present)
-  const hasAxisLabel = Boolean(label);
-  const axisLabelSpace = hasAxisLabel ? X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT : 0;
+  // - X-axis label height + offset, always reserved so the gap between the
+  //   axis and elements below it (e.g. legend) stays constant whether or not
+  //   the `label` prop is present
+  const axisLabelSpace = X_AXIS_LABEL_OFFSET + X_AXIS_LABEL_HEIGHT;
   const baseHeight = Math.max(maxTickHeight) + axisLabelSpace;
 
   // Position for X-axis label: below tick labels with offset
@@ -443,37 +448,61 @@ const CustomTooltip = ({
     value: string;
     color: string;
     dataKey: string;
-    payload: { fill: string };
+    payload: Record<string, unknown>;
   };
 }): JSX.Element => {
   const { theme } = useTheme();
-  const { dataColorMapping, chartName } = useCommonChartComponentsContext();
+  const { dataColorMapping, chartName, rangeMap } = useCommonChartComponentsContext();
 
   const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping ?? {}, chartName);
+
+  // If this series has a reference band, show its industry range (low–high) beneath the value.
+  const range = rangeMap?.[item.dataKey];
+  const lowerValue = range ? item.payload?.[range.rangeLowerDataKey] : undefined;
+  const upperValue = range ? item.payload?.[range.rangeUpperDataKey] : undefined;
+  const hasRange =
+    range &&
+    lowerValue !== undefined &&
+    lowerValue !== null &&
+    upperValue !== undefined &&
+    upperValue !== null;
+
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-      gap="spacing.4"
-      key={`tooltip-${item.name}`}
-    >
-      <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
-        <div
-          style={{
-            width: theme.spacing[4],
-            height: theme.spacing[4],
-            backgroundColor: getIn(theme.colors, toolTipColor),
-            borderRadius: theme.border.radius.small,
-          }}
-        />
+    <Box key={`tooltip-${item.name}`} paddingY="spacing.1">
+      <Box display="flex" alignItems="center" justifyContent="space-between" gap="spacing.4">
+        <Box display="flex" gap="spacing.3" alignItems="center" justifyContent="center">
+          <div
+            style={{
+              width: theme.spacing[4],
+              height: theme.spacing[4],
+              backgroundColor: getIn(theme.colors, toolTipColor),
+              borderRadius: theme.border.radius.small,
+            }}
+          />
+          <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+            {item.name}
+          </Text>
+        </Box>
         <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-          {item.name}
+          {item.value}
         </Text>
       </Box>
-      <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-        {item.value}
-      </Text>
+      {hasRange ? (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          gap="spacing.4"
+          paddingLeft="spacing.5"
+        >
+          <Text size="xsmall" weight="regular" color="surface.text.staticWhite.muted">
+            {range?.rangeName ?? 'Industry'}
+          </Text>
+          <Text size="xsmall" weight="regular" color="surface.text.staticWhite.muted">
+            {`${String(lowerValue)}–${String(upperValue)}`}
+          </Text>
+        </Box>
+      ) : null}
     </Box>
   );
 };
@@ -518,9 +547,10 @@ const StyledLegendWrapper = styled.button<{ $isHidden: boolean; $isClickable: bo
     opacity: $isHidden ? 0.4 : 1,
     background: 'none',
     border: 'none',
-    padding: 0,
+    padding: theme.spacing[2],
     '& p': {
       color: theme.colors.surface.text.gray.muted,
+      textDecoration: $isHidden ? 'line-through' : 'none',
       transition: $isClickable
         ? `color ${theme.motion.duration.xquick}ms ${theme.motion.easing.linear}`
         : 'none',
@@ -575,7 +605,7 @@ const LegendItem = ({
             width: theme.spacing[4],
             height: theme.spacing[4],
             display: 'inline-block',
-            borderRadius: theme.border.radius.small,
+            borderRadius: theme.border.radius['2xsmall'],
           }}
         />
         <Text size="medium" color="surface.text.gray.muted">
@@ -583,6 +613,40 @@ const LegendItem = ({
         </Text>
       </Box>
     </StyledLegendWrapper>
+  );
+};
+
+/**
+ * Informational (non-toggleable) legend entries for the reference band(s). Bands aren't selectable
+ * series, so each renders a static square swatch in the band's fill colour + its label. One entry
+ * per band (a per-line band or the standalone band).
+ */
+const ReferenceBandLegendSwatch = (): JSX.Element | null => {
+  const { theme } = useTheme();
+  const { referenceBands } = useCommonChartComponentsContext();
+  if (!referenceBands || referenceBands.length === 0) return null;
+  return (
+    <>
+      {referenceBands.map((band, index) => (
+        <Box display="flex" alignItems="center" padding="spacing.2" key={`reference-band-${index}`}>
+          <Box display="flex" gap="spacing.3" justifyContent="center" alignItems="center">
+            <span
+              style={{
+                backgroundColor: getIn(theme.colors, band.color),
+                opacity: band.fillOpacity,
+                width: theme.spacing[4],
+                height: theme.spacing[4],
+                display: 'inline-block',
+                borderRadius: theme.border.radius['2xsmall'],
+              }}
+            />
+            <Text size="medium" color="surface.text.gray.muted">
+              {band.name}
+            </Text>
+          </Box>
+        </Box>
+      ))}
+    </>
   );
 };
 
@@ -602,7 +666,7 @@ const CustomSquareLegend = (props: {
   onClick: (dataKey: string) => void;
 }): JSX.Element | null => {
   const { payload, layout, selectedDataKeys, onClick } = props;
-  const { chartName, dataColorMapping } = useCommonChartComponentsContext();
+  const { chartName, dataColorMapping, referenceBands } = useCommonChartComponentsContext();
 
   /*
   This is a custom legend component that is used to display the legend for the chart.
@@ -655,13 +719,14 @@ const CustomSquareLegend = (props: {
   }
 
   // For other chart types, use the payload from recharts
-  if (!payload || payload.length === 0) {
-    return null;
-  }
-
-  const filteredPayload = payload.filter(
+  const filteredPayload = (payload ?? []).filter(
     (entry) => entry?.payload?.legendType !== 'none' && entry?.type !== 'none',
   );
+
+  // Nothing to render — no real series and no reference band(s).
+  if (filteredPayload.length === 0 && (!referenceBands || referenceBands.length === 0)) {
+    return null;
+  }
 
   return (
     <Box
@@ -682,6 +747,8 @@ const CustomSquareLegend = (props: {
           isClickable={isClickable}
         />
       ))}
+      {/* Static swatch for the reference band (not a toggleable series). */}
+      <ReferenceBandLegendSwatch />
     </Box>
   );
 };
@@ -694,6 +761,9 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
 }) => {
   const { theme } = useTheme();
   const { dataColorMapping, setSelectedDataKeys } = useCommonChartComponentsContext();
+  const hasUserInteractedRef = React.useRef(false);
+  const isControlled = selectedDataKeysProp !== undefined;
+  const shouldAutoSelectAllDataKeys = !isControlled && defaultSelectedDataKeys === undefined;
 
   // Get all available dataKeys from the chart
   const allDataKeys = React.useMemo(() => Object.keys(dataColorMapping ?? {}), [dataColorMapping]);
@@ -703,6 +773,20 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
     value: selectedDataKeysProp,
     defaultValue: defaultSelectedDataKeys ?? allDataKeys,
   });
+
+  React.useEffect(() => {
+    if (!shouldAutoSelectAllDataKeys || hasUserInteractedRef.current || allDataKeys.length === 0) {
+      return;
+    }
+
+    const isSelectedStateInSync =
+      selectedKeysArray.length === allDataKeys.length &&
+      allDataKeys.every((dataKey) => selectedKeysArray.includes(dataKey));
+
+    if (!isSelectedStateInSync) {
+      setSelectedKeysArray(() => [...allDataKeys], true);
+    }
+  }, [allDataKeys, selectedKeysArray, setSelectedKeysArray, shouldAutoSelectAllDataKeys]);
 
   // Reset selection when allDataKeys completely changes (e.g., when nameKey prop changes)
   // This detects when none of the currently selected keys exist in the new data keys
@@ -724,6 +808,7 @@ const _ChartLegend: React.FC<ChartLegendProps> = ({
   // Handle toggle
   const handleClick = React.useCallback(
     (dataKey: string) => {
+      hasUserInteractedRef.current = true;
       const newSelectedKeys = selectedKeysArray.includes(dataKey)
         ? selectedKeysArray.filter((key) => key !== dataKey)
         : [...selectedKeysArray, dataKey];
@@ -829,6 +914,50 @@ const ChartReferenceLine: React.FC<ChartReferenceLineProps> = ({ label, x, y }) 
   );
 };
 
+/**
+ * Reference band. Renders two invisible bound lines (`lowerDataKey` / `upperDataKey`) so
+ * Recharts computes their geometry and folds them into the y-domain; ChartLineWrapper then reads
+ * those curves and paints the shaded band between them (a data-driven range that varies per point,
+ * unlike Recharts' fixed-rectangle `ReferenceArea`). The band's fill + legend swatch are handled by
+ * the wrapper and the shared legend via context.
+ */
+const _ChartReferenceBand: React.FC<ChartReferenceBandProps> = ({ lowerDataKey, upperDataKey }) => {
+  return (
+    <>
+      <RechartsLine
+        className={REFERENCE_BAND_LOWER_CLASS}
+        type="monotone"
+        dataKey={lowerDataKey}
+        stroke="transparent"
+        strokeWidth={1}
+        dot={false}
+        activeDot={false}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        isAnimationActive={false}
+      />
+      <RechartsLine
+        className={REFERENCE_BAND_UPPER_CLASS}
+        type="monotone"
+        dataKey={upperDataKey}
+        stroke="transparent"
+        strokeWidth={1}
+        dot={false}
+        activeDot={false}
+        connectNulls
+        legendType="none"
+        tooltipType="none"
+        isAnimationActive={false}
+      />
+    </>
+  );
+};
+
+const ChartReferenceBand = assignWithoutSideEffects(_ChartReferenceBand, {
+  componentId: componentId.chartReferenceBand,
+});
+
 export {
   ChartXAxis,
   ChartYAxis,
@@ -836,4 +965,5 @@ export {
   ChartLegend,
   ChartTooltip,
   ChartReferenceLine,
+  ChartReferenceBand,
 };

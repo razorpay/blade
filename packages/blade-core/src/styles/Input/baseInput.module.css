@@ -55,10 +55,13 @@
 
 .focus-ring-wrapper:focus-within {
   outline: 4px solid var(--surface-border-primary-muted);
-  outline-offset: 0px;
-  transition-property: outline;
-  transition-duration: var(--duration-xgentle);
-  transition-timing-function: var(--easing-emphasized);
+  outline-offset: 1px;
+  /* Only animate the width. Transitioning the `outline` shorthand animates
+   * outline-color from the default currentColor (dark) to the muted primary,
+   * flashing black→blue on focus. Applying color instantly avoids that. */
+  transition-property: outline-width;
+  transition-duration: var(--duration-2xquick);
+  transition-timing-function: var(--easing-standard);
 }
 
 /* ── Input wrapper — border (box-shadow ring) + background + radius ── */

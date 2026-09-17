@@ -10,6 +10,7 @@ import { RzpGlassMount } from './RzpGlassMount';
 import type { RzpGlassProps } from './types';
 import { DEFAULT_CDN_PATH, getDefaultAssets, getPresetAssets, resolveConfig } from './utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { useTheme } from '~components/BladeProvider';
 
 // Duration of the component's built-in fade-in transition.
 // The video is kept paused during this window so one-shot animations
@@ -32,12 +33,18 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
     ...configProps
   } = props;
 
+  // Follow Blade's color scheme: in dark mode every preset gets its dark
+  // counterpart (dark gradient maps, black background, no bloom, black specular)
+  // layered on top. Explicit props still win over the dark overlay.
+  const { colorScheme } = useTheme();
+  const isDark = colorScheme === 'dark';
+
   // Get default assets based on assetsPath
   const assetsPath: string = assetsPathProp ?? DEFAULT_CDN_PATH;
   const defaultAssets = getDefaultAssets(assetsPath);
 
   // Resolve assets: prop overrides preset, preset overrides default
-  const presetAssets = getPresetAssets(props.preset, assetsPath);
+  const presetAssets = getPresetAssets(props.preset, assetsPath, isDark);
   const imageSrc = imageSrcProp ?? presetAssets.imageSrc;
   const videoSrc = imageSrc ? undefined : presetAssets.videoSrc ?? defaultAssets.videoSrc;
   const gradientMapSrc =
@@ -58,7 +65,7 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
       if (!divRef.current || mountRef.current) return;
 
       try {
-        const config = resolveConfig(props, assetsPath);
+        const config = resolveConfig(props, assetsPath, isDark);
 
         mountRef.current = new RzpGlassMount(
           divRef.current,
@@ -106,16 +113,17 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
       mountRef.current = null;
       setIsInitialized(false);
     };
-  }, [assetsPath, videoSrc, imageSrc, gradientMapSrc, gradientMap2Src, centerGradientMapSrc, configProps.preset]);
+  }, [assetsPath, videoSrc, imageSrc, gradientMapSrc, gradientMap2Src, centerGradientMapSrc, configProps.preset, isDark]);
 
   // Update uniforms when config props change
   useEffect(() => {
     if (isInitialized && mountRef.current) {
-      const config = resolveConfig(props, assetsPath);
+      const config = resolveConfig(props, assetsPath, isDark);
       mountRef.current.setUniforms(config);
     }
   }, [
     isInitialized,
+    isDark,
     configProps.preset,
     // Colorama
     configProps.inputMin,
@@ -155,6 +163,8 @@ const RzpGlass = forwardRef<HTMLDivElement, RzpGlassProps>(function RzpGlass(pro
     configProps.enableLightSweep,
     // Light
     configProps.lightIntensity,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    ...(configProps.specularTint ?? [1, 1, 1]),
     configProps.lightStartFrame,
     // Playback
     configProps.paused,

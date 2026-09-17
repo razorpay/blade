@@ -6,6 +6,7 @@
     makeAnalyticsAttribute,
     getStyledPropsClasses,
     throwBladeError,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
     getBadgeClasses,
@@ -68,7 +69,6 @@
     getBadgeIconColorToken({ color, emphasis }) as IconColor,
   );
 
-  // Get icon size based on badge size
   const iconSize = $derived(badgeIconSize[size]);
 
   // Get text sizes based on badge size
@@ -91,7 +91,7 @@
 
   // Combine classes for badge element
   const combinedClasses = $derived(
-    [badgeClassNames, ...(styledProps.classes || [])].filter(Boolean).join(' ')
+    cx(badgeClassNames, ...(styledProps.classes || [])),
   );
 
   // Meta attributes

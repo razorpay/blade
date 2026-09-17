@@ -1,0 +1,14 @@
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# build directories
+**/storybook-site
+**/storybook-static
+**/build
+**/dist
+
+# misc
+.DS_Store

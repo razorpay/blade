@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    metaAttribute,
-    MetaConstants,
-    makeAnalyticsAttribute,
-  } from '@razorpay/blade-core/utils';
+  import { metaAttribute, MetaConstants, makeAnalyticsAttribute, cx } from '@razorpay/blade-core/utils';
   import Collapsible from '../Collapsible/Collapsible.svelte';
   import Divider from '../Divider/Divider.svelte';
   import { getAccordionContext, setAccordionItemContext } from './context';
@@ -46,9 +42,10 @@
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.AccordionItem, testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
+  const itemClass = $derived(cx(accordionCtx.styleOverride?.item));
 </script>
 
-<div {...metaAttrs} {...analyticsAttrs}>
+<div class={itemClass} {...metaAttrs} {...analyticsAttrs}>
   <Collapsible
     {isExpanded}
     defaultIsExpanded={isDefaultExpanded}

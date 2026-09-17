@@ -6,6 +6,7 @@
     makeAccessible,
     makeAnalyticsAttribute,
     getStyledPropsClasses,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
     getBaseInputWrapperClasses,
@@ -27,6 +28,7 @@
     getDescribedByElementId,
   } from './utils';
   import type { BaseInputProps } from './types';
+  import { getInputGroupContext } from '../../InputGroup/inputGroupContext';
 
   const templateClasses = getBaseInputTemplateClasses();
 
@@ -52,6 +54,8 @@
     onBlur,
     isDisabled = false,
     isRequired = false,
+    isReadOnly = false,
+    spellCheck,
     leadingIcon,
     prefix,
     trailingInteractionElement,
@@ -88,16 +92,28 @@
     ...rest
   }: BaseInputProps = $props();
 
+  // When rendered inside an InputGroup, the group overrides size/isDisabled and
+  // suppresses this input's own label + hint (mirrors React BaseInput.tsx).
+  const getInputGroupCtx = getInputGroupContext();
+  const inputGroupCtx = $derived(getInputGroupCtx?.());
+  const isInsideInputGroup = $derived(Boolean(inputGroupCtx));
+  const effectiveSize = $derived(inputGroupCtx?.size ?? size);
+  const effectiveDisabled = $derived(inputGroupCtx?.isDisabled ?? isDisabled);
+
   let inputEl: HTMLInputElement | HTMLTextAreaElement | null = $state(null);
 
   // Controlled vs uncontrolled: seed internal state from defaultValue once. When
   // `value` is provided the input is controlled and `currentValue` reads it.
-  const isControlled = untrack(() => value !== undefined);
+  // Reactive (`$derived`) so a `value` that starts undefined and is supplied
+  // later (e.g. after an async fetch) still switches the input to controlled
+  // instead of staying uncontrolled forever.
+  const isControlled = $derived(value !== undefined);
   let internalValue = $state(untrack(() => defaultValue ?? ''));
   const currentValue = $derived(isControlled ? (value ?? '') : internalValue);
 
   const hasLabel = $derived(Boolean(label));
   const isLabelLeftPositioned = $derived(labelPosition === 'left' && Boolean(label));
+  const shouldRenderLabel = $derived(hasLabel && !hideLabelText && !isInsideInputGroup);
 
   const keyboardProps = $derived(
     getKeyboardAndAutocompleteProps({
@@ -119,11 +135,22 @@
     getEnterKeyHint(keyboardProps.keyboardReturnKeyType) as HTMLInputAttributes['enterkeyhint'],
   );
 
-  const wrapperRadius = $derived(borderRadius ?? baseInputBorderRadius[size]);
+  // `password` renders on the DOM `type` (mask), but keyboardProps stays coerced
+  // to `text` so inputmode/autocomplete/enterkeyhint are unaffected. Only
+  // PasswordInput passes `password`, so other inputs keep their existing path.
+  const domType = $derived(
+    type === 'password' ? 'password' : getDomType(keyboardProps.type),
+  );
+
+  const wrapperRadius = $derived(borderRadius ?? baseInputBorderRadius[effectiveSize]);
 
   const wrapperClasses = $derived(
     getBaseInputWrapperClasses({ validationState, borderRadius: wrapperRadius }),
   );
+
+  // `__blade-base-input-wrapper` is the stable global hook the InputGroup
+  // corner-rounding rules target. Harmless (unstyled) on standalone inputs.
+  const inputWrapperClasses = $derived(cx(`${wrapperClasses} __blade-base-input-wrapper`));
 
   const hasLeadingVisuals = $derived(
     Boolean(leadingInteractionElement) || Boolean(leadingIcon) || Boolean(prefix),
@@ -141,7 +168,7 @@
 
   const inputClasses = $derived(
     getBaseInputClasses({
-      size,
+      size: effectiveSize,
       valueComponentType,
       hasLeadingVisual: hasLeadingVisuals,
       hasTrailingVisual: hasTrailingVisuals,
@@ -151,7 +178,7 @@
 
   const styledProps = $derived(getStyledPropsClasses(rest));
   const outerClasses = $derived(
-    [templateClasses.outer, ...(styledProps.classes ?? [])].filter(Boolean).join(' '),
+    cx(templateClasses.outer, ...(styledProps.classes ?? [])),
   );
   const outerStyles = $derived(
     Object.entries(styledProps.inlineStyles ?? {})
@@ -166,7 +193,11 @@
   );
 
   const focusRingClasses = $derived(
-    [templateClasses.focusRingWrapper, wrapperRadius === 'medium' ? templateClasses.radiusMedium : '']
+    [
+      templateClasses.focusRingWrapper,
+      wrapperRadius === 'medium' ? templateClasses.radiusMedium : '',
+      '__blade-focus-ring-wrapper',
+    ]
       .filter(Boolean)
       .join(' '),
   );
@@ -180,7 +211,7 @@
   // label|input row and is indented by the label column width so it aligns under
   // the input (mirrors React's `formHintLeftLabelMarginLeft`).
   const hintMarginLeft = $derived(
-    isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,
+    isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[effectiveSize] : 0,
   );
 
   const inputIds = $derived({
@@ -206,11 +237,11 @@
   const a11yAttrs = $derived(
     makeAccessible({
       required: Boolean(isRequired),
-      disabled: Boolean(isDisabled),
+      disabled: Boolean(effectiveDisabled),
       invalid: validationState === 'error',
       describedBy,
-      label: !hasLabel ? accessibilityLabel : undefined,
-      labelledBy: hasLabel ? inputIds.labelId : undefined,
+      label: shouldRenderLabel ? undefined : accessibilityLabel,
+      labelledBy: shouldRenderLabel ? inputIds.labelId : undefined,
     }),
   );
 
@@ -223,6 +254,7 @@
   });
 
   const handleInput = (event: Event) => {
+    if (effectiveDisabled) return;
     const target = event.currentTarget as HTMLInputElement | HTMLTextAreaElement;
     if (!isControlled) {
       internalValue = target.value;
@@ -231,28 +263,45 @@
   };
 
   const handleChange = (event: Event) => {
+    if (effectiveDisabled) return;
     onChange?.(eventPayload(event.currentTarget as HTMLInputElement | HTMLTextAreaElement));
   };
 
   const handleFocus = (event: FocusEvent) => {
+    if (effectiveDisabled) return;
     onFocus?.(eventPayload(event.currentTarget as HTMLInputElement | HTMLTextAreaElement));
   };
 
   const handleBlur = (event: FocusEvent) => {
+    if (effectiveDisabled) return;
     onBlur?.(eventPayload(event.currentTarget as HTMLInputElement | HTMLTextAreaElement));
   };
 
   const handleClick = (event: MouseEvent) => {
+    if (effectiveDisabled) return;
     onClick?.(eventPayload(event.currentTarget as HTMLInputElement | HTMLTextAreaElement));
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
+    if (effectiveDisabled) return;
     onKeyDown?.({ name, key: event.key, code: event.code, event });
   };
 
+  const handlePaste = (event: ClipboardEvent) => {
+    if (effectiveDisabled) return;
+    onPaste?.(event);
+  };
+
+  const handleTrailingInteractionElementClick = () => {
+    if (effectiveDisabled) return;
+    onTrailingInteractionElementClick?.();
+  };
+
   export function focus(): void {
+    if (effectiveDisabled) return;
     inputEl?.focus();
   }
+  
   export function getInput(): HTMLInputElement | null {
     return inputEl as HTMLInputElement | null;
   }
@@ -266,7 +315,7 @@
 
 <div class={outerClasses} style={outerStyles} {...metaAttrs} {...analyticsAttrs}>
   <div class={fieldClasses}>
-    {#if hasLabel && !hideLabelText}
+    {#if shouldRenderLabel}
       <div
         class={[templateClasses.labelRow, isLabelLeftPositioned ? templateClasses.labelLeft : '']
           .filter(Boolean)
@@ -275,7 +324,7 @@
         <FormLabel
           as="label"
           position={labelPosition}
-          size={size === 'xsmall' ? 'small' : size}
+          size={effectiveSize === 'xsmall' ? 'small' : effectiveSize}
           {necessityIndicator}
           id={inputIds.labelId}
           htmlFor={inputIds.inputId}
@@ -289,96 +338,99 @@
         {/if}
       </div>
     {/if}
-
-    <div class={focusRingClasses}>
-      <div
-        class={wrapperClasses}
-        data-disabled={isDisabled ? '' : undefined}
-      >
-        <BaseInputVisuals
-          visualType="leading"
-          {size}
-          {isDisabled}
-          {leadingIcon}
-          {prefix}
-          {leadingInteractionElement}
-        />
-
-        {#if as === 'textarea'}
-          <textarea
-            bind:this={inputEl}
-            class={inputClasses}
-            id={inputIds.inputId}
-            {name}
-            {placeholder}
-            value={currentValue}
-            disabled={isDisabled || undefined}
-            required={isRequired || undefined}
-            maxlength={maxCharacters}
-            tabindex={tabIndex}
-            autocomplete={domAutoComplete}
-            autocapitalize={keyboardProps.autoCapitalize}
-            enterkeyhint={domEnterKeyHint}
-            inputmode={resolvedInputMode}
-            oninput={handleInput}
-            onchange={handleChange}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            onclick={handleClick}
-            onkeydown={handleKeyDown}
-            onpaste={onPaste}
-            {...a11yAttrs}
-          ></textarea>
-        {:else}
-          <input
-            bind:this={inputEl}
-            class={inputClasses}
-            id={inputIds.inputId}
-            type={getDomType(keyboardProps.type)}
-            {name}
-            {placeholder}
-            value={currentValue}
-            disabled={isDisabled || undefined}
-            required={isRequired || undefined}
-            maxlength={maxCharacters}
-            tabindex={tabIndex}
-            autocomplete={domAutoComplete}
-            autocapitalize={keyboardProps.autoCapitalize}
-            enterkeyhint={domEnterKeyHint}
-            inputmode={resolvedInputMode}
-            oninput={handleInput}
-            onchange={handleChange}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            onclick={handleClick}
-            onkeydown={handleKeyDown}
-            onpaste={onPaste}
-            {...a11yAttrs}
+      <div class={focusRingClasses}>
+        <div
+          class={inputWrapperClasses}
+          data-disabled={effectiveDisabled ? '' : undefined}
+        >
+          <BaseInputVisuals
+            visualType="leading"
+            size={effectiveSize}
+            isDisabled={effectiveDisabled}
+            {leadingIcon}
+            {prefix}
+            {leadingInteractionElement}
           />
-        {/if}
 
-        <BaseInputVisuals
-          visualType="trailing"
-          {size}
-          {isDisabled}
-          {validationState}
-          {trailingInteractionElement}
-          {onTrailingInteractionElementClick}
-          {suffix}
-          {trailingIcon}
-          {trailingButton}
-          {showHintsAsTooltip}
-          {errorText}
-          {successText}
-          {validationTextPlacement}
-          errorTextId={inputIds.errorTextId}
-          successTextId={inputIds.successTextId}
-        />
+          {#if as === 'textarea'}
+            <textarea
+              bind:this={inputEl}
+              class={inputClasses}
+              id={inputIds.inputId}
+              {name}
+              {placeholder}
+              value={currentValue}
+              disabled={effectiveDisabled || undefined}
+              required={isRequired || undefined}
+              readonly={isReadOnly || undefined}
+              spellcheck={spellCheck}
+              maxlength={maxCharacters}
+              tabindex={tabIndex}
+              autocomplete={domAutoComplete}
+              autocapitalize={keyboardProps.autoCapitalize}
+              enterkeyhint={domEnterKeyHint}
+              inputmode={resolvedInputMode}
+              oninput={handleInput}
+              onchange={handleChange}
+              onfocus={handleFocus}
+              onblur={handleBlur}
+              onclick={handleClick}
+              onkeydown={handleKeyDown}
+              onpaste={handlePaste}
+              {...a11yAttrs}
+            ></textarea>
+          {:else}
+            <input
+              bind:this={inputEl}
+              class={inputClasses}
+              id={inputIds.inputId}
+              type={domType}
+              {name}
+              {placeholder}
+              value={currentValue}
+              disabled={effectiveDisabled || undefined}
+              required={isRequired || undefined}
+              readonly={isReadOnly || undefined}
+              spellcheck={spellCheck}
+              maxlength={maxCharacters}
+              tabindex={tabIndex}
+              autocomplete={domAutoComplete}
+              autocapitalize={keyboardProps.autoCapitalize}
+              enterkeyhint={domEnterKeyHint}
+              inputmode={resolvedInputMode}
+              oninput={handleInput}
+              onchange={handleChange}
+              onfocus={handleFocus}
+              onblur={handleBlur}
+              onclick={handleClick}
+              onkeydown={handleKeyDown}
+              onpaste={handlePaste}
+              {...a11yAttrs}
+            />
+          {/if}
+
+          <BaseInputVisuals
+            visualType="trailing"
+            size={effectiveSize}
+            isDisabled={effectiveDisabled}
+            {validationState}
+            {trailingInteractionElement}
+            onTrailingInteractionElementClick={handleTrailingInteractionElementClick}
+            {suffix}
+            {trailingIcon}
+            {trailingButton}
+            {showHintsAsTooltip}
+            {errorText}
+            {successText}
+            {validationTextPlacement}
+            errorTextId={inputIds.errorTextId}
+            successTextId={inputIds.successTextId}
+          />
       </div>
     </div>
   </div>
 
-  {#if showFormHintOutside || trailingFooterSlot}
+  {#if !isInsideInputGroup && (showFormHintOutside || trailingFooterSlot)}
     <div
       class={[
         templateClasses.hintRow,
@@ -393,7 +445,7 @@
       {#if showFormHintOutside}
         <FormHint
           type={hintType}
-          size={size === 'xsmall' ? 'small' : size}
+          size={effectiveSize === 'xsmall' ? 'small' : effectiveSize}
           {helpText}
           {errorText}
           {successText}

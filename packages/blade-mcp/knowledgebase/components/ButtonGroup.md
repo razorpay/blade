@@ -41,6 +41,17 @@ type ButtonGroupProps = {
    * @default 'primary'
    */
   color?: 'primary' | 'white' | 'positive' | 'negative';
+
+  /**
+   * Whether the ButtonGroup takes the full width of its container
+   */
+  isFullWidth?: boolean;
+
+  /**
+   * Disables all buttons in the ButtonGroup
+   * @default false
+   */
+  isDisabled?: boolean;
 } & StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute;

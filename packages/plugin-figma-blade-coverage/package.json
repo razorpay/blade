@@ -2,7 +2,7 @@
   "name": "plugin-figma-blade-coverage",
   "private": "true",
   "author": "kamleshchandnani",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "dependencies": {
     "@create-figma-plugin/ui": "2.5.0",

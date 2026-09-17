@@ -14,7 +14,10 @@ export { ChevronUpDownIcon } from './ChevronUpDownIcon';
 export { HomeIcon } from './HomeIcon';
 export { CloseIcon } from './CloseIcon';
 export { CreditCardIcon } from './CreditCardIcon';
+export { EyeIcon } from './EyeIcon';
+export { EyeOffIcon } from './EyeOffIcon';
 export { InfoIcon } from './InfoIcon';
+export { MinusIcon } from './MinusIcon';
 export { PhoneIcon } from './PhoneIcon';
 export { PlusIcon } from './PlusIcon';
 export { SearchIcon } from './SearchIcon';
@@ -25,10 +28,11 @@ export { BankIcon } from './BankIcon';
 export { LockIcon } from './LockIcon';
 
 // Branded Icons
-export { RTBShieldIcon } from './RTBShieldIcon';
+export { RazorpayTrustIcon } from './RazorpayTrustIcon';
 
 // Filled Icons
 export { MoreFilledIcon } from './MoreFilledIcon';
+export { MoreHorizontalIcon } from './MoreHorizontalIcon';
 
 // Utilities (for internal use or advanced usage)
 export { getIconProps } from './getIconProps';

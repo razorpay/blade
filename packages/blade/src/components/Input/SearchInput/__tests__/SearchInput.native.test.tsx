@@ -279,7 +279,7 @@ describe('<SearchInput />', () => {
 
     expect(input).toHaveProp('keyboardType', 'default');
     expect(input).toHaveProp('returnKeyType', 'search');
-    expect(input).toHaveProp('autoCompleteType', 'off');
+    expect(input).toHaveProp('autoComplete', 'off');
     expect(input).toHaveProp('textContentType', 'none');
   });
 

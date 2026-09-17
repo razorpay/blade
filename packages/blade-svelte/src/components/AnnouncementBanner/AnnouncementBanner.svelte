@@ -6,6 +6,7 @@
     makeAccessible,
     makeAnalyticsAttribute,
     getStyledPropsClasses,
+    cx,
   } from '@razorpay/blade-core/utils';
   import {
     getAnnouncementBannerClasses,
@@ -15,10 +16,13 @@
     announcementBannerIconColorClass,
   } from '@razorpay/blade-core/styles';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
+  import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import type { AnnouncementBannerProps } from './types';
 
-  // Prevent tree-shaking of CSS classes used only in templates
   void getAnnouncementBannerTemplateClasses();
+
+  const themeContextGetter = getBladeThemeContextGetter();
 
   let {
     children,
@@ -26,8 +30,13 @@
     icon: Icon,
     accessibilityLabel = 'Announcement',
     testID,
+    styleOverride,
     ...rest
   }: AnnouncementBannerProps = $props();
+
+  const resolvedStyleOverride = $derived(
+    resolveComponentStyleOverride('AnnouncementBanner', styleOverride, themeContextGetter),
+  );
 
   // Check if children is a string or a snippet
   const isStringChildren = $derived(typeof children === 'string');
@@ -39,7 +48,7 @@
   const bannerClasses = $derived(getAnnouncementBannerClasses({ alignment }));
   const styledProps = $derived(getStyledPropsClasses(rest));
   const combinedClasses = $derived(
-    [bannerClasses, ...(styledProps.classes || [])].filter(Boolean).join(' '),
+    cx(bannerClasses, ...(styledProps.classes || []), resolvedStyleOverride?.root),
   );
 
   // Meta attributes
@@ -54,6 +63,13 @@
 
   // Analytics attributes
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
+
+  const textClassName = $derived(
+    cx(
+      resolvedStyleOverride?.text ? undefined : announcementBannerTextColorClass,
+      resolvedStyleOverride?.text,
+    ),
+  );
 </script>
 
 <div
@@ -63,13 +79,21 @@
   {...analyticsAttrs}
 >
   {#if Icon}
-    <div class="{announcementBannerIconWrapperClass} {announcementBannerIconColorClass}" aria-hidden="true">
+    <div
+      class={cx(
+        announcementBannerIconWrapperClass,
+        announcementBannerIconColorClass,
+        resolvedStyleOverride?.icon,
+      )}
+      aria-hidden="true"
+    >
       <Icon size="small" color="currentColor" />
     </div>
   {/if}
   <BaseText
     as="span"
-    className={announcementBannerTextColorClass}
+    className={textClassName}
+    color={resolvedStyleOverride?.text ? 'currentColor' : undefined}
     fontSize={75}
     lineHeight={75}
     fontFamily="text"

@@ -5,6 +5,7 @@ import type {
 } from '@razorpay/blade-core/utils';
 import type { IconComponent } from '../../../Icons/iconMap';
 import type { IconButtonEmphasis, IconButtonSize } from '../types';
+import type { StyleOverride, IconButtonSlot } from '@razorpay/blade-core/styles';
 
 export interface BaseIconButtonProps extends StyledPropsBlade, DataAnalyticsAttribute {
   /**
@@ -70,4 +71,5 @@ export interface BaseIconButtonProps extends StyledPropsBlade, DataAnalyticsAttr
    * Test id that can be used to select the element in testing environments.
    */
   testID?: string;
+  styleOverride?: StyleOverride<IconButtonSlot>;
 }

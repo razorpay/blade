@@ -3,7 +3,7 @@ import type { StoryFn, Meta } from '@storybook/react-vite';
 import { Title, Description } from '@storybook/addon-docs/blocks';
 import iconMap from './iconMap';
 import PlusIcon from './PlusIcon';
-import RTBShieldIcon from './RTBShieldIcon';
+import RazorpayTrustIcon from './RazorpayTrustIcon';
 import type { IconProps } from '.';
 import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -190,7 +190,7 @@ export const StrokedIcons: StoryFn<ComponentType<IconProps>> = ({ ...args }) => 
  * They are not part of the generic `iconMap` icon picker.
  */
 export const BrandedIcons: StoryFn<ComponentType<IconProps>> = ({ color, ...args }) => {
-  const brandedIcons = { RTBShieldIcon };
+  const brandedIcons = { RazorpayTrustIcon };
 
   return (
     <BaseBox>

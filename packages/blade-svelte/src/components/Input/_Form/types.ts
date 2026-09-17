@@ -10,6 +10,8 @@ export interface FormLabelProps {
   position?: FormLabelPosition;
   /** Necessity indicator shown after the label text. */
   necessityIndicator?: NecessityIndicator;
+  /** Extra classnames merged onto the label element. */
+  className?: string;
   /** Label text (string) or a snippet. */
   children: Snippet | string | undefined;
   /** Id of the label element (for `aria-labelledby`). */
@@ -41,6 +43,8 @@ export interface FormHintProps {
   successTextId?: string;
   /** Hint size. @default 'medium' */
   size?: FormSize;
+  /** Extra classnames merged onto the hint container. */
+  className?: string;
 }
 
 export interface CharacterCounterProps {

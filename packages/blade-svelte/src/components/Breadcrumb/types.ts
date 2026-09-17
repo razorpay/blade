@@ -4,6 +4,7 @@ import type { IconProps } from '../Icons/types';
 
 export type BreadcrumbSize = 'small' | 'medium' | 'large';
 export type BreadcrumbColor = 'neutral' | 'primary' | 'white';
+export type BreadcrumbVariant = 'default' | 'stepper';
 
 export interface BreadcrumbProps extends StyledPropsBlade {
   /**
@@ -22,6 +23,15 @@ export interface BreadcrumbProps extends StyledPropsBlade {
    * @default 'primary'
    */
   color?: BreadcrumbColor;
+
+  /**
+   * Visual variant of the Breadcrumb.
+   * - `default`: text links separated by a `/`.
+   * - `stepper`: progress steps where the current page is a filled pill and
+   *   items are separated by a chevron icon.
+   * @default 'default'
+   */
+  variant?: BreadcrumbVariant;
 
   /**
    * Whether to show the last separator.
@@ -86,4 +96,5 @@ export interface BreadcrumbItemProps {
 export type BreadcrumbContextValue = {
   size: BreadcrumbSize;
   color: BreadcrumbColor;
+  variant: BreadcrumbVariant;
 };

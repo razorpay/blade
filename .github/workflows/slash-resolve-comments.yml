@@ -12,15 +12,10 @@ concurrency:
 jobs:
   resolve-comments:
     name: Resolve PR review comments via Slash
-    # Skip reviews from bots to prevent feedback loops, except rzp-slash-public
-    # whose high-confidence (>=8) comments should be auto-resolved.
+    # Allow human reviewers and rzp-slash-public[bot] reviews through; exclude
+    # all other bots to prevent feedback loops and avoid wasted CI runs.
     if: |
-      github.actor != 'github-actions[bot]' &&
-      github.actor != 'rzp-slash' &&
-      github.actor != 'rzp-slash[bot]' &&
-      github.actor != 'rzp-slash-public' &&
-      github.actor != 'rzp-slash-reviewer' &&
-      github.actor != 'rzp-slash-reviewer[bot]'
+      github.event.review.user.type != 'Bot' || github.actor == 'rzp-slash-public[bot]'
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout repository
@@ -44,6 +39,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          REVIEW_ID: ${{ github.event.review.id }}
           GITHUB_WORKFLOW_REF: ${{ github.workflow_ref }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: node .github/scripts/slash-resolve-comments/check-resolve-run-count.js

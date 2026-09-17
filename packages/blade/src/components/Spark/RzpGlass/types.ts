@@ -132,6 +132,12 @@ type RzpGlassEffectToggles = {
 type RzpGlassLightConfig = {
   /** Strength of light sweep effect (default: 0.2) */
   lightIntensity?: number;
+  /**
+   * Tint applied to the center element's specular highlight as RGB [0-1, 0-1, 0-1].
+   * The highlight is white by default; use [0, 0, 0] to suppress it entirely on dark backgrounds.
+   * (default: [1, 1, 1])
+   */
+  specularTint?: [number, number, number];
   /** Frame when light effect starts (default: 140) */
   lightStartFrame?: number;
 };

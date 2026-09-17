@@ -71,7 +71,7 @@ const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
           trailing={<Button icon={DownloadIcon} />}
         />
         <DrawerBody>
-          <Box display="flex" alignItems="center">
+          <Box display="flex" flexDirection="row" alignItems="center">
             <Heading>Starters{"'"} CFP Private Limited </Heading>
             <Badge size="small" color="primary" marginLeft="spacing.3">
               Vendor
@@ -86,11 +86,15 @@ const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
               placeholder="Enter your phone number"
             />
           </Box>
-          <Box>
-            <Button>Payout</Button>{' '}
-            <Button marginLeft="spacing.2" variant="secondary">
-              Invite Vendor
-            </Button>
+          <Box display="flex" flexDirection="row" gap="spacing.5" width="100%">
+            <Box flex={1}>
+              <Button isFullWidth>Payout</Button>
+            </Box>
+            <Box flex={1}>
+              <Button variant="secondary" isFullWidth>
+                Invite Vendor
+              </Button>
+            </Box>
           </Box>
         </DrawerBody>
       </Drawer>
@@ -119,7 +123,7 @@ export const DrawerStacking = (args: DrawerProps): React.ReactElement => {
           trailing={<Button icon={DownloadIcon} />}
         />
         <DrawerBody>
-          <Box display="flex" alignItems="center">
+          <Box display="flex" flexDirection="row" alignItems="center">
             <Heading>Starters{"'"} CFP Private Limited </Heading>
             <Badge size="small" color="primary" marginLeft="spacing.3">
               Vendor
@@ -200,7 +204,7 @@ export const InitialFocus = (args: DrawerProps): React.ReactElement => {
           trailing={<Button icon={DownloadIcon} />}
         />
         <DrawerBody>
-          <Box display="flex" alignItems="center">
+          <Box display="flex" flexDirection="row" alignItems="center">
             <Heading>Starters{"'"} CFP Private Limited </Heading>
             <Badge size="small" color="primary" marginLeft="spacing.3">
               Vendor
@@ -215,11 +219,17 @@ export const InitialFocus = (args: DrawerProps): React.ReactElement => {
               placeholder="Enter your phone number"
             />
           </Box>
-          <Box>
-            <Button ref={drawerInitialFocusRef}>Payout</Button>{' '}
-            <Button marginLeft="spacing.2" variant="secondary">
-              Invite Vendor
-            </Button>
+          <Box display="flex" flexDirection="row" gap="spacing.5" width="100%">
+            <Box flex={1}>
+              <Button ref={drawerInitialFocusRef} isFullWidth>
+                Payout
+              </Button>
+            </Box>
+            <Box flex={1}>
+              <Button variant="secondary" isFullWidth>
+                Invite Vendor
+              </Button>
+            </Box>
           </Box>
         </DrawerBody>
       </Drawer>
@@ -260,7 +270,13 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
               suffix="decimals"
             />
           </Box>
-          <Box display="flex" justifyContent="center" gap="spacing.4" marginTop="spacing.4">
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            gap="spacing.4"
+            marginTop="spacing.4"
+          >
             <Badge icon={CheckIcon} size="medium" color="positive" emphasis="intense">
               Captured
             </Badge>
@@ -280,14 +296,20 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
               </Text>
             </Text>
           </Box>
-          <Box marginTop="spacing.4" textAlign="center">
-            <Text size="small" weight="medium" color="surface.text.gray.muted">
+          <Box
+            marginTop="spacing.4"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            textAlign="center"
+          >
+            <Text size="small" weight="medium" color="surface.text.gray.muted" textAlign="center">
               Created on Jan 11, 2025
             </Text>
           </Box>
         </DrawerHeader>
         <DrawerBody>
-          <Box display="flex" alignItems="center">
+          <Box display="flex" flexDirection="row" alignItems="center">
             <Heading>Starters{"'"} CFP Private Limited </Heading>
             <Badge size="small" color="primary" marginLeft="spacing.3">
               Vendor
@@ -305,13 +327,17 @@ export const WithCustomHeader = (args: DrawerProps): React.ReactElement => {
         </DrawerBody>
 
         <DrawerFooter>
-          <Box display="flex" gap="spacing.5">
-            <Button variant="secondary" isFullWidth>
-              Payout
-            </Button>
-            <Button variant="primary" isFullWidth>
-              Invite Vendor
-            </Button>
+          <Box display="flex" flexDirection="row" gap="spacing.5" width="100%">
+            <Box flex={1}>
+              <Button variant="secondary" isFullWidth>
+                Payout
+              </Button>
+            </Box>
+            <Box flex={1}>
+              <Button variant="primary" isFullWidth>
+                Invite Vendor
+              </Button>
+            </Box>
           </Box>
         </DrawerFooter>
       </Drawer>
@@ -373,7 +399,7 @@ export const WithFooter = (args: DrawerProps): React.ReactElement => {
             <Heading size="medium" marginBottom="spacing.4">
               Personal Information
             </Heading>
-            <Box display="flex" alignItems="center" marginBottom="spacing.6">
+            <Box display="flex" flexDirection="row" alignItems="center" marginBottom="spacing.6">
               <Heading>John Doe</Heading>
               <Badge size="small" color="primary" marginLeft="spacing.3">
                 Individual
@@ -566,13 +592,17 @@ export const WithFooter = (args: DrawerProps): React.ReactElement => {
 
         {showFooter && (
           <DrawerFooter>
-            <Box display="flex" gap="spacing.5">
-              <Button variant="secondary" isFullWidth onClick={() => setIsDrawerOpen(false)}>
-                Cancel Setup
-              </Button>
-              <Button variant="primary" isFullWidth>
-                Complete Setup
-              </Button>
+            <Box display="flex" flexDirection="row" gap="spacing.5" width="100%">
+              <Box flex={1}>
+                <Button variant="secondary" isFullWidth onClick={() => setIsDrawerOpen(false)}>
+                  Cancel Setup
+                </Button>
+              </Box>
+              <Box flex={1}>
+                <Button variant="primary" isFullWidth>
+                  Complete Setup
+                </Button>
+              </Box>
             </Box>
           </DrawerFooter>
         )}

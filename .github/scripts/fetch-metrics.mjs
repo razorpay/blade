@@ -13,7 +13,7 @@ import { execSync } from "child_process";
 const REPO = "razorpay/blade";
 const AGENT_AUTHORS = new Set(["rzp-slash", "rzp-slash-public"]);
 const AGENT_REVIEWERS = new Set(["rzp-slash", "rzp-slash-public", "rzp-slash-reviewer"]);
-const BOT_COMMENTERS = new Set(["changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]", "cursor[bot]", "rzpcibot"]);
+const BOT_COMMENTERS = new Set(["changeset-bot[bot]", "github-actions[bot]", "codesandbox-ci[bot]", "cursor[bot]", "rzpcibot", "kamaleshs-bridge4", "slash-code-reviewer[bot]"]);
 const AUTO_APPROVE_LABEL = "✨ Agentic Merge Ready ✨";
 const IGNORE_LABEL = "Ignore - Test PR";
 
@@ -61,9 +61,11 @@ for (const pr of prs) {
 
   for (const c of [...reviewComments, ...issueComments]) {
     const user = c.user.login;
-    if (BOT_COMMENTERS.has(user) || user.endsWith("[bot]") || user.startsWith("app/")) continue;
+    const normalizedUser = user.replace("app/", "").replace("[bot]", "");
+    const isAgentCommenter = AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(normalizedUser);
+    if (!isAgentCommenter && (BOT_COMMENTERS.has(user) || user.endsWith("[bot]") || user.startsWith("app/"))) continue;
     totalComments++;
-    if (AGENT_REVIEWERS.has(user) || AGENT_REVIEWERS.has(user.replace("app/", "").replace("[bot]", ""))) {
+    if (isAgentCommenter) {
       agentComments++;
     }
     if (c.body.toLowerCase().includes("resolved by agent")) {
@@ -126,7 +128,7 @@ const report = `> Agentic Blade Metrics — ${sinceLabel} to ${todayLabel} (${da
 
 ### Review Metric
 
-Note: excludes all comments by \`changeset-bot\`, \`github-actions\`, \`codesandbox-ci\` bots
+Note: excludes all comments by \`changeset-bot\`, \`github-actions\`, \`codesandbox-ci\`, \`kamaleshs-bridge4\`, and \`slash-code-reviewer\` bots
 
 | Metric                                      | Value | Description of Metric                                                         |
 | ------------------------------------------- | ----- | ----------------------------------------------------------------------------- |

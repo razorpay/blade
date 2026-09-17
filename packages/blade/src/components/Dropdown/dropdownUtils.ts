@@ -14,6 +14,8 @@ import type { SpacingValueType } from '~components/Box/BaseBox';
 export type SelectActionsType =
   | 'Close'
   | 'CloseSelect'
+  | 'Expand'
+  | 'Collapse'
   | 'First'
   | 'Last'
   | 'Next'
@@ -28,6 +30,9 @@ export type SelectActionsType =
 const SelectActions: Record<SelectActionsType, SelectActionsType> = {
   Close: 'Close',
   CloseSelect: 'CloseSelect',
+  // Expand / Collapse are only acted upon when overlay content is a TreeView (see performAction)
+  Expand: 'Expand',
+  Collapse: 'Collapse',
   First: 'First',
   Last: 'Last',
   Next: 'Next',
@@ -104,6 +109,11 @@ export function getActionFromKey(
       return SelectActions.Next;
     } else if (key === 'ArrowUp') {
       return SelectActions.Previous;
+    } else if (key === 'ArrowRight' && !altKey) {
+      // acted upon only when overlay content is a TreeView (no-op otherwise, see performAction)
+      return SelectActions.Expand;
+    } else if (key === 'ArrowLeft' && !altKey) {
+      return SelectActions.Collapse;
     } else if (key === 'PageUp') {
       return SelectActions.PageUp;
     } else if (key === 'PageDown') {
@@ -222,9 +232,15 @@ export function isScrollable(element: HTMLElement): boolean {
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
   close: DropdownContextType['close'];
-  selectCurrentOption: () => void;
+  selectCurrentOption: (event?: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => void;
   onOptionChange: (action: SelectActionsType) => void;
   onComboType: (letter: string, action: SelectActionsType) => void;
+  /**
+   * Present only when overlay content is a TreeView. When absent, Expand / Collapse
+   * actions are ignored without preventing default (ArrowLeft / ArrowRight keep their
+   * existing behaviour for ActionList, AutoComplete, and other content)
+   */
+  onTreeExpandCollapse?: (action: SelectActionsType) => void;
 };
 /**
  * Performs the action when actionType is passed
@@ -255,8 +271,16 @@ export const performAction = (
       return true;
     case SelectActions.CloseSelect:
       event.preventDefault();
-      actions.selectCurrentOption();
+      actions.selectCurrentOption(event);
       return true;
+    case SelectActions.Expand:
+    case SelectActions.Collapse:
+      if (actions.onTreeExpandCollapse) {
+        event.preventDefault();
+        actions.onTreeExpandCollapse(action);
+        return true;
+      }
+      return false;
     case SelectActions.Close:
       event.preventDefault();
       actions.close();
@@ -323,8 +347,22 @@ export const makeInputValue = (selectedIndices: number[], options: OptionsType):
 
 /**
  * Value that is displayed inside the select field
+ *
+ * `displayOverride` is published by TreeView (D5: smallest describing set - a fully
+ * selected branch counts as 1). Absent for every other overlay content
  */
-export const makeInputDisplayValue = (selectedIndices: number[], options: OptionsType): string => {
+export const makeInputDisplayValue = (
+  selectedIndices: number[],
+  options: OptionsType,
+  displayOverride?: { label: string; count: number },
+): string => {
+  if (displayOverride && selectedIndices.length > 0) {
+    if (displayOverride.count === 1) {
+      return displayOverride.label;
+    }
+    return `${displayOverride.count} items selected`;
+  }
+
   // When no item is selected or no item is present
   if (options.length === 0 || selectedIndices.length === 0) {
     return '';

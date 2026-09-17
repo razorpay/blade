@@ -14,7 +14,21 @@ BottomNav is a persistent navigation component designed for mobile interfaces, p
 
 The following types represent the props that the BottomNav component and its subcomponents accept. These types allow you to properly configure the navigation according to your app's structure.
 
-````typescript
+```typescript
+/**
+ * Blade icon component, for example `CheckIcon` from `@razorpay/blade/components`
+ */
+type IconComponent = React.ComponentType<any>;
+
+/**
+ * Subset of Blade LinkProps used in this doc
+ */
+type LinkProps = {
+  href?: string;
+  target?: string;
+  rel?: string;
+};
+
 /**
  * Props for the BottomNav component
  */
@@ -30,6 +44,12 @@ type BottomNavProps = {
    * @default 100
    */
   zIndex?: number;
+
+  /**
+   * Accessible label for the BottomNav navigation landmark.
+   * Maps to `aria-label` on web and `accessibilityLabel` on native.
+   */
+  accessibilityLabel?: string;
 } & StyledPropsBlade &
   TestID &
   DataAnalyticsAttribute;
@@ -55,26 +75,24 @@ type BottomNavItemProps = {
    *
    * maps to `to` property when react router is being used
    */
-  href?: string;
+  href?: LinkProps['href'];
 
   /**
    * HTML's `target` attribute for anchor links
    */
-  target?: string;
+  target?: LinkProps['target'];
 
   /**
    * HTML's `rel` tag of anchor links
    */
-  rel?: string;
+  rel?: LinkProps['rel'];
 
   /**
    * as prop to pass ReactRouter's Link component.
    *
-   * ```jsx
    * import { NavLink } from 'react-router-dom';
    *
    * <BottomNavItem as={NavLink} />
-   * ```
    */
   as?: React.ComponentType<any>;
 
@@ -91,7 +109,7 @@ type BottomNavItemProps = {
   onClick?: React.MouseEventHandler;
 } & TestID &
   DataAnalyticsAttribute;
-````
+```
 
 ## Usage Guidelines
 

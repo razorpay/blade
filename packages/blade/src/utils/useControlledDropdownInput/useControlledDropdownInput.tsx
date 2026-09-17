@@ -30,6 +30,7 @@ const useControlledDropdownInput = (props: useControlledDropdownInputProps): voi
     setSelectedIndices,
     selectionType,
     setIsControlled,
+    treeViewControllerRef,
   } = useDropdown();
 
   const getValuesArrayFromIndices = (): string[] => {
@@ -101,9 +102,14 @@ const useControlledDropdownInput = (props: useControlledDropdownInputProps): voi
     // Ignore calling onChange on mount
 
     if (!isFirstRender) {
+      // §6.5: additive - only present when the Dropdown overlay content is a TreeView
+      const selectedGroups = treeViewControllerRef.current?.getSelectedGroups(
+        isControlled ? controlledValueIndices : selectedIndices,
+      );
       props.onChange?.({
         name: props.name,
         values: getValuesArrayFromIndices(),
+        ...(selectedGroups ? { selectedGroups } : {}),
       });
       if (isBrowser()) {
         fireNativeEvent(props.triggererRef, ['change', 'input']);

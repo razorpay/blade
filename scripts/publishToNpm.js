@@ -23,10 +23,15 @@ const publishedPackages = JSON.parse(process.env.PUBLISHED_PACKAGES || '[]');
 const MONOREPO_ROOT = path.join(__dirname, '..');
 const NPMRC_PATH = path.join(MONOREPO_ROOT, '.npmrc');
 
-// With OIDC trusted publishers, npm CLI handles auth automatically via the OIDC token exchange.
-// We only need to point the @razorpay scope at the npm registry; adding auth lines here would
-// overwrite the OIDC-managed .npmrc that setup-node generates and break authentication.
-const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/\n`;
+// Point the @razorpay scope at the npm registry. If NODE_AUTH_TOKEN is available
+// (set by setup-node), include it so npm can authenticate for packages that are
+// not yet configured as OIDC trusted publishers on npmjs.com. This is required
+// for first-time publishes of new scoped packages where OIDC trust hasn't been
+// established yet — without the token, npm returns E404.
+let npmRcContent = `@razorpay:registry=https://registry.npmjs.org/\n`;
+if (process.env.NODE_AUTH_TOKEN) {
+  npmRcContent += `//registry.npmjs.org/:_authToken=${process.env.NODE_AUTH_TOKEN}\n`;
+}
 
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
 

@@ -24,20 +24,17 @@ export const bladeThemeData = {
     Collapsible: {
       key: '0b6944a8171a763631f1aa2cca713c77dd701d89',
     },
-    'Base - General Header': {
-      key: 'e89509441f6c5b8e0534bf1e564c98da4b06f33b',
-    },
-    'Base - General Footer': {
-      key: 'dee5f492eaded2a6ad9f76e7be37283cf7e309af',
-    },
     'Bottom Sheet': {
       key: '18c8adc53a8c9c098e19259036c5ddec47debda4',
     },
     'BottomSheet/Header': {
-      key: '03fa4ffc23c92fdf4b0afa2b3d4977d8e0d01323',
+      key: 'a8085b91400c64116dc73f295da5e26112a1d834',
     },
     'BottomSheet/Footer': {
-      key: '4e64f322c247894978e7056349d624da9521cf8f',
+      key: '228cd26488c500bea2d553f3c35b6a4fde540587',
+    },
+    'BottomSheet/Trailing Item': {
+      key: 'a276433c6abf9f5c2d00752e22b5aa170847b422',
     },
     'Bottomsheet Head - Grab handle container': {
       key: 'e6fac352ee79b6e97e2a15c221ec2ca325e20cb3',
@@ -109,7 +106,7 @@ export const bladeThemeData = {
       key: 'f3433ad2b96c72a9b4d3b07b9d0547328c3f6685',
     },
     'Menu/Header': {
-      key: 'e70bd033f0fb628e411f017734b266594063c47a',
+      key: 'e6d9c1d8cbf5225d70697ccbfe0e2081d056d160',
     },
     'Menu/Footer': {
       key: 'e70bd033f0fb628e411f017734b266594063c47a',
@@ -138,13 +135,6 @@ export const bladeThemeData = {
       key: '06cc9d71153af14dc0ec0cb22835596420fa7c93',
     },
 
-    'Icon Size': {
-      key: '06edcdaff550d4c96534c6d95f968e0e4b3eb224',
-    },
-    // @TODO: remove this once replaced on Theme files on Figma
-    'Icon Size Base': {
-      key: 'f97da62257fb94b1bfcfc3f0fb81ef77ac65276d',
-    },
     List: {
       key: '49cd227b1c67f7c13d432eadd4adbd59d2c93572',
     },
@@ -158,7 +148,7 @@ export const bladeThemeData = {
       key: '31d361e94dab38b029f523b38a4a3fab392b50ff',
     },
     'Modal/Header': {
-      key: '3fecf97b5a2e238c23a4791cc22990f6ffba3416',
+      key: '5951813bf8d86d9ad4c71b6d72302c698328a361',
     },
     'Modal/Footer': {
       key: '3a215359b6cbc947ed0da9d615147e5df1b165d6',
@@ -205,8 +195,8 @@ export const bladeThemeData = {
     Spacer: {
       key: '32fe4cbbe78df114379f99b331eb210b8f481a68',
     },
-    'Skeleton Block': {
-      key: '3e815961f46f78feeff6ae13847a6740028d17f8',
+    'Skeleton Loader': {
+      key: 'de481c2d0b36c1ce88f9ced5f96a577f65625672',
     },
     Spinner: {
       key: '8f7acd11dfa05673822adbeb67ab0672e7f7f07f',
@@ -230,7 +220,7 @@ export const bladeThemeData = {
       key: '57a321084e8ce1899b8233e9493ed949e0a94a4e',
     },
     'Popover/Footer': {
-      key: 'a63e1855eaaae27bf7cd60efe0aa7475dee14158',
+      key: '1c3600aa8b285ea9c85402c780a5f9796449e1c9',
     },
     'Popover/Arrow': {
       key: '6dc8d1344154858c847cb35b4524e153c4fd24d5',
@@ -354,7 +344,13 @@ export const bladeThemeData = {
       key: '22144313b38fb21ad10e7b38272e770a6835e811',
     },
     'Table Header-Row': {
-      key: '79811d1c737a253f18b7ee5d601b6f38507e2712',
+      key: '04fdd3dfb59709dd9941c20cb354e3568510b2ef',
+    },
+    'Table - Row Details': {
+      key: '58c741f2b15424afbd6003f6ef369d7ee975696e',
+    },
+    'Table - Row Group Header': {
+      key: 'f724f89a246141e1e9b43ed5d3c2a3ba523d8be2',
     },
     Pagination: {
       key: '28bda99a354011886eafe8fab61bfea9bf0614de',
@@ -394,7 +390,7 @@ export const bladeThemeData = {
       key: '63c71b476460be6a4ccfdc6fc4a659566d46523d',
     },
     'Spotlight Popover/Arrow': {
-      key: '3991460bbbe1d0fb22fd45ed8672350a8be592aa',
+      key: '6b8134c65995305953fb9e48367d3864eac18d9d',
     },
 
     // SideNav
@@ -458,11 +454,327 @@ export const bladeThemeData = {
       key: '0f3efaf43d4b967430312b6341cdca3694741176',
     },
 
-    'Dashboard / Sidebar': {
-      key: '938574fa23373c6a9a9a75eb19c2224ad40ff238',
-    },
     'Wordmarks-Logos': {
       key: 'e792328de5953d34fcbb749c3569fb46061dad6a',
+    },
+
+    // Slots
+    Slot: {
+      key: 'c47fb571501ea41dce61317c79c5af84d7f493ec',
+    },
+    'Slot Block': {
+      key: '267b82dda139532d77ab49fb55e343d3b18b3ba5',
+    },
+
+    // Cards
+    'Metric Card': {
+      key: 'f6e18bd350b470912819988d694f96ebe1c42f94',
+    },
+    '_MetricCard/Header': {
+      key: '54b34b6cd11fa52c63a48f947d8f980a807181e4',
+    },
+    '_Metric Card/Body': {
+      key: 'c32f6c04e5ea1b5b35b2a135873e5da0641dd3a3',
+    },
+    '_Metric Card/Value Item': {
+      key: '37f445e0d8b78d477f9684b550602652758bc728',
+    },
+    '_Metric Card/Trend Status': {
+      key: '09a5dc96c0e297d72b3778627231ab588d6d4f32',
+    },
+    '_Metric Card/ Leading Item': {
+      key: '95d5454ecf1d4934649236c49fa6e0b4bdb9d186',
+    },
+    'Info Card': {
+      key: '86165243b9d5295147b80efc7d02379456545b3f',
+    },
+    'Ticket Card': {
+      key: 'ebd5f0274826d57ceed42975866b6ec497f179b4',
+    },
+    '_Card Leading Item': {
+      key: 'a55f255d163294520a76c371c585d8cc354c9cd1',
+    },
+    '_Card Trailing Item': {
+      key: 'cdb4e258fbac424f4113477c7ce3dcec388c8505',
+    },
+
+    // Info Group
+    InfoGroup: {
+      key: '201acec6181a942e58effc34b6f014f8a482798c',
+    },
+    'Info Item': {
+      key: 'bb3a530cb6bdcf57f6ec38ddfc60bf01e2b7cf6a',
+    },
+    '_Info Key': {
+      key: '42327d828bc1d8d3efa2ad9cbcb9e092b91ee806',
+    },
+    '_Info Value': {
+      key: 'fbb29d5960e692f079a4c93c84ad6c3be8846ee1',
+    },
+    '_Info Item Leading': {
+      key: '88de6660f63cc44152ac180f132262c0503d7878',
+    },
+    '_Info Item Trailing': {
+      key: '62e980955561c289938bc649075fe6a2a2d29f43',
+    },
+    '_Info Item Footer': {
+      key: 'fff9148728e6268e9ef76e72b478f9c61a04209d',
+    },
+    // typo in the Figma layer name is intentional, do not "fix" it
+    '_Info Item Hiighlight Strip': {
+      key: '274d06833fca5c0869bc63f48c618e6b14a55e02',
+    },
+
+    // Dropdown
+    Dropdown: {
+      key: '301e099f941f2b4a4c1475779e72659d7caabd4d',
+    },
+    '_Dropdown Header': {
+      key: '01aac58331f6078107e28ea88e3bfe815c47246e',
+    },
+    '_Dropdown Leading Item': {
+      key: '3461a8e58737ff915286e17e7d4f4d973d9c41ca',
+    },
+    '_Dropdown/ Trailing Item': {
+      key: 'd86c1644d47d6805d37a689520ced99daaf14424',
+    },
+    '_Dropdown Menu/ Footer': {
+      key: 'df021e6dd5317696e6b36f6656528025b91ca3eb',
+    },
+    '_Dropdown / Search Input': {
+      key: 'a529e0f9668241ebf633edae08d364eee80432a2',
+    },
+
+    // Action List
+    '_Action List Item': {
+      key: 'e1149a23d6f22bb7b10ebfcdbe0c8d1d09e47257',
+    },
+    '_Action List Item Leading Item': {
+      key: '561ac8985167ee88c9a0291c163815b46d667e9d',
+    },
+    '_Action List Item Trailing Item': {
+      key: 'be974db399a993cf8b84bb0f3525f8f1f08af74f',
+    },
+    '_Action List Item Badge Group': {
+      key: 'a3d45b24bff353572c46d81e795323f7af5ffcf2',
+    },
+
+    // TreeView
+    TreeViewList: {
+      key: 'a7ff7ba72b634708091ef792c12f91b0287e20ca',
+    },
+    TreeViewItem: {
+      key: 'a5504288756879f6c997259156ea0a9cc975402c',
+    },
+    'TreeViewItem/LoadMore': {
+      key: 'c150e2d7fb0be7887fa7d500da335ae1ae8373b3',
+    },
+    'TreeViewItem/Collapsible': {
+      key: '486eaae2df4d04fa33b1cbe202a701d89330a6f6',
+    },
+    'TreeViewItem/LeadingItem': {
+      key: 'c64d98e15d2c0501760017df58e06bf258e42f93',
+    },
+    'TreeViewItem/TrailingItem': {
+      key: 'a3317ef79883c87451764ea5da587d6015fd11e3',
+    },
+
+    // Modal internals
+    '_Modal Leading Item': {
+      key: '03dacb7e6b7b89b759059fe57d0ad41039a99812',
+    },
+    '_Modal Trailing Item': {
+      key: '4ba364b89d2b095a6a230b67ffcebb0da7ccba83',
+    },
+    '_bg-gradient': {
+      key: 'e0d4a7e8b113f47e8ac009f269f865b04e2fc829',
+    },
+    _ContentOverlay: {
+      key: '99286d720aabef7450631c11f653f09a16183a15',
+    },
+
+    // Drawer internals
+    '_Drawer Footer': {
+      key: '33abc0dbbc3b04fc3f08cf24548dae7d482ac0a8',
+    },
+    '_Drawer Meta Trailing': {
+      key: '1ea6f435c54a3abc62aa12dbba4913b2fee1b9b8',
+    },
+
+    // Tabs
+    '_Tabs/ Tab Item': {
+      key: '92ad32e6dd60ea9bdf1bf140ea0e519a29fb65f0',
+    },
+    '_Tabs Leading Item': {
+      key: 'ab12d20fc8ff2ae2a15fd5649de1e8b65c41290c',
+    },
+    '_Tabs Trailing Item': {
+      key: '1848daa081d70c8ba5aa7268696dad6cfff45ee7',
+    },
+
+    // Pagination
+    '_Pagination Page-Number-Base': {
+      key: 'e2d88a9792712513f9da031253c7b223b93f5a98',
+    },
+    '_Pagination Navigation-Base': {
+      key: '365cf9e01ba4c7e906b8d5eae781d1848ab223e7',
+    },
+    '_Pagination Ellipse-Base': {
+      key: '649c235f6fdafed5b4e908283a4fd5ebcc885a65',
+    },
+
+    // Step Group internals
+    '_Step Label Group': {
+      key: '5347dfd11707a1afb37bfa8e8664ea587ef4f63d',
+    },
+    _Branch: {
+      key: 'd4479afbb639cfe3cbc9d89d11fec362ca79aa87',
+    },
+    // Figma layer name has a trailing space: "_Trailing "
+    '_Step Trailing': {
+      key: '74ed744b51effc5d874c749bc5e88f4be721716e',
+    },
+
+    // Form Group
+    '_Form Group Header': {
+      key: '06c359dddf889d8befc20eae4d20f2b229366956',
+    },
+    '_FormGroup-Footer': {
+      key: 'beda4e6539896589dd758cd89bbfd1b8c6ba8dec',
+    },
+
+    // Carousel internals
+    '_Carousel Indicators': {
+      key: 'd25d7b9124d04542eb06613ee88a7ae5470c8174',
+    },
+    '_Carousel Navigation Button': {
+      key: 'f09c04572584d6142bcc0000787a615c0aae93b5',
+    },
+
+    // Accordion / Collapsible internals
+    '_Accordion/TitleSuffix': {
+      key: '83d01bb7172cfc0e87a9aa8b0930bed58498e045',
+    },
+    '_collapsible-trigger': {
+      key: '8b62d9ea6ab352fb655ae079f4bbf12ce21f83f3',
+    },
+
+    // Top Navigation internals
+    '_Top Navigation / Bar': {
+      key: 'b714803280a01efab51e3e6686094834568b7740',
+    },
+    '_Top Navigation / Tab Item': {
+      key: '3205630f37ec72d0c71a9760cdb99521bacbbc3a',
+    },
+    '_Top Navigation / Tab Item Group': {
+      key: '9bc47e8b7d1cfcccd21e680341ca941a676e2e02',
+    },
+    '_Top Navigation/ Nav Action': {
+      key: 'c1eb57a062767f1b3c1f7e3cec76297332407aa4',
+    },
+    '_Top Navigation/ Mask group': {
+      key: 'c659dbf1aab25fc7f4349b3d8befc7f7caeb59b3',
+    },
+    '_Side Nav Tooltip': {
+      key: '55710d31ef470494ebc7ac0ffe1a3b9439664410',
+    },
+    '_Tooltip/arrow': {
+      key: '5b560a1b615041593d0b0557856c9f4cabdb3021',
+    },
+
+    // Navigation & layout
+    'App Bar': {
+      key: 'c00dd574dd2e0f206e2ca8056ddfb056ad5d447d',
+    },
+    'Bottom Bar': {
+      key: 'db6162e6d60437c3a460b7705cc2bb2a390300ef',
+    },
+    Breadcrumb: {
+      key: 'a86a7d4c2e8fdadaa8dbb5c308798605bddafec3',
+    },
+    'Layout Section': {
+      key: '937d749a6b5e2a1511848aef5ec4a15a075e6751',
+    },
+    '_Section Header': {
+      key: 'bf0e347368452dc6d25a97e82400e5a5aeff3f5b',
+    },
+    '_Section Trailing Item': {
+      key: 'f8af67235fe7b387e8db77efdb4855729005ec81',
+    },
+    'Segmented Control': {
+      key: '7358475ee1bdba75cca8721dc60bf0bc6cf24958',
+    },
+    '_Segmented Control / Item': {
+      key: 'fc3e437f3bc93273af73eba40693d2d29d52a44c',
+    },
+
+    // Inputs
+    'Color Input': {
+      key: 'b89088d893cabff3049e0b578b9aae6a122a735c',
+    },
+    'Counter Input': {
+      key: '9b763196fd3ce08461b0971f5f6dd5dadd5844bc',
+    },
+    '_Counter Input/ Square Icon Button': {
+      key: 'afe10e225128d8964f28afdfcdb92b3650478e5a',
+    },
+    'Payment Input': {
+      key: 'bb034d0bfd2cae789ee65c15e2a4e89ade1a354a',
+    },
+    _PaymentMethods: {
+      key: '6b17aece43839f2d3ef685516370b4fa7f6fb939',
+    },
+    'Time Picker': {
+      key: 'ff38968e548939612884d1b9b68ccf08c5443b5d',
+    },
+    '_Time Picker/ Time Wheel Base': {
+      key: '7b92686f7df0be720652bf2d9f961792a968f455',
+    },
+    '_Time Picker/ Time Cell': {
+      key: '1a2de7199606aec0db8d651969efed97ee0b0aaf',
+    },
+    _TimeWheel: {
+      key: '273a31389e66e4f40214ad4eb0f0d9d784bb4d06',
+    },
+    '_Input / Selector': {
+      key: '20a40fecf6ba002cba46b4a82120d3e978cbeed2',
+    },
+    _InputFieldFocusRing: {
+      key: 'eaea30c30a6daa597938498ead0e11384653d0cf',
+    },
+    _inputFieldCursor: {
+      key: '8e2affacdb632f11cc872e4482981439e8ebd938',
+    },
+
+    // Empty states & announcements
+    'Empty State': {
+      key: '14cc5109b33dceab87efb6cd0f68616a7a093bb9',
+    },
+    'Empty States Assets': {
+      key: '6574e922440b849fa53e5b88547088f3a1357613',
+    },
+    'Announcement Banner': {
+      key: 'c2f8e9ab2cf9bc444abcad7f5e0542e13415845f',
+    },
+    '[Utility] Trust Marker': {
+      key: 'ef8149d37ebe6a1188c9dddfa6c8c1db9e2d379f',
+    },
+
+    // Shared primitives used across many components
+    _AmountBase: {
+      key: 'b68b5524cfe568df4f9c1db7c7d10431b27b152a',
+    },
+    _BaseFocusRing: {
+      key: '40e4c4a6b2660fd7fe3f343fcab63ace6dd89028',
+    },
+    _DotLoader: {
+      key: '44dad5c4b4f0700d9c5612a0418cbf6d834f50d7',
+    },
+    _SpinnerBase: {
+      key: 'c402717ba01ac9fd06fa6da9d1e3465f326b8b18',
+    },
+    _CSpinner: {
+      key: 'f9a4bb36917c41ce510ec4454903ad2f6141fca9',
     },
 
     // icons
@@ -1365,13 +1677,13 @@ export const bladeThemeData = {
       key: '69a819588520bc5a64bd09513b627cd59f5b6737',
     },
     test: {
-      key: '69a819588520bc5a64bd09513b627cd59f5b6737',
+      key: 'dd9f434cf2ccbbcd6a65903c646b480ff5202cd3',
     },
     cash: {
       key: '9731c5262649247aa2134d4d2e940fb7368453f3',
     },
     'picture-in-picture': {
-      key: '9731c5262649247aa2134d4d2e940fb7368453f3',
+      key: '48819f76249426845a2f803019b6a032aa3b0e75',
     },
     pin: {
       key: '0d7b404dcb9f64c9e644037c3876606e0566a33b',
@@ -1393,9 +1705,6 @@ export const bladeThemeData = {
     },
     sparkles: {
       key: '54ab15b26b0ec4a78ba2081b0b2df05f444cf3da',
-    },
-    announcment: {
-      key: 'cf85f3f35ae0d8624a75e888d000205af191ccb9',
     },
     'check-circle-2': {
       key: '097b141914a95a9df34a3eb5f7e7bac30c3b962a',
@@ -1652,16 +1961,24 @@ export const bladeThemeData = {
     'interactive/text/staticWhite/subtle': 'VariableID:2ae96f2571d18c51c5b00ce164768373badd5378',
     'overlay/background/moderate': 'VariableID:33196c3b018d35ec65e5edce60b9b5747d781955',
     'overlay/background/subtle': 'VariableID:df57d325528d5c8da1164c9e89f0bf9e52f28d3d',
-    'popup/background/intense': 'VariableID:7fec7cda299cb582ea576481183bdb577e0d9327',
-    'popup/background/subtle': 'VariableID:34b0ff1eb4656f88cab21fc2891aa069541d8600',
-    'popup/border/intense': 'VariableID:56b0e02d6bb238abbc4dfe8667529849f68ac253',
-    'popup/border/subtle': 'VariableID:b3168f39c49141670280359c3ab5ba62931e260f',
+    'popup/background/gray/intense': 'VariableID:7fec7cda299cb582ea576481183bdb577e0d9327',
+    'popup/background/gray/moderate': 'VariableID:5695bfa9ef34331b866018da9a4b861adc92654e',
+    'popup/background/gray/subtle': 'VariableID:34b0ff1eb4656f88cab21fc2891aa069541d8600',
+    'popup/background/information/moderate': 'VariableID:05361cbe5c4604a8686dacd687556297a2d7a62d',
+    'popup/background/negative/moderate': 'VariableID:1e51fff2d58170a2ec3fc799a37796aced095e90',
+    'popup/background/neutral/moderate': 'VariableID:9b11a82e7baa6129cf8db4d6e0775a24f13722db',
+    'popup/background/notice/moderate': 'VariableID:d6da65a01055d04fac3dda978124717df6b404bd',
+    'popup/background/positive/moderate': 'VariableID:95759838152eb0a2f95e5e9c67e1597c1b2e9a41',
+    'popup/border/gray/intense': 'VariableID:56b0e02d6bb238abbc4dfe8667529849f68ac253',
+    'popup/border/gray/moderate': 'VariableID:5b88785e8a19bb3e535066cc3f21a696d8fb5c9f',
+    'popup/border/gray/subtle': 'VariableID:b3168f39c49141670280359c3ab5ba62931e260f',
     'surface/background/cloud/intense': 'VariableID:f72b65be1c23cdf1779cc0c5e5a8615eb7cc50cc',
     'surface/background/cloud/subtle': 'VariableID:555d138d6075619894b93e77a2a964785e13647c',
     'surface/background/gray/intense': 'VariableID:908e10764484ef7af93c07b26180a9d2ec9a37ea',
     'surface/background/gray/moderate': 'VariableID:b51b233c0c565db1ea4066d1098a4e6fe45670c8',
     'surface/background/gray/subtle': 'VariableID:c604c75a0e81b6515cafe83104e62d57ac2a8dc8',
     'surface/background/primary/intense': 'VariableID:9e2cb5246692cb5d16ee0853dfda7a916e3d3cc2',
+    'surface/background/primary/moderate': 'VariableID:0624135a1d95ef32231690ab9d07aecac0278e7a',
     'surface/background/primary/subtle': 'VariableID:30cb6622cdd66cc61c8c0102cf0295475e1be9d7',
     'surface/background/sea/intense': 'VariableID:5c18d18f411091ab38752354211ee00a55eca917',
     'surface/background/sea/subtle': 'VariableID:9a9cecca5e6e85b8515d9f4d70f9cb6d0e577ee7',
@@ -1785,20 +2102,27 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components['Accordion/Body'],
   bladeThemeData.components['Accordion/Header'],
   bladeThemeData.components['Bottom Sheet'],
+  bladeThemeData.components['BottomSheet/Header'],
   bladeThemeData.components['BottomSheet/Footer'],
-  bladeThemeData.components['Base - General Header'],
   bladeThemeData.components.Card,
+  bladeThemeData.components['Metric Card'],
+  bladeThemeData.components['Info Card'],
+  bladeThemeData.components['Ticket Card'],
   bladeThemeData.components.Carousel,
   bladeThemeData.components.Modal,
+  bladeThemeData.components['Modal/Header'],
   bladeThemeData.components['Modal/Footer'],
   bladeThemeData.components['Full Page Modal'],
   bladeThemeData.components['Full Page Modal/Leading Item'],
   bladeThemeData.components['Preview Pane'],
   bladeThemeData.components['Preview Pane/Footer'],
   bladeThemeData.components.Popover,
+  bladeThemeData.components['Popover/Footer'],
   bladeThemeData.components['Spotlight Popover'],
   bladeThemeData.components.Collapsible,
   bladeThemeData.components.Table,
+  bladeThemeData.components['Table - Row Details'],
+  bladeThemeData.components['Table - Row Group Header'],
   bladeThemeData.components.Drawer,
   bladeThemeData.components['Drawer/Leading'],
   bladeThemeData.components['Drawer/Trailing'],
@@ -1806,12 +2130,28 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components.StepGroupItem,
   bladeThemeData.components.Menu,
   bladeThemeData.components['Menu/Leading'],
+  bladeThemeData.components['Menu/Header'],
   bladeThemeData.components['Menu/Footer'],
   bladeThemeData.components['MenuItem/Leading'],
   bladeThemeData.components.L1SubMenuItem,
   bladeThemeData.components.L2SubMenuItem,
   bladeThemeData.components.TopNavigation,
   bladeThemeData.components.TopNavigationRightSection,
+  bladeThemeData.components.Dropdown,
+  bladeThemeData.components['_Dropdown Header'],
+  bladeThemeData.components.InfoGroup,
+  bladeThemeData.components['Info Item'],
+  bladeThemeData.components['Layout Section'],
+  bladeThemeData.components['App Bar'],
+  bladeThemeData.components['Empty State'],
+  bladeThemeData.components['Segmented Control'],
+  bladeThemeData.components.Breadcrumb,
+  bladeThemeData.components['Time Picker'],
+  bladeThemeData.components['Counter Input'],
+  bladeThemeData.components['Payment Input'],
+  bladeThemeData.components.Slot,
+  bladeThemeData.components.TreeViewList,
+  bladeThemeData.components.TreeViewItem,
 ]
   .map((component) => component.key)
   .flat();

@@ -22,6 +22,7 @@ import { ChatInput } from '~components/ChatInput';
 import { Divider } from '~components/Divider';
 import { TextInput } from '~components/Input/TextInput';
 import { Link } from '~components/Link';
+import { useTheme } from '~components/BladeProvider';
 
 const Page = (): ReactElement => {
   return (
@@ -55,6 +56,37 @@ const RazorSenseTemplate: StoryFn<typeof RazorSenseComponent> = (args) => {
 };
 
 export const Default = RazorSenseTemplate.bind({});
+
+/**
+ * RazorSense follows Blade's color scheme — there is no dark-mode prop. When the
+ * surrounding `BladeProvider` is in `dark`, every preset automatically picks up its
+ * dark counterpart: the dark gradient maps, a black background, bloom off, a damped
+ * light sweep and a black specular tint. Explicit props still override it.
+ */
+export const ColorSchemeAware: StoryFn<typeof RazorSenseComponent> = () => {
+  const { colorScheme, setColorScheme } = useTheme();
+
+  return (
+    <Box display="flex" flexDirection="column" height="100vh" gap="spacing.4">
+      <Box display="flex" alignItems="center" gap="spacing.4">
+        <Button
+          variant="secondary"
+          size="medium"
+          onClick={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        >
+          Toggle color scheme
+        </Button>
+        <Text color="surface.text.gray.muted">
+          Current color scheme: <Text weight="semibold">{colorScheme}</Text>
+        </Text>
+      </Box>
+      <Box flex="1" position="relative">
+        <RazorSenseComponent width="100%" height="100%" preset="default" />
+      </Box>
+    </Box>
+  );
+};
+ColorSchemeAware.storyName = 'Color Scheme Aware';
 
 export const DefaultPaused = RazorSenseTemplate.bind({});
 DefaultPaused.args = {

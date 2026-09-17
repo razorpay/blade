@@ -28,35 +28,20 @@ type DropdownProps = {
   /**
    * Children of the dropdown (typically a trigger and overlay)
    */
-  children: React.ReactNode;
+  children: React.ReactNode[];
 
   /**
    * Controls whether the dropdown is open (controlled mode)
    */
   isOpen?: boolean;
 
-  /**
-   * Controls whether the dropdown is initially open (uncontrolled mode)
-   */
-  defaultIsOpen?: boolean;
 
   /**
    * Callback fired when the open state changes
    */
   onOpenChange?: (isOpen: boolean) => void;
-
-  /**
-   * If true, dropdown will close when clicking outside
-   * @default true
-   */
-  shouldCloseOnClickOutside?: boolean;
-
-  /**
-   * If true, dropdown will close when pressing the escape key
-   * @default true
-   */
-  shouldCloseOnEscape?: boolean;
 } & StyledPropsBlade &
+  DataAnalyticsAttribute &
   TestID;
 
 /**
@@ -270,7 +255,7 @@ For fewer options (2–5), prefer visible selection controls: `Radio` (longer la
 
 - Use `Dropdown` for selection-based interactions — selecting one or multiple items from a list.
 - Use `Dropdown` with `SelectInput` when there are more than 5 options to choose from (single select).
-- Always pair with `DropdownOverlay` containing `ActionList` for the options display.
+- Always pair with `DropdownOverlay` containing `ActionList` for the options display. For hierarchical options (region > state > city), use `TreeView` in place of `ActionList` — selection still lives on the trigger's `value`/`onChange`.
 - Use predefined triggers: `SelectInput`, `AutoComplete`, `DropdownButton`, `DropdownLink`, or `FilterChipSelectInput`.
 - Use `selectionType="multiple"` when users should select more than one option.
 - Use `DropdownHeader` and `DropdownFooter` for structuring complex selection overlays.

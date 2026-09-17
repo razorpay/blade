@@ -69,6 +69,7 @@ uniform float uGradientMapBlend;     // 0 = uGradientMap, 1 = uGradientMap2 (def
 
 // --- 5. LIGHT EFFECT ---
 uniform float uLightIntensity;    // Strength of light sweep effect
+uniform vec3 uSpecularTint;       // Tint for center specular highlight (default vec3(1.0) = white)
 uniform float uFrameCount;        // Current frame number
 uniform float uLightStartFrame;   // Frame when light effect starts
 
@@ -862,7 +863,7 @@ void main() {
             float specularPower = 8.0;      // Higher = tighter/smaller highlight
             float specularIntensity = 1.9;  // Brightness of the specular
             float specular = pow(shapeData.gradient, specularPower) * specularIntensity;
-            centerColoramaResult += vec3(specular);  // Add bright highlight
+            centerColoramaResult += vec3(specular) * uSpecularTint;  // Add bright highlight
 
             // Blend between outer and center colorama based on shape
             blendedColorama = mix(outerColoramaResult, centerColoramaResult, shapeData.shape);

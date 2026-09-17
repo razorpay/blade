@@ -165,6 +165,73 @@ const getWebConfig = (inputs) => {
   };
 };
 
+// Dedicated config for the `styles` export.
+//
+// Unlike `tokens`/`utils` (single bundled files), styles are built with `preserveModules: true`
+// so each component's styles stay in their own module. Combined with `extract: true` (which turns
+// CSS into an extracted stylesheet instead of an import-time `document.head.appendChild` side
+// effect), this keeps every style module import-time pure.
+//
+// That purity is what lets *consumers* tree-shake styles per component: an unused component's JS
+// module is dropped by the consumer's bundler. We intentionally do NOT add `sideEffects: false` to
+// package.json; a library should let consumers decide, mirroring how `@razorpay/blade`
+// (styled-components, render-time CSS) already works. Consumers import the extracted stylesheet
+// once via the `./styles.css` package export.
+const getStylesConfig = (inputs) => {
+  const platform = 'web';
+  const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+  return {
+    input: inputs,
+    // preserveModules keeps every module, so package-internal cross-references are never dropped.
+    // Consumers do their own tree shaking on the preserved module graph.
+    treeshake: false,
+    output: [
+      {
+        dir: `${outputRootDirectory}/${libDirectory}/${platform}/${mode}`,
+        format: 'es',
+        sourcemap: true,
+        preserveModules: true,
+        // Strip the `src/` prefix so dependency modules land at `styles/<Component>/...`.
+        preserveModulesRoot: 'src',
+        // Keep the entry chunk at `styles/index.js` to match the `./styles` package.json export.
+        // (In preserveModules mode, entryFileNames applies only to the entry chunk; dependency
+        // modules keep their preserved paths.)
+        entryFileNames: '[name]/index.js',
+      },
+    ],
+    plugins: [
+      pluginReplace({
+        __DEV__: process.env.NODE_ENV !== 'production',
+        preventAssignment: true,
+      }),
+      pluginPeerDepsExternal(),
+      depsExternalPlugin({ externalDependencies }),
+      pluginResolve({ extensions: webExtensions }),
+      pluginCommonjs(),
+      postcss({
+        // Extract all component CSS into a single stylesheet next to the entry
+        // (`styles/index.css`) instead of injecting it at import time. This removes the
+        // module-level `document.head.appendChild` side effect, leaving every style module
+        // import-time pure so consumers can tree-shake the JS per component. Consumers import
+        // the stylesheet once via the `./styles.css` package export.
+        extract: 'styles/index.css',
+        modules: true,
+        minimize: process.env.NODE_ENV === 'production',
+        sourceMap: true,
+      }),
+      pluginBabel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'runtime',
+        envName: 'production',
+        extensions: webExtensions,
+      }),
+      aliases,
+      copyCssPlugin,
+    ],
+  };
+};
+
 const getNativeConfig = (inputs) => {
   const platform = 'native';
 
@@ -244,7 +311,7 @@ const config = () => {
     return [
       getWebConfig(tokens),
       getWebConfig(utils),
-      getWebConfig(styles),
+      getStylesConfig(styles),
       // Unfortunately we cannot just simply copy the tsc emitted declarations and put it on build dir,
       // because moduleSuffixes will cause typescript to resolve the d.ts files based on the user's tsconfig.json
       // which will cause the build to fail because the user's tsconfig.json does not have the moduleSuffixes
@@ -269,7 +336,7 @@ const config = () => {
   return [
     getWebConfig(tokens),
     getWebConfig(utils),
-    getWebConfig(styles),
+    getStylesConfig(styles),
     getDeclarationsConfig({ exportCategory: 'tokens', isNative: false }),
     getDeclarationsConfig({ exportCategory: 'utils', isNative: false }),
     // Note: styles declarations are not bundled as they include CSS module exports

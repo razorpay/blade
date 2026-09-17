@@ -94,6 +94,7 @@ export const accessibilityRoleMap = {
   img: 'image',
   presentation: 'none',
   region: 'summary',
+  group: 'none',
   imagebutton: 'imagebutton',
   keyboardkey: 'keyboardkey',
   label: 'label',

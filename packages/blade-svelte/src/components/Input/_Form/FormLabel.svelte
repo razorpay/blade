@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { metaAttribute, MetaConstants } from '@razorpay/blade-core/utils';
+  import { metaAttribute, MetaConstants, cx } from '@razorpay/blade-core/utils';
   import {
     getFormLabelClasses,
     getFormLabelInnerClasses,
@@ -25,6 +25,7 @@
     size = 'medium',
     labelSuffix,
     labelTrailing,
+    className,
   }: FormLabelProps = $props();
 
   const isLabelLeftPositioned = $derived(position === 'left');
@@ -36,6 +37,9 @@
     labelTextSize[isLabelLeftPositioned ? 'left' : 'top'][size],
   );
   const labelColor = $derived(labelTextColor[size] as TextColors);
+  const labelRenderColor = $derived(
+    className ? ('currentColor' as const) : labelColor,
+  );
 
   const metaAttrs = metaAttribute({ name: MetaConstants.FormLabel });
 
@@ -64,7 +68,7 @@
       as="span"
       variant="body"
       size={textSize}
-      color={labelColor}
+      color={labelRenderColor}
       weight="medium"
       truncateAfterLines={2}
     >
@@ -106,11 +110,11 @@
 {/snippet}
 
 {#if as === 'label'}
-  <label class={labelClasses} for={htmlFor} {id} {...metaAttrs}>
+  <label class={cx(labelClasses, className)} for={htmlFor} {id} {...metaAttrs}>
     {@render labelInner()}
   </label>
 {:else}
-  <span class={labelClasses} {id} {...metaAttrs}>
+  <span class={cx(labelClasses, className)} {id} {...metaAttrs}>
     {@render labelInner()}
   </span>
 {/if}

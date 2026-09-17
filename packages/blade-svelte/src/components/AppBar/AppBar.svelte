@@ -5,16 +5,15 @@
     makeAccessible,
     makeAnalyticsAttribute,
     getStyledPropsClasses,
+    cx,
   } from '@razorpay/blade-core/utils';
   import { getAppBarClasses, getAppBarTemplateClasses } from '@razorpay/blade-core/styles';
   import { getUtilityClass } from '@razorpay/blade-core/styles';
   import IconButton from '../Button/IconButton/IconButton.svelte';
-  import Tooltip from '../Tooltip/Tooltip.svelte';
   import { ArrowLeftIcon } from '../Icons';
   import { setAppBarContext } from './AppBarContext';
   import type { AppBarProps } from './types';
 
-  // Prevent CSS-module tree-shaking of structural classes.
   const templateClasses = getAppBarTemplateClasses();
 
   let {
@@ -38,6 +37,18 @@
 
   // `subtle` emphasis renders a static-white icon for the dark `neutral` surface;
   // `intense` renders the gray icon for the light `subtle` surface.
+  // Lazy-load the Tooltip component: it's only rendered for the back button when a
+  // `backButtonTooltip` is provided, so we keep it out of the main bundle otherwise.
+  let Tooltip = $state<typeof import('../Tooltip/Tooltip.svelte').default | null>(null);
+
+  $effect(() => {
+    if (showBackButton && backButtonTooltip && !Tooltip) {
+      void import('../Tooltip/Tooltip.svelte').then((module) => {
+        Tooltip = module.default;
+      });
+    }
+  });
+
   const backButtonEmphasis = $derived<'subtle' | 'intense'>(
     variant === 'neutral' ? 'subtle' : 'intense',
   );
@@ -53,9 +64,11 @@
   const variantClasses = $derived(getAppBarClasses({ variant }));
   const styledProps = $derived(getStyledPropsClasses(rest));
   const combinedClasses = $derived(
-    [variantClasses, backgroundOverrideClass, ...(styledProps.classes ?? [])]
-      .filter(Boolean)
-      .join(' '),
+    cx(
+      variantClasses,
+      backgroundOverrideClass,
+      ...(styledProps.classes ?? []),
+    ),
   );
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.AppBar, testID }));
@@ -76,7 +89,7 @@
   <div class={templateClasses.appBarLeadingRow}>
     {#if showBackButton}
       <div class={templateClasses.appBarBackButton}>
-        {#if backButtonTooltip}
+        {#if backButtonTooltip && Tooltip}
           <Tooltip content={backButtonTooltip.content} placement={backButtonTooltip.placement}>
             <IconButton
               icon={ArrowLeftIcon}

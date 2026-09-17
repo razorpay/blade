@@ -2,6 +2,8 @@ import type { BaseSpinnerProps } from '../BaseSpinner';
 import { BaseSpinner } from '../BaseSpinner';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+import { BladeProvider } from '~components/BladeProvider';
+import { bladeTheme } from '~tokens/theme';
 
 const colors: BaseSpinnerProps['color'][] = [
   'primary',
@@ -11,6 +13,7 @@ const colors: BaseSpinnerProps['color'][] = [
   'information',
   'notice',
   'neutral',
+  'onNeutral',
 ];
 
 describe('<BaseSpinner />', () => {
@@ -61,6 +64,24 @@ describe('<BaseSpinner />', () => {
       );
       expect(container).toMatchSnapshot();
     });
+  });
+
+  it('should invert the onNeutral color with the theme so it stays visible on a filled neutral surface', () => {
+    const getSpinnerFill = (colorScheme: 'light' | 'dark'): string | null | undefined => {
+      const { container } = renderWithTheme(
+        <BladeProvider themeTokens={bladeTheme} colorScheme={colorScheme}>
+          <BaseSpinner accessibilityLabel="Loading" color="onNeutral" />
+        </BladeProvider>,
+      );
+
+      return container.querySelector('path')?.getAttribute('fill');
+    };
+
+    expect(getSpinnerFill('light')).toBe(
+      bladeTheme.colors.onLight.interactive.icon.onNeutral.normal,
+    );
+    expect(getSpinnerFill('dark')).toBe(bladeTheme.colors.onDark.interactive.icon.onNeutral.normal);
+    expect(getSpinnerFill('light')).not.toBe(getSpinnerFill('dark'));
   });
 
   it('should not have accessibility violations', async () => {

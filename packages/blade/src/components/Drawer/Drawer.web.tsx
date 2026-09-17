@@ -254,7 +254,7 @@ const _Drawer: React.ForwardRefRenderFunction<BladeElementRef, DrawerProps> = (
             <FTXAnnouncement />
             <CatPictures />
           </DrawerBody>
-        <Drawer>
+        </Drawer>
       </Box>
     )
   }

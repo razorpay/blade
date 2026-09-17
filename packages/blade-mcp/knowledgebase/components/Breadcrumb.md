@@ -38,6 +38,11 @@ type BreadcrumbProps = {
    * @default false
    */
   showLastSeparator?: boolean;
+
+  /**
+   * aria-label for breadcrumb
+   */
+  accessibilityLabel?: string;
 } & StyledPropsBlade &
   DataAnalyticsAttribute;
 

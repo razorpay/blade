@@ -18,6 +18,11 @@ The following types represent the props that the FileUpload component accepts. T
 
 ```typescript
 /**
+ * Size value, for example '200px', '100%', or a responsive object like { base: '100%', m: '400px' }
+ */
+type BoxDimension = string | Partial<Record<'base' | 's' | 'm' | 'l' | 'xl', string>>;
+
+/**
  * Props for the FileUpload component
  */
 type FileUploadProps = {
@@ -33,6 +38,16 @@ type FileUploadProps = {
   label?: string;
 
   /**
+   * Accessibility label for the input. Required when `label` is not given.
+   */
+  accessibilityLabel?: string;
+
+  /**
+   * Name of the file input. Useful in form submissions.
+   */
+  name?: string;
+
+  /**
    * Additional help text below the component
    */
   helpText?: string;
@@ -41,11 +56,6 @@ type FileUploadProps = {
    * Error text to display when validation fails
    */
   errorText?: string;
-
-  /**
-   * Success text to display after successful upload
-   */
-  successText?: string;
 
   /**
    * Accepted file types (e.g., '.jpg, .png, .pdf')
@@ -88,12 +98,17 @@ type FileUploadProps = {
   /**
    * Callback when files are selected through the input or dropped
    */
-  onChange?: (info: { fileList: BladeFileList }) => void;
+  onChange?: (info: { name?: string; fileList: BladeFileList }) => void;
 
   /**
    * Callback when files are dropped on the dropzone
    */
-  onDrop?: (info: { fileList: BladeFileList }) => void;
+  onDrop?: (info: { name?: string; fileList: BladeFileList }) => void;
+
+  /**
+   * Callback when the upload area is pressed. React Native only. Use it to open your file picker.
+   */
+  onUploadPress?: () => void;
 
   /**
    * Callback when the preview button is clicked
@@ -103,24 +118,49 @@ type FileUploadProps = {
   /**
    * Callback when the remove button is clicked
    */
-  onRemove?: (info: { file: BladeFile; fileList: BladeFileList }) => void;
+  onRemove?: (info: { file: BladeFile }) => void;
 
   /**
-   * Callback when file upload is started
+   * Callback when a file upload is retried
    */
-  onUpload?: (info: { file: BladeFile; fileList: BladeFileList }) => void;
+  onReupload?: (info: { file: BladeFile }) => void;
+
+  /**
+   * Callback when a file upload is dismissed
+   */
+  onDismiss?: (info: { file: BladeFile }) => void;
 
   /**
    * Validation state of the component
    * @default 'none'
    */
-  validationState?: 'error' | 'success' | 'none';
+  validationState?: 'error' | 'none';
 
   /**
    * Size variant of the component
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'medium' | 'large' | 'variable';
+
+  /**
+   * Custom text for the upload action button. Works only when `size="variable"`.
+   */
+  actionButtonText?: string;
+
+  /**
+   * Custom text for the drag and drop area. Works only when `size="variable"`.
+   */
+  dropAreaText?: string;
+
+  /**
+   * Height of the component. Works only when `size="variable"`.
+   */
+  height?: BoxDimension;
+
+  /**
+   * Width of the component. Works only when `size="variable"`.
+   */
+  width?: BoxDimension;
 
   /**
    * Position of the label
@@ -169,6 +209,33 @@ type BladeFile = File & {
  * List of BladeFile objects
  */
 type BladeFileList = BladeFile[];
+
+/**
+ * Props for the FileUploadItem component.
+ * Use it to show one uploaded file outside of FileUpload (for example, in a custom list).
+ */
+type FileUploadItemProps = {
+  /**
+   * The file to show
+   */
+  file: BladeFile;
+  /**
+   * Size of the item
+   * @default 'medium'
+   */
+  size?: 'medium' | 'large' | 'variable';
+  onPreview?: (info: { file: BladeFile }) => void;
+  onRemove?: (info: { file: BladeFile }) => void;
+  onDismiss?: (info: { file: BladeFile }) => void;
+  onReupload?: (info: { file: BladeFile }) => void;
+  width?: BoxDimension;
+  minWidth?: BoxDimension;
+  maxWidth?: BoxDimension;
+  flexShrink?: number;
+  flexGrow?: number;
+  flexBasis?: BoxDimension;
+} & StyledPropsBlade &
+  DataAnalyticsAttribute;
 ```
 
 ## Usage Guidelines
@@ -330,4 +397,33 @@ const MultipleFileUploadExample = () => {
 };
 
 export default MultipleFileUploadExample;
+```
+
+### FileUploadItem
+
+Use `FileUploadItem` to show a single file with its status, outside of `FileUpload`.
+
+```tsx
+import React from 'react';
+import { FileUploadItem, Box } from '@razorpay/blade/components';
+import type { BladeFile } from '@razorpay/blade/components';
+
+const FileUploadItemExample = () => {
+  const file = Object.assign(new File(['content'], 'invoice.pdf', { type: 'application/pdf' }), {
+    id: 'invoice-1',
+    status: 'success',
+  }) as BladeFile;
+
+  return (
+    <Box maxWidth="400px">
+      <FileUploadItem
+        file={file}
+        onPreview={({ file }) => console.log('Preview', file.name)}
+        onRemove={({ file }) => console.log('Remove', file.name)}
+      />
+    </Box>
+  );
+};
+
+export default FileUploadItemExample;
 ```

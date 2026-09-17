@@ -81,15 +81,55 @@ type FilterChipGroupProps = TestID &
   DataAnalyticsAttribute & {
     children: React.ReactNode;
     /**
-     * Callback which is called when clear button is clicked
+     * Callback fired when the **Clear** action is clicked.
+     *
+     * "Clear" empties every filter and returns the group to the no-filter (empty) state. The group
+     * performs the emptying itself, so uncontrolled chips are cleared and controlled chips receive
+     * `onChange([])`.
+     *
+     * Providing this (or leaving `showClearButton` at its default) renders the Clear action.
      */
     onClearButtonClick?: () => void;
     /**
-     * Boolean to decide if we should show clear button or not.
-     * If true, clear button will be shown when there are selected filters
+     * Callback fired when the **Reset** action is clicked.
      *
+     * "Reset" is semantically different from "Clear": it returns filters to their **default**
+     * values (which may be non-empty, e.g. `Status: Active`) rather than emptying them. The group
+     * does NOT empty the chips in this mode — it only fires this callback, which is your hook to
+     * restore each filter's default (for controlled filters, reset their `value` here).
+     *
+     * Providing this renders the Reset action. It can be shown **alongside** the Clear action, so a
+     * group can offer both "Reset" and "Clear".
+     *
+     * ⚠️ For **uncontrolled** chips (no `value` prop) reset cannot restore defaults yet — there is
+     * no `defaultValue` for the group to restore, so those chips visually retain their values.
+     * Uncontrolled reset-to-defaults is Phase 2 — see `_decisions/filter-chip-reset.md`.
+     */
+    onResetButtonClick?: () => void;
+    /**
+     * Controls visibility of the group-level **Clear** action link (NOT the per-chip clear/cross
+     * button). When `true`, the Clear link is shown whenever the group has at least one selected
+     * filter.
+     *
+     * Note: this is distinct from `showClearButton` on `FilterChipSelectInput` /
+     * `FilterChipDatePicker`, which toggles the individual chip's cross button. Set this to `false`
+     * (and provide `onResetButtonClick`) for a group that should only offer Reset.
+     *
+     * @default true
      */
     showClearButton?: boolean;
+    /**
+     * Custom label for the **Clear** action link.
+     *
+     * @default "Clear Filter" (auto-pluralised to "Clear Filters" when more than one filter is selected)
+     */
+    clearButtonText?: string;
+    /**
+     * Custom label for the **Reset** action link.
+     *
+     * @default "Reset"
+     */
+    resetButtonText?: string;
   };
 
 type FilterChipGroupContextType = {

@@ -7,7 +7,8 @@
   import IconButton from '../../Button/IconButton/IconButton.svelte';
   import Spinner from '../../Spinner/BaseSpinner/BaseSpinner.svelte';
   import { CloseIcon } from '../../Icons';
-  import { createFormattedInput } from './useFormattedInput';
+  import { useFormId } from '../BaseInput/useFormId';
+  import { createFormattedInput, stripPatternCharacters } from './useFormattedInput';
   import type { TextInputProps } from './types';
 
   let {
@@ -30,11 +31,14 @@
     onKeyDown,
     isDisabled = false,
     isRequired = false,
+    isReadOnly = false,
+    spellCheck,
     prefix,
     suffix,
     maxCharacters,
     autoFocus = false,
     keyboardReturnKeyType,
+    keyboardType,
     autoCompleteSuggestionType,
     autoCapitalize,
     validationState = 'none',
@@ -63,15 +67,59 @@
   let baseInput = $state<{ focus: () => void; getInput: () => HTMLInputElement | null } | null>(
     null,
   );
+  const ids = useFormId('textinput');
 
-  const formatter = untrack(() =>
-    format ? createFormattedInput({ pattern: format, onChange }) : null,
-  );
+  // Rebuilds when `format` changes (e.g. card network detection swapping the
+  // grouping pattern), so the pattern isn't frozen at mount time.
+  const formatter = $derived(format ? createFormattedInput({ pattern: format, onChange }) : null);
 
   // Formatted display value (only used when `format` is set); seeded once.
   let formattedValue = $state(
     untrack(() => (formatter ? formatter.formatValue(value ?? defaultValue ?? '') : '')),
   );
+
+  // In controlled `format` mode the parent's `value` is the source of truth, so
+  // reconcile the display against it after EVERY change — not just when the
+  // `value` reference changes. Tracking `formattedValue` (the optimistic value
+  // `handleChange` writes) is what makes consumer sanitisation stick: when the
+  // parent strips a just-typed character (e.g. a letter in a digit-only card
+  // field), the sanitised value is byte-identical to the previous one, so a
+  // `value`-only effect never re-runs and the rejected character lingers on
+  // screen. Re-deriving here snaps the field back to exactly what the consumer
+  // stored (letter stripping, IIN truncation, programmatic prefill/reset).
+  $effect(() => {
+    const currentFormatter = formatter;
+    const userValue = value;
+    const currentDisplay = formattedValue;
+    untrack(() => {
+      if (!currentFormatter) return;
+      // Uncontrolled (`value` never supplied): the display is the source of
+      // truth, so we keep the optimistic value typed by the user. But the
+      // pattern can still change at runtime (e.g. card-network detection
+      // swapping the grouping mask), so re-format the current raw chars against
+      // the new pattern. The guard keeps this idempotent per keystroke, so the
+      // caret is only touched when the pattern actually changed.
+      if (userValue === undefined) {
+        const raw = stripPatternCharacters(currentDisplay);
+        const expected = currentFormatter.formatValue(raw);
+        if (expected !== currentDisplay) {
+          formattedValue = expected;
+        }
+        return;
+      }
+
+      // Controlled: empty string resets to the formatted shell; otherwise
+      // reformat from the raw characters the consumer stored.
+      const expected =
+        userValue === ''
+          ? currentFormatter.formatValue('')
+          : currentFormatter.formatValue(stripPatternCharacters(userValue));
+
+      if (expected !== currentDisplay) {
+        formattedValue = expected;
+      }
+    });
+  });
 
   const effectiveMaxCharacters = $derived(format ? formatter?.maxLength : maxCharacters);
 
@@ -166,13 +214,15 @@
   value={inputValue}
   {name}
   maxCharacters={effectiveMaxCharacters}
-  onChange={handleChange}
+  onInput={handleChange}
   {onFocus}
   {onBlur}
   {onClick}
   {onKeyDown}
   {isDisabled}
   {isRequired}
+  {isReadOnly}
+  {spellCheck}
   {prefix}
   {suffix}
   {leadingIcon}
@@ -189,6 +239,7 @@
   {textAlign}
   {autoFocus}
   {keyboardReturnKeyType}
+  {keyboardType}
   {autoCompleteSuggestionType}
   {autoCapitalize}
   trailingFooterSlot={footerCounter}

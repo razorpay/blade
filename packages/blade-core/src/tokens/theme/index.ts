@@ -1,4 +1,5 @@
 export { default as bladeTheme } from './bladeTheme';
+export { default as bladeNeutralTheme } from './bladeNeutralTheme';
 export { default as overrideTheme } from './overrideTheme';
 export type {
   ColorSchemeNames,
@@ -8,3 +9,12 @@ export type {
   ThemeTokens,
 } from './theme';
 export { createTheme } from './createTheme';
+export type {
+  CreateThemeConfig,
+  CreateThemeFontFace,
+  CreateThemeFontFamilyOverride,
+  CreateThemeFontSizeOverride,
+  CreateThemeResult,
+  CreateThemeSurfaceBackgroundOverride,
+  CreateThemeSurfaceOverride,
+} from './createThemeConfig';

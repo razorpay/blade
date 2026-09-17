@@ -8,6 +8,7 @@ import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { PopoverContext } from './PopoverContext';
 import { useFloatingPortal } from './useFloatingPortal.native';
+import { componentIds } from './componentIds';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import { mergeProps } from '~utils/mergeProps';
@@ -15,12 +16,13 @@ import { useControllableState } from '~utils/useControllable';
 import { componentZIndices } from '~utils/componentZIndices';
 import { useTheme } from '~components/BladeProvider';
 import { PopupArrow } from '~components/PopupArrow';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 // Portal container rendered by @gorhom/portal has a 10px top offset on iOS relative
 // to the window coordinate system that measureInWindow doesn't account for.
 const IOS_OFFSET_CORRECTION = 10;
 
-const Popover = ({
+const _Popover = ({
   content,
   children,
   placement = 'top',
@@ -31,6 +33,7 @@ const Popover = ({
   footer,
   isOpen,
   defaultIsOpen,
+  maxWidth,
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef(null);
@@ -65,10 +68,17 @@ const Popover = ({
   const [isVisible, setIsVisible] = React.useState(() => controllableIsOpen);
   const { backdropRef, backdropOffset, onBackdropLayout } = useFloatingPortal(update, isVisible);
 
+  // On React Native a tap fires both onTouchEnd and a press/click event.
+  // Guard with a short debounce window so handleOpen (and thus onOpenChange)
+  // only fires once per user gesture.
+  const lastOpenCallRef = React.useRef(0);
   const handleOpen = React.useCallback(() => {
+    const now = Date.now();
+    if (now - lastOpenCallRef.current < 300) return;
+    lastOpenCallRef.current = now;
     controllableSetIsOpen(() => true);
     onOpenChange?.({ isOpen: true });
-  }, [controllableSetIsOpen, onOpenChange]);
+  }, [controllableIsOpen, controllableSetIsOpen, onOpenChange]);
 
   const handleClose = React.useCallback(() => {
     controllableSetIsOpen(() => false);
@@ -100,13 +110,21 @@ const Popover = ({
 
   return (
     <PopoverContext.Provider value={contextValue}>
-      {/* Cloning the trigger children to enhance it with ref and event handler */}
+      {/* Cloning the trigger children to enhance it with ref and event handler.
+           Button uses Pressable `onPress` (via `onClick`); `onTouchEnd` alone is
+           unreliable inside ScrollView / ButtonGroup — real taps often only fire
+           press. Attach both so Storybook and product taps open the popover.
+           handleOpen debounces to prevent double-firing from both events. */}
       {React.cloneElement(children, {
         ...mergeProps(
           {
             onTouchEnd: children.props.onTouchEnd,
+            onClick: children.props.onClick,
           },
-          { onTouchEnd: handleOpen },
+          {
+            onTouchEnd: handleOpen,
+            onClick: handleOpen,
+          },
         ),
         ref: refs.setReference,
       })}
@@ -129,6 +147,7 @@ const Popover = ({
                 isVisible={controllableIsOpen}
                 ref={refs.setFloating}
                 side={computedSide}
+                maxWidth={maxWidth}
                 style={{
                   ...floatingStyles,
                   left: (floatingStyles.left || -200) - backdropOffset.x,
@@ -158,5 +177,9 @@ const Popover = ({
     </PopoverContext.Provider>
   );
 };
+
+const Popover = assignWithoutSideEffects(_Popover, {
+  componentId: componentIds.Popover,
+});
 
 export { Popover };

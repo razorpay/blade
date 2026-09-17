@@ -8,32 +8,37 @@ import { BaseMotionBox } from '~components/BaseMotion';
 import type { MotionVariantsType } from '~components/BaseMotion';
 import { Box } from '~components/Box';
 
-const ShimmerOverlay = (): React.ReactElement => {
+const ShimmerText = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { theme } = useTheme();
 
-  const shimmerColor = theme.colors.surface.text.staticWhite.muted;
+  const textColor = theme.colors.feedback.text.positive.intense;
+  // Lighter positive feedback token creates the sweeping glint; resolves per color scheme automatically.
+  const highlightColor = theme.colors.feedback.text.positive.subtle;
   const shimmerDuration = msToSeconds(theme.motion.duration['2xgentle']);
   const shimmerDelay = msToSeconds(theme.motion.delay.gentle);
   const shimmerEase = cssBezierToArray(castWebType(theme.motion.easing.standard));
 
   return (
     <m.span
-      aria-hidden
       style={{
-        position: 'absolute',
-        inset: 0,
-        background: `linear-gradient(90deg, transparent 0%, ${shimmerColor} 50%, transparent 100%)`,
-        pointerEvents: 'none',
+        backgroundImage: `linear-gradient(90deg, ${textColor} 38%, ${highlightColor} 50%, ${textColor} 62%)`,
+        backgroundSize: '250% 100%',
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        color: 'transparent',
+        WebkitTextFillColor: 'transparent',
       }}
-      initial={{ x: '-100%' }}
-      animate={{ x: '100%' }}
+      initial={{ backgroundPosition: '100% 0%' }}
+      animate={{ backgroundPosition: '0% 0%' }}
       transition={{
         duration: shimmerDuration,
         ease: shimmerEase,
         repeat: Infinity,
         repeatDelay: shimmerDelay,
       }}
-    />
+    >
+      {children}
+    </m.span>
   );
 };
 
@@ -120,8 +125,11 @@ const RollingText = ({
       <AnimatePresence mode="popLayout" initial={false}>
         <BaseMotionBox key={currentIndex} motionVariants={slideVariants}>
           <Box position="relative" overflow="hidden" whiteSpace="nowrap">
-            {renderContent(texts[currentIndex])}
-            {showShimmer && <ShimmerOverlay />}
+            {showShimmer && !children ? (
+              <ShimmerText>{renderContent(texts[currentIndex])}</ShimmerText>
+            ) : (
+              renderContent(texts[currentIndex])
+            )}
           </Box>
         </BaseMotionBox>
       </AnimatePresence>

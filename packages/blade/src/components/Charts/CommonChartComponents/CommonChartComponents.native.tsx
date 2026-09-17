@@ -1,6 +1,7 @@
 import type React from 'react';
 import type {
   ChartReferenceLineProps,
+  ChartReferenceBandProps,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
@@ -51,8 +52,14 @@ const ChartReferenceLine = assignWithoutSideEffects(_ChartReferenceLine, {
   componentId: componentId.chartReferenceLine,
 });
 
+const _ChartReferenceBand = (_props: ChartReferenceBandProps): React.ReactElement | null => null;
+const ChartReferenceBand = assignWithoutSideEffects(_ChartReferenceBand, {
+  componentId: componentId.chartReferenceBand,
+});
+
 export type {
   ChartReferenceLineProps,
+  ChartReferenceBandProps,
   ChartXAxisProps,
   ChartYAxisProps,
   ChartTooltipProps,
@@ -66,4 +73,5 @@ export {
   ChartLegend,
   ChartTooltip,
   ChartReferenceLine,
+  ChartReferenceBand,
 };

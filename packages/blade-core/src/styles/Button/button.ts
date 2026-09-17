@@ -76,6 +76,21 @@ export function getButtonBackgroundColorToken({
     }
   }
 
+  if (color === 'neutral') {
+    if (variant === 'primary') {
+      return `interactive.${property}.staticBlack.${_state}`;
+    }
+    // secondary/tertiary render the same as the default (gray) buttons
+    if (variant === 'secondary') {
+      return isBorder ? 'interactive.border.primary.default' : 'surface.background.gray.intense';
+    }
+    if (variant === 'tertiary') {
+      return _state === 'disabled'
+        ? 'interactive.background.staticWhite.ghost'
+        : 'surface.background.gray.intense';
+    }
+  }
+
   if (color === 'transparent') {
     if (variant !== 'tertiary') {
       throw new Error(
@@ -172,6 +187,19 @@ export function getButtonTextColorToken({
     }
     if (variant === 'tertiary') {
       return `interactive.${property}.staticWhite.${stateSuffix}`;
+    }
+  }
+
+  if (color === 'neutral') {
+    if (variant === 'primary') {
+      return `interactive.${property}.staticWhite.${state === 'disabled' ? 'disabled' : 'normal'}`;
+    }
+    // secondary/tertiary render the same as the default (gray) buttons
+    if (variant === 'secondary') {
+      return `interactive.${property}.gray.${state === 'disabled' ? 'disabled' : 'normal'}`;
+    }
+    if (variant === 'tertiary') {
+      return `interactive.${property}.gray.${stateSuffix}`;
     }
   }
 

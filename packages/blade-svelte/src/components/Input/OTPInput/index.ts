@@ -25,4 +25,9 @@
  * ```
  */
 export { default as OTPInput } from './OTPInput.svelte';
-export type { OTPInputProps, OTPInputInstance, OTPInputOnEventWithIndex } from './types';
+export type {
+  OTPInputProps,
+  OTPInputInstance,
+  OTPInputOnEventWithIndex,
+  OTPInputOnKeyDownEvent,
+} from './types';

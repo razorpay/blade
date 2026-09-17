@@ -11,7 +11,7 @@ TextInput is a component for collecting user input in a text field. It supports 
 The following types define the props that the TextInput component accepts. These types are essential for proper usage of the component in TypeScript projects.
 
 ```typescript
-type TextInputSizes = 'medium' | 'large';
+type TextInputSizes = 'xsmall' | 'small' | 'medium' | 'large';
 
 type Type = 'text' | 'telephone' | 'email' | 'url' | 'number' | 'search';
 
@@ -19,9 +19,23 @@ type TextInputCommonProps = {
   label?: string;
   accessibilityLabel?: string;
   labelPosition?: 'top' | 'left';
-  necessityIndicator?: 'optional' | 'required';
+  /**
+   * Suffix element shown right after the label text (e.g. an info icon with Tooltip)
+   */
+  labelSuffix?: React.ReactNode;
+  /**
+   * Trailing element shown at the end of the label row (e.g. a Link)
+   */
+  labelTrailing?: React.ReactNode;
+  necessityIndicator?: 'optional' | 'required' | 'none';
   validationState?: 'none' | 'error' | 'success';
+  /**
+   * Placement of the validation text relative to the input
+   * @default 'outside'
+   */
+  validationTextPlacement?: 'outside' | 'inside';
   helpText?: string;
+  showHelpTextOnFocus?: boolean;
   errorText?: string;
   successText?: string;
   placeholder?: string;
@@ -45,7 +59,7 @@ type TextInputCommonProps = {
   suffix?: string;
   maxCharacters?: number;
   autoFocus?: boolean;
-  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'search' | 'send';
+  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
   autoCompleteSuggestionType?:
     | 'none'
     | 'name'
@@ -64,6 +78,17 @@ type TextInputCommonProps = {
     | 'creditCardExpiryYear'
     | 'on';
   onSubmit?: ({ name, value }: { name?: string; value?: string }) => void;
+  onKeyDown?: ({
+    name,
+    key,
+    code,
+    event,
+  }: {
+    name?: string;
+    key?: string;
+    code?: string;
+    event: React.KeyboardEvent<HTMLInputElement>;
+  }) => void;
   onClick?: ({ name, value }: { name?: string; value?: string }) => void;
   size?: TextInputSizes;
   leadingIcon?: React.ComponentType<any>;
@@ -153,6 +178,7 @@ type TextInputProps = TextInputPropsWithA11yLabel | TextInputPropsWithLabel;
 - Use `maxCharacters` to enforce hard limits with a visible character counter.
 - Use `leading`/`trailing` slots for icons, badges, or `Dropdown` components for contextual actions.
 - Use `showClearButton` for search-like inputs where users need to reset quickly.
+- Use `showHelpTextOnFocus` when `helpText` is guidance rather than a permanent label, to keep it out of the layout until the user is actually in the field. `errorText` and `successText` stay visible regardless.
 
 **Don't**
 
@@ -161,8 +187,51 @@ type TextInputProps = TextInputPropsWithA11yLabel | TextInputPropsWithLabel;
 - Don't use `TextInput` for search — use `SearchInput` which has built-in search icon and Dropdown integration.
 - Don't use alphanumeric characters in `format` patterns — only `#` and special characters are allowed.
 - Don't mix `value` and `defaultValue` with `format` — it throws a conflict error.
+- Don't expect `showHelpTextOnFocus` to hide `errorText` or `successText` — validation feedback is never gated behind focus, so an error stays visible after the user leaves the field.
+- Don't rely on `showHelpTextOnFocus` for a disabled input — a disabled field cannot take focus, so its help text is never revealed. Use persistent `helpText` there.
+- Don't expect `showHelpTextOnFocus` to remove the footer row when `maxCharacters` is set — the character counter keeps that row visible at rest.
 
 ## Example
+
+### Contextual Help Text on Focus
+
+This example demonstrates `showHelpTextOnFocus`, which keeps `helpText` out of the layout until the field is focused. Note that the third field's `errorText` stays visible whether or not the field is focused — validation feedback is never gated behind focus.
+
+```tsx
+import { TextInput, Box } from '@razorpay/blade/components';
+
+function ContextualHelpTextExample() {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <TextInput
+        label="Account Number"
+        placeholder="0000 0000 0000"
+        name="accountNumber"
+        helpText="As printed on your cheque book"
+        showHelpTextOnFocus
+      />
+
+      <TextInput
+        label="Beneficiary Name"
+        placeholder="Enter beneficiary name"
+        name="beneficiaryName"
+        helpText="Must match the name on the bank account"
+        showHelpTextOnFocus
+      />
+
+      <TextInput
+        label="IFSC Code"
+        placeholder="HDFC0000001"
+        name="ifscCode"
+        helpText="Only shown while this field is focused"
+        errorText="Enter a valid 11 character IFSC code"
+        validationState="error"
+        showHelpTextOnFocus
+      />
+    </Box>
+  );
+}
+```
 
 ### Basic Usage with Validation States
 

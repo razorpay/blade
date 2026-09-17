@@ -34,7 +34,20 @@ const config = {
     // Resolve blade-core imports directly to source files for better re-export handling
     // Note: We use a custom resolve function to handle exact matches only
     const bladeCoreRoot = resolve(__dirname, '../../blade-core/src');
+    // blade-core source uses bare `__DEV__` (replaced at rollup build time).
+    // Storybook aliases to source, so define it here like vitest/rollup.
+    config.define = {
+      ...config.define,
+      __DEV__: true,
+    };
     config.resolve = config.resolve || {};
+    // Prefer .web.ts so platform-split modules (elevation, fontFamily) resolve under Vite
+    config.resolve.extensions = [
+      '.web.ts',
+      '.web.tsx',
+      '.web.js',
+      ...(config.resolve.extensions ?? ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']),
+    ];
     config.resolve.alias = [
       ...(Array.isArray(config.resolve.alias) ? config.resolve.alias : []),
       // Only match exact paths (not sub-paths like tokens/theme.css)

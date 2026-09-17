@@ -68,7 +68,7 @@ const FileUploadItem = memo(
             <BaseBox marginRight="spacing.4">
               <FileUploadItemIcon fileName={name} uploadStatus={status} />
             </BaseBox>
-            <BaseBox flexGrow={1}>
+            <BaseBox flexGrow={1} flexShrink={1} minWidth="0px">
               <BaseBox alignItems="center" display="flex">
                 <BaseBox alignItems="center" maxWidth="70%" display="flex" marginRight="spacing.3">
                   <Text
@@ -112,17 +112,20 @@ const FileUploadItem = memo(
               </BaseBox>
             ) : status === 'error' ? (
               <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-                <BaseLink
-                  marginX="spacing.1"
-                  variant="button"
-                  icon={RotateClockWiseIcon}
-                  color="negative"
-                  size="medium"
-                  onClick={() => {
-                    onReupload?.({ file });
-                  }}
-                  data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
-                />
+                <BaseBox display="flex" alignItems="center" justifyContent="center">
+                  <BaseLink
+                    marginX="spacing.1"
+                    variant="button"
+                    icon={RotateClockWiseIcon}
+                    color="negative"
+                    size="medium"
+                    accessibilityProps={{ label: `Reupload ${name}` }}
+                    onClick={() => {
+                      onReupload?.({ file });
+                    }}
+                    data-analytics-name={MAKE_ANALYTICS_CONSTANTS.FILE_UPLOAD.REUPLOAD_BUTTON}
+                  />
+                </BaseBox>
                 {onRemove ? (
                   <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
                     <Divider orientation="vertical" thickness="thin" variant="normal" />

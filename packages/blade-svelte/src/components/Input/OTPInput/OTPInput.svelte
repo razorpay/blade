@@ -31,6 +31,7 @@
     onFocus,
     onBlur,
     onOTPFilled,
+    onKeyDown,
     value,
     isDisabled = false,
     autoFocus = false,
@@ -49,7 +50,8 @@
   const isControlled = untrack(() => value !== undefined);
   const isLabelLeftPositioned = $derived(labelPosition === 'left');
 
-  const otpToArray = (code?: string): string[] => code?.split('') ?? Array(otpLength).fill('');
+  const otpToArray = (code: string | undefined = undefined): string[] =>
+    code?.split('') ?? Array(otpLength).fill('');
 
   let otpValue = $state<string[]>(untrack(() => otpToArray(value)));
   const inputEls: BaseInputInstance[] = $state([]);
@@ -76,10 +78,20 @@
   const metaAttrs = $derived(metaAttribute({ name: 'otpinput', testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 
+  // Latch the last-fired value so onOTPFilled only fires on a transition to a
+  // new complete OTP, not on every reactive update while the value stays full.
+  let lastFilledValue: string | undefined = $state(undefined);
+
   $effect(() => {
     const joined = isControlled ? (value ?? '') : otpValue.join('');
     if (joined.length >= otpLength) {
-      onOTPFilled?.({ name, value: joined.slice(0, otpLength) });
+      const filled = joined.slice(0, otpLength);
+      if (filled !== lastFilledValue) {
+        lastFilledValue = filled;
+        onOTPFilled?.({ name, value: filled });
+      }
+    } else {
+      lastFilledValue = undefined;
     }
   });
 
@@ -146,6 +158,10 @@
     { key, code, event }: Parameters<FormInputOnKeyDownEvent>[0],
     currentOtpIndex: number,
   ): void => {
+    onKeyDown?.({ name, key, code, event, inputIndex: currentOtpIndex });
+    // Consumers can call event.preventDefault() in onKeyDown to fully opt out of
+    // the internal Backspace/Arrow navigation (e.g. custom field navigation).
+    if (event.defaultPrevented) return;
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       event.preventDefault?.();
       if (isControlled ? value?.[currentOtpIndex] : otpValue[currentOtpIndex]) {

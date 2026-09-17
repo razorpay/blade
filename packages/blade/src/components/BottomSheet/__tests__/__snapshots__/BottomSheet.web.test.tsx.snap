@@ -165,7 +165,20 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c24.c24.c24.c24.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-left: auto;
+  min-height: 20px;
 }
 
 .c12.c12.c12.c12.c12 {

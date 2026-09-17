@@ -85,6 +85,7 @@ export const getBottomSheetBodyClasses = cva(styles.body, {
  */
 export const bottomSheetSurfaceClass = styles.surface;
 export const bottomSheetBackdropClass = styles.backdrop;
+export const bottomSheetPortalRootClass = styles.portalRoot;
 export const bottomSheetInnerWrapperClass = styles.innerWrapper;
 export const bottomSheetGrabHandleClass = styles.grabHandle;
 export const bottomSheetGrabHandleFloatingClass = styles.grabHandleFloating;
@@ -116,6 +117,7 @@ export function getBottomSheetTemplateClasses(): Record<string, string> {
   return {
     surface: bottomSheetSurfaceClass,
     backdrop: bottomSheetBackdropClass,
+    portalRoot: bottomSheetPortalRootClass,
     innerWrapper: bottomSheetInnerWrapperClass,
     grabHandle: bottomSheetGrabHandleClass,
     grabHandleFloating: bottomSheetGrabHandleFloatingClass,

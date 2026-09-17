@@ -135,7 +135,17 @@ const _SpotlightPopoverTourMask = ({
   const y = size.y - (height - size.height) / 2;
 
   const borderWidth = theme.spacing[1];
-  const borderRadius = theme.spacing[2];
+  /**
+   * The spotlight takes the corner radius of the component it highlights, so it reads as a
+   * halo on that element rather than as a box of its own. When the step highlights content
+   * that draws no corner at all (plain text), there is nothing to inherit — we agree with
+   * the popover's radius instead of squaring off to a hard corner.
+   *
+   * Note this is the target's radius verbatim, not `radius + padding / 2`: matching the
+   * component is the intended rule, and the small corner offset that leaves is deliberate.
+   */
+  const spotlightRadius = size.borderRadius ?? 0;
+  const borderRadius = spotlightRadius > 0 ? spotlightRadius : theme.border.radius.large;
 
   const isSizeZero = size.width === 0 || size.height === 0;
 
@@ -154,8 +164,8 @@ const _SpotlightPopoverTourMask = ({
         height={height - borderWidth}
         stroke={theme.colors.surface.background.primary.intense}
         strokeWidth={makeSpace(borderWidth)}
-        rx={borderRadius - 1}
-        ry={borderRadius - 1}
+        rx={borderRadius - borderWidth / 2}
+        ry={borderRadius - borderWidth / 2}
         fill="transparent"
         opacity={isSizeZero ? 0 : 1}
       />

@@ -30,7 +30,7 @@ type AppBarProps = {
    * Visual emphasis of the AppBar surface.
    * - `'neutral'` (default): transparent surface, light foreground (matches Figma — the
    *   AppBar has no background of its own and sits directly over the page).
-   * - `'subtle'`: surface that adapts to the page background for embedded/light contexts.
+   * - `'subtle'`: transparent surface with adaptive gray foreground for embedded/light contexts.
    *
    * @default 'neutral'
    */
@@ -73,13 +73,22 @@ type AppBarLeadingProps = {
   logo?: React.ReactNode;
 
   /**
-   * Razorpay Trusted Business badge form.
-   * - `'full'`: shield + pill below the title/logo row
-   * - `'icon'`: shield only, inline with `title` (beside `logo` when no title)
+   * Trust badge form, forwarded to `TrustBadge`.
+   * - `'default'`: shield + pill below the title/logo row
+   * - `'icon-only'`: shield only, inline with `title` (beside `logo` when no title)
    *
    * @default undefined
    */
-  rtbBadge?: 'full' | 'icon';
+  trustBadgeVariant?: 'default' | 'icon-only';
+
+  /**
+   * Custom trust label forwarded to `TrustBadge`.
+   * Overrides the default "Razorpay Trusted Business" text shown in the pill
+   * and used as the accessible label for the icon-only form.
+   *
+   * @default undefined
+   */
+  trustBadgeLabel?: string;
 } & TestID &
   DataAnalyticsAttribute;
 
