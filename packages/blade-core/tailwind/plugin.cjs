@@ -775,6 +775,348 @@ const switchComponents = {
   },
 };
 
+// IconButton — a transparent icon button whose color/background shift across
+// hover/focus-visible/active/disabled per emphasis, plus a true animated `outline` focus ring and
+// highlighted/moderate square-container variants. Ported verbatim as `.blade-icon-button*`.
+const iconButtonComponents = {
+  '.blade-icon-button': {
+    border: 'none',
+    padding: '0',
+    background: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    borderRadius: 'var(--border-radius-2xsmall)',
+    transitionProperty: 'color, box-shadow',
+    transitionDuration: 'var(--duration-xquick)',
+    transitionTimingFunction: 'var(--easing-standard)',
+    '&[disabled]': { cursor: 'not-allowed' },
+    '&:focus-visible': {
+      outline: '4px solid var(--surface-border-primary-muted)',
+      outlineOffset: '1px',
+      transitionProperty: 'outline-width',
+      transitionDuration: 'var(--duration-2xquick)',
+      transitionTimingFunction: 'var(--easing-standard)',
+      zIndex: '2',
+    },
+  },
+  '.blade-icon-button-emphasis-intense': {
+    color: 'var(--interactive-icon-gray-muted)',
+    '&:hover:not([disabled]), &:focus-visible:not([disabled]), &:active:not([disabled])': {
+      color: 'var(--interactive-icon-gray-subtle)',
+    },
+    '&[disabled]': { color: 'var(--interactive-icon-gray-disabled)' },
+  },
+  '.blade-icon-button-emphasis-subtle': {
+    color: 'var(--interactive-icon-static-white-muted)',
+    '&:hover:not([disabled]), &:focus-visible:not([disabled]), &:active:not([disabled])': {
+      color: 'var(--interactive-icon-static-white-subtle)',
+    },
+    '&[disabled]': { color: 'var(--interactive-icon-static-white-disabled)' },
+  },
+  '.blade-icon-button-highlighted': { borderRadius: 'var(--border-radius-small)' },
+  '.blade-icon-button-highlighted-small': { width: '24px', height: '24px' },
+  '.blade-icon-button-highlighted-medium': { width: '32px', height: '32px' },
+  '.blade-icon-button-highlighted-intense': {
+    '&:hover:not([disabled]), &:focus-visible:not([disabled])': {
+      backgroundColor: 'var(--interactive-background-gray-faded-highlighted)',
+    },
+  },
+  '.blade-icon-button-highlighted-subtle': {
+    '&:hover:not([disabled]), &:focus-visible:not([disabled])': {
+      backgroundColor: 'var(--interactive-background-static-white-faded)',
+    },
+  },
+  '.blade-icon-button-emphasis-moderate': {
+    borderRadius: 'var(--border-radius-small)',
+    backgroundColor: 'var(--interactive-background-static-white-faded)',
+    color: 'var(--interactive-icon-static-white-normal)',
+    transitionProperty: 'color, background-color',
+    '&:hover:not([disabled]), &:focus-visible:not([disabled]), &:active:not([disabled])': {
+      color: 'var(--interactive-icon-static-white-subtle)',
+      backgroundColor: 'var(--interactive-background-static-white-faded-highlighted)',
+    },
+    '&[disabled]': { color: 'var(--interactive-icon-static-white-disabled)' },
+  },
+  '.blade-icon-button-moderate-small': { width: '24px', height: '24px' },
+  '.blade-icon-button-moderate-medium': { width: '32px', height: '32px' },
+};
+
+// BaseInput — a faithful port of `baseInput.module.css`. The border is a `box-shadow` ring whose
+// color/width shift across hover / `:focus-within` (via a descendant from the focus-ring wrapper) /
+// error / disabled; the element styles `::placeholder` per size and per `value-heading`, and several
+// modifiers only make sense as compounds (`value-heading.size-*`). None of this reduces to
+// single-element utilities, so it lives here as `.blade-input-*`. Pure layout/padding/text-align
+// helpers stay atomic in the template classes.
+const baseInputComponents = {
+  '.blade-input-outer': { width: 'auto' },
+  '.blade-input-field': {
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    width: '100%',
+  },
+  '.blade-input-field.blade-input-label-left': {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  '.blade-input-label-row': {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  '.blade-input-label-row.blade-input-label-left': { flexDirection: 'column' },
+  '.blade-input-focus-ring-wrapper': {
+    width: '100%',
+    borderRadius: 'var(--border-radius-small)',
+    '&.blade-input-radius-medium': { borderRadius: 'var(--border-radius-medium)' },
+    '&:focus-within': {
+      outline: '4px solid var(--surface-border-primary-muted)',
+      outlineOffset: '1px',
+      transitionProperty: 'outline-width',
+      transitionDuration: 'var(--duration-2xquick)',
+      transitionTimingFunction: 'var(--easing-standard)',
+    },
+  },
+  '.blade-input-wrapper': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    position: 'relative',
+    overflow: 'hidden',
+    border: 'none',
+    borderRadius: 'var(--border-radius-small)',
+    backgroundColor: 'var(--surface-background-gray-intense)',
+    boxShadow: 'var(--interactive-border-gray-default) 0px 0px 0px var(--border-width-thin)',
+    transitionProperty: 'box-shadow, background-color',
+    transitionDuration: 'var(--duration-xgentle)',
+    transitionTimingFunction: 'var(--easing-emphasized)',
+    '&.blade-input-radius-medium': { borderRadius: 'var(--border-radius-medium)' },
+    '&:hover:not([data-disabled]):not(.blade-input-validation-error)': {
+      boxShadow: 'var(--interactive-border-gray-highlighted) 0px 0px 0px var(--border-width-thin)',
+    },
+    '&.blade-input-validation-error': {
+      boxShadow: 'var(--interactive-border-negative-default) 0px 0px 0px var(--border-width-thick)',
+      zIndex: '1',
+    },
+    '&[data-disabled]': {
+      backgroundColor: 'var(--surface-background-gray-moderate)',
+      boxShadow: 'var(--interactive-border-gray-disabled) 0px 0px 0px var(--border-width-thin)',
+    },
+  },
+  '.blade-input-focus-ring-wrapper:focus-within .blade-input-wrapper:not([data-disabled]):not(.blade-input-validation-error)':
+    {
+      boxShadow:
+        'var(--interactive-border-primary-default) 0px 0px 0px var(--border-width-thick)',
+    },
+  '.blade-input-el': {
+    flex: '1',
+    width: '100%',
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none',
+    boxSizing: 'border-box',
+    resize: 'none',
+    textAlign: 'inherit',
+    fontFamily: 'var(--font-family-text)',
+    fontSize: 'var(--font-size-100)',
+    lineHeight: 'var(--line-height-100)',
+    fontWeight: 'var(--font-weight-regular)',
+    color: 'var(--interactive-text-gray-normal)',
+    '&:focus': { outline: 'none' },
+    '&[disabled]': {
+      color: 'var(--surface-text-gray-disabled)',
+      cursor: 'not-allowed',
+      '-webkit-text-fill-color': 'var(--surface-text-gray-disabled)',
+    },
+    '&::placeholder': {
+      color: 'var(--surface-text-gray-disabled)',
+      fontFamily: 'var(--font-family-text)',
+      fontSize: 'var(--font-size-100)',
+      lineHeight: 'var(--line-height-100)',
+      fontWeight: 'var(--font-weight-regular)',
+    },
+  },
+  '.blade-input-text-left': { textAlign: 'left' },
+  '.blade-input-text-center': { textAlign: 'center' },
+  '.blade-input-text-right': { textAlign: 'right' },
+  '.blade-input-size-xsmall': {
+    height: '28px',
+    minHeight: '28px',
+    paddingTop: 'var(--spacing-2)',
+    paddingBottom: 'var(--spacing-2)',
+    fontSize: 'var(--font-size-75)',
+    lineHeight: 'var(--line-height-75)',
+    '&::placeholder': { fontSize: 'var(--font-size-75)', lineHeight: 'var(--line-height-75)' },
+  },
+  '.blade-input-size-small': {
+    height: '32px',
+    minHeight: '32px',
+    paddingTop: 'var(--spacing-2)',
+    paddingBottom: 'var(--spacing-2)',
+    fontSize: 'var(--font-size-75)',
+    lineHeight: 'var(--line-height-75)',
+    '&::placeholder': { fontSize: 'var(--font-size-75)', lineHeight: 'var(--line-height-75)' },
+  },
+  '.blade-input-size-medium': {
+    height: '36px',
+    minHeight: '36px',
+    paddingTop: 'var(--spacing-3)',
+    paddingBottom: 'var(--spacing-3)',
+    fontSize: 'var(--font-size-100)',
+    lineHeight: 'var(--line-height-100)',
+    '&::placeholder': { fontSize: 'var(--font-size-100)', lineHeight: 'var(--line-height-100)' },
+  },
+  '.blade-input-size-large': {
+    height: '48px',
+    minHeight: '48px',
+    paddingTop: 'var(--spacing-4)',
+    paddingBottom: 'var(--spacing-4)',
+    fontSize: 'var(--font-size-200)',
+    lineHeight: 'var(--line-height-200)',
+    '&::placeholder': { fontSize: 'var(--font-size-200)', lineHeight: 'var(--line-height-200)' },
+  },
+  '.blade-input-value-heading': {
+    fontFamily: 'var(--font-family-heading)',
+    color: 'var(--interactive-text-gray-normal)',
+    '&[disabled]': { color: 'var(--surface-text-gray-disabled)' },
+  },
+  '.blade-input-value-heading.blade-input-size-xsmall, .blade-input-value-heading.blade-input-size-small':
+    {
+      fontSize: 'var(--font-size-300)',
+      lineHeight: 'var(--line-height-300)',
+    },
+  '.blade-input-value-heading.blade-input-size-medium': {
+    fontSize: 'var(--font-size-400)',
+    lineHeight: 'var(--line-height-400)',
+  },
+  '.blade-input-value-heading.blade-input-size-large': {
+    fontSize: 'var(--font-size-500)',
+    lineHeight: 'var(--line-height-500)',
+  },
+  '.blade-input-value-heading.blade-input-size-xsmall::placeholder, .blade-input-value-heading.blade-input-size-small::placeholder':
+    {
+      fontFamily: 'var(--font-family-heading)',
+      fontSize: 'var(--font-size-300)',
+      lineHeight: 'var(--line-height-300)',
+    },
+  '.blade-input-value-heading.blade-input-size-medium::placeholder': {
+    fontFamily: 'var(--font-family-heading)',
+    fontSize: 'var(--font-size-400)',
+    lineHeight: 'var(--line-height-400)',
+  },
+  '.blade-input-value-heading.blade-input-size-large::placeholder': {
+    fontFamily: 'var(--font-family-heading)',
+    fontSize: 'var(--font-size-500)',
+    lineHeight: 'var(--line-height-500)',
+  },
+};
+
+// FormLabel / FormHint — width, margins and layout depend on `position` × `size` compounds applied
+// via template classes (no `cn` at the call site), so they're emitted here as `.blade-form-*` where
+// the compound selectors win by specificity. Rules are scoped by base class (`.blade-form-label` vs
+// `.blade-form-label-inner`) so the shared `label-left`/`size-*` modifiers don't cross-match.
+const formComponents = {
+  '.blade-form-label': { flexShrink: '0', width: '100%', marginRight: '0' },
+  '.blade-form-label.blade-form-label-left': { width: '120px' },
+  '.blade-form-label.blade-form-label-left.blade-form-size-xsmall, .blade-form-label.blade-form-label-left.blade-form-size-small':
+    { marginRight: 'var(--spacing-3)' },
+  '.blade-form-label.blade-form-label-left.blade-form-size-medium': {
+    marginRight: 'var(--spacing-4)',
+  },
+  '.blade-form-label.blade-form-label-left.blade-form-size-large': {
+    width: '176px',
+    marginRight: 'var(--spacing-5)',
+  },
+  '.blade-form-label-inner': {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  '.blade-form-label-inner.blade-form-size-xsmall, .blade-form-label-inner.blade-form-size-small, .blade-form-label-inner.blade-form-size-medium':
+    { marginBottom: 'var(--spacing-2)' },
+  '.blade-form-label-inner.blade-form-size-large': { marginBottom: 'var(--spacing-3)' },
+  // label-left rule comes after the size rules so it wins the margin-bottom for the left layout.
+  '.blade-form-label-inner.blade-form-label-left': {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    width: '100%',
+    marginBottom: '0',
+  },
+  '.blade-form-label-text-group': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 'var(--spacing-2)',
+  },
+  '.blade-form-label-text-group.blade-form-necessity-tight': { gap: '0' },
+  '.blade-form-label-suffix': { display: 'flex' },
+  '.blade-form-label-trailing': { marginLeft: 'auto' },
+  '.blade-form-label-trailing.blade-form-label-left': { marginLeft: '0' },
+  '.blade-form-hint': { marginTop: 'var(--spacing-2)' },
+  '.blade-form-hint.blade-form-size-large': { marginTop: 'var(--spacing-3)' },
+  '.blade-form-hint-wrapper': {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 'var(--spacing-2)',
+  },
+  '.blade-form-hint-icon': { flexShrink: '0', marginTop: 'var(--spacing-1)', display: 'flex' },
+  '.blade-form-hint-text-large-with-icon': { marginTop: 'var(--spacing-1)' },
+};
+
+// InputGroup — corner-rounds the group of stacked inputs by reaching into the InputRow / BaseInput
+// literal global hooks (`.__blade-input-row`, `.__blade-base-input-wrapper`, `.__blade-focus-ring-wrapper`)
+// with `:first-child`/`:last-child`/`:only-child`/`:not()` combinators, plus hover/focus z-index
+// stacking, and a desktop-only left-label row layout using `:has()`. All scoped under `.blade-input-group`.
+const RADIUS_SMALL = 'var(--border-radius-small)';
+const inputGroupComponents = {
+  // Field box lives here (not as a utility) so the desktop `-left` row override — same layer —
+  // wins over this column base by source order instead of losing to a utilities-layer `flex-col`.
+  '.blade-input-group-field': { display: 'flex', flexDirection: 'column' },
+  '.blade-input-group .__blade-input-row .__blade-base-input-wrapper, .blade-input-group .__blade-input-row .__blade-focus-ring-wrapper':
+    { borderRadius: '0' },
+  '.blade-input-group .__blade-input-row': { position: 'relative', zIndex: '0' },
+  '.blade-input-group .__blade-input-row:hover, .blade-input-group .__blade-input-row:focus-within':
+    { zIndex: '1' },
+  '.blade-input-group .__blade-input-row .__blade-base-input-wrapper': { zIndex: '0' },
+  '.blade-input-group .__blade-input-row .__blade-base-input-wrapper:hover, .blade-input-group .__blade-input-row .__blade-base-input-wrapper:focus-within':
+    { zIndex: '1' },
+  // Multi-row corners.
+  '.blade-input-group .__blade-input-row:first-child > div:first-child .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:first-child > div:first-child .__blade-focus-ring-wrapper':
+    { borderTopLeftRadius: RADIUS_SMALL },
+  '.blade-input-group .__blade-input-row:first-child > div:last-child .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:first-child > div:last-child .__blade-focus-ring-wrapper':
+    { borderTopRightRadius: RADIUS_SMALL },
+  '.blade-input-group .__blade-input-row:last-child > div:first-child .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:last-child > div:first-child .__blade-focus-ring-wrapper':
+    { borderBottomLeftRadius: RADIUS_SMALL },
+  '.blade-input-group .__blade-input-row:last-child > div:last-child .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:last-child > div:last-child .__blade-focus-ring-wrapper':
+    { borderBottomRightRadius: RADIUS_SMALL },
+  '.blade-input-group .__blade-input-row:first-child > div:only-child .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:first-child > div:only-child .__blade-focus-ring-wrapper':
+    { borderTopLeftRadius: RADIUS_SMALL, borderTopRightRadius: RADIUS_SMALL },
+  '.blade-input-group .__blade-input-row:last-child > div:only-child .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:last-child > div:only-child .__blade-focus-ring-wrapper':
+    { borderBottomLeftRadius: RADIUS_SMALL, borderBottomRightRadius: RADIUS_SMALL },
+  // Single row.
+  '.blade-input-group .__blade-input-row:only-child > div:only-child .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:only-child > div:only-child .__blade-focus-ring-wrapper':
+    { borderRadius: RADIUS_SMALL },
+  '.blade-input-group .__blade-input-row:only-child > div:first-child:not(:only-child) .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:only-child > div:first-child:not(:only-child) .__blade-focus-ring-wrapper':
+    { borderTopLeftRadius: RADIUS_SMALL, borderBottomLeftRadius: RADIUS_SMALL },
+  '.blade-input-group .__blade-input-row:only-child > div:last-child:not(:only-child) .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:only-child > div:last-child:not(:only-child) .__blade-focus-ring-wrapper':
+    { borderTopRightRadius: RADIUS_SMALL, borderBottomRightRadius: RADIUS_SMALL },
+  '.blade-input-group .__blade-input-row:only-child > div:not(:first-child):not(:last-child) .__blade-base-input-wrapper, .blade-input-group .__blade-input-row:only-child > div:not(:first-child):not(:last-child) .__blade-focus-ring-wrapper':
+    { borderRadius: '0' },
+  // Desktop-only left-label row layout.
+  '@media (min-width: 768px)': {
+    '.blade-input-group-field-left': { flexDirection: 'row' },
+    '.blade-input-group-field-left:has(.blade-input-group-row:only-child)': {
+      alignItems: 'center',
+    },
+  },
+};
+
 module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(buttonComponents);
   addComponents(linkComponents);
@@ -787,4 +1129,8 @@ module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(spinnerComponents);
   addComponents(skeletonComponents);
   addComponents(switchComponents);
+  addComponents(iconButtonComponents);
+  addComponents(baseInputComponents);
+  addComponents(formComponents);
+  addComponents(inputGroupComponents);
 });
