@@ -1,7 +1,4 @@
 import { cva } from 'class-variance-authority';
-import { utilityClasses } from '../utilities';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './card.module.css';
 
 // --- CardRoot CVA ---
 
@@ -10,15 +7,20 @@ export type CardRootVariants = {
   asLabel?: boolean;
 };
 
-export const cardRootStyles = cva(styles.cardRoot, {
+/**
+ * `.blade-card-root` (plugin) owns the `[data-selected]`/`[data-focused]`/`[data-validation]`
+ * box-shadow compounds and the descendant rule uplifting nested interactive elements above the
+ * link overlay. Border radius stays atomic.
+ */
+export const cardRootStyles = cva('blade-card-root', {
   variants: {
     borderRadius: {
-      medium: utilityClasses['border-radius-medium'],
-      large: utilityClasses['border-radius-large'],
-      xlarge: utilityClasses['border-radius-xlarge'],
+      medium: 'rounded-medium',
+      large: 'rounded-large',
+      xlarge: 'rounded-xlarge',
     },
     asLabel: {
-      true: styles.cardRootLabel,
+      true: 'cursor-pointer',
       false: '',
     },
   },
@@ -86,42 +88,37 @@ export type CardSurfaceVariants = {
   borderRadius?: 'medium' | 'large' | 'xlarge';
 };
 
-// `type` selects elevated (primary, theme) vs flat (secondary)
-// surface treatment in card.module.css. The deprecated `elevation` prop on
-// <Card> is a no-op for API parity with React's Card.
-export const cardSurfaceStyles = cva(styles.cardSurface, {
+// `type` selects elevated (primary, theme) vs flat (secondary) surface treatment; the elevated/theme
+// gradients + dark-mode swap + "hide border when selected" override live in the plugin.
+export const cardSurfaceStyles = cva('w-full flex relative flex-col box-border text-left', {
   variants: {
     type: {
-      primary: styles.cardSurfaceElevated,
-      secondary: styles.cardSurfaceFlat,
-      theme: styles.cardSurfaceThemed,
+      primary: 'blade-card-surface-elevated',
+      secondary: 'border-none shadow-none bg-none',
+      theme: 'blade-card-surface-themed',
     },
     backgroundColor: {
-      'surface.background.gray.subtle': utilityClasses['background-surface-gray-subtle'],
-      'surface.background.gray.moderate': utilityClasses['background-surface-gray-moderate'],
-      'surface.background.gray.intense': utilityClasses['background-surface-gray-intense'],
-      'surface.background.primary.subtle':
-        utilityClasses['background-surface-background-primary-subtle'],
-      'surface.background.primary.intense':
-        utilityClasses['background-surface-background-primary-intense'],
-      'surface.background.sea.subtle': utilityClasses['background-surface-background-sea-subtle'],
-      'surface.background.sea.intense': utilityClasses['background-surface-background-sea-intense'],
-      'surface.background.cloud.subtle':
-        utilityClasses['background-surface-background-cloud-subtle'],
-      'surface.background.cloud.intense':
-        utilityClasses['background-surface-background-cloud-intense'],
+      'surface.background.gray.subtle': 'bg-surface-background-gray-subtle',
+      'surface.background.gray.moderate': 'bg-surface-background-gray-moderate',
+      'surface.background.gray.intense': 'bg-surface-background-gray-intense',
+      'surface.background.primary.subtle': 'bg-surface-background-primary-subtle',
+      'surface.background.primary.intense': 'bg-surface-background-primary-intense',
+      'surface.background.sea.subtle': 'bg-surface-background-sea-subtle',
+      'surface.background.sea.intense': 'bg-surface-background-sea-intense',
+      'surface.background.cloud.subtle': 'bg-surface-background-cloud-subtle',
+      'surface.background.cloud.intense': 'bg-surface-background-cloud-intense',
     },
     padding: {
-      'spacing.0': utilityClasses['padding-spacing-0'],
-      'spacing.3': utilityClasses['padding-spacing-3'],
-      'spacing.4': utilityClasses['padding-spacing-4'],
-      'spacing.5': utilityClasses['padding-spacing-5'],
-      'spacing.7': utilityClasses['padding-spacing-7'],
+      'spacing.0': 'p-spacing-0',
+      'spacing.3': 'p-spacing-3',
+      'spacing.4': 'p-spacing-4',
+      'spacing.5': 'p-spacing-5',
+      'spacing.7': 'p-spacing-7',
     },
     borderRadius: {
-      medium: utilityClasses['border-radius-medium'],
-      large: utilityClasses['border-radius-large'],
-      xlarge: utilityClasses['border-radius-xlarge'],
+      medium: 'rounded-medium',
+      large: 'rounded-large',
+      xlarge: 'rounded-xlarge',
     },
   },
   defaultVariants: {
@@ -144,17 +141,15 @@ const CARD_SURFACE_BACKGROUND_COLOR_KEYS: readonly CardBackgroundColor[] = [
 ];
 
 export const CARD_SURFACE_BACKGROUND_UTILITY: Record<CardBackgroundColor, string> = {
-  'surface.background.gray.subtle': utilityClasses['background-surface-gray-subtle'],
-  'surface.background.gray.moderate': utilityClasses['background-surface-gray-moderate'],
-  'surface.background.gray.intense': utilityClasses['background-surface-gray-intense'],
-  'surface.background.primary.subtle':
-    utilityClasses['background-surface-background-primary-subtle'],
-  'surface.background.primary.intense':
-    utilityClasses['background-surface-background-primary-intense'],
-  'surface.background.sea.subtle': utilityClasses['background-surface-background-sea-subtle'],
-  'surface.background.sea.intense': utilityClasses['background-surface-background-sea-intense'],
-  'surface.background.cloud.subtle': utilityClasses['background-surface-background-cloud-subtle'],
-  'surface.background.cloud.intense': utilityClasses['background-surface-background-cloud-intense'],
+  'surface.background.gray.subtle': 'bg-surface-background-gray-subtle',
+  'surface.background.gray.moderate': 'bg-surface-background-gray-moderate',
+  'surface.background.gray.intense': 'bg-surface-background-gray-intense',
+  'surface.background.primary.subtle': 'bg-surface-background-primary-subtle',
+  'surface.background.primary.intense': 'bg-surface-background-primary-intense',
+  'surface.background.sea.subtle': 'bg-surface-background-sea-subtle',
+  'surface.background.sea.intense': 'bg-surface-background-sea-intense',
+  'surface.background.cloud.subtle': 'bg-surface-background-cloud-subtle',
+  'surface.background.cloud.intense': 'bg-surface-background-cloud-intense',
 };
 
 export function getCardSurfaceBackgroundUtilityClass(backgroundColor: CardBackgroundColor): string {
@@ -223,14 +218,14 @@ export type CardHeaderVariants = {
   marginBottom?: 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
 };
 
-const cardHeaderWrapperStyles = cva(styles.cardHeader, {
+const cardHeaderWrapperStyles = cva('', {
   variants: {
     marginBottom: {
-      'spacing.0': utilityClasses['margin-bottom-spacing-0'],
-      'spacing.3': utilityClasses['margin-bottom-spacing-3'],
-      'spacing.4': utilityClasses['margin-bottom-spacing-4'],
-      'spacing.5': utilityClasses['margin-bottom-spacing-5'],
-      'spacing.7': utilityClasses['margin-bottom-spacing-7'],
+      'spacing.0': 'mb-spacing-0',
+      'spacing.3': 'mb-spacing-3',
+      'spacing.4': 'mb-spacing-4',
+      'spacing.5': 'mb-spacing-5',
+      'spacing.7': 'mb-spacing-7',
     },
   },
   defaultVariants: {
@@ -238,14 +233,14 @@ const cardHeaderWrapperStyles = cva(styles.cardHeader, {
   },
 });
 
-const cardHeaderContentStyles = cva(styles.cardHeaderContent, {
+const cardHeaderContentStyles = cva('flex flex-row justify-between', {
   variants: {
     paddingBottom: {
-      'spacing.0': utilityClasses['padding-bottom-spacing-0'],
-      'spacing.3': utilityClasses['padding-bottom-spacing-3'],
-      'spacing.4': utilityClasses['padding-bottom-spacing-4'],
-      'spacing.5': utilityClasses['padding-bottom-spacing-5'],
-      'spacing.7': utilityClasses['padding-bottom-spacing-7'],
+      'spacing.0': 'pb-spacing-0',
+      'spacing.3': 'pb-spacing-3',
+      'spacing.4': 'pb-spacing-4',
+      'spacing.5': 'pb-spacing-5',
+      'spacing.7': 'pb-spacing-7',
     },
   },
   defaultVariants: {
@@ -273,14 +268,14 @@ export type CardFooterVariants = {
   justifyEnd?: boolean;
 };
 
-const cardFooterWrapperStyles = cva(styles.cardFooter, {
+const cardFooterWrapperStyles = cva('', {
   variants: {
     marginTop: {
-      'spacing.0': utilityClasses['margin-top-spacing-0'],
-      'spacing.3': utilityClasses['margin-top-spacing-3'],
-      'spacing.4': utilityClasses['margin-top-spacing-4'],
-      'spacing.5': utilityClasses['margin-top-spacing-5'],
-      'spacing.7': utilityClasses['margin-top-spacing-7'],
+      'spacing.0': 'mt-spacing-0',
+      'spacing.3': 'mt-spacing-3',
+      'spacing.4': 'mt-spacing-4',
+      'spacing.5': 'mt-spacing-5',
+      'spacing.7': 'mt-spacing-7',
     },
   },
   defaultVariants: {
@@ -288,25 +283,29 @@ const cardFooterWrapperStyles = cva(styles.cardFooter, {
   },
 });
 
-const cardFooterContentStyles = cva(styles.cardFooterContent, {
-  variants: {
-    paddingTop: {
-      'spacing.0': utilityClasses['padding-top-spacing-0'],
-      'spacing.3': utilityClasses['padding-top-spacing-3'],
-      'spacing.4': utilityClasses['padding-top-spacing-4'],
-      'spacing.5': utilityClasses['padding-top-spacing-5'],
-      'spacing.7': utilityClasses['padding-top-spacing-7'],
+// `max-m:` targets the same <768px range as the original `@media (max-width: 768px)`.
+const cardFooterContentStyles = cva(
+  'flex flex-row justify-between items-center max-m:flex-col max-m:items-stretch',
+  {
+    variants: {
+      paddingTop: {
+        'spacing.0': 'pt-spacing-0',
+        'spacing.3': 'pt-spacing-3',
+        'spacing.4': 'pt-spacing-4',
+        'spacing.5': 'pt-spacing-5',
+        'spacing.7': 'pt-spacing-7',
+      },
+      justifyEnd: {
+        true: 'justify-end',
+        false: '',
+      },
     },
-    justifyEnd: {
-      true: styles.cardFooterContentEnd,
-      false: '',
+    defaultVariants: {
+      paddingTop: 'spacing.4',
+      justifyEnd: false,
     },
   },
-  defaultVariants: {
-    paddingTop: 'spacing.4',
-    justifyEnd: false,
-  },
-});
+);
 
 export function getCardFooterClasses(
   props: CardFooterVariants,
@@ -329,33 +328,36 @@ export function getCardFooterClasses(
  */
 export function getCardTemplateClasses(): Record<string, string> {
   return {
-    cardRoot: styles.cardRoot,
-    cardSurface: styles.cardSurface,
-    cardSurfaceElevated: styles.cardSurfaceElevated,
-    cardSurfaceThemed: styles.cardSurfaceThemed,
-    cardSurfaceFlat: styles.cardSurfaceFlat,
-    cardTicketWrapper: styles.cardTicketWrapper,
-    cardTicketOutline: styles.cardTicketOutline,
-    cardTicketClipContent: styles.cardTicketClipContent,
-    cardTicketSection: styles.cardTicketSection,
-    cardTicketSectionTop: styles.cardTicketSectionTop,
-    cardTicketSectionBottom: styles.cardTicketSectionBottom,
-    cardInfoWrapper: styles.cardInfoWrapper,
-    cardInfoSectionTop: styles.cardInfoSectionTop,
-    cardInfoSectionBottom: styles.cardInfoSectionBottom,
-    linkOverlay: styles.linkOverlay,
-    cardHeaderLeading: styles.cardHeaderLeading,
-    cardHeaderLeadingRow: styles.cardHeaderLeadingRow,
-    cardHeaderLeadingPrefix: styles.cardHeaderLeadingPrefix,
-    cardHeaderLeadingTitleWrap: styles.cardHeaderLeadingTitleWrap,
-    cardHeaderLeadingTitleRow: styles.cardHeaderLeadingTitleRow,
-    cardHeaderLeadingSuffix: styles.cardHeaderLeadingSuffix,
-    cardHeaderTrailing: styles.cardHeaderTrailing,
-    cardBody: styles.cardBody,
-    cardFooterLeading: styles.cardFooterLeading,
-    cardFooterTrailing: styles.cardFooterTrailing,
-    cardFooterActionWrapper: styles.cardFooterActionWrapper,
-    cardFooterActionSpacer: styles.cardFooterActionSpacer,
-    cardHeaderIconButtonWrapper: styles.cardHeaderIconButtonWrapper,
+    cardRoot: 'blade-card-root',
+    cardSurface: 'w-full flex relative flex-col box-border text-left',
+    cardSurfaceElevated: 'blade-card-surface-elevated',
+    cardSurfaceThemed: 'blade-card-surface-themed',
+    cardSurfaceFlat: 'border-none shadow-none bg-none',
+    cardTicketWrapper: 'relative flex flex-col w-full',
+    cardTicketOutline: 'absolute inset-0 w-full h-full z-[1] pointer-events-none overflow-visible',
+    cardTicketClipContent: 'relative z-0 flex flex-col w-full',
+    cardTicketSection: 'relative box-border p-spacing-4',
+    cardTicketSectionTop: 'bg-surface-background-gray-intense',
+    cardTicketSectionBottom:
+      'bg-surface-background-gray-moderate bg-[radial-gradient(circle_4px_at_8px_0px,var(--surface-background-gray-intense)_3.5px,transparent_4px)] bg-repeat-x bg-[length:16px_100%] bg-left-top',
+    cardInfoWrapper:
+      "relative flex flex-col w-full overflow-hidden border-solid border-thin border-surface-border-gray-subtle rounded-medium data-[selected=true]:border-surface-border-primary-normal data-[disabled=true]:border-dashed",
+    cardInfoSectionTop: 'bg-surface-background-gray-intense p-spacing-4',
+    cardInfoSectionBottom: 'bg-surface-background-gray-moderate p-spacing-4',
+    linkOverlay: 'blade-card-link-overlay',
+    cardHeaderLeading: 'flex flex-col gap-spacing-4',
+    cardHeaderLeadingRow: 'flex-1 flex flex-row',
+    cardHeaderLeadingPrefix: 'mr-spacing-3 self-center flex',
+    cardHeaderLeadingTitleWrap: 'mr-spacing-5',
+    cardHeaderLeadingTitleRow: 'flex flex-row items-center flex-wrap',
+    cardHeaderLeadingSuffix: 'ml-spacing-3',
+    cardHeaderTrailing: 'self-center',
+    cardBody: '',
+    cardFooterLeading: 'text-left',
+    cardFooterTrailing:
+      'flex flex-row self-center ml-spacing-5 max-m:self-auto max-m:mt-spacing-5 max-m:ml-spacing-0',
+    cardFooterActionWrapper: 'flex-1',
+    cardFooterActionSpacer: 'ml-spacing-5',
+    cardHeaderIconButtonWrapper: 'w-[28px]',
   };
 }

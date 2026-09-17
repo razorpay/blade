@@ -14,15 +14,15 @@ describe('getCardSurfaceClasses', () => {
       borderRadius: 'medium',
     });
 
-    expect(classes).toContain('_background-surface-background-cloud-subtle');
+    expect(classes).toContain('bg-surface-background-cloud-subtle');
   });
 
   it('uses variant-owned fill for primary and secondary', () => {
     const primary = getCardSurfaceClasses({ type: 'primary' });
     const secondary = getCardSurfaceClasses({ type: 'secondary' });
 
-    expect(primary).toContain('_background-surface-gray-intense');
-    expect(secondary).toContain('_background-surface-gray-moderate');
+    expect(primary).toContain('bg-surface-background-gray-intense');
+    expect(secondary).toContain('bg-surface-background-gray-moderate');
     expect(getCardBackgroundColor('primary', undefined)).toBe('surface.background.gray.intense');
     expect(getCardBackgroundColor('secondary', undefined)).toBe('surface.background.gray.moderate');
   });

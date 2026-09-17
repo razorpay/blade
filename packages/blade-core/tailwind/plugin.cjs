@@ -1679,6 +1679,221 @@ const chipComponents = {
   },
 };
 
+// Accordion — the filled surface paints its inset border ring via an `::after` overlay (so an
+// edge-to-edge gray body can't cover it) with gradient bands + dark-mode swaps, and the header
+// button toggles background/color across hover/focus-visible/disabled and dims a nested Divider on
+// hover. Hover/focus-visible border-radius compounds are plain `hover:`/`focus-visible:` utilities
+// at the call site (no plugin needed for those).
+const accordionComponents = {
+  '.blade-accordion-filled': {
+    position: 'relative',
+    borderRadius: 'var(--border-radius-medium)',
+    border: 'none',
+    backgroundColor: 'var(--surface-background-gray-intense)',
+    backgroundImage:
+      'linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 1) 100%), linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 97%, 1) 100%)',
+    backgroundPosition: 'center top, center calc(100% - 2px)',
+    backgroundSize: 'calc(100% - 2px) 16px, calc(100% - 2px) 16px',
+    backgroundRepeat: 'no-repeat',
+    boxShadow: '0px 6px 32px 4px hsla(205, 8%, 71%, 0.06)',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      top: '0',
+      right: '0',
+      bottom: '0',
+      left: '0',
+      zIndex: '1',
+      pointerEvents: 'none',
+      borderRadius: 'var(--border-radius-medium)',
+      boxShadow:
+        'inset 0px 0px 0px 1px var(--interactive-border-gray-disabled), inset 0px -1.5px 0px 1px var(--surface-background-gray-intense)',
+    },
+  },
+  ":root body[data-theme='dark'] .blade-accordion-filled, :root [data-blade-color-scheme='dark'] .blade-accordion-filled":
+    {
+      borderTop: '1px solid var(--surface-border-gray-subtle)',
+      backgroundImage:
+        'linear-gradient(to bottom, hsla(210, 5%, 16%, 1) 0%, hsla(210, 6%, 13%, 1) 100%), linear-gradient(to bottom, hsla(210, 6%, 13%, 1) 0%, hsla(210, 6%, 13%, 1) 100%)',
+      backgroundPosition: 'center top, center calc(100% - 1px)',
+      backgroundSize: 'calc(100% - 2px) 16px, calc(100% - 2px) 16px',
+      backgroundRepeat: 'no-repeat',
+      boxShadow: '0px 6px 12px 4px hsla(0, 0%, 0%, 0.06)',
+    },
+  ":root body[data-theme='dark'] .blade-accordion-filled::after, :root [data-blade-color-scheme='dark'] .blade-accordion-filled::after":
+    {
+      boxShadow:
+        'inset 0px 0px 0px 1px var(--interactive-border-gray-disabled), inset 0px 0px 0px 1px var(--surface-background-gray-intense)',
+    },
+  '.blade-accordion-button': {
+    padding: 'var(--spacing-0)',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'var(--transparent)',
+    transitionProperty: 'background-color, box-shadow, border-radius, color',
+    transitionDuration: 'var(--duration-2xquick)',
+    transitionTimingFunction: 'var(--easing-standard)',
+    cursor: 'pointer',
+    color: 'var(--interactive-icon-gray-muted)',
+    width: '100%',
+    border: 'none',
+    textAlign: 'left',
+    '&:hover, &:focus-visible': {
+      backgroundColor: 'var(--interactive-background-gray-faded)',
+      color: 'var(--interactive-icon-gray-subtle)',
+      "& [data-blade-component='divider']": { opacity: '0' },
+    },
+    '&:focus-visible': {
+      outline: '4px solid var(--surface-border-primary-muted)',
+      outlineOffset: '1px',
+      borderRadius: 'var(--border-radius-small)',
+      transitionProperty: 'outline-width',
+      transitionDuration: 'var(--duration-2xquick)',
+      transitionTimingFunction: 'var(--easing-standard)',
+    },
+    '&[disabled]': {
+      cursor: 'not-allowed',
+      color: 'var(--interactive-icon-gray-disabled)',
+      '&:hover, &:focus-visible': {
+        backgroundColor: 'var(--transparent)',
+        color: 'var(--interactive-icon-gray-disabled)',
+      },
+    },
+  },
+};
+
+// Card — the root's selected/focused/validation box-shadow rings are `[data-*]` attribute
+// combinations (including two-attribute compounds), plus a descendant rule uplifting nested
+// interactive elements above the link-overlay; the elevated/theme surfaces paint gradient bands +
+// a dark-mode swap + a "hide border when selected" override that reaches from the root into the
+// surface; and the link overlay is an `all: unset` reset with a full-cover `::before` hit target.
+const cardComponents = {
+  '.blade-card-root': {
+    display: 'block',
+    position: 'relative',
+    boxSizing: 'border-box',
+    cursor: 'initial',
+    "&[data-selected='true']": {
+      boxShadow: '0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal)',
+    },
+    "&[data-focused='true']": {
+      boxShadow:
+        '0px 0px 0px var(--border-width-thicker) transparent, 0px 0px 0px 4px var(--surface-border-primary-muted)',
+    },
+    "&[data-selected='true'][data-focused='true']": {
+      boxShadow:
+        '0px 0px 0px var(--border-width-thicker) var(--surface-border-primary-normal), 0px 0px 0px 4px var(--surface-border-primary-muted)',
+    },
+    "&[data-validation='error']": {
+      boxShadow:
+        '0px 0px 0px var(--border-width-thicker) var(--interactive-border-negative-default)',
+    },
+    "&[data-validation='error'][data-focused='true']": {
+      boxShadow:
+        '0px 0px 0px var(--border-width-thicker) var(--interactive-border-negative-default), 0px 0px 0px 4px var(--surface-border-primary-muted)',
+    },
+    "&[data-validation='success']": {
+      boxShadow:
+        '0px 0px 0px var(--border-width-thicker) var(--interactive-border-positive-default)',
+    },
+    "&[data-validation='success'][data-focused='true']": {
+      boxShadow:
+        '0px 0px 0px var(--border-width-thicker) var(--interactive-border-positive-default), 0px 0px 0px 4px var(--surface-border-primary-muted)',
+    },
+    "& a[href]:not(a[data-blade-component='card-link-overlay'])": {
+      zIndex: '2',
+      position: 'relative',
+    },
+    "& button:not(button[data-blade-component='card-link-overlay'])": {
+      zIndex: '2',
+      position: 'relative',
+    },
+    "& label:not(a[data-blade-component='card-link-overlay']):not(button[data-blade-component='card-link-overlay'])":
+      { zIndex: '2', position: 'relative' },
+  },
+  '.blade-card-surface-elevated': {
+    border: 'none',
+    backgroundImage:
+      'linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 100%, 1) 100%), linear-gradient(to bottom, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 97%, 1) 100%)',
+    backgroundPosition: 'center top, center calc(100% - 2px)',
+    backgroundSize: 'calc(100% - 2px) 16px, calc(100% - 2px) 16px',
+    backgroundRepeat: 'no-repeat',
+    boxShadow:
+      'inset 0px 0px 0px 1px var(--interactive-border-gray-disabled), 0px 6px 32px 4px hsla(205, 8%, 71%, 0.06), inset 0px -1.5px 0px 1px var(--surface-background-gray-intense)',
+  },
+  ".blade-card-root[data-selected='true'] .blade-card-surface-elevated": {
+    boxShadow:
+      '0px 6px 32px 4px hsla(205, 8%, 71%, 0.06), inset 0px -1.5px 0px 1px var(--surface-background-gray-intense)',
+  },
+  ":root body[data-theme='dark'] .blade-card-surface-elevated, :root [data-blade-color-scheme='dark'] .blade-card-surface-elevated":
+    {
+      borderTop: '1px solid var(--surface-border-gray-subtle)',
+      backgroundImage:
+        'linear-gradient(to bottom, hsla(210, 5%, 16%, 1) 0%, hsla(210, 6%, 13%, 1) 100%), linear-gradient(to bottom, hsla(210, 6%, 13%, 1) 0%, hsla(210, 6%, 13%, 1) 100%)',
+      backgroundPosition: 'center top, center calc(100% - 1px)',
+      backgroundSize: 'calc(100% - 2px) 16px, calc(100% - 2px) 16px',
+      backgroundRepeat: 'no-repeat',
+      boxShadow:
+        'inset 0px 0px 0px 1px var(--interactive-border-gray-disabled), 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06), inset 0px 0px 0px 1px var(--surface-background-gray-intense)',
+    },
+  ":root body[data-theme='dark'] .blade-card-root[data-selected='true'] .blade-card-surface-elevated, :root [data-blade-color-scheme='dark'] .blade-card-root[data-selected='true'] .blade-card-surface-elevated":
+    {
+      boxShadow:
+        '0px 6px 12px 4px hsla(0, 0%, 0%, 0.06), inset 0px 0px 0px 1px var(--surface-background-gray-intense)',
+    },
+  '.blade-card-surface-themed': {
+    border: 'none',
+    backgroundImage:
+      'linear-gradient(to bottom, hsla(0, 0%, 0%, 0.02) 0%, hsla(0, 0%, 100%, 0) 100%), linear-gradient(to top, hsla(0, 0%, 0%, 0.02) 0%, hsla(0, 0%, 100%, 0) 100%)',
+    backgroundPosition: 'center top, center calc(100% - 2px)',
+    backgroundSize: 'calc(100% - 2px) 16px, calc(100% - 2px) 16px',
+    backgroundRepeat: 'no-repeat',
+    boxShadow:
+      'inset 0px 0px 0px 1px var(--interactive-border-gray-disabled), 0px 6px 32px 4px hsla(205, 8%, 71%, 0.06), inset 0px -1.5px 0px 1px var(--surface-background-gray-intense)',
+  },
+  ".blade-card-root[data-selected='true'] .blade-card-surface-themed": {
+    boxShadow:
+      '0px 6px 32px 4px hsla(205, 8%, 71%, 0.06), inset 0px -1.5px 0px 1px var(--surface-background-gray-intense)',
+  },
+  ":root body[data-theme='dark'] .blade-card-surface-themed, :root [data-blade-color-scheme='dark'] .blade-card-surface-themed":
+    {
+      borderTop: '1px solid var(--surface-border-gray-subtle)',
+      backgroundImage:
+        'linear-gradient(to bottom, hsla(0, 0%, 0%, 0.02) 0%, hsla(0, 0%, 100%, 0) 100%), linear-gradient(to top, hsla(0, 0%, 0%, 0.02) 0%, hsla(0, 0%, 100%, 0) 100%)',
+      backgroundPosition: 'center top, center calc(100% - 1px)',
+      backgroundSize: 'calc(100% - 2px) 16px, calc(100% - 2px) 16px',
+      backgroundRepeat: 'no-repeat',
+      boxShadow:
+        'inset 0px 0px 0px 1px var(--interactive-border-gray-disabled), 0px 6px 12px 4px hsla(0, 0%, 0%, 0.06), inset 0px 0px 0px 1px var(--surface-background-gray-intense)',
+    },
+  ":root body[data-theme='dark'] .blade-card-root[data-selected='true'] .blade-card-surface-themed, :root [data-blade-color-scheme='dark'] .blade-card-root[data-selected='true'] .blade-card-surface-themed":
+    {
+      boxShadow:
+        '0px 6px 12px 4px hsla(0, 0%, 0%, 0.06), inset 0px 0px 0px 1px var(--surface-background-gray-intense)',
+    },
+  '.blade-card-link-overlay': {
+    all: 'unset',
+    cursor: 'pointer',
+    appearance: 'none',
+    border: '0',
+    padding: '0',
+    position: 'static',
+    '&::before': {
+      content: '""',
+      cursor: 'inherit',
+      display: 'block',
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      zIndex: '2',
+      width: '100%',
+      height: '100%',
+    },
+  },
+};
+
 module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(buttonComponents);
   addComponents(linkComponents);
@@ -1703,4 +1918,6 @@ module.exports = plugin(function bladeHardCases({ addComponents }) {
   addComponents(radioComponents);
   addComponents(radioGroupComponents);
   addComponents(chipComponents);
+  addComponents(accordionComponents);
+  addComponents(cardComponents);
 });
