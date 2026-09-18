@@ -476,6 +476,22 @@ it needs bars to become focusable, which is shared chart behaviour rather than a
 - **Web only.** `BarChart.native.tsx` has no band layer, so the `range*` props are accepted and
   ignored there. Flagged with `@platform web` on each prop until parity lands.
 
+**Sparse ranges.** A row may have no bound — a `null`, or simply no key. The bound series render
+with `connectNulls`, so Recharts drops those points from the rendered path
+(`Curve.js`: `points.filter(defined)`), while a null bar still emits a zero-height rect
+(`Bar.js`: `height = isNan(computedHeight) ? 0 : computedHeight`). Anchors and bars therefore stop
+agreeing by array position as soon as the data has a gap. Anchors are mapped back to their **data
+row** via `getDefinedNumericPoints` and anchored to `centres[row]`, so a gap costs only that one
+anchor instead of silently dropping the whole series back to category centres — which in a grouped
+chart would stack every band on the same x. If the anchor count and the defined-row count ever
+disagree, the model of Recharts' output is wrong: that warns in dev rather than drawing in the
+wrong place.
+
+> Note the two charts type `data` differently — `ChartLineWrapper` takes
+> `{ [key: string]: unknown }` (and its own stories pass `null`), while `ChartBarWrapper` takes
+> `{ [key: string]: string | number }`, which cannot express a missing bound. The runtime path is
+> reachable either way, since an absent key is `undefined`. Reconciling the two is an open ask.
+
 > **Colors** : In case of Bar Charts We would be handling both Categorical and Sequential color. Also there will be a limit on Sequential Colors.
 > For that, best would be to have an internal check how many colors are already used.
 

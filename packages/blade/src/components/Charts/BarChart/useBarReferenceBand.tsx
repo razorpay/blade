@@ -15,11 +15,12 @@ import {
   REFERENCE_BAND_UPPER_CLASS,
   REFERENCE_BAND_LAYER_CLASS,
 } from '../CommonChartComponents/tokens';
-import { parsePathAnchors } from '../utils/nullBridgeUtils';
+import { parsePathAnchors, getDefinedNumericPoints } from '../utils/nullBridgeUtils';
 import type { PixelPoint } from '../utils/nullBridgeUtils';
 import { perLineBandClass } from '../utils/referenceBandUtils';
 import { componentIds, BAND_HIGHLIGHT_OPACITY, barSeriesClass } from './tokens';
 import type { ChartBarProps } from './types';
+import { logger } from '~utils/logger';
 
 type ChartData = { [key: string]: unknown };
 
@@ -32,6 +33,13 @@ type BandSource = {
   id: string;
   lowerClass: string;
   upperClass: string;
+  /**
+   * The range's data keys. Kept alongside the derived classNames because the rendered bound path
+   * only contains the *defined* points — mapping an anchor back to its data row needs the key, not
+   * just the class.
+   */
+  lowerDataKey: string;
+  upperDataKey: string;
   name: string;
   colorToken: ReferenceBandLegendInfo['color'];
   fillColor: string;
@@ -75,29 +83,30 @@ const geomsEqual = (a: BandGeometry[], b: BandGeometry[]): boolean =>
   });
 
 /**
- * Centre x of every bar rendered for one bar series, left→right.
+ * Centre x of every bar rendered for one bar series, indexed by data row.
  *
  * The series is found by its `barSeriesClass` rather than by position, so toggling another series
  * off in the legend (which renders no group at all) can't shift the lookup onto the wrong bars.
  *
- * `ChartBar`'s custom shape draws two `<rect>`s per bar (the body fill plus a thin accent edge at
- * the same x), so the raw list has duplicates — they're de-duplicated here, leaving one centre per
- * category.
+ * One centre per `.recharts-bar-rectangle` group, in document order. `ChartBar`'s custom shape
+ * draws two `<rect>`s per bar (the body fill plus a thin accent edge at the same x), so only the
+ * first rect of each group is read. Deduplicating the flat rect list by x value instead would make
+ * the array length depend on the values rather than on the number of bars — and the whole point of
+ * this array is that position `i` is data row `i`. Recharts emits a rectangle for every row,
+ * including null ones (they get `height = 0`, see `Bar.js`), so that correspondence holds.
  */
 const getBarCentres = (surface: Element, dataKey: string): number[] | null => {
   const series = surface.querySelector(`.${barSeriesClass(dataKey)}`);
   if (!series) return null;
-  const centres = Array.from(
-    series.querySelectorAll<SVGRectElement>('.recharts-bar-rectangle rect'),
-  )
-    .map((rect) => {
-      const x = Number(rect.getAttribute('x'));
-      const width = Number(rect.getAttribute('width'));
+  const centres = Array.from(series.querySelectorAll<SVGGElement>('.recharts-bar-rectangle'))
+    .map((group) => {
+      const rect = group.querySelector<SVGRectElement>('rect');
+      const x = Number(rect?.getAttribute('x'));
+      const width = Number(rect?.getAttribute('width'));
       return Number.isFinite(x) && Number.isFinite(width) ? x + width / 2 : NaN;
     })
     .filter((centre) => Number.isFinite(centre));
-  const unique = [...new Set(centres)];
-  return unique.length > 0 ? unique : null;
+  return centres.length > 0 ? centres : null;
 };
 
 /**
@@ -148,8 +157,9 @@ const getCategoryColumn = (
   surface: Element,
   centres: number[],
   activeIndex: number,
+  categoryCount: number,
 ): { x: number; width: number; y: number; height: number } | null => {
-  if (activeIndex < 0 || centres.length === 0) return null;
+  if (activeIndex < 0 || centres.length === 0 || categoryCount <= 0) return null;
   const bounds = getPlotBounds(surface);
   const gridLines = Array.from(
     surface.querySelectorAll<SVGLineElement>('.recharts-cartesian-grid-horizontal line'),
@@ -165,7 +175,15 @@ const getCategoryColumn = (
   const yAxisTop = Number(yAxisLine?.getAttribute('y1'));
   const top =
     gridLines.length > 0 ? Math.min(...gridLines) : Number.isFinite(yAxisTop) ? yAxisTop : 0;
-  const width = (bounds.right - bounds.left) / centres.length;
+
+  // Width comes from the number of data rows, not from `centres.length` — those agree only while
+  // every row renders exactly one bar for this series, which is the assumption being removed here.
+  //
+  // The column shades the whole *category*, so it stays anchored to the category slot rather than
+  // to the hovered bar's own centre: in a grouped chart those are deliberately different (that
+  // difference is what the band re-anchoring exists to honour), and centring on the bar would slide
+  // the shading off the period it is meant to mark.
+  const width = (bounds.right - bounds.left) / categoryCount;
   return {
     x: bounds.left + activeIndex * width,
     width,
@@ -214,6 +232,8 @@ const useBarReferenceBand = ({
           id: 'standalone',
           lowerClass: REFERENCE_BAND_LOWER_CLASS,
           upperClass: REFERENCE_BAND_UPPER_CLASS,
+          lowerDataKey: props.lowerDataKey,
+          upperDataKey: props.upperDataKey,
           name: props.name ?? 'Reference band',
           colorToken,
           fillColor: getIn(theme.colors, colorToken),
@@ -238,6 +258,8 @@ const useBarReferenceBand = ({
           id: dataKey,
           lowerClass: perLineBandClass(dataKey, 'lower'),
           upperClass: perLineBandClass(dataKey, 'upper'),
+          lowerDataKey: props.rangeLowerDataKey,
+          upperDataKey: props.rangeUpperDataKey,
           name: props.rangeName ?? 'Industry range',
           colorToken,
           fillColor: getIn(theme.colors, colorToken),
@@ -249,6 +271,25 @@ const useBarReferenceBand = ({
         });
       }
     });
+
+    // `sanitizeBandKey` maps every character outside [A-Za-z0-9_-] to '-', so it is not injective:
+    // dot-nested keys like `a.b` and `a b` both become `a-b`. The band layer looks its series up
+    // with `querySelector`, which takes the first match, so two colliding series would silently
+    // read each other's bars. Warn rather than guess which one was meant.
+    if (__DEV__) {
+      const seen = new Map<string, string>();
+      sources.forEach((source) => {
+        const existing = seen.get(source.lowerClass);
+        if (existing !== undefined && existing !== source.id) {
+          logger({
+            message: `Reference bands for "${existing}" and "${source.id}" resolve to the same internal class name, so their bands would read each other's bars. Rename one of these dataKeys using only letters, digits, "_" or "-".`,
+            moduleName: 'ChartBarWrapper',
+            type: 'warn',
+          });
+        }
+        seen.set(source.lowerClass, source.id);
+      });
+    }
 
     return sources;
   }, [children, theme, dataColorMapping]);
@@ -325,17 +366,42 @@ const useBarReferenceBand = ({
         const lowerAnchors = parsePathAnchors(lowerCurve.getAttribute('d') ?? '');
         if (upperAnchors.length === 0 || lowerAnchors.length === 0) return;
 
-        // Re-anchor to this series' bar centres where they line up 1:1 with the bounds; otherwise
-        // keep the bound series' own x (the single centred bar case).
+        // Re-anchor each bound onto this series' own bar centres.
+        //
+        // The bound series render with `connectNulls`, so recharts filters undefined points out of
+        // the path (`Curve.js`: `points.filter(defined)`) — a null in a range key means one fewer
+        // anchor. Bars have no such filter; a null row still emits a zero-height rect. So anchor
+        // position and bar position stop agreeing the moment the data has a gap.
+        //
+        // Mapping through the *data* index rather than array position is what makes that harmless:
+        // anchor `k` belongs to row `definedIndices[k]`, whose bar centre is `centres[row]`. An
+        // anchor with no matching bar simply keeps its own x instead of discarding the re-anchoring
+        // for the whole series, which is what a length-equality guard would do.
         const centres = source.hoverOnly ? getBarCentres(surface, source.id) : null;
-        const reanchor = (anchors: PixelPoint[]): PixelPoint[] =>
-          centres && centres.length === anchors.length
-            ? anchors.map((anchor, index) => ({ x: centres[index], y: anchor.y }))
-            : anchors;
+
+        const reanchor = (anchors: PixelPoint[], boundDataKey: string): PixelPoint[] => {
+          if (!centres) return anchors;
+          const { indices } = getDefinedNumericPoints(data, boundDataKey);
+          if (indices.length !== anchors.length) {
+            // Our model of what recharts put in the path is wrong. Warn loudly in dev — rather
+            // than throw, since a data shape shouldn't take the chart down — and fall back to the
+            // bound series' own x rather than anchoring to bars we can't line up.
+            logger({
+              message: `Reference band for "${source.id}" could not be anchored to its bars: the bound series "${boundDataKey}" rendered ${anchors.length} point(s) but ${indices.length} row(s) hold a numeric value. Falling back to category centres, which may not line up with the bars in a grouped chart.`,
+              moduleName: 'ChartBarWrapper',
+              type: 'warn',
+            });
+            return anchors;
+          }
+          return anchors.map((anchor, position) => {
+            const centre = centres[indices[position]];
+            return Number.isFinite(centre) ? { x: centre, y: anchor.y } : anchor;
+          });
+        };
 
         const d = buildBarBandPath(
-          reanchor(upperAnchors),
-          reanchor(lowerAnchors),
+          reanchor(upperAnchors, source.upperDataKey),
+          reanchor(lowerAnchors, source.lowerDataKey),
           bounds.left,
           bounds.right,
         );
@@ -350,7 +416,7 @@ const useBarReferenceBand = ({
       // Shaded column behind the hovered category — only meaningful alongside a hovered band.
       const nextHighlight =
         highlightCentres !== null && hoveredBarIndex !== null
-          ? getCategoryColumn(surface, highlightCentres, hoveredBarIndex)
+          ? getCategoryColumn(surface, highlightCentres, hoveredBarIndex, data.length)
           : null;
       setHighlight((prev) => {
         const isSame =
@@ -365,7 +431,7 @@ const useBarReferenceBand = ({
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [containerRef, hasReferenceBand, bandSources, hoveredDataKey, hoveredBarIndex]);
+  }, [containerRef, hasReferenceBand, bandSources, hoveredDataKey, hoveredBarIndex, data]);
 
   // Latest computeBands, so the observers below can call it without being torn down and rebuilt
   // every time the hovered bar changes.

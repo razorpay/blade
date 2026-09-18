@@ -1,5 +1,5 @@
 import React from 'react';
-import { waitFor } from '@testing-library/react';
+import { waitFor, fireEvent } from '@testing-library/react';
 import { ChartBarWrapper, ChartBar } from '../BarChart';
 import {
   ChartXAxis,
@@ -11,6 +11,7 @@ import {
 } from '../../CommonChartComponents';
 import { REFERENCE_BAND_LAYER_CLASS } from '../../CommonChartComponents/tokens';
 import { perLineBandClass } from '../../utils/referenceBandUtils';
+import { barSeriesClass } from '../tokens';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box/Box';
 
@@ -400,5 +401,90 @@ describe('BarChart per-bar reference bands (range on ChartBar)', () => {
       },
     );
     expect(faded).toHaveLength(0);
+  });
+});
+
+/**
+ * The bound series render with `connectNulls`, so recharts filters undefined points out of the
+ * rendered path (`Curve.js`: `points.filter(defined)`), while a null bar still emits a zero-height
+ * rect (`Bar.js`: `height = isNan(computedHeight) ? 0 : computedHeight`). A gap in a range key
+ * therefore leaves fewer anchors than bars, and anything matching the two by array position lands
+ * the band on the wrong x.
+ */
+describe('BarChart reference band with gaps in the range data', () => {
+  /**
+   * Cast because `ChartBarWrapper`'s `data` is typed `{ [key: string]: string | number }`, which
+   * can't express a missing bound — unlike `ChartLineWrapper`'s `{ [key: string]: unknown }`, whose
+   * own stories use `null`. The runtime path is reachable regardless: a row that simply lacks the
+   * range key yields `undefined`, which recharts treats identically. The type divergence between
+   * the two charts is raised separately rather than widened here.
+   */
+  const sparseData = ([
+    { name: 'Jan', sales: 4000, salesMin: 3000, salesMax: 5000, profit: 2000 },
+    // No range for Feb — this is the gap that drops an anchor from the bound path.
+    { name: 'Feb', sales: 3000, salesMin: null, salesMax: null, profit: 1500 },
+    { name: 'Mar', sales: 2000, salesMin: 1400, salesMax: 3100, profit: 1000 },
+    { name: 'Apr', sales: 5000, salesMin: 3800, salesMax: 6000, profit: 2500 },
+  ] as unknown) as React.ComponentProps<typeof ChartBarWrapper>['data'];
+
+  const renderSparseGrouped = (): ReturnType<typeof renderWithTheme> =>
+    renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartBarWrapper data={sparseData}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartBar
+            dataKey="sales"
+            name="Sales"
+            rangeLowerDataKey="salesMin"
+            rangeUpperDataKey="salesMax"
+          />
+          <ChartBar dataKey="profit" name="Profit" />
+        </ChartBarWrapper>
+      </Box>,
+    );
+
+  const xsOf = (pathData: string): number[] =>
+    [...pathData.matchAll(/[ML](-?[\d.]+),/g)].map((match) => Number(match[1]));
+
+  it('should still anchor the band to its own series bars when a range value is null', async () => {
+    const { container } = renderSparseGrouped();
+
+    const salesBars = container.querySelector(`.${barSeriesClass('sales')}`);
+    if (!salesBars) throw new Error('Expected the sales series to render.');
+
+    const barRects = Array.from(salesBars.querySelectorAll<SVGGElement>('.recharts-bar-rectangle'));
+    const barCentres = barRects.map((group) => {
+      const rect = group.querySelector('rect');
+      return Number(rect?.getAttribute('x')) + Number(rect?.getAttribute('width')) / 2;
+    });
+    // One rect per row, nulls included — this is what makes position equal data index.
+    expect(barCentres).toHaveLength(sparseData.length);
+
+    fireEvent.mouseEnter(barRects[0]);
+
+    await waitFor(() => {
+      expect(container.querySelector(`.${REFERENCE_BAND_LAYER_CLASS} path`)).toBeInTheDocument();
+    });
+
+    const d = container.querySelector(`.${REFERENCE_BAND_LAYER_CLASS} path`)!.getAttribute('d')!;
+    // Jan, Mar and Apr have bounds; Feb does not. Those three anchors must sit on the sales bars'
+    // own centres — matching by array position would have put them on Jan/Feb/Mar instead.
+    const expected = [barCentres[0], barCentres[2], barCentres[3]];
+    expected.forEach((centre) => {
+      expect(xsOf(d).some((x) => Math.abs(x - centre) < 0.5)).toBe(true);
+    });
+  });
+
+  it('should keep the bound path and the defined rows in step', () => {
+    const { container } = renderSparseGrouped();
+    const boundPath = container
+      .querySelector(`.${perLineBandClass('salesMin', 'lower')}`)
+      ?.querySelector('.recharts-line-curve');
+    // Sanity check on the premise: the bound series drops the null row from its rendered path,
+    // so it carries one fewer anchor than there are categories.
+    if (boundPath) {
+      expect(xsOf(boundPath.getAttribute('d') ?? '').length).toBeLessThan(sparseData.length);
+    }
   });
 });
