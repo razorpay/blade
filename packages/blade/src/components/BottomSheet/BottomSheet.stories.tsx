@@ -349,6 +349,11 @@ const BottomSheetTemplate: StoryFn<typeof BottomSheetComponent> = ({ ...args }) 
 
 export const Default = BottomSheetTemplate.bind({});
 
+export const WithoutDragHandle = BottomSheetTemplate.bind({});
+WithoutDragHandle.args = {
+  showDragHandle: false,
+};
+
 const WithHeaderFooterTemplate: StoryFn<any> = (args: StoryControlProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
