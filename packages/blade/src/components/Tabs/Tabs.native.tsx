@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView as GestureHandlerScrollView } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import PagerView from 'react-native-pager-view';
 import type { TabsProps } from './types';
@@ -21,7 +22,7 @@ import { throwBladeError } from '~utils/logger';
 // Helpers
 // ---------------------------------------------------------------------------
 type TabListChildProps = { children: React.ReactElement[] };
-type TabPanelChildProps = { value: string; children: React.ReactNode };
+type TabPanelChildProps = { value: string; children: React.ReactNode; isScrollable?: boolean };
 type TabChildProps = {
   value: string;
   children: React.ReactNode;
@@ -49,11 +50,17 @@ const getTabs = (node: React.ReactNode): React.ReactElement<TabChildProps>[] => 
   return (tabList as React.ReactElement<TabListChildProps>).props.children;
 };
 
-const getTabPanels = (node: React.ReactNode): { value: string; children: React.ReactNode }[] => {
+const getTabPanels = (
+  node: React.ReactNode,
+): { value: string; children: React.ReactNode; isScrollable: boolean }[] => {
   const children = React.Children.toArray(node) as React.ReactElement<TabPanelChildProps>[];
   return children
     .filter((child) => getComponentId(child) === 'TabPanel')
-    .map((child) => ({ value: child.props.value, children: child.props.children }));
+    .map((child) => ({
+      value: child.props.value,
+      children: child.props.children,
+      isScrollable: child.props.isScrollable ?? false,
+    }));
 };
 
 type Route = {
@@ -419,7 +426,26 @@ const _Tabs = (
             const shouldRender = !isLazy || index === safeIndex;
             return (
               <View key={panel.value} style={styles.pagerView}>
-                {shouldRender ? panel.children : null}
+                {shouldRender ? (
+                  // Auto-wrap only when consumer opted in via isScrollable=true.
+                  // Also skip if the single top-level child is already a RN / RNGH ScrollView.
+                  // For other scroll containers (Animated.ScrollView,
+                  // KeyboardAwareScrollView, etc.) leave isScrollable at its default false.
+                  !panel.isScrollable ||
+                  (React.isValidElement(panel.children) &&
+                    (panel.children.type === ScrollView ||
+                      panel.children.type === GestureHandlerScrollView)) ? (
+                    panel.children
+                  ) : (
+                    <ScrollView
+                      nestedScrollEnabled
+                      showsVerticalScrollIndicator={false}
+                      contentContainerStyle={{ flexGrow: 1 }}
+                    >
+                      {panel.children}
+                    </ScrollView>
+                  )
+                ) : null}
               </View>
             );
           })}
