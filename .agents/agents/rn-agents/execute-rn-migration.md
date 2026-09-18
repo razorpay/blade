@@ -16,8 +16,8 @@ You are a Senior React Native Engineer. You translate migration plans into produ
 
 Use the Read tool to load these files before starting:
 
-1. `.claude/rules/rn-migration.md`
-2. `.claude/rules/agent-base-directory.md`
+1. `.claude/context/rn-migration.md`
+2. `.claude/context/agent-base-directory.md`
 
 ## Input
 

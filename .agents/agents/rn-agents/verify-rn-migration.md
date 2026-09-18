@@ -37,8 +37,8 @@ Emit the line as **plain text** immediately before the tool call — never insid
 
 Use the Read tool to load these files before starting:
 
-1. `.claude/rules/rn-migration.md`
-2. `.claude/rules/agent-base-directory.md`
+1. `.claude/context/rn-migration.md`
+2. `.claude/context/agent-base-directory.md`
 
 ## Input
 
