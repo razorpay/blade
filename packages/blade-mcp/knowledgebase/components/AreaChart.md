@@ -15,7 +15,7 @@ AreaChart is a data visualization component built on top of Recharts that displa
 - `dataKey` prop is required for each `ChartArea` component to specify which data field to display
 - `name` prop is required for each `ChartArea` component for legend and tooltip display
 - Data array must contain objects with consistent key structure across all data points
-- `colorTheme` currently only supports 'default' value (other themes will log warning)
+- `colorTheme` currently only supports 'categorical' value
 
 ## TypeScript Types
 
@@ -23,16 +23,25 @@ These types define the props that the AreaChart component and its subcomponents 
 
 ```typescript
 
-type ChartAreaProps {
+type ChartAreaProps = {
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   connectNulls?: boolean;
+  /**
+   * The style of the line drawn across null points. Only has an effect when `connectNulls` is `true`.
+   * @default 'solid'
+   */
+  connectNullsStyle?: 'solid' | 'dashed';
   showLegend?: boolean;
-  dataKey: string;
-  name: string;
-  stackId?: string | number;
-  color?: ChartsCategoricalColorToken;
+  dataKey: RechartAreaProps['dataKey'];
+  name: RechartAreaProps['name'];
+  stackId?: RechartAreaProps['stackId'];
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   dot?: RechartAreaProps['dot'];
   activeDot?: RechartAreaProps['activeDot'];
+  /**
+   * Whether to hide the area.
+   */
+  hide?: boolean;
 }
 
 type data = {
@@ -133,9 +142,6 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
   dataKey?: string;
 };
 
-type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
-
-
 type Layout = 'horizontal' | 'vertical';
 type Align = 'left' | 'right';
 
@@ -143,12 +149,34 @@ type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
+  /**
+   * Array of dataKeys that are currently selected.
+   * When provided, the component is in controlled mode.
+   */
+  selectedDataKeys?: string[];
+  /**
+   * Default selected dataKeys for uncontrolled mode.
+   * If not provided, all dataKeys are selected by default.
+   */
+  defaultSelectedDataKeys?: string[];
+  /**
+   * Callback fired when the selection changes.
+   */
+  onSelectedDataKeysChange?: ({
+    dataKey,
+    selectedKeysArray,
+  }: {
+    dataKey: string;
+    selectedKeysArray: string[];
+  }) => void;
 };
 
 
-type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
+type ChartCartesianGridProps = Omit<RechartsCartesianGridProps, 'strokeDasharray' | 'verticalFill' | 'horizontalFill'>;
 
 type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+
+type ChartSequentialColorToken = `data.background.sequential.${Exclude<ChartColorCategories, 'gray'>}.${keyof ChartSequentialEmphasis}`;
 
 type colorTheme = 'categorical';
 ```
@@ -168,7 +196,6 @@ type colorTheme = 'categorical';
 - Don't use more than 10 `ChartArea` components per chart — this is the maximum enforced limit.
 - Don't use `AreaChart` for categorical comparisons — use `BarChart` instead.
 - Don't use `AreaChart` for showing parts of a whole — use `DonutChart` for proportional data.
-- Don't use sequential color tokens — only categorical color tokens are supported.
 - Don't try to customize chart margins — they are predefined internally.
 
 ## Examples
@@ -201,10 +228,10 @@ function BasicAreaChart() {
     <Box width="100%" height="400px">
       <ChartAreaWrapper data={data}>
         <ChartCartesianGrid />
-        <CharChartXAxis dataKey="month" />
+        <ChartXAxis dataKey="month" />
         <ChartYAxis />
         <ChartTooltip />
-        <Area
+        <ChartArea
           dataKey="revenue"
           name="Revenue"
           type="monotone"

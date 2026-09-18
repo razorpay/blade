@@ -10,6 +10,7 @@ const getViewStyles = (root: ReactTestInstance): ViewStyle[] =>
 
 const sizeCases = [
   ['xsmall', 22.4, 29.6],
+  ['small', 22.4, 29.6],
   ['medium', 24.8, 33.2],
   ['large', 27.2, 36.8],
 ] as const;

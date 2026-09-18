@@ -8,7 +8,7 @@ Collapsible is a component that allows users to toggle the visibility of hidden 
 
 ## Important Constraints
 
-- `Collapsible` component only accepts `CollapsibleBody`, `CollapsibleButton`, and `CollapsibleLink` components as children
+- `Collapsible` component only accepts `CollapsibleBody`, `CollapsibleButton`, `CollapsibleLink`, and `CollapsibleText` components as children
 
 ## TypeScript Types
 
@@ -81,6 +81,42 @@ type CollapsibleBodyProps = {
   children: React.ReactNode;
 } & StyledPropsBlade &
   TestID;
+
+/**
+ * Props for the CollapsibleText component.
+ * Use it as a text trigger with a chevron icon that fills the full row.
+ */
+type CollapsibleTextProps = {
+  /**
+   * Text content for the trigger
+   */
+  children: React.ReactNode;
+  /**
+   * Size of the text
+   * @default 'medium'
+   */
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  /**
+   * Weight of the text
+   * @default 'regular'
+   */
+  weight?: 'regular' | 'medium' | 'semibold';
+  /**
+   * Color of the text (a Blade text color token, for example 'surface.text.gray.normal')
+   */
+  color?: string;
+  /**
+   * Disables the trigger
+   * @default false
+   */
+  isDisabled?: boolean;
+  /**
+   * Accessibility label for the trigger
+   */
+  accessibilityLabel?: string;
+} & TestID &
+  DataAnalyticsAttribute &
+  StyledPropsBlade;
 ```
 
 ## Usage Guidelines
@@ -224,4 +260,28 @@ const TopDirectionExample = () => {
 };
 
 export default TopDirectionExample;
+```
+
+### Collapsible with Text Trigger
+
+Use `CollapsibleText` when the trigger must be a full-width text row with a chevron icon.
+
+```tsx
+import React from 'react';
+import { Collapsible, CollapsibleText, CollapsibleBody, Text, Box } from '@razorpay/blade/components';
+
+const CollapsibleTextExample = () => {
+  return (
+    <Box maxWidth="500px">
+      <Collapsible>
+        <CollapsibleText weight="semibold">Payment details</CollapsibleText>
+        <CollapsibleBody>
+          <Text>Amount, payment method, and settlement date are shown here.</Text>
+        </CollapsibleBody>
+      </Collapsible>
+    </Box>
+  );
+};
+
+export default CollapsibleTextExample;
 ```

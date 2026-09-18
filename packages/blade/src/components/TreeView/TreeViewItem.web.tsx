@@ -7,10 +7,12 @@ import type { TreeViewChevronState } from './TreeViewChevron.web';
 import { StyledTreeViewRow } from './StyledTreeViewRow.web';
 import { TreeViewGroupAnimator, TreeViewRowMountAnimator } from './TreeViewAnimator.web';
 import { getBranchSelectionState } from './treeViewUtils';
+import type { TreeViewSize } from './treeViewTokens';
+import { getItemFirstRowHeight, treeViewTokens } from './treeViewTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { BaseMenuItem } from '~components/BaseMenu';
-import { itemFirstRowHeight } from '~components/BaseMenu/BaseMenuItem/tokens';
 import { Checkbox } from '~components/Checkbox';
+import { useTheme } from '~components/BladeProvider';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { getTextProps, Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
@@ -25,10 +27,12 @@ const TreeViewItemCheckbox = ({
   isChecked,
   isIndeterminate,
   isDisabled,
+  size,
 }: {
   isChecked: boolean;
   isIndeterminate: boolean;
   isDisabled: boolean;
+  size: TreeViewSize;
 }): React.ReactElement => {
   return (
     <BaseBox
@@ -40,6 +44,7 @@ const TreeViewItemCheckbox = ({
         isChecked={isChecked}
         isIndeterminate={isIndeterminate}
         isDisabled={isDisabled}
+        size={treeViewTokens[size].checkboxSize}
         tabIndex={-1}
       >
         {null}
@@ -51,6 +56,7 @@ const TreeViewItemCheckbox = ({
 const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   const {
     selectionType,
+    size,
     isInsideDropdown,
     nodeMap,
     selectedValuesSet,
@@ -68,7 +74,9 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     isKeydownPressed,
     setShouldIgnoreBlurAnimation,
   } = useDropdown();
+  const { theme } = useTheme();
   const { containerRef, textRef } = useTruncationTitle({ content: props.title });
+  const itemFirstRowHeight = getItemFirstRowHeight(theme, size);
 
   // distinguishes a children group mounting on the row's very first render (initial tree
   // mount with defaultIsExpanded -> render statically) from one mounting later
@@ -126,9 +134,9 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     }
   };
 
-  // Figma layout: [20px chevron slot] -4px- [checkbox] -8px- [leading] -8px- [title]
-  // The chevron slot is reserved on every row (empty on leaves), so rows of the
-  // same level line up whether or not they have children
+  // Figma layout: [chevron slot] -4px- [checkbox] -8px- [leading] -8px- [title]
+  // The chevron slot (20px on medium, 16px on small) is reserved on every row
+  // (empty on leaves), so rows of the same level line up whether or not they have children
   const rowContent = (
     <BaseBox
       display="flex"
@@ -161,6 +169,7 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
               isChecked={isSelected}
               isIndeterminate={branchSelectionState === 'some'}
               isDisabled={node.isDisabled}
+              size={size}
             />
           </BaseBox>
         ) : null}
@@ -187,7 +196,10 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
               truncateAfterLines={1}
               wordBreak="break-all"
               {...getTextProps({
-                size: 'medium',
+                // `variant` is required for `size` to be applied at all - getTextProps only
+                // maps size to font tokens inside its `body` branch
+                variant: 'body',
+                size: treeViewTokens[size].titleTextSize,
                 color: node.isDisabled
                   ? 'interactive.text.gray.disabled'
                   : 'interactive.text.gray.normal',
@@ -229,6 +241,7 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     <TreeViewRowMountAnimator>
       <StyledTreeViewRow
         level={node.level}
+        treeViewSize={size}
         {...metaAttribute({ name: MetaConstants.TreeViewItem, testID: props.testID })}
       >
         <BaseMenuItem

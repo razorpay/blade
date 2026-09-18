@@ -90,10 +90,18 @@ type PhoneNumberInputProps = {
   onClearButtonClick?: () => void;
 
   /* Common input props */
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   label?: string;
   accessibilityLabel?: string;
   labelPosition?: 'top' | 'left';
+  /**
+   * Suffix element shown right after the label text (e.g. an info icon with Tooltip)
+   */
+  labelSuffix?: React.ReactNode;
+  /**
+   * Trailing element shown at the end of the label row (e.g. a Link)
+   */
+  labelTrailing?: React.ReactNode;
   helpText?: string;
   showHelpTextOnFocus?: boolean;
   placeholder?: string;
@@ -101,15 +109,34 @@ type PhoneNumberInputProps = {
   validationState?: 'none' | 'error' | 'success';
   errorText?: string;
   successText?: string;
-  necessityIndicator?: 'optional' | 'required';
+  necessityIndicator?: 'optional' | 'required' | 'none';
   isRequired?: boolean;
   isDisabled?: boolean;
   autoFocus?: boolean;
-  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'search' | 'send';
+  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
   leadingIcon?: React.ComponentType<any>;
   trailingIcon?: React.ComponentType<any>;
   testID?: string;
-  autoCompleteSuggestionType?: 'none' | 'telephone' | 'oneTimeCode';
+  autoCompleteSuggestionType?:
+    | 'none'
+    | 'name'
+    | 'email'
+    | 'username'
+    | 'password'
+    | 'newPassword'
+    | 'oneTimeCode'
+    | 'telephone'
+    | 'postalCode'
+    | 'countryName'
+    | 'creditCardNumber'
+    | 'creditCardCSC'
+    | 'creditCardExpiry'
+    | 'creditCardExpiryMonth'
+    | 'creditCardExpiryYear'
+    | 'on';
+  onFocus?: ({ name, value }: { name?: string; value?: string }) => void;
+  onBlur?: ({ name, value }: { name?: string; value?: string }) => void;
+  onClick?: ({ name, value }: { name?: string; value?: string }) => void;
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 ```

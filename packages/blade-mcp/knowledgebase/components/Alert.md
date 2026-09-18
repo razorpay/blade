@@ -11,6 +11,16 @@ Alerts are messages that communicate information to users about any significant 
 The following types represent the props that the Alert component accepts. These types define all the available properties you can use when implementing the Alert component in your application.
 
 ```typescript
+import type React from 'react';
+
+type IconComponent = React.ComponentType<{
+  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+type SubtleOrIntense = 'subtle' | 'intense';
+type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+type AlertColors = FeedbackColors | 'primary';
+
 type PrimaryAction = {
   text: string;
   onClick: () => void;
@@ -38,7 +48,7 @@ type AlertProps = {
   /**
    * Body content, pass text or JSX. Avoid passing components except `Link` to customize the content.
    */
-  description: ReactChild;
+  description: React.ReactChild;
 
   /**
    * A brief heading
@@ -80,7 +90,13 @@ type AlertProps = {
   /**
    * Sets the color tone
    */
-  color?: FeedbackColors;
+  /**
+   * Sets a custom max-width for the Alert. Has no effect when `isFullWidth` is true.
+   * @default '584px'
+   */
+  maxWidth?: string;
+
+  color?: AlertColors;
 
   /**
    * Renders a primary action button and a secondary action link button

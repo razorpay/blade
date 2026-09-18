@@ -15,6 +15,8 @@ The Drawer component is a panel that slides in from the right side of the screen
 The following types represent the props that the Drawer component and its subcomponents accept. These props allow consumers to configure the drawer behavior, appearance, and content.
 
 ```typescript
+type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+
 /**
  * Props for the Drawer component
  */

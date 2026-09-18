@@ -356,7 +356,10 @@ export const GroupedBarChartWithMultipleReferenceBands: StoryFn<MultiBandArgs> =
                 ? {
                     rangeLowerDataKey: `${method.key}Low`,
                     rangeUpperDataKey: `${method.key}High`,
-                    rangeName: `${method.name} industry range`,
+                    // Just 'Industry range', not '<method> industry range'. In the tooltip this row
+                    // sits directly under its own series name and colour swatch, so repeating the
+                    // method name reads as noise.
+                    rangeName: 'Industry range',
                   }
                 : {})}
             />

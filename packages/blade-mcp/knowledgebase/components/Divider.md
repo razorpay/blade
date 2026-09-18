@@ -42,12 +42,12 @@ type DividerProps = {
   /**
    * Sets the height of divider. Divider uses Flex by default, use height only when parent is not flex.
    */
-  height?: CSSObject['height'];
+  height?: string;
 
   /**
    * Sets the width of divider. Divider uses Flex by default, use width only when parent is not flex.
    */
-  width?: CSSObject['width'];
+  width?: string;
 } & StyledPropsBlade &
   TestID;
 ```

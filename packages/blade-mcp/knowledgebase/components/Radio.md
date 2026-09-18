@@ -22,7 +22,7 @@ type RadioProps = {
   /**
    * Sets the label text of the Radio
    */
-  children?: StringChildrenType;
+  children?: string;
   /**
    * Help text for the Radio
    */
@@ -44,10 +44,14 @@ type RadioProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * Trailing element to show next to the radio label (for example, a `<Badge>`).
+   * Shows only when the parent `RadioGroup` has `orientation="vertical"`.
+   */
+  trailing?: React.ReactElement;
 } & TestID &
   DataAnalyticsAttribute &
-  StyledPropsBlade &
-  MotionMetaProp;
+  StyledPropsBlade;
 
 type RadioGroupProps = {
   /**
@@ -145,20 +149,6 @@ type OnChange = ({
   event: React.ChangeEvent;
   value?: string;
 }) => void;
-
-type RadioGroupContextType = Pick<
-  RadioGroupProps,
-  | 'validationState'
-  | 'isDisabled'
-  | 'isRequired'
-  | 'labelPosition'
-  | 'name'
-  | 'defaultValue'
-  | 'value'
-  | 'onChange'
-  | 'necessityIndicator'
-  | 'size'
-> & { state?: State };
 ```
 
 ## Usage Guidelines

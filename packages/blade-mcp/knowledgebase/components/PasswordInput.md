@@ -55,6 +55,14 @@ export type PasswordInputProps = (
    */
   autoCompleteSuggestionType?: 'none' | 'password' | 'newPassword';
   labelPosition?: 'left' | 'top';
+  /**
+   * Suffix element shown right after the label text (e.g. an info icon with Tooltip)
+   */
+  labelSuffix?: React.ReactNode;
+  /**
+   * Trailing element shown at the end of the label row (e.g. a Link)
+   */
+  labelTrailing?: React.ReactNode;
   maxCharacters?: number;
   validationState?: 'success' | 'error' | 'none';
   errorText?: string;
@@ -74,7 +82,7 @@ export type PasswordInputProps = (
   autoFocus?: boolean;
   keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
   testID?: string;
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   alignSelf?: string;
   display?: string;
   justifySelf?: string;
@@ -113,7 +121,7 @@ export type PasswordInputProps = (
 type CharacterCounterProps = {
   currentCount: number;
   maxCount: number;
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 };
 ```
 

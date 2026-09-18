@@ -37,9 +37,9 @@ type ListProps = {
   size?: 'small' | 'medium' | 'large';
 
   /**
-   * Content to be rendered inside the list
+   * ListItem elements to be rendered inside the list
    */
-  children: React.ReactNode;
+  children: React.ReactElement<ListItemProps> | React.ReactElement<ListItemProps>[];
 
   /**
    * Custom icon for list items
@@ -48,6 +48,7 @@ type ListProps = {
 
   /**
    * Color of the custom icon
+   * Accepts an icon color token, e.g. 'surface.icon.gray.normal', 'feedback.icon.positive.intense'
    */
   iconColor?: string;
 } & StyledPropsBlade &
@@ -130,7 +131,7 @@ type IconProps = {
   /**
    * The size of the icon
    */
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 };
 ```
 
