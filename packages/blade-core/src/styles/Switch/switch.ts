@@ -1,6 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './switch.module.css';
 
 export type SwitchSize = 'small' | 'medium';
 
@@ -17,15 +15,15 @@ export type SwitchVariants = {
  * disabled-checked / disabled-unchecked combinations, so they don't need
  * compound variants here.
  */
-export const switchTrackStyles = cva(styles.track, {
+export const switchTrackStyles = cva('blade-switch-track', {
   variants: {
     size: {
-      small: styles['size-small'],
-      medium: styles['size-medium'],
+      small: 'blade-switch-size-small',
+      medium: 'blade-switch-size-medium',
     },
     isChecked: {
-      true: styles.checked,
-      false: styles.unchecked,
+      true: 'blade-switch-checked',
+      false: 'blade-switch-unchecked',
     },
   },
   defaultVariants: {
@@ -67,18 +65,18 @@ export function getSwitchTemplateClasses(): {
   effectiveChecked: string;
 } {
   return {
-    switch: styles.switch,
-    label: styles.label,
-    input: styles.input,
-    track: styles.track,
-    thumb: styles.thumb,
-    animatedThumb: styles['animated-thumb'],
-    thumbIcon: styles['thumb-icon'],
-    sizeSmall: styles['size-small'],
-    sizeMedium: styles['size-medium'],
-    checked: styles.checked,
-    unchecked: styles.unchecked,
-    pressed: styles.pressed,
-    effectiveChecked: styles['effective-checked'],
+    switch: 'blade-switch',
+    label: 'blade-switch-label',
+    input: 'blade-switch-input',
+    track: 'blade-switch-track',
+    thumb: 'blade-switch-thumb',
+    animatedThumb: 'blade-switch-animated-thumb',
+    thumbIcon: 'blade-switch-thumb-icon',
+    sizeSmall: 'blade-switch-size-small',
+    sizeMedium: 'blade-switch-size-medium',
+    checked: 'blade-switch-checked',
+    unchecked: 'blade-switch-unchecked',
+    pressed: 'blade-switch-pressed',
+    effectiveChecked: 'blade-switch-effective-checked',
   };
 }

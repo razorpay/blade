@@ -1,8 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import labelStyles from './formLabel.module.css';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import hintStyles from './formHint.module.css';
 import type { BaseInputSize } from './baseInputTokens';
 
 export type FormSize = BaseInputSize;
@@ -53,17 +49,17 @@ export const hintTextColor: Record<FormHintType, string> = {
 
 /* ── Label CVA ── */
 
-export const formLabelCva = cva(labelStyles.label, {
+export const formLabelCva = cva('blade-form-label', {
   variants: {
     position: {
       top: null,
-      left: labelStyles['label-left'],
+      left: 'blade-form-label-left',
     },
     size: {
-      xsmall: labelStyles['size-xsmall'],
-      small: labelStyles['size-small'],
-      medium: labelStyles['size-medium'],
-      large: labelStyles['size-large'],
+      xsmall: 'blade-form-size-xsmall',
+      small: 'blade-form-size-small',
+      medium: 'blade-form-size-medium',
+      large: 'blade-form-size-large',
     },
   },
   defaultVariants: {
@@ -79,17 +75,17 @@ export function getFormLabelClasses(props: {
   return formLabelCva(props);
 }
 
-export const formLabelInnerCva = cva(labelStyles['label-inner'], {
+export const formLabelInnerCva = cva('blade-form-label-inner', {
   variants: {
     position: {
       top: null,
-      left: labelStyles['label-left'],
+      left: 'blade-form-label-left',
     },
     size: {
-      xsmall: labelStyles['size-xsmall'],
-      small: labelStyles['size-small'],
-      medium: labelStyles['size-medium'],
-      large: labelStyles['size-large'],
+      xsmall: 'blade-form-size-xsmall',
+      small: 'blade-form-size-small',
+      medium: 'blade-form-size-medium',
+      large: 'blade-form-size-large',
     },
   },
   defaultVariants: {
@@ -107,13 +103,13 @@ export function getFormLabelInnerClasses(props: {
 
 /* ── Hint CVA ── */
 
-export const formHintCva = cva(hintStyles.hint, {
+export const formHintCva = cva('blade-form-hint', {
   variants: {
     size: {
       xsmall: null,
       small: null,
       medium: null,
-      large: hintStyles['size-large'],
+      large: 'blade-form-size-large',
     },
   },
   defaultVariants: {
@@ -140,13 +136,13 @@ export function getFormTemplateClasses(): {
   hintTextLargeWithIcon: string;
 } {
   return {
-    labelTextGroup: labelStyles['label-text-group'],
-    labelTextGroupTight: labelStyles['necessity-tight'],
-    labelSuffix: labelStyles['label-suffix'],
-    labelTrailing: labelStyles['label-trailing'],
-    labelLeft: labelStyles['label-left'],
-    hintWrapper: hintStyles['hint-wrapper'],
-    hintIcon: hintStyles['hint-icon'],
-    hintTextLargeWithIcon: hintStyles['hint-text-large-with-icon'],
+    labelTextGroup: 'blade-form-label-text-group',
+    labelTextGroupTight: 'blade-form-necessity-tight',
+    labelSuffix: 'blade-form-label-suffix',
+    labelTrailing: 'blade-form-label-trailing',
+    labelLeft: 'blade-form-label-left',
+    hintWrapper: 'blade-form-hint-wrapper',
+    hintIcon: 'blade-form-hint-icon',
+    hintTextLargeWithIcon: 'blade-form-hint-text-large-with-icon',
   };
 }

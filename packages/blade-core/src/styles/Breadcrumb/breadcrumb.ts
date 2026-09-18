@@ -1,23 +1,27 @@
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './breadcrumb.module.css';
+// Structural classes (participate in `:last-child` / child-combinator / descendant selectors) are
+// emitted by the Tailwind plugin as `.blade-breadcrumb-*` component classes; referenced here by name.
+export const breadcrumbNavClass = 'blade-breadcrumb-nav';
+export const breadcrumbListClass = 'blade-breadcrumb-list';
+export const breadcrumbListItemClass = 'blade-breadcrumb-list-item';
+export const separatorWrapperClass = 'blade-breadcrumb-separator';
+export const currentPageWrapperClass = 'blade-breadcrumb-current-page';
+export const showLastSeparatorClass = 'blade-breadcrumb-show-last-separator';
 
-// Export structural classes directly
-export const breadcrumbNavClass: string = styles['breadcrumb-nav'];
-export const breadcrumbListClass: string = styles['breadcrumb-list'];
-export const breadcrumbListItemClass: string = styles['breadcrumb-list-item'];
-export const separatorWrapperClass: string = styles['separator-wrapper'];
-export const currentPageWrapperClass: string = styles['current-page-wrapper'];
-export const showLastSeparatorClass: string = styles['show-last-separator'];
-
-// Stepper variant classes
-export const breadcrumbListStepperClass: string = styles['breadcrumb-list-stepper'];
-export const stepperItemClass: string = styles['stepper-item'];
-export const stepperItemSelectedPrimaryClass: string = styles['stepper-item-selected-primary'];
-export const stepperItemSelectedNeutralClass: string = styles['stepper-item-selected-neutral'];
-export const stepperItemSelectedWhiteClass: string = styles['stepper-item-selected-white'];
-export const stepperItemLinkClass: string = styles['stepper-item-link'];
-export const stepperItemLinkOnLightClass: string = styles['stepper-item-link-onlight'];
-export const stepperItemLinkOnDarkClass: string = styles['stepper-item-link-ondark'];
+// Stepper variant classes.
+export const breadcrumbListStepperClass = 'blade-breadcrumb-list-stepper';
+// Shared pill box applied to every stepper item (selected + link) — atomic utilities.
+export const stepperItemClass =
+  'flex items-center justify-center gap-spacing-2 min-h-[28px] py-spacing-2 px-spacing-4 rounded-large box-border';
+export const stepperItemSelectedPrimaryClass = 'bg-interactive-background-primary-faded';
+export const stepperItemSelectedNeutralClass = 'bg-interactive-background-gray-faded';
+export const stepperItemSelectedWhiteClass = 'bg-interactive-background-static-black-faded';
+// Unselected navigable link — transparent at rest; focus ring uses the stepper's own token.
+export const stepperItemLinkClass =
+  'bg-transparent no-underline cursor-pointer transition-colors duration-xquick ease-standard focus-visible:outline-none focus-visible:shadow-[0px_0px_0px_4px_var(--interactive-border-primary-faded)]';
+export const stepperItemLinkOnLightClass =
+  'hover:bg-interactive-background-gray-default focus-visible:bg-interactive-background-gray-default';
+export const stepperItemLinkOnDarkClass =
+  'hover:bg-interactive-background-static-white-faded focus-visible:bg-interactive-background-static-white-faded';
 
 /**
  * Build the class string for the selected (current page) pill in the stepper

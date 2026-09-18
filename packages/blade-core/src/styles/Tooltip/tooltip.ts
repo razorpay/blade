@@ -1,6 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './tooltip.module.css';
 
 export type TooltipPlacementSide = 'top' | 'right' | 'bottom' | 'left';
 
@@ -9,17 +7,17 @@ export type TooltipVariants = {
 };
 
 /**
- * CVA-based tooltip bubble styles. The `placementSide` variant drives the
- * enter-animation translate axis/sign so the bubble slides in toward the
- * trigger.
+ * CVA-based tooltip bubble styles (Tailwind). The bubble + arrow + per-side enter transforms +
+ * dark-mode borders live in the `.blade-tooltip-*` plugin classes; the `placementSide` variant
+ * selects the side class that drives the enter-animation translate.
  */
-export const tooltipStyles = cva(styles.bubble, {
+export const tooltipStyles = cva('blade-tooltip-bubble', {
   variants: {
     placementSide: {
-      top: styles['side-top'],
-      right: styles['side-right'],
-      bottom: styles['side-bottom'],
-      left: styles['side-left'],
+      top: 'blade-tooltip-side-top',
+      right: 'blade-tooltip-side-right',
+      bottom: 'blade-tooltip-side-bottom',
+      left: 'blade-tooltip-side-left',
     },
   },
   defaultVariants: {
@@ -35,13 +33,15 @@ export function getTooltipClasses(props: TooltipVariants & { className?: string 
   return [tooltipStyles(cvaProps), className].filter(Boolean).join(' ');
 }
 
-export const tooltipTriggerClass = styles.trigger;
-export const tooltipInteractiveWrapperClass = styles['interactive-wrapper'];
-export const tooltipPortalClass = styles.portal;
-export const tooltipBubbleClass = styles.bubble;
-export const tooltipArrowClass = styles.arrow;
-export const tooltipTitleClass = styles.title;
-export const tooltipContentClass = styles.content;
+export const tooltipTriggerClass = 'inline-block';
+export const tooltipInteractiveWrapperClass = 'inline-block';
+export const tooltipPortalClass = 'blade-tooltip-portal';
+export const tooltipBubbleClass = 'blade-tooltip-bubble';
+export const tooltipArrowClass = 'blade-tooltip-arrow';
+export const tooltipTitleClass =
+  'text-surface-text-static-white-normal font-text text-100 leading-100 font-semibold m-spacing-0';
+export const tooltipContentClass =
+  'text-surface-text-static-white-subtle font-text text-75 leading-75 font-regular [word-break:break-word] m-spacing-0';
 
 /**
  * Get all Tooltip template classes as an object.

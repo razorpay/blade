@@ -1,6 +1,5 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './code.module.css';
+import { cn } from '~utils/cx';
 
 export type CodeVariants = {
   isHighlighted?: boolean;
@@ -86,26 +85,28 @@ export function getCodeColor({
   return 'surface.text.gray.normal';
 }
 
-export const codeStyles = cva(styles.base, {
-  variants: {
-    isHighlighted: {
-      true: styles.highlighted,
-      false: '',
+export const codeStyles = cva(
+  'inline-block align-middle rounded-xsmall px-spacing-2 py-spacing-0 leading-0 tracking-100',
+  {
+    variants: {
+      isHighlighted: {
+        true: 'bg-feedback-background-neutral-subtle',
+        false: '',
+      },
+    },
+    defaultVariants: {
+      isHighlighted: true,
     },
   },
-  defaultVariants: {
-    isHighlighted: true,
-  },
-});
+);
 
 /**
  * Generate all classes for Code component
- * This is the single source of truth for all Code styling
+ * This is the single source of truth for all Code styling.
+ * Routed through `cn` so a `className` override wins deterministically over the base.
  */
 export function getCodeClasses(props: CodeVariants & { className?: string }): string {
   const { className, ...cvaProps } = props;
 
-  const classes = [codeStyles(cvaProps), className].filter(Boolean).join(' ');
-
-  return classes;
+  return cn(codeStyles(cvaProps), className);
 }
