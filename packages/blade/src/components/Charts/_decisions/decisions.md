@@ -443,9 +443,13 @@ mush, and only the hovered bar's range is being asked about.
 | `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only    |
 
 - Hovering a bar fades the other series and shades the hovered category, so the revealed band reads
-  against its own bar. The **tooltip** shows the bar's value plus a `low–high` range row — for a
-  standalone band too, not just per-bar ranges. Pass `formatter` to `ChartTooltip` to add units; it
-  formats the value and both range bounds (`62%`, `48%–70%`).
+  against its own bar. This per-series fade applies **only** to charts that declare a band — a plain
+  grouped bar chart keeps the category-wide highlight it has always had, since there is nothing for
+  the fade to reveal. The category fade and the series fade are combined with `min`, not multiplied:
+  a bar that is both the wrong series and the wrong category would otherwise land at `0.2 × 0.2` and
+  disappear.
+- The **tooltip** shows the bar's value plus a `low–high` range row — for a standalone band too, not
+  just per-bar ranges.
 - Use a standalone `<ChartReferenceBand>` instead when there is a single range for the whole chart
   (the unfiltered case) — that one is always visible and gets a legend swatch by default.
 - **Geometry:** the range's **y** comes from two invisible bound series so it folds into the
@@ -454,6 +458,23 @@ mush, and only the hovered bar's range is being asked about.
   centre, which would stack every band on the same x in a grouped chart. Edges are straight chords
   (a bar chart has no trend curve to follow) flat-extended to both plot edges. See
   _Bar Chart with Reference Band_ and _Grouped Bar Chart with Multiple Reference Bands_ stories.
+
+**Accessibility.** The per-bar band is revealed by hover, which is a pointer-only affordance: there
+is no keyboard focus path to it and nothing on touch. It is therefore treated as a **visual
+enhancement, not the carrier of the information** — every value the band encodes is also in the
+tooltip as a `low–high` row, and the standalone chart-wide band additionally carries a legend
+swatch. Revealing a per-bar band on keyboard focus is a genuine gap and an open design-system ask;
+it needs bars to become focusable, which is shared chart behaviour rather than a band concern.
+
+**Known limits**, each of which fails closed (no band) rather than drawing one in the wrong place:
+
+- **Horizontal layout only.** Bar centres are read from each rect's `x`/`width`, the plot extent
+  from the x-axis line, the shaded column is vertical, and the path is extended to the left/right
+  plot edges. Under `layout="vertical"` every one of those is wrong, so the band is skipped.
+- **String `dataKey` only.** Recharts allows `string | number | ((obj) => any)`; the band names its
+  series with a className derived from the key, which only a string can produce.
+- **Web only.** `BarChart.native.tsx` has no band layer, so the `range*` props are accepted and
+  ignored there. Flagged with `@platform web` on each prop until parity lands.
 
 > **Colors** : In case of Bar Charts We would be handling both Categorical and Sequential color. Also there will be a limit on Sequential Colors.
 > For that, best would be to have an internal check how many colors are already used.

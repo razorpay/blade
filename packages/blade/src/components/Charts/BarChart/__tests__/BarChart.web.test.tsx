@@ -177,7 +177,7 @@ describe('<ChartReferenceBand /> inside a BarChart', () => {
           <ChartXAxis dataKey="name" />
           <ChartYAxis />
           {/* defaultIndex pins the tooltip to Mar without needing a real pointer. */}
-          <ChartTooltip defaultIndex={2} formatter={(value) => `${Number(value)}%`} />
+          <ChartTooltip defaultIndex={2} />
           <ChartBar dataKey="sales" name="Success rate" />
         </ChartBarWrapper>
       </Box>,
@@ -185,11 +185,13 @@ describe('<ChartReferenceBand /> inside a BarChart', () => {
     await waitFor(() => {
       expect(getByText('Success rate')).toBeInTheDocument();
     });
-    // The bar's own value, formatted.
-    expect(getByText('2000%')).toBeInTheDocument();
-    // …and a second row for the standalone band's min–max at that same data point.
+    // The bar's own value.
+    expect(getByText('2000')).toBeInTheDocument();
+    // …and a second row for the standalone band's min–max at that same data point. Without this
+    // wiring a chart-level band drew the shaded area but showed no range row, since only a bar's
+    // own `range*` props fed the tooltip.
     expect(getByText('Industry range')).toBeInTheDocument();
-    expect(getByText('1400%–3100%')).toBeInTheDocument();
+    expect(getByText('1400–3100')).toBeInTheDocument();
   });
 
   it('should show a legend swatch for a standalone band', async () => {
@@ -324,5 +326,79 @@ describe('BarChart per-bar reference bands (range on ChartBar)', () => {
       container.querySelector(`.${perLineBandClass('sales', 'lower')}`),
     ).not.toBeInTheDocument();
     expect(container.querySelector(`.${REFERENCE_BAND_LAYER_CLASS}`)).not.toBeInTheDocument();
+  });
+
+  // Recharts types dataKey as `string | number | ((obj) => any)`, and a function dataKey is an
+  // ordinary pattern. The band's DOM lookups can only be built from a string, so a non-string key
+  // has to opt out of the band rather than throw while building its className.
+  it('should render without throwing when dataKey is a function', () => {
+    const renderFunctionKey = (): ReturnType<typeof renderWithTheme> =>
+      renderWithTheme(
+        <Box width="500px" height="500px">
+          <ChartBarWrapper data={mockData}>
+            <ChartXAxis dataKey="name" />
+            <ChartYAxis />
+            <ChartBar dataKey={(entry: { sales: number }) => entry.sales} name="Sales" />
+          </ChartBarWrapper>
+        </Box>,
+      );
+    expect(renderFunctionKey).not.toThrow();
+  });
+
+  it('should skip the band when a range is declared on a function dataKey', () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartBarWrapper data={rangeData}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartBar
+            dataKey={(entry: { sales: number }) => entry.sales}
+            name="Sales"
+            rangeLowerDataKey="min"
+            rangeUpperDataKey="max"
+          />
+        </ChartBarWrapper>
+      </Box>,
+    );
+    expect(container.querySelector(`.${REFERENCE_BAND_LAYER_CLASS}`)).not.toBeInTheDocument();
+  });
+
+  // The band geometry is horizontal-only — bar centres come from x/width, the plot extent from the
+  // x-axis line. Drawing it under a vertical layout would place it silently wrong.
+  it('should not render a band for a vertical layout', () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartBarWrapper data={rangeData} layout="vertical">
+          <ChartReferenceBand lowerDataKey="min" upperDataKey="max" />
+          <ChartXAxis type="number" />
+          <ChartYAxis dataKey="name" type="category" />
+          <ChartBar dataKey="sales" name="Sales" />
+        </ChartBarWrapper>
+      </Box>,
+    );
+    expect(container.querySelector(`.${REFERENCE_BAND_LAYER_CLASS}`)).not.toBeInTheDocument();
+  });
+
+  // Regression guard for the fade that reveals a hovered series' band. It must stay scoped to
+  // charts that actually declare a band — every grouped bar chart already shipped relies on the
+  // category-wide highlight alone, and must keep rendering its bars at full opacity.
+  it('should not attach series hover handlers to a chart with no reference band', () => {
+    const { container } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartBarWrapper data={mockData}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartBar dataKey="sales" name="Sales" />
+          <ChartBar dataKey="profit" name="Profit" />
+        </ChartBarWrapper>
+      </Box>,
+    );
+    const faded = Array.from(container.querySelectorAll('.recharts-bar-rectangle rect')).filter(
+      (rect) => {
+        const opacity = rect.getAttribute('fill-opacity');
+        return opacity !== null && Number(opacity) < 1;
+      },
+    );
+    expect(faded).toHaveLength(0);
   });
 });

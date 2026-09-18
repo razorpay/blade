@@ -1,3 +1,5 @@
+import { sanitizeBandKey } from '../utils/referenceBandUtils';
+
 // Arbitrary sequential limit per palette (we will not have this in updated design)
 const BAR_CHART_CORNER_RADIUS = 2;
 const DISTANCE_BETWEEN_STACKED_BARS = 2;
@@ -22,9 +24,12 @@ const componentIds = {
  * Stable className on a bar series' rendered group, so the reference-band layer can find *that*
  * series' bars by dataKey. Index-based lookup would break the moment a series is toggled off in the
  * legend, since a hidden bar renders no group at all.
+ *
+ * Shares `sanitizeBandKey` with the bound series' classNames rather than re-implementing it: both
+ * are derived from the same dataKey, so two sanitizers drifting apart would point the band layer at
+ * a different series than the one it read its bounds from.
  */
-const barSeriesClass = (dataKey: string): string =>
-  `blade-bar-series-${dataKey.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+const barSeriesClass = (dataKey: string): string => `blade-bar-series-${sanitizeBandKey(dataKey)}`;
 
 export {
   componentIds,

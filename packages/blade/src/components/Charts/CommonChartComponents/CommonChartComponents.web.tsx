@@ -442,8 +442,6 @@ const ChartCartesianGrid: React.FC<ChartCartesianGridProps> = (props) => {
 
 const CustomTooltip = ({
   item,
-  index,
-  formatter,
 }: {
   item: {
     name: string;
@@ -452,31 +450,11 @@ const CustomTooltip = ({
     dataKey: string;
     payload: Record<string, unknown>;
   };
-  index: number;
-  formatter?: ChartTooltipProps['formatter'];
 }): JSX.Element => {
   const { theme } = useTheme();
   const { dataColorMapping, chartName, rangeMap } = useCommonChartComponentsContext();
 
   const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping ?? {}, chartName);
-
-  /**
-   * Run a value through the consumer's `formatter` so units (`%`, currency, …) show up in the
-   * tooltip. Recharts formatters may return either the formatted value or a `[value, name]` tuple;
-   * only the value half is used here. The range bounds are formatted with the same function since
-   * they measure the same thing as the series value.
-   */
-  const formatValue = (value: unknown): React.ReactNode => {
-    if (!formatter) return value as React.ReactNode;
-    const formatted = formatter(
-      value as never,
-      item.name as never,
-      item as never,
-      index as never,
-      [item] as never,
-    );
-    return Array.isArray(formatted) ? formatted[0] : formatted;
-  };
 
   // If this series has a reference band, show its industry range (low–high) beneath the value.
   const range = rangeMap?.[item.dataKey];
@@ -506,7 +484,7 @@ const CustomTooltip = ({
           </Text>
         </Box>
         <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-          {formatValue(item.value)}
+          {item.value}
         </Text>
       </Box>
       {hasRange ? (
@@ -521,9 +499,7 @@ const CustomTooltip = ({
             {range?.rangeName ?? 'Industry'}
           </Text>
           <Text size="xsmall" weight="regular" color="surface.text.staticWhite.muted">
-            {formatValue(lowerValue)}
-            {'–'}
-            {formatValue(upperValue)}
+            {`${String(lowerValue)}–${String(upperValue)}`}
           </Text>
         </Box>
       ) : null}
@@ -531,7 +507,7 @@ const CustomTooltip = ({
   );
 };
 
-const ChartTooltip: React.FC<ChartTooltipProps> = ({ formatter, ...props }) => {
+const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
   const { theme } = useTheme();
   return (
     <RechartsTooltip
@@ -550,13 +526,8 @@ const ChartTooltip: React.FC<ChartTooltipProps> = ({ formatter, ...props }) => {
               {label}
             </Heading>
             <Box paddingTop={label ? 'spacing.4' : undefined}>
-              {filteredPayLoad.map((item, itemIndex) => (
-                <CustomTooltip
-                  item={item}
-                  index={itemIndex}
-                  formatter={formatter}
-                  key={item.name}
-                />
+              {filteredPayLoad.map((item) => (
+                <CustomTooltip item={item} key={item.name} />
               ))}
             </Box>
           </div>

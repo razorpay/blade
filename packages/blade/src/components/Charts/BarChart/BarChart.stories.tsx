@@ -273,9 +273,6 @@ const successRateRangeData = [
   { period: 'Apr 7', successRate: 78, industryLow: 56, industryHigh: 76 },
 ];
 
-// Values are percentages, so the tooltip formats both the bar's value and the range bounds.
-const formatPercent = (value: unknown): string => `${Number(value)}%`;
-
 // A single bar series measured against one always-visible reference band. Hovering a bar shows its
 // success rate plus the industry min–max for that same day.
 export const BarChartWithReferenceBand: StoryFn<typeof ChartBar> = () => {
@@ -291,7 +288,7 @@ export const BarChartWithReferenceBand: StoryFn<typeof ChartBar> = () => {
           />
           <ChartXAxis dataKey="period" />
           <ChartYAxis label="Success rate (%)" />
-          <ChartTooltip formatter={formatPercent} />
+          <ChartTooltip />
           <ChartLegend />
           <ChartBar dataKey="successRate" name="Success rate" barSize={24} />
         </ChartBarWrapper>
@@ -346,7 +343,7 @@ export const GroupedBarChartWithMultipleReferenceBands: StoryFn<MultiBandArgs> =
         <ChartBarWrapper data={groupedSuccessRateData}>
           <ChartXAxis dataKey="period" />
           <ChartYAxis label="Success rate (%)" />
-          <ChartTooltip formatter={formatPercent} />
+          <ChartTooltip />
           <ChartLegend />
           {methods.map((method) => (
             <ChartBar

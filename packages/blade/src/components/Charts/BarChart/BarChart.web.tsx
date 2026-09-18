@@ -78,6 +78,7 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
       totalBars,
       hoveredDataKey,
       setHoveredBar,
+      hasReferenceBand,
     } = useBarChartContext();
     const defaultColorArray = useChartsColorTheme({
       colorTheme: _colorTheme,
@@ -115,7 +116,12 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
     //
     // These are <Line>s rather than <Bar>s deliberately: Recharts allocates a slot per bar series
     // inside each category group, so two extra invisible bars would shrink and shift the real ones.
-    const hasRange = Boolean(rangeLowerDataKey && rangeUpperDataKey);
+    // The band layer finds this series' bars by className, and the bound series by their own
+    // classNames. All three are derived from the dataKey, which recharts types as
+    // `string | number | ((obj) => any)` — only a string can be sanitized into a className, so a
+    // numeric or function dataKey opts out of the band rather than throwing on `.replace`.
+    const seriesKey = typeof dataKey === 'string' ? dataKey : null;
+    const hasRange = Boolean(seriesKey && rangeLowerDataKey && rangeUpperDataKey);
 
     const updateHoveredBar = useCallback(
       (bar: { dataKey: string; index: number } | null) => {
@@ -126,14 +132,19 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
       [hide, setHoveredBar],
     );
 
+    // Per-series hover only means something when there is a band to reveal. Left ungated it would
+    // change the hover behaviour of every bar chart already in production, and re-render the
+    // wrapper on every bar hover, for no visible benefit.
+    const isSeriesHoverEnabled = Boolean(hasReferenceBand && seriesKey);
+
     const isOtherSeriesHovered =
-      typeof hoveredDataKey === 'string' && hoveredDataKey !== (dataKey as string);
+      isSeriesHoverEnabled && typeof hoveredDataKey === 'string' && hoveredDataKey !== seriesKey;
 
     const boundSeries = hasRange ? (
       <>
         <RechartsLine
-          key={`band-${dataKey}-lower`}
-          className={perLineBandClass(dataKey as string, 'lower')}
+          key={`band-${seriesKey}-lower`}
+          className={perLineBandClass(seriesKey!, 'lower')}
           dataKey={rangeLowerDataKey}
           stroke="transparent"
           strokeWidth={1}
@@ -146,8 +157,8 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
           hide={hide}
         />
         <RechartsLine
-          key={`band-${dataKey}-upper`}
-          className={perLineBandClass(dataKey as string, 'upper')}
+          key={`band-${seriesKey}-upper`}
+          className={perLineBandClass(seriesKey!, 'upper')}
           dataKey={rangeUpperDataKey}
           stroke="transparent"
           strokeWidth={1}
@@ -167,7 +178,7 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
         {boundSeries}
         <RechartsBar
           {...rest}
-          className={barSeriesClass(dataKey as string)}
+          className={seriesKey ? barSeriesClass(seriesKey) : undefined}
           fill={fill}
           legendType={showLegend ? 'rect' : 'none'}
           activeBar={activeBar}
@@ -186,21 +197,28 @@ const _ChartBar: React.FC<ChartBarProps> = React.memo(
           onAnimationEnd={() => {
             shouldAnimatedBar.current = false;
           }}
-          onMouseEnter={(_data: unknown, barIndex: number) =>
-            updateHoveredBar({ dataKey: dataKey as string, index: barIndex })
+          onMouseEnter={
+            isSeriesHoverEnabled
+              ? (_data: unknown, barIndex: number) =>
+                  updateHoveredBar({ dataKey: seriesKey!, index: barIndex })
+              : undefined
           }
-          onMouseLeave={() => updateHoveredBar(null)}
+          onMouseLeave={isSeriesHoverEnabled ? () => updateHoveredBar(null) : undefined}
           shape={(props: unknown) => {
             const { fill, x, y, width, height, index: barIndex } = props as RechartsShapeProps;
-            // Two independent fades compose here: which category is hovered (activeIndex) and which
+            // Two independent fades meet here: which category is hovered (activeIndex) and which
             // series is hovered (hoveredDataKey).
+            //
+            // They are combined with `min`, not multiplied. A bar is either de-emphasised or it
+            // isn't — being de-emphasised on both axes at once shouldn't compound, which would put
+            // it at 0.2 * 0.2 = 0.04 and render it effectively invisible.
             const categoryOpacity = isNumber(activeIndex)
               ? barIndex === activeIndex
                 ? 1
                 : NON_HOVERED_SERIES_OPACITY
               : 1;
-            const fillOpacity =
-              categoryOpacity * (isOtherSeriesHovered ? NON_HOVERED_SERIES_OPACITY : 1);
+            const seriesOpacity = isOtherSeriesHovered ? NON_HOVERED_SERIES_OPACITY : 1;
+            const fillOpacity = Math.min(categoryOpacity, seriesOpacity);
             const gap = DISTANCE_BETWEEN_STACKED_BARS;
             const isVertical = layout === 'vertical';
 
@@ -355,7 +373,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     return map;
   }, [data, secondaryDataKey]);
 
-  const { hasReferenceBand, renderReferenceBands, referenceBandLegendInfos } = useBarReferenceBand(
+  const { hasReferenceBand, renderReferenceBands, referenceBandLegendInfos } = useBarReferenceBand({
     children,
     data,
     containerRef,
@@ -363,7 +381,8 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
     hoveredDataKey,
     hoveredBarIndex,
     selectedDataKeys,
-  );
+    layout,
+  });
 
   // Map of bar dataKey -> its range keys, so the shared tooltip can show the range alongside the
   // bar's own value. A bar's own `range*` props win; otherwise a standalone <ChartReferenceBand>
@@ -389,7 +408,8 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
 
       if (id === componentIds.chartBar) {
         const props = child.props as ChartBarProps;
-        const dataKey = props.dataKey as string;
+        // Keyed by dataKey, so only a string one can take part — see `seriesKey` in _ChartBar.
+        const dataKey = typeof props.dataKey === 'string' ? props.dataKey : null;
         if (!dataKey) return;
         barDataKeys.push(dataKey);
         if (props.rangeLowerDataKey && props.rangeUpperDataKey) {
@@ -420,8 +440,9 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       hoveredDataKey,
       hoveredBarIndex,
       setHoveredBar,
+      hasReferenceBand,
     }),
-    [layout, activeIndex, colorTheme, totalBars, hoveredDataKey, hoveredBarIndex],
+    [layout, activeIndex, colorTheme, totalBars, hoveredDataKey, hoveredBarIndex, hasReferenceBand],
   );
 
   return (
@@ -438,6 +459,7 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
       }}
     >
       <BaseBox
+        ref={containerRef}
         {...metaAttribute({ name: 'bar-chart', testID })}
         {...makeAnalyticsAttribute(restProps)}
         width="100%"
@@ -445,28 +467,26 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         {...restProps}
       >
         <BarChartContext.Provider value={barChartContextValue}>
-          <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
-            <RechartsResponsiveContainer width="100%" height="100%">
-              <RechartsBarChart
-                barSize={BAR_SIZE}
-                barGap={DISTANCE_BETWEEN_BARS}
-                barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
-                onMouseMove={(state) => {
-                  setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
-                }}
-                onMouseLeave={() => {
-                  setActiveIndex(undefined);
-                  setHoveredBar(null);
-                }}
-                layout={layout}
-                data={data}
-              >
-                {/* Painted first so the shaded band sits behind the bars. */}
-                {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
-                {barChartModifiedChildrens}
-              </RechartsBarChart>
-            </RechartsResponsiveContainer>
-          </div>
+          <RechartsResponsiveContainer width="100%" height="100%">
+            <RechartsBarChart
+              barSize={BAR_SIZE}
+              barGap={DISTANCE_BETWEEN_BARS}
+              barCategoryGap={DISTANCE_BETWEEN_CATEGORY_BARS}
+              onMouseMove={(state) => {
+                setActiveIndex(state?.activeIndex ? Number(state?.activeIndex) : undefined);
+              }}
+              onMouseLeave={() => {
+                setActiveIndex(undefined);
+                setHoveredBar(null);
+              }}
+              layout={layout}
+              data={data}
+            >
+              {/* Painted first so the shaded band sits behind the bars. */}
+              {hasReferenceBand ? <RechartsCustomized component={renderReferenceBands} /> : null}
+              {barChartModifiedChildrens}
+            </RechartsBarChart>
+          </RechartsResponsiveContainer>
         </BarChartContext.Provider>
       </BaseBox>
     </CommonChartComponentsContext.Provider>

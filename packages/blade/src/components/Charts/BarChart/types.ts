@@ -50,25 +50,44 @@ type ChartBarProps = {
    *
    * The band is revealed while this bar is hovered, so several bars can each declare their own
    * range without the bands overlapping.
+   *
+   * Requires a string `dataKey` on the bar — the band is anchored by looking up that series in the
+   * rendered chart, which a numeric or function `dataKey` can't name. It is also skipped under
+   * `layout="vertical"`, whose geometry is not yet supported.
+   *
+   * @platform web — accepted but has no effect on React Native, where the band layer isn't
+   * implemented yet.
    */
   rangeLowerDataKey?: string;
   /**
    * Data key for the upper (max) bound of this bar's reference range.
+   *
+   * @platform web
    */
   rangeUpperDataKey?: string;
   /**
    * Label shown for this bar's range in the legend and the tooltip.
+   *
+   * @platform web
    * @default 'Industry range'
    */
   rangeName?: string;
   /**
    * Fill color of this bar's range band.
+   *
+   * @platform web
    * @default the bar's own resolved color
    */
   rangeColor?: ChartsCategoricalColorToken | ChartSequentialColorToken;
   /**
-   * Whether to show a legend swatch for this bar's range band. Off by default because the band is
-   * only on screen while its bar is hovered.
+   * Whether to show a legend swatch for this bar's range band.
+   *
+   * Note this defaults to `false` where `ChartLine`'s equivalent defaults to `true`. The difference
+   * is deliberate: a line's band is always on screen, so a permanent swatch describes what you can
+   * see, whereas a bar's band appears only while its bar is hovered — a permanent swatch would
+   * advertise something that usually isn't there. Opt in when the chart needs it spelled out.
+   *
+   * @platform web
    * @default false
    */
   showRangeLegend?: boolean;
@@ -121,6 +140,15 @@ interface BarChartContextType {
    */
   hoveredBarIndex?: number | null;
   setHoveredBar?: (bar: { dataKey: string; index: number } | null) => void;
+  /**
+   * Whether this chart declares any reference band.
+   *
+   * Gates the per-series hover behaviour — the fade applied to non-hovered series and the mouse
+   * handlers that track which series is hovered. Without a band there is nothing for that fade to
+   * reveal, and applying it anyway would silently change the hover behaviour of every bar chart
+   * that has already shipped. Plain bar charts keep the category-wide highlight they always had.
+   */
+  hasReferenceBand?: boolean;
 }
 
 export type { ChartBarProps, ChartBarWrapperProps, BarChartContextType };

@@ -16,6 +16,9 @@ BarChart is a comprehensive data visualization component that renders interactiv
   - `rangeLowerDataKey` + `rangeUpperDataKey` on `ChartBar` — a range per bar, **revealed only while that bar is hovered** (so several ranges in a grouped chart don't overlap into an unreadable wash), colour-matched to its bar, no legend swatch by default.
 - A band needs **both** range bound keys set. Only one is ignored — nothing renders.
 - Reference band values must be numeric and present on every row of `data`, under the keys named by the lower/upper props.
+- Reference bands are **horizontal layout only** — no band is drawn when `layout="vertical"`.
+- Reference bands require a **string** `dataKey` on the bar. Recharts also allows a number or a function, and those render bars but no band.
+- Reference bands are **web only** — the `range*` props are accepted on React Native but do nothing.
 - `data` prop is required and must be an array of objects with consistent data structure
 - `dataKey` prop is required for each `ChartBar` component and must correspond to a property in the data array
 - `stackId` must be consistent across all bars that should be stacked together
@@ -269,7 +272,7 @@ type ChartReferenceLineProps = {
 - Use both categorical and sequential color tokens — BarChart supports both palettes unlike other charts.
 - Use `ChartReferenceBand` when there is **one** range the whole chart is measured against (e.g. a single success-rate series vs the industry percentile band).
 - Use the `range*` props on `ChartBar` when **each** bar has its own range (e.g. grouped bars per payment method, each with its own industry band).
-- Pass `formatter` to `ChartTooltip` when values carry a unit — it formats the bar's value and both range bounds, so the tooltip reads `62%` and `48%–70%`.
+- Use a string `dataKey` on any `ChartBar` that declares a range — the band is anchored by looking that series up in the rendered chart, so a numeric or function `dataKey` renders the bars but no band.
 
 **Don't**
 
@@ -366,7 +369,7 @@ const SuccessRateVsIndustry = () => {
         />
         <ChartXAxis dataKey="period" />
         <ChartYAxis label="Success rate (%)" />
-        <ChartTooltip formatter={(value) => `${Number(value)}%`} />
+        <ChartTooltip />
         <ChartLegend />
         <ChartBar dataKey="successRate" name="Success rate" barSize={24} />
       </ChartBarWrapper>
@@ -403,7 +406,7 @@ const SuccessRateByMethod = () => {
       <ChartBarWrapper data={methodData}>
         <ChartXAxis dataKey="period" />
         <ChartYAxis label="Success rate (%)" />
-        <ChartTooltip formatter={(value) => `${Number(value)}%`} />
+        <ChartTooltip />
         <ChartLegend />
         <ChartBar
           dataKey="card"

@@ -51,6 +51,22 @@ type UseBarReferenceBandResult = {
   referenceBandLegendInfos: ReferenceBandLegendInfo[];
 };
 
+type UseBarReferenceBandArgs = {
+  /** `ChartBarWrapper`'s children, scanned for the bands they declare. */
+  children: React.ReactNode;
+  data: ChartData[];
+  /** The measurable chart container — band geometry is read out of its rendered DOM. */
+  containerRef: React.RefObject<HTMLDivElement | null>;
+  dataColorMapping: DataColorMapping;
+  /** Which series is hovered, i.e. which per-bar band is revealed. */
+  hoveredDataKey: string | null;
+  /** Which category is hovered, i.e. where the shaded column sits. */
+  hoveredBarIndex: number | null;
+  /** Series still visible after legend toggles; a toggle re-lays out every remaining bar. */
+  selectedDataKeys: string[] | undefined;
+  layout: 'horizontal' | 'vertical';
+};
+
 const geomsEqual = (a: BandGeometry[], b: BandGeometry[]): boolean =>
   a.length === b.length &&
   a.every((item, index) => {
@@ -142,7 +158,13 @@ const getCategoryColumn = (
   const baseline = Number(axisLine?.getAttribute('y1'));
   if (!bounds || !Number.isFinite(baseline)) return null;
 
-  const top = gridLines.length > 0 ? Math.min(...gridLines) : 0;
+  // Plot top, in descending order of reliability: the topmost grid line, else the y-axis line's own
+  // start. Falling back to 0 would run the column from the SVG origin rather than the plot top,
+  // overshooting into the margin on any chart without a <ChartCartesianGrid>.
+  const yAxisLine = surface.querySelector('.recharts-yAxis .recharts-cartesian-axis-line');
+  const yAxisTop = Number(yAxisLine?.getAttribute('y1'));
+  const top =
+    gridLines.length > 0 ? Math.min(...gridLines) : Number.isFinite(yAxisTop) ? yAxisTop : 0;
   const width = (bounds.right - bounds.left) / centres.length;
   return {
     x: bounds.left + activeIndex * width,
@@ -164,15 +186,16 @@ const getCategoryColumn = (
  * series' bar centres: a bound series sits at the *category* centre, which is right for a single
  * centred bar but would stack every band on the same x in a grouped chart.
  */
-const useBarReferenceBand = (
-  children: React.ReactNode,
-  data: ChartData[],
-  containerRef: React.RefObject<HTMLDivElement | null>,
-  dataColorMapping: DataColorMapping,
-  hoveredDataKey: string | null,
-  hoveredBarIndex: number | null,
-  selectedDataKeys: string[] | undefined,
-): UseBarReferenceBandResult => {
+const useBarReferenceBand = ({
+  children,
+  data,
+  containerRef,
+  dataColorMapping,
+  hoveredDataKey,
+  hoveredBarIndex,
+  selectedDataKeys,
+  layout,
+}: UseBarReferenceBandArgs): UseBarReferenceBandResult => {
   const { theme } = useTheme();
 
   const bandSources = useMemo<BandSource[]>(() => {
@@ -203,7 +226,9 @@ const useBarReferenceBand = (
       // Per-bar band: a <ChartBar> declaring both range bounds. Colour-matched to the bar.
       if (id === componentIds.chartBar) {
         const props = child.props as ChartBarProps;
-        const dataKey = props.dataKey as string;
+        // Only a string dataKey can name this series in the rendered DOM — recharts also allows a
+        // number or a function, and those simply don't get a band.
+        const dataKey = typeof props.dataKey === 'string' ? props.dataKey : null;
         if (!dataKey || !props.rangeLowerDataKey || !props.rangeUpperDataKey) return;
         const colorToken =
           props.rangeColor ??
@@ -228,7 +253,16 @@ const useBarReferenceBand = (
     return sources;
   }, [children, theme, dataColorMapping]);
 
-  const hasReferenceBand = bandSources.length > 0;
+  /**
+   * Bands are horizontal-layout only.
+   *
+   * Every piece of the geometry assumes it: bar centres come from each rect's `x`/`width`, the plot
+   * extent is read off the x-axis line, the shaded column is vertical, and the band path is
+   * flat-extended to the left and right plot edges. Under `layout="vertical"` all four produce
+   * silently wrong positions, so the band is skipped rather than drawn in the wrong place.
+   * Supporting vertical means mirroring each of them onto the other axis — a follow-up.
+   */
+  const hasReferenceBand = bandSources.length > 0 && layout !== 'vertical';
 
   const [bandGeoms, setBandGeoms] = useState<BandGeometry[]>([]);
   const [highlight, setHighlight] = useState<{
@@ -239,8 +273,18 @@ const useBarReferenceBand = (
   } | null>(null);
 
   // Stable key of the sources' identity so the effect re-runs when bands are added/removed/recolored.
+  //
+  // The bound classNames are part of the signature, not just the id and colour: they are derived
+  // from the range data keys, so swapping `rangeLowerDataKey` while the dataKey, colour and data
+  // reference all stay put would otherwise leave the previous band on screen.
   const sourceSignature = useMemo(
-    () => bandSources.map((source) => `${source.id}:${source.fillColor}`).join('|'),
+    () =>
+      bandSources
+        .map(
+          (source) =>
+            `${source.id}:${source.fillColor}:${source.lowerClass}:${source.upperClass}:${source.hoverOnly}`,
+        )
+        .join('|'),
     [bandSources],
   );
 
@@ -248,15 +292,15 @@ const useBarReferenceBand = (
   // bar group — every remaining bar shifts — so the anchored bands have to be rebuilt.
   const visibilitySignature = selectedDataKeys?.join('|');
 
-  useLayoutEffect(() => {
+  const computeBands = React.useCallback((): void => {
     const container = containerRef.current;
     if (!container || !hasReferenceBand) {
       setBandGeoms((prev) => (prev.length === 0 ? prev : []));
       setHighlight(null);
-      return undefined;
+      return;
     }
 
-    const computeBands = (): void => {
+    {
       const surface = container.querySelector('svg.recharts-surface');
       if (!surface) return;
       const bounds = getPlotBounds(surface);
@@ -319,48 +363,20 @@ const useBarReferenceBand = (
             prev.height === nextHighlight.height);
         return isSame ? prev : nextHighlight;
       });
-    };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [containerRef, hasReferenceBand, bandSources, hoveredDataKey, hoveredBarIndex]);
 
+  // Latest computeBands, so the observers below can call it without being torn down and rebuilt
+  // every time the hovered bar changes.
+  const computeBandsRef = React.useRef(computeBands);
+  useLayoutEffect(() => {
+    computeBandsRef.current = computeBands;
+  });
+
+  // Recompute whenever an input to the geometry changes.
+  useLayoutEffect(() => {
     computeBands();
-
-    const cleanups: Array<() => void> = [];
-    if (typeof MutationObserver !== 'undefined') {
-      // Debounced with a timer rather than requestAnimationFrame: Recharts finishes laying the bars
-      // out a commit or two after a legend toggle, so this callback is what settles the band on its
-      // final anchors — and rAF never fires while the document is hidden, which would leave a
-      // background chart showing a stale band.
-      let timerId: ReturnType<typeof setTimeout> | null = null;
-      const mutationObserver = new MutationObserver((mutations) => {
-        // Ignore mutations from our own band layer to avoid a re-entrant loop.
-        const isBandMutation = mutations.some(
-          (mutation) =>
-            mutation.target instanceof Element &&
-            mutation.target.closest(`.${REFERENCE_BAND_LAYER_CLASS}`),
-        );
-        if (isBandMutation) return;
-        if (timerId !== null) clearTimeout(timerId);
-        timerId = setTimeout(() => {
-          timerId = null;
-          computeBands();
-        }, 0);
-      });
-      mutationObserver.observe(container, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['d', 'x', 'width'],
-      });
-      cleanups.push(() => {
-        mutationObserver.disconnect();
-        if (timerId !== null) clearTimeout(timerId);
-      });
-    }
-    if (typeof ResizeObserver !== 'undefined') {
-      const resizeObserver = new ResizeObserver(() => computeBands());
-      resizeObserver.observe(container);
-      cleanups.push(() => resizeObserver.disconnect());
-    }
-    return () => cleanups.forEach((cleanup) => cleanup());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     data,
@@ -370,6 +386,57 @@ const useBarReferenceBand = (
     hoveredBarIndex,
     visibilitySignature,
   ]);
+
+  // Observer lifecycle, kept separate from the recompute above and keyed only on what changes the
+  // observation target. Hover state deliberately isn't a dependency here: it changes on every bar
+  // the pointer crosses, and rebuilding both observers that often is pure waste.
+  useLayoutEffect(() => {
+    const container = containerRef.current;
+    if (!container || !hasReferenceBand) return undefined;
+
+    const cleanups: Array<() => void> = [];
+    if (typeof MutationObserver !== 'undefined') {
+      // Debounced with requestAnimationFrame, matching LineChart's band hook — Recharts finishes
+      // laying the bars out a commit or two after a legend toggle, and this is what settles the
+      // band on its final anchors.
+      //
+      // The debounce is also what keeps the bar entry animation cheap. Bars animate `x`/`width`, so
+      // records arrive every frame, but each one cancels the pending frame — the expensive sweep
+      // runs once, after the last one, not once per frame. That is why `x`/`width` can be watched
+      // here where LineChart only needs `d`: bar centres are read from the rects themselves.
+      let rafId: number | null = null;
+      const mutationObserver = new MutationObserver((mutations) => {
+        // Ignore mutations from our own band layer to avoid a re-entrant loop.
+        const isBandMutation = mutations.some(
+          (mutation) =>
+            mutation.target instanceof Element &&
+            mutation.target.closest(`.${REFERENCE_BAND_LAYER_CLASS}`),
+        );
+        if (isBandMutation) return;
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          rafId = null;
+          computeBandsRef.current();
+        });
+      });
+      mutationObserver.observe(container, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['d', 'x', 'width'],
+      });
+      cleanups.push(() => {
+        mutationObserver.disconnect();
+        if (rafId !== null) cancelAnimationFrame(rafId);
+      });
+    }
+    if (typeof ResizeObserver !== 'undefined') {
+      const resizeObserver = new ResizeObserver(() => computeBandsRef.current());
+      resizeObserver.observe(container);
+      cleanups.push(() => resizeObserver.disconnect());
+    }
+    return () => cleanups.forEach((cleanup) => cleanup());
+  }, [containerRef, hasReferenceBand]);
 
   const renderReferenceBands = (): React.ReactElement | null => {
     if (!hasReferenceBand || bandGeoms.length === 0) return null;
@@ -414,4 +481,4 @@ const useBarReferenceBand = (
 };
 
 export { useBarReferenceBand, buildBarBandPath, getBarCentres };
-export type { UseBarReferenceBandResult, BandSource, BandGeometry };
+export type { UseBarReferenceBandArgs, UseBarReferenceBandResult, BandSource, BandGeometry };

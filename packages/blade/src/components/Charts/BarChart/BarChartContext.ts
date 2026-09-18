@@ -9,6 +9,7 @@ export const BarChartContext = createContext<BarChartContextType>({
   hoveredDataKey: null,
   hoveredBarIndex: null,
   setHoveredBar: () => undefined,
+  hasReferenceBand: false,
 });
 
 export const useBarChartContext = (): BarChartContextType => useContext(BarChartContext);
