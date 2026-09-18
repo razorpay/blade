@@ -1,6 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './bottomSheet.module.css';
 
 /**
  * Animation easing for the surface (height/opacity) transition.
@@ -41,10 +39,10 @@ export type BottomSheetBodyOverflow = 'auto' | 'hidden' | 'visible';
  * lives inside the body the padding always collapses to `spacing.3`,
  * regardless of the requested padding (matches React).
  */
-export const getBottomSheetBodyContentClasses = cva(styles.bodyContent, {
+export const getBottomSheetBodyContentClasses = cva('p-spacing-5', {
   variants: {
     padding: {
-      'spacing.0': styles.bodyContentZeroPadding,
+      'spacing.0': 'p-spacing-0',
       'spacing.5': null,
     },
     hasActionList: {
@@ -53,8 +51,8 @@ export const getBottomSheetBodyContentClasses = cva(styles.bodyContent, {
     },
   },
   compoundVariants: [
-    { padding: 'spacing.0', hasActionList: true, class: styles.bodyContentActionList },
-    { padding: 'spacing.5', hasActionList: true, class: styles.bodyContentActionList },
+    { padding: 'spacing.0', hasActionList: true, class: 'p-spacing-3' },
+    { padding: 'spacing.5', hasActionList: true, class: 'p-spacing-3' },
   ],
   defaultVariants: {
     padding: 'spacing.5',
@@ -63,14 +61,19 @@ export const getBottomSheetBodyContentClasses = cva(styles.bodyContent, {
 });
 
 /**
- * CVA wrapper for the body scroll container. Picks an `overflow` modifier.
+ * CVA wrapper for the body scroll container (Tailwind). The touch/scroll-behavior declarations
+ * that have no Tailwind utility equivalent are combined into one arbitrary-property base class;
+ * `overflow` stays a normal variant.
  */
-export const getBottomSheetBodyClasses = cva(styles.body, {
+const bottomSheetBodyBase =
+  'flex-grow flex-shrink [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch] [user-select:auto] [touch-action:none] [-webkit-tap-highlight-color:revert] [-webkit-touch-callout:revert] [-webkit-user-select:auto]';
+
+export const getBottomSheetBodyClasses = cva(bottomSheetBodyBase, {
   variants: {
     overflow: {
-      auto: styles.bodyOverflowAuto,
-      hidden: styles.bodyOverflowHidden,
-      visible: styles.bodyOverflowVisible,
+      auto: 'overflow-auto',
+      hidden: 'overflow-hidden',
+      visible: 'overflow-visible',
     },
   },
   defaultVariants: {
@@ -78,40 +81,44 @@ export const getBottomSheetBodyClasses = cva(styles.body, {
   },
 });
 
-/* Aggregated structural class names — exported individually so Svelte
- * templates can reference them and the build bundles them. CSS modules
- * export ESM objects so unused individual exports get tree-shaken; calling
- * `getBottomSheetTemplateClasses()` from the Svelte component anchors them.
- */
-export const bottomSheetSurfaceClass = styles.surface;
-export const bottomSheetBackdropClass = styles.backdrop;
-export const bottomSheetPortalRootClass = styles.portalRoot;
-export const bottomSheetInnerWrapperClass = styles.innerWrapper;
-export const bottomSheetGrabHandleClass = styles.grabHandle;
-export const bottomSheetGrabHandleFloatingClass = styles.grabHandleFloating;
-export const bottomSheetHeaderClass = styles.header;
-export const bottomSheetHeaderContentClass = styles.headerContent;
-export const bottomSheetHeaderLeadingClass = styles.headerLeading;
-export const bottomSheetHeaderTitleBlockClass = styles.headerTitleBlock;
-export const bottomSheetHeaderTitleRowClass = styles.headerTitleRow;
-export const bottomSheetHeaderTitleClass = styles.headerTitle;
-export const bottomSheetHeaderSubtitleClass = styles.headerSubtitle;
-export const bottomSheetHeaderTrailingClass = styles.headerTrailing;
-export const bottomSheetHeaderBackButtonClass = styles.headerBackButton;
-export const bottomSheetHeaderCloseButtonClass = styles.headerCloseButton;
-export const bottomSheetHeaderDividerClass = styles.headerDivider;
-export const bottomSheetEmptyHeaderClass = styles.headerEmpty;
-export const bottomSheetEmptyHeaderFloatingClass = styles.headerEmptyFloating;
-export const bottomSheetCloseButtonCapsuleClass = styles.closeButtonCapsule;
-export const bottomSheetCloseButtonCapsuleFloatingClass = styles.closeButtonCapsuleFloating;
-export const bottomSheetCloseButtonClass = styles.closeButton;
-export const bottomSheetFooterClass = styles.footer;
-export const bottomSheetFooterInnerClass = styles.footerInner;
-export const bottomSheetBodyClass = styles.body;
+/* Aggregated structural class names — exported individually so Svelte templates can reference them
+ * and the build bundles them. Structural/stateful pieces are `.blade-bottomsheet-*` plugin classes;
+ * everything else is atomic. */
+export const bottomSheetSurfaceClass = 'blade-bottomsheet-surface';
+export const bottomSheetBackdropClass = 'blade-bottomsheet-backdrop';
+export const bottomSheetPortalRootClass = 'blade-bottomsheet-portal-root';
+export const bottomSheetInnerWrapperClass = 'h-full flex flex-col';
+export const bottomSheetGrabHandleClass = 'blade-bottomsheet-grab-handle';
+export const bottomSheetGrabHandleFloatingClass = 'absolute';
+export const bottomSheetHeaderClass = 'blade-bottomsheet-header';
+export const bottomSheetHeaderContentClass = 'blade-bottomsheet-header-content';
+export const bottomSheetHeaderLeadingClass = 'flex shrink-0 items-center justify-center h-[28px]';
+export const bottomSheetHeaderTitleBlockClass = 'flex-[1_1_auto] min-w-0 flex flex-col';
+export const bottomSheetHeaderTitleRowClass = 'flex flex-row items-center gap-spacing-3';
+export const bottomSheetHeaderTitleClass =
+  'font-text font-semibold text-200 leading-200 tracking-25 text-surface-text-gray-normal [margin:1px_0_0_0]';
+export const bottomSheetHeaderSubtitleClass =
+  'font-text font-regular text-75 leading-75 tracking-50 text-surface-text-gray-muted [margin:var(--spacing-1)_0_0_0]';
+export const bottomSheetHeaderTrailingClass = 'flex shrink-0 items-center justify-center h-[28px]';
+export const bottomSheetHeaderBackButtonClass = 'blade-bottomsheet-header-back-button';
+export const bottomSheetHeaderCloseButtonClass = 'blade-bottomsheet-header-close-button';
+// `border-0` zeroes all four sides first — without it, the other three sides fall back to the
+// browser's default `medium` width + black color since Blade's preset disables `preflight`.
+export const bottomSheetHeaderDividerClass =
+  'border-0 border-b-thin border-solid border-b-surface-border-gray-muted w-full';
+export const bottomSheetEmptyHeaderClass = 'blade-bottomsheet-header-empty';
+export const bottomSheetEmptyHeaderFloatingClass = 'absolute top-spacing-5 right-spacing-0';
+export const bottomSheetCloseButtonCapsuleClass = 'blade-bottomsheet-close-button-capsule';
+export const bottomSheetCloseButtonCapsuleFloatingClass = 'top-spacing-0';
+export const bottomSheetCloseButtonClass = 'blade-bottomsheet-close-button';
+export const bottomSheetFooterClass =
+  'shrink-0 w-full mt-auto bg-popup-background-gray-subtle [touch-action:none] z-[2]';
+export const bottomSheetFooterInnerClass = 'blade-bottomsheet-footer-inner';
+export const bottomSheetBodyClass = bottomSheetBodyBase;
 
 /**
- * Aggregated class lookup. The Svelte component calls this to keep the CSS
- * imports alive against the bundler's tree-shaker.
+ * Aggregated class lookup. The Svelte component calls this to keep the class
+ * references alive against the bundler's tree-shaker.
  */
 export function getBottomSheetTemplateClasses(): Record<string, string> {
   return {

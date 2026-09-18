@@ -11,8 +11,10 @@ const postcssBladeLayer = require(path.resolve(__dirname, '../../../postcss-blad
 
 describe('postcss-blade-layer', () => {
   it('wraps blade-core *.module.css output in @layer blade', async () => {
-    const inputPath = path.resolve(__dirname, '../Button/button.module.css');
-    const input = fs.readFileSync(inputPath, 'utf8');
+    // Inline fixture (with a `.module.css` `from` path) so this test stays independent of any
+    // specific component's CSS — component `.module.css` files are removed by the Tailwind migration.
+    const inputPath = path.resolve(__dirname, '../__fixtures__/sample.module.css');
+    const input = '.btn {\n  border-radius: var(--border-radius-small);\n}\n';
 
     const result = await postcss([postcssBladeLayer]).process(input, { from: inputPath });
 

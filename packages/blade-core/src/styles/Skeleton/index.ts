@@ -1,5 +1,3 @@
-import './skeleton.module.css';
-
 export {
   skeletonStyles,
   skeletonClass,

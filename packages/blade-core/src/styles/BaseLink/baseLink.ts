@@ -1,7 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { utilityClasses } from '../utilities';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './baseLink.module.css';
+import { cn } from '~utils/cx';
 
 export type BaseLinkVariants = {
   variant?: 'anchor' | 'button';
@@ -105,21 +103,32 @@ export function getLinkIconSizeMap(): Record<
   } as const;
 }
 
-export const baseLinkStyles = cva(styles.base, {
-  variants: {
-    isDisabled: {
-      true: utilityClasses['cursor-not-allowed'],
-      false: utilityClasses['cursor-pointer'],
+/**
+ * CVA-based BaseLink styles (Tailwind).
+ *
+ * The base is a reset-ish anchor/button. The only irreducible bit — the `& *` descendant
+ * transition that animates color/fill on the link's children — lives in the `.blade-link`
+ * plugin component class (referenced here by name). `cursor` is driven by the `isDisabled`
+ * variant (was the `&[disabled]` selector).
+ */
+export const baseLinkStyles = cva(
+  'blade-link inline-block p-spacing-0 bg-transparent border-none no-underline outline-none rounded-small transition-shadow ease-standard duration-2xquick',
+  {
+    variants: {
+      isDisabled: {
+        true: 'cursor-not-allowed',
+        false: 'cursor-pointer',
+      },
+    },
+    defaultVariants: {
+      isDisabled: false,
     },
   },
-  defaultVariants: {
-    isDisabled: false,
-  },
-});
+);
 
-// Export content and icon classes for use in component templates
-export const baseLinkContentClass = styles.content;
-export const baseLinkIconClass = styles.icon;
+// Export content and icon classes for use in component templates (literal so the JIT scanner sees them).
+export const baseLinkContentClass = 'flex flex-row items-center w-max rounded-small';
+export const baseLinkIconClass = 'flex items-center';
 
 /**
  * Get all BaseLink component template classes as an object.
@@ -134,8 +143,8 @@ export function getBaseLinkTemplateClasses(): Record<string, string> {
   return {
     content: baseLinkContentClass,
     icon: baseLinkIconClass,
-    iconLeft: styles['icon-left'],
-    iconRight: styles['icon-right'],
+    iconLeft: 'pr-spacing-2',
+    iconRight: 'pl-spacing-2',
   } as const;
 }
 
@@ -147,23 +156,29 @@ export function getBaseLinkTemplateClasses(): Record<string, string> {
 export function getBaseLinkClasses(props: BaseLinkVariants & { className?: string }): string {
   const { className, ...cvaProps } = props;
 
-  const classes = [baseLinkStyles(cvaProps), className].filter(Boolean).join(' ');
-
-  return classes;
+  return cn(baseLinkStyles(cvaProps), className);
 }
 
 /**
- * Map an opacity number to its corresponding utility class.
- * Only values exposed in `utilities.module.css` under the Opacity Utilities
- * section are supported (0, 0.25, 0.5, 0.56, 0.64, 0.75, 1). Unsupported
- * values fall back to no class (i.e. full opacity / inherited).
- *
+ * Map an opacity number to its corresponding Tailwind opacity utility.
+ * Uses a LITERAL lookup (not string interpolation) so every producible class appears verbatim in
+ * source for the JIT scanner — no safelist entry needed. Supported steps mirror the original
+ * `utilities.module.css` Opacity Utilities section (0, 0.25, 0.5, 0.56, 0.64, 0.75); `undefined`/`1`
+ * fall back to no class (full opacity / inherited).
  */
+const opacityUtilityClasses: Record<number, string> = {
+  0: 'opacity-0',
+  25: 'opacity-25',
+  50: 'opacity-50',
+  56: 'opacity-56',
+  64: 'opacity-64',
+  75: 'opacity-75',
+};
+
 function getOpacityUtilityClass(opacity: number | undefined): string | undefined {
   if (opacity === undefined || opacity === 1) return undefined;
   const percent = Math.round(opacity * 100);
-  const key = `opacity-${percent}` as keyof typeof utilityClasses;
-  return utilityClasses[key];
+  return opacityUtilityClasses[percent];
 }
 
 /**

@@ -1,9 +1,4 @@
 import { cva } from 'class-variance-authority';
-import { utilityClasses } from '../utilities';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import chipStyles from './chip.module.css';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import chipGroupStyles from './chipGroup.module.css';
 
 export type ChipSize = 'xsmall' | 'small' | 'medium' | 'large';
 export type ChipColor = 'primary' | 'positive' | 'negative';
@@ -25,26 +20,29 @@ export type AnimatedChipVariants = {
   colorVariant?: ChipColorVariant;
 };
 
-// Base class + shared outer border-width come from the chip module + utilities.
-const animatedChipBase = [chipStyles.animatedChip, utilityClasses['border-width-thin']].join(' ');
+// Base class carries the shared outer border-width + the `blade-chip-animated` hook the plugin's
+// sibling focus-ring selector targets. Responsive max-width (420px desktop / 280px mobile) is a
+// plain mobile-first + `m:` override — no plugin needed.
+const animatedChipBase =
+  'blade-chip-animated flex flex-nowrap flex-row items-center justify-center text-left [text-overflow:ellipsis] w-full border-solid bg-transparent transition-transform duration-xquick ease-standard border-thin max-w-[280px] m:max-w-[420px]';
 
 export const animatedChipCva = cva(animatedChipBase, {
   variants: {
     size: {
-      xsmall: utilityClasses['border-radius-small'],
-      small: utilityClasses['border-radius-small'],
-      medium: utilityClasses['border-radius-small'],
-      large: utilityClasses['border-radius-medium'],
+      xsmall: 'rounded-small',
+      small: 'rounded-small',
+      medium: 'rounded-small',
+      large: 'rounded-medium',
     },
     colorVariant: {
-      unchecked: utilityClasses['border-interactive-border-gray-faded'],
-      primaryChecked: utilityClasses['border-interactive-border-primary-default'],
-      positiveChecked: utilityClasses['border-interactive-border-positive-default'],
-      negativeChecked: utilityClasses['border-interactive-border-negative-default'],
-      uncheckedDisabled: utilityClasses['border-interactive-border-gray-disabled'],
-      primaryDisabled: utilityClasses['border-interactive-border-primary-disabled'],
-      positiveDisabled: utilityClasses['border-interactive-border-positive-disabled'],
-      negativeDisabled: utilityClasses['border-interactive-border-negative-disabled'],
+      unchecked: 'border-interactive-border-gray-faded',
+      primaryChecked: 'border-interactive-border-primary-default',
+      positiveChecked: 'border-interactive-border-positive-default',
+      negativeChecked: 'border-interactive-border-negative-default',
+      uncheckedDisabled: 'border-interactive-border-gray-disabled',
+      primaryDisabled: 'border-interactive-border-primary-disabled',
+      positiveDisabled: 'border-interactive-border-positive-disabled',
+      negativeDisabled: 'border-interactive-border-negative-disabled',
     },
   },
   defaultVariants: {
@@ -65,35 +63,49 @@ export type ChipInnerVariants = {
   isDisabled?: boolean;
 };
 
-export const chipInnerCva = cva(chipStyles.chipInner, {
-  variants: {
-    size: {
-      xsmall: [chipStyles.innerXsmall, utilityClasses['border-width-thinner']].join(' '),
-      small: [chipStyles.innerSmall, utilityClasses['border-width-thinner']].join(' '),
-      medium: [chipStyles.innerMedium, utilityClasses['border-width-thin']].join(' '),
-      large: [chipStyles.innerLarge, utilityClasses['border-width-thin']].join(' '),
+// `disabled` marker (pointer-events-none) is a plain utility, not a class needing its own lookup.
+const disabledClass = 'pointer-events-none';
+
+export const chipInnerCva = cva(
+  'flex flex-row justify-center items-center overflow-hidden w-full border-solid border-transparent transition-colors duration-xquick ease-standard',
+  {
+    variants: {
+      size: {
+        xsmall:
+          'h-[24px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-3 border-thinner',
+        small:
+          'h-[28px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-3 border-thinner',
+        medium:
+          'h-[36px] rounded-[calc(var(--border-radius-small)-var(--border-width-thin))] px-spacing-4 border-thin',
+        large:
+          'h-[48px] rounded-[calc(var(--border-radius-medium)-var(--border-width-thin))] px-spacing-5 border-thin',
+      },
+      colorVariant: {
+        unchecked:
+          'bg-surface-background-gray-intense border-transparent hover:bg-interactive-background-gray-faded',
+        primaryChecked:
+          'bg-interactive-background-primary-faded border-interactive-border-primary-default hover:bg-interactive-background-primary-faded-highlighted',
+        positiveChecked:
+          'bg-interactive-background-positive-faded border-interactive-border-positive-default hover:bg-interactive-background-positive-faded-highlighted',
+        negativeChecked:
+          'bg-interactive-background-negative-faded border-interactive-border-negative-default hover:bg-interactive-background-negative-faded-highlighted',
+        uncheckedDisabled: `bg-transparent border-transparent ${disabledClass}`,
+        primaryDisabled: `bg-interactive-background-primary-disabled border-interactive-border-primary-disabled ${disabledClass}`,
+        positiveDisabled: `bg-interactive-background-positive-disabled border-interactive-border-positive-disabled ${disabledClass}`,
+        negativeDisabled: `bg-interactive-background-negative-disabled border-interactive-border-negative-disabled ${disabledClass}`,
+      },
+      isDisabled: {
+        true: disabledClass,
+        false: null,
+      },
     },
-    colorVariant: {
-      unchecked: chipStyles.innerUnchecked,
-      primaryChecked: chipStyles.innerPrimaryChecked,
-      positiveChecked: chipStyles.innerPositiveChecked,
-      negativeChecked: chipStyles.innerNegativeChecked,
-      uncheckedDisabled: [chipStyles.innerUncheckedDisabled, chipStyles.disabled].join(' '),
-      primaryDisabled: [chipStyles.innerPrimaryDisabled, chipStyles.disabled].join(' '),
-      positiveDisabled: [chipStyles.innerPositiveDisabled, chipStyles.disabled].join(' '),
-      negativeDisabled: [chipStyles.innerNegativeDisabled, chipStyles.disabled].join(' '),
-    },
-    isDisabled: {
-      true: chipStyles.disabled,
-      false: null,
+    defaultVariants: {
+      size: 'small',
+      colorVariant: 'unchecked',
+      isDisabled: false,
     },
   },
-  defaultVariants: {
-    size: 'small',
-    colorVariant: 'unchecked',
-    isDisabled: false,
-  },
-});
+);
 
 export function getChipInnerClasses(props: ChipInnerVariants): string {
   return chipInnerCva(props);
@@ -101,15 +113,17 @@ export function getChipInnerClasses(props: ChipInnerVariants): string {
 
 export function getChipTemplateClasses(): Record<string, string> {
   return {
-    chipWrapper: chipStyles.chipWrapper,
-    label: chipStyles.label,
-    labelDisabled: chipStyles.labelDisabled,
-    srOnly: chipStyles.srOnly,
-    animatedChip: chipStyles.animatedChip,
-    chipInner: chipStyles.chipInner,
-    pressed: chipStyles.pressed,
-    chipIcon: chipStyles.chipIcon,
-    chipText: chipStyles.chipText,
+    chipWrapper: 'inline-flex',
+    label: 'cursor-pointer w-full',
+    labelDisabled: 'cursor-not-allowed',
+    srOnly:
+      'absolute w-[1px] h-[1px] p-spacing-0 -m-px overflow-hidden [clip:rect(0,0,0,0)] whitespace-nowrap border-0 blade-chip-sr-only',
+    animatedChip: animatedChipBase,
+    chipInner:
+      'flex flex-row justify-center items-center overflow-hidden w-full border-solid border-transparent transition-colors duration-xquick ease-standard',
+    pressed: 'scale-[0.92]',
+    chipIcon: 'flex',
+    chipText: 'px-spacing-2 overflow-hidden text-ellipsis whitespace-nowrap',
   };
 }
 
@@ -187,11 +201,11 @@ export type ChipGroupVariants = {
   labelPosition?: 'top' | 'left';
 };
 
-export const chipGroupFieldCva = cva(chipGroupStyles.chipGroupField, {
+export const chipGroupFieldCva = cva('flex', {
   variants: {
     labelPosition: {
-      top: chipGroupStyles.labelTop,
-      left: chipGroupStyles.labelLeft,
+      top: 'flex-col',
+      left: 'flex-row items-start gap-spacing-4',
     },
   },
   defaultVariants: {
@@ -199,13 +213,13 @@ export const chipGroupFieldCva = cva(chipGroupStyles.chipGroupField, {
   },
 });
 
-export const chipGroupGapCva = cva(chipGroupStyles.chipsContainer, {
+export const chipGroupGapCva = cva('flex flex-row flex-wrap', {
   variants: {
     size: {
-      xsmall: chipGroupStyles.gapXsmall,
-      small: chipGroupStyles.gapSmall,
-      medium: chipGroupStyles.gapMedium,
-      large: chipGroupStyles.gapLarge,
+      xsmall: 'gap-x-spacing-3 gap-y-spacing-3 mb-spacing-3',
+      small: 'gap-x-spacing-3 gap-y-spacing-3 mb-spacing-3',
+      medium: 'gap-x-spacing-3 gap-y-spacing-4 mb-spacing-4',
+      large: 'gap-x-spacing-3 gap-y-spacing-4 mb-spacing-4',
     },
   },
   defaultVariants: {
@@ -223,25 +237,27 @@ export function getChipGroupGapClasses(props: { size?: ChipSize }): string {
 
 export function getChipGroupTemplateClasses(): Record<string, string> {
   return {
-    chipGroupField: chipGroupStyles.chipGroupField,
-    groupLabel: chipGroupStyles.groupLabel,
-    labelSmall: chipGroupStyles.labelSmall,
-    labelMedium: chipGroupStyles.labelMedium,
-    labelLarge: chipGroupStyles.labelLarge,
-    necessityRequired: chipGroupStyles.necessityRequired,
-    necessityOptional: chipGroupStyles.necessityOptional,
-    helpText: chipGroupStyles.helpText,
-    errorText: chipGroupStyles.errorText,
-    srOnly: chipGroupStyles.srOnly,
+    chipGroupField: 'flex',
+    groupLabel: 'font-text font-medium text-surface-text-gray-normal mb-spacing-3',
+    labelSmall: 'text-75 leading-75',
+    labelMedium: 'text-100 leading-100',
+    labelLarge: 'text-200 leading-200',
+    necessityRequired: "after:content-['_*'] after:text-feedback-text-negative-intense",
+    necessityOptional:
+      "after:content-['_(optional)'] after:text-surface-text-gray-muted after:font-regular",
+    helpText: 'font-text font-regular text-75 leading-75 text-surface-text-gray-muted',
+    errorText: 'font-text font-regular text-75 leading-75 text-feedback-text-negative-intense',
+    srOnly:
+      'absolute w-[1px] h-[1px] p-spacing-0 -m-px overflow-hidden [clip:rect(0,0,0,0)] whitespace-nowrap border-0',
   };
 }
 
 export function getChipGroupLabelSizeClass(size: ChipSize): string {
   const map: Record<ChipSize, string> = {
-    xsmall: chipGroupStyles.labelSmall,
-    small: chipGroupStyles.labelMedium,
-    medium: chipGroupStyles.labelLarge,
-    large: chipGroupStyles.labelLarge,
+    xsmall: 'text-75 leading-75',
+    small: 'text-100 leading-100',
+    medium: 'text-200 leading-200',
+    large: 'text-200 leading-200',
   };
   return map[size];
 }

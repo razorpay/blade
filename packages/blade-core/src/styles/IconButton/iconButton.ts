@@ -1,6 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './iconButton.module.css';
 
 export type IconButtonEmphasis = 'subtle' | 'intense' | 'moderate';
 export type IconButtonSize = 'small' | 'medium' | 'large';
@@ -27,12 +25,12 @@ export const highlightedButtonSizeMap: Record<'small' | 'medium', number> = {
  * sized); it exists so the compound variants can pin a fixed square size when
  * `isHighlighted` is true.
  */
-export const iconButtonStyles = cva(styles['icon-button'], {
+export const iconButtonStyles = cva('blade-icon-button', {
   variants: {
     emphasis: {
-      intense: styles['emphasis-intense'],
-      subtle: styles['emphasis-subtle'],
-      moderate: styles['emphasis-moderate'],
+      intense: 'blade-icon-button-emphasis-intense',
+      subtle: 'blade-icon-button-emphasis-subtle',
+      moderate: 'blade-icon-button-emphasis-moderate',
     },
     size: {
       small: null,
@@ -40,20 +38,20 @@ export const iconButtonStyles = cva(styles['icon-button'], {
       large: null,
     },
     isHighlighted: {
-      true: styles.highlighted,
+      true: 'blade-icon-button-highlighted',
       false: null,
     },
   },
   compoundVariants: [
     // Fixed square size when highlighted (small/medium only).
-    { isHighlighted: true, size: 'small', class: styles['highlighted-small'] },
-    { isHighlighted: true, size: 'medium', class: styles['highlighted-medium'] },
+    { isHighlighted: true, size: 'small', class: 'blade-icon-button-highlighted-small' },
+    { isHighlighted: true, size: 'medium', class: 'blade-icon-button-highlighted-medium' },
     // Faded hover/focus background when highlighted, per emphasis.
-    { isHighlighted: true, emphasis: 'intense', class: styles['highlighted-intense'] },
-    { isHighlighted: true, emphasis: 'subtle', class: styles['highlighted-subtle'] },
+    { isHighlighted: true, emphasis: 'intense', class: 'blade-icon-button-highlighted-intense' },
+    { isHighlighted: true, emphasis: 'subtle', class: 'blade-icon-button-highlighted-subtle' },
     // Fixed square size when moderate (small/medium only).
-    { emphasis: 'moderate', size: 'small', class: styles['moderate-small'] },
-    { emphasis: 'moderate', size: 'medium', class: styles['moderate-medium'] },
+    { emphasis: 'moderate', size: 'small', class: 'blade-icon-button-moderate-small' },
+    { emphasis: 'moderate', size: 'medium', class: 'blade-icon-button-moderate-medium' },
   ],
   defaultVariants: {
     emphasis: 'intense',
@@ -69,17 +67,17 @@ export const iconButtonStyles = cva(styles['icon-button'], {
  */
 export function getIconButtonTemplateClasses(): Record<string, string> {
   return {
-    iconButton: styles['icon-button'],
-    emphasisIntense: styles['emphasis-intense'],
-    emphasisSubtle: styles['emphasis-subtle'],
-    emphasisModerate: styles['emphasis-moderate'],
-    moderateSmall: styles['moderate-small'],
-    moderateMedium: styles['moderate-medium'],
-    highlighted: styles.highlighted,
-    highlightedSmall: styles['highlighted-small'],
-    highlightedMedium: styles['highlighted-medium'],
-    highlightedIntense: styles['highlighted-intense'],
-    highlightedSubtle: styles['highlighted-subtle'],
+    iconButton: 'blade-icon-button',
+    emphasisIntense: 'blade-icon-button-emphasis-intense',
+    emphasisSubtle: 'blade-icon-button-emphasis-subtle',
+    emphasisModerate: 'blade-icon-button-emphasis-moderate',
+    moderateSmall: 'blade-icon-button-moderate-small',
+    moderateMedium: 'blade-icon-button-moderate-medium',
+    highlighted: 'blade-icon-button-highlighted',
+    highlightedSmall: 'blade-icon-button-highlighted-small',
+    highlightedMedium: 'blade-icon-button-highlighted-medium',
+    highlightedIntense: 'blade-icon-button-highlighted-intense',
+    highlightedSubtle: 'blade-icon-button-highlighted-subtle',
   } as const;
 }
 

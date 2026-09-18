@@ -1,7 +1,4 @@
 import { cva } from 'class-variance-authority';
-import { utilityClasses } from '../utilities';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './skeleton.module.css';
 import { getSpacingValue } from '~utils/styledProps/spacingUtils';
 
 export type SkeletonBorderRadius =
@@ -20,24 +17,28 @@ export type SkeletonVariants = {
   borderRadius?: SkeletonBorderRadius;
 };
 
-export const skeletonStyles = cva(styles.skeleton, {
+/**
+ * CVA-based Skeleton styles (Tailwind). The base (`.blade-skeleton`) carries the dual-keyframe
+ * fade-in + pulse animation from the plugin; border radius maps to `rounded-*` utilities.
+ */
+export const skeletonStyles = cva('blade-skeleton', {
   variants: {
     borderRadius: {
-      none: styles['radius-none'],
-      '2xsmall': styles['radius-2xsmall'],
-      xsmall: styles['radius-xsmall'],
-      small: styles['radius-small'],
-      medium: styles['radius-medium'],
-      large: styles['radius-large'],
-      xlarge: styles['radius-xlarge'],
-      '2xlarge': styles['radius-2xlarge'],
-      max: styles['radius-max'],
-      round: styles['radius-round'],
+      none: 'rounded-none',
+      '2xsmall': 'rounded-2xsmall',
+      xsmall: 'rounded-xsmall',
+      small: 'rounded-small',
+      medium: 'rounded-medium',
+      large: 'rounded-large',
+      xlarge: 'rounded-xlarge',
+      '2xlarge': 'rounded-2xlarge',
+      max: 'rounded-max',
+      round: 'rounded-round',
     },
   },
 });
 
-export const skeletonClass = styles.skeleton;
+export const skeletonClass = 'blade-skeleton';
 
 export type SkeletonFlexProps = {
   flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
@@ -54,6 +55,19 @@ export type SkeletonFlexProps = {
   alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
   justifySelf?: 'auto' | 'start' | 'end' | 'center' | 'stretch';
   placeSelf?: 'auto' | 'start' | 'end' | 'center' | 'stretch';
+};
+
+const flexDirectionToUtility: Record<NonNullable<SkeletonFlexProps['flexDirection']>, string> = {
+  row: 'flex-row',
+  'row-reverse': 'flex-row-reverse',
+  column: 'flex-col',
+  'column-reverse': 'flex-col-reverse',
+};
+
+const flexWrapToUtility: Record<NonNullable<SkeletonFlexProps['flexWrap']>, string> = {
+  nowrap: 'flex-nowrap',
+  wrap: 'flex-wrap',
+  'wrap-reverse': 'flex-wrap-reverse',
 };
 
 const alignItemsToUtility: Record<NonNullable<SkeletonFlexProps['alignItems']>, string> = {
@@ -75,12 +89,12 @@ const justifyContentToUtility: Record<NonNullable<SkeletonFlexProps['justifyCont
 };
 
 const alignSelfToUtility: Record<NonNullable<SkeletonFlexProps['alignSelf']>, string> = {
-  auto: 'align-self-auto',
-  'flex-start': 'align-self-start',
-  'flex-end': 'align-self-end',
-  center: 'align-self-center',
-  baseline: 'align-self-baseline',
-  stretch: 'align-self-stretch',
+  auto: 'self-auto',
+  'flex-start': 'self-start',
+  'flex-end': 'self-end',
+  center: 'self-center',
+  baseline: 'self-baseline',
+  stretch: 'self-stretch',
 };
 
 const justifySelfToUtility: Record<NonNullable<SkeletonFlexProps['justifySelf']>, string> = {
@@ -123,31 +137,25 @@ export function getSkeletonClasses(
   const utilities: string[] = [];
 
   if (flexDirection) {
-    utilities.push(
-      utilityClasses[`flex-direction-${flexDirection}` as keyof typeof utilityClasses],
-    );
+    utilities.push(flexDirectionToUtility[flexDirection]);
   }
   if (flexWrap) {
-    utilities.push(utilityClasses[`flex-wrap-${flexWrap}` as keyof typeof utilityClasses]);
+    utilities.push(flexWrapToUtility[flexWrap]);
   }
   if (alignItems) {
-    utilities.push(utilityClasses[alignItemsToUtility[alignItems] as keyof typeof utilityClasses]);
+    utilities.push(alignItemsToUtility[alignItems]);
   }
   if (justifyContent) {
-    utilities.push(
-      utilityClasses[justifyContentToUtility[justifyContent] as keyof typeof utilityClasses],
-    );
+    utilities.push(justifyContentToUtility[justifyContent]);
   }
   if (alignSelf) {
-    utilities.push(utilityClasses[alignSelfToUtility[alignSelf] as keyof typeof utilityClasses]);
+    utilities.push(alignSelfToUtility[alignSelf]);
   }
   if (justifySelf) {
-    utilities.push(
-      utilityClasses[justifySelfToUtility[justifySelf] as keyof typeof utilityClasses],
-    );
+    utilities.push(justifySelfToUtility[justifySelf]);
   }
   if (placeSelf) {
-    utilities.push(utilityClasses[placeSelfToUtility[placeSelf] as keyof typeof utilityClasses]);
+    utilities.push(placeSelfToUtility[placeSelf]);
   }
 
   return [cvaClasses, ...utilities, className].filter(Boolean).join(' ');

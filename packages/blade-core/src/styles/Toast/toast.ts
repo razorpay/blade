@@ -1,8 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './toast.module.css';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import containerStyles from './toastContainer.module.css';
 
 export type ToastColor = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 export type ToastType = 'informational' | 'promotional';
@@ -13,25 +9,26 @@ export type ToastVariants = {
 };
 
 /**
- * CVA wrapper for the toast root element.
+ * CVA wrapper for the toast root element (Tailwind).
  *
- * Background color and border are driven by `type × color` compound variants
- * because the React source picks them via two-prop lookups
- * (`isPromotional ? gray : color`). The compound rules live in
- * `toast.module.css` as `.type-informational.color-{name}` selectors.
+ * Background color and border are driven by `type × color` compound variants because the React
+ * source picks them via two-prop lookups (`isPromotional ? gray : color`). The compound rules,
+ * descendant icon/content/trailing alignment overrides for the promotional type, the dismiss
+ * button's hover/focus states, and the enter/exit `@keyframes` all live in the `.blade-toast-*`
+ * plugin classes (see `tailwind/plugin.cjs`).
  */
-export const toastStyles = cva(styles.toast, {
+export const toastStyles = cva('blade-toast', {
   variants: {
     type: {
-      informational: styles['type-informational'],
-      promotional: styles['type-promotional'],
+      informational: 'blade-toast-type-informational',
+      promotional: 'blade-toast-type-promotional',
     },
     color: {
-      neutral: styles['color-neutral'],
-      positive: styles['color-positive'],
-      negative: styles['color-negative'],
-      notice: styles['color-notice'],
-      information: styles['color-information'],
+      neutral: 'blade-toast-color-neutral',
+      positive: 'blade-toast-color-positive',
+      negative: 'blade-toast-color-negative',
+      notice: 'blade-toast-color-notice',
+      information: 'blade-toast-color-information',
     },
   },
   defaultVariants: {
@@ -48,19 +45,17 @@ export function getToastClasses(
   props: ToastVariants & { isVisible?: boolean; className?: string },
 ): string {
   const { className, isVisible = true, ...cvaProps } = props;
-  const animationClass = isVisible ? styles['toast-enter'] : styles['toast-exit'];
+  const animationClass = isVisible ? 'blade-toast-enter' : 'blade-toast-exit';
   return [toastStyles(cvaProps), animationClass, className].filter(Boolean).join(' ');
 }
 
-/* Toast structural classes — exported individually so Svelte templates can
- * reference them and the build bundles them.
- */
-export const toastIconWrapperClass = styles['icon-wrapper'];
-export const toastContentClass = styles.content;
-export const toastTrailingClass = styles.trailing;
-export const toastDismissButtonClass = styles['dismiss-button'];
-export const toastEnterClass = styles['toast-enter'];
-export const toastExitClass = styles['toast-exit'];
+/* Toast structural classes — exported individually so Svelte templates can reference them. */
+export const toastIconWrapperClass = 'blade-toast-icon-wrapper';
+export const toastContentClass = 'blade-toast-content';
+export const toastTrailingClass = 'blade-toast-trailing';
+export const toastDismissButtonClass = 'blade-toast-dismiss-button';
+export const toastEnterClass = 'blade-toast-enter';
+export const toastExitClass = 'blade-toast-exit';
 
 /**
  * Aggregated structural classes. Call this from the Svelte component to
@@ -69,7 +64,7 @@ export const toastExitClass = styles['toast-exit'];
  */
 export function getToastTemplateClasses(): Record<string, string> {
   return {
-    toast: styles.toast,
+    toast: 'blade-toast',
     iconWrapper: toastIconWrapperClass,
     content: toastContentClass,
     trailing: toastTrailingClass,
@@ -135,9 +130,9 @@ export const MIN_TOAST_DESKTOP = 3;
 export const PEEKS = 3;
 
 /* Toast container structural classes */
-export const toastContainerClass = containerStyles['toast-container'];
-export const toastHoverRegionClass = containerStyles['hover-region'];
-export const toastWrapperClass = containerStyles['toast-wrapper'];
+export const toastContainerClass = 'blade-toast-container';
+export const toastHoverRegionClass = 'blade-toast-hover-region';
+export const toastWrapperClass = 'blade-toast-wrapper';
 
 /**
  * Aggregated container classes — same anti-tree-shake pattern as

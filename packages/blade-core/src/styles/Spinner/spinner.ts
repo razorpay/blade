@@ -1,7 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './spinner.module.css';
-// import { utilityClasses } from '../utilities';
 
 export type SpinnerVariants = {
   size?: 'medium' | 'large' | 'xlarge';
@@ -11,19 +8,24 @@ export type SpinnerVariants = {
 export type SpinnerSize = 'medium' | 'large' | 'xlarge';
 export type SpinnerColor = 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
 
-export const spinnerStyles = cva(styles.spinner, {
+/**
+ * CVA-based Spinner styles (Tailwind). Color is applied to the root as a `text-*` utility; the SVG
+ * icon inherits it via `fill=currentColor` (was a nested `.color-* .spinner-icon` rule). The
+ * rotating box (`.blade-spinner-box`) + its `@keyframes` live in the plugin.
+ */
+export const spinnerStyles = cva('inline-flex items-center justify-center', {
   variants: {
     size: {
-      medium: styles['size-medium'],
-      large: styles['size-large'],
-      xlarge: styles['size-xlarge'],
+      medium: 'w-[16px] h-[16px]',
+      large: 'w-[20px] h-[20px]',
+      xlarge: 'w-[24px] h-[24px]',
     },
     color: {
-      primary: styles['color-primary'],
-      white: styles['color-white'],
-      positive: styles['color-positive'],
-      negative: styles['color-negative'],
-      neutral: styles['color-neutral'],
+      primary: 'text-interactive-icon-primary-subtle',
+      white: 'text-interactive-icon-static-white-subtle',
+      positive: 'text-interactive-icon-positive-subtle',
+      negative: 'text-interactive-icon-negative-subtle',
+      neutral: 'text-interactive-icon-gray-muted',
     },
   },
   defaultVariants: {
@@ -33,9 +35,9 @@ export const spinnerStyles = cva(styles.spinner, {
 });
 
 // Export class names for use in component templates
-export const spinnerClass = styles.spinner;
-export const spinnerBoxClass = styles['spinner-box'];
-export const spinnerIconClass = styles['spinner-icon'];
+export const spinnerClass = 'inline-flex items-center justify-center';
+export const spinnerBoxClass = 'blade-spinner-box';
+export const spinnerIconClass = 'w-full h-full';
 
 /**
  * Generate all classes for Spinner component
