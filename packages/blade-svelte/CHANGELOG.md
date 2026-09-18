@@ -1,5 +1,11 @@
 # @razorpay/blade-svelte
 
+## 0.17.1
+
+### Patch Changes
+
+- 263f073c6: feat(blade-svelte): add WhatsAppIcon, MailIcon, and MailOpenIcon
+
 ## 0.17.0
 
 ### Minor Changes
