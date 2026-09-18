@@ -65,6 +65,10 @@ type InteractiveStatesWithFadedHighlighted = InteractiveStates & {
   fadedHighlighted: string;
 };
 
+type InteractiveStatesWithDisabledSolid = InteractiveStatesWithFadedHighlighted & {
+  disabledSolid: string;
+};
+
 type InteractiveBackgroundStatesWithGhost = InteractiveStatesWithFadedHighlighted & {
   ghost: string;
 };
@@ -109,9 +113,10 @@ type PopupDeprecatedTokens = {
 export type Colors = {
   interactive: {
     background: Record<
-      Exclude<InteractiveColorKeys, InteractiveBackgroundColorsWithGhost>,
+      Exclude<InteractiveColorKeys, InteractiveBackgroundColorsWithGhost | 'neutral'>,
       InteractiveStatesWithFadedHighlighted
     > &
+      Record<'neutral', InteractiveStatesWithDisabledSolid> &
       Record<InteractiveBackgroundColorsWithGhost, InteractiveBackgroundStatesWithGhost>;
     border: Record<
       Exclude<InteractiveColorKeys, InteractiveBorderColorsWithFadedHighlighted>,

@@ -13,9 +13,13 @@ jobs:
     name: Request Slash AI review
     # Triggers on PR open, push to PR branch (synchronize), and manual 'Run Slash Review' label.
     # Skip bot-triggered runs to prevent feedback loops (rzp-slash-public is excluded intentionally
-    # so that Slash-authored PRs also get reviewed).
+    # so that Slash-authored PRs also get reviewed). kamaleshs-bridge4 and slash-code-reviewer
+    # are automation bots and are skipped like other bots.
     if: |
       github.actor != 'github-actions[bot]' &&
+      github.actor != 'kamaleshs-bridge4' &&
+      github.actor != 'slash-code-reviewer' &&
+      github.actor != 'slash-code-reviewer[bot]' &&
       (
         github.event.action == 'opened' ||
         github.event.action == 'synchronize' ||

@@ -1,5 +1,38 @@
 # @razorpay/blade-core
 
+## 0.17.0
+
+### Minor Changes
+
+- e914cf6a8: update design tokens from Figma
+
+  Added 18 tokens and removed 0 tokens.
+
+## 0.16.0
+
+### Minor Changes
+
+- ec066cfee: update design tokens from Figma
+
+  Added 10 tokens and removed 0 tokens.
+
+### Patch Changes
+
+- 5cf3b248e: fix(blade-svelte): stabilize PhoneNumberInput country selector BottomSheet
+
+  Pin the country selector BottomSheet to fixed snap points so filtering the country list no longer resizes the sheet mid-search. Hide the country search field when only one country is available. Use desktop ActionList item padding (`spacing.3`) on all breakpoints for consistent list density.
+
+## 0.15.0
+
+### Minor Changes
+
+- a807ec77a: feat: add checkout studio story with style override playground
+
+  - Export slot metadata API (defineComponentSlots, BLADE_SLOT_METADATA) for style override introspection
+  - Add Card 'surface' slot for per-slot style overrides
+  - Fix AppBar z-index from 1000 to 100 so it no longer overlays modal surfaces like BottomSheet (default z-index 100)
+  - Fix Input focus-ring transition to animate outline-width only, avoiding black→blue color flash on focus
+
 ## 0.14.1
 
 ### Patch Changes

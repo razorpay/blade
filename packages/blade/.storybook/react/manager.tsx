@@ -14,8 +14,10 @@ const ADDON_ID = 'internal-components-addon';
 const TOOL_ID = 'internal-components-tool';
 
 const hiddenStoryStyle = document.createElement('style');
+// Targets the sidebar row wrapper and not the inner anchor, otherwise the wrapper keeps its
+// min-height and leaves an empty row behind for every hidden story.
 hiddenStoryStyle.textContent = `
-  [id*='internal'] {
+  .sidebar-item[data-item-id*='internal'] {
     display: none !important;
   }
 `;

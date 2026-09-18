@@ -48,6 +48,7 @@ type TextInputCommonProps = Pick<
   | 'validationState'
   | 'validationTextPlacement'
   | 'helpText'
+  | 'showHelpTextOnFocus'
   | 'errorText'
   | 'successText'
   | 'placeholder'

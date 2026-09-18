@@ -19,6 +19,10 @@ export const format = (value: string, pattern: string): string => {
         break;
       }
     } else {
+      // Stop before appending a delimiter when the value ended exactly on a
+      // group boundary; otherwise a trailing delimiter leaks into the value
+      // (e.g. 16 digits into "#### #### #### #### ###" → "6785 ").
+      if (valueIndex >= value.length) break;
       result += patternChar;
     }
   }
@@ -117,29 +121,26 @@ export const createFormattedInput = ({
     info.endOfSection = false;
 
     if (!didDelete) {
-      const nextChar = formattedValue[cursorPosition];
-      const nextIsDelimiter = nextChar ? !isUserCharacter(nextChar) : false;
+      // Place the caret after the same number of user characters that preceded
+      // it in the freshly typed value. `selectionStart` counts positions in the
+      // pre-format string, so it ignores delimiters the formatter inserts before
+      // the caret at a group boundary (e.g. "1234" + "5" → "1234 5": the space
+      // pushes "5" to index 5, so a raw caret of 5 would sit *before* it). Anchor
+      // on user characters instead so the caret stays glued to the typed char.
+      const userCharsBeforeCursor = stripPatternCharacters(
+        newInputValue.substring(0, cursorPosition),
+      ).length;
 
-      const remainingText = formattedValue.substring(cursorPosition);
-      const nextUserCharIndex = remainingText.search(/[\dA-z]/);
-      const hasMoreUserChars = nextUserCharIndex !== -1;
-
-      info.endOfSection = nextIsDelimiter && !hasMoreUserChars;
-
-      if (nextIsDelimiter && hasMoreUserChars) {
-        const prevChar = formattedValue[cursorPosition - 1] ?? '';
-        const prevIsDelimiter = !isUserCharacter(prevChar);
-
-        if (prevIsDelimiter) {
-          info.cursorPosition = cursorPosition + nextUserCharIndex + 1;
-        } else {
-          const delimiterExistedBefore =
-            currentValue[cursorPosition] === formattedValue[cursorPosition];
-          if (delimiterExistedBefore) {
-            info.cursorPosition = cursorPosition + 1;
-          }
+      let seenUserChars = 0;
+      let nextCursor = formattedValue.length;
+      for (let i = 0; i < formattedValue.length; i++) {
+        if (seenUserChars === userCharsBeforeCursor) {
+          nextCursor = i;
+          break;
         }
+        if (isUserCharacter(formattedValue[i])) seenUserChars++;
       }
+      info.cursorPosition = nextCursor;
     }
 
     onChange?.({ name, value: formattedValue, rawValue });

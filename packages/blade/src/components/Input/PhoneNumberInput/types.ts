@@ -15,6 +15,7 @@ type CommonProps = Pick<
   | 'errorText'
   | 'successText'
   | 'helpText'
+  | 'showHelpTextOnFocus'
   | 'defaultValue'
   | 'necessityIndicator'
   | 'isRequired'

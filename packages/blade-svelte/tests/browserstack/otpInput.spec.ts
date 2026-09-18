@@ -10,7 +10,6 @@ test('OTPInput accepts digits and moves focus across fields', async ({ page }) =
   const fieldCount = await fields.count();
   expect(fieldCount).toBeGreaterThan(1);
 
-  await fields.nth(0).click();
-  await page.keyboard.type('1');
+  await fields.nth(0).fill('1');
   await expect(fields.nth(1)).toBeFocused();
 });

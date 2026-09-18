@@ -58,6 +58,7 @@ type PasswordInputCommonProps = Pick<
   | 'errorText'
   | 'successText'
   | 'helpText'
+  | 'showHelpTextOnFocus'
   | 'isDisabled'
   | 'defaultValue'
   | 'placeholder'

@@ -17,6 +17,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import {
+  ArrowRightIcon,
   DownloadIcon,
   SettingsIcon,
   BankIcon,
@@ -174,6 +175,13 @@ const ActionListWithTrailingComponentsExample: StoryFn<typeof ActionListComponen
             title="FAQs, Live Chat"
             value="faqs"
             trailing={<ActionListItemText>⌘ + H</ActionListItemText>}
+          />
+          <ActionListItem
+            title="Create a Payout"
+            description="Pay a single beneficiary"
+            value="create_payout"
+            leading={<ActionListItemIcon icon={DownloadIcon} />}
+            trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
           />
         </ActionListComponent>
       </Box>

@@ -1,5 +1,72 @@
 # @razorpay/blade-svelte
 
+## 0.15.3
+
+### Patch Changes
+
+- 0829136ce: fix(blade-svelte): stop BottomSheet and Modal from scrolling the page to the top on iOS
+
+  `body-scroll-lock-upgrade` locks iOS by moving the page into `body { position: fixed; top: -scrollY }` and restoring it with `window.scrollTo()` on unlock, which loses the reading position; Android and desktop take its `overflow: hidden` branch and were unaffected. Both overlays now use a ref-counted lock that applies the same `overflow: hidden` bookkeeping on every platform and blocks background scrolling on iOS by intercepting `touchmove`, so nothing mutates page geometry. BottomSheet additionally acquires its lock at most once per open instead of on every content re-measurement.
+
+- Updated dependencies [e914cf6a8]
+  - @razorpay/blade-core@0.17.0
+
+## 0.15.2
+
+### Patch Changes
+
+- bde45a63b: fix(blade-svelte): keep formatted TextInput in sync with controlled value
+
+  Controlled `format` mode on TextInput now reconciles the display against the parent `value` after every change, so consumer sanitisation (digit-only card fields) and programmatic prefill/reset actually show up on screen. The formatter no longer leaks a trailing delimiter when the value ends on a group boundary, and the caret stays after the typed character when a delimiter is inserted.
+
+## 0.15.1
+
+### Patch Changes
+
+- 5cf3b248e: fix(blade-svelte): stabilize PhoneNumberInput country selector BottomSheet
+
+  Pin the country selector BottomSheet to fixed snap points so filtering the country list no longer resizes the sheet mid-search. Hide the country search field when only one country is available. Use desktop ActionList item padding (`spacing.3`) on all breakpoints for consistent list density.
+
+- Updated dependencies [ec066cfee]
+- Updated dependencies [5cf3b248e]
+  - @razorpay/blade-core@0.16.0
+
+## 0.15.0
+
+### Minor Changes
+
+- ba92bf1e4: feat(blade-svelte): add BottomSheet auto mode and maxHeight cap
+
+  When `snapPoints` is omitted, BottomSheet now opens at its natural content height (capped by `maxHeight`, default `0.97` of the viewport or portal container). Content height is tracked via `ResizeObserver` and the sheet re-clamps as content grows or shrinks. Drag-to-dismiss remains; drag-to-resize is disabled in auto mode. Passing `snapPoints` keeps the existing multi-detent behaviour unchanged. Also fixes portal-target sheets occasionally exceeding `maxHeight` when height math used `window.innerHeight` before the container height was synced.
+
+- 8bb1c2efd: feat(blade-svelte): add `backdropPortalTarget` to BottomSheet
+
+  Adds an optional `backdropPortalTarget` prop so the dim overlay can mount into a wider ancestor while the sheet surface stays in a nested container. When the targets differ, backdrop and surface render in separate portals with stacking tuned so the surface still paints above the dim layer.
+
+- a807ec77a: feat: add checkout studio story with style override playground
+
+  - Export slot metadata API (defineComponentSlots, BLADE_SLOT_METADATA) for style override introspection
+  - Add Card 'surface' slot for per-slot style overrides
+  - Fix AppBar z-index from 1000 to 100 so it no longer overlays modal surfaces like BottomSheet (default z-index 100)
+  - Fix Input focus-ring transition to animate outline-width only, avoiding black→blue color flash on focus
+
+### Patch Changes
+
+- 08b3ddc5c: feat(blade-svelte): add country search to PhoneNumberInput selector
+
+  Adds a `SearchInput` inside `CountrySelector`'s `BottomSheetHeader` for `PhoneNumberInput`. Filters the country list by name or dial code (case-insensitive substring match) and shows a "No countries found" empty state when the filter matches nothing.
+
+- 0f2aed9e1: docs(blade-svelte): add portalTarget story for PhoneNumberInput
+
+  Adds a `WithPortalTarget` Storybook example for `PhoneNumberInput` that renders the input inside a bounded container and passes `portalTarget`, showing how the country-selector bottom sheet mounts into that element instead of `document.body`.
+
+- a12fdbe9f: fix(blade-svelte): budget grab handle and empty header in BottomSheet height
+
+  Measure empty `BottomSheetHeader` height instead of skipping it, and always budget grab-handle height in snap/scroll math. Zero both only when the header floats (zero body padding). Fixes spurious body scroll (~28px) on short sheets with an empty header and drag handle.
+
+- Updated dependencies [a807ec77a]
+  - @razorpay/blade-core@0.15.0
+
 ## 0.14.0
 
 ### Minor Changes
