@@ -1,0 +1,193 @@
+/* ----------------------------------------------------------------------------
+ * Dropdown Styles
+ *
+ * Visual parity with React `StyledDropdownOverlay.tsx` + `InputDropdownButton`
+ * (`StyledSearchTrailingDropdown`).
+ * ------------------------------------------------------------------------- */
+
+/* ===== Floating wrapper =====
+ * Portaled node positioned by floating-ui (`strategy: 'fixed'`). Positioning
+ * (transform, width, z-index, display) is set inline from JS because it is
+ * fully dynamic — the same approach `Tooltip.svelte` uses.
+ */
+.floating {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+/* ===== Overlay surface (StyledDropdownOverlay) ===== */
+.overlaySurface {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--popup-background-gray-moderate);
+  border-radius: var(--border-radius-medium);
+  /* backdropBlur.medium = 8 (no --backdrop-blur-* token in the Svelte theme). */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* Mirrors React getPopupBoxShadowString: inset 1px border + elevation + top. */
+  box-shadow: inset 0 0 0 1px var(--popup-border-gray-subtle),
+    var(--elevation-mid-raised), inset 0 0 0 0 var(--popup-border-gray-moderate);
+  /* Open/close transition — mirrors React `useTransitionStyles`
+   * (fade + translateY(-8px)); driven by `data-state`. */
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--duration-quick) ease, transform var(--duration-quick) ease;
+}
+
+.overlaySurface[data-state='open'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlaySurface[data-state='closed'] {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* In a BottomSheet the sheet surface provides elevation, so drop the shadow. */
+.overlaySurfaceInBottomSheet {
+  box-shadow: none;
+}
+
+/* Menu triggers get a flexible min/max width; input triggers take the reference
+ * width applied inline by the floating-ui `size` middleware. */
+.overlayMenuWidth {
+  /* React size['240']/size['400']; no --size-* scale in the Svelte theme. */
+  min-width: 240px;
+  max-width: 400px;
+}
+
+/* ===== InputDropdownButton (StyledSearchTrailingDropdown) ===== */
+.idButton {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+}
+
+.idButton[disabled] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.idButton:hover {
+  background-color: var(--interactive-background-gray-faded);
+}
+
+.idButton:focus {
+  background-color: var(--interactive-background-gray-faded);
+}
+
+.idButton:focus-visible {
+  outline: var(--border-width-thick, 2px) solid var(--surface-border-primary-muted);
+  outline-offset: 0;
+}
+
+/* Inner content box (mirrors React inner Box padding). */
+.idButtonContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* size variants — height derived from baseInputHeight − 2×wrapper padding;
+ * border-radius from inputDropdownButtonBorderRadius; inner padding from
+ * inputDropdownButtonPadding. */
+.idButtonSmall {
+  height: 28px;
+  border-radius: 6px;
+}
+
+.idButtonSmall .idButtonContent {
+  padding: var(--spacing-1);
+}
+
+.idButtonMedium {
+  height: 28px;
+  border-radius: 6px;
+}
+
+.idButtonMedium .idButtonContent {
+  padding: var(--spacing-2);
+}
+
+.idButtonLarge {
+  height: 40px;
+  border-radius: 8px;
+}
+
+.idButtonLarge .idButtonContent {
+  padding: var(--spacing-2);
+}
+
+/* ===== Dropdown container ===== */
+.triggerWrapper {
+  position: relative;
+  height: 100%;
+  text-align: left;
+}
+
+/* ===== DropdownFooter wrapper ===== */
+.footer {
+  display: block;
+}
+
+/* ===== BaseHeader / BaseFooter (shim layout) =====
+ * Minimal web-only port of `BaseHeaderFooter` used by DropdownHeader/Footer.
+ * Spacing mirrors React `BaseHeader`/`BaseFooter` (padding/margin spacing.5).
+ */
+.headerInner {
+  padding: var(--spacing-5) var(--spacing-6);
+}
+
+.headerRow {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  user-select: none;
+}
+
+.headerTitleBlock {
+  flex: auto;
+  margin-right: auto;
+  padding-right: var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+}
+
+.headerLeading {
+  display: flex;
+  align-items: center;
+  margin-right: var(--spacing-3);
+}
+
+.headerTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.headerTrailing {
+  margin-left: var(--spacing-5);
+  display: flex;
+  align-items: center;
+}
+
+.headerChildren {
+  width: 100%;
+}
+
+.footerInner {
+  padding: var(--spacing-5) var(--spacing-6);
+}
+

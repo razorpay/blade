@@ -553,3 +553,27 @@ export {
   getInputGroupTemplateClasses,
 } from './InputGroup';
 export type { InputGroupLabelPosition, InputGroupFieldVariants } from './InputGroup';
+export {
+  dropdownOverlayStyles,
+  getDropdownOverlayClasses,
+  inputDropdownButtonStyles,
+  getInputDropdownButtonClasses,
+  getDropdownTemplateClasses,
+  dropdownFloatingClass,
+  dropdownTriggerWrapperClass,
+  dropdownFooterClass,
+  inputDropdownButtonContentClass,
+  baseHeaderInnerClass,
+  baseHeaderRowClass,
+  baseHeaderTitleBlockClass,
+  baseHeaderLeadingClass,
+  baseHeaderTitleRowClass,
+  baseHeaderTrailingClass,
+  baseHeaderChildrenClass,
+  baseFooterInnerClass,
+} from './Dropdown';
+export type {
+  DropdownOverlayVariants,
+  InputDropdownButtonVariants,
+  InputDropdownButtonSize,
+} from './Dropdown';

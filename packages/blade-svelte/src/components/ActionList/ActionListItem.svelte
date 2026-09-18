@@ -6,7 +6,9 @@
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
   import { getActionListItemClasses, getActionListTemplateClasses } from '@razorpay/blade-core/styles';
+  import { useId } from '@razorpay/blade-core/utils';
   import Text from '../Typography/Text/Text.svelte';
+  import { getDropdownContext } from '../Dropdown/dropdownContext';
   import { getActionListContext, setActionListItemContext } from './actionListContext';
   import { getActionListItemRole } from './getA11yRoles';
   import type { ActionListItemContextValue, ActionListItemProps } from './types';
@@ -33,6 +35,22 @@
 
   const ctx = getActionListContext();
 
+  // Optional Dropdown bridge — undefined for standalone / BottomSheet usage
+  // (no-op), so that path is unchanged. When present, the item registers into
+  // the Dropdown option registry and adopts index-based selection / keyboard nav.
+  const dd = getDropdownContext();
+  const itemId = useId('action-list-item');
+
+  $effect(() => {
+    if (!dd) return;
+    dd.registerOption({ id: itemId, title, value, href });
+    return () => dd.unregisterOption(itemId);
+  });
+
+  const dropdownIndex = $derived(dd ? dd.getOptionIndex(itemId) : -1);
+  const isActiveFocus = $derived(dd ? dd.activeIndex === dropdownIndex : false);
+  const dropdownItemId = $derived(dd ? `${dd.dropdownBaseId}-${dropdownIndex}` : undefined);
+
   const isMultiSelect = $derived(ctx?.selectionType === 'multiple');
 
   // Lazy-load the Checkbox: it's only rendered as the selection indicator for
@@ -51,10 +69,12 @@
   // In multiple mode `selectedValue` is an array → membership check; in single
   // mode it's a scalar → equality (mirrors React's array vs scalar handling).
   const isItemSelected = $derived(
-    isSelected ??
-      (Array.isArray(ctx?.selectedValue)
-        ? ctx.selectedValue.includes(value)
-        : ctx?.selectedValue === value),
+    dd
+      ? dd.selectedIndices.includes(dropdownIndex)
+      : isSelected ??
+          (Array.isArray(ctx?.selectedValue)
+            ? ctx.selectedValue.includes(value)
+            : ctx?.selectedValue === value),
   );
 
   // Provide row-local disabled/intent to ActionListItemText (React `useBaseMenuItem`).
@@ -68,7 +88,11 @@
   };
   setActionListItemContext(() => itemContext);
 
-  const role = $derived(getActionListItemRole(href));
+  const role = $derived(
+    dd
+      ? getActionListItemRole(dd.dropdownTriggerer, href, dd.selectionType, true)
+      : getActionListItemRole(undefined, href),
+  );
 
   // Title/description colors mirror React BaseMenuItem `menuItemTitleColor` / `menuItemDescriptionColor`.
   const titleColor = $derived(
@@ -89,6 +113,9 @@
       event.preventDefault();
       event.stopPropagation();
       return;
+    }
+    if (dd) {
+      dd.onOptionClick(event, dropdownIndex);
     }
     onClick?.({ value, isSelected: isItemSelected, event });
     ctx?.onAction?.({ value });
@@ -155,10 +182,12 @@
 
 {#if href}
   <a
+    id={dropdownItemId}
     class={rowClasses}
     {href}
     {target}
     data-value={value}
+    data-active-focus={isActiveFocus ? 'true' : undefined}
     onclick={handleClick}
     {...a11yAttrs}
     {...metaAttrs}
@@ -168,9 +197,11 @@
   </a>
 {:else}
   <button
+    id={dropdownItemId}
     class={rowClasses}
     type="button"
     data-value={value}
+    data-active-focus={isActiveFocus ? 'true' : undefined}
     onclick={handleClick}
     {...a11yAttrs}
     {...metaAttrs}
