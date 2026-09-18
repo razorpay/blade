@@ -493,7 +493,10 @@ const CustomTooltip = ({
           alignItems="center"
           justifyContent="space-between"
           gap="spacing.4"
-          paddingLeft="spacing.5"
+          // Indents the range row to start exactly under the series name above it: the colour
+          // swatch (spacing.4) plus the gap between it and the name (spacing.3). spacing.5 (16px)
+          // was 4px short of that sum (20px), leaving the label visibly adrift to the left.
+          paddingLeft="spacing.6"
         >
           <Text size="xsmall" weight="regular" color="surface.text.staticWhite.muted">
             {range?.rangeName ?? 'Industry'}

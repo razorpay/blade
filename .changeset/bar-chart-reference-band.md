@@ -24,4 +24,6 @@ While a band is declared, hovering a bar also fades the other series and shades 
 - Web only — the `range*` props are accepted but inert on React Native, and marked `@platform web`.
 - Hover-revealed per-bar bands are a visual enhancement, not the carrier of the data: every value is also in the tooltip, which is reachable without a pointer.
 
+Also fixes the alignment of the tooltip's range row, which affects **every chart** that shows one, LineChart included. Its indent was a hardcoded `spacing.5` (16px) standing in for the colour swatch plus its gap (`spacing.4` + `spacing.3` = 20px), so the range label sat 4px to the left of the series name above it.
+
 The `blade-mcp` knowledgebase doc for BarChart is updated too, so AI agents know the band is available: its accepted-children constraint previously omitted `ChartReferenceBand` entirely.
