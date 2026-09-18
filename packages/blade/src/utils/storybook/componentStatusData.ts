@@ -597,7 +597,8 @@ const componentData: ComponentStatusDataType = [
     platform: 'all',
     frameworks: {
       react: {
-        status: 'in-development',
+        status: 'released',
+        releasedIn: '12.125.0',
         storybookLink: 'Components/BottomBar',
       },
       svelte: {
@@ -612,7 +613,8 @@ const componentData: ComponentStatusDataType = [
     platform: 'all',
     frameworks: {
       react: {
-        status: 'in-development',
+        status: 'released',
+        releasedIn: '11.34.0',
         storybookLink: 'Components/BottomNav',
       },
       svelte: {
@@ -621,7 +623,7 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
-    name: 'Tags',
+    name: 'Tag',
     description: 'A tag labels UI objects for quick recognition and navigation.',
     platform: 'all',
     frameworks: {
@@ -809,7 +811,7 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
-    name: 'SkeletonLoader',
+    name: 'Skeleton',
     description:
       'Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view.',
     platform: 'all',
@@ -872,18 +874,6 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
-    name: 'Charts',
-    description: 'Charts will allow you to display your data in graphical manner',
-    frameworks: {
-      react: {
-        status: 'in-design',
-      },
-      svelte: {
-        status: 'to-be-decided',
-      },
-    },
-  },
-  {
     name: 'Menu',
     description:
       'Menu displays a list of actions on temporary surfaces. They allow users to action(s) from multiple options. They appear when users interact with a button, action, or other control.',
@@ -923,7 +913,7 @@ const componentData: ComponentStatusDataType = [
     frameworks: {
       react: {
         status: 'released',
-        releasedIn: '12.115.0',
+        releasedIn: '12.116.0',
         storybookLink: 'Components/TreeView',
       },
       svelte: {
@@ -1047,6 +1037,7 @@ const componentData: ComponentStatusDataType = [
     frameworks: {
       react: {
         status: 'released',
+        releasedIn: '12.126.0',
         storybookLink: 'Components/Input/SliderInput',
       },
       svelte: {
@@ -1071,7 +1062,7 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
-    name: 'Breadcrumbs',
+    name: 'Breadcrumb',
     description:
       'Breadcrumbs is a navigation pattern that helps users understand the hierarchy of a website.',
     platform: 'web',
@@ -1079,7 +1070,7 @@ const componentData: ComponentStatusDataType = [
       react: {
         status: 'released',
         releasedIn: '11.5.0',
-        storybookLink: 'Components/Breadcrumbs',
+        storybookLink: 'Components/Breadcrumb',
       },
       svelte: {
         status: 'to-be-decided',
@@ -1238,7 +1229,7 @@ const componentData: ComponentStatusDataType = [
       react: {
         status: 'released',
         releasedIn: '12.32.0',
-        storybookLink: 'Components/Input/InputGroup',
+        storybookLink: 'Components/InputGroup',
       },
       svelte: {
         status: 'to-be-decided',
@@ -1269,7 +1260,7 @@ const componentData: ComponentStatusDataType = [
       react: {
         status: 'released',
         releasedIn: '12.20.0',
-        storybookLink: 'Components/Input/FilterChipSelectInput',
+        storybookLink: 'Components/Dropdown/With Filter Chip',
       },
       svelte: {
         status: 'to-be-decided',
@@ -1284,7 +1275,7 @@ const componentData: ComponentStatusDataType = [
       react: {
         status: 'released',
         releasedIn: '12.20.0',
-        storybookLink: 'Components/Input/FilterChipDatePicker',
+        storybookLink: 'Components/DatePicker',
       },
       svelte: {
         status: 'to-be-decided',
@@ -1315,7 +1306,7 @@ const componentData: ComponentStatusDataType = [
       react: {
         status: 'released',
         releasedIn: '12.14.0',
-        storybookLink: 'Components/QuickFilter',
+        storybookLink: 'Components/QuickFilter & QuickFilterGroup',
       },
       svelte: {
         status: 'to-be-decided',
@@ -1341,12 +1332,12 @@ const componentData: ComponentStatusDataType = [
     name: 'LineChart',
     description:
       'A Line Chart component built on top of Recharts with Blade design system styling. Supports a reference band (ChartReferenceBand) to compare a trend against an industry min-max range.',
-    platform: 'web',
+    platform: 'all',
     frameworks: {
       react: {
         status: 'released',
         releasedIn: '12.49.7',
-        storybookLink: 'Components/LineChart',
+        storybookLink: 'Components/Charts/LineChart',
       },
       svelte: {
         status: 'to-be-decided',
@@ -1357,11 +1348,12 @@ const componentData: ComponentStatusDataType = [
     name: 'SankeyChart',
     description:
       'A Sankey Chart component for visualising flow and proportional relationships between nodes, built with Recharts and Blade design system styling.',
-    platform: 'web',
+    platform: 'all',
     frameworks: {
       react: {
-        status: 'in-development',
-        storybookLink: 'Components/SankeyChart',
+        status: 'released',
+        releasedIn: '12.106.0',
+        storybookLink: 'Components/Charts/SankeyChart',
       },
       svelte: {
         status: 'to-be-decided',
@@ -1393,7 +1385,7 @@ const componentData: ComponentStatusDataType = [
       react: {
         status: 'released',
         releasedIn: '12.59.0',
-        storybookLink: 'Components/CounterInput',
+        storybookLink: 'Components/Input/CounterInput',
       },
       svelte: {
         status: 'to-be-decided',
@@ -1422,8 +1414,376 @@ const componentData: ComponentStatusDataType = [
     platform: 'all',
     frameworks: {
       react: {
-        status: 'in-development',
+        status: 'released',
+        releasedIn: '12.118.0',
         storybookLink: 'Components/FloatingActionButton',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'AreaChart',
+    description:
+      'An Area Chart component built on top of Recharts with Blade design system styling, for showing volume and cumulative trends over a continuous axis.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.53.0',
+        storybookLink: 'Components/Charts/AreaChart',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'BarChart',
+    description:
+      'A Bar Chart component built on top of Recharts with Blade design system styling. Supports grouped and stacked bars in both vertical and horizontal orientations.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.56.0',
+        storybookLink: 'Components/Charts/BarChart',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'DonutChart',
+    description:
+      'A Donut Chart component built on top of Recharts with Blade design system styling, for showing part-to-whole breakdowns with an optional center summary.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.58.0',
+        storybookLink: 'Components/Charts/DonutChart',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'Elevate',
+    description:
+      'Elevate is a motion preset that adds elevation (shadow) to its children based on interactions, to highlight them.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.7.0',
+        storybookLink: 'Motion/Elevate',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'GenUI',
+    description:
+      'GenUI is a set of building blocks for generative, AI-driven interfaces. It renders streamed markdown and consumer-registered component slots inside a chat-like surface.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.74.0',
+        storybookLink: 'Patterns/GenUI',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'ChatInput',
+    description:
+      'ChatInput is a multiline input built for conversational interfaces. It supports file attachments, a generating state with stop control, and inline validation.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.84.0',
+        storybookLink: 'Components/ChatInput',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'LightBox',
+    description:
+      'LightBox displays images and other media in a focused full-screen overlay, with support for zoom and navigating between items.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.87.0',
+        storybookLink: 'Components/LightBox',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'AnnouncementBanner',
+    description:
+      'AnnouncementBanner is a full-width banner used to announce new features, promotions, or time-bound information at the top of a page.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.109.0',
+        storybookLink: 'Components/AnnouncementBanner',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'AppBar',
+    description:
+      'AppBar is the top-level application surface that holds branding, navigation and trust markers for checkout-like experiences.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.109.0',
+        storybookLink: 'Components/AppBar',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'TrustBadge',
+    description:
+      'TrustBadge renders the Razorpay trust marker used to signal a verified or trusted business.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.109.0',
+        storybookLink: 'Components/TrustBadge',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'ColorInput',
+    description:
+      'ColorInput lets users pick a color through a swatch, a hex field and an opacity field, for theming and customisation flows.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.110.0',
+        storybookLink: 'Components/Input/ColorInput',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'SegmentedControl',
+    description:
+      'SegmentedControl is a value selector that shows a small set of mutually exclusive options side by side, with the selected option highlighted.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.111.0',
+        storybookLink: 'Components/SegmentedControl',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'Icons',
+    description:
+      'Icons is the Blade icon set. Every icon accepts a size and a color token, and can be passed to components such as Button, Badge and ActionList.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '0.7.1',
+        storybookLink: 'Components/Icons',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'LiveAnnouncer',
+    description:
+      'LiveAnnouncer announces dynamic updates to screen readers through an ARIA live region, without moving focus.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '0.11.0',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'ChipGroup',
+    description:
+      'ChipGroup groups multiple chips together and provides out of the box state management for single or multiple selection.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '10.4.0',
+        storybookLink: 'Components/Chip/ChipGroup',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'Display',
+    description:
+      'Display Component is used for the largest text on a page, such as hero statements on marketing and landing surfaces.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '10.5.0',
+        storybookLink: 'Components/Typography/Display',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'FilterChipGroup',
+    description:
+      'FilterChipGroup groups multiple filter chips together and exposes a clear-all action for the whole group.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.20.0',
+        storybookLink: 'Components/FilterChipGroup',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'DetailedView',
+    description:
+      'DetailedView is a pattern that shows details of a transaction, user or entity inside a Drawer in a defined format.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.23.0',
+        storybookLink: 'Patterns/DetailedView',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'FormGroup',
+    description:
+      'FormGroup is a pattern that provides a consistent way to build forms using Blade components.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.27.0',
+        storybookLink: 'Patterns/FormGroup',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'CreationView',
+    description:
+      'CreationView is a pattern used in creation flows, where a merchant fills a form to create a new entity.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.30.0',
+        storybookLink: 'Patterns/CreationView',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'Settings',
+    description:
+      'Settings is a pattern for building settings pages, grouping configurable options into scannable sections.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.41.2',
+        storybookLink: 'Patterns/Settings',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'Confirmation',
+    description:
+      'Confirmation is a pattern for confirming or acknowledging a destructive or significant action before or after it happens.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.44.0',
+        storybookLink: 'Patterns/Confirmation',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'RazorSense',
+    description:
+      'RazorSense is a Blade Spark surface that renders an animated, shader-driven glass effect for AI and branded moments.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        releasedIn: '12.93.0',
+        storybookLink: 'Components/RazorSense',
       },
       svelte: {
         status: 'to-be-decided',
