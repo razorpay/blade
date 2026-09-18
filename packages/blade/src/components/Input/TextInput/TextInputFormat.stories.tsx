@@ -2,6 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react-vite';
 import React from 'react';
 import { TextInput as TextInputComponent } from './TextInput';
 import { Box } from '~components/Box';
+import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import {
   detectPaymentCardBrand,
@@ -99,6 +100,91 @@ export const CardNumberFormat: StoryFn<typeof TextInputComponent> = () => {
   );
 };
 CardNumberFormat.storyName = 'Format Controlled';
+
+/**
+ * Controlled card form modeled on checkout's AddNewCard.svelte. Controlled
+ * (value + onChange, not defaultValue) is required because the parent must
+ * reset/prefill fields externally — NFC autofill writes number + expiry, and an
+ * international DCC provider switch (GPay/Apple Pay) clears every field.
+ * Uncontrolled inputs would not reflect those external mutations.
+ */
+export const CheckoutCardControlled: StoryFn<typeof TextInputComponent> = () => {
+  const [cardNumber, setCardNumber] = React.useState('');
+  const [expiry, setExpiry] = React.useState('');
+  const [cvv, setCvv] = React.useState('');
+  const [cardBrand, setCardBrand] = React.useState<PaymentCardBrand>('unknown');
+
+  const digits = (v: string): string => v.replace(/\D/g, '');
+
+  // Simulates registerNfcScanner autofill: sets number + expiry programmatically.
+  const nfcAutofill = (): void => {
+    setCardNumber('4111111111111111');
+    setExpiry('1229');
+    setCardBrand(detectPaymentCardBrand('4111111111111111'));
+  };
+
+  // Simulates the international DCC provider switch: clears the whole form.
+  const dccSwitch = (): void => {
+    setCardNumber('');
+    setExpiry('');
+    setCvv('');
+    setCardBrand('unknown');
+  };
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.4" maxWidth="400px">
+      <TextInputComponent
+        label="Card Number"
+        placeholder="Enter card number"
+        type="number"
+        value={cardNumber}
+        format={getPaymentCardNumberFormat(cardBrand)}
+        trailing={getPaymentCardBrandIcon(cardBrand)}
+        onChange={({ rawValue }) => {
+          const raw = digits(rawValue ?? '');
+          setCardNumber(raw);
+          setCardBrand(detectPaymentCardBrand(raw));
+        }}
+      />
+      <Box display="flex" gap="spacing.4">
+        <TextInputComponent
+          label="Expiry"
+          placeholder="MM/YY"
+          type="number"
+          format="##/##"
+          value={expiry}
+          onChange={({ rawValue }) => setExpiry(digits(rawValue ?? ''))}
+        />
+        <TextInputComponent
+          label="CVV"
+          placeholder="CVV"
+          type="number"
+          maxCharacters={3}
+          value={cvv}
+          onChange={({ value }) => setCvv(digits(value ?? ''))}
+        />
+      </Box>
+      <Box display="flex" gap="spacing.3" flexWrap="wrap">
+        <Button size="small" onClick={nfcAutofill}>
+          NFC Autofill
+        </Button>
+        <Button size="small" variant="secondary" onClick={dccSwitch}>
+          Switch to GPay (DCC)
+        </Button>
+      </Box>
+      <Box
+        backgroundColor="surface.background.gray.moderate"
+        padding="spacing.4"
+        borderRadius="medium"
+      >
+        <Text>
+          number: "{cardNumber}" · expiry: "{expiry}" · cvv: "{cvv}"
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+CheckoutCardControlled.storyName = 'Checkout Card (Controlled)';
 
 export const DateFormat: StoryFn<typeof TextInputComponent> = () => {
   const [date, setDate] = React.useState('');
