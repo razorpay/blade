@@ -70,6 +70,7 @@
   /* Default story state (one bucket per story to keep them independent). */
   let isDefaultOpen = $state(false);
   let isWithoutDragHandleOpen = $state(false);
+  let isNoHeaderOpen = $state(false);
   let isHeaderFooterOpen = $state(false);
   let isSingleSelectOpen = $state(false);
   let isDropdownButtonOpen = $state(false);
@@ -341,6 +342,38 @@
           <BottomSheetFooter>
             {#snippet children()}
               <Button isFullWidth onClick={() => (isWithoutDragHandleOpen = false)}>Continue</Button>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- No Header — empty BottomSheetHeader (no title/subtitle) keeps the floating close button
+     top-right without a title row, and showDragHandle={false} hides the drag handle. -->
+<Story name="No Header">
+  {#snippet template()}
+    <div>
+      <Button onClick={() => (isNoHeaderOpen = true)}>Open</Button>
+      <BottomSheet
+        isOpen={isNoHeaderOpen}
+        onDismiss={() => (isNoHeaderOpen = false)}
+        showDragHandle={false}
+      >
+        {#snippet children()}
+          <BottomSheetHeader />
+          <BottomSheetBody >
+            {#snippet children()}
+              <Text>
+                No title/subtitle is rendered here, and showDragHandle is false so no drag handle
+                is shown. Close via the top-right close button, backdrop, escape key, or Continue.
+              </Text>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isNoHeaderOpen = false)}>Continue</Button>
             {/snippet}
           </BottomSheetFooter>
         {/snippet}

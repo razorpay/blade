@@ -117,7 +117,7 @@
 
   /* Empty header + zero body padding floats the header and grab handle out of
    * flow, so neither consumes height in the surface's flex column. */
-  const isHeaderFloating = $derived(!hasBodyPadding && isHeaderEmpty);
+  const isHeaderFloating = $derived(showDragHandle && !hasBodyPadding && isHeaderEmpty);
 
   const isAutoMode = $derived(snapPoints === undefined);
   /* In auto mode a single implicit snap point at maxHeight acts as the ceiling. */
