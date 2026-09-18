@@ -6,8 +6,11 @@
   import { CloseIcon } from './CloseIcon';
   import { CreditCardIcon } from './CreditCardIcon';
   import { InfoIcon } from './InfoIcon';
+  import { MailIcon } from './MailIcon';
+  import { MailOpenIcon } from './MailOpenIcon';
   import { PlusIcon } from './PlusIcon';
   import { SearchIcon } from './SearchIcon';
+  import { WhatsAppIcon } from './WhatsAppIcon';
   // Filled Icons
   import { MoreFilledIcon } from './MoreFilledIcon';
   // Branded Icons
@@ -21,8 +24,11 @@
     CloseIcon,
     CreditCardIcon,
     InfoIcon,
+    MailIcon,
+    MailOpenIcon,
     PlusIcon,
     SearchIcon,
+    WhatsAppIcon,
   };
 
   const filledIcons = {
