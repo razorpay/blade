@@ -26,7 +26,7 @@ type OTPInputCommonProps = {
    * Determines the number of input fields to show for the OTP
    * @default 6
    */
-  otpLength?: 4 | 6;
+  otpLength?: 4 | 6 | 8;
 
   /**
    * The callback function to be invoked when all the values of the OTPInput are filled
@@ -58,6 +58,14 @@ type OTPInputCommonProps = {
   label?: string;
   accessibilityLabel?: string;
   labelPosition?: 'top' | 'left';
+  /**
+   * Suffix element shown right after the label text (e.g. an info icon with Tooltip)
+   */
+  labelSuffix?: React.ReactNode;
+  /**
+   * Trailing element shown at the end of the label row (e.g. a Link)
+   */
+  labelTrailing?: React.ReactNode;
   validationState?: 'none' | 'error' | 'success';
   helpText?: string;
   errorText?: string;
@@ -67,11 +75,11 @@ type OTPInputCommonProps = {
   value?: string;
   isDisabled?: boolean;
   autoFocus?: boolean;
-  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'search' | 'send';
+  keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
   keyboardType?: 'text' | 'search' | 'telephone' | 'email' | 'url' | 'decimal';
   placeholder?: string;
   testID?: string;
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 } & DataAnalyticsAttribute &
   StyledPropsBlade;
 

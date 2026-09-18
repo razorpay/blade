@@ -8,20 +8,18 @@ EmptyState component provides a consistent way to display empty states across ap
 
 These are the props that the EmptyState component accepts:
 
-````typescript
+```typescript
 export type EmptyStateProps = {
   /**
    * Asset slot for custom illustrations, images, or any visual element.
    * Supports PNGs, custom brand illustrations, SVGs, animated gifs, lottie components etc.
    *
    * @example
-   * ```jsx
    * // Custom image
    * <EmptyState asset={<img src="/custom-illustration.png" alt="No data" />} />
    *
    * // Custom component
    * <EmptyState asset={<CustomIllustration />} />
-   * ```
    */
   asset?: React.ReactNode;
 
@@ -50,7 +48,7 @@ export type EmptyStateProps = {
   DataAnalyticsAttribute;
 
 export type EmptyStateSize = 'small' | 'medium' | 'large' | 'xlarge';
-````
+```
 
 ## Usage Guidelines
 

@@ -23,6 +23,17 @@ Make sure to only follow structure as given in the examples below. Fragments are
 The following types define the props that the Card component and its subcomponents accept:
 
 ```typescript
+type CardSpacingValueType = 'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7';
+
+// Box size value: a CSS size string/number or a responsive object, e.g. `{ base: '100%', m: '320px' }`
+type BoxSizeValue = string | number | Partial<Record<'base' | 's' | 'm' | 'l' | 'xl', string | number>>;
+
+// Blade icon component, e.g. `PlusIcon`
+type IconComponent = React.ComponentType<{
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+
 export type CardProps = {
   /**
    * Card contents. Structure depends on `variant` — see Important Constraints.
@@ -41,6 +52,7 @@ export type CardProps = {
    * Sets the background color of the Card
    *
    * @default `surface.background.gray.intense`
+   * @deprecated No-op. Card always uses `surface.background.gray.intense`.
    */
   backgroundColor?:
     | 'surface.background.gray.intense'
@@ -50,16 +62,17 @@ export type CardProps = {
    * Sets the border radius of the Card
    *
    * @default `medium`
+   * @deprecated No-op. Card always uses `medium` border radius.
    */
-  borderRadius?: Extract<BoxProps['borderRadius'], 'medium' | 'large' | 'xlarge'>;
+  borderRadius?: 'medium' | 'large' | 'xlarge';
   /**
    * Sets the elevation for Cards
    *
    * eg: `theme.elevation.midRaised`
    *
-   * @default `theme.elevation.lowRaised`
+   * @deprecated No-op. Card always uses a custom elevation.
    */
-  elevation?: keyof Elevation;
+  elevation?: 'none' | 'lowRaised' | 'midRaised' | 'highRaised';
   /**
    * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
    * @default `spacing.7`
@@ -68,23 +81,23 @@ export type CardProps = {
   /**
    * Sets the width of the card
    */
-  width?: BoxProps['width'];
+  width?: BoxSizeValue;
   /**
    * Sets the height of the card
    */
-  height?: BoxProps['height'];
+  height?: BoxSizeValue;
   /**
    * Sets minimum height of the card
    */
-  minHeight?: BoxProps['minHeight'];
+  minHeight?: BoxSizeValue;
   /**
    * Sets minimum width of the card
    */
-  minWidth?: BoxProps['minWidth'];
+  minWidth?: BoxSizeValue;
   /**
    * Sets maximum width of the card
    */
-  maxWidth?: BoxProps['maxWidth'];
+  maxWidth?: BoxSizeValue;
   /**
    * If `true`, the card will be in selected state
    * Card will have a primary color border around it.
@@ -139,7 +152,7 @@ export type CardProps = {
   onClick?: (
     event: Platform.Select<{
       web: React.MouseEvent;
-      native: GestureResponderEvent;
+      native: unknown; // GestureResponderEvent from react-native
     }>,
   ) => void;
   /**
@@ -151,13 +164,41 @@ export type CardProps = {
    * @default undefined
    */
   as?: 'label';
+  /**
+   * Sets the size of the card header title
+   *
+   * @default 'large'
+   */
+  size?: 'large' | 'medium';
+  /**
+   * CSS cursor of the card (web only)
+   */
+  cursor?: string;
+  opacity?: number;
+  /**
+   * CSS transition of the card (web only)
+   */
+  transition?: string;
+  flexShrink?: number;
+  /**
+   * Sets the overflow behavior of the card content
+   */
+  overflow?: 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto' | 'overlay';
+  /**
+   * Sets the horizontal overflow behavior of the card content
+   */
+  overflowX?: 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto' | 'overlay';
+  /**
+   * Sets the vertical overflow behavior of the card content
+   */
+  overflowY?: 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto' | 'overlay';
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
 
 type CardBodyProps = {
   children: React.ReactNode;
-  height?: BoxProps['height'];
+  height?: BoxSizeValue;
 } & TestID &
   DataAnalyticsAttribute;
 
@@ -224,11 +265,15 @@ type CardHeaderTrailingProps = {
   visual?: React.ReactNode;
 };
 
-export type CardFooterAction = Pick<
-  ButtonProps,
-  'type' | 'accessibilityLabel' | 'isLoading' | 'isDisabled' | 'icon' | 'iconPosition' | 'onClick'
-> & {
-  text: ButtonProps['children'];
+export type CardFooterAction = {
+  text: string;
+  type?: 'button' | 'reset' | 'submit';
+  accessibilityLabel?: string;
+  isLoading?: boolean;
+  isDisabled?: boolean;
+  icon?: IconComponent;
+  iconPosition?: 'left' | 'right';
+  onClick?: (event: React.MouseEvent) => void;
 };
 
 type CardFooterProps = {

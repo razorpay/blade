@@ -16,7 +16,23 @@ StepGroup visualizes sequential processes with a consistent structure. It can be
 
 Below are the TypeScript types that define the props that StepGroup and its subcomponents accept:
 
-````typescript
+```typescript
+/**
+ * Subset of Blade LinkProps used in this doc
+ */
+type LinkProps = {
+  href?: string;
+  target?: string;
+  rel?: string;
+};
+
+/**
+ * Blade size token, for example `'spacing.10'`, `'100%'` or `'240px'`
+ */
+type BoxSizeValue = string;
+
+type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+
 // Main component props
 type StepGroupProps = {
   /**
@@ -41,19 +57,19 @@ type StepGroupProps = {
   /**
    * Width of StepGroup. By default it takes the width of its items.
    */
-  width?: BoxProps['width'];
+  width?: BoxSizeValue;
 
   /**
    * minWidth prop of StepGroup
    */
-  minWidth?: BoxProps['minWidth'];
+  minWidth?: BoxSizeValue;
 
   /**
    * maxWidth prop of StepGroup
    *
    * @default 100%
    */
-  maxWidth?: BoxProps['maxWidth'];
+  maxWidth?: BoxSizeValue;
 } & StyledPropsBlade &
   DataAnalyticsAttribute &
   TestID;
@@ -73,11 +89,16 @@ type StepItemProps = {
   /**
    * A string that renders in italic font. Made for adding timestamp values.
    *
-   * ```jsx
    * timestamp="Thu, 11th Oct23 | 12:00pm"
-   * ```
    */
   timestamp?: string;
+
+  /**
+   * minWidth of StepItem
+   *
+   * @default undefined
+   */
+  minWidth?: BoxSizeValue;
 
   /**
    * Description of StepItem
@@ -94,10 +115,8 @@ type StepItemProps = {
   /**
    * marker JSX slot. It can be StepItemIndicator or StepItemIcon
    *
-   * ```jsx
    * marker={<StepItemIndicator color="positive" />}
    * marker={<StepItemIcon icon={CheckIcon} color="positive" />}
-   * ```
    */
   marker?: React.ReactElement;
 
@@ -136,7 +155,7 @@ type StepItemProps = {
    */
   children?: React.ReactNode;
 } & DataAnalyticsAttribute;
-````
+```
 
 ## Usage Guidelines
 

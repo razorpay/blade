@@ -17,9 +17,9 @@ The following types define the props that the Code component accepts. These type
 ```typescript
 type CodeCommonProps = {
   /**
-   * Sets the color of the Heading component.
+   * Text to show inside the Code component
    */
-  children: StringChildrenType;
+  children: string | number | (string | number)[];
   /**
    * Decides the fontSize and padding of Code
    *
@@ -28,6 +28,13 @@ type CodeCommonProps = {
   size?: 'small' | 'medium';
   weight?: 'regular' | 'bold';
   isHighlighted?: boolean;
+  /**
+   * Sets the CSS text-transform of the text
+   */
+  textTransform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase' | 'full-width' | 'full-size-kana';
+  /**
+   * Accepts a text color token, e.g. 'surface.text.gray.normal', 'feedback.text.positive.intense', 'interactive.text.primary.normal'
+   */
   color?: string;
 } & TestID &
   StyledPropsBlade;

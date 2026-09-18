@@ -592,6 +592,35 @@ const componentData: ComponentStatusDataType = [
     },
   },
   {
+    name: 'BottomBar',
+    description: 'BottomBar is a fixed bottom action surface for mobile layouts.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/BottomBar',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'BottomNav',
+    description:
+      'Bottom navigation is a persistent mobile navigation surface for quick access to core destinations.',
+    platform: 'all',
+    frameworks: {
+      react: {
+        status: 'in-development',
+        storybookLink: 'Components/BottomNav',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
     name: 'Tags',
     description: 'A tag labels UI objects for quick recognition and navigation.',
     platform: 'all',
@@ -1004,6 +1033,21 @@ const componentData: ComponentStatusDataType = [
         status: 'released',
         releasedIn: '11.8.0',
         storybookLink: 'Components/ButtonGroup',
+      },
+      svelte: {
+        status: 'to-be-decided',
+      },
+    },
+  },
+  {
+    name: 'SliderInput',
+    description:
+      'SliderInput lets users pick a number from a range by dragging along a track, with optional step markers and a value scale.',
+    platform: 'web',
+    frameworks: {
+      react: {
+        status: 'released',
+        storybookLink: 'Components/Input/SliderInput',
       },
       svelte: {
         status: 'to-be-decided',

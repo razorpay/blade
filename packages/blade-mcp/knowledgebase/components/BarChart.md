@@ -31,7 +31,7 @@ BarChart is a comprehensive data visualization component that renders interactiv
 These types define the props that the BarChart component and its subcomponents accept:
 
 ```typescript
-type ChartBarProps = Omit<RechartsBarProps, 'fill' | 'dataKey' | 'name' | 'label' | 'activeBar'> & {
+type ChartBarProps = {
   /**
    * The data key corresponding to a property in the data array.
    */
@@ -132,7 +132,7 @@ type ChartReferenceBandProps = {
 };
 
 type data = {
-  [key: string]: unknown;
+  [key: string]: string | number;
 };
 
 type ChartBarWrapperProps = {
@@ -230,9 +230,6 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
   dataKey?: string;
 };
 
-type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
-
-
 type Layout = 'horizontal' | 'vertical';
 type Align = 'left' | 'right';
 
@@ -240,6 +237,26 @@ type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
+  /**
+   * Array of dataKeys that are currently selected.
+   * When provided, the component is in controlled mode.
+   */
+  selectedDataKeys?: string[];
+  /**
+   * Default selected dataKeys for uncontrolled mode.
+   * If not provided, all dataKeys are selected by default.
+   */
+  defaultSelectedDataKeys?: string[];
+  /**
+   * Callback fired when the selection changes.
+   */
+  onSelectedDataKeysChange?: ({
+    dataKey,
+    selectedKeysArray,
+  }: {
+    dataKey: string;
+    selectedKeysArray: string[];
+  }) => void;
 };
 
 

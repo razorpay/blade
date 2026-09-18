@@ -11,6 +11,10 @@ The Toast component displays temporary feedback messages in the interface. It ca
 These types represent the props that the Toast component and its associated hooks accept.
 
 ```typescript
+import type React from 'react';
+
+type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+
 // Main Toast component props
 type ToastProps = {
   /**
@@ -67,7 +71,7 @@ type ToastProps = {
    */
   action?: {
     text: string;
-    onClick?: ({ event, toastId }: { event: ButtonProps['onClick']; toastId: string }) => void;
+    onClick?: ({ event, toastId }: { event: React.MouseEvent<HTMLButtonElement>; toastId: string }) => void;
     isLoading?: boolean;
   };
 
@@ -80,6 +84,9 @@ type ToastProps = {
 };
 
 // Return type of useToast hook
+// A toast that is currently in the toast queue
+type BladeToast = ToastProps & { id: string; visible: boolean };
+
 type UseToastReturn = {
   toasts: BladeToast[]; // Currently active toasts
   show: (props: ToastProps) => string; // Show a toast and return its ID

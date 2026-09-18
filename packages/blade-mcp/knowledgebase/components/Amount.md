@@ -13,7 +13,7 @@ The Amount component is used to display currency values with proper formatting. 
   - `type="heading"` supports sizes: `small`, `medium`, `large`, `xlarge`, `2xlarge`
   - `type="display"` supports sizes: `small`, `medium`, `large`, `xlarge`
 
-## Typescript Types
+## TypeScript Types
 
 The following types represent the props that the Amount component and its subcomponents accept. These types allow you to properly configure the Amount component according to your needs.
 
@@ -38,6 +38,16 @@ type AmountBodyProps = {
   weight?: 'regular' | 'medium' | 'semibold';
 };
 
+/**
+ * Blade text color token, for example `surface.text.gray.normal` or `feedback.text.positive.intense`
+ */
+type AmountColor = string;
+
+/**
+ * ISO 4217 currency code, for example 'INR', 'USD', 'JPY'
+ */
+type CurrencyCodeType = string;
+
 type AmountTypeProps = AmountDisplayProps | AmountHeadingProps | AmountBodyProps;
 
 type AmountCommonProps = {
@@ -49,7 +59,7 @@ type AmountCommonProps = {
    * Sets the color of the amount.
    * @default undefined
    */
-  color?: string;
+  color?: AmountColor;
   /**
    * Indicates what the suffix of amount should be
    * @default 'decimals'
@@ -59,7 +69,7 @@ type AmountCommonProps = {
    * Makes the currency indicator(currency symbol/code) and decimal digits small and faded
    * @default true
    */
-  isAffixSubtle?: boolean;
+  isAffixSubtle?: true | false;
   /**
    * Determines the visual representation of the currency, choose between displaying the currency symbol or code.
    * Note: Currency symbol and code is determined by the locale set in user's browser or set via @razorpay/i18nify-react library.
@@ -71,21 +81,24 @@ type AmountCommonProps = {
    * only displays the provided value in the specified currency, it does not perform any currency conversion.
    * @default 'INR'
    */
-  currency?: string;
+  currency?: CurrencyCodeType;
   /**
    * If true, the amount text will have a line through it.
    * @default false
    */
   isStrikethrough?: boolean;
   /**
-   * Test ID for the component
+   * Controls the number of decimal places when suffix is 'decimals'.
+   *
+   * Set to `'auto'` to use the decimal places of the currency
+   * (for example JPY → 0, INR → 2, KWD → 3).
+   *
+   * @default 2
    */
-  testID?: string;
-  /**
-   * Data analytics attributes
-   */
-  [key: `data-analytics-${string}`]: string;
-};
+  fractionDigits?: number | 'auto';
+} & TestID &
+  DataAnalyticsAttribute &
+  StyledPropsBlade;
 
 type AmountProps = AmountTypeProps & AmountCommonProps;
 ```

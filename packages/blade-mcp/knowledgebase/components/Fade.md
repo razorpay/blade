@@ -18,7 +18,7 @@ type FadeProps = {
   /**
    * Content to be animated with fade effect
    */
-  children: React.ReactNode;
+  children: React.ReactElement;
 
   /**
    * Controls whether the element is visible (for controlled usage)
@@ -42,13 +42,24 @@ type FadeProps = {
    * @default false
    */
   shouldUnmountWhenHidden?: boolean;
+
+  /**
+   * Handles delay of animations. Use one token, or different tokens for enter and exit.
+   * @default undefined
+   */
+  delay?: Delay | { enter: Delay; exit: Delay };
 } & StyledPropsBlade &
   TestID;
 
 /**
  * Motion triggers for animation components
  */
-type MotionTrigger = 'hover' | 'focus' | 'press' | 'mount' | 'in-view' | 'on-animate-interactions';
+type MotionTrigger = 'mount' | 'in-view' | 'focus' | 'on-animate-interactions';
+
+/**
+ * Motion delay tokens
+ */
+type Delay = '2xquick' | 'xquick' | 'moderate' | 'gentle' | 'xgentle' | 'long' | 'xlong' | '2xlong';
 ```
 
 ## Usage Guidelines

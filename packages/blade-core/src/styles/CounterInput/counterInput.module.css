@@ -33,10 +33,16 @@
   background-color: var(--surface-background-gray-subtle);
 }
 
-/* Container sizes — hardcoded px mirror React `size` global tokens (78/94/122 × 30/38/50). */
+/* Container sizes — hardcoded px mirror React `size` global tokens (78/86/94/122 × 30/34/38/50). */
 .container-xsmall {
   width: 78px;
   height: 30px;
+  border-radius: var(--border-radius-small);
+}
+
+.container-small {
+  width: 86px;
+  height: 34px;
   border-radius: var(--border-radius-small);
 }
 
@@ -99,6 +105,11 @@
 
 /* Button sizes — padding + radius. */
 .button-xsmall {
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-xsmall);
+}
+
+.button-small {
   padding: var(--spacing-2);
   border-radius: var(--border-radius-xsmall);
 }
@@ -224,6 +235,11 @@
 }
 
 .input-xsmall {
+  font-size: var(--font-size-75);
+  line-height: var(--line-height-75);
+}
+
+.input-small {
   font-size: var(--font-size-75);
   line-height: var(--line-height-75);
 }

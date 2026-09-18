@@ -39,25 +39,17 @@ const getButtonStyle = (
   type: 'decrement' | 'increment',
   size: CounterInputSize,
 ): Record<string, number> => {
-  const iconPadding =
-    COUNTER_INPUT_TOKEN.iconPadding[size as keyof typeof COUNTER_INPUT_TOKEN.iconPadding] ??
-    COUNTER_INPUT_TOKEN.iconPadding.xsmall;
   const margin =
     type === 'decrement'
       ? COUNTER_INPUT_TOKEN.decrementIconMargin
       : COUNTER_INPUT_TOKEN.incrementIconMargin;
   return {
-    padding: iconPadding,
+    padding: COUNTER_INPUT_TOKEN.iconPadding[size],
     marginTop: margin[0],
     marginRight: margin[1],
     marginBottom: margin[2],
     marginLeft: margin[3],
-    borderRadius:
-      COUNTER_INPUT_TOKEN.buttonBorderRadius[
-        (size in COUNTER_INPUT_TOKEN.buttonBorderRadius
-          ? size
-          : 'xsmall') as keyof typeof COUNTER_INPUT_TOKEN.buttonBorderRadius
-      ],
+    borderRadius: COUNTER_INPUT_TOKEN.buttonBorderRadius[size],
   };
 };
 

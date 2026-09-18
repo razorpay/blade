@@ -23,6 +23,7 @@ import type { BaseButtonStyleProps, IconColor } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
+import { focusRingColorTokens } from '~utils/getFocusRingStyles/focusRingTokens';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent, IconSize } from '~components/Icons';
@@ -486,9 +487,7 @@ const getProps = ({
     // with a faded neutral ring on the filled neutral surface.
     focusRingColor: getIn(
       theme.colors,
-      isFilledNeutral(color, variant)
-        ? 'interactive.border.neutral.faded'
-        : 'surface.border.primary.muted',
+      focusRingColorTokens[isFilledNeutral(color, variant) ? 'neutral' : 'primary'],
     ),
     borderRadius: makeBorderSize(theme.border.radius[_borderRadius ?? buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',

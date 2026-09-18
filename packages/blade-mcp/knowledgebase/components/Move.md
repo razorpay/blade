@@ -64,7 +64,10 @@ type MoveProps = {
 };
 
 // MotionDelay can be a simple delay token or an object with separate enter/exit delays
-type MotionDelay = keyof Delay | { enter: keyof Delay; exit: keyof Delay };
+type MotionDelay = Delay | { enter: Delay; exit: Delay };
+
+// Motion delay tokens
+type Delay = '2xquick' | 'xquick' | 'moderate' | 'gentle' | 'xgentle' | 'long' | 'xlong' | '2xlong';
 ```
 
 ## Usage Guidelines

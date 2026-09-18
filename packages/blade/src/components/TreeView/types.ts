@@ -40,6 +40,16 @@ type TreeViewProps = {
    * Name of the tree, passed in the `onChange` payload
    */
   name?: string;
+  /**
+   * Visual density of every row in the tree.
+   *
+   * Applies to the whole tree - individual rows cannot opt out.
+   * Note that `leading` and `trailing` are consumer-provided nodes, so their own
+   * `size` has to be set by the consumer (use `size="small"` on a small tree's icons).
+   *
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
 } & TestID &
   DataAnalyticsAttribute;
 

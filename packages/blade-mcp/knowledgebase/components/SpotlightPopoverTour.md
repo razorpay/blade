@@ -11,6 +11,8 @@ The SpotlightPopoverTour component is used to provide context as well as enable 
 Below are the TypeScript types that define the props that the SpotlightPopoverTour and its subcomponents accept:
 
 ```typescript
+import type { UseFloatingOptions } from '@floating-ui/react';
+
 // Main component props
 type SpotlightPopoverTourProps = {
   /**

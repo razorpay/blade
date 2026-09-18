@@ -13,6 +13,9 @@ The following types are the props that the Popover component and its subcomponen
 ```typescript
 import type { UseFloatingOptions } from '@floating-ui/react';
 import type React from 'react';
+
+// Spacing token string like 'spacing.4', or a CSS length like '328px'
+type SpacingValueType = `spacing.${number}` | `${number}px` | `${number}%`;
 import type { DataAnalyticsAttribute } from '~utils/types';
 
 // Main Popover component props
@@ -64,6 +67,11 @@ type PopoverProps = {
    */
   zIndex?: number;
   /**
+   * Sets the maximum width of the popover content
+   * @default 328px on desktop, 288px on mobile
+   */
+  maxWidth?: SpacingValueType | 'auto' | 'none' | 'initial' | 'fit-content' | 'max-content' | 'min-content';
+  /**
    * The ref of the element that should receive focus when the popover opens.
    *
    * @default PopoverCloseButton
@@ -99,7 +107,7 @@ type PopoverInteractiveWrapperProps = {
   children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-} & Omit<BaseBoxProps, 'as'> &
+} & StyledPropsBlade &
   DataAnalyticsAttribute;
 ```
 

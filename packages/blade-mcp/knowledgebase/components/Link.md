@@ -20,9 +20,10 @@ The following types represent the props that the Link component accepts. These a
  */
 type LinkProps = {
   /**
-   * Content to be displayed in the link
+   * Text to be displayed in the link
+   * Required when icon is not provided
    */
-  children?: React.ReactNode;
+  children?: string | number | (string | number)[];
 
   /**
    * URL that the link points to
@@ -77,9 +78,42 @@ type LinkProps = {
   /**
    * Function called when the link is clicked
    */
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
-} & StyledPropsBlade &
+  onClick?: (event: React.SyntheticEvent) => void;
+
+  /**
+   * Sets aria-label to help users know what the link does
+   */
+  accessibilityLabel?: string;
+
+  /**
+   * The title of the link, shown as a native tooltip (web only)
+   */
+  htmlTitle?: string;
+
+  /**
+   * Defines how far your touch can start away from the link (react-native only)
+   */
+  hitSlop?: { top?: number; right?: number; bottom?: number; left?: number } | number;
+} & BladeCommonEvents &
+  StyledPropsBlade &
+  DataAnalyticsAttribute &
   TestID;
+
+/**
+ * Common event handlers accepted by interactive Blade components (web)
+ */
+type BladeCommonEvents = {
+  onBlur?: React.FocusEventHandler;
+  onFocus?: React.FocusEventHandler;
+  onMouseLeave?: React.MouseEventHandler;
+  onMouseMove?: React.MouseEventHandler;
+  onMouseDown?: React.MouseEventHandler;
+  onMouseUp?: React.MouseEventHandler;
+  onPointerDown?: React.PointerEventHandler;
+  onPointerEnter?: React.PointerEventHandler;
+  onTouchStart?: React.TouchEventHandler;
+  onTouchEnd?: React.TouchEventHandler;
+};
 
 /**
  * Props for all Icon components
@@ -95,7 +129,7 @@ type IconProps = {
    * The size of the icon
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 };
 ```
 
