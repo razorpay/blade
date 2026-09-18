@@ -250,3 +250,89 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
 export const Table = TableTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Table.storyName = 'Basic Table';
+
+const previewNodes = nodes.slice(0, 5);
+
+/**
+ * A table that omits TableHeader entirely.
+ * columnCount is required so the CSS grid knows how many columns to create.
+ * The first cell of every row uses isRowHeader so screen readers can identify which row each cell belongs to.
+ */
+export const TableWithoutHeader: StoryFn<typeof TableComponent> = () => {
+  return (
+    <Box padding="spacing.5" overflow="auto" minHeight="300px">
+      <TableComponent data={{ nodes: previewNodes }} columnCount={4}>
+        {(tableData) => (
+          <TableBody>
+            {tableData.map((tableItem, index) => (
+              <TableRow key={index} item={tableItem}>
+                <TableCell isRowHeader>{tableItem.paymentId}</TableCell>
+                <TableCell>
+                  <Amount value={tableItem.amount} />
+                </TableCell>
+                <TableCell>
+                  <Badge
+                    size="medium"
+                    color={
+                      tableItem.status === 'Completed'
+                        ? 'positive'
+                        : tableItem.status === 'Pending'
+                        ? 'notice'
+                        : tableItem.status === 'Failed'
+                        ? 'negative'
+                        : 'primary'
+                    }
+                  >
+                    {tableItem.status}
+                  </Badge>
+                </TableCell>
+                <TableCell>{tableItem.method}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        )}
+      </TableComponent>
+    </Box>
+  );
+};
+TableWithoutHeader.storyName = 'Table Without Header';
+
+/**
+ * A table that omits TableFooter.
+ * TableFooter has always been optional — this story documents the pattern explicitly.
+ */
+export const TableWithoutFooter: StoryFn<typeof TableComponent> = () => {
+  return (
+    <Box padding="spacing.5" overflow="auto" minHeight="300px">
+      <TableComponent data={{ nodes: previewNodes }}>
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </TableComponent>
+    </Box>
+  );
+};
+TableWithoutFooter.storyName = 'Table Without Footer';
