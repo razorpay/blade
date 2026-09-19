@@ -266,13 +266,13 @@ const StyledRow = styled(Row)<{
                 '& > div:first-child': {
                   overflow: 'visible',
                 },
-              },
-              '& td:last-child:focus-within': {
-                opacity: 1,
                 ...getTableActionsHoverStyles({
                   theme,
                   hoverColor: tableRow.nonStripe.backgroundColor,
                 }),
+              },
+              '& td:last-child:focus-within': {
+                opacity: 1,
               },
               '&:hover td:last-child': {
                 opacity: 1,
