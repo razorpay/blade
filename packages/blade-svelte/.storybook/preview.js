@@ -1,6 +1,8 @@
 // Import global styles and blade-core theme CSS
+// (light base + dark additive override = combined theme.css)
 import '../src/global.css';
-import '@razorpay/blade-core/tokens/theme.css';
+import '@razorpay/blade-core/tokens/theme-light.css';
+import '@razorpay/blade-core/tokens/theme-dark.css';
 import './preview.css';
 import BladeThemeDecorator from './BladeThemeDecorator.svelte';
 
