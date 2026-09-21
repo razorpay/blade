@@ -15,7 +15,7 @@
   import { getBladeThemeContextGetter } from '../../../BladeProvider/bladeThemeContext';
   import type { BaseIconButtonProps } from './types';
 
-  getIconButtonTemplateClasses();
+  const templateClasses = getIconButtonTemplateClasses();
   const themeContextGetter = getBladeThemeContextGetter();
 
   let {
@@ -159,7 +159,7 @@
   ontouchend={handleTouchEnd}
   onkeydown={handleKeyDown}
 >
-  <span class={resolvedStyleOverride?.icon}>
+  <span class={cx(templateClasses.iconSlot, resolvedStyleOverride?.icon)}>
     <Icon {size} color="currentColor" />
   </span>
 </button>
