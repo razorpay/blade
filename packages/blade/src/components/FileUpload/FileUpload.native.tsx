@@ -190,6 +190,15 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             'FileUpload on React Native requires controlled mode. Pass the fileList prop and update it after resolving files from your picker (opened via onUploadPress). Uncontrolled usage will not reflect picked files in the UI.',
         });
       }
+
+      if (_onChange !== undefined) {
+        logger({
+          type: 'warn',
+          moduleName: 'FileUpload',
+          message:
+            'onChange has no effect on React Native. Use onUploadPress to open your picker and update fileList after it resolves.',
+        });
+      }
     }
   }
 
