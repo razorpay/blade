@@ -35,7 +35,7 @@ describe('<CardGroupItem />', () => {
   });
 
   it('marks a selected row with aria-current', () => {
-    render(CardGroupItem, { props: { children: 'Wallet', isSelected: true, onClick: () => {} } });
+    render(CardGroupItem, { props: { children: 'Wallet', isSelected: true, onClick: vi.fn() } });
 
     expect(screen.getByRole('button', { name: 'Wallet' })).toHaveAttribute('aria-current', 'true');
   });
