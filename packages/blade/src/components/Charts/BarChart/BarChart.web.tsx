@@ -14,7 +14,10 @@ import type {
   ChartXAxisProps,
 } from '../CommonChartComponents';
 import type { RangeMap, ChartReferenceBandProps } from '../CommonChartComponents/types';
-import { componentId as commonComponentIds } from '../CommonChartComponents/tokens';
+import {
+  componentId as commonComponentIds,
+  REFERENCE_BAND_DEFAULT_NAME,
+} from '../CommonChartComponents/tokens';
 import { perLineBandClass } from '../utils/referenceBandUtils';
 import { BarChartContext, useBarChartContext } from './BarChartContext';
 import { useBarReferenceBand } from './useBarReferenceBand';
@@ -27,6 +30,7 @@ import {
   DISTANCE_BETWEEN_CATEGORY_BARS,
   NON_HOVERED_SERIES_OPACITY,
   barSeriesClass,
+  BAR_RANGE_DEFAULT_NAME,
 } from './tokens';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
@@ -401,7 +405,10 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
         chartLevelRange = {
           rangeLowerDataKey: props.lowerDataKey,
           rangeUpperDataKey: props.upperDataKey,
-          rangeName: props.name,
+          // Defaulted here, not left to the tooltip's own fallback: the legend reads this name
+          // through the band layer and the tooltip reads it through `rangeMap`, so an undefined
+          // name would leave the same band labelled differently in the two places.
+          rangeName: props.name ?? REFERENCE_BAND_DEFAULT_NAME,
         };
         return;
       }
@@ -416,7 +423,8 @@ const ChartBarWrapper: React.FC<ChartBarWrapperProps & TestID & DataAnalyticsAtt
           map[dataKey] = {
             rangeLowerDataKey: props.rangeLowerDataKey,
             rangeUpperDataKey: props.rangeUpperDataKey,
-            rangeName: props.rangeName,
+            // Same default the legend applies — see the standalone band above.
+            rangeName: props.rangeName ?? BAR_RANGE_DEFAULT_NAME,
           };
         }
       }

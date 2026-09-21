@@ -15,6 +15,8 @@ While a band is declared, hovering a bar also fades the other series and shades 
 
 **Tooltip** — hovering a bar shows its value and, on a second row, the range's min–max at that same data point. A standalone `<ChartReferenceBand>` now contributes its bounds to that row; previously only a series' own `range*` props did, so a chart-level band drew the shaded area but showed no range row. A bar's own `range*` props still win.
 
+A band that declares no name is now labelled the same in the legend and in the tooltip. The two read the name by different routes, and the default was only applied on one of them — so a `<ChartBar>` with `range*` props but no `rangeName` got a legend swatch reading `Industry range` against a tooltip row reading `Industry`, both on screen at once when `showRangeLegend` was set.
+
 `ChartReferenceBand` keeps its existing export from the shared chart components barrel — no import changes needed.
 
 **Scope of the band** (each fails closed, rendering no band rather than one in the wrong place):

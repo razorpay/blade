@@ -10,6 +10,7 @@ import type {
 import {
   componentId as commonComponentIds,
   REFERENCE_BAND_DEFAULT_COLOR,
+  REFERENCE_BAND_DEFAULT_NAME,
   REFERENCE_BAND_FILL_OPACITY,
   REFERENCE_BAND_LOWER_CLASS,
   REFERENCE_BAND_UPPER_CLASS,
@@ -18,7 +19,12 @@ import {
 import { parsePathAnchors, getDefinedNumericPoints } from '../utils/nullBridgeUtils';
 import type { PixelPoint } from '../utils/nullBridgeUtils';
 import { perLineBandClass } from '../utils/referenceBandUtils';
-import { componentIds, BAND_HIGHLIGHT_OPACITY, barSeriesClass } from './tokens';
+import {
+  componentIds,
+  BAND_HIGHLIGHT_OPACITY,
+  barSeriesClass,
+  BAR_RANGE_DEFAULT_NAME,
+} from './tokens';
 import type { ChartBarProps } from './types';
 import { logger } from '~utils/logger';
 
@@ -234,7 +240,7 @@ const useBarReferenceBand = ({
           upperClass: REFERENCE_BAND_UPPER_CLASS,
           lowerDataKey: props.lowerDataKey,
           upperDataKey: props.upperDataKey,
-          name: props.name ?? 'Reference band',
+          name: props.name ?? REFERENCE_BAND_DEFAULT_NAME,
           colorToken,
           fillColor: getIn(theme.colors, colorToken),
           showLegend: props.showLegend ?? true,
@@ -260,7 +266,7 @@ const useBarReferenceBand = ({
           upperClass: perLineBandClass(dataKey, 'upper'),
           lowerDataKey: props.rangeLowerDataKey,
           upperDataKey: props.rangeUpperDataKey,
-          name: props.rangeName ?? 'Industry range',
+          name: props.rangeName ?? BAR_RANGE_DEFAULT_NAME,
           colorToken,
           fillColor: getIn(theme.colors, colorToken),
           // Per-bar bands are only on screen while their bar is hovered, so a permanent legend

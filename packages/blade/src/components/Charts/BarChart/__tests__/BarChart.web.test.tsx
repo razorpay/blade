@@ -195,6 +195,50 @@ describe('<ChartReferenceBand /> inside a BarChart', () => {
     expect(getByText('1400–3100')).toBeInTheDocument();
   });
 
+  // The legend reads the band's name off the band layer and the tooltip reads it off `rangeMap`.
+  // Defaulting in only one of those left the same band labelled two different ways.
+  it('should label a nameless standalone band identically in the legend and the tooltip', async () => {
+    const { getAllByText } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartBarWrapper data={rangeData}>
+          <ChartReferenceBand lowerDataKey="min" upperDataKey="max" />
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip defaultIndex={2} />
+          <ChartLegend />
+          <ChartBar dataKey="sales" name="Sales" />
+        </ChartBarWrapper>
+      </Box>,
+    );
+    await waitFor(() => {
+      // Once in the legend, once in the tooltip's range row — same string in both.
+      expect(getAllByText('Reference band')).toHaveLength(2);
+    });
+  });
+
+  it('should label a nameless per-bar range identically in the legend and the tooltip', async () => {
+    const { getAllByText } = renderWithTheme(
+      <Box width="500px" height="500px">
+        <ChartBarWrapper data={rangeData}>
+          <ChartXAxis dataKey="name" />
+          <ChartYAxis />
+          <ChartTooltip defaultIndex={2} />
+          <ChartLegend />
+          <ChartBar
+            dataKey="sales"
+            name="Sales"
+            rangeLowerDataKey="min"
+            rangeUpperDataKey="max"
+            showRangeLegend
+          />
+        </ChartBarWrapper>
+      </Box>,
+    );
+    await waitFor(() => {
+      expect(getAllByText('Industry range')).toHaveLength(2);
+    });
+  });
+
   it('should show a legend swatch for a standalone band', async () => {
     const { queryByText } = renderWithTheme(
       <Box width="500px" height="500px">

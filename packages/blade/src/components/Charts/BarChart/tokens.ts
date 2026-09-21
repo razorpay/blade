@@ -16,6 +16,11 @@ const BAND_HIGHLIGHT_OPACITY = 0.7;
 // and its reference band read as the subject. Matches the existing per-category fade.
 const NON_HOVERED_SERIES_OPACITY = 0.2;
 
+// Default label for a bar's own range when `rangeName` is omitted. Read by both the legend swatch
+// and the tooltip's range row — they reach the name by different routes (the band layer vs
+// `rangeMap`), so the default has to live in one place or the two surfaces disagree.
+const BAR_RANGE_DEFAULT_NAME = 'Industry range';
+
 const componentIds = {
   chartBar: 'ChartBar',
 };
@@ -42,4 +47,5 @@ export {
   ANIMATION_TIME_OFFEST,
   BAND_HIGHLIGHT_OPACITY,
   NON_HOVERED_SERIES_OPACITY,
+  BAR_RANGE_DEFAULT_NAME,
 };

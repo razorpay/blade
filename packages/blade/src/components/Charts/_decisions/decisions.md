@@ -449,7 +449,10 @@ mush, and only the hovered bar's range is being asked about.
   a bar that is both the wrong series and the wrong category would otherwise land at `0.2 × 0.2` and
   disappear.
 - The **tooltip** shows the bar's value plus a `low–high` range row — for a standalone band too, not
-  just per-bar ranges.
+  just per-bar ranges. The band's label comes from one shared default
+  (`REFERENCE_BAND_DEFAULT_NAME` / `BAR_RANGE_DEFAULT_NAME`) applied at **both** the legend and
+  `rangeMap`: the two surfaces reach the name by different routes, so a default applied in only one
+  of them leaves the same band labelled two different ways.
 - Use a standalone `<ChartReferenceBand>` instead when there is a single range for the whole chart
   (the unfiltered case) — that one is always visible and gets a legend swatch by default.
 - **Geometry:** the range's **y** comes from two invisible bound series so it folds into the
