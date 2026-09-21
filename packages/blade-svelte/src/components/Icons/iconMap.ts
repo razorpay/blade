@@ -10,6 +10,8 @@ import { CreditCardIcon } from './CreditCardIcon';
 import { EyeIcon } from './EyeIcon';
 import { EyeOffIcon } from './EyeOffIcon';
 import { InfoIcon } from './InfoIcon';
+import { MailIcon } from './MailIcon';
+import { MailOpenIcon } from './MailOpenIcon';
 import { MoreFilledIcon } from './MoreFilledIcon';
 import { MoreHorizontalIcon } from './MoreHorizontalIcon';
 import { PhoneIcon } from './PhoneIcon';
@@ -20,6 +22,7 @@ import { BuildingIcon } from './BuildingIcon';
 import { HomeIcon } from './HomeIcon';
 import { LockIcon } from './LockIcon';
 import { RazorpayTrustIcon } from './RazorpayTrustIcon';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export type IconComponent = Component<IconProps>;
 
@@ -42,11 +45,14 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   EyeIcon,
   EyeOffIcon,
   InfoIcon,
+  MailIcon,
+  MailOpenIcon,
   MoreFilledIcon,
   MoreHorizontalIcon,
   PhoneIcon,
   PlusIcon,
   SearchIcon,
   UserIcon,
+  WhatsAppIcon,
   RazorpayTrustIcon,
 };
