@@ -1,0 +1,338 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardGroup /> renders a group of rows 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityLabel="Payment methods"
+    accessibilityRole="none"
+    accessible={true}
+    colorScheme="light"
+    data-blade-component="card-group"
+    style={
+      [
+        {},
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "hsla(204, 8%, 88%, 1)",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "column",
+          "overflow": "hidden",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityRole="link"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      data-blade-component="card-group-item"
+      focusable={true}
+      isDisabled={false}
+      isSelected={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "columnGap": 12,
+            "flexDirection": "row",
+            "minHeight": 56,
+            "opacity": 1,
+            "paddingBottom": 12,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 12,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        minWidth="0px"
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "minWidth": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 2%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.18200000000000002,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Cards
+        </Text>
+      </View>
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexShrink={0}
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          accessibilityElementsHidden={true}
+          align="xMidYMid"
+          bbHeight="16px"
+          bbWidth="16px"
+          data-blade-component="icon"
+          fill="none"
+          focusable={false}
+          height="16px"
+          importantForAccessibility="no-hide-descendants"
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              [
+                {},
+              ],
+              {
+                "flex": 0,
+                "height": 16,
+                "width": 16,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width="16px"
+        >
+          <RNSVGGroup
+            fill={null}
+            propList={
+              [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
+              fill={
+                {
+                  "payload": 4280889138,
+                  "type": 0,
+                }
+              }
+              fillRule={0}
+              propList={
+                [
+                  "fill",
+                  "fillRule",
+                ]
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+    </View>
+    <View
+      borderBottomColor="surface.border.gray.muted"
+      borderPosition="borderBottom"
+      data-blade-component="divider"
+      dividerStyle="solid"
+      isDividerHorizontal={true}
+      style={
+        [
+          {
+            "borderBottomColor": "hsla(206, 10%, 29%, 0.12)",
+            "borderBottomStyle": "solid",
+          },
+          {
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderWidth": 0,
+            "flexGrow": 1,
+          },
+        ]
+      }
+      thickness="thin"
+    />
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      data-blade-component="card-group-item"
+      focusable={true}
+      isDisabled={false}
+      isSelected={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "columnGap": 12,
+            "flexDirection": "row",
+            "minHeight": 56,
+            "opacity": 1,
+            "paddingBottom": 12,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 12,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        minWidth="0px"
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "minWidth": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={100}
+          fontStyle="normal"
+          fontWeight="regular"
+          letterSpacing={50}
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 2%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": -0.18200000000000002,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Wallet
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
