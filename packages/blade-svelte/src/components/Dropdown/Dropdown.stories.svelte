@@ -32,11 +32,17 @@
   import InputDropdownButton from './InputDropdownButton.svelte';
   import ActionList from '../ActionList/ActionList.svelte';
   import ActionListItem from '../ActionList/ActionListItem.svelte';
+  import ActionListSection from '../ActionList/ActionListSection.svelte';
   import Button from '../Button/Button.svelte';
+  import IconButton from '../Button/IconButton/IconButton.svelte';
+  import Link from '../Link/Link.svelte';
   import Checkbox from '../Checkbox/Checkbox.svelte';
+  import { ChevronDownIcon, MoreHorizontalIcon } from '../Icons';
 
   let defaultOpen = $state(false);
   let controlledOpen = $state(false);
+  let linkOpen = $state(false);
+  let iconOpen = $state(false);
   let headerFooterOpen = $state(false);
   let multiOpen = $state(false);
   let inputOpen = $state(false);
@@ -59,10 +65,19 @@
           {#snippet children()}
             <ActionList>
               {#snippet children()}
-                <ActionListItem title="Profile" value="profile" />
-                <ActionListItem title="Settings" value="settings" />
-                <ActionListItem title="Billing" value="billing" />
-                <ActionListItem title="Logout" value="logout" intent="negative" />
+                <ActionListSection title="Account @saurabh">
+                  {#snippet children()}
+                    <ActionListItem
+                      title="My Profile"
+                      value="profile"
+                      href="https://dashboard.razorpay.com/"
+                      target="_blank"
+                    />
+                    <ActionListItem title="Dashboard" value="dashboard" />
+                    <ActionListItem title="Settings" value="settings" />
+                  {/snippet}
+                </ActionListSection>
+                <ActionListItem title="Log Out" value="logout" intent="negative" />
               {/snippet}
             </ActionList>
           {/snippet}
@@ -99,26 +114,87 @@
   {/snippet}
 </Story>
 
-<!-- 3. With Header And Footer — hasFooterAction switches the container role to
-     `dialog`; footer Button closes via the controllable `isOpen`. -->
+<!-- 3. With Link — Link (button variant) trigger; single-select sort menu with a
+     chevron that flips with open state (mirrors React `WithLink`). -->
+<Story name="With Link">
+  {#snippet template()}
+    <div style="display:flex;align-items:center;gap:8px">
+      <Link
+        variant="button"
+        icon={ChevronDownIcon}
+        iconPosition="right"
+        onClick={() => (linkOpen = !linkOpen)}
+      >
+        Sort By
+      </Link>
+      <Dropdown isOpen={linkOpen} onOpenChange={(o) => (linkOpen = o)}>
+        {#snippet children()}
+          <DropdownOverlay>
+            {#snippet children()}
+              <ActionList>
+                {#snippet children()}
+                  <ActionListItem title="Latest Added" value="latest-added" />
+                  <ActionListItem title="Latest Invoice" value="latest-invoice" />
+                  <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+                {/snippet}
+              </ActionList>
+            {/snippet}
+          </DropdownOverlay>
+        {/snippet}
+      </Dropdown>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- 4. With Icon Button — IconButton trigger for a compact overflow menu
+     (mirrors React `WithIconButton`). -->
+<Story name="With Icon Button">
+  {#snippet template()}
+    <Dropdown isOpen={iconOpen} onOpenChange={(o) => (iconOpen = o)}>
+      {#snippet children()}
+        <IconButton
+          icon={MoreHorizontalIcon}
+          accessibilityLabel="More actions"
+          onClick={() => (iconOpen = !iconOpen)}
+        />
+        <DropdownOverlay>
+          {#snippet children()}
+            <ActionList>
+              {#snippet children()}
+                <ActionListItem title="Edit" value="edit" />
+                <ActionListItem title="Duplicate" value="duplicate" />
+                <ActionListItem title="Delete" value="delete" intent="negative" />
+              {/snippet}
+            </ActionList>
+          {/snippet}
+        </DropdownOverlay>
+      {/snippet}
+    </Dropdown>
+  {/snippet}
+</Story>
+
+<!-- 5. With Header And Footer — single-select menu (mirrors React `InternalMenu`):
+     rows are plain menu items, the `Checkbox` lives only in the footer.
+     hasFooterAction switches the container role to `dialog`; footer Button closes
+     via the controllable `isOpen`. -->
 <Story name="With Header And Footer">
   {#snippet template()}
     <Dropdown isOpen={headerFooterOpen} onOpenChange={(o) => (headerFooterOpen = o)}>
       {#snippet children()}
-        <Button onClick={() => (headerFooterOpen = !headerFooterOpen)}>Filters</Button>
+        <Button onClick={() => (headerFooterOpen = !headerFooterOpen)}>Set status</Button>
         <DropdownOverlay>
           {#snippet children()}
-            <DropdownHeader title="Filter by" subtitle="Choose one or more" />
-            <ActionList selectionType="multiple">
+            <DropdownHeader title="Header Title" subtitle="Header Subtitle" />
+            <ActionList>
               {#snippet children()}
-                <ActionListItem title="Success" value="success" />
-                <ActionListItem title="Pending" value="pending" />
-                <ActionListItem title="Failed" value="failed" />
+                <ActionListItem title="Approve" value="approve" />
+                <ActionListItem title="In Progress" value="in-progress" />
+                <ActionListItem title="Reject" value="reject" intent="negative" />
               {/snippet}
             </ActionList>
             <DropdownFooter>
               {#snippet children()}
-                <Checkbox>Save this filter</Checkbox>
+                <Checkbox>I agree terms and conditions</Checkbox>
                 <Button marginTop="spacing.3" isFullWidth onClick={() => (headerFooterOpen = false)}>
                   Apply
                 </Button>
@@ -131,7 +207,7 @@
   {/snippet}
 </Story>
 
-<!-- 4. With Auto Positioning — triggers pinned to the viewport corners exercise
+<!-- 6. With Auto Positioning — triggers pinned to the viewport corners exercise
      flip/offset placement. -->
 <Story name="With Auto Positioning">
   {#snippet template()}
@@ -162,7 +238,7 @@
   {/snippet}
 </Story>
 
-<!-- 5. Multi Select — selection stays open; selected rows keep their highlight. -->
+<!-- 7. Multi Select — selection stays open; selected rows keep their highlight. -->
 <Story name="Multi Select">
   {#snippet template()}
     <Dropdown selectionType="multiple" isOpen={multiOpen} onOpenChange={(o) => (multiOpen = o)}>
@@ -185,7 +261,7 @@
   {/snippet}
 </Story>
 
-<!-- 6. With Input Dropdown Button — displayValue is derived from the selected
+<!-- 8. With Input Dropdown Button — displayValue is derived from the selected
      registered option; typeahead works when the overlay is open. -->
 <Story name="With Input Dropdown Button">
   {#snippet template()}
