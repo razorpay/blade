@@ -19,10 +19,10 @@
     bottomSheetEmptyHeaderFloatingClass,
     bottomSheetCloseButtonCapsuleClass,
     bottomSheetCloseButtonCapsuleFloatingClass,
-    bottomSheetCloseButtonClass,
   } from '@razorpay/blade-core/styles';
   import { CloseIcon } from '../Icons/CloseIcon';
   import { ChevronLeftIcon } from '../Icons/ChevronLeftIcon';
+  import IconButton from '../Button/IconButton/IconButton.svelte';
   import Text from '../Typography/Text/Text.svelte';
   import { getBottomSheetContext } from './bottomSheetContext';
   import type { BottomSheetHeaderProps } from './types';
@@ -43,7 +43,7 @@
   const ctx = getBottomSheetContext();
 
   let headerEl = $state<HTMLDivElement | null>(null);
-  let closeButtonEl = $state<HTMLButtonElement | null>(null);
+  let closeButtonWrapperEl = $state<HTMLElement | null>(null);
 
   const isHeaderEmpty = $derived(
     !(title || subtitle || leading || trailing || showBackButton || children),
@@ -72,6 +72,7 @@
    * header is non-empty and dismissible. The parent uses this when
    * `initialFocusElement` is null. */
   $effect(() => {
+    const closeButtonEl = closeButtonWrapperEl?.querySelector('button') ?? null;
     if (closeButtonEl && ctx?.isDismissible !== false) {
       ctx?.setDefaultFocusElement(closeButtonEl);
       return () => {
@@ -121,16 +122,13 @@
   {#if isHeaderEmpty}
     <div class={emptyHeaderClasses}>
       {#if isDismissible}
-        <div class={closeCapsuleClasses}>
-          <button
-            bind:this={closeButtonEl}
-            type="button"
-            class={bottomSheetCloseButtonClass}
-            onclick={handleClose}
-            {...makeAccessible({ label: 'Close' })}
-          >
-            <CloseIcon size="large" color="currentColor" />
-          </button>
+        <div class={closeCapsuleClasses} bind:this={closeButtonWrapperEl}>
+          <IconButton
+            icon={CloseIcon}
+            size="large"
+            accessibilityLabel="Close"
+            onClick={handleClose}
+          />
         </div>
       {/if}
     </div>
@@ -189,15 +187,14 @@
       {/if}
 
       {#if isDismissible}
-        <button
-          bind:this={closeButtonEl}
-          type="button"
-          class={bottomSheetHeaderCloseButtonClass}
-          onclick={handleClose}
-          {...makeAccessible({ label: 'Close' })}
-        >
-          <CloseIcon size="large" color="currentColor" />
-        </button>
+        <div class={bottomSheetHeaderCloseButtonClass} bind:this={closeButtonWrapperEl}>
+          <IconButton
+            icon={CloseIcon}
+            size="large"
+            accessibilityLabel="Close"
+            onClick={handleClose}
+          />
+        </div>
       {/if}
     </div>
 
