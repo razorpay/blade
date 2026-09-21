@@ -136,6 +136,15 @@ export type { CounterVariants, CounterSize, CounterColor, CounterEmphasis } from
 export { dividerStyles, getDividerClasses } from './Divider';
 export type { DividerVariants, DividerSlot } from './Divider';
 export {
+  getCardGroupSurfaceClasses,
+  cardGroupItemCva,
+  getCardGroupItemClasses,
+  cardGroupChevronCva,
+  getCardGroupChevronClasses,
+  getCardGroupTemplateClasses,
+} from './CardGroup';
+export type { CardGroupItemVariants, CardGroupChevronVariants } from './CardGroup';
+export {
   counterInputContainerStyles,
   getCounterInputContainerClasses,
   counterInputButtonStyles,

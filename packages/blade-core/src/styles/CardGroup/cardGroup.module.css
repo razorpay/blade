@@ -1,0 +1,125 @@
+/* CardGroup — single surface that stacks navigating / selecting / disclosing rows.
+   The group owns the border, radius, elevation, the top/bottom gradient of the run,
+   and the dividers between rows. `overflow: hidden` clips + rounds the end rows, so
+   individual rows never set their own corner radius. */
+.cardGroup {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--surface-background-gray-intense);
+  border: var(--border-width-thin) solid var(--surface-border-gray-subtle);
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  box-shadow: 0px 6px 32px 4px hsla(205, 8%, 71%, 0.06);
+}
+
+/* Single gradient at the top and bottom of the run. Surface colour fades in from
+   each edge — the same 16px band treatment CardSurface uses — as a scroll-fade cue.
+   Pointer-events disabled so rows below stay interactive. */
+.cardGroup::before,
+.cardGroup::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--spacing-5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cardGroup::before {
+  top: 0;
+  background-image: linear-gradient(
+    to bottom,
+    var(--surface-background-gray-intense),
+    transparent
+  );
+}
+
+.cardGroup::after {
+  bottom: 0;
+  background-image: linear-gradient(to top, var(--surface-background-gray-intense), transparent);
+}
+
+/* Row container. Draws the divider between adjacent rows (never above the first). */
+.cardGroupBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardGroupBody > * + * {
+  border-top: var(--border-width-thin) solid var(--surface-border-gray-subtle);
+}
+
+/* --- CardGroupItem (row) --- */
+.cardGroupItem {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  width: 100%;
+  min-height: var(--spacing-11);
+  padding: var(--spacing-4) var(--spacing-5);
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  color: var(--surface-text-gray-normal);
+  font-family: var(--font-family-text);
+  text-align: left;
+  text-decoration: none;
+}
+
+.cardGroupItemInteractive {
+  cursor: pointer;
+}
+
+.cardGroupItemInteractive:hover:not(.cardGroupItemDisabled) {
+  background-color: var(--surface-background-gray-moderate);
+}
+
+/* Inset focus ring so it is not clipped by the group's overflow: hidden. */
+.cardGroupItemInteractive:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 var(--border-width-thicker) var(--surface-border-primary-normal);
+}
+
+.cardGroupItemSelected {
+  background-color: var(--surface-background-primary-subtle);
+  box-shadow: inset var(--border-width-thicker) 0 0 0 var(--surface-border-primary-normal);
+}
+
+.cardGroupItemDisabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.cardGroupItemLeading,
+.cardGroupItemTrailing {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Content is a free slot; it grows and truncates rather than pushing trailing/chevron out. */
+.cardGroupItemContent {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cardGroupChevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--surface-text-gray-subtle);
+  transition: transform 200ms ease;
+}
+
+.cardGroupChevronExpanded {
+  transform: rotate(180deg);
+}
+
+/* --- CardGroupCollapsibleItemBody --- */
+/* Owns the full-bleed divider separating the revealed content from the trigger row. */
+.cardGroupCollapsibleBody {
+  border-top: var(--border-width-thin) solid var(--surface-border-gray-subtle);
+  padding: var(--spacing-4) var(--spacing-5);
+}
