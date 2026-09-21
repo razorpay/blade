@@ -1,12 +1,10 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './accordion.module.css';
 
-export const getAccordionWrapperClasses = cva(styles.wrapper, {
+export const getAccordionWrapperClasses = cva('w-full', {
   variants: {
     variant: {
-      filled: styles.filled,
-      transparent: styles.transparent,
+      filled: 'blade-accordion-filled',
+      transparent: 'bg-transparent',
     },
   },
   defaultVariants: {
@@ -14,10 +12,10 @@ export const getAccordionWrapperClasses = cva(styles.wrapper, {
   },
 });
 
-export const getAccordionButtonClasses = cva(styles.button, {
+export const getAccordionButtonClasses = cva('blade-accordion-button', {
   variants: {
     isExpanded: {
-      true: styles.buttonExpanded,
+      true: 'text-interactive-icon-gray-subtle',
       false: null,
     },
     isDisabled: {
@@ -31,6 +29,11 @@ export const getAccordionButtonClasses = cva(styles.button, {
   },
 });
 
+/**
+ * Hover/focus-visible border-radius compounds — plain Tailwind pseudo-variants (no plugin needed;
+ * these are single-property radius overrides on the same element, unlike the button's stateful
+ * background/color/divider rules which do need the `.blade-accordion-button` plugin class).
+ */
 export const getAccordionButtonBorderClasses = cva('', {
   variants: {
     variant: {
@@ -51,60 +54,65 @@ export const getAccordionButtonBorderClasses = cva('', {
     },
   },
   compoundVariants: [
-    { variant: 'filled', isFirstItem: true, class: styles.filledFirstItem },
+    {
+      variant: 'filled',
+      isFirstItem: true,
+      class: 'hover:rounded-t-medium focus-visible:rounded-t-medium',
+    },
     {
       variant: 'filled',
       isLastItem: true,
       isExpanded: false,
-      class: styles.filledLastItemCollapsed,
+      class: 'hover:rounded-b-medium focus-visible:rounded-b-medium',
     },
     {
       variant: 'filled',
       isFirstItem: true,
       isLastItem: true,
       isExpanded: false,
-      class: styles.filledSingleItemCollapsed,
+      class: 'hover:rounded-medium focus-visible:rounded-medium',
     },
     {
       variant: 'filled',
       isFirstItem: true,
       isLastItem: true,
       isExpanded: true,
-      class: styles.filledSingleItemExpanded,
+      class: 'hover:rounded-t-medium focus-visible:rounded-t-medium',
     },
   ],
 });
 
 export const getAccordionTemplateClasses = (): Record<string, string> => ({
-  wrapper: styles.wrapper,
-  filled: styles.filled,
-  transparent: styles.transparent,
-  button: styles.button,
-  buttonExpanded: styles.buttonExpanded,
-  filledFirstItem: styles.filledFirstItem,
-  filledLastItemCollapsed: styles.filledLastItemCollapsed,
-  filledSingleItemCollapsed: styles.filledSingleItemCollapsed,
-  filledSingleItemExpanded: styles.filledSingleItemExpanded,
-  headerContainer: styles.headerContainer,
-  headerContent: styles.headerContent,
-  headerContentMedium: styles.headerContentMedium,
-  headerContentCentered: styles.headerContentCentered,
-  headerLeading: styles.headerLeading,
-  headerLeadingLarge: styles.headerLeadingLarge,
-  headerLeadingMedium: styles.headerLeadingMedium,
-  headerLeadingIcon: styles.headerLeadingIcon,
-  headerLeadingSlot: styles.headerLeadingSlot,
-  headerMain: styles.headerMain,
-  headerTitleRow: styles.headerTitleRow,
-  headerTitleText: styles.headerTitleText,
-  headerTrailing: styles.headerTrailing,
-  headerChevron: styles.headerChevron,
-  headerDivider: styles.headerDivider,
-  collapsibleContentGray: styles.collapsibleContentGray,
-  collapsibleContentGrayLast: styles.collapsibleContentGrayLast,
-  body: styles.body,
-  bodyGray: styles.bodyGray,
-  accordionOuter: styles.accordionOuter,
+  wrapper: 'w-full',
+  filled: 'blade-accordion-filled',
+  transparent: 'bg-transparent',
+  button: 'blade-accordion-button',
+  buttonExpanded: 'text-interactive-icon-gray-subtle',
+  filledFirstItem: 'hover:rounded-t-medium focus-visible:rounded-t-medium',
+  filledLastItemCollapsed: 'hover:rounded-b-medium focus-visible:rounded-b-medium',
+  filledSingleItemCollapsed: 'hover:rounded-medium focus-visible:rounded-medium',
+  filledSingleItemExpanded: 'hover:rounded-t-medium focus-visible:rounded-t-medium',
+  headerContainer: 'flex-1 flex flex-col',
+  headerContent: 'flex flex-row items-start px-spacing-5 my-spacing-5 [--header-slot-height:28px]',
+  headerContentMedium: '[--header-slot-height:20px]',
+  headerContentCentered: 'items-center',
+  headerLeading: 'overflow-hidden shrink-0 flex items-center min-h-[var(--header-slot-height)]',
+  headerLeadingLarge: 'max-h-[32px] max-w-[32px]',
+  headerLeadingMedium: 'max-h-[24px] max-w-[24px]',
+  headerLeadingIcon: 'mr-spacing-3',
+  headerLeadingSlot: 'mr-spacing-3',
+  headerMain: 'flex flex-col flex-1 min-w-0',
+  headerTitleRow: 'flex flex-row items-center gap-spacing-3',
+  headerTitleText: 'mt-[1px]',
+  headerTrailing: 'flex items-center ml-spacing-4 shrink-0 min-h-[var(--header-slot-height)]',
+  headerChevron: 'flex items-center shrink-0 ml-spacing-3 min-h-[var(--header-slot-height)]',
+  headerDivider: 'px-spacing-0',
+  collapsibleContentGray: 'bg-surface-background-gray-subtle',
+  collapsibleContentGrayLast: 'rounded-b-medium',
+  body: 'flex flex-col gap-spacing-5 mt-spacing-4 mb-spacing-5 mx-spacing-5',
+  bodyGray: 'm-spacing-0 pt-spacing-4 pb-spacing-5 px-spacing-5',
+  accordionOuter:
+    'min-w-[200px] max-w-[calc(100vw_-_40px)] s:min-w-[360px] s:max-w-[640px] m:max-w-[800px]',
 });
 
 export type AccordionWrapperVariants = {

@@ -1,6 +1,4 @@
 import { cva, cx } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './avatar.module.css';
 
 // ===== Avatar outer wrapper CVA =====
 
@@ -10,37 +8,48 @@ export type AvatarWrapperVariants = {
   isInteractive?: boolean;
 };
 
-export const avatarWrapperStyles = cva(styles['avatar-wrapper'], {
-  variants: {
-    size: {
-      xsmall: styles['size-xsmall'],
-      small: styles['size-small'],
-      medium: styles['size-medium'],
-      large: styles['size-large'],
-      xlarge: styles['size-xlarge'],
+/**
+ * `--avatar-radius` is a CSS custom property set by the shape/size compounds and consumed (with a
+ * `var(--border-radius-max)` fallback) by the wrapper, button, and its `img` — expressed via
+ * Tailwind's arbitrary-property (`[--avatar-radius:...]`) and arbitrary-value (`rounded-[var(...)]`)
+ * syntax, so no plugin class is needed. The outline shorthand (width+style+color together) is set
+ * via a single arbitrary property to stay byte-faithful to the original declaration.
+ */
+export const avatarWrapperStyles = cva(
+  'flex relative overflow-hidden bg-surface-background-gray-intense [outline:var(--border-width-thinner)_solid_var(--surface-border-gray-subtle)] rounded-[var(--avatar-radius,var(--border-radius-max))]',
+  {
+    variants: {
+      size: {
+        xsmall: 'w-[20px] h-[20px]',
+        small: 'w-[28px] h-[28px]',
+        medium: 'w-[36px] h-[36px]',
+        large: 'w-[48px] h-[48px]',
+        xlarge: 'w-[56px] h-[56px]',
+      },
+      variant: {
+        circle: '[--avatar-radius:var(--border-radius-max)]',
+        square: '',
+      },
+      isInteractive: {
+        true:
+          'hover:[outline:var(--border-width-thick)_solid_var(--surface-border-gray-muted)] hover:bg-surface-background-gray-moderate',
+        false: '',
+      },
     },
-    variant: {
-      circle: styles['variant-circle'],
-      square: styles['variant-square'],
-    },
-    isInteractive: {
-      true: styles.interactive,
-      false: '',
+    compoundVariants: [
+      { variant: 'square', size: 'xsmall', class: '[--avatar-radius:var(--border-radius-xsmall)]' },
+      { variant: 'square', size: 'small', class: '[--avatar-radius:var(--border-radius-xsmall)]' },
+      { variant: 'square', size: 'medium', class: '[--avatar-radius:var(--border-radius-small)]' },
+      { variant: 'square', size: 'large', class: '[--avatar-radius:var(--border-radius-small)]' },
+      { variant: 'square', size: 'xlarge', class: '[--avatar-radius:var(--border-radius-medium)]' },
+    ],
+    defaultVariants: {
+      size: 'medium',
+      variant: 'circle',
+      isInteractive: false,
     },
   },
-  compoundVariants: [
-    { variant: 'square', size: 'xsmall', class: styles['square-xsmall'] },
-    { variant: 'square', size: 'small', class: styles['square-small'] },
-    { variant: 'square', size: 'medium', class: styles['square-medium'] },
-    { variant: 'square', size: 'large', class: styles['square-large'] },
-    { variant: 'square', size: 'xlarge', class: styles['square-xlarge'] },
-  ],
-  defaultVariants: {
-    size: 'medium',
-    variant: 'circle',
-    isInteractive: false,
-  },
-});
+);
 
 export function getAvatarWrapperClasses(props: AvatarWrapperVariants): string {
   return avatarWrapperStyles(props);
@@ -56,43 +65,42 @@ export type AvatarButtonVariants = {
   isSelected?: boolean;
 };
 
-export const avatarButtonStyles = cva(styles['avatar-btn'], {
+const avatarButtonBase =
+  'block text-center no-underline border-none outline-none p-spacing-0 bg-none cursor-default overflow-hidden rounded-[var(--avatar-radius,var(--border-radius-max))] [&_img]:block [&_img]:object-cover [&_img]:w-full [&_img]:h-full [&_img]:rounded-[var(--avatar-radius,var(--border-radius-max))]';
+
+export const avatarButtonStyles = cva(avatarButtonBase, {
   variants: {
     size: {
-      xsmall: styles['btn-size-xsmall'],
-      small: styles['btn-size-small'],
-      medium: styles['btn-size-medium'],
-      large: styles['btn-size-large'],
-      xlarge: styles['btn-size-xlarge'],
+      xsmall: 'min-h-[20px] h-[20px] w-[20px]',
+      small: 'min-h-[28px] h-[28px] w-[28px]',
+      medium: 'min-h-[36px] h-[36px] w-[36px]',
+      large: 'min-h-[48px] h-[48px] w-[48px]',
+      xlarge: 'min-h-[56px] h-[56px] w-[56px]',
     },
+    // Radius is inherited from `--avatar-radius` (set on the wrapper) — the button carries no
+    // shape-specific class of its own (matches the original, which had no `.btn-square-*` rules).
     variant: {
-      circle: styles['btn-variant-circle'],
-      square: styles['btn-variant-square'],
+      circle: '',
+      square: '',
     },
     color: {
-      primary: styles['btn-color-primary'],
-      positive: styles['btn-color-positive'],
-      negative: styles['btn-color-negative'],
-      notice: styles['btn-color-notice'],
-      information: styles['btn-color-information'],
-      neutral: styles['btn-color-neutral'],
+      primary: 'bg-interactive-background-primary-faded',
+      positive: 'bg-interactive-background-positive-faded',
+      negative: 'bg-interactive-background-negative-faded',
+      notice: 'bg-interactive-background-notice-faded',
+      information: 'bg-interactive-background-information-faded',
+      neutral: 'bg-interactive-background-neutral-faded',
     },
     isInteractive: {
-      true: styles['btn-interactive'],
+      true:
+        'cursor-pointer focus-visible:[outline:1px_solid_var(--surface-background-primary-subtle)] focus-visible:shadow-[0px_0px_0px_4px_var(--surface-border-primary-muted)]',
       false: '',
     },
     isSelected: {
-      true: styles['btn-selected'],
+      true: '[border:var(--border-width-thicker)_solid_var(--surface-border-primary-normal)]',
       false: '',
     },
   },
-  compoundVariants: [
-    { variant: 'square', size: 'xsmall', class: styles['btn-square-xsmall'] },
-    { variant: 'square', size: 'small', class: styles['btn-square-small'] },
-    { variant: 'square', size: 'medium', class: styles['btn-square-medium'] },
-    { variant: 'square', size: 'large', class: styles['btn-square-large'] },
-    { variant: 'square', size: 'xlarge', class: styles['btn-square-xlarge'] },
-  ],
   defaultVariants: {
     size: 'medium',
     variant: 'circle',
@@ -132,10 +140,10 @@ export function getAvatarGroupOverflowBodyTextSize(
  * Button classes for AvatarGroup overflow (+N) counter avatar.
  *
  * Builds on `color: 'neutral'` (kept inside the public color enum) and layers
- * a Svelte-only `btn-color-group-overflow` override on top to give the counter
- * its distinct panel-style background. The override is intentionally not
- * exposed via `AvatarButtonVariants['color']` so the public type stays aligned
- * with React's `AvatarProps['color']`.
+ * a Svelte-only override on top to give the counter its distinct panel-style
+ * background. The override is intentionally not exposed via
+ * `AvatarButtonVariants['color']` so the public type stays aligned with
+ * React's `AvatarProps['color']`.
  */
 export function getAvatarGroupOverflowButtonClasses(
   props: Pick<AvatarButtonVariants, 'size' | 'variant'>,
@@ -147,7 +155,7 @@ export function getAvatarGroupOverflowButtonClasses(
       isInteractive: false,
       isSelected: false,
     }),
-    styles['btn-color-group-overflow'],
+    'bg-surface-background-gray-subtle text-interactive-text-neutral-muted',
   );
 }
 
@@ -160,7 +168,11 @@ export type AvatarGroupVariants = {
   density?: AvatarDensity;
 };
 
-export const avatarGroupStyles = cva(styles['avatar-group'], {
+/**
+ * Overlap margin + stacking z-index live on `> :not(:first-child)` — expressed via Tailwind's
+ * arbitrary child-combinator variant (`[&>*:not(:first-child)]:...`), no plugin needed.
+ */
+export const avatarGroupStyles = cva('inline-flex flex-row [&>*:not(:first-child)]:z-[2]', {
   variants: {
     // size variant carries no margin directly — all spacing is controlled by
     // density × size compound variants below, so that there is a single
@@ -180,23 +192,23 @@ export const avatarGroupStyles = cva(styles['avatar-group'], {
   },
   compoundVariants: [
     // normal density — same overlap as the original size-only classes
-    { density: 'normal', size: 'xsmall', class: styles['group-size-xsmall'] },
-    { density: 'normal', size: 'small', class: styles['group-size-small'] },
-    { density: 'normal', size: 'medium', class: styles['group-size-medium'] },
-    { density: 'normal', size: 'large', class: styles['group-size-large'] },
-    { density: 'normal', size: 'xlarge', class: styles['group-size-xlarge'] },
+    { density: 'normal', size: 'xsmall', class: '[&>*:not(:first-child)]:ml-[-6px]' },
+    { density: 'normal', size: 'small', class: '[&>*:not(:first-child)]:ml-[-10px]' },
+    { density: 'normal', size: 'medium', class: '[&>*:not(:first-child)]:ml-[-14px]' },
+    { density: 'normal', size: 'large', class: '[&>*:not(:first-child)]:ml-[-20px]' },
+    { density: 'normal', size: 'xlarge', class: '[&>*:not(:first-child)]:ml-[-24px]' },
     // compact density — tighter overlap
-    { density: 'compact', size: 'xsmall', class: styles['group-density-compact-xsmall'] },
-    { density: 'compact', size: 'small', class: styles['group-density-compact-small'] },
-    { density: 'compact', size: 'medium', class: styles['group-density-compact-medium'] },
-    { density: 'compact', size: 'large', class: styles['group-density-compact-large'] },
-    { density: 'compact', size: 'xlarge', class: styles['group-density-compact-xlarge'] },
+    { density: 'compact', size: 'xsmall', class: '[&>*:not(:first-child)]:ml-[-10px]' },
+    { density: 'compact', size: 'small', class: '[&>*:not(:first-child)]:ml-[-14px]' },
+    { density: 'compact', size: 'medium', class: '[&>*:not(:first-child)]:ml-[-18px]' },
+    { density: 'compact', size: 'large', class: '[&>*:not(:first-child)]:ml-[-24px]' },
+    { density: 'compact', size: 'xlarge', class: '[&>*:not(:first-child)]:ml-[-30px]' },
     // comfortable density — looser overlap
-    { density: 'comfortable', size: 'xsmall', class: styles['group-density-comfortable-xsmall'] },
-    { density: 'comfortable', size: 'small', class: styles['group-density-comfortable-small'] },
-    { density: 'comfortable', size: 'medium', class: styles['group-density-comfortable-medium'] },
-    { density: 'comfortable', size: 'large', class: styles['group-density-comfortable-large'] },
-    { density: 'comfortable', size: 'xlarge', class: styles['group-density-comfortable-xlarge'] },
+    { density: 'comfortable', size: 'xsmall', class: '[&>*:not(:first-child)]:ml-[-2px]' },
+    { density: 'comfortable', size: 'small', class: '[&>*:not(:first-child)]:ml-[-4px]' },
+    { density: 'comfortable', size: 'medium', class: '[&>*:not(:first-child)]:ml-[-6px]' },
+    { density: 'comfortable', size: 'large', class: '[&>*:not(:first-child)]:ml-[-10px]' },
+    { density: 'comfortable', size: 'xlarge', class: '[&>*:not(:first-child)]:ml-[-14px]' },
   ],
   defaultVariants: {
     size: 'medium',
@@ -254,6 +266,29 @@ export const avatarToIndicatorSize = {
   xlarge: 'large',
 } as const;
 
+// ===== Literal class lookup tables (top/bottom addon positioning) =====
+
+const topAddonCircleBySize = {
+  xsmall: 'right-[0px] top-[0px]',
+  small: 'right-[1px] top-[1px]',
+  medium: 'right-[1px] top-[2px]',
+  large: 'right-[4px] top-[2px]',
+  xlarge: 'right-[4px] top-[4px]',
+} as const;
+
+const topAddonSquareBySize = {
+  xsmall: 'right-[-2px] top-[-2px]',
+  small: 'right-[-2px] top-[-2px]',
+  medium: 'right-[-2px] top-[-2px]',
+  large: 'right-[-3px] top-[-3px]',
+  xlarge: 'right-[-4px] top-[-4px]',
+} as const;
+
+const bottomAddonByVariant = {
+  circle: 'bottom-[0%] right-[0%]',
+  square: 'bottom-[-10%] right-[-10%]',
+} as const;
+
 // ===== Template classes (prevent Svelte tree-shaking) =====
 
 /**
@@ -264,46 +299,48 @@ export const avatarToIndicatorSize = {
 export function getAvatarTemplateClasses(): Record<string, string> {
   return {
     // Root + body wrapper
-    avatarRoot: styles['avatar-root'],
-    avatarWrapper: styles['avatar-wrapper'],
-    interactive: styles.interactive,
+    avatarRoot: 'inline-flex relative',
+    avatarWrapper: avatarWrapperStyles({}),
+    interactive:
+      'hover:[outline:var(--border-width-thick)_solid_var(--surface-border-gray-muted)] hover:bg-surface-background-gray-moderate',
     // Button
-    avatarBtn: styles['avatar-btn'],
-    btnContent: styles['btn-content'],
-    btnInteractive: styles['btn-interactive'],
-    btnSelected: styles['btn-selected'],
+    avatarBtn: avatarButtonBase,
+    btnContent: 'flex flex-row items-center justify-center z-[1] h-full',
+    btnInteractive:
+      'cursor-pointer focus-visible:[outline:1px_solid_var(--surface-background-primary-subtle)] focus-visible:shadow-[0px_0px_0px_4px_var(--surface-border-primary-muted)]',
+    btnSelected: '[border:var(--border-width-thicker)_solid_var(--surface-border-primary-normal)]',
     // Addon containers
-    topAddon: styles['top-addon'],
-    bottomAddon: styles['bottom-addon'],
+    topAddon: 'absolute z-[2]',
+    bottomAddon: 'absolute z-[2]',
     // Top addon offsets - circle
-    topAddonCircleXsmall: styles['top-addon-circle-xsmall'],
-    topAddonCircleSmall: styles['top-addon-circle-small'],
-    topAddonCircleMedium: styles['top-addon-circle-medium'],
-    topAddonCircleLarge: styles['top-addon-circle-large'],
-    topAddonCircleXlarge: styles['top-addon-circle-xlarge'],
+    topAddonCircleXsmall: topAddonCircleBySize.xsmall,
+    topAddonCircleSmall: topAddonCircleBySize.small,
+    topAddonCircleMedium: topAddonCircleBySize.medium,
+    topAddonCircleLarge: topAddonCircleBySize.large,
+    topAddonCircleXlarge: topAddonCircleBySize.xlarge,
     // Top addon offsets - square
-    topAddonSquareXsmall: styles['top-addon-square-xsmall'],
-    topAddonSquareSmall: styles['top-addon-square-small'],
-    topAddonSquareMedium: styles['top-addon-square-medium'],
-    topAddonSquareLarge: styles['top-addon-square-large'],
-    topAddonSquareXlarge: styles['top-addon-square-xlarge'],
+    topAddonSquareXsmall: topAddonSquareBySize.xsmall,
+    topAddonSquareSmall: topAddonSquareBySize.small,
+    topAddonSquareMedium: topAddonSquareBySize.medium,
+    topAddonSquareLarge: topAddonSquareBySize.large,
+    topAddonSquareXlarge: topAddonSquareBySize.xlarge,
     // Bottom addon offsets
-    bottomAddonCircle: styles['bottom-addon-circle'],
-    bottomAddonSquare: styles['bottom-addon-square'],
+    bottomAddonCircle: bottomAddonByVariant.circle,
+    bottomAddonSquare: bottomAddonByVariant.square,
     // Group
-    avatarGroup: styles['avatar-group'],
+    avatarGroup: 'inline-flex flex-row [&>*:not(:first-child)]:z-[2]',
     // Group density compact
-    groupDensityCompactXsmall: styles['group-density-compact-xsmall'],
-    groupDensityCompactSmall: styles['group-density-compact-small'],
-    groupDensityCompactMedium: styles['group-density-compact-medium'],
-    groupDensityCompactLarge: styles['group-density-compact-large'],
-    groupDensityCompactXlarge: styles['group-density-compact-xlarge'],
+    groupDensityCompactXsmall: '[&>*:not(:first-child)]:ml-[-10px]',
+    groupDensityCompactSmall: '[&>*:not(:first-child)]:ml-[-14px]',
+    groupDensityCompactMedium: '[&>*:not(:first-child)]:ml-[-18px]',
+    groupDensityCompactLarge: '[&>*:not(:first-child)]:ml-[-24px]',
+    groupDensityCompactXlarge: '[&>*:not(:first-child)]:ml-[-30px]',
     // Group density comfortable
-    groupDensityComfortableXsmall: styles['group-density-comfortable-xsmall'],
-    groupDensityComfortableSmall: styles['group-density-comfortable-small'],
-    groupDensityComfortableMedium: styles['group-density-comfortable-medium'],
-    groupDensityComfortableLarge: styles['group-density-comfortable-large'],
-    groupDensityComfortableXlarge: styles['group-density-comfortable-xlarge'],
+    groupDensityComfortableXsmall: '[&>*:not(:first-child)]:ml-[-2px]',
+    groupDensityComfortableSmall: '[&>*:not(:first-child)]:ml-[-4px]',
+    groupDensityComfortableMedium: '[&>*:not(:first-child)]:ml-[-6px]',
+    groupDensityComfortableLarge: '[&>*:not(:first-child)]:ml-[-10px]',
+    groupDensityComfortableXlarge: '[&>*:not(:first-child)]:ml-[-14px]',
   } as const;
 }
 
@@ -314,14 +351,13 @@ export function getTopAddonClass(
   variant: 'circle' | 'square',
   size: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge',
 ): string {
-  const key = `top-addon-${variant}-${size}` as keyof typeof styles;
-  return styles[key] || '';
+  const table = variant === 'circle' ? topAddonCircleBySize : topAddonSquareBySize;
+  return table[size] || '';
 }
 
 /**
  * Get the bottom addon position class for a given variant.
  */
 export function getBottomAddonClass(variant: 'circle' | 'square'): string {
-  const key = `bottom-addon-${variant}` as keyof typeof styles;
-  return styles[key] || '';
+  return bottomAddonByVariant[variant] || '';
 }

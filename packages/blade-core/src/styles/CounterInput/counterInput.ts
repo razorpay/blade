@@ -1,6 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './counterInput.module.css';
 
 export type CounterInputSize = 'xsmall' | 'small' | 'medium' | 'large';
 export type CounterInputEmphasis = 'subtle' | 'intense';
@@ -27,17 +25,17 @@ export type CounterInputInputVariants = {
  * color. The `[data-disabled]` attribute selector in the CSS module covers the
  * disabled/loading background + border overrides, so they need no compound variant.
  */
-export const counterInputContainerStyles = cva(styles.container, {
+export const counterInputContainerStyles = cva('blade-counter-input-container', {
   variants: {
     size: {
-      xsmall: styles['container-xsmall'],
-      small: styles['container-small'],
-      medium: styles['container-medium'],
-      large: styles['container-large'],
+      xsmall: 'blade-counter-input-container-xsmall',
+      small: 'blade-counter-input-container-small',
+      medium: 'blade-counter-input-container-medium',
+      large: 'blade-counter-input-container-large',
     },
     emphasis: {
-      subtle: styles['container-subtle'],
-      intense: styles['container-intense'],
+      subtle: 'blade-counter-input-container-subtle',
+      intense: 'blade-counter-input-container-intense',
     },
   },
   defaultVariants: {
@@ -54,21 +52,21 @@ export function getCounterInputContainerClasses(props: CounterInputContainerVari
  * Button styles. `size` drives padding/radius, `emphasis` drives idle/hover/disabled
  * icon color, `direction` drives the asymmetric outer margins.
  */
-export const counterInputButtonStyles = cva(styles.button, {
+export const counterInputButtonStyles = cva('blade-counter-input-button', {
   variants: {
     size: {
-      xsmall: styles['button-xsmall'],
-      small: styles['button-small'],
-      medium: styles['button-medium'],
-      large: styles['button-large'],
+      xsmall: 'blade-counter-input-button-xsmall',
+      small: 'blade-counter-input-button-small',
+      medium: 'blade-counter-input-button-medium',
+      large: 'blade-counter-input-button-large',
     },
     emphasis: {
-      subtle: styles['button-subtle'],
-      intense: styles['button-intense'],
+      subtle: 'blade-counter-input-button-subtle',
+      intense: 'blade-counter-input-button-intense',
     },
     direction: {
-      decrement: styles['button-decrement'],
-      increment: styles['button-increment'],
+      decrement: 'blade-counter-input-button-decrement',
+      increment: 'blade-counter-input-button-increment',
     },
   },
   defaultVariants: {
@@ -86,17 +84,17 @@ export function getCounterInputButtonClasses(props: CounterInputButtonVariants):
  * Native input styles. `size` drives font-size/line-height, `emphasis` drives
  * text color (idle + disabled via `[disabled]`).
  */
-export const counterInputInputStyles = cva(styles.input, {
+export const counterInputInputStyles = cva('blade-counter-input-input', {
   variants: {
     size: {
-      xsmall: styles['input-xsmall'],
-      small: styles['input-small'],
-      medium: styles['input-medium'],
-      large: styles['input-large'],
+      xsmall: 'blade-counter-input-input-xsmall',
+      small: 'blade-counter-input-input-small',
+      medium: 'blade-counter-input-input-medium',
+      large: 'blade-counter-input-input-large',
     },
     emphasis: {
-      subtle: styles['input-subtle'],
-      intense: styles['input-intense'],
+      subtle: 'blade-counter-input-input-subtle',
+      intense: 'blade-counter-input-input-intense',
     },
   },
   defaultVariants: {
@@ -132,16 +130,16 @@ export function getCounterInputTemplateClasses(): {
   progressBarIntense: string;
 } {
   return {
-    counterInput: styles['counter-input'],
-    layout: styles.layout,
-    layoutLeft: styles['layout-left'],
-    controls: styles.controls,
-    inputWrapper: styles['input-wrapper'],
-    animateSlideUp: styles['animate-slide-up'],
-    animateSlideDown: styles['animate-slide-down'],
-    progressBarWrapper: styles['progress-bar-wrapper'],
-    progressBar: styles['progress-bar'],
-    progressBarSubtle: styles['progress-bar-subtle'],
-    progressBarIntense: styles['progress-bar-intense'],
+    counterInput: 'blade-counter-input',
+    layout: 'blade-counter-input-layout',
+    layoutLeft: 'blade-counter-input-layout-left',
+    controls: 'blade-counter-input-controls',
+    inputWrapper: 'blade-counter-input-input-wrapper',
+    animateSlideUp: 'blade-counter-input-animate-slide-up',
+    animateSlideDown: 'blade-counter-input-animate-slide-down',
+    progressBarWrapper: 'blade-counter-input-progress-bar-wrapper',
+    progressBar: 'blade-counter-input-progress-bar',
+    progressBarSubtle: 'blade-counter-input-progress-bar-subtle',
+    progressBarIntense: 'blade-counter-input-progress-bar-intense',
   };
 }

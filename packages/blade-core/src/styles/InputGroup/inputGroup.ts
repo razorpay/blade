@@ -1,6 +1,4 @@
 import { cva } from 'class-variance-authority';
-// @ts-expect-error - CSS modules may not have type definitions in build
-import styles from './inputGroup.module.css';
 import type { BaseInputSize } from '../Input/baseInputTokens';
 
 export type InputGroupLabelPosition = 'top' | 'left';
@@ -11,13 +9,15 @@ export type InputGroupFieldVariants = {
 
 /**
  * Classes for the label + inputs box. `left` switches to a row layout on desktop
- * (`@media (min-width: 768px)`); on mobile it falls back to the column layout.
+ * (`@media (min-width: 768px)`, via the `.blade-input-group-field-left` plugin class); on mobile it
+ * falls back to the column layout. The field box lives in the plugin (not as a utility) so the
+ * desktop override wins by source order.
  */
-export const inputGroupFieldCva = cva(styles['field-box'], {
+export const inputGroupFieldCva = cva('blade-input-group-field', {
   variants: {
     labelPosition: {
       top: null,
-      left: styles['field-box-left'],
+      left: 'blade-input-group-field-left',
     },
   },
   defaultVariants: {
@@ -31,14 +31,14 @@ export function getInputGroupFieldClasses(props: InputGroupFieldVariants): strin
 
 /*
  * Left-label hint indent per size (mirrors React `formHintLeftLabelMarginLeft`):
- * xsmall/small/medium → 136px, large → 192px. The margin only applies on desktop
- * (the class carries the value inside the `@media` query).
+ * xsmall/small/medium → 136px, large → 192px. The margin only applies on desktop, so it uses the
+ * `m` (768px) responsive prefix.
  */
 const hintIndentBySize: Record<BaseInputSize, string> = {
-  xsmall: styles['hint-indent-medium'],
-  small: styles['hint-indent-medium'],
-  medium: styles['hint-indent-medium'],
-  large: styles['hint-indent-large'],
+  xsmall: 'm:ml-[136px]',
+  small: 'm:ml-[136px]',
+  medium: 'm:ml-[136px]',
+  large: 'm:ml-[192px]',
 };
 
 export function getInputGroupHintIndentClass(size: BaseInputSize): string {
@@ -47,8 +47,8 @@ export function getInputGroupHintIndentClass(size: BaseInputSize): string {
 
 /**
  * Structural classes referenced only inside Svelte templates. Calling this from
- * the component prevents CSS-module tree-shaking from dropping them (and the
- * corner-rounding rules scoped under `.input-group`).
+ * the component prevents tree-shaking from dropping them (and the corner-rounding
+ * rules scoped under `.blade-input-group`).
  */
 export function getInputGroupTemplateClasses(): {
   inputGroup: string;
@@ -60,12 +60,12 @@ export function getInputGroupTemplateClasses(): {
   hintInner: string;
 } {
   return {
-    inputGroup: styles['input-group'],
-    group: styles.group,
-    fieldBox: styles['field-box'],
-    inputsWrapper: styles['inputs-wrapper'],
-    inputRow: styles['input-row'],
-    hintBox: styles['hint-box'],
-    hintInner: styles['hint-inner'],
+    inputGroup: 'blade-input-group',
+    group: 'flex flex-col w-full',
+    fieldBox: 'blade-input-group-field',
+    inputsWrapper: 'flex flex-col',
+    inputRow: 'grid blade-input-group-row',
+    hintBox: 'ml-spacing-0',
+    hintInner: 'flex flex-row justify-between',
   };
 }
