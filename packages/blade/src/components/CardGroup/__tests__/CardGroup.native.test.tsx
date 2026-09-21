@@ -19,7 +19,7 @@ describe('<CardGroup />', () => {
         <CardGroupItem href="/cards">
           <Text>Cards</Text>
         </CardGroupItem>
-        <CardGroupItem onClick={() => {}}>
+        <CardGroupItem onClick={jest.fn()}>
           <Text>Wallet</Text>
         </CardGroupItem>
       </CardGroup>,

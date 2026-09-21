@@ -111,7 +111,7 @@ const NavigationTemplate: StoryFn<typeof CardGroupComponent> = (args) => {
         <CardGroupItem href="/security">
           <Text>Security</Text>
         </CardGroupItem>
-        <CardGroupItem isDisabled onClick={() => {}}>
+        <CardGroupItem isDisabled onClick={() => undefined}>
           <Text>Notifications (unavailable)</Text>
         </CardGroupItem>
       </CardGroupComponent>
