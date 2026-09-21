@@ -129,6 +129,7 @@ const _ChartSankeyWrapper = ({
   colorTheme = 'categorical',
   nodeColorOverride,
   linkColorOverride,
+  layout: _layout,
   testID,
   ...restProps
 }: ChartSankeyWrapperProps): React.ReactElement => {

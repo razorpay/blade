@@ -295,14 +295,14 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     expect(shapeRects(getAllByType(utils, Rect))).toHaveLength(data.nodes.length);
   });
 
-  // ── Vertical orientation (native-only) ──────────────────────────────────────
+  // ── Vertical layout (native-only) ────────────────────────────────────────────
   // The vertical variant transposes the layout: stages flow top→bottom, each node
   // is a horizontal bar, and ribbons curve down the Y axis. Existing behaviour is
-  // unchanged (default orientation stays horizontal); these tests cover the new path.
+  // unchanged (default layout stays horizontal); these tests cover the new path.
 
-  it('renders one <Rect> per node and one <Path> per link in vertical orientation', () => {
+  it('renders one <Rect> per node and one <Path> per link in vertical layout', () => {
     const utils = renderSankey(
-      <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
+      <ChartSankeyWrapper testID="sankey-chart" layout="vertical">
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
@@ -312,7 +312,7 @@ describe('<ChartSankeyWrapper /> (native)', () => {
 
   it('lays out vertical nodes as horizontal bars (width is the long dimension)', () => {
     const utils = renderSankey(
-      <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
+      <ChartSankeyWrapper testID="sankey-chart" layout="vertical">
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
@@ -323,11 +323,11 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     expect(Number(rect0.props.width)).toBeGreaterThan(Number(rect0.props.height));
   });
 
-  it('selects a node on tap in vertical orientation, toggles off on re-tap, and clears on empty-canvas tap', () => {
+  it('selects a node on tap in vertical layout, toggles off on re-tap, and clears on empty-canvas tap', () => {
     // Mirrors the horizontal interaction test with the transposed layout: taps are
     // hit-tested against the (transposed) node rects so tap-to-stay still works.
     const utils = renderSankey(
-      <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
+      <ChartSankeyWrapper testID="sankey-chart" layout="vertical">
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
@@ -346,9 +346,9 @@ describe('<ChartSankeyWrapper /> (native)', () => {
     expect(queryByText(/^Alpha:/)).toBeNull();
   });
 
-  it('selects a link ribbon on tap in vertical orientation', () => {
+  it('selects a link ribbon on tap in vertical layout', () => {
     const utils = renderSankey(
-      <ChartSankeyWrapper testID="sankey-chart" orientation="vertical">
+      <ChartSankeyWrapper testID="sankey-chart" layout="vertical">
         <ChartSankey data={data} showLabelChip={false} />
       </ChartSankeyWrapper>,
     );
