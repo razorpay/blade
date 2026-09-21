@@ -20,17 +20,6 @@
   &[disabled] {
     cursor: not-allowed;
   }
-}
-
-/*
- * Icon slot wrapper. Flex so the inline <svg> child yields no baseline descender
- * gap — keeps the button intrinsically square (e.g. 20x20 at size large, not
- * 20x23). Also the hook for the `icon` styleOverride slot.
- */
-.icon-button-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   /*
    * Focus ring — faithful reproduction of React `getFocusRingStyles({ theme })`
@@ -47,6 +36,16 @@
     transition-timing-function: var(--easing-standard);
     z-index: 2;
   }
+}
+
+/*
+ * Icon slot wrapper. Flex so the inline <svg> child yields no baseline descender
+ * gap. Also the hook for the `icon` styleOverride slot.
+ */
+.icon-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*
