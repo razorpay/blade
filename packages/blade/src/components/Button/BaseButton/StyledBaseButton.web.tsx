@@ -17,6 +17,7 @@ const StyledBaseButton = styled.button
   }))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   const gradientSizeMap = {
+    xlarge: 80,
     large: 72,
     medium: 64,
     small: 56,
