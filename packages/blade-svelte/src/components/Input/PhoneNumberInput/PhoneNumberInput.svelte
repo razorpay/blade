@@ -37,6 +37,7 @@
     size = 'medium',
     onClearButtonClick,
     showCountrySelector = true,
+    countrySelectorMode = 'bottomsheet',
     showDialCode = true,
     onClick,
     onBlur,
@@ -162,6 +163,7 @@
       {isDisabled}
       {selectedCountry}
       {portalTarget}
+      mode={countrySelectorMode}
       onItemClick={handleCountrySelect}
     />
   {/if}
