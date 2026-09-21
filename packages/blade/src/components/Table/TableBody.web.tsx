@@ -133,6 +133,7 @@ const _TableCell = ({
   gridColumnEnd,
   gridRowStart,
   gridRowEnd,
+  isRowHeader = false,
   ...rest
 }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
@@ -145,7 +146,7 @@ const _TableCell = ({
   return (
     <StyledCell
       tabIndex={0}
-      role="cell"
+      role={isRowHeader ? 'rowheader' : 'cell'}
       className={hasRowSpan ? classes.HAS_ROW_SPANNING : ''}
       $backgroundColor={backgroundColor}
       gridColumnStart={gridColumnStart}
