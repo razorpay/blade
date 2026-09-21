@@ -89,6 +89,7 @@ export const bottomSheetPortalRootClass = styles.portalRoot;
 export const bottomSheetInnerWrapperClass = styles.innerWrapper;
 export const bottomSheetGrabHandleClass = styles.grabHandle;
 export const bottomSheetGrabHandleFloatingClass = styles.grabHandleFloating;
+export const bottomSheetGrabHandleHiddenClass = styles.grabHandleHidden;
 export const bottomSheetHeaderClass = styles.header;
 export const bottomSheetHeaderContentClass = styles.headerContent;
 export const bottomSheetHeaderLeadingClass = styles.headerLeading;
@@ -121,6 +122,7 @@ export function getBottomSheetTemplateClasses(): Record<string, string> {
     innerWrapper: bottomSheetInnerWrapperClass,
     grabHandle: bottomSheetGrabHandleClass,
     grabHandleFloating: bottomSheetGrabHandleFloatingClass,
+    grabHandleHidden: bottomSheetGrabHandleHiddenClass,
     header: bottomSheetHeaderClass,
     headerContent: bottomSheetHeaderContentClass,
     headerLeading: bottomSheetHeaderLeadingClass,

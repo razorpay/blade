@@ -467,6 +467,7 @@ export {
   bottomSheetInnerWrapperClass,
   bottomSheetGrabHandleClass,
   bottomSheetGrabHandleFloatingClass,
+  bottomSheetGrabHandleHiddenClass,
   bottomSheetHeaderClass,
   bottomSheetHeaderContentClass,
   bottomSheetHeaderLeadingClass,
