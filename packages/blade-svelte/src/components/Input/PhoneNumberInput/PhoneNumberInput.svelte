@@ -59,6 +59,7 @@
   let baseInput = $state<{ focus: () => void; getInput: () => HTMLInputElement | null } | null>(
     null,
   );
+  let inputWrapperEl = $state<HTMLElement | null>(null);
 
   // Controllable country state: seed from defaultCountry; `country` prop makes it controlled.
   const isCountryControlled = untrack(() => country !== undefined);
@@ -163,6 +164,7 @@
       {isDisabled}
       {selectedCountry}
       {portalTarget}
+      {inputWrapperEl}
       mode={countrySelectorMode}
       onItemClick={handleCountrySelect}
     />
@@ -183,6 +185,7 @@
 
 <BaseInput
   bind:this={baseInput}
+  setInputWrapperRef={(el) => (inputWrapperEl = el)}
   id={ids.baseId}
   componentName="phone-number-input"
   label={label ?? ''}

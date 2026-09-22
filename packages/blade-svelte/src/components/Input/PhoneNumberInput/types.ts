@@ -146,4 +146,6 @@ export type CountrySelectorProps = {
   portalTarget?: HTMLElement | null;
   /** Surface used to render the country list. @default 'bottomsheet' */
   mode?: CountrySelectorMode;
+  /** Input wrapper DOM node — anchors the dropdown overlay to the full input width. */
+  inputWrapperEl?: HTMLElement | null;
 };

@@ -64,6 +64,7 @@
     flags,
     size,
     portalTarget,
+    inputWrapperEl,
     mode = 'bottomsheet',
   }: CountrySelectorProps = $props();
 
@@ -172,7 +173,7 @@
   <Dropdown {isOpen} onOpenChange={(open) => (open ? (isOpen = true) : closeSheet())}>
     {#snippet children()}
       {@render trigger()}
-      <DropdownOverlay minWidth="260px" maxWidth="360px">
+      <DropdownOverlay referenceEl={inputWrapperEl}>
         {#snippet children()}
           <div class="country-selector-dropdown-search">
             {@render searchField()}
@@ -233,7 +234,13 @@
   }
 
   .country-selector-dropdown-search {
-    padding-top: var(--spacing-3);
+    padding: var(--spacing-3) var(--spacing-3) var(--spacing-2);
+  }
+
+  /* Single padding source inside the dropdown; the shared search inset is for the
+     bottom-sheet header context only. */
+  .country-selector-dropdown-search .country-selector-search {
+    padding: 0;
   }
 
   .country-selector-empty {
