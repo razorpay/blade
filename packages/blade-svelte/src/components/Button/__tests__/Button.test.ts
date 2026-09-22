@@ -80,7 +80,7 @@ describe('<Button />', () => {
 
       const loader = container.querySelector('[aria-hidden="true"]');
       // The large class is a CSS-module hash, so match on its stable prefix.
-      const hasLargeLoader = /dot-loader-large/.test(loader?.className ?? '');
+      const hasLargeLoader = (loader?.className ?? '').includes('dot-loader-large');
       expect(hasLargeLoader).toBe(expectsLargeLoader);
     });
 
