@@ -189,6 +189,60 @@
   {/snippet}
 </Story>
 
+<!--
+  Dot color per variant + color. The `white` row sits on a filled surface so the
+  white dots are visible; `tertiary` is only valid with `primary` and `white`.
+-->
+<Story name="Indefinite Loading Colors">
+  {#snippet template(args)}
+    {@const { variant, color, loadingType, isLoading, children, ...rest } = args}
+    <div class="display-flex flex-direction-column" style="gap: 16px;">
+      <div class="display-flex items-center" style="gap: 16px;">
+        <Button variant="primary" color="primary" isLoading loadingType="indefinite" {...rest}>
+          Primary
+        </Button>
+        <Button variant="primary" color="positive" isLoading loadingType="indefinite" {...rest}>
+          Positive
+        </Button>
+        <Button variant="primary" color="negative" isLoading loadingType="indefinite" {...rest}>
+          Negative
+        </Button>
+        <Button variant="primary" color="neutral" isLoading loadingType="indefinite" {...rest}>
+          Neutral
+        </Button>
+      </div>
+      <div class="display-flex items-center" style="gap: 16px;">
+        <Button variant="secondary" color="primary" isLoading loadingType="indefinite" {...rest}>
+          Primary
+        </Button>
+        <Button variant="secondary" color="positive" isLoading loadingType="indefinite" {...rest}>
+          Positive
+        </Button>
+        <Button variant="secondary" color="negative" isLoading loadingType="indefinite" {...rest}>
+          Negative
+        </Button>
+        <Button variant="tertiary" color="primary" isLoading loadingType="indefinite" {...rest}>
+          Tertiary
+        </Button>
+      </div>
+      <div
+        class="display-flex items-center padding-spacing-4"
+        style="gap: 16px; background-color: var(--interactive-background-primary-default);"
+      >
+        <Button variant="primary" color="white" isLoading loadingType="indefinite" {...rest}>
+          White
+        </Button>
+        <Button variant="secondary" color="white" isLoading loadingType="indefinite" {...rest}>
+          White
+        </Button>
+        <Button variant="tertiary" color="white" isLoading loadingType="indefinite" {...rest}>
+          White
+        </Button>
+      </div>
+    </div>
+  {/snippet}
+</Story>
+
 <!-- Definite loading: left-to-right progress overlay, content stays visible -->
 <Story
   name="Definite Loading"

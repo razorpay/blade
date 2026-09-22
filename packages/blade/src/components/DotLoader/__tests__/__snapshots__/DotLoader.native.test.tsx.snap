@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DotLoader /> should render DotLoader at the large size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityElementsHidden={true}
+    data-blade-component="dot-loader"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 36,
+        "justifyContent": "center",
+        "width": 36,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "borderRadius": 3,
+            "height": 6,
+            "width": 6,
+          },
+          {
+            "backgroundColor": "hsla(204, 9%, 42%, 1)",
+          },
+          null,
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "borderRadius": 3,
+            "height": 6,
+            "width": 6,
+          },
+          {
+            "backgroundColor": "hsla(204, 9%, 42%, 1)",
+          },
+          {
+            "marginLeft": 3,
+          },
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "borderRadius": 3,
+            "height": 6,
+            "width": 6,
+          },
+          {
+            "backgroundColor": "hsla(204, 9%, 42%, 1)",
+          },
+          {
+            "marginLeft": 3,
+          },
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`<DotLoader /> should render DotLoader with a color token 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityElementsHidden={true}
+    data-blade-component="dot-loader"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 24,
+        "justifyContent": "center",
+        "width": 24,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "borderRadius": 2,
+            "height": 4,
+            "width": 4,
+          },
+          {
+            "backgroundColor": "hsla(5, 73%, 53%, 1)",
+          },
+          null,
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "borderRadius": 2,
+            "height": 4,
+            "width": 4,
+          },
+          {
+            "backgroundColor": "hsla(5, 73%, 53%, 1)",
+          },
+          {
+            "marginLeft": 2,
+          },
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "borderRadius": 2,
+            "height": 4,
+            "width": 4,
+          },
+          {
+            "backgroundColor": "hsla(5, 73%, 53%, 1)",
+          },
+          {
+            "marginLeft": 2,
+          },
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`<DotLoader /> should render DotLoader with default props 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityElementsHidden={true}
+    data-blade-component="dot-loader"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 24,
+        "justifyContent": "center",
+        "width": 24,
+      }
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "borderRadius": 2,
+            "height": 4,
+            "width": 4,
+          },
+          {
+            "backgroundColor": "hsla(204, 9%, 42%, 1)",
+          },
+          null,
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "borderRadius": 2,
+            "height": 4,
+            "width": 4,
+          },
+          {
+            "backgroundColor": "hsla(204, 9%, 42%, 1)",
+          },
+          {
+            "marginLeft": 2,
+          },
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "borderRadius": 2,
+            "height": 4,
+            "width": 4,
+          },
+          {
+            "backgroundColor": "hsla(204, 9%, 42%, 1)",
+          },
+          {
+            "marginLeft": 2,
+          },
+          {
+            "opacity": 0.42,
+            "transform": [
+              {
+                "translateY": -0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;

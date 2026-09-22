@@ -2,7 +2,8 @@
 import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
 import type { IconSize } from '~components/Icons';
-import type { SpinnerProps } from '~components/Spinner';
+import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
+import type { DotLoaderProps } from '~components/DotLoader';
 import type { Size } from '~tokens/global';
 import { size } from '~tokens/global';
 import type { FeedbackColors } from '~tokens/theme/theme';
@@ -349,16 +350,14 @@ const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, Icon
   large: 'medium',
 };
 
-const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
-  xsmall: 'medium',
-  small: 'medium',
-  medium: 'medium',
-  large: 'medium',
-};
-
-const buttonSizeToSpinnerSizeMap: Record<
+/**
+ * Loader size per button size. `xsmall`–`medium` span 28–36px tall, where the
+ * default loader is well proportioned; `large` jumps to 48px, where it reads as
+ * undersized, so it steps up to the scaled loader.
+ */
+const buttonSizeToLoaderSizeMap: Record<
   NonNullable<BaseButtonProps['size']>,
-  SpinnerProps['size']
+  DotLoaderProps['size']
 > = {
   xsmall: 'medium',
   small: 'medium',
@@ -366,10 +365,21 @@ const buttonSizeToSpinnerSizeMap: Record<
   large: 'large',
 };
 
+const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
+  xsmall: 'medium',
+  small: 'medium',
+  medium: 'medium',
+  large: 'medium',
+};
+
 /**
- * Spinner color mapping based on button variant and color
+ * Loader color mapping based on button variant and color.
+ *
+ * Values are in the same space as `BaseSpinnerProps['color']` and intentionally
+ * mirror the spinner mapping the dot loader replaced, so swapping the spinner for
+ * the dots does not change any button's loading color.
  */
-const spinnerColor = {
+const loaderColor = {
   base: {
     primary: 'primary',
     secondary: 'neutral',
@@ -399,22 +409,46 @@ const spinnerColor = {
   },
   neutral: {
     // The primary emphasis renders content on a filled neutral surface, so the
-    // spinner follows the same inverted treatment as the label.
+    // loader follows the same inverted treatment as the label.
     primary: 'onNeutral',
     secondary: 'neutral',
   },
 } as const;
 
+/**
+ * Resolves a semantic loader color into a color token path.
+ *
+ * Mirrors the resolution `BaseSpinner` applies to the same value space, so the
+ * dot loader lands on exactly the color the spinner did for every button.
+ */
+const getLoaderColorToken = (
+  color: BaseSpinnerProps['color'],
+): DotNotationToken<Theme['colors']> => {
+  if (color === 'white') {
+    return 'interactive.icon.staticWhite.subtle';
+  }
+  // `onNeutral` renders on a filled neutral surface, which inverts with the
+  // theme, so it tracks the surface instead of resolving to a static color.
+  if (color === 'onNeutral') {
+    return 'interactive.icon.onNeutral.normal';
+  }
+  if (color && color !== 'neutral') {
+    return `interactive.icon.${color}.subtle` as DotNotationToken<Theme['colors']>;
+  }
+  return 'interactive.icon.gray.muted';
+};
+
 export {
   boxShadow,
   backgroundGradient,
   textColor,
-  spinnerColor,
+  loaderColor,
+  getLoaderColorToken,
   typography,
   minHeight,
   buttonSizeToIconSizeMap,
+  buttonSizeToLoaderSizeMap,
   buttonIconOnlySizeToIconSizeMap,
-  buttonSizeToSpinnerSizeMap,
   buttonPadding,
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
