@@ -15,18 +15,15 @@
     dropdown?.setHasFooterAction(true);
   });
 
-  const isOpen = $derived(dropdown?.isOpen ?? false);
-
   const a11yAttrs = makeAccessible({ role: 'group' });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 </script>
 
 <div class={dropdownFooterClass} {...a11yAttrs} {...analyticsAttrs}>
   <BaseFooter metaComponentName={MetaConstants.DropdownFooter} {testID}>
-    <!-- Interactive footer children are removed from the DOM while closed so they
-         aren't tabbable (mirrors React `isOpen ? children : null`). -->
-    {#if isOpen}
-      {@render children?.()}
-    {/if}
+    <!-- Footer children stay mounted so the button doesn't vanish mid-close-
+         transition (which collapsed overlay height → visible jerk). The overlay
+         sets `display:none` once fully closed, so children aren't tabbable then. -->
+    {@render children?.()}
   </BaseFooter>
 </div>
