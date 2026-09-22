@@ -1,6 +1,10 @@
 // Import global styles and blade-core theme CSS
 import '../src/global.css';
 import '@razorpay/blade-core/tokens/theme.css';
+// Blade Tailwind utilities/components (generated from blade-core + blade-svelte source via the
+// preset). Imported after theme.css so the var(--…) definitions exist; Tailwind's unlayered
+// utilities win over theme.css's `@layer blade` tail by design.
+import './tailwind.css';
 import './preview.css';
 import BladeThemeDecorator from './BladeThemeDecorator.svelte';
 
