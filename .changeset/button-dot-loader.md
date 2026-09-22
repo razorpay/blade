@@ -1,7 +1,7 @@
 ---
-'@razorpay/blade': minor
-'@razorpay/blade-core': minor
-'@razorpay/blade-svelte': minor
+"@razorpay/blade": minor
+"@razorpay/blade-core": minor
+"@razorpay/blade-svelte": minor
 ---
 
 feat: Button indefinite loading now uses the 3-dot loader from Figma
