@@ -66,9 +66,10 @@ export interface DropdownOverlayProps extends DataAnalyticsAttribute {
   /**
    * Element to position the overlay relative to. When omitted, the Dropdown's
    * own trigger wrapper is used. Svelte uses an element binding instead of
-   * React's ref object.
+   * React's ref object. Named `referenceRef` to match the React prop and the
+   * `initialFocusRef` convention used by Modal / BottomSheet.
    */
-  referenceEl?: HTMLElement | null;
+  referenceRef?: HTMLElement | null;
   /**
    * Placement of the overlay.
    * @default 'bottom-start'

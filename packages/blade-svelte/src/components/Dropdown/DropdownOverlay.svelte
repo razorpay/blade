@@ -27,7 +27,7 @@
     width,
     minWidth,
     maxWidth,
-    referenceEl,
+    referenceRef,
     defaultPlacement = 'bottom-start',
     _isNestedDropdown = false,
     ...rest
@@ -39,11 +39,15 @@
 
   const isOpen = $derived(dropdown?.isOpen ?? false);
 
-  const reference = $derived(referenceEl ?? dropdown?.triggererWrapperEl ?? dropdown?.triggererEl ?? null);
+  const reference = $derived(referenceRef ?? dropdown?.triggererWrapperEl ?? dropdown?.triggererEl ?? null);
 
-  const isMenu = $derived(
-    (dropdown?.dropdownTriggerer !== 'InputDropdownButton' && !referenceEl) || _isNestedDropdown,
-  );
+  // React parity: React excludes only SelectInput / SearchInput / AutoComplete
+  // from isMenu — NOT InputDropdownButton. Those triggers don't exist in this
+  // Svelte partial yet, so isMenu is true for every current trigger when no
+  // explicit referenceRef is passed. The a11y roles (listbox/option for
+  // InputDropdownButton) are governed separately by isRoleMenu in
+  // getA11yRoles.ts, keeping width and a11y concerns decoupled.
+  const isMenu = $derived(!referenceRef || _isNestedDropdown);
 
   let floatingEl = $state<HTMLDivElement | null>(null);
   let floatingX = $state(0);
