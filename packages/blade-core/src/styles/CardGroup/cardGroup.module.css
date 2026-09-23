@@ -79,7 +79,8 @@
   cursor: pointer;
 }
 
-.cardGroupItemInteractive:hover:not(.cardGroupItemDisabled) {
+/* Selected rows keep the plain surface on hover; the ring is the whole affordance. */
+.cardGroupItemInteractive:hover:not(.cardGroupItemDisabled):not(.cardGroupItemSelected) {
   background-color: var(--surface-background-gray-moderate);
 }
 
