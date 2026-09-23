@@ -25,9 +25,7 @@ describe('getStyledProps', () => {
       maxWidth: '240px',
       minWidth: '40px',
     });
-    expect(chipStyles).toBe(
-      '--chip-width: 120px; --chip-max-width: 240px; --chip-min-width: 40px',
-    );
+    expect(chipStyles).toBe('--chip-width: 120px; --chip-max-width: 240px; --chip-min-width: 40px');
   });
 
   it('supports numeric values', () => {
