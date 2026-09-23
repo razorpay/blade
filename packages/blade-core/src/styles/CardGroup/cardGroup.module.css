@@ -31,13 +31,15 @@
     inset 0px 0px 0px 1px var(--surface-background-gray-intense);
 }
 
-/* Row container. Draws the divider between adjacent rows (never above the first). */
+/* Row container. Draws the divider between adjacent rows (never above the first).
+   Scoped under .cardGroup so it outranks .cardGroupItem's `border: none` reset,
+   which otherwise wins by source order on rows placed directly in the body. */
 .cardGroupBody {
   display: flex;
   flex-direction: column;
 }
 
-.cardGroupBody > * + * {
+.cardGroup .cardGroupBody > * + * {
   border-top: var(--border-width-thin) solid var(--surface-border-gray-subtle);
 }
 
