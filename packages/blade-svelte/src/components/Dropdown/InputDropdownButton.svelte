@@ -136,43 +136,41 @@
   }
 </script>
 
-{#if displayValue}
-  <button
-    type="button"
-    class={buttonClasses}
-    disabled={isDisabled || undefined}
-    onclick={handleClick}
-    onblur={handleBlur}
-    onkeydown={handleKeydown}
-    use:setTriggerRef
-    {...a11yAttrs}
-    {...metaAttrs}
-    {...analyticsAttrs}
-  >
-    <span class={inputDropdownButtonContentClass}>
-      {#if _isInsideSearchInput}
-        <Text
-          variant="body"
-          size="medium"
-          weight="regular"
-          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
-        >
-          in
-        </Text>
-      {/if}
-      {#if leading}
-        {@render leading()}
-      {/if}
-      {#if icon}
-        {@const IconComp = icon}
-        <IconComp size="medium" color={iconColor} />
-      {/if}
-      {#if showDisplayValue}
-        <Text variant="body" size="medium" weight="regular" color={displayColor}>
-          {displayValue}
-        </Text>
-      {/if}
-      <ChevronUpDownIcon color={iconColor} />
-    </span>
-  </button>
-{/if}
+<button
+  type="button"
+  class={buttonClasses}
+  disabled={isDisabled || undefined}
+  onclick={handleClick}
+  onblur={handleBlur}
+  onkeydown={handleKeydown}
+  use:setTriggerRef
+  {...a11yAttrs}
+  {...metaAttrs}
+  {...analyticsAttrs}
+>
+  <span class={inputDropdownButtonContentClass}>
+    {#if _isInsideSearchInput}
+      <Text
+        variant="body"
+        size="medium"
+        weight="regular"
+        color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
+      >
+        in
+      </Text>
+    {/if}
+    {#if leading}
+      {@render leading()}
+    {/if}
+    {#if icon}
+      {@const IconComp = icon}
+      <IconComp size="medium" color={iconColor} />
+    {/if}
+    {#if showDisplayValue && displayValue}
+      <Text variant="body" size="medium" weight="regular" color={displayColor}>
+        {displayValue}
+      </Text>
+    {/if}
+    <ChevronUpDownIcon color={iconColor} />
+  </span>
+</button>
