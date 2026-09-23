@@ -1,0 +1,16 @@
+// This file is auto generated
+// Modify at blade/plop/iconMap.svelte.ts.hbs
+import type { Component } from 'svelte';
+import type { IconProps } from './types';
+{{{iconImports}}}
+
+export type IconComponent = Component<IconProps>;
+
+/**
+ * Map of icon names to icon components for Storybook controls.
+ * Use with argTypes: { icon: { control: 'select', options: Object.keys(iconMap), mapping: iconMap } }
+ */
+export const iconMap: Record<string, IconComponent | undefined> = {
+  None: undefined,
+{{{iconMap}}}
+};
