@@ -10,6 +10,27 @@
   overflow: hidden;
 }
 
+/* Card's border ring + bottom lip are inset box-shadows on the surface, painted
+   *under* children. Rows paint opaque backgrounds on hover/selection and the
+   collapsible body has its own fill, so they cover the ring. Re-draw the ring
+   and lip above the rows on an overlay; values mirror .cardSurfaceElevated. */
+.cardGroup::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
+    inset 0px -1.5px 0px 1px var(--surface-background-gray-intense);
+}
+
+:root body[data-theme='dark'] .cardGroup::after,
+:root [data-blade-color-scheme='dark'] .cardGroup::after {
+  box-shadow: inset 0px 0px 0px 1px var(--interactive-border-gray-disabled),
+    inset 0px 0px 0px 1px var(--surface-background-gray-intense);
+}
+
 /* Row container. Draws the divider between adjacent rows (never above the first). */
 .cardGroupBody {
   display: flex;
