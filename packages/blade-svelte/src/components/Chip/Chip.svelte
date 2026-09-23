@@ -21,6 +21,7 @@
   import type { TextColors } from '../Typography/BaseText/types';
   import type { IconColor } from '../Icons/types';
   import { getChipGroupContext } from './chipContext';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { ChipProps } from './types';
 
   const templateClasses = getChipTemplateClasses();
@@ -117,20 +118,14 @@
     }),
   );
 
-  const wrapperStyle = $derived(
-    [
-      width ? `width:${width}` : '',
-      maxWidth ? `max-width:${maxWidth}` : '',
-      minWidth ? `min-width:${minWidth}` : '',
-    ]
-      .filter(Boolean)
-      .join(';') || undefined,
-  );
+  /* width/maxWidth/minWidth are fed to the wrapper as --chip-* custom
+   * properties consumed by the chipWrapper class in chip.module.css. */
+  const { chipStyles } = $derived(getStyledProps('chip', { width, maxWidth, minWidth }));
 </script>
 
 <div
   class={templateClasses.chipWrapper}
-  style={wrapperStyle}
+  style={chipStyles}
   {...metaAttrs}
   {...a11yAttrs}
 >

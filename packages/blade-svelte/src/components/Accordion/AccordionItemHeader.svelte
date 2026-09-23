@@ -11,6 +11,7 @@
     getAccordionButtonClasses,
     getAccordionButtonBorderClasses,
     getAccordionTemplateClasses,
+    utilityClasses,
   } from '@razorpay/blade-core/styles';
   import Divider from '../Divider/Divider.svelte';
   import BaseText from '../Typography/BaseText/BaseText.svelte';
@@ -130,7 +131,7 @@
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 </script>
 
-<div {...headingA11y} style="width: 100%;">
+<div {...headingA11y} class={utilityClasses['width-full']}>
   <button
     type="button"
     class={combinedButtonClass}

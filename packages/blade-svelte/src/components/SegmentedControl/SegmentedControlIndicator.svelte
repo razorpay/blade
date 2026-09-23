@@ -2,6 +2,7 @@
   import { tick } from 'svelte';
   import { getSegmentedControlTemplateClasses } from '@razorpay/blade-core/styles';
   import { getSegmentedControlContext } from './context';
+  import { getStyledProps } from '../../utils/getStyledProps';
 
   const classes = getSegmentedControlTemplateClasses();
 
@@ -80,13 +81,20 @@
       .join(' '),
   );
 
-  const indicatorStyle = $derived(
-    `width: ${dimensions.width}px; height: ${dimensions.height}px; transform: translate(${dimensions.x}px, ${dimensions.y}px);`,
+  /* Measured dimensions are fed as --segmented-control-indicator-* custom
+   * properties consumed by the indicator class in segmentedControl.module.css. */
+  const { segmentedControlIndicatorStyles } = $derived(
+    getStyledProps('segmentedControlIndicator', {
+      width: `${dimensions.width}px`,
+      height: `${dimensions.height}px`,
+      x: `${dimensions.x}px`,
+      y: `${dimensions.y}px`,
+    }),
   );
 </script>
 
 <div
   class={indicatorClasses}
-  style={indicatorStyle}
+  style={segmentedControlIndicatorStyles}
   aria-hidden="true"
 ></div>

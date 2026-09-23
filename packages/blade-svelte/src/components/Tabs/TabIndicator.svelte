@@ -6,6 +6,7 @@
   } from '@razorpay/blade-core/utils';
   import { getTabsTemplateClasses } from '@razorpay/blade-core/styles';
   import { getTabsContext } from './context';
+  import { getStyledProps } from '../../utils/getStyledProps';
 
   const classes = getTabsTemplateClasses();
 
@@ -98,22 +99,24 @@
     return result.filter(Boolean).join(' ');
   });
 
-  const indicatorStyle = $derived.by(() => {
-    const base = `transition-property: transform, width, height, background-color; transition-duration: ${transitionDuration}; transition-timing-function: var(--easing-standard);`;
-    if (isVerticalBordered) {
-      return `${base} height: ${dimensions.height}px; transform: translateY(${dimensions.y}px);`;
-    }
-    if (isFilled) {
-      return `${base} width: ${dimensions.width}px; height: ${dimensions.height}px; transform: translate(${dimensions.x}px, ${dimensions.y}px);`;
-    }
-    return `${base} width: ${dimensions.width}px; transform: translate(${dimensions.x}px, ${dimensions.y}px);`;
-  });
+  /* Measured dimensions + transition config are fed as --tab-indicator-*
+   * custom properties; the tabIndicator/variant classes in tabs.module.css
+   * decide which of them (width/height/transform) each variant consumes. */
+  const { tabIndicatorStyles } = $derived(
+    getStyledProps('tabIndicator', {
+      width: `${dimensions.width}px`,
+      height: `${dimensions.height}px`,
+      x: `${dimensions.x}px`,
+      y: `${dimensions.y}px`,
+      transitionDuration,
+    }),
+  );
 
   const metaAttrs = metaAttribute({ name: MetaConstants.TabIndicator });
 </script>
 
 <div
   class={indicatorClasses}
-  style={indicatorStyle}
+  style={tabIndicatorStyles}
   {...metaAttrs}
 ></div>

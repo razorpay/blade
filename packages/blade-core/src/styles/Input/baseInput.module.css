@@ -18,6 +18,30 @@
   width: auto;
 }
 
+/* Arbitrary-value styled props (margin/zIndex/offsets/grid) arrive as
+ * --base-input-* custom properties (built via getStyledProps). :where() keeps
+ * these inert (initial values) unless authored, so utility classes and style
+ * overrides keep working regardless of CSS source order. */
+:where(.outer) {
+  z-index: var(--base-input-z-index);
+  top: var(--base-input-top);
+  right: var(--base-input-right);
+  bottom: var(--base-input-bottom);
+  left: var(--base-input-left);
+  margin-top: var(--base-input-margin-top);
+  margin-right: var(--base-input-margin-right);
+  margin-bottom: var(--base-input-margin-bottom);
+  margin-left: var(--base-input-margin-left);
+  order: var(--base-input-order);
+  grid-column: var(--base-input-grid-column);
+  grid-column-start: var(--base-input-grid-column-start);
+  grid-column-end: var(--base-input-grid-column-end);
+  grid-row: var(--base-input-grid-row);
+  grid-row-start: var(--base-input-grid-row-start);
+  grid-row-end: var(--base-input-grid-row-end);
+  grid-area: var(--base-input-grid-area);
+}
+
 /* ── Label + input column ── */
 .field {
   display: flex;
@@ -374,6 +398,9 @@
 .hint-row {
   display: flex;
   flex-direction: row;
+  /* Left-label indent driven by --base-input-hint-margin-left (built via
+   * getStyledProps); 0px when the label is on top / hidden. */
+  margin-left: var(--base-input-hint-margin-left, 0px);
 }
 .hint-row.has-hint {
   justify-content: space-between;

@@ -8,12 +8,13 @@
     cx,
   } from '@razorpay/blade-core/utils';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
-  import { utilityClasses } from '@razorpay/blade-core/styles';
+  import { utilityClasses, amountStrikethroughClass } from '@razorpay/blade-core/styles';
   import type { BaseAmountProps } from './types';
   import { getAmountByParts } from '@razorpay/blade-core/utils';
   import { normalAmountSizes, subtleFontSizes, amountLineHeights } from '@razorpay/blade-core/styles';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
   import { resolveComponentStyleOverride } from '../../../utils/resolveComponentStyleOverride';
+  import { getStyledProps } from '../../../utils/getStyledProps';
   import { getBladeThemeContextGetter } from '../../BladeProvider/bladeThemeContext';
 
   const themeContextGetter = getBladeThemeContextGetter();
@@ -147,18 +148,15 @@
   );
 
   // Inner container classes - match React implementation exactly
+  // (baseline alignment like React, via the items-baseline utility class)
   const innerContainerClasses = $derived(
     cx(
       utilityClasses['display-inline-flex'],
       utilityClasses['flex-direction-row'],
       utilityClasses['position-relative'],
+      utilityClasses['items-baseline'],
     ),
   );
-
-  // Inner container style - use baseline alignment like React
-  const innerContainerStyle = $derived(() => {
-    return 'align-items: baseline;';
-  });
 
   // Meta attributes
   const metaAttrs = metaAttribute({
@@ -169,18 +167,20 @@
   // Analytics attributes
   const analyticsAttrs = makeAnalyticsAttribute(rest);
 
-  // Strikethrough style - needs to match the text color
-  // Convert color token to CSS variable for border color
-  const strikethroughStyle = $derived(() => {
-    if (!isStrikethrough) return '';
-    const borderWidth = type === 'body' ? 'var(--border-width-thin)' : 'var(--border-width-thicker)';
-    const borderColor = getTokenCSSVariable(amountValueColor);
-    return `border-bottom: ${borderWidth} solid ${borderColor}; width: 100%; top: 50%;`;
-  });
+  // Strikethrough line — border width (per type) and color (matching the text
+  // color token) are fed as --amount-strikethrough-* custom properties
+  // consumed by the strikethrough class in amount.module.css.
+  const { amountStrikethroughStyles } = $derived(
+    getStyledProps('amountStrikethrough', {
+      borderWidth:
+        type === 'body' ? 'var(--border-width-thin)' : 'var(--border-width-thicker)',
+      color: isStrikethrough ? getTokenCSSVariable(amountValueColor) : undefined,
+    }),
+  );
 </script>
 
 <div class={outerContainerClasses} {...metaAttrs} {...analyticsAttrs}>
-  <div class={innerContainerClasses} style={innerContainerStyle()}>
+  <div class={innerContainerClasses}>
     {#if renderedValue.minusSign}
       <BaseText
         fontSize={normalAmountSizes[type][size]}
@@ -263,8 +263,8 @@
 
     {#if isStrikethrough}
       <div
-        class={utilityClasses['position-absolute']}
-        style={strikethroughStyle()}
+        class={cx(utilityClasses['position-absolute'], amountStrikethroughClass)}
+        style={amountStrikethroughStyles}
       ></div>
     {/if}
   </div>

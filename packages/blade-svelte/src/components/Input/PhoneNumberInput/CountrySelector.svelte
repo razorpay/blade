@@ -51,6 +51,7 @@
   import { ChevronUpDownIcon } from '../../Icons';
   import Text from '../../Typography/Text/Text.svelte';
   import SearchInput from '../SearchInput/SearchInput.svelte';
+  import { getStyledProps } from '../../../utils/getStyledProps';
   import type { CountrySelectorProps } from './types';
 
   let {
@@ -70,6 +71,16 @@
 
   const flagSrc = $derived(getFlagOfCountry(selectedCountry)['4X3']);
   const triggerLabel = $derived(`${countryNameFormatter.of(selectedCountry)} - Select Country`);
+
+  /* Size-driven chip dimensions are fed as --country-selector-* custom
+   * properties consumed by the trigger class below. */
+  const { countrySelectorStyles } = $derived(
+    getStyledProps('countrySelector', {
+      height: `${chipHeight[size]}px`,
+      borderRadius: `${chipRadius[size]}px`,
+      paddingX: `${chipPadX[size]}px`,
+    }),
+  );
 
   const filteredCountryData = $derived.by(() => {
     const query = searchQuery.trim().toLowerCase();
@@ -99,7 +110,7 @@
 <button
   type="button"
   class="country-selector-trigger"
-  style={`height: ${chipHeight[size]}px; border-radius: ${chipRadius[size]}px; padding: 0 ${chipPadX[size]}px;`}
+  style={countrySelectorStyles}
   disabled={isDisabled || undefined}
   aria-label={triggerLabel}
   aria-haspopup="dialog"
@@ -156,12 +167,17 @@
 
 <style>
   /* Mirrors React's InputDropdownButton chip: transparent at rest, gray-faded on
-     hover/focus, compact centered box with 4px + 4px inset (8px total) and 4px gap. */
+     hover/focus, compact centered box with 4px + 4px inset (8px total) and 4px gap.
+     Size-driven dimensions (height / border-radius / horizontal padding) arrive
+     as --country-selector-* custom properties (built via getStyledProps). */
   .country-selector-trigger {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-2);
+    height: var(--country-selector-height);
+    border-radius: var(--country-selector-border-radius);
+    padding: 0 var(--country-selector-padding-x);
     border: none;
     background-color: transparent;
     cursor: pointer;

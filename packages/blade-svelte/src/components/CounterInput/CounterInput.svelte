@@ -21,6 +21,7 @@
   import { MinusIcon } from '../Icons/MinusIcon';
   import { PlusIcon } from '../Icons/PlusIcon';
   import FormLabel from '../Input/_Form/FormLabel.svelte';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { CounterInputProps } from './types';
 
   const templateClasses = getCounterInputTemplateClasses();
@@ -195,10 +196,11 @@
   const rootClasses = $derived(
     [templateClasses.counterInput, ...(styledProps.classes || [])].filter(Boolean).join(' '),
   );
-  const rootStyles = $derived(
-    Object.entries(styledProps.inlineStyles || {})
-      .map(([prop, val]) => `${prop}: ${val}`)
-      .join('; ') || undefined,
+  // Arbitrary-value styled props are fed as --counter-input-* custom
+  // properties consumed by the counter-input root rule in
+  // counterInput.module.css.
+  const { counterInputStyles } = $derived(
+    getStyledProps('counterInput', styledProps.inlineStyles ?? {}),
   );
 
   const layoutClasses = $derived(
@@ -236,7 +238,7 @@
 
 <div
   class={rootClasses}
-  style={rootStyles}
+  style={counterInputStyles}
   data-emphasis={emphasis}
   data-keyboard-focus={isKeyboardFocus ? '' : undefined}
   {...metaAttrs}

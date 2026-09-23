@@ -409,9 +409,15 @@
 }
 
 /* ========== TAB INDICATOR ========== */
+/* Measured dimensions + transition config arrive as --tab-indicator-* custom
+ * properties (built via getStyledProps from DOM measurements). */
 .tabIndicator {
   position: absolute;
   pointer-events: none;
+  transform: translate(var(--tab-indicator-x, 0px), var(--tab-indicator-y, 0px));
+  transition-property: transform, width, height, background-color;
+  transition-duration: var(--tab-indicator-transition-duration, 0ms);
+  transition-timing-function: var(--easing-standard);
 }
 
 /* Horizontal bordered indicator (bottom line) */
@@ -419,6 +425,7 @@
   left: 0%;
   top: -0.5px;
   height: 2px;
+  width: var(--tab-indicator-width);
   background-color: var(--interactive-border-neutral-highlighted);
 }
 
@@ -427,6 +434,8 @@
   left: 1.75px;
   top: 0px;
   width: 1.5px;
+  height: var(--tab-indicator-height);
+  transform: translateY(var(--tab-indicator-y, 0px));
   background-color: var(--interactive-border-neutral-highlighted);
 }
 
@@ -434,6 +443,8 @@
 .indicatorFilled {
   left: 0px;
   top: 0px;
+  width: var(--tab-indicator-width);
+  height: var(--tab-indicator-height);
   background-color: var(--surface-background-gray-intense);
 }
 

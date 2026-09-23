@@ -25,6 +25,7 @@
     tooltipContentClass,
   } from '@razorpay/blade-core/styles';
   import { portal } from '../../utils/portal';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import { setTooltipContext } from './tooltipContext';
   import type { TooltipProps, TooltipPlacement } from './types';
 
@@ -242,27 +243,25 @@
   const styledProps = $derived(getStyledPropsClasses(rest));
   const portalExtraClasses = $derived(styledProps.classes.filter(Boolean).join(' '));
 
-  const portalStyle = $derived(
-    [
-      `--tooltip-z-index:${zIndex}`,
-      `transform:translate3d(${Math.round(floatingX)}px,${Math.round(floatingY)}px,0)`,
-    ].join(';'),
+  /* z-index + floating-ui's measured offsets are fed as --tooltip-* custom
+   * properties consumed by the portal class in tooltip.module.css. */
+  const { tooltipStyles } = $derived(
+    getStyledProps('tooltip', {
+      zIndex,
+      x: `${Math.round(floatingX)}px`,
+      y: `${Math.round(floatingY)}px`,
+    }),
   );
 
-  /* Rotate the base ▼ path so the apex points at the trigger; anchor with
-   * `[side]: 100%` so the base stays flush with the bubble edge on all sides. */
-  const arrowStyle = $derived.by(() => {
-    const sideOffset: Record<'top' | 'right' | 'bottom' | 'left', string> = {
-      top: 'top:100%;transform:rotate(0deg)',
-      bottom: 'bottom:100%;transform:rotate(180deg)',
-      left: 'left:100%;transform:rotate(-90deg)',
-      right: 'right:100%;transform:rotate(90deg)',
-    };
-    const parts: string[] = [sideOffset[resolvedSide]];
-    if (arrowX !== null) parts.push(`left:${arrowX}px`);
-    if (arrowY !== null) parts.push(`top:${arrowY}px`);
-    return parts.join(';');
-  });
+  /* The arrow anchors per side via [data-side] classes and tracks the
+   * floating-ui offsets through --tooltip-arrow-x / --tooltip-arrow-y custom
+   * properties consumed by the arrow class in tooltip.module.css. */
+  const { tooltipArrowStyles } = $derived(
+    getStyledProps('tooltipArrow', {
+      x: arrowX !== null ? `${arrowX}px` : undefined,
+      y: arrowY !== null ? `${arrowY}px` : undefined,
+    }),
+  );
 
   const metaAttrs = metaAttribute({ name: MetaConstants.Tooltip, testID });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
@@ -285,7 +284,7 @@
   <div
     bind:this={floatingEl}
     class="{tooltipPortalClass} {portalExtraClasses}"
-    style={portalStyle}
+    style={tooltipStyles}
     data-state={dataState}
     use:portal={document.body}
     {...metaAttrs}
@@ -311,7 +310,8 @@
       <svg
         bind:this={arrowEl}
         class={tooltipArrowClass}
-        style={arrowStyle}
+        data-side={resolvedSide}
+        style={tooltipArrowStyles}
         width={ARROW_WIDTH}
         height={ARROW_WIDTH}
         viewBox="0 0 {ARROW_WIDTH} {ARROW_WIDTH}"

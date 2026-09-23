@@ -10,10 +10,12 @@
   import { getBottomSheetContext } from '../BottomSheet/bottomSheetContext';
   import { setActionListContext } from './actionListContext';
   import { getActionListContainerRole } from './getA11yRoles';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { ActionListContextValue, ActionListProps } from './types';
 
-  // Call template getter so CVA classes used in compound selectors aren't tree-shaken.
-  void getActionListTemplateClasses();
+  // Anchor structural classes against the bundler's tree-shaker and reuse the
+  // template classes in the standalone branch below.
+  const templateClasses = getActionListTemplateClasses();
 
   let {
     children,
@@ -51,10 +53,11 @@
 
   const styledProps = $derived(getStyledPropsClasses(rest));
   const styledClassString = $derived((styledProps.classes || []).filter(Boolean).join(' '));
-  const styledStyleString = $derived(
-    Object.entries(styledProps.inlineStyles || {})
-      .map(([prop, val]) => `${prop}: ${val}`)
-      .join('; ') || undefined,
+  /* Arbitrary-value styled props are fed as --action-list-* custom properties
+   * consumed by the actionList host rules (.outer standalone / .wrapper
+   * inside a BottomSheet) in actionList.module.css. */
+  const { actionListStyles } = $derived(
+    getStyledProps('actionList', styledProps.inlineStyles ?? {}),
   );
 
   const isMultiSelectable = $derived(selectionType === 'multiple');
@@ -74,7 +77,7 @@
        scroll + padding (mirrors React's isInBottomSheet branch). -->
   <div
     class={[wrapperClasses, styledClassString].filter(Boolean).join(' ') || undefined}
-    style={styledStyleString}
+    style={actionListStyles}
     {...a11yAttrs}
     {...metaAttrs}
     {...analyticsAttrs}
@@ -85,7 +88,13 @@
   <!-- Standalone: plain outer shell (a11y/meta/analytics/styled props) + inner scroll
        wrapper — mirrors React's BaseBox + ActionListBox. Border/shadow come from the
        Dropdown overlay when embedded, not ActionList itself. -->
-  <div class={styledClassString || undefined} style={styledStyleString} {...a11yAttrs} {...metaAttrs} {...analyticsAttrs}>
+  <div
+    class={[templateClasses.outer, styledClassString].filter(Boolean).join(' ') || undefined}
+    style={actionListStyles}
+    {...a11yAttrs}
+    {...metaAttrs}
+    {...analyticsAttrs}
+  >
     <div class={wrapperClasses}>
       {@render children()}
     </div>

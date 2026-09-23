@@ -16,6 +16,7 @@
   } from '@razorpay/blade-core/styles';
   import { InfoIcon } from '../Icons';
   import { setCheckboxGroupContext } from './checkboxContext';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { CheckboxGroupProps, CheckboxGroupContextType, State } from './types';
 
   const templateClasses = getCheckboxGroupTemplateClasses();
@@ -132,12 +133,17 @@
 
   const styledProps = $derived(getStyledPropsClasses(rest));
   const wrapperClasses = $derived(
-    [...(styledProps.classes || [])].filter(Boolean).join(' ') || undefined,
+    [
+      templateClasses.checkboxGroup,
+      ...(styledProps.classes || []),
+    ]
+      .filter(Boolean)
+      .join(' ') || undefined,
   );
-  const wrapperStyles = $derived(
-    Object.entries(styledProps.inlineStyles || {})
-      .map(([prop, val]) => `${prop}: ${val}`)
-      .join('; ') || undefined,
+  // Arbitrary-value styled props are fed as --checkbox-group-* custom
+  // properties consumed by the checkbox-group root rule in checkbox.module.css.
+  const { checkboxGroupStyles } = $derived(
+    getStyledProps('checkboxGroup', styledProps.inlineStyles ?? {}),
   );
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.CheckboxGroup, testID }));
@@ -151,7 +157,7 @@
   );
 </script>
 
-<div class={wrapperClasses} style={wrapperStyles} {...metaAttrs} {...analyticsAttrs}>
+<div class={wrapperClasses} style={checkboxGroupStyles} {...metaAttrs} {...analyticsAttrs}>
   <div class={fieldClasses} {...a11yAttrs}>
     {#if label}
       <span

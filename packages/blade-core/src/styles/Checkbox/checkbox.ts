@@ -318,6 +318,7 @@ export function getCheckboxGroupLabelSizeClass(size: CheckboxSize): string {
 
 /** Get group template/structural classes — call from Svelte to prevent tree-shaking. */
 export function getCheckboxGroupTemplateClasses(): {
+  checkboxGroup: string;
   groupLabel: string;
   labelRow: string;
   labelSuffix: string;
@@ -332,6 +333,7 @@ export function getCheckboxGroupTemplateClasses(): {
   srOnly: string;
 } {
   return {
+    checkboxGroup: styles['checkbox-group'],
     groupLabel: styles['group-label'],
     labelRow: styles['label-row'],
     labelSuffix: styles['label-suffix'],

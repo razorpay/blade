@@ -15,6 +15,7 @@
   } from '@razorpay/blade-core/styles';
   import { portal } from '../../utils/portal';
   import { lockBodyScroll, unlockBodyScroll } from '../../utils/bodyScrollLock';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import ModalBackdrop from './ModalBackdrop.svelte';
   import { setModalContext } from './modalContext';
   import type { ModalContextValue } from './modalContext';
@@ -248,12 +249,14 @@
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
 
   const surfaceState = $derived(isVisible ? 'open' : 'closed');
-  const wrapperStyle = $derived(`--modal-z-index:${zIndex}`);
+  /* z-index is fed to the wrapper as a --modal-z-index custom property
+   * consumed by the wrapper class in modal.module.css. */
+  const { modalStyles } = $derived(getStyledProps('modal', { zIndex }));
 </script>
 
 {#if isMounted}
   <div bind:this={portalWrapperEl} use:portal={document.body}>
-    <div class={modalWrapperClass} style={wrapperStyle} data-blade-component="modal-wrapper">
+    <div class={modalWrapperClass} style={modalStyles} data-blade-component="modal-wrapper">
       <ModalBackdrop />
       <div
         bind:this={surfaceEl}

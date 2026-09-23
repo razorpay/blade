@@ -1,0 +1,10 @@
+/* Amount strikethrough — the absolute strike line over the value. Positioned
+ * via the shared `position-absolute` utility class; the strike width/color
+ * arrive as --amount-strikethrough-* custom properties (built via
+ * getStyledProps) so the style attribute never carries raw declarations. */
+.strikethrough {
+  top: 50%;
+  width: 100%;
+  border-bottom: var(--amount-strikethrough-border-width) solid
+    var(--amount-strikethrough-color);
+}

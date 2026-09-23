@@ -26,6 +26,7 @@
     pauseToast,
     resumeToast,
   } from './toastStore';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { BladeToast, ToastContainerProps } from './types';
 
   // Prevent tree-shaking of CSS class imports that only appear in templates.
@@ -84,22 +85,24 @@
 
   const containerZIndex = $derived(zIndex ?? TOAST_Z_INDEX);
 
-  // Container bottom-offset CSS var: explicit `offsetBottom` wins; otherwise
-  // CSS-default mobile gutter (16px) / desktop gutter (24px) handled in the
-  // CSS module.
-  const containerStyle = $derived.by(() => {
-    const parts: string[] = [];
-    parts.push(`--toast-container-zindex: ${containerZIndex}`);
-    if (typeof offsetBottom === 'number') {
-      parts.push(`bottom: ${offsetBottom}px`);
-    }
-    return parts.join('; ');
-  });
+  // Container: z-index + explicit offsetBottom (wins over the CSS-default
+  // mobile 16px / desktop 24px gutters) are fed as --toast-container-* custom
+  // properties consumed by the toast-container class in
+  // toastContainer.module.css.
+  const { toastContainerStyles } = $derived(
+    getStyledProps('toastContainer', {
+      zIndex: containerZIndex,
+      offsetBottom: typeof offsetBottom === 'number' ? `${offsetBottom}px` : undefined,
+    }),
+  );
 
-  const hoverRegionStyle = $derived(
-    `--hover-region-bottom: ${promoToastHeight}px; --hover-region-height: ${
-      isExpanded ? Math.max(0, totalHeight - promoToastHeight) : frontToastHeight
-    }px`,
+  // Hover capture region sized via --hover-region-* custom properties consumed
+  // by the hover-region class in toastContainer.module.css.
+  const { hoverRegionStyles } = $derived(
+    getStyledProps('hoverRegion', {
+      bottom: `${promoToastHeight}px`,
+      height: `${isExpanded ? Math.max(0, totalHeight - promoToastHeight) : frontToastHeight}px`,
+    }),
   );
 
   function handleMouseEnter(): void {
@@ -125,7 +128,7 @@
     }
   }
 
-  function getWrapperStyle(toast: BladeToast, index: number): string {
+  function getWrapperStyle(toast: BladeToast, index: number): string | undefined {
     const isPromotional = toast.type === 'promotional';
     const toastIndex = visibleInfoToasts.findIndex((t) => t.id === toast.id);
     const toastsBefore =
@@ -173,13 +176,15 @@
     const wrapperZIndex = -1 * index;
 
     const heightDecl = typeof toastHeight === 'number' ? `${toastHeight}px` : 'auto';
-    return [
-      `--toast-offset: ${offset}px`,
-      `--toast-scale: ${scale}`,
-      `--toast-zindex: ${wrapperZIndex}`,
-      `--toast-height: ${heightDecl}`,
-      `--toast-opacity: ${opacity}`,
-    ].join('; ');
+    // Runtime stack values are fed as --toast-* custom properties consumed by
+    // the toast-wrapper class in toastContainer.module.css.
+    return getStyledProps('toast', {
+      offset: `${offset}px`,
+      scale,
+      zindex: wrapperZIndex,
+      height: heightDecl,
+      opacity,
+    }).toastStyles;
   }
 
   function handleWrapperMouseEnter(toast: BladeToast): void {
@@ -222,7 +227,7 @@
 
 <div
   class={combinedClasses}
-  style={containerStyle}
+  style={toastContainerStyles}
   {...metaAttrs}
   {...analyticsAttrs}
 >
@@ -230,7 +235,7 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div
     class={toastHoverRegionClass}
-    style={hoverRegionStyle}
+    style={hoverRegionStyles}
     data-expanded={isExpanded}
     data-testid="toast-mouseover-container"
     onmouseenter={handleMouseEnter}

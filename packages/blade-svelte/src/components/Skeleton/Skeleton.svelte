@@ -5,10 +5,9 @@
     makeAccessible,
     makeAnalyticsAttribute,
     getStyledPropsClasses,
-    kebabCase,
-    combineStyleStrings,
   } from '@razorpay/blade-core/utils';
-  import { getSkeletonClasses, getSkeletonInlineStyle } from '@razorpay/blade-core/styles';
+  import { getSkeletonClasses, getSkeletonStyleProps } from '@razorpay/blade-core/styles';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { SkeletonProps } from './types';
 
   let {
@@ -56,31 +55,30 @@
     [skeletonClassNames, ...(styledProps.classes || [])].filter(Boolean).join(' '),
   );
 
-  const ownInlineStyle = $derived(
-    getSkeletonInlineStyle({
-      width,
-      maxWidth,
-      minWidth,
-      height,
-      maxHeight,
-      minHeight,
-      alignContent,
-      justifyItems,
-      placeItems,
-      flexGrow,
-      flexShrink,
-      flexBasis,
-      order,
+  /* All style props — Skeleton's own dimensions/flex values (resolved by
+   * getSkeletonStyleProps) plus arbitrary-value styled props — are fed as
+   * --skeleton-* custom properties consumed by the skeleton root rule in
+   * skeleton.module.css. */
+  const { skeletonStyles } = $derived(
+    getStyledProps('skeleton', {
+      ...getSkeletonStyleProps({
+        width,
+        maxWidth,
+        minWidth,
+        height,
+        maxHeight,
+        minHeight,
+        alignContent,
+        justifyItems,
+        placeItems,
+        flexGrow,
+        flexShrink,
+        flexBasis,
+        order,
+      }),
+      ...(styledProps.inlineStyles ?? {}),
     }),
   );
-
-  const styledPropsInlineStyle = $derived.by(() => {
-    const entries = Object.entries(styledProps.inlineStyles ?? {});
-    if (entries.length === 0) return undefined;
-    return entries.map(([key, value]) => `${kebabCase(key)}: ${value}`).join('; ');
-  });
-
-  const finalStyle = $derived(combineStyleStrings(ownInlineStyle, styledPropsInlineStyle) || undefined);
 
   const a11yAttrs = makeAccessible({ hidden: true });
   const metaAttrs = metaAttribute({ name: MetaConstants.Skeleton, testID });
@@ -89,7 +87,7 @@
 
 <div
   class={combinedClasses}
-  style={finalStyle}
+  style={skeletonStyles}
   {...a11yAttrs}
   {...metaAttrs}
   {...analyticsAttrs}

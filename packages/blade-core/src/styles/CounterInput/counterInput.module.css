@@ -3,6 +3,30 @@
   display: inline-block;
 }
 
+/* Arbitrary-value styled props (margin/zIndex/offsets/grid) arrive as
+ * --counter-input-* custom properties (built via getStyledProps). :where()
+ * keeps these inert (initial values) unless authored, so utility classes and
+ * style overrides keep working regardless of CSS source order. */
+:where(.counter-input) {
+  z-index: var(--counter-input-z-index);
+  top: var(--counter-input-top);
+  right: var(--counter-input-right);
+  bottom: var(--counter-input-bottom);
+  left: var(--counter-input-left);
+  margin-top: var(--counter-input-margin-top);
+  margin-right: var(--counter-input-margin-right);
+  margin-bottom: var(--counter-input-margin-bottom);
+  margin-left: var(--counter-input-margin-left);
+  order: var(--counter-input-order);
+  grid-column: var(--counter-input-grid-column);
+  grid-column-start: var(--counter-input-grid-column-start);
+  grid-column-end: var(--counter-input-grid-column-end);
+  grid-row: var(--counter-input-grid-row);
+  grid-row-start: var(--counter-input-grid-row-start);
+  grid-row-end: var(--counter-input-grid-row-end);
+  grid-area: var(--counter-input-grid-area);
+}
+
 /* ===== Layout (label + counter) ===== */
 .layout {
   display: flex;

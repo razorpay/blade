@@ -170,54 +170,55 @@ export type SkeletonInlineStyleProps = {
 };
 
 /**
- * Build the inline style string for a Skeleton element. Covers arbitrary dimension
- * values and the flex/grid props that don't have a matching utility class.
- *
- * Returns `undefined` when no inline style is needed so the consumer can omit the
- * `style` attribute entirely.
+ * Resolve Skeleton's own style props into a prop → CSS value record (spacing
+ * tokens resolved, unset props dropped). The caller feeds this record through
+ * `getStyledProps('skeleton', …)` to build the `--skeleton-*` custom-property
+ * style string consumed by `skeleton.module.css` — no raw inline declarations.
  */
-export function getSkeletonInlineStyle(props: SkeletonInlineStyleProps): string | undefined {
-  const declarations: string[] = [];
+export function getSkeletonStyleProps(
+  props: SkeletonInlineStyleProps,
+): Record<string, string | number> {
+  const styleProps: Record<string, string | number> = {};
 
   const dimension = (key: string, value: string | undefined): void => {
     if (value === undefined) return;
     const resolved = getSpacingValue(value);
     if (resolved !== undefined) {
-      declarations.push(`${key}: ${resolved}`);
+      styleProps[key] = resolved;
     }
   };
 
   dimension('width', props.width);
-  dimension('max-width', props.maxWidth);
-  dimension('min-width', props.minWidth);
+  dimension('maxWidth', props.maxWidth);
+  dimension('minWidth', props.minWidth);
   dimension('height', props.height);
-  dimension('max-height', props.maxHeight);
-  dimension('min-height', props.minHeight);
+  dimension('maxHeight', props.maxHeight);
+  dimension('minHeight', props.minHeight);
 
   if (props.alignContent !== undefined) {
-    declarations.push(`align-content: ${props.alignContent}`);
+    styleProps.alignContent = props.alignContent;
   }
   if (props.justifyItems !== undefined) {
-    declarations.push(`justify-items: ${props.justifyItems}`);
+    styleProps.justifyItems = props.justifyItems;
   }
   if (props.placeItems !== undefined) {
-    declarations.push(`place-items: ${props.placeItems}`);
+    styleProps.placeItems = props.placeItems;
   }
   if (props.flexGrow !== undefined) {
-    declarations.push(`flex-grow: ${props.flexGrow}`);
+    styleProps.flexGrow = props.flexGrow;
   }
   if (props.flexShrink !== undefined) {
-    declarations.push(`flex-shrink: ${props.flexShrink}`);
+    styleProps.flexShrink = props.flexShrink;
   }
   if (props.flexBasis !== undefined) {
     const resolved = getSpacingValue(props.flexBasis);
     if (resolved !== undefined) {
-      declarations.push(`flex-basis: ${resolved}`);
+      styleProps.flexBasis = resolved;
     }
   }
   if (props.order !== undefined) {
-    declarations.push(`order: ${props.order}`);
+    styleProps.order = props.order;
   }
 
-  return declarations.length > 0 ? declarations.join('; ') : undefined;
+  return styleProps;
 }

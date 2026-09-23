@@ -3,6 +3,30 @@
   display: inline-block;
 }
 
+/* Arbitrary-value styled props (margin/zIndex/offsets/grid) arrive as
+ * --switch-* custom properties (built via getStyledProps). :where() keeps
+ * these inert (initial values) unless authored, so utility classes and style
+ * overrides keep working regardless of CSS source order. */
+:where(.switch) {
+  z-index: var(--switch-z-index);
+  top: var(--switch-top);
+  right: var(--switch-right);
+  bottom: var(--switch-bottom);
+  left: var(--switch-left);
+  margin-top: var(--switch-margin-top);
+  margin-right: var(--switch-margin-right);
+  margin-bottom: var(--switch-margin-bottom);
+  margin-left: var(--switch-margin-left);
+  order: var(--switch-order);
+  grid-column: var(--switch-grid-column);
+  grid-column-start: var(--switch-grid-column-start);
+  grid-column-end: var(--switch-grid-column-end);
+  grid-row: var(--switch-grid-row);
+  grid-row-start: var(--switch-grid-row-start);
+  grid-row-end: var(--switch-grid-row-end);
+  grid-area: var(--switch-grid-area);
+}
+
 /* Label wraps the visually-hidden input + track. Drives cursor + click target. */
 .label {
   display: inline-flex;
