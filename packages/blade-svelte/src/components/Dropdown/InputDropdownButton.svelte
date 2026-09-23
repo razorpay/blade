@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { untrack } from 'svelte';
   import {
     metaAttribute,
     makeAccessible,
@@ -70,14 +71,21 @@
     }
   });
 
-  // Fire onChange when the selected value changes (skips the initial value).
-  let previousValue = $state<string | undefined>(undefined);
+  // Fire onChange only for user-initiated selections. Watching `dropdown.value`
+  // directly would also fire for the `value`/`defaultValue` seeding above, so we
+  // track the controller's selection counter instead (React parity:
+  // `changeCallbackTriggerer` + skip-first-render).
+  let hasSeenInitialTrigger = false;
   $effect(() => {
-    const current = dropdown?.value ?? '';
-    if (previousValue !== undefined && current !== previousValue) {
-      onChange?.({ name: name ?? idBase, value: current });
+    // Tracked dependency — everything below is read untracked on purpose.
+    void dropdown?.changeCallbackTriggerer;
+    if (!hasSeenInitialTrigger) {
+      hasSeenInitialTrigger = true;
+      return;
     }
-    previousValue = current;
+    untrack(() => {
+      onChange?.({ name: name ?? idBase, value: dropdown?.value ?? '' });
+    });
   });
 
   const iconColor = $derived(

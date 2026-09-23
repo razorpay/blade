@@ -34,6 +34,12 @@ export type DropdownControllerState = {
   getHasFooterAction: () => boolean;
   getIsKeydownPressed: () => boolean;
   setIsKeydownPressed: (value: boolean) => void;
+  /**
+   * Bumped only on user-initiated selection so triggers can fire `onChange`
+   * without also firing on programmatic `value`/`defaultValue` seeding
+   * (mirrors React's `changeCallbackTriggerer`).
+   */
+  bumpChangeCallbackTriggerer: () => void;
 };
 
 export type DropdownController = {
@@ -42,10 +48,12 @@ export type DropdownController = {
   onOptionClick: (event: MouseEvent | KeyboardEvent, index: number) => void;
 };
 
-let searchTimeout: ReturnType<typeof setTimeout> | undefined;
-let searchString = '';
-
 export function createDropdownController(state: DropdownControllerState): DropdownController {
+  // Typeahead buffer is per-controller: a module-level buffer would leak
+  // keystrokes between Dropdowns coexisting on the same page.
+  let searchTimeout: ReturnType<typeof setTimeout> | undefined;
+  let searchString = '';
+
   /**
    * Marks the given index selected. Single-select closes the menu; multi-select
    * toggles and keeps it open. Returns the item's resulting selected state.
@@ -73,6 +81,8 @@ export function createDropdownController(state: DropdownControllerState): Dropdo
       state.setSelectedIndices([index]);
       isSelected = true;
     }
+
+    state.bumpChangeCallbackTriggerer();
 
     if (state.getActiveIndex() !== index) {
       state.setActiveIndex(index);

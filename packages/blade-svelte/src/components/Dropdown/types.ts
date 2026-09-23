@@ -197,6 +197,11 @@ export type DropdownContextValue = {
   setDropdownTriggerer: (triggerer: DropdownTriggerer) => void;
   value: string;
   displayValue: string;
+  /**
+   * Increments on every user-initiated selection. Triggers watch this instead of
+   * `value` so `onChange` does not fire for programmatic seeding.
+   */
+  changeCallbackTriggerer: number;
   /** Register an option; returns nothing — the item reads its index reactively. */
   registerOption: (option: DropdownOption) => void;
   unregisterOption: (id: string) => void;

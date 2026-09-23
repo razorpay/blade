@@ -330,8 +330,6 @@ export type {
   DropdownFooterProps,
   InputDropdownButtonProps,
   DropdownSelectionType,
-  DropdownContextValue,
-  DropdownOption,
 } from './Dropdown';
 
 // Tabs

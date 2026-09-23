@@ -55,6 +55,4 @@ export type {
   DropdownFooterProps,
   InputDropdownButtonProps,
   DropdownSelectionType,
-  DropdownContextValue,
-  DropdownOption,
 } from './types';
