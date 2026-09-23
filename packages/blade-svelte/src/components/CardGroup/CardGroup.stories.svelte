@@ -23,12 +23,63 @@
   import CardGroupItem from './CardGroupItem.svelte';
   import CardGroupCollapsibleItem from './CardGroupCollapsibleItem.svelte';
   import CardGroupCollapsibleItemBody from './CardGroupCollapsibleItemBody.svelte';
+  import Card from '../Card/Card.svelte';
+  import CardBody from '../Card/CardBody.svelte';
+  import Text from '../Typography/Text/Text.svelte';
   import { CreditCardIcon } from '../Icons/CreditCardIcon';
   import { PhoneIcon } from '../Icons/PhoneIcon';
   import { BankIcon } from '../Icons/BankIcon';
+  import { MoreHorizontalIcon } from '../Icons/MoreHorizontalIcon';
 
   let selected = $state('cards');
+
+  type PaymentApp = { name: string; logo?: string };
+
+  // Brand logos from the checkout CDN (same source as the BladeProvider checkout demo).
+  const upiApps: PaymentApp[] = [
+    { name: 'Google Pay', logo: 'https://cdn.razorpay.com/app/googlepay.svg' },
+    { name: 'PhonePe', logo: 'https://cdn.razorpay.com/app/phonepe.svg' },
+    { name: 'Paytm', logo: 'https://cdn.razorpay.com/app/paytm.svg' },
+    { name: 'CRED UPI', logo: 'https://cdn.razorpay.com/app/cred.svg' },
+    { name: 'Apps & UPI ID' },
+  ];
+
+  const payLaterApps: PaymentApp[] = [
+    { name: 'LazyPay', logo: 'https://cdn.razorpay.com/paylater/lazypay.svg' },
+    { name: 'ICICI PayLater', logo: 'https://cdn.razorpay.com/paylater/icic.svg' },
+    { name: 'Amazon Pay', logo: 'https://cdn.razorpay.com/app/amazonpay.svg' },
+  ];
+
+  const noop = (): void => {};
 </script>
+
+{#snippet appGrid(apps: PaymentApp[])}
+  <div class="app-grid">
+    {#each apps as app (app.name)}
+      <Card
+        variant="primary"
+        padding="spacing.0"
+        size="medium"
+        height="100%"
+        accessibilityLabel={app.name}
+        onClick={noop}
+      >
+        <CardBody>
+          <div class="app-tile">
+            {#if app.logo}
+              <img class="app-logo" src={app.logo} alt="" />
+            {:else}
+              <span class="app-logo">
+                <MoreHorizontalIcon size="medium" color="surface.icon.gray.normal" />
+              </span>
+            {/if}
+            <Text size="medium" weight="medium" truncateAfterLines={1}>{app.name}</Text>
+          </div>
+        </CardBody>
+      </Card>
+    {/each}
+  </div>
+{/snippet}
 
 <!-- Mirrors the Figma anatomy: navigating rows, a selecting row, and a
      disclosing row with a body of nested options. -->
@@ -48,12 +99,7 @@
           </CardGroupItem>
           <CardGroupCollapsibleItemBody>
             {#snippet children()}
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-                <span>Google Pay</span>
-                <span>PhonePe</span>
-                <span>PayTM</span>
-                <span>CRED UPI</span>
-              </div>
+              {@render appGrid(upiApps)}
             {/snippet}
           </CardGroupCollapsibleItemBody>
         </CardGroupCollapsibleItem>
@@ -63,7 +109,9 @@
             {#snippet children()}Pay Later{/snippet}
           </CardGroupItem>
           <CardGroupCollapsibleItemBody>
-            {#snippet children()}Simpl, LazyPay, ICICI PayLater{/snippet}
+            {#snippet children()}
+              {@render appGrid(payLaterApps)}
+            {/snippet}
           </CardGroupCollapsibleItemBody>
         </CardGroupCollapsibleItem>
 
@@ -113,3 +161,28 @@
     </CardGroup>
   </div>
 </Story>
+
+<style>
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-3);
+  }
+
+  .app-tile {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+  }
+
+  .app-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+</style>
