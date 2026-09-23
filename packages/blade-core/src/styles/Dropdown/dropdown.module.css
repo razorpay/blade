@@ -160,6 +160,15 @@
 /* size variants — height derived from baseInputHeight − 2×wrapper padding;
  * border-radius from inputDropdownButtonBorderRadius; inner padding from
  * inputDropdownButtonPadding. */
+.idButtonXsmall {
+  height: 24px;
+  border-radius: 6px;
+}
+
+.idButtonXsmall .idButtonContent {
+  padding: var(--spacing-1);
+}
+
 .idButtonSmall {
   height: 28px;
   border-radius: 6px;

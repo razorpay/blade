@@ -1,6 +1,7 @@
 import type { Snippet } from 'svelte';
 import type { Placement } from '@floating-ui/dom';
 import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
+import type { BaseInputSize } from '@razorpay/blade-core/styles';
 import type { IconComponent } from '../Icons';
 import type { DropdownTriggerer } from './dropdownComponentIds';
 
@@ -144,7 +145,7 @@ type BaseInputDropdownButtonProps = {
    * Size of the button.
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: BaseInputSize;
 } & DataAnalyticsAttribute;
 
 type ControlledInputDropdownButtonProps = BaseInputDropdownButtonProps & {
