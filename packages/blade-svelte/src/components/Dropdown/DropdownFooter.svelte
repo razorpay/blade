@@ -13,6 +13,7 @@
   // container role to `dialog` — mirrors React `setHasFooterAction(true)`).
   $effect(() => {
     dropdown?.setHasFooterAction(true);
+    return () => dropdown?.setHasFooterAction(false);
   });
 
   const a11yAttrs = makeAccessible({ role: 'group' });
