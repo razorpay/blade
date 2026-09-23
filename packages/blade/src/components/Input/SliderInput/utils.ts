@@ -79,7 +79,7 @@ const getValueRatio = (value: number, { min, max }: Pick<ValueRange, 'min' | 'ma
  * on the rail. Expressing it as a `calc` keeps positioning resolution-independent: nothing
  * here needs the measured track width, so it renders identically during SSR.
  */
-const getOffsetExpression = (ratio: number): string =>
+const getOffsetExpression = (ratio: number | string): string =>
   `calc(${SLIDER_MARKER_RADIUS}px + ${ratio} * (100% - ${SLIDER_MARKER_DOT}px))`;
 
 /**
@@ -88,7 +88,7 @@ const getOffsetExpression = (ratio: number): string =>
  * The fill runs to the far edge of the marker it reaches, not its centre, or the reached dot
  * renders half filled. At `max` this resolves to exactly 100%.
  */
-const getFillWidthExpression = (ratio: number): string =>
+const getFillWidthExpression = (ratio: number | string): string =>
   `calc(${SLIDER_MARKER_DOT}px + ${ratio} * (100% - ${SLIDER_MARKER_DOT}px))`;
 
 /**

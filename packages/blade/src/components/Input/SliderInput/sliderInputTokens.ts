@@ -108,12 +108,19 @@ const sliderInputColors = {
  * repeatedly, and anything slower would still be easing the previous step when the next one
  * lands. `standard` is the system's morph easing, which is what a value change is.
  *
- * Nothing here applies while dragging. Under a pointer the thumb has to sit exactly where the
- * finger is, and easing that would read as lag rather than polish.
+ * While dragging, movement is normally dropped: under a pointer the thumb has to sit exactly
+ * where the finger is, and even the shortest easing reads as lag. The exception is a slider
+ * showing markers, whose steps are coarse enough that the thumb visibly hops between them, so
+ * `scrub` glides between markers instead. It is longer than `position` because a decelerating
+ * 80ms hop covers half its distance in the first frame and still reads as a jump. The value
+ * only changes on crossing into the next step, so the transition is rarely retargeted
+ * mid-flight and `standard` can ease in without stuttering.
  */
 const sliderInputMotion = {
   /** Value-driven movement of the thumb, the fill and the indicator riding above it. */
   position: { duration: '2xquick', easing: 'standard' },
+  /** Movement while scrubbing a slider that shows markers. */
+  scrub: { duration: 'xquick', easing: 'standard' },
   /** Fill and thumb shifting between the default, highlighted and disabled colours. */
   color: { duration: 'xquick', easing: 'standard' },
   /** The indicator fading in and out with the highlight, and its small rise on entry. */
@@ -127,6 +134,16 @@ const sliderInputMotion = {
    */
   valueRoll: { duration: 'moderate' },
 } as const;
+
+/**
+ * The value as a 0-1 ratio, set on the control and read by the thumb, the fill and the
+ * indicator. Movement is eased by transitioning this one property rather than each consumer's
+ * own position, so all three are driven by a single interpolation and cannot drift apart
+ * mid-drag. Registered via `@property`, since an unregistered custom property does not
+ * interpolate; where that is unsupported, movement snaps but everything still moves together.
+ */
+const SLIDER_RATIO_PROPERTY = '--slider-input-ratio';
+const SLIDER_RATIO = `var(${SLIDER_RATIO_PROPERTY})`;
 
 /** How far the indicator rises as it fades in, in px. */
 const SLIDER_INDICATOR_RISE = 2;
@@ -152,6 +169,8 @@ export {
   SLIDER_THUMB_HIT_AREA,
   SLIDER_DRAG_SLOP,
   SLIDER_INDICATOR_RISE,
+  SLIDER_RATIO_PROPERTY,
+  SLIDER_RATIO,
   sliderInputColors,
   sliderInputMotion,
 };
