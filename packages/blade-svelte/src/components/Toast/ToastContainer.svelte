@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import {
     metaAttribute,
     MetaConstants,
@@ -19,6 +18,7 @@
     MIN_TOAST_MOBILE,
     TOAST_Z_INDEX,
   } from '@razorpay/blade-core/styles';
+  import { getBreakpoint } from '../BladeProvider/breakpointContext';
   import Toast from './Toast.svelte';
   import {
     toastStore,
@@ -34,7 +34,8 @@
 
   let { offsetBottom, zIndex, testID, ...rest }: ToastContainerProps = $props();
 
-  let isMobile = $state(false);
+  const breakpoint = getBreakpoint();
+  const isMobile = $derived(breakpoint.matchedDeviceType === 'mobile');
   let hasManuallyExpanded = $state(false);
   let toasts = $state<BladeToast[]>([]);
 
@@ -47,17 +48,6 @@
     return () => {
       unsubscribe();
     };
-  });
-
-  onMount(() => {
-    if (typeof window === 'undefined') return undefined;
-    const mq = window.matchMedia('(max-width: 767px)');
-    isMobile = mq.matches;
-    const handler = (event: MediaQueryListEvent): void => {
-      isMobile = event.matches;
-    };
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
   });
 
   // Always keep promo toasts at the bottom of the stack.

@@ -4,6 +4,7 @@ import type {
   ThemeTokens,
   TypographyPlatforms,
 } from '@razorpay/blade-core/tokens';
+import type { DeviceType } from '@razorpay/blade-core/utils';
 import type { Theme } from './types';
 import { getColorScheme } from './getColorScheme';
 import { getTypographyPlatform } from './getTypographyPlatform';
@@ -14,12 +15,12 @@ import { getTypographyPlatform } from './getTypographyPlatform';
 export const resolveBladeTheme = ({
   themeTokens,
   colorSchemeInput,
-  viewportWidth,
+  deviceType = 'desktop',
   systemPrefersDark,
 }: {
   themeTokens: ThemeTokens;
   colorSchemeInput: ColorSchemeNamesInput;
-  viewportWidth?: number;
+  deviceType?: DeviceType;
   systemPrefersDark?: boolean;
 }): {
   theme: Theme;
@@ -27,7 +28,7 @@ export const resolveBladeTheme = ({
   platform: TypographyPlatforms;
 } => {
   const colorScheme = getColorScheme(colorSchemeInput, systemPrefersDark);
-  const platform = getTypographyPlatform(themeTokens.breakpoints, viewportWidth);
+  const platform = getTypographyPlatform(deviceType);
   const onColorMode = colorScheme === 'dark' ? 'onDark' : 'onLight';
 
   const theme: Theme = {
