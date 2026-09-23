@@ -1,6 +1,9 @@
 <script lang="ts">
+  import { getCardGroupTemplateClasses } from '@razorpay/blade-core/styles';
   import Collapsible from '../Collapsible/Collapsible.svelte';
   import type { CardGroupCollapsibleItemProps } from './types';
+
+  const templateClasses = getCardGroupTemplateClasses();
 
   let {
     children: content,
@@ -12,14 +15,16 @@
   }: CardGroupCollapsibleItemProps = $props();
 </script>
 
-<Collapsible
-  {isExpanded}
-  {defaultIsExpanded}
-  {onExpandChange}
-  direction="bottom"
-  _shouldApplyWidthRestrictions={false}
-  {testID}
-  {...rest}
->
-  {@render content()}
-</Collapsible>
+<div class={templateClasses.cardGroupCollapsibleItem}>
+  <Collapsible
+    {isExpanded}
+    {defaultIsExpanded}
+    {onExpandChange}
+    direction="bottom"
+    _shouldApplyWidthRestrictions={false}
+    {testID}
+    {...rest}
+  >
+    {@render content()}
+  </Collapsible>
+</div>

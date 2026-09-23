@@ -1,43 +1,13 @@
 /* CardGroup — single surface that stacks navigating / selecting / disclosing rows.
-   The group owns the border, radius, elevation, the top/bottom gradient of the run,
-   and the dividers between rows. `overflow: hidden` clips + rounds the end rows, so
-   individual rows never set their own corner radius. */
+   Border ring, elevation and the 16px top/bottom gradient bands come from the
+   Card `primary` surface classes (see CardGroup.svelte) so both components share
+   one treatment. This class only adds what a stacked group needs on top:
+   `overflow: hidden` clips + rounds the end rows, so rows never set their own
+   corner radius, and the dividers between rows live on the body below. */
 .cardGroup {
   position: relative;
   isolation: isolate;
-  background-color: var(--surface-background-gray-intense);
-  border: var(--border-width-thin) solid var(--surface-border-gray-subtle);
-  border-radius: var(--border-radius-medium);
   overflow: hidden;
-  box-shadow: 0px 6px 32px 4px hsla(205, 8%, 71%, 0.06);
-}
-
-/* Single gradient at the top and bottom of the run. Surface colour fades in from
-   each edge — the same 16px band treatment CardSurface uses — as a scroll-fade cue.
-   Pointer-events disabled so rows below stay interactive. */
-.cardGroup::before,
-.cardGroup::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: var(--spacing-5);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.cardGroup::before {
-  top: 0;
-  background-image: linear-gradient(
-    to bottom,
-    var(--surface-background-gray-intense),
-    transparent
-  );
-}
-
-.cardGroup::after {
-  bottom: 0;
-  background-image: linear-gradient(to top, var(--surface-background-gray-intense), transparent);
 }
 
 /* Row container. Draws the divider between adjacent rows (never above the first). */
@@ -55,15 +25,17 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: var(--spacing-4);
+  gap: var(--spacing-3);
   width: 100%;
-  min-height: var(--spacing-11);
-  padding: var(--spacing-4) var(--spacing-5);
+  padding: var(--spacing-5);
   margin: 0;
   background-color: transparent;
   border: none;
   color: var(--surface-text-gray-normal);
   font-family: var(--font-family-text);
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-100);
   text-align: left;
   text-decoration: none;
 }
@@ -117,9 +89,22 @@
   transform: rotate(180deg);
 }
 
+/* --- CardGroupCollapsibleItem --- */
+/* Collapsible's inner wrapper is `display: flex; align-items: flex-start`, which
+   shrink-wraps the trigger and body to their content width. Force every layer
+   down to the body to span the row so dividers and backgrounds are full-bleed. */
+.cardGroupCollapsibleItem,
+.cardGroupCollapsibleItem > *,
+.cardGroupCollapsibleItem > * > *,
+.cardGroupCollapsibleItem > * > * > * {
+  width: 100%;
+}
+
 /* --- CardGroupCollapsibleItemBody --- */
-/* Owns the full-bleed divider separating the revealed content from the trigger row. */
+/* Owns the full-bleed divider separating the revealed content from the trigger row.
+   Subtle background sets the revealed content apart from the rows around it. */
 .cardGroupCollapsibleBody {
   border-top: var(--border-width-thin) solid var(--surface-border-gray-subtle);
-  padding: var(--spacing-4) var(--spacing-5);
+  padding: var(--spacing-5) var(--spacing-4);
+  background-color: var(--surface-background-gray-subtle);
 }

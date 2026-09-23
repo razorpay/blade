@@ -9,12 +9,18 @@
   import {
     getCardGroupSurfaceClasses,
     getCardGroupTemplateClasses,
+    getCardSurfaceClasses,
   } from '@razorpay/blade-core/styles';
   import { setCardGroupContext } from './cardGroupContext';
   import type { CardGroupProps } from './types';
 
   const templateClasses = getCardGroupTemplateClasses();
-  const surfaceClass = getCardGroupSurfaceClasses();
+  // Same elevated treatment as <Card variant="primary">; padding is zero so
+  // rows run edge to edge and the group's own overflow clip rounds them.
+  const surfaceClass = [
+    getCardSurfaceClasses({ type: 'primary', padding: 'spacing.0', borderRadius: 'medium' }),
+    getCardGroupSurfaceClasses(),
+  ].join(' ');
 
   let { children, accessibilityLabel, testID, ...rest }: CardGroupProps = $props();
 

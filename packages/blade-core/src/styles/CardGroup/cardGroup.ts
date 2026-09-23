@@ -78,6 +78,7 @@ export function getCardGroupTemplateClasses(): Record<string, string> {
     cardGroupItemTrailing: cardGroupStyles.cardGroupItemTrailing,
     cardGroupItemContent: cardGroupStyles.cardGroupItemContent,
     cardGroupChevron: cardGroupStyles.cardGroupChevron,
+    cardGroupCollapsibleItem: cardGroupStyles.cardGroupCollapsibleItem,
     cardGroupCollapsibleBody: cardGroupStyles.cardGroupCollapsibleBody,
   };
 }
