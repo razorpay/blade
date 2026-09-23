@@ -2,7 +2,7 @@ import { render } from 'svelte/server';
 import { describe, expect, it } from 'vitest';
 import BreakpointHarness from './BreakpointHarness.svelte';
 
-describe('getBreakpoint SSR', () => {
+describe('useBreakpoint SSR', () => {
   it('server-renders with no matched breakpoint and desktop device type', () => {
     const { body } = render(BreakpointHarness);
 

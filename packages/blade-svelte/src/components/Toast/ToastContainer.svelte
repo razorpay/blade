@@ -18,7 +18,7 @@
     MIN_TOAST_MOBILE,
     TOAST_Z_INDEX,
   } from '@razorpay/blade-core/styles';
-  import { getBreakpoint } from '../BladeProvider/breakpointContext';
+  import { useBreakpoint } from '../BladeProvider/breakpointContext';
   import Toast from './Toast.svelte';
   import {
     toastStore,
@@ -34,7 +34,7 @@
 
   let { offsetBottom, zIndex, testID, ...rest }: ToastContainerProps = $props();
 
-  const breakpoint = getBreakpoint();
+  const breakpoint = useBreakpoint();
   const isMobile = $derived(breakpoint.matchedDeviceType === 'mobile');
   let hasManuallyExpanded = $state(false);
   let toasts = $state<BladeToast[]>([]);

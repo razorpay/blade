@@ -27,18 +27,18 @@ export function setBreakpointContext(getBreakpointState: () => BreakpointState):
  * @example
  * ```svelte
  * <script>
- *   import { getBreakpoint } from '@razorpay/blade-svelte/components';
- *   const breakpoint = getBreakpoint();
+ *   import { useBreakpoint } from '@razorpay/blade-svelte/components';
+ *   const breakpoint = useBreakpoint();
  *   const isMobile = $derived(breakpoint.matchedDeviceType === 'mobile');
  * </script>
  * ```
  */
-export function getBreakpoint(): BreakpointState {
+export function useBreakpoint(): BreakpointState {
   const getter = getContext<(() => BreakpointState) | undefined>(BLADE_BREAKPOINT_CONTEXT_KEY);
 
   if (!getter) {
     throw new Error(
-      '[Blade: getBreakpoint]: BladeProvider is missing. Wrap your app in <BladeProvider themeTokens={bladeTheme}>.',
+      '[Blade: useBreakpoint]: BladeProvider is missing. Wrap your app in <BladeProvider themeTokens={bladeTheme}>.',
     );
   }
 

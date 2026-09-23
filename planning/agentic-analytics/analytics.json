@@ -1,0 +1,14 @@
+[
+  {
+    "event": "SUBAGENT_STOP",
+    "session_id": "85693476-19ac-4548-a79e-da2bc30e0924",
+    "agent_id": "a2bde49c970ed8297",
+    "agentName": "unknown",
+    "duration": 0,
+    "outputLength": 229,
+    "transcriptPath": "/Users/rohan.kokane/.claude/projects/-Users-rohan-kokane-rzp-frontend-blade-3-blade--claude-worktrees-svelte-get-breakpoint/85693476-19ac-4548-a79e-da2bc30e0924/subagents/agent-a2bde49c970ed8297.jsonl",
+    "tool": "claude-code",
+    "source": "cli",
+    "timestamp": "2026-09-23T06:01:25.632Z"
+  }
+]

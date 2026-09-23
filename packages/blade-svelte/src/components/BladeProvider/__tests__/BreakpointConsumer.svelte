@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { getBreakpoint } from '../breakpointContext';
+  import { useBreakpoint } from '../breakpointContext';
 
-  const breakpoint = getBreakpoint();
+  const breakpoint = useBreakpoint();
 </script>
 
 <span data-testid="breakpoint">{breakpoint.matchedBreakpoint ?? 'none'}</span>

@@ -45,7 +45,7 @@ const installViewport = (initialWidth: number): { resize: (width: number) => voi
   };
 };
 
-describe('getBreakpoint', () => {
+describe('useBreakpoint', () => {
   const originalMatchMedia = window.matchMedia;
 
   afterEach(() => {
@@ -82,7 +82,7 @@ describe('getBreakpoint', () => {
   it('throws outside BladeProvider', () => {
     const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
     expect(() => render(BreakpointConsumer)).toThrow(
-      '[Blade: getBreakpoint]: BladeProvider is missing',
+      '[Blade: useBreakpoint]: BladeProvider is missing',
     );
     consoleError.mockRestore();
   });
