@@ -27,8 +27,9 @@
   import CardBody from '../Card/CardBody.svelte';
   import Text from '../Typography/Text/Text.svelte';
   import { CreditCardIcon } from '../Icons/CreditCardIcon';
-  import { PhoneIcon } from '../Icons/PhoneIcon';
-  import { BankIcon } from '../Icons/BankIcon';
+  import { UpiIcon } from '../Icons/UpiIcon';
+  import { ClockIcon } from '../Icons/ClockIcon';
+  import { WalletIcon } from '../Icons/WalletIcon';
   import { MoreHorizontalIcon } from '../Icons/MoreHorizontalIcon';
 
   let selected = $state('cards');
@@ -40,7 +41,6 @@
     { name: 'Google Pay', logo: 'https://cdn.razorpay.com/app/googlepay.svg' },
     { name: 'PhonePe', logo: 'https://cdn.razorpay.com/app/phonepe.svg' },
     { name: 'Paytm', logo: 'https://cdn.razorpay.com/app/paytm.svg' },
-    { name: 'CRED UPI', logo: 'https://cdn.razorpay.com/app/cred.svg' },
     { name: 'Apps & UPI ID' },
   ];
 
@@ -94,7 +94,7 @@
 
         <CardGroupCollapsibleItem defaultIsExpanded>
           <CardGroupItem>
-            {#snippet leading()}<PhoneIcon size="medium" color="surface.icon.gray.subtle" />{/snippet}
+            {#snippet leading()}<UpiIcon size="medium" color="surface.icon.gray.subtle" />{/snippet}
             {#snippet children()}UPI{/snippet}
           </CardGroupItem>
           <CardGroupCollapsibleItemBody>
@@ -106,6 +106,7 @@
 
         <CardGroupCollapsibleItem>
           <CardGroupItem>
+            {#snippet leading()}<ClockIcon size="medium" color="surface.icon.gray.subtle" />{/snippet}
             {#snippet children()}Pay Later{/snippet}
           </CardGroupItem>
           <CardGroupCollapsibleItemBody>
@@ -116,7 +117,7 @@
         </CardGroupCollapsibleItem>
 
         <CardGroupItem href="/wallet">
-          {#snippet leading()}<BankIcon size="medium" color="surface.icon.gray.subtle" />{/snippet}
+          {#snippet leading()}<WalletIcon size="medium" color="surface.icon.gray.subtle" />{/snippet}
           {#snippet children()}Wallet{/snippet}
         </CardGroupItem>
       </CardGroup>

@@ -29,6 +29,9 @@ export { BuildingIcon } from './BuildingIcon';
 export { BankIcon } from './BankIcon';
 export { LockIcon } from './LockIcon';
 export { WhatsAppIcon } from './WhatsAppIcon';
+export { ClockIcon } from './ClockIcon';
+export { UpiIcon } from './UpiIcon';
+export { WalletIcon } from './WalletIcon';
 
 // Branded Icons
 export { RazorpayTrustIcon } from './RazorpayTrustIcon';

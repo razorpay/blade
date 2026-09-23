@@ -23,6 +23,9 @@ import { HomeIcon } from './HomeIcon';
 import { LockIcon } from './LockIcon';
 import { RazorpayTrustIcon } from './RazorpayTrustIcon';
 import { WhatsAppIcon } from './WhatsAppIcon';
+import { ClockIcon } from './ClockIcon';
+import { UpiIcon } from './UpiIcon';
+import { WalletIcon } from './WalletIcon';
 
 export type IconComponent = Component<IconProps>;
 
@@ -54,5 +57,8 @@ export const iconMap: Record<string, IconComponent | undefined> = {
   SearchIcon,
   UserIcon,
   WhatsAppIcon,
+  ClockIcon,
+  UpiIcon,
+  WalletIcon,
   RazorpayTrustIcon,
 };
