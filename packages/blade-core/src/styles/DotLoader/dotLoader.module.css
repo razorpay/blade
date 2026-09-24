@@ -30,10 +30,11 @@
 
 /*
  * `medium` scaled by 1.5, for hosts tall enough that the default reads as
- * undersized (the 48px large Button). Must stay after `.dot-loader`: same
- * specificity, so source order decides.
+ * undersized (the 48px large Button). Compound selector gives this higher
+ * specificity than `.dot-loader`, so the override does not depend on source
+ * order.
  */
-.dot-loader-large {
+.dot-loader.dot-loader-large {
   --dot-loader-box-size: 36px;
   --dot-loader-dot-size: 6px;
   --dot-loader-gap: 3px;
