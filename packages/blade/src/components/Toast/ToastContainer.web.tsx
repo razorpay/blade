@@ -298,7 +298,11 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number; zIndex?: number 
               ...positionStyle,
               zIndex: wrapperZIndex,
               height: toastHeight,
-              overflow: 'hidden',
+              // Promotional toasts carry an elevation box-shadow that must not
+              // be clipped by this wrapper. They sit at the bottom of the stack
+              // (nothing below them to mask during enter/exit), so only the
+              // informational toasts need the clipping for their stack animations.
+              overflow: isPromotional ? 'visible' : 'hidden',
             }}
             onMouseEnter={() => {
               if (isPromotional) return;
