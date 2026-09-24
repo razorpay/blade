@@ -66,14 +66,19 @@ const slideOut = keyframes`
 const AnimatedFade = styled(BaseBox)<{
   animationType: FlattenSimpleInterpolation | null;
   toastBorderColor: string;
-}>(({ animationType, toastBorderColor, theme }) => {
+  isPromotional: boolean;
+}>(({ animationType, toastBorderColor, isPromotional, theme }) => {
   const borderShadow = `inset 0 0 0 1px ${toastBorderColor}`;
   const highlightShadow = `inset 0px 1.5px 0px 0px ${theme.colors.interactive.background.staticWhite.fadedHighlighted}`;
   const backdropBlur = theme.backdropBlur.medium;
+  // Figma specs an elevation shadow on promotional toasts since they float as
+  // gray popups over page content. Informational toasts only carry the inset
+  // border and highlight shadows below.
+  const elevationShadow = isPromotional ? theme.elevation.midRaised : undefined;
 
   return css`
     overflow: hidden;
-    box-shadow: ${borderShadow}, ${highlightShadow};
+    box-shadow: ${elevationShadow ? `${elevationShadow}, ` : ''}${borderShadow}, ${highlightShadow};
     backdrop-filter: blur(${backdropBlur}px);
     ${animationType}
   `;
@@ -133,6 +138,7 @@ const Toast = ({
         theme.colors,
         isPromotional ? 'popup.border.gray.moderate' : borderColorMap[color],
       )}
+      isPromotional={isPromotional}
       animationType={isVisible ? enter : exit}
       width="100%"
       display="flex"
