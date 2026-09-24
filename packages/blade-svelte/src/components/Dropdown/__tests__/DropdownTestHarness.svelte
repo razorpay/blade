@@ -10,10 +10,13 @@
     onChange,
     value,
     defaultValue,
+    firstTitle = 'Rupee',
   }: {
     onChange?: InputDropdownButtonProps['onChange'];
     value?: string;
     defaultValue?: string;
+    /** Mutable so tests can assert an option keeps its registry index across prop changes. */
+    firstTitle?: string;
   } = $props();
 </script>
 
@@ -30,7 +33,7 @@
       {#snippet children()}
         <ActionList>
           {#snippet children()}
-            <ActionListItem title="Rupee" value="inr" />
+            <ActionListItem title={firstTitle} value="inr" />
             <ActionListItem title="Dollar" value="usd" />
           {/snippet}
         </ActionList>
