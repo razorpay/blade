@@ -1,8 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import nodePlop from 'node-plop';
 
-// Usage: node scripts/generateIcons.mjs [--target react|svelte|all]
+// Usage (from repo root): yarn generate-icons [-- --target react|svelte|all]
+const here = (relative) => fileURLToPath(new URL(relative, import.meta.url));
 const parseTarget = () => {
   const flagIndex = process.argv.indexOf('--target');
   const target = flagIndex === -1 ? 'all' : process.argv[flagIndex + 1];
@@ -14,10 +16,10 @@ const parseTarget = () => {
 
 const generateIcons = async () => {
   const target = parseTarget();
-  const plop = await nodePlop('./plopfile.js');
+  const plop = await nodePlop(here('./plopfile.js'));
   const iconGenerator = plop.getGenerator('generate-icons');
   const indexGenerator = plop.getGenerator('generate-reexports');
-  const iconsJsonFile = JSON.parse(fs.readFileSync('./scripts/icons.json', 'utf-8'));
+  const iconsJsonFile = JSON.parse(fs.readFileSync(here('./icons.json'), 'utf-8'));
 
   // Sequential on purpose: plop actions for different icons write to the same
   // directories, and running them concurrently produced partial files.

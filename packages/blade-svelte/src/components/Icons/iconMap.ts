@@ -1,5 +1,5 @@
 // This file is auto generated
-// Modify at blade/plop/iconMap.svelte.ts.hbs
+// Modify at scripts/icons/plop/iconMap.svelte.ts.hbs
 import type { Component } from 'svelte';
 import type { IconProps } from './types';
 import { AcceptPaymentsFilledIcon } from './AcceptPaymentsFilledIcon';

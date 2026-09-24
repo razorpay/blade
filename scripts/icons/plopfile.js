@@ -6,15 +6,18 @@ const { stringify, parseSync } = require('svgson');
 const { startCase } = require('lodash');
 const prettier = require('prettier');
 
-const SVELTE_ICONS_DIR = '../blade-svelte/src/components/Icons';
-const REACT_ICONS_DIR = './src/components/Icons';
+// Absolute paths so the generator behaves the same regardless of the caller's cwd.
+const REPO_ROOT = path.resolve(__dirname, '../..');
+const REACT_ICONS_DIR = path.join(REPO_ROOT, 'packages/blade/src/components/Icons');
+const SVELTE_ICONS_DIR = path.join(REPO_ROOT, 'packages/blade-svelte/src/components/Icons');
+const TEMPLATES_DIR = path.join(__dirname, 'plop');
 
 // Branded icons keep their own colours/gradients and ignore the `color` prop, so they are
 // exported but kept out of the generic `iconMap` icon picker (see Icons.stories).
 const ICON_MAP_EXCLUDES = ['RazorpayTrustIcon'];
 
 // prettier.format() ignores .prettierrc unless the config is resolved explicitly.
-const prettierConfig = prettier.resolveConfig.sync(__dirname) || {};
+const prettierConfig = prettier.resolveConfig.sync(REPO_ROOT) || {};
 
 // Per-framework differences in the emitted markup. Everything else (title-cased
 // primitive names, colour rewriting, structure) is shared.
@@ -144,7 +147,7 @@ module.exports = (plop) => {
         actions.push({
           type: 'add',
           path: `${REACT_ICONS_DIR}/iconMap.ts`,
-          templateFile: 'plop/iconMap.ts.hbs',
+          templateFile: `${TEMPLATES_DIR}/iconMap.ts.hbs`,
           data: {
             iconMap: mapIcons.map((icon) => `  ${icon}: ${icon}Component,`).join('\n'),
             iconImports: mapIcons
@@ -156,7 +159,7 @@ module.exports = (plop) => {
         actions.push({
           type: 'add',
           path: `${REACT_ICONS_DIR}/index.ts`,
-          templateFile: 'plop/iconReexports.ts.hbs',
+          templateFile: `${TEMPLATES_DIR}/iconReexports.ts.hbs`,
           data: {
             iconReexports: allIcons
               .map((icon) => `export { default as ${icon} } from './${icon}';`)
@@ -173,7 +176,7 @@ module.exports = (plop) => {
         actions.push({
           type: 'add',
           path: `${SVELTE_ICONS_DIR}/iconMap.ts`,
-          templateFile: 'plop/iconMap.svelte.ts.hbs',
+          templateFile: `${TEMPLATES_DIR}/iconMap.svelte.ts.hbs`,
           data: {
             iconMap: mapIcons.map((icon) => `  ${icon},`).join('\n'),
             iconImports: mapIcons.map((icon) => `import { ${icon} } from './${icon}';`).join('\n'),
@@ -183,7 +186,7 @@ module.exports = (plop) => {
         actions.push({
           type: 'add',
           path: `${SVELTE_ICONS_DIR}/index.ts`,
-          templateFile: 'plop/iconReexports.svelte.ts.hbs',
+          templateFile: `${TEMPLATES_DIR}/iconReexports.svelte.ts.hbs`,
           data: {
             iconReexports: allIcons
               .map((icon) => `export { ${icon} } from './${icon}';`)
@@ -230,9 +233,9 @@ module.exports = (plop) => {
       if (targets.includes('react')) {
         actions.push({
           type: 'addMany',
-          templateFiles: 'plop/icon/**',
+          templateFiles: `${TEMPLATES_DIR}/icon/**`,
           destination: `${REACT_ICONS_DIR}/{{name}}Icon`,
-          base: 'plop/icon',
+          base: `${TEMPLATES_DIR}/icon`,
           data: { name },
           abortOnFail: true,
           force: true,
@@ -256,9 +259,9 @@ module.exports = (plop) => {
       if (targets.includes('svelte')) {
         actions.push({
           type: 'addMany',
-          templateFiles: 'plop/icon-svelte/**',
+          templateFiles: `${TEMPLATES_DIR}/icon-svelte/**`,
           destination: `${SVELTE_ICONS_DIR}/{{name}}Icon`,
-          base: 'plop/icon-svelte',
+          base: `${TEMPLATES_DIR}/icon-svelte`,
           data: { name },
           abortOnFail: true,
           force: true,
