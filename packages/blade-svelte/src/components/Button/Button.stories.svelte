@@ -227,7 +227,7 @@
       </div>
       <div
         class="display-flex items-center padding-spacing-4"
-        style="gap: 16px; background-color: var(--interactive-background-primary-default);"
+        style="gap: 16px; background-color: var(--interactive-background-primary-default); border-radius: var(--border-radius-medium);"
       >
         <Button variant="primary" color="white" isLoading loadingType="indefinite" {...rest}>
           White
