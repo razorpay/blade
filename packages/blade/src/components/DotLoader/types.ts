@@ -1,6 +1,5 @@
 import type { dotLoaderGeometry } from './dotLoaderTokens';
-import type { Theme } from '~components/BladeProvider';
-import type { DotNotationToken } from '~utils/lodashButBetter/get';
+import type { IconColors } from '~components/Icons';
 import type { TestID } from '~utils/types';
 
 export type DotLoaderSize = keyof typeof dotLoaderGeometry;
@@ -16,9 +15,13 @@ export type DotLoaderProps = {
   /**
    * Color token for the dots.
    *
+   * Restricted to icon tokens because the dots are a foreground mark that reads
+   * like an icon glyph — background or border tokens are never a meaningful fill
+   * for them, and the narrower union keeps the Svelte and React APIs identical.
+   *
    * @default 'interactive.icon.gray.muted'
    */
-  color?: DotNotationToken<Theme['colors']>;
+  color?: IconColors;
   /**
    * When provided, the loader is exposed to assistive tech as a `status` region
    * with this label. Leave it unset when the surrounding component already

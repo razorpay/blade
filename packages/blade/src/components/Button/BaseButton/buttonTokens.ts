@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
-import type { IconSize } from '~components/Icons';
+import type { IconColors, IconSize } from '~components/Icons';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import type { DotLoaderProps } from '~components/DotLoader';
 import type { Size } from '~tokens/global';
@@ -421,9 +421,7 @@ const loaderColor = {
  * Mirrors the resolution `BaseSpinner` applies to the same value space, so the
  * dot loader lands on exactly the color the spinner did for every button.
  */
-const getLoaderColorToken = (
-  color: BaseSpinnerProps['color'],
-): DotNotationToken<Theme['colors']> => {
+const getLoaderColorToken = (color: BaseSpinnerProps['color']): IconColors => {
   if (color === 'white') {
     return 'interactive.icon.staticWhite.subtle';
   }
@@ -433,7 +431,7 @@ const getLoaderColorToken = (
     return 'interactive.icon.onNeutral.normal';
   }
   if (color && color !== 'neutral') {
-    return `interactive.icon.${color}.subtle` as DotNotationToken<Theme['colors']>;
+    return `interactive.icon.${color}.subtle` as IconColors;
   }
   return 'interactive.icon.gray.muted';
 };

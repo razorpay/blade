@@ -1,3 +1,4 @@
+import type { ReactTestInstance } from 'react-test-renderer';
 import { DotLoader } from '../DotLoader';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { useReducedMotion } from 'react-native-reanimated';
@@ -6,6 +7,24 @@ import {
   dotLoaderTokens,
   REDUCED_MOTION_LIFTED_DOT_INDEX,
 } from '../dotLoaderTokens';
+
+// `react-native-reanimated` is mocked in jest-setup.native.js, so the imported
+// hook is a jest mock at runtime even though its published type is a plain
+// function.
+const mockUseReducedMotion = useReducedMotion as jest.MockedFunction<typeof useReducedMotion>;
+
+/**
+ * Each dot is rendered by the internal `Dot` component, so `container.children`
+ * hands back composites that carry no style of their own. Walk down to the host
+ * views instead — `findAll` matches the container as well, so drop it.
+ */
+const getDotViews = (container: ReactTestInstance): ReactTestInstance[] =>
+  container.findAll((node) => typeof node.type === 'string').filter((node) => node !== container);
+
+/** The animated entry is the only one in the style array carrying a transform. */
+const getDotTransform = (dot: ReactTestInstance): unknown =>
+  (dot.props.style as Record<string, unknown>[]).find((style) => style && 'transform' in style)
+    ?.transform;
 
 describe('<DotLoader />', () => {
   it('should render DotLoader with default props', () => {
@@ -52,15 +71,14 @@ describe('<DotLoader />', () => {
 
   describe('reduced motion', () => {
     afterEach(() => {
-      useReducedMotion.mockReturnValue(false);
+      mockUseReducedMotion.mockReturnValue(false);
     });
 
     it('should hold the middle dot at peak transform/opacity and outer dots at rest (medium)', () => {
-      useReducedMotion.mockReturnValue(true);
+      mockUseReducedMotion.mockReturnValue(true);
 
       const { getByTestId, toJSON } = renderWithTheme(<DotLoader testID="dot-loader-test" />);
-      const container = getByTestId('dot-loader-test');
-      const dots = container.children;
+      const dots = getDotViews(getByTestId('dot-loader-test'));
 
       const { lift } = dotLoaderGeometry.medium;
 
@@ -74,21 +92,18 @@ describe('<DotLoader />', () => {
       expect(dots[2]).toHaveStyle({ opacity: dotLoaderTokens.restOpacity });
 
       // Verify middle dot transform is at peak lift (not resting at translateY: 0)
-      const middleDotStyle = dots[REDUCED_MOTION_LIFTED_DOT_INDEX].props.style as Array<
-        Record<string, unknown>
-      >;
-      const animatedStyle = middleDotStyle.find((s) => s && 'transform' in s);
-      expect(animatedStyle?.transform).toEqual([{ translateY: -lift }]);
+      expect(getDotTransform(dots[REDUCED_MOTION_LIFTED_DOT_INDEX])).toEqual([
+        { translateY: -lift },
+      ]);
 
       expect(toJSON()).toMatchSnapshot();
     });
 
     it('should hold the middle dot at peak transform/opacity and outer dots at rest (large)', () => {
-      useReducedMotion.mockReturnValue(true);
+      mockUseReducedMotion.mockReturnValue(true);
 
       const { getByTestId } = renderWithTheme(<DotLoader size="large" testID="dot-loader-test" />);
-      const container = getByTestId('dot-loader-test');
-      const dots = container.children;
+      const dots = getDotViews(getByTestId('dot-loader-test'));
 
       const { lift } = dotLoaderGeometry.large;
 
@@ -102,11 +117,9 @@ describe('<DotLoader />', () => {
       expect(dots[2]).toHaveStyle({ opacity: dotLoaderTokens.restOpacity });
 
       // Verify middle dot transform is at peak lift for large geometry
-      const middleDotStyle = dots[REDUCED_MOTION_LIFTED_DOT_INDEX].props.style as Array<
-        Record<string, unknown>
-      >;
-      const animatedStyle = middleDotStyle.find((s) => s && 'transform' in s);
-      expect(animatedStyle?.transform).toEqual([{ translateY: -lift }]);
+      expect(getDotTransform(dots[REDUCED_MOTION_LIFTED_DOT_INDEX])).toEqual([
+        { translateY: -lift },
+      ]);
     });
   });
 });
