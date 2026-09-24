@@ -197,7 +197,7 @@
   {#snippet template(args)}
     {@const { variant, color, loadingType, isLoading, children, ...rest } = args}
     <div class="display-flex flex-direction-column" style="gap: 16px;">
-      <div class="display-flex items-center" style="gap: 16px;">
+      <div class="display-flex items-center flex-wrap-wrap" style="gap: 16px;">
         <Button variant="primary" color="primary" isLoading loadingType="indefinite" {...rest}>
           Primary
         </Button>
@@ -211,7 +211,7 @@
           Neutral
         </Button>
       </div>
-      <div class="display-flex items-center" style="gap: 16px;">
+      <div class="display-flex items-center flex-wrap-wrap" style="gap: 16px;">
         <Button variant="secondary" color="primary" isLoading loadingType="indefinite" {...rest}>
           Primary
         </Button>
@@ -226,7 +226,7 @@
         </Button>
       </div>
       <div
-        class="display-flex items-center padding-spacing-4"
+        class="display-flex items-center padding-spacing-4 flex-wrap-wrap"
         style="gap: 16px; background-color: var(--interactive-background-primary-default); border-radius: var(--border-radius-medium);"
       >
         <Button variant="primary" color="white" isLoading loadingType="indefinite" {...rest}>
