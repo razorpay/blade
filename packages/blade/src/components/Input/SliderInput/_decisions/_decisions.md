@@ -124,16 +124,8 @@ custom property, `--slider-input-ratio`, and only that property is transitioned;
 `inset-inline-start`, the fill's `clip-path` and the indicator's offset are all expressions of
 it. Separate transitions on each looked identical on paper but ran on different paths in the
 browser, and during a fast drag the fill visibly trailed the thumb. One interpolation cannot
-split.
-
-A custom property only interpolates once registered, and registration (the CSS Properties and
-Values API) is Baseline only since July 2024: Chrome 85, Safari 16.4, Firefox 128. It is done
-with `CSS.registerProperty` rather than an `@property` rule because only the API reports
-whether it worked; a browser without support drops the rule silently. Where it fails, the
-ratio still substitutes, so every position stays correct, and the thumb, fill and indicator
-fall back to easing their own positions on the same tokens. That keeps the click and keyboard
-glide everywhere, at the cost of the fill possibly trailing on a fast drag with markers in
-those older browsers. The check runs after mount, so server and first client render agree.
+split. Where `@property` is unsupported the ratio does not interpolate, so movement snaps, but
+the three still move together.
 
 Movement uses `2xquick`, the shortest duration the system offers, with the `standard` morph
 easing. A held arrow key repeats, and anything slower would still be easing the previous step

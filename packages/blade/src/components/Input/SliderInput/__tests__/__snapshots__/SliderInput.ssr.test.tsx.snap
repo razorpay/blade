@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SliderInput /> should render on the server 1`] = `"<div id="root"><div data-blade-component="slider-input" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><span style="width:100%;flex-shrink:0;margin-right:0px" id="slider-input-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bksIuc fhmUvk"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc gQLxiP"><p letter-spacing="50" class="StyledBaseText-foUshD lhkeBN" data-blade-component="text">Volume</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 fVGPRy"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text"></p></div></div></div></div></div></span><div data-blade-component="base-box" class="BaseBox-bksIuc iUQgWO"><div class="SliderInputweb__FieldBox-sc-15yreg0-0 fubfEH"><div style="--slider-input-ratio:1" class="SliderInputweb__Control-sc-15yreg0-1 kFQdWm"><div class="SliderInputweb__TrackArea-sc-15yreg0-2 gGgnGh"><div class="SliderTrackweb__TrackContainer-lcbpou-0 bWkPSC"><div style="mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);-webkit-mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);background-color:hsla(206, 10%, 29%, 0.12)" class="SliderTrackweb__TrackLayer-lcbpou-1 locaFT"></div><div style="mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);-webkit-mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);background-color:hsla(0, 0%, 0%, 1);clip-path:inset(0 calc(100% - (calc(3px + var(--slider-input-ratio) * (100% - 3px)))) 0 0)" class="SliderTrackweb__TrackLayer-lcbpou-1 euNZdC"></div></div></div><div style="inset-inline-start:calc(1.5px + var(--slider-input-ratio) * (100% - 3px));transform:translateX(-50%)" role="slider" tabindex="0" id="slider-input-undefined-input-undefined" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-valuetext="100" aria-labelledby="slider-input-undefined-label-undefined" aria-disabled="false" class="SliderInputweb__Thumb-sc-15yreg0-3 dLaKZF"></div><div style="inset-inline-start:calc(1.5px + var(--slider-input-ratio) * (100% - 3px));transform:translateX(-50%) translateY(2px)" aria-hidden="true" class="SliderValueIndicatorweb__IndicatorAnchor-w52dmi-0 gGfWZq"><p letter-spacing="50" class="StyledBaseText-foUshD eFeZqq" data-blade-component="text"><span data-blade-component="animated-value" class="BaseAnimatedValueweb__Stack-sc-1pcsjx1-0 ga-DxIb"><span class="OdometerValueweb__Row-lyl0xg-4 iWzqLT"><span data-blade-component="visually-hidden" class="OdometerValueweb__ReadableValue-lyl0xg-2 hQWzcS">100</span><span aria-hidden="true"><span class="OdometerValueweb__Window-lyl0xg-0 jMRrzN"><span aria-hidden="true" class="OdometerValueweb__Sizer-lyl0xg-1 hXOJNT">0</span><span style="position:absolute;top:0;left:0;transform:translateY(-9.090909090909092%)" class="BaseMotionweb__StyledDiv-gsyvko-0"><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">1</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">2</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">3</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">4</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">5</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">6</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">7</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">8</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">9</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span></span></span><span class="OdometerValueweb__Window-lyl0xg-0 jMRrzN"><span aria-hidden="true" class="OdometerValueweb__Sizer-lyl0xg-1 hXOJNT">0</span><span style="position:absolute;top:0;left:0;transform:none" class="BaseMotionweb__StyledDiv-gsyvko-0"><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">1</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">2</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">3</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">4</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">5</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">6</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">7</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">8</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">9</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span></span></span><span class="OdometerValueweb__Window-lyl0xg-0 jMRrzN"><span aria-hidden="true" class="OdometerValueweb__Sizer-lyl0xg-1 hXOJNT">0</span><span style="position:absolute;top:0;left:0;transform:none" class="BaseMotionweb__StyledDiv-gsyvko-0"><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">1</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">2</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">3</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">4</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">5</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">6</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">7</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">8</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">9</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span></span></span></span></span></span></p></div></div><div aria-hidden="true" class="SliderInputweb__ScaleRow-sc-15yreg0-4 cngKTB"><div style="inset-inline-start:calc(1.5px + 0 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">0</p></div><div style="inset-inline-start:calc(1.5px + 0.25 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">25</p></div><div style="inset-inline-start:calc(1.5px + 0.5 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">50</p></div><div style="inset-inline-start:calc(1.5px + 0.75 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">75</p></div><div style="inset-inline-start:calc(1.5px + 1 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">100</p></div></div></div></div></div></div></div>"`;
+exports[`<SliderInput /> should render on the server 1`] = `"<div id="root"><div data-blade-component="slider-input" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc jfwjMe"><span style="width:100%;flex-shrink:0;margin-right:0px" id="slider-input-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bksIuc fhmUvk"><div data-blade-component="base-box" class="BaseBox-bksIuc eHGxoV"><div data-blade-component="base-box" class="BaseBox-bksIuc"><div data-blade-component="base-box" class="BaseBox-bksIuc gQLxiP"><p letter-spacing="50" class="StyledBaseText-foUshD lhkeBN" data-blade-component="text">Volume</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 fVGPRy"><p letter-spacing="50" class="StyledBaseText-foUshD izyCsZ" data-blade-component="text"></p></div></div></div></div></div></span><div data-blade-component="base-box" class="BaseBox-bksIuc iUQgWO"><div class="SliderInputweb__FieldBox-sc-15yreg0-0 fubfEH"><div style="--slider-input-ratio:1" class="SliderInputweb__Control-sc-15yreg0-1 cNVLRJ"><div class="SliderInputweb__TrackArea-sc-15yreg0-2 gGgnGh"><div class="SliderTrackweb__TrackContainer-lcbpou-0 bWkPSC"><div style="mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);-webkit-mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);background-color:hsla(206, 10%, 29%, 0.12)" class="SliderTrackweb__TrackLayer-lcbpou-1 locaFT"></div><div style="mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);-webkit-mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);background-color:hsla(0, 0%, 0%, 1);clip-path:inset(0 calc(100% - (calc(3px + var(--slider-input-ratio) * (100% - 3px)))) 0 0)" class="SliderTrackweb__TrackLayer-lcbpou-1 locaFT"></div></div></div><div style="inset-inline-start:calc(1.5px + var(--slider-input-ratio) * (100% - 3px));transform:translateX(-50%)" role="slider" tabindex="0" id="slider-input-undefined-input-undefined" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-valuetext="100" aria-labelledby="slider-input-undefined-label-undefined" aria-disabled="false" class="SliderInputweb__Thumb-sc-15yreg0-3 cdrULx"></div><div style="inset-inline-start:calc(1.5px + var(--slider-input-ratio) * (100% - 3px));transform:translateX(-50%) translateY(2px)" aria-hidden="true" class="SliderValueIndicatorweb__IndicatorAnchor-w52dmi-0 blqXjJ"><p letter-spacing="50" class="StyledBaseText-foUshD eFeZqq" data-blade-component="text"><span data-blade-component="animated-value" class="BaseAnimatedValueweb__Stack-sc-1pcsjx1-0 ga-DxIb"><span class="OdometerValueweb__Row-lyl0xg-4 iWzqLT"><span data-blade-component="visually-hidden" class="OdometerValueweb__ReadableValue-lyl0xg-2 hQWzcS">100</span><span aria-hidden="true"><span class="OdometerValueweb__Window-lyl0xg-0 jMRrzN"><span aria-hidden="true" class="OdometerValueweb__Sizer-lyl0xg-1 hXOJNT">0</span><span style="position:absolute;top:0;left:0;transform:translateY(-9.090909090909092%)" class="BaseMotionweb__StyledDiv-gsyvko-0"><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">1</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">2</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">3</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">4</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">5</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">6</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">7</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">8</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">9</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span></span></span><span class="OdometerValueweb__Window-lyl0xg-0 jMRrzN"><span aria-hidden="true" class="OdometerValueweb__Sizer-lyl0xg-1 hXOJNT">0</span><span style="position:absolute;top:0;left:0;transform:none" class="BaseMotionweb__StyledDiv-gsyvko-0"><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">1</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">2</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">3</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">4</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">5</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">6</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">7</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">8</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">9</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span></span></span><span class="OdometerValueweb__Window-lyl0xg-0 jMRrzN"><span aria-hidden="true" class="OdometerValueweb__Sizer-lyl0xg-1 hXOJNT">0</span><span style="position:absolute;top:0;left:0;transform:none" class="BaseMotionweb__StyledDiv-gsyvko-0"><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">1</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">2</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">3</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">4</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">5</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">6</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">7</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">8</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">9</span><span class="OdometerValueweb__Digit-lyl0xg-3 hUaVHq">0</span></span></span></span></span></span></p></div></div><div aria-hidden="true" class="SliderInputweb__ScaleRow-sc-15yreg0-4 cngKTB"><div style="inset-inline-start:calc(1.5px + 0 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">0</p></div><div style="inset-inline-start:calc(1.5px + 0.25 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">25</p></div><div style="inset-inline-start:calc(1.5px + 0.5 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">50</p></div><div style="inset-inline-start:calc(1.5px + 0.75 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">75</p></div><div style="inset-inline-start:calc(1.5px + 1 * (100% - 3px));transform:translateX(-50%)" class="SliderInputweb__ScaleLabel-sc-15yreg0-5 hczFJr"><p letter-spacing="50" class="StyledBaseText-foUshD bhQDgq" data-blade-component="text">100</p></div></div></div></div></div></div></div>"`;
 
 exports[`<SliderInput /> should render on the server 2`] = `
 .c11.c11.c11.c11.c11 {
@@ -21,20 +21,6 @@ exports[`<SliderInput /> should render on the server 2`] = `
   mask-composite: intersect;
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c13.c13.c13.c13.c13 {
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-composite: source-in;
-  -webkit-mask-composite: intersect;
-  mask-composite: intersect;
-  -webkit-transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -77,7 +63,7 @@ exports[`<SliderInput /> should render on the server 2`] = `
   padding: 0;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -94,7 +80,7 @@ exports[`<SliderInput /> should render on the server 2`] = `
   padding: 0;
 }
 
-.c25.c25.c25.c25.c25 {
+.c24.c24.c24.c24.c24 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -192,18 +178,18 @@ exports[`<SliderInput /> should render on the server 2`] = `
   word-wrap: normal;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   position: relative;
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   visibility: hidden;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -220,24 +206,24 @@ exports[`<SliderInput /> should render on the server 2`] = `
   word-wrap: normal;
 }
 
-.c22.c22.c22.c22.c22 {
+.c21.c21.c21.c21.c21 {
   display: block;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   display: inline-block;
   font-variant-numeric: tabular-nums;
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   display: inline-grid;
 }
 
-.c17.c17.c17.c17.c17 > * {
+.c16.c16.c16.c16.c16 > * {
   grid-area: 1 / 1;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   position: absolute;
   bottom: 22px;
   pointer-events: none;
@@ -246,9 +232,9 @@ exports[`<SliderInput /> should render on the server 2`] = `
   padding: 2px 4px;
   background-color: hsla(0,0%,0%,0.72);
   opacity: 0;
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
-  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
+  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c8.c8.c8.c8.c8 {
@@ -265,8 +251,8 @@ exports[`<SliderInput /> should render on the server 2`] = `
   height: 24px;
   cursor: pointer;
   touch-action: none;
-  -webkit-transition: none;
-  transition: none;
+  -webkit-transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
+  transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9::before {
@@ -283,7 +269,7 @@ exports[`<SliderInput /> should render on the server 2`] = `
   top: 11px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   position: absolute;
   top: 6px;
   width: 12px;
@@ -291,11 +277,11 @@ exports[`<SliderInput /> should render on the server 2`] = `
   border-radius: 9999px;
   background-color: hsla(0,0%,0%,1);
   outline: none;
-  -webkit-transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c14.c14.c14.c14.c14:focus-visible {
+.c13.c13.c13.c13.c13:focus-visible {
   outline: 4px solid hsla(206,10%,29%,0.12);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -305,18 +291,18 @@ exports[`<SliderInput /> should render on the server 2`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c23.c23.c23.c23.c23 {
+.c22.c22.c22.c22.c22 {
   position: absolute;
   inset-inline: 0;
   top: 24px;
   pointer-events: none;
 }
 
-.c24.c24.c24.c24.c24 {
+.c23.c23.c23.c23.c23 {
   position: absolute;
   white-space: nowrap;
 }
@@ -397,7 +383,7 @@ exports[`<SliderInput /> should render on the server 2`] = `
                   style="mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);-webkit-mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);background-color:hsla(206, 10%, 29%, 0.12)"
                 />
                 <div
-                  class="c13"
+                  class="c12"
                   style="mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);-webkit-mask-image:radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.25 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.5 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.75 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px);background-color:hsla(0, 0%, 0%, 1);clip-path:inset(0 calc(100% - (calc(3px + var(--slider-input-ratio) * (100% - 3px)))) 0 0)"
                 />
               </div>
@@ -410,7 +396,7 @@ exports[`<SliderInput /> should render on the server 2`] = `
               aria-valuemin="0"
               aria-valuenow="100"
               aria-valuetext="100"
-              class="c14"
+              class="c13"
               id="slider-input-1-input-2"
               role="slider"
               style="inset-inline-start:calc(1.5px + var(--slider-input-ratio) * (100% - 3px));transform:translateX(-50%)"
@@ -418,23 +404,23 @@ exports[`<SliderInput /> should render on the server 2`] = `
             />
             <div
               aria-hidden="true"
-              class="c15"
+              class="c14"
               style="inset-inline-start:calc(1.5px + var(--slider-input-ratio) * (100% - 3px));transform:translateX(-50%) translateY(2px)"
             >
               <p
-                class="c16"
+                class="c15"
                 data-blade-component="text"
                 letter-spacing="50"
               >
                 <span
-                  class="c17"
+                  class="c16"
                   data-blade-component="animated-value"
                 >
                   <span
-                    class="c18"
+                    class="c17"
                   >
                     <span
-                      class="c19"
+                      class="c18"
                       data-blade-component="visually-hidden"
                     >
                       100
@@ -443,11 +429,11 @@ exports[`<SliderInput /> should render on the server 2`] = `
                       aria-hidden="true"
                     >
                       <span
-                        class="c20"
+                        class="c19"
                       >
                         <span
                           aria-hidden="true"
-                          class="c21"
+                          class="c20"
                         >
                           0
                         </span>
@@ -456,68 +442,68 @@ exports[`<SliderInput /> should render on the server 2`] = `
                           style="position:absolute;top:0;left:0;transform:translateY(-9.090909090909092%)"
                         >
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             0
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             1
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             2
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             3
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             4
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             5
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             6
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             7
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             8
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             9
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             0
                           </span>
                         </span>
                       </span>
                       <span
-                        class="c20"
+                        class="c19"
                       >
                         <span
                           aria-hidden="true"
-                          class="c21"
+                          class="c20"
                         >
                           0
                         </span>
@@ -526,68 +512,68 @@ exports[`<SliderInput /> should render on the server 2`] = `
                           style="position:absolute;top:0;left:0;transform:none"
                         >
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             0
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             1
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             2
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             3
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             4
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             5
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             6
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             7
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             8
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             9
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             0
                           </span>
                         </span>
                       </span>
                       <span
-                        class="c20"
+                        class="c19"
                       >
                         <span
                           aria-hidden="true"
-                          class="c21"
+                          class="c20"
                         >
                           0
                         </span>
@@ -596,57 +582,57 @@ exports[`<SliderInput /> should render on the server 2`] = `
                           style="position:absolute;top:0;left:0;transform:none"
                         >
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             0
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             1
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             2
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             3
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             4
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             5
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             6
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             7
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             8
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             9
                           </span>
                           <span
-                            class="c22"
+                            class="c21"
                           >
                             0
                           </span>
@@ -660,14 +646,14 @@ exports[`<SliderInput /> should render on the server 2`] = `
           </div>
           <div
             aria-hidden="true"
-            class="c23"
+            class="c22"
           >
             <div
-              class="c24"
+              class="c23"
               style="inset-inline-start:calc(1.5px + 0 * (100% - 3px));transform:translateX(-50%)"
             >
               <p
-                class="c25"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -675,11 +661,11 @@ exports[`<SliderInput /> should render on the server 2`] = `
               </p>
             </div>
             <div
-              class="c24"
+              class="c23"
               style="inset-inline-start:calc(1.5px + 0.25 * (100% - 3px));transform:translateX(-50%)"
             >
               <p
-                class="c25"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -687,11 +673,11 @@ exports[`<SliderInput /> should render on the server 2`] = `
               </p>
             </div>
             <div
-              class="c24"
+              class="c23"
               style="inset-inline-start:calc(1.5px + 0.5 * (100% - 3px));transform:translateX(-50%)"
             >
               <p
-                class="c25"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -699,11 +685,11 @@ exports[`<SliderInput /> should render on the server 2`] = `
               </p>
             </div>
             <div
-              class="c24"
+              class="c23"
               style="inset-inline-start:calc(1.5px + 0.75 * (100% - 3px));transform:translateX(-50%)"
             >
               <p
-                class="c25"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -711,11 +697,11 @@ exports[`<SliderInput /> should render on the server 2`] = `
               </p>
             </div>
             <div
-              class="c24"
+              class="c23"
               style="inset-inline-start:calc(1.5px + 1 * (100% - 3px));transform:translateX(-50%)"
             >
               <p
-                class="c25"
+                class="c24"
                 data-blade-component="text"
                 letter-spacing="50"
               >

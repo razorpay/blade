@@ -3,7 +3,6 @@ import {
   SLIDER_MARKER_RADIUS,
   SLIDER_MARKER_RING,
   SLIDER_MIN_MARKER_PITCH,
-  SLIDER_RATIO_PROPERTY,
   SLIDER_SCALE_CHAR_WIDTH,
   SLIDER_SCALE_LABEL_GAP,
 } from './sliderInputTokens';
@@ -238,42 +237,7 @@ const getValueFromPointer = ({
   return snapValue(range.min + ratio * (range.max - range.min), range);
 };
 
-/**
- * Registers the shared ratio so it can interpolate, and reports whether it can.
- *
- * Done through `CSS.registerProperty` rather than an `@property` rule because only the API
- * can report the outcome: `@property` is Baseline only since July 2024, and a browser without
- * it drops the rule silently. Returns `false` there, and during SSR, so the caller can ease
- * each element's own position instead.
- */
-const registerRatioProperty = (): boolean => {
-  if (typeof CSS === 'undefined') return false;
-  // The DOM typings this package builds against predate the CSS Properties and Values API.
-  const css = CSS as typeof CSS & {
-    registerProperty?: (definition: {
-      name: string;
-      syntax: string;
-      inherits: boolean;
-      initialValue: string;
-    }) => void;
-  };
-  if (typeof css.registerProperty !== 'function') return false;
-  try {
-    css.registerProperty({
-      name: SLIDER_RATIO_PROPERTY,
-      syntax: '<number>',
-      inherits: true,
-      initialValue: '0',
-    });
-    return true;
-  } catch (error: unknown) {
-    // A registration can never be undone, so every mount after the first lands here.
-    return (error as { name?: unknown } | null)?.name === 'InvalidModificationError';
-  }
-};
-
 export {
-  registerRatioProperty,
   clamp,
   snapValue,
   roundToStep,

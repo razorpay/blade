@@ -18,11 +18,6 @@ type SliderTrackProps = {
   /** Hover, focus and drag all share the highlighted fill. */
   isHighlighted: boolean;
   isRTL: boolean;
-  /**
-   * Duration and easing for the fill to ease its own clip. Set only where the shared ratio
-   * cannot interpolate; otherwise the clip follows the ratio the control eases.
-   */
-  ownMovement?: string;
 };
 
 const TrackContainer = styled.div`
@@ -39,7 +34,7 @@ const TrackContainer = styled.div`
  * Colour and mask arrive through inline styles: both change on every pointer move during a
  * drag, and threading them through styled-components would mint a new class per frame.
  */
-const TrackLayer = styled.div<{ $ownMovement?: string }>`
+const TrackLayer = styled.div`
   position: absolute;
   inset: 0;
   border-radius: ${({ theme }) => makeSize(theme.border.radius.max)};
@@ -51,14 +46,12 @@ const TrackLayer = styled.div<{ $ownMovement?: string }>`
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 
-  /* The clip is normally not transitioned here: it follows the ratio the control eases, so the
-     fill edge moves in the same interpolation as the thumb. */
-  transition: ${({ theme, $ownMovement }) => {
-    const color = `background-color ${makeMotionTime(
+  /* The clip is not transitioned here: it follows the ratio the control eases, so the fill
+     edge moves in the same interpolation as the thumb. */
+  transition: ${({ theme }) =>
+    `background-color ${makeMotionTime(
       theme.motion.duration[sliderInputMotion.color.duration],
-    )} ${String(theme.motion.easing[sliderInputMotion.color.easing])}`;
-    return $ownMovement ? `clip-path ${$ownMovement}, ${color}` : color;
-  }};
+    )} ${String(theme.motion.easing[sliderInputMotion.color.easing])}`};
 `;
 
 /**
@@ -72,7 +65,6 @@ const SliderTrack = ({
   isDisabled,
   isHighlighted,
   isRTL,
-  ownMovement,
 }: SliderTrackProps): React.ReactElement => {
   const { theme } = useTheme();
 
@@ -96,7 +88,6 @@ const SliderTrack = ({
         style={{ ...maskStyle, backgroundColor: get(theme.colors, sliderInputColors.rail) }}
       />
       <TrackLayer
-        $ownMovement={ownMovement}
         style={{
           ...maskStyle,
           backgroundColor: get(theme.colors, fillColorToken),

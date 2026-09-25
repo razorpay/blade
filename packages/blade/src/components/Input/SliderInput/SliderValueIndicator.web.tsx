@@ -21,11 +21,6 @@ type SliderValueIndicatorProps = {
   /** Flips with direction, since `inset-inline-start` resolves to `right` under RTL. */
   centeringTransform: string;
   isVisible: boolean;
-  /**
-   * Duration and easing for the indicator to ease its own position. Set only where the shared
-   * ratio cannot interpolate; otherwise its offset follows the ratio the control eases.
-   */
-  ownMovement?: string;
 };
 
 /**
@@ -37,7 +32,7 @@ type SliderValueIndicatorProps = {
  * The indicator is anchored by a centring wrapper rather than pinned by an edge, so a wider
  * value grows evenly in both directions instead of drifting off the thumb.
  */
-const IndicatorAnchor = styled.div<{ $isVisible: boolean; $ownMovement?: string }>`
+const IndicatorAnchor = styled.div<{ $isVisible: boolean }>`
   position: absolute;
   /* Without this the indicator falls back to its static position, which is exactly where the
      thumb is drawn. */
@@ -51,14 +46,13 @@ const IndicatorAnchor = styled.div<{ $isVisible: boolean; $ownMovement?: string 
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
 
   /*
-   * Fades and rises on the way in, falls away on the way out. Its position is normally not
-   * transitioned here: it follows the ratio the control eases, so it never separates from the
-   * thumb.
+   * Fades and rises on the way in, falls away on the way out. Its position is not transitioned
+   * here: it follows the ratio the control eases, so it never separates from the thumb.
    *
    * Only the rise is animated on the transform: the centring half of it is a constant
    * translateX, so it contributes nothing to the interpolation.
    */
-  transition: ${({ theme, $isVisible, $ownMovement }) => {
+  transition: ${({ theme, $isVisible }) => {
     const duration = makeMotionTime(theme.motion.duration[sliderInputMotion.indicator.duration]);
     const easing = String(
       theme.motion.easing[
@@ -67,8 +61,7 @@ const IndicatorAnchor = styled.div<{ $isVisible: boolean; $ownMovement?: string 
           : sliderInputMotion.indicator.exitEasing
       ],
     );
-    const fade = `opacity ${duration} ${easing}, transform ${duration} ${easing}`;
-    return $ownMovement ? `${fade}, inset-inline-start ${$ownMovement}` : fade;
+    return `opacity ${duration} ${easing}, transform ${duration} ${easing}`;
   }};
 `;
 
@@ -78,7 +71,6 @@ const SliderValueIndicator = ({
   offset,
   centeringTransform,
   isVisible,
-  ownMovement,
 }: SliderValueIndicatorProps): React.ReactElement => {
   // Sits slightly low while hidden so it rises into place as it fades in.
   const rise = isVisible ? '' : ` translateY(${makeSize(SLIDER_INDICATOR_RISE)})`;
@@ -86,7 +78,6 @@ const SliderValueIndicator = ({
   return (
     <IndicatorAnchor
       $isVisible={isVisible}
-      $ownMovement={ownMovement}
       style={{ insetInlineStart: offset, transform: `${centeringTransform}${rise}` }}
       // The value is already on the thumb as `aria-valuetext`; announcing it again here would
       // double it up on every step.

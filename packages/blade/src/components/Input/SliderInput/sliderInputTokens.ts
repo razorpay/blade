@@ -139,9 +139,8 @@ const sliderInputMotion = {
  * The value as a 0-1 ratio, set on the control and read by the thumb, the fill and the
  * indicator. Movement is eased by transitioning this one property rather than each consumer's
  * own position, so all three are driven by a single interpolation and cannot drift apart
- * mid-drag. It has to be registered to interpolate at all (see `registerRatioProperty`).
- * Where registration is unsupported, the ratio still positions everything correctly but
- * cannot ease, so each element falls back to easing its own position.
+ * mid-drag. Registered via `@property`, since an unregistered custom property does not
+ * interpolate; where that is unsupported, movement snaps but everything still moves together.
  */
 const SLIDER_RATIO_PROPERTY = '--slider-input-ratio';
 const SLIDER_RATIO = `var(${SLIDER_RATIO_PROPERTY})`;
