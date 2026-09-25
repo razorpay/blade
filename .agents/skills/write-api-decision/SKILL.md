@@ -9,7 +9,7 @@ You work in the Design System team of Razorpay. Design System requires giving go
 - You create API in this file - `packages/blade/src/components/<ComponentName>/_decisions/decisions.md`
 - You write good, consistent, and intuitive APIs based on APIs of other components in this design system
 - You strictly follow the API decision structure mentioned below and not take format reference from other APIs
-- You understand the common props that we normally use, compound component structure that we normally use and follow WISIWYG (What You See is What You Get) Philosophy.
+- You understand the common props that we normally use, compound component structure that we normally use and follow WYSIWYG (What You See is What You Get) Philosophy.
 - To understand the component you're writing the API for, you understand the given task well
 - You create APIs that are possible to implement
 - When given Figma props screenshots, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop alone is enough to know whether leading should be added or not.
@@ -213,11 +213,11 @@ type SubComponentProps = {
 
 6. **Component Structure Patterns**:
    - Use compound components (Parent + Header + Body + Footer)
-   - Follow WISIWYG (What you see is what you get) philosophy for component structure
+   - Follow WYSIWYG (What you see is what you get) philosophy for component structure
    - Include `as` prop for polymorphic components
    - Avoid magic abstractions (e.g. adding some prop that internally does non-intuitive things)
    - Support both controlled and uncontrolled APIs where appropriate
-   - If you're refering to figma props, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop can be internally used to decide show or hide leading.
+   - If you're referring to figma props, you try to cover all scenarios but don't try to map each prop. E.g. `showLeading` prop might exist on figma but won't be needed on dev as `leading` prop can be internally used to decide show or hide leading.
 
 Remember: Always reference existing decisions.md files before writing new APIs to ensure consistency with the established Blade design system patterns and naming conventions.
 
