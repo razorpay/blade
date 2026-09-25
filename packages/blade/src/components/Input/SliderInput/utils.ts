@@ -247,9 +247,19 @@ const getValueFromPointer = ({
  * each element's own position instead.
  */
 const registerRatioProperty = (): boolean => {
-  if (typeof CSS === 'undefined' || typeof CSS.registerProperty !== 'function') return false;
+  if (typeof CSS === 'undefined') return false;
+  // The DOM typings this package builds against predate the CSS Properties and Values API.
+  const css = CSS as typeof CSS & {
+    registerProperty?: (definition: {
+      name: string;
+      syntax: string;
+      inherits: boolean;
+      initialValue: string;
+    }) => void;
+  };
+  if (typeof css.registerProperty !== 'function') return false;
   try {
-    CSS.registerProperty({
+    css.registerProperty({
       name: SLIDER_RATIO_PROPERTY,
       syntax: '<number>',
       inherits: true,
