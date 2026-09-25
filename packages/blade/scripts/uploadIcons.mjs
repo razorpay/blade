@@ -62,7 +62,11 @@ const readPayload = () => {
     throw new Error('No payload. Pass a JSON file path, or set ICONS_PAYLOAD.');
   }
   if (fs.existsSync(raw)) {
-    return JSON.parse(fs.readFileSync(raw, 'utf8'));
+    try {
+      return JSON.parse(fs.readFileSync(raw, 'utf8'));
+    } catch (error) {
+      throw new Error(`Could not parse JSON from \`${raw}\`: ${error.message}`);
+    }
   }
   try {
     return JSON.parse(zlib.gunzipSync(Buffer.from(raw, 'base64')).toString('utf8'));
@@ -136,8 +140,10 @@ const parseIcons = (payload) => {
 const checkViewBox = ({ svg, componentName }) => {
   const viewBox = /viewBox="([^"]*)"/.exec(svg)?.[1]?.trim();
   if (viewBox !== '0 0 24 24') {
+    const viewBoxText =
+      viewBox === undefined ? '(no viewBox attribute)' : `viewBox="${viewBox}"`;
     blockers.push(
-      `\`${componentName}\` was exported with \`viewBox="${viewBox}"\`, but icons are generated on a 24×24 frame. Resize the icon in Figma to 24×24 and export again.`,
+      `\`${componentName}\` was exported with \`${viewBoxText}\`, but icons are generated on a 24×24 frame. Resize the icon in Figma to 24×24 and export again.`,
     );
   }
 };
@@ -254,13 +260,14 @@ const verifyReactIcons = (changed) => {
 // svelte (@razorpay/blade-svelte)
 // ---------------------------------------------------------------------------------------------
 
-/** `blade-svelte`'s `Icons/_Svg` only has `Svg` and `Path`, and `Path` only takes these props. */
+/** `blade-svelte`'s `Icons/_Svg` only has `Svg` and `Path`, and `Path` accepts these props. */
 const SVELTE_PATH_PROPS = {
   d: 'string',
   fill: 'color',
   fillOpacity: 'number',
   fillRule: 'string',
   clipRule: 'string',
+  clipPath: 'string',
   stroke: 'color',
   strokeWidth: 'number',
   strokeLinecap: 'string',
@@ -270,7 +277,16 @@ const SVELTE_PATH_PROPS = {
 const toSvelteProp = (name, value) => {
   const kind = SVELTE_PATH_PROPS[name];
   if (kind === 'color' && value !== 'none') return `${name}={iconProps.iconColor}`;
-  if (kind === 'number') return `${name}={${Number(value)}}`;
+  if (kind === 'number') {
+    const numericValue = Number(value);
+    if (Number.isNaN(numericValue)) {
+      blockers.push(
+        `A path has \`${name}="${value}"\`, which is not a valid number. Fix the SVG.`,
+      );
+      return `${name}="${value}"`;
+    }
+    return `${name}={${numericValue}}`;
+  }
   return `${name}="${value}"`;
 };
 
@@ -578,7 +594,10 @@ const buildPullRequestBody = (results) => {
 const writeChangeset = ({ branchName, title, results }) => {
   const frontmatter = Object.entries(results)
     .filter(([, result]) => changedIn(result).length)
-    .map(([target]) => `'${TARGETS[target].packageName}': patch`)
+    .map(([target, result]) => {
+      const bump = result.added.length ? 'minor' : 'patch';
+      return `'${TARGETS[target].packageName}': ${bump}`;
+    })
     .join('\n');
   const changesetPath = path.join(REPO_ROOT, `.changeset/figma-icons-${branchName}.md`);
   fs.writeFileSync(changesetPath, `---\n${frontmatter}\n---\n\n${title}\n`);

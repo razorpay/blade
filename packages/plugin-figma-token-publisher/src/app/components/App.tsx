@@ -128,6 +128,19 @@ const App = (): ReactElement => {
           ICON_TARGET_OPTIONS.find((option) => option.id === iconTargetOptionId)?.targets ??
           ICON_TARGET_OPTIONS[0].targets,
       });
+    } catch (error) {
+      // nosemgrep
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: 'error',
+            text: `⛔️ Failed to request icon PR: ${
+              error instanceof Error ? error.message : String(error)
+            }`,
+          },
+        },
+        '*',
+      );
     } finally {
       setIsRequestingIconPr(false);
     }
