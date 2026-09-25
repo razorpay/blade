@@ -32,6 +32,11 @@ TreeView renders a hierarchical list of expandable, selectable items. It works s
 Below are the props that the TreeView component and its subcomponents accept.
 
 ```typescript
+import type { UseFloatingOptions } from '@floating-ui/react';
+
+// Spacing token string like 'spacing.4', or a CSS length like '328px'
+type SpacingValueType = `spacing.${number}` | `${number}px` | `${number}%`;
+
 type TreeViewProps = {
   /**
    * Children of TreeView. Only `TreeViewItem` and `TreeViewLoadMore` are allowed
@@ -156,7 +161,10 @@ type TreeViewItemProps = {
     title?: string;
     content: string;
     /** @default 'right' */
-    placement?: TooltipProps['placement'];
+    placement?: Exclude<
+      UseFloatingOptions['placement'],
+      'left-end' | 'left-start' | 'right-end' | 'right-start'
+    >;
     onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
   };
   /**
@@ -170,7 +178,7 @@ type TreeViewItemProps = {
     content: React.ReactElement;
     footer?: React.ReactNode;
     /** @default 'right' */
-    placement?: PopoverProps['placement'];
+    placement?: UseFloatingOptions['placement'];
     maxWidth?: SpacingValueType;
     onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
   };
