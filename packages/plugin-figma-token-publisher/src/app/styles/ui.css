@@ -77,6 +77,15 @@ textarea.input__field:focus {
   cursor: not-allowed;
 }
 
+.icon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .all-clear {
   margin: 0;
   font-size: 11px;

@@ -100,6 +100,29 @@ body, when any of these hold:
 Removals, hardcoded colours, and emphasis groups where every level shares one value are reported
 as warnings rather than blocked.
 
+## How an icon push works
+
+**Export Blade Icons** works the same way, through `blade-icons-upload.yml` and
+`packages/blade/scripts/uploadIcons.mjs`.
+
+| Stage                                         | Where                                    |
+| --------------------------------------------- | ---------------------------------------- |
+| Name and export the selected icons as SVG     | `src/plugin/getIcons.ts`                 |
+| gzip + base64, dispatch the workflow          | `src/app/api/api.ts`                     |
+| Generate components, snapshots, typecheck, PR | `packages/blade/scripts/uploadIcons.mjs` |
+
+Select a frame of icons, a variant set, or the icons themselves. A variant is named after its set
+plus every value that differs from the set's default variant, so `star` / `variant=filled` becomes
+`StarFilledIcon`. Icons whose generated code already matches the repo are left out of the PR.
+
+The workflow opens the PR as a draft when an icon is not drawn on a 24×24 frame, or when typecheck
+or the snapshot run fails. To generate locally instead, use **Copy JSON** and run:
+
+```bash
+cd packages/blade
+node ./scripts/uploadIcons.mjs ./scripts/icons.json --dry-run
+```
+
 ### Replaying a payload locally
 
 The plugin logs the payload it posts. Save it, then:
