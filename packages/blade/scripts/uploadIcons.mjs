@@ -5,9 +5,15 @@
  * The payload is the same `[{ [iconName]: svgString }]` array that `scripts/icons.json` holds, so
  * a local export can be replayed with:
  *
- *   node ./scripts/uploadIcons.mjs ./scripts/icons.json --dry-run
+ *   node ./scripts/uploadIcons.mjs ./scripts/icons.json --targets=react,svelte --dry-run
  *
- * In CI it arrives gzip + base64 encoded through the `ICONS_PAYLOAD` environment variable.
+ * In CI it arrives gzip + base64 encoded through the `ICONS_PAYLOAD` environment variable, and the
+ * packages to generate for through `ICONS_TARGETS`.
+ *
+ * Targets:
+ * - `react`  → `@razorpay/blade`. One component serves web and native, since `Icons/_Svg` has a
+ *              `.web` and a `.native` implementation of every element.
+ * - `svelte` → `@razorpay/blade-svelte`, which keeps its own, smaller icon set.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -17,30 +23,41 @@ import execa from 'execa';
 import lodash from 'lodash';
 import nodePlop from 'node-plop';
 import randomNameGenerator from 'moniker';
+import { parseSync } from 'svgson';
 
 const GITHUB_BOT_EMAIL = 'tools+cibot@razorpay.com';
 const GITHUB_BOT_USERNAME = 'rzpcibot';
 
 const BLADE_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const REPO_ROOT = path.resolve(BLADE_ROOT, '../..');
-const ICONS_DIRECTORY = path.join(BLADE_ROOT, 'src/components/Icons');
+const REACT_ICONS_DIRECTORY = path.join(BLADE_ROOT, 'src/components/Icons');
+const SVELTE_ROOT = path.join(REPO_ROOT, 'packages/blade-svelte');
+const SVELTE_ICONS_DIRECTORY = path.join(SVELTE_ROOT, 'src/components/Icons');
+
+const TARGETS = {
+  react: { packageName: '@razorpay/blade', label: 'React (web + native)' },
+  svelte: { packageName: '@razorpay/blade-svelte', label: 'Svelte' },
+};
 
 const args = process.argv.slice(2);
 const flags = args.filter((arg) => arg.startsWith('--'));
 const payloadArg = args.find((arg) => !arg.startsWith('--'));
+const targetsFlag = flags.find((flag) => flag.startsWith('--targets='))?.split('=')[1];
 const isDryRun = flags.includes('--dry-run');
 const skipTypecheck = flags.includes('--skip-typecheck');
 const skipSnapshots = flags.includes('--skip-snapshots');
 
 /** Problems that must not ship. A non-empty list downgrades the PR to a draft. */
 const blockers = [];
+/** Worth a reviewer's attention but not a reason to hold the push. */
+const warnings = [];
 
 // ---------------------------------------------------------------------------------------------
 // payload
 // ---------------------------------------------------------------------------------------------
 
 const readPayload = () => {
-  const raw = process.env.ICONS_PAYLOAD ?? payloadArg;
+  const raw = process.env.ICONS_PAYLOAD || payloadArg;
   if (!raw) {
     throw new Error('No payload. Pass a JSON file path, or set ICONS_PAYLOAD.');
   }
@@ -52,6 +69,23 @@ const readPayload = () => {
   } catch (error) {
     return JSON.parse(raw);
   }
+};
+
+/** A dispatch from a plugin build that predates targets carries none, and meant React. */
+const readTargets = () => {
+  const requested = (process.env.ICONS_TARGETS || targetsFlag || 'react')
+    .split(',')
+    .map((target) => target.trim())
+    .filter(Boolean);
+  const unknown = requested.filter((target) => !TARGETS[target]);
+  if (unknown.length || !requested.length) {
+    throw new Error(
+      `Unknown target(s): ${unknown.join(', ')}. Expected one or more of: ${Object.keys(
+        TARGETS,
+      ).join(', ')}.`,
+    );
+  }
+  return new Set(requested);
 };
 
 /** Must match `plopfile.js`, which names the folder and the component. */
@@ -96,7 +130,7 @@ const parseIcons = (payload) => {
 };
 
 /**
- * The generator hardcodes `viewBox="0 0 24 24"`, so artwork drawn on any other frame size is
+ * Both generators hardcode `viewBox="0 0 24 24"`, so artwork drawn on any other frame size is
  * squashed or cropped without any error.
  */
 const checkViewBox = ({ svg, componentName }) => {
@@ -109,22 +143,42 @@ const checkViewBox = ({ svg, componentName }) => {
 };
 
 // ---------------------------------------------------------------------------------------------
-// generation
+// shared helpers
 // ---------------------------------------------------------------------------------------------
-
-const componentFilePath = (componentName) =>
-  path.join(ICONS_DIRECTORY, componentName, `${componentName}.tsx`);
 
 const readIfExists = (filePath) =>
   fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : null;
 
-const reportFailures = (label, { failures }) => {
+const runStep = ({ name, cwd, command }) => {
+  console.log(`\n▶ ${name}: ${command}`);
+  try {
+    // `preferLocal` puts node_modules/.bin (e.g. cross-env) on PATH outside of `yarn run`
+    execa.commandSync(command, { cwd, stdio: 'inherit', shell: true, preferLocal: true });
+    return true;
+  } catch (error) {
+    blockers.push(`\`${name}\` failed (\`${command}\`). See the workflow logs for the output.`);
+    return false;
+  }
+};
+
+const prettierWrite = (paths) => {
+  if (paths.length) execa.sync('yarn', ['prettier', '--write', ...paths], { cwd: BLADE_ROOT });
+};
+
+// ---------------------------------------------------------------------------------------------
+// react (@razorpay/blade — web + native)
+// ---------------------------------------------------------------------------------------------
+
+const reactComponentFile = (componentName) =>
+  path.join(REACT_ICONS_DIRECTORY, componentName, `${componentName}.tsx`);
+
+const reportPlopFailures = (label, { failures }) => {
   failures.forEach((failure) => {
     blockers.push(`${label}: ${failure.error ?? failure.message ?? JSON.stringify(failure)}`);
   });
 };
 
-const generateIcons = async (icons) => {
+const generateReactIcons = async (icons) => {
   // the plop generators resolve `./src/...` against the working directory
   process.chdir(BLADE_ROOT);
   const plop = await nodePlop(path.join(BLADE_ROOT, 'plopfile.js'));
@@ -134,7 +188,7 @@ const generateIcons = async (icons) => {
   const previousSources = new Map(
     icons.map(({ componentName }) => [
       componentName,
-      readIfExists(componentFilePath(componentName)),
+      readIfExists(reactComponentFile(componentName)),
     ]),
   );
 
@@ -145,50 +199,283 @@ const generateIcons = async (icons) => {
       iconName: icon.iconName,
       svgContents: icon.svg,
     });
-    reportFailures(icon.componentName, results);
+    reportPlopFailures(icon.componentName, results);
   }
 
-  reportFailures('Icon re-exports', await reexportsGenerator.runActions({}));
+  reportPlopFailures('Icon re-exports', await reexportsGenerator.runActions({}));
 
   // Plop formats with its own options, so its raw output never matches a committed file. Compare
   // only after the repo's formatting, or every re-exported icon reads as changed.
-  execa.sync(
-    'yarn',
-    [
-      'prettier',
-      '--write',
-      ...icons.map(({ componentName }) => path.join(ICONS_DIRECTORY, componentName)),
-      path.join(ICONS_DIRECTORY, 'iconMap.ts'),
-      path.join(ICONS_DIRECTORY, 'index.ts'),
-    ],
-    { cwd: BLADE_ROOT },
-  );
+  prettierWrite([
+    ...icons.map(({ componentName }) => path.join(REACT_ICONS_DIRECTORY, componentName)),
+    path.join(REACT_ICONS_DIRECTORY, 'iconMap.ts'),
+    path.join(REACT_ICONS_DIRECTORY, 'index.ts'),
+  ]);
 
-  const added = [];
-  const updated = [];
-  const unchanged = [];
+  const result = { added: [], updated: [], unchanged: [], skipped: [] };
   previousSources.forEach((previous, componentName) => {
-    if (previous === null) added.push(componentName);
-    else if (previous !== readIfExists(componentFilePath(componentName)))
-      updated.push(componentName);
-    else unchanged.push(componentName);
+    if (previous === null) result.added.push(componentName);
+    else if (previous !== readIfExists(reactComponentFile(componentName)))
+      result.updated.push(componentName);
+    else result.unchanged.push(componentName);
   });
 
-  return { added, updated, unchanged };
+  const changed = [...result.added, ...result.updated];
+  result.touchedPaths = changed.length
+    ? [
+        ...changed.map((componentName) => path.join(REACT_ICONS_DIRECTORY, componentName)),
+        path.join(REACT_ICONS_DIRECTORY, 'iconMap.ts'),
+        path.join(REACT_ICONS_DIRECTORY, 'index.ts'),
+      ]
+    : [];
+  return result;
 };
 
-const runStep = ({ name, command }) => {
-  console.log(`\n▶ ${name}: ${command}`);
-  try {
-    // `preferLocal` puts node_modules/.bin (e.g. cross-env) on PATH outside of `yarn run`
-    execa.commandSync(command, {
+const verifyReactIcons = (changed) => {
+  if (!skipTypecheck) {
+    runStep({ name: '@razorpay/blade typecheck', cwd: BLADE_ROOT, command: 'yarn typecheck' });
+  }
+  if (!skipSnapshots) {
+    const testPaths = changed.map((name) => `src/components/Icons/${name}/`).join(' ');
+    runStep({
+      name: 'web snapshots',
       cwd: BLADE_ROOT,
-      stdio: 'inherit',
-      shell: true,
-      preferLocal: true,
+      command: `cross-env FRAMEWORK=REACT yarn jest -c ./jest.web.config.js --updateSnapshot --forceExit --ci=false ${testPaths}`,
     });
-  } catch (error) {
-    blockers.push(`\`${name}\` failed (\`${command}\`). See the workflow logs for the output.`);
+    runStep({
+      name: 'native snapshots',
+      cwd: BLADE_ROOT,
+      command: `cross-env FRAMEWORK=REACT_NATIVE yarn jest -c ./jest.native.config.js --updateSnapshot --forceExit --ci=false ${testPaths}`,
+    });
+  }
+};
+
+// ---------------------------------------------------------------------------------------------
+// svelte (@razorpay/blade-svelte)
+// ---------------------------------------------------------------------------------------------
+
+/** `blade-svelte`'s `Icons/_Svg` only has `Svg` and `Path`, and `Path` only takes these props. */
+const SVELTE_PATH_PROPS = {
+  d: 'string',
+  fill: 'color',
+  fillOpacity: 'number',
+  fillRule: 'string',
+  clipRule: 'string',
+  stroke: 'color',
+  strokeWidth: 'number',
+  strokeLinecap: 'string',
+  strokeLinejoin: 'string',
+};
+
+const toSvelteProp = (name, value) => {
+  const kind = SVELTE_PATH_PROPS[name];
+  if (kind === 'color' && value !== 'none') return `${name}={iconProps.iconColor}`;
+  if (kind === 'number') return `${name}={${Number(value)}}`;
+  return `${name}="${value}"`;
+};
+
+/**
+ * Returns the component source, or the reason the icon cannot be expressed with `blade-svelte`'s
+ * primitives. Adding `Circle`, `G`, `ClipPath`... to `_Svg` is a design decision for that package,
+ * not something to slip in through an icon push.
+ */
+const toSvelteComponent = (svg) => {
+  const root = parseSync(svg, { camelcase: true });
+  const paths = root.children.filter((node) => node.type === 'element');
+
+  const unsupportedElements = [
+    ...new Set(paths.filter((node) => node.name !== 'path').map((node) => `<${node.name}>`)),
+  ];
+  if (unsupportedElements.length) {
+    return {
+      reason: `uses ${unsupportedElements.join(
+        ', ',
+      )}, and blade-svelte's \`Icons/_Svg\` only has \`Svg\` and \`Path\``,
+    };
+  }
+
+  const unsupportedProps = [
+    ...new Set(
+      paths.flatMap((node) =>
+        Object.keys(node.attributes).filter((key) => !SVELTE_PATH_PROPS[key]),
+      ),
+    ),
+  ];
+  if (unsupportedProps.length) {
+    return {
+      reason: `sets ${unsupportedProps
+        .map((prop) => `\`${prop}\``)
+        .join(', ')} on a path, which blade-svelte's \`Path\` does not accept`,
+    };
+  }
+
+  const pathSources = paths.map((node) => {
+    const props = Object.entries(node.attributes).map(([name, value]) => toSvelteProp(name, value));
+    return ['  <Path', ...props.map((prop) => `    ${prop}`), '  />'].join('\n');
+  });
+
+  return {
+    source: `<script lang="ts">
+  import { Svg, Path } from '../_Svg';
+  import { getIconProps } from '../getIconProps';
+  import type { IconProps } from '../types';
+
+  let { size = 'medium', color = 'surface.icon.gray.normal', ...rest }: IconProps = $props();
+
+  const iconProps = $derived(getIconProps({ size, color }));
+</script>
+
+<Svg
+  width={iconProps.width}
+  height={iconProps.height}
+  viewBox="0 0 24 24"
+  {...rest}
+>
+${pathSources.join('\n')}
+</Svg>
+`,
+  };
+};
+
+/** Hand-written icons order attributes their own way; the artwork is what has to match. */
+const pathDataOf = (source) => [...source.matchAll(/\bd="([^"]*)"/g)].map((match) => match[1]);
+
+/**
+ * `blade-svelte`'s `index.ts`, `iconMap.ts` and stories are grouped by hand, so a new icon goes at
+ * the end of the group it belongs to rather than through a regenerated file.
+ */
+const insertAfterBlock = ({ content, marker, line, blockPattern }) => {
+  const lines = content.split('\n');
+  const markerIndex = lines.findIndex((candidate) => candidate.trim() === marker);
+  if (markerIndex === -1) return null;
+  let insertAt = markerIndex + 1;
+  while (insertAt < lines.length && blockPattern.test(lines[insertAt])) insertAt += 1;
+  lines.splice(insertAt, 0, line);
+  return lines.join('\n');
+};
+
+const registerSvelteIcon = (componentName) => {
+  const isFilled = componentName.endsWith('FilledIcon');
+  const touched = [];
+
+  const indexPath = path.join(SVELTE_ICONS_DIRECTORY, 'index.ts');
+  const index = insertAfterBlock({
+    content: fs.readFileSync(indexPath, 'utf8'),
+    marker: isFilled ? '// Filled Icons' : '// Stroked Icons',
+    line: `export { ${componentName} } from './${componentName}';`,
+    blockPattern: /^export \{/,
+  });
+  if (index) {
+    fs.writeFileSync(indexPath, index);
+    touched.push(indexPath);
+  } else {
+    blockers.push(
+      `Could not find where to export \`${componentName}\` in \`packages/blade-svelte/src/components/Icons/index.ts\`. Add the export by hand.`,
+    );
+  }
+
+  const iconMapPath = path.join(SVELTE_ICONS_DIRECTORY, 'iconMap.ts');
+  let iconMap = fs.readFileSync(iconMapPath, 'utf8');
+  const lastImport = [...iconMap.matchAll(/^import \{ \w+ \} from '\.\/\w+';$/gm)].pop();
+  const mapEnd = iconMap.lastIndexOf('\n};');
+  if (lastImport && mapEnd !== -1) {
+    iconMap = `${iconMap.slice(0, mapEnd)}\n  ${componentName},${iconMap.slice(mapEnd)}`;
+    const importEnd = lastImport.index + lastImport[0].length;
+    iconMap = `${iconMap.slice(
+      0,
+      importEnd,
+    )}\nimport { ${componentName} } from './${componentName}';${iconMap.slice(importEnd)}`;
+    fs.writeFileSync(iconMapPath, iconMap);
+    touched.push(iconMapPath);
+  } else {
+    blockers.push(
+      `Could not add \`${componentName}\` to \`packages/blade-svelte/src/components/Icons/iconMap.ts\`. Add it by hand.`,
+    );
+  }
+
+  const storiesPath = path.join(SVELTE_ICONS_DIRECTORY, 'Icons.stories.svelte');
+  const storiesWithImport = insertAfterBlock({
+    content: fs.readFileSync(storiesPath, 'utf8'),
+    marker: isFilled ? '// Filled Icons' : '// Stroked Icons',
+    line: `  import { ${componentName} } from './${componentName}';`,
+    blockPattern: /^\s*import \{/,
+  });
+  const stories = storiesWithImport
+    ? insertAfterBlock({
+        content: storiesWithImport,
+        marker: isFilled ? 'const filledIcons = {' : 'const strokedIcons = {',
+        line: `    ${componentName},`,
+        blockPattern: /^\s+\w+,$/,
+      })
+    : null;
+  if (stories) {
+    fs.writeFileSync(storiesPath, stories);
+    touched.push(storiesPath);
+  } else {
+    warnings.push(`\`${componentName}\` was not added to the blade-svelte Icons stories.`);
+  }
+
+  return touched;
+};
+
+const generateSvelteIcons = (icons) => {
+  const result = { added: [], updated: [], unchanged: [], skipped: [] };
+  const touchedPaths = new Set();
+
+  icons.forEach(({ svg, componentName }) => {
+    const { source, reason } = toSvelteComponent(svg);
+    if (!source) {
+      result.skipped.push(componentName);
+      blockers.push(`\`${componentName}\` was not generated for Svelte: it ${reason}.`);
+      return;
+    }
+
+    const iconDirectory = path.join(SVELTE_ICONS_DIRECTORY, componentName);
+    const componentPath = path.join(iconDirectory, `${componentName}.svelte`);
+    const previous = readIfExists(componentPath);
+
+    if (previous !== null && pathDataOf(previous).join('\n') === pathDataOf(source).join('\n')) {
+      result.unchanged.push(componentName);
+      return;
+    }
+
+    fs.mkdirSync(iconDirectory, { recursive: true });
+    fs.writeFileSync(componentPath, source);
+    touchedPaths.add(iconDirectory);
+
+    if (previous !== null) {
+      result.updated.push(componentName);
+      return;
+    }
+
+    fs.writeFileSync(
+      path.join(iconDirectory, 'index.ts'),
+      `export { default as ${componentName} } from './${componentName}.svelte';\n`,
+    );
+    registerSvelteIcon(componentName).forEach((touched) => touchedPaths.add(touched));
+    result.added.push(componentName);
+  });
+
+  // .svelte files are written pre-formatted; the repo has no Svelte parser for prettier
+  prettierWrite([...touchedPaths].filter((touched) => touched.endsWith('.ts')));
+  result.touchedPaths = [...touchedPaths];
+  return result;
+};
+
+const verifySvelteIcons = () => {
+  if (skipTypecheck) return;
+  // svelte-check resolves `@razorpay/blade-core/utils` through its built output
+  const isCoreBuilt = runStep({
+    name: '@razorpay/blade-core build',
+    cwd: path.join(REPO_ROOT, 'packages/blade-core'),
+    command: 'yarn build',
+  });
+  if (isCoreBuilt) {
+    runStep({
+      name: '@razorpay/blade-svelte svelte-check',
+      cwd: SVELTE_ROOT,
+      command: 'yarn svelte-check --threshold error',
+    });
   }
 };
 
@@ -196,23 +483,72 @@ const runStep = ({ name, command }) => {
 // reporting
 // ---------------------------------------------------------------------------------------------
 
+const changedIn = (result) => [...result.added, ...result.updated];
+
 const describeIcons = (componentNames) => {
   const shown = componentNames.slice(0, 3).join(', ');
   const rest = componentNames.length - 3;
   return rest > 0 ? `${shown} and ${rest} more` : shown;
 };
 
-const buildTitle = ({ added, updated }) => {
+const buildTitle = (results) => {
+  const unique = (names) => [...new Set(names)];
+  const added = unique(Object.values(results).flatMap((result) => result.added));
+  const updated = unique(
+    Object.values(results)
+      .flatMap((result) => result.updated)
+      .filter((name) => !added.includes(name)),
+  );
+  const scope = Object.keys(results).length === 1 && results.svelte ? 'blade-svelte' : 'icons';
+
   if (added.length && updated.length) {
-    return `feat(icons): add ${describeIcons(added)}, update ${describeIcons(updated)}`;
+    return `feat(${scope}): add ${describeIcons(added)}, update ${describeIcons(updated)}`;
   }
-  if (added.length) return `feat(icons): add ${describeIcons(added)}`;
-  return `fix(icons): update ${describeIcons(updated)}`;
+  if (added.length) return `feat(${scope}): add ${describeIcons(added)}`;
+  return `fix(${scope}): update ${describeIcons(updated)}`;
 };
 
 const bulletList = (componentNames) => componentNames.map((name) => `- \`${name}\``).join('\n');
 
-const buildPullRequestBody = ({ added, updated, unchanged }) => {
+const buildTargetSection = (target, result) => {
+  const { packageName, label } = TARGETS[target];
+  const sections = [`## ${label} — \`${packageName}\``, ''];
+
+  if (!changedIn(result).length && !result.skipped.length) {
+    sections.push('_No changes._', '');
+  }
+  if (result.added.length) sections.push('**Added**', '', bulletList(result.added), '');
+  if (result.updated.length) {
+    sections.push(
+      '**Updated** — these already existed and their artwork changed:',
+      '',
+      bulletList(result.updated),
+      '',
+    );
+  }
+  if (result.skipped.length) {
+    sections.push(
+      '**Skipped** — could not be generated, see Blocking:',
+      '',
+      bulletList(result.skipped),
+      '',
+    );
+  }
+  if (result.unchanged.length) {
+    sections.push(
+      '<details>',
+      `<summary>Exported but unchanged (${result.unchanged.length})</summary>`,
+      '',
+      bulletList(result.unchanged),
+      '',
+      '</details>',
+      '',
+    );
+  }
+  return sections;
+};
+
+const buildPullRequestBody = (results) => {
   const sections = [
     'This PR was opened by the Icons Upload GitHub action from icons exported with the Blade Token Publisher Figma plugin.',
     '',
@@ -228,36 +564,24 @@ const buildPullRequestBody = ({ added, updated, unchanged }) => {
       '',
     );
   }
+  if (warnings.length) {
+    sections.push('## Warnings', '', ...warnings.map((warning) => `- ${warning}`), '');
+  }
 
-  if (added.length) sections.push('## Added', '', bulletList(added), '');
-  if (updated.length) {
-    sections.push(
-      '## Updated',
-      '',
-      'These icons already existed and their artwork changed. Check the snapshot diffs.',
-      '',
-      bulletList(updated),
-      '',
-    );
-  }
-  if (unchanged.length) {
-    sections.push(
-      '<details>',
-      `<summary>Exported but unchanged (${unchanged.length})</summary>`,
-      '',
-      bulletList(unchanged),
-      '',
-      '</details>',
-      '',
-    );
-  }
+  Object.entries(results).forEach(([target, result]) => {
+    sections.push(...buildTargetSection(target, result));
+  });
 
   return sections.join('\n');
 };
 
-const writeChangeset = ({ branchName, title }) => {
+const writeChangeset = ({ branchName, title, results }) => {
+  const frontmatter = Object.entries(results)
+    .filter(([, result]) => changedIn(result).length)
+    .map(([target]) => `'${TARGETS[target].packageName}': patch`)
+    .join('\n');
   const changesetPath = path.join(REPO_ROOT, `.changeset/figma-icons-${branchName}.md`);
-  fs.writeFileSync(changesetPath, `---\n'@razorpay/blade': patch\n---\n\n${title}\n`);
+  fs.writeFileSync(changesetPath, `---\n${frontmatter}\n---\n\n${title}\n`);
   return changesetPath;
 };
 
@@ -266,44 +590,34 @@ const writeChangeset = ({ branchName, title }) => {
 // ---------------------------------------------------------------------------------------------
 
 const uploadIcons = async () => {
+  const targets = readTargets();
   const icons = parseIcons(readPayload());
   icons.forEach(checkViewBox);
 
-  const { added, updated, unchanged } = await generateIcons(icons);
-  const changedIcons = [...added, ...updated];
+  const results = {};
+  if (targets.has('react')) results.react = await generateReactIcons(icons);
+  if (targets.has('svelte')) results.svelte = generateSvelteIcons(icons);
 
-  if (!changedIcons.length) {
-    console.log(`All ${unchanged.length} exported icon(s) already match the repo. Nothing to do.`);
+  const touchedPaths = Object.values(results).flatMap((result) => result.touchedPaths);
+  if (!touchedPaths.length) {
+    console.log('Every exported icon already matches the repo. Nothing to do.');
     blockers.forEach((blocker) => console.error(`⛔️  ${blocker}`));
     return;
   }
 
-  const touchedPaths = [
-    ...changedIcons.map((componentName) => path.join(ICONS_DIRECTORY, componentName)),
-    path.join(ICONS_DIRECTORY, 'iconMap.ts'),
-    path.join(ICONS_DIRECTORY, 'index.ts'),
-  ];
+  if (results.react && changedIn(results.react).length) verifyReactIcons(changedIn(results.react));
+  if (results.svelte && changedIn(results.svelte).length) verifySvelteIcons();
 
-  if (!skipTypecheck) {
-    runStep({ name: 'typecheck', command: 'yarn typecheck' });
-  }
-  if (!skipSnapshots) {
-    const testPaths = changedIcons.map((name) => `src/components/Icons/${name}/`).join(' ');
-    runStep({
-      name: 'web snapshots',
-      command: `cross-env FRAMEWORK=REACT yarn jest -c ./jest.web.config.js --updateSnapshot --forceExit --ci=false ${testPaths}`,
-    });
-    runStep({
-      name: 'native snapshots',
-      command: `cross-env FRAMEWORK=REACT_NATIVE yarn jest -c ./jest.native.config.js --updateSnapshot --forceExit --ci=false ${testPaths}`,
-    });
-  }
-
-  console.log(`\n${added.length} added, ${updated.length} updated, ${unchanged.length} unchanged.`);
+  Object.entries(results).forEach(([target, result]) => {
+    console.log(
+      `\n${TARGETS[target].label}: ${result.added.length} added, ${result.updated.length} updated, ${result.unchanged.length} unchanged, ${result.skipped.length} skipped.`,
+    );
+  });
+  warnings.forEach((warning) => console.warn(`⚠️  ${warning}`));
   blockers.forEach((blocker) => console.error(`⛔️  ${blocker}`));
 
-  const title = buildTitle({ added, updated });
-  const body = buildPullRequestBody({ added, updated, unchanged });
+  const title = buildTitle(results);
+  const body = buildPullRequestBody(results);
 
   if (isDryRun) {
     console.log(`\n--dry-run: files written, git and GitHub untouched.\n\n# ${title}\n\n${body}`);
@@ -313,7 +627,7 @@ const uploadIcons = async () => {
   const branchName = `figma-icons-${randomNameGenerator
     .generator([randomNameGenerator.verb, randomNameGenerator.noun])
     .choose()}`;
-  const changesetPath = writeChangeset({ branchName, title });
+  const changesetPath = writeChangeset({ branchName, title, results });
 
   execa.sync('git', ['checkout', '-b', branchName], { cwd: REPO_ROOT });
   execa.sync('git', ['config', 'user.email', GITHUB_BOT_EMAIL], { cwd: REPO_ROOT });

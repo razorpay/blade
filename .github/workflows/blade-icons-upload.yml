@@ -6,6 +6,10 @@ on:
       icons:
         description: 'Icons exported from the Figma plugin (gzip + base64 JSON)'
         required: true
+      targets:
+        description: 'Comma-separated packages to generate for: react (web + native), svelte'
+        required: false
+        default: 'react'
 
 jobs:
   icons-upload:
@@ -28,4 +32,5 @@ jobs:
         run: node ./scripts/uploadIcons.mjs
         env:
           ICONS_PAYLOAD: ${{ github.event.inputs.icons }}
+          ICONS_TARGETS: ${{ github.event.inputs.targets }}
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}

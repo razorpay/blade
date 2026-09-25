@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import '../styles/ui.css';
 // eslint-disable-next-line import/extensions
 import 'figma-plugin-ds/dist/figma-plugin-ds.css';
-import type { ExportedIcons } from '../api/api';
+import type { ExportedIcons, IconTarget } from '../api/api';
 import { uploadIcons, uploadTokens } from '../api/api';
 
 type TokenReport = {
@@ -13,6 +13,12 @@ type TokenReport = {
 };
 
 const EMPTY_REPORT: TokenReport = { errors: [], warnings: [], diagnostics: [] };
+
+const ICON_TARGET_OPTIONS: { id: string; label: string; targets: IconTarget[] }[] = [
+  { id: 'react', label: 'React (web + native)', targets: ['react'] },
+  { id: 'svelte', label: 'Svelte', targets: ['svelte'] },
+  { id: 'both', label: 'Both', targets: ['react', 'svelte'] },
+];
 
 /**
  * Preview of the name `plopfile.js` gives the component (lodash `startCase`, spaces removed). The
@@ -78,6 +84,7 @@ const App = (): ReactElement => {
   const [personalAccessToken, setPersonalAccessToken] = useState('');
   const [exportedIcons, setExportedIcons] = useState<ExportedIcons>([]);
   const [isRequestingIconPr, setIsRequestingIconPr] = useState(false);
+  const [iconTargetOptionId, setIconTargetOptionId] = useState(ICON_TARGET_OPTIONS[0].id);
   // The icon export shares this window, but the token footer would dispatch the token workflow
   // with an empty payload.
   const isIconExport = exportedIcons.length > 0;
@@ -117,11 +124,14 @@ const App = (): ReactElement => {
         workflowFileName: 'blade-icons-upload.yml',
         personalAccessToken,
         icons: exportedIcons,
+        targets:
+          ICON_TARGET_OPTIONS.find((option) => option.id === iconTargetOptionId)?.targets ??
+          ICON_TARGET_OPTIONS[0].targets,
       });
     } finally {
       setIsRequestingIconPr(false);
     }
-  }, [exportedIcons, personalAccessToken]);
+  }, [exportedIcons, personalAccessToken, iconTargetOptionId]);
 
   const onCopyIcons = React.useCallback(() => {
     // Figma's plugin iframe does not grant the async Clipboard API.
@@ -191,10 +201,29 @@ const App = (): ReactElement => {
       <main className="app">
         <div className="app__scroll">
           <p className="intro">
-            Opens a PR on razorpay/blade that generates these icons, updates their snapshots, and
-            typechecks. Icons that already match Blade are left out of it. Needs a GitHub personal
-            access token. {accessTokenLink}
+            Opens a PR on razorpay/blade that generates these icons and checks them. Icons that
+            already match Blade are left out of it. Needs a GitHub personal access token.{' '}
+            {accessTokenLink}
           </p>
+          <fieldset className="target-picker">
+            <legend className="label">Raise for</legend>
+            {ICON_TARGET_OPTIONS.map((option) => (
+              <div key={option.id} className="radio">
+                <input
+                  id={`icon-target-${option.id}`}
+                  className="radio__button"
+                  type="radio"
+                  name="icon-target"
+                  value={option.id}
+                  checked={iconTargetOptionId === option.id}
+                  onChange={() => setIconTargetOptionId(option.id)}
+                />
+                <label htmlFor={`icon-target-${option.id}`} className="radio__label">
+                  {option.label}
+                </label>
+              </div>
+            ))}
+          </fieldset>
           <p className="label">Components ({exportedIcons.length})</p>
           <ul className="icon-list">
             {exportedIcons.map((icon) => {

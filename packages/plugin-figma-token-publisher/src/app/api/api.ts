@@ -8,6 +8,8 @@ const WORKFLOW_INPUT_LIMIT = 65535;
 
 type ColorTokens = Record<string, any>;
 export type ExportedIcons = Record<string, string>[];
+/** `react` is `@razorpay/blade`, one component for web and native. */
+export type IconTarget = 'react' | 'svelte';
 
 // GitHub's workflow_dispatch inputs are capped at 65,535 characters. The token payload can
 // exceed that (especially with multiple themes), so we gzip + base64 it before sending.
@@ -97,12 +99,14 @@ export const uploadIcons = async ({
   workflowFileName,
   personalAccessToken,
   icons,
+  targets,
 }: {
   orgName: string;
   repoName: string;
   workflowFileName: string;
   personalAccessToken: string;
   icons: ExportedIcons;
+  targets: IconTarget[];
 }): Promise<void> => {
   const payload = compressPayload(icons);
   // SVG paths compress well, but a large enough board still does not fit in one dispatch
@@ -119,7 +123,7 @@ export const uploadIcons = async ({
     repoName,
     workflowFileName,
     personalAccessToken,
-    inputs: { icons: payload },
+    inputs: { icons: payload, targets: targets.join(',') },
     successText: `🎉 Icon PR requested for ${icons.length} icon${
       icons.length === 1 ? '' : 's'
     }. It opens on razorpay/blade in a few minutes.`,
