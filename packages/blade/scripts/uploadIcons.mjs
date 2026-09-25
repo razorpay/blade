@@ -178,12 +178,30 @@ const reportPlopFailures = (label, { failures }) => {
   });
 };
 
+/** Icon names each registry lists, read as the files are written rather than trusted. */
+const REACT_ICON_REGISTRIES = [
+  { file: 'iconMap.ts', entryPattern: /^\s+(\w+Icon): \w+Component,$/gm },
+  { file: 'index.ts', entryPattern: /^export \{ default as (\w+Icon) \}/gm },
+];
+
+const readRegisteredIcons = ({ file, entryPattern }) =>
+  new Set(
+    [...fs.readFileSync(path.join(REACT_ICONS_DIRECTORY, file), 'utf8').matchAll(entryPattern)].map(
+      (match) => match[1],
+    ),
+  );
+
 const generateReactIcons = async (icons) => {
   // the plop generators resolve `./src/...` against the working directory
   process.chdir(BLADE_ROOT);
   const plop = await nodePlop(path.join(BLADE_ROOT, 'plopfile.js'));
   const iconGenerator = plop.getGenerator('generate-icons');
   const reexportsGenerator = plop.getGenerator('generate-reexports');
+
+  // The re-exports are rebuilt from every icon folder, so an icon that was never registered by
+  // hand lands in this PR too. Say so, or the reviewer finds an entry nobody asked for.
+  const previouslyRegistered = REACT_ICON_REGISTRIES.map(readRegisteredIcons);
+  const exportedNames = new Set(icons.map(({ componentName }) => componentName));
 
   const previousSources = new Map(
     icons.map(({ componentName }) => [
@@ -203,6 +221,21 @@ const generateReactIcons = async (icons) => {
   }
 
   reportPlopFailures('Icon re-exports', await reexportsGenerator.runActions({}));
+
+  REACT_ICON_REGISTRIES.forEach((registry, index) => {
+    const newlyRegistered = [...readRegisteredIcons(registry)].filter(
+      (name) => !previouslyRegistered[index].has(name) && !exportedNames.has(name),
+    );
+    if (newlyRegistered.length) {
+      warnings.push(
+        `${newlyRegistered.map((name) => `\`${name}\``).join(', ')} already existed but ${
+          newlyRegistered.length === 1 ? 'was' : 'were'
+        } missing from \`packages/blade/src/components/Icons/${
+          registry.file
+        }\`. Regenerating it registered ${newlyRegistered.length === 1 ? 'it' : 'them'} as well.`,
+      );
+    }
+  });
 
   // Plop formats with its own options, so its raw output never matches a committed file. Compare
   // only after the repo's formatting, or every re-exported icon reads as changed.
@@ -580,7 +613,7 @@ const writeChangeset = ({ branchName, title, results }) => {
     .filter(([, result]) => changedIn(result).length)
     .map(([target]) => `'${TARGETS[target].packageName}': patch`)
     .join('\n');
-  const changesetPath = path.join(REPO_ROOT, `.changeset/figma-icons-${branchName}.md`);
+  const changesetPath = path.join(REPO_ROOT, `.changeset/${branchName}.md`);
   fs.writeFileSync(changesetPath, `---\n${frontmatter}\n---\n\n${title}\n`);
   return changesetPath;
 };
