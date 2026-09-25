@@ -20,3 +20,6 @@ export const MIN_TOAST_MOBILE = 1;
 export const MIN_TOAST_DESKTOP = 3;
 // While collapsed, how many toasts should be peeking
 export const PEEKS = 3;
+// Extra room inside the toast wrapper's `overflow: hidden` so the toast's drop shadow is not cut off
+// Must cover the offset + blur of `theme.elevation.midRaised`
+export const TOAST_SHADOW_CLIP_OFFSET = 32;
