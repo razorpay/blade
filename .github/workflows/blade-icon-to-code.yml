@@ -30,22 +30,17 @@ jobs:
         run: npm install --global yarn
 
       - name: Install dependencies
-        run: |
-         cd packages/blade
-         yarn install --frozen-lockfile
-      
+        run: yarn install --frozen-lockfile
+
+      # Fetches new icons from Figma into scripts/icons/icons.json
       - name: Update icons.json
         env:
           FIGMA_API_TOKEN: ${{ secrets.FIGMA_API_TOKEN }}
-        run: |
-          cd packages/blade
-          yarn run fetch-icons
-  
-  
-      - name : Update icons Script
-        run: |
-         cd packages/blade
-         yarn run generate-icons
+        run: yarn run fetch-icons
+
+      # Writes React (packages/blade) and Svelte (packages/blade-svelte) icons
+      - name: Generate icons
+        run: yarn run generate-icons
       # 4. create the pull request
       - name : Update React Tests 
         run: |

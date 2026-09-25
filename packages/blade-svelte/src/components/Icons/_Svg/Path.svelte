@@ -33,7 +33,7 @@
     /**
      * Stroke width
      */
-    strokeWidth?: number;
+    strokeWidth?: string | number;
     /**
      * Stroke linecap
      */
