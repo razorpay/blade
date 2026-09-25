@@ -343,26 +343,26 @@ const validateDateComponents = (
 
 /**
  * Detects and parses special single date formats (MMM, MMMM, YYYY)
- * These formats preserve current date/month/year and only change the specified component
+ * These formats use the first day of the month and only change the specified component
  *
  * @param inputValue - The input string to parse
  * @param format - The expected format ('MMM', 'MMMM', or 'YYYY')
  * @returns Object with special format detection, parsed date, and validation result
  *
  * @example
- * // Year format - preserves current month/day, changes year
+ * // Year format - preserves current month, changes year, uses first day of month
  * parseSpecialSingleFormat("2024", "YYYY")
- * // → { isSpecialFormat: true, parsedDate: Date(2024, currentMonth, currentDay), shouldBlock: false }
+ * // → { isSpecialFormat: true, parsedDate: Date(2024, currentMonth, 1), shouldBlock: false }
  *
  * @example
- * // Short month format - preserves current day/year, changes month
+ * // Short month format - preserves current year, changes month, uses first day of month
  * parseSpecialSingleFormat("Aug", "MMM")
- * // → { isSpecialFormat: true, parsedDate: Date(currentYear, 7, currentDay), shouldBlock: false }
+ * // → { isSpecialFormat: true, parsedDate: Date(currentYear, 7, 1), shouldBlock: false }
  *
  * @example
- * // Full month format - preserves current day/year, changes month
+ * // Full month format - preserves current year, changes month, uses first day of month
  * parseSpecialSingleFormat("August", "MMMM")
- * // → { isSpecialFormat: true, parsedDate: Date(currentYear, 7, currentDay), shouldBlock: false }
+ * // → { isSpecialFormat: true, parsedDate: Date(currentYear, 7, 1), shouldBlock: false }
  *
  * @example
  * // Invalid year
@@ -383,13 +383,13 @@ const parseSpecialSingleFormat = (
   const trimmedInput = inputValue.trim();
   const today = new Date();
 
-  // Handle year-only format (YYYY) - keep current month and day, change year
+  // Handle year-only format (YYYY) - keep current month, change year, use first day of month
   if (format === 'YYYY' && /^\d{4}$/.test(trimmedInput)) {
     const year = parseInt(trimmedInput, 10);
     if (year >= 1000 && year <= 3000) {
       return {
         isSpecialFormat: true,
-        parsedDate: new Date(year, today.getMonth(), today.getDate()),
+        parsedDate: new Date(year, today.getMonth(), 1),
         shouldBlock: false,
       };
     } else {
@@ -400,7 +400,7 @@ const parseSpecialSingleFormat = (
     }
   }
 
-  // Handle month formats (MMM, MMMM) - keep current day and year, change month
+  // Handle month formats (MMM, MMMM) - keep current year, change month, use first day of month
   if ((format === 'MMM' || format === 'MMMM') && trimmedInput.length >= 3) {
     // Using DayJS to parse month names (handles both short "Aug" and full "August")
     const monthDate = dayjs(trimmedInput, format === 'MMM' ? 'MMM' : 'MMMM', true);
@@ -413,7 +413,7 @@ const parseSpecialSingleFormat = (
     }
     return {
       isSpecialFormat: true,
-      parsedDate: new Date(today.getFullYear(), monthDate.month(), today.getDate()),
+      parsedDate: new Date(today.getFullYear(), monthDate.month(), 1),
       shouldBlock: false,
     };
   }
