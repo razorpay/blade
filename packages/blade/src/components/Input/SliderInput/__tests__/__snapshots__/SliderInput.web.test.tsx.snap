@@ -21,6 +21,20 @@ exports[`<SliderInput /> should render a slider 1`] = `
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
+.c13.c13.c13.c13.c13 {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in;
+  -webkit-mask-composite: intersect;
+  mask-composite: intersect;
+  -webkit-transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
 .c4.c4.c4.c4.c4 {
   color: hsla(200,10%,18%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -61,7 +75,7 @@ exports[`<SliderInput /> should render a slider 1`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -159,18 +173,18 @@ exports[`<SliderInput /> should render a slider 1`] = `
   word-wrap: normal;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   position: relative;
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   visibility: hidden;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -187,24 +201,24 @@ exports[`<SliderInput /> should render a slider 1`] = `
   word-wrap: normal;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: block;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: inline-block;
   font-variant-numeric: tabular-nums;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: inline-grid;
 }
 
-.c16.c16.c16.c16.c16 > * {
+.c17.c17.c17.c17.c17 > * {
   grid-area: 1 / 1;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   position: absolute;
   bottom: 22px;
   pointer-events: none;
@@ -213,9 +227,9 @@ exports[`<SliderInput /> should render a slider 1`] = `
   padding: 2px 4px;
   background-color: hsla(0,0%,0%,0.72);
   opacity: 0;
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1);
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
-  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
+  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8 {
@@ -232,8 +246,8 @@ exports[`<SliderInput /> should render a slider 1`] = `
   height: 24px;
   cursor: pointer;
   touch-action: none;
-  -webkit-transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
-  transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: none;
+  transition: none;
 }
 
 .c9.c9.c9.c9.c9::before {
@@ -250,7 +264,7 @@ exports[`<SliderInput /> should render a slider 1`] = `
   top: 11px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   position: absolute;
   top: 6px;
   width: 12px;
@@ -258,11 +272,11 @@ exports[`<SliderInput /> should render a slider 1`] = `
   border-radius: 9999px;
   background-color: hsla(0,0%,0%,1);
   outline: none;
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13.c13.c13.c13.c13:focus-visible {
+.c14.c14.c14.c14.c14:focus-visible {
   outline: 4px solid hsla(206,10%,29%,0.12);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -272,8 +286,8 @@ exports[`<SliderInput /> should render a slider 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 <div>
@@ -350,7 +364,7 @@ exports[`<SliderInput /> should render a slider 1`] = `
                   style="background-color: rgba(67, 67, 67, 0.12);"
                 />
                 <div
-                  class="c12"
+                  class="c13"
                   style="background-color: rgb(0, 0, 0); clip-path: inset(0 calc(100% - (calc(3px + var(--slider-input-ratio) * (100% - 3px)))) 0 0);"
                 />
               </div>
@@ -363,7 +377,7 @@ exports[`<SliderInput /> should render a slider 1`] = `
               aria-valuemin="0"
               aria-valuenow="0"
               aria-valuetext="0"
-              class="c13"
+              class="c14"
               id="slider-input-1-input-2"
               role="slider"
               style="inset-inline-start: calc(1.5px + var(--slider-input-ratio) * (100% - 3px)); transform: translateX(-50%);"
@@ -371,23 +385,23 @@ exports[`<SliderInput /> should render a slider 1`] = `
             />
             <div
               aria-hidden="true"
-              class="c14"
+              class="c15"
               style="inset-inline-start: calc(1.5px + var(--slider-input-ratio) * (100% - 3px)); transform: translateX(-50%) translateY(2px);"
             >
               <p
-                class="c15"
+                class="c16"
                 data-blade-component="text"
                 letter-spacing="50"
               >
                 <span
-                  class="c16"
+                  class="c17"
                   data-blade-component="animated-value"
                 >
                   <span
-                    class="c17"
+                    class="c18"
                   >
                     <span
-                      class="c18"
+                      class="c19"
                       data-blade-component="visually-hidden"
                     >
                       0
@@ -396,11 +410,11 @@ exports[`<SliderInput /> should render a slider 1`] = `
                       aria-hidden="true"
                     >
                       <span
-                        class="c19"
+                        class="c20"
                       >
                         <span
                           aria-hidden="true"
-                          class="c20"
+                          class="c21"
                         >
                           0
                         </span>
@@ -409,57 +423,57 @@ exports[`<SliderInput /> should render a slider 1`] = `
                           style="position: absolute; top: 0px; left: 0px; transform: none;"
                         >
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             0
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             1
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             2
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             3
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             4
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             5
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             6
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             7
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             8
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             9
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             0
                           </span>
@@ -497,6 +511,20 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   mask-composite: intersect;
   -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c13.c13.c13.c13.c13 {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in;
+  -webkit-mask-composite: intersect;
+  mask-composite: intersect;
+  -webkit-transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -540,7 +568,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -557,7 +585,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   padding: 0;
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   color: hsla(204,9%,42%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -659,18 +687,18 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   word-wrap: normal;
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   position: relative;
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   visibility: hidden;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -687,24 +715,24 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   word-wrap: normal;
 }
 
-.c21.c21.c21.c21.c21 {
+.c22.c22.c22.c22.c22 {
   display: block;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   display: inline-block;
   font-variant-numeric: tabular-nums;
 }
 
-.c16.c16.c16.c16.c16 {
+.c17.c17.c17.c17.c17 {
   display: inline-grid;
 }
 
-.c16.c16.c16.c16.c16 > * {
+.c17.c17.c17.c17.c17 > * {
   grid-area: 1 / 1;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   position: absolute;
   bottom: 22px;
   pointer-events: none;
@@ -713,9 +741,9 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   padding: 2px 4px;
   background-color: hsla(0,0%,0%,0.72);
   opacity: 0;
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1);
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
-  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
+  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8 {
@@ -732,8 +760,8 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   height: 24px;
   cursor: pointer;
   touch-action: none;
-  -webkit-transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
-  transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: none;
+  transition: none;
 }
 
 .c9.c9.c9.c9.c9::before {
@@ -750,7 +778,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   top: 11px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   position: absolute;
   top: 6px;
   width: 12px;
@@ -758,11 +786,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   border-radius: 9999px;
   background-color: hsla(0,0%,0%,1);
   outline: none;
-  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13.c13.c13.c13.c13:focus-visible {
+.c14.c14.c14.c14.c14:focus-visible {
   outline: 4px solid hsla(206,10%,29%,0.12);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -772,18 +800,18 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c22.c22.c22.c22.c22 {
+.c23.c23.c23.c23.c23 {
   position: absolute;
   inset-inline: 0;
   top: 24px;
   pointer-events: none;
 }
 
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   position: absolute;
   white-space: nowrap;
 }
@@ -862,7 +890,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
                   style="mask-image: radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.2 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.4 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.6 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.8 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px); background-color: rgba(67, 67, 67, 0.12);"
                 />
                 <div
-                  class="c12"
+                  class="c13"
                   style="mask-image: radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.2 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.4 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.6 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.8 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px); background-color: rgb(0, 0, 0); clip-path: inset(0 calc(100% - (calc(3px + var(--slider-input-ratio) * (100% - 3px)))) 0 0);"
                 />
               </div>
@@ -875,7 +903,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               aria-valuemin="0"
               aria-valuenow="16"
               aria-valuetext="16"
-              class="c13"
+              class="c14"
               id="slider-input-19-input-20"
               role="slider"
               style="inset-inline-start: calc(1.5px + var(--slider-input-ratio) * (100% - 3px)); transform: translateX(-50%);"
@@ -883,23 +911,23 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
             />
             <div
               aria-hidden="true"
-              class="c14"
+              class="c15"
               style="inset-inline-start: calc(1.5px + var(--slider-input-ratio) * (100% - 3px)); transform: translateX(-50%) translateY(2px);"
             >
               <p
-                class="c15"
+                class="c16"
                 data-blade-component="text"
                 letter-spacing="50"
               >
                 <span
-                  class="c16"
+                  class="c17"
                   data-blade-component="animated-value"
                 >
                   <span
-                    class="c17"
+                    class="c18"
                   >
                     <span
-                      class="c18"
+                      class="c19"
                       data-blade-component="visually-hidden"
                     >
                       16
@@ -908,11 +936,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
                       aria-hidden="true"
                     >
                       <span
-                        class="c19"
+                        class="c20"
                       >
                         <span
                           aria-hidden="true"
-                          class="c20"
+                          class="c21"
                         >
                           0
                         </span>
@@ -921,68 +949,68 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
                           style="position: absolute; top: 0px; left: 0px; transform: translateY(-9.090909090909092%);"
                         >
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             0
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             1
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             2
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             3
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             4
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             5
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             6
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             7
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             8
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             9
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             0
                           </span>
                         </span>
                       </span>
                       <span
-                        class="c19"
+                        class="c20"
                       >
                         <span
                           aria-hidden="true"
-                          class="c20"
+                          class="c21"
                         >
                           0
                         </span>
@@ -991,57 +1019,57 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
                           style="position: absolute; top: 0px; left: 0px; transform: translateY(-54.54545454545454%);"
                         >
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             0
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             1
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             2
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             3
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             4
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             5
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             6
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             7
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             8
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             9
                           </span>
                           <span
-                            class="c21"
+                            class="c22"
                           >
                             0
                           </span>
@@ -1055,14 +1083,14 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
           </div>
           <div
             aria-hidden="true"
-            class="c22"
+            class="c23"
           >
             <div
-              class="c23"
+              class="c24"
               style="inset-inline-start: calc(1.5px + 0 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c24"
+                class="c25"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -1070,11 +1098,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c23"
+              class="c24"
               style="inset-inline-start: calc(1.5px + 0.2 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c24"
+                class="c25"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -1082,11 +1110,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c23"
+              class="c24"
               style="inset-inline-start: calc(1.5px + 0.4 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c24"
+                class="c25"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -1094,11 +1122,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c23"
+              class="c24"
               style="inset-inline-start: calc(1.5px + 0.6 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c24"
+                class="c25"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -1106,11 +1134,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c23"
+              class="c24"
               style="inset-inline-start: calc(1.5px + 0.8 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c24"
+                class="c25"
                 data-blade-component="text"
                 letter-spacing="50"
               >
@@ -1118,11 +1146,11 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               </p>
             </div>
             <div
-              class="c23"
+              class="c24"
               style="inset-inline-start: calc(1.5px + 1 * (100% - 3px)); transform: translateX(-50%);"
             >
               <p
-                class="c24"
+                class="c25"
                 data-blade-component="text"
                 letter-spacing="50"
               >

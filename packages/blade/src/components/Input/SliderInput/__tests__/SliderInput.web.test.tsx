@@ -342,62 +342,147 @@ describe('<SliderInput />', () => {
     expect(Number(slider.getAttribute('aria-valuenow'))).toBe(afterClick + 1);
   });
 
-  it('should glide for a click but stop easing once the pointer really drags', async () => {
-    const user = userEvents.setup();
-    const { getByRole } = renderWithTheme(<SliderInput label="Volume" defaultValue={50} />);
-    const slider = getByRole('slider');
-    // The pointer handlers live on the control, which is the thumb's parent.
-    const control = slider.parentElement as HTMLElement;
-    // Whitespace is dropped on both sides because jsdom serialises `cubic-bezier()` without it.
-    const withoutSpaces = (css: string): string => css.replace(/\s/g, '');
-    // Movement is eased on the ratio the control owns, which the thumb and the fill both read.
-    const movesWith = (easing: unknown): boolean =>
-      withoutSpaces(getComputedStyle(control).transition).includes(
-        `--slider-input-ratio80ms${withoutSpaces(String(easing))}`,
+  describe('where the ratio can interpolate', () => {
+    const originalCSS = window.CSS;
+    beforeEach(() => {
+      // jsdom has no CSS.registerProperty, so the browsers that do are simulated here.
+      Object.defineProperty(window, 'CSS', {
+        configurable: true,
+        writable: true,
+        value: { ...originalCSS, registerProperty: jest.fn() },
+      });
+    });
+    afterEach(() => {
+      Object.defineProperty(window, 'CSS', {
+        configurable: true,
+        writable: true,
+        value: originalCSS,
+      });
+    });
+
+    it('should glide for a click but stop easing once the pointer really drags', async () => {
+      const user = userEvents.setup();
+      const { getByRole } = renderWithTheme(<SliderInput label="Volume" defaultValue={50} />);
+      const slider = getByRole('slider');
+      // The pointer handlers live on the control, which is the thumb's parent.
+      const control = slider.parentElement as HTMLElement;
+      // Whitespace is dropped on both sides because jsdom serialises `cubic-bezier()` without it.
+      const withoutSpaces = (css: string): string => css.replace(/\s/g, '');
+      // Movement is eased on the ratio the control owns, which the thumb and the fill both read.
+      const movesWith = (easing: unknown): boolean =>
+        withoutSpaces(getComputedStyle(control).transition).includes(
+          `--slider-input-ratio80ms${withoutSpaces(String(easing))}`,
+        );
+      // The thumb does not ease its own position while the control is easing the ratio.
+      expect(getComputedStyle(slider).transition).not.toContain('inset-inline-start');
+
+      // A press on its own is a click, so the thumb travels to where it landed rather than
+      // teleporting there.
+      /*
+       * The press goes through user-event and the move through fireEvent, because neither can
+       * do both here: fireEvent cannot produce a pointerdown carrying `button`, which the
+       * handler requires, and user-event does not put coordinates on the event.
+       *
+       * That also means the 3px slop cannot be exercised in jsdom, since the press arrives
+       * without a clientX to measure from. It is covered in a real browser instead.
+       */
+      await user.pointer({ keys: '[MouseLeft>]', target: control });
+      expect(movesWith(motion.easing.standard)).toBe(true);
+
+      // Once the pointer moves the thumb has to sit under the finger, so the easing goes.
+      fireEvent.pointerMove(control, { clientX: 40 });
+      expect(getComputedStyle(control).transition).not.toContain('--slider-input-ratio');
+
+      // Releasing restores the glide for the next click.
+      fireEvent.pointerUp(control, { clientX: 40 });
+      expect(movesWith(motion.easing.standard)).toBe(true);
+    });
+
+    it('should keep smoothing the drag between steps when markers are shown', async () => {
+      const user = userEvents.setup();
+      const { getByRole } = renderWithTheme(
+        <SliderInput label="Volume" defaultValue={50} step={10} showMarkers={true} />,
       );
+      const control = getByRole('slider').parentElement as HTMLElement;
+      const withoutSpaces = (css: string): string => css.replace(/\s/g, '');
+      const movesFor = (duration: number): boolean =>
+        withoutSpaces(getComputedStyle(control).transition).includes(
+          `--slider-input-ratio${duration}ms${withoutSpaces(String(motion.easing.standard))}`,
+        );
 
-    // A press on its own is a click, so the thumb travels to where it landed rather than
-    // teleporting there.
-    /*
-     * The press goes through user-event and the move through fireEvent, because neither can
-     * do both here: fireEvent cannot produce a pointerdown carrying `button`, which the
-     * handler requires, and user-event does not put coordinates on the event.
-     *
-     * That also means the 3px slop cannot be exercised in jsdom, since the press arrives
-     * without a clientX to measure from. It is covered in a real browser instead.
-     */
-    await user.pointer({ keys: '[MouseLeft>]', target: control });
-    expect(movesWith(motion.easing.standard)).toBe(true);
+      // The steps are coarse enough to hop visibly, so the drag glides between markers, a little
+      // longer than a click so the hop reads as movement.
+      await user.pointer({ keys: '[MouseLeft>]', target: control });
+      fireEvent.pointerMove(control, { clientX: 40 });
+      expect(movesFor(motion.duration.xquick)).toBe(true);
 
-    // Once the pointer moves the thumb has to sit under the finger, so the easing goes.
-    fireEvent.pointerMove(control, { clientX: 40 });
-    expect(getComputedStyle(control).transition).not.toContain('--slider-input-ratio');
-
-    // Releasing restores the glide for the next click.
-    fireEvent.pointerUp(control, { clientX: 40 });
-    expect(movesWith(motion.easing.standard)).toBe(true);
+      fireEvent.pointerUp(control, { clientX: 40 });
+      expect(movesFor(motion.duration['2xquick'])).toBe(true);
+    });
   });
 
-  it('should keep smoothing the drag between steps when markers are shown', async () => {
-    const user = userEvents.setup();
-    const { getByRole } = renderWithTheme(
-      <SliderInput label="Volume" defaultValue={50} step={10} showMarkers={true} />,
-    );
-    const control = getByRole('slider').parentElement as HTMLElement;
+  describe('where the ratio cannot interpolate', () => {
+    // jsdom has no CSS.registerProperty, which is exactly the unsupported case.
     const withoutSpaces = (css: string): string => css.replace(/\s/g, '');
-    const movesFor = (duration: number): boolean =>
-      withoutSpaces(getComputedStyle(control).transition).includes(
-        `--slider-input-ratio${duration}ms${withoutSpaces(String(motion.easing.standard))}`,
+    const easesOwn = (element: Element, property: string, duration: number): boolean =>
+      withoutSpaces(getComputedStyle(element).transition).includes(
+        `${property}${duration}ms${withoutSpaces(String(motion.easing.standard))}`,
       );
 
-    // The steps are coarse enough to hop visibly, so the drag glides between markers, a little
-    // longer than a click so the hop reads as movement.
-    await user.pointer({ keys: '[MouseLeft>]', target: control });
-    fireEvent.pointerMove(control, { clientX: 40 });
-    expect(movesFor(motion.duration.xquick)).toBe(true);
+    it('should still place the thumb, fill and indicator from the ratio', () => {
+      const { getByRole, container } = renderWithTheme(
+        <SliderInput label="Volume" defaultValue={25} />,
+      );
+      const slider = getByRole('slider');
+      const control = slider.parentElement as HTMLElement;
 
-    fireEvent.pointerUp(control, { clientX: 40 });
-    expect(movesFor(motion.duration['2xquick'])).toBe(true);
+      // An unregistered custom property still substitutes, so positions stay correct.
+      expect(control.style.getPropertyValue('--slider-input-ratio')).toBe('0.25');
+      expect(slider.style.insetInlineStart).toContain('var(--slider-input-ratio)');
+      expect(container.querySelector('[style*="clip-path"]')?.getAttribute('style')).toContain(
+        'var(--slider-input-ratio)',
+      );
+    });
+
+    it('should ease each element on its own instead, and still stop easing on a drag', async () => {
+      const user = userEvents.setup();
+      const { getByRole, container } = renderWithTheme(
+        <SliderInput label="Volume" defaultValue={50} />,
+      );
+      const slider = getByRole('slider');
+      const control = slider.parentElement as HTMLElement;
+      const fill = container.querySelector('[style*="clip-path"]') as HTMLElement;
+      const indicator = container.querySelector('[aria-hidden="true"]') as HTMLElement;
+
+      // Nothing to ease on the control, since the ratio would only snap.
+      expect(getComputedStyle(control).transition).not.toContain('--slider-input-ratio');
+      expect(easesOwn(slider, 'inset-inline-start', motion.duration['2xquick'])).toBe(true);
+      expect(easesOwn(fill, 'clip-path', motion.duration['2xquick'])).toBe(true);
+      expect(easesOwn(indicator, 'inset-inline-start', motion.duration['2xquick'])).toBe(true);
+
+      await user.pointer({ keys: '[MouseLeft>]', target: control });
+      fireEvent.pointerMove(control, { clientX: 40 });
+      expect(getComputedStyle(slider).transition).not.toContain('inset-inline-start');
+      expect(getComputedStyle(fill).transition).not.toContain('clip-path');
+
+      fireEvent.pointerUp(control, { clientX: 40 });
+      expect(easesOwn(slider, 'inset-inline-start', motion.duration['2xquick'])).toBe(true);
+    });
+
+    it('should keep smoothing the drag between markers on each element', async () => {
+      const user = userEvents.setup();
+      const { getByRole, container } = renderWithTheme(
+        <SliderInput label="Volume" defaultValue={50} step={10} showMarkers={true} />,
+      );
+      const slider = getByRole('slider');
+      const control = slider.parentElement as HTMLElement;
+      const fill = container.querySelectorAll('[style*="clip-path"]')[0] as HTMLElement;
+
+      await user.pointer({ keys: '[MouseLeft>]', target: control });
+      fireEvent.pointerMove(control, { clientX: 40 });
+      expect(easesOwn(slider, 'inset-inline-start', motion.duration.xquick)).toBe(true);
+      expect(easesOwn(fill, 'clip-path', motion.duration.xquick)).toBe(true);
+    });
   });
 
   it('should hug the value indicator to its text', () => {

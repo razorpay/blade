@@ -1,5 +1,5 @@
 import React from 'react';
-import { getValueFromPointer, snapValue, clamp } from './utils';
+import { getValueFromPointer, snapValue, clamp, registerRatioProperty } from './utils';
 import { SLIDER_DRAG_SLOP } from './sliderInputTokens';
 import type { ValueRange } from './utils';
 import { useControllableState } from '~utils/useControllable';
@@ -29,6 +29,12 @@ type UseSliderInputReturn = {
    * placed. Only this suppresses the movement easing: a click should glide to where it landed.
    */
   isScrubbing: boolean;
+  /**
+   * The shared ratio is registered and can interpolate, so movement is eased on it alone.
+   * `false` on the server, before mount, and in browsers without `CSS.registerProperty`,
+   * where each element eases its own position instead.
+   */
+  isRatioInterpolated: boolean;
   controlProps: {
     onPointerDown: (event: React.PointerEvent<HTMLDivElement>) => void;
     onPointerMove: (event: React.PointerEvent<HTMLDivElement>) => void;
@@ -56,6 +62,12 @@ const useSliderInput = ({
   const [isRTL, setIsRTL] = React.useState(false);
   const [isDragging, setIsDragging] = React.useState(false);
   const [isScrubbing, setIsScrubbing] = React.useState(false);
+  const [isRatioInterpolated, setIsRatioInterpolated] = React.useState(false);
+
+  // In an effect, not during render, so the server and the first client render agree.
+  React.useEffect(() => {
+    setIsRatioInterpolated(registerRatioProperty());
+  }, []);
 
   /** Where the press landed, so movement can be measured against it. */
   const pointerDownX = React.useRef<number | null>(null);
@@ -260,6 +272,7 @@ const useSliderInput = ({
     isRTL,
     isDragging,
     isScrubbing,
+    isRatioInterpolated,
     controlProps: {
       onPointerDown,
       onPointerMove,

@@ -6,10 +6,66 @@ import {
   getSpacedScaleValues,
   getValueRatio,
   getVisibility,
+  registerRatioProperty,
   snapValue,
 } from '../utils';
 
 describe('SliderInput utils', () => {
+  describe('registerRatioProperty', () => {
+    const originalCSS = window.CSS;
+    const withRegisterProperty = (registerProperty?: jest.Mock): void => {
+      Object.defineProperty(window, 'CSS', {
+        configurable: true,
+        writable: true,
+        value: { ...originalCSS, registerProperty },
+      });
+    };
+    afterEach(() => {
+      Object.defineProperty(window, 'CSS', {
+        configurable: true,
+        writable: true,
+        value: originalCSS,
+      });
+    });
+
+    it('should report no support where the API is missing', () => {
+      withRegisterProperty(undefined);
+      expect(registerRatioProperty()).toBe(false);
+    });
+
+    it('should register the ratio as an inherited number', () => {
+      const registerProperty = jest.fn();
+      withRegisterProperty(registerProperty);
+      expect(registerRatioProperty()).toBe(true);
+      expect(registerProperty).toHaveBeenCalledWith({
+        name: '--slider-input-ratio',
+        syntax: '<number>',
+        inherits: true,
+        initialValue: '0',
+      });
+    });
+
+    it('should treat an existing registration as supported', () => {
+      withRegisterProperty(
+        jest.fn(() => {
+          throw Object.assign(new Error('already registered'), {
+            name: 'InvalidModificationError',
+          });
+        }),
+      );
+      expect(registerRatioProperty()).toBe(true);
+    });
+
+    it('should report no support for any other failure', () => {
+      withRegisterProperty(
+        jest.fn(() => {
+          throw new SyntaxError('bad syntax');
+        }),
+      );
+      expect(registerRatioProperty()).toBe(false);
+    });
+  });
+
   describe('snapValue', () => {
     it('should snap to the nearest step', () => {
       const range = { min: 0, max: 100, step: 25 };
