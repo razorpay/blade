@@ -48,6 +48,21 @@ const makeAnimationVariables = (
   return { initial: 'initial', exit: 'exit', ...interactionVariables };
 };
 
+const getFinalTransformValue = (transform: unknown): string | undefined => {
+  if (typeof transform === 'string') return transform;
+  if (Array.isArray(transform)) {
+    const last = transform[transform.length - 1];
+    return typeof last === 'string' ? last : undefined;
+  }
+  return undefined;
+};
+
+const hasTransitionEndTransform = (variant: unknown): boolean => {
+  return (
+    (variant as { transitionEnd?: { transform?: unknown } })?.transitionEnd?.transform !== undefined
+  );
+};
+
 const useMotionVariants = (
   motionVariants: BaseMotionBoxProps['motionVariants'],
   type: BaseMotionBoxProps['type'],
@@ -59,8 +74,23 @@ const useMotionVariants = (
   const shouldSkipEntryAnimation = type === 'out';
   const shouldSkipExitAnimation = type === 'in';
 
-  // We override durations to stop animations but still continue with the expected position changes
-  const newMotionVariants: BaseMotionBoxProps['motionVariants'] = {
+  // When a direction is skipped (type="in" skips exit, type="out" skips entry), the near-zero
+  // duration (0.0001s) WAAPI animation in Firefox doesn't reliably commit `transform` via
+  // commitStyles(). We add `transitionEnd` with the target `transform` so framer-motion sets it
+  // directly as an inline style after the animation, bypassing the commitStyles() path.
+  const animateTransform = getFinalTransformValue(motionVariants.animate?.transform);
+  const shouldAddAnimateTransitionEnd =
+    shouldSkipEntryAnimation &&
+    animateTransform !== undefined &&
+    !hasTransitionEndTransform(motionVariants.animate);
+
+  const exitTransform = getFinalTransformValue(motionVariants.exit?.transform);
+  const shouldAddExitTransitionEnd =
+    shouldSkipExitAnimation &&
+    exitTransform !== undefined &&
+    !hasTransitionEndTransform(motionVariants.exit);
+
+  const newMotionVariants = {
     initial: {
       ...motionVariants.initial,
     },
@@ -70,6 +100,14 @@ const useMotionVariants = (
         ...motionVariants.animate?.transition,
         duration: shouldSkipEntryAnimation ? 0.0001 : motionVariants.animate?.transition?.duration,
       },
+      ...(shouldAddAnimateTransitionEnd
+        ? {
+            transitionEnd: {
+              ...motionVariants.animate?.transitionEnd,
+              transform: animateTransform,
+            },
+          }
+        : {}),
     },
     exit: {
       ...motionVariants.exit,
@@ -77,8 +115,16 @@ const useMotionVariants = (
         ...motionVariants.exit.transition,
         duration: shouldSkipExitAnimation ? 0.0001 : motionVariants.exit.transition?.duration,
       },
+      ...(shouldAddExitTransitionEnd
+        ? {
+            transitionEnd: {
+              ...motionVariants.exit?.transitionEnd,
+              transform: exitTransform,
+            },
+          }
+        : {}),
     },
-  };
+  } as BaseMotionBoxProps['motionVariants'];
 
   return newMotionVariants;
 };
