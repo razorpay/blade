@@ -86,7 +86,11 @@ describe('<AppBar />', () => {
   it('should render AppBarLeading with title and full trust badge', () => {
     const { container, getByText } = renderWithTheme(
       <AppBar>
-        <AppBarLeading title="Mavenshop" trustBadgeVariant="default" trustBadgeLabel="Razorpay Trusted Business" />
+        <AppBarLeading
+          title="Mavenshop"
+          trustBadgeVariant="default"
+          trustBadgeLabel="Razorpay Trusted Business"
+        />
       </AppBar>,
     );
     expect(getByText('Mavenshop')).toBeInTheDocument();
@@ -97,7 +101,11 @@ describe('<AppBar />', () => {
   it('should render AppBarLeading with title and icon-only trust badge', () => {
     const { container, getByText, getByLabelText } = renderWithTheme(
       <AppBar>
-        <AppBarLeading title="Mavenshop" trustBadgeVariant="icon-only" trustBadgeLabel="Razorpay Trusted Business" />
+        <AppBarLeading
+          title="Mavenshop"
+          trustBadgeVariant="icon-only"
+          trustBadgeLabel="Razorpay Trusted Business"
+        />
       </AppBar>,
     );
     expect(getByText('Mavenshop')).toBeInTheDocument();

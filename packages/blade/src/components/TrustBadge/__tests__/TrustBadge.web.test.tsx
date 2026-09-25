@@ -34,9 +34,7 @@ describe('<TrustBadge />', () => {
   });
 
   it('should pass general a11y', async () => {
-    const { container } = renderWithTheme(
-      <TrustBadge label="Razorpay Trusted Business" />,
-    );
+    const { container } = renderWithTheme(<TrustBadge label="Razorpay Trusted Business" />);
     await assertAccessible(container);
   });
 

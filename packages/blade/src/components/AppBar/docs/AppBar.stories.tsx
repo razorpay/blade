@@ -90,7 +90,11 @@ Default.storyName = 'Default';
 const WithLogoTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<OptimizerLogo />} trustBadgeVariant="default" trustBadgeLabel="Razorpay Trusted Business" />
+      <AppBarLeading
+        logo={<OptimizerLogo />}
+        trustBadgeVariant="default"
+        trustBadgeLabel="Razorpay Trusted Business"
+      />
     </AppBar>
   );
 };
@@ -101,7 +105,12 @@ WithLogo.storyName = 'With Logo';
 const WithActionsTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading logo={<TitleInitialsLogo />} title="Maven Shop" trustBadgeVariant="default" trustBadgeLabel="Razorpay Trusted Business" />
+      <AppBarLeading
+        logo={<TitleInitialsLogo />}
+        title="Maven Shop"
+        trustBadgeVariant="default"
+        trustBadgeLabel="Razorpay Trusted Business"
+      />
       <AppBarActions>
         <IconButton
           icon={UserIcon}
@@ -145,7 +154,11 @@ LogoAndTitle.storyName = 'Logo And Title';
 const TitleWithIconBadgeTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <AppBar {...args} backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-      <AppBarLeading title="Maven Shop" trustBadgeVariant="icon-only" trustBadgeLabel="Razorpay Trusted Business" />
+      <AppBarLeading
+        title="Maven Shop"
+        trustBadgeVariant="icon-only"
+        trustBadgeLabel="Razorpay Trusted Business"
+      />
     </AppBar>
   );
 };
@@ -180,7 +193,12 @@ const StickyTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => {
   return (
     <Box height="320px" overflowY="auto" backgroundColor="surface.background.gray.subtle">
       <AppBar {...args} isSticky backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}>
-        <AppBarLeading logo={<MerchantLogo />} title="Maven Shop" trustBadgeVariant="default" trustBadgeLabel="Razorpay Trusted Business" />
+        <AppBarLeading
+          logo={<MerchantLogo />}
+          title="Maven Shop"
+          trustBadgeVariant="default"
+          trustBadgeLabel="Razorpay Trusted Business"
+        />
         <AppBarActions>
           <IconButton icon={BellIcon} accessibilityLabel="Notifications" onClick={noop} />
         </AppBarActions>
@@ -204,7 +222,11 @@ const MerchantCheckoutTemplate: StoryFn<typeof AppBar> = (args: AppBarProps) => 
       backButton={{ onClick: noop, accessibilityLabel: 'Go back' }}
       accessibilityLabel="Mavenshop checkout"
     >
-      <AppBarLeading title="Mavenshop" trustBadgeVariant="default" trustBadgeLabel="Razorpay Trusted Business" />
+      <AppBarLeading
+        title="Mavenshop"
+        trustBadgeVariant="default"
+        trustBadgeLabel="Razorpay Trusted Business"
+      />
       <AppBarActions>
         <IconButton
           icon={UserIcon}
