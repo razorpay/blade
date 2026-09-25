@@ -32,4 +32,5 @@ export type {
   PhoneNumberInputProps,
   PhoneNumberInputInstance,
   PhoneNumberChangePayload,
+  CountrySelectorMode,
 } from './types';

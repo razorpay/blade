@@ -12,6 +12,14 @@ import type {
 } from '../BaseInput/types';
 import type { NecessityIndicator } from '../_Form/types';
 
+/**
+ * Surface used to render the country selector list.
+ * - `bottomsheet`: always a bottom sheet
+ * - `dropdown`: always an anchored dropdown overlay
+ * - `auto`: dropdown on desktop, bottom sheet on mobile
+ */
+export type CountrySelectorMode = 'bottomsheet' | 'dropdown' | 'auto';
+
 /** Rich payload emitted by PhoneNumberInput's `onChange`. */
 export type PhoneNumberChangePayload = {
   /** Formatted phone number with dial code, e.g. `"+91 123456789"`. */
@@ -96,6 +104,11 @@ export interface PhoneNumberInputProps extends StyledPropsBlade, DataAnalyticsAt
   showDialCode?: boolean;
   /** Shows the country selector. @default true */
   showCountrySelector?: boolean;
+  /**
+   * Surface used to render the country selector list.
+   * @default 'bottomsheet'
+   */
+  countrySelectorMode?: CountrySelectorMode;
   /** Called when the clear button is clicked. */
   onClearButtonClick?: () => void;
   /** Optional stable HTML id for the underlying input. Auto-generated when omitted. */
@@ -131,4 +144,8 @@ export type CountrySelectorProps = {
   size: BaseInputSize;
   /** Portals the country list bottom sheet into this element. */
   portalTarget?: HTMLElement | null;
+  /** Surface used to render the country list. @default 'bottomsheet' */
+  mode?: CountrySelectorMode;
+  /** Input wrapper DOM node — anchors the dropdown overlay to the full input width. */
+  inputWrapperEl?: HTMLElement | null;
 };

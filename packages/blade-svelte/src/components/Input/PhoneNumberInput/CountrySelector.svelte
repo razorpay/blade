@@ -48,8 +48,10 @@
     ActionListItemText,
   } from '../../ActionList';
   import { BottomSheet, BottomSheetHeader, BottomSheetBody } from '../../BottomSheet';
+  import { Dropdown, DropdownOverlay } from '../../Dropdown';
   import { ChevronUpDownIcon } from '../../Icons';
   import Text from '../../Typography/Text/Text.svelte';
+  import { getBladeThemeContextGetter } from '../../BladeProvider/bladeThemeContext';
   import SearchInput from '../SearchInput/SearchInput.svelte';
   import type { CountrySelectorProps } from './types';
 
@@ -61,10 +63,19 @@
     flags,
     size,
     portalTarget,
+    inputWrapperEl,
+    mode = 'bottomsheet',
   }: CountrySelectorProps = $props();
 
   let isOpen = $state(false);
   let searchQuery = $state('');
+
+  // BladeProvider tracks viewport width and resolves `platform` at `breakpoints.m`.
+  // Outside a provider there is no viewport signal, so `auto` falls back to bottomsheet.
+  const themeContextGetter = getBladeThemeContextGetter();
+  const resolvedMode = $derived(
+    mode === 'auto' ? (themeContextGetter?.().platform === 'onDesktop' ? 'dropdown' : 'bottomsheet') : mode,
+  );
 
   const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
@@ -96,63 +107,90 @@
   };
 </script>
 
-<button
-  type="button"
-  class="country-selector-trigger"
-  style={`height: ${chipHeight[size]}px; border-radius: ${chipRadius[size]}px; padding: 0 ${chipPadX[size]}px;`}
-  disabled={isDisabled || undefined}
-  aria-label={triggerLabel}
-  aria-haspopup="dialog"
-  aria-expanded={isOpen}
-  onclick={() => (isOpen = true)}
->
-  <img
-    loading="lazy"
-    role="presentation"
-    width={flagSize[size]}
-    src={flagSrc}
-    alt=""
-  />
-  <span class="country-selector-chevron">
-    <ChevronUpDownIcon size="medium" color="interactive.icon.gray.muted" />
-  </span>
-</button>
+{#snippet trigger()}
+  <button
+    type="button"
+    class="country-selector-trigger"
+    style={`height: ${chipHeight[size]}px; border-radius: ${chipRadius[size]}px; padding: 0 ${chipPadX[size]}px;`}
+    disabled={isDisabled || undefined}
+    aria-label={triggerLabel}
+    aria-haspopup={resolvedMode === 'dropdown' ? 'listbox' : 'dialog'}
+    aria-expanded={isOpen}
+    onclick={() => (isOpen ? closeSheet() : (isOpen = true))}
+  >
+    <img
+      loading="lazy"
+      role="presentation"
+      width={flagSize[size]}
+      src={flagSrc}
+      alt=""
+    />
+    <span class="country-selector-chevron">
+      <ChevronUpDownIcon size="medium" color="interactive.icon.gray.muted" />
+    </span>
+  </button>
+{/snippet}
 
-<BottomSheet {isOpen} onDismiss={closeSheet} {portalTarget} snapPoints={[0.5, 0.85, 0.85]}>
-  <BottomSheetHeader title="Select A Country">
-    {#if countryData.length > 1}
-      <div class="country-selector-search">
-        <SearchInput
-          accessibilityLabel="Search country"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          onClearButtonClick={() => (searchQuery = '')}
-        />
-      </div>
-    {/if}
-  </BottomSheetHeader>
-  <BottomSheetBody hasActionList>
-    {#if filteredCountryData.length === 0}
-      <div class="country-selector-empty">
-        <Text color="surface.text.gray.muted">No countries found</Text>
-      </div>
-    {:else}
-      <ActionList selectionType="single" selectedValue={selectedCountry} onAction={handleSelect}>
-        {#each filteredCountryData as country (country.code)}
-          <ActionListItem title={country.name} value={country.code}>
-            {#snippet leading()}
-              <ActionListItemAsset src={flags[country.code]?.['4X3'] ?? ''} alt={country.name} />
-            {/snippet}
-            {#snippet trailing()}
-              <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
-            {/snippet}
-          </ActionListItem>
-        {/each}
-      </ActionList>
-    {/if}
-  </BottomSheetBody>
-</BottomSheet>
+{#snippet searchField()}
+  {#if countryData.length > 1}
+    <div class="country-selector-search">
+      <SearchInput
+        accessibilityLabel="Search country"
+        placeholder="Search"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        onClearButtonClick={() => (searchQuery = '')}
+      />
+    </div>
+  {/if}
+{/snippet}
+
+{#snippet countryList()}
+  {#if filteredCountryData.length === 0}
+    <div class="country-selector-empty">
+      <Text color="surface.text.gray.muted">No countries found</Text>
+    </div>
+  {:else}
+    <ActionList selectionType="single" selectedValue={selectedCountry} onAction={handleSelect}>
+      {#each filteredCountryData as country (country.code)}
+        <ActionListItem title={country.name} value={country.code}>
+          {#snippet leading()}
+            <ActionListItemAsset src={flags[country.code]?.['4X3'] ?? ''} alt={country.name} />
+          {/snippet}
+          {#snippet trailing()}
+            <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
+          {/snippet}
+        </ActionListItem>
+      {/each}
+    </ActionList>
+  {/if}
+{/snippet}
+
+{#if resolvedMode === 'dropdown'}
+  <Dropdown {isOpen} onOpenChange={(open) => (open ? (isOpen = true) : closeSheet())}>
+    {#snippet children()}
+      {@render trigger()}
+      <DropdownOverlay referenceRef={inputWrapperEl}>
+        {#snippet children()}
+          <div class="country-selector-dropdown-search">
+            {@render searchField()}
+          </div>
+          {@render countryList()}
+        {/snippet}
+      </DropdownOverlay>
+    {/snippet}
+  </Dropdown>
+{:else}
+  {@render trigger()}
+  <BottomSheet {isOpen} onDismiss={closeSheet} {portalTarget} snapPoints={[0.5, 0.85, 0.85]}>
+    <BottomSheetHeader title="Select A Country">
+      {@render searchField()}
+    </BottomSheetHeader>
+    <BottomSheetBody hasActionList>
+      {@render countryList()}
+    </BottomSheetBody>
+  </BottomSheet>
+{/if}
 
 <style>
   /* Mirrors React's InputDropdownButton chip: transparent at rest, gray-faded on
@@ -190,6 +228,16 @@
 
   .country-selector-search {
     padding: 0 var(--spacing-4) var(--spacing-5);
+  }
+
+  .country-selector-dropdown-search {
+    padding: var(--spacing-3) var(--spacing-3) var(--spacing-2);
+  }
+
+  /* Single padding source inside the dropdown; the shared search inset is for the
+     bottom-sheet header context only. */
+  .country-selector-dropdown-search .country-selector-search {
+    padding: 0;
   }
 
   .country-selector-empty {

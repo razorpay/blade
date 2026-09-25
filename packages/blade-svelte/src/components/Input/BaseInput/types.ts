@@ -177,6 +177,8 @@ export type BaseInputCommonProps = FormInputLabelProps &
     onTrailingInteractionElementClick?: () => void;
     /** Element rendered before the prefix (e.g. a country selector). */
     leadingInteractionElement?: Snippet;
+    /** Callback receiving the input wrapper DOM node (used to anchor overlays full-width). */
+    setInputWrapperRef?: (el: HTMLElement | null) => void;
     /** Suffix text rendered at the end of the input. */
     suffix?: string;
     /** Trailing icon component. */

@@ -61,6 +61,7 @@
     trailingInteractionElement,
     onTrailingInteractionElementClick,
     leadingInteractionElement,
+    setInputWrapperRef,
     suffix,
     trailingIcon,
     maxCharacters,
@@ -101,6 +102,11 @@
   const effectiveDisabled = $derived(inputGroupCtx?.isDisabled ?? isDisabled);
 
   let inputEl: HTMLInputElement | HTMLTextAreaElement | null = $state(null);
+  let inputWrapperEl = $state<HTMLDivElement | null>(null);
+
+  $effect(() => {
+    setInputWrapperRef?.(inputWrapperEl);
+  });
 
   // Controlled vs uncontrolled: seed internal state from defaultValue once. When
   // `value` is provided the input is controlled and `currentValue` reads it.
@@ -340,6 +346,7 @@
     {/if}
       <div class={focusRingClasses}>
         <div
+          bind:this={inputWrapperEl}
           class={inputWrapperClasses}
           data-disabled={effectiveDisabled ? '' : undefined}
         >
