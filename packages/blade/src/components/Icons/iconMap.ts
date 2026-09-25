@@ -318,6 +318,7 @@ import QRCodeIconComponent from './QRCodeIcon';
 import RadioIconComponent from './RadioIcon';
 import RayIconComponent from './RayIcon';
 import RazorpayIconComponent from './RazorpayIcon';
+import RazorpayTrustIconComponent from './RazorpayTrustIcon';
 import RazorpayXIconComponent from './RazorpayXIcon';
 import RazorpayxPayrollFilledIconComponent from './RazorpayxPayrollFilledIcon';
 import RazorpayxPayrollIconComponent from './RazorpayxPayrollIcon';
@@ -372,6 +373,7 @@ import SparklesIconComponent from './SparklesIcon';
 import SpeakerIconComponent from './SpeakerIcon';
 import SquareIconComponent from './SquareIcon';
 import StampIconComponent from './StampIcon';
+import StarFilledIconComponent from './StarFilledIcon';
 import StarIconComponent from './StarIcon';
 import StopCircleIconComponent from './StopCircleIcon';
 import StorefrontIconComponent from './StorefrontIcon';
@@ -772,6 +774,7 @@ const iconMap: Record<string, IconComponent> = {
   RadioIcon: RadioIconComponent,
   RayIcon: RayIconComponent,
   RazorpayIcon: RazorpayIconComponent,
+  RazorpayTrustIcon: RazorpayTrustIconComponent,
   RazorpayXIcon: RazorpayXIconComponent,
   RazorpayxPayrollFilledIcon: RazorpayxPayrollFilledIconComponent,
   RazorpayxPayrollIcon: RazorpayxPayrollIconComponent,
@@ -826,6 +829,7 @@ const iconMap: Record<string, IconComponent> = {
   SpeakerIcon: SpeakerIconComponent,
   SquareIcon: SquareIconComponent,
   StampIcon: StampIconComponent,
+  StarFilledIcon: StarFilledIconComponent,
   StarIcon: StarIconComponent,
   StopCircleIcon: StopCircleIconComponent,
   StorefrontIcon: StorefrontIconComponent,
