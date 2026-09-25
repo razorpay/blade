@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DotLoader /> should render DotLoader with default props 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  gap: 2px;
+}
+
+.c1.c1.c1.c1.c1 {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: hsla(204,9%,42%,1);
+  opacity: 0.42;
+  -webkit-animation: dvqMq-450290765 1200ms ease-in-out 0ms infinite;
+  animation: dvqMq-450290765 1200ms ease-in-out 0ms infinite;
+}
+
+.c2.c2.c2.c2.c2 {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: hsla(204,9%,42%,1);
+  opacity: 0.42;
+  -webkit-animation: dvqMq-450290765 1200ms ease-in-out 150ms infinite;
+  animation: dvqMq-450290765 1200ms ease-in-out 150ms infinite;
+}
+
+.c3.c3.c3.c3.c3 {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: hsla(204,9%,42%,1);
+  opacity: 0.42;
+  -webkit-animation: dvqMq-450290765 1200ms ease-in-out 300ms infinite;
+  animation: dvqMq-450290765 1200ms ease-in-out 300ms infinite;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c1.c1.c1.c1.c1 {
+    -webkit-animation: none;
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c2.c2.c2.c2.c2 {
+    -webkit-animation: none;
+    animation: none;
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .c3.c3.c3.c3.c3 {
+    -webkit-animation: none;
+    animation: none;
+  }
+}
+
+<div>
+  <span
+    aria-hidden="true"
+    class="c0"
+    data-blade-component="dot-loader"
+  >
+    <span
+      class="c1"
+    />
+    <span
+      class="c2"
+    />
+    <span
+      class="c3"
+    />
+  </span>
+</div>
+`;
