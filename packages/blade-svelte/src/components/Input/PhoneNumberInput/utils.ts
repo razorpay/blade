@@ -6,12 +6,19 @@ import type { CountryCodeType } from '@razorpay/i18nify-js/types';
 /* eslint-enable import/no-duplicates */
 import type { PhoneCountryCode, PhoneCountryInfo, ResolvedPhoneCountry } from './types';
 
+// The repo targets ES2019, where `Intl.DisplayNames` (ES2020) is not in the
+// TypeScript lib. Define a minimal interface for the shape we use and cast
+// through `unknown` at construction so tsc compiles without raising the target.
+interface CountryNameFormatter {
+  of(code: string): string | undefined;
+}
+
 // i18nify wraps every lookup in `withErrorBoundary`, which logs a console.error
 // AND throws on unknown codes. Reading the full maps once and indexing them is
 // the only way to stay silent for codes i18nify does not know (e.g. 'XK').
 let i18nifyDialCodes: Record<string, string> | undefined,
   i18nifyFlags: Record<string, { '4X3': string }> | undefined,
-  countryNameFormatter: Intl.DisplayNames | undefined;
+  countryNameFormatter: CountryNameFormatter | undefined;
 
 const loadDialCodes = (): Record<string, string> => {
   try {
@@ -59,7 +66,13 @@ export const getFlagSafe = (code: string): string | undefined => getI18nifyFlags
 export const getCountryNameSafe = (code: string): string => {
   try {
     if (!countryNameFormatter) {
-      countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
+      const DisplayNames = ((Intl as unknown) as {
+        DisplayNames: new (
+          locales: string | string[],
+          options: { type: string },
+        ) => CountryNameFormatter;
+      }).DisplayNames;
+      countryNameFormatter = new DisplayNames(['en'], { type: 'region' });
     }
     return countryNameFormatter.of(code) ?? code;
   } catch {
