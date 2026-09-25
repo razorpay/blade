@@ -90,27 +90,24 @@
 <!-- 2. With Controlled Menu — external open control via bound state. -->
 <Story name="With Controlled Menu">
   {#snippet template()}
-    <div>
-      <Button marginBottom="spacing.3" onClick={() => (controlledOpen = !controlledOpen)}>
-        Toggle menu ({controlledOpen ? 'open' : 'closed'})
-      </Button>
-      <Dropdown isOpen={controlledOpen} onOpenChange={(o) => (controlledOpen = o)}>
-        {#snippet children()}
-          <Button onClick={() => (controlledOpen = !controlledOpen)}>Menu</Button>
-          <DropdownOverlay>
-            {#snippet children()}
-              <ActionList>
-                {#snippet children()}
-                  <ActionListItem title="Overview" value="overview" />
-                  <ActionListItem title="Transactions" value="transactions" />
-                  <ActionListItem title="Reports" value="reports" />
-                {/snippet}
-              </ActionList>
-            {/snippet}
-          </DropdownOverlay>
-        {/snippet}
-      </Dropdown>
-    </div>
+    <Dropdown isOpen={controlledOpen} onOpenChange={(o) => (controlledOpen = o)}>
+      {#snippet children()}
+        <Button onClick={() => (controlledOpen = !controlledOpen)}>
+          Toggle menu ({controlledOpen ? 'open' : 'closed'})
+        </Button>
+        <DropdownOverlay>
+          {#snippet children()}
+            <ActionList>
+              {#snippet children()}
+                <ActionListItem title="Overview" value="overview" />
+                <ActionListItem title="Transactions" value="transactions" />
+                <ActionListItem title="Reports" value="reports" />
+              {/snippet}
+            </ActionList>
+          {/snippet}
+        </DropdownOverlay>
+      {/snippet}
+    </Dropdown>
   {/snippet}
 </Story>
 
@@ -118,31 +115,29 @@
      chevron that flips with open state (mirrors React `WithLink`). -->
 <Story name="With Link">
   {#snippet template()}
-    <div style="display:flex;align-items:center;gap:8px">
-      <Link
-        variant="button"
-        icon={ChevronDownIcon}
-        iconPosition="right"
-        onClick={() => (linkOpen = !linkOpen)}
-      >
-        Sort By
-      </Link>
-      <Dropdown isOpen={linkOpen} onOpenChange={(o) => (linkOpen = o)}>
-        {#snippet children()}
-          <DropdownOverlay>
-            {#snippet children()}
-              <ActionList>
-                {#snippet children()}
-                  <ActionListItem title="Latest Added" value="latest-added" />
-                  <ActionListItem title="Latest Invoice" value="latest-invoice" />
-                  <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
-                {/snippet}
-              </ActionList>
-            {/snippet}
-          </DropdownOverlay>
-        {/snippet}
-      </Dropdown>
-    </div>
+    <Dropdown isOpen={linkOpen} onOpenChange={(o) => (linkOpen = o)}>
+      {#snippet children()}
+        <Link
+          variant="button"
+          icon={ChevronDownIcon}
+          iconPosition="right"
+          onClick={() => (linkOpen = !linkOpen)}
+        >
+          Sort By
+        </Link>
+        <DropdownOverlay>
+          {#snippet children()}
+            <ActionList>
+              {#snippet children()}
+                <ActionListItem title="Latest Added" value="latest-added" />
+                <ActionListItem title="Latest Invoice" value="latest-invoice" />
+                <ActionListItem title="Oldest Due Date" value="oldest-due-date" />
+              {/snippet}
+            </ActionList>
+          {/snippet}
+        </DropdownOverlay>
+      {/snippet}
+    </Dropdown>
   {/snippet}
 </Story>
 

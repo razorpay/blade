@@ -1,13 +1,14 @@
 import { cva } from 'class-variance-authority';
 // @ts-expect-error - CSS modules may not have type definitions in build
 import styles from './dropdown.module.css';
+import type { BaseInputSize } from '../Input/baseInputTokens';
 
 export type DropdownOverlayVariants = {
   isInBottomSheet?: boolean;
   isMenu?: boolean;
 };
 
-export type InputDropdownButtonSize = 'small' | 'medium' | 'large';
+export type InputDropdownButtonSize = BaseInputSize;
 
 export type InputDropdownButtonVariants = {
   size?: InputDropdownButtonSize;
@@ -47,6 +48,7 @@ export function getDropdownOverlayClasses(props: DropdownOverlayVariants): strin
 export const inputDropdownButtonStyles = cva(styles.idButton, {
   variants: {
     size: {
+      xsmall: styles.idButtonXsmall,
       small: styles.idButtonSmall,
       medium: styles.idButtonMedium,
       large: styles.idButtonLarge,

@@ -27,7 +27,7 @@
     width,
     minWidth,
     maxWidth,
-    referenceEl,
+    referenceRef,
     defaultPlacement = 'bottom-start',
     _isNestedDropdown = false,
     ...rest
@@ -39,22 +39,31 @@
 
   const isOpen = $derived(dropdown?.isOpen ?? false);
 
-  const reference = $derived(referenceEl ?? dropdown?.triggererWrapperEl ?? dropdown?.triggererEl ?? null);
+  const reference = $derived(referenceRef ?? dropdown?.triggererWrapperEl ?? dropdown?.triggererEl ?? null);
 
-  const isMenu = $derived(
-    (dropdown?.dropdownTriggerer !== 'InputDropdownButton' && !referenceEl) || _isNestedDropdown,
-  );
+  // React parity: React excludes only SelectInput / SearchInput / AutoComplete
+  // from isMenu — NOT InputDropdownButton. Those triggers don't exist in this
+  // Svelte partial yet, so isMenu is true for every current trigger when no
+  // explicit referenceRef is passed. The a11y roles (listbox/option for
+  // InputDropdownButton) are governed separately by isRoleMenu in
+  // getA11yRoles.ts, keeping width and a11y concerns decoupled.
+  const isMenu = $derived(!referenceRef || _isNestedDropdown);
 
   let floatingEl = $state<HTMLDivElement | null>(null);
   let floatingX = $state(0);
   let floatingY = $state(0);
   let referenceWidth = $state<number | null>(null);
+  // Flip result — picks the enter/exit keyframe so the overlay slides in from the
+  // side it opens (top-placed slides up).
+  let placementSide = $state<'top' | 'bottom'>('bottom');
 
   // Visibility: the portal node is always mounted (so ActionList options stay
   // registered even while closed); `isActive` toggles display + drives the
   // enter/exit transition via `data-state`.
   let isActive = $state(false);
-  let dataState = $state<'open' | 'closed'>('closed');
+  // 'initial' = pre-reveal (no animation) — held until the placement side resolves
+  // so the enter animation runs for the correct side. Enter path: closed→initial→open.
+  let dataState = $state<'open' | 'closed' | 'initial'>('closed');
   let unmountTimeoutId: ReturnType<typeof setTimeout> | null = null;
   const UNMOUNT_FALLBACK_MS = 240;
 
@@ -79,13 +88,11 @@
       };
     }
     isActive = true;
-    const id = requestAnimationFrame(() => {
-      dataState = 'open';
-    });
-    return () => cancelAnimationFrame(id);
+    if (dataState !== 'open') dataState = 'initial';
+    return () => {};
   });
 
-  function handleSurfaceTransitionEnd(): void {
+  function handleSurfaceAnimationEnd(): void {
     if (!isOpen && dataState === 'closed') {
       if (unmountTimeoutId !== null) {
         clearTimeout(unmountTimeoutId);
@@ -122,9 +129,13 @@
             },
           }),
         ],
-      }).then(({ x, y }) => {
+      }).then(({ x, y, placement: resolvedPlacement }) => {
         floatingX = x;
         floatingY = y;
+        placementSide = resolvedPlacement.split('-')[0] === 'top' ? 'top' : 'bottom';
+        // Reveal once the side is known. Keyframes (not transitions) play from their
+        // own `from` frame, so side + 'open' set together animate from the right offset.
+        if (isOpen && dataState === 'initial') dataState = 'open';
       });
     };
 
@@ -162,7 +173,8 @@
     <div
       class={surfaceClasses}
       data-state={dataState}
-      ontransitionend={handleSurfaceTransitionEnd}
+      data-side={placementSide}
+      onanimationend={handleSurfaceAnimationEnd}
       {...metaAttrs}
       {...analyticsAttrs}
     >

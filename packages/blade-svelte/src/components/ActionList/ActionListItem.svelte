@@ -41,9 +41,20 @@
   const dd = getDropdownContext();
   const itemId = useId('action-list-item');
 
+  // Option data sync. `registerOption` patches an existing entry in place, so a
+  // prop change keeps the option at its current index.
   $effect(() => {
     if (!dd) return;
     dd.registerOption({ id: itemId, title, value, href });
+  });
+
+  // Unregistration lives in its own effect, which reads nothing reactive and so
+  // only tears down at unmount. Sharing the effect above would remove and
+  // re-append the option on every `title`/`value`/`href` change (effect teardown
+  // runs before each re-run), shifting the index that `selectedIndices`,
+  // `activeIndex` and keyboard nav address.
+  $effect(() => {
+    if (!dd) return;
     return () => dd.unregisterOption(itemId);
   });
 

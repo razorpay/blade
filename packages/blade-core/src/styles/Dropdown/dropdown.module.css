@@ -29,21 +29,80 @@
   /* Mirrors React getPopupBoxShadowString: inset 1px border + elevation + top. */
   box-shadow: inset 0 0 0 1px var(--popup-border-gray-subtle),
     var(--elevation-mid-raised), inset 0 0 0 0 var(--popup-border-gray-moderate);
-  /* Open/close transition — mirrors React `useTransitionStyles`
-   * (fade + translateY(-8px)); driven by `data-state`. */
+  /* Open/close animation — mirrors React `useTransitionStyles` (fade + 8px slide),
+   * driven by `data-state` + `data-side`. Keyframes (not transitions) so the enter
+   * always plays from its own start frame regardless of the last painted value —
+   * this is why a flipped-above menu reliably slides up on the very first open. */
   opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity var(--duration-quick) ease, transform var(--duration-quick) ease;
+}
+
+.overlaySurface[data-state='initial'],
+.overlaySurface[data-state='closed'] {
+  opacity: 0;
 }
 
 .overlaySurface[data-state='open'] {
   opacity: 1;
-  transform: translateY(0);
 }
 
-.overlaySurface[data-state='closed'] {
-  opacity: 0;
-  transform: translateY(-8px);
+.overlaySurface[data-state='open'][data-side='bottom'] {
+  animation: dropdownOverlayEnterBottom var(--duration-quick) ease;
+}
+
+.overlaySurface[data-state='open'][data-side='top'] {
+  animation: dropdownOverlayEnterTop var(--duration-quick) ease;
+}
+
+.overlaySurface[data-state='closed'][data-side='bottom'] {
+  animation: dropdownOverlayExitBottom var(--duration-quick) ease;
+}
+
+.overlaySurface[data-state='closed'][data-side='top'] {
+  animation: dropdownOverlayExitTop var(--duration-quick) ease;
+}
+
+@keyframes dropdownOverlayEnterBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownOverlayEnterTop {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownOverlayExitBottom {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes dropdownOverlayExitTop {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
 }
 
 /* In a BottomSheet the sheet surface provides elevation, so drop the shadow. */
@@ -101,6 +160,15 @@
 /* size variants — height derived from baseInputHeight − 2×wrapper padding;
  * border-radius from inputDropdownButtonBorderRadius; inner padding from
  * inputDropdownButtonPadding. */
+.idButtonXsmall {
+  height: 24px;
+  border-radius: 6px;
+}
+
+.idButtonXsmall .idButtonContent {
+  padding: var(--spacing-1);
+}
+
 .idButtonSmall {
   height: 28px;
   border-radius: 6px;

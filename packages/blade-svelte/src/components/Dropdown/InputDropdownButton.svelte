@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { untrack } from 'svelte';
   import {
     metaAttribute,
     makeAccessible,
@@ -70,14 +71,21 @@
     }
   });
 
-  // Fire onChange when the selected value changes (skips the initial value).
-  let previousValue = $state<string | undefined>(undefined);
+  // Fire onChange only for user-initiated selections. Watching `dropdown.value`
+  // directly would also fire for the `value`/`defaultValue` seeding above, so we
+  // track the controller's selection counter instead (React parity:
+  // `changeCallbackTriggerer` + skip-first-render).
+  let hasSeenInitialTrigger = false;
   $effect(() => {
-    const current = dropdown?.value ?? '';
-    if (previousValue !== undefined && current !== previousValue) {
-      onChange?.({ name: name ?? idBase, value: current });
+    // Tracked dependency — everything below is read untracked on purpose.
+    void dropdown?.changeCallbackTriggerer;
+    if (!hasSeenInitialTrigger) {
+      hasSeenInitialTrigger = true;
+      return;
     }
-    previousValue = current;
+    untrack(() => {
+      onChange?.({ name: name ?? idBase, value: dropdown?.value ?? '' });
+    });
   });
 
   const iconColor = $derived(
@@ -128,43 +136,41 @@
   }
 </script>
 
-{#if displayValue}
-  <button
-    type="button"
-    class={buttonClasses}
-    disabled={isDisabled || undefined}
-    onclick={handleClick}
-    onblur={handleBlur}
-    onkeydown={handleKeydown}
-    use:setTriggerRef
-    {...a11yAttrs}
-    {...metaAttrs}
-    {...analyticsAttrs}
-  >
-    <span class={inputDropdownButtonContentClass}>
-      {#if _isInsideSearchInput}
-        <Text
-          variant="body"
-          size="medium"
-          weight="regular"
-          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
-        >
-          in
-        </Text>
-      {/if}
-      {#if leading}
-        {@render leading()}
-      {/if}
-      {#if icon}
-        {@const IconComp = icon}
-        <IconComp size="medium" color={iconColor} />
-      {/if}
-      {#if showDisplayValue}
-        <Text variant="body" size="medium" weight="regular" color={displayColor}>
-          {displayValue}
-        </Text>
-      {/if}
-      <ChevronUpDownIcon color={iconColor} />
-    </span>
-  </button>
-{/if}
+<button
+  type="button"
+  class={buttonClasses}
+  disabled={isDisabled || undefined}
+  onclick={handleClick}
+  onblur={handleBlur}
+  onkeydown={handleKeydown}
+  use:setTriggerRef
+  {...a11yAttrs}
+  {...metaAttrs}
+  {...analyticsAttrs}
+>
+  <span class={inputDropdownButtonContentClass}>
+    {#if _isInsideSearchInput}
+      <Text
+        variant="body"
+        size="medium"
+        weight="regular"
+        color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
+      >
+        in
+      </Text>
+    {/if}
+    {#if leading}
+      {@render leading()}
+    {/if}
+    {#if icon}
+      {@const IconComp = icon}
+      <IconComp size="medium" color={iconColor} />
+    {/if}
+    {#if showDisplayValue && displayValue}
+      <Text variant="body" size="medium" weight="regular" color={displayColor}>
+        {displayValue}
+      </Text>
+    {/if}
+    <ChevronUpDownIcon color={iconColor} />
+  </span>
+</button>

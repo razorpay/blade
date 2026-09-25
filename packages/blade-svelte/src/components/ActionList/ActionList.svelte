@@ -91,7 +91,7 @@
   const a11yAttrs = $derived(
     makeAccessible({
       role: containerRole,
-      multiSelectable: isMultiSelectable,
+      multiSelectable: containerRole === 'listbox' ? isMultiSelectable : undefined,
     }),
   );
 </script>

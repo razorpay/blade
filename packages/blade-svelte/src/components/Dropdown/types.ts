@@ -1,6 +1,7 @@
 import type { Snippet } from 'svelte';
 import type { Placement } from '@floating-ui/dom';
 import type { StyledPropsBlade, DataAnalyticsAttribute } from '@razorpay/blade-core/utils';
+import type { BaseInputSize } from '@razorpay/blade-core/styles';
 import type { IconComponent } from '../Icons';
 import type { DropdownTriggerer } from './dropdownComponentIds';
 
@@ -66,9 +67,10 @@ export interface DropdownOverlayProps extends DataAnalyticsAttribute {
   /**
    * Element to position the overlay relative to. When omitted, the Dropdown's
    * own trigger wrapper is used. Svelte uses an element binding instead of
-   * React's ref object.
+   * React's ref object. Named `referenceRef` to match the React prop and the
+   * `initialFocusRef` convention used by Modal / BottomSheet.
    */
-  referenceEl?: HTMLElement | null;
+  referenceRef?: HTMLElement | null;
   /**
    * Placement of the overlay.
    * @default 'bottom-start'
@@ -143,7 +145,7 @@ type BaseInputDropdownButtonProps = {
    * Size of the button.
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: BaseInputSize;
 } & DataAnalyticsAttribute;
 
 type ControlledInputDropdownButtonProps = BaseInputDropdownButtonProps & {
@@ -197,6 +199,11 @@ export type DropdownContextValue = {
   setDropdownTriggerer: (triggerer: DropdownTriggerer) => void;
   value: string;
   displayValue: string;
+  /**
+   * Increments on every user-initiated selection. Triggers watch this instead of
+   * `value` so `onChange` does not fire for programmatic seeding.
+   */
+  changeCallbackTriggerer: number;
   /** Register an option; returns nothing — the item reads its index reactively. */
   registerOption: (option: DropdownOption) => void;
   unregisterOption: (id: string) => void;

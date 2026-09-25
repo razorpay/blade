@@ -58,6 +58,7 @@
   let hasFooterAction = $state(false);
   let hasAutoCompleteInHeader = $state(false);
   let isKeydownPressed = $state(false);
+  let changeCallbackTriggerer = $state(0);
   let dropdownTriggerer = $state<DropdownTriggerer>(undefined);
 
   let triggererEl = $state<HTMLElement | null>(null);
@@ -119,6 +120,9 @@
     setIsKeydownPressed: (v) => {
       isKeydownPressed = v;
     },
+    bumpChangeCallbackTriggerer: () => {
+      changeCallbackTriggerer += 1;
+    },
   });
 
   const contextValue: DropdownContextValue = {
@@ -175,6 +179,9 @@
     },
     get displayValue() {
       return displayValue;
+    },
+    get changeCallbackTriggerer() {
+      return changeCallbackTriggerer;
     },
     registerOption,
     unregisterOption,
