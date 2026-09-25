@@ -53,14 +53,24 @@
   import Code from '../../Typography/Code/Code.svelte';
   import Button from '../../Button/Button.svelte';
   import { InfoIcon, PhoneIcon } from '../../Icons';
-  import type { PhoneNumberChangePayload } from './types';
+  import type { PhoneCountryCode, PhoneCountryInfo, PhoneNumberChangePayload } from './types';
 
-  let controlledCountry = $state<CountryCodeType>('IN');
+  let controlledCountry = $state<PhoneCountryCode>('IN');
   let controlledValue = $state('');
   let changeData = $state<PhoneNumberChangePayload | null>(null);
   let validationValue = $state('');
   let isValid = $state(true);
   let portalTargetEl = $state<HTMLDivElement | null>(null);
+  let customCountriesChange = $state<PhoneNumberChangePayload | null>(null);
+
+  // A consumer-owned table: Kosovo (XK) is not in i18nify, and DO uses an
+  // area-code-extended dial code that i18nify's dial map does not model.
+  const customCountries: PhoneCountryInfo[] = [
+    { code: 'IN', dialCode: '91' },
+    { code: 'XK', dialCode: '+383', name: 'Kosovo' },
+    { code: 'DO', dialCode: '1849', name: 'Dominican Republic' },
+    { code: 'US', dialCode: '+1' },
+  ];
 </script>
 
 <!-- 1 -->
@@ -225,7 +235,7 @@
       validationState={isValid ? 'none' : 'error'}
       onChange={({ value, country }) => {
         validationValue = value ?? '';
-        isValid = isValidPhoneNumber(value ?? '', country);
+        isValid = isValidPhoneNumber(value ?? '', country as CountryCodeType);
       }}
     />
   </div>
@@ -274,5 +284,47 @@
         />
       </div>
     </div>
+  </div>
+</Story>
+
+<!-- 17 -->
+<Story name="CustomCountries" asChild>
+  <div>
+    <Text marginBottom="spacing.5">
+      Pass <Code size="medium">countries</Code> to use your own country table instead of
+      i18nify's. It drives the list, the dial-code prefix, search, flags and the
+      <Code size="medium">dialCode</Code> in <Code size="medium">onChange</Code>. This list
+      includes Kosovo (<Code size="medium">XK</Code>, not in i18nify) and a custom dial code
+      for the Dominican Republic (<Code size="medium">+1849</Code>). Name and flag fall back to
+      <Code size="medium">Intl.DisplayNames</Code> and i18nify when omitted.
+    </Text>
+    <PhoneNumberInput
+      label="Enter phone number"
+      name="phonenumber"
+      defaultCountry="XK"
+      countries={customCountries}
+      onChange={(payload) => (customCountriesChange = payload)}
+    />
+    {#if customCountriesChange}
+      <div style="margin-top: var(--spacing-4);">
+        <Text><Text as="span" weight="semibold">country:</Text> {customCountriesChange.country}</Text>
+        <Text><Text as="span" weight="semibold">dialCode:</Text> {customCountriesChange.dialCode}</Text>
+        <Text><Text as="span" weight="semibold">value:</Text> {customCountriesChange.value}</Text>
+      </div>
+    {/if}
+  </div>
+</Story>
+
+<!-- 18 -->
+<Story name="UnknownDefaultCountry" asChild>
+  <div>
+    <Text marginBottom="spacing.5">
+      A <Code size="medium">defaultCountry</Code> i18nify has no flag for (here
+      <Code size="medium">XK</Code>, where <Code size="medium">getFlagOfCountry</Code> throws)
+      without a <Code size="medium">countries</Code> list no longer crashes: the input renders
+      an empty flag slot of the same size. Dial code and formatting are used when i18nify knows
+      them and are otherwise empty / raw digits.
+    </Text>
+    <PhoneNumberInput label="Enter phone number" name="phonenumber" defaultCountry="XK" />
   </div>
 </Story>

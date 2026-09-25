@@ -12,6 +12,39 @@ import type {
 } from '../BaseInput/types';
 import type { NecessityIndicator } from '../_Form/types';
 
+export type { CountryCodeType };
+
+/**
+ * Country code accepted by PhoneNumberInput. Autocompletes i18nify's ISO codes but
+ * also accepts any string so consumers can pass codes i18nify does not model
+ * (e.g. `'XK'` Kosovo) alongside a custom `countries` list.
+ */
+export type PhoneCountryCode = CountryCodeType | (string & Record<never, never>);
+
+/** One entry of the consumer-supplied `countries` list. */
+export type PhoneCountryInfo = {
+  /** ISO-3166-1 alpha-2 (or consumer-defined) code, e.g. `'IN'`, `'XK'`. */
+  code: string;
+  /** Dial code with or without leading `+`, e.g. `'91'` or `'+91'`. */
+  dialCode: string;
+  /** Display name. Falls back to `Intl.DisplayNames` when omitted. */
+  name?: string;
+  /** Flag image URL. Falls back to the i18nify flag lookup when omitted. */
+  flag?: string;
+};
+
+/**
+ * Country entry after normalisation — what `CountrySelector` renders and what the
+ * dial-code prefix / `onChange` payload read from. `dialCode` always carries a
+ * leading `+`; `flag` is `undefined` when no image is known for the code.
+ */
+export type ResolvedPhoneCountry = {
+  code: string;
+  name: string;
+  dialCode: string;
+  flag?: string;
+};
+
 /** Rich payload emitted by PhoneNumberInput's `onChange`. */
 export type PhoneNumberChangePayload = {
   /** Formatted phone number with dial code, e.g. `"+91 123456789"`. */
@@ -19,7 +52,7 @@ export type PhoneNumberChangePayload = {
   /** Dial code of the selected country, e.g. `"+91"`. */
   dialCode: string;
   /** ISO country code of the selected country, e.g. `"IN"`. */
-  country: CountryCodeType;
+  country: PhoneCountryCode;
   /** Raw value typed by the user. */
   value: string;
   /** Name of the input. */
@@ -77,13 +110,23 @@ export interface PhoneNumberInputProps extends StyledPropsBlade, DataAnalyticsAt
    * Default country code (uncontrolled country state).
    * @default 'IN'
    */
-  defaultCountry?: CountryCodeType;
+  defaultCountry?: PhoneCountryCode;
   /** Controlled country code. */
-  country?: CountryCodeType;
+  country?: PhoneCountryCode;
   /** Called when a country is selected. */
-  onCountryChange?: (event: { country: CountryCodeType }) => void;
-  /** Restricts the country selector to these countries. */
-  allowedCountries?: CountryCodeType[];
+  onCountryChange?: (event: { country: PhoneCountryCode }) => void;
+  /**
+   * Restricts the country selector to these countries. Filters whichever list is
+   * active (`countries` when provided, otherwise i18nify's list).
+   */
+  allowedCountries?: PhoneCountryCode[];
+  /**
+   * Custom country list. When provided it is the single source for the selector
+   * list (rendered in the given order), the dial-code prefix, the `dialCode` in the
+   * `onChange` payload, search and flags. Omit to use i18nify's country data.
+   * @default undefined
+   */
+  countries?: PhoneCountryInfo[];
   /** Called when the value of the input changes (rich payload). */
   onChange?: (event: PhoneNumberChangePayload) => void;
   /** Called on focus. */
@@ -117,12 +160,10 @@ export interface PhoneNumberInputInstance {
 
 /** Props for the internal `CountrySelector`. */
 export type CountrySelectorProps = {
-  /** Currently selected country. */
-  selectedCountry: CountryCodeType;
+  /** Currently selected country (already resolved: name, dial code, flag). */
+  selectedCountry: ResolvedPhoneCountry;
   /** Countries to render in the list. */
-  countryData: { code: CountryCodeType; name: string }[];
-  /** Flag map from i18nify (`getFlagsForAllCountries`). */
-  flags: Record<string, { '4X3': string }>;
+  countryData: ResolvedPhoneCountry[];
   /** Called when a country row is activated. */
   onItemClick: (props: { name: string }) => void;
   /** Disables the trigger button. */

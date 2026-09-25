@@ -310,6 +310,9 @@ export type {
   PhoneNumberInputProps,
   PhoneNumberInputInstance,
   PhoneNumberChangePayload,
+  PhoneCountryCode,
+  PhoneCountryInfo,
+  CountryCodeType,
 } from './Input/PhoneNumberInput';
 
 // InputGroup
