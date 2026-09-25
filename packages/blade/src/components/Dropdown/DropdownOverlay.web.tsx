@@ -103,10 +103,22 @@ const _DropdownOverlay = ({
 
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
-    initial: () => ({
-      transform: `translateY(-${makeSize(OVERLAY_TRANSITION_OFFSET)})`,
-      opacity: 0,
-    }),
+    // `side` is the placement resolved after `flip()`, so an overlay that flips above the
+    // trigger animates away from it instead of sliding down into it.
+    initial: ({ side }) => {
+      const transitionOffset = makeSize(OVERLAY_TRANSITION_OFFSET);
+      const transformMap = {
+        top: `translateY(${transitionOffset})`,
+        right: `translateX(-${transitionOffset})`,
+        left: `translateX(${transitionOffset})`,
+        bottom: `translateY(-${transitionOffset})`,
+      } as const;
+
+      return {
+        transform: transformMap[side ?? 'bottom'],
+        opacity: 0,
+      };
+    },
   });
 
   React.useEffect(() => {
