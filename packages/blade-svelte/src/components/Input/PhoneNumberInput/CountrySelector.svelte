@@ -116,7 +116,7 @@
     aria-label={triggerLabel}
     aria-haspopup={resolvedMode === 'dropdown' ? 'listbox' : 'dialog'}
     aria-expanded={isOpen}
-    onclick={() => (isOpen = !isOpen)}
+    onclick={() => (isOpen ? closeSheet() : (isOpen = true))}
   >
     <img
       loading="lazy"

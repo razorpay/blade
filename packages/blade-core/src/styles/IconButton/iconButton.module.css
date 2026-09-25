@@ -17,10 +17,6 @@
   transition-duration: var(--duration-xquick);
   transition-timing-function: var(--easing-standard);
 
-  /* Icon sits in an inline <span>; the line-box baseline strut pushes it ~1-2px
-     above center (visible at large sizes). Zeroing line-height drops the strut. */
-  line-height: 0;
-
   &[disabled] {
     cursor: not-allowed;
   }
