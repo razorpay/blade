@@ -34,13 +34,13 @@
 
 <Story name="Default" asChild>
   <div style="background-color: var(--surface-background-gray-subtle); padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
-    <TrustBadge />
+    <TrustBadge label="Razorpay Trusted Business" />
   </div>
 </Story>
 
 <Story name="Icon Only" asChild>
   <div style="background-color: var(--surface-background-gray-subtle); padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
-    <TrustBadge variant="icon-only" />
+    <TrustBadge variant="icon-only" label="Razorpay Trusted Business" />
   </div>
 </Story>
 

@@ -41,8 +41,11 @@
         : 'surface.text.gray.normal',
   );
 
-  const showFullBadge = $derived(trustBadgeVariant === 'default');
-  const showIconBadge = $derived(trustBadgeVariant === 'icon-only');
+  // TrustBadge ships no default copy, so a variant without a label renders nothing.
+  const badgeLabel = $derived(trustBadgeLabel ?? '');
+  const hasBadgeLabel = $derived(badgeLabel.length > 0);
+  const showFullBadge = $derived(hasBadgeLabel && trustBadgeVariant === 'default');
+  const showIconBadge = $derived(hasBadgeLabel && trustBadgeVariant === 'icon-only');
   const hasTitleColumn = $derived(Boolean(title) || (showFullBadge && !logo));
   const stackFullBadgeBelowLogo = $derived(showFullBadge && Boolean(logo) && !title);
 
@@ -58,7 +61,7 @@
           {@render logo()}
         </div>
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustBadge variant="default" label={trustBadgeLabel} />
+          <TrustBadge variant="default" label={badgeLabel} />
         </div>
       </div>
     {:else}
@@ -88,17 +91,17 @@
             </Text>
           </div>
           {#if showIconBadge}
-            <TrustBadge variant="icon-only" label={trustBadgeLabel} />
+            <TrustBadge variant="icon-only" label={badgeLabel} />
           {/if}
         </div>
       {/if}
       {#if showFullBadge && !stackFullBadgeBelowLogo}
         <div class={templateClasses.appBarLeadingBadge}>
-          <TrustBadge variant="default" label={trustBadgeLabel} />
+          <TrustBadge variant="default" label={badgeLabel} />
         </div>
       {/if}
     </div>
   {:else if showIconBadge}
-    <TrustBadge variant="icon-only" label={trustBadgeLabel} />
+    <TrustBadge variant="icon-only" label={badgeLabel} />
   {/if}
 </div>

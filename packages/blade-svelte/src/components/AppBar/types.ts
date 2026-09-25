@@ -129,9 +129,9 @@ export type AppBarLeadingProps = {
   trustBadgeVariant?: 'default' | 'icon-only';
 
   /**
-   * Custom trust label forwarded to `TrustBadge`.
-   * Overrides the default "Razorpay Trusted Business" text shown in the pill
-   * and used as the accessible label for the icon-only form.
+   * Trust label forwarded to `TrustBadge`. Shown in the pill for `'default'`
+   * and used as the accessible label for `'icon-only'`.
+   * Required alongside `trustBadgeVariant` — the badge is not rendered without it.
    *
    * @default undefined
    */
