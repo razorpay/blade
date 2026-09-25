@@ -141,6 +141,9 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   const { theme } = useTheme();
   const { containerRef, textRef } = useTruncationTitle({ content: props.title });
   const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
+  // mirrors isPopoverOpen for the delayed close, which runs after the render it was scheduled in
+  const isPopoverOpenRef = React.useRef(false);
+  const popoverCloseTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
   const itemFirstRowHeight = getItemFirstRowHeight(theme, size);
 
   // distinguishes a children group mounting on the row's very first render (initial tree
@@ -151,22 +154,51 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     isRowFirstRenderRef.current = false;
   }, []);
 
-  if (__DEV__ && props.tooltip && props.popover) {
-    logger({
-      type: 'warn',
-      moduleName: 'TreeViewItem',
-      message: 'Pass either `tooltip` or `popover` to TreeViewItem, not both. `tooltip` is ignored',
-    });
-  }
+  const hasTooltip = Boolean(props.tooltip);
+  const hasPopover = Boolean(props.popover);
+  React.useEffect(() => {
+    if (__DEV__ && hasTooltip && hasPopover) {
+      logger({
+        type: 'warn',
+        moduleName: 'TreeViewItem',
+        message:
+          'Pass either `tooltip` or `popover` to TreeViewItem, not both. `tooltip` is ignored',
+      });
+    }
+  }, [hasTooltip, hasPopover]);
   const tooltip = props.popover ? undefined : props.tooltip;
 
+  const cancelPopoverClose = (): void => {
+    clearTimeout(popoverCloseTimeoutRef.current);
+    popoverCloseTimeoutRef.current = undefined;
+  };
+  React.useEffect(() => cancelPopoverClose, []);
+
   const handlePopoverOpenChange = (isOpen: boolean): void => {
-    if (isOpen === isPopoverOpen) {
+    cancelPopoverClose();
+    if (isOpen === isPopoverOpenRef.current) {
       return;
     }
+    isPopoverOpenRef.current = isOpen;
     setIsPopoverOpen(isOpen);
     props.popover?.onOpenChange?.({ isOpen });
   };
+
+  // The popover content is rendered in a portal, but it is still a React child of this row, so
+  // React fires the row's pointerenter / pointerleave for it too: the pointer can travel from the
+  // row onto the popover without closing it. The delay bridges the gap between the two
+  const schedulePopoverClose = (): void => {
+    cancelPopoverClose();
+    popoverCloseTimeoutRef.current = setTimeout(
+      () => handlePopoverOpenChange(false),
+      theme.motion.delay.xquick,
+    );
+  };
+
+  // Events from the popover content bubble through the React tree into this row (see above).
+  // A click, focus or mousedown inside the popover must not select or focus the row
+  const isEventFromRow = (event: React.SyntheticEvent): boolean =>
+    event.currentTarget.contains(event.target as Node);
 
   const node = nodeMap[props.value];
 
@@ -204,7 +236,7 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   };
 
   const handleRowClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    if (node.isDisabled) {
+    if (node.isDisabled || !isEventFromRow(event)) {
       return;
     }
     if (isInsideDropdown) {
@@ -359,19 +391,19 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
             }
             isKeydownPressed={isInsideDropdown ? isKeydownPressed : undefined}
             onClick={handleRowClick}
-            onFocus={() => {
-              if (!isInsideDropdown) {
+            onFocus={(event: React.FocusEvent) => {
+              if (!isInsideDropdown && isEventFromRow(event)) {
                 setFocusedValue(props.value);
               }
             }}
-            onMouseDown={() => {
-              if (isInsideDropdown) {
+            onMouseDown={(event: React.MouseEvent) => {
+              if (isInsideDropdown && isEventFromRow(event)) {
                 // keep focus on Dropdown's trigger while the row is being clicked (same as ActionListItem)
                 setShouldIgnoreBlurAnimation(true);
               }
             }}
-            onMouseUp={() => {
-              if (isInsideDropdown) {
+            onMouseUp={(event: React.MouseEvent) => {
+              if (isInsideDropdown && isEventFromRow(event)) {
                 setShouldIgnoreBlurAnimation(false);
               }
             }}
@@ -410,7 +442,7 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
                       handlePopoverOpenChange(true);
                     }
                   },
-                  onPointerLeave: () => handlePopoverOpenChange(false),
+                  onPointerLeave: schedulePopoverClose,
                 }
               : {})}
             {...(tooltip

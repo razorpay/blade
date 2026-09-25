@@ -143,7 +143,27 @@ type TreeViewItemProps = {
    * />
    * ```
    */
-  tooltip?: Pick<TooltipProps, 'title' | 'content' | 'placement' | 'onOpenChange'>;
+  tooltip?: {
+    /**
+     * Tooltip title
+     */
+    title?: TooltipProps['title'];
+    /**
+     * Tooltip content
+     */
+    content: TooltipProps['content'];
+    /**
+     * Placement of the tooltip. Defaults to the right of the row, so it does not cover
+     * the rows above or below
+     *
+     * @default 'right'
+     */
+    placement?: TooltipProps['placement'];
+    /**
+     * Called when the tooltip opens or closes
+     */
+    onOpenChange?: TooltipProps['onOpenChange'];
+  };
   /**
    * Shows a Popover when the row is hovered with a mouse. Use it for rich previews
    * (e.g. an image of the screen the item represents).
@@ -160,10 +180,19 @@ type TreeViewItemProps = {
    * />
    * ```
    */
-  popover?: Pick<
-    PopoverProps,
-    'title' | 'titleLeading' | 'content' | 'footer' | 'placement' | 'maxWidth' | 'onOpenChange'
-  >;
+  popover?: Pick<PopoverProps, 'title' | 'titleLeading' | 'content' | 'footer' | 'maxWidth'> & {
+    /**
+     * Placement of the popover. Defaults to the right of the row, so it does not cover
+     * the rows above or below
+     *
+     * @default 'right'
+     */
+    placement?: PopoverProps['placement'];
+    /**
+     * Called when the popover opens or closes
+     */
+    onOpenChange?: PopoverProps['onOpenChange'];
+  };
 } & TestID &
   DataAnalyticsAttribute;
 

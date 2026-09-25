@@ -947,11 +947,81 @@ describe('tooltip and popover on items', () => {
     expect(branch).toHaveAttribute('aria-expanded', 'true');
 
     await user.unhover(leaf);
-    await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument());
+    await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument(), {
+      timeout: 3000,
+    });
 
     await user.click(leaf);
     expect(onChange).toHaveBeenLastCalledWith(
       expect.objectContaining({ values: ['payment-success'] }),
+    );
+  });
+
+  it('should keep popover open while the pointer moves onto it, and ignore clicks inside it', async () => {
+    const user = userEvents.setup();
+    const onChange = jest.fn();
+    const onFooterClick = jest.fn();
+    const onOpenChange = jest.fn();
+    const { getByRole, findByRole, queryByRole } = renderWithTheme(
+      <TreeView onChange={onChange}>
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          popover={{
+            title: 'Payment Success',
+            content: <p>Success preview</p>,
+            footer: <button onClick={onFooterClick}>Open screen</button>,
+            onOpenChange,
+          }}
+        />
+      </TreeView>,
+    );
+
+    const row = getByRole('treeitem', { name: 'Payment Success' });
+    await user.hover(row);
+    const dialog = await findByRole('dialog');
+    expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: true });
+
+    // crossing the gap between the row and the popover (the pointer is briefly over neither)
+    // does not close it
+    await user.unhover(row);
+    await user.hover(dialog);
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+    expect(onOpenChange).not.toHaveBeenCalledWith({ isOpen: false });
+
+    // the popover is a React child of the row, but clicking inside it must not select the row
+    await user.click(getByRole('button', { name: 'Open screen' }));
+    expect(onFooterClick).toHaveBeenCalledTimes(1);
+    expect(onChange).not.toHaveBeenCalled();
+
+    await user.unhover(dialog);
+    await waitFor(() => expect(queryByRole('dialog')).not.toBeInTheDocument(), {
+      timeout: 3000,
+    });
+  });
+
+  it('should select a row on the first click while a popover is open', async () => {
+    const user = userEvents.setup();
+    const onChange = jest.fn();
+    const { getByRole, findByRole } = renderWithTheme(
+      <TreeView onChange={onChange}>
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          popover={{ title: 'Payment Success', content: <p>Success preview</p> }}
+        />
+        <TreeViewItem title="Retry Payment" value="retry-payment" />
+      </TreeView>,
+    );
+
+    await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
+    await findByRole('dialog');
+
+    await user.click(getByRole('treeitem', { name: 'Retry Payment', hidden: true }));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({ values: ['retry-payment'] }),
     );
   });
 
@@ -989,9 +1059,9 @@ describe('tooltip and popover on items', () => {
     await assertAccessible(getByRole('tree'));
   });
 
-  it('should warn when both tooltip and popover are passed', () => {
+  it('should warn once when both tooltip and popover are passed', () => {
     const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
-    renderWithTheme(
+    const item = (
       <TreeView>
         <TreeViewItem
           title="Goa"
@@ -999,11 +1069,16 @@ describe('tooltip and popover on items', () => {
           tooltip={{ content: 'Beach state' }}
           popover={{ content: <p>Preview</p> }}
         />
-      </TreeView>,
+      </TreeView>
     );
-    expect(warnSpy).toHaveBeenCalledWith(
-      expect.stringContaining('Pass either `tooltip` or `popover` to TreeViewItem'),
-    );
+    const { rerender } = renderWithTheme(item);
+    // a re-render must not log it again
+    rerender(withTheme(item));
+    expect(
+      warnSpy.mock.calls.filter(([message]) =>
+        String(message).includes('Pass either `tooltip` or `popover` to TreeViewItem'),
+      ),
+    ).toHaveLength(1);
     warnSpy.mockRestore();
   });
 });
