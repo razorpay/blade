@@ -47,12 +47,11 @@
     ActionListItemAsset,
     ActionListItemText,
   } from '../../ActionList';
-  import { onMount } from 'svelte';
   import { BottomSheet, BottomSheetHeader, BottomSheetBody } from '../../BottomSheet';
   import { Dropdown, DropdownOverlay } from '../../Dropdown';
   import { ChevronUpDownIcon } from '../../Icons';
   import Text from '../../Typography/Text/Text.svelte';
-  import { subscribeToViewportWidth } from '../../../utils/subscribeToViewportWidth';
+  import { getBladeThemeContextGetter } from '../../BladeProvider/bladeThemeContext';
   import SearchInput from '../SearchInput/SearchInput.svelte';
   import type { CountrySelectorProps } from './types';
 
@@ -71,13 +70,11 @@
   let isOpen = $state(false);
   let searchQuery = $state('');
 
-  // Blade `m` breakpoint (768px) is the mobile/desktop divide for `auto`.
-  const MOBILE_BREAKPOINT = 768;
-  let viewportWidth = $state(typeof window !== 'undefined' ? window.innerWidth : MOBILE_BREAKPOINT);
-  onMount(() => subscribeToViewportWidth((width) => (viewportWidth = width)));
-
+  // BladeProvider tracks viewport width and resolves `platform` at `breakpoints.m`.
+  // Outside a provider there is no viewport signal, so `auto` falls back to bottomsheet.
+  const themeContextGetter = getBladeThemeContextGetter();
   const resolvedMode = $derived(
-    mode === 'auto' ? (viewportWidth < MOBILE_BREAKPOINT ? 'bottomsheet' : 'dropdown') : mode,
+    mode === 'auto' ? (themeContextGetter?.().platform === 'onDesktop' ? 'dropdown' : 'bottomsheet') : mode,
   );
 
   const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -117,7 +114,7 @@
     style={`height: ${chipHeight[size]}px; border-radius: ${chipRadius[size]}px; padding: 0 ${chipPadX[size]}px;`}
     disabled={isDisabled || undefined}
     aria-label={triggerLabel}
-    aria-haspopup="dialog"
+    aria-haspopup={resolvedMode === 'dropdown' ? 'listbox' : 'dialog'}
     aria-expanded={isOpen}
     onclick={() => (isOpen = !isOpen)}
   >
