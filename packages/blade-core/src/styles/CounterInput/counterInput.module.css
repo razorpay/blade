@@ -33,28 +33,29 @@
   background-color: var(--surface-background-gray-subtle);
 }
 
-/* Container sizes — hardcoded px mirror React `size` global tokens (78/86/94/122 × 30/34/38/50). */
+/* Container sizes — hardcoded px mirror React `size` global tokens (76/84/92/120 × 28/32/36/48).
+   These are outer sizes including the border, matching the Figma frames. */
 .container-xsmall {
-  width: 78px;
-  height: 30px;
+  width: 76px;
+  height: 28px;
   border-radius: var(--border-radius-small);
 }
 
 .container-small {
-  width: 86px;
-  height: 34px;
+  width: 84px;
+  height: 32px;
   border-radius: var(--border-radius-small);
 }
 
 .container-medium {
-  width: 94px;
-  height: 38px;
+  width: 92px;
+  height: 36px;
   border-radius: var(--border-radius-small);
 }
 
 .container-large {
-  width: 122px;
-  height: 50px;
+  width: 120px;
+  height: 48px;
   border-radius: var(--border-radius-medium);
 }
 
@@ -124,13 +125,20 @@
   border-radius: var(--border-radius-small);
 }
 
-/* Button margins — decrement hugs the left edge, increment hugs the right. */
+/* Button margins — decrement hugs the left edge, increment hugs the right.
+   Figma draws the container stroke inside the frame without taking space, so buttons sit
+   4px from the outer edge. Here the border takes real space, so the outer margins subtract
+   the border width to keep the same 4px visual gap. */
 .button-decrement {
-  margin: var(--spacing-2) var(--spacing-0) var(--spacing-2) var(--spacing-2);
+  --counter-input-button-outer-margin: calc(var(--spacing-2) - var(--border-width-thin));
+  margin: var(--counter-input-button-outer-margin) var(--spacing-0)
+    var(--counter-input-button-outer-margin) var(--counter-input-button-outer-margin);
 }
 
 .button-increment {
-  margin: var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--spacing-0);
+  --counter-input-button-outer-margin: calc(var(--spacing-2) - var(--border-width-thin));
+  margin: var(--counter-input-button-outer-margin) var(--counter-input-button-outer-margin)
+    var(--counter-input-button-outer-margin) var(--spacing-0);
 }
 
 /* Idle icon color by emphasis (icons use currentColor). */
