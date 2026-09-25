@@ -11,6 +11,9 @@
   import { PlusIcon } from './PlusIcon';
   import { SearchIcon } from './SearchIcon';
   import { WhatsAppIcon } from './WhatsAppIcon';
+  import { ClockIcon } from './ClockIcon';
+  import { UpiIcon } from './UpiIcon';
+  import { WalletIcon } from './WalletIcon';
   // Filled Icons
   import { MoreFilledIcon } from './MoreFilledIcon';
   // Branded Icons
@@ -29,6 +32,9 @@
     PlusIcon,
     SearchIcon,
     WhatsAppIcon,
+    ClockIcon,
+    UpiIcon,
+    WalletIcon,
   };
 
   const filledIcons = {
