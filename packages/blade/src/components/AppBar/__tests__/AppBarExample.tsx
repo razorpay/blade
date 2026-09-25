@@ -18,6 +18,7 @@ const AppBarExample = (): React.ReactElement => {
         title="Mavenshop"
         logo={<RazorpayIcon size="large" color="surface.icon.staticWhite.normal" />}
         trustBadgeVariant="default"
+        trustBadgeLabel="Razorpay Trusted Business"
       />
       <AppBarActions>
         <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={noop} />

@@ -14,10 +14,9 @@ type TrustBadgeProps = {
   /**
    * Trust label displayed in the pill (only visible when `variant='default'`).
    * Also used as the accessible label for the icon-only form.
-   *
-   * @default 'Razorpay Trusted Business'
+   * The component ships no default copy — consumers own this text.
    */
-  label?: string;
+  label: string;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;

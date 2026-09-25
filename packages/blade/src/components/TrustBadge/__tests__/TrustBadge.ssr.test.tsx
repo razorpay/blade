@@ -4,7 +4,9 @@ import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<TrustBadge />', () => {
   it('should render TrustBadge ssr', () => {
-    const { container } = renderWithSSR(<TrustBadge />);
+    const { container } = renderWithSSR(
+      <TrustBadge label="Razorpay Trusted Business" />,
+    );
     expect(container).toMatchSnapshot();
   });
 });
