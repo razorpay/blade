@@ -87,7 +87,7 @@
   {#snippet template({ children: _children, ...args })}
     <div style="max-width:400px">
       <CardGroup {...args}>
-        <CardGroupItem href="/cards">
+        <CardGroupItem href="https://razorpay.com/payments/" target="_blank" rel="noopener noreferrer">
           {#snippet leading()}<CreditCardIcon size="medium" color="surface.icon.gray.subtle" />{/snippet}
           {#snippet children()}Cards{/snippet}
         </CardGroupItem>
@@ -116,7 +116,7 @@
           </CardGroupCollapsibleItemBody>
         </CardGroupCollapsibleItem>
 
-        <CardGroupItem href="/wallet">
+        <CardGroupItem href="https://razorpay.com/payment-gateway/" target="_blank" rel="noopener noreferrer">
           {#snippet leading()}<WalletIcon size="medium" color="surface.icon.gray.subtle" />{/snippet}
           {#snippet children()}Wallet{/snippet}
         </CardGroupItem>
@@ -129,9 +129,9 @@
 <Story name="Navigation" asChild>
   <div style="max-width:400px">
     <CardGroup accessibilityLabel="Settings">
-      <CardGroupItem href="/profile">{#snippet children()}Profile{/snippet}</CardGroupItem>
-      <CardGroupItem href="/security">{#snippet children()}Security{/snippet}</CardGroupItem>
-      <CardGroupItem href="/notifications">{#snippet children()}Notifications{/snippet}</CardGroupItem>
+      <CardGroupItem href="https://razorpay.com/about/" target="_blank" rel="noopener noreferrer">{#snippet children()}Profile{/snippet}</CardGroupItem>
+      <CardGroupItem href="https://razorpay.com/security/" target="_blank" rel="noopener noreferrer">{#snippet children()}Security{/snippet}</CardGroupItem>
+      <CardGroupItem href="https://razorpay.com/docs/" target="_blank" rel="noopener noreferrer">{#snippet children()}Notifications{/snippet}</CardGroupItem>
     </CardGroup>
   </div>
 </Story>
@@ -157,7 +157,7 @@
 <Story name="Disabled Row" asChild>
   <div style="max-width:400px">
     <CardGroup accessibilityLabel="Payment methods">
-      <CardGroupItem href="/cards">{#snippet children()}Cards{/snippet}</CardGroupItem>
+      <CardGroupItem href="https://razorpay.com/payments/" target="_blank" rel="noopener noreferrer">{#snippet children()}Cards{/snippet}</CardGroupItem>
       <CardGroupItem isDisabled onClick={() => {}}>{#snippet children()}Net Banking (unavailable){/snippet}</CardGroupItem>
     </CardGroup>
   </div>
