@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TrustBadge /> should render the default badge with the default trust label 1`] = `
+exports[`<TrustBadge /> should render the default badge with the provided trust label 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

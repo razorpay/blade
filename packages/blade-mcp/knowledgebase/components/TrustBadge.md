@@ -6,7 +6,7 @@ TrustBadge
 
 ## Description
 
-TrustBadge shows that a business is trusted. It has a brand shield and a pill with a trust label. The default label is "Razorpay Trusted Business". The `icon-only` variant shows only the shield for small spaces. `AppBarLeading` uses TrustBadge through its `trustBadgeVariant` prop.
+TrustBadge shows that a business is trusted. It has a brand shield and a pill with a trust label. The `label` prop is required — consumers own the copy (e.g. "Razorpay Trusted Business"). The `icon-only` variant shows only the shield for small spaces. `AppBarLeading` uses TrustBadge through its `trustBadgeVariant` prop.
 
 ## Usage Guidelines
 
@@ -26,10 +26,11 @@ type TrustBadgeProps = {
    */
   variant?: 'default' | 'icon-only';
   /**
-   * Trust label in the pill. Also used as the accessible label for the icon-only form.
-   * @default 'Razorpay Trusted Business'
+   * Trust label displayed in the pill (only visible when `variant='default'`).
+   * Also used as the accessible label for the icon-only form.
+   * The component ships no default copy — consumers own this text.
    */
-  label?: string;
+  label: string;
 } & TestID &
   DataAnalyticsAttribute &
   StyledPropsBlade;
@@ -52,8 +53,8 @@ function TrustBadgeExample(): React.ReactElement {
       padding="spacing.5"
       backgroundColor="surface.background.gray.subtle"
     >
-      <TrustBadge />
-      <TrustBadge variant="icon-only" />
+      <TrustBadge label="Razorpay Trusted Business" />
+      <TrustBadge variant="icon-only" label="Razorpay Trusted Business" />
       <TrustBadge label="Razorpay Verified" />
     </Box>
   );

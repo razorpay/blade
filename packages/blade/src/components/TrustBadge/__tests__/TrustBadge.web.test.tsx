@@ -3,15 +3,17 @@ import renderWithTheme from '~utils/testing/renderWithTheme';
 import assertAccessible from '~utils/testing/assertAccessible';
 
 describe('<TrustBadge />', () => {
-  it('should render the default badge with the default trust label', () => {
-    const { container, getByText } = renderWithTheme(<TrustBadge />);
+  it('should render the default badge with the provided trust label', () => {
+    const { container, getByText } = renderWithTheme(
+      <TrustBadge label="Razorpay Trusted Business" />,
+    );
     expect(getByText('Razorpay Trusted Business')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 
   it('should render the icon-only badge without the visible label and expose an a11y label', () => {
     const { container, queryByText, getByRole } = renderWithTheme(
-      <TrustBadge variant="icon-only" />,
+      <TrustBadge variant="icon-only" label="Razorpay Trusted Business" />,
     );
     expect(queryByText('Razorpay Trusted Business')).not.toBeInTheDocument();
     expect(getByRole('img', { name: 'Razorpay Trusted Business' })).toBeInTheDocument();
@@ -32,18 +34,24 @@ describe('<TrustBadge />', () => {
   });
 
   it('should pass general a11y', async () => {
-    const { container } = renderWithTheme(<TrustBadge />);
+    const { container } = renderWithTheme(<TrustBadge label="Razorpay Trusted Business" />);
     await assertAccessible(container);
   });
 
   it('should support testID', () => {
-    const { getByTestId } = renderWithTheme(<TrustBadge testID="trust-badge-test" />);
+    const { getByTestId } = renderWithTheme(
+      <TrustBadge label="Razorpay Trusted Business" testID="trust-badge-test" />,
+    );
     expect(getByTestId('trust-badge-test')).toBeInTheDocument();
   });
 
   it('should support data-analytics attributes', () => {
     const { getByTestId } = renderWithTheme(
-      <TrustBadge testID="trust-badge-test" data-analytics-section="checkout" />,
+      <TrustBadge
+        label="Razorpay Trusted Business"
+        testID="trust-badge-test"
+        data-analytics-section="checkout"
+      />,
     );
     expect(getByTestId('trust-badge-test')).toHaveAttribute('data-analytics-section', 'checkout');
   });

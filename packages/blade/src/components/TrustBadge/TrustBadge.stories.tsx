@@ -10,7 +10,7 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="TrustBadge"
-      componentDescription="A generic trust badge — a brand shield paired with a sea-tinted pill that displays a configurable trust label (default: 'Razorpay Trusted Business'). The component is designed to be generic so the label can evolve without a breaking API change."
+      componentDescription="A generic trust badge — a brand shield paired with a sea-tinted pill that displays a consumer-provided trust label. The component is designed to be generic so the label can evolve without a breaking API change."
       figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=123352-128035&m=dev"
     >
       <Title>Usage</Title>
@@ -19,7 +19,7 @@ const Page = (): React.ReactElement => {
         padding="spacing.5"
         borderRadius="medium"
       >
-        <TrustBadgeComponent />
+        <TrustBadgeComponent label="Razorpay Trusted Business" />
       </BaseBox>
     </StoryPageWrapper>
   );

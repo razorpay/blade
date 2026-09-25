@@ -120,7 +120,7 @@ const _AppBar = (
  *
  * ```jsx
  * <AppBar backButton={{ onClick: goBack, accessibilityLabel: 'Go back' }}>
- *   <AppBarLeading title="Mavenshop" logo={<MerchantLogo />} trustBadgeVariant="default" />
+ *   <AppBarLeading title="Mavenshop" logo={<MerchantLogo />} trustBadgeVariant="default" trustBadgeLabel="Razorpay Trusted Business" />
  *   <AppBarActions>
  *     <IconButton icon={UserIcon} accessibilityLabel="Profile" onClick={openProfile} />
  *   </AppBarActions>
@@ -142,8 +142,10 @@ const _AppBarLeading = ({
   const appBarContext = useAppBarContext();
   const isNeutral = (appBarContext?.variant ?? 'neutral') === 'neutral';
   const titleColor = isNeutral ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal';
-  const showFullBadge = trustBadgeVariant === 'default';
-  const showIconBadge = trustBadgeVariant === 'icon-only';
+  const badgeLabel = trustBadgeLabel ?? '';
+  const hasBadgeLabel = badgeLabel.length > 0;
+  const showFullBadge = hasBadgeLabel && trustBadgeVariant === 'default';
+  const showIconBadge = hasBadgeLabel && trustBadgeVariant === 'icon-only';
   const stackFullBadgeBelowLogo = showFullBadge && Boolean(logo) && !title;
   const hasTitleColumn = Boolean(title) || (showFullBadge && !logo);
 
@@ -178,7 +180,7 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <TrustBadge variant="default" label={trustBadgeLabel} />
+              <TrustBadge variant="default" label={badgeLabel} />
             </BaseBox>
           </BaseBox>
         ) : (
@@ -194,7 +196,7 @@ const _AppBarLeading = ({
               <Text size="large" weight="semibold" color={titleColor} truncateAfterLines={1}>
                 {title}
               </Text>
-              {showIconBadge ? <TrustBadge variant="icon-only" label={trustBadgeLabel} /> : null}
+              {showIconBadge ? <TrustBadge variant="icon-only" label={badgeLabel} /> : null}
             </BaseBox>
           ) : null}
           {showFullBadge && !stackFullBadgeBelowLogo ? (
@@ -205,12 +207,12 @@ const _AppBarLeading = ({
               minWidth="0px"
               maxWidth="100%"
             >
-              <TrustBadge variant="default" label={trustBadgeLabel} />
+              <TrustBadge variant="default" label={badgeLabel} />
             </BaseBox>
           ) : null}
         </BaseBox>
       ) : showIconBadge ? (
-        <TrustBadge variant="icon-only" label={trustBadgeLabel} />
+        <TrustBadge variant="icon-only" label={badgeLabel} />
       ) : null}
     </BaseBox>
   );

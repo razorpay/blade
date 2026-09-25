@@ -16,16 +16,9 @@
   import { RazorpayTrustIcon } from '../Icons';
   import type { TrustBadgeProps } from './types';
 
-  const DEFAULT_LABEL = 'Razorpay Trusted Business';
-
   const templateClasses = getTrustBadgeTemplateClasses();
 
-  let {
-    variant = 'default',
-    label = DEFAULT_LABEL,
-    testID,
-    ...rest
-  }: TrustBadgeProps = $props();
+  let { variant = 'default', label, testID, ...rest }: TrustBadgeProps = $props();
 
   const isIconOnly = $derived(variant === 'icon-only');
   const textColor = $derived(getTrustBadgeTextColorToken());

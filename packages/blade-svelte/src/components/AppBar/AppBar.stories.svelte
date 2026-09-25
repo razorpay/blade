@@ -78,6 +78,8 @@
 
   const noop = (): void => undefined;
 
+  const trustBadgeLabel = 'Razorpay Trusted Business';
+
   const trustBadgeRows: { label: string; trustBadgeVariant: TrustBadgeVariant | undefined }[] = [
     { label: 'Full trust badge', trustBadgeVariant: 'default' },
     { label: 'No trust badge', trustBadgeVariant: undefined },
@@ -133,7 +135,7 @@
         onBackButtonClick={noop}
       >
         {#if playgroundArgs.leadingContent === 'logo-only'}
-          <AppBarLeading {trustBadgeVariant}>
+          <AppBarLeading {trustBadgeVariant} trustBadgeLabel={trustBadgeLabel}>
             {#snippet logo()}
               {#if playgroundArgs.logoType === 'optimizer'}
                 {@render optimizerLogo()}
@@ -143,7 +145,7 @@
             {/snippet}
           </AppBarLeading>
         {:else if playgroundArgs.leadingContent === 'logo-and-title'}
-          <AppBarLeading title={playgroundArgs.title} {trustBadgeVariant}>
+          <AppBarLeading title={playgroundArgs.title} {trustBadgeVariant} trustBadgeLabel={trustBadgeLabel}>
             {#snippet logo()}
               {#if playgroundArgs.logoType === 'optimizer'}
                 {@render optimizerLogo()}
@@ -153,7 +155,7 @@
             {/snippet}
           </AppBarLeading>
         {:else}
-          <AppBarLeading title={playgroundArgs.title} {trustBadgeVariant} />
+          <AppBarLeading title={playgroundArgs.title} {trustBadgeVariant} trustBadgeLabel={trustBadgeLabel} />
         {/if}
         {#if playgroundArgs.showActions}
           <AppBarActions>
@@ -170,7 +172,7 @@
   <div style="{checkoutBackgroundStyle} {variationsStackStyle}">
     {#each trustBadgeRows as row (row.label)}
       <AppBar isSticky={false} showBackButton onBackButtonClick={noop}>
-        <AppBarLeading trustBadgeVariant={row.trustBadgeVariant}>
+        <AppBarLeading trustBadgeVariant={row.trustBadgeVariant} trustBadgeLabel={trustBadgeLabel}>
           {#snippet logo()}
             {@render optimizerLogo()}
           {/snippet}
@@ -181,7 +183,7 @@
       </AppBar>
 
       <AppBar isSticky={false} showBackButton onBackButtonClick={noop}>
-        <AppBarLeading title="Maven Shop" trustBadgeVariant={row.trustBadgeVariant}>
+        <AppBarLeading title="Maven Shop" trustBadgeVariant={row.trustBadgeVariant} trustBadgeLabel={trustBadgeLabel}>
           {#snippet logo()}
             {@render titleInitialsLogo()}
           {/snippet}
@@ -192,7 +194,7 @@
       </AppBar>
 
       <AppBar isSticky={false} showBackButton onBackButtonClick={noop}>
-        <AppBarLeading title="Maven Shop" trustBadgeVariant={row.trustBadgeVariant} />
+        <AppBarLeading title="Maven Shop" trustBadgeVariant={row.trustBadgeVariant} trustBadgeLabel={trustBadgeLabel} />
         <AppBarActions>
           {@render defaultAppBarActions()}
         </AppBarActions>
@@ -214,7 +216,7 @@
 <Story name="With Logo" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
     <AppBar showBackButton onBackButtonClick={noop}>
-      <AppBarLeading trustBadgeVariant="default">
+      <AppBarLeading trustBadgeVariant="default" trustBadgeLabel={trustBadgeLabel}>
         {#snippet logo()}
           {@render optimizerLogo()}
         {/snippet}
@@ -227,7 +229,7 @@
 <Story name="With Actions" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
     <AppBar showBackButton onBackButtonClick={noop}>
-      <AppBarLeading title="Maven Shop" trustBadgeVariant="default">
+      <AppBarLeading title="Maven Shop" trustBadgeVariant="default" trustBadgeLabel={trustBadgeLabel}>
         {#snippet logo()}
           {@render titleInitialsLogo()}
         {/snippet}
@@ -259,7 +261,7 @@
 <Story name="Title With Icon Badge" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
     <AppBar showBackButton onBackButtonClick={noop}>
-      <AppBarLeading title="Maven Shop" trustBadgeVariant="icon-only" />
+      <AppBarLeading title="Maven Shop" trustBadgeVariant="icon-only" trustBadgeLabel={trustBadgeLabel} />
     </AppBar>
   </div>
 </Story>
@@ -283,7 +285,7 @@
 <Story name="Merchant Checkout" asChild>
   <div style="background-color: #3669ff; padding: var(--spacing-5); border-radius: var(--border-radius-medium);">
     <AppBar showBackButton onBackButtonClick={noop} accessibilityLabel="Mavenshop checkout">
-      <AppBarLeading title="Mavenshop" trustBadgeVariant="default" />
+      <AppBarLeading title="Mavenshop" trustBadgeVariant="default" trustBadgeLabel={trustBadgeLabel} />
       <AppBarActions>
         {@render defaultAppBarActions()}
       </AppBarActions>
@@ -295,7 +297,7 @@
 <Story name="Sticky On Scroll" asChild>
   <div style="height: 320px; overflow-y: auto; background-color: #3669ff;">
     <AppBar isSticky showBackButton onBackButtonClick={noop}>
-      <AppBarLeading title="Maven Shop" trustBadgeVariant="default">
+      <AppBarLeading title="Maven Shop" trustBadgeVariant="default" trustBadgeLabel={trustBadgeLabel}>
         {#snippet logo()}
           {@render merchantLogo()}
         {/snippet}

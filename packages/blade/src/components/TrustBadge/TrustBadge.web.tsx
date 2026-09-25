@@ -9,13 +9,11 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const DEFAULT_LABEL = 'Razorpay Trusted Business';
-
 /**
  * ### TrustBadge
  *
  * A generic trust badge — a brand shield paired with a sea-tinted pill that displays
- * a configurable trust label (default: "Razorpay Trusted Business").
+ * a consumer-provided trust label.
  *
  * The component is intentionally generic so the label and semantics can evolve
  * (e.g. "Razorpay Verified") without a breaking API change.
@@ -25,14 +23,14 @@ const DEFAULT_LABEL = 'Razorpay Trusted Business';
  * #### Usage
  *
  * ```jsx
- * <TrustBadge />                        // shield + label pill (default)
- * <TrustBadge variant="icon-only" />    // shield only, no pill/text
- * <TrustBadge label="Razorpay Verified" />  // custom trust label
+ * <TrustBadge label="Razorpay Trusted Business" />                    // shield + label pill (default)
+ * <TrustBadge variant="icon-only" label="Razorpay Trusted Business" /> // shield only, no pill/text
+ * <TrustBadge label="Razorpay Verified" />                            // custom trust label
  * ```
  */
 const _TrustBadge = ({
   variant = 'default',
-  label = DEFAULT_LABEL,
+  label,
   testID,
   ...rest
 }: TrustBadgeProps): React.ReactElement => {
