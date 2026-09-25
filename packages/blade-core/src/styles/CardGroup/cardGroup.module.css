@@ -91,6 +91,14 @@
   box-shadow: inset 0 0 0 var(--spacing-2) var(--interactive-border-primary-faded);
 }
 
+/* Selected / focused rows sit above the group's border overlay (.cardGroup::after)
+   so their ring replaces the gray border along that row instead of tucking under it. */
+.cardGroupItemSelected,
+.cardGroupItemInteractive:focus-visible {
+  position: relative;
+  z-index: 2;
+}
+
 /* Selected: 1.5px primary ring on the plain surface — no fill, no accent bar. */
 .cardGroupItemSelected {
   box-shadow: inset 0 0 0 var(--border-width-thick) var(--surface-border-primary-normal);
