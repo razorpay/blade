@@ -4,6 +4,7 @@ import { fireEvent } from '@testing-library/react';
 import { SliderInput } from '../index';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+import { motion } from '~tokens/global';
 
 describe('<SliderInput />', () => {
   it('should render a slider', () => {
@@ -347,8 +348,13 @@ describe('<SliderInput />', () => {
     const slider = getByRole('slider');
     // The pointer handlers live on the control, which is the thumb's parent.
     const control = slider.parentElement as HTMLElement;
-    const movesWithEasing = (): boolean =>
-      getComputedStyle(slider).transition.includes('inset-inline-start');
+    // Whitespace is dropped on both sides because jsdom serialises `cubic-bezier()` without it.
+    const withoutSpaces = (css: string): string => css.replace(/\s/g, '');
+    // Movement is eased on the ratio the control owns, which the thumb and the fill both read.
+    const movesWith = (easing: unknown): boolean =>
+      withoutSpaces(getComputedStyle(control).transition).includes(
+        `--slider-input-ratio80ms${withoutSpaces(String(easing))}`,
+      );
 
     // A press on its own is a click, so the thumb travels to where it landed rather than
     // teleporting there.
@@ -361,15 +367,37 @@ describe('<SliderInput />', () => {
      * without a clientX to measure from. It is covered in a real browser instead.
      */
     await user.pointer({ keys: '[MouseLeft>]', target: control });
-    expect(movesWithEasing()).toBe(true);
+    expect(movesWith(motion.easing.standard)).toBe(true);
 
     // Once the pointer moves the thumb has to sit under the finger, so the easing goes.
     fireEvent.pointerMove(control, { clientX: 40 });
-    expect(movesWithEasing()).toBe(false);
+    expect(getComputedStyle(control).transition).not.toContain('--slider-input-ratio');
 
-    // Releasing restores it for the next click.
+    // Releasing restores the glide for the next click.
     fireEvent.pointerUp(control, { clientX: 40 });
-    expect(movesWithEasing()).toBe(true);
+    expect(movesWith(motion.easing.standard)).toBe(true);
+  });
+
+  it('should keep smoothing the drag between steps when markers are shown', async () => {
+    const user = userEvents.setup();
+    const { getByRole } = renderWithTheme(
+      <SliderInput label="Volume" defaultValue={50} step={10} showMarkers={true} />,
+    );
+    const control = getByRole('slider').parentElement as HTMLElement;
+    const withoutSpaces = (css: string): string => css.replace(/\s/g, '');
+    const movesFor = (duration: number): boolean =>
+      withoutSpaces(getComputedStyle(control).transition).includes(
+        `--slider-input-ratio${duration}ms${withoutSpaces(String(motion.easing.standard))}`,
+      );
+
+    // The steps are coarse enough to hop visibly, so the drag glides between markers, a little
+    // longer than a click so the hop reads as movement.
+    await user.pointer({ keys: '[MouseLeft>]', target: control });
+    fireEvent.pointerMove(control, { clientX: 40 });
+    expect(movesFor(motion.duration.xquick)).toBe(true);
+
+    fireEvent.pointerUp(control, { clientX: 40 });
+    expect(movesFor(motion.duration['2xquick'])).toBe(true);
   });
 
   it('should hug the value indicator to its text', () => {
