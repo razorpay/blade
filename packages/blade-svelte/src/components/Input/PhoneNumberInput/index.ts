@@ -1,8 +1,14 @@
 /**
  * PhoneNumberInput — a `BaseInput` preconfigured for phone numbers: an optional
  * country selector (flag trigger), a dial-code prefix, a clear button, and a
- * rich `onChange` payload (`{ phoneNumber, dialCode, country, value, name }`)
- * powered by `@razorpay/i18nify-js`.
+ * rich `onChange` payload (`{ phoneNumber, dialCode, country, value, name }`).
+ *
+ * Country data (list, dial codes, flags) comes from `@razorpay/i18nify-js` by
+ * default. Pass `countries` to supply your own table instead — it becomes the single
+ * source for the list, the dial-code prefix, the `dialCode` in `onChange`, search and
+ * flags, and lets you use codes i18nify does not model (e.g. `'XK'` Kosovo). Every
+ * country prop accepts any string (`PhoneCountryCode`), so no casts are needed at
+ * the boundary; i18nify lookups never throw for unknown codes.
  *
  * ### Deviations from React
  * - **Country list is a `BottomSheet` on BOTH mobile and desktop.** React opens
@@ -25,6 +31,17 @@
  *   onChange={({ phoneNumber, dialCode, country }) =>
  *     console.log(phoneNumber, dialCode, country)}
  * />
+ *
+ * <!-- Custom country table -->
+ * <PhoneNumberInput
+ *   label="Phone Number"
+ *   defaultCountry="XK"
+ *   countries={[
+ *     { code: 'IN', dialCode: '91' },
+ *     { code: 'XK', dialCode: '+383', name: 'Kosovo', flag: '/flags/xk.svg' },
+ *     { code: 'DO', dialCode: '1849' },
+ *   ]}
+ * />
  * ```
  */
 export { default as PhoneNumberInput } from './PhoneNumberInput.svelte';
@@ -32,4 +49,7 @@ export type {
   PhoneNumberInputProps,
   PhoneNumberInputInstance,
   PhoneNumberChangePayload,
+  PhoneCountryCode,
+  PhoneCountryInfo,
+  CountryCodeType,
 } from './types';

@@ -1,17 +1,18 @@
 <script lang="ts">
   import { untrack } from 'svelte';
-  import { formatPhoneNumber, getDialCodeByCountryCode } from '@razorpay/i18nify-js/phoneNumber';
-  import { getFlagsForAllCountries } from '@razorpay/i18nify-js/geo';
-  import type { CountryCodeType } from '@razorpay/i18nify-js/types';
   import { makeAnalyticsAttribute } from '@razorpay/blade-core/utils';
   import { useFormId } from '../BaseInput/useFormId';
   import BaseInput from '../BaseInput/BaseInput.svelte';
   import IconButton from '../../Button/IconButton/IconButton.svelte';
   import { CloseIcon } from '../../Icons';
   import CountrySelector from './CountrySelector.svelte';
-  import type { PhoneNumberInputProps } from './types';
-
-  const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
+  import {
+    formatPhoneNumberSafe,
+    getPhoneCountryList,
+    normalizeCountry,
+    resolvePhoneCountry,
+  } from './utils';
+  import type { PhoneCountryCode, PhoneNumberInputProps } from './types';
 
   let {
     defaultCountry = 'IN',
@@ -47,13 +48,15 @@
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
     allowedCountries,
+    countries,
     placeholder,
     id,
     portalTarget,
     ...rest
   }: PhoneNumberInputProps = $props();
 
-  const ids = useFormId('phone-number-input', id);
+  // `id` is read once on purpose: form ids must stay stable for the component's lifetime.
+  const ids = useFormId('phone-number-input', untrack(() => id));
 
   let baseInput = $state<{ focus: () => void; getInput: () => HTMLInputElement | null } | null>(
     null,
@@ -61,35 +64,28 @@
 
   // Controllable country state: seed from defaultCountry; `country` prop makes it controlled.
   const isCountryControlled = untrack(() => country !== undefined);
-  let internalCountry = $state<CountryCodeType>(untrack(() => defaultCountry as CountryCodeType));
+  let internalCountry = $state<PhoneCountryCode>(untrack(() => defaultCountry));
   const selectedCountry = $derived(
-    isCountryControlled ? (country as CountryCodeType) : internalCountry,
+    isCountryControlled ? (country as PhoneCountryCode) : internalCountry,
   );
 
   let shouldShowClearButton = $state(untrack(() => Boolean(defaultValue ?? value)));
 
-  const flags = untrack(() => getFlagsForAllCountries()) as Record<string, { '4X3': string }>;
+  // Consumer list is the single data source when given; i18nify otherwise.
+  const customCountries = $derived(countries?.map(normalizeCountry));
+  const countryData = $derived(
+    getPhoneCountryList({ countries: customCountries, allowedCountries }),
+  );
+  // Look the selection up in the unfiltered list so `allowedCountries` cannot hide
+  // the selected country's dial code / flag.
+  const lookupList = $derived(customCountries ?? countryData);
+  const selectedCountryInfo = $derived(resolvePhoneCountry(selectedCountry, lookupList));
 
-  const countryData = $derived.by(() => {
-    if (allowedCountries) {
-      return allowedCountries.map((countryCode) => ({
-        code: countryCode,
-        name: countryNameFormatter.of(countryCode) ?? countryCode,
-      }));
-    }
-    return (Object.keys(flags) as CountryCodeType[])
-      .filter((countryCode) => !countryCode.includes('-'))
-      .map((countryCode) => ({
-        code: countryCode,
-        name: countryNameFormatter.of(countryCode) ?? countryCode,
-      }))
-      .sort((a, b) => a.name.localeCompare(b.name));
-  });
-
-  const dialCode = $derived(getDialCodeByCountryCode(selectedCountry));
-  const resolvedPrefix = $derived(showDialCode ? dialCode : undefined);
+  const resolvedPrefix = $derived(
+    showDialCode && selectedCountryInfo.dialCode ? selectedCountryInfo.dialCode : undefined,
+  );
   const resolvedPlaceholder = $derived(
-    placeholder ?? formatPhoneNumber('1234567890', selectedCountry),
+    placeholder ?? formatPhoneNumberSafe('1234567890', selectedCountry),
   );
 
   const emitChange = ({
@@ -99,13 +95,13 @@
   }: {
     changeName?: string;
     changeValue?: string;
-    changeCountry: CountryCodeType;
+    changeCountry: PhoneCountryCode;
   }): void => {
     onChange?.({
       name: changeName ?? '',
       value: changeValue ?? '',
-      phoneNumber: changeValue ? formatPhoneNumber(changeValue, changeCountry) : undefined,
-      dialCode: getDialCodeByCountryCode(changeCountry),
+      phoneNumber: changeValue ? formatPhoneNumberSafe(changeValue, changeCountry) : undefined,
+      dialCode: resolvePhoneCountry(changeCountry, lookupList).dialCode,
       country: changeCountry,
     });
   };
@@ -120,8 +116,7 @@
     emitChange({ changeName: n, changeValue: v, changeCountry: selectedCountry });
   };
 
-  const handleCountrySelect = ({ name: countryCode }: { name: string }): void => {
-    const nextCountry = countryCode as CountryCodeType;
+  const handleCountrySelect = ({ name: nextCountry }: { name: string }): void => {
     if (!isCountryControlled) {
       internalCountry = nextCountry;
     }
@@ -158,9 +153,8 @@
     <CountrySelector
       {size}
       {countryData}
-      {flags}
       {isDisabled}
-      {selectedCountry}
+      selectedCountry={selectedCountryInfo}
       {portalTarget}
       onItemClick={handleCountrySelect}
     />

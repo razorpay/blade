@@ -39,8 +39,6 @@
 </script>
 
 <script lang="ts">
-  import { getDialCodeByCountryCode } from '@razorpay/i18nify-js/phoneNumber';
-  import { getFlagOfCountry } from '@razorpay/i18nify-js/geo';
   import {
     ActionList,
     ActionListItem,
@@ -58,7 +56,6 @@
     selectedCountry,
     countryData,
     onItemClick,
-    flags,
     size,
     portalTarget,
   }: CountrySelectorProps = $props();
@@ -66,10 +63,7 @@
   let isOpen = $state(false);
   let searchQuery = $state('');
 
-  const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
-
-  const flagSrc = $derived(getFlagOfCountry(selectedCountry)['4X3']);
-  const triggerLabel = $derived(`${countryNameFormatter.of(selectedCountry)} - Select Country`);
+  const triggerLabel = $derived(`${selectedCountry.name} - Select Country`);
 
   const filteredCountryData = $derived.by(() => {
     const query = searchQuery.trim().toLowerCase();
@@ -77,7 +71,7 @@
     return countryData.filter(
       (country) =>
         country.name.toLowerCase().includes(query) ||
-        getDialCodeByCountryCode(country.code).toLowerCase().includes(query),
+        country.dialCode.toLowerCase().includes(query),
     );
   });
 
@@ -106,13 +100,22 @@
   aria-expanded={isOpen}
   onclick={() => (isOpen = true)}
 >
-  <img
-    loading="lazy"
-    role="presentation"
-    width={flagSize[size]}
-    src={flagSrc}
-    alt=""
-  />
+  {#if selectedCountry.flag}
+    <img
+      loading="lazy"
+      role="presentation"
+      width={flagSize[size]}
+      src={selectedCountry.flag}
+      alt=""
+    />
+  {:else}
+    <!-- Same 4:3 box as the flag image so the trigger does not shift for unknown codes. -->
+    <span
+      class="country-selector-flag-empty"
+      style={`width: ${flagSize[size]}px;`}
+      aria-hidden="true"
+    ></span>
+  {/if}
   <span class="country-selector-chevron">
     <ChevronUpDownIcon size="medium" color="interactive.icon.gray.muted" />
   </span>
@@ -138,14 +141,22 @@
         <Text color="surface.text.gray.muted">No countries found</Text>
       </div>
     {:else}
-      <ActionList selectionType="single" selectedValue={selectedCountry} onAction={handleSelect}>
+      <ActionList
+        selectionType="single"
+        selectedValue={selectedCountry.code}
+        onAction={handleSelect}
+      >
         {#each filteredCountryData as country (country.code)}
           <ActionListItem title={country.name} value={country.code}>
             {#snippet leading()}
-              <ActionListItemAsset src={flags[country.code]?.['4X3'] ?? ''} alt={country.name} />
+              {#if country.flag}
+                <ActionListItemAsset src={country.flag} alt={country.name} />
+              {:else}
+                <span class="country-selector-flag-empty country-selector-flag-empty-list"></span>
+              {/if}
             {/snippet}
             {#snippet trailing()}
-              <ActionListItemText>{getDialCodeByCountryCode(country.code)}</ActionListItemText>
+              <ActionListItemText>{country.dialCode}</ActionListItemText>
             {/snippet}
           </ActionListItem>
         {/each}
@@ -186,6 +197,17 @@
   .country-selector-chevron {
     display: inline-flex;
     align-items: center;
+  }
+
+  .country-selector-flag-empty {
+    display: inline-block;
+    flex-shrink: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Matches ActionListItemAsset's 16x12 image box. */
+  .country-selector-flag-empty-list {
+    width: 16px;
   }
 
   .country-selector-search {
