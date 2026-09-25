@@ -272,6 +272,7 @@ export { default as OptimizerFilledIcon } from './OptimizerFilledIcon';
 export { default as OptimizerIcon } from './OptimizerIcon';
 export { default as PackageIcon } from './PackageIcon';
 export { default as PaperclipIcon } from './PaperclipIcon';
+export { default as PathIcon } from './PathIcon';
 export { default as PauseCircleIcon } from './PauseCircleIcon';
 export { default as PauseIcon } from './PauseIcon';
 export { default as PaymentButtonFilledIcon } from './PaymentButtonFilledIcon';

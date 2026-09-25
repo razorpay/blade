@@ -1,0 +1,25 @@
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+
+const _PathIcon: IconComponent = ({ size, color, ...styledProps }) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M11 0C11.3806 0 11.7283 0.216072 11.8967 0.557376L14.7543 6.34647L21.1447 7.28051C21.5212 7.33555 21.8339 7.59956 21.9513 7.96157C22.0687 8.32357 21.9704 8.72083 21.6978 8.98636L17.0746 13.4894L18.1656 19.851C18.23 20.2261 18.0757 20.6053 17.7678 20.8291C17.4598 21.0528 17.0515 21.0823 16.7146 20.9051L11 17.8998L5.28548 20.9051C4.94856 21.0823 4.54027 21.0528 4.2323 20.8291C3.92432 20.6053 3.77007 20.2261 3.83442 19.851L4.92551 13.4894L0.302296 8.98636C0.0296782 8.72083 -0.0685946 8.32357 0.0487831 7.96157C0.166161 7.59956 0.478841 7.33555 0.855401 7.28051L7.24577 6.34647L10.1033 0.557376C10.2718 0.216072 10.6194 0 11 0Z"
+        fill={iconColor}
+      />
+    </Svg>
+  );
+};
+
+const PathIcon = assignWithoutSideEffects(_PathIcon, {
+  componentId: 'PathIcon',
+});
+
+export default PathIcon;

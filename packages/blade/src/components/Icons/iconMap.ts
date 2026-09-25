@@ -271,6 +271,7 @@ import OptimizerFilledIconComponent from './OptimizerFilledIcon';
 import OptimizerIconComponent from './OptimizerIcon';
 import PackageIconComponent from './PackageIcon';
 import PaperclipIconComponent from './PaperclipIcon';
+import PathIconComponent from './PathIcon';
 import PauseCircleIconComponent from './PauseCircleIcon';
 import PauseIconComponent from './PauseIcon';
 import PaymentButtonFilledIconComponent from './PaymentButtonFilledIcon';
@@ -725,6 +726,7 @@ const iconMap: Record<string, IconComponent> = {
   OptimizerIcon: OptimizerIconComponent,
   PackageIcon: PackageIconComponent,
   PaperclipIcon: PaperclipIconComponent,
+  PathIcon: PathIconComponent,
   PauseCircleIcon: PauseCircleIconComponent,
   PauseIcon: PauseIconComponent,
   PaymentButtonFilledIcon: PaymentButtonFilledIconComponent,
