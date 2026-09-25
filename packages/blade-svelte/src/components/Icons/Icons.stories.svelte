@@ -60,21 +60,22 @@
   });
 </script>
 
-{#snippet iconGrid(icons, color)}
-  <div class="display-flex flex-wrap">
+<!--
+  Mirrors the React Icons stories grid: icons take the story args (size defaults to
+  `medium`, same as React) so both Storybooks render at identical dimensions.
+-->
+{#snippet iconGrid(icons, args)}
+  <div style="display: flex; flex-wrap: wrap;">
     {#each Object.entries(icons) as [name, IconComponent] (name)}
       <div
-        class="display-inline-flex flex-col items-center gap-y-spacing-4"
-        style="height: 95px; width: 125px;"
+        style="display: inline-flex; flex-direction: column; align-items: center; gap: var(--spacing-6); height: 95px; width: 125px;"
       >
-        {#if color}
-          <IconComponent size="large" {color} />
-        {:else}
-          <IconComponent size="large" />
-        {/if}
-        <Text size="xsmall" color="surface.text.gray.muted" truncateAfterLines={1}>
-          {name}
-        </Text>
+        <IconComponent {...args} />
+        <div style="width: 90%; text-align: center;">
+          <Text size="xsmall" color="surface.text.gray.muted" truncateAfterLines={1}>
+            {name}
+          </Text>
+        </div>
       </div>
     {/each}
   </div>
@@ -83,18 +84,26 @@
 <!-- Default Icon Story - Playground -->
 <Story name="Icon" />
 
-<Story name="StrokedIcons" asChild>
-  {@render iconGrid(strokedIcons, 'surface.icon.gray.normal')}
+<Story name="StrokedIcons">
+  {#snippet template(args)}
+    {@render iconGrid(strokedIcons, args)}
+  {/snippet}
 </Story>
 
-<Story name="FilledIcons" asChild>
-  {@render iconGrid(filledIcons, 'surface.icon.gray.normal')}
+<Story name="FilledIcons">
+  {#snippet template(args)}
+    {@render iconGrid(filledIcons, args)}
+  {/snippet}
 </Story>
 
-<Story name="BrandedIcons" asChild>
-  {@render iconGrid(brandedIcons)}
+<Story name="BrandedIcons">
+  {#snippet template(args)}
+    {@render iconGrid(brandedIcons, args)}
+  {/snippet}
 </Story>
 
-<Story name="AllIcons" asChild>
-  {@render iconGrid(allIcons, 'surface.icon.gray.normal')}
+<Story name="AllIcons">
+  {#snippet template(args)}
+    {@render iconGrid(allIcons, args)}
+  {/snippet}
 </Story>
