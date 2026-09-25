@@ -1,5 +1,7 @@
 import type React from 'react';
 import type { DataAnalyticsAttribute, TestID } from '~utils/types';
+import type { TooltipProps } from '~components/Tooltip';
+import type { PopoverProps } from '~components/Popover';
 
 type TreeViewProps = {
   /**
@@ -126,6 +128,42 @@ type TreeViewItemProps = {
     value: boolean;
     event?: React.MouseEvent<HTMLButtonElement>;
   }) => void;
+  /**
+   * Shows a Tooltip when the row is hovered or receives keyboard focus.
+   * Use it for a short, plain-text hint about the item.
+   *
+   * The row keeps its own title as its accessible name; the tooltip content is
+   * announced as its description. Cannot be combined with `popover`.
+   *
+   * ```jsx
+   * <TreeViewItem
+   *   title="Payment Success"
+   *   value="payment-success"
+   *   tooltip={{ content: 'Shown after a payment goes through' }}
+   * />
+   * ```
+   */
+  tooltip?: Pick<TooltipProps, 'title' | 'content' | 'placement' | 'onOpenChange'>;
+  /**
+   * Shows a Popover when the row is hovered with a mouse. Use it for rich previews
+   * (e.g. an image of the screen the item represents).
+   *
+   * It opens on mouse hover only: not on keyboard focus, and not on touch screens (a tap
+   * only selects the row). So never put information in it that is not available
+   * elsewhere. Cannot be combined with `tooltip`.
+   *
+   * ```jsx
+   * <TreeViewItem
+   *   title="Payment Success"
+   *   value="payment-success"
+   *   popover={{ title: 'Payment Success', content: <img src={preview} alt="" /> }}
+   * />
+   * ```
+   */
+  popover?: Pick<
+    PopoverProps,
+    'title' | 'titleLeading' | 'content' | 'footer' | 'placement' | 'maxWidth' | 'onOpenChange'
+  >;
 } & TestID &
   DataAnalyticsAttribute;
 

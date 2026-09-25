@@ -200,6 +200,13 @@ type TreeViewLoadMoreProps = {
 
 **B12. Empty branch.** `children` empty and no `hasChildren` → leaf (empty chevron slot, no expansion semantics).
 
+**B13. Tooltip / Popover on items.** `TreeViewItem` takes `tooltip` and `popover` props, following the `SideNavLink` / `AppBar` precedent of overlays as props. Wrapping an item in `<Tooltip>` / `<Popover>` is not supported: TreeView only accepts `TreeViewItem` / `TreeViewLoadMore` children (B10), reads items' props to build the tree, and an item is not the row element either overlay needs as its trigger.
+
+- `tooltip` wraps the treeitem row itself, so it opens on hover **and** keyboard focus, and its content reaches assistive tech through `aria-describedby`. Tooltip normally sets its content as the trigger's `aria-label` (meant for icon-only triggers); TreeView clears that so the row keeps its title as its name.
+- `popover` opens on **mouse hover only**, for rich previews. The row cannot be Popover's trigger: Popover writes `aria-expanded` / `aria-haspopup` / `aria-controls` on its trigger, which would overwrite a branch's expansion state and make leaves announce as collapsed branches. A wrapper around the row is not an allowed child of `role="tree"` either (axe `aria-required-children`). So the Popover is controlled by the row's own `mouseenter` / `mouseleave` and anchored on an `aria-hidden`, `pointer-events: none` box laid over the row content. It opens for a **mouse** pointer only (`pointerType === 'mouse'` on `pointerenter`; pointer events rather than mouse events, because browsers fire emulated mouse events after a tap). On touch screens a tap would otherwise open the popover and select the row at once, the popover would flip below the row and cover the rows under it, and iOS Safari may swallow the first tap as a hover. It does not open on focus either: an open Popover marks the rest of the page `aria-hidden`, which would hide the focused row itself. Because it is pointer-only, its content must never be the only place information lives.
+- Both default to `placement="right"`: in a vertical tree, `top` / `bottom` would cover the rows the pointer moves to next.
+- Only one of the two per item. If both are passed, `popover` wins and a dev warning is logged.
+
 ## Accessibility
 
 **Standalone:** `role="tree"` (+ `aria-multiselectable` when multiple); rows `role="treeitem"` with `aria-expanded` (branches), `aria-level`, `aria-posinset`, `aria-setsize`, and `aria-selected` / `aria-checked` (`"mixed"` for indeterminate). Roving tabindex with real focus - one tab stop for the whole tree. The visual checkbox is `aria-hidden` (the treeitem role carries the state).
