@@ -98,6 +98,18 @@ import '@razorpay/blade-core/tokens/theme.css';
 
 Use `useTheme()` inside the tree for `{ theme, colorScheme, setColorScheme, platform }`.
 
+Use `useBreakpoint()` (same API as React Blade) for the reactive
+viewport breakpoint. Read its fields inside `$derived` or the template; destructuring snapshots
+the values and loses reactivity.
+
+```svelte
+<script>
+  import { useBreakpoint } from '@razorpay/blade-svelte/components';
+  const breakpoint = useBreakpoint(); // { matchedBreakpoint, matchedDeviceType }
+  const isMobile = $derived(breakpoint.matchedDeviceType === 'mobile');
+</script>
+```
+
 ### Install Fonts
 
 Blade uses two fonts: [TASA Orbiter](https://tasatype.localremote.co/) (for headings) and [Inter](https://rsms.me/inter/) (for body text).
@@ -145,7 +157,7 @@ All components are imported from `@razorpay/blade-svelte/components`:
 | Overlays | `BottomSheet` (+ `BottomSheetHeader`, `BottomSheetBody`, `BottomSheetFooter`), `TooltipInteractiveWrapper` |
 | Structure | `Accordion` (+ `AccordionItem`, `AccordionItemHeader`, `AccordionItemBody`), `Collapsible` (+ `CollapsibleButton`, `CollapsibleLink`, etc.), `Chip`, `ChipGroup`, `Link` |
 | Icons | All Blade icons via `Icons` |
-| Utilities | `useToast` hook, `Theme` type |
+| Utilities | `useToast`, `useTheme`, `useBreakpoint`, `Theme` type |
 
 See the [Storybook documentation](https://blade.razorpay.com) for full component API references.
 

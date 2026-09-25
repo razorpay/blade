@@ -17,6 +17,8 @@
  */
 export { default as BladeProvider } from './BladeProvider.svelte';
 export { useTheme } from './useTheme';
+export { useBreakpoint } from './breakpointContext';
+export type { BreakpointState } from './breakpointContext';
 export type {
   Theme,
   BladeProviderProps,
