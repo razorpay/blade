@@ -94,6 +94,14 @@ export {
 } from './Spinner';
 export type { SpinnerVariants, SpinnerSize, SpinnerColor } from './Spinner';
 export {
+  dotLoaderClass,
+  dotLoaderLargeClass,
+  getDotLoaderClasses,
+  getDotLoaderTemplateClasses,
+  DOT_LOADER_COLOR_CSS_VAR,
+} from './DotLoader';
+export type { DotLoaderSize } from './DotLoader';
+export {
   subtleFontSizes,
   normalAmountSizes,
   currencyHardcodedSizes,

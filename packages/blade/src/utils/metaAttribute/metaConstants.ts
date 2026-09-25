@@ -47,6 +47,7 @@ export const MetaConstants = {
   CounterInput: 'counter-input',
   Display: 'display',
   Divider: 'divider',
+  DotLoader: 'dot-loader',
   Drawer: 'drawer',
   EmptyState: 'empty-state',
   Dropdown: 'dropdown',

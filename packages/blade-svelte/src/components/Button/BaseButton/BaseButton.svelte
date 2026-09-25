@@ -4,6 +4,7 @@
   import { resolveComponentStyleOverride } from '../../../utils/resolveComponentStyleOverride';
   import { getBladeThemeContextGetter } from '../../BladeProvider/bladeThemeContext';
   import BaseText from '../../Typography/BaseText/BaseText.svelte';
+  import DotLoader from '../../DotLoader/DotLoader.svelte';
   import type { BaseButtonProps } from './types';
   import type { TextColors } from '../../Typography/BaseText/types';
   import { getStyledPropsClasses } from '@razorpay/blade-core/utils';
@@ -16,6 +17,7 @@
     getButtonIconSize,
     getButtonIconOnlySize,
     type ActionStatesType as ButtonActionStatesType,
+    type DotLoaderSize,
   } from '@razorpay/blade-core/styles';
   import type { IconColor } from '../../Icons/types';
 
@@ -242,7 +244,21 @@
       property: 'icon',
     }) as IconColor;
   });
-  const dotsColorCSSVar = $derived(getTokenCSSVariable(dotsColorToken));
+
+  // The value handed to the shared DotLoader through the `--dot-loader-color`
+  // custom property it reads.
+  //
+  // `--btn-dots-color` stays first in the chain because it has already shipped as
+  // Button's dot-color hook: consumers can set it on the button (or any ancestor)
+  // to recolor the dots. Resolving it here rather than inside DotLoader keeps that
+  // override Button-specific and leaves the shared component generic.
+  const dotsColorCSSVar = $derived(
+    `var(--btn-dots-color, ${getTokenCSSVariable(dotsColorToken)})`,
+  );
+
+  // xsmall–medium buttons are 28–36px tall, where the default loader is well
+  // proportioned; large jumps to 48px, where it reads as undersized.
+  const loaderSize = $derived<DotLoaderSize>(size === 'large' ? 'large' : 'medium');
 
   // Definite loader color (inverted-layer model):
   // The base button stays its *normal* (default) color; only the receding cover
@@ -514,7 +530,18 @@
   {/if}
   <div class={animatedContentClasses()}>
     {#if isIndefiniteLoading}
-      <span class={buttonClasses.dotsLoader} style:--btn-dots-color={dotsColorCSSVar}></span>
+      <!--
+        The color is set here on the wrapper rather than passed as DotLoader's `color`
+        prop so that `--btn-dots-color` keeps winning: a prop would set the custom
+        property inline on the loader itself, which would outrank a consumer override
+        set on the button.
+
+        No `accessibilityLabel`: the button already exposes `aria-busy` and the live
+        region below announces loading start/stop.
+      -->
+      <span class={buttonClasses.dotsLoader} style:--dot-loader-color={dotsColorCSSVar}>
+        <DotLoader size={loaderSize} />
+      </span>
     {/if}
     <span class={cx(buttonClasses.content, isIndefiniteLoading && buttonClasses.loading)}>
       {#if Icon && iconPosition === 'left'}
