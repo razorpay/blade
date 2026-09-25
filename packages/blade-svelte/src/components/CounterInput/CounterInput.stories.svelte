@@ -26,7 +26,7 @@
       },
       size: {
         control: { type: 'select' },
-        options: ['xsmall', 'medium', 'large'],
+        options: ['xsmall', 'small', 'medium', 'large'],
       },
       value: {
         control: { disable: true },
@@ -71,6 +71,7 @@
 
   // Size Variants
   let xsmallValue = $state(1);
+  let smallValue = $state(2);
   let mediumValue = $state(2);
   let largeValue = $state(3);
 
@@ -189,30 +190,29 @@
       <Text size="large" weight="semibold">Size Variants</Text>
 
       <div style={columnGap3}>
-        <Text size="medium" weight="medium">XSmall Size</Text>
+        <Text size="medium" weight="medium">Single Digit Values</Text>
         <CounterInput
-          label="XSmall Counter"
           {...args}
+          label="XSmall Counter"
           size="xsmall"
           value={xsmallValue}
           onChange={({ value }) => (xsmallValue = value)}
           min={0}
         />
-      </div>
-
-      <div style={columnGap3}>
-        <Text size="medium" weight="medium">Medium Size (Default)</Text>
         <CounterInput
-          label="Medium Counter"
+          label="Small Counter"
+          size="small"
+          value={smallValue}
+          onChange={({ value }) => (smallValue = value)}
+          min={0}
+        />
+        <CounterInput
+          label="Medium Counter (Default)"
           size="medium"
           value={mediumValue}
           onChange={({ value }) => (mediumValue = value)}
           min={0}
         />
-      </div>
-
-      <div style={columnGap3}>
-        <Text size="medium" weight="medium">Large Size</Text>
         <CounterInput
           label="Large Counter"
           size="large"

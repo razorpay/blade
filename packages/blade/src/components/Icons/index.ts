@@ -374,6 +374,7 @@ export { default as SparklesIcon } from './SparklesIcon';
 export { default as SpeakerIcon } from './SpeakerIcon';
 export { default as SquareIcon } from './SquareIcon';
 export { default as StampIcon } from './StampIcon';
+export { default as StarFilledIcon } from './StarFilledIcon';
 export { default as StarIcon } from './StarIcon';
 export { default as StopCircleIcon } from './StopCircleIcon';
 export { default as StorefrontIcon } from './StorefrontIcon';

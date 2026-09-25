@@ -66,6 +66,44 @@
   let controlledValue = $state('');
   let inputInstance: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
     $state();
+
+  // State for the Formatted + Controlled bug-repro story.
+  let cardValue = $state('');
+  let cardLog = $state<string[]>([]);
+  const onlyDigits = (v: string): string => v.replace(/\D/g, '');
+  const cardPrefill = (raw: string): void => {
+    cardValue = raw;
+    cardLog = [`Prefilled → "${raw}"`, ...cardLog.slice(0, 4)];
+  };
+  const cardShorten = (): void => {
+    cardValue = cardValue.slice(0, 12);
+    cardLog = [`Shortened to 12 digits`, ...cardLog.slice(0, 4)];
+  };
+  const cardClear = (): void => {
+    cardValue = '';
+    cardLog = [`Cleared`, ...cardLog.slice(0, 4)];
+  };
+
+  // Controlled card form modeled on checkout's AddNewCard.svelte. Controlled
+  // (value + onChange, not defaultValue) is required because the parent must
+  // reset/prefill fields externally — NFC autofill writes number+expiry, and a
+  // DCC provider switch (GPay/Apple Pay) clears every field. Uncontrolled
+  // inputs would not reflect those external mutations.
+  let checkoutNumber = $state('');
+  let checkoutExpiry = $state('');
+  let checkoutCvv = $state('');
+  const digits = (v: string): string => v.replace(/\D/g, '');
+  // Simulates registerNfcScanner autofill: sets number + expiry programmatically.
+  const nfcAutofill = (): void => {
+    checkoutNumber = '4111111111111111';
+    checkoutExpiry = '1229';
+  };
+  // Simulates the international DCC provider switch: clears the whole form.
+  const dccSwitch = (): void => {
+    checkoutNumber = '';
+    checkoutExpiry = '';
+    checkoutCvv = '';
+  };
 </script>
 
 <!-- 1 -->
@@ -207,6 +245,76 @@
     name="fullName"
     onChange={(e) => (controlledValue = e.value ?? '')}
   />
+</Story>
+
+<!-- 11a: manual test for controlled-value sync in format mode -->
+<Story name="Text Input Formatted Controlled" asChild>
+  <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 400px;">
+    <TextInput
+      label="Card Number"
+      format="#### #### #### #### ###"
+      value={cardValue}
+      onChange={({ rawValue }) => {
+        const clean = onlyDigits(rawValue ?? '');
+        cardValue = clean;
+        cardLog = [`onChange rawValue="${rawValue}" → stored="${clean}"`, ...cardLog.slice(0, 4)];
+      }}
+    />
+    <div style="display: flex; gap: var(--spacing-3); flex-wrap: wrap;">
+      <Button size="small" onClick={() => cardPrefill('4111111111111111')}>Prefill Visa (16d)</Button>
+      <Button size="small" onClick={() => cardPrefill('378282246310005')}>Prefill Amex (15d)</Button>
+      <Button size="small" onClick={cardShorten}>Shorten (IIN sim)</Button>
+      <Button size="small" onClick={cardClear}>Clear</Button>
+    </div>
+    <div style="font-family: monospace; font-size: 12px;">
+      <div>stored: "{cardValue}"</div>
+      {#each cardLog as entry}
+        <div style="color: #888;">{entry}</div>
+      {/each}
+    </div>
+    <div style="font-size: 12px; color: #888;">
+      Type letters mixed with digits (e.g. 4111abcd2222) — letters must vanish from the field.
+    </div>
+  </div>
+</Story>
+
+<!-- 11b: controlled card form modeled on checkout AddNewCard.svelte -->
+<Story name="Text Input Checkout Card (Controlled)" asChild>
+  <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 400px;">
+    <TextInput
+      label="Card Number"
+      placeholder="Enter card number"
+      type="telephone"
+      format="#### #### #### #### ###"
+      value={checkoutNumber}
+      onChange={({ rawValue }) => (checkoutNumber = digits(rawValue ?? ''))}
+    />
+    <div style="display: flex; gap: var(--spacing-4);">
+      <TextInput
+        label="Expiry"
+        placeholder="MM/YY"
+        type="telephone"
+        format="##/##"
+        value={checkoutExpiry}
+        onChange={({ rawValue }) => (checkoutExpiry = digits(rawValue ?? ''))}
+      />
+      <TextInput
+        label="CVV"
+        placeholder="CVV"
+        type="telephone"
+        maxCharacters={3}
+        value={checkoutCvv}
+        onChange={({ value }) => (checkoutCvv = digits(value ?? ''))}
+      />
+    </div>
+    <div style="display: flex; gap: var(--spacing-3); flex-wrap: wrap;">
+      <Button size="small" onClick={nfcAutofill}>NFC Autofill</Button>
+      <Button size="small" variant="secondary" onClick={dccSwitch}>Switch to GPay (DCC)</Button>
+    </div>
+    <div style="font-family: monospace; font-size: 12px; color: #888;">
+      number: "{checkoutNumber}" · expiry: "{checkoutExpiry}" · cvv: "{checkoutCvv}"
+    </div>
+  </div>
 </Story>
 
 <!-- 12 -->

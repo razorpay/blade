@@ -1,5 +1,66 @@
 # @razorpay/blade
 
+## 12.126.0
+
+### Minor Changes
+
+- db9ce3e43: feat(TreeView): add `size` prop with a new `small` size
+
+  `<TreeView size="small" />` renders a denser tree for sidebars, file trees and long
+  dropdown overlays, scaling the row height, title typography, chevron, checkbox and
+  indentation.
+  `size` is tree-wide and defaults to `medium`, so existing usage is unchanged.
+
+  `leading` and `trailing` are consumer-provided nodes and are not resized by TreeView. Size
+  them yourself: icons (leading and trailing) follow the tree's `size`, while trailing
+  Counters, Badges and Text stay `size="small"` at both tree sizes.
+
+  This also fixes the item title on `medium` missing its letter-spacing (now `-0.182px`, per
+  the design spec).
+
+### Patch Changes
+
+- 09c4283be: feat(SliderInput): animate the number in the value indicator
+
+  The value indicator now animates between values instead of swapping them outright, so a rising
+  value visibly rises and a falling one falls.
+
+## 12.125.0
+
+### Minor Changes
+
+- 67644e0df: feat: add BottomBar with shared BottomDock surface
+- eae82a35c: feat(CounterInput): add `small` size between `xsmall` and `medium`
+
+### Patch Changes
+
+- 23603710e: fix(ActionList): resolve scroll jitter in virtualized ActionList on initial scroll by replacing useState with useRef for visible indices and removing unnecessary cache resets
+
+## 12.124.0
+
+### Minor Changes
+
+- e914cf6a8: update design tokens from Figma
+
+  Added 18 tokens and removed 0 tokens.
+
+## 12.123.0
+
+### Minor Changes
+
+- 93c64dde1: feat(Input): add `showHelpTextOnFocus` to make help text contextual
+
+  - **TextInput, TextArea, PasswordInput, SearchInput, PhoneNumberInput**: added an opt-in `showHelpTextOnFocus` prop. When set, `helpText` stays collapsed at rest and eases in only while the input is focused, easing back out on blur — so it no longer occupies the row, or pushes content below it, when the user isn't in the field.
+  - `errorText` and `successText` are deliberately unaffected: validation feedback must never depend on focus, so it continues to render persistently and untransitioned.
+  - Defaults to `false`. With the prop unset, help text renders exactly as before — same markup, no transition — so this is fully backwards compatible.
+  - Motion is tokenised as `formHintMotion` in `formTokens.ts` (`duration.moderate` — 280ms — with `easing.entrance` in and `easing.exit` out), matching the shape of `baseInputBorderBackgroundMotion` so the border and the hint below it read as one coordinated focus transition.
+  - The help text is clipped rather than unmounted while collapsed, so the id referenced by `aria-describedby` / `accessibilityDescribedBy` stays resolvable and screen readers still announce it on focus.
+  - Additive and optional, so this is a `minor` bump rather than `major`: no public prop or prop value is removed or narrowed, and no default behaviour changes.
+  - **`@razorpay/blade-svelte` parity is intentionally deferred, not overlooked.** blade-svelte now ships the same input family (BaseInput, TextInput, PasswordInput, SearchInput, PhoneNumberInput, OTPInput) with its own `helpText`, so this prop is a cross-package API divergence until it lands there too. React is deliberately first so the API is settled here before being mirrored; a follow-up should port `showHelpTextOnFocus` to blade-svelte.
+  - **`OTPInput` and `ColorInput` are out of scope**: both compose their own `FormHint` outside `BaseInput`'s footer, so they need separate wiring rather than inheriting the prop.
+  - **`SelectInput` / `AutoComplete` are out of scope**: their focus semantics are coupled to the dropdown's open state and they already offer `showHintsAsTooltip` as an alternative hint treatment, so gating their help text on focus needs its own design decision.
+  - Rationale for the prop name, the `BaseInput`-over-`FormHint` placement, and why the motion avoids the framer-motion primitives is documented in `BaseInput/_decisions/_decisions.md`.
+
 ## 12.122.0
 
 ### Minor Changes

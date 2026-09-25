@@ -61,9 +61,61 @@ type TreeViewProps = {
   /** Standalone only. values: selected leaves. selectedGroups: topmost fully-selected branches (B3). */
   onChange?: (event: { name?: string; values: string[]; selectedGroups: string[] }) => void;
   name?: string;
+  /** Visual density of every row. Tree-wide - individual rows cannot opt out. @default 'medium' */
+  size?: 'small' | 'medium';
 } & TestID &
   DataAnalyticsAttribute;
 ```
+
+#### Sizing contract
+
+`size` lives on `TreeView`, not on `TreeViewItem`: a tree with mixed row densities has no
+valid design, and the indentation ladder has to be uniform for the rows to line up. It is
+propagated through `TreeViewContext` and read by every subcomponent.
+
+| Token                   | `small`     | `medium` (default) |
+| ----------------------- | ----------- | ------------------ |
+| Row height (first line) | 33px        | 36px               |
+| Title typography        | Body Small  | Body Medium        |
+| Chevron slot / icon     | 16px / 12px | 20px / 16px        |
+| Checkbox                | `small`     | `medium`           |
+| Indentation per level   | 20px        | 24px               |
+| LoadMore label offset   | 20px        | 24px               |
+
+Row height is derived from the title's line-height (17px / 20px) plus `BaseMenuItem`'s
+vertical padding, rather than from a `size` token, so the rows land exactly on Figma's
+33px / 36px.
+
+Indentation is one chevron slot plus its 4px gap, which is what makes a child's title sit
+directly under its parent's title at both sizes. It is applied as the row's own
+`padding-left` (not as padding on the nested group) so hover / selected / focus
+backgrounds stay full-bleed at any depth.
+
+**`leading` and `trailing` are not resized.** They are arbitrary consumer `ReactNode`s, so
+TreeView cannot (and should not) rewrite their props. Consumers size them, following two
+different rules:
+
+- **Icons track the tree's `size`** - both `leading` and a trailing icon, so
+  `<FolderIcon size="small" />` / `<LockIcon size="small" />` in a `size="small"` tree.
+- **Trailing Counter / Badge / Text are always `size="small"`**, at both tree sizes. They
+  are secondary markers annotating the row; scaled up at `medium` they would out-weigh the
+  title they belong to. This is a design rule, not a technical limit.
+
+The design supports four trailing types (Figma: `_TreeViewItem-TrailingItem`). All of them
+sit in a 20px-tall line box aligned to the row's first line:
+
+| Trailing | Component                                               | `small` | `medium` |
+| -------- | ------------------------------------------------------- | ------- | -------- |
+| Counter  | `<Counter size="small" />`                              | 16×20   | 16×20    |
+| Badge    | `<Badge size="small" />`                                | 38×20   | 38×20    |
+| Icon     | any Blade icon, sized like `leading`                    | 12px    | 16px     |
+| Text     | `<Text size="small" color="surface.text.gray.muted" />` | 24×20   | 24×20    |
+
+Icon is the only trailing type that varies by tree size - it is a bare glyph with no
+surface of its own, so it reads as part of the row's icon rhythm rather than as a chip.
+
+`trailing` stays a plain `ReactNode` rather than a constrained union - these four are the
+sanctioned treatments, not an enforced type.
 
 ### TreeViewItem
 
@@ -93,7 +145,11 @@ type TreeViewItemProps = {
   /** Children fetching: chevron renders Spinner (B6). */
   isLoading?: boolean;
   /** Per-item click, mirroring the ActionListItem precedent shape. */
-  onClick?: (clickProps: { name: string; value: boolean; event?: React.MouseEvent<HTMLButtonElement> }) => void;
+  onClick?: (clickProps: {
+    name: string;
+    value: boolean;
+    event?: React.MouseEvent<HTMLButtonElement>;
+  }) => void;
 } & TestID &
   DataAnalyticsAttribute;
 ```
@@ -119,12 +175,12 @@ type TreeViewLoadMoreProps = {
 
 **B3. Change payload.** `values` = selected **leaf** values only; a branch's own `value` never appears in `values`. `selectedGroups` = values of the **topmost** fully-selected branches only. Standalone, both arrive via `TreeView.onChange`. In Dropdown, `values` arrives through the trigger's standard `onChange({name, values})` (unchanged shape), and `selectedGroups` is added as an **additive optional field** on that payload when the overlay content is a TreeView. Canonical trace (tree: India > Karnataka > [Bengaluru, Mysuru], India > Goa):
 
-| Action          | values                            | selectedGroups  |
-| --------------- | --------------------------------- | --------------- |
-| check Bengaluru | `['bengaluru']`                   | `[]`            |
-| check Mysuru    | `['bengaluru','mysuru']`          | `['karnataka']` |
-| check Goa       | `['bengaluru','mysuru','goa']`    | `['india']`     |
-| uncheck India   | `[]`                              | `[]`            |
+| Action          | values                         | selectedGroups  |
+| --------------- | ------------------------------ | --------------- |
+| check Bengaluru | `['bengaluru']`                | `[]`            |
+| check Mysuru    | `['bengaluru','mysuru']`       | `['karnataka']` |
+| check Goa       | `['bengaluru','mysuru','goa']` | `['india']`     |
+| uncheck India   | `[]`                           | `[]`            |
 
 **B4. Disabled.** Disables the subtree: unselectable, not expandable by keyboard, skipped by traversal, unaffected by ancestor cascade. Mirrors ActionList's mechanism: **disabled rows are simply never registered**, which gives skip-behaviour for free in Dropdown mode.
 

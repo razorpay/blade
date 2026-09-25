@@ -8,10 +8,10 @@ LineChart is a data visualization component built on top of Recharts with Blade 
 
 ## Important Constraints
 
-- `ChartLineWrapper` component only accepts `ChartLine`, `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip`, `ChartLegend`, and `ChartReferenceLine` components as children
+- `ChartLineWrapper` component only accepts `ChartLine`, `ChartXAxis`, `ChartYAxis`, `ChartCartesianGrid`, `ChartTooltip`, `ChartLegend`, `ChartReferenceLine`, and `ChartReferenceBand` components as children
 - `dataKey` prop is required for `ChartLine` component and must match a key in the data array
 - `data` prop is required for `ChartLineWrapper` and must be an array of objects
-- `color` prop only accepts chart categorical color tokens in the format `data.background.categorical.{colorName}.{emphasis}`
+- `color` prop accepts chart color tokens in the format `data.background.categorical.{colorName}.{emphasis}` or `data.background.sequential.{colorName}.{emphasis}`
 - Currently only supports `colorTheme="categorical"` - other color themes will fallback to categorical
 - When hovering over a line, other lines will fade to 20% opacity to highlight the hovered line
 - Lines have an invisible 15px hover target area for better mouse interaction UX
@@ -24,7 +24,7 @@ The following types represent the props that the LineChart component and its sub
 interface ChartLineProps {
   /**
    * The type of the line.
-   * @default 'monotone'
+   * @default 'linear'
    */
   type?: 'step' | 'stepAfter' | 'stepBefore' | 'linear' | 'monotone';
   /**
@@ -42,6 +42,11 @@ interface ChartLineProps {
    */
   connectNulls?: boolean;
   /**
+   * The style of the line drawn across null points when `connectNulls` is `true`.
+   * @default 'solid'
+   */
+  connectNullsStyle?: 'solid' | 'dashed';
+  /**
    * Include this particular line in legend.
    * @default true
    */
@@ -49,17 +54,41 @@ interface ChartLineProps {
   /**
    * The data key corresponding to a property in the data array.
    */
-  dataKey: string;
+  dataKey: RechartsLineProps['dataKey'];
   /**
    * Name of the line in line chart.
    * If not provided, the dataKey will be used as the name.
    */
-  name?: string;
+  name?: RechartsLineProps['name'];
   /**
    * Color of the line in line chart.
    * If not provided, colors will be picked from the default theme colors.
    */
-  color?: ChartsCategoricalColorToken;
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  /**
+   * Data key for the lower (minimum) bound of this line's reference band.
+   * When both `rangeLowerDataKey` and `rangeUpperDataKey` are set, a shaded band is drawn behind this line.
+   */
+  rangeLowerDataKey?: string;
+  /**
+   * Data key for the upper (maximum) bound of this line's reference band.
+   */
+  rangeUpperDataKey?: string;
+  /**
+   * Legend and tooltip label for this line's reference band.
+   * @default 'Industry range'
+   */
+  rangeName?: string;
+  /**
+   * Fill color of this line's reference band.
+   * @default the color of the line
+   */
+  rangeColor?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  /**
+   * Whether to show this line's reference band as a separate legend entry.
+   * @default the `showLegend` value of the line
+   */
+  showRangeLegend?: boolean;
   /**
    * Style of the line in line chart.
    * @default 'solid'
@@ -101,6 +130,34 @@ type ChartReferenceLineProps = {
    * The label of the reference line.
    */
   label: string;
+};
+
+type ChartReferenceBandProps = {
+  /**
+   * The data key for the lower (minimum) bound of the range.
+   * Each data row must have a numeric value at this key.
+   */
+  lowerDataKey: string;
+  /**
+   * The data key for the upper (maximum) bound of the range.
+   * Each data row must have a numeric value at this key.
+   */
+  upperDataKey: string;
+  /**
+   * The label shown for the range in the legend.
+   * @default 'Reference band'
+   */
+  name?: string;
+  /**
+   * The fill color of the range band.
+   * @default 'data.background.categorical.blue.faint'
+   */
+  color?: ChartsCategoricalColorToken | ChartSequentialColorToken;
+  /**
+   * Whether to show a legend entry for the range.
+   * @default true
+   */
+  showLegend?: boolean;
 };
 
 type ChartXAxisProps = Omit<RechartsXAxisProps, 'tick' | 'label' | 'dataKey' | 'stroke'> & {
@@ -174,9 +231,6 @@ type ChartYAxisProps = Omit<RechartsYAxisProps, 'tick' | 'label' | 'dataKey' | '
   dataKey?: string;
 };
 
-type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
-
-
 type Layout = 'horizontal' | 'vertical';
 type Align = 'left' | 'right';
 
@@ -184,12 +238,34 @@ type ChartTooltipProps = ComponentProps<typeof RechartsTooltip>;
 type ChartLegendProps = ComponentProps<typeof RechartsLegend> & {
   layout?: Layout;
   align?: Align;
+  /**
+   * Array of dataKeys that are currently selected.
+   * When provided, the component is in controlled mode.
+   */
+  selectedDataKeys?: string[];
+  /**
+   * Default selected dataKeys for uncontrolled mode.
+   * If not provided, all dataKeys are selected by default.
+   */
+  defaultSelectedDataKeys?: string[];
+  /**
+   * Callback fired when the selection changes.
+   */
+  onSelectedDataKeysChange?: ({
+    dataKey,
+    selectedKeysArray,
+  }: {
+    dataKey: string;
+    selectedKeysArray: string[];
+  }) => void;
 };
 
 
-type ChartCartesianGridProps = ComponentProps<typeof RechartsCartesianGrid>;
+type ChartCartesianGridProps = Omit<RechartsCartesianGridProps, 'strokeDasharray' | 'verticalFill' | 'horizontalFill'>;
 
 type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCategories}.${keyof ChartCategoricalEmphasis}`;
+
+type ChartSequentialColorToken = `data.background.sequential.${Exclude<ChartColorCategories, 'gray'>}.${keyof ChartSequentialEmphasis}`;
 
 type colorTheme = 'categorical';
 ```
@@ -203,12 +279,12 @@ type colorTheme = 'categorical';
 - Use `strokeStyle="dashed"` for forecast or projected data to visually distinguish from actual data.
 - Use `connectNulls={true}` for datasets with missing values that should show continuous lines.
 - Use `ChartReferenceLine` to add target/threshold lines for context.
+- Use `ChartReferenceBand` (or `rangeLowerDataKey` and `rangeUpperDataKey` on `ChartLine`) to show a min–max range behind the lines.
 
 **Don't**
 
 - Don't use `LineChart` when you want to emphasize volume or cumulative data — use `AreaChart` (same as LineChart but with filled region).
 - Don't use `LineChart` for categorical comparisons — use `BarChart` instead.
-- Don't use sequential color tokens — only categorical colors are supported.
 - Don't use `LineChart` for proportional data — use `DonutChart` for parts-of-a-whole visualization.
 
 ## Examples
@@ -268,4 +344,52 @@ function BasicLineChart() {
 }
 
 export default BasicLineChart;
+```
+
+### Line Chart with Reference Band
+
+Use `ChartReferenceBand` to show a shaded range (for example, the range of similar businesses) behind the line.
+
+```tsx
+import React from 'react';
+import {
+  Box,
+  ChartLine,
+  ChartLineWrapper,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
+  ChartLegend,
+  ChartReferenceBand,
+  ChartReferenceLine,
+} from '@razorpay/blade/components';
+
+function LineChartWithReferenceBand() {
+  const data = [
+    { month: 'Jan', activeUsers: 1100, min: 900, max: 1400 },
+    { month: 'Feb', activeUsers: 1250, min: 950, max: 1450 },
+    { month: 'Mar', activeUsers: 1180, min: 1000, max: 1500 },
+    { month: 'Apr', activeUsers: 1320, min: 1050, max: 1550 },
+  ];
+
+  return (
+    <Box width="100%" height="400px">
+      <ChartLineWrapper data={data}>
+        <ChartReferenceBand lowerDataKey="min" upperDataKey="max" name="Reference band" />
+        <ChartXAxis dataKey="month" />
+        <ChartYAxis label="Active users" />
+        <ChartTooltip />
+        <ChartLegend />
+        <ChartLine
+          dataKey="activeUsers"
+          name="Active users"
+          color="data.background.categorical.gray.intense"
+        />
+        <ChartReferenceLine y={1200} label="Avg: 1,200" />
+      </ChartLineWrapper>
+    </Box>
+  );
+}
+
+export default LineChartWithReferenceBand;
 ```

@@ -1,0 +1,89 @@
+/*
+ * DotLoader — indefinite 3-dot loading indicator.
+ *
+ * Geometry matches the `DotLoader` component in Figma: three 4px dots with 2px
+ * gaps (16px span) inside a 24 x 24 frame, centered at rest. The lift below is a
+ * transform, so it does not affect where the dots are laid out — centering here
+ * is what keeps the resting dots on the box's horizontal midline.
+ *
+ * Geometry is driven by custom properties so `.dot-loader-large` only has to
+ * restate the four numbers rather than duplicate every rule (the keyframes read
+ * --dot-loader-lift off the element, so they scale with the size too).
+ *
+ * Color is tokenized via --dot-loader-color so any consumer can drive it
+ * without a variant table here. It defaults to currentColor.
+ */
+.dot-loader {
+  --dot-loader-box-size: 24px;
+  --dot-loader-dot-size: 4px;
+  --dot-loader-gap: 2px;
+  --dot-loader-lift: 5px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--dot-loader-box-size);
+  height: var(--dot-loader-box-size);
+  gap: var(--dot-loader-gap);
+}
+
+/*
+ * `medium` scaled by 1.5, for hosts tall enough that the default reads as
+ * undersized (the 48px large Button). Compound selector gives this higher
+ * specificity than `.dot-loader`, so the override does not depend on source
+ * order.
+ */
+.dot-loader.dot-loader-large {
+  --dot-loader-box-size: 36px;
+  --dot-loader-dot-size: 6px;
+  --dot-loader-gap: 3px;
+  --dot-loader-lift: 7.5px;
+}
+
+.dot-loader > span {
+  width: var(--dot-loader-dot-size);
+  height: var(--dot-loader-dot-size);
+  border-radius: 50%;
+  background: var(--dot-loader-color, currentColor);
+  opacity: 0.42;
+  animation: dotLoaderPulse 1.2s ease-in-out infinite;
+}
+
+.dot-loader > span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dot-loader > span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/*
+ * Up only — each dot lifts off the rest line and settles back, never dipping
+ * below it. Holding the rest pose from 60% to 100% lets the 0.15s stagger read as
+ * a travelling wave instead of three dots moving in near-unison.
+ */
+@keyframes dotLoaderPulse {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.42;
+  }
+  30% {
+    transform: translateY(calc(-1 * var(--dot-loader-lift)));
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Static Figma pose: outer dots at rest, middle dot held at its peak. */
+  .dot-loader > span {
+    animation: none;
+    opacity: 0.42;
+  }
+  .dot-loader > span:nth-child(2) {
+    transform: translateY(calc(-1 * var(--dot-loader-lift)));
+    opacity: 1;
+  }
+}

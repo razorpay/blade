@@ -28,3 +28,22 @@ jobs:
         working-directory: packages/blade
       - name: Run Lint Script
         run: yarn tsc:knowledgebase
+
+  drift:
+    name: Knowledgebase Drift Check
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v22
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      # Compares knowledgebase doc types with Blade source types. Exceptions go in
+      # scripts/knowledgebaseDriftIgnore.json
+      - name: Run Drift Check
+        run: yarn check:knowledgebase-drift --fail
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096

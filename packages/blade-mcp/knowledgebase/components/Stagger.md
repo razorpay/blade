@@ -11,19 +11,14 @@ Stagger is a utility motion preset component that allows you to stagger children
 Below are the TypeScript types that define the props that the Stagger component accepts:
 
 ```typescript
-// Main component props
-type StaggerProps = Pick<
-  BaseMotionEntryExitProps,
-  'isVisible' | 'motionTriggers' | 'shouldUnmountWhenHidden' | 'type' | 'delay'
-> & {
-  children: React.ReactElement[] | React.ReactElement;
-} & Omit<BoxProps, 'as'>;
-
-// The picked BaseMotionEntryExitProps include:
-type BaseMotionEntryExitProps = {
+type StaggerProps = {
   /**
-   * Whether the component is visible or not
-   * @default true
+   * Motion preset elements (e.g. `Fade`, `Move`, `Slide`) to animate one after the other
+   */
+  children: React.ReactElement[] | React.ReactElement;
+
+  /**
+   * Handle visibility of all children. Use this to animate children out and in.
    */
   isVisible?: boolean;
 
@@ -31,26 +26,44 @@ type BaseMotionEntryExitProps = {
    * What triggers the motion
    * @default ['mount']
    */
-  motionTriggers?: Array<'mount' | 'hover' | 'focus'>;
+  motionTriggers?: ('mount' | 'in-view' | 'focus' | 'on-animate-interactions')[];
 
   /**
-   * Whether to unmount the component when it's hidden
+   * By default components are only made opacity: 0. When true, children unmount when hidden.
    * @default false
    */
   shouldUnmountWhenHidden?: boolean;
 
   /**
-   * Type of animation to use
+   * Whether component should animate in, animate out, or animate both in and out
    * @default 'inout'
    */
   type?: 'in' | 'out' | 'inout';
 
   /**
-   * Delay duration for the animation
+   * Handles delay of animations. Use one token, or different tokens for enter and exit.
+   * @default undefined
    */
-  delay?:
-    | keyof typeof theme.motion.delay
-    | { enter?: keyof typeof theme.motion.delay; exit?: keyof typeof theme.motion.delay };
+  delay?: Delay | { enter: Delay; exit: Delay };
+} & Omit<BoxProps, 'as'>;
+
+// Motion delay tokens
+type Delay = '2xquick' | 'xquick' | 'moderate' | 'gentle' | 'xgentle' | 'long' | 'xlong' | '2xlong';
+
+/**
+ * Stagger renders a Box, so it accepts all Box props except `as`
+ * (layout, flexbox, grid, spacing, background, border, elevation, mouse/drag events, etc).
+ * See the Box component docs for the full list.
+ */
+type BoxProps = {
+  as?: string;
+  display?: string;
+  flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
+  gap?: string;
+  padding?: string;
+  width?: string;
+  height?: string;
+  // ...and all other Box props
 };
 ```
 

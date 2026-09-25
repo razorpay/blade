@@ -236,6 +236,7 @@ const colors: ColorsWithModes = {
         neutral: {
           default: globalColors.neutral.black[500],
           highlighted: globalColors.neutral.blackSolid[450],
+          disabledSolid: globalColors.neutral.blackSolid[100],
           disabled: globalColors.neutral.black[50],
           faded: globalColors.neutral.blueGrayLight.a912,
           fadedHighlighted: globalColors.neutral.blueGrayLight.a918,
@@ -948,9 +949,10 @@ const colors: ColorsWithModes = {
         neutral: {
           default: globalColors.neutral.white[500],
           highlighted: globalColors.neutral.whiteSolid[450],
+          disabledSolid: globalColors.neutral.whiteSolid[100],
           disabled: globalColors.neutral.white[50],
-          faded: globalColors.neutral.blueGrayDark.a512,
-          fadedHighlighted: globalColors.neutral.blueGrayDark.a518,
+          faded: globalColors.neutral.blueGrayDark.a518,
+          fadedHighlighted: globalColors.neutral.blueGrayDark.a524,
         },
         gray: {
           default: globalColors.neutral.blueGrayDark.a512,

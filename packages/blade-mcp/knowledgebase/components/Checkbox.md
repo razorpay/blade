@@ -81,6 +81,11 @@ type CheckboxProps = {
   size?: 'small' | 'medium' | 'large';
 
   /**
+   * Sets the tab-index property on the checkbox element
+   */
+  tabIndex?: number;
+
+  /**
    * The validation state of the checkbox
    */
   validationState?: 'error' | 'none';

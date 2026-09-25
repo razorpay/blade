@@ -1,10 +1,5 @@
 <script lang="ts">
   import {
-    disableBodyScroll,
-    enableBodyScroll,
-    clearAllBodyScrollLocks,
-  } from 'body-scroll-lock-upgrade';
-  import {
     metaAttribute,
     MetaConstants,
     makeAccessible,
@@ -19,6 +14,7 @@
     modalWrapperClass,
   } from '@razorpay/blade-core/styles';
   import { portal } from '../../utils/portal';
+  import { lockBodyScroll, unlockBodyScroll } from '../../utils/bodyScrollLock';
   import ModalBackdrop from './ModalBackdrop.svelte';
   import { setModalContext } from './modalContext';
   import type { ModalContextValue } from './modalContext';
@@ -120,22 +116,14 @@
     };
   });
 
-  /* Body scroll lock while mounted. `body-scroll-lock-upgrade` gives us
-   * `reserveScrollBarGap: true` (no layout shift) — descendants of the target
-   * (the ModalBody) still scroll. */
+  /* Body scroll lock while mounted. `reserveScrollBarGap` avoids the layout
+   * shift on non-overlay scrollbars; descendants of the target (the ModalBody)
+   * still scroll. */
   $effect(() => {
     if (!surfaceEl) return undefined;
     const target = surfaceEl;
-    disableBodyScroll(target, { reserveScrollBarGap: true });
-    return () => enableBodyScroll(target);
-  });
-
-  $effect(() => {
-    return () => {
-      if (typeof document !== 'undefined') {
-        clearAllBodyScrollLocks();
-      }
-    };
+    lockBodyScroll(target, { reserveScrollBarGap: true });
+    return () => unlockBodyScroll(target);
   });
 
   let portalWrapperEl = $state<HTMLElement | null>(null);

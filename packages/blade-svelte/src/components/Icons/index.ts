@@ -17,6 +17,8 @@ export { CreditCardIcon } from './CreditCardIcon';
 export { EyeIcon } from './EyeIcon';
 export { EyeOffIcon } from './EyeOffIcon';
 export { InfoIcon } from './InfoIcon';
+export { MailIcon } from './MailIcon';
+export { MailOpenIcon } from './MailOpenIcon';
 export { MinusIcon } from './MinusIcon';
 export { PhoneIcon } from './PhoneIcon';
 export { PlusIcon } from './PlusIcon';
@@ -26,6 +28,7 @@ export { UserIcon } from './UserIcon';
 export { BuildingIcon } from './BuildingIcon';
 export { BankIcon } from './BankIcon';
 export { LockIcon } from './LockIcon';
+export { WhatsAppIcon } from './WhatsAppIcon';
 
 // Branded Icons
 export { RazorpayTrustIcon } from './RazorpayTrustIcon';

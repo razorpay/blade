@@ -43,6 +43,16 @@
 }
 
 /*
+ * Icon slot wrapper. Flex so the inline <svg> child yields no baseline descender
+ * gap. Also the hook for the `icon` styleOverride slot.
+ */
+.icon-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
  * ===== Emphasis: intense (gray) =====
  * rest → muted, hover/focus/active → subtle, disabled → disabled.
  */

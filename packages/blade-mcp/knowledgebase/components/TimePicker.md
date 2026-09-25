@@ -47,122 +47,64 @@ type TimePickerValue = {
  */
 type TimePart = 'hour' | 'minute' | 'period';
 
-type TimePickerCommonInputProps = {
-  inputRef?: React.Ref<any>;
-  referenceProps?: any;
-} & Pick<
-  BaseInputProps,
-  | 'labelPosition'
-  | 'size'
-  | 'isRequired'
-  | 'necessityIndicator'
-  | 'autoFocus'
-  | 'isDisabled'
-  | 'accessibilityLabel'
-  | 'name'
-  | 'placeholder'
-  | 'label'
-  | 'onFocus'
-  | 'onBlur'
-  | 'labelSuffix'
-  | 'labelTrailing'
-> &
-  FormInputValidationProps;
+/**
+ * Input focus/blur event handler
+ */
+type FormInputOnEvent = ({
+  name,
+  value,
+  rawValue,
+}: {
+  name?: string;
+  value?: string;
+  rawValue?: string;
+}) => void;
 
 /**
  * Main TimePicker component props
  * Combines input functionality with time selection capabilities
  */
-type TimePickerProps = Omit<
-  TimePickerInputProps,
-  'inputRef' | 'refrenceProps' | 'successText' | 'errorText' | 'helpText' | 'time' | 'onChange'
-> &
-  Omit<TimePickerSelectorProps, 'isOpen' | 'defaultIsOpen' | 'onOpenChange' | 'time'> & {
-    /**
-     * Current time value as Date object (for controlled usage)
-     */
-    value?: Date | null;
-
-    /**
-     * Callback fired when time value changes
-     * @param timeValue - Object containing the selected time
-     */
-    onChange?: (timeValue: TimePickerValue) => void;
-
-    /**
-     * Label for the time input
-     */
-    label?: string;
-
-    /**
-     * Help text to guide the user
-     */
-    helpText?: string;
-
-    /**
-     * Error text to show validation errors
-     */
-    errorText?: string;
-
-    /**
-     * Success text to show validation success
-     */
-    successText?: string;
-
-    /**
-     * Controls dropdown open state (for controlled usage)
-     * @default false
-     */
-    isOpen?: boolean;
-
-    /**
-     * Default open state (for uncontrolled usage)
-     * @default false
-     */
-    defaultIsOpen?: boolean;
-
-    /**
-     * Callback fired when dropdown open state changes
-     * @param state - Object containing the new open state
-     */
-    onOpenChange?: (state: { isOpen: boolean }) => void;
-
-    /**
-     * Test ID for testing purposes
-     */
-    testID?: string;
-
-    /**
-     * Accessibility label for screen readers
-     * When not provided, falls back to label prop
-     */
-    accessibilityLabel?: string;
-  };
-
-type TimePickerSelectorProps = {
+type TimePickerProps = {
   /**
    * Current time value as Date object (for controlled usage)
    */
-  time?: Date | null;
+  value?: Date | null;
 
   /**
    * Default time value as Date object (for uncontrolled usage)
    */
-  defaultValue?: Date;
+  defaultValue?: Date | null;
 
   /**
-   * Callback fired when time value changes during selection
-   * @param timeValue - Object containing the selected time and future extensible properties
+   * Callback fired when time value changes
+   * @param timeValue - Object containing the selected time
    */
   onChange?: (timeValue: TimePickerValue) => void;
 
   /**
+   * Callback fired when user applies time selection
+   * Only called when showFooterActions is true and user clicks Apply
+   */
+  onApply?: (timeValue: TimePickerValue) => void;
+
+  /**
    * Time format for display and interaction
-   * @default "12h"
-   *
-   * Both 12h and 24h formats are supported using React Aria.
+   * @default '12h'
    */
   timeFormat?: TimeFormat;
+
+  /**
+   * Step interval for minutes selection
+   * @default 1
+   */
+  minuteStep?: MinuteStep;
+
+  /**
+   * Whether to show the apply/cancel buttons in the dropdown.
+   * When false, the selected time applies on blur or on Enter.
+   * @default true
+   */
+  showFooterActions?: boolean;
 
   /**
    * Controls dropdown open state (for controlled usage)
@@ -177,71 +119,121 @@ type TimePickerSelectorProps = {
   defaultIsOpen?: boolean;
 
   /**
-   * Step interval for minutes selection
-   * @default 1
-   * @example 15 // allows 00, 15, 30, 45 minutes only
-   */
-  minuteStep?: MinuteStep;
-
-  /**
    * Callback fired when dropdown open state changes
-   * @param state - Object containing the new open state
    */
   onOpenChange?: (state: { isOpen: boolean }) => void;
 
   /**
-   * Whether to show the apply/cancel buttons in the dropdown
-   * @default true
-   *
-   * When true:
-   * - Shows Apply/Cancel buttons for explicit confirmation
-   * - User must click Apply to confirm selection
-   * - Better for complex time selections
-   *
-   * When false:
-   * - On blur, selected time will automatically apply and close the dropdown
-   * - Pressing Enter immediately applies the current selection and closes
-   * - More streamlined interaction experience
+   * Label for the time input
    */
-  showFooterActions?: boolean;
+  label?: string;
 
   /**
-   * Callback fired when user applies time selection
-   * Only called when showFooterActions is true and user clicks Apply
-   * @param timeValue - Object containing the confirmed time value
+   * Position of the label
+   * @default 'top'
    */
-  onApply?: (timeValue: TimePickerValue) => void;
+  labelPosition?: 'top' | 'left';
 
   /**
-   * To set the controlled value of the time picker
+   * Element to render after the label (e.g. a Tooltip trigger)
    */
-  setControlledValue?: (time: Date | null) => void;
+  labelSuffix?: React.ReactNode;
 
+  /**
+   * Element to render at the trailing end of the label row
+   */
+  labelTrailing?: React.ReactNode;
+
+  /**
+   * Accessibility label for screen readers
+   * When not provided, falls back to label prop
+   */
+  accessibilityLabel?: string;
+
+  /**
+   * Placeholder text for the input
+   */
+  placeholder?: string;
+
+  /**
+   * Name attribute of the input, for form submission
+   */
+  name?: string;
+
+  /**
+   * Size of the input
+   * @default 'medium'
+   */
   size?: 'medium' | 'large';
-};
 
-/**
- * Props for individual time column components (Hours, Minutes, Period)
- */
-type TimeColumnProps = {
-  values: string[];
-  selectedValue: string;
-  onValueChange: (value: string) => void;
-};
-
-/**
- * Props for time picker footer actions (Apply/Cancel buttons)
- */
-type TimePickerFooterProps = {
-  onApply: () => void;
-  onCancel: () => void;
-  isApplyDisabled?: boolean;
-};
-
-type TimeSegmentProps = {
-  segment: DateSegment;
-  state: TimeFieldState;
+  /**
+   * Whether the input is disabled
+   */
   isDisabled?: boolean;
+
+  /**
+   * Whether the input is required
+   */
+  isRequired?: boolean;
+
+  /**
+   * Whether to display the necessity indicator
+   * @default 'none'
+   */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+
+  /**
+   * Auto focus the input on mount
+   */
+  autoFocus?: boolean;
+
+  /**
+   * Callback fired when the input gets focus
+   */
+  onFocus?: FormInputOnEvent;
+
+  /**
+   * Callback fired when the input loses focus
+   */
+  onBlur?: FormInputOnEvent;
+
+  /**
+   * Help text to guide the user
+   */
+  helpText?: string;
+
+  /**
+   * Error text to show validation errors
+   */
+  errorText?: string;
+
+  /**
+   * Success text to show validation success
+   */
+  successText?: string;
+
+  /**
+   * Validation state of the input
+   * @default 'none'
+   */
+  validationState?: 'error' | 'success' | 'none';
+
+  /**
+   * Position of the validation text
+   * @default 'outside'
+   */
+  validationTextPlacement?: 'outside' | 'inside';
+
+  /**
+   * z-index of the TimePicker dropdown
+   * @default 1100
+   */
+  zIndex?: number;
+
+  /**
+   * Test ID for testing purposes
+   */
+  testID?: string;
 };
 ```
 

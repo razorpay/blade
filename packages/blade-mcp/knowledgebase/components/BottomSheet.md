@@ -43,6 +43,19 @@ type BottomSheetProps = {
   snapPoints?: number[];
 
   /**
+   * When true, the sheet sizes itself to its content instead of the snapPoints.
+   * @default false
+   */
+  snapToContentHeight?: boolean;
+
+  /**
+   * Whether dragging on the sheet content pans or dismisses the sheet (native only).
+   * Set to false when the sheet has its own vertical scrollables (e.g. a picker wheel).
+   * @default true
+   */
+  isContentPanningGestureEnabled?: boolean;
+
+  /**
    * Reference to the element that should receive focus when the BottomSheet opens
    * By default, focus is set to the close button
    */

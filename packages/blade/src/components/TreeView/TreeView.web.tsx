@@ -39,6 +39,7 @@ const _TreeView = ({
   defaultValue,
   onChange,
   name,
+  size = 'medium',
   testID,
   ...rest
 }: TreeViewProps): React.ReactElement => {
@@ -561,6 +562,7 @@ const _TreeView = ({
   const contextValue = React.useMemo<TreeViewContextType>(
     () => ({
       selectionType: effectiveSelectionType,
+      size,
       isInsideDropdown,
       baseId,
       nodeMap,
@@ -576,6 +578,7 @@ const _TreeView = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       effectiveSelectionType,
+      size,
       isInsideDropdown,
       baseId,
       nodeMap,

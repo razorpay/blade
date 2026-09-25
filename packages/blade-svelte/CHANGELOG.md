@@ -1,5 +1,53 @@
 # @razorpay/blade-svelte
 
+## 0.17.1
+
+### Patch Changes
+
+- 263f073c6: feat(blade-svelte): add WhatsAppIcon, MailIcon, and MailOpenIcon
+
+## 0.17.0
+
+### Minor Changes
+
+- 3cea3fb39: feat(blade-svelte): add Box component with className passthrough
+
+  Ships a minimal, polymorphic `Box` for blade-svelte. The `as` prop picks the rendered tag, `className` is forwarded as-is to the DOM element. No Blade style/spacing props — intended for consumers styling layout with utility CSS (e.g. checkout's Tailwind setup).
+
+### Patch Changes
+
+- a90addbf2: fix(PhoneNumberInput): fire `onChange` on every keystroke instead of only on blur/commit
+
+## 0.16.0
+
+### Minor Changes
+
+- eae82a35c: feat(CounterInput): add `small` size between `xsmall` and `medium`
+
+### Patch Changes
+
+- Updated dependencies [eae82a35c]
+  - @razorpay/blade-core@0.18.0
+
+## 0.15.3
+
+### Patch Changes
+
+- 0829136ce: fix(blade-svelte): stop BottomSheet and Modal from scrolling the page to the top on iOS
+
+  `body-scroll-lock-upgrade` locks iOS by moving the page into `body { position: fixed; top: -scrollY }` and restoring it with `window.scrollTo()` on unlock, which loses the reading position; Android and desktop take its `overflow: hidden` branch and were unaffected. Both overlays now use a ref-counted lock that applies the same `overflow: hidden` bookkeeping on every platform and blocks background scrolling on iOS by intercepting `touchmove`, so nothing mutates page geometry. BottomSheet additionally acquires its lock at most once per open instead of on every content re-measurement.
+
+- Updated dependencies [e914cf6a8]
+  - @razorpay/blade-core@0.17.0
+
+## 0.15.2
+
+### Patch Changes
+
+- bde45a63b: fix(blade-svelte): keep formatted TextInput in sync with controlled value
+
+  Controlled `format` mode on TextInput now reconciles the display against the parent `value` after every change, so consumer sanitisation (digit-only card fields) and programmatic prefill/reset actually show up on screen. The formatter no longer leaks a trailing delimiter when the value ends on a group boundary, and the caret stays after the typed character when a delimiter is inserted.
+
 ## 0.15.1
 
 ### Patch Changes

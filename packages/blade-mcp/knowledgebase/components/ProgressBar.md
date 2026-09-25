@@ -26,7 +26,7 @@ type ProgressBarCommonProps = {
   /**
    * Sets the color of the progress bar which changes the feedback color.
    */
-  color?: FeedbackColors;
+  color?: 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
   /**
    * Sets the type of the progress bar.
    * @default 'progress'

@@ -9,12 +9,13 @@ import {
   textColor,
   backgroundGradient,
   boxShadow,
-  spinnerColor,
+  loaderColor,
+  getLoaderColorToken,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   buttonSizeToIconSizeMap,
-  buttonSizeToSpinnerSizeMap,
+  buttonSizeToLoaderSizeMap,
   buttonPadding,
   buttonIconOnlyHeightWidth,
   buttonBorderRadius,
@@ -23,6 +24,7 @@ import type { BaseButtonStyleProps, IconColor } from './types';
 import AnimatedButtonContent from './AnimatedButtonContent';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
+import { focusRingColorTokens } from '~utils/getFocusRingStyles/focusRingTokens';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent, IconSize } from '~components/Icons';
@@ -35,7 +37,7 @@ import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
-import { BaseSpinner } from '~components/Spinner/BaseSpinner';
+import { DotLoader } from '~components/DotLoader';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type {
@@ -101,7 +103,7 @@ type BaseButtonCommonProps = {
    */
   _iconSize?: IconSize;
   /**
-   * Overrides the color of the loading spinner. Used by FloatingActionButton,
+   * Overrides the color of the loading indicator. Used by FloatingActionButton,
    * whose contrast requirements differ from `Button`'s.
    */
   _spinnerColor?: BaseSpinnerProps['color'];
@@ -155,20 +157,20 @@ const isFilledNeutral = (
   variant: NonNullable<BaseButtonProps['variant']>,
 ): boolean => color === 'neutral' && variant === 'primary';
 
-const getSpinnerColor = ({
+const getLoaderColor = ({
   variant,
   color,
 }: {
   variant: NonNullable<BaseButtonProps['variant']>;
   color: NonNullable<BaseButtonProps['color']>;
 }): BaseSpinnerProps['color'] => {
-  if (color !== 'primary' && color !== 'transparent' && color in spinnerColor) {
-    return spinnerColor[color as Exclude<keyof typeof spinnerColor, 'base'>][
+  if (color !== 'primary' && color !== 'transparent' && color in loaderColor) {
+    return loaderColor[color as Exclude<keyof typeof loaderColor, 'base'>][
       variant as 'primary' | 'secondary'
     ];
   }
 
-  return spinnerColor.base[variant];
+  return loaderColor.base[variant];
 };
 
 const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
@@ -434,7 +436,7 @@ const getProps = ({
     iconSize:
       _iconSize ??
       (isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size]),
-    spinnerSize: buttonSizeToSpinnerSizeMap[size],
+    loaderSize: buttonSizeToLoaderSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
@@ -486,9 +488,7 @@ const getProps = ({
     // with a faded neutral ring on the filled neutral surface.
     focusRingColor: getIn(
       theme.colors,
-      isFilledNeutral(color, variant)
-        ? 'interactive.border.neutral.faded'
-        : 'surface.border.primary.muted',
+      focusRingColorTokens[isFilledNeutral(color, variant) ? 'neutral' : 'primary'],
     ),
     borderRadius: makeBorderSize(theme.border.radius[_borderRadius ?? buttonBorderRadius[size]]),
     motionDuration: 'duration.xquick',
@@ -629,7 +629,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     hoverIconColor,
     iconColor,
     iconSize,
-    spinnerSize,
+    loaderSize,
     lineHeight,
     text,
     textColor,
@@ -854,10 +854,14 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             right="0px"
             zIndex={1}
           >
-            <BaseSpinner
-              accessibilityLabel="Loading"
-              size={spinnerSize}
-              color={_spinnerColor ?? getSpinnerColor({ variant, color })}
+            {/*
+              No `accessibilityLabel`: the button is disabled while loading and the
+              `announce` calls above already report start/stop, so labelling the
+              loader too would double up the screen reader output.
+            */}
+            <DotLoader
+              color={getLoaderColorToken(_spinnerColor ?? getLoaderColor({ variant, color }))}
+              size={loaderSize}
             />
           </BaseBox>
         ) : null}

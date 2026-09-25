@@ -11,13 +11,21 @@ TextArea is a component for collecting multi-line text input from users. It supp
 The following types define the props that the TextArea component accepts. These types are essential for proper usage of the component in TypeScript projects.
 
 ```typescript
-type TextAreaSizes = 'medium' | 'large';
+type TextAreaSizes = 'xsmall' | 'small' | 'medium' | 'large';
 
 type TextAreaCommonProps = {
   label?: string;
   accessibilityLabel?: string;
   labelPosition?: 'top' | 'left';
-  necessityIndicator?: 'optional' | 'required';
+  /**
+   * Suffix element shown right after the label text (e.g. an info icon with Tooltip)
+   */
+  labelSuffix?: React.ReactNode;
+  /**
+   * Trailing element shown at the end of the label row (e.g. a Link)
+   */
+  labelTrailing?: React.ReactNode;
+  necessityIndicator?: 'optional' | 'required' | 'none';
   validationState?: 'none' | 'error' | 'success';
   helpText?: string;
   showHelpTextOnFocus?: boolean;

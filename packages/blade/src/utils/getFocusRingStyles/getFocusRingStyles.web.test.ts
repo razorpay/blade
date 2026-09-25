@@ -19,4 +19,25 @@ describe('getFocusRingStyles', () => {
       transitionTimingFunction: 'cubic-bezier(0.3, 0, 0.2, 1)',
     });
   });
+
+  it('should draw the neutral ring when asked for the neutral variant', () => {
+    const theme = {
+      ...bladeTheme,
+      colors: bladeTheme.colors.onLight,
+      elevation: bladeTheme.elevation.onLight,
+      typography: bladeTheme.typography.onDesktop,
+    };
+
+    // Everything but the colour should match the primary ring, so neutral components keep the
+    // same focus geometry and motion as the rest of the system.
+    const { outline: primaryOutline, ...primaryRest } = getFocusRingStyles({ theme });
+    const { outline: neutralOutline, ...neutralRest } = getFocusRingStyles({
+      theme,
+      variant: 'neutral',
+    });
+
+    expect(neutralRest).toStrictEqual(primaryRest);
+    expect(neutralOutline).not.toBe(primaryOutline);
+    expect(neutralOutline).toBe(`4px solid ${theme.colors.interactive.border.neutral.faded}`);
+  });
 });

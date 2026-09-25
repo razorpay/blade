@@ -1,8 +1,16 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/svelte';
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
+import { lockBodyScroll, unlockBodyScroll } from '../../../utils/bodyScrollLock';
 import BottomSheetFocusTestHarness from './BottomSheetFocusTestHarness.svelte';
 import BottomSheetBindableTestHarness from './BottomSheetBindableTestHarness.svelte';
 import BottomSheetSplitPortalTestHarness from './BottomSheetSplitPortalTestHarness.svelte';
+import BottomSheetScrollLockTestHarness from './BottomSheetScrollLockTestHarness.svelte';
+
+vi.mock('../../../utils/bodyScrollLock', () => ({
+  lockBodyScroll: vi.fn(),
+  unlockBodyScroll: vi.fn(),
+  clearBodyScrollLocks: vi.fn(),
+}));
 
 /* Spy on the prototype so the focus call is captured regardless of when the
  * target element mounts (the sheet portals + defers focus across two rAFs). */
@@ -17,16 +25,26 @@ function focusOptionsFor(spy: ReturnType<typeof vi.spyOn>, el: Element): FocusOp
   return spy.mock.calls[idx][0] as FocusOptions | undefined;
 }
 
+/* Callbacks handed to ResizeObserver by the components under test, so a test
+ * can replay a re-measurement without a real layout engine. */
+let resizeCallbacks: ResizeObserverCallback[] = [];
+
 afterEach(() => {
   vi.restoreAllMocks();
 });
 
 beforeEach(() => {
-  globalThis.ResizeObserver = (vi.fn().mockImplementation(() => ({
-    observe: vi.fn(),
-    unobserve: vi.fn(),
-    disconnect: vi.fn(),
-  })) as unknown) as typeof ResizeObserver;
+  vi.mocked(lockBodyScroll).mockClear();
+  vi.mocked(unlockBodyScroll).mockClear();
+  resizeCallbacks = [];
+  globalThis.ResizeObserver = (vi.fn().mockImplementation((callback: ResizeObserverCallback) => {
+    resizeCallbacks.push(callback);
+    return {
+      observe: vi.fn(),
+      unobserve: vi.fn(),
+      disconnect: vi.fn(),
+    };
+  }) as unknown) as typeof ResizeObserver;
 });
 
 describe('<BottomSheet /> focus management', () => {
@@ -93,5 +111,44 @@ describe('<BottomSheet /> focus management', () => {
     expect(backdrop).toBeTruthy();
     expect(surface).toBeTruthy();
     expect(surfaceHost.contains(backdrop as Node)).toBe(false);
+  });
+});
+
+describe('<BottomSheet /> body scroll lock', () => {
+  /* jsdom reports every box as 0×0, so the sheet would never reach the
+   * `contentHeight > 0` readiness gate that arms the lock. */
+  function mockMeasuredHeight(height: number): ReturnType<typeof vi.spyOn> {
+    return vi
+      .spyOn(HTMLElement.prototype, 'getBoundingClientRect')
+      .mockReturnValue({ height } as DOMRect);
+  }
+
+  it('locks the body once per open, even as the content is re-measured', async () => {
+    const rectSpy = mockMeasuredHeight(200);
+    render(BottomSheetScrollLockTestHarness, { props: { isOpen: true } });
+
+    await waitFor(() => expect(lockBodyScroll).toHaveBeenCalledTimes(1));
+
+    /* Replay a ResizeObserver tick with a different content height. Releasing
+     * and re-acquiring the lock on each of those ticks lets the page become
+     * scrollable again in between, which is what makes iOS lose the reading
+     * position as the sheet opens. */
+    rectSpy.mockReturnValue({ height: 260 } as DOMRect);
+    resizeCallbacks.forEach((callback) => callback([], {} as ResizeObserver));
+    await waitFor(() => expect(screen.getByTestId('sheet-body-content')).toBeInTheDocument());
+
+    expect(unlockBodyScroll).not.toHaveBeenCalled();
+    expect(lockBodyScroll).toHaveBeenCalledTimes(1);
+  });
+
+  it('releases the lock on dismiss', async () => {
+    mockMeasuredHeight(200);
+    render(BottomSheetScrollLockTestHarness, { props: { isOpen: true } });
+
+    await waitFor(() => expect(lockBodyScroll).toHaveBeenCalledTimes(1));
+
+    await fireEvent.keyDown(window, { key: 'Escape' });
+
+    await waitFor(() => expect(unlockBodyScroll).toHaveBeenCalledTimes(1));
   });
 });

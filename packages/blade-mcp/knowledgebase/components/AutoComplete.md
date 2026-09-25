@@ -31,7 +31,7 @@ type AutoCompleteProps = {
   /**
    * Indicates whether the field is optional or required
    */
-  necessityIndicator?: 'optional' | 'required';
+  necessityIndicator?: 'optional' | 'required' | 'none';
 
   /**
    * Validation state of the input
@@ -116,7 +116,7 @@ type AutoCompleteProps = {
   /**
    * Size of the input
    */
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Icon to be displayed at the beginning of the input
@@ -138,37 +138,12 @@ type AutoCompleteProps = {
    */
   defaultValue?: string | string[];
 
-  /**
-   * Used to set the default input value of AutoComplete when it's uncontrolled.
-   */
-  defaultInputValue?: string;
 
   /**
    * Callback that is called when the selection changes
    */
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 
-  /**
-   * Whether to keep the input value after selection
-   * @default false
-   */
-  shouldKeepInputValueOnSelect?: boolean;
-
-  /**
-   * Whether to open the dropdown when the input is focused
-   * @default true
-   */
-  shouldOpenOnFocus?: boolean;
-
-  /**
-   * Function to filter options based on input value
-   */
-  filter?: (inputValue: string, option: string) => boolean;
-
-  /**
-   * Function to format display text from option value
-   */
-  formatValue?: (value: string) => string;
 
   /**
    * Constraints the height of input to given number rows

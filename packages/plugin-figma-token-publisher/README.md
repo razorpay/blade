@@ -100,6 +100,41 @@ body, when any of these hold:
 Removals, hardcoded colours, and emphasis groups where every level shares one value are reported
 as warnings rather than blocked.
 
+## How an icon push works
+
+**Export Blade Icons** works the same way, through `blade-icons-upload.yml` and
+`packages/blade/scripts/uploadIcons.mjs`.
+
+| Stage                                         | Where                                    |
+| --------------------------------------------- | ---------------------------------------- |
+| Name and export the selected icons as SVG     | `src/plugin/getIcons.ts`                 |
+| gzip + base64, dispatch the workflow          | `src/app/api/api.ts`                     |
+| Generate components, snapshots, typecheck, PR | `packages/blade/scripts/uploadIcons.mjs` |
+
+Select a frame of icons, a variant set, or the icons themselves. A variant is named after its set
+plus every value that differs from the set's default variant, so `star` / `variant=filled` becomes
+`StarFilledIcon`. Icons whose generated code already matches the repo are left out of the PR.
+
+**Raise for** picks the packages the PR generates icons in:
+
+| Option                        | Package                  | Checks                              |
+| ----------------------------- | ------------------------ | ----------------------------------- |
+| React (web + native), default | `@razorpay/blade`        | typecheck, web and native snapshots |
+| Svelte                        | `@razorpay/blade-svelte` | `blade-core` build, `svelte-check`  |
+| Both                          | both of the above        | both of the above                   |
+
+A React icon is one component for web and native, because `Icons/_Svg` has a `.web` and a
+`.native` implementation of every element. `blade-svelte`'s `_Svg` only has `Svg` and `Path`, so an
+icon that needs `<circle>`, `<g>`, `<clipPath>`… is skipped for Svelte and listed as blocking.
+
+The workflow opens the PR as a draft when an icon is not drawn on a 24×24 frame, cannot be
+generated for a selected package, or when a check fails. To generate locally instead, use **Copy JSON** and run:
+
+```bash
+cd packages/blade
+node ./scripts/uploadIcons.mjs ./scripts/icons.json --targets=react,svelte --dry-run
+```
+
 ### Replaying a payload locally
 
 The plugin logs the payload it posts. Save it, then:

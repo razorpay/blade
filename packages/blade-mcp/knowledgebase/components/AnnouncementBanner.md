@@ -11,6 +11,13 @@ AnnouncementBanner is a slim, full-bleed banner used to surface a single short, 
 The following types represent the props that the AnnouncementBanner component accepts. These types define all the available properties you can use when implementing the AnnouncementBanner component in your application.
 
 ```typescript
+import type { ReactNode, ComponentType } from 'react';
+
+type IconComponent = ComponentType<{
+  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+  color?: string;
+}>;
+
 type AnnouncementBannerProps = {
   /**
    * The banner message. Pass a string, or inline content such as `Link`.

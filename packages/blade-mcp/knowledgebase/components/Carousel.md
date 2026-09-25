@@ -16,6 +16,17 @@ The following types represent the props that the Carousel component and its subc
 
 ```typescript
 /**
+ * Theme color token for the scroll overlay.
+ * Format: `surface.background.*` | `feedback.background.*` | `interactive.background.*` | `overlay.background.*`
+ * e.g. 'surface.background.gray.intense', 'surface.background.gray.moderate', 'overlay.background.subtle'
+ */
+type OverlayColor =
+  | `interactive.background.${string}`
+  | `feedback.background.${string}`
+  | `surface.background.${string}`
+  | `overlay.background.${string}`;
+
+/**
  * Props for the Carousel component
  */
 type CarouselProps = {
@@ -40,6 +51,7 @@ type CarouselProps = {
    * @default 'start'
    */
   carouselItemAlignment?:
+    | 'baseline'
     | 'normal'
     | 'stretch'
     | 'center'
@@ -59,25 +71,25 @@ type CarouselProps = {
    * Position of navigation buttons
    * @default 'bottom'
    */
-  navigationButtonPosition?: 'bottom' | 'side';
+  navigationButtonPosition?: 'bottom' | 'side' | 'side-overlap';
 
   /**
    * Variant of indicators
    * @default 'gray'
    */
-  indicatorVariant?: 'gray' | 'white';
+  indicatorVariant?: 'gray' | 'white' | 'blue';
 
   /**
    * Variant of navigation buttons
    * @default 'filled'
    */
-  navigationButtonVariant?: 'filled' | 'outlined';
+  navigationButtonVariant?: 'filled' | 'stroked';
 
   /**
    * Number of visible items
    * @default 1
    */
-  visibleItems?: number | 'autofit';
+  visibleItems?: 1 | 2 | 3 | 'autofit';
 
   /**
    * Whether to add spacing at the start and end
@@ -92,9 +104,10 @@ type CarouselProps = {
   showIndicators?: boolean;
 
   /**
-   * Color of scroll overlay
+   * Color of scroll overlay, so that carousel can blend with the background color.
+   * If undefined, overlay is not shown. Only effective on desktop screen sizes.
    */
-  scrollOverlayColor?: string;
+  scrollOverlayColor?: OverlayColor;
 
   /**
    * Currently active slide (controlled mode)
@@ -121,9 +134,28 @@ type CarouselProps = {
    * Sets the gap between carousel items
    * @default { base: 'spacing.4', m: 'spacing.5' }
    */
-  gap?: BoxProps['gap'];
+  gap?: SpacingToken | ResponsiveValue<SpacingToken>;
+
+  /**
+   * Toggles the visibility of navigation buttons
+   * @default true
+   */
+  showNavigationButtons?: boolean;
+
+  /**
+   * Sets the height of the carousel
+   */
+  height?: string | ResponsiveValue<string>;
+
+  /**
+   * Sets the width of the carousel
+   */
+  width?: string | ResponsiveValue<string>;
 } & StyledPropsBlade &
-  TestID;
+  DataAnalyticsAttribute;
+
+// Spacing token, e.g. 'spacing.4'
+type SpacingToken = `spacing.${number}`;
 
 /**
  * Props for the CarouselItem component

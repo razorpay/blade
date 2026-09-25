@@ -1,5 +1,19 @@
 # @razorpay/blade-core
 
+## 0.18.0
+
+### Minor Changes
+
+- eae82a35c: feat(CounterInput): add `small` size between `xsmall` and `medium`
+
+## 0.17.0
+
+### Minor Changes
+
+- e914cf6a8: update design tokens from Figma
+
+  Added 18 tokens and removed 0 tokens.
+
 ## 0.16.0
 
 ### Minor Changes

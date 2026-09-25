@@ -31,7 +31,7 @@ type SelectInputProps = {
   /**
    * Indicates whether the field is optional or required
    */
-  necessityIndicator?: 'optional' | 'required';
+  necessityIndicator?: 'optional' | 'required' | 'none';
 
   /**
    * Validation state of the input
@@ -116,7 +116,7 @@ type SelectInputProps = {
   /**
    * Size of the input
    */
-  size?: 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Icon to be displayed at the beginning of the input

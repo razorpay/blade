@@ -15,7 +15,7 @@ CounterInput is a specialized numerical input component that allows users to inc
 - Use `CounterInput` for small integer quantities under 100 (e.g., item counts, subscription seats, retry attempts, timeout values).
 - Use `min` and `max` props to enforce sensible boundaries — buttons auto-disable at limits.
 - Use `isLoading` to show a spinner during async updates (e.g., cart quantity changes).
-- Use `size="xsmall"` for compact inline controls and `size="large"` for prominent form fields.
+- Use `size="xsmall"` or `size="small"` for compact inline controls and `size="large"` for prominent form fields.
 
 **Don't**
 
@@ -30,16 +30,30 @@ CounterInput is a specialized numerical input component that allows users to inc
 These types define the props that the CounterInput component accepts, along with its context types for internal state management.
 
 ```typescript
-type CounterInputCommonProps = Pick<
-  BaseInputProps,
-  | 'labelPosition'
-  | 'name'
-  | 'onFocus'
-  | 'onBlur'
-  | 'isDisabled'
-  | 'testID'
-  | keyof DataAnalyticsAttribute
-> & {
+type CounterInputCommonProps = {
+  /**
+   * Position of the label relative to the input
+   * @default 'top'
+   */
+  labelPosition?: 'top' | 'left';
+  /**
+   * Name of the input field
+   */
+  name?: string;
+  /**
+   * Callback invoked when the input receives focus
+   */
+  onFocus?: ({ name, value }: { name?: string; value?: string }) => void;
+  /**
+   * Callback invoked when the input loses focus
+   */
+  onBlur?: ({ name, value }: { name?: string; value?: string }) => void;
+  /**
+   * Whether the counter input is disabled
+   * @default false
+   */
+  isDisabled?: boolean;
+  testID?: string;
   /**
    * Accessibility label for the input (optional override)
    */
@@ -81,7 +95,7 @@ type CounterInputCommonProps = Pick<
    * Size of the counter input
    * @default 'medium'
    */
-  size?: 'xsmall' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Decides whether to show a loading spinner and disable interaction
@@ -93,8 +107,8 @@ type CounterInputCommonProps = Pick<
    * Event handler called when the value changes via increment, decrement, or manual input
    */
   onChange?: (args: { value: number }) => void;
-} & StyledPropsBlade &
-  MotionMetaProp;
+} & DataAnalyticsAttribute &
+  StyledPropsBlade;
 
 export type CounterInputProps = CounterInputCommonProps;
 
@@ -118,11 +132,11 @@ type CounterInputContextType = {
   /**
    * Color of the counter input
    */
-  color?: BaseTextProps['color'];
+  color?: string;
   /**
    * Disabled color text of the counter input
    */
-  disabledTextColor?: BaseTextProps['color'];
+  disabledTextColor?: string;
   /**
    * Whether the counter input is inside an input group
    */
@@ -144,6 +158,7 @@ import { useState } from 'react';
 function CounterInputExample(): React.ReactElement {
   const [values, setValues] = useState({
     xsmall: 1,
+    small: 3,
     medium: 5,
     large: 10,
     intense: 3,
@@ -180,6 +195,16 @@ function CounterInputExample(): React.ReactElement {
         max={20}
         name="xsmall-counter"
         testID="xsmall-counter"
+      />
+
+      <CounterInput
+        label="Small Size"
+        size="small"
+        emphasis="subtle"
+        value={values.small}
+        onChange={handleChange('small')}
+        min={0}
+        max={20}
       />
 
       <CounterInput

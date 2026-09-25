@@ -71,8 +71,7 @@ type SwitchProps = {
   id?: string;
 } & TestID &
   DataAnalyticsAttribute &
-  StyledPropsBlade &
-  MotionMetaProp;
+  StyledPropsBlade;
 ```
 
 ## Usage Guidelines

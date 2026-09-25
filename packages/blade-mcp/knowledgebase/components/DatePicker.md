@@ -18,7 +18,7 @@ The following types represent the props that the DatePicker component and its va
 /**
  * Selection types for DatePicker
  */
-type DatePickerSelectionType = 'single' | 'range';
+type DateSelectionType = 'single' | 'range';
 
 /**
  * Type for single date value
@@ -31,87 +31,153 @@ type DateValue = Date | null;
 type DatesRangeValue = [DateValue, DateValue];
 
 /**
- * Common props for both single and range DatePicker
+ * Picker view type
  */
-type DatePickerCommonProps<T extends DatePickerSelectionType> = {
+type PickerType = 'day' | 'month' | 'year';
+
+/**
+ * Calendar level used in navigation callbacks
+ */
+type Level = 'month' | 'year' | 'decade';
+
+/**
+ * Props of the DatePicker component.
+ * Pass `selectionType` as the generic: `DatePickerProps<'single'>` or `DatePickerProps<'range'>`.
+ */
+type DatePickerProps<Type extends DateSelectionType> = {
   /**
-   * Selection type for the date picker
+   * Sets the selection mode of the calendar
+   * @default 'single'
    */
-  selectionType: T;
+  selectionType?: Type;
 
   /**
-   * Callback fired when date selection changes
+   * Selected value (controlled)
    */
-  onChange?: (date: T extends 'single' ? DateValue : DatesRangeValue) => void;
+  value?: Type extends 'single' ? DateValue : DatesRangeValue;
 
   /**
-   * Whether the calendar is open
+   * Default selected value (uncontrolled)
+   */
+  defaultValue?: Type extends 'single' ? DateValue : DatesRangeValue;
+
+  /**
+   * Callback which fires when the selected value changes
+   */
+  onChange?: (value: Type extends 'single' ? DateValue : DatesRangeValue) => void;
+
+  /**
+   * Callback which fires when apply button is clicked
+   */
+  onApply?: (value: Type extends 'single' ? DateValue : DatesRangeValue) => void;
+
+  /**
+   * Callback which fires when a month is selected
+   */
+  onMonthSelect?: (date: Date) => void;
+
+  /**
+   * Callback which fires when a year is selected
+   */
+  onYearSelect?: (date: Date) => void;
+
+  /**
+   * Sets the picker type
+   * @default 'day'
+   */
+  picker?: PickerType;
+
+  /**
+   * Sets the default picker type
+   */
+  defaultPicker?: PickerType;
+
+  /**
+   * Callback which fires when picker type changes
+   */
+  onPickerChange?: (picker: PickerType) => void;
+
+  /**
+   * Controlled month that the calendar renders, independent of the selected `value`.
+   * When you control it, also handle `onVisibleMonthChange`.
+   */
+  visibleMonth?: Date;
+
+  /**
+   * Uncontrolled variant of `visibleMonth`. Sets the initial month that the calendar renders.
+   */
+  defaultVisibleMonth?: Date;
+
+  /**
+   * Callback which fires when the rendered month changes
+   */
+  onVisibleMonthChange?: (date: Date) => void;
+
+  /**
+   * Controlled isOpen state
    */
   isOpen?: boolean;
 
   /**
-   * Default open state (uncontrolled)
+   * Uncontrolled isOpen state
    */
   defaultIsOpen?: boolean;
 
   /**
-   * Callback fired when the open state changes
+   * Callback which fires when isOpen state changes
    */
-  onOpenChange?: (e: { isOpen: boolean }) => void;
+  onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
 
   /**
-   * Presets for quick selection (only applicable for range selection)
+   * Presets for quick selection
    */
   presets?: Array<{
     /**
-     * Display label for the preset
+     * Label for the preset
      */
     label: string;
     /**
      * Function that returns a date range based on current date
      */
-    value: (currentDate: Date) => [Date, Date];
+    value: (date: Date) => DatesRangeValue;
   }>;
 
   /**
-   * Minimum selectable date
-   */
-  minDate?: Date;
-
-  /**
-   * Maximum selectable date
-   */
-  maxDate?: Date;
-
-  /**
-   * Function to determine if a date should be excluded from selection
-   */
-  excludeDate?: (date: Date) => boolean;
-
-  /**
-   * Type of picker view (default: 'date')
-   */
-  picker?: 'date' | 'month' | 'year';
-
-  /**
-   * Default picker view (uncontrolled)
-   */
-  defaultPicker?: 'date' | 'month' | 'year';
-
-  /**
-   * Callback when picker view changes
-   */
-  onPickerChange?: (picker: 'date' | 'month' | 'year') => void;
-
-  /**
-   * First day of the week (0 = Sunday, 1 = Monday, etc.)
+   * Sets the first day of the week in the calendar (0 = Sunday, 1 = Monday, etc.)
+   * @default 1
    */
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
   /**
-   * Allow selecting a single date in range mode
+   * Sets the minimum date that can be selected
+   */
+  minDate?: Date;
+
+  /**
+   * Sets the maximum date that can be selected
+   */
+  maxDate?: Date;
+
+  /**
+   * Disables dates that do not pass the function
+   */
+  excludeDate?: (date: Date) => boolean;
+
+  /**
+   * Lets the user select a single date as range. Applies only when selectionType is 'range'
+   * @default false
    */
   allowSingleDateInRange?: boolean;
+
+  /**
+   * Callback which fires when the next button is clicked
+   */
+  onNext?: ({ date, type }: { date: Date; type: Level }) => void;
+
+  /**
+   * Callback which fires when the previous button is clicked
+   */
+  onPrevious?: ({ date, type }: { date: Date; type: Level }) => void;
 
   /**
    * Whether to show the footer with apply/cancel buttons
@@ -121,14 +187,29 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
 
   /**
    * Custom React element to render in the footer above/side of action buttons
-   * Can be used to add custom content like informational text, links, or other components
    */
   footer?: React.ReactElement;
 
   /**
+   * Overrides the calendar popup header title (for i18n)
+   */
+  headerLabel?: string;
+
+  /**
+   * Overrides the Apply button label in the calendar footer
+   * @default 'Apply'
+   */
+  applyLabel?: string;
+
+  /**
+   * Overrides the Cancel button label in the calendar footer
+   * @default 'Cancel'
+   */
+  cancelLabel?: string;
+
+  /**
    * Controls how the selected date is displayed in the input field.
    * - `compact`: Shows only the preset label (e.g., "Last 7 days") instead of the actual dates.
-   *   Useful for presets where showing the label is more meaningful than showing actual dates.
    * - `default`: Shows the actual date values in the input field.
    * @default 'default'
    */
@@ -136,49 +217,19 @@ type DatePickerCommonProps<T extends DatePickerSelectionType> = {
 
   /**
    * Sets the date format to be displayed in the input field
-   * @default 'DD/MM/YYYY'
+   * @default 'DD/MM/YYYY' ('MMMM' when picker is 'month', 'YYYY' when picker is 'year')
    */
   format?: 'DD/MM/YYYY' | 'MMM' | 'MMMM' | 'YYYY';
 
   /**
-   * Locale for date formatting and calendar text
+   * Placeholder text for the input when no date is selected
    */
-  locale?: string;
+  inputPlaceHolder?: string;
 
   /**
-   * Events for navigation
+   * Label for the input. Range selection can have separate start and end labels
    */
-  onNext?: () => void;
-  onNextDecade?: () => void;
-  onNextMonth?: () => void;
-  onNextYear?: () => void;
-  onPrevious?: () => void;
-  onPreviousDecade?: () => void;
-  onPreviousMonth?: () => void;
-  onPreviousYear?: () => void;
-  onMonthSelect?: (month: Date) => void;
-  onYearSelect?: (year: Date) => void;
-} & StyledPropsBlade &
-  TestID;
-
-/**
- * Props for single selection DatePicker
- */
-type SingleDatePickerProps = DatePickerCommonProps<'single'> & {
-  /**
-   * Selected date (controlled)
-   */
-  value?: DateValue;
-
-  /**
-   * Default selected date (uncontrolled)
-   */
-  defaultValue?: DateValue;
-
-  /**
-   * Label for the input
-   */
-  label?: string;
+  label?: Type extends 'single' ? string : string | { start: string; end?: string };
 
   /**
    * Accessibility label for screen readers
@@ -186,9 +237,31 @@ type SingleDatePickerProps = DatePickerCommonProps<'single'> & {
   accessibilityLabel?: string;
 
   /**
-   * Input size
+   * Position of the label
+   * @default 'top'
    */
-  size?: 'small' | 'medium' | 'large';
+  labelPosition?: 'top' | 'left';
+
+  /**
+   * Element to render after the label (e.g. a Tooltip trigger)
+   */
+  labelSuffix?: React.ReactNode;
+
+  /**
+   * Element to render at the trailing end of the label row
+   */
+  labelTrailing?: React.ReactNode;
+
+  /**
+   * Name attribute of the input elements, for form submission
+   */
+  name?: Type extends 'single' ? string : { start: string; end?: string };
+
+  /**
+   * Input size
+   * @default 'medium'
+   */
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
 
   /**
    * Whether the input is disabled
@@ -201,167 +274,66 @@ type SingleDatePickerProps = DatePickerCommonProps<'single'> & {
   isRequired?: boolean;
 
   /**
+   * Whether to display the necessity indicator
+   * @default 'none'
+   */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+
+  /**
    * Auto focus the input on mount
    */
   autoFocus?: boolean;
-
-  /**
-   * Position of the label
-   */
-  labelPosition?: 'top' | 'left';
-
-  /**
-   * Whether to display the necessity indicator
-   */
-  necessityIndicator?: 'required' | 'optional' | 'none';
 
   /**
    * Help text to display below the input
    */
-  helpText?: string;
+  helpText?: Type extends 'single' ? string : string | { start: string; end?: string };
 
   /**
-   * Error text to display when validation state is 'error'
+   * Error text to display when validationState is 'error'
    */
-  errorText?: string;
+  errorText?: Type extends 'single' ? string : string | { start: string; end?: string };
 
   /**
-   * Success text to display when validation state is 'success'
+   * Success text to display when validationState is 'success'
    */
-  successText?: string;
+  successText?: Type extends 'single' ? string : string | { start: string; end?: string };
 
   /**
    * Validation state of the input
+   * @default 'none'
    */
   validationState?: 'error' | 'success' | 'none';
 
   /**
-   * Name for the input for form submission
+   * Position of the validation text
+   * @default 'outside'
    */
-  name?: string;
+  validationTextPlacement?: 'outside' | 'inside';
 
   /**
-   * When true, shows a clear button in the input field
+   * Shows a clear (cross) button in the input field
    */
   showClearButton?: boolean;
 
   /**
-   * Callback fired when the clear button is clicked
+   * Callback fired when the clear button is clicked. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
 };
-
-/**
- * Props for range selection DatePicker
- */
-type RangeDatePickerProps = DatePickerCommonProps<'range'> & {
-  /**
-   * Selected date range (controlled)
-   */
-  value?: DatesRangeValue;
-
-  /**
-   * Default selected date range (uncontrolled)
-   */
-  defaultValue?: DatesRangeValue;
-
-  /**
-   * Labels for the start and end date inputs
-   */
-  label?: { start: string; end?: string };
-
-  /**
-   * Accessibility labels for screen readers
-   */
-  accessibilityLabel?: { start: string; end?: string };
-
-  /**
-   * Input size
-   */
-  size?: 'small' | 'medium' | 'large';
-
-  /**
-   * Whether the inputs are disabled
-   */
-  isDisabled?: boolean;
-
-  /**
-   * Whether the inputs are required
-   */
-  isRequired?: boolean;
-
-  /**
-   * Auto focus the input on mount
-   */
-  autoFocus?: boolean;
-
-  /**
-   * Position of the label
-   */
-  labelPosition?: 'top' | 'left';
-
-  /**
-   * Whether to display the necessity indicator
-   */
-  necessityIndicator?: 'required' | 'optional' | 'none';
-
-  /**
-   * Help text to display below the inputs
-   */
-  helpText?: string | { start: string; end?: string };
-
-  /**
-   * Error text to display when validation state is 'error'
-   */
-  errorText?: string | { start: string; end?: string };
-
-  /**
-   * Success text to display when validation state is 'success'
-   */
-  successText?: string | { start: string; end?: string };
-
-  /**
-   * Validation state of the inputs
-   */
-  validationState?: 'error' | 'success' | 'none';
-
-  /**
-   * Names for the inputs for form submission
-   */
-  name?: { start: string; end?: string };
-
-  /**
-   * When true, shows a clear button in the input field
-   */
-  showClearButton?: boolean;
-
-  /**
-   * Callback fired when the clear button is clicked
-   */
-  onClearButtonClick?: () => void;
-};
-
-/**
- * Union type for DatePicker props based on selection type
- */
-type DatePickerProps<T extends DatePickerSelectionType = 'single'> = T extends 'single'
-  ? SingleDatePickerProps
-  : RangeDatePickerProps;
 
 /**
  * Props for FilterChipDatePicker component
  */
-type FilterChipDatePickerProps<T extends DatePickerSelectionType = 'single'> = Omit<
-  DatePickerProps<T>,
-  'label' | 'accessibilityLabel' | 'size' | 'labelPosition'
-> & {
+type FilterChipDatePickerProps = Omit<DatePickerProps<'single' | 'range'>, 'label'> & {
   /**
    * Label for the filter chip
    */
   label: string;
 
   /**
-   * Callback when clear button is clicked
+   * Callback when clear button is clicked. Clearing also fires `onChange` with an empty value.
+   * The clear button shows by default. Pass `showClearButton={false}` to hide it.
    */
   onClearButtonClick?: () => void;
 };
