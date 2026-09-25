@@ -4,6 +4,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
+import { borderRadius as borderRadiusToken } from './tabTokens';
 import { castWebType, makeMotionTime } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
@@ -108,22 +109,20 @@ const TabIndicator = ({
   }
 
   if (variant === 'filled') {
-    const isSmallHorizontal = size === 'small' && !isVertical;
+    const orientation = isVertical ? 'vertical' : 'horizontal';
     return (
       <StyledTabIndicator
         pointerEvents="none"
         position="absolute"
         left="0px"
         top="0px"
-        borderRadius={isSmallHorizontal ? undefined : 'small'}
+        borderRadius={borderRadiusToken.filled[orientation][size ?? 'medium']}
         backgroundColor="surface.background.gray.intense"
         style={{
           ...transitionProps,
           width: `${dimensions.width}px`,
           height: `${dimensions.height}px`,
           transform: `translate(${dimensions.x}px, ${dimensions.y}px)`,
-          // 6px for small — deliberate: between xsmall(4px) and small(8px) for visual proportion, mirrors SegmentedControl indicator radius
-          ...(isSmallHorizontal ? { borderRadius: 6 } : {}),
         }}
         {...metaAttribute({ name: MetaConstants.TabIndicator })}
       />

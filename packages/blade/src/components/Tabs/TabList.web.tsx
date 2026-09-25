@@ -3,7 +3,7 @@ import { Composite } from '@floating-ui/react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
 import { TabIndicator } from './TabIndicator';
-import { trackColor } from './tabTokens';
+import { trackColor, containerBorderRadius, filledHorizontalContainerHeight } from './tabTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Box } from '~components/Box';
@@ -12,6 +12,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import type { DataAnalyticsAttribute } from '~utils/types';
+import { makeSpace } from '~utils';
 
 const ScrollableArea = styled(BaseBox)(() => {
   return {
@@ -24,11 +25,18 @@ const TabList = ({
   ...rest
 }: { children: React.ReactNode } & StyledPropsBlade &
   DataAnalyticsAttribute): React.ReactElement => {
-  const { setSelectedValue, selectedValue, variant, isVertical, size } = useTabsContext();
+  const {
+    setSelectedValue,
+    selectedValue,
+    variant,
+    isVertical,
+    size = 'medium',
+  } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
-  const isCompact = size === 'small' && !isVertical;
+  const orientation = isVertical ? 'vertical' : 'horizontal';
+  const pinnedContainerHeight = !isVertical ? filledHorizontalContainerHeight[size] : undefined;
 
   // Set the first child as the selected value
   useIsomorphicLayoutEffect(() => {
@@ -84,12 +92,24 @@ const TabList = ({
                   overflow={isVertical ? 'hidden' : undefined}
                   {...(isFilled
                     ? {
-                        borderRadius: isCompact ? 'small' : 'medium',
+                        borderRadius: containerBorderRadius[orientation][size],
                         borderWidth: 'none',
                         borderColor: 'interactive.border.gray.default',
-                        padding: isCompact ? 'spacing.1' : 'spacing.2',
+                        // Left/right padding matches SegmentedControl's containerPadding
+                        // (spacing.2, 4px) for every size — small horizontal filled Tabs
+                        // used to be more compact (spacing.1, 2px) but Figma now spec's
+                        // the same 4px inset SegmentedControl uses.
+                        padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
                         backgroundColor: 'interactive.background.gray.faded',
+                        // Only small (horizontal) needs a pinned height — its padding +
+                        // line-height math falls short of the Figma spec. Other sizes
+                        // still hug their content correctly, so leave them uncontrolled.
+                        ...(pinnedContainerHeight
+                          ? {
+                              height: makeSpace(pinnedContainerHeight),
+                            }
+                          : {}),
                       }
                     : {
                         padding: 'spacing.0',

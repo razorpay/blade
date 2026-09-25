@@ -4,6 +4,8 @@ import type { DotNotationSpacingStringToken } from '~utils/types';
 type TabSizes = NonNullable<TabsProps['size']>;
 type TabVariants = Exclude<NonNullable<TabsProps['variant']>, 'borderless'>;
 type TabOrientation = 'horizontal' | 'vertical';
+type TabTextSize = 'small' | 'medium' | 'large';
+type TabTextSizeMap = Readonly<Record<TabSizes, TabTextSize>>;
 
 type TabItemPadding = Record<
   TabVariants,
@@ -175,11 +177,24 @@ const iconColor = {
   },
 } as const;
 
-const textSizeMap = {
+const createTabTextSizeMap = <T extends TabTextSizeMap>(map: T): T => map;
+
+const textSizeMap = createTabTextSizeMap({
   small: 'medium',
   medium: 'medium',
   large: 'large',
-} as const;
+} as const);
+
+// Filled + horizontal text sizes per Figma spec. This intentionally stays as a
+// separate map instead of a variant+orientation structure because only the
+// filled horizontal small label differs from `textSizeMap` (12px vs 14px);
+// medium/large mirror `textSizeMap`. The helper keeps exhaustive TabSizes keys
+// while preserving literal value types.
+const filledHorizontalTextSizeMap = createTabTextSizeMap({
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+} as const);
 
 type BorderWidthValue = 'none' | 'thick' | 'thicker';
 
@@ -194,8 +209,14 @@ const borderWidth: Record<TabVariants, Record<TabOrientation, BorderWidthValue>>
   },
 };
 
-type BorderRadiusToken = 'none' | 'small' | 'medium';
+// Tabs intentionally restricts the radius tokens to values used by the item,
+// container, and focus maps below. Extend this union only when a Tabs radius map
+// needs another theme.border.radius token.
+type BorderRadiusToken = 'none' | 'xsmall' | 'small' | 'medium';
 
+// Item/pill radius tokens. Container radius is kept separate below because the
+// filled tab container and the selected pill have different Figma specs, similar
+// to SegmentedControl's container/item token split.
 const borderRadius: Record<
   TabVariants,
   Record<TabOrientation, Record<TabSizes, BorderRadiusToken>>
@@ -205,9 +226,32 @@ const borderRadius: Record<
     vertical: { small: 'none', medium: 'none', large: 'none' },
   },
   filled: {
-    horizontal: { small: 'small', medium: 'small', large: 'small' },
+    horizontal: { small: 'xsmall', medium: 'xsmall', large: 'small' },
     vertical: { small: 'small', medium: 'small', large: 'small' },
   },
+};
+
+// Only used for the `filled` variant's container. Vertical values preserve the
+// pre-existing behavior (always 'medium', regardless of size) — vertical is out of scope
+// for the horizontal Figma spec alignment this map was introduced for.
+const containerBorderRadius: Record<TabOrientation, Record<TabSizes, BorderRadiusToken>> = {
+  horizontal: { small: 'small', medium: 'small', large: 'medium' },
+  vertical: { small: 'medium', medium: 'medium', large: 'medium' },
+};
+
+type FilledHorizontalPinnedHeight = Partial<Record<TabSizes, number>>;
+
+// Deliberately partial, unlike SegmentedControl's complete height maps: entries
+// here are pinned-height exceptions for `filled` + `horizontal` tabs. Missing
+// sizes mean "use the natural height" from padding + line-height. Medium/large
+// already resolve to the Figma height that way, while small under-shoots (21px
+// item / 25px container vs. the required 24px / 32px), so only small is pinned.
+const filledHorizontalContainerHeight: FilledHorizontalPinnedHeight = {
+  small: 32,
+};
+
+const filledHorizontalItemHeight: FilledHorizontalPinnedHeight = {
+  small: 24,
 };
 
 const focusBorderRadius: Record<
@@ -219,7 +263,7 @@ const focusBorderRadius: Record<
     vertical: { small: 'medium', medium: 'medium', large: 'medium' },
   },
   filled: {
-    horizontal: { small: 'small', medium: 'small', large: 'small' },
+    horizontal: { small: 'xsmall', medium: 'xsmall', large: 'small' },
     vertical: { small: 'small', medium: 'small', large: 'small' },
   },
 };
@@ -305,8 +349,12 @@ export {
   paddingBottom,
   paddingX,
   textSizeMap,
+  filledHorizontalTextSizeMap,
   borderWidth,
   borderRadius,
+  containerBorderRadius,
+  filledHorizontalContainerHeight,
+  filledHorizontalItemHeight,
   focusBorderRadius,
   borderColor,
   needsStackingContext,
