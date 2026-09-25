@@ -173,7 +173,7 @@
   <Dropdown {isOpen} onOpenChange={(open) => (open ? (isOpen = true) : closeSheet())}>
     {#snippet children()}
       {@render trigger()}
-      <DropdownOverlay referenceEl={inputWrapperEl}>
+      <DropdownOverlay referenceRef={inputWrapperEl}>
         {#snippet children()}
           <div class="country-selector-dropdown-search">
             {@render searchField()}
