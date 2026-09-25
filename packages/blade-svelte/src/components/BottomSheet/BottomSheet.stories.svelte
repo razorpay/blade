@@ -106,6 +106,33 @@
   let isSplitPortalOpen = $state(false);
   let backdropPortalTargetEl = $state<HTMLDivElement | null>(null);
   let surfacePortalTargetEl = $state<HTMLDivElement | null>(null);
+  let isScrollLockDemoOpen = $state(false);
+  let isNoScrollLockDemoOpen = $state(false);
+
+  /* The Storybook canvas (`#storybook-root`, see .storybook/preview.css) is
+   * `height: 100vh; overflow: auto`, so it — not the document body — is the
+   * scroller. The body scroll lock targets `body`, which makes the comparison
+   * story inert in that setup: nothing behind the sheet can scroll either way.
+   * While this story is mounted, hand scrolling back to the document so it
+   * behaves like a real app page. */
+  function documentScroller(_node: HTMLElement): { destroy: () => void } {
+    const root = document.getElementById('storybook-root');
+    const previous = root
+      ? { height: root.style.height, overflow: root.style.overflow }
+      : undefined;
+    if (root) {
+      root.style.height = 'auto';
+      root.style.overflow = 'visible';
+    }
+    return {
+      destroy() {
+        if (root && previous) {
+          root.style.height = previous.height;
+          root.style.overflow = previous.overflow;
+        }
+      },
+    };
+  }
 
   let searchInput: { focus: () => void; getInput: () => HTMLInputElement | null } | undefined =
     $state();
@@ -130,17 +157,6 @@
     'Vietnamese',
     'Brazilian',
     'Moroccan',
-    'Caribbean',
-    'Turkish',
-    'Lebanese',
-    'Malaysian',
-    'Indonesian',
-    'Peruvian',
-    'Ethiopian',
-    'Filipino',
-    'Cuban',
-    'German',
-    'Nigerian',
   ];
 
   const cuisineSections = [
@@ -1379,7 +1395,7 @@
 </Story>
 
 <!-- Story 16: Non-Dismissible BottomSheet — locked open, must use footer buttons.
-     The exported storyName in React is verbatim "Non-Dismissible BottomSheet" — DO NOT change. -->
+      The exported storyName in React is verbatim "Non-Dismissible BottomSheet" — DO NOT change. -->
 <Story name="Non-Dismissible BottomSheet">
   {#snippet template()}
     <div>
@@ -1416,6 +1432,110 @@
                 <Button variant="secondary" onClick={() => (isNonDismissibleOpen = false)}>Cancel</Button>
                 <Button onClick={() => (isNonDismissibleOpen = false)}>Confirm Action</Button>
               </div>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Story 17: Scroll Lock Comparison — identical sheets, one with the body scroll lock
+      (default) and one without, over a long scrollable page. Preview-only demo for the
+      scroll-lock discussion — not part of React story parity. -->
+<Story name="Scroll Lock Comparison">
+  {#snippet template()}
+    <div use:documentScroller>
+      <Heading size="small" marginBottom="spacing.3">Body scroll lock: with vs without</Heading>
+      <Text marginBottom="spacing.4">
+        Both sheets below are identical — same content, same snap behaviour. The only difference
+        is the body scroll lock. Open each one, then try to scroll the page behind it:
+      </Text>
+      <ul style="margin-bottom: var(--spacing-6); padding-left: var(--spacing-5);">
+        <li>
+          <Text>
+            <b>With scroll lock</b> (default): the background page stays frozen while the sheet
+            is open — only the sheet's content scrolls.
+          </Text>
+        </li>
+        <li>
+          <Text>
+            <b>Without scroll lock</b>: the background page keeps scrolling behind the sheet
+            (wheel/trackpad over the backdrop on desktop, touch chaining past the sheet's scroll
+            edges on mobile).
+          </Text>
+        </li>
+      </ul>
+
+      <div style="display: flex; gap: var(--spacing-3); flex-wrap: wrap; margin-bottom: var(--spacing-7);">
+        <Button onClick={() => (isScrollLockDemoOpen = true)}>Open with scroll lock</Button>
+        <Button variant="secondary" onClick={() => (isNoScrollLockDemoOpen = true)}>
+          Open without scroll lock
+        </Button>
+      </div>
+
+      {#each Array.from({ length: 14 }) as _, index}
+        <Text weight="semibold" marginBottom="spacing.3">Background section {index + 1}</Text>
+        <Text marginBottom="spacing.7">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+          has been the industry's standard dummy text ever since the 1500s, when an unknown
+          printer took a galley of type and scrambled it to make a type specimen book. It has
+          survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of
+          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+          publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </Text>
+      {/each}
+
+      <BottomSheet isOpen={isScrollLockDemoOpen} onDismiss={() => (isScrollLockDemoOpen = false)}>
+        {#snippet children()}
+          <BottomSheetHeader
+            title="With scroll lock"
+            subtitle="The page behind this sheet cannot scroll"
+          />
+          <BottomSheetBody hasActionList>
+            {#snippet children()}
+              <ActionList>
+                {#snippet children()}
+                  {#each cuisines as cuisine (cuisine)}
+                    <ActionListItem title={cuisine} value={cuisine} />
+                  {/each}
+                {/snippet}
+              </ActionList>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isScrollLockDemoOpen = false)}>Continue</Button>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+
+      <BottomSheet
+        isOpen={isNoScrollLockDemoOpen}
+        onDismiss={() => (isNoScrollLockDemoOpen = false)}
+        disableScrollLock
+      >
+        {#snippet children()}
+          <BottomSheetHeader
+            title="Without scroll lock"
+            subtitle="The page behind this sheet scrolls freely"
+          />
+          <BottomSheetBody hasActionList>
+            {#snippet children()}
+              <ActionList>
+                {#snippet children()}
+                  {#each cuisines as cuisine (cuisine)}
+                    <ActionListItem title={cuisine} value={cuisine} />
+                  {/each}
+                {/snippet}
+              </ActionList>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isNoScrollLockDemoOpen = false)}>Continue</Button>
             {/snippet}
           </BottomSheetFooter>
         {/snippet}
