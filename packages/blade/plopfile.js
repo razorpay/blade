@@ -35,6 +35,12 @@ const transformSvgNode = (node, components = new Set()) => {
 };
 
 /**
+ * Icons exported from `index.ts` but kept out of `iconMap.ts`. Branded icons keep their own colors
+ * and ignore the `color` prop, so they don't belong in the generic icon picker.
+ */
+const ICONS_EXCLUDED_FROM_ICON_MAP = ['RazorpayTrustIcon'];
+
+/**
  * @param {import("plop").NodePlopAPI} plop
  */
 module.exports = (plop) => {
@@ -60,13 +66,15 @@ module.exports = (plop) => {
         .filter(Boolean)
         .sort();
 
-      const imports = allIcons
+      const iconMapIcons = allIcons.filter((icon) => !ICONS_EXCLUDED_FROM_ICON_MAP.includes(icon));
+
+      const imports = iconMapIcons
         .map((icon) => {
           return `import ${icon}Component from './${icon}';`;
         })
         .join('\n');
 
-      const map = allIcons
+      const map = iconMapIcons
         .map((icon) => {
           return `  ${icon}: ${icon}Component,`;
         })
