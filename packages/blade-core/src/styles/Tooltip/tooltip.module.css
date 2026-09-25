@@ -31,8 +31,9 @@
 
 /* ===== Portal Root =====
  * Container appended to document.body. Hosts the bubble + arrow and is the
- * positioning surface for floating-ui (`strategy: 'fixed'`).
- * z-index is bound to the `zIndex` prop via `--tooltip-z-index`.
+ * positioning surface for floating-ui (`strategy: 'fixed'`). z-index is bound
+ * to the `zIndex` prop and the floating-ui position to the measured offsets,
+ * both via custom properties (built via getStyledProps).
  */
 .portal {
   position: fixed;
@@ -41,6 +42,7 @@
   width: max-content;
   pointer-events: none;
   z-index: var(--tooltip-z-index, 1100);
+  transform: translate3d(var(--tooltip-x, 0px), var(--tooltip-y, 0px), 0);
 }
 
 /* ===== Bubble =====
@@ -112,13 +114,40 @@ body[data-theme='dark'] .bubble,
   transform: translateX(-4px);
 }
 
-/* ===== Arrow ===== */
+/* ===== Arrow =====
+ * Rotated per side via `[data-side]` so the apex points at the trigger; the
+ * base anchors flush with the bubble edge (`[side]: 100%`). The floating-ui
+ * computed offsets arrive as --tooltip-arrow-x / --tooltip-arrow-y custom
+ * properties (built via getStyledProps); only one axis is set per placement.
+ */
 .arrow {
   position: absolute;
   pointer-events: none;
   fill: hsla(0, 0%, 0%, 0.72);
   stroke: transparent;
   stroke-width: 0;
+  left: var(--tooltip-arrow-x);
+  top: var(--tooltip-arrow-y);
+}
+
+.arrow[data-side='top'] {
+  top: 100%;
+  transform: rotate(0deg);
+}
+
+.arrow[data-side='bottom'] {
+  bottom: 100%;
+  transform: rotate(180deg);
+}
+
+.arrow[data-side='left'] {
+  left: 100%;
+  transform: rotate(-90deg);
+}
+
+.arrow[data-side='right'] {
+  right: 100%;
+  transform: rotate(90deg);
 }
 
 body[data-theme='dark'] .arrow,

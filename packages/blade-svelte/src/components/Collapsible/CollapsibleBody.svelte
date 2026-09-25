@@ -9,8 +9,10 @@
   import {
     getCollapsibleBodyClasses,
     getCollapsibleBodyInnerClasses,
+    getCollapsibleTemplateClasses,
   } from '@razorpay/blade-core/styles';
   import { getCollapsibleContext } from './context';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { CollapsibleBodyProps } from './types';
 
   let { children, width, testID, _hasMargin = true, ...rest }: CollapsibleBodyProps = $props();
@@ -35,6 +37,11 @@
   const bodyInnerClass = $derived(
     getCollapsibleBodyInnerClasses({ direction, hasMargin: _hasMargin }),
   );
+  const bodyOuterClass = getCollapsibleTemplateClasses().bodyOuter;
+
+  /* `width` is fed through a --collapsible-body-width custom property consumed
+   * by the bodyOuter class in collapsible.module.css. */
+  const { collapsibleBodyStyles } = $derived(getStyledProps('collapsibleBody', { width }));
 
   let bodyRef: HTMLDivElement | undefined = $state(undefined);
   let isInitialRender = true;
@@ -113,7 +120,8 @@
 
 <div
   id={collapsibleBodyId}
-  style={width ? `width: ${width}` : undefined}
+  class={bodyOuterClass}
+  style={collapsibleBodyStyles}
   {...bodyA11y}
   {...metaAttrs}
   {...analyticsAttrs}

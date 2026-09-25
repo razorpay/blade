@@ -9,7 +9,9 @@
  */
 .toast-container {
   position: fixed;
-  bottom: var(--toast-container-gutter, 24px);
+  /* Explicit offsetBottom prop wins; otherwise the mobile/desktop gutters
+   * below apply. Both arrive via getStyledProps custom properties. */
+  bottom: var(--toast-container-offset-bottom, var(--toast-container-gutter, 24px));
   left: var(--toast-container-gutter, 24px);
   right: var(--toast-container-gutter, 24px);
   width: calc(100% - var(--toast-container-gutter-double, 48px));

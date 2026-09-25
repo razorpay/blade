@@ -29,6 +29,7 @@
   } from './utils';
   import type { BaseInputProps } from './types';
   import { getInputGroupContext } from '../../InputGroup/inputGroupContext';
+  import { getStyledProps } from '../../../utils/getStyledProps';
 
   const templateClasses = getBaseInputTemplateClasses();
 
@@ -180,10 +181,10 @@
   const outerClasses = $derived(
     cx(templateClasses.outer, ...(styledProps.classes ?? [])),
   );
-  const outerStyles = $derived(
-    Object.entries(styledProps.inlineStyles ?? {})
-      .map(([prop, val]) => `${prop}: ${val}`)
-      .join('; ') || undefined,
+  // Arbitrary-value styled props are fed as --base-input-* custom properties
+  // consumed by the outer root rule in baseInput.module.css.
+  const { baseInputStyles } = $derived(
+    getStyledProps('baseInput', styledProps.inlineStyles ?? {}),
   );
 
   const fieldClasses = $derived(
@@ -212,6 +213,14 @@
   // the input (mirrors React's `formHintLeftLabelMarginLeft`).
   const hintMarginLeft = $derived(
     isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[effectiveSize] : 0,
+  );
+
+  /* The left-label hint indent is fed as a --base-input-hint-margin-left
+   * custom property consumed by the hint-row class in baseInput.module.css. */
+  const hintRowStyles = $derived(
+    getStyledProps('baseInput', {
+      hintMarginLeft: hintMarginLeft ? `${hintMarginLeft}px` : undefined,
+    }).baseInputStyles,
   );
 
   const inputIds = $derived({
@@ -313,7 +322,7 @@
   });
 </script>
 
-<div class={outerClasses} style={outerStyles} {...metaAttrs} {...analyticsAttrs}>
+<div class={outerClasses} style={baseInputStyles} {...metaAttrs} {...analyticsAttrs}>
   <div class={fieldClasses}>
     {#if shouldRenderLabel}
       <div
@@ -440,7 +449,7 @@
       ]
         .filter(Boolean)
         .join(' ')}
-      style={hintMarginLeft ? `margin-left: ${hintMarginLeft}px` : undefined}
+      style={hintRowStyles}
     >
       {#if showFormHintOutside}
         <FormHint

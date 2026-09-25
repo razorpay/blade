@@ -4,7 +4,7 @@ export {
   skeletonStyles,
   skeletonClass,
   getSkeletonClasses,
-  getSkeletonInlineStyle,
+  getSkeletonStyleProps,
 } from './skeleton';
 export type {
   SkeletonVariants,

@@ -11,6 +11,7 @@
     getSwitchClasses,
     getSwitchTemplateClasses,
   } from '@razorpay/blade-core/styles';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { SwitchProps } from './types';
 
   const switchClasses = getSwitchTemplateClasses();
@@ -136,10 +137,10 @@
       .join(' '),
   );
 
-  const wrapperStyles = $derived(
-    Object.entries(styledProps.inlineStyles || {})
-      .map(([prop, val]) => `${prop}: ${val}`)
-      .join('; ') || undefined,
+  // Arbitrary-value styled props are fed as --switch-* custom properties
+  // consumed by the switch root rule in switch.module.css.
+  const { switchStyles } = $derived(
+    getStyledProps('switch', styledProps.inlineStyles ?? {}),
   );
 
   const metaAttrs = $derived(
@@ -167,7 +168,7 @@
   const trackA11yAttrs = makeAccessible({ hidden: true });
 </script>
 
-<div class={wrapperClasses} style={wrapperStyles} {...metaAttrs} {...analyticsAttrs}>
+<div class={wrapperClasses} style={switchStyles} {...metaAttrs} {...analyticsAttrs}>
   <label
     class={switchClasses.label}
     data-disabled={isDisabled || undefined}

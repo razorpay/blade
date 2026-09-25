@@ -1,6 +1,11 @@
-/* Outer wrapper */
+/* Outer wrapper. The width/maxWidth/minWidth props arrive as --chip-* custom
+ * properties (built via getStyledProps); unset props fall back to the initial
+ * auto values. */
 .chipWrapper {
   display: inline-flex;
+  width: var(--chip-width);
+  max-width: var(--chip-max-width);
+  min-width: var(--chip-min-width);
 }
 
 /* Label */

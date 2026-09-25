@@ -5,14 +5,17 @@
     getStyledPropsClasses,
     makeAnalyticsAttribute,
   } from '@razorpay/blade-core/utils';
-  import { formHintLeftLabelMarginLeft } from '@razorpay/blade-core/styles';
+  import { formHintLeftLabelMarginLeft, getOtpInputTemplateClasses } from '@razorpay/blade-core/styles';
   import BaseInput from '../BaseInput/BaseInput.svelte';
   import FormLabel from '../_Form/FormLabel.svelte';
   import FormHint from '../_Form/FormHint.svelte';
   import { useFormId } from '../BaseInput/useFormId';
   import { getHintType } from '../BaseInput/utils';
+  import { getStyledProps } from '../../../utils/getStyledProps';
   import type { FormInputOnKeyDownEvent } from '../BaseInput/types';
   import type { OTPInputProps } from './types';
+
+  const otpClasses = getOtpInputTemplateClasses();
 
   type BaseInputInstance = { focus: () => void; getInput: () => HTMLInputElement | null };
 
@@ -65,15 +68,23 @@
 
   const hintType = $derived(getHintType({ validationState, hasHelpText: Boolean(helpText) }));
 
-  const hintMarginLeft = $derived(
-    isLabelLeftPositioned ? `${formHintLeftLabelMarginLeft[size]}px` : '0px',
+  /* Hint indent under a left-positioned label, fed as the
+   * --otp-input-hint-margin-left custom property consumed by the hint class in
+   * otpInput.module.css. */
+  const { otpInputHintStyles } = $derived(
+    getStyledProps('otpInputHint', {
+      hintMarginLeft: isLabelLeftPositioned ? `${formHintLeftLabelMarginLeft[size]}px` : undefined,
+    }),
   );
 
   const styledProps = $derived(getStyledPropsClasses(rest));
-  const styledPropsStyle = $derived(
-    Object.entries(styledProps.inlineStyles ?? {})
-      .map(([prop, val]) => `${prop}: ${val}`)
-      .join('; ') || undefined,
+  const rootClasses = $derived(
+    [otpClasses.root, ...(styledProps.classes ?? [])].filter(Boolean).join(' '),
+  );
+  // Arbitrary-value styled props are fed as --otp-input-* custom properties
+  // consumed by the root rule in otpInput.module.css.
+  const { otpInputStyles } = $derived(
+    getStyledProps('otpInput', styledProps.inlineStyles ?? {}),
   );
   const metaAttrs = $derived(metaAttribute({ name: 'otpinput', testID }));
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
@@ -194,9 +205,11 @@
   const fieldIndexes = $derived(Array.from({ length: otpLength }, (_, i) => i));
 </script>
 
-<div class={(styledProps.classes ?? []).join(' ')} style={styledPropsStyle} {...metaAttrs} {...analyticsAttrs}>
+<div class={rootClasses} style={otpInputStyles} {...metaAttrs} {...analyticsAttrs}>
   <div
-    style={`display: flex; position: relative; flex-direction: ${isLabelLeftPositioned ? 'row' : 'column'}; ${isLabelLeftPositioned ? 'align-items: center;' : ''}`}
+    class={[otpClasses.layout, isLabelLeftPositioned ? otpClasses.layoutLeft : '']
+      .filter(Boolean)
+      .join(' ')}
   >
     {#if label}
       <FormLabel
@@ -210,10 +223,10 @@
         {label}
       </FormLabel>
     {/if}
-    <div style="display: flex; flex-direction: row;">
+    <div class={otpClasses.fields}>
       <input hidden id={ids.inputId} {name} value={aggregateValue} readonly />
       {#each fieldIndexes as index (index)}
-        <div style={`flex: 1; margin-left: ${index === 0 ? '0px' : 'var(--spacing-3)'};`}>
+        <div class={otpClasses.field}>
           <BaseInput
             bind:this={inputEls[index]}
             id={`${ids.inputId}-${index}`}
@@ -249,7 +262,7 @@
       {/each}
     </div>
   </div>
-  <div style={`margin-left: ${hintMarginLeft};`}>
+  <div class={otpClasses.hint} style={otpInputHintStyles}>
     <FormHint
       type={hintType}
       {helpText}

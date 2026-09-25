@@ -17,6 +17,7 @@ export {
   getBaseInputTemplateClasses,
 } from './baseInput';
 export type { BaseInputWrapperVariants, BaseInputElementVariants } from './baseInput';
+export { getOtpInputTemplateClasses } from './otpInput';
 export {
   labelTextSize,
   labelOptionalIndicatorTextSize,

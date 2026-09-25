@@ -16,6 +16,7 @@
   import { useFormId } from '../Input/BaseInput/useFormId';
   import { getHintType } from '../Input/BaseInput/utils';
   import { setInputGroupContext } from './inputGroupContext';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { InputGroupProps, InputGroupContextType } from './types';
 
   const templateClasses = getInputGroupTemplateClasses();
@@ -72,10 +73,10 @@
   const rootClasses = $derived(
     [templateClasses.inputGroup, ...(styledProps.classes || [])].filter(Boolean).join(' '),
   );
-  const rootStyles = $derived(
-    Object.entries(styledProps.inlineStyles || {})
-      .map(([prop, val]) => `${prop}: ${val}`)
-      .join('; ') || undefined,
+  // Arbitrary-value styled props are fed as --input-group-* custom properties
+  // consumed by the input-group root rule in inputGroup.module.css.
+  const { inputGroupStyles } = $derived(
+    getStyledProps('inputGroup', styledProps.inlineStyles ?? {}),
   );
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.InputGroup, testID }));
@@ -83,7 +84,7 @@
   const groupA11yAttrs = $derived(makeAccessible({ role: 'group', labelledBy: label ? labelId : undefined }));
 </script>
 
-<div class={rootClasses} style={rootStyles} {...metaAttrs} {...analyticsAttrs}>
+<div class={rootClasses} style={inputGroupStyles} {...metaAttrs} {...analyticsAttrs}>
   <div class={templateClasses.group} data-testid={testID} {...groupA11yAttrs}>
     <div class={fieldBoxClasses}>
       {#if label}

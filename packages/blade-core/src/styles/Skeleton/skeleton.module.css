@@ -11,6 +11,42 @@
   animation-fill-mode: forwards;
 }
 
+/* Dimension/flex props and arbitrary-value styled props arrive as --skeleton-*
+ * custom properties (built via getStyledProps). :where() keeps these inert
+ * (initial values) unless authored, so utility classes and style overrides
+ * keep working regardless of CSS source order. */
+:where(.skeleton) {
+  width: var(--skeleton-width);
+  max-width: var(--skeleton-max-width);
+  min-width: var(--skeleton-min-width);
+  height: var(--skeleton-height);
+  max-height: var(--skeleton-max-height);
+  min-height: var(--skeleton-min-height);
+  align-content: var(--skeleton-align-content);
+  justify-items: var(--skeleton-justify-items);
+  place-items: var(--skeleton-place-items);
+  flex-grow: var(--skeleton-flex-grow);
+  flex-shrink: var(--skeleton-flex-shrink);
+  flex-basis: var(--skeleton-flex-basis);
+  order: var(--skeleton-order);
+  z-index: var(--skeleton-z-index);
+  top: var(--skeleton-top);
+  right: var(--skeleton-right);
+  bottom: var(--skeleton-bottom);
+  left: var(--skeleton-left);
+  margin-top: var(--skeleton-margin-top);
+  margin-right: var(--skeleton-margin-right);
+  margin-bottom: var(--skeleton-margin-bottom);
+  margin-left: var(--skeleton-margin-left);
+  grid-column: var(--skeleton-grid-column);
+  grid-column-start: var(--skeleton-grid-column-start);
+  grid-column-end: var(--skeleton-grid-column-end);
+  grid-row: var(--skeleton-grid-row);
+  grid-row-start: var(--skeleton-grid-row-start);
+  grid-row-end: var(--skeleton-grid-row-end);
+  grid-area: var(--skeleton-grid-area);
+}
+
 @keyframes skeleton-fade-in {
   0% {
     opacity: 0;

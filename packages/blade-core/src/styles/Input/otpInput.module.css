@@ -1,0 +1,67 @@
+/* OTPInput — structural layout classes. Replaces raw inline layout styles:
+ * the label/field axis, the fields row, per-field sizing, and the hint indent
+ * all live here. Arbitrary-value styled props on the root arrive as
+ * --otp-input-* custom properties (built via getStyledProps). */
+
+/* Root (BaseBox + styled props land here). :where() keeps the var consumption
+ * inert (initial values) unless authored, so utility classes keep working
+ * regardless of CSS source order. */
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+:where(.root) {
+  z-index: var(--otp-input-z-index);
+  top: var(--otp-input-top);
+  right: var(--otp-input-right);
+  bottom: var(--otp-input-bottom);
+  left: var(--otp-input-left);
+  margin-top: var(--otp-input-margin-top);
+  margin-right: var(--otp-input-margin-right);
+  margin-bottom: var(--otp-input-margin-bottom);
+  margin-left: var(--otp-input-margin-left);
+  order: var(--otp-input-order);
+  grid-column: var(--otp-input-grid-column);
+  grid-column-start: var(--otp-input-grid-column-start);
+  grid-column-end: var(--otp-input-grid-column-end);
+  grid-row: var(--otp-input-grid-row);
+  grid-row-start: var(--otp-input-grid-row-start);
+  grid-row-end: var(--otp-input-grid-row-end);
+  grid-area: var(--otp-input-grid-area);
+}
+
+/* Label + fields wrapper. Label on top (default) stacks vertically; a
+ * left-positioned label switches to a centered row. */
+.layout {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.layoutLeft {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Row of OTP boxes (plus the hidden aggregate input). */
+.fields {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Each OTP box stretches equally; consecutive boxes are separated by
+ * spacing.3 (the first box has no left margin). */
+.field {
+  flex: 1;
+}
+
+.field + .field {
+  margin-left: var(--spacing-3);
+}
+
+/* Hint row — indented under the input when the label sits to the left
+ * (--otp-input-hint-margin-left defaults to 0px otherwise). */
+.hint {
+  margin-left: var(--otp-input-hint-margin-left, 0px);
+}

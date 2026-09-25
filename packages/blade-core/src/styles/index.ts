@@ -106,6 +106,7 @@ export {
   normalAmountSizes,
   currencyHardcodedSizes,
   amountLineHeights,
+  amountStrikethroughClass,
 } from './Amount';
 export type {
   AmountTypeProps,
@@ -191,7 +192,7 @@ export {
   skeletonStyles,
   skeletonClass,
   getSkeletonClasses,
-  getSkeletonInlineStyle,
+  getSkeletonStyleProps,
 } from './Skeleton';
 export type {
   SkeletonVariants,
@@ -544,6 +545,7 @@ export {
   getFormLabelInnerClasses,
   getFormHintClasses,
   getFormTemplateClasses,
+  getOtpInputTemplateClasses,
 } from './Input';
 export type {
   BaseInputSize,

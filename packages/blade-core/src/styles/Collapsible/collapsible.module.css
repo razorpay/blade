@@ -32,6 +32,13 @@
   opacity: 1;
 }
 
+/* CollapsibleBody outer region (role="region"). The `width` prop arrives as
+ * the --collapsible-body-width custom property (built via getStyledProps);
+ * unset falls back to the initial auto. */
+.bodyOuter {
+  width: var(--collapsible-body-width);
+}
+
 /* Inner content area – margin is direction-aware via CVA compoundVariants. */
 .bodyInner {
   display: block;
@@ -98,4 +105,34 @@
 .innerWidthUnrestricted {
   min-width: 0px;
   max-width: none;
+}
+
+/* Inline-block wrapper around CollapsibleLink's BaseLink so layout flow is
+ * preserved (Svelte cannot clone children like React). Arbitrary-value styled
+ * props forwarded to the link arrive as --collapsible-link-* custom
+ * properties (built via getStyledProps). :where() keeps them inert (initial
+ * values) unless authored, so utility classes keep working regardless of CSS
+ * source order. */
+.linkWrapper {
+  display: inline-block;
+}
+
+:where(.linkWrapper) {
+  z-index: var(--collapsible-link-z-index);
+  top: var(--collapsible-link-top);
+  right: var(--collapsible-link-right);
+  bottom: var(--collapsible-link-bottom);
+  left: var(--collapsible-link-left);
+  margin-top: var(--collapsible-link-margin-top);
+  margin-right: var(--collapsible-link-margin-right);
+  margin-bottom: var(--collapsible-link-margin-bottom);
+  margin-left: var(--collapsible-link-margin-left);
+  order: var(--collapsible-link-order);
+  grid-column: var(--collapsible-link-grid-column);
+  grid-column-start: var(--collapsible-link-grid-column-start);
+  grid-column-end: var(--collapsible-link-grid-column-end);
+  grid-row: var(--collapsible-link-grid-row);
+  grid-row-start: var(--collapsible-link-grid-row-start);
+  grid-row-end: var(--collapsible-link-grid-row-end);
+  grid-area: var(--collapsible-link-grid-area);
 }

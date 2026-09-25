@@ -102,6 +102,31 @@
 
 /* ── Layout (InputGroup's own DOM) ── */
 
+/* Root (BaseBox + styled props land here). Arbitrary-value styled props
+ * (margin/zIndex/offsets/grid) arrive as --input-group-* custom properties
+ * (built via getStyledProps). :where() keeps these inert (initial values)
+ * unless authored, so utility classes and style overrides keep working
+ * regardless of CSS source order. */
+:where(.input-group) {
+  z-index: var(--input-group-z-index);
+  top: var(--input-group-top);
+  right: var(--input-group-right);
+  bottom: var(--input-group-bottom);
+  left: var(--input-group-left);
+  margin-top: var(--input-group-margin-top);
+  margin-right: var(--input-group-margin-right);
+  margin-bottom: var(--input-group-margin-bottom);
+  margin-left: var(--input-group-margin-left);
+  order: var(--input-group-order);
+  grid-column: var(--input-group-grid-column);
+  grid-column-start: var(--input-group-grid-column-start);
+  grid-column-end: var(--input-group-grid-column-end);
+  grid-row: var(--input-group-grid-row);
+  grid-row-start: var(--input-group-grid-row-start);
+  grid-row-end: var(--input-group-grid-row-end);
+  grid-area: var(--input-group-grid-area);
+}
+
 /* role="group" box — mirrors React's outer BaseBox. */
 .group {
   display: flex;
@@ -121,9 +146,12 @@
   flex-direction: column;
 }
 
-/* Each InputRow — grid; grid-template-columns is set inline (arbitrary value). */
+/* Each InputRow — grid; the arbitrary `gridTemplateColumns` value arrives as
+ * the --input-row-grid-template-columns custom property (built via
+ * getStyledProps), defaulting to a single column. */
 .input-row {
   display: grid;
+  grid-template-columns: var(--input-row-grid-template-columns, 1fr);
 }
 
 /* Hint row — indented under the input when the label is left-positioned. */

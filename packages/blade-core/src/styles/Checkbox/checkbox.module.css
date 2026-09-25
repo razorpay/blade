@@ -5,6 +5,30 @@
   display: block;
 }
 
+/* Arbitrary-value styled props (margin/zIndex/offsets/grid) arrive as
+ * --checkbox-* custom properties (built via getStyledProps). :where() keeps
+ * these inert (initial values) unless authored, so utility classes and style
+ * overrides keep working regardless of CSS source order. */
+:where(.checkbox) {
+  z-index: var(--checkbox-z-index);
+  top: var(--checkbox-top);
+  right: var(--checkbox-right);
+  bottom: var(--checkbox-bottom);
+  left: var(--checkbox-left);
+  margin-top: var(--checkbox-margin-top);
+  margin-right: var(--checkbox-margin-right);
+  margin-bottom: var(--checkbox-margin-bottom);
+  margin-left: var(--checkbox-margin-left);
+  order: var(--checkbox-order);
+  grid-column: var(--checkbox-grid-column);
+  grid-column-start: var(--checkbox-grid-column-start);
+  grid-column-end: var(--checkbox-grid-column-end);
+  grid-row: var(--checkbox-grid-row);
+  grid-row-start: var(--checkbox-grid-row-start);
+  grid-row-end: var(--checkbox-grid-row-end);
+  grid-area: var(--checkbox-grid-area);
+}
+
 /* SelectorLabel — wraps the visually-hidden input + icon + title.
    Drives cursor + click target. `display: flex` (block-level, matching React's
    StyledSelectorLabel) so a sibling FormHint wraps below instead of inline.
@@ -353,6 +377,33 @@
 }
 
 /* ───────────────────────── CheckboxGroup ───────────────────────── */
+
+/* Group root (BaseBox + styled props land here) */
+.checkbox-group {
+  display: block;
+}
+
+/* Arbitrary-value styled props for the group root, same contract as
+ * :where(.checkbox) above. */
+:where(.checkbox-group) {
+  z-index: var(--checkbox-group-z-index);
+  top: var(--checkbox-group-top);
+  right: var(--checkbox-group-right);
+  bottom: var(--checkbox-group-bottom);
+  left: var(--checkbox-group-left);
+  margin-top: var(--checkbox-group-margin-top);
+  margin-right: var(--checkbox-group-margin-right);
+  margin-bottom: var(--checkbox-group-margin-bottom);
+  margin-left: var(--checkbox-group-margin-left);
+  order: var(--checkbox-group-order);
+  grid-column: var(--checkbox-group-grid-column);
+  grid-column-start: var(--checkbox-group-grid-column-start);
+  grid-column-end: var(--checkbox-group-grid-column-end);
+  grid-row: var(--checkbox-group-grid-row);
+  grid-row-start: var(--checkbox-group-grid-row-start);
+  grid-row-end: var(--checkbox-group-grid-row-end);
+  grid-area: var(--checkbox-group-grid-area);
+}
 
 .group-field {
   display: flex;

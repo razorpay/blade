@@ -13,6 +13,7 @@
   } from '@razorpay/blade-core/styles';
   import { setAccordionContext } from './context';
   import { resolveComponentStyleOverride } from '../../utils/resolveComponentStyleOverride';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import { getBladeThemeContextGetter } from '../BladeProvider/bladeThemeContext';
   import type { AccordionProps } from './types';
 
@@ -109,12 +110,10 @@
     cx(templateClasses.accordionOuter, ...(styledProps.classes || []), resolvedStyleOverride?.root),
   );
 
-  const outerStyle = $derived.by(() => {
-    const parts: string[] = [];
-    if (minWidth) parts.push(`min-width: ${minWidth}`);
-    if (maxWidth) parts.push(`max-width: ${maxWidth}`);
-    return parts.length > 0 ? parts.join('; ') : undefined;
-  });
+  /* minWidth/maxWidth are fed as --accordion-* custom properties consumed by
+   * the accordionOuter class in accordion.module.css; each breakpoint falls
+   * back to its responsive default so authored values win everywhere. */
+  const { accordionStyles } = $derived(getStyledProps('accordion', { minWidth, maxWidth }));
 
   const metaAttrs = metaAttribute({ name: MetaConstants.Accordion, testID });
   const analyticsAttrs = $derived(makeAnalyticsAttribute(rest));
@@ -122,7 +121,7 @@
 
 <div
   class={outerClasses}
-  style={outerStyle}
+  style={accordionStyles}
   {...metaAttrs}
   {...analyticsAttrs}
 >

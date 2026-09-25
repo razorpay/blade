@@ -1,6 +1,40 @@
 /* ───────────────────────── ActionList ───────────────────────── */
 
 /*
+ * Standalone (not-in-sheet) outer shell — mirrors React's BaseBox host that
+ * carries the styled props (a11y/meta/analytics land here too).
+ */
+.outer {
+  display: block;
+}
+
+/* Arbitrary-value styled props (margin/zIndex/offsets/grid) arrive as
+ * --action-list-* custom properties (built via getStyledProps) on whichever
+ * host carries them (`.outer` standalone, `.wrapper` inside a BottomSheet).
+ * :where() keeps these inert (initial values) unless authored, so utility
+ * classes and style overrides keep working regardless of CSS source order. */
+:where(.outer),
+:where(.wrapper) {
+  z-index: var(--action-list-z-index);
+  top: var(--action-list-top);
+  right: var(--action-list-right);
+  bottom: var(--action-list-bottom);
+  left: var(--action-list-left);
+  margin-top: var(--action-list-margin-top);
+  margin-right: var(--action-list-margin-right);
+  margin-bottom: var(--action-list-margin-bottom);
+  margin-left: var(--action-list-margin-left);
+  order: var(--action-list-order);
+  grid-column: var(--action-list-grid-column);
+  grid-column-start: var(--action-list-grid-column-start);
+  grid-column-end: var(--action-list-grid-column-end);
+  grid-row: var(--action-list-grid-row);
+  grid-row-start: var(--action-list-grid-row-start);
+  grid-row-end: var(--action-list-grid-row-end);
+  grid-area: var(--action-list-grid-area);
+}
+
+/*
  * ListBox scroll wrapper — standalone (not-in-sheet) branch.
  * React `getBaseListBoxWrapperStyles`: max-height size[300]=300px, spacing.3
  * padding, overflow-y auto.

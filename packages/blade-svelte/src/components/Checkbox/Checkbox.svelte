@@ -22,6 +22,7 @@
   import CheckboxIcon from './CheckboxIcon.svelte';
   import { InfoIcon } from '../Icons';
   import { getCheckboxGroupContext } from './checkboxContext';
+  import { getStyledProps } from '../../utils/getStyledProps';
   import type { CheckboxProps } from './types';
 
   const templateClasses = getCheckboxTemplateClasses();
@@ -156,10 +157,10 @@
   const wrapperClasses = $derived(
     [templateClasses.checkbox, ...(styledProps.classes || [])].filter(Boolean).join(' '),
   );
-  const wrapperStyles = $derived(
-    Object.entries(styledProps.inlineStyles || {})
-      .map(([prop, val]) => `${prop}: ${val}`)
-      .join('; ') || undefined,
+  // Arbitrary-value styled props are fed as --checkbox-* custom properties
+  // consumed by the checkbox root rule in checkbox.module.css.
+  const { checkboxStyles } = $derived(
+    getStyledProps('checkbox', styledProps.inlineStyles ?? {}),
   );
 
   const metaAttrs = $derived(metaAttribute({ name: MetaConstants.Checkbox, testID }));
@@ -185,7 +186,7 @@
   const hintIconSize = $derived(_size === 'large' ? 'medium' : 'small');
 </script>
 
-<div class={wrapperClasses} style={wrapperStyles} {...metaAttrs}>
+<div class={wrapperClasses} style={checkboxStyles} {...metaAttrs}>
   <label class={templateClasses.label} data-disabled={_isDisabled || undefined} {...labelMetaAttrs}>
     <div class={templateClasses.field}>
       <div class={templateClasses.row}>

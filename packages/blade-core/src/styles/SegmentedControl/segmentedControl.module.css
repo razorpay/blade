@@ -140,12 +140,20 @@
   color: var(--interactive-text-gray-disabled);
 }
 
-/* SegmentedControlIndicator (the sliding selection background) */
+/* SegmentedControlIndicator (the sliding selection background). Measured
+ * dimensions arrive as --segmented-control-indicator-* custom properties
+ * (built via getStyledProps from DOM measurements). */
 .indicator {
   pointer-events: none;
   position: absolute;
   left: 0px;
   top: 0px;
+  width: var(--segmented-control-indicator-width, 0px);
+  height: var(--segmented-control-indicator-height, 0px);
+  transform: translate(
+    var(--segmented-control-indicator-x, 0px),
+    var(--segmented-control-indicator-y, 0px)
+  );
   background-color: var(--surface-background-gray-intense);
   transition-property: transform, width, height;
   transition-timing-function: var(--easing-standard);

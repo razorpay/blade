@@ -57,6 +57,7 @@ export function getActionListItemClasses(props: ActionListItemVariants): string 
  * not tree-shake CVA class references that only appear in compound selectors.
  */
 export function getActionListTemplateClasses(): {
+  outer: string;
   wrapper: string;
   wrapperInSheet: string;
   item: string;
@@ -74,6 +75,7 @@ export function getActionListTemplateClasses(): {
   sectionItems: string;
 } {
   return {
+    outer: styles.outer,
     wrapper: styles.wrapper,
     wrapperInSheet: styles.wrapperInSheet,
     item: styles.item,

@@ -2,9 +2,11 @@
  *
  * Mirrors the React BottomSheet styles in blade/src/components/BottomSheet/.
  * Surface position (`height` / `bottom`), opacity, and `pointer-events` are
- * driven by inline CSS variables set from the Svelte component:
- *   --bs-position-y → height of the sheet in px
- *   --bs-z-index   → z-index for surface and backdrop
+ * driven by CSS custom properties set from the Svelte component (built via
+ * getStyledProps):
+ *   --bottom-sheet-position-y        → height of the sheet in px
+ *   --bottom-sheet-z-index           → z-index for the surface
+ *   --bottom-sheet-backdrop-z-index  → z-index for the backdrop
  */
 
 /* ===== PORTAL ROOT ===== */
@@ -38,8 +40,8 @@
   /* Reverse top elevation of highRaised elevation token. */
   box-shadow: 0 -24px 48px -12px hsla(217, 56%, 17%, 0.18);
 
-  height: var(--bs-position-y, 0px);
-  z-index: var(--bs-z-index, 100);
+  height: var(--bottom-sheet-position-y, 0px);
+  z-index: var(--bottom-sheet-z-index, 100);
   opacity: 0;
   pointer-events: none;
   touch-action: none;
@@ -79,7 +81,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: var(--bs-z-index, 100);
+  z-index: var(--bottom-sheet-backdrop-z-index, 100);
   background-color: var(--overlay-background-subtle);
   opacity: 0;
   pointer-events: none;

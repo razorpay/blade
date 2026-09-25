@@ -31,6 +31,7 @@
   import { portal } from '../../utils/portal';
   import { observeResize } from '../../utils/observeResize';
   import { lockBodyScroll, unlockBodyScroll } from '../../utils/bodyScrollLock';
+  import { getStyledProps } from '../../utils/getStyledProps';
 
   /* Anchor structural classes against the Rollup tree-shaker — CSS modules
    * export ESM objects whose unused individual exports otherwise get
@@ -635,8 +636,13 @@
   };
   setBottomSheetContext(() => contextValue);
 
-  const surfaceStyle = $derived(
-    [`--bs-position-y:${positionY}px`, `--bs-z-index:${bottomSheetZIndex}`].join(';'),
+  /* Drag position + z-index are fed as --bottom-sheet-* custom properties
+   * consumed by the surface class in bottomSheet.module.css. */
+  const { bottomSheetStyles } = $derived(
+    getStyledProps('bottomSheet', {
+      positionY: `${positionY}px`,
+      zIndex: bottomSheetZIndex,
+    }),
   );
 
   const styledProps = $derived(getStyledPropsClasses(rest));
@@ -700,7 +706,7 @@
 {#snippet surface()}
   <div
     class="{bottomSheetSurfaceClass} {surfaceExtraClasses}"
-    style={surfaceStyle}
+    style={bottomSheetStyles}
     data-state={surfaceState}
     data-dragging={isDragging}
     {...surfaceMetaAttrs}
