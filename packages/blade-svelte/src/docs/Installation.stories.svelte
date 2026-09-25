@@ -38,10 +38,16 @@
 
     <div style="margin-top: 24px;">
       <Heading size="large">Step 2: Import Theme CSS</Heading>
-      <Text size="medium" color="surface.text.gray.muted">Add to your entry file or layout:</Text>
+      <Text size="medium" color="surface.text.gray.muted">
+        Add to your entry file or layout (light base + dark override; import only
+        theme-light.css if you don't ship dark mode):
+      </Text>
       <pre
         style="background: #f4f4f5; padding: 16px; border-radius: 8px; margin: 12px 0; overflow-x: auto;"
-        ><code>import '@razorpay/blade-core/tokens/theme.css';</code></pre
+        ><code
+          >{`import '@razorpay/blade-core/tokens/theme-light.css';
+import '@razorpay/blade-core/tokens/theme-dark.css';`}</code
+      ></pre
       >
     </div>
 
