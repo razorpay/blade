@@ -51,6 +51,7 @@ const _Popover = ({
   defaultIsOpen,
   initialFocusRef,
   openInteraction = 'click',
+  _isModal = true,
   maxWidth,
   ...rest
 }: PopoverProps): React.ReactElement => {
@@ -154,7 +155,7 @@ const _Popover = ({
                 initialFocusRef ?? (openInteraction === 'hover' ? -1 : defaultInitialFocusRef)
               }
               context={context}
-              modal={true}
+              modal={_isModal}
               guards={true}
             >
               <TopNavOverlayThemeOverride>

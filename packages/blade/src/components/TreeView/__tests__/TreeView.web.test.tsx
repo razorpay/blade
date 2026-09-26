@@ -1017,8 +1017,10 @@ describe('tooltip and popover on items', () => {
 
     await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
     await findByRole('dialog');
+    // a hover popover is not modal: the tree stays exposed to assistive tech while it is open
+    expect(getByRole('tree')).toBeInTheDocument();
 
-    await user.click(getByRole('treeitem', { name: 'Retry Payment', hidden: true }));
+    await user.click(getByRole('treeitem', { name: 'Retry Payment' }));
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenLastCalledWith(
       expect.objectContaining({ values: ['retry-payment'] }),

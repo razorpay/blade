@@ -101,6 +101,9 @@ const TreeViewItemPopover = ({
       {...popover}
       // 'hover' keeps focus on the row when the popover opens
       openInteraction="hover"
+      // a modal popover would hide the whole tree from assistive tech while the pointer
+      // rests on a row
+      _isModal={false}
       isOpen={isOpen}
       onOpenChange={({ isOpen }) => onOpenChange(isOpen)}
     >
@@ -449,7 +452,10 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
               ? {
                   // Tooltip labels its trigger with the tooltip content by default (meant for
                   // icon-only triggers). A row already has a visible title, so keep that as the
-                  // name - Tooltip still links its content through aria-describedby while open
+                  // name - Tooltip still links its content through aria-describedby while open.
+                  // This relies on Tooltip spreading the child's own props after its aria-label
+                  // (cloneElement in Tooltip.web.tsx); the "keep the title as the row name"
+                  // test fails if that ever changes
                   'aria-label': undefined,
                 }
               : {})}

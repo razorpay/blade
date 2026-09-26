@@ -69,6 +69,15 @@ type PopoverProps = {
    */
   openInteraction?: 'hover' | 'click';
   /**
+   * Whether the open popover is modal: it traps focus and hides the rest of the page from
+   * assistive tech (`aria-hidden`). Used by TreeView's hover previews, which must not hide the
+   * tree the pointer is still on
+   *
+   * @default true
+   * @private
+   */
+  _isModal?: boolean;
+  /**
    * Sets the maximum width of the popover content
    *
    * @default 328px on desktop, 288px on mobile

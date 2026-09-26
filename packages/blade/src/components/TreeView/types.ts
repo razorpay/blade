@@ -143,15 +143,7 @@ type TreeViewItemProps = {
    * />
    * ```
    */
-  tooltip?: {
-    /**
-     * Tooltip title
-     */
-    title?: TooltipProps['title'];
-    /**
-     * Tooltip content
-     */
-    content: TooltipProps['content'];
+  tooltip?: Pick<TooltipProps, 'title' | 'content'> & {
     /**
      * Placement of the tooltip. Defaults to the right of the row, so it does not cover
      * the rows above or below
