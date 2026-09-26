@@ -457,9 +457,13 @@ const CustomTooltip = ({
   const toolTipColor = getChartColor(item.dataKey, item.name, dataColorMapping ?? {}, chartName);
 
   // If this series has a reference band, show its industry range (low–high) beneath the value.
+  // Use getIn to resolve nested dot-notation data keys (e.g. 'metrics.min'), matching the native
+  // tooltip's getSeriesNumber → getIn behaviour.
   const range = rangeMap?.[item.dataKey];
-  const lowerValue = range ? item.payload?.[range.rangeLowerDataKey] : undefined;
-  const upperValue = range ? item.payload?.[range.rangeUpperDataKey] : undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const lowerValue = range ? getIn(item.payload as any, range.rangeLowerDataKey as any) : undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const upperValue = range ? getIn(item.payload as any, range.rangeUpperDataKey as any) : undefined;
   const hasRange =
     range &&
     lowerValue !== undefined &&
