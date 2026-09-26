@@ -3,6 +3,7 @@ dist/
 
 # Storybook
 storybook-static/
+storybook-static-cx/
 
 # Dependencies (handled by root)
 node_modules/

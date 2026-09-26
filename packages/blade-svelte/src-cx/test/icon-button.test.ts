@@ -1,0 +1,123 @@
+import { describe, it, expect, vi } from 'vitest';
+import { fireEvent, render, waitFor } from '@testing-library/svelte';
+import IconButtonHarness from './fixtures/IconButtonHarness.svelte';
+import { expectClass, expectMarkup } from './classes';
+
+describe('IconButton', () => {
+  it('is named by its label, holds a decorative glyph and leaves the form alone', () => {
+    const onClick = vi.fn();
+    const onSubmit = vi.fn();
+    const { getByTestId } = render(IconButtonHarness, {
+      props: { onClick, onSubmit },
+    });
+    const button = getByTestId('dismiss') as HTMLButtonElement;
+    expect(button.type).toBe('button');
+    expect(button.getAttribute('aria-label')).toBe('Dismiss');
+    expect(button.className.endsWith('ml-2')).toBe(true);
+
+    const glyph = button.querySelector('svg')?.parentElement;
+    expect(glyph?.getAttribute('aria-hidden')).toBe('true');
+
+    return fireEvent.click(button).then(() => {
+      expect(onClick).toHaveBeenCalledTimes(1);
+      expect(onSubmit).not.toHaveBeenCalled();
+    });
+  });
+
+  it('sizes the box and the glyph together', () => {
+    const sizes = [
+      ['small', 'w-6 h-6', 'w-3 h-3'],
+      ['medium', 'w-8 h-8', 'w-4 h-4'],
+      ['large', 'w-10 h-10', 'w-5 h-5'],
+    ] as const;
+    for (const [size, box, glyph] of sizes) {
+      const { getByTestId, unmount } = render(IconButtonHarness, {
+        props: { size },
+      });
+      const button = getByTestId('dismiss');
+      expect(button.className).toContain(box);
+      expect(button.querySelector('svg')?.parentElement?.className).toContain(
+        glyph
+      );
+      unmount();
+    }
+  });
+
+  it('draws the boxed variant with a border', () => {
+    const { getByTestId } = render(IconButtonHarness, {
+      props: { variant: 'boxed' },
+    });
+    expectClass(getByTestId('dismiss'), 'border-thin');
+  });
+
+  it('a disabled button swallows a synthetic click', () => {
+    const onClick = vi.fn();
+    const { getByTestId } = render(IconButtonHarness, {
+      props: { onClick, isDisabled: true },
+    });
+    const button = getByTestId('dismiss') as HTMLButtonElement;
+    expect(button.disabled).toBe(true);
+    return fireEvent.click(button).then(() => {
+      expect(onClick).not.toHaveBeenCalled();
+    });
+  });
+
+  it('is busy while an async press settles: spinner for the glyph, second press swallowed', () => {
+    let settle: () => void = () => {};
+    const onClick = vi.fn(
+      () =>
+        new Promise<void>((resolve) => {
+          settle = resolve;
+        })
+    );
+    const { getByTestId } = render(IconButtonHarness, { props: { onClick } });
+    const button = getByTestId('dismiss');
+
+    return fireEvent
+      .click(button)
+      .then(() =>
+        waitFor(() => expect(button.getAttribute('aria-busy')).toBe('true'))
+      )
+      .then(() => {
+        expect(button.querySelector('svg')).toBeNull();
+        expectMarkup(button, 'animate-spin');
+        expect(button.getAttribute('aria-label')).toBe('Dismiss');
+        expect(button.querySelector('[role="status"]')?.textContent).toContain(
+          'Working'
+        );
+        return fireEvent.click(button);
+      })
+      .then(() => {
+        expect(onClick).toHaveBeenCalledTimes(1);
+        settle();
+        return waitFor(() =>
+          expect(button.hasAttribute('aria-busy')).toBe(false)
+        );
+      })
+      .then(() => {
+        expect(button.querySelector('svg')).not.toBeNull();
+      });
+  });
+
+  it('shows the host busy state', () => {
+    const { getByTestId } = render(IconButtonHarness, {
+      props: { isLoading: true },
+    });
+    expect(getByTestId('dismiss').getAttribute('aria-busy')).toBe('true');
+  });
+
+  it('submits the enclosing form when asked to', () => {
+    const onSubmit = vi.fn();
+    const { getByTestId } = render(IconButtonHarness, {
+      props: { type: 'submit', onSubmit },
+    });
+    const button = getByTestId('dismiss') as HTMLButtonElement;
+    expect(button.type).toBe('submit');
+    return fireEvent
+      .click(button)
+      .then(() => waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1)))
+      .then(() => {
+        expect(onSubmit.mock.calls[0]?.[0]).toEqual({ query: 'upi' });
+      });
+  });
+});

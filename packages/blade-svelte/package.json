@@ -33,11 +33,33 @@
     "./utils": {
       "types": "./dist/types/utils/index.d.ts",
       "default": "./dist/lib/utils/index.js"
-    }
+    },
+    "./cx": {
+      "types": "./src-cx/index.ts",
+      "svelte": "./src-cx/index.ts",
+      "default": "./src-cx/index.ts"
+    },
+    "./cx/runes": {
+      "types": "./src-cx/runes/index.ts",
+      "svelte": "./src-cx/runes/index.ts",
+      "default": "./src-cx/runes/index.ts"
+    },
+    "./cx/*": "./src-cx/*",
+    "./uno.config": {
+      "types": "./uno.config.ts",
+      "default": "./uno.config.ts"
+    },
+    "./package.json": "./package.json"
   },
   "svelte": "./dist/lib/components/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src-cx",
+    "!src-cx/test",
+    "!src-cx/stories",
+    "!src-cx/**/*.test.ts",
+    "!src-cx/**/*.tmp.ts",
+    "uno.config.ts"
   ],
   "scripts": {
     "prepare": "yarn build",
@@ -56,16 +78,22 @@
     "start:web": "yarn dev",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build -o storybook-static",
+    "prestorybook:cx": "cd ../blade-core && yarn build",
+    "storybook:cx": "storybook dev -p 6008 -c .storybook-cx",
+    "build-storybook:cx": "storybook build -c .storybook-cx -o storybook-static-cx",
     "test:coverage": "vitest run --coverage",
     "test:browserstack": "playwright test -c tests/browserstack/playwright.config.cts",
     "test:browserstack:local": "CHROMATIC_URL=https://blade.razorpay.com playwright test -c tests/browserstack/playwright.config.cts",
     "test:browserstack:mobile": "browserstack-node-sdk playwright test --config tests/browserstack/playwright.mobile.config.cts",
-    "test:browserstack:mobile:local": "CHROMATIC_URL=https://blade.razorpay.com browserstack-node-sdk playwright test --config tests/browserstack/playwright.mobile.config.cts"
+    "test:browserstack:mobile:local": "CHROMATIC_URL=https://blade.razorpay.com browserstack-node-sdk playwright test --config tests/browserstack/playwright.mobile.config.cts",
+    "svelte-check:cx": "svelte-check --tsconfig ./tsconfig.cx.json",
+    "test:cx": "vitest run --config vitest.config.ts --project cx",
+    "uno:cx": "unocss \"src-cx/**/*.{ts,svelte}\" -c uno.config.ts -o src-cx/uno.css"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.0",
     "@razorpay/blade-core": ">=0.21.0",
-    "@razorpay/i18nify-js": "1.12.3",
+    "@razorpay/i18nify-js": "1.12.8",
     "@use-gesture/vanilla": "10.2.24",
     "class-variance-authority": "^0.7.0"
   },
@@ -99,14 +127,21 @@
     "rollup-plugin-svelte": "^7.2.2",
     "storybook": "10.2.16",
     "sveld": "^0.36.1",
-    "svelte": "5.56.3",
+    "svelte": "5.56.10",
     "svelte-check": "^4.0.0",
     "svelte-preprocess": "^6.0.3",
     "typescript": "^5.0.0",
+    "unocss": "^66.10.5",
     "vite": "^5.0.0",
     "vitest": "3.2.6"
   },
   "peerDependencies": {
-    "svelte": ">=5.56.0"
+    "svelte": ">=5.56.10",
+    "unocss": ">=66.0.0"
+  },
+  "peerDependenciesMeta": {
+    "unocss": {
+      "optional": true
+    }
   }
 }

@@ -1,0 +1,16 @@
+{
+  // src-cx: the checkout component library, ported in alongside src/.
+  "extends": "../../tsconfig.json",
+  "include": ["src-cx/**/*.ts", "src-cx/**/*.svelte"],
+  "exclude": ["node_modules/**/*"],
+  "compilerOptions": {
+    "types": ["svelte", "node"],
+    "target": "ES2022",
+    "lib": ["dom", "ES2022", "dom.iterable"],
+    "moduleResolution": "bundler",
+    "verbatimModuleSyntax": true,
+    "allowArbitraryExtensions": true,
+    // As in the checkout, where src-cx comes from
+    "noUnusedLocals": false
+  }
+}

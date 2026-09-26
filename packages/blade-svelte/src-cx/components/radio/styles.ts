@@ -1,0 +1,165 @@
+import type {
+  RadioGroupPick,
+  RadioGroupValidationState,
+} from '../../runes/radio/group.svelte';
+import type { AxisValue } from '../../axes';
+import { FIELD_HINT, FIELD_HINT_TONE, FIELD_LABEL } from '../shared/field';
+
+export type { RadioGroupPick, RadioGroupValidationState };
+
+/** The parts of one Radio; resolved by the group, so its look is decided once. */
+export interface RadioClasses {
+  /** The label wrapping the control and its text; caller `class` lands here. */
+  row: string;
+  /** Applied to the row while this radio or its group is disabled. */
+  disabled: string;
+  /**
+   * Applied to the row per pick state — toggled from JS, keyed on both
+   * states: a look that restyles the row (a segment) cannot rely on
+   * `peer-checked:` reaching native, and `cx` resolves no conflicts.
+   */
+  pick: Record<'picked' | 'unpicked', string>;
+  /** The input element: semantics and keys only, the indicator is the visual. */
+  control: string;
+  label: string;
+  /**
+   * The drawn control: a circle and its always-mounted dot, keyed from JS
+   * like `pick`. Absent when the row itself is the visual (a segment).
+   */
+  indicator?: {
+    root: string;
+    /** Keyed on both axes: `cx` resolves no conflicts. */
+    look: Record<'default' | 'invalid', Record<'picked' | 'unpicked', string>>;
+    dot: Record<'picked' | 'unpicked', string>;
+  };
+}
+
+/**
+ * RadioGroup's parts. One resolver serves both components: the group hands
+ * `radio` to its Radios by context, so a Radio has no style props of its own.
+ */
+export interface RadioGroupClasses {
+  root: string;
+  /** Applied to the root while the group is disabled. */
+  disabled: string;
+  /** The visible label text. */
+  label: string;
+  /** The box the Radios sit in. */
+  options: string;
+  /** The one line under the options. */
+  hint: string;
+  /** Applied to the hint line per validation state. */
+  hintTone: Record<RadioGroupValidationState, string>;
+  radio: RadioClasses;
+  /**
+   * One shape drawn in `options` under the rows, sliding to the pick: the
+   * group sets `--segment-index`/`--segment-count` on it from its pick, so
+   * the look sizes and moves it with those alone (SegmentedControl's thumb).
+   * Absent for plain radios, so nothing is drawn.
+   */
+  thumb?: string;
+}
+
+/** Style props in, the parts out. */
+export type RadioGroupStyleResolver<P> = (props: P) => RadioGroupClasses;
+
+/**
+ * Library-internal seam. A spelling of RadioGroup (SegmentedControl) hands
+ * the group its resolver instead of style props: not an axis, no public
+ * grammar, no explorer control. The exported looks (`segmentedLook`) are
+ * the sanctioned values, and the group imports nothing of them.
+ */
+export interface RadioGroupLookProp {
+  look?: RadioGroupStyleResolver<RadioGroupStyleProps>;
+}
+
+/** The blade taxonomy as data. */
+export const RADIO_GROUP_AXES = {
+  orientation: ['vertical', 'horizontal'],
+} as const;
+
+type Axis<K extends keyof typeof RADIO_GROUP_AXES> = AxisValue<
+  typeof RADIO_GROUP_AXES,
+  K
+>;
+
+/** Derived from RADIO_GROUP_AXES: add an axis value there, never here. */
+export interface RadioGroupStyleProps {
+  orientation?: Axis<'orientation'>;
+}
+
+// Semantic tokens only — merchant theming reaches every class through the
+// CSS-var seam.
+const ORIENTATION: Record<Axis<'orientation'>, string> = {
+  vertical: 'flex-col gap-2',
+  horizontal: 'flex-row flex-wrap gap-x-6 gap-y-2',
+};
+
+// Blade's RadioIcon (blade-core Radio/radio.module.css): a 16px circle with
+// a 1.5px border and a 6px dot. Colours per variant × checked, as Checkbox:
+// picked `interactive.background.primary.default` with the
+// `interactive.border.primary.default` border; on hover fill and border both
+// `interactive.background.primary.highlighted` (a transparent border over the
+// highlighted fill here). Unpicked `interactive.border.gray.highlighted`,
+// `interactive.background.gray.faded` on hover. Negative
+// `interactive.*.negative.default`. Disabled wins: picked
+// `interactive.background.primary.disabled`, no border; unpicked
+// `interactive.border.gray.disabled`. The dot is
+// `interactive.icon.on-primary.normal`. The hidden input is the `peer`, so
+// hovering the label (which hovers the labelled control) and keyboard focus
+// restyle the circle. Colours move at Blade's xquick/exit, hover in at
+// 2xquick/standard. The dot stays mounted: picked, it scales in at
+// xquick/entrance; unpicked, it only fades at xquick/exit and snaps small
+// once invisible — its size holds while it leaves.
+const PICKED_DISABLED =
+  'peer-disabled:bg-interactive-primary-disabled peer-disabled:border-transparent';
+const UNPICKED_DISABLED = 'peer-disabled:border-interactive-gray-disabled';
+const DOT = 'w-1.5 h-1.5 rounded-max bg-current';
+const INDICATOR = {
+  root: 'relative flex w-4 h-4 shrink-0 items-center justify-center rounded-max border-thick border-solid icon-interactive-on-primary-normal transition-colors duration-xquick ease-exit peer-hover:duration-2xquick peer-hover:ease-standard peer-focus-visible:shadow-focus',
+  look: {
+    default: {
+      picked: `border-interactive-primary-default bg-interactive-primary-default peer-hover:border-transparent peer-hover:bg-interactive-primary-highlighted ${PICKED_DISABLED}`,
+      unpicked: `border-interactive-gray-highlighted bg-transparent peer-hover:bg-interactive-gray-faded ${UNPICKED_DISABLED}`,
+    },
+    invalid: {
+      picked: `border-interactive-negative-default bg-interactive-negative-default ${PICKED_DISABLED}`,
+      unpicked: `border-interactive-negative-default bg-transparent ${UNPICKED_DISABLED}`,
+    },
+  },
+  dot: {
+    picked: `${DOT} scale-100 opacity-1300 [transition:opacity_160ms_cubic-bezier(0,0,0.2,1),scale_160ms_cubic-bezier(0,0,0.2,1)] motion-reduce:transition-none`,
+    unpicked: `${DOT} [scale:.2] [opacity:0.1] [transition:opacity_160ms_cubic-bezier(0.17,0,1,1),scale_0s_160ms] motion-reduce:transition-none`,
+  },
+};
+
+const GROUP = {
+  root: 'flex flex-col gap-2',
+  // Blade fades nothing: each radio takes its disabled colours.
+  disabled: '',
+  label: FIELD_LABEL,
+  hint: FIELD_HINT,
+  hintTone: FIELD_HINT_TONE,
+};
+
+export const resolveRadioGroup: RadioGroupStyleResolver<
+  RadioGroupStyleProps
+> = (props: RadioGroupStyleProps = {}) => {
+  const { orientation = 'vertical' } = props;
+  return {
+    ...GROUP,
+    options: `flex ${ORIENTATION[orientation]}`,
+    radio: {
+      // `relative`: the hidden control is absolutely positioned, and it must sit
+      // in its own row — else focusing it scrolls whatever ancestor it lands in.
+      row: 'relative flex cursor-pointer items-center gap-2',
+      pick: { picked: '', unpicked: '' },
+      disabled: 'pointer-events-none',
+      control: 'peer sr-only',
+      // Blade's SelectorTitle: `surface.text.gray.subtle`, disabled greyed.
+      label:
+        'text-100 leading-100 text-surface-gray-subtle peer-disabled:text-surface-gray-disabled',
+      indicator: INDICATOR,
+    },
+  };
+};

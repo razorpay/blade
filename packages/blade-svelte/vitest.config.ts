@@ -82,6 +82,28 @@ export default defineConfig({
           include: ['src/**/*.ssr.{test,spec}.{js,ts}'],
         },
       },
+      {
+        // src-cx: the checkout component library. blade-core source is only
+        // read by uno.config.ts, for the token contract test.
+        plugins: [
+          svelte({
+            preprocess: vitePreprocess(),
+            compilerOptions: { compatibility: { componentApi: 4 } },
+          }),
+        ],
+        resolve: {
+          conditions: ['browser'],
+          dedupe: ['svelte'],
+          alias: bladeCoreAlias,
+          extensions: bladeCoreExtensions,
+        },
+        test: {
+          name: 'cx',
+          environment: 'jsdom',
+          globals: true,
+          include: ['src-cx/**/*.test.ts'],
+        },
+      },
     ],
     coverage: {
       provider: 'v8',

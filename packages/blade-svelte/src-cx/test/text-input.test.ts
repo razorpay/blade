@@ -1,0 +1,209 @@
+import { describe, it, expect, vi } from 'vitest';
+import { fireEvent, render } from '@testing-library/svelte';
+import type { FormatRule } from '../runes/text-input/format';
+import TextInputHarness from './fixtures/TextInputHarness.svelte';
+import { expectClass, expectNoClass } from './classes';
+
+const digits = (v: unknown) => String(v ?? '').replace(/\D/g, '');
+const grouped = (v: unknown) => digits(v).replace(/(\d{4})(?=\d)/g, '$1 ');
+const cardFormat = { parse: digits, format: grouped };
+
+describe('TextInput standalone', () => {
+  it('renders recipe classes and associates the label with the control', () => {
+    const { getByTestId, getByLabelText } = render(TextInputHarness, {
+      props: { label: 'Card number' },
+    });
+
+    const control = getByTestId('solo');
+    // Classes come from the component's own styles.
+    // The box is the drawn field; the control inside it has no frame.
+    expectClass(control.parentElement, 'rounded-small');
+    expectNoClass(control, 'rounded-small');
+    expect(getByLabelText('Card number')).toBe(control);
+  });
+
+  it('resolves the style classes and appends the caller class last', () => {
+    const { getByTestId, container } = render(TextInputHarness, {
+      props: { className: 'mt-4' },
+    });
+    expectClass(getByTestId('solo').parentElement, 'min-h-9');
+    const root = container.firstElementChild as HTMLElement;
+    expect(root.className.endsWith('mt-4')).toBe(true);
+  });
+
+  it('accessibilityLabel names the control only without a visible label', () => {
+    const { getByTestId, rerender } = render(TextInputHarness, {
+      props: { accessibilityLabel: 'Card number' },
+    });
+    expect(getByTestId('solo').getAttribute('aria-label')).toBe('Card number');
+
+    return rerender({ label: 'Card', accessibilityLabel: 'Card number' }).then(
+      () => {
+        expect(getByTestId('solo').getAttribute('aria-label')).toBeNull();
+      }
+    );
+  });
+
+  it('paints the formatted value first and follows outside value changes', async () => {
+    const { getByTestId, rerender } = render(TextInputHarness, {
+      props: { value: '41112222', format: cardFormat },
+    });
+    const control = getByTestId('solo') as HTMLInputElement;
+    expect(control.value).toBe('4111 2222');
+
+    await rerender({ value: '411122223', format: cardFormat });
+    expect(control.value).toBe('4111 2222 3');
+  });
+
+  it('reports the parsed value through onChange', async () => {
+    const onChange = vi.fn();
+    const { getByTestId } = render(TextInputHarness, {
+      props: { onChange, format: cardFormat },
+    });
+    const control = getByTestId('solo') as HTMLInputElement;
+
+    control.value = '41112';
+    await fireEvent.input(control);
+
+    expect(onChange).toHaveBeenCalledWith('41112');
+    expect(control.value).toBe('4111 2');
+  });
+
+  it('declarative rules format like functions and ride along for native', async () => {
+    const parse: FormatRule[] = [['\\D', 'g', '']];
+    const format: FormatRule[] = [
+      ['\\D', 'g', ''],
+      ['(\\d{4})(?=\\d)', 'g', '$1 '],
+    ];
+    const onChange = vi.fn();
+    const { getByTestId } = render(TextInputHarness, {
+      props: { format: { parse, format }, onChange, maxCharacters: 19 },
+    });
+    const control = getByTestId('solo') as HTMLInputElement;
+
+    control.value = '41112';
+    await fireEvent.input(control);
+    expect(control.value).toBe('4111 2');
+    expect(onChange).toHaveBeenCalledWith('41112');
+
+    // Native reads the serialized spec; web ignores it.
+    expect(JSON.parse(control.getAttribute('format') ?? '')).toEqual({
+      p: parse,
+      f: format,
+    });
+    expect(control.maxLength).toBe(19);
+  });
+
+  it('writes the cap as camelCase maxLength, the spelling native reads', () => {
+    const written = vi.spyOn(Element.prototype, 'setAttribute');
+    const { getByTestId } = render(TextInputHarness, {
+      props: { maxCharacters: 9 },
+    });
+    // Svelte lowercases attribute names on HTML elements, which native
+    // drops; on web both spellings are the same attribute.
+    expect(written.mock.calls.map(([name]) => name)).toContain('maxLength');
+    expect((getByTestId('solo') as HTMLInputElement).maxLength).toBe(9);
+    written.mockRestore();
+  });
+
+  it('leading and trailing take text or a snippet inside the box label', () => {
+    const { getByText, getByTestId, getByLabelText } = render(
+      TextInputHarness,
+      { props: { label: 'Amount', leading: '₹', withTrailingSnippet: true } }
+    );
+    expectClass(getByText('₹'), 'items-center');
+    expectClass(getByTestId('clear').parentElement, 'items-center');
+    // The box is a label, so a click on an affix lands in the control…
+    const control = getByTestId('solo') as HTMLInputElement;
+    expect(getByText('₹').closest('label')?.control).toBe(control);
+    // …while the accessible name stays the visible label alone.
+    expect(getByLabelText('Amount')).toBe(control);
+    expect(control.getAttribute('aria-labelledby')).toBe(
+      getByText('Amount').id
+    );
+  });
+
+  it('type search leads with the style glyph unless leading is set', async () => {
+    const { getByTestId, container, rerender } = render(TextInputHarness, {
+      props: { type: 'search', accessibilityLabel: 'Search banks' },
+    });
+    const control = getByTestId('solo');
+    expect(control.getAttribute('type')).toBe('search');
+    expect(control.getAttribute('enterkeyhint')).toBe('search');
+    expect(container.querySelectorAll('svg')).toHaveLength(1);
+
+    await rerender({ type: 'search', leading: '#' });
+    expect(container.querySelectorAll('svg')).toHaveLength(0);
+  });
+
+  it('shows focus on the box, which holds the affixes', async () => {
+    const { getByTestId, getByText } = render(TextInputHarness, {
+      props: { leading: '₹' },
+    });
+    const control = getByTestId('solo');
+    const box = control.parentElement;
+    expect(getByText('₹').parentElement).toBe(box);
+    expectNoClass(box, 'shadow-focus');
+
+    await fireEvent.focus(control);
+    expectClass(box, 'shadow-focus');
+    await fireEvent.blur(control);
+    expectNoClass(box, 'shadow-focus');
+  });
+
+  it('function formatters send no spec', () => {
+    const { getByTestId } = render(TextInputHarness, {
+      props: { format: cardFormat },
+    });
+    expect(getByTestId('solo').hasAttribute('format')).toBe(false);
+  });
+
+  it('describes the control with the line for its validation state', async () => {
+    const texts = { helpText: 'Help', errorText: 'Bad', successText: 'Good' };
+    const { getByTestId, getByText, queryByText, rerender } = render(
+      TextInputHarness,
+      { props: texts }
+    );
+    const control = getByTestId('solo');
+
+    expect(control.getAttribute('aria-describedby')).toBe(getByText('Help').id);
+    expect(control.getAttribute('aria-invalid')).toBeNull();
+    expect(queryByText('Bad')).toBeNull();
+
+    await rerender({ ...texts, validationState: 'error' });
+    const error = getByText('Bad');
+    expect(queryByText('Help')).toBeNull();
+    expect(control.getAttribute('aria-describedby')).toBe(error.id);
+    expect(control.getAttribute('aria-invalid')).toBe('true');
+    expectClass(control.parentElement, '!border-interactive-negative-default');
+    expectClass(error, 'text-feedback-negative-intense');
+
+    await rerender({ ...texts, validationState: 'success' });
+    expectClass(getByText('Good'), 'text-feedback-positive-intense');
+    // Blade keeps the gray border on success: only the hint turns positive.
+    expectClass(control.parentElement, 'border-interactive-gray-default');
+    expectNoClass(control.parentElement, '!border-interactive-positive-default');
+    expect(control.getAttribute('aria-invalid')).toBeNull();
+  });
+
+  it('the help text stands in for a state with no text of its own', async () => {
+    const { getByText, rerender } = render(TextInputHarness, {
+      props: { helpText: 'Help', validationState: 'error' },
+    });
+    expectClass(getByText('Help'), 'text-feedback-negative-intense');
+    await rerender({ helpText: 'Help', validationState: 'success' });
+    expectClass(getByText('Help'), 'text-feedback-positive-intense');
+  });
+
+  it('isDisabled disables the control and applies the disabled part to the root', () => {
+    const { getByTestId, container } = render(TextInputHarness, {
+      props: { isDisabled: true },
+    });
+    expect((getByTestId('solo') as HTMLInputElement).disabled).toBe(true);
+    expectClass(
+      container.firstElementChild as HTMLElement,
+      'pointer-events-none'
+    );
+    expectClass(getByTestId('solo').parentElement, '!bg-surface-gray-moderate');
+  });
+});
