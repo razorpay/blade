@@ -14,7 +14,18 @@ import { Counter } from '~components/Counter';
 import { Dropdown, DropdownOverlay, FilterChipSelectInput } from '~components/Dropdown';
 import { DropdownFooter } from '~components/Dropdown/DropdownHeaderFooter';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import { FileTextIcon, FolderIcon, LockIcon } from '~components/Icons';
+import {
+  CheckCircleIcon,
+  FileTextIcon,
+  FolderIcon,
+  LayoutIcon,
+  LoaderIcon,
+  LockIcon,
+  LogOutIcon,
+  PlayCircleIcon,
+  RefreshIcon,
+  SlashIcon,
+} from '~components/Icons';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { Avatar } from '~components/Avatar';
 import { Badge } from '~components/Badge';
@@ -609,3 +620,88 @@ const SizesTemplate: StoryFn<typeof TreeViewComponent> = () => (
 );
 export const Sizes = SizesTemplate.bind({});
 Sizes.storyName = 'Sizes';
+
+/**
+ * Stand-in for a screen preview image - in a real product this would usually be an `<img>`
+ */
+const ScreenPreview = ({ label }: { label: string }): React.ReactElement => (
+  <Box
+    width="220px"
+    height="280px"
+    borderRadius="medium"
+    backgroundColor="feedback.background.positive.intense"
+    display="flex"
+    flexDirection="column"
+    alignItems="center"
+    justifyContent="center"
+    gap="spacing.4"
+  >
+    <CheckCircleIcon size="2xlarge" color="surface.icon.staticWhite.normal" />
+    <Text weight="semibold" color="surface.text.staticWhite.normal">
+      {label}
+    </Text>
+  </Box>
+);
+
+const HoverPreviewTemplate: StoryFn<typeof TreeViewComponent> = () => (
+  <Box maxWidth="320px">
+    <TreeViewComponent selectionType="single" defaultValue={['payment-success']}>
+      <TreeViewItem
+        title="Checkout"
+        value="checkout"
+        leading={<LayoutIcon />}
+        isSelectable={false}
+        defaultIsExpanded
+      >
+        <TreeViewItem
+          title="Payment Animation"
+          value="payment-animation"
+          leading={<PlayCircleIcon />}
+          tooltip={{ content: 'Plays between payment confirmation and the result screen' }}
+        />
+        <TreeViewItem
+          title="Payment Processing"
+          value="payment-processing"
+          leading={<LoaderIcon />}
+          tooltip={{ title: 'Payment Processing', content: 'Shown while the bank confirms' }}
+        />
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          leading={<CheckCircleIcon />}
+          popover={{
+            title: 'Payment Success',
+            content: <ScreenPreview label="Payment Successful" />,
+          }}
+        />
+        <TreeViewItem
+          title="Retry Payment"
+          value="retry-payment"
+          leading={<RefreshIcon />}
+          popover={{
+            title: 'Retry Payment',
+            content: <ScreenPreview label="Retry Payment" />,
+          }}
+        />
+        <TreeViewItem
+          title="Cancel Payment"
+          value="cancel-payment"
+          leading={<SlashIcon />}
+          isDisabled
+          tooltip={{ content: 'Not available for this checkout' }}
+        />
+        <TreeViewItem title="Exit Payment" value="exit-payment" leading={<LogOutIcon />} />
+      </TreeViewItem>
+    </TreeViewComponent>
+  </Box>
+);
+export const HoverPreview = HoverPreviewTemplate.bind({});
+HoverPreview.storyName = 'With Tooltip and Popover';
+HoverPreview.parameters = {
+  docs: {
+    description: {
+      story:
+        'Pass `tooltip` for a short text hint (opens on hover and keyboard focus) or `popover` for a rich preview (opens on mouse hover). Both open to the right of the row by default so they do not cover the rows above or below.',
+    },
+  },
+};
