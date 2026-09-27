@@ -1,0 +1,99 @@
+# Blade Components Index
+
+One line per component. Read `<Name>.md` in this directory for full props, constraints, usage guidelines and examples.
+
+- **Accordion**: An accordion is used to allow users to toggle between different content sections in a compact vertical stack.
+- **ActionList**: ActionList contains a list of actionable items that can be used to perform particular actions.
+- **Alert**: Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way.
+- **Amount**: The Amount component is used to display currency values with proper formatting.
+- **AnimateInteractions**: AnimateInteractions is a component that allows you to animate child components based on interactions with the parent element.
+- **AnnouncementBanner**: AnnouncementBanner is a slim, full-bleed banner used to surface a single short, system-wide promotional or informational message at the top or bottom edge of a page.
+- **AppBar**: AppBar is a header bar at the top of a screen.
+- **AreaChart**: AreaChart is a data visualization component built on top of Recharts that displays quantitative data as filled areas under curves.
+- **AutoComplete**: AutoComplete is an enhanced dropdown trigger component that combines text input functionality with dropdown selection.
+- **Avatar**: Avatar is a standardized visual representation of a user or entity, displayed as a profile picture, icon, or initials.
+- **Badge**: Badges are small, color-coded UI elements used to display concise metadata, designed to draw user attention to important information.
+- **BarChart**: BarChart is a comprehensive data visualization component that renders interactive bar charts with support for grouped, stacked, and vertical layouts.
+- **BottomBar**: BottomBar is a bar fixed to the bottom of the screen.
+- **BottomNav**: BottomNav is a persistent navigation component designed for mobile interfaces, positioned at the bottom of the screen.
+- **BottomSheet**: BottomSheet is a component commonly used in mobile applications to display additional information or actions without obstructing the main content of the screen.
+- **Box**: Box is a versatile layout primitive component that serves as the foundational building block for creating complex layouts in Blade applications.
+- **Breadcrumb**: Breadcrumbs are navigational components that display the user's current location within an application's hierarchy.
+- **Button**: The Button component is a versatile interactive element used for triggering actions within an application.
+- **ButtonGroup**: The ButtonGroup component is used to group related buttons together, creating a cohesive set of actions with consistent styling and spacing.
+- **Card**: Cards are containers that group related content and actions on a single topic.
+- **Carousel**: The Carousel is a component that displays a collection of items in a horizontally scrollable container.
+- **ChatInput**: `ChatInput` is an input component designed for AI chat interfaces.
+- **ChatMessage**: ChatMessage is a visual representation of a message in a chat interface.
+- **Checkbox**: Checkbox is a form control that allows users to select one or multiple options from a set of choices.
+- **Chip**: Chip and ChipGroup components enable users to make selections, filter content, and trigger actions through selectable elements.
+- **Code**: The Code component is designed for displaying inline code snippets, token names, or variable names within text content.
+- **Collapsible**: Collapsible is a component that allows users to toggle the visibility of hidden content within a container.
+- **ColorInput**: ColorInput is a form input for picking a color.
+- **Counter**: Counter is a visual indicator that displays numerical values, tallies, or counts within a specific context.
+- **CounterInput**: CounterInput is a specialized numerical input component that allows users to increment or decrement values using built-in plus/minus button controls alongside manual text input.
+- **DatePicker**: DatePicker is a component for selecting dates or date ranges with an intuitive calendar interface.
+- **Display**: The Display component is designed for creating high-impact, eye-catching typography sections, particularly suited for landing pages.
+- **Divider**: Divider is a visual element used to separate or divide content within a layout.
+- **DonutChart**: DonutChart is a circular data visualization component built on top of Recharts with Blade design system styling.
+- **Drawer**: The Drawer component is a panel that slides in from the right side of the screen over existing content in the viewport.
+- **Dropdown**: Dropdown is a versatile component that displays a floating overlay with content beneath a trigger element.
+- **Elevate**: Elevate is a motion component that animates the CSS `box-shadow` property to highlight elements.
+- **EmptyState**: EmptyState component provides a consistent way to display empty states across applications with optional visual assets, titles, descriptions, and action elements.
+- **Fade**: The Fade component is a motion preset that animates the opacity of its children, allowing them to smoothly appear or disappear.
+- **FileUpload**: The FileUpload component is used to handle file attachments, including drag-and-drop interactions.
+- **FloatingActionButton**: FloatingActionButton is a persistent, elevated button anchored to the bottom of the viewport, used for the single most important action on a screen.
+- **Heading**: The Heading component is designed for creating section headings in a page's hierarchy.
+- **IconButton**: The IconButton component provides an accessible way to trigger actions using only icons.
+- **Icons**: Blade provides a collection of pre-designed icons that can be used throughout your application.
+- **Indicator**: Indicators are visual elements that describe the condition of an entity.
+- **InfoGroup**: InfoGroup is a structured component for displaying key-value pairs in a consistent, organized format.
+- **InputGroup**: InputGroup is a form layout component that organizes related form inputs with consistent spacing and alignment.
+- **LightBox**: LightBox is a full-screen media viewer for immersive browsing of images and custom-rendered content.
+- **LineChart**: LineChart is a data visualization component built on top of Recharts with Blade design system styling that renders line charts for displaying trends and patterns in continuous data over time.
+- **Link**: The Link component is used for navigating between pages or triggering in-page actions.
+- **List**: The List component displays a set of related items in a structured format.
+- **ListView**: ListView is a pattern component that provides a structured way to display tabular data with powerful filtering capabilities.
+- **Menu**: Action Menu displays a list of actions on temporary surfaces.
+- **Modal**: Modal is a dialog component that appears in front of the app content to provide critical information or request user input.
+- **Morph**: The Morph component provides smooth animations for transitioning between different UI states.
+- **Move**: The Move component is a motion preset that animates the opacity and position of its children, allowing them to smoothly appear or disappear in the UI.
+- **OTPInput**: OTPInput is a specialized input component for collecting one-time passwords or verification codes.
+- **Pagination**: Pagination is a navigation component that allows users to navigate through multiple pages of content.
+- **PasswordInput**: PasswordInput is a secure input field designed for entering passwords.
+- **PhoneNumberInput**: PhoneNumberInput is a specialized input component for collecting and validating international phone numbers.
+- **Popover**: The Popover component displays additional context or interactive content that appears when a user interacts with a trigger element.
+- **Preview**: The Preview component is a versatile file preview component that provides a container for displaying various types of content with zoom and drag capabilities.
+- **ProgressBar**: A ProgressBar is a visual indicator that displays the progress of a process or task.
+- **QuickFilter**: QuickFilter and QuickFilterGroup components provide a user-friendly interface for displaying and selecting filterable options.
+- **Radio**: The Radio and RadioGroup components are used in forms when a user needs to select a single value from multiple options.
+- **RazorSense**: RazorSense is a WebGL-powered component that renders an animated glass refraction effect with video/image textures, colorama color grading, displacement, bloom, and light sweep effects.
+- **RazorSenseGradient**: RazorSenseGradient renders an animated WebGL fluid gradient clipped to an SVG mask shape.
+- **SankeyChart**: SankeyChart is a flow diagram that shows how a quantity moves across multiple stages.
+- **Scale**: The Scale component is a motion preset that animates elements by changing their size through CSS scale property.
+- **SearchInput**: SearchInput is a specialized input component designed for search functionality.
+- **SegmentedControl**: SegmentedControl lets the user select one value from a small set of options shown side by side.
+- **SelectInput**: SelectInput is a dropdown trigger component that functions as the equivalent of the HTML `<select>` element in Blade Design System.
+- **SideNav**: The SideNav component provides a responsive side navigation layout positioned along the left side of the screen.
+- **Skeleton**: The Skeleton component is a placeholder UI element that displays a pulsing animation while content is loading.
+- **SkipNav**: The SkipNav component lets users skip the navigation and jump to the main content of the page.
+- **Slide**: The Slide component is a motion preset that animates elements by sliding them in from outside the viewport.
+- **SliderInput**: SliderInput lets users pick one numeric value from a continuous or stepped range by dragging a thumb along a track, clicking the track, or using the keyboard.
+- **Spinner**: A Spinner is an element with a looping animation that indicates loading is in progress.
+- **SpotlightPopoverTour**: The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it.
+- **Stagger**: Stagger is a utility motion preset component that allows you to stagger children (make them appear one after the other) with animations.
+- **StepGroup**: StepGroup visualizes sequential processes with a consistent structure.
+- **Switch**: A switch component is used to quickly switch between two possible states.
+- **Table**: A table component that displays data in a grid format through rows and columns of cells.
+- **Tabs**: The Tabs component is a navigation element used to switch between different views in the same context.
+- **Tag**: The Tag component displays interactive keywords that help organize and categorize objects.
+- **Text**: The Text component is a versatile typography component used to display main content on a page.
+- **TextArea**: TextArea is a component for collecting multi-line text input from users.
+- **TextInput**: TextInput is a component for collecting user input in a text field.
+- **TimePicker**: The TimePicker component is a comprehensive time selection input that supports both 12-hour and 24-hour formats with configurable minute step intervals.
+- **Toast**: The Toast component displays temporary feedback messages in the interface.
+- **Tooltip**: The Tooltip component provides additional context about elements or their functions.
+- **TopNav**: The TopNav component is a navigation bar positioned at the top of the screen that provides quick access to different products, search functionality, and user profile.
+- **TreeView**: TreeView renders a hierarchical list of expandable, selectable items.
+- **TrustBadge**: TrustBadge shows that a business is trusted.
+- **VisuallyHidden**: The VisuallyHidden component makes content hidden from sighted users but available for screen reader users.

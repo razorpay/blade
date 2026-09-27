@@ -1,4 +1,5 @@
 import { join, dirname } from 'path';
+import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -7,48 +8,67 @@ const PROJECT_ROOT_DIRECTORY = join(__dirname, '..', '..');
 
 const analyticsToolCallEventName = 'Blade MCP Tool Called';
 
-// Skill Tokens
-const SKILL_VERSION = '1.0.0';
+// Blade skill (copied from packages/blade-plugin/skills/blade at build time by
+// scripts/copyKnowledgebase.mjs). The skill is the source of truth for docs.
+const BLADE_SKILL_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'bladeSkill');
+const SKILL_FILE_NAME = 'SKILL.md';
+const BLADE_SKILL_FILE_PATH = join(BLADE_SKILL_DIRECTORY, SKILL_FILE_NAME);
+const SKILL_DIRECTORY_NAME = 'blade';
+const LEGACY_SKILL_DIRECTORY_NAME = 'ui-code-guidelines';
+
+// The skill version is stamped into SKILL.md frontmatter by
+// scripts/syncPluginManifestVersion.js and equals the blade-mcp package version
+// (changesets `fixed` group), so package.json is a safe fallback when the
+// copied skill is unreadable (e.g. tests that mock fs).
+const readSkillVersion = (): string => {
+  try {
+    const content = readFileSync(BLADE_SKILL_FILE_PATH, 'utf8');
+    const match = content.match(/^\s*version:\s*'([^']+)'/m);
+    if (match) return match[1];
+  } catch {
+    // fall through to package.json
+  }
+  try {
+    const packageJson = JSON.parse(
+      readFileSync(join(PROJECT_ROOT_DIRECTORY, 'package.json'), 'utf8'),
+    );
+    if (typeof packageJson.version === 'string') return packageJson.version;
+  } catch {
+    // fall through
+  }
+  console.error(`[Blade MCP] Could not determine skill version from ${BLADE_SKILL_FILE_PATH}`);
+  return '0.0.0';
+};
+
+const SKILL_VERSION = readSkillVersion();
 const SKILL_VERSION_STRING = `version: '${SKILL_VERSION}'`;
 
-const SKILL_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'skillTemplate');
-const BLADE_SKILL_FILE_PATH = join(SKILL_TEMPLATE_DIRECTORY, 'SKILL.md');
-const SKILL_REFERENCES_DIRECTORY = join(SKILL_TEMPLATE_DIRECTORY, 'references');
-
-const SKILL_FILE_NAME = 'SKILL.md';
-const SKILL_DIRECTORY_NAME = 'ui-code-guidelines';
-
-const CONSUMER_SKILL_RELATIVE_PATH = `.agents/skills/${SKILL_DIRECTORY_NAME}/${SKILL_FILE_NAME}`;
+const CONSUMER_SKILL_DIRECTORY_RELATIVE_PATH = `.agents/skills/${SKILL_DIRECTORY_NAME}`;
+const CONSUMER_SKILL_RELATIVE_PATH = `${CONSUMER_SKILL_DIRECTORY_RELATIVE_PATH}/${SKILL_FILE_NAME}`;
 const CONSUMER_SKILL_SYMLINK_RELATIVE_PATH = `.claude/skills/${SKILL_DIRECTORY_NAME}`;
+const CONSUMER_LEGACY_SKILL_DIRECTORY_RELATIVE_PATH = `.agents/skills/${LEGACY_SKILL_DIRECTORY_NAME}`;
+const CONSUMER_LEGACY_SKILL_SYMLINK_RELATIVE_PATH = `.claude/skills/${LEGACY_SKILL_DIRECTORY_NAME}`;
+
+// Public git path of the skill; used by the HTTP transport's degit instructions.
+const BLADE_SKILL_GIT_PATH = 'razorpay/blade/packages/blade-plugin/skills/blade';
 
 const CHECK_SKILL_VERSION_DESCRIPTION = `Get the version from the blade skill file. If the file does not exist, send 0.
 
 
 Use this exact grep command:
 \`\`\`grep
-grep -o "version: '[0-9.]*'" .agents/skills/ui-code-guidelines/SKILL.md
+grep -o "version: '[0-9.]*'" ${CONSUMER_SKILL_RELATIVE_PATH}
 \`\`\`
 `;
 
-// Legacy Cursor Rules Tokens (kept for backward compatibility)
-const CURSOR_RULES_VERSION = '0.0.8';
-const CURSOR_RULES_VERSION_STRING = `rules_version: ${CURSOR_RULES_VERSION}`;
-
-const CURSOR_RULES_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'cursorRules');
-const BLADE_CURSOR_RULES_FILE_PATH = join(
-  CURSOR_RULES_TEMPLATE_DIRECTORY,
-  'frontend-blade-rules.mdc',
-);
-
-const CURSOR_RULES_FILE_NAME = `frontend-blade-rules.mdc`;
-
-const CONSUMER_CURSOR_RULES_RELATIVE_PATH = `.cursor/rules/${CURSOR_RULES_FILE_NAME}`;
+const PLUGIN_MIGRATION_NOTICE =
+  'Note: Blade MCP is in maintenance mode. The same docs ship as the `blade` skill in the Blade Claude Code plugin (https://github.com/razorpay/blade/tree/master/packages/blade-plugin); prefer the skill when it is installed.';
 
 // Blade Template
 const BASE_BLADE_TEMPLATE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'base-blade-template');
 
-// Knowledgebase
-const KNOWLEDGEBASE_DIRECTORY = join(PROJECT_ROOT_DIRECTORY, 'knowledgebase');
+// Knowledgebase (the skill's references tree)
+const KNOWLEDGEBASE_DIRECTORY = join(BLADE_SKILL_DIRECTORY, 'references');
 const COMPONENTS_KNOWLEDGEBASE_DIRECTORY = join(KNOWLEDGEBASE_DIRECTORY, 'components');
 const PATTERNS_KNOWLEDGEBASE_DIRECTORY = join(KNOWLEDGEBASE_DIRECTORY, 'patterns');
 const GENERAL_KNOWLEDGEBASE_DIRECTORY = join(KNOWLEDGEBASE_DIRECTORY, 'general');
@@ -58,21 +78,18 @@ export {
   // Skill tokens
   SKILL_VERSION,
   SKILL_VERSION_STRING,
-  SKILL_TEMPLATE_DIRECTORY,
+  BLADE_SKILL_DIRECTORY,
   BLADE_SKILL_FILE_PATH,
-  SKILL_REFERENCES_DIRECTORY,
+  BLADE_SKILL_GIT_PATH,
   SKILL_FILE_NAME,
   SKILL_DIRECTORY_NAME,
+  CONSUMER_SKILL_DIRECTORY_RELATIVE_PATH,
   CONSUMER_SKILL_RELATIVE_PATH,
   CONSUMER_SKILL_SYMLINK_RELATIVE_PATH,
+  CONSUMER_LEGACY_SKILL_DIRECTORY_RELATIVE_PATH,
+  CONSUMER_LEGACY_SKILL_SYMLINK_RELATIVE_PATH,
   CHECK_SKILL_VERSION_DESCRIPTION,
-  // Legacy cursor tokens (backward compat)
-  CURSOR_RULES_VERSION,
-  CURSOR_RULES_VERSION_STRING,
-  CURSOR_RULES_TEMPLATE_DIRECTORY,
-  BLADE_CURSOR_RULES_FILE_PATH,
-  CONSUMER_CURSOR_RULES_RELATIVE_PATH,
-  CURSOR_RULES_FILE_NAME,
+  PLUGIN_MIGRATION_NOTICE,
   // Other
   BASE_BLADE_TEMPLATE_DIRECTORY,
   KNOWLEDGEBASE_DIRECTORY,

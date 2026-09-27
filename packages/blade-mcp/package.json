@@ -14,9 +14,7 @@
   },
   "files": [
     "dist",
-    "knowledgebase",
-    "cursorRules",
-    "skillTemplate",
+    "bladeSkill",
     "base-blade-template"
   ],
   "scripts": {
@@ -28,7 +26,10 @@
     "lint": "eslint --ext .ts src/",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:updateSnapshots": "vitest -u"
+    "test:updateSnapshots": "vitest -u",
+    "prebuild": "node scripts/copyKnowledgebase.mjs",
+    "pretest": "node scripts/copyKnowledgebase.mjs",
+    "predev": "node scripts/copyKnowledgebase.mjs"
   },
   "keywords": [
     "razorpay",

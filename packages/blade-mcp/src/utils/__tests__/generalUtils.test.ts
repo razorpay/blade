@@ -2,8 +2,18 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { describe, it, expect, afterEach } from 'vitest';
-import { hasOutdatedSkill } from '../generalUtils.js';
-import { BLADE_SKILL_FILE_PATH, SKILL_VERSION_STRING } from '../tokens.js';
+import { hasOutdatedSkill, getPackageJSONVersion } from '../generalUtils.js';
+import { BLADE_SKILL_FILE_PATH, SKILL_VERSION, SKILL_VERSION_STRING } from '../tokens.js';
+
+describe('SKILL_VERSION', () => {
+  it('should match the package version (fixed changeset group with @razorpay/blade-plugin)', () => {
+    expect(SKILL_VERSION).toBe(getPackageJSONVersion());
+  });
+
+  it('should be read from the copied SKILL.md frontmatter', () => {
+    expect(fs.readFileSync(BLADE_SKILL_FILE_PATH, 'utf8')).toContain(SKILL_VERSION_STRING);
+  });
+});
 
 describe('hasOutdatedSkill', () => {
   let tmpFile: string;

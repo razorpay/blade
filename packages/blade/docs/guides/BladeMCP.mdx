@@ -1,12 +1,42 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { List, ListItem, ListItemText, Heading, Code } from '../../src/components';
 
-<Meta title="Guides/Blade MCP" />
+<Meta title="Guides/Blade for AI Agents" />
 
-<Heading size="xlarge">Blade MCP</Heading>
+<Heading size="xlarge">Blade for AI Agents</Heading>
+Blade ships its component, pattern and token documentation for AI coding agents in two forms: the
+**Blade plugin** (a Claude Code plugin whose skills also load in Cursor, Codex, Copilot and Gemini CLI)
+and the older **Blade MCP** server. Prefer the plugin; the MCP is in maintenance mode.
+
+<br />
+
+<Heading size="large">Blade Plugin (recommended)</Heading>
+
+<Heading size="medium">Claude Code</Heading>
+
+From a checkout of the blade repository:
+
+```sh
+claude --plugin-dir packages/blade-plugin
+```
+
+Marketplace install commands will be published here once the plugin marketplace is live.
+
+<Heading size="medium">Cursor, Codex, Copilot, Gemini CLI</Heading>
+
+```sh
+npx skills add razorpay/blade --skill blade
+```
+
+The skill lands in `.agents/skills/blade` (with a `.claude/skills/blade` symlink). Ask your agent to build UI and it reads the component docs it needs.
+
+Skills included: `blade` (docs + guidelines), `blade-upgrade` (changelog summaries), `blade-new-project` (Vite + React scaffold), `blade-figma-to-code` (Razorpay-internal).
+
+<br />
+
+<Heading size="large">Blade MCP (maintenance mode)</Heading>
 Blade MCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that
-implements Razorpay's Design Guidelines and allows you to build Web Interfaces with AI using Blade Design
-System.
+exposes the same documentation as tools. Use it only where your agent cannot load skills.
 
 <br />
 
@@ -24,14 +54,30 @@ export const toolsData = [
       'Creates a new project using Blade with Vite, React, and TypeScript setup. Should only be called when creating a new project from scratch.',
   },
   {
-    name: 'create_blade_cursor_rules',
+    name: 'create_blade_skill',
     description:
-      "Creates the cursor rules for Blade to help with code generation. Should be called before getting component docs and when the rule file doesn't exist.",
+      'Installs the blade skill (docs included) into the project. Called automatically before docs tools when the skill is missing or outdated.',
   },
   {
     name: 'get_blade_component_docs',
     description:
       'Fetches the Blade Design System documentation for specific components. Useful when adding or modifying components in your project.',
+  },
+  {
+    name: 'get_blade_pattern_docs',
+    description: 'Fetches Blade pattern documentation (forms, list views, dashboards, and more).',
+  },
+  {
+    name: 'get_blade_general_docs',
+    description: 'Fetches setup, theming, tokens and icon documentation.',
+  },
+  {
+    name: 'get_blade_changelog',
+    description: 'Returns changelog entries for a version or range to help with upgrades.',
+  },
+  {
+    name: 'get_figma_to_code',
+    description: 'Converts a Figma frame into Blade code (Razorpay employees only).',
   },
 ];
 

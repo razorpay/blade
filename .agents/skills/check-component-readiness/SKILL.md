@@ -58,7 +58,7 @@ When a user asks you to review a component before shipping, you must check the f
 ### 9. Knowledgebase Update
 
 - Verify that there is knowledgebase created for this component. Look for `{ComponentName}.md` inside `packages/blade-mcp/knowledgebase/**`
-- Suggest them to run prompt from `packages/blade-mcp/knowledgebase/components/prompt.txt` to generate this markdown
+- Suggest them to run prompt from `packages/blade-plugin/skills/blade/references/components/prompt.txt` to generate this markdown
 
 ## Reporting Format
 

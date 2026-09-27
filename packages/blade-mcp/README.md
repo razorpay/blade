@@ -6,6 +6,9 @@
 
 Blade MCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that implements Razorpay's Design Guidelines and allows you to build Web Interfaces using Blade Design System.
 
+> [!IMPORTANT]
+> Blade MCP is in **maintenance mode**. The same documentation now ships as the `blade` skill in the [Blade plugin](../blade-plugin/) for Claude Code and any agent that supports [Agent Skills](https://agentskills.io) (Cursor, Codex, Copilot, Gemini CLI). Prefer the plugin; keep using the MCP only where skills are not supported. Deprecation timeline: see the plugin README.
+
 [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](<https://cursor.com/en-US/install-mcp?name=Blade%20MCP%20(Stdio)&config=eyJjb21tYW5kIjoibnB4IC15IEByYXpvcnBheS9ibGFkZS1tY3BAbGF0ZXN0In0%3D>)
 
 ## Available Tools
@@ -14,11 +17,23 @@ Blade MCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/in
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `hi_blade`                  | Provides a welcome message and overview of Blade MCP capabilities when user greets with "hi blade", "hey blade", etc.                                                                                                                      |
 | `create_new_blade_project`  | Creates a new project using Blade with Vite, React, and TypeScript setup. Should only be called when creating a new project from scratch.                                                                                                  |
-| `create_blade_cursor_rules` | Creates the cursor rules for Blade to help with code generation. Should be called before getting component docs and when the rule file doesn't exist.                                                                                      |
+| `create_blade_skill`        | Installs the `blade` skill (docs included) at `.agents/skills/blade` with a `.claude/skills/blade` symlink. Called automatically before docs tools when the skill is missing or outdated. Not needed with the Blade plugin.                |
 | `get_blade_component_docs`  | Fetches the Blade Design System documentation for specific components. Useful when adding or modifying components in your project.                                                                                                         |
 | `get_blade_pattern_docs`    | Fetches the Blade Design System pattern documentation. Use this to get information about design patterns, best practices, and implementation guidelines.                                                                                   |
 | `get_blade_general_docs`    | Fetches general Blade Design System documentation. Use this to get information about setup, installation, theming, tokens, and general guidelines.                                                                                         |
 | `get_figma_to_code`         | Converts Figma designs into Blade Design System code. Provide a Figma design URL to generate the corresponding React components using Blade's component library. **[NOTE: figma to code tool can only be accessed by Razorpay employees]** |
+| `get_blade_changelog`       | Returns Blade changelog entries for a version or a range, to help with upgrades.                                                                                                                                                            |
+| `publish_lines_of_code_metric` | Reports lines added/removed after an edit so the Blade team can track adoption. Called by the agent once per task.                                                                                                                       |
+
+## Skills instead of MCP
+
+If your agent supports skills, install the `blade` skill directly and skip the MCP:
+
+```sh
+npx skills add razorpay/blade --skill blade
+```
+
+Claude Code users: run `claude --plugin-dir packages/blade-plugin` from a checkout of this repo, or install from the marketplace once it is published (see [packages/blade-plugin](../blade-plugin/)).
 
 ## Prerequisites
 

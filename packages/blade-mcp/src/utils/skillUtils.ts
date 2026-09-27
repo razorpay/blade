@@ -2,30 +2,37 @@ import { existsSync } from 'fs';
 import { join } from 'path';
 // eslint-disable-next-line import/no-cycle
 import { createBladeSkillToolName } from '../tools/createBladeSkill.js';
-import { SKILL_VERSION, CONSUMER_SKILL_RELATIVE_PATH } from './tokens.js';
+import {
+  SKILL_VERSION,
+  CONSUMER_SKILL_RELATIVE_PATH,
+  CONSUMER_SKILL_DIRECTORY_RELATIVE_PATH,
+  CONSUMER_SKILL_SYMLINK_RELATIVE_PATH,
+  CONSUMER_LEGACY_SKILL_DIRECTORY_RELATIVE_PATH,
+  CONSUMER_LEGACY_SKILL_SYMLINK_RELATIVE_PATH,
+  BLADE_SKILL_GIT_PATH,
+  SKILL_DIRECTORY_NAME,
+} from './tokens.js';
 import { hasOutdatedSkill } from './generalUtils.js';
 import { handleError } from './analyticsUtils.js';
 import type { McpToolResponse } from './types.js';
 
+// degit copies the whole skill tree (SKILL.md + ~110 reference docs) in one
+// command; per-file curl no longer scales.
 const bashScriptContent = `
   #!/bin/bash
-  # Download ui-code-guidelines skill from GitHub
-  SKILL_DIR=".agents/skills/ui-code-guidelines"
-  REFS_DIR="$SKILL_DIR/references"
-  SYMLINK_DIR=".claude/skills/ui-code-guidelines"
-  BASE_URL="https://raw.githubusercontent.com/razorpay/blade/master/packages/blade-mcp/skillTemplate"
-  # Create directories
+  # Install the blade skill from GitHub (SKILL.md + references)
+  SKILL_DIR="${CONSUMER_SKILL_DIRECTORY_RELATIVE_PATH}"
+  SYMLINK_DIR="${CONSUMER_SKILL_SYMLINK_RELATIVE_PATH}"
+  rm -rf "$SKILL_DIR"
   mkdir -p "$SKILL_DIR"
-  mkdir -p "$REFS_DIR"
-  # Download SKILL.md and reference files
-  curl -sSL "$BASE_URL/SKILL.md" -o "$SKILL_DIR/SKILL.md"
-  curl -sSL "$BASE_URL/references/styled-props-types.md" -o "$REFS_DIR/styled-props-types.md"
-  curl -sSL "$BASE_URL/references/common-utility-types.md" -o "$REFS_DIR/common-utility-types.md"
+  npx -y degit ${BLADE_SKILL_GIT_PATH} "$SKILL_DIR" --force
   # Create symlink for Claude Code support
   mkdir -p ".claude/skills"
   if [ ! -L "$SYMLINK_DIR" ] && [ ! -e "$SYMLINK_DIR" ]; then
-    ln -s "../../.agents/skills/ui-code-guidelines" "$SYMLINK_DIR"
+    ln -s "../../${CONSUMER_SKILL_DIRECTORY_RELATIVE_PATH}" "$SYMLINK_DIR"
   fi
+  # Remove the legacy ui-code-guidelines skill superseded by the blade skill
+  rm -rf "${CONSUMER_LEGACY_SKILL_DIRECTORY_RELATIVE_PATH}" "${CONSUMER_LEGACY_SKILL_SYMLINK_RELATIVE_PATH}"
   `;
 
 const skillCreationInstructions = ({
@@ -39,7 +46,7 @@ const skillCreationInstructions = ({
 
 2. Run the bash script below (copy and execute the commands from the script)
 
-3. This will create the blade skill at \`.agents/skills/ui-code-guidelines/SKILL.md\` and a symlink at \`.claude/skills/ui-code-guidelines\`
+3. This will create the blade skill at \`${CONSUMER_SKILL_RELATIVE_PATH}\` and a symlink at \`${CONSUMER_SKILL_SYMLINK_RELATIVE_PATH}\`
 
 Run the following bash script to create the blade skill:
 
@@ -50,6 +57,8 @@ ${bashScriptContent}
 \`\`\`
 
 **Working Directory:** \`${currentProjectRootDirectory}\`
+
+Alternatively, install the Blade Claude Code plugin, which ships the same \`${SKILL_DIRECTORY_NAME}\` skill and needs no MCP: https://github.com/razorpay/blade/tree/master/packages/blade-plugin
 `;
 
 /**

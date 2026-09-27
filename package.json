@@ -12,7 +12,8 @@
       "packages/blade-core",
       "packages/eslint-plugin-blade",
       "packages/blade-mcp",
-      "packages/blade-svelte"
+      "packages/blade-svelte",
+      "packages/blade-plugin"
     ],
     "nohoist": [
       "@razorpay/blade/**"
@@ -51,7 +52,8 @@
     "aicodemod:host": "npx localtunnel --port 3000 --subdomain blade-ds",
     "ci:codesandbox": "yarn install --ignore-engines",
     "ci:codesandbox:install": "yarn install --ignore-engines --ignore-scripts",
-    "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core && yarn build:blade-svelte"
+    "ci:codesandbox:build": "yarn build:blade && yarn build:blade-core && yarn build:blade-svelte",
+    "validate:blade-plugin": "node packages/blade-plugin/scripts/validatePlugin.mjs && node scripts/syncPluginManifestVersion.js --check"
   },
   "devDependencies": {
     "@babel/core": "7.21.8",

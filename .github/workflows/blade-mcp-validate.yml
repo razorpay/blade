@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'packages/blade-mcp/**'
+      - 'packages/blade-plugin/**'
+      - 'scripts/syncPluginManifestVersion.js'
       - '.github/workflows/blade-mcp-validate.yml'
 
 permissions:
@@ -24,6 +26,8 @@ jobs:
           node-version: 22
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+      - name: Validate Blade Plugin
+        run: yarn validate:blade-plugin
       - name: Run Unit Tests
         run: yarn test
         working-directory: packages/blade-mcp

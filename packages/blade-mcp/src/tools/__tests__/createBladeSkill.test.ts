@@ -73,8 +73,8 @@ describe('createBladeSkill stdio callback', () => {
       createMockContext(),
     );
 
-    const skillFilePath = path.join(tmpDir, '.agents/skills/ui-code-guidelines/SKILL.md');
-    const symlinkPath = path.join(tmpDir, '.claude/skills/ui-code-guidelines');
+    const skillFilePath = path.join(tmpDir, '.agents/skills/blade/SKILL.md');
+    const symlinkPath = path.join(tmpDir, '.claude/skills/blade');
 
     expect(result).toMatchObject({
       content: [{ type: 'text', text: expect.stringContaining('Blade skill created') }],
@@ -88,7 +88,7 @@ describe('createBladeSkill stdio callback', () => {
 
     createBladeSkillStdioCallback({ currentProjectRootDirectory: tmpDir }, createMockContext());
 
-    const skillFilePath = path.join(tmpDir, '.agents/skills/ui-code-guidelines/SKILL.md');
+    const skillFilePath = path.join(tmpDir, '.agents/skills/blade/SKILL.md');
     const writtenContent = fs.readFileSync(skillFilePath, 'utf8');
 
     // If this fails, the template and SKILL_VERSION_STRING are out of sync
@@ -109,5 +109,51 @@ describe('createBladeSkill stdio callback', () => {
     expect(result).toMatchObject({
       content: [{ type: 'text', text: expect.stringContaining('up to date') }],
     });
+  });
+
+  it('should copy the knowledgebase references along with SKILL.md', () => {
+    vi.mocked(analyticsUtils.sendAnalytics).mockImplementation(() => undefined);
+
+    createBladeSkillStdioCallback({ currentProjectRootDirectory: tmpDir }, createMockContext());
+
+    const refs = path.join(tmpDir, '.agents/skills/blade/references');
+    expect(fs.existsSync(path.join(refs, 'components/Button.md'))).toBe(true);
+    expect(fs.existsSync(path.join(refs, 'components/index.md'))).toBe(true);
+    expect(fs.existsSync(path.join(refs, 'patterns/ListView.md'))).toBe(true);
+    expect(fs.existsSync(path.join(refs, 'general/Tokens.md'))).toBe(true);
+    expect(fs.existsSync(path.join(refs, 'styled-props-types.md'))).toBe(true);
+  });
+
+  it('should replace an outdated skill tree and remove the legacy ui-code-guidelines skill', () => {
+    vi.mocked(analyticsUtils.sendAnalytics).mockImplementation(() => undefined);
+
+    const legacyDir = path.join(tmpDir, '.agents/skills/ui-code-guidelines');
+    fs.mkdirSync(legacyDir, { recursive: true });
+    fs.writeFileSync(path.join(legacyDir, 'SKILL.md'), 'legacy');
+    fs.mkdirSync(path.join(tmpDir, '.claude/skills'), { recursive: true });
+    fs.symlinkSync(
+      path.join('..', '..', '.agents', 'skills', 'ui-code-guidelines'),
+      path.join(tmpDir, '.claude/skills/ui-code-guidelines'),
+    );
+
+    const outdatedDir = path.join(tmpDir, '.agents/skills/blade');
+    fs.mkdirSync(path.join(outdatedDir, 'references'), { recursive: true });
+    fs.writeFileSync(path.join(outdatedDir, 'SKILL.md'), "metadata:\n  version: '0.0.1'");
+    fs.writeFileSync(path.join(outdatedDir, 'references/Stale.md'), 'stale');
+
+    const result = createBladeSkillStdioCallback(
+      { currentProjectRootDirectory: tmpDir },
+      createMockContext(),
+    );
+
+    expect(result).toMatchObject({
+      content: [{ type: 'text', text: expect.stringContaining('Blade skill created') }],
+    });
+    expect(fs.readFileSync(path.join(outdatedDir, 'SKILL.md'), 'utf8')).toContain(
+      SKILL_VERSION_STRING,
+    );
+    expect(fs.existsSync(path.join(outdatedDir, 'references/Stale.md'))).toBe(false);
+    expect(fs.existsSync(legacyDir)).toBe(false);
+    expect(fs.existsSync(path.join(tmpDir, '.claude/skills/ui-code-guidelines'))).toBe(false);
   });
 });
