@@ -364,7 +364,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   flexDirection={{ base: 'column', s: 'row' }}
                   borderRadius="small"
                 >
-                  {/* Upload action: matches Blade Link with color="neutral" and a leading icon */}
+                  {/* Upload action: neutral link colors with a leading icon and an underlined label */}
                   <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
                     <UploadIcon
                       size={fileUploadLinkIconSizeTokens[size]}
@@ -377,6 +377,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     <Text
                       size={fileUploadDropAreaTextSizeTokens[size]}
                       weight="medium"
+                      textDecorationLine="underline"
                       color={
                         isDisabled
                           ? fileUploadColorTokens.link.disabled
