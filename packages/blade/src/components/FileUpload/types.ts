@@ -138,14 +138,21 @@ type FileUploadCommonProps = {
 } & StyledPropsBlade &
   MotionMetaProp;
 
-// Standard size props (medium or large)
+// Standard size props (small, medium or large)
 type FileUploadStandardSizeProps = FileUploadCommonProps & {
   /**
    * Size of the FileUpload component
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * Shows the "Drag files here or" text (or "Tap to" on React Native) before the upload action.
+   * Set it to `false` to show only the upload action.
+   *
+   * @default true
+   */
+  showDropAreaText?: boolean;
 };
 
 // Variable size props with custom text options
@@ -249,5 +256,6 @@ export type {
   StyledFileUploadWrapperProps,
   StyledFileUploadItemWrapperProps,
   FileUploadItemBackgroundColors,
+  FileUploadStandardSizeProps,
   FileUploadVariableSizeProps,
 };

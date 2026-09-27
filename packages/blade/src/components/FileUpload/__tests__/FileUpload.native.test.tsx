@@ -338,6 +338,68 @@ describe('<FileUpload /> (native)', () => {
     expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
   });
 
+  it('should render FileUpload with size="small"', () => {
+    const { toJSON, getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        size="small"
+        label="Upload GST certificate"
+        fileList={[]}
+        onUploadPress={jest.fn()}
+      />,
+    );
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
+    expect(getByText('Tap to')).toBeTruthy();
+  });
+
+  it('should hide the drop area text with showDropAreaText={false}', () => {
+    const onUploadPress = jest.fn();
+    const { queryByText, getByText, getByRole } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        showDropAreaText={false}
+        fileList={[]}
+        onUploadPress={onUploadPress}
+      />,
+    );
+    expect(queryByText('Tap to')).toBeNull();
+    expect(getByText('Upload')).toBeTruthy();
+    fireEvent.press(getByRole('button'));
+    expect(onUploadPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render the upload action with only the icon and text when showDropAreaText is false', () => {
+    const { toJSON, getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        size="small"
+        label="Logo"
+        showDropAreaText={false}
+        fileList={[]}
+        onUploadPress={jest.fn()}
+      />,
+    );
+    expect(getByText('Upload')).toBeTruthy();
+    expect(stabilizeAutoIds(toJSON())).toMatchSnapshot();
+  });
+
+  it('should throw when showDropAreaText is used with size="variable"', () => {
+    expect(() =>
+      renderWithTheme(
+        <FileUpload
+          uploadType="single"
+          size="variable"
+          label="Upload GST certificate"
+          // @ts-expect-error showDropAreaText is not allowed with size="variable"
+          showDropAreaText={false}
+          fileList={[]}
+          onUploadPress={jest.fn()}
+        />,
+      ),
+    ).toThrow('showDropAreaText can only be used when size is "small", "medium" or "large"');
+  });
+
   it('should render with accessibilityLabel when label is not provided', () => {
     const { getByLabelText, queryByText } = renderWithTheme(
       <FileUpload

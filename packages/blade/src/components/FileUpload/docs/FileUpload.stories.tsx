@@ -227,3 +227,192 @@ CustomPreview.args = {
   isRequired: true,
   necessityIndicator: 'required',
 };
+
+// Mock files for the showcase. Plain objects work on both web and native.
+const createShowcaseFile = (
+  id: string,
+  name: string,
+  size: number,
+  overrides?: Partial<BladeFile>,
+): BladeFile => ({ id, name, size, type: 'application/octet-stream', ...overrides } as BladeFile);
+
+// Keeps its own fileList so remove, dismiss and new selections work in the showcase
+const ShowcaseFileUpload = ({
+  initialFiles = [],
+  ...props
+}: FileUploadProps & { initialFiles?: BladeFileList }): React.ReactElement => {
+  const [files, setFiles] = useState<BladeFileList>(initialFiles);
+  const removeFile = ({ file }: { file: BladeFile }): void =>
+    setFiles((prev) => prev.filter(({ id }) => id !== file.id));
+
+  return (
+    <FileUploadComponent
+      {...props}
+      fileList={files}
+      onChange={({ fileList }) =>
+        setFiles(
+          fileList.map((file) => ({ ...file, status: file.status ?? 'success' } as BladeFile)),
+        )
+      }
+      onRemove={removeFile}
+      onDismiss={removeFile}
+      onReupload={removeFile}
+    />
+  );
+};
+
+const ShowcaseSection = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}): React.ReactElement => (
+  <Box>
+    <Text
+      size="large"
+      weight="semibold"
+      marginBottom="spacing.4"
+      color="feedback.text.information.intense"
+    >
+      {title}
+    </Text>
+    <Box display="flex" flexDirection="column" gap="spacing.7" maxWidth="480px">
+      {children}
+    </Box>
+  </Box>
+);
+
+export const FileUploadShowcase: StoryFn<typeof FileUploadComponent> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.10">
+      <ShowcaseSection title="Sizes">
+        <ShowcaseFileUpload label='size="small"' size="small" uploadType="single" />
+        <ShowcaseFileUpload label='size="medium" (default)' size="medium" uploadType="single" />
+        <ShowcaseFileUpload label='size="large"' size="large" uploadType="single" />
+        <ShowcaseFileUpload
+          label='size="variable"'
+          size="variable"
+          height="160px"
+          uploadType="single"
+        />
+        <ShowcaseFileUpload
+          label='size="variable" with custom text'
+          size="variable"
+          height="160px"
+          actionButtonText="Choose a file"
+          dropAreaText="Drop your invoice here"
+          accept=".pdf"
+          uploadType="single"
+        />
+      </ShowcaseSection>
+
+      <ShowcaseSection title="Drop Area Text">
+        <ShowcaseFileUpload label="Text shown (default)" uploadType="single" />
+        {(['small', 'medium', 'large'] as const).map((size) => (
+          <ShowcaseFileUpload
+            key={size}
+            label={`showDropAreaText={false}, size="${size}"`}
+            size={size}
+            showDropAreaText={false}
+            uploadType="single"
+          />
+        ))}
+      </ShowcaseSection>
+
+      <ShowcaseSection title="Label Position">
+        <ShowcaseFileUpload label="Label on top (default)" uploadType="single" />
+        <ShowcaseFileUpload label="Label on left" labelPosition="left" uploadType="single" />
+        <ShowcaseFileUpload
+          label="Label on left, small"
+          labelPosition="left"
+          size="small"
+          showDropAreaText={false}
+          helpText="SVG, PNG or JPEG up to 1MB"
+          uploadType="single"
+        />
+        <ShowcaseFileUpload
+          accessibilityLabel="Upload document (no visible label)"
+          uploadType="single"
+        />
+      </ShowcaseSection>
+
+      <ShowcaseSection title="States">
+        <ShowcaseFileUpload
+          label="With help text"
+          helpText="Upload .jpg, .jpeg, or .png file only"
+          uploadType="single"
+        />
+        <ShowcaseFileUpload
+          label="Required"
+          isRequired
+          necessityIndicator="required"
+          uploadType="single"
+        />
+        <ShowcaseFileUpload label="Optional" necessityIndicator="optional" uploadType="single" />
+        <ShowcaseFileUpload
+          label="Error"
+          validationState="error"
+          errorText="Please upload a file to continue"
+          uploadType="single"
+        />
+        <ShowcaseFileUpload
+          label="Disabled"
+          isDisabled
+          helpText="Uploads are turned off for this field"
+          uploadType="single"
+        />
+      </ShowcaseSection>
+
+      <ShowcaseSection title="With Files">
+        <ShowcaseFileUpload
+          label='Single upload with a file (uploadType="single")'
+          uploadType="single"
+          initialFiles={[
+            createShowcaseFile('single-1', 'gst-certificate.pdf', 512 * 1024, {
+              status: 'success',
+            }),
+          ]}
+        />
+        <ShowcaseFileUpload
+          label='Multiple upload in every file state (uploadType="multiple")'
+          uploadType="multiple"
+          helpText="You can upload up to 5 files"
+          initialFiles={[
+            createShowcaseFile('multi-1', 'invoice-march.pdf', 1.2 * 1024 * 1024, {
+              status: 'success',
+            }),
+            createShowcaseFile('multi-2', 'invoice-april.pdf', 800 * 1024, {
+              status: 'uploading',
+              uploadPercent: 60,
+            }),
+            createShowcaseFile('multi-3', 'invoice-may.pdf', 3 * 1024 * 1024, {
+              status: 'error',
+              errorText: 'File is larger than 2MB',
+            }),
+          ]}
+        />
+        <ShowcaseFileUpload
+          label='Multiple upload with files, size="small"'
+          size="small"
+          showDropAreaText={false}
+          uploadType="multiple"
+          initialFiles={[
+            createShowcaseFile('small-1', 'logo.svg', 24 * 1024, { status: 'success' }),
+            createShowcaseFile('small-2', 'logo-dark.svg', 26 * 1024, { status: 'success' }),
+          ]}
+        />
+      </ShowcaseSection>
+    </Box>
+  );
+};
+
+FileUploadShowcase.storyName = 'Showcase - All Variants';
+FileUploadShowcase.parameters = {
+  docs: {
+    description: {
+      story:
+        'Every FileUpload variant in one place: sizes, drop area text, label positions, states, and single or multiple uploads with files in each upload state.',
+    },
+  },
+};
