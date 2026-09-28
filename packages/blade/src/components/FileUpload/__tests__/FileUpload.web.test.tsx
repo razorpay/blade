@@ -138,14 +138,14 @@ describe('<FileUpload />', () => {
     expect(container.querySelector('[data-comp="f"]')).toHaveStyle({ height: '32px' });
   });
 
-  it('should hide the drop area text with showDropAreaText={false}', async () => {
+  it('should hide the drop area text when dropAreaText is an empty string', async () => {
     const { container, queryByText, getByText, getByLabelText } = renderWithTheme(
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
         accept="image/*"
         name="single-file-upload-input"
-        showDropAreaText={false}
+        dropAreaText=""
       />,
     );
     expect(queryByText('Drag files here or')).not.toBeInTheDocument();
@@ -163,7 +163,7 @@ describe('<FileUpload />', () => {
         label="Logo"
         accept="image/*"
         name="logo-upload-input"
-        showDropAreaText={false}
+        dropAreaText=""
       />,
     );
     expect(container).toMatchSnapshot();
@@ -185,19 +185,33 @@ describe('<FileUpload />', () => {
     expect(container).not.toHaveTextContent('null');
   });
 
-  it('should throw when showDropAreaText is used with size="variable"', () => {
+  it('should render a custom dropAreaText on small, medium and large sizes', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <FileUpload uploadType="single" label="Logo" dropAreaText="Drop your logo here or" />,
+    );
+    expect(getByText('Drop your logo here or')).toBeInTheDocument();
+    expect(queryByText('Drag files here or')).not.toBeInTheDocument();
+  });
+
+  it('should hide the drop area text for size="variable" when dropAreaText is an empty string', () => {
+    const { queryByText, getByText } = renderWithTheme(
+      <FileUpload uploadType="single" size="variable" label="Documents" dropAreaText="" />,
+    );
+    expect(queryByText('Drag and drop your files here')).not.toBeInTheDocument();
+    expect(getByText('Upload')).toBeInTheDocument();
+  });
+
+  it('should throw when actionButtonText is used without size="variable"', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() =>
       renderWithTheme(
         <FileUpload
           uploadType="single"
-          size="variable"
           label="Upload GST certificate"
-          // @ts-expect-error showDropAreaText is not allowed with size="variable"
-          showDropAreaText={false}
+          actionButtonText="Choose file"
         />,
       ),
-    ).toThrow('showDropAreaText can only be used when size is "small", "medium" or "large"');
+    ).toThrow('actionButtonText can only be used when size is "variable"');
     mockConsoleError.mockRestore();
   });
 

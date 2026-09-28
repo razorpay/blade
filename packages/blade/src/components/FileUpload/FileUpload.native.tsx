@@ -4,7 +4,6 @@ import type {
   FileUploadProps,
   BladeFile,
   BladeFileList,
-  FileUploadStandardSizeProps,
   FileUploadVariableSizeProps,
 } from './types';
 import type { BladeElementRef } from '~utils/types';
@@ -74,6 +73,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     maxCount,
     maxSize,
     size = 'medium',
+    dropAreaText,
     _motionMeta,
     ...rest
   }: FileUploadProps,
@@ -81,12 +81,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 ): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const variableSizeRest = rest as FileUploadVariableSizeProps;
-  const { actionButtonText, dropAreaText, height, width, ...styledRest } = variableSizeRest;
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  const standardSizeRest = rest as FileUploadStandardSizeProps;
-  const { showDropAreaText } = standardSizeRest;
+  const { actionButtonText, height, width, ...styledRest } = variableSizeRest;
   const isSizeVariable = size === 'variable';
-  const shouldShowDropAreaText = isSizeVariable || showDropAreaText !== false;
+  // An empty string hides the drop area text and leaves only the upload action
+  const shouldShowDropAreaText = dropAreaText !== '';
   const hasLoggedUnsupportedPropsRef = useRef(false);
 
   // onChange is web selection semantics; on native, consumers update fileList after their picker.
@@ -94,23 +92,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   void _name;
 
   if (__DEV__) {
-    if (isSizeVariable && showDropAreaText !== undefined) {
+    if (!isSizeVariable && actionButtonText) {
       throwBladeError({
-        message: 'showDropAreaText can only be used when size is "small", "medium" or "large"',
-        moduleName: 'FileUpload',
-      });
-    }
-
-    if (!isSizeVariable && (actionButtonText || dropAreaText)) {
-      const propName =
-        actionButtonText && dropAreaText
-          ? 'actionButtonText and dropAreaText'
-          : dropAreaText
-          ? 'dropAreaText'
-          : 'actionButtonText';
-
-      throwBladeError({
-        message: `${propName} can only be used when size is "variable"`,
+        message: 'actionButtonText can only be used when size is "variable"',
         moduleName: 'FileUpload',
       });
     }
@@ -367,7 +351,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                           : fileUploadColorTokens.text.default
                       }
                     >
-                      {isSizeVariable ? dropAreaText ?? 'Tap to upload your files' : 'Tap to'}{' '}
+                      {dropAreaText ?? (isSizeVariable ? 'Tap to upload your files' : 'Tap to')}{' '}
                     </Text>
                   ) : null}
 

@@ -8,8 +8,8 @@ The FileUpload component is used to handle file attachments, including drag-and-
 
 ## Important Constraints
 
-- Custom text props (`actionButtonText`, `dropAreaText`) and dimensions (`height`, `width`) can only be used when `size` is "variable"
-- `showDropAreaText` can only be used when `size` is "small", "medium" or "large" (not "variable")
+- The custom action text prop (`actionButtonText`) and dimensions (`height`, `width`) can only be used when `size` is "variable"
+- `dropAreaText` works with every size. Pass `dropAreaText=""` to hide the drop area text
 
 Make sure to only follow structure as given in the examples below. Fragments are also not allowed as children in these components.
 
@@ -144,19 +144,14 @@ type FileUploadProps = {
   size?: 'small' | 'medium' | 'large' | 'variable';
 
   /**
-   * Shows the "Drag files here or" text before the upload action.
-   * Set to `false` to show only the upload action. Works only when `size` is not "variable".
-   * @default true
-   */
-  showDropAreaText?: boolean;
-
-  /**
    * Custom text for the upload action button. Works only when `size="variable"`.
    */
   actionButtonText?: string;
 
   /**
-   * Custom text for the drag and drop area. Works only when `size="variable"`.
+   * Text shown in the drop area before the upload action. Works with every size.
+   * Pass an empty string (`""`) to hide it and show only the upload action.
+   * @default 'Drag files here or' ('Drag and drop your files here' when size="variable")
    */
   dropAreaText?: string;
 
@@ -255,14 +250,13 @@ type FileUploadItemProps = {
 - Use `maxSize` and `maxCount` to enforce upload limits with clear validation feedback.
 - Use controlled mode (`fileList` prop) when you need to manage upload progress and status externally.
 - Use `uploadType="multiple"` when users need to attach several files at once.
-- Use `size="small"` with `showDropAreaText={false}` for compact upload fields, such as a logo field in a settings panel. The upload action always shows an upload icon.
+- Use `size="small"` with `dropAreaText=""` for compact upload fields, such as a logo field in a settings panel. The upload action always shows an upload icon.
 - Manage the actual file upload to your server — the component only handles selection and validation.
 
 **Don't**
 
 - Don't expect automatic server uploads — the component manages selection and UI, not network requests.
-- Don't use `actionButtonText`, `dropAreaText`, or custom `height`/`width` unless `size="variable"` — they only work with that size.
-- Don't use `showDropAreaText` with `size="variable"` — it only works with "small", "medium" and "large".
+- Don't use `actionButtonText` or custom `height`/`width` unless `size="variable"` — they only work with that size.
 - Don't use React Fragments as children.
 - Don't use `FileUpload` for simple single-file inputs in chat — use `ChatInput` which has integrated file handling.
 - Don't forget to handle `onRemove` and `onReupload` callbacks for proper file lifecycle management.

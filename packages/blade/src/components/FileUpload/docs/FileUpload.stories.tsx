@@ -305,13 +305,18 @@ export const FileUploadShowcase: StoryFn<typeof FileUploadComponent> = () => {
       </ShowcaseSection>
 
       <ShowcaseSection title="Drop Area Text">
-        <ShowcaseFileUpload label="Text shown (default)" uploadType="single" />
+        <ShowcaseFileUpload label="Default text" uploadType="single" />
+        <ShowcaseFileUpload
+          label='Custom text: dropAreaText="Drop your logo here or"'
+          dropAreaText="Drop your logo here or"
+          uploadType="single"
+        />
         {(['small', 'medium', 'large'] as const).map((size) => (
           <ShowcaseFileUpload
             key={size}
-            label={`showDropAreaText={false}, size="${size}"`}
+            label={`Hidden: dropAreaText="", size="${size}"`}
             size={size}
-            showDropAreaText={false}
+            dropAreaText=""
             uploadType="single"
           />
         ))}
@@ -324,7 +329,7 @@ export const FileUploadShowcase: StoryFn<typeof FileUploadComponent> = () => {
           label="Label on left, small"
           labelPosition="left"
           size="small"
-          showDropAreaText={false}
+          dropAreaText=""
           helpText="SVG, PNG or JPEG up to 1MB"
           uploadType="single"
         />
@@ -402,7 +407,7 @@ export const FileUploadShowcase: StoryFn<typeof FileUploadComponent> = () => {
         <ShowcaseFileUpload
           label='Multiple upload with files, size="small"'
           size="small"
-          showDropAreaText={false}
+          dropAreaText=""
           uploadType="multiple"
           initialFiles={[
             createShowcaseFile('small-1', 'logo.svg', 24 * 1024, { status: 'success' }),
