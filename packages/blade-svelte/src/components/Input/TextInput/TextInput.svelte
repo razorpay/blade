@@ -69,9 +69,17 @@
   // grouping pattern), so the pattern isn't frozen at mount time.
   const formatter = $derived(format ? createFormattedInput({ pattern: format, onChange }) : null);
 
-  // Formatted display value (only used when `format` is set); seeded once.
+  // Display value while `format` is set. Without `format` it still mirrors the
+  // raw typed/seeded text so a pattern that arrives later (e.g. after network
+  // detection) has something to re-format; BaseInput owns the DOM value until
+  // then, and its template effect would blank the field before we could read it.
+  // Strip first: a prefill may already carry delimiters ("4111 1111 …"), and
+  // `format()` copies raw chars positionally, so spaces would eat digit slots.
   let formattedValue = $state(
-    untrack(() => (formatter ? formatter.formatValue(value ?? defaultValue ?? '') : '')),
+    untrack(() => {
+      const seed = value ?? defaultValue ?? '';
+      return formatter ? formatter.formatValue(stripPatternCharacters(seed)) : seed;
+    }),
   );
 
   // In controlled `format` mode the parent's `value` is the source of truth, so
@@ -143,6 +151,7 @@
         baseInput?.getInput() ?? null,
       );
     } else {
+      formattedValue = v ?? '';
       onChange?.(payload);
     }
   };
