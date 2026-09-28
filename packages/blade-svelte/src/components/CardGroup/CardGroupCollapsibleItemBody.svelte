@@ -17,7 +17,10 @@
   );
 </script>
 
-<CollapsibleBody _hasMargin={false} {...rest}>
+<!-- Collapsible's inner wrapper is `align-items: flex-start`, which shrink-wraps
+     this body to its content; width="100%" keeps the divider and background
+     full-bleed (the trigger row gets the same from .cardGroupItem). -->
+<CollapsibleBody width="100%" _hasMargin={false} {...rest}>
   <div class={templateClasses.cardGroupCollapsibleBody} {...metaAttrs}>
     {#if typeof content === 'string'}
       {content}

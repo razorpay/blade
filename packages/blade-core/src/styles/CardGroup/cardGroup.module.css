@@ -140,17 +140,6 @@
   transform: rotate(180deg);
 }
 
-/* --- CardGroupCollapsibleItem --- */
-/* Collapsible's inner wrapper is `display: flex; align-items: flex-start`, which
-   shrink-wraps the trigger and body to their content width. Force every layer
-   down to the body to span the row so dividers and backgrounds are full-bleed. */
-.cardGroupCollapsibleItem,
-.cardGroupCollapsibleItem > *,
-.cardGroupCollapsibleItem > * > *,
-.cardGroupCollapsibleItem > * > * > * {
-  width: 100%;
-}
-
 /* --- CardGroupCollapsibleItemBody --- */
 /* Owns the full-bleed divider separating the revealed content from the trigger row.
    Subtle background sets the revealed content apart from the rows around it. */
