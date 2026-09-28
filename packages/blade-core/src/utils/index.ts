@@ -33,3 +33,4 @@ export * from './useId';
 export * from './cardTicketOutline';
 export * from './cx';
 export * from './mergeStyleOverride';
+export * from './breakpoint';
