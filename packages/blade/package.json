@@ -130,9 +130,7 @@
     "chromatic": "npx chromatic",
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
-    "generate-docs-lockfile": "node ./scripts/generateDocsLockFile.mjs",
-    "generate-icons": "node ./scripts/generateIcons.mjs",
-    "fetch-icons": "node ./scripts/getSvgFromFigma.js"
+    "generate-docs-lockfile": "node ./scripts/generateDocsLockFile.mjs"
   },
   "dependencies": {
     "@babel/runtime": "7.28.3",
@@ -264,11 +262,9 @@
     "metro-react-native-babel-preset": "0.76.7",
     "moniker": "0.1.2",
     "motion": "11.12.0",
-    "node-plop": "0.32.0",
     "npm-run-all": "4.1.5",
     "outdent": "0.8.0",
     "playwright": "1.52.0",
-    "plop": "3.1.1",
     "postinstall-postinstall": "2.1.0",
     "ramda": "0.29.1",
     "react": "18.2.0",
@@ -293,7 +289,6 @@
     "storybook": "10.2.16",
     "style-dictionary": "3.7.1",
     "styled-components": "5.3.5",
-    "svgson": "5.3.1",
     "tsc-alias": "^1.8.8",
     "typescript": "4.9",
     "vite": "^6.0.0",

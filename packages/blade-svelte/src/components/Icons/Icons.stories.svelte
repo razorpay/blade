@@ -1,50 +1,23 @@
 <script context="module">
   import { defineMeta } from '@storybook/addon-svelte-csf';
-  // Stroked Icons
-  import { ArrowLeftIcon } from './ArrowLeftIcon';
-  import { CheckIcon } from './CheckIcon';
-  import { CloseIcon } from './CloseIcon';
+  import { iconMap } from './iconMap';
   import { CreditCardIcon } from './CreditCardIcon';
-  import { InfoIcon } from './InfoIcon';
-  import { MailIcon } from './MailIcon';
-  import { MailOpenIcon } from './MailOpenIcon';
-  import { PlusIcon } from './PlusIcon';
-  import { SearchIcon } from './SearchIcon';
-  import { WhatsAppIcon } from './WhatsAppIcon';
-  // Filled Icons
-  import { MoreFilledIcon } from './MoreFilledIcon';
-  // Branded Icons
   import { RazorpayTrustIcon } from './RazorpayTrustIcon';
   import Text from '../Typography/Text/Text.svelte';
 
-  // Icon maps for dynamic rendering
-  const strokedIcons = {
-    ArrowLeftIcon,
-    CheckIcon,
-    CloseIcon,
-    CreditCardIcon,
-    InfoIcon,
-    MailIcon,
-    MailOpenIcon,
-    PlusIcon,
-    SearchIcon,
-    WhatsAppIcon,
-  };
+  const pickIcons = (predicate) =>
+    Object.fromEntries(
+      Object.entries(iconMap).filter(
+        ([name, IconComponent]) => IconComponent && predicate(name),
+      ),
+    );
 
-  const filledIcons = {
-    MoreFilledIcon,
-  };
-
-  // Branded icons keep their own colors/gradients and ignore the `color` prop.
-  const brandedIcons = {
-    RazorpayTrustIcon,
-  };
-
-  const allIcons = {
-    ...strokedIcons,
-    ...filledIcons,
-    ...brandedIcons,
-  };
+  const filledIcons = pickIcons((name) => name.includes('FilledIcon'));
+  const strokedIcons = pickIcons((name) => !name.includes('FilledIcon'));
+  // Branded icons keep their own colors/gradients, ignore the `color` prop, and are
+  // intentionally not part of the generic `iconMap` icon picker.
+  const brandedIcons = { RazorpayTrustIcon };
+  const allIcons = { ...pickIcons(() => true), ...brandedIcons };
 
   const { Story } = defineMeta({
     title: 'Components/Icons',
@@ -87,93 +60,50 @@
   });
 </script>
 
-<script>
-  // Components are already imported in module context
-</script>
+<!--
+  Mirrors the React Icons stories grid: icons take the story args (size defaults to
+  `medium`, same as React) so both Storybooks render at identical dimensions.
+-->
+{#snippet iconGrid(icons, args)}
+  <div style="display: flex; flex-wrap: wrap;">
+    {#each Object.entries(icons) as [name, IconComponent] (name)}
+      <div
+        style="display: inline-flex; flex-direction: column; align-items: center; gap: var(--spacing-6); height: 95px; width: 125px;"
+      >
+        <IconComponent {...args} />
+        <div style="width: 90%; text-align: center;">
+          <Text size="xsmall" color="surface.text.gray.muted" truncateAfterLines={1}>
+            {name}
+          </Text>
+        </div>
+      </div>
+    {/each}
+  </div>
+{/snippet}
 
 <!-- Default Icon Story - Playground -->
 <Story name="Icon" />
 
-<!-- Stroked Icons -->
-<Story name="StrokedIcons" asChild>
-  <div class="display-flex flex-wrap">
-    {#each Object.entries(strokedIcons) as [name, IconComponent]}
-      <div
-        class="display-inline-flex flex-col items-center gap-y-spacing-4"
-        style="height: 95px; width: 125px;"
-      >
-        <svelte:component this={IconComponent} size="large" color="surface.icon.gray.normal" />
-        <Text
-          size="xsmall"
-          color="surface.text.gray.muted"
-          truncateAfterLines={1}
-        >
-          {name}
-        </Text>
-      </div>
-    {/each}
-  </div>
+<Story name="StrokedIcons">
+  {#snippet template(args)}
+    {@render iconGrid(strokedIcons, args)}
+  {/snippet}
 </Story>
 
-<!-- Filled Icons -->
-<Story name="FilledIcons" asChild>
-  <div class="display-flex flex-wrap">
-    {#each Object.entries(filledIcons) as [name, IconComponent]}
-      <div
-        class="display-flex flex-col items-center gap-y-spacing-6"
-        style="height: 95px; width: 125px;"
-      >
-        <svelte:component this={IconComponent} size="large" color="surface.icon.gray.normal" />
-        <Text
-          size="xsmall"
-          color="surface.text.gray.muted"
-          truncateAfterLines={1}
-        >
-          {name}
-        </Text>
-      </div>
-    {/each}
-  </div>
+<Story name="FilledIcons">
+  {#snippet template(args)}
+    {@render iconGrid(filledIcons, args)}
+  {/snippet}
 </Story>
 
-<!-- Branded Icons -->
-<Story name="BrandedIcons" asChild>
-  <div class="display-flex flex-wrap">
-    {#each Object.entries(brandedIcons) as [name, IconComponent]}
-      <div
-        class="display-flex flex-col items-center gap-y-spacing-6"
-        style="height: 95px; width: 125px;"
-      >
-        <svelte:component this={IconComponent} size="large" />
-        <Text
-          size="xsmall"
-          color="surface.text.gray.muted"
-          truncateAfterLines={1}
-        >
-          {name}
-        </Text>
-      </div>
-    {/each}
-  </div>
+<Story name="BrandedIcons">
+  {#snippet template(args)}
+    {@render iconGrid(brandedIcons, args)}
+  {/snippet}
 </Story>
 
-<!-- All Icons -->
-<Story name="AllIcons" asChild>
-  <div class="display-flex flex-wrap">
-    {#each Object.entries(allIcons) as [name, IconComponent]}
-      <div
-        class="display-flex flex-col items-center gap-y-spacing-3"
-        style="height: 95px; width: 125px;"
-      >
-        <svelte:component this={IconComponent} size="large" color="surface.icon.gray.normal" />
-        <Text
-          size="xsmall"
-          color="surface.text.gray.muted"
-          truncateAfterLines={1}
-        >
-          {name}
-        </Text>
-      </div>
-    {/each}
-  </div>
+<Story name="AllIcons">
+  {#snippet template(args)}
+    {@render iconGrid(allIcons, args)}
+  {/snippet}
 </Story>
