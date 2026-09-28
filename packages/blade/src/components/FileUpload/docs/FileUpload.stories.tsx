@@ -249,11 +249,8 @@ const ShowcaseFileUpload = ({
     <FileUploadComponent
       {...props}
       fileList={files}
-      onChange={({ fileList }) =>
-        setFiles(
-          fileList.map((file) => ({ ...file, status: file.status ?? 'success' } as BladeFile)),
-        )
-      }
+      // Keep the File objects as they are: spreading a web File drops its name and size
+      onChange={({ fileList }) => setFiles(fileList)}
       onRemove={removeFile}
       onDismiss={removeFile}
       onReupload={removeFile}
@@ -371,6 +368,16 @@ export const FileUploadShowcase: StoryFn<typeof FileUploadComponent> = () => {
           initialFiles={[
             createShowcaseFile('single-1', 'gst-certificate.pdf', 512 * 1024, {
               status: 'success',
+            }),
+          ]}
+        />
+        <ShowcaseFileUpload
+          label="Single upload with a failed file (re-upload or remove it)"
+          uploadType="single"
+          initialFiles={[
+            createShowcaseFile('single-error-1', 'pan-card.png', 4 * 1024 * 1024, {
+              status: 'error',
+              errorText: 'File is larger than 2MB',
             }),
           ]}
         />
