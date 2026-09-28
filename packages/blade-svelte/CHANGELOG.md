@@ -1,5 +1,33 @@
 # @razorpay/blade-svelte
 
+## 0.19.0
+
+### Minor Changes
+
+- 384e09627: feat(blade-svelte): add all Blade icons
+
+  blade-svelte now ships the full Blade icon set (452 icons), generated from the same source as the React package. `iconMap` and the `Icons` export list are generated too, so new icons land in both packages from a single `yarn generate-icons` run. Adds the `G`, `Rect`, `Circle`, `Defs` and `ClipPath` SVG primitives needed by a handful of icons.
+
+  **Breaking change to `iconMap`:** `RazorpayTrustIcon` is no longer a key in the exported `iconMap` (it is excluded via `ICON_MAP_EXCLUDES` in the generator, matching the React package's behaviour). The component itself is still exported from `index.ts`; only the `iconMap` entry is removed. Consumers accessing `iconMap.RazorpayTrustIcon` will now get `undefined` — use the direct import instead.
+
+- 7c457ef30: feat(blade-svelte): add `useBreakpoint()` as the Svelte equivalent of React Blade's `useBreakpoint`
+
+  `BladeProvider` now tracks the matched viewport breakpoint once and exposes it through context.
+  Call `useBreakpoint()` inside the provider tree to read `{ matchedBreakpoint, matchedDeviceType }`
+  reactively. `ToastContainer` and typography platform selection now consume the same source, so a
+  single breakpoint crossing flips both together.
+
+  `blade-core` gains framework-agnostic helpers under `utils`: `getMediaQuery`, `getBreakpointQueries`,
+  `getDeviceType`, and `subscribeToBreakpoint`.
+
+  During SSR the device type now resolves to `desktop` (matching React Blade) instead of `mobile`.
+
+### Patch Changes
+
+- 1af4bb8c8: feat(blade-svelte): add `countrySelectorMode` prop to `PhoneNumberInput` to render the country selector as a `bottomsheet` (default), `dropdown`, or `auto` (dropdown on desktop, bottom sheet on mobile)
+- Updated dependencies [7c457ef30]
+  - @razorpay/blade-core@0.20.0
+
 ## 0.18.0
 
 ### Minor Changes
