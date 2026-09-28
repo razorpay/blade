@@ -12,7 +12,7 @@ feat(TreeView): show a Tooltip or Popover when hovering a `TreeViewItem`
 
 Both open to the right of the row by default. Pass one or the other; if both are passed, `popover` wins and a dev warning is logged.
 
-Moving the pointer from row to row swaps overlays without an overlap: opening a tooltip or popover closes the one that is open, and the replaced one disappears at once instead of fading out under the new one.
+Moving the pointer from row to row switches overlays in place: opening a tooltip or popover closes the one that is open without fading it out, and a popover that replaces another one appears without fading in. Only the first overlay of a hover streak fades in, and only the last one fades out.
 
 **Tooltip:** tooltips in the same delay group (every Tooltip under `BladeProvider`) now switch the same way, as floating-ui recommends. The tooltip that is replaced disappears immediately; the first tooltip still fades in, and the last one still fades out.
 

@@ -1075,36 +1075,73 @@ describe('tooltip and popover on items', () => {
       );
     });
 
-    it('should close a popover without the hover delay when the pointer moves to another row', async () => {
-      const user = userEvents.setup();
-      const onOpenChange = jest.fn();
-      const { getByRole, findByRole } = renderWithTheme(
-        <TreeView>
-          <TreeViewItem
-            title="Payment Success"
-            value="payment-success"
-            popover={{ title: 'Payment Success', content: <p>Success preview</p>, onOpenChange }}
-          />
-          <TreeViewItem title="Exit Payment" value="exit-payment" />
-        </TreeView>,
-      );
+    // user-event does not set relatedTarget on pointer moves (browsers do), and jsdom has no
+    // PointerEvent: a move from one row onto another is dispatched as a MouseEvent named pointerout.
+    // React derives both the pointerleave of `from` and the pointerenter of `to` from it
+    const movePointer = (from: HTMLElement, to: HTMLElement): void => {
+      const event = new MouseEvent('pointerout', { bubbles: true, relatedTarget: to });
+      Object.defineProperty(event, 'pointerType', { value: 'mouse' });
+      act(() => {
+        from.dispatchEvent(event);
+      });
+    };
 
-      await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
+    // the transition Popover's content fades in with (useTransitionStyles, applied through a
+    // styled-components class, so it is read from the computed style)
+    const getOpenTransitionDuration = (dialog: HTMLElement): string | undefined =>
+      [dialog, ...Array.from(dialog.querySelectorAll<HTMLElement>('*'))]
+        .map((element) => window.getComputedStyle(element).transitionDuration)
+        .find(Boolean);
+
+    it('should switch to the next popover in place, without animating either one', async () => {
+      const user = userEvents.setup();
+      const { getByRole, findByRole, getAllByRole } = renderWithTheme(switchingTree);
+      const success = getByRole('treeitem', { name: 'Payment Success' });
+      const retry = getByRole('treeitem', { name: 'Retry Payment' });
+
+      await user.hover(success);
+      // the first popover of a hover streak fades in as usual
+      await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('200ms'));
       await findByRole('dialog');
 
-      // user-event does not set relatedTarget on pointer moves (browsers do), and jsdom has no
-      // PointerEvent, so the move from one row onto the other is dispatched as a MouseEvent named
-      // pointerout: React derives the row's pointerleave from it, relatedTarget included
-      act(() => {
-        getByRole('treeitem', { name: 'Payment Success' }).dispatchEvent(
-          new MouseEvent('pointerout', {
-            bubbles: true,
-            relatedTarget: getByRole('treeitem', { name: 'Exit Payment' }),
-          }),
+      movePointer(success, retry);
+      // replaced in the same update: never two popovers, and the old one does not fade out
+      const dialogs = getAllByRole('dialog');
+      expect(dialogs).toHaveLength(1);
+      expect(dialogs[0]).toHaveTextContent('Retry preview');
+      // ...and the new one appears in place instead of fading in
+      await waitFor(() => expect(getOpenTransitionDuration(dialogs[0])).toBe('0ms'));
+    });
+
+    it('should close a popover sooner when the pointer moves to a row without an overlay', async () => {
+      jest.useFakeTimers();
+      try {
+        const user = userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
+        const onOpenChange = jest.fn();
+        const { getByRole, findByRole } = renderWithTheme(
+          <TreeView>
+            <TreeViewItem
+              title="Payment Success"
+              value="payment-success"
+              popover={{ title: 'Payment Success', content: <p>Success preview</p>, onOpenChange }}
+            />
+            <TreeViewItem title="Exit Payment" value="exit-payment" />
+          </TreeView>,
         );
-      });
-      // synchronous: no 160ms "the pointer may be heading to the popover" delay
-      expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: false });
+        const success = getByRole('treeitem', { name: 'Payment Success' });
+
+        await user.hover(success);
+        await findByRole('dialog');
+
+        movePointer(success, getByRole('treeitem', { name: 'Exit Payment' }));
+        // before the 160ms "the pointer may be heading to the popover" delay
+        act(() => {
+          jest.advanceTimersByTime(100);
+        });
+        expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: false });
+      } finally {
+        jest.useRealTimers();
+      }
     });
 
     it('should replace a tooltip with the next one without an overlap', async () => {

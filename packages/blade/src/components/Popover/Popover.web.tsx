@@ -52,6 +52,7 @@ const _Popover = ({
   initialFocusRef,
   openInteraction = 'click',
   _shouldManageFocus = true,
+  _shouldAnimateOpen = true,
   maxWidth,
   ...rest
 }: PopoverProps): React.ReactElement => {
@@ -98,7 +99,9 @@ const _Popover = ({
   const computedIsHorizontal = computedSide === 'left' || computedSide === 'right';
   const animationOffset = isOppositeAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
-    duration: theme.motion.duration.quick,
+    duration: _shouldAnimateOpen
+      ? theme.motion.duration.quick
+      : { open: 0, close: theme.motion.duration.quick },
     initial: {
       opacity: 0,
       transform: `translate${computedIsHorizontal ? 'X' : 'Y'}(${animationOffset}px)`,

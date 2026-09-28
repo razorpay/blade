@@ -80,6 +80,15 @@ type PopoverProps = {
    */
   _shouldManageFocus?: boolean;
   /**
+   * Whether the popover fades and slides in when it opens. TreeView turns it off when a hover
+   * preview replaces another one that is still showing, so previews switch in place instead of
+   * fading out and in again (the closing animation is unaffected)
+   *
+   * @default true
+   * @private
+   */
+  _shouldAnimateOpen?: boolean;
+  /**
    * Sets the maximum width of the popover content
    *
    * @default 328px on desktop, 288px on mobile

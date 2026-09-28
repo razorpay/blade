@@ -92,10 +92,12 @@ const TreeViewItemTooltip = ({
 const TreeViewItemPopover = ({
   popover,
   isOpen,
+  shouldAnimateOpen,
   onOpenChange,
 }: {
   popover: NonNullable<TreeViewItemProps['popover']>;
   isOpen: boolean;
+  shouldAnimateOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
 }): React.ReactElement => {
   return (
@@ -108,6 +110,7 @@ const TreeViewItemPopover = ({
       // whole tree from assistive tech (modal), or put focus guards and an `aria-owns` inside the
       // row, which renames the row after the popover's content (non-modal)
       _shouldManageFocus={false}
+      _shouldAnimateOpen={shouldAnimateOpen}
       isOpen={isOpen}
       onOpenChange={({ isOpen }) => onOpenChange(isOpen)}
     >
@@ -136,12 +139,18 @@ const TreeViewItemPopover = ({
 const TreeViewItemPopoverGroupMember = ({
   isOpen,
   onReplaced,
+  isAnotherOverlayOpenRef,
 }: {
   isOpen: boolean;
   /**
    * Called when another tooltip / popover opened and this one has to go at once
    */
   onReplaced: () => void;
+  /**
+   * Kept up to date with whether another tooltip / popover of the group is showing right now.
+   * A popover opening while one is showing replaces it, so it appears in place without animating
+   */
+  isAnotherOverlayOpenRef: React.MutableRefObject<boolean>;
 }): null => {
   const groupId = useId('treeview-item-popover');
   const onReplacedRef = React.useRef(onReplaced);
@@ -151,7 +160,7 @@ const TreeViewItemPopoverGroupMember = ({
       onReplacedRef.current();
     }
   }, []);
-  useDelayGroup(
+  const { currentId } = useDelayGroup(
     // useDelayGroup only reads `open`, `onOpenChange` and `floatingId` from the context; the
     // open state is owned by TreeViewItem (TreeViewItemPopover's Popover is controlled)
     ({
@@ -161,6 +170,8 @@ const TreeViewItemPopoverGroupMember = ({
     } as unknown) as FloatingContext,
     { id: groupId },
   );
+  // the group's `currentId` is the member that is showing (it is cleared once that one closes)
+  isAnotherOverlayOpenRef.current = currentId !== null && currentId !== groupId;
 
   return null;
 };
@@ -194,6 +205,9 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   const [isPopoverMounted, setIsPopoverMounted] = React.useState(false);
   // mirrors isPopoverOpen for the delayed close, which runs after the render it was scheduled in
   const isPopoverOpenRef = React.useRef(false);
+  // a popover that replaces another tooltip / popover appears in place, without fading in
+  const [shouldAnimatePopoverOpen, setShouldAnimatePopoverOpen] = React.useState(true);
+  const isAnotherOverlayOpenRef = React.useRef(false);
   const popoverCloseTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
   const itemFirstRowHeight = getItemFirstRowHeight(theme, size);
 
@@ -238,6 +252,9 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     if (isOpen === isPopoverOpenRef.current) {
       return;
     }
+    if (isOpen) {
+      setShouldAnimatePopoverOpen(!isAnotherOverlayOpenRef.current);
+    }
     isPopoverOpenRef.current = isOpen;
     setIsPopoverOpen(isOpen);
     props.popover?.onOpenChange?.({ isOpen });
@@ -250,21 +267,19 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   // The popover content is rendered in a portal, but it is still a React child of this row, so
   // React fires the row's pointerenter / pointerleave for it too: the pointer can travel from the
   // row onto the popover without closing it. The delay bridges the gap between the two.
-  // When the pointer left for another row, it is not heading to the popover: close right away
+  // When the pointer left for another row it is not heading to the popover, so the delay is
+  // shorter. It is not zero: if that row opens a popover or tooltip, it replaces this one in
+  // place (see TreeViewItemPopoverGroupMember) instead of this one fading out under it
   const schedulePopoverClose = (event: React.PointerEvent): void => {
     cancelPopoverClose();
     const nextElement = event.relatedTarget;
-    if (
+    const isLeavingForAnotherRow =
       nextElement instanceof Element &&
-      nextElement.closest('[role="treeitem"]') &&
-      !event.currentTarget.contains(nextElement)
-    ) {
-      handlePopoverOpenChange(false);
-      return;
-    }
+      Boolean(nextElement.closest('[role="treeitem"]')) &&
+      !event.currentTarget.contains(nextElement);
     popoverCloseTimeoutRef.current = setTimeout(
       () => handlePopoverOpenChange(false),
-      theme.motion.delay.xquick,
+      isLeavingForAnotherRow ? theme.motion.delay['2xquick'] : theme.motion.delay.xquick,
     );
   };
 
@@ -337,11 +352,16 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
         <TreeViewItemPopover
           popover={props.popover}
           isOpen={isPopoverOpen}
+          shouldAnimateOpen={shouldAnimatePopoverOpen}
           onOpenChange={handlePopoverOpenChange}
         />
       ) : null}
       {props.popover ? (
-        <TreeViewItemPopoverGroupMember isOpen={isPopoverOpen} onReplaced={closePopoverInstantly} />
+        <TreeViewItemPopoverGroupMember
+          isOpen={isPopoverOpen}
+          onReplaced={closePopoverInstantly}
+          isAnotherOverlayOpenRef={isAnotherOverlayOpenRef}
+        />
       ) : null}
       <TreeViewChevron
         state={chevronState}
