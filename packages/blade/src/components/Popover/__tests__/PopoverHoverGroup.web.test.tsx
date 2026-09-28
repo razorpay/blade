@@ -49,17 +49,19 @@ describe('<Popover openInteraction="hover" /> in the tooltip delay group', () =>
     await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('200ms'));
 
     await user.hover(getByRole('button', { name: 'Retry' }));
+    // the replaced popover does not fade out under the new one...
     await waitFor(
       () => {
         const dialogs = getAllByRole('dialog');
-        // the replaced popover does not fade out under the new one...
         expect(dialogs).toHaveLength(1);
         expect(dialogs[0]).toHaveTextContent('Retry preview');
-        // ...and the new one appears in place instead of fading in
-        expect(getOpenTransitionDuration(dialogs[0])).toBe('0ms');
       },
       { timeout: REPLACED_OVERLAY_TIMEOUT },
     );
+    // ...and the new one appears in place instead of fading in. Its transition styles are applied
+    // on the next animation frame, so this waits the default timeout: it checks the value, not
+    // how quickly it arrives
+    await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('0ms'));
   });
 
   it('should switch between a tooltip and a hover popover in place', async () => {
