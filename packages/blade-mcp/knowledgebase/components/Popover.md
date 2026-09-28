@@ -70,7 +70,14 @@ type PopoverProps = {
    * Sets the maximum width of the popover content
    * @default 328px on desktop, 288px on mobile
    */
-  maxWidth?: SpacingValueType | 'auto' | 'none' | 'initial' | 'fit-content' | 'max-content' | 'min-content';
+  maxWidth?:
+    | SpacingValueType
+    | 'auto'
+    | 'none'
+    | 'initial'
+    | 'fit-content'
+    | 'max-content'
+    | 'min-content';
   /**
    * The ref of the element that should receive focus when the popover opens.
    *
@@ -120,6 +127,7 @@ type PopoverInteractiveWrapperProps = {
 - Use `PopoverInteractiveWrapper` when the trigger is a non-interactive element (icon, badge, etc.).
 - Use `placement` to position relative to the trigger — auto-flips at viewport edges.
 - Use `title` and `footer` props for structured popover layout with header and actions.
+- Use `openInteraction="hover"` for previews the pointer rests on (e.g. a list where each item shows a preview). Hover popovers share one group with every `Tooltip`: moving the pointer from one to the next switches them in place (no fade out and in), and they do not trap focus or hide the rest of the page from screen readers. Click popovers are not part of that group.
 
 **Don't**
 
