@@ -258,9 +258,10 @@ const readDocProps = (name) => {
 };
 
 // ---- compare ----
+// index.md is the human/agent-facing list of components, not a component doc.
 const docFiles = fs
   .readdirSync(componentsDocsDir)
-  .filter((file) => file.endsWith('.md'))
+  .filter((file) => file.endsWith('.md') && file !== 'index.md')
   .map((file) => file.replace(/\.md$/, ''))
   .filter((name) => selectedComponents.length === 0 || selectedComponents.includes(name));
 
