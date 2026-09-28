@@ -23,7 +23,7 @@ Update an existing Blade component (web only) using Figma designs and knowledgeb
 ### Step 1: Gather Component Information
 
 1. **Read the knowledgebase documentation**:
-   - Path: `packages/blade-mcp/knowledgebase/components/<ComponentName>.md`
+   - Path: `packages/blade-plugin/skills/blade/references/components/<ComponentName>.md`
    - Contains: TypeScript types, props, and usage examples
 
 2. **Read the existing component implementation**:
@@ -99,7 +99,7 @@ Follow this order:
 2. **Update constants** (`constants.ts`) - Add new defaults or constants
 3. **Update web implementation** (`*.web.tsx`) - Implement the changes
 4. **Update exports** (`index.ts`) - Export new types/components if needed
-5. **Update knowledgebase** (`packages/blade-mcp/knowledgebase/components/<ComponentName>.md`)
+5. **Update knowledgebase** (`packages/blade-plugin/skills/blade/references/components/<ComponentName>.md`)
 6. **Update stories** (`*.stories.tsx`) - Add Storybook examples for new features
 
 ### Step 5: Check for Errors

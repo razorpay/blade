@@ -578,7 +578,11 @@ import {
 | YoutubeIcon | YouTube video platform logo |
 | ZapIcon | Lightning bolt for quick actions or energy |
 | ZoomInIcon | Magnifying glass with plus for zoom in |
-| ZoomOutIcon | Magnifying glass with minus for zoom out |",
+| ZoomOutIcon | Magnifying glass with minus for zoom out |
+
+
+---
+Note: Blade MCP is in maintenance mode. The same docs ship as the \`blade\` skill in the Blade Claude Code plugin (https://github.com/razorpay/blade/tree/master/packages/blade-plugin); prefer the skill when it is installed.",
       "type": "text",
     },
   ],
@@ -1163,7 +1167,11 @@ import {
 | YoutubeIcon | YouTube video platform logo |
 | ZapIcon | Lightning bolt for quick actions or energy |
 | ZoomInIcon | Magnifying glass with plus for zoom in |
-| ZoomOutIcon | Magnifying glass with minus for zoom out |",
+| ZoomOutIcon | Magnifying glass with minus for zoom out |
+
+
+---
+Note: Blade MCP is in maintenance mode. The same docs ship as the \`blade\` skill in the Blade Claude Code plugin (https://github.com/razorpay/blade/tree/master/packages/blade-plugin); prefer the skill when it is installed.",
       "type": "text",
     },
   ],

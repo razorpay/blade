@@ -1,5 +1,5 @@
 import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { analyticsToolCallEventName } from '../utils/tokens.js';
+import { analyticsToolCallEventName, PLUGIN_MIGRATION_NOTICE } from '../utils/tokens.js';
 import { getPackageJSONVersion } from '../utils/generalUtils.js';
 import { sendAnalytics } from '../utils/analyticsUtils.js';
 
@@ -13,6 +13,8 @@ Here's what I can help you with:
 • 🛠️ Build UIs fast — try: "Create a Dashboard layout with Sidebar, Avatar Menu, and a main content area with a breadcrumb"
 • 📚 Learn components — ask: "How do I use the OTPInput component?"
 • ...and much more!
+
+${PLUGIN_MIGRATION_NOTICE}
 
 Happy vibe coding! 💙
 `;

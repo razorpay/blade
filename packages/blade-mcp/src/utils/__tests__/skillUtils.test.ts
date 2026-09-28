@@ -21,7 +21,7 @@ describe('skillUtils', () => {
     });
 
     const makeSkillFile = (dir: string, content: string): void => {
-      const skillDir = path.join(dir, '.agents/skills/ui-code-guidelines');
+      const skillDir = path.join(dir, '.agents/skills/blade');
       fs.mkdirSync(skillDir, { recursive: true });
       fs.writeFileSync(path.join(skillDir, 'SKILL.md'), content);
     };
