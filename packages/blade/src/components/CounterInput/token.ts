@@ -1,5 +1,10 @@
 import { size as sizeTokens, spacing, border } from '~tokens/global';
 
+// Figma draws the container stroke inside the frame without taking layout space, so the
+// buttons sit 4px from the outer edge. In code the border takes real space, so the
+// outer button margins subtract the border width to keep that same 4px visual gap.
+const BUTTON_OUTER_MARGIN = spacing[2] - border.width.thin;
+
 export const COUNTER_INPUT_ICON_SIZE_MAP = {
   xsmall: 'small',
   small: 'medium',
@@ -16,16 +21,16 @@ export const COUNTER_INPUT_SIZE_TO_TEXT_SIZE = {
 
 export const COUNTER_INPUT_TOKEN = {
   width: {
-    xsmall: sizeTokens[78],
-    small: sizeTokens[86],
-    medium: sizeTokens[94],
-    large: sizeTokens[122],
+    xsmall: sizeTokens[76],
+    small: sizeTokens[84],
+    medium: sizeTokens[92],
+    large: sizeTokens[120],
   },
   height: {
-    xsmall: sizeTokens[30],
-    small: sizeTokens[34],
-    medium: sizeTokens[38],
-    large: sizeTokens[50],
+    xsmall: sizeTokens[28],
+    small: sizeTokens[32],
+    medium: sizeTokens[36],
+    large: sizeTokens[48],
   },
 
   containerBorderRadius: {
@@ -41,8 +46,8 @@ export const COUNTER_INPUT_TOKEN = {
     large: border.radius.small,
   },
 
-  decrementIconMargin: [spacing[2], spacing[0], spacing[2], spacing[2]],
-  incrementIconMargin: [spacing[2], spacing[2], spacing[2], spacing[0]],
+  decrementIconMargin: [BUTTON_OUTER_MARGIN, spacing[0], BUTTON_OUTER_MARGIN, BUTTON_OUTER_MARGIN],
+  incrementIconMargin: [BUTTON_OUTER_MARGIN, BUTTON_OUTER_MARGIN, BUTTON_OUTER_MARGIN, spacing[0]],
 
   iconPadding: {
     xsmall: spacing[2],

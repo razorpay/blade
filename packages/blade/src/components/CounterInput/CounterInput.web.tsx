@@ -280,7 +280,15 @@ const _CounterInput = React.forwardRef<BladeElementRef, CounterInputProps>(
                 _isDisabled ? emphasisTokens.disabledBorderColor : emphasisTokens.borderColor
               }
             >
-              <BaseBox display="flex" alignItems="center" flexDirection="row">
+              {/* Fill the container so the buttons stay pinned to its edges when the value is
+                  narrower than the container's min width, matching Figma */}
+              <BaseBox
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+                flexDirection="row"
+                width="100%"
+              >
                 <StyledCounterButton
                   className="__blade-counter-input-decrement-button"
                   onClick={handleDecrement}
