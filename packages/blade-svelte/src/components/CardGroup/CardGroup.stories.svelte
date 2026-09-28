@@ -33,8 +33,8 @@
   import { WalletIcon } from '../Icons/WalletIcon';
   import { MoreHorizontalIcon } from '../Icons/MoreHorizontalIcon';
   import { LockIcon } from '../Icons/LockIcon';
-  import { CheckCircleIcon } from '../Icons/CheckCircleIcon';
   import { CircleIcon } from '../Icons/CircleIcon';
+  import { CheckCircle2Icon } from '../Icons/CheckCircle2Icon';
 
   let selected = $state('cards');
   let paymentOption = $state<'full' | 'part'>('full');
@@ -183,7 +183,7 @@
         {/snippet}
         {#snippet trailing()}
           {#if paymentOption === 'full'}
-            <CheckCircleIcon size="medium" color="surface.icon.gray.normal" />
+            <CheckCircle2Icon size="medium" color="surface.icon.gray.normal" />
           {:else}
             <CircleIcon size="medium" color="surface.icon.gray.muted" />
           {/if}
@@ -197,7 +197,7 @@
         {/snippet}
         {#snippet trailing()}
           {#if paymentOption === 'part'}
-            <CheckCircleIcon size="medium" color="surface.icon.gray.normal" />
+            <CheckCircle2Icon size="medium" color="surface.icon.gray.normal" />
           {:else}
             <CircleIcon size="medium" color="surface.icon.gray.muted" />
           {/if}
