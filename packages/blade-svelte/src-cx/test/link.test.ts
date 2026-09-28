@@ -128,30 +128,3 @@ describe('Link', () => {
     });
   });
 });
-
-describe('Button variant="link"', () => {
-  it('is a button that wears the same look as Link', () => {
-    const { getByTestId } = render(LinkHarness, {
-      props: { color: 'neutral', size: 'small' },
-    });
-    const action = getByTestId('action') as HTMLButtonElement;
-    const link = getByTestId('link');
-    expect(action.tagName).toBe('BUTTON');
-    expect(action.type).toBe('button');
-
-    // The same look, save the display: Link is `inline` to wrap with its
-    // sentence, the button `inline-flex` to take only its content's width.
-    const look = link.className
-      .replace(/ ml-2$/, '')
-      .split(' ')
-      .filter((name) => name !== 'inline');
-    for (const name of look) {
-      expect(action.className.split(' ')).toContain(name);
-    }
-    expectClass(link, 'inline');
-    expectClass(action, 'inline-flex');
-    // None of the box classes leak into the link variant.
-    expect(action.className.split(' ')).not.toContain('flex');
-    expect(action.className).not.toMatch(/\bh-\d|bg-interactive|rounded-small/);
-  });
-});

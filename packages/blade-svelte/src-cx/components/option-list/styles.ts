@@ -1,14 +1,12 @@
-import type { Component, Snippet } from 'svelte';
-import type {
-  OptionListValidationState,
-  OptionState,
-} from '../../runes/option-list/list.svelte';
+import type { Snippet } from 'svelte';
+import type { OptionListValidationState } from '../../runes/option-list/list.svelte';
+import type { OptionState } from '../../runes/option-list/context';
 import type { AxisValue } from '../../axes';
 import { FIELD_HINT, FIELD_HINT_TONE, FIELD_LABEL } from '../shared/field';
 
 export type { OptionListValidationState, OptionState };
 
-/** The parts of one row; the list owns the row, the `item` snippet its content. */
+/** The parts of one row; the OptionItem owns the row, its props or `children` its content. */
 export interface OptionRowClasses {
   /** The label around the control and the content. */
   row: string;
@@ -44,7 +42,7 @@ export interface OptionListClasses extends OptionRowClasses {
   /** The box the rows sit in. */
   options: string;
   /**
-   * `virtualize`: the root gets a bounded height from the caller's `class`
+   * VirtualOptionList: the root gets a bounded height from the caller's `class`
    * and lays out as a column; the viewport scrolls and carries the frame,
    * so it does not scroll away; the rows' box inside it goes frameless.
    */
@@ -57,19 +55,30 @@ export interface OptionListClasses extends OptionRowClasses {
 /** Style props in, the parts out. */
 export type OptionListStyleResolver<P> = (props: P) => OptionListClasses;
 
-/** The usual content of a row; `OptionListItem` types itself by this. */
-export interface OptionListItemBehaviourProps {
-  title: string;
+/** What an OptionList hands its OptionItems. */
+export interface OptionListShared {
+  classes: OptionRowClasses;
+  /** The list's test id: each item's control gets `${testID}-${index}`. */
+  testID?: string;
+}
+
+/** The usual content of a row: what OptionItem lays out when it has no `children`. */
+export interface OptionItemContentProps {
+  title?: string;
   description?: string;
   leading?: string | Snippet;
   trailing?: string | Snippet;
-  testID?: string;
-  class?: string;
 }
 
-export type OptionListItemComponent<P> = Component<
-  OptionListItemBehaviourProps & P
->;
+/** The parts of an OptionItem's usual content. */
+export interface OptionItemClasses {
+  root: string;
+  leading: string;
+  text: string;
+  title: string;
+  description: string;
+  trailing: string;
+}
 
 /** The blade taxonomy as data. */
 export const OPTION_LIST_AXES = {
@@ -185,3 +194,19 @@ export const resolveOptionList: OptionListStyleResolver<
     hintTone: FIELD_HINT_TONE,
   };
 };
+
+/** One look: the row decides the colours, the content only lays out. */
+export function resolveOptionItem(): OptionItemClasses {
+  return {
+    root: 'flex w-full min-w-0 items-center gap-3',
+    // Blade's ActionList item: the leading icon is
+    // `interactive.icon.gray.normal` — the row's text colour, so it inherits.
+    leading: 'flex shrink-0 items-center',
+    text: 'flex min-w-0 flex-1 flex-col',
+    // No colour of its own: the row's pick state colours the title.
+    title: 'truncate text-100 leading-100',
+    description: 'text-75 leading-50 text-interactive-gray-muted',
+    trailing:
+      'flex shrink-0 items-center text-75 leading-50 text-interactive-gray-muted',
+  };
+}

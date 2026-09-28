@@ -29,10 +29,8 @@
       {#snippet children(offer)}
         <div class="p-1">
           <Card variant="secondary">
-            {#snippet body()}
-              <Text weight="semibold">{offer.title}</Text>
-              <Text size="small" color="muted">{offer.note}</Text>
-            {/snippet}
+            <Text weight="semibold">{offer.title}</Text>
+            <Text size="small" color="muted">{offer.note}</Text>
           </Card>
         </div>
       {/snippet}

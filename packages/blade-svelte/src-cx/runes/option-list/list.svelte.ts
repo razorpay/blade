@@ -1,182 +1,25 @@
-import {
-  createNavigableList,
-  type KeyModifiers,
-} from '../base/navigable-list.svelte';
-import { nativeOptionState } from '../base/option-list';
-import { sameSelection, type Compare } from '../base/selection';
-import { setupField, type FieldModel } from '../form/field.svelte';
+import { createChoiceList, type ChoiceEntry } from '../base/choice-list.svelte';
+import { sameSelection } from '../base/selection';
+import { setupField } from '../form/field.svelte';
 import { createFieldLine } from '../form/field-line.svelte';
 import {
   visibleFieldError,
   type FieldHint,
   type ValidationState,
 } from '../form/hint';
-
-export interface OptionChoiceOptions<T> {
-  /** The options in order; what the keyboard walks. */
-  items?: () => readonly T[];
-  /** Enables typeahead: the text a typed prefix is matched against. */
-  typeahead?: (option: T) => string;
-  /** The value is an array of picks instead of one pick or null. */
-  multiple?: () => boolean;
-  compare?: Compare<T>;
-  isOptionDisabled?: (option: T, index: number) => boolean;
-  /** Single choice: picking the picked option clears it. */
-  deselectable?: () => boolean;
-  disabled?: () => boolean;
-}
-
-export interface OptionChoiceModel<T> {
-  /**
-   * One user pick on a row. The field pipeline runs and the field counts as
-   * visited — a change is the visit. Returns whether the option is picked
-   * afterwards, which is what its control must show; it differs from what
-   * the platform toggled when the pick was refused (disabled, or a single
-   * choice that may not be cleared), and the anatomy writes it back.
-   */
-  toggle(option: T, index: number, onValue?: (value: unknown) => void): boolean;
-  /** Reads the field's value: tracked by whatever reads it. */
-  isSelected(option: T): boolean;
-  isDisabled(option: T, index: number): boolean;
-  /** Attributes a native row carries; see `nativeOptionState`. */
-  optionState(option: T, index: number): Record<string, string>;
-  /** The row the keyboard is on; -1 before the list was entered. Tracked. */
-  activeIndex(): number;
-  /** Focus landed on a row (Tab, a click): the keyboard continues from it. */
-  setActive(index: number): void;
-  /**
-   * The list's one tab stop: the active row, else the first picked row,
-   * else the first enabled one.
-   */
-  tabStop(): number;
-  /**
-   * One key for every choice, single or multiple: arrows, Home, End, PageUp
-   * and PageDown move the active row and pick nothing; Enter and Space pick
-   * the active row exactly as a click would; a printable key is typeahead
-   * when the list has a `typeahead` text. Returns whether the key was the
-   * list's — the anatomy then prevents the platform default, which for
-   * radios would pick as it moves and for Enter would submit the form.
-   */
-  handleKey(
-    key: string,
-    mods?: KeyModifiers,
-    onValue?: (value: unknown) => void
-  ): boolean;
-}
-
-const same = <T>(a: T, b: T): boolean => a === b;
-
-/**
- * A choice among visible options over a form field — one pick or many. The
- * rows are native radios or checkboxes, which own the keyboard, so unlike
- * `createOptionListCore` there is no selection store here: the field owns
- * the value.
- */
-export function createOptionChoice<T>(
-  field: FieldModel,
-  options: OptionChoiceOptions<T> = {}
-): OptionChoiceModel<T> {
-  const compare = options.compare || same;
-  const items = (): readonly T[] => options.items?.() ?? [];
-  const isMultiple = (): boolean => Boolean(options.multiple?.());
-
-  function picks(): T[] {
-    const value = field.record.value;
-    if (Array.isArray(value)) {
-      return value as T[];
-    }
-    return value === null || value === undefined ? [] : [value as T];
-  }
-
-  const isSelected = (option: T): boolean =>
-    picks().some((pick) => compare(pick, option));
-  const isDisabled = (option: T, index: number): boolean =>
-    Boolean(options.disabled?.() || options.isOptionDisabled?.(option, index));
-
-  const list = createNavigableList<T>({
-    items,
-    isDisabled: (option, index) => isDisabled(option, index),
-    typeahead: options.typeahead,
-  });
-
-  function toggle(
-    option: T,
-    index: number,
-    onValue?: (value: unknown) => void
-  ): boolean {
-    if (!isDisabled(option, index)) {
-      field.updateValue(next(option), onValue);
-      field.touch();
-    }
-    return isSelected(option);
-  }
-
-  function next(option: T): unknown {
-    const picked = isSelected(option);
-    if (isMultiple()) {
-      return picked
-        ? picks().filter((pick) => !compare(pick, option))
-        : [...picks(), option];
-    }
-    if (picked) {
-      return options.deselectable?.() ? null : field.record.value;
-    }
-    return option;
-  }
-
-  return {
-    isSelected,
-    isDisabled,
-    toggle,
-    activeIndex: list.activeIndex,
-    setActive: list.setActive,
-    tabStop() {
-      if (list.activeIndex() >= 0 && list.activeIndex() < items().length) {
-        return list.activeIndex();
-      }
-      const enabled = list.enabledIndices();
-      const picked = enabled.find((index) => isSelected(items()[index] as T));
-      return picked ?? enabled[0] ?? -1;
-    },
-    handleKey(key, mods, onValue) {
-      const action = list.keyAction(key, mods);
-      if (!action || action === 'open' || action === 'close') {
-        return false;
-      }
-      if (action === 'type') {
-        list.type(key);
-        return true;
-      }
-      if (action === 'select') {
-        const option = list.active();
-        if (option === undefined) {
-          return false;
-        }
-        toggle(option, list.activeIndex(), onValue);
-        return true;
-      }
-      list.move(action);
-      return true;
-    },
-    optionState: (option, index) =>
-      nativeOptionState(isSelected(option), isDisabled(option, index)),
-  };
-}
+import type { OptionListContext } from './context';
 
 /** A pick is made or missing: there is no success state to show. */
 export type OptionListValidationState = Exclude<ValidationState, 'success'>;
 
-/** What a row learns about its option. */
-export interface OptionState {
-  index: number;
-  isSelected: boolean;
-  isDisabled: boolean;
-}
-
-export interface OptionListOptions<T> {
+export interface OptionListOptions<T, Shared> {
   /** The host's `$props.id()`: the label and hint ids hang off it. */
   id: string;
-  options: () => readonly T[];
+  /**
+   * The options as data (a virtual list). Without it the options are the
+   * OptionItems that register inside the list, in document order.
+   */
+  options?: () => readonly T[];
   value: () => T | readonly T[] | null | undefined;
   /** The bindable write: every accepted value, user pick or not. */
   onValue: (value: T | readonly T[] | null) => void;
@@ -185,8 +28,12 @@ export interface OptionListOptions<T> {
   isMultiple: () => boolean;
   /** Defaults to identity; pass it when options are rebuilt objects. */
   compare?: (a: T, b: T) => boolean;
+  /** Data only: registered items say it themselves. */
   isOptionDisabled?: (option: T, index: number) => boolean;
-  /** Enables typeahead: the text a typed prefix is matched against. Fixed at mount. */
+  /**
+   * Data only: enables typeahead, the text a typed prefix is matched
+   * against. Fixed at mount. Registered items match their text.
+   */
   optionText?: (option: T) => string;
   isDeselectable: () => boolean;
   name: () => string | undefined;
@@ -194,11 +41,11 @@ export interface OptionListOptions<T> {
   isDisabled: () => boolean;
   validationState: () => OptionListValidationState | undefined;
   hint: () => string | undefined;
+  /** Handed to every item as is. */
+  shared: () => Shared;
 }
 
-export interface OptionList<T> {
-  /** Radios share it: the prop, else the id. */
-  readonly name: string;
+export interface OptionList<T, Shared> extends OptionListContext<T, Shared> {
   readonly labelId: string;
   readonly hintId: string;
   /** The one line under the options and the state it puts the list in. */
@@ -210,27 +57,22 @@ export interface OptionList<T> {
   readonly isKeyboardFocused: boolean;
   /** The model's one tab stop. */
   readonly tabStop: number;
-  stateOf(option: T, index: number): OptionState;
   /** The one tab stop among the mounted rows `start` to `end - 1`. */
   stopWithin(start: number, end: number): number;
-  /** A row's pick. Returns whether the option is picked afterwards. */
-  toggle(option: T, index: number, event: Event): boolean;
-  /** Focus landed on a row (Tab, a click): the keyboard continues from it. */
-  setActive(index: number): void;
-  handleKeyDown(event: KeyboardEvent): void;
+  /** On the root: a pointer press hides the keyboard ring until a key. */
   handlePointerDown(): void;
-  handleFocusIn(): void;
-  handleFocusOut(): void;
 }
 
 /**
  * The option list behaviour: one form field holding one pick or an array
- * of them, the keyboard over the rows, and the one tab stop. Call during
- * component initialisation.
+ * of them, the keyboard over the rows, and the one tab stop — the
+ * headless choice list (`base/choice-list`) as native radio and checkbox
+ * rows. Call during component initialisation; the component provides the
+ * result to its OptionItems (`provideOptionList`).
  */
-export function createOptionList<T>(
-  options: OptionListOptions<T>
-): OptionList<T> {
+export function createOptionList<T, Shared>(
+  options: OptionListOptions<T, Shared>
+): OptionList<T, Shared> {
   const sameOption = (a: T, b: T) =>
     options.compare ? options.compare(a, b) : a === b;
   // The field stores one item or an array of them.
@@ -252,12 +94,12 @@ export function createOptionList<T>(
     }
   );
   const optionText = options.optionText;
-  const model = createOptionChoice<T>(field, {
+  const model = createChoiceList<T>(field, {
     items: options.options,
     typeahead: optionText && ((option) => optionText(option) ?? ''),
     multiple: options.isMultiple,
     compare: sameOption,
-    isOptionDisabled: (option, index) =>
+    isItemDisabled: (option, index) =>
       Boolean(options.isOptionDisabled?.(option, index)),
     deselectable: options.isDeselectable,
     disabled: options.isDisabled,
@@ -285,6 +127,35 @@ export function createOptionList<T>(
 
   const tabStop = $derived(model.tabStop());
 
+  // Single choice rows are native radios of one group, and the browser
+  // tabs into a group at its checked member only (or anywhere when none
+  // is checked): so while the pick is mounted it must hold the stop, or
+  // Tab skips the list. Otherwise the model's stop (the active row) when
+  // it is mounted — a virtual list mounts a slice — else the first
+  // enabled row in view, so the keyboard continues from where the user
+  // is looking.
+  function stopWithin(start: number, end: number): number {
+    const items = model.items();
+    if (!options.isMultiple()) {
+      for (let index = start; index < end; index += 1) {
+        if (model.isSelected(items[index] as T)) {
+          return index;
+        }
+      }
+    }
+    if (tabStop >= start && tabStop < end) {
+      return tabStop;
+    }
+    for (let index = start; index < end; index += 1) {
+      if (!model.isDisabled(items[index] as T, index)) {
+        return index;
+      }
+    }
+    return start;
+  }
+  // Registered items are all mounted: one stop among them all.
+  const stop = $derived(stopWithin(0, model.items().length));
+
   function commit(next: unknown) {
     const value = next as T | readonly T[] | null;
     options.onValue(value);
@@ -292,6 +163,12 @@ export function createOptionList<T>(
   }
 
   return {
+    get shared() {
+      return options.shared();
+    },
+    get kind() {
+      return options.isMultiple() ? 'checkbox' : 'radio';
+    },
     get name() {
       return options.name() ?? options.id;
     },
@@ -312,6 +189,9 @@ export function createOptionList<T>(
     get tabStop() {
       return tabStop;
     },
+    register: (entry: ChoiceEntry<T>) => model.register(entry),
+    reorder: () => model.reorder(),
+    indexOf: (entry) => model.indexOf(entry),
     stateOf(option, index) {
       return {
         index,
@@ -319,32 +199,9 @@ export function createOptionList<T>(
         isDisabled: model.isDisabled(option, index),
       };
     },
-    // Single choice rows are native radios of one group, and the browser
-    // tabs into a group at its checked member only (or anywhere when none
-    // is checked): so while the pick is mounted it must hold the stop, or
-    // Tab skips the list. Otherwise the model's stop (the active row) when
-    // it is mounted — a virtual list mounts a slice — else the first
-    // enabled row in view, so the keyboard continues from where the user
-    // is looking.
-    stopWithin(start, end) {
-      const items = options.options();
-      if (!options.isMultiple()) {
-        for (let index = start; index < end; index += 1) {
-          if (model.isSelected(items[index] as T)) {
-            return index;
-          }
-        }
-      }
-      if (tabStop >= start && tabStop < end) {
-        return tabStop;
-      }
-      for (let index = start; index < end; index += 1) {
-        if (!model.isDisabled(items[index] as T, index)) {
-          return index;
-        }
-      }
-      return start;
-    },
+    isActive: (index) => hasFocus && byKeyboard && index === activeIndex,
+    isTabStop: (index) => index === stop,
+    stopWithin,
     toggle(option, index, event) {
       let changed = false;
       const shown = model.toggle(option, index, (next) => {

@@ -13,6 +13,13 @@ export interface MenuClasses extends PopoverClasses {
 
 export type MenuStyleResolver<P> = (props: P) => MenuClasses;
 
+/** What a Menu hands its MenuItems. */
+export interface MenuShared {
+  classes: MenuClasses;
+  /** The Menu's `onSelect`, for an item with a `value`. */
+  onSelect: (value: unknown) => void;
+}
+
 /** One look: no style axes yet. */
 export type MenuStyleProps = Record<never, never>;
 export const MENU_AXES = {} as const;

@@ -16,8 +16,9 @@ release dismisses after a downward fling or past half the sheet's height,
 otherwise it settles back; `onDismiss` reports the source `'drag'`. A sheet
 with `isDismissible={false}` resists and settles. It is always at the
 bottom — `placement` applies to a modal with no look. The drag zone is the
-handle strip plus the header (the close button stays outside it, and a press
-on something interactive in a custom title still clicks); the gesture maths is the pure `createSheetDrag` in `runes/layer`.
+handle strip plus the header (a press on the close button, or on something
+interactive in the header, still clicks: the drag captures only once it
+moves); the gesture maths is the pure `createSheetDrag` in `runes/layer`.
 On native the platform sheet does its own drag and handle.
 
 `adaptive` makes it that sheet on phones and a modal on desktop: one
@@ -38,10 +39,10 @@ one (`openModal({ look: bottomSheetLook, adaptive: true })`).
 | `isDismissible` | `false` ignores the backdrop, Escape and back; the close button still closes |
 | `onBack` | The content may own back: `true` handled, `false` cede (closes even when not dismissible), `undefined` no opinion |
 | `role` | `modal` (default) or `alertdialog` |
-| `title`, `header` | `title` is a string or a snippet and names the modal either way; `header` is the rest of the header under it (a subtitle). Both sit in the component's padded header |
+| `title`, `header` | `title` is a string (Blade's 16px semibold header type) or a snippet, and names the modal either way; `header` is the rest of the header under it — a subtitle, a back button, a badge — as content |
 | `body`, `children` | `body` renders in the component's padded, scrolling container; `children` render raw, owning their box, and win when both are given. Each receives `{ close }` for the content's own actions |
 | `footer` | The component's padded footer: actions in a row |
-| `closeLabel` | The close button's localized name — the library ships no copy. No label, no button |
+| `closeLabel` | The close button's name, default `Close`. The button shows while the modal is dismissible, as in Blade: in the header, or floating at the top edge when there is none |
 | `accessibilityLabel`, `testID`, `class` | The only escape hatches; `class` is merged last onto the panel |
 
 ## Layers

@@ -3,83 +3,104 @@
   import { cx } from '../../cx';
   import { resolveCard, type CardStyleProps } from './styles';
 
-  // The sections are padding and hairlines only; what goes in them is the
-  // caller's. Raw `children` skip them all and own their box, as a modal's do.
   type Props = CardStyleProps & {
     /**
-     * Makes the whole card one button. Its content must then hold no control
-     * of its own — a button inside a button is not valid.
+     * Makes the card clickable: a button laid over it, so links and buttons
+     * inside the card stay usable.
      */
-    onPress?: (event: MouseEvent) => void;
+    onClick?: (event: MouseEvent) => void;
+    /** Makes the card a link, laid over it the same way. */
+    href?: string;
+    target?: string;
+    /** @default 'noreferrer noopener' with `target="_blank"` */
+    rel?: string;
+    /** Blade's 2px primary ring; the surface drops its rim. @default false */
+    isSelected?: boolean;
+    /** No overlay, no ring; beats `isSelected`. @default false */
     isDisabled?: boolean;
-    /** Names the card: a `group`, or the button's name. */
+    /**
+     * `label`: the card is a `<label>`, for a visually hidden radio or
+     * checkbox inside it whose checked state drives `isSelected`.
+     */
+    as?: 'label';
+    /** Names the card, or its overlay when it is clickable or a link. */
     accessibilityLabel?: string;
     testID?: string;
     class?: string;
-    /** The padded top section, a hairline under it. */
+    /** Blade's CardHeader: over a hairline, 12px either side of it. */
     header?: Snippet;
-    /** The padded middle section. Ignored when `children` is given. */
-    body?: Snippet;
-    /** The padded bottom section, a hairline over it. */
+    /** Blade's CardFooter: under a hairline, 12px either side of it. */
     footer?: Snippet;
-    /** Raw content: no section, no padding — the content owns its box. */
+    /** The body, between them. */
     children?: Snippet;
   };
 
   let {
-    onPress,
+    onClick,
+    href,
+    target,
+    rel,
+    isSelected = false,
     isDisabled = false,
+    as,
     accessibilityLabel,
     testID,
     class: className = '',
     header,
-    body,
     footer,
     children,
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolveCard(styleProps));
+  const selected = $derived(isSelected && !isDisabled);
+  const classes = $derived(resolveCard(styleProps, selected));
+  const linkRel = $derived(
+    rel ?? (target === '_blank' ? 'noreferrer noopener' : undefined)
+  );
 </script>
 
-<!-- Spans, so the sections are valid inside the pressable card's button. -->
-{#snippet sections()}
-  {#if header}
-    <span class={classes.header}>{@render header()}</span>
-  {/if}
-  {#if children}
-    {@render children()}
-  {:else if body}
-    <span class={classes.body}>{@render body()}</span>
-  {/if}
-  {#if footer}
-    <span class={classes.footer}>{@render footer()}</span>
-  {/if}
-{/snippet}
-
-{#if onPress}
-  <button
-    type="button"
-    class={cx(classes.root, classes.pressable, className)}
-    disabled={isDisabled}
-    aria-label={accessibilityLabel}
-    data-testid={testID}
-    onclick={(event) => {
-      // The platform drops clicks on a disabled button; a synthetic one is not.
-      if (!isDisabled) {
-        onPress(event);
-      }
-    }}
-  >
-    {@render sections()}
-  </button>
-{:else}
-  <div
-    class={cx(classes.root, className)}
-    role={accessibilityLabel ? 'group' : undefined}
-    aria-label={accessibilityLabel}
-    data-testid={testID}
-  >
-    {@render sections()}
+<svelte:element
+  this={as ?? 'div'}
+  class={cx(
+    classes.root,
+    classes.ring[selected ? 'selected' : 'none'],
+    isDisabled && classes.disabled,
+    className
+  )}
+  role={!as && accessibilityLabel && !href && !onClick ? 'group' : undefined}
+  aria-label={as || (!href && !onClick) ? accessibilityLabel : undefined}
+  aria-disabled={isDisabled ? 'true' : undefined}
+  data-testid={testID}
+>
+  <div class={classes.surface}>
+    {#if !isDisabled && href}
+      <a
+        {href}
+        {target}
+        rel={linkRel}
+        class={classes.overlay}
+        aria-label={accessibilityLabel}
+        data-card-overlay
+        onclick={(event) => onClick?.(event)}
+      ></a>
+    {:else if !isDisabled && onClick}
+      <button
+        type="button"
+        class={classes.overlay}
+        aria-label={accessibilityLabel}
+        aria-pressed={isSelected}
+        data-card-overlay
+        onclick={(event) => onClick(event)}
+      ></button>
+    {/if}
+    <div class={classes.content}>
+      {#if header}
+        <div class={classes.header}>{@render header()}</div>
+      {/if}
+      {@render children?.()}
+      {#if footer}
+        <div class={classes.footer}>{@render footer()}</div>
+      {/if}
+    </div>
   </div>
-{/if}
+</svelte:element>

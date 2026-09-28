@@ -1,97 +1,56 @@
-import type { AxisValue } from '../../axes';
-import type { AmountPartKind } from '../../runes/amount/amount';
-import { cx } from '../../cx';
-import { COLOR, TEXT_AXES } from '../shared/typography';
-
 /**
- * The parts of an Amount. The number is split into typed parts; the classes
- * decide how the currency and the decimals differ from the integer.
+ * The parts of an Amount, as Blade lays them out: a sign, the currency
+ * before or after the number, the integer, and the decimals that may be
+ * subtle, all on one baseline. Size, weight, colour and face are the
+ * surrounding text's: an Amount only decides the formatting.
  */
 export interface AmountClasses {
   /** `class` from the caller lands here. */
   root: string;
-  /** Applied to the root of a struck-through (old) amount. */
-  struck: string;
   /** Visually hides the whole text, which is what a screen reader gets. */
   text: string;
-  /** Wraps the visual parts, so they can be laid out. */
+  /** Wraps the visual parts: a baseline row. */
   parts: string;
-  part: Record<AmountPartKind, string>;
+  sign: string;
+  /** The currency, keyed by its side. */
+  currency: Record<'prefix' | 'suffix', string>;
+  /** The integer, and the decimals and compact suffix when they are not an affix. */
+  value: string;
+  /** Subtle decimals. */
+  decimals: string;
 }
 
-export type AmountStyleResolver<P> = (props: P) => AmountClasses;
+/** The second argument: whether the amount has fixed decimals (`suffix: 'decimals'`), the only affix besides the currency. */
+export type AmountStyleResolver<P> = (
+  props: P,
+  hasDecimals?: boolean
+) => AmountClasses;
 
-/** The blade taxonomy as data. */
-export const AMOUNT_AXES = {
-  size: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge'],
-  weight: TEXT_AXES.weight,
-  color: TEXT_AXES.color,
-  affix: ['subtle', 'normal'],
-} as const;
-
-type Axis<K extends keyof typeof AMOUNT_AXES> = AxisValue<
-  typeof AMOUNT_AXES,
-  K
->;
-
-/**
- * Derived from AMOUNT_AXES: add a value there, never here. `size`, `weight`
- * and `color` have no default: unset, the amount takes the surrounding text's.
- */
 export interface AmountStyleProps {
-  size?: Axis<'size'>;
-  weight?: Axis<'weight'>;
-  color?: Axis<'color'>;
-  /** `subtle`: the currency and the decimals are smaller and lighter. */
-  affix?: Axis<'affix'>;
+  /**
+   * The currency and the decimals smaller (0.75em) and at 64% opacity.
+   * @default true
+   */
+  isAffixSubtle?: boolean;
 }
 
-// The top three are heading sizes: a total is often the page's headline.
-const SIZE: Record<Axis<'size'>, string> = {
-  xsmall: 'text-25 leading-50',
-  small: 'text-75 leading-50',
-  medium: 'text-100 leading-100',
-  large: 'text-200 leading-200',
-  xlarge: 'text-400 leading-400',
-  '2xlarge': 'text-500 leading-500',
-};
-
-const WEIGHT: Record<Axis<'weight'>, string> = {
-  regular: 'font-regular',
-  medium: 'font-medium',
-  semibold: 'font-semibold',
-};
-
-// Relative, so one rule serves every size.
-const AFFIX: Record<Axis<'affix'>, string> = {
-  subtle: '[font-size:0.75em] opacity-800',
-  normal: '',
-};
+// Relative, so it follows whatever text the amount sits in.
+const AFFIX = '[font-size:0.75em] opacity-800';
 
 export const resolveAmount: AmountStyleResolver<AmountStyleProps> = (
-  props: AmountStyleProps = {}
+  props: AmountStyleProps = {},
+  hasDecimals = true
 ) => {
-  const { size, weight, color, affix = 'subtle' } = props;
+  const { isAffixSubtle = true } = props;
+  const affix = isAffixSubtle ? AFFIX : '';
   return {
-    root: cx(
-      'inline-flex items-baseline whitespace-pre font-text tabular-nums',
-      size && SIZE[size],
-      weight && WEIGHT[weight],
-      color && COLOR[color]
-    ),
-    struck: 'line-through',
+    root: 'inline-flex',
     text: 'sr-only',
-    // A flex row on one baseline, so the smaller currency and decimals
-    // bottom out with the integer's digits (`items-end` would align the
-    // line boxes, which are equally tall, and leave them floating).
-    // `whitespace-pre` on the root keeps a part's edge space (`USD `),
-    // which a flex item would otherwise drop.
-    parts: 'flex items-baseline',
-    part: {
-      currency: AFFIX[affix],
-      integer: '',
-      fraction: AFFIX[affix],
-      sign: '',
-    },
+    parts: 'inline-flex items-baseline',
+    // Blade: 4px either side of the sign, 2px between currency and number.
+    sign: 'mx-1',
+    currency: { prefix: `mr-0.5 ${affix}`, suffix: `ml-0.5 ${affix}` },
+    value: '',
+    decimals: hasDecimals ? affix : '',
   };
 };

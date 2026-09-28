@@ -4,27 +4,26 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'Alert',
   description:
-    'An inline message: an icon, a title, a description, actions, and a dismiss button when it has a name. isOpen slides it open and shut.',
+    'An inline message: an icon (the colour’s by default), a title and a description, dismissible unless isDismissible is false. Dismissing slides it shut; bind isOpen to bring it back.',
   argTypes: {
     color: { control: 'select', options: ALERT_AXES.color },
+    emphasis: { control: 'select', options: ALERT_AXES.emphasis },
+    isDismissible: { control: 'boolean' },
     title: { control: 'text' },
-    content: { control: 'text' },
-    closeLabel: {
-      control: 'text',
-      description: 'Names the dismiss button; empty removes it',
-    },
+    description: { control: 'text' },
   },
   stories: {
     Basic: {
       args: {
         color: 'negative',
+        emphasis: 'subtle',
+        isDismissible: true,
         title: 'This bank is facing issues',
-        content: 'Payments are likely to fail. Try another bank or method.',
-        closeLabel: 'Dismiss',
+        description: 'Payments are likely to fail. Try another bank or method.',
       },
     },
     Colors: {
-      description: 'Every colour, generated from ALERT_AXES.',
+      description: 'Every colour in both emphases, generated from ALERT_AXES.',
       argTypes: {},
     },
   },

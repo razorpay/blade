@@ -51,7 +51,11 @@
       {/each}
     {/snippet}
     {#snippet failed(error)}
-      <Alert color="negative">{(error as Error).message}</Alert>
+      <Alert
+        color="negative"
+        description={(error as Error).message}
+        isDismissible={false}
+      />
     {/snippet}
   </Async>
 </div>

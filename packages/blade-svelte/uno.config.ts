@@ -3,6 +3,7 @@ import type { Rule, Variant } from 'unocss';
 import {
   backdropBlur,
   bladeNeutralTheme,
+  bladeTheme,
   border,
   breakpoints,
   elevation,
@@ -294,6 +295,8 @@ const typographyRules: Rule[] = [
   ...rules('font', 'font-weight', fonts.weight, String),
   // e.g. `font-heading` → "TASA Orbiter", …
   ...rules('font', 'font-family', fonts.family, String),
+  // Blade sets the heading face's optical size wherever it uses it (BaseText)
+  ['font-heading', { 'font-family': String(fonts.family.heading), 'font-variation-settings': "'opsz' 60" }],
   // Tokens are % of the font size, e.g. `tracking-25` → -3.3% → -0.033em
   ...rules('tracking', 'letter-spacing', letterSpacings, (value) => `${round(Number(value) / 100)}em`),
 ];
@@ -452,10 +455,21 @@ const filledFrame = ({ rim, edge, bevel }: { rim: string; edge: string; bevel: s
   };
 };
 
+/**
+ * Light mode value of a token in Blade's standard theme. The neutral theme pairs its blue primary
+ * fill with black primary borders; the primary button's frame takes the standard theme's blue, as
+ * Blade React draws it, so its rim and edge match its fill.
+ */
+const standardColor = (token: string): string => {
+  const value = colorsToCSSVariables(bladeTheme.colors.onLight)[`--${token}`];
+  if (!value) throw new Error(`Unknown color token: ${token}`);
+  return value;
+};
+
 const buttonAccents = {
   primary: {
-    rim: color('interactive-border-primary-default'),
-    edge: color('interactive-border-primary-highlighted'),
+    rim: standardColor('interactive-border-primary-default'),
+    edge: standardColor('interactive-border-primary-highlighted'),
     bevel: 'hsla(0, 0%, 100%, 0.18)',
     ring: FOCUS_PRIMARY,
   },
@@ -514,6 +528,12 @@ const namedShadows: Scale = {
   // Blade's toast: a white bevel along the top edge, under its popup border
   'toast-bevel': `inset 0 1.5px 0 0 ${color('interactive-background-static-white-faded-highlighted')}`,
   'button-outlined-disabled': `inset 0 0 0 1px ${color('interactive-border-gray-disabled')}`,
+  // Blade's white buttons, for dark surfaces: filled, and outlined (secondary and tertiary)
+  'button-white': `inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 0.5px ${color('interactive-border-static-black-faded-highlighted')}`,
+  'button-white-outlined': `inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 1px ${color('interactive-border-static-white-highlighted')}`,
+  'button-white-outlined-disabled': `inset 0 0 0 1px ${color('interactive-border-static-white-disabled')}`,
+  'button-white-focus': `${focusRing(FOCUS_PRIMARY)}, inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 0.5px ${color('interactive-border-static-black-faded-highlighted')}`,
+  'button-white-outlined-focus': `${focusRing(FOCUS_PRIMARY)}, inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 1px ${color('interactive-border-static-white-highlighted')}`,
 };
 
 /** The filled button's resting sheen: a white radial from the top-left corner, sized per button size */
@@ -547,8 +567,25 @@ const surfaceRaised: Rule = [
   },
 ];
 
+// Selected, Blade drops the surface's rim: the selection ring replaces it
+const surfaceRaisedBorderless: Rule = [
+  'surface-raised-borderless',
+  {
+    ...(surfaceRaised[1] as Record<string, string>),
+    'box-shadow': `${namedShadows.card}, inset 0px -1.5px 0px 1px ${color('surface-background-gray-intense')}`,
+  },
+];
+
+// A border token as a fill, for separators drawn as a 1px gap over their container's background
+// (ButtonGroup), where no separator element can sit between the children
+const dividerFillRules: Rule[] = keywords('background-color', {
+  'bg-divider-gray-subtle': color('surface-border-gray-subtle'),
+});
+
 const visualRules: Rule[] = [
   surfaceRaised,
+  surfaceRaisedBorderless,
+  ...dividerFillRules,
   ...rules('shadow', 'box-shadow', namedShadows, String),
   ...rules('bg', 'background-image', backgroundImages, String),
   ...keywords('background-image', { 'bg-none': 'none' }),
@@ -573,6 +610,8 @@ const keyframes = {
   bounce: '0%, 100% { translate: 0 -50% } 50% { translate: 0 0 }',
   shake:
     '0%, 100% { translate: 0 0 } 12.5% { translate: -6px 0 } 37.5% { translate: 5px 0 } 62.5% { translate: -3px 0 } 87.5% { translate: 2px 0 }',
+  // Blade's DotLoader: each dot lifts by its `--lift` and brightens, a third of the way in
+  dot: '0%, 60%, 100% { translate: 0 0; opacity: 0.42 } 30% { translate: 0 calc(var(--lift) * -1); opacity: 1 }',
   // Blade's Skeleton: the gray fill rests, then brightens to its highlighted step
   skeleton: `0%, 25% { background-color: ${color('interactive-background-gray-default')} } 100% { background-color: ${color('interactive-background-gray-highlighted')} }`,
 };
@@ -587,6 +626,7 @@ const animationRules: Rule[] = keywords('animation', {
   'animate-bounce': 'bounce 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite',
   'animate-shake': 'shake 400ms ease-in-out 1',
   'animate-skeleton': skeletonPulse,
+  'animate-dot': 'dot 1200ms ease-in-out infinite',
 });
 
 // ===== Interaction =====
@@ -697,8 +737,10 @@ const pseudoClasses: Record<string, string> = {
   'focus-visible': ':focus-visible',
   'focus-within': ':focus-within',
   active: ':active',
-  disabled: ':disabled',
-  enabled: ':enabled',
+  // `aria-disabled` too: a busy control keeps focus (so it is not `disabled`)
+  // yet must look it, as Blade's loading button does
+  disabled: ':is(:disabled,[aria-disabled=true])',
+  enabled: ':not(:disabled):not([aria-disabled=true])',
   checked: ':checked',
   first: ':first-child',
   last: ':last-child',

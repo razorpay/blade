@@ -1,7 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 import { flushSync } from 'svelte';
 import { fireEvent, render } from '@testing-library/svelte';
+import { createRawSnippet } from 'svelte';
+import Button from '../components/button/Button.svelte';
 import ButtonHarness from './fixtures/ButtonHarness.svelte';
+
+const label = createRawSnippet(() => ({ render: () => '<span>Pay</span>' }));
 import { expectClass, expectMarkup, expectNoClass } from './classes';
 
 describe('Button standalone', () => {
@@ -48,7 +52,9 @@ describe('Button standalone', () => {
     expectClass(content, 'opacity-0');
     const loader = button.querySelector('[aria-hidden="true"]');
     expectClass(loader, 'absolute');
-    expectMarkup(loader, 'animate-bounce');
+    // Blade's DotLoader: three dots rising in turn.
+    expectMarkup(loader, 'animate-dot');
+    expect(loader?.children).toHaveLength(3);
     // The live region announces the busy state (aria-busy alone is not
     // announced by most screen readers).
     expect(button.querySelector('[role="status"]')?.textContent).toContain(
@@ -67,14 +73,62 @@ describe('Button standalone', () => {
     expect(button.querySelector('[aria-hidden="true"]')).toBeNull();
   });
 
-  it('the link variant is inline-flex: only as wide as its content', () => {
-    const { getByTestId } = render(ButtonHarness, {
-      props: { variant: 'link' },
+  it('is a medium primary (blue) type="button" by default, inline-flex', () => {
+    const { getByTestId } = render(Button, {
+      props: { children: label, testID: 'b' },
     });
-    const button = getByTestId('solo');
+    const button = getByTestId('b') as HTMLButtonElement;
+    expect(button.type).toBe('button');
     expectClass(button, 'inline-flex');
-    expectClass(button, 'relative');
-    expect(button.className.split(' ')).not.toContain('inline');
+    expectClass(button, 'bg-interactive-primary-default');
+    expectClass(button, 'min-h-9');
+    expectClass(button, 'font-medium');
+  });
+
+  it('renders an anchor with href, and ignores isDisabled there', () => {
+    const { getByTestId } = render(Button, {
+      props: { children: label, href: '/pay', isDisabled: true, testID: 'b' },
+    });
+    const anchor = getByTestId('b') as HTMLAnchorElement;
+    expect(anchor.tagName).toBe('A');
+    expect(anchor.getAttribute('href')).toBe('/pay');
+    expect(anchor.hasAttribute('disabled')).toBe(false);
+  });
+
+  it.each([
+    ['xsmall', 'min-h-7', 'px-2', 'text-75'],
+    ['small', 'min-h-8', 'px-2', 'text-75'],
+    ['medium', 'min-h-9', 'px-3', 'text-100'],
+    ['large', 'min-h-12', 'px-4', 'text-200'],
+  ] as const)('%s: Blade’s height, padding and type', (size, height, pad, type) => {
+    const { getByTestId } = render(Button, {
+      props: { children: label, size, testID: 'b' },
+    });
+    const button = getByTestId('b');
+    expectClass(button, height);
+    expectClass(button, pad);
+    expectClass(button, type);
+  });
+
+  it('white: a white fill with black text; outlined, a white rim', () => {
+    const filled = render(Button, {
+      props: { children: label, color: 'white', testID: 'a' },
+    }).getByTestId('a');
+    expectClass(filled, 'bg-interactive-static-white-default');
+    expectClass(filled, 'text-interactive-static-black-muted');
+    const outlined = render(Button, {
+      props: { children: label, color: 'white', variant: 'secondary', testID: 'b' },
+    }).getByTestId('b');
+    expectClass(outlined, 'shadow-button-white-outlined');
+    expectClass(outlined, 'text-interactive-static-white-normal');
+  });
+
+  it('tertiary takes primary or white; another colour draws as primary', () => {
+    const tertiary = render(Button, {
+      props: { children: label, variant: 'tertiary', color: 'negative', testID: 'b' },
+    }).getByTestId('b');
+    expectClass(tertiary, 'shadow-button-outlined');
+    expectClass(tertiary, 'text-interactive-gray-normal');
   });
 
   it('resolves preset style props and appends the caller class last', () => {
@@ -98,19 +152,7 @@ describe('Button standalone', () => {
     expectClass(button, 'group');
     expectClass(
       button.querySelector('[data-part="content"]'),
-      'group-active:scale-95'
-    );
-  });
-
-  it('the link variant neither wears a frame nor presses', () => {
-    const { getByTestId } = render(ButtonHarness, {
-      props: { variant: 'link' },
-    });
-    const button = getByTestId('solo');
-    expectNoClass(button, 'shadow-button');
-    expectNoClass(
-      button.querySelector('[data-part="content"]'),
-      'group-active:scale-95'
+      'group-active:enabled:scale-95'
     );
   });
 

@@ -67,7 +67,7 @@
 {#if inForm}
   <Form name="verify" {onSubmit}>
     {@render otp()}
-    <Button testID="go">Go</Button>
+    <Button type="submit" testID="go">Go</Button>
   </Form>
 {:else}
   {@render otp()}

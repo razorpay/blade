@@ -32,7 +32,6 @@
   adaptive={args.adaptive}
   placement={args.placement}
   title="Confirm payment"
-  closeLabel="Close"
   onDismiss={(source) => {
     lastSource = source;
   }}

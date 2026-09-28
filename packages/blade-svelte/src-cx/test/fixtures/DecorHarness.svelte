@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Badge } from '../../components/badge';
   import Card from '../../components/card/Card.svelte';
   import { Divider } from '../../components/divider';
   import { EmptyState } from '../../components/empty-state';
@@ -13,11 +12,6 @@
   <Divider testID="rule" class="my-2" />
   <Divider orientation="vertical" line="dashed" testID="upright" />
 </Card>
-
-<Badge testID="tag" class="ml-1">New</Badge>
-<Badge color="positive" emphasis="intense" size="small" testID="paid">
-  Paid
-</Badge>
 
 <TrustBadge label="Razorpay Trusted Business" testID="trust" class="mt-1" />
 <TrustBadge

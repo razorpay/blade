@@ -25,7 +25,7 @@
   {/key}
   <Text size="small" color="muted">{log}</Text>
   <Button
-    variant="link"
+    variant="tertiary"
     type="button"
     onClick={() => {
       round += 1;

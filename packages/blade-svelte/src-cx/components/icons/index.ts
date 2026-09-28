@@ -2,6 +2,8 @@
 // export per file so unused glyphs drop out of the bundle. One chevron:
 // hosts rotate it (`-rotate-90` points right) so it can animate between
 // orientations, as the accordion's does.
+export { default as alertOctagon } from './alert-octagon.svg?raw';
+export { default as alertTriangle } from './alert-triangle.svg?raw';
 export { default as arrowLeft } from './arrow-left.svg?raw';
 export { default as bank } from './bank.svg?raw';
 export { default as card } from './card.svg?raw';

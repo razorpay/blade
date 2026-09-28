@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { OptionList, OptionListItem } from '../../index';
+  import { OptionItem, VirtualOptionList } from '../../index';
   import type { Bank } from './banks';
 
   // Every third bank has a note, so row heights differ.
@@ -13,8 +13,7 @@
 </script>
 
 <div class="grid max-w-96 gap-3">
-  <OptionList
-    virtualize
+  <VirtualOptionList
     class="h-80"
     label="Bank"
     options={banks}
@@ -22,10 +21,10 @@
     bind:value
     indicator="trailing"
   >
-    {#snippet item(bank)}
-      <OptionListItem title={bank.name} description={bank.note} />
+    {#snippet children(bank)}
+      <OptionItem value={bank} title={bank.name} description={bank.note} />
     {/snippet}
-  </OptionList>
+  </VirtualOptionList>
   <p class="text-75 leading-50 text-surface-gray-subtle">
     value: {JSON.stringify((value as Bank | null)?.code ?? null)}
   </p>

@@ -89,7 +89,7 @@
 {#if inForm}
   <Form name="pay" {onSubmit} formatConstraintError={(code) => `msg:${code}`}>
     {@render control(true)}
-    <Button testID="continue">Continue</Button>
+    <Button type="submit" testID="continue">Continue</Button>
   </Form>
 {:else}
   {@render control(false)}

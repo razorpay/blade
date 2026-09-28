@@ -1,17 +1,22 @@
 # Alert
 
-`packages/blade/components/alert/Alert.svelte` has a behaviour model behind it
-since it dismisses and carries actions.
+An inline message: an icon, an optional title, a description, and a dismiss
+button. Blade's Alert in its full-width form, less `actions`: it spans its
+container (a width is the caller's `class`), and from 768px the content
+centres on the row.
 
 | Prop | Notes |
 | --- | --- |
-| `color` | Style axis: `neutral`, `information`, `positive`, `notice`, `negative`. `negative` and `notice` announce as `role="alert"`, the rest as `role="status"` |
-| `isOpen` | Default `true`. Toggling it slides the alert open and shut (its own ms; none under reduced motion) — what v2's `ErrorMessage` and the callouts did by hand |
+| `description` | Required. Text, or a snippet (a Link at most) |
 | `title` | Optional heading line |
-| `children` | The description |
-| `icon` | Icon data (`icons.info`, or any `?raw` SVG) before the text; decorative |
-| `actions` | A snippet under the description: Links or Buttons |
-| `closeLabel`, `onDismiss` | The dismiss button exists only when it has a name. It reports; the owner sets `isOpen` |
+| `color` | `neutral` (default), `information`, `positive`, `notice`, `negative`, `primary`. `negative` and `notice` announce as `role="alert"` (`notice` politely), the rest as `role="status"` |
+| `emphasis` | `subtle` (default: the colour's tinted fill, gray text) or `intense` (the colour's solid fill, white everything) |
+| `icon` | Icon data before the text; defaults to the colour's (info, check-circle, alert-triangle, alert-octagon) |
+| `isDismissible`, `onDismiss` | Default `true`: a dismiss button that reports, then closes the alert |
+| `isOpen` | Bindable, default `true`. Dismissing sets it `false` and slides the alert shut (none under reduced motion); set it back to show it again |
+| `closeLabel` | The dismiss button's name; default `Dismiss alert` |
 | `class`, `testID` | As everywhere |
 
 A field's own error line is not an Alert: TextInput and the Form own that.
+
+API parity with Blade React: see `src-cx/API-PARITY.md`.

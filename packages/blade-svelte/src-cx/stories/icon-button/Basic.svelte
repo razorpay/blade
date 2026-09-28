@@ -20,7 +20,8 @@
 <IconButton
   icon={icons[args.glyph]}
   accessibilityLabel={args.accessibilityLabel}
-  variant={args.variant}
+  emphasis={args.emphasis}
+  isHighlighted={args.isHighlighted}
   size={args.size}
   isDisabled={args.isDisabled}
   isLoading={args.isLoading}

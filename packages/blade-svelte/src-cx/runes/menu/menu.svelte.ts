@@ -8,7 +8,9 @@ import {
   type OptionListCore,
   type OptionListCoreOptions,
 } from '../base/option-list';
+import { createOrderedEntries } from '../base/ordered-entries.svelte';
 import { createNodeRef } from '../dom/node.svelte';
+import type { MenuContext, MenuEntry } from './context';
 
 export interface MenuModelOptions<T> extends Omit<
   OptionListCoreOptions<T>,
@@ -60,19 +62,15 @@ export function createMenuModel<T>(options: MenuModelOptions<T>): MenuModel<T> {
   return { ...list, ...disclosed };
 }
 
-export interface MenuOptions<T> {
+export interface MenuOptions<Shared> {
   /** The menu's element id: where the items render. */
   id: string;
-  items: () => readonly T[];
-  /** The item's text: what typeahead matches. */
-  itemLabel: (item: T) => string;
-  isItemDisabled: (item: T) => boolean;
-  /** A choice is an act: the menu closes and reports it. */
-  onSelect: (item: T) => void;
   onOpenChange?: (isOpen: boolean) => void;
+  /** Handed to every item as is. */
+  shared: () => Shared;
 }
 
-export interface Menu<T> {
+export interface Menu<Shared> extends MenuContext<Shared> {
   readonly isOpen: boolean;
   readonly activeIndex: number;
   /** The trigger's wrapper, once mounted: what the menu hangs from. */
@@ -84,26 +82,30 @@ export interface Menu<T> {
   /** Keys anywhere in the root: only the closed trigger's reach the menu. */
   handleRootKeyDown(event: KeyboardEvent): void;
   handleTriggerClick(event: MouseEvent): void;
-  select(item: T): void;
-  setActive(index: number): void;
-  /** The pointer is over an item: it becomes the active one unless disabled. */
-  hoverItem(index: number): void;
-  close(): void;
+  /**
+   * Closes the menu. Escape hands focus back to the trigger; a press
+   * outside leaves it where the press put it.
+   */
+  close(source?: 'escape' | 'outside'): void;
 }
 
 /**
- * A menu's disclosure, roving focus and keyboard over the model above.
- * Call during component initialisation.
+ * A menu's disclosure, roving focus and keyboard over the model above. Its
+ * items are the MenuItems that register inside the open menu, read back in
+ * document order, so headings and dividers may sit between them. Call
+ * during component initialisation; the component provides the result to its
+ * MenuItems (`provideMenu`).
  */
-export function createMenu<T>(options: MenuOptions<T>): Menu<T> {
+export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
   const root = createNodeRef<HTMLElement>();
+  const entries = createOrderedEntries<MenuEntry>();
 
-  const model = createMenuModel<T>({
-    items: options.items,
-    isDisabled: options.isItemDisabled,
+  const model = createMenuModel<MenuEntry>({
+    items: () => entries.ordered,
+    isDisabled: (entry) => entry.isDisabled(),
     loop: true,
-    typeahead: options.itemLabel,
-    onSelect: (item) => options.onSelect(item),
+    typeahead: (entry) => entry.text(),
+    onSelect: (entry) => entry.select(),
     disclosure: { onOpenChange: (open) => options.onOpenChange?.(open) },
   });
 
@@ -121,11 +123,7 @@ export function createMenu<T>(options: MenuOptions<T>): Menu<T> {
     if (isOpen && index >= 0) {
       tick()
         .then(() => {
-          document
-            .querySelector<HTMLElement>(
-              `[id="${options.id}"] [data-index="${index}"]`
-            )
-            ?.focus({ preventScroll: true });
+          entries.ordered[index]?.getElement()?.focus({ preventScroll: true });
         })
         .catch(() => undefined);
     }
@@ -142,12 +140,27 @@ export function createMenu<T>(options: MenuOptions<T>): Menu<T> {
       event.preventDefault();
       event.stopPropagation();
     }
+    // Opened from the keyboard: it lands on the first item (the last, for
+    // ArrowUp) — once the items have mounted and registered.
+    if (!wasOpen && model.isOpen() && model.activeIndex() < 0) {
+      const to = event.key === 'ArrowUp' ? 'last' : 'first';
+      tick()
+        .then(() => {
+          if (model.isOpen() && model.activeIndex() < 0) {
+            model.move(to);
+          }
+        })
+        .catch(() => undefined);
+    }
     if (wasOpen && !model.isOpen()) {
       trigger()?.focus({ preventScroll: true });
     }
   }
 
   return {
+    get shared() {
+      return options.shared();
+    },
     get isOpen() {
       return isOpen;
     },
@@ -164,6 +177,8 @@ export function createMenu<T>(options: MenuOptions<T>): Menu<T> {
       control.setAttribute('aria-expanded', String(isOpen));
       return undo;
     },
+    register: (entry) => entries.register(entry),
+    reorder: () => entries.reorder(),
     handleKey,
     handleRootKeyDown(event) {
       // Closed: arrows, Enter and Space on the trigger open it.
@@ -176,18 +191,29 @@ export function createMenu<T>(options: MenuOptions<T>): Menu<T> {
         return;
       }
       model.toggle();
-      // A pointer-opened menu starts on its first item too.
+      // A pointer-opened menu starts on its first item too — once the items
+      // have mounted and registered.
       if (model.isOpen()) {
-        model.move('first');
+        tick()
+          .then(() => {
+            if (model.isOpen() && model.activeIndex() < 0) {
+              model.move('first');
+            }
+          })
+          .catch(() => undefined);
       }
     },
-    select: (item) => model.select(item),
-    setActive: (index) => model.setActive(index),
-    hoverItem(index) {
-      if (!options.isItemDisabled(options.items()[index])) {
-        model.setActive(index);
+    select: (entry) => model.select(entry),
+    hover(entry) {
+      if (!entry.isDisabled()) {
+        model.setActive(entries.indexOf(entry));
       }
     },
-    close: () => model.close(),
+    close(source) {
+      model.close();
+      if (source === 'escape') {
+        trigger()?.focus({ preventScroll: true });
+      }
+    },
   };
 }

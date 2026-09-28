@@ -62,7 +62,7 @@
 {#if inForm}
   <Form name="terms" {onSubmit}>
     {@render checkbox()}
-    <Button testID="go">Go</Button>
+    <Button type="submit" testID="go">Go</Button>
   </Form>
 {:else}
   {@render checkbox()}

@@ -1,17 +1,11 @@
 <script lang="ts">
-  import {
-    Alert,
-    Button,
-    icons,
-    Link,
-    type AlertStyleProps,
-  } from '../../index';
+  import { Alert, Button, type AlertStyleProps } from '../../index';
 
   interface Props {
     args: AlertStyleProps & {
       title?: string;
-      content?: string;
-      closeLabel?: string;
+      description?: string;
+      isDismissible?: boolean;
     };
   }
 
@@ -20,20 +14,15 @@
   let isOpen = $state(true);
 </script>
 
-<div class="flex max-w-96 flex-col items-start gap-3">
+<div class="flex flex-col items-start gap-3">
   <Alert
-    {isOpen}
+    bind:isOpen
     color={args.color}
+    emphasis={args.emphasis}
     title={args.title || undefined}
-    icon={icons.info}
-    closeLabel={args.closeLabel || undefined}
-    onDismiss={() => (isOpen = false)}
-  >
-    {args.content}
-    {#snippet actions()}
-      <Link href="#banks" color="neutral">See other banks</Link>
-    {/snippet}
-  </Alert>
+    description={args.description ?? ''}
+    isDismissible={args.isDismissible}
+  />
   {#if !isOpen}
     <Button type="button" size="small" onClick={() => (isOpen = true)}>
       Show it again

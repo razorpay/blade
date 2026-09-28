@@ -5,20 +5,22 @@
     createPress,
     type ButtonType,
   } from '../../runes/button/press.svelte';
-  import {
-    buttonLoaderLook,
-    resolveButton,
-    type ButtonStyleProps,
-  } from './styles';
+  import { getButtonGroup } from '../../runes/button/group';
+  import { resolveButton, type ButtonStyleProps } from './styles';
 
   interface BehaviourProps {
+    /**
+     * Shows Blade's DotLoader over the label and the disabled look; the
+     * label stays, so the width holds, and so does keyboard focus.
+     * @default false
+     */
     isLoading?: boolean;
+    /** Ignored with `href`, as in Blade. @default false */
     isDisabled?: boolean;
     /**
-     * The HTML type: `submit` (the default, as HTML's) presses the enclosing
-     * Form, `button` leaves it alone. An invalid form shakes a submit and
-     * reports to the Form's `onValidationFailed`. Outside a Form it changes
-     * nothing.
+     * The HTML type. `submit` presses the enclosing Form: an invalid form
+     * shakes the button and reports to the Form's `onValidationFailed`.
+     * @default 'button'
      */
     type?: ButtonType;
     /**
@@ -27,6 +29,10 @@
      */
     validateForm?: boolean;
     onClick?: (event: MouseEvent) => void;
+    /** Renders an anchor that looks like the button. */
+    href?: string;
+    target?: string;
+    rel?: string;
     /**
      * Seconds after which the button presses itself, its fill showing the
      * time run. A press by hand ends the wait; a disabled or busy button
@@ -42,7 +48,7 @@
     accessibilityLabel?: string;
     testID?: string;
     class?: string;
-    /** Icons and label alike — the flex content lays out whatever is passed. */
+    /** The label, with any icons: the content lays out whatever is passed. */
     children: Snippet;
   }
 
@@ -53,9 +59,12 @@
   let {
     isLoading = false,
     isDisabled = false,
-    type = 'submit',
+    type = 'button',
     validateForm = false,
     onClick,
+    href,
+    target,
+    rel,
     autoPressAfter = 0,
     loadingAnnouncement,
     accessibilityLabel,
@@ -65,67 +74,82 @@
     ...styleProps
   }: Props = $props();
 
+  // Inside a ButtonGroup the group's look wins, as in Blade, and its
+  // disabled state joins the button's own.
+  const group = getButtonGroup<Required<ButtonStyleProps>>();
+  const disabled = $derived(isDisabled || Boolean(group?.isDisabled));
+
   const press = createPress({
     type: () => type,
     validateForm: () => validateForm,
     isLoading: () => isLoading,
-    isDisabled: () => isDisabled,
+    isDisabled: () => disabled,
     onClick: (event) => onClick?.(event),
     autoPressAfter: () => autoPressAfter,
   });
 
-  const classes = $derived(resolveButton(styleProps));
+  const classes = $derived(resolveButton(group?.shared ?? styleProps));
 </script>
 
 <!--
-  The busy dots (ported from app/v2/components/loader/Dot.svelte) draw in a
-  layer over the children, which stay rendered but faded: the button keeps
-  its width and its accessible name through the busy state. The dots are
-  keyed to the style taxonomy, in the text colour of whatever look is on.
+  Blade's DotLoader draws in a layer over the children, which stay rendered
+  but faded: the button keeps its width and its accessible name while busy.
 -->
 {#snippet loader()}
-  {@const look = buttonLoaderLook(styleProps)}
-  {@const bounce = 'animate-bounce motion-reduce:animate-none'}
-  <span class={`${classes.loader} ${look.scale}`} aria-hidden="true">
-    <span class={`${look.dot} ${bounce} [animation-delay:-0.3s]`}></span>
-    <span class={`${look.dot} ${bounce} [animation-delay:-0.15s]`}></span>
-    <span class={`${look.dot} ${bounce}`}></span>
+  <span class={classes.loader} aria-hidden="true">
+    {#each classes.dotStep as step, index (index)}
+      <span class={cx(classes.dot, step)}></span>
+    {/each}
   </span>
 {/snippet}
 
-<button
-  type={press.type}
-  class={cx(
-    classes.root,
-    press.shake && classes.shake,
-    press.busy && classes.loading,
-    className
-  )}
-  disabled={isDisabled}
-  aria-disabled={press.busy ? 'true' : undefined}
-  aria-busy={press.busy ? 'true' : undefined}
-  aria-label={accessibilityLabel}
-  data-testid={testID}
-  onclick={press.handleClick}
-  {@attach press.attach}
->
-  {#if press.elapsed !== undefined}
-    <span
-      class={classes.autoFill}
-      style:--progress={press.elapsed}
-      aria-hidden="true"
-    ></span>
-  {/if}
-  <span
-    class={cx(classes.content, press.busyCause && classes.busyContent)}
-    data-part="content"
+{#if href}
+  <a
+    {href}
+    {target}
+    {rel}
+    class={cx(classes.root, className)}
+    aria-label={accessibilityLabel}
+    data-testid={testID}
+    onclick={(event) => onClick?.(event)}
   >
-    {@render children()}
-  </span>
-  {#if press.busyCause}
-    {@render loader()}
-  {/if}
-  <span role="status" class={classes.status}>
-    {press.busy && loadingAnnouncement ? loadingAnnouncement : ''}
-  </span>
-</button>
+    <span class={classes.content}>{@render children()}</span>
+  </a>
+{:else}
+  <button
+    type={press.type}
+    class={cx(
+      classes.root,
+      press.shake && classes.shake,
+      press.busy && classes.busy,
+      className
+    )}
+    {disabled}
+    aria-disabled={press.busy ? 'true' : undefined}
+    aria-busy={press.busy ? 'true' : undefined}
+    aria-label={accessibilityLabel}
+    data-testid={testID}
+    onclick={press.handleClick}
+    {@attach press.attach}
+  >
+    {#if press.elapsed !== undefined}
+      <span
+        class={classes.autoFill}
+        style:--progress={press.elapsed}
+        aria-hidden="true"
+      ></span>
+    {/if}
+    <span
+      class={cx(classes.content, press.busyCause && classes.busyContent)}
+      data-part="content"
+    >
+      {@render children()}
+    </span>
+    {#if press.busyCause}
+      {@render loader()}
+    {/if}
+    <span role="status" class={classes.status}>
+      {press.busy && loadingAnnouncement ? loadingAnnouncement : ''}
+    </span>
+  </button>
+{/if}

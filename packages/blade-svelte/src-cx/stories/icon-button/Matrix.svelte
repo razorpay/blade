@@ -3,28 +3,36 @@
 </script>
 
 <div class="flex flex-col gap-3">
-  {#each ICON_BUTTON_AXES.variant as variant (variant)}
-    <div class="flex items-center gap-4">
-      <Text size="xsmall" color="muted" class="w-12">{variant}</Text>
+  {#each ICON_BUTTON_AXES.emphasis as emphasis (emphasis)}
+    <!-- subtle and moderate are white glyphs, for dark surfaces. -->
+    <div
+      class={emphasis === 'intense'
+        ? 'flex items-center gap-4 p-2'
+        : 'flex items-center gap-4 rounded-small bg-surface-gray-intense p-2 [filter:invert(1)]'}
+    >
+      <Text size="xsmall" color="muted" class="w-16">{emphasis}</Text>
       {#each ICON_BUTTON_AXES.size as size (size)}
         <IconButton
           icon={icons.close}
-          accessibilityLabel={`Close, ${variant} ${size}`}
-          {variant}
+          accessibilityLabel={`Close, ${emphasis} ${size}`}
+          {emphasis}
           {size}
         />
+        {#if size !== 'large'}
+          <IconButton
+            icon={icons.close}
+            accessibilityLabel={`Close, ${emphasis} ${size} highlighted`}
+            {emphasis}
+            {size}
+            isHighlighted
+          />
+        {/if}
       {/each}
       <IconButton
         icon={icons.close}
-        accessibilityLabel={`Close, ${variant} disabled`}
-        {variant}
+        accessibilityLabel={`Close, ${emphasis} disabled`}
+        {emphasis}
         isDisabled
-      />
-      <IconButton
-        icon={icons.close}
-        accessibilityLabel={`Close, ${variant} busy`}
-        {variant}
-        isLoading
       />
     </div>
   {/each}

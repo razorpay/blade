@@ -8,4 +8,4 @@
   const _props: ModalStyleProps = $props();
 </script>
 
-<Icon source={close} />
+<Icon source={close} size="large" />

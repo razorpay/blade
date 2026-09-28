@@ -140,8 +140,8 @@ const LINE: Record<Axis<'size'>, string> = {
 
 // Blade's title: Text large or medium, and the number prefix with it.
 const TITLE_TEXT: Record<Axis<'size'>, string> = {
-  large: 'text-200 leading-200',
-  medium: 'text-100 leading-100',
+  large: 'text-200 leading-200 tracking-25',
+  medium: 'text-100 leading-100 tracking-50',
 };
 
 // Blade caps a leading at 32px, 24px at medium.
@@ -181,7 +181,7 @@ export const resolveAccordion: AccordionStyleResolver<AccordionStyleProps> = (
     leading: `${line} mr-2 overflow-hidden ${LEADING_MAX[size]}`,
     title: `font-semibold [word-break:break-word] text-surface-gray-normal ${DISABLED_TEXT} ${TITLE_TEXT[size]}`,
     // Small whatever the accordion's size, as in Blade.
-    subtitle: `text-75 leading-50 text-surface-gray-muted ${DISABLED_TEXT}`,
+    subtitle: `text-75 leading-75 tracking-50 text-surface-gray-muted ${DISABLED_TEXT}`,
     headerDivider: `pointer-events-none absolute inset-x-0 bottom-0 border-b-thinner ${DIVIDER} transition-opacity duration-2xquick ease-standard group-hover:opacity-0 group-focus-visible:opacity-0`,
     trailing: line,
     // The chevron takes the button's colour: gray-muted, gray-subtle while

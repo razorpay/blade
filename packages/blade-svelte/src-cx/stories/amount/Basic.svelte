@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { Amount, type AmountStyleProps } from '../../index';
+  import { Amount, Heading } from '../../index';
 
   interface Props {
-    args: AmountStyleProps & {
+    args: {
       value: number;
       currency: string;
+      suffix?: 'decimals' | 'none' | 'humanize';
+      currencyIndicator?: 'currency-symbol' | 'currency-code';
+      isAffixSubtle?: boolean;
       unit?: 'major' | 'minor';
-      currencyDisplay?: 'symbol' | 'code';
       locale?: string;
       isStrikethrough?: boolean;
     };
@@ -15,15 +17,16 @@
   let { args }: Props = $props();
 </script>
 
-<Amount
-  value={args.value}
-  currency={args.currency}
-  unit={args.unit}
-  currencyDisplay={args.currencyDisplay}
-  locale={args.locale || undefined}
-  size={args.size}
-  weight={args.weight}
-  color={args.color}
-  affix={args.affix}
-  isStrikethrough={args.isStrikethrough}
-/>
+<!-- The amount takes the surrounding text's size, weight, colour and face. -->
+<Heading size="large">
+  <Amount
+    value={args.value}
+    currency={args.currency}
+    suffix={args.suffix}
+    currencyIndicator={args.currencyIndicator}
+    isAffixSubtle={args.isAffixSubtle}
+    unit={args.unit}
+    locale={args.locale || undefined}
+    isStrikethrough={args.isStrikethrough}
+  />
+</Heading>

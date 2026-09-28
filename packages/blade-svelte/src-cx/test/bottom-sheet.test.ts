@@ -20,7 +20,7 @@ describe('BottomSheet (blade)', () => {
 
     const panel = getByRole('dialog', { name: 'Enter OTP' });
     expect(panel).toBe(getByTestId('sheet'));
-    expect(panel.className).toContain('rounded-tl-small');
+    expect(panel.className).toContain('rounded-tl-large');
     expect(panel.parentElement?.className).toContain('items-end');
     expect(getByTestId('sheet-drag-zone').className).toContain('touch-none');
     expect(getByRole('button', { name: 'Close' })).toBeTruthy();
@@ -77,18 +77,16 @@ describe('BottomSheet (blade)', () => {
     expect(panel.className.endsWith('[z-index:70]')).toBe(true);
   });
 
-  it('a non-dismissible sheet ignores the backdrop but not the close button', async () => {
+  it('a non-dismissible sheet ignores the backdrop and has no close button', async () => {
     const onDismiss = vi.fn();
-    const { getByTestId, getByRole, queryByTestId } = render(
+    const { getByTestId, queryByRole, queryByTestId } = render(
       BottomSheetHarness,
       { props: { isOpen: true, isDismissible: false, onDismiss } }
     );
     await fireEvent.click(getByTestId('host-backdrop'));
     expect(onDismiss).not.toHaveBeenCalled();
     expect(queryByTestId('sheet')).not.toBeNull();
-
-    await fireEvent.click(getByRole('button', { name: 'Close' }));
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith('cross');
+    expect(queryByRole('button', { name: 'Close' })).toBeNull();
   });
 });
 
@@ -131,7 +129,7 @@ describe('BottomSheet adaptive', () => {
     const root = panel.parentElement as HTMLElement;
     expect(root.className).toContain('items-end');
     expect(root.className).toContain('m:items-center');
-    expect(panel.className).toContain('rounded-tl-small');
+    expect(panel.className).toContain('rounded-tl-large');
     expect(panel.className).toContain(
       'group-data-[state=closed]:translate-y-full'
     );

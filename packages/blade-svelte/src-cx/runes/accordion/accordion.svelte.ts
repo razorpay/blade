@@ -1,6 +1,7 @@
 import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { setupField, type FieldModel } from '../form/field.svelte';
+import { createChoiceList } from '../base/choice-list.svelte';
+import { setupField } from '../form/field.svelte';
 import { createFieldLine } from '../form/field-line.svelte';
 import { visibleFieldError, type FieldHint } from '../form/hint';
 import type {
@@ -10,32 +11,6 @@ import type {
 } from './context';
 
 export type { AccordionValue };
-
-export interface AccordionModel {
-  isExpanded(value: AccordionValue): boolean;
-  /**
-   * One user press on an expandable item: opens it, closing any other, or
-   * closes it when it is the open one. `onValue` sees the new value.
-   */
-  toggle(value: AccordionValue, onValue?: (value: unknown) => void): void;
-}
-
-/**
- * An accordion over a field: the open item's value is the field's value, so
- * a Form can require one and submit it. Blade's accordion: one item open at
- * a time, and pressing the open one closes it.
- */
-export function createAccordionModel(field: FieldModel): AccordionModel {
-  const isExpanded = (value: AccordionValue): boolean =>
-    field.record.value === value;
-  return {
-    isExpanded,
-    toggle(value, onValue) {
-      field.updateValue(isExpanded(value) ? null : value, onValue);
-      field.touch();
-    },
-  };
-}
 
 /** An item is open or one is missing: there is no success state to show. */
 export type AccordionValidationState = 'none' | 'error';
@@ -65,13 +40,12 @@ export interface Accordion<Shared> extends AccordionContext<Shared> {
   readonly isInvalid: boolean;
 }
 
-const PRECEDING = 2;
-
 /**
- * The accordion behaviour: one form field holding the open item's value,
- * and the items registered in mount order, read back in document order.
- * Call during component initialisation; the component provides the result
- * to its AccordionItems (`provideAccordion`).
+ * The accordion behaviour: the headless choice list (`base/choice-list`)
+ * as expanding headers — one form field holding the open item's value, the
+ * items registered and read back in document order, and arrows, Home and
+ * End between the headers. Call during component initialisation; the
+ * component provides the result to its AccordionItems (`provideAccordion`).
  */
 export function createAccordion<Shared>(
   options: AccordionOptions<Shared>
@@ -86,7 +60,12 @@ export function createAccordion<Shared>(
   const { field, form } = setupField(fieldProps(), 'radio', (next) => {
     options.onValue((next ?? null) as AccordionValue | null);
   });
-  const model = createAccordionModel(field);
+  // One open at a time, and pressing the open one closes it; the headers
+  // are buttons, so the arrows wrap and Enter and Space stay theirs.
+  const choices = createChoiceList<AccordionValue>(field, {
+    deselectable: () => true,
+    loop: true,
+  });
 
   $effect.pre(() => {
     field.updateProps(fieldProps());
@@ -100,30 +79,6 @@ export function createAccordion<Shared>(
     }),
     (state) => visibleFieldError(field.record, state)
   );
-
-  // A plain array in mount order; `version` tells readers it changed. It is
-  // written from a plain counter, never `+=`: registering and mounting run
-  // inside effects, and reading `version` there would make them loop.
-  const entries: AccordionEntry[] = [];
-  let changes = 0;
-  let version = $state(0);
-  const bump = () => {
-    changes += 1;
-    version = changes;
-  };
-  // Document order, not mount order: an item mounted later may sit before
-  // an earlier one. Before mount (and on native) mount order it is.
-  const ordered = $derived.by(() => {
-    void version;
-    return [...entries].sort((a, b) => {
-      const one = a.getElement();
-      const two = b.getElement();
-      if (!one?.compareDocumentPosition || !two) {
-        return 0;
-      }
-      return one.compareDocumentPosition(two) & PRECEDING ? 1 : -1;
-    });
-  });
 
   return {
     labelId: `${options.id}-label`,
@@ -140,52 +95,21 @@ export function createAccordion<Shared>(
     get shared() {
       return options.shared();
     },
-    register(entry) {
-      entries.push(entry);
-      bump();
-      return () => {
-        const at = entries.indexOf(entry);
-        if (at >= 0) {
-          entries.splice(at, 1);
-          bump();
-        }
-      };
-    },
-    indexOf: (entry) => ordered.indexOf(entry),
-    reorder: bump,
-    isExpanded: (value) => model.isExpanded(value),
+    register: (entry) => choices.register(entry),
+    indexOf: (entry) => choices.indexOf(entry),
+    reorder: () => choices.reorder(),
+    isExpanded: (value) => choices.isSelected(value),
     toggle(value) {
-      model.toggle(value, (next) => {
+      const index = choices.items().indexOf(value);
+      choices.toggle(value, index, (next) => {
         const stored = (next ?? null) as AccordionValue | null;
         options.onValue(stored);
         options.onChange?.(stored);
       });
     },
     moveFocus(entry, key) {
-      const enabled = ordered.filter((it) => !it.isDisabled());
-      if (enabled.length === 0) {
-        return false;
-      }
-      const at = enabled.indexOf(entry);
-      let target: AccordionEntry | undefined;
-      switch (key) {
-        case 'Home':
-          target = enabled[0];
-          break;
-        case 'End':
-          target = enabled[enabled.length - 1];
-          break;
-        case 'ArrowDown':
-          target = enabled[(at + 1) % enabled.length];
-          break;
-        case 'ArrowUp':
-          target = enabled[(at <= 0 ? enabled.length : at) - 1];
-          break;
-        default:
-          return false;
-      }
-      target?.getElement()?.focus();
-      return true;
+      choices.setActive(choices.indexOf(entry));
+      return choices.handleMoveKey(key);
     },
   };
 }
@@ -233,8 +157,9 @@ export function createAccordionItem<Shared>(
 ): AccordionItem<Shared> {
   let node: HTMLElement | undefined;
   const entry: AccordionEntry = {
-    getElement: () => node,
+    value: () => value,
     isDisabled: () => isDisabled,
+    getElement: () => node,
   };
   if (accordion) {
     onDestroy(accordion.register(entry));

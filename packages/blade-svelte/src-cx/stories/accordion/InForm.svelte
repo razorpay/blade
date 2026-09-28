@@ -24,7 +24,7 @@
           </AccordionItem>
         {/each}
       </Accordion>
-      <Button class="w-full">Continue</Button>
+      <Button type="submit" class="w-full">Continue</Button>
       <Text size="small" color="muted">submitted: {submitted || '—'}</Text>
     </div>
   </Form>

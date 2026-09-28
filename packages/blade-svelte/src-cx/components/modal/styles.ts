@@ -13,10 +13,20 @@ import type { SurfaceClasses } from '../layer/styles';
  * shaped through `nativeSheet` (see `SurfaceClasses`).
  */
 export interface ModalClasses extends SurfaceClasses {
+  /** Blade's BaseHeader: the padded box with its hairline below. */
   header: string;
+  /** The row: the title block, then the close button. */
+  headerRow: string;
+  /** The title over the `header` snippet. */
+  titleBlock: string;
+  /** A `title` string's type; a snippet sits in the same place. */
   title: string;
-  /** The close button. */
+  /** The close button, last in the header row. */
   close: string;
+  /** The close button when there is no header: floating at the top edge. */
+  floatingClose: string;
+  /** Holds the floating close button, where the header would be. */
+  emptyHeader: string;
   body: string;
   footer: string;
 }
@@ -145,12 +155,20 @@ const SIZE: Record<Axis<'size'>, string> = {
   full: '',
 };
 
+// Blade's IconButton (size large): a 20px muted icon, subtle on hover,
+// press and keyboard focus, with Blade's 4px focus ring.
+const ICON_BUTTON =
+  'flex shrink-0 items-center justify-center border-none bg-transparent p-0 icon-interactive-gray-muted transition-colors duration-xquick ease-standard hover:icon-interactive-gray-subtle active:icon-interactive-gray-subtle focus-visible:icon-interactive-gray-subtle focus-visible:rounded-2xsmall focus-visible:outline-solid focus-visible:[outline-width:4px] focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted';
+
 /** What a look decides under the fixed chrome: the layout per state, the drag, the native sheet. */
 export interface ModalLayout {
   root: string;
   panel: string;
   drag: ModalClasses['drag'];
   nativeSheet: ModalClasses['nativeSheet'];
+  /** A look's own body and footer boxes, over the modal's. */
+  body?: string;
+  footer?: string;
 }
 
 /**
@@ -168,18 +186,24 @@ export function modalClasses(
     drag: layout.drag,
     nativeSheet: layout.nativeSheet,
     panel: `${PANEL} ${PACE[pace]} ${layout.panel} ${SIZE[size]}`,
-    // Three padded sections with a hairline between each: 20px all round,
-    // the header keeping clear of the close button, the footer laying its
-    // actions out in a row.
-    header: 'flex flex-col gap-1 border-b-thin border-solid border-surface-gray-muted p-5 pr-14',
-    title: 'font-heading text-200 leading-200 font-semibold',
-    // Blade's close button (blade-core Modal/modal.module.css): a muted
-    // icon, subtle on hover, press and keyboard focus, with a 2px primary
-    // outline 2px out.
-    close:
-      'absolute right-3.5 top-3.5 z-10 flex w-10 h-10 items-center justify-center border-none bg-transparent icon-interactive-gray-muted hover:icon-interactive-gray-subtle active:icon-interactive-gray-subtle focus-visible:icon-interactive-gray-subtle focus-visible:outline-solid focus-visible:outline-thicker focus-visible:outline-offset-2 focus-visible:outline-interactive-primary-default',
-    body: 'overflow-auto p-5',
-    footer: 'flex gap-4 border-t-thin border-solid border-surface-gray-muted px-5 pb-5 pt-4',
+    // Blade's BaseHeader (size large): 16px in and above and below, 20px
+    // from 768px, a hairline under it; the close button centred on the
+    // title's 28px first line.
+    header:
+      'shrink-0 border-b-thin border-solid border-surface-gray-muted p-4 m:p-5',
+    headerRow: 'relative flex items-start select-none',
+    titleBlock: 'me-auto flex min-w-0 flex-auto flex-col pr-4',
+    title:
+      'm-0 pt-px font-text text-200 leading-200 tracking-25 font-semibold [word-break:break-word] text-surface-gray-normal',
+    // 20px, centred on the title's 28px first line.
+    close: `mt-1 w-5 h-5 ${ICON_BUTTON}`,
+    // With no header the close button floats in a 28px circle, 16px in.
+    floatingClose: `absolute -top-1 right-4 z-10 w-7 h-7 rounded-max bg-popup-gray-subtle ${ICON_BUTTON}`,
+    emptyHeader: 'relative h-2 shrink-0',
+    body: layout.body ?? 'overflow-auto p-5',
+    footer:
+      layout.footer ??
+      'flex gap-4 border-t-thin border-solid border-surface-gray-muted px-5 pb-5 pt-4',
   };
 }
 

@@ -7,6 +7,7 @@ export { default as Accordion } from './accordion/Accordion.svelte';
 export { default as AccordionItem } from './accordion/AccordionItem.svelte';
 export { default as Async } from './async/Async.svelte';
 export { default as Button } from './button/Button.svelte';
+export { default as ButtonGroup } from './button-group/ButtonGroup.svelte';
 export { default as Card } from './card/Card.svelte';
 export { default as Carousel } from './carousel/Carousel.svelte';
 export { default as Checkbox } from './checkbox/Checkbox.svelte';
@@ -32,6 +33,7 @@ export { default as IconButton } from './icon-button/IconButton.svelte';
 export { default as Icon } from './icon/Icon.svelte';
 export { default as Link } from './link/Link.svelte';
 export { default as Menu } from './menu/Menu.svelte';
+export { default as MenuItem } from './menu/MenuItem.svelte';
 export { default as NavStack } from './nav-stack/NavStack.svelte';
 export {
   createNav,
@@ -49,6 +51,8 @@ export {
   type PushScreenOptions,
 } from '../runes/nav-stack/nav';
 export { default as OptionList } from './option-list/OptionList.svelte';
+export { default as OptionItem } from './option-list/OptionItem.svelte';
+export { default as VirtualOptionList } from './option-list/VirtualOptionList.svelte';
 export { default as OTPInput } from './otp-input/OTPInput.svelte';
 export { default as PhoneNumberInput } from './phone-number-input/PhoneNumberInput.svelte';
 export { default as Popover } from './popover/Popover.svelte';
@@ -121,7 +125,7 @@ export type { SwitchClasses, SwitchStyleResolver } from './switch/styles';
 export { SWITCH_AXES, type SwitchStyleProps } from './switch';
 export type { CarouselClasses, CarouselStyleResolver } from './carousel/styles';
 export type { CarouselStyleProps } from './carousel';
-export type { MenuClasses, MenuStyleResolver } from './menu/styles';
+export type { MenuClasses, MenuShared, MenuStyleResolver } from './menu/styles';
 export type { MenuStyleProps } from './menu';
 export type { PopoverClasses, PopoverStyleResolver } from './popover/styles';
 export type { PopoverStyleProps } from './popover';
@@ -169,9 +173,10 @@ export type {
 } from './input-group/styles';
 export type { InputGroupStyleProps } from './input-group';
 export type {
+  OptionItemClasses,
+  OptionItemContentProps,
   OptionListClasses,
-  OptionListItemBehaviourProps,
-  OptionListItemComponent,
+  OptionListShared,
   OptionListStyleResolver,
   OptionListValidationState,
   OptionRowClasses,
@@ -179,8 +184,7 @@ export type {
 } from './option-list/styles';
 export {
   OPTION_LIST_AXES,
-  OptionListItem,
-  type OptionListItemStyleProps,
+  resolveOptionItem,
   type OptionListStyleProps,
 } from './option-list';
 export type {
@@ -255,7 +259,8 @@ export {
 export type { TooltipClasses, TooltipStyleResolver } from './tooltip/styles';
 export type { TooltipStyleProps } from './tooltip';
 export type { AmountClasses, AmountStyleResolver } from './amount/styles';
-export { AMOUNT_AXES, type AmountStyleProps } from './amount';
+export type { AmountStyleProps } from './amount';
+export type { AmountSuffix } from '../runes/amount/amount';
 export type { LinkClasses, LinkStyleResolver } from './link/styles';
 export { LINK_AXES, type LinkStyleProps } from './link';
 export type {
@@ -265,6 +270,10 @@ export type {
 } from './icon-button/styles';
 export type { ButtonType } from '../runes/button/press.svelte';
 export { ICON_BUTTON_AXES, type IconButtonStyleProps } from './icon-button';
+export {
+  BUTTON_GROUP_AXES,
+  type ButtonGroupStyleProps,
+} from './button-group';
 export type {
   AccordionClasses,
   AccordionItemState,

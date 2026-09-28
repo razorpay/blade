@@ -30,7 +30,7 @@
     >
       I agree to the terms
     </Checkbox>
-    <Button loadingAnnouncement="Placing order">Place order</Button>
+    <Button type="submit" loadingAnnouncement="Placing order">Place order</Button>
     <dl class="grid [grid-template-columns:auto_1fr] gap-x-3 gap-y-1 text-25 leading-50">
       <dt class="text-surface-gray-subtle">errors</dt>
       <dd class="font-code">{JSON.stringify(state.errors)}</dd>

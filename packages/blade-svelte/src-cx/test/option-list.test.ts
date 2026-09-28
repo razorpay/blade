@@ -34,7 +34,7 @@ describe('OptionList', () => {
     expectNoClass(getByTestId('banks-0').parentElement, 'bg-interactive-gray-faded-highlighted');
   });
 
-  it('tells the item snippet the index, pick and disabled state', async () => {
+  it('tells the item children the index, pick and disabled state', async () => {
     const { getByTestId, getByText } = render(OptionListHarness);
     expect(getByText('2:off:disabled')).toBeTruthy();
     await fireEvent.click(getByTestId('banks-0'));
@@ -233,6 +233,24 @@ describe('OptionList keyboard', () => {
     expect(
       await fireEvent.keyDown(getByTestId('banks-0'), { key: 'Escape' })
     ).toBe(true);
+  });
+});
+
+describe('OptionList children', () => {
+  it('leaves non-item children out of the options, the value and the keyboard', async () => {
+    const { getByTestId, getByRole } = render(OptionListHarness, {
+      props: { extras: true },
+    });
+    // The heading and the button sit between items; indices skip them.
+    expect(getByTestId('banks-1')).toBeTruthy();
+    const more = getByRole('button', { name: 'All options' });
+    getByTestId('banks-0').focus();
+    await fireEvent.keyDown(getByTestId('banks-0'), { key: 'ArrowDown' });
+    expect(document.activeElement).toBe(getByTestId('banks-1'));
+    // The button keeps its own Enter: the list does not take it as a pick.
+    more.focus();
+    expect(await fireEvent.keyDown(more, { key: 'Enter' })).toBe(true);
+    expect(getByTestId('bound').textContent).toBe('none');
   });
 });
 

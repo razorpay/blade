@@ -5,6 +5,7 @@
   import BasicStory from './Basic.svelte';
   import MultipleStory from './Multiple.svelte';
   import FilteredStory from './Filtered.svelte';
+  import WithOtherChildrenStory from './WithOtherChildren.svelte';
   import VirtualisedStory from './Virtualised.svelte';
   import InFormStory from './InForm.svelte';
 
@@ -48,6 +49,17 @@
 >
   {#snippet template(args)}
     <FilteredStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Headings and a button"
+  args={meta.stories.WithOtherChildren.args}
+  argTypes={meta.stories.WithOtherChildren.argTypes}
+  parameters={{ docs: { description: { story: meta.stories.WithOtherChildren.description } } }}
+>
+  {#snippet template(args)}
+    <WithOtherChildrenStory args={args as never} />
   {/snippet}
 </Story>
 

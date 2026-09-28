@@ -4,25 +4,28 @@
 
   interface Props {
     isOpen?: boolean;
+    isDismissible?: boolean;
     closeLabel?: string;
-    withActions?: boolean;
     onDismiss?: () => void;
   }
 
-  let { isOpen, closeLabel, withActions = false, onDismiss }: Props = $props();
+  let {
+    isOpen = $bindable(true),
+    isDismissible,
+    closeLabel,
+    onDismiss,
+  }: Props = $props();
 </script>
 
-{#snippet retry()}<button type="button">Retry</button>{/snippet}
-
 <Alert
-  {isOpen}
+  bind:isOpen
+  {isDismissible}
   {closeLabel}
   {onDismiss}
   title="Payment failed"
+  description="Try another method"
   icon={warning}
-  actions={withActions ? retry : undefined}
   testID="problem"
   class="mt-2"
->
-  Try another method
-</Alert>
+/>
+<p data-testid="open">{isOpen ? 'open' : 'closed'}</p>

@@ -38,5 +38,5 @@
     {format}
     testID="card-number"
   />
-  <Button testID="pay">Pay</Button>
+  <Button type="submit" testID="pay">Pay</Button>
 </Form>

@@ -31,7 +31,7 @@
       autoFocus
       helpText="Enter fires the submit from any cell"
     />
-    <Button loadingAnnouncement="Verifying">Verify</Button>
+    <Button type="submit" loadingAnnouncement="Verifying">Verify</Button>
     <dl class="grid [grid-template-columns:auto_1fr] gap-x-3 gap-y-1 text-25 leading-50">
       <dt class="text-surface-gray-subtle">errors</dt>
       <dd class="font-code">{JSON.stringify(state.errors)}</dd>

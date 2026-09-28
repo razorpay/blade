@@ -43,8 +43,11 @@ describe('Modal', () => {
     const modal = getByRole('dialog', { name: 'Remove card' });
     const subtitle = getByTestId('subtitle');
     expect(modal.contains(subtitle)).toBe(true);
-    expect(subtitle.previousElementSibling?.textContent).toBe('Remove card');
-    expectClass(subtitle.parentElement as HTMLElement, 'p-5');
+    // The title over the header snippet, in Blade's BaseHeader box.
+    const title = subtitle.previousElementSibling as HTMLElement;
+    expect(title.textContent).toBe('Remove card');
+    expectClass(title, 'text-200');
+    expectClass(title.closest('.border-b-thin') as HTMLElement, 'p-4');
   });
 
   it('body gets the padded container; children render raw and win over body', () => {
@@ -136,9 +139,9 @@ describe('Modal', () => {
     expect(queryByTestId('modal')).toBeNull();
   });
 
-  it('a non-dismissible modal ignores backdrop and Escape but not the close button', async () => {
+  it('a non-dismissible modal ignores backdrop and Escape, and has no close button', async () => {
     const onDismiss = vi.fn();
-    const { getByTestId, getByRole, queryByTestId } = render(ModalHarness, {
+    const { getByTestId, queryByRole, queryByTestId } = render(ModalHarness, {
       props: { withHost: true, isDismissible: false, onDismiss },
     });
     await fireEvent.click(getByTestId('trigger'));
@@ -147,9 +150,10 @@ describe('Modal', () => {
     await escape();
     expect(onDismiss).not.toHaveBeenCalled();
     expect(queryByTestId('modal')).not.toBeNull();
-
-    await fireEvent.click(getByRole('button', { name: 'Close' }));
-    expect(onDismiss).toHaveBeenCalledWith('cross');
+    // Blade: the close button shows only while it may dismiss.
+    expect(
+      queryByRole('button', { name: 'Close', hidden: false })
+    ).toBeNull();
   });
 
   it('a close made by the host does not report a dismiss', async () => {
@@ -264,7 +268,7 @@ describe('Modal look={bottomSheetLook}', () => {
 
   it('sits at the bottom with a handle; the default look has none', () => {
     const { getByTestId, unmount } = sheet({ placement: 'center' });
-    expectClass(getByTestId('modal'), 'rounded-tl-small');
+    expectClass(getByTestId('modal'), 'rounded-tl-large');
     expectClass(getByTestId('modal-drag-zone'), 'touch-none');
     unmount();
     vi.restoreAllMocks();
@@ -290,12 +294,23 @@ describe('Modal look={bottomSheetLook}', () => {
     vi.restoreAllMocks();
   });
 
-  it('the header is part of the drag zone; the close button is not', async () => {
-    const { getByTestId, getByText, getByLabelText, onDismiss } = sheet();
+  it('a press on the close button in the drag zone is a click, not a drag', async () => {
+    const { getByTestId, getByLabelText, onDismiss } = sheet();
+    const close = getByLabelText('Close');
+    expect(getByTestId('modal-drag-zone').contains(close)).toBe(true);
+    await fireEvent(close, pointer('pointerdown', 100, 0));
+    expect(getByTestId('modal').style.transform).toBe('');
+    await fireEvent(close, pointer('pointerup', 100, 0));
+    await fireEvent.click(close);
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith('cross');
+    vi.restoreAllMocks();
+  });
+
+  it('the header is part of the drag zone', async () => {
+    const { getByTestId, getByText, onDismiss } = sheet();
     const zone = getByTestId('modal-drag-zone');
     const title = getByText('Remove card');
     expect(zone.contains(title)).toBe(true);
-    expect(zone.contains(getByLabelText('Close'))).toBe(false);
 
     await fireEvent(title, pointer('pointerdown', 100, 0));
     await fireEvent(title, pointer('pointermove', 350, 2000));

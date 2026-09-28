@@ -1,14 +1,14 @@
 import { getContext, setContext } from 'svelte';
+import type { ChoiceEntry } from '../base/choice-list.svelte';
 
 /** What identifies an item: its `value`, or its position among the items. */
 export type AccordionValue = string | number;
 
-/** One AccordionItem, as the accordion knows it. */
-export interface AccordionEntry {
-  /** The header button, once mounted: orders the items and takes focus. */
-  getElement: () => HTMLElement | undefined;
-  isDisabled: () => boolean;
-}
+/**
+ * One AccordionItem, as the accordion knows it: a choice of the headless
+ * choice list, whose element is the header button.
+ */
+export type AccordionEntry = ChoiceEntry<AccordionValue>;
 
 /**
  * What an Accordion offers the AccordionItems inside it. `Shared` is the

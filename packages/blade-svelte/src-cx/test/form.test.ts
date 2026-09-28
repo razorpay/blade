@@ -95,7 +95,7 @@ describe('Form + TextInput + Button', () => {
     await waitFor(() => {
       expect(button.getAttribute('aria-busy')).toBe('true');
     });
-    expectMarkup(button, 'animate-bounce');
+    expectMarkup(button, 'animate-dot');
 
     resolveSubmit();
     await waitFor(() => {

@@ -24,18 +24,19 @@ describe('IconButton', () => {
     });
   });
 
-  it('sizes the box and the glyph together', () => {
+  it('sizes the glyph 12, 16, 20px; bare, the button is the glyph', () => {
     const sizes = [
-      ['small', 'w-6 h-6', 'w-3 h-3'],
-      ['medium', 'w-8 h-8', 'w-4 h-4'],
-      ['large', 'w-10 h-10', 'w-5 h-5'],
+      ['small', 'w-3 h-3'],
+      ['medium', 'w-4 h-4'],
+      ['large', 'w-5 h-5'],
     ] as const;
-    for (const [size, box, glyph] of sizes) {
+    for (const [size, glyph] of sizes) {
       const { getByTestId, unmount } = render(IconButtonHarness, {
         props: { size },
       });
       const button = getByTestId('dismiss');
-      expect(button.className).toContain(box);
+      expect(button.className).not.toMatch(/\bw-\d/);
+      expectClass(button, 'rounded-2xsmall');
       expect(button.querySelector('svg')?.parentElement?.className).toContain(
         glyph
       );
@@ -43,11 +44,32 @@ describe('IconButton', () => {
     }
   });
 
-  it('draws the boxed variant with a border', () => {
-    const { getByTestId } = render(IconButtonHarness, {
-      props: { variant: 'boxed' },
+  it('highlighted: a 24 or 32px box, gray on hover; large never boxes', () => {
+    const small = render(IconButtonHarness, {
+      props: { size: 'small', isHighlighted: true },
     });
-    expectClass(getByTestId('dismiss'), 'border-thin');
+    expectClass(small.getByTestId('dismiss'), 'w-6');
+    expectClass(
+      small.getByTestId('dismiss'),
+      'hover:enabled:bg-interactive-gray-faded-highlighted'
+    );
+    small.unmount();
+    const large = render(IconButtonHarness, {
+      props: { size: 'large', isHighlighted: true },
+    });
+    expect(large.getByTestId('dismiss').className).not.toContain('w-');
+  });
+
+  it('intense is gray; subtle and moderate are white, moderate on a faint box', () => {
+    const intense = render(IconButtonHarness).getByTestId('dismiss');
+    expectClass(intense, 'icon-interactive-gray-muted');
+    intense.remove();
+    const moderate = render(IconButtonHarness, {
+      props: { emphasis: 'moderate' },
+    }).getByTestId('dismiss');
+    expectClass(moderate, 'icon-interactive-static-white-normal');
+    expectClass(moderate, 'bg-interactive-static-white-faded');
+    expectClass(moderate, 'w-8');
   });
 
   it('a disabled button swallows a synthetic click', () => {

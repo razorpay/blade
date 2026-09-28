@@ -52,7 +52,7 @@
 {#if inForm}
   <Form name="nb" {onSubmit} formatConstraintError={(code) => `msg:${code}`}>
     {@render group(true)}
-    <Button testID="continue">Continue</Button>
+    <Button type="submit" testID="continue">Continue</Button>
   </Form>
 {:else}
   {@render group(false)}

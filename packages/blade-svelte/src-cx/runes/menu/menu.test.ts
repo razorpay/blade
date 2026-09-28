@@ -1,22 +1,31 @@
 import { describe, it, expect, vi } from 'vitest';
-import { flushSync } from 'svelte';
+import { flushSync, tick } from 'svelte';
 import { run } from '../../test/run';
+import type { MenuEntry } from './context';
 import { createMenu, createMenuModel } from './menu.svelte';
 
 const key = (name: string) =>
   new KeyboardEvent('keydown', { key: name, cancelable: true });
 
+function entries(labels: string[], onSelect: (label: string) => void) {
+  const box = document.createElement('div');
+  return labels.map((label) => {
+    const node = box.appendChild(document.createElement('button'));
+    const entry: MenuEntry = {
+      isDisabled: () => false,
+      text: () => label,
+      select: () => onSelect(label),
+      getElement: () => node,
+    };
+    return entry;
+  });
+}
+
 describe('createMenu', () => {
-  it('opens on ArrowDown at the first item and picks with Enter', () => {
+  it('opens on ArrowDown at the first item, once the items registered, and picks with Enter', async () => {
     const onSelect = vi.fn();
     const { value: menu, unmount } = run(() =>
-      createMenu<string>({
-        id: 'm',
-        items: () => ['Edit', 'Delete'],
-        itemLabel: (item) => item,
-        isItemDisabled: () => false,
-        onSelect,
-      })
+      createMenu({ id: 'm', shared: () => undefined })
     );
     expect(menu.isOpen).toBe(false);
 
@@ -25,6 +34,10 @@ describe('createMenu', () => {
     flushSync();
     expect(open.defaultPrevented).toBe(true);
     expect(menu.isOpen).toBe(true);
+    // The items mount with the open menu, then register.
+    entries(['Edit', 'Delete'], onSelect).forEach((entry) => menu.register(entry));
+    await tick();
+    flushSync();
     expect(menu.activeIndex).toBe(0);
 
     menu.handleKey(key('ArrowDown'));
@@ -38,20 +51,19 @@ describe('createMenu', () => {
     unmount();
   });
 
-  it('a click on the trigger opens at the first item; Escape closes', () => {
+  it('a click on the trigger opens at the first item; Escape closes', async () => {
     const { value: menu, unmount } = run(() =>
-      createMenu<string>({
-        id: 'm',
-        items: () => ['Edit', 'Delete'],
-        itemLabel: (item) => item,
-        isItemDisabled: () => false,
-        onSelect: () => undefined,
-      })
+      createMenu({ id: 'm', shared: () => undefined })
     );
     const trigger = document.createElement('button');
     menu.handleTriggerClick({ target: trigger } as unknown as MouseEvent);
     flushSync();
     expect(menu.isOpen).toBe(true);
+    entries(['Edit', 'Delete'], () => undefined).forEach((entry) =>
+      menu.register(entry)
+    );
+    await tick();
+    flushSync();
     expect(menu.activeIndex).toBe(0);
 
     menu.handleKey(key('Escape'));

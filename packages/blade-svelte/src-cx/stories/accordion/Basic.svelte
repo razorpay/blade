@@ -32,7 +32,7 @@
   ];
 </script>
 
-<div class="max-w-160">
+<div class="max-w-blade-640">
   <Accordion
     variant={args.variant}
     size={args.size}

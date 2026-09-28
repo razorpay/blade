@@ -3,7 +3,7 @@
 A button whose whole content is one glyph. It is a separate component from
 `Button`, not `Button` without children, for three reasons: the accessible
 name must be **required** (the glyph is decorative), the look has different
-axes (a box around a glyph), and by default a press leaves the enclosing Form
+axes (a glyph, optionally in a box), and by default a press leaves the enclosing Form
 alone (`type="button"`).
 
 The behaviour is Button's, shared through
@@ -26,3 +26,8 @@ button stays focusable and swallows presses, `type="submit"` submits the Form
 The box is always larger than the glyph so the tap target is never just the
 drawing. Where the box should not take room (a close button flush with a
 corner), pull it in with a negative margin through `class`.
+| `emphasis` | `intense` (default: a gray glyph, for light surfaces), `subtle` (white, for dark ones), `moderate` (white on a faint white box) |
+| `size` | The glyph: `small` 12px, `medium` 16px (default), `large` 20px |
+| `isHighlighted` | A 24 or 32px box behind the glyph on hover and focus; not at `large` |
+
+API parity with Blade React: see `src-cx/API-PARITY.md`.

@@ -5,6 +5,7 @@
   const rows = [
     { currency: 'INR', locale: 'en-IN' },
     { currency: 'USD', locale: 'en-US' },
+    { currency: 'SGD', locale: 'en-SG' },
     { currency: 'EUR', locale: 'de-DE' },
     { currency: 'JPY', locale: 'ja-JP' },
     { currency: 'KWD', locale: 'en-KW' },
@@ -19,30 +20,28 @@
       <Text size="xsmall" color="muted" class="w-20">
         {row.currency} · {row.locale}
       </Text>
-      <Amount
-        value={1234567.891}
-        currency={row.currency}
-        locale={row.locale}
-        size="large"
-      />
+      <Text size="large">
+        <Amount
+          value={1234567.891}
+          currency={row.currency}
+          locale={row.locale}
+          fractionDigits="auto"
+        />
+      </Text>
     </div>
   {/each}
   <div class="flex items-baseline gap-2 pt-2">
-    <Amount
-      value={129900}
-      currency="INR"
-      unit="minor"
-      locale="en-IN"
-      color="muted"
-      isStrikethrough
-    />
-    <Amount
-      value={99900}
-      currency="INR"
-      unit="minor"
-      locale="en-IN"
-      size="large"
-      weight="semibold"
-    />
+    <Text color="muted">
+      <Amount
+        value={129900}
+        currency="INR"
+        unit="minor"
+        locale="en-IN"
+        isStrikethrough
+      />
+    </Text>
+    <Text size="large" weight="semibold">
+      <Amount value={99900} currency="INR" unit="minor" locale="en-IN" />
+    </Text>
   </div>
 </div>

@@ -8,77 +8,95 @@
   import { resolveAlert, type AlertStyleProps } from './styles';
 
   type Props = AlertStyleProps & {
-    /** Slides shut and open; an alert that is always there never animates. */
-    isOpen?: boolean;
+    /** The message: text, or a snippet (a Link at most). */
+    description: string | Snippet;
     title?: string;
-    /** Decorative, before the text. */
+    /**
+     * Before the text.
+     * @default the colour's icon (info, check, triangle, octagon)
+     */
     icon?: IconSource;
-    /** Localized; the dismiss button exists only when it has a name. */
-    closeLabel?: string;
-    /** The dismiss button was pressed; the owner closes it (`isOpen`). */
+    /**
+     * Shows the dismiss button; pressing it closes the alert.
+     * @default true
+     */
+    isDismissible?: boolean;
+    /** The dismiss button was pressed, before the alert closes. */
     onDismiss?: () => void;
-    /** Buttons or links, under the description. */
-    actions?: Snippet;
+    /**
+     * Whether the alert shows. Dismissing sets it to `false`; bind it to
+     * bring the alert back.
+     * @default true
+     */
+    isOpen?: boolean;
+    /**
+     * The dismiss button's accessible name.
+     * @default 'Dismiss alert'
+     */
+    closeLabel?: string;
     testID?: string;
     class?: string;
-    /** The description. */
-    children: Snippet;
   };
 
   let {
-    isOpen = true,
+    description,
     title,
     icon,
-    closeLabel,
+    isDismissible = true,
     onDismiss,
-    actions,
+    isOpen = $bindable(true),
+    closeLabel = 'Dismiss alert',
     testID,
     class: className = '',
-    children,
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolveAlert(styleProps));
+  const classes = $derived(
+    resolveAlert(styleProps, Boolean(title))
+  );
 
   // Svelte slides through the Web Animations API: without it, or with
-  // reduced motion, the alert just mounts.
+  // reduced motion, the alert just goes.
   const isStill =
     typeof document === 'undefined' ||
     typeof document.body.animate !== 'function' ||
     prefersReducedMotion();
+
+  function dismiss() {
+    onDismiss?.();
+    isOpen = false;
+  }
 </script>
 
 {#if isOpen}
   <div
     class={cx(classes.root, className)}
     role={classes.role}
+    aria-live={classes.live}
     data-testid={testID}
-    transition:slide={{ duration: isStill ? 0 : classes.slide }}
+    out:slide={{ duration: isStill ? 0 : classes.slide }}
   >
-    {#if icon}
-      <span class={classes.icon}>
-        <Icon source={icon} />
-      </span>
-    {/if}
+    <span class={classes.icon}>
+      <Icon source={icon ?? classes.defaultIcon} />
+    </span>
     <div class={classes.text}>
       {#if title}
         <p class={classes.title}>{title}</p>
       {/if}
-      <div class={classes.description}>
-        {@render children()}
-      </div>
-      {#if actions}
-        <div class={classes.actions}>
-          {@render actions()}
-        </div>
-      {/if}
+      <p class={classes.description}>
+        {#if typeof description === 'string'}
+          {description}
+        {:else}
+          {@render description()}
+        {/if}
+      </p>
     </div>
-    {#if closeLabel}
+    {#if isDismissible}
       <button
         type="button"
         class={classes.close}
         aria-label={closeLabel}
-        onclick={() => onDismiss?.()}
+        onclick={dismiss}
       >
         <Icon source={classes.closeIcon} />
       </button>

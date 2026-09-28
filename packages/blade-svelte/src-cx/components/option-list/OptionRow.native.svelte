@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { Attachment } from 'svelte/attachments';
   import { cx } from '../../cx';
   import type { OptionRowClasses } from './styles';
 
@@ -11,6 +12,8 @@
     classes: OptionRowClasses;
     optionState?: Record<string, string>;
     onToggle: (event: Event) => boolean;
+    /** On the row: how the list orders the item. */
+    attach?: Attachment<HTMLElement>;
     children: Snippet;
   }
 
@@ -20,6 +23,7 @@
     classes,
     optionState,
     onToggle,
+    attach = () => {},
     children,
   }: Props = $props();
 </script>
@@ -33,6 +37,7 @@
   )}
   {...optionState}
   onclick={onToggle}
+  {@attach attach}
 >
   <span class={classes.content}>{@render children()}</span>
 </div>

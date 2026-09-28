@@ -41,5 +41,5 @@
     <TextInput name="expiry" label="Expiry" span="2/3" testID="expiry" />
     <TextInput name="cvv" label="CVV" span="1/3" isRequired testID="cvv" />
   </InputGroup>
-  <Button testID="pay">Pay</Button>
+  <Button type="submit" testID="pay">Pay</Button>
 </Form>

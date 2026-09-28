@@ -9,12 +9,13 @@
     type?: 'submit' | 'button';
     isDisabled?: boolean;
     isLoading?: boolean;
-    variant?: 'plain' | 'boxed';
+    emphasis?: 'intense' | 'subtle' | 'moderate';
+    isHighlighted?: boolean;
     size?: 'small' | 'medium' | 'large';
     onSubmit?: (data: Record<string, unknown>) => void;
   }
 
-  let { onClick, type, isDisabled, isLoading, variant, size, onSubmit }: Props =
+  let { onClick, type, isDisabled, isLoading, emphasis, isHighlighted, size, onSubmit }: Props =
     $props();
 </script>
 
@@ -27,7 +28,8 @@
     {type}
     {isDisabled}
     {isLoading}
-    {variant}
+    {emphasis}
+    {isHighlighted}
     {size}
     loadingAnnouncement="Working"
     testID="dismiss"

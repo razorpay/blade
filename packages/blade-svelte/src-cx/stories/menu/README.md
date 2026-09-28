@@ -1,17 +1,39 @@
 # Menu
 
-`packages/blade/components/menu/Menu.svelte` over `createMenu`; the
-floating half is the Popover's panel (`role="menu"`).
+`components/menu/Menu.svelte` over `createMenu`; the floating half is the
+Popover's panel (`role="menu"`). Its items are the `MenuItem`s inside it,
+read in document order — anything between them (a heading, a divider) is
+left alone and outside the keyboard.
+
+```svelte
+<Menu accessibilityLabel="Address actions" onSelect={(action) => run(action)}>
+  {#snippet trigger()}
+    <IconButton icon={icons.more} accessibilityLabel="Address actions" />
+  {/snippet}
+  <MenuItem value="edit" title="Edit address" icon={icons.user} />
+  <MenuItem value="copy" title="Copy address" icon={icons.copy} />
+  <hr />
+  <MenuItem value="remove" title="Remove" icon={icons.close} />
+</Menu>
+```
 
 | Prop | Notes |
 | --- | --- |
-| `items`, `itemKey`, `itemLabel` | The label is what shows and what typeahead matches |
-| `itemIcon`, `isItemDisabled` | Per item |
-| `item(item)` | Replaces an item's icon and label |
-| `onSelect` | A choice is an act: it reports and the menu closes |
+| `trigger` | Snippet: a Button or IconButton; the menu stamps `aria-haspopup` / `aria-expanded` on it |
+| `children` | The `MenuItem`s and anything between them; they mount while the menu is open |
+| `onSelect` | A `MenuItem` with a `value` was chosen: it reports the value and the menu closes |
 | `onOpenChange`, `placement` | Default `bottom-end` |
-| `children` | The trigger — a Button or IconButton; the menu stamps `aria-haspopup` / `aria-expanded` on it |
 | `accessibilityLabel` | Names the menu |
+
+`MenuItem`:
+
+| Prop | Notes |
+| --- | --- |
+| `title` | What shows, and what typeahead matches |
+| `icon`, `isDisabled` | Per item |
+| `value` | Reported to the Menu's `onSelect` |
+| `onClick` | The item's own act, before `onSelect` |
+| `children` | Custom content in place of the icon and title |
 
 On the trigger, arrows, Enter and Space open it; inside, arrows rove (wrapping,
 skipping disabled items), Home/End jump, a typed letter finds a match, Escape

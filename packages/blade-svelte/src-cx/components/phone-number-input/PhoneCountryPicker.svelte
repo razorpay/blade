@@ -2,7 +2,8 @@
   import { findPhoneCountry, type PhoneCountry } from '../../runes/phone/parts';
   import { createPhonePicker } from '../../runes/phone/picker.svelte';
   import type { ModalControl } from '../modal/overlays';
-  import OptionList from '../option-list/OptionList.svelte';
+  import OptionItem from '../option-list/OptionItem.svelte';
+  import VirtualOptionList from '../option-list/VirtualOptionList.svelte';
   import TextInput from '../text-input/TextInput.svelte';
   import {
     resolvePhoneNumberInput,
@@ -55,8 +56,7 @@
   {/if}
 {:else}
   <!-- Deselectable, so a tap on the country already picked still closes. -->
-  <OptionList
-    virtualize
+  <VirtualOptionList
     options={matches}
     optionKey={(option) => option.code}
     optionText={(option) => option.name}
@@ -69,14 +69,18 @@
     class={classes.list}
     {...classes.optionList}
   >
-    {#snippet item(option)}
-      <span class={classes.row}>
-        {#if option.flag}
-          <img class={classes.flag} src={option.flag} alt="" loading="lazy" />
-        {/if}
-        <span class={classes.rowName}>{option.name}</span>
-        <span class={classes.rowDialCode}>{option.dialCode}</span>
-      </span>
+    {#snippet children(option)}
+      <OptionItem value={option} text={option.name}>
+        {#snippet children()}
+          <span class={classes.row}>
+            {#if option.flag}
+              <img class={classes.flag} src={option.flag} alt="" loading="lazy" />
+            {/if}
+            <span class={classes.rowName}>{option.name}</span>
+            <span class={classes.rowDialCode}>{option.dialCode}</span>
+          </span>
+        {/snippet}
+      </OptionItem>
     {/snippet}
-  </OptionList>
+  </VirtualOptionList>
 {/if}

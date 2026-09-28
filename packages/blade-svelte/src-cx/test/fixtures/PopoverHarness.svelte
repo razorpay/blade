@@ -2,6 +2,7 @@
   import LayerHost from '../../components/layer/LayerHost.svelte';
   import { provideLayers } from '../../runes/layer/layers';
   import Menu from '../../components/menu/Menu.svelte';
+  import MenuItem from '../../components/menu/MenuItem.svelte';
   import Popover from '../../components/popover/Popover.svelte';
 
   interface Props {
@@ -23,16 +24,13 @@
       <button type="button" onclick={close}>Got it</button>
     {/snippet}
   </Popover>
-  <Menu
-    items={ITEMS}
-    itemKey={(item) => item}
-    itemLabel={(item) => item}
-    isItemDisabled={(item) => item === 'Archive'}
-    {onSelect}
-    accessibilityLabel="Card actions"
-    testID="menu"
-  >
-    <button type="button">More</button>
+  <Menu {onSelect} accessibilityLabel="Card actions" testID="menu">
+    {#snippet trigger()}
+      <button type="button">More</button>
+    {/snippet}
+    {#each ITEMS as item (item)}
+      <MenuItem value={item} title={item} isDisabled={item === 'Archive'} />
+    {/each}
   </Menu>
   <button type="button" data-testid="elsewhere">Elsewhere</button>
 </main>

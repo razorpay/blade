@@ -1,6 +1,5 @@
 <script lang="ts">
   import { provideAdapters } from '../../adapters';
-  import Button from '../../components/button/Button.svelte';
   import Link from '../../components/link/Link.svelte';
   import { chevronDown } from '../../components/icons';
 
@@ -58,6 +57,3 @@
     Pay by card
   </Link>
 </div>
-<Button variant="link" type="button" {color} {size} testID="action">
-  Resend code
-</Button>

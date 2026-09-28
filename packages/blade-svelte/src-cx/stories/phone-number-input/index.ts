@@ -3,7 +3,7 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'Phone number input',
   description:
-    'A TextInput for the national number with a country button that opens a bottom-sheet picker (Modal + virtualised OptionList). The value is the whole number with its dial code; the app supplies the countries.',
+    'A TextInput for the national number with a country button that opens a bottom-sheet picker (Modal + VirtualOptionList). The value is the whole number with its dial code; the app supplies the countries.',
   argTypes: {
     label: { control: 'text' },
     placeholder: { control: 'text' },

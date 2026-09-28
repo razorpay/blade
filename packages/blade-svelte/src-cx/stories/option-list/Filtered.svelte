@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { OptionList, OptionListItem, TextInput } from '../../index';
+  import { OptionItem, OptionList, TextInput } from '../../index';
   import { BANKS, type Bank } from './banks';
 
   let query = $state<string | number | null | undefined>('');
@@ -20,16 +20,20 @@
   />
   <OptionList
     accessibilityLabel="Bank"
-    options={filtered}
-    optionKey={(bank) => bank.code}
     bind:value
     indicator="trailing"
   >
-    {#snippet item(bank, state)}
-      <OptionListItem
-        title={bank.name}
-        trailing={state.isSelected ? 'Selected' : undefined}
-      />
-    {/snippet}
+    {#each filtered as bank (bank.code)}
+      <OptionItem value={bank} title={bank.name}>
+        {#snippet children(state)}
+          <span class="flex w-full items-center justify-between gap-3">
+            <span>{bank.name}</span>
+            {#if state.isSelected}
+              <span class="text-75 leading-50 text-interactive-gray-muted">Selected</span>
+            {/if}
+          </span>
+        {/snippet}
+      </OptionItem>
+    {/each}
   </OptionList>
 </div>

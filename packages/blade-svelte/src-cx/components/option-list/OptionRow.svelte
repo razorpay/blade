@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { Attachment } from 'svelte/attachments';
   import { cx } from '../../cx';
   import { createOptionRow } from '../../runes/option-list/row.svelte';
   import type { OptionRowClasses } from './styles';
@@ -16,6 +17,11 @@
     isTabStop: boolean;
     /** Focus landed here (Tab, a click): the keyboard continues from it. */
     onFocus: () => void;
+    onBlur: () => void;
+    /** The list's keys: on the control, so other children of the list keep theirs. */
+    onKeyDown: (event: KeyboardEvent) => void;
+    /** On the row: how the list orders and focuses the item. */
+    attach?: Attachment<HTMLElement>;
     classes: OptionRowClasses;
     /** Native-only: the attributes a native row carries. */
     optionState?: Record<string, string>;
@@ -34,6 +40,9 @@
     isActive,
     isTabStop,
     onFocus,
+    onBlur,
+    onKeyDown,
+    attach = () => {},
     classes,
     onToggle,
     testID,
@@ -55,6 +64,7 @@
     isActive && classes.rowActive,
     isDisabled && classes.rowDisabled
   )}
+  {@attach attach}
 >
   <input
     type={kind}
@@ -66,6 +76,8 @@
     data-testid={testID}
     onclick={row.handleClick}
     onfocus={onFocus}
+    onfocusout={onBlur}
+    onkeydown={onKeyDown}
     {@attach row.attach}
   />
   <span class={classes.content}>{@render children()}</span>

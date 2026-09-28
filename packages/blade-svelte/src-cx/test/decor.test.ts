@@ -2,22 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/svelte';
 import DecorHarness from './fixtures/DecorHarness.svelte';
 
-describe('Card (preset component)', () => {
-  it('is an unpadded surface; the caller class comes last', () => {
-    const card = render(DecorHarness).getByTestId('plain-card');
-    expect(card.className).not.toMatch(/\bp-\d/);
-    expect(card.className).toContain('border-thin');
-    expect(card.hasAttribute('role')).toBe(false);
-    expect(card.className.endsWith('mt-2')).toBe(true);
-  });
-
-  it('a label makes it a named group', () => {
-    const { getByRole } = render(DecorHarness);
-    const card = getByRole('group', { name: 'Banks' });
-    expect(card.className).toContain('bg-surface-gray-moderate');
-  });
-});
-
 describe('Divider (preset component)', () => {
   it('is a separator with one border per orientation', () => {
     const { getByTestId } = render(DecorHarness);
@@ -32,17 +16,6 @@ describe('Divider (preset component)', () => {
     expect(upright.className).toContain('border-l-thin');
     expect(upright.className).not.toContain('border-t-thin');
     expect(upright.className).toContain('border-dashed');
-  });
-});
-
-describe('Badge (preset component)', () => {
-  it('resolves colour, emphasis and size', () => {
-    const { getByTestId } = render(DecorHarness);
-    expect(getByTestId('tag').className).toContain('bg-feedback-neutral-subtle');
-    expect(getByTestId('tag').className.endsWith('ml-1')).toBe(true);
-    const paid = getByTestId('paid');
-    expect(paid.className).toContain('bg-feedback-positive-intense');
-    expect(paid.className).toContain('text-25');
   });
 });
 

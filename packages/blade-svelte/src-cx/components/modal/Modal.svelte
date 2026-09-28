@@ -31,7 +31,10 @@
     role?: 'dialog' | 'alertdialog';
     /** The modal's name, first in the header: a string or a snippet. */
     title?: string | Snippet;
-    /** The rest of the header, under the title (a subtitle). */
+    /**
+     * The rest of the header, under the title: a subtitle, a back button,
+     * a badge — anything Blade's header props did, as content.
+     */
     header?: Snippet;
     /**
      * Content in the preset's padded, scrolling body. `close` is for the
@@ -43,8 +46,9 @@
     /** Raw content: no container, no padding — the content owns its box. */
     children?: Snippet<[{ close: () => void }]>;
     /**
-     * Localized name of the close button — the library ships no copy. The
-     * button exists only when it has a name.
+     * The close button's accessible name; the button shows while the modal
+     * is dismissible.
+     * @default 'Close'
      */
     closeLabel?: string;
     /** Names the modal when there is no `title`. */
@@ -71,7 +75,7 @@
     body,
     footer,
     children,
-    closeLabel,
+    closeLabel = 'Close',
     accessibilityLabel,
     testID,
     class: className = '',
@@ -94,21 +98,53 @@
 
   const classes = $derived((look ?? resolveModal)(styleProps));
   const close = () => dialog.close();
+  const hasHeader = $derived(Boolean(title || headerContent));
 </script>
 
 <!--
   No DOM access here: everything platform-bound lives in Surface.svelte and
   its native twin, so this component is shared by web and native as is.
 -->
+{#snippet text(slot: string | Snippet, className: string, id?: string)}
+  {#if typeof slot === 'string'}
+    <p {id} class={className}>{slot}</p>
+  {:else}
+    <div {id}>{@render slot()}</div>
+  {/if}
+{/snippet}
+
+{#snippet closeButton(className: string)}
+  <button
+    type="button"
+    class={className}
+    aria-label={closeLabel}
+    onclick={() => dialog.close('cross')}
+  >
+    <ModalCloseIcon {...styleProps} />
+  </button>
+{/snippet}
+
 {#snippet header()}
-  {#if title || headerContent}
+  {#if hasHeader}
     <div class={classes.header}>
-      {#if typeof title === 'string'}
-        <h2 id={titleId} class={classes.title}>{title}</h2>
-      {:else if title}
-        <div id={titleId}>{@render title()}</div>
+      <div class={classes.headerRow}>
+        <div class={classes.titleBlock}>
+          {#if title}
+            {@render text(title, classes.title, titleId)}
+          {/if}
+          {@render headerContent?.()}
+        </div>
+        {#if isDismissible}
+          {@render closeButton(classes.close)}
+        {/if}
+      </div>
+    </div>
+  {:else}
+    <!-- Blade's empty header: an 8px strip holding the floating close. -->
+    <div class={classes.emptyHeader}>
+      {#if isDismissible}
+        {@render closeButton(classes.floatingClose)}
       {/if}
-      {@render headerContent?.()}
     </div>
   {/if}
 {/snippet}
@@ -127,16 +163,6 @@
   class={className}
   {header}
 >
-  {#if closeLabel}
-    <button
-      type="button"
-      class={classes.close}
-      aria-label={closeLabel}
-      onclick={() => dialog.close('cross')}
-    >
-      <ModalCloseIcon {...styleProps} />
-    </button>
-  {/if}
   {#if children}
     {@render children({ close })}
   {:else if body}

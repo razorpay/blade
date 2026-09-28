@@ -17,7 +17,7 @@ const meta: StoryMeta = {
     Basic: {
       args: {
         variant: 'primary',
-        color: 'neutral',
+        color: 'primary',
         size: 'medium',
         isLoading: false,
         isDisabled: false,

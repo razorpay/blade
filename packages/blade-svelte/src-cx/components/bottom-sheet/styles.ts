@@ -70,7 +70,10 @@ export interface BottomSheetBehaviourProps {
   role?: 'dialog' | 'alertdialog';
   /** The sheet's name, first in the header: a string or a snippet. */
   title?: string | Snippet;
-  /** The rest of the header, under the title (a subtitle). */
+  /**
+   * The rest of the header, under the title: a subtitle, a back button,
+   * a badge — anything Blade's header props did, as content.
+   */
   header?: Snippet;
   /**
    * Content in the preset's padded, scrolling body. `close` is for the
@@ -82,8 +85,9 @@ export interface BottomSheetBehaviourProps {
   /** Raw content: no container, no padding — the content owns its box. */
   children?: Snippet<[{ close: () => void }]>;
   /**
-   * Localized name of the close button — the library ships no copy. The
-   * button exists only when it has a name.
+   * The close button's accessible name; the button shows while the sheet
+   * is dismissible.
+   * @default 'Close'
    */
   closeLabel?: string;
   /** Names the sheet when there is no `title`. */
@@ -100,11 +104,21 @@ export type BottomSheetComponent = Component<
 
 // The zone — the handle strip and the header — takes the drag, so it must
 // not scroll or pull-to-refresh.
+// Blade's grab handle: a 56 × 4px pill, 12px from the top, 4px above the
+// header.
 const DRAG = {
   isEnabled: true,
   zone: 'shrink-0 cursor-grab touch-none select-none active:cursor-grabbing',
-  handle: 'flex justify-center pb-1 pt-2',
-  grip: 'h-1 w-10 rounded-max bg-interactive-gray-faded',
+  handle: 'mb-1 flex justify-center pt-3',
+  grip: 'h-1 w-14 rounded-max bg-interactive-gray-faded',
+};
+
+// Blade's sheet body (16px all round) and footer (16px, 20px from 768px,
+// on the sheet's surface under a hairline).
+const SECTIONS = {
+  body: 'overflow-auto p-4',
+  footer:
+    'flex shrink-0 gap-4 border-t-thin border-solid border-surface-gray-muted bg-popup-gray-subtle p-4 m:p-5',
 };
 // On desktop the adaptive sheet is a modal: no handle, no grab cursor, and
 // the drag itself stops at the same breakpoint.
@@ -121,12 +135,14 @@ const NATIVE_BOTTOM_SHEET = {
 };
 
 // Blade's sheet casts its shadow upward (bottomSheet.module.css).
+// Blade rounds the sheet's top corners 16px.
 const SHEET: ModalLayout = {
   ...MODAL_PLACEMENT.bottom,
   panel:
-    'w-full rounded-tl-small rounded-tr-small shadow-bottomSheet group-data-[state=closed]:translate-y-full m:rounded-small',
+    'w-full rounded-tl-large rounded-tr-large shadow-bottomSheet group-data-[state=closed]:translate-y-full m:rounded-large',
   drag: DRAG,
   nativeSheet: NATIVE_BOTTOM_SHEET,
+  ...SECTIONS,
 };
 
 // The adaptive sheet, centred: the bottom placement below the breakpoint,
@@ -135,9 +151,10 @@ const SHEET: ModalLayout = {
 const ADAPTIVE_CENTER: ModalLayout = {
   root: 'items-end justify-center m:items-center m:p-4',
   panel:
-    'w-full rounded-tl-small rounded-tr-small shadow-bottomSheet m:shadow-highRaised group-data-[state=closed]:translate-y-full m:rounded-small m:group-data-[state=closed]:translate-y-0 m:group-data-[state=closed]:scale-95 m:group-data-[state=closed]:opacity-0',
+    'w-full rounded-tl-large rounded-tr-large shadow-bottomSheet m:shadow-highRaised group-data-[state=closed]:translate-y-full m:rounded-large m:group-data-[state=closed]:translate-y-0 m:group-data-[state=closed]:scale-95 m:group-data-[state=closed]:opacity-0',
   drag: ADAPTIVE_DRAG,
   nativeSheet: NATIVE_BOTTOM_SHEET,
+  ...SECTIONS,
 };
 
 // The adaptive sheet on the bottom edge: the sheet's own placement, which

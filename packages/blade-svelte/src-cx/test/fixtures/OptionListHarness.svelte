@@ -2,8 +2,9 @@
   import type { FormData } from '../../runes';
   import Button from '../../components/button/Button.svelte';
   import Form from '../../components/form/Form.svelte';
+  import OptionItem from '../../components/option-list/OptionItem.svelte';
   import OptionList from '../../components/option-list/OptionList.svelte';
-  import { OptionListItem } from '../../components/option-list';
+  import VirtualOptionList from '../../components/option-list/VirtualOptionList.svelte';
 
   interface Bank {
     code: string;
@@ -20,6 +21,8 @@
     name?: string;
     indicator?: 'none' | 'leading' | 'trailing';
     virtualize?: boolean;
+    /** A heading first and a button between the first two items. */
+    extras?: boolean;
     onChange?: (value: Bank | readonly Bank[] | null) => void;
     onSubmit?: (data: FormData) => void;
   }
@@ -38,6 +41,7 @@
     name,
     indicator,
     virtualize,
+    extras = false,
     onChange,
     onSubmit,
   }: Props = $props();
@@ -54,38 +58,70 @@
   );
 </script>
 
-{#snippet list(required: boolean)}
-  <OptionList
-    label="Bank"
-    options={banks}
-    optionKey={(bank) => bank.code}
-    compare={(a, b) => a?.code === b?.code}
-    isOptionDisabled={(bank) => bank.code === 'down'}
-    bind:value
-    {isMultiple}
-    {isDeselectable}
-    {isDisabled}
-    isRequired={required}
-    {name}
-    {indicator}
-    {virtualize}
-    {onChange}
-    testID="banks"
-    class="mt-2"
-  >
-    {#snippet item(bank, state)}
-      <OptionListItem
-        title={bank.name}
-        trailing={`${state.index}:${state.isSelected ? 'on' : 'off'}:${state.isDisabled ? 'disabled' : 'enabled'}`}
-      />
+{#snippet bankItem(bank: Bank)}
+  <OptionItem value={bank} isDisabled={bank.code === 'down'} title={bank.name}>
+    {#snippet children(state)}
+      <span>{bank.name}</span>
+      <span>{`${state.index}:${state.isSelected ? 'on' : 'off'}:${state.isDisabled ? 'disabled' : 'enabled'}`}</span>
     {/snippet}
-  </OptionList>
+  </OptionItem>
+{/snippet}
+
+{#snippet list(required: boolean)}
+  {#if virtualize}
+    <VirtualOptionList
+      label="Bank"
+      options={banks}
+      optionKey={(bank) => bank.code}
+      isOptionDisabled={(bank) => bank.code === 'down'}
+      compare={(a, b) => a?.code === b?.code}
+      bind:value
+      {isMultiple}
+      {isDeselectable}
+      {isDisabled}
+      isRequired={required}
+      {name}
+      {indicator}
+      {onChange}
+      testID="banks"
+      class="mt-2"
+    >
+      {#snippet children(bank)}
+        {@render bankItem(bank)}
+      {/snippet}
+    </VirtualOptionList>
+  {:else}
+    <OptionList
+      label="Bank"
+      compare={(a, b) => a?.code === b?.code}
+      bind:value
+      {isMultiple}
+      {isDeselectable}
+      {isDisabled}
+      isRequired={required}
+      {name}
+      {indicator}
+      {onChange}
+      testID="banks"
+      class="mt-2"
+    >
+      {#if extras}
+        <p>Popular</p>
+      {/if}
+      {#each banks as bank, index (bank.code)}
+        {#if extras && index === 1}
+          <button type="button">All options</button>
+        {/if}
+        {@render bankItem(bank)}
+      {/each}
+    </OptionList>
+  {/if}
 {/snippet}
 
 {#if inForm}
   <Form name="nb" {onSubmit} formatConstraintError={(code) => `msg:${code}`}>
     {@render list(true)}
-    <Button testID="continue">Continue</Button>
+    <Button type="submit" testID="continue">Continue</Button>
   </Form>
 {:else}
   {@render list(false)}

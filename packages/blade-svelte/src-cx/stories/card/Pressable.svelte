@@ -12,12 +12,15 @@
 
 <div class="flex max-w-96 flex-col gap-3">
   {#each ['HDFC Bank', 'ICICI Bank'] as bank (bank)}
-    <Card isDisabled={args.isDisabled} onPress={() => (picked = bank)}>
-      {#snippet body()}
-        <Text weight="semibold">{bank}</Text>
-        <Text size="small" color="muted">Netbanking</Text>
-      {/snippet}
+    <Card
+      isDisabled={args.isDisabled}
+      isSelected={picked === bank}
+      accessibilityLabel={bank}
+      onClick={() => (picked = bank)}
+    >
+      <Text weight="semibold">{bank}</Text>
+      <Text size="small" color="muted">Netbanking</Text>
     </Card>
   {/each}
-  <Text size="small" color="muted">pressed: {picked}</Text>
+  <Text size="small" color="muted">picked: {picked}</Text>
 </div>
