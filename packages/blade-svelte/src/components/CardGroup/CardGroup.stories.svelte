@@ -26,8 +26,6 @@
   import Card from '../Card/Card.svelte';
   import CardBody from '../Card/CardBody.svelte';
   import Text from '../Typography/Text/Text.svelte';
-  import Collapsible from '../Collapsible/Collapsible.svelte';
-  import CollapsibleBody from '../Collapsible/CollapsibleBody.svelte';
   import TextInput from '../Input/TextInput/TextInput.svelte';
   import { CreditCardIcon } from '../Icons/CreditCardIcon';
   import { UpiIcon } from '../Icons/UpiIcon';
@@ -36,7 +34,7 @@
   import { MoreHorizontalIcon } from '../Icons/MoreHorizontalIcon';
   import { LockIcon } from '../Icons/LockIcon';
   import { CheckCircleIcon } from '../Icons/CheckCircleIcon';
-  import { RadioIcon } from '../Icons/RadioIcon';
+  import { CircleIcon } from '../Icons/CircleIcon';
 
   let selected = $state('cards');
   let paymentOption = $state<'full' | 'part'>('full');
@@ -175,7 +173,7 @@
 </Story>
 
 <!-- Selecting row that reveals a nested amount input when chosen. -->
-<Story name="Selection With Nested Input">
+<Story name="Selection With Nested Input" asChild>
   <div style="max-width:400px">
     <CardGroup accessibilityLabel="Payment options">
       <CardGroupItem isSelected={paymentOption === 'full'} onClick={() => (paymentOption = 'full')}>
@@ -187,7 +185,7 @@
           {#if paymentOption === 'full'}
             <CheckCircleIcon size="medium" color="surface.icon.gray.normal" />
           {:else}
-            <RadioIcon size="medium" color="surface.icon.gray.muted" />
+            <CircleIcon size="medium" color="surface.icon.gray.muted" />
           {/if}
         {/snippet}
       </CardGroupItem>
@@ -201,23 +199,25 @@
           {#if paymentOption === 'part'}
             <CheckCircleIcon size="medium" color="surface.icon.gray.normal" />
           {:else}
-            <RadioIcon size="medium" color="surface.icon.gray.muted" />
+            <CircleIcon size="medium" color="surface.icon.gray.muted" />
           {/if}
         {/snippet}
       </CardGroupItem>
 
-      <Collapsible isExpanded={paymentOption === 'part'} direction="bottom" _shouldApplyWidthRestrictions={false}>
-        <CardGroupCollapsibleItemBody>
-          {#snippet children()}
-            <TextInput
-              accessibilityLabel="Amount to pay"
-              placeholder="Enter amount upto ₹2,000"
-              value={partAmount}
-              onChange={({ value }) => (partAmount = value ?? '')}
-            />
-          {/snippet}
-        </CardGroupCollapsibleItemBody>
-      </Collapsible>
+      <CardGroupCollapsibleItem isExpanded={paymentOption === 'part'}>
+        {#snippet children()}
+          <CardGroupCollapsibleItemBody>
+            {#snippet children()}
+              <TextInput
+                accessibilityLabel="Amount to pay"
+                placeholder="Enter amount upto ₹2,000"
+                value={partAmount}
+                onChange={({ value }) => (partAmount = value ?? '')}
+              />
+            {/snippet}
+          </CardGroupCollapsibleItemBody>
+        {/snippet}
+      </CardGroupCollapsibleItem>
     </CardGroup>
   </div>
 </Story>
