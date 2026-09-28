@@ -9,12 +9,15 @@ import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import {
   fileUploadColorTokens,
   fileUploadHeightTokens,
-  fileUploadLinkBorderTokens,
+  fileUploadBorderRadiusTokens,
+  fileUploadDropAreaTextSizeTokens,
+  fileUploadLinkIconSizeTokens,
   getFileUploadInputHoverTokens,
 } from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
 import { isFileAccepted } from './isFileAccepted';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
+import { UploadIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -62,26 +65,22 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     maxCount,
     maxSize,
     size = 'medium',
+    dropAreaText,
     _motionMeta,
     ...rest
   },
   ref,
 ): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  const { actionButtonText, dropAreaText, height, width } = rest as FileUploadVariableSizeProps;
+  const { actionButtonText, height, width } = rest as FileUploadVariableSizeProps;
   const isSizeVariable = size === 'variable';
-  // 'actionButtonText', 'dropAreaText', 'height', 'width' are only valid when size is 'variable'
+  // An empty string hides the drop area text and leaves only the upload action
+  const shouldShowDropAreaText = dropAreaText !== '';
+  // 'actionButtonText', 'height', 'width' are only valid when size is 'variable'
   if (__DEV__) {
-    if (!isSizeVariable && (actionButtonText || dropAreaText)) {
-      const propName =
-        actionButtonText && dropAreaText
-          ? 'actionButtonText and dropAreaText'
-          : dropAreaText
-          ? 'dropAreaText'
-          : 'actionButtonText';
-
+    if (!isSizeVariable && actionButtonText) {
       throwBladeError({
-        message: `${propName} can only be used when size is "variable"`,
+        message: 'actionButtonText can only be used when size is "variable"',
         moduleName: 'FileUpload',
       });
     }
@@ -111,12 +110,14 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const isOneFileSelectedWithSingleUpload = !isMultiple && selectedFiles.length === 1;
   const inputLabelPosition = platform === 'onMobile' ? 'top' : labelPosition;
   const isLabelLeftPositioned = inputLabelPosition === 'left';
-  const willRenderHintText = Boolean(helpText) || Boolean(errorMessage);
-
   const showError = validationState === 'error' || internalValidationState === 'error';
   const showHelpText = !showError && helpText;
+  // Internal validation errors (file type, count, size) take priority over the consumer's errorText
+  const displayedErrorText = errorMessage ?? errorText;
+  const willRenderHintText = Boolean(helpText) || (showError && Boolean(displayedErrorText));
   const accessibilityText =
-    accessibilityLabel ?? `,${showError ? errorMessage : ''} ${showHelpText ? helpText : ''}`;
+    accessibilityLabel ??
+    `,${showError ? displayedErrorText ?? '' : ''} ${showHelpText ? helpText : ''}`;
   const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
   const accessibilityProps = makeAccessible({
@@ -278,7 +279,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               alignItems="center"
               height={computedHeight}
               width={computedWidth}
-              borderRadius="medium"
+              borderRadius={fileUploadBorderRadiusTokens[size]}
               borderWidth="thin"
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
@@ -295,7 +296,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 alignItems="center"
                 flexDirection={{ base: 'column', s: `${isSizeVariable ? 'column' : 'row'}` }}
                 gap={makeSize(6)}
-                padding="spacing.3"
+                // The 32px small area can't fit the default 8px vertical padding around a text line
+                padding={size === 'small' ? ['spacing.2', 'spacing.3'] : 'spacing.3'}
               >
                 {isSizeVariable && (
                   <FileUploadItemIcon
@@ -304,17 +306,21 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   />
                 )}
 
-                <Text
-                  color={
-                    isDisabled
-                      ? fileUploadColorTokens.text.disabled
-                      : fileUploadColorTokens.text.default
-                  }
-                >
-                  {isSizeVariable
-                    ? dropAreaText ?? 'Drag and drop your files here'
-                    : 'Drag files here or'}{' '}
-                </Text>
+                {shouldShowDropAreaText ? (
+                  <Text
+                    size={fileUploadDropAreaTextSizeTokens[size]}
+                    color={
+                      isDisabled
+                        ? fileUploadColorTokens.text.disabled
+                        : fileUploadColorTokens.text.default
+                    }
+                  >
+                    {dropAreaText ??
+                      (isSizeVariable
+                        ? 'Drag and drop your files here'
+                        : 'Drag files here or')}{' '}
+                  </Text>
+                ) : null}
                 <SelectorInput
                   id={inputId}
                   hoverTokens={getFileUploadInputHoverTokens()}
@@ -342,16 +348,20 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   flexDirection={{ base: 'column', s: 'row' }}
                   borderRadius="small"
                 >
-                  <Box
-                    display="flex"
-                    flexDirection="row"
-                    alignItems="center"
-                    borderBottomColor={
-                      fileUploadLinkBorderTokens.color[isDisabled ? 'disabled' : 'default']
-                    }
-                    borderBottomWidth={fileUploadLinkBorderTokens.width.default}
-                  >
+                  {/* Upload action: neutral link colors with a leading icon and an underlined label */}
+                  <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
+                    <UploadIcon
+                      size={fileUploadLinkIconSizeTokens[size]}
+                      color={
+                        isDisabled
+                          ? fileUploadColorTokens.linkIcon.disabled
+                          : fileUploadColorTokens.linkIcon.default
+                      }
+                    />
                     <Text
+                      size={fileUploadDropAreaTextSizeTokens[size]}
+                      weight="medium"
+                      textDecorationLine="underline"
                       color={
                         isDisabled
                           ? fileUploadColorTokens.link.disabled
@@ -415,7 +425,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 hasHelpText: Boolean(helpText),
               })}
               helpText={helpText}
-              errorText={errorMessage ?? errorText}
+              errorText={displayedErrorText}
               helpTextId={helpTextId}
               errorTextId={errorTextId}
             />
