@@ -31,6 +31,7 @@
   import { ClockIcon } from '../Icons/ClockIcon';
   import { WalletIcon } from '../Icons/WalletIcon';
   import { MoreHorizontalIcon } from '../Icons/MoreHorizontalIcon';
+  import { LockIcon } from '../Icons/LockIcon';
 
   let selected = $state('cards');
 
@@ -158,7 +159,10 @@
   <div style="max-width:400px">
     <CardGroup accessibilityLabel="Payment methods">
       <CardGroupItem href="https://razorpay.com/payments/" target="_blank" rel="noopener noreferrer">{#snippet children()}Cards{/snippet}</CardGroupItem>
-      <CardGroupItem isDisabled onClick={() => {}}>{#snippet children()}Net Banking (unavailable){/snippet}</CardGroupItem>
+      <CardGroupItem isDisabled onClick={() => {}}>
+        {#snippet children()}Net Banking (unavailable){/snippet}
+        {#snippet trailing()}<LockIcon size="medium" color="surface.icon.gray.disabled" />{/snippet}
+      </CardGroupItem>
     </CardGroup>
   </div>
 </Story>
