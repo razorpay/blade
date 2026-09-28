@@ -71,11 +71,11 @@ exports[`<CounterInput /> should render 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 38px;
+  height: 36px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  min-width: 94px;
+  min-width: 92px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
   border-width: 1px;
@@ -95,6 +95,11 @@ exports[`<CounterInput /> should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -249,8 +254,8 @@ exports[`<CounterInput /> should render 1`] = `
   padding-left: 4px;
   padding-right: 4px;
   width: 100%;
-  height: 36px;
-  min-height: 36px;
+  height: 34px;
+  min-height: 34px;
   resize: none;
   box-sizing: border-box;
   outline: none;
@@ -475,7 +480,7 @@ exports[`<CounterInput /> should render 1`] = `
   justify-content: center;
   border-radius: 4px;
   padding: 4px;
-  margin: 4px 0px 4px 4px;
+  margin: 3px 0px 3px 3px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
   -webkit-transition-duration: 160ms;
@@ -519,7 +524,7 @@ exports[`<CounterInput /> should render 1`] = `
   justify-content: center;
   border-radius: 4px;
   padding: 4px;
-  margin: 4px 4px 4px 0px;
+  margin: 3px 3px 3px 0px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
   -webkit-transition-duration: 160ms;
@@ -807,11 +812,11 @@ exports[`<CounterInput /> should render large size 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 50px;
+  height: 48px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  min-width: 122px;
+  min-width: 120px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 12px;
   border-width: 1px;
@@ -831,6 +836,11 @@ exports[`<CounterInput /> should render large size 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -985,8 +995,8 @@ exports[`<CounterInput /> should render large size 1`] = `
   padding-left: 4px;
   padding-right: 4px;
   width: 100%;
-  height: 48px;
-  min-height: 48px;
+  height: 46px;
+  min-height: 46px;
   resize: none;
   box-sizing: border-box;
   outline: none;
@@ -1211,7 +1221,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   justify-content: center;
   border-radius: 8px;
   padding: 8px;
-  margin: 4px 0px 4px 4px;
+  margin: 3px 0px 3px 3px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
   -webkit-transition-duration: 160ms;
@@ -1255,7 +1265,7 @@ exports[`<CounterInput /> should render large size 1`] = `
   justify-content: center;
   border-radius: 8px;
   padding: 8px;
-  margin: 4px 4px 4px 0px;
+  margin: 3px 3px 3px 0px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
   -webkit-transition-duration: 160ms;
@@ -1543,11 +1553,11 @@ exports[`<CounterInput /> should render small size 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 34px;
+  height: 32px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  min-width: 86px;
+  min-width: 84px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
   border-width: 1px;
@@ -1567,6 +1577,11 @@ exports[`<CounterInput /> should render small size 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -1721,8 +1736,8 @@ exports[`<CounterInput /> should render small size 1`] = `
   padding-left: 4px;
   padding-right: 4px;
   width: 100%;
-  height: 32px;
-  min-height: 32px;
+  height: 30px;
+  min-height: 30px;
   resize: none;
   box-sizing: border-box;
   outline: none;
@@ -1947,7 +1962,7 @@ exports[`<CounterInput /> should render small size 1`] = `
   justify-content: center;
   border-radius: 4px;
   padding: 4px;
-  margin: 4px 0px 4px 4px;
+  margin: 3px 0px 3px 3px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
   -webkit-transition-duration: 160ms;
@@ -1991,7 +2006,7 @@ exports[`<CounterInput /> should render small size 1`] = `
   justify-content: center;
   border-radius: 4px;
   padding: 4px;
-  margin: 4px 4px 4px 0px;
+  margin: 3px 3px 3px 0px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
   -webkit-transition-duration: 160ms;
@@ -2279,11 +2294,11 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  height: 38px;
+  height: 36px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  min-width: 94px;
+  min-width: 92px;
   background-color: hsla(0,0%,100%,1);
   border-radius: 8px;
   border-width: 1px;
@@ -2303,6 +2318,11 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -2457,8 +2477,8 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   padding-left: 4px;
   padding-right: 4px;
   width: 100%;
-  height: 36px;
-  min-height: 36px;
+  height: 34px;
+  min-height: 34px;
   resize: none;
   box-sizing: border-box;
   outline: none;
@@ -2683,7 +2703,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   justify-content: center;
   border-radius: 4px;
   padding: 4px;
-  margin: 4px 0px 4px 4px;
+  margin: 3px 0px 3px 3px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
   -webkit-transition-duration: 160ms;
@@ -2727,7 +2747,7 @@ exports[`<CounterInput /> should render with intense emphasis 1`] = `
   justify-content: center;
   border-radius: 4px;
   padding: 4px;
-  margin: 4px 4px 4px 0px;
+  margin: 3px 3px 3px 0px;
   -webkit-transition-property: background-color,color;
   transition-property: background-color,color;
   -webkit-transition-duration: 160ms;

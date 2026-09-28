@@ -81,9 +81,9 @@ const _Tooltip = ({
 
   const animationOffset = isOppositeAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
-    // While the pointer moves from one grouped tooltip (or TreeView hover popover) to the next,
-    // swap them without animating: the replaced one disappears at once instead of fading out
-    // under the new one. Only the last tooltip of the streak animates out.
+    // While the pointer moves from one grouped tooltip (or hover Popover) to the next, swap them
+    // without animating: the replaced one disappears at once instead of fading out under the new
+    // one. Only the last tooltip of the streak animates out.
     duration: isInstantPhase
       ? { open: 0, close: currentId === id ? theme.motion.duration.quick : 0 }
       : theme.motion.duration.quick,

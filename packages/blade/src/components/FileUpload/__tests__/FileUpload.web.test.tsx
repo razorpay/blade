@@ -122,6 +122,99 @@ describe('<FileUpload />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render FileUpload with size="small"', () => {
+    const { container, getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        size="small"
+        label="Upload GST certificate"
+        helpText="Upload .jpg, .jpeg, or .png file only"
+        accept="image/*"
+        name="single-file-upload-input"
+      />,
+    );
+    expect(container).toMatchSnapshot();
+    expect(getByText('Drag files here or')).toBeInTheDocument();
+    expect(container.querySelector('[data-comp="f"]')).toHaveStyle({ height: '32px' });
+  });
+
+  it('should hide the drop area text when dropAreaText is an empty string', async () => {
+    const { container, queryByText, getByText, getByLabelText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        accept="image/*"
+        name="single-file-upload-input"
+        dropAreaText=""
+      />,
+    );
+    expect(queryByText('Drag files here or')).not.toBeInTheDocument();
+    expect(getByText('Upload')).toBeInTheDocument();
+    // The drop area is the <label> wrapping the file input, so the input keeps "Upload" as its name
+    expect(getByLabelText('Upload')).toHaveAttribute('type', 'file');
+    await assertAccessible(container);
+  });
+
+  it('should render the upload icon before the action text', () => {
+    const { container, getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        size="small"
+        label="Logo"
+        accept="image/*"
+        name="logo-upload-input"
+        dropAreaText=""
+      />,
+    );
+    expect(container).toMatchSnapshot();
+    const actionText = getByText('Upload');
+    // Icon sits right before the action text
+    expect(actionText.previousElementSibling?.tagName.toLowerCase()).toBe('svg');
+  });
+
+  it('should show errorText when validationState is error, even without helpText', () => {
+    const { getByText, container } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        label="Upload GST certificate"
+        validationState="error"
+        errorText="Please upload a file to continue"
+      />,
+    );
+    expect(getByText('Please upload a file to continue')).toBeInTheDocument();
+    expect(container).not.toHaveTextContent('null');
+  });
+
+  it('should render a custom dropAreaText on small, medium and large sizes', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <FileUpload uploadType="single" label="Logo" dropAreaText="Drop your logo here or" />,
+    );
+    expect(getByText('Drop your logo here or')).toBeInTheDocument();
+    expect(queryByText('Drag files here or')).not.toBeInTheDocument();
+  });
+
+  it('should hide the drop area text for size="variable" when dropAreaText is an empty string', () => {
+    const { queryByText, getByText } = renderWithTheme(
+      <FileUpload uploadType="single" size="variable" label="Documents" dropAreaText="" />,
+    );
+    expect(queryByText('Drag and drop your files here')).not.toBeInTheDocument();
+    expect(getByText('Upload')).toBeInTheDocument();
+  });
+
+  it('should throw when actionButtonText is used without size="variable"', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    expect(() =>
+      renderWithTheme(
+        <FileUpload
+          uploadType="single"
+          label="Upload GST certificate"
+          actionButtonText="Choose file"
+        />,
+      ),
+    ).toThrow('actionButtonText can only be used when size is "variable"');
+    mockConsoleError.mockRestore();
+  });
+
   it('Should fire native events like input and change', async () => {
     const blob = new Blob(['']);
     const filename = 'my-image.png';

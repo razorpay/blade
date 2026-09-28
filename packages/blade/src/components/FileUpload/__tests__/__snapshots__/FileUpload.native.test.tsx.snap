@@ -200,25 +200,100 @@ exports[`<FileUpload /> (native) should render FileUpload with default props 1`]
                               "children": [
                                 {
                                   "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M11.2929 1.29289C11.6834 0.902369 12.3166 0.902369 12.7071 1.29289L16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711C16.3166 7.09763 15.6834 7.09763 15.2929 6.70711L13 4.41421V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V4.41421L8.70711 6.70711C8.31658 7.09763 7.68342 7.09763 7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289L11.2929 1.29289Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                      ],
+                                      "props": {
+                                        "fill": null,
+                                        "propList": [
+                                          "fill",
+                                        ],
+                                      },
+                                      "type": "RNSVGGroup",
+                                    },
+                                  ],
+                                  "props": {
+                                    "accessibilityElementsHidden": true,
+                                    "align": "xMidYMid",
+                                    "bbHeight": "16px",
+                                    "bbWidth": "16px",
+                                    "data-blade-component": "icon",
+                                    "fill": "none",
+                                    "focusable": false,
+                                    "height": "16px",
+                                    "importantForAccessibility": "no-hide-descendants",
+                                    "meetOrSlice": 0,
+                                    "minX": 0,
+                                    "minY": 0,
+                                    "style": [
+                                      {
+                                        "backgroundColor": "transparent",
+                                        "borderWidth": 0,
+                                      },
+                                      [
+                                        {},
+                                      ],
+                                      {
+                                        "flex": 0,
+                                        "height": 16,
+                                        "width": 16,
+                                      },
+                                    ],
+                                    "vbHeight": 24,
+                                    "vbWidth": 24,
+                                    "width": "16px",
+                                  },
+                                  "type": "RNSVGSvgView",
+                                },
+                                {
+                                  "children": [
                                     "Upload",
                                   ],
                                   "props": {
                                     "accessible": true,
-                                    "color": "interactive.text.primary.subtle",
+                                    "color": "interactive.text.neutral.normal",
                                     "data-blade-component": "text",
                                     "fontFamily": "text",
                                     "fontSize": 100,
                                     "fontStyle": "normal",
-                                    "fontWeight": "regular",
+                                    "fontWeight": "medium",
                                     "letterSpacing": 50,
                                     "lineHeight": 100,
                                     "style": [
                                       {
-                                        "color": "hsla(218, 89%, 51%, 1)",
+                                        "color": "hsla(0, 0%, 2%, 1)",
                                         "fontFamily": "Inter",
                                         "fontSize": 14,
                                         "fontStyle": "normal",
-                                        "fontWeight": "400",
+                                        "fontWeight": "500",
                                         "letterSpacing": -0.18200000000000002,
                                         "lineHeight": 20,
                                         "marginBottom": 0,
@@ -229,28 +304,27 @@ exports[`<FileUpload /> (native) should render FileUpload with default props 1`]
                                         "paddingLeft": 0,
                                         "paddingRight": 0,
                                         "paddingTop": 0,
-                                        "textDecorationLine": "none",
+                                        "textDecorationColor": "hsla(0, 0%, 2%, 1)",
+                                        "textDecorationLine": "underline",
                                       },
                                     ],
+                                    "textDecorationLine": "underline",
                                   },
                                   "type": "Text",
                                 },
                               ],
                               "props": {
                                 "alignItems": "center",
-                                "borderBottomColor": "surface.border.primary.normal",
-                                "borderBottomWidth": "thin",
                                 "data-blade-component": "box",
                                 "display": "flex",
                                 "flexDirection": "row",
+                                "gap": "spacing.2",
                                 "style": [
                                   {
                                     "alignItems": "center",
-                                    "borderBottomColor": "hsla(218, 89%, 51%, 1)",
-                                    "borderBottomStyle": "solid",
-                                    "borderBottomWidth": 1,
                                     "display": "flex",
                                     "flexDirection": "row",
+                                    "gap": 4,
                                   },
                                 ],
                               },
@@ -685,25 +759,100 @@ exports[`<FileUpload /> (native) should render FileUpload with size="large" 1`] 
                               "children": [
                                 {
                                   "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M11.2929 1.29289C11.6834 0.902369 12.3166 0.902369 12.7071 1.29289L16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711C16.3166 7.09763 15.6834 7.09763 15.2929 6.70711L13 4.41421V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V4.41421L8.70711 6.70711C8.31658 7.09763 7.68342 7.09763 7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289L11.2929 1.29289Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                      ],
+                                      "props": {
+                                        "fill": null,
+                                        "propList": [
+                                          "fill",
+                                        ],
+                                      },
+                                      "type": "RNSVGGroup",
+                                    },
+                                  ],
+                                  "props": {
+                                    "accessibilityElementsHidden": true,
+                                    "align": "xMidYMid",
+                                    "bbHeight": "16px",
+                                    "bbWidth": "16px",
+                                    "data-blade-component": "icon",
+                                    "fill": "none",
+                                    "focusable": false,
+                                    "height": "16px",
+                                    "importantForAccessibility": "no-hide-descendants",
+                                    "meetOrSlice": 0,
+                                    "minX": 0,
+                                    "minY": 0,
+                                    "style": [
+                                      {
+                                        "backgroundColor": "transparent",
+                                        "borderWidth": 0,
+                                      },
+                                      [
+                                        {},
+                                      ],
+                                      {
+                                        "flex": 0,
+                                        "height": 16,
+                                        "width": 16,
+                                      },
+                                    ],
+                                    "vbHeight": 24,
+                                    "vbWidth": 24,
+                                    "width": "16px",
+                                  },
+                                  "type": "RNSVGSvgView",
+                                },
+                                {
+                                  "children": [
                                     "Upload",
                                   ],
                                   "props": {
                                     "accessible": true,
-                                    "color": "interactive.text.primary.subtle",
+                                    "color": "interactive.text.neutral.normal",
                                     "data-blade-component": "text",
                                     "fontFamily": "text",
                                     "fontSize": 100,
                                     "fontStyle": "normal",
-                                    "fontWeight": "regular",
+                                    "fontWeight": "medium",
                                     "letterSpacing": 50,
                                     "lineHeight": 100,
                                     "style": [
                                       {
-                                        "color": "hsla(218, 89%, 51%, 1)",
+                                        "color": "hsla(0, 0%, 2%, 1)",
                                         "fontFamily": "Inter",
                                         "fontSize": 14,
                                         "fontStyle": "normal",
-                                        "fontWeight": "400",
+                                        "fontWeight": "500",
                                         "letterSpacing": -0.18200000000000002,
                                         "lineHeight": 20,
                                         "marginBottom": 0,
@@ -714,28 +863,27 @@ exports[`<FileUpload /> (native) should render FileUpload with size="large" 1`] 
                                         "paddingLeft": 0,
                                         "paddingRight": 0,
                                         "paddingTop": 0,
-                                        "textDecorationLine": "none",
+                                        "textDecorationColor": "hsla(0, 0%, 2%, 1)",
+                                        "textDecorationLine": "underline",
                                       },
                                     ],
+                                    "textDecorationLine": "underline",
                                   },
                                   "type": "Text",
                                 },
                               ],
                               "props": {
                                 "alignItems": "center",
-                                "borderBottomColor": "surface.border.primary.normal",
-                                "borderBottomWidth": "thin",
                                 "data-blade-component": "box",
                                 "display": "flex",
                                 "flexDirection": "row",
+                                "gap": "spacing.2",
                                 "style": [
                                   {
                                     "alignItems": "center",
-                                    "borderBottomColor": "hsla(218, 89%, 51%, 1)",
-                                    "borderBottomStyle": "solid",
-                                    "borderBottomWidth": 1,
                                     "display": "flex",
                                     "flexDirection": "row",
+                                    "gap": 4,
                                   },
                                 ],
                               },
@@ -941,6 +1089,880 @@ exports[`<FileUpload /> (native) should render FileUpload with size="large" 1`] 
                 "marginLeft": 0,
               },
             ],
+          },
+          "type": "View",
+        },
+      ],
+      "props": {
+        "data-blade-component": "file-upload",
+        "display": "flex",
+        "flexDirection": "column",
+        "style": [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ],
+        "width": "100%",
+      },
+      "type": "View",
+    },
+  ],
+  "props": {
+    "style": {
+      "flex": 1,
+    },
+  },
+  "type": "View",
+}
+`;
+
+exports[`<FileUpload /> (native) should render FileUpload with size="small" 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Upload GST certificate",
+                      ],
+                      "props": {
+                        "accessible": true,
+                        "color": "surface.text.gray.muted",
+                        "data-blade-component": "text",
+                        "fontFamily": "text",
+                        "fontSize": 75,
+                        "fontStyle": "normal",
+                        "fontWeight": "medium",
+                        "letterSpacing": 50,
+                        "lineHeight": 75,
+                        "numberOfLines": 2,
+                        "style": [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": -0.15600000000000003,
+                            "lineHeight": 17,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": null,
+                          "props": {
+                            "accessible": true,
+                            "color": "surface.text.gray.normal",
+                            "data-blade-component": "text",
+                            "fontFamily": "text",
+                            "fontSize": 100,
+                            "fontStyle": "normal",
+                            "fontWeight": "regular",
+                            "letterSpacing": 50,
+                            "lineHeight": 100,
+                            "style": [
+                              {
+                                "color": "hsla(0, 0%, 2%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "data-blade-component": "visually-hidden",
+                        "style": [
+                          {
+                            "borderColor": "black",
+                            "borderStyle": "solid",
+                            "borderWidth": 0,
+                            "clip": "rect(0 0 0 0)",
+                            "clipPath": "inset(50%)",
+                            "height": 1,
+                            "left": -10000,
+                            "marginBottom": -1,
+                            "marginLeft": 0,
+                            "marginRight": -1,
+                            "marginTop": 0,
+                            "overflow": "hidden",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "position": "absolute",
+                            "whiteSpace": "nowrap",
+                            "width": 1,
+                            "wordWrap": "normal",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "alignItems": "center",
+                    "data-blade-component": "base-box",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "gap": "spacing.0",
+                    "maxHeight": "36px",
+                    "style": [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "gap": 0,
+                        "maxHeight": 36,
+                      },
+                    ],
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "data-blade-component": "base-box",
+                "style": [
+                  {
+                    "marginBottom": 4,
+                    "marginRight": 16,
+                  },
+                ],
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                "Tap to",
+                                " ",
+                              ],
+                              "props": {
+                                "accessible": true,
+                                "color": "surface.text.gray.subtle",
+                                "data-blade-component": "text",
+                                "fontFamily": "text",
+                                "fontSize": 75,
+                                "fontStyle": "normal",
+                                "fontWeight": "regular",
+                                "letterSpacing": 50,
+                                "lineHeight": 75,
+                                "style": [
+                                  {
+                                    "color": "hsla(200, 10%, 18%, 1)",
+                                    "fontFamily": "Inter",
+                                    "fontSize": 12,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "400",
+                                    "letterSpacing": -0.15600000000000003,
+                                    "lineHeight": 17,
+                                    "marginBottom": 0,
+                                    "marginLeft": 0,
+                                    "marginRight": 0,
+                                    "marginTop": 0,
+                                    "paddingBottom": 0,
+                                    "paddingLeft": 0,
+                                    "paddingRight": 0,
+                                    "paddingTop": 0,
+                                    "textDecorationLine": "none",
+                                  },
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M11.2929 1.29289C11.6834 0.902369 12.3166 0.902369 12.7071 1.29289L16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711C16.3166 7.09763 15.6834 7.09763 15.2929 6.70711L13 4.41421V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V4.41421L8.70711 6.70711C8.31658 7.09763 7.68342 7.09763 7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289L11.2929 1.29289Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                      ],
+                                      "props": {
+                                        "fill": null,
+                                        "propList": [
+                                          "fill",
+                                        ],
+                                      },
+                                      "type": "RNSVGGroup",
+                                    },
+                                  ],
+                                  "props": {
+                                    "accessibilityElementsHidden": true,
+                                    "align": "xMidYMid",
+                                    "bbHeight": "12px",
+                                    "bbWidth": "12px",
+                                    "data-blade-component": "icon",
+                                    "fill": "none",
+                                    "focusable": false,
+                                    "height": "12px",
+                                    "importantForAccessibility": "no-hide-descendants",
+                                    "meetOrSlice": 0,
+                                    "minX": 0,
+                                    "minY": 0,
+                                    "style": [
+                                      {
+                                        "backgroundColor": "transparent",
+                                        "borderWidth": 0,
+                                      },
+                                      [
+                                        {},
+                                      ],
+                                      {
+                                        "flex": 0,
+                                        "height": 12,
+                                        "width": 12,
+                                      },
+                                    ],
+                                    "vbHeight": 24,
+                                    "vbWidth": 24,
+                                    "width": "12px",
+                                  },
+                                  "type": "RNSVGSvgView",
+                                },
+                                {
+                                  "children": [
+                                    "Upload",
+                                  ],
+                                  "props": {
+                                    "accessible": true,
+                                    "color": "interactive.text.neutral.normal",
+                                    "data-blade-component": "text",
+                                    "fontFamily": "text",
+                                    "fontSize": 75,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "medium",
+                                    "letterSpacing": 50,
+                                    "lineHeight": 75,
+                                    "style": [
+                                      {
+                                        "color": "hsla(0, 0%, 2%, 1)",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 12,
+                                        "fontStyle": "normal",
+                                        "fontWeight": "500",
+                                        "letterSpacing": -0.15600000000000003,
+                                        "lineHeight": 17,
+                                        "marginBottom": 0,
+                                        "marginLeft": 0,
+                                        "marginRight": 0,
+                                        "marginTop": 0,
+                                        "paddingBottom": 0,
+                                        "paddingLeft": 0,
+                                        "paddingRight": 0,
+                                        "paddingTop": 0,
+                                        "textDecorationColor": "hsla(0, 0%, 2%, 1)",
+                                        "textDecorationLine": "underline",
+                                      },
+                                    ],
+                                    "textDecorationLine": "underline",
+                                  },
+                                  "type": "Text",
+                                },
+                              ],
+                              "props": {
+                                "alignItems": "center",
+                                "data-blade-component": "box",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "gap": "spacing.2",
+                                "style": [
+                                  {
+                                    "alignItems": "center",
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "gap": 4,
+                                  },
+                                ],
+                              },
+                              "type": "View",
+                            },
+                          ],
+                          "props": {
+                            "alignItems": "center",
+                            "data-blade-component": "box",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "gap": "2px",
+                            "justifyContent": "center",
+                            "style": [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "gap": 2,
+                                "justifyContent": "center",
+                              },
+                            ],
+                          },
+                          "type": "View",
+                        },
+                      ],
+                      "props": {
+                        "alignItems": "center",
+                        "data-blade-component": "box",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": "6px",
+                        "justifyContent": "center",
+                        "style": [
+                          {
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "column",
+                            "gap": 6,
+                            "justifyContent": "center",
+                            "paddingBottom": 4,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
+                            "paddingTop": 4,
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 8,
+                        "borderStyle": "dashed",
+                        "borderWidth": 1,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "minHeight": 32,
+                      },
+                      {},
+                      {
+                        "height": 32,
+                        "width": "100%",
+                      },
+                    ],
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "accessibilityDescribedBy": "fileuploadinput-ID-label-ID",
+                "accessibilityInvalid": false,
+                "accessibilityLabel": "Upload GST certificate",
+                "accessibilityRequired": false,
+                "accessibilityRole": "button",
+                "accessibilityState": {
+                  "disabled": false,
+                },
+                "accessibilityValue": {},
+                "accessible": true,
+                "collapsable": false,
+                "focusable": true,
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "data-blade-component": "base-box",
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "style": [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+                "position": "relative",
+                "width": "100%",
+              },
+            ],
+            "width": "100%",
+          },
+          "type": "View",
+        },
+      ],
+      "props": {
+        "data-blade-component": "file-upload",
+        "display": "flex",
+        "flexDirection": "column",
+        "style": [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ],
+        "width": "100%",
+      },
+      "type": "View",
+    },
+  ],
+  "props": {
+    "style": {
+      "flex": 1,
+    },
+  },
+  "type": "View",
+}
+`;
+
+exports[`<FileUpload /> (native) should render only the upload icon and text when dropAreaText is an empty string 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Logo",
+                      ],
+                      "props": {
+                        "accessible": true,
+                        "color": "surface.text.gray.muted",
+                        "data-blade-component": "text",
+                        "fontFamily": "text",
+                        "fontSize": 75,
+                        "fontStyle": "normal",
+                        "fontWeight": "medium",
+                        "letterSpacing": 50,
+                        "lineHeight": 75,
+                        "numberOfLines": 2,
+                        "style": [
+                          {
+                            "color": "hsla(204, 9%, 42%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 12,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": -0.15600000000000003,
+                            "lineHeight": 17,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": null,
+                          "props": {
+                            "accessible": true,
+                            "color": "surface.text.gray.normal",
+                            "data-blade-component": "text",
+                            "fontFamily": "text",
+                            "fontSize": 100,
+                            "fontStyle": "normal",
+                            "fontWeight": "regular",
+                            "letterSpacing": 50,
+                            "lineHeight": 100,
+                            "style": [
+                              {
+                                "color": "hsla(0, 0%, 2%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "letterSpacing": -0.18200000000000002,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "data-blade-component": "visually-hidden",
+                        "style": [
+                          {
+                            "borderColor": "black",
+                            "borderStyle": "solid",
+                            "borderWidth": 0,
+                            "clip": "rect(0 0 0 0)",
+                            "clipPath": "inset(50%)",
+                            "height": 1,
+                            "left": -10000,
+                            "marginBottom": -1,
+                            "marginLeft": 0,
+                            "marginRight": -1,
+                            "marginTop": 0,
+                            "overflow": "hidden",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "position": "absolute",
+                            "whiteSpace": "nowrap",
+                            "width": 1,
+                            "wordWrap": "normal",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "alignItems": "center",
+                    "data-blade-component": "base-box",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "gap": "spacing.0",
+                    "maxHeight": "36px",
+                    "style": [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "gap": 0,
+                        "maxHeight": 36,
+                      },
+                    ],
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "data-blade-component": "base-box",
+                "style": [
+                  {
+                    "marginBottom": 4,
+                    "marginRight": 16,
+                  },
+                ],
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M11.2929 1.29289C11.6834 0.902369 12.3166 0.902369 12.7071 1.29289L16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711C16.3166 7.09763 15.6834 7.09763 15.2929 6.70711L13 4.41421V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V4.41421L8.70711 6.70711C8.31658 7.09763 7.68342 7.09763 7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289L11.2929 1.29289Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                      ],
+                                      "props": {
+                                        "fill": null,
+                                        "propList": [
+                                          "fill",
+                                        ],
+                                      },
+                                      "type": "RNSVGGroup",
+                                    },
+                                  ],
+                                  "props": {
+                                    "accessibilityElementsHidden": true,
+                                    "align": "xMidYMid",
+                                    "bbHeight": "12px",
+                                    "bbWidth": "12px",
+                                    "data-blade-component": "icon",
+                                    "fill": "none",
+                                    "focusable": false,
+                                    "height": "12px",
+                                    "importantForAccessibility": "no-hide-descendants",
+                                    "meetOrSlice": 0,
+                                    "minX": 0,
+                                    "minY": 0,
+                                    "style": [
+                                      {
+                                        "backgroundColor": "transparent",
+                                        "borderWidth": 0,
+                                      },
+                                      [
+                                        {},
+                                      ],
+                                      {
+                                        "flex": 0,
+                                        "height": 12,
+                                        "width": 12,
+                                      },
+                                    ],
+                                    "vbHeight": 24,
+                                    "vbWidth": 24,
+                                    "width": "12px",
+                                  },
+                                  "type": "RNSVGSvgView",
+                                },
+                                {
+                                  "children": [
+                                    "Upload",
+                                  ],
+                                  "props": {
+                                    "accessible": true,
+                                    "color": "interactive.text.neutral.normal",
+                                    "data-blade-component": "text",
+                                    "fontFamily": "text",
+                                    "fontSize": 75,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "medium",
+                                    "letterSpacing": 50,
+                                    "lineHeight": 75,
+                                    "style": [
+                                      {
+                                        "color": "hsla(0, 0%, 2%, 1)",
+                                        "fontFamily": "Inter",
+                                        "fontSize": 12,
+                                        "fontStyle": "normal",
+                                        "fontWeight": "500",
+                                        "letterSpacing": -0.15600000000000003,
+                                        "lineHeight": 17,
+                                        "marginBottom": 0,
+                                        "marginLeft": 0,
+                                        "marginRight": 0,
+                                        "marginTop": 0,
+                                        "paddingBottom": 0,
+                                        "paddingLeft": 0,
+                                        "paddingRight": 0,
+                                        "paddingTop": 0,
+                                        "textDecorationColor": "hsla(0, 0%, 2%, 1)",
+                                        "textDecorationLine": "underline",
+                                      },
+                                    ],
+                                    "textDecorationLine": "underline",
+                                  },
+                                  "type": "Text",
+                                },
+                              ],
+                              "props": {
+                                "alignItems": "center",
+                                "data-blade-component": "box",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "gap": "spacing.2",
+                                "style": [
+                                  {
+                                    "alignItems": "center",
+                                    "display": "flex",
+                                    "flexDirection": "row",
+                                    "gap": 4,
+                                  },
+                                ],
+                              },
+                              "type": "View",
+                            },
+                          ],
+                          "props": {
+                            "alignItems": "center",
+                            "data-blade-component": "box",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "gap": "2px",
+                            "justifyContent": "center",
+                            "style": [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "gap": 2,
+                                "justifyContent": "center",
+                              },
+                            ],
+                          },
+                          "type": "View",
+                        },
+                      ],
+                      "props": {
+                        "alignItems": "center",
+                        "data-blade-component": "box",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": "6px",
+                        "justifyContent": "center",
+                        "style": [
+                          {
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "column",
+                            "gap": 6,
+                            "justifyContent": "center",
+                            "paddingBottom": 4,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
+                            "paddingTop": 4,
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "hsla(204, 8%, 88%, 1)",
+                        "borderRadius": 8,
+                        "borderStyle": "dashed",
+                        "borderWidth": 1,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "minHeight": 32,
+                      },
+                      {},
+                      {
+                        "height": 32,
+                        "width": "100%",
+                      },
+                    ],
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "accessibilityDescribedBy": "fileuploadinput-ID-label-ID",
+                "accessibilityInvalid": false,
+                "accessibilityLabel": "Logo",
+                "accessibilityRequired": false,
+                "accessibilityRole": "button",
+                "accessibilityState": {
+                  "disabled": false,
+                },
+                "accessibilityValue": {},
+                "accessible": true,
+                "collapsable": false,
+                "focusable": true,
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "data-blade-component": "base-box",
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "style": [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+                "position": "relative",
+                "width": "100%",
+              },
+            ],
+            "width": "100%",
           },
           "type": "View",
         },
@@ -1348,25 +2370,100 @@ exports[`<FileUpload /> (native) should render size="variable" with custom actio
                               "children": [
                                 {
                                   "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M11.2929 1.29289C11.6834 0.902369 12.3166 0.902369 12.7071 1.29289L16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711C16.3166 7.09763 15.6834 7.09763 15.2929 6.70711L13 4.41421V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V4.41421L8.70711 6.70711C8.31658 7.09763 7.68342 7.09763 7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289L11.2929 1.29289Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z",
+                                            "fill": {
+                                              "payload": 4278519045,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                      ],
+                                      "props": {
+                                        "fill": null,
+                                        "propList": [
+                                          "fill",
+                                        ],
+                                      },
+                                      "type": "RNSVGGroup",
+                                    },
+                                  ],
+                                  "props": {
+                                    "accessibilityElementsHidden": true,
+                                    "align": "xMidYMid",
+                                    "bbHeight": "16px",
+                                    "bbWidth": "16px",
+                                    "data-blade-component": "icon",
+                                    "fill": "none",
+                                    "focusable": false,
+                                    "height": "16px",
+                                    "importantForAccessibility": "no-hide-descendants",
+                                    "meetOrSlice": 0,
+                                    "minX": 0,
+                                    "minY": 0,
+                                    "style": [
+                                      {
+                                        "backgroundColor": "transparent",
+                                        "borderWidth": 0,
+                                      },
+                                      [
+                                        {},
+                                      ],
+                                      {
+                                        "flex": 0,
+                                        "height": 16,
+                                        "width": 16,
+                                      },
+                                    ],
+                                    "vbHeight": 24,
+                                    "vbWidth": 24,
+                                    "width": "16px",
+                                  },
+                                  "type": "RNSVGSvgView",
+                                },
+                                {
+                                  "children": [
                                     "Choose file",
                                   ],
                                   "props": {
                                     "accessible": true,
-                                    "color": "interactive.text.primary.subtle",
+                                    "color": "interactive.text.neutral.normal",
                                     "data-blade-component": "text",
                                     "fontFamily": "text",
                                     "fontSize": 100,
                                     "fontStyle": "normal",
-                                    "fontWeight": "regular",
+                                    "fontWeight": "medium",
                                     "letterSpacing": 50,
                                     "lineHeight": 100,
                                     "style": [
                                       {
-                                        "color": "hsla(218, 89%, 51%, 1)",
+                                        "color": "hsla(0, 0%, 2%, 1)",
                                         "fontFamily": "Inter",
                                         "fontSize": 14,
                                         "fontStyle": "normal",
-                                        "fontWeight": "400",
+                                        "fontWeight": "500",
                                         "letterSpacing": -0.18200000000000002,
                                         "lineHeight": 20,
                                         "marginBottom": 0,
@@ -1377,28 +2474,27 @@ exports[`<FileUpload /> (native) should render size="variable" with custom actio
                                         "paddingLeft": 0,
                                         "paddingRight": 0,
                                         "paddingTop": 0,
-                                        "textDecorationLine": "none",
+                                        "textDecorationColor": "hsla(0, 0%, 2%, 1)",
+                                        "textDecorationLine": "underline",
                                       },
                                     ],
+                                    "textDecorationLine": "underline",
                                   },
                                   "type": "Text",
                                 },
                               ],
                               "props": {
                                 "alignItems": "center",
-                                "borderBottomColor": "surface.border.primary.normal",
-                                "borderBottomWidth": "thin",
                                 "data-blade-component": "box",
                                 "display": "flex",
                                 "flexDirection": "row",
+                                "gap": "spacing.2",
                                 "style": [
                                   {
                                     "alignItems": "center",
-                                    "borderBottomColor": "hsla(218, 89%, 51%, 1)",
-                                    "borderBottomStyle": "solid",
-                                    "borderBottomWidth": 1,
                                     "display": "flex",
                                     "flexDirection": "row",
+                                    "gap": 4,
                                   },
                                 ],
                               },
@@ -1731,25 +2827,100 @@ exports[`<FileUpload /> (native) should set disabled state with isDisabled 1`] =
                               "children": [
                                 {
                                   "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M11.2929 1.29289C11.6834 0.902369 12.3166 0.902369 12.7071 1.29289L16.7071 5.29289C17.0976 5.68342 17.0976 6.31658 16.7071 6.70711C16.3166 7.09763 15.6834 7.09763 15.2929 6.70711L13 4.41421V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V4.41421L8.70711 6.70711C8.31658 7.09763 7.68342 7.09763 7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289L11.2929 1.29289Z",
+                                            "fill": {
+                                              "payload": 1380141905,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                        {
+                                          "children": null,
+                                          "props": {
+                                            "d": "M3 16C3.55228 16 4 16.4477 4 17V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V17C20 16.4477 20.4477 16 21 16C21.5523 16 22 16.4477 22 17V20C22 21.6569 20.6569 23 19 23H5C3.34315 23 2 21.6569 2 20V17C2 16.4477 2.44772 16 3 16Z",
+                                            "fill": {
+                                              "payload": 1380141905,
+                                              "type": 0,
+                                            },
+                                            "propList": [
+                                              "fill",
+                                            ],
+                                          },
+                                          "type": "RNSVGPath",
+                                        },
+                                      ],
+                                      "props": {
+                                        "fill": null,
+                                        "propList": [
+                                          "fill",
+                                        ],
+                                      },
+                                      "type": "RNSVGGroup",
+                                    },
+                                  ],
+                                  "props": {
+                                    "accessibilityElementsHidden": true,
+                                    "align": "xMidYMid",
+                                    "bbHeight": "16px",
+                                    "bbWidth": "16px",
+                                    "data-blade-component": "icon",
+                                    "fill": "none",
+                                    "focusable": false,
+                                    "height": "16px",
+                                    "importantForAccessibility": "no-hide-descendants",
+                                    "meetOrSlice": 0,
+                                    "minX": 0,
+                                    "minY": 0,
+                                    "style": [
+                                      {
+                                        "backgroundColor": "transparent",
+                                        "borderWidth": 0,
+                                      },
+                                      [
+                                        {},
+                                      ],
+                                      {
+                                        "flex": 0,
+                                        "height": 16,
+                                        "width": 16,
+                                      },
+                                    ],
+                                    "vbHeight": 24,
+                                    "vbWidth": 24,
+                                    "width": "16px",
+                                  },
+                                  "type": "RNSVGSvgView",
+                                },
+                                {
+                                  "children": [
                                     "Upload",
                                   ],
                                   "props": {
                                     "accessible": true,
-                                    "color": "interactive.text.primary.disabled",
+                                    "color": "interactive.text.neutral.disabled",
                                     "data-blade-component": "text",
                                     "fontFamily": "text",
                                     "fontSize": 100,
                                     "fontStyle": "normal",
-                                    "fontWeight": "regular",
+                                    "fontWeight": "medium",
                                     "letterSpacing": 50,
                                     "lineHeight": 100,
                                     "style": [
                                       {
-                                        "color": "hsla(218, 89%, 51%, 0.32)",
+                                        "color": "hsla(206, 10%, 29%, 0.32)",
                                         "fontFamily": "Inter",
                                         "fontSize": 14,
                                         "fontStyle": "normal",
-                                        "fontWeight": "400",
+                                        "fontWeight": "500",
                                         "letterSpacing": -0.18200000000000002,
                                         "lineHeight": 20,
                                         "marginBottom": 0,
@@ -1760,28 +2931,27 @@ exports[`<FileUpload /> (native) should set disabled state with isDisabled 1`] =
                                         "paddingLeft": 0,
                                         "paddingRight": 0,
                                         "paddingTop": 0,
-                                        "textDecorationLine": "none",
+                                        "textDecorationColor": "hsla(206, 10%, 29%, 0.32)",
+                                        "textDecorationLine": "underline",
                                       },
                                     ],
+                                    "textDecorationLine": "underline",
                                   },
                                   "type": "Text",
                                 },
                               ],
                               "props": {
                                 "alignItems": "center",
-                                "borderBottomColor": "surface.border.primary.muted",
-                                "borderBottomWidth": "thin",
                                 "data-blade-component": "box",
                                 "display": "flex",
                                 "flexDirection": "row",
+                                "gap": "spacing.2",
                                 "style": [
                                   {
                                     "alignItems": "center",
-                                    "borderBottomColor": "hsla(218, 89%, 51%, 0.18)",
-                                    "borderBottomStyle": "solid",
-                                    "borderBottomWidth": 1,
                                     "display": "flex",
                                     "flexDirection": "row",
+                                    "gap": 4,
                                   },
                                 ],
                               },

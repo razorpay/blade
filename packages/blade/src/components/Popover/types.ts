@@ -69,25 +69,16 @@ type PopoverProps = {
    */
   openInteraction?: 'hover' | 'click';
   /**
-   * Whether the open popover manages focus: it traps focus inside itself and hides the rest of
-   * the page from assistive tech (`aria-hidden`). Turned off by TreeView's hover previews, which
-   * never take focus and must not hide the tree the pointer is still on. Turning it off (instead
-   * of making it non-modal) also keeps floating-ui's focus guards and `aria-owns` out of the
-   * trigger's DOM
+   * Whether the open popover manages focus (floating-ui's FloatingFocusManager). A non-modal
+   * (hover) popover with focus management renders focus guards (`role="button"`, `tabindex="0"`)
+   * and an `aria-owns` span next to its trigger. TreeView turns it off for its hover previews:
+   * their trigger sits inside a `treeitem`, where those elements would add tab stops and make the
+   * row's accessible name include the popover's content
    *
    * @default true
    * @private
    */
   _shouldManageFocus?: boolean;
-  /**
-   * Whether the popover fades and slides in when it opens. TreeView turns it off when a hover
-   * preview replaces another one that is still showing, so previews switch in place instead of
-   * fading out and in again (the closing animation is unaffected)
-   *
-   * @default true
-   * @private
-   */
-  _shouldAnimateOpen?: boolean;
   /**
    * Sets the maximum width of the popover content
    *

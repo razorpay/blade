@@ -24,9 +24,40 @@ const fileUploadMotionTokens: Record<'duration' | 'easing', DurationString | Eas
 };
 
 const fileUploadHeightTokens = {
+  small: size['32'],
   medium: size['56'],
   large: size['64'],
 };
+
+// Uploaded file items keep the medium height in the small size, so their actions stay tappable
+const fileUploadItemHeightTokens = {
+  small: size['56'],
+  medium: size['56'],
+  large: size['64'],
+  variable: size['64'],
+};
+
+const fileUploadBorderRadiusTokens = {
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
+  variable: 'medium',
+} as const;
+
+// Text and icon sizes inside the drop area. Only the small size shrinks them.
+const fileUploadDropAreaTextSizeTokens = {
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
+  variable: 'medium',
+} as const;
+
+const fileUploadLinkIconSizeTokens = {
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
+  variable: 'medium',
+} as const;
 
 const fileUploadColorTokens = {
   text: {
@@ -45,9 +76,14 @@ const fileUploadColorTokens = {
     default: 'interactive.icon.primary.subtle',
     disabled: 'interactive.icon.primary.disabled',
   },
+  // The upload action matches Blade Link with color="neutral" and a leading icon
   link: {
-    default: 'interactive.text.primary.subtle',
-    disabled: 'interactive.text.primary.disabled',
+    default: 'interactive.text.neutral.normal',
+    disabled: 'interactive.text.neutral.disabled',
+  },
+  linkIcon: {
+    default: 'interactive.icon.neutral.normal',
+    disabled: 'interactive.icon.neutral.disabled',
   },
 } as const;
 
@@ -69,16 +105,6 @@ const fileUploadItemBackgroundColors: Record<
   },
 };
 
-const fileUploadLinkBorderTokens = {
-  color: {
-    default: 'surface.border.primary.normal',
-    disabled: 'surface.border.primary.muted',
-  },
-  width: {
-    default: 'thin',
-  },
-} as const;
-
 const getFileIconExtension = (acceptValue?: string): string => {
   if (!acceptValue) return 'example.xyz';
 
@@ -95,7 +121,10 @@ export {
   fileUploadMotionTokens,
   fileUploadItemBackgroundColors,
   fileUploadColorTokens,
-  fileUploadLinkBorderTokens,
   fileUploadHeightTokens,
+  fileUploadItemHeightTokens,
+  fileUploadBorderRadiusTokens,
+  fileUploadDropAreaTextSizeTokens,
+  fileUploadLinkIconSizeTokens,
   getFileIconExtension,
 };

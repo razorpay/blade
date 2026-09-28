@@ -132,20 +132,27 @@ type FileUploadCommonProps = {
    */
   errorText?: string;
   /**
+   * Text shown in the drop area before the upload action.
+   * Pass an empty string (`""`) to hide it and show only the upload action.
+   *
+   * @default 'Drag files here or' ('Tap to' on React Native). With `size="variable"`: 'Drag and drop your files here' ('Tap to upload your files' on React Native)
+   */
+  dropAreaText?: string;
+  /**
    * Test ID for automation
    */
   testID?: string;
 } & StyledPropsBlade &
   MotionMetaProp;
 
-// Standard size props (medium or large)
+// Standard size props (small, medium or large)
 type FileUploadStandardSizeProps = FileUploadCommonProps & {
   /**
    * Size of the FileUpload component
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 };
 
 // Variable size props with custom text options
@@ -155,10 +162,6 @@ type FileUploadVariableSizeProps = FileUploadCommonProps & {
    * Custom text for the upload action button
    */
   actionButtonText?: string;
-  /**
-   * Custom text for the drag & drop area
-   */
-  dropAreaText?: string;
   /**
    * Height of the file upload component
    */

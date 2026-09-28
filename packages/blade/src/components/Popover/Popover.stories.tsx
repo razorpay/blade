@@ -23,6 +23,7 @@ import { List, ListItem, ListItemLink, ListItemText } from '~components/List';
 import { IconButton } from '~components/Button/IconButton';
 import { isReactNative } from '~utils';
 import { Alert } from '~components/Alert';
+import { Tooltip } from '~components/Tooltip';
 import BaseBox from '~components/Box/BaseBox';
 import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 import { TextInput } from '~components/Input/TextInput';
@@ -510,6 +511,58 @@ OpenInteraction.storyName = 'With Different Open Interaction';
 OpenInteraction.args = {
   title: 'Settlement breakup',
   content: <Content />,
+};
+
+const hoverPreviews = [
+  { label: 'Payment Success', amount: 1149 },
+  { label: 'Payment Failed', amount: 1149 },
+  { label: 'Refund Processed', amount: 499 },
+];
+
+const HoverSwitchingTemplate: StoryFn<typeof Popover> = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.4" maxWidth="320px">
+      <Text size="small" color="surface.text.gray.muted">
+        Move the pointer across the buttons: hover popovers and tooltips switch in place instead of
+        fading out and in again.
+      </Text>
+      {hoverPreviews.map(({ label, amount }) => (
+        <Popover
+          key={label}
+          openInteraction="hover"
+          placement="right"
+          title={label}
+          content={
+            <Box display="flex" flexDirection="column" gap="spacing.2">
+              <Text size="small" color="surface.text.gray.muted">
+                Preview of the {label.toLowerCase()} screen
+              </Text>
+              <Amount value={amount} />
+            </Box>
+          }
+        >
+          <Button variant="secondary" isFullWidth>
+            {label}
+          </Button>
+        </Popover>
+      ))}
+      <Tooltip content="Tooltips are part of the same group" placement="right">
+        <Button variant="tertiary" isFullWidth>
+          With a tooltip
+        </Button>
+      </Tooltip>
+    </Box>
+  );
+};
+export const HoverSwitching = HoverSwitchingTemplate.bind({});
+HoverSwitching.storyName = 'Switching Between Hover Popovers';
+HoverSwitching.parameters = {
+  docs: {
+    description: {
+      story:
+        'Hover popovers share one group with every Tooltip. Opening one closes whichever is showing, and the replaced one disappears without fading while the new one appears in place. Only the first fades in and the last fades out. Click popovers are not part of the group.',
+    },
+  },
 };
 
 const StoriesPanelSwitchAlert = ({ shouldShow }: { shouldShow: boolean }) => {

@@ -13,8 +13,10 @@ import {
   useClick,
   useHover,
   useDismiss,
+  useDelayGroup,
   FloatingFocusManager,
 } from '@floating-ui/react';
+import type { FloatingContext, OpenChangeReason } from '@floating-ui/react';
 import React from 'react';
 import type { PopoverProps } from './types';
 import { PopoverContent } from './PopoverContent';
@@ -38,6 +40,59 @@ import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { OverlayContextReset } from '~components/OverlayContextReset';
 
+const noop = (): void => undefined;
+
+/**
+ * Hover popovers join BladeProvider's `FloatingDelayGroup`, the group every Tooltip is in, so
+ * moving the pointer between hover overlays switches them in place: opening one closes whichever
+ * one is showing, the replaced one disappears without fading out, and the new one appears without
+ * fading in (see the transition in Popover). Click popovers stay out of the group: hovering a
+ * tooltip must not close a popover someone opened on purpose.
+ *
+ * Works for controlled popovers too: being replaced calls `onOpenChange({ isOpen: false })`.
+ */
+const useHoverPopoverDelayGroup = ({
+  context,
+  isEnabled,
+}: {
+  context: FloatingContext;
+  isEnabled: boolean;
+}): ReturnType<typeof useDelayGroup> => {
+  const { open, onOpenChange, floatingId } = context;
+  // The group closes every member that is not the current one, and it can do so before an opening
+  // popover has claimed the group (a popover mounted open, or opened in the same update another
+  // member is still current). Such a close is ignored until this popover has been current once
+  const hasClaimedGroupRef = React.useRef(false);
+  const handleGroupOpenChange = React.useCallback(
+    (nextOpen: boolean, event?: Event, reason?: OpenChangeReason): void => {
+      if (!nextOpen && !hasClaimedGroupRef.current) {
+        return;
+      }
+      onOpenChange(nextOpen, event, reason);
+    },
+    [onOpenChange],
+  );
+
+  const group = useDelayGroup(
+    {
+      ...context,
+      open: isEnabled && open,
+      onOpenChange: isEnabled ? handleGroupOpenChange : noop,
+    },
+    { id: floatingId },
+  );
+
+  React.useLayoutEffect(() => {
+    if (!open) {
+      hasClaimedGroupRef.current = false;
+    } else if (group.currentId === floatingId) {
+      hasClaimedGroupRef.current = true;
+    }
+  }, [open, group.currentId, floatingId]);
+
+  return group;
+};
+
 const _Popover = ({
   content,
   title,
@@ -52,7 +107,6 @@ const _Popover = ({
   initialFocusRef,
   openInteraction = 'click',
   _shouldManageFocus = true,
-  _shouldAnimateOpen = true,
   maxWidth,
   ...rest
 }: PopoverProps): React.ReactElement => {
@@ -93,15 +147,28 @@ const _Popover = ({
     controllableSetIsOpen(() => false);
   }, [controllableSetIsOpen]);
 
+  const isHoverPopover = openInteraction === 'hover';
+  const { isInstantPhase, currentId } = useHoverPopoverDelayGroup({
+    context,
+    isEnabled: isHoverPopover,
+  });
+
   // we need to animate from the offset of the computed placement
   // because placement can change dynamically based on available space
   const [computedSide] = getFloatingPlacementParts(computedPlacement);
   const computedIsHorizontal = computedSide === 'left' || computedSide === 'right';
   const animationOffset = isOppositeAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
-    duration: _shouldAnimateOpen
-      ? theme.motion.duration.quick
-      : { open: 0, close: theme.motion.duration.quick },
+    // While the pointer moves from one hover overlay to the next, swap them without animating:
+    // the replaced one disappears at once and the new one appears in place. Only the first one of
+    // the streak fades in and the last one fades out (the same as Tooltip)
+    duration:
+      isHoverPopover && isInstantPhase
+        ? {
+            open: 0,
+            close: currentId === context.floatingId ? theme.motion.duration.quick : 0,
+          }
+        : theme.motion.duration.quick,
     initial: {
       opacity: 0,
       transform: `translate${computedIsHorizontal ? 'X' : 'Y'}(${animationOffset}px)`,
@@ -111,7 +178,13 @@ const _Popover = ({
   // remove click handler if popover is controlled
   const isControlled = isOpen !== undefined;
   const click = useClick(context, { enabled: !isControlled && openInteraction === 'click' });
-  const hover = useHover(context, { enabled: !isControlled && openInteraction === 'hover' });
+  const hover = useHover(context, {
+    enabled: !isControlled && isHoverPopover,
+    // A short close delay keeps this popover current until the next hover overlay opens, so the
+    // next one replaces it in place (see useHoverPopoverDelayGroup). It is cancelled when the
+    // pointer enters the popover itself
+    delay: { open: 0, close: theme.motion.delay['2xquick'] },
+  });
   const dismiss = useDismiss(context);
   const role = useRole(context);
 
@@ -159,7 +232,9 @@ const _Popover = ({
               }
               context={context}
               disabled={!_shouldManageFocus}
-              modal={true}
+              // A hover popover is a preview the pointer rests on: it must not trap focus or hide
+              // the rest of the page from assistive tech (modal marks everything else aria-hidden)
+              modal={!isHoverPopover}
               guards={true}
             >
               <TopNavOverlayThemeOverride>

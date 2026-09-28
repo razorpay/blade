@@ -1105,12 +1105,18 @@ describe('tooltip and popover on items', () => {
       await findByRole('dialog');
 
       movePointer(success, retry);
-      // replaced in the same update: never two popovers, and the old one does not fade out
-      const dialogs = getAllByRole('dialog');
-      expect(dialogs).toHaveLength(1);
-      expect(dialogs[0]).toHaveTextContent('Retry preview');
-      // ...and the new one appears in place instead of fading in
-      await waitFor(() => expect(getOpenTransitionDuration(dialogs[0])).toBe('0ms'));
+      await waitFor(
+        () => {
+          const dialogs = getAllByRole('dialog');
+          // the replaced popover closes with a 0ms transition instead of fading out under the new
+          // one (Popover's delay group), so it is gone before a fade-out could have finished...
+          expect(dialogs).toHaveLength(1);
+          expect(dialogs[0]).toHaveTextContent('Retry preview');
+          // ...and the new one appears in place instead of fading in
+          expect(getOpenTransitionDuration(dialogs[0])).toBe('0ms');
+        },
+        { timeout: REPLACED_OVERLAY_TIMEOUT },
+      );
     });
 
     it('should close a popover sooner when the pointer moves to a row without an overlay', async () => {
