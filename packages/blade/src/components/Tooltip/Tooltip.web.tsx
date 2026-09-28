@@ -76,17 +76,22 @@ const _Tooltip = ({
     whileElementsMounted: autoUpdate,
   });
 
+  useDelayGroup(context, { id });
+  const { delay, isInstantPhase, currentId } = useDelayGroupContext();
+
   const animationOffset = isOppositeAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
-    duration: theme.motion.duration.quick,
+    // While the pointer moves from one grouped tooltip (or TreeView hover popover) to the next,
+    // swap them without animating: the replaced one disappears at once instead of fading out
+    // under the new one. Only the last tooltip of the streak animates out.
+    duration: isInstantPhase
+      ? { open: 0, close: currentId === id ? theme.motion.duration.quick : 0 }
+      : theme.motion.duration.quick,
     initial: {
       opacity: 0,
       transform: `translate${isHorizontal ? 'X' : 'Y'}(${animationOffset}px)`,
     },
   });
-
-  useDelayGroup(context, { id });
-  const { delay } = useDelayGroupContext();
   const hover = useHover(context, {
     delay,
     move: false,

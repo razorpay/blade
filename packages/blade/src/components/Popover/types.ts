@@ -69,14 +69,16 @@ type PopoverProps = {
    */
   openInteraction?: 'hover' | 'click';
   /**
-   * Whether the open popover is modal: it traps focus and hides the rest of the page from
-   * assistive tech (`aria-hidden`). Used by TreeView's hover previews, which must not hide the
-   * tree the pointer is still on
+   * Whether the open popover manages focus: it traps focus inside itself and hides the rest of
+   * the page from assistive tech (`aria-hidden`). Turned off by TreeView's hover previews, which
+   * never take focus and must not hide the tree the pointer is still on. Turning it off (instead
+   * of making it non-modal) also keeps floating-ui's focus guards and `aria-owns` out of the
+   * trigger's DOM
    *
    * @default true
    * @private
    */
-  _isModal?: boolean;
+  _shouldManageFocus?: boolean;
   /**
    * Sets the maximum width of the popover content
    *

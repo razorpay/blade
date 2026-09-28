@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { fireEvent, waitFor, within } from '@testing-library/react';
+import { act, fireEvent, waitFor, within } from '@testing-library/react';
 import { TreeView } from '../TreeView';
 import { TreeViewItem } from '../TreeViewItem';
 import { TreeViewLoadMore } from '../TreeViewLoadMore';
@@ -1027,6 +1027,131 @@ describe('tooltip and popover on items', () => {
     );
   });
 
+  describe('switching between rows', () => {
+    // shorter than Popover / Tooltip's exit animation (motion.duration.quick, 200ms): a replaced
+    // overlay has to be gone before it could have finished fading out
+    const REPLACED_OVERLAY_TIMEOUT = 100;
+
+    const switchingTree = (
+      <TreeView>
+        <TreeViewItem
+          title="Payment Animation"
+          value="payment-animation"
+          tooltip={{ content: 'Animation hint' }}
+        />
+        <TreeViewItem
+          title="Payment Processing"
+          value="payment-processing"
+          tooltip={{ content: 'Processing hint' }}
+        />
+        <TreeViewItem
+          title="Payment Success"
+          value="payment-success"
+          popover={{ title: 'Payment Success', content: <p>Success preview</p> }}
+        />
+        <TreeViewItem
+          title="Retry Payment"
+          value="retry-payment"
+          popover={{ title: 'Retry Payment', content: <p>Retry preview</p> }}
+        />
+      </TreeView>
+    );
+
+    it('should replace one popover with the next without an overlap', async () => {
+      const user = userEvents.setup();
+      const { getByRole, findByRole, getAllByRole } = renderWithTheme(switchingTree);
+
+      await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
+      expect(await findByRole('dialog')).toHaveTextContent('Success preview');
+
+      await user.hover(getByRole('treeitem', { name: 'Retry Payment' }));
+      await waitFor(
+        () => {
+          const dialogs = getAllByRole('dialog');
+          expect(dialogs).toHaveLength(1);
+          expect(dialogs[0]).toHaveTextContent('Retry preview');
+        },
+        { timeout: REPLACED_OVERLAY_TIMEOUT },
+      );
+    });
+
+    it('should close a popover without the hover delay when the pointer moves to another row', async () => {
+      const user = userEvents.setup();
+      const onOpenChange = jest.fn();
+      const { getByRole, findByRole } = renderWithTheme(
+        <TreeView>
+          <TreeViewItem
+            title="Payment Success"
+            value="payment-success"
+            popover={{ title: 'Payment Success', content: <p>Success preview</p>, onOpenChange }}
+          />
+          <TreeViewItem title="Exit Payment" value="exit-payment" />
+        </TreeView>,
+      );
+
+      await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
+      await findByRole('dialog');
+
+      // user-event does not set relatedTarget on pointer moves (browsers do), and jsdom has no
+      // PointerEvent, so the move from one row onto the other is dispatched as a MouseEvent named
+      // pointerout: React derives the row's pointerleave from it, relatedTarget included
+      act(() => {
+        getByRole('treeitem', { name: 'Payment Success' }).dispatchEvent(
+          new MouseEvent('pointerout', {
+            bubbles: true,
+            relatedTarget: getByRole('treeitem', { name: 'Exit Payment' }),
+          }),
+        );
+      });
+      // synchronous: no 160ms "the pointer may be heading to the popover" delay
+      expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: false });
+    });
+
+    it('should replace a tooltip with the next one without an overlap', async () => {
+      const user = userEvents.setup();
+      const { getByRole, findByRole, getAllByRole } = renderWithTheme(switchingTree);
+
+      await user.hover(getByRole('treeitem', { name: 'Payment Animation' }));
+      expect(await findByRole('tooltip')).toHaveTextContent('Animation hint');
+
+      await user.hover(getByRole('treeitem', { name: 'Payment Processing' }));
+      await waitFor(
+        () => {
+          const tooltips = getAllByRole('tooltip');
+          expect(tooltips).toHaveLength(1);
+          expect(tooltips[0]).toHaveTextContent('Processing hint');
+        },
+        { timeout: REPLACED_OVERLAY_TIMEOUT },
+      );
+    });
+
+    it('should replace a tooltip with a popover, and a popover with a tooltip, without an overlap', async () => {
+      const user = userEvents.setup();
+      const { getByRole, findByRole, queryByRole } = renderWithTheme(switchingTree);
+
+      await user.hover(getByRole('treeitem', { name: 'Payment Processing' }));
+      await findByRole('tooltip');
+
+      await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
+      await waitFor(
+        () => {
+          expect(queryByRole('tooltip')).not.toBeInTheDocument();
+          expect(queryByRole('dialog')).toBeInTheDocument();
+        },
+        { timeout: REPLACED_OVERLAY_TIMEOUT },
+      );
+
+      await user.hover(getByRole('treeitem', { name: 'Payment Animation' }));
+      await waitFor(
+        () => {
+          expect(queryByRole('dialog')).not.toBeInTheDocument();
+          expect(queryByRole('tooltip')).toHaveTextContent('Animation hint');
+        },
+        { timeout: REPLACED_OVERLAY_TIMEOUT },
+      );
+    });
+  });
+
   it('should not open popover on touch, where a tap only selects the row', async () => {
     const user = userEvents.setup();
     const onChange = jest.fn();
@@ -1047,8 +1172,9 @@ describe('tooltip and popover on items', () => {
     expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('should pass a11y audit with tooltip and popover items', async () => {
-    const { getByRole } = renderWithTheme(
+  it('should pass a11y audit with tooltip and popover items, closed and open', async () => {
+    const user = userEvents.setup();
+    const { getByRole, findByRole } = renderWithTheme(
       <TreeView>
         <TreeViewItem title="Goa" value="goa" tooltip={{ content: 'Beach state' }} />
         <TreeViewItem
@@ -1058,6 +1184,15 @@ describe('tooltip and popover on items', () => {
         />
       </TreeView>,
     );
+    await assertAccessible(getByRole('tree'));
+
+    await user.hover(getByRole('treeitem', { name: 'Karnataka' }));
+    await findByRole('dialog');
+    // while the popover is open, the hovered row keeps its own name (nothing inside the row
+    // points at the popover through aria-owns) and gets no extra tab stops (focus guards)
+    const row = getByRole('treeitem', { name: 'Karnataka' });
+    expect(row.querySelector('[aria-owns]')).toBeNull();
+    expect(row.querySelectorAll('[tabindex="0"]')).toHaveLength(0);
     await assertAccessible(getByRole('tree'));
   });
 

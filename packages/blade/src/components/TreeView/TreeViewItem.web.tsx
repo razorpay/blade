@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDelayGroup } from '@floating-ui/react';
+import type { FloatingContext } from '@floating-ui/react';
 import { componentIds } from './componentIds';
 import type { TreeViewItemProps } from './types';
 import { TreeViewParentContext, useTreeViewContext } from './useTreeView';
@@ -25,6 +27,7 @@ import { useTruncationTitle } from '~utils/useTruncationTitle';
 import { Tooltip } from '~components/Tooltip';
 import { Popover } from '~components/Popover';
 import { logger } from '~utils/logger';
+import { useId } from '~utils/useId';
 
 const TreeViewItemCheckbox = ({
   isChecked,
@@ -101,9 +104,10 @@ const TreeViewItemPopover = ({
       {...popover}
       // 'hover' keeps focus on the row when the popover opens
       openInteraction="hover"
-      // a modal popover would hide the whole tree from assistive tech while the pointer
-      // rests on a row
-      _isModal={false}
+      // a hover preview never takes focus. With focus management on, the popover would hide the
+      // whole tree from assistive tech (modal), or put focus guards and an `aria-owns` inside the
+      // row, which renames the row after the popover's content (non-modal)
+      _shouldManageFocus={false}
       isOpen={isOpen}
       onOpenChange={({ isOpen }) => onOpenChange(isOpen)}
     >
@@ -118,6 +122,47 @@ const TreeViewItemPopover = ({
       />
     </Popover>
   );
+};
+
+/**
+ * Makes an item's popover a member of BladeProvider's tooltip delay group, the same one every
+ * Tooltip is in. Opening the popover closes whichever tooltip or popover is open, and it closes
+ * the moment another one opens, so moving the pointer down the tree never shows two overlays at
+ * the same time.
+ *
+ * Rendered (as nothing) for every item that has a `popover`, whether or not it was hovered: a
+ * member has to exist before it opens, or the group closes it as it joins
+ */
+const TreeViewItemPopoverGroupMember = ({
+  isOpen,
+  onReplaced,
+}: {
+  isOpen: boolean;
+  /**
+   * Called when another tooltip / popover opened and this one has to go at once
+   */
+  onReplaced: () => void;
+}): null => {
+  const groupId = useId('treeview-item-popover');
+  const onReplacedRef = React.useRef(onReplaced);
+  onReplacedRef.current = onReplaced;
+  const handleGroupOpenChange = React.useCallback((isGroupOpen: boolean): void => {
+    if (!isGroupOpen) {
+      onReplacedRef.current();
+    }
+  }, []);
+  useDelayGroup(
+    // useDelayGroup only reads `open`, `onOpenChange` and `floatingId` from the context; the
+    // open state is owned by TreeViewItem (TreeViewItemPopover's Popover is controlled)
+    ({
+      open: isOpen,
+      onOpenChange: handleGroupOpenChange,
+      floatingId: groupId,
+    } as unknown) as FloatingContext,
+    { id: groupId },
+  );
+
+  return null;
 };
 
 const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
@@ -144,6 +189,9 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   const { theme } = useTheme();
   const { containerRef, textRef } = useTruncationTitle({ content: props.title });
   const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
+  // the Popover is only rendered once the row has been hovered, and is unmounted (skipping its
+  // exit animation) when another tooltip / popover replaces it
+  const [isPopoverMounted, setIsPopoverMounted] = React.useState(false);
   // mirrors isPopoverOpen for the delayed close, which runs after the render it was scheduled in
   const isPopoverOpenRef = React.useRef(false);
   const popoverCloseTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
@@ -177,8 +225,16 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   };
   React.useEffect(() => cancelPopoverClose, []);
 
-  const handlePopoverOpenChange = (isOpen: boolean): void => {
+  const handlePopoverOpenChange = (
+    isOpen: boolean,
+    { isInstant = false }: { isInstant?: boolean } = {},
+  ): void => {
     cancelPopoverClose();
+    if (isOpen) {
+      setIsPopoverMounted(true);
+    } else if (isInstant) {
+      setIsPopoverMounted(false);
+    }
     if (isOpen === isPopoverOpenRef.current) {
       return;
     }
@@ -187,11 +243,25 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     props.popover?.onOpenChange?.({ isOpen });
   };
 
+  const closePopoverInstantly = (): void => {
+    handlePopoverOpenChange(false, { isInstant: true });
+  };
+
   // The popover content is rendered in a portal, but it is still a React child of this row, so
   // React fires the row's pointerenter / pointerleave for it too: the pointer can travel from the
-  // row onto the popover without closing it. The delay bridges the gap between the two
-  const schedulePopoverClose = (): void => {
+  // row onto the popover without closing it. The delay bridges the gap between the two.
+  // When the pointer left for another row, it is not heading to the popover: close right away
+  const schedulePopoverClose = (event: React.PointerEvent): void => {
     cancelPopoverClose();
+    const nextElement = event.relatedTarget;
+    if (
+      nextElement instanceof Element &&
+      nextElement.closest('[role="treeitem"]') &&
+      !event.currentTarget.contains(nextElement)
+    ) {
+      handlePopoverOpenChange(false);
+      return;
+    }
     popoverCloseTimeoutRef.current = setTimeout(
       () => handlePopoverOpenChange(false),
       theme.motion.delay.xquick,
@@ -263,12 +333,15 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
       width="100%"
       position={props.popover ? 'relative' : undefined}
     >
-      {props.popover ? (
+      {props.popover && isPopoverMounted ? (
         <TreeViewItemPopover
           popover={props.popover}
           isOpen={isPopoverOpen}
           onOpenChange={handlePopoverOpenChange}
         />
+      ) : null}
+      {props.popover ? (
+        <TreeViewItemPopoverGroupMember isOpen={isPopoverOpen} onReplaced={closePopoverInstantly} />
       ) : null}
       <TreeViewChevron
         state={chevronState}
