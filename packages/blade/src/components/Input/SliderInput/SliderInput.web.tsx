@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import type { SliderInputProps } from './types';
 import { SliderTrack } from './SliderTrack.web';
 import { SliderValueIndicator } from './SliderValueIndicator.web';
@@ -10,6 +10,8 @@ import {
   SLIDER_BOX_HEIGHT,
   SLIDER_BOX_PADDING_TOP,
   SLIDER_CONTROL_HEIGHT,
+  SLIDER_RATIO,
+  SLIDER_RATIO_PROPERTY,
   SLIDER_SCALE_TOP,
   SLIDER_THUMB_HIT_AREA,
   SLIDER_THUMB_SIZE,
@@ -56,7 +58,38 @@ const FieldBox = styled.div<{ $hasScale: boolean }>`
     $hasScale ? makeSize(SLIDER_SCALE_TOP + 12 - SLIDER_BOX_HEIGHT) : '0px'};
 `;
 
-const Control = styled.div<{ $isDisabled: boolean }>`
+/** Without registration the ratio would not interpolate, and the movement easing would be lost. */
+const RatioPropertyStyles = createGlobalStyle`
+  @property ${SLIDER_RATIO_PROPERTY} {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+`;
+
+/**
+ * Movement is eased so a keyboard step, or a click further down the track, reads as the thumb
+ * travelling rather than teleporting. While scrubbing it is dropped so the thumb stays under
+ * the pointer, unless markers are shown: those steps are coarse enough that the hops between
+ * them need smoothing.
+ */
+const getRatioTransition = ({
+  theme,
+  isScrubbing,
+  hasMarkers,
+}: {
+  theme: Theme;
+  isScrubbing: boolean;
+  hasMarkers: boolean;
+}): string => {
+  if (isScrubbing && !hasMarkers) return 'none';
+  const movement = sliderInputMotion[isScrubbing ? 'scrub' : 'position'];
+  return `${SLIDER_RATIO_PROPERTY} ${makeMotionTime(
+    theme.motion.duration[movement.duration],
+  )} ${String(theme.motion.easing[movement.easing])}`;
+};
+
+const Control = styled.div<{ $isDisabled: boolean; $isScrubbing: boolean; $hasMarkers: boolean }>`
   position: absolute;
   inset-inline: 0;
   top: ${makeSize(SLIDER_BOX_PADDING_TOP)};
@@ -64,6 +97,8 @@ const Control = styled.div<{ $isDisabled: boolean }>`
   cursor: ${({ $isDisabled }) => ($isDisabled ? 'not-allowed' : 'pointer')};
   /* Horizontal drags belong to the slider; without this the browser scrolls the page instead. */
   touch-action: none;
+  transition: ${({ theme, $isScrubbing, $hasMarkers }) =>
+    getRatioTransition({ theme, isScrubbing: $isScrubbing, hasMarkers: $hasMarkers })};
 
   /* Lifts the target to the 44px minimum without touching the visual height. */
   &::before {
@@ -81,24 +116,16 @@ const TrackArea = styled.div`
   top: ${makeSize(SLIDER_TRACK_TOP - SLIDER_BOX_PADDING_TOP)};
 `;
 
-/**
- * Movement is eased so a keyboard step, or a click further down the track, reads as the thumb
- * travelling rather than teleporting. It is suppressed only while scrubbing, where the thumb
- * has to stay pinned to the pointer.
- */
-const getThumbTransition = (theme: Theme, isScrubbing: boolean): string => {
-  const easing = String(theme.motion.easing[sliderInputMotion.position.easing]);
-  const color = `background-color ${makeMotionTime(
+/** Position is not transitioned here: it follows the ratio the control eases. */
+const getThumbTransition = (theme: Theme): string =>
+  `background-color ${makeMotionTime(
     theme.motion.duration[sliderInputMotion.color.duration],
-  )} ${easing}`;
-  if (isScrubbing) return color;
-  const move = `inset-inline-start ${makeMotionTime(
-    theme.motion.duration[sliderInputMotion.position.duration],
-  )} ${easing}`;
-  return `${move}, ${color}`;
-};
+  )} ${String(theme.motion.easing[sliderInputMotion.color.easing])}`;
 
-const Thumb = styled.div<{ $color: string; $isScrubbing: boolean }>`
+/** The thumb, fill and indicator all read this rather than a value of their own. */
+const ratioOffset = getOffsetExpression(SLIDER_RATIO);
+
+const Thumb = styled.div<{ $color: string }>`
   position: absolute;
   top: ${makeSize(SLIDER_THUMB_TOP)};
   width: ${makeSize(SLIDER_THUMB_SIZE)};
@@ -106,19 +133,16 @@ const Thumb = styled.div<{ $color: string; $isScrubbing: boolean }>`
   border-radius: ${({ theme }) => makeSize(theme.border.radius.max)};
   background-color: ${({ $color }) => $color};
   outline: none;
-  transition: ${({ theme, $isScrubbing }) => getThumbTransition(theme, $isScrubbing)};
+  transition: ${({ theme }) => getThumbTransition(theme)};
 
   &:focus-visible {
     ${({ theme }) => getFocusRingStyles({ theme, variant: 'neutral' })}
-    /*
-     * getFocusRingStyles narrows transition-property to outline-width alone, which would
-     * freeze the thumb in place exactly while the keyboard is driving it. Re-declare the
-     * movement alongside the ring's own growth.
-     */
-    transition: ${({ theme, $isScrubbing }) =>
+    /* getFocusRingStyles narrows transition-property to outline-width alone, which would drop
+       the colour change. Re-declare it alongside the ring's own growth. */
+    transition: ${({ theme }) =>
       `outline-width ${makeMotionTime(theme.motion.duration['2xquick'])} ${String(
         theme.motion.easing.standard,
-      )}, ${getThumbTransition(theme, $isScrubbing)}`};
+      )}, ${getThumbTransition(theme)}`};
   }
 `;
 
@@ -227,7 +251,7 @@ const _SliderInput = (
   );
 
   const centeringTransform = getCenteringTransform(isRTL);
-  const thumbOffset = getOffsetExpression(getValueRatio(currentValue, range));
+  const currentRatio = getValueRatio(currentValue, range);
   const isHighlighted = isHovered || isFocused || isDragging;
 
   const willRenderHintText =
@@ -286,20 +310,21 @@ const _SliderInput = (
           )}
         >
           <FieldBox $hasScale={shouldShowScale}>
+            <RatioPropertyStyles />
             <Control
               $isDisabled={isDisabled}
+              $isScrubbing={isScrubbing}
+              $hasMarkers={shouldShowMarkers}
+              style={{ [SLIDER_RATIO_PROPERTY]: currentRatio } as React.CSSProperties}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               {...controlProps}
             >
               <TrackArea ref={trackAreaRef}>
                 <SliderTrack
-                  value={currentValue}
-                  range={range}
                   markerRatios={shouldShowMarkers ? markerRatios : []}
                   isDisabled={isDisabled}
                   isHighlighted={isHighlighted}
-                  isScrubbing={isScrubbing}
                   isRTL={isRTL}
                 />
               </TrackArea>
@@ -307,8 +332,7 @@ const _SliderInput = (
               <Thumb
                 ref={thumbRef}
                 $color={get(theme.colors, thumbColor)}
-                $isScrubbing={isScrubbing}
-                style={{ insetInlineStart: thumbOffset, transform: centeringTransform }}
+                style={{ insetInlineStart: ratioOffset, transform: centeringTransform }}
                 role="slider"
                 tabIndex={isDisabled ? -1 : 0}
                 id={inputId}
@@ -339,10 +363,9 @@ const _SliderInput = (
               {/* After the thumb so it paints above it rather than under. */}
               {showValueIndicator ? (
                 <SliderValueIndicator
-                  offset={thumbOffset}
+                  offset={ratioOffset}
                   centeringTransform={centeringTransform}
                   isVisible={isHighlighted && !isDisabled}
-                  isScrubbing={isScrubbing}
                   value={currentValue}
                 >
                   {format(currentValue)}

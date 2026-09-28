@@ -1,5 +1,5 @@
 // This file is auto generated
-// Modify at blade/plop/icon/iconReexports.ts.hbs
+// Modify at scripts/icons/plop/iconReexports.ts.hbs
 export * from './types';
 export { default as AcceptPaymentsFilledIcon } from './AcceptPaymentsFilledIcon';
 export { default as AcceptPaymentsIcon } from './AcceptPaymentsIcon';
@@ -374,6 +374,7 @@ export { default as SparklesIcon } from './SparklesIcon';
 export { default as SpeakerIcon } from './SpeakerIcon';
 export { default as SquareIcon } from './SquareIcon';
 export { default as StampIcon } from './StampIcon';
+export { default as StarFilledIcon } from './StarFilledIcon';
 export { default as StarIcon } from './StarIcon';
 export { default as StopCircleIcon } from './StopCircleIcon';
 export { default as StorefrontIcon } from './StorefrontIcon';

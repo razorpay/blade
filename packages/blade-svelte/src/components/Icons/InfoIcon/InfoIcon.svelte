@@ -8,12 +8,7 @@
   const iconProps = $derived(getIconProps({ size, color }));
 </script>
 
-<Svg
-  width={iconProps.width}
-  height={iconProps.height}
-  viewBox="0 0 24 24"
-  {...rest}
->
+<Svg width={iconProps.width} height={iconProps.height} viewBox="0 0 24 24" {...rest}>
   <Path
     d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
     fill={iconProps.iconColor}
@@ -29,4 +24,3 @@
     fill={iconProps.iconColor}
   />
 </Svg>
-

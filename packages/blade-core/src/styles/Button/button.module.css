@@ -469,9 +469,13 @@
 }
 
 /*
- * Indefinite loader — pure-CSS 3 dots.
- * Replaces the spinner for indefinite loading. Centered absolutely over the button,
- * dot color is tokenized via --btn-dots-color (defaults to the resolved button text color).
+ * Indefinite loader slot — centers the shared DotLoader over the button.
+ * The loader's own geometry and motion live in the DotLoader style module; this
+ * class only positions it.
+ *
+ * Dot color: Button sets `--dot-loader-color` on this element, resolving
+ * `--btn-dots-color` first so that hook keeps working for consumers who set it on
+ * the button (or an ancestor) to recolor the dots.
  */
 .dots-loader {
   position: absolute;
@@ -483,33 +487,6 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-}
-
-.dots-loader::before {
-  content: '';
-  width: 24px;
-  aspect-ratio: 2;
-  --_dots-gradient: no-repeat
-    radial-gradient(circle closest-side, var(--btn-dots-color, currentColor) 90%, transparent);
-  background: var(--_dots-gradient) 0% 50%, var(--_dots-gradient) 50% 50%,
-    var(--_dots-gradient) 100% 50%;
-  background-size: calc(100% / 3) 50%;
-  animation: btnDots 1s infinite linear;
-}
-
-@keyframes btnDots {
-  20% {
-    background-position: 0% 0%, 50% 50%, 100% 50%;
-  }
-  40% {
-    background-position: 0% 100%, 50% 0%, 100% 50%;
-  }
-  60% {
-    background-position: 0% 50%, 50% 100%, 100% 0%;
-  }
-  80% {
-    background-position: 0% 50%, 50% 50%, 100% 100%;
-  }
 }
 
 /*
@@ -667,9 +644,6 @@
 
 /* Respect reduced-motion: freeze animations to a static, non-distracting state */
 @media (prefers-reduced-motion: reduce) {
-  .dots-loader::before {
-    animation: none;
-  }
   .progress-overlay-fill {
     animation: none;
     width: 0%;

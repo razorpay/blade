@@ -56,4 +56,44 @@ describe('<Button />', () => {
     });
     expect(screen.getByRole('button', { name: 'Complete payment' })).toBeInTheDocument();
   });
+
+  describe('indefinite loading', () => {
+    it('renders three dots and hides them from assistive tech', () => {
+      const { container } = render(Button, {
+        props: { children: 'Pay Now', isLoading: true },
+      });
+
+      const loader = container.querySelector('[aria-hidden="true"]');
+      expect(loader).toBeInTheDocument();
+      expect(loader?.children).toHaveLength(3);
+    });
+
+    it.each([
+      ['xsmall', false],
+      ['small', false],
+      ['medium', false],
+      ['large', true],
+    ] as const)('uses the %s-appropriate loader size', (size, expectsLargeLoader) => {
+      const { container } = render(Button, {
+        props: { children: 'Pay Now', isLoading: true, size },
+      });
+
+      const loader = container.querySelector('[aria-hidden="true"]');
+      // The large class is a CSS-module hash, so match on its stable prefix.
+      const hasLargeLoader = (loader?.className ?? '').includes('dot-loader-large');
+      expect(hasLargeLoader).toBe(expectsLargeLoader);
+    });
+
+    it('resolves the dot color through --btn-dots-color so the shipped override still works', () => {
+      const { container } = render(Button, {
+        props: { children: 'Pay Now', isLoading: true },
+      });
+
+      // The wrapper (not the loader itself) carries the custom property, so a
+      // consumer setting --btn-dots-color on the button still wins.
+      const wrapper = container.querySelector<HTMLElement>('[style*="--dot-loader-color"]');
+      expect(wrapper).toBeInTheDocument();
+      expect(wrapper?.style.getPropertyValue('--dot-loader-color')).toContain('--btn-dots-color');
+    });
+  });
 });

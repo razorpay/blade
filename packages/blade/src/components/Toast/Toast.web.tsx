@@ -73,7 +73,7 @@ const AnimatedFade = styled(BaseBox)<{
 
   return css`
     overflow: hidden;
-    box-shadow: ${borderShadow}, ${highlightShadow};
+    box-shadow: ${theme.elevation.midRaised}, ${borderShadow}, ${highlightShadow};
     backdrop-filter: blur(${backdropBlur}px);
     ${animationType}
   `;

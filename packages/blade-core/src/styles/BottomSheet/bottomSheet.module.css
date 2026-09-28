@@ -114,6 +114,16 @@
   position: absolute;
 }
 
+/* Keeps the grab handle's vertical footprint so header height stays identical
+ * whether or not the handle is shown. */
+.grabHandleHidden {
+  pointer-events: none;
+}
+
+.grabHandleHidden::after {
+  visibility: hidden;
+}
+
 .grabHandle::after {
   content: '';
   margin: auto;

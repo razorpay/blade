@@ -14,6 +14,7 @@ import {
   MIN_TOAST_DESKTOP,
   CONTAINER_GUTTER_MOBILE,
   CONTAINER_GUTTER_DESKTOP,
+  TOAST_SHADOW_CLIP_OFFSET,
 } from './constants';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
@@ -79,7 +80,7 @@ const getPositionStyle = (
     position: 'absolute',
     transformOrigin: 'center',
     transition: `${makeMotionTime(theme.motion.duration.gentle)} ${theme.motion.easing.standard}`,
-    transitionProperty: 'transform, opacity, height',
+    transitionProperty: 'transform, opacity, height, padding, margin',
     transform: `translateY(${offset * (top ? 1 : -1)}px) scale(${scale})`,
     ...verticalStyle,
     ...horizontalStyle,
@@ -269,7 +270,8 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number; zIndex?: number 
         // recalculate height of toast
         const ref = (el: HTMLDivElement): void => {
           if (el && typeof toast.height !== 'number') {
-            const height = el.getBoundingClientRect().height;
+            // measure the toast itself, excluding the wrapper's shadow padding
+            const height = (el.firstElementChild ?? el).getBoundingClientRect().height;
             handlers.updateHeight(toast.id, height);
           }
         };
@@ -281,6 +283,13 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number; zIndex?: number 
         if (isExpanded) {
           toastHeight = toast.height;
         }
+        // Padding + negative margin gives the toast's drop shadow room inside `overflow: hidden`.
+        // Don't switch to `clip-path`: it creates a backdrop root, so the toast's `backdrop-filter`
+        // stops blurring the toasts stacked behind it.
+        // Collapsed toasts get no bottom room so they stay clipped to the front toast's height.
+        const isCollapsedBehind = index > MAX_TOASTS - 1 && !isPromotional && !isExpanded;
+        const shadowRoomX = TOAST_SHADOW_CLIP_OFFSET;
+        const shadowRoomBottom = isCollapsedBehind ? 0 : TOAST_SHADOW_CLIP_OFFSET;
 
         // Maintain relative stacking order (newer toasts in front)
         // Use -1 * index so newer toasts (lower index) have higher z-index values
@@ -297,7 +306,14 @@ const Toaster: React.FC<ToasterProps & { offsetBottom?: number; zIndex?: number 
             style={{
               ...positionStyle,
               zIndex: wrapperZIndex,
-              height: toastHeight,
+              boxSizing: 'border-box',
+              height: typeof toastHeight === 'number' ? toastHeight + shadowRoomBottom : undefined,
+              paddingLeft: shadowRoomX,
+              paddingRight: shadowRoomX,
+              paddingBottom: shadowRoomBottom,
+              marginLeft: -shadowRoomX,
+              marginRight: -shadowRoomX,
+              marginBottom: -shadowRoomBottom,
               overflow: 'hidden',
             }}
             onMouseEnter={() => {

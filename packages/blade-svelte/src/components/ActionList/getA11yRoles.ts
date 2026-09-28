@@ -1,18 +1,66 @@
 /**
- * Accessibility roles for the ActionList family. React's `getA11yRoles.ts`
- * switches between `menu`/`listbox`/`dialog` based on the Dropdown trigger; that
- * coupling is stripped here. This scope is single-select, BottomSheet-mode only,
- * so it emits list/option roles exclusively.
+ * Accessibility roles for the ActionList family (web-only).
+ *
+ * Standalone / BottomSheet usage emits list/option roles. When rendered inside a
+ * `Dropdown`, callers pass `isInsideDropdown = true` so the container/item roles
+ * widen to React parity (`menu`/`dialog`/`listbox` + `menuitem`/
+ * `menuitemcheckbox`/`option`/`link`). No-arg callers keep the original
+ * `listbox`/`option` defaults so existing standalone usage is unchanged.
  */
+import type { DropdownTriggerer } from '../Dropdown/dropdownComponentIds';
+import type { DropdownSelectionType } from '../Dropdown/types';
 
-/** Container role — always `listbox` (no Dropdown/footer/menu branches). */
-export function getActionListContainerRole(): 'listbox' {
+/**
+ * Whether the container should behave as a `menu`. Menu triggers (Button /
+ * IconButton / Link / undefined) are menus; select-style triggers
+ * (`InputDropdownButton`) are listboxes.
+ */
+const isRoleMenu = (dropdownTriggerer: DropdownTriggerer): boolean => {
+  return dropdownTriggerer !== 'InputDropdownButton';
+};
+
+/**
+ * Container role. Standalone → `listbox`. Inside a Dropdown: `dialog` when the
+ * overlay has footer actions, `menu` for menu triggers, else `listbox`.
+ */
+export function getActionListContainerRole(
+  hasFooterAction = false,
+  dropdownTriggerer: DropdownTriggerer = undefined,
+  isInsideDropdown = false,
+): 'dialog' | 'listbox' | 'menu' {
+  if (!isInsideDropdown) {
+    return 'listbox';
+  }
+  if (hasFooterAction) {
+    return 'dialog';
+  }
+  if (isRoleMenu(dropdownTriggerer)) {
+    return 'menu';
+  }
   return 'listbox';
 }
 
-/** Row role — `link` when the item navigates (`href`), else `option`. */
-export function getActionListItemRole(href?: string): 'link' | 'option' {
-  return href ? 'link' : 'option';
+/**
+ * Row role. `link` when navigating (`href`). Standalone → `option`. Inside a
+ * Dropdown menu: `menuitemcheckbox` (multiple) / `menuitem` (single); select
+ * triggers → `option`.
+ */
+export function getActionListItemRole(
+  dropdownTriggerer: DropdownTriggerer = undefined,
+  href?: string,
+  selectionType?: DropdownSelectionType,
+  isInsideDropdown = false,
+): 'menuitem' | 'menuitemcheckbox' | 'option' | 'link' {
+  if (href) {
+    return 'link';
+  }
+  if (!isInsideDropdown) {
+    return 'option';
+  }
+  if (isRoleMenu(dropdownTriggerer)) {
+    return selectionType === 'multiple' ? 'menuitemcheckbox' : 'menuitem';
+  }
+  return 'option';
 }
 
 /** Section wrapper role — `group` (announces the section title as its label). */
@@ -21,11 +69,8 @@ export function getActionListSectionRole(): 'group' {
 }
 
 /**
- * Section items wrapper role — `listbox` on web. Mirrors React's deliberate
- * inner listbox (ActionListItem.tsx `role: isReactNative() ? undefined : 'listbox'`)
- * so screen readers announce the per-group item count. Yields
- * `listbox > group > listbox > option`; the intervening `group` keeps the outer
- * listbox's owned children valid.
+ * Section items wrapper role — `listbox` on web (mirrors React's inner listbox
+ * so screen readers announce the per-group item count).
  */
 export function getActionListSectionItemsRole(): 'listbox' {
   return 'listbox';

@@ -376,6 +376,8 @@ IconOnlyButton.parameters = {
   },
 };
 
+const iconOnlyLoadingSizes = ['xsmall', 'small', 'medium', 'large'] as const;
+
 const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   const [loading, setLoading] = useState(false);
 
@@ -390,6 +392,36 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
       <ButtonComponent size="small" variant="secondary" onClick={toggle}>
         Toggle loading
       </ButtonComponent>
+
+      {/*
+        Icon-only buttons are square, so the loader has to fit a 28px box at the
+        smallest size and step up on the 48px one. Driven by the same toggle so both
+        shapes can be compared in the same state.
+      */}
+      <BaseBox marginTop="spacing.7" />
+      <Text weight="semibold">Icon only</Text>
+      <BaseBox marginTop="spacing.3" />
+      <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.6">
+        {iconOnlyLoadingSizes.map((size) => (
+          <BaseBox
+            key={size}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="spacing.2"
+          >
+            <ButtonComponent
+              size={size}
+              icon={CreditCardIcon}
+              isLoading={loading}
+              accessibilityLabel="Pay now"
+            />
+            <Text size="small" color="surface.text.gray.muted">
+              {size}
+            </Text>
+          </BaseBox>
+        ))}
+      </BaseBox>
     </>
   );
 };
@@ -405,7 +437,8 @@ export const ButtonLoading = ButtonLoadingTemplate.bind({});
 ButtonLoading.parameters = {
   docs: {
     description: {
-      story: 'Loading state for the button with live announce accessibility support',
+      story:
+        'Loading state for the button with live announce accessibility support. The indicator is a 3-dot loader; the dots are hidden from assistive tech since the button already announces start/stop. The icon-only row shows the same state on square buttons, where the loader steps up to its large size on `size="large"`.',
     },
   },
 };

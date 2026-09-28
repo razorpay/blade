@@ -14,6 +14,7 @@
     bottomSheetInnerWrapperClass,
     bottomSheetGrabHandleClass,
     bottomSheetGrabHandleFloatingClass,
+    bottomSheetGrabHandleHiddenClass,
     bottomSheetPortalRootClass,
     getBottomSheetTemplateClasses,
   } from '@razorpay/blade-core/styles';
@@ -642,7 +643,11 @@
   const surfaceExtraClasses = $derived((styledProps.classes || []).filter(Boolean).join(' '));
 
   const grabHandleClasses = $derived(
-    [bottomSheetGrabHandleClass, isHeaderFloating ? bottomSheetGrabHandleFloatingClass : '']
+    [
+      bottomSheetGrabHandleClass,
+      isHeaderFloating ? bottomSheetGrabHandleFloatingClass : '',
+      showDragHandle ? '' : bottomSheetGrabHandleHiddenClass,
+    ]
       .filter(Boolean)
       .join(' '),
   );
@@ -703,9 +708,12 @@
     {...analyticsAttrs}
   >
     <div class={bottomSheetInnerWrapperClass}>
-      {#if showDragHandle}
-        <div bind:this={grabHandleEl} class={grabHandleClasses} {...grabHandleMetaAttrs}></div>
-      {/if}
+      <div
+        bind:this={grabHandleEl}
+        class={grabHandleClasses}
+        aria-hidden={showDragHandle ? undefined : 'true'}
+        {...grabHandleMetaAttrs}
+      ></div>
       {@render children()}
     </div>
   </div>

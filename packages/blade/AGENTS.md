@@ -27,12 +27,13 @@ src/
 
 ### Other Commands
 
-| Task                  | Command                                 |
-| --------------------- | --------------------------------------- |
-| Type check            | `yarn typecheck`                        |
-| Prettier format files | `yarn prettier --write <file1> <file2>` |
-| Build blade package   | `yarn build`                            |
-| Run storybook locally | `yarn start:web`                        |
+| Task                  | Command                                                                                                                                             |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type check            | `yarn typecheck`                                                                                                                                    |
+| Prettier format files | `yarn prettier --write <file1> <file2>`                                                                                                             |
+| Build blade package   | `yarn build`                                                                                                                                        |
+| Run storybook locally | `yarn start:web`                                                                                                                                    |
+| Generate icons        | From repo root: `yarn generate-icons` (reads `scripts/icons/icons.json`, writes React and blade-svelte icons; `-- --target react\|svelte` to limit) |
 
 ## Common Patterns and Best Practices to follow
 

@@ -70,6 +70,7 @@ export const iconButtonStyles = cva(styles['icon-button'], {
 export function getIconButtonTemplateClasses(): Record<string, string> {
   return {
     iconButton: styles['icon-button'],
+    iconSlot: styles['icon-button-icon'],
     emphasisIntense: styles['emphasis-intense'],
     emphasisSubtle: styles['emphasis-subtle'],
     emphasisModerate: styles['emphasis-moderate'],

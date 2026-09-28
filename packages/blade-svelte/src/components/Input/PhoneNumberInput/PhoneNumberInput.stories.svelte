@@ -21,6 +21,11 @@
         control: { type: 'boolean' },
         description: 'Shows the country selector.',
       },
+      countrySelectorMode: {
+        control: { type: 'select' },
+        options: ['bottomsheet', 'dropdown', 'auto'],
+        description: 'Surface used to render the country selector list.',
+      },
       helpText: { control: { type: 'text' }, description: 'Help text below the input.' },
       errorText: { control: { type: 'text' }, description: 'Error text.' },
       successText: { control: { type: 'text' }, description: 'Success text.' },
@@ -232,6 +237,28 @@
 </Story>
 
 <!-- 16 -->
+<Story name="CountrySelectorAsDropdown" asChild>
+  <div>
+    <Text marginBottom="spacing.5">
+      Set <Code size="medium">countrySelectorMode="dropdown"</Code> to render the country selector as
+      an anchored dropdown overlay instead of a bottom sheet.
+    </Text>
+    <PhoneNumberInput label="Enter phone number" countrySelectorMode="dropdown" />
+  </div>
+</Story>
+
+<!-- 17 -->
+<Story name="CountrySelectorAuto" asChild>
+  <div>
+    <Text marginBottom="spacing.5">
+      With <Code size="medium">countrySelectorMode="auto"</Code>, the selector opens as a dropdown on
+      desktop and a bottom sheet on mobile. Resize the viewport to see the switch.
+    </Text>
+    <PhoneNumberInput label="Enter phone number" countrySelectorMode="auto" />
+  </div>
+</Story>
+
+<!-- 18 -->
 <Story name="WithPortalTarget" asChild>
   <div>
     <Text marginBottom="spacing.5">

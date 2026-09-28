@@ -17,8 +17,8 @@ exports[`<SliderInput /> should render a slider 1`] = `
   -webkit-mask-composite: source-in;
   -webkit-mask-composite: intersect;
   mask-composite: intersect;
-  -webkit-transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -213,9 +213,9 @@ exports[`<SliderInput /> should render a slider 1`] = `
   padding: 2px 4px;
   background-color: hsla(0,0%,0%,0.72);
   opacity: 0;
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
-  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
+  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c8.c8.c8.c8.c8 {
@@ -232,6 +232,8 @@ exports[`<SliderInput /> should render a slider 1`] = `
   height: 24px;
   cursor: pointer;
   touch-action: none;
+  -webkit-transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
+  transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9::before {
@@ -256,8 +258,8 @@ exports[`<SliderInput /> should render a slider 1`] = `
   border-radius: 9999px;
   background-color: hsla(0,0%,0%,1);
   outline: none;
-  -webkit-transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13:focus-visible {
@@ -270,8 +272,8 @@ exports[`<SliderInput /> should render a slider 1`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 <div>
@@ -335,6 +337,7 @@ exports[`<SliderInput /> should render a slider 1`] = `
         >
           <div
             class="c9"
+            style="--slider-input-ratio: 0;"
           >
             <div
               class="c10"
@@ -348,7 +351,7 @@ exports[`<SliderInput /> should render a slider 1`] = `
                 />
                 <div
                   class="c12"
-                  style="background-color: rgb(0, 0, 0); clip-path: inset(0 calc(100% - (calc(3px + 0 * (100% - 3px)))) 0 0);"
+                  style="background-color: rgb(0, 0, 0); clip-path: inset(0 calc(100% - (calc(3px + var(--slider-input-ratio) * (100% - 3px)))) 0 0);"
                 />
               </div>
             </div>
@@ -363,13 +366,13 @@ exports[`<SliderInput /> should render a slider 1`] = `
               class="c13"
               id="slider-input-1-input-2"
               role="slider"
-              style="inset-inline-start: calc(1.5px + 0 * (100% - 3px)); transform: translateX(-50%);"
+              style="inset-inline-start: calc(1.5px + var(--slider-input-ratio) * (100% - 3px)); transform: translateX(-50%);"
               tabindex="0"
             />
             <div
               aria-hidden="true"
               class="c14"
-              style="inset-inline-start: calc(1.5px + 0 * (100% - 3px)); transform: translateX(-50%) translateY(2px);"
+              style="inset-inline-start: calc(1.5px + var(--slider-input-ratio) * (100% - 3px)); transform: translateX(-50%) translateY(2px);"
             >
               <p
                 class="c15"
@@ -492,8 +495,8 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   -webkit-mask-composite: source-in;
   -webkit-mask-composite: intersect;
   mask-composite: intersect;
-  -webkit-transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: clip-path 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -710,9 +713,9 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   padding: 2px 4px;
   background-color: hsla(0,0%,0%,0.72);
   opacity: 0;
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
-  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),-webkit-transform 160ms cubic-bezier(0.17,0,1,1);
+  -webkit-transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
+  transition: opacity 160ms cubic-bezier(0.17,0,1,1),transform 160ms cubic-bezier(0.17,0,1,1);
 }
 
 .c8.c8.c8.c8.c8 {
@@ -729,6 +732,8 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   height: 24px;
   cursor: pointer;
   touch-action: none;
+  -webkit-transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
+  transition: --slider-input-ratio 80ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9::before {
@@ -753,8 +758,8 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   border-radius: 9999px;
   background-color: hsla(0,0%,0%,1);
   outline: none;
-  -webkit-transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13:focus-visible {
@@ -767,8 +772,8 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   z-index: 2;
-  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
-  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),inset-inline-start 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
+  transition: outline-width 80ms cubic-bezier(0.3,0,0.2,1),background-color 160ms cubic-bezier(0.3,0,0.2,1);
 }
 
 .c22.c22.c22.c22.c22 {
@@ -844,6 +849,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
         >
           <div
             class="c9"
+            style="--slider-input-ratio: 0.4;"
           >
             <div
               class="c10"
@@ -857,7 +863,7 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
                 />
                 <div
                   class="c12"
-                  style="mask-image: radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.2 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.4 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.6 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.8 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px); background-color: rgb(0, 0, 0); clip-path: inset(0 calc(100% - (calc(3px + 0.4 * (100% - 3px)))) 0 0);"
+                  style="mask-image: radial-gradient(circle 3px at calc(1.5px + 0 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.2 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.4 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.6 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 0.8 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px), radial-gradient(circle 3px at calc(1.5px + 1 * (100% - 3px)) 50%, #000 0 1.5px, transparent 1.5px 3px, #000 3px); background-color: rgb(0, 0, 0); clip-path: inset(0 calc(100% - (calc(3px + var(--slider-input-ratio) * (100% - 3px)))) 0 0);"
                 />
               </div>
             </div>
@@ -872,13 +878,13 @@ exports[`<SliderInput /> should render with markers, a scale and a left position
               class="c13"
               id="slider-input-19-input-20"
               role="slider"
-              style="inset-inline-start: calc(1.5px + 0.4 * (100% - 3px)); transform: translateX(-50%);"
+              style="inset-inline-start: calc(1.5px + var(--slider-input-ratio) * (100% - 3px)); transform: translateX(-50%);"
               tabindex="0"
             />
             <div
               aria-hidden="true"
               class="c14"
-              style="inset-inline-start: calc(1.5px + 0.4 * (100% - 3px)); transform: translateX(-50%) translateY(2px);"
+              style="inset-inline-start: calc(1.5px + var(--slider-input-ratio) * (100% - 3px)); transform: translateX(-50%) translateY(2px);"
             >
               <p
                 class="c15"

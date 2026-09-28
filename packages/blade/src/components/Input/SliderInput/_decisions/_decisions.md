@@ -119,6 +119,14 @@ and it is never the only way to read the value.
 The thumb, the fill and the value indicator all move on Blade's motion tokens, sharing one
 block in `sliderInputTokens` so they cannot drift out of step with each other.
 
+They do not transition their own positions. The control carries the value as a registered
+custom property, `--slider-input-ratio`, and only that property is transitioned; the thumb's
+`inset-inline-start`, the fill's `clip-path` and the indicator's offset are all expressions of
+it. Separate transitions on each looked identical on paper but ran on different paths in the
+browser, and during a fast drag the fill visibly trailed the thumb. One interpolation cannot
+split. Where `@property` is unsupported the ratio does not interpolate, so movement snaps, but
+the three still move together.
+
 Movement uses `2xquick`, the shortest duration the system offers, with the `standard` morph
 easing. A held arrow key repeats, and anything slower would still be easing the previous step
 when the next one lands. Colour changes between the default, highlighted and disabled states
@@ -126,13 +134,21 @@ get `xquick`, since nothing is chasing them.
 
 Movement is suppressed while _scrubbing_, not merely while the pointer is down, and the
 difference is the whole point. A click on a far part of the track should glide there; a drag
-must pin the thumb to the finger, where easing would read as lag. Those are the same
+must pin the thumb to the finger. A short decelerating easing during drags was tried to soften
+the step-to-step hops, but even at `2xquick` the thumb and fill visibly trailed the pointer,
+which read worse than the hops. The exception is a slider showing markers: its steps are
+coarse enough that the hops read as jerky, so the drag glides between markers on `scrub`
+(`xquick` on `standard`). `2xquick` on `entrance` was tried first and measured covering half
+the hop in the first frame, which still read as a jump. The value only changes on crossing
+into the next step, so the transition is rarely retargeted mid-flight and easing in is safe.
+Those are the same
 `pointerdown`, so they can only be told apart afterwards: the press starts as a click, and the
 pointer moving more than `SLIDER_DRAG_SLOP` promotes it to a drag for the rest of the gesture.
 
 Hence two states. `isDragging` means the pointer is down and drives the highlight and the
-indicator; `isScrubbing` means it has also moved, and only that drops movement from the
-transition list. The colour transition survives either way, not being tied to position.
+indicator; `isScrubbing` means it has also moved, and only that drops (or, with markers,
+swaps) the ratio transition.
+The colour transitions live on the consumers themselves, so they survive either way.
 
 The slop exists because a mouse rarely holds perfectly still between press and release, and
 without it a single jittered pixel would cancel the glide and make every click look broken.

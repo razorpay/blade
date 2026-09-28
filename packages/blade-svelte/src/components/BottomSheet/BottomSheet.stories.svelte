@@ -70,6 +70,10 @@
   /* Default story state (one bucket per story to keep them independent). */
   let isDefaultOpen = $state(false);
   let isWithoutDragHandleOpen = $state(false);
+  let isEmptyHeaderWithHandleOpen = $state(false);
+  let isEmptyHeaderWithoutHandleOpen = $state(false);
+  let isEmptyHeaderNoPaddingBgOpen = $state(false);
+  let isEmptyHeaderNoPaddingBgNoDragOpen = $state(false);
   let isHeaderFooterOpen = $state(false);
   let isSingleSelectOpen = $state(false);
   let isDropdownButtonOpen = $state(false);
@@ -341,6 +345,183 @@
           <BottomSheetFooter>
             {#snippet children()}
               <Button isFullWidth onClick={() => (isWithoutDragHandleOpen = false)}>Continue</Button>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+    </div>
+  {/snippet}
+</Story>
+
+<!-- Empty Header: Drag Handle vs No Drag Handle — two sheets side by side so the
+     empty-header close-capsule position can be compared across showDragHandle. -->
+<Story name="Empty Header With And Without Drag Handle">
+  {#snippet template()}
+    <div style="display: flex; flex-direction: column; gap: var(--spacing-5); align-items: flex-start;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-3); align-items: flex-start;">
+        <Text weight="semibold" color="surface.text.gray.muted">Empty header</Text>
+        <div style="display: flex; gap: var(--spacing-3); flex-wrap: wrap;">
+          <Button onClick={() => (isEmptyHeaderWithHandleOpen = true)}>
+            With drag handle
+          </Button>
+          <Button variant="secondary" onClick={() => (isEmptyHeaderWithoutHandleOpen = true)}>
+            No drag handle
+          </Button>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-3); align-items: flex-start;">
+        <Text weight="semibold" color="surface.text.gray.muted">Empty header + no padding + background image</Text>
+        <div style="display: flex; gap: var(--spacing-3); flex-wrap: wrap;">
+          <Button variant="tertiary" onClick={() => (isEmptyHeaderNoPaddingBgOpen = true)}>
+            With drag handle
+          </Button>
+          <Button variant="tertiary" onClick={() => (isEmptyHeaderNoPaddingBgNoDragOpen = true)}>
+            No drag handle
+          </Button>
+        </div>
+      </div>
+
+      <BottomSheet
+        isOpen={isEmptyHeaderWithHandleOpen}
+        onDismiss={() => (isEmptyHeaderWithHandleOpen = false)}
+      >
+        {#snippet children()}
+          <BottomSheetHeader />
+          <BottomSheetBody>
+            {#snippet children()}
+              <Text>
+                Empty header with the drag handle shown. Close capsule sits at the top-right;
+                verify it clears the drag handle and body content.
+              </Text>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isEmptyHeaderWithHandleOpen = false)}>Continue</Button>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+
+      <BottomSheet
+        isOpen={isEmptyHeaderWithoutHandleOpen}
+        onDismiss={() => (isEmptyHeaderWithoutHandleOpen = false)}
+        showDragHandle={false}
+      >
+        {#snippet children()}
+          <BottomSheetHeader />
+          <BottomSheetBody>
+            {#snippet children()}
+              <Text>
+                Empty header with no drag handle. Close capsule sits flush at the surface top-right
+                (no negative offset clipping under the rounded corner).
+              </Text>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isEmptyHeaderWithoutHandleOpen = false)}>Continue</Button>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+
+      <!-- No padding + background image: body padding=spacing.0 lets the image bleed
+           to the edges and under the close capsule, demonstrating how hero imagery
+           composes with an empty header. -->
+      <BottomSheet
+        isOpen={isEmptyHeaderNoPaddingBgOpen}
+        onDismiss={() => (isEmptyHeaderNoPaddingBgOpen = false)}
+      >
+        {#snippet children()}
+          <BottomSheetHeader />
+          <BottomSheetBody padding="spacing.0">
+            {#snippet children()}
+              <div style="display: flex; flex-direction: column;">
+                <div
+                  style="
+                    height: 280px;
+                    background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80');
+                    background-size: cover;
+                    background-position: center;
+                    position: relative;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      inset: 0;
+                      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6));
+                    "
+                  ></div>
+                  <div style="position: absolute; bottom: var(--spacing-5); left: var(--spacing-5);">
+                    <Heading color="surface.text.staticWhite.normal">Plan your next adventure</Heading>
+                  </div>
+                </div>
+                <div style="padding: var(--spacing-5); display: flex; flex-direction: column; gap: var(--spacing-3);">
+                  <Text>
+                    Discover curated travel experiences tailored to your preferences. Book flights,
+                    hotels, and activities in one place.
+                  </Text>
+                  <Text color="surface.text.gray.muted">100% secure payments · Instant confirmation</Text>
+                </div>
+              </div>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isEmptyHeaderNoPaddingBgOpen = false)}>Explore Destinations</Button>
+            {/snippet}
+          </BottomSheetFooter>
+        {/snippet}
+      </BottomSheet>
+
+      <!-- Same as above but showDragHandle=false — close capsule sits flush at the top-right
+           with no drag handle competing for space over the hero image. -->
+      <BottomSheet
+        isOpen={isEmptyHeaderNoPaddingBgNoDragOpen}
+        onDismiss={() => (isEmptyHeaderNoPaddingBgNoDragOpen = false)}
+        showDragHandle={false}
+      >
+        {#snippet children()}
+          <BottomSheetHeader />
+          <BottomSheetBody padding="spacing.0">
+            {#snippet children()}
+              <div style="display: flex; flex-direction: column;">
+                <div
+                  style="
+                    height: 280px;
+                    background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80');
+                    background-size: cover;
+                    background-position: center;
+                    position: relative;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      inset: 0;
+                      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6));
+                    "
+                  ></div>
+                  <div style="position: absolute; bottom: var(--spacing-5); left: var(--spacing-5);">
+                    <Heading color="surface.text.staticWhite.normal">Plan your next adventure</Heading>
+                  </div>
+                </div>
+                <div style="padding: var(--spacing-5); display: flex; flex-direction: column; gap: var(--spacing-3);">
+                  <Text>
+                    Discover curated travel experiences tailored to your preferences. Book flights,
+                    hotels, and activities in one place.
+                  </Text>
+                  <Text color="surface.text.gray.muted">100% secure payments · Instant confirmation</Text>
+                </div>
+              </div>
+            {/snippet}
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            {#snippet children()}
+              <Button isFullWidth onClick={() => (isEmptyHeaderNoPaddingBgNoDragOpen = false)}>Explore Destinations</Button>
             {/snippet}
           </BottomSheetFooter>
         {/snippet}

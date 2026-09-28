@@ -35,6 +35,11 @@ const DEFAULT_COLOR = 'data.background.categorical.blue.moderate';
 const REFERENCE_BAND_DEFAULT_COLOR = 'data.background.categorical.blue.faint';
 const REFERENCE_BAND_FILL_OPACITY = 0.5;
 
+// Default label for a band that declares no name. Sourced from here by *both* the legend swatch and
+// the tooltip's range row: they read the name through different paths (the band layer vs `rangeMap`)
+// and applying the default separately in each let them drift apart.
+const REFERENCE_BAND_DEFAULT_NAME = 'Reference band';
+
 // Stable classNames applied to the band's invisible bound lines (web) so ChartLineWrapper can find
 // their rendered curves and paint the filled band between them.
 const REFERENCE_BAND_LOWER_CLASS = 'blade-reference-band-lower';
@@ -73,6 +78,7 @@ export {
   MAX_WIDTH,
   DEFAULT_COLOR,
   REFERENCE_BAND_DEFAULT_COLOR,
+  REFERENCE_BAND_DEFAULT_NAME,
   REFERENCE_BAND_FILL_OPACITY,
   REFERENCE_BAND_LOWER_CLASS,
   REFERENCE_BAND_UPPER_CLASS,

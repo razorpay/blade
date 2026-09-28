@@ -19,7 +19,11 @@ jest.mock('react-native-reanimated', () => ({
       return `${x1} ${y1} ${x2} ${y2}`; // mock an implementation of Easing.bezier that returns a string
     }),
     out: jest.fn(() => ''),
+    inOut: jest.fn(() => ''),
+    ease: '',
   },
+  // reanimated's mock omits useReducedMotion; tests run with motion enabled.
+  useReducedMotion: jest.fn(() => false),
   // apparently reanimated doesn't mock the Keyframe :(
   Keyframe: class Keyframe {
     duration() {

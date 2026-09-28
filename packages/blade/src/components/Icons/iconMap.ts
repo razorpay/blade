@@ -1,5 +1,5 @@
 // This file is auto generated
-// Modify at blade/plop/icon/iconMap.ts.hbs
+// Modify at scripts/icons/plop/iconMap.ts.hbs
 import AcceptPaymentsFilledIconComponent from './AcceptPaymentsFilledIcon';
 import AcceptPaymentsIconComponent from './AcceptPaymentsIcon';
 import ActivityIconComponent from './ActivityIcon';
@@ -372,6 +372,7 @@ import SparklesIconComponent from './SparklesIcon';
 import SpeakerIconComponent from './SpeakerIcon';
 import SquareIconComponent from './SquareIcon';
 import StampIconComponent from './StampIcon';
+import StarFilledIconComponent from './StarFilledIcon';
 import StarIconComponent from './StarIcon';
 import StopCircleIconComponent from './StopCircleIcon';
 import StorefrontIconComponent from './StorefrontIcon';
@@ -826,6 +827,7 @@ const iconMap: Record<string, IconComponent> = {
   SpeakerIcon: SpeakerIconComponent,
   SquareIcon: SquareIconComponent,
   StampIcon: StampIconComponent,
+  StarFilledIcon: StarFilledIconComponent,
   StarIcon: StarIconComponent,
   StopCircleIcon: StopCircleIconComponent,
   StorefrontIcon: StorefrontIconComponent,

@@ -6,6 +6,10 @@ export const BarChartContext = createContext<BarChartContextType>({
   activeIndex: undefined,
   colorTheme: 'categorical',
   totalBars: 0,
+  hoveredDataKey: null,
+  hoveredBarIndex: null,
+  setHoveredBar: () => undefined,
+  hasReferenceBand: false,
 });
 
 export const useBarChartContext = (): BarChartContextType => useContext(BarChartContext);

@@ -70,6 +70,16 @@
   &[aria-disabled='true'] {
     cursor: not-allowed;
   }
+
+  /* Keyboard "active-focus" highlight — mirrors React ActionListItem
+   * `className="active-focus"` set when `activeIndex === _index`. Only applies
+   * when the item is registered in a Dropdown (data attr set by ActionListItem);
+   * standalone/BottomSheet lists never set it, so their appearance is unchanged. */
+  &[data-active-focus='true']:not([disabled]):not([aria-disabled='true']):not(
+      [aria-selected='true']
+    ) {
+    background-color: var(--interactive-background-gray-default);
+  }
 }
 
 /* Negative intent row — negative faded hover (mirrors React `color==='negative'`). */

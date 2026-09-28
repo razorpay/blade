@@ -427,6 +427,74 @@ import {
 
 - Apart from this we would be exposing all the event handlers provided by recharts like `onCopy`, `onCopyCapture`, `onCut`, `onDrag` , `onMouseUp` , `onMouseDown` etc.
 
+#### Per-bar reference range (Industry SR)
+
+A bar can be measured against a min–max range for the same category — the industry's percentile
+band for that period. In a grouped chart every bar can carry its own range, so the ranges are
+revealed **on hover, one at a time**: several translucent bands behind opaque grouped bars read as
+mush, and only the hovered bar's range is being asked about.
+
+| Prop (on `ChartBar`) | Type      | Default            | Description                                              |
+| -------------------- | --------- | ------------------ | -------------------------------------------------------- |
+| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set  |
+| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                    |
+| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range              |
+| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour         |
+| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only    |
+
+- Hovering a bar fades the other series and shades the hovered category, so the revealed band reads
+  against its own bar. This per-series fade applies **only** to charts that declare a band — a plain
+  grouped bar chart keeps the category-wide highlight it has always had, since there is nothing for
+  the fade to reveal. The category fade and the series fade are combined with `min`, not multiplied:
+  a bar that is both the wrong series and the wrong category would otherwise land at `0.2 × 0.2` and
+  disappear.
+- The **tooltip** shows the bar's value plus a `low–high` range row — for a standalone band too, not
+  just per-bar ranges. The band's label comes from one shared default
+  (`REFERENCE_BAND_DEFAULT_NAME` / `BAR_RANGE_DEFAULT_NAME`) applied at **both** the legend and
+  `rangeMap`: the two surfaces reach the name by different routes, so a default applied in only one
+  of them leaves the same band labelled two different ways.
+- Use a standalone `<ChartReferenceBand>` instead when there is a single range for the whole chart
+  (the unfiltered case) — that one is always visible and gets a legend swatch by default.
+- **Geometry:** the range's **y** comes from two invisible bound series so it folds into the
+  y-domain and a band taller than the bars is never clipped. Its **x** is re-anchored to the owning
+  series' bar centres, read from the rendered bar rects — a bound series sits at the *category*
+  centre, which would stack every band on the same x in a grouped chart. Edges are straight chords
+  (a bar chart has no trend curve to follow) flat-extended to both plot edges. See
+  _Bar Chart with Reference Band_ and _Grouped Bar Chart with Multiple Reference Bands_ stories.
+
+**Accessibility.** The per-bar band is revealed by hover, which is a pointer-only affordance: there
+is no keyboard focus path to it and nothing on touch. It is therefore treated as a **visual
+enhancement, not the carrier of the information** — every value the band encodes is also in the
+tooltip as a `low–high` row, and the standalone chart-wide band additionally carries a legend
+swatch. Revealing a per-bar band on keyboard focus is a genuine gap and an open design-system ask;
+it needs bars to become focusable, which is shared chart behaviour rather than a band concern.
+
+**Known limits**, each of which fails closed (no band) rather than drawing one in the wrong place:
+
+- **Horizontal layout only.** Bar centres are read from each rect's `x`/`width`, the plot extent
+  from the x-axis line, the shaded column is vertical, and the path is extended to the left/right
+  plot edges. Under `layout="vertical"` every one of those is wrong, so the band is skipped.
+- **String `dataKey` only.** Recharts allows `string | number | ((obj) => any)`; the band names its
+  series with a className derived from the key, which only a string can produce.
+- **Web only.** `BarChart.native.tsx` has no band layer, so the `range*` props are accepted and
+  ignored there. Flagged with `@platform web` on each prop until parity lands.
+
+**Sparse ranges.** A row may have no bound — a `null`, or simply no key. The bound series render
+with `connectNulls`, so Recharts drops those points from the rendered path
+(`Curve.js`: `points.filter(defined)`), while a null bar still emits a zero-height rect
+(`Bar.js`: `height = isNan(computedHeight) ? 0 : computedHeight`). Anchors and bars therefore stop
+agreeing by array position as soon as the data has a gap. Anchors are mapped back to their **data
+row** via `getDefinedNumericPoints` and anchored to `centres[row]`, so a gap costs only that one
+anchor instead of silently dropping the whole series back to category centres — which in a grouped
+chart would stack every band on the same x. If the anchor count and the defined-row count ever
+disagree, the model of Recharts' output is wrong: that warns in dev rather than drawing in the
+wrong place.
+
+> Note the two charts type `data` differently — `ChartLineWrapper` takes
+> `{ [key: string]: unknown }` (and its own stories pass `null`), while `ChartBarWrapper` takes
+> `{ [key: string]: string | number }`, which cannot express a missing bound. The runtime path is
+> reachable either way, since an absent key is `undefined`. Reconciling the two is an open ask.
+
 > **Colors** : In case of Bar Charts We would be handling both Categorical and Sequential color. Also there will be a limit on Sequential Colors.
 > For that, best would be to have an internal check how many colors are already used.
 
@@ -660,9 +728,11 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 
 > **Component Re-exports:** Components like ResponsiveContainer, CartesianGrid, XAxis, YAxis etc. will be styled and re-exported with minimal changes. For CartesianGrid , XAxis, YAxis we won't allow styling (i.e we won't be exposing props like stroke , strokeWidth , strokeDasharray, tick, tickLine and axisLine).
 
-#### 3.8.2\. ReferenceBand Component (LineChart)
+#### 3.8.2\. ReferenceBand Component (LineChart, BarChart)
 
-`ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line can be compared against the range other series fall in.
+`ChartReferenceBand` renders a shaded band between a per-point lower (min) and upper (max) bound, so a trend line or a bar can be compared against the range other series fall in.
+
+> **Export scope:** the band renders in the two chart wrappers that have a band layer — `ChartLineWrapper` (`useReferenceBand`) and `ChartBarWrapper` (`useBarReferenceBand`). It is exported from the shared `CommonChartComponents` barrel only. Do **not** also re-export it from a chart module: `Charts/index.ts` star-exports every chart module plus `CommonChartComponents`, so a second export of the same name trips eslint `import/export` ("Multiple exports of name 'ChartReferenceBand'") even though TypeScript accepts it. Inside an `AreaChart` it still silently renders invisible bound lines with no visible band, so if it is ever scoped out of the shared barrel it must be re-exported from **both** `LineChart` and `BarChart` — and the shared barrel's export removed in the same change.
 
 | Prop           | Type                                                       | Required | Default                | Description                                  |
 | -------------- | ---------------------------------------------------------- | -------- | ---------------------- | -------------------------------------------- |
