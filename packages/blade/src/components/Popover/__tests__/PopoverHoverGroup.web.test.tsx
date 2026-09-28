@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { waitFor } from '@testing-library/react';
+import { act, waitFor } from '@testing-library/react';
 import { Popover } from '..';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
@@ -12,9 +12,21 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 // Hover popovers share BladeProvider's FloatingDelayGroup with every Tooltip. These tests use real
 // timers: switching between overlays depends on the order of hover events and short delays
 
-// shorter than Popover / Tooltip's exit animation (motion.duration.quick, 200ms): a replaced
-// overlay has to be gone before it could have finished fading out
-const REPLACED_OVERLAY_TIMEOUT = 100;
+// A replaced overlay has to be gone before its exit animation (motion.duration.quick, 200ms) could
+// have finished. The switching tests advance fake time by this fixed amount, so the check does not
+// depend on how busy the machine running the tests is
+const REPLACED_OVERLAY_TIME = 100;
+
+// advances in small steps: timers that fire schedule React updates, and those updates schedule the
+// next timers (e.g. a closing overlay's unmount). One big step would skip the timers that only
+// exist once React has applied the updates from the step before
+const advanceTime = (ms: number): void => {
+  for (let elapsed = 0; elapsed < ms; elapsed += 10) {
+    act(() => {
+      jest.advanceTimersByTime(10);
+    });
+  }
+};
 
 // `renderWithTheme` wraps only the initial render; rerenders need the provider again
 const withTheme = (ui: React.ReactElement): React.ReactElement => (
@@ -31,72 +43,69 @@ const getOpenTransitionDuration = (dialog: HTMLElement): string | undefined =>
     .find(Boolean);
 
 describe('<Popover openInteraction="hover" /> in the tooltip delay group', () => {
-  it('should switch from one hover popover to the next in place', async () => {
-    const user = userEvents.setup();
-    const { getByRole, getAllByRole } = renderWithTheme(
-      <>
-        <Popover openInteraction="hover" title="Success" content={<Text>Success preview</Text>}>
-          <Button>Success</Button>
-        </Popover>
-        <Popover openInteraction="hover" title="Retry" content={<Text>Retry preview</Text>}>
-          <Button>Retry</Button>
-        </Popover>
-      </>,
-    );
+  describe('switching in place', () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+    afterEach(() => {
+      jest.useRealTimers();
+    });
 
-    await user.hover(getByRole('button', { name: 'Success' }));
-    // the first popover of a hover streak fades in as usual
-    await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('200ms'));
+    it('should switch from one hover popover to the next in place', async () => {
+      const user = userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
+      const { getByRole, getAllByRole } = renderWithTheme(
+        <>
+          <Popover openInteraction="hover" title="Success" content={<Text>Success preview</Text>}>
+            <Button>Success</Button>
+          </Popover>
+          <Popover openInteraction="hover" title="Retry" content={<Text>Retry preview</Text>}>
+            <Button>Retry</Button>
+          </Popover>
+        </>,
+      );
 
-    await user.hover(getByRole('button', { name: 'Retry' }));
-    // the replaced popover does not fade out under the new one...
-    await waitFor(
-      () => {
-        const dialogs = getAllByRole('dialog');
-        expect(dialogs).toHaveLength(1);
-        expect(dialogs[0]).toHaveTextContent('Retry preview');
-      },
-      { timeout: REPLACED_OVERLAY_TIMEOUT },
-    );
-    // ...and the new one appears in place instead of fading in. Its transition styles are applied
-    // on the next animation frame, so this waits the default timeout: it checks the value, not
-    // how quickly it arrives
-    await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('0ms'));
-  });
+      await user.hover(getByRole('button', { name: 'Success' }));
+      // the first popover of a hover streak fades in as usual
+      await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('200ms'));
 
-  it('should switch between a tooltip and a hover popover in place', async () => {
-    const user = userEvents.setup();
-    const { getByRole, findByRole, queryByRole } = renderWithTheme(
-      <>
-        <Tooltip content="Processing hint">
-          <Button>Processing</Button>
-        </Tooltip>
-        <Popover openInteraction="hover" title="Success" content={<Text>Success preview</Text>}>
-          <Button>Success</Button>
-        </Popover>
-      </>,
-    );
+      await user.hover(getByRole('button', { name: 'Retry' }));
+      // the replaced popover does not fade out under the new one...
+      advanceTime(REPLACED_OVERLAY_TIME);
+      const dialogs = getAllByRole('dialog');
+      expect(dialogs).toHaveLength(1);
+      expect(dialogs[0]).toHaveTextContent('Retry preview');
+      // ...and the new one appears in place instead of fading in. Its transition styles are applied
+      // on the next animation frame, so this waits the default timeout: it checks the value, not
+      // how quickly it arrives
+      await waitFor(() => expect(getOpenTransitionDuration(getByRole('dialog'))).toBe('0ms'));
+    });
 
-    await user.hover(getByRole('button', { name: 'Processing' }));
-    await findByRole('tooltip');
+    it('should switch between a tooltip and a hover popover in place', async () => {
+      const user = userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
+      const { getByRole, findByRole, queryByRole } = renderWithTheme(
+        <>
+          <Tooltip content="Processing hint">
+            <Button>Processing</Button>
+          </Tooltip>
+          <Popover openInteraction="hover" title="Success" content={<Text>Success preview</Text>}>
+            <Button>Success</Button>
+          </Popover>
+        </>,
+      );
 
-    await user.hover(getByRole('button', { name: 'Success' }));
-    await waitFor(
-      () => {
-        expect(queryByRole('tooltip')).not.toBeInTheDocument();
-        expect(queryByRole('dialog')).toBeInTheDocument();
-      },
-      { timeout: REPLACED_OVERLAY_TIMEOUT },
-    );
+      await user.hover(getByRole('button', { name: 'Processing' }));
+      await findByRole('tooltip');
 
-    await user.hover(getByRole('button', { name: 'Processing' }));
-    await waitFor(
-      () => {
-        expect(queryByRole('dialog')).not.toBeInTheDocument();
-        expect(queryByRole('tooltip')).toHaveTextContent('Processing hint');
-      },
-      { timeout: REPLACED_OVERLAY_TIMEOUT },
-    );
+      await user.hover(getByRole('button', { name: 'Success' }));
+      advanceTime(REPLACED_OVERLAY_TIME);
+      expect(queryByRole('tooltip')).not.toBeInTheDocument();
+      expect(queryByRole('dialog')).toBeInTheDocument();
+
+      await user.hover(getByRole('button', { name: 'Processing' }));
+      advanceTime(REPLACED_OVERLAY_TIME);
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
+      expect(queryByRole('tooltip')).toHaveTextContent('Processing hint');
+    });
   });
 
   it('should close when the pointer leaves for somewhere without an overlay', async () => {
