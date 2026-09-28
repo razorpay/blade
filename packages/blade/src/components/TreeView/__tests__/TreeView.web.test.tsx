@@ -1028,9 +1028,28 @@ describe('tooltip and popover on items', () => {
   });
 
   describe('switching between rows', () => {
-    // shorter than Popover / Tooltip's exit animation (motion.duration.quick, 200ms): a replaced
-    // overlay has to be gone before it could have finished fading out
-    const REPLACED_OVERLAY_TIMEOUT = 100;
+    // A replaced overlay has to be gone before its exit animation (motion.duration.quick, 200ms)
+    // could have finished. Fake timers advance a fixed amount of time, so that check does not
+    // depend on how busy the machine running the tests is
+    const REPLACED_OVERLAY_TIME = 100;
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+    const setupUser = (): ReturnType<typeof userEvents.setup> =>
+      userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
+    // advances in small steps: timers that fire schedule React updates, and those updates schedule
+    // the next timers (e.g. a closing overlay's unmount). One big step would skip the timers that
+    // only exist once React has applied the updates from the step before
+    const advanceTime = (ms: number): void => {
+      for (let elapsed = 0; elapsed < ms; elapsed += 10) {
+        act(() => {
+          jest.advanceTimersByTime(10);
+        });
+      }
+    };
 
     const switchingTree = (
       <TreeView>
@@ -1058,21 +1077,17 @@ describe('tooltip and popover on items', () => {
     );
 
     it('should replace one popover with the next without an overlap', async () => {
-      const user = userEvents.setup();
+      const user = setupUser();
       const { getByRole, findByRole, getAllByRole } = renderWithTheme(switchingTree);
 
       await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
       expect(await findByRole('dialog')).toHaveTextContent('Success preview');
 
       await user.hover(getByRole('treeitem', { name: 'Retry Payment' }));
-      await waitFor(
-        () => {
-          const dialogs = getAllByRole('dialog');
-          expect(dialogs).toHaveLength(1);
-          expect(dialogs[0]).toHaveTextContent('Retry preview');
-        },
-        { timeout: REPLACED_OVERLAY_TIMEOUT },
-      );
+      advanceTime(REPLACED_OVERLAY_TIME);
+      const dialogs = getAllByRole('dialog');
+      expect(dialogs).toHaveLength(1);
+      expect(dialogs[0]).toHaveTextContent('Retry preview');
     });
 
     // user-event does not set relatedTarget on pointer moves (browsers do), and jsdom has no
@@ -1094,7 +1109,7 @@ describe('tooltip and popover on items', () => {
         .find(Boolean);
 
     it('should switch to the next popover in place, without animating either one', async () => {
-      const user = userEvents.setup();
+      const user = setupUser();
       const { getByRole, findByRole, getAllByRole } = renderWithTheme(switchingTree);
       const success = getByRole('treeitem', { name: 'Payment Success' });
       const retry = getByRole('treeitem', { name: 'Retry Payment' });
@@ -1107,14 +1122,10 @@ describe('tooltip and popover on items', () => {
       movePointer(success, retry);
       // the replaced popover closes with a 0ms transition instead of fading out under the new one
       // (Popover's delay group), so it is gone before a fade-out could have finished...
-      await waitFor(
-        () => {
-          const dialogs = getAllByRole('dialog');
-          expect(dialogs).toHaveLength(1);
-          expect(dialogs[0]).toHaveTextContent('Retry preview');
-        },
-        { timeout: REPLACED_OVERLAY_TIMEOUT },
-      );
+      advanceTime(REPLACED_OVERLAY_TIME);
+      const dialogs = getAllByRole('dialog');
+      expect(dialogs).toHaveLength(1);
+      expect(dialogs[0]).toHaveTextContent('Retry preview');
       // ...and the new one appears in place instead of fading in. Its transition styles are
       // applied on the next animation frame, so this waits the default timeout: it checks the
       // value, not how quickly it arrives
@@ -1122,78 +1133,59 @@ describe('tooltip and popover on items', () => {
     });
 
     it('should close a popover sooner when the pointer moves to a row without an overlay', async () => {
-      jest.useFakeTimers();
-      try {
-        const user = userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
-        const onOpenChange = jest.fn();
-        const { getByRole, findByRole } = renderWithTheme(
-          <TreeView>
-            <TreeViewItem
-              title="Payment Success"
-              value="payment-success"
-              popover={{ title: 'Payment Success', content: <p>Success preview</p>, onOpenChange }}
-            />
-            <TreeViewItem title="Exit Payment" value="exit-payment" />
-          </TreeView>,
-        );
-        const success = getByRole('treeitem', { name: 'Payment Success' });
+      const user = setupUser();
+      const onOpenChange = jest.fn();
+      const { getByRole, findByRole } = renderWithTheme(
+        <TreeView>
+          <TreeViewItem
+            title="Payment Success"
+            value="payment-success"
+            popover={{ title: 'Payment Success', content: <p>Success preview</p>, onOpenChange }}
+          />
+          <TreeViewItem title="Exit Payment" value="exit-payment" />
+        </TreeView>,
+      );
+      const success = getByRole('treeitem', { name: 'Payment Success' });
 
-        await user.hover(success);
-        await findByRole('dialog');
+      await user.hover(success);
+      await findByRole('dialog');
 
-        movePointer(success, getByRole('treeitem', { name: 'Exit Payment' }));
-        // before the 160ms "the pointer may be heading to the popover" delay
-        act(() => {
-          jest.advanceTimersByTime(100);
-        });
-        expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: false });
-      } finally {
-        jest.useRealTimers();
-      }
+      movePointer(success, getByRole('treeitem', { name: 'Exit Payment' }));
+      // before the 160ms "the pointer may be heading to the popover" delay
+      advanceTime(100);
+      expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: false });
     });
 
     it('should replace a tooltip with the next one without an overlap', async () => {
-      const user = userEvents.setup();
+      const user = setupUser();
       const { getByRole, findByRole, getAllByRole } = renderWithTheme(switchingTree);
 
       await user.hover(getByRole('treeitem', { name: 'Payment Animation' }));
       expect(await findByRole('tooltip')).toHaveTextContent('Animation hint');
 
       await user.hover(getByRole('treeitem', { name: 'Payment Processing' }));
-      await waitFor(
-        () => {
-          const tooltips = getAllByRole('tooltip');
-          expect(tooltips).toHaveLength(1);
-          expect(tooltips[0]).toHaveTextContent('Processing hint');
-        },
-        { timeout: REPLACED_OVERLAY_TIMEOUT },
-      );
+      advanceTime(REPLACED_OVERLAY_TIME);
+      const tooltips = getAllByRole('tooltip');
+      expect(tooltips).toHaveLength(1);
+      expect(tooltips[0]).toHaveTextContent('Processing hint');
     });
 
     it('should replace a tooltip with a popover, and a popover with a tooltip, without an overlap', async () => {
-      const user = userEvents.setup();
+      const user = setupUser();
       const { getByRole, findByRole, queryByRole } = renderWithTheme(switchingTree);
 
       await user.hover(getByRole('treeitem', { name: 'Payment Processing' }));
       await findByRole('tooltip');
 
       await user.hover(getByRole('treeitem', { name: 'Payment Success' }));
-      await waitFor(
-        () => {
-          expect(queryByRole('tooltip')).not.toBeInTheDocument();
-          expect(queryByRole('dialog')).toBeInTheDocument();
-        },
-        { timeout: REPLACED_OVERLAY_TIMEOUT },
-      );
+      advanceTime(REPLACED_OVERLAY_TIME);
+      expect(queryByRole('tooltip')).not.toBeInTheDocument();
+      expect(queryByRole('dialog')).toBeInTheDocument();
 
       await user.hover(getByRole('treeitem', { name: 'Payment Animation' }));
-      await waitFor(
-        () => {
-          expect(queryByRole('dialog')).not.toBeInTheDocument();
-          expect(queryByRole('tooltip')).toHaveTextContent('Animation hint');
-        },
-        { timeout: REPLACED_OVERLAY_TIMEOUT },
-      );
+      advanceTime(REPLACED_OVERLAY_TIME);
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
+      expect(queryByRole('tooltip')).toHaveTextContent('Animation hint');
     });
   });
 
