@@ -12,6 +12,6 @@ feat(TreeView): show a Tooltip or Popover when hovering a `TreeViewItem`
 
 Both open to the right of the row by default. Pass one or the other; if both are passed, `popover` wins and a dev warning is logged.
 
-Moving the pointer from row to row switches overlays in place, using the hover-popover switching built into Popover (see the Popover changeset): the replaced overlay disappears without fading out, and the new one appears without fading in.
+Moving the pointer from row to row switches overlays in place, using the hover-popover switching built into Popover (razorpay/blade#4044): the replaced overlay disappears without fading out, and the new one appears without fading in.
 
 The `blade-mcp` knowledgebase doc for TreeView is updated with both props and an example.
