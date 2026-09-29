@@ -47,6 +47,7 @@ import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useControllableState } from '~utils/useControllable';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { opacity } from '~tokens/global';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
@@ -301,6 +302,8 @@ type NodeLabelArgs = {
   labelValueColor: string;
   chipBg: string;
   chipBorderColor: string;
+  /** Opacity of the chip border stroke; 1 unless the chip marks a revealed group member */
+  chipBorderOpacity: number;
   chipRadius: number;
   chipPadX: number;
   /** Gap between the name and the value text */
@@ -334,6 +337,7 @@ function renderChipLabel({
   labelValueColor,
   chipBg,
   chipBorderColor,
+  chipBorderOpacity,
   chipRadius,
   chipPadX,
   textGap,
@@ -361,6 +365,7 @@ function renderChipLabel({
         fill={chipBg}
         rx={chipRadius}
         stroke={focusStrokeColor ?? chipBorderColor}
+        strokeOpacity={focusStrokeColor ? 1 : chipBorderOpacity}
         strokeWidth={strokeWidth}
       />
       {indicatorColor !== undefined && (
@@ -588,7 +593,10 @@ const _ChartSankey = ({
   const chipBg = theme.colors.surface.background.gray.intense;
   const chipBorderColor = theme.colors.interactive.border.gray.faded;
   const chipFocusColor = theme.colors.surface.border.primary.normal;
-  const revealedChipBorderColor = theme.colors.surface.border.primary.muted;
+  // Members shown out of a group: the primary border at 64% opacity (Blade's `opacity[800]`).
+  // Clear against the grey chip border, softer than the solid primary used for the focus ring.
+  const revealedChipBorderColor = theme.colors.surface.border.primary.normal;
+  const revealedChipBorderOpacity = opacity[800];
   const chipRadius = theme.border.radius.small;
   const nodePadding = theme.spacing[4]; // 12px
   const motionDuration = theme.motion.duration.quick;
@@ -1165,6 +1173,7 @@ const _ChartSankey = ({
               // Members shown out of a group carry a light primary border: they belong together
               // and each folds the group again.
               chipBorderColor: isRevealed ? revealedChipBorderColor : chipBorderColor,
+              chipBorderOpacity: isRevealed ? revealedChipBorderOpacity : 1,
               chipRadius,
               chipPadX: CHIP_PAD_X,
               textGap: TEXT_GAP,
