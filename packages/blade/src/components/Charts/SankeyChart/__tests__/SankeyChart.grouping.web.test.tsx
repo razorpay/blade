@@ -180,6 +180,29 @@ describe('SankeyChart — grouping: expand and fold', () => {
     );
   });
 
+  it('marks every revealed member label with the light primary border and nothing else', () => {
+    const { container } = renderSankey();
+    const strokeOf = (button: Element): string | null =>
+      button.querySelector('rect[stroke]')?.getAttribute('stroke') ?? null;
+    const groupStroke = strokeOf(getGroupButton(container));
+
+    fireEvent.click(getGroupButton(container));
+
+    const revealedStrokes = new Set(getRevealedButtons(container).map(strokeOf));
+    expect(revealedStrokes.size).toBe(1);
+    const [revealedStroke] = revealedStrokes;
+    expect(revealedStroke).not.toBe(groupStroke);
+    // Plain nodes keep the default chip border.
+    const plainChips = Array.from(container.querySelectorAll('svg rect[stroke]')).filter(
+      (rect) => !rect.closest('[aria-expanded]'),
+    );
+    plainChips.forEach((rect) => expect(rect.getAttribute('stroke')).toBe(groupStroke));
+    // No focus ring appears from a mouse click: every chip keeps the 1px border.
+    container.querySelectorAll('svg rect[stroke]').forEach((rect) => {
+      expect(rect.getAttribute('stroke-width')).toBe('1');
+    });
+  });
+
   it('keeps the bars of untouched nodes at exactly the same size after expanding', () => {
     const { container } = renderSankey();
     const before = ['UPI', 'Card', 'Captured', 'Failed'].map((n) => getBarHeight(container, n));

@@ -82,25 +82,32 @@ type HoverState = { type: 'node' | 'link'; index: number } | null;
 
 // ─── Tooltip ──────────────────────────────────────────────────────────────────
 
+/** The box a tooltip hangs from: a node's label chip, or a zero-size point on a ribbon */
+type TooltipAnchor = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  /** Distance kept between the anchor box and the tooltip */
+  gap: number;
+};
+
 type TooltipModel = {
-  /** Point the tooltip is anchored to, in chart pixels */
-  anchorX: number;
-  anchorY: number;
+  anchor: TooltipAnchor;
   content: React.ReactNode;
 };
 
 /**
- * Hover tooltip, positioned next to the hovered shape and kept inside the chart bounds.
- * Measures itself after paint so it can flip to the other side of the anchor near an edge.
+ * Hover tooltip. It hangs below its anchor, left-aligned with it, so it never covers the
+ * label it describes; near the bottom edge it flips above the anchor, and near the right
+ * edge it slides left to stay inside the chart. Measures itself after paint to do so.
  */
 function SankeyTooltip({
-  anchorX,
-  anchorY,
+  anchor,
   bounds,
   children,
 }: {
-  anchorX: number;
-  anchorY: number;
+  anchor: TooltipAnchor;
   bounds: { width: number; height: number };
   children: React.ReactNode;
 }): React.ReactElement {
@@ -117,15 +124,10 @@ function SankeyTooltip({
     }
   });
 
-  // Prefer the right of the anchor; flip to the left when that would leave the chart.
-  const fitsRight = anchorX + TOOLTIP_OFFSET + size.width <= bounds.width;
-  const left = fitsRight
-    ? anchorX + TOOLTIP_OFFSET
-    : Math.max(0, anchorX - TOOLTIP_OFFSET - size.width);
-  const top = Math.min(
-    Math.max(0, anchorY - size.height / 2),
-    Math.max(0, bounds.height - size.height),
-  );
+  const below = anchor.y + anchor.height + anchor.gap;
+  const fitsBelow = below + size.height <= bounds.height;
+  const top = Math.max(0, fitsBelow ? below : anchor.y - anchor.gap - size.height);
+  const left = Math.max(0, Math.min(anchor.x, bounds.width - size.width));
 
   return (
     <div
@@ -486,6 +488,16 @@ const computeDepthInfo = (
 
 const isActivationKey = (key: string): boolean => key === 'Enter' || key === ' ';
 
+// True when the browser would show a focus ring for this element, i.e. keyboard focus.
+// Older engines without `:focus-visible` fall back to showing the ring on every focus.
+const isFocusVisible = (element: Element): boolean => {
+  try {
+    return element.matches(':focus-visible');
+  } catch {
+    return true;
+  }
+};
+
 // ─── ChartSankey ──────────────────────────────────────────────────────────────
 // Presentational layer — mirrors ChartDonut.
 // Reads wrapper config from SankeyChartContext, owns the layout and hover/expand state,
@@ -509,7 +521,7 @@ const _ChartSankey = ({
   onLinkClick,
 }: ChartSankeyProps): React.ReactElement | null => {
   const [hovered, setHovered] = useState<HoverState>(null);
-  const [focusedNodeIndex, setFocusedNodeIndex] = useState<number | null>(null);
+  const [focusedNodeId, setFocusedNodeId] = useState<string | null>(null);
 
   // Read wrapper-level config from private context.
   // null means ChartSankey was rendered outside ChartSankeyWrapper — throw a clear error.
@@ -576,6 +588,7 @@ const _ChartSankey = ({
   const chipBg = theme.colors.surface.background.gray.intense;
   const chipBorderColor = theme.colors.interactive.border.gray.faded;
   const chipFocusColor = theme.colors.surface.border.primary.normal;
+  const revealedChipBorderColor = theme.colors.surface.border.primary.muted;
   const chipRadius = theme.border.radius.small;
   const nodePadding = theme.spacing[4]; // 12px
   const motionDuration = theme.motion.duration.quick;
@@ -912,8 +925,14 @@ const _ChartSankey = ({
       const sourceName = nodes[geometry.source]?.node.name ?? link.source;
       const targetName = nodes[geometry.target]?.node.name ?? link.target;
       return {
-        anchorX: geometry.controlX,
-        anchorY: (geometry.sourceY + geometry.targetY) / 2,
+        // A ribbon has no label to avoid: hang the tooltip off its midpoint.
+        anchor: {
+          x: geometry.controlX + TOOLTIP_OFFSET,
+          y: (geometry.sourceY + geometry.targetY) / 2,
+          width: 0,
+          height: 0,
+          gap: TOOLTIP_OFFSET,
+        },
         content: (
           <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
             {`${sourceName} → ${targetName}: ${link.value.toLocaleString()}${unitSuffix}`}
@@ -926,14 +945,19 @@ const _ChartSankey = ({
     const geometry = layout.nodes[hovered.index];
     const label = nodeLabels[hovered.index];
     if (!entry || !geometry || !label) return null;
-    const anchor = {
-      anchorX: geometry.x + geometry.width,
-      anchorY: geometry.barY + geometry.barHeight / 2,
+    // Hang the tooltip below the node's label chip so the label stays readable while hovering.
+    const nodeMidY = geometry.barY + geometry.barHeight / 2;
+    const anchor: TooltipAnchor = {
+      x: geometry.x + geometry.width + CHIP_GAP,
+      y: nodeMidY - CHIP_H / 2,
+      width: label.width,
+      height: CHIP_H,
+      gap: theme.spacing[2],
     };
 
     if (!entry.group) {
       return {
-        ...anchor,
+        anchor,
         content: (
           <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
             {`${entry.node.name}: ${label.value.toLocaleString()}${unitSuffix}`}
@@ -951,7 +975,7 @@ const _ChartSankey = ({
       memberValues.set(link.target, (memberValues.get(link.target) ?? 0) + link.value);
     });
     return {
-      ...anchor,
+      anchor,
       content: (
         <>
           <Text size="small" weight="semibold" color="surface.text.staticWhite.normal">
@@ -1002,6 +1026,8 @@ const _ChartSankey = ({
     totalValue,
     unitSuffix,
     theme,
+    CHIP_GAP,
+    CHIP_H,
   ]);
 
   // ── Render ─────────────────────────────────────────────────────────────────
@@ -1113,12 +1139,13 @@ const _ChartSankey = ({
                     event.stopPropagation();
                     handleLabelActivate(index);
                   },
-                  onFocus: () => {
-                    setFocusedNodeIndex(index);
+                  onFocus: (event: React.FocusEvent<SVGGElement>) => {
+                    // Ring only for keyboard focus (`:focus-visible`), never for a mouse click.
+                    if (isFocusVisible(event.currentTarget)) setFocusedNodeId(entry.node.id);
                     setHovered({ type: 'node', index });
                   },
                   onBlur: () => {
-                    setFocusedNodeIndex(null);
+                    setFocusedNodeId(null);
                     setHovered(null);
                   },
                 }
@@ -1135,7 +1162,9 @@ const _ChartSankey = ({
               labelNameColor,
               labelValueColor,
               chipBg,
-              chipBorderColor,
+              // Members shown out of a group carry a light primary border: they belong together
+              // and each folds the group again.
+              chipBorderColor: isRevealed ? revealedChipBorderColor : chipBorderColor,
               chipRadius,
               chipPadX: CHIP_PAD_X,
               textGap: TEXT_GAP,
@@ -1150,7 +1179,7 @@ const _ChartSankey = ({
                 <ChevronDownIcon size="small" color="surface.icon.gray.muted" />
               ) : undefined,
               trailingIconSize: GROUP_CHEVRON_SIZE,
-              focusStrokeColor: focusedNodeIndex === index ? chipFocusColor : undefined,
+              focusStrokeColor: focusedNodeId === entry.node.id ? chipFocusColor : undefined,
               semibold: theme.typography.fonts.weight.semibold,
               regular: theme.typography.fonts.weight.regular,
             })}
@@ -1169,11 +1198,7 @@ const _ChartSankey = ({
         <g>{renderedNodes}</g>
       </svg>
       {tooltip && (
-        <SankeyTooltip
-          anchorX={tooltip.anchorX}
-          anchorY={tooltip.anchorY}
-          bounds={{ width, height: svgHeight }}
-        >
+        <SankeyTooltip anchor={tooltip.anchor} bounds={{ width, height: svgHeight }}>
           {tooltip.content}
         </SankeyTooltip>
       )}
