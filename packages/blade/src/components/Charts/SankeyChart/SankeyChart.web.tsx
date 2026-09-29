@@ -36,7 +36,7 @@ import { humanizeIndian } from './humanizeIndian';
 import { fitLabelToWidth, formatShareDetailed, formatSharePercentage } from './labelUtils';
 import { computeSankeyLayout } from './layout';
 import type { SankeyLayoutLink } from './layout';
-import { groupSankeyData } from './grouping';
+import { groupSankeyData, getGroupId, computeDepths } from './grouping';
 import type { GroupedSankeyNode, SankeyGroup } from './grouping';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -76,6 +76,7 @@ const SankeyChartContext = createContext<SankeyChartContextType | null>(null);
 const hasFiniteGeometry = (...values: number[]): boolean => values.every(Number.isFinite);
 
 const EMPTY_IDS: string[] = [];
+const EMPTY_DEPTHS: number[] = [];
 
 // ─── Hover state ──────────────────────────────────────────────────────────────
 
@@ -460,28 +461,16 @@ function renderPlainTextLabel({
 
 // ─── Graph helpers ────────────────────────────────────────────────────────────
 
-/** Breadth-first depth from the roots (nodes with no incoming link) plus nodes per depth. */
+/**
+ * Column info for the (grouped) graph: the shared BFS depth map from `grouping.ts`
+ * plus the nodes-per-depth counts and the last column's depth derived on top of it,
+ * so the depth rule itself is written once.
+ */
 const computeDepthInfo = (
   nodes: readonly { id: string }[],
   links: readonly { source: string; target: string }[],
 ): { depthOf: Map<string, number>; countPerDepth: Map<number, number>; maxDepth: number } => {
-  const incomingCount = new Map<string, number>(nodes.map((n) => [n.id, 0]));
-  links.forEach((l) => incomingCount.set(l.target, (incomingCount.get(l.target) ?? 0) + 1));
-  const outgoing = new Map<string, string[]>(nodes.map((n) => [n.id, []]));
-  links.forEach((l) => outgoing.get(l.source)?.push(l.target));
-  const depthOf = new Map<string, number>();
-  const queue = nodes.filter((n) => incomingCount.get(n.id) === 0).map((n) => n.id);
-  queue.forEach((id) => depthOf.set(id, 0));
-  for (let i = 0; i < queue.length; i++) {
-    const id = queue[i];
-    const d = depthOf.get(id) ?? 0;
-    outgoing.get(id)?.forEach((tid) => {
-      if (!depthOf.has(tid)) {
-        depthOf.set(tid, d + 1);
-        queue.push(tid);
-      }
-    });
-  }
+  const depthOf = computeDepths(nodes, links);
   const countPerDepth = new Map<number, number>();
   let maxDepth = 0;
   depthOf.forEach((d) => {
@@ -518,8 +507,8 @@ const _ChartSankey = ({
   showColorIndicator = false,
   groupNodesBelow,
   formatGroupLabel,
-  defaultExpandedGroupIds,
-  expandedGroupIds: expandedGroupIdsProp,
+  defaultExpandedGroupDepths,
+  expandedGroupDepths: expandedGroupDepthsProp,
   onExpandChange,
   formatValue,
   onNodeClick,
@@ -605,11 +594,14 @@ const _ChartSankey = ({
   // ── Grouping ──────────────────────────────────────────────────────────────
   const isGroupingEnabled = groupNodesBelow !== undefined && groupNodesBelow > 0;
 
-  const [expandedGroupIds, setExpandedGroupIds] = useControllableState<string[]>({
-    value: expandedGroupIdsProp,
-    defaultValue: defaultExpandedGroupIds ?? EMPTY_IDS,
-    onChange: (ids, extra: { groupId: string; isExpanded: boolean; memberIds: string[] }) =>
-      onExpandChange?.({ expandedGroupIds: ids, ...extra }),
+  // Expanded groups are keyed by column depth in the public API (mirroring Accordion's
+  // numeric `expandedIndex`), so no internal id scheme leaks into consumer code. The
+  // grouping transform works in the internal group ids, translated right here.
+  const [expandedGroupDepths, setExpandedGroupDepths] = useControllableState<number[]>({
+    value: expandedGroupDepthsProp,
+    defaultValue: defaultExpandedGroupDepths ?? EMPTY_DEPTHS,
+    onChange: (depths, extra: { groupDepth: number; isExpanded: boolean; memberIds: string[] }) =>
+      onExpandChange?.({ expandedGroupDepths: depths, ...extra }),
   });
 
   const grouped = useMemo(
@@ -618,16 +610,16 @@ const _ChartSankey = ({
         nodes: data.nodes,
         links: data.links,
         groupNodesBelow,
-        expandedGroupIds,
+        expandedGroupIds: expandedGroupDepths.map(getGroupId),
         formatGroupLabel,
       }),
-    [data.nodes, data.links, groupNodesBelow, expandedGroupIds, formatGroupLabel],
+    [data.nodes, data.links, groupNodesBelow, expandedGroupDepths, formatGroupLabel],
   );
 
   // The fully folded graph fixes the scale, so expanding a group never shrinks the others.
   const foldedGrouped = useMemo(
     () =>
-      isGroupingEnabled && expandedGroupIds.length > 0
+      isGroupingEnabled && expandedGroupDepths.length > 0
         ? groupSankeyData({
             nodes: data.nodes,
             links: data.links,
@@ -638,7 +630,7 @@ const _ChartSankey = ({
         : grouped,
     [
       isGroupingEnabled,
-      expandedGroupIds.length,
+      expandedGroupDepths.length,
       data.nodes,
       data.links,
       groupNodesBelow,
@@ -649,13 +641,14 @@ const _ChartSankey = ({
 
   const toggleGroup = useCallback(
     (group: SankeyGroup): void => {
-      setExpandedGroupIds(
-        (prev) => (group.isExpanded ? prev.filter((id) => id !== group.id) : [...prev, group.id]),
+      setExpandedGroupDepths(
+        (prev) =>
+          group.isExpanded ? prev.filter((depth) => depth !== group.depth) : [...prev, group.depth],
         false,
-        { groupId: group.id, isExpanded: !group.isExpanded, memberIds: group.memberIds },
+        { groupDepth: group.depth, isExpanded: !group.isExpanded, memberIds: group.memberIds },
       );
     },
-    [setExpandedGroupIds],
+    [setExpandedGroupDepths],
   );
 
   // ── Graph info on the (grouped) graph ─────────────────────────────────────

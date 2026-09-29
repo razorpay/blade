@@ -142,12 +142,9 @@ describe('groupSankeyData — folding', () => {
       nodes,
       links,
       groupNodesBelow: 5,
-      formatGroupLabel: ({ id, depth, members }) =>
-        `Other methods (${members.length}) @${depth} ${id}`,
+      formatGroupLabel: ({ depth, members }) => `Other methods (${members.length}) @${depth}`,
     });
-    expect(result.nodes.find((entry) => entry.group)?.node.name).toBe(
-      `Other methods (3) @1 ${getGroupId(1)}`,
-    );
+    expect(result.nodes.find((entry) => entry.group)?.node.name).toBe('Other methods (3) @1');
   });
 
   it('merges a link between two groups in adjacent columns', () => {

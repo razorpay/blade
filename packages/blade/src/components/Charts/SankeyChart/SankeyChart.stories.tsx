@@ -199,8 +199,8 @@ export default {
     onNodeClick: { table: { disable: true } },
     onLinkClick: { table: { disable: true } },
     formatGroupLabel: { table: { disable: true } },
-    defaultExpandedGroupIds: { table: { disable: true } },
-    expandedGroupIds: { table: { disable: true } },
+    defaultExpandedGroupDepths: { table: { disable: true } },
+    expandedGroupDepths: { table: { disable: true } },
     onExpandChange: { table: { disable: true } },
   },
   parameters: {

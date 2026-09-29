@@ -53,26 +53,27 @@ export type GroupSankeyDataOptions = {
   /** Share of `total`, in percent, below which a node is grouped. Unset or <= 0 turns grouping off */
   groupNodesBelow?: number;
   expandedGroupIds?: readonly string[];
-  formatGroupLabel?: (group: { id: string; depth: number; members: SankeyDataNode[] }) => string;
+  formatGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
 };
 
 export const getGroupId = (depth: number): string => `${SANKEY_GROUP_ID_PREFIX}${depth}`;
 
 export const isGroupNodeId = (id: string): boolean => id.startsWith(SANKEY_GROUP_ID_PREFIX);
 
-const defaultGroupLabel = ({
-  members,
-}: {
-  id: string;
-  depth: number;
-  members: SankeyDataNode[];
-}): string => `Other (${members.length})`;
+const defaultGroupLabel = ({ members }: { depth: number; members: SankeyDataNode[] }): string =>
+  `Other (${members.length})`;
 
 /**
  * Depth of every node by breadth-first search from the roots (nodes with no incoming link).
  * Nodes unreachable from a root — only possible with a cycle in malformed data — get depth 0.
+ *
+ * Exported and keyed by node id only, so the grouping transform and the web chart's
+ * `computeDepthInfo` share one depth rule instead of drifting copies.
  */
-const computeDepths = (nodes: SankeyDataNode[], links: SankeyDataLink[]): Map<string, number> => {
+export const computeDepths = (
+  nodes: readonly { id: string }[],
+  links: readonly { source: string; target: string }[],
+): Map<string, number> => {
   const incoming = new Map<string, number>(nodes.map((n) => [n.id, 0]));
   const outgoing = new Map<string, string[]>(nodes.map((n) => [n.id, []]));
   links.forEach((link) => {
@@ -186,7 +187,6 @@ export const groupSankeyData = ({
           node: {
             id: group.id,
             name: formatGroupLabel({
-              id: group.id,
               depth: group.depth,
               members: group.members,
             }),

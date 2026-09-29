@@ -165,8 +165,8 @@ describe('SankeyChart — grouping: expand and fold', () => {
 
     expect(onExpandChange).toHaveBeenCalledTimes(1);
     expect(onExpandChange).toHaveBeenCalledWith({
-      expandedGroupIds: [GROUP_ID],
-      groupId: GROUP_ID,
+      expandedGroupDepths: [1],
+      groupDepth: 1,
       isExpanded: true,
       memberIds: ['wallet', 'netbanking', 'emi', 'bnpl', 'paylater', 'cod'],
     });
@@ -247,8 +247,8 @@ describe('SankeyChart — grouping: expand and fold', () => {
     fireEvent.click(getRevealedButtons(container)[0]);
 
     expect(onExpandChange).toHaveBeenLastCalledWith({
-      expandedGroupIds: [],
-      groupId: GROUP_ID,
+      expandedGroupDepths: [],
+      groupDepth: 1,
       isExpanded: false,
       memberIds: ['wallet', 'netbanking', 'emi', 'bnpl', 'paylater', 'cod'],
     });
@@ -263,15 +263,14 @@ describe('SankeyChart — grouping: expand and fold', () => {
     expect(getRevealedButtons(container)).toHaveLength(0);
   });
 
-  it('starts expanded with defaultExpandedGroupIds', () => {
-    // The documented id scheme, authored statically — no runtime discovery needed.
-    const { container } = renderSankey({
-      defaultExpandedGroupIds: ['__blade_sankey_group__1'],
-    });
+  it('starts expanded with defaultExpandedGroupDepths', () => {
+    // Keyed by zero-based column depth, mirroring Accordion's defaultExpandedIndex —
+    // no internal id scheme to hand-author.
+    const { container } = renderSankey({ defaultExpandedGroupDepths: [1] });
     expect(getRevealedButtons(container)).toHaveLength(6);
   });
 
-  it('stays folded in controlled mode until the parent updates expandedGroupIds', () => {
+  it('stays folded in controlled mode until the parent updates expandedGroupDepths', () => {
     const onExpandChange = jest.fn();
     // A parent that reports the change but keeps its own state — the chart must follow the prop.
     const Frozen = (): React.ReactElement => (
@@ -279,7 +278,7 @@ describe('SankeyChart — grouping: expand and fold', () => {
         <ChartSankey
           data={data}
           groupNodesBelow={2}
-          expandedGroupIds={[]}
+          expandedGroupDepths={[]}
           onExpandChange={onExpandChange}
         />
       </ChartSankeyWrapper>
@@ -290,16 +289,16 @@ describe('SankeyChart — grouping: expand and fold', () => {
     expect(getRevealedButtons(frozen.container)).toHaveLength(0);
     frozen.unmount();
 
-    // A parent that applies the reported ids — the chart expands on the next render.
+    // A parent that applies the reported depths — the chart expands on the next render.
     const Applied = (): React.ReactElement => {
-      const [ids, setIds] = React.useState<string[]>([]);
+      const [depths, setDepths] = React.useState<number[]>([]);
       return (
         <ChartSankeyWrapper>
           <ChartSankey
             data={data}
             groupNodesBelow={2}
-            expandedGroupIds={ids}
-            onExpandChange={(event) => setIds(event.expandedGroupIds)}
+            expandedGroupDepths={depths}
+            onExpandChange={(event) => setDepths(event.expandedGroupDepths)}
           />
         </ChartSankeyWrapper>
       );
