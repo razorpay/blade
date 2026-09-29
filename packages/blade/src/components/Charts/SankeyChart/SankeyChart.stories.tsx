@@ -198,7 +198,7 @@ export default {
     testID: { table: { disable: true } },
     onNodeClick: { table: { disable: true } },
     onLinkClick: { table: { disable: true } },
-    getGroupLabel: { table: { disable: true } },
+    formatGroupLabel: { table: { disable: true } },
     defaultExpandedGroupIds: { table: { disable: true } },
     expandedGroupIds: { table: { disable: true } },
     onExpandChange: { table: { disable: true } },
@@ -456,7 +456,7 @@ export const GroupedSmallNodesSankeyChart: StoryFn<GroupedStoryProps> = ({
           labelDensity={labelDensity}
           showColorIndicator={showColorIndicator}
           groupNodesBelow={groupNodesBelow > 0 ? groupNodesBelow : undefined}
-          getGroupLabel={({ members }) => `Other methods (${members.length})`}
+          formatGroupLabel={({ members }) => `Other methods (${members.length})`}
           onNodeClick={action('onNodeClick')}
           onLinkClick={action('onLinkClick')}
           onExpandChange={action('onExpandChange')}
@@ -592,7 +592,7 @@ export const GroupedSankeyChartInFixedHeightCard: StoryFn<typeof ChartSankeyWrap
           labelDensity="compact"
           showColorIndicator
           groupNodesBelow={2}
-          getGroupLabel={({ depth, members }) =>
+          formatGroupLabel={({ depth, members }) =>
             `Other ${depth === 1 ? 'methods' : 'providers'} (${members.length})`
           }
           onNodeClick={action('onNodeClick')}

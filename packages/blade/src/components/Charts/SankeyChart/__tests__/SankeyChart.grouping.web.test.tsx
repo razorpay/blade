@@ -139,9 +139,9 @@ describe('SankeyChart — grouping: folded state', () => {
     expect(getLabelTexts(container).some((t) => t.startsWith('Other'))).toBe(false);
   });
 
-  it('lets getGroupLabel name the group', () => {
+  it('lets formatGroupLabel name the group', () => {
     const { container } = renderSankey({
-      getGroupLabel: ({ members }) => `Other methods (${members.length})`,
+      formatGroupLabel: ({ members }) => `Other methods (${members.length})`,
     });
     // The chip may truncate a long label; the accessible name always carries it in full.
     expect(getGroupButton(container).getAttribute('aria-label')).toBe(
@@ -264,7 +264,10 @@ describe('SankeyChart — grouping: expand and fold', () => {
   });
 
   it('starts expanded with defaultExpandedGroupIds', () => {
-    const { container } = renderSankey({ defaultExpandedGroupIds: [GROUP_ID] });
+    // The documented id scheme, authored statically — no runtime discovery needed.
+    const { container } = renderSankey({
+      defaultExpandedGroupIds: ['__blade_sankey_group__1'],
+    });
     expect(getRevealedButtons(container)).toHaveLength(6);
   });
 
@@ -346,6 +349,39 @@ describe('SankeyChart — grouping: tooltip', () => {
     expect(text).toContain('Wallet  1.9%');
     expect(text).toContain('Cash on delivery  0.3%');
     expect(text).not.toContain('more');
+  });
+
+  it('values a member by max(Σ incoming, Σ outgoing), matching its label share', () => {
+    // Wallet's outflow (400) exceeds its inflow (100); its share must follow the same
+    // max rule as the labels — not the incoming sum alone.
+    const injecting: SankeyDataNode[] = [
+      { id: 'total', name: 'Total' },
+      { id: 'upi', name: 'UPI' },
+      { id: 'wallet', name: 'Wallet' },
+      { id: 'emi', name: 'EMI' },
+      { id: 'captured', name: 'Captured' },
+    ];
+    const injectingLinks: SankeyDataLink[] = [
+      { source: 'total', target: 'upi', value: 9200 },
+      { source: 'total', target: 'wallet', value: 100 },
+      { source: 'total', target: 'emi', value: 100 },
+      { source: 'wallet', target: 'captured', value: 400 },
+      { source: 'emi', target: 'captured', value: 100 },
+      { source: 'upi', target: 'captured', value: 9200 },
+    ];
+    const { container } = renderWithTheme(
+      <ChartSankeyWrapper>
+        <ChartSankey data={{ nodes: injecting, links: injectingLinks }} groupNodesBelow={5} />
+      </ChartSankeyWrapper>,
+    );
+    fireEvent.mouseEnter(getGroupButton(container).closest('g[opacity]')!);
+    const text =
+      container.querySelector('[data-blade-component="ChartSankeyTooltip"]')?.textContent ?? '';
+    // Total = 9400. Wallet: max(100, 400) = 400 → 4.3%, not 100 → 1.1%.
+    expect(text).toContain('Wallet  4.3%');
+    expect(text).not.toContain('Wallet  1.1%');
+    // EMI: in = out = 100 → 1.1%.
+    expect(text).toContain('EMI  1.1%');
   });
 
   it('collapses a long member list into "and n more"', () => {

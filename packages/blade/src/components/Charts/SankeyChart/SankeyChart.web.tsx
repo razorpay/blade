@@ -517,7 +517,7 @@ const _ChartSankey = ({
   labelDensity = 'normal',
   showColorIndicator = false,
   groupNodesBelow,
-  getGroupLabel,
+  formatGroupLabel,
   defaultExpandedGroupIds,
   expandedGroupIds: expandedGroupIdsProp,
   onExpandChange,
@@ -619,9 +619,9 @@ const _ChartSankey = ({
         links: data.links,
         groupNodesBelow,
         expandedGroupIds,
-        getGroupLabel,
+        formatGroupLabel,
       }),
-    [data.nodes, data.links, groupNodesBelow, expandedGroupIds, getGroupLabel],
+    [data.nodes, data.links, groupNodesBelow, expandedGroupIds, formatGroupLabel],
   );
 
   // The fully folded graph fixes the scale, so expanding a group never shrinks the others.
@@ -633,7 +633,7 @@ const _ChartSankey = ({
             links: data.links,
             groupNodesBelow,
             expandedGroupIds: EMPTY_IDS,
-            getGroupLabel,
+            formatGroupLabel,
           })
         : grouped,
     [
@@ -642,7 +642,7 @@ const _ChartSankey = ({
       data.nodes,
       data.links,
       groupNodesBelow,
-      getGroupLabel,
+      formatGroupLabel,
       grouped,
     ],
   );
@@ -978,9 +978,12 @@ const _ChartSankey = ({
     const { group } = entry;
     const shown = group.members.slice(0, TOOLTIP_MAX_MEMBERS);
     const hidden = group.members.length - shown.length;
-    const memberValues = new Map<string, number>();
+    // Same value rule as the labels and the grouping threshold: max(Σ incoming, Σ outgoing).
+    const memberInSum = new Map<string, number>();
+    const memberOutSum = new Map<string, number>();
     data.links.forEach((link) => {
-      memberValues.set(link.target, (memberValues.get(link.target) ?? 0) + link.value);
+      memberOutSum.set(link.source, (memberOutSum.get(link.source) ?? 0) + link.value);
+      memberInSum.set(link.target, (memberInSum.get(link.target) ?? 0) + link.value);
     });
     return {
       anchor,
@@ -1001,7 +1004,10 @@ const _ChartSankey = ({
             }}
           >
             {shown.map((member) => {
-              const memberValue = memberValues.get(member.id) ?? 0;
+              const memberValue = Math.max(
+                memberInSum.get(member.id) ?? 0,
+                memberOutSum.get(member.id) ?? 0,
+              );
               const memberShare = totalValue > 0 ? (memberValue / totalValue) * 100 : 0;
               return (
                 <Text

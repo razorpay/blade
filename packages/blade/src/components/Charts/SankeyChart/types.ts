@@ -26,7 +26,11 @@ export type SankeyDataNode = {
 export type SankeyGroupExpandEvent = {
   /** Ids of every group that is expanded after this change */
   expandedGroupIds: string[];
-  /** The group that was toggled */
+  /**
+   * Id of the group that was toggled. Follows the documented scheme
+   * `__blade_sankey_group__<depth>` (zero-based column depth), so controlled state can be
+   * authored statically.
+   */
   groupId: string;
   isExpanded: boolean;
   /** Ids of the nodes folded into the toggled group */
@@ -146,16 +150,22 @@ export type ChartSankeyProps = {
    */
   groupNodesBelow?: number;
   /**
-   * Label of a group node. Receives the column depth and the grouped nodes.
+   * Label of a group node. Receives the group's `id`, the column depth and the grouped nodes.
    * @default ({ members }) => `Other (${members.length})`
    */
-  getGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
+  formatGroupLabel?: (group: { id: string; depth: number; members: SankeyDataNode[] }) => string;
   /**
-   * Ids of the groups that start expanded (uncontrolled). Group ids are reported by
-   * `onExpandChange`; a column's group keeps the same id for the same data.
+   * Ids of the groups that start expanded (uncontrolled). A group's id is
+   * `__blade_sankey_group__<depth>` — the internal prefix followed by the group's zero-based
+   * column depth (the leftmost column is depth 0) — so it can be authored statically. The same
+   * id is also surfaced at runtime by `formatGroupLabel`'s `id` argument and by `onExpandChange`.
+   * A column's group keeps the same id for the same data.
    */
   defaultExpandedGroupIds?: string[];
-  /** Ids of the expanded groups (controlled). Pass `[]` to fold everything. */
+  /**
+   * Ids of the expanded groups (controlled). Pass `[]` to fold everything. Ids follow the
+   * scheme documented on `defaultExpandedGroupIds`.
+   */
   expandedGroupIds?: string[];
   /** Called when a group is expanded or folded, by click or keyboard */
   onExpandChange?: (event: SankeyGroupExpandEvent) => void;

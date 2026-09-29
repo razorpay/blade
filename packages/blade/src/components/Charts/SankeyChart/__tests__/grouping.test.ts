@@ -137,14 +137,17 @@ describe('groupSankeyData — folding', () => {
     expect(groupSankeyData({ nodes, links, groupNodesBelow: -2 }).groups).toEqual([]);
   });
 
-  it('uses getGroupLabel for the group node name', () => {
+  it('uses formatGroupLabel for the group node name', () => {
     const result = groupSankeyData({
       nodes,
       links,
       groupNodesBelow: 5,
-      getGroupLabel: ({ depth, members }) => `Other methods (${members.length}) @${depth}`,
+      formatGroupLabel: ({ id, depth, members }) =>
+        `Other methods (${members.length}) @${depth} ${id}`,
     });
-    expect(result.nodes.find((entry) => entry.group)?.node.name).toBe('Other methods (3) @1');
+    expect(result.nodes.find((entry) => entry.group)?.node.name).toBe(
+      `Other methods (3) @1 ${getGroupId(1)}`,
+    );
   });
 
   it('merges a link between two groups in adjacent columns', () => {

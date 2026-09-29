@@ -674,23 +674,23 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 
 #### `ChartSankey` Props
 
-| Prop                      | Type                                                   | Required | Default                  | Description                                                             |
-| ------------------------- | ------------------------------------------------------ | -------- | ------------------------ | ----------------------------------------------------------------------- |
-| `data`                    | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅       | —                        | Flat node list and directed flow connections                            |
-| `showLabels`              | `boolean`                                              | ❌       | `true`                   | Show labels to the right of each node bar                               |
-| `showLabelChip`           | `boolean`                                              | ❌       | `true`                   | Render labels as Blade chip cards; `false` renders plain SVG text       |
-| `showPercentage`          | `boolean`                                              | ❌       | `true`                   | Show percentage of total flow alongside value in each label             |
-| `labelUnit`               | `string`                                               | ❌       | —                        | Unit string appended to node value, e.g. `"txn"` or `"₹M"`              |
-| `labelDensity`            | `'normal' \| 'compact'`                                | ❌       | `'normal'`               | Chip height: 28px, or 20px for columns of many thin nodes (web)         |
-| `showColorIndicator`      | `boolean`                                              | ❌       | `false`                  | Start each label with a dot in the node's colour (web)                  |
-| `formatValue`             | `(value: number) => string`                            | ❌       | Indian notation (k/L/Cr) | Custom value formatter for node labels                                  |
-| `groupNodesBelow`         | `number`                                               | ❌       | —                        | Group nodes under this share (%) into one "Other" node per column (web) |
-| `getGroupLabel`           | `({ depth, members }) => string`                       | ❌       | `Other (n)`              | Label of a group node                                                   |
-| `defaultExpandedGroupIds` | `string[]`                                             | ❌       | `[]`                     | Groups that start expanded (uncontrolled)                               |
-| `expandedGroupIds`        | `string[]`                                             | ❌       | —                        | Expanded groups (controlled)                                            |
-| `onExpandChange`          | `(event: SankeyGroupExpandEvent) => void`              | ❌       | —                        | Called when a group is expanded or folded                               |
-| `onNodeClick`             | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked (never for a group node)              |
-| `onLinkClick`             | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked                                    |
+| Prop                      | Type                                                   | Required | Default                  | Description                                                                                                                                                    |
+| ------------------------- | ------------------------------------------------------ | -------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`                    | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅       | —                        | Flat node list and directed flow connections                                                                                                                   |
+| `showLabels`              | `boolean`                                              | ❌       | `true`                   | Show labels to the right of each node bar                                                                                                                      |
+| `showLabelChip`           | `boolean`                                              | ❌       | `true`                   | Render labels as Blade chip cards; `false` renders plain SVG text                                                                                              |
+| `showPercentage`          | `boolean`                                              | ❌       | `true`                   | Show percentage of total flow alongside value in each label                                                                                                    |
+| `labelUnit`               | `string`                                               | ❌       | —                        | Unit string appended to node value, e.g. `"txn"` or `"₹M"`                                                                                                     |
+| `labelDensity`            | `'normal' \| 'compact'`                                | ❌       | `'normal'`               | Chip height: 28px, or 20px for columns of many thin nodes (web)                                                                                                |
+| `showColorIndicator`      | `boolean`                                              | ❌       | `false`                  | Start each label with a dot in the node's colour (web)                                                                                                         |
+| `formatValue`             | `(value: number) => string`                            | ❌       | Indian notation (k/L/Cr) | Custom value formatter for node labels                                                                                                                         |
+| `groupNodesBelow`         | `number`                                               | ❌       | —                        | Group nodes under this share (%) into one "Other" node per column (web)                                                                                        |
+| `formatGroupLabel`        | `({ id, depth, members }) => string`                   | ❌       | `Other (n)`              | Label of a group node; also surfaces the group's `id`                                                                                                          |
+| `defaultExpandedGroupIds` | `string[]`                                             | ❌       | `[]`                     | Groups that start expanded (uncontrolled). Ids follow the scheme `__blade_sankey_group__<depth>` (zero-based column depth), so they can be authored statically |
+| `expandedGroupIds`        | `string[]`                                             | ❌       | —                        | Expanded groups (controlled); same id scheme as `defaultExpandedGroupIds`                                                                                      |
+| `onExpandChange`          | `(event: SankeyGroupExpandEvent) => void`              | ❌       | —                        | Called when a group is expanded or folded                                                                                                                      |
+| `onNodeClick`             | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked (never for a group node)                                                                                                     |
+| `onLinkClick`             | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked                                                                                                                           |
 
 Labels on web are always a single line. A name that does not fit the 200px label budget is truncated with an ellipsis (the value text is kept whole; the tooltip shows the full name), a share between 0 and 1 percent reads `<1%`, and the chart reserves right margin only for the last column's labels.
 
@@ -747,7 +747,7 @@ Clicking the group — or pressing Enter/Space on its label, which is a focusabl
       labelDensity="compact"
       showColorIndicator
       groupNodesBelow={2}
-      getGroupLabel={({ members }) => `Other methods (${members.length})`}
+      formatGroupLabel={({ members }) => `Other methods (${members.length})`}
       onExpandChange={({ groupId, isExpanded }) =>
         track('Sankey Group Toggled', { groupId, isExpanded })
       }

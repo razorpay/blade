@@ -132,13 +132,21 @@ type ChartSankeyProps = {
    */
   groupNodesBelow?: number;
   /**
-   * Label of a group node.
+   * Label of a group node. Receives the group's id, the column depth and the grouped nodes.
    * @default ({ members }) => `Other (${members.length})`
    */
-  getGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
-  /** Ids of the groups that start expanded (uncontrolled) */
+  formatGroupLabel?: (group: { id: string; depth: number; members: SankeyDataNode[] }) => string;
+  /**
+   * Ids of the groups that start expanded (uncontrolled). A group's id is
+   * `__blade_sankey_group__<depth>` — the internal prefix followed by the group's zero-based
+   * column depth (the leftmost column is depth 0) — so it can be authored statically. The same
+   * id is also surfaced at runtime by `formatGroupLabel`'s `id` argument and by `onExpandChange`.
+   */
   defaultExpandedGroupIds?: string[];
-  /** Ids of the expanded groups (controlled). Pass [] to fold everything */
+  /**
+   * Ids of the expanded groups (controlled). Pass [] to fold everything. Ids follow the
+   * scheme documented on `defaultExpandedGroupIds`.
+   */
   expandedGroupIds?: string[];
   /** Called when a group is expanded or folded, by click or keyboard */
   onExpandChange?: (event: SankeyGroupExpandEvent) => void;
@@ -269,7 +277,7 @@ function PaymentMethodsSankeyChart() {
           labelDensity="compact"
           showColorIndicator
           groupNodesBelow={5}
-          getGroupLabel={({ members }) => `Other methods (${members.length})`}
+          formatGroupLabel={({ members }) => `Other methods (${members.length})`}
           onExpandChange={({ groupId, isExpanded }) =>
             console.log('group toggled', groupId, isExpanded)
           }

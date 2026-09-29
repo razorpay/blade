@@ -53,15 +53,20 @@ export type GroupSankeyDataOptions = {
   /** Share of `total`, in percent, below which a node is grouped. Unset or <= 0 turns grouping off */
   groupNodesBelow?: number;
   expandedGroupIds?: readonly string[];
-  getGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
+  formatGroupLabel?: (group: { id: string; depth: number; members: SankeyDataNode[] }) => string;
 };
 
 export const getGroupId = (depth: number): string => `${SANKEY_GROUP_ID_PREFIX}${depth}`;
 
 export const isGroupNodeId = (id: string): boolean => id.startsWith(SANKEY_GROUP_ID_PREFIX);
 
-const defaultGroupLabel = ({ members }: { members: SankeyDataNode[] }): string =>
-  `Other (${members.length})`;
+const defaultGroupLabel = ({
+  members,
+}: {
+  id: string;
+  depth: number;
+  members: SankeyDataNode[];
+}): string => `Other (${members.length})`;
 
 /**
  * Depth of every node by breadth-first search from the roots (nodes with no incoming link).
@@ -99,7 +104,7 @@ export const groupSankeyData = ({
   links,
   groupNodesBelow,
   expandedGroupIds = [],
-  getGroupLabel = defaultGroupLabel,
+  formatGroupLabel = defaultGroupLabel,
 }: GroupSankeyDataOptions): GroupedSankeyData => {
   const nodeIds = new Set(nodes.map((n) => n.id));
   const validLinks = links
@@ -180,7 +185,11 @@ export const groupSankeyData = ({
         groupedNodes.push({
           node: {
             id: group.id,
-            name: getGroupLabel({ depth: group.depth, members: group.members }),
+            name: formatGroupLabel({
+              id: group.id,
+              depth: group.depth,
+              members: group.members,
+            }),
           },
           originalIndex: null,
           group,
