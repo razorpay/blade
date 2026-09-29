@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { act, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import { Popover } from '..';
 import { Button } from '~components/Button';
 import { Tooltip } from '~components/Tooltip';
@@ -8,25 +8,15 @@ import { Text } from '~components/Typography';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import {
+  REPLACED_OVERLAY_TIME,
+  advanceTime,
+  getOpenTransitionDuration,
+} from '~utils/testing/overlayTransitions';
 
-// Hover popovers share BladeProvider's FloatingDelayGroup with every Tooltip. These tests use real
-// timers: switching between overlays depends on the order of hover events and short delays
-
-// A replaced overlay has to be gone before its exit animation (motion.duration.quick, 200ms) could
-// have finished. The switching tests advance fake time by this fixed amount, so the check does not
-// depend on how busy the machine running the tests is
-const REPLACED_OVERLAY_TIME = 100;
-
-// advances in small steps: timers that fire schedule React updates, and those updates schedule the
-// next timers (e.g. a closing overlay's unmount). One big step would skip the timers that only
-// exist once React has applied the updates from the step before
-const advanceTime = (ms: number): void => {
-  for (let elapsed = 0; elapsed < ms; elapsed += 10) {
-    act(() => {
-      jest.advanceTimersByTime(10);
-    });
-  }
-};
+// Hover popovers share BladeProvider's FloatingDelayGroup with every Tooltip. The switching tests
+// run on fake timers and advance a fixed time (see ~utils/testing/overlayTransitions); the
+// others use real timers
 
 // `renderWithTheme` wraps only the initial render; rerenders need the provider again
 const withTheme = (ui: React.ReactElement): React.ReactElement => (
@@ -34,13 +24,6 @@ const withTheme = (ui: React.ReactElement): React.ReactElement => (
     {ui}
   </BladeProvider>
 );
-
-// the transition Popover's content fades in with (useTransitionStyles, applied through a
-// styled-components class, so it is read from the computed style)
-const getOpenTransitionDuration = (dialog: HTMLElement): string | undefined =>
-  [dialog, ...Array.from(dialog.querySelectorAll<HTMLElement>('*'))]
-    .map((element) => window.getComputedStyle(element).transitionDuration)
-    .find(Boolean);
 
 describe('<Popover openInteraction="hover" /> in the tooltip delay group', () => {
   describe('switching in place', () => {

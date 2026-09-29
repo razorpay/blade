@@ -6,6 +6,11 @@ import { TreeViewItem } from '../TreeViewItem';
 import { TreeViewLoadMore } from '../TreeViewLoadMore';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+import {
+  REPLACED_OVERLAY_TIME,
+  advanceTime,
+  getOpenTransitionDuration,
+} from '~utils/testing/overlayTransitions';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 
@@ -1028,10 +1033,7 @@ describe('tooltip and popover on items', () => {
   });
 
   describe('switching between rows', () => {
-    // A replaced overlay has to be gone before its exit animation (motion.duration.quick, 200ms)
-    // could have finished. Fake timers advance a fixed amount of time, so that check does not
-    // depend on how busy the machine running the tests is
-    const REPLACED_OVERLAY_TIME = 100;
+    // fake timers advance a fixed time, see ~utils/testing/overlayTransitions
     beforeEach(() => {
       jest.useFakeTimers();
     });
@@ -1040,16 +1042,6 @@ describe('tooltip and popover on items', () => {
     });
     const setupUser = (): ReturnType<typeof userEvents.setup> =>
       userEvents.setup({ advanceTimers: jest.advanceTimersByTime });
-    // advances in small steps: timers that fire schedule React updates, and those updates schedule
-    // the next timers (e.g. a closing overlay's unmount). One big step would skip the timers that
-    // only exist once React has applied the updates from the step before
-    const advanceTime = (ms: number): void => {
-      for (let elapsed = 0; elapsed < ms; elapsed += 10) {
-        act(() => {
-          jest.advanceTimersByTime(10);
-        });
-      }
-    };
 
     const switchingTree = (
       <TreeView>
@@ -1100,13 +1092,6 @@ describe('tooltip and popover on items', () => {
         from.dispatchEvent(event);
       });
     };
-
-    // the transition Popover's content fades in with (useTransitionStyles, applied through a
-    // styled-components class, so it is read from the computed style)
-    const getOpenTransitionDuration = (dialog: HTMLElement): string | undefined =>
-      [dialog, ...Array.from(dialog.querySelectorAll<HTMLElement>('*'))]
-        .map((element) => window.getComputedStyle(element).transitionDuration)
-        .find(Boolean);
 
     it('should switch to the next popover in place, without animating either one', async () => {
       const user = setupUser();
