@@ -434,13 +434,13 @@ band for that period. In a grouped chart every bar can carry its own range, so t
 revealed **on hover, one at a time**: several translucent bands behind opaque grouped bars read as
 mush, and only the hovered bar's range is being asked about.
 
-| Prop (on `ChartBar`) | Type      | Default            | Description                                              |
-| -------------------- | --------- | ------------------ | -------------------------------------------------------- |
-| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set  |
-| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                    |
-| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range              |
-| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour         |
-| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only    |
+| Prop (on `ChartBar`) | Type      | Default            | Description                                             |
+| -------------------- | --------- | ------------------ | ------------------------------------------------------- |
+| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set |
+| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                   |
+| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range             |
+| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour        |
+| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only   |
 
 - Hovering a bar fades the other series and shades the hovered category, so the revealed band reads
   against its own bar. This per-series fade applies **only** to charts that declare a band — a plain
@@ -457,7 +457,7 @@ mush, and only the hovered bar's range is being asked about.
   (the unfiltered case) — that one is always visible and gets a legend swatch by default.
 - **Geometry:** the range's **y** comes from two invisible bound series so it folds into the
   y-domain and a band taller than the bars is never clipped. Its **x** is re-anchored to the owning
-  series' bar centres, read from the rendered bar rects — a bound series sits at the *category*
+  series' bar centres, read from the rendered bar rects — a bound series sits at the _category_
   centre, which would stack every band on the same x in a grouped chart. Edges are straight chords
   (a bar chart has no trend curve to follow) flat-extended to both plot edges. See
   _Bar Chart with Reference Band_ and _Grouped Bar Chart with Multiple Reference Bands_ stories.
@@ -672,16 +672,20 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 
 #### `ChartSankey` Props
 
-| Prop             | Type                                                   | Required | Default                  | Description                                                       |
-| ---------------- | ------------------------------------------------------ | -------- | ------------------------ | ----------------------------------------------------------------- |
-| `data`           | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅       | —                        | Flat node list and directed flow connections                      |
-| `showLabels`     | `boolean`                                              | ❌       | `true`                   | Show labels to the right of each node bar                         |
-| `showLabelChip`  | `boolean`                                              | ❌       | `true`                   | Render labels as Blade chip cards; `false` renders plain SVG text |
-| `showPercentage` | `boolean`                                              | ❌       | `true`                   | Show percentage of total flow alongside value in each label       |
-| `labelUnit`      | `string`                                               | ❌       | —                        | Unit string appended to node value, e.g. `"txn"` or `"₹M"`        |
-| `formatValue`    | `(value: number) => string`                            | ❌       | Indian notation (k/L/Cr) | Custom value formatter for node labels                            |
-| `onNodeClick`    | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked                                 |
-| `onLinkClick`    | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked                              |
+| Prop                 | Type                                                   | Required | Default                  | Description                                                       |
+| -------------------- | ------------------------------------------------------ | -------- | ------------------------ | ----------------------------------------------------------------- |
+| `data`               | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅       | —                        | Flat node list and directed flow connections                      |
+| `showLabels`         | `boolean`                                              | ❌       | `true`                   | Show labels to the right of each node bar                         |
+| `showLabelChip`      | `boolean`                                              | ❌       | `true`                   | Render labels as Blade chip cards; `false` renders plain SVG text |
+| `showPercentage`     | `boolean`                                              | ❌       | `true`                   | Show percentage of total flow alongside value in each label       |
+| `labelUnit`          | `string`                                               | ❌       | —                        | Unit string appended to node value, e.g. `"txn"` or `"₹M"`        |
+| `labelDensity`       | `'normal' \| 'compact'`                                | ❌       | `'normal'`               | Chip height: 28px, or 20px for columns of many thin nodes (web)   |
+| `showColorIndicator` | `boolean`                                              | ❌       | `false`                  | Start each label with a dot in the node's colour (web)            |
+| `formatValue`        | `(value: number) => string`                            | ❌       | Indian notation (k/L/Cr) | Custom value formatter for node labels                            |
+| `onNodeClick`        | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked                                 |
+| `onLinkClick`        | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked                              |
+
+Labels on web are always a single line. A name that does not fit the 200px label budget is truncated with an ellipsis (the value text is kept whole; the tooltip shows the full name), a share between 0 and 1 percent reads `<1%`, and the chart reserves right margin only for the last column's labels.
 
 Example —
 

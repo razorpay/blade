@@ -41,12 +41,12 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
             <path
               d="
         M22,50.54369962503995
-        C165.5,50.54369962503995
-          165.5,48
-          309,48
-        L309,8
-        C165.5,8
-          165.5,10.543699625039949
+        C169.3193359375,50.54369962503995
+          169.3193359375,48
+          316.638671875,48
+        L316.638671875,8
+        C169.3193359375,8
+          169.3193359375,10.543699625039949
           22,10.543699625039949
         Z
       "
@@ -61,12 +61,12 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
             <path
               d="
         M22,82.54369962503995
-        C165.5,82.54369962503995
-          165.5,92
-          309,92
-        L309,60
-        C165.5,60
-          165.5,50.54369962503995
+        C169.3193359375,82.54369962503995
+          169.3193359375,92
+          316.638671875,92
+        L316.638671875,60
+        C169.3193359375,60
+          169.3193359375,50.54369962503995
           22,50.54369962503995
         Z
       "
@@ -80,14 +80,14 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
           >
             <path
               d="
-        M323,43
-        C466.5,43
-          466.5,43
-          610,43
-        L610,8.000000000000004
-        C466.5,8.000000000000004
-          466.5,8
-          323,8
+        M330.638671875,43
+        C477.9580078125,43
+          477.9580078125,43
+          625.27734375,43
+        L625.27734375,8.000000000000004
+        C477.9580078125,8.000000000000004
+          477.9580078125,8
+          330.638671875,8
         Z
       "
               fill="hsla(149, 38%, 86%, 1)"
@@ -100,14 +100,14 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
           >
             <path
               d="
-        M323,48
-        C466.5,48
-          466.5,88
-          610,88
-        L610,83
-        C466.5,83
-          466.5,43
-          323,43
+        M330.638671875,48
+        C477.9580078125,48
+          477.9580078125,88
+          625.27734375,88
+        L625.27734375,83
+        C477.9580078125,83
+          477.9580078125,43
+          330.638671875,43
         Z
       "
               fill="hsla(149, 38%, 86%, 1)"
@@ -120,14 +120,14 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
           >
             <path
               d="
-        M323,88
-        C466.5,88
-          466.5,71
-          610,71
-        L610,43
-        C466.5,43
-          466.5,60
-          323,60
+        M330.638671875,88
+        C477.9580078125,88
+          477.9580078125,71
+          625.27734375,71
+        L625.27734375,43
+        C477.9580078125,43
+          477.9580078125,60
+          330.638671875,60
         Z
       "
               fill="hsla(46, 86%, 83%, 1)"
@@ -140,14 +140,14 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
           >
             <path
               d="
-        M323,92
-        C466.5,92
-          466.5,92
-          610,92
-        L610,88
-        C466.5,88
-          466.5,88
-          323,88
+        M330.638671875,92
+        C477.9580078125,92
+          477.9580078125,92
+          625.27734375,92
+        L625.27734375,88
+        C477.9580078125,88
+          477.9580078125,88
+          330.638671875,88
         Z
       "
               fill="hsla(46, 86%, 83%, 1)"
@@ -224,7 +224,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
-                x="309"
+                x="316.638671875"
                 y="7.999999999999998"
               />
               <g
@@ -237,13 +237,13 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
                   width="90.35546875"
-                  x="331.5"
+                  x="339.138671875"
                   y="14.5"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
-                  x="339"
+                  x="346.638671875"
                   y="32.32"
                 >
                   <tspan
@@ -276,7 +276,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
-                x="309"
+                x="316.638671875"
                 y="60"
               />
               <g
@@ -289,13 +289,13 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
                   width="107.69921875"
-                  x="331.5"
+                  x="339.138671875"
                   y="62.5"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
-                  x="339"
+                  x="346.638671875"
                   y="80.32"
                 >
                   <tspan
@@ -328,7 +328,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
-                x="610"
+                x="625.27734375"
                 y="8.000000000000004"
               />
               <g
@@ -341,13 +341,13 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
                   width="143.72265625"
-                  x="632.5"
+                  x="647.77734375"
                   y="26"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
-                  x="640"
+                  x="655.27734375"
                   y="43.82"
                 >
                   <tspan
@@ -380,7 +380,7 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 rx="0"
                 style="cursor: pointer;"
                 width="14"
-                x="610"
+                x="625.27734375"
                 y="83"
               />
               <g
@@ -393,13 +393,13 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                   stroke="hsla(206, 10%, 29%, 0.18)"
                   stroke-width="1"
                   width="112.375"
-                  x="632.5"
+                  x="647.77734375"
                   y="74"
                 />
                 <text
                   font-size="12"
                   style="user-select: none; font-family: "Inter", "Inter Fallback Arial", Arial;"
-                  x="640"
+                  x="655.27734375"
                   y="91.82"
                 >
                   <tspan

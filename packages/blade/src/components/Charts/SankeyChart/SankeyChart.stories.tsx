@@ -127,6 +127,17 @@ export default {
       control: { type: 'text' },
       description: 'Unit appended to node value in label chip, e.g. "txn" or "₹".',
     },
+    labelDensity: {
+      control: { type: 'select' },
+      options: ['normal', 'compact'],
+      description:
+        "Vertical density of the label chips. 'compact' renders 20px chips (4px vertical padding) instead of 28px, so labels on thin, closely stacked nodes have room before they touch. Labels are always a single line — a long name is truncated with an ellipsis and shown in full in the tooltip.",
+    },
+    showColorIndicator: {
+      control: { type: 'boolean' },
+      description:
+        "Starts each label with a dot in the node's colour, so a label can be matched to its bar and ribbons at a glance.",
+    },
     numLevels: {
       control: { type: 'select' },
       options: [2, 3, 4],
@@ -294,6 +305,8 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
   showLabelChip = true,
   showPercentage = true,
   labelUnit = 'txn',
+  labelDensity = 'normal',
+  showColorIndicator = false,
   numLevels = 4,
   nodesL1 = 1,
   nodesL2 = 4,
@@ -320,6 +333,8 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
             showLabelChip={showLabelChip}
             showPercentage={showPercentage}
             labelUnit={labelUnit}
+            labelDensity={labelDensity}
+            showColorIndicator={showColorIndicator}
             onNodeClick={action('onNodeClick')}
             onLinkClick={action('onLinkClick')}
           />
@@ -328,6 +343,67 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
     </ChartsWrapper>
   );
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Compact label density with the colour indicator. Labels are always a single line: a name
+ * that does not fit the 200px label budget is trimmed with an ellipsis (hover the node to read
+ * it in full in the tooltip), and right margin is reserved only for the last column's labels.
+ * The long node names here exercise both behaviours.
+ */
+const LONG_NAME_DATA: { nodes: SankeyDataNode[]; links: SankeyDataLink[] } = {
+  nodes: [
+    { id: 'total', name: 'All initiated payments' },
+    { id: 'upi', name: 'UPI' },
+    { id: 'card', name: 'Credit and debit cards' },
+    { id: 'netbanking', name: 'Netbanking through corporate current accounts' },
+    { id: 'wallet', name: 'Wallets' },
+    { id: 'emi', name: 'EMI' },
+    { id: 'captured', name: 'Captured', color: 'data.background.categorical.green.subtle' },
+    { id: 'failed', name: 'Failed', color: 'data.background.categorical.red.subtle' },
+    { id: 'pending', name: 'Pending authorisation from the issuing bank' },
+  ],
+  links: [
+    { source: 'total', target: 'upi', value: 6200 },
+    { source: 'total', target: 'card', value: 2400 },
+    { source: 'total', target: 'netbanking', value: 900 },
+    { source: 'total', target: 'wallet', value: 420 },
+    { source: 'total', target: 'emi', value: 80 },
+    { source: 'upi', target: 'captured', value: 5600 },
+    { source: 'upi', target: 'failed', value: 520 },
+    { source: 'upi', target: 'pending', value: 80 },
+    { source: 'card', target: 'captured', value: 2000 },
+    { source: 'card', target: 'failed', value: 360 },
+    { source: 'card', target: 'pending', value: 40 },
+    { source: 'netbanking', target: 'captured', value: 760 },
+    { source: 'netbanking', target: 'failed', value: 120 },
+    { source: 'netbanking', target: 'pending', value: 20 },
+    { source: 'wallet', target: 'captured', value: 380 },
+    { source: 'wallet', target: 'failed', value: 40 },
+    { source: 'emi', target: 'captured', value: 70 },
+    { source: 'emi', target: 'failed', value: 10 },
+  ],
+};
+
+export const CompactLabelsSankeyChart: StoryFn<typeof ChartSankeyWrapper> = () => (
+  <ChartsWrapper padding="spacing.0">
+    <Box width="100%" height="360px">
+      <ChartSankeyWrapper showTooltip>
+        <ChartSankey
+          data={LONG_NAME_DATA}
+          labelDensity="compact"
+          showColorIndicator
+          labelUnit="txn"
+          onNodeClick={action('onNodeClick')}
+          onLinkClick={action('onLinkClick')}
+        />
+      </ChartSankeyWrapper>
+    </Box>
+  </ChartsWrapper>
+);
+
+CompactLabelsSankeyChart.parameters = { controls: { disable: true } };
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -424,6 +500,8 @@ CustomNodeColorsSankeyChart.argTypes = {
   showLabelChip: { table: { disable: true } },
   showPercentage: { table: { disable: true } },
   labelUnit: { table: { disable: true } },
+  labelDensity: { table: { disable: true } },
+  showColorIndicator: { table: { disable: true } },
   numLevels: { table: { disable: true } },
   nodesL1: { table: { disable: true } },
   nodesL2: { table: { disable: true } },
@@ -556,6 +634,7 @@ SankeyChartWithPlainTextLabels.parameters = { controls: { disable: true } };
 // ─── Story display names ──────────────────────────────────────────────────────
 
 DefaultSankeyChart.storyName = 'Default Sankey Chart';
+CompactLabelsSankeyChart.storyName = 'Compact Labels with Color Indicator';
 VerticalSankeyChart.storyName = 'Vertical Sankey Chart (native only)';
 VerticalSankeyChartWithoutLabels.storyName = 'Vertical Sankey Chart without Labels (native only)';
 SingleColorSankeyChart.storyName = 'Single Color Sankey Chart';
