@@ -12,16 +12,23 @@ import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart';
 import type { ChartSankeyProps, SankeyDataLink, SankeyDataNode } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
-jest.mock('recharts', () => {
-  const Recharts = jest.requireActual('recharts');
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { cloneElement, Children } = require('react');
-  return {
-    ...Recharts,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ResponsiveContainer: ({ children, height }: { children: any; height?: number }) =>
-      cloneElement(Children.only(children), { width: 800, height: height ?? 400 }),
-  };
+// The wrapper measures itself with getBoundingClientRect; jsdom reports 0×0, so fix it at 800×400.
+const CONTAINER_RECT = {
+  width: 800,
+  height: 400,
+  top: 0,
+  left: 0,
+  right: 800,
+  bottom: 400,
+  x: 0,
+  y: 0,
+  toJSON: () => ({}),
+} as DOMRect;
+beforeAll(() => {
+  jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(CONTAINER_RECT);
+});
+afterAll(() => {
+  jest.restoreAllMocks();
 });
 
 // 7px per character regardless of weight — close to Inter at 12px and, crucially, monotonic.

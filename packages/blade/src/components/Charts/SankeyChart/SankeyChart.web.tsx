@@ -4,22 +4,14 @@ import React, {
   useCallback,
   useContext,
   useMemo,
+  useRef,
   useState,
 } from 'react';
-import { Sankey, ResponsiveContainer } from 'recharts';
-import type { NodeProps, LinkProps } from 'recharts/types/chart/Sankey';
-import type { SankeyNode as RechartsSankeyNode } from 'recharts/types/util/types';
 import { useChartsColorTheme, assignDataColorMapping } from '../utils';
-import { ChartTooltip } from '../CommonChartComponents';
 import { CommonChartComponentsContext } from '../CommonChartComponents/CommonChartComponentsContext';
 import { calculateTextWidth } from '../CommonChartComponents/utils';
 import type { DataColorMapping, ChartsCategoricalColorToken } from '../CommonChartComponents/types';
-import type {
-  ChartSankeyWrapperProps,
-  ChartSankeyProps,
-  SankeyDataNode,
-  SankeyTooltipContentProps,
-} from './types';
+import type { ChartSankeyWrapperProps, ChartSankeyProps, SankeyDataNode } from './types';
 import {
   componentIds,
   LABEL_CAP_HEIGHT_RATIO,
@@ -31,12 +23,21 @@ import {
   NODE_WIDTH,
   CHIP_MIN_WIDTH,
   LABEL_MAX_WIDTH,
+  GROUP_LABEL_MAX_WIDTH,
   COLOR_INDICATOR_SIZE,
   NODE_MIN_HEIGHT,
   TOOLTIP_Z_INDEX,
+  GROUP_NODE_COLOR_TOKEN,
+  GROUP_CHEVRON_SIZE,
+  TOOLTIP_MAX_MEMBERS,
+  TOOLTIP_OFFSET,
 } from './tokens';
 import { humanizeIndian } from './humanizeIndian';
-import { fitLabelToWidth, formatSharePercentage } from './labelUtils';
+import { fitLabelToWidth, formatShareDetailed, formatSharePercentage } from './labelUtils';
+import { computeSankeyLayout } from './layout';
+import type { SankeyLayoutLink } from './layout';
+import { groupSankeyData } from './grouping';
+import type { GroupedSankeyNode, SankeyGroup } from './grouping';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import getIn from '~utils/lodashButBetter/get';
@@ -44,61 +45,96 @@ import { metaAttribute } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useControllableState } from '~utils/useControllable';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import { ChevronDownIcon } from '~components/Icons';
 
 // ─── Private context (mirrors DonutContainerContext pattern) ──────────────────
-// Passes wrapper-level config down to ChartSankey without prop drilling.
+// Passes wrapper-level config — and the measured container size — down to ChartSankey.
 
 type SankeyChartContextType = {
   showTooltip: boolean;
   nodeColorOverride?: ChartsCategoricalColorToken;
   linkColorOverride?: ChartsCategoricalColorToken;
   defaultColorTokens: ChartsCategoricalColorToken[];
+  /** Measured width of the wrapper, 0 until the first layout pass */
+  width: number;
+  /** Measured height of the wrapper, 0 until the first layout pass */
+  height: number;
 };
 
 // Default is null — rendering ChartSankey outside ChartSankeyWrapper is detected and
 // throws a descriptive Blade error rather than silently failing with an empty palette.
 const SankeyChartContext = createContext<SankeyChartContextType | null>(null);
 
-// Recharts derives a node's value from its links, so a node with no links (or an
-// otherwise degenerate dataset) yields NaN geometry. Rendering that produces invalid
-// SVG attributes, so skip the element instead.
+// A node with no links (or an otherwise degenerate dataset) has no value to lay out and
+// yields NaN geometry. Rendering that produces invalid SVG attributes, so skip the element.
 const hasFiniteGeometry = (...values: number[]): boolean => values.every(Number.isFinite);
+
+const EMPTY_IDS: string[] = [];
 
 // ─── Hover state ──────────────────────────────────────────────────────────────
 
 type HoverState = { type: 'node' | 'link'; index: number } | null;
 
-// Recharts Sankey's event prop type is MouseEventHandler<SVGSVGElement> &
-// ((item, type, e) => void) — an intersection TypeScript cannot satisfy with a
-// plain callback. This module-level alias is cast through `any` at the call site.
-type SankeyEventHandler = (item: NodeProps | LinkProps, type: 'node' | 'link') => void;
+// ─── Tooltip ──────────────────────────────────────────────────────────────────
 
-// ─── Tooltip content ──────────────────────────────────────────────────────────
+type TooltipModel = {
+  /** Point the tooltip is anchored to, in chart pixels */
+  anchorX: number;
+  anchorY: number;
+  content: React.ReactNode;
+};
 
-function SankeyTooltipContent({
-  active,
-  payload,
-  labelUnit,
-}: SankeyTooltipContentProps): React.ReactElement | null {
+/**
+ * Hover tooltip, positioned next to the hovered shape and kept inside the chart bounds.
+ * Measures itself after paint so it can flip to the other side of the anchor near an edge.
+ */
+function SankeyTooltip({
+  anchorX,
+  anchorY,
+  bounds,
+  children,
+}: {
+  anchorX: number;
+  anchorY: number;
+  bounds: { width: number; height: number };
+  children: React.ReactNode;
+}): React.ReactElement {
   const { theme } = useTheme();
+  const ref = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
 
-  if (!active || !payload?.length) return null;
+  useIsomorphicLayoutEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const rect = element.getBoundingClientRect();
+    if (rect.width !== size.width || rect.height !== size.height) {
+      setSize({ width: rect.width, height: rect.height });
+    }
+  });
 
-  const item = payload[0]?.payload as
-    | (RechartsSankeyNode & { name?: string; value?: number })
-    | undefined;
-  if (!item) return null;
-
-  const label = item.name ?? '';
-  const value = item.value != null ? item.value.toLocaleString() : '';
-  const content = `${label}: ${value}${labelUnit ? ` ${labelUnit}` : ''}`;
+  // Prefer the right of the anchor; flip to the left when that would leave the chart.
+  const fitsRight = anchorX + TOOLTIP_OFFSET + size.width <= bounds.width;
+  const left = fitsRight
+    ? anchorX + TOOLTIP_OFFSET
+    : Math.max(0, anchorX - TOOLTIP_OFFSET - size.width);
+  const top = Math.min(
+    Math.max(0, anchorY - size.height / 2),
+    Math.max(0, bounds.height - size.height),
+  );
 
   return (
     <div
+      ref={ref}
+      {...metaAttribute({ name: componentIds.ChartSankeyTooltip })}
       style={{
+        position: 'absolute',
+        left,
+        top,
         // surface.icon.staticBlack.normal is the token used by CommonChartComponents tooltip.
         // The icon→surface semantic mismatch is a known issue to fix system-wide separately.
         backgroundColor: theme.colors.surface.icon.staticBlack.normal,
@@ -111,17 +147,14 @@ function SankeyTooltipContent({
         boxShadow: castWebType(theme.elevation.highRaised),
       }}
     >
-      <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
-        {content}
-      </Text>
+      {children}
     </div>
   );
 }
 
-// ─── Indian number humanizer (private default for formatValue) ────────────────
 // ─── ChartSankeyWrapper ───────────────────────────────────────────────────────
 // Orchestration layer — mirrors ChartDonutWrapper.
-// Inspects children to extract data, computes dataColorMapping,
+// Inspects children to extract data, computes dataColorMapping, measures the container,
 // provides CommonChartComponentsContext + private SankeyChartContext.
 
 const _ChartSankeyWrapper = ({
@@ -170,11 +203,50 @@ const _ChartSankeyWrapper = ({
     return mapping;
   }, [data.nodes, nodeColorOverride, defaultColorTokens]);
 
+  // The chart fills the wrapper. Its size is measured here (and observed for resizes) and
+  // handed down through context; the drawing may grow taller than this when groups expand.
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  useIsomorphicLayoutEffect(() => {
+    const element = containerRef.current;
+    if (!element) return undefined;
+    const measure = (): void => {
+      const rect = element.getBoundingClientRect();
+      setSize((prev) =>
+        prev.width === rect.width && prev.height === rect.height
+          ? prev
+          : { width: rect.width, height: rect.height },
+      );
+    };
+    measure();
+    if (typeof ResizeObserver === 'undefined') return undefined;
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  const contextValue = useMemo(
+    () => ({
+      showTooltip,
+      nodeColorOverride,
+      linkColorOverride,
+      defaultColorTokens,
+      width: size.width,
+      height: size.height,
+    }),
+    [
+      showTooltip,
+      nodeColorOverride,
+      linkColorOverride,
+      defaultColorTokens,
+      size.width,
+      size.height,
+    ],
+  );
+
   return (
     <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
-      <SankeyChartContext.Provider
-        value={{ showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens }}
-      >
+      <SankeyChartContext.Provider value={contextValue}>
         <BaseBox
           {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
           {...makeAnalyticsAttribute(restProps)}
@@ -183,9 +255,9 @@ const _ChartSankeyWrapper = ({
           {...restProps}
           position="relative"
         >
-          <ResponsiveContainer width="100%" height="100%">
+          <div ref={containerRef} style={{ position: 'relative', width: '100%', height: '100%' }}>
             {children}
-          </ResponsiveContainer>
+          </div>
         </BaseBox>
       </SankeyChartContext.Provider>
     </CommonChartComponentsContext.Provider>
@@ -194,7 +266,7 @@ const _ChartSankeyWrapper = ({
 
 /**
  * Orchestration wrapper for the Sankey flow diagram.
- * Computes colour mapping, provides chart context, and owns the responsive container.
+ * Computes colour mapping, provides chart context, and measures the container.
  * Must contain exactly one `<ChartSankey>` child.
  *
  * @example
@@ -209,7 +281,7 @@ export const ChartSankeyWrapper = assignWithoutSideEffects(_ChartSankeyWrapper, 
 });
 
 // ─── Node label render helpers ───────────────────────────────────────────────
-// Pure functions extracted from renderNode to keep the useCallback lean.
+// Pure functions extracted from the node render to keep it lean.
 // All positional/style data is passed explicitly so there are no hidden closures.
 // Labels are always a single line — `fitLabelToWidth` trims a long name with an ellipsis
 // (the full name stays in the tooltip) instead of wrapping onto a second line.
@@ -240,6 +312,11 @@ type NodeLabelArgs = {
   indicatorSize: number;
   /** Horizontal space the dot and its gap take up before the text (0 when there is no dot) */
   indicatorReserve: number;
+  /** Icon drawn at the trailing end of the label (a group's chevron); undefined renders none */
+  trailingIcon?: React.ReactNode;
+  trailingIconSize: number;
+  /** Stroke drawn around the chip while it has keyboard focus */
+  focusStrokeColor?: string;
   semibold: number | string;
   regular: number | string;
 };
@@ -265,9 +342,13 @@ function renderChipLabel({
   indicatorColor,
   indicatorSize,
   indicatorReserve,
+  trailingIcon,
+  trailingIconSize,
+  focusStrokeColor,
   semibold,
   regular,
 }: NodeLabelArgs): React.ReactElement {
+  const strokeWidth = focusStrokeColor ? borderThin * 2 : borderThin;
   return (
     <>
       <rect
@@ -277,8 +358,8 @@ function renderChipLabel({
         height={chipH - borderThin}
         fill={chipBg}
         rx={chipRadius}
-        stroke={chipBorderColor}
-        strokeWidth={borderThin}
+        stroke={focusStrokeColor ?? chipBorderColor}
+        strokeWidth={strokeWidth}
       />
       {indicatorColor !== undefined && (
         <circle
@@ -301,12 +382,22 @@ function renderChipLabel({
           {labelValue}
         </tspan>
       </text>
+      {trailingIcon !== undefined && (
+        <g
+          transform={`translate(${labelX + chipW - chipPadX - trailingIconSize}, ${
+            chipY + (chipH - trailingIconSize) / 2
+          })`}
+        >
+          {trailingIcon}
+        </g>
+      )}
     </>
   );
 }
 
 function renderPlainTextLabel({
   labelX,
+  chipW,
   nodeMidY,
   fontSize,
   fontFamily,
@@ -319,6 +410,8 @@ function renderPlainTextLabel({
   indicatorColor,
   indicatorSize,
   indicatorReserve,
+  trailingIcon,
+  trailingIconSize,
   semibold,
   regular,
 }: NodeLabelArgs): React.ReactElement {
@@ -345,13 +438,58 @@ function renderPlainTextLabel({
           {labelValue}
         </tspan>
       </text>
+      {trailingIcon !== undefined && (
+        <g
+          transform={`translate(${labelX + chipW - trailingIconSize}, ${
+            nodeMidY - trailingIconSize / 2
+          })`}
+        >
+          {trailingIcon}
+        </g>
+      )}
     </>
   );
 }
 
+// ─── Graph helpers ────────────────────────────────────────────────────────────
+
+/** Breadth-first depth from the roots (nodes with no incoming link) plus nodes per depth. */
+const computeDepthInfo = (
+  nodes: readonly { id: string }[],
+  links: readonly { source: string; target: string }[],
+): { depthOf: Map<string, number>; countPerDepth: Map<number, number>; maxDepth: number } => {
+  const incomingCount = new Map<string, number>(nodes.map((n) => [n.id, 0]));
+  links.forEach((l) => incomingCount.set(l.target, (incomingCount.get(l.target) ?? 0) + 1));
+  const outgoing = new Map<string, string[]>(nodes.map((n) => [n.id, []]));
+  links.forEach((l) => outgoing.get(l.source)?.push(l.target));
+  const depthOf = new Map<string, number>();
+  const queue = nodes.filter((n) => incomingCount.get(n.id) === 0).map((n) => n.id);
+  queue.forEach((id) => depthOf.set(id, 0));
+  for (let i = 0; i < queue.length; i++) {
+    const id = queue[i];
+    const d = depthOf.get(id) ?? 0;
+    outgoing.get(id)?.forEach((tid) => {
+      if (!depthOf.has(tid)) {
+        depthOf.set(tid, d + 1);
+        queue.push(tid);
+      }
+    });
+  }
+  const countPerDepth = new Map<number, number>();
+  let maxDepth = 0;
+  depthOf.forEach((d) => {
+    countPerDepth.set(d, (countPerDepth.get(d) ?? 0) + 1);
+    maxDepth = Math.max(maxDepth, d);
+  });
+  return { depthOf, countPerDepth, maxDepth };
+};
+
+const isActivationKey = (key: string): boolean => key === 'Enter' || key === ' ';
+
 // ─── ChartSankey ──────────────────────────────────────────────────────────────
 // Presentational layer — mirrors ChartDonut.
-// Reads wrapper config from SankeyChartContext, manages local hover state only.
+// Reads wrapper config from SankeyChartContext, owns the layout and hover/expand state,
+// and draws nodes, ribbons, labels and the tooltip.
 
 const _ChartSankey = ({
   data,
@@ -361,15 +499,17 @@ const _ChartSankey = ({
   labelUnit,
   labelDensity = 'normal',
   showColorIndicator = false,
+  groupNodesBelow,
+  getGroupLabel,
+  defaultExpandedGroupIds,
+  expandedGroupIds: expandedGroupIdsProp,
+  onExpandChange,
   formatValue,
   onNodeClick,
   onLinkClick,
-  // width and height are injected at runtime by ResponsiveContainer — not part of
-  // the public ChartSankeyProps API. They must be forwarded to <Sankey> for the chart to render.
-  width,
-  height,
-}: ChartSankeyProps & { width?: number; height?: number }): React.ReactElement => {
+}: ChartSankeyProps): React.ReactElement | null => {
   const [hovered, setHovered] = useState<HoverState>(null);
+  const [focusedNodeIndex, setFocusedNodeIndex] = useState<number | null>(null);
 
   // Read wrapper-level config from private context.
   // null means ChartSankey was rendered outside ChartSankeyWrapper — throw a clear error.
@@ -380,8 +520,15 @@ const _ChartSankey = ({
       moduleName: 'ChartSankey',
     });
   }
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens } = sankeyCtx!;
+  const {
+    showTooltip,
+    nodeColorOverride,
+    linkColorOverride,
+    defaultColorTokens,
+    width,
+    height,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  } = sankeyCtx!;
 
   // ── Theme tokens ──────────────────────────────────────────────────────────
   const { theme } = useTheme();
@@ -401,7 +548,10 @@ const _ChartSankey = ({
   const TEXT_GAP = theme.spacing[2]; // 4px between the name and the value text
   // Colour dot plus its gap to the text, reserved at the start of every label when enabled
   const INDICATOR_RESERVE = showColorIndicator ? COLOR_INDICATOR_SIZE + theme.spacing[2] : 0;
+  // Chevron plus its gap, reserved at the end of a group's label
+  const CHEVRON_RESERVE = GROUP_CHEVRON_SIZE + theme.spacing[2];
   const fontFamily = theme.typography.fonts.family.text;
+  const fontSize = theme.typography.fonts.size[75];
   // Imported from tokens.ts — see LABEL_CAP_HEIGHT_RATIO for derivation notes.
   const capHeightRatio = LABEL_CAP_HEIGHT_RATIO;
 
@@ -425,72 +575,108 @@ const _ChartSankey = ({
   const labelValueColor = theme.colors.surface.text.gray.muted;
   const chipBg = theme.colors.surface.background.gray.intense;
   const chipBorderColor = theme.colors.interactive.border.gray.faded;
+  const chipFocusColor = theme.colors.surface.border.primary.normal;
   const chipRadius = theme.border.radius.small;
   const nodePadding = theme.spacing[4]; // 12px
   const motionDuration = theme.motion.duration.quick;
+  const transition = `opacity ${motionDuration}ms ${castWebType(theme.motion.easing.standard)}`;
 
-  // ── Transform data to Recharts format ────────────────────────────────────
-  const nodeIdToIndex = useMemo(() => new Map(data.nodes.map((n, i) => [n.id, i])), [data.nodes]);
+  // ── Grouping ──────────────────────────────────────────────────────────────
+  const isGroupingEnabled = groupNodesBelow !== undefined && groupNodesBelow > 0;
 
-  const rechartsLinks = useMemo(
+  const [expandedGroupIds, setExpandedGroupIds] = useControllableState<string[]>({
+    value: expandedGroupIdsProp,
+    defaultValue: defaultExpandedGroupIds ?? EMPTY_IDS,
+    onChange: (ids, extra: { groupId: string; isExpanded: boolean; memberIds: string[] }) =>
+      onExpandChange?.({ expandedGroupIds: ids, ...extra }),
+  });
+
+  const grouped = useMemo(
     () =>
-      data.links
-        .map((l, i) => {
-          const source = nodeIdToIndex.get(l.source);
-          const target = nodeIdToIndex.get(l.target);
-          if (source === undefined || target === undefined) return null;
-          return { source, target, value: l.value, _originalIndex: i };
-        })
-        .filter((l): l is NonNullable<typeof l> => l !== null),
-    [data.links, nodeIdToIndex],
+      groupSankeyData({
+        nodes: data.nodes,
+        links: data.links,
+        groupNodesBelow,
+        expandedGroupIds,
+        getGroupLabel,
+      }),
+    [data.nodes, data.links, groupNodesBelow, expandedGroupIds, getGroupLabel],
   );
 
-  // Node depth map + count per level — suppress percentage for sole node at a level.
-  // `maxDepth` identifies the rightmost column, the only one that needs right margin.
-  const nodeDepthInfo = useMemo(() => {
-    const incomingCount = new Map<string, number>(data.nodes.map((n) => [n.id, 0]));
-    data.links.forEach((l) => incomingCount.set(l.target, (incomingCount.get(l.target) ?? 0) + 1));
-    const outgoing = new Map<string, string[]>(data.nodes.map((n) => [n.id, []]));
-    data.links.forEach((l) => outgoing.get(l.source)?.push(l.target));
-    const depthOf = new Map<string, number>();
-    const queue = data.nodes.filter((n) => incomingCount.get(n.id) === 0).map((n) => n.id);
-    queue.forEach((id) => depthOf.set(id, 0));
-    for (let i = 0; i < queue.length; i++) {
-      const id = queue[i];
-      const d = depthOf.get(id) ?? 0;
-      outgoing.get(id)?.forEach((tid) => {
-        if (!depthOf.has(tid)) {
-          depthOf.set(tid, d + 1);
-          queue.push(tid);
-        }
-      });
-    }
-    const countPerDepth = new Map<number, number>();
-    let maxDepth = 0;
-    depthOf.forEach((d) => {
-      countPerDepth.set(d, (countPerDepth.get(d) ?? 0) + 1);
-      maxDepth = Math.max(maxDepth, d);
-    });
-    return { depthOf, countPerDepth, maxDepth };
-  }, [data.nodes, data.links]);
+  // The fully folded graph fixes the scale, so expanding a group never shrinks the others.
+  const foldedGrouped = useMemo(
+    () =>
+      isGroupingEnabled && expandedGroupIds.length > 0
+        ? groupSankeyData({
+            nodes: data.nodes,
+            links: data.links,
+            groupNodesBelow,
+            expandedGroupIds: EMPTY_IDS,
+            getGroupLabel,
+          })
+        : grouped,
+    [
+      isGroupingEnabled,
+      expandedGroupIds.length,
+      data.nodes,
+      data.links,
+      groupNodesBelow,
+      getGroupLabel,
+      grouped,
+    ],
+  );
 
-  // Total value = sum of outflows from root nodes
-  const totalValue = useMemo(() => {
-    const targetIds = new Set(data.links.map((l) => l.target));
-    return data.links.filter((l) => !targetIds.has(l.source)).reduce((sum, l) => sum + l.value, 0);
-  }, [data.links]);
+  const toggleGroup = useCallback(
+    (group: SankeyGroup): void => {
+      setExpandedGroupIds(
+        (prev) => (group.isExpanded ? prev.filter((id) => id !== group.id) : [...prev, group.id]),
+        false,
+        { groupId: group.id, isExpanded: !group.isExpanded, memberIds: group.memberIds },
+      );
+    },
+    [setExpandedGroupIds],
+  );
 
-  // Node value = max(Σ incoming, Σ outgoing) — the same rule Recharts applies during layout,
-  // computed here so every label's text (and so its width) is known before the layout runs.
+  // ── Graph info on the (grouped) graph ─────────────────────────────────────
+  const nodes = grouped.nodes;
+  const nodeIdToIndex = useMemo(() => new Map(nodes.map((entry, i) => [entry.node.id, i])), [
+    nodes,
+  ]);
+
+  const layoutLinks = useMemo<SankeyLayoutLink[]>(
+    () =>
+      grouped.links.map((link) => ({
+        source: nodeIdToIndex.get(link.source) ?? 0,
+        target: nodeIdToIndex.get(link.target) ?? 0,
+        value: link.value,
+      })),
+    [grouped.links, nodeIdToIndex],
+  );
+
+  // Depth per node — suppresses the percentage for a sole node at a level and identifies the
+  // rightmost column, the only one that needs right margin.
+  const depthInfo = useMemo(
+    () =>
+      computeDepthInfo(
+        nodes.map((entry) => entry.node),
+        grouped.links,
+      ),
+    [nodes, grouped.links],
+  );
+
+  // Node value = max(Σ incoming, Σ outgoing) — the same rule the layout applies, computed here
+  // so every label's text (and so its width) is known before the layout runs.
   const nodeValues = useMemo(() => {
-    const inSum = new Array<number>(data.nodes.length).fill(0);
-    const outSum = new Array<number>(data.nodes.length).fill(0);
-    rechartsLinks.forEach((l) => {
+    const inSum = new Array<number>(nodes.length).fill(0);
+    const outSum = new Array<number>(nodes.length).fill(0);
+    layoutLinks.forEach((l) => {
       outSum[l.source] += l.value;
       inSum[l.target] += l.value;
     });
-    return data.nodes.map((_, i) => Math.max(inSum[i], outSum[i]));
-  }, [data.nodes, rechartsLinks]);
+    return nodes.map((_, i) => Math.max(inSum[i], outSum[i]));
+  }, [nodes, layoutLinks]);
+
+  const totalValue = grouped.total;
 
   // Label text and width per node. Labels are single-line: the value text is kept whole and
   // the name is truncated with an ellipsis so the label fits LABEL_MAX_WIDTH. The tooltip
@@ -503,12 +689,11 @@ const _ChartSankey = ({
     const measureValue = (text: string): number => measureText(text, regular);
     // Chip padding only exists in chip mode; plain text gets the whole budget.
     const framePad = showLabelChip ? CHIP_PAD_X * 2 : 0;
-    const maxContentWidth = LABEL_MAX_WIDTH - framePad - INDICATOR_RESERVE;
 
-    return data.nodes.map((node, index) => {
+    return nodes.map((entry, index) => {
       const value = nodeValues[index] ?? 0;
-      const depth = nodeDepthInfo.depthOf.get(node.id) ?? 0;
-      const levelCount = nodeDepthInfo.countPerDepth.get(depth) ?? 1;
+      const depth = depthInfo.depthOf.get(entry.node.id) ?? 0;
+      const levelCount = depthInfo.countPerDepth.get(depth) ?? 1;
       const share = totalValue > 0 ? (value / totalValue) * 100 : 0;
       const humanized = formatter(value);
       const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
@@ -516,24 +701,30 @@ const _ChartSankey = ({
         showPercentage && levelCount > 1
           ? `${valueText}  (${formatSharePercentage(share)}%)`
           : valueText;
+      const trailingReserve = entry.group ? CHEVRON_RESERVE : 0;
       const fitted = fitLabelToWidth({
-        name: node.name,
+        name: entry.node.name,
         valueText: fullValueText,
-        maxContentWidth,
+        maxContentWidth:
+          (entry.group ? GROUP_LABEL_MAX_WIDTH : LABEL_MAX_WIDTH) -
+          framePad -
+          INDICATOR_RESERVE -
+          trailingReserve,
         gap: TEXT_GAP,
         measureName,
         measureValue,
       });
-      const contentWidth = INDICATOR_RESERVE + fitted.nameWidth + TEXT_GAP + fitted.valueWidth;
-      const width = showLabelChip
+      const contentWidth =
+        INDICATOR_RESERVE + fitted.nameWidth + TEXT_GAP + fitted.valueWidth + trailingReserve;
+      const labelWidth = showLabelChip
         ? Math.max(CHIP_MIN_WIDTH, contentWidth + framePad)
         : contentWidth;
-      return { name: fitted.name, labelValue: fitted.valueText, width };
+      return { name: fitted.name, labelValue: fitted.valueText, width: labelWidth, value, share };
     });
   }, [
-    data.nodes,
+    nodes,
     nodeValues,
-    nodeDepthInfo,
+    depthInfo,
     totalValue,
     formatValue,
     labelUnit,
@@ -544,21 +735,99 @@ const _ChartSankey = ({
     CHIP_PAD_X,
     TEXT_GAP,
     INDICATOR_RESERVE,
+    CHEVRON_RESERVE,
   ]);
 
   // Dynamic right margin — room for the labels of the rightmost column only. Labels in earlier
   // columns sit in the gap before the next column, so reserving margin for them just shrank the chart.
   const dynamicRightMargin = useMemo(() => {
     if (!showLabels) return theme.spacing[3];
-    const hasOutgoing = new Set(rechartsLinks.map((l) => l.source));
-    const widest = data.nodes.reduce((max, node, index) => {
-      const depth = nodeDepthInfo.depthOf.get(node.id) ?? 0;
-      // Recharts' 'justify' alignment also draws nodes without outgoing links in the last column.
-      const isLastColumn = depth === nodeDepthInfo.maxDepth || !hasOutgoing.has(index);
+    const hasOutgoing = new Set(layoutLinks.map((l) => l.source));
+    const widest = nodes.reduce((max, entry, index) => {
+      const depth = depthInfo.depthOf.get(entry.node.id) ?? 0;
+      // 'justify' alignment also draws nodes without outgoing links in the last column.
+      const isLastColumn = depth === depthInfo.maxDepth || !hasOutgoing.has(index);
       return isLastColumn ? Math.max(max, nodeLabels[index]?.width ?? 0) : max;
     }, 0);
     return widest + CHIP_GAP + theme.spacing[3];
-  }, [showLabels, data.nodes, rechartsLinks, nodeDepthInfo, nodeLabels, CHIP_GAP, theme]);
+  }, [showLabels, nodes, layoutLinks, depthInfo, nodeLabels, CHIP_GAP, theme]);
+
+  // ── Layout ────────────────────────────────────────────────────────────────
+  const margin = useMemo(
+    () => ({
+      top: theme.spacing[3],
+      right: dynamicRightMargin,
+      bottom: theme.spacing[3],
+      left: theme.spacing[3],
+    }),
+    [theme, dynamicRightMargin],
+  );
+  const plotWidth = width - margin.left - margin.right;
+  const plotHeight = height - margin.top - margin.bottom;
+
+  // With grouping on, the scale comes from the fully folded graph at the container height,
+  // so bars and ribbons keep their size when a group is expanded.
+  const lockedScale = useMemo(() => {
+    if (!isGroupingEnabled) return undefined;
+    const foldedIdToIndex = new Map(foldedGrouped.nodes.map((entry, i) => [entry.node.id, i]));
+    return computeSankeyLayout({
+      nodeCount: foldedGrouped.nodes.length,
+      links: foldedGrouped.links.map((link) => ({
+        source: foldedIdToIndex.get(link.source) ?? 0,
+        target: foldedIdToIndex.get(link.target) ?? 0,
+        value: link.value,
+      })),
+      width: plotWidth,
+      height: plotHeight,
+      nodeWidth: NODE_WIDTH,
+      nodePadding,
+    }).scale;
+  }, [isGroupingEnabled, foldedGrouped, plotWidth, plotHeight, nodePadding]);
+
+  const layout = useMemo(
+    () =>
+      computeSankeyLayout({
+        nodeCount: nodes.length,
+        links: layoutLinks,
+        width: plotWidth,
+        height: plotHeight,
+        nodeWidth: NODE_WIDTH,
+        nodePadding,
+        offsetX: margin.left,
+        offsetY: margin.top,
+        scale: lockedScale,
+        // In grouping mode every node reserves room for its label, so revealed members never
+        // stack their labels; the drawing grows below the container instead.
+        minNodeExtent: isGroupingEnabled && showLabels ? () => CHIP_H : undefined,
+      }),
+    [
+      nodes.length,
+      layoutLinks,
+      plotWidth,
+      plotHeight,
+      nodePadding,
+      margin,
+      lockedScale,
+      isGroupingEnabled,
+      showLabels,
+      CHIP_H,
+    ],
+  );
+  const svgHeight = layout.contentHeight + margin.top + margin.bottom;
+
+  // ── Colours ───────────────────────────────────────────────────────────────
+  const colorTokenFor = useCallback(
+    (entry: GroupedSankeyNode): string => {
+      if (nodeColorOverride) return nodeColorOverride;
+      if (entry.group) return GROUP_NODE_COLOR_TOKEN;
+      // Palette position follows the consumer's node order, so grouping never shifts colours.
+      return (
+        entry.node.color ??
+        defaultColorTokens[(entry.originalIndex ?? 0) % defaultColorTokens.length]
+      );
+    },
+    [nodeColorOverride, defaultColorTokens],
+  );
 
   // ── Opacity helpers ────────────────────────────────────────────────────────
   const getNodeOpacity = useCallback(
@@ -566,13 +835,13 @@ const _ChartSankey = ({
       if (hovered === null) return NODE_DEFAULT_OPACITY;
       if (hovered.type === 'node' && hovered.index === nodeIdx) return NODE_DEFAULT_OPACITY;
       if (hovered.type === 'link') {
-        const link = rechartsLinks[hovered.index];
+        const link = layoutLinks[hovered.index];
         if (link && (link.source === nodeIdx || link.target === nodeIdx))
           return NODE_DEFAULT_OPACITY;
       }
       return NODE_DIMMED_OPACITY;
     },
-    [hovered, rechartsLinks],
+    [hovered, layoutLinks],
   );
 
   const getLinkOpacity = useCallback(
@@ -580,285 +849,358 @@ const _ChartSankey = ({
       if (hovered === null) return LINK_DEFAULT_OPACITY;
       if (hovered.type === 'link' && hovered.index === linkIdx) return LINK_HOVER_OPACITY;
       if (hovered.type === 'node') {
-        const link = rechartsLinks[linkIdx];
+        const link = layoutLinks[linkIdx];
         if (link && (link.source === hovered.index || link.target === hovered.index))
           return LINK_HOVER_OPACITY;
       }
       return LINK_DIMMED_OPACITY;
     },
-    [hovered, rechartsLinks],
-  );
-
-  // ── Custom node render ─────────────────────────────────────────────────────
-  const renderNode = useCallback(
-    (props: NodeProps): React.ReactElement => {
-      const { x, y, width, height: nodeHeight, index } = props;
-      const nodeData = data.nodes[index] as SankeyDataNode | undefined;
-      const label = nodeLabels[index];
-      if (!nodeData || !label) return <g />;
-      if (!hasFiniteGeometry(x, y, width, nodeHeight)) return <g />;
-
-      const colorToken =
-        nodeColorOverride ??
-        nodeData.color ??
-        defaultColorTokens[index % defaultColorTokens.length];
-      const fill = resolveColor(colorToken);
-      const opacity = getNodeOpacity(index);
-
-      const nodeMidY = y + nodeHeight / 2;
-      const labelX = x + width + CHIP_GAP;
-      const fontSize = theme.typography.fonts.size[75];
-      const chipY = nodeMidY - CHIP_H / 2;
-
-      return (
-        <g
-          opacity={opacity}
-          style={{
-            transition: `opacity ${motionDuration}ms ${castWebType(theme.motion.easing.standard)}`,
-          }}
-        >
-          {/* Node bar */}
-          <rect
-            x={x}
-            y={y}
-            width={width}
-            height={Math.max(NODE_MIN_HEIGHT, nodeHeight)}
-            fill={fill}
-            rx={theme.border.radius.none}
-            style={{ cursor: 'pointer' }}
-          />
-
-          {/* Label — delegated to renderChipLabel / renderPlainTextLabel helpers */}
-          {showLabels && (
-            <g style={{ pointerEvents: 'none' }}>
-              {(showLabelChip ? renderChipLabel : renderPlainTextLabel)({
-                labelX,
-                chipY,
-                chipW: label.width,
-                chipH: CHIP_H,
-                nodeMidY,
-                fontSize,
-                fontFamily,
-                labelNameColor,
-                labelValueColor,
-                chipBg,
-                chipBorderColor,
-                chipRadius,
-                chipPadX: CHIP_PAD_X,
-                textGap: TEXT_GAP,
-                borderThin: theme.border.width.thin,
-                capHeightRatio,
-                name: label.name,
-                labelValue: label.labelValue,
-                indicatorColor: showColorIndicator ? fill : undefined,
-                indicatorSize: COLOR_INDICATOR_SIZE,
-                indicatorReserve: INDICATOR_RESERVE,
-                semibold: theme.typography.fonts.weight.semibold,
-                regular: theme.typography.fonts.weight.regular,
-              })}
-            </g>
-          )}
-        </g>
-      );
-    },
-    [
-      data.nodes,
-      nodeLabels,
-      nodeColorOverride,
-      defaultColorTokens,
-      resolveColor,
-      getNodeOpacity,
-      showLabels,
-      showLabelChip,
-      showColorIndicator,
-      capHeightRatio,
-      CHIP_H,
-      CHIP_PAD_X,
-      CHIP_GAP,
-      TEXT_GAP,
-      INDICATOR_RESERVE,
-      fontFamily,
-      labelNameColor,
-      labelValueColor,
-      chipBg,
-      chipBorderColor,
-      chipRadius,
-      motionDuration,
-      theme,
-    ],
-  );
-
-  // ── Custom link render ─────────────────────────────────────────────────────
-  const renderLink = useCallback(
-    (props: LinkProps): React.ReactElement => {
-      const {
-        sourceX,
-        targetX,
-        sourceY,
-        targetY,
-        sourceControlX,
-        targetControlX,
-        linkWidth,
-        index,
-        payload,
-      } = props;
-
-      if (
-        !hasFiniteGeometry(
-          sourceX,
-          targetX,
-          sourceY,
-          targetY,
-          sourceControlX,
-          targetControlX,
-          linkWidth,
-        )
-      )
-        return <path />;
-
-      const resolveSourceIndex = (source: typeof payload.source): number => {
-        if (typeof source === 'number') return source;
-        const id = ((source as unknown) as { id?: string })?.id ?? '';
-        return nodeIdToIndex.get(id) ?? 0;
-      };
-      const srcNodeIndex = resolveSourceIndex(payload.source);
-      const srcNode = data.nodes[srcNodeIndex] as SankeyDataNode | undefined;
-
-      const colorToken =
-        linkColorOverride ??
-        nodeColorOverride ??
-        (srcNode
-          ? srcNode.color ??
-            // srcNodeIndex is already resolved above — O(1) map lookup, not O(n) indexOf
-            defaultColorTokens[srcNodeIndex % defaultColorTokens.length]
-          : defaultColorTokens[0]);
-      const stroke = resolveColor(colorToken);
-      const opacity = getLinkOpacity(index);
-
-      const d = `
-        M${sourceX},${sourceY + linkWidth / 2}
-        C${sourceControlX},${sourceY + linkWidth / 2}
-          ${targetControlX},${targetY + linkWidth / 2}
-          ${targetX},${targetY + linkWidth / 2}
-        L${targetX},${targetY - linkWidth / 2}
-        C${targetControlX},${targetY - linkWidth / 2}
-          ${sourceControlX},${sourceY - linkWidth / 2}
-          ${sourceX},${sourceY - linkWidth / 2}
-        Z
-      `;
-
-      return (
-        <path
-          d={d}
-          fill={stroke}
-          fillOpacity={opacity}
-          style={{
-            cursor: 'pointer',
-            transition: `fill-opacity ${motionDuration}ms ${castWebType(
-              theme.motion.easing.standard,
-            )}`,
-          }}
-        />
-      );
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // castWebType is module-level — stable, intentionally omitted
-    [
-      data.nodes,
-      nodeIdToIndex,
-      linkColorOverride,
-      nodeColorOverride,
-      defaultColorTokens,
-      resolveColor,
-      getLinkOpacity,
-      motionDuration,
-      theme,
-    ],
+    [hovered, layoutLinks],
   );
 
   // ── Event handlers ─────────────────────────────────────────────────────────
-
-  const handleMouseEnter = useCallback<SankeyEventHandler>((item, type): void => {
-    setHovered({ type, index: item.index });
-  }, []);
-
-  const handleMouseLeave = useCallback((): void => {
-    setHovered(null);
-  }, []);
-
-  const handleClick = useCallback<SankeyEventHandler>(
-    (item, type): void => {
-      if (type === 'node') {
-        const nodeData = data.nodes[item.index];
-        if (nodeData) onNodeClick?.(nodeData, item.index);
-      } else {
-        const link = rechartsLinks[item.index];
-        if (link !== undefined) {
-          const originalLink = data.links[link._originalIndex];
-          if (originalLink) onLinkClick?.(originalLink, link._originalIndex);
-        }
+  const handleNodeClick = useCallback(
+    (index: number): void => {
+      const entry = nodes[index];
+      if (!entry) return;
+      if (entry.group) {
+        toggleGroup(entry.group);
+        return;
       }
+      if (entry.originalIndex !== null) onNodeClick?.(entry.node, entry.originalIndex);
     },
-    [data.nodes, data.links, rechartsLinks, onNodeClick, onLinkClick],
+    [nodes, toggleGroup, onNodeClick],
   );
 
+  // A revealed member's label folds its group again; its bar behaves like any other node.
+  const handleLabelActivate = useCallback(
+    (index: number): void => {
+      const entry = nodes[index];
+      if (!entry) return;
+      const group =
+        entry.group ??
+        (entry.revealedGroupId
+          ? grouped.groups.find((g) => g.id === entry.revealedGroupId)
+          : undefined);
+      if (group) toggleGroup(group);
+    },
+    [nodes, grouped.groups, toggleGroup],
+  );
+
+  const handleLinkClick = useCallback(
+    (index: number): void => {
+      const link = grouped.links[index];
+      if (!link) return;
+      onLinkClick?.(
+        { source: link.source, target: link.target, value: link.value },
+        link.originalIndex,
+      );
+    },
+    [grouped.links, onLinkClick],
+  );
+
+  // ── Tooltip content ────────────────────────────────────────────────────────
+  const unitSuffix = labelUnit ? ` ${labelUnit}` : '';
+
+  const tooltip = useMemo<TooltipModel | null>(() => {
+    if (!showTooltip || hovered === null) return null;
+
+    if (hovered.type === 'link') {
+      const link = grouped.links[hovered.index];
+      const geometry = layout.links[hovered.index];
+      if (!link || !geometry) return null;
+      const sourceName = nodes[geometry.source]?.node.name ?? link.source;
+      const targetName = nodes[geometry.target]?.node.name ?? link.target;
+      return {
+        anchorX: geometry.controlX,
+        anchorY: (geometry.sourceY + geometry.targetY) / 2,
+        content: (
+          <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+            {`${sourceName} → ${targetName}: ${link.value.toLocaleString()}${unitSuffix}`}
+          </Text>
+        ),
+      };
+    }
+
+    const entry = nodes[hovered.index];
+    const geometry = layout.nodes[hovered.index];
+    const label = nodeLabels[hovered.index];
+    if (!entry || !geometry || !label) return null;
+    const anchor = {
+      anchorX: geometry.x + geometry.width,
+      anchorY: geometry.barY + geometry.barHeight / 2,
+    };
+
+    if (!entry.group) {
+      return {
+        ...anchor,
+        content: (
+          <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+            {`${entry.node.name}: ${label.value.toLocaleString()}${unitSuffix}`}
+          </Text>
+        ),
+      };
+    }
+
+    // A group lists what it stands for: its total, then each member with its share.
+    const { group } = entry;
+    const shown = group.members.slice(0, TOOLTIP_MAX_MEMBERS);
+    const hidden = group.members.length - shown.length;
+    const memberValues = new Map<string, number>();
+    data.links.forEach((link) => {
+      memberValues.set(link.target, (memberValues.get(link.target) ?? 0) + link.value);
+    });
+    return {
+      ...anchor,
+      content: (
+        <>
+          <Text size="small" weight="semibold" color="surface.text.staticWhite.normal">
+            {entry.node.name}
+          </Text>
+          <Text size="small" weight="regular" color="surface.text.staticWhite.normal">
+            {`${label.value.toLocaleString()}${unitSuffix} · ${formatShareDetailed(label.share)}%`}
+          </Text>
+          <div
+            style={{
+              marginTop: theme.spacing[3],
+              display: 'flex',
+              flexDirection: 'column',
+              gap: theme.spacing[1],
+            }}
+          >
+            {shown.map((member) => {
+              const memberValue = memberValues.get(member.id) ?? 0;
+              const memberShare = totalValue > 0 ? (memberValue / totalValue) * 100 : 0;
+              return (
+                <Text
+                  key={member.id}
+                  size="xsmall"
+                  weight="regular"
+                  color="surface.text.staticWhite.normal"
+                >
+                  {`${member.name}  ${formatShareDetailed(memberShare)}%`}
+                </Text>
+              );
+            })}
+            {hidden > 0 && (
+              <Text size="xsmall" weight="regular" color="surface.text.staticWhite.normal">
+                {`and ${hidden} more`}
+              </Text>
+            )}
+          </div>
+        </>
+      ),
+    };
+  }, [
+    showTooltip,
+    hovered,
+    grouped.links,
+    layout,
+    nodes,
+    nodeLabels,
+    data.links,
+    totalValue,
+    unitSuffix,
+    theme,
+  ]);
+
   // ── Render ─────────────────────────────────────────────────────────────────
-  return (
-    <Sankey
-      data={{ nodes: data.nodes, links: rechartsLinks }}
-      width={width}
-      height={height}
-      nodeWidth={NODE_WIDTH}
-      nodePadding={nodePadding}
-      node={renderNode}
-      link={renderLink}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      onMouseEnter={handleMouseEnter as any}
-      onMouseLeave={handleMouseLeave}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      onClick={handleClick as any}
-      margin={{
-        top: theme.spacing[3],
-        right: dynamicRightMargin,
-        bottom: theme.spacing[3],
-        left: theme.spacing[3],
-      }}
-    >
-      {showTooltip && (
-        <ChartTooltip
-          isAnimationActive={false}
-          content={(tooltipProps) => (
-            <SankeyTooltipContent
-              active={tooltipProps.active}
-              payload={tooltipProps.payload}
-              labelUnit={labelUnit}
-            />
-          )}
+  if (width <= 0 || height <= 0) return null;
+
+  const renderedLinks = layout.links.map((link) => {
+    if (
+      !hasFiniteGeometry(
+        link.sourceX,
+        link.targetX,
+        link.sourceY,
+        link.targetY,
+        link.controlX,
+        link.width,
+      )
+    )
+      return null;
+    const sourceEntry = nodes[link.source];
+    const colorToken =
+      linkColorOverride ??
+      nodeColorOverride ??
+      (sourceEntry ? colorTokenFor(sourceEntry) : defaultColorTokens[0]);
+    const half = link.width / 2;
+    const d = `
+      M${link.sourceX},${link.sourceY + half}
+      C${link.controlX},${link.sourceY + half}
+        ${link.controlX},${link.targetY + half}
+        ${link.targetX},${link.targetY + half}
+      L${link.targetX},${link.targetY - half}
+      C${link.controlX},${link.targetY - half}
+        ${link.controlX},${link.sourceY - half}
+        ${link.sourceX},${link.sourceY - half}
+      Z
+    `;
+    return (
+      <path
+        key={`${link.source}-${link.target}-${link.index}`}
+        d={d}
+        fill={resolveColor(colorToken)}
+        fillOpacity={getLinkOpacity(link.index)}
+        style={{
+          cursor: 'pointer',
+          transition: `fill-opacity ${motionDuration}ms ${castWebType(
+            theme.motion.easing.standard,
+          )}`,
+        }}
+        onMouseEnter={() => setHovered({ type: 'link', index: link.index })}
+        onMouseLeave={() => setHovered(null)}
+        onClick={() => handleLinkClick(link.index)}
+      />
+    );
+  });
+
+  const renderedNodes = layout.nodes.map((nodeLayout) => {
+    const { index } = nodeLayout;
+    const entry = nodes[index];
+    const label = nodeLabels[index];
+    if (!entry || !label) return null;
+    if (!hasFiniteGeometry(nodeLayout.x, nodeLayout.barY, nodeLayout.barHeight)) return null;
+
+    const fill = resolveColor(colorTokenFor(entry));
+    const isGroup = Boolean(entry.group);
+    const isRevealed = Boolean(entry.revealedGroupId);
+    const isInteractiveLabel = showLabels && (isGroup || isRevealed);
+    const nodeMidY = nodeLayout.barY + nodeLayout.barHeight / 2;
+    const labelX = nodeLayout.x + nodeLayout.width + CHIP_GAP;
+    const chipY = nodeMidY - CHIP_H / 2;
+    const groupSize = entry.group?.members.length ?? 0;
+
+    return (
+      <g
+        key={entry.node.id}
+        opacity={getNodeOpacity(index)}
+        style={{ transition }}
+        onMouseEnter={() => setHovered({ type: 'node', index })}
+        onMouseLeave={() => setHovered(null)}
+        onClick={() => handleNodeClick(index)}
+      >
+        {/* Node bar */}
+        <rect
+          x={nodeLayout.x}
+          y={nodeLayout.barY}
+          width={nodeLayout.width}
+          height={Math.max(NODE_MIN_HEIGHT, nodeLayout.barHeight)}
+          fill={fill}
+          rx={theme.border.radius.none}
+          style={{ cursor: 'pointer' }}
         />
+
+        {/* Label — a group's label (and a revealed member's) is a button that toggles the group */}
+        {showLabels && (
+          <g
+            style={{ pointerEvents: isInteractiveLabel ? 'auto' : 'none', cursor: 'pointer' }}
+            {...(isInteractiveLabel
+              ? {
+                  role: 'button',
+                  tabIndex: 0,
+                  'aria-expanded': isRevealed,
+                  'aria-label': isGroup
+                    ? `${entry.node.name}, ${groupSize} grouped nodes`
+                    : `${entry.node.name}, grouped node`,
+                  onClick: (event: React.MouseEvent<SVGGElement>) => {
+                    event.stopPropagation();
+                    handleLabelActivate(index);
+                  },
+                  onKeyDown: (event: React.KeyboardEvent<SVGGElement>) => {
+                    if (!isActivationKey(event.key)) return;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    handleLabelActivate(index);
+                  },
+                  onFocus: () => {
+                    setFocusedNodeIndex(index);
+                    setHovered({ type: 'node', index });
+                  },
+                  onBlur: () => {
+                    setFocusedNodeIndex(null);
+                    setHovered(null);
+                  },
+                }
+              : {})}
+          >
+            {(showLabelChip ? renderChipLabel : renderPlainTextLabel)({
+              labelX,
+              chipY,
+              chipW: label.width,
+              chipH: CHIP_H,
+              nodeMidY,
+              fontSize,
+              fontFamily,
+              labelNameColor,
+              labelValueColor,
+              chipBg,
+              chipBorderColor,
+              chipRadius,
+              chipPadX: CHIP_PAD_X,
+              textGap: TEXT_GAP,
+              borderThin: theme.border.width.thin,
+              capHeightRatio,
+              name: label.name,
+              labelValue: label.labelValue,
+              indicatorColor: showColorIndicator ? fill : undefined,
+              indicatorSize: COLOR_INDICATOR_SIZE,
+              indicatorReserve: INDICATOR_RESERVE,
+              trailingIcon: isGroup ? (
+                <ChevronDownIcon size="small" color="surface.icon.gray.muted" />
+              ) : undefined,
+              trailingIconSize: GROUP_CHEVRON_SIZE,
+              focusStrokeColor: focusedNodeIndex === index ? chipFocusColor : undefined,
+              semibold: theme.typography.fonts.weight.semibold,
+              regular: theme.typography.fonts.weight.regular,
+            })}
+          </g>
+        )}
+      </g>
+    );
+  });
+
+  return (
+    // Absolutely positioned so a drawing taller than the container (expanded groups) overflows
+    // it instead of resizing it — the consumer's scroll container takes it from there.
+    <div style={{ position: 'absolute', top: 0, left: 0, width, height: svgHeight }}>
+      <svg width={width} height={svgHeight} style={{ display: 'block', overflow: 'visible' }}>
+        <g>{renderedLinks}</g>
+        <g>{renderedNodes}</g>
+      </svg>
+      {tooltip && (
+        <SankeyTooltip
+          anchorX={tooltip.anchorX}
+          anchorY={tooltip.anchorY}
+          bounds={{ width, height: svgHeight }}
+        >
+          {tooltip.content}
+        </SankeyTooltip>
       )}
-    </Sankey>
+    </div>
   );
 };
 
 /**
  * Presentational layer for the Sankey flow diagram.
- * Renders nodes, link ribbons, and labels; delegates colour and tooltip config
- * to the parent `<ChartSankeyWrapper>`.
+ * Lays out and renders nodes, link ribbons, labels and the tooltip; delegates colour
+ * config and sizing to the parent `<ChartSankeyWrapper>`.
  * Must be rendered as a direct child of `<ChartSankeyWrapper>`.
  *
  * @example
  * <Box height="420px">
  *   <ChartSankeyWrapper>
  *     <ChartSankey
- *     data={{ nodes, links }}
- *     showLabels
- *     showLabelChip
- *     labelUnit="txn"
- *     onNodeClick={(node, i) => console.log(node, i)}
- *   />
+ *       data={{ nodes, links }}
+ *       labelUnit="txn"
+ *       groupNodesBelow={2}
+ *       onNodeClick={(node, i) => console.log(node, i)}
+ *     />
  *   </ChartSankeyWrapper>
  * </Box>
  */
 export const ChartSankey = assignWithoutSideEffects(_ChartSankey, {
   componentId: componentIds.ChartSankey,
 });
+
+export type { SankeyDataNode };
