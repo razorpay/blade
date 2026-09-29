@@ -18,32 +18,29 @@ type StyledRowProps = {
   isDisabled: boolean;
 };
 
+// No inset box-shadow on native, so the selected ring is a real border that is
+// always present (transparent when unselected) and subtracted from the padding,
+// keeping row size identical across states.
 const StyledCardGroupItem = styled(Pressable)<StyledRowProps>(
   ({ theme, isSelected, isDisabled }) => ({
     flexDirection: 'row',
     alignItems: 'center',
-    columnGap: theme.spacing[4],
+    columnGap: theme.spacing[3],
     width: '100%',
-    minHeight: 56,
-    paddingTop: theme.spacing[4],
-    paddingBottom: theme.spacing[4],
-    paddingLeft: theme.spacing[5],
-    paddingRight: theme.spacing[5],
+    padding: theme.spacing[5] - theme.border.width.thick,
+    borderWidth: theme.border.width.thick,
+    borderColor: isSelected ? theme.colors.surface.border.primary.normal : 'transparent',
     opacity: isDisabled ? 0.5 : 1,
-    backgroundColor: isSelected ? theme.colors.surface.background.primary.subtle : 'transparent',
+    backgroundColor: isDisabled ? theme.colors.interactive.background.gray.disabled : 'transparent',
   }),
 );
 
 const StyledStaticRow = styled(View)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  columnGap: theme.spacing[4],
+  columnGap: theme.spacing[3],
   width: '100%',
-  minHeight: 56,
-  paddingTop: theme.spacing[4],
-  paddingBottom: theme.spacing[4],
-  paddingLeft: theme.spacing[5],
-  paddingRight: theme.spacing[5],
+  padding: theme.spacing[5],
 }));
 
 const _CardGroupItem = (

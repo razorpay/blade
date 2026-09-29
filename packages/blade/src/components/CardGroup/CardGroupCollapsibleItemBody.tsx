@@ -21,8 +21,9 @@ const _CardGroupCollapsibleItemBody = ({
         {/* Full-bleed divider separating the revealed content from the trigger row. */}
         <Divider />
         <BaseBox
-          paddingY="spacing.4"
-          paddingX="spacing.5"
+          paddingY="spacing.5"
+          paddingX="spacing.4"
+          backgroundColor="surface.background.gray.subtle"
           {...metaAttribute({ name: MetaConstants.CardGroupCollapsibleItemBody, testID })}
         >
           {children}

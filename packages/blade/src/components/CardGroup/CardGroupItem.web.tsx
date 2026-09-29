@@ -9,7 +9,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
-import { makeSpace, makeSize, makeBorderSize } from '~utils';
+import { makeSpace, makeBorderSize, makeTypographySize } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeElementRef } from '~utils/types';
 
@@ -20,34 +20,53 @@ type StyledRowProps = {
 };
 
 const StyledCardGroupItem = styled.div<StyledRowProps>(
-  ({ theme, isInteractive, isSelected, isDisabled }) => ({
-    boxSizing: 'border-box',
-    display: 'flex',
-    alignItems: 'center',
-    gap: makeSpace(theme.spacing[4]),
-    width: '100%',
-    minHeight: makeSize(56),
-    padding: `${makeSpace(theme.spacing[4])} ${makeSpace(theme.spacing[5])}`,
-    margin: 0,
-    border: 'none',
-    textAlign: 'left',
-    textDecoration: 'none',
-    fontFamily: theme.typography.fonts.family.text,
-    color: theme.colors.surface.text.gray.normal,
-    backgroundColor: isSelected ? theme.colors.surface.background.primary.subtle : 'transparent',
-    cursor: isInteractive && !isDisabled ? 'pointer' : 'default',
-    opacity: isDisabled ? 0.5 : 1,
-    '&:hover':
-      isInteractive && !isDisabled
-        ? { backgroundColor: theme.colors.surface.background.gray.moderate }
-        : undefined,
-    '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `inset 0 0 0 ${makeBorderSize(theme.border.width.thicker)} ${
-        theme.colors.surface.border.primary.normal
-      }`,
-    },
-  }),
+  ({ theme, isInteractive, isSelected, isDisabled }) => {
+    // Rings are inset so the group's `overflow: hidden` does not clip them.
+    const selectedRing = `inset 0 0 0 ${makeBorderSize(theme.border.width.thick)} ${
+      theme.colors.surface.border.primary.normal
+    }`;
+    const focusRing = `inset 0 0 0 ${makeSpace(theme.spacing[2])} ${
+      theme.colors.interactive.border.primary.faded
+    }`;
+
+    return {
+      boxSizing: 'border-box',
+      display: 'flex',
+      alignItems: 'center',
+      gap: makeSpace(theme.spacing[3]),
+      width: '100%',
+      padding: makeSpace(theme.spacing[5]),
+      margin: 0,
+      border: 'none',
+      textAlign: 'left',
+      textDecoration: 'none',
+      fontFamily: theme.typography.fonts.family.text,
+      fontSize: makeTypographySize(theme.typography.fonts.size[100]),
+      fontWeight: theme.typography.fonts.weight.medium,
+      lineHeight: makeTypographySize(theme.typography.lineHeights[100]),
+      color: theme.colors.surface.text.gray.normal,
+      backgroundColor: isDisabled
+        ? theme.colors.interactive.background.gray.disabled
+        : 'transparent',
+      cursor: isDisabled ? 'not-allowed' : isInteractive ? 'pointer' : 'default',
+      opacity: isDisabled ? 0.5 : 1,
+      boxShadow: isSelected ? selectedRing : undefined,
+      // Selected/focused rows sit above the group's border overlay
+      // (StyledCardGroupSurface ::after) so their ring replaces the gray border.
+      ...(isSelected ? { position: 'relative', zIndex: 2 } : {}),
+      // Selected rows keep the plain surface on hover; the ring is the whole affordance.
+      '&:hover':
+        isInteractive && !isDisabled && !isSelected
+          ? { backgroundColor: theme.colors.surface.background.gray.moderate }
+          : undefined,
+      '&:focus-visible': {
+        outline: 'none',
+        position: 'relative',
+        zIndex: 2,
+        boxShadow: isSelected ? `${selectedRing}, ${focusRing}` : focusRing,
+      },
+    };
+  },
 );
 
 const ChevronWrapper = styled.span<{ isExpanded: boolean }>(({ isExpanded }) => ({
