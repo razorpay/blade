@@ -323,17 +323,18 @@ export const computeSankeyLayout = ({
   const columns = depthTree.filter(Boolean);
 
   // 4. Scale: the fullest column fits `height` (recharts' `yRatio`), unless fixed by the caller.
-  let yRatio = scale;
-  if (yRatio === undefined) {
-    yRatio = Math.min(
+  // A column whose values sum to 0 yields Infinity and drops out of the min; if every column
+  // does, or the caller passes something unusable, fall back to 0 rather than NaN geometry.
+  const derivedRatio =
+    scale ??
+    Math.min(
       ...columns.map(
         (nodes) =>
           (height - (nodes.length - 1) * nodePadding) /
           nodes.reduce((sum, node) => sum + node.value, 0),
       ),
     );
-  }
-  if (!Number.isFinite(yRatio) || yRatio < 0) yRatio = 0;
+  const yRatio: number = Number.isFinite(derivedRatio) && derivedRatio >= 0 ? derivedRatio : 0;
 
   // 5. Initial placement (`verticalAlign="justify"`): stacked by column order, bar = value × scale.
   columns.forEach((nodes) => {

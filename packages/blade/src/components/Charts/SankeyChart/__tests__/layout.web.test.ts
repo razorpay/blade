@@ -5,7 +5,7 @@
  * must produce the same node and ribbon geometry that recharts' `<Sankey>` draws, so
  * moving the layout into Blade changes nothing for existing charts.
  *
- * Run with: SHARD='' yarn test:react --testPathPattern=SankeyChart/__tests__/layout
+ * Run with: SHARD='' yarn test:react --testPathPattern=SankeyChart/__tests__/layout.web
  */
 import React from 'react';
 import { render } from '@testing-library/react';
