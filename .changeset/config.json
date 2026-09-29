@@ -6,11 +6,5 @@
   "access": "restricted",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
-  "ignore": [],
-  "fixed": [
-    [
-      "@razorpay/blade-mcp",
-      "@razorpay/blade-plugin"
-    ]
-  ]
+  "ignore": []
 }

@@ -3,7 +3,14 @@
 // as a Blade project (its session file exists). Never blocks the tool.
 import fs from 'fs';
 import path from 'path';
-import { readStdinJSON, getSessionFile, readJSON, writeJSON, logError } from './utils/analytics.mjs';
+import {
+  readStdinJSON,
+  getSessionFile,
+  readJSON,
+  writeJSON,
+  logError,
+} from './utils/analytics.mjs';
+import { getDocName } from './utils/frameworks.mjs';
 
 const CODE_EXTENSIONS = new Set(['.tsx', '.ts', '.jsx', '.js', '.svelte']);
 
@@ -26,10 +33,8 @@ const main = async () => {
       changed = true;
     }
   } else if (toolName === 'Read') {
-    const filePath = toolInput.file_path || '';
-    const marker = `${path.sep}skills${path.sep}blade${path.sep}references${path.sep}`;
-    if (filePath.includes(marker)) {
-      const doc = filePath.slice(filePath.indexOf(marker) + marker.length).replace(/\.md$/, '');
+    const doc = getDocName(toolInput.file_path || '');
+    if (doc) {
       if (!session.docsRead.includes(doc)) {
         session.docsRead.push(doc);
         changed = true;

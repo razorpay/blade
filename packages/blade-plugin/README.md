@@ -6,12 +6,13 @@ It replaces the Blade MCP server for agents that support skills: no `npx` cold s
 
 ## Skills
 
-| Skill                 | What it does                                                                                                  |
-| --------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Skill                 | What it does                                                                                                   |
+| --------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `blade`               | Guidelines for writing Blade UI code plus the full component, pattern and token knowledgebase in `references/` |
-| `blade-upgrade`       | Slices the Blade changelog for a version or range and summarises breaking changes                             |
-| `blade-new-project`   | Scaffolds a Vite + React + TypeScript app with Blade (user-invoked only)                                      |
-| `blade-figma-to-code` | Converts a Figma frame to Blade code via Razorpay's internal backend (VPN required)                           |
+| `blade-svelte`        | The same for Svelte 5 apps on `@razorpay/blade-svelte`: setup, conventions and a doc per public component      |
+| `blade-upgrade`       | Slices the Blade changelog for a version or range and summarises breaking changes                              |
+| `blade-new-project`   | Scaffolds a Vite + React + TypeScript app with Blade (user-invoked only)                                       |
+| `blade-figma-to-code` | Converts a Figma frame to Blade code via Razorpay's internal backend (VPN required)                            |
 
 ## Install
 
@@ -29,16 +30,18 @@ Marketplace distribution (a slim `razorpay/blade-plugin` repo synced from this p
 
 ```sh
 npx skills add razorpay/blade --skill blade
+# Svelte apps
+npx skills add razorpay/blade --skill blade-svelte
 ```
 
 Or, if you already run Blade MCP, ask it to `create_blade_skill`. Both put the skill at `.agents/skills/blade` with a `.claude/skills/blade` symlink.
 
 ## Hooks and telemetry
 
-Hooks are dependency-free Node scripts and exit immediately in projects that do not depend on `@razorpay/blade`.
+Hooks are dependency-free Node scripts and exit immediately in projects that depend on neither `@razorpay/blade` nor `@razorpay/blade-svelte`.
 
-- `SessionStart`: nudges the agent to use the `blade` skill in Blade projects.
-- `PostToolUse`: records edited files and Blade docs read this turn.
+- `SessionStart`: detects which Blade packages the project uses (from `package.json` and the lockfile) and nudges the agent to use `blade`, `blade-svelte` or both.
+- `PostToolUse`: records edited files and Blade docs read this turn, from either skill.
 - `Stop`: sends one `Blade Plugin Tool Called` event to Segment with `git diff --numstat` counts for the edited files, replacing the MCP's model-reported lines-of-code metric. Set `BLADE_SEGMENT_KEY` to enable sending; nothing is sent without it.
 
 ## Development

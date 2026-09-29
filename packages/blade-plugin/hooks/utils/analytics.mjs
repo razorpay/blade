@@ -71,43 +71,13 @@ export const logError = (hook, error) => {
     fs.mkdirSync(path.dirname(logFile), { recursive: true });
     fs.appendFileSync(
       logFile,
-      `[${new Date().toISOString()}] [${hook}] ${error instanceof Error ? error.message : String(error)}\n`,
+      `[${new Date().toISOString()}] [${hook}] ${
+        error instanceof Error ? error.message : String(error)
+      }\n`,
     );
   } catch {
     // never let logging fail a hook
   }
-};
-
-const readPackageJSON = (cwd) => readJSON(path.join(cwd, 'package.json'), null);
-
-// A Blade project declares @razorpay/blade in package.json. Checking the
-// lockfile too catches monorepos where the root package.json is a shell.
-export const isBladeProject = (cwd) => {
-  if (!cwd) return false;
-  const pkg = readPackageJSON(cwd);
-  if (pkg) {
-    for (const field of ['dependencies', 'devDependencies', 'peerDependencies']) {
-      if (pkg[field] && pkg[field]['@razorpay/blade']) return true;
-    }
-  }
-  for (const lock of ['yarn.lock', 'package-lock.json', 'pnpm-lock.yaml']) {
-    try {
-      const content = fs.readFileSync(path.join(cwd, lock), 'utf8');
-      if (content.includes('@razorpay/blade@') || content.includes('"@razorpay/blade"')) return true;
-    } catch {
-      // lockfile absent
-    }
-  }
-  return false;
-};
-
-export const getBladeVersion = (cwd) => {
-  const pkg = readPackageJSON(cwd);
-  if (!pkg) return '';
-  for (const field of ['dependencies', 'devDependencies', 'peerDependencies']) {
-    if (pkg[field] && pkg[field]['@razorpay/blade']) return pkg[field]['@razorpay/blade'];
-  }
-  return '';
 };
 
 export const getUserId = (cwd) => {
