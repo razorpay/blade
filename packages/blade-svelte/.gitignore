@@ -26,6 +26,9 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 
+# Local dev-server TLS certs (storybook:https)
+.certs/
+
 # BrowserStack
 log/
 test-results/

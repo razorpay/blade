@@ -44,11 +44,11 @@ interface PasswordInputCommonProps extends StyledPropsBlade, DataAnalyticsAttrib
   /**
    * Autocomplete suggestion type. `password` maps to `current-password` and
    * `newPassword` maps to `new-password`, informing browser autofill and
-   * password managers.
+   * password managers. `creditCardCSC` maps to `cc-csc` for masked CVV fields.
    */
   autoCompleteSuggestionType?: Extract<
     AutoCompleteSuggestionType,
-    'none' | 'password' | 'newPassword'
+    'none' | 'password' | 'newPassword' | 'creditCardCSC'
   >;
   /** Character counter limit. */
   maxCharacters?: number;

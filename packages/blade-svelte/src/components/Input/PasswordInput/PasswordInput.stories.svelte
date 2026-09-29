@@ -37,7 +37,7 @@
       },
       autoCompleteSuggestionType: {
         control: { type: 'select' },
-        options: ['none', 'password', 'newPassword'],
+        options: ['none', 'password', 'newPassword', 'creditCardCSC'],
         description: 'Autocomplete suggestion type for browser autofill / password managers.',
       },
       isDisabled: { control: { type: 'boolean' }, description: 'Disables the input.' },
