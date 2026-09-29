@@ -55,7 +55,6 @@
     "prestorybook": "cd ../blade-core && yarn build",
     "start:web": "yarn dev",
     "storybook": "storybook dev -p 6007",
-    "storybook:https": "storybook dev -p 6007 --https --ssl-cert .certs/dev.pem --ssl-key .certs/dev-key.pem",
     "build-storybook": "storybook build -o storybook-static",
     "test:coverage": "vitest run --coverage",
     "test:browserstack": "playwright test -c tests/browserstack/playwright.config.cts",

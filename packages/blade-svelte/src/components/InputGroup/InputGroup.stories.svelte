@@ -403,8 +403,6 @@
       <InputRow gridTemplateColumns="1fr">
         <TextInput
           label="Card Number"
-          name="cardNumber"
-          autoCompleteSuggestionType="creditCardNumber"
           placeholder="1234 5678 9012 3456"
           value={formatForm.cardNumber}
           format="#### #### #### ####"
@@ -415,8 +413,6 @@
       <InputRow gridTemplateColumns="1fr 1fr">
         <TextInput
           label="Expiry Date"
-          name="expiryDate"
-          autoCompleteSuggestionType="creditCardExpiry"
           placeholder="MM/YY"
           value={formatForm.expiryDate}
           format="##/##"
@@ -425,8 +421,6 @@
         />
         <PasswordInput
           label="CVV (3 digits)"
-          name="cvv"
-          autoCompleteSuggestionType="creditCardCSC"
           placeholder="123"
           maxCharacters={3}
           value={formatForm.cvv}
@@ -437,8 +431,6 @@
       <InputRow gridTemplateColumns="1fr">
         <TextInput
           label="Cardholder Name"
-          name="cardholderName"
-          autoCompleteSuggestionType="name"
           placeholder="John Doe"
           value={formatForm.cardholderName}
           onChange={({ value }) => setFormatField('cardholderName', value ?? '')}
