@@ -164,6 +164,59 @@ describe('<TextInput /> isReadOnly & spellCheck', () => {
     });
   });
 
+  describe('formatted + prefilled value', () => {
+    const cardMask = '#### #### #### ####';
+
+    it('formats a pre-formatted defaultValue at mount', () => {
+      render(TextInput, {
+        props: { label: 'Card', format: cardMask, defaultValue: '4111 1111 1111 1111' },
+      });
+      expect(screen.getByLabelText('Card')).toHaveValue('4111 1111 1111 1111');
+    });
+
+    it('formats a pre-formatted controlled value at mount', () => {
+      render(TextInput, {
+        props: { label: 'Card', format: cardMask, value: '4111 1111 1111 1111' },
+      });
+      expect(screen.getByLabelText('Card')).toHaveValue('4111 1111 1111 1111');
+    });
+
+    it('formats a raw digit defaultValue at mount', () => {
+      render(TextInput, {
+        props: { label: 'Card', format: cardMask, defaultValue: '4111111111111111' },
+      });
+      expect(screen.getByLabelText('Card')).toHaveValue('4111 1111 1111 1111');
+    });
+
+    it('re-formats existing uncontrolled text when `format` arrives after mount', async () => {
+      const user = userEvent.setup();
+      const { rerender } = render(TextInput, {
+        props: { label: 'Card', defaultValue: '411111111111111' },
+      });
+      const input = screen.getByLabelText('Card');
+      expect(input).toHaveValue('411111111111111');
+
+      await rerender({ label: 'Card', defaultValue: '411111111111111', format: cardMask });
+      await tick();
+      expect(input).toHaveValue('4111 1111 1111 111');
+
+      await user.type(input, '7');
+      await tick();
+      expect(input).toHaveValue('4111 1111 1111 1117');
+    });
+
+    it('re-formats user-typed uncontrolled text when `format` arrives after mount', async () => {
+      const user = userEvent.setup();
+      const { rerender } = render(TextInput, { props: { label: 'Card' } });
+      const input = screen.getByLabelText('Card');
+      await user.type(input, '41111');
+
+      await rerender({ label: 'Card', format: cardMask });
+      await tick();
+      expect(input).toHaveValue('4111 1');
+    });
+  });
+
   describe('formatted + uncontrolled value', () => {
     it('formats the value into groups as the user types', async () => {
       const user = userEvent.setup();
