@@ -5,8 +5,11 @@ import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 // Same Segment source as Blade MCP so adoption dashboards compare both.
-// The key is a public write key; it is already shipped inside the published
-// @razorpay/blade-mcp tarball. Override with BLADE_SEGMENT_KEY for testing.
+// The key is NOT in this repo: blade-mcp inlines it at build time
+// (src/replaceEnv.js), but the plugin installs from a git checkout with no
+// build, so events are only sent when BLADE_SEGMENT_KEY is set in the
+// environment. Injecting it for all users belongs in the plugin distribution
+// step, not in a commit to this public repo.
 const SEGMENT_WRITE_KEY = process.env.BLADE_SEGMENT_KEY ?? '';
 
 const pluginRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -49,8 +52,37 @@ export const getDataDir = () => {
   return base;
 };
 
+// session_id comes from hook input; keep it to one safe path segment.
 export const getSessionFile = (sessionId) =>
-  path.join(getDataDir(), 'sessions', `${sessionId || 'unknown'}.json`);
+  path.join(
+    getDataDir(),
+    'sessions',
+    `${String(sessionId || 'unknown').replace(/[^A-Za-z0-9_-]/g, '_')}.json`,
+  );
+
+const SESSION_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+
+// Session files hold the project path and edited file paths; drop the ones
+// from sessions older than a week.
+export const pruneOldSessions = (now = Date.now()) => {
+  const sessionsDir = path.join(getDataDir(), 'sessions');
+  let entries = [];
+  try {
+    entries = fs.readdirSync(sessionsDir);
+  } catch {
+    return;
+  }
+  for (const entry of entries) {
+    const entryPath = path.join(sessionsDir, entry);
+    try {
+      if (now - fs.statSync(entryPath).mtimeMs > SESSION_MAX_AGE_MS) {
+        fs.rmSync(entryPath, { recursive: true, force: true });
+      }
+    } catch {
+      // another session may have removed it
+    }
+  }
+};
 
 export const readJSON = (filePath, fallback) => {
   try {
@@ -71,7 +103,9 @@ export const logError = (hook, error) => {
     fs.mkdirSync(path.dirname(logFile), { recursive: true });
     fs.appendFileSync(
       logFile,
-      `[${new Date().toISOString()}] [${hook}] ${error instanceof Error ? error.message : String(error)}\n`,
+      `[${new Date().toISOString()}] [${hook}] ${
+        error instanceof Error ? error.message : String(error)
+      }\n`,
     );
   } catch {
     // never let logging fail a hook
@@ -93,7 +127,8 @@ export const isBladeProject = (cwd) => {
   for (const lock of ['yarn.lock', 'package-lock.json', 'pnpm-lock.yaml']) {
     try {
       const content = fs.readFileSync(path.join(cwd, lock), 'utf8');
-      if (content.includes('@razorpay/blade@') || content.includes('"@razorpay/blade"')) return true;
+      if (content.includes('@razorpay/blade@') || content.includes('"@razorpay/blade"'))
+        return true;
     } catch {
       // lockfile absent
     }
@@ -131,7 +166,29 @@ export const getSource = () => {
   return 'cli';
 };
 
+// BLADE_PLUGIN_DEBUG=1 appends every event to <data dir>/events.log, with or
+// without a Segment key, so metrics can be checked locally.
+const debugLog = (event) => {
+  if (!process.env.BLADE_PLUGIN_DEBUG) return;
+  const logFile = path.join(getDataDir(), 'events.log');
+  fs.mkdirSync(path.dirname(logFile), { recursive: true });
+  fs.appendFileSync(logFile, `${JSON.stringify(event)}\n`);
+};
+
 export const sendAnalytics = async ({ userId, properties }) => {
+  const event = {
+    userId,
+    event: EVENT_NAME,
+    properties: {
+      osType: os.type(),
+      nodeVersion: process.version,
+      pluginVersion: getPluginVersion(),
+      source: getSource(),
+      protocol: 'plugin',
+      ...properties,
+    },
+  };
+  debugLog(event);
   if (!SEGMENT_WRITE_KEY) return;
   const auth = Buffer.from(`${SEGMENT_WRITE_KEY}:`).toString('base64');
   const controller = new AbortController();
@@ -140,18 +197,7 @@ export const sendAnalytics = async ({ userId, properties }) => {
     await fetch('https://api.segment.io/v1/track', {
       method: 'POST',
       headers: { Authorization: `Basic ${auth}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        userId,
-        event: EVENT_NAME,
-        properties: {
-          osType: os.type(),
-          nodeVersion: process.version,
-          pluginVersion: getPluginVersion(),
-          source: getSource(),
-          protocol: 'plugin',
-          ...properties,
-        },
-      }),
+      body: JSON.stringify(event),
       signal: controller.signal,
     });
   } finally {

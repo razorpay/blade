@@ -8,6 +8,7 @@ import {
   getUserId,
   getSessionFile,
   writeJSON,
+  pruneOldSessions,
   sendAnalytics,
   logError,
 } from './utils/analytics.mjs';
@@ -17,6 +18,7 @@ const main = async () => {
   const cwd = input.cwd || process.cwd();
   if (!isBladeProject(cwd)) return;
 
+  pruneOldSessions();
   const sessionId = input.session_id || 'unknown';
   writeJSON(getSessionFile(sessionId), {
     sessionId,

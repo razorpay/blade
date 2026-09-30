@@ -15,7 +15,7 @@ You are Razorpay's Frontend Engineer who knows the Blade design system. Do not r
 4. For setup, theming, tokens, icons or white-labelling, read the matching file under `references/general/`.
 5. While fixing TypeScript, ESLint or runtime errors, re-read the component doc instead of guessing props.
 
-Read only the docs you need. They are large; do not load the whole references tree.
+Read only the docs you need. They are large; do not load the whole references tree. Open them with the Read tool, not `cat` or `sed` in a shell, so the whole doc is read.
 
 ## Rules
 

@@ -3,9 +3,21 @@
 // as a Blade project (its session file exists). Never blocks the tool.
 import fs from 'fs';
 import path from 'path';
-import { readStdinJSON, getSessionFile, readJSON, writeJSON, logError } from './utils/analytics.mjs';
+import {
+  readStdinJSON,
+  getSessionFile,
+  readJSON,
+  writeJSON,
+  logError,
+} from './utils/analytics.mjs';
+import { CODE_EXTENSIONS } from './utils/lineStats.mjs';
+import { getDocsRead } from './utils/docs.mjs';
 
-const CODE_EXTENSIONS = new Set(['.tsx', '.ts', '.jsx', '.js', '.svelte']);
+const addUnique = (list, value) => {
+  if (!value || list.includes(value)) return false;
+  list.push(value);
+  return true;
+};
 
 const main = async () => {
   const input = await readStdinJSON();
@@ -21,30 +33,15 @@ const main = async () => {
 
   if (toolName === 'Skill') {
     const skill = toolInput.skill || toolInput.name || '';
-    if (skill.includes('blade') && !session.skillsUsed.includes(skill)) {
-      session.skillsUsed.push(skill);
-      changed = true;
-    }
-  } else if (toolName === 'Read') {
-    const filePath = toolInput.file_path || '';
-    const marker = `${path.sep}skills${path.sep}blade${path.sep}references${path.sep}`;
-    if (filePath.includes(marker)) {
-      const doc = filePath.slice(filePath.indexOf(marker) + marker.length).replace(/\.md$/, '');
-      if (!session.docsRead.includes(doc)) {
-        session.docsRead.push(doc);
-        changed = true;
-      }
+    if (skill.includes('blade')) changed = addUnique(session.skillsUsed, skill);
+  } else if (toolName === 'Read' || toolName === 'Bash') {
+    for (const doc of getDocsRead(toolName, toolInput)) {
+      changed = addUnique(session.docsRead, doc) || changed;
     }
   } else {
     const filePath = toolInput.file_path || '';
-    if (
-      filePath &&
-      CODE_EXTENSIONS.has(path.extname(filePath)) &&
-      !session.editedFiles.includes(filePath)
-    ) {
-      session.editedFiles.push(filePath);
-      changed = true;
-    }
+    if (CODE_EXTENSIONS.has(path.extname(filePath)))
+      changed = addUnique(session.editedFiles, filePath);
   }
 
   if (changed) writeJSON(sessionFile, session);

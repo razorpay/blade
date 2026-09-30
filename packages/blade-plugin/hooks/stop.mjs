@@ -1,9 +1,8 @@
-// Stop: publish the lines-of-code metric for files this session edited.
-// Replaces the MCP's model-reported publish_lines_of_code_metric with numbers
-// from `git diff --numstat`, restricted to files the agent touched.
+// Stop: publish the lines-of-code metric for the files the agent edited this
+// turn. Replaces the MCP's model-reported publish_lines_of_code_metric with
+// numbers diffed against per-turn snapshots (see utils/lineStats.mjs).
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
 import {
   readStdinJSON,
   getSessionFile,
@@ -14,6 +13,7 @@ import {
   sendAnalytics,
   logError,
 } from './utils/analytics.mjs';
+import { getBaselinesDir, computeLineStats, clearBaselines } from './utils/lineStats.mjs';
 
 const usesBlade = (filePath) => {
   try {
@@ -21,27 +21,6 @@ const usesBlade = (filePath) => {
   } catch {
     return false;
   }
-};
-
-const numstat = (cwd, files) => {
-  const relative = files
-    .map((f) => (path.isAbsolute(f) ? path.relative(cwd, f) : f))
-    .filter((f) => !f.startsWith('..'));
-  if (relative.length === 0) return [];
-  const quoted = relative.map((f) => `"${f.replace(/"/g, '\\"')}"`).join(' ');
-  const output = execSync(`git diff --numstat HEAD -- ${quoted}`, {
-    cwd,
-    encoding: 'utf8',
-    stdio: ['ignore', 'pipe', 'ignore'],
-    timeout: 5000,
-  });
-  return output
-    .split('\n')
-    .filter(Boolean)
-    .map((line) => {
-      const [added, removed, file] = line.split('\t');
-      return { file, added: Number(added) || 0, removed: Number(removed) || 0 };
-    });
 };
 
 const main = async () => {
@@ -57,14 +36,19 @@ const main = async () => {
   const skillsUsed = session.skillsUsed || [];
   const docsRead = session.docsRead || [];
 
+  const baselinesDir = getBaselinesDir(sessionFile);
+
   // Nothing to report: no edits and no Blade docs consulted this turn.
-  if (pending.length === 0 && skillsUsed.length === 0 && docsRead.length === 0) return;
+  if (pending.length === 0 && skillsUsed.length === 0 && docsRead.length === 0) {
+    clearBaselines(baselinesDir);
+    return;
+  }
 
   let stats = [];
   try {
-    stats = numstat(cwd, pending);
+    stats = computeLineStats(baselinesDir, pending, cwd);
   } catch (error) {
-    logError('stop:numstat', error);
+    logError('stop:lineStats', error);
   }
 
   const totals = {
@@ -79,7 +63,7 @@ const main = async () => {
     totals.linesAddedTotal += added;
     totals.linesRemovedTotal += removed;
     const isUi = /\.(tsx|jsx|svelte)$/.test(file);
-    if (isUi && usesBlade(path.join(cwd, file))) {
+    if (isUi && usesBlade(path.resolve(cwd, file))) {
       totals.bladeUiLinesAddedTotal += added;
       totals.bladeUiLinesRemovedTotal += removed;
     } else if (isUi) {
@@ -101,7 +85,8 @@ const main = async () => {
     },
   }).catch((error) => logError('stop:analytics', error));
 
-  // Reset per-turn accumulators so the next Stop reports only new work.
+  // Reset per-turn state so the next Stop reports only new work.
+  clearBaselines(baselinesDir);
   writeJSON(sessionFile, { ...session, editedFiles: [], skillsUsed: [], docsRead: [] });
 };
 
