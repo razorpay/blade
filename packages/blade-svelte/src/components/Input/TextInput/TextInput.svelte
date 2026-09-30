@@ -137,11 +137,16 @@
     }
 
     if (format && formatter) {
-      formattedValue = formatter.handleChange(
-        { name: payload.name, value: v },
-        formattedValue,
-        baseInput?.getInput() ?? null,
-      );
+      const el = baseInput?.getInput() ?? null;
+      const next = formatter.handleChange({ name: payload.name, value: v }, formattedValue, el);
+      // An external write (browser autofill refill, password manager) can land
+      // raw text that formats to the string already in state. Svelte only
+      // rewrites `value` when state changes, so sync the DOM here or the raw
+      // text stays on screen.
+      if (next === formattedValue && el && el.value !== next) {
+        el.value = next;
+      }
+      formattedValue = next;
     } else {
       onChange?.(payload);
     }
