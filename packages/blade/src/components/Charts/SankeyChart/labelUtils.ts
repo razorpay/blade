@@ -16,7 +16,7 @@ const ELLIPSIS = '…';
  */
 export const formatSharePercentage = (share: number): string => {
   if (!Number.isFinite(share) || share <= 0) return '0';
-  if (share < 1) return `<${1}`;
+  if (share < 1) return '<1';
   return String(Math.round(share));
 };
 

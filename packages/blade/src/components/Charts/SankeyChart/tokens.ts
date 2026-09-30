@@ -25,6 +25,12 @@ export const CHIP_MAX_WIDTH = 160;
  * with an ellipsis — the name first, the value text only as a last resort.
  */
 export const LABEL_MAX_WIDTH = 200;
+
+/**
+ * Free space kept between a label and the next column when the chart is narrow enough for the
+ * column gap, not `LABEL_MAX_WIDTH`, to set the label budget (web).
+ */
+export const LABEL_COLUMN_CLEARANCE = 8;
 /**
  * Fixed pixel budget reserved for the humanized value + percentage part of a label chip,
  * e.g. "1.24L txn  (100%)". Used by the **native** chart when computing the dynamic

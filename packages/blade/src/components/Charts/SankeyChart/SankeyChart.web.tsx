@@ -23,6 +23,7 @@ import {
   NODE_WIDTH,
   CHIP_MIN_WIDTH,
   LABEL_MAX_WIDTH,
+  LABEL_COLUMN_CLEARANCE,
   GROUP_LABEL_MAX_WIDTH,
   COLOR_INDICATOR_SIZE,
   NODE_MIN_HEIGHT,
@@ -512,6 +513,10 @@ const isFocusVisible = (element: Element): boolean => {
   }
 };
 
+/** The width budget of a node's label on a chart wide enough not to constrain it */
+const fullLabelBudget = (entry: GroupedSankeyNode): number =>
+  entry.group ? GROUP_LABEL_MAX_WIDTH : LABEL_MAX_WIDTH;
+
 // ─── ChartSankey ──────────────────────────────────────────────────────────────
 // Presentational layer — mirrors ChartDonut.
 // Reads wrapper config from SankeyChartContext, owns the layout and hover/expand state,
@@ -716,65 +721,82 @@ const _ChartSankey = ({
 
   const totalValue = grouped.total;
 
-  // Label text and width per node. Labels are single-line: the value text is kept whole and
-  // the name is truncated with an ellipsis so the label fits LABEL_MAX_WIDTH. The tooltip
-  // always shows the full name.
-  const nodeLabels = useMemo(() => {
-    const semibold = theme.typography.fonts.weight.semibold;
-    const regular = theme.typography.fonts.weight.regular;
-    const formatter = formatValue ?? humanizeIndian;
-    const measureName = (text: string): number => measureText(text, semibold);
-    const measureValue = (text: string): number => measureText(text, regular);
-    // Chip padding only exists in chip mode; plain text gets the whole budget.
-    const framePad = showLabelChip ? CHIP_PAD_X * 2 : 0;
-
-    return nodes.map((entry, index) => {
+  // Label text and width for one node at a given width budget. Labels are single-line: the value
+  // text is kept whole and the name is truncated with an ellipsis so the label fits the budget.
+  // The full name stays reachable — hovering the label opens the node tooltip, and the label's
+  // accessible name carries it.
+  const buildNodeLabel = useCallback(
+    (entry: GroupedSankeyNode, index: number, maxLabelWidth: number) => {
+      const semibold = theme.typography.fonts.weight.semibold;
+      const regular = theme.typography.fonts.weight.regular;
+      const formatter = formatValue ?? humanizeIndian;
+      const measureName = (text: string): number => measureText(text, semibold);
+      const measureValue = (text: string): number => measureText(text, regular);
+      // Chip padding only exists in chip mode; plain text gets the whole budget.
+      const framePad = showLabelChip ? CHIP_PAD_X * 2 : 0;
       const value = nodeValues[index] ?? 0;
       const depth = depthInfo.depthOf.get(entry.node.id) ?? 0;
       const levelCount = depthInfo.countPerDepth.get(depth) ?? 1;
       const share = totalValue > 0 ? (value / totalValue) * 100 : 0;
       const humanized = formatter(value);
       const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
-      const fullValueText =
-        showPercentage && levelCount > 1
-          ? `${valueText}  (${formatSharePercentage(share)}%)`
-          : valueText;
+      const withShare = showPercentage && levelCount > 1;
+      const fullValueText = withShare
+        ? `${valueText}  (${formatSharePercentage(share)}%)`
+        : valueText;
       const trailingReserve = entry.group ? CHEVRON_RESERVE : 0;
-      const fitted = fitLabelToWidth({
-        name: entry.node.name,
-        valueText: fullValueText,
-        maxContentWidth:
-          (entry.group ? GROUP_LABEL_MAX_WIDTH : LABEL_MAX_WIDTH) -
-          framePad -
-          INDICATOR_RESERVE -
-          trailingReserve,
-        gap: TEXT_GAP,
-        measureName,
-        measureValue,
-      });
+      const fit = (text: string): ReturnType<typeof fitLabelToWidth> =>
+        fitLabelToWidth({
+          name: entry.node.name,
+          valueText: text,
+          maxContentWidth: maxLabelWidth - framePad - INDICATOR_RESERVE - trailingReserve,
+          gap: TEXT_GAP,
+          measureName,
+          measureValue,
+        });
+      let fitted = fit(fullValueText);
+      // When the column gap, not the label budget, sets the width and it leaves the name almost
+      // nothing, the share goes before the name does: "… 6.2k txn (6…" says nothing, "UPI 6.2k txn"
+      // still does. The accessible name (below) keeps the share.
+      if (withShare && maxLabelWidth < fullLabelBudget(entry) && fitted.name.length <= 4) {
+        fitted = fit(valueText);
+      }
       const contentWidth =
         INDICATOR_RESERVE + fitted.nameWidth + TEXT_GAP + fitted.valueWidth + trailingReserve;
       const labelWidth = showLabelChip
         ? Math.max(CHIP_MIN_WIDTH, contentWidth + framePad)
         : contentWidth;
-      return { name: fitted.name, labelValue: fitted.valueText, width: labelWidth, value, share };
-    });
-  }, [
-    nodes,
-    nodeValues,
-    depthInfo,
-    totalValue,
-    formatValue,
-    labelUnit,
-    showPercentage,
-    showLabelChip,
-    measureText,
-    theme,
-    CHIP_PAD_X,
-    TEXT_GAP,
-    INDICATOR_RESERVE,
-    CHEVRON_RESERVE,
-  ]);
+      return {
+        name: fitted.name,
+        labelValue: fitted.valueText,
+        width: labelWidth,
+        value,
+        share,
+        accessibleName: `${entry.node.name}, ${fullValueText.replace(/\s+/g, ' ')}`,
+      };
+    },
+    [
+      nodeValues,
+      depthInfo,
+      totalValue,
+      formatValue,
+      labelUnit,
+      showPercentage,
+      showLabelChip,
+      measureText,
+      theme,
+      CHIP_PAD_X,
+      TEXT_GAP,
+      INDICATOR_RESERVE,
+      CHEVRON_RESERVE,
+    ],
+  );
+
+  // Every label at its full budget; the last column's widths set the right margin below.
+  const nodeLabels = useMemo(
+    () => nodes.map((entry, index) => buildNodeLabel(entry, index, fullLabelBudget(entry))),
+    [nodes, buildNodeLabel],
+  );
 
   // Dynamic right margin — room for the labels of the rightmost column only. Labels in earlier
   // columns sit in the gap before the next column, so reserving margin for them just shrank the chart.
@@ -800,6 +822,26 @@ const _ChartSankey = ({
   );
   const plotWidth = width - margin.left - margin.right;
   const plotHeight = height - margin.top - margin.bottom;
+
+  // Labels in earlier columns live in the gap before the next column. Columns are spaced evenly
+  // across the plot, so on a narrow chart that gap is smaller than the label budget: their budget
+  // shrinks to the free space minus a clearance, and a name truncates instead of running into the
+  // next column. Wide charts are unaffected: the budget only drops when the gap does.
+  const fittedLabels = useMemo(() => {
+    if (!showLabels || !(plotWidth > 0) || depthInfo.maxDepth === 0) return nodeLabels;
+    const columnPitch = (plotWidth - NODE_WIDTH) / depthInfo.maxDepth;
+    const gapBudget = Math.max(
+      CHIP_MIN_WIDTH,
+      Math.floor(columnPitch - NODE_WIDTH - CHIP_GAP - LABEL_COLUMN_CLEARANCE),
+    );
+    return nodeLabels.map((label, index) => {
+      const entry = nodes[index];
+      if (!entry) return label;
+      const isLastColumn = (depthInfo.depthOf.get(entry.node.id) ?? 0) === depthInfo.maxDepth;
+      if (isLastColumn || gapBudget >= fullLabelBudget(entry)) return label;
+      return buildNodeLabel(entry, index, gapBudget);
+    });
+  }, [showLabels, plotWidth, depthInfo, nodeLabels, nodes, buildNodeLabel, CHIP_GAP]);
 
   // With grouping on, the scale comes from the fully folded graph at the container height,
   // so bars and ribbons keep their size when a group is expanded.
@@ -1003,7 +1045,7 @@ const _ChartSankey = ({
 
     const entry = nodes[hovered.index];
     const geometry = layout.nodes[hovered.index];
-    const label = nodeLabels[hovered.index];
+    const label = fittedLabels[hovered.index];
     if (!entry || !geometry || !label) return null;
     // Hang the tooltip below the node's label chip so the label stays readable while hovering.
     const nodeMidY = geometry.barY + geometry.barHeight / 2;
@@ -1087,7 +1129,7 @@ const _ChartSankey = ({
     grouped.links,
     layout,
     nodes,
-    nodeLabels,
+    fittedLabels,
     data.links,
     totalValue,
     unitSuffix,
@@ -1150,7 +1192,7 @@ const _ChartSankey = ({
   const renderedNodes = layout.nodes.map((nodeLayout) => {
     const { index } = nodeLayout;
     const entry = nodes[index];
-    const label = nodeLabels[index];
+    const label = fittedLabels[index];
     if (!entry || !label) return null;
     if (!hasFiniteGeometry(nodeLayout.x, nodeLayout.barY, nodeLayout.barHeight)) return null;
 
@@ -1183,16 +1225,15 @@ const _ChartSankey = ({
           style={{ cursor: 'pointer' }}
         />
 
-        {/* Label — a group's label (and a revealed member's) is a button that toggles the group.
-            The chart draws its own focus ring (see `focusStrokeColor`), so the browser's outline is
-            off: Chrome would paint it on focus moved by script after a click. */}
+        {/* Label — takes the pointer like the bar, so hovering a truncated name opens the node
+            tooltip with the full name, and assistive tech reads the full name and value from the
+            group, never the truncated text. A group's label (and a revealed member's) is a button
+            that toggles the group instead. The chart draws its own focus ring (see
+            `focusStrokeColor`), so the browser's outline is off: Chrome would paint it on focus
+            moved by script after a click. */}
         {showLabels && (
           <g
-            style={{
-              pointerEvents: isInteractiveLabel ? 'auto' : 'none',
-              cursor: 'pointer',
-              outline: 'none',
-            }}
+            style={{ cursor: 'pointer', outline: 'none' }}
             {...(isInteractiveLabel
               ? {
                   role: 'button',
@@ -1232,7 +1273,7 @@ const _ChartSankey = ({
                     setHovered(null);
                   },
                 }
-              : {})}
+              : { role: 'img', 'aria-label': label.accessibleName })}
           >
             {(showLabelChip ? renderChipLabel : renderPlainTextLabel)({
               labelX,
