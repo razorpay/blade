@@ -21,6 +21,20 @@ export const formatSharePercentage = (share: number): string => {
 };
 
 /**
+ * Formats a share for the detailed breakdown in a group's tooltip: one decimal place, so
+ * members that all round to the same whole percentage can still be told apart.
+ *
+ * @example formatShareDetailed(12.34) // '12.3'
+ * @example formatShareDetailed(4)     // '4'
+ * @example formatShareDetailed(0.04)  // '<0.1'
+ */
+export const formatShareDetailed = (share: number): string => {
+  if (!Number.isFinite(share) || share <= 0) return '0';
+  if (share < 0.1) return '<0.1';
+  return String(Math.round(share * 10) / 10);
+};
+
+/**
  * Trims `text` so that its measured width fits `maxWidth`, appending an ellipsis.
  *
  * Returns the text unchanged when it already fits. When even a single character plus the

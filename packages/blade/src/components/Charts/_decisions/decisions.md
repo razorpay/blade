@@ -654,7 +654,9 @@ import {
 
 ### 3.7\. Sankey Chart
 
-A flow diagram that shows how a quantity is distributed across multiple stages — node height is proportional to volume, link width is proportional to flow between source and target. Suitable for payment routing, funnel analysis, and budget allocation. Built on recharts `<Sankey>` for layout consistency with all other Blade charts.
+A flow diagram that shows how a quantity is distributed across multiple stages — node height is proportional to volume, link width is proportional to flow between source and target. Suitable for payment routing, funnel analysis, and budget allocation.
+
+On web the layout runs through Blade's own engine (`SankeyChart/layout.ts`), a line-for-line port of the recharts `<Sankey>` algorithm — the same depth assignment, initial placement, collision resolution and relaxation rounds, pinned by a parity test against recharts. Owning the layout is what lets the chart reserve room for every label and keep one scale across a folded and an expanded graph (see _Grouping small nodes_ below), which recharts does not expose. Rendering is React SVG; the tooltip is Blade's own overlay. Native has used a Blade layout engine since its introduction.
 
 Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with DonutChart.
 
@@ -672,18 +674,23 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 
 #### `ChartSankey` Props
 
-| Prop                 | Type                                                   | Required | Default                  | Description                                                       |
-| -------------------- | ------------------------------------------------------ | -------- | ------------------------ | ----------------------------------------------------------------- |
-| `data`               | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅       | —                        | Flat node list and directed flow connections                      |
-| `showLabels`         | `boolean`                                              | ❌       | `true`                   | Show labels to the right of each node bar                         |
-| `showLabelChip`      | `boolean`                                              | ❌       | `true`                   | Render labels as Blade chip cards; `false` renders plain SVG text |
-| `showPercentage`     | `boolean`                                              | ❌       | `true`                   | Show percentage of total flow alongside value in each label       |
-| `labelUnit`          | `string`                                               | ❌       | —                        | Unit string appended to node value, e.g. `"txn"` or `"₹M"`        |
-| `labelDensity`       | `'normal' \| 'compact'`                                | ❌       | `'normal'`               | Chip height: 28px, or 20px for columns of many thin nodes (web)   |
-| `showColorIndicator` | `boolean`                                              | ❌       | `false`                  | Start each label with a dot in the node's colour (web)            |
-| `formatValue`        | `(value: number) => string`                            | ❌       | Indian notation (k/L/Cr) | Custom value formatter for node labels                            |
-| `onNodeClick`        | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked                                 |
-| `onLinkClick`        | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked                              |
+| Prop                         | Type                                                   | Required | Default                  | Description                                                                                                              |
+| ---------------------------- | ------------------------------------------------------ | -------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `data`                       | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅       | —                        | Flat node list and directed flow connections                                                                             |
+| `showLabels`                 | `boolean`                                              | ❌       | `true`                   | Show labels to the right of each node bar                                                                                |
+| `showLabelChip`              | `boolean`                                              | ❌       | `true`                   | Render labels as Blade chip cards; `false` renders plain SVG text                                                        |
+| `showPercentage`             | `boolean`                                              | ❌       | `true`                   | Show percentage of total flow alongside value in each label                                                              |
+| `labelUnit`                  | `string`                                               | ❌       | —                        | Unit string appended to node value, e.g. `"txn"` or `"₹M"`                                                               |
+| `labelDensity`               | `'normal' \| 'compact'`                                | ❌       | `'normal'`               | Chip height: 28px, or 20px for columns of many thin nodes (web)                                                          |
+| `showColorIndicator`         | `boolean`                                              | ❌       | `false`                  | Start each label with a dot in the node's colour (web)                                                                   |
+| `formatValue`                | `(value: number) => string`                            | ❌       | Indian notation (k/L/Cr) | Custom value formatter for node labels                                                                                   |
+| `groupNodesBelow`            | `number`                                               | ❌       | —                        | Group nodes under this share (%) into one "Other" node per column (web)                                                  |
+| `formatGroupLabel`           | `({ depth, members }) => string`                       | ❌       | `Other (n)`              | Label of a group node                                                                                                    |
+| `defaultExpandedGroupDepths` | `number[]`                                             | ❌       | `[]`                     | Groups that start expanded (uncontrolled), keyed by zero-based column depth (mirrors Accordion's `defaultExpandedIndex`) |
+| `expandedGroupDepths`        | `number[]`                                             | ❌       | —                        | Expanded groups (controlled); keyed by column depth like `defaultExpandedGroupDepths`                                    |
+| `onExpandChange`             | `(event: SankeyGroupExpandEvent) => void`              | ❌       | —                        | Called when a group is expanded or folded                                                                                |
+| `onNodeClick`                | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked (never for a group node)                                                               |
+| `onLinkClick`                | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked                                                                                     |
 
 Labels on web are always a single line. A name that does not fit the 200px label budget is truncated with an ellipsis (the value text is kept whole; the tooltip shows the full name), a share between 0 and 1 percent reads `<1%`, and the chart reserves right margin only for the last column's labels.
 
@@ -719,6 +726,35 @@ import { ChartSankeyWrapper, ChartSankey } from '@razorpay/blade/components';
 ```
 
 > **Note:** `ChartSankeyWrapper` inspects its `ChartSankey` child to extract `data.nodes` and compute `dataColorMapping` before rendering — matching the `ChartDonutWrapper` pattern exactly. Node `id` fields are used as stable keys in links; `name` is the display label. Per-node `color` prop (optional) takes palette precedence but is overridden by `nodeColorOverride`.
+
+#### Grouping small nodes (web)
+
+A long tail of thin nodes crowds a column and stacks its labels. `groupNodesBelow` folds every node whose share of the total (the root nodes' outflow, the same denominator the label percentage uses) is below the given percentage into one synthetic node per column, labelled `Other (n)` by default. The rules, chosen so the fold never hides information the reader needs:
+
+- A group needs at least two members — a lone small node stays.
+- Root nodes are never grouped, and a node opts out with `isGroupable: false` (outcome statuses in a payment flow, for example).
+- Ribbons that touched a member are re-pointed to the group and summed per source/target pair, so a group in one column can flow into a group in the next.
+- The group node is drawn in neutral grey (`data.background.categorical.gray.intense`), never a palette colour, and its label carries a chevron (with a 240px label budget instead of 200px, since it also carries the member count). Its tooltip lists the members with one-decimal shares (six, then "and n more").
+
+Clicking the group — or pressing Enter/Space on its label, which is a focusable button — reveals the members **in place, without rescaling**: the scale is fixed from the fully folded graph, so every other bar and ribbon keeps its pixel size, each revealed node reserves room for its label, and the drawing grows below the container. The consumer decides what happens to the extra height; the recommended pattern is a fixed-height `Box` with `overflowY="auto"` around the wrapper. Revealed members carry the primary border at 64% opacity (`surface.border.primary.normal` with `opacity[800]`) so they read as one set, and clicking any of their labels folds the group again. Tooltips hang below the label they describe (above it near the bottom edge), so the label stays readable while hovering. Expanded state follows the Accordion API (`defaultExpandedGroupDepths` / `expandedGroupDepths` / `onExpandChange`), keyed by zero-based column depth like Accordion's numeric `expandedIndex` — a group exists for at most one column, so the depth identifies it without any internal identifier scheme, and a product can add its own "group again" control or reset on a data change. Depth is the column as drawn: the grouping transform shares the layout's rule (longest path from a root, leaves justified to the last column), so a group sits where its members would and two linked nodes never fold into one group. Keyboard focus follows a toggle — the topmost revealed member takes it on expand, the group's label on fold — and the focus ring is drawn for plain-text labels as well as chips. The chart owns that ring and switches the browser's outline off, so a mouse toggle never leaves one behind (Chrome paints its outline on focus moved by script even after a click). Palette colours follow the consumer's node order, so grouping never shifts the colour of a visible node.
+
+```tsx
+<Box height="346px" overflowY="auto">
+  <ChartSankeyWrapper>
+    <ChartSankey
+      data={{ nodes, links }}
+      labelUnit="txn"
+      labelDensity="compact"
+      showColorIndicator
+      groupNodesBelow={2}
+      formatGroupLabel={({ members }) => `Other methods (${members.length})`}
+      onExpandChange={({ groupDepth, isExpanded }) =>
+        track('Sankey Group Toggled', { groupDepth, isExpanded })
+      }
+    />
+  </ChartSankeyWrapper>
+</Box>
+```
 
 ### 3.8\. Axis and Grid Components
 

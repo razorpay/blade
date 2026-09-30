@@ -18,7 +18,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 const Page = (): React.ReactElement => (
   <StoryPageWrapper
     componentName="SankeyChart"
-    componentDescription="A Sankey flow diagram for visualising how a quantity is distributed across multiple stages. Built with Recharts for layout and React SVG for rendering. Suitable for payment routing, funnel analysis, and budget allocation."
+    componentDescription="A Sankey flow diagram for visualising how a quantity is distributed across multiple stages. Rendered as React SVG with Blade's own layout engine (a port of the Recharts Sankey layout). Suitable for payment routing, funnel analysis, and budget allocation. Small nodes can be grouped into an expandable 'Other' node with `groupNodesBelow`."
     apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Charts/_decisions/decisions.md"
   >
     <Heading size="large">Usage</Heading>
@@ -138,6 +138,12 @@ export default {
       description:
         "Starts each label with a dot in the node's colour, so a label can be matched to its bar and ribbons at a glance.",
     },
+    groupNodesBelow: {
+      control: { type: 'select', labels: { 0: 'off' } },
+      options: [0, 1, 2, 5],
+      description:
+        'Groups every node whose share of the total is below this percentage into one "Other" node per column. Click the group (or press Enter on it) to reveal its members in place at the same scale; click a revealed label to fold them again. 0 turns grouping off.',
+    },
     numLevels: {
       control: { type: 'select' },
       options: [2, 3, 4],
@@ -192,6 +198,10 @@ export default {
     testID: { table: { disable: true } },
     onNodeClick: { table: { disable: true } },
     onLinkClick: { table: { disable: true } },
+    formatGroupLabel: { table: { disable: true } },
+    defaultExpandedGroupDepths: { table: { disable: true } },
+    expandedGroupDepths: { table: { disable: true } },
+    onExpandChange: { table: { disable: true } },
   },
   parameters: {
     docs: { page: Page },
@@ -307,6 +317,7 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
   labelUnit = 'txn',
   labelDensity = 'normal',
   showColorIndicator = false,
+  groupNodesBelow = 0,
   numLevels = 4,
   nodesL1 = 1,
   nodesL2 = 4,
@@ -317,10 +328,12 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
 }: StoryProps) => {
   const counts = ([nodesL1, nodesL2, nodesL3, nodesL4] as number[]).slice(0, numLevels);
   const { nodes: generatedNodes, links } = generateChartData(counts);
-  // Apply the per-node color controls to the semantic outcome nodes.
+  // Apply the per-node color controls to the semantic outcome nodes. Outcomes are never
+  // grouped: a status is a category the reader wants to see, however small.
   const nodes = generatedNodes.map((node) => {
     if (node.name === 'Successful') return { ...node, color: successColor };
     if (node.name === 'Failed') return { ...node, color: failedColor };
+    if (NODE_NAMES[3].includes(node.name)) return { ...node, isGroupable: false };
     return node;
   });
   return (
@@ -335,14 +348,263 @@ export const DefaultSankeyChart: StoryFn<StoryProps> = ({
             labelUnit={labelUnit}
             labelDensity={labelDensity}
             showColorIndicator={showColorIndicator}
+            groupNodesBelow={groupNodesBelow > 0 ? groupNodesBelow : undefined}
             onNodeClick={action('onNodeClick')}
             onLinkClick={action('onLinkClick')}
+            onExpandChange={action('onExpandChange')}
           />
         </ChartSankeyWrapper>
       </Box>
     </ChartsWrapper>
   );
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * A long tail of small payment methods, grouped into "Other" with `groupNodesBelow`.
+ * Click the group's label (or focus it and press Enter) to reveal the members in place:
+ * bars and ribbons keep their size, every revealed node gets room for its label, and the
+ * drawing grows below the container. Click a revealed label to fold the group again.
+ * Outcome nodes opt out with `isGroupable: false`, so a small status is never hidden.
+ */
+const LONG_TAIL_DATA: { nodes: SankeyDataNode[]; links: SankeyDataLink[] } = {
+  nodes: [
+    { id: 'total', name: 'Total' },
+    { id: 'upi', name: 'UPI' },
+    { id: 'card', name: 'Card' },
+    { id: 'netbanking', name: 'Netbanking' },
+    { id: 'wallet', name: 'Wallet' },
+    { id: 'emi', name: 'EMI' },
+    { id: 'bnpl', name: 'Pay Later' },
+    { id: 'upi-intent', name: 'UPI Intent' },
+    { id: 'cod', name: 'Cash on delivery' },
+    { id: 'bank-transfer', name: 'Bank transfer' },
+    {
+      id: 'captured',
+      name: 'Captured',
+      color: 'data.background.categorical.green.subtle',
+      isGroupable: false,
+    },
+    {
+      id: 'failed',
+      name: 'Failed',
+      color: 'data.background.categorical.red.subtle',
+      isGroupable: false,
+    },
+    {
+      id: 'pending',
+      name: 'Pending',
+      color: 'data.background.categorical.gray.moderate',
+      isGroupable: false,
+    },
+    { id: 'refunded', name: 'Refunded', isGroupable: false },
+  ],
+  links: [
+    { source: 'total', target: 'upi', value: 61000 },
+    { source: 'total', target: 'card', value: 24000 },
+    { source: 'total', target: 'netbanking', value: 7800 },
+    { source: 'total', target: 'wallet', value: 3600 },
+    { source: 'total', target: 'emi', value: 1500 },
+    { source: 'total', target: 'bnpl', value: 900 },
+    { source: 'total', target: 'upi-intent', value: 600 },
+    { source: 'total', target: 'cod', value: 400 },
+    { source: 'total', target: 'bank-transfer', value: 200 },
+    { source: 'upi', target: 'captured', value: 54000 },
+    { source: 'upi', target: 'failed', value: 5800 },
+    { source: 'upi', target: 'pending', value: 700 },
+    { source: 'upi', target: 'refunded', value: 500 },
+    { source: 'card', target: 'captured', value: 20500 },
+    { source: 'card', target: 'failed', value: 3000 },
+    { source: 'card', target: 'pending', value: 200 },
+    { source: 'card', target: 'refunded', value: 300 },
+    { source: 'netbanking', target: 'captured', value: 6500 },
+    { source: 'netbanking', target: 'failed', value: 1200 },
+    { source: 'netbanking', target: 'pending', value: 100 },
+    { source: 'wallet', target: 'captured', value: 3200 },
+    { source: 'wallet', target: 'failed', value: 400 },
+    { source: 'emi', target: 'captured', value: 1300 },
+    { source: 'emi', target: 'failed', value: 200 },
+    { source: 'bnpl', target: 'captured', value: 780 },
+    { source: 'bnpl', target: 'failed', value: 120 },
+    { source: 'upi-intent', target: 'captured', value: 540 },
+    { source: 'upi-intent', target: 'failed', value: 60 },
+    { source: 'cod', target: 'captured', value: 360 },
+    { source: 'cod', target: 'failed', value: 40 },
+    { source: 'bank-transfer', target: 'captured', value: 180 },
+    { source: 'bank-transfer', target: 'pending', value: 20 },
+  ],
+};
+
+type GroupedStoryProps = {
+  groupNodesBelow: number;
+  labelDensity: ChartSankeyProps['labelDensity'];
+  showColorIndicator: boolean;
+};
+
+export const GroupedSmallNodesSankeyChart: StoryFn<GroupedStoryProps> = ({
+  groupNodesBelow = 2,
+  labelDensity = 'compact',
+  showColorIndicator = true,
+}) => (
+  <ChartsWrapper padding="spacing.0">
+    <Box width="100%" height="400px">
+      <ChartSankeyWrapper showTooltip>
+        <ChartSankey
+          data={LONG_TAIL_DATA}
+          labelUnit="txn"
+          labelDensity={labelDensity}
+          showColorIndicator={showColorIndicator}
+          groupNodesBelow={groupNodesBelow > 0 ? groupNodesBelow : undefined}
+          formatGroupLabel={({ members }) => `Other methods (${members.length})`}
+          onNodeClick={action('onNodeClick')}
+          onLinkClick={action('onLinkClick')}
+          onExpandChange={action('onExpandChange')}
+        />
+      </ChartSankeyWrapper>
+    </Box>
+  </ChartsWrapper>
+);
+
+GroupedSmallNodesSankeyChart.argTypes = {
+  groupNodesBelow: {
+    control: { type: 'select', labels: { 0: 'off' } },
+    options: [0, 1, 2, 5],
+    description: 'Share of the total, in percent, below which methods are grouped.',
+  },
+  labelDensity: { control: { type: 'select' }, options: ['normal', 'compact'] },
+  showColorIndicator: { control: { type: 'boolean' } },
+  // Hide the configurable controls inherited from meta — they don't apply here.
+  height: { table: { disable: true } },
+  showTooltip: { table: { disable: true } },
+  showLabels: { table: { disable: true } },
+  showLabelChip: { table: { disable: true } },
+  showPercentage: { table: { disable: true } },
+  labelUnit: { table: { disable: true } },
+  numLevels: { table: { disable: true } },
+  nodesL1: { table: { disable: true } },
+  nodesL2: { table: { disable: true } },
+  nodesL3: { table: { disable: true } },
+  nodesL4: { table: { disable: true } },
+  width: { table: { disable: true } },
+  successColor: { table: { disable: true } },
+  failedColor: { table: { disable: true } },
+} as Meta<GroupedStoryProps>['argTypes'];
+
+GroupedSmallNodesSankeyChart.args = {
+  groupNodesBelow: 2,
+  labelDensity: 'compact',
+  showColorIndicator: true,
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * The pattern for a fixed-height card: the wrapper sits in a `Box` with a set height and
+ * `overflowY="auto"`. Folded, the chart fits the card. Expanding a group keeps every bar and
+ * ribbon at the same size and grows the drawing below the fold, which the card then scrolls.
+ * Two columns have a tail here — methods and providers — so two groups can expand independently.
+ */
+const OPTIMIZER_DATA: { nodes: SankeyDataNode[]; links: SankeyDataLink[] } = {
+  nodes: [
+    { id: 'total', name: 'Total' },
+    { id: 'upi', name: 'UPI' },
+    { id: 'card', name: 'Card' },
+    { id: 'netbanking', name: 'Netbanking' },
+    { id: 'wallet', name: 'Wallet' },
+    { id: 'emi', name: 'EMI' },
+    { id: 'bnpl', name: 'Pay Later' },
+    { id: 'razorpay', name: 'Razorpay' },
+    { id: 'hdfc', name: 'HDFC' },
+    { id: 'payu', name: 'PayU' },
+    { id: 'billdesk', name: 'BillDesk' },
+    { id: 'ccavenue', name: 'CCAvenue' },
+    { id: 'paytm', name: 'Paytm' },
+    {
+      id: 'captured',
+      name: 'Captured',
+      color: 'data.background.categorical.green.subtle',
+      isGroupable: false,
+    },
+    {
+      id: 'failed',
+      name: 'Failed',
+      color: 'data.background.categorical.red.subtle',
+      isGroupable: false,
+    },
+    {
+      id: 'pending',
+      name: 'Pending',
+      color: 'data.background.categorical.gray.moderate',
+      isGroupable: false,
+    },
+  ],
+  links: [
+    { source: 'total', target: 'upi', value: 58000 },
+    { source: 'total', target: 'card', value: 30000 },
+    { source: 'total', target: 'netbanking', value: 8000 },
+    { source: 'total', target: 'wallet', value: 1900 },
+    { source: 'total', target: 'emi', value: 1300 },
+    { source: 'total', target: 'bnpl', value: 800 },
+    { source: 'upi', target: 'razorpay', value: 52000 },
+    { source: 'upi', target: 'hdfc', value: 6000 },
+    { source: 'card', target: 'razorpay', value: 22000 },
+    { source: 'card', target: 'hdfc', value: 5000 },
+    { source: 'card', target: 'payu', value: 1500 },
+    { source: 'card', target: 'billdesk', value: 900 },
+    { source: 'card', target: 'ccavenue', value: 600 },
+    { source: 'netbanking', target: 'razorpay', value: 6200 },
+    { source: 'netbanking', target: 'billdesk', value: 1000 },
+    { source: 'netbanking', target: 'ccavenue', value: 800 },
+    { source: 'wallet', target: 'paytm', value: 1900 },
+    { source: 'emi', target: 'hdfc', value: 1300 },
+    { source: 'bnpl', target: 'payu', value: 800 },
+    { source: 'razorpay', target: 'captured', value: 73000 },
+    { source: 'razorpay', target: 'failed', value: 6400 },
+    { source: 'razorpay', target: 'pending', value: 800 },
+    { source: 'hdfc', target: 'captured', value: 11000 },
+    { source: 'hdfc', target: 'failed', value: 1200 },
+    { source: 'hdfc', target: 'pending', value: 100 },
+    { source: 'payu', target: 'captured', value: 2000 },
+    { source: 'payu', target: 'failed', value: 300 },
+    { source: 'billdesk', target: 'captured', value: 1650 },
+    { source: 'billdesk', target: 'failed', value: 250 },
+    { source: 'ccavenue', target: 'captured', value: 1200 },
+    { source: 'ccavenue', target: 'failed', value: 200 },
+    { source: 'paytm', target: 'captured', value: 1700 },
+    { source: 'paytm', target: 'failed', value: 200 },
+  ],
+};
+
+export const GroupedSankeyChartInFixedHeightCard: StoryFn<typeof ChartSankeyWrapper> = () => (
+  <ChartsWrapper padding="spacing.0">
+    <Box
+      width="100%"
+      height="346px"
+      overflowY="auto"
+      backgroundColor="surface.background.gray.intense"
+      borderRadius="medium"
+    >
+      <ChartSankeyWrapper showTooltip>
+        <ChartSankey
+          data={OPTIMIZER_DATA}
+          labelUnit="txn"
+          labelDensity="compact"
+          showColorIndicator
+          groupNodesBelow={2}
+          formatGroupLabel={({ depth, members }) =>
+            `Other ${depth === 1 ? 'methods' : 'providers'} (${members.length})`
+          }
+          onNodeClick={action('onNodeClick')}
+          onLinkClick={action('onLinkClick')}
+          onExpandChange={action('onExpandChange')}
+        />
+      </ChartSankeyWrapper>
+    </Box>
+  </ChartsWrapper>
+);
+
+GroupedSankeyChartInFixedHeightCard.parameters = { controls: { disable: true } };
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -502,6 +764,7 @@ CustomNodeColorsSankeyChart.argTypes = {
   labelUnit: { table: { disable: true } },
   labelDensity: { table: { disable: true } },
   showColorIndicator: { table: { disable: true } },
+  groupNodesBelow: { table: { disable: true } },
   numLevels: { table: { disable: true } },
   nodesL1: { table: { disable: true } },
   nodesL2: { table: { disable: true } },
@@ -634,6 +897,8 @@ SankeyChartWithPlainTextLabels.parameters = { controls: { disable: true } };
 // ─── Story display names ──────────────────────────────────────────────────────
 
 DefaultSankeyChart.storyName = 'Default Sankey Chart';
+GroupedSmallNodesSankeyChart.storyName = 'Grouped Small Nodes';
+GroupedSankeyChartInFixedHeightCard.storyName = 'Grouped Small Nodes in a Fixed-Height Card';
 CompactLabelsSankeyChart.storyName = 'Compact Labels with Color Indicator';
 VerticalSankeyChart.storyName = 'Vertical Sankey Chart (native only)';
 VerticalSankeyChartWithoutLabels.storyName = 'Vertical Sankey Chart without Labels (native only)';

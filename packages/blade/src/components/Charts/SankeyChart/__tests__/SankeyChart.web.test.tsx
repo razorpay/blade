@@ -10,23 +10,26 @@ import type { SankeyDataNode } from '../types';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
-// ── ResponsiveContainer mock ───────────────────────────────────────────────────
-// Recharts' ResponsiveContainer uses ResizeObserver internally, which jsdom
-// does not support. Bypassing it by passing fixed dimensions directly to the
-// Sankey component makes rendering fully synchronous — no waitFor needed,
-// no open handles, Jest exits cleanly.
-jest.mock('recharts', () => {
-  const Recharts = jest.requireActual('recharts');
-  // require('react') inside the factory runs after jest.mock hoisting,
-  // so React is available at call time.
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { cloneElement, Children } = require('react');
-  return {
-    ...Recharts,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ResponsiveContainer: ({ children, height }: { children: any; height?: number }) =>
-      cloneElement(Children.only(children), { width: 800, height: height ?? 400 }),
-  };
+// ── Container size mock ────────────────────────────────────────────────────────
+// The wrapper measures itself with getBoundingClientRect (and observes resizes), but jsdom
+// lays nothing out, so every element measures 0×0. Reporting a fixed 800×400 makes the
+// chart render synchronously with stable geometry — no waitFor needed.
+const CONTAINER_RECT = {
+  width: 800,
+  height: 400,
+  top: 0,
+  left: 0,
+  right: 800,
+  bottom: 400,
+  x: 0,
+  y: 0,
+  toJSON: () => ({}),
+} as DOMRect;
+beforeAll(() => {
+  jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(CONTAINER_RECT);
+});
+afterAll(() => {
+  jest.restoreAllMocks();
 });
 
 // ── Test data ──────────────────────────────────────────────────────────────────
@@ -184,14 +187,23 @@ describe('SankeyChart — interactivity', () => {
     );
   });
 
+  it('shows a tooltip with the full node name and value on hover', () => {
+    const { container } = renderSankey({}, { labelUnit: 'txn' });
+    // Hover the node group of the first bar (events are attached to the node's <g>).
+    const firstNodeGroup = container.querySelector('svg g[opacity]')!;
+    fireEvent.mouseEnter(firstNodeGroup);
+    const tooltip = container.querySelector('[data-blade-component="ChartSankeyTooltip"]');
+    expect(tooltip).not.toBeNull();
+    expect(tooltip?.textContent).toMatch(/: [\d,]+ txn$/);
+    fireEvent.mouseLeave(firstNodeGroup);
+    expect(container.querySelector('[data-blade-component="ChartSankeyTooltip"]')).toBeNull();
+  });
+
   it('does not show tooltip when showTooltip is false', () => {
     const { container } = renderSankey({ showTooltip: false });
-    const firstRect = container.querySelector('svg rect')!;
-    fireEvent.mouseEnter(firstRect);
-    const tooltipContent = container.querySelector(
-      '[data-blade-component="ChartSankeyWrapper"] > div > div[style*="position: absolute"]',
-    );
-    expect(tooltipContent).toBeNull();
+    const firstNodeGroup = container.querySelector('svg g[opacity]')!;
+    fireEvent.mouseEnter(firstNodeGroup);
+    expect(container.querySelector('[data-blade-component="ChartSankeyTooltip"]')).toBeNull();
   });
 
   it('renders node groups with opacity attribute wired up for hover dimming', () => {
@@ -263,7 +275,7 @@ describe('SankeyChart — color token resolution', () => {
 // ── Layout ─────────────────────────────────────────────────────────────────────
 
 describe('SankeyChart — layout', () => {
-  it('renders ResponsiveContainer without a scroll wrapper', () => {
+  it('renders the chart without a scroll wrapper', () => {
     const { container } = renderSankey();
     // No overflowX scroll wrapper — chart fills available width directly.
     const divs = Array.from(container.querySelectorAll('div'));
@@ -322,7 +334,7 @@ describe('SankeyChart — edge cases', () => {
       </ChartSankeyWrapper>,
     );
 
-    // A node with no links has no value for Recharts to lay out, so it must be
+    // A node with no links has no value to lay out, so it must be
     // skipped rather than rendered with NaN x/y/height attributes.
     container.querySelectorAll('rect').forEach((rect) => {
       ['x', 'y', 'width', 'height'].forEach((attribute) => {
