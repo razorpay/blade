@@ -288,6 +288,7 @@ const _Carousel = (
   const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isProgrammaticScrollRef = React.useRef(false);
+  const targetSlideRef = React.useRef<number | null>(null);
   const programmaticScrollTimerRef = React.useRef<ReturnType<typeof setTimeout>>();
   const isMobile = platform === 'onMobile';
   const id = useId();
@@ -369,10 +370,12 @@ const _Carousel = (
     // causing the debounced handler to detect the old (pre-scroll) slide and call onChange with
     // a stale index — which breaks controlled Carousel behavior.
     isProgrammaticScrollRef.current = true;
+    targetSlideRef.current = slideIndex;
     clearTimeout(programmaticScrollTimerRef.current);
     programmaticScrollTimerRef.current = setTimeout(() => {
       isProgrammaticScrollRef.current = false;
-    }, 600);
+      targetSlideRef.current = null;
+    }, 1000);
 
     containerRef.current.scroll({
       left: left - startEndMargin,
@@ -471,7 +474,18 @@ const _Carousel = (
 
       const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
       const goTo = Math.ceil(slideIndex / _visibleItems);
-      setActiveSlide(() => goTo, isProgrammaticScrollRef.current);
+
+      if (isProgrammaticScrollRef.current) {
+        if (goTo === targetSlideRef.current) {
+          isProgrammaticScrollRef.current = false;
+          targetSlideRef.current = null;
+          clearTimeout(programmaticScrollTimerRef.current);
+          setActiveIndicator(goTo);
+        }
+        return;
+      }
+
+      setActiveSlide(() => goTo);
       setActiveIndicator(goTo);
     }, 50);
 
