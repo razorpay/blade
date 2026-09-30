@@ -288,6 +288,13 @@ const _ChatInput: React.ForwardRefRenderFunction<BladeElementRef, ChatInputProps
         left="spacing.0"
         right="spacing.0"
         zIndex={0}
+        /*
+         * This region stays mounted when there is no error — `BaseMotionEntryExit` keeps it for
+         * the exit animation — and a full-width transparent box directly above the composer will
+         * happily swallow clicks meant for whatever a consumer has put there. It only needs to be
+         * interactive when it is actually saying something.
+         */
+        pointerEvents={isError ? 'auto' : 'none'}
       >
         <BaseMotionEntryExit motionVariants={errorSlideVariants} isVisible={isError} type="inout">
           <BaseBox
