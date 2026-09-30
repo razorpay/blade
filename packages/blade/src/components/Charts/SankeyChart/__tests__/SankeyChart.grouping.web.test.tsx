@@ -462,6 +462,27 @@ describe('SankeyChart — grouping: focus and hover across a toggle', () => {
     expect(document.activeElement).toBe(document.body);
   });
 
+  it('hands focus over silently after a mouse click: no ring, no tooltip', () => {
+    const { container } = renderSankey();
+    const group = getGroupButton(container);
+    // A browser focuses a tabbable element on mousedown, before the click lands.
+    act(() => group.focus());
+    fireEvent.click(group);
+
+    const revealed = getRevealedButtons(container);
+    expect(revealed).toContain(document.activeElement);
+    expect(container.querySelectorAll('svg rect[stroke-width="2"]')).toHaveLength(0);
+    expect(getTooltipText(container)).toBeNull();
+    // The chart owns the focus ring; the browser's outline (which Chrome paints on focus moved
+    // by script, even after a click) is switched off on every label button.
+    revealed.forEach((button) => expect(button.style.outline).toBe('none'));
+
+    fireEvent.click(document.activeElement!);
+    expect(document.activeElement).toBe(getGroupButton(container));
+    expect(container.querySelectorAll('svg rect[stroke-width="2"]')).toHaveLength(0);
+    expect(getTooltipText(container)).toBeNull();
+  });
+
   it('draws a focus ring around a plain text label', () => {
     const { container } = renderSankey({ showLabelChip: false });
     expect(container.querySelectorAll('svg rect[stroke]')).toHaveLength(0);

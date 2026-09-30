@@ -911,11 +911,18 @@ const _ChartSankey = ({
   // A revealed member's label folds its group again; its bar behaves like any other node.
   // The label that toggles a group unmounts with the graph change, which would drop focus to
   // <body>: when it held focus, remember where to send it — the topmost revealed member on
-  // expand, the group's label on fold.
+  // expand, the group's label on fold — and how the toggle was made, so the replacement shows
+  // a ring only after a keyboard toggle. The browser's own `:focus-visible` guess is not usable
+  // for focus moved by script right after a click: Chrome paints a ring.
   const labelRefs = useRef(new Map<string, SVGGElement>());
-  const pendingFocusRef = useRef<{ groupId: string; isExpanded: boolean } | null>(null);
+  const pendingFocusRef = useRef<{
+    groupId: string;
+    isExpanded: boolean;
+    viaKeyboard: boolean;
+  } | null>(null);
+  const handoverRef = useRef<'keyboard' | 'pointer' | null>(null);
   const handleLabelActivate = useCallback(
-    (index: number, label: SVGGElement): void => {
+    (index: number, label: SVGGElement, viaKeyboard: boolean): void => {
       const entry = nodes[index];
       if (!entry) return;
       const group =
@@ -925,7 +932,7 @@ const _ChartSankey = ({
           : undefined);
       if (!group) return;
       if (typeof document !== 'undefined' && document.activeElement === label) {
-        pendingFocusRef.current = { groupId: group.id, isExpanded: !group.isExpanded };
+        pendingFocusRef.current = { groupId: group.id, isExpanded: !group.isExpanded, viaKeyboard };
       }
       toggleGroup(group);
     },
@@ -945,7 +952,12 @@ const _ChartSankey = ({
           .sort((a, b) => a.y - b.y)
           .map((node) => nodes[node.index]?.node.id)[0]
       : group.id;
-    if (targetId) labelRefs.current.get(targetId)?.focus();
+    const target = targetId ? labelRefs.current.get(targetId) : undefined;
+    if (!target) return;
+    // `onFocus` fires synchronously inside `focus()` and reads the handover kind from the ref.
+    handoverRef.current = pending.viaKeyboard ? 'keyboard' : 'pointer';
+    target.focus(pending.viaKeyboard ? undefined : { preventScroll: true });
+    handoverRef.current = null;
   });
 
   const handleLinkClick = useCallback(
@@ -1171,10 +1183,16 @@ const _ChartSankey = ({
           style={{ cursor: 'pointer' }}
         />
 
-        {/* Label — a group's label (and a revealed member's) is a button that toggles the group */}
+        {/* Label — a group's label (and a revealed member's) is a button that toggles the group.
+            The chart draws its own focus ring (see `focusStrokeColor`), so the browser's outline is
+            off: Chrome would paint it on focus moved by script after a click. */}
         {showLabels && (
           <g
-            style={{ pointerEvents: isInteractiveLabel ? 'auto' : 'none', cursor: 'pointer' }}
+            style={{
+              pointerEvents: isInteractiveLabel ? 'auto' : 'none',
+              cursor: 'pointer',
+              outline: 'none',
+            }}
             {...(isInteractiveLabel
               ? {
                   role: 'button',
@@ -1189,18 +1207,23 @@ const _ChartSankey = ({
                   },
                   onClick: (event: React.MouseEvent<SVGGElement>) => {
                     event.stopPropagation();
-                    handleLabelActivate(index, event.currentTarget);
+                    handleLabelActivate(index, event.currentTarget, false);
                   },
                   onKeyDown: (event: React.KeyboardEvent<SVGGElement>) => {
                     if (!isActivationKey(event.key)) return;
                     event.preventDefault();
                     event.stopPropagation();
-                    handleLabelActivate(index, event.currentTarget);
+                    handleLabelActivate(index, event.currentTarget, true);
                   },
                   onFocus: (event: React.FocusEvent<SVGGElement>) => {
-                    // Keyboard focus (`:focus-visible`) shows the ring and the tooltip. A mouse
-                    // click, or focus handed over after a toggle, adds nothing to the pointer's hover.
-                    if (!isFocusVisible(event.currentTarget)) return;
+                    // Keyboard focus shows the ring and the tooltip; pointer focus adds nothing to
+                    // the hover the pointer already set. Focus handed over after a toggle follows
+                    // the input that made the toggle, not the browser's `:focus-visible` guess.
+                    const handover = handoverRef.current;
+                    const isKeyboard = handover
+                      ? handover === 'keyboard'
+                      : isFocusVisible(event.currentTarget);
+                    if (!isKeyboard) return;
                     setFocusedNodeId(entry.node.id);
                     setHovered({ type: 'node', index });
                   },

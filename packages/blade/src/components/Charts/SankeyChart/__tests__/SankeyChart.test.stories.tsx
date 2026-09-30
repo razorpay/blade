@@ -96,6 +96,8 @@ TestGroupExpandAndFold.play = async () => {
   const revealed = getAllByRole('button', { expanded: true });
   await expect(revealed).toHaveLength(6);
   await expect(queryByRole('button', { name: /Other \(6\)/ })).toBeNull();
+  // A mouse toggle hands focus over without a focus ring.
+  await expect(root.querySelector('svg rect[stroke-width="2"]')).toBeNull();
 
   // The scale is locked: untouched bars keep their exact height.
   await expect(barHeightOf(root, 'UPI')).toBe(upiBefore);
@@ -113,6 +115,7 @@ TestGroupExpandAndFold.play = async () => {
   await waitFor(() => expect(getByRole('button', { name: /Other \(6\)/ })).toBeVisible());
   await expect(onExpandChange).toHaveBeenCalledTimes(2);
   await expect(onExpandChange.mock.calls[1][0]).toMatchObject({ isExpanded: false });
+  await expect(root.querySelector('svg rect[stroke-width="2"]')).toBeNull();
 };
 
 export const TestGroupKeyboard: StoryFn<typeof ChartSankey> = () => {
