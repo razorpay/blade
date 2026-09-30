@@ -1,0 +1,22 @@
+.github/scripts/run-slash.js
+  h_b23a6a8439c0dd 1-10,16-18,25,36-52,67-77
+.github/scripts/terminate-slash.js
+  h_b23a6a8439c0dd 1-4,10-12,19,30-36,41
+.github/workflows/slash-master-healer.yml
+  h_b23a6a8439c0dd 51-52
+.github/workflows/slash-pr-healer.yml
+  h_b23a6a8439c0dd 70-71
+.github/workflows/slash-review.yml
+  h_b23a6a8439c0dd 60-61,115-116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "14b8558df4af58b46053b1a7295f438bcd3cbee6",
+  "prompts": {},
+  "humans": {
+    "h_b23a6a8439c0dd": {
+      "author": "unknown"
+    }
+  }
+}
