@@ -13,17 +13,54 @@ export const NODE_WIDTH = 14;
 /** Minimum width for a label chip in px */
 export const CHIP_MIN_WIDTH = 80;
 /**
- * Maximum width for a label chip in px.
- * Fits most typical node names + humanized value + percentage on one line.
- * Content wider than (CHIP_MAX_WIDTH - horizontal padding) wraps to two lines.
+ * Maximum width for a label chip in px on **native**, where content wider than
+ * (CHIP_MAX_WIDTH - horizontal padding) wraps to two lines.
+ * The web chart renders single-line labels and caps them at `LABEL_MAX_WIDTH` instead.
  */
 export const CHIP_MAX_WIDTH = 160;
 /**
+ * Maximum width for a single-line label on **web** (chip or plain text), in px.
+ * Matches the 200px cap that axis label chips use across Blade charts
+ * (`MAX_WIDTH` in CommonChartComponents tokens). Content wider than this is truncated
+ * with an ellipsis — the name first, the value text only as a last resort.
+ */
+export const LABEL_MAX_WIDTH = 200;
+
+/**
+ * Free space kept between a label and the next column when the chart is narrow enough for the
+ * column gap, not `LABEL_MAX_WIDTH`, to set the label budget (web).
+ */
+export const LABEL_COLUMN_CLEARANCE = 8;
+/**
  * Fixed pixel budget reserved for the humanized value + percentage part of a label chip,
- * e.g. "1.24L txn  (100%)". Used when computing the dynamic right margin before
- * node values are available from Recharts layout.
+ * e.g. "1.24L txn  (100%)". Used by the **native** chart when computing the dynamic
+ * right margin before node values are available. The web chart measures the exact
+ * label text of every node instead.
  */
 export const CHIP_VALUE_BUDGET = 120;
+/**
+ * Diameter of the colour indicator dot rendered inside labels when `showColorIndicator`
+ * is set, in px. Gap to the text uses `theme.spacing[2]`.
+ */
+export const COLOR_INDICATOR_SIZE = 8;
+
+// ── Grouping (web) ─────────────────────────────────────────────────────────────
+/** Prefix of the synthetic node id that stands in for a column's grouped nodes */
+export const SANKEY_GROUP_ID_PREFIX = '__blade_sankey_group__';
+/** Colour token of a group node — neutral, so it never competes with real categories */
+export const GROUP_NODE_COLOR_TOKEN = 'data.background.categorical.gray.intense';
+/**
+ * Maximum width of a group node's single-line label, in px. A group label carries the member
+ * count and a trailing chevron on top of the value text, so it gets more room than
+ * `LABEL_MAX_WIDTH` before its name is truncated.
+ */
+export const GROUP_LABEL_MAX_WIDTH = 240;
+/** Size of the chevron drawn at the end of a group's label, in px (Blade icon `small`) */
+export const GROUP_CHEVRON_SIZE = 12;
+/** Members listed in a group's tooltip before it collapses the rest into "and n more" */
+export const TOOLTIP_MAX_MEMBERS = 6;
+/** Distance between the hovered shape and the tooltip, in px */
+export const TOOLTIP_OFFSET = 12;
 /** Minimum rendered height for a node bar in px — prevents invisible zero-height nodes */
 export const NODE_MIN_HEIGHT = 1;
 
@@ -65,4 +102,5 @@ export const LABEL_CAP_HEIGHT_RATIO = 0.72;
 export const componentIds = {
   ChartSankey: 'ChartSankey',
   ChartSankeyWrapper: 'ChartSankeyWrapper',
+  ChartSankeyTooltip: 'ChartSankeyTooltip',
 };

@@ -5,4 +5,5 @@ export type {
   ChartSankeyProps,
   SankeyDataNode,
   SankeyDataLink,
+  SankeyGroupExpandEvent,
 } from './types';

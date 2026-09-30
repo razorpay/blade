@@ -1,17 +1,5 @@
-// `import type` is erased at compile time — it produces no runtime dependency
-// on recharts in the native bundle. This matches the pattern used in
-// DonutChart/types.ts, which also uses `import type` for recharts types.
-//
-// Additionally, the `payload` field below uses `Platform.Select` to isolate the
-// recharts payload type to the web variant only (native resolves to `undefined`).
-// This is an extra isolation step introduced here because SankeyChart now has a
-// native implementation — DonutChart does not need this because it has no native
-// variant. Moving the import to a web-only file would fragment the shared type
-// definition and is not worth the trade-off.
-import type { TooltipContentProps } from 'recharts/types/component/Tooltip';
 import type { ChartsCategoricalColorToken } from '../CommonChartComponents/types';
 import type { ColorTheme } from '../utils';
-import type { Platform } from '~utils';
 import type { TestID, DataAnalyticsAttribute } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 
@@ -22,6 +10,32 @@ export type SankeyDataNode = {
   name: string;
   /** Optional typed Blade color token override, e.g. 'data.background.categorical.blue.moderate' */
   color?: ChartsCategoricalColorToken;
+  /**
+   * Whether `groupNodesBelow` may fold this node into its column's "Other" node.
+   * Set to `false` on nodes that must always stay visible, e.g. outcome statuses.
+   * Root nodes (no incoming links) are never grouped regardless of this flag.
+   *
+   * **Web-only.**
+   *
+   * @default true
+   */
+  isGroupable?: boolean;
+};
+
+/** A column's grouped nodes, as reported to `onExpandChange` */
+export type SankeyGroupExpandEvent = {
+  /** Column depths of every group that is expanded after this change */
+  expandedGroupDepths: number[];
+  /**
+   * Zero-based column depth of the group that was toggled (the leftmost column is 0).
+   * Groups are keyed by their column depth — at most one group per column — mirroring
+   * Accordion's numeric `expandedIndex`, so no internal identifier scheme is
+   * part of the public API.
+   */
+  groupDepth: number;
+  isExpanded: boolean;
+  /** Ids of the nodes folded into the toggled group */
+  memberIds: string[];
 };
 
 export type SankeyDataLink = {
@@ -31,29 +45,6 @@ export type SankeyDataLink = {
   target: string;
   /** Flow magnitude — determines ribbon thickness between source and target */
   value: number;
-};
-
-export type SankeyTooltipContentProps = {
-  active?: boolean;
-  /**
-   * Recharts tooltip payload — isolated behind `Platform.Select` so the native
-   * build never depends on recharts types.
-   *
-   * - **Web**: resolves to the real recharts `TooltipContentProps` payload type.
-   * - **Native**: resolves to `undefined` — the native implementation renders its
-   *   own tooltip overlay from the computed Sankey layout and does not consume
-   *   this prop.
-   *
-   * Note: This type identity changed from the original
-   * `TooltipContentProps<number, string>['payload']` to a `Platform.Select`
-   * wrapper. Consumers importing this type directly should be aware that
-   * `payload` is `undefined` on native platforms.
-   */
-  payload?: Platform.Select<{
-    web: TooltipContentProps<number, string>['payload'];
-    native: undefined;
-  }>;
-  labelUnit?: string;
 };
 
 export type ChartSankeyWrapperProps = {
@@ -108,6 +99,30 @@ export type ChartSankeyProps = {
   /** Unit appended to node value in label chip, e.g. "txn" or "₹M" */
   labelUnit?: string;
   /**
+   * Vertical density of the node labels.
+   *
+   * - `'normal'` — 28px chips with 8px vertical padding (default).
+   * - `'compact'` — 20px chips with 4px vertical padding. Use when a column stacks many thin
+   *   nodes, so neighbouring labels have room before they touch.
+   *
+   * Labels are always a single line; a name that does not fit the chip is truncated with an
+   * ellipsis and shown in full in the tooltip.
+   *
+   * **Web-only.** The native SankeyChart ignores this prop.
+   *
+   * @default 'normal'
+   */
+  labelDensity?: 'normal' | 'compact';
+  /**
+   * When true, each label starts with a small dot filled with the node's colour, so a label
+   * can be matched to its bar and ribbons at a glance — useful when labels sit away from thin bars.
+   *
+   * **Web-only.** The native SankeyChart ignores this prop.
+   *
+   * @default false
+   */
+  showColorIndicator?: boolean;
+  /**
    * Custom value formatter for node labels.
    * Defaults to Indian number notation (k / L / Cr).
    *
@@ -118,9 +133,52 @@ export type ChartSankeyProps = {
    * @example formatValue={(v) => Intl.NumberFormat('en-US', { notation: 'compact' }).format(v)}
    */
   formatValue?: (value: number) => string;
-  /** Called when a node bar is clicked. Receives the node data and its zero-based index. */
+  /**
+   * Groups every node whose share of the total is below this percentage into one "Other" node
+   * per column, so a long tail of thin nodes no longer crowds the chart. The share uses the
+   * same denominator as the label percentage: the total outflow of the root nodes.
+   *
+   * - A group needs at least two members; a lone small node stays as it is.
+   * - Root nodes and nodes with `isGroupable: false` are never grouped.
+   * - Clicking a group (or pressing Enter/Space on it) reveals its members in place: bars and
+   *   ribbons keep their size, every revealed node gets room for its label, and the drawing
+   *   grows below the container. Wrap `ChartSankeyWrapper` in a `Box` with a fixed height and
+   *   `overflowY="auto"` to let it scroll. Clicking a revealed node's label folds the group again.
+   *
+   * Recommended values: `2` or `5`. Unset turns grouping off.
+   *
+   * **Web-only.** The native SankeyChart ignores this prop.
+   */
+  groupNodesBelow?: number;
+  /**
+   * Label of a group node. Receives the group's column depth and the grouped nodes.
+   * @default ({ members }) => `Other (${members.length})`
+   */
+  formatGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
+  /**
+   * Column depths of the groups that start expanded (uncontrolled). A group's key is its
+   * zero-based column depth as drawn (the leftmost column is 0; a node with no outgoing flow
+   * sits in the last column) — at most one group exists per column, mirroring Accordion's
+   * numeric `defaultExpandedIndex`. A depth without a group is ignored.
+   */
+  defaultExpandedGroupDepths?: number[];
+  /**
+   * Column depths of the expanded groups (controlled). Pass `[]` to fold everything.
+   * Keyed by depth like `defaultExpandedGroupDepths`.
+   */
+  expandedGroupDepths?: number[];
+  /** Called when a group is expanded or folded, by click or keyboard */
+  onExpandChange?: (event: SankeyGroupExpandEvent) => void;
+  /**
+   * Called when a node bar is clicked. Receives the node data and its zero-based index in
+   * `data.nodes`. Not called for a synthetic group node — use `onExpandChange` for those.
+   */
   onNodeClick?: (node: SankeyDataNode, index: number) => void;
-  /** Called when a link ribbon is clicked. Receives the link data and its zero-based index. */
+  /**
+   * Called when a link ribbon is clicked. Receives the link data and its zero-based index in
+   * `data.links`. A ribbon that ends at a group node reports the aggregated link (with the
+   * group's id as `source` or `target`) and the index of its first constituent link.
+   */
   onLinkClick?: (link: SankeyDataLink, index: number) => void;
 };
 
