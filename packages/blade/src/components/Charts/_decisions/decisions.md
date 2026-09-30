@@ -672,16 +672,20 @@ Uses a `ChartSankeyWrapper` + `ChartSankey` composition pattern, consistent with
 
 #### `ChartSankey` Props
 
-| Prop             | Type                                                   | Required | Default                  | Description                                                       |
-| ---------------- | ------------------------------------------------------ | -------- | ------------------------ | ----------------------------------------------------------------- |
-| `data`           | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅       | —                        | Flat node list and directed flow connections                      |
-| `showLabels`     | `boolean`                                              | ❌       | `true`                   | Show labels to the right of each node bar                         |
-| `showLabelChip`  | `boolean`                                              | ❌       | `true`                   | Render labels as Blade chip cards; `false` renders plain SVG text |
-| `showPercentage` | `boolean`                                              | ❌       | `true`                   | Show percentage of total flow alongside value in each label       |
-| `labelUnit`      | `string`                                               | ❌       | —                        | Unit string appended to node value, e.g. `"txn"` or `"₹M"`        |
-| `formatValue`    | `(value: number) => string`                            | ❌       | Indian notation (k/L/Cr) | Custom value formatter for node labels                            |
-| `onNodeClick`    | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked                                 |
-| `onLinkClick`    | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked                              |
+| Prop                 | Type                                                   | Required | Default                  | Description                                                       |
+| -------------------- | ------------------------------------------------------ | -------- | ------------------------ | ----------------------------------------------------------------- |
+| `data`               | `{ nodes: SankeyDataNode[]; links: SankeyDataLink[] }` | ✅       | —                        | Flat node list and directed flow connections                      |
+| `showLabels`         | `boolean`                                              | ❌       | `true`                   | Show labels to the right of each node bar                         |
+| `showLabelChip`      | `boolean`                                              | ❌       | `true`                   | Render labels as Blade chip cards; `false` renders plain SVG text |
+| `showPercentage`     | `boolean`                                              | ❌       | `true`                   | Show percentage of total flow alongside value in each label       |
+| `labelUnit`          | `string`                                               | ❌       | —                        | Unit string appended to node value, e.g. `"txn"` or `"₹M"`        |
+| `labelDensity`       | `'normal' \| 'compact'`                                | ❌       | `'normal'`               | Chip height: 28px, or 20px for columns of many thin nodes (web)   |
+| `showColorIndicator` | `boolean`                                              | ❌       | `false`                  | Start each label with a dot in the node's colour (web)            |
+| `formatValue`        | `(value: number) => string`                            | ❌       | Indian notation (k/L/Cr) | Custom value formatter for node labels                            |
+| `onNodeClick`        | `(node: SankeyDataNode, index: number) => void`        | ❌       | —                        | Called when a node bar is clicked                                 |
+| `onLinkClick`        | `(link: SankeyDataLink, index: number) => void`        | ❌       | —                        | Called when a link ribbon is clicked                              |
+
+Labels on web are always a single line. A name that does not fit the 200px label budget is truncated with an ellipsis (the value text is kept whole; the tooltip shows the full name), a share between 0 and 1 percent reads `<1%`, and the chart reserves right margin only for the last column's labels.
 
 Example —
 

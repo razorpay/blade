@@ -13,6 +13,9 @@ SankeyChart is a flow diagram that shows how a quantity moves across multiple st
 - Each link `source` and `target` must match the `id` of a node
 - Node `color` accepts only categorical color tokens
 - `orientation` prop has an effect only on React Native. The web chart always renders horizontally
+- `labelDensity` and `showColorIndicator` have an effect only on web. The native chart ignores them
+- Labels on web are always a single line. A long name is truncated with an ellipsis and the tooltip shows the full name
+- A share between 0 and 1 percent is shown as `<1%`
 - The default value formatter truncates (does not round) values in Indian notation (k / L / Cr)
 
 ## TypeScript Types
@@ -89,6 +92,17 @@ type ChartSankeyProps = {
   /** Unit added after the node value in the label, e.g. "txn" or "₹M" */
   labelUnit?: string;
   /**
+   * Vertical density of the labels. 'compact' renders 20px chips instead of 28px.
+   * Use it when a column stacks many thin nodes. Web only.
+   * @default 'normal'
+   */
+  labelDensity?: 'normal' | 'compact';
+  /**
+   * When true, each label starts with a dot in the node's colour. Web only.
+   * @default false
+   */
+  showColorIndicator?: boolean;
+  /**
    * Custom value formatter for node labels.
    * Default is Indian number notation (k / L / Cr), truncated.
    */
@@ -110,6 +124,7 @@ type ChartsCategoricalColorToken = `data.background.categorical.${ChartColorCate
 - Give the wrapper a parent with a set height (for example, `Box` with `height="320px"`).
 - Use `nodeColorOverride` and `linkColorOverride` for a single-color diagram.
 - Use `formatValue` when you need a number format that is not Indian notation.
+- Use `labelDensity="compact"` with `showColorIndicator` when a column has many thin nodes, so labels stay readable and each label can be matched to its bar.
 
 **Don't**
 
@@ -135,7 +150,11 @@ function PaymentFlowSankeyChart() {
               { id: 'total', name: 'Total' },
               { id: 'upi', name: 'UPI' },
               { id: 'card', name: 'Card' },
-              { id: 'success', name: 'Successful', color: 'data.background.categorical.green.subtle' },
+              {
+                id: 'success',
+                name: 'Successful',
+                color: 'data.background.categorical.green.subtle',
+              },
               { id: 'failed', name: 'Failed', color: 'data.background.categorical.red.subtle' },
             ],
             links: [
@@ -186,9 +205,7 @@ function SingleColorSankeyChart() {
           }}
           showLabelChip={false}
           showPercentage={false}
-          formatValue={(value) =>
-            Intl.NumberFormat('en-US', { notation: 'compact' }).format(value)
-          }
+          formatValue={(value) => Intl.NumberFormat('en-US', { notation: 'compact' }).format(value)}
         />
       </ChartSankeyWrapper>
     </Box>

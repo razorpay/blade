@@ -108,6 +108,30 @@ export type ChartSankeyProps = {
   /** Unit appended to node value in label chip, e.g. "txn" or "₹M" */
   labelUnit?: string;
   /**
+   * Vertical density of the node labels.
+   *
+   * - `'normal'` — 28px chips with 8px vertical padding (default).
+   * - `'compact'` — 20px chips with 4px vertical padding. Use when a column stacks many thin
+   *   nodes, so neighbouring labels have room before they touch.
+   *
+   * Labels are always a single line; a name that does not fit the chip is truncated with an
+   * ellipsis and shown in full in the tooltip.
+   *
+   * **Web-only.** The native SankeyChart ignores this prop.
+   *
+   * @default 'normal'
+   */
+  labelDensity?: 'normal' | 'compact';
+  /**
+   * When true, each label starts with a small dot filled with the node's colour, so a label
+   * can be matched to its bar and ribbons at a glance — useful when labels sit away from thin bars.
+   *
+   * **Web-only.** The native SankeyChart ignores this prop.
+   *
+   * @default false
+   */
+  showColorIndicator?: boolean;
+  /**
    * Custom value formatter for node labels.
    * Defaults to Indian number notation (k / L / Cr).
    *
