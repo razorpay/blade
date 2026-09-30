@@ -41,8 +41,11 @@ Or, if you already run Blade MCP, ask it to `create_blade_skill`. Both put the s
 Hooks are dependency-free Node scripts and exit immediately in projects that depend on neither `@razorpay/blade` nor `@razorpay/blade-svelte`.
 
 - `SessionStart`: detects which Blade packages the project uses (from `package.json` and the lockfile) and nudges the agent to use `blade`, `blade-svelte` or both.
-- `PostToolUse`: records edited files and Blade docs read this turn, from either skill.
-- `Stop`: sends one `Blade Plugin Tool Called` event to Segment with `git diff --numstat` counts for the edited files, replacing the MCP's model-reported lines-of-code metric. Set `BLADE_SEGMENT_KEY` to enable sending; nothing is sent without it.
+- `PreToolUse`: snapshots a code file just before the agent's first edit to it in a turn.
+- `PostToolUse`: records edited files and the Blade docs read this turn from either skill, through the Read tool or shell commands such as `cat`.
+- `Stop`: diffs each edited file against its snapshot (new files count in full), sends one `Blade Plugin Tool Called` event with the line counts, then deletes the snapshots. Each turn reports only the agent's own changes, once. This replaces the MCP's model-reported lines-of-code metric.
+
+Events go to Segment only when `BLADE_SEGMENT_KEY` is set; the key is not committed to this repo. Set `BLADE_PLUGIN_DEBUG=1` to also append every event to `events.log` in the plugin data directory (`$CLAUDE_PLUGIN_DATA`, or `$TMPDIR/blade-plugin`) to check the numbers locally. Session files older than 7 days are deleted automatically.
 
 ## Development
 

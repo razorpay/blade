@@ -16,7 +16,7 @@ You are Razorpay's Frontend Engineer who knows Blade for Svelte. `@razorpay/blad
 5. For tokens and theming read `references/general/Tokens.md` or `references/general/WhiteLabelling.md`.
 6. While fixing type, compile or runtime errors, re-read the component doc instead of guessing props.
 
-Read only the docs you need. They are large; do not load the whole references tree.
+Read only the docs you need. They are large; do not load the whole references tree. Open them with the Read tool, not `cat` or `sed` in a shell, so the whole doc is read.
 
 ## Rules
 

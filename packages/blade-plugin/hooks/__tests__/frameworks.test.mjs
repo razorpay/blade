@@ -8,10 +8,10 @@ import { fileURLToPath } from 'url';
 import {
   detectFrameworks,
   getBladeVersions,
-  getDocName,
   getNudge,
   lockfileMentions,
 } from '../utils/frameworks.mjs';
+import { getDocsRead } from '../utils/docs.mjs';
 
 const hooksDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -85,17 +85,22 @@ test('nudge names the skill for each framework', () => {
 });
 
 test('doc names keep React paths bare and prefix other skills', () => {
-  assert.equal(getDocName('/x/skills/blade/references/components/Button.md'), 'components/Button');
-  assert.equal(
-    getDocName('/x/skills/blade-svelte/references/components/Button.md'),
+  const read = (filePath) => getDocsRead('Read', { file_path: filePath });
+  assert.deepEqual(read('/x/skills/blade/references/components/Button.md'), ['components/Button']);
+  assert.deepEqual(read('/x/skills/blade-svelte/references/components/Button.md'), [
     'blade-svelte/components/Button',
-  );
-  assert.equal(
-    getDocName('C:\\x\\skills\\blade\\references\\general\\Tokens.md'),
+  ]);
+  assert.deepEqual(read('C:\\x\\skills\\blade\\references\\general\\Tokens.md'), [
     'general/Tokens',
+  ]);
+  assert.deepEqual(read('/x/skills/blade-upgrade/SKILL.md'), []);
+  assert.deepEqual(read('/x/src/Button.md'), []);
+  assert.deepEqual(
+    getDocsRead('Bash', {
+      command: 'cd /p/skills/blade-svelte && cat references/components/Card.md',
+    }),
+    ['blade-svelte/components/Card'],
   );
-  assert.equal(getDocName('/x/skills/blade-upgrade/SKILL.md'), null);
-  assert.equal(getDocName('/x/src/Button.md'), null);
 });
 
 test('SessionStart hook prints the svelte nudge in a svelte project', () => {

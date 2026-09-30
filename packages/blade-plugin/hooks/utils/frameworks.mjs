@@ -78,14 +78,3 @@ export const getNudge = (frameworks) => {
     .join(' and ');
   return `This project uses more than one Blade package. Before writing or reviewing UI code, invoke ${perFramework}, then read the component docs it points to. Do not mix APIs between them.`;
 };
-
-// React docs keep bare names (components/Button) so existing dashboards match;
-// other Blade skills are prefixed (blade-svelte/components/Button).
-const DOC_PATH_REGEX = /\/skills\/(blade[\w-]*)\/references\/(.+)\.md$/;
-
-export const getDocName = (filePath) => {
-  const match = DOC_PATH_REGEX.exec(filePath.replace(/\\/g, '/'));
-  if (!match) return null;
-  const [, skill, doc] = match;
-  return skill === 'blade' ? doc : `${skill}/${doc}`;
-};

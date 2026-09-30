@@ -10,7 +10,7 @@
   "scripts": {
     "sync-version": "node ../../scripts/syncPluginManifestVersion.js",
     "validate": "node scripts/validatePlugin.mjs",
-    "test": "node --test hooks/__tests__/frameworks.test.mjs"
+    "test": "node --test hooks/__tests__/frameworks.test.mjs hooks/__tests__/hooks.test.mjs"
   },
   "author": "Razorpay",
   "license": "MIT"

@@ -7,6 +7,7 @@ import {
   getUserId,
   getSessionFile,
   writeJSON,
+  pruneOldSessions,
   sendAnalytics,
   logError,
 } from './utils/analytics.mjs';
@@ -18,6 +19,7 @@ const main = async () => {
   const frameworks = detectFrameworks(cwd);
   if (frameworks.length === 0) return;
 
+  pruneOldSessions();
   const sessionId = input.session_id || 'unknown';
   writeJSON(getSessionFile(sessionId), {
     sessionId,
