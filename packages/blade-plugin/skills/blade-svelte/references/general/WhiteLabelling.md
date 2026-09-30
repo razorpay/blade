@@ -1,0 +1,52 @@
+# White Labelling - createTheme
+
+> **Blade Svelte note:** this file is shared with the React `blade` skill. Token names, values and concepts are identical in `@razorpay/blade-svelte` because both packages read them from `@razorpay/blade-core`. Code samples below are React. In Svelte, import components from `@razorpay/blade-svelte/components` and theme helpers from `@razorpay/blade-core/tokens`, and pass the `createTheme` result to the Svelte `BladeProvider` the same way. See `Usage.md` for the Svelte setup.
+
+You may want to use Blade with brands other than Razorpay.
+
+To make this possible, Blade allows you to customize the theme of the components to match your brand with the `createTheme` function.
+
+## API Reference
+
+### `createTheme()`:
+
+> Returns a `ThemeTokens` object that can be passed to `themeTokens` prop of `BladeProvider` to customize the branding of all components.
+
+`createTheme()` accepts an object with the following keys:
+
+#### `brandColor`:
+
+- This is the primary color of your brand.
+- `createTheme` will generate a color palatte using this brand color which will then be used across Blade components to match your brand.
+- You can pass any valid CSS color value (rgb, hex or hsl) format to this key.
+
+## Usage
+
+If your application has multiple `BladeProvider` components, you can pass the `brandColor` to each of them to customize the branding of the components inside them.
+
+```jsx
+import { createTheme } from '@razorpay/blade/tokens';
+
+const { theme: customThemeTokens } = createTheme({
+  brandColor: '#83003D', // 'rgba(131, 0, 61)', 'hsl(332, 100%, 26%)' are also valid values
+});
+
+const Wrapper = () => {
+  return (
+    <BladeProvider themeTokens={customThemeTokens}>
+      <App />
+    </BladeProvider>
+  );
+};
+```
+
+### Light & Dark theme support
+
+Custom branded themes also contain support for light and dark color schemes. You can pass the `colorScheme` prop to `BladeProvider` to switch between light and dark color schemes.
+
+```jsx
+// or colorScheme="light"
+<BladeProvider themeTokens={customThemeTokens} colorScheme="dark">
+  <App />
+</BladeProvider>
+```

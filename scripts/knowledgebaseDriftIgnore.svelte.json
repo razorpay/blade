@@ -1,0 +1,28 @@
+{
+  "values": {
+    "reason": "CSS-wide keywords, vendor-prefixed and rarely used CSS values from csstype. Docs don't need to list them.",
+    "ignore": [
+      "inherit",
+      "initial",
+      "revert",
+      "revert-layer",
+      "unset",
+      "anchor-center",
+      "math-auto"
+    ],
+    "ignorePrefixes": ["-moz-", "-webkit-", "-ms-"]
+  },
+  "components": {},
+  "skippedDocs": {
+    "Amount": "blade-svelte exports AmountTypeProps/AmountCommonProps but no AmountProps",
+    "Spinner": "Spinner is an alias of BaseSpinner; no SpinnerProps export",
+    "Icons": "Icons share IconProps; there is no IconsProps export"
+  },
+  "missingDocs": {
+    "BladeProvider": "Documented in general/Usage.md with setup, colorScheme and componentConfig"
+  },
+  "propsTypes": {
+    "reason": "Components whose exported {Name}Props is generic and resolves to any without a type argument. Drift and lint compare this type instead, on both the code and doc side.",
+    "Text": "TextBodyVariant | TextCaptionVariant"
+  }
+}

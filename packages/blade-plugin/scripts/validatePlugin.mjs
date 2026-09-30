@@ -1,7 +1,7 @@
 // Structural checks for the blade plugin that run in CI without Claude Code:
 // manifests parse and agree on name/version, every skill has valid frontmatter,
-// the package.json version matches the manifests, and the SKILL.md docs the
-// main skill promises actually exist.
+// the package.json version matches the manifests, and each knowledgebase
+// skill (blade, blade-svelte) lists exactly the component docs on disk.
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -38,7 +38,9 @@ const parseFrontmatter = (content) => {
 };
 
 const skillsDir = path.join(root, 'skills');
-const skillNames = fs.readdirSync(skillsDir).filter((d) => fs.statSync(path.join(skillsDir, d)).isDirectory());
+const skillNames = fs
+  .readdirSync(skillsDir)
+  .filter((d) => fs.statSync(path.join(skillsDir, d)).isDirectory());
 for (const skill of skillNames) {
   const file = path.join(skillsDir, skill, 'SKILL.md');
   if (!fs.existsSync(file)) {
@@ -54,46 +56,82 @@ for (const skill of skillNames) {
   if (fm.name !== skill) errors.push(`skills/${skill}: frontmatter name "${fm.name}" != directory`);
   if (!fm.description) errors.push(`skills/${skill}: description missing`);
   else if (fm.description.length > 250) errors.push(`skills/${skill}: description over 250 chars`);
-  else if (!/Use when/i.test(fm.description)) errors.push(`skills/${skill}: description needs a "Use when" clause`);
+  else if (!/Use when/i.test(fm.description))
+    errors.push(`skills/${skill}: description needs a "Use when" clause`);
   if (content.split('\n').length > 500) errors.push(`skills/${skill}/SKILL.md over 500 lines`);
 }
 
-const mainSkill = fs.readFileSync(path.join(skillsDir, 'blade', 'SKILL.md'), 'utf8');
-const versionLine = mainSkill.match(/version: '([^']+)'/);
-if (!versionLine || versionLine[1] !== pkg.version) {
-  errors.push(`skills/blade/SKILL.md metadata.version must be '${pkg.version}'`);
-}
+// Knowledgebase skills: one per framework. Each is self-contained because
+// `npx skills add` copies a single skill directory.
+const KNOWLEDGEBASE_SKILLS = {
+  blade: [
+    'components/index.md',
+    'patterns/index.md',
+    'general/index.md',
+    'styled-props-types.md',
+    'common-utility-types.md',
+  ],
+  'blade-svelte': ['components/index.md', 'general/index.md', 'general/Usage.md'],
+};
 
-const refs = path.join(skillsDir, 'blade', 'references');
-for (const required of [
-  'components/index.md',
-  'patterns/index.md',
-  'general/index.md',
-  'styled-props-types.md',
-  'common-utility-types.md',
-]) {
-  if (!fs.existsSync(path.join(refs, required))) errors.push(`references/${required} missing`);
-}
+for (const [skill, requiredRefs] of Object.entries(KNOWLEDGEBASE_SKILLS)) {
+  const skillFile = path.join(skillsDir, skill, 'SKILL.md');
+  if (!fs.existsSync(skillFile)) {
+    errors.push(`knowledgebase skill skills/${skill} missing`);
+    continue;
+  }
+  const skillContent = fs.readFileSync(skillFile, 'utf8');
+  const versionLine = skillContent.match(/version: '([^']+)'/);
+  if (!versionLine || versionLine[1] !== pkg.version) {
+    errors.push(`skills/${skill}/SKILL.md metadata.version must be '${pkg.version}'`);
+  }
 
-const listed = mainSkill.match(/## Available components\n\n([^\n]+)/);
-if (listed) {
-  for (const name of listed[1].split(',').map((s) => s.trim())) {
-    if (!fs.existsSync(path.join(refs, 'components', `${name}.md`))) {
-      errors.push(`SKILL.md lists ${name} but references/components/${name}.md is missing`);
+  const refs = path.join(skillsDir, skill, 'references');
+  for (const required of requiredRefs) {
+    if (!fs.existsSync(path.join(refs, required)))
+      errors.push(`skills/${skill}/references/${required} missing`);
+  }
+
+  const componentsDir = path.join(refs, 'components');
+  const listed = skillContent.match(/## Available components\n\n([^\n]+)/);
+  if (!listed) {
+    errors.push(`skills/${skill}/SKILL.md needs an "## Available components" list`);
+    continue;
+  }
+  const listedNames = listed[1].split(',').map((s) => s.trim());
+  const onDisk = fs.existsSync(componentsDir)
+    ? fs
+        .readdirSync(componentsDir)
+        .filter((f) => f.endsWith('.md') && f !== 'index.md')
+        .map((f) => f.replace(/\.md$/, ''))
+    : [];
+  const indexContent = fs.existsSync(path.join(componentsDir, 'index.md'))
+    ? fs.readFileSync(path.join(componentsDir, 'index.md'), 'utf8')
+    : '';
+  for (const name of listedNames) {
+    if (!onDisk.includes(name)) {
+      errors.push(
+        `skills/${skill}/SKILL.md lists ${name} but references/components/${name}.md is missing`,
+      );
     }
   }
-  const onDisk = fs
-    .readdirSync(path.join(refs, 'components'))
-    .filter((f) => f.endsWith('.md') && f !== 'index.md')
-    .map((f) => f.replace(/\.md$/, ''));
-  const listedSet = new Set(listed[1].split(',').map((s) => s.trim()));
   for (const name of onDisk) {
-    if (!listedSet.has(name)) errors.push(`references/components/${name}.md exists but SKILL.md does not list it`);
+    if (!listedNames.includes(name)) {
+      errors.push(
+        `skills/${skill}/references/components/${name}.md exists but SKILL.md does not list it`,
+      );
+    }
+    if (!indexContent.includes(`**${name}**`)) {
+      errors.push(`skills/${skill}/references/components/index.md has no line for ${name}`);
+    }
   }
 }
 
 for (const entry of fs.readdirSync(root, { recursive: true, withFileTypes: true })) {
-  if (entry.isSymbolicLink()) errors.push(`symlink not allowed in plugin: ${path.join(entry.parentPath ?? entry.path, entry.name)}`);
+  if (entry.isSymbolicLink())
+    errors.push(
+      `symlink not allowed in plugin: ${path.join(entry.parentPath ?? entry.path, entry.name)}`,
+    );
 }
 
 if (errors.length) {

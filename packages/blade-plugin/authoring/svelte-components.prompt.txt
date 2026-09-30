@@ -1,0 +1,77 @@
+Write the blade-svelte knowledgebase doc for {ComponentName} and save it as
+packages/blade-plugin/skills/blade-svelte/references/components/{ComponentName}.md.
+Do not touch any other file.
+
+Sources, in this order of authority:
+1. packages/blade-svelte/src/components/{Dir}/**/types.ts (the props contract)
+2. packages/blade-svelte/src/components/{Dir}/**/*.svelte (runtime behaviour, throws, defaults)
+3. packages/blade-svelte/src/components/{Dir}/*.stories.svelte (real usage)
+4. packages/blade-core/src/styles/{Dir}/slots.ts when the component supports styleOverride
+5. packages/blade-plugin/skills/blade/references/components/{ComponentName}.md (the React doc) for
+   guidance wording only. Keep a React guideline only if the Svelte component has the same prop
+   and behaviour. Never copy React types or React examples.
+
+Use exactly these sections, with the same heading spelling as the React docs:
+
+## Component Name
+
+## Description
+
+3-4 lines an agent can use to pick this component. Mention sub-components that are documented
+in this file (e.g. CardHeader, CardBody).
+
+## Important Constraints
+
+Hard rules the component enforces (throws, logs an error, or ignores input). Take them from the
+.svelte source. Write "None" if there are none. Note missing parts when the Svelte component is a
+partial port of React (for example sub-components React has that Svelte does not export).
+
+## TypeScript Types
+
+One short sentence saying these are the props the component accepts, then ```typescript blocks.
+- Copy `{ComponentName}Props` and the public props of every documented sub-component from
+  types.ts verbatim, keeping `type` vs `interface`, JSDoc and `@default` tags.
+- Inline small helper unions (sizes, colors) as their own `type`.
+- Flatten `extends`/intersections of local helper types into the doc: every type name the doc
+  uses must be declared in the doc, except `StyledPropsBlade` (reference it by name), and
+  `Snippet` / `Component` (from 'svelte', available without importing).
+- Declare `IconComponent` in the doc when a prop uses it, as
+  `type IconComponent = Component<{ size?: IconSize; color?: IconColor }>;` with `IconSize`
+  declared and `IconColor` either copied or declared as `string` with a JSDoc pointing to
+  Icons.md.
+- Skip private props (leading `_`), `Base*` types and internal props documented as @private.
+- When the component accepts `styleOverride`, write `styleOverride?: Partial<Record<Slot, string>>`
+  with `type {ComponentName}Slot = 'root' | ...` copied from blade-core slots.ts.
+- The doc's `{ComponentName}Props` must match the exported `{ComponentName}Props` prop for prop;
+  `yarn check:knowledgebase-drift --target svelte {ComponentName}` compares them.
+
+## Usage Guidelines
+
+**Do** and **Don't** bullet lists, one actionable line each. Cover component choice (vs similar
+components), composition, prop combinations, content length, accessibility. Every Don't names
+the right alternative. Don't restate the description or the constraints.
+
+## Examples
+
+One `### Title` + one-line description + one ```svelte block per distinct use case (usually 2-3).
+Each example combines several props in a realistic Razorpay scenario (payments, settlements,
+merchant settings). Rules for every example:
+- A complete component: `<script lang="ts">` with all imports, then markup.
+- Svelte 5 runes only: `$state`, `$derived`, `$props`. Never `export let`, `$:`, `on:click`,
+  `<slot>`, `createEventDispatcher`.
+- Events are callback props exactly as named in types.ts (`onClick`, `onChange`, ...), and use
+  the callback's real argument shape.
+- Rich children and named parts use `{#snippet name()}...{/snippet}` exactly as the stories do.
+- Import components and icons only from '@razorpay/blade-svelte/components'. Use only icons that
+  blade-svelte exports (see references/general/AvailableIcons.md).
+- No inline `style=` attributes or hardcoded colors. `Box` has NO style props (no display, gap,
+  padding, flexDirection...); lay it out with theme.css utility classes via `className`, e.g.
+  `<Box className="display-flex flex-col gap-spacing-4">` (list in general/Usage.md "Layout").
+- Pass only props that exist on the component's Props type. The lint checks every attribute and
+  snippet name against it (e.g. `Text` sizes/weights must match `TextProps`).
+- Accessibility props (`accessibilityLabel`, labels) where the component supports them.
+
+Check your doc before finishing:
+  node scripts/checkKnowledgebaseDrift.js --target svelte {ComponentName}
+  node scripts/lintKnowledgebase.js --target svelte
+Both must report nothing for your file.

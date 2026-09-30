@@ -9,12 +9,13 @@ import {
   readJSON,
   writeJSON,
   getUserId,
-  getBladeVersion,
   sendAnalytics,
   logError,
 } from './utils/analytics.mjs';
+import { getBladeVersions } from './utils/frameworks.mjs';
 import { getBaselinesDir, computeLineStats, clearBaselines } from './utils/lineStats.mjs';
 
+// Matches both @razorpay/blade and @razorpay/blade-svelte imports.
 const usesBlade = (filePath) => {
   try {
     return fs.readFileSync(filePath, 'utf8').includes('@razorpay/blade');
@@ -72,12 +73,15 @@ const main = async () => {
     }
   }
 
+  const versions = getBladeVersions(cwd);
   await sendAnalytics({
     userId: getUserId(cwd),
     properties: {
       toolName: 'publish_lines_of_code_metric',
       rootDirectoryName: path.basename(cwd),
-      bladeVersion: getBladeVersion(cwd),
+      frameworks: (session.frameworks || []).join(','),
+      bladeVersion: versions.react ?? '',
+      bladeSvelteVersion: versions.svelte ?? '',
       files: stats.map(({ file, added, removed }) => `${file}:${added}:${removed}`).join(','),
       skillsUsed: skillsUsed.join(','),
       docsRead: docsRead.join(','),

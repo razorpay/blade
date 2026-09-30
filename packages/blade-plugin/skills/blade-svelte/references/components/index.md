@@ -1,0 +1,46 @@
+# Blade Svelte Components Index
+
+One line per component in `@razorpay/blade-svelte`. Read `<Name>.md` in this directory for full props, constraints, usage guidelines and examples. A component that is not listed here does not exist in blade-svelte yet.
+
+- **Accordion**: Accordion stacks related content sections vertically and lets users expand one section at a time, for FAQs, checkout steps or settings groups.
+- **ActionList**: ActionList is a vertical list of selectable or actionable rows, used on its own, inside a `BottomSheet`, or inside a `DropdownOverlay` (see Dropdown.md).
+- **Alert**: Alert is an inline, contextual message that tells users about a significant change, an error or an explanation inside a page section.
+- **Amount**: Amount formats and displays a monetary value with its currency symbol or code, grouping separators and decimals.
+- **AnnouncementBanner**: AnnouncementBanner is a slim, full-bleed, single-line banner for one short, system-wide promotional or informational message at the top or bottom edge of a page.
+- **AppBar**: AppBar is the header bar at the top of a compact screen, such as a checkout, webview or embedded merchant flow.
+- **Avatar**: Avatar is a standard visual for a user or a business: a profile image, initials made from `name`, or an icon.
+- **Badge**: Badge is a small, color-coded, non-interactive label for short metadata such as a payment status, a count or a category.
+- **BottomSheet**: BottomSheet is a mobile-first overlay that slides up from the bottom of the viewport to show a form, a selection or extra detail without leaving the page.
+- **Box**: Box is a minimal layout primitive: a polymorphic element (`div`, `section`, `header`, `nav`, ...) that forwards `className` and standard HTML attributes to the DOM.
+- **Breadcrumb**: Breadcrumb shows where the current page sits in the app's hierarchy and links back to its parent pages, for example Home / Payments / Settlements.
+- **Button**: Button triggers an action such as submitting a payment, saving settings or opening a flow.
+- **Card**: Card is an elevated container that groups related content and actions on one topic, such as a product summary, a metric or a selectable plan.
+- **Checkbox**: Checkbox is a form control for selecting one or more independent options, or for confirming a single binary choice that takes effect on submit (for example "I accept the terms").
+- **Chip**: Chip is a compact, selectable pill for short 1-2 word options such as payment method filters or quick feedback answers.
+- **Code**: Code renders short inline code, such as API keys, IDs, environment variables or method names, in a monospace font.
+- **Collapsible**: Collapsible shows and hides one block of secondary content behind a trigger, for patterns like "View price breakdown" or "Show more details".
+- **Counter**: Counter is a small, non-interactive pill that shows a number, such as pending disputes, unread notifications or failed webhooks.
+- **CounterInput**: CounterInput is a numeric field with built-in minus and plus buttons and manual typing, for small integer quantities such as item counts, subscription seats or retry attempts.
+- **Divider**: Divider is a thin line that separates content sections or groups within a layout.
+- **Dropdown**: Dropdown opens a floating overlay under a trigger and holds an `ActionList` of options, for row action menus, sort menus and compact single or multiple selection.
+- **Heading**: Heading renders page and section titles with Blade heading typography.
+- **IconButton**: IconButton is a clickable icon with a transparent background for compact actions such as closing a modal, clearing an input or dismissing a banner.
+- **Icons**: Blade icons are Svelte components such as `CheckCircleIcon`, `CreditCardIcon` and `InfoIcon`, exported from `@razorpay/blade-svelte/components`.
+- **InputGroup**: InputGroup lays out related inputs (an address, card details, bank account details) as one connected block with a shared label, help, error or success text, size and disabled state.
+- **Link**: Link is inline, text-styled navigation or action.
+- **Modal**: Modal is a centered dialog that appears in front of the page to ask for a decision or input, blocking everything behind it until it closes.
+- **OTPInput**: OTPInput is a row of single-character fields (4, 6 or 8) for one-time passwords, verification codes and PINs.
+- **PasswordInput**: PasswordInput is a masked text field for passwords, API secrets and other credentials.
+- **PhoneNumberInput**: PhoneNumberInput is a phone number field with a country selector (flag button), a dial-code prefix and a clear button.
+- **Radio**: Radio lets users select exactly one option from a small set of mutually exclusive choices, typically 2-5 options with descriptive labels or per-option help text.
+- **SearchInput**: SearchInput is a text field preset for search and filtering: it shows a leading search icon, a clear button once there is a value, and an optional loading spinner for async lookups.
+- **SegmentedControl**: SegmentedControl lets users pick one value from 2-5 short options shown side by side in a pill bar, such as a report time period or a chart view.
+- **Skeleton**: Skeleton is a pulsing placeholder block shown while content loads.
+- **Spinner**: Spinner is a looping animation that shows indeterminate loading, such as fetching transactions or verifying a bank account.
+- **Switch**: Switch is a toggle for a single on/off setting that takes effect immediately, with no separate submit step, such as enabling international payments or auto-capture.
+- **Tabs**: Tabs switch between related views of the same page context, such as the Payments, Refunds and Disputes views of a transactions page.
+- **Text**: Text renders body copy and supporting text with Blade typography tokens.
+- **TextInput**: TextInput is a single-line text field for names, emails, URLs, numbers, UPI IDs and other short values.
+- **Toast**: Toast shows short, transient feedback, such as "Payment captured" or "Refund failed", in a stack at the bottom-left of the viewport.
+- **Tooltip**: Tooltip shows a short, read-only hint about its trigger in a small floating bubble with an arrow.
+- **TrustBadge**: TrustBadge shows that a business is trusted by Razorpay.

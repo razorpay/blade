@@ -56,6 +56,7 @@ Accordion, ActionList, Alert, Amount, AnimateInteractions, AnnouncementBanner, A
 
 ## Related skills
 
+- Svelte code (`.svelte` files) that uses `@razorpay/blade-svelte`: `blade-svelte`. Its APIs differ; do not apply this skill's docs to Svelte.
 - Upgrading Blade or reading release notes: `blade-upgrade`
 - Starting a new Vite + React + Blade app: `blade-new-project`
 - Converting a Figma frame to Blade code: `blade-figma-to-code`
