@@ -30,6 +30,17 @@
     "utils.native.js",
     "coverageUtils.d.ts"
   ],
+  "sideEffects": [
+    "*.css",
+    "./fonts.css",
+    "./build/lib/**/components/DatePicker/utils.js",
+    "./build/lib/**/components/DatePicker/shiftTimezone.js",
+    "./build/lib/**/components/DatePicker/DatePicker.native.js",
+    "./build/lib/**/components/Input/PhoneNumberInput/PhoneNumberInput.native.js",
+    "./build/lib/**/utils/bladeCoverage.js",
+    "./build/lib/**/node_modules/**",
+    "./build/lib/**/_virtual/**"
+  ],
   "keywords": [
     "design system",
     "react",
