@@ -176,7 +176,9 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 y="10.543699625039949"
               />
               <g
-                style="pointer-events: none;"
+                aria-label="Total, 7.2k"
+                role="img"
+                style="cursor: pointer;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
@@ -228,7 +230,9 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 y="7.999999999999998"
               />
               <g
-                style="pointer-events: none;"
+                aria-label="UPI, 4k (56%)"
+                role="img"
+                style="cursor: pointer;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
@@ -280,7 +284,9 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 y="60"
               />
               <g
-                style="pointer-events: none;"
+                aria-label="Card, 3.2k (44%)"
+                role="img"
+                style="cursor: pointer;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
@@ -332,7 +338,9 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 y="8.000000000000004"
               />
               <g
-                style="pointer-events: none;"
+                aria-label="Successful, 6.3k (88%)"
+                role="img"
+                style="cursor: pointer;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"
@@ -384,7 +392,9 @@ exports[`SankeyChart — rendering matches snapshot 1`] = `
                 y="83"
               />
               <g
-                style="pointer-events: none;"
+                aria-label="Failed, 900 (13%)"
+                role="img"
+                style="cursor: pointer;"
               >
                 <rect
                   fill="hsla(0, 0%, 100%, 1)"

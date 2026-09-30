@@ -34,6 +34,7 @@ import {
   VERTICAL_LABEL_RESERVE,
 } from './tokens';
 import { INTER_ADVANCE, INTER_DEFAULT_ADVANCE } from './interAdvance';
+import { formatSharePercentage } from './labelUtils';
 import { useTheme } from '~components/BladeProvider';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -897,7 +898,7 @@ const _ChartSankeyWrapper = ({
         const name = nodeData?.name ?? '';
         const humanized = formatter(node.value);
         const levelCount = layout.countPerDepth[node.depth] ?? 1;
-        const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
+        const pct = formatSharePercentage(totalValue > 0 ? (node.value / totalValue) * 100 : 0);
         const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
         const valueWithPct =
           showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;
@@ -1135,7 +1136,9 @@ const _ChartSankeyWrapper = ({
                     } else {
                       const humanized = formatter(node.value);
                       const levelCount = layout.countPerDepth[node.depth] ?? 1;
-                      const pct = totalValue > 0 ? Math.round((node.value / totalValue) * 100) : 0;
+                      const pct = formatSharePercentage(
+                        totalValue > 0 ? (node.value / totalValue) * 100 : 0,
+                      );
                       const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
                       const labelValue =
                         showPercentage && levelCount > 1 ? `${valueText}  (${pct}%)` : valueText;

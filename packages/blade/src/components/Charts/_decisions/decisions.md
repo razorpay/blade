@@ -434,13 +434,13 @@ band for that period. In a grouped chart every bar can carry its own range, so t
 revealed **on hover, one at a time**: several translucent bands behind opaque grouped bars read as
 mush, and only the hovered bar's range is being asked about.
 
-| Prop (on `ChartBar`) | Type      | Default            | Description                                             |
-| -------------------- | --------- | ------------------ | ------------------------------------------------------- |
-| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set |
-| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                   |
-| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range             |
-| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour        |
-| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only   |
+| Prop (on `ChartBar`) | Type      | Default            | Description                                              |
+| -------------------- | --------- | ------------------ | -------------------------------------------------------- |
+| `rangeLowerDataKey`  | `string`  | -                  | Lower (min) bound key; band shows when this + upper set  |
+| `rangeUpperDataKey`  | `string`  | -                  | Upper (max) bound key                                    |
+| `rangeName`          | `string`  | `'Industry range'` | Legend + tooltip label for this bar's range              |
+| `rangeColor`         | color tok | the bar's colour   | Band fill; defaults to the bar's resolved colour         |
+| `showRangeLegend`    | `boolean` | `false`            | Legend swatch for the band; off since it's hover-only    |
 
 - Hovering a bar fades the other series and shades the hovered category, so the revealed band reads
   against its own bar. This per-series fade applies **only** to charts that declare a band — a plain
@@ -457,7 +457,7 @@ mush, and only the hovered bar's range is being asked about.
   (the unfiltered case) — that one is always visible and gets a legend swatch by default.
 - **Geometry:** the range's **y** comes from two invisible bound series so it folds into the
   y-domain and a band taller than the bars is never clipped. Its **x** is re-anchored to the owning
-  series' bar centres, read from the rendered bar rects — a bound series sits at the _category_
+  series' bar centres, read from the rendered bar rects — a bound series sits at the *category*
   centre, which would stack every band on the same x in a grouped chart. Edges are straight chords
   (a bar chart has no trend curve to follow) flat-extended to both plot edges. See
   _Bar Chart with Reference Band_ and _Grouped Bar Chart with Multiple Reference Bands_ stories.

@@ -31,6 +31,7 @@ import {
   NODE_WIDTH,
   CHIP_MIN_WIDTH,
   LABEL_MAX_WIDTH,
+  LABEL_COLUMN_CLEARANCE,
   COLOR_INDICATOR_SIZE,
   NODE_MIN_HEIGHT,
   TOOLTIP_Z_INDEX,
@@ -49,13 +50,17 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 
 // ─── Private context (mirrors DonutContainerContext pattern) ──────────────────
-// Passes wrapper-level config down to ChartSankey without prop drilling.
+// Passes wrapper-level config — and the measured container size — down to ChartSankey.
 
 type SankeyChartContextType = {
   showTooltip: boolean;
   nodeColorOverride?: ChartsCategoricalColorToken;
   linkColorOverride?: ChartsCategoricalColorToken;
   defaultColorTokens: ChartsCategoricalColorToken[];
+  /** Measured width of the wrapper, 0 until the first layout pass */
+  width: number;
+  /** Measured height of the wrapper, 0 until the first layout pass */
+  height: number;
 };
 
 // Default is null — rendering ChartSankey outside ChartSankeyWrapper is detected and
@@ -170,11 +175,41 @@ const _ChartSankeyWrapper = ({
     return mapping;
   }, [data.nodes, nodeColorOverride, defaultColorTokens]);
 
+  // Recharts' ResponsiveContainer hands its size to the chart through Recharts' own context, not
+  // through props. The label budget needs the width before layout, so the same measurement is
+  // taken from the container's `onResize` (one observer, no second one racing it) and passed
+  // down through our context.
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  const handleResize = useCallback((nextWidth: number, nextHeight: number): void => {
+    setSize((prev) =>
+      prev.width === nextWidth && prev.height === nextHeight
+        ? prev
+        : { width: nextWidth, height: nextHeight },
+    );
+  }, []);
+
+  const contextValue = useMemo(
+    () => ({
+      showTooltip,
+      nodeColorOverride,
+      linkColorOverride,
+      defaultColorTokens,
+      width: size.width,
+      height: size.height,
+    }),
+    [
+      showTooltip,
+      nodeColorOverride,
+      linkColorOverride,
+      defaultColorTokens,
+      size.width,
+      size.height,
+    ],
+  );
+
   return (
     <CommonChartComponentsContext.Provider value={{ chartName: 'sankey', dataColorMapping }}>
-      <SankeyChartContext.Provider
-        value={{ showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens }}
-      >
+      <SankeyChartContext.Provider value={contextValue}>
         <BaseBox
           {...metaAttribute({ name: componentIds.ChartSankeyWrapper, testID })}
           {...makeAnalyticsAttribute(restProps)}
@@ -183,7 +218,7 @@ const _ChartSankeyWrapper = ({
           {...restProps}
           position="relative"
         >
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height="100%" onResize={handleResize}>
             {children}
           </ResponsiveContainer>
         </BaseBox>
@@ -242,6 +277,14 @@ type NodeLabelArgs = {
   indicatorReserve: number;
   semibold: number | string;
   regular: number | string;
+};
+
+/** A node's fitted label: what is drawn, how wide it is, and its full name for assistive tech */
+type NodeLabel = {
+  name: string;
+  labelValue: string;
+  width: number;
+  accessibleName: string;
 };
 
 function renderChipLabel({
@@ -380,8 +423,17 @@ const _ChartSankey = ({
       moduleName: 'ChartSankey',
     });
   }
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { showTooltip, nodeColorOverride, linkColorOverride, defaultColorTokens } = sankeyCtx!;
+  const {
+    showTooltip,
+    nodeColorOverride,
+    linkColorOverride,
+    defaultColorTokens,
+    width: measuredWidth,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  } = sankeyCtx!;
+  // The wrapper's measurement is the chart width in the browser; the `width` prop only arrives
+  // where a test stands in for ResponsiveContainer.
+  const chartWidth = width ?? measuredWidth;
 
   // ── Theme tokens ──────────────────────────────────────────────────────────
   const { theme } = useTheme();
@@ -492,73 +544,126 @@ const _ChartSankey = ({
     return data.nodes.map((_, i) => Math.max(inSum[i], outSum[i]));
   }, [data.nodes, rechartsLinks]);
 
-  // Label text and width per node. Labels are single-line: the value text is kept whole and
-  // the name is truncated with an ellipsis so the label fits LABEL_MAX_WIDTH. The tooltip
-  // always shows the full name.
-  const nodeLabels = useMemo(() => {
-    const semibold = theme.typography.fonts.weight.semibold;
-    const regular = theme.typography.fonts.weight.regular;
-    const formatter = formatValue ?? humanizeIndian;
-    const measureName = (text: string): number => measureText(text, semibold);
-    const measureValue = (text: string): number => measureText(text, regular);
-    // Chip padding only exists in chip mode; plain text gets the whole budget.
-    const framePad = showLabelChip ? CHIP_PAD_X * 2 : 0;
-    const maxContentWidth = LABEL_MAX_WIDTH - framePad - INDICATOR_RESERVE;
-
-    return data.nodes.map((node, index) => {
+  // Label text and width for one node at a given width budget. Labels are single-line: the value
+  // text is kept whole and the name is truncated with an ellipsis so the label fits the budget.
+  // The full name stays reachable — hovering the label opens the node tooltip, and the label's
+  // accessible name carries it.
+  const buildNodeLabel = useCallback(
+    (node: SankeyDataNode, index: number, maxLabelWidth: number): NodeLabel => {
+      const semibold = theme.typography.fonts.weight.semibold;
+      const regular = theme.typography.fonts.weight.regular;
+      const formatter = formatValue ?? humanizeIndian;
+      const measureName = (text: string): number => measureText(text, semibold);
+      const measureValue = (text: string): number => measureText(text, regular);
+      // Chip padding only exists in chip mode; plain text gets the whole budget.
+      const framePad = showLabelChip ? CHIP_PAD_X * 2 : 0;
       const value = nodeValues[index] ?? 0;
       const depth = nodeDepthInfo.depthOf.get(node.id) ?? 0;
       const levelCount = nodeDepthInfo.countPerDepth.get(depth) ?? 1;
       const share = totalValue > 0 ? (value / totalValue) * 100 : 0;
       const humanized = formatter(value);
       const valueText = labelUnit != null ? `${humanized} ${labelUnit}` : humanized;
-      const fullValueText =
-        showPercentage && levelCount > 1
-          ? `${valueText}  (${formatSharePercentage(share)}%)`
-          : valueText;
-      const fitted = fitLabelToWidth({
-        name: node.name,
-        valueText: fullValueText,
-        maxContentWidth,
-        gap: TEXT_GAP,
-        measureName,
-        measureValue,
-      });
+      const withShare = showPercentage && levelCount > 1;
+      const fullValueText = withShare
+        ? `${valueText}  (${formatSharePercentage(share)}%)`
+        : valueText;
+      const fit = (text: string): ReturnType<typeof fitLabelToWidth> =>
+        fitLabelToWidth({
+          name: node.name,
+          valueText: text,
+          maxContentWidth: maxLabelWidth - framePad - INDICATOR_RESERVE,
+          gap: TEXT_GAP,
+          measureName,
+          measureValue,
+        });
+      let fitted = fit(fullValueText);
+      // When the column gap, not the 200px budget, sets the width and it leaves the name almost
+      // nothing, the share goes before the name does: "… 6.2k txn (6…" says nothing, "UPI 6.2k txn"
+      // still does. The accessible name (below) keeps the share.
+      if (withShare && maxLabelWidth < LABEL_MAX_WIDTH && fitted.name.length <= 4) {
+        fitted = fit(valueText);
+      }
       const contentWidth = INDICATOR_RESERVE + fitted.nameWidth + TEXT_GAP + fitted.valueWidth;
       const width = showLabelChip
         ? Math.max(CHIP_MIN_WIDTH, contentWidth + framePad)
         : contentWidth;
-      return { name: fitted.name, labelValue: fitted.valueText, width };
-    });
-  }, [
-    data.nodes,
-    nodeValues,
-    nodeDepthInfo,
-    totalValue,
-    formatValue,
-    labelUnit,
-    showPercentage,
-    showLabelChip,
-    measureText,
-    theme,
-    CHIP_PAD_X,
-    TEXT_GAP,
-    INDICATOR_RESERVE,
-  ]);
+      return {
+        name: fitted.name,
+        labelValue: fitted.valueText,
+        width,
+        accessibleName: `${node.name}, ${fullValueText.replace(/\s+/g, ' ')}`,
+      };
+    },
+    [
+      nodeValues,
+      nodeDepthInfo,
+      totalValue,
+      formatValue,
+      labelUnit,
+      showPercentage,
+      showLabelChip,
+      measureText,
+      theme,
+      CHIP_PAD_X,
+      TEXT_GAP,
+      INDICATOR_RESERVE,
+    ],
+  );
+
+  // Every label at the full budget; the last column's widths set the right margin below.
+  const nodeLabels = useMemo(
+    () => data.nodes.map((node, index) => buildNodeLabel(node, index, LABEL_MAX_WIDTH)),
+    [data.nodes, buildNodeLabel],
+  );
+
+  // Recharts' 'justify' alignment also draws every node without outgoing links in the last column.
+  const isLastColumn = useMemo(() => {
+    const hasOutgoing = new Set(rechartsLinks.map((l) => l.source));
+    return data.nodes.map(
+      (node, index) =>
+        (nodeDepthInfo.depthOf.get(node.id) ?? 0) === nodeDepthInfo.maxDepth ||
+        !hasOutgoing.has(index),
+    );
+  }, [data.nodes, rechartsLinks, nodeDepthInfo]);
 
   // Dynamic right margin — room for the labels of the rightmost column only. Labels in earlier
   // columns sit in the gap before the next column, so reserving margin for them just shrank the chart.
   const dynamicRightMargin = useMemo(() => {
     if (!showLabels) return theme.spacing[3];
-    const hasOutgoing = new Set(rechartsLinks.map((l) => l.source));
-    const widest = data.nodes.reduce((max, node, index) => {
-      const depth = nodeDepthInfo.depthOf.get(node.id) ?? 0;
-      // Recharts' 'justify' alignment also draws nodes without outgoing links in the last column.
-      const isLastColumn = depth === nodeDepthInfo.maxDepth || !hasOutgoing.has(index);
-      return isLastColumn ? Math.max(max, nodeLabels[index]?.width ?? 0) : max;
-    }, 0);
+    const widest = nodeLabels.reduce(
+      (max, label, index) => (isLastColumn[index] ? Math.max(max, label.width) : max),
+      0,
+    );
     return widest + CHIP_GAP + theme.spacing[3];
-  }, [showLabels, data.nodes, rechartsLinks, nodeDepthInfo, nodeLabels, CHIP_GAP, theme]);
+  }, [showLabels, nodeLabels, isLastColumn, CHIP_GAP, theme]);
+
+  // Labels in earlier columns live in the gap before the next column. Recharts spaces columns
+  // evenly across the plot, so on a narrow chart that gap is smaller than LABEL_MAX_WIDTH: their
+  // budget shrinks to the free space minus a clearance, and a name truncates instead of running
+  // into the next column. The value text is never cut, so it is the floor. Wide charts are
+  // unaffected: the budget only drops when the gap does.
+  const fittedLabels = useMemo(() => {
+    if (!showLabels || !(chartWidth > 0) || nodeDepthInfo.maxDepth === 0) return nodeLabels;
+    const plotWidth = chartWidth - theme.spacing[3] - dynamicRightMargin;
+    const columnPitch = (plotWidth - NODE_WIDTH) / nodeDepthInfo.maxDepth;
+    const gapBudget = Math.floor(columnPitch - NODE_WIDTH - CHIP_GAP - LABEL_COLUMN_CLEARANCE);
+    const budget = Math.max(CHIP_MIN_WIDTH, Math.min(LABEL_MAX_WIDTH, gapBudget));
+    if (budget >= LABEL_MAX_WIDTH) return nodeLabels;
+    return nodeLabels.map((label, index) =>
+      isLastColumn[index] ? label : buildNodeLabel(data.nodes[index], index, budget),
+    );
+  }, [
+    showLabels,
+    chartWidth,
+    nodeDepthInfo.maxDepth,
+    nodeLabels,
+    isLastColumn,
+    dynamicRightMargin,
+    buildNodeLabel,
+    data.nodes,
+    theme,
+    CHIP_GAP,
+  ]);
 
   // ── Opacity helpers ────────────────────────────────────────────────────────
   const getNodeOpacity = useCallback(
@@ -594,7 +699,7 @@ const _ChartSankey = ({
     (props: NodeProps): React.ReactElement => {
       const { x, y, width, height: nodeHeight, index } = props;
       const nodeData = data.nodes[index] as SankeyDataNode | undefined;
-      const label = nodeLabels[index];
+      const label = fittedLabels[index];
       if (!nodeData || !label) return <g />;
       if (!hasFiniteGeometry(x, y, width, nodeHeight)) return <g />;
 
@@ -628,9 +733,11 @@ const _ChartSankey = ({
             style={{ cursor: 'pointer' }}
           />
 
-          {/* Label — delegated to renderChipLabel / renderPlainTextLabel helpers */}
+          {/* Label — takes the pointer like the bar, so hovering a truncated name opens the node
+              tooltip with the full name (and clicking it counts as a node click). Assistive tech
+              reads the full name and value from the group, never the truncated text. */}
           {showLabels && (
-            <g style={{ pointerEvents: 'none' }}>
+            <g role="img" aria-label={label.accessibleName} style={{ cursor: 'pointer' }}>
               {(showLabelChip ? renderChipLabel : renderPlainTextLabel)({
                 labelX,
                 chipY,
@@ -663,7 +770,7 @@ const _ChartSankey = ({
     },
     [
       data.nodes,
-      nodeLabels,
+      fittedLabels,
       nodeColorOverride,
       defaultColorTokens,
       resolveColor,

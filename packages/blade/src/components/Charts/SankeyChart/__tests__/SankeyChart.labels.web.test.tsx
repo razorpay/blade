@@ -8,10 +8,14 @@
  * Run with: SHARD='' yarn test:react --testPathPattern=SankeyChart.labels
  */
 import React from 'react';
+import { fireEvent } from '@testing-library/react';
 import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart';
 import type { ChartSankeyProps, SankeyDataLink, SankeyDataNode } from '../types';
+import { LABEL_COLUMN_CLEARANCE, LABEL_MAX_WIDTH } from '../tokens';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
+// The chart width ResponsiveContainer would measure; a test may narrow it and must restore it.
+let mockContainerWidth = 800;
 jest.mock('recharts', () => {
   const Recharts = jest.requireActual('recharts');
   // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -20,7 +24,7 @@ jest.mock('recharts', () => {
     ...Recharts,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ResponsiveContainer: ({ children, height }: { children: any; height?: number }) =>
-      cloneElement(Children.only(children), { width: 800, height: height ?? 400 }),
+      cloneElement(Children.only(children), { width: mockContainerWidth, height: height ?? 400 }),
   };
 });
 
@@ -199,5 +203,109 @@ describe('SankeyChart — right margin', () => {
     const { container: withLabels } = renderSankey();
     const { container: withoutLabels } = renderSankey({ showLabels: false });
     expect(lastColumnX(withoutLabels)).toBeGreaterThan(lastColumnX(withLabels));
+  });
+});
+
+describe('SankeyChart — the full name of a truncated label', () => {
+  const longName = 'Netbanking through corporate current accounts';
+  const longNames: SankeyDataNode[] = nodes.map((node) =>
+    node.id === 'card' ? { ...node, name: longName } : node,
+  );
+
+  it('gives assistive tech the full name and value on the label group', () => {
+    const { container } = renderSankey({}, { nodes: longNames, links });
+    const label = container.querySelector('svg [role="img"][aria-label^="Netbanking through"]');
+    expect(label?.getAttribute('aria-label')).toBe(`${longName}, 3.2k txn (44%)`);
+  });
+
+  it('opens the node tooltip with the full name when the label itself is hovered', () => {
+    const { container } = renderSankey({}, { nodes: longNames, links });
+    const truncated = Array.from(container.querySelectorAll('tspan')).find((t) =>
+      t.textContent?.endsWith('…'),
+    )!;
+    fireEvent.mouseEnter(truncated.closest('text')!);
+    // The node's own tooltip: the full name with the node's value, not a ribbon's.
+    expect(container.textContent).toContain(`${longName}: 3,200 txn`);
+    // And the node's hover state: the other nodes dim.
+    const opacities = Array.from(container.querySelectorAll('svg g[opacity]')).map((g) =>
+      g.getAttribute('opacity'),
+    );
+    expect(opacities.some((o) => o !== '1')).toBe(true);
+  });
+});
+
+describe('SankeyChart — labels stay clear of the next column', () => {
+  const longNames: SankeyDataNode[] = nodes.map((node) => ({
+    ...node,
+    name: `${node.name} with an unreasonably long descriptive suffix`,
+  }));
+  const chipBoxes = (container: HTMLElement): Array<{ left: number; right: number }> =>
+    getChipRects(container).map((rect) => {
+      const left = parseFloat(rect.getAttribute('x') ?? '0');
+      return { left, right: left + parseFloat(rect.getAttribute('width') ?? '0') };
+    });
+  const columnXs = (container: HTMLElement): number[] =>
+    Array.from(
+      new Set(
+        Array.from(container.querySelectorAll<SVGRectElement>('svg rect:not([stroke])')).map((r) =>
+          Math.round(parseFloat(r.getAttribute('x') ?? '0')),
+        ),
+      ),
+    ).sort((a, b) => a - b);
+
+  it('keeps the full 200px budget when the gap before the next column is wide enough', () => {
+    const { container } = renderSankey({}, { nodes: longNames, links });
+    const widest = Math.max(...chipBoxes(container).map((chip) => chip.right - chip.left));
+    expect(widest).toBeGreaterThan(LABEL_MAX_WIDTH - 12);
+  });
+
+  it('shrinks middle-column labels to the gap on a narrow chart instead of overlapping', () => {
+    mockContainerWidth = 600;
+    try {
+      const { container } = renderSankey({}, { nodes: longNames, links });
+      const columns = columnXs(container);
+      const chips = chipBoxes(container);
+      chips.forEach((chip) => {
+        const nextColumn = columns.find((x) => x > chip.left);
+        // Every chip that has a column to its right ends before that column, clearance included.
+        if (nextColumn !== undefined) {
+          expect(chip.right).toBeLessThanOrEqual(nextColumn - LABEL_COLUMN_CLEARANCE + 1);
+        }
+      });
+      const middle = chips.filter((chip) => columns.some((x) => x > chip.left));
+      expect(middle.length).toBeGreaterThan(0);
+      middle.forEach((chip) => expect(chip.right - chip.left).toBeLessThan(LABEL_MAX_WIDTH - 1));
+    } finally {
+      mockContainerWidth = 800;
+    }
+  });
+
+  it('drops the share before the name when the gap leaves the name almost nothing', () => {
+    mockContainerWidth = 560;
+    try {
+      const { container } = renderSankey({}, { nodes: longNames, links });
+      const labels = Array.from(container.querySelectorAll('svg text')).map((text) =>
+        Array.from(text.querySelectorAll('tspan')).map((t) => t.textContent ?? ''),
+      );
+      const middle = labels.filter(([name]) => name.startsWith('UPI') || name.startsWith('Card'));
+      expect(middle).toHaveLength(2);
+      middle.forEach(([name, value]) => {
+        // A readable start of the name survives, the share is gone, the value is intact.
+        expect(name.length).toBeGreaterThan(4);
+        expect(value).not.toContain('%');
+        expect(value).toMatch(/^[\d.]+k? txn$/);
+      });
+      // The last column still has the full budget, so it keeps its share.
+      const last = labels.find(([name]) => name.startsWith('Successf'));
+      expect(last?.[1]).toContain('%');
+      // Assistive tech still gets the share.
+      expect(
+        container
+          .querySelector('svg [role="img"][aria-label^="UPI with"]')
+          ?.getAttribute('aria-label'),
+      ).toContain('(56%)');
+    } finally {
+      mockContainerWidth = 800;
+    }
   });
 });
