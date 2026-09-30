@@ -657,13 +657,19 @@ const HoverPreviewTemplate: StoryFn<typeof TreeViewComponent> = () => (
           title="Payment Animation"
           value="payment-animation"
           leading={<PlayCircleIcon />}
-          tooltip={{ content: 'Plays between payment confirmation and the result screen' }}
+          popover={{
+            title: 'Payment Animation',
+            content: <ScreenPreview label="Confirming payment" />,
+          }}
         />
         <TreeViewItem
           title="Payment Processing"
           value="payment-processing"
           leading={<LoaderIcon />}
-          tooltip={{ title: 'Payment Processing', content: 'Shown while the bank confirms' }}
+          popover={{
+            title: 'Payment Processing',
+            content: <ScreenPreview label="Processing payment" />,
+          }}
         />
         <TreeViewItem
           title="Payment Success"
@@ -688,7 +694,6 @@ const HoverPreviewTemplate: StoryFn<typeof TreeViewComponent> = () => (
           value="cancel-payment"
           leading={<SlashIcon />}
           isDisabled
-          tooltip={{ content: 'Not available for this checkout' }}
         />
         <TreeViewItem title="Exit Payment" value="exit-payment" leading={<LogOutIcon />} />
       </TreeViewItem>
@@ -696,12 +701,12 @@ const HoverPreviewTemplate: StoryFn<typeof TreeViewComponent> = () => (
   </Box>
 );
 export const HoverPreview = HoverPreviewTemplate.bind({});
-HoverPreview.storyName = 'With Tooltip and Popover';
+HoverPreview.storyName = 'With Hover Preview';
 HoverPreview.parameters = {
   docs: {
     description: {
       story:
-        'Pass `tooltip` for a short text hint (opens on hover and keyboard focus) or `popover` for a rich preview (opens on mouse hover). Both open to the right of the row by default so they do not cover the rows above or below.',
+        'Pass `popover` to show a rich preview when the row is hovered with a mouse. It opens to the right of the row by default so it does not cover the rows above or below, and moving the pointer from row to row switches previews in place.',
     },
   },
 };

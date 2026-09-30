@@ -154,23 +154,9 @@ type TreeViewItemProps = {
     event?: React.MouseEvent<HTMLButtonElement>;
   }) => void;
   /**
-   * Shows a Tooltip when the row is hovered or receives keyboard focus.
-   * Use it for a short, plain-text hint about the item. Cannot be combined with `popover`.
-   */
-  tooltip?: {
-    title?: string;
-    content: string;
-    /** @default 'right' */
-    placement?: Exclude<
-      UseFloatingOptions['placement'],
-      'left-end' | 'left-start' | 'right-end' | 'right-start'
-    >;
-    onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
-  };
-  /**
    * Shows a Popover when the row is hovered with a mouse - use it for rich previews.
    * Opens on mouse hover only (not on keyboard focus or touch), so never put information
-   * in it that is not available elsewhere. Cannot be combined with `tooltip`.
+   * in it that is not available elsewhere.
    */
   popover?: {
     title?: string;
@@ -212,7 +198,7 @@ type TreeViewLoadMoreProps = {
 - Use `TreeViewLoadMore` as the last child of a branch (or the root) for progressive loading.
 - Keyboard: ArrowUp/ArrowDown move across visible rows; ArrowRight expands / enters a branch; ArrowLeft collapses / moves to the parent; Home/End jump to the first/last visible row; Enter/Space select (Space is a no-op on TreeViewLoadMore).
 - Branches are selectable by default (in single mode a branch is a valid selection; in multiple mode toggling it cascades). Set `isSelectable={false}` on a branch to make it a pure grouping row — clicking it (or Enter/Space) toggles expansion instead, and only leaf items can be selected.
-- To show extra information on hover, use the `tooltip` prop on `TreeViewItem` for short text (it also opens on keyboard focus) or the `popover` prop for rich previews such as a screen thumbnail (mouse hover only; on touch screens a tap just selects the row, so show the preview elsewhere on mobile, e.g. when the row is selected). Do not wrap `TreeViewItem` in `<Tooltip>` / `<Popover>` — TreeView only accepts `TreeViewItem` / `TreeViewLoadMore` children.
+- To show a rich preview on hover (e.g. a screen thumbnail), use the `popover` prop on `TreeViewItem`. It opens on mouse hover only; on touch screens a tap just selects the row, so show the preview elsewhere on mobile (e.g. when the row is selected). Moving the pointer from row to row switches previews in place. Do not wrap `TreeViewItem` in `<Popover>` or `<Tooltip>` — TreeView only accepts `TreeViewItem` / `TreeViewLoadMore` children. TreeViewItem has no tooltip prop.
 - Use `size="small"` for dense surfaces such as sidebars, file trees, or long dropdown overlays where many rows must stay visible; keep the default `size="medium"` for primary in-page trees. Match all icons (leading and trailing) to the tree's size, and always pass `size="small"` to trailing Counters and Badges.
 
 ## Examples
@@ -282,7 +268,7 @@ function SidebarTree() {
 export default SidebarTree;
 ```
 
-### Tooltip and hover preview on items
+### Hover preview on items
 
 ```tsx
 import React from 'react';
@@ -295,7 +281,10 @@ const CheckoutScreensTree = (): React.ReactElement => (
       title="Payment Processing"
       value="payment-processing"
       leading={<LoaderIcon />}
-      tooltip={{ content: 'Shown while the bank confirms the payment' }}
+      popover={{
+        title: 'Payment Processing',
+        content: <img src="/previews/payment-processing.png" alt="" width="220" />,
+      }}
     />
     <TreeViewItem
       title="Payment Success"

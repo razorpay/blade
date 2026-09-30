@@ -22,9 +22,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAnalyticsAttribute } from '~utils/makeAnalyticsAttribute';
 import { useTruncationTitle } from '~utils/useTruncationTitle';
-import { Tooltip } from '~components/Tooltip';
 import { Popover } from '~components/Popover';
-import { logger } from '~utils/logger';
 
 const TreeViewItemCheckbox = ({
   isChecked,
@@ -53,27 +51,6 @@ const TreeViewItemCheckbox = ({
         {null}
       </Checkbox>
     </BaseBox>
-  );
-};
-
-/**
- * Wraps the treeitem row in a Tooltip, so it opens on hover and on keyboard focus and its
- * content is linked to the row through `aria-describedby`
- */
-const TreeViewItemTooltip = ({
-  tooltip,
-  children,
-}: Pick<TreeViewItemProps, 'tooltip'> & {
-  children: React.ReactElement;
-}): React.ReactElement => {
-  if (!tooltip) {
-    return children;
-  }
-
-  return (
-    <Tooltip placement="right" {...tooltip}>
-      {children}
-    </Tooltip>
   );
 };
 
@@ -165,20 +142,6 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
     isRowFirstRenderRef.current = false;
   }, []);
 
-  const hasTooltip = Boolean(props.tooltip);
-  const hasPopover = Boolean(props.popover);
-  React.useEffect(() => {
-    if (__DEV__ && hasTooltip && hasPopover) {
-      logger({
-        type: 'warn',
-        moduleName: 'TreeViewItem',
-        message:
-          'Pass either `tooltip` or `popover` to TreeViewItem, not both. `tooltip` is ignored',
-      });
-    }
-  }, [hasTooltip, hasPopover]);
-  const tooltip = props.popover ? undefined : props.tooltip;
-
   const cancelPopoverClose = (): void => {
     clearTimeout(popoverCloseTimeoutRef.current);
     popoverCloseTimeoutRef.current = undefined;
@@ -202,7 +165,7 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
   // React fires the row's pointerenter / pointerleave for it too: the pointer can travel from the
   // row onto the popover without closing it. The delay bridges the gap between the two.
   // When the pointer left for another row it is not heading to the popover, so the delay is
-  // shorter. It is not zero: if that row opens a popover or tooltip, it replaces this one in
+  // shorter. It is not zero: if that row opens a popover, it replaces this one in
   // place (Popover's delay group) instead of this one closing on its own and fading out
   const schedulePopoverClose = (event: React.PointerEvent): void => {
     cancelPopoverClose();
@@ -388,100 +351,87 @@ const _TreeViewItem = (props: TreeViewItemProps): React.ReactElement | null => {
         treeViewSize={size}
         {...metaAttribute({ name: MetaConstants.TreeViewItem, testID: props.testID })}
       >
-        <TreeViewItemTooltip tooltip={tooltip}>
-          <BaseMenuItem
-            ref={(element) => registerRowRef(props.value, element as HTMLElement | null)}
-            // rows render as div (not button): role=treeitem is not a permitted role on button
-            // (axe aria-allowed-role); disabled behaviour is handled in the click/keyboard guards
-            id={
-              isInsideDropdown && node.optionIndex >= 0
-                ? `${dropdownBaseId}-${node.optionIndex}`
-                : undefined
+        <BaseMenuItem
+          ref={(element) => registerRowRef(props.value, element as HTMLElement | null)}
+          // rows render as div (not button): role=treeitem is not a permitted role on button
+          // (axe aria-allowed-role); disabled behaviour is handled in the click/keyboard guards
+          id={
+            isInsideDropdown && node.optionIndex >= 0
+              ? `${dropdownBaseId}-${node.optionIndex}`
+              : undefined
+          }
+          tabIndex={!isInsideDropdown && tabbableValue === props.value ? 0 : -1}
+          isSelected={
+            selectionType === 'single' && !node.isDisabled && node.isSelectable
+              ? isSelected
+              : undefined
+          }
+          isDisabled={node.isDisabled}
+          selectionType={selectionType}
+          className={
+            isInsideDropdown && node.optionIndex >= 0 && activeIndex === node.optionIndex
+              ? 'active-focus'
+              : ''
+          }
+          isKeydownPressed={isInsideDropdown ? isKeydownPressed : undefined}
+          onClick={handleRowClick}
+          onFocus={(event: React.FocusEvent) => {
+            if (!isInsideDropdown && isEventFromRow(event)) {
+              setFocusedValue(props.value);
             }
-            tabIndex={!isInsideDropdown && tabbableValue === props.value ? 0 : -1}
-            isSelected={
+          }}
+          onMouseDown={(event: React.MouseEvent) => {
+            if (isInsideDropdown && isEventFromRow(event)) {
+              // keep focus on Dropdown's trigger while the row is being clicked (same as ActionListItem)
+              setShouldIgnoreBlurAnimation(true);
+            }
+          }}
+          onMouseUp={(event: React.MouseEvent) => {
+            if (isInsideDropdown && isEventFromRow(event)) {
+              setShouldIgnoreBlurAnimation(false);
+            }
+          }}
+          data-value={props.value}
+          data-tree-node-value={props.value}
+          {...makeAccessible({
+            role: 'treeitem',
+            expanded: node.isBranch ? isExpanded : undefined,
+            level: node.level,
+            posInSet: node.posInSet,
+            setSize: node.setSize,
+            // a non-selectable branch carries no selection semantics at all
+            selected:
               selectionType === 'single' && !node.isDisabled && node.isSelectable
                 ? isSelected
-                : undefined
-            }
-            isDisabled={node.isDisabled}
-            selectionType={selectionType}
-            className={
-              isInsideDropdown && node.optionIndex >= 0 && activeIndex === node.optionIndex
-                ? 'active-focus'
-                : ''
-            }
-            isKeydownPressed={isInsideDropdown ? isKeydownPressed : undefined}
-            onClick={handleRowClick}
-            onFocus={(event: React.FocusEvent) => {
-              if (!isInsideDropdown && isEventFromRow(event)) {
-                setFocusedValue(props.value);
+                : undefined,
+            checked:
+              selectionType === 'multiple' && !node.isDisabled && node.isSelectable
+                ? node.isBranch
+                  ? branchSelectionState === 'some'
+                    ? 'mixed'
+                    : branchSelectionState === 'all'
+                  : selectedValuesSet.has(props.value)
+                : undefined,
+            disabled: node.isDisabled ? true : undefined,
+          })}
+          {...makeAnalyticsAttribute(props)}
+          {...(props.popover
+            ? {
+                // mouse only: on touch screens a tap would open the popover and select the
+                // row at once, and the popover would cover the rows below. Pointer events
+                // (not mouse events) are used because browsers also fire emulated mouse
+                // events after a tap, which carry no pointer type
+                onPointerEnter: (event: React.PointerEvent) => {
+                  if (event.pointerType === 'mouse') {
+                    handlePopoverOpenChange(true);
+                  }
+                },
+                onPointerLeave: schedulePopoverClose,
               }
-            }}
-            onMouseDown={(event: React.MouseEvent) => {
-              if (isInsideDropdown && isEventFromRow(event)) {
-                // keep focus on Dropdown's trigger while the row is being clicked (same as ActionListItem)
-                setShouldIgnoreBlurAnimation(true);
-              }
-            }}
-            onMouseUp={(event: React.MouseEvent) => {
-              if (isInsideDropdown && isEventFromRow(event)) {
-                setShouldIgnoreBlurAnimation(false);
-              }
-            }}
-            data-value={props.value}
-            data-tree-node-value={props.value}
-            {...makeAccessible({
-              role: 'treeitem',
-              expanded: node.isBranch ? isExpanded : undefined,
-              level: node.level,
-              posInSet: node.posInSet,
-              setSize: node.setSize,
-              // a non-selectable branch carries no selection semantics at all
-              selected:
-                selectionType === 'single' && !node.isDisabled && node.isSelectable
-                  ? isSelected
-                  : undefined,
-              checked:
-                selectionType === 'multiple' && !node.isDisabled && node.isSelectable
-                  ? node.isBranch
-                    ? branchSelectionState === 'some'
-                      ? 'mixed'
-                      : branchSelectionState === 'all'
-                    : selectedValuesSet.has(props.value)
-                  : undefined,
-              disabled: node.isDisabled ? true : undefined,
-            })}
-            {...makeAnalyticsAttribute(props)}
-            {...(props.popover
-              ? {
-                  // mouse only: on touch screens a tap would open the popover and select the
-                  // row at once, and the popover would cover the rows below. Pointer events
-                  // (not mouse events) are used because browsers also fire emulated mouse
-                  // events after a tap, which carry no pointer type
-                  onPointerEnter: (event: React.PointerEvent) => {
-                    if (event.pointerType === 'mouse') {
-                      handlePopoverOpenChange(true);
-                    }
-                  },
-                  onPointerLeave: schedulePopoverClose,
-                }
-              : {})}
-            {...(tooltip
-              ? {
-                  // Tooltip labels its trigger with the tooltip content by default (meant for
-                  // icon-only triggers). A row already has a visible title, so keep that as the
-                  // name - Tooltip still links its content through aria-describedby while open.
-                  // This relies on Tooltip spreading the child's own props after its aria-label
-                  // (cloneElement in Tooltip.web.tsx); the "keep the title as the row name"
-                  // test fails if that ever changes
-                  'aria-label': undefined,
-                }
-              : {})}
-          >
-            {rowContent}
-          </BaseMenuItem>
-        </TreeViewItemTooltip>
+            : {})}
+        >
+          {rowContent}
+        </BaseMenuItem>
         {node.hasRenderedChildren ? (
           <TreeViewGroupAnimator
             isExpanded={isExpanded}
