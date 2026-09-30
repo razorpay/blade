@@ -221,6 +221,31 @@ FullWidthWithActions.parameters = {
   },
 };
 
+export const FullWidthWithActionsNoTitle: StoryFn<typeof AlertComponent> = ({ ...args }) => {
+  return (
+    <BaseBox height="200px" position="relative">
+      <BaseBox position="absolute" width="100%">
+        <AlertComponent {...args} />
+      </BaseBox>
+    </BaseBox>
+  );
+};
+FullWidthWithActionsNoTitle.args = {
+  description:
+    'Currently you can only accept payments in international currencies using PayPal. You cannot accept payments in INR (₹) using PayPal, and settlements for international payments follow a different timeline than domestic payments, so plan your reconciliation accordingly.',
+  color: 'negative',
+  isFullWidth: true,
+  title: undefined,
+};
+FullWidthWithActionsNoTitle.parameters = {
+  docs: {
+    description: {
+      story:
+        'Regression case: a full width Alert with inline actions and no title. The leading icon must stay anchored to the first line of the description even when the copy wraps to multiple lines.',
+    },
+  },
+};
+
 const intents = [
   { label: 'Positive', color: 'positive' },
   { label: 'Negative', color: 'negative' },
