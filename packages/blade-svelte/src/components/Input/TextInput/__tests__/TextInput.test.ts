@@ -1,6 +1,6 @@
 import { tick } from 'svelte';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/svelte';
+import { fireEvent, render, screen } from '@testing-library/svelte';
 import userEvent from '@testing-library/user-event';
 import TextInput from '../TextInput.svelte';
 import TextInputControlled from './TextInputControlled.svelte';
@@ -129,6 +129,24 @@ describe('<TextInput /> isReadOnly & spellCheck', () => {
 
       const input = screen.getByLabelText('Card');
       expect(input).toHaveValue('3782 8224 6310 005');
+    });
+
+    it('re-formats when the browser refills the same raw digits (autofill refill)', async () => {
+      // Chrome autofill writes raw digits straight into the DOM and fires
+      // `input`; when the form changes shortly after (e.g. a network-driven
+      // maxlength swap) it refills the same digits again. The second write
+      // yields an identical formatted value, so state never changes and the
+      // raw string would otherwise stay on screen.
+      render(TextInputFormattedControlled);
+      const input = screen.getByLabelText('Card');
+
+      await fireEvent.input(input, { target: { value: '4111111111111111' } });
+      await tick();
+      expect(input).toHaveValue('4111 1111 1111 1111');
+
+      await fireEvent.input(input, { target: { value: '4111111111111111' } });
+      await tick();
+      expect(input).toHaveValue('4111 1111 1111 1111');
     });
 
     it('clears the field on programmatic reset', async () => {
