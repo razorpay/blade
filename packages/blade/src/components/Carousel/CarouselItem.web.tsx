@@ -15,7 +15,10 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getSpacingValue } from '~components/Box/BaseBox/baseBoxStyles';
 
-type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
+type StyledCarouselItemProps = Pick<
+  CarouselProps,
+  'visibleItems' | 'shouldAddStartEndSpacing' | 'carouselItemAlignment'
+> &
   Pick<
     CarouselItemProps,
     'shouldHaveEndSpacing' | 'shouldHaveStartSpacing' | 'snapAlign' | 'gap'
@@ -33,6 +36,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
     theme,
     snapAlign,
     gap,
+    carouselItemAlignment,
   }) => {
     const { matchedDeviceType, matchedBreakpoint } = useBreakpoint({
       breakpoints: theme.breakpoints,
@@ -65,8 +69,15 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       flexGrow: 0,
       flexShrink: 0,
       width: calculatedWidth,
-      height: '100%',
-      minHeight: '100%',
+      // When carouselItemAlignment is 'stretch', leave height unset (auto) so that
+      // align-items: stretch on the flex track can stretch each slide to the tallest.
+      // Hardcoding height: 100% / minHeight: 100% defeats stretch because the cross
+      // size is no longer 'auto', and when the track has no explicit height those
+      // percentages resolve to auto anyway — so the prop was silently inert.
+      ...(carouselItemAlignment !== 'stretch' && {
+        height: '100%',
+        minHeight: '100%',
+      }),
       scrollSnapAlign: snapAlign ?? 'start',
       marginLeft: calculatedMarginLeft,
 
@@ -107,6 +118,7 @@ const _CarouselItem = ({
     isResponsive,
     carouselItemWidth,
     shouldAddStartEndSpacing,
+    carouselItemAlignment,
   } = useCarouselContext();
   const { platform } = useTheme();
   const isMobile = platform === 'onMobile';
@@ -130,6 +142,7 @@ const _CarouselItem = ({
       shouldHaveEndSpacing={shouldHaveEndSpacing}
       snapAlign={snapAlign}
       gap={gap}
+      carouselItemAlignment={carouselItemAlignment}
       {...makeAnalyticsAttribute(rest)}
     >
       {children}
