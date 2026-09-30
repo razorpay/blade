@@ -64,39 +64,47 @@ const defaultGroupLabel = ({ members }: { depth: number; members: SankeyDataNode
   `Other (${members.length})`;
 
 /**
- * Depth of every node by breadth-first search from the roots (nodes with no incoming link).
- * Nodes unreachable from a root — only possible with a cycle in malformed data — get depth 0.
+ * Column of every node, by the rule the layout engine draws them: the longest path from a
+ * root (a node with no incoming link), with every leaf (no outgoing link) moved to the last
+ * column — recharts' justify alignment. Nodes on a cycle in malformed data never settle and
+ * keep depth 0.
  *
  * Exported and keyed by node id only, so the grouping transform and the web chart's
- * `computeDepthInfo` share one depth rule instead of drifting copies.
+ * `computeDepthInfo` share one depth rule, and that rule matches `layout.ts`: a group's depth
+ * is the column its members are drawn in. Two linked nodes can never share a column, so a
+ * link is never folded into one group at both ends.
  */
 export const computeDepths = (
   nodes: readonly { id: string }[],
   links: readonly { source: string; target: string }[],
 ): Map<string, number> => {
-  const incoming = new Map<string, number>(nodes.map((n) => [n.id, 0]));
+  const pendingSources = new Map<string, number>(nodes.map((n) => [n.id, 0]));
   const outgoing = new Map<string, string[]>(nodes.map((n) => [n.id, []]));
   links.forEach((link) => {
-    if (!incoming.has(link.source) || !incoming.has(link.target)) return;
-    incoming.set(link.target, (incoming.get(link.target) ?? 0) + 1);
+    if (!pendingSources.has(link.source) || !pendingSources.has(link.target)) return;
+    pendingSources.set(link.target, (pendingSources.get(link.target) ?? 0) + 1);
     outgoing.get(link.source)?.push(link.target);
   });
-  const depthOf = new Map<string, number>();
-  const queue = nodes.filter((n) => incoming.get(n.id) === 0).map((n) => n.id);
-  queue.forEach((id) => depthOf.set(id, 0));
+  const depthOf = new Map<string, number>(nodes.map((n) => [n.id, 0]));
+  // Topological order: a node is placed once every source is, one column past the deepest.
+  const queue = nodes.filter((n) => pendingSources.get(n.id) === 0).map((n) => n.id);
   for (let i = 0; i < queue.length; i++) {
     const id = queue[i];
     const depth = depthOf.get(id) ?? 0;
     outgoing.get(id)?.forEach((targetId) => {
-      if (!depthOf.has(targetId)) {
-        depthOf.set(targetId, depth + 1);
-        queue.push(targetId);
-      }
+      depthOf.set(targetId, Math.max(depthOf.get(targetId) ?? 0, depth + 1));
+      const left = (pendingSources.get(targetId) ?? 0) - 1;
+      pendingSources.set(targetId, left);
+      if (left === 0) queue.push(targetId);
     });
   }
-  nodes.forEach((n) => {
-    if (!depthOf.has(n.id)) depthOf.set(n.id, 0);
-  });
+  // Justify: leaves sit in the last column, as the layout draws them.
+  const maxDepth = Math.max(0, ...Array.from(depthOf.values()));
+  if (maxDepth >= 1) {
+    nodes.forEach((n) => {
+      if ((outgoing.get(n.id)?.length ?? 0) === 0) depthOf.set(n.id, maxDepth);
+    });
+  }
   return depthOf;
 };
 
@@ -136,12 +144,13 @@ export const groupSankeyData = ({
   };
   if (groupNodesBelow === undefined || groupNodesBelow <= 0 || total <= 0) return passthrough;
 
-  // Candidates: never a root, opted in (default), and under the threshold.
+  // Candidates: never a root (no incoming flow, wherever justify alignment draws it), opted in
+  // (default), and under the threshold.
   const depthOf = computeDepths(nodes, links);
   const candidatesByDepth = new Map<number, SankeyDataNode[]>();
   nodes.forEach((node) => {
     const depth = depthOf.get(node.id) ?? 0;
-    if (depth === 0 || node.isGroupable === false) return;
+    if (depth === 0 || !inSum.has(node.id) || node.isGroupable === false) return;
     if ((valueOf(node.id) / total) * 100 >= groupNodesBelow) return;
     const list = candidatesByDepth.get(depth) ?? [];
     list.push(node);

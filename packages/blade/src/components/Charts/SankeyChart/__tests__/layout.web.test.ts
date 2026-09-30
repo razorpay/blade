@@ -244,6 +244,18 @@ describe('computeSankeyLayout — reserved extents and fixed scale', () => {
       expect(link.width).toBeCloseTo(plain.links[link.index].width / 2, 6);
     });
   });
+
+  it('grows the content height when a fixed scale no longer fits, even without extents', () => {
+    const plain = layoutWithBlade(longTail);
+    // Twice the natural scale: the fullest column needs about twice the plot height.
+    const doubled = layoutWithBlade(longTail, { scale: plain.scale * 2 });
+    expect(doubled.contentHeight).toBeGreaterThan(HEIGHT - MARGIN.top - MARGIN.bottom);
+    doubled.nodes.forEach((node) => {
+      // Nothing is pushed above the top edge; everything sits inside the grown drawing.
+      expect(node.y).toBeGreaterThanOrEqual(MARGIN.top - 1e-6);
+      expect(node.y + node.extent).toBeLessThanOrEqual(doubled.contentHeight + MARGIN.top + 1e-6);
+    });
+  });
 });
 
 describe('computeSankeyLayout — edge cases', () => {

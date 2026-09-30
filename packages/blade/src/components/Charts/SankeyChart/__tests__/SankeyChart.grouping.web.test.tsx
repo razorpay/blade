@@ -5,7 +5,7 @@
  * Run with: SHARD='' yarn test:react --testPathPattern=SankeyChart.grouping
  */
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
+import { act, fireEvent } from '@testing-library/react';
 import { ChartSankeyWrapper, ChartSankey } from '../SankeyChart';
 import type { ChartSankeyProps, SankeyDataLink, SankeyDataNode } from '../types';
 import { getGroupId } from '../grouping';
@@ -404,5 +404,76 @@ describe('SankeyChart — grouping: tooltip', () => {
     expect(text).toContain('Small 5  1%');
     expect(text).not.toContain('Small 6');
     expect(text).toContain('and 2 more');
+  });
+});
+
+describe('SankeyChart — grouping: focus and hover across a toggle', () => {
+  const getTooltipText = (container: HTMLElement): string | null =>
+    container.querySelector('[data-blade-component="ChartSankeyTooltip"]')?.textContent ?? null;
+  const chipYOf = (button: Element): number =>
+    parseFloat(button.querySelector('rect[stroke]')?.getAttribute('y') ?? 'NaN');
+
+  it('hands keyboard focus to the topmost revealed member on expand, and back to the group on fold', () => {
+    const { container } = renderSankey();
+    const group = getGroupButton(container);
+    act(() => group.focus());
+    fireEvent.keyDown(group, { key: 'Enter' });
+
+    const revealed = getRevealedButtons(container);
+    expect(revealed).toHaveLength(6);
+    const topmost = [...revealed].sort((a, b) => chipYOf(a) - chipYOf(b))[0];
+    expect(document.activeElement).toBe(topmost);
+
+    fireEvent.keyDown(topmost, { key: ' ' });
+    expect(document.activeElement).toBe(getGroupButton(container));
+  });
+
+  it('moves the focus ring and the tooltip along with focus, leaving nothing stale behind', () => {
+    const { container } = renderSankey();
+    const group = getGroupButton(container);
+    act(() => group.focus());
+    expect(getTooltipText(container)).toContain('Other (6)');
+
+    fireEvent.keyDown(group, { key: 'Enter' });
+
+    const focused = document.activeElement!;
+    const focusedName = focused.getAttribute('aria-label')?.replace(', grouped node', '') ?? '';
+    expect(focusedName).not.toBe('');
+    expect(getTooltipText(container)).toContain(focusedName);
+    expect(getTooltipText(container)).not.toContain('Other');
+    // Exactly one thick (focus) border, on the label that holds focus.
+    const rings = Array.from(container.querySelectorAll('svg rect[stroke-width="2"]'));
+    expect(rings).toHaveLength(1);
+    expect(focused.contains(rings[0])).toBe(true);
+  });
+
+  it('drops a stale hover when a mouse click re-groups the graph', () => {
+    const { container } = renderSankey();
+    const group = getGroupButton(container);
+    fireEvent.mouseEnter(group.closest('g[opacity]')!);
+    expect(getTooltipText(container)).toContain('Other (6)');
+
+    fireEvent.click(group);
+
+    // The clicked label is gone: no tooltip or ring points at whatever node took its index, and
+    // focus is not taken from wherever it was, since the label never held it.
+    expect(getTooltipText(container)).toBeNull();
+    expect(container.querySelectorAll('svg rect[stroke-width="2"]')).toHaveLength(0);
+    expect(document.activeElement).toBe(document.body);
+  });
+
+  it('draws a focus ring around a plain text label', () => {
+    const { container } = renderSankey({ showLabelChip: false });
+    expect(container.querySelectorAll('svg rect[stroke]')).toHaveLength(0);
+
+    const group = getGroupButton(container);
+    act(() => group.focus());
+    const rings = container.querySelectorAll('svg rect[stroke]');
+    expect(rings).toHaveLength(1);
+    expect(rings[0].getAttribute('fill')).toBe('none');
+    expect(group.contains(rings[0])).toBe(true);
+
+    act(() => group.blur());
+    expect(container.querySelectorAll('svg rect[stroke]')).toHaveLength(0);
   });
 });

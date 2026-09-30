@@ -41,10 +41,15 @@ type SankeyDataNode = {
 };
 
 type SankeyGroupExpandEvent = {
-  /** Ids of every group that is expanded after this change */
-  expandedGroupIds: string[];
-  /** The group that was toggled */
-  groupId: string;
+  /** Column depths of every group that is expanded after this change */
+  expandedGroupDepths: number[];
+  /**
+   * Zero-based column depth of the group that was toggled (the leftmost column is 0).
+   * Groups are keyed by their column depth — at most one group per column — mirroring
+   * Accordion's numeric `expandedIndex`, so no internal identifier scheme is
+   * part of the public API.
+   */
+  groupDepth: number;
   isExpanded: boolean;
   /** Ids of the nodes folded into the toggled group */
   memberIds: string[];
@@ -132,22 +137,22 @@ type ChartSankeyProps = {
    */
   groupNodesBelow?: number;
   /**
-   * Label of a group node. Receives the group's id, the column depth and the grouped nodes.
+   * Label of a group node. Receives the group's column depth and the grouped nodes.
    * @default ({ members }) => `Other (${members.length})`
    */
-  formatGroupLabel?: (group: { id: string; depth: number; members: SankeyDataNode[] }) => string;
+  formatGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
   /**
-   * Ids of the groups that start expanded (uncontrolled). A group's id is
-   * `__blade_sankey_group__<depth>` — the internal prefix followed by the group's zero-based
-   * column depth (the leftmost column is depth 0) — so it can be authored statically. The same
-   * id is also surfaced at runtime by `formatGroupLabel`'s `id` argument and by `onExpandChange`.
+   * Column depths of the groups that start expanded (uncontrolled). A group's key is its
+   * zero-based column depth as drawn (the leftmost column is 0; a node with no outgoing flow
+   * sits in the last column) — at most one group exists per column, mirroring Accordion's
+   * numeric `defaultExpandedIndex`. A depth without a group is ignored.
    */
-  defaultExpandedGroupIds?: string[];
+  defaultExpandedGroupDepths?: number[];
   /**
-   * Ids of the expanded groups (controlled). Pass [] to fold everything. Ids follow the
-   * scheme documented on `defaultExpandedGroupIds`.
+   * Column depths of the expanded groups (controlled). Pass `[]` to fold everything.
+   * Keyed by depth like `defaultExpandedGroupDepths`.
    */
-  expandedGroupIds?: string[];
+  expandedGroupDepths?: number[];
   /** Called when a group is expanded or folded, by click or keyboard */
   onExpandChange?: (event: SankeyGroupExpandEvent) => void;
   /** Called when the user clicks a node bar. Gets the node data and its index. Not called for a group node */
@@ -278,8 +283,8 @@ function PaymentMethodsSankeyChart() {
           showColorIndicator
           groupNodesBelow={5}
           formatGroupLabel={({ members }) => `Other methods (${members.length})`}
-          onExpandChange={({ groupId, isExpanded }) =>
-            console.log('group toggled', groupId, isExpanded)
+          onExpandChange={({ groupDepth, isExpanded }) =>
+            console.log('group toggled', groupDepth, isExpanded)
           }
         />
       </ChartSankeyWrapper>

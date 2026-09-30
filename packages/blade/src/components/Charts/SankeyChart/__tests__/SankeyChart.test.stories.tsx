@@ -129,9 +129,15 @@ TestGroupKeyboard.play = async () => {
   await userEvent.keyboard('{Enter}');
   await waitFor(() => expect(getAllByRole('button', { expanded: true })).toHaveLength(6));
 
-  (getAllByRole('button', { expanded: true })[0] as HTMLElement).focus();
+  // Focus follows the toggle: a revealed member holds it — no re-focusing needed. (The ring is
+  // `:focus-visible`, which needs trusted keyboard input Storybook cannot synthesise; the jest
+  // suite covers it.)
+  const revealed = getAllByRole('button', { expanded: true });
+  await expect(revealed).toContain(document.activeElement);
+
   await userEvent.keyboard(' ');
   await waitFor(() => expect(getByRole('button', { name: /Other \(6\)/ })).toBeVisible());
+  await expect(document.activeElement).toBe(getByRole('button', { name: /Other \(6\)/ }));
 };
 
 export const TestGroupTooltip: StoryFn<typeof ChartSankey> = () => <GroupedChart />;

@@ -405,13 +405,18 @@ function renderChipLabel({
 
 function renderPlainTextLabel({
   labelX,
+  chipY,
   chipW,
+  chipH,
   nodeMidY,
   fontSize,
   fontFamily,
   labelNameColor,
   labelValueColor,
+  chipRadius,
+  chipPadX,
   textGap,
+  borderThin,
   capHeightRatio,
   name,
   labelValue,
@@ -420,11 +425,26 @@ function renderPlainTextLabel({
   indicatorReserve,
   trailingIcon,
   trailingIconSize,
+  focusStrokeColor,
   semibold,
   regular,
 }: NodeLabelArgs): React.ReactElement {
   return (
     <>
+      {/* Keyboard focus ring — a chip thickens its own border; plain text has none, so draw one
+          around the text at chip geometry (half the chip padding on each side). */}
+      {focusStrokeColor !== undefined && (
+        <rect
+          x={labelX - chipPadX / 2 + borderThin}
+          y={chipY + borderThin}
+          width={chipW + chipPadX - borderThin * 2}
+          height={chipH - borderThin * 2}
+          fill="none"
+          rx={chipRadius}
+          stroke={focusStrokeColor}
+          strokeWidth={borderThin * 2}
+        />
+      )}
       {indicatorColor !== undefined && (
         <circle
           cx={labelX + indicatorSize / 2}
@@ -462,9 +482,9 @@ function renderPlainTextLabel({
 // ─── Graph helpers ────────────────────────────────────────────────────────────
 
 /**
- * Column info for the (grouped) graph: the shared BFS depth map from `grouping.ts`
- * plus the nodes-per-depth counts and the last column's depth derived on top of it,
- * so the depth rule itself is written once.
+ * Column info for the (grouped) graph: the shared depth map from `grouping.ts` — the column
+ * the layout draws each node in, leaves justified to the last one — plus the nodes-per-depth
+ * counts and the last column's depth derived on top of it, so the depth rule is written once.
  */
 const computeDepthInfo = (
   nodes: readonly { id: string }[],
@@ -641,6 +661,10 @@ const _ChartSankey = ({
 
   const toggleGroup = useCallback(
     (group: SankeyGroup): void => {
+      // The hovered or focused label is about to unmount, and an unmounting element fires no
+      // mouseleave or blur — clear both so nothing points at whatever node takes its index.
+      setHovered(null);
+      setFocusedNodeId(null);
       setExpandedGroupDepths(
         (prev) =>
           group.isExpanded ? prev.filter((depth) => depth !== group.depth) : [...prev, group.depth],
@@ -756,15 +780,13 @@ const _ChartSankey = ({
   // columns sit in the gap before the next column, so reserving margin for them just shrank the chart.
   const dynamicRightMargin = useMemo(() => {
     if (!showLabels) return theme.spacing[3];
-    const hasOutgoing = new Set(layoutLinks.map((l) => l.source));
+    // `depthInfo` already places leaves in the last column, as the layout's justify alignment does.
     const widest = nodes.reduce((max, entry, index) => {
       const depth = depthInfo.depthOf.get(entry.node.id) ?? 0;
-      // 'justify' alignment also draws nodes without outgoing links in the last column.
-      const isLastColumn = depth === depthInfo.maxDepth || !hasOutgoing.has(index);
-      return isLastColumn ? Math.max(max, nodeLabels[index]?.width ?? 0) : max;
+      return depth === depthInfo.maxDepth ? Math.max(max, nodeLabels[index]?.width ?? 0) : max;
     }, 0);
     return widest + CHIP_GAP + theme.spacing[3];
-  }, [showLabels, nodes, layoutLinks, depthInfo, nodeLabels, CHIP_GAP, theme]);
+  }, [showLabels, nodes, depthInfo, nodeLabels, CHIP_GAP, theme]);
 
   // ── Layout ────────────────────────────────────────────────────────────────
   const margin = useMemo(
@@ -887,8 +909,13 @@ const _ChartSankey = ({
   );
 
   // A revealed member's label folds its group again; its bar behaves like any other node.
+  // The label that toggles a group unmounts with the graph change, which would drop focus to
+  // <body>: when it held focus, remember where to send it — the topmost revealed member on
+  // expand, the group's label on fold.
+  const labelRefs = useRef(new Map<string, SVGGElement>());
+  const pendingFocusRef = useRef<{ groupId: string; isExpanded: boolean } | null>(null);
   const handleLabelActivate = useCallback(
-    (index: number): void => {
+    (index: number, label: SVGGElement): void => {
       const entry = nodes[index];
       if (!entry) return;
       const group =
@@ -896,10 +923,30 @@ const _ChartSankey = ({
         (entry.revealedGroupId
           ? grouped.groups.find((g) => g.id === entry.revealedGroupId)
           : undefined);
-      if (group) toggleGroup(group);
+      if (!group) return;
+      if (typeof document !== 'undefined' && document.activeElement === label) {
+        pendingFocusRef.current = { groupId: group.id, isExpanded: !group.isExpanded };
+      }
+      toggleGroup(group);
     },
     [nodes, grouped.groups, toggleGroup],
   );
+
+  useIsomorphicLayoutEffect(() => {
+    const pending = pendingFocusRef.current;
+    if (!pending) return;
+    pendingFocusRef.current = null;
+    const group = grouped.groups.find((g) => g.id === pending.groupId);
+    // A controlled parent may not have applied the change; then there is nowhere new to go.
+    if (!group || group.isExpanded !== pending.isExpanded) return;
+    const targetId = pending.isExpanded
+      ? layout.nodes
+          .filter((node) => nodes[node.index]?.revealedGroupId === group.id)
+          .sort((a, b) => a.y - b.y)
+          .map((node) => nodes[node.index]?.node.id)[0]
+      : group.id;
+    if (targetId) labelRefs.current.get(targetId)?.focus();
+  });
 
   const handleLinkClick = useCallback(
     (index: number): void => {
@@ -1136,19 +1183,25 @@ const _ChartSankey = ({
                   'aria-label': isGroup
                     ? `${entry.node.name}, ${groupSize} grouped nodes`
                     : `${entry.node.name}, grouped node`,
+                  ref: (element: SVGGElement | null) => {
+                    if (element) labelRefs.current.set(entry.node.id, element);
+                    else labelRefs.current.delete(entry.node.id);
+                  },
                   onClick: (event: React.MouseEvent<SVGGElement>) => {
                     event.stopPropagation();
-                    handleLabelActivate(index);
+                    handleLabelActivate(index, event.currentTarget);
                   },
                   onKeyDown: (event: React.KeyboardEvent<SVGGElement>) => {
                     if (!isActivationKey(event.key)) return;
                     event.preventDefault();
                     event.stopPropagation();
-                    handleLabelActivate(index);
+                    handleLabelActivate(index, event.currentTarget);
                   },
                   onFocus: (event: React.FocusEvent<SVGGElement>) => {
-                    // Ring only for keyboard focus (`:focus-visible`), never for a mouse click.
-                    if (isFocusVisible(event.currentTarget)) setFocusedNodeId(entry.node.id);
+                    // Keyboard focus (`:focus-visible`) shows the ring and the tooltip. A mouse
+                    // click, or focus handed over after a toggle, adds nothing to the pointer's hover.
+                    if (!isFocusVisible(event.currentTarget)) return;
+                    setFocusedNodeId(entry.node.id);
                     setHovered({ type: 'node', index });
                   },
                   onBlur: () => {

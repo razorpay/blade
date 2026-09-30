@@ -1,4 +1,5 @@
-import { getGroupId, groupSankeyData, isGroupNodeId } from '../grouping';
+import { computeDepths, getGroupId, groupSankeyData, isGroupNodeId } from '../grouping';
+import { computeSankeyLayout } from '../layout';
 import type { SankeyDataLink, SankeyDataNode } from '../types';
 
 // Total (10 000) → methods → outcomes. Wallet (4%), EMI (1.8%) and BNPL (0.7%) are the tail.
@@ -217,5 +218,92 @@ describe('groupSankeyData — expanded groups', () => {
     });
     expect(result.groups[0].isExpanded).toBe(false);
     expect(ids(result)).toContain(getGroupId(1));
+  });
+});
+
+describe('computeDepths — the column the layout draws', () => {
+  // Total → methods → a provider → an outcome. Card also pays out straight to the outcome (a
+  // skip-level link) and Cash on delivery has no outgoing flow at all (a leaf in the method column).
+  const skip: SankeyDataNode[] = [
+    { id: 'total', name: 'Total' },
+    { id: 'card', name: 'Card' },
+    { id: 'upi', name: 'UPI' },
+    { id: 'cod', name: 'Cash on delivery' },
+    { id: 'razorpay', name: 'Razorpay' },
+    { id: 'captured', name: 'Captured' },
+  ];
+  const skipLinks: SankeyDataLink[] = [
+    { source: 'total', target: 'card', value: 500 },
+    { source: 'total', target: 'upi', value: 400 },
+    { source: 'total', target: 'cod', value: 100 },
+    { source: 'card', target: 'razorpay', value: 300 },
+    { source: 'card', target: 'captured', value: 200 },
+    { source: 'upi', target: 'razorpay', value: 400 },
+    { source: 'razorpay', target: 'captured', value: 700 },
+  ];
+
+  it('matches the layout engine column for column, skip-level links and leaves included', () => {
+    const depths = computeDepths(skip, skipLinks);
+    const indexOf = new Map(skip.map((n, i) => [n.id, i]));
+    const layout = computeSankeyLayout({
+      nodeCount: skip.length,
+      links: skipLinks.map((l) => ({
+        source: indexOf.get(l.source) ?? 0,
+        target: indexOf.get(l.target) ?? 0,
+        value: l.value,
+      })),
+      width: 800,
+      height: 400,
+      nodeWidth: 14,
+      nodePadding: 12,
+    });
+    skip.forEach((n, i) => expect(depths.get(n.id)).toBe(layout.depthOf[i]));
+    // Captured is one hop from Card but drawn after Razorpay; CoD is a leaf, justified to the end.
+    expect(depths.get('razorpay')).toBe(2);
+    expect(depths.get('captured')).toBe(3);
+    expect(depths.get('cod')).toBe(3);
+  });
+
+  it('never folds both ends of a link into one group', () => {
+    // A, B and C are all small, and B is reached both directly and through A. Column as drawn,
+    // A and C sit at depth 1 and B at depth 2 — so A → B stays a link, never a group self-loop.
+    const chain: SankeyDataNode[] = [
+      { id: 'total', name: 'Total' },
+      { id: 'card', name: 'Card' },
+      { id: 'a', name: 'A' },
+      { id: 'c', name: 'C' },
+      { id: 'b', name: 'B' },
+      { id: 'out', name: 'Out' },
+    ];
+    const chainLinks: SankeyDataLink[] = [
+      { source: 'total', target: 'card', value: 9000 },
+      { source: 'total', target: 'a', value: 60 },
+      { source: 'total', target: 'c', value: 50 },
+      { source: 'total', target: 'b', value: 20 },
+      { source: 'a', target: 'b', value: 40 },
+      { source: 'a', target: 'out', value: 20 },
+      { source: 'c', target: 'out', value: 50 },
+      { source: 'b', target: 'out', value: 60 },
+      { source: 'card', target: 'out', value: 9000 },
+    ];
+    const result = groupSankeyData({ nodes: chain, links: chainLinks, groupNodesBelow: 2 });
+    expect(result.groups.map((g) => [g.depth, g.memberIds])).toEqual([[1, ['a', 'c']]]);
+    expect(result.links.every((l) => l.source !== l.target)).toBe(true);
+    // A → B survives as a flow out of the group into B, which stays visible in its own column.
+    expect(result.links.find((l) => l.source === getGroupId(1) && l.target === 'b')).toMatchObject({
+      value: 40,
+      isAggregated: true,
+    });
+  });
+
+  it('never groups a node without links, wherever justify alignment draws it', () => {
+    const result = groupSankeyData({
+      nodes: [...nodes, { id: 'ghost', name: 'Ghost' }],
+      links,
+      groupNodesBelow: 5,
+    });
+    expect(result.groups).toHaveLength(1);
+    expect(result.groups[0].memberIds).toEqual(['wallet', 'emi', 'bnpl']);
+    expect(ids(result)).toContain('ghost');
   });
 });

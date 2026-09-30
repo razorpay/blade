@@ -348,8 +348,11 @@ export const computeSankeyLayout = ({
     link.dy = link.value * yRatio;
   });
 
-  // The layout height: `height`, or the tallest column when reserved extents need more room.
-  const layoutHeight = minNodeExtent
+  // The layout height: `height`, or the tallest column when reserved extents or a fixed scale
+  // need more room. Only a fixed scale can make the bars alone outgrow the plot; the derived
+  // scale fits the fullest column by construction, so that path keeps `height` exactly.
+  const canOutgrow = minNodeExtent !== undefined || scale !== undefined;
+  const layoutHeight = canOutgrow
     ? Math.max(
         height,
         ...columns.map(

@@ -157,8 +157,9 @@ export type ChartSankeyProps = {
   formatGroupLabel?: (group: { depth: number; members: SankeyDataNode[] }) => string;
   /**
    * Column depths of the groups that start expanded (uncontrolled). A group's key is its
-   * zero-based column depth (the leftmost column is 0) — at most one group exists per column,
-   * mirroring Accordion's numeric `defaultExpandedIndex`. A depth without a group is ignored.
+   * zero-based column depth as drawn (the leftmost column is 0; a node with no outgoing flow
+   * sits in the last column) — at most one group exists per column, mirroring Accordion's
+   * numeric `defaultExpandedIndex`. A depth without a group is ignored.
    */
   defaultExpandedGroupDepths?: number[];
   /**
