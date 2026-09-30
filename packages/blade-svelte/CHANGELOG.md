@@ -1,5 +1,27 @@
 # @razorpay/blade-svelte
 
+## 0.20.0
+
+### Minor Changes
+
+- 2ad731702: feat(blade-svelte): add CardGroup component
+
+  Adds `CardGroup`, `CardGroupItem`, `CardGroupCollapsibleItem`, and
+  `CardGroupCollapsibleItemBody` — a single-surface stack of navigating,
+  selecting, and disclosing rows. The group owns the border, radius, elevation,
+  top/bottom gradient, and the dividers between rows.
+
+### Patch Changes
+
+- 2ad731702: feat(blade-svelte): add ClockIcon, UpiIcon, and WalletIcon
+- 30bd42817: fix(blade-svelte): keep formatted TextInput in sync on browser autofill refill
+
+  A formatted `TextInput` could end up showing raw, unformatted digits after browser autofill: Chrome can refill the same raw digits shortly after the first fill (e.g. after a network-driven `maxlength` swap changes the form). When the refill formatted to the value already held in state, the DOM `value` was never rewritten and the raw text stayed on screen. The input element is now synced directly in that case, so the value stays formatted after an autofill refill.
+
+- Updated dependencies [2ad731702]
+- Updated dependencies [f42708331]
+  - @razorpay/blade-core@0.21.0
+
 ## 0.19.0
 
 ### Minor Changes
