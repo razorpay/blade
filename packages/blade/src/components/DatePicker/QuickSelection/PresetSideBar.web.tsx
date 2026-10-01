@@ -16,6 +16,10 @@ const PresetSideBar = ({
   if (presetStates.length === 0) return <></>;
 
   if (isMobile) {
+    // Derive the currently-selected chip label from presetStates so that
+    // ChipGroup is controlled and restores selection when the BottomSheet reopens.
+    const selectedPresetLabel = presetStates.find((state) => state.isSelected)?.preset.label;
+
     return (
       <Box>
         <Divider marginTop="spacing.4" />
@@ -24,6 +28,7 @@ const PresetSideBar = ({
           size="small"
           selectionType="single"
           accessibilityLabel="Select Presets"
+          value={selectedPresetLabel}
           onChange={({ values }) => {
             const selectedPreset = presetStates.find((state) => state.preset.label === values[0]);
             if (selectedPreset) {
