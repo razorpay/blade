@@ -453,6 +453,42 @@ describe('<TreeView /> standalone', () => {
     expect(karnataka.querySelector('[data-blade-component="spinner"]')).toBeInTheDocument();
   });
 
+  // B9
+  it('should reserve the chevron slot on every row only when the tree has a branch (B9)', () => {
+    const { getByRole, getByText, rerender } = renderWithTheme(
+      <TreeView>
+        <TreeViewItem title="Karnataka" value="karnataka" hasChildren />
+        <TreeViewItem title="Goa" value="goa" />
+        <TreeViewLoadMore onClick={jest.fn()} />
+      </TreeView>,
+    );
+
+    // a branch exists (through hasChildren), so the leaf keeps an empty chevron slot
+    expect(
+      getByRole('treeitem', { name: 'Goa' }).querySelector('[aria-hidden="true"]'),
+    ).toBeInTheDocument();
+    expect(getByText('Show more').parentElement).toHaveStyle({ paddingLeft: '24px' });
+
+    rerender(
+      withTheme(
+        <TreeView>
+          <TreeViewItem title="Karnataka" value="karnataka" />
+          <TreeViewItem title="Goa" value="goa" />
+          <TreeViewLoadMore onClick={jest.fn()} />
+        </TreeView>,
+      ),
+    );
+
+    // flat tree: no row reserves the slot, and LoadMore drops its offset too
+    expect(
+      getByRole('treeitem', { name: 'Karnataka' }).querySelector('[aria-hidden="true"]'),
+    ).not.toBeInTheDocument();
+    expect(
+      getByRole('treeitem', { name: 'Goa' }).querySelector('[aria-hidden="true"]'),
+    ).not.toBeInTheDocument();
+    expect(getByText('Show more').parentElement).not.toHaveStyle({ paddingLeft: '24px' });
+  });
+
   // B7
   it('should activate TreeViewLoadMore on click and stay inert while loading (B7)', async () => {
     const user = userEvents.setup();
