@@ -65,6 +65,10 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
+      <Text marginTop="spacing.4">
+        When no row in the tree can expand, rows drop the empty chevron space and render flush. If
+        your data can never nest, prefer <Code>ActionList</Code>.
+      </Text>
       <Title>Keyboard Interactions</Title>
       <List>
         <ListItem>
@@ -330,6 +334,39 @@ const LoadMoreTemplate: StoryFn<typeof TreeViewComponent> = () => {
 };
 export const LoadMore = LoadMoreTemplate.bind({});
 LoadMore.storyName = 'Load More';
+
+// B9: with no branch anywhere in the tree, rows drop the chevron slot and render flush.
+// For data that can never nest, ActionList is the recommended component
+const FlatTreeTemplate: StoryFn<typeof TreeViewComponent> = () => {
+  const [visibleStateCount, setVisibleStateCount] = React.useState(2);
+  const [isLoadingStates, setIsLoadingStates] = React.useState(false);
+
+  return (
+    <Box maxWidth="400px">
+      <TreeViewComponent selectionType="multiple">
+        {OTHER_STATES.slice(0, visibleStateCount).map((state) => (
+          <TreeViewItem key={state} title={state} value={state.toLowerCase()} />
+        ))}
+        {visibleStateCount < OTHER_STATES.length ? (
+          <TreeViewLoadMore
+            isLoading={isLoadingStates}
+            onClick={() => {
+              setIsLoadingStates(true);
+              setTimeout(() => {
+                setVisibleStateCount((count) => Math.min(count + PAGE_SIZE, OTHER_STATES.length));
+                setIsLoadingStates(false);
+              }, 1500);
+            }}
+          >
+            Show more states
+          </TreeViewLoadMore>
+        ) : null}
+      </TreeViewComponent>
+    </Box>
+  );
+};
+export const FlatTree = FlatTreeTemplate.bind({});
+FlatTree.storyName = 'Flat Tree (No Nesting)';
 
 const DropdownSingleTemplate: StoryFn<typeof TreeViewComponent> = () => (
   <Box display="flex" gap="spacing.8" flexWrap="wrap" minHeight="400px">

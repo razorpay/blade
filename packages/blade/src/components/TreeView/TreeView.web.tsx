@@ -558,6 +558,12 @@ const _TreeView = ({
     }
   };
 
+  // B9: the chevron slot is a tree-wide decision - reserved on every row when any row
+  // can expand, dropped on every row when the tree is flat
+  const hasChevronSlot = React.useMemo(() => Object.values(nodeMap).some((node) => node.isBranch), [
+    nodeMap,
+  ]);
+
   // ---------------- context ----------------
   const contextValue = React.useMemo<TreeViewContextType>(
     () => ({
@@ -566,6 +572,7 @@ const _TreeView = ({
       isInsideDropdown,
       baseId,
       nodeMap,
+      hasChevronSlot,
       selectedValuesSet,
       expandedValues,
       tabbableValue,
@@ -582,6 +589,7 @@ const _TreeView = ({
       isInsideDropdown,
       baseId,
       nodeMap,
+      hasChevronSlot,
       selectedValuesSet,
       expandedValues,
       tabbableValue,
