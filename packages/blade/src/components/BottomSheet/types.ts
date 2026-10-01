@@ -62,6 +62,16 @@ type BottomSheetProps = {
    * @default false
    */
   snapToContentHeight?: boolean;
+  /**
+   * Toggles the drag handle (the pill affordance rendered at the top of the sheet).
+   *
+   * Set to `false` to hide it. On web this also removes the drag-to-move affordance
+   * since the handle is the drag surface; the sheet can still be dismissed via the
+   * backdrop, `esc`, or programmatically. On native, pan-to-close still works.
+   *
+   * @default true
+   */
+  showDragHandle?: boolean;
 } & DataAnalyticsAttribute;
 
 type BottomSheetHeaderProps = Pick<
