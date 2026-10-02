@@ -9,7 +9,11 @@
     inModal?: boolean;
     placement?: Placement;
     isDisabled?: boolean;
-    onOpenChange?: (isOpen: boolean) => void;
+    onOpenChange?: (change: { isOpen: boolean }) => void;
+    /** Rich content through `children` in place of `content`. */
+    rich?: boolean;
+    /** A title snippet above the content. */
+    richTitle?: boolean;
   }
 
   let {
@@ -18,8 +22,14 @@
     placement,
     isDisabled,
     onOpenChange,
+    rich = false,
+    richTitle = false,
   }: Props = $props();
 </script>
+
+{#snippet titleSnippet()}<em data-testid="rich-title">Fee</em> details{/snippet}
+
+{#snippet richContent()}<strong data-testid="rich">2%</strong> of the amount{/snippet}
 
 {#snippet tip()}
   <Tooltip
@@ -29,8 +39,10 @@
     {onOpenChange}
     testID="tip"
     class="ml-2"
+    children={rich ? richContent : undefined}
+    title={richTitle ? titleSnippet : undefined}
   >
-    <button data-testid="trigger">Fee</button>
+    {#snippet trigger({ isOpen })}<button data-testid="trigger" data-open={isOpen}>Fee</button>{/snippet}
   </Tooltip>
 {/snippet}
 

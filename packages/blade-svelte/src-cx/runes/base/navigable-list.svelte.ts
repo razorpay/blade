@@ -66,8 +66,8 @@ const AXIS_KEYS: Record<Orientation, Record<string, MoveAction>> = {
 
 /**
  * The APG listbox / menu / tablist core: an active index moved over the enabled
- * items, a key → action table, and a typeahead buffer. Selection is not here;
- * `option-list`, `menu`, `tabs` and `dropdown` add it.
+ * items, a key → action table, and a typeahead buffer. Selection is not here:
+ * `choice-list` adds a held one, `menu` a momentary one.
  */
 export function createNavigableList<T>(
   options: NavigableListOptions<T>
@@ -205,4 +205,34 @@ export function createNavigableList<T>(
     keyAction,
     enabledIndices,
   };
+}
+
+/**
+ * The one key → method dispatch for a navigable list: moves and types on the
+ * list, and hands `select` to the owner's `onSelect`. `open`/`close` are
+ * returned untouched: only a disclosure owner can act on them. Returns the
+ * action so the caller can cancel the event.
+ */
+export function dispatchListKey<T>(
+  list: NavigableListModel<T>,
+  key: string,
+  mods: KeyModifiers | undefined,
+  onSelect: () => void
+): ListAction | null {
+  const action = list.keyAction(key, mods);
+  switch (action) {
+    case 'select':
+      onSelect();
+      break;
+    case 'type':
+      list.type(key);
+      break;
+    case 'open':
+    case 'close':
+    case null:
+      break;
+    default:
+      list.move(action);
+  }
+  return action;
 }

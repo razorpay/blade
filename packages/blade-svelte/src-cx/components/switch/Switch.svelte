@@ -1,5 +1,7 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
+  import type { ControlState } from '../shared/control-state';
   import { cx } from '../../cx';
   import { createToggle } from '../../runes/toggle/toggle.svelte';
   import Icon from '../icon/Icon.svelte';
@@ -11,7 +13,7 @@
   interface BehaviourProps {
     /** The initial state, a `bind:isChecked`, or a value the host keeps driving. */
     isChecked?: boolean;
-    onChange?: (isChecked: boolean) => void;
+    onChange?: (change: { isChecked: boolean }) => void;
     isDisabled?: boolean;
     /**
      * A change is in flight (the setting is being saved): the switch shows
@@ -26,8 +28,8 @@
     /** Lands on the control, the element tests click. */
     testID?: string;
     class?: string;
-    /** The label. */
-    children?: Snippet;
+    /** The label; it receives the switch's state. */
+    children?: Snippet<[ControlState]>;
   }
 
   type Props = BehaviourProps & SwitchStyleProps;
@@ -46,6 +48,8 @@
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('Switch', () => styleProps);
+
   // A switch is a checkbox to the form: same behaviour, another role and look.
   const uid = $props.id();
   const toggle = createToggle({
@@ -55,14 +59,18 @@
     onValue: (next) => {
       isChecked = next;
     },
-    onChange: (next) => onChange?.(next),
+    onChange: (next) => onChange?.({ isChecked: next }),
     parse: () => parse,
     isDisabled: () => isDisabled,
     isBusy: () => isLoading,
   });
 
-  const classes = $derived(resolveSwitch(styleProps));
+  const classes = $derived(resolveSwitch(style.current));
   const track = $derived(toggle.state);
+  const controlState: ControlState = $derived({
+    isChecked: toggle.isChecked,
+    isDisabled,
+  });
 </script>
 
 <label
@@ -101,6 +109,6 @@
     </span>
   </span>
   {#if children}
-    <span class={classes.label}>{@render children()}</span>
+    <span class={classes.label}>{@render children(controlState)}</span>
   {/if}
 </label>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
   import {
@@ -74,6 +75,8 @@
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('Button', () => styleProps);
+
   // Inside a ButtonGroup the group's look wins, as in Blade, and its
   // disabled state joins the button's own.
   const group = getButtonGroup<Required<ButtonStyleProps>>();
@@ -88,7 +91,7 @@
     autoPressAfter: () => autoPressAfter,
   });
 
-  const classes = $derived(resolveButton(group?.shared ?? styleProps));
+  const classes = $derived(resolveButton(group?.shared ?? style.current));
 </script>
 
 <!--

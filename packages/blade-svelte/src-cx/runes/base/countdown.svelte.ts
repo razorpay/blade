@@ -12,12 +12,10 @@ export interface CountdownClock {
   readonly state: CountdownState;
   /** Anchors a deadline from the time left and ticks toward it. */
   start(): void;
-  /** Halts, retaining the time left for `resume`. */
+  /** Halts, retaining the time left for the next `start`. */
   pause(): void;
-  resume(): void;
-  /** Halts and forfeits the time left; only `reset` re-arms. */
+  /** Halts and forfeits the time left: `start` does nothing after it. */
   cancel(): void;
-  reset(): void;
 }
 
 /**
@@ -71,7 +69,6 @@ export function createCountdownClock(options: {
       return state;
     },
     start,
-    resume: start,
     pause() {
       if (ticker.running()) {
         ticker.stop();
@@ -81,11 +78,6 @@ export function createCountdownClock(options: {
     cancel() {
       ticker.stop();
       remainingMs = 0;
-    },
-    reset() {
-      ticker.stop();
-      remainingMs = total * 1000;
-      state = toState(total);
     },
   };
 }

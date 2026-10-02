@@ -5,7 +5,6 @@ import LayerHostNative from '../components/layer/LayerHost.native.svelte';
 import SurfaceNative from '../components/layer/Surface.native.svelte';
 import { globalLayers } from '../runes/layer/layers';
 import { resolveModal } from '../components/modal';
-import { bottomSheetLook } from '../components/bottom-sheet';
 
 const children = createRawSnippet(() => ({
   render: () => '<p>Content</p>',
@@ -16,7 +15,7 @@ function props(overrides: Record<string, unknown> = {}) {
     isOpen: true,
     isTop: true,
     role: 'dialog' as const,
-    classes: resolveModal({ placement: 'full' }),
+    classes: resolveModal({ size: 'full' }),
     onDismissRequest: vi.fn(),
     testID: 'sheet',
     children,
@@ -55,7 +54,7 @@ describe('Surface.native', () => {
 
   it('a bottom sheet asks the platform for its own drag and handle', () => {
     const { getByTestId } = render(SurfaceNative, {
-      props: props({ classes: bottomSheetLook({}) }),
+      props: props({ classes: resolveModal({ variant: 'sheet' }) }),
     });
     const sheet = getByTestId('sheet');
     expect(sheet.getAttribute('data-draggable')).toBe('true');

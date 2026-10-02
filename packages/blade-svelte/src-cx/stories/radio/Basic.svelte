@@ -22,12 +22,13 @@
   <RadioGroup
     bind:value
     orientation={args.orientation}
+    size={args.size}
     label={args.label}
     helpText={args.helpText || undefined}
     isDisabled={args.isDisabled}
   >
     <Radio value="qr">QR code</Radio>
-    <Radio value="web">Bank website</Radio>
+    <Radio value="web" helpText="Redirects to your bank">Bank website</Radio>
     <Radio value="app" isDisabled>Bank app (unavailable)</Radio>
   </RadioGroup>
   <p class="text-75 leading-50 text-surface-gray-subtle">value: {JSON.stringify(value)}</p>

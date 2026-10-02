@@ -13,28 +13,28 @@
   <SegmentedControl bind:value={method} accessibilityLabel="Pay with">
     <SegmentedControlItem
       value="card"
-      leading={icons.card}
+      icon={icons.card}
       accessibilityLabel="Card"
     />
     <SegmentedControlItem
       value="bank"
-      leading={icons.bank}
+      icon={icons.bank}
       accessibilityLabel="Netbanking"
     />
     <SegmentedControlItem
       value="phone"
-      leading={icons.phone}
+      icon={icons.phone}
       accessibilityLabel="UPI"
     />
   </SegmentedControl>
   <SegmentedControl bind:value={method} accessibilityLabel="Pay with">
-    <SegmentedControlItem value="card" leading={icons.card}
+    <SegmentedControlItem value="card" icon={icons.card}
       >Card</SegmentedControlItem
     >
-    <SegmentedControlItem value="bank" leading={icons.bank}
+    <SegmentedControlItem value="bank" icon={icons.bank}
       >Bank</SegmentedControlItem
     >
-    <SegmentedControlItem value="phone" leading={icons.phone}
+    <SegmentedControlItem value="phone" icon={icons.phone}
       >UPI</SegmentedControlItem
     >
   </SegmentedControl>

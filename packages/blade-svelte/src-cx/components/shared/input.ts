@@ -1,5 +1,5 @@
 // The input family's states in one place — TextInput (PhoneNumberInput is
-// one), TextAreaInput and OTPInput — so no field drifts from the rest.
+// one), TextArea and OTPInput — so no field drifts from the rest.
 // Uno reads class names literally, so a state comes in the spelling
 // its host needs: plain, for a part the core toggles from JS, or as a
 // variant on a control that draws its own frame. Both spellings of a
@@ -12,17 +12,17 @@ export const INPUT_FILL = 'bg-surface-gray-intense transition-all duration-xquic
 export const INPUT_TEXT =
   'text-interactive-gray-normal outline-none placeholder:text-surface-gray-disabled';
 
-/** The caption above a field. */
-export const INPUT_LABEL = 'text-75 leading-50 text-surface-gray-subtle';
-
 /** Inactive and hover: the border colour; the host sets its width. */
 export const INPUT_INACTIVE = 'border-interactive-gray-default hover:border-interactive-gray-highlighted';
 
-/** Active: a thicker primary border and a faint primary halo. */
+/**
+ * Active: a thicker primary border and Blade's focus ring — a 4px
+ * `surface.border.primary.muted` outline, 1px off the box.
+ */
 export const INPUT_ACTIVE =
-  'border-thick border-interactive-primary-default shadow-focus';
+  'border-thick border-interactive-primary-default outline-solid outline-4 outline-offset-1 outline-surface-primary-muted';
 export const INPUT_ACTIVE_ON_FOCUS =
-  'focus:border-thick focus:border-interactive-primary-default focus:shadow-focus';
+  'focus:border-thick focus:border-interactive-primary-default focus:outline-solid focus:outline-4 focus:outline-offset-1 focus:outline-surface-primary-muted';
 
 /**
  * Disabled: a grey fill, the disabled grey border, and the content in the

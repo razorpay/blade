@@ -7,7 +7,7 @@
       otpLength?: number;
       label?: string;
       helpText?: string;
-      keyboardType?: 'numeric' | 'text';
+      inputMode?: 'numeric' | 'text';
       isMasked?: boolean;
       isDisabled?: boolean;
       isReadOnly?: boolean;
@@ -30,16 +30,15 @@
     <OTPInput
       bind:value
       size={args.size}
-      labelPosition={args.labelPosition}
       otpLength={args.otpLength}
       label={args.label}
       helpText={args.helpText || undefined}
-      keyboardType={args.keyboardType}
+      inputMode={args.inputMode}
       isMasked={args.isMasked}
       isDisabled={args.isDisabled}
       isReadOnly={args.isReadOnly}
       onChange={(next) => record(`onChange ${JSON.stringify(next)}`)}
-      onFilled={(next) => record(`onFilled ${JSON.stringify(next)}`)}
+      onOTPFilled={(next) => record(`onOTPFilled ${JSON.stringify(next)}`)}
       testID="otp"
     />
   {/key}

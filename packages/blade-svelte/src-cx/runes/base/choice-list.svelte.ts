@@ -5,6 +5,7 @@ import {
 import { nativeOptionState } from './option-list';
 import {
   createOrderedEntries,
+  type EntryHost,
   type OrderedEntry,
 } from './ordered-entries.svelte';
 import type { Compare } from './selection';
@@ -19,7 +20,7 @@ export interface ChoiceField {
   touch(): void;
 }
 
-/** One registered choice: an OptionItem, an AccordionItem. */
+/** One registered choice: an OptionItem, a CardGroupItem. */
 export interface ChoiceEntry<T> extends OrderedEntry {
   value(): T;
   isDisabled(): boolean;
@@ -46,17 +47,15 @@ export interface ChoiceListOptions<T> {
   disabled?: () => boolean;
   /** Arrows wrap from the last choice to the first and back. */
   loop?: boolean;
+  /** Which arrows move: up/down (the default), left/right, or both. */
+  orientation?: 'vertical' | 'horizontal' | 'both';
 }
 
-export interface ChoiceList<T> {
-  /** Adds an entry; returns its unregister. */
-  register(entry: ChoiceEntry<T>): () => void;
-  /** An entry mounted or moved: re-read document order. */
-  reorder(): void;
-  /** An entry's position in document order; -1 when unregistered. Tracked. */
-  indexOf(entry: ChoiceEntry<T>): number;
+export interface ChoiceList<T> extends EntryHost<ChoiceEntry<T>> {
   /** The choices in order: the data, or the registered entries' values. Tracked. */
   items(): readonly T[];
+  /** The registered entry's element at `index`, in document order. */
+  elementAt(index: number): HTMLElement | undefined;
   /**
    * One user pick. The field pipeline runs and the field counts as visited
    * — a change is the visit. Returns whether the choice is picked
@@ -106,8 +105,9 @@ const same = <T>(a: T, b: T): boolean => a === b;
  * The headless option list: choices over a form field — one pick or many
  * — with the keyboard over them. The choices are data (`items`) or entries
  * that register themselves (`register`), read back in document order, so
- * anything else may sit between them. OptionList and Accordion are its two
- * anatomies: radio and checkbox rows, and expanding headers.
+ * anything else may sit between them. Its anatomies: OptionList (radio and
+ * checkbox rows), RadioGroup and ChipGroup (native radios and checkboxes),
+ * CardGroup (expanding headers) and Tabs (a tablist).
  */
 export function createChoiceList<T>(
   field: ChoiceField,
@@ -150,6 +150,7 @@ export function createChoiceList<T>(
     items,
     isDisabled,
     loop: options.loop,
+    orientation: options.orientation,
     typeahead: options.items
       ? options.typeahead
       : (item) => entryText(items().indexOf(item)),
@@ -181,10 +182,11 @@ export function createChoiceList<T>(
   }
 
   return {
-    register: (entry) => entries.register(entry),
-    reorder: () => entries.reorder(),
-    indexOf: (entry) => entries.indexOf(entry),
+    register: entries.register,
+    reorder: entries.reorder,
+    indexOf: entries.indexOf,
     items,
+    elementAt: (index) => ordered[index]?.getElement(),
     isSelected,
     isDisabled,
     toggle,

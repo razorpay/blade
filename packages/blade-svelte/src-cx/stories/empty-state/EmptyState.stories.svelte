@@ -3,6 +3,7 @@
   import readme from './README.md?raw';
   import meta from './index';
   import BasicStory from './Basic.svelte';
+  import SizesStory from './Sizes.svelte';
 
   const { Story } = defineMeta({
     title: "Components/EmptyState",
@@ -22,5 +23,15 @@
 >
   {#snippet template(args)}
     <BasicStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Sizes"
+  argTypes={meta.stories.Sizes.argTypes}
+  parameters={{ docs: { description: { story: meta.stories.Sizes.description } } }}
+>
+  {#snippet template()}
+    <SizesStory />
   {/snippet}
 </Story>

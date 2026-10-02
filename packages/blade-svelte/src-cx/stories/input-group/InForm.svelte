@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Form, InputGroup, TextInput } from '../../index';
+  import { Button, Form, InputGroup, PasswordInput, TextInput } from '../../index';
   import type { FormData } from '../../runes';
   import { describeConstraint } from '../helpers';
 
@@ -19,22 +19,22 @@
       name="number"
       label="Card number"
       placeholder="Card number"
-      type="tel"
+      inputMode="numeric"
       isRequired
     />
     <TextInput
       name="expiry"
       label="Expiry"
       placeholder="MM / YY"
-      type="tel"
+      inputMode="numeric"
       span="2/3"
       isRequired
     />
-    <TextInput
+    <PasswordInput
       name="cvv"
       label="CVV"
       placeholder="CVV"
-      type="password"
+      showRevealButton={false}
       maxCharacters={4}
       span="1/3"
       isRequired

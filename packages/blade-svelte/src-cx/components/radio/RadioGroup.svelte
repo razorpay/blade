@@ -1,6 +1,11 @@
 <script lang="ts">
+  import { pickHintText } from '../../runes/form/hint';
+  import type { FieldChange } from '../shared/change';
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
+  import FieldHint from '../shared/FieldHint.svelte';
+  import FieldLabel from '../shared/FieldLabel.svelte';
   import { provideRadioGroup } from '../../runes/radio/context';
   import { createRadioGroup } from '../../runes/radio/group.svelte';
   import {
@@ -14,11 +19,20 @@
   interface BehaviourProps {
     label?: string;
     /**
+     * The label's area, to put content beside the label: render the
+     * `label` snippet it receives and anything else. Today a row above the
+     * options, items 4px apart, `ms-auto` pushing one to the end. Only the
+     * label names the group.
+     */
+    labelArea?: Snippet<[{ label: Snippet }]>;
+    /** After the label: `*` or `(optional)`. Required also marks the control required. @default 'none' */
+    necessityIndicator?: 'required' | 'optional' | 'none';
+    /**
      * The picked Radio's `value`: the initial one, a `bind:value`, or a
      * value the host keeps driving — so there is no `defaultValue`.
      */
     value?: string;
-    onChange?: (value: string) => void;
+    onChange?: (change: FieldChange<string>) => void;
     /** Registers the group with the enclosing Form under this key. */
     name?: string;
     isDisabled?: boolean;
@@ -33,9 +47,9 @@
      * for `errorText`. Inside a Form a visible field error replaces the line
      * while it lasts.
      */
-    helpText?: string;
+    helpText?: string | Snippet;
     /** The line while `validationState` is `error`. */
-    errorText?: string;
+    errorText?: string | Snippet;
     /** Names the group when there is no visible `label`. */
     accessibilityLabel?: string;
     testID?: string;
@@ -51,6 +65,8 @@
 
   let {
     label,
+    labelArea,
+    necessityIndicator = 'none',
     value = $bindable(),
     onChange,
     name,
@@ -67,12 +83,14 @@
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('RadioGroup', () => styleProps);
+
   const uid = $props.id();
   // Blade's two lines, one shown: the state's own, else the help text.
   const lineText = $derived(
-    validationState === 'error' ? (errorText ?? helpText) : helpText
+    pickHintText({ validationState, helpText, errorText })
   );
-  const classes = $derived((look ?? resolveRadioGroup)(styleProps));
+  const classes = $derived((look ?? resolveRadioGroup)(style.current));
 
   const group = createRadioGroup<RadioClasses>({
     id: uid,
@@ -81,9 +99,9 @@
     onValue: (next) => {
       value = next;
     },
-    onChange: (next) => onChange?.(next),
+    onChange: (next) => onChange?.({ name, value: next }),
     isDisabled: () => isDisabled,
-    isRequired: () => isRequired,
+    isRequired: () => isRequired || necessityIndicator === 'required',
     validationState: () => validationState,
     hint: () => lineText,
     shared: () => classes.radio,
@@ -115,26 +133,29 @@
   role="radiogroup"
   aria-label={label ? undefined : accessibilityLabel}
   aria-labelledby={label ? group.labelId : undefined}
-  aria-required={isRequired ? 'true' : undefined}
+  aria-required={isRequired || necessityIndicator === 'required' ? 'true' : undefined}
   aria-invalid={hint.validationState === 'error' ? 'true' : undefined}
   aria-describedby={hint.text ? group.hintId : undefined}
   data-testid={testID}
 >
   {#if label}
-    <span id={group.labelId} class={classes.label}>{label}</span>
+    <FieldLabel
+      id={group.labelId}
+      text={label}
+      {necessityIndicator}
+      size={classes.fieldSize}
+      area={labelArea}
+    />
   {/if}
   <div class={classes.options}>
     {@render options()}
   </div>
   {#if hint.text}
-    <p
+    <FieldHint
       id={group.hintId}
-      class={cx(
-        classes.hint,
-        classes.hintTone[hint.validationState === 'error' ? 'error' : 'none']
-      )}
-    >
-      {hint.text}
-    </p>
+      text={hint.text}
+      tone={hint.validationState === 'error' ? 'error' : 'help'}
+      size={classes.fieldSize}
+    />
   {/if}
 </div>

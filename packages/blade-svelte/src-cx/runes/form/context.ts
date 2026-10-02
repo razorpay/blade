@@ -1,7 +1,7 @@
-import { getContext, setContext } from 'svelte';
+import { defineContext } from '../context';
 import type { FormErrors, FormModel } from './types';
 
-const FORM = Symbol('blade-form');
+const FORM = defineContext<FormModel>('blade-form');
 
 /** What the Form anatomy offers the components inside it, beyond the model. */
 export interface FormHooks {
@@ -13,18 +13,18 @@ export interface FormHooks {
   onInvalid?: (errors: FormErrors) => void;
 }
 
-const FORM_HOOKS = Symbol('blade-form-hooks');
+const FORM_HOOKS = defineContext<FormHooks>('blade-form-hooks');
 
 /** Form.svelte publishes its model here; fields and buttons pick it up. */
 export function provideForm(form: FormModel, hooks: FormHooks = {}): void {
-  setContext(FORM, form);
-  setContext(FORM_HOOKS, hooks);
+  FORM.set(form);
+  FORM_HOOKS.set(hooks);
 }
 
 export function getFormHooks(): FormHooks {
-  return getContext<FormHooks | undefined>(FORM_HOOKS) ?? {};
+  return FORM_HOOKS.get() ?? {};
 }
 
 export function getForm(): FormModel | undefined {
-  return getContext<FormModel | undefined>(FORM);
+  return FORM.get();
 }

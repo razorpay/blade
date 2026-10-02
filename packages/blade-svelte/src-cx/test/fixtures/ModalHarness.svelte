@@ -1,7 +1,6 @@
 <script lang="ts">
-  import type { BackAnswer, DialogCloseSource } from '../../runes';
+  import type { DialogDismissEvent } from '../../runes';
   import Modal from '../../components/modal/Modal.svelte';
-  import type { ModalLookProp } from '../../components/modal/styles';
   import LayerHost from '../../components/layer/LayerHost.svelte';
 
   interface Props {
@@ -9,20 +8,21 @@
     isOpen?: boolean;
     nestedOpen?: boolean;
     isDismissible?: boolean;
-    onDismiss?: (source: DialogCloseSource) => void;
-    onNestedDismiss?: (source: DialogCloseSource) => void;
-    onBack?: () => BackAnswer;
+    onDismiss?: (event: DialogDismissEvent) => void;
+    onNestedDismiss?: (event: DialogDismissEvent) => void;
     closeLabel?: string;
     withTitleSnippet?: boolean;
     withHeader?: boolean;
     /** Which content props the modal gets; `children` render raw. */
     content?: 'children' | 'body' | 'both';
     title?: string;
+    subtitle?: string;
     accessibilityLabel?: string;
-    placement?: 'center' | 'bottom' | 'top' | 'left' | 'right' | 'full';
-    size?: 'default' | 'full';
+    size?: 'small' | 'medium' | 'large' | 'full';
     pace?: 'default' | 'snappy';
-    look?: ModalLookProp['look'];
+    variant?: 'modal' | 'sheet' | 'drawer' | 'left-drawer';
+    /** Fills the chrome snippet: a badge above the panel, and a close. */
+    withChrome?: boolean;
     className?: string;
   }
 
@@ -33,17 +33,17 @@
     isDismissible,
     onDismiss,
     onNestedDismiss,
-    onBack,
     closeLabel = 'Close',
     withTitleSnippet = false,
     withHeader = false,
     content = 'children',
     title = 'Remove card',
+    subtitle,
     accessibilityLabel,
-    placement,
     size,
     pace,
-    look,
+    variant,
+    withChrome = false,
     className,
   }: Props = $props();
 </script>
@@ -61,13 +61,32 @@
   <h2>Remove <em>this</em> card</h2>
 {/snippet}
 
-{#snippet subtitle()}
+{#snippet headerContent({
+  title,
+  subtitle,
+  close,
+}: {
+  title: import('svelte').Snippet;
+  subtitle: import('svelte').Snippet;
+  close: () => void;
+})}
+  <div data-testid="title-row" class="flex items-center gap-2">
+    <button data-testid="header-back" onclick={close}>Back</button>
+    {@render title()}
+    <span data-testid="badge-beside">Default</span>
+  </div>
+  {@render subtitle()}
   <p data-testid="subtitle">Ending 1111</p>
 {/snippet}
 
 {#snippet rawContent({ close }: { close: () => void })}
   <button data-testid="first">First</button>
   <button data-testid="cancel" onclick={close}>Cancel</button>
+{/snippet}
+
+{#snippet chromeContent({ close }: { close: () => void })}
+  <div data-testid="badge" class="absolute bottom-full">Badge</div>
+  <button data-testid="chrome-close" onclick={close}>Done</button>
 {/snippet}
 
 {#snippet bodyContent({ close }: { close: () => void })}
@@ -79,22 +98,22 @@
   bind:isOpen
   {isDismissible}
   {onDismiss}
-  {onBack}
   {closeLabel}
   title={withTitleSnippet ? titleSnippet : title}
-  header={withHeader ? subtitle : undefined}
+  {subtitle}
+  header={withHeader ? headerContent : undefined}
   body={content === 'children' ? undefined : bodyContent}
   children={content === 'body' ? undefined : rawContent}
   {accessibilityLabel}
-  {placement}
   {size}
   {pace}
-  {look}
+  {variant}
+  chrome={withChrome ? chromeContent : undefined}
   class={className}
   testID="modal"
 >
-  {#snippet footer()}
-    <button data-testid="last">Last</button>
+  {#snippet footer({ close })}
+    <button data-testid="last" onclick={close}>Last</button>
   {/snippet}
 </Modal>
 

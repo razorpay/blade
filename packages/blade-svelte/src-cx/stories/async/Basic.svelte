@@ -45,12 +45,12 @@
     lines={args.lines}
     pendingLabel="Loading banks"
   >
-    {#snippet children(banks)}
+    {#snippet children({ value: banks })}
       {#each banks as bank (bank)}
         <Text>{bank}</Text>
       {/each}
     {/snippet}
-    {#snippet failed(error)}
+    {#snippet failed({ error })}
       <Alert
         color="negative"
         description={(error as Error).message}

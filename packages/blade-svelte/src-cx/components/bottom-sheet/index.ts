@@ -2,7 +2,6 @@ import type { BottomSheetComponent } from './styles';
 import BottomSheetImpl from './BottomSheet.svelte';
 
 export {
-  bottomSheetLook,
   BOTTOM_SHEET_AXES,
   type BottomSheetStyleProps,
   type BottomSheetBehaviourProps,

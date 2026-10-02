@@ -39,10 +39,14 @@ describe('createSheetDrag', () => {
     expect(drag.end(400)).toBe('settle');
   });
 
-  it('resists and always settles when it may not close', () => {
+  it('resists when it may not close; a fling still asks', () => {
     const drag = createSheetDrag({ dismissible: () => false });
     drag.start(100, 0);
     expect(drag.move(500, 50)).toBe(100);
+    expect(drag.end(400)).toBe('dismiss');
+    // Pulled slowly, the resisted offset never passes half the sheet.
+    drag.start(100, 0);
+    drag.move(500, 2000);
     expect(drag.end(400)).toBe('settle');
   });
 

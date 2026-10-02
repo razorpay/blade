@@ -1,7 +1,7 @@
 <script lang="ts">
   import { TextInput, type TextInputStyleProps } from '../../index';
 
-  type InputType = 'text' | 'tel' | 'email' | 'number' | 'password';
+  type InputType = 'text' | 'tel' | 'email' | 'url' | 'number';
 
   interface Props {
     args: TextInputStyleProps & {
@@ -13,6 +13,8 @@
       isRequired?: boolean;
       isReadOnly?: boolean;
       maxCharacters?: number;
+      necessityIndicator?: 'required' | 'optional' | 'none';
+      showClearButton?: boolean;
     };
   }
 
@@ -32,6 +34,10 @@
     isRequired={args.isRequired}
     isReadOnly={args.isReadOnly}
     maxCharacters={args.maxCharacters}
+    size={args.size}
+    textAlign={args.textAlign}
+    necessityIndicator={args.necessityIndicator}
+    showClearButton={args.showClearButton}
     testID="basic-input"
   />
   <p class="text-75 leading-50 text-surface-gray-subtle">value: {JSON.stringify(value)}</p>

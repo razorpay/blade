@@ -4,7 +4,7 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'Link',
   description:
-    'Always an anchor: it goes somewhere. Something that only acts is `Button variant="link"`, which wears the same look from one shared style module (packages/blade/components/link/styles.ts).',
+    "Blade's Link: an anchor that goes somewhere, or (`variant=\"button\"`) a button that acts and reads as a link. Only the anchor underlines, on hover and focus.",
   argTypes: {
     color: { control: 'select', options: LINK_AXES.color },
     size: { control: 'select', options: LINK_AXES.size },
@@ -26,7 +26,7 @@ const meta: StoryMeta = {
     },
     LinkOrButton: {
       description:
-        'The same look on an anchor and on a button, inline in a sentence. The button keeps Button behaviour: async press, busy, form actions.',
+        'The anchor inline in a sentence, wrapping with it; the button form beside it, and an icon-only link named by accessibilityLabel.',
       argTypes: {},
     },
     Matrix: {

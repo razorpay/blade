@@ -20,7 +20,6 @@
 <div class="grid max-w-96 gap-4">
   <OTPInput
     size={args.size}
-    labelPosition={args.labelPosition}
     label="Enter OTP"
     value="123456"
     validationState={args.validationState}

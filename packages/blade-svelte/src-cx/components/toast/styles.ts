@@ -3,6 +3,10 @@ import type { AxisValue } from '../../axes';
 import type { ToastStackGeometry } from '../../runes/toast/stack-layout';
 import { PHONE_MEDIA } from '../shared/breakpoint';
 import { INTENTS, type Intent } from '../shared/intent';
+import type { IconSource } from '../../runes/icon/source';
+import { resolveButton } from '../button/styles';
+import { resolveIconButton } from '../icon-button/styles';
+import { alertOctagon, alertTriangle, checkCircle, info } from '../icons';
 
 /**
  * The parts of a toast. Enter/exit ride the root's `data-state="open" |
@@ -16,11 +20,16 @@ export interface ToastClasses {
   /** `alert` interrupts a screen reader: the looks that are failures. */
   role: 'status' | 'alert';
   icon: string;
-  message: string;
+  /** Blade's glyph for the colour when `icon` names none. */
+  defaultIcon: IconSource;
+  /** Wraps the content: 4px above and below. */
+  body: string;
+  content: string;
+  /** The action and the dismiss button, 12px apart at the row's end. */
+  trailing: string;
+  /** Blade's action: an xsmall tertiary white Button. */
   action: string;
-  /** The hairline before the dismiss button; drawn only with it. */
-  divider: string;
-  /** The dismiss button, present only when `showToast` names it. */
+  /** Blade's dismiss: a subtle medium IconButton. */
   close: string;
 }
 
@@ -83,12 +92,22 @@ const URGENT: Intent[] = ['negative'];
 // Blade's informational toast (toast.module.css): the intent's popup fill
 // with its popup border as a 1px line, white text and icon on it, and a
 // 1.5px static-white faded-highlighted bevel along the top edge.
+// Blade's Toast: the colour's popup fill, its 1px popup rim drawn inside,
+// the white bevel along the top, and the medium backdrop blur.
 const TONE: Record<Intent, string> = {
-  neutral: 'border-popup-neutral-moderate bg-popup-neutral-moderate',
-  information: 'border-popup-information-moderate bg-popup-information-moderate',
-  positive: 'border-popup-positive-moderate bg-popup-positive-moderate',
-  notice: 'border-popup-notice-moderate bg-popup-notice-moderate',
-  negative: 'border-popup-negative-moderate bg-popup-negative-moderate',
+  neutral: 'bg-popup-neutral-moderate shadow-toast-neutral',
+  information: 'bg-popup-information-moderate shadow-toast-information',
+  positive: 'bg-popup-positive-moderate shadow-toast-positive',
+  notice: 'bg-popup-notice-moderate shadow-toast-notice',
+  negative: 'bg-popup-negative-moderate shadow-toast-negative',
+};
+
+const LEADING: Record<Intent, IconSource> = {
+  neutral: info,
+  information: info,
+  positive: checkCircle,
+  notice: alertTriangle,
+  negative: alertOctagon,
 };
 
 // 44px tall: 12px padding round a 20px line, the 16px icon and the dismiss
@@ -98,20 +117,23 @@ const TONE: Record<Intent, string> = {
 // fading both ways — a transition takes the pace of the state it moves to,
 // so each state names its own. It takes clicks while the box around it does
 // not.
+// Blade's Toast: 12px round, 12px in and 8px above and below, its parts
+// 8px apart; the content body small in `surface.text.static-white.normal`,
+// 4px above and below; the icon static white. Enter slides in from the
+// edge over gentle/entrance, exit leaves over moderate/exit.
 export const resolveToast: ToastStyleResolver<ToastStyleProps> = (props) => {
   const { color = 'neutral' } = props;
   return {
-    root: `pointer-events-auto flex w-full items-center gap-2 rounded-small border-thin border-solid shadow-toast-bevel p-3 font-text text-25 leading-100 text-surface-static-white-normal [transition-property:translate,opacity] data-[state=open]:duration-gentle data-[state=open]:ease-entrance data-[state=closed]:duration-moderate data-[state=closed]:ease-exit motion-reduce:transition-none data-[state=closed]:opacity-0 ${TONE[color]}`,
+    root: `pointer-events-auto flex w-full items-center gap-2 overflow-hidden rounded-medium px-3 py-2 backdrop-blur-medium [transition-property:translate,opacity] data-[state=open]:duration-gentle data-[state=open]:ease-entrance data-[state=closed]:duration-moderate data-[state=closed]:ease-exit motion-reduce:transition-none data-[state=closed]:opacity-0 ${TONE[color]}`,
     icon: 'flex shrink-0 items-center icon-surface-static-white-normal',
-    message: 'min-w-0 flex-1',
-    // Blade's action is a tertiary white Button: white text on a faded white
-    // fill that darkens on hover, Blade's focus ring.
-    action:
-      'shrink-0 rounded-xsmall bg-interactive-static-white-faded font-medium text-interactive-static-white-normal outline-none transition-colors hover:bg-interactive-static-black-faded focus-visible:bg-interactive-static-black-faded focus-visible:shadow-focus',
-    divider: 'mx-1 h-5 w-px shrink-0 bg-interactive-static-white-faded',
-    // Blade's dismiss is a subtle (static white) IconButton.
-    close:
-      'flex w-4 h-4 shrink-0 items-center justify-center rounded-xsmall bg-transparent icon-interactive-static-white-normal outline-none transition-colors hover:icon-interactive-static-white-subtle active:icon-interactive-static-white-subtle focus-visible:icon-interactive-static-white-subtle focus-visible:shadow-focus',
+    defaultIcon: LEADING[color],
+    body: 'min-w-0 py-1',
+    content: 'block font-text font-regular text-75 leading-75 tracking-50 text-surface-static-white-normal',
+    trailing: 'ms-auto flex shrink-0 items-center gap-3',
+    action: resolveButton({ variant: 'tertiary', color: 'white', size: 'xsmall' }).root,
+    close: resolveIconButton({ emphasis: 'subtle', size: 'medium' }).root,
+    // A failure interrupts a screen reader; Blade announces every toast
+    // politely.
     role: URGENT.includes(color) ? 'alert' : 'status',
   };
 };
@@ -158,10 +180,10 @@ export const resolveToastStack: ToastStackStyleResolver<
   const { placement = 'bottom' } = props;
   const edge = PLACEMENT[placement];
   return {
-    root: `pointer-events-none absolute inset-x-4 z-60 mx-auto max-w-blade-360 m:inset-x-6 ${edge.root}`,
+    root: `pointer-events-none absolute inset-x-4 z-60 mx-auto max-w-[360px] m:inset-x-6 ${edge.root}`,
     column: `pointer-events-none absolute inset-x-0 z-60 flex items-center gap-2 p-4 ${edge.column}`,
-    wrapper: `absolute inset-x-0 flex origin-center items-start overflow-hidden ${MOTION} [scale:var(--toast-scale)] [opacity:var(--toast-opacity)] [z-index:var(--toast-z)] [height:var(--toast-height)] [&>*]:pointer-events-auto ${edge.wrapper}`,
-    hover: `absolute inset-x-0 [z-index:-100] [height:calc(var(--hover-height)*1px)] data-[expanded=true]:pointer-events-auto ${edge.hover}`,
+    wrapper: `absolute inset-x-0 flex origin-center items-start overflow-hidden ${MOTION} [scale:var(--toast-scale)] [opacity:var(--toast-opacity)] [z-index:var(--toast-z)] h-[var(--toast-height)] [&>*]:pointer-events-auto ${edge.wrapper}`,
+    hover: `absolute inset-x-0 [z-index:-100] h-[calc(var(--hover-height)*1px)] data-[expanded=true]:pointer-events-auto ${edge.hover}`,
     slide: edge.slide,
     capacity: 3,
     duration: 4000,

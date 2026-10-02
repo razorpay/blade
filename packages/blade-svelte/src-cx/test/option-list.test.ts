@@ -25,10 +25,9 @@ describe('OptionList', () => {
     const onChange = vi.fn();
     const { getByTestId } = render(OptionListHarness, { props: { onChange } });
     await fireEvent.click(getByTestId('banks-1'));
-    expect(onChange).toHaveBeenCalledExactlyOnceWith({
-      code: 'icici',
-      name: 'ICICI Bank',
-    });
+    expect(onChange).toHaveBeenCalledExactlyOnceWith(
+      expect.objectContaining({ value: { code: 'icici', name: 'ICICI Bank' } })
+    );
     expect(getByTestId('bound').textContent).toBe('icici');
     expectClass(getByTestId('banks-1').parentElement, 'bg-interactive-gray-faded-highlighted');
     expectNoClass(getByTestId('banks-0').parentElement, 'bg-interactive-gray-faded-highlighted');
@@ -259,8 +258,11 @@ describe('OptionRow.native', () => {
     const onToggle = vi.fn(() => true);
     const { container } = render(OptionRowNative, {
       props: {
+        kind: 'radio',
         isSelected: true,
         isDisabled: false,
+        isInvalid: false,
+        testID: 'hdfc',
         classes: resolveOptionList({}),
         optionState: { checked: 'true' },
         onToggle,
@@ -270,6 +272,10 @@ describe('OptionRow.native', () => {
     const row = container.firstElementChild as HTMLElement;
     expect(row.tagName).toBe('DIV');
     expect(row.getAttribute('checked')).toBe('true');
+    // The semantics and test id the web row's input carries.
+    expect(row.getAttribute('role')).toBe('radio');
+    expect(row.getAttribute('aria-checked')).toBe('true');
+    expect(row.dataset.testid).toBe('hdfc');
     expectClass(row, 'bg-interactive-gray-faded-highlighted');
     await fireEvent.click(row);
     expect(onToggle).toHaveBeenCalledTimes(1);

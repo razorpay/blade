@@ -10,6 +10,7 @@
     isTop: boolean;
     role: 'dialog' | 'alertdialog';
     labelledBy?: string;
+    describedBy?: string;
     accessibilityLabel?: string;
     classes: SurfaceClasses;
     /** Whether a drag may close it; a sheet that may not resists and settles. */
@@ -29,6 +30,12 @@
      * zone, together with the handle strip.
      */
     header?: Snippet;
+    /**
+     * What sits in the chrome — the full-width, zero-height box on the
+     * panel's top edge that the panel does not clip — after the drag
+     * handle.
+     */
+    chrome?: Snippet;
     children: Snippet;
   }
 
@@ -37,6 +44,7 @@
     isTop,
     role,
     labelledBy,
+    describedBy,
     accessibilityLabel,
     classes,
     isDismissible = true,
@@ -45,6 +53,7 @@
     testID,
     class: className = '',
     header,
+    chrome,
     children,
   }: Props = $props();
 
@@ -56,6 +65,7 @@
     isTop: () => isTop,
     isDismissible: () => isDismissible,
     dragMedia: () => classes.drag.media,
+    dragAxis: () => classes.drag,
     onDismissRequest: (source) => onDismissRequest(source),
   });
 </script>
@@ -78,28 +88,41 @@
       tabindex="-1"
       aria-modal="true"
       aria-labelledby={labelledBy}
+      aria-describedby={describedBy}
       aria-label={labelledBy ? undefined : accessibilityLabel}
       data-testid={testID}
       {@attach surface.panel}
     >
-      {#if classes.drag.isEnabled}
-        <div
-          class={classes.drag.zone}
-          data-testid={testID ? `${testID}-drag-zone` : undefined}
-          onpointerdown={surface.handleDragStart}
-          onpointermove={surface.handleDragMove}
-          onpointerup={surface.handleDragEnd}
-          onpointercancel={surface.handleDragCancel}
-        >
+      <!-- First, so what it holds (the close button) is early in tab order. -->
+      <div class={classes.chrome} data-testid={testID ? `${testID}-chrome` : undefined}>
+        {#if classes.drag.isEnabled && classes.drag.handle}
+          <!-- Over the drag strip, which takes the press. -->
           <div class={classes.drag.handle} aria-hidden="true">
             <span class={classes.drag.grip}></span>
           </div>
+        {/if}
+        {@render chrome?.()}
+      </div>
+      <div class={classes.content} data-testid={testID ? `${testID}-content` : undefined}>
+        {#if classes.drag.isEnabled}
+          <div
+            class={classes.drag.zone}
+            data-testid={testID ? `${testID}-drag-zone` : undefined}
+            onpointerdown={surface.handleDragStart}
+            onpointermove={surface.handleDragMove}
+            onpointerup={surface.handleDragEnd}
+            onpointercancel={surface.handleDragCancel}
+          >
+            {#if classes.drag.strip}
+              <div class={classes.drag.strip}></div>
+            {/if}
+            {@render header?.()}
+          </div>
+        {:else}
           {@render header?.()}
-        </div>
-      {:else}
-        {@render header?.()}
-      {/if}
-      {@render children()}
+        {/if}
+        {@render children()}
+      </div>
     </div>
   </div>
 {/if}

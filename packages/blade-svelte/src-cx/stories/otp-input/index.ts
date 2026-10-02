@@ -7,14 +7,10 @@ const meta: StoryMeta = {
     'One-time-code component (packages/blade/components/otp-input) over the composite-input model: fixed cells, auto-advance, backspace retreat, paste and autofill distribution.',
   argTypes: {
     size: { control: 'select', options: OTP_INPUT_AXES.size },
-    labelPosition: {
-      control: 'select',
-      options: OTP_INPUT_AXES.labelPosition,
-    },
     otpLength: { control: 'number', description: 'Fixed at mount' },
     label: { control: 'text' },
     helpText: { control: 'text' },
-    keyboardType: { control: 'select', options: ['numeric', 'text'] },
+    inputMode: { control: 'select', options: ['numeric', 'text'] },
     isMasked: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
     isReadOnly: { control: 'boolean' },
@@ -25,11 +21,10 @@ const meta: StoryMeta = {
         'Type, paste, backspace and arrow between cells; every event the component reports is logged.',
       args: {
         size: 'medium',
-        labelPosition: 'top',
         otpLength: 6,
         label: 'Enter OTP',
         helpText: 'Sent to your registered mobile',
-        keyboardType: 'numeric',
+        inputMode: 'numeric',
         isMasked: false,
         isDisabled: false,
         isReadOnly: false,

@@ -49,9 +49,9 @@ describe('OTPInput standalone', () => {
     }
 
     expect(values(queries, 4)).toBe('1|2|3|4');
-    expect(onChange).toHaveBeenLastCalledWith('1234');
+    expect(onChange).toHaveBeenLastCalledWith({ name: 'otp', value: '1234' });
     expect(onFilled).toHaveBeenCalledTimes(1);
-    expect(onFilled).toHaveBeenCalledWith('1234');
+    expect(onFilled).toHaveBeenCalledWith({ name: 'otp', value: '1234' });
     expectClass(cell(queries, 0), '');
   });
 
@@ -77,7 +77,7 @@ describe('OTPInput standalone', () => {
     await fireEvent.input(cell(queries, 1));
 
     expect(values(queries, 3)).toBe('1||');
-    expect(onChange).toHaveBeenCalledWith('1');
+    expect(onChange).toHaveBeenCalledWith({ name: 'otp', value: '1' });
   });
 
   it('backspace on an empty cell clears the previous one and retreats', async () => {
@@ -106,7 +106,7 @@ describe('OTPInput standalone', () => {
       name: 'otp',
       method: 'paste',
     });
-    expect(onFilled).toHaveBeenCalledWith('1234');
+    expect(onFilled).toHaveBeenCalledWith({ name: 'otp', value: '1234' });
   });
 
   it('spreads an outside value without firing onChange or stealing focus', async () => {
@@ -121,7 +121,7 @@ describe('OTPInput standalone', () => {
     expect(values(queries, 4)).toBe('9|8|7|6');
     expect(onChange).not.toHaveBeenCalled();
     // An auto-read still completes the code.
-    expect(onFilled).toHaveBeenCalledWith('9876');
+    expect(onFilled).toHaveBeenCalledWith({ name: 'otp', value: '9876' });
     expect(queries.container.contains(document.activeElement)).toBe(false);
   });
 
@@ -152,7 +152,7 @@ describe('OTPInput standalone', () => {
     });
     const group = queries.getByRole('group');
     expect(group.getAttribute('aria-describedby')).toBe(
-      queries.getByText('Sent by SMS').id
+      queries.getByText('Sent by SMS').closest('[id]')?.id
     );
 
     await queries.rerender({
@@ -160,7 +160,7 @@ describe('OTPInput standalone', () => {
       validationState: 'error',
     });
     const error = queries.getByText('Wrong OTP');
-    expect(group.getAttribute('aria-describedby')).toBe(error.id);
+    expect(group.getAttribute('aria-describedby')).toBe(error.closest('[id]')?.id);
     expect(cell(queries, 0).getAttribute('aria-invalid')).toBe('true');
     expectClass(cell(queries, 0), '!border-interactive-negative');
     expectClass(error, 'text-feedback-negative-intense');

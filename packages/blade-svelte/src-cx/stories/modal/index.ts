@@ -1,53 +1,85 @@
-import { MODAL_AXES } from '../../index';
+import { DRAWER_AXES, MODAL_AXES } from '../../index';
 import type { StoryMeta } from '../types';
 
 const meta: StoryMeta = {
   title: 'Modal',
   description:
-    'Modal component over the dialog model (packages/blade/runes/modal) on the layer stack: placement and size come from its styles.',
+    'Modal component over the dialog model (packages/blade/runes/modal) on the layer stack: variant and size come from its styles.',
   argTypes: {
-    placement: { control: 'select', options: MODAL_AXES.placement },
+    variant: { control: 'select', options: MODAL_AXES.variant },
     size: { control: 'select', options: MODAL_AXES.size },
     isDismissible: {
       control: 'boolean',
-      description: 'Lets the backdrop, Escape and back close it',
+      description:
+        'Whether a dismissal closes it by itself, and whether the close button shows',
     },
     closeLabel: {
       control: 'text',
-      description: 'Names the close button; empty removes it',
+      description: "The close button's accessible name",
     },
     title: { control: 'text' },
   },
   stories: {
     Basic: {
       args: {
-        placement: 'center',
-        size: 'default',
+        variant: 'modal',
+        size: 'small',
         isDismissible: true,
         closeLabel: 'Close',
         title: 'Remove this card?',
+        withChrome: false,
+      },
+      argTypes: {
+        withChrome: {
+          control: 'boolean',
+          description:
+            'Fills the `chrome` snippet: an illustration hanging off the top edge, unclipped',
+        },
       },
     },
     BottomSheet: {
       name: 'Bottom sheet',
       description:
-        "Blade's BottomSheet is Modal with `bottomSheetLook` — `<BottomSheet>` fixes it: anchored to the bottom with a handle, dragged down to dismiss (a fling, or past half its height). onDismiss reports source 'drag'. `adaptive` makes it a modal on desktop: centred, or with `placement: 'bottom'` a handle-less panel on the same edge.",
+        "Blade's BottomSheet is Modal in its `sheet` variant: anchored to the bottom with a handle, dragged down to dismiss (a fling, or past half its height). onDismiss reports source 'drag'. `variant` picks sheet or modal, and per breakpoint (`{ base: 'sheet', m: 'modal' }`) it is the adaptive sheet: a modal from 768px up, centred.",
       argTypes: {
         isDismissible: {
           control: 'boolean',
-          description: 'Off: the sheet resists the drag and settles back',
+          description:
+            'Off: the sheet resists the drag; a fling reports it and it settles back',
         },
-        adaptive: {
-          control: 'boolean',
-          description: 'A modal above the desktop breakpoint',
-        },
-        placement: {
+        variant: {
           control: 'select',
-          options: ['center', 'bottom'],
-          description: 'The adaptive modal on desktop; ignored otherwise',
+          options: ['sheet', 'modal', 'adaptive'],
+          description: "adaptive: { base: 'sheet', m: 'modal' }",
+        },
+        isDraggable: {
+          control: 'boolean',
+          description: 'Dragged down to dismiss; the handle shows only while on',
         },
       },
-      args: { isDismissible: true, adaptive: false, placement: 'center' },
+      args: { isDismissible: true, variant: 'sheet', isDraggable: true },
+    },
+    Drawer: {
+      name: 'Drawer',
+      description:
+        "Blade's Drawer is Modal in its `drawer` variant: full height, docked to the right edge (or, with `left-drawer`, the left), sliding in from it. Every other prop is the modal's.",
+      argTypes: {
+        isDismissible: {
+          control: 'boolean',
+          description: 'Lets the backdrop, Escape and back close it',
+        },
+        variant: {
+          control: 'select',
+          options: DRAWER_AXES.variant,
+          description: 'The edge it docks to',
+        },
+        pace: { control: 'select', options: DRAWER_AXES.pace },
+        isDraggable: {
+          control: 'boolean',
+          description: 'Dragged toward its edge, by the header, to dismiss',
+        },
+      },
+      args: { isDismissible: true, variant: 'drawer', pace: 'default', isDraggable: false },
     },
     Stacked: {
       name: 'Stacked modals',

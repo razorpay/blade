@@ -1,5 +1,8 @@
 export interface SheetDragOptions {
-  /** Whether a drag may close the sheet. When not, it resists and settles. */
+  /**
+   * Whether a drag may close the sheet. When not, it resists; a fling still
+   * asks, and the sheet settles unless its owner closes it.
+   */
   dismissible?: () => boolean;
   /** Downward speed, in px/s, past which a release dismisses. */
   flingVelocity?: number;
@@ -7,11 +10,12 @@ export interface SheetDragOptions {
 
 export interface SheetDragModel {
   start(y: number, time: number): void;
-  /** Returns how far down the sheet is pulled: never negative. */
+  /** Returns how far the surface is pulled along its way out: never negative. */
   move(y: number, time: number): number;
   /**
    * The finger lifted. `dismiss` when it was flung down or dropped past
-   * half the sheet's height and the sheet may close; otherwise `settle`.
+   * half the sheet's height — a request: the owner decides whether it
+   * closes; otherwise `settle`.
    */
   end(sheetHeight: number): 'dismiss' | 'settle';
   cancel(): void;
@@ -26,7 +30,8 @@ const RESISTANCE = 0.25;
 const VELOCITY_WINDOW = 100;
 
 /**
- * Drag-to-dismiss for a bottom sheet: one resting height, pulled down to
+ * Drag-to-dismiss for a sheet or a drawer, in positions along its way out
+ * (the caller flips them for a left drawer): one resting place, pulled out to
  * close. Pure — the anatomy feeds pointer positions and applies the offset.
  */
 export function createSheetDrag(
@@ -75,7 +80,6 @@ export function createSheetDrag(
     end(sheetHeight) {
       const dismiss =
         origin !== undefined &&
-        mayDismiss() &&
         offset > 0 &&
         (velocity() > flingVelocity || offset > sheetHeight / 2);
       reset();

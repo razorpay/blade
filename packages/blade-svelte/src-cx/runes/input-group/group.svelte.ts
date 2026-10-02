@@ -1,8 +1,11 @@
+import { createOrderedEntries } from '../base/ordered-entries.svelte';
 import { getForm } from '../form/context';
+import { fieldIds } from '../form/field.svelte';
 import { createFieldLine } from '../form/field-line.svelte';
 import {
   visibleGroupError,
   type FieldHint,
+  type HintContent,
   type ValidationState,
 } from '../form/hint';
 import type { FieldRecord } from '../form/types';
@@ -16,12 +19,13 @@ export interface InputGroupOptions {
   /** The host's `$props.id()`: the label and hint ids hang off it. */
   id: string;
   validationState: () => ValidationState | undefined;
-  hint: () => string | undefined;
+  hint: () => HintContent | undefined;
 }
 
 interface Member {
   record: FieldRecord;
   span: () => InputGroupSpan;
+  getElement: () => HTMLElement | undefined;
 }
 
 export interface InputGroupRune {
@@ -31,18 +35,22 @@ export interface InputGroupRune {
   readonly hintId: string;
   /** The corners a registered member holds; undefined for a stranger. */
   cornersOf(field: FieldRecord): InputGroupCorners | undefined;
-  /** Registers a member in order; returns the undo. */
+  /** Registers a member; returns the undo. Members are read in document order. */
   register(record: FieldRecord, span: () => InputGroupSpan): () => void;
+  /** A member's control mounted or moved: re-read document order. */
+  reorder(): void;
 }
 
 /**
- * The input group behaviour: members in order, the corners their spans
+ * The input group behaviour: members in document order — a member mounted
+ * later (a conditional field) takes its place — the corners their spans
  * give them, and one hint line mirroring their form errors. Call during
  * component initialisation.
  */
 export function createInputGroup(options: InputGroupOptions): InputGroupRune {
   const form = getForm();
-  let members = $state.raw<Member[]>([]);
+  const entries = createOrderedEntries<Member>();
+  const members = $derived(entries.ordered);
 
   const line = createFieldLine(
     form,
@@ -64,16 +72,16 @@ export function createInputGroup(options: InputGroupOptions): InputGroupRune {
     get hint() {
       return line.hint;
     },
-    labelId: `${options.id}-label`,
-    hintId: `${options.id}-hint`,
+    ...fieldIds(options.id),
     cornersOf(field) {
       return corners[members.findIndex((member) => member.record === field)];
     },
-    register(record, span) {
-      members = [...members, { record, span }];
-      return () => {
-        members = members.filter((member) => member.record !== record);
-      };
-    },
+    register: (record, span) =>
+      entries.register({
+        record,
+        span,
+        getElement: () => record.getHandle?.() as HTMLElement | undefined,
+      }),
+    reorder: entries.reorder,
   };
 }

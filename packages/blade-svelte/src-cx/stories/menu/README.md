@@ -19,10 +19,11 @@ left alone and outside the keyboard.
 
 | Prop | Notes |
 | --- | --- |
-| `trigger` | Snippet: a Button or IconButton; the menu stamps `aria-haspopup` / `aria-expanded` on it |
+| `trigger({ isOpen })` | Snippet: a Button or IconButton; the wrapper opens the menu, and stamps `aria-haspopup` / `aria-expanded` on it |
 | `children` | The `MenuItem`s and anything between them; they mount while the menu is open |
 | `onSelect` | A `MenuItem` with a `value` was chosen: it reports the value and the menu closes |
-| `onOpenChange`, `placement` | Default `bottom-end` |
+| `isOpen` | Bindable, or host-driven; `onOpenChange({ isOpen })` |
+| `placement` | Default `bottom-start`, as React |
 | `accessibilityLabel` | Names the menu |
 
 `MenuItem`:
@@ -37,5 +38,6 @@ left alone and outside the keyboard.
 
 On the trigger, arrows, Enter and Space open it; inside, arrows rove (wrapping,
 skipping disabled items), Home/End jump, a typed letter finds a match, Escape
-and Tab close. Closing hands focus back to the trigger. It is not modal and
-pushes no layer; it answers Escape in capture so a modal beneath does not.
+and Tab close. Closing hands focus back to the trigger. It is not modal: it
+joins the layers as a floating layer, so Escape closes only the topmost
+overlay — the menu, not a modal beneath it.

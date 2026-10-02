@@ -8,11 +8,13 @@ has no style axes yet (`components/tooltip/index.ts`).
 
 | Prop | Notes |
 | --- | --- |
-| `content` | A string or a snippet |
+| `content` | The text |
+| `children` | Rich content in place of `content` |
+| `title` | A heading above the content: a string or a snippet |
 | `placement` | `top`, `bottom`, `left`, `right`, each optionally `-start` / `-end`. The wanted side; the bubble flips when it lacks room |
 | `isDisabled` | Never opens; closes if open |
-| `onOpenChange` | Fires with the new state |
-| `children` | The trigger. Make it focusable so the keyboard can reach the tooltip |
+| `onOpenChange` | Fires with `{ isOpen }` |
+| `trigger({ isOpen })` | The trigger. Make it focusable so the keyboard can reach the tooltip |
 
 ## Opening
 
@@ -24,7 +26,9 @@ way in on touch and on native — and a press elsewhere closes.
 ## Placement
 
 The bubble renders into the `LayerHost` (so the card's scroll and overflow
-cannot clip it) but stays off the layer stack: the page never goes inert.
+cannot clip it) and joins the layers only as a floating layer: the page never
+goes inert, and Escape closes only the topmost overlay — the tooltip, not a
+popover or modal beneath it.
 It is measured and placed by the pure `place()` function — flipped on the
 main axis, clamped on the cross axis, arrow kept on the trigger — and
 re-placed on scroll and resize. On native it renders inside the trigger's

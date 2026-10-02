@@ -34,7 +34,7 @@ describe('RadioGroup + Radio', () => {
     const onChange = vi.fn();
     const { getByTestId } = render(RadioHarness, { props: { onChange } });
     await fireEvent.click(getByTestId('web'));
-    expect(onChange).toHaveBeenCalledExactlyOnceWith('web');
+    expect(onChange).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ value: 'web' }));
     expect(getByTestId('bound').textContent).toBe('web');
     expect(input(getByTestId('web')).checked).toBe(true);
     expect(input(getByTestId('qr')).checked).toBe(false);
@@ -116,7 +116,7 @@ describe('RadioGroup + Radio', () => {
     expect(queryByText('Choose one')).toBeNull();
     const group = getByTestId('group');
     expect(group.getAttribute('aria-invalid')).toBe('true');
-    expect(group.getAttribute('aria-describedby')).toBe(line.id);
+    expect(group.getAttribute('aria-describedby')).toBe(line.closest('[id]')?.id);
     expectClass(indicator(getByTestId('qr')), 'border-interactive-negative-default');
 
     await fireEvent.click(getByTestId('qr'));
@@ -127,5 +127,24 @@ describe('RadioGroup + Radio', () => {
     await flush();
     expect(onSubmit).toHaveBeenCalledTimes(1);
     expect(onSubmit.mock.calls[0][0]).toEqual({ flow: 'qr' });
+  });
+});
+
+describe('Radio, as Blade', () => {
+  it('describes a radio by its help text, inside its label', () => {
+    const { getByTestId, getByText } = render(RadioHarness);
+    const help = getByText('Scan with any UPI app');
+    expect(getByTestId('qr').getAttribute('aria-describedby')).toBe(help.id);
+    expect(help.closest('label')).toBe(getByTestId('qr').closest('label'));
+  });
+
+  it('sizes the circle, the dot, the title and the gap per group size', async () => {
+    const { resolveRadioGroup } = await import('../components/radio/styles');
+    const large = resolveRadioGroup({ size: 'large' });
+    expect(large.options).toContain('gap-3');
+    expect(large.radio.indicator?.root).toContain('w-5');
+    expect(large.radio.indicator?.dot.picked).toContain('w-2');
+    expect(large.radio.label).toContain('text-200');
+    expect(resolveRadioGroup({ size: 'small' }).options).toContain('gap-1');
   });
 });

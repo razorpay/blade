@@ -9,17 +9,30 @@ export interface SurfaceClasses {
    * surface (see `layer-host.ts`); native draws its own.
    */
   root: string;
-  /** The surface itself, on both platforms. */
+  /** The surface itself, on both platforms. It does not clip. */
   panel: string;
+  /** Inside the panel: the box that holds the content and clips it. */
+  content: string;
   /**
-   * Drag-to-dismiss, a look a sheet opts into. Web:
-   * the zone at the top of the panel that takes the drag (it wraps the
-   * handle strip and the surface's header), the strip, and the grip drawn
-   * in it. Native's sheet has its own, switched on through
+   * A full-width, zero-height box on the panel's top edge, not clipped:
+   * the close button, the drag handle and the `chrome` snippet sit in it.
+   */
+  chrome: string;
+  /**
+   * Drag-to-dismiss, which a sheet opts into. Web: the zone at the top of
+   * the panel that takes the drag (it wraps the strip, if any, and the
+   * surface's header), the strip, and the handle and grip drawn in the
+   * chrome over the strip (a sheet's; a drawer has none). Native's sheet has its own, switched on through
    * `nativeSheet`.
    */
   drag: {
     isEnabled: boolean;
+    /**
+     * The way out: the axis the drag follows (`y` for a sheet, `x` for a
+     * drawer) and its sign along it (`1` down or right, `-1` left).
+     */
+    axis: 'x' | 'y';
+    direction: 1 | -1;
     /**
      * A media query the drag is confined to (a sheet that is a modal on
      * desktop): outside it the zone is plain content. The preset owns the
@@ -27,6 +40,7 @@ export interface SurfaceClasses {
      */
     media?: string;
     zone: string;
+    strip: string;
     handle: string;
     grip: string;
   };

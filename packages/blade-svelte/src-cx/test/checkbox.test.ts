@@ -66,7 +66,7 @@ describe('Checkbox standalone', () => {
 
     await fireEvent.click(control);
     expect(control.checked).toBe(false);
-    expect(onChange).toHaveBeenCalledWith(false);
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ isChecked: false }));
   });
 
   it('follows isChecked changes from the outside', async () => {
@@ -87,10 +87,10 @@ describe('Checkbox standalone', () => {
     });
     const control = getByTestId('solo') as HTMLInputElement;
     expect(control.disabled).toBe(true);
-    expectClass(
-      container.firstElementChild as HTMLElement,
-      'pointer-events-none'
-    );
+    // Blade's not-allowed cursor on the field; the label takes no pointer.
+    const root = container.firstElementChild as HTMLElement;
+    expectClass(root, 'cursor-not-allowed');
+    expectClass(root.firstElementChild as HTMLElement, 'pointer-events-none');
 
     // Browsers suppress the toggle on a disabled control; synthetic
     // dispatch does not — the model's gate mirrors the platform.
@@ -100,7 +100,7 @@ describe('Checkbox standalone', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('describes the control with the hint line for its validation state', async () => {
+  it('describes the control with its help text and, in error, the error line', async () => {
     const { getByTestId, getByText, rerender } = render(CheckboxHarness, {
       props: { helpText: 'Help' },
     });
@@ -108,12 +108,54 @@ describe('Checkbox standalone', () => {
     expect(control.getAttribute('aria-describedby')).toBe(getByText('Help').id);
     expect(control.getAttribute('aria-invalid')).toBeNull();
 
-    await rerender({ errorText: 'Required', validationState: 'error' });
+    await rerender({
+      helpText: 'Help',
+      errorText: 'Required',
+      validationState: 'error',
+    });
     const error = getByText('Required');
-    expect(control.getAttribute('aria-describedby')).toBe(error.id);
+    // Blade keeps the help text under the title and adds the error line,
+    // led by its icon (FieldHint): the line carries the id.
+    const line = error.parentElement as HTMLElement;
+    expect(control.getAttribute('aria-describedby')).toBe(
+      `${getByText('Help').id} ${line.id}`
+    );
+    expectMarkup(line, '<svg');
     expect(control.getAttribute('aria-invalid')).toBe('true');
     expectClass(indicator(control), 'border-interactive-negative-default');
     expectClass(error, 'text-feedback-negative-intense');
+  });
+});
+
+describe('Checkbox, as Blade', () => {
+  it('isIndeterminate draws the dash on a checked box and reads as mixed', () => {
+    const { getByTestId } = render(CheckboxHarness, {
+      props: { isIndeterminate: true },
+    });
+    const control = getByTestId('solo') as HTMLInputElement;
+    expect(control.indeterminate).toBe(true);
+    const box = indicator(control);
+    expectClass(box, 'bg-interactive-primary-default');
+    expectClass(mark(box), 'opacity-0');
+    expectClass(box.lastElementChild as HTMLElement, 'opacity-1300');
+  });
+
+  it('sizes the box, the mark and the title', () => {
+    const { getByTestId, getByText } = render(CheckboxHarness, {
+      props: { size: 'large' },
+    });
+    const box = indicator(getByTestId('solo'));
+    expectClass(box, 'w-5');
+    expectClass(box, 'border-thicker');
+    expectClass(mark(box), 'w-4');
+    expectClass(getByText('I agree'), 'text-200');
+  });
+
+  it('lines the help text up under the title', () => {
+    const { getByText } = render(CheckboxHarness, {
+      props: { helpText: 'We never share it' },
+    });
+    expectClass(getByText('We never share it').parentElement, 'ml-6');
   });
 });
 

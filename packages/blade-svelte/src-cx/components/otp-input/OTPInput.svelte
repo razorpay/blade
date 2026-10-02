@@ -1,6 +1,13 @@
 <script lang="ts">
+  import { pickHintText } from '../../runes/form/hint';
+  import type { FieldChange } from '../shared/change';
+  import { useComponentDefaults } from '../defaults';
+  import type { Snippet } from 'svelte';
   import type { HTMLInputAttributes } from 'svelte/elements';
   import { cx } from '../../cx';
+  import FieldHint from '../shared/FieldHint.svelte';
+  import FieldLabel from '../shared/FieldLabel.svelte';
+  import { hintToneOf } from '../shared/field';
   import { createOTP } from '../../runes/otp/otp.svelte';
   import {
     resolveOTPInput,
@@ -10,18 +17,36 @@
 
   interface BehaviourProps {
     label?: string;
+    /**
+     * The label's area, to put content beside the label (Blade's
+     * `labelSuffix` and `labelTrailing`): render the `label` snippet it
+     * receives and anything else. Today the area is the row above the
+     * control — items 4px apart, `ms-auto` pushes one to the end — and it
+     * stays the place for the label wherever a future `labelPosition` puts
+     * it. Only the label names the control.
+     */
+    labelArea?: Snippet<[{ label: Snippet }]>;
     value?: string;
     /** Number of cells; fixed at mount. */
     otpLength?: number;
     /** A user edit changed the value; outside `value` changes do not fire it. */
-    onChange?: (value: string) => void;
+    onChange?: (change: FieldChange<string>) => void;
     /** Every cell holds a character — by typing, paste, autofill or `value`. */
-    onFilled?: (value: string) => void;
+    onOTPFilled?: (change: FieldChange<string>) => void;
     /** A cell was clicked, e.g. to take over from an auto-read. */
     onClick?: (event: MouseEvent) => void;
     /** Per-character sanitizer: return '' to reject. Default: a single digit. */
     accept?: (char: string) => string;
-    keyboardType?: 'numeric' | 'text';
+    /** The virtual keyboard. @default 'numeric' */
+    inputMode?: HTMLInputAttributes['inputmode'];
+    /** The return key's label on a virtual keyboard. */
+    enterKeyHint?: HTMLInputAttributes['enterkeyhint'];
+    /** One character per cell: the cell's placeholder. */
+    placeholder?: string;
+    /** A cell took focus. */
+    onFocus?: (event: FocusEvent, index: number) => void;
+    /** A cell lost focus. */
+    onBlur?: (event: FocusEvent, index: number) => void;
     isMasked?: boolean;
     isDisabled?: boolean;
     isRequired?: boolean;
@@ -36,12 +61,13 @@
      * for the other two. Inside a Form a visible field error replaces the
      * line while it lasts.
      */
-    helpText?: string;
+    helpText?: string | Snippet;
     /** The line while `validationState` is `error`. */
-    errorText?: string;
+    errorText?: string | Snippet;
     /** The line while `validationState` is `success`. */
-    successText?: string;
+    successText?: string | Snippet;
     autoFocus?: boolean;
+    /** An HTML autofill token; `one-time-code` lets the platform offer a code it received. @default 'one-time-code' */
     autoComplete?: HTMLInputAttributes['autocomplete'];
     name?: string;
     /** Names the group when there is no visible `label`. */
@@ -62,13 +88,18 @@
 
   let {
     label,
+    labelArea,
     value = $bindable(''),
     otpLength = 6,
     onChange,
-    onFilled,
+    onOTPFilled,
     onClick,
     accept,
-    keyboardType = 'numeric',
+    inputMode = 'numeric',
+    enterKeyHint,
+    placeholder,
+    onFocus,
+    onBlur,
     isMasked = false,
     isDisabled = false,
     isRequired = false,
@@ -87,12 +118,12 @@
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('OTPInput', () => styleProps);
+
   const uid = $props.id();
   // Blade's three lines, one shown: the state's own, else the help text.
   const lineText = $derived(
-    { none: undefined, error: errorText, success: successText }[
-      validationState ?? 'none'
-    ] ?? helpText
+    pickHintText({ validationState, helpText, errorText, successText })
   );
   // svelte-ignore state_referenced_locally
   const otp = createOTP({
@@ -101,8 +132,8 @@
     onValue: (next) => {
       value = next;
     },
-    onChange: (next) => onChange?.(next),
-    onFilled: (next) => onFilled?.(next),
+    onChange: (next) => onChange?.({ name, value: next }),
+    onFilled: (next) => onOTPFilled?.({ name, value: next }),
     length: otpLength,
     accept,
     autoFocus: () => autoFocus,
@@ -114,7 +145,7 @@
     hint: () => lineText,
   });
 
-  const classes = $derived(resolveOTPInput(styleProps));
+  const classes = $derived(resolveOTPInput(style.current));
   const hint = $derived(otp.hint);
   const groupName = $derived(accessibilityLabel ?? label);
 
@@ -131,7 +162,12 @@
   {@attach otp.attachRoot}
 >
   {#if label}
-    <span id={otp.labelId} class={classes.label}>{label}</span>
+    <FieldLabel
+      id={otp.labelId}
+      text={label}
+      area={labelArea}
+      size={style.current.size}
+    />
   {/if}
   <div
     role="group"
@@ -144,7 +180,9 @@
     {#each otp.cells as cell, index (index)}
       <input
         type={isMasked ? 'password' : 'text'}
-        inputmode={keyboardType === 'numeric' ? 'numeric' : 'text'}
+        inputmode={inputMode}
+        enterkeyhint={enterKeyHint}
+        placeholder={Array.from(placeholder ?? '')[index] ?? ''}
         class={cx(
           classes.cell,
           classes.cellFill[cell ? 'filled' : 'empty'],
@@ -161,6 +199,8 @@
         aria-invalid={hint.validationState === 'error' ? 'true' : undefined}
         data-testid={testID ? `${testID}-${index}` : undefined}
         onclick={onClick}
+        onfocus={(event) => onFocus?.(event, index)}
+        onblur={(event) => onBlur?.(event, index)}
         oninput={(event) => otp.handleInput(event, index)}
         onkeydown={(event) => otp.handleKeyDown(event, index)}
         onpaste={(event) => otp.handlePaste(event, index)}
@@ -169,11 +209,11 @@
     {/each}
   </div>
   {#if hint.text}
-    <p
+    <FieldHint
       id={otp.hintId}
-      class={cx(classes.hint, classes.hintTone[hint.validationState])}
-    >
-      {hint.text}
-    </p>
+      text={hint.text}
+      tone={hintToneOf(hint.validationState)}
+      size={style.current.size}
+    />
   {/if}
 </div>

@@ -1,4 +1,4 @@
-import { getContext, setContext } from 'svelte';
+import { defineContext } from '../context';
 import type { OrderedEntry } from '../base/ordered-entries.svelte';
 
 /** One MenuItem, as the menu knows it. */
@@ -27,12 +27,12 @@ export interface MenuContext<Shared> {
   hover(entry: MenuEntry): void;
 }
 
-const MENU = Symbol('blade-menu');
+const MENU = defineContext<unknown>('blade-menu');
 
 export function provideMenu<Shared>(menu: MenuContext<Shared>): void {
-  setContext(MENU, menu);
+  MENU.set(menu);
 }
 
 export function getMenu<Shared>(): MenuContext<Shared> | undefined {
-  return getContext<MenuContext<Shared> | undefined>(MENU);
+  return MENU.get() as MenuContext<Shared> | undefined;
 }

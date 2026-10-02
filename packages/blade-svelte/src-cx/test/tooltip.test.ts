@@ -28,6 +28,25 @@ function pointerDown(target: Element, pointerType: string) {
 }
 
 describe('Tooltip', () => {
+  it('takes a title snippet, in the title box', async () => {
+    const { getByTestId, getByRole } = render(TooltipHarness, { props: { richTitle: true } });
+    await fireEvent.focusIn(getByTestId('trigger'));
+    const bubble = getByRole('tooltip');
+    expect(bubble.contains(getByTestId('rich-title'))).toBe(true);
+    expect(bubble.textContent).toContain('Fee details');
+  });
+
+  it('the trigger snippet reads the open state; children replace content', async () => {
+    const { getByTestId, getByRole } = render(TooltipHarness, { props: { rich: true } });
+    const trigger = getByTestId('trigger');
+    expect(trigger.dataset.open).toBe('false');
+    await fireEvent.focusIn(trigger);
+    expect(trigger.dataset.open).toBe('true');
+    const bubble = getByRole('tooltip');
+    expect(bubble.contains(getByTestId('rich'))).toBe(true);
+    expect(bubble.textContent).not.toContain('Charged by your bank');
+  });
+
   it('opens on keyboard focus, describes the trigger, closes on blur', async () => {
     const onOpenChange = vi.fn();
     const { getByTestId, getByRole, queryByRole } = render(TooltipHarness, {
@@ -40,12 +59,12 @@ describe('Tooltip', () => {
     const bubble = getByRole('tooltip');
     expect(bubble.textContent).toContain('Charged by your bank');
     expect(trigger.getAttribute('aria-describedby')).toBe(bubble.id);
-    expect(onOpenChange).toHaveBeenLastCalledWith(true);
+    expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: true });
 
     await fireEvent.focusOut(trigger);
     await waitFor(() => expect(queryByRole('tooltip')).toBeNull());
     expect(trigger.hasAttribute('aria-describedby')).toBe(false);
-    expect(onOpenChange).toHaveBeenLastCalledWith(false);
+    expect(onOpenChange).toHaveBeenLastCalledWith({ isOpen: false });
   });
 
   it('a tap toggles; a mouse click and a keyboard click do not', async () => {
@@ -120,7 +139,7 @@ describe('Tooltip', () => {
     const bubble = getByRole('tooltip');
     await waitFor(() => expect(bubble.dataset.side).toBe('bottom'));
     // Below the anchor (4 + 20) by the preset's gap, centred on it.
-    expect(bubble.style.top).toBe('32px');
+    expect(bubble.style.top).toBe('36px');
     expect(bubble.style.left).toBe('80px');
     expect(bubble.style.getPropertyValue('--tooltip-arrow')).toBe('40px');
 
@@ -133,14 +152,32 @@ describe('TooltipBubble.native', () => {
   it('renders in place at the static placement', () => {
     const { container } = render(TooltipBubbleNative, {
       props: {
+        id: 'fee-tip',
         placement: 'bottom-start',
         classes: resolveTooltip({}),
         content: createRawSnippet(() => ({ render: () => '<b>Fee</b>' })),
       },
     });
     const bubble = container.firstElementChild as HTMLElement;
+    // The id the trigger's aria-describedby names, and the role, as on web.
+    expect(bubble.id).toBe('fee-tip');
+    expect(bubble.getAttribute('role')).toBe('tooltip');
     expectClass(bubble, 'top-full');
     expectClass(bubble, 'left-0');
     expect(bubble.textContent).toContain('Fee');
+  });
+});
+
+describe('Tooltip, as Blade', () => {
+  it("draws Blade's bubble: 12px round and in, 200px at most, a title over the content", async () => {
+    const { resolveTooltip } = await import('../components/tooltip/styles');
+    const look = resolveTooltip({});
+    expect(look.bubble).toContain('rounded-medium');
+    expect(look.bubble).toContain('p-3');
+    expect(look.bubble).toContain('max-w-[200px]');
+    expect(look.title).toContain('font-semibold');
+    expect(look.content).toContain('text-75');
+    expect(look.arrowSide.top).toContain('w-[14px]');
+    expect(look.gap).toBe(12);
   });
 });

@@ -5,8 +5,11 @@
   import BasicStory from './Basic.svelte';
   import ValidationStory from './Validation.svelte';
   import AffixesStory from './Affixes.svelte';
+  import LabelAreaStory from './LabelArea.svelte';
   import FormattedStory from './Formatted.svelte';
   import TextareaStory from './Textarea.svelte';
+  import PasswordInputStory from './PasswordInput.svelte';
+  import SearchInputStory from './SearchInput.svelte';
 
   const { Story } = defineMeta({
     title: "Components/TextInput",
@@ -63,12 +66,43 @@
 </Story>
 
 <Story
-  name="TextAreaInput"
+  name="PasswordInput"
+  args={meta.stories.PasswordInput.args}
+  argTypes={meta.stories.PasswordInput.argTypes}
+  parameters={{ docs: { description: { story: meta.stories.PasswordInput.description } } }}
+>
+  {#snippet template(args)}
+    <PasswordInputStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="SearchInput"
+  args={meta.stories.SearchInput.args}
+  argTypes={meta.stories.SearchInput.argTypes}
+  parameters={{ docs: { description: { story: meta.stories.SearchInput.description } } }}
+>
+  {#snippet template(args)}
+    <SearchInputStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="TextArea"
   args={meta.stories.Textarea.args}
   argTypes={meta.stories.Textarea.argTypes}
   parameters={{ docs: { description: { story: meta.stories.Textarea.description } } }}
 >
   {#snippet template(args)}
     <TextareaStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Label area"
+  parameters={{ docs: { description: { story: meta.stories.LabelArea.description } } }}
+>
+  {#snippet template()}
+    <LabelAreaStory />
   {/snippet}
 </Story>

@@ -12,6 +12,7 @@ const meta: StoryMeta = {
     'Tooltip component over the tooltip model (packages/blade/runes/tooltip): hover with intent, keyboard focus or a tap opens it; the bubble is measured, flipped and clamped inside the LayerHost.',
   argTypes: {
     placement: { control: 'select', options: PLACEMENTS },
+    title: { control: 'text' },
     content: { control: 'text' },
     isDisabled: { control: 'boolean' },
   },
@@ -19,6 +20,7 @@ const meta: StoryMeta = {
     Basic: {
       args: {
         placement: 'top',
+        title: 'Convenience fee',
         content: 'Charged by your bank, not by the merchant',
         isDisabled: false,
       },

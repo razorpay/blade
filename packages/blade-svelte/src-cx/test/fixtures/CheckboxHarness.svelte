@@ -8,7 +8,7 @@
     inForm?: boolean;
     onSubmit?: (data: FormData) => unknown;
     isChecked?: boolean;
-    onChange?: (isChecked: boolean) => void;
+    onChange?: (change: { isChecked: boolean; value: string | undefined }) => void;
     isDisabled?: boolean;
     isRequired?: boolean;
     validationState?: 'none' | 'error';
@@ -18,6 +18,8 @@
     accessibilityLabel?: string;
     withLabel?: boolean;
     className?: string;
+    isIndeterminate?: boolean;
+    size?: 'small' | 'medium' | 'large';
   }
 
   let {
@@ -34,6 +36,8 @@
     accessibilityLabel,
     withLabel = true,
     className,
+    isIndeterminate,
+    size,
   }: Props = $props();
 </script>
 
@@ -53,6 +57,8 @@
     {errorText}
     {parse}
     {accessibilityLabel}
+    {isIndeterminate}
+    {size}
     class={className}
     testID="solo"
     children={withLabel ? label : undefined}

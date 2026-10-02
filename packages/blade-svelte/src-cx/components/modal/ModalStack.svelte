@@ -15,34 +15,38 @@
   {@const { component: Content, props, options, control } = entry.content}
   {@const {
     title,
+    subtitle,
     closeLabel,
     pendingLabel,
     isDismissible,
-    onBack,
     onDismiss,
     onLoadError: _onLoadError,
     role,
     accessibilityLabel,
     testID,
     class: className,
-    look,
     ...styleProps
   } = options}
+  <!--
+    Open while the entry is; a close the modal makes itself (a dismissal,
+    or `onDismiss`'s close) is written back as the stack's dismiss.
+  -->
   <Modal
-    isOpen={entry.phase === 'open'}
+    bind:isOpen={
+      () => entry.phase === 'open',
+      (open) => {
+        if (!open) overlays.stack.dismiss(entry.id);
+      }
+    }
     {title}
+    {subtitle}
     {closeLabel}
     {isDismissible}
-    {onBack}
+    {onDismiss}
     {role}
     {accessibilityLabel}
     {testID}
     class={className}
-    {look}
-    onDismiss={(source) => {
-      onDismiss?.(source);
-      overlays.stack.dismiss(entry.id);
-    }}
     onClosed={() => overlays.stack.closed(entry.id)}
     {...styleProps}
   >

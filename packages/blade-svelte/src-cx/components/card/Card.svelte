@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
   import { resolveCard, type CardStyleProps } from './styles';
@@ -52,8 +53,10 @@
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('Card', () => styleProps);
+
   const selected = $derived(isSelected && !isDisabled);
-  const classes = $derived(resolveCard(styleProps, selected));
+  const classes = $derived(resolveCard(style.current, selected));
   const linkRel = $derived(
     rel ?? (target === '_blank' ? 'noreferrer noopener' : undefined)
   );

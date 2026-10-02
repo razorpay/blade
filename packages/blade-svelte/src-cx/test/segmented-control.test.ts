@@ -34,7 +34,7 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
       props: { onChange },
     });
     await fireEvent.click(getByTestId('card'));
-    expect(onChange).toHaveBeenCalledExactlyOnceWith('card');
+    expect(onChange).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ value: 'card' }));
     expect(getByTestId('bound').textContent).toBe('card');
     expect(input(getByTestId('card')).checked).toBe(true);
     expect(input(getByTestId('upi')).checked).toBe(false);
@@ -120,24 +120,23 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     ).toBeNull();
   });
 
-  it('size: the pill, its segments and its thumb share one padding', () => {
-    const small = render(SegmentedControlHarness, {
-      props: { value: 'upi', size: 'small' },
-    });
-    const upi = small.getByTestId('upi');
-    expect(pill(upi).className).toContain('p-0.5');
-    expect(pill(upi).firstElementChild?.className).toContain('inset-y-0.5');
-    expect(upi.nextElementSibling?.className).toContain('py-0.5');
-    small.unmount();
-
-    const { getByTestId } = render(SegmentedControlHarness, {
-      props: { value: 'upi' },
-    });
-    expect(pill(getByTestId('upi')).className).toContain('p-1');
-    expect(pill(getByTestId('upi')).firstElementChild?.className).toContain(
-      'inset-y-1'
-    );
-    expect(getByTestId('upi').nextElementSibling?.className).toContain('py-1');
+  it("size: Blade's track, segment height, radius and type", () => {
+    for (const [size, height, text, radius] of [
+      ['small', 'h-6', 'text-75', 'rounded-xsmall'],
+      ['medium', 'h-7', 'text-100', 'rounded-xsmall'],
+      ['large', 'h-10', 'text-200', 'rounded-small'],
+    ] as const) {
+      const view = render(SegmentedControlHarness, { props: { value: 'upi', size } });
+      const upi = view.getByTestId('upi');
+      // Every size: the track 4px in, the thumb on the same inset.
+      expect(pill(upi).className).toContain('p-1');
+      expect(pill(upi).firstElementChild?.className).toContain('inset-y-1');
+      const label = upi.nextElementSibling!.className;
+      expect(label).toContain(height);
+      expect(label).toContain(text);
+      expect(label).toContain(radius);
+      view.unmount();
+    }
   });
 
   it('color: neutral tints the track gray; white draws it over a brand pane', () => {
@@ -180,7 +179,7 @@ describe('SegmentedControl + SegmentedControlItem (blade)', () => {
     const group = getByTestId('group');
     expect(group.getAttribute('aria-invalid')).toBe('true');
     expect(group.getAttribute('aria-required')).toBe('true');
-    expect(group.getAttribute('aria-describedby')).toBe(line.id);
+    expect(group.getAttribute('aria-describedby')).toBe(line.closest('[id]')?.id);
     expect(line.className).toContain('text-feedback-negative-intense');
 
     await fireEvent.click(getByTestId('card'));

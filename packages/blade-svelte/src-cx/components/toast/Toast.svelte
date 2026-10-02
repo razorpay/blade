@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
   import type { ToastsModel } from '../../runes/toast/toasts.svelte';
   import { resolveToast } from './styles';
@@ -20,16 +21,22 @@
   let { id, content, model, slide = '' }: Props = $props();
 
   const {
-    message,
+    content: text,
     icon,
     action,
-    closeLabel,
+    closeLabel = 'Dismiss toast',
+    onDismissButtonClick,
     testID,
     duration: _duration,
+    autoDismiss: _autoDismiss,
     onDismiss: _onDismiss,
     ...styleProps
   } = $derived(content);
-  const classes = $derived(resolveToast(styleProps));
+
+  const style = useComponentDefaults('Toast', () => styleProps);
+  const classes = $derived(resolveToast(style.current));
+  // Blade gives every colour a glyph; `icon` replaces it.
+  const glyph = $derived(icon ?? classes.defaultIcon);
   // A failure interrupts; anything else waits its turn.
   const isUrgent = $derived(classes.role === 'alert');
 
@@ -49,31 +56,34 @@
   transition:presence.transition|global
   {@attach presence.mount}
 >
-  {#if icon}
-    <span class={classes.icon}><Icon source={icon} /></span>
-  {/if}
-  <span class={classes.message}>{message}</span>
-  {#if action}
-    <button
-      type="button"
-      class={classes.action}
-      onclick={() => {
-        action.onPress();
-        model.dismiss(id);
-      }}
-    >
-      {action.label}
-    </button>
-  {/if}
-  {#if closeLabel}
-    <span class={classes.divider} aria-hidden="true"></span>
+  <span class={classes.icon}><Icon source={glyph} /></span>
+  <span class={classes.body}><span class={classes.content}>{text}</span></span>
+  <span class={classes.trailing}>
+    {#if action}
+      <button
+        type="button"
+        class={classes.action}
+        disabled={action.isLoading || undefined}
+        aria-busy={action.isLoading || undefined}
+        onclick={(event) => {
+          event.stopPropagation();
+          action.onClick();
+        }}
+      >
+        {action.text}
+      </button>
+    {/if}
     <button
       type="button"
       class={classes.close}
       aria-label={closeLabel}
-      onclick={() => model.dismiss(id)}
+      onclick={(event) => {
+        event.stopPropagation();
+        onDismissButtonClick?.();
+        model.dismiss(id);
+      }}
     >
-      <ToastCloseIcon {...styleProps} />
+      <ToastCloseIcon {...style.current} />
     </button>
-  {/if}
+  </span>
 </div>

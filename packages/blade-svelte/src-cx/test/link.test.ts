@@ -128,3 +128,24 @@ describe('Link', () => {
     });
   });
 });
+
+describe('Link, as Blade', () => {
+  it('underlines only the anchor, and types each size on its own line height', async () => {
+    const { resolveLink } = await import('../components/link/styles');
+    const link = resolveLink({ size: 'small' });
+    expect(link.anchor).toContain('hover:underline');
+    expect(link.root).not.toContain('underline');
+    expect(link.button).not.toContain('underline');
+    expect(link.root).toContain('leading-75');
+    expect(resolveLink({ size: 'xsmall' }).root).toContain('leading-25');
+    expect(link.root).toContain('rounded-xsmall');
+  });
+
+  it("takes Blade's seven colours", async () => {
+    const { LINK_COLORS, resolveLink } = await import('../components/link/styles');
+    expect([...LINK_COLORS].sort()).toEqual(
+      ['information', 'negative', 'neutral', 'notice', 'positive', 'primary', 'white'].sort()
+    );
+    expect(resolveLink({ color: 'white' }).root).toContain('text-interactive-static-white-normal');
+  });
+});

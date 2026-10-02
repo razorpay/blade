@@ -1,5 +1,7 @@
 import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
+import type { ChoiceEntry } from '../base/choice-list.svelte';
+import { registerEntry } from '../base/ordered-entries.svelte';
 import { syncChecked } from '../dom/checked';
 import type { RadioGroupContext } from './context';
 
@@ -21,7 +23,7 @@ export interface Radio<Shared> {
   handleChange(event: Event): void;
   /**
    * On the input: writes `checked` back when a pick was refused or the value
-   * changed from the outside, and is how the group finds the element.
+   * changed from the outside, and orders the radio in its group.
    */
   readonly sync: Attachment<HTMLInputElement>;
 }
@@ -34,10 +36,11 @@ export function createRadio<Shared>(
   group: RadioGroupContext<Shared> | undefined,
   options: RadioOptions
 ): Radio<Shared> {
-  let node: HTMLInputElement | undefined;
-  if (group) {
-    onDestroy(group.register(options.value(), () => node));
-  }
+  const registered = registerEntry<ChoiceEntry<string>, HTMLInputElement>(
+    group,
+    { value: () => options.value(), isDisabled: () => options.isDisabled() }
+  );
+  onDestroy(registered.unregister);
 
   const isSelected = $derived(Boolean(group?.isSelected(options.value())));
   const isDisabled = $derived(
@@ -73,11 +76,11 @@ export function createRadio<Shared>(
       }
     },
     sync(element) {
-      node = element;
+      const detach = registered.attach(element);
       const undo = write(element);
       return () => {
         undo?.();
-        node = undefined;
+        detach?.();
       };
     },
   };

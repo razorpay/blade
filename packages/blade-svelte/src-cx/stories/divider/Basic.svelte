@@ -14,6 +14,11 @@
     : 'grid max-w-96 gap-3'}
 >
   <Text size="small">Before</Text>
-  <Divider orientation={args.orientation} line={args.line} />
+  <Divider
+    orientation={args.orientation}
+    dividerStyle={args.dividerStyle}
+    variant={args.variant}
+    thickness={args.thickness}
+  />
   <Text size="small">After</Text>
 </div>

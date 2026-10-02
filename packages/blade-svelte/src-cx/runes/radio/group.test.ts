@@ -2,8 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { flushSync } from 'svelte';
 import { box } from '../../test/box.svelte';
 import { run } from '../../test/run';
-import { createField } from '../form/field.svelte';
-import { createRadioGroup, createRadioGroupModel } from './group.svelte';
+import { createRadioGroup } from './group.svelte';
 import { createRadio } from './radio.svelte';
 
 function group(overrides: { value?: string; disabled?: boolean } = {}) {
@@ -74,58 +73,43 @@ describe('createRadioGroup', () => {
     unmount();
   });
 
+  it('reads the pick in document order, not mount order (B3)', () => {
+    const { rune, unmount } = group({ value: 'b' });
+    const list = document.body.appendChild(document.createElement('div'));
+    const first = document.createElement('input');
+    const second = document.createElement('input');
+    list.append(first, second);
+    // Radios register at init, before their elements mount; 'a' registers
+    // last (a conditional radio) but sits first.
+    let mounted = false;
+    const at = (element: HTMLElement) => () => (mounted ? element : undefined);
+    rune.register({ value: () => 'b', isDisabled: () => false, getElement: at(second) });
+    rune.register({ value: () => 'a', isDisabled: () => false, getElement: at(first) });
+    flushSync();
+    expect(rune.pick).toEqual({ index: 0, count: 2 });
+    // The radios mount and re-read their order (each Radio's attach).
+    mounted = true;
+    rune.reorder();
+    flushSync();
+    expect(rune.pick).toEqual({ index: 1, count: 2 });
+    list.remove();
+    unmount();
+  });
+
   it('counts registered radios in the pick', () => {
     const { rune, unmount } = group({ value: 'b' });
-    const undo = rune.register('a', () => undefined);
-    rune.register('b', () => undefined);
+    const radio = (value: string) => ({
+      value: () => value,
+      isDisabled: () => false,
+      getElement: () => undefined,
+    });
+    const undo = rune.register(radio('a'));
+    rune.register(radio('b'));
     flushSync();
     expect(rune.pick).toEqual({ index: 1, count: 2 });
     undo();
     flushSync();
     expect(rune.pick).toEqual({ index: 0, count: 1 });
     unmount();
-  });
-});
-
-function flowField(props: Record<string, unknown> = {}, onTouch = vi.fn()) {
-  const field = createField(props, undefined, { kind: 'radio', onTouch });
-  field.updateProps({ name: 'flow', ...props });
-  return { field, onTouch };
-}
-
-describe('createRadioGroupModel', () => {
-  it('a pick updates the field, notifies and counts as a visit', () => {
-    const { field, onTouch } = flowField();
-    const group = createRadioGroupModel(field);
-    const onValue = vi.fn();
-
-    expect(group.value()).toBeUndefined();
-    expect(group.select('qr', onValue)).toBe(true);
-
-    expect(field.record.value).toBe('qr');
-    expect(field.record.touched).toBe(true);
-    expect(onValue).toHaveBeenCalledWith('qr');
-    expect(onTouch).toHaveBeenCalledTimes(1);
-    expect(group.isSelected('qr')).toBe(true);
-    expect(group.isSelected('web')).toBe(false);
-  });
-
-  it('moves the one value from radio to radio', () => {
-    const { field } = flowField({ defaultValue: 'qr' });
-    const group = createRadioGroupModel(field);
-    expect(group.value()).toBe('qr');
-    group.select('web');
-    expect(group.isSelected('qr')).toBe(false);
-    expect(group.value()).toBe('web');
-  });
-
-  it('refuses while disabled and leaves the field untouched', () => {
-    const { field, onTouch } = flowField({ defaultValue: 'qr' });
-    const group = createRadioGroupModel(field, { disabled: () => true });
-
-    expect(group.select('web')).toBe(false);
-    expect(group.value()).toBe('qr');
-    expect(field.record.touched).toBeFalsy();
-    expect(onTouch).not.toHaveBeenCalled();
   });
 });

@@ -9,6 +9,7 @@
     isTop: boolean;
     role: 'dialog' | 'alertdialog';
     labelledBy?: string;
+    describedBy?: string;
     accessibilityLabel?: string;
     classes: SurfaceClasses;
     /** The platform does not say how the user left: reported as `blur`. */
@@ -18,18 +19,27 @@
     class?: string;
     /** The platform sheet owns its drag: the header is plain content. */
     header?: Snippet;
+    /**
+     * The chrome box on the sheet's top edge. The platform draws its own
+     * handle, and may clip what hangs above the sheet.
+     */
+    chrome?: Snippet;
     children: Snippet;
   }
 
   let {
     isOpen,
     role,
+    labelledBy,
+    describedBy,
+    accessibilityLabel,
     classes,
     onDismissRequest,
     onClosed,
     testID,
     class: className = '',
     header,
+    chrome,
     children,
   }: Props = $props();
 
@@ -50,11 +60,17 @@
 {#if isOpen}
   <native-bottom-sheet
     {role}
+    aria-labelledby={labelledBy}
+      aria-describedby={describedBy}
+    aria-label={labelledBy ? undefined : accessibilityLabel}
     class={cx(classes.panel, className)}
     data-testid={testID}
     ondismiss={() => onDismissRequest('blur')}
     {...classes.nativeSheet}
   >
+    <div class="relative h-0">
+      <div class={classes.chrome}>{@render chrome?.()}</div>
+    </div>
     {@render header?.()}
     {@render children()}
   </native-bottom-sheet>

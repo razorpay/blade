@@ -137,7 +137,7 @@ export const resolveAlert: AlertStyleResolver<AlertStyleProps> = (
     text: 'flex min-w-0 flex-1 flex-col pl-2 pr-1',
     title: `m-0 mb-1 text-100 leading-100 font-semibold ${text.title}`,
     description: `m-0 text-75 leading-75 ${hasTitle ? '' : 'mt-0.5'} ${text.description}`.replace(/\s+/g, ' '),
-    close: `flex shrink-0 items-center justify-center rounded-2xsmall border-none bg-transparent p-0 transition-colors duration-xquick ease-standard focus-visible:outline-solid focus-visible:[outline-width:4px] focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted ${hasTitle ? '' : 'mt-0.5'} ${text.close}`,
+    close: `flex shrink-0 items-center justify-center rounded-2xsmall border-none bg-transparent p-0 transition-colors duration-xquick ease-standard focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted ${hasTitle ? '' : 'mt-0.5'} ${text.close}`,
     closeIcon: close,
     role: URGENT.includes(color) ? 'alert' : 'status',
     live: color === 'notice' ? 'polite' : undefined,

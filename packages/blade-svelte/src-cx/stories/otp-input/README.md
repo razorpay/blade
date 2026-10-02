@@ -11,10 +11,10 @@ up to a fixed width, so any code length fits.
 | --- | --- |
 | `value` | Bindable; an outside change spreads over the cells without firing `onChange` or stealing focus |
 | `otpLength` | Number of cells, fixed at mount |
-| `onChange` | A user edit changed the value |
+| `onChange` | A user edit changed the value: `{ name, value }` (as `onOTPFilled`) |
 | `onFilled` | Every cell holds a character, by typing, paste, autofill or `value` |
 | `accept` | Per-character sanitizer; the default accepts a single digit |
-| `isMasked`, `keyboardType`, `autoComplete` | Cell input type, `inputmode` and the one-time-code hint |
+| `isMasked`, `inputMode`, `autoComplete` | Cell input type, `inputmode` and the one-time-code hint |
 | `name`, `isRequired` | Registers with the enclosing Form; a partial code fails the pattern constraint |
 | `validationState`, `helpText`, `errorText`, `successText` | Omit `validationState` inside a Form to mirror its error once focus left the group or a submit was attempted (the message replaces `hint` while it lasts) |
 | `accessibilityLabel`, `cellAccessibilityLabel` | Name the group and each cell; the library ships no copy |

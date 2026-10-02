@@ -8,7 +8,7 @@ centres on the row.
 | Prop | Notes |
 | --- | --- |
 | `description` | Required. Text, or a snippet (a Link at most) |
-| `title` | Optional heading line |
+| `title` | Optional heading line: text, or a snippet in the title's box |
 | `color` | `neutral` (default), `information`, `positive`, `notice`, `negative`, `primary`. `negative` and `notice` announce as `role="alert"` (`notice` politely), the rest as `role="status"` |
 | `emphasis` | `subtle` (default: the colour's tinted fill, gray text) or `intense` (the colour's solid fill, white everything) |
 | `icon` | Icon data before the text; defaults to the colour's (info, check-circle, alert-triangle, alert-octagon) |

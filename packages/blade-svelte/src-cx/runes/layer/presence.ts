@@ -21,6 +21,22 @@ export function longestTransition(
 }
 
 /**
+ * A `transition:` whose work runs once the block toggles: Svelte calls it
+ * with `{ direction }`, which its `() => TransitionConfig` type leaves out.
+ * `run` sets the node up for the phase and returns how long it animates.
+ */
+export function phaseTransition(
+  run: (node: HTMLElement, phase: 'in' | 'out') => number
+): (node: HTMLElement) => () => TransitionConfig {
+  return (node) => {
+    const deferred = ({ direction }: { direction: 'in' | 'out' | 'both' }) => ({
+      duration: run(node, direction === 'out' ? 'out' : 'in'),
+    });
+    return deferred as unknown as () => TransitionConfig;
+  };
+}
+
+/**
  * Presence for overlays. Svelte owns it — the node stays mounted until the
  * outro ends and an interrupted intro reverses — while the visuals stay the
  * component's CSS transitions: this only flips `data-state` on the node and
@@ -49,24 +65,15 @@ export function createPresence(
   }
 
   return {
-    transition: (node: HTMLElement): (() => TransitionConfig) => {
-      // Deferred: Svelte calls it with `{ direction }` once the block
-      // toggles, which its `() => TransitionConfig` type leaves out.
-      const deferred = ({
-        direction,
-      }: {
-        direction: 'in' | 'out' | 'both';
-      }) => {
-        wanted = direction === 'out' ? 'closed' : 'open';
-        if (wanted === 'closed') {
-          node.dataset.state = wanted;
-        } else {
-          openNextFrame(node);
-        }
-        return { duration: longestTransition(animated(node)) };
-      };
-      return deferred as unknown as () => TransitionConfig;
-    },
+    transition: phaseTransition((node, phase) => {
+      wanted = phase === 'out' ? 'closed' : 'open';
+      if (wanted === 'closed') {
+        node.dataset.state = wanted;
+      } else {
+        openNextFrame(node);
+      }
+      return longestTransition(animated(node));
+    }),
     mount: (node: HTMLElement) => {
       if (wanted === undefined) {
         wanted = 'open';

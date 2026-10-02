@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="relative [height:32rem] max-w-blade-760 overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
+  class="relative h-[32rem] max-w-[760px] overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
   <div class="p-6">
     <Button class="w-40" onClick={() => (isOpen = true)}>Open modal</Button>
@@ -14,7 +14,7 @@
   <LayerHost />
 </div>
 
-<Modal bind:isOpen placement="bottom" title="Saved cards" closeLabel="Close">
+<Modal bind:isOpen variant="sheet" title="Saved cards" closeLabel="Close">
   {#snippet body()}
     <Button
       variant="secondary"

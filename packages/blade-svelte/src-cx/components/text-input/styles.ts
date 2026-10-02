@@ -1,7 +1,6 @@
+import type { AxisValue } from '../../axes';
 import type { ValidationState } from '../../runes/form/hint';
-import type { IconSource } from '../../runes/icon/source';
-import { search } from '../icons';
-import { FIELD_HINT, FIELD_HINT_TONE } from '../shared/field';
+import { resolveIconButton } from '../icon-button/styles';
 import {
   INPUT_ACTIVE,
   INPUT_ACTIVE_ON_FOCUS,
@@ -11,7 +10,6 @@ import {
   INPUT_DISABLED_TEXT_ON_CONTROL,
   INPUT_FILL,
   INPUT_INACTIVE,
-  INPUT_LABEL,
   INPUT_TEXT,
 } from '../shared/input';
 
@@ -42,8 +40,6 @@ export interface TextInputClasses {
    * affix. Toggled from JS like focus — `has-*` is not in native's grammar.
    */
   disabled: Record<'root' | 'box' | 'affix', string>;
-  /** The visible label text. */
-  label: string;
   /** The drawn field: the row holding the affixes and the control. */
   box: string;
   /** The input element: text only, no frame of its own. */
@@ -59,28 +55,80 @@ export interface TextInputClasses {
   validation: Record<TextInputFrame, Record<Validated, string>>;
   /** The leading/trailing wrapper, text or snippet alike. */
   affix: string;
-  /** Leads a `type="search"` field that has no `leading` of its own. */
-  searchIcon: IconSource;
-  /** The one line under the control. */
-  hint: string;
-  /** Applied to the hint line per validation state. */
-  hintTone: Record<TextInputValidationState, string>;
+  /** The clear button (`showClearButton`): IconButton's medium look. */
+  clear: string;
+  /** The hint line and the character counter, side by side. */
+  footer: string;
+  /** The counter's box: the hint's gap above it, 2px off the end. */
+  counter: string;
 }
 
 /** Style props in, the parts out. */
 export type TextInputStyleResolver<P> = (props: P) => TextInputClasses;
 
-/** Blade's text field has one look here: no style axes yet. */
-export type TextInputStyleProps = Record<never, never>;
+/** The blade taxonomy as data. */
+export const TEXT_INPUT_AXES = {
+  size: ['xsmall', 'small', 'medium', 'large'],
+  textAlign: ['left', 'center', 'right'],
+} as const;
 
-// Semantic tokens only — merchant theming reaches every class through the
-// CSS-var seam. 16px on phones: iOS zooms into a smaller field.
-const TEXT_SIZE = 'text-200 leading-200 m:text-100 m:leading-100';
+type Axis<K extends keyof typeof TEXT_INPUT_AXES> = AxisValue<
+  typeof TEXT_INPUT_AXES,
+  K
+>;
+
+/** Derived from TEXT_INPUT_AXES: add a value there, never here. */
+export interface TextInputStyleProps {
+  /** Also sizes the label and the hint. @default 'medium' */
+  size?: Axis<'size'>;
+  /** @default 'left' */
+  textAlign?: Axis<'textAlign'>;
+}
+
+// Blade's baseInput per size (baseInputTokens.ts): the height, the side
+// padding, the body text (letter-spacing -1.3%, -3.3% at large), and the
+// radius. Medium keeps 16px text on phones — iOS zooms into a smaller
+// field — and Blade's 14px from `m` up.
+const SIZE: Record<
+  Axis<'size'>,
+  { box: string; text: string; radius: string; framed: string }
+> = {
+  xsmall: {
+    box: 'min-h-7 px-2',
+    text: 'text-25 leading-25 tracking-50',
+    radius: 'rounded-small',
+    framed: 'min-h-7 px-2 py-1',
+  },
+  small: {
+    box: 'min-h-8 px-2',
+    text: 'text-75 leading-75 tracking-50',
+    radius: 'rounded-small',
+    framed: 'min-h-8 px-2 py-1',
+  },
+  medium: {
+    box: 'min-h-9 px-3',
+    text: 'text-200 leading-200 tracking-25 m:text-100 m:leading-100 m:tracking-50',
+    radius: 'rounded-small',
+    framed: 'min-h-9 px-3 py-2',
+  },
+  large: {
+    box: 'min-h-12 px-3',
+    text: 'text-200 leading-200 tracking-25',
+    radius: 'rounded-medium',
+    framed: 'min-h-12 p-3',
+  },
+};
+
+const ALIGN: Record<Axis<'textAlign'>, string> = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
+};
 
 // The box is the field: the affixes sit inside its border and its flex row
 // spaces them, so the control carries no frame and no side padding.
-const BOX = `relative flex min-h-9 w-full cursor-text items-center gap-2 px-3 text-surface-gray-muted ${INPUT_FILL} ${TEXT_SIZE}`;
-const CONTROL = `min-w-0 flex-1 self-stretch bg-transparent py-0 ${INPUT_TEXT} ${INPUT_DISABLED_TEXT_ON_CONTROL}`;
+const BOX = `relative flex w-full cursor-text items-center gap-2 text-surface-gray-muted ${INPUT_FILL}`;
+const CONTROL = `min-w-0 flex-1 self-stretch bg-transparent p-0 ${INPUT_TEXT} ${INPUT_DISABLED_TEXT_ON_CONTROL}`;
 
 // In an InputGroup the member draws the same frame it has alone — the
 // group rounds the corners it holds — and overlaps its neighbours' by a
@@ -89,7 +137,7 @@ const CONTROL = `min-w-0 flex-1 self-stretch bg-transparent py-0 ${INPUT_TEXT} $
 // steps inside the group's isolated context. A raised state carries a
 // hover twin, since a plain `hover:` step would otherwise outrank it.
 const FRAME = {
-  solo: 'rounded-small border-thin border-solid',
+  solo: 'border-thin border-solid',
   grouped: 'border-thin border-solid',
 };
 const FOCUS = {
@@ -100,8 +148,11 @@ const FOCUS = {
   },
 };
 
-/** The same field drawn on one element: what a text area's control is. */
-export const FRAMED_CONTROL = `h-full min-h-9 w-full rounded-small border-thin border-solid px-3 py-2 focus:z-5 ${INPUT_FILL} ${INPUT_TEXT} ${INPUT_INACTIVE} ${INPUT_ACTIVE_ON_FOCUS} ${INPUT_DISABLED_ON_CONTROL} ${TEXT_SIZE}`;
+/** The same field drawn on one element, per size: what a text area's control is. */
+export function framedControl(size: Axis<'size'> = 'medium'): string {
+  const look = SIZE[size];
+  return `h-full w-full border-thin border-solid focus:z-5 ${look.framed} ${look.radius} ${look.text} ${INPUT_FILL} ${INPUT_TEXT} ${INPUT_INACTIVE} ${INPUT_ACTIVE_ON_FOCUS} ${INPUT_DISABLED_ON_CONTROL}`;
+}
 // Blade (baseInputTokens / baseInput.module.css): error is a thick negative
 // border in every state, and focus keeps the same primary-muted ring; success
 // keeps the gray border — only its hint line turns positive.
@@ -113,9 +164,10 @@ export const FRAMED_VALIDATION = {
 
 export const resolveTextInput: TextInputStyleResolver<
   TextInputStyleProps
-> = () => {
+> = (props: TextInputStyleProps = {}) => {
+  const look = SIZE[props.size ?? 'medium'];
   return {
-    root: 'relative flex w-full flex-col gap-1',
+    root: 'relative flex w-full flex-col',
     // No `w-full`: a width of its own would end the member a pixel short
     // of its cell, and its frame would sit beside the next one's instead
     // of under it. Stretched by the grid, it is the cell plus that pixel.
@@ -125,10 +177,10 @@ export const resolveTextInput: TextInputStyleResolver<
       box: INPUT_DISABLED_FILL,
       affix: INPUT_DISABLED_CONTENT,
     },
-    label: INPUT_LABEL,
-    box: BOX,
-    control: CONTROL,
-    frame: FRAME,
+    box: `${BOX} ${look.box} ${look.text}`,
+    // Inputs do not inherit letter-spacing: the control takes the type too.
+    control: `${CONTROL} ${look.text} ${ALIGN[props.textAlign ?? 'left']}`,
+    frame: { solo: `${FRAME.solo} ${look.radius}`, grouped: FRAME.grouped },
     focus: FOCUS,
     // Blade: error overrides the border (thick negative) in every state but
     // leaves the focus ring primary-muted; success keeps the gray border.
@@ -143,8 +195,8 @@ export const resolveTextInput: TextInputStyleResolver<
       },
     },
     affix: 'flex shrink-0 items-center',
-    searchIcon: search,
-    hint: FIELD_HINT,
-    hintTone: FIELD_HINT_TONE,
+    clear: resolveIconButton({ size: 'medium' }).root,
+    footer: 'flex items-start justify-between gap-2',
+    counter: `ms-auto me-0.5 flex shrink-0 ${props.size === 'large' ? 'mt-2' : 'mt-1'}`,
   };
 };

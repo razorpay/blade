@@ -3,14 +3,20 @@
 // (`<name>/styles.ts`); runtime theming is CSS vars only.
 export { default as Alert } from './alert/Alert.svelte';
 export { default as Amount } from './amount/Amount.svelte';
-export { default as Accordion } from './accordion/Accordion.svelte';
-export { default as AccordionItem } from './accordion/AccordionItem.svelte';
+export { default as CardGroup } from './card-group/CardGroup.svelte';
+export { default as CardGroupItem } from './card-group/CardGroupItem.svelte';
 export { default as Async } from './async/Async.svelte';
 export { default as Button } from './button/Button.svelte';
 export { default as ButtonGroup } from './button-group/ButtonGroup.svelte';
 export { default as Card } from './card/Card.svelte';
 export { default as Carousel } from './carousel/Carousel.svelte';
 export { default as Checkbox } from './checkbox/Checkbox.svelte';
+export { default as Chip } from './chip/Chip.svelte';
+export { default as ChipGroup } from './chip/ChipGroup.svelte';
+export { default as Collapsible } from './collapsible/Collapsible.svelte';
+export { default as CollapsibleChevron } from './collapsible/CollapsibleChevron.svelte';
+export { default as Counter } from './counter/Counter.svelte';
+export { default as CounterInput } from './counter-input/CounterInput.svelte';
 export { default as ModalStack } from './modal/ModalStack.svelte';
 export {
   getOverlays,
@@ -25,6 +31,14 @@ export {
 } from './modal/overlays';
 export { default as Countdown } from './countdown/Countdown.svelte';
 export { default as Modal } from './modal/Modal.svelte';
+export { default as BladeProvider } from './blade-provider/BladeProvider.svelte';
+export {
+  SIZED_CONTROLS,
+  type ComponentDefaults,
+  type ComponentName,
+  type ComponentStyleProps,
+  type DefaultSize,
+} from './defaults';
 export { default as Form } from './form/Form.svelte';
 export { default as Image } from './image/Image.svelte';
 export { default as InputGroup } from './input-group/InputGroup.svelte';
@@ -54,13 +68,16 @@ export { default as OptionList } from './option-list/OptionList.svelte';
 export { default as OptionItem } from './option-list/OptionItem.svelte';
 export { default as VirtualOptionList } from './option-list/VirtualOptionList.svelte';
 export { default as OTPInput } from './otp-input/OTPInput.svelte';
+export { default as PasswordInput } from './password-input/PasswordInput.svelte';
 export { default as PhoneNumberInput } from './phone-number-input/PhoneNumberInput.svelte';
 export { default as Popover } from './popover/Popover.svelte';
 export { default as Radio } from './radio/Radio.svelte';
 export { default as RadioGroup } from './radio/RadioGroup.svelte';
 export { default as Switch } from './switch/Switch.svelte';
 export { default as Tabs } from './tabs/Tabs.svelte';
-export { default as TextAreaInput } from './text-area-input/TextAreaInput.svelte';
+export { default as TabItem } from './tabs/TabItem.svelte';
+export { default as TabPanel } from './tabs/TabPanel.svelte';
+export { default as TextArea } from './text-area/TextArea.svelte';
 export { default as Tooltip } from './tooltip/Tooltip.svelte';
 export { default as ToastStack } from './toast/ToastStack.svelte';
 export {
@@ -72,6 +89,7 @@ export {
   type ToastHandle,
   type Toasts,
 } from './toast/toasts';
+export { default as SearchInput } from './search-input/SearchInput.svelte';
 export { default as TextInput } from './text-input/TextInput.svelte';
 
 export { default as VirtualWindow } from './virtual/VirtualWindow.svelte';
@@ -129,27 +147,51 @@ export type { MenuClasses, MenuShared, MenuStyleResolver } from './menu/styles';
 export type { MenuStyleProps } from './menu';
 export type { PopoverClasses, PopoverStyleResolver } from './popover/styles';
 export type { PopoverStyleProps } from './popover';
-export type {
-  TabsClasses,
-  TabsListSnippet,
-  TabsPick,
-  TabsStyleResolver,
-} from './tabs/styles';
-export { TABS_AXES, type TabsStyleProps } from './tabs';
+export type { TabsClasses, TabsStyleResolver } from './tabs/styles';
+export { TABS_AXES, type TabItemState, type TabsStyleProps } from './tabs';
 export type {
   CheckboxClasses,
-  CheckboxMarkSnippet,
+  CheckboxSizeParts,
   CheckboxStyleResolver,
   CheckboxValidationState,
 } from './checkbox/styles';
-export type { CheckboxStyleProps } from './checkbox';
+export { CHECKBOX_AXES, type CheckboxStyleProps } from './checkbox';
+export type { ControlState } from './shared/control-state';
+export {
+  CHIP_GROUP_AXES,
+  resolveChip,
+  resolveChipGroup,
+  type ChipClasses,
+  type ChipColor,
+  type ChipGroupClasses,
+  type ChipGroupStyleProps,
+  type ChipGroupValidationState,
+  type ChipShared,
+  type ChipSize,
+  type ChipTone,
+} from './chip';
+export {
+  resolveCollapsible,
+  resolveCollapsibleChevron,
+  type CollapsibleClasses,
+} from './collapsible';
+export {
+  COUNTER_AXES,
+  resolveCounter,
+  type CounterClasses,
+  type CounterStyleProps,
+} from './counter';
+export {
+  COUNTER_INPUT_AXES,
+  resolveCounterInput,
+  type CounterInputClasses,
+  type CounterInputStyleProps,
+} from './counter-input';
 export type {
   ModalClasses,
-  ModalCloseIconSnippet,
-  ModalPendingSnippet,
   ModalStyleResolver,
 } from './modal/styles';
-export { MODAL_AXES, type ModalLookProp, type ModalStyleProps } from './modal';
+export { MODAL_AXES, type ModalStyleProps } from './modal';
 export type { AlertClasses, AlertStyleResolver } from './alert/styles';
 export { ALERT_AXES, type AlertStyleProps } from './alert';
 export type {
@@ -219,23 +261,30 @@ export {
   type SegmentedControlProps,
   type SegmentedControlStyleProps,
 } from './segmented-control';
-// Blade's BottomSheet is Modal with `bottomSheetLook`, a sheet on phones
-// only when `adaptive`. A library-internal look, exported as the sanctioned
-// value, with nothing of it in the modal.
+// Blade's BottomSheet is Modal in its `sheet` variant; per breakpoint
+// (`variant: { base: 'sheet', m: 'modal' }`) it is a sheet on phones and a
+// modal from `m` up.
 export {
-  bottomSheetLook,
   BottomSheet,
   BOTTOM_SHEET_AXES,
   type BottomSheetBehaviourProps,
   type BottomSheetComponent,
   type BottomSheetStyleProps,
 } from './bottom-sheet';
+// Blade's Drawer is Modal docked to the left or right edge.
+export {
+  Drawer,
+  DRAWER_AXES,
+  type DrawerBehaviourProps,
+  type DrawerComponent,
+  type DrawerStyleProps,
+} from './drawer';
 export type {
-  TextAreaInputClasses,
-  TextAreaInputStyleResolver,
-  TextAreaInputValidationState,
-} from './text-area-input/styles';
-export type { TextAreaInputStyleProps } from './text-area-input';
+  TextAreaClasses,
+  TextAreaStyleResolver,
+  TextAreaValidationState,
+} from './text-area/styles';
+export type { TextAreaStyleProps } from './text-area';
 export type {
   TextInputClasses,
   TextInputFrame,
@@ -243,6 +292,7 @@ export type {
   TextInputValidationState,
 } from './text-input/styles';
 export type { TextInputStyleProps } from './text-input';
+export { TEXT_INPUT_AXES } from './text-input/styles';
 export type {
   ToastClasses,
   ToastCloseIconSnippet,
@@ -275,14 +325,14 @@ export {
   type ButtonGroupStyleProps,
 } from './button-group';
 export type {
-  AccordionClasses,
-  AccordionItemState,
-  AccordionShared,
-  AccordionStyleResolver,
-  AccordionValidationState,
-} from './accordion/styles';
-export type { AccordionValue } from '../runes/accordion/accordion.svelte';
-export { ACCORDION_AXES, type AccordionStyleProps } from './accordion';
+  CardGroupClasses,
+  CardGroupItemState,
+  CardGroupShared,
+  CardGroupStyleResolver,
+  CardGroupValidationState,
+} from './card-group/styles';
+export type { CardGroupValue } from '../runes/card-group/card-group.svelte';
+export { CARD_GROUP_AXES, type CardGroupStyleProps } from './card-group';
 export type {
   PhoneNumberChange,
   PhoneNumberInputClasses,

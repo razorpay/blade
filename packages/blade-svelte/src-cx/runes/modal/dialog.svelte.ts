@@ -4,25 +4,30 @@ import type { BackAnswer } from '../base/back';
 import { createDisclosure } from '../base/disclosure';
 import { getLayers, type LayerEntry } from '../layer/layers';
 
-export type DialogCloseSource =
-  | 'cross'
-  | 'blur'
-  | 'escape'
-  | 'drag'
-  | 'back'
-  | 'programmatic';
+/** What asked the dialog to go: the user, through one of its surfaces. */
+export type DialogDismissSource = 'cross' | 'blur' | 'escape' | 'drag' | 'back';
+
+/** What closed it: a dismissal, or the owner's own `close()`. */
+export type DialogCloseSource = DialogDismissSource | 'programmatic';
+
+/**
+ * A dismissal, as the owner hears it. `close` ends it — needed only when
+ * the dialog is not dismissible; a dismissible one closes on its own once
+ * the handler returns.
+ */
+export interface DialogDismissEvent {
+  source: DialogDismissSource;
+  close: () => void;
+}
 
 export interface DialogModelOptions {
-  /** Whether backdrop, Escape and back may close it. Default true. */
-  allowDismiss?: () => boolean;
   /**
-   * The wrapped content may own back itself. `true` = it handled back,
-   * nothing closes; `false` = it explicitly cedes, the dialog closes even
-   * when non-dismissable (a non-dismissable flow must still be exitable
-   * once its content says so); `undefined` = no opinion, `allowDismiss`
-   * rules.
+   * Whether a dismissal closes it once `onDismiss` has run. When not, it
+   * stays open until `close` is called. Default true.
    */
-  preventBack?: () => BackAnswer;
+  isDismissible?: () => boolean;
+  /** Fires on every dismissal, whether or not it will close. */
+  onDismiss?: (event: DialogDismissEvent) => void;
   /** Fires once per close, with what closed it. */
   onClose?: (source: DialogCloseSource) => void;
   hooks?: {
@@ -33,34 +38,38 @@ export interface DialogModelOptions {
 export interface DialogModel {
   /** Tracked by whatever reads it. */
   isOpen(): boolean;
-  /** Cross button / programmatic: always closes. */
-  close(source?: 'cross' | 'programmatic'): void;
-  /** A dismiss request (backdrop, Escape, a sheet dragged down): closes only when dismissable. Returns whether it closed. */
-  dismiss(source?: 'blur' | 'escape' | 'drag'): boolean;
+  /** The owner closes it: always closes, no `onDismiss`. */
+  close(source?: DialogCloseSource): void;
   /**
-   * Back pressed while this dialog is on top. Always decides while open
-   * (true = handled here, nothing beneath may pop); a closed dialog defers.
-   * See `BackAnswer` for how this composes with a layer stack.
+   * The user asks it to go (the close button, backdrop, Escape, a drag,
+   * back): `onDismiss` runs, then a dismissible dialog closes. Returns
+   * whether it closed.
+   */
+  dismiss(source: DialogDismissSource): boolean;
+  /**
+   * Back pressed while this dialog is on top: a dismissal. Always decides
+   * while open (true = handled here, nothing beneath may pop); a closed
+   * dialog defers. See `BackAnswer` for how this composes with a layer stack.
    */
   back(): BackAnswer;
 }
 
 /**
- * The dialog decision core: a disclosure born open, a close-source
- * vocabulary, and the back contract with its own content. Everything
- * platform-bound — the backdrop, Escape listening, focus, transitions, the
- * stack entry it lives in — belongs to the rune below, which drops the
- * layer when `isOpen()` goes false.
+ * The dialog decision core: a disclosure born open, over the dialog's
+ * close-source vocabulary — its dismissal contract with the owner is the
+ * disclosure's. Everything platform-bound — the backdrop, Escape listening,
+ * focus, transitions, the stack entry it lives in — belongs to the rune
+ * below, which drops the layer when `isOpen()` goes false.
  */
 export function createDialogModel(
   options: DialogModelOptions = {}
 ): DialogModel {
-  const allowDismiss = (): boolean => options.allowDismiss?.() ?? true;
-  let source: DialogCloseSource = 'programmatic';
-  const disclosure = createDisclosure({
+  const disclosure = createDisclosure<DialogCloseSource>({
     defaultOpen: true,
-    dismissible: options.allowDismiss,
-    onOpenChange: (open) => {
+    dismissible: options.isDismissible,
+    // Only dismissals reach here, and the event carries their source.
+    onDismiss: (event) => options.onDismiss?.(event as DialogDismissEvent),
+    onOpenChange: (open, source) => {
       if (!open) {
         options.hooks?.onCloseLogged?.(source);
         options.onClose?.(source);
@@ -68,38 +77,11 @@ export function createDialogModel(
     },
   });
 
-  function shut(from: DialogCloseSource): void {
-    source = from;
-    disclosure.close();
-  }
-
   return {
     isOpen: disclosure.isOpen,
-    close(from = 'programmatic') {
-      shut(from);
-    },
-    dismiss(from = 'blur') {
-      if (!disclosure.isOpen() || !allowDismiss()) {
-        return false;
-      }
-      shut(from);
-      return true;
-    },
-    back() {
-      if (!disclosure.isOpen()) {
-        return undefined;
-      }
-      const owned = options.preventBack?.();
-      if (owned === true) {
-        return true;
-      }
-      if (owned === false || allowDismiss()) {
-        shut('back');
-        return true;
-      }
-      // Non-dismissable and unowned: an open surface still swallows back.
-      return true;
-    },
+    close: (from = 'programmatic') => disclosure.close(from),
+    dismiss: disclosure.dismiss,
+    back: disclosure.back,
   };
 }
 
@@ -107,18 +89,18 @@ export interface DialogOptions {
   isOpen: () => boolean;
   /** The bindable write: the model closed itself. */
   onValue: (isOpen: boolean) => void;
-  /** Fires once per close the modal decided itself, with what closed it. */
-  onDismiss?: (source: DialogCloseSource) => void;
+  /** Fires on every dismissal; see `DialogDismissEvent`. */
+  onDismiss?: (event: DialogDismissEvent) => void;
   isDismissible: () => boolean;
-  onBack?: () => BackAnswer;
 }
 
 export interface Dialog {
   /** Lower layers go inert so only the top surface takes focus and input. */
   readonly isTop: boolean;
-  /** A dismiss request from the surface; the model decides. */
-  dismiss(source: 'blur' | 'drag' | 'escape'): void;
-  close(source?: 'cross' | 'programmatic'): void;
+  /** A dismissal from the surface or its close button; the model decides. */
+  dismiss(source: DialogDismissSource): void;
+  /** The owner's own close: no `onDismiss`. */
+  close(): void;
 }
 
 /**
@@ -141,15 +123,12 @@ export function createDialog(options: DialogOptions): Dialog {
 
   // One model per open cycle — the modal model is born open. A close the
   // host makes (`isOpen = false`) just drops it: `onDismiss` reports only
-  // closes the modal decided.
+  // what the user asked for.
   function open(): () => void {
     model = createDialogModel({
-      allowDismiss: options.isDismissible,
-      preventBack: () => options.onBack?.(),
-      onClose: (source) => {
-        options.onValue(false);
-        options.onDismiss?.(source);
-      },
+      isDismissible: options.isDismissible,
+      onDismiss: (event) => options.onDismiss?.(event),
+      onClose: () => options.onValue(false),
       hooks: {
         onCloseLogged: (source) => adapters.track?.('modal_close', { source }),
       },
@@ -175,8 +154,8 @@ export function createDialog(options: DialogOptions): Dialog {
     dismiss(source) {
       model?.dismiss(source);
     },
-    close(source = 'programmatic') {
-      model?.close(source);
+    close() {
+      model?.close();
     },
   };
 }

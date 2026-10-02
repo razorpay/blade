@@ -1,6 +1,11 @@
 <script lang="ts">
+  import { pickHintText } from '../../runes/form/hint';
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
+  import FieldHint from '../shared/FieldHint.svelte';
+  import FieldLabel from '../shared/FieldLabel.svelte';
+  import { hintToneOf } from '../shared/field';
   import { provideInputGroup } from '../../runes/input-group/context';
   import { createInputGroup } from '../../runes/input-group/group.svelte';
   import {
@@ -12,6 +17,15 @@
   interface BehaviourProps {
     label?: string;
     /**
+     * The label's area, to put content beside the label (Blade's
+     * `labelSuffix` and `labelTrailing`): render the `label` snippet it
+     * receives and anything else. Today the area is the row above the
+     * control — items 4px apart, `ms-auto` pushes one to the end — and it
+     * stays the place for the label wherever a future `labelPosition` puts
+     * it. Only the label names the group.
+     */
+    labelArea?: Snippet<[{ label: Snippet }]>;
+    /**
      * Omit inside a Form: the group mirrors its members' form errors.
      * Pass it to own the state of the frame and of every member.
      */
@@ -21,11 +35,11 @@
      * for the other two. Inside a Form a visible field error replaces the
      * line while it lasts.
      */
-    helpText?: string;
+    helpText?: string | Snippet;
     /** The line while `validationState` is `error`. */
-    errorText?: string;
+    errorText?: string | Snippet;
     /** The line while `validationState` is `success`. */
-    successText?: string;
+    successText?: string | Snippet;
     isDisabled?: boolean;
     /** Names the group when there is no visible `label`. */
     accessibilityLabel?: string;
@@ -41,6 +55,7 @@
 
   let {
     label,
+    labelArea,
     validationState,
     helpText,
     errorText,
@@ -53,12 +68,12 @@
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('InputGroup', () => styleProps);
+
   const uid = $props.id();
   // Blade's three lines, one shown: the state's own, else the help text.
   const lineText = $derived(
-    { none: undefined, error: errorText, success: successText }[
-      validationState ?? 'none'
-    ] ?? helpText
+    pickHintText({ validationState, helpText, errorText, successText })
   );
   const group = createInputGroup({
     id: uid,
@@ -66,12 +81,13 @@
     hint: () => lineText,
   });
 
-  const classes = $derived(resolveInputGroup(styleProps));
+  const classes = $derived(resolveInputGroup(style.current));
   const hint = $derived(group.hint);
 
   provideInputGroup({
     hintId: () => (hint.text ? group.hintId : undefined),
     isDisabled: () => isDisabled,
+    size: () => style.current.size,
     validationState: () => validationState,
     spanClass: (span) => classes.span[span],
     joinClass: () => classes.member,
@@ -87,6 +103,7 @@
         : '';
     },
     register: group.register,
+    reorder: group.reorder,
   });
 </script>
 
@@ -98,17 +115,22 @@
   data-testid={testID}
 >
   {#if label}
-    <span id={group.labelId} class={classes.label}>{label}</span>
+    <FieldLabel
+      id={group.labelId}
+      text={label}
+      size={style.current.size}
+      area={labelArea}
+    />
   {/if}
   <div class={classes.box}>
     {@render children?.()}
   </div>
   {#if hint.text}
-    <p
+    <FieldHint
       id={group.hintId}
-      class={cx(classes.hint, classes.hintTone[hint.validationState])}
-    >
-      {hint.text}
-    </p>
+      text={hint.text}
+      tone={hintToneOf(hint.validationState)}
+      size={style.current.size}
+    />
   {/if}
 </div>

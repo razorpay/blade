@@ -1,23 +1,15 @@
-// BottomSheet: Blade's name over Modal, drawn through the modal's internal
-// `look`. Modal imports nothing here, so a plain modal bundles no sheet.
-// Apart from index.ts because that re-exports the component, which imports
-// these types — one file would be an import cycle.
+// BottomSheet: Blade's name over Modal in its `sheet` variant. Apart from
+// index.ts because that re-exports the component, which imports these
+// types — one file would be an import cycle.
 import type { Component, Snippet } from 'svelte';
 import type { AxisValue } from '../../axes';
-import type { BackAnswer } from '../../runes/base/back';
-import type { DialogCloseSource } from '../../runes/modal/dialog.svelte';
-import {
-  MODAL_AXES,
-  MODAL_PLACEMENT,
-  modalClasses,
-  type ModalLayout,
-  type ModalStyleProps,
-  type ModalStyleResolver,
-} from '../modal/styles';
-import { PHONE_MEDIA } from '../shared/breakpoint';
+import type { ResponsiveProps } from '../../runes/defaults/responsive';
+import type { DialogDismissEvent } from '../../runes/modal/dialog.svelte';
+import { MODAL_AXES } from '../modal/styles';
 
 /** The blade taxonomy as data: the Modal axes a sheet still decides. */
 export const BOTTOM_SHEET_AXES = {
+  variant: ['sheet', 'modal'],
   size: MODAL_AXES.size,
   pace: MODAL_AXES.pace,
 } as const;
@@ -34,56 +26,72 @@ export interface BottomSheetStyleProps {
   /** `snappy`: v2's quick-buy drawer — 250ms, expo-out. */
   pace?: Axis<'pace'>;
   /**
-   * A sheet on phones and a modal above the preset's breakpoint: one
-   * surface, switched by the viewport. Not an axis: a switch the look
-   * reads.
+   * Whether it can be dragged down to dismiss, by its handle strip and
+   * header. The handle shows only while it can.
+   * @default true
    */
-  adaptive?: boolean;
+  isDraggable?: boolean;
   /**
-   * The modal the adaptive sheet is on desktop: centred, or a handle-less
-   * panel still on the bottom edge. Read only with `adaptive`; a sheet is
-   * always at the bottom.
+   * `sheet` (the default here): anchored to the bottom with a handle,
+   * dragged down to dismiss; `modal`: the modal variant. Per breakpoint,
+   * it is the adaptive sheet: `{ base: 'sheet', m: 'modal' }`.
+   * @default 'sheet'
    */
-  placement?: 'center' | 'bottom';
+  variant?: Axis<'variant'>;
 }
 
 /**
- * Blade's BottomSheet, spelt over Modal with `bottomSheetLook` fixed: the
- * same model, layer stack, focus and back, so every prop is the modal's
- * except the one the look decides (`placement`). A sheet is dismissible by
+ * Blade's BottomSheet, spelt over Modal in its `sheet` variant: the same
+ * model, layer stack, focus and back, so every prop is the modal's. A sheet is dismissible by
  * default and drag closes it.
  */
 export interface BottomSheetBehaviourProps {
   isOpen?: boolean;
-  /** Fires once per close the sheet decided itself, with what closed it. */
-  onDismiss?: (source: DialogCloseSource) => void;
+  /**
+   * The user asked it to go — the close button, the backdrop, Escape, back
+   * or a drag (`source`) — whether or not it is dismissible. A dismissible
+   * sheet closes once this returns, and nothing prevents it; otherwise it
+   * stays open until `close` is called.
+   */
+  onDismiss?: (event: DialogDismissEvent) => void;
   /** The exit finished and the sheet left the DOM, whoever closed it. */
   onClosed?: () => void;
-  /** Whether the backdrop, Escape, back and a drag may close it. */
-  isDismissible?: boolean;
   /**
-   * The content may own back: `true` = it handled back, nothing closes;
-   * `false` = it cedes, the sheet closes even when not dismissible;
-   * `undefined` = no opinion, `isDismissible` rules.
+   * Whether a dismissal closes it by itself, and whether the close
+   * button shows.
+   * @default true
    */
-  onBack?: () => BackAnswer;
+  isDismissible?: boolean;
   role?: 'dialog' | 'alertdialog';
   /** The sheet's name, first in the header: a string or a snippet. */
   title?: string | Snippet;
+  /** One muted line under the title; it describes the sheet. */
+  subtitle?: string;
   /**
-   * The rest of the header, under the title: a subtitle, a back button,
-   * a badge — anything Blade's header props did, as content.
+   * The header's content, around the drawn title and subtitle: it receives
+   * them as snippets (`title`, `subtitle`; each renders nothing when its
+   * prop is unset) and places them with anything else — a badge beside the
+   * title, a back button, a line under them. Render `title`: it names the
+   * sheet. Without `header` the two render on their own.
    */
-  header?: Snippet;
+  header?: Snippet<[{ title: Snippet; subtitle: Snippet; close: () => void }]>;
   /**
    * Content in the preset's padded, scrolling body. `close` is for the
    * content's own actions (a Cancel button). Ignored when `children` is
    * given.
    */
   body?: Snippet<[{ close: () => void }]>;
-  footer?: Snippet;
+  /** `close` is for the footer's own actions (Cancel, Done). */
+  footer?: Snippet<[{ close: () => void }]>;
   /** Raw content: no container, no padding — the content owns its box. */
   children?: Snippet<[{ close: () => void }]>;
+  /**
+   * Things that hang off the panel: a full-width, zero-height box on its
+   * top edge that the panel does not clip, and that moves with it. What
+   * goes in positions itself — above the panel (`absolute bottom-full`) or
+   * over it (`absolute top-*`) — beside the close button and the handle.
+   */
+  chrome?: Snippet<[{ close: () => void }]>;
   /**
    * The close button's accessible name; the button shows while the sheet
    * is dismissible.
@@ -99,90 +107,5 @@ export interface BottomSheetBehaviourProps {
 
 /** The blade BottomSheet: its behaviour props over its style props. */
 export type BottomSheetComponent = Component<
-  BottomSheetBehaviourProps & BottomSheetStyleProps
+  BottomSheetBehaviourProps & ResponsiveProps<BottomSheetStyleProps>
 >;
-
-// The zone — the handle strip and the header — takes the drag, so it must
-// not scroll or pull-to-refresh.
-// Blade's grab handle: a 56 × 4px pill, 12px from the top, 4px above the
-// header.
-const DRAG = {
-  isEnabled: true,
-  zone: 'shrink-0 cursor-grab touch-none select-none active:cursor-grabbing',
-  handle: 'mb-1 flex justify-center pt-3',
-  grip: 'h-1 w-14 rounded-max bg-interactive-gray-faded',
-};
-
-// Blade's sheet body (16px all round) and footer (16px, 20px from 768px,
-// on the sheet's surface under a hairline).
-const SECTIONS = {
-  body: 'overflow-auto p-4',
-  footer:
-    'flex shrink-0 gap-4 border-t-thin border-solid border-surface-gray-muted bg-popup-gray-subtle p-4 m:p-5',
-};
-// On desktop the adaptive sheet is a modal: no handle, no grab cursor, and
-// the drag itself stops at the same breakpoint.
-const ADAPTIVE_DRAG = {
-  ...DRAG,
-  media: PHONE_MEDIA,
-  zone: `${DRAG.zone} m:cursor-auto m:touch-auto m:select-auto m:active:cursor-auto`,
-  handle: `${DRAG.handle} m:hidden`,
-};
-
-const NATIVE_BOTTOM_SHEET = {
-  'data-draggable': 'true',
-  'data-showhandle': 'true',
-};
-
-// Blade's sheet casts its shadow upward (bottomSheet.module.css).
-// Blade rounds the sheet's top corners 16px.
-const SHEET: ModalLayout = {
-  ...MODAL_PLACEMENT.bottom,
-  panel:
-    'w-full rounded-tl-large rounded-tr-large shadow-bottomSheet group-data-[state=closed]:translate-y-full m:rounded-large',
-  drag: DRAG,
-  nativeSheet: NATIVE_BOTTOM_SHEET,
-  ...SECTIONS,
-};
-
-// The adaptive sheet, centred: the bottom placement below the breakpoint,
-// the centre one above it — the closed panel parks off the bottom edge on
-// phones and fades and shrinks in place on desktop.
-const ADAPTIVE_CENTER: ModalLayout = {
-  root: 'items-end justify-center m:items-center m:p-4',
-  panel:
-    'w-full rounded-tl-large rounded-tr-large shadow-bottomSheet m:shadow-highRaised group-data-[state=closed]:translate-y-full m:rounded-large m:group-data-[state=closed]:translate-y-0 m:group-data-[state=closed]:scale-95 m:group-data-[state=closed]:opacity-0',
-  drag: ADAPTIVE_DRAG,
-  nativeSheet: NATIVE_BOTTOM_SHEET,
-  ...SECTIONS,
-};
-
-// The adaptive sheet on the bottom edge: the sheet's own placement, which
-// already rises from the bottom on desktop too; only the handle and the
-// drag stop at the breakpoint.
-const ADAPTIVE_BOTTOM: ModalLayout = { ...SHEET, drag: ADAPTIVE_DRAG };
-
-// What the look reads: the sheet's props with `placement` as the modal
-// spells it, so the look fits the modal's seam (and `openModal`) — `bottom`
-// is the one value read, anything else centres.
-type SheetLookProps = Omit<BottomSheetStyleProps, 'placement'> &
-  Pick<ModalStyleProps, 'placement'>;
-
-function sheetLayout({ adaptive, placement }: SheetLookProps) {
-  if (!adaptive) {
-    return SHEET;
-  }
-  return placement === 'bottom' ? ADAPTIVE_BOTTOM : ADAPTIVE_CENTER;
-}
-
-/**
- * Modal drawn as Blade's BottomSheet: anchored to the bottom edge with a
- * handle, dragged down to dismiss — or, `adaptive`, that sheet on phones and
- * a modal on desktop, centred or (`placement: 'bottom'`) a handle-less panel
- * on the same edge. What BottomSheet hands Modal, and what
- * `openModal({ look: bottomSheetLook, adaptive })` opens (the phone field's
- * country picker).
- */
-export const bottomSheetLook: ModalStyleResolver<SheetLookProps> = (
-  props: SheetLookProps = {}
-) => modalClasses(sheetLayout(props), props);

@@ -2,8 +2,9 @@
 
 A composition, not a new field: a `TextInput` (`type="tel"`) for the national
 number, a country button in its `leading` slot, and a picker — a
-Modal given `bottomSheetLook` with `adaptive` (a bottom sheet on phones, a
-centred modal on desktop) holding a `VirtualOptionList`. The picker
+Modal holding a `VirtualOptionList`. The picker follows the app's Modal
+defaults: set `{ Modal: { variant: { base: 'sheet', m: 'modal' } } }` on
+BladeProvider for a bottom sheet on phones and a centred modal on desktop. The picker
 opens through `openModal` and its body (`PhoneCountryPicker.svelte`) is its
 own chunk, loaded on the first tap: a phone field costs no list, no virtual
 window and no search box until then. All the

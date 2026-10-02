@@ -4,6 +4,19 @@ import TabsHarness from './fixtures/TabsHarness.svelte';
 import { expectClass } from './classes';
 
 describe('Tabs', () => {
+  it("children and trailing receive the tab's state; icon draws a glyph", async () => {
+    const { getByTestId, queryByTestId, getAllByRole } = render(TabsHarness);
+    expect(getByTestId('picked-upi')).toBeTruthy();
+    expect(queryByTestId('picked-card')).toBeNull();
+    expect(getByTestId('trailing-upi').dataset.selected).toBe('true');
+    expect(getByTestId('trailing-emi').dataset.disabled).toBe('true');
+    const card = getAllByRole('tab')[1];
+    expect(card.querySelector('svg')).toBeTruthy();
+    await fireEvent.click(card);
+    expect(getByTestId('picked-card')).toBeTruthy();
+    expect(getByTestId('trailing-upi').dataset.selected).toBe('false');
+  });
+
   it('picks the first tab and wires tab ↔ panel', () => {
     const { getByRole, getAllByRole } = render(TabsHarness);
     const list = getByRole('tablist', { name: 'Payment methods' });
@@ -81,19 +94,37 @@ describe('Tabs', () => {
     });
   });
 
-  it('fill: one sliding underline, none on the picked tab itself', () => {
+  it('marks the pick with one indicator beside the tabs, not on a tab', () => {
     const { getByRole, getAllByRole } = render(TabsHarness, {
-      props: { layout: 'fill', value: 'card' },
+      props: { value: 'card' },
     });
-    const underline = getByRole('tablist').lastElementChild as HTMLElement;
-    expect(underline.getAttribute('aria-hidden')).toBe('true');
-    expect(underline.style.getPropertyValue('--tab-index')).toBe('1');
-    expect(underline.style.getPropertyValue('--tab-count')).toBe('4');
-    expect(underline.className).toContain(
-      'border-interactive-neutral-highlighted'
-    );
+    const box = getByRole('tablist').parentElement!;
+    const indicator = box.lastElementChild as HTMLElement;
+    expect(indicator.getAttribute('aria-hidden')).toBe('true');
+    expectClass(indicator, 'bg-interactive-neutral-highlighted');
+    expect(indicator.style.getPropertyValue('--tab-w')).toMatch(/px$/);
+    // Bordered: the track under the row.
+    expectClass(box, 'border-surface-gray-muted');
     expect(getAllByRole('tab')[1].className).not.toContain(
-      'border-interactive-neutral-highlighted'
+      'bg-interactive-neutral-highlighted'
     );
+  });
+
+  it('filled and vertical: the picked tab fills itself, with no indicator', () => {
+    const { getByRole, getAllByRole } = render(TabsHarness, {
+      props: { variant: 'filled', orientation: 'vertical' },
+    });
+    expect(getByRole('tablist').getAttribute('aria-orientation')).toBe('vertical');
+    expect(getByRole('tablist').parentElement!.querySelector(':scope > [aria-hidden="true"]')).toBeNull();
+    expectClass(getAllByRole('tab')[0], 'bg-surface-gray-intense');
+  });
+
+  it('keeps every panel mounted and hidden, unless lazy', async () => {
+    const eager = render(TabsHarness);
+    expect(eager.getAllByTestId('panel-text')).toHaveLength(4);
+    expect(eager.getAllByRole('tabpanel', { hidden: true }).filter((p) => p.hidden)).toHaveLength(3);
+    eager.unmount();
+    const lazy = render(TabsHarness, { props: { isLazy: true } });
+    expect(lazy.getAllByTestId('panel-text')).toHaveLength(1);
   });
 });

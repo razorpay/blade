@@ -18,7 +18,7 @@ nothing of the pill.
 | Prop | Notes |
 | --- | --- |
 | `value` | The picked segment's `value`: initial, a `bind:`, or host-driven; there is no `defaultValue` |
-| `onChange` | Fires on a user pick with the new value |
+| `onChange` | Fires on a user pick with `{ name, value }` |
 | `name` | Registers the control with the enclosing Form under this key; the radios share it |
 | `isRequired` | Declarative constraint: the form blocks submission until a segment is picked |
 | `validationState`, `helpText`, `errorText` | Omit `validationState` inside a Form to mirror its error once picked or submitted; pass it to own the state and its line |
@@ -32,9 +32,9 @@ nothing of the pill.
 | Prop | Notes |
 | --- | --- |
 | `value` | What the control's `value` becomes when picked |
-| `leading` | An `IconSource` before the label. Alone, it is the label, and `accessibilityLabel` names it — the radio reads as that name through its label |
+| `icon` | An `IconSource` before the label. Alone, it is the label, and `accessibilityLabel` names it — the radio reads as that name through its label |
 | `isDisabled` | This segment only |
-| `children` | The label text |
+| `children({ isChecked, isDisabled })` | The label text |
 
 ## Keys and the thumb
 
@@ -45,3 +45,5 @@ module's `radioGroupOptions` snippet from `{ index, count }`: segments share
 the row equally, so it is one segment wide and slides by whole segments plus
 the gap, sized per `size`. Nothing is measured, and native cannot resolve
 that `calc(var())`, so it shows no pick there.
+
+Every label snippet (and `leading` / `trailing` where it has them) receives the control's state, `{ isChecked, isDisabled }` (`ControlState`). Groups take `labelArea`, and every hint line is `string | Snippet`, as the inputs.

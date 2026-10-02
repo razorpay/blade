@@ -10,7 +10,7 @@
 <Card testID="plain-card" class="mt-2">Plain</Card>
 <Card variant="secondary" accessibilityLabel="Banks" testID="labelled-card">
   <Divider testID="rule" class="my-2" />
-  <Divider orientation="vertical" line="dashed" testID="upright" />
+  <Divider orientation="vertical" dividerStyle="dashed" testID="upright" />
 </Card>
 
 <TrustBadge label="Razorpay Trusted Business" testID="trust" class="mt-1" />
@@ -31,13 +31,12 @@
 </Screen>
 
 <EmptyState
-  color="negative"
   title="Payment failed"
-  message="Your money is safe"
+  description="Your money is safe"
   testID="empty"
   class="mt-4"
 >
-  {#snippet media()}<img src="/failed.svg" alt="" />{/snippet}
+  {#snippet asset()}<img src="/failed.svg" alt="" />{/snippet}
   <button type="button">Retry</button>
 </EmptyState>
 <EmptyState title="No saved cards" testID="empty-bare" />

@@ -1,130 +1,86 @@
-<script lang="ts" generics="T">
+<script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
+  import { provideTabs } from '../../runes/tabs/context';
   import { createTabs } from '../../runes/tabs/tabs.svelte';
-  import { resolveTabs, type TabsStyleProps } from './styles';
+  import { resolveTabs, type TabsClasses, type TabsStyleProps } from './styles';
 
   type Props = TabsStyleProps & {
-    items: readonly T[];
-    /** A stable key per item; it is also the value. */
-    itemKey: (item: T) => string;
-    itemLabel: (item: T) => string;
-    isItemDisabled?: (item: T) => boolean;
-    /** The picked item's key: initial, bound, or host-driven. Defaults to the first enabled tab. */
+    /** The picked tab's value; the first enabled tab when unset. */
     value?: string;
     onChange?: (value: string) => void;
-    /** `manual`: arrows only move focus, Enter or Space picks. */
+    /**
+     * `automatic`: moving focus onto a tab picks it; `manual`: a press (or
+     * Enter, Space) does, as Blade.
+     * @default 'automatic'
+     */
     activation?: 'automatic' | 'manual';
+    /** Panels mount only while their tab is picked. @default false */
+    isLazy?: boolean;
     /** Names the tablist. */
-    accessibilityLabel: string;
+    accessibilityLabel?: string;
     testID?: string;
     class?: string;
-    /** The picked tab's panel. */
-    children: Snippet<[T]>;
-    /** Replaces a tab's label. */
-    tab?: Snippet<[T]>;
+    /** The TabItems (Blade's TabList). */
+    tabs: Snippet;
+    /** The TabPanels, and anything else under or beside the tabs. */
+    children?: Snippet;
   };
 
   let {
-    items,
-    itemKey,
-    itemLabel,
-    isItemDisabled,
     value = $bindable(),
     onChange,
     activation = 'automatic',
+    isLazy = false,
     accessibilityLabel,
     testID,
     class: className = '',
+    tabs,
     children,
-    tab: tabContent,
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('Tabs', () => styleProps);
+
   const uid = $props.id();
-  const classes = $derived(resolveTabs(styleProps));
+  const classes = $derived(resolveTabs(style.current));
 
-  // A tablist always has one tab picked.
-  // svelte-ignore state_referenced_locally
-  if (value === undefined) {
-    const first = items.find((item) => !isItemDisabled?.(item));
-    value = first && itemKey(first);
-  }
-
-  // svelte-ignore state_referenced_locally
-  const tablist = createTabs<T>({
+  const tablist = createTabs<TabsClasses>({
     id: uid,
-    items: () => items,
-    itemKey,
-    isItemDisabled,
     value: () => value,
     onValue: (next) => {
       value = next;
     },
     onChange: (next) => onChange?.(next),
-    activation,
+    activation: () => activation,
+    isLazy: () => isLazy,
+    shared: () => classes,
   });
-  const picked = $derived(tablist.picked);
-  const pick = $derived(tablist.pick);
+  provideTabs(tablist);
+  const indicator = $derived(tablist.indicator);
 </script>
 
-{#snippet tabs()}
-  {#each items as item, index (itemKey(item))}
-    {@const isPicked = item === picked}
-    {@const isDisabled = Boolean(isItemDisabled?.(item))}
-    <button
-      type="button"
-      role="tab"
-      id={tablist.tabId(item)}
-      class={cx(
-        classes.tab,
-        isDisabled
-          ? classes.disabled
-          : classes.pick[isPicked ? 'picked' : 'unpicked']
-      )}
-      tabindex={index === tablist.stop ? 0 : -1}
-      aria-selected={isPicked}
-      aria-controls={isPicked ? tablist.panelId(item) : undefined}
-      aria-disabled={isDisabled || undefined}
-      data-index={index}
-      onclick={() => tablist.select(item)}
-      onblur={() => tablist.clearActive()}
-    >
-      {#if tabContent}{@render tabContent(item)}{:else}{itemLabel(item)}{/if}
-    </button>
-  {/each}
-{/snippet}
-
 <div class={cx(classes.root, className)} data-testid={testID}>
-  <!-- svelte-ignore a11y_interactive_supports_focus -->
-  <div
-    role="tablist"
-    class={classes.list}
-    aria-label={accessibilityLabel}
-    onkeydown={tablist.handleKeyDown}
-    {@attach tablist.attach}
-  >
-    {@render tabs()}
-    {#if styleProps.layout === 'fill' && pick.index >= 0}
+  <div class={classes.listBox} {@attach tablist.attachList}>
+    <div
+      role="tablist"
+      class={classes.list}
+      aria-label={accessibilityLabel}
+      aria-orientation={style.current.orientation === 'vertical' ? 'vertical' : undefined}
+    >
+      {@render tabs()}
+    </div>
+    {#if classes.indicator && indicator}
       <span
-        class="pointer-events-none absolute bottom-0 left-0 h-0.5 [width:calc(100%/var(--tab-count))] [translate:calc(var(--tab-index)*100%)_0] border-t-thicker border-solid border-interactive-neutral-highlighted transition-transform duration-quick ease-standard motion-reduce:transition-none"
-        style:--tab-index={pick.index}
-        style:--tab-count={pick.count}
+        class={classes.indicator}
+        style:--tab-x="{indicator.x}px"
+        style:--tab-y="{indicator.y}px"
+        style:--tab-w="{indicator.width}px"
+        style:--tab-h="{indicator.height}px"
         aria-hidden="true"
       ></span>
     {/if}
   </div>
-  {#if picked}
-    {#key itemKey(picked)}
-      <div
-        role="tabpanel"
-        id={tablist.panelId(picked)}
-        class={classes.panel}
-        aria-labelledby={tablist.tabId(picked)}
-        tabindex="0"
-      >
-        {@render children(picked)}
-      </div>
-    {/key}
-  {/if}
+  {@render children?.()}
 </div>

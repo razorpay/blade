@@ -1,57 +1,17 @@
-import { setupField, type FieldModel } from '../form/field.svelte';
-import { createFieldLine } from '../form/field-line.svelte';
 import {
-  visibleFieldError,
-  type FieldHint,
-  type ValidationState,
+  createChoiceList,
+  type ChoiceEntry,
+} from '../base/choice-list.svelte';
+import { createFieldShell } from '../form/field.svelte';
+import type {
+  ChoiceValidationState,
+  FieldHint,
+  HintContent,
 } from '../form/hint';
 import type { RadioGroupContext } from './context';
 
-export interface RadioGroupModel {
-  /**
-   * One user pick. The field pipeline runs (parse → compare → store →
-   * notify) and the field counts as visited — a radio has no meaningful
-   * blur, so a change is the visit. Returns whether the pick held; when it
-   * was refused the anatomy writes the control's `checked` back.
-   */
-  select(value: string, onValue?: (value: unknown) => void): boolean;
-  isSelected(value: string): boolean;
-  /** Tracked by whatever reads it. */
-  value(): string | undefined;
-}
-
-/**
- * The radio group model over a form field: one field, one value, however
- * many radios. The platform suppresses picks on a disabled control,
- * synthetic dispatch does not — the gate here mirrors the platform.
- */
-export function createRadioGroupModel(
-  field: FieldModel,
-  options: { disabled?: () => boolean } = {}
-): RadioGroupModel {
-  const value = (): string | undefined => {
-    const current = field.record.value;
-    return current === null || current === undefined || current === ''
-      ? undefined
-      : String(current);
-  };
-
-  return {
-    value,
-    isSelected: (candidate) => value() === candidate,
-    select(next, onValue) {
-      if (options.disabled?.()) {
-        return false;
-      }
-      field.updateValue(next, onValue);
-      field.touch();
-      return value() === next;
-    },
-  };
-}
-
 /** A choice is made or missing: there is no success state to show. */
-export type RadioGroupValidationState = Exclude<ValidationState, 'success'>;
+export type RadioGroupValidationState = ChoiceValidationState;
 
 /** Where the picked Radio sits among the group's Radios, in document order. */
 export interface RadioGroupPick {
@@ -72,7 +32,7 @@ export interface RadioGroupOptions<Shared> {
   isDisabled: () => boolean;
   isRequired: () => boolean;
   validationState: () => RadioGroupValidationState | undefined;
-  hint: () => string | undefined;
+  hint: () => HintContent | undefined;
   /** What the Radios read besides state: the library's business. */
   shared: () => Shared;
 }
@@ -86,81 +46,48 @@ export interface RadioGroup<Shared> extends RadioGroupContext<Shared> {
   readonly hintId: string;
 }
 
-// Node.DOCUMENT_POSITION_PRECEDING, spelled out: there is no `Node` on native.
-const PRECEDING = 2;
+// The field's value as a radio's: one string, or nothing picked.
+const asPick = (value: unknown): string | undefined =>
+  value === null || value === undefined || value === '' ? undefined : String(value);
 
 /**
- * The radio group behaviour: one form field, one value, however many
- * radios, registered in mount order and read back in document order. Call
- * during component initialisation; the component provides the result to
- * its Radios (`provideRadioGroup`) and draws from it.
+ * The radio group behaviour: the headless choice list (`base/choice-list`)
+ * as native radios — one form field, one value, however many radios,
+ * registered and read back in document order. A pick is never cleared, and
+ * the keys are the platform's (a radio group picks as the arrows move).
+ * Call during component initialisation; the component provides the result
+ * to its Radios (`provideRadioGroup`) and draws from it.
  */
 export function createRadioGroup<Shared>(
   options: RadioGroupOptions<Shared>
 ): RadioGroup<Shared> {
-  const fieldProps = () => ({
-    name: options.name(),
-    value: options.value(),
-    required: options.isRequired(),
-    disabled: options.isDisabled(),
-  });
-
-  const { field, form, notifyInput } = setupField(
-    fieldProps(),
-    'radio',
-    (next) => {
-      options.onValue(
-        next === null || next === undefined ? undefined : String(next)
-      );
-    }
-  );
-  const model = createRadioGroupModel(field, { disabled: options.isDisabled });
-
-  // In order of mount; the form reveals the picked radio, else the first.
-  const radios: Array<{
-    value: string;
-    getElement: () => HTMLElement | undefined;
-  }> = [];
-  // `radios` is a plain array: this is what tells `pick` it changed.
-  let registrations = $state(0);
-  field.setHandle(() =>
-    (
-      radios.find((radio) => model.isSelected(radio.value)) ?? radios[0]
-    )?.getElement()
-  );
-
-  const picked = $derived(model.value());
-
-  $effect.pre(() => {
-    field.updateProps(fieldProps());
-  });
-
-  const line = createFieldLine(
-    form,
-    () => ({
+  // The form reveals the picked radio, else the first enabled one.
+  const shell = createFieldShell({
+    id: options.id,
+    kind: 'radio',
+    props: () => ({
+      name: options.name(),
+      value: options.value(),
+      required: options.isRequired(),
+      disabled: options.isDisabled(),
+    }),
+    onValue: (next) => options.onValue(asPick(next)),
+    line: () => ({
       validationState: options.validationState(),
       hint: options.hint(),
     }),
-    (state) => visibleFieldError(field.record, state)
-  );
+    handle: () => choices.elementAt(choices.tabStop()),
+  });
+  const choices = createChoiceList<string>(shell.field, {
+    disabled: options.isDisabled,
+  });
+  // Pre-effect: the field follows its props from before the first paint.
+  $effect.pre(shell.syncProps);
 
-  // Document order, not mount order: a Radio mounted later may sit before an
-  // earlier one. Native has no `compareDocumentPosition`; mount order it is.
-  const pick: RadioGroupPick = $derived.by(() => {
-    void registrations;
-    const ordered = radios
-      .map((radio) => ({ value: radio.value, element: radio.getElement() }))
-      .sort((a, b) =>
-        a.element?.compareDocumentPosition && b.element
-          ? a.element.compareDocumentPosition(b.element) & PRECEDING
-            ? 1
-            : -1
-          : 0
-      );
-    return {
-      index: ordered.findIndex((radio) => radio.value === picked),
-      count: ordered.length,
-    };
+  const picked = $derived(asPick(shell.field.record.value));
+  const pick: RadioGroupPick = $derived({
+    index: picked === undefined ? -1 : choices.items().indexOf(picked),
+    count: choices.items().length,
   });
 
   return {
@@ -174,38 +101,33 @@ export function createRadioGroup<Shared>(
       return pick;
     },
     get hint() {
-      return line.hint;
+      return shell.hint;
     },
     get isDisabled() {
       return options.isDisabled();
     },
     get isInvalid() {
-      return line.hint.validationState === 'error';
+      return shell.isInvalid;
     },
     get shared() {
       return options.shared();
     },
-    labelId: `${options.id}-label`,
-    hintId: `${options.id}-hint`,
+    labelId: shell.labelId,
+    hintId: shell.hintId,
     isSelected: (candidate) => picked === candidate,
     select(next, event) {
-      const held = model.select(next, (stored) => {
-        options.onValue(String(stored));
-        options.onChange?.(String(stored));
-      });
-      if (held) {
-        notifyInput(event);
-      }
-      return held;
+      return shell.edit(
+        (onValue) =>
+          choices.toggle(next, choices.items().indexOf(next), onValue),
+        (stored) => {
+          options.onValue(String(stored));
+          options.onChange?.(String(stored));
+        },
+        event
+      );
     },
-    register(radioValue, getElement) {
-      const entry = { value: radioValue, getElement };
-      radios.push(entry);
-      registrations += 1;
-      return () => {
-        radios.splice(radios.indexOf(entry), 1);
-        registrations += 1;
-      };
-    },
+    register: (entry: ChoiceEntry<string>) => choices.register(entry),
+    reorder: choices.reorder,
+    indexOf: choices.indexOf,
   };
 }

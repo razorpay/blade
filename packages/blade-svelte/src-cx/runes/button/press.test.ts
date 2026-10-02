@@ -31,8 +31,6 @@ function cardForm(value: string, onSubmit = vi.fn()) {
 
 function hooks() {
   return {
-    onClickLogged: vi.fn(),
-    onPromise: vi.fn(),
     onValidationFailed: vi.fn(),
     onFeedback: vi.fn(),
     onError: vi.fn(),
@@ -51,26 +49,24 @@ function button(options: ButtonOptions = {}) {
 }
 
 describe('standalone button', () => {
-  it('forwards the press with empty form data and medium feedback', async () => {
+  it('forwards the press with medium feedback', async () => {
     const onClick = vi.fn();
     const { model, hooks: h } = button({ onClick });
     const decision = model.press('event');
-    expect(decision).toMatchObject({ prevented: false, blocked: false });
+    expect(decision.prevented).toBe(false);
     await decision.settled;
-    expect(onClick).toHaveBeenCalledWith({}, 'event');
-    expect(h.onClickLogged).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledWith('event');
     expect(h.onFeedback).toHaveBeenCalledWith('medium');
   });
 
-  it('an async onClick drives loading and is reported for tracking', async () => {
+  it('an async onClick drives loading', async () => {
     let release: (v?: unknown) => void = () => undefined;
     const promise = new Promise((resolve) => {
       release = resolve;
     });
-    const { model, hooks: h } = button({ onClick: () => promise });
+    const { model } = button({ onClick: () => promise });
     const decision = model.press();
     expect(model.loading).toBe(true);
-    expect(h.onPromise).toHaveBeenCalledWith(promise);
     release();
     await decision.settled;
     expect(model.loading).toBe(false);
@@ -93,10 +89,10 @@ describe('inside a form', () => {
     const onClick = vi.fn();
     const { model, hooks: h } = button({ form, onClick });
     const decision = model.press('event');
-    expect(decision).toMatchObject({ prevented: true, blocked: false });
+    expect(decision.prevented).toBe(true);
     await decision.settled;
     expect(onSubmit).toHaveBeenCalledTimes(1);
-    expect(onClick).toHaveBeenCalledWith({ card: { number: '4111' } }, 'event');
+    expect(onClick).toHaveBeenCalledWith('event');
     expect(h.onFeedback).toHaveBeenCalledWith('medium');
   });
 
@@ -164,45 +160,5 @@ describe('inside a form', () => {
     // The press still completes: feedback and the consumer click run.
     expect(h.onFeedback).toHaveBeenCalledWith('medium');
     expect(onClick).toHaveBeenCalled();
-  });
-});
-
-describe('blocked presses', () => {
-  it('preventSubmit blocks, shakes and still forwards the click', async () => {
-    const { form, onSubmit } = cardForm('4111');
-    const onClick = vi.fn();
-    const { model, hooks: h } = button({
-      form,
-      onClick,
-      preventSubmit: () => true,
-    });
-    const decision = model.press();
-    expect(decision).toMatchObject({ prevented: true, blocked: true });
-    await decision.settled;
-    expect(onSubmit).not.toHaveBeenCalled();
-    expect(onClick).toHaveBeenCalled();
-    expect(model.shake).toBe(true);
-    expect(h.onFeedback).toHaveBeenCalledWith('warning');
-  });
-
-  it('shakeOnPreventSubmit=false blocks without shaking, feedback stays medium', async () => {
-    const { model, hooks: h } = button({
-      preventSubmit: () => true,
-      shakeOnPreventSubmit: () => false,
-    });
-    await model.press().settled;
-    expect(model.shake).toBe(false);
-    expect(h.onFeedback).toHaveBeenCalledWith('medium');
-  });
-
-  it('host-owned and model-owned loading both block', async () => {
-    const { form, onSubmit } = cardForm('4111');
-    const { model } = button({ form, loading: () => true });
-    expect(model.press().blocked).toBe(true);
-
-    const { model: second } = button({ form });
-    second.setLoading(true);
-    expect(second.press().blocked).toBe(true);
-    expect(onSubmit).not.toHaveBeenCalled();
   });
 });

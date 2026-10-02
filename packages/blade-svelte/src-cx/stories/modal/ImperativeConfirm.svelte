@@ -1,7 +1,6 @@
 <script lang="ts">
   import {
     Button,
-    bottomSheetLook,
     openModal,
     Text,
     type ModalControl,
@@ -21,7 +20,7 @@
       props: { bank, depth: depth + 1 },
       title: `Modal ${depth + 1}`,
       closeLabel: 'Close',
-      look: bottomSheetLook,
+      variant: 'sheet',
     });
   }
 </script>

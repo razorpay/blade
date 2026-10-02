@@ -1,4 +1,4 @@
-import { getContext, setContext } from 'svelte';
+import { defineContext } from './runes/context';
 import type { ElementHandle } from './runes/dom/element';
 import type { FieldStore } from './runes/form/field.svelte';
 
@@ -25,13 +25,13 @@ export interface BladeAdapters {
   navigate?: (href: string, event: MouseEvent) => boolean;
 }
 
-const ADAPTERS = Symbol('blade-adapters');
+const ADAPTERS = defineContext<BladeAdapters>('blade-adapters');
 
 /** Call during component init at the app root; descendants read via getAdapters. */
 export function provideAdapters(adapters: BladeAdapters): void {
-  setContext(ADAPTERS, adapters);
+  ADAPTERS.set(adapters);
 }
 
 export function getAdapters(): BladeAdapters {
-  return getContext<BladeAdapters | undefined>(ADAPTERS) ?? {};
+  return ADAPTERS.get() ?? {};
 }

@@ -5,6 +5,8 @@
   import { provideOverlays } from '../../components/modal/overlays';
   import Form from '../../components/form/Form.svelte';
   import PhoneNumberInput from '../../components/phone-number-input/PhoneNumberInput.svelte';
+  import BladeProvider from '../../components/blade-provider/BladeProvider.svelte';
+  import type { ComponentDefaults } from '../../components/defaults';
 
   interface Props {
     value?: string;
@@ -15,10 +17,13 @@
     isRequired?: boolean;
     searchLabel?: string;
     onChange?: (change: PhoneParts) => void;
-    onCountryChange?: (country: string) => void;
+    onCountryChange?: (change: { country: string }) => void;
     onSubmit?: (values: Record<string, unknown>) => void;
     withStack?: boolean;
     captureError?: (error: unknown) => void;
+    /** The app's defaults: the picker's Modal follows them. */
+    defaults?: ComponentDefaults;
+    trailing?: string;
   }
 
   let {
@@ -34,6 +39,8 @@
     onSubmit,
     withStack = true,
     captureError,
+    defaults,
+    trailing,
   }: Props = $props();
 
   // An isolated stack per test: nothing leaks through the global one.
@@ -57,6 +64,7 @@
   ];
 </script>
 
+<BladeProvider {defaults}>
 <Form onSubmit={(values) => onSubmit?.(values)}>
   <PhoneNumberInput
     bind:this={phone}
@@ -76,12 +84,14 @@
     closeLabel="Close"
     emptyText="No country found"
     testID="phone"
+    {trailing}
   />
   <button type="submit" data-testid="submit">Pay</button>
 </Form>
 {#if withStack}
   <ModalStack />
 {/if}
+</BladeProvider>
 <button type="button" data-testid="focus" onclick={() => phone?.focus()}>
   Focus
 </button>

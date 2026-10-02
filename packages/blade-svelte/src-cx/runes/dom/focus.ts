@@ -61,3 +61,25 @@ export function trappedTabTarget(
   }
   return null;
 }
+
+/**
+ * Remembers what has focus now; the returned function hands focus back to
+ * it when an overlay closes — unless focus already went somewhere on
+ * purpose, outside `container`.
+ */
+export function captureFocusReturn(
+  container: () => HTMLElement | undefined,
+  options: FocusOptions = {}
+): () => void {
+  const returnTo = document.activeElement;
+  return () => {
+    const active = document.activeElement;
+    const node = container();
+    if (
+      returnTo instanceof HTMLElement &&
+      (!active || active === document.body || node?.contains(active))
+    ) {
+      returnTo.focus(options);
+    }
+  };
+}

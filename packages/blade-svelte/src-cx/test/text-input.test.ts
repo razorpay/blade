@@ -65,7 +65,7 @@ describe('TextInput standalone', () => {
     control.value = '41112';
     await fireEvent.input(control);
 
-    expect(onChange).toHaveBeenCalledWith('41112');
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ value: '41112' }));
     expect(control.value).toBe('4111 2');
   });
 
@@ -84,7 +84,7 @@ describe('TextInput standalone', () => {
     control.value = '41112';
     await fireEvent.input(control);
     expect(control.value).toBe('4111 2');
-    expect(onChange).toHaveBeenCalledWith('41112');
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ value: '41112' }));
 
     // Native reads the serialized spec; web ignores it.
     expect(JSON.parse(control.getAttribute('format') ?? '')).toEqual({
@@ -119,21 +119,49 @@ describe('TextInput standalone', () => {
     // …while the accessible name stays the visible label alone.
     expect(getByLabelText('Amount')).toBe(control);
     expect(control.getAttribute('aria-labelledby')).toBe(
-      getByText('Amount').id
+      getByText('Amount').closest('[id]')?.id
     );
   });
 
-  it('type search leads with the style glyph unless leading is set', async () => {
-    const { getByTestId, container, rerender } = render(TextInputHarness, {
-      props: { type: 'search', accessibilityLabel: 'Search banks' },
+  it("takes the HTML keyboard attributes, over the defaults its type brings", async () => {
+    const { getByTestId, rerender } = render(TextInputHarness, {
+      props: { type: 'tel', accessibilityLabel: 'Phone' },
     });
     const control = getByTestId('solo');
-    expect(control.getAttribute('type')).toBe('search');
-    expect(control.getAttribute('enterkeyhint')).toBe('search');
-    expect(container.querySelectorAll('svg')).toHaveLength(1);
+    expect(control.getAttribute('type')).toBe('tel');
+    expect(control.getAttribute('inputmode')).toBeNull();
+    expect(control.getAttribute('enterkeyhint')).toBe('done');
+    expect(control.getAttribute('autocomplete')).toBe('tel');
 
-    await rerender({ type: 'search', leading: '#' });
-    expect(container.querySelectorAll('svg')).toHaveLength(0);
+    await rerender({ type: 'email' });
+    expect(control.getAttribute('autocomplete')).toBe('email');
+    expect(control.getAttribute('autocapitalize')).toBe('none');
+
+    await rerender({ type: 'url', autoComplete: undefined });
+    expect(control.getAttribute('enterkeyhint')).toBe('go');
+    expect(control.getAttribute('autocomplete')).toBeNull();
+
+    // A plain text field adds nothing; what the caller gives wins.
+    await rerender({
+      type: 'text',
+      inputMode: 'numeric',
+      enterKeyHint: 'next',
+      autoComplete: 'cc-number',
+    });
+    expect(control.getAttribute('inputmode')).toBe('numeric');
+    expect(control.getAttribute('enterkeyhint')).toBe('next');
+    expect(control.getAttribute('autocomplete')).toBe('cc-number');
+    expect(control.getAttribute('autocapitalize')).toBeNull();
+  });
+
+  it('renders number as text with the decimal keypad, as Blade', () => {
+    const { getByTestId } = render(TextInputHarness, {
+      props: { type: 'number', accessibilityLabel: 'Amount' },
+    });
+    const control = getByTestId('solo');
+    expect(control.getAttribute('type')).toBe('text');
+    expect(control.getAttribute('inputmode')).toBe('decimal');
+    expect(control.getAttribute('enterkeyhint')).toBe('done');
   });
 
   it('shows focus on the box, which holds the affixes', async () => {
@@ -143,12 +171,12 @@ describe('TextInput standalone', () => {
     const control = getByTestId('solo');
     const box = control.parentElement;
     expect(getByText('₹').parentElement).toBe(box);
-    expectNoClass(box, 'shadow-focus');
+    expectNoClass(box, 'outline-surface-primary-muted');
 
     await fireEvent.focus(control);
-    expectClass(box, 'shadow-focus');
+    expectClass(box, 'outline-surface-primary-muted');
     await fireEvent.blur(control);
-    expectNoClass(box, 'shadow-focus');
+    expectNoClass(box, 'outline-surface-primary-muted');
   });
 
   it('function formatters send no spec', () => {
@@ -166,14 +194,14 @@ describe('TextInput standalone', () => {
     );
     const control = getByTestId('solo');
 
-    expect(control.getAttribute('aria-describedby')).toBe(getByText('Help').id);
+    expect(control.getAttribute('aria-describedby')).toBe(getByText('Help').closest('[id]')?.id);
     expect(control.getAttribute('aria-invalid')).toBeNull();
     expect(queryByText('Bad')).toBeNull();
 
     await rerender({ ...texts, validationState: 'error' });
     const error = getByText('Bad');
     expect(queryByText('Help')).toBeNull();
-    expect(control.getAttribute('aria-describedby')).toBe(error.id);
+    expect(control.getAttribute('aria-describedby')).toBe(error.closest('[id]')?.id);
     expect(control.getAttribute('aria-invalid')).toBe('true');
     expectClass(control.parentElement, '!border-interactive-negative-default');
     expectClass(error, 'text-feedback-negative-intense');

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
   import {
     type TextBehaviourProps,
@@ -15,11 +16,13 @@
     children,
     ...styleProps
   }: Props = $props();
+
+  const style = useComponentDefaults('Text', () => styleProps);
 </script>
 
 <svelte:element
   this={as}
-  class={cx(resolveText(styleProps), className)}
+  class={cx(resolveText(style.current), className)}
   data-testid={testID}
 >
   {@render children()}

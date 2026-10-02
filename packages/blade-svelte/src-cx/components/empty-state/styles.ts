@@ -1,10 +1,9 @@
 import type { Snippet } from 'svelte';
 import type { AxisValue } from '../../axes';
-import { INTENTS, INTENT_SUBTLE } from '../shared/intent';
 
 /** The blade taxonomy as data. */
 export const EMPTY_STATE_AXES = {
-  color: INTENTS,
+  size: ['small', 'medium', 'large', 'xlarge'],
 } as const;
 
 type Axis<K extends keyof typeof EMPTY_STATE_AXES> = AxisValue<
@@ -14,21 +13,70 @@ type Axis<K extends keyof typeof EMPTY_STATE_AXES> = AxisValue<
 
 /** Derived from EMPTY_STATE_AXES: add a value there, never here. */
 export interface EmptyStateStyleProps {
-  /** Tints the disc behind the media. */
-  color?: Axis<'color'>;
+  /** @default 'medium' */
+  size?: Axis<'size'>;
 }
 
-// Ported from app/v2/modules/common/components/Illustration.svelte (the
-// tinted disc) and components/error/GenericError.svelte (the stack).
-export function resolveEmptyState(props: EmptyStateStyleProps = {}) {
-  const { color = 'neutral' } = props;
+export type EmptyStateHeadingLevel = 'h3' | 'h5' | 'h6';
+
+export interface EmptyStateClasses {
+  root: string;
+  /** The box capping the asset. */
+  asset: string;
+  /** Title and description. */
+  content: string;
+  title: string;
+  description: string;
+  /** Blade's Heading picks its level from its size. */
+  headingLevel: EmptyStateHeadingLevel;
+}
+
+// emptyStateTokens.ts: the gap between sections, the asset's cap, and the
+// title's Heading and description's Text sizes. Heading has no letter-spacing;
+// body text does.
+const SIZE: Record<
+  Axis<'size'>,
+  Omit<EmptyStateClasses, 'content'>
+> = {
+  small: {
+    root: 'gap-4',
+    asset: 'max-w-[60px] max-h-[60px]',
+    title: 'text-300 leading-300',
+    description: 'text-25 leading-25 tracking-50',
+    headingLevel: 'h6',
+  },
+  medium: {
+    root: 'gap-5',
+    asset: 'max-w-[90px] max-h-[90px]',
+    title: 'text-300 leading-300',
+    description: 'text-75 leading-75 tracking-50',
+    headingLevel: 'h6',
+  },
+  large: {
+    root: 'gap-6',
+    asset: 'max-w-[120px] max-h-[120px]',
+    title: 'text-400 leading-400',
+    description: 'text-100 leading-100 tracking-50',
+    headingLevel: 'h5',
+  },
+  xlarge: {
+    root: 'gap-8',
+    asset: 'max-w-[160px] max-h-[160px]',
+    title: 'text-600 leading-600',
+    description: 'text-200 leading-200 tracking-25',
+    headingLevel: 'h3',
+  },
+};
+
+export function resolveEmptyState(props: EmptyStateStyleProps = {}): EmptyStateClasses {
+  const size = SIZE[props.size ?? 'medium'];
   return {
-    root: 'flex w-full flex-col items-center gap-2 px-4 py-8 text-center text-surface-gray-normal',
-    media: `mb-2 flex w-20 h-20 items-center justify-center overflow-hidden rounded-max border-thin border-solid ${INTENT_SUBTLE[color]}`,
-    // Blade's EmptyState: a gray-subtle heading, a gray-muted description.
-    title: 'font-heading text-200 leading-200 font-semibold text-surface-gray-subtle',
-    message: 'font-text text-100 leading-100 text-surface-gray-muted',
-    actions: 'mt-4 flex flex-col items-center gap-2',
+    root: `flex flex-col items-center justify-center ${size.root}`,
+    asset: size.asset,
+    content: 'flex flex-col items-center gap-0.5',
+    title: `m-0 text-center font-heading font-semibold text-surface-gray-subtle ${size.title}`,
+    description: `m-0 text-center font-text font-regular text-surface-gray-muted ${size.description}`,
+    headingLevel: size.headingLevel,
   };
 }
 
@@ -38,11 +86,13 @@ export function resolveEmptyState(props: EmptyStateStyleProps = {}) {
  * Button, in `children`.
  */
 export interface EmptyStateBehaviourProps {
-  title: string;
-  message?: string;
+  /** The heading: text, or a snippet in the heading's box. */
+  title?: string | Snippet;
+  /** Under the title: text, or a snippet (a Link in it). */
+  description?: string | Snippet;
   /** An illustration or an icon, above the title. */
-  media?: Snippet;
-  /** Actions, under the message. */
+  asset?: Snippet;
+  /** Actions, under the description. */
   children?: Snippet;
   testID?: string;
   class?: string;

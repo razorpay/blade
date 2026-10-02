@@ -1,13 +1,8 @@
 import { untrack } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { getAdapters } from '../../adapters';
-import { setupField } from '../form/field.svelte';
-import { createFieldLine } from '../form/field-line.svelte';
-import {
-  visibleFieldError,
-  type FieldHint,
-  type ValidationState,
-} from '../form/hint';
+import { createFieldShell } from '../form/field.svelte';
+import type { FieldHint, HintContent, ValidationState } from '../form/hint';
 
 export type FillMethod = 'paste' | 'autofill';
 
@@ -79,7 +74,7 @@ const acceptDigit = (char: string): string => (/^\d$/.test(char) ? char : '');
 /**
  * A single logical value entered across N one-character cells (OTP, PIN):
  * auto-advance on entry, backspace retreat, paste/autofill distribution, and
- * roving focus as data. Deliberately not composed from `registry` /
+ * roving focus as data. Deliberately not composed from `ordered-entries` /
  * `navigable-list`: the cells are a fixed array with no registration
  * lifecycle, and focus here is real platform focus (one control per cell),
  * not an aria-activedescendant roving index.
@@ -263,7 +258,7 @@ export interface OTPOptions {
   isRequired: () => boolean;
   isReadOnly: () => boolean;
   validationState: () => OTPValidationState | undefined;
-  hint: () => string | undefined;
+  hint: () => HintContent | undefined;
 }
 
 export interface OTP {
@@ -296,38 +291,37 @@ export function createOTP(options: OTPOptions): OTP {
 
   // A partial code is a pattern mismatch, so the form blocks it like any
   // other constraint.
-  const fieldProps = () => ({
-    name: options.name(),
-    value: options.value(),
-    required: options.isRequired(),
-    pattern: `.{${options.length}}`,
-    disabled: options.isDisabled(),
-    readonly: options.isReadOnly(),
+  const shell = createFieldShell({
+    id: options.id,
+    kind: 'text',
+    props: () => ({
+      name: options.name(),
+      value: options.value(),
+      required: options.isRequired(),
+      pattern: `.{${options.length}}`,
+      disabled: options.isDisabled(),
+      readonly: options.isReadOnly(),
+    }),
+    onValue: (next) => options.onValue(next as string),
+    line: () => ({
+      validationState: options.validationState(),
+      hint: options.hint(),
+    }),
+    handle: () => cellRefs[0],
   });
-
-  const { field, form, notifyInput, blur } = setupField(
-    fieldProps(),
-    'text',
-    (next) => {
-      options.onValue(next as string);
-    }
-  );
-  field.setHandle(() => cellRefs[0]);
+  const { field, blur } = shell;
 
   const model = createCompositeInput({
     length: options.length,
-    accept: (char) =>
-      options.accept ? options.accept(char) : /^\d$/.test(char) ? char : '',
+    accept: options.accept,
     onChange: (next) => {
-      let edited = false;
-      field.updateValue(next, (accepted) => {
-        edited = true;
-        options.onValue(accepted as string);
-        options.onChange?.(accepted as string);
-      });
-      if (edited) {
-        notifyInput();
-      }
+      shell.edit(
+        (onValue) => field.updateValue(next, onValue),
+        (accepted) => {
+          options.onValue(accepted as string);
+          options.onChange?.(accepted as string);
+        }
+      );
       if (model.state.filled) {
         options.onFilled?.(next);
       }
@@ -340,24 +334,15 @@ export function createOTP(options: OTPOptions): OTP {
 
   // Pre-effect: the first run lands before the template reads the cells, so
   // the first paint already shows `value`; later runs keep the field in
-  // step with prop changes and spread an outside `value` over the cells.
-  // The model's own value is untracked: a user edit must not re-run this.
+  // step with prop changes and spread an outside `value` over the cells. The model's own
+  // value is untracked: a user edit must not re-run this.
   $effect.pre(() => {
-    field.updateProps(fieldProps());
+    shell.syncProps();
     const next = options.value() ?? '';
     if (next !== untrack(() => model.value())) {
       model.setValue(next);
     }
   });
-
-  const line = createFieldLine(
-    form,
-    () => ({
-      validationState: options.validationState(),
-      hint: options.hint(),
-    }),
-    (state) => visibleFieldError(field.record, state)
-  );
 
   // Focus follows the model only from a user interaction, never from an
   // outside `value` change — an auto-read must not steal focus.
@@ -382,10 +367,10 @@ export function createOTP(options: OTPOptions): OTP {
       return model.state.cells;
     },
     get hint() {
-      return line.hint;
+      return shell.hint;
     },
-    labelId: `${options.id}-label`,
-    hintId: `${options.id}-hint`,
+    labelId: shell.labelId,
+    hintId: shell.hintId,
     // Native sends no key, paste or focus events: every edit — a typed
     // character, an autofill, a delete (as an empty commit) — arrives here,
     // and the platform advances focus itself (`advance`).

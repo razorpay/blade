@@ -53,7 +53,7 @@ export interface IconButtonStyleProps {
 // Blade's IconButton: the glyph takes the button's colour; hover, press and
 // focus take the subtle step; Blade's 4px focus ring.
 const ROOT =
-  'inline-flex shrink-0 items-center justify-center border-none bg-transparent p-0 [transition-property:color,background-color,box-shadow] duration-xquick ease-standard disabled:cursor-not-allowed focus-visible:z-1 focus-visible:outline-solid focus-visible:[outline-width:4px] focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted';
+  'inline-flex shrink-0 items-center justify-center border-none bg-transparent p-0 [transition-property:color,background-color,box-shadow] duration-xquick ease-standard disabled:cursor-not-allowed focus-visible:z-1 focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-1 focus-visible:outline-surface-primary-muted';
 
 const TONE: Record<Axis<'emphasis'>, string> = {
   intense:

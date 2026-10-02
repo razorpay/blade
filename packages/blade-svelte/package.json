@@ -79,7 +79,7 @@
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build -o storybook-static",
     "prestorybook:cx": "cd ../blade-core && yarn build",
-    "storybook:cx": "storybook dev -p 6008 -c .storybook-cx",
+    "storybook:cx": "storybook dev -p 6008 -c .storybook-cx --host 0.0.0.0",
     "build-storybook:cx": "storybook build -c .storybook-cx -o storybook-static-cx",
     "test:coverage": "vitest run --coverage",
     "test:browserstack": "playwright test -c tests/browserstack/playwright.config.cts",

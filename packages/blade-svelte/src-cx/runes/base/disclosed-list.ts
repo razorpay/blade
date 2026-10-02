@@ -3,8 +3,16 @@ import {
   type DisclosureModel,
   type DisclosureOptions,
 } from './disclosure';
-import type { KeyModifiers, ListAction } from './navigable-list.svelte';
-import type { OptionListCore } from './option-list';
+import type {
+  KeyModifiers,
+  ListAction,
+  NavigableListModel,
+} from './navigable-list.svelte';
+
+/** A navigable list with its own open-state key handling (`dispatchListKey`). */
+export interface DisclosableList<T> extends NavigableListModel<T> {
+  handleKey(key: string, mods?: KeyModifiers): ListAction | null;
+}
 
 export interface DisclosedList {
   disclosure: DisclosureModel;
@@ -16,7 +24,7 @@ export interface DisclosedList {
 }
 
 /**
- * The glue shared by every option list behind a disclosure (a menu):
+ * The glue for a navigable list behind a disclosure (a menu):
  * closed-state open keys resolved through the list's own key table — so the
  * modifier policy (ctrl/meta pass through, alt+ArrowDown opens) is decided
  * once, in `navigable-list` — Escape and Tab closing, and clearing the
@@ -24,7 +32,7 @@ export interface DisclosedList {
  * disclosure for that reason: the clear runs inside every close.
  */
 export function discloseList<T>(
-  list: OptionListCore<T>,
+  list: DisclosableList<T>,
   options: DisclosureOptions = {}
 ): DisclosedList {
   const disclosure = createDisclosure({
@@ -41,12 +49,7 @@ export function discloseList<T>(
 
   function openFromKeyboard(key: string): void {
     disclosure.open('trigger');
-    const selected = list.selectedIndex();
-    if (selected >= 0) {
-      list.setActive(selected);
-    } else {
-      list.move(key === 'ArrowUp' ? 'last' : 'first');
-    }
+    list.move(key === 'ArrowUp' ? 'last' : 'first');
   }
 
   function handleKey(key: string, mods: KeyModifiers = {}): ListAction | null {

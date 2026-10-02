@@ -14,6 +14,8 @@ export interface CountdownOptions {
 
 export interface Countdown {
   readonly current: CountdownState;
+  /** Stops for good: the time left is forfeit, and `seconds` alone restarts it. */
+  cancel(): void;
 }
 
 /**
@@ -47,5 +49,6 @@ export function createCountdown(options: CountdownOptions): Countdown {
     get current() {
       return countdown.state;
     },
+    cancel: () => countdown.cancel(),
   };
 }

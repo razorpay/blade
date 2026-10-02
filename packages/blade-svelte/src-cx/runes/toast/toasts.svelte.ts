@@ -1,4 +1,4 @@
-import { getContext, setContext } from 'svelte';
+import { defineContext } from '../context';
 import { createLayerStack } from '../base/layer-stack.svelte';
 import { defaultSchedule, type Schedule } from '../base/schedule';
 import type { IconSource } from '../icon/source';
@@ -165,26 +165,25 @@ export function createToasts<T>(
 
 /** What showing a toast decides about it, besides how it looks. */
 export interface ToastContent {
-  message: string;
-  /** Decorative, before the message. */
+  /** What the toast says. */
+  content: string;
+  /** A glyph before the content; each colour has Blade's default. */
   icon?: IconSource;
-  /** ms; 0 stays until dismissed. The stack's default when omitted. */
+  /** ms before it goes. @default 4000 */
   duration?: number;
-  /** One inline action; pressing it dismisses the toast. */
-  action?: { label: string; onPress: () => void };
-  /**
-   * Localized name of the dismiss button — the library ships no copy. The
-   * button exists only when it has a name.
-   */
+  /** `false`: it stays until dismissed. @default true */
+  autoDismiss?: boolean;
+  /** A button beside the content; pressing it dismisses the toast. */
+  action?: { text: string; onClick: () => void; isLoading?: boolean };
+  /** The dismiss button was pressed. */
+  onDismissButtonClick?: () => void;
+  /** The dismiss button's name. @default 'Dismiss toast' */
   closeLabel?: string;
+  /** It went: by timeout, a press, eviction, or `dismiss()`. */
   onDismiss?: (reason: ToastDismissReason) => void;
   testID?: string;
 }
 
-/**
- * The content plus the style props `S` of whatever renders the stack — the
- * library binds `S` (`components/toast/toasts.ts`).
- */
 export type ShowToastOptions<S extends object> = ToastContent & S;
 
 export interface ToastHandle {
@@ -229,10 +228,11 @@ export function createToastQueue<S extends object>(): Toasts<S> {
     showToast(toast) {
       const content =
         typeof toast === 'string'
-          ? ({ message: toast } as ShowToastOptions<S>)
+          ? ({ content: toast } as ShowToastOptions<S>)
           : toast;
+      // Blade: 4s unless `autoDismiss` is false, then until dismissed.
       const handle = toasts.model?.show(content, {
-        duration: content.duration,
+        duration: content.autoDismiss === false ? 0 : (content.duration ?? 4000),
       });
       return handle
         ? { dismiss: handle.dismiss, dismissed: handle.dismissed }
@@ -242,15 +242,15 @@ export function createToastQueue<S extends object>(): Toasts<S> {
   return toasts;
 }
 
-const TOASTS = Symbol('blade-toasts');
+const TOASTS = defineContext<unknown>('blade-toasts');
 
 /** Call during component init; descendants and their ToastStack share it. */
 export function provideToasts<S extends object>(toasts: Toasts<S>): Toasts<S> {
-  setContext(TOASTS, toasts);
+  TOASTS.set(toasts);
   return toasts;
 }
 
 /** The provided queue, else `fallback` (the library's page-wide one). */
 export function getToasts<S extends object>(fallback: Toasts<S>): Toasts<S> {
-  return getContext<Toasts<S> | undefined>(TOASTS) ?? fallback;
+  return (TOASTS.get() as Toasts<S> | undefined) ?? fallback;
 }

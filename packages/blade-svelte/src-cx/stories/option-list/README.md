@@ -18,7 +18,7 @@ button) is left alone: outside the value, the keyboard and `isRequired`.
 
 It is the headless choice list (`runes/base/choice-list.svelte.ts`: a form
 field, registered choices in document order, the keyboard) drawn as native
-radio and checkbox rows. Accordion is the same choice list drawn as
+radio and checkbox rows. CardGroup is the same choice list drawn as
 expanding headers.
 
 ## Props
@@ -28,7 +28,7 @@ expanding headers.
 | `children` | The `OptionItem`s and anything between them |
 | `value` | The picked option, or an array of them with `isMultiple`; bindable |
 | `isMultiple` | Rows become checkboxes and the root a `group`; otherwise radios in a `radiogroup` |
-| `onChange` | Fires on a user pick with the new value — "pick = submit" goes here, not in a button inside the row |
+| `onChange` | Fires on a user pick with `{ name, value }` — "pick = submit" goes here, not in a button inside the row |
 | `compare` | Defaults to identity; pass it when option objects are rebuilt |
 | `isDisabled` | The whole list; an `OptionItem`'s own `isDisabled` for one option |
 | `isDeselectable` | Single choice: picking the pick clears it |

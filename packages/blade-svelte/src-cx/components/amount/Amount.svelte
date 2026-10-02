@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
   import {
     amountText,
@@ -59,7 +60,9 @@
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolveAmount(styleProps, suffix === 'decimals'));
+  const style = useComponentDefaults('Amount', () => styleProps);
+
+  const classes = $derived(resolveAmount(style.current, suffix === 'decimals'));
   const parts = $derived(
     getAmountByParts(value, { currency, suffix, fractionDigits, unit, locale })
   );
@@ -68,7 +71,7 @@
   );
   // Subtle decimals are their own part; otherwise they stay with the integer.
   const splitDecimals = $derived(
-    suffix === 'decimals' && (styleProps.isAffixSubtle ?? true)
+    suffix === 'decimals' && (style.current.isAffixSubtle ?? true)
   );
   const number = $derived(
     `${parts.integer}${splitDecimals ? '' : `${parts.decimal ?? ''}${parts.fraction ?? ''}`}${parts.compact ?? ''}`

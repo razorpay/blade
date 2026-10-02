@@ -2,9 +2,9 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { fireEvent, render } from '@testing-library/svelte';
 import BottomSheetHarness from './fixtures/BottomSheetHarness.svelte';
 
-// Blade-owned: BottomSheet ships whole, over Modal with `bottomSheetLook`.
+// Blade-owned: BottomSheet ships whole, over Modal in its `sheet` variant.
 // The modal's behaviour (model, layers, focus, the drag) is tested in
-// modal.test.ts; this covers the spelling — the fixed look, the props it
+// modal.test.ts; this covers the spelling — the fixed variant, the props it
 // forwards and the axes it keeps.
 describe('BottomSheet (blade)', () => {
   afterEach(() => {
@@ -33,12 +33,12 @@ describe('BottomSheet (blade)', () => {
       props: { isOpen: true, onDismiss },
     });
     await fireEvent.click(getByTestId('cancel'));
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith('programmatic');
+    expect(onDismiss).not.toHaveBeenCalled();
     expect(queryByTestId('sheet')).toBeNull();
     expect(getByTestId('bound').textContent).toBe('closed');
   });
 
-  it('a drag past half its height dismisses it, as the look does', async () => {
+  it('a drag past half its height dismisses it, as the sheet does', async () => {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(400);
     const onDismiss = vi.fn();
     const { getByTestId } = render(BottomSheetHarness, {
@@ -57,7 +57,7 @@ describe('BottomSheet (blade)', () => {
     await fireEvent(zone, pointer('pointerdown', 100, 0));
     await fireEvent(zone, pointer('pointermove', 350, 2000));
     await fireEvent(zone, pointer('pointerup', 350, 2010));
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith('drag');
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'drag' }));
   });
 
   it('keeps the size and pace axes and appends the caller class last', () => {
@@ -77,22 +77,58 @@ describe('BottomSheet (blade)', () => {
     expect(panel.className.endsWith('[z-index:70]')).toBe(true);
   });
 
-  it('a non-dismissible sheet ignores the backdrop and has no close button', async () => {
+  it('a non-dismissible sheet reports the backdrop, stays open and has no close button', async () => {
     const onDismiss = vi.fn();
     const { getByTestId, queryByRole, queryByTestId } = render(
       BottomSheetHarness,
       { props: { isOpen: true, isDismissible: false, onDismiss } }
     );
     await fireEvent.click(getByTestId('host-backdrop'));
-    expect(onDismiss).not.toHaveBeenCalled();
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(
+      expect.objectContaining({ source: 'blur' })
+    );
     expect(queryByTestId('sheet')).not.toBeNull();
     expect(queryByRole('button', { name: 'Close' })).toBeNull();
   });
 });
 
-// `adaptive`: a sheet on phones, a centred modal on desktop. The look and
-// the breakpoint are blade's; the core only asks the styles' media query.
-describe('BottomSheet adaptive', () => {
+describe('BottomSheet isDraggable', () => {
+  it('false: no handle, no drag zone, and the close button sits as a modal\'s', () => {
+    const { getByTestId, queryByTestId, getByRole } = render(BottomSheetHarness, {
+      props: { isOpen: true, isDraggable: false },
+    });
+    expect(queryByTestId('sheet-drag-zone')).toBeNull();
+    expect(getByTestId('sheet-chrome').querySelector('div[aria-hidden="true"]')).toBeNull();
+    const close = getByRole('button', { name: 'Close' });
+    expect(close.className).toContain('top-5');
+    expect(close.className).not.toContain('top-10');
+    // Still a sheet: bottom edge, rounded top.
+    expect(getByTestId('sheet').className).toContain('rounded-tl-large');
+  });
+});
+
+// The variant per breakpoint: `{ base: 'sheet', m: 'modal' }` is a sheet on
+// phones and a modal from `m` up, resolved from the viewport in JS — so the
+// drag, the handle and the parking all switch with it.
+describe('BottomSheet variant per breakpoint', () => {
+  let width = 390;
+  let listeners: Array<() => void> = [];
+
+  function stubViewport(initial: number) {
+    width = initial;
+    listeners = [];
+    (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
+      query,
+      get matches() {
+        return width >= Number(/(\d+)px/.exec(query)?.[1] ?? 0);
+      },
+      addEventListener: (_: string, listener: () => void) => listeners.push(listener),
+      removeEventListener: (_: string, listener: () => void) => {
+        listeners = listeners.filter((l) => l !== listener);
+      },
+    });
+  }
+
   afterEach(() => {
     vi.restoreAllMocks();
     delete (window as { matchMedia?: unknown }).matchMedia;
@@ -108,89 +144,57 @@ describe('BottomSheet adaptive', () => {
     return event;
   }
 
-  function adaptive(matches?: boolean, placement?: 'center' | 'bottom') {
+  function open() {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(400);
-    if (matches !== undefined) {
-      (window as { matchMedia?: unknown }).matchMedia = (query: string) => ({
-        query,
-        matches,
-      });
-    }
     const onDismiss = vi.fn();
     const queries = render(BottomSheetHarness, {
-      props: { isOpen: true, adaptive: true, placement, onDismiss },
+      props: { isOpen: true, variant: { base: 'sheet', m: 'modal' }, onDismiss },
     });
     return { ...queries, onDismiss };
   }
 
-  it('is the sheet look below the breakpoint and the centred modal above it', () => {
-    const { getByTestId } = adaptive();
+  it('is a sheet on a phone: bottom edge, handle, drag to dismiss', async () => {
+    stubViewport(390);
+    const { getByTestId, onDismiss } = open();
     const panel = getByTestId('sheet');
-    const root = panel.parentElement as HTMLElement;
-    expect(root.className).toContain('items-end');
-    expect(root.className).toContain('m:items-center');
+    expect((panel.parentElement as HTMLElement).className).toContain('items-end');
     expect(panel.className).toContain('rounded-tl-large');
-    expect(panel.className).toContain(
-      'group-data-[state=closed]:translate-y-full'
-    );
-    expect(panel.className).toContain(
-      'm:group-data-[state=closed]:translate-y-0'
-    );
-    expect(panel.className).toContain('m:group-data-[state=closed]:scale-95');
-    expect(panel.className).toContain('m:w-blade-400');
-    const zone = getByTestId('sheet-drag-zone');
-    expect(zone.className).toContain('m:cursor-auto');
-    expect(zone.firstElementChild?.className).toContain('m:hidden');
-  });
-
-  it('drags to dismiss where the phone query matches', async () => {
-    const { getByTestId, onDismiss } = adaptive(true);
     const zone = getByTestId('sheet-drag-zone');
     await fireEvent(zone, pointer('pointerdown', 100, 0));
     await fireEvent(zone, pointer('pointermove', 350, 2000));
-    expect(getByTestId('sheet').style.transform).toBe('translateY(250px)');
+    expect(panel.style.transform).toBe('translateY(250px)');
     await fireEvent(zone, pointer('pointerup', 350, 2010));
-    expect(onDismiss).toHaveBeenCalledExactlyOnceWith('drag');
+    expect(onDismiss).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ source: 'drag' }));
   });
 
-  it('takes no drag on desktop: the zone is plain content', async () => {
-    const { getByTestId, onDismiss } = adaptive(false);
-    const zone = getByTestId('sheet-drag-zone');
-    await fireEvent(zone, pointer('pointerdown', 100, 0));
-    await fireEvent(zone, pointer('pointermove', 350, 2000));
-    expect(getByTestId('sheet').style.transform).toBe('');
-    await fireEvent(zone, pointer('pointerup', 350, 2010));
-    expect(onDismiss).not.toHaveBeenCalled();
-  });
-
-  it('placement bottom keeps the bottom edge on desktop, without handle or drag', async () => {
-    const { getByTestId, onDismiss } = adaptive(false, 'bottom');
+  it('is a centred modal on desktop: no handle, no drag', () => {
+    stubViewport(1200);
+    const { getByTestId, queryByTestId } = open();
     const panel = getByTestId('sheet');
-    const root = panel.parentElement as HTMLElement;
-    expect(root.className).toContain('items-end');
-    expect(root.className).toContain('m:justify-end');
-    expect(root.className).not.toContain('m:items-center');
-    expect(panel.className).toContain(
-      'group-data-[state=closed]:translate-y-full'
-    );
-    expect(panel.className).not.toContain(
-      'm:group-data-[state=closed]:scale-95'
-    );
-    const zone = getByTestId('sheet-drag-zone');
-    expect(zone.className).toContain('m:cursor-auto');
-    expect(zone.firstElementChild?.className).toContain('m:hidden');
-    await fireEvent(zone, pointer('pointerdown', 100, 0));
-    await fireEvent(zone, pointer('pointermove', 350, 2000));
-    expect(panel.style.transform).toBe('');
-    expect(onDismiss).not.toHaveBeenCalled();
+    expect((panel.parentElement as HTMLElement).className).toContain('items-center');
+    expect(panel.className).toContain('rounded-large');
+    expect(panel.className).toContain('group-data-[state=closed]:scale-95');
+    expect(queryByTestId('sheet-drag-zone')).toBeNull();
   });
 
-  it('reads placement only when adaptive: a plain sheet keeps its drag everywhere', () => {
-    const { getByTestId } = render(BottomSheetHarness, {
-      props: { isOpen: true, placement: 'bottom' },
-    });
-    const zone = getByTestId('sheet-drag-zone');
-    expect(zone.className).not.toContain('m:cursor-auto');
-    expect(zone.firstElementChild?.className).not.toContain('m:hidden');
+  it('switches while open when the viewport crosses the breakpoint', async () => {
+    stubViewport(1200);
+    const { getByTestId, queryByTestId } = open();
+    expect(queryByTestId('sheet-drag-zone')).toBeNull();
+    width = 390;
+    listeners.forEach((listener) => listener());
+    await Promise.resolve();
+    expect(getByTestId('sheet-drag-zone')).toBeTruthy();
+  });
+
+  it('renders the base variant where nothing can measure (no matchMedia)', () => {
+    const { getByTestId } = open();
+    expect(getByTestId('sheet-drag-zone')).toBeTruthy();
+  });
+
+  it('a BottomSheet with no variant is a sheet at every width', () => {
+    stubViewport(1200);
+    const { getByTestId } = render(BottomSheetHarness, { props: { isOpen: true } });
+    expect(getByTestId('sheet-drag-zone')).toBeTruthy();
   });
 });

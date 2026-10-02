@@ -23,7 +23,10 @@
     virtualize?: boolean;
     /** A heading first and a button between the first two items. */
     extras?: boolean;
-    onChange?: (value: Bank | readonly Bank[] | null) => void;
+    onChange?: (change: {
+      name: string | undefined;
+      value: Bank | readonly Bank[] | null;
+    }) => void;
     onSubmit?: (data: FormData) => void;
   }
 

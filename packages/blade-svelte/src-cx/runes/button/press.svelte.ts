@@ -1,16 +1,13 @@
-import { untrack } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import { isPromise } from '../base/promise';
 import { getAdapters } from '../../adapters';
-import { createCountdownClock } from '../base/countdown.svelte';
-import { defaultSchedule, type Schedule } from '../base/schedule';
+import { createFlash } from '../base/flash.svelte';
+import type { Schedule } from '../base/schedule';
+import { createCountdown } from '../countdown/countdown.svelte';
 import { getForm, getFormHooks } from '../form/context';
-import type { FormData, FormErrors, FormModel } from '../form/types';
+import type { FormErrors, FormModel } from '../form/types';
 
 export interface ButtonHooks {
-  onClickLogged?: () => void;
-  /** The consumer's `onClick` returned a promise (analytics tracking). */
-  onPromise?: (promise: Promise<unknown>) => void;
   /**
    * Validation blocked the press. Revealing the first invalid field is the
    * owner's job here — `form.revealFirstInvalid()` or a bespoke reveal.
@@ -26,12 +23,7 @@ export interface ButtonOptions {
   /** Getters — the host's props change reactively. `type` defaults to 'submit'. */
   type?: () => 'submit' | 'button' | undefined;
   validateForm?: () => boolean;
-  preventSubmit?: () => boolean;
-  /** Host-owned loading (a `bind:loading` consumer); OR-ed with `loading`. */
-  loading?: () => boolean;
-  /** Whether a blocked press shakes. Default true. */
-  shakeOnPreventSubmit?: () => boolean;
-  onClick?: (data: FormData, event?: unknown) => unknown;
+  onClick?: (event?: unknown) => unknown;
   hooks?: ButtonHooks;
   schedule?: Schedule;
   /** ms the shake state stays on. Default 400. */
@@ -41,8 +33,6 @@ export interface ButtonOptions {
 export interface PressDecision {
   /** Cancel the platform default: a submit button inside a form drives the model, not the browser. */
   prevented: boolean;
-  /** The press was blocked outright (loading / preventSubmit): also stop propagation. */
-  blocked: boolean;
   /** Settles when validation, submission and the consumer `onClick` are done. Never rejects. */
   settled: Promise<void>;
 }
@@ -50,59 +40,35 @@ export interface PressDecision {
 export interface ButtonModel {
   /** An async consumer `onClick` is in flight. Tracked by whatever reads it. */
   readonly loading: boolean;
-  /** A blocked or invalid press; auto-clears after `shakeDuration`. Tracked. */
+  /** An invalid press; auto-clears after `shakeDuration`. Tracked. */
   readonly shake: boolean;
   /**
    * One press. The decision is synchronous — the anatomy must be able to
    * cancel the platform event inside the handler — while the work
-   * (validate/submit, consumer `onClick`) runs behind `settled`.
+   * (validate/submit, consumer `onClick`) runs behind `settled`. A busy
+   * button never presses: its anatomy swallows the click first.
    */
   press(event?: unknown): PressDecision;
-  setLoading(loading: boolean): void;
 }
 
 const settledResult = (): void => undefined;
 
 /**
- * The press decision table shared by every checkout button. Inside a form, a
+ * The press decision table shared by every button. Inside a form, a
  * submit-typed button drives the form model directly (the native submit is
  * cancelled), so the form validates exactly once per press; `validateForm`
- * gets the same treatment for type=button, plus shake/reveal on failure. A
- * blocked press (loading, preventSubmit) shakes and still forwards the click
- * to the consumer, matching the historical contract.
+ * gets the same treatment for type=button, plus shake/reveal on failure.
  */
 export function createButton(options: ButtonOptions = {}): ButtonModel {
-  const schedule = options.schedule || defaultSchedule;
-  const shakeDuration = options.shakeDuration ?? 400;
   let loading = $state(false);
-  let shaking = $state(false);
-  let cancelShake: (() => void) | undefined;
-
-  /** Returns whether the press actually shook (the host may opt out). */
-  function shake(): boolean {
-    if (!(options.shakeOnPreventSubmit?.() ?? true)) {
-      return false;
-    }
-    shaking = true;
-    cancelShake?.();
-    cancelShake = schedule(() => {
-      cancelShake = undefined;
-      shaking = false;
-    }, shakeDuration);
-    return true;
-  }
-
-  function formData(): FormData {
-    return options.form ? options.form.collect().data : {};
-  }
+  const shaking = createFlash<true>(options.shakeDuration ?? 400, options.schedule);
 
   /** Runs the consumer onClick; a returned promise drives `loading`. */
   function runOnClick(event?: unknown): Promise<void> {
-    const result = options.onClick?.(formData(), event);
+    const result = options.onClick?.(event);
     if (!isPromise(result)) {
       return Promise.resolve();
     }
-    options.hooks?.onPromise?.(result);
     loading = true;
     return result
       .then(settledResult, (error: unknown) => {
@@ -118,26 +84,12 @@ export function createButton(options: ButtonOptions = {}): ButtonModel {
       return loading;
     },
     get shake() {
-      return shaking;
-    },
-    setLoading(next) {
-      loading = next;
+      return shaking.value === true;
     },
     press(event) {
-      options.hooks?.onClickLogged?.();
       const form = options.form;
       const submits =
         Boolean(form) && (options.type?.() ?? 'submit') === 'submit';
-
-      if (
-        untrack(() => loading) ||
-        options.loading?.() ||
-        options.preventSubmit?.()
-      ) {
-        const shook = shake();
-        options.hooks?.onFeedback?.(shook ? 'warning' : 'medium');
-        return { prevented: true, blocked: true, settled: runOnClick(event) };
-      }
 
       if (form && (submits || options.validateForm?.())) {
         const settled = (async () => {
@@ -147,7 +99,8 @@ export function createButton(options: ButtonOptions = {}): ButtonModel {
               ? await form.submit({ source: 'button', field: form.name, event })
               : await form.validate();
             if (!outcome.ok && options.validateForm?.()) {
-              shook = shake();
+              shaking.show(true);
+              shook = true;
               options.hooks?.onValidationFailed?.(outcome.errors);
             }
           } catch (error) {
@@ -156,11 +109,11 @@ export function createButton(options: ButtonOptions = {}): ButtonModel {
           options.hooks?.onFeedback?.(shook ? 'warning' : 'medium');
           await runOnClick(event);
         })();
-        return { prevented: submits, blocked: false, settled };
+        return { prevented: submits, settled };
       }
 
       options.hooks?.onFeedback?.('medium');
-      return { prevented: false, blocked: false, settled: runOnClick(event) };
+      return { prevented: false, settled: runOnClick(event) };
     },
   };
 }
@@ -213,8 +166,7 @@ export function createPress(options: PressOptions): Press {
     form,
     type: () => type,
     validateForm: () => type === 'submit' || options.validateForm(),
-    loading: options.isLoading,
-    onClick: (_data, event) => options.onClick(event as MouseEvent),
+    onClick: (event) => options.onClick(event as MouseEvent),
     hooks: {
       onValidationFailed: (errors) => formHooks.onInvalid?.(errors),
       onFeedback: (kind) =>
@@ -243,10 +195,12 @@ export function createPress(options: PressOptions): Press {
   // told, so its last state stays what it was.
   let ended = $state(false);
 
+  // A disabled or busy button does not count.
   const autoPressAfter = options.autoPressAfter?.() ?? 0;
   const auto = autoPressAfter
-    ? createCountdownClock({
-        seconds: autoPressAfter,
+    ? createCountdown({
+        seconds: () => autoPressAfter,
+        isPaused: () => options.isDisabled() || busyCause !== undefined,
         // A real click, so the press runs the path a hand's would.
         onElapsed: () => {
           ended = true;
@@ -259,18 +213,8 @@ export function createPress(options: PressOptions): Press {
     if (!auto || ended) {
       return undefined;
     }
-    const { remaining, progress } = auto.state;
+    const { remaining, progress } = auto.current;
     return remaining ? progress / 100 : undefined;
-  });
-
-  $effect(() => () => auto?.cancel());
-
-  $effect(() => {
-    if (options.isDisabled() || busyCause !== undefined) {
-      auto?.pause();
-    } else {
-      auto?.start();
-    }
   });
 
   return {
@@ -296,16 +240,12 @@ export function createPress(options: PressOptions): Press {
       // dispatch (tests, programmatic .click()) does not — mirror the
       // platform. busy: the button stays enabled to keep focus (a `disabled`
       // flip mid-press ejects focus to <body>), so impatient presses must be
-      // swallowed here — the model's blocked path still forwards onClick.
+      // swallowed here.
       if (options.isDisabled() || busyCause !== undefined) {
         event.preventDefault();
         return;
       }
-      const decision = model.press(event);
-      if (decision.blocked) {
-        event.preventDefault();
-        event.stopPropagation();
-      } else if (decision.prevented) {
+      if (model.press(event).prevented) {
         event.preventDefault();
       }
     },

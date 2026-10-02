@@ -9,7 +9,6 @@ import {
   elevation,
   motion,
   opacity,
-  size,
   typography,
 } from '@razorpay/blade-core/tokens';
 import { colorsToCSSVariables } from '@razorpay/blade-core/utils';
@@ -210,18 +209,30 @@ const spacingRules: Rule[] = [
 
 // ===== Sizing =====
 
-/** e.g. `w-blade-36` → 36px, `w-9` → 36px */
-const sizeRules: Rule[] = rulesFor(
-  {
-    w: 'width',
-    h: 'height',
-    'min-w': 'min-width',
-    'min-h': 'min-height',
-    'max-w': 'max-width',
-    'max-h': 'max-height',
-  },
-  { ...bladePrefixed(size), ...builtInSpacing, full: '100%', auto: 'auto' },
-);
+/**
+ * The `blade-` scale is Blade's spacing tokens, 0 to 11, and nothing else:
+ * `w-blade-5` → 16px, as `p-blade-5`. Any other length is written as the
+ * value itself: `w-[176px]`, `max-w-[30rem]`, `h-[var(--toast-height)]`
+ * (`_` stands for a space). The numeric scale (`w-9` → 36px) stays.
+ */
+const sizeProperties = {
+  w: 'width',
+  h: 'height',
+  'min-w': 'min-width',
+  'min-h': 'min-height',
+  'max-w': 'max-width',
+  'max-h': 'max-height',
+};
+
+const sizeRules: Rule[] = [
+  ...rulesFor(sizeProperties, { ...spacing, ...builtInSpacing, full: '100%', auto: 'auto' }),
+  [
+    /^(w|h|min-w|min-h|max-w|max-h)-\[(.+)\]$/,
+    ([, prefix, value]) => ({
+      [sizeProperties[prefix as keyof typeof sizeProperties]]: value.replace(/_/g, ' '),
+    }),
+  ],
+];
 
 // ===== Border =====
 
@@ -523,10 +534,19 @@ const namedShadows: Scale = {
   'button-outlined-highlighted': outlined.highlighted,
   'button-outlined-focus': `${focusRing(FOCUS_PRIMARY)}, ${outlined.highlighted}`,
   'button-outlined-neutral-focus': `${focusRing(FOCUS_NEUTRAL)}, ${outlined.highlighted}`,
+  // Blade's DropdownOverlay: a 1px popup rim drawn inside, over the raised shadow
+  dropdown: `inset 0px 0px 0px 1px ${color('popup-border-gray-subtle')}, ${elevation.onLight.midRaised}`,
   // Blade's bottom sheet: an upward drop shadow
   bottomSheet: '0px -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
   // Blade's toast: a white bevel along the top edge, under its popup border
   'toast-bevel': `inset 0 1.5px 0 0 ${color('interactive-background-static-white-faded-highlighted')}`,
+  // Blade's Toast: a 1px rim in its colour's popup border, inside, over the bevel
+  ...Object.fromEntries(
+    ['neutral', 'information', 'positive', 'notice', 'negative'].map((intent) => [
+      `toast-${intent}`,
+      `inset 0 0 0 1px ${color(`popup-border-${intent}-moderate`)}, inset 0 1.5px 0 0 ${color('interactive-background-static-white-faded-highlighted')}`,
+    ])
+  ),
   'button-outlined-disabled': `inset 0 0 0 1px ${color('interactive-border-gray-disabled')}`,
   // Blade's white buttons, for dark surfaces: filled, and outlined (secondary and tertiary)
   'button-white': `inset 0 -1.5px 0 0 ${color('interactive-border-static-black-faded-highlighted')}, inset 0 0 0 0.5px ${color('interactive-border-static-black-faded-highlighted')}`,
@@ -597,6 +617,8 @@ const visualRules: Rule[] = [
   ...keywords('content', { 'content-empty': "''" }),
   // Outlines, for rings that have to sit beside a box shadow, e.g. `outline-thick` → 1.5px
   ...rules('outline', 'outline-width', border.width),
+  // Blade's focus outline: 4px, offset 1px (`outline-4 outline-offset-1`)
+  ...rules('outline', 'outline-width', { 4: 4 }),
   ...keywords('outline-style', { 'outline-none': 'none', 'outline-solid': 'solid' }),
   ...rules('outline-offset', 'outline-offset', { 0: 0, 1: 1, 2: 2 }),
   ...rules('-outline-offset', 'outline-offset', { 1: 1, 2: 2, 4: 4 }, negativePx),
@@ -614,10 +636,22 @@ const keyframes = {
   dot: '0%, 60%, 100% { translate: 0 0; opacity: 0.42 } 30% { translate: 0 calc(var(--lift) * -1); opacity: 1 }',
   // Blade's Skeleton: the gray fill rests, then brightens to its highlighted step
   skeleton: `0%, 25% { background-color: ${color('interactive-background-gray-default')} } 100% { background-color: ${color('interactive-background-gray-highlighted')} }`,
+  // …after fading in once
+  'skeleton-in': '0% { opacity: 0 } 100% { opacity: 1 }',
+};
+
+// Blade's CounterInput: the new number slides in from below on increment,
+// from above on decrement; loading, a bar swings across the bottom edge.
+const counterKeyframes = {
+  'slide-up': '0% { translate: 0 30%; opacity: 0 } 100% { translate: 0 0; opacity: 1 }',
+  'slide-down': '0% { translate: 0 -30%; opacity: 0 } 100% { translate: 0 0; opacity: 1 }',
+  oscillate: '0%, 100% { left: -40% } 25%, 75% { left: 50% } 50% { left: 100% }',
 };
 
 /** Blade's Skeleton pulse: 2xgentle on, xmoderate off, alternating */
-const skeletonPulse = `skeleton ${motion.duration['2xgentle'] + motion.duration.xmoderate}ms ${motion.easing.standard} infinite alternate`;
+// Blade's PulseAnimation: fade in over 2xgentle (`both`, so reduced motion,
+// which drops the animation, still shows the bone), then pulse, alternating.
+const skeletonPulse = `skeleton-in ${motion.duration['2xgentle']}ms ${motion.easing.standard} both, skeleton ${motion.duration['2xgentle'] + motion.duration.xmoderate}ms ${motion.easing.standard} ${motion.duration['2xgentle']}ms infinite alternate`;
 
 const animationRules: Rule[] = keywords('animation', {
   'animate-none': 'none',
@@ -627,6 +661,9 @@ const animationRules: Rule[] = keywords('animation', {
   'animate-shake': 'shake 400ms ease-in-out 1',
   'animate-skeleton': skeletonPulse,
   'animate-dot': 'dot 1200ms ease-in-out infinite',
+  'animate-slide-up': `slide-up ${motion.duration.quick}ms ease-out`,
+  'animate-slide-down': `slide-down ${motion.duration.quick}ms ease-out`,
+  'animate-oscillate': `oscillate ${motion.duration['2xgentle']}ms linear infinite`,
 });
 
 // ===== Interaction =====
@@ -860,9 +897,19 @@ const preflights = [
   { getCSS: () => '*, ::before, ::after { border-width: 0; }' },
   // Buttons show they are pressable, as the browser leaves them on the arrow
   { getCSS: () => 'button, [role="button"] { cursor: pointer; } :disabled { cursor: default; }' },
+  // The breakpoints the `s:`/`m:`/… variants were built with, for JS to read
+  // (BladeProvider): a media query cannot read a custom property, so these
+  // mirror the build, they do not drive it
   {
     getCSS: () =>
-      Object.entries(keyframes)
+      `:root { ${Object.entries(breakpoints)
+        .filter(([name]) => name !== 'base')
+        .map(([name, width]) => `--blade-breakpoint-${name}: ${width}px;`)
+        .join(' ')} }`,
+  },
+  {
+    getCSS: () =>
+      Object.entries({ ...keyframes, ...counterKeyframes })
         .map(([name, frames]) => `@keyframes ${name} { ${frames} }`)
         .join('\n'),
   },

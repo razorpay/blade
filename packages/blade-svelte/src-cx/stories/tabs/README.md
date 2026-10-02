@@ -1,21 +1,41 @@
 # Tabs
 
 `packages/blade/components/tabs/Tabs.svelte` over `createTabs`
-(`navigable-list` + single strict selection). Data-driven, like Accordion.
+(`navigable-list` + single strict selection). Composed, like CardGroup.
 
-| Prop | Notes |
+```svelte
+<Tabs bind:value accessibilityLabel="Payment methods">
+  {#snippet tabs()}
+    <TabItem value="upi">UPI</TabItem>
+    <TabItem value="card" icon={icons.card}>
+      Card
+      {#snippet trailing({ isSelected })}
+        <Badge size="small" emphasis={isSelected ? 'intense' : 'subtle'}>New</Badge>
+      {/snippet}
+    </TabItem>
+  {/snippet}
+  <TabPanel value="upi">…</TabPanel>
+  <TabPanel value="card">…</TabPanel>
+</Tabs>
+```
+
+| Tabs prop | Notes |
 | --- | --- |
-| `items`, `itemKey`, `itemLabel` | The key is also the value |
 | `value` | Bindable; defaults to the first enabled tab — a tablist always has one picked |
-| `onChange` | The new key |
-| `isItemDisabled` | Skipped by the arrows, ignored by a click |
-| `activation` | `automatic` (default): arrows pick as they move. `manual`: Enter or Space picks. Fixed at mount |
-| `children(item)` | The picked tab's panel; only that one is mounted |
-| `tab(item)` | Replaces a tab's label |
+| `onChange` | The new value, bare (rule 12) |
+| `activation` | `automatic` (default): arrows pick as they move. `manual`: Enter or Space picks |
+| `isLazy` | Panels mount only while their tab is picked |
+| `tabs` | The TabItems (Blade's TabList) |
+| `children` | The TabPanels, and anything else under or beside the tabs |
 | `accessibilityLabel` | Names the tablist |
-| `layout`, `size` | Style axes |
+| `variant`, `size`, `orientation`, `isFullWidthTabItem` | Style axes |
 
-Blade's underline is the `tabsList` snippet, fed `{ index, count }`
-like the segmented radio's thumb: with `layout="fill"` the tabs are equal, so
-one underline slides by whole tabs; content-sized tabs underline themselves.
+| TabItem prop | Notes |
+| --- | --- |
+| `value` | What Tabs' `value` becomes; its TabPanel's `value` |
+| `icon` | A glyph (`IconSource`) before the label; alone, it needs `accessibilityLabel` |
+| `children({ isSelected, isDisabled })` | The label |
+| `trailing({ isSelected, isDisabled })` | After the label: a Badge or Counter, which may follow the tab's state |
+| `isDisabled`, `href`, `onClick` | A disabled tab is skipped by the arrows; `href` makes the tab a link too |
+
 A segmented control is not tabs: that is `SegmentedControl`.

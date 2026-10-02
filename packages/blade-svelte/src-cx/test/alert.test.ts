@@ -131,3 +131,14 @@ describe('Alert (blade)', () => {
     expectClass(titled.getByTestId('b').firstElementChild as HTMLElement, 'self-start');
   });
 });
+
+describe('rich titles and descriptions', () => {
+  it('Alert and EmptyState take a title snippet, and EmptyState a description snippet', async () => {
+    const Harness = (await import('./fixtures/RichTextHarness.svelte')).default;
+    const { getByTestId } = render(Harness);
+    expect(getByTestId('alert').contains(getByTestId('alert-title'))).toBe(true);
+    const heading = getByTestId('empty-title').closest('h1, h2, h3, h4, h5, h6');
+    expect(heading).toBeTruthy();
+    expect(getByTestId('empty').contains(getByTestId('empty-link'))).toBe(true);
+  });
+});

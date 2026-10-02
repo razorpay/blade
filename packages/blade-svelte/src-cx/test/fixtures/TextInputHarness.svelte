@@ -8,7 +8,7 @@
     value?: Value;
     label?: string;
     accessibilityLabel?: string;
-    onChange?: (value: Value) => void;
+    onChange?: (change: { name: string | undefined; value: Value }) => void;
     isDisabled?: boolean;
     validationState?: 'none' | 'error' | 'success';
     helpText?: string;
@@ -19,7 +19,10 @@
       | { parse: (value: Value) => Value; format: (value: Value) => string };
     maxCharacters?: number;
     leading?: string;
-    type?: 'text' | 'search';
+    type?: 'text' | 'tel' | 'email' | 'url' | 'number' | 'password';
+    inputMode?: 'numeric' | 'decimal';
+    enterKeyHint?: 'next' | 'done';
+    autoComplete?: 'cc-number' | 'off';
     withTrailingSnippet?: boolean;
     className?: string;
   }
@@ -38,6 +41,9 @@
     maxCharacters,
     leading,
     type,
+    inputMode,
+    enterKeyHint,
+    autoComplete,
     withTrailingSnippet = false,
     className,
   }: Props = $props();
@@ -61,6 +67,9 @@
   {maxCharacters}
   {leading}
   {type}
+  {inputMode}
+  {enterKeyHint}
+  {autoComplete}
   trailing={withTrailingSnippet ? clear : undefined}
   class={className}
   testID="solo"

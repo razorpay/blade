@@ -1,5 +1,4 @@
-import { onDestroy } from 'svelte';
-import { getAdapters } from '../../adapters';
+import { hostLoads } from '../modal/stack.svelte';
 import {
   type Nav,
   type NavContent,
@@ -36,14 +35,7 @@ export interface NavStackBinding {
  */
 export function createNavStack(options: NavStackOptions): NavStackBinding {
   const { nav } = options;
-  const adapters = getAdapters();
-
-  nav.hasHost = true;
-  nav.reportError = (error) => adapters.captureError?.(error);
-  onDestroy(() => {
-    nav.hasHost = false;
-    nav.reportError = undefined;
-  });
+  hostLoads(nav);
 
   // The first screen on show does not slide in.
   const first: { id?: number } = {};

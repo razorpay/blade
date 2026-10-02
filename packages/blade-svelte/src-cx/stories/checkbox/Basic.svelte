@@ -5,6 +5,7 @@
     args: CheckboxStyleProps & {
       label?: string;
       isChecked?: boolean;
+      isIndeterminate?: boolean;
       isDisabled?: boolean;
       helpText?: string;
     };
@@ -20,6 +21,8 @@
 <div class="grid max-w-96 gap-4">
   <Checkbox
     bind:isChecked
+    size={args.size}
+    isIndeterminate={args.isIndeterminate}
     isDisabled={args.isDisabled}
     helpText={args.helpText || undefined}
     onChange={() => {

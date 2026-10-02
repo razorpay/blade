@@ -1,24 +1,23 @@
 import type { IconSource } from '../../runes/icon/source';
 import type { PhoneParts } from '../../runes/phone/parts';
 import type { IconStyleProps } from '../icon';
-import {
-  bottomSheetLook,
-  type BottomSheetStyleProps,
-} from '../bottom-sheet/styles';
-import type { ModalLookProp } from '../modal';
 import { chevronUpDown } from '../icons';
 import type { OptionListStyleProps } from '../option-list';
+import type { TextInputStyleProps } from '../text-input/styles';
 
 /**
  * PhoneNumberInput's parts. The field is a TextInput and the picker a Modal
  * holding an OptionList: these style what sits between them and choose how
- * the two composed components look.
+ * the list looks. The picker's Modal follows the app's `Modal` defaults
+ * (BladeProvider), e.g. `{ variant: { base: 'sheet', m: 'modal' } }`.
  */
-export interface PhoneNumberInputClasses<D, L> {
+export interface PhoneNumberInputClasses<L> {
   /** The country button before the number; a plain span when not selectable. */
   country: string;
   flag: string;
   dialCode: string;
+  /** Added to the dial code when there is no selector before it. */
+  dialCodeAlone: string;
   /** Marks the button as opening a picker. */
   chevron: IconSource;
   /** Style props handed to the chevron's Icon: the host sizes it. */
@@ -30,40 +29,41 @@ export interface PhoneNumberInputClasses<D, L> {
   rowName: string;
   rowDialCode: string;
   empty: string;
-  /** Style props handed to the picker's Modal. */
-  modal: D;
   /** Style props handed to the picker's OptionList. */
   optionList: L;
 }
 
 /** Style props in, the parts out. */
-export type PhoneNumberInputStyleResolver<P, D, L> = (
+export type PhoneNumberInputStyleResolver<P, L> = (
   props: P
-) => PhoneNumberInputClasses<D, L>;
+) => PhoneNumberInputClasses<L>;
 
 export type PhoneNumberChange = PhoneParts;
 
-/** Blade's phone field has one look: no style axes yet. */
-export type PhoneNumberInputStyleProps = Record<never, never>;
+/** The text field's sizes. */
+export interface PhoneNumberInputStyleProps {
+  /** @default 'medium' */
+  size?: TextInputStyleProps['size'];
+}
 
 export const resolvePhoneNumberInput: PhoneNumberInputStyleResolver<
   PhoneNumberInputStyleProps,
-  BottomSheetStyleProps & ModalLookProp,
   OptionListStyleProps
 > = () => ({
   // Blade's leading country selector: a 28px pill (6px padding, 8px radius)
   // round the flag and a small chevron, tinted on hover. Pulled left so the
   // flag sits where the field's own padding would put it.
+  // Blade's CountrySelector: a 56×28 button 4px in from the box, 6px
+  // round, a 20px flag and a 16px chevron 4px apart; the gray faded fill
+  // on hover and focus, and the 4px focus outline flush with it. The dial
+  // code follows 12px on, in the muted body text.
   country:
-    // Colours per Blade's InputDropdownButton: chevron `surface.icon.gray.muted`,
-    // hover/focus fill `interactive.background.gray.faded`, focus ring the
-    // 4px primary-muted one.
-    '-ml-2 flex h-7 items-center gap-1 rounded-small px-1.5 text-surface-gray-muted hover:enabled:bg-interactive-gray-faded focus-visible:outline-none focus-visible:bg-interactive-gray-faded focus-visible:shadow-focus',
-  // Blade draws the flag bare: no hairline round it.
-  flag: 'h-blade-15 w-5 shrink-0 [border-radius:1px] object-cover',
-  dialCode: 'ml-1.5 mr-0.5 tabular-nums text-surface-gray-muted',
+    '-ml-2 flex h-7 shrink-0 items-center gap-1 [border-radius:6px] border-none bg-transparent px-2 py-0 text-surface-gray-muted hover:enabled:bg-interactive-gray-faded focus-visible:bg-interactive-gray-faded focus-visible:outline-solid focus-visible:outline-4 focus-visible:outline-offset-0 focus-visible:outline-surface-primary-muted',
+  flag: 'h-[15px] w-5 shrink-0 [border-radius:1px] object-cover',
+  dialCode: 'ml-3 tabular-nums text-surface-gray-muted',
+  dialCodeAlone: 'ml-0',
   chevron: chevronUpDown,
-  chevronIcon: { size: 'small' },
+  chevronIcon: { size: 'medium' },
   search: 'mb-3',
   list: 'h-80',
   row: 'flex w-full items-center gap-3',
@@ -71,7 +71,5 @@ export const resolvePhoneNumberInput: PhoneNumberInputStyleResolver<
   // Blade's ActionListItemText trailing: `interactive.text.gray.muted`.
   rowDialCode: 'shrink-0 tabular-nums text-interactive-gray-muted',
   empty: 'py-8 text-center text-75 leading-50 text-surface-gray-subtle',
-  // A sheet on phones, a centred modal on desktop.
-  modal: { look: bottomSheetLook, adaptive: true },
   optionList: { variant: 'plain', indicator: 'none' },
 });

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
   import { provideButtonGroup } from '../../runes/button/group';
@@ -22,7 +23,9 @@
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolveButtonGroup(styleProps));
+  const style = useComponentDefaults('ButtonGroup', () => styleProps);
+
+  const classes = $derived(resolveButtonGroup(style.current));
 
   provideButtonGroup<Required<ButtonStyleProps>>({
     get shared() {

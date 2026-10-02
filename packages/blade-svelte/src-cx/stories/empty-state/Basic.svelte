@@ -8,18 +8,17 @@
   } from '../../index';
 
   interface Props {
-    args: EmptyStateStyleProps & { title?: string; message?: string };
+    args: EmptyStateStyleProps & { title?: string; description?: string };
   }
 
   let { args }: Props = $props();
 </script>
 
 <EmptyState
-  color={args.color}
-  title={args.title ?? 'Payment failed'}
-  message={args.message}
-  class="w-80"
+  size={args.size}
+  title={args.title}
+  description={args.description}
 >
-  {#snippet media()}<Icon source={icons.warning} size="large" />{/snippet}
-  <Button type="button">Try again</Button>
+  {#snippet asset()}<Icon source={icons.warning} size="xlarge" />{/snippet}
+  <Button type="button">Create Payment Link</Button>
 </EmptyState>

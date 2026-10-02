@@ -1,6 +1,8 @@
+import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { focusableWithin } from '../dom/focus';
-import { createNodeRef } from '../dom/node.svelte';
+import { createDisclosure } from '../base/disclosure';
+import { defaultSchedule, type Schedule } from '../base/schedule';
+import { createTrigger } from '../dom/trigger.svelte';
 
 export interface PopoverOptions {
   /** The panel's element id: what the trigger controls. */
@@ -10,6 +12,10 @@ export interface PopoverOptions {
   onValue: (isOpen: boolean) => void;
   onOpenChange?: (isOpen: boolean) => void;
   isDisabled: () => boolean;
+  /** `hover`: the pointer over the trigger or the panel opens it. @default click */
+  openInteraction?: () => 'click' | 'hover';
+  /** Injected by tests, so the hover grace never sleeps. */
+  schedule?: Schedule;
 }
 
 export interface Popover {
@@ -18,43 +24,93 @@ export interface Popover {
   /** On the root: stamps the trigger's aria state, which is the caller's control. */
   readonly root: Attachment<HTMLElement>;
   handleClick(event: MouseEvent): void;
+  /**
+   * Whether the pointer opens it: `hover` asked for, and a device that can
+   * hover. A touch screen, and the native renderer, open on a tap instead.
+   */
+  readonly opensOnHover: boolean;
+  /** On the trigger's wrapper and on the panel, for `hover`. */
+  handlePointerEnter(): void;
+  handlePointerLeave(): void;
   close(): void;
 }
 
+// Long enough to cross the gap between the trigger and the panel.
+const HOVER_GRACE_MS = 100;
+
 /** A popover's open state and the trigger's aria wiring. Call during component initialisation. */
 export function createPopover(options: PopoverOptions): Popover {
-  const root = createNodeRef<HTMLElement>();
+  const schedule = options.schedule ?? defaultSchedule;
+  const disclosure = createDisclosure({
+    open: options.isOpen,
+    onOpenChange: (open) => {
+      options.onValue(open);
+      options.onOpenChange?.(open);
+    },
+  });
+  const trigger = createTrigger({
+    controls: options.id,
+    isExpanded: options.isOpen,
+    haspopup: 'dialog',
+  });
 
   function set(next: boolean) {
-    if (next !== options.isOpen() && !(next && options.isDisabled())) {
-      options.onValue(next);
-      options.onOpenChange?.(next);
+    if (!(next && options.isDisabled())) {
+      if (next) {
+        disclosure.open('trigger');
+      } else {
+        disclosure.close('trigger');
+      }
     }
   }
 
+  // A device that cannot hover (touch, native) opens on a tap either way.
+  const canHover = () =>
+    typeof matchMedia === 'function' && matchMedia('(hover: hover)').matches;
+  const isHover = () => options.openInteraction?.() === 'hover' && canHover();
+  let leaving: (() => void) | undefined;
+  function stay() {
+    leaving?.();
+    leaving = undefined;
+  }
+  // A grace still running when the popover goes must not write to it.
+  onDestroy(stay);
+
   return {
+    get opensOnHover() {
+      return isHover();
+    },
     get anchor() {
-      return root.current;
+      return trigger.anchor;
     },
-    root(node) {
-      const undo = root.attach(node);
-      const trigger = focusableWithin(node)[0] ?? node;
-      const isOpen = options.isOpen();
-      trigger.setAttribute('aria-haspopup', 'dialog');
-      trigger.setAttribute('aria-expanded', String(isOpen));
-      if (isOpen) {
-        trigger.setAttribute('aria-controls', options.id);
-      } else {
-        trigger.removeAttribute('aria-controls');
-      }
-      return undo;
-    },
+    root: trigger.attach,
     handleClick(event) {
+      if (isHover()) {
+        return;
+      }
       // Native renders the panel in here: a press inside it is not the trigger's.
-      if (!(event.target as Element).closest(`[id="${options.id}"]`)) {
+      if (!trigger.isInside(event)) {
         set(!options.isOpen());
       }
     },
-    close: () => set(false),
+    handlePointerEnter() {
+      if (isHover()) {
+        stay();
+        set(true);
+      }
+    },
+    handlePointerLeave() {
+      if (isHover()) {
+        stay();
+        leaving = schedule(() => {
+          leaving = undefined;
+          set(false);
+        }, HOVER_GRACE_MS);
+      }
+    },
+    close: () => {
+      stay();
+      set(false);
+    },
   };
 }

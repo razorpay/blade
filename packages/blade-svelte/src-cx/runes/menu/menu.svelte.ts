@@ -1,21 +1,18 @@
 import { tick } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { focusableWithin } from '../dom/focus';
 import { discloseList, type DisclosedList } from '../base/disclosed-list';
 import type { DisclosureOptions } from '../base/disclosure';
 import {
-  createOptionListCore,
-  type OptionListCore,
-  type OptionListCoreOptions,
-} from '../base/option-list';
+  createNavigableList,
+  dispatchListKey,
+  type NavigableListModel,
+  type NavigableListOptions,
+} from '../base/navigable-list.svelte';
 import { createOrderedEntries } from '../base/ordered-entries.svelte';
-import { createNodeRef } from '../dom/node.svelte';
+import { createTrigger } from '../dom/trigger.svelte';
 import type { MenuContext, MenuEntry } from './context';
 
-export interface MenuModelOptions<T> extends Omit<
-  OptionListCoreOptions<T>,
-  'value' | 'defaultValue' | 'onChange' | 'strictOption'
-> {
+export interface MenuModelOptions<T> extends NavigableListOptions<T> {
   onSelect?: (item: T) => void;
   /** Default true. */
   closeOnSelect?: boolean;
@@ -23,48 +20,60 @@ export interface MenuModelOptions<T> extends Omit<
 }
 
 /**
- * A menu's choices are momentary (choose = act), so the option-list
- * selection surface (`selected`, `isSelected`, `optionState`, …) is not
- * exposed: it would always read empty. `select` stays as the click entry
- * point; it emits `onSelect` and closes.
+ * A menu's choices are momentary (choose = act): there is no selection to
+ * hold, only the active item the keyboard is on.
  */
-export interface MenuModel<T>
-  extends
-    Omit<
-      OptionListCore<T>,
-      'selected' | 'selectedIndex' | 'isSelected' | 'optionState' | 'handleKey'
-    >,
-    DisclosedList {}
+export interface MenuModel<T> extends NavigableListModel<T>, DisclosedList {
+  /** A click on an item: it emits `onSelect`, then the menu closes. Disabled items refuse. */
+  select(item: T): void;
+}
 
 /**
- * An option list whose selection is momentary, behind a disclosure. Closed:
- * ArrowDown/ArrowUp/Enter/Space open it; open: the list keys.
+ * A navigable list whose choices are momentary, behind a disclosure.
+ * Closed: ArrowDown/ArrowUp/Enter/Space open it; open: the list keys.
  */
 export function createMenuModel<T>(options: MenuModelOptions<T>): MenuModel<T> {
   const closeOnSelect = options.closeOnSelect ?? true;
-  // Assigned below; a choice only ever lands after construction.
-  let disclosed: DisclosedList;
-  const list = createOptionListCore<T>({
-    ...options,
-    // Always controlled to "nothing selected", so every choice emits.
-    value: () => null,
-    onChange: (item) => {
-      if (item !== null) {
-        options.onSelect?.(item);
-        if (closeOnSelect) {
-          disclosed.disclosure.close('trigger');
-        }
-      }
-    },
-  });
-  disclosed = discloseList(list, options.disclosure);
+  const list = createNavigableList<T>(options);
 
-  return { ...list, ...disclosed };
+  function select(item: T): void {
+    const index = options.items().indexOf(item);
+    if (index >= 0 && options.isDisabled?.(item, index)) {
+      return;
+    }
+    // Activate first: the close below clears the active item, and
+    // activating after it would resurrect it.
+    list.setActive(index);
+    options.onSelect?.(item);
+    if (closeOnSelect) {
+      disclosed.disclosure.close('trigger');
+    }
+  }
+
+  const disclosed = discloseList(
+    {
+      ...list,
+      handleKey: (key, mods) =>
+        dispatchListKey(list, key, mods, () => {
+          const active = list.active();
+          if (active !== undefined) {
+            select(active);
+          }
+        }),
+    },
+    options.disclosure
+  );
+
+  return { ...list, ...disclosed, select };
 }
 
 export interface MenuOptions<Shared> {
   /** The menu's element id: where the items render. */
   id: string;
+  /** The host's open state, when it owns it (a `bind:isOpen`). */
+  isOpen?: () => boolean | undefined;
+  /** The menu opened or closed itself: the bindable write. */
+  onValue?: (isOpen: boolean) => void;
   onOpenChange?: (isOpen: boolean) => void;
   /** Handed to every item as is. */
   shared: () => Shared;
@@ -97,7 +106,6 @@ export interface Menu<Shared> extends MenuContext<Shared> {
  * MenuItems (`provideMenu`).
  */
 export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
-  const root = createNodeRef<HTMLElement>();
   const entries = createOrderedEntries<MenuEntry>();
 
   const model = createMenuModel<MenuEntry>({
@@ -106,16 +114,22 @@ export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
     loop: true,
     typeahead: (entry) => entry.text(),
     onSelect: (entry) => entry.select(),
-    disclosure: { onOpenChange: (open) => options.onOpenChange?.(open) },
+    disclosure: {
+      open: options.isOpen,
+      onOpenChange: (open) => {
+        options.onValue?.(open);
+        options.onOpenChange?.(open);
+      },
+    },
   });
 
   const isOpen = $derived(model.isOpen());
   const activeIndex = $derived(model.activeIndex());
-
-  const trigger = () => {
-    const node = root.current;
-    return node && (focusableWithin(node)[0] ?? node);
-  };
+  const trigger = createTrigger({
+    controls: options.id,
+    isExpanded: () => isOpen,
+    haspopup: 'menu',
+  });
 
   // Roving focus: the active item is the focused one.
   $effect(() => {
@@ -129,6 +143,20 @@ export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
     }
   });
 
+  // Just opened: it lands on the first item (the last, for ArrowUp) — once
+  // the items have mounted and registered.
+  function landOnceOpen(to: 'first' | 'last') {
+    tick()
+      .then(() => {
+        if (model.isOpen() && model.activeIndex() < 0) {
+          model.move(to);
+        }
+      })
+      .catch(() => undefined);
+  }
+
+  const returnFocus = () => trigger.control()?.focus({ preventScroll: true });
+
   function handleKey(event: KeyboardEvent) {
     const wasOpen = model.isOpen();
     const action = model.handleKey(event.key, {
@@ -138,22 +166,15 @@ export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
     });
     if (action) {
       event.preventDefault();
+      // Handled here: the layers' Escape must not close what lies beneath.
       event.stopPropagation();
     }
-    // Opened from the keyboard: it lands on the first item (the last, for
-    // ArrowUp) — once the items have mounted and registered.
     if (!wasOpen && model.isOpen() && model.activeIndex() < 0) {
-      const to = event.key === 'ArrowUp' ? 'last' : 'first';
-      tick()
-        .then(() => {
-          if (model.isOpen() && model.activeIndex() < 0) {
-            model.move(to);
-          }
-        })
-        .catch(() => undefined);
+      landOnceOpen(event.key === 'ArrowUp' ? 'last' : 'first');
     }
+    // Escape, a choice or Tab closed it from the keyboard: back to the trigger.
     if (wasOpen && !model.isOpen()) {
-      trigger()?.focus({ preventScroll: true });
+      returnFocus();
     }
   }
 
@@ -168,39 +189,26 @@ export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
       return activeIndex;
     },
     get anchor() {
-      return root.current;
+      return trigger.anchor;
     },
-    root(node) {
-      const undo = root.attach(node);
-      const control = focusableWithin(node)[0] ?? node;
-      control.setAttribute('aria-haspopup', 'menu');
-      control.setAttribute('aria-expanded', String(isOpen));
-      return undo;
-    },
+    root: trigger.attach,
     register: (entry) => entries.register(entry),
     reorder: () => entries.reorder(),
     handleKey,
     handleRootKeyDown(event) {
       // Closed: arrows, Enter and Space on the trigger open it.
-      if (!isOpen && event.target === trigger()) {
+      if (!isOpen && event.target === trigger.control()) {
         handleKey(event);
       }
     },
     handleTriggerClick(event) {
-      if ((event.target as Element).closest(`[id="${options.id}"]`)) {
+      if (trigger.isInside(event)) {
         return;
       }
       model.toggle();
-      // A pointer-opened menu starts on its first item too — once the items
-      // have mounted and registered.
+      // A pointer-opened menu starts on its first item too.
       if (model.isOpen()) {
-        tick()
-          .then(() => {
-            if (model.isOpen() && model.activeIndex() < 0) {
-              model.move('first');
-            }
-          })
-          .catch(() => undefined);
+        landOnceOpen('first');
       }
     },
     select: (entry) => model.select(entry),
@@ -212,7 +220,7 @@ export function createMenu<Shared>(options: MenuOptions<Shared>): Menu<Shared> {
     close(source) {
       model.close();
       if (source === 'escape') {
-        trigger()?.focus({ preventScroll: true });
+        returnFocus();
       }
     },
   };

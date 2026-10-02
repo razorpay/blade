@@ -7,23 +7,32 @@
   // The native row: a pressable container carrying `checked`/`disabled` as
   // plain attributes, which drive the platform's `checked:` style variants.
   interface Props {
+    kind: 'radio' | 'checkbox';
     isSelected: boolean;
     isDisabled: boolean;
+    isInvalid: boolean;
     classes: OptionRowClasses;
     optionState?: Record<string, string>;
     onToggle: (event: Event) => boolean;
     /** On the row: how the list orders the item. */
     attach?: Attachment<HTMLElement>;
+    testID?: string;
     children: Snippet;
   }
 
+  // The web twin's keyboard props (`isActive`, `isTabStop`, `onFocus`,
+  // `onBlur`, `onKeyDown`) and `name` have no meaning here: the platform
+  // moves focus between rows itself, and a native row is not a form input.
   let {
+    kind,
     isSelected,
     isDisabled,
+    isInvalid,
     classes,
     optionState,
     onToggle,
     attach = () => {},
+    testID,
     children,
   }: Props = $props();
 </script>
@@ -35,6 +44,11 @@
     classes.rowState[isSelected ? 'picked' : 'unpicked'],
     isDisabled && classes.rowDisabled
   )}
+  role={kind}
+  aria-checked={isSelected}
+  aria-disabled={isDisabled || undefined}
+  aria-invalid={isInvalid || undefined}
+  data-testid={testID}
   {...optionState}
   onclick={onToggle}
   {@attach attach}

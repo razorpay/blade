@@ -28,7 +28,7 @@
   <TextInput
     bind:value
     label="Card number"
-    type="tel"
+    inputMode="numeric"
     placeholder="0000 0000 0000 0000"
     format={{ parse: digitsOnly, format: groupInFours }}
     maxCharacters={args.maxCharacters}
@@ -39,7 +39,7 @@
   <TextInput
     bind:value={expiry}
     label="Expiry"
-    type="tel"
+    inputMode="numeric"
     placeholder="MM / YY"
     format={EXPIRY}
   />

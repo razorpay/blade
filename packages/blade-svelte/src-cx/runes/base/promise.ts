@@ -1,5 +1,6 @@
+/** A promise, or anything shaped like one (a thenable). */
 export function isPromise<T = unknown>(value: unknown): value is Promise<T> {
-  return value instanceof Promise;
+  return typeof (value as { then?: unknown } | null)?.then === 'function';
 }
 
 export type Resolver<T> = (value: T | PromiseLike<T>) => void;

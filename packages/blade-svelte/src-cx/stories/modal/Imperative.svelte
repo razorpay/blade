@@ -4,7 +4,6 @@
     Button,
     ModalStack,
     LayerHost,
-    bottomSheetLook,
     openModal,
     Text,
   } from '../../index';
@@ -20,7 +19,7 @@
         props: { bank: 'HDFC Bank' },
         title: 'Redirecting',
         closeLabel: 'Close',
-        look: bottomSheetLook,
+        variant: 'sheet',
       }
     );
     handle.result
@@ -42,7 +41,7 @@
       title: 'Loaded on demand',
       closeLabel: 'Close',
       pendingLabel: 'Loading',
-      look: bottomSheetLook,
+      variant: 'sheet',
     });
   }
 </script>

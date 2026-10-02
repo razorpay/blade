@@ -2,8 +2,10 @@
 // the gray interactive fill brightening to its highlighted step. A skeleton
 // has no box of its own: `cx` resolves no conflicts, so the caller's `class`
 // is the only place its height, width and radius come from.
+// Blade's Skeleton: the gray fill, no radius of its own (the caller's
+// `class` gives the box its size and shape), fading in and then pulsing.
 const SKELETON =
-  'block rounded-xsmall bg-interactive-gray-default animate-skeleton motion-reduce:animate-none';
+  'block bg-interactive-gray-default animate-skeleton motion-reduce:animate-none';
 
 export function resolveSkeleton(): string {
   return SKELETON;

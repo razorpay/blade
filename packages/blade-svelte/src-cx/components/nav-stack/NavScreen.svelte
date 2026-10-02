@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import type { TransitionConfig } from 'svelte/transition';
-  import { longestTransition } from '../../runes/layer/presence';
+  import { longestTransition, phaseTransition } from '../../runes/layer/presence';
   import type { NavDirectionSource } from '../../runes/nav-stack/nav';
   import type { NavStackClasses } from './styles';
 
@@ -21,33 +20,24 @@
   // Svelte owns presence, the CSS transitions in styles.ts own the visuals. The
   // direction is read when the transition starts, never at mount: a leaving
   // screen learns which way it goes only once the navigation happens.
-  function presence(node: HTMLElement): () => TransitionConfig {
-    // Deferred: Svelte calls it with `{ direction }` once the block toggles,
-    // which its `() => TransitionConfig` type leaves out.
-    const deferred = ({
-      direction: phase,
-    }: {
-      direction: 'in' | 'out' | 'both';
-    }) => {
-      const isForward = nav.direction === 'forward';
-      if (phase === 'out') {
-        node.dataset.side = isForward ? 'behind' : 'ahead';
-        node.dataset.state = 'closed';
-      } else if (!isFirst) {
-        node.dataset.side = isForward ? 'ahead' : 'behind';
-        // Park it closed without a transition, and have that style computed,
-        // or the flip to open has nowhere to travel from.
-        node.style.transition = 'none';
-        node.dataset.state = 'closed';
-        void node.offsetWidth;
-        node.style.transition = '';
-        node.dataset.state = 'open';
-        node.focus({ preventScroll: true });
-      }
-      return { duration: longestTransition([node]) };
-    };
-    return deferred as unknown as () => TransitionConfig;
-  }
+  const presence = phaseTransition((node, phase) => {
+    const isForward = nav.direction === 'forward';
+    if (phase === 'out') {
+      node.dataset.side = isForward ? 'behind' : 'ahead';
+      node.dataset.state = 'closed';
+    } else if (!isFirst) {
+      node.dataset.side = isForward ? 'ahead' : 'behind';
+      // Park it closed without a transition, and have that style computed,
+      // or the flip to open has nowhere to travel from.
+      node.style.transition = 'none';
+      node.dataset.state = 'closed';
+      void node.offsetWidth;
+      node.style.transition = '';
+      node.dataset.state = 'open';
+      node.focus({ preventScroll: true });
+    }
+    return longestTransition([node]);
+  });
 </script>
 
 <div

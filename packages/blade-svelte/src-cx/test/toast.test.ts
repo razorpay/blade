@@ -37,17 +37,30 @@ const offsetOf = (toast: HTMLElement) =>
   wrapper(toast).style.getPropertyValue('--toast-offset');
 
 describe('showToast', () => {
+  it('icon replaces the colour\'s glyph', async () => {
+    const { bank } = await import('../components/icons');
+    const { toasts, getByTestId } = setup();
+    toasts.showToast({ content: 'Paid', duration: 0, icon: bank, testID: 'paid' });
+    await waitFor(() => getByTestId('paid'));
+    const svg = getByTestId('paid').querySelector('svg')!;
+    const own = new DOMParser().parseFromString(bank, 'image/svg+xml').documentElement;
+    const paths = (root: Element) => [...root.querySelectorAll('path')].map((p) => p.getAttribute('d'));
+    expect(paths(svg)).toEqual(paths(own));
+  });
+
   it('shows a message in the host, as a status, without taking the page', () => {
     const { toasts, getByTestId } = setup();
-    toasts.showToast({ message: 'Card saved', duration: 0, testID: 'saved' });
+    toasts.showToast({ content: 'Card saved', duration: 0, testID: 'saved' });
 
     return waitFor(() => expect(getByTestId('saved')).toBeTruthy()).then(() => {
       const toast = getByTestId('saved');
       expect(toast.getAttribute('role')).toBe('status');
       expect(toast.textContent?.trim()).toBe('Card saved');
-      expectClass(toast, 'rounded-small');
-      // No dismiss button without a name for it.
-      expect(toast.querySelector('button')).toBeNull();
+      expectClass(toast, 'rounded-medium');
+      expectClass(toast, 'shadow-toast-neutral');
+      // Blade's glyph for the colour, and its dismiss button.
+      expect(toast.querySelector('svg')).not.toBeNull();
+      expect(toast.querySelector('button')?.getAttribute('aria-label')).toBe('Dismiss toast');
       expect(getByTestId('toasts').getAttribute('aria-label')).toBe(
         'Notifications'
       );
@@ -58,7 +71,7 @@ describe('showToast', () => {
 
   it('opens: a toast the stack mounts leaves `closed`', () => {
     const { toasts, getByTestId } = setup();
-    toasts.showToast({ message: 'Hi', duration: 0, testID: 'hi' });
+    toasts.showToast({ content: 'Hi', duration: 0, testID: 'hi' });
     return waitFor(() => expect(getByTestId('hi').dataset.state).toBe('open'));
   });
 
@@ -67,7 +80,7 @@ describe('showToast', () => {
     const onDismiss = vi.fn();
     const { toasts } = setup();
     const handle = toasts.showToast({
-      message: 'Copied',
+      content: 'Copied',
       duration: 1000,
       onDismiss,
     });
@@ -83,7 +96,7 @@ describe('showToast', () => {
     vi.useFakeTimers();
     const onDismiss = vi.fn();
     const { toasts, getByTestId } = setup();
-    toasts.showToast({ message: 'Copied', duration: 1000, onDismiss });
+    toasts.showToast({ content: 'Copied', duration: 1000, onDismiss });
     const stack = getByTestId('toasts');
 
     return fireEvent
@@ -99,56 +112,58 @@ describe('showToast', () => {
       });
   });
 
-  it('an action runs and dismisses', () => {
-    const onPress = vi.fn();
-    const { toasts, getByRole } = setup();
-    const handle = toasts.showToast({
-      message: 'Card removed',
+  it('an action runs and leaves the toast up, as Blade', () => {
+    const onClick = vi.fn();
+    const { toasts, getByRole, getByTestId } = setup();
+    toasts.showToast({
+      content: 'Card removed',
       duration: 0,
-      action: { label: 'Undo', onPress },
+      action: { text: 'Undo', onClick },
+      testID: 'removed',
     });
     return waitFor(() => expect(getByRole('button', { name: 'Undo' })))
       .then(() => fireEvent.click(getByRole('button', { name: 'Undo' })))
+      .then(() => {
+        expect(onClick).toHaveBeenCalledTimes(1);
+        expect(getByTestId('removed')).toBeTruthy();
+      });
+  });
+
+  it('always has a dismiss button, which closes it and reports', () => {
+    const onDismissButtonClick = vi.fn();
+    const { toasts, getByRole, getByTestId } = setup();
+    const handle = toasts.showToast({
+      content: 'Card removed',
+      duration: 0,
+      onDismissButtonClick,
+      testID: 'removed',
+    });
+    return waitFor(() => expect(getByRole('button', { name: 'Dismiss toast' })))
+      .then(() => {
+        const close = getByRole('button', { name: 'Dismiss toast' });
+        expect(getByTestId('removed').lastElementChild?.lastElementChild).toBe(close);
+        return fireEvent.click(close);
+      })
       .then(() => handle.dismissed)
       .then((reason) => {
-        expect(onPress).toHaveBeenCalledTimes(1);
+        expect(onDismissButtonClick).toHaveBeenCalledTimes(1);
         expect(reason).toBe('dismiss');
       });
   });
 
-  it('a named dismiss button closes it, after a hairline', () => {
-    const { toasts, getByRole, getByTestId } = setup();
-    const handle = toasts.showToast({
-      message: 'Card removed',
-      duration: 0,
-      closeLabel: 'Dismiss',
-      testID: 'removed',
-    });
-    return waitFor(() => expect(getByRole('button', { name: 'Dismiss' })))
-      .then(() => {
-        const close = getByRole('button', { name: 'Dismiss' });
-        expectClass(close.previousElementSibling, 'w-px');
-        expectClass(close, 'w-4');
-        expect(getByTestId('removed').lastElementChild).toBe(close);
-        return fireEvent.click(close);
-      })
-      .then(() => handle.dismissed)
-      .then((reason) => expect(reason).toBe('dismiss'));
-  });
-
   it('a newer toast evicts the oldest beyond the capacity', () => {
     const { toasts } = setup();
-    const first = toasts.showToast({ message: '1', duration: 0 });
-    toasts.showToast({ message: '2', duration: 0 });
-    toasts.showToast({ message: '3', duration: 0 });
-    toasts.showToast({ message: '4', duration: 0 });
+    const first = toasts.showToast({ content: '1', duration: 0 });
+    toasts.showToast({ content: '2', duration: 0 });
+    toasts.showToast({ content: '3', duration: 0 });
+    toasts.showToast({ content: '4', duration: 0 });
     return first.dismissed.then((reason) => expect(reason).toBe('evicted'));
   });
 
   it('a failure interrupts: negative is an alert', () => {
     const { toasts, getByTestId } = setup();
     toasts.showToast({
-      message: 'Payment failed',
+      content: 'Payment failed',
       color: 'negative',
       duration: 0,
       testID: 'failed',
@@ -163,7 +178,7 @@ describe('showToast', () => {
 
   it("slides in from the stack's edge at Blade's pace and out at its exit pace", () => {
     const { toasts, getByTestId } = setup();
-    toasts.showToast({ message: 'Hi', duration: 0, testID: 'hi' });
+    toasts.showToast({ content: 'Hi', duration: 0, testID: 'hi' });
     return waitFor(() =>
       expect(getByTestId('hi').dataset.state).toBe('open')
     ).then(() => {
@@ -178,8 +193,8 @@ describe('showToast', () => {
   it('on desktop a short stack is expanded: the older toast sits a gutter above the newest', () => {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
     const { toasts, getByTestId } = setup();
-    toasts.showToast({ message: '1', duration: 0, testID: 'one' });
-    toasts.showToast({ message: '2', duration: 0, testID: 'two' });
+    toasts.showToast({ content: '1', duration: 0, testID: 'one' });
+    toasts.showToast({ content: '2', duration: 0, testID: 'two' });
     return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('56')).then(
       () => {
         expect(offsetOf(getByTestId('two'))).toBe('0');
@@ -195,8 +210,8 @@ describe('showToast', () => {
     vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(44);
     phone(true);
     const { toasts, getByTestId } = setup();
-    toasts.showToast({ message: '1', duration: 0, testID: 'one' });
-    toasts.showToast({ message: '2', duration: 0, testID: 'two' });
+    toasts.showToast({ content: '1', duration: 0, testID: 'one' });
+    toasts.showToast({ content: '2', duration: 0, testID: 'two' });
     return waitFor(() => expect(offsetOf(getByTestId('one'))).toBe('12'))
       .then(() => {
         const behind = wrapper(getByTestId('one'));

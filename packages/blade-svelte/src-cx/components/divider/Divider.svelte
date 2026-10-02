@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
   import {
     type DividerBehaviourProps,
@@ -9,11 +10,13 @@
   type Props = DividerBehaviourProps & DividerStyleProps;
 
   let { testID, class: className = '', ...styleProps }: Props = $props();
+
+  const style = useComponentDefaults('Divider', () => styleProps);
 </script>
 
 <hr
-  class={cx(resolveDivider(styleProps), className)}
-  aria-orientation={styleProps.orientation === 'vertical'
+  class={cx(resolveDivider(style.current), className)}
+  aria-orientation={style.current.orientation === 'vertical'
     ? 'vertical'
     : undefined}
   data-testid={testID}

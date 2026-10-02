@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { ControlState } from '../shared/control-state';
   import { cx } from '../../cx';
   import { getRadioGroup } from '../../runes/radio/context';
   import { createRadio } from '../../runes/radio/radio.svelte';
@@ -14,8 +15,12 @@
     /** Lands on the control, the element tests click. */
     testID?: string;
     class?: string;
-    /** The label. */
-    children?: Snippet;
+    /** The label; it receives the radio's state. */
+    children?: Snippet<[ControlState]>;
+    /** Under the label, lined up with it: text, or a snippet (a Link in it). */
+    helpText?: string | Snippet;
+    /** After the label: a Badge, an Amount, which may follow the state. */
+    trailing?: Snippet<[ControlState]>;
   }
 
   // No style props: the look of a radio is the group's decision, and its
@@ -27,7 +32,15 @@
     testID,
     class: className = '',
     children,
+    helpText,
+    trailing,
   }: Props = $props();
+
+  const uid = $props.id();
+  const helpId = `${uid}-help`;
+  // The title alone names the control: the help text inside the label
+  // describes it instead.
+  const titleId = `${uid}-title`;
 
   // A Radio belongs in a RadioGroup; outside one it is an inert control.
   const radio = createRadio(getRadioGroup<RadioClasses>(), {
@@ -36,6 +49,10 @@
   });
 
   const classes = $derived(radio.shared);
+  const controlState: ControlState = $derived({
+    isChecked: radio.isSelected,
+    isDisabled: radio.isDisabled,
+  });
   const indicator = $derived(classes?.indicator);
 </script>
 
@@ -55,6 +72,8 @@
     checked={radio.isSelected}
     disabled={radio.isDisabled}
     aria-label={children ? undefined : accessibilityLabel}
+    aria-labelledby={children && helpText ? titleId : undefined}
+    aria-describedby={helpText ? helpId : undefined}
     data-testid={testID}
     onchange={radio.handleChange}
     {@attach radio.sync}
@@ -68,6 +87,16 @@
     </span>
   {/if}
   {#if children}
-    <span class={classes?.label}>{@render children()}</span>
+    <span id={titleId} class={classes?.label}>{@render children(controlState)}</span>
+  {/if}
+  {#if trailing}
+    <span class={classes?.trailing}>{@render trailing(controlState)}</span>
+  {/if}
+  {#if helpText}
+    <span class={classes?.support}>
+      <span id={helpId} class={classes?.supportText}>
+        {#if typeof helpText === 'string'}{helpText}{:else}{@render helpText()}{/if}
+      </span>
+    </span>
   {/if}
 </label>

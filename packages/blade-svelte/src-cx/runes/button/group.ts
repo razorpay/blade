@@ -1,4 +1,4 @@
-import { getContext, setContext } from 'svelte';
+import { defineContext } from '../context';
 
 /**
  * What a ButtonGroup hands the Buttons inside it, as Blade's does: the look
@@ -11,18 +11,18 @@ export interface ButtonGroupContext<Shared> {
   readonly isDisabled: boolean;
 }
 
-const BUTTON_GROUP = Symbol('blade-button-group');
+const BUTTON_GROUP = defineContext<unknown>('blade-button-group');
 
 export function provideButtonGroup<Shared>(
   group: ButtonGroupContext<Shared>
 ): void {
-  setContext(BUTTON_GROUP, group);
+  BUTTON_GROUP.set(group);
 }
 
 export function getButtonGroup<Shared>():
   | ButtonGroupContext<Shared>
   | undefined {
-  return getContext<ButtonGroupContext<Shared> | undefined>(BUTTON_GROUP);
+  return BUTTON_GROUP.get() as ButtonGroupContext<Shared> | undefined;
 }
 
 /**
@@ -30,5 +30,5 @@ export function getButtonGroup<Shared>():
  * Blade's OverlayContextReset does: call it in the overlay's content.
  */
 export function resetButtonGroup(): void {
-  setContext(BUTTON_GROUP, undefined);
+  BUTTON_GROUP.set(undefined);
 }

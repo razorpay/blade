@@ -29,7 +29,7 @@
 </script>
 
 <div
-  class="relative flex [height:28rem] w-full max-w-96 flex-col overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
+  class="relative flex h-[28rem] w-full max-w-96 flex-col overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
   <header
     class="flex h-12 items-center gap-2 border-b-thin border-solid border-surface-gray-muted px-2"

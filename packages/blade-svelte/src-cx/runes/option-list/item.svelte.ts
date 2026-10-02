@@ -1,6 +1,7 @@
 import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
 import type { ChoiceEntry } from '../base/choice-list.svelte';
+import { registerEntry } from '../base/ordered-entries.svelte';
 import type {
   OptionListContext,
   OptionRowSlot,
@@ -43,16 +44,16 @@ export function createOptionItem<T, Shared>(
   slot: OptionRowSlot<T> | undefined,
   options: OptionItemOptions<T>
 ): OptionItem<T, Shared> {
-  let node: HTMLElement | undefined;
-  const entry: ChoiceEntry<T> = {
-    value: () => options.value(),
-    isDisabled: () => options.isDisabled(),
-    text: () => options.text?.(),
-    getElement: () => node,
-  };
-  if (list && !slot) {
-    onDestroy(list.register(entry));
-  }
+  // A virtual list's row slot places the item: it registers nowhere.
+  const { entry, attach, unregister } = registerEntry<ChoiceEntry<T>>(
+    slot ? undefined : list,
+    {
+      value: () => options.value(),
+      isDisabled: () => options.isDisabled(),
+      text: () => options.text?.(),
+    }
+  );
+  onDestroy(unregister);
 
   const index = $derived(slot ? slot.index : (list?.indexOf(entry) ?? 0));
   const option = $derived(slot ? slot.option : options.value());
@@ -91,12 +92,6 @@ export function createOptionItem<T, Shared>(
       list?.handleFocusIn();
       list?.setActive(index);
     },
-    attach(element) {
-      node = element;
-      list?.reorder();
-      return () => {
-        node = undefined;
-      };
-    },
+    attach,
   };
 }

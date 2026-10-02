@@ -1,4 +1,8 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
+  import type { Snippet } from 'svelte';
+  import type { HTMLInputAttributes } from 'svelte/elements';
+  import { cx } from '../../cx';
   import { getAdapters } from '../../adapters';
   import type { PhoneCountry } from '../../runes/phone/parts';
   import { createPhone } from '../../runes/phone/phone.svelte';
@@ -35,9 +39,34 @@
     /** ISO code. A `value` with a plus names its own country and wins. */
     country?: string;
     onChange?: (change: PhoneNumberChange) => void;
-    onCountryChange?: (country: string) => void;
+    onCountryChange?: (change: { country: string }) => void;
     label?: string;
+    /** After the label: `*` or `(optional)`. Required also marks the control required. @default 'none' */
+    necessityIndicator?: 'required' | 'optional' | 'none';
+    /**
+     * The label's area, to put content beside the label (Blade's
+     * `labelSuffix` and `labelTrailing`): render the `label` snippet it
+     * receives and anything else. Today the area is the row above the
+     * control — items 4px apart, `ms-auto` pushes one to the end — and it
+     * stays the place for the label wherever a future `labelPosition` puts
+     * it. Only the label names the control.
+     */
+    labelArea?: Snippet<[{ label: Snippet }]>;
+    /** @default Blade's example number for the country */
     placeholder?: string;
+    onFocus?: (event: FocusEvent) => void;
+    onBlur?: (event: FocusEvent) => void;
+    onClick?: (event: MouseEvent) => void;
+    /** The clear button (shown while there is a number) was pressed. */
+    onClearButtonClick?: () => void;
+    /** The return key's label on a virtual keyboard. */
+    enterKeyHint?: HTMLInputAttributes['enterkeyhint'];
+    /** An HTML autofill token. @default 'tel' */
+    autoComplete?: HTMLInputAttributes['autocomplete'];
+    /** Hides the country button; the dial code still shows. @default true */
+    showCountrySelector?: boolean;
+    /** After the number, before the clear button: a string or a snippet (an icon). */
+    trailing?: string | Snippet;
     isDisabled?: boolean;
     isRequired?: boolean;
     /** Shows the country as text only: no button, no picker. */
@@ -45,9 +74,9 @@
     /** The dial code beside the flag; off for a field whose country is fixed and named elsewhere. */
     showDialCode?: boolean;
     validationState?: TextInputValidationState;
-    helpText?: string;
-    errorText?: string;
-    successText?: string;
+    helpText?: string | Snippet;
+    errorText?: string | Snippet;
+    successText?: string | Snippet;
     autoFocus?: boolean;
     span?: InputGroupSpan;
     name?: string;
@@ -78,7 +107,17 @@
     onChange,
     onCountryChange,
     label,
+    necessityIndicator = 'none',
+    labelArea,
     placeholder,
+    onFocus,
+    onBlur,
+    onClick,
+    onClearButtonClick,
+    enterKeyHint,
+    autoComplete = 'tel',
+    showCountrySelector = true,
+    trailing,
     isDisabled = false,
     isRequired = false,
     isCountryFixed = false,
@@ -100,7 +139,9 @@
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolvePhoneNumberInput(styleProps));
+  const style = useComponentDefaults('PhoneNumberInput', () => styleProps);
+
+  const classes = $derived(resolvePhoneNumberInput(style.current));
   const overlays = getOverlays();
   const adapters = getAdapters();
 
@@ -116,7 +157,7 @@
       country = next;
     },
     onChange: (change) => onChange?.(change),
-    onCountryChange: (next) => onCountryChange?.(next),
+    onCountryChange: (next) => onCountryChange?.({ country: next }),
     isCountryFixed: () => isCountryFixed,
     // The picker is a modal on the page's stack (a mounted ModalStack), and
     // its body is its own chunk: neither is part of this field's cost.
@@ -139,13 +180,12 @@
             searchLabel,
             emptyText,
             testID,
-            styleProps,
+            styleProps: style.current,
           },
           title: countryLabel,
           closeLabel,
           pendingLabel: countryLabel,
           testID: testID ? `${testID}-picker` : undefined,
-          ...classes.modal,
         }
       );
     },
@@ -165,7 +205,9 @@
 {/snippet}
 
 {#snippet leading()}
-  {#if phone.canPick}
+  {#if !showCountrySelector}
+    <!-- Blade: no selector, the dial code alone. -->
+  {:else if phone.canPick}
     <button
       type="button"
       class={classes.country}
@@ -182,7 +224,7 @@
     <span class={classes.country}>{@render flag()}</span>
   {/if}
   {#if showDialCode}
-    <span class={classes.dialCode}>{selected?.dialCode}</span>
+    <span class={cx(classes.dialCode, !showCountrySelector && classes.dialCodeAlone)}>{selected?.dialCode}</span>
   {/if}
 {/snippet}
 
@@ -191,7 +233,18 @@
   attach={phone.attach}
   bind:value
   {label}
+  {necessityIndicator}
+  {labelArea}
   {placeholder}
+  {onFocus}
+  {onBlur}
+  {onClick}
+  {onClearButtonClick}
+  {enterKeyHint}
+  {autoComplete}
+  {trailing}
+  showClearButton
+  size={style.current.size}
   {isDisabled}
   {isRequired}
   {validationState}
@@ -208,5 +261,5 @@
   {accessibilityLabel}
   {testID}
   class={className}
-  onChange={phone.handleNumber}
+  onChange={({ value: next }) => phone.handleNumber(next)}
 />

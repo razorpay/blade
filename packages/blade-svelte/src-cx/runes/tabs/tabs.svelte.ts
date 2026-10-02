@@ -1,177 +1,229 @@
+import { onDestroy } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import type { MoveAction } from '../base/navigable-list.svelte';
-import {
-  createOptionListCore,
-  dispatchListKey,
-  type OptionListCore,
-  type OptionListCoreOptions,
-} from '../base/option-list';
+import { createChoiceList, type ChoiceField } from '../base/choice-list.svelte';
+import { PRESS_KEYS } from '../base/keys';
+import { registerEntry } from '../base/ordered-entries.svelte';
+import type { TabEntry, TabsContext } from './context';
 
-export interface TabsModelOptions<T> extends Omit<
-  OptionListCoreOptions<T>,
-  'strictOption' | 'loop' | 'orientation'
-> {
-  /** automatic: arrow keys select as they move (APG default); manual: Enter/Space selects. */
-  activation?: 'automatic' | 'manual';
-  orientation?: 'horizontal' | 'vertical';
-}
+export type { TabEntry, TabsContext };
 
-export type TabsModel<T> = OptionListCore<T>;
-
-/**
- * A tablist: an option list that always has one tab selected, wraps at the
- * ends, and (by default) selects as the focus moves.
- */
-export function createTabsModel<T>(options: TabsModelOptions<T>): TabsModel<T> {
-  const automatic = (options.activation ?? 'automatic') === 'automatic';
-  const list = createOptionListCore<T>({
-    ...options,
-    strictOption: true,
-    loop: true,
-    orientation: options.orientation || 'horizontal',
-  });
-
-  function move(action: MoveAction): void {
-    list.move(action);
-    if (automatic) {
-      list.selectActive();
-    }
-  }
-
-  const model: TabsModel<T> = {
-    ...list,
-    move,
-    handleKey(key, mods) {
-      // Dispatch against `model`, so moves go through the activating `move`.
-      return dispatchListKey(model, key, mods);
-    },
-  };
-  return model;
-}
-
-/** Where the picked tab sits among the tabs. */
-export interface TabsPick {
-  index: number;
-  count: number;
-}
-
-export interface TabsOptions<T> {
-  /** The host's `$props.id()`: the tab and panel ids hang off it. */
+export interface TabsOptions<Shared> {
+  /** The host's `$props.id()`: tab and panel ids hang off it. */
   id: string;
-  items: () => readonly T[];
-  /** A stable key per item; it is also the value. */
-  itemKey: (item: T) => string;
-  isItemDisabled?: (item: T) => boolean;
   value: () => string | undefined;
-  /** The bindable write. */
+  /** The bindable write: every accepted value. */
   onValue: (value: string) => void;
   /** A user pick changed the value. */
   onChange?: (value: string) => void;
-  /** `manual`: arrows only move focus, Enter or Space picks. Fixed at mount. */
-  activation: 'automatic' | 'manual';
+  /** `automatic`: focus moving onto a tab picks it; `manual`: a press does. */
+  activation: () => 'automatic' | 'manual';
+  isLazy: () => boolean;
+  shared: () => Shared;
 }
 
-export interface Tabs<T> {
-  /** The picked item; undefined when `value` names none. */
-  readonly picked: T | undefined;
-  readonly pick: TabsPick;
-  /** One tab stop: the tab being moved over, else the picked one. */
-  readonly stop: number;
-  tabId(item: T): string;
-  panelId(item: T): string;
-  select(item: T): void;
-  clearActive(): void;
+/** Where the picked tab is inside the tablist's box, for the indicator. */
+export interface TabsIndicator {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+export interface Tabs<Shared> extends TabsContext<Shared> {
+  /** Measured from the picked tab; undefined before the first measure. Tracked. */
+  readonly indicator: TabsIndicator | undefined;
+  /** On the tablist's positioned box: keeps the indicator on the picked tab through resizes. */
+  readonly attachList: Attachment<HTMLElement>;
+}
+
+const safe = (value: string) => value.replace(/[^\w-]/g, '_');
+
+/**
+ * The tabs behaviour: the headless choice list as a tablist — one value,
+ * never cleared, the tabs registered and read back in document order, and
+ * arrows (either axis), Home and End between them, wrapping. Call during
+ * component initialisation; the component provides the result to its
+ * TabItems and TabPanels (`provideTabs`).
+ */
+export function createTabs<Shared>(options: TabsOptions<Shared>): Tabs<Shared> {
+  // Not a form field: the value lives in the host's prop.
+  const field: ChoiceField = {
+    record: {
+      get value() {
+        return current();
+      },
+    },
+    updateValue(value, onValue) {
+      onValue?.(value);
+    },
+    touch() {},
+  };
+  const choices = createChoiceList<string>(field, {
+    loop: true,
+    orientation: 'both',
+  });
+  // Blade picks the first tab when the host names none.
+  const firstEnabled = $derived(
+    choices.items().find((value, index) => !choices.isDisabled(value, index))
+  );
+  const current = (): string | undefined => options.value() ?? firstEnabled;
+
+  let indicator = $state<TabsIndicator | undefined>();
+
+  function measure() {
+    const value = current();
+    const element =
+      value === undefined
+        ? undefined
+        : choices.elementAt(choices.items().indexOf(value));
+    indicator = element
+      ? {
+          x: element.offsetLeft,
+          y: element.offsetTop,
+          width: element.offsetWidth,
+          height: element.offsetHeight,
+        }
+      : undefined;
+  }
+
+  // Re-measure whenever the pick or the set of tabs changes.
+  $effect(() => {
+    void current();
+    void choices.items();
+    measure();
+  });
+
+  function select(value: string) {
+    const index = choices.items().indexOf(value);
+    if (value === current() || choices.isDisabled(value, index)) {
+      return;
+    }
+    choices.toggle(value, index, (next) => {
+      options.onValue(next as string);
+      options.onChange?.(next as string);
+    });
+  }
+
+  return {
+    get shared() {
+      return options.shared();
+    },
+    get value() {
+      return current();
+    },
+    get isLazy() {
+      return options.isLazy();
+    },
+    get indicator() {
+      return indicator;
+    },
+    register: choices.register,
+    reorder: choices.reorder,
+    isTabStop(value) {
+      const stop = choices.tabStop();
+      const items = choices.items();
+      // The picked tab holds the stop until the keyboard moves it.
+      return choices.activeIndex() < 0
+        ? value === current()
+        : items[stop] === value;
+    },
+    select,
+    moveFocus(entry, event) {
+      choices.setActive(choices.items().indexOf(entry.value()));
+      if (PRESS_KEYS.has(event.key)) {
+        // Picks as a press would; a link tab still navigates on Enter.
+        select(entry.value());
+        if (event.key === ' ') {
+          event.preventDefault();
+        }
+        return;
+      }
+      if (
+        choices.handleMoveKey(event.key, {
+          alt: event.altKey,
+          ctrl: event.ctrlKey,
+          meta: event.metaKey,
+        })
+      ) {
+        event.preventDefault();
+      }
+    },
+    focused(entry) {
+      choices.setActive(choices.items().indexOf(entry.value()));
+      if (options.activation() === 'automatic') {
+        select(entry.value());
+      }
+    },
+    tabId: (value) => `${options.id}-${safe(value)}-tab`,
+    panelId: (value) => `${options.id}-${safe(value)}-panel`,
+    attachList(node) {
+      measure();
+      if (typeof ResizeObserver === 'undefined') {
+        return;
+      }
+      const observer = new ResizeObserver(() => measure());
+      observer.observe(node);
+      return () => observer.disconnect();
+    },
+  };
+}
+
+export interface TabItemOptions {
+  value: () => string;
+  isDisabled: () => boolean;
+}
+
+export interface TabItem<Shared> {
+  readonly tabs: TabsContext<Shared> | undefined;
+  readonly isSelected: boolean;
+  readonly isTabStop: boolean;
+  readonly tabId: string;
+  readonly panelId: string;
+  handleClick(): void;
   handleKeyDown(event: KeyboardEvent): void;
-  /** On the tablist: where the keyboard moves focus between tabs. */
+  handleFocus(): void;
+  /** On the tab element: how the tabs order, focus and measure it. */
   readonly attach: Attachment<HTMLElement>;
 }
 
 /**
- * The tablist behaviour: one tab always picked, the keyboard over the tabs
- * and the one tab stop. Call during component initialisation; `value` must
- * already name a tab (the component picks the first enabled one).
+ * One tab. Call during component initialisation; the component passes
+ * `getTabs()`. Outside Tabs it is inert.
  */
-export function createTabs<T>(options: TabsOptions<T>): Tabs<T> {
-  let list: HTMLElement | undefined;
-  let pending = $state(-1);
-
-  const tabId = (item: T) => `${options.id}-tab-${options.itemKey(item)}`;
-  const find = (key: string | undefined) =>
-    options.items().find((item) => options.itemKey(item) === key);
-
-  const model = createTabsModel<T>({
-    items: options.items,
-    isDisabled: (item) => Boolean(options.isItemDisabled?.(item)),
-    compare: (a, b) => options.itemKey(a) === options.itemKey(b),
-    activation: options.activation,
-    value: () => find(options.value()) ?? null,
-    onChange: (item) => {
-      if (item) {
-        const key = options.itemKey(item);
-        options.onValue(key);
-        options.onChange?.(key);
-      }
-    },
+export function createTabItem<Shared>(
+  tabs: TabsContext<Shared> | undefined,
+  options: TabItemOptions
+): TabItem<Shared> {
+  const { entry, attach, unregister } = registerEntry<TabEntry>(tabs, {
+    value: options.value,
+    isDisabled: options.isDisabled,
   });
-
-  const activeIndex = $derived(model.activeIndex());
-
-  const picked = $derived(find(options.value()));
-  // Tabs that fill the row are equal in width, so the underline needs no
-  // measuring: it is one tab wide and slides by whole tabs. Content-sized
-  // tabs underline themselves instead (see `pick` in styles.ts).
-  const pick: TabsPick = $derived({
-    index: picked ? options.items().indexOf(picked) : -1,
-    count: options.items().length,
-  });
-  const stop = $derived(activeIndex >= 0 ? activeIndex : pick.index);
-
+  onDestroy(unregister);
   return {
-    get picked() {
-      return picked;
+    tabs,
+    get isSelected() {
+      return tabs?.value === options.value();
     },
-    get pick() {
-      return pick;
+    get isTabStop() {
+      return Boolean(tabs?.isTabStop(options.value()));
     },
-    get stop() {
-      return stop;
+    get tabId() {
+      return tabs?.tabId(options.value()) ?? '';
     },
-    tabId,
-    panelId: (item) => `${options.id}-panel-${options.itemKey(item)}`,
-    select: (item) => model.select(item),
-    clearActive: () => model.clearActive(),
+    get panelId() {
+      return tabs?.panelId(options.value()) ?? '';
+    },
+    handleClick() {
+      if (!options.isDisabled()) {
+        tabs?.select(options.value());
+      }
+    },
     handleKeyDown(event) {
-      const from = options
-        .items()
-        .findIndex((item) => tabId(item) === (event.target as HTMLElement).id);
-      if (from < 0) {
-        return;
-      }
-      model.setActive(from);
-      const action = model.handleKey(event.key, {
-        alt: event.altKey,
-        ctrl: event.ctrlKey,
-        meta: event.metaKey,
-      });
-      if (action && action !== 'type') {
-        event.preventDefault();
-        pending = model.activeIndex();
-      }
+      tabs?.moveFocus(entry, event);
     },
-    // Focus moves once the tabs have re-rendered with the new stop: the
-    // attachment re-runs on `pending` after the DOM update.
-    attach(node) {
-      list = node;
-      const index = pending;
-      if (index >= 0) {
-        pending = -1;
-        list
-          .querySelector<HTMLElement>(`[data-index="${index}"]`)
-          ?.focus({ preventScroll: true });
-      }
-      return () => {
-        list = undefined;
-      };
+    handleFocus() {
+      tabs?.focused(entry);
     },
+    attach,
   };
 }

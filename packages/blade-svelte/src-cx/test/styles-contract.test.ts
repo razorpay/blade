@@ -52,7 +52,9 @@ function classTokensIn(source: string): string[] {
   const code = source
     .replace(/\/\*[\s\S]*?\*\//g, '')
     .replace(/^\s*\/\/.*$/gm, '')
-    .replace(/^\s*(?:import|export)\b[^;]*;/gm, '');
+    // Imports and re-exports only: `export const x = …;` is a style map.
+    .replace(/^\s*import\b[^;]*;/gm, '')
+    .replace(/^\s*export\s+(?:type\s+)?(?:\{[^}]*\}|\*)\s*(?:from\s*'[^']*')?;/gm, '');
   const names = new Set(
     (code.match(/\[(?:\s*'[^'\n]*'\s*,?)+\s*\]/g) ?? []).flatMap((list) =>
       (list.match(/'[^'\n]*'/g) ?? []).map((name) => name.slice(1, -1))
@@ -134,6 +136,8 @@ const SHARED_RUNE_ATOMS = [
   'form/field-line.svelte.ts',
   'modal/overlays.svelte.ts',
   'toast/toasts.svelte.ts',
+  'defaults/defaults.svelte.ts',
+  'defaults/breakpoints.svelte.ts',
 ];
 
 /**
@@ -174,7 +178,9 @@ function stripComments(source: string): string {
   return source
     .replace(/\/\*[\s\S]*?\*\//g, '')
     .replace(/^\s*\/\/.*$/gm, '')
-    .replace(/^\s*(?:import|export)\b[^;]*;/gm, '');
+    // Imports and re-exports only: `export const x = …;` is a style map.
+    .replace(/^\s*import\b[^;]*;/gm, '')
+    .replace(/^\s*export\s+(?:type\s+)?(?:\{[^}]*\}|\*)\s*(?:from\s*'[^']*')?;/gm, '');
 }
 
 // A lone token that is also an HTML input type (`type === 'hidden'`) is a
@@ -182,7 +188,10 @@ function stripComments(source: string): string {
 const INPUT_TYPES = new Set(['hidden']);
 
 function classLiteralsIn(source: string): string[] {
-  const literals = stripComments(source).match(/'[^'\n]*'|"[^"\n]*"|`[^`]*`/g);
+  // A native animation spec names CSS values (`position: 'absolute'`),
+  // not classes.
+  const code = stripComments(source).replace(/\bposition:\s*'[a-z]+'/g, '');
+  const literals = code.match(/'[^'\n]*'|"[^"\n]*"|`[^`]*`/g);
   return (literals ?? []).filter((literal) => {
     const tokens = literal.slice(1, -1).split(/\s+/);
     if (tokens.length === 1 && INPUT_TYPES.has(tokens[0])) {

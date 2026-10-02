@@ -4,8 +4,7 @@ import type { BackAnswer } from './back';
 export interface Layer<E> {
   id: number;
   entry: E;
-  container?: string;
-  /** Resolves when the layer leaves the stack. */
+  /** Resolves when the layer leaves the stack, or once `settle`d. */
   promise: Promise<unknown>;
   /** Removes this layer and everything above it. */
   pop(): void;
@@ -15,41 +14,36 @@ export interface Layer<E> {
   close(): void;
   /** Resolves the promise with `value`, then pops. */
   resolve(value?: unknown): void;
+  /** Resolves the promise with `value` and leaves the layer where it is: it goes later. */
+  settle(value?: unknown): void;
 }
 
 export interface BackPolicy<E> {
-  /** Overlays close before screens: pick the container whose top layer answers first. */
-  preferContainer?: string;
   /**
    * The top layer may own back — ask its model here (a dialog's
    * `disclosure.back()`). See `BackAnswer` for the protocol; undefined
    * defers to the stack's default (pop the top layer).
    */
   onTop?: (top: Layer<E>) => BackAnswer;
-  /** Runs before popping a screen; return true to intercept (a confirmation is showing). */
-  confirmLeave?: (top: Layer<E>) => boolean;
-  /** Nothing left to pop. */
-  onEmpty?: () => void;
 }
 
 export interface LayerStack<E> {
   /** Bottom first; tracked by whatever reads it. */
   readonly entries: readonly Layer<E>[];
-  push(entry: E, container?: string): Layer<E>;
+  push(entry: E): Layer<E>;
   /** Replaces a layer's entry and republishes `entries`; a stranger is ignored. */
   update(layer: Layer<E>, entry: E): void;
-  pop(index: number): void;
   popTill(index: number): void;
   clear(): void;
-  top(container?: string): Layer<E> | undefined;
-  size(container?: string): number;
-  /** Back pressed. Returns whether something handled it. */
+  top(): Layer<E> | undefined;
+  size(): number;
+  /** Back pressed. Returns whether something handled it; the root layer stays. */
   back(policy?: BackPolicy<E>): boolean;
 }
 
 let nextId = 0;
 
-/** The core of navstack: ordered layers with promises, in named containers. */
+/** The core of navstack: ordered layers with promises. */
 export function createLayerStack<E>(): LayerStack<E> {
   let entries = $state.raw<readonly Layer<E>[]>([]);
 
@@ -62,9 +56,7 @@ export function createLayerStack<E>(): LayerStack<E> {
       return;
     }
     entries = current.filter((layer, i) => !predicate(layer, i));
-    removed.forEach((layer) => {
-      (layer as Layer<E> & { _settle: (v?: unknown) => void })._settle();
-    });
+    removed.forEach((layer) => layer.settle());
   }
 
   function indexOf(layer: Layer<E>): number {
@@ -81,14 +73,13 @@ export function createLayerStack<E>(): LayerStack<E> {
         entries = [...entries];
       }
     },
-    push(entry, container) {
+    push(entry) {
       const [promise, settle] = promisePair<unknown>();
-      const layer = {
+      const layer: Layer<E> = {
         id: nextId++,
         entry,
-        container,
         promise,
-        _settle: settle,
+        settle,
         pop() {
           const i = indexOf(layer);
           if (i >= 0) {
@@ -108,12 +99,9 @@ export function createLayerStack<E>(): LayerStack<E> {
           settle(value);
           layer.pop();
         },
-      } as Layer<E> & { _settle: (v?: unknown) => void };
+      };
       entries = [...entries, layer];
       return layer;
-    },
-    pop(index) {
-      remove((_, i) => i === index);
     },
     popTill(index) {
       remove((_, i) => i >= Math.max(0, index));
@@ -121,24 +109,11 @@ export function createLayerStack<E>(): LayerStack<E> {
     clear() {
       remove(() => true);
     },
-    top(container) {
-      const list = entries;
-      for (let i = list.length - 1; i >= 0; i--) {
-        if (container === undefined || list[i].container === container) {
-          return list[i];
-        }
-      }
-      return undefined;
-    },
-    size(container) {
-      return container === undefined
-        ? entries.length
-        : entries.filter((l) => l.container === container).length;
-    },
+    top: () => entries[entries.length - 1],
+    size: () => entries.length,
     back(policy = {}) {
-      const top = stack.top(policy.preferContainer) || stack.top();
+      const top = stack.top();
       if (!top) {
-        policy.onEmpty?.();
         return false;
       }
       const owned = policy.onTop?.(top);
@@ -146,11 +121,7 @@ export function createLayerStack<E>(): LayerStack<E> {
         return owned;
       }
       if (stack.size() <= 1) {
-        policy.onEmpty?.();
         return false;
-      }
-      if (policy.confirmLeave?.(top)) {
-        return true;
       }
       top.close();
       return true;

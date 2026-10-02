@@ -1,16 +1,16 @@
 import { createChoiceList, type ChoiceEntry } from '../base/choice-list.svelte';
 import { sameSelection } from '../base/selection';
-import { setupField } from '../form/field.svelte';
-import { createFieldLine } from '../form/field-line.svelte';
-import {
-  visibleFieldError,
-  type FieldHint,
-  type ValidationState,
+import { focusableWithin } from '../dom/focus';
+import { createFieldShell } from '../form/field.svelte';
+import type {
+  ChoiceValidationState,
+  FieldHint,
+  HintContent,
 } from '../form/hint';
 import type { OptionListContext } from './context';
 
 /** A pick is made or missing: there is no success state to show. */
-export type OptionListValidationState = Exclude<ValidationState, 'success'>;
+export type OptionListValidationState = ChoiceValidationState;
 
 export interface OptionListOptions<T, Shared> {
   /** The host's `$props.id()`: the label and hint ids hang off it. */
@@ -40,7 +40,7 @@ export interface OptionListOptions<T, Shared> {
   isRequired: () => boolean;
   isDisabled: () => boolean;
   validationState: () => OptionListValidationState | undefined;
-  hint: () => string | undefined;
+  hint: () => HintContent | undefined;
   /** Handed to every item as is. */
   shared: () => Shared;
 }
@@ -78,23 +78,31 @@ export function createOptionList<T, Shared>(
   // The field stores one item or an array of them.
   const sameValue = sameSelection<T>(sameOption);
 
-  const fieldProps = () => ({
-    name: options.name(),
-    value: options.value(),
-    compare: sameValue,
-    required: options.isRequired(),
-    disabled: options.isDisabled(),
+  // The form reveals the picked row, else the first enabled one — when the
+  // rows register; a virtual list's rows are data, and it has no handle.
+  const shell = createFieldShell({
+    id: options.id,
+    kind: 'radio',
+    props: () => ({
+      name: options.name(),
+      value: options.value(),
+      compare: sameValue,
+      required: options.isRequired(),
+      disabled: options.isDisabled(),
+    }),
+    onValue: (next) => options.onValue(next as T | readonly T[] | null),
+    line: () => ({
+      validationState: options.validationState(),
+      hint: options.hint(),
+    }),
+    // The row is a label: the form focuses the control inside it.
+    handle: () => {
+      const row = model.elementAt(model.tabStop());
+      return row?.querySelectorAll ? (focusableWithin(row)[0] ?? row) : row;
+    },
   });
-
-  const { field, form, notifyInput } = setupField(
-    fieldProps(),
-    'radio',
-    (next) => {
-      options.onValue(next as T | readonly T[] | null);
-    }
-  );
   const optionText = options.optionText;
-  const model = createChoiceList<T>(field, {
+  const model = createChoiceList<T>(shell.field, {
     items: options.options,
     typeahead: optionText && ((option) => optionText(option) ?? ''),
     multiple: options.isMultiple,
@@ -105,9 +113,8 @@ export function createOptionList<T, Shared>(
     disabled: options.isDisabled,
   });
 
-  $effect.pre(() => {
-    field.updateProps(fieldProps());
-  });
+  // Pre-effect: the field follows its props from before the first paint.
+  $effect.pre(shell.syncProps);
 
   // One keyboard for single and multiple: keys move the active row and
   // pick nothing; Enter and Space pick it. The ring shows only while the
@@ -115,15 +122,6 @@ export function createOptionList<T, Shared>(
   const activeIndex = $derived(model.activeIndex());
   let byKeyboard = $state(true);
   let hasFocus = $state(false);
-
-  const line = createFieldLine(
-    form,
-    () => ({
-      validationState: options.validationState(),
-      hint: options.hint(),
-    }),
-    (state) => visibleFieldError(field.record, state)
-  );
 
   const tabStop = $derived(model.tabStop());
 
@@ -172,13 +170,13 @@ export function createOptionList<T, Shared>(
     get name() {
       return options.name() ?? options.id;
     },
-    labelId: `${options.id}-label`,
-    hintId: `${options.id}-hint`,
+    labelId: shell.labelId,
+    hintId: shell.hintId,
     get hint() {
-      return line.hint;
+      return shell.hint;
     },
     get isInvalid() {
-      return line.hint.validationState === 'error';
+      return shell.isInvalid;
     },
     get activeIndex() {
       return activeIndex;
@@ -190,8 +188,8 @@ export function createOptionList<T, Shared>(
       return tabStop;
     },
     register: (entry: ChoiceEntry<T>) => model.register(entry),
-    reorder: () => model.reorder(),
-    indexOf: (entry) => model.indexOf(entry),
+    reorder: model.reorder,
+    indexOf: model.indexOf,
     stateOf(option, index) {
       return {
         index,
@@ -203,26 +201,23 @@ export function createOptionList<T, Shared>(
     isTabStop: (index) => index === stop,
     stopWithin,
     toggle(option, index, event) {
-      let changed = false;
-      const shown = model.toggle(option, index, (next) => {
-        changed = true;
-        commit(next);
-      });
-      if (changed) {
-        notifyInput(event);
-      }
-      return shown;
+      return shell.edit(
+        (onValue) => model.toggle(option, index, onValue),
+        commit,
+        event
+      );
     },
     setActive: (index) => model.setActive(index),
     handleKeyDown(event) {
-      let changed = false;
-      const handled = model.handleKey(
-        event.key,
-        { alt: event.altKey, ctrl: event.ctrlKey, meta: event.metaKey },
-        (next) => {
-          changed = true;
-          commit(next);
-        }
+      const handled = shell.edit(
+        (onValue) =>
+          model.handleKey(
+            event.key,
+            { alt: event.altKey, ctrl: event.ctrlKey, meta: event.metaKey },
+            onValue
+          ),
+        commit,
+        event
       );
       if (!handled) {
         return;
@@ -231,9 +226,6 @@ export function createOptionList<T, Shared>(
       // time, and submit the form on Enter.
       event.preventDefault();
       byKeyboard = true;
-      if (changed) {
-        notifyInput(event);
-      }
     },
     handlePointerDown() {
       byKeyboard = false;

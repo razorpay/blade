@@ -1,3 +1,4 @@
+import { CHECKBOX_AXES } from '../../index';
 import type { StoryMeta } from '../types';
 
 const meta: StoryMeta = {
@@ -6,7 +7,9 @@ const meta: StoryMeta = {
     'Checkbox component (packages/blade/components/checkbox) over the checkbox and field models; inside a Form it registers itself and mirrors its own error.',
   argTypes: {
     label: { control: 'text' },
+    size: { control: 'select', options: CHECKBOX_AXES.size },
     isChecked: { control: 'boolean' },
+    isIndeterminate: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
     helpText: { control: 'text' },
   },
@@ -16,7 +19,9 @@ const meta: StoryMeta = {
         'Controlled through bind:isChecked; the control seeds it, the user toggles it.',
       args: {
         label: 'Save this card for faster checkout',
+        size: 'medium',
         isChecked: false,
+        isIndeterminate: false,
         isDisabled: false,
         helpText: '',
       },

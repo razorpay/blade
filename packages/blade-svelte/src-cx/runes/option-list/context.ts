@@ -1,5 +1,6 @@
-import { getContext, setContext } from 'svelte';
+import { defineContext } from '../context';
 import type { ChoiceEntry } from '../base/choice-list.svelte';
+import type { EntryHost } from '../base/ordered-entries.svelte';
 
 /** What an option learns about itself. */
 export interface OptionState {
@@ -13,19 +14,14 @@ export interface OptionState {
  * library's own payload from list to item — checkout hands its class parts
  * and the test id — and the rune only passes it through.
  */
-export interface OptionListContext<T, Shared> {
+export interface OptionListContext<T, Shared>
+  extends EntryHost<ChoiceEntry<T>> {
   readonly shared: Shared;
   /** Native radios of one group, or checkboxes. */
   readonly kind: 'radio' | 'checkbox';
   /** Radios share it: the prop, else the id. */
   readonly name: string;
   readonly isInvalid: boolean;
-  /** Adds an item; returns its unregister. A virtual list registers none. */
-  register(entry: ChoiceEntry<T>): () => void;
-  /** An item mounted or moved: re-read document order. */
-  reorder(): void;
-  /** The item's position in document order; tracked. */
-  indexOf(entry: ChoiceEntry<T>): number;
   stateOf(option: T, index: number): OptionState;
   /** The keyboard is on this option, and is what moved there: draw it, take focus. */
   isActive(index: number): boolean;
@@ -52,26 +48,26 @@ export interface OptionRowSlot<T> {
   readonly isTabStop: boolean;
 }
 
-const OPTION_LIST = Symbol('blade-option-list');
-const OPTION_ROW = Symbol('blade-option-row');
+const OPTION_LIST = defineContext<unknown>('blade-option-list');
+const OPTION_ROW = defineContext<unknown>('blade-option-row');
 
 export function provideOptionList<T, Shared>(
   list: OptionListContext<T, Shared>
 ): void {
-  setContext(OPTION_LIST, list);
+  OPTION_LIST.set(list);
 }
 
 export function getOptionList<T, Shared>():
   | OptionListContext<T, Shared>
   | undefined {
-  return getContext(OPTION_LIST);
+  return OPTION_LIST.get() as OptionListContext<T, Shared> | undefined;
 }
 
 /** Called by the virtual list's row, around the item it renders. */
 export function provideOptionRow<T>(slot: OptionRowSlot<T>): void {
-  setContext(OPTION_ROW, slot);
+  OPTION_ROW.set(slot);
 }
 
 export function getOptionRow<T>(): OptionRowSlot<T> | undefined {
-  return getContext(OPTION_ROW);
+  return OPTION_ROW.get() as OptionRowSlot<T> | undefined;
 }

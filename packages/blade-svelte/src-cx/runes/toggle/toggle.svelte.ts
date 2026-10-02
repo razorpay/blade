@@ -1,11 +1,10 @@
 import type { Attachment } from 'svelte/attachments';
 import { syncChecked } from '../dom/checked';
-import { setupField, type FieldModel } from '../form/field.svelte';
-import { createFieldLine } from '../form/field-line.svelte';
-import {
-  visibleFieldError,
-  type FieldHint,
-  type ValidationState,
+import { createFieldShell, type FieldModel } from '../form/field.svelte';
+import type {
+  ChoiceValidationState,
+  FieldHint,
+  HintContent,
 } from '../form/hint';
 
 export interface CheckboxModel {
@@ -46,7 +45,7 @@ export function createCheckbox(
 }
 
 /** A box is ticked or not: there is no success state to show. */
-export type ToggleValidationState = Exclude<ValidationState, 'success'>;
+export type ToggleValidationState = ChoiceValidationState;
 
 export interface ToggleOptions {
   /** The host's `$props.id()`: the hint id hangs off it. */
@@ -67,7 +66,7 @@ export interface ToggleOptions {
   isBusy?: () => boolean;
   isRequired?: () => boolean;
   validationState?: () => ToggleValidationState | undefined;
-  hint?: () => string | undefined;
+  hint?: () => HintContent | undefined;
 }
 
 export interface Toggle {
@@ -90,41 +89,31 @@ export interface Toggle {
 export function createToggle(options: ToggleOptions): Toggle {
   let node: HTMLInputElement | undefined;
 
-  const fieldProps = () => ({
-    name: options.name(),
-    value: options.isChecked(),
-    parse: options.parse?.(),
-    required: options.isRequired?.() ?? false,
-    disabled: options.isDisabled(),
-  });
-
-  const { field, form, notifyInput } = setupField(
-    fieldProps(),
-    'checkbox',
-    (next) => options.onValue(Boolean(next))
-  );
-  field.setHandle(() => node);
-  const model = createCheckbox(field, {
-    disabled: () => options.isDisabled() || Boolean(options.isBusy?.()),
-  });
-
-  const isChecked = $derived(model.isChecked());
-
-  // Pre-effect: the first run lands before the template reads the model, so
-  // the first paint is already right; later runs keep the field in step
-  // with prop changes. The control follows through `sync`.
-  $effect.pre(() => {
-    field.updateProps(fieldProps());
-  });
-
-  const line = createFieldLine(
-    form,
-    () => ({
+  const shell = createFieldShell({
+    id: options.id,
+    kind: 'checkbox',
+    props: () => ({
+      name: options.name(),
+      value: options.isChecked(),
+      parse: options.parse?.(),
+      required: options.isRequired?.() ?? false,
+      disabled: options.isDisabled(),
+    }),
+    onValue: (next) => options.onValue(Boolean(next)),
+    line: () => ({
       validationState: options.validationState?.(),
       hint: options.hint?.(),
     }),
-    (state) => visibleFieldError(field.record, state)
-  );
+    handle: () => node,
+  });
+  // Pre-effect: the field follows its props from before the first paint.
+  $effect.pre(shell.syncProps);
+  const model = createCheckbox(shell.field, {
+    disabled: () => options.isDisabled() || Boolean(options.isBusy?.()),
+  });
+
+  // The control follows the field through `sync`.
+  const isChecked = $derived(model.isChecked());
   const write = syncChecked(() => isChecked);
 
   return {
@@ -135,23 +124,25 @@ export function createToggle(options: ToggleOptions): Toggle {
       return isChecked ? 'on' : 'off';
     },
     get tone() {
-      return line.hint.validationState === 'error' ? 'invalid' : 'default';
+      return shell.isInvalid ? 'invalid' : 'default';
     },
     get hint() {
-      return line.hint;
+      return shell.hint;
     },
-    hintId: `${options.id}-hint`,
+    hintId: shell.hintId,
     handleChange(event) {
       const target = event.target as HTMLInputElement;
-      const shown = model.toggle(target.checked, (next) => {
-        options.onValue(Boolean(next));
-        options.onChange?.(Boolean(next));
-      });
+      const shown = shell.edit(
+        (onValue) => model.toggle(target.checked, onValue),
+        (next) => {
+          options.onValue(Boolean(next));
+          options.onChange?.(Boolean(next));
+        },
+        event
+      );
       if (target.checked !== shown) {
         target.checked = shown;
-        return;
       }
-      notifyInput(event);
     },
     sync(element) {
       node = element;

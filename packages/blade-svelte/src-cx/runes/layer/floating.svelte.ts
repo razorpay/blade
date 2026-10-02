@@ -1,8 +1,10 @@
+import { untrack } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { focusableWithin } from '../dom/focus';
+import { captureFocusReturn, focusableWithin } from '../dom/focus';
 import { anchorTo } from './anchor';
 import type { Placed, Placement } from './placement';
 import { getLayers } from './layers';
+import { portal } from './portal';
 import { createPresence } from './presence';
 
 export interface FloatingOptions {
@@ -11,7 +13,10 @@ export interface FloatingOptions {
   placement: () => Placement;
   /** Distance between the two, in px. */
   gap: () => number;
-  /** Escape pressed — in capture, so a modal beneath does not see it. */
+  /**
+   * Escape pressed while this is the topmost layer: a modal beneath, or a
+   * floating one under it, does not see it.
+   */
   onEscape: () => void;
   /** A press landed outside the anchor and the floating element. */
   onOutside: () => void;
@@ -19,10 +24,7 @@ export interface FloatingOptions {
   isFocusMoved?: boolean;
   /** Names the anchor's first focusable as described by this id, while open. */
   describes?: string;
-  /**
-   * Leaves the host by its own hand on teardown: moved out of the branch
-   * Svelte made it in, Svelte's teardown no longer finds it there.
-   */
+  /** See `portal`. */
   removesItself?: boolean;
 }
 
@@ -39,10 +41,10 @@ export interface Floating {
 
 /**
  * The web half of a tooltip or popover: DOM-bound (portal, measurement,
- * document listeners). It renders into the LayerHost so scroll and overflow
- * cannot clip it, but stays off the layer stack — it is not modal, the page
- * stays live. Call during component initialisation; native twins never use
- * it.
+ * outside presses). It renders into the LayerHost so scroll and overflow
+ * cannot clip it, and joins the layer stack as a floating layer — not
+ * modal, the page stays live, but Escape reaches only the topmost overlay.
+ * Call during component initialisation; native twins never use it.
  */
 export function createFloating(options: FloatingOptions): Floating {
   const layers = getLayers();
@@ -56,7 +58,9 @@ export function createFloating(options: FloatingOptions): Floating {
     },
     presence,
     attach(node) {
-      host?.appendChild(node);
+      const leave = portal(() => host, {
+        removesItself: options.removesItself,
+      })(node);
       const anchor = options.anchor();
       const anchored = anchorTo({
         anchor,
@@ -72,43 +76,43 @@ export function createFloating(options: FloatingOptions): Floating {
         ? (focusableWithin(anchor)[0] ?? anchor)
         : undefined;
       described?.setAttribute('aria-describedby', options.describes as string);
-      const returnTo = document.activeElement;
+      const returnFocus = captureFocusReturn(() => node, { preventScroll: true });
       if (options.isFocusMoved) {
         (focusableWithin(node)[0] ?? node).focus({ preventScroll: true });
       }
+      // Untracked: joining the stack reads and writes it, and this
+      // attachment must not re-run on that.
+      const removeLayer = untrack(() =>
+        layers.push({
+          isModal: false,
+          dismiss: (source) => {
+            if (source !== 'escape') {
+              return false;
+            }
+            options.onEscape();
+            return true;
+          },
+          back: () => undefined,
+        })
+      );
 
-      function handleKeyDown(event: KeyboardEvent) {
-        if (event.key === 'Escape') {
-          event.stopPropagation();
-          options.onEscape();
-        }
-      }
       function handlePointerDown(event: PointerEvent) {
         const target = event.target as Node | null;
         if (!anchor.contains(target) && !node.contains(target)) {
           options.onOutside();
         }
       }
-      document.addEventListener('keydown', handleKeyDown, true);
       document.addEventListener('pointerdown', handlePointerDown, true);
       return () => {
         anchored.stop();
+        untrack(removeLayer);
         described?.removeAttribute('aria-describedby');
-        document.removeEventListener('keydown', handleKeyDown, true);
         document.removeEventListener('pointerdown', handlePointerDown, true);
         if (options.isFocusMoved) {
           // Back to the anchor, unless focus already went somewhere on purpose.
-          const active = document.activeElement;
-          if (
-            returnTo instanceof HTMLElement &&
-            (!active || active === document.body || node.contains(active))
-          ) {
-            returnTo.focus({ preventScroll: true });
-          }
+          returnFocus();
         }
-        if (options.removesItself) {
-          node.remove();
-        }
+        leave?.();
       };
     },
   };

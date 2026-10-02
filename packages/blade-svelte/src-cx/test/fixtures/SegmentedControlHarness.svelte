@@ -12,7 +12,7 @@
     inForm?: boolean;
     value?: string;
     name?: string;
-    onChange?: (value: string) => void;
+    onChange?: (change: { name: string | undefined; value: string }) => void;
     onSubmit?: (data: FormData) => void;
     isDisabled?: boolean;
     disabledValue?: string;
@@ -74,12 +74,12 @@
     {#if iconOnly}
       <SegmentedControlItem
         value="wallet"
-        leading={GLYPH}
+        icon={GLYPH}
         accessibilityLabel="Wallet"
         testID="wallet"
       />
     {:else}
-      <SegmentedControlItem value="wallet" leading={GLYPH} testID="wallet">
+      <SegmentedControlItem value="wallet" icon={GLYPH} testID="wallet">
         Wallet
       </SegmentedControlItem>
     {/if}

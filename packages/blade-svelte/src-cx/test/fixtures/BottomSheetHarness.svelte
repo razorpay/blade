@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { DialogCloseSource } from '../../runes';
+  import type { DialogDismissEvent } from '../../runes';
+  import type { Responsive } from '../../runes/defaults/responsive';
   import LayerHost from '../../components/layer/LayerHost.svelte';
   import {
     BottomSheet,
@@ -9,13 +10,13 @@
   interface Props {
     isOpen?: boolean;
     isDismissible?: boolean;
-    onDismiss?: (source: DialogCloseSource) => void;
+    onDismiss?: (event: DialogDismissEvent) => void;
     closeLabel?: string;
     title?: string;
     size?: BottomSheetStyleProps['size'];
     pace?: BottomSheetStyleProps['pace'];
-    adaptive?: boolean;
-    placement?: BottomSheetStyleProps['placement'];
+    isDraggable?: boolean;
+    variant?: Responsive<'modal' | 'sheet'>;
     className?: string;
   }
 
@@ -27,8 +28,8 @@
     title = 'Enter OTP',
     size,
     pace,
-    adaptive,
-    placement,
+    isDraggable,
+    variant,
     className,
   }: Props = $props();
 </script>
@@ -44,15 +45,15 @@
   {title}
   {size}
   {pace}
-  {adaptive}
-  {placement}
+  {isDraggable}
+  {variant}
   class={className}
   testID="sheet"
 >
   {#snippet children({ close })}
     <button data-testid="cancel" onclick={close}>Cancel</button>
   {/snippet}
-  {#snippet footer()}
+  {#snippet footer(_: { close: () => void })}
     <button data-testid="last">Verify</button>
   {/snippet}
 </BottomSheet>

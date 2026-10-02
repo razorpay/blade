@@ -13,10 +13,15 @@
     classes: PopoverClasses;
     role: 'dialog' | 'menu';
     accessibilityLabel?: string;
+    /** The id of the element that names the panel (its title). */
+    labelledBy?: string;
     isFocusMoved: boolean;
     testID?: string;
     onDismiss: (source: 'escape' | 'outside') => void;
     onKeyDown?: (event: KeyboardEvent) => void;
+    /** For a hover-opened panel: the pointer over the panel keeps it open. */
+    onPointerEnter?: () => void;
+    onPointerLeave?: () => void;
     children: Snippet;
   }
 
@@ -26,6 +31,7 @@
     classes,
     role,
     accessibilityLabel,
+    labelledBy,
     testID,
     children,
   }: Props = $props();
@@ -35,7 +41,8 @@
   {id}
   {role}
   class={cx(classes.panel, classes.nativePlacement[placement])}
-  aria-label={accessibilityLabel}
+  aria-label={labelledBy ? undefined : accessibilityLabel}
+  aria-labelledby={labelledBy}
   data-testid={testID}
 >
   {@render children()}

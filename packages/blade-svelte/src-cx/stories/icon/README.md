@@ -17,7 +17,7 @@ the same string as an image.
 ```
 
 There is one chevron. Rotate it for the other directions (`-rotate-90`
-points right); the accordion turns it in place so the change animates.
+points right); the card group turns it in place so the change animates.
 
 | Prop | Notes |
 | --- | --- |

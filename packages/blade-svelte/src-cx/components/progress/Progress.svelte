@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
   import {
     type ProgressBehaviourProps,
@@ -17,11 +18,13 @@
     class: className = '',
     ...styleProps
   }: Props = $props();
+
+  const style = useComponentDefaults('Progress', () => styleProps);
 </script>
 
-{#if resolveProgress(styleProps).fill}
+{#if resolveProgress(style.current).fill}
   <span
-    class={cx(resolveProgress(styleProps).root, className)}
+    class={cx(resolveProgress(style.current).root, className)}
     role="progressbar"
     aria-label={accessibilityLabel}
     aria-valuemin={min}
@@ -32,17 +35,17 @@
       : 0}
     data-testid={testID}
   >
-    {#if resolveProgress(styleProps).fill?.kind === 'ring'}
+    {#if resolveProgress(style.current).fill?.kind === 'ring'}
       <svg viewBox="0 0 36 36" class="w-full h-full" aria-hidden="true">
         <circle
-          class={resolveProgress(styleProps).fill?.track}
+          class={resolveProgress(style.current).fill?.track}
           cx="18"
           cy="18"
           r="16"
           stroke-width="4"
         />
         <circle
-          class={resolveProgress(styleProps).fill?.value}
+          class={resolveProgress(style.current).fill?.value}
           cx="18"
           cy="18"
           r="16"
@@ -52,18 +55,18 @@
         />
       </svg>
     {:else}
-      <span class={resolveProgress(styleProps).fill?.value}></span>
+      <span class={resolveProgress(style.current).fill?.value}></span>
     {/if}
   </span>
 {:else}
   <span
-    class={cx(resolveProgress(styleProps).root, className)}
+    class={cx(resolveProgress(style.current).root, className)}
     role={accessibilityLabel ? 'status' : undefined}
     aria-label={accessibilityLabel}
     aria-hidden={accessibilityLabel ? undefined : 'true'}
     data-testid={testID}
   >
-    {#each resolveProgress(styleProps).dots as dot, i (i)}
+    {#each resolveProgress(style.current).dots as dot, i (i)}
       <span class={dot}></span>
     {/each}
   </span>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
   import type { IconSource } from '../../runes/icon/source';
   import {
@@ -40,6 +41,8 @@
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('IconButton', () => styleProps);
+
   const press = createPress({
     type: () => type,
     validateForm: () => validateForm,
@@ -48,7 +51,7 @@
     onClick: (event) => onClick?.(event),
   });
 
-  const classes = $derived(resolveIconButton(styleProps));
+  const classes = $derived(resolveIconButton(style.current));
 </script>
 
 <!--
@@ -57,9 +60,9 @@
 -->
 {#snippet loader()}
   {@const box =
-    styleProps.size === 'small'
+    style.current.size === 'small'
       ? 'w-3 h-3'
-      : styleProps.size === 'large'
+      : style.current.size === 'large'
         ? 'w-5 h-5'
         : 'w-4 h-4'}
   <span

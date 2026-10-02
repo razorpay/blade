@@ -27,7 +27,7 @@
     bind:value
     label="Enter OTP"
     onChange={(next) => record(`onChange ${JSON.stringify(next)}`)}
-    onFilled={(next) => record(`onFilled ${JSON.stringify(next)}`)}
+    onOTPFilled={(next) => record(`onOTPFilled ${JSON.stringify(next)}`)}
   />
   <div class="flex gap-2">
     <Button variant="secondary" size="small" onClick={autoRead}>
@@ -48,7 +48,7 @@
     {#each log as line (line)}
       <li>{line}</li>
     {:else}
-      <li>An outside value fires onFilled but not onChange.</li>
+      <li>An outside value fires onOTPFilled but not onChange.</li>
     {/each}
   </ul>
 </div>

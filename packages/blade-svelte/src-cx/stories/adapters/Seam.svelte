@@ -28,7 +28,7 @@
   });
 </script>
 
-<div class="grid max-w-blade-760 [grid-template-columns:1fr_1fr] gap-8">
+<div class="grid max-w-[760px] [grid-template-columns:1fr_1fr] gap-8">
   <Form
     name="address"
     formatConstraintError={describeConstraint}

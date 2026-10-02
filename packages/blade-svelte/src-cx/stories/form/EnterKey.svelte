@@ -15,7 +15,7 @@
   <TextInput
     name="otp"
     label="OTP"
-    type="tel"
+    inputMode="numeric"
     maxCharacters={6}
     helpText="Focus the field and press Enter"
     autoFocus

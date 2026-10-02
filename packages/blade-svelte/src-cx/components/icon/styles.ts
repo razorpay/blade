@@ -42,7 +42,7 @@ export interface IconStyleProps {
 
 // Blade's icon sizes, 8 to 24px, and the 6px glyph of Blade's small Switch.
 const SIZE: Record<IconAxis<'size'>, string> = {
-  '2xsmall': 'w-blade-6 h-blade-6',
+  '2xsmall': 'w-[6px] h-[6px]',
   xsmall: 'w-2 h-2',
   small: 'w-3 h-3',
   medium: 'w-4 h-4',

@@ -12,6 +12,7 @@
     placement: Placement;
     classes: TooltipClasses;
     content: string | Snippet;
+    title?: string | Snippet;
     testID?: string;
     onPointerEnter: () => void;
     onPointerLeave: () => void;
@@ -27,6 +28,7 @@
     placement,
     classes,
     content,
+    title,
     testID,
     onPointerEnter,
     onPointerLeave,
@@ -65,6 +67,11 @@
   onpointerleave={onPointerLeave}
   {@attach floating.attach}
 >
+  {#if title}
+    <span class={classes.title}>
+      {#if typeof title === 'string'}{title}{:else}{@render title()}{/if}
+    </span>
+  {/if}
   <span class={classes.content}>
     {#if typeof content === 'string'}{content}{:else}{@render content()}{/if}
   </span>

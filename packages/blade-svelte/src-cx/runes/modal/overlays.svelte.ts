@@ -1,6 +1,13 @@
-import { getContext, setContext, type Component } from 'svelte';
-import type { BackAnswer } from '../base/back';
-import type { DialogCloseSource } from './dialog.svelte';
+import type { Component } from 'svelte';
+import { defineContext } from '../context';
+import {
+  createPropsPatch,
+  loadComponent,
+  readyComponent,
+  type LazyComponent,
+} from '../base/lazy-component';
+import { createLayerStack } from '../base/layer-stack.svelte';
+import type { DialogDismissEvent } from './dialog.svelte';
 
 export type OverlayPhase = 'open' | 'closing';
 
@@ -23,7 +30,7 @@ export interface OverlayStack<C> {
   /** In the order opened; tracked by whatever reads it. */
   readonly entries: ReadonlyArray<OverlayEntry<C>>;
   open<R = unknown>(content: C): OverlayHandle<C, R>;
-  /** A close the surface decided (backdrop, Escape, back, a drag). */
+  /** The surface closed itself on a dismissal: settles `undefined`. */
   dismiss(id: number): void;
   /** The view reports the closing transition ended: the entry goes. */
   closed(id: number): void;
@@ -31,29 +38,24 @@ export interface OverlayStack<C> {
 }
 
 /**
- * Imperatively opened overlays, as data. An entry closes in two steps —
- * `closing` while the view plays its exit, gone once the view says so — so
- * the model never guesses a transition's length.
+ * Imperatively opened overlays, as data, on a layer stack. An entry closes
+ * in two steps — `closing` while the view plays its exit (its result
+ * already settled), gone once the view says so — so the model never
+ * guesses a transition's length.
  */
 export function createOverlayStack<C>(): OverlayStack<C> {
-  let entries = $state.raw<ReadonlyArray<OverlayEntry<C>>>([]);
-  const settle = new Map<number, (result: unknown) => void>();
-  let nextId = 0;
-
-  function patch(id: number, change: Partial<OverlayEntry<C>>): void {
-    entries = entries.map((entry) =>
-      entry.id === id ? { ...entry, ...change } : entry
-    );
-  }
+  const stack = createLayerStack<{ phase: OverlayPhase; content: C }>();
+  const entries = $derived(
+    stack.entries.map((layer) => ({ id: layer.id, ...layer.entry }))
+  );
+  const layerOf = (id: number) => stack.entries.find((layer) => layer.id === id);
 
   function close(id: number, result: unknown): void {
-    const resolve = settle.get(id);
-    if (!resolve) {
-      return;
+    const layer = layerOf(id);
+    if (layer?.entry.phase === 'open') {
+      layer.settle(result);
+      stack.update(layer, { ...layer.entry, phase: 'closing' });
     }
-    settle.delete(id);
-    patch(id, { phase: 'closing' });
-    resolve(result);
   }
 
   return {
@@ -61,31 +63,28 @@ export function createOverlayStack<C>(): OverlayStack<C> {
       return entries;
     },
     open<R>(content: C): OverlayHandle<C, R> {
-      const id = nextId;
-      nextId += 1;
-      const result = new Promise<R | undefined>((resolve) => {
-        settle.set(id, resolve as (result: unknown) => void);
-      });
-      entries = [...entries, { id, phase: 'open', content }];
+      const layer = stack.push({ phase: 'open', content });
       return {
-        result,
-        close: (value) => close(id, value),
+        result: layer.promise as Promise<R | undefined>,
+        close: (value) => close(layer.id, value),
         update(change) {
-          const entry = entries.find((item) => item.id === id);
-          if (entry && entry.phase === 'open') {
-            patch(id, { content: { ...entry.content, ...change } });
+          if (layer.entry.phase === 'open') {
+            stack.update(layer, {
+              ...layer.entry,
+              content: { ...layer.entry.content, ...change },
+            });
           }
         },
       };
     },
     dismiss: (id) => close(id, undefined),
     closed(id) {
-      const entry = entries.find((item) => item.id === id);
-      if (entry?.phase === 'closing') {
-        entries = entries.filter((item) => item.id !== id);
+      const layer = layerOf(id);
+      if (layer?.entry.phase === 'closing') {
+        layer.close();
       }
     },
-    count: () => entries.length,
+    count: () => stack.size(),
   };
 }
 
@@ -95,27 +94,32 @@ export interface ModalControl<R = unknown> {
   close(result?: R): void;
 }
 
-type Module<C> = C | { default: C };
-
 /** A component, or the promise of one (a dynamic import resolves as is). */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- a component's props are its own
-export type ModalComponent<P extends Record<string, any>> =
-  | Component<P>
-  | Promise<Module<Component<P>>>;
+export type ModalComponent<P extends Record<string, any>> = LazyComponent<P>;
 
 /** What opening a modal decides about it, besides how it looks. */
 export interface OpenModalBehaviour<P> {
   /** Everything the component takes, except the `modal` prop it is given. */
   props?: Omit<P, 'modal'>;
   title?: string;
-  /** Localized; the close button exists only when it has a name. */
+  /** One muted line under the title. */
+  subtitle?: string;
+  /** Localized; the close button's accessible name. */
   closeLabel?: string;
   /** Localized; announced while a promised component loads. */
   pendingLabel?: string;
+  /**
+   * Whether a dismissal closes it by itself, and whether the close button
+   * shows. When not, `onDismiss`'s `close` ends it.
+   */
   isDismissible?: boolean;
-  onBack?: () => BackAnswer;
-  /** A close the modal decided itself: backdrop, Escape, back, a drag. */
-  onDismiss?: (source: DialogCloseSource) => void;
+  /**
+   * The user asked it to go (close button, backdrop, Escape, back, a drag),
+   * dismissible or not. A dismissal that closes settles `result` with
+   * `undefined`.
+   */
+  onDismiss?: (event: DialogDismissEvent) => void;
   /** The promised component failed to load; the modal closes. */
   onLoadError?: (error: unknown) => void;
   role?: 'dialog' | 'alertdialog';
@@ -160,10 +164,6 @@ export interface Overlays<S extends object> {
   reportError?: (error: unknown) => void;
 }
 
-function isPromise<T>(value: unknown): value is Promise<T> {
-  return typeof (value as { then?: unknown })?.then === 'function';
-}
-
 export function createOverlays<S extends object>(): Overlays<S> {
   const stack = createOverlayStack<ModalContent<S>>();
 
@@ -180,51 +180,40 @@ export function createOverlays<S extends object>(): Overlays<S> {
         close: (result) => handle.close(result as R),
       };
       const handle = stack.open<R>({
-        component: isPromise(component)
-          ? undefined
-          : (component as Component<Record<string, unknown>>),
+        component: readyComponent(component),
         props: { ...props },
         options: rest as OpenModalOptions<unknown, S>,
         control,
       });
 
-      if (isPromise<Module<Component<P>>>(component)) {
-        component
-          .then((loaded) => {
-            const resolved =
-              typeof loaded === 'function' ? loaded : loaded.default;
-            handle.update({
-              component: resolved as Component<Record<string, unknown>>,
-            });
-          })
-          .catch((error: unknown) => {
-            options.onLoadError?.(error);
-            overlays.reportError?.(error);
-            handle.close();
-          });
-      }
+      loadComponent(component, {
+        onLoaded: (loaded) => handle.update({ component: loaded }),
+        onError: (error) => {
+          options.onLoadError?.(error);
+          overlays.reportError?.(error);
+          handle.close();
+        },
+      });
 
-      let current: Record<string, unknown> = { ...props };
       return {
         result: handle.result,
         close: handle.close,
-        update(next) {
-          current = { ...current, ...next };
-          handle.update({ props: current });
-        },
+        update: createPropsPatch(props ?? {}, (next) =>
+          handle.update({ props: next })
+        ),
       };
     },
   };
   return overlays;
 }
 
-const OVERLAYS = Symbol('blade-overlays');
+const OVERLAYS = defineContext<unknown>('blade-overlays');
 
 /** Call during component init; descendants and their ModalStack share it. */
 export function provideOverlays<S extends object>(
   overlays: Overlays<S>
 ): Overlays<S> {
-  setContext(OVERLAYS, overlays);
+  OVERLAYS.set(overlays);
   return overlays;
 }
 
@@ -232,5 +221,5 @@ export function provideOverlays<S extends object>(
 export function getOverlays<S extends object>(
   fallback: Overlays<S>
 ): Overlays<S> {
-  return getContext<Overlays<S> | undefined>(OVERLAYS) ?? fallback;
+  return (OVERLAYS.get() as Overlays<S> | undefined) ?? fallback;
 }

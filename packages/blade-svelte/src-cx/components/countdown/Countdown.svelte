@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
   import type { CountdownState } from '../../runes/base/countdown.svelte';
@@ -34,7 +35,9 @@
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolveCountdown(styleProps));
+  const style = useComponentDefaults('Countdown', () => styleProps);
+
+  const classes = $derived(resolveCountdown(style.current));
 
   const countdown = createCountdown({
     seconds: () => seconds,

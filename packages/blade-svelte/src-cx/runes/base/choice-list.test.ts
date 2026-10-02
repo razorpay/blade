@@ -140,7 +140,7 @@ describe('createChoiceList', () => {
       expect(keyed(false).choice.tabStop()).toBe(0);
     });
   });
-  describe('as an accordion: deselectable, looping', () => {
+  describe('as an cardGroup: deselectable, looping', () => {
     function open(props: Record<string, unknown> = {}) {
       const { field, onTouch } = bankField(props);
       const choice = createChoiceList<string | number>(field, {

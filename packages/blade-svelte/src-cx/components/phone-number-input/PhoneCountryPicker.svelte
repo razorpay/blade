@@ -63,7 +63,7 @@
     compare={(a, b) => a.code === b.code}
     isDeselectable
     value={findPhoneCountry(countries, selected)}
-    onChange={(next) => modal.close((next as PhoneCountry | null) ?? undefined)}
+    onChange={({ value: next }) => modal.close((next as PhoneCountry | null) ?? undefined)}
     accessibilityLabel={countryLabel}
     testID={testID ? `${testID}-countries` : undefined}
     class={classes.list}

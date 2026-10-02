@@ -1,6 +1,7 @@
 <script lang="ts">
   import {
     InputGroup,
+    PasswordInput,
     TextInput,
     type InputGroupStyleProps,
   } from '../../index';
@@ -22,9 +23,9 @@
     helpText={args.helpText || undefined}
     isDisabled={args.isDisabled}
   >
-    <TextInput label="Card number" placeholder="Card number" type="tel" />
-    <TextInput label="Expiry" placeholder="MM / YY" type="tel" span="1/2" />
-    <TextInput label="CVV" placeholder="CVV" type="password" span="1/2" />
+    <TextInput label="Card number" placeholder="Card number" inputMode="numeric" />
+    <TextInput label="Expiry" placeholder="MM / YY" inputMode="numeric" span="1/2" />
+    <PasswordInput label="CVV" placeholder="CVV" span="1/2" showRevealButton={false} />
     <TextInput label="Name on card" placeholder="Name on card" />
   </InputGroup>
 </div>

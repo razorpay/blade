@@ -68,8 +68,6 @@ describe('createCountdownClock', () => {
     expect(onElapsed).toHaveBeenCalledTimes(1);
     timer.tick();
     expect(onElapsed).toHaveBeenCalledTimes(1);
-    c.reset();
-    expect(c.state.remaining).toBe(2);
   });
 
   it('stays truthful when ticks are throttled: the deadline, not the tick count, decides', () => {
@@ -90,7 +88,7 @@ describe('createCountdownClock', () => {
     expect(onElapsed).toHaveBeenCalledTimes(1);
   });
 
-  it('pause retains the remainder and resume re-anchors the deadline', () => {
+  it('pause retains the remainder and start re-anchors the deadline', () => {
     const timer = manualSchedule();
     const clock = fakeClock();
     const c = createCountdownClock({
@@ -106,13 +104,13 @@ describe('createCountdownClock', () => {
     c.pause();
     // Time passing while paused does not count.
     clock.advance(60_000);
-    c.resume();
+    c.start();
     clock.advance(1000);
     timer.tick();
     expect(c.state.remaining).toBe(5);
   });
 
-  it('cancel forfeits the remainder: only reset re-arms', () => {
+  it('cancel forfeits the remainder: start does nothing after it', () => {
     const timer = manualSchedule();
     const clock = fakeClock();
     const c = createCountdownClock({
@@ -124,11 +122,6 @@ describe('createCountdownClock', () => {
     c.cancel();
     c.start();
     expect(timer.pending.length).toBe(0);
-    c.reset();
-    c.start();
-    clock.advance(1000);
-    timer.tick();
-    expect(c.state.remaining).toBe(4);
   });
 
   it('a zero-second countdown is already complete', () => {

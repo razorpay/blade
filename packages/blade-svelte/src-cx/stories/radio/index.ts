@@ -7,6 +7,7 @@ const meta: StoryMeta = {
     "RadioGroup is one form field over the radio-group model (packages/blade/runes/radio); its Radios hide the native input and draw Blade's indicator, with their parts from the group.",
   argTypes: {
     orientation: { control: 'select', options: RADIO_GROUP_AXES.orientation },
+    size: { control: 'select', options: RADIO_GROUP_AXES.size },
     label: { control: 'text' },
     helpText: { control: 'text' },
     isDisabled: { control: 'boolean' },
@@ -16,6 +17,7 @@ const meta: StoryMeta = {
       description: 'Controlled through bind:value; arrow keys move the pick.',
       args: {
         orientation: 'vertical',
+        size: 'medium',
         label: 'Pay via',
         helpText: '',
         isDisabled: false,

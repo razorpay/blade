@@ -1,20 +1,23 @@
 import { untrack } from 'svelte';
 import type { Attachment } from 'svelte/attachments';
-import { trappedTabTarget } from '../dom/focus';
+import { captureFocusReturn, trappedTabTarget } from '../dom/focus';
 import { createNodeRef } from '../dom/node.svelte';
 import { createSheetDrag } from './sheet-drag';
 import { getLayers } from './layers';
+import { portal } from './portal';
 import { createPresence } from './presence';
 
 export interface SurfaceOptions {
   isOpen: () => boolean;
   /** Lower layers go inert so only the top surface takes focus and input. */
   isTop: () => boolean;
-  /** Whether a drag may close it; a sheet that may not resists and settles. */
+  /** Whether a drag may close it; a sheet that may not resists. */
   isDismissible: () => boolean;
-  /** A media query the drag is confined to, when the look has one. */
+  /** A media query the drag is confined to, when the styles give one. */
   dragMedia: () => string | undefined;
-  /** The user dragged the sheet away; the owner's model decides. */
+  /** The way out: the axis the drag follows, and its sign along it. */
+  dragAxis: () => { axis: 'x' | 'y'; direction: 1 | -1 };
+  /** The user dragged or flung the sheet away; the owner's model decides. */
   onDismissRequest: (source: 'drag') => void;
 }
 
@@ -45,29 +48,23 @@ export function createSurface(options: SurfaceOptions): Surface {
       return undefined;
     }
     return untrack(() => {
-      const returnFocusTo = document.activeElement;
       const node = panel.current;
+      const returnFocus = captureFocusReturn(() => node);
       // Content with its own autoFocus has already taken focus. The panel
       // is still at its closed position (translated off the host), and an
       // overflow-hidden host would scroll to reveal it: never scroll.
       if (node && !node.contains(document.activeElement)) {
         node.focus({ preventScroll: true });
       }
-      return () => {
-        const active = document.activeElement;
-        if (
-          returnFocusTo instanceof HTMLElement &&
-          (!active || active === document.body || node?.contains(active))
-        ) {
-          returnFocusTo.focus();
-        }
-      };
+      return returnFocus;
     });
   });
 
   const presence = createPresence(() => [panel.current]);
 
-  // Drag-to-dismiss, when the classes enable it (a bottom sheet). The decisions
+  // Drag-to-dismiss, when the classes enable it (a sheet, down; a drawer,
+  // toward its edge). Positions are read along the way out, so the pure
+  // model only ever sees a pull in the positive direction. The decisions
   // are the pure `createSheetDrag`; here the panel follows the finger with
   // an inline transform and its transition off, and the host's scrim thins
   // with it — only while this is the top layer, so a sheet under another
@@ -83,17 +80,31 @@ export function createSurface(options: SurfaceOptions): Surface {
     }
     const dragging = drag.isDragging();
     node.style.transition = dragging ? 'none' : '';
-    node.style.transform = dragging ? `translateY(${offset}px)` : '';
+    const { axis, direction } = options.dragAxis();
+    node.style.transform = dragging
+      ? `translate${axis.toUpperCase()}(${offset * direction}px)`
+      : '';
     const scrim = options.isTop() ? layers.scrim() : undefined;
     if (scrim) {
       scrim.style.transition = dragging ? 'none' : '';
       scrim.style.opacity = dragging
-        ? String(1 - Math.min(1, offset / (node.offsetHeight || 1)))
+        ? String(1 - Math.min(1, offset / (extent(node) || 1)))
         : '';
     }
   }
 
-  // A look may confine the drag to a media query; where it does not
+  // Where the pointer is along the way out.
+  function along(event: PointerEvent): number {
+    const { axis, direction } = options.dragAxis();
+    return (axis === 'x' ? event.clientX : event.clientY) * direction;
+  }
+
+  // The panel's length along the way out.
+  function extent(node: HTMLElement): number {
+    return options.dragAxis().axis === 'x' ? node.offsetWidth : node.offsetHeight;
+  }
+
+  // The styles may confine the drag to a media query; where it does not
   // match — or cannot be asked — the zone is plain content.
   function mayDrag(): boolean {
     const media = options.dragMedia();
@@ -107,9 +118,7 @@ export function createSurface(options: SurfaceOptions): Surface {
     // Surfaces render into the LayerHost's surfaces box when the app mounted
     // one, so they stay inside its frame under its one scrim; without a host
     // they render in place, unscrimmed.
-    toHost(node) {
-      (layers.surfaces() ?? layers.host())?.appendChild(node);
-    },
+    toHost: portal(() => layers.surfaces() ?? layers.host()),
     panel: panel.attach,
     handleKeyDown(event) {
       const node = panel.current;
@@ -130,13 +139,13 @@ export function createSurface(options: SurfaceOptions): Surface {
       if (!mayDrag()) {
         return;
       }
-      drag.start(event.clientY, event.timeStamp);
+      drag.start(along(event), event.timeStamp);
     },
     handleDragMove(event) {
       if (!drag.isDragging()) {
         return;
       }
-      const offset = drag.move(event.clientY, event.timeStamp);
+      const offset = drag.move(along(event), event.timeStamp);
       // Captured only once it moves: a plain press on something interactive
       // inside the header must still reach it as a click.
       if (offset > 0) {
@@ -150,7 +159,8 @@ export function createSurface(options: SurfaceOptions): Surface {
       if (!drag.isDragging()) {
         return;
       }
-      const outcome = drag.end(panel.current?.offsetHeight ?? 0);
+      const node = panel.current;
+      const outcome = drag.end(node ? extent(node) : 0);
       follow(0);
       if (outcome === 'dismiss') {
         options.onDismissRequest('drag');

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import RadioGroup from '../radio/RadioGroup.svelte';
   import { segmentedLook, type SegmentedControlProps } from './styles';
 
@@ -7,13 +8,19 @@
   // the keys are the group's; a RadioGroup given no look is a plain one.
   let {
     value = $bindable(),
-    size = 'medium',
-    color = 'neutral',
+    size,
+    color,
     children,
     ...group
   }: SegmentedControlProps = $props();
+
+  const style = useComponentDefaults('SegmentedControl', () => ({ size, color }));
 </script>
 
-<RadioGroup look={segmentedLook(size, color)} bind:value {...group}>
+<RadioGroup
+  look={segmentedLook(style.current.size ?? 'medium', style.current.color ?? 'neutral')}
+  bind:value
+  {...group}
+>
   {@render children()}
 </RadioGroup>

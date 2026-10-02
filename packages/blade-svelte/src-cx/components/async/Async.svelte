@@ -12,10 +12,11 @@
     /** Localized; announced while the promise is out. */
     pendingLabel?: string;
     onError?: (error: unknown) => void;
-    children: Snippet<[T]>;
+    /** The settled content; it receives `{ value }`. */
+    children: Snippet<[{ value: T }]>;
     pending?: Snippet;
-    /** Without it a failure renders nothing. */
-    failed?: Snippet<[unknown]>;
+    /** Without it a failure renders nothing. It receives `{ error }`. */
+    failed?: Snippet<[{ error: unknown }]>;
     testID?: string;
     class?: string;
   };
@@ -50,9 +51,9 @@
 {/snippet}
 
 {#if outcome.status === 'done'}
-  {@render children(outcome.value)}
+  {@render children({ value: outcome.value })}
 {:else if outcome.status === 'failed'}
-  {@render failed?.(outcome.error)}
+  {@render failed?.({ error: outcome.error })}
 {:else if async.isPendingShown}
   <div
     class={cx(classes.pending, className)}

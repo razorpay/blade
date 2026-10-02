@@ -1,7 +1,7 @@
 # Async
 
-`packages/blade/components/async/Async.svelte`: renders `children(value)`
-once `promise` resolves, `failed(error)` if it rejects, and a pending state in
+`packages/blade/components/async/Async.svelte`: renders `children({ value })`
+once `promise` resolves, `failed({ error })` if it rejects, and a pending state in
 between — but only after `pendingDelay` ms (the default when unset;
 blade 150), so a fast load never flashes it.
 

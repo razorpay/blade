@@ -1,17 +1,38 @@
 <script lang="ts">
+  import type { ResponsiveProps } from '../../runes/defaults/responsive';
+  import { useComponentDefaults } from '../defaults';
   import Modal from '../modal/Modal.svelte';
-  import {
-    bottomSheetLook,
-    type BottomSheetBehaviourProps,
-    type BottomSheetStyleProps,
+  import type {
+    BottomSheetBehaviourProps,
+    BottomSheetStyleProps,
   } from './styles';
 
-  // Blade's name over Modal, drawn through its internal `look`: style-only.
-  // The model, the layer, the focus and the drag are the modal's.
+  // Blade's name over Modal in its `sheet` variant: style-only. The model,
+  // the layer, the focus and the drag are the modal's. Its own defaults
+  // come first, and its variant is `sheet` unless one says otherwise: a
+  // provider's Modal defaults never turn a BottomSheet into a modal.
   let {
     isOpen = $bindable(false),
+    variant,
+    size,
+    pace,
+    isDraggable,
     ...modal
-  }: BottomSheetBehaviourProps & BottomSheetStyleProps = $props();
+  }: BottomSheetBehaviourProps & ResponsiveProps<BottomSheetStyleProps> = $props();
+
+  const style = useComponentDefaults('BottomSheet', () => ({
+    variant,
+    size,
+    pace,
+    isDraggable,
+  }));
 </script>
 
-<Modal look={bottomSheetLook} bind:isOpen {...modal} />
+<Modal
+  bind:isOpen
+  {...modal}
+  variant={style.current.variant ?? 'sheet'}
+  size={style.current.size}
+  pace={style.current.pace}
+  isDraggable={style.current.isDraggable}
+/>

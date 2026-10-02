@@ -3,15 +3,17 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'Popover',
   description:
-    'A non-modal panel anchored to its trigger: placed and flipped like a Tooltip, rendered in the LayerHost, off the layer stack. Press to toggle; Escape or a press outside closes.',
+    "Blade's Popover: a non-modal panel with an arrow toward its trigger — a title with a leading icon, the content and a footer — placed and flipped like a Tooltip, rendered in the LayerHost. A click toggles it and shows a close button; `openInteraction=\"hover\"` opens it under the pointer. Escape or a press outside closes.",
   argTypes: {
     placement: {
       control: 'select',
-      options: ['bottom-start', 'bottom', 'bottom-end', 'top', 'right', 'left'],
+      options: ['top', 'top-start', 'bottom-start', 'bottom', 'bottom-end', 'right', 'left'],
     },
+    openInteraction: { control: 'select', options: ['click', 'hover'] },
+    title: { control: 'text' },
   },
   stories: {
-    Basic: { args: { placement: 'bottom-start' } },
+    Basic: { args: { placement: 'top', openInteraction: 'click', title: 'Convenience fee' } },
   },
 };
 

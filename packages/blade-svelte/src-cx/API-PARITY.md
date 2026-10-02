@@ -17,13 +17,79 @@ its API (props, variants), except where one of the rules below applies.
 3. **`defaultValue`, `defaultChecked`, `defaultCountry`, `defaultExpandedIndex`, …
    are folded into the bindable prop** (`bind:value`, …). There is no separate
    default prop.
-4. **The shape is data-driven by default** (`items` plus a key and snippets),
-   where React composes children. Names and props still follow React.
-   Exception: Accordion went compositional (`AccordionItem`) by decision.
+4. **Collections compose, as in React**: item components (`CardGroupItem`,
+   `OptionItem`, `MenuItem`, …) register with their parent and are read in
+   document order, so anything else may sit between them (a heading, a
+   divider). A collection is data plus an item snippet only where it must
+   know every item up front: a virtual list (`VirtualOptionList`) and
+   `Carousel`. The headless core is `runes/base/choice-list.svelte.ts`
+   (OptionList, CardGroup, Tabs) over `runes/base/ordered-entries.svelte.ts`
+   (also Menu).
 5. **The look follows React.** Checkout-specific looks are dropped and noted per
    component.
 6. **cx-only features** (props React lacks) are listed per component with a
    recommendation. Each one is **pending** until decided.
+7. **Labels sit on top.** `labelPosition` (a label to the left of the field) is
+   not ported, on any component: every field label is above its field.
+   Decided after ChipGroup; it was removed from ChipGroup and OTPInput, the
+   two components that had it.
+8. **`*-blade-N` means Blade spacing token N, 0 to 11, and nothing else** —
+   `p-blade-5` and `w-blade-5` are both 16px. Any other length is written as
+   the value: `w-[176px]`, `max-w-[30rem]`, `h-[var(--toast-height)]` (`_`
+   is a space). The numeric scale stays (`w-9` is 36px). `w-blade-N` used to
+   read Blade's `size` tokens (`w-blade-400` was 400px); every such use was
+   rewritten to the bracket form with the same length.
+9. **A field's label area is one `labelArea` snippet**, in place of React's
+   `labelSuffix` and `labelTrailing`. `label` stays a string: it names the
+   control. The snippet receives `{ label }`, the drawn label (text and
+   necessity) as a snippet, renders it, and puts anything beside it; today
+   the area is a row, items 4px apart, `ms-auto` pushing one to the end. It
+   is an area, not a row, so a future `labelPosition="left"` keeps the same
+   snippet. Every field with a label has it, CounterInput and InputGroup
+   included. Hint lines (`helpText`, `errorText`, `successText`) take
+   `string | Snippet` on the inputs, a superset of React's strings, for a
+   line with a Link in it. Only the label element names the
+   control — React puts both slots inside its `<label>`, so a "Learn more"
+   link becomes part of the input's name. Decided after the Form audit.
+10. **Keyboard and autofill props follow the web**, not React Native's
+    names: `type` is the HTML input type (`tel`, not Blade's `telephone`),
+    and `inputMode`, `enterKeyHint`, `autoComplete` and `autoCapitalize`
+    are the HTML attributes. Each `type` brings Blade's defaults for them
+    (`getKeyboardAndAutocompleteProps`), and a given attribute wins: `tel`
+    → done key, `autocomplete="tel"`; `email` → done key,
+    `autocomplete="email"`, no autocapitalize; `url` → go key, no
+    autocapitalize; `number` → decimal keypad, done key. As Blade, `number`
+    renders as `type="text"` (a number input spins, steps on scroll, ignores
+    `maxlength` and gets the wrong iOS keyboard). `text` adds nothing.
+    Search and password fields are their own components, as Blade
+    (SearchInput, PasswordInput), over TextInput. OTPInput adds
+    `inputMode="numeric"` and `autoComplete="one-time-code"`, and
+    PhoneNumberInput `autoComplete="tel"`. Blade's `keyboardType`,
+    `keyboardReturnKeyType` and `autoCompleteSuggestionType` are not
+    ported; `inputMode` is independent of `type`, which Blade can't express.
+11. **BladeProvider sets component defaults, not a theme.** Theming stays CSS
+    variables. The provider takes an overall `size`, which every sized
+    control (Button, IconButton, Link, the inputs, Checkbox, RadioGroup,
+    ChipGroup, Switch, SegmentedControl, Tabs) snaps to its nearest size;
+    per-component `defaults` for any style prop; and `breakpoints` and
+    `adapters`. Any default, and Modal's and BottomSheet's style props, may
+    be given per breakpoint (`{ base: 'sheet', m: 'modal' }`), resolved in JS
+    against the viewport — `base` where nothing can measure. A prop wins;
+    then, nearest provider first, its entry for the component, then its
+    overall `size`; then Blade's default. React's `themeTokens` and
+    `colorScheme` are not ported. Modal's `variant` (`modal | sheet`) replaces
+    BottomSheet's `adaptive`.
+12. **Change callbacks take Blade's payload object**: a field reports
+    `onChange({ name, value })` (`FieldChange`, `components/shared/change.ts`),
+    Checkbox `onChange({ isChecked, value })`, Switch
+    `onChange({ isChecked })`, ChipGroup `onChange({ name, values })` (a
+    list either way), Collapsible `onExpandChange({ isExpanded })`, Popover,
+    Tooltip and Menu `onOpenChange({ isOpen })`, PhoneNumberInput
+    `onCountryChange({ country })`, OTPInput `onOTPFilled({ name, value })`.
+    Blade's `event` is not passed. Where Blade passes a bare value, so does
+    cx: Tabs and Carousel `onChange(value)` — except Menu's (Dropdown's)
+    `onOpenChange`, which takes `{ isOpen }` like every other overlay's.
+    `onFocus`/`onBlur` pass the DOM event.
 
 ## Inventory
 
@@ -33,7 +99,7 @@ replaced by a rule.
 
 | React | src-cx | Status |
 | --- | --- | --- |
-| Accordion | `accordion` | common, **done** |
+| Accordion | `card-group` (renamed `CardGroup`) | common, **done**; cx names it CardGroup (see below) |
 | ActionList | — (`option-list` is a different thing) | **deferred** to Dropdown/Menu; see below |
 | Alert | `alert` | common, **done** |
 | Amount | `amount` | common, **done** |
@@ -44,7 +110,7 @@ replaced by a rule.
 | Avatar | — | react-only |
 | Badge | `badge` | common, **done** |
 | BaseAnimatedValue, BaseHeaderFooter, BaseMenu, BaseMotion | — | n/a (internal) |
-| BladeProvider | — | n/a (theming is CSS variables and Uno classes) |
+| BladeProvider | `blade-provider` | **different**: component defaults, not theme tokens (rule 11) |
 | BottomBar | — | react-only (compare with cx `footer-bar`) |
 | BottomDock | — | react-only |
 | BottomNav | — | react-only |
@@ -57,73 +123,75 @@ replaced by a rule.
 | Carousel | `carousel` | common |
 | Charts | — | react-only |
 | ChatInput, ChatMessage | — | react-only |
-| Checkbox | `checkbox` | common |
-| Chip | — | react-only |
-| Collapsible | — | react-only |
+| Checkbox | `checkbox` | common, **done** |
+| Chip, ChipGroup | `chip` | common, **done** (new) |
+| Collapsible | `collapsible` | common, **done** (new) |
 | Confirmation | — | react-only |
-| Counter | — | react-only |
-| CounterInput | — | react-only |
+| Counter | `counter` | common, **done** (new) |
+| CounterInput | `counter-input` | common, **done** (new) |
 | CreationView | — | react-only |
 | DatePicker | — | react-only |
 | DetailedView | — | react-only |
-| Divider | `divider` | common |
+| Divider | `divider` | common, **done** |
 | DotLoader | — | react-only (cx Button draws its own loader) |
-| Drawer | — | react-only |
-| Dropdown | `menu` | common (partial) |
+| Drawer | `drawer` | common, **done** (Modal's `drawer` variant; `left-drawer` docks it left) |
+| Dropdown | `menu` | common (partial): look **done**, API gaps listed below |
 | Elevate, Fade, Morph, Move, Scale, Slide, Stagger | — | n/a (motion) |
-| EmptyState | `empty-state` | common |
+| EmptyState | `empty-state` | common, **done** |
 | FileUpload | — | react-only |
 | FilterChip | — | react-only |
 | FloatingActionButton | — | react-only |
-| Form (FormLabel, FormHint, CharacterCounter) | `form`, `shared/field` | common (React: field chrome; cx: a `<form>` with field registration) |
+| Form (FormLabel, FormHint, CharacterCounter) | `shared/FieldLabel`, `shared/FieldHint`, `shared/FieldCounter` | common, **done** (cx's `form`, a `<form>` with field registration, is cx-only) |
 | FormGroup | — | react-only |
 | GenUI | — | react-only |
 | Icons | `icon`, `icons` | common |
 | Indicator | — | react-only |
 | InfoGroup | — | react-only |
-| Input / TextInput | `text-input` | common |
-| Input / TextArea | `text-area-input` | common |
-| Input / OTPInput | `otp-input` | common |
-| Input / PhoneNumberInput | `phone-number-input` | common |
-| Input / PasswordInput, SearchInput, PaymentInput, ColorInput, SliderInput | — | react-only |
-| InputGroup | `input-group` | common |
+| Input / TextInput | `text-input` | common, **done** |
+| Input / TextArea | `text-area` | common, **done** |
+| Input / OTPInput | `otp-input` | common, **done** |
+| Input / PhoneNumberInput | `phone-number-input` | common, **done** |
+| Input / PasswordInput | `password-input` | common (new): over TextInput |
+| Input / SearchInput | `search-input` | common (new): over TextInput; `isLoading` and a trailing Dropdown are gaps |
+| Input / PaymentInput, ColorInput, SliderInput | — | react-only |
+| InputGroup | `input-group` | common, **done** |
 | LightBox | — | react-only |
-| Link | `link` | common |
+| Link | `link` | common, **done** |
 | List | — | react-only |
 | ListView | — | react-only |
 | LiveAnnouncer | — | n/a |
 | Menu | `menu` | common |
-| Modal | `modal` | common |
+| Modal | `modal` | common, **done** |
 | OverlayContextReset | — | n/a |
 | Pagination | — | react-only |
-| Popover | `popover` | common |
+| Popover | `popover` | common, **done** |
 | PopupArrow | — | n/a (internal) |
 | Preview | — | react-only |
 | ProgressBar | `progress` | common |
 | QuickFilters | — | react-only |
-| Radio | `radio` | common |
+| Radio | `radio` | common, **done** |
 | RollingText | — | react-only |
-| SegmentedControl | `segmented-control` | common |
+| SegmentedControl | `segmented-control` | common, **done** |
 | SelectableCard | — | react-only |
 | Settings | — | react-only |
 | SideNav | — | react-only |
-| Skeleton | `skeleton` | common |
+| Skeleton | `skeleton` | common, **done** |
 | SkipNav | — | react-only |
 | Spark | — | react-only |
 | Spinner | — | react-only |
 | SpotlightPopoverTour | — | react-only |
 | StepGroup | — | react-only |
-| Switch | `switch` | common |
+| Switch | `switch` | common, **done** |
 | Table | — | react-only |
-| Tabs | `tabs` | common |
+| Tabs | `tabs` | common, **done** |
 | Tag | — | react-only |
 | TimePicker | — | react-only |
-| Toast | `toast` | common |
-| Tooltip | `tooltip` | common |
+| Toast | `toast` | common, **done** |
+| Tooltip | `tooltip` | common, **done** |
 | TopNav | — | react-only |
 | TreeView | — | react-only |
 | TrustBadge | `trust-badge` | common |
-| Typography (Text, Heading) | `text`, `heading` | common |
+| Typography (Text, Heading) | `text`, `heading` | common; **known gap:** no letter-spacing (see Chip) |
 | Typography (Display, Code) | — | react-only |
 | VisuallyHidden | — | n/a (`sr-only` class) |
 | — | `async` | cx-only |
@@ -138,16 +206,21 @@ replaced by a rule.
 
 ---
 
-## Accordion
+## CardGroup (React's Accordion)
 
 React: `Accordion`, `AccordionItem`, `AccordionItemHeader`, `AccordionItemBody`.
-cx: `Accordion` and `AccordionItem` (`components/accordion/`) over `runes/accordion`.
-Compositional like React (an exception to rule 4, by decision): items are
-`AccordionItem` children, and a data list is an `{#each}`.
+cx: `CardGroup` and `CardGroupItem` (`components/card-group/`) over
+`runes/card-group`. It was cx's `Accordion`, renamed (a rename only): what
+it is in checkout — cards to pick one of, the picked one expanding — is the
+CardGroup/CardGroupItem pair of Blade's interactive-cards decision. Its look
+and behaviour are React's Accordion, compared below; the tables name React's
+components on the left and cx's on the right.
+Compositional like React (rule 4): items are `CardGroupItem` children, and a
+data list is an `{#each}`.
 
 ### Props
 
-`Accordion`:
+`Accordion` → `CardGroup`:
 
 | React | cx | Action |
 | --- | --- | --- |
@@ -155,13 +228,13 @@ Compositional like React (an exception to rule 4, by decision): items are
 | `size: 'large' \| 'medium'` (default large) | `size` | **added** |
 | `showNumberPrefix` | `showNumberPrefix` | **added** (`1.`, `2.`, …); wins over `leading`, as in React |
 | `expandedIndex`, `defaultExpandedIndex` | `bind:value` | rule 3. The value is the item's `value`, its index by default, so an index works as in React |
-| `onExpandChange({ expandedIndex })` (-1 = none) | `onChange(value \| null)` | `null` for none. Same behaviour: one open at a time, a second press closes it |
+| `onExpandChange({ expandedIndex })` (-1 = none) | `onChange({ name, value })` (`value` or `null`) | rule 12; `null` for none. Same behaviour: one open at a time, a second press closes it |
 | `children: AccordionItem[]` | `children` | same |
 | `maxWidth`, `minWidth`, styled props | `class` | exempt (rule 1). React's MAX/MIN_WIDTH defaults (200–360 min, 640/800 max) are not baked in |
 | `testID` | `testID` (each header gets `${testID}-${index}`) | same |
 | `data-analytics-*` | — | **missing**, to add with the analytics pass across components |
 
-`AccordionItem` (React's `AccordionItemHeader` props flattened onto it):
+`AccordionItem` → `CardGroupItem` (React's `AccordionItemHeader` props flattened onto it):
 
 | React | cx | Action |
 | --- | --- | --- |
@@ -172,11 +245,13 @@ Compositional like React (an exception to rule 4, by decision): items are
 | `AccordionItemHeader.trailing` | `trailing` snippet | **changed**: replaces the chevron. React's `trailing` sits before the chevron |
 | `AccordionItemHeader.titleSuffix` | — | **dropped** by decision; use a `title` snippet |
 | `AccordionItemHeader.children` | — | **dropped**; use `header` |
-| — | `header` snippet | cx-only: replaces leading, title and subtitle |
-| `AccordionItemBody` | `content` snippet, inside Blade's body box | rule 2 |
-| — | `children` snippet | cx-only: a full-width custom body without the body box; `content` wins over it |
+| — | `header` snippet | cx-only: lays out the header's content, receiving the drawn `title` and `subtitle` as snippets — one meaning of `header` across Modal, Card and CardGroupItem: the header box's content, placing any `title`/`subtitle` itself (Card has none) |
+| `AccordionItemBody` | `body` snippet, inside Blade's body box | rule 2; named and resolved as Modal's `body` |
+| — | `children` snippet | cx-only: a full-width custom body without the body box; wins over `body`, as in Modal |
+| — | `collapse()` in the snippet state | cx-only: the body closes its own item |
+| — | CardGroup `labelArea`, `string \| Snippet` hints | as the inputs (rule 9) |
 | `isDisabled` | `isDisabled` | same |
-| `testID` | `testID` | same; overrides the Accordion's `${testID}-${index}` |
+| `testID` | `testID` | same; overrides the CardGroup's `${testID}-${index}` |
 | `title` / `description` / `icon` on AccordionItem (deprecated) | — | not ported (deprecated in React) |
 
 ### Look
@@ -222,24 +297,24 @@ Added from React: the `role="heading" aria-level="3"` wrapper around each button
 - `isMultiple`: React allows one open item.
 - `isCollapsible`: React always closes the open item on a second press.
   - Checkout's home method list used `isCollapsible={false}`; it now collapses like React.
-- `items`, `itemKey`, `compare`, `isItemDisabled`: the Accordion is compositional
+- `items`, `itemKey`, `compare`, `isItemDisabled`: the CardGroup is compositional
   now, so these become per-item props or an `{#each}`.
 - `indicator` and `isActionable`: replaced by `trailing`, and by an item having
-  no body. An item without `content` or `children` acts instead of expanding
+  no body. An item without `body` or `children` acts instead of expanding
   and draws a chevron pointing right.
 
 **Decision pending:**
 
 | Feature | What it does | Recommendation |
 | --- | --- | --- |
-| `AccordionItem.onClick(event) → false` | vetoes an expand (downtime sheet, address gate); the only action of a body-less item | **keep**: needed by checkout; not expressible otherwise |
+| `CardGroupItem.onClick(event) → false` | vetoes an expand (downtime sheet, address gate); the only action of a body-less item | **keep**: needed by checkout; not expressible otherwise |
 | `scrollOnExpand` (default true) | scrolls the opened panel into view | keep |
 | `name`, `isRequired`, `validationState`, `helpText`, `errorText`, `label`, `accessibilityLabel` | the open item as a form field | **decide**: no React equivalent; checkout home uses it as a required choice |
 
 ### Checkout call sites affected
 
 These use the old `items` + snippets API and need a port to
-`<AccordionItem>` children. Use `variant="filled"` if the old card look is wanted:
+`<CardGroupItem>` children. Use `variant="filled"` if the old card look is wanted:
 - `app/v2/sidecart/sidecart-iframe/components/widgets/free-gifts/FreeGiftMultiRuleSheet.svelte`
 - `app/v2/sidecart/sidecart-iframe/components/widgets/coupons/unlock-milestone/components/eligible-products/EligibleProductsScreen.svelte`
 - `app/v3/surfaces/international-checkout/components/MobileCheckout.svelte`
@@ -264,7 +339,7 @@ React: `Alert`. cx: `Alert` (`components/alert/`).
 | React | cx | Action |
 | --- | --- | --- |
 | `description` (required, text or JSX) | `description: string \| Snippet` | **renamed** from `children` |
-| `title` | `title` | same |
+| `title` | `title: string \| Snippet` | superset |
 | `color` (+ `primary`) | `color` | **added** `primary` |
 | `emphasis: 'subtle' \| 'intense'` | `emphasis` | **added** |
 | `icon` (defaults per colour) | `icon` | **added** the defaults: info, check-circle, alert-triangle, alert-octagon (the last two drawn from Blade's icons into `components/icons`) |
@@ -442,28 +517,29 @@ passes; the DOM measurements match React Storybook.
 ## BottomSheet
 
 React: `BottomSheet`, `BottomSheetHeader`, `BottomSheetBody`, `BottomSheetFooter`.
-cx: `BottomSheet` (`components/bottom-sheet/`), which is Modal with
-`bottomSheetLook`. The header changes below are Modal's, so Modal has them
+cx: `BottomSheet` (`components/bottom-sheet/`), which is Modal in its
+`sheet` variant. The header changes below are Modal's, so Modal has them
 too.
 
 **Decisions:** the sheet keeps its content height, with no snap points. On
-desktop it keeps cx's capped, rounded panel, with `size`, `adaptive` and
-`placement`. React's web sheet is full width at every size.
+desktop it keeps cx's capped, rounded panel, with `size` and `variant`. React's web sheet is full width at every size.
 
 ### Props
 
 | React | cx | Action |
 | --- | --- | --- |
 | `isOpen` (controlled) | `bind:isOpen` | same |
-| `onDismiss()` | `onDismiss(source)` | same, plus what closed it |
-| `isDismissible` (default true) | `isDismissible` | same; now also hides the close button, as in React |
+| `onDismiss()` | `onDismiss({ source, close })` | **changed**: fires on every dismissal, dismissible or not; a dismissible sheet then closes, otherwise `close` ends it. Replaces `onBack` |
+| `isDismissible` (default true) | `isDismissible` | same: whether a dismissal closes it by itself; hides the close button, as in React |
 | `snapPoints` (default [0.35, 0.5, 0.85]) | — | **not ported** by decision: content height, drag only dismisses |
+| — | `isDraggable` (default true) | cx-only: off hides the handle and stops the drag; settable through BladeProvider |
 | `initialFocusRef` | — | **missing**: the panel takes focus, or content with `autofocus` |
 | `zIndex` | — | n/a: the LayerHost stacks sheets |
 | `BottomSheetHeader.title` | `title: string \| Snippet` | same; it names the dialog |
-| `BottomSheetHeader` `subtitle`, `leading`, `trailing`, `titleSuffix`, `showBackButton`, `onBackButtonClick`, `children` | `header` snippet | **removed** by decision (rule 2): the caller renders them under the title |
+| `BottomSheetHeader.subtitle` | `subtitle: string` | same: one muted line under the title; it describes the dialog |
+| `BottomSheetHeader` `leading`, `trailing`, `titleSuffix`, `showBackButton`, `onBackButtonClick`, `children` | `header` snippet | **removed** by decision (rule 2): the caller renders them in `header`, which receives the drawn title and subtitle to place among them |
 | `BottomSheetBody` (`padding` spacing.5 \| spacing.0) | `body` snippet (16px) / `children` (raw) | rule 2 |
-| `BottomSheetFooter` | `footer` snippet | rule 2 |
+| `BottomSheetFooter` | `footer` snippet | rule 2; a padded box, the caller lays out its content (was `flex gap-4`, changed with Modal) |
 | close button labelled "Close" | `closeLabel` (default `Close`) | **changed**: shows while dismissible, not only when labelled |
 | `data-analytics-*` | — | **missing** (analytics pass) |
 
@@ -484,7 +560,7 @@ Measured against React Storybook at 390px. These match:
 - **Footer:** 16px (20px from 768px) on the sheet's surface, under a hairline.
 - **Dropped checkout look:** 8px radius, the 40px handle, the heading-face
   title, and the 20px padding with a 40px close button.
-- **Side fix (Accordion):** Blade's letter spacing on its title and subtitle,
+- **Side fix (CardGroup, then Accordion):** Blade's letter spacing on its title and subtitle,
   and the subtitle's 17px line height.
 - **Typography gap noted:** cx `Text` misses Blade's letter spacing, and its
   xsmall and small line heights are wrong (Typography pass).
@@ -495,18 +571,17 @@ cx does more than React's web sheet here, and keeps it:
 - Escape closes (React's docs specify it; the web code doesn't).
 - The focus trap.
 - `aria-labelledby` pointing at the title.
-- The Android back button, through `onBack`.
+- The Android back button, as a dismissal (`source: 'back'`).
 
 ### cx-only features — decision pending
 
 | Feature | What it does | Recommendation |
 | --- | --- | --- |
 | `onClosed` | the exit finished | keep |
-| `onBack` | content owns the back button | keep |
 | `role: dialog \| alertdialog` | the dialog's role | keep |
 | `accessibilityLabel` | names an untitled sheet | keep |
 | `pace` | v2's quicker drawer easing | decide |
-| `size`, `adaptive`, `placement` | desktop panel width, sheet on phones and modal on desktop | kept by the desktop decision |
+| `size`, `variant` | desktop panel width; `variant: { base: 'sheet', m: 'modal' }` is a sheet on phones and a modal on desktop (was `adaptive`, rule 11) | kept by the desktop decision |
 
 ### Checkout call sites
 
@@ -714,6 +789,1129 @@ passes; the surface measurements match React Storybook.
 
 ---
 
+## Checkbox
+
+React: `Checkbox`, `CheckboxGroup`. cx: `Checkbox` (`components/checkbox/`).
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `isChecked`, `defaultChecked` | `isChecked` (bindable) | rule 3 |
+| `onChange({ isChecked, event, value })` | `onChange({ isChecked, value })` | rule 12; no `event` |
+| `children` | `children` | same (the title) |
+| `helpText` | `helpText` | **changed**: now under the title, indented to line up with it, and shown in every state, as React. It was one line under the control that the error replaced |
+| `errorText`, `validationState` | same | **changed**: the error line is a separate FormHint under the whole control, led by Blade's error icon (the new shared `FieldHint`) |
+| `isIndeterminate` | `isIndeterminate` | **added**: Blade's dash on a checked box; the input's `indeterminate` makes it read as mixed |
+| `size: small \| medium \| large` | `size` | **added** (was medium only): box 12/16/20, border 1.5/1.5/2, mark 8/12/16, title 12/14/16, help 11/11/14, and the small box's 1px tick nudge |
+| `name`, `isDisabled`, `isRequired`, `testID` | same | same |
+| `value` | `value` | **added**: the input's `value` attribute |
+| `tabIndex` | `tabIndex` | **added** |
+| `data-analytics-*` | — | **missing** (analytics pass) |
+| styled props | `class` | rule 1 |
+| `CheckboxGroup` | — | react-only; add on demand (checkout has no group) |
+
+### Look
+
+Measured against React Storybook (Default, Checked, Small, Large, HelpText,
+ErrorText, Indeterminate) with the same state on both sides:
+
+- **Geometry matches exactly:** box sizes, 4px radius, the 2px margin round the
+  box, the title 22/18/26px from the box (the box's margin plus 4px), title
+  type (14/20, 12/17, 16/24, `surface.text.gray.subtle`), the help text
+  indented to the title and 23/24px below the box top (11/16, 14/16 at large,
+  `surface.text.gray.muted`), and the marks' size and place.
+- **Marks:** now Blade's own CheckedIcon and IndeterminateIcon paths (filled,
+  0.5 stroke); they stay mounted and fade and scale as Blade's Fade does.
+- **Focus:** Blade's 4px `surface.border.primary.muted` outline, 1px off the
+  box (new Uno class `outline-4`). It was a flush shadow.
+- **Disabled:** Blade's `not-allowed` cursor over the field; the label takes
+  no pointer. It was pointer-events off with the default cursor.
+- **Error line:** Blade's FormHint — the info icon 2px down, 4px before the
+  text, 4px under the label (8px at large).
+- **Theme:** the checked border is `interactive.border.primary.default`, black
+  in the neutral theme `uno.config.ts` uses, blue in React Storybook's default
+  theme.
+
+### cx-only features — decision pending
+
+| Feature | What it does | Recommendation |
+| --- | --- | --- |
+| `accessibilityLabel` | names a checkbox with no `children` | keep: React needs a visually hidden child for this |
+| `parse` | maps `isChecked` to the value a Form collects | keep: checkout's Form integration needs it (5 call sites) |
+
+### Checkout call sites
+
+18 files use v2's own Checkbox (none yet use this one). They pass `onChange`,
+`value` (the checked state, here `isChecked`), `name`, `parse`, `class`,
+`size` (2, now supported), `store` (2) and `type="radio"` (4; those are Radios).
+
+### Status
+
+Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+passes (new tests: indeterminate, size, help text layout, the error line's
+icon); every measurement above matches React Storybook. The shared
+`FieldHint` (`components/shared/FieldHint.svelte`) is Checkbox's for now: the
+inputs adopt it as they are audited.
+
+---
+
+## Chip and ChipGroup
+
+React: `Chip`, `ChipGroup`. cx: `Chip`, `ChipGroup` (`components/chip/`), **new**
+— ported from React, as checkout had none.
+
+A ChipGroup is Radio/Checkbox semantics drawn as chips: `single` is native
+radios, `multiple` native checkboxes. It is built on the headless choice list
+(`runes/base/choice-list.svelte.ts`) like OptionList, but keeps the platform's
+keys, as React does: a radio group picks as the arrows move, and each checkbox
+is a tab stop.
+
+### ChipGroup props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `children` (Chips) | `children` | rule 4: Chips register; anything may sit between them |
+| `selectionType: single \| multiple` | same | same (default `single`) |
+| `value`, `defaultValue` (`string \| string[]`) | `value` (bindable; a string, or an array with `multiple`) | rule 3 |
+| `onChange({ name, values })` | same | rule 12: `values` is a list for single selection too |
+| `label`, `accessibilityLabel` | same | same |
+| `labelPosition` | — | not ported (rule 7): the label is always on top |
+| `necessityIndicator` | same | **added** (first in cx): `*` or `(optional)` after the label; `required` also requires |
+| `helpText`, `errorText`, `validationState` | same | the error replaces the help text in one FormHint line, as React |
+| `isDisabled`, `isRequired`, `name`, `testID` | same | same |
+| `size: xsmall \| small \| medium \| large`, `color` | same | same (defaults `small`, `primary`) |
+| `data-analytics-*` | — | **missing** (analytics pass) |
+| styled props | `class` | rule 1 |
+
+### Chip props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `value`, `children` (string) | `value`, `children` | same |
+| `icon`, `leading` | same | same (`icon` is an icon source; `leading` a snippet) |
+| `color`, `isDisabled` | same | same; both fall back to the group's |
+| `width`, `minWidth`, `maxWidth` | `class` | rule 1 |
+| `testID` | same | same |
+
+### Look
+
+Measured against React Storybook (Single Selection, Multi Selection) at the
+same state:
+
+- **Chip:** 30px tall (28px inner plus the 1px frame), 8px sides, 8px frame
+  radius and 7px inner, the text box 4px each side, 14/20 text — widths match
+  to the tenth of a pixel. Picked: the inner border and the faded fill; hover a
+  step up; disabled per React. Pressed scales to 0.92. Focus: React's 2px
+  `interactive.border.primary.default` outline, 2px off.
+- **Group:** the label 12/17 medium `surface.text.gray.subtle` (FormLabel's
+  tokens per size), 6px above the chips; chips wrap 8px apart with a 42px row
+  pitch; max width 280px on phones, 420px above, truncating.
+- **SelectorLabel's 2px margin** above and below each chip is React's (blade-core's
+  chip CSS omits it).
+- **Letter-spacing:** Blade's Text sets `tracking-50` on body and caption text
+  (`tracking-25` on large body). The chip text, the group label, Checkbox's title
+  and help text, and `FieldHint` now carry it. cx's Text and Heading do not yet:
+  that is Typography's to fix.
+- **Theme:** picked `primary` is black here (neutral theme), blue in React
+  Storybook.
+
+### Checkout call sites
+
+None: checkout has no chips.
+
+### Status
+
+New, verified: `svelte-check:cx` gives 0 errors; `test:cx` passes (8 new
+tests: radios and checkboxes, pick and bind, per-chip colour, disabled,
+press, necessity and help text, Form required); the measurements above match
+React Storybook.
+
+---
+
+## Collapsible
+
+React: `Collapsible`, `CollapsibleButton`, `CollapsibleLink`, `CollapsibleBody`
+(`CollapsibleText` is internal to other components). cx: `Collapsible` and
+`CollapsibleChevron` (`components/collapsible/`), **new** — ported from React,
+as checkout had none. Not a wrapper over `<details>`: that cannot open above
+its trigger, cannot use a Button or Link as its trigger, and cannot animate
+closing — React is a button plus a region too.
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `isExpanded`, `defaultIsExpanded` | `isExpanded` (bindable) | rule 3 |
+| `onExpandChange({ isExpanded })` | same | rule 12 |
+| `direction: bottom \| top` | same | same: `top` opens the body above the trigger |
+| `CollapsibleButton` (a Button) | `trigger` snippet with `{ isExpanded }` | rule 2: the wrapper toggles on a press, the caller's Button wires nothing; its first focusable element gets `aria-expanded`, and `aria-controls` while the body is mounted |
+| `CollapsibleLink` (a BaseLink `button` with the chevron) | the caller's `Link variant="button"` with a `CollapsibleChevron` | rule 2; `CollapsibleChevron` is React's CollapsibleChevronIcon |
+| `CollapsibleBody` (+ `width`) | `children` | rule 2; width through `class` (rule 1) |
+| `testID` | same | same |
+| `data-analytics-*` | — | **missing** (analytics pass) |
+| styled props | `class` | rule 1 |
+
+**Side addition (Link):** `variant: 'anchor' | 'button'`, React's Link API —
+`button` renders a `<button>` that acts and reads as a link (no `href`).
+
+### Look
+
+Measured against React Storybook (WithCollapsibleLink, WithCollapsibleButton,
+WithDirection):
+
+- **Triggers** are the caller's Link or Button, and match React to the tenth of
+  a pixel (169.2×20 and 181.2×36 for the story's label); the chevron is 16px,
+  4px after the label, and flips (-180°) over 280ms on the standard easing.
+- **Body:** 12px from the trigger (below, or above with `top`); it slides its
+  height open and closed over 280ms on the standard easing, fading from 0.8 —
+  the same panel as CardGroup's (now `components/shared/CollapsePanel.svelte`).
+  Unlike React, a collapsed body is unmounted, as CardGroup's is.
+- **Width:** at least 200px; at most the viewport less 40px from `s`, 640px
+  from `m`, 1136px from `l`.
+- **Theme:** the link trigger is black here (neutral theme), blue in React.
+
+### Status
+
+New, verified: `svelte-check:cx` gives 0 errors; `test:cx` passes (toggle,
+bind and report, aria state, the chevron, host-driven state, direction, and
+Link's `button` variant); the measurements above match React Storybook.
+
+---
+
+## Counter
+
+React: `Counter`. cx: `Counter` (`components/counter/`), **new** — ported from
+React, as checkout had none.
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `value`, `max` | same | same: past `max` it reads `max+` |
+| `color` (`neutral`, `positive`, `negative`, `notice`, `information`, `primary`) | same | same (default `neutral`) |
+| `emphasis: subtle \| intense`, `size: small \| medium \| large` | same | same |
+| `testID` | same | same |
+| `data-analytics-*` | — | **missing** (analytics pass) |
+| styled props | `class` | rule 1 |
+
+### Look
+
+Measured against React Storybook (Default, Max, the three size stories, and
+`positive`): the pill's size to the tenth of a pixel (16/20/24px tall, as wide
+at one digit), the side padding from two digits (4/8/8px), the medium text
+(10/12/14px) with Blade's letter-spacing, and both colour pairs match. Width
+caps at 100px on phones and 120px above, as React's platform tokens.
+
+### Status
+
+New, verified: `test:cx` passes (count, `max+`, padding, colour); the
+measurements above match React Storybook.
+
+---
+
+## CounterInput
+
+React: `CounterInput`. cx: `CounterInput` (`components/counter-input/`),
+**new** — ported from React, as checkout had none.
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `value`, `defaultValue` | `value` (bindable) | rule 3 |
+| `onChange({ value })` | `onChange({ name, value })` | rule 12 |
+| `min` (default 0), `max` | same | same: steps and typed values clamp to the range; each button disables at its end |
+| `label`, `accessibilityLabel`, `name` | same | same; `name` registers the count with a Form |
+| `labelPosition` | — | not ported (rule 7) |
+| `size: xsmall \| small \| medium \| large`, `emphasis: subtle \| intense` | same | same (defaults `medium`, `subtle`) |
+| `isLoading`, `isDisabled` | same | same: both stop the buttons and grey the number; loading draws the bar |
+| `onFocus`, `onBlur`, `testID` | same | same |
+| `data-analytics-*` | — | **missing** (analytics pass) |
+| styled props | `class` | rule 1 |
+
+### Look
+
+Measured against React Storybook (Basic Usage, with emphasis, disabled and
+loading set through args):
+
+- **Box:** 94×38 at medium (78/86/94/122 × 30/34/38/50 by size), 8px radius
+  (12px at large), the gray border; disabled and loading on the subtle fill.
+- **Buttons:** 28px square at medium, 4px in from the box's edge and each
+  other's side, 4px padding and radius, the 20px icon; hover fills
+  `interactive.background.gray.faded-highlighted` and darkens the icon.
+- **Number:** as wide as its digits (`ch`, at least 2) plus 4px each side,
+  36px tall, semibold with Blade's letter-spacing; greyed while disabled or
+  loading.
+- **Label:** FormLabel's tokens per size, 4px above the box.
+- **Motion:** the new number slides in from below on a step up, from above on
+  a step down (200ms). Loading swings a 2px bar along the bottom edge over
+  960ms, in React's colours; React's indeterminate bar also changes width as
+  it goes, ours keeps 40% (blade-core's port).
+- **Focus:** Blade's inset 4px ring on a button's keyboard focus, and on the
+  number field after Tab only (React's rule: `:focus-visible` would ring a
+  click too).
+- **Theme:** `intense` is black here (neutral theme), blue in React
+  Storybook.
+
+### Status
+
+New, verified: `svelte-check:cx` gives 0 errors; `test:cx` passes (range,
+steps and binding, clamping typed input, disabled and loading, Form
+submission, the slide); the measurements above match React Storybook.
+
+---
+
+## Divider
+
+React: `Divider`. cx: `Divider` (`components/divider/`).
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `orientation: horizontal \| vertical` | same | same |
+| `dividerStyle: solid \| dashed` | `dividerStyle` | **renamed** from `line` |
+| `variant: normal \| subtle \| muted` | `variant` | **added** (was muted only): `surface.border.gray.{variant}` |
+| `thickness: thinner \| thin \| thick \| thicker` | `thickness` | **added** (was thin only): Blade's border widths |
+| `width`, `height` | `class` | rule 1 |
+| `testID` | same | same |
+| styled props | `class` | rule 1 |
+
+### Look
+
+Measured against React Storybook (Divider, Horizontal, Vertical):
+
+- **Horizontal:** a 1px bottom border (was the top one), growing along a flex
+  row rather than taking `w-full`, no margin.
+- **Vertical:** a 1px left border, stretched to the row's height.
+- **Element:** an `<hr>` (a native separator, with `aria-orientation` when
+  vertical) where React renders a `div role="separator"`: the same semantics.
+
+### Checkout call sites
+
+None pass `line`; the one harness that did now passes `dividerStyle`.
+
+### Status
+
+Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+passes; the measurements above match React Storybook.
+
+---
+
+## Dropdown (as Menu)
+
+React: `Dropdown` with a trigger (`DropdownButton`, `DropdownLink`,
+`DropdownIconButton`, or an input trigger: `SelectInput`, `AutoComplete`,
+`FilterChipSelectInput`), a `DropdownOverlay` (+ `DropdownHeader`,
+`DropdownFooter`) and an `ActionList`. cx: `Menu` + `MenuItem`
+(`components/menu/`) — the action menu only.
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `DropdownButton` / `DropdownLink` / `DropdownIconButton` | `trigger` snippet (a Button, `Link variant="button"` or IconButton) | rule 2; the menu stamps `aria-haspopup` / `aria-expanded` |
+| `isOpen`, `onOpenChange(isOpen)` | `bind:isOpen`, `onOpenChange({ isOpen })` | **changed**: the object form, as the other overlays |
+| `selectionType: single \| multiple` | — | **missing:** Menu only acts; nothing stays selected |
+| `DropdownOverlay` `defaultPlacement` (`bottom-start`) | `placement` | **changed** default from `bottom-end` to React's `bottom-start` |
+| `DropdownOverlay` `width` / `minWidth` / `maxWidth` / `zIndex` / `referenceRef` | — | **missing** (the overlay is 240–400px, as React's menu default) |
+| `DropdownHeader`, `DropdownFooter` | — | **missing** (rule 2: `header` / `footer` snippets) |
+| `ActionListItem` `title`, `value`, `onClick`, `isDisabled` | `MenuItem` same | same (`onClick` takes no args) |
+| `ActionListItem` `description`, `leading` (non-icon), `trailing`, `titleSuffix`, `intent: 'negative'`, `href`/`target`, `isSelected` | — (`icon` only) | **missing** |
+| `ActionListSection` (`title`, a divider after, `role="group"`) | anything between items (rule 4) | **missing** as a component |
+| Nested dropdowns (submenus) | — | **missing** |
+| Input triggers (`SelectInput`, `AutoComplete`, `FilterChipSelectInput`, `FilterChipGroup`) | — | **missing** |
+| Below `m`: the overlay as a BottomSheet | — | **missing** |
+| `data-analytics-*` | — | **missing** (analytics pass) |
+
+### Look
+
+Measured against React Storybook (Dropdown with Button, Default):
+
+- **Overlay:** 240px wide (240–400px), 12px radius, `popup.background.gray.moderate`,
+  the 1px popup rim drawn inside over the raised shadow (new Uno class
+  `shadow-dropdown`), the medium backdrop blur, 8px round the rows, 8px from
+  the trigger. It opens sliding 8px down as it fades in, over `quick`. Were:
+  160px min, 8px radius, a 1px border, the high blur, 4px padding, 4px off,
+  and a scale-in.
+- **Row:** 36px tall, 8px padding (4px below 768px), 8px radius, 2px above and
+  below; the icon 8px before the title, the title 8px clear of the end and
+  truncated; hover `interactive.background.gray.default`. Were: 12px side
+  padding and no margins.
+- **Focus from the keys:** Blade's 4px `surface.border.primary.muted` ring,
+  1px out (was a flush shadow).
+
+### Status
+
+Look audited, fixed and verified against React Storybook; `test:cx` passes.
+The API gaps above are open, pending a decision on which to build.
+
+---
+
+## EmptyState
+
+React: `EmptyState`. cx: `EmptyState` (`components/empty-state/`).
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `asset` | `asset` snippet | **renamed** from `media` (rule 2) |
+| `title?` | `title?: string \| Snippet` | now optional, as in React; a snippet is a superset |
+| `description?` | `description?: string \| Snippet` | **renamed** from `message`; a snippet (a Link in it) is a superset, as Alert's |
+| `children` | `children` snippet | now a direct child of the stack, as in React (no wrapper) |
+| `size: small \| medium \| large \| xlarge` | `size` (default `medium`) | **added** |
+| `testID` | same | same |
+| styled props | `class` | rule 1 |
+| analytics | — | not ported (none of cx has them yet) |
+| — | ~~`color`~~ | cx-only, **removed** (below) |
+
+### Look
+
+Measured against React Storybook (With Title And Description, per size, at
+desktop width — cx's type scale is Blade's desktop one):
+
+- **Stack:** a centred flex column, gap 16/20/24/32px by size; no padding
+  (was `px-4 py-8`) and no `text-center` on the root.
+- **Asset:** a bare box capped at 60/90/120/160px (was an 80px tinted disc),
+  no longer `aria-hidden`: an illustration is the caller's `<img alt>`.
+- **Title and description:** one inner column, 2px apart. The title is a
+  semibold Heading, `surface.text.gray.subtle`, 18/18/20/32px, no
+  letter-spacing; its tag follows Blade's Heading (`h6`, `h6`, `h5`, `h3`;
+  was `h2`). The description is body Text, `surface.text.gray.muted`,
+  10/12/14/16px with Blade's letter-spacing (-1.3%, -3.3% for xlarge).
+
+### cx-only features
+
+**Removed (decided):** `color`, which drew a round disc tinted by an intent
+behind the asset (checkout's old look). A caller who wants the disc draws it
+inside `asset`.
+
+### Checkout call sites
+
+None in the apps; the story and the test harness were updated.
+
+### Status
+
+Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+passes; the measurements above match React Storybook.
+
+---
+
+## Form (FormLabel, FormHint, CharacterCounter)
+
+React's `Form` is field chrome, not a form: `FormLabel`, `FormHint` and
+`CharacterCounter`, which every field draws. cx has them as shared atoms in
+`components/shared/`, with their classes in `shared/field.ts`. They are
+internal on both sides: fields take `label`, `necessityIndicator`,
+`helpText`, … and draw these.
+
+| React | cx | Notes |
+| --- | --- | --- |
+| `FormLabel` | `FieldLabel.svelte`, `resolveFieldLabel` | **new** |
+| `FormHint` | `FieldHint.svelte`, `resolveFieldHint` | gained `xsmall` |
+| `CharacterCounter` | `FieldCounter.svelte`, `resolveFieldCounter` | **new** |
+| `AnimatedFormHint` (`showHelpTextOnFocus`) | — | not ported; would come with TextInput |
+| `FormLabel.position="left"` | — | rule 7 |
+
+### FieldLabel
+
+Props: `text`, `as: 'label' | 'span'` with `for` and `id`, `size`
+(`xsmall`…`large`), `necessityIndicator`, `accessibilityText`, and `row`
+(a field's `labelArea`, rule 9). The label element holds the text and its
+necessity only; the row around it holds the gap to the field.
+
+Measured against React Storybook (ChipGroup, required at small and optional
+at medium, desktop width): the same box, type, colours, gaps and offsets.
+
+- Body text, medium weight, clamped to two lines: small (12/17) up to
+  medium, medium (14/20) at large; `surface.text.gray.muted` at xsmall and
+  small, `subtle` above. 4px above the field, 8px at large.
+- Required: a regular body-small `*` in `feedback.text.negative.intense`,
+  pinned to the first line. Optional: a regular caption `(optional)`,
+  4px after the text, in `surface.text.gray.muted`.
+- The necessity is read once: React reads a hidden "required" and the
+  visible `*` too (its own TODO); cx hides the mark from screen readers.
+- Row content sits 4px apart; `ms-auto` sends an item to the row's end —
+  measured against React's "with label suffix & trailing" TextInput story
+  (the Label row story).
+
+### FieldCounter
+
+`current/max`, a regular caption in `surface.text.gray.muted` at the hint's
+size. TextInput and TextArea show it at the end of the hint row, 2px from
+the edge, while `maxCharacters` is set (TextInput: unless `format` is).
+
+### Fields on the shared chrome
+
+Every field draws FieldLabel and FieldHint: ChipGroup, CounterInput,
+TextInput, TextArea, OTPInput, PhoneNumberInput (through TextInput),
+InputGroup, RadioGroup, SegmentedControl (through RadioGroup), OptionList,
+VirtualOptionList and CardGroup (its cx-only field mode); Checkbox's title
+is its label, and it draws FieldHint. The per-field label and hint strings
+(`FIELD_LABEL`, `FIELD_HINT`, `FIELD_HINT_TONE`, `INPUT_LABEL`) are gone,
+and so are the roots' `gap`s: the label and the hint carry their own.
+
+### cx-only: `Form`
+
+`components/form/Form.svelte` is a `<form>` whose fields register with it:
+validation, submit, errors and revealing the first invalid field. React has no
+equivalent; checkout depends on it. Recommendation: **keep**. It is not
+pending on anything React has.
+
+### Status
+
+Audited, built and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+passes (`test/field.test.ts` is new); ChipGroup's and TextInput's labels
+measure the same as React's.
+
+Found on the way: the token contract's import stripper deleted every
+`export const … ;` up to its first `;`, so exported style maps went
+unchecked. Fixed; it caught Menu's `pe-2` (not a class here; now `pr-2`).
+
+---
+
+## Input / TextInput
+
+React: `TextInput` (over `BaseInput`). cx: `TextInput` (`components/text-input/`).
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `size: xsmall \| small \| medium \| large` | `size` | **added** |
+| `textAlign` | `textAlign` | **added** |
+| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `necessityIndicator` | same | **added**; `required` also makes the control required, as in React |
+| `showClearButton`, `onClearButtonClick` | same | **added**: IconButton's medium look, while there is text; clears (`onChange` fires) and refocuses |
+| `maxCharacters` | same | now also shows FieldCounter |
+| `type: text \| telephone \| email \| url \| number \| search` | `type: text \| tel \| email \| url \| number` | rule 10: the HTML types, with Blade's per-type defaults; `number` renders as `text`. `search` is SearchInput's (below) |
+| `onChange({ name, value })` | same | rule 12 |
+| `keyboardReturnKeyType`, `autoCapitalize`, `autoCompleteSuggestionType` | `enterKeyHint`, `autoCapitalize`, `autoComplete` | rule 10; **added** |
+| — | `inputMode` | rule 10; **added**: e.g. `numeric` digits in a `text` card-number field |
+| `onClick`, `onKeyDown` | same | **added** |
+| `prefix`, `suffix`, `leadingIcon`, `trailingIcon`, `leading`, `trailing`, `trailingButton` | `leading`, `trailing` (`string \| Snippet`) | rule 2: one slot per side holds text, an icon, or both |
+| `format` (a `#` mask) | `format` (parse/format functions or rule lists) | different: cx's is richer; a mask string is not accepted |
+| `isLoading` | — | **gap**: no spinner in cx yet |
+| `validationTextPlacement`, `showHelpTextOnFocus` | — | **gap** |
+| tags (`isTaggedInput`, `tags`, …), dropdown slots | — | **gap** |
+| `onSubmit` | — | covered by Form's Enter-to-submit |
+| `labelPosition` | — | rule 7 |
+| `defaultValue` | `bind:value` | rule 3 |
+
+### Look
+
+Measured against React Storybook (Text Input, per size, and its focus,
+hover, error and disabled states, desktop width):
+
+- **Sizes:** 28/32/36/48px tall, 8/8/12/12px side padding, body text
+  10/12/14/16px (letter-spacing -1.3%, -3.3% at large), radius 8px (12px
+  at large). The label and hint take the field's size.
+- **Text:** now flush with the padding (the browser's 2px input padding is
+  gone) and letter-spaced; the input does not inherit letter-spacing, so
+  the control carries the type itself.
+- **Focus:** Blade's 4px `surface.border.primary.muted` outline, 1px off
+  the box (was a 4px box-shadow flush with it), over the 1.5px primary
+  border.
+- **Affixes:** 12px in, 8px to the text — as React's leading icon.
+- **Border:** a 1px border inside the box where React draws a 1px ring
+  outside it: the same line, 1px further in.
+
+### cx-only features — decision pending
+
+| Feature | What it does | Recommendation |
+| --- | --- | --- |
+| `type="password"` | the bare masked control PasswordInput builds on | keep (infrastructure); use PasswordInput |
+| `role` | `searchbox` on the control | keep (SearchInput's) |
+| `isReadOnly` | read-only control | keep |
+| `span`, `attach` | InputGroup cell; PhoneNumberInput's handle | keep (infrastructure) |
+| 16px text below `m` at medium | stops iOS zooming into the field | keep |
+
+---
+
+## Input / TextArea
+
+React: `TextArea`. cx: `TextArea` (`components/text-area/`).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `size` | `size` | **added** (TextInput's sizes) |
+| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `necessityIndicator` | same | **added** |
+| `showClearButton`, `onClearButtonClick` | same | **added**: pinned 8px down and 12px in, the text keeps 36px clear of it |
+| `maxCharacters` | same | now also shows FieldCounter |
+| `onKeyDown` | same | **added** |
+| `numberOfLines` (default 2) | same | same |
+| tags, `showHelpTextOnFocus` | — | **gap** |
+
+Measured against React (Text Area): 2 lines are 56px of content plus the
+border, 8/12px padding, the counter 2px from the end. cx-only: `isReadOnly`
+(keep).
+
+---
+
+## Input / OTPInput
+
+React: `OTPInput`. cx: `OTPInput` (`components/otp-input/`).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `otpLength: 4 \| 6 \| 8` | `otpLength: number` | superset |
+| `onOTPFilled({ name, value })`, `onChange({ name, value })` | same | **renamed** from `onFilled`; rule 12 |
+| `autoCompleteSuggestionType: none \| oneTimeCode` | `autoComplete` (default `one-time-code`) | rule 10 |
+| `keyboardType` (default `decimal`) | `inputMode` (default `numeric`) | rule 10 |
+| `keyboardReturnKeyType` | `enterKeyHint` | rule 10; **added** |
+| `placeholder` (one character per cell) | same | **added** |
+| `onFocus`, `onBlur` (with the cell's index) | `(event, index)` | **added** |
+| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `size` | same | same; the label and hint take it |
+
+**Look:** each cell takes Blade's natural input width, 88px, and shrinks in
+a narrower box; the row is as wide as its cells (was: cells shared the full
+width). Cell type 20/26 (24/32 at large), 36/48px tall, 8px apart.
+
+**cx-only, pending:** `onClick`, `accept` (per-character filter),
+`isRequired`, `isReadOnly`, `cellAccessibilityLabel` — keep all: checkout's
+auto-read and i18n use them.
+
+---
+
+## Input / PhoneNumberInput
+
+React: `PhoneNumberInput` (a Dropdown country selector). cx:
+`PhoneNumberInput` (a TextInput, and a Modal picker from a ModalStack).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `size` | same | **added** |
+| `showCountrySelector` | same | **added** |
+| `onFocus`, `onBlur`, `onClick` | same | **added** (through TextInput) |
+| `keyboardReturnKeyType`, `autoCompleteSuggestionType` | `enterKeyHint`, `autoComplete` (default `tel`) | rule 10; **added** |
+| clear button, `onClearButtonClick` | same | **added**: always on while there is a number, as React |
+| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
+| `trailingIcon` | `trailing` | rule 2 |
+| `defaultCountry`, `defaultValue` | `bind:country`, `bind:value` | rule 3 |
+| `onChange` payload `{phoneNumber, dialCode, country, value, name}` | `PhoneNumberChange` | unchanged here; compare when the phone runes are audited |
+| `onCountryChange({ country })` | same | rule 12 |
+
+**Look:** the country button is React's: 56×28, 4px in, 6px round, a 20px
+flag and a 16px chevron 4px apart, the gray faded fill on hover, the focus
+outline flush; the dial code 12px on. It used to show the browser's grey
+button background.
+
+**cx-only, pending:** the picker is a Modal (a bottom sheet on phones) with
+a search, not a Dropdown — keep: it is checkout's flow; `isCountryFixed`,
+`countryLabel`, `searchLabel`, `emptyText`, `closeLabel` — keep.
+
+---
+
+## Input / PasswordInput
+
+React: `PasswordInput` (over `BaseInput`). cx: `PasswordInput`
+(`components/password-input/`), a TextInput with its reveal state in
+`runes/text-input/reveal.svelte.ts`.
+
+| React | cx | Action |
+| --- | --- | --- |
+| `showRevealButton` (default true) | same | **new**: Blade's medium IconButton (eye / eye-off), "Show password" / "Hide password"; none while disabled, and a disabled field stays masked |
+| `necessityIndicator: required \| none` | same | same (never `optional`) |
+| `autoCompleteSuggestionType: none \| password \| newPassword` | `autoComplete: off \| current-password \| new-password` | rule 10 |
+| `keyboardReturnKeyType` | `enterKeyHint` | rule 10 |
+| autocapitalize off | same | same |
+| `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `errorText`, `successText`, `validationState`, `maxCharacters`, `isDisabled`, `isRequired`, `placeholder`, `name`, `autoFocus`, `size`, `testID` | same; `labelArea` | rule 9 for the label area |
+| `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rules 3 and 12 |
+| `showHelpTextOnFocus`, `labelPosition` | — | gap; rule 7 |
+| — | `span`, `attach` | cx-only: an InputGroup cell (a CVV), a composition's handle |
+
+The look is TextInput's, and the button is the clear button's. Replaces
+TextInput `type="password"` at call sites (the InputGroup stories' CVV).
+
+---
+
+## Input / SearchInput
+
+React: `SearchInput` (over `BaseInput`). cx: `SearchInput`
+(`components/search-input/`), a TextInput.
+
+| React | cx | Action |
+| --- | --- | --- |
+| searchbox, search key | same | a `type="text"` control with `role="searchbox"` and `enterkeyhint="search"`, as Blade (a `search` input draws a second clear button) |
+| `showSearchIcon` (default true) | same | **new**: the search glyph leads |
+| clear button while it holds text, `onClearButtonClick` | same | always on, as Blade: clears (`onChange` fires) and refocuses |
+| `trailing` | same (`string \| Snippet`) | after the clear button; Blade's trailing Dropdown is a **gap** |
+| `isLoading` | — | **gap**: no Spinner in cx yet |
+| `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `placeholder`, `name`, `isDisabled`, `autoFocus`, `autoCapitalize`, `onClick`, `onFocus`, `onBlur`, `size`, `testID` | same; `labelArea` | rule 9 for the label area |
+| `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rules 3 and 12 |
+| Dropdown trigger (SearchInput inside a Dropdown) | — | **gap**, with Dropdown |
+| `showHelpTextOnFocus`, `labelPosition` | — | gap; rule 7 |
+
+Was TextInput `type="search"`, which is gone: the glyph, role and key moved
+here.
+
+---
+
+## InputGroup
+
+React: `InputGroup` with `InputRow`s (`gridTemplateColumns`). cx:
+`InputGroup`, whose members take a `span` (`full`, `1/2`, `1/3`, …) on a
+12-column grid.
+
+| React | cx | Action |
+| --- | --- | --- |
+| `size` | same | **added**: members take it, as in React, and the corners round at 12px when large |
+| `InputRow` | member `span` | different composition; keep (spans cover every React layout seen) |
+| `label`, `helpText`, `errorText`, `successText`, `validationState`, `isDisabled` | same | same |
+
+**Look:** stacked rows share 1px seams, the group's corners are rounded, the
+hint sits 4px under — as React's Default story.
+
+---
+
+## Radio, RadioGroup
+
+React: `RadioGroup`, `Radio`. cx: same (`components/radio/`).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `RadioGroup.onChange({ name, value })` | same | rule 12 |
+| `RadioGroup.size` | same | **added**: circles 12/16/20px, dots 4/6/8px, title 12/14/16px, gaps 4/8/12px |
+| `RadioGroup.orientation` | same | same; horizontal rows wrap (React: `flexWrap`, default `nowrap`) |
+| `Radio.helpText` | same | **added**: indented under the title, describes the radio |
+| `Radio.trailing` | snippet | **added** |
+| `Radio.size` | — | the group's size wins in React; not ported |
+| `labelPosition` | — | rule 7 |
+
+**Look:** measured against React's RadioGroup (Help Text, all sizes): 2px
+above and below each radio, the circle 2px in, the title 4px past it and
+letter-spaced; focus is Blade's 4px outline (was a box-shadow).
+
+**Accessibility:** a Radio or Checkbox with `helpText` is named by its
+title alone and described by the help text. Both sit in one `<label>`, so
+without this the help text joined the name, as it does in React.
+
+---
+
+## Link
+
+React: `Link` (over `BaseLink`). cx: `Link` (`components/link/`).
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `variant: anchor \| button` | same | same |
+| `color: primary \| white \| positive \| negative \| notice \| information \| neutral` | same | `white`, `notice`, `information` **added** |
+| `size: xsmall \| small \| medium \| large` | same | same |
+| `icon`, `iconPosition: left \| right` | `icon`, `iconPosition: leading \| trailing` | cx's names (they follow the writing direction) |
+| `children` (optional with an icon) | same | now optional: an icon-only link, named by `accessibilityLabel` |
+| `htmlTitle` | same | **added** (`title`) |
+| `href`, `target`, `rel` | same | same; `_blank` adds `noopener noreferrer` |
+| `isDisabled` (button only) | on both | cx-only on the anchor, pending (below) |
+| `onClick` | same | same; an app router takes plain internal clicks (adapter) |
+| `accessibilityProps`, `hitSlop`, `opacity`, pointer events | — | not ported (`accessibilityLabel` covers naming) |
+
+### Look
+
+Measured against React Storybook (Default, Link Button, Icon Right Link
+Button, Disabled Link Button, Link Sizes; hover and keyboard focus):
+
+- **Underline:** off at rest (the browser's `<a>` underline was never
+  reset), on hover and focus, at the browser's offset (was 2px); the
+  button form never underlines (it did on hover).
+- **Type:** medium weight, 10/13, 12/17, 14/20, 16/24 by size (xsmall and
+  small had a 16px line).
+- **Focus ring:** 4px `interactive.border.primary.faded`, 1px out, round at
+  4px (was 2px).
+- **Icon:** 12px up to small, 16px above, 4px from the text.
+- **Colour** moves at 2xquick/standard.
+- **Display:** the anchor stays `inline`, so a long link wraps with its
+  sentence; React's is `inline-block` and cannot. One line reads the same.
+
+### cx-only features — decision pending
+
+| Feature | What it does | Recommendation |
+| --- | --- | --- |
+| `isDisabled` on an anchor | drops the `href`, marks it `aria-disabled` | keep |
+| `download` | saves instead of navigating | keep |
+
+---
+
+## Modal
+
+React: `Modal`, `ModalHeader`, `ModalBody`, `ModalFooter`. cx: `Modal`
+(`components/modal/`). The header, body and footer are shared with
+BottomSheet; see its section for the header decisions (rule 2).
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `isOpen`, `onDismiss()` | `bind:isOpen`, `onDismiss(source)` | same, plus what closed it |
+| `isDismissible` | same | same |
+| `size: small \| medium \| large \| full` (default `small`) | same | **changed** from `default \| full`: Blade's 400, 760 and 1024px columns |
+| `accessibilityLabel` | same | same |
+| `initialFocusRef` | — | **missing**, as BottomSheet |
+| `zIndex` | — | n/a: the LayerHost stacks modals |
+| `ModalHeader` (`title`, `subtitle`, `leading`, `trailing`, `titleSuffix`, back button) | `title`, `subtitle` + `header` snippet | `subtitle` kept as a string; the rest rule 2 (see BottomSheet) |
+| — | `chrome` snippet | cx-only: a zero-height box on the panel's top edge, unclipped, holding the close button and a sheet's handle; the caller adds things that hang off the panel |
+| `ModalBody` (`padding` spacing.6 \| spacing.0) | `body` snippet (20px) / `children` (raw) | rule 2 |
+| `ModalFooter` | `footer` snippet | rule 2 |
+| `data-analytics-*` | — | **missing** (analytics pass) |
+
+### Look
+
+Measured against React Storybook (Simple Modal, every size, 1200×800):
+
+- **Panel:** 16px radius (was 8px), `popup` fill, Blade's shadow; 400,
+  760 or 1024px wide from `m`, and at most 80% of the host's height when
+  centred. `full` fills the host 8px in, at full height.
+- **Header:** 20px in (16px below `m`), the title 16/24 semibold −3.3%,
+  the close button 20px, centred on the title's first line, a hairline
+  under it — unchanged, already React's.
+- **Body:** 20px all round.
+- **Footer:** 16px, 20px from `m`, under a hairline — a plain box, as
+  Blade's BaseFooter: the caller lays out its buttons (the story right-aligns
+  them 12px apart). It was a `flex gap-4` row with 16px above; BottomSheet's
+  footer changed with it.
+- **Scrim:** `overlay.background.subtle`, the LayerHost's.
+- Not ported: React's 320px minimum width (a checkout frame can be narrower).
+
+### cx-only features — decision pending
+
+| Feature | What it does | Recommendation |
+| --- | --- | --- |
+| `variant: modal \| sheet \| drawer \| left-drawer` | centred, Blade's BottomSheet, Blade's Drawer, or the drawer on the left; per breakpoint | keep: BottomSheet and Drawer ride it (`placement` removed) |
+| `pace` | v2's quicker easing | decide (as BottomSheet) |
+| `onClosed`, `role`, `closeLabel` | as BottomSheet | keep |
+| `ModalStack`, imperative `openModal` | a stack of modals opened from code, a lazy body with a pending state | keep |
+
+### Status
+
+Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+passes; the measurements match React Storybook at every size.
+
+---
+
+## Popover
+
+React: `Popover` (with `PopoverInteractiveWrapper` for a non-button trigger).
+cx: `Popover` (`components/popover/`), whose panel Menu shares.
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `children` (the trigger) | `trigger` snippet (receives `isOpen`) | **changed**: one name for the trigger across Popover, Tooltip, Menu and Collapsible |
+| `content` | `children` snippet (receives `close`) | **changed**: `children` is always the content |
+| `title` | `title: string \| Snippet` | **added**: the heading, and it names the dialog |
+| `titleLeading` | snippet (receives `close`) | **added** |
+| `footer` | snippet (receives `close`) | **added** |
+| `placement` (default `top`) | same | default **changed** from `bottom-start` |
+| `openInteraction: click \| hover` | same | **added**: hover opens under the pointer, over the trigger or the panel (100ms to cross the gap), with no close button and no focus move |
+| close button (with `click`) | same, `closeLabel` (default `Close`) | **added**: beside the title, or floating in the corner without one |
+| `isOpen`, `onOpenChange({ isOpen })` | `bind:isOpen`, same | rule 12 |
+| `defaultIsOpen` | `bind:isOpen` | rule 3 |
+| `maxWidth` | — | rule 1 would put it on `class`, which lands on the trigger; not ported |
+| `initialFocusRef` | — | **missing**: focus goes to the first control (as React without it) |
+| `zIndex` | — | n/a: the LayerHost stacks panels |
+| `data-analytics-*` | — | **missing** (analytics pass) |
+
+### Look
+
+Measured against React Storybook (Default, 1200×800):
+
+- **Panel:** 16px round (was 8px), `popup.background.gray.moderate`, the
+  popup shadow (a 1px rim drawn inside, was a border), the high blur; 328px
+  at most (288px below `m`, was 320px everywhere).
+- **Arrow:** **added**, 22×12 toward the trigger, clamped along the edge;
+  the panel sits 16px off the trigger, the arrow's tip 4px. It has no rim
+  (React's does): the rim would need a literal colour or a drop-shadow
+  filter.
+- **Content:** 16px in; the footer 16px under; the header 4px over the
+  content — leading, title and close 8px apart; the title body large
+  semibold (16/24 −3.3%) with 12px after it; the close button a 16px muted
+  glyph (a medium IconButton).
+
+### cx-only features — decision pending
+
+| Feature | What it does | Recommendation |
+| --- | --- | --- |
+| `isDisabled` | the trigger does not open it | keep |
+| `accessibilityLabel` | names an untitled panel | keep |
+
+### Status
+
+Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+passes; the panel, header, gap and arrow measure as React's.
+
+---
+
+## SegmentedControl
+
+React: `SegmentedControl`, `SegmentedControlItem`. cx: the same
+(`components/segmented-control/`), a RadioGroup drawn through its internal
+`look`.
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `size: small \| medium \| large` | same | same |
+| `label`, `accessibilityLabel`, `helpText`, `errorText`, `validationState`, `isDisabled`, `isRequired`, `name` | same | same |
+| `necessityIndicator` | same | **added** (through RadioGroup) |
+| `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rule 3; rule 12 |
+| `labelPosition` | — | rule 7 |
+| `SegmentedControlItem` `value`, `leading`, `isDisabled`, `accessibilityLabel`, `children` | same, but `leading` → `icon` (an `IconSource`, as Chip, MenuItem, TabItem) | **renamed** `leading` |
+| — | `labelArea`; hints `string \| Snippet`; item snippets receive `{ isChecked, isDisabled }` | cx-only, across Chip, Radio, Checkbox, Switch and SegmentedControl (rule 9) |
+
+### Look
+
+Measured against React Storybook (Default, every size):
+
+- **Track:** 32/36/48px tall, 4px in, 2px between segments, round at 8px
+  (12px at large), `interactive.background.gray.faded`. Small was 28px with
+  2px in; medium was round at 12px.
+- **Segments:** 24/28/40px, round at 4px (8px at large); the label body
+  small/medium/large (12/17, 14/20, 16/24), medium weight, letter-spaced.
+  Small and medium had their type swapped (14px and 12px) and no
+  letter-spacing; medium's segments were 24px.
+- **Icon:** 16px, 20px at large (was 16px everywhere), 8px from the label.
+- **Thumb:** `surface.background.gray.intense`, round as the segment,
+  sliding at moderate/standard (was quick); hover fills an unpicked segment
+  with `interactive.background.gray.default` at gentle; focus is the inset
+  4px `surface.border.primary.muted` ring.
+
+### cx-only features — decision pending
+
+| Feature | What it does | Recommendation |
+| --- | --- | --- |
+| `color: neutral \| white` | the pill over a brand-colour pane | keep |
+
+### Status
+
+Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+passes; every size measures as React's.
+
+---
+
+## Skeleton
+
+React: `Skeleton`. cx: `Skeleton` (`components/skeleton/`).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `width`, `height`, min/max sizes, `borderRadius`, flex props, styled props | `class` | rule 1 |
+| `testID` | same | same |
+
+**Look** (computed styles against React's Default story): the
+`interactive.background.gray.default` fill, hidden from assistive tech.
+
+- **Fade-in added:** the bone fades in over `2xgentle` (0.96s), then pulses
+  to `gray.highlighted` and back (1.32s, alternating) from 0.96s on, both on
+  the standard curve. cx only pulsed. The fade uses `both` fill, so with
+  reduced motion (no animation) the bone still shows.
+- **No default radius**, as React: it was 4px. The shape is the caller's
+  `class`; ModalPending and the stories now pass `rounded-xsmall`.
+
+No cx-only features. **Status:** done; `svelte-check:cx` gives 0 errors and
+`test:cx` passes.
+
+---
+
+## Switch
+
+React: `Switch`. cx: `Switch` (`components/switch/`). Its colours, motion
+and thumb check were ported from React earlier.
+
+| React | cx | Action |
+| --- | --- | --- |
+| `isChecked`, `defaultChecked`, `onChange({ isChecked, value, event })` | `bind:isChecked`, `onChange({ isChecked })` | rule 3; rule 12 (no `value`: cx's form value is `parse`) |
+| `size: small \| medium` | same | same |
+| `isDisabled`, `name`, `accessibilityLabel`, `testID` | same | same |
+| `value` (the submitted string) | `parse` | cx's form model: `parse(isChecked)` is the submitted value |
+| `id` | — | not ported (the control's id is internal) |
+
+**Look** — measured against React Storybook at 1200 and 390px, on and off:
+
+- **Phone sizes added:** Blade's switch is bigger below `m` — track 36×20
+  (small) and 44×24 (medium), thumb 16 and 20px, check 8 and 10px — and
+  takes the desktop size (28×16 / 36×20, thumb 12 / 16px, check 6 / 8px)
+  from `m`. cx had the desktop size everywhere. The press stretch follows
+  the thumb (125%, growing from its centre).
+- Track and thumb colours, the thumb's position when on, and the check's
+  fade already matched.
+
+**cx-only, pending:** `children` (a label beside the switch; Blade's Switch
+takes only `accessibilityLabel`) — keep; `isLoading` (the thumb spins while
+a change is in flight) — keep; `parse` — keep (form model).
+
+**Status:** done; `svelte-check:cx` gives 0 errors and `test:cx` passes.
+
+---
+
+## Tabs
+
+React: `Tabs`, `TabList`, `TabItem`, `TabPanel`. cx: `Tabs`, `TabItem`,
+`TabPanel` (`components/tabs/`), on the choice list (`runes/tabs/`).
+
+### Composition (decided)
+
+cx's Tabs were data-driven (`items`, `itemKey`, `itemLabel` and a panel
+snippet per item). Rule 4 makes them compose: TabItems register with Tabs
+and are read in document order, and each TabPanel names its tab by `value`.
+Blade's `TabList` is an intermediate container, so it becomes the `tabs`
+snippet (rule 2); the panels are `children`.
+
+```svelte
+<Tabs bind:value>
+  {#snippet tabs()}
+    <TabItem value="upi">UPI</TabItem>
+    <TabItem value="card" icon={card}>Card</TabItem>
+  {/snippet}
+  <TabPanel value="upi">…</TabPanel>
+  <TabPanel value="card">…</TabPanel>
+</Tabs>
+```
+
+### Props
+
+| React | cx | Action |
+| --- | --- | --- |
+| `variant: bordered \| borderless \| filled` (default `bordered`) | same | **added** (was `layout: auto \| fill`) |
+| `size: small \| medium \| large` | same | `small` **added** |
+| `orientation: horizontal \| vertical` | same | **added** |
+| `isFullWidthTabItem` | same | **added** (replaces `layout="fill"`) |
+| `isLazy` | same | **added**: panels mount only while picked; otherwise all stay mounted, hidden, as Blade |
+| `value`, `defaultValue`, `onChange` | `bind:value`, `onChange` | rule 3; the first enabled tab is picked when unset, as Blade |
+| `TabList` | `tabs` snippet | rule 2 |
+| `TabItem` `value`, `leading`, `trailing`, `isDisabled`, `href`, `onClick`, `children` | same, but `leading` → `icon` (an `IconSource`, as MenuItem, Chip, Link); `children` and `trailing` receive `{ isSelected, isDisabled }` | **added**: all but `value` and the label; **renamed** `leading` |
+| `TabPanel` `value`, `children` | same | composed (was the per-item snippet) |
+| `items`, `itemKey`, `itemLabel`, `isItemDisabled`, `tab` | — | **removed**: rule 4 |
+
+### Look
+
+Measured against React Storybook (Default, every variant × size, and both
+orientations):
+
+- **Bordered / borderless, horizontal:** tabs 30/38/50px tall with no side
+  padding, 24px apart (32px from `m`), the label 14/20 (16/24 at large);
+  a 2px `interactive.border.neutral.highlighted` indicator slides under the
+  pick at moderate/standard; an unpicked tab's 2px edge turns
+  `interactive.border.gray.highlighted` on hover. Bordered adds the 1px
+  `surface.border.gray.muted` track under the row.
+- **Vertical:** the tabs stack at full width, 12px in, the indicator 1.5px
+  on the left, the track beside the column.
+- **Filled:** the row on `interactive.background.gray.faded`, 4px in (2px
+  at small), 8/12px round; the tabs share it; a `surface.background.gray.
+  intense` pill slides to the pick, round as the tab (6px at small).
+  Vertical: the picked tab fills itself, 12px in.
+- **Icons** 16px (20px at large), 8px from the label; **focus** is the inset
+  4px ring; everything else moves at gentle/standard.
+- **Panels** have no padding of their own (was 16px above).
+
+### Behaviour
+
+One tab stop; arrows on either axis, Home and End move between enabled
+tabs, wrapping. cx keeps `activation` (default `automatic`: moving focus
+picks, the APG default); `manual` picks on a press, Enter or Space, as
+Blade does.
+
+### cx-only features — decision pending
+
+| Feature | What it does | Recommendation |
+| --- | --- | --- |
+| `activation: automatic \| manual` | whether focus moving picks | keep (Blade is `manual`) |
+| `accessibilityLabel` | names the tablist | keep |
+
+### Status
+
+Audited, rebuilt, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+passes; every variant, size and orientation measures as React's.
+
+---
+
+## Toast
+
+React: `useToast().show(…)` with a `ToastContainer`. cx: `showToast(…)`
+(from anywhere, over a queue) with a `ToastStack` (`components/toast/`).
+
+### Options
+
+| React | cx | Action |
+| --- | --- | --- |
+| `content` | same | **renamed** from `message` (a string) |
+| `leading` | `icon` (`IconSource`) | **renamed** to `icon`, the library's name for a glyph (Alert, Chip, MenuItem, TabItem); each colour has Blade's default glyph (info, check-circle, alert-triangle, alert-octagon) |
+| `color` | same | same |
+| `action: { text, onClick, isLoading }` | same | **renamed** from `{ label, onPress }`; `isLoading` added (disables it, `aria-busy`). Pressing it no longer dismisses the toast, as Blade: call the handle's `dismiss()` |
+| dismiss button | always shown, `closeLabel` (default `Dismiss toast`) | **changed**: it showed only when `closeLabel` was passed |
+| `onDismissButtonClick` | same | **added** |
+| `autoDismiss` (default true), `duration` (default 4000) | same | **added** `autoDismiss`; `duration` now defaults to 4000 here |
+| `id`, `toast.dismiss(id)` | the returned handle's `dismiss()` and `dismissed` | cx's handle |
+| `type: promotional` | — | **gap**: arbitrary content, gray, the action under it |
+
+### Look
+
+Measured against React Storybook (Basic, neutral):
+
+- 12px round (was 8px), 12px in and 8px above and below (was 12px all
+  round), the parts 8px apart; the colour's popup fill with its 1px rim
+  drawn inside (was a border) over the white bevel (`shadow-toast-*`), and
+  the medium backdrop blur (was none).
+- Content: body small (12/17, letter-spaced) in static white, 4px above and
+  below (was 10px).
+- Action: Blade's xsmall tertiary white Button; dismiss: the subtle medium
+  IconButton, 12px after it (the hairline between them is gone).
+
+### Kept beyond React
+
+- A `negative` toast is an `alert` (Blade announces all politely).
+- The stack: capacity, stacking and hover-to-hold (ported earlier).
+
+### cx-only features — decision pending
+
+| Feature | What it does | Recommendation |
+| --- | --- | --- |
+| `onDismiss(reason)`, `dismissed` | how it went: timeout, press, eviction | keep |
+| `closeLabel` | i18n for the dismiss button | keep |
+
+**Status:** done; `svelte-check:cx` gives 0 errors and `test:cx` passes;
+the toast measures as React's.
+
+---
+
+## Tooltip
+
+React: `Tooltip` (with `TooltipInteractiveWrapper` for a non-focusable
+trigger). cx: `Tooltip` (`components/tooltip/`).
+
+| React | cx | Action |
+| --- | --- | --- |
+| `content` (string) | `content: string`, or a `children` snippet for rich content | superset |
+| `title` | `title: string \| Snippet` | **added** |
+| `placement` (default `top`; no `left/right-start/end`) | same (all twelve) | superset |
+| `onOpenChange({ isOpen })` | same | rule 12 |
+| `children` (the trigger) | `trigger` snippet (receives `isOpen`) | **changed**: one name for the trigger across the overlays |
+| `maxWidth` | — | rule 1 would put it on `class`, which lands on the trigger; not ported |
+| `zIndex` | — | n/a: the LayerHost stacks it |
+
+**Look** — measured against React Storybook (Default, With Title):
+
+- The bubble: `popup.background.gray.intense`, 12px round and in (was 8px
+  round, 8×4px in), 200px at most (was 240px), the low raised shadow and
+  the high blur; the title semibold body medium (14/20) in static white
+  over the content, body small (12/17, was 10px) in its subtle step, 4px
+  apart.
+- The arrow: a 14×7 triangle (was a rotated 8px square); the bubble 12px
+  off the trigger (was 8px), the arrow's tip 4px.
+
+**cx-only, pending:** `isDisabled` (no tooltip) — keep.
+
+**Status:** done; `svelte-check:cx` gives 0 errors and `test:cx` passes;
+the bubble measures as React's.
+
+---
+
 ## ActionList — deferred
 
 **Decision:** build it with Dropdown and Menu. React's ActionList only exists
@@ -769,7 +1967,7 @@ its own it has no keyboard support.
 ### cx today
 
 Nothing corresponds directly:
-- `OptionList`/`OptionItem` (and `VirtualOptionList`) is a standalone form field of native radios and checkboxes, always visible, on the headless choice list it shares with Accordion. Its variants are `plain` (a bordered box of divided rows) and `card`.
+- `OptionList`/`OptionItem` (and `VirtualOptionList`) is a standalone form field of native radios and checkboxes, always visible, on the headless choice list it shares with CardGroup. Its variants are `plain` (a bordered box of divided rows) and `card`.
 - `Menu` draws its own `menuitem` rows.
 
 When ActionList is built, those rows should be rebuilt on it. OptionList then gets its own cx-only section, or is re-audited against Radio/Checkbox groups.

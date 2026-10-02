@@ -2,7 +2,6 @@ import type { Snippet } from 'svelte';
 import type { OptionListValidationState } from '../../runes/option-list/list.svelte';
 import type { OptionState } from '../../runes/option-list/context';
 import type { AxisValue } from '../../axes';
-import { FIELD_HINT, FIELD_HINT_TONE, FIELD_LABEL } from '../shared/field';
 
 export type { OptionListValidationState, OptionState };
 
@@ -37,8 +36,6 @@ export interface OptionListClasses extends OptionRowClasses {
   root: string;
   /** Applied to the root while the list is disabled. */
   disabled: string;
-  /** The visible label text. */
-  label: string;
   /** The box the rows sit in. */
   options: string;
   /**
@@ -47,9 +44,6 @@ export interface OptionListClasses extends OptionRowClasses {
    * so it does not scroll away; the rows' box inside it goes frameless.
    */
   virtual: { root: string; viewport: string; options: string };
-  /** The one line under the options. */
-  hint: string;
-  hintTone: Record<OptionListValidationState, string>;
 }
 
 /** Style props in, the parts out. */
@@ -172,9 +166,8 @@ export const resolveOptionList: OptionListStyleResolver<
   const { variant = 'plain', indicator = 'none' } = props;
   const look = VARIANT[variant];
   return {
-    root: 'flex w-full flex-col gap-2',
+    root: 'flex w-full flex-col',
     disabled: 'opacity-600',
-    label: FIELD_LABEL,
     options: look.options,
     virtual: {
       root: 'min-h-0',
@@ -190,8 +183,6 @@ export const resolveOptionList: OptionListStyleResolver<
     control: { radio: INDICATOR[indicator], checkbox: INDICATOR[indicator] },
     invalid: 'outline-solid outline-thin outline-interactive-negative-default',
     content: 'min-w-0 flex-1',
-    hint: FIELD_HINT,
-    hintTone: FIELD_HINT_TONE,
   };
 };
 

@@ -1,18 +1,24 @@
+import type { Attachment } from 'svelte/attachments';
+
 /** Anything a parent reads back in document order: an item, a header, a tab. */
 export interface OrderedEntry {
   /** Its element once mounted: orders the entries and takes focus. */
   getElement(): HTMLElement | undefined;
 }
 
-export interface OrderedEntries<E extends OrderedEntry> {
+/** What a parent offers the entries that register with it. */
+export interface EntryHost<E extends OrderedEntry> {
   /** Adds an entry; returns its unregister. */
   register(entry: E): () => void;
   /** An entry mounted or moved: re-read document order. */
   reorder(): void;
-  /** The entries in document order. Tracked. */
-  readonly ordered: readonly E[];
   /** An entry's position in document order; -1 when unregistered. Tracked. */
   indexOf(entry: E): number;
+}
+
+export interface OrderedEntries<E extends OrderedEntry> extends EntryHost<E> {
+  /** The entries in document order. Tracked. */
+  readonly ordered: readonly E[];
 }
 
 // `compareDocumentPosition`: the other node precedes this one.
@@ -66,5 +72,49 @@ export function createOrderedEntries<
       return ordered;
     },
     indexOf: (entry) => ordered.indexOf(entry),
+  };
+}
+
+export interface RegisteredEntry<E extends OrderedEntry, N extends HTMLElement> {
+  /** What the host holds: the fields given, and the element once attached. */
+  readonly entry: E;
+  /** The element, once attached. */
+  readonly node: N | undefined;
+  /** On the element: gives the entry its element and re-reads document order. */
+  readonly attach: Attachment<N>;
+  /** Takes the entry off its host: the component's `onDestroy`. */
+  readonly unregister: () => void;
+}
+
+/**
+ * One child's side of registration: the entry registers with its host now
+ * — before mount, so an index is there for the first paint (and for SSR) —
+ * and `attach` on its element orders it. Without a host (an item drawn on
+ * its own) the entry is inert. Lifecycle-free like every state core: the
+ * caller hands `unregister` to its `onDestroy`.
+ */
+export function registerEntry<
+  E extends OrderedEntry,
+  N extends HTMLElement = HTMLElement,
+>(
+  host: Pick<EntryHost<E>, 'register' | 'reorder'> | undefined,
+  fields: Omit<E, 'getElement'>
+): RegisteredEntry<E, N> {
+  let node: N | undefined;
+  const entry = { ...fields, getElement: () => node } as E;
+  const unregister = host?.register(entry) ?? (() => undefined);
+  return {
+    entry,
+    unregister,
+    get node() {
+      return node;
+    },
+    attach(element) {
+      node = element;
+      host?.reorder();
+      return () => {
+        node = undefined;
+      };
+    },
   };
 }

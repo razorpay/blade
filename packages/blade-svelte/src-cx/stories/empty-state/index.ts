@@ -4,19 +4,23 @@ import type { StoryMeta } from '../types';
 const meta: StoryMeta = {
   title: 'EmptyState',
   description:
-    'The centred stack a screen shows instead of content: media on a tinted disc, a title, a message and actions. Style-only: no behaviour model behind it.',
+    "Blade's EmptyState: the centred stack a screen shows instead of content — an asset, a title, a description and actions. Style-only: no behaviour model behind it.",
   argTypes: {
-    color: { control: 'select', options: EMPTY_STATE_AXES.color },
+    size: { control: 'select', options: EMPTY_STATE_AXES.size },
     title: { control: 'text' },
-    message: { control: 'text' },
+    description: { control: 'text' },
   },
   stories: {
     Basic: {
       args: {
-        color: 'negative',
-        title: 'Payment failed',
-        message: 'Any amount deducted will be refunded in 5–7 days.',
+        size: 'medium',
+        title: 'No payment links found',
+        description: 'Create your first payment link to start accepting payments.',
       },
+    },
+    Sizes: {
+      description: 'small, medium, large and xlarge: the asset cap, the gaps and the type grow together.',
+      argTypes: {},
     },
   },
 };

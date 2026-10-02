@@ -12,7 +12,7 @@
   let isSaving = $state(false);
 
   // The thumb moves at once and spins until the server has the setting.
-  function save(next: boolean) {
+  function save({ isChecked: next }: { isChecked: boolean }) {
     isSaving = true;
     setTimeout(() => {
       saved = next;

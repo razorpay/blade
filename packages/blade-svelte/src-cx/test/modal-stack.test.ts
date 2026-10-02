@@ -73,7 +73,7 @@ describe('openModal', () => {
       .then(() => handle.result)
       .then((result) => {
         expect(result).toBeUndefined();
-        expect(onDismiss).toHaveBeenCalledWith('escape');
+        expect(onDismiss).toHaveBeenCalledWith(expect.objectContaining({ source: 'escape' }));
       });
   });
 

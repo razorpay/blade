@@ -108,12 +108,14 @@ export interface TextControl {
   handleBlur: (event: FocusEvent) => void;
   /** For a host that moves focus itself (an error, a step change). */
   focus: () => void;
+  /** Empties the field as an edit would (`onChange` fires), and focuses it. */
+  clear: () => void;
   /** On the control: the field's element, and the autofocus on mount. */
   readonly attach: Attachment<ControlElement>;
 }
 
 /**
- * The behaviour the text-entry components share (TextInput, TextAreaInput):
+ * The behaviour the text-entry components share (TextInput, TextArea):
  * field registration, the input model's accept/rewrite/caret cycle, the
  * blur rule and the control kept in step with the field. Call during
  * component initialisation.
@@ -123,8 +125,8 @@ export function createTextControl(options: TextControlOptions): TextControl {
   const autoFocus = options.autoFocus();
   let isFocused = $state(false);
 
-  const { field, form, notifyInput, blur } = setupField(
-    options.props(),
+  const { field, form, notifyInput, blur, syncProps } = setupField(
+    options.props,
     'text',
     options.onValue
   );
@@ -143,7 +145,7 @@ export function createTextControl(options: TextControlOptions): TextControl {
   // step with prop changes and write the control when `value` changed from
   // the outside (a user edit is already on the control).
   $effect.pre(() => {
-    field.updateProps(options.props());
+    syncProps();
     const shown = display();
     if (node && node.value !== shown) {
       node.value = shown;
@@ -192,8 +194,20 @@ export function createTextControl(options: TextControlOptions): TextControl {
     focus() {
       node?.focus();
     },
+    clear() {
+      const accepted = inputModel.accept('', 0, (next) => {
+        options.onValue(next);
+        options.onChange(next);
+      });
+      if (node) {
+        node.value = accepted.display;
+        node.focus();
+      }
+    },
     attach(element) {
       node = element;
+      // Its place in a group follows the document, not the mount order.
+      options.group?.reorder();
       if (autoFocus) {
         // Inside a surface that is still at its closed position (translated
         // off its host) a scrolling focus would drag the page after it.

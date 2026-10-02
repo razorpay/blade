@@ -9,7 +9,7 @@
     inForm?: boolean;
     value?: string;
     name?: string;
-    onChange?: (value: string) => void;
+    onChange?: (change: { name: string | undefined; value: string }) => void;
     onSubmit?: (data: FormData) => void;
     isDisabled?: boolean;
     webDisabled?: boolean;
@@ -43,7 +43,7 @@
     testID="group"
     class="mt-2"
   >
-    <Radio value="qr" testID="qr">QR code</Radio>
+    <Radio value="qr" testID="qr" helpText="Scan with any UPI app">QR code</Radio>
     <Radio value="web" isDisabled={webDisabled} testID="web">Bank website</Radio
     >
   </RadioGroup>

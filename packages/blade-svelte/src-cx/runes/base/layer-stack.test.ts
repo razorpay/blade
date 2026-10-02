@@ -28,39 +28,36 @@ describe('createLayerStack', () => {
     expect(stack.size()).toBe(0);
   });
 
-  it('back closes overlays before screens, lets the top own it, and confirms leaving', () => {
+  it('back lets the top own it, pops otherwise, and keeps the root', () => {
     const stack = createLayerStack<string>();
-    stack.push('home', 'main');
-    stack.push('card', 'main');
-    const sheet = stack.push('sheet', 'overlay');
-
-    expect(stack.back({ preferContainer: 'overlay', onTop: () => true })).toBe(
-      true
-    );
-    expect(stack.top()).toBe(sheet);
-
-    expect(stack.back({ preferContainer: 'overlay' })).toBe(true);
+    stack.push('home');
+    stack.push('card');
+    expect(stack.back({ onTop: () => true })).toBe(true);
     expect(stack.top()?.entry).toBe('card');
-
-    const confirmLeave = vi.fn().mockReturnValue(true);
-    expect(stack.back({ confirmLeave })).toBe(true);
-    expect(stack.top()?.entry).toBe('card');
-
     expect(stack.back()).toBe(true);
-    const onEmpty = vi.fn();
-    expect(stack.back({ onEmpty })).toBe(false);
-    expect(onEmpty).toHaveBeenCalled();
-    expect(stack.size('main')).toBe(1);
+    expect(stack.top()?.entry).toBe('home');
+    expect(stack.back()).toBe(false);
+    expect(stack.size()).toBe(1);
+  });
+
+  it('settle resolves the promise and leaves the layer in place', async () => {
+    const stack = createLayerStack<string>();
+    const layer = stack.push('sheet');
+    layer.settle('done');
+    await expect(layer.promise).resolves.toBe('done');
+    expect(stack.size()).toBe(1);
+    layer.close();
+    expect(stack.size()).toBe(0);
   });
 
   it('composes with a disclosure per the BackAnswer rule: the top dialog answers first', () => {
     const stack = createLayerStack<DisclosureModel>();
-    stack.push(createDisclosure({ defaultOpen: true }), 'main');
+    stack.push(createDisclosure({ defaultOpen: true }));
     const dialog = createDisclosure({
       defaultOpen: true,
       dismissible: () => false,
     });
-    stack.push(dialog, 'main');
+    stack.push(dialog);
     const onTop = (top: { entry: DisclosureModel }) => top.entry.back();
 
     // Open and non-dismissable: back is swallowed by the dialog, nothing pops.

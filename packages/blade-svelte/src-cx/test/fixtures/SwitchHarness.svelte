@@ -5,7 +5,7 @@
     isChecked?: boolean;
     isDisabled?: boolean;
     isLoading?: boolean;
-    onChange?: (isChecked: boolean) => void;
+    onChange?: (change: { isChecked: boolean }) => void;
     label?: string;
   }
 

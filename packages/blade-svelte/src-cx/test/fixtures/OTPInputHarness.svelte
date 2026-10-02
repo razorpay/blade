@@ -10,8 +10,8 @@
     onSubmit?: (data: FormData) => unknown;
     value?: string;
     otpLength?: number;
-    onChange?: (value: string) => void;
-    onFilled?: (value: string) => void;
+    onChange?: (change: { name: string | undefined; value: string }) => void;
+    onFilled?: (change: { name: string | undefined; value: string }) => void;
     track?: (event: string, payload?: Record<string, unknown>) => void;
     isMasked?: boolean;
     isDisabled?: boolean;
@@ -51,7 +51,7 @@
     {value}
     {otpLength}
     {onChange}
-    {onFilled}
+    onOTPFilled={onFilled}
     {isMasked}
     {isDisabled}
     {isRequired}

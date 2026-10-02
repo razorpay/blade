@@ -1,8 +1,10 @@
 <script lang="ts">
   import {
     Button,
+    Icon,
     Modal,
     LayerHost,
+    icons,
     type ModalStyleProps,
   } from '../../index';
 
@@ -11,6 +13,7 @@
       isDismissible?: boolean;
       closeLabel?: string;
       title?: string;
+      withChrome?: boolean;
     };
   }
 
@@ -22,7 +25,7 @@
 
 <!-- The frame stands in for the checkout modal card: the modal stays inside it. -->
 <div
-  class="relative [height:32rem] max-w-blade-760 overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
+  class="relative h-[32rem] max-w-[760px] overflow-hidden rounded-small border-thin border-solid border-surface-gray-muted"
 >
   <div class="grid gap-4 p-6">
     <Button class="w-40" onClick={() => (isOpen = true)}>Open modal</Button>
@@ -33,26 +36,35 @@
 
 <Modal
   bind:isOpen
-  placement={args.placement}
+  variant={args.variant}
   size={args.size}
   isDismissible={args.isDismissible}
   title={args.title}
   closeLabel={args.closeLabel || undefined}
-  onDismiss={(source) => {
+  onDismiss={({ source }) => {
     lastSource = source;
   }}
 >
+  {#snippet chrome()}
+    {#if args.withChrome}
+      <!-- Hangs half over the panel's top edge; the panel does not clip it. -->
+      <div
+        class="absolute left-1/2 top-0 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-max border-thin border-solid border-surface-gray-muted bg-popup-gray-subtle text-surface-gray-normal shadow-highRaised"
+        aria-hidden="true"
+      >
+        <Icon source={icons.card} size="large" />
+      </div>
+    {/if}
+  {/snippet}
   {#snippet body()}
     <p class="text-100 leading-100 text-surface-gray-subtle">
       The card ending 1111 will be removed from this device.
     </p>
   {/snippet}
   {#snippet footer()}
-    <Button class="flex-1" variant="secondary" onClick={() => (isOpen = false)}>
-      Cancel
-    </Button>
-    <Button class="flex-1" color="negative" onClick={() => (isOpen = false)}>
-      Remove
-    </Button>
+    <div class="flex justify-end gap-3">
+      <Button variant="secondary" onClick={() => (isOpen = false)}>Cancel</Button>
+      <Button color="negative" onClick={() => (isOpen = false)}>Remove</Button>
+    </div>
   {/snippet}
 </Modal>

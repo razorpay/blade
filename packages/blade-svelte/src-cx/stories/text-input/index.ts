@@ -1,6 +1,7 @@
+import { TEXT_INPUT_AXES } from '../../index';
 import type { StoryMeta } from '../types';
 
-const INPUT_TYPES = ['text', 'tel', 'email', 'number', 'password'];
+const INPUT_TYPES = ['text', 'tel', 'email', 'url', 'number'];
 
 const meta: StoryMeta = {
   title: 'Text input',
@@ -15,6 +16,10 @@ const meta: StoryMeta = {
     isRequired: { control: 'boolean' },
     isReadOnly: { control: 'boolean' },
     maxCharacters: { control: 'number' },
+    size: { control: 'select', options: TEXT_INPUT_AXES.size },
+    textAlign: { control: 'select', options: TEXT_INPUT_AXES.textAlign },
+    necessityIndicator: { control: 'select', options: ['none', 'required', 'optional'] },
+    showClearButton: { control: 'boolean' },
   },
   stories: {
     Basic: {
@@ -26,6 +31,10 @@ const meta: StoryMeta = {
         isDisabled: false,
         isRequired: false,
         isReadOnly: false,
+        size: 'medium',
+        textAlign: 'left',
+        necessityIndicator: 'none',
+        showClearButton: false,
       },
     },
     Validation: {
@@ -47,6 +56,11 @@ const meta: StoryMeta = {
         successText: 'VPA verified',
       },
     },
+    LabelArea: {
+      description:
+        "`labelArea` places the label among other content — Blade's labelSuffix (an info tooltip) and labelTrailing (a link, pushed to the end with `ms-auto`). Only the label names the control.",
+      argTypes: {},
+    },
     Affixes: {
       description: 'leading / trailing take text or a snippet.',
       argTypes: {
@@ -63,19 +77,76 @@ const meta: StoryMeta = {
       },
       args: { maxCharacters: 19 },
     },
+    PasswordInput: {
+      description:
+        "Blade's PasswordInput over TextInput: masked, never autocapitalized, with a button that reveals the text (none while disabled).",
+      argTypes: {
+        label: { control: 'text' },
+        placeholder: { control: 'text' },
+        helpText: { control: 'text' },
+        isDisabled: { control: 'boolean' },
+        showRevealButton: { control: 'boolean' },
+        necessityIndicator: { control: 'select', options: ['none', 'required'] },
+        autoComplete: {
+          control: 'select',
+          options: ['current-password', 'new-password', 'off'],
+        },
+        size: { control: 'select', options: TEXT_INPUT_AXES.size },
+      },
+      args: {
+        label: 'Password',
+        placeholder: 'Enter your password',
+        helpText: '',
+        isDisabled: false,
+        showRevealButton: true,
+        necessityIndicator: 'none',
+        autoComplete: 'current-password',
+        size: 'medium',
+      },
+    },
+    SearchInput: {
+      description:
+        "Blade's SearchInput over TextInput: a searchbox led by the search glyph, with the clear button while it holds text and the keyboard's search key.",
+      argTypes: {
+        label: { control: 'text' },
+        placeholder: { control: 'text' },
+        helpText: { control: 'text' },
+        isDisabled: { control: 'boolean' },
+        showSearchIcon: { control: 'boolean' },
+        size: { control: 'select', options: TEXT_INPUT_AXES.size },
+      },
+      args: {
+        label: '',
+        placeholder: 'Search banks',
+        helpText: '',
+        isDisabled: false,
+        showSearchIcon: true,
+        size: 'medium',
+      },
+    },
     Textarea: {
-      name: 'TextAreaInput',
+      name: 'TextArea',
       description:
         'The multi-line sibling: its own component over the same field glue and the text-input style parts.',
       argTypes: {
         label: { control: 'text' },
         placeholder: { control: 'text' },
+        helpText: { control: 'text' },
         isDisabled: { control: 'boolean' },
+        showClearButton: { control: 'boolean' },
+        numberOfLines: { control: 'number' },
+        maxCharacters: { control: 'number' },
+        size: { control: 'select', options: TEXT_INPUT_AXES.size },
       },
       args: {
         label: 'Delivery note',
         placeholder: 'Leave at the door',
+        helpText: 'Help',
         isDisabled: false,
+        showClearButton: true,
+        numberOfLines: 2,
+        maxCharacters: 100,
+        size: 'medium',
       },
     },
   },

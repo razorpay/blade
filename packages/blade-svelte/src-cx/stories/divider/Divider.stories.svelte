@@ -3,6 +3,7 @@
   import readme from './README.md?raw';
   import meta from './index';
   import BasicStory from './Basic.svelte';
+  import MatrixStory from './Matrix.svelte';
 
   const { Story } = defineMeta({
     title: "Components/Divider",
@@ -22,5 +23,16 @@
 >
   {#snippet template(args)}
     <BasicStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Matrix"
+  args={meta.stories.Matrix.args}
+  argTypes={meta.stories.Matrix.argTypes}
+  parameters={{ docs: { description: { story: meta.stories.Matrix.description } } }}
+>
+  {#snippet template(args)}
+    <MatrixStory args={args as never} />
   {/snippet}
 </Story>

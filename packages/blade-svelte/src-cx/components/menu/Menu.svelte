@@ -8,8 +8,11 @@
   import { resolveMenu, type MenuShared, type MenuStyleProps } from './styles';
 
   type Props = MenuStyleProps & {
-    /** The trigger: a Button or an IconButton. */
-    trigger: Snippet;
+    /**
+     * The trigger: a Button or an IconButton. The wrapper around it opens
+     * the menu, so it wires nothing; `isOpen` is there to read.
+     */
+    trigger: Snippet<[{ isOpen: boolean }]>;
     /**
      * The MenuItems, in order, and anything else between them — a heading,
      * a Divider. Only MenuItems are items: the rest is outside the keyboard.
@@ -18,7 +21,12 @@
     children: Snippet;
     /** A MenuItem with a `value` was chosen: the menu closes and reports it. */
     onSelect?: (value: T) => void;
-    onOpenChange?: (isOpen: boolean) => void;
+    /**
+     * Whether the menu shows: bindable, or a value the host keeps driving.
+     * @default false
+     */
+    isOpen?: boolean;
+    onOpenChange?: (change: { isOpen: boolean }) => void;
     placement?: Placement;
     /** Names the menu. */
     accessibilityLabel: string;
@@ -31,8 +39,9 @@
     trigger,
     children,
     onSelect,
+    isOpen = $bindable(false),
     onOpenChange,
-    placement = 'bottom-end',
+    placement = 'bottom-start',
     accessibilityLabel,
     testID,
     class: className = '',
@@ -46,7 +55,11 @@
 
   const menu = createMenu<MenuShared>({
     id: menuId,
-    onOpenChange: (open) => onOpenChange?.(open),
+    isOpen: () => isOpen,
+    onValue: (next) => {
+      isOpen = next;
+    },
+    onOpenChange: (open) => onOpenChange?.({ isOpen: open }),
     shared: () => ({
       classes,
       onSelect: (value) => onSelect?.(value as T),
@@ -62,7 +75,7 @@
   onkeydown={menu.handleRootKeyDown}
   {@attach menu.root}
 >
-  {@render trigger()}
+  {@render trigger({ isOpen: menu.isOpen })}
   {#if menu.isOpen && menu.anchor}
     <PopoverPanel
       id={menuId}

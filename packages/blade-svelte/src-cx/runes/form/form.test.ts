@@ -177,18 +177,19 @@ describe('createForm submission', () => {
     expect(form.firstInvalid()).toEqual({ name: 'card.cvv', handle });
   });
 
-  it('keeps first-invalid order when a re-registering field passes its index', async () => {
+  it('reads its fields in document order, not registration order', async () => {
     const form = createForm({
       name: 'card',
       validator: () => ({ 'card.cvv': 'Too short', 'card.name': 'Required' }),
     });
-    const cvv = field('card.cvv', '1');
-    const unregister = form.register(cvv);
-    form.register(field('card.name', ''));
-
-    // A remount without the hint would move card.cvv behind card.name.
-    unregister();
-    form.register(cvv, 0);
+    const fieldset = document.createElement('div');
+    const cvvInput = document.createElement('input');
+    const nameInput = document.createElement('input');
+    fieldset.append(cvvInput, nameInput);
+    // card.name registers first, but card.cvv sits before it (a remount).
+    form.register(field('card.name', '', { getHandle: () => nameInput as never }));
+    form.register(field('card.cvv', '1', { getHandle: () => cvvInput as never }));
+    form.reorder();
 
     await form.validate();
     expect(form.firstInvalid()?.name).toBe('card.cvv');

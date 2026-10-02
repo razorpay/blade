@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Link, Text } from '../../index';
+  import { icons, Link, Text } from '../../index';
 </script>
 
 <div class="flex max-w-96 flex-col gap-4">
@@ -14,5 +14,15 @@
     </Link>. The links wrap with the sentence they sit in.
   </Text>
 
-  <!-- Actions that read as links wait for Link's button form (Link pass). -->
+  <div class="flex items-center gap-4">
+    <Link variant="button" size="small">Resend code</Link>
+    <Link variant="button" size="small" isDisabled>Resend code</Link>
+    <Link
+      href="https://razorpay.com/support"
+      target="_blank"
+      icon={icons.info}
+      accessibilityLabel="Help"
+      htmlTitle="Help"
+    />
+  </div>
 </div>

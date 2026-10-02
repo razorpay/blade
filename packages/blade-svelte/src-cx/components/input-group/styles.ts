@@ -4,8 +4,6 @@ import type {
   InputGroupCorners,
   InputGroupSpan,
 } from '../../runes/input-group/layout';
-import { FIELD_HINT, FIELD_HINT_TONE } from '../shared/field';
-import { INPUT_LABEL } from '../shared/input';
 
 export type InputGroupValidationState = ValidationState;
 
@@ -23,8 +21,6 @@ export interface InputGroupClasses {
   root: string;
   /** Applied to the root while the group is disabled. */
   disabled: string;
-  /** The visible label text. */
-  label: string;
   /** The grid the members sit in. */
   box: string;
   /** Applied to a member's root: the join with its neighbours. */
@@ -33,17 +29,17 @@ export interface InputGroupClasses {
   span: Record<InputGroupSpan, string>;
   /** Applied to a member's frame per corner of the group it holds. */
   corner: Record<InputGroupCorner, string>;
-  /** The one line under the box. */
-  hint: string;
-  /** Applied to the hint line per validation state. */
-  hintTone: Record<InputGroupValidationState, string>;
 }
 
 /** Style props in, the parts out. */
 export type InputGroupStyleResolver<P> = (props: P) => InputGroupClasses;
 
 /** No style axes yet: a member's width is its own `span`. */
-export type InputGroupStyleProps = Record<never, never>;
+/** Blade's InputGroup sizes its members and its label and hint. */
+export interface InputGroupStyleProps {
+  /** Every member's size, and the label's and hint's. @default 'medium' */
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+}
 
 // The box is a 12-track grid (12 divides by 2, 3 and 4), so a member's
 // fraction of the row is a literal col-span. `grid-cols-12`/`col-span-N`
@@ -58,22 +54,27 @@ const SPAN: Record<InputGroupSpan, string> = {
 };
 
 // The members that hold a corner of the group are rounded there, at the
-// radius a lone field has all round.
+// radius a lone field of the group's size has all round (12px at large).
 const CORNER: Record<InputGroupCorner, string> = {
   tl: 'rounded-tl-small',
   tr: 'rounded-tr-small',
   bl: 'rounded-bl-small',
   br: 'rounded-br-small',
 };
+const CORNER_LARGE: Record<InputGroupCorner, string> = {
+  tl: 'rounded-tl-medium',
+  tr: 'rounded-tr-medium',
+  bl: 'rounded-bl-medium',
+  br: 'rounded-br-medium',
+};
 
 export const resolveInputGroup: InputGroupStyleResolver<
   InputGroupStyleProps
-> = () => {
+> = (props: InputGroupStyleProps = {}) => {
   return {
-    root: 'relative flex w-full flex-col gap-1',
+    root: 'relative flex w-full flex-col',
     // Each member draws its own disabled look, as a lone field does.
     disabled: 'pointer-events-none',
-    label: INPUT_LABEL,
     // Each member draws its own 1px border, as a lone field does, and
     // overlaps its neighbours' by that pixel: the box pads the top and
     // left by it and every member pulls back by it, so the first row and
@@ -85,8 +86,6 @@ export const resolveInputGroup: InputGroupStyleResolver<
     box: 'isolate grid w-full grid-cols-12 pl-px pt-px',
     member: '-ml-px -mt-px',
     span: SPAN,
-    corner: CORNER,
-    hint: FIELD_HINT,
-    hintTone: FIELD_HINT_TONE,
+    corner: props.size === 'large' ? CORNER_LARGE : CORNER,
   };
 };

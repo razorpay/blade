@@ -1,5 +1,13 @@
-import { getContext, setContext, type Component } from 'svelte';
+import type { Component } from 'svelte';
+import { defineContext } from '../context';
 import type { BackAnswer } from '../base/back';
+import {
+  createPropsPatch,
+  loadComponent,
+  readyComponent,
+  type LazyComponent,
+} from '../base/lazy-component';
+import { isPromise } from '../base/promise';
 import { createLayerStack, type Layer } from '../base/layer-stack.svelte';
 import { getLayers, globalLayers, type Layers } from '../layer/layers';
 
@@ -18,13 +26,9 @@ export interface NavScreenControl<R = unknown> {
   onBack(handler: () => BackAnswer): () => void;
 }
 
-type Module<C> = C | { default: C };
-
 /** A component, or the promise of one (a dynamic import resolves as is). */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- a component's props are its own
-export type NavComponent<P extends Record<string, any>> =
-  | Component<P>
-  | Promise<Module<Component<P>>>;
+export type NavComponent<P extends Record<string, any>> = LazyComponent<P>;
 
 export interface PushScreenOptions<P, M = unknown> {
   /** Everything the component takes, except the `screen` prop it is given. */
@@ -97,14 +101,8 @@ export interface Nav<M = unknown> extends NavDirectionSource {
   back(): boolean;
   top(): NavEntry<M> | undefined;
   depth(): number;
-  /** Whether a NavStack is mounted to render what gets pushed. */
-  hasHost: boolean;
   /** Set by the mounted NavStack: where load failures are reported. */
   reportError?: (error: unknown) => void;
-}
-
-function isPromise<T>(value: unknown): value is Promise<T> {
-  return typeof (value as { then?: unknown })?.then === 'function';
 }
 
 export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
@@ -141,7 +139,6 @@ export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
         turns.delete(listener);
       };
     },
-    hasHost: false,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
     push<P extends Record<string, any>, R = unknown>(
       component: NavComponent<P>,
@@ -162,9 +159,7 @@ export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
       let layer = undefined as unknown as NavEntry<M>;
       move('forward', () => {
         layer = stack.push({
-          component: isPromise(component)
-            ? undefined
-            : (component as Component<Record<string, unknown>>),
+          component: readyComponent(component),
           props: { ...options.props },
           name: options.name,
           meta: options.meta,
@@ -173,32 +168,22 @@ export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
         });
       });
 
-      if (isPromise<Module<Component<P>>>(component)) {
-        component
-          .then((loaded) => {
-            const resolved =
-              typeof loaded === 'function' ? loaded : loaded.default;
-            move('forward', () =>
-              patch(layer, {
-                component: resolved as Component<Record<string, unknown>>,
-              })
-            );
-          })
-          .catch((error: unknown) => {
-            options.onLoadError?.(error);
-            nav.reportError?.(error);
-            layer.close();
-          });
-      }
+      loadComponent(component, {
+        onLoaded: (loaded) =>
+          move('forward', () => patch(layer, { component: loaded })),
+        onError: (error) => {
+          options.onLoadError?.(error);
+          nav.reportError?.(error);
+          layer.close();
+        },
+      });
 
-      let current: Record<string, unknown> = { ...options.props };
       return {
         ...control,
         result: layer.promise as Promise<R | undefined>,
-        update(next) {
-          current = { ...current, ...next };
-          patch(layer, { props: current });
-        },
+        update: createPropsPatch(options.props ?? {}, (props) =>
+          patch(layer, { props })
+        ),
       };
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- as above
@@ -254,17 +239,17 @@ export function createNav<M = unknown>(layers: Layers = globalLayers): Nav<M> {
 /** One stack for the page; an embedded surface provides its own. */
 export const globalNav = createNav();
 
-const NAV = Symbol('blade-nav');
+const NAV = defineContext<unknown>('blade-nav');
 
 /** Call during component init; descendants and its NavStack share it. */
 export function provideNav<M = unknown>(): Nav<M> {
   const nav = createNav<M>(getLayers());
-  setContext(NAV, nav);
+  NAV.set(nav);
   return nav;
 }
 
 export function getNav<M = unknown>(): Nav<M> {
-  return getContext<Nav<M> | undefined>(NAV) ?? (globalNav as Nav<M>);
+  return (NAV.get() as Nav<M> | undefined) ?? (globalNav as Nav<M>);
 }
 
 /**

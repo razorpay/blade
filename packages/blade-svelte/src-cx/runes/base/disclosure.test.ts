@@ -15,15 +15,18 @@ describe('createDisclosure', () => {
     expect(d.isDismissible()).toBe(true);
   });
 
-  it('dismiss and back respect dismissible', () => {
+  it('dismiss and back respect dismissible, after onDismiss heard them', () => {
     let dismissible = false;
+    const onDismiss = vi.fn();
     const d = createDisclosure({
       defaultOpen: true,
       dismissible: () => dismissible,
+      onDismiss,
     });
-    expect(d.dismiss()).toBe(false);
+    expect(d.dismiss('escape')).toBe(false);
     expect(d.back()).toBe(true);
     expect(d.isOpen()).toBe(true);
+    expect(onDismiss.mock.calls.map(([event]) => event.source)).toEqual(['escape', 'back']);
     dismissible = true;
     expect(d.back()).toBe(true);
     expect(d.isOpen()).toBe(false);
@@ -31,17 +34,26 @@ describe('createDisclosure', () => {
     expect(d.back()).toBeUndefined();
   });
 
-  it('lets the content own back and mirrors a controlled host', () => {
+  it("the event's close ends a non-dismissible one, under the dismissal's source", () => {
+    const onOpenChange = vi.fn();
+    const d = createDisclosure({
+      defaultOpen: true,
+      dismissible: () => false,
+      onDismiss: ({ close }) => close(),
+      onOpenChange,
+    });
+    expect(d.dismiss('escape')).toBe(true);
+    expect(onOpenChange).toHaveBeenCalledExactlyOnceWith(false, 'escape');
+  });
+
+  it('mirrors a controlled host', () => {
     let open = true;
     const d = createDisclosure({
       open: () => open,
-      onBack: () => false,
       onOpenChange: (next) => {
         open = next;
       },
     });
-    expect(d.back()).toBe(false);
-    expect(d.isOpen()).toBe(true);
     d.close();
     expect(open).toBe(false);
     expect(d.isOpen()).toBe(false);
@@ -56,6 +68,6 @@ describe('createDisclosure', () => {
     expect(d.isDismissible()).toBe(true);
     dismissible = false;
     expect(d.isDismissible()).toBe(false);
-    expect(d.dismiss()).toBe(false);
+    expect(d.dismiss('escape')).toBe(false);
   });
 });

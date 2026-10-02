@@ -1,6 +1,11 @@
 <script lang="ts" generics="T">
+  import { pickHintText } from '../../runes/form/hint';
+  import type { FieldChange } from '../shared/change';
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
+  import FieldHint from '../shared/FieldHint.svelte';
+  import FieldLabel from '../shared/FieldLabel.svelte';
   import { provideOptionList } from '../../runes/option-list/context';
   import { createOptionList } from '../../runes/option-list/list.svelte';
   import VirtualWindow from '../virtual/VirtualWindow.svelte';
@@ -32,7 +37,7 @@
      */
     value?: T | readonly T[] | null;
     isMultiple?: boolean;
-    onChange?: (value: T | readonly T[] | null) => void;
+    onChange?: (change: FieldChange<T | readonly T[] | null>) => void;
     /** Defaults to identity; pass it when options are rebuilt objects. */
     compare?: (a: T, b: T) => boolean;
     isDeselectable?: boolean;
@@ -81,11 +86,13 @@
     ...styleProps
   }: Props = $props();
 
+  const style = useComponentDefaults('OptionList', () => styleProps);
+
   const uid = $props.id();
   const lineText = $derived(
-    validationState === 'error' ? (errorText ?? helpText) : helpText
+    pickHintText({ validationState, helpText, errorText })
   );
-  const classes = $derived(resolveOptionList(styleProps));
+  const classes = $derived(resolveOptionList(style.current));
   // svelte-ignore state_referenced_locally
   const list = createOptionList<T, OptionListShared>({
     id: uid,
@@ -94,7 +101,7 @@
     onValue: (next) => {
       value = next;
     },
-    onChange: (next) => onChange?.(next),
+    onChange: (next) => onChange?.({ name, value: next }),
     isMultiple: () => isMultiple,
     compare,
     isOptionDisabled,
@@ -129,7 +136,10 @@
   onpointerdown={list.handlePointerDown}
 >
   {#if label}
-    <span id={list.labelId} class={classes.label}>{label}</span>
+    <FieldLabel
+      id={list.labelId}
+      text={label}
+    />
   {/if}
   <!-- Opens at the pick, so a long list shows what is chosen, not its top. -->
   <VirtualWindow
@@ -150,15 +160,11 @@
     {/snippet}
   </VirtualWindow>
   {#if hint.text}
-    <p
+    <FieldHint
       id={list.hintId}
-      class={cx(
-        classes.hint,
-        classes.hintTone[hint.validationState === 'error' ? 'error' : 'none']
-      )}
-    >
-      {hint.text}
-    </p>
+      text={hint.text}
+      tone={hint.validationState === 'error' ? 'error' : 'help'}
+    />
   {/if}
 </div>
 

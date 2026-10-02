@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
   import { titleWhenTruncated } from '../../runes/dom/truncation';
   import Icon from '../icon/Icon.svelte';
@@ -18,7 +19,9 @@
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolveBadge(styleProps));
+  const style = useComponentDefaults('Badge', () => styleProps);
+
+  const classes = $derived(resolveBadge(style.current));
 </script>
 
 <span class={cx(classes.root, className)} data-testid={testID}>

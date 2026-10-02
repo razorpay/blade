@@ -1,7 +1,6 @@
 <script lang="ts">
   import {
     Button,
-    icons,
     LayerHost,
     showToast,
     Text,
@@ -22,12 +21,10 @@
   function show() {
     count += 1;
     showToast({
-      message: `Card ending 4${count}21 removed`,
+      content: `Card ending 4${count}21 removed`,
       color: args.color,
       duration: args.duration,
-      icon: icons.checkCircle,
-      action: { label: 'Undo', onPress: () => (last = 'undone') },
-      closeLabel: 'Dismiss',
+      action: { text: 'Undo', onClick: () => (last = 'undone') },
     })
       .dismissed.then((reason) => {
         last = reason;

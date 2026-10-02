@@ -7,14 +7,16 @@ describe('Divider (preset component)', () => {
     const { getByTestId } = render(DecorHarness);
     const rule = getByTestId('rule');
     expect(rule.tagName).toBe('HR');
-    expect(rule.className).toContain('border-t-thin');
+    // Blade draws a horizontal line as the bottom border.
+    expect(rule.className).toContain('border-b-thin');
+    expect(rule.className).toContain('border-surface-gray-muted');
     expect(rule.hasAttribute('aria-orientation')).toBe(false);
     expect(rule.className.endsWith('my-2')).toBe(true);
 
     const upright = getByTestId('upright');
     expect(upright.getAttribute('aria-orientation')).toBe('vertical');
     expect(upright.className).toContain('border-l-thin');
-    expect(upright.className).not.toContain('border-t-thin');
+    expect(upright.className).not.toContain('border-b-thin');
     expect(upright.className).toContain('border-dashed');
   });
 });
@@ -63,17 +65,27 @@ describe('Screen and FooterBar (preset components)', () => {
   });
 });
 
-describe('EmptyState (preset component)', () => {
-  it('stacks a tinted media disc, the title, the message and the actions', () => {
+describe('EmptyState, as Blade', () => {
+  it('stacks the asset, the title and description, and the actions', () => {
     const empty = render(DecorHarness).getByTestId('empty');
-    const [media, title, message, actions] = Array.from(empty.children);
+    const [asset, content, action] = Array.from(empty.children);
     expect(empty.className.endsWith('mt-4')).toBe(true);
-    expect(media.getAttribute('aria-hidden')).toBe('true');
-    expect(media.className).toContain('bg-feedback-negative-subtle');
-    expect(title.tagName).toBe('H2');
-    expect(title.textContent).toBe('Payment failed');
-    expect(message.textContent).toBe('Your money is safe');
-    expect(actions.textContent?.trim()).toBe('Retry');
+    expect(empty.className).toContain('gap-5');
+    expect(asset.className).toContain('max-w-[90px]');
+    const [title, description] = Array.from(content.children);
+    expect(title.tagName).toBe('H6');
+    expect(title.textContent?.trim()).toBe('Payment failed');
+    expect(description.textContent).toBe('Your money is safe');
+    expect(action.tagName).toBe('BUTTON');
+  });
+
+  it('sizes the type and picks the heading level from size', async () => {
+    const { resolveEmptyState } = await import('../components/empty-state/styles');
+    const xl = resolveEmptyState({ size: 'xlarge' });
+    expect(xl.headingLevel).toBe('h3');
+    expect(xl.title).toContain('text-600');
+    expect(xl.description).toContain('tracking-25');
+    expect(xl.asset).toBe('max-w-[160px] max-h-[160px]');
   });
 
   it('renders only the parts it was given', () => {
@@ -81,3 +93,17 @@ describe('EmptyState (preset component)', () => {
     expect(empty.children.length).toBe(1);
   });
 });
+
+describe('Divider, as Blade', () => {
+  it('takes its colour from variant and its width from thickness', async () => {
+    const { resolveDivider } = await import('../components/divider/styles');
+    const line = resolveDivider({ variant: 'normal', thickness: 'thicker', dividerStyle: 'dashed' });
+    expect(line).toContain('border-surface-gray-normal');
+    expect(line).toContain('border-b-thicker');
+    expect(line).toContain('border-dashed');
+    expect(resolveDivider({ orientation: 'vertical', thickness: 'thinner' })).toContain(
+      'border-l-thinner'
+    );
+  });
+});
+

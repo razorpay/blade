@@ -1,4 +1,5 @@
 <script lang="ts" generics="T">
+  import { useComponentDefaults } from '../defaults';
   import type { Snippet } from 'svelte';
   import { cx } from '../../cx';
   import { createCarousel } from '../../runes/carousel/carousel.svelte';
@@ -40,7 +41,9 @@
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolveCarousel(styleProps));
+  const style = useComponentDefaults('Carousel', () => styleProps);
+
+  const classes = $derived(resolveCarousel(style.current));
   const carousel = createCarousel({
     count: () => items.length,
     index: () => index,

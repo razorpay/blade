@@ -25,7 +25,7 @@
 </script>
 
 {#snippet ownPending()}<span data-testid="own">Wait</span>{/snippet}
-{#snippet ownFailed(error: unknown)}
+{#snippet ownFailed({ error }: { error: unknown })}
   <p data-testid="failed">{(error as Error).message}</p>
 {/snippet}
 
@@ -38,7 +38,7 @@
   failed={withFailed ? ownFailed : undefined}
   testID="wait"
 >
-  {#snippet children(value)}
+  {#snippet children({ value })}
     <p data-testid="value">{value}</p>
   {/snippet}
 </Async>

@@ -63,6 +63,6 @@
     {#if icon}
       <span class={classes.itemIcon}><Icon source={icon} /></span>
     {/if}
-    {title}
+    <span class={classes.itemTitle}>{title}</span>
   {/if}
 </button>

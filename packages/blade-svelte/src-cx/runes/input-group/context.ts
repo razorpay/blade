@@ -1,15 +1,17 @@
-import { getContext, setContext } from 'svelte';
+import { defineContext } from '../context';
 import type { ValidationState } from '../form/hint';
 import type { FieldRecord } from '../form/types';
 import type { InputGroupSpan } from './layout';
 
-const INPUT_GROUP = Symbol('blade-input-group');
+const INPUT_GROUP = defineContext<InputGroupContext>('blade-input-group');
 
 /** What InputGroup offers the fields inside it. */
 export interface InputGroupContext {
   /** The group's hint line, when it shows one: members describe themselves by it. */
   hintId: () => string | undefined;
   isDisabled: () => boolean;
+  /** The group's size: its members take it. */
+  size: () => 'xsmall' | 'small' | 'medium' | 'large' | undefined;
   /** The state the host passed to the group, if any. */
   validationState: () => ValidationState | undefined;
   /** The group owns the grid, so it maps a member's span. */
@@ -23,12 +25,14 @@ export interface InputGroupContext {
    * order place them in the grid. Returns the undo.
    */
   register: (field: FieldRecord, span: () => InputGroupSpan) => () => void;
+  /** A member's control mounted or moved: re-read document order. */
+  reorder: () => void;
 }
 
 export function provideInputGroup(group: InputGroupContext): void {
-  setContext(INPUT_GROUP, group);
+  INPUT_GROUP.set(group);
 }
 
 export function getInputGroup(): InputGroupContext | undefined {
-  return getContext<InputGroupContext | undefined>(INPUT_GROUP);
+  return INPUT_GROUP.get();
 }

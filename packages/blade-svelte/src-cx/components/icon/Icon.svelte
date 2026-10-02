@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { useComponentDefaults } from '../defaults';
   import { cx } from '../../cx';
   import { isIconMarkup } from '../../runes/icon/source';
   import {
@@ -17,7 +18,9 @@
     ...styleProps
   }: Props = $props();
 
-  const classes = $derived(resolveIcon(styleProps));
+  const style = useComponentDefaults('Icon', () => styleProps);
+
+  const classes = $derived(resolveIcon(style.current));
 </script>
 
 <span

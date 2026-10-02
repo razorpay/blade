@@ -1,4 +1,3 @@
-import type { Registry } from '../base/registry.svelte';
 import type { ElementHandle } from '../dom/element';
 
 export type FormData = Record<string, unknown>;
@@ -121,13 +120,16 @@ export interface FormOptions {
 
 export interface FormModel {
   name: string;
-  fields: Registry<FieldRecord>;
+  /** The registered fields in document order (mount order before mount, and on native). Tracked. */
+  fields: { readonly items: readonly FieldRecord[] };
   /**
-   * Ordered reads (`firstInvalid`) follow registration order, so a field
-   * that remounts (conditional render, `{#key}`) should pass `at` — its
-   * position among the form's fields — or it re-registers at the end.
+   * Adds a field; returns its unregister. Ordered reads (`firstInvalid`)
+   * follow document order, by the field's `getHandle`, so a field that
+   * mounts late (a conditional block, a `{#key}` remount) takes its place.
    */
-  register(field: FieldRecord, at?: number): () => void;
+  register(field: FieldRecord): () => void;
+  /** A field's element mounted or moved: re-read document order. */
+  reorder(): void;
   hasField(name?: string): boolean;
   collect(): FormSnapshot;
   snapshot(): FormState;

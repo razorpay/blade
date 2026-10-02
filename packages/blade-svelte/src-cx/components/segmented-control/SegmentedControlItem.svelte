@@ -1,17 +1,21 @@
 <script lang="ts">
+  import { getRadioGroup } from '../../runes/radio/context';
   import Icon from '../icon/Icon.svelte';
   import Radio from '../radio/Radio.svelte';
+  import type { RadioClasses } from '../radio/styles';
   import type { SegmentedControlItemProps } from './styles';
 
   let {
     value,
-    leading,
+    icon,
     isDisabled,
     accessibilityLabel,
     testID,
     class: className = '',
-    children,
+    children: label,
   }: SegmentedControlItemProps = $props();
+
+  const group = getRadioGroup<RadioClasses>();
 </script>
 
 <!--
@@ -19,11 +23,14 @@
   that label: the Icon carries the name, so the radio reads as its text.
 -->
 <Radio {value} {isDisabled} {testID} class={className}>
-  {#if leading}
+  {#snippet children(state)}
+  {#if icon}
     <Icon
-      source={leading}
-      accessibilityLabel={children ? undefined : accessibilityLabel}
+      source={icon}
+      size={group?.shared.iconSize ?? 'medium'}
+      accessibilityLabel={label ? undefined : accessibilityLabel}
     />
   {/if}
-  {#if children}{@render children()}{/if}
+  {#if label}{@render label(state)}{/if}
+  {/snippet}
 </Radio>

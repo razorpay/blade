@@ -1,24 +1,30 @@
-import { getContext, setContext } from 'svelte';
+import { defineContext } from '../context';
 import type { BackAnswer } from '../base/back';
 import { createLayerStack, type Layer } from '../base/layer-stack.svelte';
 
-/** What an open surface (modal, sheet, drawer) answers to the stack. */
+/** What an open overlay answers to the stack. */
 export interface LayerEntry {
+  /**
+   * A modal surface (modal, sheet, drawer): it owns the scrim, inerts the
+   * rest and answers back. A floating one (popover, menu, tooltip) only
+   * answers Escape while it is the topmost layer. Default true.
+   */
+  isModal?: boolean;
   /**
    * Escape pressed, or the shared scrim tapped, while this layer is on
    * top. Returns whether it closed.
    */
   dismiss(source: 'escape' | 'blur'): boolean;
-  /** Back pressed while this layer is on top. */
+  /** Back pressed while this layer is the top modal one. */
   back(): BackAnswer;
 }
 
 export interface Layers {
-  /** Adds an open surface on top; the returned function removes it. */
+  /** Adds an open overlay on top; the returned function removes it. */
   push(entry: LayerEntry): () => void;
-  /** Tracked by whatever reads it. */
+  /** Whether it is the top modal layer. Tracked by whatever reads it. */
   isTop(entry: LayerEntry): boolean;
-  /** The top entry, undefined with nothing open. Tracked by whatever reads it. */
+  /** The top modal entry, undefined with none open. Tracked by whatever reads it. */
   readonly top: LayerEntry | undefined;
   /**
    * Back pressed: the app's back handler calls this before its own
@@ -46,9 +52,10 @@ export interface LayerHostParts {
 }
 
 /**
- * Coordinates the open surfaces of one app: stacking order, a single Escape
- * listener that reaches only the top layer, and the back answer. The key
- * listener exists only while a layer is open.
+ * Coordinates the open overlays of one app: stacking order, a single Escape
+ * listener that reaches only the topmost one — floating or modal — and the
+ * back answer, the top modal one's. The key listener exists only while a
+ * layer is open.
  */
 export function createLayers(): Layers {
   const stack = createLayerStack<LayerEntry>();
@@ -56,10 +63,20 @@ export function createLayers(): Layers {
   let hostParts: LayerHostParts = {};
   let listening = false;
 
-  const top = (): Layer<LayerEntry> | undefined => stack.top();
+  // Floating layers sit among the modal ones but take no part in the
+  // scrim, the inert page or back.
+  function top(): Layer<LayerEntry> | undefined {
+    const list = stack.entries;
+    for (let i = list.length - 1; i >= 0; i--) {
+      if (list[i].entry.isModal !== false) {
+        return list[i];
+      }
+    }
+    return undefined;
+  }
 
   function onKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'Escape' && top()?.entry.dismiss('escape')) {
+    if (event.key === 'Escape' && stack.top()?.entry.dismiss('escape')) {
       event.preventDefault();
     }
   }
@@ -112,15 +129,15 @@ export function createLayers(): Layers {
 /** Used when no provider is set up: tests, the explorer, a single-root app. */
 export const globalLayers = createLayers();
 
-const LAYERS = Symbol('blade-layers');
+const LAYERS = defineContext<Layers>('blade-layers');
 
 /** Call during component init at the app root to scope layers to that tree. */
 export function provideLayers(): Layers {
   const layers = createLayers();
-  setContext(LAYERS, layers);
+  LAYERS.set(layers);
   return layers;
 }
 
 export function getLayers(): Layers {
-  return getContext<Layers | undefined>(LAYERS) ?? globalLayers;
+  return LAYERS.get() ?? globalLayers;
 }

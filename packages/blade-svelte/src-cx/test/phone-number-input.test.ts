@@ -8,6 +8,11 @@ function type(control: HTMLElement, text: string) {
 }
 
 describe('PhoneNumberInput', () => {
+  it('takes a string trailing, as TextInput does', () => {
+    const { getByText } = render(PhoneNumberInputHarness, { props: { trailing: 'mobile' } });
+    expect(getByText('mobile')).toBeTruthy();
+  });
+
   it('shows the national number and stores the whole one', () => {
     const onChange = vi.fn();
     const { getByTestId } = render(PhoneNumberInputHarness, {
@@ -66,7 +71,7 @@ describe('PhoneNumberInput', () => {
         return fireEvent.click(getByText('Malaysia'));
       })
       .then(() =>
-        waitFor(() => expect(onCountryChange).toHaveBeenCalledWith('MY'))
+        waitFor(() => expect(onCountryChange).toHaveBeenCalledWith({ country: 'MY' }))
       )
       .then(() => {
         expect(onChange).toHaveBeenLastCalledWith(
@@ -90,6 +95,25 @@ describe('PhoneNumberInput', () => {
       expect(String(captureError.mock.calls[0]?.[0])).toContain('ModalStack');
       expect(queryByTestId('phone-picker')).toBeNull();
     });
+  });
+
+  it("opens the picker as the app's Modal defaults say: a modal, or a sheet", () => {
+    const plain = render(PhoneNumberInputHarness);
+    return fireEvent
+      .click(plain.getByTestId('phone-country'))
+      .then(() => waitFor(() => expect(plain.getByTestId('phone-picker')).toBeTruthy()))
+      .then(() => {
+        expect(plain.queryByTestId('phone-picker-drag-zone')).toBeNull();
+        plain.unmount();
+        const sheet = render(PhoneNumberInputHarness, {
+          props: { defaults: { Modal: { variant: 'sheet' } } },
+        });
+        return fireEvent
+          .click(sheet.getByTestId('phone-country'))
+          .then(() =>
+            waitFor(() => expect(sheet.getByTestId('phone-picker-drag-zone')).toBeTruthy())
+          );
+      });
   });
 
   it('filters the picker by name or dial code', () => {
@@ -169,15 +193,16 @@ describe('PhoneNumberInput', () => {
       });
   });
 
-  it('draws the country selector as a pill that tints on hover', () => {
+  it('draws the country selector as Blade does: 6px round, tints on hover, a 16px chevron', () => {
     const { getByTestId } = render(PhoneNumberInputHarness);
     const button = getByTestId('phone-country');
     expect(button.className).toContain('h-7');
-    expect(button.className).toContain('rounded-small');
+    expect(button.className).toContain('[border-radius:6px]');
+    expect(button.className).toContain('bg-transparent');
     expect(button.className).toContain('hover:enabled:bg-interactive-gray-faded');
     expect(button.className).toContain('text-surface-gray-muted');
     expect(button.querySelector('svg')?.parentElement?.className).toContain(
-      'w-3'
+      'w-4'
     );
   });
 });

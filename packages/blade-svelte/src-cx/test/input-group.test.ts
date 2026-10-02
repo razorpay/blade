@@ -23,7 +23,7 @@ describe('InputGroup', () => {
     });
     const line = getByText('As printed on the card');
     for (const id of ['number', 'expiry', 'cvv']) {
-      expect(getByTestId(id).getAttribute('aria-describedby')).toBe(line.id);
+      expect(getByTestId(id).getAttribute('aria-describedby')).toBe(line.closest('[id]')?.id);
     }
   });
 

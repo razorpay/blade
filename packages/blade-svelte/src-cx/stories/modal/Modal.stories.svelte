@@ -4,6 +4,7 @@
   import meta from './index';
   import BasicStory from './Basic.svelte';
   import BottomSheetStory from './BottomSheet.svelte';
+  import DrawerStory from './Drawer.svelte';
   import StackedStory from './Stacked.svelte';
   import ImperativeStory from './Imperative.svelte';
 
@@ -36,6 +37,17 @@
 >
   {#snippet template(args)}
     <BottomSheetStory args={args as never} />
+  {/snippet}
+</Story>
+
+<Story
+  name="Drawer"
+  args={meta.stories.Drawer.args}
+  argTypes={meta.stories.Drawer.argTypes}
+  parameters={{ docs: { description: { story: meta.stories.Drawer.description } } }}
+>
+  {#snippet template(args)}
+    <DrawerStory args={args as never} />
   {/snippet}
 </Story>
 

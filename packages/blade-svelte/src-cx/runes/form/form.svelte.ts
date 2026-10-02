@@ -1,6 +1,6 @@
 import { isPromise } from '../base/promise';
 import { isEmptyObject, unflatten } from './object';
-import { createRegistry } from '../base/registry.svelte';
+import { createOrderedEntries } from '../base/ordered-entries.svelte';
 import { evaluateConstraints } from './constraints';
 import type {
   ConstraintErrorFormatter,
@@ -62,7 +62,18 @@ export function createForm(options: FormOptions): FormModel {
   const hooks = options.hooks || {};
   const defer = options.defer || defaultDefer;
   const formatConstraintError = options.formatConstraintError || codeAsMessage;
-  const fields = createRegistry<FieldRecord>();
+  // Document order, by each field's handle: the order "the first invalid
+  // field" reads. Native handles cannot be compared: mount order it is.
+  const entries = createOrderedEntries<{
+    record: FieldRecord;
+    getElement: () => HTMLElement | undefined;
+  }>();
+  const records = $derived(entries.ordered.map((entry) => entry.record));
+  const fields = {
+    get items() {
+      return records;
+    },
+  };
 
   let errors: FormErrors = {};
   let submitted = false;
@@ -208,9 +219,13 @@ export function createForm(options: FormOptions): FormModel {
   return {
     name: options.name,
     fields,
-    register(field, at) {
-      return fields.register(field, at);
+    register(field) {
+      return entries.register({
+        record: field,
+        getElement: () => field.getHandle?.() as HTMLElement | undefined,
+      });
     },
+    reorder: () => entries.reorder(),
     hasField(name) {
       if (!name) {
         return false;

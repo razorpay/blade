@@ -4,7 +4,7 @@
   import { stamp } from '../helpers';
 
   interface Props {
-    args: { placement?: Placement; content?: string; isDisabled?: boolean };
+    args: { placement?: Placement; title?: string; content?: string; isDisabled?: boolean };
   }
 
   let { args }: Props = $props();
@@ -14,14 +14,17 @@
 
 <div class="grid [justify-items:start] gap-4 p-16">
   <Tooltip
+    title={args.title || undefined}
     content={args.content ?? ''}
     placement={args.placement}
     isDisabled={args.isDisabled}
-    onOpenChange={(isOpen) => {
+    onOpenChange={({ isOpen }) => {
       log = [`${stamp()} onOpenChange ${isOpen}`, ...log].slice(0, 8);
     }}
   >
-    <Button variant="secondary" type="button">Convenience fee</Button>
+    {#snippet trigger()}
+      <Button variant="secondary" type="button">Convenience fee</Button>
+    {/snippet}
   </Tooltip>
   <ul class="font-code grid gap-1 text-25 leading-50 text-surface-gray-subtle">
     {#each log as line (line)}
