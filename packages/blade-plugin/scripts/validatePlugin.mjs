@@ -127,6 +127,19 @@ for (const [skill, requiredRefs] of Object.entries(KNOWLEDGEBASE_SKILLS)) {
   }
 }
 
+// Skills are installed one directory at a time, so each skill script keeps its
+// own copy of the analytics helper. The copies must not drift.
+const analyticsCopies = skillNames
+  .map((skill) => path.join(skillsDir, skill, 'scripts', 'analytics.mjs'))
+  .filter((file) => fs.existsSync(file));
+for (const file of analyticsCopies.slice(1)) {
+  if (fs.readFileSync(file, 'utf8') !== fs.readFileSync(analyticsCopies[0], 'utf8')) {
+    errors.push(
+      `${path.relative(root, file)} differs from ${path.relative(root, analyticsCopies[0])}`,
+    );
+  }
+}
+
 for (const entry of fs.readdirSync(root, { recursive: true, withFileTypes: true })) {
   if (entry.isSymbolicLink())
     errors.push(
