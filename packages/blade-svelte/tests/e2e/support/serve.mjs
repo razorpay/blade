@@ -1,4 +1,4 @@
-// Serves the built src-cx Storybook (`yarn build-storybook:cx`) for the e2e
+// Serves the built src-cx Storybook (`yarn build-storybook`) for the e2e
 // suite: a static file server with no dependencies, started by Playwright's
 // `webServer`. Usage: node serve.mjs [port] [dir]
 import { createServer } from 'node:http';
@@ -8,10 +8,10 @@ import { fileURLToPath } from 'node:url';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 const port = Number(process.argv[2] ?? 6108);
-const root = resolve(process.argv[3] ?? join(here, '../../../storybook-static-cx'));
+const root = resolve(process.argv[3] ?? join(here, '../../../storybook-static'));
 
 if (!existsSync(join(root, 'iframe.html'))) {
-  console.error(`No Storybook build in ${root}. Run \`yarn build-storybook:cx\` first.`);
+  console.error(`No Storybook build in ${root}. Run \`yarn build-storybook\` first.`);
   process.exit(1);
 }
 

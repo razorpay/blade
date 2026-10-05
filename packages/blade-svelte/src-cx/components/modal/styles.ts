@@ -153,8 +153,9 @@ const SIZE: Record<Axis<'size'>, string> = {
 };
 // Important: the panel's `max-h-full` sits on the same element.
 const CENTRED_HEIGHT = '!max-h-[80%]';
-// A centred `full` modal fills the host, 8px in (Blade's `modalMargin`).
-const CENTRED_FULL = { root: 'p-2', panel: 'h-full' };
+// A centred `full` modal fills the host, 8px in (Blade's `modalMargin`), in
+// place of the centred root's 16px.
+const CENTRED_FULL = { root: 'items-center justify-center p-2', panel: 'h-full' };
 
 // Blade's IconButton (size large): a 20px muted icon, subtle on hover,
 // press and keyboard focus, with Blade's 4px focus ring.
@@ -289,7 +290,7 @@ export const resolveModal: ModalStyleResolver<ModalStyleProps> = (props: ModalSt
   const full = size === 'full';
   return modalClasses(
     {
-      root: full ? `${CENTRED.root} ${CENTRED_FULL.root}` : CENTRED.root,
+      root: full ? CENTRED_FULL.root : CENTRED.root,
       panel: `${CENTRED.panel} ${full ? CENTRED_FULL.panel : CENTRED_HEIGHT}`,
       drag: NO_DRAG,
       nativeSheet: full ? NATIVE_FULL : {},

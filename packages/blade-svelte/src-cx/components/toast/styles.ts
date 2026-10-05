@@ -111,17 +111,13 @@ const LEADING: Record<Intent, IconSource> = {
   negative: alertOctagon,
 };
 
-// 44px tall: 12px padding round a 20px line, the 16px icon and the dismiss
-// cross centred on it, 8px between the parts and 12px either side of the
-// hairline before the cross. Blade's motion: it slides in from the stack's
-// edge over gentle/entrance (480ms) and out over moderate/exit (280ms),
-// fading both ways — a transition takes the pace of the state it moves to,
-// so each state names its own. It takes clicks while the box around it does
-// not.
 // Blade's Toast: 12px round, 12px in and 8px above and below, its parts
 // 8px apart; the content body small in `surface.text.static-white.normal`,
-// 4px above and below; the icon static white. Enter slides in from the
-// edge over gentle/entrance, exit leaves over moderate/exit.
+// 4px above and below; the icon static white; the action 12px before the
+// dismiss cross. It slides in from the stack's edge over gentle/entrance
+// (480ms) and out over moderate/exit (280ms), fading both ways — a
+// transition takes the pace of the state it moves to, so each state names
+// its own. It takes clicks while the box around it does not.
 export const resolveToast: ToastStyleResolver<ToastStyleProps> = (props) => {
   const { color = 'neutral' } = props;
   return {

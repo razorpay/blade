@@ -23,8 +23,8 @@ its API (props, variants), except where one of the rules below applies.
    divider). A collection is data plus an item snippet only where it must
    know every item up front: a virtual list (`VirtualOptionList`) and
    `Carousel`. The headless core is `runes/base/choice-list.svelte.ts`
-   (OptionList, CardGroup, Tabs) over `runes/base/ordered-entries.svelte.ts`
-   (also Menu).
+   (OptionList, CardGroup, Tabs, RadioGroup, ChipGroup) over
+   `runes/base/ordered-entries.svelte.ts` (also Menu, InputGroup, Form).
 5. **The look follows React.** Checkout-specific looks are dropped and noted per
    component.
 6. **cx-only features** (props React lacks) are listed per component with a
@@ -46,7 +46,8 @@ its API (props, variants), except where one of the rules below applies.
    the area is a row, items 4px apart, `ms-auto` pushing one to the end. It
    is an area, not a row, so a future `labelPosition="left"` keeps the same
    snippet. Every field with a label has it, CounterInput and InputGroup
-   included. Hint lines (`helpText`, `errorText`, `successText`) take
+   included; OptionList and VirtualOptionList not yet (a `label` string,
+   string hints). Hint lines (`helpText`, `errorText`, `successText`) take
    `string | Snippet` on the inputs, a superset of React's strings, for a
    line with a Link in it. Only the label element names the
    control — React puts both slots inside its `<label>`, so a "Learn more"
@@ -72,13 +73,13 @@ its API (props, variants), except where one of the rules below applies.
     control (Button, IconButton, Link, the inputs, Checkbox, RadioGroup,
     ChipGroup, Switch, SegmentedControl, Tabs) snaps to its nearest size;
     per-component `defaults` for any style prop; and `breakpoints` and
-    `adapters`. Any default, and Modal's and BottomSheet's style props, may
+    `adapters`. Any default, and Modal's, BottomSheet's and Drawer's style props, may
     be given per breakpoint (`{ base: 'sheet', m: 'modal' }`), resolved in JS
     against the viewport — `base` where nothing can measure. A prop wins;
     then, nearest provider first, its entry for the component, then its
     overall `size`; then Blade's default. React's `themeTokens` and
-    `colorScheme` are not ported. Modal's `variant` (`modal | sheet`) replaces
-    BottomSheet's `adaptive`.
+    `colorScheme` are not ported. Modal's `variant` (`modal | sheet | drawer |
+    left-drawer`) replaces BottomSheet's `adaptive`.
 12. **Change callbacks take Blade's payload object**: a field reports
     `onChange({ name, value })` (`FieldChange`, `components/shared/change.ts`),
     Checkbox `onChange({ isChecked, value })`, Switch
@@ -86,10 +87,12 @@ its API (props, variants), except where one of the rules below applies.
     list either way), Collapsible `onExpandChange({ isExpanded })`, Popover,
     Tooltip and Menu `onOpenChange({ isOpen })`, PhoneNumberInput
     `onCountryChange({ country })`, OTPInput `onOTPFilled({ name, value })`.
+    PhoneNumberInput's `onChange` is the exception: `{ country, dialCode,
+    nationalNumber, value }`, with no `name`.
     Blade's `event` is not passed. Where Blade passes a bare value, so does
     cx: Tabs and Carousel `onChange(value)` — except Menu's (Dropdown's)
     `onOpenChange`, which takes `{ isOpen }` like every other overlay's.
-    `onFocus`/`onBlur` pass the DOM event.
+    `onFocus`/`onBlur` pass the DOM event (OTPInput's also the cell's index).
 
 ## Inventory
 
@@ -200,6 +203,7 @@ replaced by a rule.
 | — | `image` | cx-only |
 | — | `layer` (LayerHost, Surface) | cx-only (overlay infrastructure) |
 | — | `nav-stack` | cx-only |
+| — | `option-list` (OptionList, OptionItem, VirtualOptionList) | cx-only (pending Dropdown/Menu; see ActionList) |
 | — | `screen` | cx-only |
 | — | `virtual` | cx-only |
 | — | `shared` | n/a (internal) |
@@ -323,8 +327,8 @@ These use the old `items` + snippets API and need a port to
 
 ### Status
 
-Audited, fixed, and verified after the compositional rewrite: `svelte-check:cx`
-gives 0 errors; `test:cx` passes 584/584; the DOM measurements match React
+Audited, fixed, and verified after the compositional rewrite: `svelte-check`
+gives 0 errors; `test` passes; the DOM measurements match React
 Storybook, unchanged from before the rewrite.
 
 
@@ -381,7 +385,7 @@ They pass React icon components to `icon`, where cx takes icon data (Icons pass)
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the DOM measurements match React Storybook.
 
 
@@ -459,7 +463,7 @@ default is now 2.
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; inheritance and the strikethrough are checked in the browser.
 
 
@@ -508,7 +512,7 @@ None.
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the DOM measurements match React Storybook.
 
 
@@ -553,7 +557,7 @@ Measured against React Storybook at 390px. These match:
 
 - **Header:** Blade's BaseHeader box. 16px padding (20px from 768px), a
   hairline under it, and the title's type. The close button is centred on the
-  title's first line. With no title or header, an 8px strip holds the close
+  title's first line. With no title, subtitle or header, an 8px strip holds the close
   button, floating in a 28px circle. (Subtitle, back button and leading were
   measured to match React, then removed by decision.)
 - **Grab handle:** 56 × 4px, 12px from the top.
@@ -580,6 +584,7 @@ cx does more than React's web sheet here, and keeps it:
 | `onClosed` | the exit finished | keep |
 | `role: dialog \| alertdialog` | the dialog's role | keep |
 | `accessibilityLabel` | names an untitled sheet | keep |
+| `chrome` snippet | content hung off the panel's top edge (above it or over it), beside the close button and handle; receives `close`. Modal's too | keep |
 | `pace` | v2's quicker drawer easing | decide |
 | `size`, `variant` | desktop panel width; `variant: { base: 'sheet', m: 'modal' }` is a sheet on phones and a modal on desktop (was `adaptive`, rule 11) | kept by the desktop decision |
 
@@ -591,7 +596,7 @@ React's API. These sites need porting: `padding` becomes `body` (padded) or
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the DOM measurements at phone width match React Storybook.
 
 
@@ -625,7 +630,7 @@ React: `Button`, `IconButton`. cx: `Button` (`components/button/`) and
 | --- | --- | --- |
 | `emphasis: intense \| subtle \| moderate` (default intense) | `emphasis` | **added**, replacing `variant: plain \| boxed` |
 | `isHighlighted` | `isHighlighted` | **added** |
-| `size: small \| medium \| large` | `size` | same; glyph 12/16/20px, box only when highlighted or moderate |
+| `size: small \| medium \| large` | `size` | same; glyph 12/16/20px; a 24/32px box (8px radius) only when highlighted or moderate, never at large |
 | `icon`, `accessibilityLabel` (required), `isDisabled`, `onClick`, `testID` | same | same |
 | — | `isLoading`, `type`, `validateForm`, `loadingAnnouncement` | cx-only, pending (below) |
 
@@ -642,9 +647,12 @@ These match exactly:
   4px (content `px-1 gap-1`); type 12/12/14/16px; radius 8px, and 12px at large.
 - **States:** hover, press and focus take the highlighted fill and frame, and
   focus draws Blade's 4px ring. Press scales the content to 95%.
-- **Loading:** Blade's DotLoader over the faded label: 4px dots 2px apart (6
-  and 3 at large), rising in turn over 1.2s, the middle one held under reduced
-  motion. The button wears the disabled look.
+- **Loading:** Blade's DotLoader over the hidden label (it stays laid out, so
+  the width holds): 4px dots 2px apart (6 and 3 at large), rising in turn over
+  1.2s, the middle one held under reduced motion. The button wears the
+  disabled look.
+- **IconButton loading:** a 2px spinner in place of the glyph, at the glyph's
+  size (12/16/20px), not the DotLoader.
 - **Theme note:** cx's Uno colours come from Blade's neutral theme, which
   pairs a blue primary fill with black primary borders and icons. The primary
   button's frame now takes the standard theme's blue rim and edge
@@ -676,7 +684,7 @@ These match exactly:
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the DOM measurements match React Storybook, except the theme note.
 
 
@@ -724,7 +732,7 @@ Measured against React Storybook for primary and secondary. These match:
 
 ### Status
 
-New, verified: `svelte-check:cx` gives 0 errors; `test:cx` passes; the
+New, verified: `svelte-check` gives 0 errors; `test` passes; the
 measurements match React Storybook.
 
 ---
@@ -784,7 +792,7 @@ top shade), and the two 16px gradients' position and size.
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the surface measurements match React Storybook.
 
 ---
@@ -799,7 +807,7 @@ React: `Checkbox`, `CheckboxGroup`. cx: `Checkbox` (`components/checkbox/`).
 | --- | --- | --- |
 | `isChecked`, `defaultChecked` | `isChecked` (bindable) | rule 3 |
 | `onChange({ isChecked, event, value })` | `onChange({ isChecked, value })` | rule 12; no `event` |
-| `children` | `children` | same (the title) |
+| `children` | `children` snippet (receives `{ isChecked, isDisabled }`) | same (the title) |
 | `helpText` | `helpText` | **changed**: now under the title, indented to line up with it, and shown in every state, as React. It was one line under the control that the error replaced |
 | `errorText`, `validationState` | same | **changed**: the error line is a separate FormHint under the whole control, led by Blade's error icon (the new shared `FieldHint`) |
 | `isIndeterminate` | `isIndeterminate` | **added**: Blade's dash on a checked box; the input's `indeterminate` makes it read as mixed |
@@ -848,11 +856,11 @@ ErrorText, Indeterminate) with the same state on both sides:
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes (new tests: indeterminate, size, help text layout, the error line's
 icon); every measurement above matches React Storybook. The shared
-`FieldHint` (`components/shared/FieldHint.svelte`) is Checkbox's for now: the
-inputs adopt it as they are audited.
+`FieldHint` (`components/shared/FieldHint.svelte`) has since been adopted by
+the fields and groups too (see Form).
 
 ---
 
@@ -877,6 +885,7 @@ is a tab stop.
 | `onChange({ name, values })` | same | rule 12: `values` is a list for single selection too |
 | `label`, `accessibilityLabel` | same | same |
 | `labelPosition` | — | not ported (rule 7): the label is always on top |
+| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
 | `necessityIndicator` | same | **added** (first in cx): `*` or `(optional)` after the label; `required` also requires |
 | `helpText`, `errorText`, `validationState` | same | the error replaces the help text in one FormHint line, as React |
 | `isDisabled`, `isRequired`, `name`, `testID` | same | same |
@@ -888,7 +897,7 @@ is a tab stop.
 
 | React | cx | Action |
 | --- | --- | --- |
-| `value`, `children` (string) | `value`, `children` | same |
+| `value`, `children` (string) | `value`, `children` snippet (receives `{ isChecked, isDisabled }`; optional with `icon` or `leading`) | rule 2 |
 | `icon`, `leading` | same | same (`icon` is an icon source; `leading` a snippet) |
 | `color`, `isDisabled` | same | same; both fall back to the group's |
 | `width`, `minWidth`, `maxWidth` | `class` | rule 1 |
@@ -922,7 +931,7 @@ None: checkout has no chips.
 
 ### Status
 
-New, verified: `svelte-check:cx` gives 0 errors; `test:cx` passes (8 new
+New, verified: `svelte-check` gives 0 errors; `test` passes (8 new
 tests: radios and checkboxes, pick and bind, per-chip colour, disabled,
 press, necessity and help text, Form required); the measurements above match
 React Storybook.
@@ -973,7 +982,7 @@ WithDirection):
 
 ### Status
 
-New, verified: `svelte-check:cx` gives 0 errors; `test:cx` passes (toggle,
+New, verified: `svelte-check` gives 0 errors; `test` passes (toggle,
 bind and report, aria state, the chevron, host-driven state, direction, and
 Link's `button` variant); the measurements above match React Storybook.
 
@@ -1005,7 +1014,7 @@ caps at 100px on phones and 120px above, as React's platform tokens.
 
 ### Status
 
-New, verified: `test:cx` passes (count, `max+`, padding, colour); the
+New, verified: `test` passes (count, `max+`, padding, colour); the
 measurements above match React Storybook.
 
 ---
@@ -1024,6 +1033,7 @@ React: `CounterInput`. cx: `CounterInput` (`components/counter-input/`),
 | `min` (default 0), `max` | same | same: steps and typed values clamp to the range; each button disables at its end |
 | `label`, `accessibilityLabel`, `name` | same | same; `name` registers the count with a Form |
 | `labelPosition` | — | not ported (rule 7) |
+| `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
 | `size: xsmall \| small \| medium \| large`, `emphasis: subtle \| intense` | same | same (defaults `medium`, `subtle`) |
 | `isLoading`, `isDisabled` | same | same: both stop the buttons and grey the number; loading draws the bar |
 | `onFocus`, `onBlur`, `testID` | same | same |
@@ -1043,7 +1053,7 @@ loading set through args):
 - **Number:** as wide as its digits (`ch`, at least 2) plus 4px each side,
   36px tall, semibold with Blade's letter-spacing; greyed while disabled or
   loading.
-- **Label:** FormLabel's tokens per size, 4px above the box.
+- **Label:** FormLabel's tokens per size, 4px above the box (8px at large).
 - **Motion:** the new number slides in from below on a step up, from above on
   a step down (200ms). Loading swings a 2px bar along the bottom edge over
   960ms, in React's colours; React's indeterminate bar also changes width as
@@ -1056,7 +1066,7 @@ loading set through args):
 
 ### Status
 
-New, verified: `svelte-check:cx` gives 0 errors; `test:cx` passes (range,
+New, verified: `svelte-check` gives 0 errors; `test` passes (range,
 steps and binding, clamping typed input, disabled and loading, Form
 submission, the slide); the measurements above match React Storybook.
 
@@ -1094,7 +1104,7 @@ None pass `line`; the one harness that did now passes `dividerStyle`.
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the measurements above match React Storybook.
 
 ---
@@ -1117,7 +1127,8 @@ React: `Dropdown` with a trigger (`DropdownButton`, `DropdownLink`,
 | `DropdownOverlay` `defaultPlacement` (`bottom-start`) | `placement` | **changed** default from `bottom-end` to React's `bottom-start` |
 | `DropdownOverlay` `width` / `minWidth` / `maxWidth` / `zIndex` / `referenceRef` | — | **missing** (the overlay is 240–400px, as React's menu default) |
 | `DropdownHeader`, `DropdownFooter` | — | **missing** (rule 2: `header` / `footer` snippets) |
-| `ActionListItem` `title`, `value`, `onClick`, `isDisabled` | `MenuItem` same | same (`onClick` takes no args) |
+| `ActionListItem` `title`, `value`, `onClick`, `isDisabled` | `MenuItem` same | same (`onClick` takes no args; `value` goes to Menu's `onSelect`) |
+| — | Menu `onSelect(value)`, `accessibilityLabel` (required); MenuItem `children` | cx-only: an item's `value` is reported to `onSelect`; `children` replaces the icon and title |
 | `ActionListItem` `description`, `leading` (non-icon), `trailing`, `titleSuffix`, `intent: 'negative'`, `href`/`target`, `isSelected` | — (`icon` only) | **missing** |
 | `ActionListSection` (`title`, a divider after, `role="group"`) | anything between items (rule 4) | **missing** as a component |
 | Nested dropdowns (submenus) | — | **missing** |
@@ -1144,7 +1155,7 @@ Measured against React Storybook (Dropdown with Button, Default):
 
 ### Status
 
-Look audited, fixed and verified against React Storybook; `test:cx` passes.
+Look audited, fixed and verified against React Storybook; `test` passes.
 The API gaps above are open, pending a decision on which to build.
 
 ---
@@ -1194,7 +1205,7 @@ None in the apps; the story and the test harness were updated.
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the measurements above match React Storybook.
 
 ---
@@ -1218,7 +1229,7 @@ internal on both sides: fields take `label`, `necessityIndicator`,
 ### FieldLabel
 
 Props: `text`, `as: 'label' | 'span'` with `for` and `id`, `size`
-(`xsmall`…`large`), `necessityIndicator`, `accessibilityText`, and `row`
+(`xsmall`…`large`), `necessityIndicator`, `accessibilityText`, and `area`
 (a field's `labelArea`, rule 9). The label element holds the text and its
 necessity only; the row around it holds the gap to the field.
 
@@ -1262,7 +1273,7 @@ pending on anything React has.
 
 ### Status
 
-Audited, built and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, built and verified: `svelte-check` gives 0 errors; `test`
 passes (`test/field.test.ts` is new); ChipGroup's and TextInput's labels
 measure the same as React's.
 
@@ -1314,7 +1325,8 @@ hover, error and disabled states, desktop width):
 - **Focus:** Blade's 4px `surface.border.primary.muted` outline, 1px off
   the box (was a 4px box-shadow flush with it), over the 1.5px primary
   border.
-- **Affixes:** 12px in, 8px to the text — as React's leading icon.
+- **Affixes:** the side padding in (8px up to small, 12px above), 8px to the
+  text — as React's leading icon.
 - **Border:** a 1px border inside the box where React draws a 1px ring
   outside it: the same line, 1px further in.
 
@@ -1326,6 +1338,7 @@ hover, error and disabled states, desktop width):
 | `role` | `searchbox` on the control | keep (SearchInput's) |
 | `isReadOnly` | read-only control | keep |
 | `span`, `attach` | InputGroup cell; PhoneNumberInput's handle | keep (infrastructure) |
+| `pattern` | the control's validity pattern (PhoneNumberInput's, per country) | keep (infrastructure) |
 | 16px text below `m` at medium | stops iOS zooming into the field | keep |
 
 ---
@@ -1392,7 +1405,8 @@ React: `PhoneNumberInput` (a Dropdown country selector). cx:
 | `labelSuffix`, `labelTrailing` | `labelArea` | rule 9 |
 | `trailingIcon` | `trailing` | rule 2 |
 | `defaultCountry`, `defaultValue` | `bind:country`, `bind:value` | rule 3 |
-| `onChange` payload `{phoneNumber, dialCode, country, value, name}` | `PhoneNumberChange` | unchanged here; compare when the phone runes are audited |
+| `showDialCode` | same | same |
+| `onChange` payload `{phoneNumber, dialCode, country, value, name}` | `PhoneNumberChange`: `{ country, dialCode, nationalNumber, value }` | **different**: no `name` (rule 12 not met) and no formatted `phoneNumber`; `nationalNumber` added |
 | `onCountryChange({ country })` | same | rule 12 |
 
 **Look:** the country button is React's: 56×28, 4px in, 6px round, a 20px
@@ -1401,7 +1415,8 @@ outline flush; the dial code 12px on. It used to show the browser's grey
 button background.
 
 **cx-only, pending:** the picker is a Modal (a bottom sheet on phones) with
-a search, not a Dropdown — keep: it is checkout's flow; `isCountryFixed`,
+a search, not a Dropdown — keep: it is checkout's flow; `countries`
+(required: the library ships no country data, the app supplies it); `isCountryFixed`,
 `countryLabel`, `searchLabel`, `emptyText`, `closeLabel` — keep.
 
 ---
@@ -1418,7 +1433,7 @@ React: `PasswordInput` (over `BaseInput`). cx: `PasswordInput`
 | `necessityIndicator: required \| none` | same | same (never `optional`) |
 | `autoCompleteSuggestionType: none \| password \| newPassword` | `autoComplete: off \| current-password \| new-password` | rule 10 |
 | `keyboardReturnKeyType` | `enterKeyHint` | rule 10 |
-| autocapitalize off | same | same |
+| autocapitalize off | `autoCapitalize="none"` | same |
 | `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `errorText`, `successText`, `validationState`, `maxCharacters`, `isDisabled`, `isRequired`, `placeholder`, `name`, `autoFocus`, `size`, `testID` | same; `labelArea` | rule 9 for the label area |
 | `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rules 3 and 12 |
 | `showHelpTextOnFocus`, `labelPosition` | — | gap; rule 7 |
@@ -1444,6 +1459,8 @@ React: `SearchInput` (over `BaseInput`). cx: `SearchInput`
 | `label`, `accessibilityLabel`, `labelSuffix`/`labelTrailing`, `helpText`, `placeholder`, `name`, `isDisabled`, `autoFocus`, `autoCapitalize`, `onClick`, `onFocus`, `onBlur`, `size`, `testID` | same; `labelArea` | rule 9 for the label area |
 | `value`, `defaultValue`, `onChange({ name, value })` | `bind:value`, same | rules 3 and 12 |
 | Dropdown trigger (SearchInput inside a Dropdown) | — | **gap**, with Dropdown |
+| `onSubmit` | — | covered by Form's Enter-to-submit |
+| — | `onKeyDown` | cx-only, pending: keep |
 | `showHelpTextOnFocus`, `labelPosition` | — | gap; rule 7 |
 
 Was TextInput `type="search"`, which is gone: the glyph, role and key moved
@@ -1547,7 +1564,7 @@ BottomSheet; see its section for the header decisions (rule 2).
 
 | React | cx | Action |
 | --- | --- | --- |
-| `isOpen`, `onDismiss()` | `bind:isOpen`, `onDismiss(source)` | same, plus what closed it |
+| `isOpen`, `onDismiss()` | `bind:isOpen`, `onDismiss({ source, close })` | **changed**, as BottomSheet: fires on every dismissal, dismissible or not; a dismissible modal then closes, otherwise `close` ends it |
 | `isDismissible` | same | same |
 | `size: small \| medium \| large \| full` (default `small`) | same | **changed** from `default \| full`: Blade's 400, 760 and 1024px columns |
 | `accessibilityLabel` | same | same |
@@ -1588,7 +1605,7 @@ Measured against React Storybook (Simple Modal, every size, 1200×800):
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the measurements match React Storybook at every size.
 
 ---
@@ -1642,7 +1659,7 @@ Measured against React Storybook (Default, 1200×800):
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; the panel, header, gap and arrow measure as React's.
 
 ---
@@ -1690,7 +1707,7 @@ Measured against React Storybook (Default, every size):
 
 ### Status
 
-Audited, fixed, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, fixed, and verified: `svelte-check` gives 0 errors; `test`
 passes; every size measures as React's.
 
 ---
@@ -1712,10 +1729,11 @@ React: `Skeleton`. cx: `Skeleton` (`components/skeleton/`).
   the standard curve. cx only pulsed. The fade uses `both` fill, so with
   reduced motion (no animation) the bone still shows.
 - **No default radius**, as React: it was 4px. The shape is the caller's
-  `class`; ModalPending and the stories now pass `rounded-xsmall`.
+  `class`; ModalPending and the stories now pass `rounded-xsmall`; Async's
+  bones pass none.
 
-No cx-only features. **Status:** done; `svelte-check:cx` gives 0 errors and
-`test:cx` passes.
+No cx-only features. **Status:** done; `svelte-check` gives 0 errors and
+`test` passes.
 
 ---
 
@@ -1746,7 +1764,7 @@ and thumb check were ported from React earlier.
 takes only `accessibilityLabel`) — keep; `isLoading` (the thumb spins while
 a change is in flight) — keep; `parse` — keep (form model).
 
-**Status:** done; `svelte-check:cx` gives 0 errors and `test:cx` passes.
+**Status:** done; `svelte-check` gives 0 errors and `test` passes.
 
 ---
 
@@ -1826,7 +1844,7 @@ Blade does.
 
 ### Status
 
-Audited, rebuilt, and verified: `svelte-check:cx` gives 0 errors; `test:cx`
+Audited, rebuilt, and verified: `svelte-check` gives 0 errors; `test`
 passes; every variant, size and orientation measures as React's.
 
 ---
@@ -1843,9 +1861,9 @@ React: `useToast().show(…)` with a `ToastContainer`. cx: `showToast(…)`
 | `content` | same | **renamed** from `message` (a string) |
 | `leading` | `icon` (`IconSource`) | **renamed** to `icon`, the library's name for a glyph (Alert, Chip, MenuItem, TabItem); each colour has Blade's default glyph (info, check-circle, alert-triangle, alert-octagon) |
 | `color` | same | same |
-| `action: { text, onClick, isLoading }` | same | **renamed** from `{ label, onPress }`; `isLoading` added (disables it, `aria-busy`). Pressing it no longer dismisses the toast, as Blade: call the handle's `dismiss()` |
+| `action: { text, onClick, isLoading }` | same names; `onClick()` is required and takes no arguments | **renamed** from `{ label, onPress }`; `isLoading` added (disables it, `aria-busy`). Pressing it no longer dismisses the toast, as Blade: call the handle's `dismiss()` |
 | dismiss button | always shown, `closeLabel` (default `Dismiss toast`) | **changed**: it showed only when `closeLabel` was passed |
-| `onDismissButtonClick` | same | **added** |
+| `onDismissButtonClick` | `onDismissButtonClick()` (no arguments) | **added** |
 | `autoDismiss` (default true), `duration` (default 4000) | same | **added** `autoDismiss`; `duration` now defaults to 4000 here |
 | `id`, `toast.dismiss(id)` | the returned handle's `dismiss()` and `dismissed` | cx's handle |
 | `type: promotional` | — | **gap**: arbitrary content, gray, the action under it |
@@ -1872,10 +1890,10 @@ Measured against React Storybook (Basic, neutral):
 
 | Feature | What it does | Recommendation |
 | --- | --- | --- |
-| `onDismiss(reason)`, `dismissed` | how it went: timeout, press, eviction | keep |
+| `onDismiss(reason)`, `dismissed` | how it went: `timeout`, `dismiss` (the button or the handle), `evicted`, `cleared` | keep |
 | `closeLabel` | i18n for the dismiss button | keep |
 
-**Status:** done; `svelte-check:cx` gives 0 errors and `test:cx` passes;
+**Status:** done; `svelte-check` gives 0 errors and `test` passes;
 the toast measures as React's.
 
 ---
@@ -1907,7 +1925,7 @@ trigger). cx: `Tooltip` (`components/tooltip/`).
 
 **cx-only, pending:** `isDisabled` (no tooltip) — keep.
 
-**Status:** done; `svelte-check:cx` gives 0 errors and `test:cx` passes;
+**Status:** done; `svelte-check` gives 0 errors and `test` passes;
 the bubble measures as React's.
 
 ---

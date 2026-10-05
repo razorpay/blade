@@ -6,14 +6,14 @@ tests in jsdom cannot: real transitions, focus, pointer drags and layout.
 ## Run locally (no credentials)
 
 ```sh
-yarn build-storybook:cx          # once, and after changing src-cx
+yarn build-storybook          # once, and after changing src-cx
 npx playwright install chromium webkit
 yarn test:e2e                    # desktop and emulated phones, Chromium and WebKit
 yarn test:e2e --project=desktop-chromium
 yarn test:e2e:ui                 # Playwright's UI mode
 ```
 
-The config serves `storybook-static-cx` on `localhost:6108`
+The config serves `storybook-static` on `localhost:6108`
 (`support/serve.mjs`). Set `STORYBOOK_URL` to test a published Storybook
 instead. Playwright's WebKit runs on macOS and on Ubuntu (CI installs it with
 `--with-deps`); on other Linux distributions run the Chromium projects.

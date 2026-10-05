@@ -604,7 +604,8 @@ describe('Modal, as Blade', () => {
     const full = resolveModal({ size: 'full' });
     expect(full.panel).toContain('h-full');
     expect(full.panel).not.toContain('max-h-[80%]');
-    expect(full.root).toContain('p-2');
+    expect(full.root.split(' ')).toContain('p-2');
+    expect(full.root.split(' ')).not.toContain('p-4');
     expect(resolveModal({}).panel).toContain('rounded-large');
   });
 

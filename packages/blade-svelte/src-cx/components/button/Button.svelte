@@ -96,7 +96,7 @@
 
 <!--
   Blade's DotLoader draws in a layer over the children, which stay rendered
-  but faded: the button keeps its width and its accessible name while busy.
+  but hidden: the button keeps its width and its accessible name while busy.
 -->
 {#snippet loader()}
   <span class={classes.loader} aria-hidden="true">

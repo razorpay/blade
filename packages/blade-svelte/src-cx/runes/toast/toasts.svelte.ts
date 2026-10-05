@@ -174,7 +174,7 @@ export interface ToastContent {
   duration?: number;
   /** `false`: it stays until dismissed. @default true */
   autoDismiss?: boolean;
-  /** A button beside the content; pressing it dismisses the toast. */
+  /** A button beside the content. Pressing it doesn't dismiss the toast: call the handle's `dismiss()`. */
   action?: { text: string; onClick: () => void; isLoading?: boolean };
   /** The dismiss button was pressed. */
   onDismissButtonClick?: () => void;
